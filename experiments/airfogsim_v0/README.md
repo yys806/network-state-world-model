@@ -20,6 +20,7 @@ python train_baseline_v0.py
 python run_robustness_v0.py
 python run_uncertainty_v0.py
 python run_timing_v0.py
+python run_multiseed_v0.py
 python make_airfogsim_analysis_v0.py
 python make_weekly_summary_visuals_v0.py
 ```
@@ -35,3 +36,9 @@ The current stage is a baseline and analysis stage. It should not be overclaimed
 `run_timing_v0.py` compares AirFogSim's explicit `scheduleStep + env.step()` cost with Ridge residual baseline inference cost. In the current small scenario, AirFogSim takes about `5.96 ms/step`, so a `K=3` rollout is about `17.88 ms`; Ridge residual inference is about `0.0044 ms/sample`.
 
 This result should be reported carefully: it shows an online-inference acceleration opportunity, not that the current Ridge baseline is already a valid replacement for AirFogSim.
+
+## Multi-Seed v0
+
+`run_multiseed_v0.py` runs the same demo scene with seeds `[0, 1, 2, 3, 4]`. In the current 10-second scene, final vehicle counts range from `6` to `13`, final task counts range from `11` to `37`, and task success ratios range from about `0.829` to `0.969`.
+
+This supports the claim that AirFogSim can generate multiple stochastic trajectories. The current `dataset_v0` is still a single-seed dataset, so multi-seed logs should next be converted into `dataset_multiseed_v0`.
