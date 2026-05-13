@@ -1,0 +1,85 @@
+{
+  "source_run_dir": "D:\\禹尧珅\\人工智能知识库\\保研\\北本实习\\网络组\\code\\AirFogSim\\examples\\outputs\\demo_run_20260507_190930",
+  "output_dir": "D:\\禹尧珅\\人工智能知识库\\保研\\北本实习\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_v0_from_demo_run_20260507_190930",
+  "history": 8,
+  "horizon": 3,
+  "num_times": 200,
+  "time_min": 0.1,
+  "time_max": 20.0,
+  "num_samples": 190,
+  "num_nodes": 37,
+  "num_edges": 188,
+  "node_rows": 4265,
+  "link_rows": 18790,
+  "task_rows": 10619,
+  "node_tensor_shape": [
+    200,
+    37,
+    7
+  ],
+  "link_tensor_shape": [
+    200,
+    188,
+    5
+  ],
+  "task_tensor_shape": [
+    200,
+    9
+  ],
+  "x_node_shape": [
+    190,
+    8,
+    37,
+    7
+  ],
+  "x_link_shape": [
+    190,
+    8,
+    188,
+    5
+  ],
+  "x_task_shape": [
+    190,
+    8,
+    9
+  ],
+  "y_node_shape": [
+    190,
+    3,
+    37,
+    7
+  ],
+  "y_link_shape": [
+    190,
+    3,
+    188,
+    5
+  ],
+  "y_task_shape": [
+    190,
+    3,
+    9
+  ],
+  "node_type_counts": {
+    "cloud": 1,
+    "rsu": 4,
+    "uav": 2,
+    "vehicle": 30
+  },
+  "link_type_rows": {
+    "V2I": 11460,
+    "V2U": 5730,
+    "U2I": 1600
+  },
+  "task_lifecycle_rows": {
+    "finished": 8742,
+    "to_offload": 1491,
+    "computing": 274,
+    "returning": 112
+  },
+  "plot_files": [
+    "D:\\禹尧珅\\人工智能知识库\\保研\\北本实习\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_v0_from_demo_run_20260507_190930\\node_counts_over_time.png",
+    "D:\\禹尧珅\\人工智能知识库\\保研\\北本实习\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_v0_from_demo_run_20260507_190930\\link_rate_by_type.png",
+    "D:\\禹尧珅\\人工智能知识库\\保研\\北本实习\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_v0_from_demo_run_20260507_190930\\task_lifecycle_counts.png"
+  ]
+}
