@@ -1,0 +1,30 @@
+{
+  "airfogsim": {
+    "num_steps": 100,
+    "schedule_ms_mean": 0.40986200008774176,
+    "schedule_ms_p50": 0.29269998776726425,
+    "schedule_ms_p95": 0.9887650070595547,
+    "step_ms_mean": 5.550368999829516,
+    "step_ms_p50": 5.375400010962039,
+    "step_ms_p95": 9.504750015912578,
+    "schedule_plus_step_ms_mean": 5.960230999917258,
+    "schedule_plus_step_ms_p50": 5.808350004372187,
+    "schedule_plus_step_ms_p95": 10.09267000190448
+  },
+  "model_inference": {
+    "num_test_samples": 29,
+    "num_features": 600,
+    "num_targets": 36,
+    "horizon": 3,
+    "ridge_alpha": 100.0,
+    "ridge_batch_ms_mean": 0.015877400466706604,
+    "ridge_batch_ms_p50": 0.015199999324977398,
+    "ridge_batch_ms_p95": 0.019099999917671084,
+    "ridge_per_sample_ms_mean": 0.0043638620870830175,
+    "ridge_per_sample_ms_p50": 0.004220689679014272,
+    "ridge_per_sample_ms_p95": 0.005193276216420505,
+    "persistence_batch_ms_mean": 0.0019731992506422102,
+    "persistence_batch_ms_p50": 0.001800013706088066,
+    "persistence_batch_ms_p95": 0.0025999921490438282
+  }
+}

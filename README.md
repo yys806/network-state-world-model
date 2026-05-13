@@ -12,7 +12,8 @@ The current technical line is:
 2. Convert raw logs into a joint time-series dataset with physical states, communication states, and task states.
 3. Build baseline predictors from historical windows to future labels.
 4. Evaluate perturbation robustness and prediction uncertainty.
-5. Extend the dataset toward action-conditioned world-model training.
+5. Compare simulator rollout cost with lightweight learned-model inference.
+6. Extend the dataset toward action-conditioned world-model training.
 
 ## Repository Structure
 
@@ -67,6 +68,7 @@ Main observations:
 - MLP residual is unstable under the current small-sample, high-dimensional setting.
 - Perturbation experiments show that the current residual baseline degrades under strong input noise.
 - Residual-quantile uncertainty estimation provides preliminary 80% and 90% prediction intervals.
+- Timing experiments show that, in the current small scenario, AirFogSim explicit rollout is much slower than Ridge baseline inference. This only indicates potential online acceleration space; it does not mean the baseline can replace the simulator.
 
 See:
 
@@ -101,6 +103,7 @@ python build_dataset_v0.py
 python train_baseline_v0.py
 python run_robustness_v0.py
 python run_uncertainty_v0.py
+python run_timing_v0.py
 python make_airfogsim_analysis_v0.py
 ```
 
@@ -109,7 +112,7 @@ SUMO must be installed and available through `SUMO_HOME` for AirFogSim traffic s
 ## Next Steps
 
 - Add strict action variables: offloading, RB allocation, CPU allocation, and UAV movement.
-- Run timing experiments comparing AirFogSim rollout and learned-model inference.
+- Extend timing experiments to larger scenes and stronger models.
 - Generate multi-seed and multi-scenario datasets.
 - Add perturbation training instead of only clean-training/noisy-testing.
 - Upgrade from simple baselines to dual-graph and action-conditioned latent world-model architectures.

@@ -11,6 +11,7 @@
 | 扰动测试 | `robustness_v0/` | 已经能评估输入噪声对预测误差的影响 |
 | 置信区间 | `uncertainty_v0/` | 已经能给点预测结果补充预测区间 |
 | AirFogSim 机制分析 | `airfogsim_analysis_v0/` | 已经梳理仿真器内部状态转移、随机性和复杂度来源 |
+| 计时实验 | `timing_v0/` | 已经得到仿真器 rollout 与轻量模型推理的第一版耗时对比 |
 
 这几项合起来说明：我们现在不只是有数据文件，而是有了“仿真产出数据 -> 构造训练样本 -> baseline 预测 -> 扰动评估 -> 不确定性估计 -> 机制解释”的完整实验雏形。
 
@@ -122,6 +123,20 @@ $$
 
 ![Complexity comparison](complexity_simulator_vs_world_model.png)
 
+第一版计时实验进一步给出了实测结果：
+
+| 项目 | 平均耗时 |
+|---|---:|
+| AirFogSim scheduler + env.step | 5.9602 ms/step |
+| AirFogSim 估算 3-step rollout | 17.8807 ms |
+| Ridge residual baseline | 0.004364 ms/sample |
+
+这说明在当前小场景中，完整仿真 rollout 和轻量学习模型推理之间存在明显的在线耗时差距。这个结论只能作为“后续 world model 有在线加速空间”的证据，不能直接说当前 Ridge baseline 已经可以替代 AirFogSim。
+
+计时结果图在这里：
+
+![Timing comparison](../figures/timing_comparison_logscale.png)
+
 ## 7. 随机性问题怎么回答
 
 AirFogSim 内部本来有随机性：
@@ -168,8 +183,8 @@ $$
 
 优先级从高到低：
 
-1. 做计时实验：统计 AirFogSim rollout 和 baseline/world model 推理耗时，回应复杂度问题。
-2. 做多 seed 仿真：生成多条随机轨迹，回应随机性问题。
-3. 补动作变量导出：卸载动作、RB 分配、CPU 分配、UAV 移动动作，为动作条件 world model 做准备。
-4. 做扰动训练：不能只测 clean 模型遇到噪声，还要训练时加入噪声，看鲁棒性是否改善。
-5. 准备 PPT：重点展示 baseline、扰动曲线、置信区间、状态转移机制和下一步实验计划。
+1. 做多 seed 仿真：生成多条随机轨迹，回应随机性问题。
+2. 补动作变量导出：卸载动作、RB 分配、CPU 分配、UAV 移动动作，为动作条件 world model 做准备。
+3. 做扰动训练：不能只测 clean 模型遇到噪声，还要训练时加入噪声，看鲁棒性是否改善。
+4. 把计时实验扩展到更大场景和更强模型，验证在线加速是否仍然成立。
+5. 准备 PPT：重点展示 baseline、扰动曲线、置信区间、状态转移机制、计时实验和下一步计划。
