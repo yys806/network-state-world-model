@@ -1,0 +1,607 @@
+﻿\documentclass[UTF8,a4paper,11pt]{ctexart}
+
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\geometry{left=2.4cm,right=2.4cm,top=2.5cm,bottom=2.5cm}
+\emergencystretch=2em
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+\setlist[itemize]{leftmargin=2em,itemsep=0.25em}
+\setlist[enumerate]{leftmargin=2em,itemsep=0.25em}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{基座模型驱动的网络状态联合预测：阶段性进展梳理}
+\author{禹尧珅}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\section{课题说明原文}
+
+\subsection{课题名称}
+
+基座模型驱动的网络状态联合预测。
+
+\subsection{一、问题背景}
+
+\subsubsection{研究场景：网联具身智能体协同的“物理网络--信息网络”联合预测}
+
+\begin{itemize}
+  \item 智能体运动导致网络拓扑与资源状态持续演化，缺乏预测则只能被动响应。
+  \item 现有工作大多聚焦单一维度，例如流量预测，忽略物理网络与信息网络协同演化。
+\end{itemize}
+
+\subsubsection{研究现状}
+
+\begin{itemize}
+  \item ST-GNN 在网络/流量预测中非常成熟，架构多样，例如时空图预测综述\cite{sahili2025stgnn}和 6G 条件时空图预测工作\cite{elgendi2026stgnn}。
+  \item 通信网络流量时空预测已有专门方法，例如基于 GNN 的通信网络流量预测\cite{qin2024stcomm}。
+  \item 世界模型中 Dreamer 系列\cite{hafner2020dreamer}在 RL 中成熟，但尚未直接用于网络状态预测。
+  \item 动态无线环境下的 GNN 持续学习资源分配\cite{zhou2025continual}说明图模型可以处理动态无线网络结构。
+\end{itemize}
+
+\subsubsection{关键空白}
+
+\begin{itemize}
+  \item “物理网络--信息网络”联合世界模型是全新概念，目前无直接对应工作。
+  \item 基座模型预训练，即“多场景预训练 $\rightarrow$ 目标场景迁移”，引入网络状态预测，尚未被充分探索。
+\end{itemize}
+
+\paragraph{原文列出的参考方向}
+ST-GNN 相关工作\cite{sahili2025stgnn,elgendi2026stgnn}说明图时空预测已有成熟基础；通信网络流量预测工作\cite{qin2024stcomm}说明信息网络侧可以用图神经网络建模；Dreamer\cite{hafner2020dreamer}说明世界模型可通过 latent imagination 支撑控制；动态无线资源分配工作\cite{zhou2025continual}说明 GNN 可以表达动态无线环境中的结构关系。
+
+\subsection{二、问题描述}
+
+\subsubsection{问题一：如何构建联合世界模型，捕获智能体与网络资源状态的协同演化？}
+
+\begin{itemize}
+  \item 研究物理侧与信息侧的跨域状态表征，形成统一模型输入。
+  \item 研究联合世界模型架构：同时捕获空间依赖和时间演化，建模双向作用关系。
+  \item 设计预测输出：短时细粒度、长时趋势和不确定性估计。
+\end{itemize}
+
+\subsubsection{问题二：如何通过基座模型预训练提升跨场景泛化能力？}
+
+\begin{itemize}
+  \item 研究在多种协同场景上的预训练策略，获得可迁移的时空表征能力。
+  \item 探索参数高效的微调机制，使新场景少量数据即可适配。
+  \item 验证预训练泛化增益，分析哪些场景多样性对效果影响最大。
+\end{itemize}
+
+\subsection{三、后续方向}
+
+网联具身智能体协同的“物理网络--信息网络”联合预测。
+
+\paragraph{任务}
+\begin{enumerate}
+  \item 学习 ST-GNN 和状态空间模型基础，了解世界模型核心思想。
+  \item 构建具身智能体协同场景数据集，即物理侧和信息侧时序数据。
+  \item 实现联合世界模型，验证联合预测精度。
+\end{enumerate}
+
+\paragraph{预期收获}
+掌握时空图神经网络与世界模型联合建模，通过预训练提升跨场景泛化能力。
+
+\section{老师给出的具体问题}
+
+\begin{quote}
+在网络基站覆盖环境下，如何对无人机群的通信资源、计算卸载与运动轨迹进行在线协同决策，使任务时延、能耗同时优化，并在链路波动、任务随机到达和局部观测下保持系统稳定？无人机仍要决定何时本地算、何时卸载到边缘、何时借助同伴中继，以及何时为了后续任务主动靠近“好覆盖区”。利用世界模型对无人机网络状态进行预测，以及对通信网络状态进行预测，有助于资源优化决策。
+\end{quote}
+
+这段话把课题落到了更具体的无人机场景：预测不是终点，而是为了支撑通信资源、计算卸载和运动轨迹的在线协同决策。
+
+\section{当前主线}
+
+结合课题原文和老师给出的具体问题，当前主线可以概括为：
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.92\linewidth}
+先在可控的小规模空地协同场景中跑通仿真数据链路；再将原始日志组织成物理图和通信图的联合时间序列；随后训练双图联合预测模型，并进一步升级为动作条件世界模型；最后通过多场景预训练和目标场景迁移，验证模型是否具备跨场景泛化能力，并支撑通信资源、任务卸载和运动轨迹协同决策。
+\end{minipage}
+}
+\end{center}
+
+这条路线与无线网络数字孪生\cite{tao2024digitaltwin}、生成式 AI 驱动的闭环网络管理\cite{huang2025closedloop}、低空无线网络中感知通信控制协同设计\cite{jin2025codesign}等方向一致。相关研究进一步指出，低空无线网络需要系统级控制架构\cite{jin2026lawn}，因此当前建模不应把物理侧和通信侧割裂处理。
+
+\section{总体计划}
+
+\begin{longtable}{p{0.15\linewidth} p{0.25\linewidth} p{0.52\linewidth}}
+\toprule
+阶段 & 核心目标 & 具体内容 \\
+\midrule
+阶段一 & 课题理解与方向定位 & 梳理 ST-GNN、世界模型、动态无线资源分配等相关方向，明确当前课题的关键空白是物理网络与信息网络的联合世界模型，以及多场景预训练到目标场景迁移。\\
+阶段二 & 小场景收缩 & 将抽象的网联具身智能体协同收缩到“智慧城市空地协同感知”场景，明确无人机、事件点、边缘节点和任务流程。\\
+阶段三 & 详细建模 & 定义节点状态、物理边、通信边、双图结构、历史输入窗口、动作变量和未来预测标签，形成可训练样本格式。\\
+阶段四 & 平台跑通与数据导出 & 使用 AirFogSim/SUMO 跑通小规模仿真，导出节点、链路、任务和汇总日志，检查这些字段能否支撑双图建模。\\
+阶段五 & 联合预测 baseline & 构造 \code{dataset\_v0}，先比较单域预测、直接拼接和双图联合建模，验证联合建模是否带来收益。\\
+阶段六 & 世界模型 v0 & 在 baseline 基础上引入隐状态、动作条件状态转移、多步 rollout 和先验/后验约束，使模型从普通预测器走向可推演的世界模型。\\
+阶段七 & 预训练与迁移 & 基于不同场景配置生成多场景数据，验证源场景预训练到目标场景微调是否提升泛化能力。\\
+阶段八 & 决策接口验证 & 将预测结果接入卸载、资源分配或轨迹调整模块，观察任务时延、能耗、链路稳定性和任务完成率是否改善。\\
+\bottomrule
+\end{longtable}
+
+\section{详细建模}
+
+\subsection{场景与实体建模}
+
+当前先采用一个小而清楚的场景：智慧城市中的空地协同感知。场景中包含无人机、城市事件点和边缘节点；在 AirFogSim 平台阶段，还可以自然引入车辆、RSU 和云节点作为仿真环境中的扩展实体。任务是城市道路突发事件巡查与数据回传：当道路出现拥堵、事故或人群聚集等事件时，无人机前往事件点采集图像/视频数据，并通过空地链路回传至边缘节点。
+
+首先定义三类核心实体集合：
+
+\begin{equation}
+\mathcal{U}=\{u_1,u_2,\ldots,u_N\},\quad
+\mathcal{S}=\{s_1,s_2,\ldots,s_M\},\quad
+\mathcal{B}=\{b_1,b_2,\ldots,b_R\}.
+\end{equation}
+
+其中，$\mathcal{U}$ 表示无人机集合，$\mathcal{S}$ 表示城市事件点集合，$\mathcal{B}$ 表示边缘节点集合。对于第 $m$ 个事件点，在时刻 $t$ 的任务可定义为：
+
+\begin{equation}
+\mathcal{T}_{m,t}=
+\left(
+\mathbf{p}_m,
+D_{m,t},
+C_{m,t},
+\tau_{m,t},
+\rho_{m,t}
+\right).
+\end{equation}
+
+这里，$\mathbf{p}_m$ 表示事件点位置，$D_{m,t}$ 表示待采集或待回传数据量，$C_{m,t}$ 表示计算需求，$\tau_{m,t}$ 表示任务时限，$\rho_{m,t}$ 表示优先级。这样定义的好处是：任务不再只是一个抽象 request，而是能够和无人机运动、通信回传、边缘计算负载发生联系。
+
+\subsection{节点状态建模}
+
+节点状态只描述实体自身属性，不把距离、速率、时延等关系变量塞进节点里。这样可以避免 $\mathbf{X}$ 和 $\mathbf{E}$ 的语义混乱：$\mathbf{X}$ 表示节点自身状态，$\mathbf{E}$ 表示两个实体之间的关系。
+
+无人机节点 $u_i$ 在时刻 $t$ 的状态定义为：
+
+\begin{equation}
+\mathbf{x}_{u_i,t}
+=
+\left[
+\mathbf{p}_{i,t},
+\mathbf{v}_{i,t},
+h_{i,t},
+b_{i,t},
+q_{i,t},
+c_{i,t}
+\right].
+\end{equation}
+
+其中，$\mathbf{p}_{i,t}$ 是位置，$\mathbf{v}_{i,t}$ 是速度，$h_{i,t}$ 是高度，$b_{i,t}$ 是剩余能量，$q_{i,t}$ 是本地待回传或待处理队列，$c_{i,t}$ 是本地可用算力。无人机状态体现的是“它现在在哪里、怎么动、还有多少能量和处理能力”。
+
+事件点节点 $s_m$ 在时刻 $t$ 的状态定义为：
+
+\begin{equation}
+\mathbf{x}_{s_m,t}
+=
+\left[
+\mathbf{p}_m,
+D_{m,t},
+C_{m,t},
+\tau_{m,t},
+\rho_{m,t}
+\right].
+\end{equation}
+
+边缘节点 $b_r$ 在时刻 $t$ 的状态定义为：
+
+\begin{equation}
+\mathbf{x}_{b_r,t}
+=
+\left[
+\mathbf{p}_r,
+C_{r,t}^{\mathrm{edge}},
+B_{r,t},
+L_{r,t}
+\right].
+\end{equation}
+
+其中，$\mathbf{p}_r$ 是边缘节点位置，$C_{r,t}^{\mathrm{edge}}$ 是可用边缘算力，$B_{r,t}$ 是可用带宽资源，$L_{r,t}$ 是当前负载。AirFogSim\cite{wei2024airfogsim}当前已经能导出车辆、UAV、RSU、云节点的时间序列状态，这些字段可以作为后续节点特征的原始来源。该平台面向 UAV-integrated vehicular fog computing，支持 UAV 轨迹、任务卸载和资源分配等过程模拟。
+
+\subsection{物理边建模}
+
+物理边描述空间几何关系、感知覆盖关系和相对运动关系。物理边不表示“能不能通信”，而是表示两个实体在物理空间中的关系。例如无人机和事件点之间的物理边表示能否覆盖或感知；无人机和边缘节点之间的物理边表示回传时的空间条件；无人机和无人机之间的物理边表示邻近、协同或碰撞风险。
+
+对于节点 $i$ 和节点 $j$，物理边特征可写为：
+
+\begin{equation}
+\mathbf{e}_{ij,t}^{\mathrm{phy}}
+=
+\left[
+d_{ij,t},
+\Delta\mathbf{p}_{ij,t},
+\Delta h_{ij,t},
+\Delta\mathbf{v}_{ij,t},
+o_{ij,t}
+\right].
+\end{equation}
+
+其中，
+
+\begin{equation}
+d_{ij,t}=\left\|\mathbf{p}_{i,t}-\mathbf{p}_{j,t}\right\|_2,\quad
+\Delta\mathbf{p}_{ij,t}=\mathbf{p}_{i,t}-\mathbf{p}_{j,t},\quad
+\Delta\mathbf{v}_{ij,t}=\mathbf{v}_{i,t}-\mathbf{v}_{j,t}.
+\end{equation}
+
+$d_{ij,t}$ 表示空间距离，$\Delta\mathbf{p}_{ij,t}$ 表示相对位置，$\Delta h_{ij,t}$ 表示高度差，$\Delta\mathbf{v}_{ij,t}$ 表示相对速度，$o_{ij,t}$ 表示覆盖或可达指示。以无人机--事件点为例，如果事件点进入无人机感知半径，可以令 $o_{ij,t}=1$；否则令 $o_{ij,t}=0$。
+
+\subsection{通信边建模}
+
+通信边描述链路连接关系和通信质量。它和物理边有关系，但不是同一个东西。同样是无人机--边缘节点，在物理图中关心距离和高度差，在通信图中关心链路是否可用、速率是多少、时延是多少、资源块分配了多少。
+
+通信边特征可写为：
+
+\begin{equation}
+\mathbf{e}_{ij,t}^{\mathrm{comm}}
+=
+\left[
+c_{ij,t},
+r_{ij,t},
+\gamma_{ij,t},
+\delta_{ij,t},
+n_{ij,t},
+\eta_{ij,t}
+\right].
+\end{equation}
+
+其中，$c_{ij,t}$ 是连接指示，$r_{ij,t}$ 是传输速率，$\gamma_{ij,t}$ 是 SINR 或 CSI 摘要，$\delta_{ij,t}$ 是传输时延，$n_{ij,t}$ 是噪声或干扰水平，$\eta_{ij,t}$ 是资源占用，例如 RB 分配数。通信网络流量预测\cite{qin2024stcomm}说明图结构和时间演化需要联合处理，动态无线资源分配工作\cite{zhou2025continual}也说明 GNN 适合表达动态无线环境中的结构关系。
+
+在当前 AirFogSim 导出的 \code{link\_states.csv} 中，\code{distance} 可以对应 $d_{ij,t}$，\code{rate\_sum} 可以对应 $r_{ij,t}$，\code{csi\_mean} 可以作为 $\gamma_{ij,t}$ 的近似输入，\code{allocated\_rb\_count} 可以对应 $\eta_{ij,t}$。
+
+\subsection{双图联合建模}
+
+有了节点状态和边状态后，可以在每个时刻构造两张图。物理图定义为：
+
+\begin{equation}
+G_t^{\mathrm{phy}}
+=
+\left(
+\mathcal{V}^{\mathrm{phy}},
+\mathcal{E}_t^{\mathrm{phy}},
+\mathbf{X}_t^{\mathrm{phy}},
+\mathbf{E}_t^{\mathrm{phy}}
+\right).
+\end{equation}
+
+通信图定义为：
+
+\begin{equation}
+G_t^{\mathrm{comm}}
+=
+\left(
+\mathcal{V}^{\mathrm{comm}},
+\mathcal{E}_t^{\mathrm{comm}},
+\mathbf{X}_t^{\mathrm{comm}},
+\mathbf{E}_t^{\mathrm{comm}}
+\right).
+\end{equation}
+
+这里 $\mathcal{V}$ 表示节点集合，$\mathcal{E}$ 表示边集合，$\mathbf{X}$ 表示节点特征矩阵，$\mathbf{E}$ 表示边特征集合。两张图可以共享部分节点，但边的语义不同：物理图强调空间关系，通信图强调链路关系。这样做的原因是物理邻近不等于通信可达，通信可达也不一定代表物理任务可达。
+
+\subsection{历史输入窗口与预测标签}
+
+模型输入不是单个时刻，而是过去一段时间窗口。给定历史窗口长度 $H$，时刻 $t$ 的输入可以写成：
+
+\begin{equation}
+\mathcal{I}_t
+=
+\left\{
+G_{\ell}^{\mathrm{phy}},
+G_{\ell}^{\mathrm{comm}},
+\mathbf{a}_{\ell}
+\right\}_{\ell=t-H+1}^{t}.
+\end{equation}
+
+其中，$\mathbf{a}_{\ell}$ 表示动作或调度决策，包括任务卸载目标、RB/带宽分配、CPU 分配、UAV 移动控制、是否借助同伴中继等。如果第一版 baseline 暂时不接动作，可以先去掉 $\mathbf{a}_{\ell}$，只做无动作条件的状态预测。
+
+未来预测标签定义为：
+
+\begin{equation}
+\mathcal{Y}_t
+=
+\left\{
+\mathbf{Y}_{\ell}^{\mathrm{node}},
+\mathbf{Y}_{\ell}^{\mathrm{phy-edge}},
+\mathbf{Y}_{\ell}^{\mathrm{comm-edge}},
+\mathbf{Y}_{\ell}^{\mathrm{task}}
+\right\}_{\ell=t+1}^{t+K}.
+\end{equation}
+
+其中，$K$ 是预测步长。$\mathbf{Y}^{\mathrm{node}}$ 包含未来节点状态，$\mathbf{Y}^{\mathrm{phy-edge}}$ 包含未来物理边状态，$\mathbf{Y}^{\mathrm{comm-edge}}$ 包含未来通信边状态，$\mathbf{Y}^{\mathrm{task}}$ 包含任务生命周期、任务完成状态或队列状态。
+
+\subsection{双路编码与跨域融合}
+
+物理图和通信图先分别编码，避免一开始把不同语义的变量直接拼接。可以写为：
+
+\begin{equation}
+\mathbf{H}_t^{\mathrm{phy}}
+=
+f_{\mathrm{phy}}
+\left(
+G_{t-H+1:t}^{\mathrm{phy}}
+\right),
+\quad
+\mathbf{H}_t^{\mathrm{comm}}
+=
+f_{\mathrm{comm}}
+\left(
+G_{t-H+1:t}^{\mathrm{comm}}
+\right).
+\end{equation}
+
+$f_{\mathrm{phy}}$ 可以先用 ST-GCN 或 Temporal Graph Transformer，重点学习空间邻近和运动趋势；$f_{\mathrm{comm}}$ 可以用 GNN + temporal encoder 或 Graph Transformer，重点学习链路质量和网络性能随时间变化。两路编码后，再进行跨域融合：
+
+\begin{equation}
+\mathbf{H}_t^{\mathrm{fus}}
+=
+f_{\mathrm{fus}}
+\left(
+\mathbf{H}_t^{\mathrm{phy}},
+\mathbf{H}_t^{\mathrm{comm}}
+\right).
+\end{equation}
+
+融合模块可以先用 Cross-Attention 或 MLP。它的作用是显式建模“运动影响通信，通信约束反过来影响任务和轨迹”的耦合关系，而不是简单把两个向量拼在一起。
+
+\subsection{动作条件世界模型}
+
+如果只做一步或几步预测，可以写成普通预测模型：
+
+\begin{equation}
+\hat{\mathcal{Y}}_t
+=
+f_{\theta}
+\left(
+\mathcal{I}_t
+\right).
+\end{equation}
+
+但老师给出的目标包含资源、卸载和轨迹协同，因此后续更合理的是动作条件世界模型。世界模型维护一个隐状态 $\mathbf{z}_t$，用来压缩历史信息和当前融合表示：
+
+\begin{equation}
+\mathbf{z}_{t}
+=
+f_{\mathrm{state}}
+\left(
+\mathbf{z}_{t-1},
+\mathbf{a}_{t-1},
+\mathbf{H}_{t}^{\mathrm{fus}}
+\right).
+\end{equation}
+
+这个式子表示：当前隐状态不仅由当前观测决定，也由上一时刻隐状态和上一时刻动作决定。这样模型才能回答“如果我刚才选择不同卸载/调度/移动动作，未来会怎样”。
+
+多步 rollout 写为：
+
+\begin{equation}
+\hat{\mathbf{z}}_{t+k}
+=
+f_{\mathrm{rollout}}
+\left(
+\hat{\mathbf{z}}_{t+k-1},
+\mathbf{a}_{t+k-1}
+\right),
+\quad k=1,\ldots,K.
+\end{equation}
+
+rollout 的含义是：在给定未来候选动作序列时，不再依赖真实未来观测，而是在隐空间里一步步推演未来系统状态。RSSM/Dreamer 类世界模型\cite{hafner2020dreamer}的核心思想就是学习隐状态、状态转移和 latent imagination。多智能体世界模型 GAWM\cite{shi2025gawm}进一步强调全局一致 latent 表示的重要性，这对后续无人机群和多节点协同建模有直接启发。
+
+\subsection{训练目标}
+
+训练目标需要同时约束物理侧、通信侧和任务侧预测。如果采用 RSSM 或 latent world model，还需要约束先验和后验的一致性。整体损失可以写为：
+
+\begin{equation}
+\mathcal{L}
+=
+\mathcal{L}_{\mathrm{phy}}
++
+\mathcal{L}_{\mathrm{comm}}
++
+\lambda \mathcal{L}_{\mathrm{task}}
++
+\beta D_{\mathrm{KL}}
+\left(
+q(\mathbf{z}_t|\mathbf{h}_t,\mathbf{x}_t)
+\Vert
+p(\mathbf{z}_t|\mathbf{h}_t)
+\right).
+\end{equation}
+
+其中，$\mathcal{L}_{\mathrm{phy}}$ 用于约束位置、速度、覆盖关系等物理侧预测；$\mathcal{L}_{\mathrm{comm}}$ 用于约束速率、链路可用性、CSI/SINR、时延等通信侧预测；$\mathcal{L}_{\mathrm{task}}$ 用于约束任务生命周期、队列或完成状态；KL 项用于约束后验 $q$ 和先验 $p$ 的一致性。训练时后验 $q$ 能看到当前观测，先验 $p$ 只能依赖历史隐状态；让二者接近，是为了提升模型在 rollout 时“闭眼推演”的质量。
+
+\section{符号定义表}
+
+\begin{longtable}{L{0.18\linewidth} L{0.72\linewidth}}
+\toprule
+符号 & 含义 \\
+\midrule
+$u_i$ & 第 $i$ 架无人机。\\
+$s_m$ & 第 $m$ 个城市事件点或任务点。\\
+$b_r$ & 第 $r$ 个边缘节点。\\
+$t$ & 当前离散时间步。\\
+$H$ & 历史输入窗口长度，即模型观察过去多少步。\\
+$K$ & 未来预测步长，即模型预测未来多少步。\\
+$\mathbf{p}_{i,t}$ & 节点或无人机在时刻 $t$ 的位置。\\
+$\mathbf{v}_{i,t}$ & 无人机在时刻 $t$ 的速度。\\
+$h_{i,t}$ & 无人机在时刻 $t$ 的高度。\\
+$b_{i,t}$ & 无人机在时刻 $t$ 的剩余能量。\\
+$q_{i,t}$ & 无人机本地队列或待回传数据量。\\
+$c_{i,t}$ & 无人机本地可用算力。\\
+$D_{m,t}$ & 事件点在时刻 $t$ 的待采集或待回传数据量。\\
+$C_{m,t}$ & 事件任务的计算需求。\\
+$\tau_{m,t}$ & 任务时限或 deadline。\\
+$\rho_{m,t}$ & 任务优先级或紧急程度。\\
+$d_{ij,t}$ & 节点 $i$ 和 $j$ 在时刻 $t$ 的空间距离。\\
+$o_{ij,t}$ & 覆盖或可达指示变量。\\
+$c_{ij,t}$ & 通信连接指示变量。\\
+$r_{ij,t}$ & 节点 $i$ 到节点 $j$ 的链路速率。\\
+$\gamma_{ij,t}$ & SINR 或 CSI 摘要特征。\\
+$\delta_{ij,t}$ & 链路传输时延。\\
+$\eta_{ij,t}$ & 通信资源占用，例如 RB 分配数。\\
+$G_t^{\mathrm{phy}}$ & 时刻 $t$ 的物理图。\\
+$G_t^{\mathrm{comm}}$ & 时刻 $t$ 的通信图。\\
+$\mathbf{X}_t$ & 图中的节点特征矩阵。\\
+$\mathbf{E}_t$ & 图中的边特征集合。\\
+$\mathbf{a}_t$ & 时刻 $t$ 的动作或调度决策。\\
+$\mathbf{H}_t^{\mathrm{phy}}$ & 物理图编码后的时空表示。\\
+$\mathbf{H}_t^{\mathrm{comm}}$ & 通信图编码后的时空表示。\\
+$\mathbf{H}_t^{\mathrm{fus}}$ & 物理侧和通信侧融合后的联合表示。\\
+$\mathbf{z}_t$ & 世界模型维护的联合隐状态。\\
+$q(\cdot)$ & 后验分布，训练时可利用当前观测修正隐状态。\\
+$p(\cdot)$ & 先验分布，推演时只依赖历史隐状态进行预测。\\
+\bottomrule
+\end{longtable}
+
+\section{按周进展}
+
+\subsection{3.29--3.31：课题理解与世界模型概念}
+
+这一阶段完成了两件事。第一，依据 \code{课题介绍.md} 和 \code{老师说明.md} 明确课题主线：研究对象是物理网络和信息网络的联合预测，落点是无人机通信资源、计算卸载与运动轨迹的协同决策。第二，整理了世界模型的基本逻辑，并在 3.31 汇报中形成“输入数据--图编码器--跨域融合--RSSM 核心--解码头”的五层结构。
+
+当时形成的关键认识是：世界模型不是普通的一步预测器，而是通过隐状态学习系统演化规律，并支持动作条件下的 what-if 推演。这个认识直接影响了后续公式中的 $\mathbf{z}_t$、$\mathbf{a}_t$ 和 rollout 设计。
+
+\subsection{4.7：整体技术链路初步成形}
+
+4.7 汇报进一步把课题目标组织成完整方案：双域标准化输入、双路 ST-GCN 编码、双向交叉注意力融合、RSSM 隐状态建模、独立解码输出，以及多场景预训练--微调范式。该阶段的产出是把“物理--信息双域联合预测”从概念落到一个可画出的网络结构。
+
+这一周也明确了后续验证维度：双域预测精度、多步推演稳定性、跨场景泛化能力，以及预测结果对上层联合决策的支撑效果。这个验证思路后来被保留到总体计划中的 baseline、世界模型和迁移阶段。
+
+\subsection{4.14：文献调研与方向收敛}
+
+4.14 的主要工作是做文献调研，并把文献分成“问题类”和“方法类”。问题类包括移动用户预测性资源分配、RIS-UAV-MEC 联合优化、异构算网协同调度、UAV 通信可移动天线预测控制等；方法类包括 GAWM、TransDreamerV3 等世界模型或多智能体世界模型工作。
+
+这一阶段的结论是：已有问题类论文通常能把资源分配、轨迹、卸载等优化问题建得很细，但它们并不直接解决“如何学习一个可迁移的物理--通信联合状态模型”。已有世界模型论文能提供隐状态和 rollout 思路，但多数不直接面向通信网络状态联合预测。因此，当前课题的合理推进方向是：先把场景状态组织成动态图，再训练联合预测/世界模型，最后再接决策优化。
+
+\subsection{4.21：输入、输出、模型与数据来源梳理}
+
+4.21 的目标是回应老师“输入、输出、什么网络、什么模型、用什么数据集、链路要讲清楚”的要求。实际产出包括 \code{4.21.md}、\code{4.21.pptx} 和 \code{4.21\_参考文献说明.md}。这一周形成了汇报用总链路：
+
+\begin{center}
+双图输入 $\rightarrow$ 双路时空编码 $\rightarrow$ 跨域融合 $\rightarrow$ 联合隐状态建模 $\rightarrow$ 多头解码 $\rightarrow$ 输出/决策接口
+\end{center}
+
+这一周还明确了平台和数据资源的定位：
+
+\begin{itemize}
+  \item AirFogSim\cite{wei2024airfogsim}作为主仿真平台，用于生成轨迹、链路、任务和资源的联合时间序列。
+  \item GNNet Challenge 可作为通信网络图建模的公开参照。
+  \item BUPTCMCC-6G-DataAI+\cite{yang2025buptcmcc}更适合作为无线信道侧先验补充，而不是替代 AirFogSim 的系统级平台。
+\end{itemize}
+
+这个判断避免了把公开数据集和主实验平台混在一起。
+
+\subsection{4.27：小场景定义与建模细化}
+
+4.27 的重点是把 4.21 的总体链路落到一个具体场景中。最终选定“小规模智慧城市空地协同感知”作为第一版场景：2 架无人机、1 个地面边缘节点、若干城市道路任务点。任务是城市道路突发事件巡查与数据回传。
+
+这一周具体完成了四部分建模。第一，定义了场景实体和任务流程，把抽象网络节点细化成无人机、事件点、边缘节点。第二，重新区分节点状态和边关系，明确节点状态只描述实体自身属性。第三，定义了物理边和通信边：物理边描述距离、覆盖、高度差、相对速度等空间关系；通信边描述链路可用性、速率、时延、回传状态等链路关系。第四，定义了训练样本和预测标签：输入为过去 $H$ 步物理图和通信图序列，标签为未来 $K$ 步节点状态、物理边状态和通信边状态。
+
+这个阶段的核心进展是：从“框架能讲清楚”推进到了“小场景中变量能定义清楚”。
+
+\subsection{4.30--5.12：AirFogSim 跑通与数据导出}
+
+这一阶段主要完成平台跑通和第一版数据链路构造。AirFogSim/SUMO 小场景已经能够稳定运行，并导出节点、链路和任务三类原始日志：
+
+\begin{center}
+\path{code/AirFogSim/examples/outputs/demo_run_20260507_190930}
+\end{center}
+
+该次仿真为 20 秒、0.1 秒步长，包含车辆、2 架 UAV、4 个 RSU 和 1 个云节点。导出文件包括 \code{node\_states.csv}、\code{link\_states.csv}、\code{task\_states.csv}、\code{summary.json} 和 \code{rate.png}，可以覆盖节点状态、通信链路、任务生命周期和资源占用等后续建模所需信息。
+
+在原始日志基础上，进一步构造了第一版可训练数据 \code{dataset\_v0}：
+
+\begin{center}
+\path{code/AirFogSim/examples/outputs/dataset_v0_from_demo_run_20260507_190930}
+\end{center}
+
+当前采用历史窗口 $H=8$、预测步长 $K=3$，共形成 190 条监督学习样本。主要张量包括：
+
+\begin{itemize}
+  \item \code{x\_node}: $(190,8,37,7)$，对应历史节点状态。
+  \item \code{x\_link}: $(190,8,188,5)$，对应历史候选链路状态。
+  \item \code{x\_task}: $(190,8,9)$，对应历史任务聚合状态。
+  \item \code{y\_node}、\code{y\_link}、\code{y\_task}，对应未来 $K=3$ 步预测标签。
+\end{itemize}
+
+配套产物包括字段映射、数据质量报告、样本索引、节点/边词表和可视化结果：
+
+\begin{itemize}
+  \item \code{field\_mapping.md}、\code{data\_quality\_report.md}、\code{sample\_index.csv}、\code{node\_vocab.csv}、\code{edge\_vocab.csv}。
+  \item \path{visuals/} 下的链路速率、双图快照、历史窗口、张量结构和任务生命周期等说明图。
+  \item 5.12 材料目录下的 \code{5.12.pptx} 及对应讲稿。
+\end{itemize}
+
+本阶段结论是：数据链路已经从“平台能运行”推进到“可训练样本已形成”。当前 \code{dataset\_v0} 可以支撑第一版 baseline，下一步重点是验证链路速率、节点状态和任务状态统计的短期预测效果；严格动作变量仍需后续从调度模块进一步导出。
+\section{当前剩余工作}
+
+本周剩余工作从“构造 dataset\_v0”推进为“验证 dataset\_v0 能否支撑第一版 baseline”。
+
+\begin{enumerate}
+  \item 检查 \code{dataset\_v0} 中节点、链路和任务张量是否需要归一化，并确定第一版输入特征。
+  \item 实现最小 baseline，例如线性回归、MLP 或简单时序模型，先预测链路速率 $r_{ij,t}$ 和任务状态统计。
+  \item 准备创新点回答：明确 AirFogSim 是数据生成器，当前贡献在于把原始日志组织成物理图、通信图和任务状态的联合时间序列，并构造出动作条件世界模型的样本雏形。
+\end{enumerate}
+
+\section{参考文献}
+
+\begin{thebibliography}{99}
+
+\bibitem{sahili2025stgnn}
+J. Sahili, et al. Spatio-Temporal Prediction using Graph Neural Networks: A Survey. \textit{Neurocomputing}, 625, 2025.
+
+\bibitem{elgendi2026stgnn}
+M. Elgendi, et al. 6G Conditioned Spatiotemporal Graph Neural Networks for Real Time Traffic Flow Prediction. \textit{Scientific Reports}, 16, 2026.
+
+\bibitem{qin2024stcomm}
+L. Qin, H. Gu, W. Wei, et al. Spatio-Temporal Communication Network Traffic Prediction Method Based on Graph Neural Network. \textit{Information Sciences}, 679:121003, 2024. DOI: 10.1016/j.ins.2024.121003.
+
+\bibitem{hafner2020dreamer}
+D. Hafner, T. Lillicrap, I. Fischer, et al. Dream to Control: Learning Behaviors by Latent Imagination. \textit{International Conference on Learning Representations}, 2020. URL: \url{https://arxiv.org/abs/1912.01603}.
+
+\bibitem{zhou2025continual}
+H. Zhou, W. Xia, G. Zheng, et al. Graph Neural Network-Based Continual Learning for Resource Allocation in Dynamic Wireless Environments. \textit{IEEE Transactions on Vehicular Technology}, 74(12):19125--19140, 2025. DOI: 10.1109/TVT.2025.3585146.
+
+\bibitem{tao2024digitaltwin}
+Z. Tao, W. Xu, Y. Huang, et al. Wireless Network Digital Twin for 6G: Generative AI as a Key Enabler. \textit{IEEE Wireless Communications}, 31(4):24--31, 2024. DOI: 10.1109/MWC.002.2300564.
+
+\bibitem{huang2025closedloop}
+X. Huang, H. Yang, C. Zhou, et al. When Digital Twin Meets Generative AI: Intelligent Closed-Loop Network Management. \textit{IEEE Network}, 39(5):272--279, 2025. DOI: 10.1109/MNET.2024.3524474.
+
+\bibitem{jin2025codesign}
+H. Jin, J. Wu, W. Yuan, et al. Co-Design of Sensing, Communications, and Control for Low-Altitude Wireless Networks. \textit{IEEE Transactions on Mobile Computing}, 24:12035--12048, 2025. DOI: 10.1109/TMC.2025.3581616.
+
+\bibitem{jin2026lawn}
+H. Jin, W. Yuan, J. Wu, et al. Advancing the Control of Low-Altitude Wireless Networks: Architecture, Design Principles, and Future Directions. \textit{npj Wireless Technology}, 2:2, 2026. DOI: 10.1038/s44459-025-00010-1.
+
+\bibitem{wei2024airfogsim}
+Z. Wei, C. Huang, B. Li, Y. Zhao, X. Cheng, L. Yang, and R. Zhang. AirFogSim: A Light-Weight and Modular Simulator for UAV-Integrated Vehicular Fog Computing. arXiv:2409.02518, 2024. URL: \url{https://arxiv.org/abs/2409.02518}.
+
+\bibitem{shi2025gawm}
+Y. Shi, et al. GAWM: Global-Aware World Model for Multi-Agent Reinforcement Learning. arXiv preprint, 2025.
+
+\bibitem{yang2025buptcmcc}
+P. Yang, Y. Liu, H. Zhang, et al. BUPTCMCC-6G-DataAI+: A Generative Channel Dataset for 6G AI Air-Interface Research. \textit{Science China Information Sciences}, 2025. DOI: 10.1007/s11432-024-4377-y.
+
+\end{thebibliography}
+
+\end{document}
+
