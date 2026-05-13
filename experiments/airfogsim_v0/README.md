@@ -21,6 +21,8 @@ python run_robustness_v0.py
 python run_uncertainty_v0.py
 python run_timing_v0.py
 python run_multiseed_v0.py
+python export_multiseed_dataset_v0.py
+python build_dataset_multiseed_v0.py
 python make_airfogsim_analysis_v0.py
 python make_weekly_summary_visuals_v0.py
 ```
@@ -41,4 +43,16 @@ This result should be reported carefully: it shows an online-inference accelerat
 
 `run_multiseed_v0.py` runs the same demo scene with seeds `[0, 1, 2, 3, 4]`. In the current 10-second scene, final vehicle counts range from `6` to `13`, final task counts range from `11` to `37`, and task success ratios range from about `0.829` to `0.969`.
 
-This supports the claim that AirFogSim can generate multiple stochastic trajectories. The current `dataset_v0` is still a single-seed dataset, so multi-seed logs should next be converted into `dataset_multiseed_v0`.
+This supports the claim that AirFogSim can generate multiple stochastic trajectories. The current `dataset_v0` is still a single-seed dataset, so the next step is to evaluate cross-seed generalization on `dataset_multiseed_v0`.
+
+## Dataset Multiseed v0
+
+`dataset_multiseed_v0` converts five seed trajectories into a unified history-window to future-label dataset:
+
+- Total samples: `950`
+- Samples per seed: `190`
+- Node tensor sample shape: `(8, 37, 7)`
+- Link tensor sample shape: `(8, 188, 5)`
+- Task tensor sample shape: `(8, 9)`
+
+The dataset can support cross-seed evaluation, for example training on seeds `0-3` and testing on seed `4`.

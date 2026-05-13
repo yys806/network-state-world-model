@@ -39,7 +39,7 @@ The current technical line is:
 
 ## Current Dataset
 
-The current dataset is `dataset_v0`, generated from one AirFogSim demo run.
+The first dataset is `dataset_v0`, generated from one AirFogSim demo run.
 
 Key settings:
 
@@ -57,6 +57,17 @@ Main tensors:
 - `y_node`: `(190, 3, 37, 7)`
 - `y_link`: `(190, 3, 188, 5)`
 - `y_task`: `(190, 3, 9)`
+
+The newer multi-seed dataset is `dataset_multiseed_v0`, generated from seeds `[0, 1, 2, 3, 4]`.
+
+- Samples: `950`
+- Samples per seed: `190`
+- `x_node`: `(950, 8, 37, 7)`
+- `x_link`: `(950, 8, 188, 5)`
+- `x_task`: `(950, 8, 9)`
+- `y_node`: `(950, 3, 37, 7)`
+- `y_link`: `(950, 3, 188, 5)`
+- `y_task`: `(950, 3, 9)`
 
 ## Current Results
 
@@ -107,6 +118,8 @@ python run_robustness_v0.py
 python run_uncertainty_v0.py
 python run_timing_v0.py
 python run_multiseed_v0.py
+python export_multiseed_dataset_v0.py
+python build_dataset_multiseed_v0.py
 python make_airfogsim_analysis_v0.py
 ```
 
@@ -116,6 +129,6 @@ SUMO must be installed and available through `SUMO_HOME` for AirFogSim traffic s
 
 - Add strict action variables: offloading, RB allocation, CPU allocation, and UAV movement.
 - Extend timing experiments to larger scenes and stronger models.
-- Convert multi-seed logs into `dataset_multiseed_v0` for cross-trajectory training and evaluation.
+- Run cross-seed generalization experiments, for example training on seeds `0-3` and testing on seed `4`.
 - Add perturbation training instead of only clean-training/noisy-testing.
 - Upgrade from simple baselines to dual-graph and action-conditioned latent world-model architectures.
