@@ -551,14 +551,70 @@ $p(\cdot)$ & 先验分布，推演时只依赖历史隐状态进行预测。\\
 \end{itemize}
 
 本阶段结论是：数据链路已经从“平台能运行”推进到“可训练样本已形成”。当前 \code{dataset\_v0} 可以支撑第一版 baseline，下一步重点是验证链路速率、节点状态和任务状态统计的短期预测效果；严格动作变量仍需后续从调度模块进一步导出。
+
+\subsection{5.13--5.15：baseline、随机性、严格动作与动作条件预测}
+
+这一阶段的目标是回应老师提出的几个具体问题：AirFogSim 内部是否有状态转移机制、仿真 rollout 的计算量如何、系统中是否存在随机性或扰动、预测结果能否给出置信区间，以及当前方法相对平台默认规则的创新点在哪里。
+
+\paragraph{第一，完成第一版 baseline。}
+基于 \code{dataset\_v0}，实现了 persistence、Ridge residual 和 MLP residual 三类 baseline。单 seed 测试中，persistence 的整体 RMSE 为 1.345，Ridge residual 的整体 RMSE 为 1.224，MLP residual 的整体 RMSE 为 8.469。该结果说明：短期预测中 persistence 是很强的门槛，因为当前仿真步长为 0.1 秒，预测未来 3 步只对应 0.3 秒；同时也说明简单 MLP 在当前小样本、高维输入下并不稳定。
+
+\paragraph{第二，完成扰动与置信区间评估。}
+扰动实验在输入侧加入不同强度噪声，观察 clean 训练、noisy 测试下的误差变化。噪声强度从 0.00 增加到 0.30 时，Ridge residual 的整体 RMSE 从 1.224 增加到 7.270，说明当前轻量 baseline 在强扰动下会明显退化。置信区间方面，采用验证集残差分位数法，得到 90\% 区间覆盖率 0.902、80\% 区间覆盖率 0.849。这说明当前流程已经可以从点预测扩展到不确定性估计，但区间仍然较粗。
+
+\paragraph{第三，完成 AirFogSim 机制和复杂度分析。}
+AirFogSim 的一步状态转移可以抽象为
+\begin{equation}
+s_{t+1}=\mathcal{F}_{\mathrm{sim}}(s_t,a_t,\xi_t),
+\end{equation}
+其中 $s_t$ 表示节点、链路和任务状态，$a_t$ 表示卸载、RB 分配、CPU 分配和 UAV 移动等调度动作，$\xi_t$ 表示车辆到达、任务生成和信道变化等随机因素。计时实验显示，当前小场景中 AirFogSim 的 \code{scheduler + env.step} 平均耗时约为 5.9602 ms/step，估算 3-step rollout 约为 17.8807 ms，而 Ridge residual 推理约为 0.004364 ms/sample。这个结果只能说明学习式 world model 存在在线加速空间，不能说明当前 Ridge baseline 可以替代 AirFogSim。
+
+\paragraph{第四，完成多 seed 数据集和跨 seed 泛化测试。}
+在 seed $0,1,2,3,4$ 上运行同一场景，构造 \code{dataset\_multiseed\_v0}，共 950 条样本，每个 seed 190 条样本。主要张量为
+\begin{itemize}
+  \item \code{x\_node}: $(950,8,37,7)$；
+  \item \code{x\_link}: $(950,8,188,5)$；
+  \item \code{x\_task}: $(950,8,9)$；
+  \item \code{y\_node}、\code{y\_link}、\code{y\_task}: 未来 3 步标签。
+\end{itemize}
+跨 seed 实验采用 seed $0,1,2$ 训练，seed 3 验证，seed 4 测试。测试 seed 4 上，persistence 的整体 RMSE 为 1.530，Ridge residual 的整体 RMSE 为 3.303。这个结果说明紧凑线性 residual baseline 跨随机轨迹泛化不足，后续需要更结构化的图模型或世界模型。
+
+\paragraph{第五，完成严格动作日志导出。}
+此前的 \code{action\_proxy\_v0} 是从状态日志反推动作侧变量；本阶段进一步实现 \code{export\_strict\_actions\_v0.py}，直接在 AirFogSim scheduler 决策时记录动作。记录内容包括任务卸载目标、回传 RSU、RB indices、CPU allocation 和 UAV mobility command。对齐后得到
+\begin{equation}
+\code{a\_hist}: (950,8,13),\qquad
+\code{a\_future}: (950,3,13).
+\end{equation}
+这一步使样本从“历史状态到未来标签”推进为“历史状态和动作到未来标签”，为动作条件 world model 做了数据接口准备。
+
+\paragraph{第六，完成动作条件 baseline。}
+基于严格动作日志，进一步比较 \code{state\_only\_ridge} 和 \code{state\_action\_ridge}。测试 seed 4 结果如下：
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+模型 & 全部 RMSE & 链路 RMSE & 任务 RMSE \\
+\midrule
+persistence & 1.530 & 2.280 & 1.178 \\
+state\_only\_ridge & 3.303 & 6.265 & 1.209 \\
+state\_action\_ridge & 2.990 & 5.824 & 0.785 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+加入严格动作后，Ridge baseline 相比只用状态有提升，尤其任务状态 RMSE 从 1.209 降到 0.785。这说明动作变量确实包含有用的状态转移信息。但它仍未超过 persistence，因此当前结论应保持保守：动作条件建模方向是有信号的，但线性 compact baseline 不够，后续需要双图编码或 latent world model。
+
+\paragraph{本阶段结论。}
+本阶段已经覆盖老师提出的主要问题：状态转移机制、复杂度、随机性/扰动、置信区间、baseline 和创新点表达。当前创新点不应表述为 AirFogSim 本身，而应表述为：将仿真日志组织成物理图、通信图、任务状态和严格动作共同参与的联合时间序列，并建立从状态预测到动作条件状态推演的实验接口。
 \section{当前剩余工作}
 
-本周剩余工作从“构造 dataset\_v0”推进为“验证 dataset\_v0 能否支撑第一版 baseline”。
+本周任务已经完成，后续工作从“数据链路和动作接口跑通”推进为“结构化模型验证”。下一阶段不宜继续停留在 Ridge baseline，而应围绕动作条件双图模型和世界模型展开。
 
 \begin{enumerate}
-  \item 检查 \code{dataset\_v0} 中节点、链路和任务张量是否需要归一化，并确定第一版输入特征。
-  \item 实现最小 baseline，例如线性回归、MLP 或简单时序模型，先预测链路速率 $r_{ij,t}$ 和任务状态统计。
-  \item 准备创新点回答：明确 AirFogSim 是数据生成器，当前贡献在于把原始日志组织成物理图、通信图和任务状态的联合时间序列，并构造出动作条件世界模型的样本雏形。
+  \item 做扰动训练，而不只是 clean 训练、noisy 测试，检查鲁棒性是否真正改善。
+  \item 搭建双图编码 baseline，对比普通序列输入、单图输入和物理--通信双图输入。
+  \item 在严格动作日志基础上搭建动作条件 latent world model，使模型支持多步 rollout。
+  \item 扩展多场景配置，用于后续预训练和目标场景迁移评估。
 \end{enumerate}
 
 \section{参考文献}
