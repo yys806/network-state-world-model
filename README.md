@@ -84,6 +84,7 @@ Main observations:
 - Multi-seed simulations confirm that the same scenario can produce different vehicle counts, task loads, task success ratios, and link rates under different random seeds.
 - Cross-seed evaluation has been added: train on seeds `0, 1, 2`, validate on seed `3`, and test on seed `4`. Current Ridge residual baseline does not generalize well to the held-out seed.
 - Strict action logs are now aligned with `dataset_multiseed_v0`, so future models can use historical states plus action variables to predict future node/link/task labels.
+- Action-conditioned Ridge has been evaluated. On held-out seed 4, adding strict actions improves Ridge overall RMSE from `3.303` to `2.990` and task-state RMSE from `1.209` to `0.785`, but it still does not beat persistence.
 
 See:
 
@@ -92,6 +93,7 @@ See:
 - `experiments/airfogsim_v0/reports/cross_seed_report.md`
 - `experiments/airfogsim_v0/reports/action_proxy_report.md`
 - `experiments/airfogsim_v0/reports/strict_action_report.md`
+- `experiments/airfogsim_v0/reports/action_conditioned_report.md`
 - `experiments/airfogsim_v0/figures/`
 
 ## Reproduction Notes
@@ -115,6 +117,7 @@ python build_dataset_multiseed_v0.py
 python run_cross_seed_baseline_v0.py
 python build_action_proxy_v0.py
 python export_strict_actions_v0.py
+python run_action_conditioned_baseline_v0.py
 python make_airfogsim_analysis_v0.py
 ```
 

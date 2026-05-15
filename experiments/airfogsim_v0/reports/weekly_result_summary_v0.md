@@ -20,6 +20,7 @@
 | 跨 seed baseline | `cross_seed_baseline_v0` | 检查模型是否能从训练 seed 泛化到测试 seed |
 | 动作代理接口 | `action_proxy_v0` | 第一版从状态日志反推的动作侧变量 |
 | 严格动作日志 | `strict_action_v0` | 直接在 scheduler 决策时记录卸载、RB、CPU、UAV 移动动作 |
+| 动作条件 baseline | `action_conditioned_baseline_v0` | 对比只用状态和状态加动作的跨 seed 预测效果 |
 
 ## 2. baseline 结果
 
@@ -139,7 +140,27 @@ $$
 
 这一步比 `action_proxy_v0` 更扎实，因为动作来自调度器决策本身，而不是从结果状态里反推。
 
-## 8. 当前创新点表达
+## 8. 动作条件 baseline 结果
+
+基于 `strict_action_v0`，已经做了第一版动作条件 baseline。实验仍然使用跨 seed 划分：seed `0,1,2` 训练，seed `3` 验证，seed `4` 测试。
+
+对比三种输入：
+
+- `persistence`：直接延续最后一个历史状态。
+- `state_only_ridge`：只输入历史节点、链路、任务状态。
+- `state_action_ridge`：输入历史状态 + 严格动作张量。
+
+测试 seed 4 的结果如下：
+
+| 模型 | 全部 RMSE | 链路 RMSE | 任务 RMSE |
+|---|---:|---:|---:|
+| persistence | 1.530 | 2.280 | 1.178 |
+| state_only_ridge | 3.303 | 6.265 | 1.209 |
+| state_action_ridge | 2.990 | 5.824 | 0.785 |
+
+结论：加入严格动作后，Ridge baseline 相比只用状态有提升，尤其任务状态 RMSE 从 `1.209` 降到 `0.785`。这说明动作变量确实包含有用的状态转移信息。但它仍然没有超过 persistence，所以不能说当前模型已经很好。更准确的说法是：动作条件建模方向是有信号的，但线性 compact baseline 不够，后续需要双图编码或 latent world model。
+
+## 9. 当前创新点表达
 
 不要说 AirFogSim 是创新点。更准确的表达是：
 
@@ -151,7 +172,7 @@ AirFogSim 提供可控仿真环境。当前工作的重点是把仿真日志组�
 - 动作接口：把卸载、RB、CPU、UAV 移动动作直接记录并对齐到样本窗口。
 - 评估体系：不只看预测误差，还看扰动稳定性、置信区间、在线耗时和跨 seed 泛化。
 
-## 9. 还没有完成的部分
+## 10. 还没有完成的部分
 
 当前还没有完成正式 world model 训练。
 

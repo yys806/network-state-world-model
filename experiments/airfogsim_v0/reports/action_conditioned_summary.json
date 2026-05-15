@@ -1,0 +1,100 @@
+{
+  "dataset_dir": "D:\\shen\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_multiseed_v0",
+  "action_dir": "D:\\shen\\网络组\\code\\AirFogSim\\examples\\outputs\\strict_action_logs_v0",
+  "output_dir": "D:\\shen\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_multiseed_v0\\action_conditioned_baseline_v0",
+  "split": {
+    "train_seeds": [
+      0,
+      1,
+      2
+    ],
+    "val_seed": 3,
+    "test_seed": 4,
+    "train_samples": 570,
+    "val_samples": 190,
+    "test_samples": 190
+  },
+  "feature_dims": {
+    "state_features": 600,
+    "action_features": 143,
+    "state_action_features": 743,
+    "targets": 36
+  },
+  "state_only_ridge": {
+    "selected_alpha": 1000.0,
+    "val_mse_scaled": 0.9957228302955627
+  },
+  "state_action_ridge": {
+    "selected_alpha": 1000.0,
+    "val_mse_scaled": 0.7841272950172424
+  },
+  "metrics": [
+    {
+      "split": "val_seed_3",
+      "model": "persistence",
+      "all_mae": 0.5167126655578613,
+      "all_rmse": 3.603567600250244,
+      "link_rate_by_type_mae": 1.2076283693313599,
+      "link_rate_by_type_rmse": 7.0817461013793945,
+      "task_state_mae": 0.2864074110984802,
+      "task_state_rmse": 0.7728010416030884
+    },
+    {
+      "split": "test_seed_4",
+      "model": "persistence",
+      "all_mae": 0.5165272951126099,
+      "all_rmse": 1.529624581336975,
+      "link_rate_by_type_mae": 0.6879746913909912,
+      "link_rate_by_type_rmse": 2.2797932624816895,
+      "task_state_mae": 0.459378182888031,
+      "task_state_rmse": 1.1777870655059814
+    },
+    {
+      "split": "val_seed_3",
+      "model": "state_only_ridge",
+      "all_mae": 0.8755489587783813,
+      "all_rmse": 3.197281837463379,
+      "link_rate_by_type_mae": 2.2091996669769287,
+      "link_rate_by_type_rmse": 6.252460956573486,
+      "task_state_mae": 0.43099868297576904,
+      "task_state_rmse": 0.7739884853363037
+    },
+    {
+      "split": "test_seed_4",
+      "model": "state_only_ridge",
+      "all_mae": 1.2969211339950562,
+      "all_rmse": 3.3028831481933594,
+      "link_rate_by_type_mae": 3.30302357673645,
+      "link_rate_by_type_rmse": 6.265131950378418,
+      "task_state_mae": 0.62822026014328,
+      "task_state_rmse": 1.2088929414749146
+    },
+    {
+      "split": "val_seed_3",
+      "model": "state_action_ridge",
+      "all_mae": 0.7063864469528198,
+      "all_rmse": 3.0325028896331787,
+      "link_rate_by_type_mae": 2.0916244983673096,
+      "link_rate_by_type_rmse": 6.008932590484619,
+      "task_state_mae": 0.24464038014411926,
+      "task_state_rmse": 0.47504985332489014
+    },
+    {
+      "split": "test_seed_4",
+      "model": "state_action_ridge",
+      "all_mae": 1.0032819509506226,
+      "all_rmse": 2.990302801132202,
+      "link_rate_by_type_mae": 2.868150472640991,
+      "link_rate_by_type_rmse": 5.824142932891846,
+      "task_state_mae": 0.3816589415073395,
+      "task_state_rmse": 0.784644365310669
+    }
+  ],
+  "outputs": {
+    "metrics_csv": "D:\\shen\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_multiseed_v0\\action_conditioned_baseline_v0\\action_conditioned_metrics.csv",
+    "bar_plot": "D:\\shen\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_multiseed_v0\\action_conditioned_baseline_v0\\action_conditioned_rmse_bar.png",
+    "link_plot": "D:\\shen\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_multiseed_v0\\action_conditioned_baseline_v0\\action_conditioned_link_predictions_seed4.png",
+    "task_plot": "D:\\shen\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_multiseed_v0\\action_conditioned_baseline_v0\\action_conditioned_task_predictions_seed4.png",
+    "report_md": "D:\\shen\\网络组\\code\\AirFogSim\\examples\\outputs\\dataset_multiseed_v0\\action_conditioned_baseline_v0\\action_conditioned_report.md"
+  }
+}

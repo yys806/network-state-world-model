@@ -23,6 +23,7 @@ There is no repository-wide build pipeline. Use focused commands:
 - `python run_cross_seed_baseline_v0.py`: run cross-seed baseline generalization.
 - `python build_action_proxy_v0.py`: build aligned action proxy tensors.
 - `python export_strict_actions_v0.py`: export strict scheduler action logs and aligned action tensors.
+- `python run_action_conditioned_baseline_v0.py`: compare state-only and state-action baselines.
 
 For LaTeX progress documents, compile with XeLaTeX, not pdfLaTeX.
 
@@ -42,13 +43,14 @@ No formal test framework is defined yet. For new code:
 - For stochastic experiments, record random seeds and scenario settings.
 
 ## Current Research Workflow
-The current main line is: AirFogSim simulation logs -> `dataset_v0` / `dataset_multiseed_v0` construction -> baseline prediction -> perturbation robustness -> uncertainty estimation -> AirFogSim mechanism/complexity analysis -> cross-seed generalization -> strict action logs -> action-conditioned world-model interface.
+The current main line is: AirFogSim simulation logs -> `dataset_v0` / `dataset_multiseed_v0` construction -> baseline prediction -> perturbation robustness -> uncertainty estimation -> AirFogSim mechanism/complexity analysis -> cross-seed generalization -> strict action logs -> action-conditioned baseline -> world-model interface.
 
 Important current outputs:
 
 - `D:\shen\网络组\code\AirFogSim\examples\outputs\dataset_v0_from_demo_run_20260507_190930\dataset_v0_samples.npz`
 - `D:\shen\网络组\code\AirFogSim\examples\outputs\dataset_multiseed_v0\dataset_multiseed_v0_samples.npz`
 - `D:\shen\网络组\code\AirFogSim\examples\outputs\strict_action_logs_v0\strict_action_v0_samples.npz`
+- `D:\shen\网络组\code\AirFogSim\examples\outputs\dataset_multiseed_v0\action_conditioned_baseline_v0\action_conditioned_report.md`
 - `D:\shen\网络组\experiments\airfogsim_v0\reports\weekly_result_summary_v0.md`
 
 When a task is completed, update `D:\shen\网络组\本地计划表.xlsx`. Do not sync Feishu by default.

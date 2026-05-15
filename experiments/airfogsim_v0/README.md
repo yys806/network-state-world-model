@@ -27,6 +27,7 @@ python build_dataset_multiseed_v0.py
 python run_cross_seed_baseline_v0.py
 python build_action_proxy_v0.py
 python export_strict_actions_v0.py
+python run_action_conditioned_baseline_v0.py
 python make_airfogsim_analysis_v0.py
 python make_weekly_summary_visuals_v0.py
 ```
@@ -85,3 +86,15 @@ The features include offload decision counts, offload target-type counts, active
 - Per-seed detail CSVs: `reports/strict_action_v0/seed_*/`.
 
 This is the preferred action input for later action-conditioned world-model experiments.
+
+## Action-Conditioned Baseline v0
+
+`run_action_conditioned_baseline_v0.py` compares `state_only_ridge` and `state_action_ridge` under the same cross-seed split.
+
+Held-out seed 4 result:
+
+- Persistence RMSE: `1.530`
+- State-only Ridge RMSE: `3.303`
+- State-action Ridge RMSE: `2.990`
+
+Adding strict actions improves the Ridge baseline, especially for task-state prediction (`1.209 -> 0.785` RMSE). It still does not beat persistence, so the result should be interpreted as evidence that action variables are useful, not as a final world-model result.
