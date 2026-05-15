@@ -1,0 +1,3 @@
+﻿seed,time,task_id,task_node_id,current_node_id,return_target_id,return_distance
+3,14.0,Task_3,UAV_1,UAV_1,RSU_3,167.13050881897996
+3,17.4,Task_5,UAV_0,UAV_0,RSU_2,105.16557478490843

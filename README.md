@@ -14,7 +14,7 @@ The current technical line is:
 4. Evaluate perturbation robustness and prediction uncertainty.
 5. Compare simulator rollout cost with lightweight learned-model inference.
 6. Run multi-seed simulations and cross-seed evaluation.
-7. Extend the dataset toward action-conditioned world-model training.
+7. Add strict scheduler action logs for action-conditioned world-model training.
 
 ## Repository Structure
 
@@ -22,12 +22,9 @@ The current technical line is:
 .
 |-- AGENTS.md
 |-- README.md
-|-- 本地计划表.xlsx
-|-- 课题介绍.md
-|-- 老师说明.md
-|-- 研究进展文档/
-|   |-- research_progress_overview.tex
-|   `-- research_progress_overview.pdf
+|-- local_plan.xlsx / 本地计划表.xlsx
+|-- project background markdown files
+|-- research progress documents
 `-- experiments/
     `-- airfogsim_v0/
         |-- scripts/
@@ -59,12 +56,18 @@ The current technical line is:
 - `y_link`: `(950, 3, 188, 5)`
 - `y_task`: `(950, 3, 9)`
 
-`action_proxy_v0` adds the first action-side interface:
+`action_proxy_v0` is the first action-side proxy interface:
 
 - `a_hist`: `(950, 8, 13)`
 - `a_future`: `(950, 3, 13)`
 - Features include offload counts, RB allocation proxies, CPU progress proxies, and UAV mobility proxies.
-- These are proxy variables extracted from observable logs, not final strict scheduler action records.
+
+`strict_action_v0` records scheduler decisions directly while AirFogSim is running:
+
+- `a_hist`: `(950, 8, 13)`
+- `a_future`: `(950, 3, 13)`
+- Recorded actions include offloading targets, return routes, RB indices, CPU allocation, and UAV mobility commands.
+- Per-seed detailed CSV logs are stored under `experiments/airfogsim_v0/reports/strict_action_v0/`.
 
 ## Current Results
 
@@ -79,7 +82,8 @@ Main observations:
 - Residual-quantile uncertainty estimation provides preliminary 80% and 90% prediction intervals.
 - Timing experiments show an online-inference acceleration opportunity: AirFogSim explicit rollout is much slower than Ridge baseline inference in the current small scenario. This does not mean the baseline can replace the simulator.
 - Multi-seed simulations confirm that the same scenario can produce different vehicle counts, task loads, task success ratios, and link rates under different random seeds.
-- Cross-seed evaluation has been added: train on seeds `0, 1, 2`, validate on seed `3`, and test on seed `4`. Current Ridge residual baseline does not generalize well to the held-out seed, which supports the need for more structured graph/world-model methods.
+- Cross-seed evaluation has been added: train on seeds `0, 1, 2`, validate on seed `3`, and test on seed `4`. Current Ridge residual baseline does not generalize well to the held-out seed.
+- Strict action logs are now aligned with `dataset_multiseed_v0`, so future models can use historical states plus action variables to predict future node/link/task labels.
 
 See:
 
@@ -87,6 +91,7 @@ See:
 - `experiments/airfogsim_v0/reports/airfogsim_mechanism_report.md`
 - `experiments/airfogsim_v0/reports/cross_seed_report.md`
 - `experiments/airfogsim_v0/reports/action_proxy_report.md`
+- `experiments/airfogsim_v0/reports/strict_action_report.md`
 - `experiments/airfogsim_v0/figures/`
 
 ## Reproduction Notes
@@ -109,6 +114,7 @@ python export_multiseed_dataset_v0.py
 python build_dataset_multiseed_v0.py
 python run_cross_seed_baseline_v0.py
 python build_action_proxy_v0.py
+python export_strict_actions_v0.py
 python make_airfogsim_analysis_v0.py
 ```
 
@@ -116,7 +122,6 @@ SUMO must be installed and available through `SUMO_HOME` for AirFogSim traffic s
 
 ## Next Steps
 
-- Replace action proxies with strict scheduler action logs: offload route, RB indices, CPU allocation, and UAV mobility command before each `env.step()`.
 - Add perturbation training instead of only clean-training/noisy-testing.
 - Upgrade from simple baselines to dual-graph and action-conditioned latent world-model architectures.
 - Extend timing experiments to larger scenes and stronger models.

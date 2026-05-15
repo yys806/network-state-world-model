@@ -6,7 +6,7 @@ This folder contains project-specific scripts, reports, datasets, and figures fo
 
 - `scripts/`: experiment scripts copied from the local AirFogSim `examples/` workspace.
 - `datasets/`: compact exported datasets that are small enough to track.
-- `reports/`: dataset summaries, baseline reports, robustness reports, uncertainty reports, timing reports, and mechanism analysis.
+- `reports/`: dataset summaries, baseline reports, robustness reports, uncertainty reports, timing reports, mechanism analysis, and action logs.
 - `figures/`: plots used for progress reporting and PPT material.
 
 ## Main Pipeline
@@ -26,13 +26,14 @@ python export_multiseed_dataset_v0.py
 python build_dataset_multiseed_v0.py
 python run_cross_seed_baseline_v0.py
 python build_action_proxy_v0.py
+python export_strict_actions_v0.py
 python make_airfogsim_analysis_v0.py
 python make_weekly_summary_visuals_v0.py
 ```
 
 ## Interpretation
 
-AirFogSim is used as a controllable data generator, not as the research contribution itself. The project contribution is the organization of raw `node/link/task` logs into joint physical-communication-task time-series samples, then using those samples for prediction, robustness evaluation, uncertainty estimation, cross-seed generalization checks, and later action-conditioned world-model training.
+AirFogSim is used as a controllable data generator, not as the research contribution itself. The project contribution is the organization of raw `node/link/task` logs into joint physical-communication-task time-series samples, then using those samples for prediction, robustness evaluation, uncertainty estimation, cross-seed generalization checks, and action-conditioned world-model training.
 
 The current stage is a baseline and analysis stage. It should not be overclaimed as a final world-model result.
 
@@ -72,4 +73,15 @@ The result means the current compact residual baseline has limited cross-seed ge
 - `a_hist`: `(950, 8, 13)`
 - `a_future`: `(950, 3, 13)`
 
-The features include offload decision counts, offload target-type counts, active-link and RB allocation proxies, CPU progress proxies, and UAV movement proxies. This is not a final strict action log; the next version should record exact scheduler actions before each `env.step()`.
+The features include offload decision counts, offload target-type counts, active-link and RB allocation proxies, CPU progress proxies, and UAV movement proxies.
+
+## Strict Action v0
+
+`export_strict_actions_v0.py` records scheduler actions directly during AirFogSim execution:
+
+- `a_hist`: `(950, 8, 13)`
+- `a_future`: `(950, 3, 13)`
+- Detail logs: offloading targets, return routes, RB indices, CPU allocation, and UAV mobility commands.
+- Per-seed detail CSVs: `reports/strict_action_v0/seed_*/`.
+
+This is the preferred action input for later action-conditioned world-model experiments.
