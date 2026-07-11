@@ -58,6 +58,23 @@ class ProjectConfigurationTest(unittest.TestCase):
         self.assertGreaterEqual(sys.version_info[:2], (3, 10))
         self.assertLess(sys.version_info[:2], (3, 14))
 
+    def test_document_directories_use_canonical_names(self) -> None:
+        docs = WORKSPACE_ROOT / "文档"
+
+        self.assertTrue((docs / "组会").is_dir())
+        self.assertTrue((docs / "研究进展").is_dir())
+        self.assertTrue((docs / "项目说明").is_dir())
+        self.assertFalse((docs / "开会").exists())
+        self.assertFalse((docs / "研究进展文档").exists())
+
+        for script_path in (CODE_ROOT / "scripts").glob("*.py"):
+            content = script_path.read_text(encoding="utf-8")
+            self.assertNotIn(
+                ' / "开会"',
+                content,
+                msg=f"Legacy meeting path remains in {script_path.name}",
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

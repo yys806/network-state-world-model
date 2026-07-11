@@ -1,130 +1,99 @@
-# network-state-world-model
+# PI-JWM
 
-Research workspace for joint network-state prediction and action-conditioned world-model modeling in air-ground collaborative networks.
+PI-JWM（Physical-Information Joint World Model，物理-信息联合世界模型）面向网联具身智能体协同场景，学习动作条件下的物理网络与信息网络联合状态演化。
 
-## Project Goal
+AirFogSim 是参考仿真器和数据生成工具，不是项目框架。当前决策方法仍是 **v11 candidate**，不能写成 v12 或最终 v11。
 
-This project studies how to organize air-ground network simulation logs into world-model training samples. The current scenario is smart-city air-ground collaborative sensing, where vehicles, UAVs, RSUs, and cloud nodes jointly generate, transmit, compute, and return sensing tasks.
+## 当前状态
 
-The current technical line is:
+截至 2026-07-11：
 
-1. Run AirFogSim to generate controllable node, link, and task logs.
-2. Convert raw logs into a joint time-series dataset with physical states, communication states, and task states.
-3. Build baseline predictors from historical windows to future labels.
-4. Evaluate perturbation robustness and prediction uncertainty.
-5. Compare simulator rollout cost with lightweight learned-model inference.
-6. Run multi-seed simulations and cross-seed evaluation.
-7. Add strict scheduler action logs for action-conditioned world-model training.
+- 双图世界模型能够联合预测节点、链路活动、链路速率和任务状态。
+- v10 冻结世界模型证明未来动作是关键条件；真实未来动作结果只作为参考，不是自主策略结果。
+- 当前研究瓶颈是自主动作的支持集、RB/CPU 幅值重建和 actual-rollout 候选选择稳定性。
+- 60-seed 主数据集必须显式指定 train/val/test seed，代码不再静默套用旧 0-9 seed 协议。
+- 完整单元测试入口：`python -m unittest discover -s tests -p "test_*.py"`。
 
-## Repository Structure
+## 安装
 
-```text
-.
-|-- AGENTS.md
-|-- README.md
-|-- local_plan.xlsx / 本地计划表.xlsx
-|-- project background markdown files
-|-- research progress documents
-`-- experiments/
-    `-- airfogsim_v0/
-        |-- scripts/
-        |-- reports/
-        |-- figures/
-        `-- datasets/
-```
-
-`code/AirFogSim/` is intentionally not tracked by this main repository because it is a third-party Git repository. The scripts under `experiments/airfogsim_v0/scripts/` are the project-specific experiment scripts copied from the local AirFogSim workspace.
-
-## Current Datasets
-
-`dataset_v0` is generated from one AirFogSim demo run:
-
-- History length: `H = 8`
-- Prediction horizon: `K = 3`
-- Samples: `190`
-- Nodes: `37`
-- Candidate links: `188`
-
-`dataset_multiseed_v0` is generated from seeds `[0, 1, 2, 3, 4]`:
-
-- Samples: `950`
-- Samples per seed: `190`
-- `x_node`: `(950, 8, 37, 7)`
-- `x_link`: `(950, 8, 188, 5)`
-- `x_task`: `(950, 8, 9)`
-- `y_node`: `(950, 3, 37, 7)`
-- `y_link`: `(950, 3, 188, 5)`
-- `y_task`: `(950, 3, 9)`
-
-`action_proxy_v0` is the first action-side proxy interface:
-
-- `a_hist`: `(950, 8, 13)`
-- `a_future`: `(950, 3, 13)`
-- Features include offload counts, RB allocation proxies, CPU progress proxies, and UAV mobility proxies.
-
-`strict_action_v0` records scheduler decisions directly while AirFogSim is running:
-
-- `a_hist`: `(950, 8, 13)`
-- `a_future`: `(950, 3, 13)`
-- Recorded actions include offloading targets, return routes, RB indices, CPU allocation, and UAV mobility commands.
-- Per-seed detailed CSV logs are stored under `experiments/airfogsim_v0/reports/strict_action_v0/`.
-
-## Current Results
-
-The first baseline stage includes persistence, Ridge residual, and MLP residual models.
-
-Main observations:
-
-- Persistence is a strong short-horizon baseline because the current prediction horizon is only `0.3s`.
-- Ridge residual improves task-state prediction in the single-seed setting but is weaker for link-rate prediction.
-- MLP residual is unstable under the current small-sample, high-dimensional setting.
-- Perturbation experiments show that the current residual baseline degrades under strong input noise.
-- Residual-quantile uncertainty estimation provides preliminary 80% and 90% prediction intervals.
-- Timing experiments show an online-inference acceleration opportunity: AirFogSim explicit rollout is much slower than Ridge baseline inference in the current small scenario. This does not mean the baseline can replace the simulator.
-- Multi-seed simulations confirm that the same scenario can produce different vehicle counts, task loads, task success ratios, and link rates under different random seeds.
-- Cross-seed evaluation has been added: train on seeds `0, 1, 2`, validate on seed `3`, and test on seed `4`. Current Ridge residual baseline does not generalize well to the held-out seed.
-- Strict action logs are now aligned with `dataset_multiseed_v0`, so future models can use historical states plus action variables to predict future node/link/task labels.
-- Action-conditioned Ridge has been evaluated. On held-out seed 4, adding strict actions improves Ridge overall RMSE from `3.303` to `2.990` and task-state RMSE from `1.209` to `0.785`, but it still does not beat persistence.
-
-See:
-
-- `experiments/airfogsim_v0/reports/weekly_result_summary_v0.md`
-- `experiments/airfogsim_v0/reports/airfogsim_mechanism_report.md`
-- `experiments/airfogsim_v0/reports/cross_seed_report.md`
-- `experiments/airfogsim_v0/reports/action_proxy_report.md`
-- `experiments/airfogsim_v0/reports/strict_action_report.md`
-- `experiments/airfogsim_v0/reports/action_conditioned_report.md`
-- `experiments/airfogsim_v0/figures/`
-
-## Reproduction Notes
-
-Clone and install AirFogSim separately, then copy scripts from `experiments/airfogsim_v0/scripts/` into AirFogSim's `examples/` directory.
-
-Typical commands:
+推荐 Python 3.10-3.13：
 
 ```powershell
-conda activate airfogsim
-cd D:\path\to\AirFogSim\examples
-python export_dataset_demo.py
-python build_dataset_v0.py
-python train_baseline_v0.py
-python run_robustness_v0.py
-python run_uncertainty_v0.py
-python run_timing_v0.py
-python run_multiseed_v0.py
-python export_multiseed_dataset_v0.py
-python build_dataset_multiseed_v0.py
-python run_cross_seed_baseline_v0.py
-python build_action_proxy_v0.py
-python export_strict_actions_v0.py
-python run_action_conditioned_baseline_v0.py
-python make_airfogsim_analysis_v0.py
+cd D:\shen\网络组
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e ".[experiments]"
 ```
 
-SUMO must be installed and available through `SUMO_HOME` for AirFogSim traffic simulation.
+只安装 PI-JWM 核心依赖：
 
-## Next Steps
+```powershell
+python -m pip install -r .\代码\requirements-core.txt
+```
 
-- Add perturbation training instead of only clean-training/noisy-testing.
-- Upgrade from simple baselines to dual-graph and action-conditioned latent world-model architectures.
-- Extend timing experiments to larger scenes and stronger models.
+AirFogSim 需要独立环境，依赖位于 `代码/reference/AirFogSim/requirements.txt`，不要与 PI-JWM 核心环境混装。
+
+## 目录
+
+```text
+网络组/
+├─ 代码/
+│  ├─ src/pi_jwm/       可复用框架代码
+│  ├─ scripts/          训练、评估和诊断入口
+│  ├─ tests/            单元与回归测试
+│  ├─ reference/        第三方参考代码
+│  └─ artifacts/        数据、模型、指标和报告
+├─ 文档/
+│  ├─ 项目说明/         研究问题与口径
+│  ├─ 研究进展/         论文和阶段总结
+│  ├─ 组会/             当前与历史组会材料
+│  ├─ 文献/             本地论文
+│  ├─ 工程治理/         重构设计、计划和结果
+│  └─ 归档由各目录内部管理
+├─ 数据集构建任务/      仅保留任务说明；WaveFarer 已移入隔离区
+├─ 本地计划表.md        当前唯一执行总览
+├─ pyproject.toml
+└─ AGENTS.md
+```
+
+## 验证
+
+```powershell
+cd D:\shen\网络组\代码
+python -m compileall -q src scripts tests
+python -m unittest discover -s tests -p "test_*.py"
+python scripts\run_world_model_v6_dual_graph_rollout.py --synthetic-only --device cpu
+```
+
+主数据集训练必须显式给出 seed，例如：
+
+```powershell
+python scripts\run_world_model_v8_full_training.py `
+  --dataset-dir artifacts\experiments\airfogsim_v0\datasets\world_model_dataset_active_heavy_v2_60seed_20260619 `
+  --train-seeds "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59" `
+  --val-seeds "16 17" `
+  --test-seeds "18 19" `
+  --device cpu --epochs 1 --max-train-samples 64 --max-val-samples 32 --max-test-samples 32
+```
+
+## 结果口径
+
+新评估 JSON 使用 `result_protocol`：
+
+- `deployable`：测试时不使用真实未来标签，且不在测试集拟合或选择配置。
+- `true_future_reference`：使用真实未来动作、真实第一步动作、真实活动或真实幅值的参考结果。
+- `sample_oracle`：逐样本事后选择的诊断上界。
+- `test_best_diagnostic`：根据测试表现事后挑选，不能作为可部署结论。
+
+完整说明见 [实验结果口径](文档/项目说明/实验结果口径.md)。当前任务与下一步见 [本地计划表](本地计划表.md)。
+
+## 隔离备份
+
+2026-07-11 治理使用的可恢复隔离区：
+
+```text
+D:\shen\网络组_隔离备份\2026-07-11_PI-JWM治理
+```
+
+隔离区不是永久删除区，所有移动内容必须通过 manifest 和恢复脚本管理。

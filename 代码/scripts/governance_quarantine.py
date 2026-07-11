@@ -106,6 +106,65 @@ def quarantine_tree(
     return rows
 
 
+def quarantine_paths(
+    sources: list[Path],
+    source_root: Path,
+    destination_root: Path,
+    manifest_path: Path,
+    reason: str,
+    dry_run: bool = True,
+) -> list[dict[str, str]]:
+    source_root = Path(source_root).resolve()
+    destination_root = Path(destination_root).resolve()
+    manifest_path = Path(manifest_path).resolve()
+    resolved_sources = [ensure_within_root(Path(path), source_root) for path in sources]
+    if len(set(resolved_sources)) != len(resolved_sources):
+        raise ValueError("Duplicate source paths are not allowed")
+
+    rows: list[dict[str, str]] = []
+    for source in sorted(resolved_sources):
+        if not source.is_file():
+            raise FileNotFoundError(f"Source file does not exist: {source}")
+        destination = destination_root / source.relative_to(source_root)
+        if destination.exists():
+            raise FileExistsError(f"Quarantine destination already exists: {destination}")
+        rows.append(
+            {
+                "source_path": str(source),
+                "quarantine_path": str(destination),
+                "size_bytes": str(source.stat().st_size),
+                "sha256": sha256_file(source),
+                "reason": reason,
+                "status": "planned",
+            }
+        )
+
+    _write_manifest(rows, manifest_path)
+    if dry_run:
+        return rows
+
+    try:
+        for row in rows:
+            source = Path(row["source_path"])
+            destination = Path(row["quarantine_path"])
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.move(str(source), str(destination))
+            if destination.stat().st_size != int(row["size_bytes"]):
+                raise IOError(f"Moved file size changed: {destination}")
+            if sha256_file(destination) != row["sha256"]:
+                raise IOError(f"Moved file hash changed: {destination}")
+            row["status"] = "verified"
+    except Exception:
+        for row in rows:
+            if row["status"] != "verified":
+                row["status"] = "failed"
+        _write_manifest(rows, manifest_path)
+        raise
+
+    _write_manifest(rows, manifest_path)
+    return rows
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, required=True)

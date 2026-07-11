@@ -14,6 +14,7 @@ if str(SCRIPT_DIR) not in sys.path:
 from governance_quarantine import (  # noqa: E402
     MANIFEST_FIELDS,
     ensure_within_root,
+    quarantine_paths,
     quarantine_tree,
     sha256_file,
 )
@@ -103,6 +104,64 @@ class GovernanceQuarantineTest(unittest.TestCase):
 
             self.assertEqual(existing.read_text(encoding="utf-8"), "existing")
             self.assertTrue((source / "a.txt").exists())
+
+    def test_batch_move_preserves_relative_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            source_root = base / "workspace"
+            first = source_root / "runs" / "a" / "train.log"
+            second = source_root / "runs" / "b" / "worker.pid"
+            first.parent.mkdir(parents=True)
+            second.parent.mkdir(parents=True)
+            first.write_text("training", encoding="utf-8")
+            second.write_text("123", encoding="utf-8")
+            destination_root = base / "quarantine"
+
+            rows = quarantine_paths(
+                sources=[first, second],
+                source_root=source_root,
+                destination_root=destination_root,
+                manifest_path=base / "manifest.csv",
+                reason="generated runtime files",
+                dry_run=False,
+            )
+
+            self.assertFalse(first.exists())
+            self.assertFalse(second.exists())
+            self.assertEqual(
+                (destination_root / "runs" / "a" / "train.log").read_text(encoding="utf-8"),
+                "training",
+            )
+            self.assertEqual(
+                (destination_root / "runs" / "b" / "worker.pid").read_text(encoding="utf-8"),
+                "123",
+            )
+            self.assertEqual({row["status"] for row in rows}, {"verified"})
+
+    def test_batch_move_rejects_destination_conflict_before_moving(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            source_root = base / "workspace"
+            source = source_root / "run" / "train.log"
+            source.parent.mkdir(parents=True)
+            source.write_text("new", encoding="utf-8")
+            destination_root = base / "quarantine"
+            conflict = destination_root / "run" / "train.log"
+            conflict.parent.mkdir(parents=True)
+            conflict.write_text("old", encoding="utf-8")
+
+            with self.assertRaises(FileExistsError):
+                quarantine_paths(
+                    sources=[source],
+                    source_root=source_root,
+                    destination_root=destination_root,
+                    manifest_path=base / "manifest.csv",
+                    reason="generated runtime files",
+                    dry_run=False,
+                )
+
+            self.assertTrue(source.exists())
+            self.assertEqual(conflict.read_text(encoding="utf-8"), "old")
 
 
 if __name__ == "__main__":
