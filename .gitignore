@@ -1,23 +1,30 @@
-# Temporary local scripts and caches
-.tmp/
+# Python caches and local environments
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
 
-# Nested third-party / experiment repository is versioned separately.
-code/AirFogSim/
-
-# Meeting materials and literature folders can be large and change often.
-开会/
-文献/
-数据集构建任务/
+# Runtime and local scratch files
+.tmp/
+tmp/
+*.pid
+*.log
 
 # LaTeX intermediate files
-研究进展文档/*.aux
-研究进展文档/*.log
-研究进展文档/*.out
-研究进展文档/*.synctex.gz
+*.aux
+*.out
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
 
 # Office temporary files
 ~$*.docx
 ~$*.pptx
 ~$*.xlsx
+
+# WaveFarer assets are maintained outside the PI-JWM repository.
+数据集构建任务/WaveFarer资料/

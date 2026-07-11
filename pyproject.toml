@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pi-jwm"
+version = "0.1.0"
+description = "Physical-Information Joint World Model for connected embodied-intelligence collaboration"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "numpy>=1.24",
+    "torch>=2.1",
+]
+
+[project.optional-dependencies]
+experiments = [
+    "scikit-learn>=1.3",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+]
+
+[tool.setuptools]
+package-dir = {"" = "代码/src"}
+
+[tool.setuptools.packages.find]
+where = ["代码/src"]
+include = ["pi_jwm*"]
+
