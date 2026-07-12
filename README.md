@@ -51,7 +51,6 @@ AirFogSim 需要独立环境，依赖位于 `代码/reference/AirFogSim/requirem
 │  ├─ 文献/             本地论文
 │  ├─ 工程治理/         重构设计、计划和结果
 │  └─ 归档由各目录内部管理
-├─ 数据集构建任务/      仅保留任务说明；WaveFarer 已移入隔离区
 ├─ 本地计划表.md        当前唯一执行总览
 ├─ pyproject.toml
 └─ AGENTS.md

@@ -43,6 +43,3 @@ tmp/
 文档/研究进展/*.pdf
 文档/研究进展/*.zip
 文档/研究进展/IEEEtran.cls
-
-# WaveFarer assets are maintained outside the PI-JWM repository.
-数据集构建任务/WaveFarer资料/
