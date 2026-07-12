@@ -16,7 +16,7 @@ tmp/
 # LaTeX intermediate files
 *.aux
 *.out
-*.synctex.gz
+*.synctex*
 *.toc
 *.fls
 *.fdb_latexmk
@@ -25,6 +25,24 @@ tmp/
 ~$*.docx
 ~$*.pptx
 ~$*.xlsx
+
+# Generated research outputs stay local; only governance metadata is versioned.
+代码/artifacts/*
+!代码/artifacts/README.md
+!代码/artifacts/manifests/
+!代码/artifacts/manifests/**
+
+# AirFogSim is an independent third-party checkout.
+代码/reference/AirFogSim/
+
+# Large local research attachments and generated presentation outputs.
+文档/文献/
+文档/组会/
+文档/研究进展/papers/
+文档/研究进展/ton_template_extract/
+文档/研究进展/*.pdf
+文档/研究进展/*.zip
+文档/研究进展/IEEEtran.cls
 
 # WaveFarer assets are maintained outside the PI-JWM repository.
 数据集构建任务/WaveFarer资料/

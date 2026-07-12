@@ -1,65 +1,60 @@
 # Repository Guidelines
 
-## Project Structure & Module Organization
-This repository is a research workspace for the network-group internship project.
+## Identity
 
-- `课题介绍.md`, `老师说明.md`: project background and advisor requirements.
-- `研究进展文档/`: rolling LaTeX progress document and compiled outputs.
-- `开会/`: weekly meeting materials, PPTs, scripts, and supporting documents.
-- `experiments/airfogsim_v0/`: tracked experiment scripts, reports, figures, and compact datasets.
-- `code/AirFogSim/`: local third-party AirFogSim repository. Do not treat it as part of this GitHub repo.
-- `本地计划表.xlsx`: primary local task/status table. Use this instead of Feishu unless the user explicitly asks to sync Feishu.
+This workspace is for **PI-JWM**: Physical-Information Joint World Model.
 
-## Build, Test, and Development Commands
-There is no repository-wide build pipeline. Use focused commands:
+AirFogSim is only a reference simulator and data-generation tool. Do not describe it as the framework or the research main line.
 
-- `rg --files`: list files quickly.
-- `git status`: inspect local changes before editing.
-- `conda activate airfogsim`: enter the AirFogSim environment.
-- `cd D:\shen\网络组\code\AirFogSim\examples`: run experiment scripts from the AirFogSim examples folder.
-- `python train_baseline_v0.py`: run baseline prediction experiments.
-- `python run_robustness_v0.py`: run perturbation/robustness experiments.
-- `python run_uncertainty_v0.py`: run confidence-interval experiments.
-- `python run_cross_seed_baseline_v0.py`: run cross-seed baseline generalization.
-- `python build_action_proxy_v0.py`: build aligned action proxy tensors.
-- `python export_strict_actions_v0.py`: export strict scheduler action logs and aligned action tensors.
-- `python run_action_conditioned_baseline_v0.py`: compare state-only and state-action baselines.
+## Structure
 
-For LaTeX progress documents, compile with XeLaTeX, not pdfLaTeX.
+- `代码/src/pi_jwm/`: PI-JWM framework modules.
+- `代码/scripts/`: runnable scripts.
+- `代码/tests/`: tests.
+- `代码/reference/`: third-party references and simulators.
+- `代码/artifacts/`: data, reports, figures, and generated outputs.
+- `文档/`: meeting materials, papers, research documents, and archives.
+- `本地计划表.md`: the single local overview plan. Use this instead of Excel/Feishu unless the user asks otherwise.
 
-## Coding Style & Naming Conventions
-- Prefer clear Markdown reports for experiment summaries.
-- Use ASCII filenames for scripts when possible, for example `run_robustness_v0.py`.
-- Keep generated outputs under the corresponding experiment folder, such as `outputs/dataset_multiseed_v0/cross_seed_baseline_v0/`.
-- Preserve traceability: every plot or result table should have the script and input dataset recorded nearby.
-- Do not claim a result is reproducible unless the command, input path, random seed, and output path are documented.
+## Common Commands
 
-## Testing Guidelines
-No formal test framework is defined yet. For new code:
+```powershell
+cd D:\shen\网络组\代码\scripts
+python run_world_model_v4_dual_graph_rollout.py
+python run_world_model_metric_suite_v0.py
+python -m unittest test_dual_graph_features.py test_v4_ablation_active_rate.py
+```
 
-- Prefer small, runnable scripts with explicit input/output paths.
-- Add a short report file beside each experiment output.
-- Validate shapes and key statistics before interpreting results.
-- For stochastic experiments, record random seeds and scenario settings.
+For reference-simulator runs:
 
-## Current Research Workflow
-The current main line is: AirFogSim simulation logs -> `dataset_v0` / `dataset_multiseed_v0` construction -> baseline prediction -> perturbation robustness -> uncertainty estimation -> AirFogSim mechanism/complexity analysis -> cross-seed generalization -> strict action logs -> action-conditioned baseline -> world-model interface.
+```powershell
+conda activate airfogsim
+cd D:\shen\网络组\代码\reference\AirFogSim\examples
+```
 
-Important current outputs:
+For LaTeX progress documents, compile with XeLaTeX.
 
-- `D:\shen\网络组\code\AirFogSim\examples\outputs\dataset_v0_from_demo_run_20260507_190930\dataset_v0_samples.npz`
-- `D:\shen\网络组\code\AirFogSim\examples\outputs\dataset_multiseed_v0\dataset_multiseed_v0_samples.npz`
-- `D:\shen\网络组\code\AirFogSim\examples\outputs\strict_action_logs_v0\strict_action_v0_samples.npz`
-- `D:\shen\网络组\code\AirFogSim\examples\outputs\dataset_multiseed_v0\action_conditioned_baseline_v0\action_conditioned_report.md`
-- `D:\shen\网络组\experiments\airfogsim_v0\reports\weekly_result_summary_v0.md`
+## Research Workflow
 
-When a task is completed, update `D:\shen\网络组\本地计划表.xlsx`. Do not sync Feishu by default.
+The main line is PI-JWM:
 
-## Commit & Pull Request Guidelines
-Use descriptive commit messages:
+1. Build physical-network and information-network representations.
+2. Train action-conditioned state prediction and rollout models.
+3. Extend to physical-information dual-graph rollout.
+4. Evaluate state prediction, link activity/rate, task evolution, robustness, uncertainty, and seed transfer.
+5. Use decision/ranking diagnostics only after state rollout improves.
 
-- `experiments: add cross-seed baseline v0`
-- `experiments: add strict action logs v0`
-- `docs: update AirFogSim mechanism summary`
+## Rules
 
-Keep generated reports concise and aligned with actual outputs. Do not push the third-party AirFogSim repository to its upstream remote.
+- Keep reusable framework code in `代码/src/pi_jwm/`.
+- Keep runnable scripts in `代码/scripts/`.
+- Keep third-party code in `代码/reference/`.
+- Keep generated outputs in `代码/artifacts/`.
+- Do not create new top-level experiment/framework folders under `代码/`; `代码/` is the PI-JWM project root.
+- New PI-JWM model code must be under `代码/src/pi_jwm/`, not inside AirFogSim or historical experiment folders.
+- New validation or smoke-test scripts must be under `代码/scripts/`.
+- New tests must be under `代码/tests/`.
+- AirFogSim-related paths may be referenced only as simulator/data-source inputs through `代码/reference/AirFogSim/` or historical artifacts under `代码/artifacts/`.
+- v5 selector/ranking work is a diagnostic interface. Do not present it as the main method unless the user explicitly asks for decision-interface diagnostics.
+- Update `本地计划表.md` when the plan or task status changes.
+- Advisor-facing documents should use PI-JWM as the framework name.
