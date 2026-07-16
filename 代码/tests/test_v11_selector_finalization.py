@@ -1032,6 +1032,13 @@ class FrozenSelectorEvaluationContractTest(unittest.TestCase):
         self.assertIn("configuration_frozen", content)
         self.assertIn("evaluate_v11_frozen_selector.py", content)
 
+    def test_gpu_batch_checks_validation_candidate_gate_before_full_train_labels(self):
+        script = Path(__file__).resolve().parents[1] / "scripts" / "run_v11_selector_finalization_gpu.sh"
+        content = script.read_text(encoding="utf-8")
+
+        self.assertLess(content.index("--splits validation"), content.index("--splits train calibration"))
+        self.assertLess(content.index('p["candidate_gate"]["passed"]'), content.index("--splits train calibration"))
+
 
 class SelectorFinalReportContractTest(unittest.TestCase):
     def test_physical_safety_alignment_uses_exact_seed_time_and_candidate(self):
