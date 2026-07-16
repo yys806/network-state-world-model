@@ -12,6 +12,7 @@ import argparse
 import csv
 import hashlib
 import json
+import shlex
 import subprocess
 import sys
 import time
@@ -143,6 +144,65 @@ def scatter_edge_values(
             raise ValueError("edge coordinates outside dense tensor")
         dense[coords[:, 0], coords[:, 1], coords[:, 2]] = flat_values
     return dense
+
+
+def build_reproduction_command(args: argparse.Namespace) -> str:
+    """Serialize every label-affecting CLI argument into a runnable command."""
+
+    def path_arg(value: Path) -> str:
+        return Path(value).as_posix()
+
+    tokens = [
+        "python",
+        "代码/scripts/run_v11_selector_candidate_labels.py",
+        "--world-experiment-dir",
+        path_arg(args.world_experiment_dir),
+        "--world-checkpoint",
+        path_arg(args.world_checkpoint),
+        "--policy-checkpoint",
+        path_arg(args.policy_checkpoint),
+        "--output-dir",
+        path_arg(args.output_dir),
+        "--splits",
+        *(str(value) for value in args.splits),
+        "--device",
+        str(args.device),
+        "--batch-size",
+        str(args.batch_size),
+        "--helper-train-limit",
+        str(args.helper_train_limit),
+        "--split-sample-limit",
+        str(args.split_sample_limit),
+        "--policy-threshold",
+        str(args.policy_threshold),
+        "--value-scale",
+        str(args.value_scale),
+        "--new-policy-threshold",
+        str(args.new_policy_threshold),
+        "--new-value-scale",
+        str(args.new_value_scale),
+        "--gate-feature",
+        str(args.gate_feature),
+        "--gate-threshold",
+        str(args.gate_threshold),
+        "--value-codebook-size",
+        str(args.value_codebook_size),
+        "--min-effective-rb-total",
+        str(args.min_effective_rb_total),
+        "--activity-threshold",
+        str(args.activity_threshold),
+        "--rf-trees",
+        str(args.rf_trees),
+        "--seed",
+        str(args.seed),
+        "--stats-chunk-size",
+        str(args.stats_chunk_size),
+    ]
+    if args.frozen_config_manifest is not None:
+        tokens.extend(
+            ["--frozen-config-manifest", path_arg(args.frozen_config_manifest)]
+        )
+    return shlex.join(tokens)
 
 
 def _canonical_configuration(args: argparse.Namespace) -> dict[str, Any]:
@@ -597,10 +657,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     (args.output_dir / "reproduction_command.txt").write_text(
-        "python 代码/scripts/run_v11_selector_candidate_labels.py "
-        f"--splits {' '.join(args.splits)} --device {args.device} "
-        f"--helper-train-limit {args.helper_train_limit} --split-sample-limit {args.split_sample_limit} "
-        f"--batch-size {args.batch_size} --output-dir \"{args.output_dir}\"\n",
+        build_reproduction_command(args) + "\n",
         encoding="utf-8",
     )
     return result

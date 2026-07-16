@@ -1,7 +1,9 @@
 import json
+import shlex
 import sys
 import tempfile
 import unittest
+from argparse import Namespace
 from pathlib import Path
 
 import numpy as np
@@ -863,6 +865,52 @@ class DeferAndParetoTest(unittest.TestCase):
 
 
 class CandidateLabelRunnerContractTest(unittest.TestCase):
+    def test_reproduction_command_includes_all_label_affecting_arguments(self):
+        from run_v11_selector_candidate_labels import build_reproduction_command
+
+        args = Namespace(
+            world_experiment_dir=Path("artifacts/world"),
+            world_checkpoint=Path("artifacts/world/model.pt"),
+            policy_checkpoint=Path("artifacts/policy.pt"),
+            output_dir=Path("artifacts/output with space"),
+            splits=["validation"],
+            frozen_config_manifest=Path("artifacts/frozen.json"),
+            device="cuda",
+            batch_size=8,
+            helper_train_limit=8,
+            split_sample_limit=8,
+            policy_threshold=0.4,
+            value_scale=1.0,
+            new_policy_threshold=0.37,
+            new_value_scale=1.06,
+            gate_feature="step_rb_cpu_total",
+            gate_threshold=450.0,
+            value_codebook_size=9,
+            min_effective_rb_total=1.0,
+            activity_threshold=0.5,
+            rf_trees=5,
+            seed=20260717,
+            stats_chunk_size=64,
+        )
+
+        tokens = shlex.split(build_reproduction_command(args))
+
+        self.assertEqual(tokens[:2], ["python", "代码/scripts/run_v11_selector_candidate_labels.py"])
+        expected = {
+            "--world-experiment-dir": "artifacts/world",
+            "--world-checkpoint": "artifacts/world/model.pt",
+            "--policy-checkpoint": "artifacts/policy.pt",
+            "--output-dir": "artifacts/output with space",
+            "--frozen-config-manifest": "artifacts/frozen.json",
+            "--rf-trees": "5",
+            "--seed": "20260717",
+            "--stats-chunk-size": "64",
+            "--value-codebook-size": "9",
+        }
+        for option, value in expected.items():
+            index = tokens.index(option)
+            self.assertEqual(tokens[index + 1], value)
+
     def test_matched_test_request_requires_frozen_manifest(self):
         from run_v11_selector_candidate_labels import validate_requested_splits
 
