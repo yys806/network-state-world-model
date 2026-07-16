@@ -1,5 +1,8 @@
 import unittest
 import inspect
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
 
 import numpy as np
 import pandas as pd
@@ -34,10 +37,10 @@ class V4AblationAndActiveRateTest(unittest.TestCase):
         self.assertEqual(float(distance_height_speed["x_phy_edge"][..., dropped].sum()), 0.0)
 
     def test_active_rate_features_append_physical_history(self):
+        import run_world_model_v3_active_rate_calibration as v3_calibration
         from run_world_model_v4_active_rate_calibration import build_rate_features_with_physical
-        from run_world_model_v3_active_rate_calibration import EDGE_VOCAB_PATH
 
-        num_edges = len(pd.read_csv(EDGE_VOCAB_PATH))
+        num_edges = 3
         arrays = {
             "x_node": np.zeros((1, 2, 2, 7), dtype=np.float32),
             "x_link": np.zeros((1, 2, num_edges, 5), dtype=np.float32),
@@ -53,8 +56,17 @@ class V4AblationAndActiveRateTest(unittest.TestCase):
             "rate_pred": np.full((1, 2, num_edges), 5.0, dtype=np.float32),
         }
 
-        features_without_pred = build_rate_features_with_physical(arrays, np.array([0]))
-        features_with_pred = build_rate_features_with_physical(arrays, np.array([0]), pred=pred)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            edge_vocab_path = Path(temp_dir) / "edge_vocab.csv"
+            pd.DataFrame(
+                {
+                    "edge_index": np.arange(num_edges),
+                    "link_type": ["V2I", "V2U", "U2I"],
+                }
+            ).to_csv(edge_vocab_path, index=False)
+            with patch.object(v3_calibration, "EDGE_VOCAB_PATH", edge_vocab_path):
+                features_without_pred = build_rate_features_with_physical(arrays, np.array([0]))
+                features_with_pred = build_rate_features_with_physical(arrays, np.array([0]), pred=pred)
 
         self.assertEqual(features_without_pred.shape[0], 1 * 2 * num_edges)
         self.assertGreaterEqual(features_without_pred.shape[1], 16)
@@ -148,9 +160,28 @@ class V4AblationAndActiveRateTest(unittest.TestCase):
         self.assertGreater(float(row["task_rmse_std"]), 0.0)
 
     def test_metric_suite_collects_offload_scaled_sweep_when_present(self):
-        from run_world_model_metric_suite_v0 import collect_v5_resource_aware_rows
+        import run_world_model_metric_suite_v0 as metric_suite
 
-        out = collect_v5_resource_aware_rows()
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            sweep_dir = root / "reports" / "world_model_v5_offload_scaled_action_sweep_v0"
+            sweep_dir.mkdir(parents=True)
+            pd.DataFrame(
+                [
+                    {
+                        "status": "ok",
+                        "epochs": 20,
+                        "hidden": 16,
+                        "lr": 0.003,
+                        "top1": 0.5,
+                        "regret": 0.2,
+                        "spearman": 0.4,
+                        "rmse": 0.1,
+                    }
+                ]
+            ).to_csv(sweep_dir / "world_model_v5_offload_scaled_action_sweep_v0.csv", index=False)
+            with patch.object(metric_suite, "ROOT", root):
+                out = metric_suite.collect_v5_resource_aware_rows()
 
         self.assertIn("v5_resource_aware_offload_scaled_sweep", set(out["category"]))
         part = out[out["category"].eq("v5_resource_aware_offload_scaled_sweep")]

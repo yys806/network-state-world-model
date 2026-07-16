@@ -563,6 +563,78 @@ expanded55 strict512 & 55 & 226.949165 & 235.423373 & 215.394402 & 候选空间�
 \caption{v11 candidate actual-rollout template selector 结果。输出目录分别位于 \code{代码/artifacts/experiments/pi\_jwm\_v11\_rollout\_reward\_template\_selector\_*}；完整索引见 \code{代码/artifacts/reports/ppt\_v11\_candidate\_20260629/experiment\_evidence\_index.json}。}
 \end{table}
 
-表中需要特别区分两类结论。第一，val/test256 的三组小规模验证给出了可展示的正向信号：best-val 对应 test 分别为 218.956365、216.897951 和 213.041887，说明 actual-rollout selector 方向比直接 value-bin 策略器更接近 v10 autonomous baseline。第二，strict512 扩大验证没有通过 stop rule：13 候选 strict512 的 best-val 对应 test 为 236.977850，expanded55 strict512 的 best-val 对应 test 为 235.423373，均未稳定优于 217.237962。expanded55 的 test sample-oracle 达到 215.394402、pair-oracle 达到 216.562624，说明候选空间已经接近 autonomous baseline；但 deployable selector 最好 test 仍为 227.017662，瓶颈从“有没有好候选”转为“能否稳定选对候选”。此外，本轮 activity F1 仍处在约 0.024--0.027 的低区间，不能只用 active-rate RMSE 宣称整体策略器已经完成。因此，当前不应进入大规模 GPU 训练；下一步应在小样本/可控 GPU 上实现 candidate-level 或 listwise selector，直接学习候选级 actual-rollout 排序，并把 F1/link RMSE 作为筛选约束。
+表中需要特别区分两类结论。第一，val/test256 的三组小规模验证给出了可展示的正向信号：best-val 对应 test 分别为 218.956365、216.897951 和 213.041887，说明 actual-rollout selector 方向比直接 value-bin 策略器更接近 v10 autonomous baseline。第二，strict512 扩大验证没有通过 stop rule：13 候选 strict512 的 best-val 对应 test 为 236.977850，expanded55 strict512 的 best-val 对应 test 为 235.423373，均未稳定优于 217.237962。expanded55 的 test sample-oracle 达到 215.394402、pair-oracle 达到 216.562624，说明候选空间已经接近 autonomous baseline；但 deployable selector 最好 test 仍为 227.017662，瓶颈从“有没有好候选”转为“能否稳定选对候选”。此外，本轮 activity F1 仍处在约 0.024--0.027 的低区间，不能只用 active-rate RMSE 宣称整体策略器已经完成。2026-06-29 时据此提出 candidate-level/listwise selector；下节的 2026-07-13 诊断进一步检查候选监督覆盖，并据新证据调整优先级。大规模 GPU 训练仍不启动。
+
+\section{能耗、逐步收益与 rollout horizon 诊断（2026-07-13）}
+
+前述 v11 candidate 结果说明 selector 的 validation 泛化不稳定，但该结论仍缺少两个检查：候选动作是否在任务收益上具有足够区分度，以及 UAV 能耗是否与任务收益形成可解释的权衡。本轮使用 AirFogSim 作为参考仿真器，对同一 seed、同一决策时刻的候选动作做配对重放。PI-JWM 仍是研究框架；本节只补充决策接口的评价协议，不把仿真器或 action-only ranking head 写成主方法。
+
+对 UAV $u$ 的第 $k$ 个仿真步，能耗分解为
+\[
+e_{u,k}=c_{fly}I^{fly}_{u,k}+c_{hover}I^{hover}_{u,k}
++c_{sense}n^{sense}_{u,k}+c_{rx}b^{rx}_{u,k}+c_{tx}b^{tx}_{u,k},
+\]
+其中 $I^{fly}$ 和 $I^{hover}$ 为飞行/悬停指示量，$n^{sense}$ 为使用中的传感器数量，$b^{rx}$ 和 $b^{tx}$ 为当步收发数据量；$c_{\cdot}$ 取自该次 AirFogSim energy 配置。$H$ 步累计能耗为
+\[
+E_H(c)=\sum_{k=0}^{H-1}\sum_{u\in\mathcal U_k}e_{u,k},
+\]
+其单位是仿真器 energy unit，当前尚未校准为真实焦耳。每一步任务收益定义为
+\[
+u_k(c)=\Delta N^{done}_k(c)-\Delta N^{fail}_k(c)
++\eta\log\!\left(1+\Delta B_k(c)\right),\qquad \eta=0.01,
+\]
+其中 $\Delta B_k$ 为 AirFogSim 全局累计通信量 \code{channel.data\_size} 的非负步间增量；不再与 V2I/V2U/U2I 子项重复相加。候选 $c$ 的累计收益、相对默认候选 $c_0$ 的配对效应以及单位步效应分别为
+\[
+U_H(c)=\sum_{k=0}^{H-1}u_k(c),\qquad
+\Delta U_H(c)=U_H(c)-U_H(c_0),\qquad
+\overline{\Delta U}_H(c)=\frac{\Delta U_H(c)}{H}.
+\]
+这里不把能耗直接并入主收益。能耗惩罚只用于敏感性分析：
+\[
+\widetilde U_{H,\lambda}(c)=U_H(c)-\lambda
+\frac{E_H(c)-E_H(c_0)}{\max\{|E_H(c_0)|,\epsilon\}},
+\]
+且 $\lambda$ 不根据 validation/test 事后选择。
+
+候选区分度按决策组计算。设 $\mathcal G$ 为固定的 seed--decision-time 组集合，$\mathcal C_g$ 为组 $g$ 的候选集合，则
+\[
+\rho_H=\frac{1}{|\mathcal G|}\sum_{g\in\mathcal G}
+\mathbb I\!\left[\max_{c\in\mathcal C_g}U_H(c)-\min_{c\in\mathcal C_g}U_H(c)>10^{-8}\right].
+\]
+本轮只在决策时刻注入一次候选动作，之后所有候选恢复同一个 default scheduler。因此，增加 $H$ 观察的是单步扰动的延迟后果，不是持续执行另一套多步策略。
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{rrrrrl}
+\toprule
+$H$ & seeds & step rows & candidates & non-trivial groups $\uparrow$ & audit \\
+\midrule
+3  & 5 & 198  & 66 & \textbf{7/15 (46.67\%)} & pass \\
+10 & 5 & 660  & 66 & \textbf{7/15 (46.67\%)} & pass \\
+20 & 5 & 1320 & 66 & \textbf{7/15 (46.67\%)} & pass \\
+\bottomrule
+\end{tabular}
+\caption{固定 seeds 0--4、每个 seed 三个决策点下的 horizon 诊断。三行候选集合完全对齐；audit 同时检查 reward 重建、能耗分项守恒、负能耗和动作注入有效性。}
+\label{tab:horizon_diagnostic_overview}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\linewidth]{figs/pi_jwm_horizon_nontrivial_ratio.png}
+\caption{候选区分度随 rollout horizon 的变化。$H=3,10,20$ 均只有 7/15 个非平凡决策组，延长观察窗口没有增加有效排序监督。}
+\label{fig:horizon_nontrivial_ratio_overview}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{figs/pi_jwm_horizon_family_task_effect_per_step.png}
+\caption{单步动作扰动在不同 horizon 下的单位步 task-utility 配对效应。曲线表示动作族均值，只用于描述暂态效应，不表示跨 horizon 的策略性能排序。}
+\label{fig:horizon_family_effect_overview}
+\end{figure}
+
+结果给出三个边界明确的判断。第一，$\rho_H$ 在三个 horizon 下均为 46.67\%，因此短窗口不是候选监督稀疏的唯一原因。第二，CPU-scale 的 12 个候选和 return-route 的 4 个候选在三个 horizon 下仍无可辨识效应；这不能推出 CPU/return 长期无效，只能说明当前决策点、动作幅度或一次性注入协议没有产生可测差异。第三，offload-target 与 mixed-offload-RB 在 $H=10$ 的单位步平均效应分别为 $-0.014543$ 和 $-0.015761$，到 $H=20$ 回到 $-0.000129$ 和 $-0.000737$，表现为中期负效应与后续补偿；该非单调变化不支持“horizon 越长越差”的结论。
+
+能耗配对差异没有随 $H$ 累积，这是实验协议的直接结果：候选只改变第一步动作，后续调度相同。因而本轮能够支持的结论是，当前 actual-rollout candidate library 的有效监督覆盖不足，且部分 offload 效应具有暂态性；它不能证明某个 selector 或某个 $\lambda$ 已经改善策略。下一步应先构造持续多步候选序列、扩大 compute/return 有效决策点覆盖，再接入 PI-JWM forecast 与不确定性做 rollout-aware selector。完整数据、公式口径、复现命令和 SHA-256 冻结清单位于 \code{代码/artifacts/reports/pi\_jwm\_energy\_reward\_horizon\_study\_20260713/}。
 
 \end{document}

@@ -12,10 +12,13 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 FIGURE_DIR = ROOT / "figures"
+SRC_ROOT = ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
+from pi_jwm.airfogsim_runtime import make_diagnostic_config, resolve_airfogsim_paths
 
-AIRFOGSIM_ROOT = ROOT.parents[1] / "AirFogSim"
-AIRFOGSIM_EXAMPLES = AIRFOGSIM_ROOT / "examples"
+AIRFOGSIM_ROOT, AIRFOGSIM_EXAMPLES = resolve_airfogsim_paths(ROOT)
 
 
 OUTPUT_DIR = ROOT / "reports" / "airfogsim_counterfactual_action_smoke_v0"
@@ -130,9 +133,7 @@ def import_airfogsim_runtime():
         sys.modules["airfogsim.utils.tk_utils"] = tk_stub
     from airfogsim import AirFogSimEnv, BaseAlgorithmModule
     from airfogsim.scheduler import RewardScheduler, TaskScheduler
-    from export_multiseed_dataset_v0 import make_config
-
-    return AirFogSimEnv, BaseAlgorithmModule, RewardScheduler, TaskScheduler, make_config
+    return AirFogSimEnv, BaseAlgorithmModule, RewardScheduler, TaskScheduler
 
 
 def parse_args():
@@ -192,10 +193,10 @@ def summarize_candidate_ranking(candidate_df, top_k=2):
 
 
 def make_env(seed, max_time):
-    AirFogSimEnv, BaseAlgorithmModule, RewardScheduler, _, make_config = import_airfogsim_runtime()
+    AirFogSimEnv, BaseAlgorithmModule, RewardScheduler, _ = import_airfogsim_runtime()
     np.random.seed(seed)
     random.seed(seed)
-    config = make_config(load_config(AIRFOGSIM_EXAMPLES / "config.yaml"), max_time=max_time)
+    config = make_diagnostic_config(load_config(AIRFOGSIM_EXAMPLES / "config.yaml"), max_time=max_time)
     os.chdir(AIRFOGSIM_EXAMPLES)
     env = AirFogSimEnv(config, interactive_mode=None)
     algorithm = BaseAlgorithmModule()
@@ -205,12 +206,10 @@ def make_env(seed, max_time):
 
 
 def channel_throughput(env):
-    total = 0.0
-    for name in ["channel", "V2I_channel", "V2U_channel", "U2I_channel"]:
-        data = getattr(env, name, None)
-        if isinstance(data, dict):
-            total += float(data.get("data_size", 0.0))
-    return total
+    data = getattr(env, "channel", None)
+    if not isinstance(data, dict):
+        raise TypeError("AirFogSim environment does not expose the global channel statistics")
+    return float(data.get("data_size", 0.0))
 
 
 def step_default_until(env, algorithm, target_time):
@@ -220,7 +219,7 @@ def step_default_until(env, algorithm, target_time):
 
 
 def current_counts(env):
-    _, _, _, TaskScheduler, _ = import_airfogsim_runtime()
+    _, _, _, TaskScheduler = import_airfogsim_runtime()
     return {
         "done": int(TaskScheduler.getDoneTaskNum(env)),
         "failed": int(TaskScheduler.getOutOfDDLTasks(env)),

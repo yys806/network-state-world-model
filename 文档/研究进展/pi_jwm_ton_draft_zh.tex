@@ -234,9 +234,59 @@ rate 使用 active-mixed loss：
 (\lambda_{node},\lambda_{act},\lambda_{rate},\lambda_{task})=(1.0,1.5,0.3,1.0).
 \]
 
+\subsection{能耗与逐步收益诊断指标}
+
+状态预测指标不足以说明候选动作是否值得执行。为避免用单一综合 reward 掩盖任务收益与资源代价，本文额外记录 UAV 能耗分项和逐步任务收益。对 UAV $u$ 的第 $k$ 个仿真步，参考仿真器中的能耗写为
+\begin{equation}
+e_{u,k}=c_{fly}I^{fly}_{u,k}+c_{hover}I^{hover}_{u,k}
++c_{sense}n^{sense}_{u,k}+c_{rx}b^{rx}_{u,k}+c_{tx}b^{tx}_{u,k},
+\label{eq:uav_step_energy}
+\end{equation}
+其中 $I^{fly}$ 和 $I^{hover}$ 为飞行/悬停指示量，$n^{sense}$ 为传感器使用数量，$b^{rx}$ 和 $b^{tx}$ 为当步收发数据量。系数 $c_{\cdot}$ 由 AirFogSim energy 配置给出；本实验报告 simulator energy unit，不将其解释为已经校准的真实焦耳。候选 $c$ 在 $H$ 步内的累计能耗为
+\begin{equation}
+E_H(c)=\sum_{k=0}^{H-1}\sum_{u\in\mathcal U_k}e_{u,k}.
+\label{eq:candidate_energy}
+\end{equation}
+能耗记录需满足分项守恒和余额守恒：
+\begin{equation}
+\delta^{energy}_k=E^{before}_k-E^{after}_k-
+\sum_{u\in\mathcal U_k}e_{u,k}=0.
+\label{eq:energy_balance}
+\end{equation}
+
+逐步任务收益定义为
+\begin{equation}
+\begin{aligned}
+u_k(c)={}&\Delta N^{done}_k(c)-\Delta N^{fail}_k(c)\\
+&+\eta\log\!\left(1+\Delta B_k(c)\right),\quad \eta=0.01.
+\end{aligned}
+\label{eq:step_task_utility}
+\end{equation}
+其中 $\Delta B_k\geq 0$ 为 AirFogSim 全局累计通信量 \code{channel.data\_size} 的步间增量，不与 V2I/V2U/U2I 子项重复累加。候选累计收益及其相对同 seed、同决策时刻默认候选 $c_0$ 的配对效应为
+\begin{equation}
+U_H(c)=\sum_{k=0}^{H-1}u_k(c),\qquad
+\Delta U_H(c)=U_H(c)-U_H(c_0).
+\label{eq:paired_task_utility}
+\end{equation}
+跨 horizon 比较采用单位步效应 $\overline{\Delta U}_H(c)=\Delta U_H(c)/H$，避免仅因累计步数增加而放大数值。若做能耗权重敏感性分析，则使用
+\begin{equation}
+\widetilde U_{H,\lambda}(c)=U_H(c)-\lambda
+\frac{E_H(c)-E_H(c_0)}{\max\{|E_H(c_0)|,\epsilon\}},
+\label{eq:energy_aware_sensitivity}
+\end{equation}
+但 $\lambda$ 不根据 validation 或 test 表现事后选择；原始任务和能耗分项仍是主报告量。
+
+设 $\mathcal G$ 为 seed--decision-time 决策组集合，$\mathcal C_g$ 为组 $g$ 内候选，则候选区分度定义为
+\begin{equation}
+\rho_H=\frac{1}{|\mathcal G|}\sum_{g\in\mathcal G}
+\mathbb I\!\left[\max_{c\in\mathcal C_g}U_H(c)-\min_{c\in\mathcal C_g}U_H(c)>10^{-8}\right].
+\label{eq:candidate_distinguishability}
+\end{equation}
+$\rho_H$ 衡量有多少决策组能为 selector 提供非平凡监督，不等同于策略性能。
+
 \section{实验结果与分析}
 
-实验分析围绕两个问题展开：第一，\pjwm{} 在给定可靠 future action condition 时是否能学习物理--信息联合状态转移；第二，当未来动作由 autonomous 策略器生成时，性能差距主要来自 world model 还是动作生成器。所有表中 $\uparrow$ 表示越大越好，$\downarrow$ 表示越小越好；粗体表示该表内最优。
+实验分析围绕三个问题展开：第一，\pjwm{} 在给定可靠 future action condition 时是否能学习物理--信息联合状态转移；第二，当未来动作由 autonomous 策略器生成时，性能差距主要来自 world model 还是动作生成器；第三，候选动作在不同 horizon 下是否形成可辨识的任务收益和 UAV 能耗差异。所有表中 $\uparrow$ 表示越大越好，$\downarrow$ 表示越小越好；粗体表示该表内最优。
 
 \begin{table*}[!t]
 \centering
@@ -294,12 +344,50 @@ expanded55 strict512 & 55 & 226.949165 & 235.423373 & 215.394402 & 候选空间�
 \label{tab:v11_actual_rollout_selector}
 \end{table*}
 
-进一步的 v11 candidate 实验把策略器训练从直接行为克隆转向 actual-rollout candidate selection。表 \ref{tab:v11_actual_rollout_selector} 显示，val/test256 的小规模验证中，best-val 对应 test 可以达到 216.897951 和 213.041887，说明候选模板内确实存在接近或超过 autonomous baseline 217.237962 的信号。然而，在更严格的 512 样本确认中，13 候选和 expanded55 候选的 best-val 对应 test 分别退化到 236.977850 和 235.423373。expanded55 的 test sample-oracle 为 215.394402，说明候选空间本身已经有接近 baseline 的 headroom；但可部署 selector 不能稳定选择这些候选。因此，当前瓶颈不是 frozen world model 的预测上界，也不只是候选模板不足，而是候选级选择器的泛化能力。后续应优先研究 candidate-level 或 listwise selector，并把 activity F1 和 link RMSE 作为约束指标，避免只优化 active-rate RMSE。
+进一步的 v11 candidate 实验把策略器训练从直接行为克隆转向 actual-rollout candidate selection。表 \ref{tab:v11_actual_rollout_selector} 显示，val/test256 的小规模验证中，best-val 对应 test 可以达到 216.897951 和 213.041887，说明候选模板内确实存在接近或超过 autonomous baseline 217.237962 的信号。然而，在更严格的 512 样本确认中，13 候选和 expanded55 候选的 best-val 对应 test 分别退化到 236.977850 和 235.423373。expanded55 的 test sample-oracle 为 215.394402，说明候选空间本身已经有接近 baseline 的 headroom；但可部署 selector 不能稳定选择这些候选。因此，当前瓶颈不是 frozen world model 的预测上界。selector 泛化和候选监督覆盖仍需分开检查，不能直接把下一步收缩为继续更换排序模型。
+
+\subsection{Rollout horizon 与动作阶段诊断}
+
+本实验固定 seeds 0--4，每个 seed 选择三个决策点，每个决策点最多八个候选，覆盖 RB、offload target、mixed offload--RB、CPU scale 和 return route。三个 horizon 使用完全相同的 66 个候选。候选动作只在决策时刻注入一次，此后各候选均使用相同的 default scheduler。因此，$H=3,10,20$ 比较的是一次性动作扰动的延迟后果，而不是持续执行三种不同策略。
+
+\begin{table*}[!t]
+\centering
+\tabfontsize
+\begin{tabular}{rrrrrl}
+\toprule
+$H$ & seeds & step rows & candidates & non-trivial groups $\uparrow$ & quality audit \\
+\midrule
+3  & 5 & 198  & 66 & \textbf{7/15 (46.67\%)} & pass \\
+10 & 5 & 660  & 66 & \textbf{7/15 (46.67\%)} & pass \\
+20 & 5 & 1320 & 66 & \textbf{7/15 (46.67\%)} & pass \\
+\bottomrule
+\end{tabular}
+\caption{Rollout-horizon 诊断。三行使用同一候选集合；quality audit 检查式 \eqref{eq:energy_balance}、式 \eqref{eq:paired_task_utility} 的可重建性、负能耗和动作注入有效性。结果来源为 \code{代码/artifacts/reports/pi\_jwm\_energy\_reward\_horizon\_study\_20260713/}。}
+\label{tab:horizon_stage_diagnostic}
+\end{table*}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.74\textwidth]{figs/pi_jwm_horizon_nontrivial_ratio.png}
+\caption{式 \eqref{eq:candidate_distinguishability} 定义的候选区分度。三个 horizon 均为 7/15，延长观察窗口没有增加非平凡监督覆盖。}
+\label{fig:horizon_nontrivial_ratio}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.82\textwidth]{figs/pi_jwm_horizon_family_task_effect_per_step.png}
+\caption{各动作族的单位步配对 task-utility 效应。该图描述单步扰动的暂态影响，不是跨 horizon 的策略性能排名。}
+\label{fig:horizon_family_task_effect}
+\end{figure*}
+
+表 \ref{tab:horizon_stage_diagnostic} 给出三点结果。首先，$\rho_H$ 始终为 46.67\%，因此 horizon 过短不是候选监督稀疏的唯一原因。其次，CPU-scale 的 12 个候选和 return-route 的 4 个候选在三个窗口中均无可辨识 task-utility 或能耗差异；这只说明当前决策点、动作幅度和单步注入协议没有产生可测影响，不能外推为长期无效。最后，offload target 与 mixed offload--RB 的单位步平均效应在 $H=10$ 分别为 $-0.014543$ 和 $-0.015761$，到 $H=20$ 回到 $-0.000129$ 和 $-0.000737$。该非单调变化更符合中期传输/任务状态损失随后部分补偿，而不是 horizon 增长导致持续退化。
+
+不同 horizon 下的累计能耗配对差异基本不变，这是协议所致：只有第一步动作不同，后续动作共享。由此，本实验支持“有效候选监督覆盖不足且 offload 效应具有暂态性”，但不支持“更长 horizon 已改善 selector”或“某个能耗权重已提高策略性能”。下一步应先构造持续多步候选序列，并增加真正处于 compute/return 敏感阶段的决策点；当 $\rho_H$ 和跨 seed 方向一致性提高后，再训练使用 PI-JWM forecast 与不确定性的 rollout-aware selector。
 
 \section{结论}
 
-本文提出 \pjwm{}，面向车载空地边缘计算建立物理--信息联合 world model。该模型以物理图描述移动性、几何距离和覆盖关系，以信息图描述链路活动、任务状态和资源动作，并通过 action-conditioned latent rollout 预测未来节点、链路和任务状态。实验表明，\pjwm{} 在可靠 future action condition 下可以形成稳定的状态预测上界；当未来动作由 autonomous policy bridge 生成时，误差主要来自动作 value/magnitude，尤其是资源幅值生成，而不是物理--信息联合 world model 本身失效。该结果说明，\pjwm{} 可以作为面向空地车载边缘计算的可滚动预测模型和调度动作评估器。
-\\sloppy
+本文提出 \pjwm{}，面向车载空地边缘计算建立物理--信息联合 world model。该模型以物理图描述移动性、几何距离和覆盖关系，以信息图描述链路活动、任务状态和资源动作，并通过 action-conditioned latent rollout 预测未来节点、链路和任务状态。实验表明，\pjwm{} 在可靠 future action condition 下可以形成稳定的状态预测上界；当未来动作由 autonomous policy bridge 生成时，误差主要来自动作 value/magnitude，尤其是资源幅值生成，而不是物理--信息联合 world model 本身失效。进一步的能耗与 horizon 诊断显示，当前 15 个配对决策组中仅 7 个具有非平凡候选差异，且该比例在 $H=3,10,20$ 下不变。因而现阶段应先提高候选序列和决策点的可辨识性，再评价 rollout-aware selector；本文不把 action-only ranking 或能耗权重敏感性结果写成可部署策略改进。该结果说明，\pjwm{} 可以作为面向空地车载边缘计算的可滚动预测模型和调度动作评估器，同时也为定位动作候选与策略器的误差来源提供受控接口。
+\sloppy
 \begin{thebibliography}{99}
 
 \bibitem{mao2017mecsurvey}

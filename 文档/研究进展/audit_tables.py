@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-base = Path(r'D:\shen\网络组\文档\研究进展文档')
+base = Path(__file__).resolve().parent
 files = {
     'overview': base/'research_progress_overview.tex',
     'ton': base/'pi_jwm_ton_draft_zh.tex',
