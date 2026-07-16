@@ -78,3 +78,12 @@
 - sample-oracle active-rate RMSE `105.57994`，nontrivial ratio `83.7625%`，identity oracle/tie `24.6781%`，说明候选库上限和监督覆盖已经明显达到 selector 训练前提。
 - 初次 action-applied ratio `99.9841%` 来自 105,300 个 applicable 非 identity 候选中的 25 个 no-op：20 个 q50 repair 的目标值恰等于 baseline，5 个 offload-low 同理。这些候选在构造阶段没有请求任何数值变化，不属于“适用但执行失败”。
 - 修正后 applicability = stage/support 条件 ∧ raw candidate 相对 baseline 确有变化；若 raw candidate 请求变化但投影/执行后仍 no-op，继续按 action-applied 失败计数，因此没有降低 100% 质量标准。
+
+## 正式冻结结果与 selector 根因
+
+- 修正后的 full validation 为 oracle `105.19929`、nontrivial `83.0472%`、identity oracle/tie `24.8212%`、action-applied `100%`，candidate gate 正式通过。
+- 12 个 listwise 配置和 RF/GB 对照在 validation 上未形成可部署增益：冻结配置 `h64_t0.1_d0` 的 defer ratio 为 `100%`，RMSE 等于 ranked baseline `233.94402`。冻结后的一次性 matched test 为 `223.88910`，同样 `100%` defer，结果等级为 `not_passed`；matched-test ledger 已落盘，不允许为新配置重复使用。
+- matched-test sample oracle 为 `99.90324`，validation sample oracle 为 `105.19929`；候选库不是当前上限。固定模板中 validation 最好的是 historical cap105，仅到 `230.5828`；calibration 选出的 stage-wise 规则在 validation 为 `231.7815`，也不能替代样本级 selector。
+- 数值诊断发现候选特征未标准化，最大尺度超过 `42,000`，三个冻结模型 calibration bias 约为 `936/3045/551`，uncertainty 达数千，所有 LCB 为负；但仅标准化后 rank-only 仍为 `297.60`，说明尺度问题不是唯一原因。
+- 当前 `CandidateBatch.context` 实际只是 identity 候选的 46 维预测摘要，没有原计划中的 current state；候选特征又以全网统计为主，会把 8--32 条被修改边上的变化稀释。加入合法 current node/link/task 全局统计并训练 500 次更新后，rank-only 改善到 `259.05`，仍差于默认，支持下一轮必须增加 selected-edge 条件耦合特征，而不是继续扩大 epoch 或放宽 defer。
+- 新 selector 只能继续使用 train/calibration/validation 开发；seeds 18--19 已经消费为本次冻结模型的一次性测试。后续结构冻结后，以尚未访问的 external seeds 60--69 作为独立验收，不得把旧 matched-test 缓存用于新模型选型或指标宣称。

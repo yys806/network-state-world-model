@@ -433,7 +433,12 @@ class CandidateSetRankerTest(unittest.TestCase):
             torch.testing.assert_close(original[key], permuted[key][:, inverse])
 
     def test_fit_listwise_selector_is_deterministic_for_same_seed(self):
-        from pi_jwm.v11_selector import CandidateBatch, CandidateOutcome, fit_listwise_selector
+        from pi_jwm.v11_selector import (
+            CandidateBatch,
+            CandidateOutcome,
+            fit_listwise_selector,
+            predict_fitted_selector,
+        )
 
         rng = np.random.default_rng(4)
         batch = CandidateBatch(
@@ -461,6 +466,41 @@ class CandidateSetRankerTest(unittest.TestCase):
         self.assertEqual(prediction["uncertainty"].shape, (8, 4))
         self.assertTrue(np.all(np.isfinite(prediction["predicted_improvement"])))
 
+    def test_fit_selector_normalizes_train_features_and_reuses_stats_for_prediction(self):
+        from pi_jwm.v11_selector import (
+            CandidateBatch,
+            CandidateOutcome,
+            fit_listwise_selector,
+            predict_fitted_selector,
+        )
+
+        batch = CandidateBatch(
+            context=np.asarray([[1.0, 1000.0], [3.0, 3000.0], [5.0, 5000.0]], dtype=np.float32),
+            candidate_features=np.asarray(
+                [
+                    [[1.0, 10000.0], [2.0, 20000.0]],
+                    [[3.0, 30000.0], [4.0, 40000.0]],
+                    [[5.0, 50000.0], [6.0, 60000.0]],
+                ],
+                dtype=np.float32,
+            ),
+            candidate_mask=np.ones((3, 2), dtype=bool),
+            stage=np.asarray(["offload", "compute", "compute"]),
+            feature_names=("small", "large"),
+            context_feature_names=("state_small", "state_large"),
+        )
+        outcome = CandidateOutcome(
+            active_sse=np.asarray([[4.0, 1.0], [9.0, 4.0], [16.0, 9.0]], dtype=np.float32),
+            active_count=np.ones((3,), dtype=np.int64),
+        )
+
+        fitted = fit_listwise_selector(batch, outcome, hidden_dim=8, epochs=2, seed=17)
+        prediction = predict_fitted_selector(fitted, batch)
+
+        self.assertGreater(float(fitted.candidate_scale[1]), 1000.0)
+        self.assertGreater(float(fitted.context_scale[1]), 100.0)
+        self.assertTrue(np.all(np.isfinite(prediction["score"])))
+
     def test_selector_checkpoint_loader_restores_model_and_calibration(self):
         from pi_jwm.v11_selector import CandidateSetBenefitRanker, load_fitted_selector_checkpoint
 
@@ -479,6 +519,10 @@ class CandidateSetRankerTest(unittest.TestCase):
                     "training_seed": 17,
                     "calibration_bias": 1.25,
                     "target_scale": 2.5,
+                    "candidate_mean": torch.arange(5, dtype=torch.float32),
+                    "candidate_scale": torch.arange(5, dtype=torch.float32) + 1.0,
+                    "context_mean": torch.arange(3, dtype=torch.float32),
+                    "context_scale": torch.arange(3, dtype=torch.float32) + 1.0,
                     "configuration_digest": "d" * 64,
                     "history": [],
                 },
@@ -490,6 +534,8 @@ class CandidateSetRankerTest(unittest.TestCase):
 
         self.assertAlmostEqual(bias, 1.25)
         self.assertAlmostEqual(fitted.target_scale, 2.5)
+        np.testing.assert_allclose(fitted.candidate_mean, np.arange(5, dtype=np.float32))
+        np.testing.assert_allclose(fitted.context_scale, np.arange(3, dtype=np.float32) + 1.0)
         self.assertEqual(metadata["training_seed"], 17)
         for expected, actual in zip(model.parameters(), fitted.model.parameters()):
             torch.testing.assert_close(expected, actual)
@@ -523,6 +569,7 @@ class CandidateLabelCacheTest(unittest.TestCase):
             stage=np.asarray(["offload", "compute"]),
             feature_names=("rb_total", "cpu_total", "predicted_activity", "task_proxy", "energy_proxy"),
             candidate_names=("identity", "a", "b", "c"),
+            context_feature_names=("state_node", "state_link", "state_task"),
         )
         outcome = CandidateOutcome(
             active_sse=np.arange(8, dtype=np.float32).reshape(2, 4),
@@ -561,6 +608,8 @@ class CandidateLabelCacheTest(unittest.TestCase):
         self.assertEqual(manifest["result_kind"], "diagnostic_only")
         self.assertEqual(loaded_manifest["split_name"], "validation")
         np.testing.assert_allclose(loaded_batch.candidate_features, batch.candidate_features)
+        self.assertEqual(loaded_batch.context_feature_names, batch.context_feature_names)
+        self.assertEqual(loaded_manifest["schema_version"], 5)
         np.testing.assert_allclose(loaded_outcome.active_sse, outcome.active_sse)
         np.testing.assert_allclose(loaded_outcome.link_sse, outcome.link_sse)
         np.testing.assert_array_equal(loaded_outcome.link_count, outcome.link_count)
@@ -630,6 +679,67 @@ class CandidateLabelCacheTest(unittest.TestCase):
         self.assertTrue(audit["passed"], audit)
         self.assertIn("predicted_energy_proxy", names)
         self.assertIn("predicted_task_delta_8", names)
+
+    def test_candidate_features_use_ranked_default_and_selected_edge_context(self):
+        from pi_jwm.v11_labeling import build_candidate_feature_batch
+
+        actions = np.zeros((1, 3, 2, 2, 6), dtype=np.float32)
+        actions[:, 1, :, :, 2] = 2.0
+        actions[:, 2, :, 0, 2] = 3.0
+        predictions = []
+        for rate in (4.0, 7.0, 9.0):
+            predictions.append(
+                {
+                    "link_activity_prob": np.full((1, 2, 2, 1), rate / 10.0, dtype=np.float32),
+                    "link_rate_pred": np.full((1, 2, 2, 1), rate, dtype=np.float32),
+                    "task_pred": np.full((1, 2, 9), rate, dtype=np.float32),
+                }
+            )
+        current_link = np.asarray([[[10.0, 20.0], [30.0, 40.0]]], dtype=np.float32)
+
+        features, names = build_candidate_feature_batch(
+            actions,
+            predictions,
+            action_families=("identity", "ranked", "rb_repair"),
+            default_index=1,
+            current_link_features=current_link,
+            current_link_feature_names=("distance", "rate_sum"),
+        )
+
+        rate_delta = names.index("predicted_rate_delta_mean")
+        modified = names.index("selected_modified_edge_count")
+        selected_rate = names.index("selected_current_rate_sum_mean")
+        self.assertAlmostEqual(float(features[0, 1, rate_delta]), 0.0)
+        self.assertAlmostEqual(float(features[0, 2, rate_delta]), 2.0)
+        self.assertAlmostEqual(float(features[0, 1, modified]), 0.0)
+        self.assertAlmostEqual(float(features[0, 2, modified]), 2.0)
+        self.assertAlmostEqual(float(features[0, 2, selected_rate]), 30.0)
+
+    def test_observable_state_context_uses_history_only(self):
+        from pi_jwm.v11_labeling import build_observable_state_context
+        from pi_jwm.v11_selector import audit_selector_protocol
+
+        node = np.arange(2 * 3 * 2 * 2, dtype=np.float32).reshape(2, 3, 2, 2)
+        link = np.arange(2 * 3 * 3 * 2, dtype=np.float32).reshape(2, 3, 3, 2)
+        task = np.arange(2 * 3 * 2, dtype=np.float32).reshape(2, 3, 2)
+        action = np.zeros((2, 3, 3, 2), dtype=np.float32)
+        context, names = build_observable_state_context(
+            node,
+            link,
+            task,
+            action,
+            valid_edge_mask=np.asarray([True, False, True]),
+            node_feature_names=("speed", "cpu"),
+            link_feature_names=("distance", "rate_sum"),
+            task_feature_names=("num_tasks", "num_finished"),
+            action_feature_names=("offload_count", "rb_total"),
+        )
+
+        self.assertEqual(context.shape, (2, len(names)))
+        self.assertTrue(np.all(np.isfinite(context)))
+        self.assertTrue(audit_selector_protocol(names, {"train": {0}})["passed"])
+        self.assertIn("state_task_num_finished_last", names)
+        self.assertIn("state_link_rate_sum_last_mean", names)
 
     def test_outcome_metric_builder_keeps_per_sample_link_and_activity_counts(self):
         from pi_jwm.v11_labeling import compute_rollout_outcome_metrics
@@ -1058,6 +1168,20 @@ class FrozenSelectorEvaluationContractTest(unittest.TestCase):
         self.assertLess(content.index('p["candidate_gate"]["passed"]'), content.index("--splits train calibration"))
         self.assertIn('OMP_NUM_THREADS="${PI_JWM_OMP_NUM_THREADS:-8}"', content)
         self.assertIn('MKL_NUM_THREADS="${PI_JWM_MKL_NUM_THREADS:-8}"', content)
+
+    def test_refinement_gpu_batch_never_reopens_locked_evaluation_splits(self):
+        script = (
+            Path(__file__).resolve().parents[1]
+            / "scripts"
+            / "run_v11_selector_refinement_gpu.sh"
+        )
+        content = script.read_text(encoding="utf-8")
+
+        self.assertIn("--splits validation", content)
+        self.assertIn("--splits train calibration", content)
+        self.assertIn('EPOCHS="${EPOCHS:-200}"', content)
+        self.assertNotIn("matched_test", content)
+        self.assertNotIn("external_holdout", content)
 
 
 class SelectorFinalReportContractTest(unittest.TestCase):

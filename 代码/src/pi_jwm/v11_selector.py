@@ -190,6 +190,7 @@ class CandidateBatch:
     stage: np.ndarray
     feature_names: tuple[str, ...]
     candidate_names: tuple[str, ...] = ()
+    context_feature_names: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         context = np.asarray(self.context, dtype=np.float32)
@@ -208,6 +209,8 @@ class CandidateBatch:
             raise ValueError("feature_names must match candidate feature dimension")
         if self.candidate_names and len(self.candidate_names) != candidate.shape[1]:
             raise ValueError("candidate_names must match candidate dimension")
+        if self.context_feature_names and len(self.context_feature_names) != context.shape[1]:
+            raise ValueError("context_feature_names must match context feature dimension")
         if not np.all(np.isfinite(context)) or not np.all(np.isfinite(candidate)):
             raise ValueError("candidate batch features must be finite")
         if np.any(mask.sum(axis=1) == 0):
@@ -246,6 +249,20 @@ def ablate_candidate_batch(batch: CandidateBatch, group: str) -> CandidateBatch:
             features[:, :, selected] = 0.0
             if context.shape[1] == len(batch.feature_names):
                 context[:, selected] = 0.0
+        if batch.context_feature_names:
+            context_selected = []
+            for index, feature_name in enumerate(batch.context_feature_names):
+                normalized = str(feature_name).lower()
+                if name == "task":
+                    match = "task" in normalized
+                elif name == "energy":
+                    match = "energy" in normalized
+                else:
+                    match = any(token in normalized for token in ("rb", "cpu", "resource", "action"))
+                if match:
+                    context_selected.append(index)
+            if context_selected:
+                context[:, context_selected] = 0.0
     return CandidateBatch(
         context=context,
         candidate_features=features,
@@ -253,6 +270,7 @@ def ablate_candidate_batch(batch: CandidateBatch, group: str) -> CandidateBatch:
         stage=stages,
         feature_names=batch.feature_names,
         candidate_names=batch.candidate_names,
+        context_feature_names=batch.context_feature_names,
     )
 
 
@@ -645,6 +663,10 @@ class FittedSelector:
     history: list[dict[str, float]]
     stage_vocabulary: dict[str, int]
     target_scale: float = 1.0
+    candidate_mean: np.ndarray = field(default_factory=lambda: np.empty((0,), dtype=np.float32))
+    candidate_scale: np.ndarray = field(default_factory=lambda: np.empty((0,), dtype=np.float32))
+    context_mean: np.ndarray = field(default_factory=lambda: np.empty((0,), dtype=np.float32))
+    context_scale: np.ndarray = field(default_factory=lambda: np.empty((0,), dtype=np.float32))
 
 
 def load_fitted_selector_checkpoint(
@@ -678,11 +700,26 @@ def load_fitted_selector_checkpoint(
     ).to(torch.device(device))
     model.load_state_dict(payload["state_dict"], strict=True)
     model.eval()
+    def normalization_array(name: str, dimension: int, fill: float) -> np.ndarray:
+        value = payload.get(name)
+        if value is None:
+            return np.full((dimension,), fill, dtype=np.float32)
+        if torch.is_tensor(value):
+            value = value.detach().cpu().numpy()
+        array = np.asarray(value, dtype=np.float32)
+        if array.shape != (dimension,):
+            raise ValueError(f"checkpoint {name} dimension mismatch")
+        return array
+
     fitted = FittedSelector(
         model=model,
         history=list(payload.get("history", [])),
         stage_vocabulary={"unknown": 0, "offload": 1, "compute": 2, "return": 3},
         target_scale=float(payload.get("target_scale", 1.0)),
+        candidate_mean=normalization_array("candidate_mean", int(payload["candidate_dim"]), 0.0),
+        candidate_scale=normalization_array("candidate_scale", int(payload["candidate_dim"]), 1.0),
+        context_mean=normalization_array("context_mean", int(payload["context_dim"]), 0.0),
+        context_scale=normalization_array("context_scale", int(payload["context_dim"]), 1.0),
     )
     metadata = {
         key: payload[key]
@@ -737,8 +774,25 @@ def fit_listwise_selector(
     )
     model = model.to(selected_device)
     optimizer = torch.optim.Adam(model.parameters(), lr=float(learning_rate))
-    candidate = torch.from_numpy(batch.candidate_features).to(selected_device)
-    context = torch.from_numpy(batch.context).to(selected_device)
+    valid_candidate = batch.candidate_features[batch.candidate_mask]
+    candidate_mean = valid_candidate.mean(axis=0).astype(np.float32)
+    candidate_scale = valid_candidate.std(axis=0).astype(np.float32)
+    candidate_scale = np.where(candidate_scale < 1e-6, 1.0, candidate_scale).astype(np.float32)
+    context_mean = batch.context.mean(axis=0).astype(np.float32)
+    context_scale = batch.context.std(axis=0).astype(np.float32)
+    context_scale = np.where(context_scale < 1e-6, 1.0, context_scale).astype(np.float32)
+    normalized_candidate = np.clip(
+        (batch.candidate_features - candidate_mean) / candidate_scale,
+        -10.0,
+        10.0,
+    ).astype(np.float32)
+    normalized_context = np.clip(
+        (batch.context - context_mean) / context_scale,
+        -10.0,
+        10.0,
+    ).astype(np.float32)
+    candidate = torch.from_numpy(normalized_candidate).to(selected_device)
+    context = torch.from_numpy(normalized_context).to(selected_device)
     mask = torch.from_numpy(batch.candidate_mask).to(selected_device)
     stage_ids = _stage_ids(batch.stage).to(selected_device)
     valid_numpy = batch.candidate_mask & (outcome.active_count > 0)[:, None]
@@ -796,6 +850,10 @@ def fit_listwise_selector(
         history=history,
         stage_vocabulary={"unknown": 0, "offload": 1, "compute": 2, "return": 3},
         target_scale=target_scale,
+        candidate_mean=candidate_mean,
+        candidate_scale=candidate_scale,
+        context_mean=context_mean,
+        context_scale=context_scale,
     )
 
 
@@ -806,10 +864,40 @@ def predict_fitted_selector(
     """Run a fitted selector without exposing training outcomes."""
     fitted.model.eval()
     device = next(fitted.model.parameters()).device
+    candidate_mean = (
+        fitted.candidate_mean
+        if fitted.candidate_mean.size
+        else np.zeros((batch.candidate_features.shape[2],), dtype=np.float32)
+    )
+    candidate_scale = (
+        fitted.candidate_scale
+        if fitted.candidate_scale.size
+        else np.ones((batch.candidate_features.shape[2],), dtype=np.float32)
+    )
+    context_mean = (
+        fitted.context_mean
+        if fitted.context_mean.size
+        else np.zeros((batch.context.shape[1],), dtype=np.float32)
+    )
+    context_scale = (
+        fitted.context_scale
+        if fitted.context_scale.size
+        else np.ones((batch.context.shape[1],), dtype=np.float32)
+    )
+    if candidate_mean.shape != (batch.candidate_features.shape[2],) or context_mean.shape != (
+        batch.context.shape[1],
+    ):
+        raise ValueError("selector normalization statistics do not match batch dimensions")
+    candidate = np.clip(
+        (batch.candidate_features - candidate_mean) / candidate_scale,
+        -10.0,
+        10.0,
+    ).astype(np.float32)
+    context = np.clip((batch.context - context_mean) / context_scale, -10.0, 10.0).astype(np.float32)
     with torch.no_grad():
         outputs = fitted.model(
-            torch.from_numpy(batch.candidate_features).to(device),
-            torch.from_numpy(batch.context).to(device),
+            torch.from_numpy(candidate).to(device),
+            torch.from_numpy(context).to(device),
             torch.from_numpy(batch.candidate_mask).to(device),
             _stage_ids(batch.stage).to(device),
         )

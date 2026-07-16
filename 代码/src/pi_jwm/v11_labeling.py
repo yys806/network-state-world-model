@@ -12,8 +12,8 @@ import numpy as np
 from .v11_selector import CandidateBatch, CandidateOutcome
 
 
-CACHE_SCHEMA_VERSION = 4
-SUPPORTED_CACHE_SCHEMA_VERSIONS = frozenset({1, 2, 3, CACHE_SCHEMA_VERSION})
+CACHE_SCHEMA_VERSION = 5
+SUPPORTED_CACHE_SCHEMA_VERSIONS = frozenset({1, 2, 3, 4, CACHE_SCHEMA_VERSION})
 
 
 def compute_rollout_outcome_metrics(
@@ -61,6 +61,9 @@ def build_candidate_feature_batch(
     candidate_actions: np.ndarray,
     predictions_by_candidate: list[dict[str, np.ndarray]],
     action_families: tuple[str, ...] | list[str],
+    default_index: int = 0,
+    current_link_features: np.ndarray | None = None,
+    current_link_feature_names: tuple[str, ...] | list[str] = (),
 ) -> tuple[np.ndarray, tuple[str, ...]]:
     """Build observable candidate features from actions and PI-JWM predictions."""
     actions = np.asarray(candidate_actions, dtype=np.float32)
@@ -69,6 +72,9 @@ def build_candidate_feature_batch(
     sample_count, candidate_count, step_count = actions.shape[:3]
     if len(predictions_by_candidate) != candidate_count or len(action_families) != candidate_count:
         raise ValueError("candidate predictions/families must match candidate dimension")
+    default = int(default_index)
+    if not 0 <= default < candidate_count:
+        raise ValueError("default_index outside candidate dimension")
     activity_rows = []
     rate_rows = []
     task_rows = []
@@ -94,10 +100,13 @@ def build_candidate_feature_batch(
     task = np.stack(task_rows, axis=1)
     rb = np.clip(actions[..., 2], 0.0, None)
     cpu = np.clip(actions[..., 4], 0.0, None)
-    activity_delta = activity - activity[:, :1]
-    rate_delta = rate - rate[:, :1]
+    activity_delta = activity - activity[:, default : default + 1]
+    rate_delta = rate - rate[:, default : default + 1]
     task_final = task[:, :, -1]
-    task_delta = task_final - task_final[:, :1]
+    task_delta = task_final - task_final[:, default : default + 1]
+    action_delta = actions - actions[:, default : default + 1]
+    selected = np.any(np.abs(action_delta) > 1e-8, axis=-1)
+    selected_edge = np.any(selected, axis=2)
 
     blocks: list[np.ndarray] = []
     names: list[str] = []
@@ -129,6 +138,49 @@ def build_candidate_feature_batch(
     add("predicted_throughput_proxy", (activity * clipped_rate).sum(axis=(2, 3)))
     add("predicted_activity_delta_mean", activity_delta.mean(axis=(2, 3)))
     add("predicted_rate_delta_mean", rate_delta.mean(axis=(2, 3)))
+    add("selected_modified_edge_count", selected_edge.sum(axis=2))
+    add("selected_modified_edge_step_count", selected.sum(axis=(2, 3)))
+    add("selected_action_delta_l1", np.abs(action_delta).sum(axis=(2, 3, 4)))
+    add("selected_rb_delta_sum", action_delta[..., 2].sum(axis=(2, 3)))
+    add("selected_rb_delta_abs_sum", np.abs(action_delta[..., 2]).sum(axis=(2, 3)))
+    add("selected_cpu_delta_sum", action_delta[..., 4].sum(axis=(2, 3)))
+    add("selected_cpu_delta_abs_sum", np.abs(action_delta[..., 4]).sum(axis=(2, 3)))
+
+    selected_float = selected.astype(np.float32)
+    selected_count = np.maximum(selected_float.sum(axis=(2, 3)), 1.0)
+
+    def selected_mean(values: np.ndarray) -> np.ndarray:
+        return (np.asarray(values, dtype=np.float32) * selected_float).sum(axis=(2, 3)) / selected_count
+
+    baseline_activity = np.broadcast_to(activity[:, default : default + 1], activity.shape)
+    baseline_rate = np.broadcast_to(rate[:, default : default + 1], rate.shape)
+    add("selected_predicted_activity_default_mean", selected_mean(baseline_activity))
+    add("selected_predicted_activity_candidate_mean", selected_mean(activity))
+    add("selected_predicted_activity_delta_sum", (activity_delta * selected_float).sum(axis=(2, 3)))
+    add("selected_predicted_activity_delta_abs_sum", (np.abs(activity_delta) * selected_float).sum(axis=(2, 3)))
+    add("selected_predicted_rate_default_mean", selected_mean(baseline_rate))
+    add("selected_predicted_rate_candidate_mean", selected_mean(rate))
+    add("selected_predicted_rate_delta_sum", (rate_delta * selected_float).sum(axis=(2, 3)))
+    add("selected_predicted_rate_delta_abs_sum", (np.abs(rate_delta) * selected_float).sum(axis=(2, 3)))
+
+    if current_link_features is not None:
+        current = np.asarray(current_link_features, dtype=np.float32)
+        names_current = tuple(str(value) for value in current_link_feature_names)
+        if current.ndim != 3 or current.shape[:2] != (sample_count, actions.shape[3]):
+            raise ValueError("current_link_features must be [sample,edge,feature]")
+        if len(names_current) != current.shape[2]:
+            raise ValueError("current_link_feature_names must match current link feature dimension")
+        selected_edge_float = selected_edge.astype(np.float32)
+        selected_edge_count = np.maximum(selected_edge_float.sum(axis=2), 1.0)
+        for feature_index, feature_name in enumerate(names_current):
+            safe_name = "".join(character if character.isalnum() else "_" for character in feature_name).strip("_")
+            values = current[:, None, :, feature_index]
+            mean = (values * selected_edge_float).sum(axis=2) / selected_edge_count
+            masked = np.where(selected_edge, values, -np.inf)
+            maximum = np.max(masked, axis=2)
+            maximum = np.where(np.isfinite(maximum), maximum, 0.0)
+            add(f"selected_current_{safe_name}_mean", mean)
+            add(f"selected_current_{safe_name}_max", maximum)
     for step in range(step_count):
         add(f"rb_total_step_{step}", rb[:, :, step].sum(axis=2))
         add(f"cpu_total_step_{step}", cpu[:, :, step].sum(axis=2))
@@ -148,6 +200,79 @@ def build_candidate_feature_batch(
     if not np.all(np.isfinite(features)):
         raise ValueError("candidate features contain non-finite values")
     return features, tuple(names)
+
+
+def build_observable_state_context(
+    node_history: np.ndarray,
+    link_history: np.ndarray,
+    task_history: np.ndarray,
+    action_history: np.ndarray,
+    valid_edge_mask: np.ndarray,
+    node_feature_names: tuple[str, ...] | list[str],
+    link_feature_names: tuple[str, ...] | list[str],
+    task_feature_names: tuple[str, ...] | list[str],
+    action_feature_names: tuple[str, ...] | list[str],
+) -> tuple[np.ndarray, tuple[str, ...]]:
+    """Summarize only decision-time histories for the selector context encoder."""
+    node = np.asarray(node_history, dtype=np.float32)
+    link = np.asarray(link_history, dtype=np.float32)
+    task = np.asarray(task_history, dtype=np.float32)
+    action = np.asarray(action_history, dtype=np.float32)
+    valid = np.asarray(valid_edge_mask, dtype=bool).reshape(-1)
+    if node.ndim != 4 or link.ndim != 4 or task.ndim != 3 or action.ndim != 4:
+        raise ValueError("state histories have invalid dimensions")
+    if not (node.shape[0] == link.shape[0] == task.shape[0] == action.shape[0]):
+        raise ValueError("state histories must share sample dimension")
+    if link.shape[:3] != action.shape[:3] or valid.shape[0] != link.shape[2] or not np.any(valid):
+        raise ValueError("link/action histories and valid_edge_mask are inconsistent")
+    name_groups = tuple(map(str, node_feature_names)), tuple(map(str, link_feature_names)), tuple(
+        map(str, task_feature_names)
+    ), tuple(map(str, action_feature_names))
+    if tuple(map(len, name_groups)) != (node.shape[3], link.shape[3], task.shape[2], action.shape[3]):
+        raise ValueError("state feature names must match history dimensions")
+    blocks: list[np.ndarray] = []
+    names: list[str] = []
+
+    def append(prefix: str, feature_names: tuple[str, ...], values: tuple[np.ndarray, ...], suffixes: tuple[str, ...]) -> None:
+        for feature_index, feature_name in enumerate(feature_names):
+            safe = "".join(character if character.isalnum() else "_" for character in feature_name).strip("_")
+            for value, suffix in zip(values, suffixes):
+                blocks.append(np.asarray(value[:, feature_index], dtype=np.float32)[:, None])
+                names.append(f"state_{prefix}_{safe}_{suffix}")
+
+    node_last = node[:, -1]
+    append(
+        "node",
+        name_groups[0],
+        (node_last.mean(1), node_last.std(1), node_last.max(1), (node[:, -1] - node[:, 0]).mean(1)),
+        ("last_mean", "last_std", "last_max", "trend_mean"),
+    )
+    link_valid = link[:, :, valid]
+    link_last = link_valid[:, -1]
+    append(
+        "link",
+        name_groups[1],
+        (link_last.mean(1), link_last.std(1), link_last.max(1), (link_valid[:, -1] - link_valid[:, 0]).mean(1)),
+        ("last_mean", "last_std", "last_max", "trend_mean"),
+    )
+    append(
+        "task",
+        name_groups[2],
+        (task[:, -1], task.mean(1), task[:, -1] - task[:, 0]),
+        ("last", "history_mean", "trend"),
+    )
+    action_valid = action[:, :, valid]
+    action_last = action_valid[:, -1]
+    append(
+        "action",
+        name_groups[3],
+        (action_last.mean(1), action_last.std(1), action_last.max(1), (action_valid[:, -1] > 1e-8).mean(1)),
+        ("last_mean", "last_std", "last_max", "last_nonzero_ratio"),
+    )
+    context = np.concatenate(blocks, axis=1).astype(np.float32)
+    if not np.all(np.isfinite(context)):
+        raise ValueError("observable state context contains non-finite values")
+    return context, tuple(names)
 
 
 def _sha256(path: Path) -> str:
@@ -184,12 +309,15 @@ def save_candidate_label_cache(
         raise ValueError("sample_ids and sample_seed must match candidate batch")
     if outcome.active_sse.shape != batch.candidate_features.shape[:2]:
         raise ValueError("candidate batch and outcome shapes must match")
+    if len(batch.context_feature_names) != batch.context.shape[1]:
+        raise ValueError("schema-v5 caches require one context feature name per context column")
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         cache_path,
         sample_ids=ids,
         sample_seed=seeds,
         context=batch.context,
+        context_feature_names=np.asarray(batch.context_feature_names, dtype=str),
         candidate_features=batch.candidate_features,
         candidate_mask=batch.candidate_mask,
         stage=batch.stage.astype(str),
@@ -222,6 +350,7 @@ def save_candidate_label_cache(
         "num_samples": int(sample_count),
         "num_candidates": int(batch.candidate_features.shape[1]),
         "feature_names": list(batch.feature_names),
+        "context_feature_names": list(batch.context_feature_names),
         "candidate_names": list(batch.candidate_names),
         "outcome_fields": [
             name
@@ -272,6 +401,11 @@ def load_candidate_label_cache(
             stage=arrays["stage"],
             feature_names=tuple(str(value) for value in arrays["feature_names"].tolist()),
             candidate_names=candidate_names,
+            context_feature_names=tuple(
+                str(value) for value in arrays["context_feature_names"].tolist()
+            )
+            if "context_feature_names" in arrays.files
+            else tuple(f"context_{index}" for index in range(arrays["context"].shape[1])),
         )
         def optional(name: str) -> np.ndarray | None:
             if name not in arrays.files:

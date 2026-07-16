@@ -60,6 +60,11 @@ def validate_cache_protocol(
     feature_orders = {tuple(manifests[name].get("feature_names", ())) for name in required}
     if len(feature_orders) != 1:
         raise ValueError("feature order mismatch across caches")
+    context_orders = {
+        tuple(manifests[name].get("context_feature_names", ())) for name in required
+    }
+    if len(context_orders) != 1:
+        raise ValueError("context feature order mismatch across caches")
     if required_schema_version is not None:
         versions = {int(manifests[name].get("schema_version", -1)) for name in required}
         if versions != {int(required_schema_version)}:
@@ -414,7 +419,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     manifests = {name: value[2] for name, value in loaded.items()}
     configuration_digest = validate_cache_protocol(
         manifests,
-        required_schema_version=None if bool(args.allow_smoke_gate_failure) else 4,
+        required_schema_version=None if bool(args.allow_smoke_gate_failure) else 5,
     )
     batches = {name: value[0] for name, value in loaded.items()}
     outcomes = {name: value[1] for name, value in loaded.items()}
@@ -518,6 +523,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     "training_seed": int(training_seed),
                     "calibration_bias": float(bias),
                     "target_scale": float(fitted.target_scale),
+                    "candidate_mean": torch.from_numpy(fitted.candidate_mean),
+                    "candidate_scale": torch.from_numpy(fitted.candidate_scale),
+                    "context_mean": torch.from_numpy(fitted.context_mean),
+                    "context_scale": torch.from_numpy(fitted.context_scale),
                     "configuration_digest": configuration_digest,
                     "history": fitted.history,
                 },
@@ -597,6 +606,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "checkpoint_records": selected_records,
         "candidate_names": list(manifests["train"].get("candidate_names", [])),
         "feature_names": list(manifests["train"].get("feature_names", [])),
+        "context_feature_names": list(
+            manifests["train"].get("context_feature_names", [])
+        ),
         "cache_sha256": {
             name: str(manifests[name].get("cache_sha256", ""))
             for name in ("train", "calibration", "validation")

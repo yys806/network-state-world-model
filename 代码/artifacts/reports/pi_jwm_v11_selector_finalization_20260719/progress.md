@@ -43,3 +43,10 @@
 - GPU 批处理顺序已进一步收紧为“validation 标签 → candidate gate → train/calibration 标签 → selector 训练”，避免候选上限不达标时先生成约 70 万个候选标签；本地 preflight 复核 23,400 samples、60 seeds、每 seed 390，world/policy SHA 与 schema-v4 smoke 一致。
 - 新 RTX 4090 服务器完成源码/数据/checkpoint 双端 SHA 校验、55 项 selector 测试和 8-sample CUDA smoke；首次 full validation 3,900×32 在约 480 秒完成，oracle=105.57994、nontrivial=83.7625%、identity-win=24.6781%。
 - full validation 唯一 gate 失败为 action-applied=99.9841%；定位 25 个 raw candidate 本身与 baseline 相同。已用 TDD 修正 applicability，而不是放宽 gate；下一步同步该小修并重跑 validation。matched test 仍未访问。
+- applicability 修复提交 `096ee1f` 已同步到 RTX 4090；56 项 selector 测试和 8-sample CUDA smoke 通过。重跑 full validation 用时 476.5 秒，四项 candidate gate 全部通过；train/calibration 标签用时 963.7 秒，正式缓存分别含 15,600/2,340 个样本。
+- 12×3 CandidateSetBenefitRanker 与传统对照完成并冻结；validation 全部回退，冻结配置 `h64_t0.1_d0`。冻结后 matched-test one-shot 为 RMSE `223.88910`、defer `100%`、sample oracle `99.90324`，未通过 A/B 级，访问账本、checkpoint SHA 和冻结结果包已生成。
+- 服务器 100 MB 结果目录已打包下载，本地/服务器压缩包 SHA-256 均为 `4a9a71b4e0d0d0f9e084a682e4e03f46cfc11d80627170f4d5c67570908d2ed9`。
+- 仅使用 train/calibration/validation 完成失败归因：未标准化输入导致异常 bias/uncertainty；补标准化仍无法恢复排序；进一步确认 context 缺少 current state 且全局候选统计丢失 selected-edge 耦合信息。下一步以 TDD 增加 state context、selected-edge 条件特征与训练统计归一化，再用 validation 选型；不得重用 matched test。
+- schema-v5 refinement 已用 TDD 落地：预测 delta/context 统一改为 ranked baseline 参照；候选特征加入 modified-edge、动作差值、selected-edge 预测变化和当前 link/task/resource 条件统计；context 加入 current node/link/task/action 历史；训练和推理共享 train-only 标准化统计。
+- 新 checkpoint 以 Torch tensor 保存归一化统计，保持 `weights_only=True` 安全加载；新 refinement GPU 脚本只包含 validation/train/calibration/ablation，代码中不含 matched-test 或 external-holdout。
+- 本地 schema-v5 8-sample actual-rollout 与最小训练链通过，候选维度 71、context 维度 170；全量主测试 `572/572`、脚本测试 `75/75`、编译、bash 语法和 diff 检查通过。下一步提交并同步服务器，重新生成 schema-v5 train/calibration/validation 标签。

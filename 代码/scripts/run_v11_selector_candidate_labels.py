@@ -37,6 +37,7 @@ from pi_jwm.v11_candidates import (
 )
 from pi_jwm.v11_labeling import (
     build_candidate_feature_batch,
+    build_observable_state_context,
     compute_rollout_outcome_metrics,
     save_candidate_label_cache,
 )
@@ -373,10 +374,28 @@ def _make_label_split(
         for field in activity_confusion:
             activity_confusion[field].append(outcome_metrics[field])
     active_sse = np.stack(sample_sse, axis=1).astype(np.float32)
+    default_index = library.candidate_names.index("ranked_allocation_baseline")
     features, feature_names = build_candidate_feature_batch(
-        library.actions, predictions_by_candidate, library.action_families
+        library.actions,
+        predictions_by_candidate,
+        library.action_families,
+        default_index=default_index,
+        current_link_features=arrays["x_link"][split_indices, -1],
+        current_link_feature_names=tuple(str(value) for value in arrays["link_features"]),
     )
-    context = features[:, 0].copy()
+    state_context, state_context_names = build_observable_state_context(
+        arrays["x_node"][split_indices],
+        arrays["x_link"][split_indices],
+        arrays["x_task"][split_indices],
+        arrays["edge_a_hist"][split_indices],
+        valid_edge_mask=arrays["valid_edge_node"],
+        node_feature_names=tuple(str(value) for value in arrays["node_features"]),
+        link_feature_names=tuple(str(value) for value in arrays["link_features"]),
+        task_feature_names=tuple(str(value) for value in arrays["task_features"]),
+        action_feature_names=tuple(str(value) for value in arrays["edge_action_features"]),
+    )
+    context = np.concatenate([features[:, default_index], state_context], axis=1).astype(np.float32)
+    context_feature_names = tuple(f"default_{name}" for name in feature_names) + state_context_names
     protocol_audit = audit_selector_protocol(
         feature_names,
         {
@@ -395,6 +414,7 @@ def _make_label_split(
         stage=stages,
         feature_names=feature_names,
         candidate_names=library.candidate_names,
+        context_feature_names=context_feature_names,
     )
     outcome = CandidateOutcome(
         active_sse=active_sse,
@@ -407,7 +427,7 @@ def _make_label_split(
         activity_tn=np.stack(activity_confusion["activity_tn"], axis=1),
         action_applied=library.action_applied,
         action_applicable=library.applicability_mask,
-        default_index=library.candidate_names.index("ranked_allocation_baseline"),
+        default_index=default_index,
         result_kind="diagnostic_only",
     )
     cache_path = args.output_dir / f"candidate_labels_{split_name}.npz"
