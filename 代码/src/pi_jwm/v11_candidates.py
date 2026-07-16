@@ -277,7 +277,12 @@ def build_support_constrained_candidates(
         candidate_families=families,
         stages=stage_values,
     )
-    applicability_mask = np.stack(initial_mask, axis=1)
+    requested_change = np.any(
+        np.abs(stacked - baseline[:, None, ...]) > 1e-8,
+        axis=(2, 3, 4),
+    )
+    applicability_mask = np.stack(initial_mask, axis=1) & requested_change
+    applicability_mask[:, 0] = True
     candidate_mask = applicability_mask & applied
     candidate_mask[:, 0] = True
     return CandidateLibrary(

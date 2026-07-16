@@ -71,3 +71,10 @@
 - matched-test/external-holdout 访问写入 append-only ledger；同一冻结 selector 不能重复打开同一锁定 split。
 - external 7/10 与 AirFogSim 安全门不得用 CLI 整数手填；必须由同 configuration/freeze digest 的逐 seed external summary 和逐行实际 task-energy audit 重算。
 - 上周能耗候选与新 32 候选没有一一对应关系，旧 `candidate_summary.csv` 不能直接冒充本轮安全证据；新增严格 sample/seed/time/candidate 对齐工具，缺映射或缺物理行时直接拒绝生成审计。
+
+## 首次 full validation GPU 证据
+
+- RTX 4090 上完成 3,900 validation samples × 32 candidates，运行约 480 秒；matched test 未访问。
+- sample-oracle active-rate RMSE `105.57994`，nontrivial ratio `83.7625%`，identity oracle/tie `24.6781%`，说明候选库上限和监督覆盖已经明显达到 selector 训练前提。
+- 初次 action-applied ratio `99.9841%` 来自 105,300 个 applicable 非 identity 候选中的 25 个 no-op：20 个 q50 repair 的目标值恰等于 baseline，5 个 offload-low 同理。这些候选在构造阶段没有请求任何数值变化，不属于“适用但执行失败”。
+- 修正后 applicability = stage/support 条件 ∧ raw candidate 相对 baseline 确有变化；若 raw candidate 请求变化但投影/执行后仍 no-op，继续按 action-applied 失败计数，因此没有降低 100% 质量标准。

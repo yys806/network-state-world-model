@@ -41,3 +41,5 @@
 - 最新验证：主项目 `567/567` 测试通过，脚本 `75/75` 通过；Python 编译检查、GPU bash 语法检查和 `git diff --check` 通过；正式 seeds 18--19 仍未访问。
 - 正式 GPU 运行尚未开始：`yuyaoshen_VM` SSH 连接超时。下一步在服务器/VPN 恢复后执行 full train/calibration/validation 标签矩阵，并先检查 validation candidate gate。
 - GPU 批处理顺序已进一步收紧为“validation 标签 → candidate gate → train/calibration 标签 → selector 训练”，避免候选上限不达标时先生成约 70 万个候选标签；本地 preflight 复核 23,400 samples、60 seeds、每 seed 390，world/policy SHA 与 schema-v4 smoke 一致。
+- 新 RTX 4090 服务器完成源码/数据/checkpoint 双端 SHA 校验、55 项 selector 测试和 8-sample CUDA smoke；首次 full validation 3,900×32 在约 480 秒完成，oracle=105.57994、nontrivial=83.7625%、identity-win=24.6781%。
+- full validation 唯一 gate 失败为 action-applied=99.9841%；定位 25 个 raw candidate 本身与 baseline 相同。已用 TDD 修正 applicability，而不是放宽 gate；下一步同步该小修并重跑 validation。matched test 仍未访问。

@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export OMP_NUM_THREADS="${PI_JWM_OMP_NUM_THREADS:-8}"
+export MKL_NUM_THREADS="${PI_JWM_MKL_NUM_THREADS:-8}"
+
 # PI-JWM v11 selector finalization.  Validation is generated and selected
 # before the matched-test split can be opened.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

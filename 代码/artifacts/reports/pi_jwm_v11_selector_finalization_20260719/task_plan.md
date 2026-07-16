@@ -50,3 +50,4 @@
 | 2026-07-16 | 4-sample integration smoke 恰好没有 active target，candidate gate 抛异常 | 1 | 新增失败测试后把零 active 组改为保留结果并返回 `passed=false, failure_reason=no_active_targets`；不再静默删除或中止缓存 |
 | 2026-07-16 | schema-v4 的 8-sample calibration 恰好没有 active target，基础 selector 阈值评估把 `None` 强转为 float | 1 | 新增失败测试；无 active 的 smoke calibration 明确记为 unscored 并强制保守 defer，正式协议仍要求有效 calibration 标签 |
 | 2026-07-16 | `yuyaoshen_VM` SSH 连接 `192.168.89.132:22` 超时 | 1 | 停止重复连接；本地完成代码、测试和 smoke，正式 GPU full-label/selector 训练等待服务器或 VPN 恢复 |
+| 2026-07-16 | 首次 RTX 4090 full validation gate 的 action-applied 为 99.9841%，其余 oracle/coverage/identity 三项均过线 | 1 | 定位为 25 个候选在构造时就与 baseline 完全相同却被预标 applicable；新增失败测试，applicability 现在同时要求 raw candidate 确实请求变化，投影/执行后 no-op 仍按失败计数；不放宽 100% gate |

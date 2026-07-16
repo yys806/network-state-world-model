@@ -347,6 +347,24 @@ class SupportConstrainedCandidateLibraryTest(unittest.TestCase):
         np.testing.assert_allclose(library.actions[1, compute_idx], baseline[1])
         np.testing.assert_allclose(library.actions[0, return_idx], baseline[0])
 
+    def test_candidate_with_no_requested_delta_is_not_marked_applicable(self):
+        from pi_jwm.v11_candidates import build_support_constrained_candidates
+
+        baseline, score, value_head, support, valid, stages = self._inputs()
+        library = build_support_constrained_candidates(
+            baseline,
+            score,
+            value_head,
+            {0.5: 2.0, 0.75: 9.0},
+            support,
+            valid,
+            stages,
+        )
+        candidate = library.candidate_names.index("rb_repair__k8__q50__persistent")
+
+        self.assertFalse(np.any(library.applicability_mask[:, candidate]))
+        self.assertFalse(np.any(library.candidate_mask[:, candidate]))
+
     def test_benefit_residual_candidates_expand_and_shrink_selected_values(self):
         from pi_jwm.v11_candidates import build_support_constrained_candidates
 
@@ -1038,6 +1056,8 @@ class FrozenSelectorEvaluationContractTest(unittest.TestCase):
 
         self.assertLess(content.index("--splits validation"), content.index("--splits train calibration"))
         self.assertLess(content.index('p["candidate_gate"]["passed"]'), content.index("--splits train calibration"))
+        self.assertIn('OMP_NUM_THREADS="${PI_JWM_OMP_NUM_THREADS:-8}"', content)
+        self.assertIn('MKL_NUM_THREADS="${PI_JWM_MKL_NUM_THREADS:-8}"', content)
 
 
 class SelectorFinalReportContractTest(unittest.TestCase):
