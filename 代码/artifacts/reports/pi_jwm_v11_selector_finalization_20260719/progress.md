@@ -1,0 +1,42 @@
+# Progress
+
+## 2026-07-16
+
+- 已接收并锁定用户批准的 selector 定型方案。
+- 已确认直接在当前工作区实施，不创建 worktree。
+- 已检查 Git 状态：上周能耗/reward/horizon 工作仍为未提交改动，当前开始阶段 1 验收。
+- 下一步：读取变更差异、现有测试入口和基线产物，运行冻结前验证。
+- 已定位三项基线的原始研究文档与证据索引，并发现 expanded55 与 13-template sample-oracle 口径不同；已写入 findings，后续报告分别保留。
+- horizon 分析脚本已成功从冻结 CSV 重建：66 个候选对齐，H=3/10/20 均为 7/15 非平凡组，质量审计通过。
+- 并行 `conda run` 暴露 Windows 临时文件争用；测试尚不能据此判定通过，下一步改用环境内 Python 直接顺序执行。
+- AirFogSim 环境下相关测试 28 项中 24 项通过，4 项仅因该环境没有 Torch 而导入失败；测试矩阵改为主项目/模拟器双环境分工。
+- 主项目 Python 下，上周新增/相关主测试 28 项全部通过；在约定的 `代码/scripts` 工作目录下，脚本测试 74 项全部通过。
+- 全量主测试 `512/512` 通过，完整脚本测试 `75/75` 通过。
+- 真实 AirFogSim 单 seed smoke 成功：5 candidates × 3 steps，15 行；缺失值、负能耗、reward 重建、能耗守恒、动作生效均为 0 个问题。
+- `research_progress_overview.tex` 已由 XeLaTeX 成功重编译为 14 页 PDF；仅有既有 underfull box 警告，无编译错误。
+- 阶段 1 验收完成，准备提交独立上周成果冻结 commit；阶段 2 开始。
+- 上周成果已提交为 commit `872a84f`（`feat: freeze PI-JWM energy reward diagnostics`）。
+- 已完成旧 selector/候选链审计：确认可复用 actual-rollout 评估，但 expanded55 identity oracle-win 约 79.4%，候选覆盖不满足新 gate。
+- 已核验 frozen 数据：23,400 samples、60 seeds、每 seed 390；开始以测试驱动实现 split/test lock 和 selector 协议。
+- selector 基础协议完成首轮 TDD：14 项新测试先失败后通过，覆盖 split/test lock、泄漏审计、数据接口、投影、oracle gate、DeepSets 置换等变性、listwise loss、确定性与 defer/Pareto。
+- 固定 28 候选 support-constrained library 完成第二轮 TDD：4 项候选构成/decay/stage-mask/quantile 测试先失败后通过。
+- 下一步：实现分块 actual-rollout 标签缓存和主 runner，在本地 64/256 sample smoke 上测量候选 oracle gate。
+- actual-rollout label cache、46 维无泄漏候选特征和 runner 已完成后续 TDD；matched-test 必须读取 validation 冻结 manifest。
+- 64-helper/64-validation 本地 CPU smoke 成功，28 candidates 总耗时约 68 秒；11 个 active-target 样本的 sample-oracle RMSE 为 42.33，但 gate 未过：nontrivial 63.6%，identity oracle-win 90.9%，动作生效率 100%。
+- 当前 smoke 中 offload-RB low/high 的全局 RMSE 比 identity 改善约 3.81；大多数 RB value-head repair 与 identity 完全相同，说明 support/magnitude 候选仍需用 256-sample 结果判断，不立即训练 selector。
+- 原 28-candidate 的 256 smoke：oracle 102.07、nontrivial 69.23%、identity-win 69.23%；oracle 有上限但覆盖门未过。
+- 用 4 个固定 benefit-guided expand/shrink residual 填满 32 槽后，同批 256 smoke：oracle 改善到 71.27、identity-win 降到 53.85%、动作生效 100%；nontrivial 仍为 69.23%，距 70% 门槛仅 1 个有效样本。
+- selector 训练 runner 已完成 TDD 基础：cache digest/order 审计、calibration bias、masked oracle、validation tie-break 均有失败先行测试并通过。
+- 阶段 2 完成；阶段 3 还需 full validation GPU 标签确认 gate。当前继续生成本地 train/calibration smoke cache，仅用于训练链软件验收。
+- actual-rollout 缓存升级为 schema-v3：除 active-rate SSE 外，保存全链路 SSE/count、activity TP/FP/FN/TN 和独立 `action_applied`；旧 schema 1/2 仅用于兼容 smoke，不作为正式冻结数据。
+- 修复训练 gate 把 candidate availability 误当 action-applied 的审计漏洞；正式 gate 现在读取缓存中的真实动作生效证据。
+- 建立 validation-frozen 一次性 evaluator：配置 digest、checkpoint 集合、matched-test cache 必须一致；输出 active-rate RMSE、link RMSE、activity F1、逐 seed 和 decision trace，并按 A/B/稳健性门分层。
+- 完成 stage/task/resource/energy/uncertainty feature ablation runner，并接入 matched test 之前的 GPU 流水线。
+- 完成 13 篇一手论文方法矩阵；主路线固定为 decision-focused listwise ranking + DeepSets + ensemble LCB defer，完整 offline RL/CDT 明确排除。
+- 新增 selector 专项测试累计 39 项通过；schema-v3 8-sample CPU actual-rollout smoke 成功，正式测试 seeds 18--19 仍未访问。
+- 完成代码审查修正：候选适用/生效双掩码、schema-v4、逐样本 RMSE regret、训练尺度归一化、score 排名与 benefit/risk defer 一致性均已落地。
+- 完成冻结证据链：selector freeze digest、checkpoint/world/policy SHA、访问账本、external/safety 证据重算；移除可手填 external wins 和 Pareto violation 的入口。
+- 本地 schema-v4 actual-rollout smoke 成功；train/calibration/validation 各 8 样本的软件链 smoke 已生成 checkpoint 与冻结 manifest。极小 calibration 无 active target 的边界缺陷经 TDD 修复为 unscored + conservative defer。
+- 新增逐 stage/action-family 输出、task-energy proxy trace、最终报告聚合/SHA manifest 脚本，以及严格 AirFogSim sample-time-candidate 物理安全对齐脚本。
+- 最新验证：主项目 `566/566` 测试通过，脚本 `75/75` 通过；Python 编译检查、GPU bash 语法检查和 `git diff --check` 通过；正式 seeds 18--19 仍未访问。
+- 正式 GPU 运行尚未开始：`yuyaoshen_VM` SSH 连接超时。下一步在服务器/VPN 恢复后执行 full train/calibration/validation 标签矩阵，并先检查 validation candidate gate。
