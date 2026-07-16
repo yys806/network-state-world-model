@@ -38,6 +38,6 @@
 - 完成冻结证据链：selector freeze digest、checkpoint/world/policy SHA、访问账本、external/safety 证据重算；移除可手填 external wins 和 Pareto violation 的入口。
 - 本地 schema-v4 actual-rollout smoke 成功；train/calibration/validation 各 8 样本的软件链 smoke 已生成 checkpoint 与冻结 manifest。极小 calibration 无 active target 的边界缺陷经 TDD 修复为 unscored + conservative defer。
 - 新增逐 stage/action-family 输出、task-energy proxy trace、最终报告聚合/SHA manifest 脚本，以及严格 AirFogSim sample-time-candidate 物理安全对齐脚本。
-- 最新验证：主项目 `566/566` 测试通过，脚本 `75/75` 通过；Python 编译检查、GPU bash 语法检查和 `git diff --check` 通过；正式 seeds 18--19 仍未访问。
+- 最新验证：主项目 `567/567` 测试通过，脚本 `75/75` 通过；Python 编译检查、GPU bash 语法检查和 `git diff --check` 通过；正式 seeds 18--19 仍未访问。
 - 正式 GPU 运行尚未开始：`yuyaoshen_VM` SSH 连接超时。下一步在服务器/VPN 恢复后执行 full train/calibration/validation 标签矩阵，并先检查 validation candidate gate。
 - GPU 批处理顺序已进一步收紧为“validation 标签 → candidate gate → train/calibration 标签 → selector 训练”，避免候选上限不达标时先生成约 70 万个候选标签；本地 preflight 复核 23,400 samples、60 seeds、每 seed 390，world/policy SHA 与 schema-v4 smoke 一致。
