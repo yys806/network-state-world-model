@@ -945,6 +945,169 @@ class CandidateLabelRunnerContractTest(unittest.TestCase):
 
 
 class SelectorTrainingRunnerContractTest(unittest.TestCase):
+    def test_objective_aligned_runner_rejects_non_schema5_cache(self):
+        from train_v11_objective_aligned_selector import (
+            validate_objective_cache_protocol,
+        )
+
+        manifests = {
+            name: {
+                "schema_version": 4,
+                "split_name": name,
+                "configuration_digest": "a" * 64,
+                "candidate_names": ["identity", "ranked"],
+                "feature_names": ["x"],
+                "context_feature_names": ["ctx"],
+            }
+            for name in ("train", "calibration", "validation")
+        }
+
+        with self.assertRaisesRegex(ValueError, "schema 5"):
+            validate_objective_cache_protocol(manifests)
+
+    def test_objective_aligned_runner_grid_is_exactly_four_configs(self):
+        from train_v11_objective_aligned_selector import build_grid
+
+        self.assertEqual(
+            build_grid([64, 128], [5, 10]),
+            [(64, 5.0), (64, 10.0), (128, 5.0), (128, 10.0)],
+        )
+
+    def test_validation_success_gate_requires_all_metric_constraints(self):
+        from train_v11_objective_aligned_selector import classify_validation_result
+
+        passing = {
+            "rmse": 199.0,
+            "training_seed_std": 4.0,
+            "improved_seed_count": 7,
+            "activity_f1_drop": 0.001,
+            "link_rmse_relative_degradation": 0.01,
+        }
+        self.assertEqual(classify_validation_result(passing), "success")
+        for key, value in (
+            ("rmse", 200.0),
+            ("training_seed_std", 5.1),
+            ("improved_seed_count", 6),
+            ("activity_f1_drop", 0.0021),
+            ("link_rmse_relative_degradation", 0.021),
+        ):
+            failed = dict(passing)
+            failed[key] = value
+            self.assertNotEqual(classify_validation_result(failed), "success")
+
+    def test_objective_runner_source_exposes_no_locked_split_cli(self):
+        text = (
+            SCRIPTS_ROOT / "train_v11_objective_aligned_selector.py"
+        ).read_text(encoding="utf-8")
+
+        self.assertNotIn("--matched-test", text)
+        self.assertNotIn("--external-holdout", text)
+
+    def test_xgboost_rows_use_only_legal_candidates_and_sse_benefit(self):
+        from pi_jwm.v11_selector import CandidateBatch, CandidateOutcome
+        from train_v11_objective_aligned_selector import (
+            flatten_candidate_benefit_rows,
+        )
+
+        batch = CandidateBatch(
+            context=np.asarray([[10.0], [20.0]], dtype=np.float32),
+            candidate_features=np.asarray(
+                [[[1.0], [2.0], [3.0]], [[4.0], [5.0], [6.0]]],
+                dtype=np.float32,
+            ),
+            candidate_mask=np.asarray(
+                [[True, True, False], [True, False, True]], dtype=bool
+            ),
+            stage=np.asarray(["offload", "return"]),
+            feature_names=("candidate_x",),
+        )
+        outcome = CandidateOutcome(
+            active_sse=np.asarray(
+                [[100.0, 80.0, 1.0], [50.0, 1.0, 20.0]], dtype=np.float32
+            ),
+            active_count=np.ones(2, dtype=np.int64),
+            default_index=0,
+        )
+
+        rows = flatten_candidate_benefit_rows(batch, outcome, weight_cap=5.0)
+
+        self.assertEqual(rows.sample_index.tolist(), [0, 0, 1, 1])
+        self.assertEqual(rows.candidate_index.tolist(), [0, 1, 0, 2])
+        np.testing.assert_allclose(rows.target_benefit, [0.0, 20.0, 0.0, 30.0])
+        self.assertEqual(rows.features.shape, (4, 6))
+        self.assertTrue(np.all(rows.sample_weight > 0.0))
+
+    def test_xgboost_predictions_scatter_back_without_unmasking_candidates(self):
+        from train_v11_objective_aligned_selector import (
+            FlattenedCandidateBenefitRows,
+            scatter_candidate_predictions,
+        )
+
+        rows = FlattenedCandidateBenefitRows(
+            features=np.zeros((3, 1), dtype=np.float32),
+            target_benefit=np.zeros(3, dtype=np.float32),
+            sample_weight=np.ones(3, dtype=np.float32),
+            sample_index=np.asarray([0, 0, 1]),
+            candidate_index=np.asarray([0, 2, 1]),
+        )
+        scattered = scatter_candidate_predictions(
+            rows, np.asarray([1.0, 3.0, 2.0]), shape=(2, 3)
+        )
+
+        np.testing.assert_allclose(scattered[[0, 0, 1], [0, 2, 1]], [1.0, 3.0, 2.0])
+        self.assertTrue(np.isneginf(scattered[0, 1]))
+        self.assertTrue(np.isneginf(scattered[1, 0]))
+
+    def test_tree_prediction_adapter_sanitizes_masked_sentinels(self):
+        from pi_jwm.v11_selector import CandidateBatch, CandidateOutcome
+        from train_v11_objective_aligned_selector import (
+            _select_from_benefit_predictions,
+        )
+
+        batch = CandidateBatch(
+            context=np.zeros((2, 1), dtype=np.float32),
+            candidate_features=np.zeros((2, 2, 1), dtype=np.float32),
+            candidate_mask=np.asarray([[True, True], [True, False]]),
+            stage=np.asarray(["offload", "return"]),
+            feature_names=("x",),
+        )
+        outcome = CandidateOutcome(
+            active_sse=np.asarray([[4.0, 1.0], [4.0, 4.0]], dtype=np.float32),
+            active_count=np.ones(2, dtype=np.int64),
+            default_index=0,
+        )
+        prediction = np.asarray([[0.0, 3.0], [0.0, -np.inf]], dtype=np.float32)
+
+        calibration, decision = _select_from_benefit_predictions(
+            prediction, prediction, batch, outcome, batch, outcome
+        )
+
+        self.assertTrue(np.isfinite(calibration.threshold))
+        self.assertEqual(decision.candidate_index.shape, (2,))
+
+    def test_objective_ablation_specs_are_frozen(self):
+        from train_v11_objective_aligned_selector import objective_ablation_specs
+
+        self.assertEqual(
+            objective_ablation_specs(),
+            (
+                "without_opportunity",
+                "without_uncertainty",
+                "uniform_impact",
+                "without_stage",
+                "without_task",
+                "without_resource",
+                "without_energy",
+            ),
+        )
+
+    def test_requested_optional_outputs_are_never_left_pending(self):
+        text = (
+            SCRIPTS_ROOT / "train_v11_objective_aligned_selector.py"
+        ).read_text(encoding="utf-8")
+
+        self.assertNotIn('else "pending"', text)
+
     def test_choice_metrics_preserves_no_active_target_as_unscored(self):
         from pi_jwm.v11_selector import CandidateOutcome
         from train_v11_candidate_set_selector import _choice_metrics

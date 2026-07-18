@@ -253,6 +253,23 @@ class ObjectiveAlignedFitTest(unittest.TestCase):
         for left, right in zip(first.model.parameters(), second.model.parameters()):
             torch.testing.assert_close(left, right)
 
+    def test_uniform_impact_ablation_is_recorded_in_fitted_model(self):
+        from pi_jwm.v11_objective_aligned_selector import (
+            fit_objective_aligned_selector,
+        )
+
+        batch, outcome = synthetic_batch_and_outcome()
+        fitted = fit_objective_aligned_selector(
+            batch,
+            outcome,
+            hidden_dim=8,
+            epochs=1,
+            seed=17,
+            impact_weighting=False,
+        )
+
+        self.assertFalse(fitted.impact_weighting)
+
     def test_prediction_returns_original_sse_units_and_shapes(self):
         from pi_jwm.v11_objective_aligned_selector import (
             fit_objective_aligned_selector,

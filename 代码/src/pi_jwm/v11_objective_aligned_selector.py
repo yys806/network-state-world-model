@@ -250,6 +250,7 @@ class FittedObjectiveAlignedSelector:
     hidden_dim: int
     dropout: float
     temperature: float
+    impact_weighting: bool
 
 
 def _stage_ids(stages: np.ndarray) -> torch.Tensor:
@@ -303,6 +304,7 @@ def fit_objective_aligned_selector(
     seed: int = 17,
     device: str | torch.device = "cpu",
     group_ids: np.ndarray | None = None,
+    impact_weighting: bool = True,
 ) -> FittedObjectiveAlignedSelector:
     """Fit the objective-aligned selector using train-only statistics."""
 
@@ -358,6 +360,8 @@ def fit_objective_aligned_selector(
         selected_device
     )
     sample_weight = torch.from_numpy(targets.sample_weight).to(selected_device)
+    if not bool(impact_weighting):
+        sample_weight = valid_sample.to(dtype=torch.float32)
     candidate_benefit = torch.from_numpy(
         targets.candidate_benefit / targets.benefit_scale
     ).to(selected_device)
@@ -456,6 +460,7 @@ def fit_objective_aligned_selector(
         hidden_dim=int(hidden_dim),
         dropout=float(dropout),
         temperature=float(temperature),
+        impact_weighting=bool(impact_weighting),
     )
 
 
@@ -521,6 +526,7 @@ def save_objective_aligned_checkpoint(
             "temperature": float(fitted.temperature),
             "benefit_scale": float(fitted.benefit_scale),
             "weight_cap": float(fitted.weight_cap),
+            "impact_weighting": bool(fitted.impact_weighting),
             "candidate_mean": torch.from_numpy(fitted.candidate_mean.copy()),
             "candidate_scale": torch.from_numpy(fitted.candidate_scale.copy()),
             "context_mean": torch.from_numpy(fitted.context_mean.copy()),
@@ -591,12 +597,14 @@ def load_objective_aligned_checkpoint(
         hidden_dim=int(payload["hidden_dim"]),
         dropout=float(payload["dropout"]),
         temperature=float(payload["temperature"]),
+        impact_weighting=bool(payload.get("impact_weighting", True)),
     )
     metadata = {
         "configuration_digest": digest,
         "training_seed": int(payload["training_seed"]),
         "hidden_dim": int(payload["hidden_dim"]),
         "weight_cap": float(payload["weight_cap"]),
+        "impact_weighting": bool(payload.get("impact_weighting", True)),
     }
     return fitted, metadata
 
