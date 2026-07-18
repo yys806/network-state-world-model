@@ -1,4 +1,5 @@
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -10,6 +11,40 @@ CODE_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = CODE_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
+
+
+def synthetic_batch_and_outcome():
+    from pi_jwm.v11_selector import CandidateBatch, CandidateOutcome
+
+    rng = np.random.default_rng(4)
+    batch = CandidateBatch(
+        context=rng.normal(size=(8, 3)).astype(np.float32),
+        candidate_features=rng.normal(size=(8, 4, 5)).astype(np.float32),
+        candidate_mask=np.ones((8, 4), dtype=bool),
+        stage=np.asarray(["offload", "compute", "return", "unknown"] * 2),
+        feature_names=("a", "b", "c", "d", "e"),
+        candidate_names=("identity", "ranked", "repair_a", "repair_b"),
+        context_feature_names=("ctx_a", "ctx_b", "ctx_c"),
+    )
+    active_sse = np.asarray(
+        [
+            [9.0, 10.0, 4.0, 12.0],
+            [5.0, 8.0, 10.0, 7.0],
+            [4.0, 6.0, 3.0, 8.0],
+            [7.0, 9.0, 10.0, 2.0],
+            [12.0, 10.0, 11.0, 8.0],
+            [3.0, 5.0, 4.0, 6.0],
+            [8.0, 8.0, 8.0, 8.0],
+            [11.0, 12.0, 7.0, 13.0],
+        ],
+        dtype=np.float32,
+    )
+    outcome = CandidateOutcome(
+        active_sse=active_sse,
+        active_count=np.ones((8,), dtype=np.int64),
+        default_index=1,
+    )
+    return batch, outcome
 
 
 class DecisionAlignedTargetsTest(unittest.TestCase):
@@ -168,6 +203,124 @@ class OpportunityBenefitRankerTest(unittest.TestCase):
         self.assertEqual(
             output["candidate_uncertainty"][0, 1].detach().item(), 0.0
         )
+
+
+class ObjectiveAlignedFitTest(unittest.TestCase):
+    def test_fit_rejects_cache_without_active_targets(self):
+        from pi_jwm.v11_objective_aligned_selector import (
+            fit_objective_aligned_selector,
+        )
+        from pi_jwm.v11_selector import CandidateOutcome
+
+        batch, _ = synthetic_batch_and_outcome()
+        outcome = CandidateOutcome(
+            active_sse=np.zeros((8, 4), dtype=np.float32),
+            active_count=np.zeros((8,), dtype=np.int64),
+            default_index=1,
+        )
+
+        with self.assertRaisesRegex(ValueError, "active target"):
+            fit_objective_aligned_selector(batch, outcome, hidden_dim=8, epochs=1)
+
+    def test_fit_is_deterministic_and_freezes_train_only_scales(self):
+        from pi_jwm.v11_objective_aligned_selector import (
+            fit_objective_aligned_selector,
+        )
+
+        batch, outcome = synthetic_batch_and_outcome()
+        first = fit_objective_aligned_selector(
+            batch,
+            outcome,
+            hidden_dim=8,
+            weight_cap=5.0,
+            epochs=3,
+            seed=17,
+            group_ids=np.arange(8) % 2,
+        )
+        second = fit_objective_aligned_selector(
+            batch,
+            outcome,
+            hidden_dim=8,
+            weight_cap=5.0,
+            epochs=3,
+            seed=17,
+            group_ids=np.arange(8) % 2,
+        )
+
+        self.assertEqual(first.benefit_scale, second.benefit_scale)
+        np.testing.assert_array_equal(first.candidate_mean, second.candidate_mean)
+        np.testing.assert_array_equal(first.context_scale, second.context_scale)
+        for left, right in zip(first.model.parameters(), second.model.parameters()):
+            torch.testing.assert_close(left, right)
+
+    def test_prediction_returns_original_sse_units_and_shapes(self):
+        from pi_jwm.v11_objective_aligned_selector import (
+            fit_objective_aligned_selector,
+            predict_objective_aligned_selector,
+        )
+
+        batch, outcome = synthetic_batch_and_outcome()
+        fitted = fit_objective_aligned_selector(
+            batch, outcome, hidden_dim=8, epochs=2, seed=17
+        )
+
+        prediction = predict_objective_aligned_selector(fitted, batch)
+
+        self.assertEqual(prediction["predicted_candidate_benefit"].shape, (8, 4))
+        self.assertEqual(prediction["candidate_uncertainty"].shape, (8, 4))
+        self.assertEqual(prediction["predicted_opportunity"].shape, (8,))
+        self.assertEqual(prediction["opportunity_uncertainty"].shape, (8,))
+        for values in prediction.values():
+            self.assertTrue(np.all(np.isfinite(values)))
+
+    def test_checkpoint_loader_rejects_configuration_digest_mismatch(self):
+        from pi_jwm.v11_objective_aligned_selector import (
+            fit_objective_aligned_selector,
+            load_objective_aligned_checkpoint,
+            save_objective_aligned_checkpoint,
+        )
+
+        batch, outcome = synthetic_batch_and_outcome()
+        fitted = fit_objective_aligned_selector(
+            batch, outcome, hidden_dim=8, epochs=1, seed=17
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "selector.pt"
+            save_objective_aligned_checkpoint(
+                path, fitted, configuration_digest="a" * 64, training_seed=17
+            )
+
+            with self.assertRaisesRegex(ValueError, "digest"):
+                load_objective_aligned_checkpoint(
+                    path, expected_configuration_digest="b" * 64
+                )
+
+    def test_checkpoint_roundtrip_preserves_predictions(self):
+        from pi_jwm.v11_objective_aligned_selector import (
+            fit_objective_aligned_selector,
+            load_objective_aligned_checkpoint,
+            predict_objective_aligned_selector,
+            save_objective_aligned_checkpoint,
+        )
+
+        batch, outcome = synthetic_batch_and_outcome()
+        fitted = fit_objective_aligned_selector(
+            batch, outcome, hidden_dim=8, epochs=1, seed=29
+        )
+        expected = predict_objective_aligned_selector(fitted, batch)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "selector.pt"
+            save_objective_aligned_checkpoint(
+                path, fitted, configuration_digest="c" * 64, training_seed=29
+            )
+            restored, metadata = load_objective_aligned_checkpoint(
+                path, expected_configuration_digest="c" * 64
+            )
+            actual = predict_objective_aligned_selector(restored, batch)
+
+        self.assertEqual(metadata["training_seed"], 29)
+        for name in expected:
+            np.testing.assert_array_equal(expected[name], actual[name])
 
 
 if __name__ == "__main__":

@@ -2,14 +2,17 @@
 
 from __future__ import annotations
 
+import random
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
 
 import numpy as np
 import torch
 from torch import nn
 from torch.nn import functional as F
 
-from pi_jwm.v11_selector import CandidateOutcome
+from pi_jwm.v11_selector import CandidateBatch, CandidateOutcome
 
 
 @dataclass(frozen=True)
@@ -231,3 +234,367 @@ def weighted_listwise_benefit_loss(
     return torch.sum(per_sample * valid_weight) / torch.clamp(
         torch.sum(valid_weight), min=1e-8
     )
+
+
+@dataclass
+class FittedObjectiveAlignedSelector:
+    model: OpportunityBenefitRanker
+    history: list[dict[str, float]]
+    benefit_scale: float
+    weight_cap: float
+    candidate_mean: np.ndarray
+    candidate_scale: np.ndarray
+    context_mean: np.ndarray
+    context_scale: np.ndarray
+    hidden_dim: int
+    dropout: float
+    temperature: float
+
+
+def _stage_ids(stages: np.ndarray) -> torch.Tensor:
+    vocabulary = {"unknown": 0, "offload": 1, "compute": 2, "return": 3}
+    return torch.tensor(
+        [vocabulary.get(str(value).lower(), 0) for value in stages],
+        dtype=torch.long,
+    )
+
+
+def _normalization(values: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    mean = values.mean(axis=0).astype(np.float32)
+    scale = values.std(axis=0).astype(np.float32)
+    scale = np.where(scale < 1e-6, 1.0, scale).astype(np.float32)
+    return mean, scale
+
+
+def _weighted_candidate_huber(
+    predicted: torch.Tensor,
+    target: torch.Tensor,
+    mask: torch.Tensor,
+    sample_weight: torch.Tensor,
+) -> torch.Tensor:
+    valid = mask & torch.isfinite(target)
+    if not bool(valid.any()):
+        return predicted.sum() * 0.0
+    loss = F.huber_loss(predicted[valid], target[valid], reduction="none")
+    expanded_weight = sample_weight[:, None].expand_as(predicted)[valid]
+    return torch.sum(loss * expanded_weight) / torch.clamp(
+        torch.sum(expanded_weight), min=1e-8
+    )
+
+
+def _heteroscedastic_nll(
+    residual: torch.Tensor,
+    uncertainty: torch.Tensor,
+) -> torch.Tensor:
+    sigma = torch.clamp(uncertainty, min=1e-4)
+    return torch.mean(0.5 * torch.square(residual / sigma) + torch.log(sigma))
+
+
+def fit_objective_aligned_selector(
+    batch: CandidateBatch,
+    outcome: CandidateOutcome,
+    hidden_dim: int = 64,
+    weight_cap: float = 5.0,
+    epochs: int = 200,
+    learning_rate: float = 3e-3,
+    temperature: float = 0.25,
+    dropout: float = 0.0,
+    seed: int = 17,
+    device: str | torch.device = "cpu",
+    group_ids: np.ndarray | None = None,
+) -> FittedObjectiveAlignedSelector:
+    """Fit the objective-aligned selector using train-only statistics."""
+
+    if batch.candidate_features.shape[:2] != outcome.active_sse.shape:
+        raise ValueError("candidate batch and outcome shapes must match")
+    if int(epochs) < 1:
+        raise ValueError("epochs must be positive")
+    groups = None if group_ids is None else np.asarray(group_ids).reshape(-1)
+    if groups is not None and groups.shape[0] != batch.candidate_features.shape[0]:
+        raise ValueError("group_ids must contain one value per sample")
+
+    random.seed(int(seed))
+    np.random.seed(int(seed))
+    torch.manual_seed(int(seed))
+    selected_device = torch.device(device)
+    if selected_device.type == "cuda":
+        torch.cuda.manual_seed_all(int(seed))
+
+    targets = build_decision_aligned_targets(
+        outcome,
+        batch.candidate_mask,
+        weight_cap=float(weight_cap),
+    )
+    if not np.any(targets.valid_sample):
+        raise ValueError("selector fitting requires at least one active target")
+    valid_candidate = batch.candidate_features[batch.candidate_mask]
+    candidate_mean, candidate_scale = _normalization(valid_candidate)
+    context_mean, context_scale = _normalization(batch.context)
+    normalized_candidate = np.clip(
+        (batch.candidate_features - candidate_mean) / candidate_scale,
+        -10.0,
+        10.0,
+    ).astype(np.float32)
+    normalized_context = np.clip(
+        (batch.context - context_mean) / context_scale,
+        -10.0,
+        10.0,
+    ).astype(np.float32)
+
+    model = OpportunityBenefitRanker(
+        candidate_dim=batch.candidate_features.shape[2],
+        context_dim=batch.context.shape[1],
+        hidden_dim=int(hidden_dim),
+        dropout=float(dropout),
+    ).to(selected_device)
+    optimizer = torch.optim.Adam(model.parameters(), lr=float(learning_rate))
+    candidate = torch.from_numpy(normalized_candidate).to(selected_device)
+    context = torch.from_numpy(normalized_context).to(selected_device)
+    mask = torch.from_numpy(batch.candidate_mask).to(selected_device)
+    stage = _stage_ids(batch.stage).to(selected_device)
+    valid_sample = torch.from_numpy(targets.valid_sample).to(selected_device)
+    positive_opportunity = torch.from_numpy(targets.positive_opportunity).to(
+        selected_device
+    )
+    sample_weight = torch.from_numpy(targets.sample_weight).to(selected_device)
+    candidate_benefit = torch.from_numpy(
+        targets.candidate_benefit / targets.benefit_scale
+    ).to(selected_device)
+    opportunity = torch.from_numpy(
+        targets.opportunity / targets.benefit_scale
+    ).to(selected_device)
+    history: list[dict[str, float]] = []
+
+    for epoch in range(int(epochs)):
+        model.train()
+        optimizer.zero_grad()
+        output = model(candidate, context, mask, stage)
+        listwise_weight = sample_weight * positive_opportunity.to(sample_weight.dtype)
+        if bool(positive_opportunity.any()):
+            listwise = weighted_listwise_benefit_loss(
+                output["predicted_candidate_benefit"],
+                candidate_benefit,
+                mask,
+                listwise_weight,
+                temperature=float(temperature),
+            )
+        else:
+            listwise = output["predicted_candidate_benefit"].sum() * 0.0
+        benefit = _weighted_candidate_huber(
+            output["predicted_candidate_benefit"],
+            candidate_benefit,
+            mask & valid_sample[:, None],
+            sample_weight,
+        )
+        opportunity_loss = F.huber_loss(
+            output["predicted_opportunity"][valid_sample],
+            opportunity[valid_sample],
+        )
+        candidate_valid = mask & valid_sample[:, None]
+        uncertainty = _heteroscedastic_nll(
+            output["predicted_candidate_benefit"][candidate_valid]
+            - candidate_benefit[candidate_valid],
+            output["candidate_uncertainty"][candidate_valid],
+        ) + _heteroscedastic_nll(
+            output["predicted_opportunity"][valid_sample]
+            - opportunity[valid_sample],
+            output["opportunity_uncertainty"][valid_sample],
+        )
+        group_losses = []
+        if groups is not None:
+            for group_value in np.unique(groups):
+                group = torch.from_numpy(
+                    (groups == group_value) & targets.positive_opportunity
+                ).to(selected_device)
+                if bool(group.any()):
+                    group_losses.append(
+                        weighted_listwise_benefit_loss(
+                            output["predicted_candidate_benefit"],
+                            candidate_benefit,
+                            mask,
+                            sample_weight * group.to(sample_weight.dtype),
+                            temperature=float(temperature),
+                        )
+                    )
+        worst_group = (
+            torch.stack(group_losses).max()
+            if group_losses
+            else listwise.detach() * 0.0
+        )
+        loss = (
+            listwise
+            + 0.5 * benefit
+            + 0.5 * opportunity_loss
+            + 0.10 * worst_group
+            + 0.05 * uncertainty
+        )
+        loss.backward()
+        optimizer.step()
+        history.append(
+            {
+                "epoch": float(epoch + 1),
+                "loss": float(loss.detach()),
+                "listwise": float(listwise.detach()),
+                "candidate_benefit": float(benefit.detach()),
+                "opportunity": float(opportunity_loss.detach()),
+                "worst_group": float(worst_group.detach()),
+                "uncertainty": float(uncertainty.detach()),
+            }
+        )
+
+    model.eval()
+    return FittedObjectiveAlignedSelector(
+        model=model,
+        history=history,
+        benefit_scale=float(targets.benefit_scale),
+        weight_cap=float(weight_cap),
+        candidate_mean=candidate_mean,
+        candidate_scale=candidate_scale,
+        context_mean=context_mean,
+        context_scale=context_scale,
+        hidden_dim=int(hidden_dim),
+        dropout=float(dropout),
+        temperature=float(temperature),
+    )
+
+
+def predict_objective_aligned_selector(
+    fitted: FittedObjectiveAlignedSelector,
+    batch: CandidateBatch,
+) -> dict[str, np.ndarray]:
+    """Predict candidate and opportunity benefit in original SSE units."""
+
+    if batch.candidate_features.shape[2] != fitted.candidate_mean.shape[0]:
+        raise ValueError("candidate feature dimension does not match checkpoint")
+    if batch.context.shape[1] != fitted.context_mean.shape[0]:
+        raise ValueError("context feature dimension does not match checkpoint")
+    device = next(fitted.model.parameters()).device
+    candidate = np.clip(
+        (batch.candidate_features - fitted.candidate_mean) / fitted.candidate_scale,
+        -10.0,
+        10.0,
+    ).astype(np.float32)
+    context = np.clip(
+        (batch.context - fitted.context_mean) / fitted.context_scale,
+        -10.0,
+        10.0,
+    ).astype(np.float32)
+    fitted.model.eval()
+    with torch.no_grad():
+        output = fitted.model(
+            torch.from_numpy(candidate).to(device),
+            torch.from_numpy(context).to(device),
+            torch.from_numpy(batch.candidate_mask).to(device),
+            _stage_ids(batch.stage).to(device),
+        )
+    scale = float(fitted.benefit_scale)
+    return {
+        name: (value.detach().cpu().numpy().astype(np.float32) * scale)
+        for name, value in output.items()
+    }
+
+
+def save_objective_aligned_checkpoint(
+    path: str | Path,
+    fitted: FittedObjectiveAlignedSelector,
+    configuration_digest: str,
+    training_seed: int,
+) -> None:
+    """Save a weights-only-safe objective-aligned selector checkpoint."""
+
+    digest = str(configuration_digest)
+    if len(digest) != 64:
+        raise ValueError("configuration digest must contain 64 characters")
+    checkpoint_path = Path(path)
+    checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(
+        {
+            "state_dict": {
+                name: value.detach().cpu()
+                for name, value in fitted.model.state_dict().items()
+            },
+            "candidate_dim": int(fitted.candidate_mean.shape[0]),
+            "context_dim": int(fitted.context_mean.shape[0]),
+            "hidden_dim": int(fitted.hidden_dim),
+            "dropout": float(fitted.dropout),
+            "temperature": float(fitted.temperature),
+            "benefit_scale": float(fitted.benefit_scale),
+            "weight_cap": float(fitted.weight_cap),
+            "candidate_mean": torch.from_numpy(fitted.candidate_mean.copy()),
+            "candidate_scale": torch.from_numpy(fitted.candidate_scale.copy()),
+            "context_mean": torch.from_numpy(fitted.context_mean.copy()),
+            "context_scale": torch.from_numpy(fitted.context_scale.copy()),
+            "history": fitted.history,
+            "configuration_digest": digest,
+            "training_seed": int(training_seed),
+        },
+        checkpoint_path,
+    )
+
+
+def load_objective_aligned_checkpoint(
+    path: str | Path,
+    expected_configuration_digest: str | None = None,
+    device: str | torch.device = "cpu",
+) -> tuple[FittedObjectiveAlignedSelector, dict[str, Any]]:
+    """Load and validate a weights-only-safe selector checkpoint."""
+
+    payload = torch.load(
+        Path(path), map_location=torch.device(device), weights_only=True
+    )
+    required = {
+        "state_dict",
+        "candidate_dim",
+        "context_dim",
+        "hidden_dim",
+        "dropout",
+        "temperature",
+        "benefit_scale",
+        "weight_cap",
+        "candidate_mean",
+        "candidate_scale",
+        "context_mean",
+        "context_scale",
+        "configuration_digest",
+        "training_seed",
+    }
+    missing = sorted(required - set(payload))
+    if missing:
+        raise ValueError(f"objective-aligned checkpoint missing fields: {missing}")
+    digest = str(payload["configuration_digest"])
+    if expected_configuration_digest is not None and digest != str(
+        expected_configuration_digest
+    ):
+        raise ValueError("objective-aligned checkpoint configuration digest mismatch")
+    model = OpportunityBenefitRanker(
+        candidate_dim=int(payload["candidate_dim"]),
+        context_dim=int(payload["context_dim"]),
+        hidden_dim=int(payload["hidden_dim"]),
+        dropout=float(payload["dropout"]),
+    ).to(torch.device(device))
+    model.load_state_dict(payload["state_dict"], strict=True)
+    model.eval()
+
+    def array(name: str) -> np.ndarray:
+        return payload[name].detach().cpu().numpy().astype(np.float32)
+
+    fitted = FittedObjectiveAlignedSelector(
+        model=model,
+        history=list(payload.get("history", [])),
+        benefit_scale=float(payload["benefit_scale"]),
+        weight_cap=float(payload["weight_cap"]),
+        candidate_mean=array("candidate_mean"),
+        candidate_scale=array("candidate_scale"),
+        context_mean=array("context_mean"),
+        context_scale=array("context_scale"),
+        hidden_dim=int(payload["hidden_dim"]),
+        dropout=float(payload["dropout"]),
+        temperature=float(payload["temperature"]),
+    )
+    metadata = {
+        "configuration_digest": digest,
+        "training_seed": int(payload["training_seed"]),
+        "hidden_dim": int(payload["hidden_dim"]),
+        "weight_cap": float(payload["weight_cap"]),
+    }
+    return fitted, metadata
