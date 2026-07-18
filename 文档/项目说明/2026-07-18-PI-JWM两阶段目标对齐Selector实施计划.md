@@ -55,12 +55,17 @@ class DecisionAlignedTargetsTest(unittest.TestCase):
 
     def test_weight_cap_limits_high_gain_outlier(self):
         outcome = CandidateOutcome(
-            active_sse=np.asarray([[11.0, 10.0], [1001.0, 1000.0]], dtype=np.float32),
+            active_sse=np.asarray([[9.0, 10.0], [0.0, 1000.0]], dtype=np.float32),
             active_count=np.ones(2, dtype=np.int64),
             default_index=1,
         )
-        targets = build_decision_aligned_targets(outcome, np.ones((2, 2), dtype=bool), weight_cap=5.0)
-        self.assertLessEqual(float(targets.sample_weight.max()), 5.25)
+        targets = build_decision_aligned_targets(
+            outcome,
+            np.ones((2, 2), dtype=bool),
+            weight_cap=5.0,
+            benefit_scale=1.0,
+        )
+        self.assertEqual(float(targets.sample_weight.max()), 5.25)
 ```
 
 - [ ] **Step 2: Run tests and verify RED**
@@ -136,11 +141,20 @@ git commit -m "feat: add decision-aligned selector targets"
 ```python
 class OpportunityBenefitRankerTest(unittest.TestCase):
     def test_weighted_listwise_prioritizes_high_impact_sample(self):
-        predicted = torch.tensor([[0.0, 1.0], [1.0, 0.0]])
         benefit = torch.tensor([[2.0, 0.0], [0.0, 2.0]])
-        mask = torch.ones_like(predicted, dtype=torch.bool)
-        high_first = weighted_listwise_benefit_loss(predicted, benefit, mask, torch.tensor([10.0, 1.0]))
-        high_second = weighted_listwise_benefit_loss(predicted.flip(1), benefit, mask, torch.tensor([10.0, 1.0]))
+        mask = torch.ones_like(benefit, dtype=torch.bool)
+        high_first = weighted_listwise_benefit_loss(
+            torch.tensor([[1.0, 0.0], [1.0, 0.0]]),
+            benefit,
+            mask,
+            torch.tensor([10.0, 1.0]),
+        )
+        high_second = weighted_listwise_benefit_loss(
+            torch.tensor([[0.0, 1.0], [0.0, 1.0]]),
+            benefit,
+            mask,
+            torch.tensor([10.0, 1.0]),
+        )
         self.assertLess(float(high_first), float(high_second))
 
     def test_model_is_candidate_permutation_equivariant(self):
