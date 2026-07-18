@@ -239,6 +239,11 @@ def _gate(metrics: Mapping[str, Any]) -> dict[str, bool]:
     }
 
 
+def _cv_fold_skip_reason(dataset) -> str | None:
+    """Return an auditable reason when a group-CV holdout has no evaluable target."""
+    return None if bool(np.any(dataset.valid_sample)) else "no_valid_samples"
+
+
 def _seed_rows(dataset, choice: np.ndarray) -> list[dict[str, Any]]:
     rows = np.arange(choice.shape[0])
     result = []
@@ -552,6 +557,24 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 holdout_metadata["sample_ids"],
                 holdout_metadata["sample_seed"],
             )
+            fit_seed_text = " ".join(
+                str(value) for value in sorted(np.unique(fit_dataset.sample_seed))
+            )
+            holdout_seed_text = " ".join(
+                str(value) for value in sorted(np.unique(holdout_dataset.sample_seed))
+            )
+            skip_reason = _cv_fold_skip_reason(holdout_dataset)
+            if skip_reason is not None:
+                cv_rows.append(
+                    {
+                        "fold": fold_index,
+                        "fit_seeds": fit_seed_text,
+                        "holdout_seeds": holdout_seed_text,
+                        "status": f"skipped_{skip_reason}",
+                        "valid_sample_count": int(np.sum(holdout_dataset.valid_sample)),
+                    }
+                )
+                continue
             fit_group = build_benefit_feature_groups(fit_dataset)[winner_row["feature_group"]]
             holdout_group = build_benefit_feature_groups(holdout_dataset)[
                 winner_row["feature_group"]
@@ -592,12 +615,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             cv_rows.append(
                 {
                     "fold": fold_index,
-                    "fit_seeds": " ".join(
-                        str(value) for value in sorted(np.unique(fit_dataset.sample_seed))
-                    ),
-                    "holdout_seeds": " ".join(
-                        str(value) for value in sorted(np.unique(holdout_dataset.sample_seed))
-                    ),
+                    "fit_seeds": fit_seed_text,
+                    "holdout_seeds": holdout_seed_text,
+                    "status": "completed",
+                    "valid_sample_count": int(np.sum(holdout_dataset.valid_sample)),
                     "calibration_status": fold_calibration.status,
                     "opportunity_threshold": fold_calibration.opportunity_threshold,
                     "sign_threshold": fold_calibration.sign_threshold,
@@ -654,6 +675,17 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         f"  --feature-groups {' '.join(args.feature_groups)}",
     ]
     (output_dir / "reproduce.ps1").write_text("\n".join(command_lines) + "\n", encoding="utf-8")
+    completed_cv_rows = [row for row in cv_rows if row.get("status") == "completed"]
+    cv_rmse = [
+        float(row["active_rate_rmse"])
+        for row in completed_cv_rows
+        if row.get("active_rate_rmse") is not None
+    ]
+    cv_pr_auc = [
+        float(row["candidate_sign_pr_auc"])
+        for row in completed_cv_rows
+        if row.get("candidate_sign_pr_auc") is not None
+    ]
     summary = {
         "framework": "PI-JWM",
         "candidate": "v11",
@@ -674,22 +706,13 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "sample_limit_per_split": int(args.sample_limit_per_split),
         "model_status": model_status,
         "group_cv": {
+            "requested_fold_count": int(cv_fold_count),
             "fold_count": len(cv_rows),
-            "active_rate_rmse_mean": float(
-                np.mean([row["active_rate_rmse"] for row in cv_rows])
-            )
-            if cv_rows
-            else None,
-            "active_rate_rmse_std": float(
-                np.std([row["active_rate_rmse"] for row in cv_rows])
-            )
-            if cv_rows
-            else None,
-            "candidate_sign_pr_auc_mean": float(
-                np.mean([row["candidate_sign_pr_auc"] for row in cv_rows])
-            )
-            if cv_rows
-            else None,
+            "completed_fold_count": len(completed_cv_rows),
+            "skipped_fold_count": len(cv_rows) - len(completed_cv_rows),
+            "active_rate_rmse_mean": float(np.mean(cv_rmse)) if cv_rmse else None,
+            "active_rate_rmse_std": float(np.std(cv_rmse)) if cv_rmse else None,
+            "candidate_sign_pr_auc_mean": float(np.mean(cv_pr_auc)) if cv_pr_auc else None,
         },
         "runtime_seconds": float(time.time() - started),
     }

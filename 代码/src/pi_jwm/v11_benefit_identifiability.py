@@ -226,6 +226,8 @@ def _pooled_candidate_features(
         for stat in ("mean", "max", "min")
         for name in base_names
     )
+    if not result:
+        return np.zeros((0, len(names)), dtype=np.float32), names
     return np.asarray(result, dtype=np.float32), names
 
 
@@ -629,14 +631,20 @@ def predict_benefit_audit_model(
 ) -> BenefitPredictions:
     sample_count, candidate_count = dataset.batch.candidate_mask.shape
     valid_indices = np.flatnonzero(dataset.valid_sample)
+    opportunity = np.full(sample_count, np.nan, dtype=np.float32)
+    sign = np.full((sample_count, candidate_count), np.nan, dtype=np.float32)
+    benefit = np.full((sample_count, candidate_count), np.nan, dtype=np.float32)
+    if valid_indices.size == 0:
+        return BenefitPredictions(
+            opportunity_probability=opportunity,
+            candidate_sign_probability=sign,
+            predicted_benefit=benefit,
+        )
     opportunity_x = feature_group.opportunity_features
     if fitted.opportunity_normalizer is not None:
         opportunity_x = fitted.opportunity_normalizer.transform(opportunity_x)
-    opportunity = np.full(sample_count, np.nan, dtype=np.float32)
     opportunity[valid_indices] = _positive_probability(fitted.opportunity_model, opportunity_x)
 
-    sign = np.full((sample_count, candidate_count), np.nan, dtype=np.float32)
-    benefit = np.full((sample_count, candidate_count), np.nan, dtype=np.float32)
     if feature_group.candidate_features is None:
         sign[dataset.legal_candidate & dataset.valid_sample[:, None]] = 0.0
         benefit[dataset.legal_candidate & dataset.valid_sample[:, None]] = 0.0

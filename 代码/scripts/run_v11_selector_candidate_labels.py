@@ -203,7 +203,7 @@ def build_reproduction_command(args: argparse.Namespace) -> str:
         "--stats-chunk-size",
         str(args.stats_chunk_size),
         "--cache-schema-version",
-        str(args.cache_schema_version),
+        str(getattr(args, "cache_schema_version", 5)),
     ]
     if args.frozen_config_manifest is not None:
         tokens.extend(

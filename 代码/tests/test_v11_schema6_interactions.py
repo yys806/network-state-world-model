@@ -387,6 +387,21 @@ class CandidateInteractionRunnerTest(unittest.TestCase):
         self.assertEqual(default_args.cache_schema_version, 5)
         self.assertEqual(schema6_args.cache_schema_version, 6)
 
+    def test_gpu_handoff_script_only_generates_unlocked_schema6_labels(self):
+        script_path = CODE_ROOT / "scripts" / "run_v11_schema6_labels_gpu.sh"
+
+        text = script_path.read_text(encoding="utf-8")
+
+        self.assertIn("--cache-schema-version 6", text)
+        self.assertIn("--splits train calibration validation", text)
+        self.assertIn("torch.cuda.is_available", text)
+        self.assertIn("PYTHONPATH", text)
+        self.assertIn("label_cache_schema6", text)
+        self.assertNotIn("matched_test", text)
+        self.assertNotIn("external_holdout", text)
+        self.assertNotIn("train_v11_candidate_set_selector", text)
+        self.assertNotIn("evaluate_v11_frozen_selector", text)
+
 
 if __name__ == "__main__":
     unittest.main()

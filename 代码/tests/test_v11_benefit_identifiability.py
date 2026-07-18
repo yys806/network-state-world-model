@@ -210,6 +210,35 @@ class BenefitFeatureGroupTest(unittest.TestCase):
             len(groups["full_schema_v5"].candidate_feature_names),
         )
 
+    def test_feature_groups_keep_two_dimensional_shapes_with_no_valid_samples(self):
+        from pi_jwm.v11_benefit_identifiability import (
+            build_benefit_audit_dataset,
+            build_benefit_feature_groups,
+        )
+        from pi_jwm.v11_selector import CandidateOutcome
+
+        batch, original = synthetic_audit_payload()
+        outcome = CandidateOutcome(
+            active_sse=original.active_sse,
+            active_count=np.zeros(3, dtype=np.int64),
+            action_applicable=original.action_applicable,
+            action_applied=original.action_applied,
+            default_index=original.default_index,
+        )
+        dataset = build_benefit_audit_dataset(
+            batch,
+            outcome,
+            sample_ids=np.asarray([10, 11, 12]),
+            sample_seed=np.asarray([0, 1, 2]),
+        )
+
+        groups = build_benefit_feature_groups(dataset)
+
+        self.assertEqual(groups["full_schema_v5"].opportunity_features.ndim, 2)
+        self.assertEqual(groups["full_schema_v5"].opportunity_features.shape[0], 0)
+        self.assertEqual(groups["full_schema_v5"].candidate_features.ndim, 2)
+        self.assertEqual(groups["full_schema_v5"].candidate_features.shape[0], 0)
+
     def test_validation_values_do_not_change_train_normalization(self):
         from pi_jwm.v11_benefit_identifiability import fit_train_normalizer
 
@@ -368,6 +397,46 @@ class BenefitAuditModelTest(unittest.TestCase):
         self.assertTrue(
             np.all(predictions.predicted_benefit[dataset.legal_candidate & dataset.valid_sample[:, None]] == 0)
         )
+
+    def test_prediction_returns_nan_audit_arrays_for_no_valid_samples(self):
+        from pi_jwm.v11_benefit_identifiability import (
+            build_benefit_audit_dataset,
+            build_benefit_feature_groups,
+            fit_benefit_audit_model,
+            predict_benefit_audit_model,
+        )
+        from pi_jwm.v11_selector import CandidateOutcome
+
+        train_dataset, train_groups = self._dataset_and_groups()
+        fitted = fit_benefit_audit_model(
+            train_dataset,
+            train_groups["full_schema_v5"],
+            model_kind="linear",
+            random_seed=20260718,
+        )
+        batch, original = synthetic_audit_payload()
+        empty_outcome = CandidateOutcome(
+            active_sse=original.active_sse,
+            active_count=np.zeros(3, dtype=np.int64),
+            action_applicable=original.action_applicable,
+            action_applied=original.action_applied,
+            default_index=original.default_index,
+        )
+        empty_dataset = build_benefit_audit_dataset(
+            batch,
+            empty_outcome,
+            sample_ids=np.asarray([10, 11, 12]),
+            sample_seed=np.asarray([0, 1, 2]),
+        )
+        empty_group = build_benefit_feature_groups(empty_dataset)["full_schema_v5"]
+
+        predictions = predict_benefit_audit_model(fitted, empty_dataset, empty_group)
+
+        self.assertEqual(predictions.opportunity_probability.shape, (3,))
+        self.assertEqual(predictions.predicted_benefit.shape, (3, 3))
+        self.assertTrue(np.all(np.isnan(predictions.opportunity_probability)))
+        self.assertTrue(np.all(np.isnan(predictions.candidate_sign_probability)))
+        self.assertTrue(np.all(np.isnan(predictions.predicted_benefit)))
 
     def test_linear_probability_model_uses_fixed_epoch_averaged_sgd(self):
         from pi_jwm.v11_benefit_identifiability import _model_factories
@@ -539,6 +608,28 @@ class BenefitAuditCliTest(unittest.TestCase):
         manifests["validation"]["seed_values"] = [50]
         with self.assertRaisesRegex(ValueError, "seed"):
             module.validate_audit_manifests(manifests)
+
+    def test_empty_cv_holdout_is_explicitly_skipped(self):
+        from pi_jwm.v11_benefit_identifiability import build_benefit_audit_dataset
+        from pi_jwm.v11_selector import CandidateOutcome
+
+        module = self._load_cli_module()
+        batch, original = synthetic_audit_payload()
+        outcome = CandidateOutcome(
+            active_sse=original.active_sse,
+            active_count=np.zeros(3, dtype=np.int64),
+            action_applicable=original.action_applicable,
+            action_applied=original.action_applied,
+            default_index=original.default_index,
+        )
+        dataset = build_benefit_audit_dataset(
+            batch,
+            outcome,
+            sample_ids=np.asarray([10, 11, 12]),
+            sample_seed=np.asarray([0, 1, 2]),
+        )
+
+        self.assertEqual(module._cv_fold_skip_reason(dataset), "no_valid_samples")
 
     def test_tiny_end_to_end_run_writes_auditable_outputs(self):
         from pi_jwm.v11_labeling import save_candidate_label_cache
