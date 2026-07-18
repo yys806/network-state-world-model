@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 
 import numpy as np
+import torch
 
 
 CODE_ROOT = Path(__file__).resolve().parents[1]
@@ -83,6 +84,90 @@ class DecisionAlignedTargetsTest(unittest.TestCase):
             build_decision_aligned_targets(
                 outcome, np.asarray([[True, False]], dtype=bool)
             )
+
+
+class OpportunityBenefitRankerTest(unittest.TestCase):
+    def test_weighted_listwise_prioritizes_high_impact_sample(self):
+        from pi_jwm.v11_objective_aligned_selector import (
+            weighted_listwise_benefit_loss,
+        )
+
+        benefit = torch.tensor([[2.0, 0.0], [0.0, 2.0]])
+        mask = torch.ones_like(benefit, dtype=torch.bool)
+        high_first = weighted_listwise_benefit_loss(
+            torch.tensor([[1.0, 0.0], [1.0, 0.0]]),
+            benefit,
+            mask,
+            torch.tensor([10.0, 1.0]),
+        )
+        high_second = weighted_listwise_benefit_loss(
+            torch.tensor([[0.0, 1.0], [0.0, 1.0]]),
+            benefit,
+            mask,
+            torch.tensor([10.0, 1.0]),
+        )
+
+        self.assertLess(float(high_first), float(high_second))
+
+    def test_zero_weight_rows_do_not_affect_listwise_loss(self):
+        from pi_jwm.v11_objective_aligned_selector import (
+            weighted_listwise_benefit_loss,
+        )
+
+        predicted = torch.tensor([[2.0, 0.0], [100.0, -100.0]])
+        benefit = torch.tensor([[2.0, 0.0], [0.0, 2.0]])
+        mask = torch.ones_like(benefit, dtype=torch.bool)
+
+        combined = weighted_listwise_benefit_loss(
+            predicted, benefit, mask, torch.tensor([1.0, 0.0])
+        )
+        first_only = weighted_listwise_benefit_loss(
+            predicted[:1], benefit[:1], mask[:1], torch.tensor([1.0])
+        )
+
+        torch.testing.assert_close(combined, first_only)
+
+    def test_model_is_candidate_permutation_equivariant(self):
+        from pi_jwm.v11_objective_aligned_selector import OpportunityBenefitRanker
+
+        torch.manual_seed(4)
+        model = OpportunityBenefitRanker(5, 3, hidden_dim=8)
+        model.eval()
+        candidate = torch.randn(2, 4, 5)
+        context = torch.randn(2, 3)
+        mask = torch.ones(2, 4, dtype=torch.bool)
+        permutation = torch.tensor([2, 0, 3, 1])
+
+        original = model(candidate, context, mask)
+        permuted = model(candidate[:, permutation], context, mask[:, permutation])
+
+        inverse = torch.argsort(permutation)
+        for field in ("predicted_candidate_benefit", "candidate_uncertainty"):
+            torch.testing.assert_close(original[field], permuted[field][:, inverse])
+        torch.testing.assert_close(
+            original["predicted_opportunity"], permuted["predicted_opportunity"]
+        )
+        torch.testing.assert_close(
+            original["opportunity_uncertainty"],
+            permuted["opportunity_uncertainty"],
+        )
+
+    def test_masked_candidate_cannot_receive_a_rankable_benefit(self):
+        from pi_jwm.v11_objective_aligned_selector import OpportunityBenefitRanker
+
+        model = OpportunityBenefitRanker(2, 2, hidden_dim=4)
+        output = model(
+            torch.ones(1, 2, 2),
+            torch.ones(1, 2),
+            torch.tensor([[True, False]]),
+        )
+
+        self.assertLess(
+            output["predicted_candidate_benefit"][0, 1].detach().item(), -1e8
+        )
+        self.assertEqual(
+            output["candidate_uncertainty"][0, 1].detach().item(), 0.0
+        )
 
 
 if __name__ == "__main__":
