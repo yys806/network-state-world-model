@@ -287,6 +287,47 @@ def _manifest_path(cache_path: Path) -> Path:
     return cache_path.with_suffix(cache_path.suffix + ".manifest.json")
 
 
+def _validated_cache_manifest(
+    cache_path: Path,
+    expected_configuration_digest: str | None = None,
+) -> dict[str, Any]:
+    manifest = json.loads(_manifest_path(cache_path).read_text(encoding="utf-8"))
+    schema_version = int(manifest.get("schema_version", -1))
+    if schema_version not in SUPPORTED_CACHE_SCHEMA_VERSIONS:
+        raise ValueError("unsupported candidate label cache schema")
+    if _sha256(cache_path) != str(manifest.get("cache_sha256")):
+        raise ValueError("candidate label cache SHA-256 mismatch")
+    if expected_configuration_digest is not None and str(
+        manifest.get("configuration_digest")
+    ) != str(expected_configuration_digest):
+        raise ValueError("candidate label cache configuration digest mismatch")
+    return manifest
+
+
+def load_candidate_label_metadata(
+    path: str | Path,
+    expected_configuration_digest: str | None = None,
+) -> dict[str, Any]:
+    """Read sample identifiers from an integrity-checked candidate-label cache."""
+    cache_path = Path(path)
+    manifest = _validated_cache_manifest(cache_path, expected_configuration_digest)
+    with np.load(cache_path, allow_pickle=False) as arrays:
+        if "sample_ids" not in arrays.files or "sample_seed" not in arrays.files:
+            raise ValueError("candidate label cache is missing sample metadata")
+        sample_ids = np.asarray(arrays["sample_ids"], dtype=np.int64).reshape(-1)
+        sample_seed = np.asarray(arrays["sample_seed"], dtype=np.int64).reshape(-1)
+    expected_count = int(manifest.get("num_samples", -1))
+    if sample_ids.shape != sample_seed.shape or sample_ids.shape[0] != expected_count:
+        raise ValueError("candidate label metadata sample count mismatch")
+    return {
+        "sample_ids": sample_ids,
+        "sample_seed": sample_seed,
+        "split_name": str(manifest.get("split_name", "")),
+        "configuration_digest": manifest.get("configuration_digest"),
+        "cache_sha256": str(manifest.get("cache_sha256", "")),
+    }
+
+
 def save_candidate_label_cache(
     path: str | Path,
     split_name: str,
@@ -380,18 +421,7 @@ def load_candidate_label_cache(
     expected_configuration_digest: str | None = None,
 ) -> tuple[CandidateBatch, CandidateOutcome, dict[str, Any]]:
     cache_path = Path(path)
-    manifest_path = _manifest_path(cache_path)
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    schema_version = int(manifest.get("schema_version", -1))
-    if schema_version not in SUPPORTED_CACHE_SCHEMA_VERSIONS:
-        raise ValueError("unsupported candidate label cache schema")
-    actual_sha = _sha256(cache_path)
-    if actual_sha != str(manifest.get("cache_sha256")):
-        raise ValueError("candidate label cache SHA-256 mismatch")
-    if expected_configuration_digest is not None and str(manifest.get("configuration_digest")) != str(
-        expected_configuration_digest
-    ):
-        raise ValueError("candidate label cache configuration digest mismatch")
+    manifest = _validated_cache_manifest(cache_path, expected_configuration_digest)
     with np.load(cache_path, allow_pickle=False) as arrays:
         candidate_names = tuple(str(value) for value in arrays["candidate_names"].tolist())
         batch = CandidateBatch(

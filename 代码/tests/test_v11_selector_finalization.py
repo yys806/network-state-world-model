@@ -618,6 +618,33 @@ class CandidateLabelCacheTest(unittest.TestCase):
         np.testing.assert_array_equal(loaded_outcome.activity_tp, outcome.activity_tp)
         np.testing.assert_array_equal(loaded_outcome.action_applied, outcome.action_applied)
 
+    def test_label_metadata_round_trip_validates_digest_and_sample_count(self):
+        from pi_jwm.v11_labeling import (
+            load_candidate_label_metadata,
+            save_candidate_label_cache,
+        )
+
+        batch, outcome = self._payload()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "train_labels.npz"
+            save_candidate_label_cache(
+                path,
+                split_name="train",
+                sample_ids=np.asarray([4, 9]),
+                sample_seed=np.asarray([0, 20]),
+                batch=batch,
+                outcome=outcome,
+                configuration_digest="a" * 64,
+            )
+            metadata = load_candidate_label_metadata(
+                path, expected_configuration_digest="a" * 64
+            )
+
+        np.testing.assert_array_equal(metadata["sample_ids"], [4, 9])
+        np.testing.assert_array_equal(metadata["sample_seed"], [0, 20])
+        self.assertEqual(metadata["split_name"], "train")
+        self.assertEqual(metadata["configuration_digest"], "a" * 64)
+
     def test_matched_test_cache_requires_frozen_configuration_digest(self):
         from pi_jwm.v11_labeling import save_candidate_label_cache
 
