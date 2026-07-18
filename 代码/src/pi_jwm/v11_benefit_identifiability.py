@@ -458,13 +458,16 @@ def calibrate_safe_thresholds(
 def _model_factories(model_kind: str, random_seed: int) -> tuple[Any, Any]:
     kind = str(model_kind).lower()
     if kind == "linear":
-        from sklearn.linear_model import LogisticRegression, Ridge
+        from sklearn.linear_model import Ridge, SGDClassifier
 
         return (
-            LogisticRegression(
-                max_iter=500,
+            SGDClassifier(
+                loss="log_loss",
+                max_iter=30,
+                tol=None,
                 class_weight="balanced",
                 random_state=int(random_seed),
+                average=True,
             ),
             Ridge(alpha=1.0),
         )

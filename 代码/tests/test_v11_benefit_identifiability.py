@@ -319,6 +319,16 @@ class BenefitAuditModelTest(unittest.TestCase):
             np.all(predictions.predicted_benefit[dataset.legal_candidate & dataset.valid_sample[:, None]] == 0)
         )
 
+    def test_linear_probability_model_uses_fixed_epoch_averaged_sgd(self):
+        from pi_jwm.v11_benefit_identifiability import _model_factories
+
+        classifier, _ = _model_factories("linear", random_seed=20260718)
+
+        self.assertEqual(classifier.__class__.__name__, "SGDClassifier")
+        self.assertEqual(classifier.loss, "log_loss")
+        self.assertTrue(classifier.average)
+        self.assertIsNone(classifier.tol)
+
     def test_prediction_metrics_are_recomputed_from_trace_arrays(self):
         from pi_jwm.v11_benefit_identifiability import (
             BenefitPredictions,
