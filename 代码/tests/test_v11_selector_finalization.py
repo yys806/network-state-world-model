@@ -1108,6 +1108,23 @@ class SelectorTrainingRunnerContractTest(unittest.TestCase):
 
         self.assertNotIn('else "pending"', text)
 
+    def test_objective_aligned_gpu_launcher_uses_only_schema5_caches(self):
+        text = (
+            SCRIPTS_ROOT / "run_v11_objective_aligned_selector_gpu.sh"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("candidate_labels_train.npz", text)
+        self.assertIn("candidate_labels_calibration.npz", text)
+        self.assertIn("candidate_labels_validation.npz", text)
+        self.assertIn("--hidden-dim 64 128", text)
+        self.assertIn("--weight-cap 5 10", text)
+        self.assertIn("--training-seeds 17 29 41", text)
+        self.assertIn("--run-xgboost", text)
+        self.assertIn("--run-ablations", text)
+        self.assertNotIn("matched_test", text)
+        self.assertNotIn("external_holdout", text)
+        self.assertNotIn("run_v11_selector_candidate_labels.py", text)
+
     def test_choice_metrics_preserves_no_active_target_as_unscored(self):
         from pi_jwm.v11_selector import CandidateOutcome
         from train_v11_candidate_set_selector import _choice_metrics
