@@ -9,11 +9,15 @@ from typing import Any
 
 import numpy as np
 
+from .v11_interactions import CandidateInteractionBatch
 from .v11_selector import CandidateBatch, CandidateOutcome
 
 
 CACHE_SCHEMA_VERSION = 5
-SUPPORTED_CACHE_SCHEMA_VERSIONS = frozenset({1, 2, 3, 4, CACHE_SCHEMA_VERSION})
+INTERACTION_CACHE_SCHEMA_VERSION = 6
+SUPPORTED_CACHE_SCHEMA_VERSIONS = frozenset(
+    {1, 2, 3, 4, CACHE_SCHEMA_VERSION, INTERACTION_CACHE_SCHEMA_VERSION}
+)
 
 
 def compute_rollout_outcome_metrics(
@@ -416,6 +420,81 @@ def save_candidate_label_cache(
     return manifest
 
 
+def save_candidate_interaction_cache(
+    path: str | Path,
+    split_name: str,
+    sample_ids: np.ndarray,
+    sample_seed: np.ndarray,
+    batch: CandidateBatch,
+    outcome: CandidateOutcome,
+    interactions: CandidateInteractionBatch,
+    action_feature_names: tuple[str, ...] | list[str],
+    configuration_digest: str | None,
+    protocol_metadata: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Write a schema-v6 cache containing both base and local interaction features."""
+    if interactions.pooled_features is None:
+        raise ValueError("schema-v6 interaction cache requires pooled features")
+    if interactions.tokens.shape[:2] != batch.candidate_features.shape[:2]:
+        raise ValueError("interaction and candidate batches must share sample/candidate dimensions")
+    action_names = tuple(str(value) for value in action_feature_names)
+    if len(action_names) != 6 or len(set(action_names)) != 6:
+        raise ValueError("schema-v6 cache requires six unique action feature names")
+    cache_path = Path(path)
+    manifest = save_candidate_label_cache(
+        cache_path,
+        split_name=split_name,
+        sample_ids=sample_ids,
+        sample_seed=sample_seed,
+        batch=batch,
+        outcome=outcome,
+        configuration_digest=configuration_digest,
+        protocol_metadata=protocol_metadata,
+    )
+    with np.load(cache_path, allow_pickle=False) as stored:
+        payload = {name: np.asarray(stored[name]).copy() for name in stored.files}
+    payload.update(
+        {
+            "interaction_tokens": interactions.tokens,
+            "interaction_token_mask": interactions.token_mask,
+            "interaction_edge_index": interactions.edge_index,
+            "interaction_token_feature_names": np.asarray(
+                interactions.token_feature_names, dtype=str
+            ),
+            "interaction_pooled_features": interactions.pooled_features,
+            "interaction_pooled_feature_names": np.asarray(
+                interactions.pooled_feature_names, dtype=str
+            ),
+            "interaction_action_feature_names": np.asarray(action_names, dtype=str),
+        }
+    )
+    np.savez_compressed(cache_path, **payload)
+    token_counts = interactions.token_count.reshape(-1)
+    unique_counts, frequencies = np.unique(token_counts, return_counts=True)
+    manifest["schema_version"] = INTERACTION_CACHE_SCHEMA_VERSION
+    manifest["interaction"] = {
+        "token_capacity": int(interactions.tokens.shape[2]),
+        "token_dimension": int(interactions.tokens.shape[3]),
+        "pooled_dimension": int(interactions.pooled_features.shape[2]),
+        "token_feature_names": list(interactions.token_feature_names),
+        "pooled_feature_names": list(interactions.pooled_feature_names),
+        "action_feature_names": list(action_names),
+        "token_count_distribution": {
+            str(int(count)): int(frequency)
+            for count, frequency in zip(unique_counts, frequencies)
+        },
+        "token_count_min": int(token_counts.min()) if token_counts.size else 0,
+        "token_count_max": int(token_counts.max()) if token_counts.size else 0,
+        "token_count_mean": float(token_counts.mean()) if token_counts.size else 0.0,
+        "overflow_count": 0,
+    }
+    manifest["cache_sha256"] = _sha256(cache_path)
+    _manifest_path(cache_path).write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    return manifest
+
+
 def load_candidate_label_cache(
     path: str | Path,
     expected_configuration_digest: str | None = None,
@@ -462,3 +541,61 @@ def load_candidate_label_cache(
             result_kind=str(manifest.get("result_kind", "diagnostic_only")),
         )
     return batch, outcome, manifest
+
+
+def load_candidate_interaction_cache(
+    path: str | Path,
+    expected_configuration_digest: str | None = None,
+) -> tuple[CandidateBatch, CandidateOutcome, CandidateInteractionBatch, dict[str, Any]]:
+    """Load a complete schema-v6 cache; partial interaction payloads are rejected."""
+    cache_path = Path(path)
+    batch, outcome, manifest = load_candidate_label_cache(
+        cache_path, expected_configuration_digest=expected_configuration_digest
+    )
+    if int(manifest.get("schema_version", -1)) != INTERACTION_CACHE_SCHEMA_VERSION:
+        raise ValueError("candidate interaction loader requires schema-v6 cache")
+    required = {
+        "interaction_tokens",
+        "interaction_token_mask",
+        "interaction_edge_index",
+        "interaction_token_feature_names",
+        "interaction_pooled_features",
+        "interaction_pooled_feature_names",
+        "interaction_action_feature_names",
+    }
+    with np.load(cache_path, allow_pickle=False) as arrays:
+        missing = sorted(required.difference(arrays.files))
+        if missing:
+            raise ValueError(f"candidate cache missing interaction arrays: {missing}")
+        interactions = CandidateInteractionBatch(
+            tokens=arrays["interaction_tokens"],
+            token_mask=arrays["interaction_token_mask"],
+            edge_index=arrays["interaction_edge_index"],
+            token_feature_names=tuple(
+                str(value) for value in arrays["interaction_token_feature_names"].tolist()
+            ),
+            pooled_features=arrays["interaction_pooled_features"],
+            pooled_feature_names=tuple(
+                str(value) for value in arrays["interaction_pooled_feature_names"].tolist()
+            ),
+        )
+        action_names = tuple(
+            str(value) for value in arrays["interaction_action_feature_names"].tolist()
+        )
+    interaction_manifest = manifest.get("interaction")
+    if not isinstance(interaction_manifest, dict):
+        raise ValueError("schema-v6 manifest missing interaction contract")
+    expected_contract = {
+        "token_capacity": int(interactions.tokens.shape[2]),
+        "token_dimension": int(interactions.tokens.shape[3]),
+        "pooled_dimension": int(interactions.pooled_features.shape[2]),
+        "token_feature_names": list(interactions.token_feature_names),
+        "pooled_feature_names": list(interactions.pooled_feature_names),
+        "action_feature_names": list(action_names),
+    }
+    for key, value in expected_contract.items():
+        if interaction_manifest.get(key) != value:
+            raise ValueError(f"schema-v6 interaction manifest mismatch: {key}")
+    if interactions.tokens.shape[:2] != batch.candidate_features.shape[:2]:
+        raise ValueError("schema-v6 interaction/base sample-candidate dimensions mismatch")
+    return batch, outcome, interactions, manifest

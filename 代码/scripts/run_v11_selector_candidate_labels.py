@@ -40,7 +40,12 @@ from pi_jwm.v11_labeling import (
     build_candidate_feature_batch,
     build_observable_state_context,
     compute_rollout_outcome_metrics,
+    save_candidate_interaction_cache,
     save_candidate_label_cache,
+)
+from pi_jwm.v11_interactions import (
+    build_candidate_interaction_tokens,
+    pool_candidate_interactions,
 )
 from pi_jwm.v11_rollout_value_calibrator import freeze_module
 from pi_jwm.v11_selector import (
@@ -197,6 +202,8 @@ def build_reproduction_command(args: argparse.Namespace) -> str:
         str(args.seed),
         "--stats-chunk-size",
         str(args.stats_chunk_size),
+        "--cache-schema-version",
+        str(args.cache_schema_version),
     ]
     if args.frozen_config_manifest is not None:
         tokens.extend(
@@ -246,6 +253,7 @@ def _canonical_configuration(args: argparse.Namespace) -> dict[str, Any]:
         "helper_model": {"type": "random_forest", "trees": int(args.rf_trees), "seed": int(args.seed)},
         "helper_train_limit": int(args.helper_train_limit),
         "split_sample_limit": int(args.split_sample_limit),
+        "cache_schema_version": int(args.cache_schema_version),
     }
 
 
@@ -491,16 +499,46 @@ def _make_label_split(
         result_kind="diagnostic_only",
     )
     cache_path = args.output_dir / f"candidate_labels_{split_name}.npz"
-    manifest = save_candidate_label_cache(
-        cache_path,
-        split_name=split_name,
-        sample_ids=split_indices,
-        sample_seed=arrays["sample_seed"][split_indices],
-        batch=batch,
-        outcome=outcome,
-        configuration_digest=configuration_digest,
-        protocol_metadata=dict(protocol_metadata),
-    )
+    if int(args.cache_schema_version) == 6:
+        action_feature_names = tuple(
+            str(value) for value in arrays["edge_action_features"]
+        )
+        interactions = pool_candidate_interactions(
+            build_candidate_interaction_tokens(
+                library.actions,
+                predictions_by_candidate,
+                current_link_features=arrays["x_link"][split_indices, -1],
+                action_feature_names=action_feature_names,
+                current_link_feature_names=tuple(
+                    str(value) for value in arrays["link_features"]
+                ),
+                default_index=default_index,
+            ),
+            action_feature_names=action_feature_names,
+        )
+        manifest = save_candidate_interaction_cache(
+            cache_path,
+            split_name=split_name,
+            sample_ids=split_indices,
+            sample_seed=arrays["sample_seed"][split_indices],
+            batch=batch,
+            outcome=outcome,
+            interactions=interactions,
+            action_feature_names=action_feature_names,
+            configuration_digest=configuration_digest,
+            protocol_metadata=dict(protocol_metadata),
+        )
+    else:
+        manifest = save_candidate_label_cache(
+            cache_path,
+            split_name=split_name,
+            sample_ids=split_indices,
+            sample_seed=arrays["sample_seed"][split_indices],
+            batch=batch,
+            outcome=outcome,
+            configuration_digest=configuration_digest,
+            protocol_metadata=dict(protocol_metadata),
+        )
     gate = audit_candidate_library(
         active_sse=active_sse,
         active_count=sample_count,
@@ -518,6 +556,7 @@ def _make_label_split(
         "candidate_gate": gate,
         "protocol_audit": protocol_audit,
         "cache_manifest": manifest,
+        "interaction_audit": manifest.get("interaction"),
         "train_positive_quantiles": {str(key): float(value) for key, value in quantiles.items()},
     }
     (args.output_dir / f"summary_{split_name}.json").write_text(
@@ -566,6 +605,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--rf-trees", type=int, default=80)
     parser.add_argument("--seed", type=int, default=20260717)
     parser.add_argument("--stats-chunk-size", type=int, default=512)
+    parser.add_argument("--cache-schema-version", type=int, choices=(5, 6), default=5)
     return parser.parse_args()
 
 

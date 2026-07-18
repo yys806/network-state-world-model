@@ -160,6 +160,56 @@ class BenefitFeatureGroupTest(unittest.TestCase):
             )
         )
 
+    def test_schema6_adds_interaction_groups_without_changing_schema5_group(self):
+        from pi_jwm.v11_benefit_identifiability import (
+            build_benefit_audit_dataset,
+            build_benefit_feature_groups,
+        )
+        from pi_jwm.v11_selector import CandidateBatch
+
+        base_batch, outcome = synthetic_audit_payload()
+        interaction = np.arange(18, dtype=np.float32).reshape(3, 3, 2)
+        batch = CandidateBatch(
+            context=base_batch.context,
+            candidate_features=np.concatenate(
+                [base_batch.candidate_features, interaction], axis=2
+            ),
+            candidate_mask=base_batch.candidate_mask,
+            stage=base_batch.stage,
+            feature_names=base_batch.feature_names
+            + (
+                "interaction_step_0__rb_total__count",
+                "interaction_step_0__rb_total__delta_sum",
+            ),
+            candidate_names=base_batch.candidate_names,
+            context_feature_names=base_batch.context_feature_names,
+        )
+        dataset = build_benefit_audit_dataset(
+            batch,
+            outcome,
+            sample_ids=np.asarray([10, 11, 12]),
+            sample_seed=np.asarray([0, 1, 2]),
+        )
+        groups = build_benefit_feature_groups(dataset)
+
+        self.assertEqual(tuple(groups)[-2:], ("interaction_pooled_only", "full_schema_v6"))
+        self.assertFalse(
+            any(
+                name.startswith("interaction_")
+                for name in groups["full_schema_v5"].candidate_feature_names
+            )
+        )
+        self.assertTrue(
+            any(
+                name.startswith("interaction_")
+                for name in groups["interaction_pooled_only"].candidate_feature_names
+            )
+        )
+        self.assertGreater(
+            len(groups["full_schema_v6"].candidate_feature_names),
+            len(groups["full_schema_v5"].candidate_feature_names),
+        )
+
     def test_validation_values_do_not_change_train_normalization(self):
         from pi_jwm.v11_benefit_identifiability import fit_train_normalizer
 
@@ -435,6 +485,7 @@ class BenefitAuditCliTest(unittest.TestCase):
         self.assertIn("train_cache", destinations)
         self.assertIn("calibration_cache", destinations)
         self.assertIn("validation_cache", destinations)
+        self.assertIn("required_schema_version", destinations)
         self.assertNotIn("matched_test_cache", destinations)
         self.assertNotIn("external_holdout_cache", destinations)
 
@@ -462,6 +513,29 @@ class BenefitAuditCliTest(unittest.TestCase):
         }
 
         self.assertEqual(module.validate_audit_manifests(manifests), "a" * 64)
+        schema6_manifests = {
+            split: {
+                **manifest,
+                "schema_version": 6,
+                "interaction": {
+                    "token_capacity": 72,
+                    "token_dimension": 25,
+                    "pooled_dimension": 234,
+                    "token_feature_names": ["step_0"],
+                    "pooled_feature_names": ["step_0__rb_total__count"],
+                    "action_feature_names": ["offload_count"],
+                },
+            }
+            for split, manifest in manifests.items()
+        }
+        self.assertEqual(
+            module.validate_audit_manifests(
+                schema6_manifests, required_schema_version=6
+            ),
+            "a" * 64,
+        )
+        with self.assertRaisesRegex(ValueError, "schema 6"):
+            module.validate_audit_manifests(manifests, required_schema_version=6)
         manifests["validation"]["seed_values"] = [50]
         with self.assertRaisesRegex(ValueError, "seed"):
             module.validate_audit_manifests(manifests)

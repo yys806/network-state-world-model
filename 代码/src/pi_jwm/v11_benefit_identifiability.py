@@ -239,6 +239,12 @@ def build_benefit_feature_groups(
         raise ValueError("benefit audit feature protocol contains a forbidden field")
 
     feature_names = dataset.batch.feature_names
+    base_columns = [
+        index for index, name in enumerate(feature_names) if not name.startswith("interaction_")
+    ]
+    interaction_columns = [
+        index for index, name in enumerate(feature_names) if name.startswith("interaction_")
+    ]
     action_columns = [
         index
         for index, name in enumerate(feature_names)
@@ -259,8 +265,11 @@ def build_benefit_feature_groups(
         "candidate_only": action_columns,
         "forecast_delta": forecast_columns,
         "selected_edge": selected_columns,
-        "full_schema_v5": list(range(len(feature_names))),
+        "full_schema_v5": base_columns,
     }
+    if interaction_columns:
+        group_columns["interaction_pooled_only"] = interaction_columns
+        group_columns["full_schema_v6"] = list(range(len(feature_names)))
 
     valid_indices = np.flatnonzero(dataset.valid_sample)
     opportunity_stage, stage_names = _stage_features(dataset.batch.stage[valid_indices])
@@ -271,7 +280,7 @@ def build_benefit_feature_groups(
         pooled, pooled_names = _pooled_candidate_features(dataset, columns)
         opportunity_blocks = [opportunity_stage]
         opportunity_names: tuple[str, ...] = stage_names
-        if group_name in {"context_only", "full_schema_v5"}:
+        if group_name in {"context_only", "full_schema_v5", "full_schema_v6"}:
             opportunity_blocks.append(dataset.batch.context[valid_indices])
             opportunity_names += dataset.batch.context_feature_names
         if columns:
@@ -285,7 +294,7 @@ def build_benefit_feature_groups(
         else:
             candidate_blocks = [flat_stage, candidate_identity]
             candidate_names = stage_names + candidate_identity_names
-            if group_name == "full_schema_v5":
+            if group_name in {"full_schema_v5", "full_schema_v6"}:
                 candidate_blocks.append(dataset.batch.context[dataset.flat_sample_index])
                 candidate_names += dataset.batch.context_feature_names
             if columns:

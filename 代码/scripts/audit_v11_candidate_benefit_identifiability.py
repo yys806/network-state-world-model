@@ -37,18 +37,36 @@ EXPECTED_SEEDS = {
     "calibration": set(range(44, 50)),
     "validation": set(range(50, 60)),
 }
+INTERACTION_PROTOCOL_FIELDS = (
+    "token_capacity",
+    "token_dimension",
+    "pooled_dimension",
+    "token_feature_names",
+    "pooled_feature_names",
+    "action_feature_names",
+)
+
+
+def _interaction_protocol(manifest: Mapping[str, Any]) -> dict[str, Any] | None:
+    interaction = manifest.get("interaction")
+    if not isinstance(interaction, Mapping):
+        return None
+    return {field: interaction.get(field) for field in INTERACTION_PROTOCOL_FIELDS}
 
 
 def validate_audit_manifests(
     manifests: Mapping[str, Mapping[str, Any]],
+    required_schema_version: int = 5,
 ) -> str:
     required = ("train", "calibration", "validation")
     if set(manifests) != set(required):
         raise ValueError("benefit audit requires exactly train, calibration, and validation caches")
     for split in required:
         manifest = manifests[split]
-        if int(manifest.get("schema_version", -1)) != 5:
-            raise ValueError("benefit audit requires cache schema 5")
+        if int(manifest.get("schema_version", -1)) != int(required_schema_version):
+            raise ValueError(
+                f"benefit audit requires cache schema {int(required_schema_version)}"
+            )
         if str(manifest.get("split_name")) != split:
             raise ValueError(f"cache split mismatch for {split}")
         seeds = {int(value) for value in manifest.get("seed_values", ())}
@@ -63,6 +81,13 @@ def validate_audit_manifests(
         }
         if len(values) != 1:
             raise ValueError(f"cache {field} mismatch")
+    if int(required_schema_version) == 6:
+        interaction_contracts = {
+            json.dumps(_interaction_protocol(manifests[split]), sort_keys=True)
+            for split in required
+        }
+        if len(interaction_contracts) != 1 or "null" in interaction_contracts:
+            raise ValueError("cache interaction protocol mismatch")
     return str(manifests["train"].get("configuration_digest"))
 
 
@@ -84,6 +109,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--sample-limit-per-split", type=int, default=0)
     parser.add_argument("--group-cv-folds", type=int, default=3)
+    parser.add_argument("--required-schema-version", type=int, choices=(5, 6), default=5)
     parser.add_argument(
         "--model-kinds", nargs="+", choices=("linear", "rf", "hgb", "xgb"),
         default=("linear", "rf", "hgb", "xgb"),
@@ -98,6 +124,8 @@ def build_parser() -> argparse.ArgumentParser:
             "forecast_delta",
             "selected_edge",
             "full_schema_v5",
+            "interaction_pooled_only",
+            "full_schema_v6",
         ),
         default=(
             "prior_only",
@@ -206,6 +234,8 @@ def _gate(metrics: Mapping[str, Any]) -> dict[str, bool]:
         "negative_rate": float(metrics["negative_selection_rate"]) <= 0.20,
         "activity_f1": f1_drop <= 0.002,
         "link_rmse": link_degradation <= 0.02,
+        "sample_rank_spearman": metrics.get("sample_rank_spearman") is not None
+        and float(metrics["sample_rank_spearman"]) >= 0.20,
     }
 
 
@@ -311,7 +341,12 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         seed_group_folds,
         select_benefit_candidates,
     )
-    from pi_jwm.v11_labeling import load_candidate_label_cache, load_candidate_label_metadata
+    from pi_jwm.v11_interactions import append_interaction_pooled_features
+    from pi_jwm.v11_labeling import (
+        load_candidate_interaction_cache,
+        load_candidate_label_cache,
+        load_candidate_label_metadata,
+    )
 
     started = time.time()
     output_dir = Path(args.output_dir).resolve()
@@ -321,9 +356,32 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "calibration": Path(args.calibration_cache).resolve(),
         "validation": Path(args.validation_cache).resolve(),
     }
-    loaded = {split: load_candidate_label_cache(path) for split, path in cache_paths.items()}
+    if int(args.required_schema_version) == 6:
+        loaded = {}
+        for split, path in cache_paths.items():
+            base_batch, outcome, interactions, manifest = load_candidate_interaction_cache(path)
+            loaded[split] = (
+                append_interaction_pooled_features(base_batch, interactions),
+                outcome,
+                manifest,
+            )
+    else:
+        loaded = {
+            split: load_candidate_label_cache(path) for split, path in cache_paths.items()
+        }
     manifests = {split: values[2] for split, values in loaded.items()}
-    configuration_digest = validate_audit_manifests(manifests)
+    configuration_digest = validate_audit_manifests(
+        manifests, required_schema_version=int(args.required_schema_version)
+    )
+    token_protocol_sha256 = None
+    if int(args.required_schema_version) == 6:
+        token_protocol_sha256 = hashlib.sha256(
+            json.dumps(
+                _interaction_protocol(manifests["train"]),
+                sort_keys=True,
+                separators=(",", ":"),
+            ).encode("utf-8")
+        ).hexdigest()
     metadata = {
         split: load_candidate_label_metadata(
             path, expected_configuration_digest=configuration_digest
@@ -591,6 +649,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         f"  --calibration-cache '{cache_paths['calibration']}' `",
         f"  --validation-cache '{cache_paths['validation']}' `",
         f"  --output-dir '{output_dir}' `",
+        f"  --required-schema-version {args.required_schema_version} `",
         f"  --model-kinds {' '.join(args.model_kinds)} `",
         f"  --feature-groups {' '.join(args.feature_groups)}",
     ]
@@ -610,6 +669,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "cache_sha256": {
             split: manifests[split]["cache_sha256"] for split in manifests
         },
+        "cache_schema_version": int(args.required_schema_version),
+        "token_protocol_sha256": token_protocol_sha256,
         "sample_limit_per_split": int(args.sample_limit_per_split),
         "model_status": model_status,
         "group_cv": {
