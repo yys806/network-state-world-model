@@ -323,5 +323,101 @@ class ObjectiveAlignedFitTest(unittest.TestCase):
             np.testing.assert_array_equal(expected[name], actual[name])
 
 
+class ObjectiveAlignedDecisionTest(unittest.TestCase):
+    def test_calibration_uses_only_fixed_opportunity_quantiles(self):
+        from pi_jwm.v11_objective_aligned_selector import (
+            calibrate_opportunity_threshold,
+        )
+        from pi_jwm.v11_selector import CandidateOutcome
+
+        opportunity_lcb = np.asarray([0.0, 1.0, 2.0, 3.0])
+        candidate_choice = np.asarray([1, 1, 1, 1])
+        outcome = CandidateOutcome(
+            active_sse=np.asarray(
+                [[4.0, 1.0], [4.0, 5.0], [4.0, 1.0], [4.0, 5.0]],
+                dtype=np.float32,
+            ),
+            active_count=np.ones(4, dtype=np.int64),
+            default_index=0,
+        )
+
+        result = calibrate_opportunity_threshold(
+            opportunity_lcb, candidate_choice, outcome
+        )
+
+        self.assertIn(result.quantile, (0.0, 0.25, 0.5, 0.75, 0.9))
+        self.assertEqual(len(result.curve), 5)
+
+    def test_selection_requires_positive_opportunity_and_candidate_lcb(self):
+        from pi_jwm.v11_objective_aligned_selector import select_objective_aligned
+
+        decision = select_objective_aligned(
+            ensemble_candidate_benefit=np.asarray(
+                [[[0.0, 4.0]], [[0.0, 4.0]], [[0.0, 4.0]]], dtype=np.float32
+            ),
+            ensemble_candidate_uncertainty=np.zeros((3, 1, 2), dtype=np.float32),
+            ensemble_opportunity=np.asarray([[5.0], [5.0], [5.0]], dtype=np.float32),
+            ensemble_opportunity_uncertainty=np.zeros((3, 1), dtype=np.float32),
+            candidate_mask=np.ones((1, 2), dtype=bool),
+            default_index=0,
+            opportunity_threshold=1.0,
+        )
+
+        self.assertEqual(decision.candidate_index[0], 1)
+        self.assertFalse(decision.deferred[0])
+        self.assertEqual(decision.defer_reason[0], "")
+
+    def test_selection_defers_when_opportunity_is_below_threshold(self):
+        from pi_jwm.v11_objective_aligned_selector import select_objective_aligned
+
+        decision = select_objective_aligned(
+            ensemble_candidate_benefit=np.asarray([[[0.0, 4.0]]], dtype=np.float32),
+            ensemble_candidate_uncertainty=np.zeros((1, 1, 2), dtype=np.float32),
+            ensemble_opportunity=np.asarray([[0.5]], dtype=np.float32),
+            ensemble_opportunity_uncertainty=np.zeros((1, 1), dtype=np.float32),
+            candidate_mask=np.ones((1, 2), dtype=bool),
+            default_index=0,
+            opportunity_threshold=1.0,
+        )
+
+        self.assertEqual(decision.candidate_index[0], 0)
+        self.assertEqual(decision.defer_reason[0], "opportunity_below_threshold")
+
+    def test_selection_defers_when_candidate_lcb_is_not_positive(self):
+        from pi_jwm.v11_objective_aligned_selector import select_objective_aligned
+
+        decision = select_objective_aligned(
+            ensemble_candidate_benefit=np.asarray([[[0.0, 0.1]]], dtype=np.float32),
+            ensemble_candidate_uncertainty=np.asarray([[[0.0, 1.0]]], dtype=np.float32),
+            ensemble_opportunity=np.asarray([[5.0]], dtype=np.float32),
+            ensemble_opportunity_uncertainty=np.zeros((1, 1), dtype=np.float32),
+            candidate_mask=np.ones((1, 2), dtype=bool),
+            default_index=0,
+            opportunity_threshold=1.0,
+        )
+
+        self.assertEqual(decision.candidate_index[0], 0)
+        self.assertEqual(decision.defer_reason[0], "candidate_nonpositive_lcb")
+
+    def test_pareto_dominated_candidate_is_not_selected(self):
+        from pi_jwm.v11_objective_aligned_selector import select_objective_aligned
+
+        decision = select_objective_aligned(
+            ensemble_candidate_benefit=np.asarray(
+                [[[0.0, 5.0, 4.0]]], dtype=np.float32
+            ),
+            ensemble_candidate_uncertainty=np.zeros((1, 1, 3), dtype=np.float32),
+            ensemble_opportunity=np.asarray([[6.0]], dtype=np.float32),
+            ensemble_opportunity_uncertainty=np.zeros((1, 1), dtype=np.float32),
+            candidate_mask=np.ones((1, 3), dtype=bool),
+            default_index=0,
+            opportunity_threshold=1.0,
+            task_delta=np.asarray([[0.0, -1.0, 1.0]], dtype=np.float32),
+            energy_delta=np.asarray([[0.0, 2.0, 1.0]], dtype=np.float32),
+        )
+
+        self.assertEqual(decision.candidate_index[0], 2)
+
+
 if __name__ == "__main__":
     unittest.main()

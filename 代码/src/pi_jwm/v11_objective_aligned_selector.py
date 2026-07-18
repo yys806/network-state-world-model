@@ -12,6 +12,7 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
+from pi_jwm.evaluation.candidate_selection import choice_rmse_from_sample_sse
 from pi_jwm.v11_selector import CandidateBatch, CandidateOutcome
 
 
@@ -598,3 +599,243 @@ def load_objective_aligned_checkpoint(
         "weight_cap": float(payload["weight_cap"]),
     }
     return fitted, metadata
+
+
+@dataclass(frozen=True)
+class OpportunityCalibration:
+    quantile: float
+    threshold: float
+    rmse: float
+    defer_ratio: float
+    curve: tuple[dict[str, float], ...]
+
+
+@dataclass(frozen=True)
+class ObjectiveAlignedDecision:
+    candidate_index: np.ndarray
+    proposed_candidate_index: np.ndarray
+    predicted_benefit: np.ndarray
+    candidate_uncertainty: np.ndarray
+    candidate_lcb: np.ndarray
+    predicted_opportunity: np.ndarray
+    opportunity_uncertainty: np.ndarray
+    opportunity_lcb: np.ndarray
+    deferred: np.ndarray
+    defer_reason: tuple[str, ...]
+
+    def to_records(self, sample_ids: np.ndarray | None = None) -> list[dict[str, Any]]:
+        count = self.candidate_index.shape[0]
+        ids = np.arange(count) if sample_ids is None else np.asarray(sample_ids).reshape(-1)
+        if ids.shape[0] != count:
+            raise ValueError("sample_ids must contain one value per decision")
+        return [
+            {
+                "sample_id": int(ids[index]),
+                "candidate_index": int(self.candidate_index[index]),
+                "proposed_candidate_index": int(
+                    self.proposed_candidate_index[index]
+                ),
+                "predicted_benefit": float(self.predicted_benefit[index]),
+                "candidate_uncertainty": float(
+                    self.candidate_uncertainty[index]
+                ),
+                "candidate_lcb": float(self.candidate_lcb[index]),
+                "predicted_opportunity": float(
+                    self.predicted_opportunity[index]
+                ),
+                "opportunity_uncertainty": float(
+                    self.opportunity_uncertainty[index]
+                ),
+                "opportunity_lcb": float(self.opportunity_lcb[index]),
+                "deferred": bool(self.deferred[index]),
+                "defer_reason": self.defer_reason[index],
+            }
+            for index in range(count)
+        ]
+
+
+def calibrate_opportunity_threshold(
+    opportunity_lcb: np.ndarray,
+    candidate_choice: np.ndarray,
+    outcome: CandidateOutcome,
+    quantiles: tuple[float, ...] = (0.0, 0.25, 0.5, 0.75, 0.9),
+) -> OpportunityCalibration:
+    """Choose the opportunity threshold on calibration outcomes only."""
+
+    lower_bound = np.asarray(opportunity_lcb, dtype=np.float64).reshape(-1)
+    choice = np.asarray(candidate_choice, dtype=np.int64).reshape(-1)
+    if lower_bound.shape[0] != outcome.active_sse.shape[0] or choice.shape != lower_bound.shape:
+        raise ValueError("calibration arrays must contain one value per sample")
+    if not np.all(np.isfinite(lower_bound)):
+        raise ValueError("opportunity lower confidence bounds must be finite")
+    if np.any(choice < 0) or np.any(choice >= outcome.active_sse.shape[1]):
+        raise ValueError("candidate choice outside outcome dimensions")
+    fixed_quantiles = tuple(float(value) for value in quantiles)
+    if fixed_quantiles != (0.0, 0.25, 0.5, 0.75, 0.9):
+        raise ValueError("opportunity calibration quantiles are protocol-fixed")
+    rows = []
+    for quantile in fixed_quantiles:
+        threshold = float(np.quantile(lower_bound, quantile))
+        execute = lower_bound > threshold
+        calibrated_choice = np.where(execute, choice, outcome.default_index).astype(
+            np.int64
+        )
+        rmse = choice_rmse_from_sample_sse(
+            outcome.active_sse,
+            outcome.active_count,
+            calibrated_choice,
+        )
+        if rmse is None:
+            raise ValueError("opportunity calibration requires an active target")
+        rows.append(
+            {
+                "quantile": quantile,
+                "threshold": threshold,
+                "rmse": float(rmse),
+                "defer_ratio": float(np.mean(~execute)),
+            }
+        )
+    best = min(
+        rows,
+        key=lambda row: (
+            row["rmse"],
+            -row["defer_ratio"],
+            -row["threshold"],
+            row["quantile"],
+        ),
+    )
+    return OpportunityCalibration(
+        quantile=float(best["quantile"]),
+        threshold=float(best["threshold"]),
+        rmse=float(best["rmse"]),
+        defer_ratio=float(best["defer_ratio"]),
+        curve=tuple(dict(row) for row in rows),
+    )
+
+
+def _total_uncertainty(
+    ensemble_prediction: np.ndarray,
+    ensemble_uncertainty: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    prediction = np.asarray(ensemble_prediction, dtype=np.float64)
+    uncertainty = np.asarray(ensemble_uncertainty, dtype=np.float64)
+    if prediction.shape != uncertainty.shape or prediction.ndim < 2:
+        raise ValueError("ensemble prediction and uncertainty must share shape")
+    if not np.all(np.isfinite(prediction)) or not np.all(np.isfinite(uncertainty)):
+        raise ValueError("ensemble values must be finite")
+    if np.any(uncertainty < 0.0):
+        raise ValueError("predicted uncertainty must be non-negative")
+    mean = prediction.mean(axis=0)
+    epistemic = prediction.std(axis=0, ddof=0)
+    aleatoric_variance = np.mean(np.square(uncertainty), axis=0)
+    total = np.sqrt(np.square(epistemic) + aleatoric_variance)
+    return mean, total
+
+
+def _pareto_dominated(task: np.ndarray, energy: np.ndarray) -> np.ndarray:
+    dominated = np.zeros(task.shape[0], dtype=bool)
+    for candidate in range(task.shape[0]):
+        no_worse = (task >= task[candidate]) & (energy <= energy[candidate])
+        strictly_better = (task > task[candidate]) | (energy < energy[candidate])
+        dominated[candidate] = bool(np.any(no_worse & strictly_better))
+    return dominated
+
+
+def select_objective_aligned(
+    ensemble_candidate_benefit: np.ndarray,
+    ensemble_candidate_uncertainty: np.ndarray,
+    ensemble_opportunity: np.ndarray,
+    ensemble_opportunity_uncertainty: np.ndarray,
+    candidate_mask: np.ndarray,
+    default_index: int,
+    opportunity_threshold: float,
+    task_delta: np.ndarray | None = None,
+    energy_delta: np.ndarray | None = None,
+    z_value: float = 1.64,
+) -> ObjectiveAlignedDecision:
+    """Select a positive-benefit candidate or defer to the ranked baseline."""
+
+    candidate_prediction = np.asarray(ensemble_candidate_benefit, dtype=np.float64)
+    if candidate_prediction.ndim != 3 or candidate_prediction.shape[0] < 1:
+        raise ValueError("candidate benefit ensemble must be [model,sample,candidate]")
+    candidate_mean, candidate_std = _total_uncertainty(
+        candidate_prediction,
+        ensemble_candidate_uncertainty,
+    )
+    opportunity_prediction = np.asarray(ensemble_opportunity, dtype=np.float64)
+    if opportunity_prediction.ndim != 2 or opportunity_prediction.shape[0] < 1:
+        raise ValueError("opportunity ensemble must be [model,sample]")
+    opportunity_mean, opportunity_std = _total_uncertainty(
+        opportunity_prediction,
+        ensemble_opportunity_uncertainty,
+    )
+    _, sample_count, candidate_count = candidate_prediction.shape
+    if opportunity_mean.shape != (sample_count,):
+        raise ValueError("opportunity and candidate ensembles must share samples")
+    mask = np.asarray(candidate_mask, dtype=bool)
+    if mask.shape != (sample_count, candidate_count):
+        raise ValueError("candidate mask must match ensemble dimensions")
+    default = int(default_index)
+    if not 0 <= default < candidate_count or not np.all(mask[:, default]):
+        raise ValueError("ranked default must be valid for every sample")
+    if not np.isfinite(opportunity_threshold):
+        raise ValueError("opportunity threshold must be finite")
+    if (task_delta is None) != (energy_delta is None):
+        raise ValueError("task and energy deltas must be supplied together")
+    if task_delta is not None:
+        task = np.asarray(task_delta, dtype=np.float64)
+        energy = np.asarray(energy_delta, dtype=np.float64)
+        if task.shape != mask.shape or energy.shape != mask.shape:
+            raise ValueError("task and energy deltas must match candidates")
+    else:
+        task = energy = None
+
+    candidate_lcb_all = candidate_mean - float(z_value) * candidate_std
+    opportunity_lcb_all = opportunity_mean - float(z_value) * opportunity_std
+    selected = np.full(sample_count, default, dtype=np.int64)
+    proposed = np.full(sample_count, default, dtype=np.int64)
+    predicted_benefit = np.zeros(sample_count, dtype=np.float64)
+    selected_uncertainty = np.zeros(sample_count, dtype=np.float64)
+    selected_lcb = np.zeros(sample_count, dtype=np.float64)
+    deferred = np.ones(sample_count, dtype=bool)
+    reasons = []
+    for sample in range(sample_count):
+        allowed = mask[sample].copy()
+        allowed[default] = False
+        pareto_removed = False
+        if task is not None and energy is not None:
+            dominated = _pareto_dominated(task[sample], energy[sample])
+            pareto_removed = bool(np.any(allowed & dominated))
+            allowed &= ~dominated
+        if not np.any(allowed):
+            reasons.append(
+                "pareto_dominated" if pareto_removed else "no_nondefault_candidate"
+            )
+            continue
+        candidate = int(
+            np.argmax(np.where(allowed, candidate_mean[sample], -np.inf))
+        )
+        proposed[sample] = candidate
+        predicted_benefit[sample] = candidate_mean[sample, candidate]
+        selected_uncertainty[sample] = candidate_std[sample, candidate]
+        selected_lcb[sample] = candidate_lcb_all[sample, candidate]
+        if opportunity_lcb_all[sample] <= float(opportunity_threshold):
+            reasons.append("opportunity_below_threshold")
+        elif selected_lcb[sample] <= 0.0:
+            reasons.append("candidate_nonpositive_lcb")
+        else:
+            selected[sample] = candidate
+            deferred[sample] = False
+            reasons.append("")
+    return ObjectiveAlignedDecision(
+        candidate_index=selected,
+        proposed_candidate_index=proposed,
+        predicted_benefit=predicted_benefit.astype(np.float32),
+        candidate_uncertainty=selected_uncertainty.astype(np.float32),
+        candidate_lcb=selected_lcb.astype(np.float32),
+        predicted_opportunity=opportunity_mean.astype(np.float32),
+        opportunity_uncertainty=opportunity_std.astype(np.float32),
+        opportunity_lcb=opportunity_lcb_all.astype(np.float32),
+        deferred=deferred,
+        defer_reason=tuple(reasons),
+    )
