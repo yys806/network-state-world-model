@@ -444,6 +444,156 @@ class DiagnosticRunnerContractTest(unittest.TestCase):
         self.assertEqual(result["total_cpu"], 3.0)
         self.assertEqual(result["num_offload_overrides"], 1)
 
+    def test_selector_timed_intervention_skips_step_zero(self):
+        module = self._load_runner()
+
+        self.assertFalse(module.temporal_pattern_active(0, 1, "persistent"))
+        self.assertTrue(module.temporal_pattern_active(1, 1, "persistent"))
+        self.assertTrue(module.temporal_pattern_active(2, 1, "persistent"))
+        self.assertTrue(module.temporal_pattern_active(1, 1, "decayed"))
+        self.assertFalse(module.temporal_pattern_active(2, 1, "decayed"))
+
+    def test_selector_timed_intervention_rejects_unknown_pattern(self):
+        module = self._load_runner()
+
+        with self.assertRaisesRegex(ValueError, "temporal pattern"):
+            module.temporal_pattern_active(1, 1, "unknown")
+
+    def test_aligned_point_rows_include_sample_id(self):
+        module = self._load_runner()
+
+        aligned, rejected = module.align_points_to_sample_index(
+            [{"seed": 2, "decision_time": 1.0}],
+            [{"sample_id": 782, "seed": 2, "input_end_time": 1.0}],
+        )
+
+        self.assertEqual(aligned[0]["sample_id"], 782)
+        self.assertEqual(rejected, [])
+
+    def test_temporal_metadata_is_explicit(self):
+        module = self._load_runner()
+
+        metadata = module.candidate_action_metadata(
+            {
+                "rb_plan": {},
+                "intervention_start_step": 1,
+                "temporal_pattern": "decayed",
+            },
+            horizon=3,
+        )
+
+        self.assertEqual(metadata["intervention_start_step"], 1)
+        self.assertEqual(metadata["temporal_pattern"], "decayed")
+
+    def test_prepare_candidate_step_schedules_default_before_delayed_override(self):
+        module = self._load_runner()
+        events = []
+
+        class FakeEnv:
+            activated_offloading_tasks_with_RB_Nos = {}
+
+        class FakeAlgorithm:
+            def scheduleStep(self, env):
+                events.append("schedule_default")
+                env.activated_offloading_tasks_with_RB_Nos = {"task": [9]}
+
+        env = FakeEnv()
+        algorithm = FakeAlgorithm()
+        candidate = {
+            "action_family": "rb_count",
+            "rb_plan": {"task": [0, 1]},
+            "num_offload_overrides": 0,
+            "num_cpu_overrides": 0,
+            "num_return_route_overrides": 0,
+        }
+
+        inactive = module.prepare_candidate_step(env, algorithm, candidate, active=False)
+        self.assertEqual(env.activated_offloading_tasks_with_RB_Nos, {"task": [9]})
+        self.assertEqual(inactive, {"offload": 0, "cpu": 0, "return_route": 0})
+
+        active = module.prepare_candidate_step(env, algorithm, candidate, active=True)
+        self.assertEqual(env.activated_offloading_tasks_with_RB_Nos, {"task": [0, 1]})
+        self.assertEqual(active, {"offload": 0, "cpu": 0, "return_route": 0})
+        self.assertEqual(events, ["schedule_default", "schedule_default"])
+
+    def test_temporal_candidate_expansion_keeps_one_default_and_unique_variants(self):
+        module = self._load_runner()
+
+        expanded = module.expand_temporal_candidates(
+            [
+                {"candidate_id": "default", "action_family": "default", "rb_plan": {}},
+                {"candidate_id": "rb_2", "action_family": "rb_count", "rb_plan": {"t": [0, 1]}},
+            ],
+            intervention_start_step=1,
+            temporal_patterns=("persistent", "decayed"),
+            max_candidates=8,
+        )
+
+        self.assertEqual(sum(row["action_family"] == "default" for row in expanded), 1)
+        self.assertEqual(
+            {row["candidate_id"] for row in expanded},
+            {"default", "rb_2__persistent", "rb_2__decayed"},
+        )
+        self.assertTrue(all(row["intervention_start_step"] == 1 for row in expanded))
+
+    def test_formal_cli_accepts_alignment_and_temporal_protocol(self):
+        module = self._load_runner()
+
+        args = module.parse_args(
+            [
+                "--sample-index-csv",
+                "sample_index.csv",
+                "--intervention-start-step",
+                "1",
+                "--temporal-patterns",
+                "persistent",
+                "decayed",
+            ]
+        )
+
+        self.assertEqual(args.sample_index_csv, Path("sample_index.csv"))
+        self.assertEqual(args.intervention_start_step, 1)
+        self.assertEqual(args.temporal_patterns, ["persistent", "decayed"])
+
+    def test_alignment_precedes_stage_balancing(self):
+        module = self._load_runner()
+
+        selected, rejected = module.select_aligned_decision_points(
+            [
+                {"seed": 0, "decision_time": 0.3, "decision_stage": "offload_rb"},
+                {"seed": 0, "decision_time": 0.8, "decision_stage": "offload_rb"},
+                {"seed": 0, "decision_time": 1.0, "decision_stage": "compute"},
+            ],
+            [
+                {"sample_id": 0, "seed": 0, "input_end_time": 0.8},
+                {"sample_id": 2, "seed": 0, "input_end_time": 1.0},
+            ],
+            max_points=2,
+        )
+
+        self.assertEqual([row["sample_id"] for row in selected], [0, 2])
+        self.assertEqual(rejected[0]["decision_time"], 0.3)
+
+    def test_reproduction_command_includes_temporal_protocol(self):
+        module = self._load_runner()
+        args = module.parse_args(
+            [
+                "--sample-index-csv",
+                "sample_index.csv",
+                "--intervention-start-step",
+                "1",
+                "--temporal-patterns",
+                "persistent",
+                "decayed",
+            ]
+        )
+
+        command = module.build_reproduction_command(args)
+
+        self.assertIn("--sample-index-csv sample_index.csv", command)
+        self.assertIn("--intervention-start-step 1", command)
+        self.assertIn("--temporal-patterns persistent decayed", command)
+
     def test_metric_definitions_document_raw_and_composite_quantities(self):
         module = self._load_runner()
 

@@ -6,6 +6,7 @@ import argparse
 import json
 import math
 import os
+import shlex
 import sys
 import time
 from pathlib import Path
@@ -32,6 +33,7 @@ from pi_jwm.airfogsim_diagnostics import (
     summarize_candidate_steps,
 )
 from pi_jwm.airfogsim_runtime import capture_energy_manager_snapshot
+from pi_jwm.v11_physical_benefit import align_decision_points
 from run_airfogsim_counterfactual_action_smoke_v0 import (
     channel_throughput,
     current_counts,
@@ -53,7 +55,26 @@ EFFECT_METRICS = ("task_utility", "throughput_delta", "rb_total", "cpu_total", "
 SENSITIVITY_LAMBDAS = (0.0, 0.25, 0.5, 1.0)
 
 
-def parse_args():
+def temporal_pattern_active(step, intervention_start_step, temporal_pattern):
+    """Return whether a precomputed intervention is active at this rollout step."""
+
+    current = int(step)
+    start = int(intervention_start_step)
+    pattern = str(temporal_pattern).strip().lower()
+    if pattern == "persistent":
+        return current >= start
+    if pattern == "decayed":
+        return current == start
+    raise ValueError(f"unknown temporal pattern: {temporal_pattern}")
+
+
+def align_points_to_sample_index(points, sample_index_rows):
+    """Expose the framework's exact alignment contract to the runner."""
+
+    return align_decision_points(points, sample_index_rows)
+
+
+def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Run PI-JWM energy/reward counterfactual diagnostics.")
     parser.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
     parser.add_argument("--max-time", type=float, default=10.0)
@@ -61,8 +82,54 @@ def parse_args():
     parser.add_argument("--decision-times-per-seed", type=int, default=3)
     parser.add_argument("--horizon", type=int, default=3)
     parser.add_argument("--max-candidates", type=int, default=8)
+    parser.add_argument("--sample-index-csv", type=Path)
+    parser.add_argument("--intervention-start-step", type=int, default=0)
+    parser.add_argument(
+        "--temporal-patterns",
+        nargs="+",
+        choices=("persistent", "decayed"),
+        default=["persistent"],
+    )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
-    return parser.parse_args()
+    return parser.parse_args(argv)
+
+
+def build_reproduction_command(args):
+    """Serialize every physical-label protocol argument into one command."""
+
+    tokens = [
+        "conda",
+        "run",
+        "-n",
+        "airfogsim",
+        "python",
+        f"代码/scripts/{Path(__file__).name}",
+        "--seeds",
+        *[str(seed) for seed in args.seeds],
+        "--max-time",
+        f"{args.max_time:g}",
+        "--scan-step-limit",
+        str(args.scan_step_limit),
+        "--decision-times-per-seed",
+        str(args.decision_times_per_seed),
+        "--horizon",
+        str(args.horizon),
+        "--max-candidates",
+        str(args.max_candidates),
+        "--intervention-start-step",
+        str(args.intervention_start_step),
+        "--temporal-patterns",
+        *[str(value) for value in args.temporal_patterns],
+        "--output-dir",
+        str(args.output_dir),
+    ]
+    if args.sample_index_csv is not None:
+        insert_at = tokens.index("--output-dir")
+        tokens[insert_at:insert_at] = [
+            "--sample-index-csv",
+            str(args.sample_index_csv),
+        ]
+    return shlex.join(tokens)
 
 
 def select_balanced_candidates(candidates, max_candidates):
@@ -96,6 +163,40 @@ def select_balanced_candidates(candidates, max_candidates):
     return selected
 
 
+def expand_temporal_candidates(
+    candidates,
+    intervention_start_step,
+    temporal_patterns,
+    max_candidates,
+):
+    """Create unique delayed variants while retaining exactly one default."""
+
+    start = int(intervention_start_step)
+    patterns = tuple(str(value).strip().lower() for value in temporal_patterns)
+    if start != 1:
+        raise ValueError("formal temporal candidate expansion requires start step 1")
+    if not patterns or any(value not in {"persistent", "decayed"} for value in patterns):
+        raise ValueError("temporal patterns must be persistent or decayed")
+    expanded = []
+    for source in candidates:
+        candidate = dict(source)
+        is_default = str(candidate.get("candidate_id")) in {"default", "default_no_rb"}
+        if is_default:
+            candidate["action_family"] = "default"
+            candidate["candidate_id"] = "default"
+            candidate["intervention_start_step"] = start
+            candidate["temporal_pattern"] = "persistent"
+            expanded.append(candidate)
+            continue
+        for pattern in patterns:
+            variant = dict(candidate)
+            variant["candidate_id"] = f"{candidate['candidate_id']}__{pattern}"
+            variant["intervention_start_step"] = start
+            variant["temporal_pattern"] = pattern
+            expanded.append(variant)
+    return select_balanced_candidates(expanded, max_candidates=max_candidates)
+
+
 def select_decision_points(points, max_points):
     """Prefer stage coverage, then fill by simulation time."""
     ordered = sorted(points, key=lambda item: float(item["decision_time"]))
@@ -112,6 +213,13 @@ def select_decision_points(points, max_points):
             if len(selected) >= max_points:
                 break
     return selected
+
+
+def select_aligned_decision_points(points, sample_index_rows, max_points):
+    """Discard unobservable times before applying stage-coverage selection."""
+
+    aligned, rejected = align_points_to_sample_index(points, sample_index_rows)
+    return select_decision_points(aligned, max_points), rejected
 
 
 def _recording_cpu_callback(env):
@@ -143,6 +251,23 @@ def _action_applied(candidate, applied_counts):
     return bool(checks and all(checks))
 
 
+def prepare_candidate_step(env, algorithm, candidate, active):
+    """Schedule the shared default, then optionally overlay a precomputed action."""
+
+    algorithm.scheduleStep(env)
+    if not bool(active):
+        return {"offload": 0, "cpu": 0, "return_route": 0}
+    applied_counts = {
+        "offload": apply_offload_overrides(env, algorithm, candidate),
+        "cpu": apply_cpu_overrides(env, candidate),
+        "return_route": apply_return_route_overrides(env, algorithm, candidate),
+    }
+    env.activated_offloading_tasks_with_RB_Nos = {
+        task_id: list(rbs) for task_id, rbs in candidate.get("rb_plan", {}).items()
+    }
+    return applied_counts
+
+
 def candidate_action_metadata(candidate, horizon):
     fields = (
         "rb_scale",
@@ -171,6 +296,8 @@ def candidate_action_metadata(candidate, horizon):
         result[field] = int(result[field])
     result["num_rb_tasks"] = int(len(candidate.get("rb_plan", {})))
     result["horizon"] = int(horizon)
+    result["intervention_start_step"] = int(candidate.get("intervention_start_step", 0))
+    result["temporal_pattern"] = str(candidate.get("temporal_pattern", "persistent"))
     return result
 
 
@@ -207,19 +334,31 @@ def run_candidate(seed, point, candidate, horizon, max_time):
     try:
         step_default_until(env, algorithm, decision_time)
         context = collect_extended_context(env, algorithm)
-        applied_counts = {
-            "offload": apply_offload_overrides(env, algorithm, candidate),
-            "cpu": apply_cpu_overrides(env, candidate),
-            "return_route": apply_return_route_overrides(env, algorithm, candidate),
-        }
-        env.activated_offloading_tasks_with_RB_Nos = {
-            task_id: list(rbs) for task_id, rbs in candidate.get("rb_plan", {}).items()
-        }
-        action_applied = _action_applied(candidate, applied_counts)
+        intervention_start_step = int(candidate.get("intervention_start_step", 0))
+        temporal_pattern = str(candidate.get("temporal_pattern", "persistent"))
+        active_application_results = []
+        observed_applied_counts = {"offload": 0, "cpu": 0, "return_route": 0}
 
         for step in range(int(horizon)):
-            if step > 0:
-                algorithm.scheduleStep(env)
+            candidate_action_step = str(candidate.get("action_family")) != "default" and temporal_pattern_active(
+                step, intervention_start_step, temporal_pattern
+            )
+            applied_counts = prepare_candidate_step(
+                env, algorithm, candidate, active=candidate_action_step
+            )
+            if candidate_action_step:
+                observed_applied_counts = {
+                    name: max(observed_applied_counts[name], int(value))
+                    for name, value in applied_counts.items()
+                }
+                active_application_results.append(
+                    _action_applied(candidate, applied_counts)
+                )
+            step_action_applied = (
+                _action_applied(candidate, applied_counts)
+                if candidate_action_step
+                else True
+            )
             counts_before = current_counts(env)
             throughput_before = channel_throughput(env)
             energy_before = capture_energy_manager_snapshot(env.energy_manager)
@@ -240,6 +379,7 @@ def run_candidate(seed, point, candidate, horizon, max_time):
             energy = energy_step_metrics(energy_before, energy_after)
             identifiers = {
                 "seed": int(seed),
+                "sample_id": int(point.get("sample_id", -1)),
                 "decision_time": decision_time,
                 "step": int(step),
                 "candidate_id": str(candidate["candidate_id"]),
@@ -252,8 +392,10 @@ def run_candidate(seed, point, candidate, horizon, max_time):
                 "simulation_time_after": float(env.simulation_time),
                 "rb_total": rb_total,
                 "cpu_total": float(cpu_record["total"]),
-                "action_applied": bool(action_applied),
-                "candidate_action_step": bool(step == 0),
+                "action_applied": bool(step_action_applied),
+                "candidate_action_step": bool(candidate_action_step),
+                "intervention_start_step": intervention_start_step,
+                "temporal_pattern": temporal_pattern,
                 **reward,
                 **energy,
             }
@@ -261,18 +403,24 @@ def run_candidate(seed, point, candidate, horizon, max_time):
             uav_rows.extend(_uav_rows(energy_before, energy_after, identifiers))
             if env.isDone():
                 break
+        action_applied = bool(active_application_results) and all(
+            active_application_results
+        )
+        if str(candidate.get("action_family")) == "default":
+            action_applied = True
         metadata = {
             "seed": int(seed),
+            "sample_id": int(point.get("sample_id", -1)),
             "decision_time": decision_time,
             "candidate_id": str(candidate["candidate_id"]),
             "action_family": str(candidate["action_family"]),
             "decision_stage": str(point.get("decision_stage", "offload_rb")),
             "requested_offload_overrides": int(candidate.get("num_offload_overrides", 0)),
-            "applied_offload_overrides": int(applied_counts["offload"]),
+            "applied_offload_overrides": int(observed_applied_counts["offload"]),
             "requested_cpu_overrides": int(candidate.get("num_cpu_overrides", 0)),
-            "applied_cpu_overrides": int(applied_counts["cpu"]),
+            "applied_cpu_overrides": int(observed_applied_counts["cpu"]),
             "requested_return_route_overrides": int(candidate.get("num_return_route_overrides", 0)),
-            "applied_return_route_overrides": int(applied_counts["return_route"]),
+            "applied_return_route_overrides": int(observed_applied_counts["return_route"]),
             "action_applied": bool(action_applied),
             "runtime_ms": float((time.perf_counter() - start) * 1000.0),
             "context_num_to_offload_tasks": int(context.get("num_to_offload_tasks", 0)),
@@ -290,26 +438,76 @@ def generate_rows(args):
     uav_rows = []
     metadata_rows = []
     point_rows = []
+    sample_index_rows = None
+    sample_index_csv = getattr(args, "sample_index_csv", None)
+    if sample_index_csv is not None:
+        sample_index_rows = pd.read_csv(sample_index_csv).to_dict(orient="records")
+        if int(getattr(args, "intervention_start_step", 0)) != 1:
+            raise ValueError("selector-timed physical labels require intervention start step 1")
     for seed in args.seeds:
+        discovery_limit = int(args.decision_times_per_seed)
+        if sample_index_rows is not None:
+            discovery_limit = max(12, discovery_limit * 4)
         discovered = discover_decision_points(
             seed,
             args.max_time,
-            args.decision_times_per_seed,
+            discovery_limit,
             args.scan_step_limit,
             include_compute_return=True,
         )
-        points = select_decision_points(discovered, args.decision_times_per_seed)
-        for point_index, point in enumerate(points):
-            raw_candidates = build_extended_candidates(point, max_candidates=max(32, args.max_candidates * 4))
-            candidates = select_balanced_candidates(raw_candidates, args.max_candidates)
+        rejected_points = []
+        if sample_index_rows is None:
+            points = select_decision_points(discovered, args.decision_times_per_seed)
+        else:
+            points, rejected_points = select_aligned_decision_points(
+                discovered, sample_index_rows, args.decision_times_per_seed
+            )
+        for rejected in rejected_points:
             point_rows.append(
                 {
                     "seed": int(seed),
+                    "sample_id": -1,
+                    "decision_time": float(rejected["decision_time"]),
+                    "point_index": -1,
+                    "decision_stage": str(rejected.get("decision_stage", "unknown")),
+                    "num_candidates": 0,
+                    "candidate_families": "",
+                    "alignment_status": str(rejected["reason"]),
+                }
+            )
+        for point_index, point in enumerate(points):
+            raw_candidates = build_extended_candidates(point, max_candidates=max(32, args.max_candidates * 4))
+            if sample_index_rows is None:
+                candidates = select_balanced_candidates(raw_candidates, args.max_candidates)
+                candidates = [
+                    {
+                        **candidate,
+                        "intervention_start_step": int(
+                            getattr(args, "intervention_start_step", 0)
+                        ),
+                        "temporal_pattern": str(
+                            getattr(args, "temporal_patterns", ["persistent"])[0]
+                        ),
+                    }
+                    for candidate in candidates
+                ]
+            else:
+                candidates = expand_temporal_candidates(
+                    raw_candidates,
+                    intervention_start_step=args.intervention_start_step,
+                    temporal_patterns=args.temporal_patterns,
+                    max_candidates=args.max_candidates,
+                )
+            point_rows.append(
+                {
+                    "seed": int(seed),
+                    "sample_id": int(point.get("sample_id", -1)),
                     "decision_time": float(point["decision_time"]),
                     "point_index": int(point_index),
                     "decision_stage": str(point.get("decision_stage", "offload_rb")),
                     "num_candidates": len(candidates),
                     "candidate_families": ",".join(sorted({item["action_family"] for item in candidates})),
+                    "alignment_status": "exact" if sample_index_rows is not None else "legacy_unaligned",
                 }
             )
             for candidate in candidates:
@@ -323,13 +521,16 @@ def generate_rows(args):
 
 
 def build_candidate_summary(step_rows, metadata_rows):
-    summaries = summarize_candidate_steps(step_rows)
+    summaries = summarize_candidate_steps(
+        step_rows,
+        group_fields=("seed", "sample_id", "decision_time", "candidate_id", "action_family"),
+    )
     metadata = {
-        (row["seed"], row["decision_time"], row["candidate_id"], row["action_family"]): row
+        (row["seed"], row["sample_id"], row["decision_time"], row["candidate_id"], row["action_family"]): row
         for row in metadata_rows
     }
     for row in summaries:
-        key = (row["seed"], row["decision_time"], row["candidate_id"], row["action_family"])
+        key = (row["seed"], row["sample_id"], row["decision_time"], row["candidate_id"], row["action_family"])
         row.update(metadata[key])
     return summaries
 
@@ -582,7 +783,32 @@ def main():
     if not step_rows:
         raise RuntimeError("no valid counterfactual decision rows were generated")
     candidate_rows = build_candidate_summary(step_rows, metadata_rows)
-    effect_rows = paired_candidate_effects(candidate_rows, metric_fields=EFFECT_METRICS)
+    effect_rows = paired_candidate_effects(
+        candidate_rows,
+        metric_fields=EFFECT_METRICS,
+        group_fields=("seed", "sample_id", "decision_time"),
+    )
+    metadata_by_candidate = {
+        (
+            int(row["seed"]),
+            int(row["sample_id"]),
+            float(row["decision_time"]),
+            str(row["candidate_id"]),
+        ): row
+        for row in candidate_rows
+    }
+    for row in effect_rows:
+        source = metadata_by_candidate[
+            (
+                int(row["seed"]),
+                int(row["sample_id"]),
+                float(row["decision_time"]),
+                str(row["candidate_id"]),
+            )
+        ]
+        row["intervention_start_step"] = int(source["intervention_start_step"])
+        row["temporal_pattern"] = str(source["temporal_pattern"])
+        row["action_applied"] = bool(source["action_applied"])
     add_energy_sensitivity(effect_rows)
 
     step_df = pd.DataFrame(step_rows)
@@ -636,6 +862,14 @@ def main():
             "max_candidates": int(args.max_candidates),
             "scan_step_limit": int(args.scan_step_limit),
             "energy_penalty_lambdas": list(SENSITIVITY_LAMBDAS),
+            "intervention_protocol": (
+                "selector_timed" if args.sample_index_csv is not None else "immediate_legacy"
+            ),
+            "intervention_start_step": int(args.intervention_start_step),
+            "temporal_patterns": list(args.temporal_patterns),
+            "sample_index_csv": (
+                str(args.sample_index_csv) if args.sample_index_csv is not None else None
+            ),
         },
         "runtime_seconds": float(time.perf_counter() - started),
         "outputs": {key: str(path) for key, path in outputs.items()},
@@ -643,13 +877,7 @@ def main():
     }
     report_path = write_report(summary, family_df, group_df, output_dir)
     summary["outputs"]["diagnostic_report"] = str(report_path)
-    command = (
-        "$env:PYTHONUTF8='1'; conda run -n airfogsim python "
-        f"代码/scripts/{Path(__file__).name} --seeds {' '.join(str(seed) for seed in args.seeds)} "
-        f"--max-time {args.max_time:g} --decision-times-per-seed {args.decision_times_per_seed} "
-        f"--horizon {args.horizon} --max-candidates {args.max_candidates} "
-        f"--output-dir \"{output_dir}\""
-    )
+    command = build_reproduction_command(args)
     command_path = output_dir / "reproduction_command.txt"
     command_path.write_text(command + "\n", encoding="utf-8")
     summary["outputs"]["reproduction_command"] = str(command_path)
