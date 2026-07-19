@@ -33,6 +33,12 @@ from pi_jwm.airfogsim_diagnostics import (
     summarize_candidate_steps,
 )
 from pi_jwm.airfogsim_runtime import capture_energy_manager_snapshot
+from pi_jwm.temporal_candidate_policy import (
+    CAUSAL_POLICY_PROTOCOL,
+    project_scaled_counts,
+    summarize_active_action_steps,
+    to_causal_policy_candidate,
+)
 from pi_jwm.v11_physical_benefit import align_decision_points
 from run_airfogsim_counterfactual_action_smoke_v0 import (
     channel_throughput,
@@ -46,6 +52,7 @@ from run_airfogsim_counterfactual_multifamily_v0 import (
     apply_return_route_overrides,
     build_extended_candidates,
     collect_extended_context,
+    collect_return_route_tasks,
     discover_decision_points,
 )
 
@@ -197,12 +204,62 @@ def expand_temporal_candidates(
     return select_balanced_candidates(expanded, max_candidates=max_candidates)
 
 
+def build_formal_temporal_candidates(
+    candidates,
+    intervention_start_step,
+    temporal_patterns,
+    max_candidates,
+):
+    """Convert legacy descriptors to unique task-ID-free temporal policies."""
+
+    converted = []
+    seen = set()
+    for source in candidates:
+        candidate = to_causal_policy_candidate(source)
+        key = (
+            candidate["candidate_id"],
+            candidate["action_family"],
+            float(candidate.get("rb_scale", 1.0)),
+            float(candidate.get("cpu_scale", 1.0)),
+            int(candidate.get("policy_coverage", 0)),
+            int(candidate.get("policy_rank", 0)),
+            str(candidate.get("return_route_mode", "")),
+        )
+        if key not in seen:
+            seen.add(key)
+            converted.append(candidate)
+    return expand_temporal_candidates(
+        converted,
+        intervention_start_step=intervention_start_step,
+        temporal_patterns=temporal_patterns,
+        max_candidates=max_candidates,
+    )
+
+
 def select_decision_points(points, max_points):
-    """Prefer stage coverage, then fill by simulation time."""
+    """Prefer observable stage coverage, then fill by simulation time."""
     ordered = sorted(points, key=lambda item: float(item["decision_time"]))
     selected = []
+
+    def support_score(item):
+        stage = str(item.get("decision_stage", ""))
+        if stage == "offload_rb":
+            return float(item.get("num_to_offload_tasks", 0)) + 0.25 * float(
+                len(item.get("default_rb_plan", {}))
+            )
+        if stage == "compute":
+            return float(item.get("num_computing_tasks", 0))
+        if stage == "return_route":
+            return float(item.get("num_waiting_return_tasks", 0))
+        return 0.0
+
     for stage in ("offload_rb", "compute", "return_route"):
-        match = next((item for item in ordered if item.get("decision_stage") == stage), None)
+        matches = [item for item in ordered if item.get("decision_stage") == stage]
+        match = max(
+            matches,
+            key=lambda item: (support_score(item), -float(item["decision_time"])),
+            default=None,
+        )
         if match is not None and match not in selected:
             selected.append(match)
         if len(selected) >= max_points:
@@ -241,6 +298,8 @@ def _action_applied(candidate, applied_counts):
     family = str(candidate["action_family"])
     if family == "default":
         return True
+    if str(candidate.get("action_protocol")) == CAUSAL_POLICY_PROTOCOL:
+        return bool(applied_counts.get("action_applicable", False))
     checks = []
     for name in ("offload", "cpu", "return_route"):
         requested = int(candidate.get(f"num_{name}_overrides", 0))
@@ -264,12 +323,180 @@ def project_precomputed_rb_plan(default_plan, requested_plan):
     return current, changed
 
 
+def _causal_offload_snapshot(env, algorithm, candidate):
+    if str(candidate.get("action_family")) not in {"offload_target", "mixed_offload_rb"}:
+        return {}
+    rank = int(candidate.get("policy_rank", 1))
+    coverage = int(candidate.get("policy_coverage", 1))
+    task_infos = sorted(
+        algorithm.taskScheduler.getAllToOffloadTaskInfos(env),
+        key=lambda item: (str(item.get("task_node_id")), str(item.get("task_id"))),
+    )
+    overrides = {}
+    for task in task_infos:
+        neighbors = algorithm.entityScheduler.getNeighborNodeInfosById(
+            env,
+            task["task_node_id"],
+            sorted_by="distance",
+            max_num=max(5, rank + 1),
+        )
+        if rank >= len(neighbors):
+            continue
+        target_id = neighbors[rank].get("id")
+        if target_id is None:
+            continue
+        overrides[str(task["task_id"])] = target_id
+        if len(overrides) >= coverage:
+            break
+    return overrides
+
+
+def _causal_cpu_task_ids(env, candidate):
+    if str(candidate.get("action_family")) != "cpu_scale":
+        return []
+    coverage = int(candidate.get("policy_coverage", 1))
+    task_ids = sorted(
+        str(task.getTaskId())
+        for node_id, tasks in env.task_manager.getComputingTasks().items()
+        for task in tasks
+        if task.getAssignedTo() == node_id and task.getCurrentNodeId() == node_id
+    )
+    return task_ids[:coverage]
+
+
+def _causal_return_snapshot(env, candidate):
+    if str(candidate.get("action_family")) != "return_route":
+        return {}
+    coverage = int(candidate.get("policy_coverage", 1))
+    rank = int(candidate.get("policy_rank", 1))
+    mode = str(candidate.get("return_route_mode", "nearest_rsu"))
+    overrides = {}
+    for task in sorted(collect_return_route_tasks(env), key=lambda item: str(item["task_id"])):
+        routes = task.get("relay_routes", []) if mode == "uav_relay" else task.get("direct_routes", [])
+        if rank >= len(routes):
+            continue
+        overrides[str(task["task_id"])] = list(routes[rank])
+        if len(overrides) >= coverage:
+            break
+    return overrides
+
+
+def resolve_causal_policy_snapshot(env, algorithm, candidate):
+    """Resolve a frozen rule using only the current causal legal-action state."""
+
+    return {
+        "offload_overrides": _causal_offload_snapshot(env, algorithm, candidate),
+        "cpu_task_ids": _causal_cpu_task_ids(env, candidate),
+        "return_route_overrides": _causal_return_snapshot(env, candidate),
+    }
+
+
+def _apply_causal_rb_policy(env, algorithm, candidate):
+    family = str(candidate.get("action_family"))
+    if family not in {"rb_count", "mixed_offload_rb"}:
+        return 0, False
+    default_plan = {
+        str(task_id): list(rbs)
+        for task_id, rbs in env.activated_offloading_tasks_with_RB_Nos.items()
+    }
+    coverage = int(candidate.get("policy_coverage", 1))
+    selected = sorted(default_plan)[:coverage]
+    if not selected:
+        return 0, False
+    capacity = int(algorithm.commScheduler.getNumberOfRB(env))
+    unselected = [task_id for task_id in sorted(default_plan) if task_id not in selected]
+    reserved = {rb for task_id in unselected for rb in default_plan[task_id]}
+    available = [rb for rb in range(capacity) if rb not in reserved]
+    projected_counts = project_scaled_counts(
+        {task_id: len(default_plan[task_id]) for task_id in selected},
+        scale=float(candidate.get("rb_scale", 1.0)),
+        capacity=len(available),
+    )
+    projected = {task_id: list(rbs) for task_id, rbs in default_plan.items()}
+    cursor = 0
+    for task_id in selected:
+        count = int(projected_counts.get(task_id, 0))
+        projected[task_id] = available[cursor : cursor + count]
+        cursor += count
+    changed = sum(projected[task_id] != default_plan[task_id] for task_id in selected)
+    env.activated_offloading_tasks_with_RB_Nos = projected
+    return int(changed), bool(changed)
+
+
+def _apply_causal_cpu_policy(env, candidate, task_ids):
+    selected = set(str(task_id) for task_id in task_ids)
+    if not selected:
+        return 0, False
+    original = env.alloc_cpu_callback
+    if original is None:
+        return 0, False
+    scale = float(candidate.get("cpu_scale", 1.0))
+
+    def callback(computing_tasks, **kwargs):
+        allocation = dict(original(computing_tasks, **kwargs))
+        for task_id in selected.intersection(allocation):
+            allocation[task_id] = max(0.0, float(allocation[task_id]) * scale)
+        return allocation
+
+    env.alloc_cpu_callback = callback
+    changed = not math.isclose(scale, 1.0)
+    return len(selected), bool(changed)
+
+
+def _causal_application_result(env, algorithm, candidate, snapshot):
+    family = str(candidate.get("action_family"))
+    counts = {"offload": 0, "cpu": 0, "return_route": 0, "rb": 0}
+    changed = []
+    required = []
+    if family in {"offload_target", "mixed_offload_rb"}:
+        requested = dict(snapshot.get("offload_overrides", {}))
+        required.append(bool(requested))
+        counts["offload"] = apply_offload_overrides(
+            env, algorithm, {"offload_overrides": requested}
+        )
+        changed.append(counts["offload"] > 0)
+    if family in {"rb_count", "mixed_offload_rb"}:
+        counts["rb"], rb_changed = _apply_causal_rb_policy(env, algorithm, candidate)
+        required.append(bool(env.activated_offloading_tasks_with_RB_Nos))
+        changed.append(rb_changed)
+    if family == "cpu_scale":
+        task_ids = list(snapshot.get("cpu_task_ids", []))
+        required.append(bool(task_ids))
+        counts["cpu"], cpu_changed = _apply_causal_cpu_policy(env, candidate, task_ids)
+        changed.append(cpu_changed)
+    if family == "return_route":
+        requested = dict(snapshot.get("return_route_overrides", {}))
+        required.append(bool(requested))
+        counts["return_route"] = apply_return_route_overrides(
+            env, algorithm, {"return_route_overrides": requested}
+        )
+        changed.append(counts["return_route"] > 0)
+    return {
+        **counts,
+        "action_applicable": True,
+        "action_supported": any(required),
+        "action_changed": any(changed),
+    }
+
+
 def prepare_candidate_step(env, algorithm, candidate, active):
     """Schedule the shared default, then optionally overlay a precomputed action."""
 
+    causal = str(candidate.get("action_protocol")) == CAUSAL_POLICY_PROTOCOL
+    snapshot = resolve_causal_policy_snapshot(env, algorithm, candidate) if active and causal else None
     algorithm.scheduleStep(env)
     if not bool(active):
-        return {"offload": 0, "cpu": 0, "return_route": 0, "rb": 0}
+        return {
+            "offload": 0,
+            "cpu": 0,
+            "return_route": 0,
+            "rb": 0,
+            "action_applicable": False,
+            "action_supported": False,
+            "action_changed": False,
+        }
+    if causal:
+        return _causal_application_result(env, algorithm, candidate, snapshot)
     default_rb_plan = {
         task_id: list(rbs)
         for task_id, rbs in env.activated_offloading_tasks_with_RB_Nos.items()
@@ -284,7 +511,12 @@ def prepare_candidate_step(env, algorithm, candidate, active):
         "rb": applied_rb,
     }
     env.activated_offloading_tasks_with_RB_Nos = projected_rb_plan
-    return applied_counts
+    return {
+        **applied_counts,
+        "action_applicable": _action_applied(candidate, applied_counts),
+        "action_supported": bool(applied_counts.get("action_supported", False)),
+        "action_changed": _action_applied(candidate, applied_counts),
+    }
 
 
 def candidate_action_metadata(candidate, horizon):
@@ -317,6 +549,10 @@ def candidate_action_metadata(candidate, horizon):
     result["horizon"] = int(horizon)
     result["intervention_start_step"] = int(candidate.get("intervention_start_step", 0))
     result["temporal_pattern"] = str(candidate.get("temporal_pattern", "persistent"))
+    result["action_protocol"] = str(candidate.get("action_protocol", "precomputed_task_v0"))
+    result["policy_coverage"] = int(candidate.get("policy_coverage", 0))
+    result["policy_rank"] = int(candidate.get("policy_rank", 0))
+    result["return_route_mode"] = str(candidate.get("return_route_mode", ""))
     return result
 
 
@@ -356,6 +592,8 @@ def run_candidate(seed, point, candidate, horizon, max_time):
         intervention_start_step = int(candidate.get("intervention_start_step", 0))
         temporal_pattern = str(candidate.get("temporal_pattern", "persistent"))
         active_application_results = []
+        active_support_results = []
+        active_change_results = []
         observed_applied_counts = {"offload": 0, "cpu": 0, "return_route": 0, "rb": 0}
 
         for step in range(int(horizon)):
@@ -367,12 +605,14 @@ def run_candidate(seed, point, candidate, horizon, max_time):
             )
             if candidate_action_step:
                 observed_applied_counts = {
-                    name: max(observed_applied_counts[name], int(value))
-                    for name, value in applied_counts.items()
+                    name: max(observed_applied_counts[name], int(applied_counts[name]))
+                    for name in observed_applied_counts
                 }
                 active_application_results.append(
                     _action_applied(candidate, applied_counts)
                 )
+                active_support_results.append(bool(applied_counts.get("action_supported", False)))
+                active_change_results.append(bool(applied_counts.get("action_changed", False)))
             step_action_applied = (
                 _action_applied(candidate, applied_counts)
                 if candidate_action_step
@@ -412,6 +652,11 @@ def run_candidate(seed, point, candidate, horizon, max_time):
                 "rb_total": rb_total,
                 "cpu_total": float(cpu_record["total"]),
                 "action_applied": bool(step_action_applied),
+                "action_applicable": bool(applied_counts.get("action_applicable", False))
+                if candidate_action_step
+                else True,
+                "action_supported": bool(applied_counts.get("action_supported", False)),
+                "action_changed": bool(applied_counts.get("action_changed", False)),
                 "candidate_action_step": bool(candidate_action_step),
                 "intervention_start_step": intervention_start_step,
                 "temporal_pattern": temporal_pattern,
@@ -422,11 +667,24 @@ def run_candidate(seed, point, candidate, horizon, max_time):
             uav_rows.extend(_uav_rows(energy_before, energy_after, identifiers))
             if env.isDone():
                 break
-        action_applied = bool(active_application_results) and all(
-            active_application_results
+        action_status = summarize_active_action_steps(
+            [
+                {
+                    "action_applicable": applicable,
+                    "action_changed": changed,
+                }
+                for applicable, changed in zip(
+                    active_application_results, active_change_results
+                )
+            ]
         )
+        action_applied = bool(action_status["action_applicable"])
+        action_supported = bool(any(active_support_results))
+        action_changed = bool(action_status["action_changed"])
         if str(candidate.get("action_family")) == "default":
             action_applied = True
+            action_supported = False
+            action_changed = False
         metadata = {
             "seed": int(seed),
             "sample_id": int(point.get("sample_id", -1)),
@@ -442,6 +700,9 @@ def run_candidate(seed, point, candidate, horizon, max_time):
             "applied_return_route_overrides": int(observed_applied_counts["return_route"]),
             "applied_rb_tasks": int(observed_applied_counts["rb"]),
             "action_applied": bool(action_applied),
+            "action_applicable": bool(action_applied),
+            "action_supported": bool(action_supported),
+            "action_changed": bool(action_changed),
             "runtime_ms": float((time.perf_counter() - start) * 1000.0),
             "context_num_to_offload_tasks": int(context.get("num_to_offload_tasks", 0)),
             "context_num_computing_tasks": int(context.get("num_computing_tasks", 0)),
@@ -512,7 +773,7 @@ def generate_rows(args):
                     for candidate in candidates
                 ]
             else:
-                candidates = expand_temporal_candidates(
+                candidates = build_formal_temporal_candidates(
                     raw_candidates,
                     intervention_start_step=args.intervention_start_step,
                     temporal_patterns=args.temporal_patterns,
@@ -569,19 +830,31 @@ def make_group_audit(candidate_df):
     rows = []
     for (seed, decision_time), part in candidate_df.groupby(["seed", "decision_time"], dropna=False):
         valid = part[part["action_applied"].astype(bool)]
-        spread = (
-            float(valid["task_utility"].max() - valid["task_utility"].min())
-            if not valid.empty
-            else 0.0
-        )
+        spreads = {}
+        for metric in EFFECT_METRICS:
+            spreads[metric] = (
+                float(valid[metric].max() - valid[metric].min())
+                if not valid.empty and metric in valid
+                else 0.0
+            )
         rows.append(
             {
                 "seed": int(seed),
                 "decision_time": float(decision_time),
                 "num_candidates": int(len(part)),
                 "num_valid_candidates": int(len(valid)),
-                "utility_spread": spread,
-                "is_nontrivial": bool(spread > 1e-8),
+                "num_supported_candidates": int(part["action_supported"].astype(bool).sum())
+                if "action_supported" in part
+                else 0,
+                "num_changed_candidates": int(part["action_changed"].astype(bool).sum())
+                if "action_changed" in part
+                else 0,
+                "utility_spread": spreads["task_utility"],
+                "throughput_spread": spreads["throughput_delta"],
+                "rb_spread": spreads["rb_total"],
+                "cpu_spread": spreads["cpu_total"],
+                "energy_spread": spreads["energy_total"],
+                "is_nontrivial": bool(any(value > 1e-8 for value in spreads.values())),
                 "num_invalid_actions": int((~part["action_applied"].astype(bool)).sum()),
             }
         )
@@ -594,6 +867,8 @@ def make_family_summary(effects_df):
         "num_candidates",
         "num_valid_candidates",
         "num_invalid_candidates",
+        "num_supported_candidates",
+        "num_changed_candidates",
         "mean_effect_task_utility",
         "min_effect_task_utility",
         "max_effect_task_utility",
@@ -615,6 +890,12 @@ def make_family_summary(effects_df):
                 "num_candidates": int(len(part)),
                 "num_valid_candidates": int(len(valid)),
                 "num_invalid_candidates": int(len(part) - len(valid)),
+                "num_supported_candidates": int(part["action_supported"].astype(bool).sum())
+                if "action_supported" in part
+                else 0,
+                "num_changed_candidates": int(part["action_changed"].astype(bool).sum())
+                if "action_changed" in part
+                else 0,
                 "mean_effect_task_utility": float(task.mean()) if len(valid) else np.nan,
                 "min_effect_task_utility": float(task.min()) if len(valid) else np.nan,
                 "max_effect_task_utility": float(task.max()) if len(valid) else np.nan,
@@ -843,6 +1124,10 @@ def main():
         row["intervention_start_step"] = int(source["intervention_start_step"])
         row["temporal_pattern"] = str(source["temporal_pattern"])
         row["action_applied"] = bool(source["action_applied"])
+        row["action_applicable"] = bool(source.get("action_applicable", source["action_applied"]))
+        row["action_supported"] = bool(source.get("action_supported", False))
+        row["action_changed"] = bool(source.get("action_changed", False))
+        row["action_protocol"] = str(source.get("action_protocol", "precomputed_task_v0"))
     add_energy_sensitivity(effect_rows)
 
     step_df = pd.DataFrame(step_rows)

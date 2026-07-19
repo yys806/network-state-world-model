@@ -470,6 +470,42 @@ class DiagnosticRunnerContractTest(unittest.TestCase):
         self.assertEqual(aligned[0]["sample_id"], 782)
         self.assertEqual(rejected, [])
 
+    def test_stage_selection_prefers_decision_time_support_coverage(self):
+        module = self._load_runner()
+        selected = module.select_decision_points(
+            [
+                {
+                    "seed": 0,
+                    "decision_time": 0.3,
+                    "decision_stage": "offload_rb",
+                    "num_to_offload_tasks": 1,
+                    "default_rb_plan": {"a": [0]},
+                },
+                {
+                    "seed": 0,
+                    "decision_time": 8.1,
+                    "decision_stage": "offload_rb",
+                    "num_to_offload_tasks": 8,
+                    "default_rb_plan": {str(i): [i] for i in range(7)},
+                },
+                {
+                    "seed": 0,
+                    "decision_time": 4.4,
+                    "decision_stage": "compute",
+                    "num_computing_tasks": 1,
+                },
+                {
+                    "seed": 0,
+                    "decision_time": 6.1,
+                    "decision_stage": "compute",
+                    "num_computing_tasks": 2,
+                },
+            ],
+            max_points=2,
+        )
+
+        self.assertEqual([row["decision_time"] for row in selected], [8.1, 6.1])
+
     def test_temporal_metadata_is_explicit(self):
         module = self._load_runner()
 
@@ -509,12 +545,249 @@ class DiagnosticRunnerContractTest(unittest.TestCase):
 
         inactive = module.prepare_candidate_step(env, algorithm, candidate, active=False)
         self.assertEqual(env.activated_offloading_tasks_with_RB_Nos, {"task": [9]})
-        self.assertEqual(inactive, {"offload": 0, "cpu": 0, "return_route": 0, "rb": 0})
+        self.assertEqual(
+            inactive,
+            {
+                "offload": 0,
+                "cpu": 0,
+                "return_route": 0,
+                "rb": 0,
+                "action_applicable": False,
+                "action_supported": False,
+                "action_changed": False,
+            },
+        )
 
         active = module.prepare_candidate_step(env, algorithm, candidate, active=True)
         self.assertEqual(env.activated_offloading_tasks_with_RB_Nos, {"task": [0, 1]})
-        self.assertEqual(active, {"offload": 0, "cpu": 0, "return_route": 0, "rb": 1})
+        self.assertEqual(
+            active,
+            {
+                "offload": 0,
+                "cpu": 0,
+                "return_route": 0,
+                "rb": 1,
+                "action_applicable": True,
+                "action_supported": False,
+                "action_changed": True,
+            },
+        )
         self.assertEqual(events, ["schedule_default", "schedule_default"])
+
+    def test_causal_rb_policy_resolves_new_current_task_ids(self):
+        module = self._load_runner()
+
+        class FakeCommScheduler:
+            def getNumberOfRB(self, env):
+                return 4
+
+        class FakeAlgorithm:
+            commScheduler = FakeCommScheduler()
+
+            def scheduleStep(self, env):
+                env.activated_offloading_tasks_with_RB_Nos = {"new-task": [0, 1, 2, 3]}
+
+        class FakeEnv:
+            activated_offloading_tasks_with_RB_Nos = {}
+
+        env = FakeEnv()
+        result = module.prepare_candidate_step(
+            env,
+            FakeAlgorithm(),
+            {
+                "action_protocol": "causal_policy_v1",
+                "action_family": "rb_count",
+                "rb_scale": 0.5,
+                "policy_coverage": 1,
+                "policy_rank": 1,
+                "rb_plan": {},
+                "offload_overrides": {},
+                "cpu_overrides": {},
+                "return_route_overrides": {},
+            },
+            active=True,
+        )
+
+        self.assertEqual(env.activated_offloading_tasks_with_RB_Nos, {"new-task": [0, 1]})
+        self.assertEqual(result["rb"], 1)
+        self.assertTrue(result["action_applicable"])
+        self.assertTrue(result["action_supported"])
+        self.assertTrue(result["action_changed"])
+
+    def test_causal_policy_without_current_support_is_safe_noop(self):
+        module = self._load_runner()
+
+        class FakeCommScheduler:
+            def getNumberOfRB(self, env):
+                return 4
+
+        class FakeAlgorithm:
+            commScheduler = FakeCommScheduler()
+
+            def scheduleStep(self, env):
+                env.activated_offloading_tasks_with_RB_Nos = {}
+
+        class FakeEnv:
+            activated_offloading_tasks_with_RB_Nos = {}
+
+        result = module.prepare_candidate_step(
+            FakeEnv(),
+            FakeAlgorithm(),
+            {
+                "action_protocol": "causal_policy_v1",
+                "action_family": "rb_count",
+                "rb_scale": 0.5,
+                "policy_coverage": 1,
+                "policy_rank": 1,
+                "rb_plan": {},
+                "offload_overrides": {},
+                "cpu_overrides": {},
+                "return_route_overrides": {},
+            },
+            active=True,
+        )
+
+        self.assertTrue(result["action_applicable"])
+        self.assertFalse(result["action_supported"])
+        self.assertFalse(result["action_changed"])
+
+    def test_causal_cpu_policy_scales_current_default_allocation(self):
+        module = self._load_runner()
+
+        class FakeTask:
+            def getTaskId(self):
+                return "new-task"
+
+            def getAssignedTo(self):
+                return "node"
+
+            def getCurrentNodeId(self):
+                return "node"
+
+        class FakeManager:
+            def getComputingTasks(self):
+                return {"node": [FakeTask()]}
+
+        class FakeAlgorithm:
+            def scheduleStep(self, env):
+                env.alloc_cpu_callback = lambda computing_tasks, **kwargs: {"new-task": 4.0}
+
+        class FakeEnv:
+            task_manager = FakeManager()
+            alloc_cpu_callback = None
+
+        env = FakeEnv()
+        result = module.prepare_candidate_step(
+            env,
+            FakeAlgorithm(),
+            {
+                "action_protocol": "causal_policy_v1",
+                "action_family": "cpu_scale",
+                "cpu_scale": 0.5,
+                "policy_coverage": 1,
+                "policy_rank": 1,
+                "rb_plan": {},
+                "offload_overrides": {},
+                "cpu_overrides": {},
+                "return_route_overrides": {},
+            },
+            active=True,
+        )
+
+        self.assertEqual(env.alloc_cpu_callback(env.task_manager.getComputingTasks()), {"new-task": 2.0})
+        self.assertEqual(result["cpu"], 1)
+        self.assertTrue(result["action_applicable"])
+        self.assertTrue(result["action_changed"])
+
+    def test_causal_offload_policy_uses_fixed_alternative_rank(self):
+        module = self._load_runner()
+        targets = []
+
+        class FakeTask:
+            def isComputing(self):
+                return False
+
+            def isComputed(self):
+                return False
+
+            def changeOffloadTo(self, target_id, route, current_time):
+                targets.append((target_id, route, current_time))
+
+        class FakeManager:
+            def getTaskByTaskId(self, task_id):
+                return FakeTask()
+
+        class FakeTaskScheduler:
+            def getAllToOffloadTaskInfos(self, env):
+                return [{"task_id": "new-task", "task_node_id": "source"}]
+
+        class FakeEntityScheduler:
+            def getNeighborNodeInfosById(self, env, source_id, sorted_by, max_num):
+                return [{"id": "nearest"}, {"id": "alternative"}]
+
+        class FakeAlgorithm:
+            taskScheduler = FakeTaskScheduler()
+            entityScheduler = FakeEntityScheduler()
+
+            def scheduleStep(self, env):
+                env.activated_offloading_tasks_with_RB_Nos = {}
+
+        class FakeEnv:
+            task_manager = FakeManager()
+            activated_offloading_tasks_with_RB_Nos = {}
+            simulation_time = 1.0
+
+        result = module.prepare_candidate_step(
+            FakeEnv(),
+            FakeAlgorithm(),
+            {
+                "action_protocol": "causal_policy_v1",
+                "action_family": "offload_target",
+                "policy_coverage": 1,
+                "policy_rank": 1,
+                "rb_plan": {},
+                "offload_overrides": {},
+                "cpu_overrides": {},
+                "return_route_overrides": {},
+            },
+            active=True,
+        )
+
+        self.assertEqual(targets, [("alternative", ["alternative"], 1.0)])
+        self.assertEqual(result["offload"], 1)
+        self.assertTrue(result["action_applicable"])
+        self.assertTrue(result["action_changed"])
+
+    def test_formal_temporal_candidates_are_task_id_free_causal_rules(self):
+        module = self._load_runner()
+
+        expanded = module.build_formal_temporal_candidates(
+            [
+                {
+                    "candidate_id": "default",
+                    "action_family": "default",
+                    "rb_plan": {},
+                },
+                {
+                    "candidate_id": "rb_task_old",
+                    "action_family": "rb_count",
+                    "rb_scale": 0.5,
+                    "rb_plan": {"old-task": [0, 1]},
+                },
+            ],
+            intervention_start_step=1,
+            temporal_patterns=("persistent", "decayed"),
+            max_candidates=8,
+        )
+
+        self.assertEqual(sum(row["action_family"] == "default" for row in expanded), 1)
+        for candidate in expanded:
+            self.assertEqual(candidate["action_protocol"], "causal_policy_v1")
+            self.assertEqual(candidate.get("rb_plan", {}), {})
+            self.assertEqual(candidate.get("offload_overrides", {}), {})
+            self.assertEqual(candidate.get("cpu_overrides", {}), {})
+            self.assertEqual(candidate.get("return_route_overrides", {}), {})
+            self.assertNotIn("old-task", repr(candidate))
 
     def test_delayed_offload_skips_task_that_started_computing(self):
         module = self._load_runner()
