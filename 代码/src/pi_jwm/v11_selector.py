@@ -404,6 +404,13 @@ def observable_pareto_deltas(
 ) -> tuple[np.ndarray | None, np.ndarray | None]:
     """Build test-time task/energy trade-offs from observable forecast features."""
     names = list(batch.feature_names)
+    physical_task_name = "physical_task_delta_lcb"
+    physical_energy_name = "physical_energy_delta_ucb"
+    if physical_task_name in names and physical_energy_name in names:
+        return (
+            batch.candidate_features[:, :, names.index(physical_task_name)].astype(np.float32),
+            batch.candidate_features[:, :, names.index(physical_energy_name)].astype(np.float32),
+        )
     task_name = "predicted_task_delta_8"
     energy_name = "predicted_energy_proxy"
     if task_name not in names or energy_name not in names:

@@ -10,6 +10,14 @@ if str(CODE_ROOT / "src") not in sys.path:
     sys.path.insert(0, str(CODE_ROOT / "src"))
 
 
+class _FeatureSumModel:
+    def __init__(self, scale=1.0):
+        self.scale = float(scale)
+
+    def predict(self, features):
+        return self.scale * np.asarray(features, dtype=np.float32).sum(axis=1)
+
+
 class PhysicalAlignmentTest(unittest.TestCase):
     def test_aligns_only_exact_input_end_times(self):
         from pi_jwm.v11_physical_benefit import align_decision_points
@@ -327,6 +335,114 @@ class PhysicalBenefitModelTest(unittest.TestCase):
         self.assertTrue(np.all(prediction.energy_mean <= prediction.energy_ucb))
         self.assertLess(report["oof_task_mae"], report["baseline_task_mae"])
         self.assertLess(report["oof_energy_mae"], report["baseline_energy_mae"])
+
+
+class PhysicalBenefitAugmentationTest(unittest.TestCase):
+    def _batch(self):
+        from pi_jwm.v11_selector import CandidateBatch
+
+        names = (
+            "rb_total_sum",
+            "rb_action_count",
+            "cpu_total_sum",
+            "cpu_action_count",
+            "offload_action_count",
+            "return_action_count",
+            "action_family_identity",
+            "action_family_rb",
+            "action_family_offload",
+            "action_family_compute",
+            "action_family_return",
+            "action_family_historical",
+        )
+        features = np.zeros((1, 2, len(names)), dtype=np.float32)
+        features[0, 0, names.index("action_family_identity")] = 1.0
+        features[0, 1, names.index("rb_total_sum")] = 8.0
+        features[0, 1, names.index("rb_action_count")] = 2.0
+        features[0, 1, names.index("action_family_rb")] = 1.0
+        return CandidateBatch(
+            context=np.asarray([[3.0]], dtype=np.float32),
+            candidate_features=features,
+            candidate_mask=np.asarray([[True, True]]),
+            stage=np.asarray(["offload"]),
+            feature_names=names,
+            candidate_names=("identity", "rb_repair__k8__q50__persistent"),
+            context_feature_names=("state_load",),
+        )
+
+    def _fitted(self):
+        from pi_jwm.v11_physical_benefit import (
+            COMMON_DESCRIPTOR_NAMES,
+            FittedPhysicalBenefitBridge,
+        )
+
+        return FittedPhysicalBenefitBridge(
+            feature_names=("state_load",) + COMMON_DESCRIPTOR_NAMES,
+            task_models=(_FeatureSumModel(1.0),),
+            energy_models=(_FeatureSumModel(2.0),),
+            task_conformal_radius=0.5,
+            energy_conformal_radius=1.0,
+            fold_records=(),
+            oof_task_mean=np.zeros((0,), dtype=np.float32),
+            oof_energy_mean=np.zeros((0,), dtype=np.float32),
+            oof_fold_id=np.zeros((0,), dtype=np.int16),
+        )
+
+    def test_appends_eight_physical_fields_without_mutating_source_contract(self):
+        from pi_jwm.v11_physical_benefit import (
+            PHYSICAL_PREDICTION_FEATURES,
+            augment_candidate_batch_with_physical_benefit,
+        )
+
+        source = self._batch()
+        augmented = augment_candidate_batch_with_physical_benefit(
+            source, self._fitted(), default_index=1
+        )
+
+        self.assertIsNot(augmented, source)
+        self.assertEqual(
+            augmented.feature_names,
+            source.feature_names + PHYSICAL_PREDICTION_FEATURES,
+        )
+        self.assertEqual(
+            augmented.candidate_features.shape[-1],
+            source.candidate_features.shape[-1] + 8,
+        )
+        np.testing.assert_array_equal(augmented.candidate_mask, source.candidate_mask)
+        np.testing.assert_array_equal(augmented.stage, source.stage)
+        self.assertEqual(augmented.candidate_names, source.candidate_names)
+        self.assertEqual(augmented.context_feature_names, source.context_feature_names)
+        np.testing.assert_array_equal(
+            augmented.candidate_features[:, :, : len(source.feature_names)],
+            source.candidate_features,
+        )
+        task_mean = augmented.feature_names.index("physical_task_delta_mean")
+        task_lcb = augmented.feature_names.index("physical_task_delta_lcb")
+        energy_mean = augmented.feature_names.index("physical_energy_delta_mean")
+        energy_ucb = augmented.feature_names.index("physical_energy_delta_ucb")
+        np.testing.assert_allclose(
+            augmented.candidate_features[:, 0, task_lcb],
+            augmented.candidate_features[:, 0, task_mean] - 0.5,
+        )
+        np.testing.assert_allclose(
+            augmented.candidate_features[:, 0, energy_ucb],
+            augmented.candidate_features[:, 0, energy_mean] + 1.0,
+        )
+        np.testing.assert_allclose(
+            augmented.candidate_features[:, 1, -len(PHYSICAL_PREDICTION_FEATURES) :],
+            0.0,
+        )
+
+    def test_rejects_duplicate_physical_fields(self):
+        from pi_jwm.v11_physical_benefit import augment_candidate_batch_with_physical_benefit
+
+        augmented = augment_candidate_batch_with_physical_benefit(
+            self._batch(), self._fitted(), default_index=1
+        )
+        with self.assertRaisesRegex(ValueError, "already contains physical benefit"):
+            augment_candidate_batch_with_physical_benefit(
+                augmented, self._fitted(), default_index=1
+            )
 
 
 if __name__ == "__main__":

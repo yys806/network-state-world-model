@@ -34,6 +34,17 @@ COMMON_DESCRIPTOR_NAMES = (
     "family_control",
 )
 
+PHYSICAL_PREDICTION_FEATURES = (
+    "physical_task_delta_mean",
+    "physical_task_delta_std",
+    "physical_task_delta_lcb",
+    "physical_task_delta_ucb",
+    "physical_energy_delta_mean",
+    "physical_energy_delta_std",
+    "physical_energy_delta_lcb",
+    "physical_energy_delta_ucb",
+)
+
 
 def normalize_physical_family(name: str) -> str | None:
     """Map simulator candidate families to the shared selector vocabulary."""
@@ -459,6 +470,58 @@ def predict_physical_benefit(
         energy_std=shaped(energy_std),
         energy_lcb=shaped(energy_mean - energy_radius),
         energy_ucb=shaped(energy_mean + energy_radius),
+    )
+
+
+def augment_candidate_batch_with_physical_benefit(
+    batch: Any,
+    fitted: FittedPhysicalBenefitBridge,
+    default_index: int,
+) -> Any:
+    """Return a new candidate batch with calibrated physical delta features."""
+
+    from .v11_selector import CandidateBatch
+
+    duplicate = [name for name in PHYSICAL_PREDICTION_FEATURES if name in batch.feature_names]
+    if duplicate:
+        raise ValueError(f"candidate batch already contains physical benefit fields: {duplicate}")
+    default = int(default_index)
+    if not 0 <= default < batch.candidate_features.shape[1]:
+        raise ValueError("default_index outside candidate dimension")
+
+    descriptors, descriptor_names = selector_action_descriptors(batch)
+    context_names = tuple(str(name) for name in batch.context_feature_names)
+    expected_names = context_names + descriptor_names
+    if expected_names != fitted.feature_names:
+        raise ValueError("candidate batch and physical bridge feature order mismatch")
+    context = np.broadcast_to(
+        np.asarray(batch.context, dtype=np.float32)[:, None, :],
+        batch.candidate_features.shape[:2] + (batch.context.shape[1],),
+    )
+    bridge_features = np.concatenate((context, descriptors), axis=2).astype(np.float32)
+    prediction = predict_physical_benefit(fitted, bridge_features)
+    physical = np.stack(
+        (
+            prediction.task_mean,
+            prediction.task_std,
+            prediction.task_lcb,
+            prediction.task_ucb,
+            prediction.energy_mean,
+            prediction.energy_std,
+            prediction.energy_lcb,
+            prediction.energy_ucb,
+        ),
+        axis=2,
+    ).astype(np.float32)
+    physical[:, default, :] = 0.0
+    return CandidateBatch(
+        context=batch.context,
+        candidate_features=np.concatenate((batch.candidate_features, physical), axis=2),
+        candidate_mask=batch.candidate_mask,
+        stage=batch.stage,
+        feature_names=tuple(batch.feature_names) + PHYSICAL_PREDICTION_FEATURES,
+        candidate_names=tuple(batch.candidate_names),
+        context_feature_names=context_names,
     )
 
 
