@@ -134,5 +134,134 @@ class PhysicalDescriptorTest(unittest.TestCase):
         self.assertEqual(descriptors[0, 1, descriptor_names.index("intervention_start_step")], 1.0)
 
 
+class PhysicalTrainingBatchTest(unittest.TestCase):
+    def _selector_batch(self):
+        from pi_jwm.v11_selector import CandidateBatch
+
+        return CandidateBatch(
+            context=np.asarray([[2.0, 3.0]], dtype=np.float32),
+            candidate_features=np.zeros((1, 1, 1), dtype=np.float32),
+            candidate_mask=np.ones((1, 1), dtype=bool),
+            stage=np.asarray(["offload"]),
+            feature_names=("placeholder",),
+            candidate_names=("identity",),
+            context_feature_names=("state_task_count", "state_link_rate"),
+        )
+
+    def _rows(self):
+        base = {
+            "seed": 0,
+            "sample_id": 10,
+            "decision_time": 0.8,
+            "intervention_start_step": 1,
+            "temporal_pattern": "persistent",
+            "action_applied": True,
+            "rb_total": 5.0,
+            "num_rb_tasks": 1,
+            "cpu_total": 0.0,
+            "num_cpu_overrides": 0,
+            "num_offload_overrides": 0,
+            "num_return_route_overrides": 0,
+        }
+        return [
+            {
+                **base,
+                "candidate_id": "default",
+                "action_family": "default",
+                "task_utility": 1.0,
+                "energy_total": 5.0,
+            },
+            {
+                **base,
+                "candidate_id": "rb_2__persistent",
+                "action_family": "rb_count",
+                "task_utility": 1.5,
+                "energy_total": 7.0,
+                "rb_total": 10.0,
+            },
+        ]
+
+    def test_builds_candidate_minus_default_targets(self):
+        from pi_jwm.v11_physical_benefit import build_physical_training_batch
+
+        batch = build_physical_training_batch(
+            physical_rows=self._rows(),
+            selector_sample_ids=np.asarray([10]),
+            selector_sample_seed=np.asarray([0]),
+            selector_batch=self._selector_batch(),
+        )
+
+        np.testing.assert_allclose(batch.task_delta, [0.5])
+        np.testing.assert_allclose(batch.energy_delta, [2.0])
+        np.testing.assert_allclose(batch.features[0, :2], [2.0, 3.0])
+        self.assertEqual(batch.sample_ids.tolist(), [10])
+        self.assertEqual(batch.normalized_family.tolist(), ["rb_repair"])
+        self.assertEqual(batch.rejected_rows, ())
+
+    def test_rejects_unsupported_and_unapplied_candidates_without_imputation(self):
+        from pi_jwm.v11_physical_benefit import build_physical_training_batch
+
+        rows = self._rows()
+        rows.append(
+            {
+                **rows[1],
+                "candidate_id": "offload_alt",
+                "action_family": "offload_target",
+            }
+        )
+        rows.append(
+            {
+                **rows[1],
+                "candidate_id": "rb_unapplied",
+                "action_applied": False,
+            }
+        )
+
+        batch = build_physical_training_batch(
+            rows,
+            np.asarray([10]),
+            np.asarray([0]),
+            self._selector_batch(),
+        )
+
+        self.assertEqual(batch.features.shape[0], 1)
+        self.assertEqual(
+            {row["reason"] for row in batch.rejected_rows},
+            {"unsupported_action_family", "action_not_applied"},
+        )
+
+    def test_rejects_missing_or_duplicate_default(self):
+        from pi_jwm.v11_physical_benefit import build_physical_training_batch
+
+        with self.assertRaisesRegex(ValueError, "exactly one default"):
+            build_physical_training_batch(
+                self._rows()[1:],
+                np.asarray([10]),
+                np.asarray([0]),
+                self._selector_batch(),
+            )
+        with self.assertRaisesRegex(ValueError, "exactly one default"):
+            build_physical_training_batch(
+                [self._rows()[0], self._rows()[0], self._rows()[1]],
+                np.asarray([10]),
+                np.asarray([0]),
+                self._selector_batch(),
+            )
+
+    def test_protocol_audit_rejects_forbidden_features_and_split_overlap(self):
+        from pi_jwm.v11_physical_benefit import audit_physical_bridge_protocol
+
+        result = audit_physical_bridge_protocol(
+            feature_names=("state_task_count", "actual_energy_outcome"),
+            split_seed_sets={"train": (0, 1), "calibration": (1, 2)},
+            matched_test_accessed=False,
+            external_holdout_accessed=False,
+        )
+
+        self.assertFalse(result["passed"])
+        self.assertEqual(result["forbidden_features"], ["actual_energy_outcome"])
+        self.assertEqual(result["split_overlap_count"], 1)
+
+
 if __name__ == "__main__":
     unittest.main()
