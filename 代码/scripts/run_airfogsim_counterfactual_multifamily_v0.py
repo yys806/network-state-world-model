@@ -432,32 +432,62 @@ def apply_offload_overrides(env, algorithm, candidate):
         task = env.task_manager.getTaskByTaskId(task_id)
         if task is None:
             continue
+        if task.isComputing() or task.isComputed():
+            continue
         task.changeOffloadTo(target_id, [target_id], env.simulation_time)
         applied += 1
     return applied
 
 
 def apply_cpu_overrides(env, candidate):
-    overrides = {task_id: float(cpu) for task_id, cpu in candidate.get("cpu_overrides", {}).items()}
+    requested = {task_id: float(cpu) for task_id, cpu in candidate.get("cpu_overrides", {}).items()}
+    if not requested:
+        return 0
+
+    overrides = {}
+    for node_id, tasks in env.task_manager.getComputingTasks().items():
+        for task in tasks:
+            task_id = task.getTaskId()
+            if (
+                task_id in requested
+                and task.getAssignedTo() == node_id
+                and task.getCurrentNodeId() == node_id
+            ):
+                overrides[task_id] = requested[task_id]
     if not overrides:
         return 0
 
+    original = env.alloc_cpu_callback
+
     def callback(computing_tasks, **kwargs):
-        return dict(overrides)
+        allocation = {} if original is None else dict(original(computing_tasks, **kwargs))
+        current = {
+            task.getTaskId()
+            for node_id, tasks in computing_tasks.items()
+            for task in tasks
+            if task.getAssignedTo() == node_id and task.getCurrentNodeId() == node_id
+        }
+        allocation.update(
+            {task_id: cpu for task_id, cpu in overrides.items() if task_id in current}
+        )
+        return allocation
 
     env.alloc_cpu_callback = callback
     return len(overrides)
 
 
 def apply_return_route_overrides(env, algorithm, candidate):
+    requested = candidate.get("return_route_overrides", {})
+    if not requested:
+        return 0
     applied = 0
-    for task_id, route in candidate.get("return_route_overrides", {}).items():
-        task = env.task_manager.getTaskByTaskId(task_id)
-        if task is None:
-            for _, tasks in env.task_manager.getWaitingToReturnTaskInfos().items():
-                task = next((item for item in tasks if item.getTaskId() == task_id), None)
-                if task is not None:
-                    break
+    waiting = {
+        task.getTaskId(): task
+        for tasks in env.task_manager.getWaitingToReturnTaskInfos().values()
+        for task in tasks
+    }
+    for task_id, route in requested.items():
+        task = waiting.get(task_id)
         if task is None:
             continue
         algorithm.taskScheduler.setTaskReturnRoute(env, task_id, list(route))

@@ -247,8 +247,21 @@ def _action_applied(candidate, applied_counts):
         if requested:
             checks.append(int(applied_counts[name]) == requested)
     if family in {"rb_count", "mixed_offload_rb"}:
-        checks.append(bool(candidate.get("rb_plan")))
+        checks.append(int(applied_counts.get("rb", 0)) > 0)
     return bool(checks and all(checks))
+
+
+def project_precomputed_rb_plan(default_plan, requested_plan):
+    """Project a decision-time RB plan onto tasks still scheduled in this step."""
+
+    current = {task_id: list(rbs) for task_id, rbs in default_plan.items()}
+    requested = {task_id: list(rbs) for task_id, rbs in requested_plan.items()}
+    changed = 0
+    for task_id in current:
+        if task_id in requested and requested[task_id] != current[task_id]:
+            current[task_id] = requested[task_id]
+            changed += 1
+    return current, changed
 
 
 def prepare_candidate_step(env, algorithm, candidate, active):
@@ -256,15 +269,21 @@ def prepare_candidate_step(env, algorithm, candidate, active):
 
     algorithm.scheduleStep(env)
     if not bool(active):
-        return {"offload": 0, "cpu": 0, "return_route": 0}
+        return {"offload": 0, "cpu": 0, "return_route": 0, "rb": 0}
+    default_rb_plan = {
+        task_id: list(rbs)
+        for task_id, rbs in env.activated_offloading_tasks_with_RB_Nos.items()
+    }
+    projected_rb_plan, applied_rb = project_precomputed_rb_plan(
+        default_rb_plan, candidate.get("rb_plan", {})
+    )
     applied_counts = {
         "offload": apply_offload_overrides(env, algorithm, candidate),
         "cpu": apply_cpu_overrides(env, candidate),
         "return_route": apply_return_route_overrides(env, algorithm, candidate),
+        "rb": applied_rb,
     }
-    env.activated_offloading_tasks_with_RB_Nos = {
-        task_id: list(rbs) for task_id, rbs in candidate.get("rb_plan", {}).items()
-    }
+    env.activated_offloading_tasks_with_RB_Nos = projected_rb_plan
     return applied_counts
 
 
@@ -337,7 +356,7 @@ def run_candidate(seed, point, candidate, horizon, max_time):
         intervention_start_step = int(candidate.get("intervention_start_step", 0))
         temporal_pattern = str(candidate.get("temporal_pattern", "persistent"))
         active_application_results = []
-        observed_applied_counts = {"offload": 0, "cpu": 0, "return_route": 0}
+        observed_applied_counts = {"offload": 0, "cpu": 0, "return_route": 0, "rb": 0}
 
         for step in range(int(horizon)):
             candidate_action_step = str(candidate.get("action_family")) != "default" and temporal_pattern_active(
@@ -421,6 +440,7 @@ def run_candidate(seed, point, candidate, horizon, max_time):
             "applied_cpu_overrides": int(observed_applied_counts["cpu"]),
             "requested_return_route_overrides": int(candidate.get("num_return_route_overrides", 0)),
             "applied_return_route_overrides": int(observed_applied_counts["return_route"]),
+            "applied_rb_tasks": int(observed_applied_counts["rb"]),
             "action_applied": bool(action_applied),
             "runtime_ms": float((time.perf_counter() - start) * 1000.0),
             "context_num_to_offload_tasks": int(context.get("num_to_offload_tasks", 0)),
@@ -548,12 +568,18 @@ def add_energy_sensitivity(effect_rows):
 def make_group_audit(candidate_df):
     rows = []
     for (seed, decision_time), part in candidate_df.groupby(["seed", "decision_time"], dropna=False):
-        spread = float(part["task_utility"].max() - part["task_utility"].min())
+        valid = part[part["action_applied"].astype(bool)]
+        spread = (
+            float(valid["task_utility"].max() - valid["task_utility"].min())
+            if not valid.empty
+            else 0.0
+        )
         rows.append(
             {
                 "seed": int(seed),
                 "decision_time": float(decision_time),
                 "num_candidates": int(len(part)),
+                "num_valid_candidates": int(len(valid)),
                 "utility_spread": spread,
                 "is_nontrivial": bool(spread > 1e-8),
                 "num_invalid_actions": int((~part["action_applied"].astype(bool)).sum()),
@@ -566,6 +592,8 @@ def make_family_summary(effects_df):
     columns = [
         "action_family",
         "num_candidates",
+        "num_valid_candidates",
+        "num_invalid_candidates",
         "mean_effect_task_utility",
         "min_effect_task_utility",
         "max_effect_task_utility",
@@ -578,17 +606,22 @@ def make_family_summary(effects_df):
         return pd.DataFrame(columns=columns)
     rows = []
     for family, part in effects_df.groupby("action_family", dropna=False):
+        valid = part[part["action_applied"].astype(bool)]
+        task = valid["effect_task_utility"]
+        energy = valid["effect_energy_total"]
         rows.append(
             {
                 "action_family": str(family),
                 "num_candidates": int(len(part)),
-                "mean_effect_task_utility": float(part["effect_task_utility"].mean()),
-                "min_effect_task_utility": float(part["effect_task_utility"].min()),
-                "max_effect_task_utility": float(part["effect_task_utility"].max()),
-                "positive_utility_ratio": float((part["effect_task_utility"] > 0).mean()),
-                "mean_effect_energy_total": float(part["effect_energy_total"].mean()),
-                "min_effect_energy_total": float(part["effect_energy_total"].min()),
-                "max_effect_energy_total": float(part["effect_energy_total"].max()),
+                "num_valid_candidates": int(len(valid)),
+                "num_invalid_candidates": int(len(part) - len(valid)),
+                "mean_effect_task_utility": float(task.mean()) if len(valid) else np.nan,
+                "min_effect_task_utility": float(task.min()) if len(valid) else np.nan,
+                "max_effect_task_utility": float(task.max()) if len(valid) else np.nan,
+                "positive_utility_ratio": float((task > 0).mean()) if len(valid) else np.nan,
+                "mean_effect_energy_total": float(energy.mean()) if len(valid) else np.nan,
+                "min_effect_energy_total": float(energy.min()) if len(valid) else np.nan,
+                "max_effect_energy_total": float(energy.max()) if len(valid) else np.nan,
             }
         )
     return pd.DataFrame(rows, columns=columns)
@@ -680,7 +713,8 @@ def make_figures(step_df, candidate_df, effects_df, family_df, output_dir):
     figures["energy_components"] = _save_figure(fig, output_dir / "figure_2_uav_energy_components.png")
 
     fig, ax = plt.subplots(figsize=(8.5, 4.8))
-    for family, part in candidate_df.groupby("action_family", dropna=False):
+    valid_candidates = candidate_df[candidate_df["action_applied"].astype(bool)]
+    for family, part in valid_candidates.groupby("action_family", dropna=False):
         ax.scatter(part["energy_total"], part["task_utility"], label=str(family), alpha=0.8, s=45)
     ax.set(xlabel="UAV energy used", ylabel="step-wise task utility", title="Task utility and UAV-energy trade-off")
     ax.grid(alpha=0.25)

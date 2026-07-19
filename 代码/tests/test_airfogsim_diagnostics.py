@@ -509,12 +509,210 @@ class DiagnosticRunnerContractTest(unittest.TestCase):
 
         inactive = module.prepare_candidate_step(env, algorithm, candidate, active=False)
         self.assertEqual(env.activated_offloading_tasks_with_RB_Nos, {"task": [9]})
-        self.assertEqual(inactive, {"offload": 0, "cpu": 0, "return_route": 0})
+        self.assertEqual(inactive, {"offload": 0, "cpu": 0, "return_route": 0, "rb": 0})
 
         active = module.prepare_candidate_step(env, algorithm, candidate, active=True)
         self.assertEqual(env.activated_offloading_tasks_with_RB_Nos, {"task": [0, 1]})
-        self.assertEqual(active, {"offload": 0, "cpu": 0, "return_route": 0})
+        self.assertEqual(active, {"offload": 0, "cpu": 0, "return_route": 0, "rb": 1})
         self.assertEqual(events, ["schedule_default", "schedule_default"])
+
+    def test_delayed_offload_skips_task_that_started_computing(self):
+        module = self._load_runner()
+
+        class FakeTask:
+            def isComputing(self):
+                return True
+
+            def isComputed(self):
+                return False
+
+            def changeOffloadTo(self, *args):
+                raise AssertionError("stale offload must not mutate a computing task")
+
+        class FakeManager:
+            def getTaskByTaskId(self, task_id):
+                return FakeTask()
+
+            def getComputingTasks(self):
+                return {}
+
+            def getWaitingToReturnTaskInfos(self):
+                return {}
+
+        class FakeEnv:
+            task_manager = FakeManager()
+            simulation_time = 1.0
+            activated_offloading_tasks_with_RB_Nos = {}
+
+        class FakeAlgorithm:
+            def scheduleStep(self, env):
+                env.activated_offloading_tasks_with_RB_Nos = {}
+
+        counts = module.prepare_candidate_step(
+            FakeEnv(),
+            FakeAlgorithm(),
+            {
+                "action_family": "offload_target",
+                "offload_overrides": {"task": "node_new"},
+                "num_offload_overrides": 1,
+                "cpu_overrides": {},
+                "return_route_overrides": {},
+                "rb_plan": {},
+            },
+            active=True,
+        )
+
+        self.assertEqual(counts["offload"], 0)
+
+    def test_delayed_rb_plan_projects_only_onto_current_default_tasks(self):
+        module = self._load_runner()
+
+        class FakeManager:
+            def getComputingTasks(self):
+                return {}
+
+            def getWaitingToReturnTaskInfos(self):
+                return {}
+
+        class FakeEnv:
+            task_manager = FakeManager()
+            activated_offloading_tasks_with_RB_Nos = {}
+
+        class FakeAlgorithm:
+            def scheduleStep(self, env):
+                env.activated_offloading_tasks_with_RB_Nos = {
+                    "current": [9],
+                    "new": [8],
+                }
+
+        env = FakeEnv()
+        counts = module.prepare_candidate_step(
+            env,
+            FakeAlgorithm(),
+            {
+                "action_family": "rb_count",
+                "offload_overrides": {},
+                "cpu_overrides": {},
+                "return_route_overrides": {},
+                "rb_plan": {"current": [0, 1], "stale": [2]},
+            },
+            active=True,
+        )
+
+        self.assertEqual(
+            env.activated_offloading_tasks_with_RB_Nos,
+            {"current": [0, 1], "new": [8]},
+        )
+        self.assertEqual(counts["rb"], 1)
+
+    def test_delayed_cpu_filters_tasks_outside_current_computing_buckets(self):
+        module = self._load_runner()
+
+        class FakeTask:
+            def __init__(self, task_id, node_id):
+                self.task_id = task_id
+                self.node_id = node_id
+
+            def getTaskId(self):
+                return self.task_id
+
+            def getAssignedTo(self):
+                return self.node_id
+
+            def getCurrentNodeId(self):
+                return self.node_id
+
+        class FakeManager:
+            def getComputingTasks(self):
+                return {"node": [FakeTask("current", "node")]}
+
+        class FakeEnv:
+            task_manager = FakeManager()
+            alloc_cpu_callback = None
+
+        env = FakeEnv()
+        applied = module.apply_cpu_overrides(
+            env,
+            {"cpu_overrides": {"current": 3.0, "stale": 9.0}},
+        )
+
+        self.assertEqual(applied, 1)
+        self.assertEqual(env.alloc_cpu_callback(env.task_manager.getComputingTasks()), {"current": 3.0})
+
+    def test_delayed_return_route_skips_task_no_longer_waiting(self):
+        module = self._load_runner()
+        events = []
+
+        class FakeManager:
+            def getTaskByTaskId(self, task_id):
+                return object()
+
+            def getWaitingToReturnTaskInfos(self):
+                return {}
+
+        class FakeEnv:
+            task_manager = FakeManager()
+
+        class FakeScheduler:
+            def setTaskReturnRoute(self, *args):
+                events.append(args)
+
+        class FakeAlgorithm:
+            taskScheduler = FakeScheduler()
+
+        applied = module.apply_return_route_overrides(
+            FakeEnv(),
+            FakeAlgorithm(),
+            {"return_route_overrides": {"stale": ["rsu"]}},
+        )
+
+        self.assertEqual(applied, 0)
+        self.assertEqual(events, [])
+
+    def test_group_audit_excludes_invalid_candidates_from_nontrivial_spread(self):
+        module = self._load_runner()
+        frame = module.pd.DataFrame(
+            [
+                {"seed": 0, "decision_time": 1.0, "task_utility": 1.0, "action_applied": True},
+                {"seed": 0, "decision_time": 1.0, "task_utility": 1.0, "action_applied": True},
+                {"seed": 0, "decision_time": 1.0, "task_utility": 99.0, "action_applied": False},
+            ]
+        )
+
+        row = module.make_group_audit(frame).iloc[0]
+
+        self.assertEqual(row["num_candidates"], 3)
+        self.assertEqual(row["num_valid_candidates"], 2)
+        self.assertEqual(row["num_invalid_actions"], 1)
+        self.assertEqual(row["utility_spread"], 0.0)
+        self.assertFalse(row["is_nontrivial"])
+
+    def test_family_summary_keeps_invalid_coverage_but_uses_only_valid_effects(self):
+        module = self._load_runner()
+        frame = module.pd.DataFrame(
+            [
+                {
+                    "action_family": "cpu_scale",
+                    "effect_task_utility": 1.0,
+                    "effect_energy_total": 2.0,
+                    "action_applied": True,
+                },
+                {
+                    "action_family": "cpu_scale",
+                    "effect_task_utility": 99.0,
+                    "effect_energy_total": 99.0,
+                    "action_applied": False,
+                },
+            ]
+        )
+
+        row = module.make_family_summary(frame).iloc[0]
+
+        self.assertEqual(row["num_candidates"], 2)
+        self.assertEqual(row["num_valid_candidates"], 1)
+        self.assertEqual(row["num_invalid_candidates"], 1)
+        self.assertEqual(row["mean_effect_task_utility"], 1.0)
+        self.assertEqual(row["mean_effect_energy_total"], 2.0)
 
     def test_temporal_candidate_expansion_keeps_one_default_and_unique_variants(self):
         module = self._load_runner()
