@@ -440,5 +440,37 @@ class CrossfitLauncherContractTest(unittest.TestCase):
                 expected_train_samples(path, sample_limit_per_fold=0)
 
 
+class CrossfitCandidateShiftAuditTest(unittest.TestCase):
+    def test_candidate_rows_recompute_rmse_and_seed_direction(self):
+        from audit_v11_crossfit_candidate_shift import candidate_shift_rows
+
+        rows = candidate_shift_rows(
+            active_sse=np.asarray([[4.0, 1.0], [4.0, 9.0]], dtype=np.float32),
+            active_count=np.ones(2, dtype=np.int64),
+            sample_seed=np.asarray([50, 51], dtype=np.int64),
+            candidate_names=("default", "repair"),
+            default_index=0,
+        )
+        repair = next(row for row in rows if row["candidate_name"] == "repair")
+
+        self.assertAlmostEqual(repair["rmse"], np.sqrt(5.0))
+        self.assertEqual(repair["improved_seed_count"], 1)
+        self.assertEqual(repair["positive_pair_rate"], 0.5)
+
+    def test_no_active_targets_are_explicitly_unscored(self):
+        from audit_v11_crossfit_candidate_shift import candidate_shift_rows
+
+        rows = candidate_shift_rows(
+            active_sse=np.zeros((2, 2), dtype=np.float32),
+            active_count=np.zeros(2, dtype=np.int64),
+            sample_seed=np.asarray([50, 51], dtype=np.int64),
+            candidate_names=("default", "repair"),
+            default_index=0,
+        )
+
+        self.assertFalse(rows[1]["scored"])
+        self.assertIsNone(rows[1]["rmse"])
+
+
 if __name__ == "__main__":
     unittest.main()
