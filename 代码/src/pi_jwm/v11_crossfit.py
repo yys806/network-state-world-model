@@ -5,6 +5,8 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from typing import Any, Mapping, Sequence
 
+import numpy as np
+
 from .v11_selector import DEFAULT_SELECTOR_SEEDS, canonical_sha256
 
 
@@ -15,6 +17,18 @@ class SeedCrossfitFold:
     fold_id: int
     held_out_seeds: tuple[int, ...]
     helper_train_seeds: tuple[int, ...]
+
+
+@dataclass(frozen=True)
+class CrossfitExecution:
+    """Resolved helper-training and label sample indices for one invocation."""
+
+    mode: str
+    fold_id: int | None
+    held_out_seeds: tuple[int, ...]
+    helper_train_seeds: tuple[int, ...]
+    helper_train_indices: np.ndarray
+    label_indices: dict[str, np.ndarray]
 
 
 def build_seed_crossfit_folds(
@@ -93,3 +107,50 @@ def build_crossfit_protocol_manifest(
         "crossfit_protocol_digest": canonical_sha256(payload),
         "audit": audit,
     }
+
+
+def resolve_crossfit_execution(
+    sample_seed: np.ndarray,
+    requested_splits: Sequence[str],
+    fold_id: int | None,
+) -> CrossfitExecution:
+    """Resolve a leakage-safe train-fold or final-helper evaluation invocation."""
+    seeds = np.asarray(sample_seed, dtype=np.int64).reshape(-1)
+    requested = tuple(str(name) for name in requested_splits)
+    folds = build_seed_crossfit_folds()
+    if "train" in requested:
+        if requested != ("train",) or fold_id is None or int(fold_id) not in range(5):
+            raise ValueError(
+                "crossfit train execution requires exactly one valid fold and only train split"
+            )
+        fold = folds[int(fold_id)]
+        helper = np.flatnonzero(np.isin(seeds, fold.helper_train_seeds))
+        labels = {"train": np.flatnonzero(np.isin(seeds, fold.held_out_seeds))}
+        return CrossfitExecution(
+            mode="crossfit_train_fold",
+            fold_id=fold.fold_id,
+            held_out_seeds=fold.held_out_seeds,
+            helper_train_seeds=fold.helper_train_seeds,
+            helper_train_indices=helper,
+            label_indices=labels,
+        )
+    if fold_id is not None:
+        raise ValueError("evaluation helper execution does not accept a crossfit fold")
+    allowed = {"calibration", "validation", "matched_test", "external_holdout"}
+    if not requested or not set(requested).issubset(allowed):
+        raise ValueError(
+            "crossfit evaluation supports only frozen selector evaluation splits"
+        )
+    helper_seeds = tuple(DEFAULT_SELECTOR_SEEDS["train"])
+    labels = {
+        name: np.flatnonzero(np.isin(seeds, DEFAULT_SELECTOR_SEEDS[name]))
+        for name in requested
+    }
+    return CrossfitExecution(
+        mode="full_train_eval",
+        fold_id=None,
+        held_out_seeds=(),
+        helper_train_seeds=helper_seeds,
+        helper_train_indices=np.flatnonzero(np.isin(seeds, helper_seeds)),
+        label_indices=labels,
+    )
