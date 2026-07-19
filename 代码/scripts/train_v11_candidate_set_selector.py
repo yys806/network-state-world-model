@@ -74,6 +74,57 @@ def validate_cache_protocol(
     return next(iter(digests))
 
 
+def validate_physical_bridge_manifest(
+    manifest_path: Path,
+    cache_paths: Mapping[str, Path],
+) -> str:
+    manifest = json.loads(Path(manifest_path).read_text(encoding="utf-8"))
+    expected = str(manifest.get("bridge_manifest_digest", ""))
+    payload = {key: value for key, value in manifest.items() if key != "bridge_manifest_digest"}
+    actual = canonical_sha256(payload)
+    if len(expected) != 64 or actual != expected:
+        raise ValueError("physical bridge manifest digest mismatch")
+    if not bool(manifest.get("bridge_gate_passed", False)):
+        raise ValueError("physical bridge gate did not pass")
+    if bool(manifest.get("matched_test_accessed", False)) or bool(
+        manifest.get("external_holdout_accessed", False)
+    ):
+        raise ValueError("physical bridge manifest reports locked split access")
+    if int(manifest.get("actual_outcome_feature_count", -1)) != 0:
+        raise ValueError("physical bridge manifest contains actual outcome features")
+    records = manifest.get("augmented_caches")
+    if not isinstance(records, Mapping):
+        raise ValueError("physical bridge manifest has no augmented cache records")
+    for split in ("train", "calibration", "validation"):
+        record = records.get(split)
+        if not isinstance(record, Mapping) or split not in cache_paths:
+            raise ValueError(f"physical bridge manifest is missing {split} cache")
+        if file_sha256(cache_paths[split]) != str(record.get("sha256", "")):
+            raise ValueError(f"physical bridge cache hash mismatch for {split}")
+    return actual
+
+
+def validate_physical_cache_presence(
+    manifests: Mapping[str, Mapping[str, Any]],
+    manifest_supplied: bool,
+) -> bool:
+    flags = {
+        split: any(
+            str(name).startswith("physical_")
+            for name in manifests[split].get("feature_names", ())
+        )
+        for split in ("train", "calibration", "validation")
+    }
+    if len(set(flags.values())) != 1:
+        raise ValueError("physical feature presence differs across caches")
+    has_physical = next(iter(flags.values()))
+    if has_physical and not bool(manifest_supplied):
+        raise ValueError("physical cache requires --physical-bridge-manifest")
+    if bool(manifest_supplied) and not has_physical:
+        raise ValueError("selector cache does not contain physical benefit features")
+    return has_physical
+
+
 def calibrate_improvement_bias(
     predicted: np.ndarray,
     actual: np.ndarray,
@@ -478,6 +529,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--learning-rate", type=float, default=3e-3)
     parser.add_argument("--allow-smoke-gate-failure", action="store_true")
+    parser.add_argument("--physical-bridge-manifest", type=Path)
     return parser.parse_args()
 
 
@@ -489,8 +541,14 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "calibration": args.calibration_cache,
         "validation": args.validation_cache,
     }
+    physical_manifest_path = getattr(args, "physical_bridge_manifest", None)
+    if physical_manifest_path is not None:
+        validate_physical_bridge_manifest(physical_manifest_path, cache_paths)
     loaded = {name: load_candidate_label_cache(path) for name, path in cache_paths.items()}
     manifests = {name: value[2] for name, value in loaded.items()}
+    validate_physical_cache_presence(
+        manifests, manifest_supplied=physical_manifest_path is not None
+    )
     configuration_digest = validate_cache_protocol(
         manifests,
         required_schema_version=None if bool(args.allow_smoke_gate_failure) else 6,
