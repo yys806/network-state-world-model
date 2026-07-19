@@ -972,6 +972,16 @@ class CandidateLabelRunnerContractTest(unittest.TestCase):
 
 
 class SelectorTrainingRunnerContractTest(unittest.TestCase):
+    def test_candidate_set_runner_requires_schema6_for_formal_training(self):
+        runner = (CODE_ROOT / "scripts/train_v11_candidate_set_selector.py").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn(
+            "required_schema_version=None if bool(args.allow_smoke_gate_failure) else 6",
+            runner,
+        )
+
     def test_objective_aligned_runner_rejects_non_schema5_cache(self):
         from train_v11_objective_aligned_selector import (
             validate_objective_cache_protocol,

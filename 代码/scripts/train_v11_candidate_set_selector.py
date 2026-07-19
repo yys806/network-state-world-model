@@ -419,7 +419,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     manifests = {name: value[2] for name, value in loaded.items()}
     configuration_digest = validate_cache_protocol(
         manifests,
-        required_schema_version=None if bool(args.allow_smoke_gate_failure) else 5,
+        required_schema_version=None if bool(args.allow_smoke_gate_failure) else 6,
     )
     batches = {name: value[0] for name, value in loaded.items()}
     outcomes = {name: value[1] for name, value in loaded.items()}
