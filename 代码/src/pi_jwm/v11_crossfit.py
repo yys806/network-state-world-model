@@ -171,6 +171,26 @@ def resolve_crossfit_execution(
     )
 
 
+def validate_crossfit_label_indices(
+    execution: CrossfitExecution,
+    selector_indices: Mapping[str, np.ndarray],
+    sample_seed: np.ndarray,
+) -> None:
+    """Check each resolved label split against its exact selector-protocol subset."""
+    seeds = np.asarray(sample_seed, dtype=np.int64).reshape(-1)
+    for split_name, observed in execution.label_indices.items():
+        if split_name not in selector_indices:
+            raise ValueError(f"selector indices are missing split: {split_name}")
+        full = np.asarray(selector_indices[split_name], dtype=np.int64).reshape(-1)
+        expected = full
+        if split_name == "train":
+            expected = full[np.isin(seeds[full], execution.held_out_seeds)]
+        if not np.array_equal(np.asarray(observed, dtype=np.int64), expected):
+            raise ValueError(
+                f"crossfit labels are not the exact selector subset for {split_name}"
+            )
+
+
 def _load_fold_cache(path: str | Path) -> LoadedFoldCache:
     from .v11_labeling import (
         load_candidate_interaction_cache,

@@ -113,6 +113,29 @@ class CrossfitExecutionTest(unittest.TestCase):
             set(DEFAULT_SELECTOR_SEEDS["external_holdout"]),
         )
 
+    def test_train_fold_indices_validate_as_exact_subset_of_full_train_split(self):
+        from pi_jwm.v11_crossfit import (
+            resolve_crossfit_execution,
+            validate_crossfit_label_indices,
+        )
+        from pi_jwm.v11_selector import build_selector_split
+
+        sample_seed = self._sample_seed()
+        execution = resolve_crossfit_execution(sample_seed, ("train",), fold_id=0)
+        full_split = build_selector_split(sample_seed)
+
+        validate_crossfit_label_indices(
+            execution,
+            {"train": full_split["train"]},
+            sample_seed,
+        )
+        with self.assertRaisesRegex(ValueError, "exact selector subset"):
+            validate_crossfit_label_indices(
+                execution,
+                {"train": full_split["train"][1:]},
+                sample_seed,
+            )
+
 
 class CrossfitCacheMergeTest(unittest.TestCase):
     def setUp(self):

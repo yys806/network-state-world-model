@@ -50,6 +50,7 @@ from pi_jwm.v11_interactions import (
 from pi_jwm.v11_crossfit import (
     build_crossfit_protocol_manifest,
     resolve_crossfit_execution,
+    validate_crossfit_label_indices,
 )
 from pi_jwm.v11_rollout_value_calibrator import freeze_module
 from pi_jwm.v11_selector import (
@@ -703,9 +704,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         )
         raw_train_indices = execution.helper_train_indices
         requested_indices = execution.label_indices
-        for split_name, indices in requested_indices.items():
-            if not np.array_equal(indices, protocol.indices(split_name)):
-                raise ValueError(f"crossfit label indices disagree with selector split: {split_name}")
+        validate_crossfit_label_indices(
+            execution,
+            {name: protocol.indices(name) for name in requested_indices},
+            arrays["sample_seed"],
+        )
         helper_execution = {
             "mode": execution.mode,
             "fold_id": execution.fold_id,
