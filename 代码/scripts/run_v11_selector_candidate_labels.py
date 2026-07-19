@@ -47,6 +47,10 @@ from pi_jwm.v11_interactions import (
     build_candidate_interaction_tokens,
     pool_candidate_interactions,
 )
+from pi_jwm.v11_crossfit import (
+    build_crossfit_protocol_manifest,
+    resolve_crossfit_execution,
+)
 from pi_jwm.v11_rollout_value_calibrator import freeze_module
 from pi_jwm.v11_selector import (
     DEFAULT_SELECTOR_SEEDS,
@@ -56,6 +60,7 @@ from pi_jwm.v11_selector import (
     audit_candidate_library,
     audit_selector_protocol,
     build_selector_split,
+    canonical_sha256,
 )
 
 from compare_v11_base_policy_candidates import _fit_models
@@ -101,6 +106,29 @@ def validate_requested_splits(
         digest = str(frozen_manifest.get("configuration_digest", ""))
         if len(digest) != 64:
             raise PermissionError("frozen manifest must contain a 64-character configuration digest")
+
+
+def validate_helper_execution_args(
+    helper_protocol: str,
+    crossfit_fold: int | None,
+    splits: Sequence[str],
+) -> None:
+    """Validate invocation-specific helper execution without touching data."""
+    protocol = str(helper_protocol)
+    requested = tuple(str(value) for value in splits)
+    if protocol == "in_sample":
+        if crossfit_fold is not None:
+            raise ValueError("in-sample helper protocol does not accept a crossfit fold")
+        return
+    if protocol != "seed_crossfit_5fold":
+        raise ValueError(f"unknown helper protocol: {protocol}")
+    if "train" in requested:
+        if requested != ("train",) or crossfit_fold is None:
+            raise ValueError(
+                "crossfit train generation requires one fold and only the train split"
+            )
+    elif crossfit_fold is not None:
+        raise ValueError("crossfit evaluation must not specify a fold")
 
 
 def limit_indices_seed_balanced(
@@ -204,7 +232,12 @@ def build_reproduction_command(args: argparse.Namespace) -> str:
         str(args.stats_chunk_size),
         "--cache-schema-version",
         str(getattr(args, "cache_schema_version", 5)),
+        "--helper-protocol",
+        str(getattr(args, "helper_protocol", "in_sample")),
     ]
+    crossfit_fold = getattr(args, "crossfit_fold", None)
+    if crossfit_fold is not None:
+        tokens.extend(["--crossfit-fold", str(int(crossfit_fold))])
     if args.frozen_config_manifest is not None:
         tokens.extend(
             ["--frozen-config-manifest", path_arg(args.frozen_config_manifest)]
@@ -226,7 +259,7 @@ def _canonical_configuration(args: argparse.Namespace) -> dict[str, Any]:
         ).strip()
     except (OSError, subprocess.CalledProcessError):
         git_sha = "unavailable"
-    return {
+    configuration = {
         "framework": "PI-JWM",
         "candidate_protocol": "support_constrained_edge_step_repair_v2",
         "world_checkpoint": args.world_checkpoint.name,
@@ -255,6 +288,12 @@ def _canonical_configuration(args: argparse.Namespace) -> dict[str, Any]:
         "split_sample_limit": int(args.split_sample_limit),
         "cache_schema_version": int(args.cache_schema_version),
     }
+    if str(getattr(args, "helper_protocol", "in_sample")) == "seed_crossfit_5fold":
+        crossfit = build_crossfit_protocol_manifest(configuration)
+        configuration["helper_generation_protocol"] = crossfit[
+            "crossfit_protocol_payload"
+        ]
+    return configuration
 
 
 def _load_frozen_manifest(path: Path | None) -> dict[str, Any] | None:
@@ -349,6 +388,7 @@ def _make_label_split(
     quantiles: Mapping[float, float],
     configuration_digest: str,
     protocol_metadata: Mapping[str, Any],
+    sample_fold_id: np.ndarray | None = None,
 ) -> dict[str, Any]:
     payload = make_split_payload(
         args,
@@ -527,6 +567,7 @@ def _make_label_split(
             action_feature_names=action_feature_names,
             configuration_digest=configuration_digest,
             protocol_metadata=dict(protocol_metadata),
+            sample_fold_id=sample_fold_id,
         )
     else:
         manifest = save_candidate_label_cache(
@@ -538,6 +579,7 @@ def _make_label_split(
             outcome=outcome,
             configuration_digest=configuration_digest,
             protocol_metadata=dict(protocol_metadata),
+            sample_fold_id=sample_fold_id,
         )
     gate = audit_candidate_library(
         active_sse=active_sse,
@@ -606,6 +648,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=20260717)
     parser.add_argument("--stats-chunk-size", type=int, default=512)
     parser.add_argument("--cache-schema-version", type=int, choices=(5, 6), default=5)
+    parser.add_argument(
+        "--helper-protocol",
+        choices=("in_sample", "seed_crossfit_5fold"),
+        default="in_sample",
+    )
+    parser.add_argument("--crossfit-fold", type=int, choices=range(5))
     return parser.parse_args()
 
 
@@ -613,6 +661,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     started = time.time()
     frozen_manifest = _load_frozen_manifest(args.frozen_config_manifest)
     validate_requested_splits(tuple(args.splits), frozen_manifest)
+    helper_protocol = str(getattr(args, "helper_protocol", "in_sample"))
+    crossfit_fold = getattr(args, "crossfit_fold", None)
+    validate_helper_execution_args(helper_protocol, crossfit_fold, tuple(args.splits))
     args.output_dir = args.output_dir.resolve()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     configuration = _canonical_configuration(args)
@@ -640,8 +691,44 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     split_indices = build_selector_split(arrays["sample_seed"])
     protocol = SelectorProtocol(arrays["sample_seed"])
     protocol.freeze_configuration(configuration)
+    crossfit_manifest = None
+    if helper_protocol == "seed_crossfit_5fold":
+        payload = configuration["helper_generation_protocol"]
+        crossfit_manifest = {
+            "crossfit_protocol_payload": payload,
+            "crossfit_protocol_digest": canonical_sha256(payload),
+        }
+        execution = resolve_crossfit_execution(
+            arrays["sample_seed"], tuple(args.splits), crossfit_fold
+        )
+        raw_train_indices = execution.helper_train_indices
+        requested_indices = execution.label_indices
+        for split_name, indices in requested_indices.items():
+            if not np.array_equal(indices, protocol.indices(split_name)):
+                raise ValueError(f"crossfit label indices disagree with selector split: {split_name}")
+        helper_execution = {
+            "mode": execution.mode,
+            "fold_id": execution.fold_id,
+            "held_out_seeds": list(execution.held_out_seeds),
+            "helper_train_seeds": list(execution.helper_train_seeds),
+        }
+        (args.output_dir / "crossfit_protocol.json").write_text(
+            json.dumps(crossfit_manifest, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+    else:
+        raw_train_indices = split_indices["train"]
+        requested_indices = {
+            split_name: protocol.indices(split_name) for split_name in args.splits
+        }
+        helper_execution = {
+            "mode": "in_sample_helper",
+            "fold_id": None,
+            "held_out_seeds": [],
+            "helper_train_seeds": list(DEFAULT_SELECTOR_SEEDS["train"]),
+        }
     train_indices = limit_indices_seed_balanced(
-        split_indices["train"], arrays["sample_seed"], int(args.helper_train_limit)
+        raw_train_indices, arrays["sample_seed"], int(args.helper_train_limit)
     )
     score_model, value_model, train_score, quantiles = _fit_helper_models(
         args,
@@ -657,9 +744,20 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     )
     split_summaries = {}
     for split_name in args.splits:
-        indices = protocol.indices(split_name)
+        indices = requested_indices[split_name]
         indices = limit_indices_seed_balanced(
             indices, arrays["sample_seed"], int(args.split_sample_limit)
+        )
+        protocol_metadata = dict(configuration)
+        protocol_metadata["helper_execution"] = helper_execution
+        if crossfit_manifest is not None:
+            protocol_metadata["crossfit_protocol_digest"] = crossfit_manifest[
+                "crossfit_protocol_digest"
+            ]
+        sample_fold_id = (
+            np.full(len(indices), int(crossfit_fold), dtype=np.int16)
+            if split_name == "train" and crossfit_fold is not None
+            else None
         )
         split_summaries[split_name] = _make_label_split(
             args,
@@ -679,7 +777,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             train_score,
             quantiles,
             configuration_digest,
-            configuration,
+            protocol_metadata,
+            sample_fold_id=sample_fold_id,
         )
     result = {
         "framework": "PI-JWM",
@@ -688,8 +787,13 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "configuration": configuration,
         "configuration_digest": configuration_digest,
         "configuration_frozen": False,
+        "helper_protocol": helper_protocol,
+        "helper_execution": helper_execution,
         "device": str(device),
         "helper_train_samples": int(len(train_indices)),
+        "label_samples": {
+            name: int(value["num_samples"]) for name, value in split_summaries.items()
+        },
         "splits": split_summaries,
         "runtime_seconds": float(time.time() - started),
     }

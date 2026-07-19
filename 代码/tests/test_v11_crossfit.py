@@ -1,6 +1,7 @@
 import sys
 import tempfile
 import unittest
+from argparse import Namespace
 from pathlib import Path
 
 import numpy as np
@@ -261,6 +262,83 @@ class CrossfitCacheMergeTest(unittest.TestCase):
         self.assertEqual(interactions.tokens.shape[0], 5)
         self.assertEqual(manifest["schema_version"], 6)
         self.assertEqual(len(manifest["protocol_metadata"]["source_fold_caches"]), 5)
+
+
+class CrossfitLabelRunnerContractTest(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        root = Path(self.temp.name)
+        self.world_checkpoint = root / "world.pt"
+        self.policy_checkpoint = root / "policy.pt"
+        self.world_checkpoint.write_bytes(b"world")
+        self.policy_checkpoint.write_bytes(b"policy")
+        self.root = root
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def _args(self, fold_id):
+        return Namespace(
+            world_experiment_dir=self.root,
+            world_checkpoint=self.world_checkpoint,
+            policy_checkpoint=self.policy_checkpoint,
+            output_dir=self.root / "output",
+            splits=["train"],
+            frozen_config_manifest=None,
+            device="cpu",
+            batch_size=8,
+            helper_train_limit=8,
+            split_sample_limit=8,
+            policy_threshold=0.4,
+            value_scale=1.0,
+            new_policy_threshold=0.37,
+            new_value_scale=1.06,
+            gate_feature="step_rb_cpu_total",
+            gate_threshold=450.0,
+            value_codebook_size=9,
+            min_effective_rb_total=1.0,
+            activity_threshold=0.5,
+            rf_trees=5,
+            seed=20260717,
+            stats_chunk_size=64,
+            cache_schema_version=6,
+            helper_protocol="seed_crossfit_5fold",
+            crossfit_fold=fold_id,
+        )
+
+    def test_crossfit_fold_is_execution_metadata_not_global_configuration(self):
+        from run_v11_selector_candidate_labels import _canonical_configuration
+
+        left = _canonical_configuration(self._args(0))
+        right = _canonical_configuration(self._args(4))
+
+        self.assertEqual(left, right)
+        self.assertIn("helper_generation_protocol", left)
+
+    def test_crossfit_train_requires_fold_and_eval_rejects_fold(self):
+        from run_v11_selector_candidate_labels import validate_helper_execution_args
+
+        with self.assertRaisesRegex(ValueError, "fold"):
+            validate_helper_execution_args(
+                "seed_crossfit_5fold", None, ("train",)
+            )
+        with self.assertRaisesRegex(ValueError, "fold"):
+            validate_helper_execution_args(
+                "seed_crossfit_5fold", 0, ("validation",)
+            )
+
+    def test_reproduction_command_contains_crossfit_protocol(self):
+        import shlex
+
+        from run_v11_selector_candidate_labels import build_reproduction_command
+
+        tokens = shlex.split(build_reproduction_command(self._args(3)))
+
+        self.assertEqual(
+            tokens[tokens.index("--helper-protocol") + 1],
+            "seed_crossfit_5fold",
+        )
+        self.assertEqual(tokens[tokens.index("--crossfit-fold") + 1], "3")
 
 
 if __name__ == "__main__":
