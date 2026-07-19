@@ -34,15 +34,22 @@ COMMON_DESCRIPTOR_NAMES = (
     "family_control",
 )
 
-PHYSICAL_PREDICTION_FEATURES = (
+PHYSICAL_TASK_PREDICTION_FEATURES = (
     "physical_task_delta_mean",
     "physical_task_delta_std",
     "physical_task_delta_lcb",
     "physical_task_delta_ucb",
+)
+
+PHYSICAL_ENERGY_PREDICTION_FEATURES = (
     "physical_energy_delta_mean",
     "physical_energy_delta_std",
     "physical_energy_delta_lcb",
     "physical_energy_delta_ucb",
+)
+
+PHYSICAL_PREDICTION_FEATURES = (
+    PHYSICAL_TASK_PREDICTION_FEATURES + PHYSICAL_ENERGY_PREDICTION_FEATURES
 )
 
 
@@ -299,12 +306,20 @@ def build_physical_training_batch(
             family = normalize_physical_family(str(row.get("action_family", "")))
             if family is None:
                 rejected.append(
-                    {"candidate_id": str(row.get("candidate_id", "")), "reason": "unsupported_action_family"}
+                    {
+                        "candidate_id": str(row.get("candidate_id", "")),
+                        "action_family": str(row.get("action_family", "")),
+                        "reason": "unsupported_action_family",
+                    }
                 )
                 continue
             if not _as_bool(row.get("action_applied", False)):
                 rejected.append(
-                    {"candidate_id": str(row.get("candidate_id", "")), "reason": "action_not_applied"}
+                    {
+                        "candidate_id": str(row.get("candidate_id", "")),
+                        "action_family": str(row.get("action_family", "")),
+                        "reason": "action_not_applied",
+                    }
                 )
                 continue
             descriptor, descriptor_names = physical_action_descriptor(row)
@@ -477,11 +492,17 @@ def augment_candidate_batch_with_physical_benefit(
     batch: Any,
     fitted: FittedPhysicalBenefitBridge,
     default_index: int,
+    include_energy: bool = True,
 ) -> Any:
     """Return a new candidate batch with calibrated physical delta features."""
 
     from .v11_selector import CandidateBatch
 
+    selected_names = (
+        PHYSICAL_PREDICTION_FEATURES
+        if bool(include_energy)
+        else PHYSICAL_TASK_PREDICTION_FEATURES
+    )
     duplicate = [name for name in PHYSICAL_PREDICTION_FEATURES if name in batch.feature_names]
     if duplicate:
         raise ValueError(f"candidate batch already contains physical benefit fields: {duplicate}")
@@ -514,12 +535,14 @@ def augment_candidate_batch_with_physical_benefit(
         axis=2,
     ).astype(np.float32)
     physical[:, default, :] = 0.0
+    if not bool(include_energy):
+        physical = physical[:, :, : len(PHYSICAL_TASK_PREDICTION_FEATURES)]
     return CandidateBatch(
         context=batch.context,
         candidate_features=np.concatenate((batch.candidate_features, physical), axis=2),
         candidate_mask=batch.candidate_mask,
         stage=batch.stage,
-        feature_names=tuple(batch.feature_names) + PHYSICAL_PREDICTION_FEATURES,
+        feature_names=tuple(batch.feature_names) + selected_names,
         candidate_names=tuple(batch.candidate_names),
         context_feature_names=context_names,
     )
@@ -533,7 +556,7 @@ def fit_physical_benefit_bridge(
 
     if train.feature_names != calibration.feature_names:
         raise ValueError("physical train/calibration feature order mismatch")
-    from sklearn.ensemble import RandomForestRegressor
+    from sklearn.ensemble import HistGradientBoostingRegressor
 
     from .v11_crossfit import build_seed_crossfit_folds
     from .v11_selector import DEFAULT_SELECTOR_SEEDS
@@ -560,12 +583,13 @@ def fit_physical_benefit_bridge(
             raise ValueError(f"physical bridge fold {fold.fold_id} has no fit or held rows")
 
         def model(target_id: int) -> Any:
-            return RandomForestRegressor(
-                n_estimators=128,
-                max_depth=8,
-                min_samples_leaf=4,
+            return HistGradientBoostingRegressor(
+                loss="absolute_error",
+                max_iter=100,
+                max_depth=3,
+                min_samples_leaf=10,
+                l2_regularization=1.0,
                 random_state=1700 + fold.fold_id * 10 + target_id,
-                n_jobs=1,
             )
 
         task_model = model(0).fit(train.features[fit_mask], train.task_delta[fit_mask])
@@ -616,11 +640,38 @@ def fit_physical_benefit_bridge(
     )
     calibration_prediction = predict_physical_benefit(fitted, calibration.features)
     mae = lambda truth, prediction: float(np.mean(np.abs(truth - prediction)))
+    calibration_baseline_task = _family_stage_median_prediction(
+        train.task_delta,
+        train.stage,
+        train.normalized_family,
+        calibration.stage,
+        calibration.normalized_family,
+    )
+    calibration_baseline_energy = _family_stage_median_prediction(
+        train.energy_delta,
+        train.stage,
+        train.normalized_family,
+        calibration.stage,
+        calibration.normalized_family,
+    )
     report = {
+        "model_kind": "hist_gradient_boosting_absolute_error",
         "oof_task_mae": mae(train.task_delta, oof_task),
         "oof_energy_mae": mae(train.energy_delta, oof_energy),
         "baseline_task_mae": mae(train.task_delta, baseline_task),
         "baseline_energy_mae": mae(train.energy_delta, baseline_energy),
+        "calibration_task_mae": mae(
+            calibration.task_delta, calibration_prediction.task_mean
+        ),
+        "calibration_energy_mae": mae(
+            calibration.energy_delta, calibration_prediction.energy_mean
+        ),
+        "calibration_baseline_task_mae": mae(
+            calibration.task_delta, calibration_baseline_task
+        ),
+        "calibration_baseline_energy_mae": mae(
+            calibration.energy_delta, calibration_baseline_energy
+        ),
         "calibration_task_coverage": float(
             np.mean(
                 (calibration.task_delta >= calibration_prediction.task_lcb)
@@ -636,10 +687,20 @@ def fit_physical_benefit_bridge(
         "task_conformal_radius": task_radius,
         "energy_conformal_radius": energy_radius,
     }
-    report["passed"] = bool(
+    report["task_model_passed"] = bool(
         report["oof_task_mae"] < report["baseline_task_mae"]
-        and report["oof_energy_mae"] < report["baseline_energy_mae"]
+        and report["calibration_task_mae"]
+        < report["calibration_baseline_task_mae"]
         and report["calibration_task_coverage"] >= 0.8
+    )
+    report["energy_model_passed"] = bool(
+        report["oof_energy_mae"] < report["baseline_energy_mae"]
+        and report["calibration_energy_mae"]
+        < report["calibration_baseline_energy_mae"]
         and report["calibration_energy_coverage"] >= 0.8
+    )
+    report["task_only_passed"] = bool(report["task_model_passed"])
+    report["passed"] = bool(
+        report["task_model_passed"] and report["energy_model_passed"]
     )
     return fitted, report

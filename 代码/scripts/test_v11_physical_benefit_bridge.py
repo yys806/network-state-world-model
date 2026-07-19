@@ -83,7 +83,10 @@ class PhysicalBenefitBuilderContractTest(unittest.TestCase):
 
     def test_augmented_cache_feature_order_is_identical_and_physical_last(self):
         from build_v11_physical_benefit_bridge import validate_augmented_feature_order
-        from pi_jwm.v11_physical_benefit import PHYSICAL_PREDICTION_FEATURES
+        from pi_jwm.v11_physical_benefit import (
+            PHYSICAL_PREDICTION_FEATURES,
+            PHYSICAL_TASK_PREDICTION_FEATURES,
+        )
 
         names = ["base_a", "base_b", *PHYSICAL_PREDICTION_FEATURES]
         manifests = {
@@ -95,9 +98,43 @@ class PhysicalBenefitBuilderContractTest(unittest.TestCase):
             validate_augmented_feature_order(manifests),
             tuple(names),
         )
+        task_names = ["base_a", "base_b", *PHYSICAL_TASK_PREDICTION_FEATURES]
+        task_manifests = {
+            split: {"feature_names": task_names}
+            for split in ("train", "calibration", "validation")
+        }
+        self.assertEqual(
+            validate_augmented_feature_order(task_manifests, physical_scope="task_only"),
+            tuple(task_names),
+        )
         manifests["validation"] = {"feature_names": list(reversed(names))}
         with self.assertRaisesRegex(ValueError, "feature order"):
             validate_augmented_feature_order(manifests)
+
+    def test_expected_standalone_offload_exclusions_do_not_block_bridge(self):
+        from build_v11_physical_benefit_bridge import audit_rejected_candidates
+
+        expected = audit_rejected_candidates(
+            [
+                {
+                    "candidate_id": "offload_rank_1",
+                    "action_family": "offload_target",
+                    "reason": "unsupported_action_family",
+                }
+            ]
+        )
+        unexpected = audit_rejected_candidates(
+            [
+                {
+                    "candidate_id": "rb_2",
+                    "action_family": "rb_count",
+                    "reason": "action_not_applied",
+                }
+            ]
+        )
+
+        self.assertTrue(expected["passed"])
+        self.assertFalse(unexpected["passed"])
 
 
 class PhysicalBenefitSelectorGuardTest(unittest.TestCase):

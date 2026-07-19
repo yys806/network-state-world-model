@@ -411,6 +411,17 @@ def observable_pareto_deltas(
             batch.candidate_features[:, :, names.index(physical_task_name)].astype(np.float32),
             batch.candidate_features[:, :, names.index(physical_energy_name)].astype(np.float32),
         )
+    if physical_task_name in names and "predicted_energy_proxy" in names:
+        default = int(default_index)
+        energy = batch.candidate_features[
+            :, :, names.index("predicted_energy_proxy")
+        ].astype(np.float32)
+        return (
+            batch.candidate_features[:, :, names.index(physical_task_name)].astype(
+                np.float32
+            ),
+            energy - energy[:, default : default + 1],
+        )
     task_name = "predicted_task_delta_8"
     energy_name = "predicted_energy_proxy"
     if task_name not in names or energy_name not in names:

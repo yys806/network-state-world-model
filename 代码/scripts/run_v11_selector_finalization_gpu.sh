@@ -15,6 +15,7 @@ DEVICE="${DEVICE:-cuda}"
 BATCH_SIZE="${BATCH_SIZE:-64}"
 EPOCHS="${EPOCHS:-20}"
 RF_TREES="${RF_TREES:-160}"
+SCHEMA_VERSION="${SCHEMA_VERSION:-6}"
 REPORT_ROOT="${REPORT_ROOT:-artifacts/reports/pi_jwm_v11_selector_finalization_20260719}"
 LABEL_DIR="${REPORT_ROOT}/label_cache_full"
 TRAIN_DIR="${REPORT_ROOT}/selector_training_full"
@@ -36,6 +37,7 @@ COMMON_LABEL_ARGS=(
   --split-sample-limit 0
   --rf-trees "${RF_TREES}"
   --stats-chunk-size 512
+  --cache-schema-version "${SCHEMA_VERSION}"
   --output-dir "${LABEL_DIR}"
 )
 

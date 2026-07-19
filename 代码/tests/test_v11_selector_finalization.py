@@ -867,6 +867,28 @@ class DeferAndParetoTest(unittest.TestCase):
         np.testing.assert_allclose(task, [[0.0, 1.5]])
         np.testing.assert_allclose(energy, [[0.0, 2.5]])
 
+    def test_observable_pareto_deltas_mix_physical_task_with_energy_proxy(self):
+        from pi_jwm.v11_selector import CandidateBatch, observable_pareto_deltas
+
+        batch = CandidateBatch(
+            context=np.zeros((1, 1), dtype=np.float32),
+            candidate_features=np.asarray(
+                [[[50.0, 50.0, 0.0], [60.0, 65.0, 1.5]]], dtype=np.float32
+            ),
+            candidate_mask=np.ones((1, 2), dtype=bool),
+            stage=np.asarray(["offload"]),
+            feature_names=(
+                "predicted_task_delta_8",
+                "predicted_energy_proxy",
+                "physical_task_delta_lcb",
+            ),
+        )
+
+        task, energy = observable_pareto_deltas(batch, default_index=0)
+
+        np.testing.assert_allclose(task, [[0.0, 1.5]])
+        np.testing.assert_allclose(energy, [[0.0, 15.0]])
+
     def test_select_with_defer_uses_lower_confidence_and_pareto_rules(self):
         from pi_jwm.v11_selector import select_with_defer
 

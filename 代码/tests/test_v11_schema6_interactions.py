@@ -393,7 +393,13 @@ class CandidateInteractionRunnerTest(unittest.TestCase):
         text = script_path.read_text(encoding="utf-8")
 
         self.assertIn("--cache-schema-version 6", text)
-        self.assertIn("--splits train calibration validation", text)
+        self.assertIn("--splits validation", text)
+        self.assertIn("--splits train calibration", text)
+        self.assertLess(
+            text.index("--splits validation"),
+            text.index("--splits train calibration"),
+        )
+        self.assertIn('summary["candidate_gate"]["passed"]', text)
         self.assertIn("torch.cuda.is_available", text)
         self.assertIn("PYTHONPATH", text)
         self.assertIn("label_cache_schema6", text)

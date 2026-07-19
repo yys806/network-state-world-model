@@ -237,6 +237,10 @@ class PhysicalTrainingBatchTest(unittest.TestCase):
             {row["reason"] for row in batch.rejected_rows},
             {"unsupported_action_family", "action_not_applied"},
         )
+        self.assertEqual(
+            {row["action_family"] for row in batch.rejected_rows},
+            {"offload_target", "rb_count"},
+        )
 
     def test_rejects_missing_or_duplicate_default(self):
         from pi_jwm.v11_physical_benefit import build_physical_training_batch
@@ -335,6 +339,26 @@ class PhysicalBenefitModelTest(unittest.TestCase):
         self.assertTrue(np.all(prediction.energy_mean <= prediction.energy_ucb))
         self.assertLess(report["oof_task_mae"], report["baseline_task_mae"])
         self.assertLess(report["oof_energy_mae"], report["baseline_energy_mae"])
+
+    def test_exposes_task_only_gate_when_energy_is_not_identifiable(self):
+        from dataclasses import replace
+
+        from pi_jwm.v11_physical_benefit import fit_physical_benefit_bridge
+        from pi_jwm.v11_selector import DEFAULT_SELECTOR_SEEDS
+
+        train = self._batch(DEFAULT_SELECTOR_SEEDS["train"])
+        calibration = self._batch(DEFAULT_SELECTOR_SEEDS["calibration"])
+        train = replace(train, energy_delta=np.zeros_like(train.energy_delta))
+        calibration = replace(
+            calibration, energy_delta=np.zeros_like(calibration.energy_delta)
+        )
+
+        _, report = fit_physical_benefit_bridge(train, calibration)
+
+        self.assertTrue(report["task_model_passed"])
+        self.assertFalse(report["energy_model_passed"])
+        self.assertTrue(report["task_only_passed"])
+        self.assertFalse(report["passed"])
 
 
 class PhysicalBenefitAugmentationTest(unittest.TestCase):
@@ -443,6 +467,23 @@ class PhysicalBenefitAugmentationTest(unittest.TestCase):
             augment_candidate_batch_with_physical_benefit(
                 augmented, self._fitted(), default_index=1
             )
+
+    def test_task_only_augmentation_omits_unidentifiable_energy_fields(self):
+        from pi_jwm.v11_physical_benefit import (
+            PHYSICAL_TASK_PREDICTION_FEATURES,
+            augment_candidate_batch_with_physical_benefit,
+        )
+
+        source = self._batch()
+        augmented = augment_candidate_batch_with_physical_benefit(
+            source, self._fitted(), default_index=1, include_energy=False
+        )
+
+        self.assertEqual(
+            augmented.feature_names,
+            source.feature_names + PHYSICAL_TASK_PREDICTION_FEATURES,
+        )
+        self.assertFalse(any("physical_energy" in name for name in augmented.feature_names))
 
 
 if __name__ == "__main__":

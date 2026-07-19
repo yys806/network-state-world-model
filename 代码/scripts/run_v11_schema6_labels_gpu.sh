@@ -37,20 +37,39 @@ SOURCE_GIT_SHA="$(git rev-parse HEAD)"
 "${PYTHON}" -c 'import torch; assert torch.cuda.is_available(), "CUDA is unavailable"'
 "${PYTHON}" -c 'import torch; print(torch.cuda.get_device_name(0)); print(torch.__version__)'
 
-echo "[$(date --iso-8601=seconds)] generating complete schema-v6 label caches"
-"${PYTHON}" scripts/run_v11_selector_candidate_labels.py \
+COMMON_ARGS=(
   --world-checkpoint "${WORLD_CHECKPOINT}" \
   --policy-checkpoint "${POLICY_CHECKPOINT}" \
   --output-dir "${LABEL_DIR}" \
-  --splits train calibration validation \
   --device "${DEVICE}" \
   --batch-size "${BATCH_SIZE}" \
   --helper-train-limit 0 \
   --split-sample-limit 0 \
   --rf-trees "${RF_TREES}" \
   --stats-chunk-size 512 \
-  --cache-schema-version 6 \
-  2>&1 | tee "${LOG_DIR}/01_complete_schema6_labels.log"
+  --cache-schema-version 6
+)
+
+echo "[$(date --iso-8601=seconds)] generating validation schema-v6 labels"
+"${PYTHON}" scripts/run_v11_selector_candidate_labels.py \
+  --splits validation \
+  "${COMMON_ARGS[@]}" \
+  2>&1 | tee "${LOG_DIR}/01_validation_schema6_labels.log"
+
+"${PYTHON}" - "${LABEL_DIR}/summary_validation.json" <<'PY'
+import json
+import sys
+
+summary = json.load(open(sys.argv[1], encoding="utf-8"))
+if not bool(summary["candidate_gate"]["passed"]):
+    raise SystemExit(f"full validation candidate gate failed: {summary['candidate_gate']}")
+PY
+
+echo "[$(date --iso-8601=seconds)] validation gate passed; generating train/calibration labels"
+"${PYTHON}" scripts/run_v11_selector_candidate_labels.py \
+  --splits train calibration \
+  "${COMMON_ARGS[@]}" \
+  2>&1 | tee "${LOG_DIR}/02_train_calibration_schema6_labels.log"
 
 "${PYTHON}" - "${LABEL_DIR}" "${SOURCE_GIT_SHA}" <<'PY'
 import json
@@ -69,7 +88,16 @@ expected_seeds = {
 manifests = {}
 for split, seeds in expected_seeds.items():
     cache = label_dir / f"candidate_labels_{split}.npz"
+    summary_path = label_dir / f"summary_{split}.json"
+    if not summary_path.is_file():
+        raise RuntimeError(f"{split}: split summary is missing")
+    split_summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    if split == "validation" and not bool(split_summary["candidate_gate"]["passed"]):
+        raise RuntimeError(f"{split}: candidate gate failed: {split_summary['candidate_gate']}")
+    expected_count = {"train": 15600, "calibration": 2340, "validation": 3900}[split]
     _, _, interactions, manifest = load_candidate_interaction_cache(cache)
+    if int(manifest["num_samples"]) != expected_count:
+        raise RuntimeError(f"{split}: expected {expected_count} samples, got {manifest['num_samples']}")
     if int(manifest["schema_version"]) != 6:
         raise RuntimeError(f"{split}: expected schema 6")
     if set(int(value) for value in manifest["seed_values"]) != seeds:

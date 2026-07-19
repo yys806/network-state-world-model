@@ -24,6 +24,7 @@ from pi_jwm.v11_labeling import (
     save_candidate_interaction_cache,
 )
 from pi_jwm.v11_physical_benefit import (
+    PHYSICAL_TASK_PREDICTION_FEATURES,
     PHYSICAL_PREDICTION_FEATURES,
     align_decision_points,
     audit_physical_bridge_protocol,
@@ -135,6 +136,7 @@ def _validate_physical_alignment(
 
 def validate_augmented_feature_order(
     manifests: Mapping[str, Mapping[str, Any]],
+    physical_scope: str = "full",
 ) -> tuple[str, ...]:
     missing = [split for split in SPLITS if split not in manifests]
     if missing:
@@ -142,9 +144,41 @@ def validate_augmented_feature_order(
     orders = [tuple(str(name) for name in manifests[split].get("feature_names", ())) for split in SPLITS]
     if any(order != orders[0] for order in orders[1:]):
         raise ValueError("augmented cache feature order mismatch")
-    if orders[0][-len(PHYSICAL_PREDICTION_FEATURES) :] != PHYSICAL_PREDICTION_FEATURES:
+    expected = (
+        PHYSICAL_PREDICTION_FEATURES
+        if str(physical_scope) == "full"
+        else PHYSICAL_TASK_PREDICTION_FEATURES
+    )
+    if str(physical_scope) not in {"full", "task_only"}:
+        raise ValueError(f"unknown physical feature scope: {physical_scope}")
+    if orders[0][-len(expected) :] != expected:
         raise ValueError("augmented cache feature order must end with physical predictions")
     return orders[0]
+
+
+def audit_rejected_candidates(
+    rows: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Allow only standalone offload labels that have no selector candidate analogue."""
+
+    expected = []
+    unexpected = []
+    for source in rows:
+        row = dict(source)
+        is_expected = (
+            str(row.get("reason")) == "unsupported_action_family"
+            and str(row.get("action_family")).strip().lower() == "offload_target"
+        )
+        (expected if is_expected else unexpected).append(row)
+    return {
+        "passed": not unexpected,
+        "expected_exclusion_count": len(expected),
+        "unexpected_rejection_count": len(unexpected),
+        "expected_exclusion_families": sorted(
+            {str(row.get("action_family")) for row in expected}
+        ),
+        "unexpected_rejections": unexpected,
+    }
 
 
 def _cache_metadata(path: Path) -> tuple[np.ndarray, np.ndarray, np.ndarray | None, tuple[str, ...]]:
@@ -261,13 +295,30 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         for split in ("train", "calibration")
         for row in training_batches[split].rejected_rows
     ]
+    rejection_audit = audit_rejected_candidates(rejected)
+    bridge_mode = (
+        "full"
+        if bool(model_report["passed"])
+        else "task_only"
+        if bool(model_report.get("task_only_passed"))
+        else "failed"
+    )
     bridge_checks = {
-        "model_gate": bool(model_report["passed"]),
+        "model_gate": bridge_mode != "failed",
+        "full_model_gate": bool(model_report["passed"]),
+        "task_model_gate": bool(model_report.get("task_model_passed")),
+        "energy_model_gate": bool(model_report.get("energy_model_passed")),
         "protocol_audit": bool(protocol_audit["passed"]),
         "alignment_audit": all(value["passed"] for value in alignment.values()),
-        "no_rejected_candidates": not rejected,
+        "expected_exclusions_only": bool(rejection_audit["passed"]),
     }
-    bridge_gate_passed = all(bridge_checks.values())
+    required_checks = (
+        "model_gate",
+        "protocol_audit",
+        "alignment_audit",
+        "expected_exclusions_only",
+    )
+    bridge_gate_passed = all(bridge_checks[name] for name in required_checks)
 
     with (output_dir / "physical_benefit_bridge.pkl").open("wb") as handle:
         pickle.dump(fitted, handle)
@@ -304,7 +355,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         batch, outcome, interactions, source_manifest = loaded[split]
         sample_ids, sample_seed, sample_fold_id, action_names = metadata[split]
         augmented = augment_candidate_batch_with_physical_benefit(
-            batch, fitted, outcome.default_index
+            batch,
+            fitted,
+            outcome.default_index,
+            include_energy=bridge_mode == "full",
         )
         output_path = output_dir / f"candidate_labels_{split}_physical.npz"
         manifest = save_candidate_interaction_cache(
@@ -320,6 +374,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             protocol_metadata={
                 **dict(source_manifest.get("protocol_metadata", {})),
                 "physical_benefit_bridge": "diagnostic_only",
+                "physical_feature_scope": bridge_mode,
+                "physical_energy_result_kind": (
+                    "observable_prediction" if bridge_mode == "full" else "audit_only"
+                ),
                 "source_cache_sha256": str(source_manifest.get("cache_sha256", "")),
             },
             sample_fold_id=sample_fold_id,
@@ -329,7 +387,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "path": output_path.name,
             "sha256": str(manifest["cache_sha256"]),
         }
-    feature_order = validate_augmented_feature_order(augmented_manifests)
+    feature_order = validate_augmented_feature_order(
+        augmented_manifests, physical_scope=bridge_mode
+    )
 
     split_hashes = {
         split: canonical_sha256(
@@ -346,11 +406,17 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "result_kind": "diagnostic_only",
         "dry_run": False,
         "bridge_gate_passed": bridge_gate_passed,
+        "bridge_mode": bridge_mode,
+        "physical_feature_scope": bridge_mode,
+        "physical_energy_result_kind": (
+            "observable_prediction" if bridge_mode == "full" else "audit_only"
+        ),
         "bridge_gate_checks": bridge_checks,
         "model_report": model_report,
         "protocol_audit": protocol_audit,
         "alignment_audit": alignment,
         "rejected_candidate_count": len(rejected),
+        "rejection_audit": rejection_audit,
         "input_sha256": input_hashes,
         "split_hashes": split_hashes,
         "augmented_caches": augmented_records,
