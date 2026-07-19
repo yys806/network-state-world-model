@@ -972,6 +972,60 @@ class CandidateLabelRunnerContractTest(unittest.TestCase):
 
 
 class SelectorTrainingRunnerContractTest(unittest.TestCase):
+    def test_selector_freeze_requires_performance_and_safety_metrics(self):
+        from train_v11_candidate_set_selector import (
+            classify_selector_validation_gate,
+        )
+
+        passing = {
+            "rmse": 229.0,
+            "improved_seed_count": 7,
+            "executed_positive_precision": 0.70,
+            "negative_selection_rate": 0.10,
+            "activity_f1_drop": 0.001,
+            "link_rmse_relative_degradation": 0.01,
+            "training_seed_std": 4.0,
+        }
+        self.assertTrue(classify_selector_validation_gate(passing)["passed"])
+        failures = {
+            "rmse": 230.8556,
+            "improved_seed_count": 6,
+            "executed_positive_precision": 0.64,
+            "negative_selection_rate": 0.21,
+            "activity_f1_drop": 0.0021,
+            "link_rmse_relative_degradation": 0.021,
+            "training_seed_std": 5.1,
+        }
+        for field, value in failures.items():
+            row = dict(passing)
+            row[field] = value
+            self.assertFalse(
+                classify_selector_validation_gate(row)["passed"], field
+            )
+
+    def test_choice_metrics_reports_executed_precision_and_seed_improvement(self):
+        from pi_jwm.v11_selector import CandidateOutcome
+        from train_v11_candidate_set_selector import _choice_metrics
+
+        outcome = CandidateOutcome(
+            active_sse=np.asarray(
+                [[9.0, 1.0], [9.0, 9.0], [4.0, 16.0]], dtype=np.float32
+            ),
+            active_count=np.ones(3, dtype=np.int64),
+            default_index=0,
+        )
+
+        metrics = _choice_metrics(
+            outcome,
+            choice=np.asarray([1, 0, 1]),
+            sample_seed=np.asarray([50, 50, 51]),
+        )
+
+        self.assertEqual(metrics["improved_seed_count"], 1)
+        self.assertEqual(metrics["executed_positive_precision"], 0.5)
+        self.assertEqual(metrics["negative_selection_rate"], 0.5)
+        self.assertIn("default_rmse", metrics["per_seed"][0])
+
     def test_candidate_set_runner_requires_schema6_for_formal_training(self):
         runner = (CODE_ROOT / "scripts/train_v11_candidate_set_selector.py").read_text(
             encoding="utf-8"

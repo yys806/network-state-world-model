@@ -109,6 +109,34 @@ def choose_best_validation_config(rows: list[dict[str, Any]]) -> dict[str, Any]:
     )
 
 
+def classify_selector_validation_gate(metrics: Mapping[str, Any]) -> dict[str, Any]:
+    """Apply the pre-registered deployable selector validation gates."""
+
+    def finite(name: str) -> float:
+        try:
+            value = float(metrics[name])
+        except (KeyError, TypeError, ValueError):
+            return float("inf")
+        return value if np.isfinite(value) else float("inf")
+
+    checks = {
+        "rmse": finite("rmse") < 230.8556,
+        "improved_seed_count": int(metrics["improved_seed_count"]) >= 7,
+        "positive_precision": finite("executed_positive_precision") >= 0.65,
+        "negative_selection_rate": finite("negative_selection_rate") <= 0.20,
+        "activity_f1_drop": finite("activity_f1_drop") <= 0.002,
+        "link_rmse_relative_degradation": (
+            finite("link_rmse_relative_degradation") <= 0.02
+        ),
+        "training_seed_std": finite("training_seed_std") <= 5.0,
+    }
+    return {
+        "passed": all(checks.values()),
+        "checks": checks,
+        "metrics": dict(metrics),
+    }
+
+
 def enforce_result_kinds(
     rows: list[dict[str, Any]], gate_passed: bool
 ) -> list[dict[str, Any]]:
@@ -187,9 +215,47 @@ def _choice_metrics(
         seed_oracle = choice_rmse_from_sample_sse(
             seed_sse, seed_count, masked_oracle_choice(seed_sse, available[keep])
         )
-        per_seed.append(
-            {"seed": seed, "rmse": seed_rmse, "oracle_rmse": seed_oracle, "regret": seed_rmse - seed_oracle}
+        seed_default = choice_rmse_from_sample_sse(
+            seed_sse,
+            seed_count,
+            np.full(seed_choice.shape, outcome.default_index, dtype=np.int64),
         )
+        per_seed.append(
+            {
+                "seed": seed,
+                "rmse": seed_rmse,
+                "default_rmse": seed_default,
+                "oracle_rmse": seed_oracle,
+                "regret": seed_rmse - seed_oracle,
+            }
+        )
+    row_index = np.arange(outcome.active_sse.shape[0])
+    sample_benefit = (
+        outcome.active_sse[:, outcome.default_index]
+        - outcome.active_sse[row_index, np.asarray(choice, dtype=np.int64)]
+    )
+    executed = (
+        np.asarray(choice, dtype=np.int64) != outcome.default_index
+    ) & (outcome.active_count > 0)
+    executed_positive_precision = (
+        float(np.mean(sample_benefit[executed] > 0.0)) if np.any(executed) else 1.0
+    )
+    negative_selection_rate = (
+        float(np.mean(sample_benefit[executed] < 0.0)) if np.any(executed) else 0.0
+    )
+    activity_f1_drop = (
+        None
+        if default_metrics["activity_f1"] is None or selected_metrics["activity_f1"] is None
+        else float(default_metrics["activity_f1"] - selected_metrics["activity_f1"])
+    )
+    link_rmse_relative_degradation = (
+        None
+        if default_metrics["link_rmse"] is None or selected_metrics["link_rmse"] is None
+        else float(
+            (selected_metrics["link_rmse"] - default_metrics["link_rmse"])
+            / max(float(default_metrics["link_rmse"]), 1e-12)
+        )
+    )
     return {
         "rmse": None if selected_rmse is None else float(selected_rmse),
         "active_rate_rmse": None if selected_rmse is None else float(selected_rmse),
@@ -207,6 +273,13 @@ def _choice_metrics(
             else float(default_rmse - selected_rmse)
         ),
         "worst_seed_regret": max((float(row["regret"]) for row in per_seed), default=0.0),
+        "improved_seed_count": int(
+            sum(float(row["rmse"]) < float(row["default_rmse"]) for row in per_seed)
+        ),
+        "executed_positive_precision": executed_positive_precision,
+        "negative_selection_rate": negative_selection_rate,
+        "activity_f1_drop": activity_f1_drop,
+        "link_rmse_relative_degradation": link_rmse_relative_degradation,
         "per_seed": per_seed,
     }
 
@@ -573,17 +646,29 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "improvement_vs_default": metrics["improvement_vs_default"],
             "worst_seed_regret": metrics["worst_seed_regret"],
             "seed_std": float(np.std(per_training_seed_rmse, ddof=0)),
+            "training_seed_std": float(np.std(per_training_seed_rmse, ddof=0)),
             "defer_ratio": float(np.mean(decision.deferred)),
             "training_seed_rmse": json.dumps(per_training_seed_rmse),
+            "improved_seed_count": metrics["improved_seed_count"],
+            "executed_positive_precision": metrics["executed_positive_precision"],
+            "negative_selection_rate": metrics["negative_selection_rate"],
+            "activity_f1_drop": metrics["activity_f1_drop"],
+            "link_rmse_relative_degradation": metrics[
+                "link_rmse_relative_degradation"
+            ],
         }
         config_rows.append(row)
         checkpoints[config_id] = checkpoint_paths
         checkpoint_records[config_id] = config_checkpoint_records
     best = choose_best_validation_config(config_rows)
+    selector_validation_gate = classify_selector_validation_gate(best)
+    freeze_passed = bool(validation_gate["passed"]) and bool(
+        selector_validation_gate["passed"]
+    )
     comparison_rows.extend(
         {
             "model": f"candidate_set_ranker__{row['config_id']}",
-            "result_kind": "deployable" if validation_gate["passed"] else "diagnostic_only",
+            "result_kind": "deployable" if freeze_passed else "diagnostic_only",
             "validation_rmse": row["validation_rmse"],
             "validation_link_rmse": row["validation_link_rmse"],
             "validation_activity_f1": row["validation_activity_f1"],
@@ -592,7 +677,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         }
         for row in config_rows
     )
-    comparison_rows = enforce_result_kinds(comparison_rows, validation_gate["passed"])
+    comparison_rows = enforce_result_kinds(comparison_rows, freeze_passed)
     _write_csv(args.output_dir / "selector_grid_results.csv", config_rows)
     _write_csv(args.output_dir / "selector_comparison.csv", comparison_rows)
     selected_records = checkpoint_records[best["config_id"]]
@@ -626,9 +711,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     frozen_manifest = {
         "framework": "PI-JWM",
         "candidate": "v11",
-        "configuration_frozen": bool(validation_gate["passed"]),
+        "configuration_frozen": freeze_passed,
         "configuration_digest": configuration_digest,
         "candidate_gate": validation_gate,
+        "selector_validation_gate": selector_validation_gate,
         "selected_config": best,
         "selected_checkpoints": checkpoints[best["config_id"]],
         "selected_checkpoint_records": selected_records,
@@ -637,7 +723,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "selection_split": "validation",
         "defer_calibration_split": "calibration",
         "matched_test_accessed": False,
-        "result_kind": "deployable" if validation_gate["passed"] else "diagnostic_only",
+        "result_kind": "deployable" if freeze_passed else "diagnostic_only",
     }
     frozen_path = args.output_dir / "frozen_selector_manifest.json"
     frozen_path.write_text(json.dumps(frozen_manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
