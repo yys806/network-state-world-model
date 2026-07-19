@@ -320,12 +320,18 @@ def load_candidate_label_metadata(
             raise ValueError("candidate label cache is missing sample metadata")
         sample_ids = np.asarray(arrays["sample_ids"], dtype=np.int64).reshape(-1)
         sample_seed = np.asarray(arrays["sample_seed"], dtype=np.int64).reshape(-1)
+        sample_fold_id = (
+            np.asarray(arrays["sample_fold_id"], dtype=np.int16).reshape(-1)
+            if "sample_fold_id" in arrays.files and arrays["sample_fold_id"].size
+            else None
+        )
     expected_count = int(manifest.get("num_samples", -1))
     if sample_ids.shape != sample_seed.shape or sample_ids.shape[0] != expected_count:
         raise ValueError("candidate label metadata sample count mismatch")
     return {
         "sample_ids": sample_ids,
         "sample_seed": sample_seed,
+        "sample_fold_id": sample_fold_id,
         "split_name": str(manifest.get("split_name", "")),
         "configuration_digest": manifest.get("configuration_digest"),
         "cache_sha256": str(manifest.get("cache_sha256", "")),
@@ -341,6 +347,7 @@ def save_candidate_label_cache(
     outcome: CandidateOutcome,
     configuration_digest: str | None,
     protocol_metadata: dict[str, Any] | None = None,
+    sample_fold_id: np.ndarray | None = None,
 ) -> dict[str, Any]:
     """Write an auditable, self-describing cache beside a SHA-256 manifest."""
     cache_path = Path(path)
@@ -356,11 +363,17 @@ def save_candidate_label_cache(
         raise ValueError("candidate batch and outcome shapes must match")
     if len(batch.context_feature_names) != batch.context.shape[1]:
         raise ValueError("schema-v5 caches require one context feature name per context column")
+    fold_ids = np.asarray(
+        [] if sample_fold_id is None else sample_fold_id, dtype=np.int16
+    ).reshape(-1)
+    if fold_ids.size not in (0, sample_count):
+        raise ValueError("sample_fold_id must be empty or match candidate batch")
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         cache_path,
         sample_ids=ids,
         sample_seed=seeds,
+        sample_fold_id=fold_ids,
         context=batch.context,
         context_feature_names=np.asarray(batch.context_feature_names, dtype=str),
         candidate_features=batch.candidate_features,
@@ -411,6 +424,7 @@ def save_candidate_label_cache(
             if value is not None
         ],
         "seed_values": sorted(int(value) for value in np.unique(seeds)),
+        "sample_provenance_fields": ["sample_fold_id"] if fold_ids.size else [],
         "cache_sha256": digest,
         "cache_file": cache_path.name,
     }
@@ -431,6 +445,7 @@ def save_candidate_interaction_cache(
     action_feature_names: tuple[str, ...] | list[str],
     configuration_digest: str | None,
     protocol_metadata: dict[str, Any] | None = None,
+    sample_fold_id: np.ndarray | None = None,
 ) -> dict[str, Any]:
     """Write a schema-v6 cache containing both base and local interaction features."""
     if interactions.pooled_features is None:
@@ -450,6 +465,7 @@ def save_candidate_interaction_cache(
         outcome=outcome,
         configuration_digest=configuration_digest,
         protocol_metadata=protocol_metadata,
+        sample_fold_id=sample_fold_id,
     )
     with np.load(cache_path, allow_pickle=False) as stored:
         payload = {name: np.asarray(stored[name]).copy() for name in stored.files}

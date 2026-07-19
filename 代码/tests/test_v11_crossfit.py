@@ -1,4 +1,5 @@
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -110,6 +111,156 @@ class CrossfitExecutionTest(unittest.TestCase):
             set(sample_seed[result.label_indices["external_holdout"]]),
             set(DEFAULT_SELECTOR_SEEDS["external_holdout"]),
         )
+
+
+class CrossfitCacheMergeTest(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def _write_fold_cache(self, fold_id, sample_ids, sample_seed=None):
+        from pi_jwm.v11_crossfit import build_seed_crossfit_folds
+        from pi_jwm.v11_interactions import CandidateInteractionBatch
+        from pi_jwm.v11_labeling import save_candidate_interaction_cache
+        from pi_jwm.v11_selector import CandidateBatch, CandidateOutcome
+
+        ids = np.asarray(sample_ids, dtype=np.int64)
+        count = len(ids)
+        fold = build_seed_crossfit_folds()[fold_id]
+        seeds = np.asarray(
+            sample_seed
+            if sample_seed is not None
+            else [fold.held_out_seeds[0]] * count,
+            dtype=np.int64,
+        )
+        batch = CandidateBatch(
+            context=np.stack([ids, ids + 1], axis=1).astype(np.float32),
+            candidate_features=np.zeros((count, 2, 3), dtype=np.float32),
+            candidate_mask=np.ones((count, 2), dtype=bool),
+            stage=np.asarray(["offload"] * count),
+            feature_names=("x", "y", "z"),
+            candidate_names=("identity", "ranked_allocation_baseline"),
+            context_feature_names=("ctx0", "ctx1"),
+        )
+        outcome = CandidateOutcome(
+            active_sse=np.stack([ids + 1, ids + 2], axis=1).astype(np.float32),
+            active_count=np.ones(count, dtype=np.int64),
+            default_index=1,
+        )
+        interactions = CandidateInteractionBatch(
+            tokens=np.zeros((count, 2, 72, 25), dtype=np.float32),
+            token_mask=np.zeros((count, 2, 72), dtype=bool),
+            edge_index=np.full((count, 2, 72), -1, dtype=np.int32),
+            token_feature_names=tuple(f"token_{index}" for index in range(25)),
+            pooled_features=np.zeros((count, 2, 234), dtype=np.float32),
+            pooled_feature_names=tuple(f"pooled_{index}" for index in range(234)),
+        )
+        path = self.root / f"fold_{fold_id}_{ids[0]}.npz"
+        save_candidate_interaction_cache(
+            path,
+            split_name="train",
+            sample_ids=ids,
+            sample_seed=seeds,
+            batch=batch,
+            outcome=outcome,
+            interactions=interactions,
+            action_feature_names=("a0", "a1", "a2", "a3", "a4", "a5"),
+            configuration_digest="b" * 64,
+            protocol_metadata={
+                "crossfit_protocol_digest": "a" * 64,
+                "helper_execution": {
+                    "mode": "crossfit_train_fold",
+                    "fold_id": fold.fold_id,
+                    "held_out_seeds": list(fold.held_out_seeds),
+                    "helper_train_seeds": list(fold.helper_train_seeds),
+                },
+            },
+            sample_fold_id=np.full(count, fold_id, dtype=np.int16),
+        )
+        return path
+
+    def test_schema6_cache_keeps_fold_provenance_outside_model_features(self):
+        from pi_jwm.v11_labeling import (
+            load_candidate_interaction_cache,
+            load_candidate_label_metadata,
+        )
+
+        path = self._write_fold_cache(fold_id=2, sample_ids=[9, 10])
+        metadata = load_candidate_label_metadata(path)
+        batch, _, _, _ = load_candidate_interaction_cache(path)
+
+        np.testing.assert_array_equal(metadata["sample_fold_id"], [2, 2])
+        self.assertFalse(any("fold" in name for name in batch.feature_names))
+        self.assertFalse(any("fold" in name for name in batch.context_feature_names))
+
+    def test_merge_rejects_duplicate_sample_id(self):
+        from pi_jwm.v11_crossfit import merge_crossfit_label_caches
+
+        paths = [
+            self._write_fold_cache(0, [0, 1]),
+            self._write_fold_cache(1, [1, 2]),
+        ]
+
+        with self.assertRaisesRegex(ValueError, "duplicate sample"):
+            merge_crossfit_label_caches(
+                paths,
+                self.root / "merged.npz",
+                expected_sample_ids=np.asarray([0, 1, 2]),
+                expected_sample_seed=np.asarray([0, 0, 1]),
+                expected_crossfit_protocol_digest="a" * 64,
+            )
+
+    def test_merge_sorts_samples_and_preserves_all_fold_ids(self):
+        from pi_jwm.v11_crossfit import merge_crossfit_label_caches
+        from pi_jwm.v11_labeling import (
+            load_candidate_interaction_cache,
+            load_candidate_label_metadata,
+        )
+
+        folds = __import__(
+            "pi_jwm.v11_crossfit", fromlist=["build_seed_crossfit_folds"]
+        ).build_seed_crossfit_folds()
+        ids = [40, 10, 30, 0, 20]
+        paths = [
+            self._write_fold_cache(
+                fold_id,
+                [ids[fold_id]],
+                [folds[fold_id].held_out_seeds[0]],
+            )
+            for fold_id in range(5)
+        ]
+        expected_ids = np.asarray(sorted(ids), dtype=np.int64)
+        seed_by_id = {
+            ids[fold_id]: folds[fold_id].held_out_seeds[0]
+            for fold_id in range(5)
+        }
+        expected_seed = np.asarray(
+            [seed_by_id[int(sample_id)] for sample_id in expected_ids],
+            dtype=np.int64,
+        )
+
+        manifest = merge_crossfit_label_caches(
+            paths,
+            self.root / "merged.npz",
+            expected_sample_ids=expected_ids,
+            expected_sample_seed=expected_seed,
+            expected_crossfit_protocol_digest="a" * 64,
+        )
+        metadata = load_candidate_label_metadata(self.root / "merged.npz")
+        batch, outcome, interactions, _ = load_candidate_interaction_cache(
+            self.root / "merged.npz"
+        )
+
+        np.testing.assert_array_equal(metadata["sample_ids"], expected_ids)
+        self.assertEqual(set(metadata["sample_fold_id"].tolist()), set(range(5)))
+        np.testing.assert_array_equal(batch.context[:, 0], expected_ids)
+        np.testing.assert_array_equal(outcome.active_sse[:, 0], expected_ids + 1)
+        self.assertEqual(interactions.tokens.shape[0], 5)
+        self.assertEqual(manifest["schema_version"], 6)
+        self.assertEqual(len(manifest["protocol_metadata"]["source_fold_caches"]), 5)
 
 
 if __name__ == "__main__":
