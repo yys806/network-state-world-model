@@ -218,6 +218,7 @@ def merge_crossfit_label_caches(
     expected_sample_ids: np.ndarray,
     expected_sample_seed: np.ndarray,
     expected_crossfit_protocol_digest: str,
+    expected_configuration_digest: str | None = None,
 ) -> dict[str, Any]:
     """Merge five out-of-fold schema-v6 train caches in stable sample order."""
     from .v11_interactions import CandidateInteractionBatch
@@ -262,6 +263,11 @@ def merge_crossfit_label_caches(
     }
     if len(configurations) != 1:
         raise ValueError("crossfit fold configuration digest mismatch")
+    if (
+        expected_configuration_digest is not None
+        and next(iter(configurations)) != str(expected_configuration_digest)
+    ):
+        raise ValueError("crossfit fold configuration digest is not the expected value")
     if len({_contract_signature(item) for item in items}) != 1:
         raise ValueError("crossfit fold cache contract mismatch")
 

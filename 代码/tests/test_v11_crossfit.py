@@ -263,6 +263,28 @@ class CrossfitCacheMergeTest(unittest.TestCase):
         self.assertEqual(manifest["schema_version"], 6)
         self.assertEqual(len(manifest["protocol_metadata"]["source_fold_caches"]), 5)
 
+    def test_merge_rejects_unexpected_configuration_digest(self):
+        from pi_jwm.v11_crossfit import merge_crossfit_label_caches
+
+        folds = __import__(
+            "pi_jwm.v11_crossfit", fromlist=["build_seed_crossfit_folds"]
+        ).build_seed_crossfit_folds()
+        paths = [self._write_fold_cache(index, [index]) for index in range(5)]
+        expected_seed = np.asarray(
+            [folds[index].held_out_seeds[0] for index in range(5)],
+            dtype=np.int64,
+        )
+
+        with self.assertRaisesRegex(ValueError, "configuration digest"):
+            merge_crossfit_label_caches(
+                paths,
+                self.root / "merged_bad_digest.npz",
+                expected_sample_ids=np.arange(5),
+                expected_sample_seed=expected_seed,
+                expected_crossfit_protocol_digest="a" * 64,
+                expected_configuration_digest="c" * 64,
+            )
+
 
 class CrossfitLabelRunnerContractTest(unittest.TestCase):
     def setUp(self):
@@ -339,6 +361,60 @@ class CrossfitLabelRunnerContractTest(unittest.TestCase):
             "seed_crossfit_5fold",
         )
         self.assertEqual(tokens[tokens.index("--crossfit-fold") + 1], "3")
+
+
+class CrossfitLauncherContractTest(unittest.TestCase):
+    def test_gpu_launcher_generates_five_folds_then_eval_without_locked_splits(self):
+        text = (
+            SCRIPTS_ROOT / "run_v11_selector_helper_crossfit_gpu.sh"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("for FOLD in 0 1 2 3 4", text)
+        self.assertIn("--helper-protocol seed_crossfit_5fold", text)
+        self.assertIn("merge_v11_selector_crossfit_labels.py", text)
+        self.assertIn("--splits calibration validation", text)
+        self.assertNotIn("matched_test", text)
+        self.assertNotIn("external_holdout", text)
+
+    def test_merge_cli_requires_exactly_five_fold_cache_arguments(self):
+        from merge_v11_selector_crossfit_labels import validate_fold_cache_paths
+
+        with self.assertRaisesRegex(ValueError, "five"):
+            validate_fold_cache_paths([Path("fold0.npz")])
+        paths = [Path(f"fold{index}.npz") for index in range(5)]
+        self.assertEqual(validate_fold_cache_paths(paths), tuple(paths))
+
+    def test_smoke_expected_samples_select_one_round_robin_row_per_seed(self):
+        from merge_v11_selector_crossfit_labels import expected_train_samples
+        from pi_jwm.v11_selector import DEFAULT_SELECTOR_SEEDS
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "sample_index.csv"
+            rows = ["sample_id,seed"]
+            sample_id = 0
+            for seed in DEFAULT_SELECTOR_SEEDS["train"]:
+                for _ in range(2):
+                    rows.append(f"{sample_id},{seed}")
+                    sample_id += 1
+            path.write_text("\n".join(rows) + "\n", encoding="utf-8")
+
+            sample_ids, sample_seed = expected_train_samples(
+                path, sample_limit_per_fold=8
+            )
+
+        self.assertEqual(sample_ids.size, 40)
+        self.assertEqual(
+            set(sample_seed.tolist()), set(DEFAULT_SELECTOR_SEEDS["train"])
+        )
+
+    def test_formal_expected_samples_reject_incomplete_sample_index(self):
+        from merge_v11_selector_crossfit_labels import expected_train_samples
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "sample_index.csv"
+            path.write_text("sample_id,seed\n0,0\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "15600"):
+                expected_train_samples(path, sample_limit_per_fold=0)
 
 
 if __name__ == "__main__":
