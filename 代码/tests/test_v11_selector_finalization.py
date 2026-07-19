@@ -1003,6 +1003,23 @@ class SelectorTrainingRunnerContractTest(unittest.TestCase):
                 classify_selector_validation_gate(row)["passed"], field
             )
 
+    def test_selector_freeze_accepts_validation_grid_rmse_field(self):
+        from train_v11_candidate_set_selector import (
+            classify_selector_validation_gate,
+        )
+
+        grid_row = {
+            "validation_rmse": 229.0,
+            "improved_seed_count": 7,
+            "executed_positive_precision": 0.70,
+            "negative_selection_rate": 0.10,
+            "activity_f1_drop": 0.001,
+            "link_rmse_relative_degradation": 0.01,
+            "training_seed_std": 4.0,
+        }
+
+        self.assertTrue(classify_selector_validation_gate(grid_row)["passed"])
+
     def test_choice_metrics_reports_executed_precision_and_seed_improvement(self):
         from pi_jwm.v11_selector import CandidateOutcome
         from train_v11_candidate_set_selector import _choice_metrics

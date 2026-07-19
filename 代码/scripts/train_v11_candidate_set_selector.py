@@ -119,8 +119,9 @@ def classify_selector_validation_gate(metrics: Mapping[str, Any]) -> dict[str, A
             return float("inf")
         return value if np.isfinite(value) else float("inf")
 
+    rmse_field = "validation_rmse" if "validation_rmse" in metrics else "rmse"
     checks = {
-        "rmse": finite("rmse") < 230.8556,
+        "rmse": finite(rmse_field) < 230.8556,
         "improved_seed_count": int(metrics["improved_seed_count"]) >= 7,
         "positive_precision": finite("executed_positive_precision") >= 0.65,
         "negative_selection_rate": finite("negative_selection_rate") <= 0.20,
