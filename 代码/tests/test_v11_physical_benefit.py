@@ -263,5 +263,71 @@ class PhysicalTrainingBatchTest(unittest.TestCase):
         self.assertEqual(result["split_overlap_count"], 1)
 
 
+class PhysicalBenefitModelTest(unittest.TestCase):
+    def _batch(self, seeds):
+        from pi_jwm.v11_physical_benefit import PhysicalBenefitTrainingBatch
+
+        seed_values = np.repeat(np.asarray(seeds, dtype=np.int64), 2)
+        within_seed = np.tile(np.asarray([-1.0, 1.0], dtype=np.float32), len(seeds))
+        seed_signal = (seed_values % 7).astype(np.float32) / 7.0
+        features = np.stack((within_seed, seed_signal), axis=1)
+        task = 2.0 * within_seed + 0.2 * seed_signal
+        energy = -1.5 * within_seed + 0.1 * seed_signal
+        return PhysicalBenefitTrainingBatch(
+            features=features,
+            feature_names=("action_magnitude", "state_load"),
+            task_delta=task,
+            energy_delta=energy,
+            sample_ids=np.arange(seed_values.size, dtype=np.int64),
+            sample_seed=seed_values,
+            group_ids=np.asarray(
+                [f"{seed}:{index}" for index, seed in enumerate(seed_values)], dtype=str
+            ),
+            normalized_family=np.asarray(["rb_repair"] * seed_values.size),
+            stage=np.asarray(["offload"] * seed_values.size),
+        )
+
+    def test_crossfit_is_seed_held_out_and_deterministic(self):
+        from pi_jwm.v11_physical_benefit import fit_physical_benefit_bridge
+        from pi_jwm.v11_selector import DEFAULT_SELECTOR_SEEDS
+
+        train = self._batch(DEFAULT_SELECTOR_SEEDS["train"])
+        calibration = self._batch(DEFAULT_SELECTOR_SEEDS["calibration"])
+
+        first, first_report = fit_physical_benefit_bridge(train, calibration)
+        second, second_report = fit_physical_benefit_bridge(train, calibration)
+
+        np.testing.assert_allclose(first.oof_task_mean, second.oof_task_mean)
+        np.testing.assert_allclose(first.oof_energy_mean, second.oof_energy_mean)
+        self.assertEqual(first_report, second_report)
+        for fold in first.fold_records:
+            self.assertFalse(set(fold["held_out_seeds"]) & set(fold["model_train_seeds"]))
+            self.assertFalse(
+                set(DEFAULT_SELECTOR_SEEDS["calibration"]) & set(fold["model_train_seeds"])
+            )
+        self.assertEqual(set(first.oof_fold_id.tolist()), set(range(5)))
+
+    def test_conformal_prediction_has_calibrated_intervals(self):
+        from pi_jwm.v11_physical_benefit import (
+            fit_physical_benefit_bridge,
+            predict_physical_benefit,
+        )
+        from pi_jwm.v11_selector import DEFAULT_SELECTOR_SEEDS
+
+        train = self._batch(DEFAULT_SELECTOR_SEEDS["train"])
+        calibration = self._batch(DEFAULT_SELECTOR_SEEDS["calibration"])
+        fitted, report = fit_physical_benefit_bridge(train, calibration)
+        prediction = predict_physical_benefit(fitted, calibration.features)
+
+        self.assertGreaterEqual(report["calibration_task_coverage"], 0.8)
+        self.assertGreaterEqual(report["calibration_energy_coverage"], 0.8)
+        self.assertTrue(np.all(prediction.task_lcb <= prediction.task_mean))
+        self.assertTrue(np.all(prediction.task_mean <= prediction.task_ucb))
+        self.assertTrue(np.all(prediction.energy_lcb <= prediction.energy_mean))
+        self.assertTrue(np.all(prediction.energy_mean <= prediction.energy_ucb))
+        self.assertLess(report["oof_task_mae"], report["baseline_task_mae"])
+        self.assertLess(report["oof_energy_mae"], report["baseline_energy_mae"])
+
+
 if __name__ == "__main__":
     unittest.main()

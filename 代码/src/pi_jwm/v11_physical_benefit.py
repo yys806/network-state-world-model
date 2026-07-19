@@ -192,6 +192,7 @@ class PhysicalBenefitTrainingBatch:
     sample_seed: np.ndarray
     group_ids: np.ndarray
     normalized_family: np.ndarray
+    stage: np.ndarray
     rejected_rows: tuple[dict[str, Any], ...] = ()
 
     def __post_init__(self) -> None:
@@ -202,10 +203,11 @@ class PhysicalBenefitTrainingBatch:
         seeds = np.asarray(self.sample_seed, dtype=np.int64).reshape(-1)
         groups = np.asarray(self.group_ids).astype(str).reshape(-1)
         families = np.asarray(self.normalized_family).astype(str).reshape(-1)
+        stages = np.asarray(self.stage).astype(str).reshape(-1)
         size = features.shape[0] if features.ndim == 2 else -1
         if features.ndim != 2 or len(self.feature_names) != features.shape[1]:
             raise ValueError("physical bridge features must be [row,feature] with matching names")
-        if any(values.shape[0] != size for values in (task, energy, sample_ids, seeds, groups, families)):
+        if any(values.shape[0] != size for values in (task, energy, sample_ids, seeds, groups, families, stages)):
             raise ValueError("physical bridge training fields must share the row dimension")
         if not np.all(np.isfinite(features)) or not np.all(np.isfinite(task)) or not np.all(np.isfinite(energy)):
             raise ValueError("physical bridge features and targets must be finite")
@@ -216,6 +218,7 @@ class PhysicalBenefitTrainingBatch:
         object.__setattr__(self, "sample_seed", seeds)
         object.__setattr__(self, "group_ids", groups)
         object.__setattr__(self, "normalized_family", families)
+        object.__setattr__(self, "stage", stages)
 
 
 def _as_bool(value: Any) -> bool:
@@ -263,6 +266,7 @@ def build_physical_training_batch(
     output_seeds: list[int] = []
     group_ids: list[str] = []
     families: list[str] = []
+    stages: list[str] = []
     rejected: list[dict[str, Any]] = []
     for (seed, sample_id, decision_time), rows in sorted(grouped.items()):
         defaults = [row for row in rows if str(row.get("action_family", "")).lower() == "default"]
@@ -300,6 +304,7 @@ def build_physical_training_batch(
             output_seeds.append(seed)
             group_ids.append(f"{seed}:{sample_id}:{decision_time:.8f}")
             families.append(family)
+            stages.append(str(selector_batch.stage[context_index]))
 
     feature_names = context_names + descriptor_names if feature_rows else context_names + COMMON_DESCRIPTOR_NAMES
     features = (
@@ -316,6 +321,7 @@ def build_physical_training_batch(
         sample_seed=np.asarray(output_seeds, dtype=np.int64),
         group_ids=np.asarray(group_ids, dtype=str),
         normalized_family=np.asarray(families, dtype=str),
+        stage=np.asarray(stages, dtype=str),
         rejected_rows=tuple(rejected),
     )
 
@@ -360,3 +366,217 @@ def audit_physical_bridge_protocol(
         "matched_test_accessed": bool(matched_test_accessed),
         "external_holdout_accessed": bool(external_holdout_accessed),
     }
+
+
+@dataclass(frozen=True)
+class PhysicalBenefitPrediction:
+    task_mean: np.ndarray
+    task_std: np.ndarray
+    task_lcb: np.ndarray
+    task_ucb: np.ndarray
+    energy_mean: np.ndarray
+    energy_std: np.ndarray
+    energy_lcb: np.ndarray
+    energy_ucb: np.ndarray
+
+
+@dataclass(frozen=True)
+class FittedPhysicalBenefitBridge:
+    feature_names: tuple[str, ...]
+    task_models: tuple[Any, ...]
+    energy_models: tuple[Any, ...]
+    task_conformal_radius: float
+    energy_conformal_radius: float
+    fold_records: tuple[dict[str, Any], ...]
+    oof_task_mean: np.ndarray
+    oof_energy_mean: np.ndarray
+    oof_fold_id: np.ndarray
+
+
+def _family_stage_median_prediction(
+    train_target: np.ndarray,
+    train_stage: np.ndarray,
+    train_family: np.ndarray,
+    target_stage: np.ndarray,
+    target_family: np.ndarray,
+) -> np.ndarray:
+    global_median = float(np.median(train_target))
+    medians: dict[tuple[str, str], float] = {}
+    for stage in np.unique(train_stage):
+        for family in np.unique(train_family):
+            mask = (train_stage == stage) & (train_family == family)
+            if np.any(mask):
+                medians[(str(stage), str(family))] = float(np.median(train_target[mask]))
+    return np.asarray(
+        [
+            medians.get((str(stage), str(family)), global_median)
+            for stage, family in zip(target_stage, target_family)
+        ],
+        dtype=np.float32,
+    )
+
+
+def _conformal_radius(y_true: np.ndarray, y_mean: np.ndarray, coverage: float = 0.9) -> float:
+    residual = np.abs(np.asarray(y_true, dtype=np.float64) - np.asarray(y_mean, dtype=np.float64))
+    if residual.size == 0:
+        raise ValueError("conformal calibration requires at least one row")
+    rank = int(math.ceil((residual.size + 1) * float(coverage)))
+    quantile = min(1.0, rank / residual.size)
+    return float(np.quantile(residual, quantile, method="higher"))
+
+
+def _ensemble_arrays(models: Sequence[Any], features: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    values = np.asarray(features, dtype=np.float32)
+    stacked = np.stack([model.predict(values) for model in models], axis=0).astype(np.float32)
+    return stacked.mean(axis=0), stacked.std(axis=0)
+
+
+def predict_physical_benefit(
+    fitted: FittedPhysicalBenefitBridge,
+    features: np.ndarray,
+) -> PhysicalBenefitPrediction:
+    """Predict calibrated task/energy intervals from observable bridge features."""
+
+    values = np.asarray(features, dtype=np.float32)
+    if values.ndim < 2 or values.shape[-1] != len(fitted.feature_names):
+        raise ValueError("physical bridge feature dimension mismatch")
+    output_shape = values.shape[:-1]
+    flat = values.reshape(-1, values.shape[-1])
+    task_mean, task_std = _ensemble_arrays(fitted.task_models, flat)
+    energy_mean, energy_std = _ensemble_arrays(fitted.energy_models, flat)
+    task_radius = float(fitted.task_conformal_radius) + 1.64 * task_std
+    energy_radius = float(fitted.energy_conformal_radius) + 1.64 * energy_std
+
+    def shaped(array: np.ndarray) -> np.ndarray:
+        return np.asarray(array, dtype=np.float32).reshape(output_shape)
+
+    return PhysicalBenefitPrediction(
+        task_mean=shaped(task_mean),
+        task_std=shaped(task_std),
+        task_lcb=shaped(task_mean - task_radius),
+        task_ucb=shaped(task_mean + task_radius),
+        energy_mean=shaped(energy_mean),
+        energy_std=shaped(energy_std),
+        energy_lcb=shaped(energy_mean - energy_radius),
+        energy_ucb=shaped(energy_mean + energy_radius),
+    )
+
+
+def fit_physical_benefit_bridge(
+    train: PhysicalBenefitTrainingBatch,
+    calibration: PhysicalBenefitTrainingBatch,
+) -> tuple[FittedPhysicalBenefitBridge, dict[str, Any]]:
+    """Fit fixed five-fold task/energy ensembles and split-conformal intervals."""
+
+    if train.feature_names != calibration.feature_names:
+        raise ValueError("physical train/calibration feature order mismatch")
+    from sklearn.ensemble import RandomForestRegressor
+
+    from .v11_crossfit import build_seed_crossfit_folds
+    from .v11_selector import DEFAULT_SELECTOR_SEEDS
+
+    expected_train = set(DEFAULT_SELECTOR_SEEDS["train"])
+    expected_calibration = set(DEFAULT_SELECTOR_SEEDS["calibration"])
+    if set(int(value) for value in np.unique(train.sample_seed)) != expected_train:
+        raise ValueError("formal physical bridge requires all 40 selector train seeds")
+    if set(int(value) for value in np.unique(calibration.sample_seed)) != expected_calibration:
+        raise ValueError("formal physical bridge requires all six calibration seeds")
+
+    oof_task = np.full(train.task_delta.shape, np.nan, dtype=np.float32)
+    oof_energy = np.full(train.energy_delta.shape, np.nan, dtype=np.float32)
+    baseline_task = np.full(train.task_delta.shape, np.nan, dtype=np.float32)
+    baseline_energy = np.full(train.energy_delta.shape, np.nan, dtype=np.float32)
+    oof_fold = np.full(train.task_delta.shape, -1, dtype=np.int16)
+    task_models = []
+    energy_models = []
+    fold_records = []
+    for fold in build_seed_crossfit_folds():
+        fit_mask = np.isin(train.sample_seed, fold.helper_train_seeds)
+        held_mask = np.isin(train.sample_seed, fold.held_out_seeds)
+        if not np.any(fit_mask) or not np.any(held_mask):
+            raise ValueError(f"physical bridge fold {fold.fold_id} has no fit or held rows")
+
+        def model(target_id: int) -> Any:
+            return RandomForestRegressor(
+                n_estimators=128,
+                max_depth=8,
+                min_samples_leaf=4,
+                random_state=1700 + fold.fold_id * 10 + target_id,
+                n_jobs=1,
+            )
+
+        task_model = model(0).fit(train.features[fit_mask], train.task_delta[fit_mask])
+        energy_model = model(1).fit(train.features[fit_mask], train.energy_delta[fit_mask])
+        oof_task[held_mask] = task_model.predict(train.features[held_mask]).astype(np.float32)
+        oof_energy[held_mask] = energy_model.predict(train.features[held_mask]).astype(np.float32)
+        baseline_task[held_mask] = _family_stage_median_prediction(
+            train.task_delta[fit_mask],
+            train.stage[fit_mask],
+            train.normalized_family[fit_mask],
+            train.stage[held_mask],
+            train.normalized_family[held_mask],
+        )
+        baseline_energy[held_mask] = _family_stage_median_prediction(
+            train.energy_delta[fit_mask],
+            train.stage[fit_mask],
+            train.normalized_family[fit_mask],
+            train.stage[held_mask],
+            train.normalized_family[held_mask],
+        )
+        oof_fold[held_mask] = fold.fold_id
+        task_models.append(task_model)
+        energy_models.append(energy_model)
+        fold_records.append(
+            {
+                "fold_id": fold.fold_id,
+                "held_out_seeds": list(fold.held_out_seeds),
+                "model_train_seeds": list(fold.helper_train_seeds),
+            }
+        )
+    if np.any(oof_fold < 0) or not np.all(np.isfinite(oof_task)) or not np.all(np.isfinite(oof_energy)):
+        raise RuntimeError("physical bridge OOF coverage is incomplete")
+
+    calibration_task_mean, _ = _ensemble_arrays(task_models, calibration.features)
+    calibration_energy_mean, _ = _ensemble_arrays(energy_models, calibration.features)
+    task_radius = _conformal_radius(calibration.task_delta, calibration_task_mean)
+    energy_radius = _conformal_radius(calibration.energy_delta, calibration_energy_mean)
+    fitted = FittedPhysicalBenefitBridge(
+        feature_names=train.feature_names,
+        task_models=tuple(task_models),
+        energy_models=tuple(energy_models),
+        task_conformal_radius=task_radius,
+        energy_conformal_radius=energy_radius,
+        fold_records=tuple(fold_records),
+        oof_task_mean=oof_task,
+        oof_energy_mean=oof_energy,
+        oof_fold_id=oof_fold,
+    )
+    calibration_prediction = predict_physical_benefit(fitted, calibration.features)
+    mae = lambda truth, prediction: float(np.mean(np.abs(truth - prediction)))
+    report = {
+        "oof_task_mae": mae(train.task_delta, oof_task),
+        "oof_energy_mae": mae(train.energy_delta, oof_energy),
+        "baseline_task_mae": mae(train.task_delta, baseline_task),
+        "baseline_energy_mae": mae(train.energy_delta, baseline_energy),
+        "calibration_task_coverage": float(
+            np.mean(
+                (calibration.task_delta >= calibration_prediction.task_lcb)
+                & (calibration.task_delta <= calibration_prediction.task_ucb)
+            )
+        ),
+        "calibration_energy_coverage": float(
+            np.mean(
+                (calibration.energy_delta >= calibration_prediction.energy_lcb)
+                & (calibration.energy_delta <= calibration_prediction.energy_ucb)
+            )
+        ),
+        "task_conformal_radius": task_radius,
+        "energy_conformal_radius": energy_radius,
+    }
+    report["passed"] = bool(
+        report["oof_task_mae"] < report["baseline_task_mae"]
+        and report["oof_energy_mae"] < report["baseline_energy_mae"]
+        and report["calibration_task_coverage"] >= 0.8
+        and report["calibration_energy_coverage"] >= 0.8
+    )
+    return fitted, report
