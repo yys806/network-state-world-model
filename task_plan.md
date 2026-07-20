@@ -20,10 +20,10 @@ Use train/calibration/validation only to diagnose and improve the candidate sele
 | 2. Attribute failure to ranking, uncertainty, Pareto, or defer | complete | 12-config x 6-policy validation audit |
 | 3. Form and test one root-cause hypothesis | complete | Opportunity is identifiable; candidate ranking needs token-level interactions |
 | 4. Implement the selected method with TDD | complete | Tests, reusable selector code, runner changes |
-| 5. Local smoke and full validation checks | in_progress | CPU smoke and relevant/full tests |
-| 6. Sync and run the necessary GPU experiment | pending | Reproducible remote run and logs |
-| 7. Freeze on validation and evaluate external holdout once | pending | Frozen config, holdout report, manifest |
-| 8. Update report artifacts and PPT data placeholders | pending | CSV/JSON/figures and updated PPT planning document |
+| 5. Local smoke and full validation checks | complete | Formal phase-selector reproduction plus 722 main and 84 script tests |
+| 6. Sync and run the necessary GPU experiment | complete | CUDA smoke plus no-phase/phase-aware 3-seed probes completed |
+| 7. Freeze on validation and evaluate external holdout once | pending | B-grade candidate found; external remains locked until RMSE <200 |
+| 8. Update report artifacts and PPT data placeholders | in_progress | CSV/JSON/figures complete; manifest and final PPT text check remain |
 
 ## Fixed Protocol
 
@@ -43,3 +43,6 @@ Use train/calibration/validation only to diagnose and improve the candidate sele
 | Explicit Unicode source path was still not visible to the piped Python process | 2 | Stop retrying the attribution command; probe cwd/path/encoding and use an environment-level `PYTHONPATH` or ASCII launcher |
 | Piped script body converted the Chinese `代码` path segment to `??` before any model load | 3 | Abandon Unicode literals in stdin; inject the complete code root through `PI_JWM_CODE` and keep the Python body ASCII-only |
 | `git bundle create` rejected a bare commit range as an empty ref set | 1 | Export the named `main` ref while excluding the remote base commit |
+| Candidate-expert prototype requested unsupported HGB regressor loss `huber` | 1 | Use the installed sklearn's supported robust `absolute_error` loss |
+| Phase-table prototype could not import the shared script metric helper | 1 | Add the repository scripts directory to `PYTHONPATH`; no experiment rows were evaluated before failure |
+| Dense phase-table search could not JSON-serialize NumPy scalar types after selecting calibration parameters | 1 | Keep the already fixed calibration parameters and rerun validation formatting with scalar conversion only |

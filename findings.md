@@ -58,3 +58,13 @@ Each policy must report global RMSE, execution/defer count, realized positive-be
 - A full-data CUDA smoke completed in 42 seconds and a 3-seed x 20-epoch probe completed in 205.8 seconds.
 - The no-phase token model's loss decreased steadily, but calibration candidate sign probabilities did not separate safe actions: threshold 0.50 executed 41 candidates at 43.9% positive precision; threshold 0.65 executed none.
 - The no-phase token probe therefore remains diagnostic-only and is retained as a controlled ablation.
+
+## Phase-conditioned Benefit LCB
+
+- Exact within-episode phase is substantially more stable than learned all-candidate ranking. A train-only phase table estimates each candidate's mean raw-SSE benefit, cross-seed positive direction rate, variance, and support count.
+- Calibration alone selected the risk/defer rule. Validation selection never changed the calibrated thresholds.
+- Enforcing deployable candidate masks and the observable task-energy Pareto gate produced validation active-rate RMSE 207.5399 versus 233.7162 default, a 26.1763 improvement.
+- All 10 validation seeds improved. Of 65 active executions, 93.85% had positive realized benefit and 6.15% were negative; Pareto violations were zero.
+- Link RMSE improved by 0.574%, and activity F1 dropped only 0.000086.
+- The result is B-grade because it is in [200, 213.160874). It passes the general validation safety gate but does not meet the pre-registered <200 A-grade gate, so external seeds 60-69 remain locked.
+- Token ranker, candidate-specific experts, learned residual routing, phase smoothing, estimator ensembles, and phase-restricted kNN all failed to improve over the exact phase table. These failed routes are retained as diagnostic evidence rather than hidden.

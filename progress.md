@@ -22,3 +22,12 @@
 - Completed full-data CUDA smoke and a no-phase 3-seed x 20-epoch token probe; the training chain is healthy but calibration found no safe threshold.
 - Demonstrated that observable within-episode phase improves the HGB validation diagnostic to RMSE 232.023 with 100% positive precision on six executions.
 - Added episode-phase context to the formal token runner with a failing-then-passing test; related tests now pass 86/86.
+- Candidate-specific HGB prototype selected a 15-candidate train-only shortlist with validation oracle 170.80, then stopped before fitting because this sklearn version rejects `loss='huber'`.
+- Candidate-specific experts completed after the loss correction but reached only validation RMSE 233.164; this over-split architecture was rejected.
+- Phase-table prototype first launch stopped at metric-helper import because `scripts` was absent from `PYTHONPATH`; no result was produced.
+- Phase-conditioned train statistics reached validation RMSE 207.540 with 10/10 seed improvements under the deployable Pareto rule.
+- Confirmed the result is unchanged when validation `action_applied` is removed from the decision mask; no actual-rollout outcome is used online.
+- Rejected phase smoothing, estimator ensemble, candidate experts, learned residual routing, and phase-restricted kNN after controlled train/calibration/validation comparisons.
+- Added the reusable phase selector module, formal runner, decision trace, statistics cache, and freeze report using TDD.
+- Formal runner reproduced validation RMSE 207.5398777 and freeze digest `887331b2...454a2` without warnings.
+- Final verification passed: 722/722 main tests, 84/84 script tests, compileall, and diff checks.
