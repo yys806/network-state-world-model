@@ -22,8 +22,14 @@ Use train/calibration/validation only to diagnose and improve the candidate sele
 | 4. Implement the selected method with TDD | complete | Tests, reusable selector code, runner changes |
 | 5. Local smoke and full validation checks | complete | Formal phase-selector reproduction plus 722 main and 84 script tests |
 | 6. Sync and run the necessary GPU experiment | complete | CUDA smoke plus no-phase/phase-aware 3-seed probes completed |
-| 7. Freeze on validation and evaluate external holdout once | pending | B-grade candidate found; external remains locked until RMSE <200 |
-| 8. Update report artifacts and PPT data placeholders | in_progress | CSV/JSON/figures complete; manifest and final PPT text check remain |
+| 7. Freeze on validation and evaluate external holdout once | complete | A gate not met; external was correctly kept locked and unaccessed |
+| 8. Update report artifacts and PPT data placeholders | complete | CSV/JSON/NPZ/figures, manifest, and six-page PPT planning text updated |
+
+## Outcome
+
+- Best validation result: B-grade RMSE 207.5399 versus 233.7162 ranked baseline.
+- All 10 validation seeds improved; positive execution precision was 93.85% with zero Pareto violations.
+- The pre-registered A-grade RMSE <200 gate was not met. Configuration remains a v11 candidate, and external seeds 60-69 remain unaccessed.
 
 ## Fixed Protocol
 
