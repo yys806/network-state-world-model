@@ -1,0 +1,47 @@
+# PI-JWM v11 Selector Findings
+
+## Frozen Evidence
+
+- Local/remote source commit: `f7cb651c57262a1938e7b44ea43c3f3bbee12a44`.
+- Formal run: 12 configurations x 3 training seeds x 20 epochs; 36 checkpoints.
+- Ranked default validation active-rate RMSE: 233.7162005.
+- Sample oracle validation RMSE: 105.3486359 (`sample_oracle`, headroom only).
+- All CandidateSet configurations selected the default for every validation sample; nominal RMSE 233.7162005.
+- Best classical deployable comparison was GB pairwise at 233.7057583, an immaterial 0.0104 improvement.
+- Stage-only diagnostic policy selected on calibration reached validation RMSE 231.3377871 and improved 6/10 seeds. This is the current strongest interpretable diagnostic, not a frozen selector.
+- Aggressive HGB pointwise rules overfit calibration and reached validation RMSE 234.5976.
+
+## Current Question
+
+Does the CandidateSet model fail because its candidate ordering is wrong, or because uncertainty calibration and/or the Pareto/defer rules suppress useful rankings?
+
+The candidate-generation gate itself passed strongly on validation: sample-oracle RMSE 105.3486, nontrivial ratio 0.8369, identity oracle-win ratio 0.2575, and action-applied ratio 1.0. This isolates the immediate failure to candidate selection rather than candidate headroom.
+
+## Required Attribution Policies
+
+1. Formal z=1.64 plus Pareto.
+2. z=0 plus Pareto.
+3. Ensemble variance only, excluding predicted uncertainty.
+4. Rank-only plus Pareto.
+5. Rank-only without Pareto.
+6. Improvement-only argmax.
+
+Each policy must report global RMSE, execution/defer count, realized positive-benefit precision, negative-selection rate, per-seed RMSE, and improved-seed count.
+
+## Formal Checkpoint Attribution
+
+- The 12-config x 6-policy attribution completed on validation only.
+- Rank-only plus Pareto produced RMSE 292.90-301.86; rank-only without Pareto produced RMSE 298.82-312.33. Every rank-only policy worsened all 10 validation seeds.
+- Rank-only positive-benefit precision was only about 24%-29%, with roughly 47%-54% negative selections. The learned ordering itself is invalid.
+- Removing aleatoric uncertainty or setting z=0 executed only a handful of candidates and improved at most 0.067 or 0.025 RMSE, respectively.
+- The best improvement-head diagnostic was RMSE 233.5862, only 0.1300 better than default, with 16 active executions and 31.25% positive precision. A more aggressive improvement-head variant improved 7/10 seeds but only by 0.0939 global RMSE and had a 31.45% negative-selection rate.
+- Root-cause decision: do not tune the defer threshold. The next method must replace the candidate ordering representation/objective.
+
+## Schema-v6 Interaction Audit
+
+- The formal schema-v6 cache contains 72 x 25 edge-step interaction tokens and 234 pooled interaction features for every sample-candidate pair.
+- The completed CandidateSet ranker ignored both arrays and used only the 75 global candidate features plus context.
+- A full train/calibration/validation HGB audit compared selected-edge, pooled-interaction-only, and full schema-v6 feature groups.
+- Full schema-v6 learned opportunity detection well: validation opportunity ROC-AUC 0.8752 and PR-AUC 0.9495.
+- Candidate ranking remained poor: sign PR-AUC 0.4754, sample rank Spearman 0.0832, top-1 positive ratio 0.2825, and no calibration threshold satisfied the safety gate.
+- Root-cause hypothesis is now specific: opportunity detection is identifiable, while candidate benefit requires token-level local interaction encoding rather than global or hand-pooled statistics.
