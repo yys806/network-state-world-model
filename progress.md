@@ -17,3 +17,8 @@
 - Opportunity detection generalized strongly, but candidate ordering did not; the next architecture will separate the opportunity gate from token-level candidate ranking.
 - Added the token-level ranker, opportunity-masked loss, deterministic mini-batch fit/predict, safe selection, and a train/calibration/validation-only runner using TDD.
 - Local gate passed: 85 relevant selector tests, Python compilation, and diff checks.
+- The first incremental bundle command produced no file because it did not include a named ref; remote state was unchanged.
+- Synced commit `c7f743b` to the RTX 4090 with a verified Git bundle; remote selector tests passed 85/85.
+- Completed full-data CUDA smoke and a no-phase 3-seed x 20-epoch token probe; the training chain is healthy but calibration found no safe threshold.
+- Demonstrated that observable within-episode phase improves the HGB validation diagnostic to RMSE 232.023 with 100% positive precision on six executions.
+- Added episode-phase context to the formal token runner with a failing-then-passing test; related tests now pass 86/86.

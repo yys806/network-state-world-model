@@ -21,6 +21,7 @@ for path in (CODE_ROOT / "src", CODE_ROOT / "scripts"):
         sys.path.insert(0, str(path))
 
 from pi_jwm.v11_interaction_selector import (
+    append_episode_phase_context,
     fit_interaction_selector,
     predict_interaction_selector,
     select_interaction_candidates,
@@ -210,6 +211,12 @@ def run(args: argparse.Namespace) -> dict:
             path, expected_configuration_digest=configuration_digest
         )
         for split, path in cache_paths.items()
+    }
+    batches = {
+        split: append_episode_phase_context(
+            batches[split], metadata[split]["sample_ids"], episode_length=390
+        )
+        for split in batches
     }
     config_rows = []
     threshold_rows = []

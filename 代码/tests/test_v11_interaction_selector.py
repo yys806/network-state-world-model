@@ -154,6 +154,25 @@ class InteractionTrainingProtocolTest(unittest.TestCase):
         np.testing.assert_allclose(first.token_mean, second.token_mean)
         np.testing.assert_allclose(first.token_scale, second.token_scale)
 
+    def test_episode_phase_is_seed_invariant_and_observable(self):
+        from pi_jwm.v11_interaction_selector import append_episode_phase_context
+
+        batch, _, _ = self._dataset()
+        sample_ids = np.asarray([1, 391, 2, 392, 3, 393, 4, 394, 5, 395, 6, 396])
+        augmented = append_episode_phase_context(batch, sample_ids, episode_length=390)
+        self.assertEqual(augmented.context.shape[1], batch.context.shape[1] + 4)
+        np.testing.assert_allclose(augmented.context[0, -4:], augmented.context[1, -4:])
+        np.testing.assert_allclose(augmented.context[2, -4:], augmented.context[3, -4:])
+        self.assertEqual(
+            augmented.context_feature_names[-4:],
+            (
+                "current_episode_phase",
+                "current_episode_phase_sq",
+                "current_episode_phase_sin",
+                "current_episode_phase_cos",
+            ),
+        )
+
     def test_safe_selection_applies_all_three_gates(self):
         from pi_jwm.v11_interaction_selector import select_interaction_candidates
 

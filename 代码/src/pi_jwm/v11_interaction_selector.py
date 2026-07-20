@@ -219,6 +219,45 @@ class FittedInteractionSelector:
     dropout: float
 
 
+def append_episode_phase_context(
+    batch: CandidateBatch,
+    sample_ids: np.ndarray,
+    episode_length: int = 390,
+) -> CandidateBatch:
+    """Add the observable within-episode decision phase without exposing seed identity."""
+    ids = np.asarray(sample_ids, dtype=np.int64).reshape(-1)
+    if ids.shape != (batch.context.shape[0],) or np.any(ids < 0):
+        raise ValueError("sample IDs must be non-negative and match the candidate batch")
+    length = int(episode_length)
+    if length < 2:
+        raise ValueError("episode length must be at least two")
+    phase = np.mod(ids, length).astype(np.float32) / float(length - 1)
+    phase_features = np.stack(
+        [
+            phase,
+            np.square(phase),
+            np.sin(2.0 * np.pi * phase),
+            np.cos(2.0 * np.pi * phase),
+        ],
+        axis=1,
+    ).astype(np.float32)
+    return CandidateBatch(
+        context=np.concatenate([batch.context, phase_features], axis=1),
+        candidate_features=batch.candidate_features,
+        candidate_mask=batch.candidate_mask,
+        stage=batch.stage,
+        feature_names=batch.feature_names,
+        candidate_names=batch.candidate_names,
+        context_feature_names=batch.context_feature_names
+        + (
+            "current_episode_phase",
+            "current_episode_phase_sq",
+            "current_episode_phase_sin",
+            "current_episode_phase_cos",
+        ),
+    )
+
+
 def _mean_scale(values: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     array = np.asarray(values, dtype=np.float32)
     if array.ndim != 2 or array.shape[0] == 0 or not np.all(np.isfinite(array)):

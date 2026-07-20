@@ -42,3 +42,4 @@ Use train/calibration/validation only to diagnose and improve the candidate sele
 | Inline attribution could not import `pi_jwm` because the piped Python process did not use the requested working directory | 1 | Use explicit absolute source/script paths for the diagnostic process |
 | Explicit Unicode source path was still not visible to the piped Python process | 2 | Stop retrying the attribution command; probe cwd/path/encoding and use an environment-level `PYTHONPATH` or ASCII launcher |
 | Piped script body converted the Chinese `代码` path segment to `??` before any model load | 3 | Abandon Unicode literals in stdin; inject the complete code root through `PI_JWM_CODE` and keep the Python body ASCII-only |
+| `git bundle create` rejected a bare commit range as an empty ref set | 1 | Export the named `main` ref while excluding the remote base commit |

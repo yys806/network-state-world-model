@@ -45,3 +45,16 @@ Each policy must report global RMSE, execution/defer count, realized positive-be
 - Full schema-v6 learned opportunity detection well: validation opportunity ROC-AUC 0.8752 and PR-AUC 0.9495.
 - Candidate ranking remained poor: sign PR-AUC 0.4754, sample rank Spearman 0.0832, top-1 positive ratio 0.2825, and no calibration threshold satisfied the safety gate.
 - Root-cause hypothesis is now specific: opportunity detection is identifiable, while candidate benefit requires token-level local interaction encoding rather than global or hand-pooled statistics.
+
+## Observable Episode Phase
+
+- Every seed contains exactly 390 consecutive samples, and sample IDs follow `seed * 390 + local_step` on all unlocked splits.
+- Current episode phase is therefore recoverable as `sample_id mod 390` without exposing seed identity or future state.
+- Adding four phase terms (linear, squared, sine, cosine) to the full schema-v6 HGB audit changed validation RMSE from 233.7162 to 232.0230.
+- The phase-aware audit executed six candidates, all six had positive realized benefit, and benefit Pearson correlation increased to 0.5775. This is evidence that task evolution position is a missing deployable context feature.
+
+## Token Selector Probe
+
+- A full-data CUDA smoke completed in 42 seconds and a 3-seed x 20-epoch probe completed in 205.8 seconds.
+- The no-phase token model's loss decreased steadily, but calibration candidate sign probabilities did not separate safe actions: threshold 0.50 executed 41 candidates at 43.9% positive precision; threshold 0.65 executed none.
+- The no-phase token probe therefore remains diagnostic-only and is retained as a controlled ablation.
