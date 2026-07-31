@@ -193,7 +193,19 @@ class AirFogSimTensorV2Tests(unittest.TestCase):
 
         self.assertEqual([0, 1, 1], arrays["flow_present"][:, 0].tolist())
         np.testing.assert_allclose([0.0, 0.4, 0.0], arrays["flow_delivered_this_slot"][:, 0])
+        self.assertTrue(np.all(arrays["flow_state"][0, 0] == 0.0))
         self.assertEqual(0, report["flow_creation_fallback_count"])
+
+    def test_completion_slot_remains_observable_when_action_log_is_late(self):
+        from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract, tensorize_seed_graph
+
+        graph = fake_graph()
+        graph["source_offload_actions"][0]["time"] = 0.3
+        graph["source_transfer_events"][0]["flow_completed"] = True
+        arrays, _ = tensorize_seed_graph(graph, infer_tensor_contract([graph]))
+        self.assertEqual([False, True, False], arrays["flow_present"][:, 0].tolist())
+        self.assertEqual([False, True, True], arrays["flow_completed"][:, 0].tolist())
+        self.assertTrue(np.all(arrays["flow_state"][2, 0] == 0.0))
 
     def test_invalid_reference_is_rejected(self):
         from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract, tensorize_seed_graph

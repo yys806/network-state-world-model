@@ -363,27 +363,31 @@ def tensorize_seed_graph(
             ) if str(action.get("task_id")) == str(flow.get("task_id"))
         ]
         creation_times = [float(action["time"]) for action in matching_actions]
-        if not creation_times:
-            creation_times = [float(event["time"]) for event in matching_events]
-            if not creation_times and flow.get("first_time") is not None:
-                creation_times = [float(flow["first_time"])]
-                flow_fallback_count += 1
+        creation_times.extend(float(event["time"]) for event in matching_events)
+        if not creation_times and flow.get("first_time") is not None:
+            creation_times = [float(flow["first_time"])]
+            flow_fallback_count += 1
         creation_time = min(creation_times) if creation_times else float(times[0])
         total = max(float(flow.get("total_data", 0.0) or 0.0), 0.0)
         for ti, time in enumerate(times):
             delivered_here = sum(float(event.get("delivered_data", 0.0) or 0.0) for event in matching_events if np.isclose(float(event["time"]), time, atol=1e-8))
             delivered_cumulative = sum(float(event.get("delivered_data", 0.0) or 0.0) for event in matching_events if float(event["time"]) <= time + 1e-8)
             completed = any(bool(event.get("flow_completed")) and float(event["time"]) <= time + 1e-8 for event in matching_events)
-            present = time + 1e-8 >= creation_time and not completed
+            completed_before_slot = any(
+                bool(event.get("flow_completed")) and float(event["time"]) < time - 1e-8
+                for event in matching_events
+            )
+            present = time + 1e-8 >= creation_time and not completed_before_slot
             arrays["flow_present"][ti, fi] = present
             arrays["flow_completed"][ti, fi] = completed
-            arrays["flow_state"][ti, fi] = [
-                total,
-                max(total - delivered_cumulative, 0.0),
-                delivered_cumulative,
-                delivered_here,
-                max(time - creation_time, 0.0) if time >= creation_time else 0.0,
-            ]
+            if present:
+                arrays["flow_state"][ti, fi] = [
+                    total,
+                    max(total - delivered_cumulative, 0.0),
+                    delivered_cumulative,
+                    delivered_here,
+                    max(time - creation_time, 0.0),
+                ]
             for event in matching_events:
                 if np.isclose(float(event["time"]), time, atol=1e-8):
                     for physical_edge_id in event.get("path", []):
@@ -448,6 +452,10 @@ def validate_seed_tensors(arrays: Mapping[str, np.ndarray], contract: TensorCont
         raise ValueError("node padding must be zero")
     if np.any(arrays["task_state"][~arrays["task_present"]] != 0.0):
         raise ValueError("task padding must be zero")
+    if np.any(arrays["physical_edge_state"][~arrays["physical_edge_present"]] != 0.0):
+        raise ValueError("physical-edge padding must be zero")
+    if np.any(arrays["flow_state"][~arrays["flow_present"]] != 0.0):
+        raise ValueError("flow padding must be zero")
     for name in ("physical_edge_endpoint_index", "flow_endpoint_index", "task_node_index", "task_action_node_index", "dag_edge_index", "flow_bearer_edge_index"):
         value = arrays.get(name)
         if value is not None and np.any(value < -1):
@@ -463,4 +471,10 @@ def validate_seed_tensors(arrays: Mapping[str, np.ndarray], contract: TensorCont
         "flow_capacity": contract.max_flows,
         "task_capacity": contract.max_tasks,
         "dag_edge_capacity": contract.max_dag_edges,
+        "present_counts": {
+            "nodes": int(arrays["node_present"].sum()),
+            "physical_edges": int(arrays["physical_edge_present"].sum()),
+            "flows": int(arrays["flow_present"].sum()),
+            "tasks": int(arrays["task_present"].sum()),
+        },
     }
