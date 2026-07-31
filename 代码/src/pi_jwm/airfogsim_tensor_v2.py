@@ -236,6 +236,7 @@ def tensorize_seed_graph(
         "flow_bearer_edge_index": np.full((step_count, flow_count), -1, dtype=np.int32),
         "task_state": np.zeros((step_count, task_count, len(TASK_FEATURES)), dtype=np.float32),
         "task_present": np.zeros((step_count, task_count), dtype=bool),
+        "task_valid": np.zeros((task_count,), dtype=bool),
         "task_lifecycle_index": np.full((step_count, task_count), -1, dtype=np.int16),
         "task_node_index": np.full((step_count, task_count, len(TASK_ENDPOINT_FIELDS)), -1, dtype=np.int32),
         "task_action": np.zeros((step_count, task_count, len(ACTION_FEATURES)), dtype=np.float32),
@@ -302,6 +303,7 @@ def tensorize_seed_graph(
                 if endpoint in node_index:
                     arrays["task_node_index"][ti, qi, endpoint_index] = node_index[str(endpoint)]
     for qi, task_id in enumerate(task_vocab):
+        arrays["task_valid"][qi] = True
         task_row = next((row for row in graph.get("task_nodes", []) if str(row.get("id")) == task_id), {})
         for endpoint_index, field in enumerate(TASK_ENDPOINT_FIELDS):
             endpoint = task_row.get(field)

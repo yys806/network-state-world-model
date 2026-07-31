@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import dataclasses
 import sys
 import unittest
 from pathlib import Path
@@ -167,12 +168,13 @@ class AirFogSimTensorV2Tests(unittest.TestCase):
         from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract, tensorize_seed_graph
 
         graph = fake_graph()
-        contract = infer_tensor_contract([graph])
+        contract = dataclasses.replace(infer_tensor_contract([graph]), max_tasks=3)
         arrays, report = tensorize_seed_graph(graph, contract)
 
         self.assertEqual(["Task_2", "Task_10"], report["task_vocab"])
         self.assertTrue(np.all(arrays["task_state"][:, 2:] == 0.0))
         self.assertTrue(np.all(arrays["task_node_index"][:, 2:] == -1))
+        self.assertEqual([True, True, False], arrays["task_valid"].tolist())
         self.assertEqual((3, 2, 7), arrays["node_state"].shape)
 
     def test_hides_to_generate_task_before_arrival(self):

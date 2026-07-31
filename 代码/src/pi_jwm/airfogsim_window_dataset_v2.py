@@ -54,6 +54,7 @@ STATIC_KEYS = (
     "flow_endpoint_index",
     "flow_type_index",
     "flow_valid",
+    "task_valid",
     "dag_edge_index",
     "dag_edge_valid",
     "agent_node_index",
@@ -227,4 +228,3 @@ class AirFogSimTensorWindowDataset(Dataset):
                 "label_start_time": float(row.get("label_start_time", "nan")),
             },
         }
-
