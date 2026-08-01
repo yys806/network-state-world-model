@@ -14,6 +14,16 @@ if str(SRC_ROOT) not in sys.path:
 
 
 class FormalAirFogSimProtocolTests(unittest.TestCase):
+    def test_default_scenarios_record_the_real_probe_calibration(self):
+        from pi_jwm.formal_airfogsim_dataset_v1 import DEFAULT_SCENARIOS
+
+        self.assertTrue(
+            all(
+                row.calibration_status == "calibrated_5s_2seed_20260801"
+                for row in DEFAULT_SCENARIOS
+            )
+        )
+
     def test_default_protocol_has_balanced_60_trajectories(self):
         from pi_jwm.formal_airfogsim_dataset_v1 import build_formal_trajectory_specs
 

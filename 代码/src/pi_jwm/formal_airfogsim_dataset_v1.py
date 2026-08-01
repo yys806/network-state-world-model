@@ -55,6 +55,7 @@ DEFAULT_SCENARIOS = tuple(
         task_lambda=task_lambda,
         max_vehicles=max_vehicles,
         vehicle_arrival_lambda=vehicle_arrival_lambda,
+        calibration_status="calibrated_5s_2seed_20260801",
     )
     for load_level, task_lambda in (("low", 0.5), ("medium", 1.0), ("high", 2.0))
     for density_level, max_vehicles, vehicle_arrival_lambda in (
