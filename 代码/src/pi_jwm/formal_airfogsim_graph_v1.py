@@ -40,11 +40,18 @@ def validate_formal_graph_boundary(graph: Mapping[str, Any]) -> None:
         raise ValueError("formal v1 forbids synthetic DAG dependency information flows")
 
 
-def _time_index(arrays: Mapping[str, np.ndarray]) -> dict[float, int]:
-    return {
-        round(float(value), 6): index
-        for index, value in enumerate(arrays["time"].tolist())
-    }
+def _matched_time_index(arrays: Mapping[str, np.ndarray], value: float) -> int:
+    matches = np.flatnonzero(
+        np.isclose(
+            arrays["time"].astype(np.float64),
+            float(value),
+            rtol=0.0,
+            atol=1e-5,
+        )
+    )
+    if matches.size != 1:
+        raise ValueError(f"CPU action time {value} is not on the observed grid")
+    return int(matches[0])
 
 
 def _tensorize_cpu_actions(
@@ -69,7 +76,6 @@ def _tensorize_cpu_actions(
     extended_node_index[..., : base_node_index.shape[-1]] = base_node_index
     arrays["task_action_node_index"] = extended_node_index
 
-    time_index = _time_index(arrays)
     task_index = {task_id: index for index, task_id in enumerate(report["task_vocab"])}
     node_index = {node_id: index for index, node_id in enumerate(report["node_vocab"])}
     seen: set[tuple[int, int]] = set()
@@ -77,11 +83,9 @@ def _tensorize_cpu_actions(
         time_key = round(float(action["time"]), 6)
         task_id = str(action.get("task_id", ""))
         node_id = str(action.get("node_id", ""))
-        if time_key not in time_index:
-            raise ValueError(f"CPU action time {time_key} is not on the observed grid")
         if task_id not in task_index or node_id not in node_index:
             raise ValueError(f"unknown CPU action reference {action}")
-        ti = time_index[time_key]
+        ti = _matched_time_index(arrays, time_key)
         qi = task_index[task_id]
         key = (ti, qi)
         if key in seen:

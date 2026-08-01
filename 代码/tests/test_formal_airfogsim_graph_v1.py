@@ -126,6 +126,37 @@ def formal_graph():
 
 
 class FormalAirFogSimGraphTests(unittest.TestCase):
+    def test_cpu_action_time_tolerates_float32_grid_rounding(self):
+        from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract
+        from pi_jwm.formal_airfogsim_graph_v1 import (
+            FORMAL_ACTION_FEATURES,
+            tensorize_formal_graph,
+        )
+
+        graph = formal_graph()
+        replacements = {0.1: 16.1, 0.2: 16.2, 0.3: 16.3}
+        for key in (
+            "source_physical_node_snapshots",
+            "source_physical_edge_snapshots",
+            "source_task_snapshots",
+        ):
+            for row in graph[key]:
+                row["observed_time"] = replacements[row["observed_time"]]
+        graph["source_cpu_actions"][0]["time"] = 16.2
+        graph["task_dag_edges"][0]["time"] = 16.1
+
+        arrays, report = tensorize_formal_graph(
+            graph, infer_tensor_contract([graph])
+        )
+        task_index = report["task_vocab"].index("Task_2")
+
+        self.assertEqual(
+            1.0,
+            arrays["task_action"][
+                1, task_index, FORMAL_ACTION_FEATURES.index("cpu")
+            ],
+        )
+
     def test_tensor_contains_cpu_action_and_time_observed_dag_state(self):
         from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract
         from pi_jwm.formal_airfogsim_graph_v1 import (
