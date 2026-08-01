@@ -8,6 +8,15 @@
 
 **Tech Stack:** Python 3、NumPy、PyTorch、AirFogSim、NetworkX、`unittest`、JSON/CSV/NPZ、SHA-256。
 
+## 执行状态（2026-08-01）
+
+- Task 1—7 已执行完成；下方步骤保留为实施记录，不再以原始空复选框表示当前状态。
+- 真实AirFogSim场景标定通过：6个场景各2个seed、每条5秒，负载—任务数和密度—节点数关系均满足冻结条件。
+- 已生成60条30秒正式轨迹，split为36/12/6/6；非锁定窗口15660个，锁定窗口1740个。
+- 数据包含15967个任务、28881条AirFogSim原生DAG先后依赖和25738次CPU动作；三种CPU策略各20条，60/60资源守恒通过。
+- 已完成54条非锁定轨迹张量化和train-only归一化；`formal_dataset_ready=true`、`formal_tensor_ready=true`、`formal_training_ready=false`、`external_validation_ready=false`。
+- 60个轨迹manifest、原始顶层manifest和张量113文件manifest均已独立复算通过；本轮相关及主线回归共176项测试通过。
+
 ---
 
 ### Task 1: 冻结 60 轨迹协议、场景和 split
