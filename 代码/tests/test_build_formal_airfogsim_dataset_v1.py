@@ -227,6 +227,10 @@ class BuildFormalAirFogSimDatasetTests(unittest.TestCase):
                 ).is_file()
             )
             self.assertTrue(manifest["files"]["dataset_summary.json"]["sha256"])
+            self.assertTrue(manifest["generation_completed"])
+            self.assertTrue(manifest["field_masks_valid"])
+            self.assertTrue(manifest["splits_frozen"])
+            self.assertTrue(manifest["source_manifest_present"])
 
     def test_completed_trajectories_are_verified_and_reused(self):
         subject = load_subject()

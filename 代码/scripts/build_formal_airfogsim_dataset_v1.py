@@ -506,6 +506,16 @@ def build_formal_dataset(
         output_dir / "manifest.json",
         {
             "schema_version": SCHEMA_VERSION,
+            "formal_dataset_ready": formal_dataset_ready,
+            "generation_completed": len(ordered_specs) == 60,
+            "field_masks_valid": checks["time_aligned_task_snapshots"]
+            and checks["action_ledgers_present"],
+            "splits_frozen": checks["protocol_valid"]
+            and checks["locked_test_excluded_from_metrics"],
+            "source_manifest_present": all(
+                _verified_trajectory(_trajectory_directory(output_dir, spec), spec)
+                for spec in ordered_specs
+            ),
             "files": {path.name: _file_record(path) for path in top_level_files},
         },
     )
