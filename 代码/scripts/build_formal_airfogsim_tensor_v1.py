@@ -20,7 +20,11 @@ SRC_ROOT = CODE_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
-from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract, validate_seed_tensors
+from pi_jwm.airfogsim_tensor_v2 import (
+    TensorContract,
+    infer_tensor_contract,
+    validate_seed_tensors,
+)
 from pi_jwm.airfogsim_window_dataset_v2 import fit_training_stats
 from pi_jwm.formal_airfogsim_graph_v1 import (
     FORMAL_ACTION_FEATURES,
@@ -89,9 +93,22 @@ def build_formal_tensor_dataset(
             / row["trajectory_id"]
             / "dual_graph_v2_bundle.json"
         )
-    graphs = {int(row["seed"]): graph_loader(row) for row in unlocked_rows}
-    contract = infer_tensor_contract(
-        list(graphs.values()),
+    per_trajectory_contracts = [
+        infer_tensor_contract(
+            [graph_loader(row)],
+            history_steps=history_steps,
+            horizon_steps=horizon_steps,
+        )
+        for row in unlocked_rows
+    ]
+    contract = TensorContract(
+        max_nodes=max(row.max_nodes for row in per_trajectory_contracts),
+        max_physical_edges=max(
+            row.max_physical_edges for row in per_trajectory_contracts
+        ),
+        max_flows=max(row.max_flows for row in per_trajectory_contracts),
+        max_tasks=max(row.max_tasks for row in per_trajectory_contracts),
+        max_dag_edges=max(row.max_dag_edges for row in per_trajectory_contracts),
         history_steps=history_steps,
         horizon_steps=horizon_steps,
     )
@@ -113,7 +130,7 @@ def build_formal_tensor_dataset(
     time_counts: dict[int, int] = {}
     for row in unlocked_rows:
         seed = int(row["seed"])
-        arrays, report = tensorize_formal_graph(graphs[seed], contract)
+        arrays, report = tensorize_formal_graph(graph_loader(row), contract)
         validation = validate_seed_tensors(arrays, contract)
         seed_dir = output_dir / f"seed_{seed:03d}"
         seed_dir.mkdir(parents=True, exist_ok=True)
