@@ -6,6 +6,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import numpy as np
 import torch
@@ -16,7 +17,7 @@ if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
 
-def _write_fixture(root: Path) -> None:
+def _write_fixture(root: Path, *, zero_positive: bool = False, train_lifecycle_index: int = 2) -> None:
     contract = {
         "schema_version": "PI-JWM-AirFogSim-tensor-v2",
         "max_nodes": 2,
@@ -43,17 +44,17 @@ def _write_fixture(root: Path) -> None:
         physical_edge_present = np.ones((3, 53), dtype=bool)
         physical_edge_present[:, -1] = False
         physical_edge_state[:2, :, 3] = 1.0
-        physical_edge_state[2, 0, 3] = 1.0
-        physical_edge_state[2, -1, 3] = 1.0
         flow_present = np.zeros((3, 53), dtype=bool)
         task_present = np.zeros((3, 5), dtype=bool)
         task_lifecycle_index = np.full((3, 5), -1, dtype=np.int16)
-        if seed == 0:
+        if seed == 0 and not zero_positive:
+            physical_edge_state[2, 0, 3] = 1.0
+            physical_edge_state[2, -1, 3] = 1.0
             flow_present[2, 0] = True
             flow_present[2, -1] = True
             task_present[2, :2] = True
-            task_lifecycle_index[2, :2] = 2
-        else:
+            task_lifecycle_index[2, :2] = train_lifecycle_index
+        elif seed != 0:
             physical_edge_present[:] = True
             physical_edge_state[:, :, 3] = 1.0
             flow_present[:] = True
@@ -176,6 +177,35 @@ class AirFogSimWindowDatasetV2Tests(unittest.TestCase):
             self.assertEqual(2, stats["labels"]["task_present"]["negative_count"])
             self.assertEqual([0, 0, 2, 0, 0], stats["task_lifecycle"]["counts"])
             self.assertEqual(2, stats["task_lifecycle"]["majority_index"])
+            self.assertEqual(2, stats["task_lifecycle"]["valid_count"])
+
+    def test_sparse_label_stats_use_unit_weight_when_no_positive_labels_exist(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _write_fixture(root, zero_positive=True)
+            from pi_jwm.airfogsim_window_dataset_v2 import fit_sparse_label_stats
+
+            stats = fit_sparse_label_stats(root, split="dev_train")
+
+            self.assertEqual(1, stats["sample_count"])
+            for label in ("link_activity", "flow_present", "task_present"):
+                self.assertEqual(0, stats["labels"][label]["positive_count"])
+                self.assertEqual(0.0, stats["labels"][label]["positive_rate"])
+                self.assertEqual(1.0, stats["labels"][label]["pos_weight"])
+
+    def test_lifecycle_statistics_follow_the_tensor_lifecycle_vocabulary(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _write_fixture(root, train_lifecycle_index=5)
+            import pi_jwm.airfogsim_window_dataset_v2 as dataset_module
+            from pi_jwm.airfogsim_tensor_v2 import LIFECYCLE_TYPES
+
+            extended_types = (*LIFECYCLE_TYPES, "future")
+            with patch.object(dataset_module, "LIFECYCLE_TYPES", extended_types, create=True):
+                stats = dataset_module.fit_sparse_label_stats(root, split="dev_train")
+
+            self.assertEqual([0, 0, 0, 0, 0, 2], stats["task_lifecycle"]["counts"])
+            self.assertEqual(5, stats["task_lifecycle"]["majority_index"])
             self.assertEqual(2, stats["task_lifecycle"]["valid_count"])
 
     def test_validation_split_is_empty_when_not_requested(self):

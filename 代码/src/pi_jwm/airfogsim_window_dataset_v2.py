@@ -11,7 +11,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-from .airfogsim_tensor_v2 import EDGE_FEATURES
+from .airfogsim_tensor_v2 import EDGE_FEATURES, LIFECYCLE_TYPES
 
 
 STATE_KEYS = {
@@ -185,7 +185,7 @@ def fit_sparse_label_stats(
         "flow_present": [0, 0],
         "task_present": [0, 0],
     }
-    lifecycle_counts = np.zeros((5,), dtype=np.int64)
+    lifecycle_counts = np.zeros((len(LIFECYCLE_TYPES),), dtype=np.int64)
     activity_index = EDGE_FEATURES.index("active_task_count")
 
     for row in rows:
@@ -217,7 +217,7 @@ def fit_sparse_label_stats(
 
         lifecycle = arrays["task_lifecycle_index"][start:end]
         lifecycle_mask = task_present & (lifecycle >= 0)
-        for lifecycle_index in range(5):
+        for lifecycle_index in range(len(LIFECYCLE_TYPES)):
             lifecycle_counts[lifecycle_index] += np.count_nonzero(lifecycle_mask & (lifecycle == lifecycle_index))
 
     valid_lifecycle_count = int(lifecycle_counts.sum())
