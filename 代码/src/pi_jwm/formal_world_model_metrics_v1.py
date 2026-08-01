@@ -261,11 +261,18 @@ class _MetricBucket:
 
 
 class FormalMetricAccumulator:
-    def __init__(self, stats: Mapping[str, Any], *, threshold: float = 0.5) -> None:
+    def __init__(
+        self,
+        stats: Mapping[str, Any],
+        *,
+        threshold: float = 0.5,
+        distribution_available: bool = True,
+    ) -> None:
         if not 0.0 < threshold < 1.0:
             raise ValueError("threshold must be between zero and one")
         self.stats = stats
         self.threshold = float(threshold)
+        self.distribution_available = bool(distribution_available)
         self._horizon_buckets: list[_MetricBucket] = []
         self._overall = _MetricBucket()
         self.sample_count = 0
@@ -546,6 +553,13 @@ class FormalMetricAccumulator:
         }
         for name, (reason, fields) in unavailable.items():
             metrics[name] = not_computable(reason, fields)
+        if not self.distribution_available:
+            for name in list(metrics):
+                if name.startswith("uncertainty."):
+                    metrics[name] = not_computable(
+                        "deterministic baseline does not output a predictive distribution",
+                        metrics[name]["source_fields"],
+                    )
         return metrics
 
     def finalize(self) -> dict[str, Any]:
@@ -558,6 +572,7 @@ class FormalMetricAccumulator:
             "schema_version": "PI-JWM-formal-metrics-v1",
             "sample_count": self.sample_count,
             "threshold": self.threshold,
+            "distribution_available": self.distribution_available,
             "registry": metric_registry(),
             "horizons": horizons,
         }
