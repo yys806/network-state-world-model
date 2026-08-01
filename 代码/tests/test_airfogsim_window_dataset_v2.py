@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import numpy as np
+import torch
 
 
 SRC_ROOT = Path(__file__).resolve().parents[1] / "src"
@@ -19,9 +20,9 @@ def _write_fixture(root: Path) -> None:
     contract = {
         "schema_version": "PI-JWM-AirFogSim-tensor-v2",
         "max_nodes": 2,
-        "max_physical_edges": 1,
-        "max_flows": 1,
-        "max_tasks": 1,
+        "max_physical_edges": 53,
+        "max_flows": 53,
+        "max_tasks": 5,
         "max_dag_edges": 0,
         "history_steps": 2,
         "horizon_steps": 1,
@@ -38,26 +39,48 @@ def _write_fixture(root: Path) -> None:
     for seed, value in ((0, 1.0), (1, 100.0)):
         seed_dir = root / f"seed_{seed:03d}"
         seed_dir.mkdir()
+        physical_edge_state = np.zeros((3, 53, 5), dtype=np.float32)
+        physical_edge_present = np.ones((3, 53), dtype=bool)
+        physical_edge_present[:, -1] = False
+        physical_edge_state[:2, :, 3] = 1.0
+        physical_edge_state[2, 0, 3] = 1.0
+        physical_edge_state[2, -1, 3] = 1.0
+        flow_present = np.zeros((3, 53), dtype=bool)
+        task_present = np.zeros((3, 5), dtype=bool)
+        task_lifecycle_index = np.full((3, 5), -1, dtype=np.int16)
+        if seed == 0:
+            flow_present[2, 0] = True
+            flow_present[2, -1] = True
+            task_present[2, :2] = True
+            task_lifecycle_index[2, :2] = 2
+        else:
+            physical_edge_present[:] = True
+            physical_edge_state[:, :, 3] = 1.0
+            flow_present[:] = True
+            task_present[:] = True
+            task_lifecycle_index[:] = 4
         arrays = {
             "time": np.asarray([0.1, 0.2, 0.3], dtype=np.float64),
             "node_state": np.asarray([[[value] * 7, [0.0] * 7]] * 3, dtype=np.float32),
             "node_present": np.asarray([[True, False]] * 3),
-            "physical_edge_state": np.zeros((3, 1, 5), dtype=np.float32),
-            "physical_edge_present": np.zeros((3, 1), dtype=bool),
-            "flow_state": np.zeros((3, 1, 5), dtype=np.float32),
-            "flow_present": np.zeros((3, 1), dtype=bool),
-            "flow_completed": np.zeros((3, 1), dtype=bool),
-            "task_state": np.zeros((3, 1, 8), dtype=np.float32),
-            "task_present": np.zeros((3, 1), dtype=bool),
-            "task_action": np.zeros((3, 1, 5), dtype=np.float32),
-            "task_action_present": np.zeros((3, 1), dtype=bool),
-            "physical_edge_endpoint_index": np.full((1, 2), -1, dtype=np.int32),
-            "flow_endpoint_index": np.full((1, 2), -1, dtype=np.int32),
-            "flow_bearer_mask": np.zeros((3, 1, 1), dtype=bool),
-            "flow_bearer_edge_index": np.full((3, 1), -1, dtype=np.int32),
-            "task_node_index": np.full((3, 1, 4), -1, dtype=np.int32),
-            "task_lifecycle_index": np.full((3, 1), -1, dtype=np.int16),
-            "task_action_node_index": np.full((3, 1, 3), -1, dtype=np.int32),
+            "physical_edge_state": physical_edge_state,
+            "physical_edge_present": physical_edge_present,
+            "flow_state": np.zeros((3, 53, 5), dtype=np.float32),
+            "flow_present": flow_present,
+            "flow_completed": np.zeros((3, 53), dtype=bool),
+            "flow_valid": np.asarray([True] * 52 + [False]),
+            "task_state": np.zeros((3, 5, 8), dtype=np.float32),
+            "task_present": task_present,
+            "task_valid": np.asarray([True] * 4 + [False]),
+            "task_action": np.zeros((3, 5, 5), dtype=np.float32),
+            "task_action_present": np.zeros((3, 5), dtype=bool),
+            "physical_edge_endpoint_index": np.full((53, 2), -1, dtype=np.int32),
+            "flow_endpoint_index": np.full((53, 2), -1, dtype=np.int32),
+            "flow_bearer_mask": np.zeros((3, 53, 53), dtype=bool),
+            "flow_bearer_edge_index": np.full((3, 53), -1, dtype=np.int32),
+            "task_node_index": np.full((3, 5, 4), -1, dtype=np.int32),
+            "task_lifecycle_index": task_lifecycle_index,
+            "task_action_node_index": np.full((3, 5, 3), -1, dtype=np.int32),
         }
         np.savez_compressed(seed_dir / "trajectory_tensors.npz", **arrays)
 
@@ -109,6 +132,51 @@ class AirFogSimWindowDatasetV2Tests(unittest.TestCase):
             stats = fit_training_stats(root, split="dev_train")
             self.assertAlmostEqual(1.0, stats["features"]["node_state"]["mean"][0])
             self.assertNotAlmostEqual(100.0, stats["features"]["node_state"]["mean"][0])
+
+    def test_exposes_raw_masked_link_activity_before_normalization(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _write_fixture(root)
+            from pi_jwm.airfogsim_window_dataset_v2 import AirFogSimTensorWindowDataset, fit_training_stats
+            from pi_jwm.airfogsim_tensor_v2 import EDGE_FEATURES
+
+            stats = fit_training_stats(root, split="dev_train")
+            sample = AirFogSimTensorWindowDataset(root, split="dev_train", stats=stats, normalize=True)[0]
+            activity_index = EDGE_FEATURES.index("active_task_count")
+
+            self.assertEqual(torch.bool, sample["history"]["link_activity"].dtype)
+            self.assertEqual(torch.bool, sample["target"]["link_activity"].dtype)
+            self.assertTrue(sample["target"]["link_activity"][0, 0])
+            self.assertFalse(sample["target"]["link_activity"][0, -1])
+            self.assertAlmostEqual(0.0, sample["target"]["physical_edge_state"][0, 0, activity_index].item())
+
+    def test_sparse_label_stats_use_only_label_slices_and_requested_split(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _write_fixture(root)
+            from pi_jwm.airfogsim_window_dataset_v2 import fit_sparse_label_stats
+
+            stats = fit_sparse_label_stats(root, split="dev_train", max_pos_weight=50.0)
+
+            self.assertEqual("dev_train", stats["source_split"])
+            self.assertEqual(1, stats["sample_count"])
+            self.assertEqual(
+                {
+                    "positive_count": 1,
+                    "negative_count": 51,
+                    "positive_rate": 1.0 / 52.0,
+                    "pos_weight": 50.0,
+                },
+                stats["labels"]["link_activity"],
+            )
+            self.assertEqual(1, stats["labels"]["flow_present"]["positive_count"])
+            self.assertEqual(51, stats["labels"]["flow_present"]["negative_count"])
+            self.assertEqual(50.0, stats["labels"]["flow_present"]["pos_weight"])
+            self.assertEqual(2, stats["labels"]["task_present"]["positive_count"])
+            self.assertEqual(2, stats["labels"]["task_present"]["negative_count"])
+            self.assertEqual([0, 0, 2, 0, 0], stats["task_lifecycle"]["counts"])
+            self.assertEqual(2, stats["task_lifecycle"]["majority_index"])
+            self.assertEqual(2, stats["task_lifecycle"]["valid_count"])
 
     def test_validation_split_is_empty_when_not_requested(self):
         with tempfile.TemporaryDirectory() as temporary:

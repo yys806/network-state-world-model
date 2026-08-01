@@ -11,6 +11,8 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
+from .airfogsim_tensor_v2 import EDGE_FEATURES
+
 
 STATE_KEYS = {
     "node_state": "node_present",
@@ -151,6 +153,90 @@ def fit_training_stats(root: str | Path, *, split: str = "dev_train") -> dict[st
     }
 
 
+def _binary_label_report(positive_count: int, negative_count: int, max_pos_weight: float) -> dict[str, Any]:
+    total = positive_count + negative_count
+    if positive_count == 0:
+        pos_weight = 1.0
+    else:
+        pos_weight = float(np.clip(negative_count / positive_count, 1.0, max_pos_weight))
+    return {
+        "positive_count": int(positive_count),
+        "negative_count": int(negative_count),
+        "positive_rate": float(positive_count / total) if total else 0.0,
+        "pos_weight": pos_weight,
+    }
+
+
+def fit_sparse_label_stats(
+    root: str | Path,
+    *,
+    split: str = "dev_train",
+    max_pos_weight: float = 50.0,
+) -> dict[str, Any]:
+    """Count sparse labels over label slices from only the requested split."""
+
+    if max_pos_weight < 1.0:
+        raise ValueError("max_pos_weight must be at least 1")
+    root = Path(root)
+    rows = _read_window_rows(root, split)
+    cache: dict[int, dict[str, np.ndarray]] = {}
+    counts = {
+        "link_activity": [0, 0],
+        "flow_present": [0, 0],
+        "task_present": [0, 0],
+    }
+    lifecycle_counts = np.zeros((5,), dtype=np.int64)
+    activity_index = EDGE_FEATURES.index("active_task_count")
+
+    for row in rows:
+        seed = row["seed"]
+        if seed not in cache:
+            path = root / f"seed_{seed:03d}" / "trajectory_tensors.npz"
+            with np.load(path, allow_pickle=False) as loaded:
+                cache[seed] = {key: loaded[key] for key in loaded.files}
+        arrays = cache[seed]
+        start, end = row["label_start_index"], row["label_end_index"]
+
+        edge_present = arrays["physical_edge_present"][start:end].astype(bool)
+        link_activity = (arrays["physical_edge_state"][start:end, :, activity_index] > 0) & edge_present
+        link_positive = int(np.count_nonzero(link_activity))
+        counts["link_activity"][0] += link_positive
+        counts["link_activity"][1] += int(np.count_nonzero(edge_present)) - link_positive
+
+        flow_present = arrays["flow_present"][start:end].astype(bool)
+        flow_mask = np.broadcast_to(arrays["flow_valid"].astype(bool), flow_present.shape)
+        flow_positive = int(np.count_nonzero(flow_present & flow_mask))
+        counts["flow_present"][0] += flow_positive
+        counts["flow_present"][1] += int(np.count_nonzero(flow_mask)) - flow_positive
+
+        task_present = arrays["task_present"][start:end].astype(bool)
+        task_mask = np.broadcast_to(arrays["task_valid"].astype(bool), task_present.shape)
+        task_positive = int(np.count_nonzero(task_present & task_mask))
+        counts["task_present"][0] += task_positive
+        counts["task_present"][1] += int(np.count_nonzero(task_mask)) - task_positive
+
+        lifecycle = arrays["task_lifecycle_index"][start:end]
+        lifecycle_mask = task_present & (lifecycle >= 0)
+        for lifecycle_index in range(5):
+            lifecycle_counts[lifecycle_index] += np.count_nonzero(lifecycle_mask & (lifecycle == lifecycle_index))
+
+    valid_lifecycle_count = int(lifecycle_counts.sum())
+    return {
+        "schema_version": "PI-JWM-AirFogSim-sparse-label-stats-v2",
+        "source_split": split,
+        "sample_count": len(rows),
+        "labels": {
+            key: _binary_label_report(positive, negative, max_pos_weight)
+            for key, (positive, negative) in counts.items()
+        },
+        "task_lifecycle": {
+            "counts": lifecycle_counts.tolist(),
+            "majority_index": int(np.argmax(lifecycle_counts)) if valid_lifecycle_count else -1,
+            "valid_count": valid_lifecycle_count,
+        },
+    }
+
+
 def _normalize(value: np.ndarray, mask: np.ndarray, stat: Mapping[str, Any]) -> np.ndarray:
     mean = np.asarray(stat.get("mean", []), dtype=np.float32)
     scale = np.asarray(stat.get("scale", []), dtype=np.float32)
@@ -205,6 +291,15 @@ class AirFogSimTensorWindowDataset(Dataset):
         label_start, label_end = row["label_start_index"], row["label_end_index"]
         history: dict[str, torch.Tensor] = {}
         target: dict[str, torch.Tensor] = {}
+        activity_index = EDGE_FEATURES.index("active_task_count")
+        history["link_activity"] = _to_tensor(
+            (arrays["physical_edge_state"][input_start:input_end, :, activity_index] > 0)
+            & arrays["physical_edge_present"][input_start:input_end].astype(bool)
+        )
+        target["link_activity"] = _to_tensor(
+            (arrays["physical_edge_state"][label_start:label_end, :, activity_index] > 0)
+            & arrays["physical_edge_present"][label_start:label_end].astype(bool)
+        )
         for key in HISTORY_KEYS:
             value = arrays[key][input_start:input_end]
             if self.normalize and key in STATE_KEYS:
