@@ -36,10 +36,10 @@ class _EntityRolloutHead(nn.Module):
         last_state: torch.Tensor,
         context: torch.Tensor,
         horizon_embedding: torch.Tensor,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         entity = self.entity_encoder(last_state)[:, None, :, :]
         joint = torch.tanh(entity + context[:, None, None, :] + horizon_embedding[None, :, None, :])
-        return self.state_head(joint), self.presence_head(joint).squeeze(-1)
+        return self.state_head(joint), self.presence_head(joint).squeeze(-1), joint
 
 
 class MinimalDualGraphWorldModel(nn.Module):
@@ -60,6 +60,8 @@ class MinimalDualGraphWorldModel(nn.Module):
                 for name, feature_dim in COMPONENT_FEATURES.items()
             }
         )
+        self.link_activity_head = nn.Linear(self.hidden_dim, 1)
+        self.task_lifecycle_head = nn.Linear(self.hidden_dim, 5)
 
     def forward(self, history: Mapping[str, torch.Tensor]) -> dict[str, torch.Tensor]:
         summaries = [
@@ -71,13 +73,17 @@ class MinimalDualGraphWorldModel(nn.Module):
         context = encoded[:, -1]
         output: dict[str, torch.Tensor] = {}
         for name, head in self.heads.items():
-            state, presence_logits = head(
+            state, presence_logits, latent = head(
                 history[f"{name}_state"][:, -1],
                 context,
                 self.horizon_embedding,
             )
             output[f"{name}_state"] = state
             output[f"{name}_presence_logits"] = presence_logits
+            if name == "physical_edge":
+                output["link_activity_logits"] = self.link_activity_head(latent).squeeze(-1)
+            elif name == "task":
+                output["task_lifecycle_logits"] = self.task_lifecycle_head(latent)
         return output
 
 
@@ -106,9 +112,11 @@ def dual_graph_world_model_loss(
     static: Mapping[str, torch.Tensor],
     *,
     presence_weight: float = 0.1,
+    sparse_pos_weights: Mapping[str, float] | None = None,
 ) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
-    """Compute mask-safe state MAE plus valid-slot presence BCE."""
+    """Compute mask-safe state, presence, activity, and lifecycle losses."""
 
+    sparse_pos_weights = dict(sparse_pos_weights or {})
     state_losses: list[torch.Tensor] = []
     presence_losses: list[torch.Tensor] = []
     metrics: dict[str, torch.Tensor] = {}
@@ -120,9 +128,16 @@ def dual_graph_world_model_loss(
         metrics[f"{name}_state_mae"] = state_mae.detach()
 
         valid = _valid_component_mask(name, static)[:, None, :].expand_as(target_present)
+        pos_weight = None
+        sparse_label = f"{name}_present"
+        if sparse_label in {"flow_present", "task_present"}:
+            pos_weight = output[f"{name}_presence_logits"].new_tensor(
+                float(sparse_pos_weights.get(sparse_label, 1.0))
+            )
         binary_loss = F.binary_cross_entropy_with_logits(
             output[f"{name}_presence_logits"],
             target_present.to(dtype=output[f"{name}_presence_logits"].dtype),
+            pos_weight=pos_weight,
             reduction="none",
         )
         presence_bce = _masked_mean(binary_loss, valid)
@@ -131,9 +146,37 @@ def dual_graph_world_model_loss(
 
     state_loss = torch.stack(state_losses).mean()
     presence_loss = torch.stack(presence_losses).mean()
-    total = state_loss + float(presence_weight) * presence_loss
+
+    edge_valid = _valid_component_mask("physical_edge", static)[:, None, :].expand_as(
+        target["link_activity"]
+    )
+    activity_logits = output["link_activity_logits"]
+    activity_loss_values = F.binary_cross_entropy_with_logits(
+        activity_logits,
+        target["link_activity"].to(dtype=activity_logits.dtype),
+        pos_weight=activity_logits.new_tensor(float(sparse_pos_weights.get("link_activity", 1.0))),
+        reduction="none",
+    )
+    activity_loss = _masked_mean(activity_loss_values, edge_valid)
+
+    lifecycle_target = target["task_lifecycle_index"].long()
+    lifecycle_valid = target["task_present"].bool() & (lifecycle_target >= 0)
+    lifecycle_loss_values = F.cross_entropy(
+        output["task_lifecycle_logits"].reshape(-1, 5),
+        lifecycle_target.clamp_min(0).reshape(-1),
+        reduction="none",
+    ).reshape_as(lifecycle_target)
+    lifecycle_loss = _masked_mean(lifecycle_loss_values, lifecycle_valid)
+
+    total = (
+        state_loss
+        + float(presence_weight) * presence_loss
+        + 0.1 * activity_loss
+        + 0.1 * lifecycle_loss
+    )
     metrics["state_loss"] = state_loss.detach()
     metrics["presence_loss"] = presence_loss.detach()
+    metrics["link_activity_bce"] = activity_loss.detach()
+    metrics["task_lifecycle_ce"] = lifecycle_loss.detach()
     metrics["total_loss"] = total.detach()
     return total, metrics
-

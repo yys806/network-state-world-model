@@ -30,6 +30,13 @@ def fake_batch():
         future_state = torch.randn(batch, horizon, counts[name], features[name]) * future_present.unsqueeze(-1)
         target[f"{name}_state"] = future_state
         target[f"{name}_present"] = future_present
+    target["link_activity"] = target["physical_edge_present"].clone()
+    target["task_lifecycle_index"] = torch.full(
+        (batch, horizon, counts["task"]),
+        -1,
+        dtype=torch.long,
+    )
+    target["task_lifecycle_index"][target["task_present"]] = 2
     history_data["task_action"] = torch.zeros(batch, history, counts["task"], 5)
     history_data["task_action_present"] = torch.zeros(batch, history, counts["task"], dtype=torch.bool)
     static = {
@@ -54,6 +61,8 @@ class AirFogSimSmokeModelV2Tests(unittest.TestCase):
         self.assertEqual((2, 2, 3, 5), tuple(output["flow_state"].shape))
         self.assertEqual((2, 2, 6, 8), tuple(output["task_state"].shape))
         self.assertEqual((2, 2, 6), tuple(output["task_presence_logits"].shape))
+        self.assertEqual((2, 2, 5), tuple(output["link_activity_logits"].shape))
+        self.assertEqual((2, 2, 6, 5), tuple(output["task_lifecycle_logits"].shape))
 
     def test_masked_loss_ignores_padding_values_and_backpropagates(self):
         from pi_jwm.airfogsim_smoke_model_v2 import MinimalDualGraphWorldModel, dual_graph_world_model_loss
@@ -70,6 +79,8 @@ class AirFogSimSmokeModelV2Tests(unittest.TestCase):
         self.assertTrue(torch.isfinite(loss))
         self.assertAlmostEqual(float(loss.detach()), float(changed_loss.detach()), places=6)
         self.assertIn("task_state_mae", metrics)
+        self.assertIn("link_activity_bce", metrics)
+        self.assertIn("task_lifecycle_ce", metrics)
         loss.backward()
         self.assertTrue(any(parameter.grad is not None and torch.isfinite(parameter.grad).all() for parameter in model.parameters()))
 
@@ -86,6 +97,42 @@ class AirFogSimSmokeModelV2Tests(unittest.TestCase):
             baseline = model(history)["task_state"]
             action_conditioned = model(changed)["task_state"]
         self.assertFalse(torch.allclose(baseline, action_conditioned))
+
+    def test_sparse_positive_weights_are_accepted(self):
+        from pi_jwm.airfogsim_smoke_model_v2 import MinimalDualGraphWorldModel, dual_graph_world_model_loss
+
+        history, target, static = fake_batch()
+        model = MinimalDualGraphWorldModel(hidden_dim=16, horizon_steps=2)
+        loss, metrics = dual_graph_world_model_loss(
+            model(history),
+            target,
+            static,
+            sparse_pos_weights={"link_activity": 10.0, "flow_present": 5.0, "task_present": 2.0},
+        )
+
+        self.assertTrue(torch.isfinite(loss))
+        self.assertTrue(torch.isfinite(metrics["link_activity_bce"]))
+        self.assertTrue(torch.isfinite(metrics["task_lifecycle_ce"]))
+
+    def test_lifecycle_loss_ignores_absent_and_padding_tasks(self):
+        from pi_jwm.airfogsim_smoke_model_v2 import MinimalDualGraphWorldModel, dual_graph_world_model_loss
+
+        history, target, static = fake_batch()
+        model = MinimalDualGraphWorldModel(hidden_dim=16, horizon_steps=2)
+        output = model(history)
+        _, metrics = dual_graph_world_model_loss(output, target, static)
+
+        changed = copy.deepcopy(target)
+        ignored = ~changed["task_present"]
+        changed["task_lifecycle_index"] = changed["task_lifecycle_index"].clone()
+        changed["task_lifecycle_index"][ignored] = 4
+        _, changed_metrics = dual_graph_world_model_loss(output, changed, static)
+
+        self.assertAlmostEqual(
+            float(metrics["task_lifecycle_ce"]),
+            float(changed_metrics["task_lifecycle_ce"]),
+            places=6,
+        )
 
 
 if __name__ == "__main__":
