@@ -6,6 +6,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import torch
+
 
 CODE_ROOT = Path(__file__).resolve().parents[1]
 for path in (CODE_ROOT / "src", CODE_ROOT / "scripts"):
@@ -17,6 +19,21 @@ from test_formal_system_window_v1 import _write_system_fixture
 
 
 class EvaluateFormalSystemOutcomesV1Tests(unittest.TestCase):
+    def test_evaluator_rejects_pre_semantic_fix_v2_checkpoint_explicitly(self):
+        from evaluate_formal_system_outcomes_v1 import _load_model
+
+        with tempfile.TemporaryDirectory() as temporary:
+            training_root = Path(temporary)
+            checkpoint_dir = training_root / "checkpoints"
+            checkpoint_dir.mkdir()
+            torch.save(
+                {"model_version": "directed_dynamic_v2"},
+                checkpoint_dir / "old_v2__best.pt",
+            )
+
+            with self.assertRaisesRegex(ValueError, "pre-semantic-fix"):
+                _load_model(training_root, "old_v2", torch.device("cpu"))
+
     def test_evaluates_same_nonlocked_samples_and_reports_missing_baseline_energy(self):
         from evaluate_formal_system_outcomes_v1 import evaluate_training_run
         from run_formal_dual_graph_gpu_train_v1 import run_formal_training

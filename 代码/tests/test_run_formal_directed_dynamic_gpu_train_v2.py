@@ -63,7 +63,7 @@ class RunFormalDirectedDynamicGpuTrainV2Tests(unittest.TestCase):
             self.assertFalse(result["locked_test_accessed"])
             self.assertEqual(
                 {
-                    "coupled_directed_dynamic_residual_v2": "directed_dynamic_v2"
+                    "coupled_directed_dynamic_residual_v2": "directed_dynamic_v2_1"
                 },
                 result["model_versions"],
             )
@@ -78,7 +78,7 @@ class RunFormalDirectedDynamicGpuTrainV2Tests(unittest.TestCase):
                 map_location="cpu",
                 weights_only=True,
             )
-            self.assertEqual("directed_dynamic_v2", checkpoint["model_version"])
+            self.assertEqual("directed_dynamic_v2_1", checkpoint["model_version"])
             self.assertEqual("deterministic", checkpoint["latent_dynamics"])
             self.assertTrue(checkpoint["model_config"]["residual_state_prediction"])
             self.assertNotIn("mode", checkpoint["model_config"])
@@ -86,7 +86,7 @@ class RunFormalDirectedDynamicGpuTrainV2Tests(unittest.TestCase):
                 (output_dir / "method_registry.json").read_text(encoding="utf-8")
             )
             self.assertEqual(
-                "directed_dynamic_v2",
+                "directed_dynamic_v2_1",
                 registry["coupled_directed_dynamic_residual_v2"]["model_version"],
             )
             runtime = json.loads(

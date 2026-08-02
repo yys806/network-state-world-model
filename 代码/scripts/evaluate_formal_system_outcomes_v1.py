@@ -79,6 +79,11 @@ def _load_model(training_root: Path, method: str, device: torch.device) -> torch
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
     model_version = str(checkpoint.get("model_version", "formal_v1"))
     if model_version == "directed_dynamic_v2":
+        raise ValueError(
+            "pre-semantic-fix directed_dynamic_v2 checkpoint is intentionally "
+            "incompatible; retrain with directed_dynamic_v2_1"
+        )
+    if model_version == "directed_dynamic_v2_1":
         model = FormalDirectedDynamicWorldModelV2(
             FormalDirectedDynamicWorldModelConfig(**checkpoint["model_config"])
         )

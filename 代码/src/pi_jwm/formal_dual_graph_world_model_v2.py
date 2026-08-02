@@ -118,7 +118,7 @@ def _map_node_endpoints_to_agents(
 class FormalDirectedDynamicWorldModelV2(nn.Module):
     """PI-JWM v2 with information-side agent initialization."""
 
-    model_version = "directed_dynamic_v2"
+    model_version = "directed_dynamic_v2_1"
     latent_dynamics = "deterministic"
 
     def __init__(self, config: FormalDirectedDynamicWorldModelConfig) -> None:

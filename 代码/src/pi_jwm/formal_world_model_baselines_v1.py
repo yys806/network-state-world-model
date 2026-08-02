@@ -168,7 +168,7 @@ def method_registry() -> dict[str, dict[str, Any]]:
             "independent_information_agent_state": True,
             "residual_state_prediction": False,
             "latent_dynamics": "deterministic",
-            "model_version": "directed_dynamic_v2",
+            "model_version": "directed_dynamic_v2_1",
         },
         "coupled_directed_dynamic_residual_v2": {
             "stage": "local_interface_ready",
@@ -181,7 +181,7 @@ def method_registry() -> dict[str, dict[str, Any]]:
             "independent_information_agent_state": True,
             "residual_state_prediction": True,
             "latent_dynamics": "deterministic",
-            "model_version": "directed_dynamic_v2",
+            "model_version": "directed_dynamic_v2_1",
         },
         "coupled_jepa_bou_chaaya_2026": {
             "stage": "gpu_pending",

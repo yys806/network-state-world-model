@@ -316,7 +316,7 @@ class FormalDirectedDynamicWorldModelV2Tests(unittest.TestCase):
         )
         output = model(fake_formal_batch())
 
-        self.assertEqual("directed_dynamic_v2", model.model_version)
+        self.assertEqual("directed_dynamic_v2_1", model.model_version)
         self.assertEqual("deterministic", model.latent_dynamics)
         expected_shapes = {
             "node_state_mean": (2, 2, 4, 7),

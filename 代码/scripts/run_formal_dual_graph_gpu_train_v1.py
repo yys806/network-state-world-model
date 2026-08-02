@@ -66,11 +66,11 @@ V1_MODEL_SPECS = {
 }
 V2_MODEL_SPECS = {
     "coupled_directed_dynamic_v2": {
-        "model_version": "directed_dynamic_v2",
+        "model_version": "directed_dynamic_v2_1",
         "residual": False,
     },
     "coupled_directed_dynamic_residual_v2": {
-        "model_version": "directed_dynamic_v2",
+        "model_version": "directed_dynamic_v2_1",
         "residual": True,
     },
 }
