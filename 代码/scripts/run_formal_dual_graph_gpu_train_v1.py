@@ -31,6 +31,10 @@ from pi_jwm.formal_dual_graph_world_model_v1 import (
     FormalDualGraphWorldModel,
     FormalWorldModelConfig,
 )
+from pi_jwm.formal_dual_graph_world_model_v2 import (
+    FormalDirectedDynamicWorldModelConfig,
+    FormalDirectedDynamicWorldModelV2,
+)
 from pi_jwm.formal_system_window_v1 import FormalSystemWindowDataset
 from pi_jwm.formal_world_model_baselines_v1 import build_rule_prediction, method_registry
 from pi_jwm.formal_world_model_loss_v1 import (
@@ -53,14 +57,63 @@ from run_formal_dual_graph_cpu_smoke_v1 import (
 
 NONLOCKED_SPLITS = ("train", "validation", "calibration")
 RULE_METHODS = ("zero_activity", "last_persistence")
-MODEL_SPECS = {
-    "pooled_gru": ("pooled_gru", False),
-    "independent_dual_gnn": ("independent_dual_gnn", False),
-    "coupled_dual_gnn": ("coupled_dual_gnn", False),
-    "independent_dual_gnn_residual": ("independent_dual_gnn", True),
-    "coupled_dual_gnn_residual": ("coupled_dual_gnn", True),
+V1_MODEL_SPECS = {
+    "pooled_gru": {"model_version": "formal_v1", "mode": "pooled_gru", "residual": False},
+    "independent_dual_gnn": {"model_version": "formal_v1", "mode": "independent_dual_gnn", "residual": False},
+    "coupled_dual_gnn": {"model_version": "formal_v1", "mode": "coupled_dual_gnn", "residual": False},
+    "independent_dual_gnn_residual": {"model_version": "formal_v1", "mode": "independent_dual_gnn", "residual": True},
+    "coupled_dual_gnn_residual": {"model_version": "formal_v1", "mode": "coupled_dual_gnn", "residual": True},
 }
-LEARNED_METHODS = tuple(MODEL_SPECS)
+V2_MODEL_SPECS = {
+    "coupled_directed_dynamic_v2": {
+        "model_version": "directed_dynamic_v2",
+        "residual": False,
+    },
+    "coupled_directed_dynamic_residual_v2": {
+        "model_version": "directed_dynamic_v2",
+        "residual": True,
+    },
+}
+MODEL_SPECS = {**V1_MODEL_SPECS, **V2_MODEL_SPECS}
+LEARNED_METHODS = tuple(V1_MODEL_SPECS)
+
+
+def _build_learned_model(
+    method: str,
+    *,
+    hidden_dim: int,
+    history_steps: int,
+    horizon_steps: int,
+    use_system_energy_head: bool,
+) -> tuple[torch.nn.Module, Any]:
+    spec = MODEL_SPECS[method]
+    if spec["model_version"] == "formal_v1":
+        model_config = FormalWorldModelConfig(
+            mode=str(spec["mode"]),
+            hidden_dim=hidden_dim,
+            history_steps=history_steps,
+            horizon_steps=horizon_steps,
+            residual_state_prediction=bool(spec["residual"]),
+            use_system_energy_head=use_system_energy_head,
+        )
+        return FormalDualGraphWorldModel(model_config), model_config
+    model_config = FormalDirectedDynamicWorldModelConfig(
+        hidden_dim=hidden_dim,
+        history_steps=history_steps,
+        horizon_steps=horizon_steps,
+        residual_state_prediction=bool(spec["residual"]),
+        use_system_energy_head=use_system_energy_head,
+    )
+    return FormalDirectedDynamicWorldModelV2(model_config), model_config
+
+
+def _reload_learned_model(method: str, model_config: Mapping[str, Any]) -> torch.nn.Module:
+    spec = MODEL_SPECS[method]
+    if spec["model_version"] == "formal_v1":
+        return FormalDualGraphWorldModel(FormalWorldModelConfig(**dict(model_config)))
+    return FormalDirectedDynamicWorldModelV2(
+        FormalDirectedDynamicWorldModelConfig(**dict(model_config))
+    )
 
 
 def _training_manifest(output_dir: Path) -> dict[str, Any]:
@@ -98,7 +151,7 @@ def _edge_valid(static: Mapping[str, torch.Tensor]) -> torch.Tensor:
 
 def _prediction(
     method: str,
-    model: FormalDualGraphWorldModel | None,
+    model: torch.nn.Module | None,
     batch: Mapping[str, Any],
     stats: Mapping[str, Any],
 ) -> dict[str, torch.Tensor]:
@@ -111,7 +164,7 @@ def _prediction(
 
 def _choose_link_threshold(
     method: str,
-    model: FormalDualGraphWorldModel | None,
+    model: torch.nn.Module | None,
     loader: DataLoader,
     stats: Mapping[str, Any],
     device: torch.device,
@@ -157,7 +210,7 @@ def _choose_link_threshold(
 
 def _evaluate(
     method: str,
-    model: FormalDualGraphWorldModel | None,
+    model: torch.nn.Module | None,
     loader: DataLoader,
     stats: Mapping[str, Any],
     threshold: float,
@@ -185,7 +238,7 @@ def _evaluate(
 
 
 def _mean_loss(
-    model: FormalDualGraphWorldModel,
+    model: torch.nn.Module,
     loader: DataLoader,
     class_weights: Mapping[str, float],
     loss_weights: FormalLossWeights,
@@ -336,19 +389,16 @@ def run_formal_training(
 
     histories: dict[str, list[dict[str, Any]]] = {}
     runtime: dict[str, dict[str, Any]] = {}
-    models: dict[str, FormalDualGraphWorldModel] = {}
+    models: dict[str, torch.nn.Module] = {}
     for method in learned_methods:
         _seed_everything(seed)
-        base_mode, residual_state_prediction = MODEL_SPECS[method]
-        model_config = FormalWorldModelConfig(
-            mode=base_mode,
+        model, model_config = _build_learned_model(
+            method,
             hidden_dim=hidden_dim,
             history_steps=window_config.history_steps,
             horizon_steps=window_config.horizon_steps,
-            residual_state_prediction=residual_state_prediction,
             use_system_energy_head=use_system_energy_head,
         )
-        model = FormalDualGraphWorldModel(model_config)
         initialization_hash = _model_hash(model)
         model.to(requested_device)
         optimizer = torch.optim.AdamW(
@@ -410,6 +460,8 @@ def run_formal_training(
             {
                 "method": method,
                 "model_config": model_config.__dict__,
+                "model_version": MODEL_SPECS[method]["model_version"],
+                "latent_dynamics": getattr(model, "latent_dynamics", "deterministic"),
                 "run_config": config,
                 "model_state_dict": best_state,
                 "initialization_hash": initialization_hash,
@@ -419,7 +471,7 @@ def run_formal_training(
             checkpoint_path,
         )
         checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
-        reloaded = FormalDualGraphWorldModel(model_config)
+        reloaded = _reload_learned_model(method, checkpoint["model_config"])
         reloaded.load_state_dict(checkpoint["model_state_dict"], strict=True)
         reloaded.to(requested_device)
         models[method] = reloaded

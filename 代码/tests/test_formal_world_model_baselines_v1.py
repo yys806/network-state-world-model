@@ -73,6 +73,22 @@ class FormalWorldModelBaselinesV1Tests(unittest.TestCase):
         self.assertEqual("complete_paper_method_adapter", registry["coupled_jepa_bou_chaaya_2026"]["role"])
         self.assertFalse(registry["zero_activity"]["distribution_output"])
         self.assertTrue(registry["coupled_dual_gnn"]["distribution_output"])
+        self.assertEqual(
+            "local_interface_ready",
+            registry["coupled_directed_dynamic_v2"]["stage"],
+        )
+        self.assertFalse(
+            registry["coupled_directed_dynamic_v2"]["residual_state_prediction"]
+        )
+        self.assertTrue(
+            registry["coupled_directed_dynamic_residual_v2"][
+                "residual_state_prediction"
+            ]
+        )
+        self.assertEqual(
+            "deterministic",
+            registry["coupled_directed_dynamic_v2"]["latent_dynamics"],
+        )
 
     def test_rule_baseline_uncertainty_is_reported_as_not_computable(self):
         from pi_jwm.formal_world_model_baselines_v1 import build_rule_prediction
