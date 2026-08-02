@@ -27,7 +27,12 @@ def weighted_index_mean(
     output_size: int,
     weight: torch.Tensor,
 ) -> torch.Tensor:
-    """Aggregate messages by destination using nonnegative soft weights."""
+    """Aggregate gated messages, normalized by structural relation count.
+
+    The denominator deliberately counts active structural slots instead of
+    summing their soft weights.  Consequently a presence probability remains
+    a message-strength gate even when an entity has only one incident edge.
+    """
 
     if messages.ndim != 3:
         raise ValueError("messages must have shape [batch, items, features]")
@@ -57,7 +62,11 @@ def weighted_index_mean(
             destinations,
             messages[batch_index, valid] * selected_weight,
         )
-        denominator[batch_index].index_add_(0, destinations, selected_weight)
+        denominator[batch_index].index_add_(
+            0,
+            destinations,
+            torch.ones_like(selected_weight),
+        )
     return output / denominator.clamp_min(1e-12)
 
 

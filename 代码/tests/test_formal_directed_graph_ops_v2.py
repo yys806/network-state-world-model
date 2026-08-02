@@ -73,7 +73,28 @@ class FormalDirectedGraphOpsV2Tests(unittest.TestCase):
         torch.testing.assert_close(original[1], permuted[1])
         torch.testing.assert_close(original[2][:, [1, 0]], permuted[2])
 
-    def test_soft_relation_weights_use_weighted_mean(self):
+    def test_soft_relation_weights_attenuate_messages_without_being_normalized_away(self):
+        from pi_jwm.formal_directed_graph_ops_v2 import directed_relation_messages
+
+        full, _, _ = directed_relation_messages(
+            torch.ones(1, 2, 1),
+            torch.tensor([[[8.0]]]),
+            torch.tensor([[0, 1]]),
+            torch.ones(1, 2),
+            torch.tensor([[1.0]]),
+        )
+        soft, _, _ = directed_relation_messages(
+            torch.ones(1, 2, 1),
+            torch.tensor([[[8.0]]]),
+            torch.tensor([[0, 1]]),
+            torch.ones(1, 2),
+            torch.tensor([[0.25]]),
+        )
+
+        self.assertAlmostEqual(8.0, float(full[0, 1, 0]))
+        self.assertAlmostEqual(2.0, float(soft[0, 1, 0]))
+
+    def test_multiple_soft_relations_use_structural_count_normalization(self):
         from pi_jwm.formal_directed_graph_ops_v2 import directed_relation_messages
 
         incoming, _, _ = directed_relation_messages(
@@ -81,10 +102,10 @@ class FormalDirectedGraphOpsV2Tests(unittest.TestCase):
             torch.tensor([[[2.0], [8.0]]]),
             torch.tensor([[0, 2], [1, 2]]),
             torch.ones(1, 3),
-            torch.tensor([[1.0, 3.0]]),
+            torch.tensor([[1.0, 0.5]]),
         )
 
-        self.assertAlmostEqual(6.5, float(incoming[0, 2, 0]))
+        self.assertAlmostEqual(3.0, float(incoming[0, 2, 0]))
 
     def test_empty_and_padded_relations_return_finite_zeros(self):
         from pi_jwm.formal_directed_graph_ops_v2 import directed_relation_messages

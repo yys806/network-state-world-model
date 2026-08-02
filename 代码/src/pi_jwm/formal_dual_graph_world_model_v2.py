@@ -157,7 +157,7 @@ class FormalDirectedDynamicWorldModelV2(nn.Module):
         self.agent_cip_gate = _GatedMessage(hidden)
         self.edge_cfe_gate = _GatedMessage(hidden)
         self.flow_cfe_gate = _GatedMessage(hidden)
-        self.task_node_gate = _GatedMessage(hidden)
+        self.task_agent_gate = _GatedMessage(hidden)
 
         self.state_heads = nn.ModuleDict(
             {
@@ -330,9 +330,15 @@ class FormalDirectedDynamicWorldModelV2(nn.Module):
         cfe_weight: torch.Tensor,
     ) -> tuple[torch.Tensor, torch.Tensor]:
         relation = cfe_weight.to(flow.dtype).clamp_min(0.0)
-        flow_from_edge = torch.bmm(relation, edge) / relation.sum(dim=2, keepdim=True).clamp_min(1e-12)
+        support = (relation > 0).to(flow.dtype)
+        flow_from_edge = torch.bmm(relation, edge) / support.sum(
+            dim=2, keepdim=True
+        ).clamp_min(1.0)
         transposed = relation.transpose(1, 2)
-        edge_from_flow = torch.bmm(transposed, flow) / transposed.sum(dim=2, keepdim=True).clamp_min(1e-12)
+        transposed_support = support.transpose(1, 2)
+        edge_from_flow = torch.bmm(transposed, flow) / transposed_support.sum(
+            dim=2, keepdim=True
+        ).clamp_min(1.0)
         return flow_from_edge, edge_from_flow
 
     @staticmethod
@@ -362,7 +368,7 @@ class FormalDirectedDynamicWorldModelV2(nn.Module):
         ).to(task.dtype)
         weight = dag_weight * valid
         message = weighted_index_mean(parent, children, task_count, weight)
-        relation_latent = 0.5 * (parent + child) * (weight > 0).unsqueeze(-1)
+        relation_latent = 0.5 * (parent + child) * weight.unsqueeze(-1)
         return message, relation_latent
 
     def _directed_pass(
@@ -457,6 +463,9 @@ class FormalDirectedDynamicWorldModelV2(nn.Module):
             static["flow_endpoint_index"].long(), node_to_agent
         )
         task_node_index = history["task_node_index"][:, -1].long()
+        task_agent_index = _map_node_endpoints_to_agents(
+            task_node_index, node_to_agent
+        )
 
         edge_weight = history["physical_edge_present"][:, -1].to(node.dtype) * edge_valid
         flow_weight = history["flow_present"][:, -1].to(node.dtype) * flow_valid
@@ -541,27 +550,24 @@ class FormalDirectedDynamicWorldModelV2(nn.Module):
                     node_weight,
                 )
                 flow_from_edge, edge_from_flow = self._cfe_messages(flow, edge, cfe_weight)
-                task_to_node = self._scatter_task_messages(
-                    task, task_node_index, task_weight, node.shape[1]
+                task_to_agent = self._scatter_task_messages(
+                    task, task_agent_index, task_weight, agent.shape[1]
                 )
-                task_to_agent = self._gather_attached_nodes(
-                    task_to_node, agent_node_index, agent_weight
+                agent_cip_message = self.agent_cip_gate(agent, agent_from_node)
+                task_from_agent = self._gather_task_nodes(
+                    agent + agent_cip_message,
+                    task_agent_index,
+                    task_weight,
                 )
-                node_message = (
-                    node_message
-                    + self.node_cip_gate(node, node_from_agent)
-                    + self.task_node_gate(node, task_to_node)
-                )
+                node_message = node_message + self.node_cip_gate(node, node_from_agent)
                 agent_message = (
                     agent_message
-                    + self.agent_cip_gate(agent, agent_from_node)
-                    + self.task_node_gate(agent, task_to_agent)
+                    + agent_cip_message
+                    + self.task_agent_gate(agent, task_to_agent)
                 )
                 edge_message = edge_message + self.edge_cfe_gate(edge, edge_from_flow)
                 flow_message = flow_message + self.flow_cfe_gate(flow, flow_from_edge)
-                task_message = task_message + self.task_node_gate(
-                    task, self._gather_task_nodes(node, task_node_index, task_weight)
-                )
+                task_message = task_message + self.task_agent_gate(task, task_from_agent)
 
             node = self._apply_transition(self.node_transition, node_message + action_to_node, node)
             edge = self._apply_transition(self.edge_transition, edge_message, edge)

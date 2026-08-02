@@ -9,6 +9,31 @@ from test_formal_dual_graph_world_model_v1 import fake_formal_batch
 
 
 class FormalDirectedDynamicWorldModelV2Tests(unittest.TestCase):
+    def test_cfe_and_dag_soft_weights_attenuate_single_relation_messages(self):
+        from pi_jwm.formal_dual_graph_world_model_v2 import FormalDirectedDynamicWorldModelV2
+
+        flow = torch.tensor([[[2.0]]])
+        edge = torch.tensor([[[8.0]]])
+        full_flow, full_edge = FormalDirectedDynamicWorldModelV2._cfe_messages(
+            flow, edge, torch.tensor([[[1.0]]])
+        )
+        soft_flow, soft_edge = FormalDirectedDynamicWorldModelV2._cfe_messages(
+            flow, edge, torch.tensor([[[0.25]]])
+        )
+        torch.testing.assert_close(soft_flow, full_flow * 0.25)
+        torch.testing.assert_close(soft_edge, full_edge * 0.25)
+
+        task = torch.tensor([[[4.0], [10.0]]])
+        dag_index = torch.tensor([[0], [1]])
+        full_task, full_relation = FormalDirectedDynamicWorldModelV2._dag_messages(
+            task, dag_index, torch.tensor([[1.0]])
+        )
+        soft_task, soft_relation = FormalDirectedDynamicWorldModelV2._dag_messages(
+            task, dag_index, torch.tensor([[0.25]])
+        )
+        torch.testing.assert_close(soft_task, full_task * 0.25)
+        torch.testing.assert_close(soft_relation, full_relation * 0.25)
+
     def test_information_agent_history_does_not_read_physical_node_state(self):
         from pi_jwm.formal_dual_graph_world_model_v2 import (
             FormalDirectedDynamicWorldModelConfig,
@@ -142,6 +167,44 @@ class FormalDirectedDynamicWorldModelV2Tests(unittest.TestCase):
         torch.testing.assert_close(uncoupled_base, uncoupled_changed)
         self.assertFalse(torch.allclose(coupled_base, coupled_changed))
 
+    def test_disabling_cip_and_cfe_blocks_all_physical_state_paths_to_agents(self):
+        from pi_jwm.formal_dual_graph_world_model_v2 import (
+            FormalDirectedDynamicWorldModelConfig,
+            FormalDirectedDynamicWorldModelV2,
+        )
+
+        torch.manual_seed(30)
+        model = FormalDirectedDynamicWorldModelV2(
+            FormalDirectedDynamicWorldModelConfig(
+                hidden_dim=8,
+                history_steps=3,
+                horizon_steps=2,
+                use_cross_coupling=True,
+            )
+        ).eval()
+        model.agent_cip_gate.forward = lambda current, message: torch.zeros_like(message)
+        model.flow_cfe_gate.forward = lambda current, message: torch.zeros_like(message)
+
+        baseline = fake_formal_batch()
+        changed_physical = copy.deepcopy(baseline)
+        changed_physical["history"]["node_state"].add_(100.0)
+
+        captured: list[torch.Tensor] = []
+        handle = model.agent_transition.register_forward_hook(
+            lambda module, inputs, output: captured.append(output.detach().clone())
+        )
+        try:
+            with torch.no_grad():
+                model(baseline)
+                baseline_agents = torch.stack(captured)
+                captured.clear()
+                model(changed_physical)
+                changed_agents = torch.stack(captured)
+        finally:
+            handle.remove()
+
+        torch.testing.assert_close(baseline_agents, changed_agents)
+
     def test_future_entity_weights_and_direct_cfe_are_recomputed(self):
         from pi_jwm.formal_directed_graph_ops_v2 import direct_bearer_candidates
         from pi_jwm.formal_dual_graph_world_model_v2 import (
@@ -194,6 +257,48 @@ class FormalDirectedDynamicWorldModelV2Tests(unittest.TestCase):
         )
         torch.testing.assert_close(output["rollout_cfe_weight"][:, 1], expected_cfe_step_two)
         self.assertEqual(0.0, float(output["rollout_cfe_weight"][0, 1, 0, 1]))
+
+    def test_future_presence_probabilities_change_the_rollout_main_path(self):
+        from pi_jwm.formal_dual_graph_world_model_v2 import (
+            FormalDirectedDynamicWorldModelConfig,
+            FormalDirectedDynamicWorldModelV2,
+        )
+
+        torch.manual_seed(35)
+        model = FormalDirectedDynamicWorldModelV2(
+            FormalDirectedDynamicWorldModelConfig(
+                hidden_dim=8,
+                history_steps=3,
+                horizon_steps=2,
+            )
+        ).eval()
+        batch = fake_formal_batch()
+
+        with torch.no_grad():
+            for head in model.presence_heads.values():
+                head.weight.zero_()
+                head.bias.fill_(8.0)
+            model.dag_edge_presence_head.weight.zero_()
+            model.dag_edge_presence_head.bias.fill_(8.0)
+            high_presence = model(batch)
+
+            for head in model.presence_heads.values():
+                head.bias.fill_(-8.0)
+            model.dag_edge_presence_head.bias.fill_(-8.0)
+            low_presence = model(batch)
+
+        self.assertFalse(
+            torch.allclose(
+                high_presence["flow_state_mean"][:, 1],
+                low_presence["flow_state_mean"][:, 1],
+            )
+        )
+        self.assertFalse(
+            torch.allclose(
+                high_presence["task_state_mean"][:, 1],
+                low_presence["task_state_mean"][:, 1],
+            )
+        )
 
     def test_complete_interface_declares_deterministic_v2_boundary(self):
         from pi_jwm.formal_dual_graph_world_model_v2 import (
