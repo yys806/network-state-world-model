@@ -99,6 +99,62 @@ class FormalWorldModelLossV1Tests(unittest.TestCase):
         self.assertEqual(0, int(components["flow_state_valid_count"]))
         self.assertTrue(torch.isfinite(loss))
 
+    def test_system_auxiliary_losses_use_activity_and_task_presence_masks(self):
+        from pi_jwm.formal_dual_graph_world_model_v1 import (
+            FormalDualGraphWorldModel,
+            FormalWorldModelConfig,
+        )
+        from pi_jwm.formal_world_model_loss_v1 import (
+            FormalLossWeights,
+            formal_world_model_loss,
+        )
+
+        batch = fake_formal_batch()
+        target = _complete_target(batch)
+        target["link_activity"].zero_()
+        target["link_activity"][:, :, 0] = True
+        model = FormalDualGraphWorldModel(
+            FormalWorldModelConfig(mode="pooled_gru", hidden_dim=8, history_steps=3, horizon_steps=2)
+        )
+        prediction = model(batch)
+        for name in ("node", "physical_edge", "flow", "task"):
+            prediction[f"{name}_state_mean"] = target[f"{name}_state"].clone()
+            prediction[f"{name}_state_log_variance"] = torch.zeros_like(
+                target[f"{name}_state"]
+            )
+        prediction["task_dag_state_mean"] = target["task_dag_state"].clone()
+        prediction["task_dag_state_log_variance"] = torch.zeros_like(
+            target["task_dag_state"]
+        )
+        prediction["physical_edge_state_mean"][:, :, 0, 2] += 2.0
+        prediction["physical_edge_state_mean"][:, :, 1, 2] += 50.0
+        prediction["task_state_mean"][:, :, 0, 3] += 3.0
+        prediction["task_state_mean"][:, :, 0, 7] += 4.0
+        prediction["task_state_mean"][:, :, 2, 3] += 500.0
+        prediction["task_state_mean"][:, :, 2, 7] += 500.0
+        weights = FormalLossWeights(
+            state_nll=0.0,
+            state_mae=0.0,
+            presence=0.0,
+            sparse_event=0.0,
+            lifecycle=0.0,
+            dag=0.0,
+            active_rate_mae=1.0,
+            task_delay_mae=1.0,
+            task_deadline_mae=1.0,
+        )
+
+        loss, components = formal_world_model_loss(
+            prediction, target, batch["static"], weights=weights
+        )
+
+        self.assertAlmostEqual(2.0, float(components["active_rate_mae"]), places=6)
+        self.assertAlmostEqual(2.0, float(components["task_delay_mae"]), places=6)
+        self.assertAlmostEqual(1.5, float(components["task_deadline_mae"]), places=6)
+        self.assertEqual(4, int(components["active_rate_valid_count"]))
+        self.assertEqual(8, int(components["task_timing_valid_count"]))
+        self.assertAlmostEqual(5.5, float(loss.detach()), places=6)
+
     def test_training_class_weights_reject_non_train_samples(self):
         from pi_jwm.formal_world_model_loss_v1 import compute_training_class_weights
 

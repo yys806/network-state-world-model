@@ -8,6 +8,7 @@ import csv
 import json
 import sys
 import time
+from dataclasses import asdict
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
@@ -32,6 +33,7 @@ from pi_jwm.formal_dual_graph_world_model_v1 import (
 )
 from pi_jwm.formal_world_model_baselines_v1 import build_rule_prediction, method_registry
 from pi_jwm.formal_world_model_loss_v1 import (
+    FormalLossWeights,
     compute_training_class_weights,
     formal_world_model_loss,
 )
@@ -50,7 +52,14 @@ from run_formal_dual_graph_cpu_smoke_v1 import (
 
 NONLOCKED_SPLITS = ("train", "validation", "calibration")
 RULE_METHODS = ("zero_activity", "last_persistence")
-LEARNED_METHODS = ("pooled_gru", "independent_dual_gnn", "coupled_dual_gnn")
+MODEL_SPECS = {
+    "pooled_gru": ("pooled_gru", False),
+    "independent_dual_gnn": ("independent_dual_gnn", False),
+    "coupled_dual_gnn": ("coupled_dual_gnn", False),
+    "independent_dual_gnn_residual": ("independent_dual_gnn", True),
+    "coupled_dual_gnn_residual": ("coupled_dual_gnn", True),
+}
+LEARNED_METHODS = tuple(MODEL_SPECS)
 
 
 def _training_manifest(output_dir: Path) -> dict[str, Any]:
@@ -178,6 +187,7 @@ def _mean_loss(
     model: FormalDualGraphWorldModel,
     loader: DataLoader,
     class_weights: Mapping[str, float],
+    loss_weights: FormalLossWeights,
     device: torch.device,
 ) -> float | None:
     model.eval()
@@ -190,6 +200,7 @@ def _mean_loss(
                 prediction,
                 batch["target"],
                 batch["static"],
+                weights=loss_weights,
                 class_weights=class_weights,
             )
             if not torch.isfinite(loss):
@@ -225,7 +236,7 @@ def run_formal_training(
     weight_decay: float = 1e-5,
     num_workers: int = 0,
 ) -> dict[str, Any]:
-    unknown_methods = set(learned_methods) - set(LEARNED_METHODS)
+    unknown_methods = set(learned_methods) - set(MODEL_SPECS)
     if unknown_methods:
         raise ValueError(f"unsupported learned methods: {sorted(unknown_methods)}")
     if not learned_methods:
@@ -281,6 +292,7 @@ def run_formal_training(
     }
     class_weight_report = compute_training_class_weights(subsets["train"])
     class_weights = class_weight_report["pos_weight"]
+    loss_weights = FormalLossWeights()
     dataset_hash_source = tensor_root / "manifest.json"
     if not dataset_hash_source.is_file():
         dataset_hash_source = tensor_root / "tensor_contract.json"
@@ -300,6 +312,7 @@ def run_formal_training(
         "evaluation_limit": evaluation_limit,
         "splits": list(NONLOCKED_SPLITS),
         "learned_methods": list(learned_methods),
+        "loss_weights": asdict(loss_weights),
         "locked_test_accessed": False,
         "tensor_root": str(tensor_root.resolve()),
         "dataset_manifest_sha256": _sha256(dataset_hash_source),
@@ -315,11 +328,13 @@ def run_formal_training(
     models: dict[str, FormalDualGraphWorldModel] = {}
     for method in learned_methods:
         _seed_everything(seed)
+        base_mode, residual_state_prediction = MODEL_SPECS[method]
         model_config = FormalWorldModelConfig(
-            mode=method,
+            mode=base_mode,
             hidden_dim=hidden_dim,
             history_steps=window_config.history_steps,
             horizon_steps=window_config.horizon_steps,
+            residual_state_prediction=residual_state_prediction,
         )
         model = FormalDualGraphWorldModel(model_config)
         initialization_hash = _model_hash(model)
@@ -345,6 +360,7 @@ def run_formal_training(
                     prediction,
                     batch["target"],
                     batch["static"],
+                    weights=loss_weights,
                     class_weights=class_weights,
                 )
                 if not torch.isfinite(loss):
@@ -355,7 +371,7 @@ def run_formal_training(
                 train_losses.append(float(loss.detach()))
             mean_train_loss = float(np.mean(train_losses)) if train_losses else None
             validation_loss = _mean_loss(
-                model, loaders["validation"], class_weights, requested_device
+                model, loaders["validation"], class_weights, loss_weights, requested_device
             )
             selection_loss = validation_loss if validation_loss is not None else mean_train_loss
             if selection_loss is None:
@@ -454,6 +470,20 @@ def run_formal_training(
                 "calibration_link_f1": _metric_value(calibration_report, "event.link_activity.f1"),
                 "validation_node_x_mae": _metric_value(validation_report, "state.node.x.mae"),
                 "calibration_node_x_mae": _metric_value(calibration_report, "state.node.x.mae"),
+                "validation_throughput_mae": _metric_value(validation_report, "system.communication_throughput.mae"),
+                "calibration_throughput_mae": _metric_value(calibration_report, "system.communication_throughput.mae"),
+                "validation_completion_rate_error": _metric_value(validation_report, "system.task_completion_rate.absolute_error"),
+                "calibration_completion_rate_error": _metric_value(calibration_report, "system.task_completion_rate.absolute_error"),
+                "validation_rb_occupancy_mae": _metric_value(validation_report, "resource.rb_occupancy.mae"),
+                "calibration_rb_occupancy_mae": _metric_value(calibration_report, "resource.rb_occupancy.mae"),
+                "validation_task_delay_mae": _metric_value(validation_report, "state.task.delay.mae"),
+                "calibration_task_delay_mae": _metric_value(calibration_report, "state.task.delay.mae"),
+                "validation_task_deadline_mae": _metric_value(validation_report, "state.task.deadline_remaining.mae"),
+                "calibration_task_deadline_mae": _metric_value(calibration_report, "state.task.deadline_remaining.mae"),
+                "validation_lifecycle_macro_f1": _metric_value(validation_report, "task.lifecycle.macro_f1"),
+                "calibration_lifecycle_macro_f1": _metric_value(calibration_report, "task.lifecycle.macro_f1"),
+                "validation_dag_unfinished_parent_mae": _metric_value(validation_report, "dag.unfinished_parent_count.mae"),
+                "calibration_dag_unfinished_parent_mae": _metric_value(calibration_report, "dag.unfinished_parent_count.mae"),
                 "best_epoch": runtime[method].get("best_epoch"),
                 "best_validation_loss": runtime[method].get("best_validation_loss"),
                 "parameter_count": runtime[method].get("parameter_count", 0),
@@ -506,6 +536,12 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--learning-rate", type=float, default=3e-4)
     parser.add_argument("--weight-decay", type=float, default=1e-5)
     parser.add_argument("--num-workers", type=int, default=0)
+    parser.add_argument(
+        "--learned-methods",
+        nargs="+",
+        choices=tuple(MODEL_SPECS),
+        default=list(LEARNED_METHODS),
+    )
     return parser.parse_args()
 
 
@@ -524,6 +560,7 @@ def main() -> None:
         learning_rate=args.learning_rate,
         weight_decay=args.weight_decay,
         num_workers=args.num_workers,
+        learned_methods=args.learned_methods,
     )
     print(json.dumps(summary, indent=2, ensure_ascii=False))
 

@@ -8,6 +8,7 @@ from typing import Any, Iterable, Mapping
 import torch
 from torch.nn import functional as F
 
+from .airfogsim_tensor_v2 import EDGE_FEATURES, TASK_FEATURES
 from .formal_dual_graph_world_model_v1 import COMPONENT_FEATURES
 
 
@@ -19,6 +20,9 @@ class FormalLossWeights:
     sparse_event: float = 0.1
     lifecycle: float = 0.1
     dag: float = 0.1
+    active_rate_mae: float = 0.05
+    task_delay_mae: float = 0.05
+    task_deadline_mae: float = 0.05
 
 
 def _component_valid_mask(name: str, static: Mapping[str, torch.Tensor]) -> torch.Tensor:
@@ -168,6 +172,39 @@ def formal_world_model_loss(
     )
     components["dag_edge_presence_bce"] = dag_edge_presence.detach()
 
+    rate_index = list(EDGE_FEATURES).index("rate_sum")
+    rate_mask = target["link_activity"].bool() & link_valid
+    active_rate = _masked_mean(
+        torch.abs(
+            prediction["physical_edge_state_mean"][..., rate_index]
+            - target["physical_edge_state"][..., rate_index]
+        ),
+        rate_mask,
+    )
+    components["active_rate_mae"] = active_rate.detach()
+    components["active_rate_valid_count"] = rate_mask.sum().detach()
+
+    timing_valid = target["task_present"].bool() & task_valid[:, None, :]
+    delay_index = list(TASK_FEATURES).index("delay")
+    deadline_index = list(TASK_FEATURES).index("deadline_remaining")
+    task_delay = _masked_mean(
+        torch.abs(
+            prediction["task_state_mean"][..., delay_index]
+            - target["task_state"][..., delay_index]
+        ),
+        timing_valid,
+    )
+    task_deadline = _masked_mean(
+        torch.abs(
+            prediction["task_state_mean"][..., deadline_index]
+            - target["task_state"][..., deadline_index]
+        ),
+        timing_valid,
+    )
+    components["task_delay_mae"] = task_delay.detach()
+    components["task_deadline_mae"] = task_deadline.detach()
+    components["task_timing_valid_count"] = timing_valid.sum().detach()
+
     state_nll = torch.stack(state_nll_terms).mean()
     state_mae = torch.stack(state_mae_terms).mean()
     presence = torch.stack(presence_terms).mean()
@@ -178,6 +215,9 @@ def formal_world_model_loss(
         + weights.sparse_event * link_activity
         + weights.lifecycle * lifecycle
         + weights.dag * (dag_nll + dag_mae + dag_release + dag_edge_presence)
+        + weights.active_rate_mae * active_rate
+        + weights.task_delay_mae * task_delay
+        + weights.task_deadline_mae * task_deadline
     )
     components["state_nll"] = state_nll.detach()
     components["state_mae"] = state_mae.detach()

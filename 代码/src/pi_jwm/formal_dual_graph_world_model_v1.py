@@ -37,6 +37,7 @@ class FormalWorldModelConfig:
     use_cross_coupling: bool = True
     physical_only: bool = False
     information_only: bool = False
+    residual_state_prediction: bool = False
     log_variance_min: float = -8.0
     log_variance_max: float = 5.0
 
@@ -260,6 +261,11 @@ class FormalDualGraphWorldModel(nn.Module):
             raise ValueError("future action length does not match model configuration")
 
         node, edge, agent, flow, task = self._initial_latents(history)
+        residual_bases = {
+            name: history[f"{name}_state"][:, -1]
+            for name in COMPONENT_FEATURES
+        }
+        dag_residual_base = history["task_dag_state"][:, -1]
         node_mask = static["node_kind_index"] >= 0
         edge_mask = history["physical_edge_present"][:, -1].bool()
         flow_mask = history["flow_present"][:, -1].bool()
@@ -389,6 +395,8 @@ class FormalDualGraphWorldModel(nn.Module):
                     self.config.log_variance_min,
                     self.config.log_variance_max,
                 )
+                if self.config.residual_state_prediction:
+                    mean = residual_bases[name] + mean
                 outputs.setdefault(f"{name}_state_mean", []).append(mean)
                 outputs.setdefault(f"{name}_state_log_variance", []).append(log_variance)
                 outputs.setdefault(f"{name}_presence_logits", []).append(
@@ -399,6 +407,8 @@ class FormalDualGraphWorldModel(nn.Module):
                 self.config.log_variance_min,
                 self.config.log_variance_max,
             )
+            if self.config.residual_state_prediction:
+                dag_mean = dag_residual_base + dag_mean
             outputs.setdefault("task_dag_state_mean", []).append(dag_mean)
             outputs.setdefault("task_dag_state_log_variance", []).append(dag_log_variance)
             outputs.setdefault("link_activity_logits", []).append(

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 import sys
@@ -103,6 +104,55 @@ class RunFormalDualGraphGpuTrainV1Tests(unittest.TestCase):
                 payload = (output_dir / relative).read_bytes()
                 self.assertEqual(hashlib.sha256(payload).hexdigest(), metadata["sha256"])
                 self.assertEqual(len(payload), metadata["bytes"])
+
+    def test_residual_method_maps_to_base_mode_and_writes_system_comparison_columns(self):
+        from run_formal_dual_graph_gpu_train_v1 import run_formal_training
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            tensor_root = root / "tensor"
+            output_dir = root / "output"
+            tensor_root.mkdir()
+            _write_formal_fixture(tensor_root)
+
+            result = run_formal_training(
+                tensor_root=tensor_root,
+                output_dir=output_dir,
+                device="cpu",
+                learned_methods=("independent_dual_gnn_residual",),
+                seed=41,
+                train_limit=1,
+                evaluation_limit=1,
+                hidden_dim=4,
+                epochs=1,
+                batch_size=1,
+                learning_rate=1e-3,
+            )
+
+            self.assertIn("independent_dual_gnn_residual", result["completed_methods"])
+            checkpoint = torch.load(
+                output_dir / "checkpoints" / "independent_dual_gnn_residual__best.pt",
+                map_location="cpu",
+                weights_only=True,
+            )
+            self.assertEqual("independent_dual_gnn", checkpoint["model_config"]["mode"])
+            self.assertTrue(checkpoint["model_config"]["residual_state_prediction"])
+            registry = json.loads((output_dir / "method_registry.json").read_text(encoding="utf-8"))
+            self.assertTrue(registry["independent_dual_gnn_residual"]["residual_state_prediction"])
+            with (output_dir / "comparison.csv").open(encoding="utf-8", newline="") as handle:
+                row = next(csv.DictReader(handle))
+            for name in (
+                "validation_throughput_mae",
+                "validation_completion_rate_error",
+                "validation_rb_occupancy_mae",
+                "validation_task_delay_mae",
+                "validation_task_deadline_mae",
+                "validation_lifecycle_macro_f1",
+                "validation_dag_unfinished_parent_mae",
+                "calibration_throughput_mae",
+                "calibration_task_delay_mae",
+            ):
+                self.assertIn(name, row)
 
 
 if __name__ == "__main__":

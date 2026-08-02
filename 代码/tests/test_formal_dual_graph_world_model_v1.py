@@ -104,6 +104,58 @@ class FormalDualGraphWorldModelV1Tests(unittest.TestCase):
                     self.assertGreaterEqual(float(log_variance.detach().min()), -8.0)
                     self.assertLessEqual(float(log_variance.detach().max()), 5.0)
 
+    def test_residual_state_prediction_anchors_zero_delta_to_last_observation(self):
+        from pi_jwm.formal_dual_graph_world_model_v1 import (
+            FormalDualGraphWorldModel,
+            FormalWorldModelConfig,
+        )
+
+        batch = fake_formal_batch()
+        residual = FormalDualGraphWorldModel(
+            FormalWorldModelConfig(
+                mode="coupled_dual_gnn",
+                hidden_dim=8,
+                history_steps=3,
+                horizon_steps=2,
+                residual_state_prediction=True,
+            )
+        )
+        absolute = FormalDualGraphWorldModel(
+            FormalWorldModelConfig(
+                mode="coupled_dual_gnn",
+                hidden_dim=8,
+                history_steps=3,
+                horizon_steps=2,
+            )
+        )
+        for model in (residual, absolute):
+            for head in model.state_heads.values():
+                torch.nn.init.zeros_(head.mean.weight)
+                torch.nn.init.zeros_(head.mean.bias)
+            torch.nn.init.zeros_(model.dag_state_head.mean.weight)
+            torch.nn.init.zeros_(model.dag_state_head.mean.bias)
+            model.eval()
+
+        with torch.no_grad():
+            residual_output = residual(batch)
+            absolute_output = absolute(batch)
+
+        for name in ("node", "physical_edge", "flow", "task"):
+            expected = batch["history"][f"{name}_state"][:, -1:].expand(
+                -1, 2, -1, -1
+            )
+            torch.testing.assert_close(residual_output[f"{name}_state_mean"], expected)
+            torch.testing.assert_close(
+                absolute_output[f"{name}_state_mean"],
+                torch.zeros_like(absolute_output[f"{name}_state_mean"]),
+            )
+        dag_expected = batch["history"]["task_dag_state"][:, -1:].expand(-1, 2, -1, -1)
+        torch.testing.assert_close(residual_output["task_dag_state_mean"], dag_expected)
+        torch.testing.assert_close(
+            absolute_output["task_dag_state_mean"],
+            torch.zeros_like(absolute_output["task_dag_state_mean"]),
+        )
+
     def test_future_action_changes_rollout_but_future_target_does_not(self):
         from pi_jwm.formal_dual_graph_world_model_v1 import (
             FormalDualGraphWorldModel,
