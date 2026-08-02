@@ -24,7 +24,10 @@ SYSTEM_TIME_KEYS = (
     "source_on_time_service_delta",
     "delivered_data_total",
 )
-SYSTEM_STATIC_KEYS = ("source_population_valid", "source_task_count")
+SYSTEM_STATIC_KEYS = (
+    "source_population_valid",
+    "source_evaluable_task_count",
+)
 TASK_SYSTEM_KEYS = (
     "task_completion_event",
     "task_on_time_completion_event",
@@ -125,8 +128,10 @@ class FormalSystemWindowDataset(Dataset):
         arrays["source_population_valid"] = _pad_entity_axis(
             arrays["source_population_valid"], max_nodes, "source_population_valid"
         )
-        arrays["source_task_count"] = _pad_entity_axis(
-            arrays["source_task_count"], max_nodes, "source_task_count"
+        arrays["source_evaluable_task_count"] = _pad_entity_axis(
+            arrays["source_evaluable_task_count"],
+            max_nodes,
+            "source_evaluable_task_count",
         )
         self._system_cache[seed] = arrays
         return arrays

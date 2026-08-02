@@ -107,7 +107,9 @@ def system_predictions_from_batch(
         "true_source_service": system_target["source_on_time_service_delta"][:, horizon_index],
         "predicted_source_service": predicted_source_service,
         "source_population_valid": batch["system_static"]["source_population_valid"].bool(),
-        "source_task_count": batch["system_static"]["source_task_count"],
+        "source_evaluable_task_count": batch["system_static"][
+            "source_evaluable_task_count"
+        ],
     }
 
 

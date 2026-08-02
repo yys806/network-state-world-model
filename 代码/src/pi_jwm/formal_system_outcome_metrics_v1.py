@@ -65,7 +65,7 @@ def compute_system_outcome_metrics(
     true_source_service: np.ndarray,
     predicted_source_service: np.ndarray,
     source_population_valid: np.ndarray,
-    source_task_count: np.ndarray,
+    source_evaluable_task_count: np.ndarray,
 ) -> dict[str, Any]:
     """Compute auditable event and system metrics from one trajectory stream."""
 
@@ -209,7 +209,7 @@ def compute_system_outcome_metrics(
     population = np.asarray(source_population_valid, dtype=bool)
     if true_service.ndim != 2 or population.shape != (true_service.shape[1],):
         raise ValueError("source population mask must match the service node dimension")
-    task_count = np.asarray(source_task_count, dtype=np.float64)
+    task_count = np.asarray(source_evaluable_task_count, dtype=np.float64)
     if task_count.shape != population.shape or np.any(task_count < 0):
         raise ValueError("source task counts must match the non-negative source population")
     if np.any(population & (task_count <= 0)):
@@ -228,7 +228,11 @@ def compute_system_outcome_metrics(
         denominator=1 if fairness_computable else None,
         count=int(population.sum()),
         unit="ratio",
-        sources=["source_on_time_service_delta", "source_task_count", "task_source_node_index"],
+        sources=[
+            "source_on_time_service_delta",
+            "source_evaluable_task_count",
+            "task_source_node_index",
+        ],
         reason="a nonempty fixed source population and task counts are required" if not fairness_computable else None,
     )
     return {

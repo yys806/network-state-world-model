@@ -68,12 +68,13 @@ def build_system_target_arrays(
         "source_service_delta": np.zeros((step_count, node_count), dtype=np.float32),
         "source_on_time_service_delta": np.zeros((step_count, node_count), dtype=np.float32),
         "source_population_valid": np.zeros(node_count, dtype=bool),
-        "source_task_count": np.zeros(node_count, dtype=np.int32),
+        "source_evaluable_task_count": np.zeros(node_count, dtype=np.int32),
         "delivered_data_total": np.zeros(step_count, dtype=np.float64),
     }
 
     completed_by_task: dict[str, Mapping[str, Any]] = {}
     task_source_by_id: dict[str, str] = {}
+    latest_task_by_id: dict[str, Mapping[str, Any]] = {}
     for row in task_snapshots:
         task_id = str(row.get("id"))
         if task_id not in task_index:
@@ -84,15 +85,33 @@ def build_system_target_arrays(
         previous_source = task_source_by_id.setdefault(task_id, source)
         if previous_source != source:
             raise ValueError(f"task {task_id} changes source node across snapshots")
-        arrays["source_population_valid"][node_index[source]] = True
+        previous_latest = latest_task_by_id.get(task_id)
+        if previous_latest is None or float(row.get("observed_time", -1.0)) >= float(
+            previous_latest.get("observed_time", -1.0)
+        ):
+            latest_task_by_id[task_id] = row
         if str(row.get("lifecycle_state")) != "finished" or row.get("completion_time") is None:
             continue
         previous = completed_by_task.get(task_id)
         if previous is None or float(row["completion_time"]) < float(previous["completion_time"]):
             completed_by_task[task_id] = row
 
-    for source in task_source_by_id.values():
-        arrays["source_task_count"][node_index[source]] += 1
+    horizon_end = float(time_values[-1])
+    for task_id, row in latest_task_by_id.items():
+        lifecycle = str(row.get("lifecycle_state"))
+        terminal_status = str(row.get("terminal_status"))
+        deadline_time = row.get("deadline_time")
+        evaluable = lifecycle in {"finished", "failed"} or terminal_status in {
+            "finished",
+            "failed",
+            "success",
+        }
+        if deadline_time is not None and np.isfinite(float(deadline_time)):
+            evaluable = evaluable or float(deadline_time) <= horizon_end + 1e-8
+        if evaluable:
+            source = task_source_by_id[task_id]
+            arrays["source_evaluable_task_count"][node_index[source]] += 1
+    arrays["source_population_valid"] = arrays["source_evaluable_task_count"] > 0
 
     for task_id, row in completed_by_task.items():
         ti = _require_time(row["completion_time"], time_index)

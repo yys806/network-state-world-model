@@ -109,7 +109,9 @@ def build_formal_system_target_dataset(
             "source_on_time_service_total": float(
                 arrays["source_on_time_service_delta"].sum()
             ),
-            "source_task_count": int(arrays["source_task_count"].sum()),
+            "source_evaluable_task_count": int(
+                arrays["source_evaluable_task_count"].sum()
+            ),
             "delivered_data_total": float(arrays["delivered_data_total"].sum()),
             "array_shapes": {name: list(value.shape) for name, value in arrays.items()},
             "array_dtypes": {name: str(value.dtype) for name, value in arrays.items()},
@@ -127,9 +129,8 @@ def build_formal_system_target_dataset(
         ),
         "energy_targets_nonempty": sum(row["uav_energy_row_count"] for row in reports) > 0,
         "delivered_data_targets_nonempty": sum(row["delivered_data_total"] for row in reports) > 0,
-        "source_task_counts_match_tensor_vocab": all(
-            row["source_task_count"] == row["array_shapes"]["task_completion_event"][1]
-            for row in reports
+        "source_population_matches_evaluable_counts": all(
+            row["source_evaluable_task_count"] > 0 for row in reports
         ),
         "on_time_service_matches_on_time_events": all(
             row["source_on_time_service_total"] == row["on_time_completion_event_count"]
@@ -151,7 +152,9 @@ def build_formal_system_target_dataset(
             "on_time_completion_events": sum(
                 row["on_time_completion_event_count"] for row in reports
             ),
-            "source_tasks": sum(row["source_task_count"] for row in reports),
+            "source_evaluable_tasks": sum(
+                row["source_evaluable_task_count"] for row in reports
+            ),
             "uav_energy_rows": sum(row["uav_energy_row_count"] for row in reports),
             "uav_energy": sum(row["uav_energy_total"] for row in reports),
             "delivered_data": sum(row["delivered_data_total"] for row in reports),

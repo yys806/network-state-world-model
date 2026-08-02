@@ -35,7 +35,7 @@ def _write_system_fixture(root: Path, *, mismatched_time: bool = False) -> None:
             "source_service_delta": np.eye(steps, nodes, dtype=np.float32),
             "source_on_time_service_delta": np.eye(steps, nodes, dtype=np.float32),
             "source_population_valid": np.asarray([True, True, False]),
-            "source_task_count": np.asarray([2, 1, 0], dtype=np.int32),
+            "source_evaluable_task_count": np.asarray([2, 1, 0], dtype=np.int32),
             "delivered_data_total": np.asarray([0.0, 1.0, 2.0, 3.0]),
         }
         np.savez_compressed(seed_dir / "system_targets.npz", **arrays)
@@ -79,7 +79,7 @@ class FormalSystemWindowV1Tests(unittest.TestCase):
                 [True, True, False],
             )
             np.testing.assert_array_equal(
-                sample["system_static"]["source_task_count"].numpy(), [2, 1, 0]
+                sample["system_static"]["source_evaluable_task_count"].numpy(), [2, 1, 0]
             )
             self.assertEqual(1, dataset.loaded_system_seed_count)
 
@@ -132,7 +132,9 @@ class FormalSystemWindowV1Tests(unittest.TestCase):
             ):
                 arrays[key] = arrays[key][:, :2]
             arrays["source_population_valid"] = arrays["source_population_valid"][:2]
-            arrays["source_task_count"] = arrays["source_task_count"][:2]
+            arrays["source_evaluable_task_count"] = arrays[
+                "source_evaluable_task_count"
+            ][:2]
             np.savez_compressed(path, **arrays)
 
             from pi_jwm.formal_airfogsim_window_v1 import FormalWindowConfig
@@ -149,7 +151,9 @@ class FormalSystemWindowV1Tests(unittest.TestCase):
             self.assertEqual((2, 3), tuple(sample["system_target"]["uav_energy_delta"].shape))
             self.assertFalse(sample["system_target"]["uav_energy_valid"][:, 2].any())
             self.assertFalse(sample["system_static"]["source_population_valid"][2])
-            self.assertEqual(0, int(sample["system_static"]["source_task_count"][2]))
+            self.assertEqual(
+                0, int(sample["system_static"]["source_evaluable_task_count"][2])
+            )
 
 
 if __name__ == "__main__":

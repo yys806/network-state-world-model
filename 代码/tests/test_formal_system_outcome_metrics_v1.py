@@ -36,7 +36,7 @@ class FormalSystemOutcomeMetricsV1Tests(unittest.TestCase):
             true_source_service=np.asarray([[0, 0], [1, 0], [0, 1]], dtype=float),
             predicted_source_service=np.asarray([[0, 1], [1, 0], [0, 0]], dtype=float),
             source_population_valid=np.asarray([1, 1], dtype=bool),
-            source_task_count=np.asarray([1, 1], dtype=float),
+            source_evaluable_task_count=np.asarray([1, 1], dtype=float),
         )
         metrics = report["metrics"]
 
@@ -80,7 +80,7 @@ class FormalSystemOutcomeMetricsV1Tests(unittest.TestCase):
             true_source_service=np.asarray([[1.0]]),
             predicted_source_service=np.asarray([[1.0]]),
             source_population_valid=np.asarray([True]),
-            source_task_count=np.asarray([1.0]),
+            source_evaluable_task_count=np.asarray([1.0]),
         )
 
         for name in (
@@ -109,7 +109,7 @@ class FormalSystemOutcomeMetricsV1Tests(unittest.TestCase):
             true_source_service=np.asarray([[1.0, 1.0]]),
             predicted_source_service=np.asarray([[1.0, 0.0]]),
             source_population_valid=np.asarray([True, True]),
-            source_task_count=np.asarray([1.0, 2.0]),
+            source_evaluable_task_count=np.asarray([1.0, 2.0]),
         )
 
         self.assertAlmostEqual(

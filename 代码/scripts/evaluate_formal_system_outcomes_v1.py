@@ -105,7 +105,10 @@ def _evaluate_method_split(
             for batch_index, seed_value in enumerate(seeds):
                 seed = int(seed_value)
                 for name, value in converted.items():
-                    if name in {"source_population_valid", "source_task_count"}:
+                    if name in {
+                        "source_population_valid",
+                        "source_evaluable_task_count",
+                    }:
                         current = value[batch_index].detach().cpu().numpy()
                         previous = grouped[seed].get(name)
                         if previous is not None and not np.array_equal(previous, current):
@@ -136,7 +139,7 @@ def _evaluate_method_split(
             true_source_service=np.stack(values["true_source_service"]),
             predicted_source_service=np.stack(values["predicted_source_service"]),
             source_population_valid=values["source_population_valid"],
-            source_task_count=values["source_task_count"],
+            source_evaluable_task_count=values["source_evaluable_task_count"],
         )
         report["seed"] = seed
         report["one_step_sample_count"] = len(values["true_delivered_data"])

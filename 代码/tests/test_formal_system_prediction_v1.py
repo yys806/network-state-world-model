@@ -39,7 +39,7 @@ class FormalSystemPredictionV1Tests(unittest.TestCase):
             },
             "system_static": {
                 "source_population_valid": torch.tensor([[False, True, True, False]]),
-                "source_task_count": torch.tensor([[0, 1, 2, 0]]),
+                "source_evaluable_task_count": torch.tensor([[0, 1, 2, 0]]),
             },
         }
         task_state = torch.zeros((1, 1, 3, len(TASK_FEATURES)))
@@ -111,7 +111,7 @@ class FormalSystemPredictionV1Tests(unittest.TestCase):
             },
             "system_static": {
                 "source_population_valid": torch.tensor([[True]]),
-                "source_task_count": torch.tensor([[1]]),
+                "source_evaluable_task_count": torch.tensor([[1]]),
             },
         }
         prediction = {
