@@ -23,6 +23,27 @@ SYSTEM_TIME_KEYS = (
     "delivered_data_total",
 )
 SYSTEM_STATIC_KEYS = ("source_population_valid",)
+TASK_SYSTEM_KEYS = (
+    "task_completion_event",
+    "completed_task_delay",
+    "completed_task_delay_valid",
+)
+NODE_SYSTEM_KEYS = (
+    "uav_energy_delta",
+    "uav_energy_valid",
+    "source_service_delta",
+)
+
+
+def _pad_entity_axis(value: np.ndarray, target_count: int, name: str) -> np.ndarray:
+    current_count = int(value.shape[-1])
+    if current_count > target_count:
+        raise ValueError(f"system array {name} exceeds the formal tensor contract")
+    if current_count == target_count:
+        return value
+    padding = [(0, 0)] * value.ndim
+    padding[-1] = (0, target_count - current_count)
+    return np.pad(value, padding, mode="constant", constant_values=0)
 
 
 class FormalSystemWindowDataset(Dataset):
@@ -91,6 +112,15 @@ class FormalSystemWindowDataset(Dataset):
         for key in SYSTEM_TIME_KEYS:
             if arrays[key].shape[0] != len(system_time):
                 raise ValueError(f"system array {key} does not match the time grid")
+        max_tasks = int(self.contract["max_tasks"])
+        max_nodes = int(self.contract["max_nodes"])
+        for key in TASK_SYSTEM_KEYS:
+            arrays[key] = _pad_entity_axis(arrays[key], max_tasks, key)
+        for key in NODE_SYSTEM_KEYS:
+            arrays[key] = _pad_entity_axis(arrays[key], max_nodes, key)
+        arrays["source_population_valid"] = _pad_entity_axis(
+            arrays["source_population_valid"], max_nodes, "source_population_valid"
+        )
         self._system_cache[seed] = arrays
         return arrays
 
@@ -116,4 +146,6 @@ __all__ = [
     "FormalSystemWindowDataset",
     "SYSTEM_STATIC_KEYS",
     "SYSTEM_TIME_KEYS",
+    "NODE_SYSTEM_KEYS",
+    "TASK_SYSTEM_KEYS",
 ]

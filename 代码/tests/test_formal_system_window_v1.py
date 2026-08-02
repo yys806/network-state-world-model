@@ -99,6 +99,48 @@ class FormalSystemWindowV1Tests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "time grid"):
                 _ = dataset[0]
 
+    def test_pads_seed_local_task_and_node_axes_to_formal_contract(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            tensor_root = root / "tensor"
+            system_root = root / "system"
+            tensor_root.mkdir()
+            system_root.mkdir()
+            _write_formal_fixture(tensor_root)
+            _write_system_fixture(system_root)
+            path = system_root / "seed_000" / "system_targets.npz"
+            with np.load(path, allow_pickle=False) as loaded:
+                arrays = {key: loaded[key] for key in loaded.files}
+            for key in (
+                "task_completion_event",
+                "completed_task_delay",
+                "completed_task_delay_valid",
+            ):
+                arrays[key] = arrays[key][:, :2]
+            for key in (
+                "uav_energy_delta",
+                "uav_energy_valid",
+                "source_service_delta",
+            ):
+                arrays[key] = arrays[key][:, :2]
+            arrays["source_population_valid"] = arrays["source_population_valid"][:2]
+            np.savez_compressed(path, **arrays)
+
+            from pi_jwm.formal_airfogsim_window_v1 import FormalWindowConfig
+            from pi_jwm.formal_system_window_v1 import FormalSystemWindowDataset
+
+            sample = FormalSystemWindowDataset(
+                tensor_root,
+                system_root=system_root,
+                split="train",
+                config=FormalWindowConfig(history_steps=2, horizon_steps=2),
+            )[0]
+
+            self.assertEqual((2, 3), tuple(sample["system_target"]["task_completion_event"].shape))
+            self.assertEqual((2, 3), tuple(sample["system_target"]["uav_energy_delta"].shape))
+            self.assertFalse(sample["system_target"]["uav_energy_valid"][:, 2].any())
+            self.assertFalse(sample["system_static"]["source_population_valid"][2])
+
 
 if __name__ == "__main__":
     unittest.main()
