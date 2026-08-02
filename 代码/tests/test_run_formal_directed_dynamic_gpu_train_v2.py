@@ -61,6 +61,16 @@ class RunFormalDirectedDynamicGpuTrainV2Tests(unittest.TestCase):
 
             self.assertTrue(result["training_run_complete"])
             self.assertFalse(result["locked_test_accessed"])
+            self.assertEqual(
+                {
+                    "coupled_directed_dynamic_residual_v2": "directed_dynamic_v2"
+                },
+                result["model_versions"],
+            )
+            self.assertEqual(
+                {"coupled_directed_dynamic_residual_v2": "deterministic"},
+                result["latent_dynamics"],
+            )
             checkpoint = torch.load(
                 output_dir
                 / "checkpoints"

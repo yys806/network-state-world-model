@@ -355,6 +355,11 @@ def run_formal_training(
     class_weight_report = compute_training_class_weights(subsets["train"])
     class_weights = class_weight_report["pos_weight"]
     loss_weights = FormalLossWeights()
+    model_versions = {
+        method: str(MODEL_SPECS[method]["model_version"])
+        for method in learned_methods
+    }
+    latent_dynamics = {method: "deterministic" for method in learned_methods}
     dataset_hash_source = tensor_root / "manifest.json"
     if not dataset_hash_source.is_file():
         dataset_hash_source = tensor_root / "tensor_contract.json"
@@ -374,6 +379,8 @@ def run_formal_training(
         "evaluation_limit": evaluation_limit,
         "splits": list(NONLOCKED_SPLITS),
         "learned_methods": list(learned_methods),
+        "model_versions": model_versions,
+        "latent_dynamics": latent_dynamics,
         "loss_weights": asdict(loss_weights),
         "use_system_energy_head": bool(use_system_energy_head),
         "system_root": str(resolved_system_root.resolve()) if resolved_system_root else None,
@@ -570,6 +577,8 @@ def run_formal_training(
         "formal_performance_claim_ready": False,
         "locked_test_accessed": False,
         "completed_methods": completed_methods,
+        "model_versions": model_versions,
+        "latent_dynamics": latent_dynamics,
         "sample_counts": {split: len(values) for split, values in sample_ids.items()},
         "result_boundary": "Nonlocked training evidence only; locked-test remains sealed.",
     }
