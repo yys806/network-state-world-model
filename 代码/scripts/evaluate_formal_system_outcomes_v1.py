@@ -22,6 +22,10 @@ if str(SRC_ROOT) not in sys.path:
 
 from pi_jwm.formal_airfogsim_window_v1 import FormalWindowConfig
 from pi_jwm.formal_dual_graph_world_model_v1 import FormalDualGraphWorldModel, FormalWorldModelConfig
+from pi_jwm.formal_dual_graph_world_model_v2 import (
+    FormalDirectedDynamicWorldModelConfig,
+    FormalDirectedDynamicWorldModelV2,
+)
 from pi_jwm.formal_system_outcome_metrics_v1 import compute_system_outcome_metrics
 from pi_jwm.formal_system_prediction_v1 import system_predictions_from_batch
 from pi_jwm.formal_system_window_v1 import FormalSystemWindowDataset
@@ -68,12 +72,20 @@ def _macro_metrics(seed_reports: list[dict[str, Any]]) -> dict[str, dict[str, An
     return result
 
 
-def _load_model(training_root: Path, method: str, device: torch.device) -> FormalDualGraphWorldModel:
+def _load_model(training_root: Path, method: str, device: torch.device) -> torch.nn.Module:
     checkpoint_path = training_root / "checkpoints" / f"{method}__best.pt"
     if not checkpoint_path.is_file():
         raise FileNotFoundError(checkpoint_path)
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
-    model = FormalDualGraphWorldModel(FormalWorldModelConfig(**checkpoint["model_config"]))
+    model_version = str(checkpoint.get("model_version", "formal_v1"))
+    if model_version == "directed_dynamic_v2":
+        model = FormalDirectedDynamicWorldModelV2(
+            FormalDirectedDynamicWorldModelConfig(**checkpoint["model_config"])
+        )
+    elif model_version == "formal_v1":
+        model = FormalDualGraphWorldModel(FormalWorldModelConfig(**checkpoint["model_config"]))
+    else:
+        raise ValueError(f"unsupported checkpoint model_version: {model_version}")
     model.load_state_dict(checkpoint["model_state_dict"], strict=True)
     model.to(device)
     model.eval()
@@ -83,7 +95,7 @@ def _load_model(training_root: Path, method: str, device: torch.device) -> Forma
 def _evaluate_method_split(
     *,
     method: str,
-    model: FormalDualGraphWorldModel | None,
+    model: torch.nn.Module | None,
     loader: DataLoader,
     stats: Mapping[str, Any],
     device: torch.device,

@@ -75,6 +75,59 @@ class EvaluateFormalSystemOutcomesV1Tests(unittest.TestCase):
             self.assertTrue((output_root / "comparison.csv").is_file())
             self.assertTrue((output_root / "manifest.json").is_file())
 
+    def test_evaluator_loads_directed_dynamic_v2_checkpoint(self):
+        from evaluate_formal_system_outcomes_v1 import evaluate_training_run
+        from run_formal_directed_dynamic_gpu_train_v2 import (
+            run_directed_dynamic_training,
+        )
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            tensor_root = root / "tensor"
+            system_root = root / "system"
+            training_root = root / "training"
+            output_root = root / "evaluation"
+            tensor_root.mkdir()
+            system_root.mkdir()
+            _write_formal_fixture(tensor_root)
+            _write_system_fixture(system_root)
+            run_directed_dynamic_training(
+                tensor_root=tensor_root,
+                system_root=system_root,
+                use_system_energy_head=True,
+                output_dir=training_root,
+                device="cpu",
+                learned_methods=("coupled_directed_dynamic_residual_v2",),
+                seed=59,
+                train_limit=1,
+                evaluation_limit=1,
+                hidden_dim=4,
+                epochs=1,
+                batch_size=1,
+                learning_rate=1e-3,
+            )
+
+            summary = evaluate_training_run(
+                tensor_root=tensor_root,
+                system_root=system_root,
+                training_root=training_root,
+                output_dir=output_root,
+                device="cpu",
+                batch_size=1,
+                step_seconds=0.1,
+            )
+
+            self.assertTrue(summary["system_evaluation_complete"])
+            report = json.loads(
+                (
+                    output_root
+                    / "coupled_directed_dynamic_residual_v2__validation.json"
+                ).read_text(encoding="utf-8")
+            )
+            self.assertEqual(
+                "computed", report["macro_metrics"]["system.uav_energy.mae"]["status"]
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
