@@ -36,6 +36,7 @@ class FormalSystemOutcomeMetricsV1Tests(unittest.TestCase):
             true_source_service=np.asarray([[0, 0], [1, 0], [0, 1]], dtype=float),
             predicted_source_service=np.asarray([[0, 1], [1, 0], [0, 0]], dtype=float),
             source_population_valid=np.asarray([1, 1], dtype=bool),
+            source_task_count=np.asarray([1, 1], dtype=float),
         )
         metrics = report["metrics"]
 
@@ -79,6 +80,7 @@ class FormalSystemOutcomeMetricsV1Tests(unittest.TestCase):
             true_source_service=np.asarray([[1.0]]),
             predicted_source_service=np.asarray([[1.0]]),
             source_population_valid=np.asarray([True]),
+            source_task_count=np.asarray([1.0]),
         )
 
         for name in (
@@ -88,6 +90,32 @@ class FormalSystemOutcomeMetricsV1Tests(unittest.TestCase):
         ):
             self.assertEqual("not_computable", report["metrics"][name]["status"])
             self.assertIn("energy", report["metrics"][name]["reason"])
+
+    def test_fairness_uses_per_source_completion_rates_not_raw_completion_counts(self):
+        from pi_jwm.formal_system_outcome_metrics_v1 import compute_system_outcome_metrics
+
+        report = compute_system_outcome_metrics(
+            true_completion_event=np.asarray([[True]]),
+            predicted_completion_event=np.asarray([[True]]),
+            true_completed_delay=np.asarray([[1.0]]),
+            predicted_task_delay=np.asarray([[1.0]]),
+            completed_delay_valid=np.asarray([[True]]),
+            true_delivered_data=np.asarray([1.0]),
+            predicted_delivered_data=np.asarray([1.0]),
+            step_seconds=0.1,
+            true_uav_energy=np.asarray([[1.0]]),
+            predicted_uav_energy=np.asarray([[1.0]]),
+            uav_energy_valid=np.asarray([[True]]),
+            true_source_service=np.asarray([[1.0, 1.0]]),
+            predicted_source_service=np.asarray([[1.0, 0.0]]),
+            source_population_valid=np.asarray([True, True]),
+            source_task_count=np.asarray([1.0, 2.0]),
+        )
+
+        self.assertAlmostEqual(
+            0.4,
+            report["metrics"]["system.completion_fairness_jain.absolute_error"]["value"],
+        )
 
 
 if __name__ == "__main__":

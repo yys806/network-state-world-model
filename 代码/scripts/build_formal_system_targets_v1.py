@@ -99,10 +99,17 @@ def build_formal_system_target_dataset(
             "trajectory_id": trajectory_id,
             "time_count": len(time_values),
             "completion_event_count": int(arrays["task_completion_event"].sum()),
+            "on_time_completion_event_count": int(
+                arrays["task_on_time_completion_event"].sum()
+            ),
             "completed_delay_count": int(arrays["completed_task_delay_valid"].sum()),
             "uav_energy_row_count": int(arrays["uav_energy_valid"].sum()),
             "uav_energy_total": float(arrays["uav_energy_delta"].sum()),
             "source_service_total": float(arrays["source_service_delta"].sum()),
+            "source_on_time_service_total": float(
+                arrays["source_on_time_service_delta"].sum()
+            ),
+            "source_task_count": int(arrays["source_task_count"].sum()),
             "delivered_data_total": float(arrays["delivered_data_total"].sum()),
             "array_shapes": {name: list(value.shape) for name, value in arrays.items()},
             "array_dtypes": {name: str(value.dtype) for name, value in arrays.items()},
@@ -120,6 +127,14 @@ def build_formal_system_target_dataset(
         ),
         "energy_targets_nonempty": sum(row["uav_energy_row_count"] for row in reports) > 0,
         "delivered_data_targets_nonempty": sum(row["delivered_data_total"] for row in reports) > 0,
+        "source_task_counts_match_tensor_vocab": all(
+            row["source_task_count"] == row["array_shapes"]["task_completion_event"][1]
+            for row in reports
+        ),
+        "on_time_service_matches_on_time_events": all(
+            row["source_on_time_service_total"] == row["on_time_completion_event_count"]
+            for row in reports
+        ),
     }
     summary = {
         "schema_version": "PI-JWM-formal-system-target-dataset-v1",
@@ -133,6 +148,10 @@ def build_formal_system_target_dataset(
         "locked_test_accessed": False,
         "totals": {
             "completion_events": sum(row["completion_event_count"] for row in reports),
+            "on_time_completion_events": sum(
+                row["on_time_completion_event_count"] for row in reports
+            ),
+            "source_tasks": sum(row["source_task_count"] for row in reports),
             "uav_energy_rows": sum(row["uav_energy_row_count"] for row in reports),
             "uav_energy": sum(row["uav_energy_total"] for row in reports),
             "delivered_data": sum(row["delivered_data_total"] for row in reports),

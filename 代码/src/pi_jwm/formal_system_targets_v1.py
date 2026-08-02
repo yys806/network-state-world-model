@@ -60,29 +60,39 @@ def build_system_target_arrays(
     arrays = {
         "time": time_values.astype(np.float32),
         "task_completion_event": np.zeros((step_count, task_count), dtype=bool),
+        "task_on_time_completion_event": np.zeros((step_count, task_count), dtype=bool),
         "completed_task_delay": np.zeros((step_count, task_count), dtype=np.float32),
         "completed_task_delay_valid": np.zeros((step_count, task_count), dtype=bool),
         "uav_energy_delta": np.zeros((step_count, node_count), dtype=np.float32),
         "uav_energy_valid": np.zeros((step_count, node_count), dtype=bool),
         "source_service_delta": np.zeros((step_count, node_count), dtype=np.float32),
+        "source_on_time_service_delta": np.zeros((step_count, node_count), dtype=np.float32),
         "source_population_valid": np.zeros(node_count, dtype=bool),
+        "source_task_count": np.zeros(node_count, dtype=np.int32),
         "delivered_data_total": np.zeros(step_count, dtype=np.float64),
     }
 
     completed_by_task: dict[str, Mapping[str, Any]] = {}
+    task_source_by_id: dict[str, str] = {}
     for row in task_snapshots:
+        task_id = str(row.get("id"))
+        if task_id not in task_index:
+            raise ValueError(f"unknown task ID in task snapshot: {task_id}")
         source = str(row.get("source"))
         if source not in node_index:
             raise ValueError(f"unknown source node in task snapshot: {source}")
+        previous_source = task_source_by_id.setdefault(task_id, source)
+        if previous_source != source:
+            raise ValueError(f"task {task_id} changes source node across snapshots")
         arrays["source_population_valid"][node_index[source]] = True
         if str(row.get("lifecycle_state")) != "finished" or row.get("completion_time") is None:
             continue
-        task_id = str(row.get("id"))
-        if task_id not in task_index:
-            raise ValueError(f"unknown task ID in completion snapshot: {task_id}")
         previous = completed_by_task.get(task_id)
         if previous is None or float(row["completion_time"]) < float(previous["completion_time"]):
             completed_by_task[task_id] = row
+
+    for source in task_source_by_id.values():
+        arrays["source_task_count"][node_index[source]] += 1
 
     for task_id, row in completed_by_task.items():
         ti = _require_time(row["completion_time"], time_index)
@@ -97,6 +107,14 @@ def build_system_target_arrays(
         arrays["completed_task_delay"][ti, qi] = float(delay)
         arrays["completed_task_delay_valid"][ti, qi] = True
         arrays["source_service_delta"][ti, node_index[source]] += 1.0
+        deadline_time = row.get("deadline_time")
+        if deadline_time is None and row.get("arrival_time") is not None and row.get("deadline") is not None:
+            deadline_time = float(row["arrival_time"]) + float(row["deadline"])
+        if deadline_time is None or not np.isfinite(float(deadline_time)):
+            raise ValueError(f"completed task {task_id} lacks a valid deadline_time")
+        if float(row["completion_time"]) <= float(deadline_time) + 1e-8:
+            arrays["task_on_time_completion_event"][ti, qi] = True
+            arrays["source_on_time_service_delta"][ti, node_index[source]] += 1.0
 
     for row in energy_rows:
         node_id = str(row.get("uav_id"))

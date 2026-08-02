@@ -53,6 +53,14 @@ def system_predictions_from_batch(
         "task_state",
         delay_index,
     ).clamp_min(0.0)
+    deadline_index = TASK_FEATURES.index("deadline_remaining")
+    predicted_deadline_remaining = _feature_to_real(
+        prediction["task_state_mean"][:, horizon_index, :, deadline_index],
+        stats,
+        "task_state",
+        deadline_index,
+    )
+    predicted_on_time_completion = predicted_completion & (predicted_deadline_remaining >= 0)
 
     delivered_index = FLOW_FEATURES.index("delivered_this_slot")
     delivered_per_flow = _feature_to_real(
@@ -67,7 +75,11 @@ def system_predictions_from_batch(
 
     node_count = int(system_target["source_service_delta"].shape[-1])
     source_index = batch["history"]["task_node_index"][:, -1, :, 0].long()
-    source_valid = (source_index >= 0) & (source_index < node_count) & predicted_completion
+    source_valid = (
+        (source_index >= 0)
+        & (source_index < node_count)
+        & predicted_on_time_completion
+    )
     predicted_source_service = predicted_delay.new_zeros(
         (predicted_delay.shape[0], node_count)
     )
@@ -92,9 +104,10 @@ def system_predictions_from_batch(
         "true_uav_energy": system_target["uav_energy_delta"][:, horizon_index],
         "predicted_uav_energy": predicted_energy,
         "uav_energy_valid": system_target["uav_energy_valid"][:, horizon_index].bool(),
-        "true_source_service": system_target["source_service_delta"][:, horizon_index],
+        "true_source_service": system_target["source_on_time_service_delta"][:, horizon_index],
         "predicted_source_service": predicted_source_service,
         "source_population_valid": batch["system_static"]["source_population_valid"].bool(),
+        "source_task_count": batch["system_static"]["source_task_count"],
     }
 
 

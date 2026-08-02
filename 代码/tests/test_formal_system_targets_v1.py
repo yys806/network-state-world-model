@@ -59,6 +59,7 @@ class FormalSystemTargetsV1Tests(unittest.TestCase):
                     "completion_time": 0.2,
                     "lifecycle_state": "finished",
                     "task_delay": 0.15,
+                    "deadline_time": 0.25,
                     "source": "vehicle_0",
                 },
                 {
@@ -67,6 +68,7 @@ class FormalSystemTargetsV1Tests(unittest.TestCase):
                     "completion_time": 0.2,
                     "lifecycle_state": "finished",
                     "task_delay": 0.15,
+                    "deadline_time": 0.25,
                     "source": "vehicle_0",
                 },
                 {
@@ -75,6 +77,7 @@ class FormalSystemTargetsV1Tests(unittest.TestCase):
                     "completion_time": None,
                     "lifecycle_state": "computing",
                     "task_delay": None,
+                    "deadline_time": 0.25,
                     "source": "UAV_0",
                 },
             ],
@@ -97,7 +100,10 @@ class FormalSystemTargetsV1Tests(unittest.TestCase):
         np.testing.assert_allclose(arrays["uav_energy_delta"][:, 0], [1.5, 0.5, 0.0])
         np.testing.assert_array_equal(arrays["uav_energy_valid"][:, 0], [True, True, False])
         self.assertEqual(1.0, float(arrays["source_service_delta"][1, 1]))
+        self.assertEqual(1.0, float(arrays["source_on_time_service_delta"][1, 1]))
+        self.assertTrue(arrays["task_on_time_completion_event"][1, 0])
         np.testing.assert_array_equal(arrays["source_population_valid"], [True, True])
+        np.testing.assert_array_equal(arrays["source_task_count"], [1, 1])
         np.testing.assert_allclose(arrays["delivered_data_total"], [5.0, 0.0, 1.5])
 
     def test_rejects_unknown_ids_negative_energy_and_off_grid_events(self):
@@ -179,6 +185,7 @@ class FormalSystemTargetsV1Tests(unittest.TestCase):
                                 "completion_time": 0.2,
                                 "lifecycle_state": "finished",
                                 "task_delay": 0.1,
+                                "deadline_time": 0.3,
                                 "source": "vehicle_0",
                             }
                         ],
@@ -218,6 +225,7 @@ class FormalSystemTargetsV1Tests(unittest.TestCase):
                 np.testing.assert_array_equal(
                     arrays["source_population_valid"], [False, True]
                 )
+                np.testing.assert_array_equal(arrays["source_task_count"], [0, 1])
             manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
             self.assertIn("seed_000/system_targets.npz", manifest["files"])
             self.assertNotIn("seed_600/system_targets.npz", manifest["files"])

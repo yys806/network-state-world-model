@@ -28,15 +28,18 @@ class FormalSystemPredictionV1Tests(unittest.TestCase):
             },
             "system_target": {
                 "task_completion_event": torch.tensor([[[True, False, False]]]),
+                "task_on_time_completion_event": torch.tensor([[[True, False, False]]]),
                 "completed_task_delay": torch.tensor([[[4.0, 0.0, 0.0]]]),
                 "completed_task_delay_valid": torch.tensor([[[True, False, False]]]),
                 "delivered_data_total": torch.tensor([[3.0]]),
                 "uav_energy_delta": torch.tensor([[[1.0, 0.0, 0.0, 0.0]]]),
                 "uav_energy_valid": torch.tensor([[[True, False, False, False]]]),
                 "source_service_delta": torch.tensor([[[0.0, 0.0, 1.0, 0.0]]]),
+                "source_on_time_service_delta": torch.tensor([[[0.0, 0.0, 1.0, 0.0]]]),
             },
             "system_static": {
-                "source_population_valid": torch.tensor([[False, True, True, False]])
+                "source_population_valid": torch.tensor([[False, True, True, False]]),
+                "source_task_count": torch.tensor([[0, 1, 2, 0]]),
             },
         }
         task_state = torch.zeros((1, 1, 3, len(TASK_FEATURES)))
@@ -97,14 +100,19 @@ class FormalSystemPredictionV1Tests(unittest.TestCase):
             },
             "system_target": {
                 "task_completion_event": torch.tensor([[[False]]]),
+                "task_on_time_completion_event": torch.tensor([[[False]]]),
                 "completed_task_delay": torch.tensor([[[0.0]]]),
                 "completed_task_delay_valid": torch.tensor([[[False]]]),
                 "delivered_data_total": torch.tensor([[0.0]]),
                 "uav_energy_delta": torch.tensor([[[0.0]]]),
                 "uav_energy_valid": torch.tensor([[[False]]]),
                 "source_service_delta": torch.tensor([[[0.0]]]),
+                "source_on_time_service_delta": torch.tensor([[[0.0]]]),
             },
-            "system_static": {"source_population_valid": torch.tensor([[True]])},
+            "system_static": {
+                "source_population_valid": torch.tensor([[True]]),
+                "source_task_count": torch.tensor([[1]]),
+            },
         }
         prediction = {
             "task_state_mean": torch.zeros((1, 1, 1, len(TASK_FEATURES))),

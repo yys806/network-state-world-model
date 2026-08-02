@@ -36,9 +36,11 @@ def _record(
 
 def _jain(values: np.ndarray) -> float | None:
     values = np.asarray(values, dtype=np.float64)
-    denominator = len(values) * float(np.square(values).sum())
-    if len(values) == 0 or denominator <= 0:
+    if len(values) == 0:
         return None
+    denominator = len(values) * float(np.square(values).sum())
+    if denominator <= 0:
+        return 0.0
     return float(values.sum() ** 2 / denominator)
 
 
@@ -63,6 +65,7 @@ def compute_system_outcome_metrics(
     true_source_service: np.ndarray,
     predicted_source_service: np.ndarray,
     source_population_valid: np.ndarray,
+    source_task_count: np.ndarray,
 ) -> dict[str, Any]:
     """Compute auditable event and system metrics from one trajectory stream."""
 
@@ -206,8 +209,15 @@ def compute_system_outcome_metrics(
     population = np.asarray(source_population_valid, dtype=bool)
     if true_service.ndim != 2 or population.shape != (true_service.shape[1],):
         raise ValueError("source population mask must match the service node dimension")
-    true_fairness = _jain(true_service.sum(axis=0)[population])
-    predicted_fairness = _jain(predicted_service.sum(axis=0)[population])
+    task_count = np.asarray(source_task_count, dtype=np.float64)
+    if task_count.shape != population.shape or np.any(task_count < 0):
+        raise ValueError("source task counts must match the non-negative source population")
+    if np.any(population & (task_count <= 0)):
+        raise ValueError("every valid task source must have a positive task count")
+    true_rate = true_service.sum(axis=0)[population] / task_count[population]
+    predicted_rate = predicted_service.sum(axis=0)[population] / task_count[population]
+    true_fairness = _jain(true_rate)
+    predicted_fairness = _jain(predicted_rate)
     fairness_computable = true_fairness is not None and predicted_fairness is not None
     fairness_error = (
         abs(float(predicted_fairness) - float(true_fairness)) if fairness_computable else None
@@ -218,8 +228,8 @@ def compute_system_outcome_metrics(
         denominator=1 if fairness_computable else None,
         count=int(population.sum()),
         unit="ratio",
-        sources=["source_service_delta", "task_source_node_index"],
-        reason="nonzero true and predicted service are required on a fixed source population" if not fairness_computable else None,
+        sources=["source_on_time_service_delta", "source_task_count", "task_source_node_index"],
+        reason="a nonempty fixed source population and task counts are required" if not fairness_computable else None,
     )
     return {
         "schema_version": SCHEMA_VERSION,
