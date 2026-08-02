@@ -31,6 +31,7 @@ from pi_jwm.formal_dual_graph_world_model_v1 import (
     FormalDualGraphWorldModel,
     FormalWorldModelConfig,
 )
+from pi_jwm.formal_system_window_v1 import FormalSystemWindowDataset
 from pi_jwm.formal_world_model_baselines_v1 import build_rule_prediction, method_registry
 from pi_jwm.formal_world_model_loss_v1 import (
     FormalLossWeights,
@@ -202,6 +203,7 @@ def _mean_loss(
                 batch["static"],
                 weights=loss_weights,
                 class_weights=class_weights,
+                system_target=batch.get("system_target"),
             )
             if not torch.isfinite(loss):
                 raise RuntimeError("non-finite validation loss")
@@ -210,7 +212,7 @@ def _mean_loss(
 
 
 def _select_ids(
-    dataset: FormalAirFogSimWindowDataset,
+    dataset: Any,
     limit: int | None,
     seed: int,
 ) -> list[str]:
@@ -223,6 +225,8 @@ def _select_ids(
 def run_formal_training(
     *,
     tensor_root: str | Path,
+    system_root: str | Path | None = None,
+    use_system_energy_head: bool = False,
     output_dir: str | Path,
     device: str,
     learned_methods: Sequence[str] = LEARNED_METHODS,
@@ -248,6 +252,9 @@ def run_formal_training(
         raise RuntimeError("CUDA was requested but is not available")
 
     tensor_root = Path(tensor_root)
+    if use_system_energy_head and system_root is None:
+        raise ValueError("use_system_energy_head requires system_root")
+    resolved_system_root = Path(system_root) if system_root is not None else None
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "metrics").mkdir(exist_ok=True)
@@ -264,16 +271,18 @@ def run_formal_training(
         horizon_steps=int(contract["horizon_steps"]),
     )
     stats = _load_or_fit_stats(tensor_root)
-    datasets = {
-        split: FormalAirFogSimWindowDataset(
-            tensor_root,
-            split=split,
-            config=window_config,
-            stats=stats,
-            normalize=True,
-        )
-        for split in NONLOCKED_SPLITS
-    }
+    dataset_type = FormalSystemWindowDataset if use_system_energy_head else FormalAirFogSimWindowDataset
+    datasets = {}
+    for split in NONLOCKED_SPLITS:
+        dataset_kwargs = {
+            "split": split,
+            "config": window_config,
+            "stats": stats,
+            "normalize": True,
+        }
+        if use_system_energy_head:
+            dataset_kwargs["system_root"] = resolved_system_root
+        datasets[split] = dataset_type(tensor_root, **dataset_kwargs)
     sample_ids = {
         "train": _select_ids(datasets["train"], train_limit, seed),
         "validation": _select_ids(datasets["validation"], evaluation_limit, seed + 1),
@@ -313,6 +322,8 @@ def run_formal_training(
         "splits": list(NONLOCKED_SPLITS),
         "learned_methods": list(learned_methods),
         "loss_weights": asdict(loss_weights),
+        "use_system_energy_head": bool(use_system_energy_head),
+        "system_root": str(resolved_system_root.resolve()) if resolved_system_root else None,
         "locked_test_accessed": False,
         "tensor_root": str(tensor_root.resolve()),
         "dataset_manifest_sha256": _sha256(dataset_hash_source),
@@ -335,6 +346,7 @@ def run_formal_training(
             history_steps=window_config.history_steps,
             horizon_steps=window_config.horizon_steps,
             residual_state_prediction=residual_state_prediction,
+            use_system_energy_head=use_system_energy_head,
         )
         model = FormalDualGraphWorldModel(model_config)
         initialization_hash = _model_hash(model)
@@ -362,6 +374,7 @@ def run_formal_training(
                     batch["static"],
                     weights=loss_weights,
                     class_weights=class_weights,
+                    system_target=batch.get("system_target"),
                 )
                 if not torch.isfinite(loss):
                     raise RuntimeError(f"non-finite loss for {method} at epoch {epoch}")
@@ -525,6 +538,8 @@ def run_gpu_training(**kwargs: Any) -> dict[str, Any]:
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tensor-root", type=Path, required=True)
+    parser.add_argument("--system-root", type=Path)
+    parser.add_argument("--use-system-energy-head", action="store_true")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--seed", type=int, default=20260802)
@@ -549,6 +564,8 @@ def main() -> None:
     args = _parse_args()
     summary = run_gpu_training(
         tensor_root=args.tensor_root,
+        system_root=args.system_root,
+        use_system_energy_head=args.use_system_energy_head,
         output_dir=args.output_dir,
         device=args.device,
         seed=args.seed,

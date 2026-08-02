@@ -19,6 +19,7 @@ for path in (SRC_ROOT, SCRIPTS_ROOT):
         sys.path.insert(0, str(path))
 
 from test_formal_airfogsim_window_v1 import _write_formal_fixture
+from test_formal_system_window_v1 import _write_system_fixture
 
 
 class RunFormalDualGraphGpuTrainV1Tests(unittest.TestCase):
@@ -153,6 +154,49 @@ class RunFormalDualGraphGpuTrainV1Tests(unittest.TestCase):
                 "calibration_task_delay_mae",
             ):
                 self.assertIn(name, row)
+
+    def test_system_sidecar_training_enables_energy_head_and_records_contract(self):
+        from run_formal_dual_graph_gpu_train_v1 import run_formal_training
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            tensor_root = root / "tensor"
+            system_root = root / "system"
+            output_dir = root / "output"
+            tensor_root.mkdir()
+            system_root.mkdir()
+            _write_formal_fixture(tensor_root)
+            _write_system_fixture(system_root)
+
+            result = run_formal_training(
+                tensor_root=tensor_root,
+                system_root=system_root,
+                use_system_energy_head=True,
+                output_dir=output_dir,
+                device="cpu",
+                learned_methods=("pooled_gru",),
+                seed=43,
+                train_limit=1,
+                evaluation_limit=1,
+                hidden_dim=4,
+                epochs=1,
+                batch_size=1,
+                learning_rate=1e-3,
+            )
+
+            self.assertTrue(result["training_run_complete"])
+            config = json.loads((output_dir / "config.json").read_text(encoding="utf-8"))
+            self.assertTrue(config["use_system_energy_head"])
+            self.assertEqual(str(system_root.resolve()), config["system_root"])
+            checkpoint = torch.load(
+                output_dir / "checkpoints" / "pooled_gru__best.pt",
+                map_location="cpu",
+                weights_only=True,
+            )
+            self.assertTrue(checkpoint["model_config"]["use_system_energy_head"])
+            self.assertTrue(
+                any(name.startswith("uav_energy_head") for name in checkpoint["model_state_dict"])
+            )
 
 
 if __name__ == "__main__":

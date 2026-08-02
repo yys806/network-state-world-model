@@ -23,6 +23,8 @@ class FormalLossWeights:
     active_rate_mae: float = 0.05
     task_delay_mae: float = 0.05
     task_deadline_mae: float = 0.05
+    uav_energy_nll: float = 0.05
+    uav_energy_mae: float = 0.05
 
 
 def _component_valid_mask(name: str, static: Mapping[str, torch.Tensor]) -> torch.Tensor:
@@ -82,6 +84,7 @@ def formal_world_model_loss(
     *,
     weights: FormalLossWeights = FormalLossWeights(),
     class_weights: Mapping[str, float] | None = None,
+    system_target: Mapping[str, torch.Tensor] | None = None,
 ) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
     """Compute one finite, auditable objective over all formal rollout heads."""
 
@@ -205,6 +208,23 @@ def formal_world_model_loss(
     components["task_deadline_mae"] = task_deadline.detach()
     components["task_timing_valid_count"] = timing_valid.sum().detach()
 
+    uav_energy_nll = task_delay.new_zeros(())
+    uav_energy_mae = task_delay.new_zeros(())
+    uav_energy_valid_count = torch.zeros((), device=task_delay.device, dtype=torch.long)
+    if system_target is not None:
+        if "uav_energy_delta_mean" not in prediction:
+            raise ValueError("system_target requires the model UAV energy prediction head")
+        energy_valid = system_target["uav_energy_valid"].bool()
+        uav_energy_nll, uav_energy_mae, uav_energy_valid_count = _gaussian_terms(
+            prediction["uav_energy_delta_mean"].unsqueeze(-1),
+            prediction["uav_energy_delta_log_variance"].unsqueeze(-1),
+            system_target["uav_energy_delta"].unsqueeze(-1),
+            energy_valid,
+        )
+    components["uav_energy_nll"] = uav_energy_nll.detach()
+    components["uav_energy_mae"] = uav_energy_mae.detach()
+    components["uav_energy_valid_count"] = uav_energy_valid_count.detach()
+
     state_nll = torch.stack(state_nll_terms).mean()
     state_mae = torch.stack(state_mae_terms).mean()
     presence = torch.stack(presence_terms).mean()
@@ -218,6 +238,8 @@ def formal_world_model_loss(
         + weights.active_rate_mae * active_rate
         + weights.task_delay_mae * task_delay
         + weights.task_deadline_mae * task_deadline
+        + weights.uav_energy_nll * uav_energy_nll
+        + weights.uav_energy_mae * uav_energy_mae
     )
     components["state_nll"] = state_nll.detach()
     components["state_mae"] = state_mae.detach()

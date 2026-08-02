@@ -38,6 +38,7 @@ class FormalWorldModelConfig:
     physical_only: bool = False
     information_only: bool = False
     residual_state_prediction: bool = False
+    use_system_energy_head: bool = False
     log_variance_min: float = -8.0
     log_variance_max: float = 5.0
 
@@ -204,6 +205,9 @@ class FormalDualGraphWorldModel(nn.Module):
             }
         )
         self.dag_state_head = _DistributionHead(hidden, 3)
+        self.uav_energy_head = (
+            _DistributionHead(hidden, 1) if config.use_system_energy_head else None
+        )
         self.presence_heads = nn.ModuleDict(
             {name: nn.Linear(hidden, 1) for name in COMPONENT_FEATURES}
         )
@@ -416,6 +420,18 @@ class FormalDualGraphWorldModel(nn.Module):
             )
             outputs.setdefault("task_lifecycle_logits", []).append(self.task_lifecycle_head(task))
             outputs.setdefault("dag_release_logits", []).append(self.dag_release_head(task).squeeze(-1))
+            if self.uav_energy_head is not None:
+                energy_mean, energy_log_variance = self.uav_energy_head(
+                    node,
+                    self.config.log_variance_min,
+                    self.config.log_variance_max,
+                )
+                outputs.setdefault("uav_energy_delta_mean", []).append(
+                    torch.nn.functional.softplus(energy_mean.squeeze(-1))
+                )
+                outputs.setdefault("uav_energy_delta_log_variance", []).append(
+                    energy_log_variance.squeeze(-1)
+                )
             dag_relation = _dag_relation_latent(task, static["dag_edge_index"])
             outputs.setdefault("dag_edge_presence_logits", []).append(
                 self.dag_edge_presence_head(dag_relation).squeeze(-1)

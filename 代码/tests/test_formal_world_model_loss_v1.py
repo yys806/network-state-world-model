@@ -168,6 +168,62 @@ class FormalWorldModelLossV1Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "train"):
             compute_training_class_weights([sample])
 
+    def test_uav_energy_loss_uses_only_direct_valid_sidecar_rows(self):
+        from pi_jwm.formal_dual_graph_world_model_v1 import (
+            FormalDualGraphWorldModel,
+            FormalWorldModelConfig,
+        )
+        from pi_jwm.formal_world_model_loss_v1 import (
+            FormalLossWeights,
+            formal_world_model_loss,
+        )
+
+        batch = fake_formal_batch()
+        target = _complete_target(batch)
+        prediction = FormalDualGraphWorldModel(
+            FormalWorldModelConfig(
+                mode="coupled_dual_gnn",
+                hidden_dim=8,
+                history_steps=3,
+                horizon_steps=2,
+                use_system_energy_head=True,
+            )
+        )(batch)
+        system_target = {
+            "uav_energy_delta": torch.zeros((2, 2, 4)),
+            "uav_energy_valid": torch.zeros((2, 2, 4), dtype=torch.bool),
+        }
+        system_target["uav_energy_valid"][:, :, 0] = True
+        prediction["uav_energy_delta_mean"] = system_target["uav_energy_delta"].clone()
+        prediction["uav_energy_delta_mean"][:, :, 0] = 2.0
+        prediction["uav_energy_delta_mean"][:, :, 1] = 999.0
+        prediction["uav_energy_delta_log_variance"] = torch.zeros((2, 2, 4))
+        weights = FormalLossWeights(
+            state_nll=0.0,
+            state_mae=0.0,
+            presence=0.0,
+            sparse_event=0.0,
+            lifecycle=0.0,
+            dag=0.0,
+            active_rate_mae=0.0,
+            task_delay_mae=0.0,
+            task_deadline_mae=0.0,
+            uav_energy_nll=0.0,
+            uav_energy_mae=1.0,
+        )
+
+        loss, components = formal_world_model_loss(
+            prediction,
+            target,
+            batch["static"],
+            weights=weights,
+            system_target=system_target,
+        )
+
+        self.assertAlmostEqual(2.0, float(components["uav_energy_mae"]), places=6)
+        self.assertEqual(4, int(components["uav_energy_valid_count"]))
+        self.assertAlmostEqual(2.0, float(loss.detach()), places=6)
+
     def test_training_class_weights_are_computed_from_masked_train_labels(self):
         from pi_jwm.formal_world_model_loss_v1 import compute_training_class_weights
 

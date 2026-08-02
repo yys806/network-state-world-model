@@ -156,6 +156,29 @@ class FormalDualGraphWorldModelV1Tests(unittest.TestCase):
             torch.zeros_like(absolute_output["task_dag_state_mean"]),
         )
 
+    def test_optional_uav_energy_head_returns_nonnegative_node_aligned_distribution(self):
+        from pi_jwm.formal_dual_graph_world_model_v1 import (
+            FormalDualGraphWorldModel,
+            FormalWorldModelConfig,
+        )
+
+        batch = fake_formal_batch()
+        model = FormalDualGraphWorldModel(
+            FormalWorldModelConfig(
+                mode="coupled_dual_gnn",
+                hidden_dim=8,
+                history_steps=3,
+                horizon_steps=2,
+                use_system_energy_head=True,
+            )
+        )
+        output = model(batch)
+
+        self.assertEqual((2, 2, 4), tuple(output["uav_energy_delta_mean"].shape))
+        self.assertEqual((2, 2, 4), tuple(output["uav_energy_delta_log_variance"].shape))
+        self.assertTrue(torch.all(output["uav_energy_delta_mean"] >= 0))
+        self.assertTrue(torch.isfinite(output["uav_energy_delta_mean"]).all())
+
     def test_future_action_changes_rollout_but_future_target_does_not(self):
         from pi_jwm.formal_dual_graph_world_model_v1 import (
             FormalDualGraphWorldModel,
