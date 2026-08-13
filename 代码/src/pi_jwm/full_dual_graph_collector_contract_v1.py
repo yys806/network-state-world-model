@@ -45,6 +45,7 @@ class PhysicalNode:
     node_id: str
     node_type: str
     present: bool
+    position: tuple[float, float, float] | None = None
 
 
 @dataclass(frozen=True)
@@ -252,6 +253,21 @@ def validate_joint_frame_action(
         _require_identifier(node.node_type, field="node type")
         if not isinstance(node.present, bool):
             raise CollectorContractError("unknown_identity", "node presence must be bool")
+        if node.position is not None:
+            if (
+                not isinstance(node.position, tuple)
+                or len(node.position) != 3
+                or any(
+                    isinstance(value, bool)
+                    or not isinstance(value, (int, float))
+                    or not isfinite(float(value))
+                    for value in node.position
+                )
+            ):
+                raise CollectorContractError(
+                    "invalid_node_position",
+                    f"node {node.node_id} position must be a finite xyz tuple",
+                )
     for edge in physical_edges:
         _require_identifier(edge.source_id, field="physical edge source")
         _require_identifier(edge.target_id, field="physical edge target")

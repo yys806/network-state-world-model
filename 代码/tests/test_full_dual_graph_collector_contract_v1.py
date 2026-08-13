@@ -3,6 +3,7 @@ from __future__ import annotations
 import sys
 import unittest
 from dataclasses import replace
+from math import nan
 from pathlib import Path
 
 
@@ -190,6 +191,13 @@ class ValidActionTests(unittest.TestCase):
 
 
 class RejectionTests(unittest.TestCase):
+    def test_rejects_nonfinite_observed_node_position(self):
+        nodes, edges, tasks, action = wireless_fixture()
+        bad_nodes = (replace(nodes[0], position=(0.0, nan, 1.0)), nodes[1])
+
+        with self.assertRaisesRegex(CollectorContractError, "invalid_node_position"):
+            validate(bad_nodes, edges, tasks, action)
+
     def assert_code(self, code, nodes, edges, tasks, action, **kwargs):
         with self.assertRaises(CollectorContractError) as caught:
             validate(nodes, edges, tasks, action, **kwargs)
