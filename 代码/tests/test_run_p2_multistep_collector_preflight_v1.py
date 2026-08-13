@@ -184,6 +184,7 @@ class P2MultistepCollectorRunnerTests(unittest.TestCase):
             manifest = json.loads((output_dir / "manifest.json").read_text(encoding="utf-8"))
             self.assertTrue(
                 {
+                    "代码/scripts/small_experiments/airfogsim_strict_dual_graph_preflight.py",
                     "代码/src/pi_jwm/airfogsim_contract_adapter.py",
                     "代码/src/pi_jwm/airfogsim_cpu_inner_rule_v1.py",
                     "代码/src/pi_jwm/cpu_inner_rule_v1.py",
@@ -194,6 +195,7 @@ class P2MultistepCollectorRunnerTests(unittest.TestCase):
                     "代码/tests/test_cpu_inner_rule_v1.py",
                     "代码/tests/test_information_edge_contract_v4.py",
                     "代码/tests/test_single_step_collector_contract_v1.py",
+                    "代码/tests/small_experiments/test_airfogsim_strict_dual_graph_preflight.py",
                 }.issubset(manifest["source_hashes"])
             )
 
