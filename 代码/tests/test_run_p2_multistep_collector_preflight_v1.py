@@ -176,6 +176,27 @@ class P2MultistepCollectorRunnerTests(unittest.TestCase):
             self.assertTrue(all("浠ｇ爜" not in key for key in keys))
             self.assertTrue(all((runner.PROJECT_ROOT / Path(key)).is_file() for key in keys))
 
+    def test_manifest_binds_transitive_single_step_dependency_closure(self):
+        runner = load_runner()
+        with tempfile.TemporaryDirectory() as tmp:
+            output_dir = Path(tmp)
+            runner.write_preflight_bundle(output_dir, runner.fake_passing_payloads_for_test())
+            manifest = json.loads((output_dir / "manifest.json").read_text(encoding="utf-8"))
+            self.assertTrue(
+                {
+                    "代码/src/pi_jwm/airfogsim_contract_adapter.py",
+                    "代码/src/pi_jwm/airfogsim_cpu_inner_rule_v1.py",
+                    "代码/src/pi_jwm/cpu_inner_rule_v1.py",
+                    "代码/src/pi_jwm/information_edge_contract_v4.py",
+                    "代码/src/pi_jwm/single_step_collector_contract_v1.py",
+                    "代码/tests/test_airfogsim_contract_adapter.py",
+                    "代码/tests/test_airfogsim_cpu_inner_rule_v1.py",
+                    "代码/tests/test_cpu_inner_rule_v1.py",
+                    "代码/tests/test_information_edge_contract_v4.py",
+                    "代码/tests/test_single_step_collector_contract_v1.py",
+                }.issubset(manifest["source_hashes"])
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
