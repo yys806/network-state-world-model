@@ -90,13 +90,74 @@ def _write_json(path: Path, value: Any) -> None:
 
 def fake_passing_payloads_for_test() -> dict[str, Any]:
     flags = build_single_step_status_flags()
+    candidate_id = "test_fixture"
+    rb_indices = [0]
+    decision_time_channel = {
+        "capture_phase": "before_action_setters",
+        "simulation_time": 0.0,
+        "source": "uav0",
+        "target": "rsu0",
+        "rb_indices": rb_indices,
+        "channel_attenuation_db": [10.0],
+        "source_method": "channel_manager.getCSI",
+    }
+    temporal_trace = [
+        "action_validated",
+        "decision_time_observation_captured",
+        "cpu_callback_installed",
+        "action_setters_called",
+        "env_step_started",
+        "env_step_finished",
+    ]
     return {
         "candidate_comparison.json": {"observable_difference": True, "test_fixture": True},
         "action_ledger.json": {"actions": []},
-        "transfer_events.json": {"events": []},
+        "transfer_events.json": {
+            "candidates": [
+                {
+                    "candidate_id": candidate_id,
+                    "events": [
+                        {
+                            "source": "uav0",
+                            "target": "rsu0",
+                            "rb_indices": rb_indices,
+                            "outcome_channel_attenuation_db": [11.0],
+                            "capture_phase": "after_fast_fading_before_transfer",
+                            "temporal_role": "outcome_only_not_same_frame_decision_input",
+                        }
+                    ],
+                }
+            ]
+        },
         "single_step_graph.json": {"scope": "single_step_nontraining", "candidates": []},
         "resource_bundle.json": {"cpu_rows": [], "energy_rows": []},
-        "field_mask_audit.json": {"contract_version": CONTRACT_VERSION, "fields": []},
+        "field_mask_audit.json": {
+            "contract_version": CONTRACT_VERSION,
+            "candidate_audits": [
+                {
+                    "candidate_id": candidate_id,
+                    "decision_time_channel": decision_time_channel,
+                    "temporal_trace": temporal_trace,
+                    "fields": [
+                        {
+                            "name": "pre_link.channel_attenuation_mean_db",
+                            "value": 10.0,
+                            "provenance": "derived_from_direct_decision_time_csi_before_setters",
+                        },
+                        {
+                            "name": "pre_link.channel_attenuation_std_db",
+                            "value": 0.0,
+                            "provenance": "derived_from_direct_decision_time_csi_before_setters",
+                        },
+                        {
+                            "name": "pre_rb_optional.channel_attenuation_db",
+                            "value": [10.0],
+                            "provenance": "direct_decision_time_csi_before_setters",
+                        },
+                    ],
+                }
+            ],
+        },
         "validation_report.json": {"passed": True, "checks": {"test_fixture": True}},
         "summary.json": {
             "scope": "contract_fixture",
@@ -106,12 +167,91 @@ def fake_passing_payloads_for_test() -> dict[str, Any]:
     }
 
 
+def validate_temporal_payloads(payloads: dict[str, Any]) -> list[str]:
+    """Recompute the action-pre versus outcome-side evidence boundary."""
+
+    errors: list[str] = []
+    audits = payloads.get("field_mask_audit.json", {}).get("candidate_audits", [])
+    event_rows = payloads.get("transfer_events.json", {}).get("candidates", [])
+    events_by_candidate = {
+        row.get("candidate_id"): row.get("events", []) for row in event_rows
+    }
+    if not audits:
+        return ["temporal evidence has no candidate audits"]
+    expected_trace = (
+        "action_validated",
+        "decision_time_observation_captured",
+        "cpu_callback_installed",
+        "action_setters_called",
+        "env_step_started",
+        "env_step_finished",
+    )
+    for audit in audits:
+        candidate_id = audit.get("candidate_id")
+        prefix = f"temporal evidence candidate {candidate_id}"
+        decision = audit.get("decision_time_channel", {})
+        if decision.get("capture_phase") != "before_action_setters":
+            errors.append(f"{prefix}: invalid decision capture phase")
+        if decision.get("source_method") != "channel_manager.getCSI":
+            errors.append(f"{prefix}: invalid decision source method")
+        trace = tuple(audit.get("temporal_trace", ()))
+        if trace != expected_trace:
+            errors.append(f"{prefix}: invalid phase order")
+        fields = {row.get("name"): row for row in audit.get("fields", [])}
+        pre_rb = fields.get("pre_rb_optional.channel_attenuation_db", {})
+        if pre_rb.get("provenance") != "direct_decision_time_csi_before_setters":
+            errors.append(f"{prefix}: action-pre RB provenance is not decision-time CSI")
+        decision_values = np.asarray(decision.get("channel_attenuation_db", []), dtype=float)
+        pre_rb_values = np.asarray(pre_rb.get("value", []), dtype=float)
+        if (
+            pre_rb_values.shape != decision_values.shape
+            or not np.isfinite(pre_rb_values).all()
+            or not np.allclose(pre_rb_values, decision_values, rtol=1e-6, atol=1e-6)
+        ):
+            errors.append(f"{prefix}: action-pre RB values differ from decision-time CSI")
+        if decision_values.size == 0 or not np.isfinite(decision_values).all():
+            errors.append(f"{prefix}: decision-time CSI is empty or non-finite")
+        else:
+            expected = {
+                "pre_link.channel_attenuation_mean_db": float(decision_values.mean()),
+                "pre_link.channel_attenuation_std_db": float(decision_values.std()),
+            }
+            for name, value in expected.items():
+                row = fields.get(name, {})
+                if row.get("provenance") != "derived_from_direct_decision_time_csi_before_setters":
+                    errors.append(f"{prefix}: invalid aggregate provenance for {name}")
+                try:
+                    matches = np.isclose(float(row.get("value")), value, rtol=1e-6, atol=1e-6)
+                except (TypeError, ValueError):
+                    matches = False
+                if not matches:
+                    errors.append(f"{prefix}: aggregate value mismatch for {name}")
+        events = events_by_candidate.get(candidate_id, [])
+        if not events:
+            errors.append(f"{prefix}: no outcome event")
+            continue
+        for event in events:
+            if "attenuation_db" in event:
+                errors.append(f"{prefix}: ambiguous legacy attenuation field remains")
+            if event.get("capture_phase") != "after_fast_fading_before_transfer":
+                errors.append(f"{prefix}: invalid outcome capture phase")
+            if event.get("temporal_role") != "outcome_only_not_same_frame_decision_input":
+                errors.append(f"{prefix}: invalid outcome temporal role")
+            for name in ("source", "target", "rb_indices"):
+                if event.get(name) != decision.get(name):
+                    errors.append(f"{prefix}: decision/outcome identity mismatch for {name}")
+    return errors
+
+
 def write_preflight_bundle(output_dir: Path, payloads: dict[str, Any]) -> dict[str, Any]:
     expected_payloads = set(REQUIRED_FILES) - {"manifest.json"}
     if set(payloads) != expected_payloads:
         raise ValueError(f"payload names differ: {sorted(set(payloads) ^ expected_payloads)}")
     if not bool(payloads["validation_report.json"].get("passed")):
         raise ValueError("validation report did not pass; refusing success manifest")
+    temporal_errors = validate_temporal_payloads(payloads)
+    if temporal_errors:
+        raise ValueError(f"temporal evidence invalid: {temporal_errors}")
     output_dir = Path(output_dir)
     if output_dir.exists():
         if any(output_dir.iterdir()):
@@ -127,6 +267,7 @@ def write_preflight_bundle(output_dir: Path, payloads: dict[str, Any]) -> dict[s
         status_flags = copy.deepcopy(payloads["summary.json"]["status_flags"])
         source_files = (
             PROJECT_ROOT / "docs" / "superpowers" / "specs" / "2026-08-13-p2-single-step-collector-contract-design.md",
+            PROJECT_ROOT / "docs" / "superpowers" / "specs" / "2026-08-13-p2-multistep-temporal-contract-design.md",
             CODE_ROOT / "scripts" / "run_p2_single_step_collector_preflight_v1.py",
             CODE_ROOT / "tests" / "test_single_step_collector_contract_v1.py",
             CODE_ROOT / "tests" / "test_airfogsim_single_step_collector_v1.py",
@@ -172,6 +313,12 @@ def verify_preflight_bundle(output_dir: Path) -> dict[str, Any]:
         errors.append(f"missing files: {missing}")
         return {"passed": False, "errors": errors}
     manifest = json.loads((output_dir / "manifest.json").read_text(encoding="utf-8"))
+    payloads = {
+        name: json.loads((output_dir / name).read_text(encoding="utf-8"))
+        for name in REQUIRED_FILES
+        if name != "manifest.json"
+    }
+    errors.extend(validate_temporal_payloads(payloads))
     for name, expected in manifest.get("artifact_hashes", {}).items():
         actual = file_hash(output_dir / name)
         if actual != expected:
@@ -306,7 +453,7 @@ def _capture_rb_values(env: Any, profile: dict[str, Any]) -> dict[str, Any]:
     sinr = getattr(env.channel_manager, f"{channel_type}_SINR")
     outage = getattr(env.channel_manager, f"is_{channel_type}_outage")
     return {
-        "attenuation_db": [_plain(csi[rb]) for rb in rb_indices],
+        "outcome_channel_attenuation_db": [_plain(csi[rb]) for rb in rb_indices],
         "rate_per_s": [_plain(value) for value in rate],
         "interference_plus_noise_mw": [_plain(interference[tx_idx, rx_idx, rb]) for rb in rb_indices],
         "sinr_db": [_plain(sinr[tx_idx, rx_idx, rb]) for rb in rb_indices],
@@ -340,6 +487,36 @@ def _event_from_profile(env: Any, profile: dict[str, Any]) -> dict[str, Any]:
         "noise_power_mw": float(env.channel_manager.sig2),
         "rb_bandwidth_mhz": float(env.channel_manager.RB_bandwidth),
         "evidence": "direct_runtime_channel_event",
+        "capture_phase": "after_fast_fading_before_transfer",
+        "temporal_role": "outcome_only_not_same_frame_decision_input",
+    }
+
+
+def _capture_decision_time_channel(
+    env: Any, source: str, target: str, rb_indices: list[int]
+) -> dict[str, Any]:
+    source_type = env._getNodeTypeById(source)
+    target_type = env._getNodeTypeById(target)
+    source_index = env._getNodeIdxById(source)
+    target_index = env._getNodeIdxById(target)
+    if source_type not in "VUI" or target_type not in "VUI":
+        raise ValueError(f"decision-time CSI requires wireless endpoints: {source}, {target}")
+    if source_index < 0 or target_index < 0:
+        raise ValueError(f"decision-time CSI endpoint index missing: {source}, {target}")
+    csi = env.channel_manager.getCSI(
+        source_index, target_index, source_type, target_type
+    )
+    values = [_plain(csi[rb_index]) for rb_index in rb_indices]
+    if not values or not np.isfinite(np.asarray(values, dtype=float)).all():
+        raise ValueError("decision-time CSI is empty or non-finite")
+    return {
+        "capture_phase": "before_action_setters",
+        "simulation_time": float(env.simulation_time),
+        "source": source,
+        "target": target,
+        "rb_indices": list(rb_indices),
+        "channel_attenuation_db": values,
+        "source_method": "channel_manager.getCSI",
     }
 
 
@@ -446,6 +623,12 @@ def _run_one_candidate(seed: int, candidate_id: str, target_rank: int) -> dict[s
             task_scheduler=task_sched,
             communication_scheduler=comm_sched,
             computation_scheduler=comp_sched,
+            pre_action_observer=lambda: _capture_decision_time_channel(
+                env,
+                source,
+                target,
+                [row.rb_index for row in rb_assignments],
+            ),
         )
         energy_after = _energy_snapshot(env)
         return {
@@ -468,6 +651,8 @@ def _run_one_candidate(seed: int, candidate_id: str, target_rank: int) -> dict[s
                 "assignment_coo": [list(row.as_tuple()) for row in rb_assignments],
             },
             "transfer_events": copy.deepcopy(env.pi_jwm_transfer_events),
+            "decision_time_channel": copy.deepcopy(result.pre_action_observation),
+            "temporal_trace": list(result.temporal_trace),
             "cpu_rows": list(result.cpu_rows),
             "energy_before": energy_before,
             "energy_after": energy_after,
@@ -513,7 +698,10 @@ def _field_audit(candidate: dict[str, Any]) -> dict[str, Any]:
     }:
         raise ValueError(f"invalid E0 wireless structure: {structure}")
     rb_count = len(event["rb_indices"])
-    attenuation = np.asarray(event["attenuation_db"], dtype=np.float32).reshape(1, 1, rb_count)
+    decision_time_channel = candidate["decision_time_channel"]
+    attenuation = np.asarray(
+        decision_time_channel["channel_attenuation_db"], dtype=np.float32
+    ).reshape(1, 1, rb_count)
     valid = np.ones_like(attenuation, dtype=bool)
     none = np.zeros_like(attenuation, dtype=np.int16)
     validate_field_values("pre_rb_optional.channel_attenuation_db", attenuation, valid, none)
@@ -587,14 +775,21 @@ def _field_audit(candidate: dict[str, Any]) -> dict[str, Any]:
                 "value": float(attenuation.mean()),
                 "valid_mask": True,
                 "missing_reason": MissingReason.NONE.name.lower(),
-                "provenance": "derived_from_direct_current_per_rb_attenuation",
+                "provenance": "derived_from_direct_decision_time_csi_before_setters",
             },
             {
                 "name": "pre_link.channel_attenuation_std_db",
                 "value": float(attenuation.std()),
                 "valid_mask": True,
                 "missing_reason": MissingReason.NONE.name.lower(),
-                "provenance": "derived_from_direct_current_per_rb_attenuation",
+                "provenance": "derived_from_direct_decision_time_csi_before_setters",
+            },
+            {
+                "name": "pre_rb_optional.channel_attenuation_db",
+                "value": attenuation.reshape(-1).tolist(),
+                "valid_mask": [True] * rb_count,
+                "missing_reason": [MissingReason.NONE.name.lower()] * rb_count,
+                "provenance": "direct_decision_time_csi_before_setters",
             },
             *[
                 {
@@ -612,6 +807,8 @@ def _field_audit(candidate: dict[str, Any]) -> dict[str, Any]:
             ],
         ],
         "optional_current_rb_direct": True,
+        "decision_time_channel": decision_time_channel,
+        "temporal_trace": candidate["temporal_trace"],
         "structure": structure,
         "validation": {
             "e0_structure_and_cep": True,
