@@ -1,5 +1,7 @@
 # PI-JWM P2 单步非训练采集器契约设计
 
+> **2026-08-13 时序勘误：** 本文原设计要求 action-pre attenuation，但首版正式 bundle 实际使用了 `env.step()` 内 `updateFastFading()/computeRate()` 后捕获的 transfer-event attenuation。该字段证据已撤回，真实动作/通信/CPU/能耗闭环事实不受影响。修订边界以 `2026-08-13-p2-multistep-temporal-contract-design.md` 为准；修订 bundle 发布前，旧 bundle 仅作带已知缺陷的历史证据。
+
 **日期：** 2026-08-13  
 **状态：** 已确认设计，待按计划实施  
 **范围：** 单步真实 AirFogSim 集成与机器可读证据；不包含正式 v4 数据集生成、模型训练、GPU、locked test 或最终方法冻结。
