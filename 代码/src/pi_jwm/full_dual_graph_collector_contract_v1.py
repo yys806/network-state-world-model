@@ -360,6 +360,13 @@ def validate_joint_frame_action(
                 raise CollectorContractError("unknown_identity", "local action has communication identity")
             if decision.route_nodes != (decision.target_node_id,):
                 raise CollectorContractError("route_first_hop_mismatch", "local route is invalid")
+            if (
+                task.lifecycle == TaskLifecycle.WAITING_TO_RETURN
+                and task.return_destination_id != decision.target_node_id
+            ):
+                raise CollectorContractError(
+                    "return_destination_mismatch", "return route ends at wrong destination"
+                )
             continue
 
         if decision.flow_id is None or decision.hop_id is None:

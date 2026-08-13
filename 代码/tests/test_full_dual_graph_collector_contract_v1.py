@@ -266,6 +266,32 @@ class RejectionTests(unittest.TestCase):
         bad = replace(action, decisions=(decision,), flows=(flow,))
         self.assert_code("return_destination_mismatch", nodes, edges, tasks, bad)
 
+    def test_local_return_destination_mismatch_is_rejected(self):
+        nodes, edges, tasks, action = wireless_fixture()
+        tasks = (
+            replace(
+                tasks[0],
+                lifecycle=TaskLifecycle.WAITING_TO_RETURN,
+                return_destination_id="rsu0",
+            ),
+        )
+        decision = replace(
+            action.decisions[0],
+            lifecycle=TaskLifecycle.WAITING_TO_RETURN,
+            target_node_id="uav0",
+            route_nodes=("uav0",),
+            flow_id=None,
+            hop_id=None,
+        )
+        bad = replace(
+            action,
+            decisions=(decision,),
+            flows=(),
+            hops=(),
+            rb_allocations=(),
+        )
+        self.assert_code("return_destination_mismatch", nodes, edges, tasks, bad)
+
     def test_same_transmitter_rb_conflict_is_rejected(self):
         nodes, edges, tasks, action = wireless_fixture()
         tasks = tasks + (
