@@ -165,6 +165,17 @@ class P2MultistepCollectorRunnerTests(unittest.TestCase):
             self.assertFalse(output_dir.exists())
             self.assertEqual([], list(Path(tmp).glob(".*.tmp-*")))
 
+    def test_manifest_source_keys_are_portable_project_relative_paths(self):
+        runner = load_runner()
+        with tempfile.TemporaryDirectory() as tmp:
+            output_dir = Path(tmp)
+            runner.write_preflight_bundle(output_dir, runner.fake_passing_payloads_for_test())
+            manifest = json.loads((output_dir / "manifest.json").read_text(encoding="utf-8"))
+            keys = tuple(manifest["source_hashes"])
+            self.assertTrue(any(key.startswith("代码/") for key in keys))
+            self.assertTrue(all("浠ｇ爜" not in key for key in keys))
+            self.assertTrue(all((runner.PROJECT_ROOT / Path(key)).is_file() for key in keys))
+
 
 if __name__ == "__main__":
     unittest.main()
