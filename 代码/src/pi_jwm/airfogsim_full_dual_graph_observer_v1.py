@@ -106,25 +106,30 @@ def _physical_structure(
                     present=True,
                 )
             )
-            csi = env.channel_manager.getCSI(
-                env._getNodeIdxById(source_id),
-                env._getNodeIdxById(target_id),
-                source_type,
-                target_type,
-            )
-            channel_rows.append(
-                {
-                    "physical_edge_id": edge_id,
-                    "source_id": source_id,
-                    "target_id": target_id,
-                    "channel_type": edge_type,
-                    "rb_indices": tuple(range(int(env.channel_manager.n_RB))),
-                    "channel_attenuation_db": _plain_vector(csi),
-                    "capture_phase": phase.value,
-                    "simulation_time": float(env.simulation_time),
-                    "source_method": "channel_manager.getCSI",
-                }
-            )
+            # Immediately after traffic movement, node indices are new while
+            # AirFogSim fast-fading arrays still belong to the preceding slot.
+            # The execution snapshot therefore records structure only; outcome
+            # channel evidence is captured after the communication refresh.
+            if phase != SnapshotPhase.EXECUTION:
+                csi = env.channel_manager.getCSI(
+                    env._getNodeIdxById(source_id),
+                    env._getNodeIdxById(target_id),
+                    source_type,
+                    target_type,
+                )
+                channel_rows.append(
+                    {
+                        "physical_edge_id": edge_id,
+                        "source_id": source_id,
+                        "target_id": target_id,
+                        "channel_type": edge_type,
+                        "rb_indices": tuple(range(int(env.channel_manager.n_RB))),
+                        "channel_attenuation_db": _plain_vector(csi),
+                        "capture_phase": phase.value,
+                        "simulation_time": float(env.simulation_time),
+                        "source_method": "channel_manager.getCSI",
+                    }
+                )
 
     wired_ids = sorted(
         node_id for node_id, node_type in node_types.items() if node_type in "IC"

@@ -236,6 +236,13 @@ class AirFogSimFullObserverTests(unittest.TestCase):
         self.assertEqual(1, len(snapshot.dag_edges))
         self.assertEqual("not_modeled", snapshot.dag_edges[0].communication_mapping)
 
+    def test_execution_snapshot_does_not_read_stale_fast_fading_arrays(self):
+        env = fake_observer_env()
+
+        snapshot = observe_airfogsim_snapshot(env, phase=SnapshotPhase.EXECUTION)
+
+        self.assertEqual((), snapshot.channel_rows)
+
     def test_execution_hook_captures_after_traffic_before_task_and_restores(self):
         trace = ["decision_snapshot_captured"]
 
