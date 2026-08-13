@@ -106,11 +106,11 @@ def _physical_structure(
                     present=True,
                 )
             )
-            # Immediately after traffic movement, node indices are new while
-            # AirFogSim fast-fading arrays still belong to the preceding slot.
-            # The execution snapshot therefore records structure only; outcome
-            # channel evidence is captured after the communication refresh.
-            if phase != SnapshotPhase.EXECUTION:
+            # Execution indices precede fast-fading refresh; outcome indices may
+            # follow energy-driven removals. Only the decision snapshot has an
+            # all-structure CSI view. Same-slot active-RB outcome values come
+            # from the communication hook before transfer.
+            if phase == SnapshotPhase.DECISION:
                 csi = env.channel_manager.getCSI(
                     env._getNodeIdxById(source_id),
                     env._getNodeIdxById(target_id),

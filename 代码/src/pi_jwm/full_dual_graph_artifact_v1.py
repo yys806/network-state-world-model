@@ -25,6 +25,13 @@ REQUIRED_ARTIFACT_FILES = (
     "status_flags.json",
     "manifest.json",
 )
+E1_FIELD_NAMES = (
+    "channel_attenuation_mean_db",
+    "channel_attenuation_std_db",
+    "prev_active_flow_count",
+    "prev_effective_rate_per_s",
+    "prev_served_data",
+)
 
 
 _ACTIONABLE = {
@@ -81,36 +88,125 @@ def _validate_cep(frame: Mapping[str, object], errors: list[str]) -> None:
             )
 
 
+def _masked(value: float | None, *, valid: bool, reason: str | None) -> dict[str, object]:
+    return {"value": value, "valid_mask": valid, "missing_reason": reason}
+
+
+def build_e1_rows(
+    *,
+    decision_snapshot: Mapping[str, object],
+    previous_transfer_rows: Sequence[Mapping[str, object]] | None,
+    physical_edge_ids: Sequence[str],
+) -> list[dict[str, object]]:
+    """Build the five real E1 fields; never manufacture legacy-width values."""
+
+    channel_by_edge = {
+        str(row.get("physical_edge_id")): row
+        for row in decision_snapshot.get("channel_rows", [])
+        if isinstance(row, Mapping)
+    }
+    edge_type_by_id = {
+        str(row.get("edge_id")): str(row.get("edge_type"))
+        for row in decision_snapshot.get("physical_edges", [])
+        if isinstance(row, Mapping)
+    }
+    prior_by_edge: dict[str, list[Mapping[str, object]]] = {}
+    if previous_transfer_rows is not None:
+        for row in previous_transfer_rows:
+            prior_by_edge.setdefault(str(row.get("physical_edge_id")), []).append(row)
+    result: list[dict[str, object]] = []
+    for edge_id in physical_edge_ids:
+        channel = channel_by_edge.get(edge_id)
+        values = channel.get("channel_attenuation_db", []) if channel else []
+        valid_values = [
+            float(value)
+            for value in values
+            if isinstance(value, (int, float))
+            and not isinstance(value, bool)
+            and math.isfinite(float(value))
+        ]
+        if valid_values and len(valid_values) == len(values):
+            mean = sum(valid_values) / len(valid_values)
+            variance = sum((value - mean) ** 2 for value in valid_values) / len(valid_values)
+            attenuation_mean = _masked(mean, valid=True, reason=None)
+            attenuation_std = _masked(math.sqrt(variance), valid=True, reason=None)
+        else:
+            reason = (
+                "NOT_APPLICABLE_WIRED"
+                if edge_type_by_id.get(edge_id) == "wired"
+                else "CURRENT_CSI_UNAVAILABLE"
+            )
+            attenuation_mean = _masked(None, valid=False, reason=reason)
+            attenuation_std = _masked(None, valid=False, reason=reason)
+        if previous_transfer_rows is None:
+            active = rate = served = _masked(None, valid=False, reason="NO_HISTORY")
+        else:
+            observed = [
+                row for row in prior_by_edge.get(edge_id, []) if row.get("observed_mask") is True
+            ]
+            active = _masked(
+                float(len({str(row.get("flow_id")) for row in observed})),
+                valid=True,
+                reason=None,
+            )
+            rate = _masked(
+                sum(float(row.get("rate_per_s", 0.0)) for row in observed),
+                valid=True,
+                reason=None,
+            )
+            served = _masked(
+                sum(float(row.get("delivered_data", 0.0)) for row in observed),
+                valid=True,
+                reason=None,
+            )
+        result.append(
+            {
+                "physical_edge_id": str(edge_id),
+                "fields": {
+                    "channel_attenuation_mean_db": attenuation_mean,
+                    "channel_attenuation_std_db": attenuation_std,
+                    "prev_active_flow_count": active,
+                    "prev_effective_rate_per_s": rate,
+                    "prev_served_data": served,
+                },
+            }
+        )
+    return result
+
+
 def _validate_history(
     frame: Mapping[str, object], frame_index: int, errors: list[str]
 ) -> None:
-    history = frame.get("e1_history")
-    if not isinstance(history, Mapping):
-        errors.append(f"frame {frame_index}: E1 history missing")
+    rows = frame.get("e1_rows")
+    if not isinstance(rows, list) or not rows:
+        errors.append(f"frame {frame_index}: E1 rows missing")
         return
-    value = history.get("value")
-    valid = history.get("valid_mask")
-    reason = history.get("missing_reason")
-    if frame_index == 0:
-        if value is not None or valid is not False or reason != "NO_HISTORY":
-            errors.append("first-frame E1 must be masked NO_HISTORY")
-        return
-    if valid is True:
-        if (
-            not isinstance(value, list)
-            or len(value) != 3
-            or any(
-                isinstance(item, bool)
-                or not isinstance(item, (int, float))
-                or not math.isfinite(float(item))
-                for item in value
-            )
-        ):
-            errors.append(f"frame {frame_index}: valid E1 requires three finite values")
-        if reason is not None:
-            errors.append(f"frame {frame_index}: valid E1 cannot have missing reason")
-    elif value is not None or not isinstance(reason, str) or not reason:
-        errors.append(f"frame {frame_index}: invalid E1 missing-value encoding")
+    for row in rows:
+        if not isinstance(row, Mapping) or set(row.get("fields", {})) != set(E1_FIELD_NAMES):
+            errors.append(f"frame {frame_index}: E1 must contain exactly five named fields")
+            continue
+        fields = row["fields"]
+        for field_name in E1_FIELD_NAMES:
+            field = fields[field_name]
+            if not isinstance(field, Mapping):
+                errors.append(f"frame {frame_index}: invalid E1 field {field_name}")
+                continue
+            value, valid, reason = field.get("value"), field.get("valid_mask"), field.get("missing_reason")
+            if valid is True:
+                if (
+                    isinstance(value, bool)
+                    or not isinstance(value, (int, float))
+                    or not math.isfinite(float(value))
+                    or reason is not None
+                ):
+                    errors.append(f"frame {frame_index}: valid E1 field {field_name} is malformed")
+            elif value is not None or not isinstance(reason, str) or not reason:
+                errors.append(f"frame {frame_index}: masked E1 field {field_name} is malformed")
+        if frame_index == 0:
+            for field_name in E1_FIELD_NAMES[2:]:
+                field = fields[field_name]
+                if field.get("valid_mask") is not False or field.get("missing_reason") != "NO_HISTORY":
+                    errors.append("first-frame E1 history fields must be masked NO_HISTORY")
 
 
 def validate_trajectory_frames(

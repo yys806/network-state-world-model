@@ -242,6 +242,8 @@ class AirFogSimFullObserverTests(unittest.TestCase):
         snapshot = observe_airfogsim_snapshot(env, phase=SnapshotPhase.EXECUTION)
 
         self.assertEqual((), snapshot.channel_rows)
+        outcome = observe_airfogsim_snapshot(env, phase=SnapshotPhase.OUTCOME)
+        self.assertEqual((), outcome.channel_rows)
 
     def test_execution_hook_captures_after_traffic_before_task_and_restores(self):
         trace = ["decision_snapshot_captured"]

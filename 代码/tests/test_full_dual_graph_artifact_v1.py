@@ -14,7 +14,9 @@ if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
 from pi_jwm.full_dual_graph_artifact_v1 import (  # noqa: E402
+    E1_FIELD_NAMES,
     REQUIRED_ARTIFACT_FILES,
+    build_e1_rows,
     build_full_collector_status_flags,
     compare_replays,
     publish_atomic_bundle,
@@ -33,6 +35,16 @@ def frames(*, fixture=False):
                 "decision_snapshot": {
                     "phase": "decision",
                     "physical_edge_presence": [True, False],
+                    "physical_edges": [
+                        {"edge_id": "physical::a", "source_id": "a", "target_id": "b"},
+                        {"edge_id": "physical::b", "source_id": "b", "target_id": "a"},
+                    ],
+                    "channel_rows": [
+                        {
+                            "physical_edge_id": "physical::a",
+                            "channel_attenuation_db": [70.0, 72.0],
+                        }
+                    ],
                     "tasks": [
                         {
                             "task_id": "task0",
@@ -54,11 +66,22 @@ def frames(*, fixture=False):
                     "rb_allocations": [],
                 },
                 "decision_input_source_phases": {"channel": "decision"},
-                "e1_history": {
-                    "value": None if frame_index == 0 else [0.0, 0.0, 0.0],
-                    "valid_mask": frame_index > 0,
-                    "missing_reason": "NO_HISTORY" if frame_index == 0 else None,
-                },
+                "e1_rows": build_e1_rows(
+                    decision_snapshot={
+                        "physical_edges": [
+                            {"edge_id": "physical::a", "edge_type": "U2I"},
+                            {"edge_id": "physical::b", "edge_type": "I2U"},
+                        ],
+                        "channel_rows": [
+                            {
+                                "physical_edge_id": "physical::a",
+                                "channel_attenuation_db": [70.0, 72.0],
+                            }
+                        ],
+                    },
+                    previous_transfer_rows=None if frame_index == 0 else [],
+                    physical_edge_ids=("physical::a", "physical::b"),
+                ),
             }
         )
     return rows
@@ -75,6 +98,14 @@ VOCABULARY = {
 
 
 class TrajectoryValidationTests(unittest.TestCase):
+    def test_e1_is_exactly_five_named_fields_without_legacy_padding(self):
+        rows = frames()[1]["e1_rows"]
+        self.assertEqual(set(E1_FIELD_NAMES), set(rows[0]["fields"]))
+        self.assertEqual(5, len(rows[0]["fields"]))
+        self.assertNotIn("legacy_13", json.dumps(rows))
+        self.assertEqual(0.0, rows[0]["fields"]["prev_active_flow_count"]["value"])
+        self.assertTrue(rows[0]["fields"]["prev_active_flow_count"]["valid_mask"])
+
     def test_validates_phases_actionable_rows_history_and_presence_width(self):
         self.assertEqual([], validate_trajectory_frames(frames(), vocabulary=VOCABULARY, fixture=False))
 
@@ -109,12 +140,12 @@ class TrajectoryValidationTests(unittest.TestCase):
         bad[0]["decision_snapshot"]["physical_edges"] = [
             {"edge_id": "physical::a", "source_id": "a", "target_id": "b"}
         ]
-        bad[0]["e1_history"] = {
-            "value": [0.0, 0.0, 0.0],
+        bad[0]["e1_rows"][0]["fields"]["prev_active_flow_count"] = {
+            "value": 0.0,
             "valid_mask": True,
             "missing_reason": None,
         }
-        bad[1]["e1_history"] = {
+        bad[1]["e1_rows"][0]["fields"]["prev_effective_rate_per_s"] = {
             "value": None,
             "valid_mask": True,
             "missing_reason": None,
