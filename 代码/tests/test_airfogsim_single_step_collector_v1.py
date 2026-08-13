@@ -61,6 +61,7 @@ class FakeEnv:
     def __init__(self):
         self.task_manager = FakeTaskManager()
         self.nodes = {"veh0": FakeNode()}
+        self.calls = []
         self.communication_setter_calls = []
         self.offload_setter_calls = []
         self.activated_offloading_tasks_with_RB_Nos = {}
@@ -70,6 +71,7 @@ class FakeEnv:
         return self.nodes.get(node_id)
 
     def step(self):
+        self.calls.append("env_step")
         self.stepped = True
         if self.task_manager.compute_callback is not None:
             task = FakeTask("task0", "veh0")
@@ -81,6 +83,7 @@ class FakeEnv:
 class FakeTaskScheduler:
     @staticmethod
     def setTaskOffloading(env, task_node_id, task_id, target_node_id, route=None):
+        env.calls.append("offload_setter")
         env.offload_setter_calls.append((task_node_id, task_id, target_node_id, route))
         return True
 
@@ -88,6 +91,7 @@ class FakeTaskScheduler:
 class FakeCommunicationScheduler:
     @staticmethod
     def setCommunicationWithRB(env, task_id, rb_nos):
+        env.calls.append("rb_setter")
         env.communication_setter_calls.append((task_id, list(rb_nos)))
         env.activated_offloading_tasks_with_RB_Nos[task_id] = list(rb_nos)
 
@@ -95,10 +99,90 @@ class FakeCommunicationScheduler:
 class FakeComputationScheduler:
     @staticmethod
     def setComputingCallBack(env, callback):
+        env.calls.append("cpu_callback_installed")
         env.task_manager.compute_callback = callback
 
 
 class AirFogSimSingleStepCollectorV1Tests(unittest.TestCase):
+    def test_pre_action_observer_runs_after_validation_and_before_any_setter(self):
+        env = FakeEnv()
+        action = CandidateAction(
+            candidate_id="remote",
+            offloads=(OffloadAction("veh0", "task0", "veh0", ("veh0",)),),
+            rb_assignments=(RbAssignment(0, 0, 0, 0),),
+        )
+
+        def observe():
+            env.calls.append("decision_time_csi_read")
+            return {"channel_attenuation_db": [1.0]}
+
+        result = execute_candidate(
+            env,
+            action,
+            task_ids=("task0",),
+            node_ids=("veh0",),
+            edge_count=1,
+            flow_count=1,
+            n_rb=1,
+            task_scheduler=FakeTaskScheduler,
+            communication_scheduler=FakeCommunicationScheduler,
+            computation_scheduler=FakeComputationScheduler,
+            pre_action_observer=observe,
+        )
+
+        self.assertEqual(
+            [
+                "decision_time_csi_read",
+                "cpu_callback_installed",
+                "offload_setter",
+                "rb_setter",
+                "env_step",
+            ],
+            env.calls,
+        )
+        self.assertEqual(
+            {"channel_attenuation_db": [1.0]}, result.pre_action_observation
+        )
+        self.assertEqual(
+            (
+                "action_validated",
+                "decision_time_observation_captured",
+                "cpu_callback_installed",
+                "action_setters_called",
+                "env_step_started",
+                "env_step_finished",
+            ),
+            result.temporal_trace,
+        )
+
+    def test_invalid_action_never_calls_pre_action_observer_or_setters(self):
+        env = FakeEnv()
+        action = CandidateAction(
+            candidate_id="remote",
+            offloads=(OffloadAction("veh0", "task0", "veh0", ("veh0",)),),
+            rb_assignments=(RbAssignment(0, 0, 0, 99),),
+        )
+
+        def observe():
+            env.calls.append("decision_time_csi_read")
+            return {}
+
+        with self.assertRaisesRegex(ValueError, "resource"):
+            execute_candidate(
+                env,
+                action,
+                task_ids=("task0",),
+                node_ids=("veh0",),
+                edge_count=1,
+                flow_count=1,
+                n_rb=1,
+                task_scheduler=FakeTaskScheduler,
+                communication_scheduler=FakeCommunicationScheduler,
+                computation_scheduler=FakeComputationScheduler,
+                pre_action_observer=observe,
+            )
+        self.assertEqual([], env.calls)
+
     def test_cpu_callback_receives_candidate_compute_set_and_records_ledger(self):
         env = FakeEnv()
         recorder = SingleStepRecorder(env, candidate_id="local")

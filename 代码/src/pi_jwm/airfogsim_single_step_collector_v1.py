@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 from .airfogsim_cpu_inner_rule_v1 import allocate_airfogsim_cpu
 from .single_step_collector_contract_v1 import (
@@ -83,6 +83,8 @@ class SingleStepExecutionResult:
     candidate_id: str
     cpu_rows: tuple[dict[str, Any], ...]
     simulator_order: tuple[str, ...]
+    pre_action_observation: Any
+    temporal_trace: tuple[str, ...]
     stepped: bool
 
 
@@ -104,6 +106,7 @@ def execute_candidate(
     task_scheduler: Any | None = None,
     communication_scheduler: Any | None = None,
     computation_scheduler: Any | None = None,
+    pre_action_observer: Callable[[], Any] | None = None,
 ) -> SingleStepExecutionResult:
     """Apply one validated candidate and execute exactly one simulator step."""
 
@@ -115,11 +118,19 @@ def execute_candidate(
         n_rb=n_rb,
         node_ids=node_ids,
     )
+    temporal_trace = ["action_validated"]
+    if pre_action_observer is None:
+        pre_action_observation = None
+        temporal_trace.append("decision_time_observation_skipped")
+    else:
+        pre_action_observation = pre_action_observer()
+        temporal_trace.append("decision_time_observation_captured")
     if task_scheduler is None or communication_scheduler is None or computation_scheduler is None:
         task_scheduler, communication_scheduler, computation_scheduler = _default_scheduler_classes()
 
     recorder = SingleStepRecorder(env, action.candidate_id)
     recorder.install_cpu_callback(computation_scheduler)
+    temporal_trace.append("cpu_callback_installed")
 
     # Apply offload decisions before resource assignments, matching the public
     # scheduler boundary used by AirFogSim algorithms.
@@ -143,7 +154,10 @@ def execute_candidate(
     for task_id, rb_nos in sorted(rb_by_task.items()):
         communication_scheduler.setCommunicationWithRB(env, task_id, rb_nos)
 
+    temporal_trace.append("action_setters_called")
+    temporal_trace.append("env_step_started")
     env.step()
+    temporal_trace.append("env_step_finished")
     recorder.finalize_after_step()
     return SingleStepExecutionResult(
         candidate_id=action.candidate_id,
@@ -157,5 +171,7 @@ def execute_candidate(
             "energy",
             "time_advance",
         ),
+        pre_action_observation=pre_action_observation,
+        temporal_trace=tuple(temporal_trace),
         stepped=True,
     )
