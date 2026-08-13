@@ -19,6 +19,7 @@ class SingleStepRecorder:
     env: Any
     candidate_id: str
     cpu_rows: list[dict[str, Any]] = field(default_factory=list)
+    _task_refs: dict[str, Any] = field(default_factory=dict, repr=False)
 
     def install_cpu_callback(self, computation_scheduler: Any) -> None:
         def callback(computing_tasks: Mapping[str, list[Any]]) -> dict[str, float]:
@@ -32,6 +33,13 @@ class SingleStepRecorder:
                 for node_tasks in computing_tasks.values()
                 for task in node_tasks
             }
+            self._task_refs.update(
+                {
+                    str(task.getTaskId()): task
+                    for node_tasks in computing_tasks.values()
+                    for task in node_tasks
+                }
+            )
             decision = allocate_airfogsim_cpu(self.env, computing_tasks)
             self.cpu_rows.append(
                 {
@@ -44,12 +52,30 @@ class SingleStepRecorder:
                     "served_work": {
                         row.task_id: row.served_work for row in decision.decision.allocations
                     },
+                    "node_summaries": [
+                        {
+                            "node_id": summary.node_id,
+                            "capacity": summary.capacity,
+                            "total_demand_rate": summary.total_demand_rate,
+                            "total_allocated_cpu": summary.total_allocated_cpu,
+                            "water_level": summary.water_level,
+                            "task_count": summary.task_count,
+                        }
+                        for summary in decision.decision.node_summaries
+                    ],
                 }
             )
             return decision.allocations
 
         callback.__name__ = "pi_jwm_single_step_cpu_callback_v1"
         computation_scheduler.setComputingCallBack(self.env, callback)
+
+    def finalize_after_step(self) -> None:
+        for row in self.cpu_rows:
+            row["computed_after"] = {
+                task_id: float(self._task_refs[task_id].getComputedSize())
+                for task_id in row["task_ids"]
+            }
 
 
 @dataclass(frozen=True)
@@ -118,6 +144,7 @@ def execute_candidate(
         communication_scheduler.setCommunicationWithRB(env, task_id, rb_nos)
 
     env.step()
+    recorder.finalize_after_step()
     return SingleStepExecutionResult(
         candidate_id=action.candidate_id,
         cpu_rows=tuple(recorder.cpu_rows),

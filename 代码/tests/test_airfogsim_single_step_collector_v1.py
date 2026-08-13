@@ -71,6 +71,10 @@ class FakeEnv:
 
     def step(self):
         self.stepped = True
+        if self.task_manager.compute_callback is not None:
+            task = FakeTask("task0", "veh0")
+            task._computed = 0.5
+            self.task_manager.compute_callback({"veh0": [task]})
         return False
 
 
@@ -105,6 +109,7 @@ class AirFogSimSingleStepCollectorV1Tests(unittest.TestCase):
         self.assertEqual(allocations, {"task0": 2.0})
         self.assertEqual(recorder.cpu_rows[0]["rule_version"], "PIJWM-CPU-Inner-Rule-v1")
         self.assertEqual(recorder.cpu_rows[0]["task_ids"], ["task0"])
+        self.assertEqual(recorder.cpu_rows[0]["node_summaries"][0]["capacity"], 2.0)
 
     def test_invalid_rb_is_rejected_before_airfogsim_setter(self):
         env = FakeEnv()
@@ -151,6 +156,7 @@ class AirFogSimSingleStepCollectorV1Tests(unittest.TestCase):
         self.assertTrue(env.stepped)
         self.assertEqual(result.candidate_id, "local")
         self.assertEqual(env.offload_setter_calls[0][1], "task0")
+        self.assertEqual(result.cpu_rows[0]["computed_after"], {"task0": 0.5})
 
 
 if __name__ == "__main__":

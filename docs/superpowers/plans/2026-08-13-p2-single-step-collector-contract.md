@@ -97,7 +97,7 @@ Expected: FAIL because the adapter does not exist.
 
 - [ ] **Step 3: Implement the adapter around real simulator boundaries**
 
-Implement a `SingleStepRecorder`/`execute_candidate` path that: (a) validates the candidate first; (b) calls `TaskScheduler.setTaskOffloading` and `CommunicationScheduler.setCommunicationWithRB`; (c) wraps the existing `make_airfogsim_cpu_callback` and records the exact computing-task IDs, before/after CPU work, allocations, and rule version; (d) instruments the real `AirFogSimEnv._compute_communication_rate`/`_execute_communication` boundary to record direct per-RB CSI, rate, outage, remaining-before, and delivered data when available; (e) calls exactly one real `env.step()` and records the documented simulator order; (f) builds E0/E1/action/outcome/ledger records using `MissingReason.NO_HISTORY` or `NOT_COLLECTED` rather than zero-as-valid; and (g) raises on any required validation failure. A local target must use AirFogSim's own `offloadTask` behavior, so it enters the compute set immediately; a remote target remains a communication task if the simulator does not complete it in the slot. Do not modify `代码/reference/AirFogSim`.
+Implement a `SingleStepRecorder`/`execute_candidate` path that: (a) validates the candidate first; (b) calls `TaskScheduler.setTaskOffloading` and `CommunicationScheduler.setCommunicationWithRB`; (c) wraps the frozen CPU callback and records the exact computing-task IDs, before/after CPU work, allocations, and rule version; (d) instruments the real `AirFogSimEnv._compute_communication_rate`/`_execute_communication` boundary to record direct per-RB CSI, rate, outage, remaining-before, and delivered data when available; (e) calls exactly one real `env.step()` and records the documented simulator order; (f) builds E0/E1/action/outcome/ledger records using `MissingReason.NO_HISTORY` or `NOT_COLLECTED` rather than zero-as-valid; and (g) raises on any required validation failure. Candidate-specific compute sets must come from AirFogSim's own communication/task state transitions. Do not modify `代码/reference/AirFogSim`.
 
 - [ ] **Step 4: Add contract validation for the recorded bundle**
 
@@ -146,7 +146,7 @@ Expected: FAIL because the runner does not exist.
 
 - [ ] **Step 3: Implement deterministic two-candidate CPU preflight**
 
-Use the real AirFogSim example configuration and one fixed seed per candidate. Construct two independent environments from the same seed/configuration, warm them identically until a valid task is in `_waiting_to_offload_tasks`, then run one local-target candidate and one remote-target/RB candidate. Require a common pre-action snapshot hash. Write the nine files in the design document, include source hashes and test command hashes in `manifest.json`, and set `single_step_real_airfogsim_executed` true only after both `env.step()` calls complete and comparison evidence is present. Never write a successful artifact if the candidate difference is not observable; write `validation_report.json` with failure and exit nonzero instead.
+Use the real AirFogSim example configuration and one fixed seed per candidate. Construct two independent environments from the same seed/configuration, warm them identically until a valid task is in `_waiting_to_offload_tasks`, then run two remote-target candidates with an identical all-RB COO assignment and change only the target node. This replaces the initial local/remote idea after self-review showed that local execution makes RB non-applicable and therefore changes two action components. Require common pre-action environment and RNG-state hashes, positive direct transfer, same-slot arrival in each target compute set, and CPU execution on the selected target. Write the nine files in the design document, include source hashes in `manifest.json`, and set `single_step_real_airfogsim_executed` true only after both `env.step()` calls complete and comparison evidence is present. Never write a successful artifact if the candidate difference is not observable.
 
 - [ ] **Step 4: Run the fake runner test**
 
@@ -202,5 +202,5 @@ git commit -m "docs: record P2 single-step preflight evidence"
 
 - The plan never calls the collector a dataset generator or planner.
 - Every action enters AirFogSim through its existing scheduler APIs, and invalid RBs are rejected before the simulator's modulo behavior.
-- The local/remote candidate difference is measured from simulator state and events; no synthetic task size, rate, or CPU delta is introduced.
+- The two remote candidates use identical RB COO records and differ only in offload target; no synthetic task size, rate, or CPU delta is introduced.
 - GPU, long training, locked tests, and final-method freezing remain explicitly out of scope until a later theory-code-data consistency audit passes.
