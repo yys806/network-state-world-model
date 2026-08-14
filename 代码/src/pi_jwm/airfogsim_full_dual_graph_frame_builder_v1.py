@@ -345,6 +345,12 @@ def build_frame_decision(
     flows_by_id: dict[str, LogicalFlow] = {}
     hops_by_id: dict[str, CarryingHop] = {}
     setter_by_task: dict[str, bool] = {}
+    task_lifecycle_by_id = {task.task_id: task.lifecycle for task in ordered_tasks}
+    predecessors_by_task: dict[str, set[str]] = {}
+    for dag_edge in snapshot.dag_edges:
+        predecessors_by_task.setdefault(dag_edge.target_task_id, set()).add(
+            dag_edge.source_task_id
+        )
     waiting_ordinal = 0
     for row in ordered_tasks:
         if row.lifecycle not in _ACTIONABLE:
@@ -353,6 +359,46 @@ def build_frame_decision(
         if row.lifecycle == TaskLifecycle.WAITING_TO_OFFLOAD:
             requested_family = target_family_for_ordinal(frame_index + waiting_ordinal)
             waiting_ordinal += 1
+            predecessor_states = tuple(
+                task_lifecycle_by_id.get(task_id)
+                for task_id in sorted(predecessors_by_task.get(row.task_id, ()))
+            )
+            if any(state == TaskLifecycle.FAILED for state in predecessor_states):
+                decisions.append(
+                    DecisionRow(
+                        row.task_id,
+                        row.lifecycle,
+                        False,
+                        "dependency_failed",
+                        None,
+                        (),
+                        None,
+                        None,
+                        requested_family,
+                        None,
+                        False,
+                    )
+                )
+                setter_by_task[row.task_id] = False
+                continue
+            if any(state != TaskLifecycle.DONE for state in predecessor_states):
+                decisions.append(
+                    DecisionRow(
+                        row.task_id,
+                        row.lifecycle,
+                        False,
+                        "dependency_not_satisfied",
+                        None,
+                        (),
+                        None,
+                        None,
+                        requested_family,
+                        None,
+                        False,
+                    )
+                )
+                setter_by_task[row.task_id] = False
+                continue
         decision, flow, hop, requires_route_setter = _initial_decision(
             row,
             snapshot=snapshot,

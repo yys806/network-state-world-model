@@ -245,6 +245,33 @@ class AirFogSimFullObserverTests(unittest.TestCase):
         outcome = observe_airfogsim_snapshot(env, phase=SnapshotPhase.OUTCOME)
         self.assertEqual((), outcome.channel_rows)
 
+    def test_initial_structure_keeps_edge_and_masks_csi_when_node_index_is_unavailable(self):
+        env = fake_observer_env()
+        env.UAVs = {"u0": FakeNode((2.0, 0.0, 0.0))}
+
+        def index(node_id):
+            if node_id == "u0":
+                raise ValueError("u0 is not in list")
+            return 0
+
+        env._getNodeIdxById = index
+
+        snapshot = observe_airfogsim_snapshot(env, phase=SnapshotPhase.DECISION)
+        row = next(
+            item
+            for item in snapshot.channel_rows
+            if item["source_id"] == "v0" and item["target_id"] == "u0"
+        )
+
+        self.assertIn(
+            ("v0", "u0"),
+            {(edge.source_id, edge.target_id) for edge in snapshot.physical_edges},
+        )
+        self.assertIs(row["observed_mask"], False)
+        self.assertEqual((), row["channel_attenuation_db"])
+        self.assertEqual("NODE_INDEX_UNAVAILABLE_AT_DECISION", row["missing_reason"])
+        self.assertIsNone(row["source_method"])
+
     def test_execution_hook_captures_after_traffic_before_task_and_restores(self):
         trace = ["decision_snapshot_captured"]
 

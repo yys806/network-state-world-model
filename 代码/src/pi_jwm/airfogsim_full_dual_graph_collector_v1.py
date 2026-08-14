@@ -110,6 +110,42 @@ def _flow_task_ids(action: JointFrameAction) -> dict[str, str]:
     return {flow.flow_id: flow.task_id for flow in action.flows}
 
 
+def _install_lifecycle_alias_guard(manager):
+    method_name = "getOffloadingTasksWithNumber"
+    instance_attributes = vars(manager)
+    had_instance_override = method_name in instance_attributes
+    previous_instance_value = instance_attributes.get(method_name)
+
+    def copied_lookup():
+        rows = {
+            node_id: list(tasks)
+            for node_id, tasks in manager._offloading_tasks.items()
+        }
+        for node_id, tasks in manager._returning_tasks.items():
+            rows.setdefault(node_id, []).extend(list(tasks))
+        return rows, sum(len(tasks) for tasks in rows.values())
+
+    setattr(manager, method_name, copied_lookup)
+
+    def restore():
+        if had_instance_override:
+            setattr(manager, method_name, previous_instance_value)
+        else:
+            delattr(manager, method_name)
+
+    return restore
+
+
+def _allocate_communication_rbs_without_lifecycle_alias(env, rb_assignments):
+    """Call AirFogSim allocation through copied lifecycle lists."""
+
+    restore = _install_lifecycle_alias_guard(env.task_manager)
+    try:
+        return env._allocate_communication_RBs(rb_assignments)
+    finally:
+        restore()
+
+
 def _capture_wireless_profile_rows(
     env,
     activated_profiles: dict[str, dict[str, object]],
@@ -422,7 +458,8 @@ def execute_full_collector_step(
         )
     ):
         def observed_wireless():
-            activated = env._allocate_communication_RBs(
+            activated = _allocate_communication_rbs_without_lifecycle_alias(
+                env,
                 env.activated_offloading_tasks_with_RB_Nos
             )
             env._compute_communication_rate(activated)
@@ -433,6 +470,7 @@ def execute_full_collector_step(
             apply_transmission_totals(env.channel_manager, sending, receiving)
 
         env._updateWirelessCommunication = observed_wireless
+        trace.append("airfogsim_lifecycle_alias_guard_installed")
 
     if callable(original_wired_step):
         def observed_wired_step(interval):
@@ -446,6 +484,7 @@ def execute_full_collector_step(
 
     execution_snapshot: AirFogSimSnapshot | None = None
     outcome_snapshot: AirFogSimSnapshot | None = None
+    restore_lifecycle_lookup = _install_lifecycle_alias_guard(env.task_manager)
     try:
         def execution_observer():
             snapshot = observer(env, phase=SnapshotPhase.EXECUTION)
@@ -463,6 +502,7 @@ def execute_full_collector_step(
         outcome_snapshot = observer(env, phase=SnapshotPhase.OUTCOME)
         trace.append("outcome_snapshot_captured")
     finally:
+        restore_lifecycle_lookup()
         if callable(original_wireless):
             env._updateWirelessCommunication = original_wireless
         if callable(original_wired_step):

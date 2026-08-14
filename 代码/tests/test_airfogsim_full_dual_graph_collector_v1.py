@@ -5,6 +5,7 @@ import sys
 import unittest
 from dataclasses import replace
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 
@@ -15,6 +16,7 @@ for path in (CODE_ROOT / "src", CODE_ROOT / "scripts"):
         sys.path.insert(0, str(path))
 
 from pi_jwm.airfogsim_full_dual_graph_collector_v1 import (  # noqa: E402
+    _allocate_communication_rbs_without_lifecycle_alias,
     execute_full_collector_step,
 )
 from pi_jwm.airfogsim_full_dual_graph_frame_builder_v1 import (  # noqa: E402
@@ -40,6 +42,42 @@ from pi_jwm.full_dual_graph_vocabulary_v1 import (  # noqa: E402
     RouteRevisionLedger,
 )
 import run_p2_single_step_collector_preflight_v1 as p2_runner  # noqa: E402
+
+
+class AirFogSimAliasGuardTests(unittest.TestCase):
+    def test_returning_lookup_cannot_append_into_offloading_lifecycle_collection(self):
+        offloading_task = object()
+        returning_task = object()
+
+        class Manager:
+            def __init__(self):
+                self._offloading_tasks = {"same-node": [offloading_task]}
+                self._returning_tasks = {"same-node": [returning_task]}
+
+            def getOffloadingTasksWithNumber(self):
+                rows = dict(self._offloading_tasks)
+                for node_id, tasks in self._returning_tasks.items():
+                    combined = rows.get(node_id, [])
+                    combined.extend(tasks)
+                    rows[node_id] = combined
+                return rows, sum(len(tasks) for tasks in rows.values())
+
+        manager = Manager()
+
+        def allocate(_):
+            rows, _ = manager.getOffloadingTasksWithNumber()
+            return rows
+
+        env = SimpleNamespace(
+            task_manager=manager,
+            _allocate_communication_RBs=allocate,
+        )
+
+        rows = _allocate_communication_rbs_without_lifecycle_alias(env, {})
+
+        self.assertEqual([offloading_task, returning_task], rows["same-node"])
+        self.assertEqual([offloading_task], manager._offloading_tasks["same-node"])
+        self.assertEqual([returning_task], manager._returning_tasks["same-node"])
 
 
 class FakeNode:

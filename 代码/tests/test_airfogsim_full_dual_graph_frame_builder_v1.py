@@ -163,6 +163,42 @@ class LifecycleDecisionTests(unittest.TestCase):
             ],
         )
 
+    def test_waiting_offload_with_unfinished_or_failed_parent_is_not_sent_to_setter(self):
+        unfinished = build(
+            snapshot(
+                [
+                    task("parent", TaskLifecycle.TO_GENERATE),
+                    task("child", TaskLifecycle.WAITING_TO_OFFLOAD),
+                ]
+            ),
+            frame_index=1,
+        )
+        failed = build(
+            snapshot(
+                [
+                    task("parent", TaskLifecycle.FAILED),
+                    task("child", TaskLifecycle.WAITING_TO_OFFLOAD),
+                ]
+            ),
+            frame_index=1,
+        )
+
+        unfinished_child = next(
+            row for row in unfinished.action.decisions if row.task_id == "child"
+        )
+        failed_child = next(
+            row for row in failed.action.decisions if row.task_id == "child"
+        )
+        self.assertFalse(unfinished_child.selected)
+        self.assertEqual("dependency_not_satisfied", unfinished_child.reason)
+        self.assertFalse(failed_child.selected)
+        self.assertEqual("dependency_failed", failed_child.reason)
+        self.assertFalse(
+            next(
+                row for row in unfinished.lifecycle_rows if row["task_id"] == "child"
+            )["requires_route_setter"]
+        )
+
     def test_offloading_and_returning_preserve_current_route_without_new_route_action(self):
         built = build(
             snapshot(

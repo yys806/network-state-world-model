@@ -111,9 +111,29 @@ def _physical_structure(
             # all-structure CSI view. Same-slot active-RB outcome values come
             # from the communication hook before transfer.
             if phase == SnapshotPhase.DECISION:
+                try:
+                    source_index = env._getNodeIdxById(source_id)
+                    target_index = env._getNodeIdxById(target_id)
+                except (ValueError, IndexError):
+                    channel_rows.append(
+                        {
+                            "physical_edge_id": edge_id,
+                            "source_id": source_id,
+                            "target_id": target_id,
+                            "channel_type": edge_type,
+                            "rb_indices": tuple(range(int(env.channel_manager.n_RB))),
+                            "channel_attenuation_db": (),
+                            "observed_mask": False,
+                            "missing_reason": "NODE_INDEX_UNAVAILABLE_AT_DECISION",
+                            "capture_phase": phase.value,
+                            "simulation_time": float(env.simulation_time),
+                            "source_method": None,
+                        }
+                    )
+                    continue
                 csi = env.channel_manager.getCSI(
-                    env._getNodeIdxById(source_id),
-                    env._getNodeIdxById(target_id),
+                    source_index,
+                    target_index,
                     source_type,
                     target_type,
                 )
@@ -125,6 +145,8 @@ def _physical_structure(
                         "channel_type": edge_type,
                         "rb_indices": tuple(range(int(env.channel_manager.n_RB))),
                         "channel_attenuation_db": _plain_vector(csi),
+                        "observed_mask": True,
+                        "missing_reason": None,
                         "capture_phase": phase.value,
                         "simulation_time": float(env.simulation_time),
                         "source_method": "channel_manager.getCSI",
