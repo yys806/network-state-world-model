@@ -8,7 +8,7 @@
 
 **Tech Stack:** Python 3.10, `dataclasses`, `enum`, `hashlib`, `json`, `pathlib`, NumPy, `unittest`, existing PI-JWM v4 field validators, AirFogSim CPU environment.
 
-**Execution status (2026-08-14):** Tasks 1--9 are complete through commit `f792287` plus the tracked documentation update that follows it. The canonical ignored bundle passed independent verification. Task 10 final integration audit remains pending; the detailed checkboxes below preserve the original execution recipe rather than serving as the authoritative status ledger.
+**Execution status (2026-08-14):** Tasks 1--9 are implemented. Task 10 self-review found that the first canonical manifest hashed only eight newly added sources and therefore did not satisfy the frozen direct/transitive source, test, design, and configuration closure. The remediation expands the canonical matrix to 116 files and adds a RED-then-GREEN regression. The old bundle must be archived and regenerated after this tracked plan/design state is committed; completion is determined by the regenerated canonical manifest and fresh verifier output. Integration into `main` remains pending explicit user direction. The detailed checkboxes below preserve the original execution recipe rather than serving as the authoritative status ledger.
 
 ---
 

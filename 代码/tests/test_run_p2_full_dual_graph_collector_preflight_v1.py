@@ -75,6 +75,42 @@ class RunnerContractTests(unittest.TestCase):
 
 
 class RunnerManifestTests(unittest.TestCase):
+    def test_canonical_manifest_binds_runtime_test_design_and_config_closure(self):
+        project_root = runner.CODE_ROOT.parent
+        required_paths = {
+            runner.CODE_ROOT / "scripts" / "run_p2_single_step_collector_preflight_v1.py",
+            runner.CODE_ROOT / "scripts" / "small_experiments" / "airfogsim_strict_dual_graph_preflight.py",
+            runner.CODE_ROOT / "src" / "pi_jwm" / "airfogsim_contract_adapter.py",
+            runner.CODE_ROOT / "src" / "pi_jwm" / "airfogsim_single_step_collector_v1.py",
+            runner.CODE_ROOT / "src" / "pi_jwm" / "airfogsim_cpu_inner_rule_v1.py",
+            runner.CODE_ROOT / "src" / "pi_jwm" / "cpu_inner_rule_v1.py",
+            runner.CODE_ROOT / "src" / "pi_jwm" / "information_edge_contract_v4.py",
+            runner.CODE_ROOT / "src" / "pi_jwm" / "single_step_collector_contract_v1.py",
+            runner.CODE_ROOT / "tests" / "test_run_p2_full_dual_graph_collector_preflight_v1.py",
+            project_root / "docs" / "superpowers" / "plans" / "2026-08-13-v4-full-dual-graph-collector.md",
+            project_root / "文档" / "研究进展" / "2026-08-13-PI-JWM-v4全双图采集器设计.md",
+            runner.CODE_ROOT / "reference" / "AirFogSim" / "examples" / "config.yaml",
+        }
+        airfogsim_sources = set(
+            (runner.CODE_ROOT / "reference" / "AirFogSim" / "airfogsim").rglob("*.py")
+        )
+        canonical_paths = set(runner.CANONICAL_SOURCE_PATHS)
+        self.assertTrue(required_paths.issubset(canonical_paths))
+        self.assertTrue(airfogsim_sources.issubset(canonical_paths))
+
+        payloads = runner.fake_passing_payloads_for_test()
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "bundle"
+            runner.publish_preflight_bundle(
+                output,
+                payloads,
+                source_paths=runner.CANONICAL_SOURCE_PATHS,
+                allow_test_payload=True,
+            )
+            manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+            expected_keys = set(runner._source_keys(runner.CANONICAL_SOURCE_PATHS))
+            self.assertEqual(expected_keys, set(manifest["source_hashes"]))
+
     def test_verify_only_detects_frame_and_source_tampering(self):
         payloads = runner.fake_passing_payloads_for_test()
         with tempfile.TemporaryDirectory() as temporary:

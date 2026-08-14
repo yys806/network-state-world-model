@@ -21,7 +21,9 @@ from typing import Mapping, Sequence
 
 
 CODE_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = CODE_ROOT.parent
 SRC_ROOT = CODE_ROOT / "src"
+REFERENCE_ROOT = CODE_ROOT / "reference" / "AirFogSim"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
@@ -70,8 +72,10 @@ REQUIRED_FIXTURES = (
 DEFAULT_OUTPUT_DIR = (
     CODE_ROOT / "artifacts" / "preflight" / "pi_jwm_p2_full_dual_graph_collector_v1"
 )
-CANONICAL_SOURCE_PATHS = (
+_CANONICAL_PI_JWM_RUNTIME_PATHS = (
     Path(__file__).resolve(),
+    CODE_ROOT / "scripts" / "run_p2_single_step_collector_preflight_v1.py",
+    CODE_ROOT / "scripts" / "small_experiments" / "airfogsim_strict_dual_graph_preflight.py",
     SRC_ROOT / "pi_jwm" / "full_dual_graph_collector_contract_v1.py",
     SRC_ROOT / "pi_jwm" / "full_dual_graph_vocabulary_v1.py",
     SRC_ROOT / "pi_jwm" / "full_dual_graph_coverage_v1.py",
@@ -79,6 +83,50 @@ CANONICAL_SOURCE_PATHS = (
     SRC_ROOT / "pi_jwm" / "airfogsim_full_dual_graph_frame_builder_v1.py",
     SRC_ROOT / "pi_jwm" / "airfogsim_full_dual_graph_collector_v1.py",
     SRC_ROOT / "pi_jwm" / "full_dual_graph_artifact_v1.py",
+    SRC_ROOT / "pi_jwm" / "airfogsim_contract_adapter.py",
+    SRC_ROOT / "pi_jwm" / "airfogsim_single_step_collector_v1.py",
+    SRC_ROOT / "pi_jwm" / "airfogsim_cpu_inner_rule_v1.py",
+    SRC_ROOT / "pi_jwm" / "cpu_inner_rule_v1.py",
+    SRC_ROOT / "pi_jwm" / "information_edge_contract_v4.py",
+    SRC_ROOT / "pi_jwm" / "single_step_collector_contract_v1.py",
+)
+_CANONICAL_TEST_PATHS = (
+    CODE_ROOT / "tests" / "test_full_dual_graph_collector_contract_v1.py",
+    CODE_ROOT / "tests" / "test_full_dual_graph_vocabulary_v1.py",
+    CODE_ROOT / "tests" / "test_full_dual_graph_coverage_v1.py",
+    CODE_ROOT / "tests" / "test_airfogsim_full_dual_graph_observer_v1.py",
+    CODE_ROOT / "tests" / "test_airfogsim_full_dual_graph_frame_builder_v1.py",
+    CODE_ROOT / "tests" / "test_airfogsim_full_dual_graph_collector_v1.py",
+    CODE_ROOT / "tests" / "test_full_dual_graph_artifact_v1.py",
+    CODE_ROOT / "tests" / "test_run_p2_full_dual_graph_collector_preflight_v1.py",
+    CODE_ROOT / "tests" / "test_information_edge_contract_v4.py",
+    CODE_ROOT / "tests" / "test_single_step_collector_contract_v1.py",
+    CODE_ROOT / "tests" / "test_airfogsim_single_step_collector_v1.py",
+    CODE_ROOT / "tests" / "test_run_p2_single_step_collector_preflight_v1.py",
+    CODE_ROOT / "tests" / "test_multistep_collector_contract_v1.py",
+    CODE_ROOT / "tests" / "test_run_p2_multistep_collector_preflight_v1.py",
+    CODE_ROOT / "tests" / "small_experiments" / "test_airfogsim_strict_dual_graph_preflight.py",
+)
+_CANONICAL_DESIGN_PATHS = (
+    PROJECT_ROOT / "docs" / "superpowers" / "plans" / "2026-08-13-v4-full-dual-graph-collector.md",
+    PROJECT_ROOT / "文档" / "研究进展" / "2026-08-13-PI-JWM-v4全双图采集器设计.md",
+)
+_CANONICAL_REFERENCE_CONFIG_PATHS = (
+    REFERENCE_ROOT / "examples" / "config.yaml",
+    REFERENCE_ROOT / "examples" / "sumo_wujiaochang" / "osm.net.xml",
+    REFERENCE_ROOT / "examples" / "sumo_wujiaochang" / "osm.sumocfg",
+)
+_CANONICAL_AIRFOGSIM_SOURCE_PATHS = tuple(
+    sorted((REFERENCE_ROOT / "airfogsim").rglob("*.py"), key=lambda path: path.as_posix())
+)
+CANONICAL_SOURCE_PATHS = tuple(
+    dict.fromkeys(
+        _CANONICAL_PI_JWM_RUNTIME_PATHS
+        + _CANONICAL_TEST_PATHS
+        + _CANONICAL_DESIGN_PATHS
+        + _CANONICAL_REFERENCE_CONFIG_PATHS
+        + _CANONICAL_AIRFOGSIM_SOURCE_PATHS
+    )
 )
 
 
