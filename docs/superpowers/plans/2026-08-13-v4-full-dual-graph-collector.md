@@ -8,6 +8,8 @@
 
 **Tech Stack:** Python 3.10, `dataclasses`, `enum`, `hashlib`, `json`, `pathlib`, NumPy, `unittest`, existing PI-JWM v4 field validators, AirFogSim CPU environment.
 
+**Execution status (2026-08-14):** Tasks 1--9 are complete through commit `f792287` plus the tracked documentation update that follows it. The canonical ignored bundle passed independent verification. Task 10 final integration audit remains pending; the detailed checkboxes below preserve the original execution recipe rather than serving as the authoritative status ledger.
+
 ---
 
 ## Fixed Scope and Safety Boundary
