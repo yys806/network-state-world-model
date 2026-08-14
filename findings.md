@@ -68,3 +68,11 @@ Each policy must report global RMSE, execution/defer count, realized positive-be
 - Link RMSE improved by 0.574%, and activity F1 dropped only 0.000086.
 - The result is B-grade because it is in [200, 213.160874). It passes the general validation safety gate but does not meet the pre-registered <200 A-grade gate, so external seeds 60-69 remain locked.
 - Token ranker, candidate-specific experts, learned residual routing, phase smoothing, estimator ensembles, and phase-restricted kNN all failed to improve over the exact phase table. These failed routes are retained as diagnostic evidence rather than hidden.
+
+## P2-C Advisor-Document Manifest Binding
+
+- The previous P2-C canonical manifest bound six source files but omitted the advisor-facing P2-C research-progress document. Therefore document tampering did not invalidate `--verify-only`.
+- A RED test demonstrated both failures directly: the portable document key was absent, and a modified project-local copy still verified successfully.
+- Adding only the research-progress document to `CANONICAL_SOURCE_PATHS` closed both failures without changing the verifier, audit statistics, candidate formal-data configuration, or status gates.
+- The rebuilt canonical differs semantically only in manifest provenance: it adds the portable document key and updates hashes for the modified runner and test. The audit report and candidate config retain SHA-256 values `9c0104d5d589d0c1248663c7e2bbc8739cf4ca3f9241bf53fd0e5efa802c2477` and `6f9b7b7342fe9f326e4216e8dbd073504c0e83fbdbd8b1b7b1a63802f6bf75e0`.
+- This evidence closure does not approve formal data: `formal_data_approved=false`, audit status remains `blocked`, and all four pre-existing blockers remain.

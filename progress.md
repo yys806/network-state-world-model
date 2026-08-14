@@ -31,3 +31,11 @@
 - Added the reusable phase selector module, formal runner, decision trace, statistics cache, and freeze report using TDD.
 - Formal runner reproduced validation RMSE 207.5398777 and freeze digest `887331b2...454a2` without warnings.
 - Final verification passed: 722/722 main tests, 84/84 script tests, compileall, and diff checks.
+
+## 2026-08-14 P2-C Advisor-Document Manifest Binding
+
+- Added two RED assertions: the canonical manifest must include the P2-C research-progress document, and changing a temporary project-local copy must produce `source hash mismatch`. Both failed for the intended missing-binding reason before implementation.
+- Added exactly one production dependency path to `CANONICAL_SOURCE_PATHS`; the P2-C test pair then passed 9/9, with compile, Ruff, and diff checks clean.
+- Published a candidate audit, verified it, confirmed the audit report and candidate config were byte-identical to the prior canonical, archived the prior canonical, and promoted the candidate.
+- Fresh evidence gate: P2-B `--verify-only` passed, P2-C `--verify-only` passed, AirFogSim manifest dependencies matched 83/83, and the 17-module focused suite passed 159/159 under `PYTHONUTF8=1`.
+- Status remains `blocked` with four unchanged reasons; no GPU, locked test, formal trajectory generation, or third-party source modification occurred.

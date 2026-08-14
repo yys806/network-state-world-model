@@ -36,6 +36,10 @@ CANONICAL_SOURCE_PATHS = (
     CODE_ROOT / "tests" / "test_run_p2c_scale_distribution_audit_v1.py",
     PROJECT_ROOT / "docs" / "superpowers" / "plans" / "2026-08-14-p2-c-scale-distribution-audit.md",
     PROJECT_ROOT / "文档" / "研究进展" / "2026-08-13-PI-JWM-v4全双图采集器设计.md",
+    PROJECT_ROOT
+    / "文档"
+    / "研究进展"
+    / "2026-08-14-PI-JWM-P2-C正式数据规模与分布审计.md",
 )
 
 

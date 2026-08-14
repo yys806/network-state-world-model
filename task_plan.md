@@ -25,6 +25,17 @@ Use train/calibration/validation only to diagnose and improve the candidate sele
 | 7. Freeze on validation and evaluate external holdout once | complete | A gate not met; external was correctly kept locked and unaccessed |
 | 8. Update report artifacts and PPT data placeholders | complete | CSV/JSON/NPZ/figures, manifest, and six-page PPT planning text updated |
 
+## 2026-08-14 P2-C Advisor-Document Manifest Binding
+
+| Task | Status | Evidence |
+|---|---|---|
+| RED: prove the progress document is not bound | complete | 2/2 focused tests failed for the expected missing-key and tamper-not-detected reasons |
+| GREEN: add one canonical source path | complete | P2-C test pair passed 9/9; Python compile, Ruff, and diff checks passed |
+| Rebuild and promote canonical audit | complete | Core audit/config JSON stayed byte-identical; old canonical was archived; promoted `--verify-only` passed |
+| Complete evidence gate | complete | P2-B/P2-C verify passed, AirFogSim 83/83 matched, focused suite passed 159/159 |
+
+The four P2-C blockers remain unchanged: `action_rejection_rate_not_observed`, `scenario_matrix_not_frozen`, `formal_scale_not_frozen`, and `formal_split_not_frozen`. No GPU task, formal trajectory generation, or locked-test access is authorized by this closure.
+
 ## Outcome
 
 - Best validation result: B-grade RMSE 207.5399 versus 233.7162 ranked baseline.
