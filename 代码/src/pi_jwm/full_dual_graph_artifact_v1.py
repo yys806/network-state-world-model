@@ -410,9 +410,9 @@ def _write_jsonl(path: Path, rows: object) -> None:
 
 def _portable_source_key(path: Path, common_root: Path) -> str:
     try:
-        return path.resolve().relative_to(common_root).as_posix()
+        return path.absolute().relative_to(common_root).as_posix()
     except ValueError:
-        return path.resolve().as_posix()
+        return path.absolute().as_posix()
 
 
 def publish_atomic_bundle(
@@ -436,7 +436,10 @@ def publish_atomic_bundle(
         raise ValueError("replay report did not pass")
     if output_dir.exists():
         raise FileExistsError(f"refusing to overwrite artifact directory: {output_dir}")
-    sources = tuple(Path(path).resolve() for path in source_paths)
+    # Preserve the project-logical path through a junction.  ``resolve()`` would
+    # rewrite the AirFogSim junction to the main checkout and make otherwise
+    # project-relative manifest keys depend on the temporary worktree name.
+    sources = tuple(Path(path).absolute() for path in source_paths)
     if not sources:
         raise ValueError("source_paths must not be empty")
     for source in sources:

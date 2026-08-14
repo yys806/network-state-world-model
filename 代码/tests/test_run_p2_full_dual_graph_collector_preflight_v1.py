@@ -110,6 +110,11 @@ class RunnerManifestTests(unittest.TestCase):
             manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
             expected_keys = set(runner._source_keys(runner.CANONICAL_SOURCE_PATHS))
             self.assertEqual(expected_keys, set(manifest["source_hashes"]))
+            self.assertTrue(all(not key.startswith(".worktrees/") for key in expected_keys))
+            self.assertIn(
+                "代码/reference/AirFogSim/airfogsim/airfogsim_env.py",
+                expected_keys,
+            )
 
     def test_verify_only_detects_frame_and_source_tampering(self):
         payloads = runner.fake_passing_payloads_for_test()

@@ -1272,7 +1272,7 @@ def _sha256(path: Path) -> str:
 
 
 def _source_keys(source_paths: Sequence[Path]) -> dict[str, Path]:
-    sources = tuple(Path(path).resolve() for path in source_paths)
+    sources = tuple(Path(path).absolute() for path in source_paths)
     if not sources:
         return {}
     common_root = Path(os.path.commonpath([str(path) for path in sources]))
