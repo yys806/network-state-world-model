@@ -190,6 +190,76 @@ class FormalAirFogSimRuntimeTests(unittest.TestCase):
         self.assertIs(original_build, preflight.build_preflight_config)
         self.assertIs(original_install, evidence.install_capacity_safe_cpu_callback)
 
+    def test_wrapper_accepts_custom_allocator_factory_without_changing_default_path(self):
+        subject = load_subject()
+        from pi_jwm.formal_airfogsim_dataset_v1 import build_formal_trajectory_specs
+
+        spec = build_formal_trajectory_specs()[0]
+        calls = []
+
+        class CustomAllocator:
+            def __init__(self, policy_id, seed):
+                calls.append((policy_id, seed))
+
+            def allocate(self, env, computing_tasks):
+                return SimpleNamespace(
+                    allocations={"Task_1": 2.0},
+                    rows=[
+                        {
+                            "task_id": "Task_1",
+                            "node_id": "RSU_0",
+                            "policy_id": "custom_policy",
+                            "policy_weight": 1.0,
+                            "deadline_remaining": 1.0,
+                            "queue_size": 1,
+                            "allocated_cpu": 2.0,
+                            "node_cpu_capacity": 10.0,
+                            "allocated_fraction": 0.2,
+                        }
+                    ],
+                )
+
+        def original_build_config(config, seed, max_time):
+            return config
+
+        preflight = SimpleNamespace(build_preflight_config=original_build_config)
+        evidence = SimpleNamespace(install_capacity_safe_cpu_callback=None)
+
+        def conservation_runner(seed, max_time):
+            scheduler = FakeScheduler()
+            env = FakeEnv()
+            evidence.install_capacity_safe_cpu_callback(env, scheduler)
+            allocation = scheduler.callback({"RSU_0": [FakeTask()]})
+            return {
+                "config": {},
+                "bundle": {"cpu_ledger": [{"allocated_cpu": allocation["Task_1"], "task_id": "Task_1", "node_id": "RSU_0", "time": 1.0}], "dependency_ledger": []},
+                "source_bundle": {"physical_nodes": [], "information_edges": [], "dependency_flows": [], "ep_relations": []},
+                "runtime_summary": {},
+            }
+
+        def install(env, scheduler):
+            def callback(computing_tasks, **kwargs):
+                return allocator.allocate(env, computing_tasks).allocations
+            scheduler.setComputingCallBack(env, callback)
+
+        allocator = None
+        def factory(policy_id, seed):
+            nonlocal allocator
+            allocator = CustomAllocator(policy_id, seed)
+            return allocator
+
+        evidence.install_capacity_safe_cpu_callback = install
+        result = subject.run_formal_airfogsim_trajectory(
+            spec,
+            max_time=1.0,
+            evidence_module=evidence,
+            preflight_module=preflight,
+            conservation_runner=conservation_runner,
+            allocator_factory=factory,
+        )
+        self.assertEqual(calls, [(spec.cpu_policy, spec.seed)])
+        self.assertEqual(result["bundle"]["cpu_ledger"][0]["policy_id"], "custom_policy")
+
 
 if __name__ == "__main__":
     unittest.main()

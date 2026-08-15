@@ -91,6 +91,7 @@ def run_formal_airfogsim_trajectory(
     evidence_module: Any | None = None,
     preflight_module: Any | None = None,
     conservation_runner: Callable[[int, float], dict[str, Any]] | None = None,
+    allocator_factory: Callable[[str, int], Any] | None = None,
 ) -> dict[str, Any]:
     """Inject one scenario and CPU policy without changing AirFogSim core code."""
 
@@ -99,7 +100,10 @@ def run_formal_airfogsim_trajectory(
 
     original_build_config = preflight_module.build_preflight_config
     original_install_cpu = evidence_module.install_capacity_safe_cpu_callback
-    allocator = CpuPolicyAllocator(spec.cpu_policy, seed=spec.seed)
+    if allocator_factory is None:
+        allocator = CpuPolicyAllocator(spec.cpu_policy, seed=spec.seed)
+    else:
+        allocator = allocator_factory(str(spec.cpu_policy), int(spec.seed))
     decision_rows: list[dict[str, Any]] = []
 
     def formal_build_config(config: dict[str, Any], seed: int, runtime: float):
