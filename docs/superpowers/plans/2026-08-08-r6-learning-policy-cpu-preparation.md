@@ -316,7 +316,7 @@ The preflight must:
 
 ```python
 bindings = bind_existing_files(
-    r5_candidate_freeze="代码/artifacts/formal_training/pi_jwm_r5_module_confirmation_analysis_v1/r6_candidate_freeze.json",
+    r5_candidate_freeze="代码/artifacts/formal_training/pi_jwm_r5_module_confirmation_analysis_v1/candidate_freeze.json",
     r6_paired_summary="代码/artifacts/formal_training/pi_jwm_r6_cpu_paired_closed_loop_v1/summary.json",
     r6_paired_manifest="代码/artifacts/formal_training/pi_jwm_r6_cpu_paired_closed_loop_v1/manifest.json",
 )

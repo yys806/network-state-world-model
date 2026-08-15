@@ -27,7 +27,7 @@ Run and confirm RED because the production module does not exist yet:
 
 ```powershell
 cd D:\shen\网络组\代码
-python -m unittest tests.test_cpu_inner_rule_v1 -v
+python -m unittest discover -s tests -p "test_cpu_inner_rule_v1.py" -v
 ```
 
 ## Task 2: Implement the pure rule
@@ -73,7 +73,7 @@ Run:
 
 ```powershell
 cd D:\shen\网络组\代码
-python -m unittest tests.test_airfogsim_cpu_inner_rule_v1 -v
+python -m unittest discover -s tests -p "test_airfogsim_cpu_inner_rule_v1.py" -v
 ```
 
 ## Task 4: Machine-readable preflight bundle
@@ -102,7 +102,7 @@ Run tests first, then generate the canonical bundle once:
 
 ```powershell
 cd D:\shen\网络组\代码
-python -m unittest tests.test_run_cpu_inner_rule_preflight_v1 -v
+python -m unittest discover -s tests -p "test_run_cpu_inner_rule_preflight_v1.py" -v
 python scripts\run_cpu_inner_rule_preflight_v1.py
 ```
 
@@ -117,9 +117,10 @@ python scripts\run_cpu_inner_rule_preflight_v1.py
 Run focused and relevant regression tests without GPU or locked data:
 
 ```powershell
-cd D:\shen\网络组\代码
-python -m unittest tests.test_cpu_inner_rule_v1 tests.test_airfogsim_cpu_inner_rule_v1 tests.test_run_cpu_inner_rule_preflight_v1 -v
-python -m unittest tests.test_information_edge_contract_v4 tests.test_information_edge_audit_v4 tests.test_information_edge_contract_v4_artifacts -v
+cd D:\shen\网络组\代码\tests
+python -m unittest test_cpu_inner_rule_v1.py test_airfogsim_cpu_inner_rule_v1.py test_run_cpu_inner_rule_preflight_v1.py -v
+$env:PYTHONPATH="D:\shen\网络组\代码\src"
+python -m unittest test_information_edge_contract_v4.py test_audit_information_edge_contract_v4.py -v
 ```
 
 Audit code, documents, and evidence for forbidden overclaims. The only permitted completion claim is: `P2-A CPU inner rule and callback preflight verified`. Do not describe P2 dataset reconstruction, candidate-rollout planning, model training, or the final method as complete.

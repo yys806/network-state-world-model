@@ -6,6 +6,19 @@ This workspace is for **PI-JWM**: Physical-Information Joint World Model.
 
 AirFogSim is only a reference simulator and data-generation tool. Do not describe it as the framework or the research main line.
 
+## Theory-Implementation-Evidence Consistency
+
+This is a non-negotiable rule for all PI-JWM work:
+
+- 这是最高优先级的永久约束：宁可放慢进度，也绝不允许理论一套、实现一套、结果表述再一套；做不到理论定义时，必须修改理论边界或给出可核验的证明与限制，绝不能用近似接口、代理量或换名糊弄。
+- The theoretical definition, advisor-facing documents/PPT, code, runtime configuration, data fields, machine-readable artifacts, and experimental claims must agree item by item.
+- Do not describe an interface, executable code path, loaded latent/belief, or short smoke test as a complete theoretical method. In particular, a policy that only consumes a world-model belief is not a "world-model candidate-rollout planner" unless it actually rolls out every candidate action with the world model and uses the predicted future state, task outcome, cost, and risk to select the action.
+- Every method claim must point to the implementing code path, exact inputs/outputs, tests, machine-readable artifacts, and acceptance result. A matching name, tensor shape, imported module, or successful launch is not sufficient evidence.
+- When theory and implementation differ, record the mismatch immediately and stop expanding the affected experiment. Either implement and verify the theory, or revise the theory and all public wording using data/interface/proof evidence. Never hide the mismatch with renaming, vague prose, masks, proxy metrics, or stage results.
+- Anything that cannot yet be implemented or verified must be labeled `target definition`, `candidate method`, or `not implemented`, with its missing conditions and validation gate. A target flowchart is not evidence of current capability.
+- Before long GPU training, formal baselines, locked-test access, or final method freezing, complete a theory-code-data-metric consistency audit. Any unresolved critical mismatch blocks the run.
+- Progress speed is secondary to a truthful evidence chain. Never substitute an easier implementation for the stated method without explicitly changing the method definition.
+
 ## Structure
 
 - `代码/src/pi_jwm/`: PI-JWM framework modules.
@@ -19,20 +32,43 @@ AirFogSim is only a reference simulator and data-generation tool. Do not describ
 ## Common Commands
 
 ```powershell
-cd D:\shen\网络组\代码\scripts
-python run_world_model_v4_dual_graph_rollout.py
-python run_world_model_metric_suite_v0.py
-python -m unittest test_dual_graph_features.py test_v4_ablation_active_rate.py
+cd D:\shen\PKU\PIJWM
+$env:PYTHONPATH='D:\shen\PKU\PIJWM\代码\src'
+python .\代码\scripts\run_world_model_v4_dual_graph_rollout.py
+python .\代码\scripts\run_world_model_metric_suite_v0.py
+python -m compileall -q .\代码\src .\代码\scripts .\代码\tests
+python -m unittest discover -s .\代码\tests -p 'test_*.py'
 ```
 
 For reference-simulator runs:
 
 ```powershell
 conda activate airfogsim
-cd D:\shen\网络组\代码\reference\AirFogSim\examples
+cd D:\shen\PKU\PIJWM\代码\reference\AirFogSim\examples
 ```
 
 For LaTeX progress documents, compile with XeLaTeX.
+
+## Zotero Literature Management
+
+- Zotero is the authoritative literature library for PI-JWM. Reuse existing Zotero items instead of importing duplicates.
+- MCP server name: `zotero` (`zotero-mcp-server v0.6.2`).
+- CLI fallback when the MCP tools are not exposed in the current task: `C:\Users\Lenovo\.codex\tools\zotero-mcp\Scripts\zotero-cli.exe`.
+- Credential configuration: `C:\Users\Lenovo\.config\zotero-mcp\config.json`. Never print, copy into project files, or otherwise disclose the API key.
+- Zotero user library ID: `18841865`.
+- PIJWM root collection: `MZ9JQ2I6`.
+- PIJWM subcollections:
+  - `01 系统场景与问题定义`: `YQ4UXTP9`
+  - `02 严格双图与图学习`: `KYWGGW4X`
+  - `03 世界模型与状态预测`: `RWKT5PW6`
+  - `04 任务卸载与资源优化`: `U7J9X53G`
+  - `05 数据集、测量与仿真`: `VY6P9W8E`
+  - `06 评价、不确定性与决策诊断`: `UEY8MYTI`
+  - `99 综述与奠基性文献`: `8LW88WWE`
+- Use the local Zotero API for fast read/search where possible and the authenticated Zotero Web API for supported writes. Never modify `zotero.sqlite` directly.
+- Before importing or creating an item, deduplicate by DOI, then arXiv ID, then normalized title plus author/year. If an item already exists, preserve its current collections, tags, notes, and attachments; only append PIJWM collections and tags.
+- Every PIJWM item must belong to the root collection and at least one subcollection, with role, evidence, topic, and full-text-status tags following `文档/文献/PIJWM文献管理说明.md`.
+- Web API updates must carry the item's current version and preserve all existing fields. After writing, re-read the cloud item and verify collection membership, tags, and attachments; then check the local API after Zotero sync. If local sync lags, report that state and do not repeat the write.
 
 ## Research Workflow
 

@@ -24,7 +24,7 @@
    记录预期的模块缺失失败。
 3. 实现 `TransitionFacts`、`RewardScale`、`RewardBreakdown`、`ServiceFirstRewardProtocol` 和只读系统目标 NPZ 尺度计算。
 4. 再运行定向测试直到通过。
-5. 从 `代码/artifacts/reports/airfogsim_formal_system_targets_v1` 的 36 条 train 轨迹生成版本化 `reward_scale.json`，并保存输入清单哈希和有效样本数。
+5. 从 `代码/artifacts/datasets/airfogsim_formal_system_targets_v1` 的 36 条 train 轨迹生成版本化 `reward_scale.json`，并保存输入清单哈希和有效样本数。
 
 ## Task 2：实现完整联合动作候选、验证和 AirFogSim 适配
 
@@ -118,4 +118,3 @@
 3. 在 `airfogsim` 环境复跑真实 preflight，独立脚本重算所有输出 SHA-256、检查 CSV/JSON 行数和汇总值。
 4. 只在九项门全部通过时写 `r6_gpu_strategy_training_ready=true`；否则写具体 no-go，不冒充完成。
 5. 同步单一计划表和权威主文档，明确已完成、未运行、结果边界和下一条 GPU 命令（只记录，不执行）。
-

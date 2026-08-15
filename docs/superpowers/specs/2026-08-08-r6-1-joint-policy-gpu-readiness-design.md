@@ -126,7 +126,7 @@ CPU 规则基线至少包括 default、deadline-first、priority-first、load-ba
 - $$n^{\mathrm{on}}_t$$：本步按期完成任务数；
 - $$n^{\mathrm{fail}}_t$$：本步新增失败/逾期任务数；
 - $$D_t$$：本步完成任务时延之和；
-- $$Q_t$$：本步新增交付数据量；
+- $$Q_t$$：本步交付数据量；正式系统目标 NPZ 中历史字段名为 `delivered_data_total`，但已由逐步序列与轨迹报告核对为每时隙量，不再做累计差分；
 - $$E_t$$：本步 UAV 能量消耗增量；
 - $$h_t$$：硬约束违反数。
 
