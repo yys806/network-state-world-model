@@ -1,8 +1,8 @@
 # PI-JWM P2联合动作Attempt/Reject Ledger v1实施与证据
 
-日期：2026-08-14  
-范围：CPU-only P2-B v2 preflight与P2-C v2候选审计  
-状态：P2-B v2候选已形成并复验；P2-C v2文档绑定闭包尚未执行
+日期：2026-08-14
+范围：CPU-only P2-B v2 preflight与P2-C v2候选审计
+状态：P2-B v2候选已形成并复验；P2-C v2预文档闭包已通过，最终candidate须在本文件提交后生成
 
 ## 1. 方法边界
 
@@ -53,9 +53,17 @@ P2-B v1代码和历史artifact保持不动。v2通过实例级scheduler代理、
 
 因此该候选支持“natural-reference联合动作拒绝率已由完整ledger观测为0/120=0.0”的候选审计输入，但不支持“正式数据完成”或“训练可启动”的表述。
 
-## 4. 当前未完成与阻断
+## 4. P2-C v2预文档闭包结果
 
-P2-C v2正式文档绑定候选尚未生成，因此本文件当前不宣称P2-C v2 artifact已通过。即使随后ledger门通过，仍必须保留：
+预文档候选目录为`代码/artifacts/audit/pi_jwm_p2c_scale_distribution_audit_v2_pre_document_closure_20260814/`。独立`--verify-only`与从P2-B v2输入重新计算均通过，且没有生成正式数据。机器审计记录如下：
+
+- natural-reference为6个episode、120个发布frame、120/120 accepted、0 rejected、0 quarantined；自然参考拒绝率为`0/120=0.0`。
+- natural-replay为6个episode、120次attempt、120/120 accepted，并与reference逐键对齐；bootstrap为10/10，fixture为10/10，四类角色合计260 attempts。
+- 5个E1字段每行宽度固定为5，共5760行；字段有效计数分别为4392、4392、5472、5472、5472；无legacy 13/18槽占位值。
+- 观测覆盖包括6个自然episode、3个seed（0/1/2）、两个resource arm、20步/episode、82条通信flow/hop、82次RB分配、9个RB复用frame和25行outage；自然数据仍全部`training_eligible=false`。
+- manifest绑定9个受管artifact、8个artifact hash和126个source hash，独立复算无不匹配；replay 6/6通过；CPU规则版本120帧均为`PIJWM-CPU-Inner-Rule-v1`。
+
+即使预文档审计通过，正式数据仍被以下三个冻结门阻断：
 
 ```text
 scenario_matrix_not_frozen
@@ -64,6 +72,8 @@ formal_split_not_frozen
 ```
 
 当前固定为false或未实施：`formal_data_approved`、`training_eligible`、GPU训练、locked-test访问、正式轨迹生成、世界模型候选rollout规划器完成、最终方法冻结。
+
+本次提交只绑定上述可复核计数和阻断，不把预检候选升级为正式数据或训练资格。最终candidate目录将在本文件提交后以新目录生成，再进行字节和manifest比对。
 
 ## 5. 对已有实验的影响
 
