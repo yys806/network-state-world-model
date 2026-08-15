@@ -27,6 +27,7 @@ This is a non-negotiable rule for all PI-JWM work:
 - `代码/reference/`: third-party references and simulators.
 - `代码/artifacts/`: data, reports, figures, and generated outputs.
 - `文档/`: meeting materials, papers, research documents, and archives.
+- `文档/知识库/`: repository-local authority documents; `PIJWM主文档.md` fixes theory/method boundaries and `8.12之后推进.md` records current progress.
 - `本地计划表.md`: the single local overview plan. Use this instead of Excel/Feishu unless the user asks otherwise.
 
 ## Common Commands
@@ -93,4 +94,5 @@ The main line is PI-JWM:
 - AirFogSim-related paths may be referenced only as simulator/data-source inputs through `代码/reference/AirFogSim/` or historical artifacts under `代码/artifacts/`.
 - v5 selector/ranking work is a diagnostic interface. Do not present it as the main method unless the user explicitly asks for decision-interface diagnostics.
 - Update `本地计划表.md` when the plan or task status changes.
+- Update `文档/知识库/PIJWM主文档.md` for theory or method-boundary changes and `文档/知识库/8.12之后推进.md` for post-2026-08-12 progress; these files are no longer maintained in the former external knowledge-base directory.
 - Advisor-facing documents should use PI-JWM as the framework name.

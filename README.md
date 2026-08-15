@@ -25,8 +25,10 @@ Read these files in order before continuing work:
 1. [`AGENTS.md`](AGENTS.md) for permanent repository and evidence rules.
 2. [`新对话接续说明_20260815.md`](新对话接续说明_20260815.md) for the current handoff, with verified migration corrections recorded in later governance updates.
 3. [`本地计划表.md`](本地计划表.md) for the single local execution overview.
-4. [`文档/README.md`](文档/README.md) for current and historical document ownership.
-5. Machine-readable manifests and reports under `代码/artifacts/` for individual acceptance claims.
+4. [`文档/知识库/PIJWM主文档.md`](文档/知识库/PIJWM主文档.md) for fixed theory, method, data, and evaluation definitions.
+5. [`文档/知识库/8.12之后推进.md`](文档/知识库/8.12之后推进.md) for post-2026-08-12 implementation progress and blockers.
+6. [`文档/README.md`](文档/README.md) for current and historical document ownership.
+7. Machine-readable manifests and reports under `代码/artifacts/` for individual acceptance claims.
 
 Historical plans, meeting slides, model runs, and successful smoke tests remain evidence of their stated scope only. They do not override later theory boundaries or prove a complete method.
 
@@ -41,6 +43,7 @@ PIJWM/
 |   |-- reference/        local third-party checkouts and reference implementations
 |   `-- artifacts/        local data, reports, checkpoints, figures, and machine evidence
 |-- 文档/
+|   |-- 知识库/           authority theory document and current progress record
 |   |-- 研究进展/         current research designs, results, and internal archives
 |   |-- 组会/             local meeting materials and historical presentations
 |   `-- 文献/             local literature files; Zotero is the authoritative library
