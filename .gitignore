@@ -1,11 +1,21 @@
-# Python caches and local environments
+# Python caches, environments, and build outputs
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
 .venv/
 venv/
+
+# Local agent state and linked worktrees
+.agents/
+.codex/
+.superpowers/
 .worktrees/
 
 # Runtime and local scratch files
