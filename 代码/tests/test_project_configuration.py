@@ -63,7 +63,10 @@ class ProjectConfigurationTest(unittest.TestCase):
 
         self.assertTrue((docs / "组会").is_dir())
         self.assertTrue((docs / "研究进展").is_dir())
-        self.assertTrue((docs / "项目说明").is_dir())
+        self.assertTrue((docs / "README.md").is_file())
+        self.assertTrue((docs / "研究进展" / "归档").is_dir())
+        self.assertFalse((docs / "项目说明").exists())
+        self.assertFalse((docs / "工程治理").exists())
         self.assertFalse((docs / "开会").exists())
         self.assertFalse((docs / "研究进展文档").exists())
 
