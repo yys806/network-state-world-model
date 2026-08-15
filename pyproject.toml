@@ -21,9 +21,8 @@ experiments = [
 ]
 
 [tool.setuptools]
-package-dir = {"" = "代码/src"}
+package-dir = {"" = "code/src"}
 
 [tool.setuptools.packages.find]
-where = ["代码/src"]
+where = ["code/src"]
 include = ["pi_jwm*"]
-

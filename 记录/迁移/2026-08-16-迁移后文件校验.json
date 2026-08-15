@@ -1,0 +1,11 @@
+{
+  "error_count": 0,
+  "hash_mismatches": [],
+  "missing_sources": [],
+  "missing_targets": [],
+  "passed": true,
+  "phase": "after",
+  "size_mismatches": [],
+  "sources_still_present": [],
+  "targets_already_present": []
+}

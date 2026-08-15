@@ -1,0 +1,98 @@
+{
+  "captured_at": "2026-08-16T01:11:12+08:00",
+  "gates": {
+    "p2b_v1": {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "D:\\shen\\PKU\\PIJWM\\code\\scripts\\run_p2_full_dual_graph_collector_preflight_v1.py",
+        "--output-dir",
+        "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\preflight\\pi_jwm_p2_full_dual_graph_collector_v1",
+        "--verify-only"
+      ],
+      "errors": [
+        "source hash mismatch: docs/superpowers/plans/2026-08-13-v4-full-dual-graph-collector.md"
+      ],
+      "exit_code": 1,
+      "report": {
+        "errors": [
+          "source hash mismatch: docs/superpowers/plans/2026-08-13-v4-full-dual-graph-collector.md"
+        ],
+        "passed": false
+      },
+      "stderr": "",
+      "stdout": "{\n  \"passed\": false,\n  \"errors\": [\n    \"source hash mismatch: docs/superpowers/plans/2026-08-13-v4-full-dual-graph-collector.md\"\n  ]\n}\n"
+    },
+    "p2b_v2_candidate": {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "D:\\shen\\PKU\\PIJWM\\code\\scripts\\run_p2_full_dual_graph_collector_preflight_v2.py",
+        "--output-dir",
+        "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\preflight\\pi_jwm_p2_full_dual_graph_collector_v2_candidate_20260814",
+        "--verify-only"
+      ],
+      "errors": [
+        "source verification failure: source is missing: D:\\shen\\PKU\\PIJWM\\docs\\superpowers\\plans\\2026-08-13-v4-full-dual-graph-collector.md"
+      ],
+      "exit_code": 1,
+      "report": {
+        "errors": [
+          "source verification failure: source is missing: D:\\shen\\PKU\\PIJWM\\docs\\superpowers\\plans\\2026-08-13-v4-full-dual-graph-collector.md"
+        ],
+        "passed": false
+      },
+      "stderr": "",
+      "stdout": "{\n  \"passed\": false,\n  \"errors\": [\n    \"source verification failure: source is missing: D:\\\\shen\\\\PKU\\\\PIJWM\\\\docs\\\\superpowers\\\\plans\\\\2026-08-13-v4-full-dual-graph-collector.md\"\n  ]\n}\n"
+    },
+    "p2c_v1": {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "D:\\shen\\PKU\\PIJWM\\code\\scripts\\run_p2c_scale_distribution_audit_v1.py",
+        "--bundle",
+        "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\preflight\\pi_jwm_p2_full_dual_graph_collector_v1",
+        "--output-dir",
+        "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\audit\\pi_jwm_p2c_scale_distribution_audit_v1",
+        "--verify-only"
+      ],
+      "errors": [
+        "source verification failure: audit source is missing: D:\\shen\\PKU\\PIJWM\\docs\\superpowers\\plans\\2026-08-14-p2-c-scale-distribution-audit.md"
+      ],
+      "exit_code": 1,
+      "report": {
+        "errors": [
+          "source verification failure: audit source is missing: D:\\shen\\PKU\\PIJWM\\docs\\superpowers\\plans\\2026-08-14-p2-c-scale-distribution-audit.md"
+        ],
+        "passed": false
+      },
+      "stderr": "",
+      "stdout": "{\"errors\": [\"source verification failure: audit source is missing: D:\\\\shen\\\\PKU\\\\PIJWM\\\\docs\\\\superpowers\\\\plans\\\\2026-08-14-p2-c-scale-distribution-audit.md\"], \"passed\": false}\n"
+    },
+    "p2c_v2_pre_document": {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "D:\\shen\\PKU\\PIJWM\\code\\scripts\\run_p2c_scale_distribution_audit_v2.py",
+        "--bundle",
+        "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\preflight\\pi_jwm_p2_full_dual_graph_collector_v2_candidate_20260814",
+        "--output-dir",
+        "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\audit\\pi_jwm_p2c_scale_distribution_audit_v2_pre_document_closure_20260814",
+        "--verify-only"
+      ],
+      "errors": [
+        "published audit report differs from fresh recomputation",
+        "published candidate config differs from fresh recomputation",
+        "source verification failure: audit source is missing: D:\\shen\\PKU\\PIJWM\\docs\\superpowers\\plans\\2026-08-14-p2-action-attempt-ledger-v1.md"
+      ],
+      "exit_code": 1,
+      "report": {
+        "errors": [
+          "source verification failure: audit source is missing: D:\\shen\\PKU\\PIJWM\\docs\\superpowers\\plans\\2026-08-14-p2-action-attempt-ledger-v1.md",
+          "published audit report differs from fresh recomputation",
+          "published candidate config differs from fresh recomputation"
+        ],
+        "passed": false
+      },
+      "stderr": "",
+      "stdout": "{\"errors\": [\"source verification failure: audit source is missing: D:\\\\shen\\\\PKU\\\\PIJWM\\\\docs\\\\superpowers\\\\plans\\\\2026-08-14-p2-action-attempt-ledger-v1.md\", \"published audit report differs from fresh recomputation\", \"published candidate config differs from fresh recomputation\"], \"passed\": false}\n"
+    }
+  },
+  "schema": "pi_jwm_repository_layout_gate_baseline_v1"
+}

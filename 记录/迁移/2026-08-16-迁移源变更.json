@@ -1,0 +1,173 @@
+{
+  "entries": [
+    {
+      "gate": "p2b_v1",
+      "new_sha256": "41b250812fcdfbf17b8554b27971b4e810b9abeb18861fef0b6f4d459e90e89a",
+      "old_sha256": "4857077144ddb2277984ddab6b1900db3d0566ba359848b45457580aedc87634",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/scripts/run_p2_full_dual_graph_collector_preflight_v1.py",
+      "target": "code/scripts/run_p2_full_dual_graph_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2b_v1",
+      "new_sha256": "9e9ce6cb1a66d57a092124a35c4447f10b4e9d80a044c17b6fc079b14dbfae9d",
+      "old_sha256": "9fa9e0e5deb2526787a398fa795d1094a5c1a05ca8a4d616d6eceb5d68b8ea57",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/scripts/run_p2_single_step_collector_preflight_v1.py",
+      "target": "code/scripts/run_p2_single_step_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2b_v1",
+      "new_sha256": "c71b8c0eb7bcb96d09eaad79a3fb901b18670ec201b2df244f6a9671eba80bca",
+      "old_sha256": "1eddad90dedade96a5fecf956ab12753a0b3a516b898bb30322b120f267cbc3d",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/tests/test_run_p2_full_dual_graph_collector_preflight_v1.py",
+      "target": "code/tests/test_run_p2_full_dual_graph_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2b_v1",
+      "new_sha256": "7499bbe4a6d096058929a2ba70d928c960ae7616e18fe9add2b557d6d3df8197",
+      "old_sha256": "ccf338afb6c698118c0c48e73baa3517ca23a90687d150f5daaaccec3177f1f7",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/tests/test_run_p2_multistep_collector_preflight_v1.py",
+      "target": "code/tests/test_run_p2_multistep_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2b_v1",
+      "new_sha256": "381eb1c9edbadf35e2dfd2be1709908f865d46a84654a6d4ca347c713bea9b31",
+      "old_sha256": "a6aa803fb0a57749e9b68ae58510b0267f685512165001df828ec7a87dd2e1c9",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/tests/test_run_p2_single_step_collector_preflight_v1.py",
+      "target": "code/tests/test_run_p2_single_step_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2b_v2_candidate",
+      "new_sha256": "41b250812fcdfbf17b8554b27971b4e810b9abeb18861fef0b6f4d459e90e89a",
+      "old_sha256": "4857077144ddb2277984ddab6b1900db3d0566ba359848b45457580aedc87634",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/scripts/run_p2_full_dual_graph_collector_preflight_v1.py",
+      "target": "code/scripts/run_p2_full_dual_graph_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2b_v2_candidate",
+      "new_sha256": "75838d26f4cde3c893b3cd0a127b2c84d703a8f07f24eee839ebc828889bb34e",
+      "old_sha256": "95ce79ab1459913b8c6d58bba9ea4320cfcc16c674d05dab4ecff757b76ef577",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/scripts/run_p2_full_dual_graph_collector_preflight_v2.py",
+      "target": "code/scripts/run_p2_full_dual_graph_collector_preflight_v2.py"
+    },
+    {
+      "gate": "p2b_v2_candidate",
+      "new_sha256": "9e9ce6cb1a66d57a092124a35c4447f10b4e9d80a044c17b6fc079b14dbfae9d",
+      "old_sha256": "9fa9e0e5deb2526787a398fa795d1094a5c1a05ca8a4d616d6eceb5d68b8ea57",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/scripts/run_p2_single_step_collector_preflight_v1.py",
+      "target": "code/scripts/run_p2_single_step_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2b_v2_candidate",
+      "new_sha256": "b474000fe19b7e7d70ecc456642eb9d8e152deacea2bfe386477ff9a49e0cd1a",
+      "old_sha256": "ef34d9bb2a05b5e1588b7c4b911d5e415d342b712043fb7ef9ef00d562d7ed73",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/src/pi_jwm/full_dual_graph_artifact_v2.py",
+      "target": "code/src/pi_jwm/full_dual_graph_artifact_v2.py"
+    },
+    {
+      "gate": "p2b_v2_candidate",
+      "new_sha256": "c71b8c0eb7bcb96d09eaad79a3fb901b18670ec201b2df244f6a9671eba80bca",
+      "old_sha256": "1eddad90dedade96a5fecf956ab12753a0b3a516b898bb30322b120f267cbc3d",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/tests/test_run_p2_full_dual_graph_collector_preflight_v1.py",
+      "target": "code/tests/test_run_p2_full_dual_graph_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2b_v2_candidate",
+      "new_sha256": "7499bbe4a6d096058929a2ba70d928c960ae7616e18fe9add2b557d6d3df8197",
+      "old_sha256": "ccf338afb6c698118c0c48e73baa3517ca23a90687d150f5daaaccec3177f1f7",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/tests/test_run_p2_multistep_collector_preflight_v1.py",
+      "target": "code/tests/test_run_p2_multistep_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2b_v2_candidate",
+      "new_sha256": "381eb1c9edbadf35e2dfd2be1709908f865d46a84654a6d4ca347c713bea9b31",
+      "old_sha256": "a6aa803fb0a57749e9b68ae58510b0267f685512165001df828ec7a87dd2e1c9",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/tests/test_run_p2_single_step_collector_preflight_v1.py",
+      "target": "code/tests/test_run_p2_single_step_collector_preflight_v1.py"
+    },
+    {
+      "gate": "p2c_v1",
+      "new_sha256": "4f48839d629154e340886ae7bfd90100be3e0fecca6901e48d87cd66063c1f24",
+      "old_sha256": "67355cccb285cb0aed9eb2e053174e48baa1ff99e0919bc1d8a9b3bdbcff27af",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/scripts/run_p2c_scale_distribution_audit_v1.py",
+      "target": "code/scripts/run_p2c_scale_distribution_audit_v1.py"
+    },
+    {
+      "gate": "p2c_v1",
+      "new_sha256": "c243927233ad028ade330f9ab027c2f0f5c85607325eee9458bdfc8a2f37c93c",
+      "old_sha256": "69b0a65725f0fd7fb25226bed88df113b1e5c0130199dfb49c689a6750ef76ba",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/src/pi_jwm/p2c_scale_distribution_audit_v1.py",
+      "target": "code/src/pi_jwm/p2c_scale_distribution_audit_v1.py"
+    },
+    {
+      "gate": "p2c_v2_pre_document",
+      "new_sha256": "75838d26f4cde3c893b3cd0a127b2c84d703a8f07f24eee839ebc828889bb34e",
+      "old_sha256": "95ce79ab1459913b8c6d58bba9ea4320cfcc16c674d05dab4ecff757b76ef577",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/scripts/run_p2_full_dual_graph_collector_preflight_v2.py",
+      "target": "code/scripts/run_p2_full_dual_graph_collector_preflight_v2.py"
+    },
+    {
+      "gate": "p2c_v2_pre_document",
+      "new_sha256": "5cd9081cc98e73864b6106dffb77a61376577b7e98e4f741d6fa507cc0552a23",
+      "old_sha256": "b5b2b5e5b80a05694e6155f1447d25593a3732bca5cb87b913effe3dc6b8c134",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/scripts/run_p2c_scale_distribution_audit_v2.py",
+      "target": "code/scripts/run_p2c_scale_distribution_audit_v2.py"
+    },
+    {
+      "gate": "p2c_v2_pre_document",
+      "new_sha256": "b474000fe19b7e7d70ecc456642eb9d8e152deacea2bfe386477ff9a49e0cd1a",
+      "old_sha256": "ef34d9bb2a05b5e1588b7c4b911d5e415d342b712043fb7ef9ef00d562d7ed73",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/src/pi_jwm/full_dual_graph_artifact_v2.py",
+      "target": "code/src/pi_jwm/full_dual_graph_artifact_v2.py"
+    },
+    {
+      "gate": "p2c_v2_pre_document",
+      "new_sha256": "e258b31d01e5779b40a7fe15a2326a618c341e163d09d854ac8f4788b799e2d6",
+      "old_sha256": "5e2577f06f74fac22c8dae561840c24d6e7a636e7c5102e1ff9186e4a1316b0d",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "代码/src/pi_jwm/p2c_scale_distribution_audit_v2.py",
+      "target": "code/src/pi_jwm/p2c_scale_distribution_audit_v2.py"
+    },
+    {
+      "gate": "p2c_v2_pre_document",
+      "new_sha256": "25b2690d5bb0a2dcba1884db21156cbf0d8aff35752bc84ffbfc2d153f65aeb2",
+      "old_sha256": "9921f2d83fa7d94791ac7296ffc156d64a01affdba28bb6510c8931b6b8544e0",
+      "reason": "path-compatibility implementation and canonical-path test update",
+      "source": "文档/研究进展/2026-08-14-PI-JWM-P2联合动作Attempt-Reject-Ledger-v1实施与证据.md",
+      "target": "记录/研究进展/2026-08-14-PI-JWM-P2联合动作Attempt-Reject-Ledger-v1实施与证据.md"
+    },
+    {
+      "gate": "p2c_v1",
+      "new_sha256": "8215726646e1d5ef416a2d1dd387eb5ab96354b7fbf7afa1518d82dd6c70cb5f",
+      "old_sha256": "a4acf8738e9e7822e8ae7a61448c2f4ba85e6ed4569dea4250bc48276d4e4b09",
+      "reason": "canonical test paths updated after top-level layout migration",
+      "source": "代码/tests/test_p2c_scale_distribution_audit_v1.py",
+      "target": "code/tests/test_p2c_scale_distribution_audit_v1.py"
+    },
+    {
+      "gate": "p2c_v1",
+      "new_sha256": "31f00ee82062021367434fd0e121d34439e68c5d72eb74add275e6e736d81b42",
+      "old_sha256": "30ccdc0929e4855eb34ec9d8d973cc420c8230bb9287dd2ebaa97b94bb840a3f",
+      "reason": "canonical test paths updated after top-level layout migration",
+      "source": "代码/tests/test_run_p2c_scale_distribution_audit_v1.py",
+      "target": "code/tests/test_run_p2c_scale_distribution_audit_v1.py"
+    }
+  ],
+  "schema": "pi_jwm_repository_layout_source_changes_v1"
+}

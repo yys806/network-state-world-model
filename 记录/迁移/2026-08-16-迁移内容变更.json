@@ -1,0 +1,41 @@
+{
+  "entries": [
+    {
+      "new_sha256": "dc31b385d2308c05b515f8590e3e88707b0912cbc6d620b6e2fb1427ed539ee0",
+      "new_size_bytes": 24663,
+      "old_sha256": "7bde168a1722eafa8f395b02650ce0c36ac233a40904c134b0414e9de78463f6",
+      "old_size_bytes": 24697,
+      "reason": "update current path references after layout migration",
+      "source": "文档/知识库/8.12之后推进.md",
+      "target": "记录/8.12之后推进.md"
+    },
+    {
+      "new_sha256": "38c7eab84415c9666c2b27590d5bee009326488a98339c5e4088b7eae83a26d1",
+      "new_size_bytes": 133516,
+      "old_sha256": "0424a748ee49e52cd7f40c1199e8563b570639ebfdccc4c163cdebd44a435abc",
+      "old_size_bytes": 133526,
+      "reason": "update current path references after layout migration",
+      "source": "文档/知识库/PIJWM主文档.md",
+      "target": "记录/PIJWM主文档.md"
+    },
+    {
+      "new_sha256": "8c29b2037ea09841ce6d505d9c4870383bddde4d57a3e44f46a3da9861a0f0f7",
+      "new_size_bytes": 46481,
+      "old_sha256": "ef1344f17dee23fb85c60a3f72b9bc1146e857353bc2fa0735bd6c6c5a8bda40",
+      "old_size_bytes": 46485,
+      "reason": "update current path references after layout migration",
+      "source": "文档/研究进展/归档/旧版主文档/pi_jwm_ton_draft_zh.tex",
+      "target": "paper/archive/pi_jwm_ton_draft_zh/pi_jwm_ton_draft_zh.tex"
+    },
+    {
+      "new_sha256": "df778b0f6bfaad42a6fd56fc950431b0d0da97933f48ac048c1420a876184d97",
+      "new_size_bytes": 111207,
+      "old_sha256": "732a42bdac8988bc15a83b29c245411a9dc2e893f1f2f5a439942e4d28871ef6",
+      "old_size_bytes": 111356,
+      "reason": "update current path references after layout migration",
+      "source": "本地计划表.md",
+      "target": "记录/本地计划表.md"
+    }
+  ],
+  "schema": "pi_jwm_repository_layout_content_changes_v1"
+}

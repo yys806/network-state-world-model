@@ -21,42 +21,45 @@ This is a non-negotiable rule for all PI-JWM work:
 
 ## Structure
 
-- `代码/src/pi_jwm/`: PI-JWM framework modules.
-- `代码/scripts/`: runnable scripts.
-- `代码/tests/`: tests.
-- `代码/reference/`: third-party references and simulators.
-- `代码/artifacts/`: data, reports, figures, and generated outputs.
-- `文档/`: meeting materials, papers, research documents, and archives.
-- `文档/知识库/`: repository-local authority documents; `PIJWM主文档.md` fixes theory/method boundaries and `8.12之后推进.md` records current progress.
-- `本地计划表.md`: the single local overview plan. Use this instead of Excel/Feishu unless the user asks otherwise.
+- `code/src/pi_jwm/`: PI-JWM framework modules.
+- `code/scripts/`: runnable scripts.
+- `code/tests/`: tests.
+- `code/reference/`: third-party references and simulators.
+- `code/artifacts/`: data, reports, figures, and generated outputs.
+- `记录/`: repository-local authority documents, plans, progress, handoffs, and migration records.
+- `literature/`: authoritative local literature library.
+- `paper/`: formal paper materials only.
+- `meeting/`: meeting materials.
+- `docs/`: templates, project notes, and miscellaneous documents.
+- `记录/本地计划表.md`: the single local overview plan. Use this instead of Excel/Feishu unless the user asks otherwise.
 
 ## Common Commands
 
 ```powershell
 cd D:\shen\PKU\PIJWM
-$env:PYTHONPATH='D:\shen\PKU\PIJWM\代码\src'
-python .\代码\scripts\run_world_model_v4_dual_graph_rollout.py
-python .\代码\scripts\run_world_model_metric_suite_v0.py
-python -m compileall -q .\代码\src .\代码\scripts .\代码\tests
-python -m unittest discover -s .\代码\tests -p 'test_*.py'
+$env:PYTHONPATH='D:\shen\PKU\PIJWM\code\src'
+python .\code\scripts\run_world_model_v4_dual_graph_rollout.py
+python .\code\scripts\run_world_model_metric_suite_v0.py
+python -m compileall -q .\code\src .\code\scripts .\code\tests
+python -m unittest discover -s .\code\tests -p 'test_*.py'
 ```
 
 For reference-simulator runs:
 
 ```powershell
 conda activate airfogsim
-cd D:\shen\PKU\PIJWM\代码\reference\AirFogSim\examples
+cd D:\shen\PKU\PIJWM\code\reference\AirFogSim\examples
 ```
 
 For LaTeX progress documents, compile with XeLaTeX.
 
 ## Local Literature Management
 
-- `文档/文献/` is the authoritative PI-JWM literature library. Read `文档/文献/README.md` and `文档/文献/文献索引.csv` before adding or moving papers.
+- `literature/` is the authoritative PI-JWM literature library. Read `literature/README.md` and `literature/文献索引.csv` before adding or moving papers.
 - Store each PDF in exactly one primary category directory. Preserve cross-category relationships in `文献索引.csv` instead of duplicating files.
 - Deduplicate in this order: DOI, arXiv ID, normalized title plus author/year, then PDF SHA-256. Verify the `%PDF-` file signature before accepting a download.
 - After adding a PDF, update `文献索引.csv`, `PDF_SHA256SUMS.txt`, `文献索引.md`, and `本地文献库状态.json`. Remove the matching entry from `需要手动下载.md` only after the file and metadata have been verified.
-- The former Zotero PIJWM collection was retired on 2026-08-15. Its final metadata, collection structure, BibTeX, attachment audit, and download results are preserved under `文档/文献/`; do not recreate or write back to that collection unless the user explicitly asks.
+- The former Zotero PIJWM collection was retired on 2026-08-15. Its one-time JSON/BibTeX/attachment/migration exports were removed after the local library passed migration acceptance; do not recreate or write back to that collection unless the user explicitly asks.
 - Historical Zotero keys remain provenance identifiers only. Do not treat a historical Zotero attachment flag as proof that a local PDF exists; use the local path and SHA-256 index.
 - `D:\shen\PKU\RRM` and its Zotero collection remain a separate reference project. Never merge their papers or claims into PI-JWM without explicit provenance and independent PI-JWM evaluation.
 
@@ -72,16 +75,16 @@ The main line is PI-JWM:
 
 ## Rules
 
-- Keep reusable framework code in `代码/src/pi_jwm/`.
-- Keep runnable scripts in `代码/scripts/`.
-- Keep third-party code in `代码/reference/`.
-- Keep generated outputs in `代码/artifacts/`.
-- Do not create new top-level experiment/framework folders under `代码/`; `代码/` is the PI-JWM project root.
-- New PI-JWM model code must be under `代码/src/pi_jwm/`, not inside AirFogSim or historical experiment folders.
-- New validation or smoke-test scripts must be under `代码/scripts/`.
-- New tests must be under `代码/tests/`.
-- AirFogSim-related paths may be referenced only as simulator/data-source inputs through `代码/reference/AirFogSim/` or historical artifacts under `代码/artifacts/`.
+- Keep reusable framework code in `code/src/pi_jwm/`.
+- Keep runnable scripts in `code/scripts/`.
+- Keep third-party code in `code/reference/`.
+- Keep generated outputs in `code/artifacts/`.
+- Do not create new top-level experiment/framework folders under `code/`; `code/` is the PI-JWM project root.
+- New PI-JWM model code must be under `code/src/pi_jwm/`, not inside AirFogSim or historical experiment folders.
+- New validation or smoke-test scripts must be under `code/scripts/`.
+- New tests must be under `code/tests/`.
+- AirFogSim-related paths may be referenced only as simulator/data-source inputs through `code/reference/AirFogSim/` or historical artifacts under `code/artifacts/`.
 - v5 selector/ranking work is a diagnostic interface. Do not present it as the main method unless the user explicitly asks for decision-interface diagnostics.
-- Update `本地计划表.md` when the plan or task status changes.
-- Update `文档/知识库/PIJWM主文档.md` for theory or method-boundary changes and `文档/知识库/8.12之后推进.md` for post-2026-08-12 progress; these files are no longer maintained in the former external knowledge-base directory.
+- Update `记录/本地计划表.md` when the plan or task status changes.
+- Update `记录/PIJWM主文档.md` for theory or method-boundary changes and `记录/8.12之后推进.md` for post-2026-08-12 progress; these files are the repository-local authority records.
 - Advisor-facing documents should use PI-JWM as the framework name.

@@ -1,0 +1,33 @@
+{
+  "schema": "pi_jwm_repository_layout_gate_baseline_v1",
+  "captured_at": "2026-08-16T00:00:00+08:00",
+  "capture_source": "fresh verify-only baseline recorded in the approved layout design before directory moves",
+  "gates": {
+    "p2b_v1": {
+      "exit_code": 1,
+      "errors": [
+        "source hash mismatch: docs/superpowers/plans/2026-08-13-v4-full-dual-graph-collector.md"
+      ]
+    },
+    "p2b_v2_candidate": {
+      "exit_code": 1,
+      "errors": [
+        "source verification failure: source is missing: docs/superpowers/specs/2026-08-14-p2-action-attempt-ledger-v1-design.md"
+      ]
+    },
+    "p2c_v1": {
+      "exit_code": 1,
+      "errors": [
+        "source verification failure: audit source is missing: docs/superpowers/plans/2026-08-14-p2-c-scale-distribution-audit.md"
+      ]
+    },
+    "p2c_v2_pre_document": {
+      "exit_code": 1,
+      "errors": [
+        "published audit report differs from fresh recomputation",
+        "published candidate config differs from fresh recomputation",
+        "source verification failure: audit source is missing: docs/superpowers/specs/2026-08-14-p2-action-attempt-ledger-v1-design.md"
+      ]
+    }
+  }
+}

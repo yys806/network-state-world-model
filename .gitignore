@@ -38,19 +38,19 @@ tmp/
 ~$*.xlsx
 
 # Generated research outputs stay local; only governance metadata is versioned.
-代码/artifacts/*
-!代码/artifacts/README.md
-!代码/artifacts/manifests/
-!代码/artifacts/manifests/**
+code/artifacts/*
+!code/artifacts/README.md
+!code/artifacts/manifests/
+!code/artifacts/manifests/**
 
 # AirFogSim is an independent third-party checkout.
-代码/reference/AirFogSim/
+code/reference/AirFogSim/
 
 # Large local research attachments and generated presentation outputs.
-文档/文献/
-文档/组会/
-文档/研究进展/papers/
-文档/研究进展/ton_template_extract/
-文档/研究进展/*.pdf
-文档/研究进展/*.zip
-文档/研究进展/IEEEtran.cls
+literature/
+meeting/
+paper/papers/
+paper/ton_template_extract/
+记录/研究进展/*.pdf
+记录/研究进展/*.zip
+docs/templates/IEEEtran.cls

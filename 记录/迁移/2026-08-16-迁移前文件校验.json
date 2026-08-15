@@ -1,0 +1,15 @@
+{
+  "error_count": 2,
+  "hash_mismatches": [
+    "代码/scripts/audit_repository_layout_migration.py"
+  ],
+  "missing_sources": [],
+  "missing_targets": [],
+  "passed": false,
+  "phase": "before",
+  "size_mismatches": [
+    "代码/scripts/audit_repository_layout_migration.py"
+  ],
+  "sources_still_present": [],
+  "targets_already_present": []
+}

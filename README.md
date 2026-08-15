@@ -23,12 +23,12 @@ The current R6 path is a belief-conditioned direct policy with execution feedbac
 Read these files in order before continuing work:
 
 1. [`AGENTS.md`](AGENTS.md) for permanent repository and evidence rules.
-2. [`新对话接续说明_20260815.md`](新对话接续说明_20260815.md) for the current handoff, with verified migration corrections recorded in later governance updates.
-3. [`本地计划表.md`](本地计划表.md) for the single local execution overview.
-4. [`文档/知识库/PIJWM主文档.md`](文档/知识库/PIJWM主文档.md) for fixed theory, method, data, and evaluation definitions.
-5. [`文档/知识库/8.12之后推进.md`](文档/知识库/8.12之后推进.md) for post-2026-08-12 implementation progress and blockers.
-6. [`文档/README.md`](文档/README.md) for current and historical document ownership.
-7. Machine-readable manifests and reports under `代码/artifacts/` for individual acceptance claims.
+2. [`记录/接续记录/新对话接续说明_20260815.md`](记录/接续记录/新对话接续说明_20260815.md) for the current handoff, with verified migration corrections recorded in later governance updates.
+3. [`记录/本地计划表.md`](记录/本地计划表.md) for the single local execution overview.
+4. [`记录/PIJWM主文档.md`](记录/PIJWM主文档.md) for fixed theory, method, data, and evaluation definitions.
+5. [`记录/8.12之后推进.md`](记录/8.12之后推进.md) for post-2026-08-12 implementation progress and blockers.
+6. [`docs/README.md`](docs/README.md) and [`记录/README.md`](记录/README.md) for document and record ownership.
+7. Machine-readable manifests and reports under `code/artifacts/` for individual acceptance claims.
 
 Historical plans, meeting slides, model runs, and successful smoke tests remain evidence of their stated scope only. They do not override later theory boundaries or prove a complete method.
 
@@ -36,20 +36,17 @@ Historical plans, meeting slides, model runs, and successful smoke tests remain 
 
 ```text
 PIJWM/
-|-- 代码/
+|-- code/
 |   |-- src/pi_jwm/       reusable PI-JWM framework modules
 |   |-- scripts/          runnable collection, audit, training, and evaluation entry points
 |   |-- tests/            unit, contract, and regression tests
 |   |-- reference/        local third-party checkouts and reference implementations
 |   `-- artifacts/        local data, reports, checkpoints, figures, and machine evidence
-|-- 文档/
-|   |-- 知识库/           authority theory document and current progress record
-|   |-- 研究进展/         current research designs, results, and internal archives
-|   |-- 组会/             local meeting materials and historical presentations
-|   `-- 文献/             authoritative local literature library, indexes, and PDF categories
-|-- docs/superpowers/     implementation plans and design specifications
-|-- 本地计划表.md          single local overview plan
-|-- 新对话接续说明_*.md    dated continuation records
+|-- 记录/                  authority theory, progress, plans, handoffs, and migration records
+|-- paper/                formal paper manuscripts and submission assets
+|-- literature/           authoritative local literature library and PDF categories
+|-- meeting/              local meeting materials and historical presentations
+|-- docs/                 templates, project notes, and miscellaneous documentation
 |-- pyproject.toml
 `-- AGENTS.md
 ```
@@ -71,14 +68,14 @@ python -m pip install -e ".[experiments]"
 Core-only dependencies:
 
 ```powershell
-python -m pip install -r .\代码\requirements-core.txt
+python -m pip install -r .\code\requirements-core.txt
 ```
 
 Keep AirFogSim in its independent environment:
 
 ```powershell
 conda activate airfogsim
-cd D:\shen\PKU\PIJWM\代码\reference\AirFogSim\examples
+cd D:\shen\PKU\PIJWM\code\reference\AirFogSim\examples
 ```
 
 Do not copy reusable PI-JWM model code into AirFogSim.
@@ -88,9 +85,9 @@ Do not copy reusable PI-JWM model code into AirFogSim.
 From the repository root:
 
 ```powershell
-python -m compileall -q .\代码\src .\代码\scripts .\代码\tests
-$env:PYTHONPATH='D:\shen\PKU\PIJWM\代码\src'
-python -m unittest discover -s .\代码\tests -p 'test_*.py'
+python -m compileall -q .\code\src .\code\scripts .\code\tests
+$env:PYTHONPATH='D:\shen\PKU\PIJWM\code\src'
+python -m unittest discover -s .\code\tests -p 'test_*.py'
 git diff --check
 ```
 
