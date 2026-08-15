@@ -25,6 +25,9 @@
 - [x] 生成本地忽略final candidate并验证：audit/config与预文档候选逐字节相同，manifest仅有证据文档source hash变化；`--verify-only`返回`passed=true/errors=[]`。
 - [x] P2 ledger分支以`e5ad8e4`非破坏性合并到`main`；合并后24模块focused suite实际`205 tests, OK (skipped=3)`，P2-B/P2-C v1/v2四个verifier全部通过。
 - [ ] 最终发布审计、fetch拓扑检查、非强制push和远端ref复核。
+- [x] 合并后`D:\miniconda\python.exe`编译检查通过；全量发现`1350 tests`无断言failure、`7 errors`均为该环境缺少`traci`、`3 skipped`。
+- [x] 在`airfogsim`环境补跑上述4个真实AirFogSim模块共`39 tests`，结果`OK`；因此不把跨环境结果合并成虚假的全量全绿。
+- [x] 修复旧项目配置测试对已归档`文档/项目说明`目录的过时断言，提交`0cc91ce`；新契约要求`文档/README.md`和`文档/研究进展/归档/`存在并确认旧目录不存在。
 
 ## 2026-08-12 P0 机器取证补充
 
