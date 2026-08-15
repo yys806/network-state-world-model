@@ -12,7 +12,7 @@ As of 2026-08-15:
 - the v4 information-edge minimum viable schema uses five auditable E1 fields instead of filling thirteen unobserved legacy slots;
 - the core action is offloading plus sparse RB COO, while CPU follows `PIJWM-CPU-Inner-Rule-v1` after candidate communication effects;
 - P2-B v1 full dual-graph non-training preflight is on `main`;
-- P2-B v2 Attempt/Reject Ledger is a verified branch candidate and is not yet merged;
+- P2-B v2 Attempt/Reject Ledger and its P2-C v2 audit code are merged on `main` (merge commit `e5ad8e4`); the final audit candidate remains local and ignored;
 - P2-C v2 is blocked only by the scenario matrix, formal scale, and formal split freezes;
 - formal v4 data, new-protocol model training, and a true per-candidate world-model rollout planner are not complete.
 

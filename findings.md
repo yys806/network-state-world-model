@@ -20,6 +20,13 @@
 - 归档路径审计测试1项通过。IEEE官方模板中的既有行尾空白按原字节保留，不用格式化改写第三方历史文件。
 - `airfogsim` Python 3.10环境的全量1310项发现仍有275个环境错误，主要因缺少`scikit-learn`且Python 3.10无`tomllib`；该结果不能表述为全量测试通过。最终阶段将用具备这两个依赖的`D:\miniconda\python.exe`重新区分环境问题与代码问题。
 
+## 2026-08-15 P2 ledger closure and merge
+
+- P2-C v2预文档闭包从ledger独立重算得到natural-reference 120/120 accepted、0 rejected、0 quarantined；5字段E1矩阵5760行，三个正式数据冻结阻断保持。
+- `d6f776a`只修改ledger证据文档；新生成final candidate后，audit JSON和candidate config与预文档候选逐字节相同，manifest只有该文档source hash变化，所有状态保护旗标仍为false。
+- 隔离分支 focused suite为99 tests、3 skipped；扩展到24个明确P1/P2模块后为205 tests、3 skipped，合并到main后同样为205/3。v1/v2四个官方verifier合并前后均返回`passed=true`。
+- 非破坏性merge为`e5ad8e4`；当前main已包含P2 ledger/P2-C v2审计代码和文档。final candidate artifact继续保留在本地忽略目录，不进入GitHub。
+
 ## 2026-08-13 P2采集器契约设计核查
 
 - 现有`formal_airfogsim_runtime_v1.py`的外部callback注入和异常后恢复机制可复用，但默认仍调用历史`CpuPolicyAllocator`，其策略可含deadline权重、随机权重和任务截断，不符合已冻结的`PIJWM-CPU-Inner-Rule-v1`，不能直接作为v4正式采集器。

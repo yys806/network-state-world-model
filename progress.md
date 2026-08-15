@@ -21,6 +21,10 @@
 - [x] 提交`ae03b0e docs: archive superseded research materials`：保留历史重命名关系和第三方模板原字节；归档审计1项通过。
 - 全量测试限制：`airfogsim` Python 3.10发现1310项测试时仍有275个环境错误，主要为缺少`scikit-learn`与`tomllib`；最终验证改用具备依赖的`D:\miniconda\python.exe`复跑，当前不宣称全量通过。
 - 工具错误：首次候选测试命令从`代码/tests`工作目录使用相对Git pathspec，保护门发现候选列表为空并立即中止，未运行测试；改用`git -C D:\shen\PKU\PIJWM`后得到69个文件。一次四文件空白补丁因3个路径漏写`PI-JWM`连字符而在读取阶段失败，按真实路径重试后成功。
+- [x] P2 ledger文档提交`d6f776a`：绑定P2-C v2预文档计数、三个正式数据阻断和`training_eligible=false`边界。
+- [x] 生成本地忽略final candidate并验证：audit/config与预文档候选逐字节相同，manifest仅有证据文档source hash变化；`--verify-only`返回`passed=true/errors=[]`。
+- [x] P2 ledger分支以`e5ad8e4`非破坏性合并到`main`；合并后24模块focused suite实际`205 tests, OK (skipped=3)`，P2-B/P2-C v1/v2四个verifier全部通过。
+- [ ] 最终发布审计、fetch拓扑检查、非强制push和远端ref复核。
 
 ## 2026-08-12 P0 机器取证补充
 
