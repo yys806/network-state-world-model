@@ -1,5 +1,29 @@
 # PI-JWM v11 Selector Findings
 
+## 2026-08-15 本地文献库迁移基线
+
+- 官方OpenAI文档说明Codex从用户级技能位置加载全局技能；本机唯一名为`using-superpowers`的用户级目录是`C:\Users\Lenovo\.codex\skills\using-superpowers`，`C:\Users\Lenovo\.agents\skills`和仓库内均无同名副本。
+- `文档/文献/`已有若干散放PDF、`本地论文/`、旧研究资料目录和四份文献治理Markdown，整理时必须保留并按内容去重，不能只导出Zotero附件。
+- Zotero本地数据目录为`D:\禹尧珅\人工智能知识库\科研`；只通过Zotero API/MCP读取和写入，绝不直接修改`zotero.sqlite`。
+- 本轮采用七类目录，与PIJWM Zotero七个既有子集合一一对应；PDF选择唯一主分类，多集合成员关系写入索引。
+- Zotero个人库本地ID为`0`，共205项；PIJWM根集合`MZ9JQ2I6`及七个子集合键与`AGENTS.md`记录完全一致。RRM根集合`8J8EY24G`独立存在，本轮不读取、不迁移、不删除。
+- PIJWM根集合共有56个顶层文献条目；Zotero覆盖审计显示30项带PDF、26项缺PDF，当前覆盖率53.6%。缺失项中18项已有DOI，8项需按题名/arXiv等进一步解析。
+- `文档/文献/`当前有42个文件，其中30个PDF、约99.3 MB；30个PDF的SHA-256均唯一，14个PDF散放在目录顶层，其余位于历史子目录。整理时需要和Zotero的30项附件按哈希/题名交叉去重。
+- Zotero的32个PDF附件记录包括2个`linked_url`和30个导入附件；按标准`storage/<attachment-key>/<filename>`路径核对时，24个真实文件存在、6个记录对应文件缺失（DeepSense 6G、latent wireless dynamics、JEPA、TD-MPC2、Dreamer、World Models），不能仅凭Zotero的PDF图标认定本地可读。
+- Zotero附件路径工具对上述6项逐项确认均为`missing on disk`。其中Dreamer与World Models在现有本地历史目录已有候选PDF，需用题名和PDF哈希/元数据匹配；其余4项进入自动补全候选。
+- 多个PIJWM条目同时属于导师或其他非PIJWM集合；删除PIJWM集合树不会级联删除条目，必须保留这些跨集合记录，不能批量删除item。
+- Zotero本地API可直接导出56条完整BibTeX（约55 KB）和90条PIJWM相关JSON记录（56顶层条目、32个PDF附件记录、2个note），足以在删除集合前保留结构化快照。
+- Zotero磁盘上实际存在的24个附件文件与现有本地30个PDF比较后有6个SHA-256完全相同：Ding综述、低空网络综述、UAV群ISCCC、RoboScape、dependency-aware卸载、DT到world model。整理时复用本地副本，不重复复制。
+- `paper-fetch`本机版本0.14.1、schema 1.10.1可用；后续显式设置`PAPER_FETCH_NO_SCIHUB=1`并保持public模式。
+- 首轮28 DOI批处理的根因不是下载链整体失败，而是Windows默认`sys.stdout.encoding=gbk`无法输出Unicode `ğ`；`PYTHONUTF8=1`下输出编码变为UTF-8。NDJSON证明14项`download_ok`、13项`not_found`，仅`10.1109/JIOT.2020.3030926`在`source_hit`后缺终态，需要单项UTF-8重试。
+- 单项UTF-8重试确认`10.1109/JIOT.2020.3030926`的PolyU来源当前返回HTTP 502，因此归为手动下载而非编码故障。4个无DOI题名均高置信解析到arXiv并成功下载：Deep Ensembles、Graph World Model、GNS和PlaNet。
+- 自动公开来源最终新增18篇PDF；结合迁移前已确认的24篇本地可读Zotero条目，当前56项中42项已有本地PDF，剩余14项需要手动下载。
+- 七类目录现有64个PDF且64个SHA-256全部唯一：01类4篇、02类17篇、03类12篇、04类8篇、05类10篇、06类4篇、99类9篇。除七类目录外不再散放PDF。
+- 14篇手动项包括13篇public OA未命中和1篇PolyU来源HTTP 502；以IEEE论文为主，清单保留Zotero key、DOI、原始URL和目标分类。
+- 本地退役前验收`passed=true/errors=[]`：64个PDF、64个唯一SHA-256、78条索引、14条手动清单、90条Zotero JSON记录、8条集合记录、56条BibTeX和64条checksum全部一致；最长PDF路径157字符。
+- Zotero云端PIJWM根集合删除成功，七个子集合随根集合删除；云端与本地回读均确认8个旧key为0。示例条目`HEMB6GN5`仍存在且保留导师集合归属，RRM集合`8J8EY24G`在云端与本地均保留。
+- `.gitignore`继续排除整个`文档/文献/`，因此64个PDF、原始Zotero快照、CSV索引和本地README均只保存在当前机器，不会进入公开GitHub；仓库只提交治理入口对本地权威目录的新说明。
+
 ## 2026-08-15 Repository governance baseline
 
 - 当前主工作树位于`D:\shen\PKU\PIJWM`，`main`相对`origin/main`领先167个提交；治理设计和实施计划随后各形成一个独立提交。

@@ -46,7 +46,7 @@ PIJWM/
 |   |-- 知识库/           authority theory document and current progress record
 |   |-- 研究进展/         current research designs, results, and internal archives
 |   |-- 组会/             local meeting materials and historical presentations
-|   `-- 文献/             local literature files; Zotero is the authoritative library
+|   `-- 文献/             authoritative local literature library, indexes, and PDF categories
 |-- docs/superpowers/     implementation plans and design specifications
 |-- 本地计划表.md          single local overview plan
 |-- 新对话接续说明_*.md    dated continuation records

@@ -1,5 +1,34 @@
 # PI-JWM v11 Selector Progress Log
 
+## 2026-08-15 本地文献库迁移与Zotero退役
+
+- [x] 读取`using-superpowers`、`openai-docs`、`planning-with-files`、`paper-fetch`、`web-access`和`verification-before-completion`技能规则。
+- [x] 通过官方OpenAI文档核对用户级技能加载位置及禁用机制；用户明确要求物理删除，因此锁定唯一目标目录后执行删除。
+- [x] 清点当前`文档/文献/`与Zotero本地数据根；确认必须同时处理已有散放PDF和Zotero附件。
+- [x] 用户级`using-superpowers`目录及四个文件已送入Windows回收站；活动路径不存在，用户级技能根下无其他名称含`superpower`的目录。
+- [ ] 导出PIJWM集合元数据、附件和七类本地目录。
+- [ ] 自动补全公开PDF并生成手动下载清单。
+- [x] 验证本地归档后删除Zotero PIJWM集合树；本地文献目录继续由`.gitignore`排除，不把PDF或原始快照推入公开GitHub。
+- 工具记录：首次`web-access`依赖检查因Chrome未启动返回exit 1；按技能指引隐藏启动Chrome后代理进入连接流程。Google搜索触发反自动化页面，改用Bing发现入口并直接读取OpenAI官方`Build skills`页面。
+- 工具记录：首次技能删除保护门假定目录只含`SKILL.md`，实际还含`references/codex-tools.md`、`copilot-tools.md`、`gemini-tools.md`，命令在删除前中止且未改变文件；后续按已核实的完整四文件目录处理。
+- 工具记录：首次Zotero本地API读取因桌面端未运行返回`WinError 10061`；隐藏启动`C:\Program Files\Zotero\zotero.exe`后切换本地个人库成功，未直接操作`zotero.sqlite`。
+- [x] Zotero初步覆盖审计：PIJWM共56项，30项带PDF、26项缺PDF，RRM集合完全排除在本轮范围外。
+- [x] 本地初步清点：42个文件、30个PDF、约99.3 MB，PDF哈希无内部重复。
+- [x] 完成Zotero附件与本地PDF哈希交叉核对：24个真实附件文件中6个已有本地同字节副本。
+- [x] 验证Zotero可导出56条BibTeX；读取`paper-fetch` schema并固定公开来源、禁用Sci-Hub模式。
+- 工具记录：28 DOI首轮public批处理下载14篇后最终返回`internal_error`；系统化诊断确认Python stdout为GBK、最终JSON含`ğ`导致编码失败。事件账本覆盖27/28项，14成功、13无公开PDF；只对缺终态的单项用UTF-8重试。
+- 工具记录：UTF-8单项重试的摘要包装器错误假定成功envelope必含`data.results[0]`，遇到顶层`download_network_error`后产生空数组索引；真实JSON完整保存并显示PolyU HTTP 502，后续摘要对成功/失败envelope分别处理。
+- [x] 无DOI的4个题名候选全部从arXiv成功获取；自动公开来源合计新增18篇，剩余14篇进入手动下载清单。
+- 工具记录：首次自动下载整合脚本使用`$error`作为局部变量，因PowerShell自动变量`$Error`只读而在第一条记录、任何文件移动前中止；改用任务专用`$errorCode`后重跑。
+- 工具记录：首次最终索引脚本在异常字符串中写`$key:`，PowerShell将冒号解析为变量限定符并在执行前报错；没有写入索引文件，改为`$($key)`后重跑。
+- 工具记录：首次Zotero集合删除在本地库ID`0`上下文调用Web API，服务端以`Invalid user ID`拒绝，集合未删除；写操作需切换到真实云端用户ID`18841865`并重新读取确认。
+- [x] 本地文献库退役前验收通过：7类、64个唯一PDF、78条索引、14条缺失、90条JSON快照、56条BibTeX和64条checksum均一致，错误列表为空。
+- [x] 切换云端用户ID`18841865`后删除PIJWM根集合`MZ9JQ2I6`；云端与本地回读均确认根集合及七个子集合不存在，条目和RRM集合保持。
+- 工具记录：一次`rg`命令把PowerShell风格的`文档\文献\*.md`作为ripgrep路径传入，Windows返回路径语法错误；其他显式文件仍完成搜索，后续使用目录加`-g '*.md'`。
+- 工具记录：首次最小编码复现把临时删除、重定向和多层引号组合在一条命令中，被执行器安全策略在启动前拒绝；拆成纯只读编码和NDJSON统计后成功。
+- 工具记录：首次直接投影Zotero本地API的`include=data`响应时PowerShell把嵌套字段展开成数组，输出不适合作为附件清单；未写文件，后续先检查响应对象结构再生成归档manifest。
+- 工具记录：一次只读元数据抽样命令在`foreach`后直接接管道触发PowerShell `empty pipe element`语法错误，未执行API请求或写文件；改为先累积数组再序列化。
+
 ## 2026-08-15 Repository governance and GitHub publish
 
 - [x] 用户确认保守治理方案：不物理移动/删除研究资料，先修复迁移路径，再改善导航、验证、分批提交并推送GitHub。

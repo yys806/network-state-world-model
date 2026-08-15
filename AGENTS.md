@@ -50,26 +50,15 @@ cd D:\shen\PKU\PIJWM\代码\reference\AirFogSim\examples
 
 For LaTeX progress documents, compile with XeLaTeX.
 
-## Zotero Literature Management
+## Local Literature Management
 
-- Zotero is the authoritative literature library for PI-JWM. Reuse existing Zotero items instead of importing duplicates.
-- MCP server name: `zotero` (`zotero-mcp-server v0.6.2`).
-- CLI fallback when the MCP tools are not exposed in the current task: `C:\Users\Lenovo\.codex\tools\zotero-mcp\Scripts\zotero-cli.exe`.
-- Credential configuration: `C:\Users\Lenovo\.config\zotero-mcp\config.json`. Never print, copy into project files, or otherwise disclose the API key.
-- Zotero user library ID: `18841865`.
-- PIJWM root collection: `MZ9JQ2I6`.
-- PIJWM subcollections:
-  - `01 系统场景与问题定义`: `YQ4UXTP9`
-  - `02 严格双图与图学习`: `KYWGGW4X`
-  - `03 世界模型与状态预测`: `RWKT5PW6`
-  - `04 任务卸载与资源优化`: `U7J9X53G`
-  - `05 数据集、测量与仿真`: `VY6P9W8E`
-  - `06 评价、不确定性与决策诊断`: `UEY8MYTI`
-  - `99 综述与奠基性文献`: `8LW88WWE`
-- Use the local Zotero API for fast read/search where possible and the authenticated Zotero Web API for supported writes. Never modify `zotero.sqlite` directly.
-- Before importing or creating an item, deduplicate by DOI, then arXiv ID, then normalized title plus author/year. If an item already exists, preserve its current collections, tags, notes, and attachments; only append PIJWM collections and tags.
-- Every PIJWM item must belong to the root collection and at least one subcollection, with role, evidence, topic, and full-text-status tags following `文档/文献/PIJWM文献管理说明.md`.
-- Web API updates must carry the item's current version and preserve all existing fields. After writing, re-read the cloud item and verify collection membership, tags, and attachments; then check the local API after Zotero sync. If local sync lags, report that state and do not repeat the write.
+- `文档/文献/` is the authoritative PI-JWM literature library. Read `文档/文献/README.md` and `文档/文献/文献索引.csv` before adding or moving papers.
+- Store each PDF in exactly one primary category directory. Preserve cross-category relationships in `文献索引.csv` instead of duplicating files.
+- Deduplicate in this order: DOI, arXiv ID, normalized title plus author/year, then PDF SHA-256. Verify the `%PDF-` file signature before accepting a download.
+- After adding a PDF, update `文献索引.csv`, `PDF_SHA256SUMS.txt`, `文献索引.md`, and `本地文献库状态.json`. Remove the matching entry from `需要手动下载.md` only after the file and metadata have been verified.
+- The former Zotero PIJWM collection was retired on 2026-08-15. Its final metadata, collection structure, BibTeX, attachment audit, and download results are preserved under `文档/文献/`; do not recreate or write back to that collection unless the user explicitly asks.
+- Historical Zotero keys remain provenance identifiers only. Do not treat a historical Zotero attachment flag as proof that a local PDF exists; use the local path and SHA-256 index.
+- `D:\shen\PKU\RRM` and its Zotero collection remain a separate reference project. Never merge their papers or claims into PI-JWM without explicit provenance and independent PI-JWM evaluation.
 
 ## Research Workflow
 

@@ -1,5 +1,28 @@
 # PI-JWM v11 Selector GPU Iteration Plan
 
+## 2026-08-15 本地文献库迁移与Zotero退役
+
+### Goal
+
+删除用户级`using-superpowers`技能；将PIJWM现有本地论文与Zotero PIJWM集合的元数据、附件和分类完整归档到`文档/文献/`，自动补齐可公开获取的PDF，生成需要用户手动下载的清单，验证后删除Zotero中的PIJWM集合树。
+
+| Phase | Status | Deliverable |
+|---|---|---|
+| 1. 全局技能与工作区基线审计 | complete | 唯一用户级`using-superpowers`目录已送入回收站；Git状态和官方技能加载规则已核对 |
+| 2. Zotero与本地文献清点 | complete | 56个PIJWM条目、32个附件记录、30个原有本地PDF和哈希重复关系已清点 |
+| 3. 分类目录与本地归档 | complete | 七类目录、64个唯一PDF、BibTeX/JSON/CSV索引和哈希清单已验收 |
+| 4. 缺失PDF公开来源补全 | complete | 禁用Sci-Hub后自动新增18篇；14篇进入`需要手动下载.md` |
+| 5. 本地归档验收与Zotero退役 | complete | 验收0错误；云端/本地8个PIJWM集合键均消失，个人条目和RRM集合保留 |
+| 6. 文档治理、Git提交与推送 | in_progress | README/AGENTS/计划表同步，验证后提交并推送 |
+
+### Fixed Boundaries
+
+- `D:\shen\PKU\RRM`始终是独立参考项目，不把其文献、代码或证据静默混入PIJWM。
+- 每篇PDF只保留一个主存放目录；多分类归属保存在机器可读索引中。
+- 自动补全仅使用公开合法来源并设置`PAPER_FETCH_NO_SCIHUB=1`；无法自动获取的条目交给用户手动下载。
+- Zotero删除仅针对PIJWM根集合`MZ9JQ2I6`及其子集合；不删除整个个人库、不批量删除条目、不清空回收站。
+- 只有本地元数据、现有附件、哈希和缺失清单均完成验收后，才执行不可逆的集合删除。
+
 ## 2026-08-15 Repository governance and GitHub publish
 
 ### Goal
