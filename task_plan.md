@@ -13,7 +13,7 @@
 | 3. 导航与忽略治理 | complete | 根README、文档索引、artifact/reference说明和.gitignore与当前权威状态一致；空误嵌套目录已移除 |
 | 4. 当前源码/测试/文档分类提交 | complete | `ac7d10b`提交框架/脚本/测试，`ae03b0e`提交现行研究文档与归档迁移；治理/计划/交接文件单独提交 |
 | 5. P2 ledger证据闭包 | complete | `d6f776a`绑定P2-C v2预文档计数与三个阻断；final candidate生成并逐字节/manifest核验；`e5ad8e4`非破坏性合并到`main` |
-| 6. 最终验证与GitHub推送 | in_progress | 合并后205项focused测试和四个verifier复跑通过；待最终发布集审计、远端拓扑检查和非强制push |
+| 6. 最终验证与GitHub推送 | complete | 编译/秘密/体积/worktree审计完成；远端拓扑0个remote-only提交；非强制push成功且GitHub ref与本地`main`一致 |
 
 ### Fixed Boundaries
 

@@ -27,6 +27,7 @@
 - 隔离分支 focused suite为99 tests、3 skipped；扩展到24个明确P1/P2模块后为205 tests、3 skipped，合并到main后同样为205/3。v1/v2四个官方verifier合并前后均返回`passed=true`。
 - 非破坏性merge为`e5ad8e4`；当前main已包含P2 ledger/P2-C v2审计代码和文档。final candidate artifact继续保留在本地忽略目录，不进入GitHub。
 - 最终编译审计通过；`D:\miniconda\python.exe`全量1350项仅7项因缺`traci`报环境error、3项skip且无断言failure；在`airfogsim`环境补跑对应4模块39项全部通过。旧`test_project_configuration.py`目录断言已由`0cc91ce`按当前归档结构修正。
+- 最终tracked发布集为683个文件、14,145,456字节，最大单文件2,086,659字节；10 MiB/100 MiB文件均为0，凭据模式文件为0，现行权威文档旧根引用为0。fetch后拓扑为0个remote-only/184个local-only提交，非强制push成功，首轮远端ref与本地`2ff8485`一致。
 
 ## 2026-08-13 P2采集器契约设计核查
 
