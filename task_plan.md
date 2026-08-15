@@ -13,7 +13,7 @@
 | 3. 分类目录与本地归档 | complete | 七类目录、64个唯一PDF、BibTeX/JSON/CSV索引和哈希清单已验收 |
 | 4. 缺失PDF公开来源补全 | complete | 禁用Sci-Hub后自动新增18篇；14篇进入`需要手动下载.md` |
 | 5. 本地归档验收与Zotero退役 | complete | 验收0错误；云端/本地8个PIJWM集合键均消失，个人条目和RRM集合保留 |
-| 6. 文档治理、Git提交与推送 | in_progress | README/AGENTS/计划表同步，验证后提交并推送 |
+| 6. 文档治理、Git提交与推送 | complete | README/AGENTS/计划表已同步，提交`7828748`并推送；最终状态提交随后复核 |
 
 ### Fixed Boundaries
 

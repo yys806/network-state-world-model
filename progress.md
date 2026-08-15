@@ -24,6 +24,7 @@
 - 工具记录：首次Zotero集合删除在本地库ID`0`上下文调用Web API，服务端以`Invalid user ID`拒绝，集合未删除；写操作需切换到真实云端用户ID`18841865`并重新读取确认。
 - [x] 本地文献库退役前验收通过：7类、64个唯一PDF、78条索引、14条缺失、90条JSON快照、56条BibTeX和64条checksum均一致，错误列表为空。
 - [x] 切换云端用户ID`18841865`后删除PIJWM根集合`MZ9JQ2I6`；云端与本地回读均确认根集合及七个子集合不存在，条目和RRM集合保持。
+- [x] 治理入口提交`7828748 docs: retire Zotero PIJWM collection for local library`并推送到`origin/main`；PDF、CSV、JSON和BibTeX继续仅保存在本机。
 - 工具记录：一次`rg`命令把PowerShell风格的`文档\文献\*.md`作为ripgrep路径传入，Windows返回路径语法错误；其他显式文件仍完成搜索，后续使用目录加`-g '*.md'`。
 - 工具记录：首次最小编码复现把临时删除、重定向和多层引号组合在一条命令中，被执行器安全策略在启动前拒绝；拆成纯只读编码和NDJSON统计后成功。
 - 工具记录：首次直接投影Zotero本地API的`include=data`响应时PowerShell把嵌套字段展开成数组，输出不适合作为附件清单；未写文件，后续先检查响应对象结构再生成归档manifest。
