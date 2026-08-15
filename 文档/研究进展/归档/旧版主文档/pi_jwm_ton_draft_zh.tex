@@ -384,9 +384,42 @@ $H$ & seeds & step rows & candidates & non-trivial groups $\uparrow$ & quality a
 
 不同 horizon 下的累计能耗配对差异基本不变，这是协议所致：只有第一步动作不同，后续动作共享。由此，本实验支持“有效候选监督覆盖不足且 offload 效应具有暂态性”，但不支持“更长 horizon 已改善 selector”或“某个能耗权重已提高策略性能”。下一步应先构造持续多步候选序列，并增加真正处于 compute/return 敏感阶段的决策点；当 $\rho_H$ 和跨 seed 方向一致性提高后，再训练使用 PI-JWM forecast 与不确定性的 rollout-aware selector。
 
+\subsection{阶段条件收益 LCB 与 selector 根因归因}
+
+前述 CandidateSet ranker 在 validation 上全部 defer，单纯改变 defer 或 Pareto 阈值不能解释失败。为区分“机会检测失败”和“候选排序失败”，我们在冻结 world model 后对 schema-v6 候选标签进行两步审计。第一步用 selected-edge、pooled-interaction 和完整 edge-step interaction 特征检测候选是否存在非零 raw-SSE 改善机会；第二步按候选和 episode local step 估计跨训练 seed 的收益方向、均值、方差与支持数。episode phase 由 $\text{sample\_id}\bmod390$ 恢复，推理时不使用 seed 身份、真实 future state、counterfactual outcome 或 $\text{action\_applied}$ 标签。
+
+最终的 phase-conditioned benefit LCB 不是新的 world model，而是一个可解释的 selector 基线。calibration seeds 44--49 只确定执行门槛，validation seeds 50--59 只做一次性评价。候选只有在正向比例、平均 raw-SSE benefit 和最小支持数同时达标，并且不被可观测 task--energy proxy Pareto 支配时才执行；否则回退到 ranked-allocation baseline。该规则可以把“为什么执行”分解为 phase、候选收益统计和安全门，而不是依赖不可解释的总分。
+
+\begin{table*}[!t]
+\centering
+\tabfontsize
+\begin{tabular}{lr}
+\toprule
+指标 & validation seeds 50--59 \\
+\midrule
+ranked baseline active-rate RMSE$\downarrow$ & 233.7162 \\
+phase-conditioned benefit LCB RMSE$\downarrow$ & \textbf{207.5399} \\
+相对 baseline 改善$\uparrow$ & 26.1763 \\
+改善 seed 数/总 seed 数 & 10/10 \\
+有效执行次数 & 65 \\
+执行后正收益精度$\uparrow$ & 93.85\% \\
+负选择率$\downarrow$ & 6.15\% \\
+Pareto 违规数$\downarrow$ & 0 \\
+activity F1 变化 & $-0.000086$ \\
+link RMSE 相对变化 & $-0.5738\%$ \\
+\bottomrule
+\end{tabular}
+\caption{阶段条件收益 LCB 的 validation 结果。该结果标记为 \texttt{diagnostic\_only}；matched test 18--19 与 external holdout 60--69 在配置冻结前均未访问。}
+\label{tab:phase_benefit_lcb}
+\end{table*}
+
+该方法将 validation active-rate RMSE 从 233.7162 降至 207.5399，10 个 validation seed 全部改善，65 次有效执行中的正收益精度为 93.85\%，且没有 Pareto 违规。它达到 B 级区间 $[200,213.160874)$，但尚未达到预注册的 A 级门槛 $<200$，所以不能把它写成已经定型的部署策略。更重要的是，rank-only 归因的 validation RMSE 为 292.90--312.33，说明此前失败主要来自候选排序表示，而不仅是 defer 过于保守；schema-v6 交互审计的 opportunity PR-AUC 为 0.9495，但 sample rank Spearman 仅为 0.0832，支持“机会可辨识、收益排序困难”的判断。
+
+该结果也限制了后续解释。phase context 和训练期 benefit 统计提供了稳定的 validation 信号，但不能替代 matched test 或 external holdout；candidate-specific experts、phase smoothing、estimator ensemble、residual routing、phase-restricted kNN 和无 phase token ranker 均未超过 exact phase table。因而本文把阶段条件收益 LCB 定位为可解释的诊断基线，并将持续多步候选序列、更多 compute/return 敏感决策点和独立外部验证列为后续工作，而不把本轮的 validation 改善表述为最终策略器突破。
+
 \section{结论}
 
-本文提出 \pjwm{}，面向车载空地边缘计算建立物理--信息联合 world model。该模型以物理图描述移动性、几何距离和覆盖关系，以信息图描述链路活动、任务状态和资源动作，并通过 action-conditioned latent rollout 预测未来节点、链路和任务状态。实验表明，\pjwm{} 在可靠 future action condition 下可以形成稳定的状态预测上界；当未来动作由 autonomous policy bridge 生成时，误差主要来自动作 value/magnitude，尤其是资源幅值生成，而不是物理--信息联合 world model 本身失效。进一步的能耗与 horizon 诊断显示，当前 15 个配对决策组中仅 7 个具有非平凡候选差异，且该比例在 $H=3,10,20$ 下不变。因而现阶段应先提高候选序列和决策点的可辨识性，再评价 rollout-aware selector；本文不把 action-only ranking 或能耗权重敏感性结果写成可部署策略改进。该结果说明，\pjwm{} 可以作为面向空地车载边缘计算的可滚动预测模型和调度动作评估器，同时也为定位动作候选与策略器的误差来源提供受控接口。
+本文提出 \pjwm{}，面向车载空地边缘计算建立物理--信息联合 world model。该模型以物理图描述移动性、几何距离和覆盖关系，以信息图描述链路活动、任务状态和资源动作，并通过 action-conditioned latent rollout 预测未来节点、链路和任务状态。实验表明，\pjwm{} 在可靠 future action condition 下可以形成稳定的状态预测上界；当未来动作由 autonomous policy bridge 生成时，误差主要来自动作 value/magnitude，尤其是资源幅值生成，而不是物理--信息联合 world model 本身失效。能耗与 horizon 诊断进一步显示，当前候选库只有 7/15 个决策组提供非平凡监督，且一次性动作扰动在 $H=3,10,20$ 下的区分度不变。阶段条件收益 LCB 在未访问测试集的 validation 上将 active-rate RMSE 从 233.7162 降至 207.5399，并保持 93.85\% 的执行后正收益精度；该结果属于 B 级诊断信号而非最终部署结论。因而现阶段应继续提高候选序列和决策点的可辨识性，并在配置冻结后进行一次独立 matched/external 验证；本文不把 validation-only selector 或能耗权重敏感性结果写成已定型策略。该结果说明，\pjwm{} 可以作为面向空地车载边缘计算的可滚动预测模型和调度动作评估器，同时也为定位动作候选与策略器的误差来源提供受控接口。
 \sloppy
 \begin{thebibliography}{99}
 

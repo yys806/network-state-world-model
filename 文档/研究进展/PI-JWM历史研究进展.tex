@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
 \usepackage{caption}
 \usepackage{float}
 \geometry{left=2.4cm,right=2.4cm,top=2.4cm,bottom=2.4cm}
@@ -18,14 +19,16 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\pjwm}{PI-JWM}
-\title{\pjwm{} 模型版本进展与实验结果记录}
+\title{\pjwm{} 历史研究进展：模型版本与实验记录}
 \author{禹尧珅}
-\date{2026-06-26}
+\date{2026-07-23}
 \begin{document}
 \pagestyle{plain}
 \maketitle
+\tableofcontents
+\clearpage
 \section*{记录说明}
-本文档只记录 \pjwm{} 模型版本推进和各版本实验结果。ToN 论文式背景、相关工作、系统建模和正式方法叙述移至 \code{pi\_jwm\_ton\_draft\_zh.tex}；本文件不再承担论文正文功能。早期 v0--v5 的日期按本地历史报告文件记录日期填写，v6 以后按实验目录、报告或交接文件中的日期填写。表中 $\uparrow$ 表示越大越好，$\downarrow$ 表示越小越好；粗体表示该表内该指标最优。AirFogSim/SUMO 只作为参考仿真器和数据来源，主框架始终为 \pjwm{}。
+本文档按时间顺序整理 \pjwm{} 已经发生的模型版本推进、实验结果、失败路线与证据边界，用于回答“项目做过什么、为何演进到当前状态”。它是历史记录，不代表其中每个旧版本的定义仍是当前定稿，也不承担论文正文功能。早期 v0--v5 的日期按本地历史报告文件记录日期填写，v6 以后按实验目录、报告或交接文件中的日期填写。表中 $\uparrow$ 表示越大越好，$\downarrow$ 表示越小越好；粗体表示该表内该指标最优。AirFogSim/SUMO 只作为参考仿真器和数据来源，主框架始终为 \pjwm{}。
 \section{版本进展总览}
 
 本节按版本记录模型、符号和结果。表中 $\uparrow$ 表示越大越好，$\downarrow$ 表示越小越好；粗体表示该表内该指标最优。早期 v0--v5 的结果来自 \code{airfogsim\_v0/reports} 中的历史报告，保留当时报告里的变量名和指标名；v6 以后来自 \code{代码/artifacts/experiments/pi\_jwm\_*} 下的 PI-JWM 正式实验。若本节使用了统一符号中后补的写法，会在对应段落说明补充来源。
@@ -636,5 +639,38 @@ $H$ & seeds & step rows & candidates & non-trivial groups $\uparrow$ & audit \\
 结果给出三个边界明确的判断。第一，$\rho_H$ 在三个 horizon 下均为 46.67\%，因此短窗口不是候选监督稀疏的唯一原因。第二，CPU-scale 的 12 个候选和 return-route 的 4 个候选在三个 horizon 下仍无可辨识效应；这不能推出 CPU/return 长期无效，只能说明当前决策点、动作幅度或一次性注入协议没有产生可测差异。第三，offload-target 与 mixed-offload-RB 在 $H=10$ 的单位步平均效应分别为 $-0.014543$ 和 $-0.015761$，到 $H=20$ 回到 $-0.000129$ 和 $-0.000737$，表现为中期负效应与后续补偿；该非单调变化不支持“horizon 越长越差”的结论。
 
 能耗配对差异没有随 $H$ 累积，这是实验协议的直接结果：候选只改变第一步动作，后续调度相同。因而本轮能够支持的结论是，当前 actual-rollout candidate library 的有效监督覆盖不足，且部分 offload 效应具有暂态性；它不能证明某个 selector 或某个 $\lambda$ 已经改善策略。下一步应先构造持续多步候选序列、扩大 compute/return 有效决策点覆盖，再接入 PI-JWM forecast 与不确定性做 rollout-aware selector。完整数据、公式口径、复现命令和 SHA-256 冻结清单位于 \code{代码/artifacts/reports/pi\_jwm\_energy\_reward\_horizon\_study\_20260713/}。
+
+\section{v11 selector 阶段条件收益诊断（2026-07-20）}
+
+本周在不重新训练 world model、且不打开 matched test 18--19 与 external holdout 60--69 的前提下，完成了 v11 selector 的根因归因和一个可复核的阶段条件收益基线。此前 CandidateSet ranker 在 validation 上 100\% defer；进一步的 rank-only 归因显示，问题不是回退阈值过于保守，而是候选排序本身失效：rank-only 策略的 validation RMSE 为 292.90--312.33，且所有 validation seed 均恶化。schema-v6 交互审计则显示 opportunity detection 具有信号（ROC-AUC 0.8752、PR-AUC 0.9495），但候选收益排序仍弱（sample rank Spearman 0.0832）。因此本周将“是否存在可修复机会”和“修复后收益有多大”拆开建模，并检验可观测 episode phase 是否提供稳定上下文。
+
+对每个候选 $c$ 和每个 episode local step $p$，仅使用 train seeds 估计 raw-SSE benefit 的均值、跨 seed 正向比例、方差和支持数；episode phase 由 $\text{sample\_id}\bmod390$ 恢复，不使用 seed 身份或 future rollout outcome。calibration seeds 44--49 只用于确定安全执行门槛，validation seeds 50--59 只用于一次性评估。最终采用的 phase-conditioned benefit LCB 规则为：正向比例不低于 0.575、均值收益不低于 $0.0003528595$、支持数至少为 5，并通过可观测 task--energy proxy 的 Pareto 非支配约束；未通过时回退到 ranked-allocation baseline。
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+指标 & validation 结果 \\
+\midrule
+ranked baseline active-rate RMSE$\downarrow$ & 233.7162 \\
+phase-conditioned benefit LCB RMSE$\downarrow$ & \textbf{207.5399} \\
+相对 baseline 改善$\uparrow$ & 26.1763 \\
+改善 seed 数/总 seed 数 & 10/10 \\
+有效执行次数 & 65 \\
+正收益精度$\uparrow$ & 93.85\% \\
+负选择率$\downarrow$ & 6.15\% \\
+Pareto 违规数$\downarrow$ & 0 \\
+activity F1 变化 & $-0.000086$ \\
+link RMSE 相对变化 & $-0.5738\%$ \\
+\bottomrule
+\end{tabular}
+\caption{v11 阶段条件收益 LCB 在 validation seeds 50--59 上的结果。该表是 \code{diagnostic\_only}，不是独立测试或最终部署结果。}
+\label{tab:phase_selector_progress}
+\end{table}
+
+该结果达到预注册的 B 级区间 $[200,213.160874)$，但没有达到 A 级 RMSE $<200$，因此 selector 配置仍未冻结，external holdout 仍保持锁定。结果的解释边界也已经明确：phase context 和训练期的跨 seed benefit 统计足以产生稳定的 validation 改善，但不能据此宣称 matched test 泛化。candidate-specific experts、phase smoothing、estimator ensemble、learned residual routing、phase-restricted kNN 和无 phase token ranker 均未超过该 exact phase table，作为失败路线保留在审计记录中。
+
+本周同时完成了 GPU 训练前的工程闭环：RTX 4090 上的全数据 CUDA smoke 和 3-seed token probe 均正常，正式 phase selector runner 在本地复现 validation RMSE 207.5398777，冻结摘要 digest 为 \code{887331b2...454a2}；主测试 722/722、脚本测试 84/84、compileall 和 diff audit 均通过。下一步进入 GPU 的前置条件不是继续扩大同一排序器，而是先完成候选收益表示与 selector 结构的独立设计，并在 validation 上达到预设门槛后再一次性打开外部 holdout。完整复现命令、decision trace、per-seed CSV、NPZ 统计缓存和 SHA-256 清单位于“代码”目录下的 \path{artifacts/reports/pi_jwm_v11_selector_finalization_20260719/phase_selector_formal_20260720/}。
 
 \end{document}
