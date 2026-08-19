@@ -17,6 +17,9 @@ SCRIPT_PATH = CODE_ROOT / "scripts" / "build_formal_airfogsim_tensor_v1.py"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
+from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract
+from pi_jwm.formal_airfogsim_graph_v1 import tensorize_formal_graph
+
 
 def load_subject():
     spec = importlib.util.spec_from_file_location(
@@ -166,6 +169,28 @@ class BuildFormalAirFogSimTensorTests(unittest.TestCase):
             self.assertEqual(8, action_width)
             self.assertTrue(validation["checks"]["locked_test_not_tensorized"])
             self.assertFalse((output / "seed_002").exists())
+
+    def test_formal_graph_normalizes_legacy_return_action_field(self):
+        graph = fake_graph(0)
+        graph["task_nodes"] = [{"id": "task-0", "task_node_id": "vehicle_0"}]
+        graph["source_task_snapshots"] = [
+            {
+                "id": "task-0",
+                "observed_time": time,
+                "arrival_time": 0.0,
+                "lifecycle_state": "waiting_to_return",
+                "current_node_id": "vehicle_0",
+                "return_destination_id": "RSU_0",
+            }
+            for time in (0.1, 0.2, 0.3)
+        ]
+        graph["source_return_actions"] = [
+            {"task_id": "task-0", "target_node_id": "RSU_0", "time": 0.1}
+        ]
+        contract = infer_tensor_contract([graph], history_steps=1, horizon_steps=1)
+        arrays, report = tensorize_formal_graph(graph, contract)
+        self.assertEqual(1, report["legacy_return_action_field_count"])
+        self.assertTrue(arrays["task_action_present"].any())
 
 
 if __name__ == "__main__":

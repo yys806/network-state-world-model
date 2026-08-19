@@ -689,6 +689,14 @@
 - 独立校验确认关键声明与P2-C v2 JSON一致，引用的核心代码/artifact路径存在，最终候选目录仍不存在，尾空格/TODO检查为0。
 # Progress
 
+#### 2026-08-19 训练前 tensor contract 结构验收与语义阻断
+
+- 修复后的正式候选 v3 完成 60 条 CPU-only 轨迹；builder 和独立 audit v3b 通过，`formal_data_approved=true`，未访问 locked-test 下游。
+- 训练前 tensor builder 完成 54 条非 locked seed，统一 contract、15,660 windows、train-only normalization stats、finite arrays、window bounds 和 113 项 manifest 文件哈希复核均通过。
+- 两个历史源字段差异已显式记录：旧 v3 return action 用 `target_node_id`，formal tensor 归一化为 `return_target_id`；新 adapter 已输出正式字段。
+- 语义审计发现 task/physical-edge 特征缺失：task state 全零来自 observer/adapter 没有动态任务数值字段，physical edge state 全零来自 channel rows 未映射到 edge snapshots。该问题不是统计技巧可修复项，已把训练一致性门标为阻断。
+- 当前状态：`formal_tensor_ready=true`、`formal_training_ready=false`、`gpu_started=false`、`locked_test_accessed=false`。下一步必须扩展 decision-time observer/adapter 的直接字段证据并重新采集，不启动训练。
+
 ## 2026-08-19 P2-C 场景冻结推进
 
 - [x] 读取新版 `AGENTS.md`、P2-C 审计、候选配置、旧正式数据设计和 AirFogSim 实际配置/运行入口。
@@ -727,3 +735,10 @@
 - 独立审计：`code/artifacts/audit/pi_jwm_p2c_formal_data_audit_20260819/`，所有审计 checks 通过，18,000 条 action attempts 无 schema/identity/frame 错误。
 - locked-test 未进入 metrics/training statistics；只保留独立 `locked_test/window_index.csv` 与封存轨迹目录。训练仍被 tensor contract、training statistics 和方法冻结前 locked-test 封存门阻断。
 - 由于 metrics 是按 seed 的多指标长表，审计修正为唯一非 locked seed 集合检查；修正后深度 graph validator 重新运行并通过。
+
+#### 2026-08-19 训练前 Tensor 化首轮失败
+
+- 已启动正式 tensor builder，仅处理 54 条非 locked 轨迹；首条 train seed `10000` 在 tensorizer 唯一性门失败，错误为 `duplicate snapshot (0.0, 'RSU_0')`。
+- 已完成根因调查：adapter 将 decision/execution/outcome 的物理 node/edge snapshot 混入同一 observed-time 序列；真实 bundle 中重复键 5033 个且内容相同。未用零填充、覆盖或静默去重处理。
+- 当前 phase 2 暂停在 RED 测试前；GPU、训练、调参和 locked-test 使用均未发生。
+- RED/GREEN 已完成：adapter 只把 decision physical snapshot 写入状态流，execution/outcome 的任务与 ledger evidence 保留；相关 2+6+1 项定向测试通过。由于旧 v2 数据与修复前代码绑定，正式 tensor 化前必须先重生成 v3 候选数据。

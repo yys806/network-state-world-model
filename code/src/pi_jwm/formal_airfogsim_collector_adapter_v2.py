@@ -32,6 +32,7 @@ def build_formal_bundles(
     node_snapshots: list[dict[str, Any]] = []
     edge_snapshots: list[dict[str, Any]] = []
     task_snapshots: list[dict[str, Any]] = []
+    outcome_task_snapshots: list[dict[str, Any]] = []
     dag_edges: dict[str, dict[str, Any]] = {}
     transfer_events: list[dict[str, Any]] = []
     offload_actions: list[dict[str, Any]] = []
@@ -53,6 +54,8 @@ def build_formal_bundles(
             physical_nodes=physical_nodes,
             physical_edges=physical_edges,
             dag_edges=dag_edges,
+            include_tasks=True,
+            task_snapshots=task_snapshots,
         )
         _append_snapshot_rows(
             frame=frame,
@@ -63,6 +66,7 @@ def build_formal_bundles(
             physical_nodes=physical_nodes,
             physical_edges=physical_edges,
             dag_edges=dag_edges,
+            include_physical=False,
         )
         _append_snapshot_rows(
             frame=frame,
@@ -73,8 +77,9 @@ def build_formal_bundles(
             physical_nodes=physical_nodes,
             physical_edges=physical_edges,
             dag_edges=dag_edges,
+            include_physical=False,
             include_tasks=True,
-            task_snapshots=task_snapshots,
+            task_snapshots=outcome_task_snapshots,
         )
 
         flow_by_id = {
@@ -99,13 +104,17 @@ def build_formal_bundles(
                 "trajectory_id": trajectory_id,
                 "task_id": str(row["task_id"]),
                 "source_node_id": str(task_by_id.get(str(row["task_id"]), {}).get("current_node_id", "")),
-                "target_node_id": str(row.get("target_node_id")),
                 "route_nodes": list(row.get("route_nodes", [])),
                 "time": _snapshot_time(decision),
                 "frame_index": frame_index,
                 "evidence": "PIJWM full collector action decision",
             }
-            (offload_actions if phase == "offload" else return_actions).append(action_row)
+            if phase == "offload":
+                action_row["target_node_id"] = str(row.get("target_node_id"))
+                offload_actions.append(action_row)
+            else:
+                action_row["return_target_id"] = str(row.get("target_node_id"))
+                return_actions.append(action_row)
         for allocation in _required_sequence_mapping(action, "rb_allocations"):
             flow = flow_by_id.get(str(allocation.get("flow_id")))
             hop = hop_by_id.get(str(allocation.get("hop_id")))
@@ -135,7 +144,7 @@ def build_formal_bundles(
         )
 
     records = [copy.deepcopy(dict(row)) for row in task_records]
-    if not records and task_snapshots:
+    if not records and (task_snapshots or outcome_task_snapshots):
         raise CollectorBundleContractError(
             "task snapshots exist but no direct AirFogSim task records were supplied"
         )
@@ -161,6 +170,7 @@ def build_formal_bundles(
             for row in dag_edges.values()
         ],
         "task_snapshots": task_snapshots,
+        "outcome_task_snapshots": outcome_task_snapshots,
         "offload_actions": offload_actions,
         "return_actions": return_actions,
         "rb_actions": rb_actions,
@@ -219,6 +229,7 @@ def _append_snapshot_rows(
     physical_nodes: dict[str, dict[str, Any]],
     physical_edges: dict[str, dict[str, Any]],
     dag_edges: dict[str, dict[str, Any]],
+    include_physical: bool = True,
     include_tasks: bool = False,
     task_snapshots: list[dict[str, Any]] | None = None,
 ) -> None:
@@ -228,41 +239,42 @@ def _append_snapshot_rows(
     dags = snapshot.get("dag_edges")
     if not isinstance(nodes, list) or not isinstance(edges, list) or not isinstance(dags, list):
         raise CollectorBundleContractError("snapshot nodes/physical_edges/dag_edges must be lists")
-    for row in nodes:
-        if not isinstance(row, Mapping) or not str(row.get("node_id", "")):
-            raise CollectorBundleContractError("physical node snapshot lacks node_id")
-        node_id = str(row["node_id"])
-        converted = {
-            "trajectory_id": trajectory_id,
-            "id": node_id,
-            "kind": str(row.get("node_type", "unknown")),
-            "position": list(row["position"]) if row.get("position") is not None else None,
-            "cpu": row.get("cpu"),
-            "observed_time": time_value,
-            "present": bool(row.get("present", False)),
-            "evidence": "direct AirFogSim snapshot",
-        }
-        node_snapshots.append(converted)
-        physical_nodes[node_id] = dict(converted)
-    for row in edges:
-        if not isinstance(row, Mapping):
-            raise CollectorBundleContractError("physical edge snapshot row is invalid")
-        edge_id = str(row.get("edge_id", ""))
-        source = str(row.get("source_id", ""))
-        target = str(row.get("target_id", ""))
-        if not edge_id or not source or not target:
-            raise CollectorBundleContractError("physical edge snapshot lacks identity")
-        converted = {
-            "trajectory_id": trajectory_id,
-            "id": edge_id,
-            "src": source,
-            "dst": target,
-            "kind": str(row.get("edge_type", "unknown")),
-            "observed_time": time_value,
-            "evidence": "direct AirFogSim snapshot",
-        }
-        edge_snapshots.append(converted)
-        physical_edges[edge_id] = dict(converted)
+    if include_physical:
+        for row in nodes:
+            if not isinstance(row, Mapping) or not str(row.get("node_id", "")):
+                raise CollectorBundleContractError("physical node snapshot lacks node_id")
+            node_id = str(row["node_id"])
+            converted = {
+                "trajectory_id": trajectory_id,
+                "id": node_id,
+                "kind": str(row.get("node_type", "unknown")),
+                "position": list(row["position"]) if row.get("position") is not None else None,
+                "cpu": row.get("cpu"),
+                "observed_time": time_value,
+                "present": bool(row.get("present", False)),
+                "evidence": "direct AirFogSim snapshot",
+            }
+            node_snapshots.append(converted)
+            physical_nodes[node_id] = dict(converted)
+        for row in edges:
+            if not isinstance(row, Mapping):
+                raise CollectorBundleContractError("physical edge snapshot row is invalid")
+            edge_id = str(row.get("edge_id", ""))
+            source = str(row.get("source_id", ""))
+            target = str(row.get("target_id", ""))
+            if not edge_id or not source or not target:
+                raise CollectorBundleContractError("physical edge snapshot lacks identity")
+            converted = {
+                "trajectory_id": trajectory_id,
+                "id": edge_id,
+                "src": source,
+                "dst": target,
+                "kind": str(row.get("edge_type", "unknown")),
+                "observed_time": time_value,
+                "evidence": "direct AirFogSim snapshot",
+            }
+            edge_snapshots.append(converted)
+            physical_edges[edge_id] = dict(converted)
     for row in dags:
         if not isinstance(row, Mapping):
             raise CollectorBundleContractError("DAG snapshot row is invalid")

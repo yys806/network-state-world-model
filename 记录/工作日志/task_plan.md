@@ -986,3 +986,33 @@ Guardrails: no GPU, no locked test, no formal trajectory generation, no dirty-wo
 - [x] 校验新文档路径、内容、差异和 Git 状态，不触碰现有用户改动。
 
 错误记录：首次读取 P2-C v2 时沿用摘要中的通用文件名 `audit_report.json` 与 `formal_dataset_candidate_config.json`，真实文件名不同；已根据目录清单改用 `p2c_scale_distribution_audit_v2.json` 与 `p2c_formal_data_config_candidate_v2.json`，不重复错误命令。首次登记本条记录的补丁因多文件 hunk 格式错误被 `apply_patch` 拒绝，已改为合法的独立 hunk。
+# PI-JWM 训练前 Tensor Contract 与统计冻结（2026-08-19）
+
+## Goal
+
+在正式候选 AirFogSim 数据已通过独立验收后，完成只面向 `train/validation/calibration` 的 tensor contract 推断、张量化和 train-only normalization statistics 证据；明确 `formal_training_ready=false` 的剩余边界，不访问或张量化 locked-test。
+
+## Phases
+
+| Phase | Status | Deliverable |
+|---|---|---|
+| 1. 入口与协议核对 | complete | 已核对正式数据审计、`build_formal_airfogsim_tensor_v1.py`、tensor/window/target 接口和现有测试 |
+| 2. 真实非锁定张量化 | complete | v3 候选通过独立数据审计；54 条非 locked 轨迹完成统一 contract、窗口索引和 train-only stats |
+| 3. 独立张量验收 | complete | 54 个 seed tensor、finite/shape、window bounds、manifest 哈希和 locked-test 未张量化检查通过 |
+| 4. 训练前一致性门 | blocked | 结构 contract 通过，但任务动态特征与物理边 CSI/rate 特征在当前 observer/adapter 中未进入 source snapshot；训练必须阻断，先补齐直接字段证据 |
+| 5. 记录、提交与推送 | complete | 记录本轮结果、定向测试、compileall 和 GitHub 推送完成；不宣称 formal_training_ready |
+
+## Fixed Boundaries
+
+- PI-JWM 是主线；AirFogSim 仅为模拟器和数据来源；`D:\shen\PKU\RRM` 不读取、不修改。
+- 不使用 locked-test 做张量化、统计拟合、训练、调参或指标汇总；只验证其未被 materialize。
+- 不用零值、常量、代理字段或改名掩盖 tensor contract 缺失；发现理论/实现不一致立即记录并阻断训练门。
+- 不启动 GPU；正式训练资格必须保持 false，直到训练协议和理论—代码—数据—指标一致性审计另行通过。
+
+## Errors Encountered
+
+| `build_formal_airfogsim_tensor_v1.py` failed on the first formal train trajectory with `duplicate snapshot (0.0, 'RSU_0')` | Root cause traced to adapter appending decision/execution/outcome physical snapshots into one time-indexed state stream; execution/outcome share a simulation time and are outcome-side evidence | RED regression failed as expected; adapter now writes only decision physical node/edge snapshots while retaining outcome task/ledger evidence; old v2 data must not be reused, so v3 regeneration is required |
+- v3 首轮重生成后独立审计发现 task snapshots 仍来自 outcome time（0.1..30.0），与 decision physical grid（0.0..29.9）不对齐；已将 decision task snapshots作为训练状态流、outcome task snapshots 单独保留，并重生成候选数据。第二轮 v3 builder 与独立审计通过：60/60、18,000 attempts、`formal_data_approved=true`。
+- tensor builder 首次遇到旧 v3 artifact 的返回动作字段 `target_node_id` 与 tensor contract 要求的 `return_target_id` 不一致；新 adapter 已改用正式字段，formal tensor 入口增加显式历史 schema 归一化并记录 `legacy_return_action_field_count`，未改写源 artifact。
+- tensorization 已结构性通过：54 seed、15,660 windows、`max_nodes=46`、`max_physical_edges=1980`、`max_flows=528`、`max_tasks=523`、`max_dag_edges=1406`，action width=8，DAG state 存在，train-only stats 与 manifest/finiteness 验收通过。
+- 训练一致性门未通过：`normalization_stats.json` 中 `physical_edge_state` 与 `task_state` 全部为零均值/`1e-6` scale；追溯显示 observer 任务快照只含 lifecycle/端点/到达时间，adapter 未保留任务大小/CPU/deadline/priority 等动态字段，也未将 decision channel rows 写入 physical-edge feature snapshot。不得用最终 task record 或零填充补齐，这需要下一阶段直接来源修复与重新采集/张量化。

@@ -1323,6 +1323,15 @@ Required wording for a paper: use “to the best of our knowledge, existing work
 - 验收结果：`audit_ready=true`、`formal_data_approved=true`、`training_eligible=false`、`locked_test_accessed=false`；metrics 长表实际是多指标行并以 `seed` 为主键，独立审计已按真实 schema 验证 54 个非 locked seed，未将 locked-test 纳入 metrics。
 - 本阶段只批准“正式候选数据可作为后续训练输入的来源”，没有批准训练、调参、GPU 或最终方法；`formal_training_ready=false` 仍由 tensor contract、training statistics 和 locked-test 封存阻断。
 - 审计脚本两次初始失败均被定位为审计逻辑与实际 CSV schema 不一致，修正后第三次深度审计通过；失败证据保留在 `code/artifacts/audit/pi_jwm_p2c_formal_data_audit_20260819_failed*`，canonical 目录为无后缀版本。
+
+## 2026-08-19 训练前 Tensor 化首轮诊断
+
+- 首次运行 `build_formal_airfogsim_tensor_v1.py` 处理正式 train seed `10000` 时失败：`ValueError: duplicate snapshot (0.0, 'RSU_0')`，失败发生在 `airfogsim_tensor_v2._group_unique_rows`，不是环境依赖或权限问题。
+- 对真实 `dual_graph_v2_bundle.json` 独立统计确认：`source_physical_node_snapshots` 15139 行只有 5078 个 `(observed_time,id)` 唯一键，5033 个键重复；重复行内容相同。adapter 当前把每帧 decision、execution、outcome 三个 phase 都写入同一物理状态序列，而 execution/outcome 同一时间，下一帧 decision 又落在该时间。
+- 现有 tensor contract 的状态数组按单一 observed-time 网格建模，动作后差异已有 transfer/CPU/energy/outcome ledger 承载；因此不能通过任意覆盖或去重掩盖重复。修复假设是物理 node/edge time-series 只取决策时刻 snapshot，保持 outcome 侧 ledger 独立。
+- 尚未修改生产代码；下一步先把该行为写成 RED 测试，再实现最小 adapter 修复并重新生成本地 tensor 证据。
+- RED 回归 `test_physical_state_stream_uses_one_decision_snapshot_per_time` 按预期从 3 条 snapshot 失败；最小修复将 execution/outcome 调用标记为 `include_physical=False`，仍保留 outcome task/DAG rows 和 transfer/resource ledger。adapter 2/2、full collector v2 6/6、formal tensor fixture 1/1 已通过。
+- 旧 v2 formal data 的 manifest 是修复前 adapter 生成的，不能直接视为新代码的数据证据；下一步使用修复后 adapter 生成新的 `pi_jwm_v4_formal_candidate_v3`，旧 v2 目录保留用于历史追溯。
 # 2026-08-15 接续文档核验发现
 
 - 主工作树 `main` 当前为 `7d85833`，存在大量用户/历史未提交改动，不能清理或覆盖。
@@ -1337,6 +1346,15 @@ Required wording for a paper: use “to the best of our knowledge, existing work
 - 外部知识库`PIJWM主文档.md`是固定理论/方法边界；`8.12之后推进.md`是动态进度，但截至2026-08-14仍写四个P2-C阻断，尚未同步ledger v2关闭拒绝率分母门的分支事实。
 - 主文档明确：信息特征数量不是目标；更少但可靠的信息若效果相当且开销更低，应优先。世界模型规划器必须逐候选实际rollout，只读belief直接打分只能称direct policy对照。
 # Findings
+
+## 2026-08-19 训练前 tensor 结构通过、语义特征门阻断
+
+- 修复后正式候选目录 `code/artifacts/formal_data/pi_jwm_v4_formal_candidate_v3/` 已通过 builder 与独立审计 `code/artifacts/audit/pi_jwm_p2c_formal_data_audit_20260819_v3b/`：60 条轨迹、36/12/6/6 split、18,000 action attempts、locked-test 未进入 metrics，`formal_data_approved=true`。
+- `code/artifacts/formal_tensor/pi_jwm_v4_tensor_v1/` 只 materialize 54 条 train/validation/calibration seed；结构验收和独立 finite/manifest 检查通过，`task_action` 宽度为 8、`task_dag_state` 存在、stats `source_split=train`，未创建任何 locked-test seed tensor。
+- 发现并修复两个契约问题：物理状态 phase 混入导致 duplicate snapshot；task snapshot 使用 outcome 时刻导致与 decision grid 不对齐。两者均通过 RED/GREEN 回归后重新采集/审计。
+- 新 adapter 的 return action 已使用 `return_target_id`；formal tensor 对已批准的旧 v3 source 显式兼容 `target_node_id`，每个 tensor report 记录兼容计数，不对 source artifact 做静默改写。
+- 关键未解决语义阻断：observer 的 `TaskSnapshot` 不含 task_size/return_size/task_cpu/deadline/priority/transmitted/computed/delay 等动态值，adapter 的 task snapshots 因此在 tensor 中产生全零 task_state；observer 生成的 channel_rows 也未被 adapter 映射为 physical-edge feature fields，physical_edge_state 全零。不能从最终 task_records、outcome 或代理量回填，否则会造成未来信息泄漏或理论—实现不一致。
+- 结论：`formal_tensor_ready=true` 仅表示结构张量化完成；`formal_training_ready=false` 且训练、GPU、调参和 locked-test 解封继续阻断。下一门是补齐 decision-time direct task/channel field capture，再重新生成非锁定候选并复验。
 
 ## 2026-08-19 P2-C 场景冻结前核对
 

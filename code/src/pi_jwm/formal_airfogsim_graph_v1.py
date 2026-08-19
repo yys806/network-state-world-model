@@ -174,16 +174,29 @@ def tensorize_formal_graph(
     """Extend the existing v2 tensors with formal CPU and DAG state arrays."""
 
     validate_formal_graph_boundary(graph)
-    arrays, base_report = tensorize_seed_graph(graph, contract)
+    # v3 source bundles predate the return-action field rename. Normalize that
+    # historical spelling explicitly while keeping the audited source intact.
+    normalized_graph = dict(graph)
+    legacy_return_actions = 0
+    normalized_returns = []
+    for action in graph.get("source_return_actions", []):
+        row = dict(action)
+        if "return_target_id" not in row and "target_node_id" in row:
+            row["return_target_id"] = row.pop("target_node_id")
+            legacy_return_actions += 1
+        normalized_returns.append(row)
+    normalized_graph["source_return_actions"] = normalized_returns
+    arrays, base_report = tensorize_seed_graph(normalized_graph, contract)
     report = dict(base_report)
-    _tensorize_cpu_actions(graph, arrays, report)
-    _tensorize_dag_state(graph, arrays, report, contract)
+    _tensorize_cpu_actions(normalized_graph, arrays, report)
+    _tensorize_dag_state(normalized_graph, arrays, report, contract)
     report.update(
         {
             "schema_version": SCHEMA_VERSION,
             "action_features": list(FORMAL_ACTION_FEATURES),
             "dag_state_features": list(FORMAL_DAG_STATE_FEATURES),
-            "cpu_action_count": len(graph.get("source_cpu_actions", [])),
+            "cpu_action_count": len(normalized_graph.get("source_cpu_actions", [])),
+            "legacy_return_action_field_count": legacy_return_actions,
         }
     )
     return arrays, report

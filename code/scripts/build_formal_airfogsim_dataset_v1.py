@@ -170,6 +170,9 @@ def _build_graph(runtime: Mapping[str, Any], spec: TrajectorySpec) -> dict[str, 
         for row in source.get("physical_edge_snapshots", [])
         if str(row.get("id")) in kept_edge_ids
     ]
+    graph["source_outcome_task_snapshots"] = [
+        dict(row) for row in source.get("outcome_task_snapshots", [])
+    ]
     graph["source_cpu_actions"] = [
         dict(row) for row in runtime["bundle"].get("cpu_ledger", [])
     ]
