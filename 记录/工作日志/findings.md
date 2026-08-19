@@ -1314,6 +1314,15 @@ Required wording for a paper: use “to the best of our knowledge, existing work
 - 适配器复核发现 energy ledger 循环曾错误嵌套在 CPU policy callback 循环内；已改为逐帧收集 energy rows、再统一生成 CPU ledger，避免重复写入和外层 `frame` 残留引用。
 - 真实高负载/高密度 5 秒 smoke 暴露 AirFogSim 的两个字节语义：transfer `delivered_data` 为任务完成时的守恒截断值，而能耗边界使用每个 profile 的完整 `rate * simulation_interval`。energy input 已改用现有 `_wireless_totals()` 的 `planned_capacity` 汇总，保留 transfer ledger 的截断进度，不用代理字段掩盖差异。
 - 修复后真实 smoke 通过：50 帧、50 条 action attempts、`validate_attempt_records` 0 错误、`formal_collector_ready=true`、`PIJWM-AirFogSim-Full-Collector-v2`、dual-graph/resource gates 全部通过、能耗方程和 channel input 均有效、9 类物理方向齐全；仍未生成正式 60 条轨迹。
+- 新增 `formal_airfogsim_protocol_audit_v1.py`，独立重算用户冻结协议与代码 specs；实测通过场景矩阵、60 条规模、`36/12/6/6` split、seed 公式、每场景 5/5 资源臂、固定运行参数、校准 report/probe SHA-256 和 locked-test 封存门。该 audit 只解除协议门，仍保持 `formal_data_approved=false`。
+
+## 2026-08-19 正式候选数据独立验收
+
+- 正式 builder 已生成 60 条轨迹，六场景各 10 条，split 为 `train=36`、`validation=12`、`calibration=6`、`locked_test=6`；两类资源臂全局各 30 条、每场景各 5 条，seed 唯一。
+- 独立审计 `formal_airfogsim_data_audit_v1.py` 不直接采用 builder 汇总作为唯一证据：逐轨迹重算 manifest 文件哈希，读取并验证 `action_attempts.jsonl` 的 18,000 条记录，重新执行 `validate_dual_graph_v2_bundle`，并核对资源/能耗验证报告、运行时 contract、9 类物理方向和顶层索引。
+- 验收结果：`audit_ready=true`、`formal_data_approved=true`、`training_eligible=false`、`locked_test_accessed=false`；metrics 长表实际是多指标行并以 `seed` 为主键，独立审计已按真实 schema 验证 54 个非 locked seed，未将 locked-test 纳入 metrics。
+- 本阶段只批准“正式候选数据可作为后续训练输入的来源”，没有批准训练、调参、GPU 或最终方法；`formal_training_ready=false` 仍由 tensor contract、training statistics 和 locked-test 封存阻断。
+- 审计脚本两次初始失败均被定位为审计逻辑与实际 CSV schema 不一致，修正后第三次深度审计通过；失败证据保留在 `code/artifacts/audit/pi_jwm_p2c_formal_data_audit_20260819_failed*`，canonical 目录为无后缀版本。
 # 2026-08-15 接续文档核验发现
 
 - 主工作树 `main` 当前为 `7d85833`，存在大量用户/历史未提交改动，不能清理或覆盖。

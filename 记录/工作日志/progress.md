@@ -711,3 +711,19 @@
 - 修复 full collector v1 的能耗输入来源：AirFogSim channel manager 的 energy boundary 使用 profile 级 `planned_capacity`，不能使用任务流的 capped `delivered_data`；两者分别保留在 transfer 与 energy 证据中。
 - 在 `airfogsim` 环境、`PYTHONUTF8=1` 下完成真实高负载/高密度 5 秒 smoke：50 frames、50 attempts、attempt schema 0 errors，formal collector/dual graph/resource/energy gates 全部通过，9 类物理方向齐全。
 - 本轮未生成正式 60 条轨迹，未读取 `locked_test`，未启动 GPU；formal data/training approval 仍为 false。
+
+#### 2026-08-19 正式协议审计门
+
+- [x] 先写 protocol audit RED 测试，确认缺少 audit API 时按预期失败。
+- [x] 实现并通过 `formal_airfogsim_protocol_audit_v1.py`：代码 specs 与冻结提案、校准证据哈希、规模、split、seed、资源臂和 fixed runtime 全部一致。
+- [x] 篡改总规模测试被明确拒绝；协议 audit 仅证明可进入正式采集，不批准数据、不开放 locked-test。
+- [x] 生成 protocol audit 机器报告并完成正式入口闭包复核。
+- [x] 生成 protocol audit 机器报告：三项冻结门、校准证据和安全标志均通过，`formal_data_approved=false` 保持不变。
+- [x] 生成正式 60 条轨迹并执行独立数据验收：60/60 轨迹、18,000 条 action attempts、双图/资源/能耗验证与 manifest 哈希全部通过；metrics 仅含 54 条非 locked seed，`formal_data_approved=true`、`training_eligible=false`、`locked_test_accessed=false`。
+
+#### 2026-08-19 正式数据验收细节
+
+- builder：`code/artifacts/formal_data/pi_jwm_v4_formal_candidate_v2/`，`formal_dataset_ready=true`，60 条轨迹，开发窗口 15,714，locked-test 窗口 1,746。
+- 独立审计：`code/artifacts/audit/pi_jwm_p2c_formal_data_audit_20260819/`，所有审计 checks 通过，18,000 条 action attempts 无 schema/identity/frame 错误。
+- locked-test 未进入 metrics/training statistics；只保留独立 `locked_test/window_index.csv` 与封存轨迹目录。训练仍被 tensor contract、training statistics 和方法冻结前 locked-test 封存门阻断。
+- 由于 metrics 是按 seed 的多指标长表，审计修正为唯一非 locked seed 集合检查；修正后深度 graph validator 重新运行并通过。
