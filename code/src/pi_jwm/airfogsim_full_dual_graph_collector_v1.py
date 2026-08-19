@@ -74,8 +74,16 @@ def _energy_snapshot(env) -> dict[str, dict[str, object]]:
 
 
 def _energy_rows(
-    before: dict[str, dict[str, object]], after: dict[str, dict[str, object]]
+    before: dict[str, dict[str, object]],
+    after: dict[str, dict[str, object]],
+    *,
+    costs: dict[str, float] | None = None,
+    event_sending: dict[str, float] | None = None,
+    event_receiving: dict[str, float] | None = None,
 ) -> tuple[dict[str, object], ...]:
+    costs = dict(costs or {})
+    event_sending = dict(event_sending or {})
+    event_receiving = dict(event_receiving or {})
     rows: list[dict[str, object]] = []
     for node_id in sorted(set(before) | set(after)):
         before_energy = before.get(node_id, {}).get("energy")
@@ -89,8 +97,22 @@ def _energy_rows(
                 "energy_consumed": (
                     float(before_energy) - float(after_energy) if observed else None
                 ),
-                "sending_data_size": after.get(node_id, {}).get("sending_data_size"),
-                "receiving_data_size": after.get(node_id, {}).get("receiving_data_size"),
+                "is_flying": int(bool(after.get(node_id, {}).get("is_flying", False))),
+                "is_hovering": int(bool(after.get(node_id, {}).get("is_hovering", False))),
+                "using_sensor_num": int(after.get(node_id, {}).get("using_sensor_num", 0) or 0),
+                "sending_data_size": float(
+                    after.get(node_id, {}).get("sending_data_size", 0.0) or 0.0
+                ),
+                "receiving_data_size": float(
+                    after.get(node_id, {}).get("receiving_data_size", 0.0) or 0.0
+                ),
+                "event_sending_data_size": float(event_sending.get(node_id, 0.0)),
+                "event_receiving_data_size": float(event_receiving.get(node_id, 0.0)),
+                "fly_unit_cost": float(costs.get("fly_unit_cost", 0.0)),
+                "hover_unit_cost": float(costs.get("hover_unit_cost", 0.0)),
+                "sensing_unit_cost": float(costs.get("sensing_unit_cost", 0.0)),
+                "send_unit_cost": float(costs.get("send_unit_cost", 0.0)),
+                "receive_unit_cost": float(costs.get("receive_unit_cost", 0.0)),
                 "observed_mask": observed,
                 "missing_reason": None if observed else "energy_endpoint_unavailable",
                 "source": "energy_manager_direct_state",
@@ -180,9 +202,11 @@ def _capture_wireless_profile_rows(
             else float(task.getTaskSize())
         )
         remaining = max(required_size - float(task.getTransmittedSize()), 0.0)
+        phase = "return" if task.isReturning() else "offload"
         for offset, rb_index in enumerate(rb_indices):
             rate = _plain(rates[offset])
             planned = rate * float(env.simulation_interval)
+            remaining_before = remaining
             delivered = min(planned, remaining)
             remaining -= delivered
             rows.append(
@@ -204,7 +228,11 @@ def _capture_wireless_profile_rows(
                     "outage": bool(_plain(outage[tx_idx, rx_idx, rb_index])),
                     "rate_per_s": rate,
                     "planned_capacity": planned,
+                    "remaining_before": remaining_before,
                     "delivered_data": delivered,
+                    "time": float(env.simulation_time),
+                    "phase": phase,
+                    "flow_completed": remaining <= 1e-12,
                     "observed_mask": True,
                     "missing_reason": None,
                     "capture_phase": "after_fast_fading_before_transfer",
@@ -317,6 +345,7 @@ def execute_full_collector_step(
     task_scheduler,
     communication_scheduler,
     computation_scheduler,
+    cpu_allocator: Callable[[Any, dict[str, list[Any]]], Any] | None = None,
     observer: Callable[..., AirFogSimSnapshot] = observe_airfogsim_snapshot,
 ) -> FullCollectorStepResult:
     """Apply one fully validated joint action and execute exactly one real step."""
@@ -341,7 +370,9 @@ def execute_full_collector_step(
     trace.append("action_validated")
 
     recorder = SingleStepRecorder(
-        env, f"{trajectory_id}::frame::{built.action.frame_index}"
+        env,
+        f"{trajectory_id}::frame::{built.action.frame_index}",
+        cpu_allocator=cpu_allocator,
     )
     lifecycle_by_task = {
         str(row["task_id"]): row for row in built.lifecycle_rows
@@ -529,7 +560,16 @@ def execute_full_collector_step(
             "rb_index": None,
             "rate_per_s": delivered / float(env.simulation_interval),
             "planned_capacity": delivered,
+            "remaining_before": delivered,
             "delivered_data": delivered,
+            "time": float(env.simulation_time),
+            "phase": "return"
+            if next(
+                row for row in built.action.decisions if row.task_id == task_id
+            ).lifecycle
+            in {TaskLifecycle.WAITING_TO_RETURN, TaskLifecycle.RETURNING}
+            else "offload",
+            "flow_completed": True,
             "observed_mask": True,
             "missing_reason": None,
             "capture_phase": SnapshotPhase.OUTCOME.value,
@@ -539,6 +579,34 @@ def execute_full_collector_step(
         for task_id, delivered in sorted(wired_results.items())
         if (hop := wired_hop_by_task.get(task_id)) is not None
     ]
+    event_sending: dict[str, float] = {}
+    event_receiving: dict[str, float] = {}
+    for row in [*wireless_rows, *wired_rows]:
+        if not row.get("observed_mask"):
+            continue
+        # AirFogSim's energy boundary consumes the per-profile transmission
+        # total (rate * slot), while delivered_data is capped for task-flow
+        # conservation when a task finishes within the slot.
+        transmitted = float(row.get("planned_capacity", 0.0) or 0.0)
+        event_sending[str(row["source_id"])] = event_sending.get(
+            str(row["source_id"]), 0.0
+        ) + transmitted
+        event_receiving[str(row["target_id"])] = event_receiving.get(
+            str(row["target_id"]), 0.0
+        ) + transmitted
+    costs = {}
+    manager = getattr(env, "energy_manager", None)
+    if manager is not None and hasattr(manager, "getConfig"):
+        costs = {
+            name: float(manager.getConfig(name))
+            for name in (
+                "fly_unit_cost",
+                "hover_unit_cost",
+                "sensing_unit_cost",
+                "send_unit_cost",
+                "receive_unit_cost",
+            )
+        }
     transfer_rows = tuple(
         sorted(
             [*wireless_rows, *wired_rows],
@@ -559,7 +627,13 @@ def execute_full_collector_step(
         lifecycle_rows=built.lifecycle_rows,
         transfer_rows=transfer_rows,
         cpu_rows=tuple(recorder.cpu_rows),
-        energy_rows=_energy_rows(energy_before, _energy_snapshot(env)),
+        energy_rows=_energy_rows(
+            energy_before,
+            _energy_snapshot(env),
+            costs=costs,
+            event_sending=event_sending,
+            event_receiving=event_receiving,
+        ),
         temporal_trace=tuple(trace),
         quarantined=False,
         quarantine_reason=None,

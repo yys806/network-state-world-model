@@ -1306,6 +1306,14 @@ Required wording for a paper: use “to the best of our knowledge, existing work
 - 已在`offloading/returning`的任务不得重复调用offload setter，只对当前首跳分配无线RB或记录有线承载；`waiting_to_return`必须先设置并验证return route。
 - setter前验证task状态、route首跳、节点presence、`edge_present`、channel type、RB范围、COO唯一性及flow/hop/edge对应关系；验证失败时不执行`env.step()`。
 - 每个真实`env.step()`记录task lifecycle、DAG transition、logical flow、communication-flow hop、CEP、edge active、RB、rate/outage、CPU和energy；action-pre与outcome严格分离。
+
+- 2026-08-19 v2 collector adapter 已通过 5 秒真实 formal smoke：`formal_collector_ready=true`，双图/resource checks 全部通过，9 种物理方向齐全；该 smoke 未生成正式数据集。
+- v2 CPU callback 可能在同一 simulator time 被多次调用；adapter 为每个同一时间/节点 callback 保留直接执行顺序的纳秒级唯一时间戳，保留真实 `allocated_cpu*slot_seconds` 计算并使容量审计按 callback 边界验证，未合并或伪造工作量。
+- 能量行现由 energy manager 直接状态、同槽 transfer rows 和 energy config 成本组成，`energy_equation_valid` 与 `channel_energy_input_valid` 在真实 5 秒 smoke 均通过。
+- 全量 `airfogsim` 环境回归共 1370 项；主体断言通过，但 275 项因该环境缺少 `tomllib`/`scikit-learn` 导入失败，另有脚本型测试因未提供其 CLI 参数退出。不能把该结果表述为全仓全绿；核心变更使用定向测试验收。
+- 适配器复核发现 energy ledger 循环曾错误嵌套在 CPU policy callback 循环内；已改为逐帧收集 energy rows、再统一生成 CPU ledger，避免重复写入和外层 `frame` 残留引用。
+- 真实高负载/高密度 5 秒 smoke 暴露 AirFogSim 的两个字节语义：transfer `delivered_data` 为任务完成时的守恒截断值，而能耗边界使用每个 profile 的完整 `rate * simulation_interval`。energy input 已改用现有 `_wireless_totals()` 的 `planned_capacity` 汇总，保留 transfer ledger 的截断进度，不用代理字段掩盖差异。
+- 修复后真实 smoke 通过：50 帧、50 条 action attempts、`validate_attempt_records` 0 错误、`formal_collector_ready=true`、`PIJWM-AirFogSim-Full-Collector-v2`、dual-graph/resource gates 全部通过、能耗方程和 channel input 均有效、9 类物理方向齐全；仍未生成正式 60 条轨迹。
 # 2026-08-15 接续文档核验发现
 
 - 主工作树 `main` 当前为 `7d85833`，存在大量用户/历史未提交改动，不能清理或覆盖。
@@ -1319,3 +1327,23 @@ Required wording for a paper: use “to the best of our knowledge, existing work
 - P2-C v2从`action_attempts.jsonl`独立重算natural-reference为120 attempts、120 accepted、0 rejected、0 quarantined，frame/replay alignment与schema/transition门均通过。
 - 外部知识库`PIJWM主文档.md`是固定理论/方法边界；`8.12之后推进.md`是动态进度，但截至2026-08-14仍写四个P2-C阻断，尚未同步ledger v2关闭拒绝率分母门的分支事实。
 - 主文档明确：信息特征数量不是目标；更少但可靠的信息若效果相当且开销更低，应优先。世界模型规划器必须逐候选实际rollout，只读belief直接打分只能称direct policy对照。
+# Findings
+
+## 2026-08-19 P2-C 场景冻结前核对
+
+- 当前仓库 HEAD 为 `26d9de7`，工作区无未提交改动；本轮不触碰 `D:\shen\PKU\RRM`。
+- `code/src/pi_jwm/formal_airfogsim_dataset_v1.py` 已定义六个候选场景：任务 lambda `0.5/1.0/2.0`，车辆数量上限 `20/40`，车辆到达 lambda `0.5/1.0`；这些值的 `calibration_status` 仍是历史字符串 `calibrated_5s_2seed_20260801`，不能仅据此视为当前正式冻结。
+- `code/scripts/calibrate_formal_airfogsim_scenarios_v1.py` 是现有 CPU-only 校准入口；它运行六个场景、每场景多个开发 seed，输出任务数、并发任务、节点/边规模、链路活动率和 CPU 利用率，并只生成 calibration probe，不生成正式数据。
+- 既有 `code/artifacts/datasets/airfogsim_formal_v1_calibration/` 报告在 2026-08-01 通过：六场景齐全、每场景 2 个 seed、负载任务数单调、密度节点数单调、观测非空。该报告仍属于候选校准证据，不解除 P2-C 的正式冻结门。
+- `config.yaml` 的实际生效参数包括：`traffic.max_n_vehicles`、`traffic.arrival_lambda`、`traffic.UAV_speed_range`、`traffic.max_n_UAVs`、`task.task_generation_kwargs.lambda`、`task_profile.<vehicle|uav>.lambda`、Rayleigh outage 配置和固定 RSU positions。正式配置必须声明哪些是场景因素、哪些保持固定。
+- 现有 P2-C candidate JSON 仍将 `scenario_matrix`、`target_scale`、`seed_split` 标为 `not_frozen`；自然 preflight 的 6 条轨迹和 seeds `0/1/2` 不能外推正式规模或正式 split。
+- 形式上的正式数据入口仍存在实现门：`code/scripts/build_formal_airfogsim_dataset_v1.py` -> `formal_airfogsim_runtime_v1.py` 当前调用 `task_resource_conservation_audit.run_airfogsim_conservation_seed`，没有接入 P2-B v2 的 ledger-bound full-dual-graph collector，也没有把 `orthogonal/interference_reuse` 资源臂写入正式 `TrajectorySpec`。因此不能在此入口上直接生成或宣称正式 v4。
+- P2-B v2 的资源臂由 `full_dual_graph_coverage_v1.choose_resource_arm(trajectory_id, seed)` 按哈希平衡选择；它应作为采集策略/覆盖因素，而不是新增六场景维度。正式协议需要显式记录该臂及其分层平衡规则。
+
+## 2026-08-19 P2-C 协议冻结实现
+
+- 用户确认六场景矩阵、60 条轨迹/30 秒、`36/12/6/6` split、seed 公式和每场景 5/5 资源臂分层。
+- `formal_airfogsim_dataset_v1.py` 已冻结 `RESOURCE_ARMS`、保留开发 seed、`10000 + scenario_index*100 + repetition` seed 规则和哈希选择器匹配；每场景资源臂计数、全局计数和跨 split seed 唯一性由 `validate_formal_protocol` 检查。
+- `formal_airfogsim_runtime_v1.py` 的输出已携带 `resource_arm`、`balanced_two_arm_v1` 和 collector contract 元数据；当前真实路径明确为 `AirFogSim-Legacy-Conservation-Runner`、`formal_collector_ready=false`。
+- `build_formal_airfogsim_dataset_v1.py` 新增安全门：只有 runtime 明确声明 `PIJWM-AirFogSim-Full-Collector-v2` 且 `formal_collector_ready=true`，才允许轨迹通过 `formal_collector_ready` 检查。legacy runner 无法把数据升级为 `formal_dataset_ready`。
+- 协议与安全门定向测试已通过；正式 v2 collector 接入和 attempt/reject ledger 持久化仍未完成，因此没有生成正式 v4 数据。

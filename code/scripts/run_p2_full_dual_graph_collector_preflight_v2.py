@@ -54,6 +54,9 @@ from pi_jwm.full_dual_graph_vocabulary_v1 import (  # noqa: E402
     FullTrajectoryVocabulary,
     RouteRevisionLedger,
 )
+from pi_jwm.formal_airfogsim_collector_adapter_v2 import (  # noqa: E402
+    build_formal_bundles,
+)
 
 import run_p2_full_dual_graph_collector_preflight_v1 as v1  # noqa: E402
 
@@ -72,6 +75,7 @@ CANONICAL_SOURCE_PATHS = tuple(
         (
             SRC_ROOT / "pi_jwm" / "action_attempt_ledger_v1.py",
             SRC_ROOT / "pi_jwm" / "airfogsim_full_dual_graph_collector_v2.py",
+            SRC_ROOT / "pi_jwm" / "formal_airfogsim_collector_adapter_v2.py",
             SRC_ROOT / "pi_jwm" / "full_dual_graph_artifact_v2.py",
             Path(__file__).resolve(),
             CODE_ROOT / "tests" / "test_action_attempt_ledger_v1.py",
@@ -176,6 +180,7 @@ def execute_attempt_frame(
     observer=observe_airfogsim_snapshot,
     builder=build_frame_decision,
     runtime_inputs=v1._runtime_inputs,
+    cpu_allocator=None,
 ):
     """Observe, begin, build, validate, and execute one candidate without retry."""
 
@@ -229,6 +234,7 @@ def execute_attempt_frame(
             task_scheduler=task_scheduler,
             communication_scheduler=communication_scheduler,
             computation_scheduler=computation_scheduler,
+            cpu_allocator=cpu_allocator,
             observer=observer,
         )
     except CollectorAttemptRejected as exc:
@@ -242,6 +248,7 @@ def run_natural_episode_v2(
     steps: int,
     run_role: str,
     ledger: ActionAttemptLedger,
+    cpu_allocator=None,
 ) -> dict[str, object]:
     if run_role not in {"natural_reference", "natural_replay"}:
         raise ValueError("natural episode role must be reference or replay")
@@ -258,6 +265,8 @@ def run_natural_episode_v2(
     vocabulary = FullTrajectoryVocabulary()
     route_revisions = RouteRevisionLedger()
     results = []
+    node_cpu_by_frame: list[dict[str, float]] = []
+    task_records: dict[str, dict[str, object]] = {}
     naturally_ended = False
     try:
         os.chdir(v1.single_step_runner.EXAMPLE_DIR)
@@ -284,6 +293,17 @@ def run_natural_episode_v2(
                 frame_index=frame_index,
                 candidate_ordinal=0,
             )
+            node_cpu_by_frame.append(
+                {
+                    node.node_id: float(
+                        env._getNodeById(node.node_id).getFogProfile().get("cpu", 0.0)
+                    )
+                    for node in observe_airfogsim_snapshot(
+                        env, phase=SnapshotPhase.DECISION
+                    ).nodes
+                    if env._getNodeById(node.node_id) is not None
+                }
+            )
             built, result = execute_attempt_frame(
                 env,
                 schedulers,
@@ -292,12 +312,40 @@ def run_natural_episode_v2(
                 ledger=ledger,
                 vocabulary=vocabulary,
                 route_revisions=route_revisions,
+                cpu_allocator=cpu_allocator,
             )
             if built.resource_policy != expected_arm:
                 raise RuntimeError("frame builder resource arm changed within episode")
             results.append(result)
         frames = v1._frame_payloads(results, vocabulary)
+        for frame, node_cpu in zip(frames, node_cpu_by_frame):
+            for phase in ("decision_snapshot", "execution_snapshot", "outcome_snapshot"):
+                snapshot = frame.get(phase)
+                if not isinstance(snapshot, dict):
+                    continue
+                for node in snapshot.get("nodes", []):
+                    if isinstance(node, dict) and str(node.get("node_id")) in node_cpu:
+                        node["cpu"] = node_cpu[str(node["node_id"])]
         vocabulary_payload = v1._vocabulary_payload(vocabulary)
+        try:
+            import airfogsim_strict_dual_graph_preflight as strict_preflight
+
+            for task in strict_preflight.iter_airfogsim_tasks(env.task_manager):
+                row = strict_preflight._task_record(
+                    task,
+                    trajectory_id,
+                    float(env.simulation_time),
+                )
+                task_records[str(row["id"])] = row
+        except (AttributeError, ImportError) as exc:
+            raise RuntimeError(
+                "formal v2 collector requires direct AirFogSim task records"
+            ) from exc
+        source_bundle, resource_bundle = build_formal_bundles(
+            frames,
+            task_records=list(task_records.values()),
+            n_rb=int(env.channel_manager.n_RB),
+        )
         validation_errors = validate_trajectory_frames(
             frames, vocabulary=vocabulary_payload, fixture=False
         )
@@ -314,6 +362,18 @@ def run_natural_episode_v2(
             },
             "frames": frames,
             "vocabulary": vocabulary_payload,
+            "source_bundle": source_bundle,
+            "bundle": resource_bundle,
+            "action_attempts": ledger.terminal_records(),
+            "runtime_summary": {
+                "seed": seed,
+                "steps": len(results),
+                "max_time": float(max(3.0, (steps + 2) * 0.1)),
+                "n_rb": int(env.channel_manager.n_RB),
+                "collector_contract": "PIJWM-AirFogSim-Full-Collector-v2",
+                "formal_collector_ready": False,
+                "source": "P2-B ledger-bound full dual-graph collector",
+            },
             "validation_errors": validation_errors,
             "real_airfogsim_step_count": len(results),
             "naturally_ended": naturally_ended,
@@ -329,12 +389,26 @@ def run_natural_replay_pair_v2(
     *,
     steps: int,
     ledger: ActionAttemptLedger,
+    cpu_allocator_factory=None,
 ) -> dict[str, object]:
+    def allocator_for(role: str):
+        if cpu_allocator_factory is None:
+            return None
+        return cpu_allocator_factory(role)
+
     reference = run_natural_episode_v2(
-        spec, steps=steps, run_role="natural_reference", ledger=ledger
+        spec,
+        steps=steps,
+        run_role="natural_reference",
+        ledger=ledger,
+        cpu_allocator=allocator_for("natural_reference"),
     )
     replay = run_natural_episode_v2(
-        spec, steps=steps, run_role="natural_replay", ledger=ledger
+        spec,
+        steps=steps,
+        run_role="natural_replay",
+        ledger=ledger,
+        cpu_allocator=allocator_for("natural_replay"),
     )
     comparison = compare_replays(reference["frames"], replay["frames"])
     if reference["validation_errors"]:

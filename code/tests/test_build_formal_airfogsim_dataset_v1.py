@@ -170,7 +170,12 @@ def fake_runtime(spec, max_time):
             "uav_energy_ledger": [],
         },
         "source_bundle": source,
-        "runtime_summary": {"seed": spec.seed, "steps": len(times)},
+        "runtime_summary": {
+            "seed": spec.seed,
+            "steps": len(times),
+            "formal_collector_ready": True,
+            "collector_contract": "PIJWM-AirFogSim-Full-Collector-v2",
+        },
     }
 
 
@@ -222,7 +227,12 @@ class BuildFormalAirFogSimDatasetTests(unittest.TestCase):
                     output
                     / "locked_test"
                     / "trajectories"
-                    / "load_low__density_sparse__r09"
+                    / next(
+                        spec.trajectory_id
+                        for spec in build_formal_trajectory_specs()
+                        if spec.split == "locked_test"
+                        and spec.scenario.scenario_id == "load_low__density_sparse"
+                    )
                     / "manifest.json"
                 ).is_file()
             )
@@ -231,6 +241,38 @@ class BuildFormalAirFogSimDatasetTests(unittest.TestCase):
             self.assertTrue(manifest["field_masks_valid"])
             self.assertTrue(manifest["splits_frozen"])
             self.assertTrue(manifest["source_manifest_present"])
+
+    def test_legacy_runtime_cannot_approve_formal_dataset(self):
+        subject = load_subject()
+        from pi_jwm.formal_airfogsim_dataset_v1 import build_formal_trajectory_specs
+
+        def legacy_runtime(spec, max_time):
+            result = fake_runtime(spec, max_time)
+            result["runtime_summary"]["formal_collector_ready"] = False
+            result["runtime_summary"]["collector_contract"] = (
+                "AirFogSim-Legacy-Conservation-Runner"
+            )
+            return result
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            result = subject.build_formal_dataset(
+                output_dir=Path(temporary_directory),
+                specs=build_formal_trajectory_specs(),
+                runtime_runner=legacy_runtime,
+                resource_validator=fake_resource_validator,
+                max_time=30.0,
+                history_steps=8,
+                horizon_steps=3,
+                required_physical_directions={"V2I"},
+            )
+
+            self.assertFalse(result["formal_dataset_ready"])
+            validation = json.loads(
+                (Path(temporary_directory) / "validation_report.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertFalse(validation["checks"]["formal_collector_ready"])
 
     def test_completed_trajectories_are_verified_and_reused(self):
         subject = load_subject()

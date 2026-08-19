@@ -163,6 +163,14 @@ class FormalAirFogSimRuntimeTests(unittest.TestCase):
             spec.trajectory_id,
             result["source_bundle"]["physical_nodes"][0]["trajectory_id"],
         )
+        self.assertEqual(
+            spec.resource_arm,
+            result["config"]["pi_jwm_formal_v1"]["resource_arm"],
+        )
+        self.assertEqual(
+            spec.resource_arm,
+            result["runtime_summary"]["resource_arm"],
+        )
         self.assertIs(original_build_config, preflight.build_preflight_config)
         self.assertIs(original_install, evidence.install_capacity_safe_cpu_callback)
         self.assertEqual(0, calls["original_install"])
@@ -259,6 +267,41 @@ class FormalAirFogSimRuntimeTests(unittest.TestCase):
         )
         self.assertEqual(calls, [(spec.cpu_policy, spec.seed)])
         self.assertEqual(result["bundle"]["cpu_ledger"][0]["policy_id"], "custom_policy")
+
+    def test_formal_collector_runner_is_marked_ready_only_with_v2_contract(self):
+        subject = load_subject()
+        from pi_jwm.formal_airfogsim_dataset_v1 import build_formal_trajectory_specs
+
+        spec = build_formal_trajectory_specs()[0]
+
+        def collector_runner(current_spec, max_time, allocator):
+            self.assertEqual(current_spec.trajectory_id, spec.trajectory_id)
+            self.assertEqual(max_time, 2.0)
+            self.assertTrue(callable(allocator))
+            return {
+                "config": {},
+                "bundle": {"dependency_ledger": []},
+                "source_bundle": {
+                    "physical_nodes": [],
+                    "information_edges": [],
+                    "dependency_flows": [{"data_mb": 1.0}],
+                    "ep_relations": [{"dependency_status": "arrived"}],
+                },
+                "runtime_summary": {"seed": spec.seed},
+            }
+
+        result = subject.run_formal_airfogsim_trajectory(
+            spec,
+            max_time=2.0,
+            collector_runner=collector_runner,
+        )
+
+        self.assertTrue(result["runtime_summary"]["formal_collector_ready"])
+        self.assertEqual(
+            result["runtime_summary"]["collector_contract"],
+            "PIJWM-AirFogSim-Full-Collector-v2",
+        )
+        self.assertEqual([], result["source_bundle"]["dependency_flows"])
 
 
 if __name__ == "__main__":

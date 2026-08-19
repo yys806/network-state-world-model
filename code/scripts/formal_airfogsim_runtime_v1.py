@@ -92,11 +92,87 @@ def run_formal_airfogsim_trajectory(
     preflight_module: Any | None = None,
     conservation_runner: Callable[[int, float], dict[str, Any]] | None = None,
     allocator_factory: Callable[[str, int], Any] | None = None,
+    collector_runner: Callable[..., dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Inject one scenario and CPU policy without changing AirFogSim core code."""
 
-    if evidence_module is None or preflight_module is None or conservation_runner is None:
+    if collector_runner is not None and conservation_runner is not None:
+        raise ValueError("provide collector_runner or conservation_runner, not both")
+    if collector_runner is None and conservation_runner is None and evidence_module is None and preflight_module is None:
+        from run_p2_full_dual_graph_collector_preflight_v2 import (
+            run_natural_episode_v2,
+        )
+
+        def collector_runner(current_spec, current_max_time, allocator):
+            from pi_jwm.action_attempt_ledger_v1 import ActionAttemptLedger
+            import airfogsim_strict_dual_graph_preflight as preflight
+
+            steps = max(1, int(round(float(current_max_time) / 0.1)))
+            episode_spec = {
+                "episode_id": str(current_spec.trajectory_id),
+                "trajectory_id": str(current_spec.trajectory_id),
+                "seed": int(current_spec.seed),
+                "arm": str(current_spec.resource_arm),
+            }
+            original_build = preflight.build_preflight_config
+
+            def formal_build(config, seed, runtime):
+                return apply_formal_scenario_overrides(
+                    original_build(config, seed, runtime), current_spec.scenario
+                )
+
+            preflight.build_preflight_config = formal_build
+            try:
+                return run_natural_episode_v2(
+                    episode_spec,
+                    steps=steps,
+                    run_role="natural_reference",
+                    ledger=ActionAttemptLedger(),
+                    cpu_allocator=allocator,
+                )
+            finally:
+                preflight.build_preflight_config = original_build
+    elif collector_runner is None and (
+        evidence_module is None or preflight_module is None or conservation_runner is None
+    ):
         evidence_module, preflight_module, conservation_runner = _runtime_components()
+
+    if collector_runner is not None:
+        if allocator_factory is None:
+            allocator = CpuPolicyAllocator(spec.cpu_policy, seed=spec.seed)
+        else:
+            allocator = allocator_factory(str(spec.cpu_policy), int(spec.seed))
+        result = copy.deepcopy(
+            collector_runner(spec, float(max_time), allocator.allocate)
+        )
+        _strip_synthetic_dependency_payloads(result)
+        _rewrite_trajectory_id(result["source_bundle"], spec.trajectory_id)
+        result["config"]["pi_jwm_formal_v1"] = {
+            "protocol_version": "PIJWM-AirFogSim-formal-protocol-v1",
+            "trajectory_id": spec.trajectory_id,
+            "seed": int(spec.seed),
+            "split": spec.split,
+            "cpu_policy": spec.cpu_policy,
+            "resource_arm": spec.resource_arm,
+            "resource_policy_version": "balanced_two_arm_v1",
+            "scenario": spec.scenario.to_dict(),
+            "dag_semantics": "airfogsim_precedence_only",
+            "dependency_payload": "not_modeled",
+        }
+        result["runtime_summary"].update(
+            {
+                "trajectory_id": spec.trajectory_id,
+                "split": spec.split,
+                "cpu_policy": spec.cpu_policy,
+                "resource_arm": spec.resource_arm,
+                "resource_policy_version": "balanced_two_arm_v1",
+                "formal_collector_ready": True,
+                "collector_contract": "PIJWM-AirFogSim-Full-Collector-v2",
+                "collector_adapter_version": "PIJWM-AirFogSim-formal-source-v2",
+                "dependency_semantics": "airfogsim_precedence_only",
+            }
+        )
+        return result
 
     original_build_config = preflight_module.build_preflight_config
     original_install_cpu = evidence_module.install_capacity_safe_cpu_callback
@@ -139,10 +215,13 @@ def run_formal_airfogsim_trajectory(
     _strip_synthetic_dependency_payloads(result)
     _rewrite_trajectory_id(result["source_bundle"], spec.trajectory_id)
     result["config"]["pi_jwm_formal_v1"] = {
+        "protocol_version": "PIJWM-AirFogSim-formal-protocol-v1",
         "trajectory_id": spec.trajectory_id,
         "seed": int(spec.seed),
         "split": spec.split,
         "cpu_policy": spec.cpu_policy,
+        "resource_arm": spec.resource_arm,
+        "resource_policy_version": "balanced_two_arm_v1",
         "scenario": spec.scenario.to_dict(),
         "dag_semantics": "airfogsim_precedence_only",
         "dependency_payload": "not_modeled",
@@ -152,6 +231,10 @@ def run_formal_airfogsim_trajectory(
             "trajectory_id": spec.trajectory_id,
             "split": spec.split,
             "cpu_policy": spec.cpu_policy,
+            "resource_arm": spec.resource_arm,
+            "resource_policy_version": "balanced_two_arm_v1",
+            "formal_collector_ready": False,
+            "collector_contract": "AirFogSim-Legacy-Conservation-Runner",
             "cpu_decision_rows": len(cpu_rows),
             "dependency_semantics": "airfogsim_precedence_only",
         }

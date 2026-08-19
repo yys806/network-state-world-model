@@ -3,6 +3,7 @@ from __future__ import annotations
 import sys
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 SRC_ROOT = Path(__file__).resolve().parents[1] / "src"
 if str(SRC_ROOT) not in sys.path:
@@ -194,6 +195,39 @@ class AirFogSimSingleStepCollectorV1Tests(unittest.TestCase):
         self.assertEqual(recorder.cpu_rows[0]["rule_version"], "PIJWM-CPU-Inner-Rule-v1")
         self.assertEqual(recorder.cpu_rows[0]["task_ids"], ["task0"])
         self.assertEqual(recorder.cpu_rows[0]["node_summaries"][0]["capacity"], 2.0)
+
+    def test_cpu_callback_accepts_injected_formal_policy_allocator(self):
+        env = FakeEnv()
+
+        def allocator(_env, _tasks):
+            return SimpleNamespace(
+                allocations={"task0": 1.0},
+                rows=[
+                    {
+                        "task_id": "task0",
+                        "node_id": "veh0",
+                        "policy_id": "deadline_aware",
+                        "policy_weight": 2.0,
+                        "deadline_remaining": 1.0,
+                        "queue_size": 1,
+                        "allocated_cpu": 1.0,
+                        "node_cpu_capacity": 2.0,
+                        "allocated_fraction": 0.5,
+                    }
+                ],
+            )
+
+        recorder = SingleStepRecorder(env, candidate_id="formal", cpu_allocator=allocator)
+        recorder.install_cpu_callback(FakeComputationScheduler)
+        allocations = env.task_manager.invoke_compute_callback(
+            {"veh0": [FakeTask("task0", "veh0")]}
+        )
+
+        self.assertEqual(allocations, {"task0": 1.0})
+        self.assertEqual(
+            recorder.cpu_rows[0]["policy_rows"][0]["policy_id"],
+            "deadline_aware",
+        )
 
     def test_invalid_rb_is_rejected_before_airfogsim_setter(self):
         env = FakeEnv()

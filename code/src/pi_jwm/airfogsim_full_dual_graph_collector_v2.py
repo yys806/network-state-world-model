@@ -204,6 +204,7 @@ def execute_full_collector_step_v2(
     task_scheduler,
     communication_scheduler,
     computation_scheduler,
+    cpu_allocator=None,
     observer: Callable[..., AirFogSimSnapshot] = observe_airfogsim_snapshot,
 ) -> FullCollectorStepResult:
     """Execute v1 once while recording real runtime boundaries into ``attempt``."""
@@ -244,6 +245,7 @@ def execute_full_collector_step_v2(
                 task_scheduler=task_proxy,
                 communication_scheduler=communication_proxy,
                 computation_scheduler=computation_proxy,
+                cpu_allocator=cpu_allocator,
                 observer=observed_snapshot,
             )
         except Exception as exc:

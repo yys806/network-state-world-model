@@ -62,6 +62,12 @@ def _write_json(path: Path, value: Any) -> None:
     )
 
 
+def _write_jsonl(path: Path, rows: Sequence[Mapping[str, Any]]) -> None:
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        for row in rows:
+            handle.write(json.dumps(dict(row), ensure_ascii=False, sort_keys=True) + "\n")
+
+
 def _csv_value(value: Any) -> Any:
     if isinstance(value, (dict, list)):
         return json.dumps(value, ensure_ascii=False, sort_keys=True)
@@ -185,6 +191,7 @@ def _trajectory_checks(
     graph: Mapping[str, Any],
     resource: Mapping[str, Any],
     spec: TrajectorySpec,
+    runtime_summary: Mapping[str, Any],
 ) -> dict[str, bool]:
     time_keys = set(_time_values(graph))
     task_snapshots = list(graph.get("source_task_snapshots", []))
@@ -196,6 +203,11 @@ def _trajectory_checks(
     cpu_rows = list(resource.get("cpu_ledger", []))
     dag_edges = list(graph.get("task_dag_edges", []))
     return {
+        "formal_collector_ready": bool(
+            runtime_summary.get("formal_collector_ready", False)
+        )
+        and runtime_summary.get("collector_contract")
+        == "PIJWM-AirFogSim-Full-Collector-v2",
         "time_aligned_task_snapshots": bool(snapshot_keys)
         and len(snapshot_keys) == len(task_snapshots)
         and len(snapshot_keys) == len(set(snapshot_keys))
@@ -238,7 +250,8 @@ def _generate_trajectory(
     graph_validation = validate_dual_graph_v2_bundle(graph)
     resource_validation = dict(resource_validator(resource))
     metric_report = compute_airfogsim_metrics_v2(_metric_inputs(resource, graph))
-    checks = _trajectory_checks(graph, resource, spec)
+    runtime_summary = dict(runtime.get("runtime_summary", {}))
+    checks = _trajectory_checks(graph, resource, spec, runtime_summary)
     times = _time_values(graph)
     observed_directions = sorted(
         {
@@ -253,11 +266,14 @@ def _generate_trajectory(
         "seed": spec.seed,
         "split": spec.split,
         "cpu_policy": spec.cpu_policy,
+        "resource_arm": spec.resource_arm,
+        "collector_contract": runtime_summary.get("collector_contract"),
         "scenario": spec.scenario.to_dict(),
         "time_values": times,
         "observed_steps": len(times),
         "observed_physical_directions": observed_directions,
         "cpu_action_count": len(resource.get("cpu_ledger", [])),
+        "action_attempt_count": len(runtime.get("action_attempts", [])),
         "checks": checks,
         "graph_counts": graph_validation.get("counts", {}),
     }
@@ -273,6 +289,9 @@ def _generate_trajectory(
     _write_json(partial / "resource_validation.json", resource_validation)
     _write_json(partial / "metric_results.json", metric_report)
     _write_json(partial / "runtime_summary.json", runtime.get("runtime_summary", {}))
+    action_attempts = runtime.get("action_attempts")
+    if isinstance(action_attempts, list):
+        _write_jsonl(partial / "action_attempts.jsonl", action_attempts)
     _write_json(partial / "trajectory_summary.json", trajectory_summary)
     files = {
         path.name: _file_record(path)
@@ -442,6 +461,9 @@ def build_formal_dataset(
 
     checks = {
         "protocol_valid": bool(protocol_validation["protocol_valid"]),
+        "formal_collector_ready": all(
+            row["formal_collector_ready"] for row in all_checks
+        ),
         "all_dual_graphs_ready": graph_ready,
         "all_resource_ledgers_ready": resource_ready,
         "window_index_valid": bool(window_validation["window_index_valid"]),
@@ -483,6 +505,7 @@ def build_formal_dataset(
         "split_counts": dict(sorted(split_counts.items())),
         "metric_splits": sorted(set(unlocked_splits.values())),
         "cpu_policies": sorted({row.cpu_policy for row in ordered_specs}),
+        "resource_arms": sorted({row.resource_arm for row in ordered_specs}),
         "history_steps": int(history_steps),
         "horizon_steps": int(horizon_steps),
         "window_count": len(unlocked_windows),
@@ -510,6 +533,7 @@ def build_formal_dataset(
             "generation_completed": len(ordered_specs) == 60,
             "field_masks_valid": checks["time_aligned_task_snapshots"]
             and checks["action_ledgers_present"],
+            "formal_collector_ready": checks["formal_collector_ready"],
             "splits_frozen": checks["protocol_valid"]
             and checks["locked_test_excluded_from_metrics"],
             "source_manifest_present": all(

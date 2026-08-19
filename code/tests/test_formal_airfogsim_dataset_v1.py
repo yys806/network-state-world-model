@@ -19,10 +19,53 @@ class FormalAirFogSimProtocolTests(unittest.TestCase):
 
         self.assertTrue(
             all(
-                row.calibration_status == "calibrated_5s_2seed_20260801"
+                row.calibration_status == "calibrated_5s_2seed_20260819"
                 for row in DEFAULT_SCENARIOS
             )
         )
+
+    def test_formal_specs_use_frozen_seed_scheme_and_balanced_resource_arms(self):
+        from pi_jwm.formal_airfogsim_dataset_v1 import (
+            RESOURCE_ARMS,
+            build_formal_trajectory_specs,
+        )
+        from pi_jwm.full_dual_graph_coverage_v1 import choose_resource_arm
+
+        specs = build_formal_trajectory_specs()
+        self.assertEqual(10000, specs[0].seed)
+        self.assertTrue(all(spec.seed >= 10000 for spec in specs))
+        self.assertTrue(all(spec.resource_arm in RESOURCE_ARMS for spec in specs))
+        for spec in specs:
+            self.assertEqual(
+                spec.resource_arm,
+                choose_resource_arm(spec.trajectory_id, spec.seed),
+            )
+        for scenario_id in {spec.scenario.scenario_id for spec in specs}:
+            counts = Counter(
+                spec.resource_arm
+                for spec in specs
+                if spec.scenario.scenario_id == scenario_id
+            )
+            self.assertEqual({"orthogonal": 5, "interference_reuse": 5}, counts)
+
+    def test_formal_protocol_rejects_development_seed_or_resource_arm_mismatch(self):
+        from dataclasses import replace
+
+        from pi_jwm.formal_airfogsim_dataset_v1 import (
+            build_formal_trajectory_specs,
+            validate_formal_protocol,
+        )
+
+        specs = build_formal_trajectory_specs()
+        broken_seed = [replace(specs[0], seed=2), *specs[1:]]
+        broken_arm = [replace(specs[0], resource_arm="interference_reuse"), *specs[1:]]
+
+        seed_report = validate_formal_protocol(broken_seed)
+        arm_report = validate_formal_protocol(broken_arm)
+        self.assertFalse(seed_report["protocol_valid"])
+        self.assertIn("formal_seed_avoids_reserved_development", seed_report["failed_checks"])
+        self.assertFalse(arm_report["protocol_valid"])
+        self.assertIn("resource_arm_matches_hash_selector", arm_report["failed_checks"])
 
     def test_default_protocol_has_balanced_60_trajectories(self):
         from pi_jwm.formal_airfogsim_dataset_v1 import build_formal_trajectory_specs

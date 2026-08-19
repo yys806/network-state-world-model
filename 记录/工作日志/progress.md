@@ -687,3 +687,27 @@
 - 已确定新接续文档结构；下一步写入根目录`新对话接续说明_20260815.md`。
 - 已创建`新对话接续说明_20260815.md`，共542行、28,562字节。
 - 独立校验确认关键声明与P2-C v2 JSON一致，引用的核心代码/artifact路径存在，最终候选目录仍不存在，尾空格/TODO检查为0。
+# Progress
+
+## 2026-08-19 P2-C 场景冻结推进
+
+- [x] 读取新版 `AGENTS.md`、P2-C 审计、候选配置、旧正式数据设计和 AirFogSim 实际配置/运行入口。
+- [x] 确认已有校准脚本可以复用，且不会触碰正式输出目录或 locked-test。
+- [x] 使用新的开发 seed `910/911` 重跑六场景 CPU-only 校准；六场景、双重复、单调性和非空观测全部通过。首次尝试的依赖路径与 GBK 输出问题已按真实错误处理。
+- [x] 根据校准结果写入场景矩阵冻结草案，用户已确认六场景数值和固定运行参数。
+- [x] 冻结正式规模和 seed split；协议代码和机器 JSON 已同步，定向测试通过。
+- [x] 在 formal builder 增加 v2 collector readiness 安全门；legacy runner 无法批准正式数据。
+- [x] 接入 P2-B v2 collector 并持久化正式轨迹的 resource arm、attempt/reject ledger（正式规模采集尚未开始）。
+- [x] collector 接入和一致性审计通过；正式 v4 采集仍需独立正式规模门，不因 smoke 自动放行。
+
+- v2 真实 collector 测试在 `airfogsim` 环境串行通过：11/11；v1 full collector 真实测试：10/10。
+- 5 秒 formal runtime -> builder smoke 通过：manifest、graph/resource validation、CPU policy trace、9 类物理方向均通过；未访问 locked-test，未生成正式 v4 数据。
+- 当前正式入口已切换为 `PIJWM-AirFogSim-Full-Collector-v2`，但 `formal_data_approved=false`、`training_eligible=false` 保持不变，待完整正式规模采集与独立审计。
+- 全量回归未宣称通过：1370 项中 275 项为环境依赖导入错误（`tomllib`、`sklearn`），其余核心 collector/runtime/builder 定向门已单独通过。
+
+#### 2026-08-19 v2 collector energy 语义修复与复验
+
+- 修复 `formal_airfogsim_collector_adapter_v2.py` 的 energy rows 缩进错误；energy ledger 现在每帧只收集一次，CPU policy callbacks 单独按直接调用顺序生成。
+- 修复 full collector v1 的能耗输入来源：AirFogSim channel manager 的 energy boundary 使用 profile 级 `planned_capacity`，不能使用任务流的 capped `delivered_data`；两者分别保留在 transfer 与 energy 证据中。
+- 在 `airfogsim` 环境、`PYTHONUTF8=1` 下完成真实高负载/高密度 5 秒 smoke：50 frames、50 attempts、attempt schema 0 errors，formal collector/dual graph/resource/energy gates 全部通过，9 类物理方向齐全。
+- 本轮未生成正式 60 条轨迹，未读取 `locked_test`，未启动 GPU；formal data/training approval 仍为 false。

@@ -18,6 +18,9 @@ class SingleStepRecorder:
 
     env: Any
     candidate_id: str
+    cpu_allocator: Callable[[Any, Mapping[str, list[Any]]], Any] | None = field(
+        default=None, repr=False
+    )
     cpu_rows: list[dict[str, Any]] = field(default_factory=list)
     _task_refs: dict[str, Any] = field(default_factory=dict, repr=False)
 
@@ -40,17 +43,35 @@ class SingleStepRecorder:
                     for task in node_tasks
                 }
             )
-            decision = allocate_airfogsim_cpu(self.env, computing_tasks)
+            decision = (
+                self.cpu_allocator(self.env, computing_tasks)
+                if self.cpu_allocator is not None
+                else allocate_airfogsim_cpu(self.env, computing_tasks)
+            )
+            inner_decision = getattr(decision, "decision", None)
+            policy_rows = [dict(row) for row in getattr(decision, "rows", [])]
             self.cpu_rows.append(
                 {
                     "candidate_id": self.candidate_id,
-                    "rule_version": decision.decision.rule_version,
-                    "slot_seconds": decision.decision.slot_seconds,
+                    "time": float(getattr(self.env, "simulation_time", 0.0)),
+                    "rule_version": getattr(
+                        inner_decision,
+                        "rule_version",
+                        str(policy_rows[0].get("policy_id", "custom"))
+                        if policy_rows
+                        else "custom",
+                    ),
+                    "slot_seconds": getattr(
+                        inner_decision,
+                        "slot_seconds",
+                        float(getattr(self.env, "simulation_interval", 0.0)),
+                    ),
                     "task_ids": sorted(task_ids),
                     "computed_before": before,
                     "allocations": dict(decision.allocations),
                     "served_work": {
-                        row.task_id: row.served_work for row in decision.decision.allocations
+                        row.task_id: row.served_work
+                        for row in getattr(inner_decision, "allocations", ())
                     },
                     "node_summaries": [
                         {
@@ -61,8 +82,9 @@ class SingleStepRecorder:
                             "water_level": summary.water_level,
                             "task_count": summary.task_count,
                         }
-                        for summary in decision.decision.node_summaries
+                        for summary in getattr(inner_decision, "node_summaries", ())
                     ],
+                    "policy_rows": policy_rows,
                 }
             )
             return decision.allocations
