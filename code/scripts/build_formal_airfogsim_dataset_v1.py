@@ -157,6 +157,8 @@ def _build_graph(runtime: Mapping[str, Any], spec: TrajectorySpec) -> dict[str, 
         offload_actions=source.get("offload_actions", []),
         return_actions=source.get("return_actions", []),
         rb_actions=source.get("rb_actions", []),
+        rb_observations=source.get("source_rb_observations", []),
+        n_rb=source.get("n_rb"),
     )
     kept_node_ids = {str(row["id"]) for row in graph["physical_nodes"]}
     kept_edge_ids = {str(row["id"]) for row in graph["physical_edges"]}
@@ -172,6 +174,9 @@ def _build_graph(runtime: Mapping[str, Any], spec: TrajectorySpec) -> dict[str, 
     ]
     graph["source_outcome_task_snapshots"] = [
         dict(row) for row in source.get("outcome_task_snapshots", [])
+    ]
+    graph["source_rb_observations"] = [
+        dict(row) for row in source.get("source_rb_observations", [])
     ]
     graph["source_cpu_actions"] = [
         dict(row) for row in runtime["bundle"].get("cpu_ledger", [])
@@ -358,24 +363,30 @@ def build_formal_dataset(
     history_steps: int,
     horizon_steps: int,
     required_physical_directions: Sequence[str] = REQUIRED_PHYSICAL_DIRECTIONS,
+    include_locked_test: bool = True,
 ) -> dict[str, Any]:
     """Build or resume the complete formal-v1 trajectory collection."""
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    ordered_specs = sorted(specs, key=lambda row: row.seed)
-    protocol_validation = validate_formal_protocol(ordered_specs)
+    protocol_specs = sorted(specs, key=lambda row: row.seed)
+    protocol_validation = validate_formal_protocol(protocol_specs)
     if not protocol_validation["protocol_valid"]:
         raise ValueError(
             f"invalid formal dataset protocol: {protocol_validation['failed_checks']}"
         )
 
+    ordered_specs = [
+        row for row in protocol_specs
+        if include_locked_test or row.split != "locked_test"
+    ]
     _write_json(
         output_dir / "protocol.json",
         {
             "schema_version": PROTOCOL_SCHEMA_VERSION,
-            "trajectory_specs": [row.to_dict() for row in ordered_specs],
+            "trajectory_specs": [row.to_dict() for row in protocol_specs],
             "validation": protocol_validation,
+            "generation_scope": "all_splits" if include_locked_test else "unlocked_only",
         },
     )
 
@@ -448,7 +459,8 @@ def build_formal_dataset(
     unlocked_windows = [row for row in windows if row["split"] != "locked_test"]
     locked_windows = [row for row in windows if row["split"] == "locked_test"]
     _write_csv(output_dir / "window_index.csv", unlocked_windows)
-    _write_csv(output_dir / "locked_test" / "window_index.csv", locked_windows)
+    if include_locked_test:
+        _write_csv(output_dir / "locked_test" / "window_index.csv", locked_windows)
     _write_csv(output_dir / "trajectory_index.csv", trajectory_rows)
 
     unlocked_splits = {
@@ -533,7 +545,7 @@ def build_formal_dataset(
         {
             "schema_version": SCHEMA_VERSION,
             "formal_dataset_ready": formal_dataset_ready,
-            "generation_completed": len(ordered_specs) == 60,
+            "generation_completed": include_locked_test and len(ordered_specs) == 60,
             "field_masks_valid": checks["time_aligned_task_snapshots"]
             and checks["action_ledgers_present"],
             "formal_collector_ready": checks["formal_collector_ready"],
@@ -554,6 +566,7 @@ def build_formal_dataset(
         "generated_trajectory_count": generated,
         "reused_trajectory_count": reused,
         "window_count": len(unlocked_windows),
+        "locked_test_window_count": len(locked_windows) if include_locked_test else 0,
     }
 
 
@@ -574,6 +587,11 @@ def main() -> int:
     parser.add_argument("--history", type=int, default=8)
     parser.add_argument("--horizon", type=int, default=3)
     parser.add_argument("--output-dir", type=Path, default=_default_output_dir())
+    parser.add_argument(
+        "--unlocked-only",
+        action="store_true",
+        help="generate only train/validation/calibration trajectories; do not open locked-test paths",
+    )
     args = parser.parse_args()
     runtime_runner, resource_validator = _runtime_components()
     result = build_formal_dataset(
@@ -584,6 +602,7 @@ def main() -> int:
         max_time=args.max_time,
         history_steps=args.history,
         horizon_steps=args.horizon,
+        include_locked_test=not args.unlocked_only,
     )
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0 if result["formal_dataset_ready"] else 1

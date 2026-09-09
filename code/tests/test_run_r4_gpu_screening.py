@@ -46,6 +46,18 @@ class RunR4GpuScreeningTests(unittest.TestCase):
             },
             set(configs),
         )
+        self.assertNotIn("complete_graph_rssm_v1", configs)
+
+    def test_complete_rssm_is_only_available_when_explicitly_selected(self):
+        from run_r4_gpu_screening import executable_candidate_configs
+
+        configs = executable_candidate_configs(
+            hidden_dim=4,
+            history_steps=8,
+            information_rate_mean=0.0,
+            information_rate_scale=1.0,
+        )
+        self.assertNotIn("complete_graph_rssm_v1", configs)
 
     def test_formal_runner_rejects_non_cuda_device_before_output(self):
         from run_r4_gpu_screening import require_cuda_device

@@ -42,7 +42,9 @@ def _last_persistence(batch: Mapping[str, Any]) -> dict[str, torch.Tensor]:
     dag_mean = _repeat_last(history["task_dag_state"], horizon)
     output["task_dag_state_mean"] = dag_mean
     output["task_dag_state_log_variance"] = torch.zeros_like(dag_mean)
-    if "link_activity" in history:
+    if "aggregate_link_activity" in history:
+        link_activity = history["aggregate_link_activity"]
+    elif "link_activity" in history:
         link_activity = history["link_activity"]
     else:
         activity_index = list(EDGE_FEATURES).index("active_task_count")
@@ -139,6 +141,16 @@ def method_registry() -> dict[str, dict[str, Any]]:
             "graph_message_passing": True,
             "cross_graph_coupling": True,
         },
+        "link_activity_persistence_residual_v1": {
+            "stage": "candidate",
+            "role": "learned_link_activity_candidate",
+            "distribution_output": True,
+            "graph_message_passing": True,
+            "cross_graph_coupling": True,
+            "residual_state_prediction": True,
+            "base_mode": "coupled_dual_gnn",
+            "link_activity_method": "persistence_residual_v1",
+        },
         "independent_dual_gnn_residual": {
             "stage": "gpu_ready",
             "role": "strict_dual_graph_residual_ablation",
@@ -156,6 +168,53 @@ def method_registry() -> dict[str, dict[str, Any]]:
             "cross_graph_coupling": True,
             "residual_state_prediction": True,
             "base_mode": "coupled_dual_gnn",
+        },
+        "complete_rssm_dual_graph_v1": {
+            "stage": "candidate",
+            "role": "pi_jwm_complete_rssm_candidate",
+            "distribution_output": True,
+            "graph_message_passing": True,
+            "cross_graph_coupling": True,
+            "residual_state_prediction": True,
+            "latent_dynamics": "complete_rssm_prior_posterior_v1",
+            "training_posterior_teacher": True,
+            "deployment_prior_only": True,
+            "overshooting": True,
+            "model_version": "formal_complete_rssm_v1_1",
+            "rssm_residual_head_initialization": "zero_when_requested_v1",
+        },
+        "complete_rssm_node_x_safe_dual_graph_v1": {
+            "stage": "candidate_not_performance_validated",
+            "role": "pi_jwm_complete_rssm_node_x_safety_candidate",
+            "distribution_output": True,
+            "graph_message_passing": True,
+            "cross_graph_coupling": True,
+            "residual_state_prediction": True,
+            "latent_dynamics": "complete_rssm_prior_posterior_v1",
+            "training_posterior_teacher": True,
+            "deployment_prior_only": True,
+            "overshooting": True,
+            "model_version": "formal_complete_rssm_v1_1",
+            "rssm_residual_head_initialization": "zero_when_requested_v1",
+            "node_x_residual_loss_contract": "node_x_residual_non_degradation_v1",
+            "node_x_residual_loss_weight": 1.0,
+        },
+        "entity_aligned_dual_graph_rssm_v1": {
+            "stage": "cpu_contract_candidate",
+            "role": "pi_jwm_entity_aligned_complete_rssm_candidate",
+            "distribution_output": True,
+            "graph_message_passing": True,
+            "cross_graph_coupling": True,
+            "residual_state_prediction": True,
+            "latent_dynamics": "entity_aligned_complete_rssm_prior_posterior_v1",
+            "entity_latent_layout": "node_physical_edge_flow_task_v1",
+            "node_motion_contract": "causal_backward_difference_v1",
+            "training_posterior_teacher": True,
+            "deployment_prior_only": True,
+            "overshooting": True,
+            "model_version": "formal_entity_aligned_rssm_v1",
+            "rssm_residual_head_initialization": "zero_when_requested_v1",
+            "link_activity_method": "persistence_residual_v1",
         },
         "coupled_directed_dynamic_v2": {
             "stage": "local_interface_ready",

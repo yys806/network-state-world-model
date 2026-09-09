@@ -17,6 +17,8 @@ venv/
 .codex/
 .superpowers/
 .worktrees/
+.codex_askpass_*.cmd
+tencent-doc-readonly.png
 
 # Runtime and local scratch files
 .tmp/

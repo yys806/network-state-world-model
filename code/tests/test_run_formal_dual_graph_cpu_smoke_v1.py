@@ -63,6 +63,8 @@ class RunFormalDualGraphCpuSmokeV1Tests(unittest.TestCase):
                 self.assertTrue((output_dir / "checkpoints" / f"{method}.pt").is_file())
 
             samples = json.loads((output_dir / "sample_ids.json").read_text(encoding="utf-8"))
+            config = json.loads((output_dir / "config.json").read_text(encoding="utf-8"))
+            self.assertEqual("calibration", config["threshold_selection_split"])
             self.assertEqual(["seed000::window000000"], samples["train"])
             self.assertEqual(["seed001::window000000"], samples["validation"])
             self.assertEqual([], samples["calibration"])

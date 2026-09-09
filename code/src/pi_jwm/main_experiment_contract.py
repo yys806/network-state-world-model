@@ -7,7 +7,7 @@ from typing import Any, Mapping
 from .airfogsim_contract_adapter import ADAPTER_VERSION, encode_optional_value
 
 
-CONTRACT_VERSION = "PI-JWM-main-experiment-contract-v2"
+CONTRACT_VERSION = "PI-JWM-main-experiment-contract-v3-aggregate-baseline"
 
 
 def _field(field_id: str, group: str, source: str, availability: str = "direct") -> dict[str, str]:
@@ -36,8 +36,15 @@ def build_frozen_contract() -> dict[str, Any]:
         _field("cpu_capacity", "physical_node", "AirFogSim/direct_after_adapter"),
         _field("uav_energy", "physical_node", "AirFogSim/direct_for_uav", "conditional"),
         _field("physical_edge_endpoints_type", "physical_edge", "AirFogSim/direct"),
-        _field("link_activity", "physical_edge", "AirFogSim/direct_runtime_event"),
-        _field("link_rate_by_rb", "physical_edge", "AirFogSim/direct_runtime_event"),
+        _field("aggregate_link_activity", "physical_edge", "AirFogSim/direct_runtime_event"),
+        _field("aggregate_link_rate_sum", "physical_edge", "AirFogSim/direct_runtime_event"),
+        _field("aggregate_rb_occupancy", "resource", "AirFogSim/direct_runtime_event"),
+        _field(
+            "per_rb_target_sidecar",
+            "diagnostic_sidecar",
+            "AirFogSim/direct_runtime_event",
+            "not_consumed_by_current_model",
+        ),
         _field("agent_identity_type_attachment", "information_agent", "PI-JWM/CIP_from_active_physical_node"),
         _field("information_flow_endpoints_type", "information_flow", "AirFogSim/direct_runtime_event"),
         _field("information_flow_amount_status", "information_flow", "AirFogSim/direct_runtime_event"),
@@ -58,7 +65,7 @@ def build_frozen_contract() -> dict[str, Any]:
     ]
     prediction_targets = [
         _target("next_physical_node_state", "one_step_and_rollout"),
-        _target("next_physical_edge_state", "activity_rate_and_topology"),
+        _target("next_physical_edge_state", "aggregate_activity_rate_rb_occupancy_and_topology"),
         _target("next_information_agent_state", "agent_queue_and_service_state"),
         _target("next_information_flow_state", "flow_activity_amount_and_completion"),
         _target("next_task_state", "lifecycle_dag_readiness_and_progress"),
@@ -114,6 +121,8 @@ def build_frozen_contract() -> dict[str, Any]:
         "metrics": metrics,
         "unmodelled_fields": unmodelled_fields,
         "missing_value_policy": "never_zero_fill",
+        "training_contract_mode": "aggregate_baseline",
+        "per_rb_policy": "retained_diagnostic_sidecar_not_consumed_by_current_model",
         "rollout_horizons": [1, 5, 20],
         "evidence_boundary": {
             "airfogsim": "reference_simulator_and_data_source",

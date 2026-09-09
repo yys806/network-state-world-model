@@ -1,5 +1,17 @@
 # PI-JWM v11 Selector GPU Iteration Plan
 
+## 2026-08-23 revised deterministic-rule candidate
+
+| Phase | Status | Evidence |
+|---|---|---|
+| Explicit rule tensor contract | complete | 54 unlocked seeds; source/flow/slot/manifest audit passes |
+| TDD rule implementation | complete | Service conservation, CPU inner rule, DAG/lifecycle recursion, correction-only feedback |
+| Three-seed CPU gate | complete | Frozen 256/128/128 protocol; numerical gate true |
+| Theory-code-data-metric consistency | complete | 10/10 checks, no critical mismatch, GPU allowed by consistency |
+| Rule-enabled GPU run | pending | Requires server availability; non-locked smoke first, then frozen three seeds |
+
+Boundaries: aggregate baseline only; per-RB sidecar remains diagnostic; locked-test and formal performance claims remain closed.
+
 ## 2026-08-15 仓库顶层目录重构设计
 
 ### Goal
@@ -29,6 +41,19 @@
 | 首次三文件规划补丁因`findings.md`文件头上下文验证失败而整体拒绝 | 1 | 无部分写入；重新读取三个真实文件头并拆成基于标题行的最小补丁 |
 | 方案确认后的规划更新误写工作区路径`D:\shen\PIJWM\findings.md`，文件读取失败 | 1 | 无文件变化；改用真实路径`D:\shen\PKU\PIJWM`并拆开补丁 |
 | 首次目录清点使用非法多键语法`Sort-Object PSIsContainer -Descending,Name`，PowerShell解析失败 | 1 | 无读取后续项、无文件变化；改用显式属性表达式数组排序，不重复原语法 |
+
+## 2026-08-22 方案A逐RB标签与tensor contract冻结
+
+| Phase | Status | Deliverable |
+|---|---|---|
+| 1. outcome时间网格闭包 | complete | `_time_grid()`纳入`source_rb_observations.time`，并保持新增时刻的决策状态present/mask为false |
+| 2. float32时间对齐 | complete | RB标签索引使用稳定的5位时间规范化；`16.2`等float32表示不再误拒绝 |
+| 3. per-RB边轴契约 | complete | `link_activity/link_rate_by_rb`及共同Mask按冻结`max_physical_edges=1980`补齐，`n_rb=50` |
+| 4. v6非locked tensor重建 | complete | 54个seed、15,660 windows、train-only stats、manifest和validation通过 |
+| 5. 独立一致性验收 | complete | 54个`.npz`逐个finite/shape/mask核验通过；per-RB形状统一为`[300,1980,50]`，48,447个观测标签 |
+| 6. 训练批准 | blocked | `formal_training_ready=false`；训练协议、理论—实现—指标一致性审计和locked-test封存门仍未解除 |
+
+边界：本阶段未启动GPU、未训练、未访问或张量化locked-test；v5保留作追溯，v6/v3为当前非locked候选证据。
 | 修正后的大型聚合清点命令退出0但stdout为空，连固定标题也未返回 | 1 | 结果不可采信、无文件变化；拆为根目录、文档树、代码/临时路径、tracked前缀四个小查询 |
 | 文档目录相对路径展示硬编码`Substring(24)`，对短路径产生`startIndex`非终止错误 | 1 | 只影响显示、未修改文件；改用真实`文档`根路径长度动态计算相对路径 |
 
@@ -1016,3 +1041,110 @@ Guardrails: no GPU, no locked test, no formal trajectory generation, no dirty-wo
 - tensor builder 首次遇到旧 v3 artifact 的返回动作字段 `target_node_id` 与 tensor contract 要求的 `return_target_id` 不一致；新 adapter 已改用正式字段，formal tensor 入口增加显式历史 schema 归一化并记录 `legacy_return_action_field_count`，未改写源 artifact。
 - tensorization 已结构性通过：54 seed、15,660 windows、`max_nodes=46`、`max_physical_edges=1980`、`max_flows=528`、`max_tasks=523`、`max_dag_edges=1406`，action width=8，DAG state 存在，train-only stats 与 manifest/finiteness 验收通过。
 - 训练一致性门未通过：`normalization_stats.json` 中 `physical_edge_state` 与 `task_state` 全部为零均值/`1e-6` scale；追溯显示 observer 任务快照只含 lifecycle/端点/到达时间，adapter 未保留任务大小/CPU/deadline/priority 等动态字段，也未将 decision channel rows 写入 physical-edge feature snapshot。不得用最终 task record 或零填充补齐，这需要下一阶段直接来源修复与重新采集/张量化。
+
+# 2026-08-20 Decision-Time 任务与信道特征闭包
+
+## Goal
+
+将 AirFogSim setter 前直接可观测的任务动态字段和 decision-time CSI 接入 observer → adapter → formal graph → tensor；重新生成只面向 train/validation/calibration 的候选数据与 tensor，证明 task/physical-edge state 不再是缺失导致的全零。locked-test 不张量化、不拟合统计，不启动 GPU。
+
+## Phases
+
+| Phase | Status | Deliverable |
+|---|---|---|
+| 1. 直接来源与字段语义核对 | complete | 确认 Task API 与 decision `getCSI` 可直接提供所需值；不使用最终 task record 或 outcome 代理 |
+| 2. RED 回归 | complete | deadline派生字段Mask RED/GREEN；observer/adapter/tensor字段回归通过 |
+| 3. 最小实现与定向回归 | complete | TaskSnapshot/observer/adapter保留decision-time直接字段并保持decision/outcome时序分离 |
+| 4. 非 locked 重采集与独立审计 | complete | 新v4候选54条非locked轨迹、36/12/6 split、15,660窗口、逐轨迹manifest哈希0错误、无locked-test目录 |
+| 5. tensor/statistics重建与语义验收 | complete | 54 seed tensor、train-only stats、finite、非退化mask/状态和window/locked-test门通过 |
+| 6. 记录、测试与一致性审计 | in_progress | 记录已更新；定向回归、compileall、diff check通过；尚待理论—实现—数据—指标一致性审计与训练协议冻结 |
+
+## Fixed Boundaries
+
+- 任务输入只取 decision-time Task 对象直接值；deadline remaining 可由同一时点 `arrival + deadline - observed_time` 确定，不读取未来结果。
+- CSI 只取 decision snapshot 的 `channel_manager.getCSI`；rate/active/RB 属于本槽 outcome/action 证据，不能伪装成 action-pre observation。若没有同一时点 direct 值，contract 必须收缩或用显式 mask，而不是填代理量。
+- 不读取或修改 `D:\shen\PKU\RRM`，不启动 GPU，不 materialize locked-test tensor。
+
+## 2026-08-22 理论—实现—数据—指标一致性审计与训练协议冻结
+
+| Phase | Status | Deliverable |
+|---|---|---|
+| 1. 审计入口与现状核对 | complete | 已核对主实验 contract、formal model/loss、tensor/window schema 和已有 GPU launcher；未启动执行 |
+| 2. 字段逐项一致性审计 | complete_blocked | 机器报告确认 model/loss/metrics 缺少逐RB闭包，critical mismatch 已落盘并继续阻断训练 |
+| 3. 训练协议冻结草案 | complete_blocked | split/statistics/history/horizon/RB容量和安全门已冻结；GPU/training/locked-test gates 均为 false |
+| 4. CPU-only protocol gate | complete_blocked | 只读验证协议输入、字段、统计来源和拒绝门；三条 critical mismatch 按预期拒绝训练 |
+| 5. 状态记录与下一门 | complete | 权威记录已同步；路线B aggregate baseline 审计通过，下一门为 CPU-only baseline 与 persistence 对照 |
+
+边界：本阶段不启动GPU、不训练、不访问或张量化locked-test、不把已有 launcher/import/smoke 误称为完整PI-JWM方法。
+
+## 路线B后续 CPU 门
+
+| 步骤 | 状态 | 验收边界 |
+|---|---|---|
+| 1. aggregate contract 闭包 | complete | window/loss/metrics/audit一致，per-RB sidecar不被当前模型消费 |
+| 2. 最小 CPU smoke | complete_below_persistence | 4/2/2 windows、1 epoch接口通过；learned link F1显著低于 persistence |
+| 3. 扩大 CPU comparison | complete | 64/32/32 windows、hidden=32、2 epochs；五方法完成，validation/calibration metrics 与 manifest 已生成 |
+| 4. sparse activity诊断 | complete_with_repeated_link_gain | 两组256/128/128 CPU复验均覆盖18个非锁定evaluation seeds与六场景；coupled link-F1重复超过persistence，但node-x MAE仍较差 |
+| 5. GPU审议 | blocked_by_gate_definition_and_state_error | CPU-to-GPU数值门未在查看复验结果前冻结；不得倒推阈值，且完整状态误差尚未超过persistence |
+
+## 2026-08-23 GPU gate 解阻诊断（当前任务）
+
+### Goal
+
+在不访问 `locked_test`、不启动 GPU、不修改正式 tensor 合同的前提下，定位并消除 CPU-to-GPU gate 的两个失败条件；只有至少 3 个独立 seed 的冻结 gate 通过且 CUDA 可用，才允许进入 GPU smoke。
+
+### Phase
+
+| Phase | Status | Deliverable |
+|---|---|---|
+| 1. gate/训练路径根因核查 | complete | 确认失败为 validation activity F1 单 seed 退化与 node-x MAE ratio 超限；数据、阈值选择和 operational metrics 已通过 |
+| 2. 训练预算诊断 | complete | 固定 data_seed 后完成同协议 CPU 复验；抽样方差不再是主要解释，node-x 状态误差仍超限 |
+| 3. 单变量模型诊断 | complete | state_mae 增权失败；zero-init + residual_state_scale=0.5 使三 seed 状态误差通过 |
+| 4. 三 seed gate 重跑 | complete | 三个固定数据窗口 seed 的冻结 gate 通过，node-x MAE ratio=1.13897603387634，gpu_allowed=true |
+| 5. CUDA 与 GPU smoke 门 | complete_smoke_and_3_gpu_seeds_audited | 本机 CUDA unavailable；远端 RTX 4090 smoke 与正式 GPU seeds 20260824/20260825/20260826 均通过，三枚均为非 locked 训练；多 seed 汇总审计通过，不访问 locked-test |
+
+### 2026-08-23 后续规则层门
+
+| 6. Rule-layer interface | complete | 四项输入契约、物理单位规则、逐步 feedback 和 CPU regression 已闭合 |
+| 7. Rule-layer checkpoint retraining | pending | 旧 GPU checkpoints 与新方法不一致；需非 locked 多 seed CPU smoke 后再申请远端 GPU |
+
+### Errors Encountered
+
+| Error | Attempt | Resolution |
+|---|---:|---|
+| 接续说明路径不在仓库根目录 | 1 | 按 `rg --files` 定位真实权威文件 `记录/接续记录/新对话接续说明_20260815.md`；无文件修改 |
+| 512/256 windows、5 epoch CPU 预算诊断运行时间过长，仅完成 pooled_gru checkpoint | 1 | 主动中止未完成 run；保留独立目录作为未完成诊断证据，改用更小的完整单变量实验，不据此下结论 |
+
+## 2026-08-26 规则递推复放收口
+
+| 步骤 | 状态 | 验收边界 |
+|---|---|---|
+| 1. 实际 v4 输入流守恒复算 | complete | 54 unlocked trajectories、155,875 active slots、12,924 first-active slots，阈值 `1e-5` 下 0 违规 |
+| 2. 三 seed CPU rule rollout replay | complete | 每 seed 128 validation windows、64 batches、192/192 rule steps；flow/RB/CPU/lifecycle/DAG 均为 0 违规 |
+| 3. 受影响代码回归验证 | complete | 定向测试、编译与 diff whitespace 检查 |
+
+本轮只重放既有的 rule-enabled aggregate checkpoints；不启动 GPU、不访问 locked-test，且不改变 `formal_performance_claim_ready=false`。
+
+## 2026-08-26 文献精读阶段
+
+- [x] 7 篇新增 arXiv 预印本完成结构化精读和 PI-JWM relevance 提炼。
+- [x] 文献结论与现有 planner audit 对齐：只作为机制和评价启发，不将 direct scorer 改称 candidate-rollout planner。
+- [ ] 下一阶段仍是非 locked candidate-action planner 机制门；只有理论、代码、数据和指标一致后才考虑后续 CPU/GPU 执行。
+
+## 2026-08-26 Candidate-action planner 机制审计
+
+| 步骤 | 状态 | 验收边界 |
+|---|---|---|
+| 1. R6 与 formal model 代码审阅 | complete | direct scorer 与 action-conditioned prediction 分别确认，不混同为 planner |
+| 2. 判据、测试与静态审计 | complete | 3 项定向测试通过；审计报告为 `blocked` |
+| 3. 结论记录 | complete | 不启动 GPU、不训练、不访问 locked-test；P6 保持未实现 |
+
+## 2026-08-26 Candidate-action planner 机制原型门
+
+| 步骤 | 状态 | 验收边界 |
+|---|---|---|
+| 1. 候选动作契约与逐候选注入 | complete | 新增 `formal_candidate_rollout_planner_v1.py`；严格替换四个 `future_action` 字段，共同复用 `history/static` |
+| 2. CPU 机制验证 | complete | 5/5 定向测试通过；包含正式 action-conditioned world model 的双候选调用、预测目标选择、首动作截取和历史更新后 replan |
+| 3. 正式方法门 | blocked | 原型状态为 `prototype_only`；合法动作生成器、任务语义 objective、真实执行反馈闭环尚未冻结；原有正式 planner audit 继续为 `blocked` |
+
+边界：本门只证明候选 rollout 机制可审计运行，不证明训练好的 candidate-rollout planner、正式性能或 GPU 解封；未启动 GPU、未训练、未访问/物化 locked-test。

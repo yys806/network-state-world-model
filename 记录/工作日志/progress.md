@@ -1,5 +1,14 @@
 # PI-JWM v11 Selector Progress Log
 
+## 2026-08-23 rule-layer v2 gate completion
+
+- New tensor: `code/artifacts/formal_tensor/pi_jwm_v4_tensor_v4_rule_contract_unlocked_20260823`, 54 trajectories and 15,660 windows.
+- Tensor audit: `code/artifacts/audit/pi_jwm_formal_rule_tensor_contract_audit_20260823/`, ready=true and all missing/mismatch counts 0.
+- Three CPU runs: `code/artifacts/experiments/formal_rule_layer_cpu_gate_v2_seed{20260824,20260825,20260826}_20260823/`; all manifests verify and sample-id hashes match.
+- Numerical gate: `code/artifacts/audit/pi_jwm_formal_rule_layer_cpu_gpu_gate_v2_20260823/`, gpu_allowed=true.
+- Consistency gate: `code/artifacts/audit/pi_jwm_formal_candidate_consistency_audit_rule_layer_v2_20260823/`, status=ready_for_review, gpu_allowed=true, locked_test=false, formal claim=false.
+- Verification: formal 139/139, teacher tensor 5/5, teacher builder 4/4, compileall and diff check pass. Full suite residuals are 7 existing AirFogSim GBK environment errors plus 1 existing root-plan directory-policy failure.
+
 ## 2026-08-15 仓库顶层目录重构设计
 
 - [x] 读取`brainstorming`、`planning-with-files`与`writing-plans`规则；运行session catch-up并记录当前dirty worktree。
@@ -697,6 +706,14 @@
 - 语义审计发现 task/physical-edge 特征缺失：task state 全零来自 observer/adapter 没有动态任务数值字段，physical edge state 全零来自 channel rows 未映射到 edge snapshots。该问题不是统计技巧可修复项，已把训练一致性门标为阻断。
 - 当前状态：`formal_tensor_ready=true`、`formal_training_ready=false`、`gpu_started=false`、`locked_test_accessed=false`。下一步必须扩展 decision-time observer/adapter 的直接字段证据并重新采集，不启动训练。
 
+#### 2026-08-20 Decision-Time 任务与信道特征闭包启动
+
+- [x] 读取现有计划、语义阻断记录、observer/adapter/tensor 路径和 AirFogSim Task API。
+- [x] 确认任务动态值和 decision CSI 均有 setter 前直接来源。
+- [ ] 按 TDD 增加 observer、adapter 和 tensor 字段回归；先确认 RED。
+- [ ] 最小实现 direct field capture 与时序隔离。
+- [ ] 重新生成非 locked 数据、独立审计并重建 tensor/statistics；不访问 locked-test 下游，不启动 GPU。
+
 ## 2026-08-19 P2-C 场景冻结推进
 
 - [x] 读取新版 `AGENTS.md`、P2-C 审计、候选配置、旧正式数据设计和 AirFogSim 实际配置/运行入口。
@@ -742,3 +759,139 @@
 - 已完成根因调查：adapter 将 decision/execution/outcome 的物理 node/edge snapshot 混入同一 observed-time 序列；真实 bundle 中重复键 5033 个且内容相同。未用零填充、覆盖或静默去重处理。
 - 当前 phase 2 暂停在 RED 测试前；GPU、训练、调参和 locked-test 使用均未发生。
 - RED/GREEN 已完成：adapter 只把 decision physical snapshot 写入状态流，execution/outcome 的任务与 ledger evidence 保留；相关 2+6+1 项定向测试通过。由于旧 v2 数据与修复前代码绑定，正式 tensor 化前必须先重生成 v3 候选数据。
+
+#### 2026-08-21 方案A：decision-time字段闭包与非锁定tensor重建
+
+- [x] 按TDD补充deadline派生字段Mask回归：先观察到`deadline_time`数值正确但Mask为0的RED失败，再以`arrival_time + deadline`可用性修复adapter默认Mask；adapter定向测试5/5通过。
+- [x] 在`airfogsim`环境复验真实依赖边界：observer 7/7、full collector v1 10/10、ledger collector v2 11/11、多步采集11/11通过；基础环境缺少`traci`导致的7项全仓错误不属于代码回归。
+- [x] 使用修复后的observer/adapter以`--unlocked-only`生成新候选目录`code/artifacts/formal_data/pi_jwm_v4_formal_candidate_v4_unlocked_20260821/`：54条非locked轨迹、15,660窗口、split为36/12/6；逐轨迹54个manifest哈希独立复算0错误，顶层validation `formal_dataset_ready=true`，未创建locked-test目录。
+- [x] 使用新候选重建`code/artifacts/formal_tensor/pi_jwm_v4_tensor_v2_unlocked_20260821/`：54个seed tensor、train-only statistics、结构validation全部通过；独立复算全部finite，physical-edge mask有效计数26,713,698，task mask有效计数13,741,720，状态值均非零，statistics `source_split=train`，manifest哈希无错误。
+- [x] 定向回归通过：adapter5、tensor6、window10、formal dataset builder4、formal tensor builder3、metrics4；compileall和`git diff --check`通过。
+- 当前边界：`formal_tensor_ready=true`，`formal_training_ready=false`；尚未启动GPU、训练或调参，未访问或张量化locked-test。下一步是理论—实现—数据—指标一致性审计和训练协议冻结，不是直接长训练。
+- 一致性审计首项结果：主实验contract的`link_activity/link_rate_by_rb`尚未与当前tensor边字段逐项对齐；当前`rate_sum/active_task_count/allocated_rb_count`保留历史/结果语义，不能当作同槽逐RB速率。训练门继续阻断，需先决定实现真实目标或收缩公开contract。
+- 2026-08-21 方向1：逐RB activity/rate contract已按TDD实现并接入adapter、dual graph、tensor和window；v5候选54条非locked轨迹因缺失RB行缺outcome时间而不批准训练，已修复代码，待v6重采集和tensor/statistics重建。
+
+#### 2026-08-22 方向1：v6逐RB tensor contract闭包
+
+- [x] 修复`source_rb_observations.time`未进入tensor网格的问题；outcome-only时刻只扩展标签轴，不产生决策状态presence。
+- [x] 修复float32时间索引边界：`16.2`等时刻通过稳定规范化与tensor时间一致对齐；新增回归测试。
+- [x] 修复per-RB边轴容量不一致：逐RB activity/rate及共同Mask按`max_physical_edges`补齐，避免实际edge数与主tensor静态边轴错位。
+- [x] 重建`code/artifacts/formal_tensor/pi_jwm_v4_tensor_v3_rb_v1_unlocked_20260821/`：54个seed、15,660 windows、`n_rb=50`、per-RB形状`[300,1980,50]`、train-only stats、`formal_tensor_ready=true`。
+- [x] 独立读取54个`.npz`核验全部finite、mask一致、48,447个直接观测标签、无locked-test目录；定向回归59项通过。
+- 当前边界：`formal_training_ready=false`仍然有效；未启动GPU、未训练、未访问locked-test。下一门是冻结训练协议并完成理论—实现—数据—指标一致性审计。
+- [x] 修复formal window per-RB字段重复命名，真实train window读取验证通过；当前定向回归累计63项通过（含formal window 4项）。
+
+#### 2026-08-22 理论—实现—数据—指标一致性审计启动
+
+- [x] 读取并确认当前 tensor/window/data 证据和工作区边界；无 GPU、训练或 locked-test 访问。
+- [x] 核对 formal model/loss、主实验 contract、metrics 与 v3 tensor 的逐字段映射。
+- [x] 形成训练协议冻结草案和 critical mismatch 清单。
+- [x] 完成 CPU-only protocol gate；按预期阻断训练，未启动训练。
+
+#### 2026-08-22 一致性审计与协议 freeze 结果
+
+- [x] 新增并通过 `formal_training_protocol_audit_v1`：审计 tensor、window、model output、loss target、metric source 和 locked-test 安全门。
+- [x] 对真实 v3 tensor 生成 `training_protocol_audit.json` 与 `training_protocol_freeze.json`；报告为 `blocked`，三条 critical mismatch 已明确记录。
+- [x] 定向回归：audit 3/3、formal loss 7/7、formal metrics 5/5、formal model v2 11/11；compileall 与 diff check 通过。
+- 当前边界：v3 输入契约和协议参数已冻结，但 `formal_training_ready=false`；下一步必须实现逐RB model/loss/metrics闭包或同步收缩理论 contract，CPU-only protocol gate 之前不训练。
+
+#### 2026-08-22 路线B aggregate baseline 闭包
+
+- [x] 主合同改为 `aggregate_baseline`，明确三项聚合目标和各自 mask；per-RB 仅作为 `per_rb_target_sidecar` 诊断旁路。
+- [x] 窗口、loss、metrics 已按独立 mask 消费聚合目标；缺失字段不会被解释为负活动或有效零速率。
+- [x] 真实 v3 tensor 的 aggregate-baseline 审计通过：`formal_training_ready=true`，GPU/training/locked-test 执行策略仍全为 false。
+- [x] 定向回归 29 项通过；下一步为 CPU-only baseline 与 persistence 对照，不启动 GPU。
+
+- [x] 首轮真实 CPU smoke 完成：4/2/2 windows、1 epoch、两种规则 baseline 与两种 directed-dynamic 候选；无 GPU、无 locked-test。
+- [x] persistence validation link F1=`0.2`，两个 learned 候选约=`0.0022`；`formal_performance_claim_ready=false`，GPU 继续暂缓。
+- 下一步为扩大 CPU comparison budget并定位稀疏活动学习差距，而不是直接转 GPU。
+
+#### 2026-08-22 扩大 CPU comparison 与 sparse activity 诊断
+
+- [x] 完成 64/32/32 windows、hidden=32、2 epochs 的五方法 comparison smoke；manifest、checkpoint、validation/calibration metrics 均生成。
+- [x] 聚合 activity mask 统计：positive=572、negative=61,378、有效总数=61,950、positive rate≈0.924%、pos_weight=50 上限。
+- [x] validation activity F1：persistence 0.6874、pooled 0.7462、independent 0.7452、coupled 0.7523；calibration：0.2022、0.1963、0.1837、0.2569。
+- [x] 修复并验证指标最终记录中的 aggregate source fields，以及 sparse label stats 对 feature mask 的消费；相关定向测试通过。
+- GPU 仍 blocked：validation 有优势但 calibration 不稳定，且当前 comparison 仍是 CPU smoke，不构成正式性能声明。
+
+#### 2026-08-22 路线B扩大 CPU 稳定性复验
+
+- [x] 运行两组 CPU-only、256/128/128 window、hidden=32、3 epoch 的 aggregate-baseline comparison；输出分别为 `pi_jwm_formal_aggregate_baseline_cpu_stability_seed20260823_20260822` 和 `pi_jwm_formal_aggregate_baseline_cpu_stability_seed20260824_20260822`。
+- [x] 两组通过各自的 sample IDs 覆盖全部 18 个非锁定 evaluation seeds 与六个场景；每组 `locked_test_accessed=false`，没有 GPU 执行。
+- [x] coupled 的 link-activity F1 在 validation/calibration 均超过 persistence（`0.7916/0.4807` 对 `0.6879/0.2109`；`0.7705/0.4902` 对 `0.6438/0.2152`），但 node-x MAE 仍系统性高于 persistence，不能把局部活动指标写成完整 state rollout 优势。
+- GPU 保持关闭：此前没有在本轮结果之前冻结 CPU-to-GPU 数值门，禁止反向用已见结果设门。待冻结核心指标、最小效应、重复数和状态误差上限后再做正式审议；locked-test 不进入该过程。
+
+#### 2026-08-23 远端 RTX 4090 正式 GPU 三 seed
+
+- [x] 按冻结的 aggregate-baseline 配置完成非 locked seeds `20260824/20260825/20260826`：固定 `data_seed=20260823`，train/validation/calibration=`256/128/128`，hidden=32，3 epochs，batch=2，`lr=3e-4`，zero-init，residual scale=0.5，仅训练 `coupled_dual_gnn_residual`。
+- [x] 三枚结果均 `gpu_execution=true`、`locked_test_accessed=false`，每枚 manifest 18 文件且本地独立重算 0 mismatch；checkpoint reload verified，峰值显存 `201894912` bytes。
+- [x] 相对 persistence 的 validation link-F1 增益均值 `0.06478173`（样本标准差 `0.01393182`），calibration 增益均值 `0.10730501`（样本标准差 `0.02815556`）。
+- 当前边界：已完成非 locked GPU 三 seed 训练闭环，但 `formal_performance_claim_ready=false`；aggregate baseline 仍不是逐 RB 方法，下一步为多 seed 汇总审计、下游 rollout/鲁棒性评价和最终方法冻结门。
+
+#### 2026-08-23 GPU 多 seed 汇总审计
+
+- [x] `formal_gpu_multiseed_audit_v1` 对三枚 GPU run 完成逐目录合同与 manifest 核验；三 seed 一致、18 文件/枚、0 mismatch、阈值均来自 calibration、未访问 locked-test。
+- [x] validation link-F1 delta 均值=`0.06478173`，calibration delta 均值=`0.10730501`；validation node-x MAE delta 均值=`+0.20792018`，说明联合状态误差仍高于 persistence。
+- 当前边界：GPU 多 seed 审计通过但不形成最终性能 claim；下一门是非 locked rollout/鲁棒性诊断，仍不消费逐 RB sidecar。
+
+#### 2026-08-23 非 locked horizon rollout 诊断
+
+- [x] 完成三枚 GPU seed 的 `k=1/2/3` horizon 审计；persistence 缺少 uncertainty 字段，按不可比较处理。
+- [x] link active-only rate、throughput、RB occupancy 误差在三个 horizon 均改善；node-x MAE delta 均值为 `+0.2098/+0.2082/+0.2057`，学习模型 node-x 误差平均增长 `3.17x`。
+- 当前边界：通信/资源预测诊断有收益，但联合状态 rollout 尚未闭合；下一门为受控输入扰动鲁棒性诊断，`formal_performance_claim_ready=false`。
+
+#### 2026-08-23 非 locked 鲁棒性审计修正
+
+- [x] 新增 `execution_policy` 回归测试并先观察 RED，再实现设备语义；鲁棒性报告现在区分 GPU 检查点来源与实际评估设备。
+- [x] 本地 CPU 重跑三枚 seed、每枚 128 validation windows、noise=`0/0.05/0.10/0.20`；产物 `code/artifacts/audit/pi_jwm_formal_gpu_robustness_multiseed_20260823/` 汇总为 `evaluation_devices=["cpu"]`、`gpu_execution=false`、`locked_test_accessed=false`。
+- 结果边界：link-F1 对扰动较稳定，node-x/task-delay 误差随噪声显著恶化；这是非 locked 输入敏感性诊断，不是 GPU 鲁棒性或最终性能结论。
+- 下一项：冻结调参搜索空间、预算、seed、核心指标、早停和选择规则后，再做小规模受控 GPU sweep。
+
+#### 2026-08-23 调参协议冻结与等待 GPU
+
+- [x] 生成并校验 `code/artifacts/audit/pi_jwm_formal_tuning_protocol_20260823/tuning_protocol_freeze.json`；24 候选、统一预算和事前 selection gates 已固定。
+- [ ] GPU sweep 未启动：远端 RTX 4090 只读探测返回 `Connection refused`。保持 `locked_test_accessed=false` 与 `formal_performance_claim_ready=false`，待连接恢复后再执行协议内候选。
+
+#### 2026-08-23 受控 GPU 调参 screening 完成
+
+- [x] 远端 6 个串行 jobs 完成，覆盖 `4 modules x 2 lr x 3 seeds = 24 candidates`；每个 run 为 `256/128/128` windows、3 epochs、batch=2、hidden=32，全部 CUDA 执行且未访问 locked-test。
+- [x] 回收并审计 `code/artifacts/experiments/formal_tuning_screen_20260823/`：6/6 run 各31个 manifest文件，逐文件 mismatch=0；统一报告位于 `code/artifacts/audit/pi_jwm_formal_tuning_screen_20260823/`。
+- [x] 唯一过线组合为 `coupled_dual_gnn_residual + lr=3e-4`，三 seed validation link-F1 delta mean=`0.06478173`、calibration delta mean=`0.10730501`、node-x ratio mean=`1.13918`，throughput/RB/task-delay均未回退。
+- 当前状态：screening candidate 已选出，但不是 final method；下一步做候选 rollout/鲁棒性/一致性闭环审计，保持 `formal_performance_claim_ready=false`。
+
+#### 2026-08-23 screening candidate 下游 CPU 审计
+
+- [x] 完成 selected residual candidate 的 horizon rollout：`k=1/2/3` 通信/资源指标改善，但 node-x delta 均值 `+0.209790/+0.208241/+0.205736`，误差增长约 `3.17x`。
+- [x] 完成 selected residual candidate 的 CPU robustness：noise `0.05/0.10/0.20` 下 node-x delta 均值 `+10.13/+20.97/+42.70`，task-delay delta 均值 `+0.188/+0.423/+0.897`，link-F1变化很小。
+- 当前边界：这些是 CPU inference of GPU-trained checkpoints 的非 locked 诊断，不是最终性能或最终鲁棒性结论；下一项转为 CPU 根因假设验证。
+
+#### 2026-08-23 规则层实现与 CPU 集成验证
+
+- [x] 新增规则层、显式 source endpoint/mask contract、service heads 和 per-step feedback；未访问 locked-test、未启动 GPU。
+- [x] rule-layer tests 5/5，formal model 8/8，window 5/5，consistency tests 5/5；真实 non-locked validation window forward/backward 通过；1-window CPU train/reload smoke 完成。
+- [ ] 旧 GPU 三 seed 结果需要按新 config 重训；在重训和审计完成前不升级为 GPU-ready/final method。
+
+#### 2026-08-26 规则层 CPU replay 审计完成
+
+- 针对三枚已重训的 rule-enabled GPU checkpoint，使用其 `config.json` 指定的 v4 tensor root（而非旧 v3 root）执行 CPU-only replay；输出位于 `code/artifacts/audit/pi_jwm_formal_rule_v2_cpu_rule_rollout_multiseed_20260826_created_flow_fixed/`。
+- 输入侧守恒复算与模型递推审计均通过：每枚 checkpoint 64 validation batches、192 expected/observed rule steps，flow/RB/CPU/lifecycle/DAG violation counts 均为空。
+- 审计汇总 SHA-256：`ED52136A8711A25C5BE9E644EADBDBB59CAC83FA61063E16EDF2D873EBBD121B`。执行设备为 CPU，`gpu_execution=false`、`locked_test_accessed=false`、`formal_performance_claim_ready=false`。
+
+#### 2026-08-26 Candidate-action planner 审计完成
+
+- [x] 新增独立 code-only 审计、3 项定向测试与机器可读报告；报告 SHA-256 为 `7A71C78F78058F8F0C19EC0509816A2A31D972B27DA8CF1D8FABC8F7CC3B6637`。
+- [x] 审计状态为 `blocked`：仅 formal model 的 action-conditioned prediction 成立；R6 direct candidate scoring 不满足逐候选 world-model rollout planner 定义。
+- [x] 未启动 GPU、未训练、未访问/物化 locked-test，且 `formal_performance_claim_ready=false` 保持不变。
+
+#### 2026-08-26 新增7篇文献精读
+
+- [x] 完成 7 篇本地 arXiv 预印本的摘要、方法、结果和局限精读；结构化笔记位于 `literature/新增7篇精读笔记_20260826.jsonl`，中文汇总位于 `literature/新增7篇精读汇总_20260826.md`。
+- [x] 记录三条与 PI-JWM 最相关的启发：WorldSimProbe 的 action-to-response 可观测契约，WONDER/RMWorld 的候选反事实与任务风险诊断，RFWM/EMWM/Khora/AC-MTM 的物理先验、缺失 mask、共享状态和训练期辅助损失思路。
+- [x] 本阶段只使用本地 PDF；未启动 GPU、未访问 locked-test、未改变任何实验性能结论。
+
+#### 2026-08-26 Candidate-action planner 机制原型
+
+- [x] 新增 `code/src/pi_jwm/formal_candidate_rollout_planner_v1.py`：从同一 `history/static` 为每个合法候选复制批次，逐候选调用 action-conditioned world model，显式提取 future state/task outcome/cost/risk，按预测 objective 选择，并返回 selected first action 与 `replan` 入口。
+- [x] 新增 `code/tests/test_formal_candidate_rollout_planner_v1.py`；定向测试 5/5 通过，覆盖共同 belief 指纹、候选调用次数、目标选择、首动作和重规划。
+- [ ] 机制原型仍标记 `prototype_only`；不把通用 extractor/objective 当作已冻结 PI-JWM 任务定义，原有正式 planner audit 仍为 `blocked`，`formal_performance_claim_ready=false`。
+- [x] 本轮未启动 GPU、未训练、未访问/物化 locked-test。

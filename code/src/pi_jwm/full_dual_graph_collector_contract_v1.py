@@ -74,6 +74,22 @@ class TaskSnapshot:
     route_nodes: tuple[str, ...]
     return_destination_id: str | None
     arrival_time: float
+    task_size: float = 0.0
+    return_size: float = 0.0
+    task_cpu: float = 0.0
+    deadline: float = 0.0
+    priority: float = 0.0
+    in_stage_transmitted_size: float = 0.0
+    computed_size: float = 0.0
+    task_delay: float = 0.0
+    source: str | None = None
+    host: str | None = None
+    exec: str | None = None
+    ret: str | None = None
+
+    @property
+    def lifecycle_state(self) -> str:
+        return self.lifecycle.value
 
 
 @dataclass(frozen=True)

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import math
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from typing import Any
@@ -38,6 +39,8 @@ def build_formal_bundles(
     offload_actions: list[dict[str, Any]] = []
     return_actions: list[dict[str, Any]] = []
     rb_actions: list[dict[str, Any]] = []
+    rb_observations: list[dict[str, Any]] = []
+    previous_transfer_rows: list[Mapping[str, Any]] | None = None
 
     for frame in frames:
         frame_index = _required_int(frame, "frame_index")
@@ -56,6 +59,8 @@ def build_formal_bundles(
             dag_edges=dag_edges,
             include_tasks=True,
             task_snapshots=task_snapshots,
+            e1_rows=frame.get("e1_rows"),
+            previous_transfer_rows=previous_transfer_rows,
         )
         _append_snapshot_rows(
             frame=frame,
@@ -142,6 +147,25 @@ def build_formal_bundles(
                 hop_by_id=hop_by_id,
             )
         )
+        raw_transfer_rows = frame.get("transfer_rows")
+        if not isinstance(raw_transfer_rows, list):
+            raise CollectorBundleContractError("transfer_rows must be a list of mappings")
+        for row in raw_transfer_rows:
+            if not isinstance(row, Mapping):
+                raise CollectorBundleContractError("transfer_rows contains a non-mapping row")
+            if row.get("rb_index") is None:
+                continue
+            rb_row = copy.deepcopy(dict(row))
+            rb_row["physical_edge_id"] = str(rb_row.get("physical_edge_id", ""))
+            rb_row.setdefault("time", _snapshot_time(outcome))
+            rb_row["source_phase"] = "outcome"
+            rb_observations.append(rb_row)
+        raw_transfer_rows = frame.get("transfer_rows")
+        previous_transfer_rows = (
+            [row for row in raw_transfer_rows if isinstance(row, Mapping)]
+            if isinstance(raw_transfer_rows, list)
+            else None
+        )
 
     records = [copy.deepcopy(dict(row)) for row in task_records]
     if not records and (task_snapshots or outcome_task_snapshots):
@@ -174,6 +198,8 @@ def build_formal_bundles(
         "offload_actions": offload_actions,
         "return_actions": return_actions,
         "rb_actions": rb_actions,
+        "source_rb_observations": rb_observations,
+        "n_rb": n_rb,
         "transfer_events": transfer_events,
         "dependency_flows": [],
         "ep_relations": [],
@@ -212,6 +238,30 @@ def _snapshot_time(snapshot: Mapping[str, Any]) -> float:
     return float(raw)
 
 
+def _task_feature_mask(row: Mapping[str, Any]) -> list[float]:
+    explicit = row.get("task_feature_mask")
+    if explicit is not None:
+        values = list(explicit)
+        if len(values) != 8:
+            raise CollectorBundleContractError(
+                "task_feature_mask must contain exactly 8 values"
+            )
+        return [float(bool(value)) for value in values]
+    deadline_available = row.get("deadline_time") is not None or (
+        row.get("arrival_time") is not None and row.get("deadline") is not None
+    )
+    return [
+        float(row.get("task_size") is not None),
+        float(row.get("return_size") is not None),
+        float(row.get("task_cpu") is not None),
+        float(deadline_available),
+        float(row.get("priority") is not None),
+        float(row.get("in_stage_transmitted_size") is not None),
+        float(row.get("computed_size") is not None),
+        float(row.get("task_delay") is not None),
+    ]
+
+
 def _snapshot_tasks(snapshot: Mapping[str, Any]) -> list[Mapping[str, Any]]:
     rows = snapshot.get("tasks")
     if not isinstance(rows, list) or any(not isinstance(row, Mapping) for row in rows):
@@ -232,6 +282,8 @@ def _append_snapshot_rows(
     include_physical: bool = True,
     include_tasks: bool = False,
     task_snapshots: list[dict[str, Any]] | None = None,
+    e1_rows: object = None,
+    previous_transfer_rows: Sequence[Mapping[str, Any]] | None = None,
 ) -> None:
     time_value = _snapshot_time(snapshot)
     nodes = snapshot.get("nodes")
@@ -240,6 +292,21 @@ def _append_snapshot_rows(
     if not isinstance(nodes, list) or not isinstance(edges, list) or not isinstance(dags, list):
         raise CollectorBundleContractError("snapshot nodes/physical_edges/dag_edges must be lists")
     if include_physical:
+        positions = {
+            str(row.get("node_id")): row.get("position")
+            for row in nodes
+            if isinstance(row, Mapping)
+        }
+        channel_by_edge = {
+            str(row.get("physical_edge_id")): row
+            for row in snapshot.get("channel_rows", [])
+            if isinstance(row, Mapping)
+        }
+        history_by_edge = {
+            str(row.get("physical_edge_id")): row
+            for row in (e1_rows if isinstance(e1_rows, list) else [])
+            if isinstance(row, Mapping)
+        }
         for row in nodes:
             if not isinstance(row, Mapping) or not str(row.get("node_id", "")):
                 raise CollectorBundleContractError("physical node snapshot lacks node_id")
@@ -264,6 +331,57 @@ def _append_snapshot_rows(
             target = str(row.get("target_id", ""))
             if not edge_id or not source or not target:
                 raise CollectorBundleContractError("physical edge snapshot lacks identity")
+            source_position = positions.get(source)
+            target_position = positions.get(target)
+            distance = None
+            if (
+                isinstance(source_position, Sequence)
+                and isinstance(target_position, Sequence)
+                and len(source_position) == len(target_position) == 3
+            ):
+                distance = math.sqrt(
+                    sum(
+                        (float(a) - float(b)) ** 2
+                        for a, b in zip(source_position, target_position)
+                    )
+                )
+            channel = channel_by_edge.get(edge_id, {})
+            raw_csi = channel.get("channel_attenuation_db", [])
+            csi_values = [
+                float(value)
+                for value in raw_csi
+                if isinstance(value, (int, float))
+                and not isinstance(value, bool)
+                and math.isfinite(float(value))
+            ]
+            csi_mean = (
+                sum(csi_values) / len(csi_values)
+                if channel.get("observed_mask") is True
+                and csi_values
+                and len(csi_values) == len(raw_csi)
+                else None
+            )
+            rate_sum = active_count = allocated_rb_count = None
+            history = history_by_edge.get(edge_id)
+            fields = history.get("fields", {}) if isinstance(history, Mapping) else {}
+            if isinstance(fields, Mapping):
+                rate_field = fields.get("prev_effective_rate_per_s", {})
+                active_field = fields.get("prev_active_flow_count", {})
+                if isinstance(rate_field, Mapping) and rate_field.get("valid_mask") is True:
+                    rate_sum = float(rate_field.get("value", 0.0))
+                if isinstance(active_field, Mapping) and active_field.get("valid_mask") is True:
+                    active_count = float(active_field.get("value", 0.0))
+            if isinstance(history, Mapping) and history.get("previous_rb_indices") is not None:
+                allocated_rb_count = float(len(history.get("previous_rb_indices", [])))
+            elif previous_transfer_rows is not None:
+                previous_rb_indices = {
+                    int(previous.get("rb_index"))
+                    for previous in previous_transfer_rows
+                    if str(previous.get("physical_edge_id")) == edge_id
+                    and previous.get("observed_mask") is not False
+                    and previous.get("rb_index") is not None
+                }
+                allocated_rb_count = float(len(previous_rb_indices))
             converted = {
                 "trajectory_id": trajectory_id,
                 "id": edge_id,
@@ -271,6 +389,18 @@ def _append_snapshot_rows(
                 "dst": target,
                 "kind": str(row.get("edge_type", "unknown")),
                 "observed_time": time_value,
+                "distance": distance,
+                "csi_mean": csi_mean,
+                "rate_sum": rate_sum,
+                "active_task_count": active_count,
+                "allocated_rb_count": allocated_rb_count,
+                "physical_edge_feature_mask": [
+                    float(distance is not None),
+                    float(csi_mean is not None),
+                    float(rate_sum is not None),
+                    float(active_count is not None),
+                    float(allocated_rb_count is not None),
+                ],
                 "evidence": "direct AirFogSim snapshot",
             }
             edge_snapshots.append(converted)
@@ -296,11 +426,35 @@ def _append_snapshot_rows(
                 {
                     "trajectory_id": trajectory_id,
                     "id": task_id,
-                    "lifecycle": str(row.get("lifecycle", "")),
+                    "lifecycle_state": str(
+                        row.get("lifecycle_state", row.get("lifecycle", ""))
+                    ),
                     "current_node_id": str(row.get("current_node_id", "")),
                     "route_nodes": list(row.get("route_nodes", [])),
                     "return_destination_id": row.get("return_destination_id"),
                     "arrival_time": float(row.get("arrival_time", 0.0)),
+                    "task_size": float(row.get("task_size", 0.0) or 0.0),
+                    "return_size": float(row.get("return_size", 0.0) or 0.0),
+                    "task_cpu": float(row.get("task_cpu", 0.0) or 0.0),
+                    "deadline": float(row.get("deadline", 0.0) or 0.0),
+                    "deadline_time": float(
+                        row.get("deadline_time", float(row.get("arrival_time", 0.0)) + float(row.get("deadline", 0.0) or 0.0))
+                    ),
+                    "priority": float(row.get("priority", 0.0) or 0.0),
+                    "in_stage_transmitted_size": float(row.get("in_stage_transmitted_size", 0.0) or 0.0),
+                    "computed_size": float(row.get("computed_size", 0.0) or 0.0),
+                    "task_delay": float(
+                        row.get(
+                            "task_delay",
+                            max(time_value - float(row.get("arrival_time", 0.0)), 0.0),
+                        )
+                        or 0.0
+                    ),
+                    "source": row.get("source"),
+                    "host": row.get("host"),
+                    "exec": row.get("exec"),
+                    "ret": row.get("ret"),
+                    "task_feature_mask": _task_feature_mask(row),
                     "observed_time": time_value,
                     "evidence": "direct AirFogSim snapshot",
                 }

@@ -98,12 +98,19 @@ def _write_formal_fixture(root: Path) -> None:
             "task_action": task_action,
             "task_action_present": np.asarray([[True, False, False]] * steps),
             "task_action_node_index": np.asarray([[[0, 1, -1, -1], [-1] * 4, [-1] * 4]] * steps, dtype=np.int32),
+            "task_action_source_node_index": np.asarray([[[2, -1, -1, -1], [-1] * 4, [-1] * 4]] * steps, dtype=np.int32),
+            "flow_task_index": np.asarray([0, -1], dtype=np.int32),
+            "slot_seconds": np.asarray(0.1, dtype=np.float32),
             "dag_edge_index": np.asarray([[0, -1], [1, -1]], dtype=np.int32),
             "dag_edge_valid": np.asarray([True, False]),
             "agent_node_index": np.asarray([0, 1, -1], dtype=np.int32),
             "dag_edge_present": np.asarray([[True, False]] * steps),
             "task_dag_state": np.asarray([[[0, 0, 1], [1, 1, 0], [0, 0, 0]]] * steps, dtype=np.float32),
             "task_dag_state_present": np.asarray([[True, True, False]] * steps),
+            "link_activity": np.zeros((steps, 2, 3), dtype=bool),
+            "link_activity_mask": np.ones((steps, 2, 3), dtype=bool),
+            "link_rate_by_rb": np.ones((steps, 2, 3), dtype=np.float32),
+            "link_rate_by_rb_mask": np.ones((steps, 2, 3), dtype=bool),
         }
         np.savez_compressed(seed_dir / "trajectory_tensors.npz", **arrays)
 
@@ -126,10 +133,16 @@ class FormalAirFogSimWindowV1Tests(unittest.TestCase):
 
             self.assertEqual(2, sample["history"]["node_state"].shape[0])
             self.assertEqual(2, sample["target"]["node_state"].shape[0])
-            self.assertEqual(
-                {"task_action", "task_action_present", "task_action_node_index"},
-                set(sample["future_action"]),
+            self.assertTrue(
+                {"task_action", "task_action_present", "task_action_node_index", "task_action_source_node_index"}
+                <= set(sample["future_action"])
             )
+            # The explicit action source is deliberately different from the
+            # target-time task endpoint, so this catches future-state leakage.
+            self.assertEqual(2, sample["future_action"]["task_action_source_node_index"][0, 0, 0].item())
+            self.assertEqual(0, sample["history"]["task_node_index"][-1, 0, 0].item())
+            self.assertEqual(0, sample["static"]["flow_task_index"][0].item())
+            self.assertAlmostEqual(0.1, sample["static"]["slot_seconds"].item())
             np.testing.assert_allclose(
                 sample["future_action"]["task_action"][:, 0, 0].numpy(),
                 np.asarray([2.0, 3.0], dtype=np.float32),
@@ -141,6 +154,38 @@ class FormalAirFogSimWindowV1Tests(unittest.TestCase):
             self.assertIn("dag_edge_present", sample["target"])
             self.assertEqual((2, 2), tuple(sample["static"]["dag_edge_index"].shape))
             self.assertEqual((3,), tuple(sample["static"]["agent_node_index"].shape))
+            self.assertIn("deterministic_node_mask", sample["static"])
+            self.assertEqual((2, 2, 3), tuple(sample["history"]["link_activity_by_rb"].shape))
+            self.assertEqual((2, 2, 3), tuple(sample["target"]["link_rate_by_rb"].shape))
+            self.assertNotIn("link_rate_by_rb_by_rb", sample["history"])
+
+    def test_aggregate_labels_keep_independent_observation_masks(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _write_formal_fixture(root)
+            tensor_path = root / "seed_000" / "trajectory_tensors.npz"
+            with np.load(tensor_path, allow_pickle=False) as loaded:
+                arrays = {key: loaded[key] for key in loaded.files}
+            edge_mask = np.ones_like(arrays["physical_edge_state"], dtype=bool)
+            # The first target edge has an unknown activity count but an observed rate.
+            edge_mask[2, 0, 3] = False
+            arrays["physical_edge_feature_mask"] = edge_mask
+            arrays["physical_edge_state"][2, 0, 3] = 9.0
+            arrays["physical_edge_state"][2, 0, 2] = 7.0
+            arrays["physical_edge_state"][2, 0, 4] = 3.0
+            np.savez_compressed(tensor_path, **arrays)
+
+            from pi_jwm.formal_airfogsim_window_v1 import FormalAirFogSimWindowDataset, FormalWindowConfig
+
+            sample = FormalAirFogSimWindowDataset(
+                root, split="train", config=FormalWindowConfig(history_steps=2, horizon_steps=2)
+            )[0]
+            target = sample["target"]
+            self.assertFalse(target["aggregate_link_activity_mask"][0, 0])
+            self.assertTrue(target["aggregate_link_rate_sum_mask"][0, 0])
+            self.assertTrue(target["aggregate_rb_occupancy_mask"][0, 0])
+            self.assertFalse(target["aggregate_link_activity"][0, 0])
+            self.assertAlmostEqual(7.0, target["aggregate_link_rate_sum"][0, 0].item())
 
     def test_rejects_locked_test_before_explicit_unlock(self):
         with tempfile.TemporaryDirectory() as temporary:

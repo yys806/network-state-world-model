@@ -27,6 +27,12 @@ TASK_ENDPOINT_FIELDS = ("source", "host", "exec", "ret")
 LIFECYCLE_TYPES = ("to_offload", "computing", "returning", "finished", "failed")
 FLOW_TYPES = ("task_input", "result_return", "dependency_data")
 NODE_TYPES = ("vehicle", "uav", "rsu", "edge_server", "cloud")
+NODE_TYPE_ALIASES = {
+    "v": "vehicle",
+    "u": "uav",
+    "i": "rsu",
+    "c": "cloud",
+}
 PHYSICAL_EDGE_TYPES = ("V2V", "V2U", "V2I", "U2V", "U2U", "U2I", "I2V", "I2U", "I2I", "wired")
 
 
@@ -45,6 +51,7 @@ class TensorContract:
     max_dag_edges: int
     history_steps: int = 8
     horizon_steps: int = 3
+    n_rb: int = 1
     schema_version: str = SCHEMA_VERSION
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,10 +64,13 @@ class TensorContract:
             "max_dag_edges": self.max_dag_edges,
             "history_steps": self.history_steps,
             "horizon_steps": self.horizon_steps,
+            "n_rb": self.n_rb,
             "node_features": list(NODE_FEATURES),
             "physical_edge_features": list(EDGE_FEATURES),
+            "physical_edge_feature_mask": list(EDGE_FEATURES),
             "flow_features": list(FLOW_FEATURES),
             "task_features": list(TASK_FEATURES),
+            "task_feature_mask": list(TASK_FEATURES),
             "action_features": list(ACTION_FEATURES),
             "lifecycle_types": list(LIFECYCLE_TYPES),
             "flow_types": list(FLOW_TYPES),
@@ -79,6 +89,24 @@ def infer_tensor_contract(
         raise ValueError("at least one graph is required")
     if int(history_steps) <= 0 or int(horizon_steps) <= 0:
         raise ValueError("history_steps and horizon_steps must be positive")
+    inferred_rb = max(
+        [
+            int(graph.get("n_rb", 0) or 0)
+            for graph in graphs
+        ]
+        + [
+            int(row.get("rb_index", -1)) + 1
+            for graph in graphs
+            for row in graph.get("source_rb_observations", [])
+            if row.get("rb_index") is not None
+        ]
+        + [
+            int(row.get("n_rb", 0) or 0)
+            for graph in graphs
+            for row in graph.get("source_rb_actions", [])
+        ]
+        + [1]
+    )
     return TensorContract(
         max_nodes=max(len(graph.get("physical_nodes", [])) for graph in graphs),
         max_physical_edges=max(len(graph.get("physical_edges", [])) for graph in graphs),
@@ -94,6 +122,7 @@ def infer_tensor_contract(
         max_dag_edges=max(len(graph.get("task_dag_edges", [])) for graph in graphs),
         history_steps=int(history_steps),
         horizon_steps=int(horizon_steps),
+        n_rb=inferred_rb,
     )
 
 
@@ -107,14 +136,25 @@ def contract_from_dict(value: Mapping[str, Any]) -> TensorContract:
         "history_steps",
         "horizon_steps",
     )
-    return TensorContract(**{field: int(value[field]) for field in fields})
+    return TensorContract(
+        **{field: int(value[field]) for field in fields},
+        n_rb=int(value.get("n_rb", 1)),
+    )
 
 
 def _time_grid(graph: Mapping[str, Any]) -> list[float]:
     rows = []
     for key in ("source_physical_node_snapshots", "source_physical_edge_snapshots", "source_task_snapshots"):
         rows.extend(row for row in graph.get(key, []) if row.get("observed_time") is not None)
-    times = sorted({round(float(row["observed_time"]), 9) for row in rows})
+    times = {round(float(row["observed_time"]), 9) for row in rows}
+    # Outcome-only RB labels can arrive after the final decision/state snapshot.
+    # They extend the label grid but are never materialized as decision-time state.
+    times.update(
+        round(float(row["time"]), 9)
+        for row in graph.get("source_rb_observations", [])
+        if row.get("time") is not None
+    )
+    times = sorted(times)
     if len(times) < 2:
         raise ValueError("at least two observed times are required")
     interval = times[1] - times[0]
@@ -167,8 +207,26 @@ def _node_feature(row: Mapping[str, Any]) -> list[float]:
     ]
 
 
+def _node_kind_index(kind: Any) -> int:
+    normalized = str(kind or "").strip().lower()
+    normalized = NODE_TYPE_ALIASES.get(normalized, normalized)
+    return NODE_TYPES.index(normalized) if normalized in NODE_TYPES else -1
+
+
 def _edge_feature(row: Mapping[str, Any]) -> list[float]:
     return [float(row.get(field, 0.0) or 0.0) for field in EDGE_FEATURES]
+
+
+def _feature_mask(
+    row: Mapping[str, Any], *, fields: Sequence[str], mask_key: str
+) -> list[float]:
+    explicit = row.get(mask_key)
+    if explicit is not None:
+        values = list(explicit)
+        if len(values) != len(fields):
+            raise ValueError(f"{mask_key} must have {len(fields)} values")
+        return [1.0 if bool(value) else 0.0 for value in values]
+    return [1.0 if row.get(field) is not None else 0.0 for field in fields]
 
 
 def _event_matches_flow(event: Mapping[str, Any], flow: Mapping[str, Any], node_ids: set[str]) -> bool:
@@ -185,6 +243,17 @@ def _action_time_index(action: Mapping[str, Any], time_index: Mapping[float, int
     if time not in time_index:
         raise ValueError(f"action time {time} is not on the observed time grid")
     return time_index[time]
+
+
+def _slot_seconds(times: Sequence[float]) -> float:
+    if len(times) < 2:
+        raise ValueError("at least two observed times are required to infer slot_seconds")
+    differences = np.diff(np.asarray(times, dtype=np.float64))
+    if np.any(differences <= 0.0) or not np.allclose(
+        differences, differences[0], rtol=1e-6, atol=1e-8
+    ):
+        raise ValueError("observed time grid must have a constant positive slot_seconds")
+    return float(differences[0])
 
 
 def tensorize_seed_graph(
@@ -223,6 +292,7 @@ def tensorize_seed_graph(
         "node_present": np.zeros((step_count, node_count), dtype=bool),
         "node_kind_index": np.full((node_count,), -1, dtype=np.int16),
         "physical_edge_state": np.zeros((step_count, edge_count, len(EDGE_FEATURES)), dtype=np.float32),
+        "physical_edge_feature_mask": np.zeros((step_count, edge_count, len(EDGE_FEATURES)), dtype=np.float32),
         "physical_edge_present": np.zeros((step_count, edge_count), dtype=bool),
         "physical_edge_endpoint_index": np.full((edge_count, 2), -1, dtype=np.int32),
         "physical_edge_kind_index": np.full((edge_count,), -1, dtype=np.int16),
@@ -235,6 +305,7 @@ def tensorize_seed_graph(
         "flow_bearer_mask": np.zeros((step_count, flow_count, edge_count), dtype=bool),
         "flow_bearer_edge_index": np.full((step_count, flow_count), -1, dtype=np.int32),
         "task_state": np.zeros((step_count, task_count, len(TASK_FEATURES)), dtype=np.float32),
+        "task_feature_mask": np.zeros((step_count, task_count, len(TASK_FEATURES)), dtype=np.float32),
         "task_present": np.zeros((step_count, task_count), dtype=bool),
         "task_valid": np.zeros((task_count,), dtype=bool),
         "task_lifecycle_index": np.full((step_count, task_count), -1, dtype=np.int16),
@@ -242,13 +313,16 @@ def tensorize_seed_graph(
         "task_action": np.zeros((step_count, task_count, len(ACTION_FEATURES)), dtype=np.float32),
         "task_action_present": np.zeros((step_count, task_count), dtype=bool),
         "task_action_node_index": np.full((step_count, task_count, 3), -1, dtype=np.int32),
+        "task_action_source_node_index": np.full((step_count, task_count, 3), -1, dtype=np.int32),
         "dag_edge_index": np.full((2, dag_count), -1, dtype=np.int32),
         "dag_edge_valid": np.zeros((dag_count,), dtype=bool),
         "agent_node_index": np.full((node_count,), -1, dtype=np.int32),
+        "flow_task_index": np.full((flow_count,), -1, dtype=np.int32),
+        "slot_seconds": np.asarray(_slot_seconds(times), dtype=np.float32),
     }
     for index, node in enumerate(node_vocab):
         static = next((row for row in graph.get("physical_nodes", []) if str(row["id"]) == node), {})
-        arrays["node_kind_index"][index] = NODE_TYPES.index(str(static.get("kind", "")).lower()) if str(static.get("kind", "")).lower() in NODE_TYPES else -1
+        arrays["node_kind_index"][index] = _node_kind_index(static.get("kind"))
     for index, edge in enumerate(edge_vocab):
         arrays["physical_edge_endpoint_index"][index] = [node_index[str(edge["src"])], node_index[str(edge["dst"])]]
         kind = str(edge.get("kind", ""))
@@ -270,6 +344,12 @@ def tensorize_seed_graph(
             ei = edge_index.get(str(row["id"]))
             if ei is not None:
                 arrays["physical_edge_state"][ti, ei] = _edge_feature(row)
+                arrays["physical_edge_feature_mask"][ti, ei] = _feature_mask(
+                    row, fields=EDGE_FEATURES, mask_key="physical_edge_feature_mask"
+                )
+                arrays["physical_edge_state"][ti, ei][
+                    arrays["physical_edge_feature_mask"][ti, ei] == 0
+                ] = 0.0
                 arrays["physical_edge_present"][ti, ei] = True
     task_rows_by_key: dict[tuple[float, str], Mapping[str, Any]] = {}
     for row in graph.get("source_task_snapshots", []):
@@ -295,6 +375,20 @@ def tensorize_seed_graph(
                 float(row.get("computed_size", 0.0) or 0.0),
                 float(delay or 0.0),
             ]
+            task_mask_fields = (
+                "task_size",
+                "return_size",
+                "task_cpu",
+                "deadline_time",
+                "priority",
+                "in_stage_transmitted_size",
+                "computed_size",
+                "task_delay",
+            )
+            arrays["task_feature_mask"][ti, qi] = _feature_mask(
+                row, fields=task_mask_fields, mask_key="task_feature_mask"
+            )
+            arrays["task_state"][ti, qi][arrays["task_feature_mask"][ti, qi] == 0] = 0.0
             lifecycle = str(row.get("lifecycle_state", ""))
             if lifecycle in LIFECYCLE_TYPES:
                 arrays["task_lifecycle_index"][ti, qi] = LIFECYCLE_TYPES.index(lifecycle)
@@ -316,21 +410,29 @@ def tensorize_seed_graph(
     max_rb_count = max([int(row.get("rb_count", 0) or 0) for row in graph.get("source_rb_actions", [])] + [1])
     for action in graph.get("source_offload_actions", []):
         qi = task_index.get(str(action.get("task_id")))
+        if not str(action.get("source_node_id", "")):
+            raise ValueError("offload action requires explicit source_node_id")
+        source = str(action.get("source_node_id", ""))
         target = str(action.get("target_node_id", ""))
-        if qi is None or target not in node_index:
+        if qi is None or source not in node_index or target not in node_index:
             raise ValueError(f"unknown offload action reference {action}")
         ti = _action_time_index(action, action_time_index)
         arrays["task_action"][ti, qi, 0] = 1.0
         arrays["task_action_node_index"][ti, qi, 0] = node_index[target]
+        arrays["task_action_source_node_index"][ti, qi, 0] = node_index[source]
         arrays["task_action_present"][ti, qi] = True
     for action in graph.get("source_return_actions", []):
         qi = task_index.get(str(action.get("task_id")))
+        if not str(action.get("current_node_id", "")):
+            raise ValueError("return action requires explicit current_node_id")
+        current = str(action.get("current_node_id", ""))
         target = str(action.get("return_target_id", ""))
-        if qi is None or target not in node_index:
+        if qi is None or current not in node_index or target not in node_index:
             raise ValueError(f"unknown return action reference {action}")
         ti = _action_time_index(action, action_time_index)
         arrays["task_action"][ti, qi, 2] = 1.0
         arrays["task_action_node_index"][ti, qi, 1] = node_index[target]
+        arrays["task_action_source_node_index"][ti, qi, 1] = node_index[current]
         arrays["task_action_present"][ti, qi] = True
     for action in graph.get("source_rb_actions", []):
         qi = task_index.get(str(action.get("task_id")))
@@ -344,6 +446,7 @@ def tensorize_seed_graph(
         arrays["task_action"][ti, qi, 3] = rb_count
         arrays["task_action"][ti, qi, 4] = rb_count / max_rb_count
         arrays["task_action_node_index"][ti, qi, 2] = node_index[assigned]
+        arrays["task_action_source_node_index"][ti, qi, 2] = node_index[current]
         arrays["task_action_present"][ti, qi] = True
     edge_event_rows = {str(row["id"]): row for row in graph.get("physical_edges", [])}
     events = list(graph.get("source_transfer_events", []))
@@ -351,6 +454,9 @@ def tensorize_seed_graph(
     flow_fallback_count = 0
     for fi, flow in enumerate(flow_vocab):
         arrays["flow_valid"][fi] = True
+        flow_task_id = str(flow.get("task_id", ""))
+        if flow_task_id in task_index:
+            arrays["flow_task_index"][fi] = task_index[flow_task_id]
         source = str(flow.get("src", "")).removeprefix("agent::")
         target = str(flow.get("dst", "")).removeprefix("agent::")
         if source not in node_index or target not in node_index:
@@ -458,12 +564,35 @@ def validate_seed_tensors(arrays: Mapping[str, np.ndarray], contract: TensorCont
         raise ValueError("physical-edge padding must be zero")
     if np.any(arrays["flow_state"][~arrays["flow_present"]] != 0.0):
         raise ValueError("flow padding must be zero")
-    for name in ("physical_edge_endpoint_index", "flow_endpoint_index", "task_node_index", "task_action_node_index", "dag_edge_index", "flow_bearer_edge_index"):
+    for name in ("physical_edge_endpoint_index", "flow_endpoint_index", "flow_task_index", "task_node_index", "task_action_node_index", "task_action_source_node_index", "dag_edge_index", "flow_bearer_edge_index"):
         value = arrays.get(name)
         if value is not None and np.any(value < -1):
             raise ValueError(f"{name} contains an invalid negative index")
     if np.any(arrays["flow_state"][..., 1] < -1e-7):
         raise ValueError("flow remaining data must be nonnegative")
+    rb_keys = (
+        "link_activity",
+        "link_activity_mask",
+        "link_rate_by_rb",
+        "link_rate_by_rb_mask",
+    )
+    if all(key in arrays for key in rb_keys):
+        if arrays["link_activity"].shape != arrays["link_activity_mask"].shape:
+            raise ValueError("per-RB activity and activity mask shapes differ")
+        if arrays["link_rate_by_rb"].shape != arrays["link_rate_by_rb_mask"].shape:
+            raise ValueError("per-RB rate and rate mask shapes differ")
+        if not np.array_equal(
+            arrays["link_activity_mask"], arrays["link_rate_by_rb_mask"]
+        ):
+            raise ValueError("per-RB activity and rate masks must be identical")
+        if arrays["link_rate_by_rb"].shape[-1] != int(contract.n_rb):
+            raise ValueError("per-RB tensor width does not match n_rb contract")
+        if arrays["link_rate_by_rb"].shape[1] != int(contract.max_physical_edges):
+            raise ValueError("per-RB tensor edge axis does not match physical-edge capacity")
+        if np.any(arrays["link_rate_by_rb"] < -1e-7):
+            raise ValueError("per-RB rates must be non-negative")
+        if np.any(arrays["link_rate_by_rb"][~arrays["link_rate_by_rb_mask"]] != 0.0):
+            raise ValueError("unobserved per-RB rates must be zero-valued storage")
     return {
         "tensor_valid": True,
         "schema_version": contract.schema_version,
@@ -479,4 +608,7 @@ def validate_seed_tensors(arrays: Mapping[str, np.ndarray], contract: TensorCont
             "flows": int(arrays["flow_present"].sum()),
             "tasks": int(arrays["task_present"].sum()),
         },
+        "per_rb_observed_count": int(
+            arrays.get("link_rate_by_rb_mask", np.zeros((), dtype=bool)).sum()
+        ),
     }

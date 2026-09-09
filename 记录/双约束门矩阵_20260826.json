@@ -1,0 +1,55 @@
+{
+  "as_of": "2026-08-26",
+  "project": "PI-JWM",
+  "teacher_constraints": {
+    "T1_partial_information": {
+      "requirement": "Use a minimal reliable information-edge feature set and support incomplete messages.",
+      "gate": "null + validity mask + MissingReason for unknown values; missingness metrics are reported.",
+      "evidence": ["code/artifacts/formal_tensor/pi_jwm_v4_tensor_v4_rule_contract_unlocked_20260823"]
+    },
+    "T2_multi_source_data": {
+      "requirement": "Different real datasets may specialize in different aspects and may be used for fine-tuning/enhancement.",
+      "gate": "Each source has field coverage, units, time scale, missingness, split, source closure, and an explicit pretrain/fine-tune/transfer role.",
+      "status": "design_ready_source_verification_pending",
+      "evidence": ["记录/P3方法适配与多源数据方案_20260826.json", "记录/设计/2026-08-26-P3方法理论适配与多源数据方案.md"]
+    },
+    "T3_method_suitability": {
+      "requirement": "Explain why each module method fits this scenario, not only by experimental scores.",
+      "gate": "Scenario property -> inductive bias -> suitability -> limitation -> prediction/decision test for every candidate.",
+      "status": "complete_for_P3_design",
+      "evidence": ["记录/P3方法适配与多源数据方案_20260826.json", "记录/设计/2026-08-26-P3方法理论适配与多源数据方案.md"]
+    },
+    "T4_scenario_tuning": {
+      "requirement": "Tune different methods for the project scenario.",
+      "gate": "Pre-registered search space, equal data/budget/seeds/stopping rules, ablations, and no post-hoc grid expansion.",
+      "status": "pending_P6"
+    }
+  },
+  "project_constraints": {
+    "C1_consistency": "Theory, implementation, data, metrics, artifacts, and claims agree item by item.",
+    "C2_contract": "Strict physical-information dual graph and action/tensor contract are frozen and mask-aware.",
+    "C3_rule_rollout": "The deterministic rule layer is executed at every action-conditioned rollout step.",
+    "C4_candidate_planner": "Every legal candidate is rolled out from a common belief; predicted future state/task/cost/risk select the action; feedback triggers replanning.",
+    "C5_locked_test_last": "Method freeze and formal claim gate precede one-time locked-test access."
+  },
+  "phase_status": {
+    "P0": "complete",
+    "P1": "complete",
+    "P2": "complete_for_data_tensor_cpu_rule_gate",
+    "P3": "complete_for_design_package",
+    "P4": "candidate_non_locked_evidence_only",
+    "P5": "blocked_planner_mechanism",
+    "P6": "pending",
+    "P7": "pending",
+    "P8": "pending",
+    "P9": "pending",
+    "P10": "pending"
+  },
+  "current_boundaries": {
+    "formal_performance_claim_ready": false,
+    "locked_test_accessed": false,
+    "planner_status": "blocked; CPU prototype_only is not a formal planner",
+    "next_authorized_work": "P4 CPU non-locked world-model horizon and rule-consistency gate",
+    "gpu_authorized_now": false
+  }
+}

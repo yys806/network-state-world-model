@@ -54,6 +54,7 @@ R4_SOURCE_FILES = (
     SRC_ROOT / "pi_jwm" / "r3_checkpoint.py",
     SRC_ROOT / "pi_jwm" / "r4_module_registry.py",
     SRC_ROOT / "pi_jwm" / "r4_world_model.py",
+    SRC_ROOT / "pi_jwm" / "complete_rssm_world_model_v1.py",
     SRC_ROOT / "pi_jwm" / "r4_objective.py",
     SRC_ROOT / "pi_jwm" / "r4_checkpoint.py",
     Path(__file__),
@@ -127,6 +128,10 @@ def executable_candidate_configs(
     for name, spec in candidate_registry().items():
         if spec.status != "executable":
             continue
+        # The complete RSSM is an isolated candidate until its new evidence
+        # contract is reviewed; keep the historical frozen screening matrix.
+        if name == "complete_graph_rssm_v1":
+            continue
         configs[name] = make_single_module_config(
             spec.family,
             name,
@@ -170,6 +175,30 @@ def _output_tensors(output: Any) -> dict[str, torch.Tensor]:
 def _outputs_equal(left: Any, right: Any) -> bool:
     left_tensors = _output_tensors(left)
     right_tensors = _output_tensors(right)
+    return left_tensors.keys() == right_tensors.keys() and all(
+        torch.equal(left_tensors[key], right_tensors[key]) for key in left_tensors
+    )
+
+
+def _prediction_outputs_equal(left: Any, right: Any) -> bool:
+    """Compare deployment-visible outputs, excluding target-conditioned teachers."""
+
+    def prediction_tensors(output: Any) -> dict[str, torch.Tensor]:
+        tensors = {
+            **{f"explicit::{key}": value for key, value in output.predicted_explicit.items()},
+            **{f"logit::{key}": value for key, value in output.predicted_logits.items()},
+            "belief::physical": output.predicted_belief.physical_latent,
+            "belief::information": output.predicted_belief.information_latent,
+            "belief::business": output.predicted_belief.business_latent,
+            "belief::joint": output.predicted_belief.joint_latent,
+        }
+        for key, value in getattr(output, "probabilistic_parameters", {}).items():
+            if not key.startswith("posterior_path_"):
+                tensors[f"probabilistic::{key}"] = value
+        return tensors
+
+    left_tensors = prediction_tensors(left)
+    right_tensors = prediction_tensors(right)
     return left_tensors.keys() == right_tensors.keys() and all(
         torch.equal(left_tensors[key], right_tensors[key]) for key in left_tensors
     )
@@ -275,6 +304,15 @@ def run_r4_cpu_preflight(
         information_rate_mean=rate_mean,
         information_rate_scale=rate_scale,
     )
+    if candidate_names and "complete_graph_rssm_v1" in candidate_names:
+        all_configs["complete_graph_rssm_v1"] = make_single_module_config(
+            "dynamics",
+            "complete_graph_rssm_v1",
+            hidden_dim=hidden_dim,
+            history_steps=history_steps,
+            information_rate_mean=rate_mean,
+            information_rate_scale=rate_scale,
+        )
     selected_names = list(all_configs) if candidate_names is None else list(candidate_names)
     if not selected_names or len(set(selected_names)) != len(selected_names):
         raise ValueError("candidate_names must be non-empty and unique")
@@ -382,7 +420,7 @@ def run_r4_cpu_preflight(
                 changed_action = model(
                     _zero_task_action(probe_batch), rollout_steps=probe_horizon
                 )
-            target_leakage_absent = _outputs_equal(ordinary, changed_target)
+            target_leakage_absent = _prediction_outputs_equal(ordinary, changed_target)
             action_delta = _max_output_delta(ordinary, changed_action)
 
             checkpoint_path = checkpoint_dir / f"{name}.pt"

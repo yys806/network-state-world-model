@@ -7,6 +7,38 @@
 > 使用原则：理论定义、汇报/PPT、代码、数据、配置、机器产物和结论必须逐项一致。尚未由代码、测试和机器证据实现的内容只能标为目标定义、候选方法或未实现。<br>
 > 更新原则：若现有接口无法实现某项理论要求，只允许补齐实现并验证，或根据数据、接口与证明同步修订理论；不得用同名模块、latent/belief、代理指标或可运行接口冒充完整方法。
 
+## 2026-08-26 双约束主线（当前方法与实验的永久约束）
+
+### 用户沟通硬约束
+
+项目所有对外说明必须使用通俗、完整、容易复述的中文。先说结论，再用简单的话解释术语和证据；同时明确已完成、未完成、阻塞原因、下一步单一动作，以及 GPU/`locked_test` 边界。不能只给缩写、文件路径或难懂的理论句子，让没有参与项目的人无法理解。该要求与理论—实现—数据—指标一致性同级，长期有效。
+
+### 老师原话（逐字记录）
+
+> “信息边特征可以不用这么多，就是可以考虑在消息不是那么完整的情况下面做预测；然后真实数据集可能没办法涵盖所有的内容，每一个真实的数据集可能各有侧重，所以可以考虑用不同的数据集对不同的方面进行微调训练增强；然后就是方法，不能只通过实验结果来说明每个模块选择哪个方法，而是要说明为什么这个方法适合我们的课题场景；然后就是不同的方法要针对我们的场景有调参这个过程”
+
+### 对理论规范的约束化解释
+
+1. **部分观测优先**：信息边采用最小可靠字段集；未知值必须由 `null`、有效性 mask 和 MissingReason 表达，不得用零填充制造观测。模型和指标必须报告缺失条件下的行为。
+2. **多源数据分工**：真实数据集按其实际覆盖范围承担预训练、微调、迁移或外部验证中的一种或多种角色。接入前必须完成字段语义、单位、时间尺度、缺失模式、split 和 source closure；不同数据集不得未经对齐直接拼成完整真值。
+3. **方法适配论证**：双图编码、动作条件世界模型和候选 rollout planner 的候选方法，必须在实验前分别说明其归纳偏置如何对应无线动态、严格双图、稀疏事件、任务 DAG、硬约束和多步决策，并明确限制与可证伪指标。结果只能作为联合证据，不能替代理论理由。
+4. **场景化调参**：候选方法必须在统一数据、预算、seed、停止规则和主指标下调参；搜索空间、失败规则和消融在运行前冻结，不得看结果后扩展或改写协议。
+
+上述四项与本文件既有“理论—实现—数据—指标—证据一致”原则共同构成后续 P0–P10 的双约束主线。任何一项未闭合，相关方法只能标为 candidate/not implemented，不能进入方法冻结或 locked-test。
+
+### 当前模块的论文锚点与统一命名
+
+为避免 PPT、代码和论文各用一套名字，后续统一按下面三层来写：论文已有方法、PI-JWM 的场景化改造名、当前证据状态。内部配置名（例如 `coupled_dual_gnn_residual`）只能作为代码标签，不能单独当作论文方法名。
+
+| 模块 | 论文已有方法/依据 | PI-JWM 统一名称 | 当前状态与边界 |
+| --- | --- | --- | --- |
+| 双图表示 | 交互网络/双层网络（Yağan 等，IEEE TPDS 2012）；无线图神经网络（Shen 等，IEEE JSAC 2021）；Edge-conditioned message passing（Simonovsky 等，CVPR 2017） | **Strict Physical–Information Coupled Dual-Graph Message Passing**（严格物理—信息耦合双图消息传递） | 已有可运行候选和消融；这是 PI-JWM 对论文思想的组合改造，不是某一篇论文的原样复现 |
+| 世界模型 | World Models（2018）的动作条件 latent 动力学；PlaNet/RSSM（2019）的先验/后验状态空间模型；Dreamer（2020）的 latent imagination；TD-MPC2（2024）的任务相关短视野模型预测 | **Action-Conditioned Coupled Dual-Graph Recurrent World Model with Deterministic Rule Layer**（带确定性规则层的动作条件耦合双图循环世界模型） | 当前是 aggregate non-locked candidate。上周 PPT 的 **Graph-RSSM** 只能保留为历史工作候选；当前正式代码没有完整 RSSM 所需的严格历史先验/当前观测后验分工和 KL 证据，因此不能直接称“完整 RSSM” |
+| 候选规划 | PlaNet 的模型预测规划/CEM、Dreamer 的 latent imagination、TD-MPC2 的短视野 MPC；MBPO/MOPO/COMBO 提醒模型偏差和分布外动作风险 | **Candidate-Action World-Model Rollout Planner**（候选动作世界模型滚动规划器） | 当前只有 CPU `prototype_only` 接口，正式审计仍 `blocked`；必须完成逐候选 rollout、未来后果比较、首动作执行和反馈重规划后才能升级为正式方法 |
+| 下游策略器（非核心模块） | Actor–Critic、Clipped PPO | **Masked Actor–Critic / Clipped PPO policy candidates** | 只是第三模块的策略候选/对照，不是第四个核心模块；最终是否保留要等 P5/P6 正式闭环和公平调参 |
+
+因此，PI-JWM 的核心模块固定为前三行；后续回答“用了什么方法”时，先说统一名称，再用括号说明论文来源和当前状态。不能只报内部类名，也不能因为名字里有 RSSM 就默认实现已经是完整 RSSM。
+
 > **2026-08-03修订状态：** 按老师“通信相关内容进入信息图”的要求重新固定双图口径。物理图只描述真实硬件实体及其空间、运动和环境关系；无线/有线通信链路、CSI、信道增益、干扰、SINR、RB、速率和吞吐量统一属于信息图。信息图节点为附着于物理设备的通信/计算/服务代理，信息图边为代理之间具有真实端点的通信链路；任务、DAG和数据流作为业务辅助对象，不替代信息节点或通信边。现有AirFogSim原始轨迹、动作日志、数据划分和评价代码可以复用，但2026-08-03之前按“信道属于物理图、信息流作为信息边”训练的模型与结果只保留为过渡语义历史基线，不能作为本修订定义下的正式结果。
 
 ## 文档真值规则
@@ -2420,3 +2452,195 @@ PI-JWM允许使用仿真数据、真实测量数据和公开数据，但所有�
 方法只有在数据协议、一致性门、核心指标、超参数预算、关键消融和闭环测试通过后才能冻结。冻结时记录代码版本、配置、数据manifest、权重、环境和完整评价报告。若理想理论无法按当前数据或计算条件实现，应公开修改理论边界或给出证明与限制，不得保持理论表述不变而用不同机制替代。
 
 > 真实推进、阻塞项、阶段结果与8月12日后的技术细节见《8.12之后推进》。
+
+### 当前正式训练切片边界（2026-08-22）
+
+当前可进入 CPU-only 验证的正式训练合同为 `aggregate_baseline`：物理边活动、聚合速率和聚合 RB 占用分别由直接运行时字段及独立 observation mask 定义。当前模型、loss 和 metrics 不消费逐 RB 输出；逐 RB 标签作为 `per_rb_target_sidecar` 保留用于诊断和后续 `per_rb_extension_v1`，不能把 aggregate baseline 的结果描述为逐 RB 方法。缺失字段保持 `None`/false mask 语义，不以零填充替代观测。该合同审计通过只解除 CPU baseline 门，不代表 GPU、最终方法或 locked-test 已批准。
+
+### CPU-to-GPU 放行状态（2026-08-23）
+
+三组独立、固定数据窗口的 aggregate-baseline CPU 复验已完成；预先冻结的放行条件包含 validation link-F1、calibration link-F1、运营误差、至少3个 seed，以及 node-x MAE 不超过 persistence 的 1.25 倍。活动 F1 与运营误差条件通过，但 validation node-x MAE ratio=`1.3647403366`，因此 `gpu_allowed=false`。该结果只证明 CPU 诊断证据，不能升级为 GPU 训练资格、逐 RB 方法或完整 PI-JWM 性能结论；`locked_test` 仍封存。
+
+### 数值 gate 更新（2026-08-23）
+
+在不变更数据合同的前提下，残差状态头采用显式 zero-init 与 `residual_state_scale=0.5`，三个固定数据窗口 seed 的 CPU gate 已通过：`gpu_allowed=true`，validation node-x MAE ratio=`1.1389760339`。这只表示数值条件满足；当前机器 CUDA 不可用，GPU 尚未启动，`locked_test` 仍封存。该配置必须按显式参数记录，不能把 aggregate baseline 写成逐 RB 方法或把 CPU gate 写成正式性能结论。
+
+远端 RTX 4090 已完成同配置非 locked GPU smoke：`gpu_execution=true`，train/validation/calibration=`2/1/1`，manifest 完整且 `locked_test_accessed=false`。这只解除 GPU 执行路径门；正式长训练、最终性能声明和逐 RB 方法仍未完成。
+
+随后已完成首个正式 GPU seed `20260824`：256/128/128 windows、3 epochs，checkpoint 与 manifest 验收通过，未访问 `locked_test`。该结果只证明首个非 locked GPU 训练闭环，不能替代多 seed 统计或最终方法结论。
+
+截至 2026-08-23，已按同一显式配置完成正式非 locked GPU seeds `20260824/20260825/20260826`。三枚均为 aggregate baseline 的 `coupled_dual_gnn_residual`，窗口预算为 `256/128/128`，并通过逐文件 manifest 验收（每枚18项、0 mismatch），`gpu_execution=true` 且 `locked_test_accessed=false`。三 seed validation link-F1 相对 persistence 增益均值为 `0.06478`（样本标准差 `0.01393`），calibration 增益均值为 `0.10731`（样本标准差 `0.02816`）。这些结果仅构成非 locked GPU 训练闭环和诊断证据；当前训练切片仍不消费逐 RB sidecar，`formal_performance_claim_ready=false`，不得据此宣称逐 RB 方法或最终 PI-JWM 性能已完成。
+
+GPU 多 seed 汇总审计已完成，报告位于 `code/artifacts/audit/pi_jwm_formal_gpu_multiseed_audit_20260823/`。审计逐目录重算三枚训练 manifest 并核对合同、样本数、阈值来源和安全边界，结果为三 seed 合同一致、manifest mismatch=0、未访问 `locked_test`。需要保留的负面证据是 validation node-x MAE 相对 persistence 的均值差值为 `+0.20792018`；因此当前只能报告 aggregate-baseline 的非 locked GPU 训练与活动/运营诊断，不能称为联合状态 rollout 已优于 persistence，也不能进入最终方法冻结。
+
+随后完成 `k=1/2/3` 的非 locked horizon rollout 诊断，报告位于 `code/artifacts/audit/pi_jwm_formal_gpu_rollout_multiseed_audit_20260823/`。三 seed 在 link activity、throughput 和 RB occupancy 误差上均有一致改善，但 node-x MAE 在三个 horizon 均高于 persistence，学习模型自身 node-x 误差由 `k=1` 到 `k=3` 平均放大约 `3.17x`。因此当前证据支持通信/资源预测诊断，不支持联合状态 rollout 已闭合；下一步应做受控输入扰动鲁棒性诊断，仍不访问 `locked_test`。
+
+### 非 locked 鲁棒性诊断边界（2026-08-23）
+
+鲁棒性脚本已修正为区分“检查点训练设备”和“本次评估设备”：报告同时记录 `evaluation_device` 与实际 `gpu_execution`。对三枚非 locked GPU 检查点进行的本地 CPU validation 扰动诊断已重跑，汇总 `evaluation_devices=["cpu"]`、`gpu_execution=false`、`locked_test_accessed=false`，因此不能称为 GPU 鲁棒性结果。noise=`0/0.05/0.10/0.20` 只作用于 presence 为真的归一化连续历史特征，mask、拓扑、动作、未来动作和 target 不变；node-x 与 task-delay 误差随噪声显著上升，结果仅作为输入敏感性诊断。下一步必须先冻结调参协议，再开展受控 GPU sweep；`formal_performance_claim_ready=false` 保持。
+
+调参协议现已冻结为受控 screening：`pooled_gru`、`independent_dual_gnn`、`coupled_dual_gnn`、`coupled_dual_gnn_residual` 四个模块，learning rate=`2e-4/3e-4`，seeds=`20260824/20260825/20260826`，其余训练预算、数据窗口、指标和选择 gate 全部固定，机器记录位于 `code/artifacts/audit/pi_jwm_formal_tuning_protocol_20260823/tuning_protocol_freeze.json`。远端 GPU 只读探测当前 `Connection refused`，因此 sweep 尚未执行；该协议冻结不等于方法冻结，也不开放 locked-test。
+
+受控 GPU screening 随后已完成。6 个远端 run 共覆盖24个候选，逐目录 manifest 均为0 mismatch，且所有 run 都是非 locked CUDA 训练。按事前 gate，唯一通过的组合为 `coupled_dual_gnn_residual + lr=3e-4`：三 seed validation link-F1 delta 均值 `+0.06478173`、calibration delta 均值 `+0.10730501`、validation node-x MAE ratio 均值 `1.13918`。该结果只是固定预算下的候选筛选，不构成最终方法冻结或最终性能声明；后续仍需 rollout、输入扰动/不确定性和理论—实现—数据—指标闭环复核。
+
+对该 screening candidate 的下游 CPU 审计已完成：`k=1/2/3` horizon 中通信/资源误差继续改善，但 node-x MAE delta 均值约 `+0.20979/+0.20824/+0.20574`，学习模型自身 node-x 误差增长约 `3.17x`；输入扰动 noise=`0.05/0.10/0.20` 时 node-x MAE delta 均值约 `+10.13/+20.97/+42.70`。这些证据说明当前候选仍是 aggregate-baseline 诊断模型，不是联合状态 rollout 已闭合的最终 PI-JWM 方法；下一步应在 CPU 上处理状态误差和输入敏感性根因，不因筛选过线而启动新的 GPU 或 locked-test。
+
+### 当前输入敏感性诊断的理论边界（2026-08-23）
+
+key-wise CPU 审计确认：`node_state` 扰动主要通过 residual state mean 的最后历史状态基座影响 node-x，`task_state` 扰动主要通过 task-history encoding 影响 task-delay；`physical_edge_state` 与 `flow_state` 在当前指标上未显示实质传播。该证据用于约束当前 aggregate-baseline 的实现与公开表述，不把敏感性诊断升级为最终鲁棒性结论，也不改变 PI-JWM 目标方法的定义。若后续要改变 residual anchoring 或 task-state encoding，必须同步修改理论、代码、训练协议、测试和指标映射后再重新审计。
+
+### 候选理论—实现一致性审计边界（2026-08-23）
+
+对 selected aggregate candidate 的机器审计确认 residual 配置、task-history/future-action conditioning 和 aggregate-baseline 口径与代码一致；但当前 world-model rollout 没有在每个 horizon step 调用确定性规则层更新动作写入、生命周期、资源守恒等规则字段。该差异记录为 `per_step_deterministic_rule_update_missing`，阻断后续训练和最终方法 claim。除非补齐规则层并完成逐项测试/产物映射，或同步收缩理论定义与公开措辞，否则不能把当前 latent transition + state heads 路径称为完整 PI-JWM 联合状态生成方法。
+
+规则层实现还受当前数据/模型边界阻断：归一化 statistics 没有进入 model batch，future action 没有显式 source endpoint，未来服务量/accepted outcome 未作为规则输入，且没有 deterministic target masks 区分规则输出与学习输出。补齐这些接口前，不得把任何代理量、最后历史状态或补零值称为确定性规则更新。
+
+### 2026-08-23 方法边界更新：规则层接口已实现，旧候选需重训
+
+上述四项接口阻断已在代码和 formal window contract 中闭合。当前实现采用“learned service heads 预测服务量，deterministic rule layer 在物理单位执行守恒/端点/DAG 更新，结果回到 normalized space 并反馈下一步”的明确边界。该实现通过 CPU TDD 与真实非 locked 窗口反向传播验证，但 2026-08-23 既有 GPU 候选 checkpoint 未启用该层，不能与新方法混用；须重训后再谈方法冻结或性能 claim。
+## 确定性规则层的当前实现边界（2026-08-23 v2）
+
+当前 aggregate-baseline 世界模型在每个 rollout step 使用以下严格分工：
+
+1. 学习模块预测物理边有效 rate，以及每条 flow 的有界服务比例；规则层将服务比例乘以该步可服务 remaining data，得到物理单位 delivered data。
+2. RB occupancy 由显式动作源/目标端点和 RB count 写入；端点只来自动作记录，禁止读取 label-time task state 推断。
+3. CPU 不属于策略动作。通信更新后，对 computing 任务按 `remaining_work / slot_seconds` 形成需求，并在节点 capacity 下执行 capped equal sharing；logged future CPU allocation 不被模型消费。
+4. flow remaining/cumulative、task transmitted/computed、deadline/delay、lifecycle 和 DAG release 按守恒与合法阶段递归更新；服务不得超过当前 remaining。
+5. 规则状态与学习状态的差只在相应 rule/service mask 上反馈到下一步 latent；未受规则控制的 node state 不做重复反馈或伪确定性覆盖。
+
+当前证据只支持“规则层启用的 aggregate candidate 已通过 non-locked CPU-to-GPU 门”。它不支持逐 RB 方法、locked-test 结果或正式性能声明。
+
+### 规则递推复放验证状态（2026-08-26）
+
+规则层启用 checkpoint 的 CPU replay 已在其实际训练使用的 v4 rule-contract tensor 上完成。输入 data flow 守恒先独立复算通过；随后 seeds `20260824/20260825/20260826` 各在 128 个 validation windows 上捕获到完整的 192/192 个规则递推步骤，flow、RB、CPU、lifecycle 与 DAG 不变量的 violation counts 均为空。新建 flow 的规则语义明确为：`delivered_cumulative` 和 age 从物理零开始，不能继承 padding 经反归一化得到的训练均值。证据位置为 `code/artifacts/audit/pi_jwm_formal_rule_v2_cpu_rule_rollout_multiseed_20260826_created_flow_fixed/`。
+
+该证据只闭合“每一步规则递推是否实际执行并满足已定义不变量”。当前候选仍是 non-locked aggregate baseline，per-RB sidecar 未被模型消费；它也不是 world-model candidate-rollout planner，因为尚未展示针对每个候选动作生成未来状态、任务、成本和风险轨迹并据此选择动作。因此不得据此宣称逐 RB 方法、闭环规划、locked-test 或最终性能结论。
+
+### Candidate-action rollout planner 审计状态（2026-08-26）
+
+对当前 formal world model 与历史 R6 策略路径完成了独立、code-only 机制审计。formal model 的已记录动作条件预测能力仍存在；但 R6 是对当前 belief/state 与候选描述符的 direct scoring，未引用该 world model。审计未找到合法候选序列生成、同一 belief 下逐候选 world-model rollout、候选相关未来 state/task/cost/risk 提取、按预测后果排序选择，或“只执行选中首动作后反馈重规划”的完整闭环。报告为 `code/artifacts/audit/pi_jwm_formal_candidate_rollout_planner_audit_20260826/candidate_rollout_planner_audit.json`，SHA-256 `7A71C78F78058F8F0C19EC0509816A2A31D972B27DA8CF1D8FABC8F7CC3B6637`。
+
+因此 P5 的真实状态是“独立审计完成、机制未实现”，而不是调参或训练不足。它阻止 planner GPU 实验、planner 方法冻结与 locked-test；不回写或否定既有 non-locked aggregate baseline 的规则层训练/replay 证据，也不授权任何最终性能声明。
+
+### Candidate-action rollout 机制原型边界（2026-08-26）
+
+已新增 `code/src/pi_jwm/formal_candidate_rollout_planner_v1.py` 作为 CPU-only 机制原型：对同一 `history/static` 为每个合法候选复制完整 `future_action`，逐候选调用正式 action-conditioned world model，由显式 extractor 提供 future state、task outcome、cost、risk，再按 objective 选择首动作并提供更新历史后的 `replan`。该原型通过 5/5 定向测试。
+
+原型状态固定为 `prototype_only`，不等于正式 PI-JWM planner。合法候选生成器、任务目标/风险定义和真实环境执行反馈适配尚未冻结；原有 code-only planner audit 仍为 `blocked`，因此不开放 planner GPU、方法冻结或 locked-test，也不形成 formal performance claim。
+
+### P3 方法适配与多源数据边界（2026-08-26）
+
+三个模块的场景适配理由、限制、预测/决策指标和多源数据使用边界统一记录在 `记录/设计/2026-08-26-P3方法理论适配与多源数据方案.md`，机器状态在 `记录/P3方法适配与多源数据方案_20260826.json`。该文件只固定理论和实验边界，不把尚未核验的真实数据或 planner 原型写成已完成能力。
+
+### P4 世界模型机制边界（2026-08-26）
+
+当前 P4 已完成机制层验收，但尚未完成正式精度层验收。冻结的 h20 tensor contract 为 `code/artifacts/formal_tensor/pi_jwm_v4_tensor_v4_rule_contract_h20_unlocked_20260826`（history=8、horizon=20、54 个 unlocked seed、14,742 个窗口）。CPU 1/5/20 horizon 审计和统一 P4 机制门分别记录在 `code/artifacts/audit/pi_jwm_formal_p4_horizon_mechanism_audit_20260826/p4_horizon_mechanism_audit.json` 与 `code/artifacts/audit/pi_jwm_p4_world_model_gate_h20_20260826/p4_world_model_gate.json`，两者均未访问 `locked_test`。
+
+机制门证明：规则递推实际执行、输出长度与 finite 性正确、动作注入会改变预测、target 不会泄漏到预测，且既有 non-locked aggregate artifact 边界一致。机制 probe 使用的可复用 checkpoint 训练 horizon=3；因此 h20 结果不是重训后的 20 步 state/task/resource/uncertainty 精度结果。正式精度门仍 pending，`formal_performance_claim_ready=false`；不得进入 P5 或把该结果写成最终方法性能。
+
+### P4 h20 正式精度审查结果（2026-08-27，覆盖上一段的 pending 状态）
+
+冻结合同下的 h20 三 seed 训练已经完成，seeds 为 `20260824/20260825/20260826`，每个 validation 有 128 个窗口；运行记录均为 `gpu_execution=true`、`locked_test_accessed=false`。审计入口为 `code/artifacts/audit/pi_jwm_p4_h20_precision_audit_20260826/p4_h20_precision_audit.json`，该文件只代表 non-locked aggregate-baseline 精度证据。
+
+20 步后，模型对节点 x 坐标的平均绝对误差为 `22.8591 m`，而最简单的 persistence 基线为 `22.1450 m`；三个 seed 均没有超过基线，平均多错 `0.7140 m`。同时模型标为“95% 把握”的 node-x 区间实际只覆盖 `75.43%` 的真实值，说明它给出的范围偏窄。task-delay 的 95% coverage 为 `96.93%`，但这不能抵消 node-x 的失败。
+
+因此 P4 的机制门已通过、正式精度门已测量但 `blocked`。`formal_performance_claim_ready=false` 保持；不得把本结果写成最终方法性能、不得进入后续 roadmap gate、不得以重跑同一 GPU 配置替代诊断。唯一下一步是 CPU-only 的单变量 node-x 长期误差原因诊断；在一个具体原因被证实前，不改模型、tensor contract、训练协议，也不访问 `locked_test`。
+
+### P4 节点类型契约诊断（2026-08-27，已证实的阻塞原因）
+
+P4 长期位置误差的首个具体原因已由代码和完整 h20 数据扫描共同证实。AirFogSim 源数据中节点类型不是缺失，而是使用 `V/U/I/C` 四个短码；collector 在写入正式 bundle 时保留短码，而 tensorizer 只接受 `vehicle/uav/rsu/edge_server/cloud`。结果是 h20 的全部 54 条 unlocked 轨迹、2,484 个静态节点均得到 `node_kind_index=-1`，其 290,076 个实际 present 的节点时刻没有一个有效类型。
+
+这会直接破坏理论--实现一致性：`coupled_dual_gnn_residual` 实现以 `node_kind_index >= 0` 定义物理节点有效性，并由此定义 attached agent 的有效性。h20 训练中的物理图边--节点消息、信息图 flow--agent 消息和 agent--node 跨图耦合因而为零；flow--physical-edge 耦合与 task--node 写入仍存在，不能作为前述三条通路的替代。故先前的三枚 h20 checkpoint 可以保留为可复现的 non-locked 历史结果，但绝非完整双图 PI-JWM 的精度证据。
+
+在修复前，P4 保持 `blocked`，`formal_performance_claim_ready=false`；不重跑相同 GPU 配置、不进入 P5/P6、不访问 `locked_test`。唯一许可的下一步是最小的数据入口修复：规范化 `V/U/I/C`，并增加“每个 present 节点必须有有效类型”的契约测试。之后仅重建受影响的 unlocked h20 tensor，完成 CPU 验收，才评估是否需要 GPU 重训。
+### P4 修复后 h20 CPU 验收边界（2026-08-27）
+
+修复后的 h20 数据合同已通过结构验证，并完成一次小规模 CPU 训练与 checkpoint 重载验收。定向测试结果为 RB 重建 11/11、tensor 构建 8/8、世界模型 8/8、CPU smoke 2/2；验收样本为 train/validation/calibration=8/4/4。该证据只说明修复后的节点类型和 RB 标签能够正确进入模型，输出为有限值，checkpoint 可以保存和读取；它不代表 h20 正式精度通过，也不打开 GPU 或 locked-test。当前仍保持 `formal_performance_claim_ready=false`，下一门是独立 CPU Go/No-Go 审查。
+
+### P4 修复后 CPU Go/No-Go 边界（2026-08-27）
+
+修复后的合同已经有 3 个独立 CPU seed，但独立放行门仍未通过。验证集 link-F1 相对 persistence 的三个差值为 `+0.0213`、`-0.4492`、`-0.0079`，平均差值为 `-0.1453`；因此通信活动预测在当前小规模 CPU 协议下不稳定。位置误差比例 `1.0071` 以及吞吐、RB 占用、任务时延指标没有构成阻塞。当前 `gpu_allowed=false`、`formal_performance_claim_ready=false`、`locked_test_accessed=false`。下一步仅做 CPU 通信活动 F1 原因诊断。
+
+### P4 physical-edge rule-feedback 输入路由边界（2026-08-30，当前覆盖）
+
+只读诊断和单变量干预已将失败 seed 的长步高分尾部闭合到 direct physical-edge rule-feedback 路径，但干预不支持永久关闭反馈。当前理论和实现统一为：物理边规则 correction 是下一步 edge transition 的外部输入消息，不是上一时刻 recurrent hidden 本身。实现因此保留原投影和参数，只把 projection 加入 edge GRU input，由 GRU 门控处理；node、flow、task feedback 语义不变。
+
+该修改已通过 TDD、相关回归、旧 checkpoint strict load 和 `2/1/1` CPU micro-smoke。它只能称为已通过接口门的 `physical-edge rule-feedback input routing fix` 候选，不是新模型、完整 RSSM 或最终方法。现有 CPU 数值不得解释为性能提升；P4 仍 blocked，`formal_performance_claim_ready=false`、`locked_test_accessed=false`。后续只允许在用户开启 GPU 后按冻结协议先跑 sentinel seed `20260831`。
+
+### P4 link 事件概率方案 B 的真实验收边界（2026-09-01，当前覆盖）
+
+方案 B 的实现定义保持为：先对 weighted-BCE raw logit 做 `z-log(pos_weight)` 解析反演，再只用 calibration split 拟合一个 scalar temperature；正式分类继续复用 legacy raw decision，概率指标使用变换后的事件概率。该实现已进入共享数学工具、formal metrics、formal runner 和独立 CPU audit 入口，并通过对应的 52 项定向回归。
+
+但冻结 seed `20260831` 的真实 CPU audit 没有通过预注册泛化门。运行在发布 artifact 前因 `validation nll regressed after temperature fitting` 停止，说明 calibration 拟合出的单温度在 validation 上使 NLL 相对 `T=1` 解析反演基线恶化。因此当前只能表述为“方案 B 实现链已建立，但真实概率校准验收失败”；不得写成概率语义门通过，更不得写成 P4 完成。
+
+当前状态固定为 `probability semantics gate = failed`、`sentinel performance gate = no_go`、`P4 = blocked`、`formal_performance_claim_ready=false`、`locked_test_accessed=false`。失败后没有发布新的 audit JSON 或 manifest，也未启动 GPU 或另外两个 seed。确认新的单变量方法边界前，不允许通过 validation 调参、换 calibrator、放宽门或重复运行。
+
+### P4 link低召回edge GRU旁路证据边界（2026-09-05，当前覆盖）
+
+冻结seed `20260831`的recall诊断确认低召回主要集中在持续活跃链路，但这只是错误位置，不是底层原因。经用户批准的唯一反事实核验仅在CPU推理时让`FormalDualGraphWorldModel.edge_transition`返回进入GRU前的hidden state；其他模型计算、checkpoint、数据、sample IDs、mask和raw threshold=`0.9`保持不变。
+
+该干预没有找回漏报：candidate TP/FP/FN从基线`1902/557/5855`变为`0/0/7757`，原始2,791个关键持续链路找回0个，机器判定为`not_sufficient_to_explain_dominant_low_recall`。因此不得再表述为“edge GRU更新已经被证明会擦除链路活跃记忆”；现有证据只表明GRU更新对该checkpoint产生任何越过冻结阈值的链路分数是必要的。
+
+本次旁路不是正式模型、不是消融性能，也没有证明CFE、rule feedback、link head或loss是原因。报告位于`code/artifacts/audit/pi_jwm_p4_edge_gru_bypass_intervention_20260904/`。P4继续blocked，`formal_performance_claim_ready=false`、`locked_test_accessed=false`；新的机制假设必须另立单变量设计并经用户确认。
+
+### 完整 RSSM 方法边界（2026-09-05）
+
+旧 `graph_rssm_v1` 仅作为 R4 历史候选：其 context prior/posterior 同源，缺少逐步观测 posterior、balanced KL 和完整多步 latent 监督，不能称为完整 RSSM。新增 `complete_graph_rssm_v1` 才是当前完整 RSSM 候选实现：确定性上下文 `h` 产生动作条件 prior，训练 posterior 额外接收对应观测；部署预测只使用历史上下文、动作和 prior。未来 target 及 mask 不进入预测路径。该候选保留双图、CIP/CEP/CFL、确定性规则层、显式状态头和现有 mask 语义，并在目标中记录逐步 balanced KL 与自由 prior rollout 一致性。它已通过真实 canonical train/validation/calibration 的 h1/h5/h20 CPU preflight、target 泄漏门和 strict checkpoint roundtrip，但仍没有真实性能或正式方法冻结证据；P4 仍 blocked。
+
+补充一致性审查确认：训练 posterior 还必须通过观测/状态重构目标获得直接梯度。`complete_graph_rssm_v1` 现已在训练模式生成 target-conditioned posterior teacher 的显式状态/分类输出；R4 重构目标保留自由 prior 重构，并增加权重 `0.5` 的 teacher 重构。正式 `predicted_*` 仍只代表 prior-only 部署输出，验证指标不读取 teacher。该修改只补齐 RSSM 训练闭环，不构成性能提升证据。
+
+正式 P4 路径中的对应候选为 `complete_rssm_dual_graph_v1` / `formal_complete_rssm_v1_1`。它以原正式物理--信息双图和确定性规则层作为 decoder 主体，增加动作条件 stochastic prior、目标观测条件 posterior teacher、逐步 balanced KL、自由 prior 重构、teacher 重构和多步 overshooting。部署/validation 只允许 prior 输出；训练 target 不得改变 prior 输出。RSSM latent 必须实际参与连续状态、presence、link activity、task lifecycle、DAG release、DAG edge presence及可选 energy 输出，不能由确定性分类头绕过。若启用 `zero_init_residual_state_heads`，RSSM 连续 correction heads 也必须零初始化；checkpoint 必须记录 `rssm_residual_head_initialization=zero_when_requested_v1`，否则拒绝正式复载。
+
+该方法已通过正式 CPU 一致性门，但冻结 GPU sentinel 仅达到部分指标改善：link、throughput、RB 和 task delay 保护项通过，node-x 聚合 ratio=`1.2877405` 超过 `1.25`，因此仍是未定版候选，不能表述为 P4 通过或性能优越。`locked_test_accessed=false`、`formal_performance_claim_ready=false`。
+
+针对上述 node-x 失败，CPU 只读分解确认 formal dual-graph base ratio=`1.15756`，加入 RSSM correction 后才升至 `1.28774`；因此后续候选被严格限定为 `complete_rssm_node_x_safe_dual_graph_v1`。它不改变网络、双图、prior/posterior、KL、overshooting 或部署路径，只在训练期增加 `node_x_residual_non_degradation_v1`：当 prior RSSM correction 使 node-x 绝对误差大于 detached base 时处罚差值，权重固定 `1.0`。base 在该项中 detached，故新项不能直接训练 base；posterior teacher reconstruction 不重复应用该约束。checkpoint 必须记录 `node_x_residual_loss_contract=node_x_residual_non_degradation_v1`，旧方法身份不得冒充该候选。
+
+该候选已通过 CPU 公式、mask、隔离梯度、target 泄漏、strict reload 和协议一致性审计，但尚无 GPU 性能结果。冻结 sentinel 继续使用 seed=`20260831`、data seed=`20260823`、`256/128/128`、8 epochs、hidden=32、h20 以及原性能阈值。当前仅为 `ready_when_gpu_available`；P4、其他 seed、概率门和 `locked_test` 仍关闭。
+
+后续冻结 GPU sentinel 已否定该候选：node-x ratio=`1.52058 > 1.25`，正式状态=`no_go`。只读分解表明非劣化项确实把 RSSM correction 平均幅度压至 `0.07621 m`，但从头联合训练后的 formal base ratio 已恶化到 `1.51660`；相同初始化排除了随机初始化解释。因此 `complete_rssm_node_x_safe_dual_graph_v1` 保留为失败候选，不得通过调权重、补 seed 或只报告其他通过指标继续推进。
+
+可以讨论但尚未实现的新边界是：复用旧 v3 checkpoint 中 ratio=`1.15756` 的 base 并冻结其参数，只训练 RSSM correction。该想法属于新的 `candidate method`，必须重新完成理论、checkpoint 来源、优化变量和 CPU 门定义后才能运行，当前不构成项目能力或性能证据。
+
+2026-09-06 文献与代码粒度复核进一步限定了上述正式方法的理论名称。`formal_complete_rssm_v1_1` 的 prior/posterior、KL、teacher、overshooting 和部署 prior-only 语义仍然完整；但其节点、边与任务表示先经过 masked pooling 形成单个 global context，stochastic decoder 随后把同一类 correction 广播给该样本内全部同类实体。因此当前可核验的方法边界是“formal dual-graph base 上的 global aggregate RSSM adapter”，不得称为逐节点、逐边或逐任务的 entity-aligned Graph-RSSM。特别是，单个 link correction 只能整体平移同一步所有边的 logit，不能改变边间排序。
+
+与 G-RSSM、R-SSM、Graph Dreamer 和图网络物理模拟的实体级状态做法对照后，可讨论的新候选是 `entity_aligned_dual_graph_rssm_v1`：保留物理节点、物理/信息边和任务各自的 deterministic/stochastic state，再复用现有双图与 CIP/CEP/CFL 传播。该候选是 `candidate method`，尚未实现、训练或验证；文献对照只证明当前 global broadcast 结构存在表达限制，不证明实体级候选能够通过 P4。进入实现前必须先用已有 v3 checkpoint 和固定 validation 样本完成 CPU-only 实体级可表达性审计；不得同时修改输入字段、loss、训练预算、阈值或 seed。
+
+### P4 edge GRU接口只读追踪证据边界（2026-09-05，当前覆盖）
+
+本追踪不替换任何模型输出，只复制`edge_transition`的输入消息、更新前hidden和更新后hidden，并使用checkpoint中同一个`link_activity_head`读取更新前后logit。正式hook命中`1280/1280`、已移除；post logit与正式输出逐元素误差为0，按PyTorch GRUCell方程重算hidden的误差为0。因此它是当前checkpoint的可核验接口证据，不是新模型或新性能实验。
+
+冻结阈值`0.9`下，5855个真实正样本漏报中，5559个在进入本步GRU前已低于阈值，296个由本步更新向下跨阈值。overall的两类比例为`94.94%/5.06%`，h1为`100%/0%`，h20为`98.67%/1.33%`，得到预注册判定`incoming_readout_below_threshold_dominant`。这排除“本步GRU更新主导向下压分”，但不能由此单独归因history encoder、消息输入、GRU门或link head；h2以后的更新前状态本就是上一步递推结果。
+
+`aggregate_link_activity`在数据中定义为`physical_edge_state`内`active_task_count>0`，且`active_task_count`已作为正式物理边特征进入8步历史编码。因此当前不允许将问题表述为“链路活动输入字段缺失”。可以作为`candidate method`讨论的是：是否应将上一步二值活动状态定义为显式持久性基准，只让模型学习action-conditioned状态变化。该候选尚未实现、未训练、未验证；必须先定义无target泄漏的h2+递推和与wighted-BCE/方案B一致的概率语义。
+
+追踪报告位于`code/artifacts/audit/pi_jwm_p4_edge_gru_interface_trace_20260905/`，报告SHA-256=`87b4fe4b17d06928a1a3583be45f0521b51aa90866d39ce43a95075d868027d9`。P4继续blocked，`formal_performance_claim_ready=false`、`locked_test_accessed=false`；用户确认候选设计前不改模型、不训练、不启动follow-up seeds、不进入P6。
+
+### P4 link activity持久性残差候选的CPU实现边界（2026-09-05，当前覆盖）
+
+经用户确认后，当前只新增`link_activity_persistence_residual_v1`：历史最后一帧活动先形成未加权事件状态`u0=(+20或-20)-log(pos_weight)`，现有link head每步只输出变化量`delta`，h2以后只递推模型自己的`u`，正式`link_activity_logits=u+log(pos_weight)`。未来target和target mask不进入forward，temperature仍只属于训练后的calibration流程。
+
+该候选挂接在原`coupled_dual_gnn_residual`和确定性规则层上，其他状态头、双图、edge GRU、消息、loss、阈值与方案B不变。新checkpoint必须同时匹配`link_activity_method=persistence_residual_v1`、`mode=coupled_dual_gnn`和`residual_state_prediction=true`；旧绝对logit head的checkpoint即使参数形状相同也不得续训或正式评价。
+
+fresh CPU回归`88/88`通过。canonical h20 tensor上的一次极小micro-smoke使用train/validation/calibration=`2/1/1`、1 epoch、hidden=4；物理边规则反馈路径实际调用19次，h1/h20输出有限，checkpoint strict reload无缺键/多键，manifest 19项零不一致。该结果仅证明实现、递推、保存和证据链可执行，不证明性能改善。P4仍blocked；GPU sentinel、另外两个seed和`locked_test`均未运行。
+
+### P4 当前方法边界：实体级双图 RSSM（2026-09-06，当前覆盖）
+
+当前 P4 候选方法为 `entity_aligned_dual_graph_rssm_v1`。它在既有物理图、信息图、DAG、跨图耦合和确定性规则递推之上，为每个物理节点、物理边、信息流和任务分别维护确定性状态与随机状态。训练期的目标观测只进入对应实体的 posterior teacher；验证和部署的预测只使用历史、已知动作与 prior。节点位置先使用由历史位置得到的匀速 proposal，再学习逐节点残差；链路由逐边 latent 解码，能够表达边间排序变化。
+
+该方法已完成真实 unlocked tensor 上的 CPU 方法一致性验证，证明接口、因果边界、梯度、mask、动作条件、规则反馈和 checkpoint 复载成立。它仍是 `candidate method`，尚无全量三 seed 性能证据，不得写成 P4 已通过或最终方法。`locked_test` 未 tensorize、未访问；正式性能声明保持关闭。
+
+GPU 执行证据已进一步确认该方法能在 RTX 4090 上按 deterministic base 预训练、冻结 base、训练 entity RSSM、保存并严格复载 checkpoint。显存探测冻结 batch 为 `8`，短样本 execution sentinel 已完成；这些只把方法从“CPU 一致性通过”推进到“CUDA 正式路径可执行”，不构成精度或泛化证据。首个正式 seed `20260831` 正在使用全部 unlocked 数据训练，另外两个 seed 只有在首 seed 全部数值门通过后才允许启动。P4、P6 和最终性能声明的边界不变。
+
+### 当前双图四类对象的实现边界（2026-09-07，当前覆盖）
+
+当前 h20 正式训练接口把物理设备作为物理节点，把设备间有向通信链路作为物理边。物理节点主状态为 `x/y/z/speed/acceleration/cpu/storage`，并向实体级运动 proposal 额外提供因果派生的 `vx/vy/vz/ax/ay/az`；物理边状态为 `distance/csi_mean/rate_sum/active_task_count/allocated_rb_count`。
+
+信息节点是通过 `agent_node_index` 一一附着到活动物理节点的 agent。当前没有独立 `information_node_state`，agent encoder 复用对应物理节点的七维历史状态形成确定性 agent latent。信息边是 agent 之间的任务输入流、结果回传流和具有显式 payload 的依赖数据流，在正式 tensor 中以 `flow_state` 表示，五项特征为 `total_data/remaining_data/delivered_cumulative/delivered_this_slot/age`；端点、类型、所属任务和逐时隙物理承载分别由独立索引或 mask 保存。
+
+模型分别在 node—physical-edge 和 agent—flow 上执行消息传播，再通过 agent—physical-node 附着和 flow—physical-edge 承载关系交换跨图消息；任务与 DAG 作为业务辅助对象参与传播和规则递推。实体级 RSSM 为 node、physical_edge、flow、task 设置 prior/posterior 随机状态，但 agent 只保留基础模型中的确定性中间 latent。故当前实现可以表述为物理图与流式信息图的耦合模型，不能表述为四类对象均具有独立观测字段和独立随机状态。`locked_test`继续未访问。
+
+### P4 实体级双图 RSSM 两个正式 seed 证据（2026-09-09，当前覆盖）
+
+`20260831` 与 `20260830` 均使用同一冻结数据合同、模型、两阶段训练协议、全量 unlocked 划分和 gate-aware checkpoint 选择，并分别通过独立单 seed 验收。第二个 seed `20260830` 的最佳 RSSM epoch 为 `40`，validation/calibration link-F1 相对 persistence 为 `+0.45710/+0.88509`，node-x 总体/h5/h10/h20 ratio 为 `0.75086/0.76033/0.74939/0.74960`，throughput/RB/task-delay ratio 为 `0.93831/0.47523/0.01175`。
+
+这证明当前方法已在两个固定 seed 上表现出一致的正向结果，但仍不能称为 P4 已通过或最终方法：预注册的第三 seed `20260832` 和三 seed独立审计尚未完成。当前按用户要求暂停；`locked_test_accessed=false`、`formal_performance_claim_ready=false`，P6不开放。

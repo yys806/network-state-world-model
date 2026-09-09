@@ -229,6 +229,8 @@ def build_dual_graph_v2_bundle(
     offload_actions: Iterable[Mapping[str, Any]] = (),
     return_actions: Iterable[Mapping[str, Any]] = (),
     rb_actions: Iterable[Mapping[str, Any]] = (),
+    rb_observations: Iterable[Mapping[str, Any]] = (),
+    n_rb: int | None = None,
 ) -> dict[str, Any]:
     """Build the v2 graph without treating tasks or DAG edges as information topology."""
 
@@ -260,6 +262,8 @@ def build_dual_graph_v2_bundle(
         "source_offload_actions": [copy.deepcopy(dict(row)) for row in offload_actions],
         "source_return_actions": [copy.deepcopy(dict(row)) for row in return_actions],
         "source_rb_actions": [copy.deepcopy(dict(row)) for row in rb_actions],
+        "source_rb_observations": [copy.deepcopy(dict(row)) for row in rb_observations],
+        "n_rb": None if n_rb is None else int(n_rb),
         "evidence_boundary": {
             "task_dag": "airfogsim_precedence",
             "dependency_payload": "not_modeled_unless_data_mb_is_explicit",

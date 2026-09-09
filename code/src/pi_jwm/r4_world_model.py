@@ -22,6 +22,7 @@ from .r4_module_registry import (
     assert_executable_config,
     validate_controlled_config,
 )
+from .complete_rssm_world_model_v1 import CompleteGraphRSSMBackend
 
 
 R4_MODEL_SCHEMA = "PIJWM-R4-Controlled-World-Model-v1"
@@ -1094,6 +1095,8 @@ def build_r4_world_model(config: R4ModuleConfig) -> R4WorldModel:
         backend = _ExplicitDAGBackend(backend_config)
     elif config.head == "heteroscedastic_typed_v1":
         backend = _HeteroscedasticBackend(backend_config)
+    elif config.dynamics == "complete_graph_rssm_v1":
+        backend = CompleteGraphRSSMBackend(backend_config)
     elif config.dynamics == "graph_rssm_v1":
         backend = _GraphRSSMBackend(backend_config)
     elif config.coupling == "relation_constrained_cross_attention_v1":

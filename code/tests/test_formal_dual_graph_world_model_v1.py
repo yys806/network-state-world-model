@@ -75,6 +75,31 @@ def fake_formal_batch() -> dict:
 
 
 class FormalDualGraphWorldModelV1Tests(unittest.TestCase):
+    def test_latent_trace_api_preserves_default_outputs(self):
+        from pi_jwm.formal_dual_graph_world_model_v1 import (
+            FormalDualGraphWorldModel,
+            FormalWorldModelConfig,
+        )
+
+        batch = fake_formal_batch()
+        config = FormalWorldModelConfig(
+            mode="coupled_dual_gnn",
+            hidden_dim=8,
+            history_steps=3,
+            horizon_steps=2,
+        )
+        model = FormalDualGraphWorldModel(config).eval()
+
+        with torch.no_grad():
+            default = model(batch)
+            traced, trace = model.forward_with_latent_trace(batch)
+
+        for key, value in default.items():
+            torch.testing.assert_close(value, traced[key])
+        self.assertEqual((2, 2, 4, 8), tuple(trace["node"].shape))
+        self.assertEqual((2, 2, 3, 8), tuple(trace["physical_edge"].shape))
+        self.assertEqual((2, 2, 2, 8), tuple(trace["flow"].shape))
+        self.assertEqual((2, 2, 3, 8), tuple(trace["task"].shape))
     def test_all_learning_modes_return_the_same_complete_interface(self):
         from pi_jwm.formal_dual_graph_world_model_v1 import (
             FormalDualGraphWorldModel,
@@ -155,6 +180,87 @@ class FormalDualGraphWorldModelV1Tests(unittest.TestCase):
             absolute_output["task_dag_state_mean"],
             torch.zeros_like(absolute_output["task_dag_state_mean"]),
         )
+
+    def test_zero_init_residual_state_heads_start_with_zero_correction(self):
+        from pi_jwm.formal_dual_graph_world_model_v1 import (
+            FormalDualGraphWorldModel,
+            FormalWorldModelConfig,
+        )
+
+        model = FormalDualGraphWorldModel(
+            FormalWorldModelConfig(
+                mode="coupled_dual_gnn",
+                hidden_dim=4,
+                residual_state_prediction=True,
+                zero_init_residual_state_heads=True,
+            )
+        )
+        for head in model.state_heads.values():
+            self.assertTrue(torch.equal(head.mean.weight, torch.zeros_like(head.mean.weight)))
+            self.assertTrue(torch.equal(head.mean.bias, torch.zeros_like(head.mean.bias)))
+        self.assertTrue(torch.equal(model.dag_state_head.mean.weight, torch.zeros_like(model.dag_state_head.mean.weight)))
+        self.assertTrue(torch.equal(model.dag_state_head.mean.bias, torch.zeros_like(model.dag_state_head.mean.bias)))
+
+    def test_residual_state_scale_damps_state_correction(self):
+        from pi_jwm.formal_dual_graph_world_model_v1 import (
+            FormalDualGraphWorldModel,
+            FormalWorldModelConfig,
+        )
+
+        batch = fake_formal_batch()
+        model = FormalDualGraphWorldModel(
+            FormalWorldModelConfig(
+                mode="coupled_dual_gnn",
+                hidden_dim=8,
+                history_steps=3,
+                horizon_steps=2,
+                residual_state_prediction=True,
+                residual_state_scale=0.25,
+            )
+        )
+        for head in model.state_heads.values():
+            torch.nn.init.zeros_(head.mean.weight)
+            torch.nn.init.ones_(head.mean.bias)
+        torch.nn.init.zeros_(model.dag_state_head.mean.weight)
+        torch.nn.init.ones_(model.dag_state_head.mean.bias)
+        with torch.no_grad():
+            output = model(batch)
+        last_node = batch["history"]["node_state"][:, -1]
+        torch.testing.assert_close(output["node_state_mean"][:, 0], last_node + 0.25)
+        torch.testing.assert_close(output["node_state_mean"][:, 1], last_node + 0.5)
+
+    def test_residual_rollout_uses_previous_predicted_state_as_next_base(self):
+        from pi_jwm.formal_dual_graph_world_model_v1 import (
+            FormalDualGraphWorldModel,
+            FormalWorldModelConfig,
+        )
+
+        batch = fake_formal_batch()
+        model = FormalDualGraphWorldModel(
+            FormalWorldModelConfig(
+                mode="coupled_dual_gnn",
+                hidden_dim=8,
+                history_steps=3,
+                horizon_steps=2,
+                residual_state_prediction=True,
+                residual_state_scale=1.0,
+            )
+        )
+        for head in model.state_heads.values():
+            torch.nn.init.zeros_(head.mean.weight)
+            torch.nn.init.ones_(head.mean.bias)
+        torch.nn.init.zeros_(model.dag_state_head.mean.weight)
+        torch.nn.init.ones_(model.dag_state_head.mean.bias)
+
+        with torch.no_grad():
+            output = model(batch)
+
+        last_node = batch["history"]["node_state"][:, -1]
+        torch.testing.assert_close(output["node_state_mean"][:, 0], last_node + 1.0)
+        torch.testing.assert_close(output["node_state_mean"][:, 1], last_node + 2.0)
+        last_dag = batch["history"]["task_dag_state"][:, -1]
+        torch.testing.assert_close(output["task_dag_state_mean"][:, 0], last_dag + 1.0)
+        torch.testing.assert_close(output["task_dag_state_mean"][:, 1], last_dag + 2.0)
 
     def test_optional_uav_energy_head_returns_nonnegative_node_aligned_distribution(self):
         from pi_jwm.formal_dual_graph_world_model_v1 import (

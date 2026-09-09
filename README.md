@@ -2,33 +2,37 @@
 
 PI-JWM (Physical-Information Joint World Model) studies action-conditioned joint evolution of physical and information networks for connected embodied-intelligence collaboration.
 
+项目知识导航：[`docs/PROJECT_INDEX.md`](docs/PROJECT_INDEX.md)。当前科研状态：[`docs/RESEARCH_STATUS.md`](docs/RESEARCH_STATUS.md)。
+
 AirFogSim is a reference simulator and data-generation source. It is not the PI-JWM framework.
 
 ## Current Stage
 
-As of 2026-08-15:
+As of 2026-09-09:
 
-- the first theory-code-data-evidence consistency audit is complete;
-- the v4 information-edge minimum viable schema uses five auditable E1 fields instead of filling thirteen unobserved legacy slots;
-- the core action is offloading plus sparse RB COO, while CPU follows `PIJWM-CPU-Inner-Rule-v1` after candidate communication effects;
-- P2-B v1 full dual-graph non-training preflight is on `main`;
-- P2-B v2 Attempt/Reject Ledger and its P2-C v2 audit code are merged on `main` (merge commit `e5ad8e4`); the final audit candidate remains local and ignored;
-- P2-C v2 is blocked only by the scenario matrix, formal scale, and formal split freezes;
-- formal v4 data, new-protocol model training, and a true per-candidate world-model rollout planner are not complete.
+- the current gate is P4 formal non-`locked_test` accuracy and generalization acceptance;
+- the candidate method is `entity_aligned_dual_graph_rssm_v1`, trained in two stages with a frozen deterministic base and prior-only formal rollout;
+- formal seeds `20260831` and `20260830` have each passed independent single-seed acceptance under the same frozen protocol;
+- these two results do not establish three-seed stability, close P4, open P6, or authorize a formal performance claim;
+- seed `20260832` has not been authorized and must not be started automatically;
+- no formal GPU training is currently active, while generated artifacts and synchronization paths remain protected from moves, rewrites, or deletion;
+- `locked_test` remains sealed and `formal_performance_claim_ready=false`.
 
-The current R6 path is a belief-conditioned direct policy with execution feedback. Do not describe it as a world-model candidate-rollout planner.
+The candidate-action rollout planner is still a CPU mechanism prototype. Do not describe it as an accepted PI-JWM planner or use it to claim that P6 is open.
 
 ## Authority
 
 Read these files in order before continuing work:
 
 1. [`AGENTS.md`](AGENTS.md) for permanent repository and evidence rules.
-2. [`记录/接续记录/新对话接续说明_20260815.md`](记录/接续记录/新对话接续说明_20260815.md) for the current handoff, with verified migration corrections recorded in later governance updates.
-3. [`记录/本地计划表.md`](记录/本地计划表.md) for the single local execution overview.
-4. [`记录/PIJWM主文档.md`](记录/PIJWM主文档.md) for fixed theory, method, data, and evaluation definitions.
-5. [`记录/8.12之后推进.md`](记录/8.12之后推进.md) for post-2026-08-12 implementation progress and blockers.
-6. [`docs/README.md`](docs/README.md) and [`记录/README.md`](记录/README.md) for document and record ownership.
-7. Machine-readable manifests and reports under `code/artifacts/` for individual acceptance claims.
+2. [`task_plan.md`](task_plan.md) for the current task gate, blocker, and single next action.
+3. [`记录/文件树与证据分层_20260826.md`](记录/文件树与证据分层_20260826.md) for file responsibilities and process/final evidence boundaries.
+4. [`记录/本地计划表.md`](记录/本地计划表.md) for the single local execution overview.
+5. [`记录/PIJWM主文档.md`](记录/PIJWM主文档.md) for fixed theory, method, data, and evaluation definitions.
+6. [`记录/8.12之后推进.md`](记录/8.12之后推进.md) for post-2026-08-12 implementation progress and blockers.
+7. [`记录/接续记录/新对话接续说明_20260815.md`](记录/接续记录/新对话接续说明_20260815.md) for handoff context only; it cannot override newer evidence.
+8. [`docs/README.md`](docs/README.md) and [`记录/README.md`](记录/README.md) for document and record ownership.
+9. Machine-readable manifests and reports under `code/artifacts/` for individual acceptance claims.
 
 Historical plans, meeting slides, model runs, and successful smoke tests remain evidence of their stated scope only. They do not override later theory boundaries or prove a complete method.
 
@@ -95,13 +99,12 @@ Reference-simulator verification requires `PYTHONUTF8=1` and the `airfogsim` Con
 
 ## Research Gates
 
-Before formal data generation, long GPU training, baseline freezing, or locked-test access:
+The canonical roadmap is `P0 -> P1 -> P2 -> P4 -> P6 -> P7+`. The current boundary is:
 
-1. close the current P2 ledger evidence chain;
-2. freeze the formal scenario matrix, statistical scale, and seed split;
-3. regenerate and verify formal v4 data under the approved contract;
-4. audit and implement the target world-model rule/rollout semantics;
-5. implement and test true per-candidate world-model rollout planning;
-6. freeze method, data, metrics, and reports before one-time locked-test access.
+1. the data, tensor, model/loss/metric, CPU reload, frozen protocol, and independent pre-GPU gates are complete for the current P4 candidate;
+2. two formal unlocked seeds have passed independent single-seed acceptance;
+3. the third frozen seed and the three-seed audit are still missing, so P4 remains open;
+4. P6 candidate-action planning cannot begin until P4 closes;
+5. method, data, metrics, and reports must be frozen before any one-time `locked_test` access.
 
 Theory, implementation, runtime configuration, data fields, artifacts, tests, and claims must agree item by item throughout this sequence.

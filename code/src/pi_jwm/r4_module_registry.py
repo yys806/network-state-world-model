@@ -162,6 +162,13 @@ _SPECS = (
     ),
     CandidateSpec(
         "dynamics",
+        "complete_graph_rssm_v1",
+        "executable",
+        "PlaNet, ICML 2019; Dreamer, ICLR 2020; latent overshooting",
+        "Does a fully separated step posterior, prior-only deployment path, and balanced multi-step objective improve long rollout?",
+    ),
+    CandidateSpec(
+        "dynamics",
         "transformer_dynamics_v1",
         "deferred",
         "TransDreamer withdrawn record; insufficient PI-JWM long-memory evidence",

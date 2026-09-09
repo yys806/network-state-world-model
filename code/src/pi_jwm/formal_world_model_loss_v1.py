@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Any, Iterable, Mapping
 
 import torch
 from torch.nn import functional as F
 
-from .airfogsim_tensor_v2 import EDGE_FEATURES, TASK_FEATURES
+from .airfogsim_tensor_v2 import EDGE_FEATURES, NODE_FEATURES, TASK_FEATURES
 from .formal_dual_graph_world_model_v1 import COMPONENT_FEATURES
 
 
@@ -21,10 +21,16 @@ class FormalLossWeights:
     lifecycle: float = 0.1
     dag: float = 0.1
     active_rate_mae: float = 0.05
+    rb_occupancy_mae: float = 0.05
     task_delay_mae: float = 0.05
     task_deadline_mae: float = 0.05
     uav_energy_nll: float = 0.05
     uav_energy_mae: float = 0.05
+    rssm_kl: float = 0.0
+    rssm_teacher_reconstruction: float = 0.0
+    rssm_overshooting: float = 0.0
+    rssm_kl_balance: float = 0.8
+    node_x_residual_non_degradation: float = 0.0
 
 
 def _component_valid_mask(name: str, static: Mapping[str, torch.Tensor]) -> torch.Tensor:
@@ -77,6 +83,80 @@ def _binary_loss(
     return _masked_mean(values, valid)
 
 
+def _normal_kl(
+    q_mean: torch.Tensor,
+    q_log_std: torch.Tensor,
+    p_mean: torch.Tensor,
+    p_log_std: torch.Tensor,
+    mask: torch.Tensor | None = None,
+) -> torch.Tensor:
+    """KL(q || p) for diagonal normal distributions."""
+
+    q_variance = torch.exp(2.0 * q_log_std)
+    p_variance = torch.exp(2.0 * p_log_std)
+    value = (
+        p_log_std
+        - q_log_std
+        + (q_variance + torch.square(q_mean - p_mean)) / (2.0 * p_variance)
+        - 0.5
+    )
+    if mask is None:
+        return value.mean()
+    expanded = mask.bool().unsqueeze(-1).expand_as(value)
+    return _masked_mean(value, expanded)
+
+
+def _balanced_normal_kl(
+    q_mean: torch.Tensor,
+    q_log_std: torch.Tensor,
+    p_mean: torch.Tensor,
+    p_log_std: torch.Tensor,
+    balance: float,
+    mask: torch.Tensor | None = None,
+) -> torch.Tensor:
+    if not 0.0 <= balance <= 1.0:
+        raise ValueError("rssm_kl_balance must be in [0, 1]")
+    dynamics = _normal_kl(
+        q_mean.detach(), q_log_std.detach(), p_mean, p_log_std, mask
+    )
+    representation = _normal_kl(
+        q_mean, q_log_std, p_mean.detach(), p_log_std.detach(), mask
+    )
+    return balance * dynamics + (1.0 - balance) * representation
+
+
+def _aggregate_target(
+    target: Mapping[str, torch.Tensor],
+    name: str,
+    fallback: torch.Tensor,
+) -> torch.Tensor:
+    value = target.get(name)
+    return fallback if value is None else value
+
+
+def _normalize_raw_aggregate_edge_target(
+    raw_target: torch.Tensor,
+    *,
+    feature_index: int,
+    normalization_stats: Mapping[str, Any] | None,
+) -> torch.Tensor:
+    """Map a raw aggregate edge label into the model's normalized state space."""
+
+    if normalization_stats is None:
+        raise ValueError(
+            "normalization_stats are required for observed raw aggregate edge targets"
+        )
+    try:
+        feature_stats = normalization_stats["features"]["physical_edge_state"]
+        mean = float(feature_stats["mean"][feature_index])
+        scale = float(feature_stats["scale"][feature_index])
+    except (KeyError, IndexError, TypeError, ValueError) as error:
+        raise ValueError("physical-edge normalization statistics are incomplete") from error
+    return (raw_target - raw_target.new_tensor(mean)) / raw_target.new_tensor(
+        max(scale, 1e-6)
+    )
+
+
 def formal_world_model_loss(
     prediction: Mapping[str, torch.Tensor],
     target: Mapping[str, torch.Tensor],
@@ -85,6 +165,7 @@ def formal_world_model_loss(
     weights: FormalLossWeights = FormalLossWeights(),
     class_weights: Mapping[str, float] | None = None,
     system_target: Mapping[str, torch.Tensor] | None = None,
+    normalization_stats: Mapping[str, Any] | None = None,
 ) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
     """Compute one finite, auditable objective over all formal rollout heads."""
 
@@ -131,14 +212,21 @@ def formal_world_model_loss(
     components["task_dag_state_valid_count"] = dag_valid_count.detach()
 
     edge_valid = _with_batch(_component_valid_mask("physical_edge", static))
-    link_valid = edge_valid[:, None, :].expand_as(target["link_activity"])
+    aggregate_activity = _aggregate_target(
+        target, "aggregate_link_activity", target["link_activity"]
+    ).bool()
+    aggregate_activity_mask = _aggregate_target(
+        target, "aggregate_link_activity_mask", edge_valid[:, None, :].expand_as(aggregate_activity)
+    ).bool()
+    link_valid = edge_valid[:, None, :].expand_as(aggregate_activity) & aggregate_activity_mask
     link_activity = _binary_loss(
         prediction["link_activity_logits"],
-        target["link_activity"].bool(),
+        aggregate_activity,
         link_valid,
-        class_weights.get("link_activity", 1.0),
+        class_weights.get("aggregate_link_activity", class_weights.get("link_activity", 1.0)),
     )
     components["link_activity_bce"] = link_activity.detach()
+    components["aggregate_link_activity_valid_count"] = link_valid.sum().detach()
 
     task_valid = _with_batch(_component_valid_mask("task", static))
     lifecycle_target = target["task_lifecycle_index"].long()
@@ -176,16 +264,61 @@ def formal_world_model_loss(
     components["dag_edge_presence_bce"] = dag_edge_presence.detach()
 
     rate_index = list(EDGE_FEATURES).index("rate_sum")
-    rate_mask = target["link_activity"].bool() & link_valid
+    raw_aggregate_rate = _aggregate_target(
+        target, "aggregate_link_rate_sum", target["physical_edge_state"][..., rate_index]
+    )
+    aggregate_rate_mask = _aggregate_target(
+        target,
+        "aggregate_link_rate_sum_mask",
+        aggregate_activity & edge_valid[:, None, :],
+    ).bool() & edge_valid[:, None, :]
+    rate_mask = aggregate_rate_mask
+    aggregate_rate = (
+        _normalize_raw_aggregate_edge_target(
+            raw_aggregate_rate,
+            feature_index=rate_index,
+            normalization_stats=normalization_stats,
+        )
+        if "aggregate_link_rate_sum" in target and torch.any(rate_mask)
+        else raw_aggregate_rate
+    )
     active_rate = _masked_mean(
         torch.abs(
             prediction["physical_edge_state_mean"][..., rate_index]
-            - target["physical_edge_state"][..., rate_index]
+            - aggregate_rate
         ),
         rate_mask,
     )
     components["active_rate_mae"] = active_rate.detach()
     components["active_rate_valid_count"] = rate_mask.sum().detach()
+    components["aggregate_link_rate_sum_valid_count"] = rate_mask.sum().detach()
+
+    rb_index = list(EDGE_FEATURES).index("allocated_rb_count")
+    aggregate_rb = target.get("aggregate_rb_occupancy")
+    aggregate_rb_mask = target.get("aggregate_rb_occupancy_mask")
+    if aggregate_rb is None or aggregate_rb_mask is None:
+        rb_occupancy = active_rate.new_zeros(())
+        rb_valid_count = torch.zeros((), device=active_rate.device, dtype=torch.long)
+    else:
+        rb_mask = aggregate_rb_mask.bool() & edge_valid[:, None, :]
+        normalized_aggregate_rb = (
+            _normalize_raw_aggregate_edge_target(
+                aggregate_rb,
+                feature_index=rb_index,
+                normalization_stats=normalization_stats,
+            )
+            if torch.any(rb_mask)
+            else aggregate_rb
+        )
+        rb_occupancy = _masked_mean(
+            torch.abs(
+                prediction["physical_edge_state_mean"][..., rb_index] - normalized_aggregate_rb
+            ),
+            rb_mask,
+        )
+        rb_valid_count = rb_mask.sum()
+    components["aggregate_rb_occupancy_mae"] = rb_occupancy.detach()
+    components["aggregate_rb_occupancy_valid_count"] = rb_valid_count.detach()
 
     timing_valid = target["task_present"].bool() & task_valid[:, None, :]
     delay_index = list(TASK_FEATURES).index("delay")
@@ -236,6 +369,7 @@ def formal_world_model_loss(
         + weights.lifecycle * lifecycle
         + weights.dag * (dag_nll + dag_mae + dag_release + dag_edge_presence)
         + weights.active_rate_mae * active_rate
+        + weights.rb_occupancy_mae * rb_occupancy
         + weights.task_delay_mae * task_delay
         + weights.task_deadline_mae * task_deadline
         + weights.uav_energy_nll * uav_energy_nll
@@ -244,6 +378,99 @@ def formal_world_model_loss(
     components["state_nll"] = state_nll.detach()
     components["state_mae"] = state_mae.detach()
     components["presence_bce"] = presence.detach()
+    correction = prediction.get("rssm_node_state_correction")
+    if weights.node_x_residual_non_degradation > 0.0 and correction is None:
+        raise ValueError(
+            "node-x residual non-degradation requires an explicit RSSM node correction"
+        )
+    if isinstance(correction, torch.Tensor):
+        x_index = list(NODE_FEATURES).index("x")
+        correction_x = correction[..., x_index]
+        full_x = prediction["node_state_mean"][..., x_index]
+        target_x = target["node_state"][..., x_index]
+        base_x = (full_x - correction_x).detach()
+        safety_full_x = base_x + correction_x
+        valid = target["node_present"].bool()
+        node_x_non_degradation = _masked_mean(
+            F.relu(
+                torch.abs(safety_full_x - target_x)
+                - torch.abs(base_x - target_x)
+            ),
+            valid,
+        )
+        components["node_x_residual_non_degradation"] = (
+            node_x_non_degradation.detach()
+        )
+        components["node_x_residual_valid_count"] = valid.sum().detach()
+        total = (
+            total
+            + weights.node_x_residual_non_degradation * node_x_non_degradation
+        )
+    rssm_keys = {
+        "rssm_posterior_path_prior_mean",
+        "rssm_posterior_path_prior_log_std",
+        "rssm_posterior_mean",
+        "rssm_posterior_log_std",
+    }
+    present_rssm_keys = rssm_keys.intersection(prediction)
+    if present_rssm_keys and present_rssm_keys != rssm_keys:
+        raise ValueError("RSSM probability parameters are incomplete")
+    if present_rssm_keys:
+        rssm_kl = _balanced_normal_kl(
+            prediction["rssm_posterior_mean"],
+            prediction["rssm_posterior_log_std"],
+            prediction["rssm_posterior_path_prior_mean"],
+            prediction["rssm_posterior_path_prior_log_std"],
+            weights.rssm_kl_balance,
+            prediction.get("rssm_latent_mask"),
+        )
+        components["rssm_kl"] = rssm_kl.detach()
+        total = total + weights.rssm_kl * rssm_kl
+
+        teacher_prediction = {
+            key.removeprefix("training_"): value
+            for key, value in prediction.items()
+            if key.startswith("training_") and isinstance(value, torch.Tensor)
+        }
+        if not teacher_prediction:
+            raise ValueError("RSSM posterior parameters require teacher predictions")
+        teacher_weights = replace(
+            weights,
+            rssm_kl=0.0,
+            rssm_teacher_reconstruction=0.0,
+            rssm_overshooting=0.0,
+            node_x_residual_non_degradation=0.0,
+        )
+        teacher_reconstruction, _ = formal_world_model_loss(
+            teacher_prediction,
+            target,
+            static,
+            weights=teacher_weights,
+            class_weights=class_weights,
+            system_target=system_target,
+            normalization_stats=normalization_stats,
+        )
+        components["rssm_teacher_reconstruction"] = teacher_reconstruction.detach()
+        total = total + weights.rssm_teacher_reconstruction * teacher_reconstruction
+
+        overshooting_keys = {
+            "rssm_overshooting_prior_mean",
+            "rssm_overshooting_prior_log_std",
+            "rssm_overshooting_posterior_mean",
+            "rssm_overshooting_posterior_log_std",
+        }
+        if not overshooting_keys.issubset(prediction):
+            raise ValueError("complete RSSM requires overshooting parameters")
+        overshooting = _balanced_normal_kl(
+            prediction["rssm_overshooting_posterior_mean"],
+            prediction["rssm_overshooting_posterior_log_std"],
+            prediction["rssm_overshooting_prior_mean"],
+            prediction["rssm_overshooting_prior_log_std"],
+            weights.rssm_kl_balance,
+            prediction.get("rssm_overshooting_latent_mask"),
+        )
+        components["rssm_overshooting"] = overshooting.detach()
+        total = total + weights.rssm_overshooting * overshooting
     components["total_loss"] = total.detach()
     return total, components
 
@@ -282,8 +509,12 @@ def compute_training_class_weights(
         flow_valid = _component_valid_mask("flow", static).unsqueeze(0).expand(horizon, -1)
         task_valid = _component_valid_mask("task", static).unsqueeze(0).expand(horizon, -1)
         dag_valid = static["dag_edge_valid"].bool().unsqueeze(0).expand(horizon, -1)
+        aggregate_activity = target.get("aggregate_link_activity", target["link_activity"])
+        aggregate_activity_mask = target.get(
+            "aggregate_link_activity_mask", edge_valid
+        ).bool()
         labels_and_masks = {
-            "link_activity": (target["link_activity"], edge_valid),
+            "link_activity": (aggregate_activity, edge_valid & aggregate_activity_mask),
             "flow_present": (target["flow_present"], flow_valid),
             "task_present": (target["task_present"], task_valid),
             "dag_release": (

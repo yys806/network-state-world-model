@@ -210,6 +210,18 @@ def _extract_tasks(env) -> tuple[TaskSnapshot, ...]:
                     else str(task.getToReturnNodeId())
                 ),
                 arrival_time=float(task.getTaskArrivalTime()),
+                task_size=float(task.getTaskSize()),
+                return_size=float(task.getReturnedSize()),
+                task_cpu=float(task.getTaskCPU()),
+                deadline=float(task.getTaskDeadline()),
+                priority=float(task.getTaskPriority()),
+                in_stage_transmitted_size=float(task.getTransmittedSize()),
+                computed_size=float(task.getComputedSize()),
+                task_delay=max(float(env.simulation_time) - float(task.getTaskArrivalTime()), 0.0),
+                source=str(task.getTaskNodeId()),
+                host=str(task.getCurrentNodeId()),
+                exec=str(task.getCurrentNodeId()),
+                ret=(None if task.getToReturnNodeId() is None else str(task.getToReturnNodeId())),
             )
     return tuple(by_id[task_id] for task_id in sorted(by_id))
 

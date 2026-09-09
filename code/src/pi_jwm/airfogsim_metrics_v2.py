@@ -230,7 +230,9 @@ def _resource_metrics(
     metrics[-1]["unit"] = "MB/s"
 
     edge_snapshots = list(data.get("physical_edge_snapshots", []))
-    active_edges = sum(int(row.get("active_task_count", 0)) > 0 for row in edge_snapshots)
+    active_edges = sum(
+        int(row.get("active_task_count") or 0) > 0 for row in edge_snapshots
+    )
     metrics.append(
         _ratio_metric(
             "physical_link_active_ratio",

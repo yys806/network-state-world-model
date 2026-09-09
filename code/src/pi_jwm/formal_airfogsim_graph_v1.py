@@ -14,6 +14,10 @@ from .airfogsim_tensor_v2 import (
     natural_id_key,
     tensorize_seed_graph,
 )
+from .formal_rb_targets_v1 import (
+    build_per_rb_target_arrays,
+    build_runtime_rb_outcome_observations,
+)
 
 
 SCHEMA_VERSION = "PI-JWM-AirFogSim-formal-tensor-v1"
@@ -76,6 +80,15 @@ def _tensorize_cpu_actions(
     extended_node_index[..., : base_node_index.shape[-1]] = base_node_index
     arrays["task_action_node_index"] = extended_node_index
 
+    base_source_index = arrays["task_action_source_node_index"]
+    extended_source_index = np.full(
+        (*base_source_index.shape[:-1], base_source_index.shape[-1] + 1),
+        -1,
+        dtype=base_source_index.dtype,
+    )
+    extended_source_index[..., : base_source_index.shape[-1]] = base_source_index
+    arrays["task_action_source_node_index"] = extended_source_index
+
     task_index = {task_id: index for index, task_id in enumerate(report["task_vocab"])}
     node_index = {node_id: index for index, node_id in enumerate(report["node_vocab"])}
     seen: set[tuple[int, int]] = set()
@@ -102,6 +115,7 @@ def _tensorize_cpu_actions(
         arrays["task_action"][ti, qi, len(ACTION_FEATURES) + 1] = allocated
         arrays["task_action"][ti, qi, len(ACTION_FEATURES) + 2] = fraction
         arrays["task_action_node_index"][ti, qi, -1] = node_index[node_id]
+        arrays["task_action_source_node_index"][ti, qi, -1] = node_index[node_id]
         arrays["task_action_present"][ti, qi] = True
 
 
@@ -184,9 +198,38 @@ def tensorize_formal_graph(
         if "return_target_id" not in row and "target_node_id" in row:
             row["return_target_id"] = row.pop("target_node_id")
             legacy_return_actions += 1
+        if "current_node_id" not in row and "source_node_id" in row:
+            row["current_node_id"] = row["source_node_id"]
         normalized_returns.append(row)
     normalized_graph["source_return_actions"] = normalized_returns
     arrays, base_report = tensorize_seed_graph(normalized_graph, contract)
+    rb_observations = normalized_graph.get("source_rb_observations", [])
+    if rb_observations:
+        rb_observation_report = {
+            "source": "direct_source_rb_observations",
+            "action_count": len(normalized_graph.get("source_rb_actions", [])),
+            "event_count": len(normalized_graph.get("source_transfer_events", [])),
+            "observation_count": len(rb_observations),
+        }
+    elif normalized_graph.get("source_transfer_events"):
+        rb_observations, rb_observation_report = build_runtime_rb_outcome_observations(
+            normalized_graph, slot_seconds=float(arrays["slot_seconds"])
+        )
+    else:
+        rb_observation_report = {
+            "source": "runtime_transfer_events_unavailable",
+            "action_count": len(normalized_graph.get("source_rb_actions", [])),
+            "event_count": 0,
+            "observation_count": 0,
+        }
+    rb_arrays, rb_report = build_per_rb_target_arrays(
+        time_values=arrays["time"],
+        edge_vocab=base_report["edge_vocab"],
+        n_rb=int(contract.n_rb),
+        observations=rb_observations,
+        edge_capacity=int(contract.max_physical_edges),
+    )
+    arrays.update(rb_arrays)
     report = dict(base_report)
     _tensorize_cpu_actions(normalized_graph, arrays, report)
     _tensorize_dag_state(normalized_graph, arrays, report, contract)
@@ -197,6 +240,8 @@ def tensorize_formal_graph(
             "dag_state_features": list(FORMAL_DAG_STATE_FEATURES),
             "cpu_action_count": len(normalized_graph.get("source_cpu_actions", [])),
             "legacy_return_action_field_count": legacy_return_actions,
+            "per_rb_targets": rb_report,
+            "per_rb_observation_source": rb_observation_report,
         }
     )
     return arrays, report

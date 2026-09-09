@@ -152,6 +152,15 @@ class AirFogSimMetricsV2Tests(unittest.TestCase):
         self.assertEqual(2, metrics["task_completion_rate"]["denominator"])
         self.assertEqual(2, report["evaluation_window"]["right_censored_tasks"])
 
+    def test_unobserved_previous_outcome_edge_feature_is_not_counted_as_active(self):
+        data = fixture()
+        data["physical_edge_snapshots"].append(
+            {"id": "e", "observed_time": 4.0, "active_task_count": None}
+        )
+        report = compute_airfogsim_metrics_v2(data)
+        metrics = {row["name"]: row for row in report["metrics"]}
+        self.assertEqual(0.5, metrics["physical_link_active_ratio"]["value"])
+
 
 if __name__ == "__main__":
     unittest.main()

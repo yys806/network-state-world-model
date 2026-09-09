@@ -164,6 +164,47 @@ def fake_graph(task_ids=("Task_2", "Task_10")):
 
 
 class AirFogSimTensorV2Tests(unittest.TestCase):
+    def test_short_node_type_codes_are_valid_for_present_nodes(self):
+        from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract, tensorize_seed_graph
+
+        graph = fake_graph(task_ids=("Task_2",))
+        graph["physical_nodes"][0]["kind"] = "V"
+        graph["physical_nodes"][1]["kind"] = "I"
+        for time in (0.1, 0.2, 0.3):
+            graph["source_physical_node_snapshots"].extend(
+                [
+                    {
+                        "id": "UAV_0",
+                        "kind": "U",
+                        "position": [2.0, 0.0, 0.0],
+                        "observed_time": time,
+                    },
+                    {
+                        "id": "cloud_0",
+                        "kind": "C",
+                        "position": [3.0, 0.0, 0.0],
+                        "observed_time": time,
+                    },
+                ]
+            )
+        graph["physical_nodes"].extend(
+            [
+                {"id": "UAV_0", "kind": "U"},
+                {"id": "cloud_0", "kind": "C"},
+            ]
+        )
+
+        contract = dataclasses.replace(infer_tensor_contract([graph]), max_nodes=5)
+        arrays, report = tensorize_seed_graph(graph, contract)
+        node_index = {node_id: index for index, node_id in enumerate(report["node_vocab"])}
+
+        self.assertEqual(0, arrays["node_kind_index"][node_index["vehicle_0"]])
+        self.assertEqual(1, arrays["node_kind_index"][node_index["UAV_0"]])
+        self.assertEqual(2, arrays["node_kind_index"][node_index["RSU_0"]])
+        self.assertEqual(4, arrays["node_kind_index"][node_index["cloud_0"]])
+        self.assertTrue(np.all(arrays["node_kind_index"][:4] >= 0))
+        self.assertEqual(-1, arrays["node_kind_index"][4])
+
     def test_natural_task_order_and_padding_contract(self):
         from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract, tensorize_seed_graph
 
@@ -216,6 +257,46 @@ class AirFogSimTensorV2Tests(unittest.TestCase):
         graph["source_offload_actions"][0]["target_node_id"] = "missing"
         with self.assertRaises(ValueError):
             tensorize_seed_graph(graph, infer_tensor_contract([graph]))
+
+    def test_feature_masks_exclude_unobserved_edge_and_task_values(self):
+        from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract, tensorize_seed_graph
+
+        graph = fake_graph(task_ids=("Task_2",))
+        graph["source_physical_edge_snapshots"][0].update(
+            {
+                "rate_sum": None,
+                "active_task_count": None,
+                "allocated_rb_count": None,
+                "physical_edge_feature_mask": [1.0, 1.0, 0.0, 0.0, 0.0],
+            }
+        )
+        graph["source_task_snapshots"][1]["task_feature_mask"] = [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0]
+        arrays, _ = tensorize_seed_graph(graph, infer_tensor_contract([graph]))
+
+        self.assertEqual(0.0, arrays["physical_edge_feature_mask"][0, 0, 2])
+        self.assertEqual(0.0, arrays["physical_edge_state"][0, 0, 2])
+        self.assertEqual(0.0, arrays["task_feature_mask"][1, 0, 3])
+
+    def test_outcome_only_rb_time_extends_grid_without_state_presence(self):
+        from pi_jwm.airfogsim_tensor_v2 import infer_tensor_contract, tensorize_seed_graph
+
+        graph = fake_graph(task_ids=("Task_2",))
+        graph["source_rb_observations"] = [
+            {
+                "physical_edge_id": "pe::vehicle_0::RSU_0",
+                "rb_index": 0,
+                "time": 0.4,
+                "observed_mask": True,
+                "rate_per_s": 2.0,
+                "temporal_role": "outcome_only_not_same_frame_decision_input",
+            }
+        ]
+        arrays, _ = tensorize_seed_graph(graph, infer_tensor_contract([graph]))
+
+        np.testing.assert_allclose([0.1, 0.2, 0.3, 0.4], arrays["time"])
+        self.assertFalse(bool(arrays["node_present"][3].any()))
+        self.assertFalse(bool(arrays["physical_edge_present"][3].any()))
+        self.assertFalse(bool(arrays["task_present"][3].any()))
 
 
 if __name__ == "__main__":

@@ -117,14 +117,23 @@ def _edge_valid(static: Mapping[str, torch.Tensor]) -> torch.Tensor:
     return torch.all(static["physical_edge_endpoint_index"] >= 0, dim=-1)
 
 
-def _choose_link_threshold(
+_BINARY_EVENT_KEYS = {
+    "link_activity": ("link_activity_logits", "link_activity"),
+    "flow_present": ("flow_presence_logits", "flow_present"),
+    "task_present": ("task_presence_logits", "task_present"),
+    "dag_release": ("dag_release_logits", "dag_release"),
+    "dag_edge_present": ("dag_edge_presence_logits", "dag_edge_present"),
+}
+
+
+def _choose_event_thresholds(
     method: str,
     model: FormalDualGraphWorldModel | None,
     loader: DataLoader,
     stats: Mapping[str, Any],
-) -> tuple[float, dict[str, Any], float]:
-    scores: list[np.ndarray] = []
-    labels: list[np.ndarray] = []
+) -> tuple[dict[str, float], dict[str, Any], float]:
+    scores = {name: [] for name in _BINARY_EVENT_KEYS}
+    labels = {name: [] for name in _BINARY_EVENT_KEYS}
     inference_seconds = 0.0
     if model is not None:
         model.eval()
@@ -133,24 +142,39 @@ def _choose_link_threshold(
             started = time.perf_counter()
             prediction = _prediction(method, model, batch, stats)
             inference_seconds += time.perf_counter() - started
-            valid = _edge_valid(batch["static"])[:, None, :].expand_as(batch["target"]["link_activity"])
-            scores.append(torch.sigmoid(prediction["link_activity_logits"])[valid].cpu().numpy())
-            labels.append(batch["target"]["link_activity"][valid].bool().cpu().numpy())
-    all_scores = np.concatenate(scores) if scores else np.empty((0,), dtype=np.float64)
-    all_labels = np.concatenate(labels) if labels else np.empty((0,), dtype=bool)
-    candidates = (0.1, 0.3, 0.5, 0.7, 0.9)
-    rows = []
-    for threshold in candidates:
-        predicted = all_scores >= threshold
-        tp = int(np.count_nonzero(predicted & all_labels))
-        fp = int(np.count_nonzero(predicted & ~all_labels))
-        fn = int(np.count_nonzero(~predicted & all_labels))
-        denominator = 2 * tp + fp + fn
-        f1 = float(2 * tp / denominator) if denominator else None
-        rows.append({"threshold": threshold, "f1": f1, "tp": tp, "fp": fp, "fn": fn})
-    comparable = [row for row in rows if row["f1"] is not None]
-    selected = max(comparable, key=lambda row: (row["f1"], -abs(row["threshold"] - 0.5))) if comparable else rows[2]
-    return float(selected["threshold"]), {"candidates": rows, "selected": selected}, inference_seconds
+            target = batch["target"]
+            edge_valid = _edge_valid(batch["static"])
+            activity = target.get("aggregate_link_activity", target["link_activity"])
+            activity_mask = target.get("aggregate_link_activity_mask")
+            activity_mask = torch.ones_like(activity, dtype=torch.bool) if activity_mask is None else activity_mask.bool()
+            event_data = {
+                "link_activity": (prediction["link_activity_logits"], activity, edge_valid[:, None, :].expand_as(activity) & activity_mask),
+                "flow_present": (prediction["flow_presence_logits"], target["flow_present"], batch["static"]["flow_valid"][:, None, :].expand_as(target["flow_present"])),
+                "task_present": (prediction["task_presence_logits"], target["task_present"], batch["static"]["task_valid"][:, None, :].expand_as(target["task_present"])),
+                "dag_release": (prediction["dag_release_logits"], target["task_dag_state"][..., 2] > 0.5, target["task_dag_state_present"] & batch["static"]["task_valid"][:, None, :].expand_as(target["task_dag_state_present"])),
+                "dag_edge_present": (prediction["dag_edge_presence_logits"], target["dag_edge_present"], batch["static"]["dag_edge_valid"][:, None, :].expand_as(target["dag_edge_present"])),
+            }
+            for name, (logits, truth, valid) in event_data.items():
+                scores[name].append(torch.sigmoid(logits)[valid].cpu().numpy())
+                labels[name].append(truth.bool()[valid].cpu().numpy())
+    thresholds: dict[str, float] = {}
+    report: dict[str, Any] = {"selection_split": "calibration", "events": {}}
+    for name in _BINARY_EVENT_KEYS:
+        all_scores = np.concatenate(scores[name]) if scores[name] else np.empty((0,), dtype=np.float64)
+        all_labels = np.concatenate(labels[name]) if labels[name] else np.empty((0,), dtype=bool)
+        rows = []
+        for candidate in (0.1, 0.3, 0.5, 0.7, 0.9):
+            predicted = all_scores >= candidate
+            tp = int(np.count_nonzero(predicted & all_labels))
+            fp = int(np.count_nonzero(predicted & ~all_labels))
+            fn = int(np.count_nonzero(~predicted & all_labels))
+            denominator = 2 * tp + fp + fn
+            rows.append({"threshold": candidate, "f1": float(2 * tp / denominator) if denominator else None, "tp": tp, "fp": fp, "fn": fn})
+        comparable = [row for row in rows if row["f1"] is not None]
+        selected = max(comparable, key=lambda row: (row["f1"], -abs(row["threshold"] - 0.5))) if comparable else rows[2]
+        thresholds[name] = float(selected["threshold"])
+        report["events"][name] = {"candidates": rows, "selected": selected}
+    return thresholds, report, inference_seconds
 
 
 def _evaluate(
@@ -158,12 +182,12 @@ def _evaluate(
     model: FormalDualGraphWorldModel | None,
     loader: DataLoader,
     stats: Mapping[str, Any],
-    threshold: float,
+    thresholds: Mapping[str, float],
     distribution_available: bool,
 ) -> tuple[dict[str, Any], float]:
     accumulator = FormalMetricAccumulator(
         stats,
-        threshold=threshold,
+        thresholds=thresholds,
         distribution_available=distribution_available,
     )
     inference_seconds = 0.0
@@ -282,6 +306,7 @@ def run_cpu_smoke(
         "batch_size": 1,
         "learning_rate": 1e-3,
         "splits": list(CPU_SPLITS),
+        "threshold_selection_split": "calibration",
         "locked_test_accessed": False,
         "tensor_root": str(tensor_root.resolve()),
         "dataset_manifest_sha256": _sha256(dataset_hash_source),
@@ -320,6 +345,7 @@ def run_cpu_smoke(
                     batch["target"],
                     batch["static"],
                     class_weights=class_weights,
+                    normalization_stats=stats,
                 )
                 if not torch.isfinite(loss):
                     raise RuntimeError(f"non-finite loss for {method}")
@@ -355,8 +381,8 @@ def run_cpu_smoke(
     comparison_rows = []
     for method in CPU_METHODS:
         model = models.get(method)
-        threshold, threshold_report, threshold_seconds = _choose_link_threshold(
-            method, model, loaders["validation"], stats
+        thresholds, threshold_report, threshold_seconds = _choose_event_thresholds(
+            method, model, loaders["calibration"], stats
         )
         distribution_available = bool(registry[method]["distribution_output"])
         validation_report, validation_seconds = _evaluate(
@@ -364,7 +390,7 @@ def run_cpu_smoke(
             model,
             loaders["validation"],
             stats,
-            threshold,
+            thresholds,
             distribution_available,
         )
         calibration_report, calibration_seconds = _evaluate(
@@ -372,16 +398,18 @@ def run_cpu_smoke(
             model,
             loaders["calibration"],
             stats,
-            threshold,
+            thresholds,
             distribution_available,
         )
         metric_reports[method] = {
             "threshold_selection": threshold_report,
+            "thresholds": thresholds,
             "validation": validation_report,
             "calibration": calibration_report,
         }
         _write_json(output_dir / "metrics" / f"{method}__validation.json", validation_report)
         _write_json(output_dir / "metrics" / f"{method}__calibration.json", calibration_report)
+        _write_json(output_dir / "metrics" / f"{method}__threshold_selection.json", threshold_report)
         runtime.setdefault(method, {})
         runtime[method].update(
             {
@@ -393,7 +421,8 @@ def run_cpu_smoke(
         comparison_rows.append(
             {
                 "method": method,
-                "threshold": threshold,
+                "threshold": thresholds["link_activity"],
+                "thresholds": json.dumps(thresholds, sort_keys=True),
                 "validation_link_f1": _metric_value(validation_report, "event.link_activity.f1"),
                 "calibration_link_f1": _metric_value(calibration_report, "event.link_activity.f1"),
                 "validation_node_x_mae": _metric_value(validation_report, "state.node.x.mae"),

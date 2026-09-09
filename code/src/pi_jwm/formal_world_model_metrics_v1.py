@@ -10,6 +10,10 @@ import torch
 
 from .airfogsim_sparse_diagnostics_v2 import average_precision
 from .airfogsim_tensor_v2 import EDGE_FEATURES, FLOW_FEATURES, NODE_FEATURES, TASK_FEATURES
+from .formal_binary_calibration_v1 import (
+    InverseTemperatureCalibration,
+    binary_probability_metrics,
+)
 
 
 FEATURES = {
@@ -26,6 +30,13 @@ UNITS = {
     "task_dag": ["count", "count", "boolean"],
 }
 DAG_FEATURES = ("parent_count", "unfinished_parent_count", "release_ready")
+BINARY_EVENT_NAMES = (
+    "link_activity",
+    "flow_present",
+    "task_present",
+    "dag_release",
+    "dag_edge_present",
+)
 
 
 def not_computable(reason: str, required_fields: list[str]) -> dict[str, Any]:
@@ -62,7 +73,7 @@ def metric_registry() -> dict[str, dict[str, Any]]:
         "Mbps", ["physical_edge_state", "physical_edge_present"], "valid target physical edges"
     )
     event_sources = {
-        "event.link_activity": ["link_activity", "physical_edge_endpoint_index"],
+        "event.link_activity": ["aggregate_link_activity", "aggregate_link_activity_mask", "physical_edge_endpoint_index"],
         "event.flow_present": ["flow_present", "flow_valid"],
         "event.task_present": ["task_present", "task_valid"],
         "dag.release_ready": ["task_dag_state", "task_dag_state_present"],
@@ -71,17 +82,23 @@ def metric_registry() -> dict[str, dict[str, Any]]:
     for prefix, sources in event_sources.items():
         for metric in ("precision", "recall", "f1", "auprc"):
             registry[f"{prefix}.{metric}"] = _definition("ratio", sources, "valid binary labels")
+    for metric, unit in (("nll", "nats"), ("brier", "ratio"), ("ece", "ratio")):
+        registry[f"event.link_activity.{metric}"] = _definition(
+            unit,
+            event_sources["event.link_activity"],
+            "valid binary labels",
+        )
     registry.update(
         {
             "task.lifecycle.accuracy": _definition("ratio", ["task_lifecycle_index", "task_present"], "valid task lifecycle labels"),
             "task.lifecycle.macro_f1": _definition("ratio", ["task_lifecycle_index", "task_present"], "supported lifecycle classes"),
             "task.lifecycle.support": _definition("count", ["task_lifecycle_index", "task_present"], "lifecycle class"),
-            "link.active_only_rate.mae": _definition("Mbps", ["physical_edge_state.rate_sum", "link_activity"], "active target links"),
-            "link.active_only_rate.rmse": _definition("Mbps", ["physical_edge_state.rate_sum", "link_activity"], "active target links"),
+            "link.active_only_rate.mae": _definition("Mbps", ["aggregate_link_rate_sum", "aggregate_link_rate_sum_mask", "aggregate_link_activity"], "observed active target links"),
+            "link.active_only_rate.rmse": _definition("Mbps", ["aggregate_link_rate_sum", "aggregate_link_rate_sum_mask", "aggregate_link_activity"], "observed active target links"),
             "dag.unfinished_parent_count.mae": _definition("count", ["task_dag_state.unfinished_parent_count", "task_dag_state_present"], "valid DAG task states"),
             "system.task_completion_rate.absolute_error": _definition("ratio", ["task_lifecycle_logits", "task_lifecycle_index"], "valid task lifecycle labels"),
-            "system.communication_throughput.mae": _definition("Mbps", ["physical_edge_state.rate_sum"], "evaluated rollout steps"),
-            "resource.rb_occupancy.mae": _definition("RB", ["physical_edge_state.allocated_rb_count"], "evaluated rollout steps"),
+            "system.communication_throughput.mae": _definition("Mbps", ["aggregate_link_rate_sum", "aggregate_link_rate_sum_mask"], "observed rollout steps"),
+            "resource.rb_occupancy.mae": _definition("RB", ["aggregate_rb_occupancy", "aggregate_rb_occupancy_mask"], "observed rollout steps"),
             "system.p95_latency": _definition("s", ["task_completion_timestamp"], "completed tasks"),
             "system.p99_latency": _definition("s", ["task_completion_timestamp"], "completed tasks"),
             "system.energy": _definition("J", ["realized_energy"], "evaluated rollout steps"),
@@ -199,7 +216,15 @@ class _MetricBucket:
             for name, features in all_features.items()
         }
         self.binary = {
-            name: {"tp": 0, "fp": 0, "fn": 0, "valid": 0, "scores": [], "labels": []}
+            name: {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "valid": 0,
+                "scores": [],
+                "probabilities": [],
+                "labels": [],
+            }
             for name in ("link_activity", "flow_present", "task_present", "dag_release", "dag_edge_present")
         }
         self.lifecycle = np.zeros((5, 5), dtype=np.int64)
@@ -247,9 +272,33 @@ class _MetricBucket:
         target: torch.Tensor,
         valid: torch.Tensor,
         threshold: float,
+        *,
+        probabilities: torch.Tensor | None = None,
+        predicted: torch.Tensor | None = None,
     ) -> None:
-        scores = torch.sigmoid(logits)
-        predicted = scores >= threshold
+        if probabilities is None:
+            scores = torch.sigmoid(logits)
+        else:
+            if (
+                not isinstance(probabilities, torch.Tensor)
+                or probabilities.shape != logits.shape
+                or torch.is_complex(probabilities)
+                or not torch.isfinite(probabilities).all().item()
+                or not torch.logical_and(probabilities >= 0.0, probabilities <= 1.0).all().item()
+            ):
+                raise ValueError("probabilities must match logits and be finite values in [0, 1]")
+            scores = probabilities
+        if predicted is None:
+            predicted = scores >= threshold
+        elif (
+            not isinstance(predicted, torch.Tensor)
+            or predicted.dtype is not torch.bool
+            or predicted.shape != logits.shape
+            or predicted.device != logits.device
+        ):
+            raise ValueError(
+                "predicted must be a boolean tensor matching logits shape and device"
+            )
         truth = target.bool()
         item = self.binary[name]
         item["tp"] += int((predicted & truth & valid).sum())
@@ -257,6 +306,7 @@ class _MetricBucket:
         item["fn"] += int((~predicted & truth & valid).sum())
         item["valid"] += int(valid.sum())
         item["scores"].append(scores[valid].detach().cpu().numpy())
+        item["probabilities"].append(scores[valid].detach().cpu().numpy())
         item["labels"].append(truth[valid].detach().cpu().numpy())
 
 
@@ -266,13 +316,33 @@ class FormalMetricAccumulator:
         stats: Mapping[str, Any],
         *,
         threshold: float = 0.5,
+        thresholds: Mapping[str, float] | None = None,
         distribution_available: bool = True,
+        link_probability_calibration: InverseTemperatureCalibration | None = None,
     ) -> None:
         if not 0.0 < threshold < 1.0:
             raise ValueError("threshold must be between zero and one")
         self.stats = stats
         self.threshold = float(threshold)
+        self.thresholds = {name: self.threshold for name in BINARY_EVENT_NAMES}
+        if thresholds is not None:
+            unknown = set(thresholds) - set(BINARY_EVENT_NAMES)
+            if unknown:
+                raise ValueError(f"unsupported binary event thresholds: {sorted(unknown)}")
+            for name, value in thresholds.items():
+                value = float(value)
+                if not 0.0 < value < 1.0:
+                    raise ValueError(f"threshold for {name} must be between zero and one")
+                self.thresholds[name] = value
+        self.legacy_raw_thresholds = dict(self.thresholds)
+        if link_probability_calibration is not None:
+            self.thresholds["link_activity"] = (
+                link_probability_calibration.map_raw_threshold(
+                    self.legacy_raw_thresholds["link_activity"]
+                )
+            )
         self.distribution_available = bool(distribution_available)
+        self.link_probability_calibration = link_probability_calibration
         self._horizon_buckets: list[_MetricBucket] = []
         self._overall = _MetricBucket()
         self.sample_count = 0
@@ -281,6 +351,11 @@ class FormalMetricAccumulator:
         if name == "task_dag":
             return reference.new_ones(3)
         return reference.new_tensor(self.stats["features"][f"{name}_state"]["scale"])
+
+    def _mean(self, name: str, reference: torch.Tensor) -> torch.Tensor:
+        if name == "task_dag":
+            return reference.new_zeros(3)
+        return reference.new_tensor(self.stats["features"][f"{name}_state"]["mean"])
 
     def _update_bucket(
         self,
@@ -312,26 +387,46 @@ class FormalMetricAccumulator:
         flow_valid = _static_mask("flow", static).bool()
         task_valid = _static_mask("task", static).bool()
         dag_valid = static["dag_edge_valid"].bool()
+        aggregate_activity = target.get("aggregate_link_activity", target["link_activity"]).bool()
+        aggregate_activity_mask = target.get("aggregate_link_activity_mask")
+        if aggregate_activity_mask is None:
+            aggregate_activity_mask = edge_valid[:, None, :].expand_as(aggregate_activity)
+        activity_valid = edge_valid & aggregate_activity_mask[:, horizon].bool()
+        link_logits = prediction["link_activity_logits"][:, horizon]
+        link_probabilities = None
+        link_threshold = self.thresholds["link_activity"]
+        if self.link_probability_calibration is not None:
+            link_probabilities = self.link_probability_calibration.probabilities_from_weighted_logits(
+                link_logits
+            )
+        legacy_link_decision = None
+        if self.link_probability_calibration is not None:
+            legacy_link_decision = (
+                torch.sigmoid(link_logits)
+                >= self.legacy_raw_thresholds["link_activity"]
+            )
         bucket.add_binary(
             "link_activity",
-            prediction["link_activity_logits"][:, horizon],
-            target["link_activity"][:, horizon],
-            edge_valid,
-            self.threshold,
+            link_logits,
+            aggregate_activity[:, horizon],
+            activity_valid,
+            link_threshold,
+            probabilities=link_probabilities,
+            predicted=legacy_link_decision,
         )
         bucket.add_binary(
             "flow_present",
             prediction["flow_presence_logits"][:, horizon],
             target["flow_present"][:, horizon],
             flow_valid,
-            self.threshold,
+            self.thresholds["flow_present"],
         )
         bucket.add_binary(
             "task_present",
             prediction["task_presence_logits"][:, horizon],
             target["task_present"][:, horizon],
             task_valid,
-            self.threshold,
+            self.thresholds["task_present"],
         )
         dag_state_present = target["task_dag_state_present"][:, horizon].bool() & task_valid
         bucket.add_binary(
@@ -339,14 +434,14 @@ class FormalMetricAccumulator:
             prediction["dag_release_logits"][:, horizon],
             target["task_dag_state"][:, horizon, :, 2] > 0.5,
             dag_state_present,
-            self.threshold,
+            self.thresholds["dag_release"],
         )
         bucket.add_binary(
             "dag_edge_present",
             prediction["dag_edge_presence_logits"][:, horizon],
             target["dag_edge_present"][:, horizon],
             dag_valid,
-            self.threshold,
+            self.thresholds["dag_edge_present"],
         )
 
         lifecycle_truth = target["task_lifecycle_index"][:, horizon].long()
@@ -360,11 +455,24 @@ class FormalMetricAccumulator:
 
         rate_index = list(EDGE_FEATURES).index("rate_sum")
         rate_scale = self._scale("physical_edge", prediction["physical_edge_state_mean"])[rate_index]
-        rate_error = (
-            prediction["physical_edge_state_mean"][:, horizon, :, rate_index]
-            - target["physical_edge_state"][:, horizon, :, rate_index]
-        ) * rate_scale
-        rate_mask = target["link_activity"][:, horizon].bool() & edge_valid
+        edge_mean = self._mean("physical_edge", prediction["physical_edge_state_mean"])
+        aggregate_rate = target.get(
+            "aggregate_link_rate_sum", target["physical_edge_state"][..., rate_index]
+        )
+        aggregate_rate_mask = target.get("aggregate_link_rate_sum_mask")
+        if aggregate_rate_mask is None:
+            aggregate_rate_mask = edge_valid[:, None, :].expand_as(aggregate_rate)
+        rate_observed = edge_valid & aggregate_rate_mask[:, horizon].bool()
+        predicted_rate = (
+            prediction["physical_edge_state_mean"][:, horizon, :, rate_index] * rate_scale
+            + edge_mean[rate_index]
+        )
+        if "aggregate_link_rate_sum" in target:
+            target_rate = aggregate_rate[:, horizon]
+        else:
+            target_rate = aggregate_rate[:, horizon] * rate_scale + edge_mean[rate_index]
+        rate_error = predicted_rate - target_rate
+        rate_mask = aggregate_activity[:, horizon].bool() & rate_observed
         bucket.rate_abs += float(torch.abs(rate_error[rate_mask]).sum())
         bucket.rate_sq += float(torch.square(rate_error[rate_mask]).sum())
         bucket.rate_count += int(rate_mask.sum())
@@ -382,16 +490,27 @@ class FormalMetricAccumulator:
         present_task = target["task_present"][:, horizon].bool() & task_valid
         if torch.any(present_task):
             bucket.system["deadline_abs"] += float(torch.abs(deadline_error[present_task]).mean())
-        predicted_rate = prediction["physical_edge_state_mean"][:, horizon, :, rate_index] * rate_scale
-        target_rate = target["physical_edge_state"][:, horizon, :, rate_index] * rate_scale
         throughput_error = torch.abs(
-            (predicted_rate * edge_valid).sum(dim=1) - (target_rate * edge_valid).sum(dim=1)
+            (predicted_rate * rate_observed).sum(dim=1) - (target_rate * rate_observed).sum(dim=1)
         )
         rb_index = list(EDGE_FEATURES).index("allocated_rb_count")
         rb_scale = self._scale("physical_edge", prediction["physical_edge_state_mean"])[rb_index]
-        predicted_rb = prediction["physical_edge_state_mean"][:, horizon, :, rb_index] * rb_scale
-        target_rb = target["physical_edge_state"][:, horizon, :, rb_index] * rb_scale
-        rb_error = torch.abs((predicted_rb * edge_valid).sum(dim=1) - (target_rb * edge_valid).sum(dim=1))
+        predicted_rb = (
+            prediction["physical_edge_state_mean"][:, horizon, :, rb_index] * rb_scale
+            + edge_mean[rb_index]
+        )
+        aggregate_rb = target.get(
+            "aggregate_rb_occupancy", target["physical_edge_state"][..., rb_index]
+        )
+        aggregate_rb_mask = target.get("aggregate_rb_occupancy_mask")
+        if aggregate_rb_mask is None:
+            aggregate_rb_mask = edge_valid[:, None, :].expand_as(aggregate_rb)
+        rb_observed = edge_valid & aggregate_rb_mask[:, horizon].bool()
+        if "aggregate_rb_occupancy" in target:
+            target_rb = aggregate_rb[:, horizon]
+        else:
+            target_rb = aggregate_rb[:, horizon] * rb_scale + edge_mean[rb_index]
+        rb_error = torch.abs((predicted_rb * rb_observed).sum(dim=1) - (target_rb * rb_observed).sum(dim=1))
         bucket.system["throughput_abs"] += float(throughput_error.sum())
         bucket.system["rb_abs"] += float(rb_error.sum())
         bucket.system["aggregate_count"] += int(throughput_error.numel())
@@ -446,7 +565,7 @@ class FormalMetricAccumulator:
                 )
 
         binary_sources = {
-            "link_activity": ["link_activity", "physical_edge_endpoint_index"],
+            "link_activity": ["aggregate_link_activity", "aggregate_link_activity_mask", "physical_edge_endpoint_index"],
             "flow_present": ["flow_present", "flow_valid"],
             "task_present": ["task_present", "task_valid"],
             "dag_release": ["task_dag_state", "task_dag_state_present"],
@@ -465,6 +584,39 @@ class FormalMetricAccumulator:
                     binary_prefix[name], item, item["scores"], item["labels"], binary_sources[name]
                 )
             )
+        link_probability_sources = [
+            "aggregate_link_activity",
+            "aggregate_link_activity_mask",
+            "physical_edge_endpoint_index",
+        ]
+        if self.link_probability_calibration is None:
+            for name in ("nll", "brier", "ece"):
+                metrics[f"event.link_activity.{name}"] = not_computable(
+                    "raw_weighted_score is not formal event probability",
+                    link_probability_sources,
+                )
+        elif bucket.binary["link_activity"]["valid"]:
+            item = bucket.binary["link_activity"]
+            probabilities = torch.from_numpy(np.concatenate(item["probabilities"]))
+            labels = torch.from_numpy(np.concatenate(item["labels"]))
+            probability_values = binary_probability_metrics(probabilities, labels)
+            count = int(probability_values["count"])
+            for name in ("nll", "brier", "ece"):
+                value = float(probability_values[name])
+                metrics[f"event.link_activity.{name}"] = _record(
+                    value,
+                    numerator=value * count,
+                    denominator=count,
+                    count=count,
+                    unit="nats" if name == "nll" else "ratio",
+                    sources=link_probability_sources,
+                )
+        else:
+            for name in ("nll", "brier", "ece"):
+                metrics[f"event.link_activity.{name}"] = not_computable(
+                    "no valid link activity labels",
+                    link_probability_sources,
+                )
 
         support = bucket.lifecycle.sum(axis=1)
         total = int(support.sum())
@@ -500,10 +652,10 @@ class FormalMetricAccumulator:
         rate_mae = bucket.rate_abs / rate_count if rate_count else None
         rate_rmse = math.sqrt(bucket.rate_sq / rate_count) if rate_count else None
         metrics["link.active_only_rate.mae"] = _record(
-            rate_mae, numerator=bucket.rate_abs, denominator=rate_count, count=rate_count, unit="Mbps", sources=["physical_edge_state.rate_sum", "link_activity"], reason="no active target links" if not rate_count else None
+            rate_mae, numerator=bucket.rate_abs, denominator=rate_count, count=rate_count, unit="Mbps", sources=["aggregate_link_rate_sum", "aggregate_link_rate_sum_mask", "aggregate_link_activity"], reason="no observed active target links" if not rate_count else None
         )
         metrics["link.active_only_rate.rmse"] = _record(
-            rate_rmse, numerator=bucket.rate_sq, denominator=rate_count, count=rate_count, unit="Mbps", sources=["physical_edge_state.rate_sum", "link_activity"], reason="no active target links" if not rate_count else None
+            rate_rmse, numerator=bucket.rate_sq, denominator=rate_count, count=rate_count, unit="Mbps", sources=["aggregate_link_rate_sum", "aggregate_link_rate_sum_mask", "aggregate_link_activity"], reason="no observed active target links" if not rate_count else None
         )
         unfinished = bucket.state["task_dag"]
         unfinished_count = int(unfinished["count"])
@@ -537,11 +689,11 @@ class FormalMetricAccumulator:
         aggregate_count = int(system["aggregate_count"])
         metrics["system.communication_throughput.mae"] = _record(
             system["throughput_abs"] / aggregate_count if aggregate_count else None,
-            numerator=system["throughput_abs"], denominator=aggregate_count, count=aggregate_count, unit="Mbps", sources=["physical_edge_state.rate_sum"], reason="no evaluated rollout steps" if not aggregate_count else None
+            numerator=system["throughput_abs"], denominator=aggregate_count, count=aggregate_count, unit="Mbps", sources=["aggregate_link_rate_sum", "aggregate_link_rate_sum_mask"], reason="no observed rollout steps" if not aggregate_count else None
         )
         metrics["resource.rb_occupancy.mae"] = _record(
             system["rb_abs"] / aggregate_count if aggregate_count else None,
-            numerator=system["rb_abs"], denominator=aggregate_count, count=aggregate_count, unit="RB", sources=["physical_edge_state.allocated_rb_count"], reason="no evaluated rollout steps" if not aggregate_count else None
+            numerator=system["rb_abs"], denominator=aggregate_count, count=aggregate_count, unit="RB", sources=["aggregate_rb_occupancy", "aggregate_rb_occupancy_mask"], reason="no observed rollout steps" if not aggregate_count else None
         )
 
         unavailable = {
@@ -572,6 +724,39 @@ class FormalMetricAccumulator:
             "schema_version": "PI-JWM-formal-metrics-v1",
             "sample_count": self.sample_count,
             "threshold": self.threshold,
+            "thresholds": self.thresholds,
+            "legacy_raw_thresholds": (
+                None
+                if self.link_probability_calibration is None
+                else {"link_activity": self.legacy_raw_thresholds["link_activity"]}
+            ),
+            "mapped_probability_thresholds": (
+                None
+                if self.link_probability_calibration is None
+                else {"link_activity": self.thresholds["link_activity"]}
+            ),
+            "link_probability_calibration": (
+                None
+                if self.link_probability_calibration is None
+                else {
+                    "pos_weight": self.link_probability_calibration.pos_weight,
+                    "log_temperature": self.link_probability_calibration.log_temperature,
+                    "temperature": self.link_probability_calibration.temperature,
+                }
+            ),
+            "threshold_coordinate": {
+                name: (
+                    "event_probability"
+                    if name == "link_activity"
+                    and self.link_probability_calibration is not None
+                    else (
+                        "raw_weighted_score"
+                        if name == "link_activity"
+                        else "legacy_sigmoid_score"
+                    )
+                )
+                for name in BINARY_EVENT_NAMES
+            },
             "distribution_available": self.distribution_available,
             "registry": metric_registry(),
             "horizons": horizons,

@@ -10,6 +10,7 @@ from typing import Any
 
 
 SCHEMA_VERSION = "PI-JWM-AirFogSim-multiseed-dataset-v2"
+TIME_GRID_TOLERANCE = 1e-5
 
 
 def _validated_time_grid(values: Sequence[float]) -> tuple[list[float], float]:
@@ -18,7 +19,7 @@ def _validated_time_grid(values: Sequence[float]) -> tuple[list[float], float]:
         raise ValueError("each seed requires at least two distinct time points")
     interval = times[1] - times[0]
     if interval <= 0 or any(
-        not math.isclose(right - left, interval, rel_tol=0.0, abs_tol=1e-9)
+        not math.isclose(right - left, interval, rel_tol=0.0, abs_tol=TIME_GRID_TOLERANCE)
         for left, right in zip(times, times[1:])
     ):
         raise ValueError("each seed must use a uniform time grid")

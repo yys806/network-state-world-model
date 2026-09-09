@@ -20,15 +20,21 @@ STATE_KEYS = {
     "flow_state": "flow_present",
     "task_state": "task_present",
 }
+FEATURE_MASK_KEYS = {
+    "physical_edge_state": "physical_edge_feature_mask",
+    "task_state": "task_feature_mask",
+}
 HISTORY_KEYS = (
     "node_state",
     "node_present",
     "physical_edge_state",
     "physical_edge_present",
+    "physical_edge_feature_mask",
     "flow_state",
     "flow_present",
     "task_state",
     "task_present",
+    "task_feature_mask",
     "task_lifecycle_index",
     "task_action",
     "task_action_present",
@@ -42,11 +48,13 @@ TARGET_KEYS = (
     "node_present",
     "physical_edge_state",
     "physical_edge_present",
+    "physical_edge_feature_mask",
     "flow_state",
     "flow_present",
     "flow_completed",
     "task_state",
     "task_present",
+    "task_feature_mask",
     "task_lifecycle_index",
 )
 STATIC_KEYS = (
@@ -55,11 +63,13 @@ STATIC_KEYS = (
     "physical_edge_kind_index",
     "flow_endpoint_index",
     "flow_type_index",
+    "flow_task_index",
     "flow_valid",
     "task_valid",
     "dag_edge_index",
     "dag_edge_valid",
     "agent_node_index",
+    "slot_seconds",
 )
 
 
@@ -108,22 +118,33 @@ def _masked_statistics(values: list[np.ndarray], masks: list[np.ndarray]) -> dic
     feature_count = values[0].shape[-1]
     total = np.zeros((feature_count,), dtype=np.float64)
     total_sq = np.zeros((feature_count,), dtype=np.float64)
-    count = 0
+    count = np.zeros((feature_count,), dtype=np.int64)
     for value, mask in zip(values, masks):
         flat = np.asarray(value, dtype=np.float64).reshape(-1, feature_count)
-        valid = np.asarray(mask, dtype=bool).reshape(-1)
-        selected = flat[valid]
-        if selected.size == 0:
-            continue
-        total += selected.sum(axis=0)
-        total_sq += np.square(selected).sum(axis=0)
-        count += selected.shape[0]
-    if count == 0:
-        return {"mean": [0.0] * feature_count, "scale": [1.0] * feature_count, "count": 0}
-    mean = total / count
-    variance = np.maximum(total_sq / count - np.square(mean), 1e-12)
+        valid = np.asarray(mask, dtype=bool)
+        if valid.shape == value.shape[:-1]:
+            valid = np.broadcast_to(valid[..., None], value.shape)
+        if valid.shape != value.shape:
+            raise ValueError("statistics mask shape mismatch")
+        valid = valid.reshape(-1, feature_count)
+        for feature_index in range(feature_count):
+            selected = flat[valid[:, feature_index], feature_index]
+            if selected.size == 0:
+                continue
+            total[feature_index] += selected.sum()
+            total_sq[feature_index] += np.square(selected).sum()
+            count[feature_index] += selected.size
+    mean = np.divide(total, count, out=np.zeros_like(total), where=count > 0)
+    second_moment = np.divide(total_sq, count, out=np.zeros_like(total_sq), where=count > 0)
+    variance = np.maximum(second_moment - np.square(mean), 1e-12)
     scale = np.sqrt(variance)
-    return {"mean": mean.tolist(), "scale": scale.tolist(), "count": int(count)}
+    scale[count == 0] = 1.0
+    return {
+        "mean": mean.tolist(),
+        "scale": scale.tolist(),
+        "count": int(count.max(initial=0)),
+        "feature_count": count.tolist(),
+    }
 
 
 def fit_training_stats(root: str | Path, *, split: str = "dev_train") -> dict[str, Any]:
@@ -144,7 +165,14 @@ def fit_training_stats(root: str | Path, *, split: str = "dev_train") -> dict[st
         start, end = row["input_start_index"], row["input_end_index"]
         for key, mask_key in STATE_KEYS.items():
             values[key].append(arrays[key][start:end])
-            masks[key].append(arrays[mask_key][start:end])
+            presence = arrays[mask_key][start:end].astype(bool)
+            feature_mask_key = FEATURE_MASK_KEYS.get(key)
+            if feature_mask_key is not None and feature_mask_key in arrays:
+                masks[key].append(
+                    presence[..., None] & arrays[feature_mask_key][start:end].astype(bool)
+                )
+            else:
+                masks[key].append(presence)
     return {
         "schema_version": "PI-JWM-AirFogSim-normalization-v2",
         "source_split": split,
@@ -181,7 +209,7 @@ def fit_sparse_label_stats(
     rows = _read_window_rows(root, split)
     cache: dict[int, dict[str, np.ndarray]] = {}
     counts = {
-        "link_activity": [0, 0],
+        "aggregate_link_activity": [0, 0],
         "flow_present": [0, 0],
         "task_present": [0, 0],
     }
@@ -198,10 +226,19 @@ def fit_sparse_label_stats(
         start, end = row["label_start_index"], row["label_end_index"]
 
         edge_present = arrays["physical_edge_present"][start:end].astype(bool)
-        link_activity = (arrays["physical_edge_state"][start:end, :, activity_index] > 0) & edge_present
+        edge_feature_mask = arrays.get("physical_edge_feature_mask")
+        if edge_feature_mask is None:
+            activity_observed = edge_present
+        else:
+            activity_observed = edge_present & edge_feature_mask[
+                start:end, :, activity_index
+            ].astype(bool)
+        link_activity = (
+            arrays["physical_edge_state"][start:end, :, activity_index] > 0
+        ) & activity_observed
         link_positive = int(np.count_nonzero(link_activity))
-        counts["link_activity"][0] += link_positive
-        counts["link_activity"][1] += int(np.count_nonzero(edge_present)) - link_positive
+        counts["aggregate_link_activity"][0] += link_positive
+        counts["aggregate_link_activity"][1] += int(np.count_nonzero(activity_observed)) - link_positive
 
         flow_present = arrays["flow_present"][start:end].astype(bool)
         flow_mask = np.broadcast_to(arrays["flow_valid"].astype(bool), flow_present.shape)
@@ -221,7 +258,7 @@ def fit_sparse_label_stats(
             lifecycle_counts[lifecycle_index] += np.count_nonzero(lifecycle_mask & (lifecycle == lifecycle_index))
 
     valid_lifecycle_count = int(lifecycle_counts.sum())
-    return {
+    result = {
         "schema_version": "PI-JWM-AirFogSim-sparse-label-stats-v2",
         "source_split": split,
         "sample_count": len(rows),
@@ -235,6 +272,8 @@ def fit_sparse_label_stats(
             "valid_count": valid_lifecycle_count,
         },
     }
+    result["labels"]["link_activity"] = dict(result["labels"]["aggregate_link_activity"])
+    return result
 
 
 def _normalize(value: np.ndarray, mask: np.ndarray, stat: Mapping[str, Any]) -> np.ndarray:
@@ -244,7 +283,10 @@ def _normalize(value: np.ndarray, mask: np.ndarray, stat: Mapping[str, Any]) -> 
         raise ValueError("normalization feature dimension mismatch")
     normalized = (value.astype(np.float32) - mean) / np.maximum(scale, 1e-6)
     normalized = normalized.copy()
-    normalized[~mask.astype(bool)] = 0.0
+    valid = mask.astype(bool)
+    if valid.shape == value.shape[:-1]:
+        valid = np.broadcast_to(valid[..., None], value.shape)
+    normalized[~valid] = 0.0
     return normalized
 
 
@@ -300,15 +342,37 @@ class AirFogSimTensorWindowDataset(Dataset):
             (arrays["physical_edge_state"][label_start:label_end, :, activity_index] > 0)
             & arrays["physical_edge_present"][label_start:label_end].astype(bool)
         )
+        state_by_feature_mask = {value: key for key, value in FEATURE_MASK_KEYS.items()}
+
+        def sliced_value(key: str, start: int, end: int) -> np.ndarray:
+            if key in arrays:
+                return arrays[key][start:end]
+            state_key = state_by_feature_mask.get(key)
+            if state_key is None:
+                raise KeyError(key)
+            presence_key = STATE_KEYS[state_key]
+            shape = arrays[state_key][start:end].shape
+            return np.broadcast_to(
+                arrays[presence_key][start:end][..., None], shape
+            ).astype(bool)
+
         for key in HISTORY_KEYS:
-            value = arrays[key][input_start:input_end]
+            value = sliced_value(key, input_start, input_end)
             if self.normalize and key in STATE_KEYS:
-                value = _normalize(value, arrays[STATE_KEYS[key]][input_start:input_end], self.stats["features"][key])
+                mask = arrays[STATE_KEYS[key]][input_start:input_end].astype(bool)
+                feature_mask_key = FEATURE_MASK_KEYS.get(key)
+                if feature_mask_key is not None and feature_mask_key in arrays:
+                    mask = mask[..., None] & arrays[feature_mask_key][input_start:input_end].astype(bool)
+                value = _normalize(value, mask, self.stats["features"][key])
             history[key] = _to_tensor(value)
         for key in TARGET_KEYS:
-            value = arrays[key][label_start:label_end]
+            value = sliced_value(key, label_start, label_end)
             if self.normalize and key in STATE_KEYS:
-                value = _normalize(value, arrays[STATE_KEYS[key]][label_start:label_end], self.stats["features"][key])
+                mask = arrays[STATE_KEYS[key]][label_start:label_end].astype(bool)
+                feature_mask_key = FEATURE_MASK_KEYS.get(key)
+                if feature_mask_key is not None and feature_mask_key in arrays:
+                    mask = mask[..., None] & arrays[feature_mask_key][label_start:label_end].astype(bool)
+                value = _normalize(value, mask, self.stats["features"][key])
             target[key] = _to_tensor(value)
         static = {key: _to_tensor(arrays[key]) for key in STATIC_KEYS if key in arrays}
         return {

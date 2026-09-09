@@ -134,6 +134,28 @@ class AirFogSimWindowDatasetV2Tests(unittest.TestCase):
             self.assertAlmostEqual(1.0, stats["features"]["node_state"]["mean"][0])
             self.assertNotAlmostEqual(100.0, stats["features"]["node_state"]["mean"][0])
 
+    def test_training_stats_exclude_unobserved_features(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _write_fixture(root)
+            tensor_path = root / "seed_000" / "trajectory_tensors.npz"
+            with np.load(tensor_path, allow_pickle=False) as loaded:
+                arrays = {key: loaded[key] for key in loaded.files}
+            edge_mask = np.broadcast_to(
+                arrays["physical_edge_present"][..., None],
+                arrays["physical_edge_state"].shape,
+            ).copy()
+            arrays["physical_edge_state"][0, 0, 0] = 999.0
+            edge_mask[0, 0, 0] = False
+            arrays["physical_edge_feature_mask"] = edge_mask
+            np.savez_compressed(tensor_path, **arrays)
+
+            from pi_jwm.airfogsim_window_dataset_v2 import fit_training_stats
+
+            stats = fit_training_stats(root, split="dev_train")
+            self.assertEqual(103, stats["features"]["physical_edge_state"]["feature_count"][0])
+            self.assertNotAlmostEqual(999.0, stats["features"]["physical_edge_state"]["mean"][0])
+
     def test_exposes_raw_masked_link_activity_before_normalization(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -192,6 +214,28 @@ class AirFogSimWindowDatasetV2Tests(unittest.TestCase):
                 self.assertEqual(0, stats["labels"][label]["positive_count"])
                 self.assertEqual(0.0, stats["labels"][label]["positive_rate"])
                 self.assertEqual(1.0, stats["labels"][label]["pos_weight"])
+
+    def test_sparse_activity_stats_exclude_unobserved_feature_values(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _write_fixture(root)
+            tensor_path = root / "seed_000" / "trajectory_tensors.npz"
+            with np.load(tensor_path, allow_pickle=False) as loaded:
+                arrays = {key: loaded[key] for key in loaded.files}
+            feature_mask = np.broadcast_to(
+                arrays["physical_edge_present"][..., None],
+                arrays["physical_edge_state"].shape,
+            ).copy()
+            feature_mask[2, 0, 3] = False
+            arrays["physical_edge_feature_mask"] = feature_mask
+            np.savez_compressed(tensor_path, **arrays)
+
+            from pi_jwm.airfogsim_window_dataset_v2 import fit_sparse_label_stats
+
+            stats = fit_sparse_label_stats(root, split="dev_train")
+
+            self.assertEqual(0, stats["labels"]["aggregate_link_activity"]["positive_count"])
+            self.assertEqual(51, stats["labels"]["aggregate_link_activity"]["negative_count"])
 
     def test_lifecycle_statistics_follow_the_tensor_lifecycle_vocabulary(self):
         with tempfile.TemporaryDirectory() as temporary:

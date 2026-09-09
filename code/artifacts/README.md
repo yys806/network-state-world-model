@@ -42,3 +42,9 @@
 查看 `manifests/retained_experiments.csv`、`manifests/quarantined_experiments.csv` 和 `manifests/referenced_paths.txt` 可追踪本次治理决策。
 
 除`README.md`和`manifests/**`治理元数据外，本目录默认由`.gitignore`排除。忽略只控制Git发布，不代表本地文件可以删除。
+
+## 证据读取规则
+
+本目录按“机器产物”管理，不按文件名中的 `final`、`formal`、`best` 或 `latest` 自动判定定版。读取任何结果时，先查看对应 JSON 状态字段、阻断项、输入/代码/配置哈希、split/seed 和 manifest，再回到 `记录/本地计划表.md` 与 `记录/文件树与证据分层_20260826.md` 确认它属于当前阶段。
+
+`preflight`、smoke、screening、候选、失败运行和旧协议结果都是过程或历史证据；只有被权威记录或 manifest 明确引用、状态通过且在 P8 方法冻结门批准的产物，才可作为定版证据。每次新增或审计产物后，应在根级 `task_plan.md`、`progress.md`、`findings.md` 留下过程记录；不得用过程摘要替代原始 artifact。

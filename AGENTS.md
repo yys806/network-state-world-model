@@ -6,6 +6,13 @@ This workspace is for **PI-JWM**: Physical-Information Joint World Model.
 
 AirFogSim is only a reference simulator and data-generation tool. Do not describe it as the framework or the research main line.
 
+## User-Facing Communication Standard (Highest Priority)
+
+- Every user-facing answer about PI-JWM must use plain, easy-to-understand Chinese. Explain technical terms in ordinary words the first time they appear; do not assume the reader already knows the project.
+- Each progress answer must clearly state: what was done, what the result means, what is still missing, what is blocked, and the single next action. Include GPU and `locked_test` boundaries when relevant.
+- Give the conclusion first, then the necessary evidence and details. Do not hide an important limitation behind abbreviations, dense jargon, or a list of file paths.
+- This communication rule is part of the project’s hard constraints. A technically correct result is not considered properly reported if a new project member cannot understand it from the answer.
+
 ## Theory-Implementation-Evidence Consistency
 
 This is a non-negotiable rule for all PI-JWM work:
@@ -88,3 +95,23 @@ The main line is PI-JWM:
 - Update `记录/本地计划表.md` when the plan or task status changes.
 - Update `记录/PIJWM主文档.md` for theory or method-boundary changes and `记录/8.12之后推进.md` for post-2026-08-12 progress; these files are the repository-local authority records.
 - Advisor-facing documents should use PI-JWM as the framework name.
+
+## Mainline Control and Scope Discipline
+
+- PI-JWM execution follows one canonical coarse-grained roadmap: `P0 -> P1 -> P2 -> P4 -> P6 -> P7+`, as recorded in `记录/本地计划表.md`. Do not invent, insert, or promote extra top-level phases while the current gate is open.
+- Before starting each task, read `task_plan.md`, this file, `记录/本地计划表.md`, `记录/PIJWM主文档.md`, `记录/8.12之后推进.md`, and `记录/文件树与证据分层_20260826.md`; then state the current gate, blocker, and single next deliverable. Recheck the plan after each completed gate so execution does not drift.
+- If an unexpected result, theory mismatch, or apparent blocker appears, pause the current gate and first search prior records, machine-readable audits, and relevant local literature. Reuse verified interfaces and findings before designing new code or experiments, and record whether the issue is historical, already resolved, or genuinely new.
+- `R0-R9`, `P1-A`, and `P2-A` are internal substeps or historical labels only. They must not replace the `P` roadmap in user-facing progress reports or become a reason to expand scope.
+- Once a route is confirmed, execute it sequentially and keep unrelated planner, robustness, paper-baseline, or locked-test work out of the active gate. Historical GPU smoke or aggregate-baseline runs must remain labeled historical/exploratory unless the current formal training gate independently approves them.
+- The current pre-GPU chain is fixed: freeze the selected aggregate training contract; freeze tensor contract and train-only statistics; close model/loss/metrics consistency; pass CPU micro-training and checkpoint reload; freeze the formal training protocol; complete an independent Go/No-Go audit. Only then may formal GPU training start.
+- At every checkpoint, report only three things: completed evidence, remaining blocker, and the single next action. Do not multiply tasks, rename an unresolved mismatch, or claim completion beyond the recorded evidence.
+- Every task must leave a short entry in `task_plan.md`, `progress.md`, and `findings.md`. Keep these root files as process records; only the authority files and approved manifests/artifacts can establish a final method or formal claim.
+
+## Knowledge Index Maintenance
+
+- `docs/PROJECT_INDEX.md`, `docs/ARCHITECTURE.md`, `docs/RESEARCH_STATUS.md`, `docs/EXPERIMENT_INDEX.md`, and `docs/RESULTS_INDEX.md` are navigation and status summaries. They never replace code, configuration, raw metrics, checkpoints, manifests, or audits as evidence.
+- After adding or changing an important module, experiment, result, configuration, path, or research boundary, update the affected index and `docs/CHANGELOG.md` in the same task.
+- When a result changes, trace it in both directions: research question → method → code → experiment → result, and result → experiment → configuration → data/model/code.
+- Before claiming an index is current, recheck the underlying source and machine-readable artifact. If an index conflicts with newer evidence, mark the conflict and fix the index; do not alter research code or evidence merely to make the text look consistent.
+- During an active remote run or file synchronization, do not move, rename, delete, overwrite, or bulk-rewrite `code/artifacts/experiments/`, `formal_tensor/`, `formal_data/`, `protocol/`, `protocols/`, live evidence, staging, checkpoints, predictions, runtime files, manifests, or transfer directories. Use read-only inspection and additive documentation only.
+- Archiving is preferred to deletion. Any future move or archive requires a user-approved scope, a per-file mapping with hashes, a rollback path, and validation that no active process or synchronizer is writing the target.

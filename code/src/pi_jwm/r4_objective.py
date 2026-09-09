@@ -28,9 +28,39 @@ def compute_r4_objective(
 ) -> R4ObjectiveReport:
     """Compute frozen target terms; candidate-only terms are explicit additions."""
 
-    reference = compute_r3_objective(output, batch)
+    # A complete RSSM exposes target-conditioned teacher predictions only in
+    # training mode.  Keep the free prior reconstruction as the main term and
+    # add a smaller teacher reconstruction term so both the deployment path and
+    # the variational posterior receive direct state supervision.
+    teacher_explicit = getattr(output, "training_predicted_explicit", None)
+    teacher_logits = getattr(output, "training_predicted_logits", None)
+    objective_output = output
+    teacher_reference = None
+    if teacher_explicit is not None or teacher_logits is not None:
+        if teacher_explicit is None or teacher_logits is None:
+            raise ValueError("complete RSSM teacher outputs are incomplete")
+        teacher_output = type(output)(
+            predicted_explicit=teacher_explicit,
+            predicted_logits=teacher_logits,
+            predicted_belief=output.predicted_belief,
+            probabilistic_parameters=getattr(output, "probabilistic_parameters", {}),
+            execution_metadata=getattr(output, "execution_metadata", {}),
+        )
+        teacher_reference = compute_r3_objective(teacher_output, batch)
+    reference = compute_r3_objective(objective_output, batch)
     auxiliary_terms: dict[str, ObjectiveTerm] = {}
     total = reference.total
+    if teacher_reference is not None:
+        teacher_weight = 0.5
+        auxiliary_terms["rssm_teacher_reconstruction"] = ObjectiveTerm(
+            status="computed",
+            value=float(teacher_reference.total.detach().cpu().item()),
+            numerator=float(teacher_reference.total.detach().cpu().item()),
+            denominator=1.0,
+            count=1,
+            reason=None,
+        )
+        total = total + teacher_weight * teacher_reference.total
     probabilistic = getattr(output, "probabilistic_parameters", {})
     required = {
         "context_prior_mean",
@@ -72,6 +102,76 @@ def compute_r4_objective(
                 reason=None,
             )
             total = total + 1.0e-3 * kl
+
+        complete_rssm_keys = {
+            "posterior_path_prior_mean",
+            "posterior_path_prior_log_std",
+            "posterior_path_posterior_mean",
+            "posterior_path_posterior_log_std",
+        }
+        has_complete_rssm = complete_rssm_keys & set(probabilistic)
+        if has_complete_rssm:
+            if not complete_rssm_keys.issubset(probabilistic):
+                raise ValueError("complete RSSM output is missing step distributions")
+            prior_mean = probabilistic["posterior_path_prior_mean"]
+            prior_log_std = probabilistic["posterior_path_prior_log_std"]
+            posterior_mean = probabilistic["posterior_path_posterior_mean"]
+            posterior_log_std = probabilistic["posterior_path_posterior_log_std"]
+            values = (prior_mean, prior_log_std, posterior_mean, posterior_log_std)
+            if any(not torch.isfinite(value).all() for value in values):
+                raise ValueError("complete RSSM step parameters contain NaN or Inf")
+
+            def _gaussian_kl(
+                q_mean: torch.Tensor,
+                q_log_std: torch.Tensor,
+                p_mean: torch.Tensor,
+                p_log_std: torch.Tensor,
+            ) -> torch.Tensor:
+                q_var = torch.exp(2.0 * q_log_std)
+                p_var = torch.exp(2.0 * p_log_std)
+                return 0.5 * (
+                    2.0 * (p_log_std - q_log_std)
+                    + (q_var + torch.square(q_mean - p_mean)) / p_var
+                    - 1.0
+                )
+
+            # KL balancing keeps the representation path and the dynamics path
+            # from disabling each other's gradients, as in modern RSSM training.
+            alpha = 0.8
+            dynamics_kl = _gaussian_kl(
+                posterior_mean.detach(), posterior_log_std.detach(), prior_mean, prior_log_std
+            )
+            representation_kl = _gaussian_kl(
+                posterior_mean, posterior_log_std, prior_mean.detach(), prior_log_std.detach()
+            )
+            balanced_kl = alpha * dynamics_kl + (1.0 - alpha) * representation_kl
+            kl_mean = balanced_kl.mean()
+            auxiliary_terms["rssm_step_kl_balanced"] = ObjectiveTerm(
+                status="computed",
+                value=float(kl_mean.detach().cpu().item()),
+                numerator=float(balanced_kl.detach().sum().cpu().item()),
+                denominator=float(balanced_kl.numel()),
+                count=int(balanced_kl.numel()),
+                reason=None,
+            )
+            total = total + 1.0e-3 * kl_mean
+
+            rollout_mean = probabilistic.get("rollout_prior_mean")
+            if rollout_mean is not None:
+                if rollout_mean.shape != posterior_mean.shape:
+                    raise ValueError("complete RSSM rollout and posterior shapes disagree")
+                overshoot = torch.square(rollout_mean - posterior_mean.detach()).mean()
+                if not torch.isfinite(overshoot):
+                    raise ValueError("complete RSSM overshooting term contains NaN or Inf")
+                auxiliary_terms["rssm_overshooting_consistency"] = ObjectiveTerm(
+                    status="computed",
+                    value=float(overshoot.detach().cpu().item()),
+                    numerator=float(overshoot.detach().cpu().item() * rollout_mean.numel()),
+                    denominator=float(rollout_mean.numel()),
+                    count=int(rollout_mean.numel()),
+                    reason=None,
+                )
+                total = total + 1.0e-2 * overshoot
 
         log_variance_keys = {
             f"{name}_log_variance" for name in CONTINUOUS_STATE_KEYS

@@ -274,6 +274,29 @@ class BuildFormalAirFogSimDatasetTests(unittest.TestCase):
             )
             self.assertFalse(validation["checks"]["formal_collector_ready"])
 
+    def test_unlocked_only_generation_never_creates_locked_test_tree(self):
+        subject = load_subject()
+        from pi_jwm.formal_airfogsim_dataset_v1 import build_formal_trajectory_specs
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            output = Path(temporary_directory)
+            result = subject.build_formal_dataset(
+                output_dir=output,
+                specs=build_formal_trajectory_specs(),
+                runtime_runner=fake_runtime,
+                resource_validator=fake_resource_validator,
+                max_time=30.0,
+                history_steps=8,
+                horizon_steps=3,
+                required_physical_directions={"V2I"},
+                include_locked_test=False,
+            )
+            self.assertEqual(54, result["trajectory_count"])
+            self.assertFalse((output / "locked_test").exists())
+            summary = json.loads((output / "dataset_summary.json").read_text(encoding="utf-8"))
+            self.assertEqual(54, summary["unlocked_trajectory_count"])
+            self.assertEqual(0, summary["locked_test_trajectory_count"])
+
     def test_completed_trajectories_are_verified_and_reused(self):
         subject = load_subject()
         from pi_jwm.formal_airfogsim_dataset_v1 import build_formal_trajectory_specs

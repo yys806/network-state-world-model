@@ -64,6 +64,7 @@ R4_SOURCE_FILES = (
     SRC_ROOT / "pi_jwm" / "r3_checkpoint.py",
     SRC_ROOT / "pi_jwm" / "r4_module_registry.py",
     SRC_ROOT / "pi_jwm" / "r4_world_model.py",
+    SRC_ROOT / "pi_jwm" / "complete_rssm_world_model_v1.py",
     SRC_ROOT / "pi_jwm" / "r4_objective.py",
     SRC_ROOT / "pi_jwm" / "r4_checkpoint.py",
     SRC_ROOT / "pi_jwm" / "r4_gpu_screening.py",
@@ -135,6 +136,7 @@ def executable_candidate_configs(
     history_steps: int,
     information_rate_mean: float,
     information_rate_scale: float,
+    include_complete_rssm: bool = False,
 ) -> dict[str, Any]:
     configs = {
         "reference": reference_r4_config(
@@ -145,15 +147,29 @@ def executable_candidate_configs(
         )
     }
     for name, spec in candidate_registry().items():
-        if spec.status == "executable":
-            configs[name] = make_single_module_config(
-                spec.family,
-                name,
-                hidden_dim=hidden_dim,
-                history_steps=history_steps,
-                information_rate_mean=information_rate_mean,
-                information_rate_scale=information_rate_scale,
-            )
+        if spec.status != "executable":
+            continue
+        # The complete RSSM has its own evidence contract. Keep it out of the
+        # historical frozen screening matrix unless explicitly selected.
+        if name == "complete_graph_rssm_v1":
+            continue
+        configs[name] = make_single_module_config(
+            spec.family,
+            name,
+            hidden_dim=hidden_dim,
+            history_steps=history_steps,
+            information_rate_mean=information_rate_mean,
+            information_rate_scale=information_rate_scale,
+        )
+    if include_complete_rssm:
+        configs["complete_graph_rssm_v1"] = make_single_module_config(
+            "dynamics",
+            "complete_graph_rssm_v1",
+            hidden_dim=hidden_dim,
+            history_steps=history_steps,
+            information_rate_mean=information_rate_mean,
+            information_rate_scale=information_rate_scale,
+        )
     return configs
 
 
@@ -299,6 +315,9 @@ def run_r4_gpu_screening(
         history_steps=8,
         information_rate_mean=rate_mean,
         information_rate_scale=rate_scale,
+        include_complete_rssm=bool(
+            candidate_names and "complete_graph_rssm_v1" in candidate_names
+        ),
     )
     names = list(configs) if candidate_names is None else list(candidate_names)
     if not names or len(names) != len(set(names)):

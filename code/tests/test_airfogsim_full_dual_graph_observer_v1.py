@@ -47,6 +47,13 @@ class FakeTask:
         route=(),
         return_destination_id: str | None = "v0",
         arrival_time: float = 0.0,
+        task_size: float = 100.0,
+        returned_size: float = 7.0,
+        task_cpu: float = 11.0,
+        deadline: float = 25.0,
+        priority: float = 3.0,
+        transmitted_size: float = 13.0,
+        computed_size: float = 17.0,
     ):
         self._task_id = task_id
         self._task_node_id = task_node_id
@@ -54,6 +61,13 @@ class FakeTask:
         self._route = list(route)
         self._return_destination_id = return_destination_id
         self._arrival_time = arrival_time
+        self._task_size = task_size
+        self._returned_size = returned_size
+        self._task_cpu = task_cpu
+        self._deadline = deadline
+        self._priority = priority
+        self._transmitted_size = transmitted_size
+        self._computed_size = computed_size
 
     def getTaskId(self):
         return self._task_id
@@ -72,6 +86,27 @@ class FakeTask:
 
     def getTaskArrivalTime(self):
         return self._arrival_time
+
+    def getTaskSize(self):
+        return self._task_size
+
+    def getReturnedSize(self):
+        return self._returned_size
+
+    def getTaskCPU(self):
+        return self._task_cpu
+
+    def getTaskDeadline(self):
+        return self._deadline
+
+    def getTaskPriority(self):
+        return self._priority
+
+    def getTransmittedSize(self):
+        return self._transmitted_size
+
+    def getComputedSize(self):
+        return self._computed_size
 
 
 class FakeTaskManager:
@@ -235,6 +270,15 @@ class AirFogSimFullObserverTests(unittest.TestCase):
         )
         self.assertEqual(1, len(snapshot.dag_edges))
         self.assertEqual("not_modeled", snapshot.dag_edges[0].communication_mapping)
+
+        waiting = next(task for task in snapshot.tasks if task.task_id == "waiting")
+        self.assertEqual(100.0, waiting.task_size)
+        self.assertEqual(7.0, waiting.return_size)
+        self.assertEqual(11.0, waiting.task_cpu)
+        self.assertEqual(25.0, waiting.deadline)
+        self.assertEqual(3.0, waiting.priority)
+        self.assertEqual(13.0, waiting.in_stage_transmitted_size)
+        self.assertEqual(17.0, waiting.computed_size)
 
     def test_execution_snapshot_does_not_read_stale_fast_fading_arrays(self):
         env = fake_observer_env()

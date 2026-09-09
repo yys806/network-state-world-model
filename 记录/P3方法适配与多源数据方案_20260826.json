@@ -1,0 +1,78 @@
+{
+  "schema_version": "PI-JWM-P3-three-core-modules-v2",
+  "as_of": "2026-08-26",
+  "status": "method_adaptation_complete_post_p3_work_pending",
+  "modules": {
+    "dual_graph_representation": {
+      "formal_name": "Strict Physical-Information Coupled Dual-Graph Message Passing",
+      "literature_anchors": ["interdependent_or_coupled_networks", "wireless_graph_neural_networks", "edge_conditioned_message_passing"],
+      "historical_or_internal_names": ["pooled_gru", "independent_dual_gnn", "coupled_dual_gnn", "coupled_dual_gnn_residual"],
+      "scenario_properties": ["physical_and_information_relations", "sparse_topology", "partial_messages", "task_dependencies"],
+      "candidate_methods": ["pooled_gru", "independent_dual_gnn", "coupled_dual_gnn", "independent_dual_gnn_residual", "coupled_dual_gnn_residual"],
+      "adopted_components": ["separate_physical_graph", "separate_information_graph", "explicit_cross_graph_coupling", "mask_aware_partial_observation"],
+      "fit_reason": "Separate physical and information relations, then exchange messages through explicit endpoint-defined cross-graph links.",
+      "not_directly_adopted": ["flat_mlp_or_single_vector", "single_graph_only", "unmodified_paper_architecture"],
+      "limitations": ["fixed_maximum_slots", "graph_structure_does_not_guarantee_physical_rules", "missingness_robustness_requires_stratified_tests"],
+      "prediction_metrics": ["state_mae", "state_rmse", "event_f1", "event_auprc", "missingness_stratified_metrics"],
+      "decision_metrics": [],
+      "implementation_status": "implemented_candidate_set"
+    },
+    "action_conditioned_world_model": {
+      "formal_name": "Action-Conditioned Coupled Dual-Graph Recurrent World Model with Deterministic Rule Layer",
+      "literature_anchors": ["World Models", "PlaNet/RSSM", "Dreamer", "TD-MPC2", "Graph-GRU", "Graph-RSSM_candidate_from_PI-JWM_PPT"],
+      "historical_or_internal_names": ["Graph-RSSM", "coupled_dual_gnn_residual"],
+      "scenario_properties": ["actions_change_future_state", "delayed_effects", "hard_resource_and_task_rules", "uncertainty_matters"],
+      "candidate_methods": ["coupled_dual_gnn_residual_with_rule_layer"],
+      "adopted_components": ["history_conditioning", "future_action_conditioning", "recurrent_latent", "dual_graph_encoding", "state_event_uncertainty_heads", "learned_service_plus_deterministic_rule_recursion"],
+      "fit_reason": "Use history plus future action to predict future state, events, and uncertainty, then apply deterministic rules at each step.",
+      "not_directly_adopted": ["claim_complete_graph_rssm_without_prior_posterior_kl_evidence", "latent_only_outputs", "neural_network_only_hard_constraint_learning", "aggregate_model_as_per_rb_method"],
+      "limitations": ["multi_step_error_accumulation", "does_not_select_actions", "rules_cover_only_defined_mechanisms"],
+      "prediction_metrics": ["horizon_1_5_20_state_metrics", "uncertainty_nll", "coverage_95", "task_lifecycle", "throughput", "rb_occupancy", "rule_violations"],
+      "decision_metrics": [],
+      "implementation_status": "candidate_non_locked_evidence_only"
+    },
+    "candidate_rollout_planner": {
+      "formal_name": "Candidate-Action World-Model Rollout Planner",
+      "literature_anchors": ["PlaNet/CEM", "Dreamer latent imagination", "TD-MPC2 short-horizon MPC", "MBPO/MOPO/COMBO model-bias diagnostics"],
+      "historical_or_internal_names": ["R6 direct scorer", "formal_candidate_rollout_planner_v1"],
+      "scenario_properties": ["multiple_legal_actions", "delayed_coupled_consequences", "new_feedback_after_execution"],
+      "candidate_methods": ["formal_candidate_rollout_planner_v1_prototype"],
+      "adopted_components": ["legal_candidate_generation", "common_belief_reuse", "per_candidate_world_model_rollout", "predicted_state_task_cost_risk_extraction", "first_action_execution", "feedback_replanning"],
+      "fit_reason": "Evaluate every legal candidate from one common belief, compare predicted future consequences, execute the first action, and replan after feedback.",
+      "not_directly_adopted": ["belief_direct_scorer_only", "post_execution_transition_as_planner", "long_horizon_full_search_before_short_horizon_audit"],
+      "limitations": ["legal_candidate_generation_not_frozen", "formal_audit_blocked", "not_a_final_planner"],
+      "prediction_metrics": [],
+      "decision_metrics": ["action_regret", "candidate_order_agreement", "rule_violation_rate", "replan_count", "replan_latency"],
+      "implementation_status": "prototype_only_blocked"
+    }
+  },
+  "post_p3_work": {
+    "project_specific_tuning_and_final_method_selection": {"phase": "P6", "status": "pending", "gpu_authorized_now": false},
+    "multi_source_finetune_and_augmentation": {"phase": "P7", "status": "source_verification_pending", "gpu_authorized_now": false}
+  },
+  "data_roles": {
+    "controlled_simulation_v4": {"role": "pretrain_and_controlled_ablation", "formal_training_approved": false},
+    "wireless_network_telemetry": {"role": "information_or_physical_edge_finetune_and_missingness_validation", "source_verified": false},
+    "edge_computing_task_data": {"role": "task_resource_latency_finetune", "source_verified": false},
+    "mobility_channel_data": {"role": "physical_state_external_validation", "source_verified": false},
+    "held_out_source": {"role": "transfer_validation_only", "source_verified": false}
+  },
+  "tuning_protocol": {
+    "execution_phase": "P6",
+    "same_tensor_contract": true,
+    "same_train_only_statistics": true,
+    "same_splits": true,
+    "same_budget_and_stopping": true,
+    "multi_seed_required": true,
+    "post_hoc_grid_expansion": false,
+    "locked_test_used_for_tuning": false
+  },
+  "gates": {
+    "teacher_T2_multi_source": "design_ready_source_verification_pending",
+    "teacher_T3_method_suitability": "complete_for_P3_design",
+    "teacher_T4_scenario_tuning": "pending_P6",
+    "formal_performance_claim_ready": false,
+    "locked_test_accessed": false,
+    "gpu_authorized_now": false
+  }
+}
