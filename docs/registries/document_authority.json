@@ -1,0 +1,173 @@
+{
+  "schema_version": "PI-JWM-document-authority-v1",
+  "chatgpt_entrypoint": "AI_CONTEXT/00_PROJECT_STATE.md",
+  "read_order": [
+    "AGENTS.md",
+    "AI_CONTEXT/00_PROJECT_STATE.md",
+    "AI_CONTEXT/01_RESEARCH_CONTEXT.md",
+    "AI_CONTEXT/02_ARCHITECTURE.md",
+    "AI_CONTEXT/03_DATA_FLOW.md",
+    "AI_CONTEXT/04_MODULE_MAP.md",
+    "AI_CONTEXT/05_EXPERIMENTS.md",
+    "AI_CONTEXT/06_DECISIONS.md",
+    "AI_CONTEXT/07_KNOWN_ISSUES.md",
+    "AI_CONTEXT/08_CHANGELOG.md",
+    "docs/COLLABORATION_GUIDE.md",
+    "docs/RESTRUCTURE_ACCEPTANCE.md",
+    "task_plan.md",
+    "记录/本地计划表.md",
+    "记录/PIJWM主文档.md",
+    "记录/8.12之后推进.md",
+    "记录/文件树与证据分层_20260826.md",
+    "docs/PROJECT_INDEX.md",
+    "docs/RESEARCH_STATUS.md",
+    "docs/EXPERIMENT_INDEX.md",
+    "docs/RESULTS_INDEX.md"
+  ],
+  "documents": [
+    {
+      "path": "AGENTS.md",
+      "role": "permanent governance",
+      "authority": "highest_constraint",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+      "role": "ChatGPT Web current-state entrypoint",
+      "authority": "navigation_snapshot",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "AI_CONTEXT/01_RESEARCH_CONTEXT.md",
+      "role": "research problem and rationale map",
+      "authority": "navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "AI_CONTEXT/02_ARCHITECTURE.md",
+      "role": "current architecture to source map",
+      "authority": "navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "AI_CONTEXT/03_DATA_FLOW.md",
+      "role": "data flow and tensor-contract map",
+      "authority": "navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "AI_CONTEXT/04_MODULE_MAP.md",
+      "role": "question-to-code module map",
+      "authority": "navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "AI_CONTEXT/05_EXPERIMENTS.md",
+      "role": "objective experiment-state summary",
+      "authority": "navigation_to_evidence",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "AI_CONTEXT/06_DECISIONS.md",
+      "role": "researcher-confirmed decisions only",
+      "authority": "researcher_decision_record",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "AI_CONTEXT/07_KNOWN_ISSUES.md",
+      "role": "confirmed issues and research conflicts",
+      "authority": "navigation_to_evidence",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "AI_CONTEXT/08_CHANGELOG.md",
+      "role": "important context and project changes",
+      "authority": "context_history",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/COLLABORATION_GUIDE.md",
+      "role": "human-AI responsibility, explanation and question-answer workflow",
+      "authority": "governance_guide",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/RESTRUCTURE_ACCEPTANCE.md",
+      "role": "user-requirement to implementation acceptance map",
+      "authority": "verified_navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "记录/本地计划表.md",
+      "role": "canonical roadmap and current gate",
+      "authority": "project_authority",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "记录/PIJWM主文档.md",
+      "role": "theory, method and metric boundary",
+      "authority": "project_authority",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "记录/8.12之后推进.md",
+      "role": "current progress and stop rules",
+      "authority": "project_authority",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "task_plan.md",
+      "role": "active task process",
+      "authority": "process",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "progress.md",
+      "role": "execution log",
+      "authority": "process",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "findings.md",
+      "role": "findings and risks",
+      "authority": "process",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "PROJECT_CONTEXT.md",
+      "role": "handoff snapshot",
+      "authority": "navigation_snapshot",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/PROJECT_INDEX.md",
+      "role": "retrieval map",
+      "authority": "navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/RESEARCH_STATUS.md",
+      "role": "current status summary",
+      "authority": "navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/registries/historical_method_registry.json",
+      "role": "curated historical method and replacement map",
+      "authority": "navigation_to_historical_evidence",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/registries/results_registry.json",
+      "role": "verified formal-number index linked to acceptance evidence",
+      "authority": "verified_navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "code/artifacts/",
+      "role": "machine-readable experiment evidence",
+      "authority": "evidence_by_manifest_and_audit",
+      "can_establish_formal_result": true
+    }
+  ]
+}

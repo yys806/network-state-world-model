@@ -978,5 +978,50 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 正式产物已完整回传；run manifest `79` 项零缺失、零哈希差异，checkpoint strict reload 缺键/多键=`0/0`。
 - [x] 从原始 validation/calibration metrics 独立重算 9 项单 seed 数值门，最大浮点差=`4.16e-09`，全部通过。
 - [x] 远端训练进程已退出，GPU 显存占用=`0 MiB`；当前 GPU 可以释放。
-- [ ] 按用户边界暂停，不启动 seed `20260832`。P4 仍等待第三个 seed 和三 seed独立审计；P6、`locked_test`和正式性能声明继续关闭。
+- [x] 按用户边界暂停，不启动 seed `20260832`。P4 仍等待第三个 seed 和三 seed独立审计；P6、`locked_test`和正式性能声明继续关闭。
 - 单一下一动作：等待用户是否明确授权运行最后一个冻结 seed `20260832`。
+
+## 2026-09-09 全项目知识与工程结构重构
+
+- [x] 用户明确调整执行优先级：seed `20260832`、远端训练和远端同步全部延后；先完成既定重构计划中尚未完成的部分，并保留后续续接接口。
+- [x] 阶段 1 已复核：八个稳定知识入口已经存在，当前两枚 seed 状态和 P4/P6/`locked_test` 边界已经更新。
+- [x] 阶段 2A：生成 tracked 文件清单、SHA-256、职责和生命周期状态。
+- [x] 阶段 2B：生成 Python 模块依赖、脚本入口和测试覆盖映射，区分当前正式、支撑、原型和历史代码。
+- [x] 阶段 2C：生成 artifact/实验/结果注册表，连接研究问题、方法、配置、数据、checkpoint、结果和 audit。
+- [x] 阶段 2D：建立文档权威关系、已知冲突和用户重新学习项目的阅读路径。
+- [x] 阶段 3：已依据依赖图和测试映射完成候选审查与逻辑归档；物理迁移因回归基线和 provenance 风险按停止门暂停。
+- [x] 阶段 4：提供可重复生成和 `--check` 验证入口，并将维护义务接入测试与文档。
+- [x] 延后接口：机器可读登记 seed `20260832` 和远端同步为 `deferred/user_authorization_required`，复用现有冻结 runner，不创建自动启动链路。
+- 当前科研门：P4 仍缺第三 seed 和三 seed 审计；P6 不开放；`locked_test_accessed=false`、`formal_performance_claim_ready=false`。
+- 当前重构阻塞：第二轮重构后全量基线为 1636 项中 0 failure/21 errors，包含缺少 AirFogSim `traci` 环境、历史 fixture 与当前严格 RB 合同冲突、历史 artifact 读权限和两个无有效 calibration link 的旧测试；物理迁移必须先消除或隔离这些风险。
+- [x] 阶段 2A–2D、阶段 4 维护机制和延后接口已经完成；阶段 3 的逻辑归档已完成，物理迁移按停止门暂停。
+- 单一下一动作：保持第三 seed、远端同步和物理归档停止；等待用户选择下一项明确授权的科研或迁移任务。
+
+## 2026-09-09 项目长期协作与快速问答闭环
+
+- [x] 用户确认继续第二轮无损重构，以后续协作和提问时更容易找到正确信息为最终标准。
+- [x] 固化 Human-driven / AI-accelerated 的职责、独立质疑、通俗解释和证据表达规则。
+- [x] 将重要实验登记升级为统一完整字段；所有未知/不适用项显式记录原因。
+- [x] 建立重要历史方法语义注册表，连接尝试动机、结果、弃用原因、替代关系和原始证据。
+- [x] 自动核对结果注册表与正式 acceptance JSON 的 seed、epoch、指标、状态和封存边界。
+- [x] 建立并测试面向当前方法、历史尝试、结果来源和延期任务的只读问答检索入口。
+- [x] 更新全部导航、权威记录和维护检查，并运行定向/正式/全量回归。
+- 当前科研门：P4 仍缺 seed `20260832` 和三 seed 审计；P6 不开放；`locked_test_accessed=false`、`formal_performance_claim_ready=false`。
+- 当前重构阻塞：物理归档仍受全量 21 个既有环境/fixture/权限错误阻断，但不阻止本阶段的增量文档、注册表和只读检索实现。
+- 验收结果：统一生成器与 `--check` 通过；项目知识/结构 27/27、正式 P4 210/210、compileall 与 `git diff --check` 通过；全量 1636 项为 0 failure/21 个已登记环境或历史错误。
+- 单一下一动作：从用户的下一个实际项目问题开始按新入口检索、回到原始证据核实并维护索引。
+
+## 2026-09-10 ChatGPT–Codex 长期协作与 AI_CONTEXT
+
+- [x] 读取用户的新长期协作要求，并复核当前 P4、第三 seed、GPU、同步和 `locked_test` 停止边界。
+- [x] 只读检查 Git、现有知识注册表、当前模型/训练入口、冻结协议、正式 acceptance 和文件证据分层。
+- [x] 先建立失败契约测试，固定 `AI_CONTEXT/` 九个文件、事实来源、冲突模板、维护检查和永久协作规则。
+- [x] 创建并填写 `AI_CONTEXT/00_PROJECT_STATE.md` 至 `08_CHANGELOG.md`，只记录可由源码、配置、实验或用户决定支持的内容。
+- [x] 按用户本次明确授权重构 `AGENTS.md`：Research Engineer 角色、三方边界、Context Consistency Check、Git 提交推送、私人笔记禁区和冲突处理。
+- [x] 将 `AI_CONTEXT/` 接入文档权威注册、自然语言路由、项目导航、索引生成器和自动检查。
+- [x] 执行 Context Consistency Check、定向/正式/全量测试、编译、索引防漂移和 Git 差异检查。
+- [x] 验证达到合理完成状态后按 Conventional Commits 提交并推送 `main`；本次新增范围验证通过，未把全量既有错误误报为全绿。
+- 当前科研门：P4 仍缺 seed `20260832` 和三 seed 审计；P6 不开放；`locked_test_accessed=false`、`formal_performance_claim_ready=false`。
+- 当前工程阻塞：全量套件已有 21 个环境/历史错误，阻止物理迁移旧文件，但不阻止增量 `AI_CONTEXT/` 与治理层实现。
+- 验证结果：AI_CONTEXT 6/6、项目知识/结构 28/28、正式 P4 210/210 通过；全量 1643 项为 0 assertion failure/17 个已登记环境或历史错误；当前 artifact 读取错误为 0。
+- 单一下一动作：本任务提交推送后，科研主线仍等待研究者决定是否授权 seed `20260832`。

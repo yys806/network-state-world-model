@@ -66,13 +66,24 @@ class ProjectConfigurationTest(unittest.TestCase):
             "literature",
             "meeting",
             "docs",
+            "AI_CONTEXT",
         ):
             self.assertTrue((WORKSPACE_ROOT / directory).is_dir(), directory)
         self.assertFalse((WORKSPACE_ROOT / "代码").exists())
         self.assertFalse((WORKSPACE_ROOT / "文档").exists())
 
         root_markdown = sorted(path.name for path in WORKSPACE_ROOT.glob("*.md"))
-        self.assertEqual(root_markdown, ["AGENTS.md", "README.md"])
+        self.assertEqual(
+            root_markdown,
+            [
+                "AGENTS.md",
+                "PROJECT_CONTEXT.md",
+                "README.md",
+                "findings.md",
+                "progress.md",
+                "task_plan.md",
+            ],
+        )
 
         for script_path in (CODE_ROOT / "scripts").glob("*.py"):
             content = script_path.read_text(encoding="utf-8")

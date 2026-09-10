@@ -82,8 +82,9 @@ PI-JWM 研究的是一个同时包含物理网络和信息网络的动态系统�
 | GPU runner | `code/scripts/run_formal_dual_graph_gpu_train_v1.py` |
 | 一致性审计 | `code/scripts/run_formal_entity_aligned_rssm_consistency_audit_v1.py` |
 | batch probe | `code/scripts/run_formal_p4_entity_rssm_gpu_batch_probe_v1.py` |
-| 单 seed 验收 | `code/artifacts/audit/pi_jwm_p4_entity_rssm_seed_20260831_acceptance_20260908/single_seed_acceptance.json` |
-| 当前运行证据 | `code/artifacts/experiments/pi_jwm_p4_entity_rssm_gpu_formal_seed_20260830_live_evidence_20260908/` |
+| 第一枚单 seed 验收 | `code/artifacts/audit/pi_jwm_p4_entity_rssm_seed_20260831_acceptance_20260908/single_seed_acceptance.json` |
+| 第二枚单 seed 验收 | `code/artifacts/audit/pi_jwm_p4_entity_rssm_seed_20260830_acceptance_20260909/single_seed_acceptance.json` |
+| 延后训练接口 | `docs/registries/deferred_work.json`；只登记，不授权自动启动 |
 
 ## 6. P6 规划器的真实边界
 

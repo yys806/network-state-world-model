@@ -1,0 +1,56 @@
+{
+  "schema_version": "PI-JWM-deferred-work-v1",
+  "items": [
+    {
+      "id": "P4-SEED-20260832",
+      "type": "formal_gpu_training",
+      "status": "deferred",
+      "reason": "project restructuring has priority; the user retains the decision to start the third seed",
+      "summary_zh": "第三个 seed 已延期；只有用户再次明确授权后才能启动。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": "code/scripts/run_formal_p4_entity_rssm_gpu_v1.py",
+      "mode": "formal",
+      "seed": 20260832,
+      "protocol": "code/artifacts/protocol/pi_jwm_p4_entity_rssm_frozen_protocol_20260906_v2/protocol.json",
+      "tensor": "code/artifacts/formal_tensor/pi_jwm_v4_tensor_v5_causal_motion_h20_unlocked_20260906",
+      "required_predecessors": [
+        "code/artifacts/audit/pi_jwm_p4_entity_rssm_seed_20260831_acceptance_20260908/single_seed_acceptance.json",
+        "code/artifacts/audit/pi_jwm_p4_entity_rssm_seed_20260830_acceptance_20260909/single_seed_acceptance.json"
+      ],
+      "allowed_runtime_changes": [
+        "seed",
+        "output_dir"
+      ],
+      "forbidden_until_authorized": [
+        "remote process start",
+        "protocol change",
+        "threshold change",
+        "locked_test access"
+      ],
+      "output_dir_template": "code/artifacts/experiments/pi_jwm_p4_entity_rssm_gpu_formal_seed_20260832_v1"
+    },
+    {
+      "id": "REMOTE-SYNC-AFTER-SEED-20260832",
+      "type": "remote_sync",
+      "status": "deferred",
+      "reason": "remote synchronization is postponed together with the third seed",
+      "summary_zh": "远端同步与第三个 seed 一并延期；不得自动执行。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": null,
+      "required_predecessors": [
+        "P4-SEED-20260832 completion or a separate user-approved sync scope"
+      ],
+      "credential_material_allowed_in_repository": false,
+      "required_controls": [
+        "explicit source and destination",
+        "source manifest and SHA-256 verification",
+        "no overwrite of local canonical evidence",
+        "transfer log stored separately from formal claims"
+      ]
+    }
+  ]
+}

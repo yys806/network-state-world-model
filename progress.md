@@ -829,3 +829,30 @@
 - 正式 run 已回传到 `code/artifacts/experiments/pi_jwm_p4_entity_rssm_gpu_formal_seed_20260830_v1`；独立验收位于 `code/artifacts/audit/pi_jwm_p4_entity_rssm_seed_20260830_acceptance_20260909/single_seed_acceptance.json`。manifest `79` 项零差异，strict reload 为 `0/0`。
 - 远端 PID `51974` 已退出，GPU 为 `0 MiB/24564 MiB`，可以释放。按用户要求暂停，不启动 seed `20260832`。
 - `locked_test_accessed=false`、`formal_performance_claim_ready=false`；P4 仍等待第三个 seed 和三 seed审计，P6不开放。单一下一动作是等待用户决定是否运行 `20260832`。
+
+## 2026-09-09 全项目知识与工程结构重构
+
+- 完成阶段 2 机器映射：828 个项目文件、604 个 Python 节点、802 个 artifact 一级目录；生成文件/哈希、依赖/反向引用、artifact 控制证据和归档候选表。
+- 新增用户学习路径、AI 检索指南、代码状态、冲突、归档、目录导航和四类人工注册表。
+- 索引生成器使用 TDD 完成 6 项测试；UTF-8 BOM 最小复现先失败，改用 `utf-8-sig` 后 12 个误报降为 0。
+- 14 个历史 manifest 权限不可读被保留在 catalog；没有修改权限、删除文件或用缺失状态替代真实错误。
+- 第三个 seed 和远端同步已登记为延后、需用户授权且禁止自动启动；本轮未运行 GPU、未执行同步、未触碰 `locked_test`。
+- 验收结果：索引 `--check` 通过，项目知识/结构测试 15/15、当前正式 P4 测试 210/210 通过，compileall 和 `git diff --check` 通过；全量 1624 项为 0 failure/21 errors，剩余均已登记为环境、历史 fixture 或历史 artifact 边界。
+
+## 2026-09-09 长期协作与快速问答闭环
+
+- 已将科研决策权、AI 独立判断、通俗解释阶梯和证据限定写入永久规则与协作指南。
+- 重要实验统一为 7 项完整字段记录；6 类关键历史方法增加动机、结果、弃用原因、替代关系与原始证据；5 类常见问题建立只读路由。
+- 正式结果注册表已与两份原始 acceptance JSON 自动比较 SHA-256、seed、epoch、状态、9 项指标及封存边界，当前不一致数为 0；负向测试证明任一登记指标漂移都会被拒绝。
+- 查询工具和自动测试现可定位当前模型/训练入口、完整 RSSM 弃用原因、正式 seed 指标来源、第三 seed 延后条件、精确旧 artifact 与精确代码文件。
+- 最终映射为 834 个项目文件、606 个 Python 节点、802 个 artifact 一级目录；项目知识/结构 27/27、正式 P4 210/210、compileall、`git diff --check` 和生成器 `--check` 通过。
+- 全量套件为 1636 项、0 failure/21 errors；错误仍来自已登记环境、历史 fixture 或历史 artifact 边界，故不物理迁移历史文件。未启动 GPU、第三 seed、同步或 `locked_test`。
+
+## 2026-09-10 AI_CONTEXT 与三方 GitHub 协作
+
+- 重新以当前源码、冻结协议、两份正式 acceptance、机器注册表和 Git `main@e382d79` 为依据核实项目；未读取私人笔记。
+- TDD 红灯确认缺少九个 AI_CONTEXT 文件、ChatGPT 路由、验证函数和长期规则；实现后 AI_CONTEXT 契约 6/6、网页端入口查询通过。
+- `AGENTS.md` 按本次明确授权保留长期 Research Engineer/研究者/ChatGPT Web 边界，加入 Context Consistency Check、Git commit/push、冲突模板和私人笔记禁区，并移除具体 P4 临时步骤。
+- 自动索引覆盖 844 个项目文件、607 个 Python 节点、802 个 artifact 目录；9 个 AI_CONTEXT 文件、6 类问题路由、2 个正式结果证据核对均无错误。
+- 项目知识/结构 28/28、正式 P4 210/210、compileall、索引 `--check` 和 diff 检查通过；全量 1643 项为 0 assertion failure/17 errors，均属已登记外部环境或历史 fixture 边界。
+- 本轮未修改模型、loss、metrics、tensor、协议、checkpoint 或 artifact，未启动 GPU、seed `20260832`、远端同步或 `locked_test`。

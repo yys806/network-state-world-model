@@ -2,6 +2,8 @@
 
 > 本索引负责回答“实验做过没有、它回答什么问题、结果在哪里”。具体结论必须回到原始实验目录和机器可读产物。
 
+重要实验的结构化记录见 `docs/registries/experiment_registry.json`；全部 artifact 一级目录的自动目录见 `docs/registries/generated/artifact_catalog.csv`。注册表 v2 对每条重要实验使用统一字段；未知或不适用的内容必须写成 `null` 并在 `field_notes` 解释，不能直接省略。
+
 ## 1. 当前正式实验
 
 | 实验 | 目的 | 入口/配置 | 结果和状态 |
@@ -9,6 +11,8 @@
 | P4 entity RSSM seed 20260831 | 验证实体级双图 RSSM 在正式 unlocked tensor 上的单 seed 表现 | `code/scripts/run_formal_dual_graph_gpu_train_v1.py`；冻结协议 `code/artifacts/protocol/pi_jwm_p4_entity_rssm_frozen_protocol_20260906_v2/protocol.json` | `code/artifacts/experiments/pi_jwm_p4_entity_rssm_gpu_formal_seed_20260831_v1/`；单 seed 验收通过 |
 | P4 entity RSSM seed 20260830 | 在相同冻结配置下检查另一 seed 的稳定性 | 同上；正式 run `code/artifacts/experiments/pi_jwm_p4_entity_rssm_gpu_formal_seed_20260830_v1/` | 已完成；单 seed 验收通过，audit 位于 `code/artifacts/audit/pi_jwm_p4_entity_rssm_seed_20260830_acceptance_20260909/` |
 | P4 entity RSSM seed 20260832 | 第三个 seed 的跨 seed 证据 | 同上 | 未授权，不得自动启动 |
+
+`20260832` 和后续远端同步已经登记在 `docs/registries/deferred_work.json`，状态为 `deferred`、`authorization_required=true`、`auto_start=false`。接口预留不等于运行许可。
 
 ## 2. 正式前置和机制实验
 
@@ -23,6 +27,8 @@
 ## 3. P4 历史候选族
 
 这些实验保留用于解释失败原因，不得自动提升为当前方法：
+
+重要历史方法的“为什么尝试—实际结果—为什么不再使用—被谁替代—原始证据”见 `docs/registries/historical_method_registry.json`。
 
 - global complete RSSM：`code/src/pi_jwm/formal_complete_rssm_world_model_v1.py`，对应 `code/artifacts/experiments/pi_jwm_p4_complete_rssm_*`。
 - node-x safe correction：对应 `code/artifacts/experiments/pi_jwm_p4_complete_rssm_node_x_safe_*`。

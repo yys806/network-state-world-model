@@ -1,0 +1,68 @@
+{
+  "schema_version": "PI-JWM-results-registry-v2",
+  "value_policy": "Formal numeric values must equal gate_recompute.recomputed in the referenced acceptance JSON; presentation documents may round them but cannot replace this registry.",
+  "results": [
+    {
+      "id": "RES-P4-20260831-SINGLE-SEED",
+      "experiment_id": "P4-EARSSM-SEED-20260831",
+      "seed": 20260831,
+      "status": "passed_single_seed",
+      "selected_epoch": 39,
+      "metrics": {
+        "validation_link_f1_delta": 0.44414757639149594,
+        "calibration_link_f1_delta": 0.8622921256168091,
+        "node_x_overall_ratio": 0.7547533605376395,
+        "node_x_h5_ratio": 0.7699514616133724,
+        "node_x_h10_ratio": 0.7507086672359741,
+        "node_x_h20_ratio": 0.7549541091871552,
+        "throughput_ratio": 0.9355544638596395,
+        "rb_occupancy_ratio": 0.4736271290494195,
+        "task_delay_ratio": 0.012868624503353663
+      },
+      "audit": "code/artifacts/audit/pi_jwm_p4_entity_rssm_seed_20260831_acceptance_20260908/single_seed_acceptance.json",
+      "audit_sha256": "7434fe687199a13a0f328e873a3234d033c101b38b55b4e6755f181b41f0282a",
+      "evidence_metric_source": "gate_recompute.recomputed.gates",
+      "claim_boundary": "unlocked single-seed acceptance only",
+      "summary_zh": "seed 20260831 的非锁定单 seed 验收通过；跨 seed 和最终性能结论仍未开放。",
+      "locked_test_accessed": false
+    },
+    {
+      "id": "RES-P4-20260830-SINGLE-SEED",
+      "experiment_id": "P4-EARSSM-SEED-20260830",
+      "seed": 20260830,
+      "status": "passed_single_seed",
+      "selected_epoch": 40,
+      "metrics": {
+        "validation_link_f1_delta": 0.4571028255213171,
+        "calibration_link_f1_delta": 0.8850944171146519,
+        "node_x_overall_ratio": 0.7508609864700172,
+        "node_x_h5_ratio": 0.7603320812177579,
+        "node_x_h10_ratio": 0.7493859496306635,
+        "node_x_h20_ratio": 0.749600722573673,
+        "throughput_ratio": 0.9383118412649588,
+        "rb_occupancy_ratio": 0.47523496898958945,
+        "task_delay_ratio": 0.01175416168646137
+      },
+      "audit": "code/artifacts/audit/pi_jwm_p4_entity_rssm_seed_20260830_acceptance_20260909/single_seed_acceptance.json",
+      "audit_sha256": "2cd29054eb5075a7304a51c436a9a525e9de79027aace94ccf3335616252a84a",
+      "evidence_metric_source": "gate_recompute.recomputed.gates",
+      "claim_boundary": "unlocked single-seed acceptance only",
+      "summary_zh": "seed 20260830 的非锁定单 seed 验收通过；第三个 seed 和跨 seed 结论仍缺失。",
+      "locked_test_accessed": false
+    }
+  ],
+  "missing_result_slots": [
+    {
+      "experiment_id": "P4-EARSSM-SEED-20260832",
+      "reason": "deferred and not run"
+    },
+    {
+      "experiment_id": "P4-CROSS-SEED-AUDIT",
+      "reason": "requires the third frozen seed"
+    },
+    {
+      "experiment_id": "LOCKED-TEST",
+      "reason": "sealed; no access authorized"
+    }
+  ]
+}

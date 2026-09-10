@@ -16,3 +16,31 @@
 - 未改变研究定义、模型、数据、训练配置或阈值；正式产物和验收报告均为新增证据。
 - 验证结果为 manifest `79/79`、strict reload `0/0`、9项数值门全部通过；`locked_test`未访问。
 - 当前仍需 seed `20260832` 和三 seed审计才能关闭 P4；没有开放 P6。
+
+## 2026-09-09：项目知识与工程结构重构第二阶段
+
+- 新增用户学习路径、AI 检索指南、代码状态索引、已知冲突和归档候选门。
+- 在 `code/src/pi_jwm/`、`code/scripts/` 和 `code/tests/` 增加目录级导航，明确当前正式、支撑、原型和历史兼容边界。
+- 新增文件、Python 依赖、artifact、实验、结果、文档权威和延后任务注册表，以及可重复生成/`--check` 的索引脚本。
+- 自动映射覆盖 828 个项目文件、604 个 Python 节点和 802 个 artifact 一级目录；12 个 BOM 解析误报修复后 Python 解析错误为 0，14 个历史 manifest 权限错误被如实保留。
+- 识别 211 个历史 Python 候选；94 个仍有反向引用、93 个仍有直接测试、0 个被当前正式节点引用。基于全量测试基线和 provenance 风险，本轮采用逻辑归档，没有移动、删除或覆盖任何历史代码与 artifact。
+- seed `20260832` 和远端同步已登记为延后且需用户授权；没有启动 GPU、同步或访问 `locked_test`。
+
+## 2026-09-09：长期协作与快速问答闭环
+
+- 将用户科研决策权、AI 独立质疑义务、通俗解释顺序和证据边界写入永久治理与协作指南。
+- 将重要实验注册表升级为统一字段合同；新增 6 类历史方法语义注册和 5 类常见问题路由。
+- 正式结果注册表现会自动对照原始 acceptance JSON 的 SHA-256、seed、epoch、状态、9 项指标和 `locked_test` 边界；当前 2 项正式结果全部一致。
+- 新增只读查询工具，可按自然语言、精确旧实验目录名或精确代码文件名定位入口；查询始终提示回到原始证据验证。
+- 最终映射覆盖 834 个项目文件、606 个 Python 节点和 802 个 artifact 一级目录；Python 解析错误 0，历史 artifact 控制文件读取错误 14 个原样保留。
+- 验收：统一 `--check`、项目知识/结构 27 项、正式 P4 210 项、compileall 和 diff 检查通过；全量 1636 项为 0 failure/21 个已登记环境或历史错误。
+- 本轮未修改研究方法、训练合同或原始产物，未启动 GPU、seed `20260832`、远端同步或 `locked_test`。
+
+## 2026-09-10：ChatGPT AI_CONTEXT 与三方协作闭环
+
+- 新增 `AI_CONTEXT/00_PROJECT_STATE.md` 至 `08_CHANGELOG.md`，分别覆盖当前状态、研究背景、真实架构、数据流、模块地图、实验、研究者决策、已知问题和重要变化。
+- `AGENTS.md` 按用户明确授权增加 Research Engineer、ChatGPT Web、研究者三方边界，以及 Context Consistency Check、Git commit/push、私人笔记禁区和冲突处理规则。
+- 文档权威注册表新增 ChatGPT 首入口；问题路由新增 `ROUTE-CHATGPT-ONBOARDING`；知识索引生成器会验证九个上下文文件及关键证据边界。
+- 当前生成快照覆盖 844 个项目文件、607 个 Python 节点和 802 个 artifact 目录；九个 AI_CONTEXT 文件和 6 类问题路由有效，当前 artifact 控制入口读取错误为 0。
+- 验证：AI_CONTEXT 6/6、项目知识/结构 28/28、正式 P4 210/210、compileall 和 diff 检查通过；全量 1643 项为 0 assertion failure/17 个已登记环境或历史错误。
+- 未修改模型、loss、metrics、tensor、协议、checkpoint、实验结果或 `code/artifacts/`。

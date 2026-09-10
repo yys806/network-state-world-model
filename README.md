@@ -2,13 +2,15 @@
 
 PI-JWM (Physical-Information Joint World Model) studies action-conditioned joint evolution of physical and information networks for connected embodied-intelligence collaboration.
 
-项目知识导航：[`docs/PROJECT_INDEX.md`](docs/PROJECT_INDEX.md)。当前科研状态：[`docs/RESEARCH_STATUS.md`](docs/RESEARCH_STATUS.md)。
+ChatGPT 网页端新对话先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](AI_CONTEXT/00_PROJECT_STATE.md)，再按该目录的研究、架构、数据、模块、实验、决策和问题文件进入真实源码与证据。项目知识导航：[`docs/PROJECT_INDEX.md`](docs/PROJECT_INDEX.md)。当前科研状态：[`docs/RESEARCH_STATUS.md`](docs/RESEARCH_STATUS.md)。重新学习项目可从 [`docs/LEARNING_PATH.md`](docs/LEARNING_PATH.md) 开始，人与 AI 的职责及解释规则见 [`docs/COLLABORATION_GUIDE.md`](docs/COLLABORATION_GUIDE.md)，重构目标验收见 [`docs/RESTRUCTURE_ACCEPTANCE.md`](docs/RESTRUCTURE_ACCEPTANCE.md)，定位代码可看 [`docs/CODE_INDEX.md`](docs/CODE_INDEX.md)。
+
+常见项目问题可先运行只读检索：`python code/scripts/query_project_knowledge_v1.py --query "你的问题"`。返回结果是导航候选，正式判断仍须打开列出的原始证据。
 
 AirFogSim is a reference simulator and data-generation source. It is not the PI-JWM framework.
 
 ## Current Stage
 
-As of 2026-09-09:
+As of 2026-09-10:
 
 - the current gate is P4 formal non-`locked_test` accuracy and generalization acceptance;
 - the candidate method is `entity_aligned_dual_graph_rssm_v1`, trained in two stages with a frozen deterministic base and prior-only formal rollout;
@@ -25,14 +27,15 @@ The candidate-action rollout planner is still a CPU mechanism prototype. Do not 
 Read these files in order before continuing work:
 
 1. [`AGENTS.md`](AGENTS.md) for permanent repository and evidence rules.
-2. [`task_plan.md`](task_plan.md) for the current task gate, blocker, and single next action.
-3. [`记录/文件树与证据分层_20260826.md`](记录/文件树与证据分层_20260826.md) for file responsibilities and process/final evidence boundaries.
-4. [`记录/本地计划表.md`](记录/本地计划表.md) for the single local execution overview.
-5. [`记录/PIJWM主文档.md`](记录/PIJWM主文档.md) for fixed theory, method, data, and evaluation definitions.
-6. [`记录/8.12之后推进.md`](记录/8.12之后推进.md) for post-2026-08-12 implementation progress and blockers.
-7. [`记录/接续记录/新对话接续说明_20260815.md`](记录/接续记录/新对话接续说明_20260815.md) for handoff context only; it cannot override newer evidence.
-8. [`docs/README.md`](docs/README.md) and [`记录/README.md`](记录/README.md) for document and record ownership.
-9. Machine-readable manifests and reports under `code/artifacts/` for individual acceptance claims.
+2. [`AI_CONTEXT/00_PROJECT_STATE.md`](AI_CONTEXT/00_PROJECT_STATE.md) for the concise current snapshot used by ChatGPT Web.
+3. [`task_plan.md`](task_plan.md) for the current task gate, blocker, and single next action.
+4. [`记录/文件树与证据分层_20260826.md`](记录/文件树与证据分层_20260826.md) for file responsibilities and process/final evidence boundaries.
+5. [`记录/本地计划表.md`](记录/本地计划表.md) for the single local execution overview.
+6. [`记录/PIJWM主文档.md`](记录/PIJWM主文档.md) for fixed theory, method, data, and evaluation definitions.
+7. [`记录/8.12之后推进.md`](记录/8.12之后推进.md) for post-2026-08-12 implementation progress and blockers.
+8. [`记录/接续记录/新对话接续说明_20260815.md`](记录/接续记录/新对话接续说明_20260815.md) for handoff context only; it cannot override newer evidence.
+9. [`docs/README.md`](docs/README.md) and [`记录/README.md`](记录/README.md) for document and record ownership.
+10. Machine-readable manifests and reports under `code/artifacts/` for individual acceptance claims.
 
 Historical plans, meeting slides, model runs, and successful smoke tests remain evidence of their stated scope only. They do not override later theory boundaries or prove a complete method.
 
@@ -51,6 +54,7 @@ PIJWM/
 |-- literature/           authoritative local literature library and PDF categories
 |-- meeting/              local meeting materials and historical presentations
 |-- docs/                 templates, project notes, and miscellaneous documentation
+|-- AI_CONTEXT/           concise ChatGPT Web current-state and source-navigation layer
 |-- pyproject.toml
 `-- AGENTS.md
 ```

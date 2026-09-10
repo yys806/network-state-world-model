@@ -288,8 +288,8 @@ ssh -o StrictHostKeyChecking=no -o ConnectTimeout=15 -p 30339 root@connect.nmb1.
 
 ### 正在进行（Active）
 
-- seed `20260830` 全量正式训练；截至交接快照已完成 base 20 epoch，进入 entity RSSM epoch 1。
-- 对该运行做只读证据保全。
+- 当前没有正在运行的正式训练或远端同步任务。
+- seed `20260830` 已完成并通过独立单 seed 验收；该旧交接快照已由本文件后部的 2026-09-09 当前覆盖更新。
 
 ### 已同意但尚未执行（Agreed）
 
@@ -393,3 +393,28 @@ ssh -o StrictHostKeyChecking=no -o ConnectTimeout=15 -p 30339 root@connect.nmb1.
 - 远端进程已退出，GPU显存占用=`0 MiB`，可以释放。
 - 当前按用户要求暂停，不启动 seed `20260832`。P4仍等待第三 seed和三 seed审计；P6、`locked_test`和正式性能声明继续关闭。
 - 单一下一动作：等待用户明确决定是否运行最后一个冻结 seed `20260832`。
+
+## 2026-09-09 当前覆盖：先重构、后续跑第三 seed
+
+- 用户已明确把 seed `20260832`、远端训练和远端同步延后，当前先完成项目重构。
+- 新入口包括 `docs/LEARNING_PATH.md`、`RETRIEVAL_GUIDE.md`、`CODE_INDEX.md`、`KNOWN_CONFLICTS.md`、`ARCHIVE_CANDIDATES.md` 和 `docs/registries/`。
+- `docs/registries/deferred_work.json` 保存第三 seed 与同步的续接接口，二者均为 `authorization_required=true`、`auto_start=false`。
+- 历史 Python 代码已经机器化分层和逐文件登记，但为保持旧实验复现及测试路径，本轮只做逻辑归档，不物理移动或删除。
+- P4、P6、`locked_test` 和正式性能声明边界没有变化。
+
+## 2026-09-09 当前覆盖：长期协作与快速问答闭环已完成
+
+- 稳定入口新增 `docs/COLLABORATION_GUIDE.md` 和 `docs/RESTRUCTURE_ACCEPTANCE.md`；以后先按 `docs/RETRIEVAL_GUIDE.md` 定位，再回到代码、配置、metrics、manifest 或 audit 核实。
+- 重要实验统一为 7 项完整字段记录；6 类关键历史方法记录动机、结果、弃用原因、替代关系和证据；5 类常见问题具有只读路由。
+- `code/scripts/query_project_knowledge_v1.py` 可按中文/英文自然语言、精确旧实验目录名或精确代码文件名检索，不写入 artifact，也不把索引当正式证据。
+- 正式结果注册表会自动对照两份 acceptance JSON 的哈希、seed、epoch、状态、9 项指标和封存边界；当前不一致数为 0。
+- 当前生成快照覆盖 834 个项目文件、606 个 Python 节点和 802 个 artifact 一级目录；项目知识/结构 27/27、正式 P4 210/210 通过。全量 1636 项为 0 failure/21 个已登记环境或历史错误，因此历史代码不做物理移动。
+- 本轮未改变理论、模型、loss、指标、协议或实验产物，未启动 GPU、seed `20260832`、远端同步或 `locked_test`。
+- 重构单一下一动作：从用户下一个实际项目问题开始按新入口回答并持续维护；科研主线仍等待用户以后决定是否授权 seed `20260832`。
+
+## 2026-09-10 当前覆盖：AI_CONTEXT 与 GitHub 协作入口
+
+- 根目录新增 `AI_CONTEXT/00_PROJECT_STATE.md` 至 `08_CHANGELOG.md`，供 ChatGPT 网页端在新对话中先恢复当前状态，再按路径查真实源码、配置和实验。
+- `AI_CONTEXT` 的事实优先级低于当前源码/config/experiment，高于普通文档和历史聊天；它不能建立正式科研结论。
+- `AGENTS.md` 已按用户明确授权加入三方角色、Context Consistency Check、自动 commit/push、私人笔记禁区和冲突等待研究者决策规则。
+- 当前科研边界不变：P4 缺第三 seed 与三 seed审计；P6、GPU自动启动、远端同步、正式性能声明和 `locked_test` 均未开放。

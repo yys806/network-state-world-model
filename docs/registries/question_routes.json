@@ -1,0 +1,53 @@
+{
+  "schema_version": "PI-JWM-question-routes-v1",
+  "routes": [
+    {
+      "id": "ROUTE-CURRENT-METHOD",
+      "title": "当前方法与代码入口",
+      "keywords": ["当前方法", "当前算法", "现在使用", "模型入口", "训练入口", "代码在哪里"],
+      "summary": "先确认 P4 当前候选方法及正式包装入口，再回到模型、runner、冻结协议和 acceptance 核实。",
+      "primary_sources": ["docs/RESEARCH_STATUS.md", "docs/CODE_INDEX.md", "docs/registries/experiment_registry.json"],
+      "verification_sources": ["code/src/pi_jwm/formal_entity_aligned_rssm_world_model_v1.py", "code/scripts/run_formal_p4_entity_rssm_gpu_v1.py"]
+    },
+    {
+      "id": "ROUTE-EXPERIMENT-HISTORY",
+      "title": "历史实验与弃用原因",
+      "keywords": ["做过没有", "试过没有", "以前试过", "历史实验", "为什么不用", "为什么弃用", "失败原因", "旧方案", "之前的"],
+      "summary": "先查历史方法语义注册表，再进入对应实验和 audit；失败结果只能按当时方法、数据和协议解释。",
+      "primary_sources": ["docs/registries/historical_method_registry.json", "docs/EXPERIMENT_INDEX.md"],
+      "verification_sources": ["code/artifacts/audit", "code/artifacts/experiments"]
+    },
+    {
+      "id": "ROUTE-RESULT-PROVENANCE",
+      "title": "结果数字与来源",
+      "keywords": ["结果", "数字", "指标", "最好结果", "从哪里来", "怎么得到", "checkpoint", "seed"],
+      "summary": "从结果注册表进入实验登记和 acceptance，再核对原始 metrics、checkpoint 与 manifest。",
+      "primary_sources": ["docs/RESULTS_INDEX.md", "docs/registries/results_registry.json", "docs/registries/experiment_registry.json"],
+      "verification_sources": ["code/artifacts/audit", "code/artifacts/experiments"]
+    },
+    {
+      "id": "ROUTE-DEFERRED-WORK",
+      "title": "尚未执行与授权边界",
+      "keywords": ["下一步", "还缺什么", "什么时候运行", "第三个 seed", "20260832", "远端同步", "延期", "阻塞"],
+      "summary": "查询延期注册表和当前科研状态；登记为 deferred 不等于允许自动执行。",
+      "primary_sources": ["docs/registries/deferred_work.json", "docs/RESEARCH_STATUS.md"],
+      "verification_sources": ["记录/本地计划表.md", "记录/8.12之后推进.md"]
+    },
+    {
+      "id": "ROUTE-RESEARCH-STATUS",
+      "title": "当前研究问题、证据和未知",
+      "keywords": ["研究问题", "现在做到哪里", "当前状态", "已经确认", "当前假设", "尚未解决"],
+      "summary": "先读当前状态摘要，再沿项目索引定位方法、实验和原始证据。",
+      "primary_sources": ["docs/RESEARCH_STATUS.md", "docs/PROJECT_INDEX.md"],
+      "verification_sources": ["记录/PIJWM主文档.md", "code/artifacts"]
+    },
+    {
+      "id": "ROUTE-CHATGPT-ONBOARDING",
+      "title": "ChatGPT 新对话快速恢复项目",
+      "keywords": ["ChatGPT", "新对话", "快速了解", "项目上下文", "AI_CONTEXT", "从哪里开始读"],
+      "summary": "先读 AI_CONTEXT 当前快照，再按研究、架构、数据、模块、实验、决策和问题文件继续定位真实源码与证据。",
+      "primary_sources": ["AI_CONTEXT/00_PROJECT_STATE.md", "AI_CONTEXT/04_MODULE_MAP.md"],
+      "verification_sources": ["docs/registries/document_authority.json", "code/src/pi_jwm", "code/artifacts"]
+    }
+  ]
+}
