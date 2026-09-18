@@ -31,3 +31,5 @@
 Source of truth：本 changelog 只说明发生了什么；实现和实验真假仍由源码/config/experiment/audit 决定。
 
 Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文件推断。
+
+- 2026-09-18: Step 2 froze raw single-step and four action-family contract; added source adapter, focused tests, evidence script, and protocol artifacts.

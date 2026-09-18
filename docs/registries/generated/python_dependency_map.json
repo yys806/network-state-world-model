@@ -1961,6 +1961,21 @@
     {
       "category": "framework_source",
       "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.run_raw_single_decision_step_contract_v1",
+        "tests.test_raw_single_decision_step_contract_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.raw_single_decision_step_contract_v1",
+      "path": "code/src/pi_jwm/raw_single_decision_step_contract_v1.py",
+      "test_files": [
+        "code/tests/test_raw_single_decision_step_contract_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
       "imported_by": [],
       "imports": [],
       "lifecycle_status": "support",
@@ -5454,6 +5469,18 @@
       "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [
+        "pi_jwm.raw_single_decision_step_contract_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_raw_single_decision_step_contract_v1",
+      "path": "code/scripts/run_raw_single_decision_step_contract_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
         "scripts.train_baseline_v0"
       ],
       "lifecycle_status": "support",
@@ -8362,6 +8389,18 @@
       "lifecycle_status": "historical",
       "module": "tests.test_r6_rollout",
       "path": "code/tests/test_r6_rollout.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.raw_single_decision_step_contract_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_raw_single_decision_step_contract_v1",
+      "path": "code/tests/test_raw_single_decision_step_contract_v1.py",
       "test_files": []
     },
     {

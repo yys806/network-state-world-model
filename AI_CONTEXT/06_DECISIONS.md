@@ -53,3 +53,7 @@
 - 是否授权执行 Step 2。旧 `seed=20260832` 不属于当前 active queue。
 
 Unverified：任何未在本文件或项目权威记录中标为 Researcher Decision 的科研取舍。
+
+## 2026-09-18 Researcher Decision
+
+Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^Mob controlling UAV mobility only; vehicle motion remains SUMO external progression. This is a researcher decision, not an engineering inference.

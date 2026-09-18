@@ -1,0 +1,10 @@
+{
+  "step": "STEP 2",
+  "passed": true,
+  "minimum_four_family_closure": true,
+  "historical_real_three_family_evidence": true,
+  "full_real_four_family_airfogsim_trace": false,
+  "training_started": false,
+  "gpu_used": false,
+  "locked_test_accessed": false
+}

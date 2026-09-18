@@ -53,3 +53,11 @@
 - 2026-09-10：新增面向 ChatGPT 网页端的 `AI_CONTEXT/`，并将三方协作和同步规则写入 `AGENTS.md`。
 
 Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能声明已开放”的证据。
+
+## 2026-09-18 STEP 2
+
+- Current gate: Step 2 contract frozen; minimum four-family scheduler closure passed.
+- Action boundary: Route, Comm, Comp, and UAV-only Mobility. SUMO advances vehicles.
+- Evidence: `code/artifacts/protocols/pi_jwm_raw_single_decision_step_contract_v1_20260918/`.
+- Limitation: full real AirFogSim four-family trajectory has not been accepted; no GPU, training, or locked_test.
+- Next single action: researcher review before Step 3 real single-trajectory wiring.

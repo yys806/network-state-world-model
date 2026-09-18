@@ -1,13 +1,13 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-18。当前 **STEP 1 — New Definition → Current Implementation Audit**；新定义实现尚未开始。审计和工程框架交付后停止，等待研究者检查。
+更新时间：2026-09-18。当前 **STEP 2 — 冻结单决策步 Raw Trajectory + 四类 Action Contract**；合同已冻结，最小闭环已验证，等待研究者检查。
 
 ## 当前依据与执行边界
 
 - 目标研究定义：`D:\shen\OB\科研\PIJWM` 中七个 `00–06` Markdown 文件，只读。文件名、大小、行数和 SHA-256 见 `code/artifacts/audit/pi_jwm_new_definition_step01_20260918/initial_snapshot.json`。
 - 实现事实：本仓库源码、配置、测试和原始 artifact。笔记中“当前代码已经……”的描述也必须核对。
 - 工程工作区：`D:\shen\PKU\PIJWM`；旧 P4/P6/P0–P10 工作流为 **Historical / Archived**，不再是 active workflow。旧结果保留原验收含义，不变成新定义结果。
-- 本轮不改变模型、数据、loss、协议、planner 或 checkpoint；不训练、不使用 GPU、不访问 `locked_test`、不自动执行 Step 2。
+- 本轮不改变模型、数据、loss、协议、planner 或 checkpoint；不训练、不使用 GPU、不访问 `locked_test`、不自动执行 Step 3。
 - 主报告：[STEP_01_AUDIT.md](implementation_records/STEP_01_AUDIT.md)；数据附件：[STEP_01_DATA_GRAPH_AUDIT.md](implementation_records/STEP_01_DATA_GRAPH_AUDIT.md)。下表中的 00–06 对应上述源文件章节；详细定位在报告中。
 
 ## 总体实施状态
@@ -65,6 +65,10 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | 单步规则反馈、动态图、loss/selector | 即使部分权重可加载，旧精度结论也不再适用 | 历史checkpoint复现和回归，不作新验收 |
 | 旧两seed单seed验收 | 原数字与原协议保留；并非新00–06性能证据 | 有边界的历史对照；不自动补第三seed |
 
-## 唯一建议的 Step 2（NOT_STARTED）
+## Step 2 已完成
 
-**冻结一个决策步的原始轨迹字段与四类动作映射合同。** 只对01/02/06建立可核验的 Decision→Action→Execution→Outcome→下一Decision 映射：列字段、单位、可见时刻、缺失语义、实体ID和Route/Comm/Comp/UAV的真实采集/执行入口，使用已有非locked片段或合成样例作低成本检查。输出 schema/映射表与断言，不重构模型、不生成大数据、不训练；通信/外生未决项显式留空并说明，不自行选科学方案。等待研究者审阅授权后才开始。
+已冻结单决策步 Raw Trajectory 与四类 Action Contract，详细合同见 docs/contracts_PIJWM_RAW_SINGLE_DECISION_STEP_CONTRACT_V1.md，记录见 docs/implementation_records/STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md，机器证据见 code/artifacts/protocols/pi_jwm_raw_single_decision_step_contract_v1_20260918/。四类 setter 的最小环境闭环已通过；既有非 locked 真实 ledger 仅覆盖 Route/Comm/Comp，完整真实四类轨迹尚未完成。车辆运动边界固定为 SUMO 外生推进，Mob 仅为 UAV。
+
+## 唯一建议的 Step 3（NOT_STARTED）
+
+冻结一条真实 AirFogSim 轨迹的四类动作采集接线，先做单条非 locked 决策步的真实字段与 Outcome 对齐验收。等待研究者审阅授权后才开始。

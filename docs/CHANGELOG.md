@@ -52,3 +52,5 @@
 - 当前生成快照覆盖 844 个项目文件、607 个 Python 节点和 802 个 artifact 目录；九个 AI_CONTEXT 文件和 6 类问题路由有效，当前 artifact 控制入口读取错误为 0。
 - 验证：AI_CONTEXT 6/6、项目知识/结构 28/28、正式 P4 210/210、compileall 和 diff 检查通过；全量 1643 项为 0 assertion failure/17 个已登记环境或历史错误。
 - 未修改模型、loss、metrics、tensor、协议、checkpoint、实验结果或 `code/artifacts/`。
+
+- 2026-09-18: Added Step 2 raw trajectory/four-action contract, minimum closure validation, and evidence artifacts.

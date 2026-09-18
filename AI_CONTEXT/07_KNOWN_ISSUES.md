@@ -58,3 +58,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 遇到新重大冲突时必须记录：`Documented Intent`、`Actual Implementation`、`Evidence`、`Affected Files`、`Conflict`、`Status: Awaiting Researcher Decision`，并停止相关科研逻辑修改。
 
 Unverified：没有代码、config、experiment 或可读 audit 支持的问题只能标记为待核验，不能写成确认缺陷。
+
+## 2026-09-18
+
+The Step 2 minimum closure uses real AirFogSim scheduler source in a minimal environment. Full real four-family trajectory and complete collector wiring remain unverified; local full scenario imports are blocked by missing optional shapely/	raci.

@@ -1,0 +1,71 @@
+{
+  "contract_version": "PIJWM-Raw-Single-Decision-Step-v1",
+  "action_space": [
+    "route",
+    "comm",
+    "comp",
+    "mobility"
+  ],
+  "vehicle_motion_boundary": "SUMO advances vehicles; PI-JWM mobility action targets UAV only",
+  "action_field_specs": {
+    "route": {
+      "fields": [
+        "task_id",
+        "task_node_id",
+        "route_kind",
+        "target_node_id",
+        "route_node_ids"
+      ],
+      "interfaces": [
+        "TaskScheduler.setTaskOffloading",
+        "TaskScheduler.setTaskReturnRoute"
+      ]
+    },
+    "comm": {
+      "fields": [
+        "task_id",
+        "rb_indices"
+      ],
+      "interfaces": [
+        "CommunicationScheduler.setCommunicationWithRB"
+      ]
+    },
+    "comp": {
+      "fields": [
+        "task_id",
+        "node_id",
+        "allocated_cpu_per_s"
+      ],
+      "interfaces": [
+        "ComputationScheduler.setComputingCallBack"
+      ]
+    },
+    "mobility": {
+      "fields": [
+        "uav_id",
+        "azimuth_rad",
+        "elevation_rad",
+        "speed_mps"
+      ],
+      "interfaces": [
+        "TrafficScheduler.setUAVMobilityPatterns"
+      ],
+      "boundary": "UAV only; vehicle motion is advanced externally by SUMO"
+    }
+  },
+  "scheduler_source_files": {
+    "task": "D:\\shen\\PKU\\PIJWM\\code\\reference\\AirFogSim\\airfogsim\\scheduler\\task_sched.py",
+    "communication": "D:\\shen\\PKU\\PIJWM\\code\\reference\\AirFogSim\\airfogsim\\scheduler\\communication_sched.py",
+    "computation": "D:\\shen\\PKU\\PIJWM\\code\\reference\\AirFogSim\\airfogsim\\scheduler\\computation_sched.py",
+    "traffic": "D:\\shen\\PKU\\PIJWM\\code\\reference\\AirFogSim\\airfogsim\\scheduler\\traffic_sched.py"
+  },
+  "scheduler_source_sha256": {
+    "task": "05fd0290c0f01a9cb7a92c561a6151ab86c4209faafa2fa8101e93f57b42f572",
+    "communication": "c0d38710582197b8198b9c727da3038aaad82a072221bb8cc10bf5067cc254a9",
+    "computation": "1f7e5e5ca0e8b2dc0585cefb3fb707781214b7db67b0071c9fbfbaa1b9357843",
+    "traffic": "eec01556d1b2fa9e25861a5d8269f2cb0fe4fdbe10b47566c3c2335f79b818f5"
+  },
+  "source_load_notes": [
+    "shapely unavailable: non-fly-zone geometry helpers remain unavailable; the UAV mobility setter does not use them"
+  ]
+}

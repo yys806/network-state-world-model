@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "decision_time_s": 1.0,
+  "outcome_time_s": 1.1,
+  "next_decision_time_s": 1.1,
+  "setter_kinds": [
+    "offload",
+    "rb",
+    "cpu_callback",
+    "uav_mobility"
+  ],
+  "uav_position_after": [
+    1.0,
+    0.0,
+    10.0
+  ],
+  "served_cpu_work": 0.2,
+  "scope": "minimal environment using repository AirFogSim scheduler source; not full AirFogSim scenario acceptance"
+}

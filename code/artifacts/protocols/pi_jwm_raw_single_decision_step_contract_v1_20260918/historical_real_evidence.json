@@ -1,0 +1,13 @@
+{
+  "path": "code\\artifacts\\formal_data\\pi_jwm_v4_formal_candidate_v6_rb_v1_unlocked_20260821\\trajectories\\load_high__density_dense__r00__arm_orthogonal__v2\\action_attempts.jsonl",
+  "sha256": "4bcda087abf503f2fddffd132796b597a8607418366ad905938e64bb513fc94b",
+  "trajectory_id": "load_high__density_dense__r00__arm_orthogonal__v2",
+  "frame_index": 2,
+  "setter_kinds": [
+    "cpu_callback",
+    "offload",
+    "rb"
+  ],
+  "env_step_completed": true,
+  "scope": "historical unlocked three-family evidence; no UAV mobility setter recorded"
+}

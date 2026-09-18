@@ -63,3 +63,7 @@ DataLoader → 模型 prior/teacher 输出 → `formal_world_model_loss()`。bas
 - `step2_started=false`；没有生成新定义 tensor。
 
 Unverified：未在当前 tensor manifest、loader 或模型实际读路径出现的字段，不得推断为当前模型输入。
+
+## 2026-09-18 STEP 2 状态
+
+单决策步 `Decision_t → Action_t → Execution_t → Outcome_t → Decision_{t+1}` 合同已冻结。四类动作明确为 Route、Comm、Comp、UAV Mobility；车辆运动由 SUMO 推进，不属于 PI-JWM planner action。合同和验证证据见 `docs/contracts_PIJWM_RAW_SINGLE_DECISION_STEP_CONTRACT_V1.md`、`docs/implementation_records/STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md`。当前只完成最小 setter 闭环和历史三类真实 ledger 证据，完整真实四类轨迹尚未验收。
