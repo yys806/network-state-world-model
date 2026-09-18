@@ -1026,6 +1026,16 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - 验证结果：AI_CONTEXT 6/6、项目知识/结构 28/28、正式 P4 210/210 通过；全量 1643 项为 0 assertion failure/17 个已登记环境或历史错误；当前 artifact 读取错误为 0。
 - 单一下一动作：本任务提交推送后，科研主线仍等待研究者决定是否授权 seed `20260832`。
 
+## 2026-09-16 最新 AirFogSim 源轨迹分享包（仅本地交付）
+
+- 用户明确要求最新版，交付 v6 formal source（B层），不含六月A层CSV、训练npz/checkpoint或locked_test；没有重跑仿真。
+- 源：code/artifacts/formal_data/pi_jwm_v4_formal_candidate_v6_rb_v1_unlocked_20260821；54条、6场景、每条300步、0.1秒、合计16200轨迹时点。
+- 完成：code/artifacts/packages/AirFogSim_raw_data_share_20260916.zip；658389567字节；SHA256=e2b73fc877a3c5117767a20e23c2527281876c0036e42be16835fb99a08fcb59。
+- 验证：486项轨迹文件及8项顶层历史清单匹配；54个时间网格通过；ZIP全部800文件逐项解压读取、大小和SHA256通过；所选数据零缺失。
+- 限制：历史完整config哈希重建0/54匹配；生成时项目/AirFogSim commit无法确认；最新v6源与当前tensor摘要所指v4不是同一来源声明。现有场景不构成严格单变量对照。上述差异仅报告，没有改写源证据。
+- Context Consistency Check只读完成；按用户要求未修改AI_CONTEXT、模型或训练代码；本任务不commit/push。科研P4、第三seed、GPU、同步和locked_test边界不变。
+- 本次单一下一动作：用户直接将ZIP交给同学；若需逐值重现历史仿真，先恢复完整历史配置和版本，不能自行重跑。
+
 ## 2026-09-18 STEP 1 — New Definition → Current Implementation Audit
 
 - 当前门：只执行新 `00–06` 定义与现有实现审计；旧 P4/P6/P0–P10 为 Historical / Archived。
@@ -1033,3 +1043,17 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - 阻塞：严格双图、四类动作、RSSM 动态边界、逐步规则反馈与完整在线闭环尚未实现；通信状态充分性、外生事件和 planner objective 等仍需研究者决定。
 - 本 Step 不修改模型/数据/loss/planner/checkpoint，不训练，不使用 GPU，不访问 `locked_test`，不自动执行 Step 2。
 - 唯一建议下一步：研究者审阅后，单独授权冻结一个决策步的原始轨迹字段与 Route/Comm/Comp/UAV 四类动作映射合同。
+
+## 2026-09-18 STEP 2
+
+- 状态：已完成合同冻结和低成本最小闭环验证，等待研究者检查。
+- 范围：单决策步 Raw Trajectory；Route/Comm/Comp/UAV Mobility 四类 action；Execution/Outcome/下一 Decision 对齐。
+- 证据：`docs/implementation_records/STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md` 与 `code/artifacts/protocols/pi_jwm_raw_single_decision_step_contract_v1_20260918/`。
+- 边界：未修改世界模型、双图、RSSM、Loss、Planner；未训练、未用 GPU、未访问 `locked_test`。
+- 唯一下一步建议：单条非 locked 真实轨迹四类动作采集接线和 Outcome 对齐验收，需研究者另行检查后推进。
+# 2026-09-19 Step 2.1
+
+- [x] 真实 AirFogSim 单轨迹四类动作接线与 Outcome/next Decision 对齐
+- [x] 修正 vehicle degree/UAV rad heading 合同，核对测试数量和 generated registry 临时文件
+- [x] 写入 Step 2.1 记录、Tracker、计划/进度、AI_CONTEXT，待验证后 commit + push
+- [ ] 研究者审阅后再授权跨决策步真实反馈闭环

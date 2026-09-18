@@ -22,7 +22,7 @@ Step 1 审计确认既有 Route/Comm/Comp 接口和单步采集顺序可复用�
 复用稳定 ID、frame/trajectory 对齐、mask/presence、既有 action attempt ledger 和 AirFogSim 原 scheduler。未修改模型、双图、RSSM、Loss、Planner、数据集和 checkpoint。
 
 ## Validation
-- `python -m unittest discover -s .\\code\\tests -p 'test_raw_single_decision_step_contract_v1.py' -v`：5 项通过。
+- `python -m unittest discover -s .\\code\\tests -p 'test_raw_single_decision_step_contract_v1.py' -v`：6 项通过。
 - `python .\\code\\scripts\\run_raw_single_decision_step_contract_v1.py`：返回码 0；四类 setter、env step、Outcome/下一 Decision 对齐通过。
 - `historical_real_evidence.json`：找到既有 accepted 非 locked `cpu_callback+offload+rb` 记录并确认 env step completed。
 - 未启动训练，未使用 GPU，未访问 `locked_test`。

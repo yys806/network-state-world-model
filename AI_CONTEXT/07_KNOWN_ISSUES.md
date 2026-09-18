@@ -2,6 +2,12 @@
 
 Source of truth：本文件是入口；具体事实必须回到列出的代码、配置、测试或 artifact。
 
+## Step 2.1 observations
+
+- AirFogSim reports vehicle `angle` in degrees and UAV `angle`/`phi` in radians; the contract distinguishes observation `heading` from UAV action `azimuth_rad`.
+- The simulator currently reports `-100.0` acceleration when UAV speed changes from 0 to 10 m/s over 0.1 s. This is recorded as an implementation observation and remains uncorrected.
+- Only one real non-locked decision step is accepted; cross-step feedback and all model/data/planner layers remain unverified.
+
 ## 1. 新定义尚未实现
 
 - Documented Intent：最新 `00–06` 要求严格 Physical/Information 双图、Route/Comm/Comp/UAV 四类动作、主要面向 Physical/Communication 未知动态的 RSSM、逐步学习—规则—动态图闭环和真实反馈重规划。

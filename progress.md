@@ -857,6 +857,16 @@
 - 项目知识/结构 28/28、正式 P4 210/210、compileall、索引 `--check` 和 diff 检查通过；全量 1643 项为 0 assertion failure/17 errors，均属已登记外部环境或历史 fixture 边界。
 - 本轮未修改模型、loss、metrics、tensor、协议、checkpoint 或 artifact，未启动 GPU、seed `20260832`、远端同步或 `locked_test`。
 
+## 2026-09-16 最新 AirFogSim 源轨迹分享包（仅本地交付）
+
+- 用户明确要求最新版，交付 v6 formal source（B层），不含六月A层CSV、训练npz/checkpoint或locked_test；没有重跑仿真。
+- 源：code/artifacts/formal_data/pi_jwm_v4_formal_candidate_v6_rb_v1_unlocked_20260821；54条、6场景、每条300步、0.1秒、合计16200轨迹时点。
+- 完成：code/artifacts/packages/AirFogSim_raw_data_share_20260916.zip；658389567字节；SHA256=e2b73fc877a3c5117767a20e23c2527281876c0036e42be16835fb99a08fcb59。
+- 验证：486项轨迹文件及8项顶层历史清单匹配；54个时间网格通过；ZIP全部800文件逐项解压读取、大小和SHA256通过；所选数据零缺失。
+- 限制：历史完整config哈希重建0/54匹配；生成时项目/AirFogSim commit无法确认；最新v6源与当前tensor摘要所指v4不是同一来源声明。现有场景不构成严格单变量对照。上述差异仅报告，没有改写源证据。
+- Context Consistency Check只读完成；按用户要求未修改AI_CONTEXT、模型或训练代码；本任务不commit/push。科研P4、第三seed、GPU、同步和locked_test边界不变。
+- 本次单一下一动作：用户直接将ZIP交给同学；若需逐值重现历史仿真，先恢复完整历史配置和版本，不能自行重跑。
+
 ## 2026-09-18 STEP 1 — New Definition → Current Implementation Audit
 
 - 读取了研究者只读目录中的七个 `00–06` 定义，并将文件大小、行数、SHA-256 和起始 Git 状态写入 `initial_snapshot.json`。
@@ -864,3 +874,12 @@
 - 新增 `docs/PIJWM_IMPLEMENTATION_TRACKER.md`、`docs/implementation_records/README.md`、`STEP_01_AUDIT.md` 和数据/双图附件；更新治理、权威记录和上下文导航。
 - 运行既有 synthetic CPU 合同测试 49 项，返回码 0；该结果明确不作为新定义验收。
 - 未修改模型、数据、loss、planner 或 checkpoint；`gpu_started=false`、`locked_test_accessed=false`、`step2_started=false`。
+
+## 2026-09-18 STEP 2
+
+结论：单决策步合同已冻结，四类 AirFogSim setter 的最小环境闭环通过。历史真实非 locked ledger 证明 Route/Comm/Comp 的 accepted env-step 记录，未证明 UAV mobility 真实采集。当前不进入 Step 3。
+# 2026-09-19 Step 2.1 真实 AirFogSim 验收
+
+- 真实非 locked 单轨迹的四类动作、真实 `env.step()`、Outcome 与 next Decision 已通过，artifact 为 `code/artifacts/protocols/pi_jwm_raw_single_decision_step_real_airfogsim_v2_20260919/`。
+- 未训练、无 GPU、未访问 `locked_test`；Dataset/Tensor、双图、World Model、Loss、Planner 未进入。
+- 真实接口合同已修正为 vehicle heading degree、UAV heading rad，Mob action 仍为 azimuth_rad；Step 2 测试记录修正为 6 项。

@@ -8,7 +8,7 @@
 
 `Decision_t -> Action_t -> Execution_t -> Outcome_t -> Decision_{t+1}`
 
-时间单位统一为秒，空间位置为米，速度为米/秒，加速度为米/秒平方，角度为弧度。`trajectory_id` 在一条轨迹内不变，`frame_index` 每个已完成环境步加一，实体和任务用稳定字符串 ID 对齐；缺失对象保留固定槽位并用 `present=false` 或显式 mask 表示。
+时间单位统一为秒，空间位置为米，速度为米/秒，加速度为米/秒平方。实体观测使用 `heading`：车辆来自 SUMO 的 `angle`，单位为 degree；UAV 来自 AirFogSim 的 `angle`，单位为 rad。UAV 的动作字段仍使用 `azimuth_rad`，因为 `setUAVMobilityPatterns` 的 `angle` 按弧度参与运动计算。`trajectory_id` 在一条轨迹内不变，`frame_index` 每个已完成环境步加一，实体和任务用稳定字符串 ID 对齐；缺失对象保留固定槽位并用 `present=false` 或显式 mask 表示。
 
 ## 2. Decision_t 可见字段
 
@@ -17,7 +17,7 @@
 | trajectory_id, frame_index | collector context/frame counter | 轨迹 ID、决策步序号 | 决策前 |
 | decision_time_s, slot_duration_s | `AirFogSimEnv.simulation_time/simulation_interval` | s | 决策前 |
 | entities[].entity_id/type/present | AirFogSim entity collections | 稳定 ID、枚举、存在标志 | 决策前 |
-| entities[].position/speed/acceleration/azimuth/elevation | traffic manager current state | m, m/s, m/s^2, rad | 决策前 |
+| entities[].position/speed/acceleration/heading/elevation | traffic manager current state | m, m/s, m/s^2, vehicle degree or UAV rad; UAV elevation rad | 决策前 |
 | vehicle_route_id | SUMO/traffic manager vehicle state | SUMO route ID | 决策前，车辆可为空 |
 | channel_rows | `channel_manager.getCSI` | 每 RB 的 dB，按有向实体对和 channel type 对齐 | 决策前 |
 | tasks[] | task manager lifecycle collections and Task getters | task ID、Task node、当前节点、生命周期、route、arrival、data/CPU units、已计算量 | 决策前 |

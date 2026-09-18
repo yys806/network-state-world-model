@@ -94,9 +94,9 @@ RAW_FIELD_SPECS = (
         "required": True,
     },
     {
-        "path": "decision.entities[].azimuth_rad",
+        "path": "decision.entities[].heading",
         "phase": "decision",
-        "unit": "rad",
+        "unit": "vehicle degree; UAV rad",
         "id_domain": None,
         "source": "traffic_manager vehicle/UAV current infos",
         "required": True,
@@ -228,7 +228,7 @@ class EntityState:
     position_m: tuple[float, float, float]
     speed_mps: float = 0.0
     acceleration_mps2: float = 0.0
-    azimuth_rad: float = 0.0
+    heading: float = 0.0
     elevation_rad: float | None = None
     vehicle_route_id: str | None = None
 

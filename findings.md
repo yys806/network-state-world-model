@@ -797,6 +797,16 @@
 - `AGENTS.md` 中具体 P4/pre-GPU 临时步骤与“只放长期规则”冲突，已移入 AI_CONTEXT/计划层；永久文件仅保留通用冻结、审计和证据一致性门。
 - 剩余 17 个全量 errors 仍阻断历史文件物理迁移，但不来自本次 AI_CONTEXT、注册表或当前 P4 正式路径。
 
+## 2026-09-16 最新 AirFogSim 源轨迹分享包（仅本地交付）
+
+- 用户明确要求最新版，交付 v6 formal source（B层），不含六月A层CSV、训练npz/checkpoint或locked_test；没有重跑仿真。
+- 源：code/artifacts/formal_data/pi_jwm_v4_formal_candidate_v6_rb_v1_unlocked_20260821；54条、6场景、每条300步、0.1秒、合计16200轨迹时点。
+- 完成：code/artifacts/packages/AirFogSim_raw_data_share_20260916.zip；658389567字节；SHA256=e2b73fc877a3c5117767a20e23c2527281876c0036e42be16835fb99a08fcb59。
+- 验证：486项轨迹文件及8项顶层历史清单匹配；54个时间网格通过；ZIP全部800文件逐项解压读取、大小和SHA256通过；所选数据零缺失。
+- 限制：历史完整config哈希重建0/54匹配；生成时项目/AirFogSim commit无法确认；最新v6源与当前tensor摘要所指v4不是同一来源声明。现有场景不构成严格单变量对照。上述差异仅报告，没有改写源证据。
+- Context Consistency Check只读完成；按用户要求未修改AI_CONTEXT、模型或训练代码；本任务不commit/push。科研P4、第三seed、GPU、同步和locked_test边界不变。
+- 本次单一下一动作：用户直接将ZIP交给同学；若需逐值重现历史仿真，先恢复完整历史配置和版本，不能自行重跑。
+
 ## 2026-09-18 新定义 Step 1 审计发现
 
 - 当前 `physical_edge` 混合空间关系、CSI、rate、任务数和 RB，与目标严格 Physical/Information 分离不一致；独立 Agent state、Communication relation、Task-Agent typed relation 不完整。
@@ -805,3 +815,15 @@
 - base 内部有逐步规则递推，但实体 RSSM 修正在 base 整段推演后叠加；尚未实现“学习动态→规则更新→重构双图→下一步”的完整单步闭环。
 - planner 有逐候选调用与首动作接口骨架，但合法候选、冻结 objective/risk/hard constraints/fallback、真实执行反馈和连续 replanning 仍缺失，只能标 `prototype_only`。
 - 旧两 seed、旧 tensor/checkpoint 和旧 planner 结果全部保留为 Historical / Archived evidence，不能用于声称新 `00–06` 已实现或已有性能。
+
+## 2026-09-18 STEP 2
+
+- 已确认：`A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob)`，Mob 只控制 UAV，车辆由 SUMO 推进。
+- 已确认：完整真实四类轨迹仍缺失；最小闭环不能替代真实场景验收。
+- 已记录：本机缺少 `shapely/traci`，完整场景未运行；不影响 scheduler 源码 setter 的最小核验。
+# 2026-09-19 Step 2.1 真实 AirFogSim 验收
+
+- 真实非 locked AirFogSim 单轨迹通过四类 scheduler 与真实 `env.step()` 闭环；13 项 checks 全部为 true，未使用 `_MinimalEnv` 或手工 Outcome。
+- vehicle traffic `angle` 是 degree，UAV `angle/phi` 按 rad；合同采用实体 `heading`，Mob action 保留 `azimuth_rad`。
+- UAV 速度由 0 变 10 m/s 时 AirFogSim 真实 acceleration 为 `-100.0`，记录为仿真器现状，不在本 Step 修正。
+- Step 2 专项测试真实为 6 项；generated registry 未纳入 `index-build.tmp.err`/`tmp.err`。

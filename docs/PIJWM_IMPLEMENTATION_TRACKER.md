@@ -67,8 +67,8 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 
 ## Step 2 已完成
 
-已冻结单决策步 Raw Trajectory 与四类 Action Contract，详细合同见 docs/contracts_PIJWM_RAW_SINGLE_DECISION_STEP_CONTRACT_V1.md，记录见 docs/implementation_records/STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md，机器证据见 code/artifacts/protocols/pi_jwm_raw_single_decision_step_contract_v1_20260918/。四类 setter 的最小环境闭环已通过；既有非 locked 真实 ledger 仅覆盖 Route/Comm/Comp，完整真实四类轨迹尚未完成。车辆运动边界固定为 SUMO 外生推进，Mob 仅为 UAV。
+已冻结单决策步 Raw Trajectory 与四类 Action Contract，详细合同见 docs/contracts_PIJWM_RAW_SINGLE_DECISION_STEP_CONTRACT_V1.md，记录见 docs/implementation_records/STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md，机器证据见 code/artifacts/protocols/pi_jwm_raw_single_decision_step_contract_v1_20260918/。Step 2.1 已在真实 AirFogSim 非 locked 单轨迹中完成 Route/Comm/Comp/UAV Mobility -> env.step -> Outcome -> next Decision 验收，证据见 code/artifacts/protocols/pi_jwm_raw_single_decision_step_real_airfogsim_v2_20260919/。车辆运动仍由 SUMO 外生推进，Mob 仅为 UAV；真实观测合同已修正为 vehicle heading degree、UAV heading rad，UAV 动作仍为 azimuth_rad。
 
 ## 唯一建议的 Step 3（NOT_STARTED）
 
-冻结一条真实 AirFogSim 轨迹的四类动作采集接线，先做单条非 locked 决策步的真实字段与 Outcome 对齐验收。等待研究者审阅授权后才开始。
+冻结下一条真实 AirFogSim 轨迹的跨决策步闭环验收，先由研究者审阅本 Step 2.1 证据后再授权。
