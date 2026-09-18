@@ -856,3 +856,11 @@
 - 自动索引覆盖 844 个项目文件、607 个 Python 节点、802 个 artifact 目录；9 个 AI_CONTEXT 文件、6 类问题路由、2 个正式结果证据核对均无错误。
 - 项目知识/结构 28/28、正式 P4 210/210、compileall、索引 `--check` 和 diff 检查通过；全量 1643 项为 0 assertion failure/17 errors，均属已登记外部环境或历史 fixture 边界。
 - 本轮未修改模型、loss、metrics、tensor、协议、checkpoint 或 artifact，未启动 GPU、seed `20260832`、远端同步或 `locked_test`。
+
+## 2026-09-18 STEP 1 — New Definition → Current Implementation Audit
+
+- 读取了研究者只读目录中的七个 `00–06` 定义，并将文件大小、行数、SHA-256 和起始 Git 状态写入 `initial_snapshot.json`。
+- 审计了轨迹/时间、dataset/tensor、双图、entity alignment、RSSM、规则反馈、四类动作、training/loss/evaluation 和 planner/closed loop。
+- 新增 `docs/PIJWM_IMPLEMENTATION_TRACKER.md`、`docs/implementation_records/README.md`、`STEP_01_AUDIT.md` 和数据/双图附件；更新治理、权威记录和上下文导航。
+- 运行既有 synthetic CPU 合同测试 49 项，返回码 0；该结果明确不作为新定义验收。
+- 未修改模型、数据、loss、planner 或 checkpoint；`gpu_started=false`、`locked_test_accessed=false`、`step2_started=false`。

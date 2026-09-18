@@ -1,7 +1,7 @@
 # PI-JWM 项目索引
 
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
-> 生成于 2026-09-08，状态更新于 2026-09-10。当前正式训练已停止；`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
+> 生成于 2026-09-08，状态更新于 2026-09-18。当前 active workflow 是新 `00–06` 的 Step 1 审计；旧训练与结果已逻辑归档。`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
 
 ## 1. 进入项目的最短路径
 
@@ -9,18 +9,20 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 
 1. [`AGENTS.md`](../AGENTS.md)：永久治理规则、证据口径和安全边界。
 2. [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJECT_STATE.md)：ChatGPT 当前快照和继续读取入口。
-3. [`AI_CONTEXT/04_MODULE_MAP.md`](../AI_CONTEXT/04_MODULE_MAP.md)：问题到真实源码的最短路由。
-4. [`docs/COLLABORATION_GUIDE.md`](COLLABORATION_GUIDE.md)：用户与 AI 的职责、独立判断、解释和问答规则。
-5. [`docs/RESTRUCTURE_ACCEPTANCE.md`](RESTRUCTURE_ACCEPTANCE.md)：重构目标、可观察验收和剩余安全限制。
-6. [`task_plan.md`](../task_plan.md)：当前任务、停止门和唯一下一动作。
-7. [`记录/文件树与证据分层_20260826.md`](../记录/文件树与证据分层_20260826.md)：文件职责和证据等级。
-8. [`记录/本地计划表.md`](../记录/本地计划表.md)：项目粗粒度路线和阶段边界。
-9. [`记录/PIJWM主文档.md`](../记录/PIJWM主文档.md)：理论、数据、方法和评价定义。
-10. [`记录/8.12之后推进.md`](../记录/8.12之后推进.md)：最新推进、失败和阻塞。
-11. [`docs/RESEARCH_STATUS.md`](RESEARCH_STATUS.md)：面向人和 AI 的当前研究状态摘要。
-12. [`docs/CODE_INDEX.md`](CODE_INDEX.md) 与 [`docs/RETRIEVAL_GUIDE.md`](RETRIEVAL_GUIDE.md)：代码状态和固定检索路线。
-13. [`docs/registries/`](registries/)：文件、依赖、实验、结果、历史方法、问题路由、文档权威和延后任务的机器入口。
-14. `code/artifacts/` 中与问题直接对应的 manifest、audit、runtime 和原始结果：最终判断必须回到这里核实。
+3. [`docs/PIJWM_IMPLEMENTATION_TRACKER.md`](PIJWM_IMPLEMENTATION_TRACKER.md)：新定义实施总表、复用分类和当前 Step。
+4. [`docs/implementation_records/STEP_01_AUDIT.md`](implementation_records/STEP_01_AUDIT.md)：Step 1 定义—实现审计主记录。
+5. [`AI_CONTEXT/04_MODULE_MAP.md`](../AI_CONTEXT/04_MODULE_MAP.md)：问题到真实源码的最短路由。
+6. [`docs/COLLABORATION_GUIDE.md`](COLLABORATION_GUIDE.md)：用户与 AI 的职责、独立判断、解释和问答规则。
+7. [`docs/RESTRUCTURE_ACCEPTANCE.md`](RESTRUCTURE_ACCEPTANCE.md)：重构目标、可观察验收和剩余安全限制。
+8. [`task_plan.md`](../task_plan.md)：当前任务、停止门和唯一下一动作。
+9. [`记录/文件树与证据分层_20260826.md`](../记录/文件树与证据分层_20260826.md)：文件职责和证据等级。
+10. [`记录/本地计划表.md`](../记录/本地计划表.md)：项目粗粒度路线和阶段边界。
+11. [`记录/PIJWM主文档.md`](../记录/PIJWM主文档.md)：理论、数据、方法和评价定义。
+12. [`记录/8.12之后推进.md`](../记录/8.12之后推进.md)：最新推进、失败和阻塞。
+13. [`docs/RESEARCH_STATUS.md`](RESEARCH_STATUS.md)：面向人和 AI 的当前研究状态摘要。
+14. [`docs/CODE_INDEX.md`](CODE_INDEX.md) 与 [`docs/RETRIEVAL_GUIDE.md`](RETRIEVAL_GUIDE.md)：代码状态和固定检索路线。
+15. [`docs/registries/`](registries/)：文件、依赖、实验、结果、历史方法、问题路由、文档权威和延后任务的机器入口。
+16. `code/artifacts/` 中与问题直接对应的 manifest、audit、runtime 和原始结果：最终判断必须回到这里核实。
 
 根目录 `PROJECT_CONTEXT.md` 是最近一次交接快照；它用于补充上下文，但如果与更新的过程记录或机器产物冲突，以更新证据为准。
 
@@ -28,14 +30,10 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 
 - 项目：PI-JWM（Physical-Information Joint World Model）。
 - AirFogSim：只作为仿真器和数据生成工具，不是 PI-JWM 框架主体。
-- 粗粒度路线：`P0 -> P1 -> P2 -> P4 -> P6 -> P7+`。
-- 当前阶段：`P4`，正式非 `locked_test` 世界模型精度与泛化验收。
-- 当前候选：`entity_aligned_dual_graph_rssm_v1`。
-- `seed=20260831`：单 seed 独立验收通过；这不是跨 seed 结论。
-- `seed=20260830`：按同一冻结协议完成并通过单 seed 独立验收。
-- 当前两个固定 seed 已通过；第三 seed 和三 seed 汇总审计仍缺失。
-- `seed=20260832`：不得自动启动，等待用户明确指令。
-- `P6`：未开放；候选动作规划器仍是 CPU 机制原型。
+- 当前路线：研究者最新 `00–06` 目标定义 → 经授权的 Implementation Step。
+- 当前 Step：Step 1 审计已完成，等待研究者检查；Step 2 未授权。
+- 新定义实现：尚未开始；现有 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 都是旧协议 Historical / Archived evidence。
+- 当前主要缺口：严格双图、四类动作、目标 stochastic-state 边界、逐步规则反馈/动态图、正式候选生成和真实反馈重规划。
 - `locked_test`：继续封存；`formal_performance_claim_ready=false`。
 
 ## 3. 顶层目录地图

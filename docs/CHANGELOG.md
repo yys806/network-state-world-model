@@ -1,5 +1,13 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-18：新定义 Step 1 实施审计
+
+- 将研究者只读 `00–06` 设为当前目标定义链，旧 P4/P6/P0–P10 工作流和结果逻辑归档，原文件与证据不移动、不删除。
+- 新增 `docs/PIJWM_IMPLEMENTATION_TRACKER.md`、`docs/implementation_records/README.md`、Step 1 主报告和数据/双图附件。
+- 审计确认时间因果、稳定索引、mask/split 等可复用，同时记录严格双图、四类动作、RSSM 边界、逐步规则反馈和完整 planner 闭环的结构性缺口。
+- 同步权威计划、AI_CONTEXT、项目/架构/科研/实验/结果索引与机器文档路由；模型、数据、loss、planner、checkpoint 和实验产物未修改。
+- 验证使用既有 synthetic CPU 合同 49 项；它们不构成新定义验收。未启动 GPU、未访问 `locked_test`、未进入 Step 2。
+
 ## 2026-09-08：第一阶段索引建立
 
 - 新增 `PROJECT_INDEX.md`、`ARCHITECTURE.md`、`RESEARCH_STATUS.md`、`EXPERIMENT_INDEX.md`、`RESULTS_INDEX.md`。

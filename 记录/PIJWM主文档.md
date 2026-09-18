@@ -1,5 +1,7 @@
 # PI-JWM 理论定义与固定技术规范
 
+> **2026-09-18 当前定义入口：** 研究者已明确将只读目录 `D:\shen\OB\科研\PIJWM` 中七个 `00–06` Markdown 文件作为当前目标定义。本文件保留此前理论、决策和证据边界；若具体对象、动作、图语义、世界模型、loss、训练或 planner 定义与最新 `00–06` 冲突，以最新定义为目标，并以 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/STEP_01_AUDIT.md` 记录实现差距。目标定义不等于代码已实现；旧 P4/P6/P0–P10 方法和结果仅按原协议作 Historical / Archived evidence。
+
 > 最后核查日期：2026-08-11<br>
 > 当前文件位置：`记录/PIJWM主文档.md`；2026-08-15已从原外部知识库迁入PI-JWM仓库，后续只维护本文件。<br>
 > 文档定位：只保存 PI-JWM 已确认的研究问题、系统定义、因果边界、优化与学习目标、方法接口、理论依据、数据规范和实验原则。<br>

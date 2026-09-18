@@ -99,15 +99,20 @@ For LaTeX progress documents, compile with XeLaTeX.
 - Historical Zotero keys remain provenance identifiers only. Do not treat a historical Zotero attachment flag as proof that a local PDF exists; use the local path and SHA-256 index.
 - `D:\shen\PKU\RRM` and its Zotero collection remain a separate reference project. Never merge their papers or claims into PI-JWM without explicit provenance and independent PI-JWM evaluation.
 
-## Research Workflow
+## Active Research and Implementation Workflow (2026-09-18)
 
-The main line is PI-JWM:
+- Researcher-authorized target definitions are the seven `00–06` Markdown documents in `D:\shen\OB\科研\PIJWM`. They define intended behavior; only source/config/test/artifact can establish implementation facts. Do not confuse a target definition with an implemented or accepted method.
+- Active definition order: `00 总体研究链路 → 01 仿真系统与轨迹 → 02 数据集与模型输入 → 03 Physical–Information 双图 → 04 世界模型 → 05 Training / Loss / Evaluation → 06 Planner / Closed Loop`.
+- Engineering workspace: `D:\shen\PKU\PIJWM`. All code, configs, tests, experiments, documentation, trackers, records and Git work must stay here. Repository: `https://github.com/yys806/network-state-world-model`.
+- Current implementation entrypoints: `docs/PIJWM_IMPLEMENTATION_TRACKER.md`, `docs/implementation_records/README.md`, and the authorized Step record. Definition chapter numbers are not automatic authorization to execute implementation Steps.
+- Step 1 is **New Definition → Current Implementation Audit** only. Classify each item as `DIRECT_REUSE`, `MINOR_MODIFICATION`, `STRUCTURAL_CHANGE`, `MISSING`, `RESEARCHER_DECISION_REQUIRED`, or `HISTORICAL_ONLY`. No model restructuring, dataset rebuild, new planner, formal training, or automatic Step 2.
+- Priority: **new-definition correctness > old-code reuse**. Reuse verified mechanisms when they fit; use minimal changes when sufficient; restructure only for a demonstrated semantic or structural conflict. Never change the target to preserve an old checkpoint.
+- Each meaningful Step/Substep must be verified, recorded, diff-reviewed, committed and pushed, then reported to the researcher and **stopped**. A suggested next step is not permission to execute it. Never automatically complete multiple major Steps.
+- Before proposing expensive training, require schema/tensor checks, unit tests, tiny forward/backward, finite gradients, tiny-data overfit, short smoke training, action sensitivity, rollout sanity, and learning-signal checks. These must exercise the new contract. Historical passes do not authorize long GPU, multi-seed, hyperparameter search or expensive remote jobs.
 
-1. Build physical-network and information-network representations.
-2. Train action-conditioned state prediction and rollout models.
-3. Extend to physical-information dual-graph rollout.
-4. Evaluate state prediction, link activity/rate, task evolution, robustness, uncertainty, and seed transfer.
-5. Use decision/ranking diagnostics only after state rollout improves.
+### Historical / Archived roadmap
+
+The previous P0–P10/P4/P6 plans and older five-part research workflow are **Historical / Archived**, not the active execution sequence. Preserve their records, code, protocols, artifacts and checkpoints in place for provenance. Their observations remain valid only within their original definitions and acceptance scope; historical success does not establish the new method. This is a logical archive, not permission to move/delete evidence or resume deferred runs.
 
 ## Rules
 
@@ -126,13 +131,13 @@ The main line is PI-JWM:
 
 ## Mainline Control and Scope Discipline
 
-- PI-JWM follows the single canonical coarse-grained roadmap recorded in `记录/本地计划表.md`. Do not invent, insert, or promote extra top-level phases while a gate is open.
+- PI-JWM follows the active `00–06` definition chain and researcher-authorized implementation Step recorded in `docs/PIJWM_IMPLEMENTATION_TRACKER.md` and `记录/本地计划表.md`. Older P-stage gates are historical, never an automatic execution queue.
 - Before starting each task, read `task_plan.md`, this file, `记录/本地计划表.md`, `记录/PIJWM主文档.md`, `记录/8.12之后推进.md`, and `记录/文件树与证据分层_20260826.md`; then state the current gate, blocker, and single next deliverable. Recheck the plan after each completed gate so execution does not drift.
 - If an unexpected result, theory mismatch, or apparent blocker appears, pause the current gate and first search prior records, machine-readable audits, and relevant local literature. Reuse verified interfaces and findings before designing new code or experiments, and record whether the issue is historical, already resolved, or genuinely new.
 - Internal substeps or historical labels must not replace the canonical roadmap in user-facing progress reports or become a reason to expand scope.
 - Once a route is confirmed, execute it sequentially and keep unrelated methods, planner work, robustness, baselines, or locked-test work out of the active gate. Historical smoke or diagnostic runs remain historical unless the current formal gate independently approves them.
 - Before any long GPU training, freeze the method/data/tensor/loss/metric/runtime contract, pass CPU execution and reload checks, freeze the training protocol, and complete an independent Go/No-Go audit. The exact current chain belongs in the authority plan and `AI_CONTEXT`, not in this permanent rule file.
-- At every checkpoint, report only three things: completed evidence, remaining blocker, and the single next action. Do not multiply tasks, rename an unresolved mismatch, or claim completion beyond the recorded evidence.
+- During work, report completed evidence, remaining blocker and the single next action. At Step/Substep completion use the fixed Completion Report below, then stop. Do not rename an unresolved mismatch or claim completion beyond evidence.
 - Every task must leave a short entry in `task_plan.md`, `progress.md`, and `findings.md`. Keep these root files as process records; only the authority files and approved manifests/artifacts can establish a final method or formal claim.
 
 ## AI_CONTEXT Maintenance and Context Consistency Check
@@ -155,9 +160,11 @@ The main line is PI-JWM:
 - After reasonable verification, perform **commit + push** so GitHub stays close to the latest trusted local state. The researcher has explicitly authorized routine pushes for this repository without repeated confirmation.
 - Never push a known broken state to `main`. If new work cannot run or its required validation fails, keep it local, report the exact failure, and do not push merely to satisfy the workflow.
 
-## Private Notes Prohibition
+## Research Notes Read-Only Boundary
 
-- Never read, search, scan, index, modify, cite, or request content from the researcher's private notes directory. Use only information inside this research project and explicitly supplied task material.
+- The researcher explicitly authorized read-only access to `D:\shen\OB\科研\PIJWM` on 2026-09-18. Read/analyze the designated `00–06` definitions and cite their file/section/hash as implementation basis. Never modify, create, delete, rename, format or overwrite anything in that directory.
+- Do not scan other private-note directories. Store implementation mappings and source fingerprints in the engineering repository; do not copy the entire private notebook into GitHub.
+- Historical rule: **Private Notes Prohibition** previously prohibited all access. It is superseded only for the explicitly authorized directory and read-only purpose above; access elsewhere remains prohibited.
 
 ## AGENTS.md Change Control
 
@@ -165,7 +172,8 @@ The main line is PI-JWM:
 
 ## Completion Report
 
-- Keep task completion replies concise and use: `完成内容`、`修改文件`、`验证结果`、`AI_CONTEXT 更新`、`Commit`、`Push`、`发现但未处理的问题`. Use `None` when a field has no content.
+- Use `STEP X.X — 名称` followed by: `1. 本次做了什么`, `2. 得到了什么结果`, `3. 是否符合预期` (符合预期/部分符合/不符合), `4. 当前还存在的问题`, `5. 记录位置`, `6. Git 状态` (Commit hash/message, Push status, GitHub branch), `7. 建议下一步` (one minimal independently verifiable action). Include affected files, verification and AI_CONTEXT updates where relevant. Then stop and wait for researcher review.
+- Each Step record must include Step Goal, Definition Basis, Initial State, Files Involved, Changes, Reuse, Validation (actual commands/outputs), Results, Expected vs Actual, Known Issues, Git, and Next Step. Keep implementation observations separate from scientific conclusions.
 
 ## Knowledge Index Maintenance
 

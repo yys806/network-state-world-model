@@ -2,6 +2,15 @@
 
 这里只记录研究者明确作出的科研或工程决策。Codex 分析、候选建议和实验现象不能自动写成 Researcher Decision。
 
+## 2026-09-18：新定义与 Step 实施工作流
+
+**Researcher Decision**
+
+- `D:\shen\OB\科研\PIJWM` 中最新 `00–06` 是当前目标研究定义，该目录严格只读；所有工程修改留在 `D:\shen\PKU\PIJWM`。
+- 旧 P4/P6/P0–P10 计划、实验、artifact 和 checkpoint 保留为 Historical / Archived evidence，不再作为当前执行主线。
+- 当前只授权 Step 1 定义—实现审计、治理和 Tracker/记录框架；禁止自动进入 Step 2、正式训练、模型重构或新 planner。
+- 每个有效 Step/Substep 必须验证、记录、commit、push、固定格式汇报并停止；新定义正确性优先于旧 checkpoint 复用。
+
 ## 2026-09-10：三方长期协作边界
 
 **Researcher Decision**
@@ -40,6 +49,7 @@
 
 - 最终 PI-JWM 方法是否冻结。
 - P6 采用纯候选搜索、学习策略还是混合策略。
-- 是否以及何时运行 seed `20260832`。
+- 通信状态不足时是否增加 effective service/residual；外生到达/离开如何建模；planner objective/risk/fallback 的具体定义。
+- 是否授权执行 Step 2。旧 `seed=20260832` 不属于当前 active queue。
 
 Unverified：任何未在本文件或项目权威记录中标为 Researcher Decision 的科研取舍。

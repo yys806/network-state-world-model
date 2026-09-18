@@ -1,5 +1,7 @@
 # 数据流与张量合同
 
+> 2026-09-18 Step 1 结论：下列 v5 数据流是旧协议下可追溯资产，尚未满足新 `00–06` 的 Agent/Communication/Task-Agent 关系和 Route/Comm/Comp/UAV 四类动作合同。稳定 ID/index、mask、split 和 train-only normalization 原则可复用；新 schema 尚未冻结。
+
 ## 总流程
 
 ```text
@@ -17,7 +19,7 @@ AirFogSim 参考仿真运行
 
 Source of truth：数据读取与访问守卫见 `code/src/pi_jwm/formal_airfogsim_dataset_v1.py`、`formal_airfogsim_window_v1.py`；当前 tensor 事实见其 manifest 和 validation report。
 
-## 当前正式 tensor
+## 旧协议正式 tensor（Historical / Archived）
 
 - 路径：`code/artifacts/formal_tensor/pi_jwm_v4_tensor_v5_causal_motion_h20_unlocked_20260906/`
 - history/horizon：8/20。
@@ -58,5 +60,6 @@ DataLoader → 模型 prior/teacher 输出 → `formal_world_model_loss()`。bas
 - `require_split_access()` 默认拒绝 locked split；正式 runner 还拒绝路径中出现 `locked_test`。
 - `locked_test_accessed=false`。
 - `formal_performance_claim_ready=false`。
+- `step2_started=false`；没有生成新定义 tensor。
 
 Unverified：未在当前 tensor manifest、loader 或模型实际读路径出现的字段，不得推断为当前模型输入。

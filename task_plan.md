@@ -1025,3 +1025,11 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - 当前工程阻塞：全量套件已有 21 个环境/历史错误，阻止物理迁移旧文件，但不阻止增量 `AI_CONTEXT/` 与治理层实现。
 - 验证结果：AI_CONTEXT 6/6、项目知识/结构 28/28、正式 P4 210/210 通过；全量 1643 项为 0 assertion failure/17 个已登记环境或历史错误；当前 artifact 读取错误为 0。
 - 单一下一动作：本任务提交推送后，科研主线仍等待研究者决定是否授权 seed `20260832`。
+
+## 2026-09-18 STEP 1 — New Definition → Current Implementation Audit
+
+- 当前门：只执行新 `00–06` 定义与现有实现审计；旧 P4/P6/P0–P10 为 Historical / Archived。
+- 已完成：只读定义指纹、源码/config/test/artifact 对照、复用分类、Tracker、实施记录框架和 Step 1 主报告。
+- 阻塞：严格双图、四类动作、RSSM 动态边界、逐步规则反馈与完整在线闭环尚未实现；通信状态充分性、外生事件和 planner objective 等仍需研究者决定。
+- 本 Step 不修改模型/数据/loss/planner/checkpoint，不训练，不使用 GPU，不访问 `locked_test`，不自动执行 Step 2。
+- 唯一建议下一步：研究者审阅后，单独授权冻结一个决策步的原始轨迹字段与 Route/Comm/Comp/UAV 四类动作映射合同。

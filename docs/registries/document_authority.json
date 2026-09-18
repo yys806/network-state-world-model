@@ -12,6 +12,9 @@
     "AI_CONTEXT/06_DECISIONS.md",
     "AI_CONTEXT/07_KNOWN_ISSUES.md",
     "AI_CONTEXT/08_CHANGELOG.md",
+    "docs/PIJWM_IMPLEMENTATION_TRACKER.md",
+    "docs/implementation_records/README.md",
+    "docs/implementation_records/STEP_01_AUDIT.md",
     "docs/COLLABORATION_GUIDE.md",
     "docs/RESTRUCTURE_ACCEPTANCE.md",
     "task_plan.md",
@@ -83,6 +86,24 @@
       "path": "AI_CONTEXT/08_CHANGELOG.md",
       "role": "important context and project changes",
       "authority": "context_history",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/PIJWM_IMPLEMENTATION_TRACKER.md",
+      "role": "active new-definition implementation status and reuse matrix",
+      "authority": "verified_navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/implementation_records/README.md",
+      "role": "implementation step record index",
+      "authority": "process_navigation",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/implementation_records/STEP_01_AUDIT.md",
+      "role": "authorized definition-to-implementation audit record",
+      "authority": "verified_process_record",
       "can_establish_formal_result": false
     },
     {

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\miniconda\\python.exe",
+    "-m",
+    "unittest",
+    "test_formal_entity_aligned_rssm_world_model_v1",
+    "test_formal_deterministic_rule_layer_v1",
+    "test_formal_candidate_rollout_planner_v1",
+    "test_formal_world_model_loss_v1",
+    "test_formal_world_model_metrics_v1",
+    "-v"
+  ],
+  "returncode": 0,
+  "seconds": 4.806168299983256,
+  "scope": "existing synthetic CPU contracts; not new-definition acceptance",
+  "gpu_started": false,
+  "locked_test_accessed": false
+}

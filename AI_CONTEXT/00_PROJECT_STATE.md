@@ -1,6 +1,6 @@
 # PI-JWM Current State Snapshot
 
-更新时间：2026-09-10
+更新时间：2026-09-18
 
 这是 ChatGPT 网页端进入仓库后的第一读取入口。它只提供当前快照和继续查证的路径，不替代源码、配置、checkpoint、metrics、manifest 或 audit。
 
@@ -11,32 +11,32 @@
 ## 当前状态
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
-- 当前粗粒度阶段：P4 世界模型非锁定数据验收，尚未关闭。
-- 当前候选模型：`entity_aligned_dual_graph_rssm_v1`，即实体对齐的双图 RSSM。RSSM 是带确定性记忆和随机状态的时序模型。
-- 已完成正式 seed：`20260831`、`20260830`，两者分别通过冻结的单 seed 数值门。
-- 未完成正式 seed：`20260832`，状态为 deferred；`authorization_required=true`、`auto_start=false`。
-- 当前运行：没有正式 GPU 训练或远端同步任务。
-- P6 候选动作 rollout 规划器：只有 CPU 机制原型，正式阶段未开放。
+- 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
+- 当前 Step：`STEP 1 — New Definition → Current Implementation Audit` 已完成审计，等待研究者检查；Step 2 未授权、未开始。
+- 新定义实现状态：未开始。当前代码、旧 P4/P6、两个正式 seed、tensor 和 checkpoint 均为 Historical / Archived evidence，只保留原协议下的含义。
+- 审计结论：时间因果、稳定 ID/index、mask/split 和部分规则/评价工具可复用；严格双图、四类动作、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环需要结构性修改或新增实现。
+- 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`。
-- 当前知识快照：844 个项目文件、607 个 Python 节点、802 个 artifact 目录；9 个 AI_CONTEXT 文件检查通过，artifact 控制入口读取错误为 0。
 
 ## 当前最重要问题
 
-两个 seed 的通过不能代替预注册的三 seed 证据。缺少 `20260832` 及三 seed 独立汇总审计，因此不能关闭 P4、开放 P6 或发布正式性能结论。
+当前实现不能按模块名称或旧测试推断为符合新定义。关键差异包括：通信状态混在旧 `physical_edge`、独立 Agent/Communication/Task-Agent 合同缺失、四类动作未闭合、旧随机状态范围与新定义不同、RSSM 修正未形成逐步规则反馈和动态图重构、planner 没有真实反馈闭环。
 
 ## 单一科研下一步
 
-等待研究者明确决定是否按冻结协议运行 `seed=20260832`。未授权时不得自动启动 GPU、远端同步或 `locked_test`。
+研究者先审阅 Step 1；若明确授权，再执行唯一建议的 Step 2：冻结一个决策步的原始轨迹字段与 Route/Comm/Comp/UAV 四类动作映射合同。未授权时不进入 Step 2，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 
 - Branch：`main`。
-- Snapshot base commit：`e382d79ae0048dc16ede8304eb1a8cbff5f1d25e`。
+- Step 1 base commit：`829276241a0da72d3a5393946086daba40b0a0fe`。
 - Latest commit：以 GitHub `main` 的 `HEAD` 为准；本文件不能稳定硬编码包含自身的 commit hash。读取时运行 `git rev-parse HEAD` 或查看 GitHub 分支头。
 
 ## 关键入口
 
 - 当前方法与边界：`AI_CONTEXT/02_ARCHITECTURE.md`
+- 新定义实现总表：`docs/PIJWM_IMPLEMENTATION_TRACKER.md`
+- Step 1 详细记录：`docs/implementation_records/STEP_01_AUDIT.md`
 - 数据和张量：`AI_CONTEXT/03_DATA_FLOW.md`
 - 问题到源码：`AI_CONTEXT/04_MODULE_MAP.md`
 - 当前/历史实验：`AI_CONTEXT/05_EXPERIMENTS.md`
@@ -47,6 +47,7 @@
 
 ## 最近重要变化
 
+- 2026-09-18：active workflow 切换为最新 `00–06`；完成 Step 1 定义—实现审计，旧 P4/P6/P0–P10 逻辑归档。
 - 2026-09-09：第二个正式 seed `20260830` 完成并通过单 seed 验收；第三 seed 暂停。
 - 2026-09-09：建立项目文件、依赖、artifact、实验、结果、历史方法和问答路由索引。
 - 2026-09-10：新增面向 ChatGPT 网页端的 `AI_CONTEXT/`，并将三方协作和同步规则写入 `AGENTS.md`。

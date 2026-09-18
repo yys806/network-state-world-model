@@ -1,5 +1,7 @@
 # 研究背景与问题
 
+> 2026-09-18 当前目标定义来自研究者只读目录中的 `00–06`；本文件下方的旧 P4 描述只用于说明被审计的当前代码。实现差异见 `docs/PIJWM_IMPLEMENTATION_TRACKER.md`。
+
 ## 研究对象
 
 PI-JWM 研究由车辆、无人机、路侧单元、边缘服务器和云节点构成的动态通信—计算系统。目标是学习动作如何影响物理连接、数据传输、任务处理和资源状态随时间共同演化。
@@ -20,22 +22,21 @@ Source of truth：理论边界见 `记录/PIJWM主文档.md`；实际实现见 `
 
 实现入口：`code/src/pi_jwm/formal_dual_graph_world_model_v1.py`、`code/src/pi_jwm/formal_entity_aligned_rssm_world_model_v1.py`。
 
-## 当前采用的候选方法
+## 当前代码中的历史候选方法
 
 当前候选为 `entity_aligned_dual_graph_rssm_v1`：先用确定性双图模型编码实体关系，再为 node、physical edge、flow、task 分别维护随机状态；训练时 posterior 可以看目标用于学习，验证和部署只使用 prior 预测未来。
 
-这只是“当前实现并获得两个单 seed 非锁定验收”的方法，不等于最终科研方法已经冻结。
+这只是旧协议下获得两个单 seed 非锁定验收的方法。它已进入 Historical / Archived 边界，不等于新定义采用的方法，也不等于最终科研方法已经冻结。
 
 ## Research Rationale
 
 以下属于研究动机，不是代码本身可以证明的结论：实体级随机状态旨在避免历史 global RSSM 把一个全局修正广播给所有实体，从而更好地区分不同节点运动和不同链路排序。该动机由 `code/artifacts/audit/pi_jwm_p4_first_principles_audit_20260906_v1/first_principles_audit.json` 支持，但最终科研意义仍需三 seed、消融和后续研究者解释。
 
-## 当前工作假设与可证伪条件
+## 历史工作假设与当前审计结论
 
-- 工作假设：实体对齐 latent、因果运动输入、逐边链路表示和分阶段冻结训练能够满足 P4 的预注册非锁定数值门。
-- 已有证据：两个正式 seed 单独通过。
-- 可证伪条件：第三 seed 或三 seed 汇总审计失败；或后续一致性审计发现理论、输入、模型读路径、训练配置和验收不一致。
-- 未验证：跨 seed 泛化、locked test 表现、正式 planner 收益和最终创新结论。
+- 历史假设：实体对齐 latent、因果运动输入、逐边链路表示和分阶段冻结训练可满足旧 P4 门；两个正式 seed 单独通过。
+- 当前审计：新定义改变双图语义、动作空间、随机状态范围、规则反馈和训练边界，因此旧证据不能作为新定义验收。
+- 未验证：新定义的数据合同、模型可学习性、跨 seed 泛化、locked test、正式 planner 收益和最终创新结论。
 
 ## 目标闭环与当前边界
 

@@ -2,6 +2,14 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-NEW-DEFINITION-IMPLEMENTATION",
+      "title": "新定义实施状态与差异",
+      "keywords": ["00-06", "00–06", "新定义", "实施状态", "Step 1", "差异", "复用", "结构性修改", "下一 Step"],
+      "summary": "先读 Implementation Tracker 和当前 Step 记录，再回到目标定义指纹及对应源码、测试和 artifact；旧 P4/P6 只按历史边界解释。",
+      "primary_sources": ["docs/PIJWM_IMPLEMENTATION_TRACKER.md", "docs/implementation_records/STEP_01_AUDIT.md"],
+      "verification_sources": ["code/artifacts/audit/pi_jwm_new_definition_step01_20260918/initial_snapshot.json", "code/src/pi_jwm", "code/tests"]
+    },
+    {
       "id": "ROUTE-CURRENT-METHOD",
       "title": "当前方法与代码入口",
       "keywords": ["当前方法", "当前算法", "现在使用", "模型入口", "训练入口", "代码在哪里"],

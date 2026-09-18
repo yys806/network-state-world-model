@@ -1,4 +1,6 @@
-# 当前真实模型架构
+# 当前代码架构与新定义差异
+
+> 下列 1–5 节描述被 Step 1 审计的现有旧协议实现，不表示它符合 2026-09-18 的新 `00–06` 目标。总体差异见 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/STEP_01_AUDIT.md`。
 
 ## 总体结构
 
@@ -56,7 +58,15 @@ Source of truth：以下实现事实来自所列源码与冻结协议；运行�
 - checkpoint：逐 epoch 保存，使用 `p4_gate_aware_v1` 字典序选择；RSSM 最少 20 epochs，patience=10。
 - 正式配置事实：`code/artifacts/protocol/pi_jwm_p4_entity_rssm_frozen_protocol_20260906_v2/protocol.json`。
 
-## 6. 当前不属于正式架构的内容
+## 6. 新定义下的实现状态
+
+- 现有 `physical_edge` 混合空间、CSI、rate、任务数和 RB，不符合目标严格双图划分。
+- 独立 Agent state、Communication relation、Task-Agent typed relation 和四类动作合同尚未完整实现。
+- 旧 entity RSSM 对 node/physical_edge/flow/task 均维护随机状态，与新定义的未知动态边界不同。
+- base 的逐步规则和 RSSM 修正尚未组成“预测→规则→重构图→下一步”的完整闭环。
+- 因此现有模型、tensor、checkpoint 和结果为 Historical / Archived；新定义模型尚未实现。
+
+## 7. 当前不属于新定义正式架构的内容
 
 - `code/src/pi_jwm/formal_candidate_rollout_planner_v1.py` 是 P6 CPU 原型，不是已开放的正式规划器。
 - `formal_complete_rssm_world_model_v1.py` 是历史 global RSSM，不是当前候选模型。

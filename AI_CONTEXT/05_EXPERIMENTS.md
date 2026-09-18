@@ -2,7 +2,9 @@
 
 本文件只记录客观状态，不自动解释科研意义。Source of truth：完整字段见 `docs/registries/experiment_registry.json`，正式数字见 `results_registry.json` 和对应 acceptance JSON。
 
-## 当前 P4 正式实验
+> 2026-09-18：新的 active workflow 处于 Step 1 审计。下列 P4/P6 实验全部保留为旧定义下的 Historical / Archived evidence；新 `00–06` 尚无训练实验，未启动 GPU，未访问 `locked_test`。
+
+## 旧 P4 正式实验（Historical / Archived）
 
 | ID | Seed | 数据/协议 | 状态 | 客观边界 |
 | --- | ---: | --- | --- | --- |
@@ -36,8 +38,14 @@
 - node-x non-degradation loss：修正幅度下降但共享 base 变差，sentinel No-Go。
 - v11 selector/ranking：历史决策诊断，不是逐候选世界模型 rollout planner。
 
-## P6 实验边界
+## 旧 P6 实验边界
 
 `P6-CANDIDATE-ROLLOUT-AUDIT-20260826` 状态为 `blocked_prototype_only`。CPU 原型存在，但 P6 未开放，不得运行正式 planner GPU 或给出规划收益结论。
 
 Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终泛化和正式 planner 收益均不存在。
+
+## 当前新定义实验状态
+
+- `STEP 1` 只有只读实现审计和 49 项旧 synthetic CPU contract 回归；它们不是新定义性能实验。
+- 新 dataset/tensor/model/loss/planner 实验均为 `NOT_STARTED`。
+- 下一实验步骤尚未授权；Step 2 建议仅冻结一步轨迹和四类动作合同，不训练。

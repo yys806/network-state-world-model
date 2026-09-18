@@ -796,3 +796,12 @@
 - 2026-09-10 当前权限使原先 14 个 artifact 读取错误归零，全量错误由 21 降为 17；这是环境可读性变化，不是科研结果改善。
 - `AGENTS.md` 中具体 P4/pre-GPU 临时步骤与“只放长期规则”冲突，已移入 AI_CONTEXT/计划层；永久文件仅保留通用冻结、审计和证据一致性门。
 - 剩余 17 个全量 errors 仍阻断历史文件物理迁移，但不来自本次 AI_CONTEXT、注册表或当前 P4 正式路径。
+
+## 2026-09-18 新定义 Step 1 审计发现
+
+- 当前 `physical_edge` 混合空间关系、CSI、rate、任务数和 RB，与目标严格 Physical/Information 分离不一致；独立 Agent state、Communication relation、Task-Agent typed relation 不完整。
+- 旧 tensor/action 路径可复用 offload、RB、return 和 CPU 事件来源，但未闭合完整 Route、逐 RB Comm、CPU action 和 UAV Mobility 的采集、张量、执行及后果。
+- 当前 RSSM 为 node/physical_edge/flow/task 都配置 `h,z`；新定义主要只对 Physical/Communication 未知动态设置随机状态，旧 checkpoint/layout 不能直接复用。
+- base 内部有逐步规则递推，但实体 RSSM 修正在 base 整段推演后叠加；尚未实现“学习动态→规则更新→重构双图→下一步”的完整单步闭环。
+- planner 有逐候选调用与首动作接口骨架，但合法候选、冻结 objective/risk/hard constraints/fallback、真实执行反馈和连续 replanning 仍缺失，只能标 `prototype_only`。
+- 旧两 seed、旧 tensor/checkpoint 和旧 planner 结果全部保留为 Historical / Archived evidence，不能用于声称新 `00–06` 已实现或已有性能。

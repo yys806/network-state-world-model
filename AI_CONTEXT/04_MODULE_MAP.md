@@ -1,9 +1,13 @@
 # 模块导航地图
 
+> 当前实施入口先读 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/STEP_01_AUDIT.md`。下表中的模型、训练和 P4 gate 是被审计的旧协议路径；它们不能自动代表新定义实现。
+
 Source of truth：文件存在性、依赖和反向引用可查 `docs/registries/generated/python_dependency_map.json`；生命周期可查 `docs/CODE_INDEX.md`。本表用于决定下一步读哪些源码。
 
 | 问题 | 当前入口 | 核心对象 | 分类 |
 | --- | --- | --- | --- |
+| 新定义实施状态 | `docs/PIJWM_IMPLEMENTATION_TRACKER.md` | Step/模块矩阵 | audit/current |
+| Step 1 详细证据 | `docs/implementation_records/STEP_01_AUDIT.md` | 定义—实现—验证 | audit/current |
 | 当前模型如何递推 | `code/src/pi_jwm/formal_entity_aligned_rssm_world_model_v1.py` | `FormalEntityAlignedRSSMWorldModel.forward()` | model/current |
 | 双图如何传播 | `code/src/pi_jwm/formal_dual_graph_world_model_v1.py` | `FormalDualGraphWorldModel.forward()` | model/current |
 | 图与跨图算子 | `code/src/pi_jwm/formal_graph_ops_v1.py` | physical/information/coupling functions | model/support |
