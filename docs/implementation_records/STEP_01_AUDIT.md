@@ -163,9 +163,9 @@ python -m unittest test_formal_entity_aligned_rssm_world_model_v1 \
 ## 11. Git
 
 - Initial branch/commit：`main` / `829276241a0da72d3a5393946086daba40b0a0fe`
-- 目标主提交：`docs(pijwm): establish step 1 definition audit`
-- 目标推送分支：`origin/main`
-- 最终 commit hash 和 push 回执在本文件的“Git Receipt”小节及最终回复中补写；不能在包含自身的提交中预先写自己的 hash。
+- Step 1 主提交：`16dc7d0`（`docs(pijwm): establish step 1 definition audit`）
+- 推送分支：`origin/main`
+- 主提交已推送；回执提交的精确 hash 由最终回复给出，因为提交不能在自身内容中预先记录自己的 hash。
 
 ## 12. Next Step
 
@@ -173,4 +173,7 @@ python -m unittest test_formal_entity_aligned_rssm_world_model_v1 \
 
 ## Git Receipt
 
-待主提交和回执提交完成后填写：主提交 hash、回执提交 hash、`origin/main` push 结果和远端分支。
+- 主提交：`16dc7d0`（`docs(pijwm): establish step 1 definition audit`）
+- 主提交 push：成功，`origin/main` 从 `8292762` 前进到 `16dc7d0`
+- 回执提交：本小节所在提交；精确 hash 见最终完成汇报
+- 远端分支：`origin/main`；回执提交推送后再次核对远端 HEAD
