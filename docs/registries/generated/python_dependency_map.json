@@ -1205,6 +1205,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.audit_step3_1f_future_action_references_v1",
         "scripts.build_step3_1_minimal_real_model_ready_sample_v1",
         "tests.test_model_ready_sample_contract_v1"
       ],
@@ -2774,6 +2775,18 @@
       "test_files": [
         "code/tests/test_audit_repository_layout_migration.py"
       ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.model_ready_sample_contract_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step3_1f_future_action_references_v1",
+      "path": "code/scripts/audit_step3_1f_future_action_references_v1.py",
+      "test_files": []
     },
     {
       "category": "runnable_script",

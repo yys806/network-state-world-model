@@ -115,7 +115,7 @@ P6 逐候选推演、选首动作、执行后滚动重规划
 | 文档或历史状态冲突 | `KNOWN_CONFLICTS.md` | `registries/document_authority.json` 和原始证据 |
 
 索引只负责导航。任何影响科研结论的回答，必须回到代码、配置、原始结果和机器可读证据验证。
-- Step 3.1R corrected model-ready sample contract: `docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md`, `docs/implementation_records/STEP_03_1R_MODEL_READY_SAMPLE_CONTRACT_CORRECTION.md`, Raw v2 and sample artifact `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/`.
+- Step 3.1F finalized model-ready History: `docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md`, `docs/implementation_records/STEP_03_1F_MODEL_READY_HISTORY_CONTRACT_FINALIZATION.md`, sample artifact and observation-only future-reference audit under `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/`.
 
 常见问题可以先运行 `$env:PYTHONUTF8='1'; python code/scripts/query_project_knowledge_v1.py --query "问题"`。该入口只读注册表并给出候选路径，不访问 `locked_test`，也不会自动执行实验。
 

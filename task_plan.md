@@ -1071,6 +1071,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 写入 Step 2.1 记录、Tracker、计划/进度、AI_CONTEXT，待验证后 commit + push
 - [ ] 研究者审阅后再授权跨决策步真实反馈闭环
 
+## 2026-09-19 STEP 3.1F
+
+- [x] 完成 History `O_{t-H+1:t}+A_{t-H+1:t-1}+Y_{t-H+1:t-1}`、History union index、past relation/DAG/flow 对齐和未来 reference observation audit。
+- [x] 验收最小真实样本、late-entry/disappearing fixture、9 项 focused tests、23 项 sample checks、round-trip、compileall和 index check。
+- [ ] 研究者审阅后再决定是否授权 STEP 3.2；本次不自动进入。
+
 ## 2026-09-19 Step 2.2
 
 - 当前门：只验收一条真实、非 locked、6 个连续决策步的 Raw Trajectory；不进入 Dataset/Tensor、双图、World Model、Loss、Planner 或训练。

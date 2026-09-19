@@ -1,6 +1,6 @@
-# PI-JWM Model-ready Sample & Tensor Contract v2 (STEP 3.1R)
+# PI-JWM Model-ready Sample & Tensor Contract v3 (STEP 3.1F)
 
-状态：STEP 3.1R 修正后完成最小真实样本验收；不是正式大规模数据集，也不是模型输入已冻结为最终研究模型。
+状态：STEP 3.1F 完成最小真实样本验收；不是正式大规模数据集，也不是模型输入已冻结为最终研究模型。
 
 依据：研究者只读定义 `D:\shen\OB\科研\PIJWM\02数据集构建与模型输入.md`，以及已冻结的 Step 2 Raw Contract。研究笔记只读，本仓库保存实现映射和证据，不复制私有笔记。
 
@@ -16,9 +16,17 @@ D_t = (History[t-H+1:t], Static, FutureAction[t:t+L-1], Target[t:t+L-1], Metadat
 
 最小真实验收使用 `H=2, L=2, anchor frame=2`：History frame `1,2`，Future Action/Target frame `2,3`。History 最后一帧必须是当前 `O_t`，Future Action 第一帧必须是当前 `A_t`。
 
+History 的完整形式为：
+
+```text
+H_{t-H+1:t} = (O_{t-H+1:t}, A_{t-H+1:t-1}, Y_{t-H+1:t-1})
+```
+
+每个历史行都有对齐的 `observation` 。对于过去帧 `τ<t`，额外保存该帧已执行的四类 `action` 和执行后已知的 `outcome`；当前帧 `t` 只保留 `O_t`，不保留 `A_t/Y_t`。
+
 ## Index、Presence 和 Mask
 
-输入 index 由 anchor 当前 Decision 可见对象建立，并在整个 History 窗口固定。对象在较早历史帧不存在时仍保留同一 index，使用 `presence=false`、`feature_mask=false` 和 padding value；对象存在但字段不可得使用 `feature_mask=false`，真实值为 0 仍是 `presence=true, feature_mask=true, value=0`。padding 位置不参与归一化统计。
+输入 index 由整个 History `O_{t-H+1:t}` 中已因果可观测到的 physical/task 对象并集建立，并在整个 History 窗口固定。过去存在而后离开的对象也保留 index，后续帧使用 `presence=false`。较晚进入的对象在更早帧使用 `presence=false`。缺失 feature 和真实值为 0 仍分别处理，padding 位置不参与归一化统计。Flow index 同样由历史 Outcome 中已出现的传输 event 建立。
 
 未来新对象不提前加入输入 index。Target 单独保留 `target_index.physical/task/flow` 三个 namespace 和 `target_only_objects`，因此新出现 task/flow/entity 可以在 Target 中表示，同时不进入当前 History 或 input-side index。
 
@@ -56,6 +64,12 @@ Action 中的 task/entity/UAV reference 必须解析到合法 anchor-time input 
 当前 Raw artifact 的 DAG rows 来自 `airfogsim_full_dual_graph_observer_v1._extract_dag_edges`。Raw capture 先按 anchor 可见 task 分区：可见边进入 `decision.dag_edges`，含未来端点的边仅进入 `internal_metadata.future_dag_edges`。Dataset Static 只映射 `decision.dag_edges`，并保留可见边数和 internal future 边数作审计，未来端点身份不进入模型输入。
 
 Static relation endpoints 来自 anchor Decision 的真实 `channel_rows.source_id/target_id`，映射到同一个 stable physical index，并保存 validity mask。本步只冻结端点引用，不决定这些 relation 在定义 03 中的图类型。
+
+History 中的过去 Outcome 也保留对齐的 relation endpoints、DAG rows 和 flow rows，均引用同一套 History union index。这些记录只来自 `τ<t` 的真实 Outcome，不使用未来 Target。
+
+## Future Action 引用观察审计
+
+`code/scripts/audit_step3_1f_future_action_references_v1.py` 扫描当前可用的非 locked Raw 轨迹窗口，统计构造窗口数、未来 `A_{t+1:t+L-1}` 对 anchor `O_t` 不可见 task/entity 的引用数、action family 和对象类型分布，并给出 affected window rate。它是 observation-only；不丢弃 window，也不自行决定未来任务到达的表示方案。
 
 ## Split 和 preprocessing
 

@@ -2629,6 +2629,14 @@ Step 3.1 已依据只读 `02数据集构建与模型输入.md` 冻结一条最�
 
 真实 observer 已有 DAG source。Raw capture 只把两端当前可见的依赖边放入 Decision，将含未来端点的边留在 internal metadata；Dataset Static 不读取未来端点身份。target index 分为 physical/task/flow namespace，channel relation endpoints 映射到 stable physical index。Action reference 不可解析时明确阻断并标记需要研究者决定，不再静默生成 `-1`。
 
+### STEP 3.1F History 合同最终收尾（2026-09-19）
+
+History 现在明确保留 `O_{t-H+1:t}` 以及过去已执行的 `A_{t-H+1:t-1}` 和已知 `Y_{t-H+1:t-1}`。对 anchor=2、H=2 的样本，History 为 `O_1+A_1+Y_1+O_2`，当前 `A_2/Y_2` 仍不进入 History；Future Action/Target 仍从 2 开始。
+
+input physical/task index 由整个 History observation 的因果可观测并集建立，flow index 由过去 Outcome 的真实 transfer event 建立。过去离开、较晚进入和缺失 feature 都使用固定 index 与 presence/mask 表达；过去 flow、relation 和 DAG 使用同一套 History index。Future Action 仍按 anchor `O_t` 解析，未来不可见引用不会被 union index 静默放行。
+
+STEP 3.1F 的 future-reference 扫描是 observation-only：已扫描 4 个非 locked Raw artifact、共 18 个可构造窗口，当前 0 个 unresolved reference。该数据不代表正式 dataset 可用率，也不替研究者决定未来任务到达的表示方案。
+
 ### P4 link activity持久性残差候选的CPU实现边界（2026-09-05，当前覆盖）
 
 经用户确认后，当前只新增`link_activity_persistence_residual_v1`：历史最后一帧活动先形成未加权事件状态`u0=(+20或-20)-log(pos_weight)`，现有link head每步只输出变化量`delta`，h2以后只递推模型自己的`u`，正式`link_activity_logits=u+log(pos_weight)`。未来target和target mask不进入forward，temperature仍只属于训练后的calibration流程。

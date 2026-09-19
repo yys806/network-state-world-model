@@ -68,6 +68,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 
 Unverified：没有代码、config、experiment 或可读 audit 支持的问题只能标记为待核验，不能写成确认缺陷。
 - STEP 3.1R 已关闭原 DAG source 判断错误：observer 已提供真实 DAG rows，Raw `_capture()` 已接线；当前样本过滤两端不在 anchor input task namespace 的 future-only edges。正式 batch/split preprocessing、数据规模和模型输入选择仍未验收。
+- STEP 3.1F 已将过去 Action/Outcome 和 History union index 接入最小样本；4 个非 locked Raw artifact 的 18 个窗口扫描暂未发现 unresolved future reference。该短样本观察不能代替正式 dataset 可用率；未来对象到达的建模方案仍未决定。
 
 ## 2026-09-19
 

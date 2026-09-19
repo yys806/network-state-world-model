@@ -43,10 +43,11 @@ def main() -> None:
         ROOT / "code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py",
         ROOT / "code/tests/test_model_ready_sample_contract_v1.py",
         ROOT / "docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md",
+        ROOT / "code/scripts/audit_step3_1f_future_action_references_v1.py",
     ):
         source_files[str(source.relative_to(ROOT)).replace("\\", "/")] = hashlib.sha256(source.read_bytes()).hexdigest()
     manifest = {
-        "schema_version": "PI-JWM-Step-3.1R-Minimal-Real-Sample-Manifest-v2",
+        "schema_version": "PI-JWM-Step-3.1F-Minimal-Real-Sample-Manifest-v3",
         "artifact": SAMPLE.name,
         "artifact_sha256": artifact_hash,
         "passed": True,

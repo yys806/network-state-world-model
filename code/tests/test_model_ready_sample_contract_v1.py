@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from pi_jwm.model_ready_sample_contract_v1 import build_sample, load_sample, validate_sample, write_sample
+from pi_jwm.model_ready_sample_contract_v1 import audit_future_action_references, build_sample, load_sample, validate_sample, write_sample
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -56,6 +56,61 @@ class ModelReadySampleContractTests(unittest.TestCase):
             path = Path(directory) / "sample.json"
             write_sample(sample, path)
             self.assertEqual(sample, load_sample(path))
+
+    def test_history_contains_past_action_and_outcome_without_current_leakage(self):
+        sample = build_sample(self.raw, anchor_step=2)
+        self.assertIn("action", sample["history"][0])
+        self.assertIn("outcome", sample["history"][0])
+        self.assertEqual(sample["history"][0]["frame_index"], 1)
+        self.assertEqual(sample["history"][0]["outcome"]["frame_index"], 1)
+        self.assertNotIn("action", sample["history"][1])
+        self.assertNotIn("outcome", sample["history"][1])
+        self.assertTrue(validate_sample(sample)["history_action_outcome_aligned"])
+
+    def test_history_union_supports_late_entry_and_disappearance(self):
+        raw = json.loads(json.dumps(self.raw))
+        entity_id = raw["decisions"][2]["entities"][0]["entity_id"]
+        task_id = raw["decisions"][2]["tasks"][0]["task_id"]
+        raw["decisions"][1]["entities"] = [row for row in raw["decisions"][1]["entities"] if row["entity_id"] != entity_id]
+        raw["decisions"][1]["tasks"] = [row for row in raw["decisions"][1]["tasks"] if row["task_id"] != task_id]
+        sample = build_sample(raw, anchor_step=2)
+        self.assertFalse(next(row for row in sample["history"][0]["entities"] if row["entity_id"] == entity_id)["presence"])
+        self.assertTrue(next(row for row in sample["history"][1]["entities"] if row["entity_id"] == entity_id)["presence"])
+        self.assertFalse(next(row for row in sample["history"][0]["tasks"] if row["task_id"] == task_id)["presence"])
+        self.assertTrue(next(row for row in sample["history"][1]["tasks"] if row["task_id"] == task_id)["presence"])
+
+        raw["decisions"][1]["entities"].append(next(row for row in self.raw["decisions"][2]["entities"] if row["entity_id"] == entity_id))
+        raw["decisions"][1]["tasks"].append(next(row for row in self.raw["decisions"][2]["tasks"] if row["task_id"] == task_id))
+        raw["decisions"][2]["entities"] = [row for row in raw["decisions"][2]["entities"] if row["entity_id"] != entity_id]
+        raw["decisions"][2]["tasks"] = [row for row in raw["decisions"][2]["tasks"] if row["task_id"] != task_id]
+        sample = build_sample(raw, anchor_step=2)
+        self.assertTrue(next(row for row in sample["history"][0]["entities"] if row["entity_id"] == entity_id)["presence"])
+        self.assertFalse(next(row for row in sample["history"][1]["entities"] if row["entity_id"] == entity_id)["presence"])
+        self.assertTrue(next(row for row in sample["history"][0]["tasks"] if row["task_id"] == task_id)["presence"])
+        self.assertFalse(next(row for row in sample["history"][1]["tasks"] if row["task_id"] == task_id)["presence"])
+
+    def test_future_reference_audit_is_observation_only(self):
+        audit = audit_future_action_references(self.raw, history_steps=2, horizon_steps=2)
+        self.assertEqual(4, audit["constructible_window_count"])
+        self.assertTrue(audit["observation_only"])
+        self.assertIn("by_action_family", audit)
+        self.assertEqual([1], audit["window_policy"]["future_offsets_audited"])
+        self.assertEqual({"task", "physical_entity"}, set(audit["by_object_kind"]))
+
+    def test_future_reference_audit_counts_object_kind_and_affected_rate(self):
+        raw = json.loads(json.dumps(self.raw))
+        raw["steps"][3]["action"]["route"] = {
+            "field_present": True,
+            "empty": False,
+            "entries": [{"task_id": "future_only_task", "target_node_id": "future_only_node"}],
+        }
+        audit = audit_future_action_references(raw, history_steps=2, horizon_steps=2)
+        self.assertEqual(1, audit["affected_window_count"])
+        self.assertEqual(1 / audit["constructible_window_count"], audit["affected_window_rate"])
+        self.assertEqual(1, audit["by_object_kind"]["task"]["references"])
+        self.assertEqual(1, audit["by_object_kind"]["physical_entity"]["references"])
+        self.assertEqual(1, audit["by_object_kind"]["task"]["windows"])
+        self.assertEqual(1, audit["by_object_kind"]["physical_entity"]["windows"])
 
     def test_empty_noop_is_distinct_from_missing(self):
         sample = build_sample(self.raw, anchor_step=2)

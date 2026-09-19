@@ -1,7 +1,7 @@
 {
-  "schema_version": "PI-JWM-Step-3.1R-Minimal-Real-Sample-Manifest-v2",
+  "schema_version": "PI-JWM-Step-3.1F-Minimal-Real-Sample-Manifest-v3",
   "artifact": "model_ready_sample.json",
-  "artifact_sha256": "a71c1cc060cc61b4791e7083e33430e6ece0f33960e1e597941e6587c15f69b6",
+  "artifact_sha256": "963a1317ef9bc7c4957bdec6da153dc078848a0ecb538df3cb1ad829a936462a",
   "passed": true,
   "checks": {
     "schema_present": true,
@@ -11,11 +11,16 @@
     "history_ends_at_anchor": true,
     "future_action_starts_at_anchor": true,
     "history_and_action_windows_contiguous": true,
+    "history_past_action_outcome_present": true,
+    "history_current_excludes_action_outcome": true,
+    "history_action_outcome_aligned": true,
     "no_future_action_in_history": true,
     "target_only_not_in_input_index": true,
     "target_namespaces_separate": true,
     "history_fixed_index_rows": true,
     "no_unresolved_action_index": true,
+    "no_unresolved_history_reference_index": true,
+    "history_relation_dag_flow_aligned": true,
     "relation_endpoints_valid": true,
     "missing_distinct_from_empty": true,
     "flow_hop_semantics_explicit": true,
@@ -23,12 +28,13 @@
     "metadata_not_model_input": true
   },
   "source_files": {
-    "code/src/pi_jwm/model_ready_sample_contract_v1.py": "984e2a9cdfd48a12fd5435fb82b2a545d44db44c35884512d7e66f773a9fed13",
-    "code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py": "742ee24a4212dea5586cb2dec64ce221c84ef470a86c3d70fdcd44122559c787",
+    "code/src/pi_jwm/model_ready_sample_contract_v1.py": "46de33881c2a5fe99eae384997a05cf45e3c7e0e51bd253e8aaa77ccea4138d7",
+    "code/scripts/audit_step3_1f_future_action_references_v1.py": "46b6d2e9ee852d4903cd97de9895315117fd4c8800664fd5ebe0bc1b9a3b57b6",
+    "code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py": "c7a154bbba85695642df5cb93d98c1285055622a41a77822aeb2e017bd711f0a",
     "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de",
     "code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py": "898ca7d387486766d7b060db1ff599029dfa22e6fa1741dd3b29a377843339ca",
-    "code/tests/test_model_ready_sample_contract_v1.py": "e3e025595db08dee65c54e77b1515a1d26d86faf3f6d0cfc41ae195d3b32aa05",
-    "docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md": "cb0f9f25651b0bc7a776528a68c4cc54bce5c657a253ecbe527797959fa79fdd"
+    "code/tests/test_model_ready_sample_contract_v1.py": "8f74fe422d735ba0146dbea9b894fce414a796ccf284ebd06e710a88ab8f00c5",
+    "docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md": "92e532aaa25663d76a64f703a1b5e1aa1126ab2f3aa928fe6d1cecaf7984c0f7"
   },
   "raw_source_sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
   "scope": {
