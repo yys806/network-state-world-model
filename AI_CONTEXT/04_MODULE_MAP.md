@@ -39,6 +39,7 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 - `docs/registries/`：导航注册表，不建立正式结果。
 - Model-ready sample contract: `code/src/pi_jwm/model_ready_sample_contract_v1.py`; STEP 3.1F schema/checks include past action/outcome, History union index, anchor visibility plus unified Future Action index namespace, history relation/DAG/flow alignment and round-trip.
 - Future action reference audit: `code/scripts/audit_step3_1f_future_action_references_v1.py`; observation-only scan, does not drop windows or decide future-object representation.
+- STEP 3.3 CPU tensor collation: `code/src/pi_jwm/step3_3_model_input_tensor_v1.py`; JSON sample -> fixed-shape arrays with stable index/mask/padding checks. Not consumed by a model yet.
 - Raw DAG capture amendment: `code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py::_capture`; source `airfogsim_full_dual_graph_observer_v1._extract_dag_edges`.
 
 ## 历史代码定位

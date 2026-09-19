@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-19：STEP 3.3 Model Input Tensor / Collation Contract
+
+- 新增 CPU NumPy fixed-shape JSON sample collation、builder、focused tests 和 machine-readable schema/manifest artifact。
+- 保持 STEP 3.1F History-union index、anchor visibility、presence/mask 与 target-only namespace；容量超限拒绝并提供 NPZ round-trip。
+- 未进入双图、World Model、Loss、Planner、训练、GPU 或 `locked_test`。
+
 ## 2026-09-19：Step 2.4 通信 Outcome 语义最终冻结
 
 - 真实 wired service 接入 `WiredNetworkManager.step` 返回值，Raw Contract 拆分 wireless/wired/total delivered data。

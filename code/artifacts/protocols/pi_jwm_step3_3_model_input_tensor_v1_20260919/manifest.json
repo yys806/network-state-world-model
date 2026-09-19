@@ -1,0 +1,641 @@
+{
+  "arrays": {
+    "dag_edges": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        7,
+        2
+      ]
+    },
+    "dag_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        7
+      ]
+    },
+    "entity_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        10,
+        2
+      ]
+    },
+    "entity_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        10,
+        2
+      ]
+    },
+    "entity_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        10
+      ]
+    },
+    "entity_raw_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        10,
+        2
+      ]
+    },
+    "entity_type_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        10
+      ]
+    },
+    "flow_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2,
+        1
+      ]
+    },
+    "flow_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        2,
+        1
+      ]
+    },
+    "flow_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_source_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_transport_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_transport_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_action_empty": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        4
+      ]
+    },
+    "future_action_entry_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "future_action_missing": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        4
+      ]
+    },
+    "future_action_present": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        4
+      ]
+    },
+    "future_comm_rb_indices": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2,
+        1
+      ]
+    },
+    "future_comm_rb_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2,
+        1
+      ]
+    },
+    "future_comp_allocated_cpu": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_comp_allocated_cpu_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_comp_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_mobility_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2,
+        3
+      ]
+    },
+    "future_mobility_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        2,
+        3
+      ]
+    },
+    "future_route_hop_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2,
+        2
+      ]
+    },
+    "future_route_kind_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_route_kind_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_route_node_indices": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2,
+        2
+      ]
+    },
+    "future_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "future_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "future_task_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "future_uav_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "past_action_empty": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        4
+      ]
+    },
+    "past_action_entry_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "past_action_missing": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        4
+      ]
+    },
+    "past_action_present": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        4
+      ]
+    },
+    "past_comm_rb_indices": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2,
+        1
+      ]
+    },
+    "past_comm_rb_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2,
+        1
+      ]
+    },
+    "past_comp_allocated_cpu": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_comp_allocated_cpu_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_comp_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_mobility_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2,
+        3
+      ]
+    },
+    "past_mobility_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        2,
+        3
+      ]
+    },
+    "past_route_hop_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2,
+        2
+      ]
+    },
+    "past_route_kind_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_route_kind_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_route_node_indices": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2,
+        2
+      ]
+    },
+    "past_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "past_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "past_task_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "past_uav_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "relation_endpoints": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        72,
+        2
+      ]
+    },
+    "relation_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        72
+      ]
+    },
+    "target_entity_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        10
+      ]
+    },
+    "target_flow_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_task_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8,
+        1
+      ]
+    },
+    "target_task_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        8,
+        1
+      ]
+    },
+    "target_task_lifecycle_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_task_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "task_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        7,
+        1
+      ]
+    },
+    "task_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        7,
+        1
+      ]
+    },
+    "task_lifecycle_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        7
+      ]
+    },
+    "task_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        7
+      ]
+    },
+    "task_raw_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        7,
+        1
+      ]
+    }
+  },
+  "capacity_semantics": "development observed maxima only; not final formal research capacity",
+  "files": {
+    "tensor.npz": "a1d5de7c17af53da7d17a35286e0724ae87240885ec3d9e8318beb7446cc2ea6",
+    "tensor_schema.json": "6778b976ef58be2073bcd49cfae54bb172ee01b71496e8ed98164b22a4af49bc"
+  },
+  "input_batch_manifest_sha256": "70318b2b4446dcd97d5c76cf45c40b0970d8b72cc2fec7c5f61de15e5a449050",
+  "mask_presence_counts": {
+    "dag_mask": 50,
+    "entity_feature_mask": 362,
+    "entity_presence": 194,
+    "flow_feature_mask": 0,
+    "flow_presence": 0,
+    "flow_transport_mask": 0,
+    "future_action_empty": 71,
+    "future_action_entry_mask": 49,
+    "future_action_missing": 0,
+    "future_action_present": 96,
+    "future_comm_rb_mask": 1,
+    "future_comp_allocated_cpu_mask": 0,
+    "future_mobility_feature_mask": 144,
+    "future_route_hop_mask": 0,
+    "future_route_kind_mask": 0,
+    "past_action_empty": 29,
+    "past_action_entry_mask": 31,
+    "past_action_missing": 0,
+    "past_action_present": 48,
+    "past_comm_rb_mask": 4,
+    "past_comp_allocated_cpu_mask": 0,
+    "past_mobility_feature_mask": 72,
+    "past_route_hop_mask": 6,
+    "past_route_kind_mask": 3,
+    "relation_mask": 1038,
+    "target_entity_presence": 202,
+    "target_flow_presence": 2,
+    "target_task_feature_mask": 130,
+    "target_task_presence": 130,
+    "task_feature_mask": 109,
+    "task_presence": 109
+  },
+  "sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+  "sample_count": 12,
+  "schema_version": "PI-JWM-Step-3.3-Model-Input-Tensor-Collation-v1",
+  "scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "locked_test": false,
+    "training": false
+  },
+  "tensor_input_gap_table": [
+    {
+      "field": "channel_rows.feature_values",
+      "follow_up": "03/04 mapping",
+      "status": "endpoint_ids_only; numeric feature not exposed"
+    },
+    {
+      "field": "node_cpu_capacity_per_s",
+      "follow_up": "record source/mask when sample exposes it",
+      "status": "missing_or_masked; not synthesized"
+    },
+    {
+      "field": "comp.allocated_cpu",
+      "follow_up": "extend Raw/sample only with authorization",
+      "status": "no comp entries in current development bundle"
+    },
+    {
+      "field": "raw_simulator_acceleration_mps2",
+      "follow_up": "excluded from model feature",
+      "status": "audit_only"
+    },
+    {
+      "field": "future_task_schedule",
+      "follow_up": "excluded from input namespace",
+      "status": "metadata_only"
+    }
+  ]
+}

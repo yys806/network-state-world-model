@@ -21,6 +21,13 @@
 - Status: STEP 3.2 COMPLETE / FROZEN after final receipt regeneration.
 - Next: researcher review; do not automatically enter a later Step.
 
+## 2026-09-19 STEP 3.3
+
+- Scope: frozen Step 3.1F JSON sample / Step 3.2 batch -> CPU fixed-shape tensor/collation only.
+- Completed: stable ID/index slot mapping, independent presence/feature masks, four action axes, relation/DAG/target namespaces, explicit overflow rejection and NPZ round-trip; 12-sample development artifact.
+- Gate: `formal_dataset=false`, `training=false`, `gpu=false`, `locked_test=false`; no dual graph/model/loss/planner work.
+- Next: researcher review; do not automatically enter Step 03.
+
 ## 2026-09-19 STEP 3.1 execution note
 
 - Scope: freeze minimal Raw Trajectory -> Model-ready Sample -> Tensor Contract only.

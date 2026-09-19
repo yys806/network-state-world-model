@@ -1,5 +1,12 @@
 # Findings
 
+## 2026-09-19 STEP 3.3
+
+- Tensor collation 必须使用 JSON sample 的 stable ID/index，不能按每帧可见集合重新编号。
+- `presence=false` 与 `feature_mask=false` 均独立于 numeric value；padding 不进入有效 feature。
+- target-only object 需要独立 target capacity；当前 development capacity 不是正式研究容量。
+- 当前 batch 没有 route entry，因此 route hop capacity 为观测值 0；后续正式容量需研究者单独冻结。
+
 ## 2026-09-19 STEP 3.2 findings
 
 - Existing Step 2.x Raw version directories were one seed-0 trajectory lineage, not independent split members; treating versions as trajectories would leak provenance.

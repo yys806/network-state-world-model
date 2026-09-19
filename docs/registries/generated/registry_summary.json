@@ -12,30 +12,30 @@
     "main_experiment_readiness": 3,
     "preflight": 57,
     "protocol": 2,
-    "protocols": 21,
+    "protocols": 22,
     "reports": 30,
     "research_notes": 1,
     "small_experiments": 14
   },
   "artifact_read_error_count": 0,
-  "artifact_record_count": 800,
+  "artifact_record_count": 801,
   "deferred_item_count": 2,
   "formal_performance_claim_ready": false,
   "historical_method_count": 6,
   "important_experiment_count": 7,
   "lifecycle_counts": {
-    "current": 90,
+    "current": 91,
     "historical": 228,
     "prototype": 5,
-    "support": 582
+    "support": 588
   },
   "locked_test_boundary": "sealed",
-  "python_node_count": 623,
+  "python_node_count": 626,
   "python_parse_error_count": 0,
   "question_route_count": 7,
   "result_evidence_mismatch_count": 0,
   "schema_version": "PI-JWM-project-knowledge-index-v2",
   "source_scope": "version-controlled project files excluding generated registries; artifact control files only",
-  "tracked_file_count": 905,
+  "tracked_file_count": 912,
   "verified_result_count": 2
 }

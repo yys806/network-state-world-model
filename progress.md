@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-19 STEP 3.3
+
+已完成最小 CPU Model Input Tensor / Collation contract：12 个 H=2/L=2 sample 固定形状化，保留 History-union index、独立 target namespace、presence/mask、四类 action 轴、relation/DAG 和 route/Comm padding；容量溢出拒绝，NPZ round-trip 通过。focused tests 3/3 通过。未训练、未使用 GPU、未访问 locked_test。
+
 ## 2026-09-19 STEP 3.2 completion
 
 - Implemented batch/split/preprocessing module and builder; reused frozen Step 2.4 collector with explicit seed/output arguments.
