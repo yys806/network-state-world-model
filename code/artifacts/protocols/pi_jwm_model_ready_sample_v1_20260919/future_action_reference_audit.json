@@ -1,0 +1,268 @@
+{
+  "gpu": false,
+  "locked_test_accessed": false,
+  "observation_only": true,
+  "records": [
+    {
+      "audit": {
+        "affected_window_count": 0,
+        "affected_window_rate": 0.0,
+        "by_action_family": {
+          "comm": {
+            "references": 0,
+            "windows": 0
+          },
+          "comp": {
+            "references": 0,
+            "windows": 0
+          },
+          "mobility": {
+            "references": 0,
+            "windows": 0
+          },
+          "route": {
+            "references": 0,
+            "windows": 0
+          }
+        },
+        "by_object_kind": {
+          "physical_entity": {
+            "references": 0,
+            "windows": 0
+          },
+          "task": {
+            "references": 0,
+            "windows": 0
+          }
+        },
+        "constructible_window_count": 4,
+        "decision": "RESEARCHER_DECISION_REQUIRED_IF_NONZERO",
+        "observation_only": true,
+        "unresolved_future_reference_count": 0,
+        "window_policy": {
+          "future_offsets_audited": [
+            1
+          ],
+          "history_steps": 2,
+          "horizon_steps": 2
+        }
+      },
+      "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
+      "scope": {
+        "gpu": false,
+        "locked_test": false,
+        "non_locked": true,
+        "training": false
+      },
+      "source": "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json",
+      "source_sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d"
+    },
+    {
+      "audit": {
+        "affected_window_count": 0,
+        "affected_window_rate": 0.0,
+        "by_action_family": {
+          "comm": {
+            "references": 0,
+            "windows": 0
+          },
+          "comp": {
+            "references": 0,
+            "windows": 0
+          },
+          "mobility": {
+            "references": 0,
+            "windows": 0
+          },
+          "route": {
+            "references": 0,
+            "windows": 0
+          }
+        },
+        "by_object_kind": {
+          "physical_entity": {
+            "references": 0,
+            "windows": 0
+          },
+          "task": {
+            "references": 0,
+            "windows": 0
+          }
+        },
+        "constructible_window_count": 4,
+        "decision": "RESEARCHER_DECISION_REQUIRED_IF_NONZERO",
+        "observation_only": true,
+        "unresolved_future_reference_count": 0,
+        "window_policy": {
+          "future_offsets_audited": [
+            1
+          ],
+          "history_steps": 2,
+          "horizon_steps": 2
+        }
+      },
+      "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v1",
+      "scope": {
+        "gpu": false,
+        "locked_test": false,
+        "non_locked": true,
+        "training": false
+      },
+      "source": "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/real_communication_outcome_semantics.json",
+      "source_sha256": "91c88796d34b4fce3c10f3ee5b040891766031376e46e659446c470879bc686f"
+    },
+    {
+      "audit": {
+        "affected_window_count": 0,
+        "affected_window_rate": 0.0,
+        "by_action_family": {
+          "comm": {
+            "references": 0,
+            "windows": 0
+          },
+          "comp": {
+            "references": 0,
+            "windows": 0
+          },
+          "mobility": {
+            "references": 0,
+            "windows": 0
+          },
+          "route": {
+            "references": 0,
+            "windows": 0
+          }
+        },
+        "by_object_kind": {
+          "physical_entity": {
+            "references": 0,
+            "windows": 0
+          },
+          "task": {
+            "references": 0,
+            "windows": 0
+          }
+        },
+        "constructible_window_count": 6,
+        "decision": "RESEARCHER_DECISION_REQUIRED_IF_NONZERO",
+        "observation_only": true,
+        "unresolved_future_reference_count": 0,
+        "window_policy": {
+          "future_offsets_audited": [
+            1
+          ],
+          "history_steps": 2,
+          "horizon_steps": 2
+        }
+      },
+      "schema_version": "PIJWM-Step-2.3-Raw-Causal-Complete-v2",
+      "scope": {
+        "gpu": false,
+        "locked_test": false,
+        "non_locked": true,
+        "training": false
+      },
+      "source": "code/artifacts/protocols/pi_jwm_raw_contract_causal_complete_v2_20260919/real_raw_contract_finalization.json",
+      "source_sha256": "d2422e9c69f3c68c177f36e4eb93cb709d6e873cc4665ac52bc0efc129b04e26"
+    },
+    {
+      "audit": {
+        "affected_window_count": 0,
+        "affected_window_rate": 0.0,
+        "by_action_family": {
+          "comm": {
+            "references": 0,
+            "windows": 0
+          },
+          "comp": {
+            "references": 0,
+            "windows": 0
+          },
+          "mobility": {
+            "references": 0,
+            "windows": 0
+          },
+          "route": {
+            "references": 0,
+            "windows": 0
+          }
+        },
+        "by_object_kind": {
+          "physical_entity": {
+            "references": 0,
+            "windows": 0
+          },
+          "task": {
+            "references": 0,
+            "windows": 0
+          }
+        },
+        "constructible_window_count": 4,
+        "decision": "RESEARCHER_DECISION_REQUIRED_IF_NONZERO",
+        "observation_only": true,
+        "unresolved_future_reference_count": 0,
+        "window_policy": {
+          "future_offsets_audited": [
+            1
+          ],
+          "history_steps": 2,
+          "horizon_steps": 2
+        }
+      },
+      "schema_version": "PIJWM-Step-2.2-Real-AirFogSim-Multi-Step-v1",
+      "scope": {
+        "gpu": false,
+        "locked_test": false,
+        "non_locked": true,
+        "training": false
+      },
+      "source": "code/artifacts/protocols/pi_jwm_raw_multi_decision_step_real_airfogsim_v2_20260919/real_multi_step.json",
+      "source_sha256": "0879c649933bcded25d8a2f024dbb2cad96b63fde17513807dbe935c3494272f"
+    }
+  ],
+  "researcher_decision_required_if_nonzero": true,
+  "schema_version": "PI-JWM-Step-3.1F-Future-Action-Reference-Audit-v1",
+  "source_count": 4,
+  "summary": {
+    "affected_window_count": 0,
+    "affected_window_rate": 0.0,
+    "by_action_family": {
+      "comm": {
+        "references": 0,
+        "windows": 0
+      },
+      "comp": {
+        "references": 0,
+        "windows": 0
+      },
+      "mobility": {
+        "references": 0,
+        "windows": 0
+      },
+      "route": {
+        "references": 0,
+        "windows": 0
+      }
+    },
+    "by_object_kind": {
+      "physical_entity": {
+        "references": 0,
+        "windows": 0
+      },
+      "task": {
+        "references": 0,
+        "windows": 0
+      }
+    },
+    "constructible_window_count": 18,
+    "unresolved_future_reference_count": 0
+  },
+  "training": false,
+  "window_policy": {
+    "future_offsets_audited": [
+      1
+    ],
+    "history_steps": 2,
+    "horizon_steps": 2
+  }
+}

@@ -19,6 +19,8 @@ class ModelReadySampleContractTests(unittest.TestCase):
         sample = build_sample(self.raw, anchor_step=2)
         checks = validate_sample(sample)
         self.assertTrue(all(checks.values()))
+        self.assertEqual("history_causal_observable_object_union", sample["contract"]["input_index_policy"])
+        self.assertEqual("anchor_visibility_then_history_union_input_index", sample["contract"]["future_action_index_policy"])
         self.assertEqual([1, 2], sample["metadata"]["history_frame_indices"])
         self.assertEqual([2, 3], sample["metadata"]["future_action_frame_indices"])
         self.assertEqual(2, sample["metadata"]["anchor_decision_frame"])
@@ -88,6 +90,48 @@ class ModelReadySampleContractTests(unittest.TestCase):
         self.assertFalse(next(row for row in sample["history"][1]["entities"] if row["entity_id"] == entity_id)["presence"])
         self.assertTrue(next(row for row in sample["history"][0]["tasks"] if row["task_id"] == task_id)["presence"])
         self.assertFalse(next(row for row in sample["history"][1]["tasks"] if row["task_id"] == task_id)["presence"])
+
+    def test_future_action_uses_history_union_indices_after_anchor_disappearance(self):
+        raw = json.loads(json.dumps(self.raw))
+        disappearing_task = raw["decisions"][1]["tasks"][0]["task_id"]
+        disappearing_entity = raw["decisions"][1]["entities"][0]["entity_id"]
+        surviving_task = raw["decisions"][2]["tasks"][1]["task_id"]
+        surviving_entity = raw["decisions"][2]["entities"][1]["entity_id"]
+        raw["decisions"][2]["tasks"] = [row for row in raw["decisions"][2]["tasks"] if row["task_id"] != disappearing_task]
+        raw["decisions"][2]["entities"] = [row for row in raw["decisions"][2]["entities"] if row["entity_id"] != disappearing_entity]
+        raw["steps"][2]["action"]["route"] = {
+            "field_present": True,
+            "empty": False,
+            "entries": [{"task_id": surviving_task, "target_node_id": surviving_entity, "route_node_ids": []}],
+        }
+        sample = build_sample(raw, anchor_step=2)
+        task_index = sample["static"]["input_entity_index"]["task"]
+        physical_index = sample["static"]["input_entity_index"]["physical"]
+        self.assertNotIn(disappearing_task, {row["task_id"] for row in raw["decisions"][2]["tasks"]})
+        self.assertEqual(task_index[surviving_task], next(
+            entry["task_index"] for action in sample["future_action"]
+            for entry in action["route"]["entries"] if entry["task_id"] == surviving_task
+        ))
+        self.assertEqual(physical_index[surviving_entity], next(
+            entry["target_node_index"] for action in sample["future_action"]
+            for entry in action["route"]["entries"] if entry["target_node_id"] == surviving_entity
+        ))
+        self.assertTrue(validate_sample(sample)["future_action_indices_match_input_index"])
+
+    def test_validator_rejects_future_action_id_index_mismatch(self):
+        raw = json.loads(json.dumps(self.raw))
+        task_id = raw["decisions"][2]["tasks"][0]["task_id"]
+        node_id = raw["decisions"][2]["entities"][0]["entity_id"]
+        raw["steps"][2]["action"]["route"] = {
+            "field_present": True,
+            "empty": False,
+            "entries": [{"task_id": task_id, "target_node_id": node_id, "route_node_ids": []}],
+        }
+        sample = build_sample(raw, anchor_step=2)
+        route_entries = sample["future_action"][0]["route"]["entries"]
+        route_entries[0]["task_index"] = route_entries[0]["task_index"] + 1
+        with self.assertRaisesRegex(ValueError, "future_action_indices_match_input_index"):
+            validate_sample(sample)
 
     def test_future_reference_audit_is_observation_only(self):
         audit = audit_future_action_references(self.raw, history_steps=2, horizon_steps=2)

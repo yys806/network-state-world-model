@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import argparse
 from pathlib import Path
 import sys
 
@@ -22,10 +23,14 @@ RAW = ROOT / "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2
 OUT = ROOT / "code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919"
 SAMPLE = OUT / "model_ready_sample.json"
 MANIFEST = OUT / "manifest.json"
+FUTURE_AUDIT = OUT / "future_action_reference_audit.json"
 
 
 def main() -> None:
-    if OUT.exists():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--refresh-existing", action="store_true", help="refresh the existing minimal artifact after a contract patch")
+    args = parser.parse_args()
+    if OUT.exists() and not args.refresh_existing:
         raise FileExistsError(f"refusing to overwrite {OUT}")
     raw = json.loads(RAW.read_text(encoding="utf-8"))
     sample = build_sample(raw, anchor_step=2)
@@ -54,6 +59,13 @@ def main() -> None:
         "checks": checks,
         "source_files": source_files,
         "raw_source_sha256": hashlib.sha256(RAW.read_bytes()).hexdigest(),
+        "provenance": {
+            "future_action_reference_audit": {
+                "path": str(FUTURE_AUDIT.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": hashlib.sha256(FUTURE_AUDIT.read_bytes()).hexdigest(),
+                "observation_only": True,
+            }
+        },
         "scope": {"raw_source": str(RAW.relative_to(ROOT)), "H": 2, "L": 2, "locked_test": False, "training": False, "gpu": False},
     }
     MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

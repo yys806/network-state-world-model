@@ -23,7 +23,8 @@ class TensorContract:
     history_steps: int = 2
     horizon_steps: int = 2
     action_families: tuple[str, ...] = ACTION_FAMILIES
-    input_index_policy: str = "decision_visible_objects_only"
+    input_index_policy: str = "history_causal_observable_object_union"
+    future_action_index_policy: str = "anchor_visibility_then_history_union_input_index"
     target_new_object_policy: str = "target_only_index_never_reused_as_input_index"
     dag_source_policy: str = "decision_time_raw_observer_dag_edges_only"
 
@@ -34,6 +35,7 @@ class TensorContract:
             "horizon_steps": self.horizon_steps,
             "action_families": list(self.action_families),
             "input_index_policy": self.input_index_policy,
+            "future_action_index_policy": self.future_action_index_policy,
             "target_new_object_policy": self.target_new_object_policy,
             "dag_source_policy": self.dag_source_policy,
         }
@@ -67,30 +69,39 @@ def _required_index(index: Mapping[str, int], object_id: str, *, family: str, fi
     return int(index[object_id])
 
 
-def _action_tensor(action: Mapping[str, Any], family: str, index: Mapping[str, int], node_index: Mapping[str, int]) -> dict[str, Any]:
+def _validated_index(index: Mapping[str, int], object_id: str, *, family: str, field: str,
+                    visible_index: Mapping[str, int] | None = None) -> int:
+    if visible_index is not None:
+        _required_index(visible_index, object_id, family=family, field=field)
+    return _required_index(index, object_id, family=family, field=field)
+
+
+def _action_tensor(action: Mapping[str, Any], family: str, index: Mapping[str, int], node_index: Mapping[str, int],
+                   *, visible_index: Mapping[str, int] | None = None,
+                   visible_node_index: Mapping[str, int] | None = None) -> dict[str, Any]:
     record = dict(action[family])
     entries = []
     for row in record.get("entries", []):
         row = dict(row)
         if family in ("route", "comm", "comp"):
             task_id = str(row.get("task_id"))
-            row["task_index"] = _required_index(index, task_id, family=family, field="task_id")
+            row["task_index"] = _validated_index(index, task_id, family=family, field="task_id", visible_index=visible_index)
         if family == "route":
             target_node_id = str(row.get("target_node_id"))
-            row["target_node_index"] = _required_index(node_index, target_node_id, family=family, field="target_node_id")
+            row["target_node_index"] = _validated_index(node_index, target_node_id, family=family, field="target_node_id", visible_index=visible_node_index)
             if row.get("task_node_id") is not None:
                 task_node_id = str(row["task_node_id"])
-                row["task_node_index"] = _required_index(node_index, task_node_id, family=family, field="task_node_id")
+                row["task_node_index"] = _validated_index(node_index, task_node_id, family=family, field="task_node_id", visible_index=visible_node_index)
             row["route_node_indices"] = [
-                _required_index(node_index, str(node_id), family=family, field="route_node_ids")
+                _validated_index(node_index, str(node_id), family=family, field="route_node_ids", visible_index=visible_node_index)
                 for node_id in row.get("route_node_ids", [])
             ]
         if family == "comp" and row.get("node_id") is not None:
             node_id = str(row["node_id"])
-            row["node_index"] = _required_index(node_index, node_id, family=family, field="node_id")
+            row["node_index"] = _validated_index(node_index, node_id, family=family, field="node_id", visible_index=visible_node_index)
         if family == "mobility":
             uav_id = str(row.get("uav_id"))
-            row["uav_index"] = _required_index(node_index, uav_id, family=family, field="uav_id")
+            row["uav_index"] = _validated_index(node_index, uav_id, family=family, field="uav_id", visible_index=visible_node_index)
         entries.append(row)
     missing = not bool(record.get("field_present", False))
     empty = bool(record.get("empty", False)) and not missing
@@ -337,7 +348,10 @@ def build_sample(raw: Mapping[str, Any], *, anchor_step: int = 2, contract: Tens
     for step in future_steps:
         # Future action references are resolved against objects visible at O_t.
         # The History union index is broader only for preserving past identity.
-        future_actions.append({family: _action_tensor(step["action"], family, anchor_task_index, anchor_node_index) for family in ACTION_FAMILIES})
+        future_actions.append({family: _action_tensor(
+            step["action"], family, task_index, node_index,
+            visible_index=anchor_task_index, visible_node_index=anchor_node_index,
+        ) for family in ACTION_FAMILIES})
         outcome = step["outcome"]
         targets.append({
             "frame_index": step["frame_index"],
@@ -432,6 +446,47 @@ def validate_sample(sample: Mapping[str, Any]) -> dict[str, bool]:
     history_action_frames = [int(row["frame_index"]) for row in history_past_rows if "action" in row]
     history_outcome_frames = [int(row["outcome"]["frame_index"]) for row in history_past_rows if "outcome" in row]
     history_reference_values = []
+    future_action_indices_match_input_index = True
+    for action in actions:
+        for family in ACTION_FAMILIES:
+            for entry in action[family]["entries"]:
+                if family in ("route", "comm", "comp"):
+                    task_id = str(entry.get("task_id"))
+                    future_action_indices_match_input_index &= (
+                        task_id in input_index["task"]
+                        and entry.get("task_index") == input_index["task"][task_id]
+                    )
+                if family == "route":
+                    target_node_id = str(entry.get("target_node_id"))
+                    future_action_indices_match_input_index &= (
+                        target_node_id in input_index["physical"]
+                        and entry.get("target_node_index") == input_index["physical"][target_node_id]
+                    )
+                    if entry.get("task_node_id") is not None:
+                        task_node_id = str(entry["task_node_id"])
+                        future_action_indices_match_input_index &= (
+                            task_node_id in input_index["physical"]
+                            and entry.get("task_node_index") == input_index["physical"][task_node_id]
+                        )
+                    route_node_ids = [str(value) for value in entry.get("route_node_ids", [])]
+                    route_node_indices = list(entry.get("route_node_indices", []))
+                    future_action_indices_match_input_index &= len(route_node_ids) == len(route_node_indices)
+                    future_action_indices_match_input_index &= all(
+                        node_id in input_index["physical"] and numeric_index == input_index["physical"][node_id]
+                        for node_id, numeric_index in zip(route_node_ids, route_node_indices)
+                    )
+                if family == "comp" and entry.get("node_id") is not None:
+                    node_id = str(entry["node_id"])
+                    future_action_indices_match_input_index &= (
+                        node_id in input_index["physical"]
+                        and entry.get("node_index") == input_index["physical"][node_id]
+                    )
+                if family == "mobility":
+                    uav_id = str(entry.get("uav_id"))
+                    future_action_indices_match_input_index &= (
+                        uav_id in input_index["physical"]
+                        and entry.get("uav_index") == input_index["physical"][uav_id]
+                    )
     for row in history_past_rows:
         for family in ACTION_FAMILIES:
             for entry in row.get("action", {}).get(family, {}).get("entries", []):
@@ -462,6 +517,7 @@ def validate_sample(sample: Mapping[str, Any]) -> dict[str, bool]:
         "target_namespaces_separate": set(target_index) == {"physical", "task", "flow"} and set(input_index) == {"physical", "task", "flow"},
         "history_fixed_index_rows": all(len(row["entities"]) == len(input_index["physical"]) and len(row["tasks"]) == len(input_index["task"]) for row in history),
         "no_unresolved_action_index": all(value is not None and int(value) >= 0 for value in [*all_action_indices, *all_action_index_lists]),
+        "future_action_indices_match_input_index": future_action_indices_match_input_index,
         "no_unresolved_history_reference_index": all(value is not None and int(value) >= 0 for value in history_reference_values),
         "history_relation_dag_flow_aligned": all(
             endpoint["source_entity_index"] in input_index["physical"].values()

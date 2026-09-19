@@ -2637,6 +2637,10 @@ input physical/task index 由整个 History observation 的因果可观测并集
 
 STEP 3.1F 的 future-reference 扫描是 observation-only：已扫描 4 个非 locked Raw artifact、共 18 个可构造窗口，当前 0 个 unresolved reference。该数据不代表正式 dataset 可用率，也不替研究者决定未来任务到达的表示方案。
 
+### STEP 3.1F-PATCH index namespace 与 provenance 修正（2026-09-19）
+
+Future Action 现在先执行 anchor-time visibility 检查，再使用统一的 History causal observable union index 返回 task/node/UAV 数值引用；机器字段为 `future_action_index_policy=anchor_visibility_then_history_union_input_index`。过去可见、anchor 时已离开的对象不会被重新编号。validator 已逐项核对 action object ID、numeric index 与 `static.input_entity_index`，并由 disappearing-object fixture 验收。machine contract 的 input policy 为 `history_causal_observable_object_union`。future-reference audit JSON 已重新生成并由 sample manifest 保存路径、SHA-256 和 observation-only provenance；结果仍不外推正式 Dataset。该 patch 不改变 Raw、Flow/DAG、双图、World Model、Loss、Planner 或训练边界。
+
 ### P4 link activity持久性残差候选的CPU实现边界（2026-09-05，当前覆盖）
 
 经用户确认后，当前只新增`link_activity_persistence_residual_v1`：历史最后一帧活动先形成未加权事件状态`u0=(+20或-20)-log(pos_weight)`，现有link head每步只输出变化量`delta`，h2以后只递推模型自己的`u`，正式`link_activity_logits=u+log(pos_weight)`。未来target和target mask不进入forward，temperature仍只属于训练后的calibration流程。

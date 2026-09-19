@@ -1,7 +1,7 @@
 {
   "schema_version": "PI-JWM-Step-3.1F-Minimal-Real-Sample-Manifest-v3",
   "artifact": "model_ready_sample.json",
-  "artifact_sha256": "963a1317ef9bc7c4957bdec6da153dc078848a0ecb538df3cb1ad829a936462a",
+  "artifact_sha256": "4ef043c68d4f7fc70a884422960d7f84119c28d9b7be80c105ecab9623f2446c",
   "passed": true,
   "checks": {
     "schema_present": true,
@@ -19,6 +19,7 @@
     "target_namespaces_separate": true,
     "history_fixed_index_rows": true,
     "no_unresolved_action_index": true,
+    "future_action_indices_match_input_index": true,
     "no_unresolved_history_reference_index": true,
     "history_relation_dag_flow_aligned": true,
     "relation_endpoints_valid": true,
@@ -28,15 +29,22 @@
     "metadata_not_model_input": true
   },
   "source_files": {
-    "code/src/pi_jwm/model_ready_sample_contract_v1.py": "46de33881c2a5fe99eae384997a05cf45e3c7e0e51bd253e8aaa77ccea4138d7",
-    "code/scripts/audit_step3_1f_future_action_references_v1.py": "46b6d2e9ee852d4903cd97de9895315117fd4c8800664fd5ebe0bc1b9a3b57b6",
-    "code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py": "c7a154bbba85695642df5cb93d98c1285055622a41a77822aeb2e017bd711f0a",
+    "code/src/pi_jwm/model_ready_sample_contract_v1.py": "853d3bf67aa2955e66c460982f7803e9f0b4aa66fb8a8d1a15f778344a686fc3",
+    "code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py": "d8a4eeeb8b00ed741dc8a4f582a5e3c942254a73f1b27f1683563792175cbc0d",
     "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de",
     "code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py": "898ca7d387486766d7b060db1ff599029dfa22e6fa1741dd3b29a377843339ca",
-    "code/tests/test_model_ready_sample_contract_v1.py": "8f74fe422d735ba0146dbea9b894fce414a796ccf284ebd06e710a88ab8f00c5",
-    "docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md": "92e532aaa25663d76a64f703a1b5e1aa1126ab2f3aa928fe6d1cecaf7984c0f7"
+    "code/tests/test_model_ready_sample_contract_v1.py": "456e9e2ca7f28c7856e7300c74d7068ba0fec413077f422e6248363e4e926b5a",
+    "docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md": "e1e70a8c765557c90d19d3cc4990b5ccd3e9a3ba222ac7ea308a6c946648ffe9",
+    "code/scripts/audit_step3_1f_future_action_references_v1.py": "46b6d2e9ee852d4903cd97de9895315117fd4c8800664fd5ebe0bc1b9a3b57b6"
   },
   "raw_source_sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
+  "provenance": {
+    "future_action_reference_audit": {
+      "path": "code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/future_action_reference_audit.json",
+      "sha256": "da83b8dfed087f0fc2bd0668e5390481476753fcabbb72129e2bfe31bca37cb7",
+      "observation_only": true
+    }
+  },
   "scope": {
     "raw_source": "code\\artifacts\\protocols\\pi_jwm_communication_outcome_semantics_v2_20260919\\real_communication_outcome_semantics.json",
     "H": 2,

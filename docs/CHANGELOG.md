@@ -70,3 +70,4 @@
 - 2026-09-19: Added Step 3.1 model-ready sample/tensor contract, minimal real sample artifact and focused validation; formal dataset/model/training remain unopened.
 - 2026-09-19: Corrected Step 3.1R History alignment, fixed typed indices/presence, real DAG capture and relation endpoints; regenerated non-locked evidence without entering Step 3.2.
 - 2026-09-19: Finalized Step 3.1F History with past action/outcome, causal History-union indices, aligned historical flow/relation/DAG rows, and an observation-only audit of future action references; Step 3.2 remains unauthorized.
+- 2026-09-19: Applied the bounded Step 3.1F-PATCH: Future Action now uses anchor visibility only for admissibility and the shared History-union input namespace for numeric indices; added ID↔index validation, corrected policy provenance, and tracked the audit JSON in Git.

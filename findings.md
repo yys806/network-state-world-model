@@ -857,3 +857,9 @@
 - 已接线 transport 的无服务 slot 是空 map 且 mask=true；接口不可用必须是 null/mask=false/reason。只有两类分量均 observed 时，total 才可用。
 - 真实两跳任务在一个 AirFogSim slot 内先完成 wireless、再完成 wired，post-step current node 为 cloud、lifecycle 为 computing；Action route 必须复制保存，否则 simulator 原地消费 route list 会污染记录。
 - cloud 节点的现有 FogProfile 无 `cpu` 键；通信验收保持 Comp no-op，未改 Step 2.3 CPU missing 语义。
+
+## 2026-09-19 STEP 3.1F-PATCH
+
+- 发现：`994da0b` 的 Future Action 使用 anchor-only index，在 History union 包含已消失对象时会把合法对象重新编号。
+- 证据：disappearing-object fixture 在修复前稳定复现 `History index=1` 被写成 `0`；修复后 validator 逐字段核对 ID 与 static index。
+- 边界：audit 的 18 窗口/0 unresolved 仍只是当前非 locked Raw observation，不是正式 Dataset 可用率；STEP 3.2 未授权。

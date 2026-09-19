@@ -95,7 +95,7 @@
 
 ## 2026-09-19 STEP 3.1F 状态
 
-最小 Model-ready Sample & Tensor Contract 已冻结：History `[1,2]` 中明确包含 `O_1+A_1+Y_1+O_2`，Future Action/Target `[2,3]`，input index 来自 History union，固定 presence/mask、typed target index、真实 DAG 因果分区、history relation/flow 和严格 Action reference 均已验收。真实非 locked Raw、样本和合同测试通过；已扫描 4 个 Raw artifact 的 18 个窗口且当前无 unresolved future reference。该扫描不代表正式 dataset 可用率；正式 batch/split、模型、训练和 `locked_test` 仍未开始。STEP 3.2 未授权。
+最小 Model-ready Sample & Tensor Contract 已冻结：History `[1,2]` 中明确包含 `O_1+A_1+Y_1+O_2`，Future Action/Target `[2,3]`，input index 来自 History union，Future Action 先做 anchor visibility 检查后引用同一 static index，固定 presence/mask、typed target index、真实 DAG 因果分区、history relation/flow 和严格 Action reference 均已验收。机器 policy 为 `history_causal_observable_object_union`；真实非 locked Raw、样本和合同测试通过；已扫描 4 个 Raw artifact 的 18 个窗口且当前无 unresolved future reference，audit JSON 的 SHA-256 已进入 manifest provenance。该扫描不代表正式 dataset 可用率；正式 batch/split、模型、训练和 `locked_test` 仍未开始。STEP 3.2 未授权。
 
 ## 9. 项目重构状态
 

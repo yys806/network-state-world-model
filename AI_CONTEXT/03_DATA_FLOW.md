@@ -70,7 +70,7 @@ DataLoader → 模型 prior/teacher 输出 → `formal_world_model_loss()`。bas
 - `formal_performance_claim_ready=false`。
 - 通信 Outcome 拆为 `wireless_delivered_data_by_task`、`wired_delivered_data_by_task` 和两部分按 task 聚合的 `delivered_data_by_task`。wired source 是真实 `WiredNetworkManager.step` 返回的 slot transmitted bytes；`{}` + observed mask 表示已观测但无服务，`null` + missing mask/reason 表示不可恢复。
 - Raw Trajectory Layer / 01 已冻结；没有生成新定义 tensor，Step 3 未开始。
-- Step 3.1F 最小样本：History 为 `[t-H+1,t]` 的 `H=2` observation，并在过去 `tau<t` 行保留对齐的已执行四类 Action 和 Outcome；当前帧不含 `A_t/Y_t`。Future Action/Target 为 `[t,t+L-1]` 的 `L=2` 帧。input physical/task index 来自整个 History 的因果可观对象 union，flow index 来自过去 Outcome transfer event；future-only endpoint 仍不进入 input Static。
+- Step 3.1F 最小样本：History 为 `[t-H+1,t]` 的 `H=2` observation，并在过去 `tau<t` 行保留对齐的已执行四类 Action 和 Outcome；当前帧不含 `A_t/Y_t`。Future Action/Target 为 `[t,t+L-1]` 的 `L=2` 帧。input physical/task index 来自整个 History 的因果可观对象 union，flow index 来自过去 Outcome transfer event；Future Action 先按 anchor visibility 拒绝不可见 object，再引用同一 static union index；future-only endpoint 仍不进入 input Static。
 
 Unverified：未在当前 tensor manifest、loader 或模型实际读路径出现的字段，不得推断为当前模型输入。
 

@@ -78,3 +78,67 @@ git diff --check
 ## Next Step
 
 研究者审阅后，单独授权 STEP 3.2 — Raw-to-Dataset Batch / Split Preprocessing Validation；不自动执行。
+
+## STEP 3.1F-PATCH — Future Action index namespace and provenance correction
+
+### Step Goal
+
+在进入 Batch Dataset 前，修正 Future Action 使用 anchor-only 重新编号而造成的 History-union index 错位；同步修正 machine-readable input-index policy，并把 future-reference audit JSON 纳入可追溯 artifact。
+
+### Definition Basis
+
+沿用 `02数据集构建与模型输入.md` 的 History causal union 定义和本记录的 STEP 3.1F 合同；本 patch 不改变 History 时间边界、anchor visibility 保护、Raw 语义或后续模型范围。
+
+### Initial State
+
+`994da0b` 已完成 History past `A/Y` 和 union index，但 Future Action 使用 `anchor_node_index/anchor_task_index` 写入数值 index；validator 只检查非负值。`TensorContract.input_index_policy` 仍为 `decision_visible_objects_only`，audit JSON 尚未被该 commit 纳入 Git。
+
+### Files Involved
+
+- `code/src/pi_jwm/model_ready_sample_contract_v1.py`
+- `code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py`
+- `code/tests/test_model_ready_sample_contract_v1.py`
+- `code/scripts/audit_step3_1f_future_action_references_v1.py`
+- `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/`
+- 本合同、Tracker、authority records、AI_CONTEXT 和知识索引。
+
+### Changes
+
+- Future Action 先用 anchor visibility map 拒绝不可见 object，再用 History-union `static.input_entity_index` 返回正式 task/node/UAV index。
+- validator 新增 `future_action_indices_match_input_index`，逐一核对 action object ID 与 numeric index。
+- 新增 disappearing-object fixture：anchor-only 集合缩小时仍保持统一 History-union index；新增 validator 错位拒绝测试。
+- `input_index_policy` 改为 `history_causal_observable_object_union`，并显式记录 `future_action_index_policy=anchor_visibility_then_history_union_input_index`。
+- builder 增加显式 `--refresh-existing`，重新生成带新 policy/checks 的 sample；manifest 保存 future-reference audit 的路径、SHA-256 和 `observation_only=true`。
+- 重新生成并纳入 `future_action_reference_audit.json`；结果仍仅为 observation，不外推正式 Dataset 可用率。
+
+### Reuse
+
+复用既有 History union、四类 action schema、strict reference resolver、真实 Raw artifact、future-reference observation audit 和 round-trip 机制；未修改 Raw Layer、Flow/DAG 语义、双图、World Model、Loss、Planner 或训练。
+
+### Validation
+
+- 旧实现上新增 disappearing-object fixture 先失败：`Task_2` 的 History-union index `1` 被错误写成 anchor-only index `0`。
+- 修正后专项测试 `12/12 PASS`。
+- `build_step3_1_minimal_real_model_ready_sample_v1.py --refresh-existing` 通过，manifest checks 全部为 `true`，包括 `future_action_indices_match_input_index`。
+- future-reference audit 重新运行，4 个非 locked Raw artifact、18 个窗口、0 个 unresolved reference；JSON SHA-256 已写入 sample manifest。
+- compileall、knowledge index write/`--check`、`git diff --check` 均需在提交前重新执行。
+
+### Results
+
+Future Action 的合法引用现在共享 `static.input_entity_index` 的正式数值 namespace；anchor visibility 仍独立负责拒绝不可见引用。sample artifact 的 machine contract policy 已准确记录 History causal union，audit JSON 具备 Git provenance。
+
+### Expected vs Actual
+
+符合预期：修正了 disappearing-object 场景的 index 错位，未扩大科研范围或改变因果边界。
+
+### Known Issues
+
+正式 batch/split Dataset、模型、训练和 future-arrival 研究决策仍未开始；当前 audit 仍只是短 Raw 轨迹 observation。
+
+### Git
+
+本 patch 使用独立 Conventional Commit 推送 `main`；最终 commit/hash 和远端回执在 Completion Report 中记录。
+
+### Next Step
+
+研究者审阅后，唯一建议下一步仍为 STEP 3.2 — Raw-to-Dataset Batch / Split Preprocessing Validation；本 patch 不自动进入该 Step。

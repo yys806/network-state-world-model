@@ -7,9 +7,10 @@
       "mobility"
     ],
     "dag_source_policy": "decision_time_raw_observer_dag_edges_only",
+    "future_action_index_policy": "anchor_visibility_then_history_union_input_index",
     "history_steps": 2,
     "horizon_steps": 2,
-    "input_index_policy": "decision_visible_objects_only",
+    "input_index_policy": "history_causal_observable_object_union",
     "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
     "target_new_object_policy": "target_only_index_never_reused_as_input_index"
   },

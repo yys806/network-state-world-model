@@ -1103,3 +1103,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 真实 6 slot 非 locked 轨迹观察到 wireless→wired 两跳、task progress/lifecycle 和 14 项 checks 全通过。
 - [x] 同步源码、测试、Raw Contract、机器证据、Tracker、authority records、AI_CONTEXT 和索引。
 - 唯一下一动作：最终验证、commit、push 后停止，等待研究者单独授权 Step 3。
+
+## 2026-09-19 STEP 3.1F-PATCH
+
+- Scope: only Future Action index namespace, input-index policy wording, and future-reference audit provenance; no other research module.
+- Current gate: patch validation before Batch Dataset; `locked_test=false`, `training=false`, `gpu=false`.
+- Completed: anchor visibility separated from History-union numeric index; ID↔index validator and disappearing-object regression fixture added; sample/manifest/audit JSON refreshed.
+- Next: researcher review; only then consider STEP 3.2 authorization.

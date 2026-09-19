@@ -913,3 +913,9 @@
 - 新 Raw Outcome 分为 wireless map、wired map 和两者按 task 求和的 total；空 map 表示已观测但无服务，missing 使用 `null + mask=false + reason`。
 - 真实 6 slot/7 Decision 轨迹完成 `UAV_0 → RSU_0 → cloudServer_4`，14 项 checks 通过；无 GPU、无训练、未访问 `locked_test`。
 - Raw Trajectory Layer / 定义 01 正式 COMPLETE / FROZEN；Step 3 未执行。
+
+## 2026-09-19 STEP 3.1F-PATCH
+
+- 修正 Future Action anchor-only 重编号：合法 action 现在引用统一 `static.input_entity_index`，anchor visibility 仍单独拒绝不可见 object。
+- 新增 disappearing-object fixture、ID↔index validator 和错位拒绝测试；machine policy 改为 `history_causal_observable_object_union`。
+- 重新生成 sample/manifest/audit JSON，manifest 保存 audit SHA-256 provenance；未进入 STEP 3.2、模型或训练。

@@ -26,7 +26,7 @@ H_{t-H+1:t} = (O_{t-H+1:t}, A_{t-H+1:t-1}, Y_{t-H+1:t-1})
 
 ## Index、Presence 和 Mask
 
-输入 index 由整个 History `O_{t-H+1:t}` 中已因果可观测到的 physical/task 对象并集建立，并在整个 History 窗口固定。过去存在而后离开的对象也保留 index，后续帧使用 `presence=false`。较晚进入的对象在更早帧使用 `presence=false`。缺失 feature 和真实值为 0 仍分别处理，padding 位置不参与归一化统计。Flow index 同样由历史 Outcome 中已出现的传输 event 建立。
+输入 index 由整个 History `O_{t-H+1:t}` 中已因果可观测到的 physical/task 对象并集建立，并在整个 History 窗口固定；机器合同 policy 为 `history_causal_observable_object_union`。Future Action 的机器 policy 为 `anchor_visibility_then_history_union_input_index`：先按 anchor visibility 拒绝不可见引用，再返回统一 History-union 数值 index。过去存在而后离开的对象也保留 index，后续帧使用 `presence=false`。较晚进入的对象在更早帧使用 `presence=false`。缺失 feature 和真实值为 0 仍分别处理，padding 位置不参与归一化统计。Flow index 同样由历史 Outcome 中已出现的传输 event 建立。
 
 未来新对象不提前加入输入 index。Target 单独保留 `target_index.physical/task/flow` 三个 namespace 和 `target_only_objects`，因此新出现 task/flow/entity 可以在 Target 中表示，同时不进入当前 History 或 input-side index。
 
@@ -36,13 +36,13 @@ H_{t-H+1:t} = (O_{t-H+1:t}, A_{t-H+1:t-1}, Y_{t-H+1:t-1})
 
 `empty=true, missing=false` 表示字段已观测且没有动作，`missing=true, empty=false` 表示字段没有可靠来源。二者不能互换。
 
-Action 中的 task/entity/UAV reference 必须解析到合法 anchor-time input index。不可解析 reference 立即拒绝并标记 `RESEARCHER_DECISION_REQUIRED`；禁止写入 `-1` 后继续通过 validation。若 future-only task 在未来动作中出现，不能据此把该 task 提前加入 input index。
+Action 中的 task/entity/UAV reference 必须先通过 anchor-time visibility 检查，再解析到同一套 History-union input index。不可解析 reference 立即拒绝并标记 `RESEARCHER_DECISION_REQUIRED`；禁止写入 `-1` 后继续通过 validation。若 future-only task 在未来动作中出现，不能据此把该 task 提前加入 input index。
 
 ## Raw Field → Dataset Role
 
 | Raw field | Dataset role | 处理边界 |
 | --- | --- | --- |
-| decision entities/tasks | Model Condition / History | 只取决策时可见对象；按稳定 ID 建 index |
+| decision entities/tasks | Model Condition / History | 取整个 History 中因果可观对象并集；按稳定 ID 建固定 index |
 | `channel_rows` | Model Condition / History candidate | 保留真实 RB/channel 来源和 mask；最终模型是否使用由后续 03/04 决定 |
 | `node_cpu_capacity_per_s` | Model Condition / History candidate | missing 保持 null + mask + reason，禁止填 0 |
 | `raw_simulator_acceleration_mps2` | Metadata / Audit | 不作为 canonical model feature |
