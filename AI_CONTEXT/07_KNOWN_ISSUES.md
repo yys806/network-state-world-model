@@ -67,7 +67,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 遇到新重大冲突时必须记录：`Documented Intent`、`Actual Implementation`、`Evidence`、`Affected Files`、`Conflict`、`Status: Awaiting Researcher Decision`，并停止相关科研逻辑修改。
 
 Unverified：没有代码、config、experiment 或可读 audit 支持的问题只能标记为待核验，不能写成确认缺陷。
-- STEP 3.1 已知缺口：当前 Raw observer 没有独立 DAG dependency rows；最小样本用 `observed_mask=false` 与 missing reason 表示，不把它解释为空 DAG。正式 batch/split preprocessing、数据规模和模型输入选择仍未验收。
+- STEP 3.1R 已关闭原 DAG source 判断错误：observer 已提供真实 DAG rows，Raw `_capture()` 已接线；当前样本过滤两端不在 anchor input task namespace 的 future-only edges。正式 batch/split preprocessing、数据规模和模型输入选择仍未验收。
 
 ## 2026-09-19
 

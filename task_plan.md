@@ -7,6 +7,12 @@
 - Gate: no formal dataset, graph/model/loss/planner/training/GPU/locked_test.
 - Next: researcher review and explicit STEP 3.2 authorization.
 
+## 2026-09-19 STEP 3.1R correction note
+
+- Scope: correct the reviewed sample contract only; STEP 3.2 remains unapproved.
+- Deliverable: History `[1,2]`, Action/Target `[2,3]`, fixed physical/task History rows, typed target indices, causal DAG capture, relation endpoints, and strict Action reference resolution.
+- Acceptance: real non-locked Raw v2, model-ready checks, focused tests, round-trip, source/artifact hashes, index check, commit and push.
+
 ## 2026-08-29 P4 节点位置误差聚焦处理计划
 
 当前门：P4 最终精度门仍未关闭。GPU 三 seed 训练、回收和结构审计已完成，但验证集节点位置 MAE 相对 persistence 在三个 seed 均变差（`+0.4621/+0.8483/+1.3708 m`）。

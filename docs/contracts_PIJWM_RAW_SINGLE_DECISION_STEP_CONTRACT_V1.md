@@ -24,6 +24,7 @@
 | entities[].canonical_acceleration_mps2/mask/missing_reason | 当前和上一 Decision 的 speed | m/s^2；后向差分，缺历史时 `null + false + reason` | 决策前 |
 | vehicle_route_id | SUMO/traffic manager vehicle state | SUMO route ID | 决策前，车辆可为空 |
 | channel_rows | `channel_manager.getCSI` | 每 RB 的 dB，按有向实体对和 channel type 对齐 | 决策前 |
+| dag_edges | `airfogsim_full_dual_graph_observer_v1._extract_dag_edges` | Decision-time task dependency rows from `task_manager._task_dependencies`; future-only endpoints remain raw/internal and are excluded from input-side index | 决策前 |
 | tasks[] | task manager lifecycle collections and Task getters | 只含 `arrival_time_s <= decision_time_s` 的 task ID、Task node、当前节点、生命周期、route、arrival、data/CPU units、已计算量 | 决策前 |
 | internal_metadata.future_task_schedule | task manager `_to_generate_task_infos` | `arrival_time_s > decision_time_s`；仅 raw/internal metadata，禁止进入 `O_t`、History 和 input-side Entity Index | 决策前内部审计 |
 | node_cpu_capacity_per_s / observation rows | `entity.getFogProfile()['cpu']` | AirFogSim CPU work unit/s；未暴露 `cpu` 的节点使用 `null + observed_mask=false + CPU_NOT_EXPOSED_IN_FOG_PROFILE` | 决策前 |

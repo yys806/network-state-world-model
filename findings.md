@@ -3,7 +3,7 @@
 ## 2026-09-19 STEP 3.1
 
 - 新定义 `02数据集构建与模型输入.md` 要求已落实为最小合同；input-side index 不使用未来窗口 union，未来新对象在 target-side index 表达。
-- 当前真实样本的 DAG dependency rows 为缺失而非空：artifact 明确 `observed_mask=false` 和 `RAW_DAG_DEPENDENCY_SOURCE_NOT_CAPTURED`，避免由旧 `flow_state` 反推新语义。
+- STEP 3.1R 更正：真实 observer 已提供 DAG dependency rows；Raw v2 的 Decision 保存 2 条当前可见边，30 条含未来端点的边只在 internal metadata，model-ready input Static 不读取未来端点身份。
 - Step 2.4 窗口的 target frames 没有 transfer event，故 flow rows 为 0；这是真实证据覆盖限制，不伪造服务记录。正式 batch 需要后续真实有服务窗口验收。
 
 ## 2026-08-26 双约束全仓审计与计划重构

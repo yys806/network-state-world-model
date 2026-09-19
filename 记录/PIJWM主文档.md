@@ -2621,7 +2621,13 @@ P4 长期位置误差的首个具体原因已由代码和完整 h20 数据扫描
 
 Step 3.1 已依据只读 `02数据集构建与模型输入.md` 冻结一条最小真实 model-ready sample：`H=2, L=2`，History 截止 anchor 前一帧，Future Action 与 Target 对齐于 anchor 起始的连续两帧。input-side entity index 只来自当前及历史可见对象；未来新对象使用独立 target-side index 表达，不进入 History 或 input index。presence、feature mask 和真实零值分离，四类 action 保持 Route/Comm/Comp/UAV Mobility 统一结构，车辆运动仍由 SUMO 外生推进。
 
-通信 service 继续表示 wireless/wired hop-level transport volume；task/data transmitted progress 与 service 分离，不能把多跳 service 相加解释为端到端 payload progress。Raw DAG dependency rows 当前没有独立真实来源，样本显式保存 observed mask=false 和缺失原因，不从旧 tensor 推断。Static 保存实体/关系索引与结构，Metadata 保存轨迹、时间、split、合同和审计信息，默认不作为模型输入。正式 batch/split builder 尚未开始。
+通信 service 继续表示 wireless/wired hop-level transport volume；task/data transmitted progress 与 service 分离，不能把多跳 service 相加解释为端到端 payload progress。Step 3.1 当时将 DAG 误判为无真实来源；该判断已由下方 Step 3.1R 修正。Static 保存实体/关系索引与结构，Metadata 保存轨迹、时间、split、合同和审计信息，默认不作为模型输入。正式 batch/split builder 尚未开始。
+
+### STEP 3.1R 合同修正（2026-09-19）
+
+审阅后最小时间合同修正为 `History=H_{t-H+1:t}`；anchor frame 2、`H=2/L=2` 时，History 为 `[1,2]`，Future Action/Target 为 `[2,3]`。input physical/task index 由当前 `O_t` 建立并固定贯穿 History，较早帧不存在对象必须保留 row，并用 presence false、feature mask false、padding/null 表示。
+
+真实 observer 已有 DAG source。Raw capture 只把两端当前可见的依赖边放入 Decision，将含未来端点的边留在 internal metadata；Dataset Static 不读取未来端点身份。target index 分为 physical/task/flow namespace，channel relation endpoints 映射到 stable physical index。Action reference 不可解析时明确阻断并标记需要研究者决定，不再静默生成 `-1`。
 
 ### P4 link activity持久性残差候选的CPU实现边界（2026-09-05，当前覆盖）
 

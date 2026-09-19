@@ -3,7 +3,7 @@
 ## 2026-09-19 STEP 3.1
 
 - 已完成最小真实 Model-ready Sample & Tensor Contract：`H=2/L=2`、因果 History、Future Action/Target 对齐、input/target index 分离、四类 action、presence/feature mask、通信 service/task progress 分离。
-- 真实 artifact `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/` 已重建，10 项机器检查、4 项 focused tests 和 serialize→load equality 通过。
+- STEP 3.1R 真实 artifact 已重建：History `[1,2]`、Action/Target `[2,3]`，17 项机器检查、6 项 focused tests 和 serialize→load equality 通过；旧 Step 3.1 的 10/4 记录已被本修正取代。
 - 当前边界：正式 batch/split、模型、loss、planner、训练、GPU、locked_test 均未开始。唯一下一动作是研究者审阅后授权 STEP 3.2。
 
 ## 2026-08-26 双约束计划重构（本次会话）

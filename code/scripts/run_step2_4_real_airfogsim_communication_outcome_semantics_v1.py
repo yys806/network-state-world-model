@@ -29,7 +29,7 @@ OUTPUT = (
     CODE
     / "artifacts"
     / "protocols"
-    / "pi_jwm_communication_outcome_semantics_v1_20260919"
+    / "pi_jwm_communication_outcome_semantics_v2_20260919"
 )
 TRAJECTORY_ID = "step2.4-real-communication-seed0"
 DECISION_STEPS = 6
@@ -434,7 +434,7 @@ def main() -> None:
             raise RuntimeError(json.dumps({"failed": failed, "checks": checks}, ensure_ascii=False))
 
         payload = {
-            "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v1",
+            "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
             "environment": {
                 "conda_env": "airfogsim",
                 "airfogsim_source": "code/reference/AirFogSim",
@@ -490,7 +490,7 @@ def main() -> None:
             CODE / "reference" / "AirFogSim" / "airfogsim" / "manager" / "task_manager.py",
         )
         manifest = {
-            "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Manifest-v1",
+            "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Manifest-v2-dag-amendment",
             "artifact": artifact.name,
             "artifact_sha256": sha256(artifact),
             "passed": True,

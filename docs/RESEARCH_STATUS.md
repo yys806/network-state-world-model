@@ -93,9 +93,9 @@
 
 研究者检查已冻结 Raw 层；若明确授权，再进入 Step 3 Dataset/Tensor Contract。在此之前不启动训练、不访问 `locked_test`。
 
-## 2026-09-19 STEP 3.1 状态
+## 2026-09-19 STEP 3.1R 状态
 
-最小 Model-ready Sample & Tensor Contract 已冻结：`H=2/L=2`、因果 History、Future Action/Target 对齐、input/target index 分离、四类 action、通信 service/task progress 分离。真实非 locked 样本和合同测试通过；正式 batch/split、模型、训练和 `locked_test` 仍未开始。唯一下一动作是研究者另行授权 STEP 3.2。
+修正后的最小 Model-ready Sample & Tensor Contract 已冻结：History `[1,2]`、Future Action/Target `[2,3]`、固定 input index/presence、typed target index、真实 DAG 因果分区、relation endpoints 和严格 Action reference。真实非 locked Raw v2、样本和合同测试通过；正式 batch/split、模型、训练和 `locked_test` 仍未开始。STEP 3.2 未授权。
 
 ## 9. 项目重构状态
 

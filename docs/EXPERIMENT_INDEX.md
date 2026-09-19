@@ -8,7 +8,7 @@
 
 Step 2.4 真实接口验收不属于训练实验：机器证据位于 `code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/`，覆盖 6 个 execution slot、7 个独立 Decision 和 14 项检查。
 
-Step 3.1 最小样本构造也不属于训练实验：证据位于 `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/`，覆盖 `H=2/L=2`、10 项合同检查、4 项 focused tests 和 round-trip；`locked_test=false`、training/gpu=false。
+Step 3.1R 最小样本修正也不属于训练实验：证据位于 `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/`，Raw source 为真实 v2 communication artifact，覆盖 `H=2/L=2`、17 项合同检查、6 项 focused tests、固定 index/presence、DAG source 和 round-trip；`locked_test=false`、training/gpu=false。
 
 ## 1. 旧协议正式实验（Historical / Archived）
 

@@ -6,11 +6,11 @@
       "comp",
       "mobility"
     ],
-    "dag_source_policy": "missing_is_explicit_until_raw_dependency_observer_exists",
+    "dag_source_policy": "decision_time_raw_observer_dag_edges_only",
     "history_steps": 2,
     "horizon_steps": 2,
     "input_index_policy": "decision_visible_objects_only",
-    "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v1",
+    "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v2-step3.1R",
     "target_new_object_policy": "target_only_index_never_reused_as_input_index"
   },
   "future_action": [
@@ -118,95 +118,20 @@
       "entities": [
         {
           "canonical_acceleration_mps2": {
-            "feature_mask": false,
-            "presence": false,
-            "value": null
-          },
-          "entity_id": "vehicle_0",
-          "entity_index": 7,
-          "feature_mask": {
-            "canonical_acceleration_mps2": false,
-            "speed_mps": true
-          },
-          "presence": true,
-          "raw_simulator_acceleration_mps2": {
-            "feature_mask": true,
-            "presence": true,
-            "role": "metadata_audit",
-            "value": 0.0
-          },
-          "speed_mps": {
             "feature_mask": true,
             "presence": true,
             "value": 0.0
-          }
-        },
-        {
-          "canonical_acceleration_mps2": {
-            "feature_mask": false,
-            "presence": false,
-            "value": null
-          },
-          "entity_id": "UAV_0",
-          "entity_index": 4,
-          "feature_mask": {
-            "canonical_acceleration_mps2": false,
-            "speed_mps": true
-          },
-          "presence": true,
-          "raw_simulator_acceleration_mps2": {
-            "feature_mask": true,
-            "presence": true,
-            "role": "metadata_audit",
-            "value": 0.0
-          },
-          "speed_mps": {
-            "feature_mask": true,
-            "presence": true,
-            "value": 0.0
-          }
-        },
-        {
-          "canonical_acceleration_mps2": {
-            "feature_mask": false,
-            "presence": false,
-            "value": null
-          },
-          "entity_id": "UAV_1",
-          "entity_index": 5,
-          "feature_mask": {
-            "canonical_acceleration_mps2": false,
-            "speed_mps": true
-          },
-          "presence": true,
-          "raw_simulator_acceleration_mps2": {
-            "feature_mask": true,
-            "presence": true,
-            "role": "metadata_audit",
-            "value": 0.0
-          },
-          "speed_mps": {
-            "feature_mask": true,
-            "presence": true,
-            "value": 0.0
-          }
-        },
-        {
-          "canonical_acceleration_mps2": {
-            "feature_mask": false,
-            "presence": false,
-            "value": null
           },
           "entity_id": "RSU_0",
           "entity_index": 0,
           "feature_mask": {
-            "canonical_acceleration_mps2": false,
+            "canonical_acceleration_mps2": true,
             "speed_mps": true
           },
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -218,20 +143,20 @@
         },
         {
           "canonical_acceleration_mps2": {
-            "feature_mask": false,
-            "presence": false,
-            "value": null
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.0
           },
           "entity_id": "RSU_1",
           "entity_index": 1,
           "feature_mask": {
-            "canonical_acceleration_mps2": false,
+            "canonical_acceleration_mps2": true,
             "speed_mps": true
           },
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -243,20 +168,20 @@
         },
         {
           "canonical_acceleration_mps2": {
-            "feature_mask": false,
-            "presence": false,
-            "value": null
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.0
           },
           "entity_id": "RSU_2",
           "entity_index": 2,
           "feature_mask": {
-            "canonical_acceleration_mps2": false,
+            "canonical_acceleration_mps2": true,
             "speed_mps": true
           },
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -268,20 +193,20 @@
         },
         {
           "canonical_acceleration_mps2": {
-            "feature_mask": false,
-            "presence": false,
-            "value": null
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.0
           },
           "entity_id": "RSU_3",
           "entity_index": 3,
           "feature_mask": {
-            "canonical_acceleration_mps2": false,
+            "canonical_acceleration_mps2": true,
             "speed_mps": true
           },
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -293,20 +218,70 @@
         },
         {
           "canonical_acceleration_mps2": {
-            "feature_mask": false,
-            "presence": false,
-            "value": null
+            "feature_mask": true,
+            "presence": true,
+            "value": 99.99999999999991
+          },
+          "entity_id": "UAV_0",
+          "entity_index": 4,
+          "feature_mask": {
+            "canonical_acceleration_mps2": true,
+            "speed_mps": true
+          },
+          "presence": true,
+          "raw_simulator_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "role": "metadata_audit",
+            "value": -100.0
+          },
+          "speed_mps": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 10.0
+          }
+        },
+        {
+          "canonical_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 99.99999999999991
+          },
+          "entity_id": "UAV_1",
+          "entity_index": 5,
+          "feature_mask": {
+            "canonical_acceleration_mps2": true,
+            "speed_mps": true
+          },
+          "presence": true,
+          "raw_simulator_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "role": "metadata_audit",
+            "value": -100.0
+          },
+          "speed_mps": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 10.0
+          }
+        },
+        {
+          "canonical_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.0
           },
           "entity_id": "cloudServer_4",
           "entity_index": 6,
           "feature_mask": {
-            "canonical_acceleration_mps2": false,
+            "canonical_acceleration_mps2": true,
             "speed_mps": true
           },
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -315,60 +290,7 @@
             "presence": true,
             "value": 0.0
           }
-        }
-      ],
-      "frame_index": 0,
-      "simulation_time_s": 2.4,
-      "tasks": [
-        {
-          "feature_mask": {
-            "task_size": true
-          },
-          "lifecycle": "waiting_to_offload",
-          "presence": true,
-          "task_id": "Task_1",
-          "task_index": 0
         },
-        {
-          "feature_mask": {
-            "task_size": true
-          },
-          "lifecycle": "waiting_to_offload",
-          "presence": true,
-          "task_id": "Task_2",
-          "task_index": 1
-        },
-        {
-          "feature_mask": {
-            "task_size": true
-          },
-          "lifecycle": "waiting_to_offload",
-          "presence": true,
-          "task_id": "Task_4",
-          "task_index": 2
-        },
-        {
-          "feature_mask": {
-            "task_size": true
-          },
-          "lifecycle": "waiting_to_offload",
-          "presence": true,
-          "task_id": "Task_5",
-          "task_index": 3
-        },
-        {
-          "feature_mask": {
-            "task_size": true
-          },
-          "lifecycle": "waiting_to_offload",
-          "presence": true,
-          "task_id": "Task_6",
-          "task_index": 4
-        }
-      ]
-    },
-    {
-      "entities": [
         {
           "canonical_acceleration_mps2": {
             "feature_mask": true,
@@ -393,57 +315,85 @@
             "presence": true,
             "value": 0.2551980414481368
           }
-        },
+        }
+      ],
+      "frame_index": 1,
+      "simulation_time_s": 2.5,
+      "tasks": [
         {
-          "canonical_acceleration_mps2": {
-            "feature_mask": true,
-            "presence": true,
-            "value": 99.99999999999991
-          },
-          "entity_id": "UAV_0",
-          "entity_index": 4,
           "feature_mask": {
-            "canonical_acceleration_mps2": true,
-            "speed_mps": true
+            "task_size": true
           },
+          "lifecycle": "computing",
           "presence": true,
-          "raw_simulator_acceleration_mps2": {
+          "task_id": "Task_1",
+          "task_index": 0,
+          "task_size": {
             "feature_mask": true,
             "presence": true,
-            "role": "metadata_audit",
-            "value": -100.0
-          },
-          "speed_mps": {
-            "feature_mask": true,
-            "presence": true,
-            "value": 10.0
+            "value": 0.28065475894249814
           }
         },
         {
-          "canonical_acceleration_mps2": {
-            "feature_mask": true,
-            "presence": true,
-            "value": 99.99999999999991
-          },
-          "entity_id": "UAV_1",
-          "entity_index": 5,
           "feature_mask": {
-            "canonical_acceleration_mps2": true,
-            "speed_mps": true
+            "task_size": true
           },
+          "lifecycle": "waiting_to_offload",
           "presence": true,
-          "raw_simulator_acceleration_mps2": {
+          "task_id": "Task_2",
+          "task_index": 1,
+          "task_size": {
             "feature_mask": true,
             "presence": true,
-            "role": "metadata_audit",
-            "value": -100.0
-          },
-          "speed_mps": {
-            "feature_mask": true,
-            "presence": true,
-            "value": 10.0
+            "value": 0.24804920394698154
           }
         },
+        {
+          "feature_mask": {
+            "task_size": true
+          },
+          "lifecycle": "waiting_to_offload",
+          "presence": true,
+          "task_id": "Task_4",
+          "task_index": 2,
+          "task_size": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.33500398659608244
+          }
+        },
+        {
+          "feature_mask": {
+            "task_size": true
+          },
+          "lifecycle": "waiting_to_offload",
+          "presence": true,
+          "task_id": "Task_5",
+          "task_index": 3,
+          "task_size": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.5497396376587521
+          }
+        },
+        {
+          "feature_mask": {
+            "task_size": true
+          },
+          "lifecycle": "waiting_to_offload",
+          "presence": true,
+          "task_id": "Task_6",
+          "task_index": 4,
+          "task_size": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.546265795038883
+          }
+        }
+      ]
+    },
+    {
+      "entities": [
         {
           "canonical_acceleration_mps2": {
             "feature_mask": true,
@@ -459,7 +409,7 @@
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -484,7 +434,7 @@
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -509,7 +459,7 @@
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -534,7 +484,7 @@
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -542,6 +492,56 @@
             "feature_mask": true,
             "presence": true,
             "value": 0.0
+          }
+        },
+        {
+          "canonical_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.0
+          },
+          "entity_id": "UAV_0",
+          "entity_index": 4,
+          "feature_mask": {
+            "canonical_acceleration_mps2": true,
+            "speed_mps": true
+          },
+          "presence": true,
+          "raw_simulator_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "role": "metadata_audit",
+            "value": 0.0
+          },
+          "speed_mps": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 10.0
+          }
+        },
+        {
+          "canonical_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.0
+          },
+          "entity_id": "UAV_1",
+          "entity_index": 5,
+          "feature_mask": {
+            "canonical_acceleration_mps2": true,
+            "speed_mps": true
+          },
+          "presence": true,
+          "raw_simulator_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "role": "metadata_audit",
+            "value": 0.0
+          },
+          "speed_mps": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 10.0
           }
         },
         {
@@ -559,7 +559,7 @@
           "presence": true,
           "raw_simulator_acceleration_mps2": {
             "feature_mask": false,
-            "presence": false,
+            "presence": true,
             "role": "metadata_audit",
             "value": null
           },
@@ -568,10 +568,35 @@
             "presence": true,
             "value": 0.0
           }
+        },
+        {
+          "canonical_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 2.5666705548775863
+          },
+          "entity_id": "vehicle_0",
+          "entity_index": 7,
+          "feature_mask": {
+            "canonical_acceleration_mps2": true,
+            "speed_mps": true
+          },
+          "presence": true,
+          "raw_simulator_acceleration_mps2": {
+            "feature_mask": true,
+            "presence": true,
+            "role": "metadata_audit",
+            "value": 2.5666705548775886
+          },
+          "speed_mps": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.5118650969358957
+          }
         }
       ],
-      "frame_index": 1,
-      "simulation_time_s": 2.5,
+      "frame_index": 2,
+      "simulation_time_s": 2.6,
       "tasks": [
         {
           "feature_mask": {
@@ -580,7 +605,12 @@
           "lifecycle": "computing",
           "presence": true,
           "task_id": "Task_1",
-          "task_index": 0
+          "task_index": 0,
+          "task_size": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.28065475894249814
+          }
         },
         {
           "feature_mask": {
@@ -589,7 +619,12 @@
           "lifecycle": "waiting_to_offload",
           "presence": true,
           "task_id": "Task_2",
-          "task_index": 1
+          "task_index": 1,
+          "task_size": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.24804920394698154
+          }
         },
         {
           "feature_mask": {
@@ -598,7 +633,12 @@
           "lifecycle": "waiting_to_offload",
           "presence": true,
           "task_id": "Task_4",
-          "task_index": 2
+          "task_index": 2,
+          "task_size": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.33500398659608244
+          }
         },
         {
           "feature_mask": {
@@ -607,7 +647,12 @@
           "lifecycle": "waiting_to_offload",
           "presence": true,
           "task_id": "Task_5",
-          "task_index": 3
+          "task_index": 3,
+          "task_size": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.5497396376587521
+          }
         },
         {
           "feature_mask": {
@@ -616,7 +661,12 @@
           "lifecycle": "waiting_to_offload",
           "presence": true,
           "task_id": "Task_6",
-          "task_index": 4
+          "task_index": 4,
+          "task_size": {
+            "feature_mask": true,
+            "presence": true,
+            "value": 0.546265795038883
+          }
         }
       ]
     }
@@ -626,8 +676,8 @@
     "canonical_acceleration_role": "candidate_model_condition",
     "cpu_missing_policy": "null_plus_mask_reason; never zero_fill",
     "decision_times_s": [
-      2.4,
-      2.5
+      2.5,
+      2.6
     ],
     "future_action_frame_indices": [
       2,
@@ -635,8 +685,8 @@
     ],
     "future_task_schedule_role": "internal_raw_metadata_only",
     "history_frame_indices": [
-      0,
-      1
+      1,
+      2
     ],
     "metadata_is_model_input": false,
     "normalization_policy": "fit_train_trajectory_only_on_valid_masked_values",
@@ -645,15 +695,34 @@
     "split": "non_locked_smoke",
     "trajectory_id": "step2.4-real-communication-seed0"
   },
-  "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v1",
+  "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v2-step3.1R",
   "static": {
     "dag_relations": {
-      "missing_reason": "RAW_DAG_DEPENDENCY_SOURCE_NOT_CAPTURED",
-      "observed_mask": false,
-      "rows": []
+      "future_filtered_edge_count": 0,
+      "input_visible_edge_count": 2,
+      "internal_future_edge_count": 30,
+      "missing_reason": null,
+      "observed_mask": true,
+      "raw_edge_count": 2,
+      "rows": [
+        {
+          "dag_edge_id": "dag::UAV_1::Task_4::Task_5",
+          "source_task_index": 2,
+          "target_task_index": 3,
+          "validity_mask": true
+        },
+        {
+          "dag_edge_id": "dag::UAV_1::Task_4::Task_6",
+          "source_task_index": 2,
+          "target_task_index": 4,
+          "validity_mask": true
+        }
+      ],
+      "source": "airfogsim_full_dual_graph_observer_v1._extract_dag_edges"
     },
     "flow_contract": "flow_id is per task/transport/hop; source and destination come from real transfer event",
     "input_entity_index": {
+      "flow": {},
       "physical": {
         "RSU_0": 0,
         "RSU_1": 1,
@@ -672,28 +741,290 @@
         "Task_6": 4
       }
     },
-    "relation_endpoints": [],
-    "target_entity_index": {
-      "RSU_0": 0,
-      "RSU_1": 1,
-      "RSU_2": 2,
-      "RSU_3": 3,
-      "Task_1": 4,
-      "Task_2": 5,
-      "Task_4": 6,
-      "Task_5": 7,
-      "Task_6": 8,
-      "Task_7": 9,
-      "Task_8": 10,
-      "UAV_0": 11,
-      "UAV_1": 12,
-      "cloudServer_4": 13,
-      "vehicle_0": 14
+    "relation_endpoints": [
+      {
+        "relation_id": "physical::RSU_0::RSU_1::I2I",
+        "source_entity_index": 0,
+        "target_entity_index": 1,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_0::RSU_2::I2I",
+        "source_entity_index": 0,
+        "target_entity_index": 2,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_0::RSU_3::I2I",
+        "source_entity_index": 0,
+        "target_entity_index": 3,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_0::UAV_0::I2U",
+        "source_entity_index": 0,
+        "target_entity_index": 4,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_0::UAV_1::I2U",
+        "source_entity_index": 0,
+        "target_entity_index": 5,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_0::vehicle_0::I2V",
+        "source_entity_index": 0,
+        "target_entity_index": 7,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_1::RSU_0::I2I",
+        "source_entity_index": 1,
+        "target_entity_index": 0,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_1::RSU_2::I2I",
+        "source_entity_index": 1,
+        "target_entity_index": 2,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_1::RSU_3::I2I",
+        "source_entity_index": 1,
+        "target_entity_index": 3,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_1::UAV_0::I2U",
+        "source_entity_index": 1,
+        "target_entity_index": 4,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_1::UAV_1::I2U",
+        "source_entity_index": 1,
+        "target_entity_index": 5,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_1::vehicle_0::I2V",
+        "source_entity_index": 1,
+        "target_entity_index": 7,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_2::RSU_0::I2I",
+        "source_entity_index": 2,
+        "target_entity_index": 0,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_2::RSU_1::I2I",
+        "source_entity_index": 2,
+        "target_entity_index": 1,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_2::RSU_3::I2I",
+        "source_entity_index": 2,
+        "target_entity_index": 3,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_2::UAV_0::I2U",
+        "source_entity_index": 2,
+        "target_entity_index": 4,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_2::UAV_1::I2U",
+        "source_entity_index": 2,
+        "target_entity_index": 5,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_2::vehicle_0::I2V",
+        "source_entity_index": 2,
+        "target_entity_index": 7,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_3::RSU_0::I2I",
+        "source_entity_index": 3,
+        "target_entity_index": 0,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_3::RSU_1::I2I",
+        "source_entity_index": 3,
+        "target_entity_index": 1,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_3::RSU_2::I2I",
+        "source_entity_index": 3,
+        "target_entity_index": 2,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_3::UAV_0::I2U",
+        "source_entity_index": 3,
+        "target_entity_index": 4,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_3::UAV_1::I2U",
+        "source_entity_index": 3,
+        "target_entity_index": 5,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::RSU_3::vehicle_0::I2V",
+        "source_entity_index": 3,
+        "target_entity_index": 7,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_0::RSU_0::U2I",
+        "source_entity_index": 4,
+        "target_entity_index": 0,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_0::RSU_1::U2I",
+        "source_entity_index": 4,
+        "target_entity_index": 1,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_0::RSU_2::U2I",
+        "source_entity_index": 4,
+        "target_entity_index": 2,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_0::RSU_3::U2I",
+        "source_entity_index": 4,
+        "target_entity_index": 3,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_0::UAV_1::U2U",
+        "source_entity_index": 4,
+        "target_entity_index": 5,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_0::vehicle_0::U2V",
+        "source_entity_index": 4,
+        "target_entity_index": 7,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_1::RSU_0::U2I",
+        "source_entity_index": 5,
+        "target_entity_index": 0,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_1::RSU_1::U2I",
+        "source_entity_index": 5,
+        "target_entity_index": 1,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_1::RSU_2::U2I",
+        "source_entity_index": 5,
+        "target_entity_index": 2,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_1::RSU_3::U2I",
+        "source_entity_index": 5,
+        "target_entity_index": 3,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_1::UAV_0::U2U",
+        "source_entity_index": 5,
+        "target_entity_index": 4,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::UAV_1::vehicle_0::U2V",
+        "source_entity_index": 5,
+        "target_entity_index": 7,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::vehicle_0::RSU_0::V2I",
+        "source_entity_index": 7,
+        "target_entity_index": 0,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::vehicle_0::RSU_1::V2I",
+        "source_entity_index": 7,
+        "target_entity_index": 1,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::vehicle_0::RSU_2::V2I",
+        "source_entity_index": 7,
+        "target_entity_index": 2,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::vehicle_0::RSU_3::V2I",
+        "source_entity_index": 7,
+        "target_entity_index": 3,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::vehicle_0::UAV_0::V2U",
+        "source_entity_index": 7,
+        "target_entity_index": 4,
+        "validity_mask": true
+      },
+      {
+        "relation_id": "physical::vehicle_0::UAV_1::V2U",
+        "source_entity_index": 7,
+        "target_entity_index": 5,
+        "validity_mask": true
+      }
+    ],
+    "target_index": {
+      "flow": {},
+      "physical": {
+        "RSU_0": 0,
+        "RSU_1": 1,
+        "RSU_2": 2,
+        "RSU_3": 3,
+        "UAV_0": 4,
+        "UAV_1": 5,
+        "cloudServer_4": 6,
+        "vehicle_0": 7
+      },
+      "task": {
+        "Task_1": 0,
+        "Task_2": 1,
+        "Task_4": 2,
+        "Task_5": 3,
+        "Task_6": 4,
+        "Task_7": 5,
+        "Task_8": 6
+      }
     },
-    "target_only_objects": [
-      "Task_7",
-      "Task_8"
-    ]
+    "target_only_objects": {
+      "flow": [],
+      "physical": [],
+      "task": [
+        "Task_7",
+        "Task_8"
+      ]
+    }
   },
   "target": [
     {
@@ -714,7 +1045,7 @@
             "presence": true,
             "value": 0.7488913176149865
           },
-          "target_index": 14
+          "target_index": 7
         },
         {
           "entity_id": "UAV_0",
@@ -724,7 +1055,7 @@
             "presence": true,
             "value": 10.0
           },
-          "target_index": 11
+          "target_index": 4
         },
         {
           "entity_id": "UAV_1",
@@ -734,7 +1065,7 @@
             "presence": true,
             "value": 10.0
           },
-          "target_index": 12
+          "target_index": 5
         },
         {
           "entity_id": "RSU_0",
@@ -784,7 +1115,7 @@
             "presence": true,
             "value": 0.0
           },
-          "target_index": 13
+          "target_index": 6
         }
       ],
       "flows": [],
@@ -794,7 +1125,7 @@
         {
           "lifecycle": "computing",
           "presence": true,
-          "target_index": 4,
+          "target_index": 0,
           "task_id": "Task_1",
           "transmitted_size": {
             "feature_mask": true,
@@ -805,7 +1136,7 @@
         {
           "lifecycle": "waiting_to_offload",
           "presence": true,
-          "target_index": 5,
+          "target_index": 1,
           "task_id": "Task_2",
           "transmitted_size": {
             "feature_mask": true,
@@ -816,7 +1147,7 @@
         {
           "lifecycle": "waiting_to_offload",
           "presence": true,
-          "target_index": 6,
+          "target_index": 2,
           "task_id": "Task_4",
           "transmitted_size": {
             "feature_mask": true,
@@ -827,7 +1158,7 @@
         {
           "lifecycle": "waiting_to_offload",
           "presence": true,
-          "target_index": 7,
+          "target_index": 3,
           "task_id": "Task_5",
           "transmitted_size": {
             "feature_mask": true,
@@ -838,7 +1169,7 @@
         {
           "lifecycle": "waiting_to_offload",
           "presence": true,
-          "target_index": 8,
+          "target_index": 4,
           "task_id": "Task_6",
           "transmitted_size": {
             "feature_mask": true,
@@ -849,7 +1180,7 @@
         {
           "lifecycle": "to_generate",
           "presence": true,
-          "target_index": 9,
+          "target_index": 5,
           "task_id": "Task_7",
           "transmitted_size": {
             "feature_mask": true,
@@ -877,7 +1208,7 @@
             "presence": true,
             "value": 0.9898849129731777
           },
-          "target_index": 14
+          "target_index": 7
         },
         {
           "entity_id": "UAV_0",
@@ -887,7 +1218,7 @@
             "presence": true,
             "value": 10.0
           },
-          "target_index": 11
+          "target_index": 4
         },
         {
           "entity_id": "UAV_1",
@@ -897,7 +1228,7 @@
             "presence": true,
             "value": 10.0
           },
-          "target_index": 12
+          "target_index": 5
         },
         {
           "entity_id": "RSU_0",
@@ -947,7 +1278,7 @@
             "presence": true,
             "value": 0.0
           },
-          "target_index": 13
+          "target_index": 6
         }
       ],
       "flows": [],
@@ -957,7 +1288,7 @@
         {
           "lifecycle": "computing",
           "presence": true,
-          "target_index": 4,
+          "target_index": 0,
           "task_id": "Task_1",
           "transmitted_size": {
             "feature_mask": true,
@@ -968,7 +1299,7 @@
         {
           "lifecycle": "waiting_to_offload",
           "presence": true,
-          "target_index": 5,
+          "target_index": 1,
           "task_id": "Task_2",
           "transmitted_size": {
             "feature_mask": true,
@@ -979,7 +1310,7 @@
         {
           "lifecycle": "waiting_to_offload",
           "presence": true,
-          "target_index": 6,
+          "target_index": 2,
           "task_id": "Task_4",
           "transmitted_size": {
             "feature_mask": true,
@@ -990,7 +1321,7 @@
         {
           "lifecycle": "waiting_to_offload",
           "presence": true,
-          "target_index": 7,
+          "target_index": 3,
           "task_id": "Task_5",
           "transmitted_size": {
             "feature_mask": true,
@@ -1001,7 +1332,7 @@
         {
           "lifecycle": "waiting_to_offload",
           "presence": true,
-          "target_index": 8,
+          "target_index": 4,
           "task_id": "Task_6",
           "transmitted_size": {
             "feature_mask": true,
@@ -1012,7 +1343,7 @@
         {
           "lifecycle": "to_generate",
           "presence": true,
-          "target_index": 9,
+          "target_index": 5,
           "task_id": "Task_7",
           "transmitted_size": {
             "feature_mask": true,
@@ -1023,7 +1354,7 @@
         {
           "lifecycle": "to_generate",
           "presence": true,
-          "target_index": 10,
+          "target_index": 6,
           "task_id": "Task_8",
           "transmitted_size": {
             "feature_mask": true,

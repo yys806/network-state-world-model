@@ -37,7 +37,8 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 - `code/reference/AirFogSim/`：第三方参考仿真器，不是 PI-JWM 主体。
 - `code/artifacts/`：数据、实验、checkpoint 和 audit；只有状态、manifest 与证据闭合后才能支持结果声明。
 - `docs/registries/`：导航注册表，不建立正式结果。
-- Model-ready sample contract: `code/src/pi_jwm/model_ready_sample_contract_v1.py`; minimal schema/checks/round-trip, frozen for Step 3.1.
+- Model-ready sample contract: `code/src/pi_jwm/model_ready_sample_contract_v1.py`; corrected schema/checks/round-trip, frozen for Step 3.1R.
+- Raw DAG capture amendment: `code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py::_capture`; source `airfogsim_full_dual_graph_observer_v1._extract_dag_edges`.
 
 ## 历史代码定位
 

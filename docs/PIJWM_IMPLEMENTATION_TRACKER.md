@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-19。**Raw Trajectory Layer / 定义 01 已完成并冻结**；STEP 3.1 已完成最小 Model-ready Sample & Tensor Contract 验收。正式大数据集、模型和训练仍未开始。
+更新时间：2026-09-19。**Raw Trajectory Layer / 定义 01 已完成并冻结**；STEP 3.1R 已完成 Model-ready Sample Contract 修正验收。正式大数据集、模型和训练仍未开始。
 
 ## 当前依据与执行边界
 
@@ -20,7 +20,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | AirFogSim trajectory | 01 原始轨迹与时间语义 | Raw contract、Step 2.1–2.4 runner/artifact | COMPLETE / FROZEN | MINOR_MODIFICATION | Raw 层已闭合；尚未映射到新 Dataset/Tensor | Step 3 冻结 Dataset/Tensor Contract |
 | Decision / Execution / Outcome | 01；02 | Raw contract、causal helper、Step 2.3/2.4 真实 artifact | COMPLETE / FROZEN | MINOR_MODIFICATION | future schedule 已与 `O_t`/History/input index 隔离；wireless/wired slot outcome 已拆分并实测 | Step 3 保持同一因果边界 |
 | Dataset / split / masks | 02 | `formal_airfogsim_dataset_v1.py` | AUDITED | MINOR_MODIFICATION | split/mask隔离复用；对象和字段变更后重新构建 | 新 schema 验收后适配 |
-| Model-ready sample / tensor contract | 02 | `model_ready_sample_contract_v1.py`、Step 3.1 artifact | COMPLETE / FROZEN FOR MINIMAL CONTRACT | MINOR_MODIFICATION | H=2/L=2 最小真实样本已闭合；正式 batch/split builder 未开始 | Step 3.2 批量与 split preprocessing 验收 |
+| Model-ready sample / tensor contract | 02 | `model_ready_sample_contract_v1.py`、Step 3.1R artifact | COMPLETE / FROZEN FOR MINIMAL CONTRACT | MINOR_MODIFICATION | H=2/L=2 已修正为 History `[t-H+1,t]`；正式 batch/split builder 未开始 | Step 3.2 批量与 split preprocessing 验收 |
 | tensor contract | 02；03 | `airfogsim_tensor_v2.py`、v5 tensor contract | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | Agent/Comm/四类动作与新关系不存在于当前完整合同 | 字段和关系合同 |
 | Physical / Information 双图 | 03 | `formal_graph_ops_v1.py`、`formal_dual_graph_world_model_v1.py` | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 通信仍混在physical_edge；Agent复用node输入；旧跨图路径不同 | 依合同重构，尚未授权 |
 | entity alignment 局部工具 | 02；03 | `airfogsim_tensor_v2.py`、`formal_graph_ops_v1.py` | AUDITED | DIRECT_REUSE | ID/index/mask原则可复用；新增对象映射需扩展 | 保留身份稳定性检查 |
@@ -72,7 +72,7 @@ Step 2.1 v4 完成真实单步验收；Step 2.2 完成真实多步独立重采�
 
 ## STEP 3.1 Model-ready Sample & Tensor Contract
 
-最小真实证据位于 `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/`。History frame `0,1`、Future Action/Target frame `2,3`；input-side index 不包含 target-only `Task_7/Task_8`；四类 action、presence/mask、通信 service 与 task progress 分离、DAG missing gap 和 round-trip 均有机器检查。该结果冻结最小 schema 语义，不等于正式数据集完成。
+最小真实证据位于 `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/`。History frame `1,2`、Future Action/Target frame `2,3`；input-side index 不包含 target-only `Task_7/Task_8`；四类 action、固定 index/presence/mask、通信 service 与 task progress 分离、真实 DAG source、relation endpoints 和 round-trip 均有机器检查。该结果冻结最小 schema 语义，不等于正式数据集完成。
 
 ## 唯一建议的下一步
 

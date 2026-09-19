@@ -196,6 +196,27 @@ def _capture(
     )
     physical_ids = [row["entity_id"] for row in entities]
     observable_task_ids = [row["task_id"] for row in observable_tasks]
+    observable_task_id_set = set(observable_task_ids)
+    raw_dag_rows = [
+        {
+            "dag_edge_id": row.dag_edge_id,
+            "source_task_id": row.source_task_id,
+            "target_task_id": row.target_task_id,
+            "communication_mapping": row.communication_mapping,
+            "source": "airfogsim_full_dual_graph_observer_v1._extract_dag_edges",
+        }
+        for row in snapshot.dag_edges
+    ]
+    observable_dag_rows = [
+        row for row in raw_dag_rows
+        if row["source_task_id"] in observable_task_id_set
+        and row["target_task_id"] in observable_task_id_set
+    ]
+    internal_future_dag_rows = [
+        row for row in raw_dag_rows
+        if row["source_task_id"] not in observable_task_id_set
+        or row["target_task_id"] not in observable_task_id_set
+    ]
     cpu_capacities, cpu_observations = _cpu_capacities(env)
     return {
         "capture_event_id": f"capture-{event_index:03d}",
@@ -212,9 +233,11 @@ def _capture(
         },
         "internal_metadata": {
             "future_task_schedule": internal_future,
+            "future_dag_edges": internal_future_dag_rows,
             "excluded_from_O_t_history_and_input_entity_index": True,
         },
         "channel_rows": [dict(row) for row in snapshot.channel_rows],
+        "dag_edges": observable_dag_rows,
         "node_cpu_capacity_per_s": cpu_capacities,
         "node_cpu_capacity_observation_rows": cpu_observations,
         "n_rb": int(env.channel_manager.n_RB),
