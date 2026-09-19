@@ -14,13 +14,17 @@ from pi_jwm.airfogsim_full_dual_graph_observer_v1 import observe_airfogsim_snaps
 from pi_jwm.full_dual_graph_collector_contract_v1 import SnapshotPhase
 from airfogsim.scheduler import TaskScheduler, CommunicationScheduler, ComputationScheduler, TrafficScheduler
 
-OUT = CODE / "artifacts" / "protocols" / "pi_jwm_raw_single_decision_step_real_airfogsim_v2_20260919"
+OUT = CODE / "artifacts" / "protocols" / "pi_jwm_raw_single_decision_step_real_airfogsim_v4_20260919"
 
 def sha256(path):
     h=hashlib.sha256()
     with path.open("rb") as f:
         for b in iter(lambda:f.read(1024*1024),b""): h.update(b)
     return h.hexdigest()
+
+def write_json(path, payload):
+    with path.open("w", encoding="utf-8", newline="\n") as stream:
+        json.dump(payload, stream, ensure_ascii=False, indent=2)
 
 def _plain(value):
     if hasattr(value,"item"): value=value.item()
@@ -94,9 +98,9 @@ def main():
         payload={"schema_version":"PIJWM-Step-2.1-Real-AirFogSim-v1","environment":{"conda_env":"airfogsim","airfogsim_source":"code/reference/AirFogSim","seed":0,"config_hash":hashlib.sha256(json.dumps(config,sort_keys=True,default=str).encode()).hexdigest(),"warmup_real_steps":warmup},"decision":decision,"action":{"trajectory_id":trajectory_id,"frame_index":frame,"route":{"task_id":task_id,"task_node_id":source,"route_kind":"offload","target_node_id":target,"route_node_ids":[target]},"comm":{"task_id":task_id,"rb_indices":[0]},"comp":{"callback_installed":True,"cpu_rows":list(recorder.cpu_rows)},"mobility":{"uav_id":uav_id,"azimuth_rad":mobility["angle"],"elevation_rad":mobility["phi"],"speed_mps":mobility["speed"],"vehicle_motion":"SUMO external"}},"execution":{"start_time_s":execution_start,"end_time_s":execution_end,"setter_calls":setters,"env_step_completed":True},"outcome":outcome,"next_decision":next_decision,"checks":checks,"scope":{"non_locked":True,"training":False,"gpu":False,"locked_test":False}}
         failed=[key for key,value in checks.items() if value is not True]
         if failed: raise RuntimeError(json.dumps({"failed":failed,"checks":checks},ensure_ascii=False))
-        OUT.mkdir(parents=True,exist_ok=False); (OUT/"real_single_step.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding="utf-8")
+        OUT.mkdir(parents=True,exist_ok=False); write_json(OUT/"real_single_step.json",payload)
         manifest={"artifact":"real_single_step.json","sha256":sha256(OUT/"real_single_step.json"),"passed":True,"all_checks":checks,"source_files":{str(p.relative_to(ROOT)).replace("\\","/"):sha256(p) for p in (Path(__file__), CODE/"src/pi_jwm/airfogsim_single_step_collector_v1.py", CODE/"reference/AirFogSim/airfogsim/manager/traffic_manager.py", CODE/"reference/AirFogSim/airfogsim/scheduler/task_sched.py", CODE/"reference/AirFogSim/airfogsim/scheduler/communication_sched.py", CODE/"reference/AirFogSim/airfogsim/scheduler/computation_sched.py", CODE/"reference/AirFogSim/airfogsim/scheduler/traffic_sched.py")}}
-        (OUT/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf-8")
+        write_json(OUT/"manifest.json",manifest)
         print(json.dumps({"output":str(OUT),"checks":checks},ensure_ascii=False,indent=2))
     finally:
         if env is not None: env.close()

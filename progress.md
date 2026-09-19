@@ -880,6 +880,14 @@
 结论：单决策步合同已冻结，四类 AirFogSim setter 的最小环境闭环通过。历史真实非 locked ledger 证明 Route/Comm/Comp 的 accepted env-step 记录，未证明 UAV mobility 真实采集。当前不进入 Step 3。
 # 2026-09-19 Step 2.1 真实 AirFogSim 验收
 
-- 真实非 locked 单轨迹的四类动作、真实 `env.step()`、Outcome 与 next Decision 已通过，artifact 为 `code/artifacts/protocols/pi_jwm_raw_single_decision_step_real_airfogsim_v2_20260919/`。
+- 真实非 locked 单轨迹的四类动作、真实 `env.step()`、Outcome 与 next Decision 已通过；当前 Git 可追溯重跑为 `code/artifacts/protocols/pi_jwm_raw_single_decision_step_real_airfogsim_v4_20260919/`。
 - 未训练、无 GPU、未访问 `locked_test`；Dataset/Tensor、双图、World Model、Loss、Planner 未进入。
 - 真实接口合同已修正为 vehicle heading degree、UAV heading rad，Mob action 仍为 azimuth_rad；Step 2 测试记录修正为 6 项。
+
+## 2026-09-19 Step 2.2 真实 AirFogSim 多步验收
+
+- 真实 6 步轨迹生成 7 个独立 Decision，frame `0..6`、time `2.4..3.0 s`；18 项 checks 全部通过。
+- Outcome 与下一循环 Decision 的 entity/task ID、lifecycle 和状态一致；Route/Comm/Comp 各自同时覆盖非空与显式 no-op，Mob 每步只覆盖 UAV。
+- Task_1 生命周期从 waiting_to_offload 进入 computing，再进入 waiting_to_return；车辆由 SUMO 推进。
+- 两个 UAV 首次 `0 -> 10 m/s` 时常规差分约 `+100`，AirFogSim acceleration 为 `-100`；只记录语义，不修改 simulator 或决定 Dataset。
+- Step 2.1 追加 v4 真实证据，准备与 Step 2.2 v2 JSON/manifest 一起纳入 Git。无训练、GPU 或 `locked_test`。

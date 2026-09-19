@@ -1,0 +1,4981 @@
+{
+  "schema_version": "PIJWM-Step-2.2-Real-AirFogSim-Multi-Step-v1",
+  "environment": {
+    "conda_env": "airfogsim",
+    "airfogsim_source": "code/reference/AirFogSim",
+    "seed": 0,
+    "config_hash": "5d193e58d4fa6de5b4239822b1a973dd286d61c223fe38e2c9e8f0a2277178ac",
+    "warmup_real_steps": 24,
+    "decision_steps": 6,
+    "slot_duration_s": 0.1,
+    "runtime_class": "run_p2_single_step_collector_preflight_v1._load_runtime.<locals>.ObservedAirFogSimEnv",
+    "runtime_mro": [
+      "run_p2_single_step_collector_preflight_v1._load_runtime.<locals>.ObservedAirFogSimEnv",
+      "airfogsim.airfogsim_env.AirFogSimEnv",
+      "builtins.object"
+    ]
+  },
+  "decisions": [
+    {
+      "capture_event_id": "capture-000",
+      "capture_method": "fresh_direct_real_environment_read",
+      "capture_phase": "loop_start_decision",
+      "trajectory_id": "step2.2-real-seed0",
+      "frame_index": 0,
+      "simulation_time_s": 2.4,
+      "entities": [
+        {
+          "entity_id": "vehicle_0",
+          "entity_type": "vehicle",
+          "position_m": [
+            587.6999999999999,
+            601.6,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 270.0,
+          "heading_unit": "degree",
+          "elevation_rad": null,
+          "vehicle_route_id": "gen_veh_route_0"
+        },
+        {
+          "entity_id": "UAV_0",
+          "entity_type": "uav",
+          "position_m": [
+            675.5374812200384,
+            606.363522352242,
+            142.05715808308452
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "UAV_1",
+          "entity_type": "uav",
+          "position_m": [
+            207.13340023437067,
+            409.0197770948868,
+            140.49341374504144
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_0",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_1",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_2",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_3",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "cloudServer_4",
+          "entity_type": "cloud",
+          "position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "Task_1",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 1.4000000000000001,
+          "task_size": 0.28065475894249814,
+          "task_cpu_work": 0.30443837804741736,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_10",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.3799890322391819,
+          "task_cpu_work": 0.205857042092501,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_11",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.29999826244820005,
+          "task_cpu_work": 0.22716899416962683,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_12",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.4000000000000017,
+          "task_size": 0.2823470782489564,
+          "task_cpu_work": 0.21591946476565393,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_13",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.5000000000000018,
+          "task_size": 0.49495498817728545,
+          "task_cpu_work": 0.4678164015124791,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_14",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.800000000000002,
+          "task_size": 0.31370731398666163,
+          "task_cpu_work": 0.44522940430878355,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_2",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 2.2000000000000006,
+          "task_size": 0.24804920394698154,
+          "task_cpu_work": 0.6189724537494019,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_3",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 3.900000000000002,
+          "task_size": 0.2658989312021961,
+          "task_cpu_work": 0.5337051899818408,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_4",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.30000000000000004,
+          "task_size": 0.33500398659608244,
+          "task_cpu_work": 0.538908268398115,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_5",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.7999999999999999,
+          "task_size": 0.5497396376587521,
+          "task_cpu_work": 0.6232043362355639,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_6",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.8999999999999999,
+          "task_size": 0.546265795038883,
+          "task_cpu_work": 0.6408676809274263,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_7",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.700000000000001,
+          "task_size": 0.6459616775078361,
+          "task_cpu_work": 0.41793246263281336,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_8",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.800000000000001,
+          "task_size": 0.2747241523289969,
+          "task_cpu_work": 0.6994235032839332,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_9",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.0000000000000013,
+          "task_size": 0.4035916486129998,
+          "task_cpu_work": 0.4845503693072966,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        }
+      ],
+      "n_rb": 50
+    },
+    {
+      "capture_event_id": "capture-002",
+      "capture_method": "fresh_direct_real_environment_read",
+      "capture_phase": "loop_start_decision",
+      "trajectory_id": "step2.2-real-seed0",
+      "frame_index": 1,
+      "simulation_time_s": 2.5,
+      "entities": [
+        {
+          "entity_id": "vehicle_0",
+          "entity_type": "vehicle",
+          "position_m": [
+            587.6744801958552,
+            601.6,
+            0.0
+          ],
+          "speed_mps": 0.2551980414481368,
+          "acceleration_mps2": 2.551980414481368,
+          "heading": 270.0,
+          "heading_unit": "degree",
+          "elevation_rad": null,
+          "vehicle_route_id": "gen_veh_route_0"
+        },
+        {
+          "entity_id": "UAV_0",
+          "entity_type": "uav",
+          "position_m": [
+            676.5362314804335,
+            606.4135015215127,
+            142.05715808308452
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": -100.0,
+          "heading": 0.05,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "UAV_1",
+          "entity_type": "uav",
+          "position_m": [
+            208.13215049476563,
+            409.0697562641575,
+            140.49341374504144
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": -100.0,
+          "heading": 0.05,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_0",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_1",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_2",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_3",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "cloudServer_4",
+          "entity_type": "cloud",
+          "position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "Task_1",
+          "task_node_id": "UAV_0",
+          "current_node_id": "vehicle_0",
+          "lifecycle": "computing",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 1.4000000000000001,
+          "task_size": 0.28065475894249814,
+          "task_cpu_work": 0.30443837804741736,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_10",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.3799890322391819,
+          "task_cpu_work": 0.205857042092501,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_11",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.29999826244820005,
+          "task_cpu_work": 0.22716899416962683,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_12",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.4000000000000017,
+          "task_size": 0.2823470782489564,
+          "task_cpu_work": 0.21591946476565393,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_13",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.5000000000000018,
+          "task_size": 0.49495498817728545,
+          "task_cpu_work": 0.4678164015124791,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_14",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.800000000000002,
+          "task_size": 0.31370731398666163,
+          "task_cpu_work": 0.44522940430878355,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_2",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 2.2000000000000006,
+          "task_size": 0.24804920394698154,
+          "task_cpu_work": 0.6189724537494019,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_3",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 3.900000000000002,
+          "task_size": 0.2658989312021961,
+          "task_cpu_work": 0.5337051899818408,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_4",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.30000000000000004,
+          "task_size": 0.33500398659608244,
+          "task_cpu_work": 0.538908268398115,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_5",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.7999999999999999,
+          "task_size": 0.5497396376587521,
+          "task_cpu_work": 0.6232043362355639,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_6",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.8999999999999999,
+          "task_size": 0.546265795038883,
+          "task_cpu_work": 0.6408676809274263,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_7",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.700000000000001,
+          "task_size": 0.6459616775078361,
+          "task_cpu_work": 0.41793246263281336,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_8",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.800000000000001,
+          "task_size": 0.2747241523289969,
+          "task_cpu_work": 0.6994235032839332,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_9",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.0000000000000013,
+          "task_size": 0.4035916486129998,
+          "task_cpu_work": 0.4845503693072966,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        }
+      ],
+      "n_rb": 50
+    },
+    {
+      "capture_event_id": "capture-004",
+      "capture_method": "fresh_direct_real_environment_read",
+      "capture_phase": "loop_start_decision",
+      "trajectory_id": "step2.2-real-seed0",
+      "frame_index": 2,
+      "simulation_time_s": 2.6,
+      "entities": [
+        {
+          "entity_id": "vehicle_0",
+          "entity_type": "vehicle",
+          "position_m": [
+            587.6232936861616,
+            601.6,
+            0.0
+          ],
+          "speed_mps": 0.5118650969358957,
+          "acceleration_mps2": 2.5666705548775886,
+          "heading": 270.0,
+          "heading_unit": "degree",
+          "elevation_rad": null,
+          "vehicle_route_id": "gen_veh_route_0"
+        },
+        {
+          "entity_id": "UAV_0",
+          "entity_type": "uav",
+          "position_m": [
+            677.5312356457115,
+            606.5133349381595,
+            142.05715808308452
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.1,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "UAV_1",
+          "entity_type": "uav",
+          "position_m": [
+            209.12715466004366,
+            409.16958968080434,
+            140.49341374504144
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.1,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_0",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_1",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_2",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_3",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "cloudServer_4",
+          "entity_type": "cloud",
+          "position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "Task_1",
+          "task_node_id": "UAV_0",
+          "current_node_id": "vehicle_0",
+          "lifecycle": "computing",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 1.4000000000000001,
+          "task_size": 0.28065475894249814,
+          "task_cpu_work": 0.30443837804741736,
+          "computed_cpu_work": 0.2,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_10",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.3799890322391819,
+          "task_cpu_work": 0.205857042092501,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_11",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.29999826244820005,
+          "task_cpu_work": 0.22716899416962683,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_12",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.4000000000000017,
+          "task_size": 0.2823470782489564,
+          "task_cpu_work": 0.21591946476565393,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_13",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.5000000000000018,
+          "task_size": 0.49495498817728545,
+          "task_cpu_work": 0.4678164015124791,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_14",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.800000000000002,
+          "task_size": 0.31370731398666163,
+          "task_cpu_work": 0.44522940430878355,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_2",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "offloading",
+          "route_node_ids": [
+            "vehicle_0"
+          ],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 2.2000000000000006,
+          "task_size": 0.24804920394698154,
+          "task_cpu_work": 0.6189724537494019,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_3",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 3.900000000000002,
+          "task_size": 0.2658989312021961,
+          "task_cpu_work": 0.5337051899818408,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_4",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.30000000000000004,
+          "task_size": 0.33500398659608244,
+          "task_cpu_work": 0.538908268398115,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_5",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.7999999999999999,
+          "task_size": 0.5497396376587521,
+          "task_cpu_work": 0.6232043362355639,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_6",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.8999999999999999,
+          "task_size": 0.546265795038883,
+          "task_cpu_work": 0.6408676809274263,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_7",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.700000000000001,
+          "task_size": 0.6459616775078361,
+          "task_cpu_work": 0.41793246263281336,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_8",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.800000000000001,
+          "task_size": 0.2747241523289969,
+          "task_cpu_work": 0.6994235032839332,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_9",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.0000000000000013,
+          "task_size": 0.4035916486129998,
+          "task_cpu_work": 0.4845503693072966,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        }
+      ],
+      "n_rb": 50
+    },
+    {
+      "capture_event_id": "capture-006",
+      "capture_method": "fresh_direct_real_environment_read",
+      "capture_phase": "loop_start_decision",
+      "trajectory_id": "step2.2-real-seed0",
+      "frame_index": 3,
+      "simulation_time_s": 2.7,
+      "entities": [
+        {
+          "entity_id": "vehicle_0",
+          "entity_type": "vehicle",
+          "position_m": [
+            587.5484045544,
+            601.6,
+            0.0
+          ],
+          "speed_mps": 0.7488913176149865,
+          "acceleration_mps2": 2.3702622067909083,
+          "heading": 270.0,
+          "heading_unit": "degree",
+          "elevation_rad": null,
+          "vehicle_route_id": "gen_veh_route_0"
+        },
+        {
+          "entity_id": "UAV_0",
+          "entity_type": "uav",
+          "position_m": [
+            678.5200067236475,
+            606.6627730706331,
+            142.05715808308452
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.15000000000000002,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "UAV_1",
+          "entity_type": "uav",
+          "position_m": [
+            210.1159257379797,
+            409.31902781327796,
+            140.49341374504144
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.15000000000000002,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_0",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_1",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_2",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_3",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "cloudServer_4",
+          "entity_type": "cloud",
+          "position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "Task_1",
+          "task_node_id": "UAV_0",
+          "current_node_id": "vehicle_0",
+          "lifecycle": "waiting_to_return",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 1.4000000000000001,
+          "task_size": 0.28065475894249814,
+          "task_cpu_work": 0.30443837804741736,
+          "computed_cpu_work": 0.30443837804741736,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_10",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.3799890322391819,
+          "task_cpu_work": 0.205857042092501,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_11",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.29999826244820005,
+          "task_cpu_work": 0.22716899416962683,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_12",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.4000000000000017,
+          "task_size": 0.2823470782489564,
+          "task_cpu_work": 0.21591946476565393,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_13",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.5000000000000018,
+          "task_size": 0.49495498817728545,
+          "task_cpu_work": 0.4678164015124791,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_14",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.800000000000002,
+          "task_size": 0.31370731398666163,
+          "task_cpu_work": 0.44522940430878355,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_2",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "offloading",
+          "route_node_ids": [
+            "vehicle_0"
+          ],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 2.2000000000000006,
+          "task_size": 0.24804920394698154,
+          "task_cpu_work": 0.6189724537494019,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_3",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 3.900000000000002,
+          "task_size": 0.2658989312021961,
+          "task_cpu_work": 0.5337051899818408,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_4",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "offloading",
+          "route_node_ids": [
+            "RSU_2"
+          ],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.30000000000000004,
+          "task_size": 0.33500398659608244,
+          "task_cpu_work": 0.538908268398115,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_5",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.7999999999999999,
+          "task_size": 0.5497396376587521,
+          "task_cpu_work": 0.6232043362355639,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_6",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.8999999999999999,
+          "task_size": 0.546265795038883,
+          "task_cpu_work": 0.6408676809274263,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_7",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.700000000000001,
+          "task_size": 0.6459616775078361,
+          "task_cpu_work": 0.41793246263281336,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_8",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.800000000000001,
+          "task_size": 0.2747241523289969,
+          "task_cpu_work": 0.6994235032839332,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_9",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.0000000000000013,
+          "task_size": 0.4035916486129998,
+          "task_cpu_work": 0.4845503693072966,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        }
+      ],
+      "n_rb": 50
+    },
+    {
+      "capture_event_id": "capture-008",
+      "capture_method": "fresh_direct_real_environment_read",
+      "capture_phase": "loop_start_decision",
+      "trajectory_id": "step2.2-real-seed0",
+      "frame_index": 4,
+      "simulation_time_s": 2.8,
+      "entities": [
+        {
+          "entity_id": "vehicle_0",
+          "entity_type": "vehicle",
+          "position_m": [
+            587.4494160631027,
+            601.6,
+            0.0
+          ],
+          "speed_mps": 0.9898849129731777,
+          "acceleration_mps2": 2.409935953581912,
+          "heading": 270.0,
+          "heading_unit": "degree",
+          "elevation_rad": null,
+          "vehicle_route_id": "gen_veh_route_0"
+        },
+        {
+          "entity_id": "UAV_0",
+          "entity_type": "uav",
+          "position_m": [
+            679.5000733014888,
+            606.8614424014281,
+            142.05715808308452
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.2,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "UAV_1",
+          "entity_type": "uav",
+          "position_m": [
+            211.09599231582092,
+            409.517697144073,
+            140.49341374504144
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.2,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_0",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_1",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_2",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_3",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "cloudServer_4",
+          "entity_type": "cloud",
+          "position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "Task_1",
+          "task_node_id": "UAV_0",
+          "current_node_id": "vehicle_0",
+          "lifecycle": "waiting_to_return",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 1.4000000000000001,
+          "task_size": 0.28065475894249814,
+          "task_cpu_work": 0.30443837804741736,
+          "computed_cpu_work": 0.30443837804741736,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_10",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.3799890322391819,
+          "task_cpu_work": 0.205857042092501,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_11",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.29999826244820005,
+          "task_cpu_work": 0.22716899416962683,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_12",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.4000000000000017,
+          "task_size": 0.2823470782489564,
+          "task_cpu_work": 0.21591946476565393,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_13",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.5000000000000018,
+          "task_size": 0.49495498817728545,
+          "task_cpu_work": 0.4678164015124791,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_14",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.800000000000002,
+          "task_size": 0.31370731398666163,
+          "task_cpu_work": 0.44522940430878355,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_2",
+          "task_node_id": "UAV_0",
+          "current_node_id": "vehicle_0",
+          "lifecycle": "computing",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 2.2000000000000006,
+          "task_size": 0.24804920394698154,
+          "task_cpu_work": 0.6189724537494019,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_3",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 3.900000000000002,
+          "task_size": 0.2658989312021961,
+          "task_cpu_work": 0.5337051899818408,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_4",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "offloading",
+          "route_node_ids": [
+            "RSU_2"
+          ],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.30000000000000004,
+          "task_size": 0.33500398659608244,
+          "task_cpu_work": 0.538908268398115,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_5",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.7999999999999999,
+          "task_size": 0.5497396376587521,
+          "task_cpu_work": 0.6232043362355639,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_6",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.8999999999999999,
+          "task_size": 0.546265795038883,
+          "task_cpu_work": 0.6408676809274263,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_7",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.700000000000001,
+          "task_size": 0.6459616775078361,
+          "task_cpu_work": 0.41793246263281336,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_8",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.800000000000001,
+          "task_size": 0.2747241523289969,
+          "task_cpu_work": 0.6994235032839332,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_9",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.0000000000000013,
+          "task_size": 0.4035916486129998,
+          "task_cpu_work": 0.4845503693072966,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        }
+      ],
+      "n_rb": 50
+    },
+    {
+      "capture_event_id": "capture-010",
+      "capture_method": "fresh_direct_real_environment_read",
+      "capture_phase": "loop_start_decision",
+      "trajectory_id": "step2.2-real-seed0",
+      "frame_index": 5,
+      "simulation_time_s": 2.9,
+      "entities": [
+        {
+          "entity_id": "vehicle_0",
+          "entity_type": "vehicle",
+          "position_m": [
+            587.3250474341692,
+            601.6,
+            0.0
+          ],
+          "speed_mps": 1.243686289335792,
+          "acceleration_mps2": 2.5380137636261435,
+          "heading": 270.0,
+          "heading_unit": "degree",
+          "elevation_rad": null,
+          "vehicle_route_id": "gen_veh_route_0"
+        },
+        {
+          "entity_id": "UAV_0",
+          "entity_type": "uav",
+          "position_m": [
+            680.4689857231995,
+            607.1088463606826,
+            142.05715808308452
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.25,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "UAV_1",
+          "entity_type": "uav",
+          "position_m": [
+            212.06490473753158,
+            409.76510110332754,
+            140.49341374504144
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.25,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_0",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_1",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_2",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_3",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "cloudServer_4",
+          "entity_type": "cloud",
+          "position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "Task_1",
+          "task_node_id": "UAV_0",
+          "current_node_id": "vehicle_0",
+          "lifecycle": "waiting_to_return",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 1.4000000000000001,
+          "task_size": 0.28065475894249814,
+          "task_cpu_work": 0.30443837804741736,
+          "computed_cpu_work": 0.30443837804741736,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_10",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.3799890322391819,
+          "task_cpu_work": 0.205857042092501,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_11",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.29999826244820005,
+          "task_cpu_work": 0.22716899416962683,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_12",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.4000000000000017,
+          "task_size": 0.2823470782489564,
+          "task_cpu_work": 0.21591946476565393,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_13",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.5000000000000018,
+          "task_size": 0.49495498817728545,
+          "task_cpu_work": 0.4678164015124791,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_14",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.800000000000002,
+          "task_size": 0.31370731398666163,
+          "task_cpu_work": 0.44522940430878355,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_2",
+          "task_node_id": "UAV_0",
+          "current_node_id": "vehicle_0",
+          "lifecycle": "computing",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 2.2000000000000006,
+          "task_size": 0.24804920394698154,
+          "task_cpu_work": 0.6189724537494019,
+          "computed_cpu_work": 0.2,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_3",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 3.900000000000002,
+          "task_size": 0.2658989312021961,
+          "task_cpu_work": 0.5337051899818408,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_4",
+          "task_node_id": "UAV_1",
+          "current_node_id": "RSU_2",
+          "lifecycle": "computing",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.30000000000000004,
+          "task_size": 0.33500398659608244,
+          "task_cpu_work": 0.538908268398115,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_5",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.7999999999999999,
+          "task_size": 0.5497396376587521,
+          "task_cpu_work": 0.6232043362355639,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_6",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.8999999999999999,
+          "task_size": 0.546265795038883,
+          "task_cpu_work": 0.6408676809274263,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_7",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.700000000000001,
+          "task_size": 0.6459616775078361,
+          "task_cpu_work": 0.41793246263281336,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_8",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.800000000000001,
+          "task_size": 0.2747241523289969,
+          "task_cpu_work": 0.6994235032839332,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_9",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.0000000000000013,
+          "task_size": 0.4035916486129998,
+          "task_cpu_work": 0.4845503693072966,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        }
+      ],
+      "n_rb": 50
+    },
+    {
+      "capture_event_id": "capture-012",
+      "capture_method": "fresh_direct_real_environment_read",
+      "capture_phase": "loop_start_terminal_decision",
+      "trajectory_id": "step2.2-real-seed0",
+      "frame_index": 6,
+      "simulation_time_s": 3.0,
+      "entities": [
+        {
+          "entity_id": "vehicle_0",
+          "entity_type": "vehicle",
+          "position_m": [
+            587.1752129917551,
+            601.6,
+            0.0
+          ],
+          "speed_mps": 1.4983444241412391,
+          "acceleration_mps2": 2.546581348054471,
+          "heading": 270.0,
+          "heading_unit": "degree",
+          "elevation_rad": null,
+          "vehicle_route_id": "gen_veh_route_0"
+        },
+        {
+          "entity_id": "UAV_0",
+          "entity_type": "uav",
+          "position_m": [
+            681.424322212325,
+            607.4043665673439,
+            142.05715808308452
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.3,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "UAV_1",
+          "entity_type": "uav",
+          "position_m": [
+            213.0202412266572,
+            410.0606213099889,
+            140.49341374504144
+          ],
+          "speed_mps": 10.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.3,
+          "heading_unit": "rad",
+          "elevation_rad": 0.0,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_0",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_1",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            100.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_2",
+          "entity_type": "rsu",
+          "position_m": [
+            100.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "RSU_3",
+          "entity_type": "rsu",
+          "position_m": [
+            700.0,
+            700.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        },
+        {
+          "entity_id": "cloudServer_4",
+          "entity_type": "cloud",
+          "position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "speed_mps": 0.0,
+          "acceleration_mps2": 0.0,
+          "heading": 0.0,
+          "heading_unit": null,
+          "elevation_rad": null,
+          "vehicle_route_id": null
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "Task_1",
+          "task_node_id": "UAV_0",
+          "current_node_id": "vehicle_0",
+          "lifecycle": "waiting_to_return",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 1.4000000000000001,
+          "task_size": 0.28065475894249814,
+          "task_cpu_work": 0.30443837804741736,
+          "computed_cpu_work": 0.30443837804741736,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_10",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.3799890322391819,
+          "task_cpu_work": 0.205857042092501,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_11",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.2000000000000015,
+          "task_size": 0.29999826244820005,
+          "task_cpu_work": 0.22716899416962683,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_12",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.4000000000000017,
+          "task_size": 0.2823470782489564,
+          "task_cpu_work": 0.21591946476565393,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_13",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.5000000000000018,
+          "task_size": 0.49495498817728545,
+          "task_cpu_work": 0.4678164015124791,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_14",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.800000000000002,
+          "task_size": 0.31370731398666163,
+          "task_cpu_work": 0.44522940430878355,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_2",
+          "task_node_id": "UAV_0",
+          "current_node_id": "vehicle_0",
+          "lifecycle": "computing",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 2.2000000000000006,
+          "task_size": 0.24804920394698154,
+          "task_cpu_work": 0.6189724537494019,
+          "computed_cpu_work": 0.4,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_3",
+          "task_node_id": "UAV_0",
+          "current_node_id": "UAV_0",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_0",
+          "arrival_time_s": 3.900000000000002,
+          "task_size": 0.2658989312021961,
+          "task_cpu_work": 0.5337051899818408,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_4",
+          "task_node_id": "UAV_1",
+          "current_node_id": "RSU_2",
+          "lifecycle": "waiting_to_return",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.30000000000000004,
+          "task_size": 0.33500398659608244,
+          "task_cpu_work": 0.538908268398115,
+          "computed_cpu_work": 0.538908268398115,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_5",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.7999999999999999,
+          "task_size": 0.5497396376587521,
+          "task_cpu_work": 0.6232043362355639,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_6",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 0.8999999999999999,
+          "task_size": 0.546265795038883,
+          "task_cpu_work": 0.6408676809274263,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_7",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.700000000000001,
+          "task_size": 0.6459616775078361,
+          "task_cpu_work": 0.41793246263281336,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_8",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "waiting_to_offload",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 2.800000000000001,
+          "task_size": 0.2747241523289969,
+          "task_cpu_work": 0.6994235032839332,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        },
+        {
+          "task_id": "Task_9",
+          "task_node_id": "UAV_1",
+          "current_node_id": "UAV_1",
+          "lifecycle": "to_generate",
+          "route_node_ids": [],
+          "return_destination_id": "UAV_1",
+          "arrival_time_s": 3.0000000000000013,
+          "task_size": 0.4035916486129998,
+          "task_cpu_work": 0.4845503693072966,
+          "computed_cpu_work": 0.0,
+          "transmitted_size": 0.0
+        }
+      ],
+      "n_rb": 50
+    }
+  ],
+  "steps": [
+    {
+      "frame_index": 0,
+      "decision_capture_event_id": "capture-000",
+      "action": {
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 0,
+        "decision_time_s": 2.4,
+        "route": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_1",
+              "task_node_id": "UAV_0",
+              "route_kind": "offload",
+              "target_node_id": "vehicle_0",
+              "route_node_ids": [
+                "vehicle_0"
+              ]
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "comm": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_1",
+              "rb_indices": [
+                0
+              ]
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "comp": {
+          "field_present": true,
+          "entries": [],
+          "empty": true,
+          "no_op_reason": "no_computing_task_at_decision"
+        },
+        "mobility": {
+          "field_present": true,
+          "entries": [
+            {
+              "uav_id": "UAV_0",
+              "azimuth_rad": 0.05,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            },
+            {
+              "uav_id": "UAV_1",
+              "azimuth_rad": 0.05,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "vehicle_motion": "SUMO external"
+      },
+      "execution": {
+        "start_time_s": 2.4,
+        "end_time_s": 2.5,
+        "setter_calls": [
+          {
+            "setter_kind": "offload",
+            "task_id": "Task_1",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "rb",
+            "task_id": "Task_1",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "cpu_callback",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_0",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_1",
+            "succeeded": true
+          }
+        ],
+        "comp_runtime": [
+          {
+            "runtime_task_ids": [
+              "Task_1"
+            ],
+            "returned_allocations": {}
+          }
+        ],
+        "env_step_completed": true
+      },
+      "outcome": {
+        "capture_event_id": "capture-001",
+        "capture_method": "fresh_direct_real_environment_read",
+        "capture_phase": "post_env_step_outcome",
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 0,
+        "simulation_time_s": 2.5,
+        "entities": [
+          {
+            "entity_id": "vehicle_0",
+            "entity_type": "vehicle",
+            "position_m": [
+              587.6744801958552,
+              601.6,
+              0.0
+            ],
+            "speed_mps": 0.2551980414481368,
+            "acceleration_mps2": 2.551980414481368,
+            "heading": 270.0,
+            "heading_unit": "degree",
+            "elevation_rad": null,
+            "vehicle_route_id": "gen_veh_route_0"
+          },
+          {
+            "entity_id": "UAV_0",
+            "entity_type": "uav",
+            "position_m": [
+              676.5362314804335,
+              606.4135015215127,
+              142.05715808308452
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": -100.0,
+            "heading": 0.05,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "UAV_1",
+            "entity_type": "uav",
+            "position_m": [
+              208.13215049476563,
+              409.0697562641575,
+              140.49341374504144
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": -100.0,
+            "heading": 0.05,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_0",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_1",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_2",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_3",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "cloudServer_4",
+            "entity_type": "cloud",
+            "position_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          }
+        ],
+        "tasks": [
+          {
+            "task_id": "Task_1",
+            "task_node_id": "UAV_0",
+            "current_node_id": "vehicle_0",
+            "lifecycle": "computing",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 1.4000000000000001,
+            "task_size": 0.28065475894249814,
+            "task_cpu_work": 0.30443837804741736,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_10",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.3799890322391819,
+            "task_cpu_work": 0.205857042092501,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_11",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.29999826244820005,
+            "task_cpu_work": 0.22716899416962683,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_12",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.4000000000000017,
+            "task_size": 0.2823470782489564,
+            "task_cpu_work": 0.21591946476565393,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_13",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.5000000000000018,
+            "task_size": 0.49495498817728545,
+            "task_cpu_work": 0.4678164015124791,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_14",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.800000000000002,
+            "task_size": 0.31370731398666163,
+            "task_cpu_work": 0.44522940430878355,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_2",
+            "task_node_id": "UAV_0",
+            "current_node_id": "UAV_0",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 2.2000000000000006,
+            "task_size": 0.24804920394698154,
+            "task_cpu_work": 0.6189724537494019,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_3",
+            "task_node_id": "UAV_0",
+            "current_node_id": "UAV_0",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 3.900000000000002,
+            "task_size": 0.2658989312021961,
+            "task_cpu_work": 0.5337051899818408,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_4",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.30000000000000004,
+            "task_size": 0.33500398659608244,
+            "task_cpu_work": 0.538908268398115,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_5",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.7999999999999999,
+            "task_size": 0.5497396376587521,
+            "task_cpu_work": 0.6232043362355639,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_6",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.8999999999999999,
+            "task_size": 0.546265795038883,
+            "task_cpu_work": 0.6408676809274263,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_7",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.700000000000001,
+            "task_size": 0.6459616775078361,
+            "task_cpu_work": 0.41793246263281336,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_8",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.800000000000001,
+            "task_size": 0.2747241523289969,
+            "task_cpu_work": 0.6994235032839332,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_9",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.0000000000000013,
+            "task_size": 0.4035916486129998,
+            "task_cpu_work": 0.4845503693072966,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          }
+        ],
+        "n_rb": 50
+      }
+    },
+    {
+      "frame_index": 1,
+      "decision_capture_event_id": "capture-002",
+      "action": {
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 1,
+        "decision_time_s": 2.5,
+        "route": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_2",
+              "task_node_id": "UAV_0",
+              "route_kind": "offload",
+              "target_node_id": "vehicle_0",
+              "route_node_ids": [
+                "vehicle_0"
+              ]
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "comm": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_2",
+              "rb_indices": [
+                0
+              ]
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "comp": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_1",
+              "node_id": "vehicle_0",
+              "allocated_cpu_per_s": 2.0
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "mobility": {
+          "field_present": true,
+          "entries": [
+            {
+              "uav_id": "UAV_0",
+              "azimuth_rad": 0.1,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            },
+            {
+              "uav_id": "UAV_1",
+              "azimuth_rad": 0.1,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "vehicle_motion": "SUMO external"
+      },
+      "execution": {
+        "start_time_s": 2.5,
+        "end_time_s": 2.6,
+        "setter_calls": [
+          {
+            "setter_kind": "offload",
+            "task_id": "Task_2",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "rb",
+            "task_id": "Task_2",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "cpu_callback",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_0",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_1",
+            "succeeded": true
+          }
+        ],
+        "comp_runtime": [
+          {
+            "runtime_task_ids": [
+              "Task_1"
+            ],
+            "returned_allocations": {
+              "Task_1": 2.0
+            }
+          }
+        ],
+        "env_step_completed": true
+      },
+      "outcome": {
+        "capture_event_id": "capture-003",
+        "capture_method": "fresh_direct_real_environment_read",
+        "capture_phase": "post_env_step_outcome",
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 1,
+        "simulation_time_s": 2.6,
+        "entities": [
+          {
+            "entity_id": "vehicle_0",
+            "entity_type": "vehicle",
+            "position_m": [
+              587.6232936861616,
+              601.6,
+              0.0
+            ],
+            "speed_mps": 0.5118650969358957,
+            "acceleration_mps2": 2.5666705548775886,
+            "heading": 270.0,
+            "heading_unit": "degree",
+            "elevation_rad": null,
+            "vehicle_route_id": "gen_veh_route_0"
+          },
+          {
+            "entity_id": "UAV_0",
+            "entity_type": "uav",
+            "position_m": [
+              677.5312356457115,
+              606.5133349381595,
+              142.05715808308452
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.1,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "UAV_1",
+            "entity_type": "uav",
+            "position_m": [
+              209.12715466004366,
+              409.16958968080434,
+              140.49341374504144
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.1,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_0",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_1",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_2",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_3",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "cloudServer_4",
+            "entity_type": "cloud",
+            "position_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          }
+        ],
+        "tasks": [
+          {
+            "task_id": "Task_1",
+            "task_node_id": "UAV_0",
+            "current_node_id": "vehicle_0",
+            "lifecycle": "computing",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 1.4000000000000001,
+            "task_size": 0.28065475894249814,
+            "task_cpu_work": 0.30443837804741736,
+            "computed_cpu_work": 0.2,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_10",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.3799890322391819,
+            "task_cpu_work": 0.205857042092501,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_11",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.29999826244820005,
+            "task_cpu_work": 0.22716899416962683,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_12",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.4000000000000017,
+            "task_size": 0.2823470782489564,
+            "task_cpu_work": 0.21591946476565393,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_13",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.5000000000000018,
+            "task_size": 0.49495498817728545,
+            "task_cpu_work": 0.4678164015124791,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_14",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.800000000000002,
+            "task_size": 0.31370731398666163,
+            "task_cpu_work": 0.44522940430878355,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_2",
+            "task_node_id": "UAV_0",
+            "current_node_id": "UAV_0",
+            "lifecycle": "offloading",
+            "route_node_ids": [
+              "vehicle_0"
+            ],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 2.2000000000000006,
+            "task_size": 0.24804920394698154,
+            "task_cpu_work": 0.6189724537494019,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_3",
+            "task_node_id": "UAV_0",
+            "current_node_id": "UAV_0",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 3.900000000000002,
+            "task_size": 0.2658989312021961,
+            "task_cpu_work": 0.5337051899818408,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_4",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.30000000000000004,
+            "task_size": 0.33500398659608244,
+            "task_cpu_work": 0.538908268398115,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_5",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.7999999999999999,
+            "task_size": 0.5497396376587521,
+            "task_cpu_work": 0.6232043362355639,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_6",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.8999999999999999,
+            "task_size": 0.546265795038883,
+            "task_cpu_work": 0.6408676809274263,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_7",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.700000000000001,
+            "task_size": 0.6459616775078361,
+            "task_cpu_work": 0.41793246263281336,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_8",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.800000000000001,
+            "task_size": 0.2747241523289969,
+            "task_cpu_work": 0.6994235032839332,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_9",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.0000000000000013,
+            "task_size": 0.4035916486129998,
+            "task_cpu_work": 0.4845503693072966,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          }
+        ],
+        "n_rb": 50
+      }
+    },
+    {
+      "frame_index": 2,
+      "decision_capture_event_id": "capture-004",
+      "action": {
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 2,
+        "decision_time_s": 2.6,
+        "route": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_4",
+              "task_node_id": "UAV_1",
+              "route_kind": "offload",
+              "target_node_id": "RSU_2",
+              "route_node_ids": [
+                "RSU_2"
+              ]
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "comm": {
+          "field_present": true,
+          "entries": [],
+          "empty": true,
+          "no_op_reason": "intentional_real_no_op_frame_for_empty_semantics"
+        },
+        "comp": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_1",
+              "node_id": "vehicle_0",
+              "allocated_cpu_per_s": 1.0443837804741734
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "mobility": {
+          "field_present": true,
+          "entries": [
+            {
+              "uav_id": "UAV_0",
+              "azimuth_rad": 0.15000000000000002,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            },
+            {
+              "uav_id": "UAV_1",
+              "azimuth_rad": 0.15000000000000002,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "vehicle_motion": "SUMO external"
+      },
+      "execution": {
+        "start_time_s": 2.6,
+        "end_time_s": 2.7,
+        "setter_calls": [
+          {
+            "setter_kind": "offload",
+            "task_id": "Task_4",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "cpu_callback",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_0",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_1",
+            "succeeded": true
+          }
+        ],
+        "comp_runtime": [
+          {
+            "runtime_task_ids": [
+              "Task_1"
+            ],
+            "returned_allocations": {
+              "Task_1": 1.0443837804741734
+            }
+          }
+        ],
+        "env_step_completed": true
+      },
+      "outcome": {
+        "capture_event_id": "capture-005",
+        "capture_method": "fresh_direct_real_environment_read",
+        "capture_phase": "post_env_step_outcome",
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 2,
+        "simulation_time_s": 2.7,
+        "entities": [
+          {
+            "entity_id": "vehicle_0",
+            "entity_type": "vehicle",
+            "position_m": [
+              587.5484045544,
+              601.6,
+              0.0
+            ],
+            "speed_mps": 0.7488913176149865,
+            "acceleration_mps2": 2.3702622067909083,
+            "heading": 270.0,
+            "heading_unit": "degree",
+            "elevation_rad": null,
+            "vehicle_route_id": "gen_veh_route_0"
+          },
+          {
+            "entity_id": "UAV_0",
+            "entity_type": "uav",
+            "position_m": [
+              678.5200067236475,
+              606.6627730706331,
+              142.05715808308452
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.15000000000000002,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "UAV_1",
+            "entity_type": "uav",
+            "position_m": [
+              210.1159257379797,
+              409.31902781327796,
+              140.49341374504144
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.15000000000000002,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_0",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_1",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_2",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_3",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "cloudServer_4",
+            "entity_type": "cloud",
+            "position_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          }
+        ],
+        "tasks": [
+          {
+            "task_id": "Task_1",
+            "task_node_id": "UAV_0",
+            "current_node_id": "vehicle_0",
+            "lifecycle": "waiting_to_return",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 1.4000000000000001,
+            "task_size": 0.28065475894249814,
+            "task_cpu_work": 0.30443837804741736,
+            "computed_cpu_work": 0.30443837804741736,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_10",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.3799890322391819,
+            "task_cpu_work": 0.205857042092501,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_11",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.29999826244820005,
+            "task_cpu_work": 0.22716899416962683,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_12",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.4000000000000017,
+            "task_size": 0.2823470782489564,
+            "task_cpu_work": 0.21591946476565393,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_13",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.5000000000000018,
+            "task_size": 0.49495498817728545,
+            "task_cpu_work": 0.4678164015124791,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_14",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.800000000000002,
+            "task_size": 0.31370731398666163,
+            "task_cpu_work": 0.44522940430878355,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_2",
+            "task_node_id": "UAV_0",
+            "current_node_id": "UAV_0",
+            "lifecycle": "offloading",
+            "route_node_ids": [
+              "vehicle_0"
+            ],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 2.2000000000000006,
+            "task_size": 0.24804920394698154,
+            "task_cpu_work": 0.6189724537494019,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_3",
+            "task_node_id": "UAV_0",
+            "current_node_id": "UAV_0",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 3.900000000000002,
+            "task_size": 0.2658989312021961,
+            "task_cpu_work": 0.5337051899818408,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_4",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "offloading",
+            "route_node_ids": [
+              "RSU_2"
+            ],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.30000000000000004,
+            "task_size": 0.33500398659608244,
+            "task_cpu_work": 0.538908268398115,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_5",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.7999999999999999,
+            "task_size": 0.5497396376587521,
+            "task_cpu_work": 0.6232043362355639,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_6",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.8999999999999999,
+            "task_size": 0.546265795038883,
+            "task_cpu_work": 0.6408676809274263,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_7",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.700000000000001,
+            "task_size": 0.6459616775078361,
+            "task_cpu_work": 0.41793246263281336,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_8",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.800000000000001,
+            "task_size": 0.2747241523289969,
+            "task_cpu_work": 0.6994235032839332,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_9",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.0000000000000013,
+            "task_size": 0.4035916486129998,
+            "task_cpu_work": 0.4845503693072966,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          }
+        ],
+        "n_rb": 50
+      }
+    },
+    {
+      "frame_index": 3,
+      "decision_capture_event_id": "capture-006",
+      "action": {
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 3,
+        "decision_time_s": 2.7,
+        "route": {
+          "field_present": true,
+          "entries": [],
+          "empty": true,
+          "no_op_reason": "no_ready_task_at_decision"
+        },
+        "comm": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_2",
+              "rb_indices": [
+                0
+              ]
+            },
+            {
+              "task_id": "Task_4",
+              "rb_indices": [
+                1
+              ]
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "comp": {
+          "field_present": true,
+          "entries": [],
+          "empty": true,
+          "no_op_reason": "no_computing_task_at_decision"
+        },
+        "mobility": {
+          "field_present": true,
+          "entries": [
+            {
+              "uav_id": "UAV_0",
+              "azimuth_rad": 0.2,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            },
+            {
+              "uav_id": "UAV_1",
+              "azimuth_rad": 0.2,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "vehicle_motion": "SUMO external"
+      },
+      "execution": {
+        "start_time_s": 2.7,
+        "end_time_s": 2.8,
+        "setter_calls": [
+          {
+            "setter_kind": "rb",
+            "task_id": "Task_2",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "rb",
+            "task_id": "Task_4",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "cpu_callback",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_0",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_1",
+            "succeeded": true
+          }
+        ],
+        "comp_runtime": [
+          {
+            "runtime_task_ids": [
+              "Task_2"
+            ],
+            "returned_allocations": {}
+          }
+        ],
+        "env_step_completed": true
+      },
+      "outcome": {
+        "capture_event_id": "capture-007",
+        "capture_method": "fresh_direct_real_environment_read",
+        "capture_phase": "post_env_step_outcome",
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 3,
+        "simulation_time_s": 2.8,
+        "entities": [
+          {
+            "entity_id": "vehicle_0",
+            "entity_type": "vehicle",
+            "position_m": [
+              587.4494160631027,
+              601.6,
+              0.0
+            ],
+            "speed_mps": 0.9898849129731777,
+            "acceleration_mps2": 2.409935953581912,
+            "heading": 270.0,
+            "heading_unit": "degree",
+            "elevation_rad": null,
+            "vehicle_route_id": "gen_veh_route_0"
+          },
+          {
+            "entity_id": "UAV_0",
+            "entity_type": "uav",
+            "position_m": [
+              679.5000733014888,
+              606.8614424014281,
+              142.05715808308452
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.2,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "UAV_1",
+            "entity_type": "uav",
+            "position_m": [
+              211.09599231582092,
+              409.517697144073,
+              140.49341374504144
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.2,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_0",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_1",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_2",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_3",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "cloudServer_4",
+            "entity_type": "cloud",
+            "position_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          }
+        ],
+        "tasks": [
+          {
+            "task_id": "Task_1",
+            "task_node_id": "UAV_0",
+            "current_node_id": "vehicle_0",
+            "lifecycle": "waiting_to_return",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 1.4000000000000001,
+            "task_size": 0.28065475894249814,
+            "task_cpu_work": 0.30443837804741736,
+            "computed_cpu_work": 0.30443837804741736,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_10",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.3799890322391819,
+            "task_cpu_work": 0.205857042092501,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_11",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.29999826244820005,
+            "task_cpu_work": 0.22716899416962683,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_12",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.4000000000000017,
+            "task_size": 0.2823470782489564,
+            "task_cpu_work": 0.21591946476565393,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_13",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.5000000000000018,
+            "task_size": 0.49495498817728545,
+            "task_cpu_work": 0.4678164015124791,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_14",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.800000000000002,
+            "task_size": 0.31370731398666163,
+            "task_cpu_work": 0.44522940430878355,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_2",
+            "task_node_id": "UAV_0",
+            "current_node_id": "vehicle_0",
+            "lifecycle": "computing",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 2.2000000000000006,
+            "task_size": 0.24804920394698154,
+            "task_cpu_work": 0.6189724537494019,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_3",
+            "task_node_id": "UAV_0",
+            "current_node_id": "UAV_0",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 3.900000000000002,
+            "task_size": 0.2658989312021961,
+            "task_cpu_work": 0.5337051899818408,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_4",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "offloading",
+            "route_node_ids": [
+              "RSU_2"
+            ],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.30000000000000004,
+            "task_size": 0.33500398659608244,
+            "task_cpu_work": 0.538908268398115,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_5",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.7999999999999999,
+            "task_size": 0.5497396376587521,
+            "task_cpu_work": 0.6232043362355639,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_6",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.8999999999999999,
+            "task_size": 0.546265795038883,
+            "task_cpu_work": 0.6408676809274263,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_7",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.700000000000001,
+            "task_size": 0.6459616775078361,
+            "task_cpu_work": 0.41793246263281336,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_8",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.800000000000001,
+            "task_size": 0.2747241523289969,
+            "task_cpu_work": 0.6994235032839332,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_9",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.0000000000000013,
+            "task_size": 0.4035916486129998,
+            "task_cpu_work": 0.4845503693072966,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          }
+        ],
+        "n_rb": 50
+      }
+    },
+    {
+      "frame_index": 4,
+      "decision_capture_event_id": "capture-008",
+      "action": {
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 4,
+        "decision_time_s": 2.8,
+        "route": {
+          "field_present": true,
+          "entries": [],
+          "empty": true,
+          "no_op_reason": "no_ready_task_at_decision"
+        },
+        "comm": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_4",
+              "rb_indices": [
+                0
+              ]
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "comp": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_2",
+              "node_id": "vehicle_0",
+              "allocated_cpu_per_s": 2.0
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "mobility": {
+          "field_present": true,
+          "entries": [
+            {
+              "uav_id": "UAV_0",
+              "azimuth_rad": 0.25,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            },
+            {
+              "uav_id": "UAV_1",
+              "azimuth_rad": 0.25,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "vehicle_motion": "SUMO external"
+      },
+      "execution": {
+        "start_time_s": 2.8,
+        "end_time_s": 2.9,
+        "setter_calls": [
+          {
+            "setter_kind": "rb",
+            "task_id": "Task_4",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "cpu_callback",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_0",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_1",
+            "succeeded": true
+          }
+        ],
+        "comp_runtime": [
+          {
+            "runtime_task_ids": [
+              "Task_2",
+              "Task_4"
+            ],
+            "returned_allocations": {
+              "Task_2": 2.0
+            }
+          }
+        ],
+        "env_step_completed": true
+      },
+      "outcome": {
+        "capture_event_id": "capture-009",
+        "capture_method": "fresh_direct_real_environment_read",
+        "capture_phase": "post_env_step_outcome",
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 4,
+        "simulation_time_s": 2.9,
+        "entities": [
+          {
+            "entity_id": "vehicle_0",
+            "entity_type": "vehicle",
+            "position_m": [
+              587.3250474341692,
+              601.6,
+              0.0
+            ],
+            "speed_mps": 1.243686289335792,
+            "acceleration_mps2": 2.5380137636261435,
+            "heading": 270.0,
+            "heading_unit": "degree",
+            "elevation_rad": null,
+            "vehicle_route_id": "gen_veh_route_0"
+          },
+          {
+            "entity_id": "UAV_0",
+            "entity_type": "uav",
+            "position_m": [
+              680.4689857231995,
+              607.1088463606826,
+              142.05715808308452
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.25,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "UAV_1",
+            "entity_type": "uav",
+            "position_m": [
+              212.06490473753158,
+              409.76510110332754,
+              140.49341374504144
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.25,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_0",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_1",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_2",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_3",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "cloudServer_4",
+            "entity_type": "cloud",
+            "position_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          }
+        ],
+        "tasks": [
+          {
+            "task_id": "Task_1",
+            "task_node_id": "UAV_0",
+            "current_node_id": "vehicle_0",
+            "lifecycle": "waiting_to_return",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 1.4000000000000001,
+            "task_size": 0.28065475894249814,
+            "task_cpu_work": 0.30443837804741736,
+            "computed_cpu_work": 0.30443837804741736,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_10",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.3799890322391819,
+            "task_cpu_work": 0.205857042092501,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_11",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.29999826244820005,
+            "task_cpu_work": 0.22716899416962683,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_12",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.4000000000000017,
+            "task_size": 0.2823470782489564,
+            "task_cpu_work": 0.21591946476565393,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_13",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.5000000000000018,
+            "task_size": 0.49495498817728545,
+            "task_cpu_work": 0.4678164015124791,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_14",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.800000000000002,
+            "task_size": 0.31370731398666163,
+            "task_cpu_work": 0.44522940430878355,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_2",
+            "task_node_id": "UAV_0",
+            "current_node_id": "vehicle_0",
+            "lifecycle": "computing",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 2.2000000000000006,
+            "task_size": 0.24804920394698154,
+            "task_cpu_work": 0.6189724537494019,
+            "computed_cpu_work": 0.2,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_3",
+            "task_node_id": "UAV_0",
+            "current_node_id": "UAV_0",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 3.900000000000002,
+            "task_size": 0.2658989312021961,
+            "task_cpu_work": 0.5337051899818408,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_4",
+            "task_node_id": "UAV_1",
+            "current_node_id": "RSU_2",
+            "lifecycle": "computing",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.30000000000000004,
+            "task_size": 0.33500398659608244,
+            "task_cpu_work": 0.538908268398115,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_5",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.7999999999999999,
+            "task_size": 0.5497396376587521,
+            "task_cpu_work": 0.6232043362355639,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_6",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.8999999999999999,
+            "task_size": 0.546265795038883,
+            "task_cpu_work": 0.6408676809274263,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_7",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.700000000000001,
+            "task_size": 0.6459616775078361,
+            "task_cpu_work": 0.41793246263281336,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_8",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.800000000000001,
+            "task_size": 0.2747241523289969,
+            "task_cpu_work": 0.6994235032839332,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_9",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.0000000000000013,
+            "task_size": 0.4035916486129998,
+            "task_cpu_work": 0.4845503693072966,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          }
+        ],
+        "n_rb": 50
+      }
+    },
+    {
+      "frame_index": 5,
+      "decision_capture_event_id": "capture-010",
+      "action": {
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 5,
+        "decision_time_s": 2.9,
+        "route": {
+          "field_present": true,
+          "entries": [],
+          "empty": true,
+          "no_op_reason": "no_ready_task_at_decision"
+        },
+        "comm": {
+          "field_present": true,
+          "entries": [],
+          "empty": true,
+          "no_op_reason": "no_offloading_task_at_decision"
+        },
+        "comp": {
+          "field_present": true,
+          "entries": [
+            {
+              "task_id": "Task_2",
+              "node_id": "vehicle_0",
+              "allocated_cpu_per_s": 2.0
+            },
+            {
+              "task_id": "Task_4",
+              "node_id": "RSU_2",
+              "allocated_cpu_per_s": 5.38908268398115
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "mobility": {
+          "field_present": true,
+          "entries": [
+            {
+              "uav_id": "UAV_0",
+              "azimuth_rad": 0.3,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            },
+            {
+              "uav_id": "UAV_1",
+              "azimuth_rad": 0.3,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0
+            }
+          ],
+          "empty": false,
+          "no_op_reason": null
+        },
+        "vehicle_motion": "SUMO external"
+      },
+      "execution": {
+        "start_time_s": 2.9,
+        "end_time_s": 3.0,
+        "setter_calls": [
+          {
+            "setter_kind": "cpu_callback",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_0",
+            "succeeded": true
+          },
+          {
+            "setter_kind": "uav_mobility",
+            "uav_id": "UAV_1",
+            "succeeded": true
+          }
+        ],
+        "comp_runtime": [
+          {
+            "runtime_task_ids": [
+              "Task_2",
+              "Task_4"
+            ],
+            "returned_allocations": {
+              "Task_4": 5.38908268398115,
+              "Task_2": 2.0
+            }
+          }
+        ],
+        "env_step_completed": true
+      },
+      "outcome": {
+        "capture_event_id": "capture-011",
+        "capture_method": "fresh_direct_real_environment_read",
+        "capture_phase": "post_env_step_outcome",
+        "trajectory_id": "step2.2-real-seed0",
+        "frame_index": 5,
+        "simulation_time_s": 3.0,
+        "entities": [
+          {
+            "entity_id": "vehicle_0",
+            "entity_type": "vehicle",
+            "position_m": [
+              587.1752129917551,
+              601.6,
+              0.0
+            ],
+            "speed_mps": 1.4983444241412391,
+            "acceleration_mps2": 2.546581348054471,
+            "heading": 270.0,
+            "heading_unit": "degree",
+            "elevation_rad": null,
+            "vehicle_route_id": "gen_veh_route_0"
+          },
+          {
+            "entity_id": "UAV_0",
+            "entity_type": "uav",
+            "position_m": [
+              681.424322212325,
+              607.4043665673439,
+              142.05715808308452
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.3,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "UAV_1",
+            "entity_type": "uav",
+            "position_m": [
+              213.0202412266572,
+              410.0606213099889,
+              140.49341374504144
+            ],
+            "speed_mps": 10.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.3,
+            "heading_unit": "rad",
+            "elevation_rad": 0.0,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_0",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_1",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              100.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_2",
+            "entity_type": "rsu",
+            "position_m": [
+              100.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "RSU_3",
+            "entity_type": "rsu",
+            "position_m": [
+              700.0,
+              700.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          },
+          {
+            "entity_id": "cloudServer_4",
+            "entity_type": "cloud",
+            "position_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "heading": 0.0,
+            "heading_unit": null,
+            "elevation_rad": null,
+            "vehicle_route_id": null
+          }
+        ],
+        "tasks": [
+          {
+            "task_id": "Task_1",
+            "task_node_id": "UAV_0",
+            "current_node_id": "vehicle_0",
+            "lifecycle": "waiting_to_return",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 1.4000000000000001,
+            "task_size": 0.28065475894249814,
+            "task_cpu_work": 0.30443837804741736,
+            "computed_cpu_work": 0.30443837804741736,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_10",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.3799890322391819,
+            "task_cpu_work": 0.205857042092501,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_11",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.2000000000000015,
+            "task_size": 0.29999826244820005,
+            "task_cpu_work": 0.22716899416962683,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_12",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.4000000000000017,
+            "task_size": 0.2823470782489564,
+            "task_cpu_work": 0.21591946476565393,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_13",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.5000000000000018,
+            "task_size": 0.49495498817728545,
+            "task_cpu_work": 0.4678164015124791,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_14",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.800000000000002,
+            "task_size": 0.31370731398666163,
+            "task_cpu_work": 0.44522940430878355,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_2",
+            "task_node_id": "UAV_0",
+            "current_node_id": "vehicle_0",
+            "lifecycle": "computing",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 2.2000000000000006,
+            "task_size": 0.24804920394698154,
+            "task_cpu_work": 0.6189724537494019,
+            "computed_cpu_work": 0.4,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_3",
+            "task_node_id": "UAV_0",
+            "current_node_id": "UAV_0",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_0",
+            "arrival_time_s": 3.900000000000002,
+            "task_size": 0.2658989312021961,
+            "task_cpu_work": 0.5337051899818408,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_4",
+            "task_node_id": "UAV_1",
+            "current_node_id": "RSU_2",
+            "lifecycle": "waiting_to_return",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.30000000000000004,
+            "task_size": 0.33500398659608244,
+            "task_cpu_work": 0.538908268398115,
+            "computed_cpu_work": 0.538908268398115,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_5",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.7999999999999999,
+            "task_size": 0.5497396376587521,
+            "task_cpu_work": 0.6232043362355639,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_6",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 0.8999999999999999,
+            "task_size": 0.546265795038883,
+            "task_cpu_work": 0.6408676809274263,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_7",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.700000000000001,
+            "task_size": 0.6459616775078361,
+            "task_cpu_work": 0.41793246263281336,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_8",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "waiting_to_offload",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 2.800000000000001,
+            "task_size": 0.2747241523289969,
+            "task_cpu_work": 0.6994235032839332,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          },
+          {
+            "task_id": "Task_9",
+            "task_node_id": "UAV_1",
+            "current_node_id": "UAV_1",
+            "lifecycle": "to_generate",
+            "route_node_ids": [],
+            "return_destination_id": "UAV_1",
+            "arrival_time_s": 3.0000000000000013,
+            "task_size": 0.4035916486129998,
+            "task_cpu_work": 0.4845503693072966,
+            "computed_cpu_work": 0.0,
+            "transmitted_size": 0.0
+          }
+        ],
+        "n_rb": 50
+      }
+    }
+  ],
+  "acceleration_comparison": {
+    "formula": "(speed_t-speed_t_minus_1)/delta_t",
+    "interpretation_boundary": "observational only; simulator unchanged; Dataset field choice not decided",
+    "rows": [
+      {
+        "from_frame": 0,
+        "to_frame": 1,
+        "entity_id": "UAV_0",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 0.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 99.99999999999991,
+        "airfogsim_reported_mps2": -100.0,
+        "relation": "matches_negative_difference"
+      },
+      {
+        "from_frame": 0,
+        "to_frame": 1,
+        "entity_id": "UAV_1",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 0.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 99.99999999999991,
+        "airfogsim_reported_mps2": -100.0,
+        "relation": "matches_negative_difference"
+      },
+      {
+        "from_frame": 0,
+        "to_frame": 1,
+        "entity_id": "vehicle_0",
+        "entity_type": "vehicle",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 0.0,
+        "speed_current_mps": 0.2551980414481368,
+        "finite_difference_mps2": 2.5519804144813656,
+        "airfogsim_reported_mps2": 2.551980414481368,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 1,
+        "to_frame": 2,
+        "entity_id": "UAV_0",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 1,
+        "to_frame": 2,
+        "entity_id": "UAV_1",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 1,
+        "to_frame": 2,
+        "entity_id": "vehicle_0",
+        "entity_type": "vehicle",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 0.2551980414481368,
+        "speed_current_mps": 0.5118650969358957,
+        "finite_difference_mps2": 2.5666705548775863,
+        "airfogsim_reported_mps2": 2.5666705548775886,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 2,
+        "to_frame": 3,
+        "entity_id": "UAV_0",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 2,
+        "to_frame": 3,
+        "entity_id": "UAV_1",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 2,
+        "to_frame": 3,
+        "entity_id": "vehicle_0",
+        "entity_type": "vehicle",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 0.5118650969358957,
+        "speed_current_mps": 0.7488913176149865,
+        "finite_difference_mps2": 2.3702622067909065,
+        "airfogsim_reported_mps2": 2.3702622067909083,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 3,
+        "to_frame": 4,
+        "entity_id": "UAV_0",
+        "entity_type": "uav",
+        "delta_t_s": 0.09999999999999964,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 3,
+        "to_frame": 4,
+        "entity_id": "UAV_1",
+        "entity_type": "uav",
+        "delta_t_s": 0.09999999999999964,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 3,
+        "to_frame": 4,
+        "entity_id": "vehicle_0",
+        "entity_type": "vehicle",
+        "delta_t_s": 0.09999999999999964,
+        "speed_previous_mps": 0.7488913176149865,
+        "speed_current_mps": 0.9898849129731777,
+        "finite_difference_mps2": 2.4099359535819205,
+        "airfogsim_reported_mps2": 2.409935953581912,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 4,
+        "to_frame": 5,
+        "entity_id": "UAV_0",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 4,
+        "to_frame": 5,
+        "entity_id": "UAV_1",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 4,
+        "to_frame": 5,
+        "entity_id": "vehicle_0",
+        "entity_type": "vehicle",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 0.9898849129731777,
+        "speed_current_mps": 1.243686289335792,
+        "finite_difference_mps2": 2.5380137636261413,
+        "airfogsim_reported_mps2": 2.5380137636261435,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 5,
+        "to_frame": 6,
+        "entity_id": "UAV_0",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 5,
+        "to_frame": 6,
+        "entity_id": "UAV_1",
+        "entity_type": "uav",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 10.0,
+        "speed_current_mps": 10.0,
+        "finite_difference_mps2": 0.0,
+        "airfogsim_reported_mps2": 0.0,
+        "relation": "matches_forward_difference"
+      },
+      {
+        "from_frame": 5,
+        "to_frame": 6,
+        "entity_id": "vehicle_0",
+        "entity_type": "vehicle",
+        "delta_t_s": 0.10000000000000009,
+        "speed_previous_mps": 1.243686289335792,
+        "speed_current_mps": 1.4983444241412391,
+        "finite_difference_mps2": 2.5465813480544686,
+        "airfogsim_reported_mps2": 2.546581348054471,
+        "relation": "matches_forward_difference"
+      }
+    ]
+  },
+  "checks": {
+    "real_airfogsim_environment": true,
+    "decision_count_is_steps_plus_one": true,
+    "outcome_count_is_step_count": true,
+    "next_decisions_independently_recaptured": true,
+    "trajectory_id_continuous": true,
+    "frame_continuous": true,
+    "simulation_time_continuous": true,
+    "outcome_next_decision_entity_ids_align": true,
+    "outcome_next_decision_task_ids_align": true,
+    "outcome_next_decision_lifecycle_align": true,
+    "four_action_fields_present_each_step": true,
+    "empty_action_is_explicit_no_op_not_missing": true,
+    "route_comm_comp_each_have_real_and_empty_frames": true,
+    "mobility_uav_only_and_complete": true,
+    "vehicle_motion_from_sumo_observed": true,
+    "acceleration_comparison_recorded": true,
+    "uav_negative_difference_semantics_observed": true,
+    "scope_non_locked_no_training_no_gpu": true
+  },
+  "scope": {
+    "non_locked": true,
+    "training": false,
+    "gpu": false,
+    "locked_test": false
+  }
+}

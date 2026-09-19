@@ -2,9 +2,9 @@
 
 > 2026-09-18 Step 1 结论：下列 v5 数据流是旧协议下可追溯资产，尚未满足新 `00–06` 的 Agent/Communication/Task-Agent 关系和 Route/Comm/Comp/UAV 四类动作合同。稳定 ID/index、mask、split 和 train-only normalization 原则可复用；新 schema 尚未冻结。
 
-## Step 2.1 real raw flow
+## Step 2.2 real raw flow
 
-One non-locked AirFogSim trajectory verified `Decision_t -> Route/Comm/Comp/UAV Mobility -> env.step() -> Outcome_t -> Decision_{t+1}`. Vehicle motion is advanced by SUMO; UAV mobility is the planner action. Entity observation `heading` is vehicle degree from SUMO and UAV rad from AirFogSim; UAV action uses `azimuth_rad`. Evidence: `code/artifacts/protocols/pi_jwm_raw_single_decision_step_real_airfogsim_v2_20260919/`.
+One non-locked AirFogSim trajectory verified six repeated `Decision_t -> Route/Comm/Comp/UAV Mobility -> env.step() -> Outcome_t` transitions. Every next Decision is independently recollected at the next loop start. Route/Comm/Comp distinguish explicit empty/no-op from a missing field. Vehicle motion is advanced by SUMO; UAV mobility is the planner action. Evidence: `code/artifacts/protocols/pi_jwm_raw_multi_decision_step_real_airfogsim_v2_20260919/`.
 
 ## 总流程
 

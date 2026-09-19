@@ -43,6 +43,8 @@ Outcome 字段、同一 slot 的执行结果、未来信息不得进入 `source_
 
 Execution 至少记录 setter kind、subject ID、是否成功、是否调用并完成 `env.step`，以及起止时间。Outcome 至少记录 task 的 delivered data、served CPU work、执行后实体/任务快照。执行结束时间和 Outcome 时间必须等于 `decision_time_s + slot_duration_s`；Outcome 快照必须逐字段等于下一决策快照，下一决策的 `frame_index=frame_index+1`。
 
+多决策步轨迹中，`Decision_{t+1}` 必须在下一轮循环重新调用真实 collector，不能复制 `Outcome_t` 对象。四类 action 字段每步都必须存在；该步没有 Route、Comm 或 Comp 时使用空 `entries` 和明确 `no_op_reason`，不能省略字段。AirFogSim acceleration 与速度差分的关系属于已记录的 simulator 语义；Dataset 最终选取尚未决定。
+
 ## 5. 证据边界
 
 机器可读合同和最小闭环位于 `code/artifacts/protocols/pi_jwm_raw_single_decision_step_contract_v1_20260918/`。该闭环加载仓库真实 AirFogSim scheduler 源码，在最小环境中实际调用四类 setter 并完成一步。它不是完整 AirFogSim 场景验收。

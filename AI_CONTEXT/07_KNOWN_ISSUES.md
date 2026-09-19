@@ -2,11 +2,11 @@
 
 Source of truth：本文件是入口；具体事实必须回到列出的代码、配置、测试或 artifact。
 
-## Step 2.1 observations
+## Step 2.2 observations
 
 - AirFogSim reports vehicle `angle` in degrees and UAV `angle`/`phi` in radians; the contract distinguishes observation `heading` from UAV action `azimuth_rad`.
-- The simulator currently reports `-100.0` acceleration when UAV speed changes from 0 to 10 m/s over 0.1 s. This is recorded as an implementation observation and remains uncorrected.
-- Only one real non-locked decision step is accepted; cross-step feedback and all model/data/planner layers remain unverified.
+- Across the real six-step trace, the simulator reports `-100.0 m/s^2` when each UAV speed changes from 0 to 10 m/s over 0.1 s, while `(v_t-v_{t-1})/delta_t` is about `+100.0 m/s^2`. This is recorded as an implementation observation; the simulator remains unchanged and the Dataset choice is undecided.
+- Raw cross-step capture is accepted, but Dataset/Tensor and all graph/model/loss/planner layers remain unverified.
 
 ## 1. 新定义尚未实现
 
@@ -15,7 +15,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - Evidence：`docs/PIJWM_IMPLEMENTATION_TRACKER.md`、`docs/implementation_records/STEP_01_AUDIT.md`、`STEP_01_DATA_GRAPH_AUDIT.md`。
 - Affected Files：旧 tensor/model/loss/training/planner、AI_CONTEXT 旧 P4 描述和旧 checkpoint/result。
 - Conflict：旧接口、测试或两个 seed 验收不能证明新定义已经实现。
-- Status：Step 1 已审计；等待研究者检查，Step 2 未授权。
+- Status：Step 2.2 Raw Trajectory 已验收；后续 Dataset/Tensor 与模型主线仍等待研究者授权。
 
 ## 2. 研究边界仍需决定
 

@@ -1,0 +1,37 @@
+{
+  "artifact": "real_multi_step.json",
+  "artifact_sha256": "0879c649933bcded25d8a2f024dbb2cad96b63fde17513807dbe935c3494272f",
+  "passed": true,
+  "all_checks": {
+    "real_airfogsim_environment": true,
+    "decision_count_is_steps_plus_one": true,
+    "outcome_count_is_step_count": true,
+    "next_decisions_independently_recaptured": true,
+    "trajectory_id_continuous": true,
+    "frame_continuous": true,
+    "simulation_time_continuous": true,
+    "outcome_next_decision_entity_ids_align": true,
+    "outcome_next_decision_task_ids_align": true,
+    "outcome_next_decision_lifecycle_align": true,
+    "four_action_fields_present_each_step": true,
+    "empty_action_is_explicit_no_op_not_missing": true,
+    "route_comm_comp_each_have_real_and_empty_frames": true,
+    "mobility_uav_only_and_complete": true,
+    "vehicle_motion_from_sumo_observed": true,
+    "acceleration_comparison_recorded": true,
+    "uav_negative_difference_semantics_observed": true,
+    "scope_non_locked_no_training_no_gpu": true
+  },
+  "source_files": {
+    "code/scripts/run_step2_2_real_airfogsim_multi_step_v1.py": "1c7991ae14aca865587233c9111baf1bdcadf5ef4e52087e2fac6d91864b1840",
+    "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd",
+    "code/src/pi_jwm/airfogsim_cpu_inner_rule_v1.py": "8af97aafa913d41cc24f52da70e52c4f70a5cf57bce7c0644f51adec0a8f2011",
+    "code/reference/AirFogSim/airfogsim/manager/traffic_manager.py": "52a986bf6c36bd6d6417219dd9895046ad8065d4537a9d55e4cd61cb1c432c67",
+    "code/reference/AirFogSim/airfogsim/manager/task_manager.py": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+    "code/reference/AirFogSim/airfogsim/scheduler/task_sched.py": "05fd0290c0f01a9cb7a92c561a6151ab86c4209faafa2fa8101e93f57b42f572",
+    "code/reference/AirFogSim/airfogsim/scheduler/communication_sched.py": "c0d38710582197b8198b9c727da3038aaad82a072221bb8cc10bf5067cc254a9",
+    "code/reference/AirFogSim/airfogsim/scheduler/computation_sched.py": "1f7e5e5ca0e8b2dc0585cefb3fb707781214b7db67b0071c9fbfbaa1b9357843",
+    "code/reference/AirFogSim/airfogsim/scheduler/traffic_sched.py": "eec01556d1b2fa9e25861a5d8269f2cb0fe4fdbe10b47566c3c2335f79b818f5"
+  },
+  "git_tracking_requirement": "artifact and manifest must be force-added because code/artifacts is ignored"
+}

@@ -1,0 +1,29 @@
+{
+  "artifact": "real_single_step.json",
+  "sha256": "7f1718eaf2e0bf072a2c225750868db2bc793e6f6e1c9536810b4f3070bb0daf",
+  "passed": true,
+  "all_checks": {
+    "real_airfogsim_environment": true,
+    "real_environment_not_minimal_env": true,
+    "outcome_read_from_real_env": true,
+    "four_scheduler_families_called": true,
+    "mobility_uav_only": true,
+    "vehicle_sumocontinued": true,
+    "decision_action_identity": true,
+    "time_advanced_by_slot": true,
+    "outcome_next_decision_identity": true,
+    "outcome_next_decision_time": true,
+    "traffic_fields_available": true,
+    "uav_phi_available": true,
+    "task_id_alignment": true
+  },
+  "source_files": {
+    "code/scripts/run_step2_1_real_airfogsim_single_step_v1.py": "5bbd87226305aacf2a4ed546679c9265698a8036a3261ae0e9674d2aeae71d3a",
+    "code/src/pi_jwm/airfogsim_single_step_collector_v1.py": "2c0e2523eade2f828b85b9271464ef2ecc5579c688f838b8c0880a375631865f",
+    "code/reference/AirFogSim/airfogsim/manager/traffic_manager.py": "52a986bf6c36bd6d6417219dd9895046ad8065d4537a9d55e4cd61cb1c432c67",
+    "code/reference/AirFogSim/airfogsim/scheduler/task_sched.py": "05fd0290c0f01a9cb7a92c561a6151ab86c4209faafa2fa8101e93f57b42f572",
+    "code/reference/AirFogSim/airfogsim/scheduler/communication_sched.py": "c0d38710582197b8198b9c727da3038aaad82a072221bb8cc10bf5067cc254a9",
+    "code/reference/AirFogSim/airfogsim/scheduler/computation_sched.py": "1f7e5e5ca0e8b2dc0585cefb3fb707781214b7db67b0071c9fbfbaa1b9357843",
+    "code/reference/AirFogSim/airfogsim/scheduler/traffic_sched.py": "eec01556d1b2fa9e25861a5d8269f2cb0fe4fdbe10b47566c3c2335f79b818f5"
+  }
+}

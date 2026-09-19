@@ -2,6 +2,8 @@
 
 ## 2026-09-19：Step 2.1 真实 AirFogSim 验收
 
+- 完成 Step 2.2 真实 6 步 Raw Trajectory 和独立下一 Decision 验收；Route/Comm/Comp 覆盖真实动作与显式 no-op。
+- 版本控制 Step 2.1 v3 和 Step 2.2 的 JSON/manifest，补齐 GitHub 机器证据。
 - 新增真实单轨迹四类动作接线与 Outcome/next Decision 证据，修正 vehicle degree/UAV rad heading 合同，纠正 Step 2 专项测试数量为 6。
 
 ## 2026-09-18：新定义 Step 1 实施审计

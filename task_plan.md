@@ -1057,3 +1057,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 修正 vehicle degree/UAV rad heading 合同，核对测试数量和 generated registry 临时文件
 - [x] 写入 Step 2.1 记录、Tracker、计划/进度、AI_CONTEXT，待验证后 commit + push
 - [ ] 研究者审阅后再授权跨决策步真实反馈闭环
+
+## 2026-09-19 Step 2.2
+
+- 当前门：只验收一条真实、非 locked、6 个连续决策步的 Raw Trajectory；不进入 Dataset/Tensor、双图、World Model、Loss、Planner 或训练。
+- [x] 每一轮从真实环境独立采集 Decision，禁止复用或 copy 上一 Outcome。
+- [x] 验证 trajectory/frame/time、entity/task ID、lifecycle、四类动作与 empty/no-op 语义的跨步连续性。
+- [x] 对比 AirFogSim acceleration 与速度有限差分，只记录实现语义，不修改仿真器或决定 Dataset 字段。
+- [x] Step 2.1 v4 和 Step 2.2 v2 必要 JSON/manifest 已强制加入 Git 暂存，且 manifest SHA 与暂存 blob 一致。
+- 唯一下一动作：完成最终验证、commit、push 后停止等待研究者审阅。

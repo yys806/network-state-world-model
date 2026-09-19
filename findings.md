@@ -827,3 +827,11 @@
 - vehicle traffic `angle` 是 degree，UAV `angle/phi` 按 rad；合同采用实体 `heading`，Mob action 保留 `azimuth_rad`。
 - UAV 速度由 0 变 10 m/s 时 AirFogSim 真实 acceleration 为 `-100.0`，记录为仿真器现状，不在本 Step 修正。
 - Step 2 专项测试真实为 6 项；generated registry 未纳入 `index-build.tmp.err`/`tmp.err`。
+
+## 2026-09-19 Step 2.2 多步接口事实
+
+- 下一 Decision 可以在下一循环对同一真实环境独立重采，并与上一 Outcome 严格对齐；不能用对象复制替代该证据。
+- 6 步中 Route/Comm/Comp 均出现非空和空帧。空帧必须保留 action family 字段、空 entries 与原因；missing field 不等于 no-op。
+- Decision 时刻固定 Comp 分配意味着同 slot 新完成传输的任务本 slot CPU 分配为 0，下一 Decision 才进入显式 Comp action；这保持 Decision 可见性边界。
+- AirFogSim UAV acceleration 使用 `(last_speed-speed)/interval`，首次加速与常规前向差分符号相反；vehicle 本轨迹 6 行均匹配前向差分。
+- `code/artifacts/*` 默认被忽略；仅在实施记录中写路径不能形成 GitHub 机器证据。Step 2.1 v3 和 Step 2.2 小型 JSON/manifest 需显式 force-add。

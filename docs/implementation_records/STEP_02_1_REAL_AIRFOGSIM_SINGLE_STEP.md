@@ -18,7 +18,7 @@ Step 2 已有合同和最小环境四类 setter 测试，但没有完整真实�
 
 - `code/src/pi_jwm/raw_single_decision_step_contract_v1.py`
 - `code/scripts/run_step2_1_real_airfogsim_single_step_v1.py`
-- `code/artifacts/protocols/pi_jwm_raw_single_decision_step_real_airfogsim_v2_20260919/`
+- `code/artifacts/protocols/pi_jwm_raw_single_decision_step_real_airfogsim_v4_20260919/`
 - `docs/contracts_PIJWM_RAW_SINGLE_DECISION_STEP_CONTRACT_V1.md`
 - `docs/implementation_records/STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md`
 - 本记录、Tracker、计划/进度/发现记录和 AI_CONTEXT。
@@ -67,7 +67,7 @@ conda run -n airfogsim python .\code\scripts\run_step2_1_real_airfogsim_single_s
 
 ## Git
 
-待本 Step 全部文件完成后统一 commit + push。
+Step 2.1 代码和记录由 commit `0a11d41` 推送，但 v2 JSON 受 `.gitignore` 影响未进入该 commit。Step 2.2 追加真实 v4 重跑并将 v4 JSON/manifest 强制纳入版本控制，补齐 GitHub 可追溯性；JSON 使用 LF 写入，manifest SHA 与 Git blob 字节一致。
 
 ## Next Step
 
