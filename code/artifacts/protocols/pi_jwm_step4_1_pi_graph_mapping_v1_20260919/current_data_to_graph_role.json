@@ -1,0 +1,47 @@
+[
+  {
+    "current_fact": "entity ID/type/presence",
+    "disposition": "DIRECT",
+    "graph_role": "Physical/Agent identity and static type"
+  },
+  {
+    "current_fact": "speed + canonical acceleration",
+    "disposition": "DIRECT",
+    "graph_role": "Physical node motion"
+  },
+  {
+    "current_fact": "position/heading/elevation in Raw",
+    "disposition": "ADDITIVE_EXPOSURE_REQUIRED",
+    "graph_role": "Physical node spatial/motion input"
+  },
+  {
+    "current_fact": "channel_rows endpoints + per-RB attenuation",
+    "disposition": "REINTERPRET_AND_EXPOSE",
+    "graph_role": "directed wireless Comm relation"
+  },
+  {
+    "current_fact": "task size/lifecycle",
+    "disposition": "DIRECT",
+    "graph_role": "Task demand/lifecycle"
+  },
+  {
+    "current_fact": "task_node/current_node/return_destination",
+    "disposition": "DERIVE_WITH_VALIDITY",
+    "graph_role": "typed Task->Agent relation candidates"
+  },
+  {
+    "current_fact": "slot_transfer_events / past_outcome_flow_service",
+    "disposition": "NOT_CURRENT_FLOW_STATE",
+    "graph_role": "past service outcome only"
+  },
+  {
+    "current_fact": "dag_edges",
+    "disposition": "DIRECT",
+    "graph_role": "Task->Task DAG"
+  },
+  {
+    "current_fact": "future Route/Comm/Comp/Mobility tensors",
+    "disposition": "NOT_CURRENT_GRAPH_STATE",
+    "graph_role": "future action conditioning"
+  }
+]

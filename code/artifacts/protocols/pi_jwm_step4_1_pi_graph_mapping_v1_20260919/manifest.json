@@ -1,0 +1,58 @@
+{
+  "counts": {
+    "field_mappings": 26,
+    "forbidden_wrong_placements": 12,
+    "old_implementation_reuse_conflict": 11,
+    "relations": 8,
+    "required_additive_data_extensions": 10
+  },
+  "definition_basis": {
+    "document": "D:\\shen\\OB\\科研\\PIJWM\\03物理-信息双图建模.md",
+    "read_only": true,
+    "sha256": "6f3e17b0691aa81c60c2ea1e76a1031d2f7f622abf4b40884e9ae4380953c15e"
+  },
+  "files": {
+    "current_data_to_graph_role.json": "b290964a2e6e2cdda94b0bee3fee4d7e1427fd019da0ea590643bb159a3617e6",
+    "forbidden_wrong_placements.json": "a8259ca70d02fa4d5c3ef060ac6e646859c1efa3c425edc73143bae056826308",
+    "mapping_schema.json": "652f9111de56c1ed770d66e8a938421a55271477cfb30d1cef6545314b91e575",
+    "old_implementation_reuse_conflict.json": "d03d8182f7c5c8736dc12f0a8a9f6659b2aaff07f5d68569c3d9b2ebaf613ea4",
+    "required_additive_data_extensions.json": "582c8940ca6739a29b0d72e6e289feb2312eb17efeddfb278144b71f8722c1da",
+    "validation_report.json": "a5c5b22d219e473283ffd798f934f3bca7f58dd8f5f09847acfb1153747026e4"
+  },
+  "graph_readiness": {
+    "blocking_gaps": [
+      "physical.position_m",
+      "comm.wireless_csi",
+      "comm.wired_state",
+      "agent.cpu_capacity_per_s",
+      "task.demand_progress_time",
+      "task_agent.typed_relations",
+      "flow.current_state"
+    ],
+    "decision": "DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1",
+    "minimum_definition_supported_by_current_tensor": false
+  },
+  "input_evidence": {
+    "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
+    "code/artifacts/protocols/pi_jwm_step3_3_model_input_tensor_v1_20260919/manifest.json": "e0c5a58f1b612d0d0845c5a424087ed3b8a05cee80ec8a1ad5d9b4aa7b038d4f",
+    "code/artifacts/protocols/pi_jwm_step3_3_model_input_tensor_v1_20260919/tensor_schema.json": "fc430a447a12d6219517c595c038be8e0a8944ca72720748bd255be3a73c13f4"
+  },
+  "schema_version": "PI-JWM-Step-4.1-PI-Graph-Object-Field-Relation-Mapping-v1",
+  "scope": {
+    "cross_graph_coupling_implemented": false,
+    "encoder_implemented": false,
+    "formal_dataset": false,
+    "gpu": false,
+    "graph_builder_implemented": false,
+    "locked_test": false,
+    "mapping_only": true,
+    "message_passing_implemented": false,
+    "training": false
+  },
+  "source_files": {
+    "code/scripts/build_step4_1_pi_graph_mapping_v1.py": "c631740ca4d5f35017f53d9bfafb1be50d0b3a5fa23be4eb378ba54acf53da3d",
+    "code/src/pi_jwm/step4_1_pi_graph_mapping_v1.py": "cdd3231bb30f3c59a5313fea8736f4ba37f851e89b1403543221fd8572d96061",
+    "code/tests/test_step4_1_pi_graph_mapping_v1.py": "856c3dc1b35d84a30adfdd9f88c2b44a14618f4ccbeb7d9ae60517188a328be1"
+  },
+  "validation_passed": true
+}

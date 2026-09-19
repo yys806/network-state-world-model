@@ -11,6 +11,7 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 | Raw 因果合同 | `code/src/pi_jwm/raw_trajectory_causal_contract_v1.py` | future-task 分区、canonical acceleration、slot outcome 聚合 | current/frozen raw |
 | Step 2.3 真实 runner | `code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py` | 真实字段、return route 与因果验收 | current/evidence |
 | Step 2.4 通信 runner/observer | `code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py`, `code/scripts/run_p2_single_step_collector_preflight_v1.py` | wired/wireless split、total 与 empty/missing 验收 | current/evidence |
+| STEP 4.1 PI graph mapping | `code/src/pi_jwm/step4_1_pi_graph_mapping_v1.py`、mapping artifact | 对象/字段/关系、gap、forbidden placement、旧实现冲突 | current/frozen mapping |
 | 当前模型如何递推 | `code/src/pi_jwm/formal_entity_aligned_rssm_world_model_v1.py` | `FormalEntityAlignedRSSMWorldModel.forward()` | model/current |
 | 双图如何传播 | `code/src/pi_jwm/formal_dual_graph_world_model_v1.py` | `FormalDualGraphWorldModel.forward()` | model/current |
 | 图与跨图算子 | `code/src/pi_jwm/formal_graph_ops_v1.py` | physical/information/coupling functions | model/support |
@@ -40,6 +41,7 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 - Model-ready sample contract: `code/src/pi_jwm/model_ready_sample_contract_v1.py`; STEP 3.1F schema/checks include past action/outcome, History union index, anchor visibility plus unified Future Action index namespace, history relation/DAG/flow alignment and round-trip.
 - Future action reference audit: `code/scripts/audit_step3_1f_future_action_references_v1.py`; observation-only scan, does not drop windows or decide future-object representation.
 - STEP 3.3F CPU tensor collation: `code/src/pi_jwm/step3_3_model_input_tensor_v1.py`; JSON sample -> semantically complete fixed-shape Observation/Past Outcome/Action/Target arrays with stable index, fixed vocab, mask/padding and validation receipt. Not consumed by a graph/model yet.
+- STEP 4.1 mapping builder/validator: `code/scripts/build_step4_1_pi_graph_mapping_v1.py` and `pi_jwm.step4_1_pi_graph_mapping_v1.validate_mapping_checks`; audit-only, no graph construction.
 - Raw DAG capture amendment: `code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py::_capture`; source `airfogsim_full_dual_graph_observer_v1._extract_dag_edges`.
 
 ## 历史代码定位

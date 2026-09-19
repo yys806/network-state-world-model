@@ -1,0 +1,57 @@
+[
+  {
+    "classification": "DIRECT_REUSE",
+    "component": "formal_graph_ops_v1.masked_index_mean",
+    "reason": "generic padded-index masked aggregation; no field semantics"
+  },
+  {
+    "classification": "MINOR_MODIFICATION",
+    "component": "formal_graph_ops_v1.dag_message_pass",
+    "reason": "direction matches parent j -> child k, but message passing is outside Step 4.1"
+  },
+  {
+    "classification": "MINOR_MODIFICATION",
+    "component": "formal_graph_ops_v1.couple_agent_physical",
+    "reason": "identity attachment idea reusable; coupling network is not authorized"
+  },
+  {
+    "classification": "STRUCTURAL_CHANGE",
+    "component": "formal_graph_ops_v1.information_message_pass",
+    "reason": "models only Agent/Flow endpoint exchange and does not cover typed Comm/Task-Agent/DAG relation semantics"
+  },
+  {
+    "classification": "DO_NOT_REUSE_AS_CURRENT_MAPPING",
+    "component": "formal_graph_ops_v1.couple_flow_bearer",
+    "reason": "binds Flow to old physical/channel edge and violates the strict semantic split"
+  },
+  {
+    "classification": "STRUCTURAL_CHANGE",
+    "component": "airfogsim_tensor_v2.NODE_FEATURES",
+    "reason": "mixes physical position/motion with CPU/storage in one node vector"
+  },
+  {
+    "classification": "DO_NOT_REUSE_AS_PHYSICAL_EDGE",
+    "component": "airfogsim_tensor_v2.EDGE_FEATURES",
+    "reason": "mixes distance with CSI/rate/task/RB facts"
+  },
+  {
+    "classification": "EVIDENCE_ONLY",
+    "component": "airfogsim_tensor_v2.FLOW_FEATURES",
+    "reason": "names target stateful fields, but current frozen Raw does not substantiate them"
+  },
+  {
+    "classification": "REINTERPRET",
+    "component": "airfogsim_tensor_v2.TASK_ENDPOINT_FIELDS",
+    "reason": "source/host/exec/ret must become typed Task->Agent relations, not Task features"
+  },
+  {
+    "classification": "STRUCTURAL_CHANGE",
+    "component": "formal_dual_graph_world_model_v1",
+    "reason": "old physical_edge_state/flow path and coupling consume mixed semantics; no model reuse is authorized here"
+  },
+  {
+    "classification": "DIRECT_REUSE",
+    "component": "step3_3_model_input_tensor_v1 stable IDs/masks",
+    "reason": "stable history-union identity, presence, masks, DAG endpoints and action references remain authoritative"
+  }
+]

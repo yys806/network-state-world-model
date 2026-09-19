@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-19 STEP 4.1
+
+已完成 Physical / Information object-field-relation mapping freeze：26 个字段、8 类关系、10 个 additive extension 项、12 个 forbidden placements 与 11 个旧实现复用/冲突项已机器化。focused tests 5/5 和 artifact validation 首轮通过；当前 readiness 明确阻止 graph builder。未训练、未使用 GPU、未访问 `locked_test`。
+
 ## 2026-09-19 STEP 3.3F
 
 已完成 tensor semantic completeness：Past Outcome 与 Observation 分轴，Target future entity/task/flow/service 不再丢失；Comp 正式字段、固定 vocab 和 causal entity type 均接入。focused semantic tests 8/8、Step 3.1F regression 12/12 已通过；development artifacts 已升级为 sample v4 / tensor v2。未训练、未使用 GPU、未访问 locked_test。

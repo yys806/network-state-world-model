@@ -1146,3 +1146,14 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - Current gate: patch validation before Batch Dataset; `locked_test=false`, `training=false`, `gpu=false`.
 - Completed: anchor visibility separated from History-union numeric index; ID↔index validator and disappearing-object regression fixture added; sample/manifest/audit JSON refreshed.
 - Next: researcher review; only then consider STEP 3.2 authorization.
+
+## 2026-09-19 STEP 4.1 — Physical / Information Object–Field–Relation Mapping Freeze
+
+- 当前门：只冻结定义 03 的对象、字段与关系映射；不实现 graph builder、encoder、GNN、message passing、GRU、跨图 coupling、World Model、Loss、Planner 或训练。
+- [x] 读取定义 03、当前 Raw / Sample / Tensor 合同和旧双图代码，确认实际字段来源与旧实现冲突。
+- [x] 先增加机器映射合同的 focused failure tests，再实现最小 schema、validator、artifact builder。
+- [x] 形成 Current Data → Graph Role、Required Additive Data Extension、Forbidden Placement、Old Implementation Reuse/Conflict 四张机器表及可读文档。
+- [x] 更新实施记录、Tracker、authority records、AI_CONTEXT、知识索引和过程记录。
+- [x] 完成 focused tests、相关回归、compileall、知识索引 write/check、`git diff --check`；待 commit + push。
+- 边界：`formal_dataset=false`、`training=false`、`gpu=false`、`locked_test=false`；任何定义 03 最小必需信息不足都记录为 gap，不在本 Step 伪造或实现图。
+- 唯一下一动作：完成 STEP 4.1 映射证据并提交，等待研究者审阅；不自动执行 STEP 4.2。

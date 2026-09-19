@@ -1,5 +1,12 @@
 # Findings
 
+## 2026-09-19 STEP 4.1
+
+- 当前数据缺口分成两类：position/无线 CSI/CPU capacity 等是 Raw 已有但未暴露；wired decision-time state 与完整 stable stateful Flow 是 Raw 本身不足，不能用同一种 patch 处理。
+- `past_outcome_flow_service` 是过去某一 hop 的实际服务结果，不具备 current Flow 的 total/rem 语义；旧 `FLOW_FEATURES` 名称也不是当前数据证据。
+- cloud 的 `[0,0,0]` 坐标不能证明它有独立空间建模意义；edge/cloud 的 Physical membership 必须由研究者决定。
+- 旧 `EDGE_FEATURES` 把 distance、CSI、rate、active task 和 RB 混在一个 physical edge，和定义 03 冲突；仅通用 stable ID/mask 与无语义的 masked-index 算子可直接复用。
+
 ## 2026-09-19 STEP 3.3F
 
 - fixed-shape 通过不代表语义完整；Past Outcome 和 Target future facts 必须作为独立 tensor 角色保存。

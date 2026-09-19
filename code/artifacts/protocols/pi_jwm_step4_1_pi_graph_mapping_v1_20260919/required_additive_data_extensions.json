@@ -1,0 +1,62 @@
+[
+  {
+    "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+    "item": "physical.position_m",
+    "minimum_for_03": true,
+    "required_change": "additive Sample/Tensor input exposure with mask and unit"
+  },
+  {
+    "availability": "DERIVABLE_CAUSALLY",
+    "item": "physical.spatial_relations",
+    "minimum_for_03": true,
+    "required_change": "derive only after position/motion exposure; topology policy remains undecided"
+  },
+  {
+    "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+    "item": "comm.wireless_csi",
+    "minimum_for_03": true,
+    "required_change": "add directed per-RB CSI/type/mask to Sample/Tensor"
+  },
+  {
+    "availability": "RAW_INSUFFICIENT",
+    "item": "comm.wired_state",
+    "minimum_for_03": true,
+    "required_change": "define and collect decision-time wired relation/state; outcome service is not state"
+  },
+  {
+    "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+    "item": "agent.cpu_capacity_per_s",
+    "minimum_for_03": true,
+    "required_change": "additive Sample/Tensor resource exposure with observed mask"
+  },
+  {
+    "availability": "RAW_INSUFFICIENT",
+    "item": "agent.available_cpu_storage",
+    "minimum_for_03": false,
+    "required_change": "only add if selected and genuinely observed; do not zero-fill"
+  },
+  {
+    "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+    "item": "task.demand_progress_time",
+    "minimum_for_03": true,
+    "required_change": "expose CPU demand and current progress; extend Raw for return size/priority/deadline"
+  },
+  {
+    "availability": "DERIVABLE_CAUSALLY",
+    "item": "task_agent.typed_relations",
+    "minimum_for_03": true,
+    "required_change": "materialize Src/Host/Exec/Ret with lifecycle-conditioned validity and stable entity index"
+  },
+  {
+    "availability": "RAW_INSUFFICIENT",
+    "item": "flow.current_state",
+    "minimum_for_03": true,
+    "required_change": "collect stable Flow ID/type/endpoints/presence/total/remaining; include Input/Return/DepData"
+  },
+  {
+    "availability": "RESEARCHER_DECISION_REQUIRED",
+    "item": "physical_membership.edge_cloud",
+    "minimum_for_03": false,
+    "required_change": "decide whether simulator coordinates carry independent spatial meaning; Info Agent remains allowed"
+  }
+]

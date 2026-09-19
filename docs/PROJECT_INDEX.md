@@ -1,7 +1,7 @@
 # PI-JWM 项目索引
 
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
-> 生成于 2026-09-08，状态更新于 2026-09-19。Raw Trajectory Layer / 定义 01 已完成并冻结；旧训练与结果已逻辑归档。`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
+> 生成于 2026-09-08，状态更新于 2026-09-19。定义 01 与当前最小定义 02 已冻结；STEP 4.1 图 mapping 已冻结、graph builder 未开始；旧训练与结果已逻辑归档。`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
 
 ## 1. 进入项目的最短路径
 
@@ -12,6 +12,7 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 3. [`docs/PIJWM_IMPLEMENTATION_TRACKER.md`](PIJWM_IMPLEMENTATION_TRACKER.md)：新定义实施总表、复用分类和当前 Step。
 4. [`docs/implementation_records/STEP_01_AUDIT.md`](implementation_records/STEP_01_AUDIT.md)：Step 1 定义—实现审计主记录。
 5. [`docs/implementation_records/STEP_02_4_COMMUNICATION_OUTCOME_SEMANTICS.md`](implementation_records/STEP_02_4_COMMUNICATION_OUTCOME_SEMANTICS.md)：Raw 通信 Outcome 最终真实验收与冻结记录。
+6. [`docs/implementation_records/STEP_04_1_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING.md`](implementation_records/STEP_04_1_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING.md)：当前对象—字段—关系 mapping、数据 gap 与旧实现冲突。
 5. [`AI_CONTEXT/04_MODULE_MAP.md`](../AI_CONTEXT/04_MODULE_MAP.md)：问题到真实源码的最短路由。
 6. [`docs/COLLABORATION_GUIDE.md`](COLLABORATION_GUIDE.md)：用户与 AI 的职责、独立判断、解释和问答规则。
 7. [`docs/RESTRUCTURE_ACCEPTANCE.md`](RESTRUCTURE_ACCEPTANCE.md)：重构目标、可观察验收和剩余安全限制。
@@ -32,9 +33,9 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 - 项目：PI-JWM（Physical-Information Joint World Model）。
 - AirFogSim：只作为仿真器和数据生成工具，不是 PI-JWM 框架主体。
 - 当前路线：研究者最新 `00–06` 目标定义 → 经授权的 Implementation Step。
-- 当前 Step：Step 2.4 已完成，Raw Trajectory Layer / 01 已冻结；Step 3 Dataset/Tensor Contract 未开始。
+- 当前 Step：STEP 4.1 mapping 已完成；Raw / 01 与最小 Dataset/Tensor / 02 已冻结，graph builder 未开始。
 - 新定义实现：尚未开始；现有 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 都是旧协议 Historical / Archived evidence。
-- 当前主要缺口：严格双图、四类动作、目标 stochastic-state 边界、逐步规则反馈/动态图、正式候选生成和真实反馈重规划。
+- 当前主要缺口：position/CSI/CPU/Task additive exposure、wired current state、stable stateful Flow，以及后续 graph builder、目标 stochastic-state 边界、逐步规则反馈/动态图、正式候选生成和真实反馈重规划。
 - `locked_test`：继续封存；`formal_performance_claim_ready=false`。
 
 ## 3. 顶层目录地图
@@ -59,6 +60,7 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 | --- | --- | --- |
 | 信息边合同 | `code/src/pi_jwm/information_edge_contract_v4.py` | 定义可审计的信息流字段和缺失语义 |
 | 双图采集合同 | `code/src/pi_jwm/full_dual_graph_collector_contract_v1.py` | 分离决策、执行和结果，检查动作合法性 |
+| 新 PI graph mapping | `code/src/pi_jwm/step4_1_pi_graph_mapping_v1.py` | 当前数据到严格 Physical/Information 语义、gap 与 forbidden placement；不构图 |
 | 正式窗口数据 | `code/src/pi_jwm/formal_airfogsim_window_v1.py` | 读取正式 split、窗口、mask 和静态映射 |
 | 正式图编码 | `code/src/pi_jwm/formal_dual_graph_world_model_v1.py` | 物理图、信息图、任务图和跨图消息传播 |
 | 确定性规则层 | `code/src/pi_jwm/formal_deterministic_rule_layer_v1.py` | 更新容量、交付量、工作量、生命周期和 DAG 状态 |

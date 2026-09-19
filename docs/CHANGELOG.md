@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-19：STEP 4.1 PI Graph Object–Field–Relation Mapping
+
+- 新增机器 mapping schema、四张独立 matrix、validator/focused tests 和 hash/provenance artifact。
+- 冻结严格 Physical/Information 字段归属、Task-Agent 四类关系、Flow/DAG 边界与 forbidden placement；未实现图构建或模型。
+- 同步 Tracker、authority records、AI_CONTEXT 和项目索引；scope 保持 training/GPU/locked_test/formal_dataset 全 false。
+
 ## 2026-09-19：STEP 3.3F Tensor Semantic Completeness
 
 - Model-ready sample 升级 v4，因果 Static/History/Target 保留真实 entity type；Raw schema 与时间边界不变。

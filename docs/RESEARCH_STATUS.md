@@ -1,14 +1,14 @@
 # PI-JWM 当前科研状态
 
 > 本文是导航性状态摘要。当前结果必须回到原始 checkpoint、metrics、manifest 和 audit 验证。
-> 截至 2026-09-19，Raw Trajectory Layer / 定义 01 已完成并冻结；旧 P4/P6 和训练结果为 Historical / Archived。当前没有 GPU 训练，`locked_test` 未访问。
+> 截至 2026-09-19，Raw Trajectory Layer / 定义 01 与最小 Dataset/Tensor / 定义 02 已冻结；STEP 4.1 图语义 mapping 已冻结，但 graph builder 未开始。旧 P4/P6 和训练结果为 Historical / Archived。当前没有 GPU 训练，`locked_test` 未访问。
 
 ## 0. 当前实施状态
 
-- Step 2.4 已用真实非 locked AirFogSim 完成通信 Outcome 最终验收；入口为 Tracker 和 `STEP_02_4_COMMUNICATION_OUTCOME_SEMANTICS.md`。Raw 记录已拆分 wireless/wired/total，并区分 empty map 与 missing。
-- Dataset/Tensor、双图、模型、loss、训练、planner 和 closed loop 均未开始。
+- Step 2.4 已用真实 non-locked AirFogSim 完成通信 Outcome 最终验收；Step 3.2/3.3 已冻结最小 Dataset/Tensor 合同。
+- STEP 4.1 已冻结对象—字段—关系映射；graph builder、双图编码、模型、loss、训练、planner 和 closed loop 均未开始。
 - 现有代码可复用时间因果、稳定索引、mask/split 和部分规则/指标工具，但严格双图、四类动作、RSSM 边界、逐步反馈和真实重规划存在结构性缺口。
-- 唯一建议下一步是由研究者单独授权 Step 3 Dataset/Tensor Contract。
+- 唯一建议下一步是研究者审阅 STEP 4.1 gap 后单独授权最小 Data Contract Additive Extension。
 
 ## 1. 当前研究问题
 

@@ -1,0 +1,62 @@
+[
+  {
+    "fact": "CSI",
+    "forbidden_role": "physical_edge_feature",
+    "required_role": "information_comm_relation_state"
+  },
+  {
+    "fact": "rate_or_actual_service",
+    "forbidden_role": "physical_edge_feature",
+    "required_role": "execution_outcome"
+  },
+  {
+    "fact": "RB_allocation",
+    "forbidden_role": "physical_edge_feature",
+    "required_role": "comm_action"
+  },
+  {
+    "fact": "CPU_allocation",
+    "forbidden_role": "information_agent_state",
+    "required_role": "comp_action"
+  },
+  {
+    "fact": "actual_CPU_service",
+    "forbidden_role": "comp_action",
+    "required_role": "execution_outcome"
+  },
+  {
+    "fact": "source_host_exec_ret",
+    "forbidden_role": "task_continuous_feature",
+    "required_role": "typed_task_agent_relation"
+  },
+  {
+    "fact": "past_hop_service",
+    "forbidden_role": "current_flow_remaining_state",
+    "required_role": "past_execution_outcome"
+  },
+  {
+    "fact": "DAG",
+    "forbidden_role": "dependency_data_flow",
+    "required_role": "task_dependency_relation"
+  },
+  {
+    "fact": "position_or_speed",
+    "forbidden_role": "information_agent_resource_feature",
+    "required_role": "physical_node_feature"
+  },
+  {
+    "fact": "future_action_result",
+    "forbidden_role": "current_graph_state",
+    "required_role": "future_target_or_execution_outcome"
+  },
+  {
+    "fact": "active_task_count",
+    "forbidden_role": "physical_edge_feature",
+    "required_role": "derived_information_load_if_approved"
+  },
+  {
+    "fact": "allocated_RB_count",
+    "forbidden_role": "physical_edge_feature",
+    "required_role": "comm_action_or_outcome_audit"
+  }
+]

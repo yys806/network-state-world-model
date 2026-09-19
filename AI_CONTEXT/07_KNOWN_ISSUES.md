@@ -25,6 +25,14 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - 通信状态是否足以规则计算 service、外生 task/entity/background load 的未来边界、proposal 训练方式、planner objective/risk/hard constraints/fallback 尚未冻结。
 - Codex 不自行选择这些科研定义；相关实现保持停止。
 
+## 2A. STEP 4.1 图输入缺口
+
+- Raw 已有但当前 Sample/Tensor 未暴露：position、canonical motion direction 所需 heading/elevation、wireless per-RB CSI、CPU capacity、部分 Task demand/progress/time fields。
+- 当前 Raw 不足：动作前 wired communication state；具有 stable ID、Input/Return/DepData type、endpoints、presence、total/rem 的 current stateful Flow；冻结 Raw 行中的 return size/priority/deadline。
+- edge/cloud 是否具有 Physical representation 以及 radius/kNN topology 仍为 `RESEARCHER_DECISION_REQUIRED`。
+- 影响：不得直接实现 graph builder；不得用旧 mixed `physical_edge_state`、past hop service 或 outcome 指标填补当前状态。
+- Evidence：`docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING_V1.md` 与 Step 4.1 mapping artifact。
+
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
 
 - Actual Implementation：当前正式 runner 支持三个冻结 seed，前两个已完成。

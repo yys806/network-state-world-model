@@ -1,0 +1,31 @@
+{
+  "evidence_source": {
+    "raw": "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json",
+    "tensor_schema": "code/artifacts/protocols/pi_jwm_step3_3_model_input_tensor_v1_20260919/tensor_schema.json",
+    "validator": "pi_jwm.step4_1_pi_graph_mapping_v1.validate_mapping_checks"
+  },
+  "passed": true,
+  "required_checks": {
+    "classification_vocabularies": true,
+    "cpu_capacity_raw_but_tensor_missing": true,
+    "dag_direct_reuse_direction": true,
+    "field_ids_unique": true,
+    "flow_current_state_not_fabricated": true,
+    "forbidden_placement_absent": true,
+    "forbidden_table_complete": true,
+    "graph_blocked_by_real_gaps": true,
+    "identity_namespace_frozen": true,
+    "old_implementation_audited": true,
+    "passed": true,
+    "position_raw_but_tensor_missing": true,
+    "real_raw_entity_sources_present": true,
+    "real_raw_task_sources_present": true,
+    "required_gap_table_complete": true,
+    "required_relation_types_complete": true,
+    "schema_version": true,
+    "scope_is_mapping_only": true,
+    "wired_decision_state_correctly_marked_missing": true,
+    "wireless_csi_direction_and_mask_present": true
+  },
+  "schema_version": "PI-JWM-Step-4.1-PI-Graph-Object-Field-Relation-Mapping-v1"
+}

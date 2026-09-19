@@ -15,16 +15,24 @@ PI-JWM 研究的是一个同时包含物理网络和信息网络的动态系统�
 
 ### 当前已冻结的 Raw 边界
 
-Step 2.4 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision` 的真实采集层。通信 Outcome 分为 wireless、wired 和按 task 聚合 total delivered data；wired 直接来自真实 `WiredNetworkManager.step` slot result。空 map 表示已观测但无服务，null 加 missing mask/reason 表示不可恢复。未来到达 task 只保留 internal metadata，不进入当前观察或输入索引；Decision CSI/CPU capacity 和 slot delivered-data/served-CPU 已有真实来源。AirFogSim raw acceleration 与 PI-JWM canonical backward-difference acceleration 使用不同字段和 mask。该事实尚未进入 Dataset/Tensor 或模型架构。
+Step 2.4 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision` 的真实采集层；Step 3.2/3.3 已冻结当前最小 Dataset/Tensor。STEP 4.1 进一步确认 position、wireless CSI、CPU capacity 和部分 Task current state 尚未进入当前 input tensor，wired decision-time state 与完整 stateful Flow 还不在当前 Raw 合同中。
 
-### 物理图
+### 新定义 03 的已冻结映射（尚未实现）
+
+- Physical Node：现实实体的 position/motion；Physical relation：relative position/distance/motion。
+- Information Nodes：Agent + Task；Relations：directed Comm、Task→Agent 的 Src/Host/Exec/Ret、directed multiedge Flow、Task→Task DAG。
+- vehicle/UAV/RSU 同时具有 Physical + Info identity；edge/cloud 的 Physical membership 待研究者决定。
+- CSI/rate/RB/task activity 不得作为 Physical relation feature；过去 hop service 不得作为 current Flow remaining state。
+- Source of truth：`docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING_V1.md`。当前不具备直接实现 graph builder 的数据条件。
+
+### 旧协议物理图（Historical / Archived）
 
 - 物理节点：车辆、无人机、RSU、边缘服务器、云节点等。
 - 物理边：有向通信链路。
 - 当前物理边 5 维状态：`distance`、`csi_mean`、`rate_sum`、`active_task_count`、`allocated_rb_count`。
 - 节点主状态包含位置、速度/加速度、CPU、存储等字段；实体级运动合同另外使用由历史位置因果计算的三维速度和加速度。
 
-### 信息图
+### 旧协议信息图（Historical / Archived）
 
 - 信息节点：附着在活动物理节点上的通信/计算代理。
 - 信息边：任务输入流、结果回传流和有显式 payload 的依赖数据流。

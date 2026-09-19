@@ -12,21 +12,21 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 3.3F` 已完成 Tensor Semantic Completeness 收尾；STEP 3.3 正式 COMPLETE / FROZEN，定义 02 按当前最小数据合同 COMPLETE / FROZEN。tensor evidence 位于 `code/artifacts/protocols/pi_jwm_step3_3_model_input_tensor_v1_20260919/`。
+- 当前 Step：`STEP 4.1` 已冻结 Physical / Information 对象—字段—关系映射；定义 03 的 graph builder、GNN 与模型仍未开始。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_1_pi_graph_mapping_v1_20260919/`。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
-- 新定义实现状态：Raw 因果可观测、四类动作、slot Outcome 已验收；STEP 3.2 完成 JSON-native batch/split/preprocessing；STEP 3.3F 完成 Past Outcome、Target facts、固定 vocab、entity type 和 semantic receipt。双图、World Model、Loss、Planner 仍未开始。
+- 新定义实现状态：Raw 因果可观测、四类动作、slot Outcome 已验收；STEP 3.2/3.3 完成最小 Dataset/Tensor 合同；STEP 4.1 证明 position/CSI/CPU/部分 Task 状态需 additive exposure，wired current state 与 stable stateful Flow 的 Raw 仍不足。双图、World Model、Loss、Planner 仍未开始。
 - 审计结论：时间因果、稳定 ID/index、mask/split 和部分规则/评价工具可复用；严格双图、四类动作、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环需要结构性修改或新增实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step `training=false`、`gpu=false`。
 
 ## 当前最重要问题
 
-当前实现不能按模块名称或旧测试推断为符合新定义。关键差异包括：通信状态混在旧 `physical_edge`、独立 Agent/Communication/Task-Agent 合同缺失、四类动作未闭合、旧随机状态范围与新定义不同、RSSM 修正未形成逐步规则反馈和动态图重构、planner 没有真实反馈闭环。
+当前实现不能按模块名称或旧测试推断为符合新定义。STEP 4.1 已明确旧 `physical_edge` 混合 CSI/rate/task/RB，且 current Tensor/Raw 尚不能支持最小新图；四类动作张量已冻结，但尚未接入新 graph/model。旧随机状态范围、逐步规则反馈、动态图和 planner 真实反馈仍未实现。
 
 ## 单一科研下一步
 
-若研究者明确授权，进入 03 的第一步只冻结 Physical / Information object-field-relation mapping，不直接实现完整 GNN。未授权时不继续，不启动 GPU，不访问 `locked_test`。
+研究者审阅 STEP 4.1 mapping/gap 后，若明确授权，只执行最小 Data Contract Additive Extension；不直接实现 graph builder/GNN，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 
@@ -49,6 +49,8 @@
 
 ## 最近重要变化
 
+- 2026-09-19：STEP 4.1 冻结 PI graph object-field-relation mapping；无线 CSI/position/CPU 是 Raw 有但未暴露，wired current state 与 stateful Flow 是 Raw 不足；graph builder 保持关闭。
+
 - 2026-09-19：完成 Step 2.4 wireless/wired/total communication Outcome 语义最终验收；wired 服务来自真实 `WiredNetworkManager.step`，空 map 与 missing 分开，冻结 Raw Trajectory Layer / 01。
 - 2026-09-19：完成 Step 2.2 真实 AirFogSim 6 步轨迹与独立下一 Decision 验收；补齐 Step 2.1/2.2 机器证据 Git 追溯。
 - 2026-09-09：第二个正式 seed `20260830` 完成并通过单 seed 验收；第三 seed 暂停。
@@ -61,9 +63,9 @@
 
 Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能声明已开放”的证据。
 
-## 2026-09-19 Raw layer freeze
+## 2026-09-19 Current freeze chain
 
-- Current gate: Raw Trajectory Layer / 01 COMPLETE / FROZEN; Step 3 Dataset/Tensor Contract 未授权、未开始.
+- Raw Trajectory / 01 与当前最小 Dataset/Tensor / 02 均已冻结；STEP 4.1 mapping 已冻结。
 - Causal boundary: future task schedule is internal metadata only; canonical acceleration is backward speed difference with an explicit missing-history mask.
-- Evidence: `code/artifacts/protocols/pi_jwm_raw_contract_causal_complete_v2_20260919/`.
-- Boundary: no Dataset/Tensor, graph, model, planner or training; no GPU or locked_test.
+- Current blocker: additive exposure plus wired current-state/stateful-Flow Raw gaps；graph builder 未授权、未开始。
+- Boundary: no graph/model/planner/training, no GPU, no `locked_test`.

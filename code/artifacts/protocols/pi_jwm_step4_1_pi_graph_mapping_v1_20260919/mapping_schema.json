@@ -1,0 +1,748 @@
+{
+  "current_data_to_graph_role": [
+    {
+      "current_fact": "entity ID/type/presence",
+      "disposition": "DIRECT",
+      "graph_role": "Physical/Agent identity and static type"
+    },
+    {
+      "current_fact": "speed + canonical acceleration",
+      "disposition": "DIRECT",
+      "graph_role": "Physical node motion"
+    },
+    {
+      "current_fact": "position/heading/elevation in Raw",
+      "disposition": "ADDITIVE_EXPOSURE_REQUIRED",
+      "graph_role": "Physical node spatial/motion input"
+    },
+    {
+      "current_fact": "channel_rows endpoints + per-RB attenuation",
+      "disposition": "REINTERPRET_AND_EXPOSE",
+      "graph_role": "directed wireless Comm relation"
+    },
+    {
+      "current_fact": "task size/lifecycle",
+      "disposition": "DIRECT",
+      "graph_role": "Task demand/lifecycle"
+    },
+    {
+      "current_fact": "task_node/current_node/return_destination",
+      "disposition": "DERIVE_WITH_VALIDITY",
+      "graph_role": "typed Task->Agent relation candidates"
+    },
+    {
+      "current_fact": "slot_transfer_events / past_outcome_flow_service",
+      "disposition": "NOT_CURRENT_FLOW_STATE",
+      "graph_role": "past service outcome only"
+    },
+    {
+      "current_fact": "dag_edges",
+      "disposition": "DIRECT",
+      "graph_role": "Task->Task DAG"
+    },
+    {
+      "current_fact": "future Route/Comm/Comp/Mobility tensors",
+      "disposition": "NOT_CURRENT_GRAPH_STATE",
+      "graph_role": "future action conditioning"
+    }
+  ],
+  "definition_basis": {
+    "document": "D:\\shen\\OB\\科研\\PIJWM\\03物理-信息双图建模.md",
+    "read_only": true,
+    "sha256": "6f3e17b0691aa81c60c2ea1e76a1031d2f7f622abf4b40884e9ae4380953c15e"
+  },
+  "entity_membership": [
+    {
+      "entity_type": "vehicle",
+      "information_agent": true,
+      "physical": true,
+      "status": "FROZEN"
+    },
+    {
+      "entity_type": "uav",
+      "information_agent": true,
+      "physical": true,
+      "status": "FROZEN"
+    },
+    {
+      "entity_type": "rsu",
+      "information_agent": true,
+      "physical": true,
+      "status": "FROZEN"
+    },
+    {
+      "entity_type": "edge",
+      "information_agent": true,
+      "physical": null,
+      "reason": "physical only if coordinates have independent deployment meaning",
+      "status": "RESEARCHER_DECISION_REQUIRED"
+    },
+    {
+      "entity_type": "cloud",
+      "information_agent": true,
+      "physical": null,
+      "reason": "current [0,0,0] simulator position is not proof of spatial meaning",
+      "status": "RESEARCHER_DECISION_REQUIRED"
+    }
+  ],
+  "field_mappings": [
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "field_id": "physical.position_m",
+      "graph_role": "physical_node.dynamic_feature",
+      "mapping_class": "DIRECT",
+      "mask_policy": "presence plus per-coordinate observed mask required on exposure",
+      "note": "Definition 03 minimum spatial state; additive input extension required.",
+      "raw_source": "decisions[].entities[].position_m",
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "AVAILABLE_NOW",
+      "field_id": "physical.speed_mps",
+      "graph_role": "physical_node.dynamic_feature",
+      "mapping_class": "DIRECT",
+      "mask_policy": "entity_presence and entity_feature_mask",
+      "note": "Scalar speed; it is not an Information Agent resource.",
+      "raw_source": "decisions[].entities[].speed_mps",
+      "sample_source": "history[].entities[].speed_mps",
+      "temporal_role": "dynamic",
+      "tensor_source": "entity_raw_features/entity_features[..., speed_mps]"
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "field_id": "physical.motion_direction",
+      "graph_role": "physical_node.dynamic_feature",
+      "mapping_class": "REINTERPRET",
+      "mask_policy": "explicit observed mask; null is not zero direction",
+      "note": "Raw heading units differ by entity type and must be canonicalized before exposure.",
+      "raw_source": "decisions[].entities[].heading + heading_unit + elevation_rad",
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "AVAILABLE_NOW",
+      "field_id": "physical.canonical_acceleration_mps2",
+      "graph_role": "physical_node.dynamic_feature",
+      "mapping_class": "DERIVED",
+      "mask_policy": "canonical_acceleration_observed_mask propagated to entity_feature_mask",
+      "note": "Causal backward speed difference; simulator acceleration remains audit-only.",
+      "raw_source": "decisions[].entities[].canonical_acceleration_mps2",
+      "sample_source": "history[].entities[].canonical_acceleration_mps2",
+      "temporal_role": "dynamic",
+      "tensor_source": "entity_raw_features/entity_features[..., canonical_acceleration_mps2]"
+    },
+    {
+      "availability": "DERIVABLE_CAUSALLY",
+      "field_id": "physical.relative_position",
+      "graph_role": "physical_relation.dynamic_feature",
+      "mapping_class": "DERIVED",
+      "mask_policy": "both endpoints present and position masks true",
+      "note": "Construction requires additive position exposure.",
+      "raw_source": "derived from endpoint position_m",
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "DERIVABLE_CAUSALLY",
+      "field_id": "physical.distance",
+      "graph_role": "physical_relation.dynamic_feature",
+      "mapping_class": "DERIVED",
+      "mask_policy": "both endpoints present and position masks true",
+      "note": "Radius/kNN/radius+kNN is deliberately not decided in Step 4.1.",
+      "raw_source": "derived from endpoint position_m",
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "DERIVABLE_CAUSALLY",
+      "field_id": "physical.relative_motion",
+      "graph_role": "physical_relation.dynamic_feature",
+      "mapping_class": "DERIVED",
+      "mask_policy": "both endpoint motion masks true",
+      "note": "Requires canonical motion direction exposure.",
+      "raw_source": "derived from endpoint speed/direction",
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "AVAILABLE_NOW",
+      "field_id": "agent.entity_type",
+      "graph_role": "information_agent.static_type",
+      "mapping_class": "DIRECT",
+      "mask_policy": "agent presence; categorical padding is distinct",
+      "note": "Store once as type/static information, not as repeated continuous state.",
+      "raw_source": "decisions[].entities[].entity_type",
+      "sample_source": "static.input_entity_type_by_index",
+      "temporal_role": "static",
+      "tensor_source": "entity_type_index"
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "field_id": "agent.cpu_capacity_per_s",
+      "graph_role": "information_agent.dynamic_resource",
+      "mapping_class": "DIRECT",
+      "mask_policy": "observed_mask plus missing_reason",
+      "note": "Current Raw source is real and audited; frozen v4 sample/v2 tensor does not expose it.",
+      "raw_source": "decisions[].node_cpu_capacity_observation_rows[].capacity_per_s",
+      "sample_source": null,
+      "temporal_role": "decision-time dynamic observation",
+      "tensor_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "field_id": "agent.available_cpu",
+      "graph_role": "information_agent.dynamic_resource",
+      "mapping_class": "MISSING",
+      "mask_policy": "required if introduced",
+      "note": "Capacity is not the same as currently available CPU.",
+      "raw_source": null,
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "field_id": "agent.storage",
+      "graph_role": "information_agent.dynamic_resource",
+      "mapping_class": "MISSING",
+      "mask_policy": "required if introduced",
+      "note": "Legacy zero fill is not evidence of storage state.",
+      "raw_source": null,
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "RESEARCHER_DECISION_REQUIRED",
+      "field_id": "agent.service_load",
+      "graph_role": "information_agent.dynamic_resource",
+      "mapping_class": "RESEARCHER_DECISION_REQUIRED",
+      "mask_policy": "only if a non-derivable source is approved",
+      "note": "Do not duplicate a load that can be aggregated from explicit Task/Flow objects.",
+      "raw_source": null,
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "AVAILABLE_NOW",
+      "field_id": "task.data_size",
+      "graph_role": "task_node.demand",
+      "mapping_class": "DIRECT",
+      "mask_policy": "task_presence and task_feature_mask",
+      "note": "AirFogSim data-unit; current unit remains the frozen Raw unit.",
+      "raw_source": "decisions[].tasks[].task_size",
+      "sample_source": "history[].tasks[].task_size",
+      "temporal_role": "task-static demand",
+      "tensor_source": "task_raw_features/task_features[..., task_size]"
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "field_id": "task.return_size",
+      "graph_role": "task_node.demand",
+      "mapping_class": "MISSING",
+      "mask_policy": "required if exposed",
+      "note": "Simulator getter exists in legacy observer, but the frozen current Raw decision row does not contain it.",
+      "raw_source": null,
+      "sample_source": null,
+      "temporal_role": "task-static demand",
+      "tensor_source": null
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "field_id": "task.computation_demand",
+      "graph_role": "task_node.demand",
+      "mapping_class": "DIRECT",
+      "mask_policy": "task presence plus feature mask",
+      "note": "Do not substitute actual served CPU work.",
+      "raw_source": "decisions[].tasks[].task_cpu_work",
+      "sample_source": null,
+      "temporal_role": "task-static demand",
+      "tensor_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "field_id": "task.priority",
+      "graph_role": "task_node.demand",
+      "mapping_class": "MISSING",
+      "mask_policy": "required if exposed",
+      "note": "Available in simulator/legacy observer, absent from the frozen current Raw row.",
+      "raw_source": null,
+      "sample_source": null,
+      "temporal_role": "task-static demand",
+      "tensor_source": null
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "field_id": "task.transmission_progress",
+      "graph_role": "task_node.progress",
+      "mapping_class": "REINTERPRET",
+      "mask_policy": "task presence and current-state feature mask",
+      "note": "Past outcome and target labels cannot replace current decision-time input state.",
+      "raw_source": "decisions[].tasks[].transmitted_size",
+      "sample_source": "past outcome/target only; absent from current History observation",
+      "temporal_role": "dynamic",
+      "tensor_source": "past_outcome_task_features/target_task_features; absent from current task_features"
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "field_id": "task.computing_progress",
+      "graph_role": "task_node.progress",
+      "mapping_class": "DIRECT",
+      "mask_policy": "task presence and feature mask",
+      "note": "Actual per-slot CPU service is an outcome, not this cumulative current state.",
+      "raw_source": "decisions[].tasks[].computed_cpu_work",
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "field_id": "task.deadline_remaining",
+      "graph_role": "task_node.time_state",
+      "mapping_class": "MISSING",
+      "mask_policy": "required if exposed",
+      "note": "Frozen current Raw omits deadline; it therefore cannot derive remaining time.",
+      "raw_source": null,
+      "sample_source": null,
+      "temporal_role": "dynamic derived",
+      "tensor_source": null
+    },
+    {
+      "availability": "DERIVABLE_CAUSALLY",
+      "field_id": "task.elapsed_time",
+      "graph_role": "task_node.time_state",
+      "mapping_class": "DERIVED",
+      "mask_policy": "task presence and finite time fields",
+      "note": "Causal at decision time but not exposed by v4 sample/v2 tensor.",
+      "raw_source": "simulation_time_s - decisions[].tasks[].arrival_time_s",
+      "sample_source": null,
+      "temporal_role": "dynamic derived",
+      "tensor_source": null
+    },
+    {
+      "availability": "AVAILABLE_NOW",
+      "field_id": "task.lifecycle",
+      "graph_role": "task_node.lifecycle",
+      "mapping_class": "DIRECT",
+      "mask_policy": "task presence; padding/unknown distinct",
+      "note": "Current lifecycle vocabulary is frozen in Step 3.3.",
+      "raw_source": "decisions[].tasks[].lifecycle",
+      "sample_source": "history[].tasks[].lifecycle",
+      "temporal_role": "dynamic categorical",
+      "tensor_source": "task_lifecycle_index"
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "field_id": "comm.csi",
+      "graph_role": "information_comm_relation.dynamic_feature",
+      "mapping_class": "DIRECT",
+      "mask_policy": "channel row observed_mask plus missing_reason and RB mask",
+      "note": "Wireless directed per-RB attenuation; it is not a Physical relation feature.",
+      "raw_source": "decisions[].channel_rows[].channel_attenuation_db",
+      "sample_source": "relation endpoints only",
+      "temporal_role": "decision-time dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "field_id": "comm.type",
+      "graph_role": "information_comm_relation.static_or_categorical",
+      "mapping_class": "DIRECT",
+      "mask_policy": "relation presence and type mask",
+      "note": "Current Raw channel rows cover directed wireless types; wired decision-time rows are absent.",
+      "raw_source": "decisions[].channel_rows[].channel_type for wireless",
+      "sample_source": null,
+      "temporal_role": "relation categorical",
+      "tensor_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "field_id": "flow.total_data",
+      "graph_role": "information_flow_relation.dynamic_feature",
+      "mapping_class": "MISSING",
+      "mask_policy": "flow presence and feature mask",
+      "note": "No explicit current stateful Flow total exists in frozen Raw.",
+      "raw_source": null,
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "field_id": "flow.remaining_data",
+      "graph_role": "information_flow_relation.dynamic_feature",
+      "mapping_class": "MISSING",
+      "mask_policy": "flow presence and feature mask",
+      "note": "past_outcome_flow_service is a hop event and cannot be reused as remaining state.",
+      "raw_source": null,
+      "sample_source": null,
+      "temporal_role": "dynamic",
+      "tensor_source": null
+    },
+    {
+      "availability": "AVAILABLE_NOW",
+      "field_id": "dag.direction",
+      "graph_role": "information_dag_relation.structure",
+      "mapping_class": "DIRECT",
+      "mask_policy": "dag_mask and endpoint task presence",
+      "note": "j -> k means k depends on j; DAG has no minimum continuous feature.",
+      "raw_source": "decisions[].dag_edges[].source_task_id -> target_task_id",
+      "sample_source": "history[].dag_relations",
+      "temporal_role": "current directed structure",
+      "tensor_source": "dag_edges + dag_mask"
+    }
+  ],
+  "forbidden_wrong_placements": [
+    {
+      "fact": "CSI",
+      "forbidden_role": "physical_edge_feature",
+      "required_role": "information_comm_relation_state"
+    },
+    {
+      "fact": "rate_or_actual_service",
+      "forbidden_role": "physical_edge_feature",
+      "required_role": "execution_outcome"
+    },
+    {
+      "fact": "RB_allocation",
+      "forbidden_role": "physical_edge_feature",
+      "required_role": "comm_action"
+    },
+    {
+      "fact": "CPU_allocation",
+      "forbidden_role": "information_agent_state",
+      "required_role": "comp_action"
+    },
+    {
+      "fact": "actual_CPU_service",
+      "forbidden_role": "comp_action",
+      "required_role": "execution_outcome"
+    },
+    {
+      "fact": "source_host_exec_ret",
+      "forbidden_role": "task_continuous_feature",
+      "required_role": "typed_task_agent_relation"
+    },
+    {
+      "fact": "past_hop_service",
+      "forbidden_role": "current_flow_remaining_state",
+      "required_role": "past_execution_outcome"
+    },
+    {
+      "fact": "DAG",
+      "forbidden_role": "dependency_data_flow",
+      "required_role": "task_dependency_relation"
+    },
+    {
+      "fact": "position_or_speed",
+      "forbidden_role": "information_agent_resource_feature",
+      "required_role": "physical_node_feature"
+    },
+    {
+      "fact": "future_action_result",
+      "forbidden_role": "current_graph_state",
+      "required_role": "future_target_or_execution_outcome"
+    },
+    {
+      "fact": "active_task_count",
+      "forbidden_role": "physical_edge_feature",
+      "required_role": "derived_information_load_if_approved"
+    },
+    {
+      "fact": "allocated_RB_count",
+      "forbidden_role": "physical_edge_feature",
+      "required_role": "comm_action_or_outcome_audit"
+    }
+  ],
+  "graph_contract": {
+    "information": {
+      "node_types": [
+        "agent",
+        "task"
+      ],
+      "parallel_relation_invariant": "Comm and Flow remain distinct even with identical Agent endpoints; multiple Flow edges may coexist",
+      "relation_types": [
+        "comm",
+        "task_agent_src",
+        "task_agent_host",
+        "task_agent_exec",
+        "task_agent_ret",
+        "flow",
+        "dag"
+      ]
+    },
+    "physical": {
+      "edge_construction_invariant": "depends on current physical spatial state, never communication/task/RB activity",
+      "node_types": [
+        "physical_entity"
+      ],
+      "relation_types": [
+        "physical_spatial"
+      ],
+      "topology_policy": "RESEARCHER_DECISION_REQUIRED: radius vs kNN vs radius+kNN"
+    }
+  },
+  "graph_readiness": {
+    "blocking_gaps": [
+      "physical.position_m",
+      "comm.wireless_csi",
+      "comm.wired_state",
+      "agent.cpu_capacity_per_s",
+      "task.demand_progress_time",
+      "task_agent.typed_relations",
+      "flow.current_state"
+    ],
+    "decision": "DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1",
+    "minimum_definition_supported_by_current_tensor": false
+  },
+  "identity_contract": {
+    "agent_index_source": "static.input_entity_index.physical",
+    "flow_index_requirement": "new stable stateful Flow index; current event-derived flow index is not sufficient",
+    "physical_agent_alignment": "same real entity ID and same stable numeric slot where both representations exist",
+    "physical_index_source": "static.input_entity_index.physical",
+    "presence_rule": "Physical and Agent presence are separate masks even when identity index is shared",
+    "real_entity_id_source": "frozen Step 02 stable entity ID",
+    "task_index_source": "static.input_entity_index.task"
+  },
+  "old_implementation_reuse_conflict": [
+    {
+      "classification": "DIRECT_REUSE",
+      "component": "formal_graph_ops_v1.masked_index_mean",
+      "reason": "generic padded-index masked aggregation; no field semantics"
+    },
+    {
+      "classification": "MINOR_MODIFICATION",
+      "component": "formal_graph_ops_v1.dag_message_pass",
+      "reason": "direction matches parent j -> child k, but message passing is outside Step 4.1"
+    },
+    {
+      "classification": "MINOR_MODIFICATION",
+      "component": "formal_graph_ops_v1.couple_agent_physical",
+      "reason": "identity attachment idea reusable; coupling network is not authorized"
+    },
+    {
+      "classification": "STRUCTURAL_CHANGE",
+      "component": "formal_graph_ops_v1.information_message_pass",
+      "reason": "models only Agent/Flow endpoint exchange and does not cover typed Comm/Task-Agent/DAG relation semantics"
+    },
+    {
+      "classification": "DO_NOT_REUSE_AS_CURRENT_MAPPING",
+      "component": "formal_graph_ops_v1.couple_flow_bearer",
+      "reason": "binds Flow to old physical/channel edge and violates the strict semantic split"
+    },
+    {
+      "classification": "STRUCTURAL_CHANGE",
+      "component": "airfogsim_tensor_v2.NODE_FEATURES",
+      "reason": "mixes physical position/motion with CPU/storage in one node vector"
+    },
+    {
+      "classification": "DO_NOT_REUSE_AS_PHYSICAL_EDGE",
+      "component": "airfogsim_tensor_v2.EDGE_FEATURES",
+      "reason": "mixes distance with CSI/rate/task/RB facts"
+    },
+    {
+      "classification": "EVIDENCE_ONLY",
+      "component": "airfogsim_tensor_v2.FLOW_FEATURES",
+      "reason": "names target stateful fields, but current frozen Raw does not substantiate them"
+    },
+    {
+      "classification": "REINTERPRET",
+      "component": "airfogsim_tensor_v2.TASK_ENDPOINT_FIELDS",
+      "reason": "source/host/exec/ret must become typed Task->Agent relations, not Task features"
+    },
+    {
+      "classification": "STRUCTURAL_CHANGE",
+      "component": "formal_dual_graph_world_model_v1",
+      "reason": "old physical_edge_state/flow path and coupling consume mixed semantics; no model reuse is authorized here"
+    },
+    {
+      "classification": "DIRECT_REUSE",
+      "component": "step3_3_model_input_tensor_v1 stable IDs/masks",
+      "reason": "stable history-union identity, presence, masks, DAG endpoints and action references remain authoritative"
+    }
+  ],
+  "relations": [
+    {
+      "allowed_current_state_sources": [
+        "position_m",
+        "speed_mps",
+        "motion_direction",
+        "canonical_acceleration_mps2"
+      ],
+      "directed": "construction policy not frozen",
+      "endpoint_index_namespace": "static.input_entity_index.physical filtered by approved physical membership",
+      "relation": "physical_spatial",
+      "source": "physical_node",
+      "state_source_status": "DERIVABLE_CAUSALLY",
+      "target": "physical_node"
+    },
+    {
+      "allowed_current_state_sources": [
+        "decision channel_rows channel_attenuation_db",
+        "channel_type",
+        "observed_mask"
+      ],
+      "directed": true,
+      "endpoint_index_namespace": "static.input_entity_index.physical reused as agent identity namespace",
+      "relation": "comm",
+      "source": "agent",
+      "state_source_status": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "target": "agent"
+    },
+    {
+      "directed": true,
+      "endpoint_index_namespace": "task + physical/agent input namespaces",
+      "raw_source": "tasks[].task_node_id",
+      "relation": "task_agent_src",
+      "source": "task",
+      "state_source_status": "DERIVABLE_CAUSALLY",
+      "target": "agent",
+      "validity": "task present and referenced agent present"
+    },
+    {
+      "directed": true,
+      "endpoint_index_namespace": "task + physical/agent input namespaces",
+      "raw_source": "tasks[].current_node_id",
+      "relation": "task_agent_host",
+      "source": "task",
+      "state_source_status": "DERIVABLE_CAUSALLY",
+      "target": "agent",
+      "validity": "current decision-time location/host only; never a newly selected A_t^Route target"
+    },
+    {
+      "directed": true,
+      "endpoint_index_namespace": "task + physical/agent input namespaces",
+      "raw_source": "tasks[].current_node_id conditioned on computing lifecycle",
+      "relation": "task_agent_exec",
+      "source": "task",
+      "state_source_status": "DERIVABLE_CAUSALLY",
+      "target": "agent",
+      "validity": "only when current lifecycle establishes execution"
+    },
+    {
+      "directed": true,
+      "endpoint_index_namespace": "task + physical/agent input namespaces",
+      "raw_source": "tasks[].return_destination_id",
+      "relation": "task_agent_ret",
+      "source": "task",
+      "state_source_status": "DERIVABLE_CAUSALLY",
+      "target": "agent",
+      "validity": "non-null current decision field and endpoint present"
+    },
+    {
+      "allowed_current_state_sources": [],
+      "associated_object": "task",
+      "directed": true,
+      "endpoint_index_namespace": "physical/agent input namespace",
+      "explicitly_not_equivalent": [
+        "slot_transfer_events",
+        "past_outcome_flow_service",
+        "delivered_data_by_task"
+      ],
+      "multiedge": true,
+      "relation": "flow",
+      "source": "agent",
+      "state_source_status": "RAW_INSUFFICIENT",
+      "target": "agent",
+      "types": [
+        "Input",
+        "Return",
+        "DepData"
+      ]
+    },
+    {
+      "allowed_current_state_sources": [
+        "dag_edges source_task_id/target_task_id"
+      ],
+      "continuous_feature": null,
+      "directed": true,
+      "direction_semantics": "j -> k means task k depends on task j",
+      "endpoint_index_namespace": "static.input_entity_index.task",
+      "relation": "dag",
+      "source": "task",
+      "state_source_status": "AVAILABLE_NOW",
+      "target": "task"
+    }
+  ],
+  "required_additive_data_extensions": [
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "item": "physical.position_m",
+      "minimum_for_03": true,
+      "required_change": "additive Sample/Tensor input exposure with mask and unit"
+    },
+    {
+      "availability": "DERIVABLE_CAUSALLY",
+      "item": "physical.spatial_relations",
+      "minimum_for_03": true,
+      "required_change": "derive only after position/motion exposure; topology policy remains undecided"
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "item": "comm.wireless_csi",
+      "minimum_for_03": true,
+      "required_change": "add directed per-RB CSI/type/mask to Sample/Tensor"
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "item": "comm.wired_state",
+      "minimum_for_03": true,
+      "required_change": "define and collect decision-time wired relation/state; outcome service is not state"
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "item": "agent.cpu_capacity_per_s",
+      "minimum_for_03": true,
+      "required_change": "additive Sample/Tensor resource exposure with observed mask"
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "item": "agent.available_cpu_storage",
+      "minimum_for_03": false,
+      "required_change": "only add if selected and genuinely observed; do not zero-fill"
+    },
+    {
+      "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+      "item": "task.demand_progress_time",
+      "minimum_for_03": true,
+      "required_change": "expose CPU demand and current progress; extend Raw for return size/priority/deadline"
+    },
+    {
+      "availability": "DERIVABLE_CAUSALLY",
+      "item": "task_agent.typed_relations",
+      "minimum_for_03": true,
+      "required_change": "materialize Src/Host/Exec/Ret with lifecycle-conditioned validity and stable entity index"
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "item": "flow.current_state",
+      "minimum_for_03": true,
+      "required_change": "collect stable Flow ID/type/endpoints/presence/total/remaining; include Input/Return/DepData"
+    },
+    {
+      "availability": "RESEARCHER_DECISION_REQUIRED",
+      "item": "physical_membership.edge_cloud",
+      "minimum_for_03": false,
+      "required_change": "decide whether simulator coordinates carry independent spatial meaning; Info Agent remains allowed"
+    }
+  ],
+  "schema_version": "PI-JWM-Step-4.1-PI-Graph-Object-Field-Relation-Mapping-v1",
+  "scope": {
+    "cross_graph_coupling_implemented": false,
+    "encoder_implemented": false,
+    "formal_dataset": false,
+    "gpu": false,
+    "graph_builder_implemented": false,
+    "locked_test": false,
+    "mapping_only": true,
+    "message_passing_implemented": false,
+    "training": false
+  }
+}

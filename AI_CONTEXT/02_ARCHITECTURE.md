@@ -60,11 +60,14 @@ Source of truth：以下实现事实来自所列源码与冻结协议；运行�
 
 ## 6. 新定义下的实现状态
 
-- 现有 `physical_edge` 混合空间、CSI、rate、任务数和 RB，不符合目标严格双图划分。
-- 独立 Agent state、Communication relation、Task-Agent typed relation 和四类动作合同尚未完整实现。
+- STEP 4.1 已冻结目标 mapping：Physical 只包含实体空间/运动与空间关系；Information Nodes 为 Agent/Task，Relations 为 Comm、Src/Host/Exec/Ret、Flow、DAG。
+- 现有 `physical_edge` 混合空间、CSI、rate、任务数和 RB，不符合目标严格双图划分，禁止按原语义继续使用。
+- 独立 Agent/Communication/Task-Agent/current stateful Flow graph 尚未实现；四类动作 tensor 已冻结但尚未接入新图或模型。
 - 旧 entity RSSM 对 node/physical_edge/flow/task 均维护随机状态，与新定义的未知动态边界不同。
 - base 的逐步规则和 RSSM 修正尚未组成“预测→规则→重构图→下一步”的完整闭环。
 - 因此现有模型、tensor、checkpoint 和结果为 Historical / Archived；新定义模型尚未实现。
+
+STEP 4.1 source of truth：`docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING_V1.md` 与 `code/artifacts/protocols/pi_jwm_step4_1_pi_graph_mapping_v1_20260919/`。当前 readiness 是 `DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1`。
 
 ## 7. 当前不属于新定义正式架构的内容
 
