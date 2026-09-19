@@ -12,11 +12,11 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 2.4` 已完成；Raw Trajectory Layer / 定义 01 已完成并冻结。通信最终证据位于 `code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/`。
-- 新定义实现状态：Raw 因果可观测、四类动作 offload/return、Decision CSI/CPU capacity、slot Outcome 与双 acceleration 语义已验收。Dataset/Tensor、双图、World Model、Loss、Planner 仍未开始。
+- 当前 Step：`STEP 3.2` 已完成最小验证；Raw Trajectory Layer / 定义 01 和 STEP 3.1F contract 已冻结。batch evidence 位于 `code/artifacts/protocols/pi_jwm_step3_2_raw_to_dataset_batch_v1_20260919/`。
+- 新定义实现状态：Raw 因果可观测、四类动作 offload/return、Decision CSI/CPU capacity、slot Outcome 与双 acceleration 语义已验收；STEP 3.2 仅完成 JSON-native batch/split/preprocessing validation。Tensor、双图、World Model、Loss、Planner 仍未开始。
 - 审计结论：时间因果、稳定 ID/index、mask/split 和部分规则/评价工具可复用；严格双图、四类动作、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环需要结构性修改或新增实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
-- `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step 未训练、无 GPU。
+- `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step `training=false`、`gpu=false`。
 
 ## 当前最重要问题
 
@@ -55,6 +55,7 @@
 - 2026-09-19：STEP 3.1 冻结最小 Model-ready Sample & Tensor Contract；`H=2/L=2` 真实样本、四类 action、input/target index 隔离和 mask 语义通过机器检查。正式 batch/split builder 未开始。
 - 2026-09-19：STEP 3.1R 修正 History `[t-H+1,t]`、固定 index/presence、真实 DAG 接线、typed target namespaces 和 relation endpoints；v2 Raw 与最小样本证据已重建。
 - 2026-09-19：STEP 3.1F 及其最小 PATCH 已冻结；History 保留 past Action/Outcome，input index 使用 History causal union，Future Action 先做 anchor visibility 检查再引用同一 static index，future-reference 观察审计 JSON 已纳入 provenance/Git。
+- 2026-09-19：STEP 3.2 完成最小 non-locked batch/split/preprocessing validation；3 trajectories、12 windows、train-only mask-aware stats、deterministic rebuild 和 round-trip 已有 artifact/test 证据，不代表正式 Dataset。
 
 Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能声明已开放”的证据。
 

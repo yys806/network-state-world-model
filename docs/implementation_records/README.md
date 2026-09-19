@@ -16,6 +16,7 @@
 | STEP 3.1 | [STEP_03_1_MODEL_READY_SAMPLE_TENSOR_CONTRACT.md](STEP_03_1_MODEL_READY_SAMPLE_TENSOR_CONTRACT.md) | Model-ready sample、时间窗口、index/mask、四类 action 与最小真实 tensor contract | COMPLETE；经 STEP 3.1R 修正；正式大数据集未开始 |
 | STEP 3.1R | [STEP_03_1R_MODEL_READY_SAMPLE_CONTRACT_CORRECTION.md](STEP_03_1R_MODEL_READY_SAMPLE_CONTRACT_CORRECTION.md) | 修正 History、固定 index/presence、真实 DAG、typed target index、relation 和 Action reference | COMPLETE；STEP 3.2 未开始 |
 | STEP 3.1F | [STEP_03_1F_MODEL_READY_HISTORY_CONTRACT_FINALIZATION.md](STEP_03_1F_MODEL_READY_HISTORY_CONTRACT_FINALIZATION.md) | 收尾 History 中 past Action/Outcome、History union index、历史 relation/DAG/Flow 对齐、Future Action namespace 修正和 future-reference 观察审计 | COMPLETE；含 3.1F-PATCH；STEP 3.2 未开始 |
+| STEP 3.2 | [STEP_03_2_RAW_TO_DATASET_BATCH_SPLIT_PREPROCESSING.md](STEP_03_2_RAW_TO_DATASET_BATCH_SPLIT_PREPROCESSING.md) | Raw-to-Dataset 批量、trajectory-level split、causal windows、train-only preprocessing、batch/load 验证 | COMPLETE；non-locked validation bundle；正式 Dataset/训练未开始 |
 
 不预建貌似已经执行的后续 Step 文件。`00–06` 是研究定义章节，不是可以自动执行的七个工程 Step。
 

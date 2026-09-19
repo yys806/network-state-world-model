@@ -2676,3 +2676,6 @@ GPU 执行证据已进一步确认该方法能在 RTX 4090 上按 deterministic 
 Step 2.4 将通信 Outcome 的真实语义最终固定为三层字段：无线服务量 `wireless_delivered_data_by_task`、有线服务量 `wired_delivered_data_by_task`，以及只有两部分均真实可观测时才按任务求和得到的 `delivered_data_by_task`。有线服务量直接来自 AirFogSim `WiredNetworkManager.step(simulation_interval)` 的返回结果，并与任务 transmitted progress 和 lifecycle 对齐。当前 slot 已观测但无服务使用空 map `{}` 与 observed mask；接口不可恢复使用 `null`、missing mask 和原因，不能把两者混为零服务。该通信分层属于 Raw Trajectory Layer，尚未进入 Dataset/Tensor 或模型。
 
 新定义的 Raw 层只把 `arrival_time_s <= decision_time_s` 的任务放入当前 `O_t`、History 和 input-side Entity Index。AirFogSim `_to_generate_task_infos` 中更晚到达的 schedule 可以作为 raw/internal metadata 保留，但不得成为当前模型输入。物理加速度分成两种：AirFogSim 报告值保留为 `raw_simulator_acceleration_mps2` 审计字段；PI-JWM canonical physical acceleration 固定为只使用当前与历史速度的 `(v_t-v_{t-1})/delta_t`。首个有效时刻或实体缺少历史速度时，canonical 值为 `null` 且 mask 为 false，禁止伪造 0。该边界已由 Step 2.3 真实轨迹验证；Dataset/Tensor 如何承载它尚未开始。
+# 2026-09-19 STEP 3.2 工程边界
+
+STEP 3.2 只验证 Raw 到 model-ready batch 的流水线：先按 trajectory 切分，再在各 split 内构造冻结的 H=2/L=2 causal window，连续字段统计只来自 train 且遵守 presence/feature mask。当前产物为 non-locked observation-only validation bundle，不改变 Raw、双图、World Model、Loss、Planner 或训练定义。

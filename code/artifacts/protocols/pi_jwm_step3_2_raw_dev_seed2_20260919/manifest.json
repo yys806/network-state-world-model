@@ -1,0 +1,34 @@
+{
+  "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Manifest-v2-dag-amendment",
+  "artifact": "real_communication_outcome_semantics.json",
+  "artifact_sha256": "02f186f5e7f109760c85a6bad879c7e2dd745ea015179c85850313cac3256bad",
+  "passed": true,
+  "all_checks": {
+    "real_airfogsim_environment": true,
+    "real_wired_link_configured": true,
+    "wireless_event_capture_observed": true,
+    "wired_event_capture_observed": true,
+    "wired_event_source_is_real_manager_result": true,
+    "transport_explicit_on_all_events": true,
+    "slot_maps_have_explicit_observation_semantics": true,
+    "empty_map_is_not_missing": true,
+    "total_equals_wireless_plus_wired": true,
+    "transmitted_progress_matches_remaining_before": true,
+    "completed_transfer_lifecycle_is_aligned": true,
+    "wired_route_task_reached_wired_service": true,
+    "trajectory_decision_outcome_alignment": true,
+    "scope_non_locked_no_training_no_gpu": true
+  },
+  "source_files": {
+    "code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py": "74c4f4432323a06fe9a79694042d690f81009d504ffb5d4f16e19f1a75d50123",
+    "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de",
+    "code/scripts/run_p2_single_step_collector_preflight_v1.py": "3fd37c04283e02901a55c66dc87c0bdea3a1c53d1dc07e2e18a98237b97e62c1",
+    "code/src/pi_jwm/raw_trajectory_causal_contract_v1.py": "a784ee732e2ec5c4b4583bbc73e695ddceab7d68a7179adf7b93ee5642daf1e1",
+    "code/src/pi_jwm/raw_single_decision_step_contract_v1.py": "261b05d96c3164903c5a3aa399bd987570ee76cc95098885dc2edc6a22fb8837",
+    "code/reference/AirFogSim/airfogsim/airfogsim_env.py": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+    "code/reference/AirFogSim/airfogsim/manager/wired_manager.py": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe",
+    "code/reference/AirFogSim/airfogsim/entities/task.py": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0",
+    "code/reference/AirFogSim/airfogsim/manager/task_manager.py": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104"
+  },
+  "git_tracking_requirement": "artifact and manifest must be force-added"
+}

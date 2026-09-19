@@ -1,0 +1,28 @@
+{
+  "checks": {
+    "batch_scope_non_locked": {
+      "formal_dataset": false,
+      "gpu": false,
+      "locked_test": false,
+      "training": false
+    },
+    "causal_windows_only": true,
+    "deterministic_rebuild": true,
+    "no_trajectory_cross_split": true,
+    "train_only_normalization_fit": true,
+    "trajectory_level_split": true
+  },
+  "formal_dataset": false,
+  "gpu": false,
+  "locked_test_accessed": false,
+  "observation_only": true,
+  "passed": true,
+  "schema_version": "PI-JWM-Step-3.2-Validation-Report-v1",
+  "split_counts": {
+    "dev_train": 8,
+    "dev_validation": 4
+  },
+  "training": false,
+  "trajectory_count": 3,
+  "window_count": 12
+}

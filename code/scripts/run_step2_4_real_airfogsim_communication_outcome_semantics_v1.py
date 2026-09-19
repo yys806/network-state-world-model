@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 import sys
+import argparse
 from pathlib import Path
 
 
@@ -132,16 +133,22 @@ def _planned_comp_for_observed_nodes(env) -> tuple[list[dict[str, object]], dict
 
 
 def main() -> None:
-    if OUTPUT.exists():
-        raise FileExistsError(f"refusing to overwrite existing artifact directory: {OUTPUT}")
+    parser = argparse.ArgumentParser(description="Collect one non-locked Step 2.4 trajectory")
+    parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--trajectory-id", default=TRAJECTORY_ID)
+    parser.add_argument("--output-dir", type=Path, default=OUTPUT)
+    args = parser.parse_args()
+    output = Path(args.output_dir)
+    if output.exists():
+        raise FileExistsError(f"refusing to overwrite existing artifact directory: {output}")
 
     old_cwd = os.getcwd()
     env = None
-    step23.TRAJECTORY_ID = TRAJECTORY_ID
+    step23.TRAJECTORY_ID = str(args.trajectory_id)
     try:
         os.chdir(CODE / "reference" / "AirFogSim" / "examples")
         env, task_scheduler, communication_scheduler, _, config = step23._build_environment(
-            0,
+            args.seed,
             5.0,
             wired_edges=WIRED_EDGES,
         )
@@ -438,7 +445,7 @@ def main() -> None:
             "environment": {
                 "conda_env": "airfogsim",
                 "airfogsim_source": "code/reference/AirFogSim",
-                "seed": 0,
+                "seed": args.seed,
                 "config_hash": hashlib.sha256(
                     json.dumps(config, sort_keys=True, default=str).encode()
                 ).hexdigest(),
@@ -475,8 +482,8 @@ def main() -> None:
             "checks": checks,
             "scope": {"non_locked": True, "training": False, "gpu": False, "locked_test": False},
         }
-        OUTPUT.mkdir(parents=True, exist_ok=False)
-        artifact = OUTPUT / "real_communication_outcome_semantics.json"
+        output.mkdir(parents=True, exist_ok=False)
+        artifact = output / "real_communication_outcome_semantics.json"
         write_json(artifact, payload)
         sources = (
             Path(__file__),
@@ -501,8 +508,8 @@ def main() -> None:
             },
             "git_tracking_requirement": "artifact and manifest must be force-added",
         }
-        write_json(OUTPUT / "manifest.json", manifest)
-        print(json.dumps({"output": str(OUTPUT), "checks": checks}, ensure_ascii=False, indent=2))
+        write_json(output / "manifest.json", manifest)
+        print(json.dumps({"output": str(output), "checks": checks}, ensure_ascii=False, indent=2))
     finally:
         if env is not None:
             env.close()

@@ -1,0 +1,30 @@
+{
+  "features": {
+    "entity.canonical_acceleration_mps2": {
+      "count": 112,
+      "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+      "mean": 7.447306496125759,
+      "source_field": "canonical_acceleration_mps2",
+      "std": 25.682056451941545,
+      "zero_variance_handling": "population_std"
+    },
+    "entity.speed_mps": {
+      "count": 128,
+      "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+      "mean": 2.265105350897042,
+      "source_field": "speed_mps",
+      "std": 4.099410491487269,
+      "zero_variance_handling": "population_std"
+    },
+    "task.task_size": {
+      "count": 71,
+      "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+      "mean": 0.4396624166358481,
+      "source_field": "task_size",
+      "std": 0.12376278283580429,
+      "zero_variance_handling": "population_std"
+    }
+  },
+  "schema_version": "PI-JWM-Step-3.2-Train-Only-Normalization-v1",
+  "source_split": "dev_train"
+}

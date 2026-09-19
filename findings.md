@@ -1,5 +1,12 @@
 # Findings
 
+## 2026-09-19 STEP 3.2 findings
+
+- Existing Step 2.x Raw version directories were one seed-0 trajectory lineage, not independent split members; treating versions as trajectories would leak provenance.
+- Fresh seed 1/2 non-locked collector runs passed all Raw checks without schema or simulator changes.
+- A mask test exposed that object-level `feature_mask[field]=false` must override the field wrapper mask; the implementation now combines both masks and ignores masked extremes.
+- The resulting bundle is observation-only validation evidence, not a formal Dataset or generalization result.
+
 ## 2026-09-19 STEP 3.1
 
 - 新定义 `02数据集构建与模型输入.md` 要求已落实为最小合同；input-side index 不使用未来窗口 union，未来新对象在 target-side index 表达。

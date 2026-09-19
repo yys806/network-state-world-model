@@ -73,3 +73,7 @@ Unverified：没有代码、config、experiment 或可读 audit 支持的问题�
 ## 2026-09-19
 
 The real `airfogsim` conda environment completed Step 2.1–2.3 acceptance. The earlier optional-dependency note is historical and no longer blocks Raw-layer verification.
+# 2026-09-19 STEP 3.2 boundary
+
+- The small bundle covers only three short development trajectories and cannot support formal split-ratio, scenario-coverage, generalization, or Dataset claims.
+- Tensor/model/loss/planner integration remains unimplemented; `formal_performance_claim_ready=false`, `gpu=false`, `training=false`, `locked_test_accessed=false`.

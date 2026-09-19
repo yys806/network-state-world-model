@@ -1,0 +1,17 @@
+{
+  "files": {
+    "batch.json": "2e1a873d150ec010fba84079ee53ae99b6894630cc439e5849095cb295a7a739",
+    "normalized_samples.json": "88fb390883a0545ae76b9ecf2cf094eb49a3dccf55510dc6468523783103f3c3",
+    "train_normalization_stats.json": "7221f58b1a213e543c49f46e39d63a14343a727bfd2a886ce5579ff3574e836e"
+  },
+  "observation_only": true,
+  "schema_version": "PI-JWM-Step-3.2-Raw-to-Dataset-Batch-v1",
+  "scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "locked_test": false,
+    "training": false
+  },
+  "source_policy": "reuse frozen Step 2.4 Raw collector; no schema or simulator changes",
+  "validation_report_sha256": "301c244ce7f62c1823fd3ab6140c987529dabec5fd9702d378d726cba4cccd07"
+}

@@ -1,5 +1,12 @@
 # 2026-08-26 双约束实施计划 v2
 
+## 2026-09-19 STEP 3.2
+
+- Scope: Raw -> trajectory-level split -> causal H=2/L=2 windows -> train-only masked preprocessing -> batch/load.
+- Completed: seed 1/2 non-locked real trajectories, 3-trajectory bundle, 12 windows, deterministic manifest, stats, apply and round-trip.
+- Gate: `formal_dataset=false`, `training=false`, `gpu=false`, `locked_test_accessed=false`; no Tensor/model/loss/planner work.
+- Next: researcher review; do not automatically enter a later Step.
+
 ## 2026-09-19 STEP 3.1 execution note
 
 - Scope: freeze minimal Raw Trajectory -> Model-ready Sample -> Tensor Contract only.

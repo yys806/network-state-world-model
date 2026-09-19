@@ -1,5 +1,11 @@
 # Progress
 
+## 2026-09-19 STEP 3.2 completion
+
+- Implemented batch/split/preprocessing module and builder; reused frozen Step 2.4 collector with explicit seed/output arguments.
+- Validation bundle: 3 independent trajectories, 12 windows, dev_train 8 / dev_validation 4; trajectory isolation, train-only mask-aware stats, deterministic rebuild and round-trip passed.
+- Focused tests: Step 3.2 5/5, Step 3.1F model-ready 12/12. GPU=false, training=false, locked_test=false.
+
 ## 2026-09-19 STEP 3.1
 
 - 已完成最小真实 Model-ready Sample & Tensor Contract：`H=2/L=2`、因果 History、Future Action/Target 对齐、input/target index 分离、四类 action、presence/feature mask、通信 service/task progress 分离。

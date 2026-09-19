@@ -2047,6 +2047,21 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.build_step3_2_raw_to_dataset_batch_v1",
+        "tests.test_step3_2_batch_preprocessing_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step3_2_batch_preprocessing_v1",
+      "path": "code/src/pi_jwm/step3_2_batch_preprocessing_v1.py",
+      "test_files": [
+        "code/tests/test_step3_2_batch_preprocessing_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
         "scripts.run_r3_cpu_preflight",
         "scripts.run_r4_gpu_screening",
         "tests.test_teacher_evaluation_v3"
@@ -3096,6 +3111,18 @@
       "lifecycle_status": "support",
       "module": "scripts.build_step3_1_minimal_real_model_ready_sample_v1",
       "path": "code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step3_2_batch_preprocessing_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step3_2_raw_to_dataset_batch_v1",
+      "path": "code/scripts/build_step3_2_raw_to_dataset_batch_v1.py",
       "test_files": []
     },
     {
@@ -8977,6 +9004,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_single_step_collector_contract_v1",
       "path": "code/tests/test_single_step_collector_contract_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step3_2_batch_preprocessing_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step3_2_batch_preprocessing_v1",
+      "path": "code/tests/test_step3_2_batch_preprocessing_v1.py",
       "test_files": []
     },
     {
