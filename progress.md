@@ -18,6 +18,13 @@
 - 已加入真实 slot time-grid 与 execution start/end 对齐检查，time-gap fixture 在 window construction 前拒绝。
 - development batch future-reference audit：12 candidate、12 constructed、0 unresolved window、0 unresolved reference，结果仅 observation。
 - normalization metadata 已保存 `m/s`、`m/s^2`、`AirFogSim data-unit`；presence=false 极端 padding 不改变 train stats。
+
+## 2026-09-19 STEP 3.2-PATCH-RECEIPT completion
+
+- 修正 validation receipt 顶层 `passed`：由全部 required isolation checks、deterministic rebuild 和四项 non-locked scope boolean 逻辑 AND 计算。
+- 新增 negative fixture：人为设置 `scope.gpu=true` 后，required check 为 false 且整体 acceptance 为 false。
+- provenance contract version 改为直接复用冻结 `model_ready_sample_contract_v1.SCHEMA_VERSION`。
+- 最终 receipt 重新生成，`passed=true`，STEP 3.2 正式 COMPLETE / FROZEN。
 - validation report 改为从最终 bundle/provenance/stats 计算；仍为 formal_dataset=false、training=false、gpu=false、locked_test_accessed=false。
 
 ## 2026-08-26 双约束计划重构（本次会话）

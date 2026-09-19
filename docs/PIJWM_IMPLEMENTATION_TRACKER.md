@@ -80,6 +80,8 @@ STEP 3.2 已完成最小 non-locked validation：3 条独立 development traject
 
 STEP 3.2-PATCH 已补齐 Dataset isolation evidence：Raw provenance 含真实 trajectory/seed/source SHA/config lineage/time range/slot duration/sample contract；time-grid 与 step start/end 对齐在 window construction 前检查；train/validation trajectory 无交集；batch future-reference audit 独立保存并统计 12/12/0/0，仍为 observation-only；normalization 单位为 `m/s`、`m/s^2`、`AirFogSim data-unit`。
 
+STEP 3.2-PATCH-RECEIPT 已修正最终机器验收：顶层 `passed` 现在是全部 required checks 与 `locked_test/training/gpu/formal_dataset=false` scope checks 的逻辑 AND；负向 fixture 已证明单项失败会使 `passed=false`；provenance contract version 直接复用冻结的 `model_ready_sample_contract_v1.SCHEMA_VERSION`。STEP 3.2 现正式 COMPLETE / FROZEN。
+
 ## 下一步边界
 
 研究者审阅 STEP 3.2 证据后再单独授权下一 Step；本 Step 不自动进入后续 Tensor、模型或训练工作。

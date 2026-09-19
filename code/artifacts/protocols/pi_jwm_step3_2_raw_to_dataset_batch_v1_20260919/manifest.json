@@ -14,5 +14,5 @@
     "training": false
   },
   "source_policy": "reuse frozen Step 2.4 Raw collector; no schema or simulator changes",
-  "validation_report_sha256": "f18a80b672f8a2a4de3924ebdf4a94f19064c335c888bb4d390dc41b36ab93f1"
+  "validation_report_sha256": "50b82c3b5708db37c3ecc8687b64cb31e7345fc800e8548b9ef8b89f27d01d64"
 }

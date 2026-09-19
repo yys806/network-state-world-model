@@ -14,6 +14,7 @@
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
 - 当前 Step：`STEP 3.2` 已完成最小验证；Raw Trajectory Layer / 定义 01 和 STEP 3.1F contract 已冻结。batch evidence 位于 `code/artifacts/protocols/pi_jwm_step3_2_raw_to_dataset_batch_v1_20260919/`。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
+- `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - 新定义实现状态：Raw 因果可观测、四类动作 offload/return、Decision CSI/CPU capacity、slot Outcome 与双 acceleration 语义已验收；STEP 3.2 仅完成 JSON-native batch/split/preprocessing validation。Tensor、双图、World Model、Loss、Planner 仍未开始。
 - 审计结论：时间因果、稳定 ID/index、mask/split 和部分规则/评价工具可复用；严格双图、四类动作、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环需要结构性修改或新增实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。

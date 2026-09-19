@@ -17,6 +17,7 @@ from pi_jwm.step3_2_batch_preprocessing_v1 import (  # noqa: E402
     apply_normalization,
     audit_batch_future_action_references,
     build_batch,
+    evaluate_validation_checks,
     fit_train_normalization_stats,
     write_batch_bundle,
 )
@@ -49,33 +50,11 @@ def main() -> None:
     rebuilt = build_batch(SOURCES)
     rebuilt["future_reference_audit"] = audit_batch_future_action_references(SOURCES, bundle=rebuilt)
     deterministic = _digest(bundle) == _digest(rebuilt)
-    provenance = bundle["provenance"]
-    train_ids = {row["trajectory_id"] for row in provenance if row["split"] == "dev_train"}
-    validation_ids = {row["trajectory_id"] for row in provenance if row["split"] == "dev_validation"}
-    split_isolation = bool(provenance) and len({row["trajectory_id"] for row in provenance}) == len(provenance) and not (train_ids & validation_ids)
-    source_hashes = all(len(row.get("source_sha256", "")) == 64 for row in provenance)
-    causal_windows = all(
-        sample["metadata"]["history_frame_indices"][-1] == sample["metadata"]["anchor_decision_frame"]
-        and sample["metadata"]["future_action_frame_indices"][0] == sample["metadata"]["anchor_decision_frame"]
-        for sample in bundle["samples"]
-    )
-    train_only_fit = stats.get("source_split") == "dev_train" and all(
-        feature.get("mask_policy") == "presence=true AND feature_mask=true AND value!=null; train split only"
-        for feature in stats.get("features", {}).values()
-    )
+    acceptance_checks = evaluate_validation_checks(bundle, stats, deterministic_rebuild=deterministic)
     report = {
         "schema_version": "PI-JWM-Step-3.2-Validation-Report-v1",
-        "passed": deterministic,
-        "checks": {
-            "trajectory_level_split": split_isolation,
-            "no_trajectory_cross_split": not bool(train_ids & validation_ids),
-            "causal_windows_only": causal_windows,
-            "train_only_normalization_fit": train_only_fit,
-            "source_sha256_traceable": source_hashes,
-            "seed_source_lineage_auditable": all("seed" in row and "lineage_key" in row for row in provenance),
-            "deterministic_rebuild": deterministic,
-            "batch_scope_non_locked": bundle["scope"],
-        },
+        "passed": all(acceptance_checks.values()),
+        "checks": {**acceptance_checks, "batch_scope_non_locked": bundle["scope"]},
         "evidence_source": {
             "trajectory_level_split": "computed from final provenance trajectory_id sets",
             "causal_windows_only": "computed from final sample metadata frame indices",

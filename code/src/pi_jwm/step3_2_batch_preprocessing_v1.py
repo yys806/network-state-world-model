@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
+from .model_ready_sample_contract_v1 import SCHEMA_VERSION as MODEL_READY_SAMPLE_SCHEMA_VERSION
 from .model_ready_sample_contract_v1 import audit_future_action_references, build_sample, validate_sample
 
 
@@ -30,7 +31,7 @@ class RawSource:
     split: str
 
 
-MODEL_READY_SAMPLE_CONTRACT_VERSION = "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F"
+MODEL_READY_SAMPLE_CONTRACT_VERSION = MODEL_READY_SAMPLE_SCHEMA_VERSION
 FEATURE_UNITS = {
     "entity.speed_mps": "m/s",
     "entity.canonical_acceleration_mps2": "m/s^2",
@@ -260,6 +261,34 @@ def audit_batch_future_action_references(sources: Sequence[RawSource], *, bundle
     }
 
 
+def evaluate_validation_checks(bundle: Mapping[str, Any], stats: Mapping[str, Any], *, deterministic_rebuild: bool) -> dict[str, bool]:
+    provenance = list(bundle.get("provenance", []))
+    train_ids = {row.get("trajectory_id") for row in provenance if row.get("split") == "dev_train"}
+    validation_ids = {row.get("trajectory_id") for row in provenance if row.get("split") == "dev_validation"}
+    scope = bundle.get("scope", {})
+    checks = {
+        "trajectory_level_split": bool(provenance) and len({row.get("trajectory_id") for row in provenance}) == len(provenance),
+        "no_trajectory_cross_split": not bool(train_ids & validation_ids),
+        "causal_windows_only": all(
+            sample["metadata"]["history_frame_indices"][-1] == sample["metadata"]["anchor_decision_frame"]
+            and sample["metadata"]["future_action_frame_indices"][0] == sample["metadata"]["anchor_decision_frame"]
+            for sample in bundle.get("samples", [])
+        ),
+        "train_only_normalization_fit": stats.get("source_split") == "dev_train" and all(
+            feature.get("mask_policy") == "presence=true AND feature_mask=true AND value!=null; train split only"
+            for feature in stats.get("features", {}).values()
+        ),
+        "source_sha256_traceable": all(len(str(row.get("source_sha256", ""))) == 64 for row in provenance),
+        "seed_source_lineage_auditable": all("seed" in row and "lineage_key" in row for row in provenance),
+        "deterministic_rebuild": bool(deterministic_rebuild),
+        "scope_locked_test_false": scope.get("locked_test") is False,
+        "scope_training_false": scope.get("training") is False,
+        "scope_gpu_false": scope.get("gpu") is False,
+        "scope_formal_dataset_false": scope.get("formal_dataset") is False,
+    }
+    return checks
+
+
 def collate_samples(samples: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
     if not samples:
         raise ValueError("cannot collate an empty batch")
@@ -287,4 +316,4 @@ def load_batch_bundle(output: Path) -> dict[str, Any]:
     return {"bundle": json.loads((output / "batch.json").read_text(encoding="utf-8")), "stats": json.loads((output / "train_normalization_stats.json").read_text(encoding="utf-8")), "normalized": json.loads((output / "normalized_samples.json").read_text(encoding="utf-8"))}
 
 
-__all__ = ["RawSource", "apply_normalization", "audit_batch_future_action_references", "build_batch", "collate_samples", "fit_train_normalization_stats", "load_batch_bundle", "write_batch_bundle"]
+__all__ = ["MODEL_READY_SAMPLE_CONTRACT_VERSION", "RawSource", "apply_normalization", "audit_batch_future_action_references", "build_batch", "collate_samples", "evaluate_validation_checks", "fit_train_normalization_stats", "load_batch_bundle", "write_batch_bundle"]

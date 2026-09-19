@@ -14,6 +14,13 @@
 - Gate: formal_dataset=false, training=false, gpu=false, locked_test_accessed=false; no Tensor/model/loss/planner work.
 - Next: researcher review STEP 3.2-PATCH; do not automatically enter a later Step.
 
+## 2026-09-19 STEP 3.2-PATCH-RECEIPT
+
+- Scope: receipt logic only; no Step 3.2 mechanism redesign or new data.
+- Completed: required acceptance checks and explicit scope booleans are ANDed into top-level `passed`; negative fixture passes; sample contract version reuses frozen schema constant.
+- Status: STEP 3.2 COMPLETE / FROZEN after final receipt regeneration.
+- Next: researcher review; do not automatically enter a later Step.
+
 ## 2026-09-19 STEP 3.1 execution note
 
 - Scope: freeze minimal Raw Trajectory -> Model-ready Sample -> Tensor Contract only.

@@ -1207,14 +1207,16 @@
       "imported_by": [
         "scripts.audit_step3_1f_future_action_references_v1",
         "scripts.build_step3_1_minimal_real_model_ready_sample_v1",
-        "tests.test_model_ready_sample_contract_v1"
+        "tests.test_model_ready_sample_contract_v1",
+        "tests.test_step3_2_batch_preprocessing_v1"
       ],
       "imports": [],
       "lifecycle_status": "support",
       "module": "pi_jwm.model_ready_sample_contract_v1",
       "path": "code/src/pi_jwm/model_ready_sample_contract_v1.py",
       "test_files": [
-        "code/tests/test_model_ready_sample_contract_v1.py"
+        "code/tests/test_model_ready_sample_contract_v1.py",
+        "code/tests/test_step3_2_batch_preprocessing_v1.py"
       ]
     },
     {
@@ -9011,6 +9013,7 @@
       "evidence_role": "test_evidence",
       "imported_by": [],
       "imports": [
+        "pi_jwm.model_ready_sample_contract_v1",
         "pi_jwm.step3_2_batch_preprocessing_v1"
       ],
       "lifecycle_status": "support",

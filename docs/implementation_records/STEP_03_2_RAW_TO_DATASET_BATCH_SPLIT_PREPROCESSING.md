@@ -70,15 +70,17 @@
 
 ## Patch Validation
 
-- Step 3.2 focused tests: 9/9 PASS，包含 provenance、time-gap rejection、train-only validation counterfactual、mask=false 与 presence=false padding counterfactual、batch future-reference audit。
+- Step 3.2 focused tests: 11/11 PASS，包含 provenance、time-gap rejection、train-only validation counterfactual、mask=false 与 presence=false padding counterfactual、batch future-reference audit、negative `passed=false` fixture 和 frozen schema consistency。
 - development batch audit: 12 candidate windows，12 successfully constructed，0 unresolved-reference windows，0 unresolved references，affected rate `0.0`；四类 action family 与 task/physical_entity 均为 0；结果仅为 Observation。
 - 三条 development trajectory 的 provenance 均有真实 seed/config/source SHA/time-grid；train/validation trajectory-id 无交集。
 - normalization units: entity speed `m/s`，canonical acceleration `m/s^2`，task size `AirFogSim data-unit`。
+- validation receipt 顶层 `passed` 为所有 required checks 与四项 scope boolean 的逻辑 AND；负向 fixture 已证明 required check 失败时 `passed=false`。
+- `model_ready_sample_contract_version` 直接复用 `model_ready_sample_contract_v1.SCHEMA_VERSION`，避免手写漂移。
 
 ## Git
 
 待本 Step 全部验收后使用独立 Conventional Commit 推送 `main`；最终 hash 以 Git 回执为准。
 
-## Next Step
+## Final Status
 
-唯一建议下一步：STEP 3.3（如研究者另行授权）；本 Step 不自动执行后续 Step。
+STEP 3.2 正式 COMPLETE / FROZEN。后续任何 Step 均需研究者单独授权。

@@ -5,15 +5,18 @@ import unittest
 from pathlib import Path
 
 from pi_jwm.step3_2_batch_preprocessing_v1 import (
+    MODEL_READY_SAMPLE_CONTRACT_VERSION,
     RawSource,
     apply_normalization,
     audit_batch_future_action_references,
     build_batch,
     collate_samples,
     fit_train_normalization_stats,
+    evaluate_validation_checks,
     load_batch_bundle,
     write_batch_bundle,
 )
+from pi_jwm.model_ready_sample_contract_v1 import SCHEMA_VERSION as FROZEN_SAMPLE_SCHEMA_VERSION
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -200,6 +203,22 @@ class Step32BatchPreprocessingTests(unittest.TestCase):
         self.assertEqual(audit["unresolved_reference_windows"], 0)
         self.assertEqual(audit["unresolved_reference_count"], 0)
         self.assertTrue(audit["observation_only"])
+
+    def test_validation_passed_is_false_when_required_check_fails(self):
+        with tempfile.TemporaryDirectory() as directory_name:
+            directory = Path(directory_name)
+            train = self._write_raw(directory, "train", 101)
+            bundle = build_batch([RawSource(train, "dev_train")])
+        stats = fit_train_normalization_stats(bundle["samples"])
+        self.assertTrue(all(evaluate_validation_checks(bundle, stats, deterministic_rebuild=True).values()))
+        broken = copy.deepcopy(bundle)
+        broken["scope"]["gpu"] = True
+        checks = evaluate_validation_checks(broken, stats, deterministic_rebuild=True)
+        self.assertFalse(checks["scope_gpu_false"])
+        self.assertFalse(all(checks.values()))
+
+    def test_provenance_contract_version_reuses_frozen_schema(self):
+        self.assertEqual(MODEL_READY_SAMPLE_CONTRACT_VERSION, FROZEN_SAMPLE_SCHEMA_VERSION)
 
 
 if __name__ == "__main__":
