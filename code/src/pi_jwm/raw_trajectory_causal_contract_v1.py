@@ -82,14 +82,82 @@ def aggregate_slot_outcomes(
     transfer_events: Iterable[Mapping[str, Any]],
     computed_before: Mapping[str, float],
     computed_after: Mapping[str, float],
-) -> dict[str, dict[str, float]]:
-    """Aggregate real communication events and Task computed-size deltas."""
+    transport_observation: Mapping[str, Mapping[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Aggregate real wireless/wired service and Task CPU deltas.
 
-    delivered: dict[str, float] = {}
+    ``transport_observation`` records whether the collector could observe each
+    transport.  An observed transport with no service has an empty map.  An
+    unavailable transport has ``None`` and a required missing reason.  The
+    total is only available when both transport maps are observed, so a
+    missing wired hook can never be silently treated as zero wired service.
+    """
+
+    observation = {
+        "wireless": {"observed_mask": True, "missing_reason": None},
+        "wired": {"observed_mask": True, "missing_reason": None},
+    }
+    if transport_observation is not None:
+        for transport in observation:
+            supplied = transport_observation.get(transport, {})
+            observed = bool(supplied.get("observed_mask", False))
+            reason = supplied.get("missing_reason")
+            if observed and reason is not None:
+                raise ValueError(
+                    f"observed {transport} communication cannot have missing_reason"
+                )
+            if not observed and not reason:
+                raise ValueError(
+                    f"missing {transport} communication requires missing_reason"
+                )
+            observation[transport] = {
+                "observed_mask": observed,
+                "missing_reason": None if observed else str(reason),
+                **{
+                    key: value
+                    for key, value in supplied.items()
+                    if key not in {"observed_mask", "missing_reason"}
+                },
+            }
+
+    delivered_by_transport: dict[str, dict[str, float]] = {
+        "wireless": {},
+        "wired": {},
+    }
     for event in transfer_events:
         task_id = str(event["task_id"])
+        transport = str(event.get("transport", ""))
+        if transport not in delivered_by_transport:
+            raise ValueError(
+                f"communication event {task_id} has unsupported transport: {transport!r}"
+            )
+        if not observation[transport]["observed_mask"]:
+            raise ValueError(
+                f"received {transport} communication event while transport is marked missing"
+            )
         amount = float(event["delivered_data"])
-        delivered[task_id] = delivered.get(task_id, 0.0) + amount
+        if not math.isfinite(amount) or amount < 0.0:
+            raise ValueError(f"invalid delivered data for {task_id}: {amount}")
+        delivered_by_transport[transport][task_id] = (
+            delivered_by_transport[transport].get(task_id, 0.0) + amount
+        )
+
+    wireless = (
+        dict(sorted(delivered_by_transport["wireless"].items()))
+        if observation["wireless"]["observed_mask"]
+        else None
+    )
+    wired = (
+        dict(sorted(delivered_by_transport["wired"].items()))
+        if observation["wired"]["observed_mask"]
+        else None
+    )
+    total = None
+    if wireless is not None and wired is not None:
+        total_values: dict[str, float] = {}
+        for task_id in sorted(set(wireless) | set(wired)):
+            total_values[task_id] = wireless.get(task_id, 0.0) + wired.get(task_id, 0.0)
+        total = total_values
 
     served: dict[str, float] = {}
     for task_id in sorted(set(computed_before) | set(computed_after)):
@@ -100,7 +168,26 @@ def aggregate_slot_outcomes(
             raise ValueError(f"computed work decreased for {task_id}")
         if delta > 1e-12:
             served[str(task_id)] = delta
+    total_missing_reason = None
+    if total is None:
+        missing_transports = [
+            name for name, row in observation.items() if not row["observed_mask"]
+        ]
+        total_missing_reason = "COMMUNICATION_TRANSPORT_UNAVAILABLE:" + ",".join(
+            missing_transports
+        )
+    observation["total"] = {
+        "observed_mask": total is not None,
+        "missing_reason": total_missing_reason,
+    }
     return {
-        "delivered_data_by_task": dict(sorted(delivered.items())),
+        "wireless_delivered_data_by_task": wireless,
+        "wired_delivered_data_by_task": wired,
+        "delivered_data_by_task": total,
+        "wireless_delivered_data_observed_mask": observation["wireless"]["observed_mask"],
+        "wired_delivered_data_observed_mask": observation["wired"]["observed_mask"],
+        "delivered_data_observed_mask": total is not None,
+        "delivered_data_missing_reason": total_missing_reason,
+        "communication_observation": observation,
         "served_cpu_work_by_task": served,
     }

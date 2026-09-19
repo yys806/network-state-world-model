@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-19：Step 2.4 通信 Outcome 语义最终冻结
+
+- 真实 wired service 接入 `WiredNetworkManager.step` 返回值，Raw Contract 拆分 wireless/wired/total delivered data。
+- 固定 `{}` observed no-service 与 `null + mask=false + missing_reason` unavailable 的区别；真实 6 slot / 7 Decision / 14 checks 证据已生成。
+- Raw Trajectory Layer / 定义 01 COMPLETE / FROZEN；Dataset/Tensor、模型和训练未开始。
+
 ## 2026-09-19：Step 2.1 真实 AirFogSim 验收
 
 - 完成 Step 2.3 Raw Contract 因果完整性收尾：future-task 隔离、真实 CSI/CPU/slot outcome、return route 与双 acceleration 字段全部验收，Raw Trajectory Layer / 01 冻结。

@@ -66,3 +66,5 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - AirFogSim acceleration 原样保留为 raw simulator observation / audit 字段；PI-JWM canonical physical acceleration 定义为 `(v_t-v_{t-1})/delta_t`，只使用当前与历史信息。
 - 首个有效时间点或缺少历史速度必须使用明确 mask，不得伪造数值；raw 与 canonical 不得混名。
 - Step 2.3 只收尾 Raw Contract；后续 Dataset/Tensor 必须另行授权。
+
+- Step 2.4（研究者明确批准）：Communication Outcome 在 Raw 层拆为 wireless、wired 和按 task 聚合 total；空 map 是已观测无服务，missing 必须是 null 加 mask/reason。该决定只冻结 Raw 语义，不授权 Dataset/Tensor 或模型实现。

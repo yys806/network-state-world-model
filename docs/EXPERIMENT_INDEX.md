@@ -6,6 +6,8 @@
 
 > 2026-09-19：新 `00–06` 已完成 Raw Trajectory Layer 的真实接口验收，但没有新训练实验。下列 P4/P6 条目全部按旧定义作 Historical / Archived evidence。
 
+Step 2.4 真实接口验收不属于训练实验：机器证据位于 `code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/`，覆盖 6 个 execution slot、7 个独立 Decision 和 14 项检查。
+
 ## 1. 旧协议正式实验（Historical / Archived）
 
 | 实验 | 目的 | 入口/配置 | 结果和状态 |

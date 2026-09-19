@@ -60,15 +60,53 @@ class SlotOutcomeTests(unittest.TestCase):
     def test_delivered_data_and_served_cpu_are_aggregated_per_task(self):
         outcome = aggregate_slot_outcomes(
             transfer_events=[
-                {"task_id": "task-a", "delivered_data": 0.3},
-                {"task_id": "task-a", "delivered_data": 0.2},
+                {"task_id": "task-a", "transport": "wireless", "delivered_data": 0.3},
+                {"task_id": "task-a", "transport": "wired", "delivered_data": 0.2},
             ],
             computed_before={"task-a": 0.1, "task-b": 0.0},
             computed_after={"task-a": 0.4, "task-b": 0.2},
         )
+        self.assertAlmostEqual(
+            0.3, outcome["wireless_delivered_data_by_task"]["task-a"]
+        )
+        self.assertAlmostEqual(0.2, outcome["wired_delivered_data_by_task"]["task-a"])
         self.assertAlmostEqual(0.5, outcome["delivered_data_by_task"]["task-a"])
         self.assertAlmostEqual(0.3, outcome["served_cpu_work_by_task"]["task-a"])
         self.assertAlmostEqual(0.2, outcome["served_cpu_work_by_task"]["task-b"])
+
+    def test_empty_observed_map_is_distinct_from_unavailable_transport(self):
+        empty = aggregate_slot_outcomes(
+            transfer_events=[],
+            computed_before={},
+            computed_after={},
+            transport_observation={
+                "wireless": {"observed_mask": True, "missing_reason": None},
+                "wired": {"observed_mask": True, "missing_reason": None},
+            },
+        )
+        self.assertEqual({}, empty["wireless_delivered_data_by_task"])
+        self.assertEqual({}, empty["wired_delivered_data_by_task"])
+        self.assertEqual({}, empty["delivered_data_by_task"])
+        self.assertTrue(empty["delivered_data_observed_mask"])
+
+        missing = aggregate_slot_outcomes(
+            transfer_events=[
+                {"task_id": "task-a", "transport": "wireless", "delivered_data": 0.3}
+            ],
+            computed_before={},
+            computed_after={},
+            transport_observation={
+                "wireless": {"observed_mask": True, "missing_reason": None},
+                "wired": {
+                    "observed_mask": False,
+                    "missing_reason": "WIRED_EVENT_CAPTURE_UNAVAILABLE",
+                },
+            },
+        )
+        self.assertEqual({"task-a": 0.3}, missing["wireless_delivered_data_by_task"])
+        self.assertIsNone(missing["wired_delivered_data_by_task"])
+        self.assertIsNone(missing["delivered_data_by_task"])
+        self.assertFalse(missing["delivered_data_observed_mask"])
 
 
 if __name__ == "__main__":

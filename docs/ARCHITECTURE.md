@@ -15,7 +15,7 @@ PI-JWM 研究的是一个同时包含物理网络和信息网络的动态系统�
 
 ### 当前已冻结的 Raw 边界
 
-Step 2.3 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision` 的真实采集层。未来到达 task 只保留 internal metadata，不进入当前观察或输入索引；Decision CSI/CPU capacity 和 slot delivered-data/served-CPU 已有真实来源。AirFogSim raw acceleration 与 PI-JWM canonical backward-difference acceleration 使用不同字段和 mask。该事实尚未进入 Dataset/Tensor 或模型架构。
+Step 2.4 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision` 的真实采集层。通信 Outcome 分为 wireless、wired 和按 task 聚合 total delivered data；wired 直接来自真实 `WiredNetworkManager.step` slot result。空 map 表示已观测但无服务，null 加 missing mask/reason 表示不可恢复。未来到达 task 只保留 internal metadata，不进入当前观察或输入索引；Decision CSI/CPU capacity 和 slot delivered-data/served-CPU 已有真实来源。AirFogSim raw acceleration 与 PI-JWM canonical backward-difference acceleration 使用不同字段和 mask。该事实尚未进入 Dataset/Tensor 或模型架构。
 
 ### 物理图
 

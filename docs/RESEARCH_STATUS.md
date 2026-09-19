@@ -5,7 +5,7 @@
 
 ## 0. 当前实施状态
 
-- Step 2.3 已用真实非 locked AirFogSim 完成 Raw 因果、字段和 return route 最终验收；入口为 Tracker 和 `STEP_02_3_RAW_CONTRACT_CAUSAL_COMPLETENESS.md`。
+- Step 2.4 已用真实非 locked AirFogSim 完成通信 Outcome 最终验收；入口为 Tracker 和 `STEP_02_4_COMMUNICATION_OUTCOME_SEMANTICS.md`。Raw 记录已拆分 wireless/wired/total，并区分 empty map 与 missing。
 - Dataset/Tensor、双图、模型、loss、训练、planner 和 closed loop 均未开始。
 - 现有代码可复用时间因果、稳定索引、mask/split 和部分规则/指标工具，但严格双图、四类动作、RSSM 边界、逐步反馈和真实重规划存在结构性缺口。
 - 唯一建议下一步是由研究者单独授权 Step 3 Dataset/Tensor Contract。

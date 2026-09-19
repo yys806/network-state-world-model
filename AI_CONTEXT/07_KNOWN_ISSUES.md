@@ -2,12 +2,14 @@
 
 Source of truth：本文件是入口；具体事实必须回到列出的代码、配置、测试或 artifact。
 
-## Step 2.3 raw boundary observations
+## Step 2.4 raw boundary observations
 
 - AirFogSim reports vehicle `angle` in degrees and UAV `angle`/`phi` in radians; the contract distinguishes observation `heading` from UAV action `azimuth_rad`.
 - Across the real trace, the simulator can report `-100.0 m/s^2` when canonical `(v_t-v_{t-1})/delta_t` is about `+100.0 m/s^2`. The simulator remains unchanged; fields are now explicitly raw versus canonical.
 - Some live nodes do not expose a `cpu` key in `FogProfile`; Raw records `null + observed_mask=false + CPU_NOT_EXPOSED_IN_FOG_PROFILE`. Dataset/Tensor must preserve this missingness.
-- Raw Trajectory Layer is frozen, but Dataset/Tensor and all graph/model/loss/planner layers remain unverified.
+- Raw Trajectory Layer is frozen, with communication split into wireless/wired/total service fields and explicit empty-versus-missing semantics; Dataset/Tensor and all graph/model/loss/planner layers remain unverified.
+
+- AirFogSim cloud profile key mismatch remains an observed simulator/config limitation: `cloudServer_4` may expose no `cpu` key in the example profile, so the runner records Comp no-op rather than fabricating capacity. This is outside Step 2.4 communication semantics.
 
 ## 1. 新定义尚未实现
 

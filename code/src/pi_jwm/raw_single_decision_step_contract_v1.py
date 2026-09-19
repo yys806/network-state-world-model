@@ -11,7 +11,7 @@ import importlib.util
 import math
 import sys
 import types
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -182,11 +182,35 @@ RAW_FIELD_SPECS = (
         "required": True,
     },
     {
+        "path": "outcome.wireless_delivered_data_by_task",
+        "phase": "outcome",
+        "unit": "AirFogSim native data unit/slot",
+        "id_domain": "task",
+        "source": "ObservedAirFogSimEnv.pi_jwm_transfer_events transport=wireless",
+        "required": True,
+    },
+    {
+        "path": "outcome.wired_delivered_data_by_task",
+        "phase": "outcome",
+        "unit": "AirFogSim native data unit/slot",
+        "id_domain": "task",
+        "source": "ObservedAirFogSimEnv.pi_jwm_transfer_events transport=wired from WiredNetworkManager.step",
+        "required": True,
+    },
+    {
         "path": "outcome.delivered_data_by_task",
         "phase": "outcome",
         "unit": "AirFogSim native data unit/slot",
         "id_domain": "task",
-        "source": "direct wireless/wired execution rows",
+        "source": "sum of observed wireless and wired maps by task; null when either transport is unavailable",
+        "required": True,
+    },
+    {
+        "path": "outcome.communication_observation",
+        "phase": "outcome",
+        "unit": "observed_mask plus missing_reason per transport",
+        "id_domain": "wireless/wired transport",
+        "source": "collector hook availability, not inferred from an empty service map",
         "required": True,
     },
     {
@@ -350,8 +374,17 @@ class OutcomeSnapshot:
     outcome_time_s: float
     entities: tuple[EntityState, ...]
     tasks: tuple[TaskState, ...]
-    delivered_data_by_task: Mapping[str, float]
+    delivered_data_by_task: Mapping[str, float] | None
     served_cpu_work_by_task: Mapping[str, float]
+    wireless_delivered_data_by_task: Mapping[str, float] | None = None
+    wired_delivered_data_by_task: Mapping[str, float] | None = None
+    communication_observation: Mapping[str, Mapping[str, object]] = field(
+        default_factory=lambda: {
+            "wireless": {"observed_mask": True, "missing_reason": None},
+            "wired": {"observed_mask": True, "missing_reason": None},
+            "total": {"observed_mask": True, "missing_reason": None},
+        }
+    )
 
 
 @dataclass(frozen=True)
@@ -399,11 +432,88 @@ def _close(a: float, b: float) -> bool:
     return math.isclose(float(a), float(b), rel_tol=0.0, abs_tol=1e-9)
 
 
+def _validated_delivery_map(
+    value: Mapping[str, float] | None,
+    *,
+    observed: bool,
+    field: str,
+) -> dict[str, float] | None:
+    if not observed:
+        if value is not None:
+            raise ContractError(
+                "communication_missing_mask_mismatch",
+                f"{field} must be null when its transport is unavailable",
+            )
+        return None
+    if value is None:
+        raise ContractError(
+            "communication_missing_mask_mismatch",
+            f"{field} is missing although its transport is observed",
+        )
+    result: dict[str, float] = {}
+    for task_id, amount in value.items():
+        if not isinstance(task_id, str) or not task_id:
+            raise ContractError("communication_invalid_task_id", field)
+        amount_value = _finite(amount, f"{field}[{task_id}]")
+        if amount_value < 0.0:
+            raise ContractError("communication_negative_delivery", task_id)
+        result[task_id] = amount_value
+    return result
+
+
+def _validate_communication_outcome(outcome: OutcomeSnapshot) -> None:
+    observation = outcome.communication_observation
+    rows: dict[str, Mapping[str, object]] = {}
+    for transport in ("wireless", "wired", "total"):
+        row = observation.get(transport)
+        if not isinstance(row, Mapping):
+            raise ContractError("communication_observation_missing", transport)
+        observed = bool(row.get("observed_mask", False))
+        reason = row.get("missing_reason")
+        if observed and reason is not None:
+            raise ContractError("communication_observation_reason_mismatch", transport)
+        if not observed and not reason:
+            raise ContractError("communication_observation_reason_missing", transport)
+        rows[transport] = row
+
+    wireless = _validated_delivery_map(
+        outcome.wireless_delivered_data_by_task,
+        observed=bool(rows["wireless"].get("observed_mask")),
+        field="wireless_delivered_data_by_task",
+    )
+    wired = _validated_delivery_map(
+        outcome.wired_delivered_data_by_task,
+        observed=bool(rows["wired"].get("observed_mask")),
+        field="wired_delivered_data_by_task",
+    )
+    total = _validated_delivery_map(
+        outcome.delivered_data_by_task,
+        observed=bool(rows["total"].get("observed_mask")),
+        field="delivered_data_by_task",
+    )
+    if wireless is not None and wired is not None:
+        expected = {
+            task_id: wireless.get(task_id, 0.0) + wired.get(task_id, 0.0)
+            for task_id in sorted(set(wireless) | set(wired))
+        }
+        if total != expected:
+            raise ContractError(
+                "communication_total_mismatch",
+                "delivered_data_by_task is not the wireless+wired task total",
+            )
+    elif total is not None:
+        raise ContractError(
+            "communication_total_without_components",
+            "total delivery cannot be observed when a transport component is missing",
+        )
+
+
 def validate_single_decision_step(step: SingleDecisionStep) -> SingleDecisionStep:
     if not isinstance(step, SingleDecisionStep):
         raise TypeError("step must be SingleDecisionStep")
     decision = step.decision
     action = step.action
+    _validate_communication_outcome(step.outcome)
 
     for field, phase in decision.source_phases.items():
         if phase not in {"decision", "history"}:

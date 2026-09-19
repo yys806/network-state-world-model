@@ -46,13 +46,13 @@ Outcome 字段和同一 slot 的执行结果不得进入 `source_phases=decision
 
 ## 4. Execution_t 与 Outcome_t
 
-Execution 至少记录 setter kind、subject ID、是否成功、是否调用并完成 `env.step`，以及起止时间。Outcome 的 `delivered_data_by_task` 来自当前 slot 在 fast fading 后、真实 transfer 前记录的无线事件，单位为 AirFogSim native data unit/slot；`served_cpu_work_by_task` 来自同一 Task 的 `getComputedSize()` post-step 减 pre-step，单位为 AirFogSim CPU-work-unit/slot。Outcome 还记录执行后实体/任务快照。执行结束时间和 Outcome 时间必须等于 `decision_time_s + slot_duration_s`；Outcome 快照必须逐字段等于下一决策快照，下一决策的 `frame_index=frame_index+1`。
+Execution 至少记录 setter kind、subject ID、是否成功、是否调用并完成 `env.step`，以及起止时间。通信 Outcome 显式分成 `wireless_delivered_data_by_task` 和 `wired_delivered_data_by_task`：前者来自 fast fading 后、真实 wireless transfer 前记录的事件；后者来自 `WiredNetworkManager.step(simulation_interval)` 返回的 `{task_id: transmitted_bytes}`。两者单位都是 AirFogSim native data unit/slot；`delivered_data_by_task` 只有在两类 transport 都有可靠观测时才按 task 求和，否则为 `null + observed_mask=false + missing_reason`，不得把不可观测 transport 当作空 map。已接线 transport 在本 slot 没有服务时使用空 map 且 `observed_mask=true`。`served_cpu_work_by_task` 来自同一 Task 的 `getComputedSize()` post-step 减 pre-step，单位为 AirFogSim CPU-work-unit/slot。Outcome 还记录执行后实体/任务快照。执行结束时间和 Outcome 时间必须等于 `decision_time_s + slot_duration_s`；Outcome 快照必须逐字段等于下一决策快照，下一决策的 `frame_index=frame_index+1`。
 
 多决策步轨迹中，`Decision_{t+1}` 必须在下一轮循环重新调用真实 collector，不能复制 `Outcome_t` 对象。四类 action 字段每步都必须存在；该步没有 Route、Comm 或 Comp 时使用空 `entries` 和明确 `no_op_reason`，不能省略字段。Route 的 offload 和 return 必须分别映射到 `setTaskOffloading` 与 `setTaskReturnRoute`。
 
 ## 5. 证据边界
 
-最终真实验收证据位于 `code/artifacts/protocols/pi_jwm_raw_contract_causal_complete_v2_20260919/`。它在非 locked 的真实 AirFogSim 中运行 8 个连续决策步，验证 future-task 隔离、Decision CSI、CPU capacity/missing mask、slot 级 delivered data/served CPU work、真实 return route 和双加速度语义。Step 2.1/2.2 证据保留为前序接口与连续性证据。
+Step 2.3 的最终真实验收证据位于 `code/artifacts/protocols/pi_jwm_raw_contract_causal_complete_v2_20260919/`；通信 Outcome 的最终拆分和真实 wired 接线以 Step 2.4 证据 `code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/` 为准。Step 2.4 在非 locked 的真实 AirFogSim 中配置 `RSU_0 ↔ cloudServer_4` 有线链路，观察到 wireless 与 wired 两类真实事件，验证 task progress、lifecycle、空 map 与 missing mask、以及 total 按 task 求和。Step 2.1/2.2 证据保留为前序接口与连续性证据。
 
 ## 6. 当前未冻结的科学选择
 

@@ -900,3 +900,10 @@
 - 首帧 42 条真实 channel row；CPU capacity 7 个 observed、1 个 explicit missing。
 - 6 个 slot 有 delivered-data，6 个 slot 有 served-CPU；真实 return setter 调用 3 次并进入 returning/done。
 - Raw/canonical acceleration 已分字段和 mask。无训练、GPU 或 `locked_test`；后续层未开始。
+
+## 2026-09-19 Step 2.4 Communication Outcome 语义收尾
+
+- 真实 AirFogSim wired 路径已核对并接线：`WiredNetworkManager.step` 的逐 task 返回值形成 wired event，wireless event 显式标记 transport。
+- 新 Raw Outcome 分为 wireless map、wired map 和两者按 task 求和的 total；空 map 表示已观测但无服务，missing 使用 `null + mask=false + reason`。
+- 真实 6 slot/7 Decision 轨迹完成 `UAV_0 → RSU_0 → cloudServer_4`，14 项 checks 通过；无 GPU、无训练、未访问 `locked_test`。
+- Raw Trajectory Layer / 定义 01 正式 COMPLETE / FROZEN；Step 3 未执行。

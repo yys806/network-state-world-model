@@ -2,7 +2,9 @@
 
 本文件只记录客观状态，不自动解释科研意义。Source of truth：完整字段见 `docs/registries/experiment_registry.json`，正式数字见 `results_registry.json` 和对应 acceptance JSON。
 
-> 2026-09-19：新的 active workflow 已冻结 Raw Trajectory Layer / 01。Step 2.3 是非 locked 真实接口验收，不是训练实验；下列 P4/P6 实验保留为旧定义下的 Historical / Archived evidence。未启动 GPU，未访问 `locked_test`。
+> 2026-09-19：新的 active workflow 已冻结 Raw Trajectory Layer / 01。Step 2.4 是非 locked 真实通信接口验收，不是训练实验；下列 P4/P6 实验保留为旧定义下的 Historical / Archived evidence。未启动 GPU，未访问 `locked_test`。
+
+Step 2.4 机器证据：`code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/`，真实 6 slot / 7 independently recaptured Decisions / 14 checks；wireless、wired、total transmitted progress 与 task lifecycle 对齐。
 
 ## 旧 P4 正式实验（Historical / Archived）
 

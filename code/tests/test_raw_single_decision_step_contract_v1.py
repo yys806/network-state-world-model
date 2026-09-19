@@ -138,6 +138,13 @@ def _valid_step():
         tasks=after_tasks,
         delivered_data_by_task={"task-route": 0.5},
         served_cpu_work_by_task={"task-comp": 0.2},
+        wireless_delivered_data_by_task={"task-route": 0.3},
+        wired_delivered_data_by_task={"task-route": 0.2},
+        communication_observation={
+            "wireless": {"observed_mask": True, "missing_reason": None},
+            "wired": {"observed_mask": True, "missing_reason": None},
+            "total": {"observed_mask": True, "missing_reason": None},
+        },
     )
     next_decision = _decision(entities=after_entities, tasks=after_tasks)
     next_decision = replace(next_decision, frame_index=5, decision_time_s=1.1)
@@ -154,6 +161,33 @@ class ContractValidationTests(unittest.TestCase):
     def test_valid_four_family_step_closes_at_next_decision(self):
         step = _valid_step()
         self.assertIs(step, validate_single_decision_step(step))
+
+    def test_communication_total_must_equal_wireless_plus_wired(self):
+        step = _valid_step()
+        bad_outcome = replace(step.outcome, delivered_data_by_task={"task-route": 0.4})
+        with self.assertRaisesRegex(ContractError, "communication_total_mismatch"):
+            validate_single_decision_step(replace(step, outcome=bad_outcome))
+
+    def test_communication_missing_transport_cannot_be_encoded_as_empty_total(self):
+        step = _valid_step()
+        missing_outcome = replace(
+            step.outcome,
+            wired_delivered_data_by_task=None,
+            delivered_data_by_task=None,
+            communication_observation={
+                "wireless": {"observed_mask": True, "missing_reason": None},
+                "wired": {
+                    "observed_mask": False,
+                    "missing_reason": "WIRED_EVENT_CAPTURE_UNAVAILABLE",
+                },
+                "total": {
+                    "observed_mask": False,
+                    "missing_reason": "COMMUNICATION_TRANSPORT_UNAVAILABLE:wired",
+                },
+            },
+        )
+        candidate = replace(step, outcome=missing_outcome)
+        self.assertIs(candidate, validate_single_decision_step(candidate))
 
     def test_same_slot_outcome_cannot_be_a_decision_source(self):
         step = _valid_step()

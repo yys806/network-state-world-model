@@ -1987,6 +1987,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.run_step2_3_real_airfogsim_raw_contract_finalization_v1",
+        "scripts.run_step2_4_real_airfogsim_communication_outcome_semantics_v1",
         "tests.test_raw_trajectory_causal_contract_v1"
       ],
       "imports": [],
@@ -5548,7 +5549,9 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "scripts.run_step2_4_real_airfogsim_communication_outcome_semantics_v1"
+      ],
       "imports": [
         "pi_jwm.airfogsim_cpu_inner_rule_v1",
         "pi_jwm.airfogsim_full_dual_graph_observer_v1",
@@ -5559,6 +5562,19 @@
       "lifecycle_status": "support",
       "module": "scripts.run_step2_3_real_airfogsim_raw_contract_finalization_v1",
       "path": "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.raw_trajectory_causal_contract_v1",
+        "scripts.run_step2_3_real_airfogsim_raw_contract_finalization_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step2_4_real_airfogsim_communication_outcome_semantics_v1",
+      "path": "code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py",
       "test_files": []
     },
     {

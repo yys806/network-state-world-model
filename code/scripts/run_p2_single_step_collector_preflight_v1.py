@@ -476,6 +476,7 @@ def _event_from_profile(env: Any, profile: dict[str, Any]) -> dict[str, Any]:
     return {
         "event_id": f"event::{task.getTaskId()}::{env.simulation_time:.6f}",
         "task_id": str(task.getTaskId()),
+        "transport": "wireless",
         "source": source,
         "target": target,
         "channel_type": str(profile["channel_type"]),
@@ -494,6 +495,58 @@ def _event_from_profile(env: Any, profile: dict[str, Any]) -> dict[str, Any]:
         "evidence": "direct_runtime_channel_event",
         "capture_phase": "after_fast_fading_before_transfer",
         "temporal_role": "outcome_only_not_same_frame_decision_input",
+    }
+
+
+def _wired_event_from_result(
+    env: Any,
+    task: Any,
+    transmitted_bytes: float,
+    before: dict[str, Any] | None,
+) -> dict[str, Any]:
+    """Encode the direct result returned by the real wired manager.
+
+    AirFogSim's wired manager has no RB/channel profile.  Its authoritative
+    per-slot service value is the ``transmitted_bytes`` returned by
+    ``WiredNetworkManager.step``.  Keep the transport explicit so a wired
+    event cannot be mistaken for a wireless event with an empty RB list.
+    """
+
+    task_id = str(task.getTaskId())
+    route = list(task.getToOffloadRoute())
+    source = str(task.getCurrentNodeId())
+    target = str(route[0]) if route else str((before or {}).get("target", ""))
+    amount = float(transmitted_bytes)
+    interval = float(env.simulation_interval)
+    remaining_before = (
+        float((before or {}).get("remaining_before", amount))
+        if before is not None
+        else amount
+    )
+    remaining_after = float(env.wired_manager.getFlowRemaining(task_id))
+    return {
+        "event_id": f"event::{task_id}::wired::{env.simulation_time:.6f}",
+        "task_id": task_id,
+        "transport": "wired",
+        "source": source,
+        "target": target,
+        "channel_type": "wired",
+        "tx_idx": None,
+        "rx_idx": None,
+        "rb_indices": [],
+        "planned_capacity": amount,
+        "remaining_before": remaining_before,
+        "remaining_after": remaining_after,
+        "delivered_data": amount,
+        "rate_per_s": amount / interval if interval > 0 else None,
+        "time": float(env.simulation_time),
+        "slot_seconds": interval,
+        "phase": "return" if task.isReturning() else "offload",
+        "flow_completed": remaining_after <= 1e-12,
+        "evidence": "direct_runtime_wired_manager_step_result",
+        "capture_phase": "after_wired_service_before_task_state_update",
+        "temporal_role": "outcome_only_not_same_frame_decision_input",
+        "source_method": "wired_manager.step",
     }
 
 
@@ -534,6 +587,18 @@ def _load_runtime():
     class ObservedAirFogSimEnv(AirFogSimEnv):
         def __init__(self, *args: Any, **kwargs: Any):
             self.pi_jwm_transfer_events: list[dict[str, Any]] = []
+            self.pi_jwm_transfer_observation: dict[str, dict[str, Any]] = {
+                "wireless": {
+                    "observed_mask": True,
+                    "missing_reason": None,
+                    "source_method": "AirFogSimEnv._execute_communication",
+                },
+                "wired": {
+                    "observed_mask": True,
+                    "missing_reason": None,
+                    "source_method": "WiredNetworkManager.step",
+                },
+            }
             self.pi_jwm_order: list[str] = []
             super().__init__(*args, **kwargs)
 
@@ -551,7 +616,55 @@ def _load_runtime():
 
         def _updateWiredCommunication(self):
             self.pi_jwm_order.append("wired_communication")
-            return super()._updateWiredCommunication()
+            candidates: dict[str, dict[str, Any]] = {}
+            offloading_tasks, _ = self.task_manager.getOffloadingTasksWithNumber()
+            for task_set in offloading_tasks.values():
+                for task in task_set:
+                    route = list(task.getToOffloadRoute())
+                    if not route:
+                        continue
+                    source = str(task.getCurrentNodeId())
+                    target = str(route[0])
+                    if (
+                        self._getNodeTypeById(source) not in {"I", "C"}
+                        or self._getNodeTypeById(target) not in {"I", "C"}
+                        or not self.wired_manager.hasLink(source, target)
+                    ):
+                        continue
+                    remaining = (
+                        task.getReturnedSize() - task.getTransmittedSize()
+                        if task.isReturning()
+                        else task.getTaskSize() - task.getTransmittedSize()
+                    )
+                    candidates[str(task.getTaskId())] = {
+                        "source": source,
+                        "target": target,
+                        "remaining_before": max(float(remaining), 0.0),
+                    }
+
+            original_step = self.wired_manager.step
+
+            def observed_step(interval: float):
+                results = original_step(interval)
+                for task_id, transmitted_bytes in results.items():
+                    task = self.task_manager.getTaskByTaskId(task_id)
+                    if task is None:
+                        continue
+                    self.pi_jwm_transfer_events.append(
+                        _wired_event_from_result(
+                            self,
+                            task,
+                            float(transmitted_bytes),
+                            candidates.get(str(task_id)),
+                        )
+                    )
+                return results
+
+            self.wired_manager.step = observed_step
+            try:
+                return super()._updateWiredCommunication()
+            finally:
+                self.wired_manager.step = original_step
 
         def _updateComputation(self):
             self.pi_jwm_order.append("computation")
@@ -568,10 +681,17 @@ def _load_runtime():
     return yaml, ObservedAirFogSimEnv, TaskScheduler, CommunicationScheduler, ComputationScheduler, preflight
 
 
-def _build_environment(seed: int, max_time: float):
+def _build_environment(
+    seed: int,
+    max_time: float,
+    *,
+    wired_edges: list[dict[str, Any]] | None = None,
+):
     yaml, env_class, task_sched, comm_sched, comp_sched, preflight = _load_runtime()
     config = yaml.safe_load((EXAMPLE_DIR / "config.yaml").read_text(encoding="utf-8"))
     config = preflight.build_preflight_config(config, seed, max_time)
+    if wired_edges is not None:
+        config.setdefault("wired", {})["edges"] = copy.deepcopy(wired_edges)
     np.random.seed(seed)
     random.seed(seed)
     env = env_class(config, interactive_mode=None)

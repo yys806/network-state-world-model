@@ -665,10 +665,23 @@ def main() -> None:
                     "time": "Decision_t before action setters",
                     "missingness": "null + observed_mask=false when FogProfile has no cpu key",
                 },
-                "delivered_data_by_task": {
-                    "source": "ObservedAirFogSimEnv.pi_jwm_transfer_events after fast fading before transfer",
+                "wireless_delivered_data_by_task": {
+                    "source": "ObservedAirFogSimEnv.pi_jwm_transfer_events transport=wireless after fast fading before transfer",
                     "unit": "AirFogSim native data unit/slot",
                     "time": "Execution_t slot",
+                    "empty_map": "wireless hook observed with no wireless service in this slot",
+                },
+                "wired_delivered_data_by_task": {
+                    "source": "ObservedAirFogSimEnv.pi_jwm_transfer_events transport=wired from WiredNetworkManager.step",
+                    "unit": "AirFogSim native data unit/slot",
+                    "time": "Execution_t slot",
+                    "empty_map": "wired hook observed with no wired service in this slot",
+                },
+                "delivered_data_by_task": {
+                    "source": "sum of observed wireless_delivered_data_by_task and wired_delivered_data_by_task by task",
+                    "unit": "AirFogSim native data unit/slot",
+                    "time": "Execution_t slot",
+                    "missing": "null plus observed_mask=false when either transport capture is unavailable",
                 },
                 "served_cpu_work_by_task": {
                     "source": "Task.getComputedSize post-step minus pre-step",

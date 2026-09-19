@@ -843,3 +843,11 @@
 - `entity.getFogProfile()` 并非每个节点都有 `cpu` 键。合同必须允许 `null + mask + missing reason`，不能把缺失写成 0 capacity。
 - `Task.getComputedSize()` 的 post-pre delta 可形成 slot served CPU work；`setTaskReturnRoute` 入队后由真实 env step 推进到 returning/done。
 - AirFogSim raw acceleration 保留审计；PI-JWM canonical acceleration 使用只依赖当前/历史的 backward difference，首帧和新实体显式 mask。
+
+## 2026-09-19 Step 2.4 通信 Outcome 发现
+
+- AirFogSim wired service 的直接 slot 数据来自 `WiredNetworkManager.step(interval) -> {task_id: transmitted_bytes}`；`AirFogSimEnv._updateWiredCommunication` 随后调用 `Task.transmit_to_Node` 并在完成时推进 lifecycle。
+- Step 2.3 的 `pi_jwm_transfer_events` 原先只覆盖 wireless；把 total 描述为 wireless+wired 与真实采集不一致，现已通过 transport split 修正。
+- 已接线 transport 的无服务 slot 是空 map 且 mask=true；接口不可用必须是 null/mask=false/reason。只有两类分量均 observed 时，total 才可用。
+- 真实两跳任务在一个 AirFogSim slot 内先完成 wireless、再完成 wired，post-step current node 为 cloud、lifecycle 为 computing；Action route 必须复制保存，否则 simulator 原地消费 route list 会污染记录。
+- cloud 节点的现有 FogProfile 无 `cpu` 键；通信验收保持 Comp no-op，未改 Step 2.3 CPU missing 语义。

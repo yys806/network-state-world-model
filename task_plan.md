@@ -1075,3 +1075,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 真实调用 return route，并冻结 raw/canonical acceleration 与缺历史 mask。
 - [x] 17 项真实 checks 全部通过；Raw Trajectory Layer / 01 标记 COMPLETE / FROZEN。
 - 唯一下一动作：完成记录、索引、最终验证、commit、push 后停止，等待研究者授权 Step 3。
+
+## 2026-09-19 Step 2.4
+
+- 当前门：只完成 Communication Outcome 语义收尾，不进入 Dataset/Tensor、双图、World Model、Loss、Planner 或训练。
+- [x] 核对真实 wired 路径：`WiredNetworkManager.step` 返回逐 task slot service，随后 `Task.transmit_to_Node` 推进任务。
+- [x] Outcome 拆分为 wireless/wired/total，并冻结 empty map 与 missing mask 的区别。
+- [x] 真实 6 slot 非 locked 轨迹观察到 wireless→wired 两跳、task progress/lifecycle 和 14 项 checks 全通过。
+- [x] 同步源码、测试、Raw Contract、机器证据、Tracker、authority records、AI_CONTEXT 和索引。
+- 唯一下一动作：最终验证、commit、push 后停止，等待研究者单独授权 Step 3。

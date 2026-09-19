@@ -12,7 +12,7 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 2.3` 已完成；Raw Trajectory Layer / 定义 01 已完成并冻结。最终真实证据位于 `code/artifacts/protocols/pi_jwm_raw_contract_causal_complete_v2_20260919/`。
+- 当前 Step：`STEP 2.4` 已完成；Raw Trajectory Layer / 定义 01 已完成并冻结。通信最终证据位于 `code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/`。
 - 新定义实现状态：Raw 因果可观测、四类动作 offload/return、Decision CSI/CPU capacity、slot Outcome 与双 acceleration 语义已验收。Dataset/Tensor、双图、World Model、Loss、Planner 仍未开始。
 - 审计结论：时间因果、稳定 ID/index、mask/split 和部分规则/评价工具可复用；严格双图、四类动作、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环需要结构性修改或新增实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
@@ -47,7 +47,7 @@
 
 ## 最近重要变化
 
-- 2026-09-19：完成 Step 2.3 future-task 隔离、真实字段、return route 与 canonical acceleration 最终验收，冻结 Raw Trajectory Layer / 01。
+- 2026-09-19：完成 Step 2.4 wireless/wired/total communication Outcome 语义最终验收；wired 服务来自真实 `WiredNetworkManager.step`，空 map 与 missing 分开，冻结 Raw Trajectory Layer / 01。
 - 2026-09-19：完成 Step 2.2 真实 AirFogSim 6 步轨迹与独立下一 Decision 验收；补齐 Step 2.1/2.2 机器证据 Git 追溯。
 - 2026-09-09：第二个正式 seed `20260830` 完成并通过单 seed 验收；第三 seed 暂停。
 - 2026-09-09：建立项目文件、依赖、artifact、实验、结果、历史方法和问答路由索引。
@@ -57,7 +57,7 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 
 ## 2026-09-19 Raw layer freeze
 
-- Current gate: Raw Trajectory Layer / 01 COMPLETE / FROZEN.
+- Current gate: Raw Trajectory Layer / 01 COMPLETE / FROZEN; Step 3 Dataset/Tensor Contract 未授权、未开始.
 - Causal boundary: future task schedule is internal metadata only; canonical acceleration is backward speed difference with an explicit missing-history mask.
 - Evidence: `code/artifacts/protocols/pi_jwm_raw_contract_causal_complete_v2_20260919/`.
 - Boundary: no Dataset/Tensor, graph, model, planner or training; no GPU or locked_test.
