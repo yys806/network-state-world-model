@@ -164,6 +164,16 @@ class ContractValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ContractError, "same_slot_outcome_leak"):
             validate_single_decision_step(replace(step, decision=bad_decision))
 
+    def test_future_task_cannot_enter_decision_observation(self):
+        step = _valid_step()
+        future_task = replace(step.decision.tasks[0], arrival_time_s=1.2)
+        bad_decision = replace(
+            step.decision,
+            tasks=(future_task, *step.decision.tasks[1:]),
+        )
+        with self.assertRaisesRegex(ContractError, "future_task_observation_leak"):
+            validate_single_decision_step(replace(step, decision=bad_decision))
+
     def test_mobility_is_uav_only_and_every_present_uav_has_an_explicit_action(self):
         vehicle_action = UavMobilityAction("vehicle-0", 0.0, 0.0, 1.0)
         with self.assertRaisesRegex(ContractError, "mobility_non_uav"):

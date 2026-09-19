@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-18。当前 **STEP 2 — 冻结单决策步 Raw Trajectory + 四类 Action Contract**；合同已冻结，最小闭环已验证，等待研究者检查。
+更新时间：2026-09-19。**Raw Trajectory Layer / 定义 01 已完成并冻结**：Step 2–2.3 的单步、多步、因果可观测边界、真实字段和 offload/return 四类动作验收均通过。下一 Step 仅建议进入 Dataset/Tensor Contract，尚未执行。
 
 ## 当前依据与执行边界
 
@@ -17,13 +17,13 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | 模块 | Definition Source | Current Code | Status | Reuse | Main Gap | Next Action |
 | --- | --- | --- | --- | --- | --- | --- |
 | 总体研究链路 | 00 四–六 | formal model / planner / r6 历史链 | AUDITED / NOT_IMPLEMENTED | STRUCTURAL_CHANGE | 各接口存在不等于新定义端到端闭环 | 先冻结一步数据合同 |
-| AirFogSim trajectory | 01 原始轨迹与时间语义 | `airfogsim_full_dual_graph_collector_v2.py`、`formal_airfogsim_collector_adapter_v2.py` | AUDITED / MIGRATION_NOT_STARTED | MINOR_MODIFICATION | 既有采集器可保留；新字段和 UAV 指令尚未闭合 | 字段可获得性表 |
-| Decision / Execution / Outcome | 01；02 | 同上；`formal_airfogsim_window_v1.py` | AUDITED | MINOR_MODIFICATION | 采集顺序可复用；窗口逐字段可见时刻需重新冻结 | 一步索引对照 |
+| AirFogSim trajectory | 01 原始轨迹与时间语义 | Raw contract、Step 2.1–2.3 runner/artifact | COMPLETE / FROZEN | MINOR_MODIFICATION | Raw 层已闭合；尚未映射到新 Dataset/Tensor | Step 3 冻结 Dataset/Tensor Contract |
+| Decision / Execution / Outcome | 01；02 | Raw contract、causal helper、真实 Step 2.3 artifact | COMPLETE / FROZEN | MINOR_MODIFICATION | future schedule 已与 `O_t`/History/input index 隔离；slot outcome 已实测 | Step 3 保持同一因果边界 |
 | Dataset / split / masks | 02 | `formal_airfogsim_dataset_v1.py` | AUDITED | MINOR_MODIFICATION | split/mask隔离复用；对象和字段变更后重新构建 | 新 schema 验收后适配 |
 | tensor contract | 02；03 | `airfogsim_tensor_v2.py`、v5 tensor contract | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | Agent/Comm/四类动作与新关系不存在于当前完整合同 | 字段和关系合同 |
 | Physical / Information 双图 | 03 | `formal_graph_ops_v1.py`、`formal_dual_graph_world_model_v1.py` | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 通信仍混在physical_edge；Agent复用node输入；旧跨图路径不同 | 依合同重构，尚未授权 |
 | entity alignment 局部工具 | 02；03 | `airfogsim_tensor_v2.py`、`formal_graph_ops_v1.py` | AUDITED | DIRECT_REUSE | ID/index/mask原则可复用；新增对象映射需扩展 | 保留身份稳定性检查 |
-| Route action | 06 §2.1；04 §3.3 | 旧offload/return事件、task索引 | AUDITED / NOT_STARTED | MINOR_MODIFICATION | 旧端点机制可用，完整route语义需映射 | 明确事件→Route |
+| Route action | 06 §2.1；04 §3.3 | Step 2.3 真实 offload/return setter 与 lifecycle 证据 | RAW CONTRACT COMPLETE / FROZEN | MINOR_MODIFICATION | Raw 执行已闭合；尚未进入 tensor/model | Step 3 映射动作张量 |
 | Comm action | 06 §2.1；04 §2.3 | RB事件、规则层聚合RB计数 | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 逐RB动作未完整进入模型动态 | 明确RB身份与资源约束 |
 | Comp action | 06 §2.1；04 §2.3 | 旧CPU内层确定性分配 | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | CPU是新决策量，旧路径忽略动作尾部并按规则分配 | 定义CPU动作与执行一致性 |
 | UAV Mobility action | 06 §2.1/5.1 | AirFogSim mobility API；formal action无对应字段 | AUDITED / NOT_STARTED | MISSING | 仿真器有接口不等于PI-JWM有采集/模型/执行通路 | UAV动作合同；车辆仍外生 |
@@ -65,10 +65,10 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | 单步规则反馈、动态图、loss/selector | 即使部分权重可加载，旧精度结论也不再适用 | 历史checkpoint复现和回归，不作新验收 |
 | 旧两seed单seed验收 | 原数字与原协议保留；并非新00–06性能证据 | 有边界的历史对照；不自动补第三seed |
 
-## Step 2 已完成
+## Raw Trajectory Layer / 01 已完成并冻结
 
-已冻结单决策步 Raw Trajectory 与四类 Action Contract。Step 2.1 v4 完成真实单步验收；Step 2.2 在同一条真实、非 locked AirFogSim 短轨迹中完成 6 个连续决策步和 7 次独立 Decision 采集。Route/Comm/Comp 均覆盖真实动作与显式 empty/no-op，Mob 每步只控制 UAV，车辆由 SUMO 推进；Outcome 与下一轮独立 Decision 的时间、实体/task ID 和 lifecycle 对齐。机器证据位于 `code/artifacts/protocols/pi_jwm_raw_single_decision_step_real_airfogsim_v4_20260919/` 和 `code/artifacts/protocols/pi_jwm_raw_multi_decision_step_real_airfogsim_v2_20260919/`，并在 Step 2.2 强制纳入 Git。
+Step 2.1 v4 完成真实单步验收；Step 2.2 完成真实多步独立重采集与 no-op 连续性；Step 2.3 用 8 个连续真实步完成最终因果和字段收尾。AirFogSim 未来 schedule 只保留为 internal metadata，不进入 `O_t`、History 或 input-side Entity Index；Decision CSI、CPU capacity/missing mask、slot delivered data/served CPU work、`setTaskReturnRoute` 和 return lifecycle 均有真实证据。AirFogSim raw acceleration 与 PI-JWM canonical backward difference 使用不同字段，缺历史时为 `null + mask=false`。最终机器证据位于 `code/artifacts/protocols/pi_jwm_raw_contract_causal_complete_v2_20260919/`，并要求纳入 Git。
 
-## 唯一建议的 Step 3（NOT_STARTED）
+## 唯一建议的 STEP 3（NOT_STARTED）
 
-研究者先审阅 Step 2.2 的真实轨迹和 acceleration 语义，再决定是否授权 Dataset/Tensor 合同设计。
+研究者审阅已冻结 Raw Trajectory Layer 后，明确授权 **STEP 3 — Dataset / Tensor Contract**；本 Step 不自动执行。

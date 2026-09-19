@@ -1,14 +1,14 @@
 # PI-JWM 当前科研状态
 
 > 本文是导航性状态摘要。当前结果必须回到原始 checkpoint、metrics、manifest 和 audit 验证。
-> 截至 2026-09-18，当前 active workflow 是最新 `00–06` 的 Step 1 实施审计；旧 P4/P6 和训练结果为 Historical / Archived。当前没有 GPU 训练，`locked_test` 未访问。
+> 截至 2026-09-19，Raw Trajectory Layer / 定义 01 已完成并冻结；旧 P4/P6 和训练结果为 Historical / Archived。当前没有 GPU 训练，`locked_test` 未访问。
 
 ## 0. 当前实施状态
 
-- Step 1 定义—实现审计已完成，等待研究者检查；入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/STEP_01_AUDIT.md`。
-- 新定义的数据、模型、loss、训练、planner 和 closed loop 均未开始。
+- Step 2.3 已用真实非 locked AirFogSim 完成 Raw 因果、字段和 return route 最终验收；入口为 Tracker 和 `STEP_02_3_RAW_CONTRACT_CAUSAL_COMPLETENESS.md`。
+- Dataset/Tensor、双图、模型、loss、训练、planner 和 closed loop 均未开始。
 - 现有代码可复用时间因果、稳定索引、mask/split 和部分规则/指标工具，但严格双图、四类动作、RSSM 边界、逐步反馈和真实重规划存在结构性缺口。
-- 唯一建议下一步是冻结一步轨迹字段与四类动作映射合同；研究者授权前不执行。
+- 唯一建议下一步是由研究者单独授权 Step 3 Dataset/Tensor Contract。
 
 ## 1. 当前研究问题
 
@@ -91,7 +91,7 @@
 
 ## 8. 单一下一动作
 
-研究者检查 Step 1；若明确授权，再冻结一个决策步的原始轨迹字段与 Route/Comm/Comp/UAV 四类动作映射合同。在此之前不启动训练、不进入实现、不访问 `locked_test`。
+研究者检查已冻结 Raw 层；若明确授权，再进入 Step 3 Dataset/Tensor Contract。在此之前不启动训练、不访问 `locked_test`。
 
 ## 9. 项目重构状态
 

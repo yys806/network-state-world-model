@@ -86,11 +86,27 @@ RAW_FIELD_SPECS = (
         "required": True,
     },
     {
-        "path": "decision.entities[].acceleration_mps2",
+        "path": "decision.entities[].raw_simulator_acceleration_mps2",
         "phase": "decision",
         "unit": "m/s^2",
         "id_domain": None,
-        "source": "traffic_manager vehicle/UAV current infos",
+        "source": "traffic_manager vehicle/UAV current infos; audit observation only",
+        "required": True,
+    },
+    {
+        "path": "decision.entities[].canonical_acceleration_mps2",
+        "phase": "decision",
+        "unit": "m/s^2",
+        "id_domain": None,
+        "source": "backward speed difference using current and previous decision only",
+        "required": True,
+    },
+    {
+        "path": "decision.entities[].canonical_acceleration_observed_mask",
+        "phase": "decision",
+        "unit": "boolean",
+        "id_domain": None,
+        "source": "collector history-availability check",
         "required": True,
     },
     {
@@ -130,15 +146,23 @@ RAW_FIELD_SPECS = (
         "phase": "decision",
         "unit": "AirFogSim native task/data/CPU units with explicit masks",
         "id_domain": "task",
-        "source": "task_manager lifecycle collections and Task getters",
+        "source": "task_manager lifecycle collections and Task getters; arrival_time <= Decision_t",
         "required": True,
+    },
+    {
+        "path": "decision.internal_metadata.future_task_schedule[]",
+        "phase": "decision_internal_only",
+        "unit": "AirFogSim native task units",
+        "id_domain": "task",
+        "source": "task_manager._to_generate_task_infos with arrival_time > Decision_t",
+        "required": False,
     },
     {
         "path": "decision.node_cpu_capacity_per_s",
         "phase": "decision",
         "unit": "AirFogSim CPU-work-unit/s",
         "id_domain": "physical_entity",
-        "source": "entity.getFogProfile()['cpu']",
+        "source": "entity.getFogProfile()['cpu']; explicit mask/reason when key is absent",
         "required": True,
     },
     {
@@ -227,7 +251,10 @@ class EntityState:
     present: bool
     position_m: tuple[float, float, float]
     speed_mps: float = 0.0
-    acceleration_mps2: float = 0.0
+    raw_simulator_acceleration_mps2: float | None = None
+    canonical_acceleration_mps2: float | None = None
+    canonical_acceleration_observed_mask: bool = False
+    canonical_acceleration_missing_reason: str | None = "NO_PREVIOUS_SPEED_IN_TRAJECTORY"
     heading: float = 0.0
     elevation_rad: float | None = None
     vehicle_route_id: str | None = None
@@ -258,6 +285,7 @@ class DecisionSnapshot:
     n_rb: int
     node_cpu_capacity_per_s: Mapping[str, float]
     source_phases: Mapping[str, str]
+    channel_rows: tuple[Mapping[str, object], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -403,6 +431,37 @@ def validate_single_decision_step(step: SingleDecisionStep) -> SingleDecisionSte
             not math.isfinite(float(value)) for value in entity.position_m
         ):
             raise ContractError("invalid_position", entity.entity_id)
+        if entity.raw_simulator_acceleration_mps2 is not None:
+            _finite(
+                entity.raw_simulator_acceleration_mps2,
+                f"raw simulator acceleration for {entity.entity_id}",
+            )
+        if entity.canonical_acceleration_observed_mask:
+            if entity.canonical_acceleration_mps2 is None:
+                raise ContractError(
+                    "canonical_acceleration_mask_mismatch", entity.entity_id
+                )
+            _finite(
+                entity.canonical_acceleration_mps2,
+                f"canonical acceleration for {entity.entity_id}",
+            )
+            if entity.canonical_acceleration_missing_reason is not None:
+                raise ContractError(
+                    "canonical_acceleration_mask_mismatch", entity.entity_id
+                )
+        elif (
+            entity.canonical_acceleration_mps2 is not None
+            or not entity.canonical_acceleration_missing_reason
+        ):
+            raise ContractError(
+                "canonical_acceleration_mask_mismatch", entity.entity_id
+            )
+    for task in tasks.values():
+        if task.arrival_time_s > decision.decision_time_s + 1e-9:
+            raise ContractError(
+                "future_task_observation_leak",
+                f"{task.task_id} arrives after Decision_t",
+            )
 
     route_actions = _index(action.route, "task_id", "route action")
     for row in route_actions.values():

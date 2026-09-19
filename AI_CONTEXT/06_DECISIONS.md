@@ -57,3 +57,12 @@ Unverified：任何未在本文件或项目权威记录中标为 Researcher Deci
 ## 2026-09-18 Researcher Decision
 
 Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^Mob controlling UAV mobility only; vehicle motion remains SUMO external progression. This is a researcher decision, not an engineering inference.
+
+## 2026-09-19：Raw 因果与 acceleration 定义
+
+**Researcher Decision**
+
+- AirFogSim 未来 task schedule 可以保留为 raw/internal metadata，但不得进入当前 `O_t`、History 或 input-side Entity Index。
+- AirFogSim acceleration 原样保留为 raw simulator observation / audit 字段；PI-JWM canonical physical acceleration 定义为 `(v_t-v_{t-1})/delta_t`，只使用当前与历史信息。
+- 首个有效时间点或缺少历史速度必须使用明确 mask，不得伪造数值；raw 与 canonical 不得混名。
+- Step 2.3 只收尾 Raw Contract；后续 Dataset/Tensor 必须另行授权。

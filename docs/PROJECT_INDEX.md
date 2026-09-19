@@ -1,7 +1,7 @@
 # PI-JWM 项目索引
 
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
-> 生成于 2026-09-08，状态更新于 2026-09-18。当前 active workflow 是新 `00–06` 的 Step 1 审计；旧训练与结果已逻辑归档。`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
+> 生成于 2026-09-08，状态更新于 2026-09-19。Raw Trajectory Layer / 定义 01 已完成并冻结；旧训练与结果已逻辑归档。`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
 
 ## 1. 进入项目的最短路径
 
@@ -11,6 +11,7 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 2. [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJECT_STATE.md)：ChatGPT 当前快照和继续读取入口。
 3. [`docs/PIJWM_IMPLEMENTATION_TRACKER.md`](PIJWM_IMPLEMENTATION_TRACKER.md)：新定义实施总表、复用分类和当前 Step。
 4. [`docs/implementation_records/STEP_01_AUDIT.md`](implementation_records/STEP_01_AUDIT.md)：Step 1 定义—实现审计主记录。
+5. [`docs/implementation_records/STEP_02_3_RAW_CONTRACT_CAUSAL_COMPLETENESS.md`](implementation_records/STEP_02_3_RAW_CONTRACT_CAUSAL_COMPLETENESS.md)：Raw 层最终真实验收与冻结记录。
 5. [`AI_CONTEXT/04_MODULE_MAP.md`](../AI_CONTEXT/04_MODULE_MAP.md)：问题到真实源码的最短路由。
 6. [`docs/COLLABORATION_GUIDE.md`](COLLABORATION_GUIDE.md)：用户与 AI 的职责、独立判断、解释和问答规则。
 7. [`docs/RESTRUCTURE_ACCEPTANCE.md`](RESTRUCTURE_ACCEPTANCE.md)：重构目标、可观察验收和剩余安全限制。
@@ -31,7 +32,7 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 - 项目：PI-JWM（Physical-Information Joint World Model）。
 - AirFogSim：只作为仿真器和数据生成工具，不是 PI-JWM 框架主体。
 - 当前路线：研究者最新 `00–06` 目标定义 → 经授权的 Implementation Step。
-- 当前 Step：Step 1 审计已完成，等待研究者检查；Step 2 未授权。
+- 当前 Step：Step 2.3 已完成，Raw Trajectory Layer / 01 已冻结；Step 3 Dataset/Tensor Contract 未开始。
 - 新定义实现：尚未开始；现有 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 都是旧协议 Historical / Archived evidence。
 - 当前主要缺口：严格双图、四类动作、目标 stochastic-state 边界、逐步规则反馈/动态图、正式候选生成和真实反馈重规划。
 - `locked_test`：继续封存；`formal_performance_claim_ready=false`。

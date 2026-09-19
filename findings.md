@@ -835,3 +835,11 @@
 - Decision 时刻固定 Comp 分配意味着同 slot 新完成传输的任务本 slot CPU 分配为 0，下一 Decision 才进入显式 Comp action；这保持 Decision 可见性边界。
 - AirFogSim UAV acceleration 使用 `(last_speed-speed)/interval`，首次加速与常规前向差分符号相反；vehicle 本轨迹 6 行均匹配前向差分。
 - `code/artifacts/*` 默认被忽略；仅在实施记录中写路径不能形成 GitHub 机器证据。Step 2.1 v3 和 Step 2.2 小型 JSON/manifest 需显式 force-add。
+
+## 2026-09-19 Step 2.3 因果与字段发现
+
+- `_to_generate_task_infos` 真实包含 `arrival_time_s > decision_time` 的未来任务。它是 simulator internal schedule，不能进入当前 `O_t`、History 或 input-side Entity Index。
+- `channel_manager.getCSI` 可在 Decision 前得到 42 条逐 RB channel rows；同 slot transfer event 可给出真实 delivered data。
+- `entity.getFogProfile()` 并非每个节点都有 `cpu` 键。合同必须允许 `null + mask + missing reason`，不能把缺失写成 0 capacity。
+- `Task.getComputedSize()` 的 post-pre delta 可形成 slot served CPU work；`setTaskReturnRoute` 入队后由真实 env step 推进到 returning/done。
+- AirFogSim raw acceleration 保留审计；PI-JWM canonical acceleration 使用只依赖当前/历史的 backward difference，首帧和新实体显式 mask。

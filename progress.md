@@ -891,3 +891,12 @@
 - Task_1 生命周期从 waiting_to_offload 进入 computing，再进入 waiting_to_return；车辆由 SUMO 推进。
 - 两个 UAV 首次 `0 -> 10 m/s` 时常规差分约 `+100`，AirFogSim acceleration 为 `-100`；只记录语义，不修改 simulator 或决定 Dataset。
 - Step 2.1 追加 v4 真实证据，准备与 Step 2.2 v2 JSON/manifest 一起纳入 Git。无训练、GPU 或 `locked_test`。
+
+## 2026-09-19 Step 2.3 Raw Contract 最终验收
+
+- 新增 3 项 causal helper 测试并通过；单步合同专项测试现为 7/7。
+- 真实 8 slot、9 Decision 轨迹从 `2.4 s` 到 `3.2 s`，17 项 checks 全部通过。
+- 首帧有 9 个 future schedule task 和 5 个 observable task；逐帧未发生 future-object leakage。
+- 首帧 42 条真实 channel row；CPU capacity 7 个 observed、1 个 explicit missing。
+- 6 个 slot 有 delivered-data，6 个 slot 有 served-CPU；真实 return setter 调用 3 次并进入 returning/done。
+- Raw/canonical acceleration 已分字段和 mask。无训练、GPU 或 `locked_test`；后续层未开始。

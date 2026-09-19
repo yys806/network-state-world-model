@@ -2,6 +2,7 @@
 
 ## 2026-09-19：Step 2.1 真实 AirFogSim 验收
 
+- 完成 Step 2.3 Raw Contract 因果完整性收尾：future-task 隔离、真实 CSI/CPU/slot outcome、return route 与双 acceleration 字段全部验收，Raw Trajectory Layer / 01 冻结。
 - 完成 Step 2.2 真实 6 步 Raw Trajectory 和独立下一 Decision 验收；Route/Comm/Comp 覆盖真实动作与显式 no-op。
 - 版本控制 Step 2.1 v3 和 Step 2.2 的 JSON/manifest，补齐 GitHub 机器证据。
 - 新增真实单轨迹四类动作接线与 Outcome/next Decision 证据，修正 vehicle degree/UAV rad heading 合同，纠正 Step 2 专项测试数量为 6。

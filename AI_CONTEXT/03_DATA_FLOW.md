@@ -6,6 +6,10 @@
 
 One non-locked AirFogSim trajectory verified six repeated `Decision_t -> Route/Comm/Comp/UAV Mobility -> env.step() -> Outcome_t` transitions. Every next Decision is independently recollected at the next loop start. Route/Comm/Comp distinguish explicit empty/no-op from a missing field. Vehicle motion is advanced by SUMO; UAV mobility is the planner action. Evidence: `code/artifacts/protocols/pi_jwm_raw_multi_decision_step_real_airfogsim_v2_20260919/`.
 
+## Step 2.3 frozen causal raw flow
+
+The current Raw layer admits only tasks with `arrival_time_s <= decision_time_s` into `O_t`, History and the input-side Entity Index. Later AirFogSim schedules remain internal metadata. Decision rows include real CSI and masked CPU capacity observations; Outcome maps aggregate same-slot real transfer events and Task computed-size deltas. Raw simulator acceleration and canonical backward-difference acceleration are different fields; missing history produces `null + mask=false`. Evidence: `code/artifacts/protocols/pi_jwm_raw_contract_causal_complete_v2_20260919/`. Dataset/Tensor mapping is not started.
+
 ## 总流程
 
 ```text
@@ -64,10 +68,10 @@ DataLoader → 模型 prior/teacher 输出 → `formal_world_model_loss()`。bas
 - `require_split_access()` 默认拒绝 locked split；正式 runner 还拒绝路径中出现 `locked_test`。
 - `locked_test_accessed=false`。
 - `formal_performance_claim_ready=false`。
-- `step2_started=false`；没有生成新定义 tensor。
+- Raw Trajectory Layer / 01 已冻结；没有生成新定义 tensor，Step 3 未开始。
 
 Unverified：未在当前 tensor manifest、loader 或模型实际读路径出现的字段，不得推断为当前模型输入。
 
-## 2026-09-18 STEP 2 状态
+## 2026-09-19 Raw 状态
 
-单决策步 `Decision_t → Action_t → Execution_t → Outcome_t → Decision_{t+1}` 合同已冻结。四类动作明确为 Route、Comm、Comp、UAV Mobility；车辆运动由 SUMO 推进，不属于 PI-JWM planner action。合同和验证证据见 `docs/contracts_PIJWM_RAW_SINGLE_DECISION_STEP_CONTRACT_V1.md`、`docs/implementation_records/STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md`。当前只完成最小 setter 闭环和历史三类真实 ledger 证据，完整真实四类轨迹尚未验收。
+单步、多步、因果字段与 return route 已完成真实验收。Raw 层冻结不等于 Dataset/Tensor 已实现。

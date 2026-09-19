@@ -2646,3 +2646,7 @@ GPU 执行证据已进一步确认该方法能在 RTX 4090 上按 deterministic 
 `20260831` 与 `20260830` 均使用同一冻结数据合同、模型、两阶段训练协议、全量 unlocked 划分和 gate-aware checkpoint 选择，并分别通过独立单 seed 验收。第二个 seed `20260830` 的最佳 RSSM epoch 为 `40`，validation/calibration link-F1 相对 persistence 为 `+0.45710/+0.88509`，node-x 总体/h5/h10/h20 ratio 为 `0.75086/0.76033/0.74939/0.74960`，throughput/RB/task-delay ratio 为 `0.93831/0.47523/0.01175`。
 
 这证明当前方法已在两个固定 seed 上表现出一致的正向结果，但仍不能称为 P4 已通过或最终方法：预注册的第三 seed `20260832` 和三 seed独立审计尚未完成。当前按用户要求暂停；`locked_test_accessed=false`、`formal_performance_claim_ready=false`，P6不开放。
+
+### 新定义 Raw Trajectory 因果边界（2026-09-19）
+
+新定义的 Raw 层只把 `arrival_time_s <= decision_time_s` 的任务放入当前 `O_t`、History 和 input-side Entity Index。AirFogSim `_to_generate_task_infos` 中更晚到达的 schedule 可以作为 raw/internal metadata 保留，但不得成为当前模型输入。物理加速度分成两种：AirFogSim 报告值保留为 `raw_simulator_acceleration_mps2` 审计字段；PI-JWM canonical physical acceleration 固定为只使用当前与历史速度的 `(v_t-v_{t-1})/delta_t`。首个有效时刻或实体缺少历史速度时，canonical 值为 `null` 且 mask 为 false，禁止伪造 0。该边界已由 Step 2.3 真实轨迹验证；Dataset/Tensor 如何承载它尚未开始。

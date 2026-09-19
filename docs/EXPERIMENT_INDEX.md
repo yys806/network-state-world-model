@@ -4,7 +4,7 @@
 
 重要实验的结构化记录见 `docs/registries/experiment_registry.json`；全部 artifact 一级目录的自动目录见 `docs/registries/generated/artifact_catalog.csv`。注册表 v2 对每条重要实验使用统一字段；未知或不适用的内容必须写成 `null` 并在 `field_notes` 解释，不能直接省略。
 
-> 2026-09-18：新 `00–06` 当前只有 Step 1 审计，没有新训练实验。下列 P4/P6 条目全部按旧定义作 Historical / Archived evidence。
+> 2026-09-19：新 `00–06` 已完成 Raw Trajectory Layer 的真实接口验收，但没有新训练实验。下列 P4/P6 条目全部按旧定义作 Historical / Archived evidence。
 
 ## 1. 旧协议正式实验（Historical / Archived）
 

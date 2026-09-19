@@ -1066,3 +1066,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 对比 AirFogSim acceleration 与速度有限差分，只记录实现语义，不修改仿真器或决定 Dataset 字段。
 - [x] Step 2.1 v4 和 Step 2.2 v2 必要 JSON/manifest 已强制加入 Git 暂存，且 manifest SHA 与暂存 blob 一致。
 - 唯一下一动作：完成最终验证、commit、push 后停止等待研究者审阅。
+
+## 2026-09-19 Step 2.3
+
+- 当前门：只完成 Raw Contract 因果和字段完整性收尾，不进入 Dataset/Tensor builder 或后续模型链。
+- [x] 未来任务从 `O_t`、History 和 input-side Entity Index 隔离，保留 internal metadata。
+- [x] 真实验收 Decision CSI/CPU capacity 与 Outcome delivered data/served CPU work。
+- [x] 真实调用 return route，并冻结 raw/canonical acceleration 与缺历史 mask。
+- [x] 17 项真实 checks 全部通过；Raw Trajectory Layer / 01 标记 COMPLETE / FROZEN。
+- 唯一下一动作：完成记录、索引、最终验证、commit、push 后停止，等待研究者授权 Step 3。
