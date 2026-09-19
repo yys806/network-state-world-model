@@ -7,6 +7,7 @@ from pathlib import Path
 from pi_jwm.step3_2_batch_preprocessing_v1 import (
     RawSource,
     apply_normalization,
+    audit_batch_future_action_references,
     build_batch,
     collate_samples,
     fit_train_normalization_stats,
@@ -135,6 +136,70 @@ class Step32BatchPreprocessingTests(unittest.TestCase):
             path.write_text(json.dumps(payload), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "contiguous"):
                 build_batch([RawSource(path, "dev_train")])
+
+    def test_provenance_time_grid_and_units_are_explicit(self):
+        with tempfile.TemporaryDirectory() as directory_name:
+            directory = Path(directory_name)
+            train = self._write_raw(directory, "train", 101)
+            validation = self._write_raw(directory, "validation", 201)
+            bundle = build_batch([RawSource(train, "dev_train"), RawSource(validation, "dev_validation")])
+        self.assertEqual({"train", "validation"}, {row["trajectory_id"] for row in bundle["provenance"]})
+        for row in bundle["provenance"]:
+            self.assertIn("source_path", row)
+            self.assertIn("source_sha256", row)
+            self.assertEqual(row["seed"], 101 if row["trajectory_id"] == "train" else 201)
+            self.assertEqual(row["config_hash"], f"config-{row['seed']}")
+            self.assertEqual(row["decision_frame_range"], [0, 6])
+            self.assertEqual(row["step_frame_range"], [0, 5])
+            self.assertEqual(row["slot_duration_s"], 0.1)
+            self.assertEqual(row["model_ready_sample_contract_version"], "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F")
+        self.assertEqual(bundle["normalization_units"], {
+            "entity.speed_mps": "m/s",
+            "entity.canonical_acceleration_mps2": "m/s^2",
+            "task.task_size": "AirFogSim data-unit",
+        })
+
+    def test_time_gap_is_rejected_before_windowing(self):
+        with tempfile.TemporaryDirectory() as directory_name:
+            directory = Path(directory_name)
+            path = self._write_raw(directory, "gap", 101)
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            payload["decisions"][2]["simulation_time_s"] += 0.25
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "time grid"):
+                build_batch([RawSource(path, "dev_train")])
+
+    def test_presence_false_padding_does_not_change_statistics(self):
+        with tempfile.TemporaryDirectory() as directory_name:
+            directory = Path(directory_name)
+            train = self._write_raw(directory, "train", 101)
+            bundle = build_batch([RawSource(train, "dev_train")])
+        stats = fit_train_normalization_stats(bundle["samples"])
+        mutated = copy.deepcopy(bundle["samples"])
+        mutated[0]["history"][0]["entities"].append({
+            "entity_id": "padding",
+            "presence": False,
+            "speed_mps": {"value": 1e12, "presence": True, "feature_mask": True},
+            "canonical_acceleration_mps2": {"value": 1e12, "presence": True, "feature_mask": True},
+            "feature_mask": {"speed_mps": True, "canonical_acceleration_mps2": True},
+        })
+        self.assertEqual(stats, fit_train_normalization_stats(mutated))
+
+    def test_batch_future_reference_audit_is_observation_only(self):
+        with tempfile.TemporaryDirectory() as directory_name:
+            directory = Path(directory_name)
+            train = self._write_raw(directory, "train", 101)
+            validation = self._write_raw(directory, "validation", 201)
+            bundle = build_batch([RawSource(train, "dev_train"), RawSource(validation, "dev_validation")])
+            audit = audit_batch_future_action_references(
+                [RawSource(train, "dev_train"), RawSource(validation, "dev_validation")],
+                bundle=bundle,
+            )
+        self.assertEqual(audit["total_candidate_windows"], 8)
+        self.assertEqual(audit["successfully_constructed_windows"], 8)
+        self.assertEqual(audit["unresolved_reference_windows"], 0)
+        self.assertEqual(audit["unresolved_reference_count"], 0)
+        self.assertTrue(audit["observation_only"])
 
 
 if __name__ == "__main__":

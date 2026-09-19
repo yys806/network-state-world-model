@@ -1,30 +1,152 @@
 {
+  "checks": {
+    "causal_windows_only": true,
+    "no_trajectory_cross_split": true,
+    "seed_source_lineage_auditable": true,
+    "source_sha256_present": true,
+    "trajectory_ids_unique": true
+  },
   "contract": {
     "history_steps": 2,
     "horizon_steps": 2,
     "input_index_policy": "history_causal_observable_object_union",
     "split_policy": "trajectory_level_before_window_construction"
   },
+  "future_reference_audit": {
+    "affected_window_rate": 0.0,
+    "by_action_family": {
+      "comm": {
+        "references": 0,
+        "windows": 0
+      },
+      "comp": {
+        "references": 0,
+        "windows": 0
+      },
+      "mobility": {
+        "references": 0,
+        "windows": 0
+      },
+      "route": {
+        "references": 0,
+        "windows": 0
+      }
+    },
+    "by_object_kind": {
+      "physical_entity": {
+        "references": 0,
+        "windows": 0
+      },
+      "task": {
+        "references": 0,
+        "windows": 0
+      }
+    },
+    "decision": "RESEARCHER_DECISION_REQUIRED_IF_NONZERO",
+    "observation_only": true,
+    "schema_version": "PI-JWM-Step-3.2-Future-Reference-Audit-v1",
+    "successfully_constructed_windows": 12,
+    "total_candidate_windows": 12,
+    "unresolved_reference_count": 0,
+    "unresolved_reference_windows": 0
+  },
+  "normalization_units": {
+    "entity.canonical_acceleration_mps2": "m/s^2",
+    "entity.speed_mps": "m/s",
+    "task.task_size": "AirFogSim data-unit"
+  },
   "provenance": [
     {
-      "path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_communication_outcome_semantics_v2_20260919\\real_communication_outcome_semantics.json",
+      "config_hash": "0f2bad0ecdf1e8a0b3e10b6514edda80703e5f348049610bb96323d303950064",
+      "decision_frame_range": [
+        0,
+        6
+      ],
+      "decision_time_range_s": [
+        2.4,
+        3.0
+      ],
+      "lineage_key": {
+        "config_hash": "0f2bad0ecdf1e8a0b3e10b6514edda80703e5f348049610bb96323d303950064",
+        "seed": 0
+      },
+      "model_ready_sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
       "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
-      "sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
+      "seed": 0,
+      "slot_duration_s": 0.1,
+      "source_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_communication_outcome_semantics_v2_20260919\\real_communication_outcome_semantics.json",
+      "source_sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
       "split": "dev_train",
+      "step_frame_range": [
+        0,
+        5
+      ],
+      "step_time_range_s": [
+        2.4,
+        3.0
+      ],
       "trajectory_id": "step2.4-real-communication-seed0"
     },
     {
-      "path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step3_2_raw_dev_seed1_20260919\\real_communication_outcome_semantics.json",
+      "config_hash": "9e196354cabdf8c600b14929fa6c6216c1aed11e5f89dd1da12ffb6032ae547b",
+      "decision_frame_range": [
+        0,
+        6
+      ],
+      "decision_time_range_s": [
+        0.2,
+        0.8
+      ],
+      "lineage_key": {
+        "config_hash": "9e196354cabdf8c600b14929fa6c6216c1aed11e5f89dd1da12ffb6032ae547b",
+        "seed": 1
+      },
+      "model_ready_sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
       "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
-      "sha256": "3fc4da5cac00a645a73228a6bf437b2d61fd82ee3e3be976442567d1e1e6fc5d",
+      "seed": 1,
+      "slot_duration_s": 0.1,
+      "source_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step3_2_raw_dev_seed1_20260919\\real_communication_outcome_semantics.json",
+      "source_sha256": "3fc4da5cac00a645a73228a6bf437b2d61fd82ee3e3be976442567d1e1e6fc5d",
       "split": "dev_train",
+      "step_frame_range": [
+        0,
+        5
+      ],
+      "step_time_range_s": [
+        0.2,
+        0.8
+      ],
       "trajectory_id": "step3.2-dev-seed1"
     },
     {
-      "path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step3_2_raw_dev_seed2_20260919\\real_communication_outcome_semantics.json",
+      "config_hash": "b2cad48fa6d845314a6ac7fb14da62d59ab7ec36992673a0e9e456f913f91c75",
+      "decision_frame_range": [
+        0,
+        6
+      ],
+      "decision_time_range_s": [
+        1.1,
+        1.7
+      ],
+      "lineage_key": {
+        "config_hash": "b2cad48fa6d845314a6ac7fb14da62d59ab7ec36992673a0e9e456f913f91c75",
+        "seed": 2
+      },
+      "model_ready_sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
       "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
-      "sha256": "02f186f5e7f109760c85a6bad879c7e2dd745ea015179c85850313cac3256bad",
+      "seed": 2,
+      "slot_duration_s": 0.1,
+      "source_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step3_2_raw_dev_seed2_20260919\\real_communication_outcome_semantics.json",
+      "source_sha256": "02f186f5e7f109760c85a6bad879c7e2dd745ea015179c85850313cac3256bad",
       "split": "dev_validation",
+      "step_frame_range": [
+        0,
+        5
+      ],
+      "step_time_range_s": [
+        1.1,
+        1.7
+      ],
       "trajectory_id": "step3.2-dev-seed2"
     }
   ],

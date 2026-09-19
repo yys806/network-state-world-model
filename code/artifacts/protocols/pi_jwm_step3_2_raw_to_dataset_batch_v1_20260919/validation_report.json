@@ -9,10 +9,55 @@
     "causal_windows_only": true,
     "deterministic_rebuild": true,
     "no_trajectory_cross_split": true,
+    "seed_source_lineage_auditable": true,
+    "source_sha256_traceable": true,
     "train_only_normalization_fit": true,
     "trajectory_level_split": true
   },
+  "evidence_source": {
+    "causal_windows_only": "computed from final sample metadata frame indices",
+    "train_only_normalization_fit": "fit_train_normalization_stats split filter and emitted mask policy",
+    "trajectory_level_split": "computed from final provenance trajectory_id sets"
+  },
   "formal_dataset": false,
+  "future_reference_audit": {
+    "affected_window_rate": 0.0,
+    "by_action_family": {
+      "comm": {
+        "references": 0,
+        "windows": 0
+      },
+      "comp": {
+        "references": 0,
+        "windows": 0
+      },
+      "mobility": {
+        "references": 0,
+        "windows": 0
+      },
+      "route": {
+        "references": 0,
+        "windows": 0
+      }
+    },
+    "by_object_kind": {
+      "physical_entity": {
+        "references": 0,
+        "windows": 0
+      },
+      "task": {
+        "references": 0,
+        "windows": 0
+      }
+    },
+    "decision": "RESEARCHER_DECISION_REQUIRED_IF_NONZERO",
+    "observation_only": true,
+    "schema_version": "PI-JWM-Step-3.2-Future-Reference-Audit-v1",
+    "successfully_constructed_windows": 12,
+    "total_candidate_windows": 12,
+    "unresolved_reference_count": 0,
+    "unresolved_reference_windows": 0
+  },
   "gpu": false,
   "locked_test_accessed": false,
   "observation_only": true,

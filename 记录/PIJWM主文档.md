@@ -2679,3 +2679,5 @@ Step 2.4 将通信 Outcome 的真实语义最终固定为三层字段：无线�
 # 2026-09-19 STEP 3.2 工程边界
 
 STEP 3.2 只验证 Raw 到 model-ready batch 的流水线：先按 trajectory 切分，再在各 split 内构造冻结的 H=2/L=2 causal window，连续字段统计只来自 train 且遵守 presence/feature mask。当前产物为 non-locked observation-only validation bundle，不改变 Raw、双图、World Model、Loss、Planner 或训练定义。
+
+STEP 3.2-PATCH 已将 Dataset isolation 证据补齐：provenance 从 Raw 读取 trajectory/seed/source SHA/config lineage、frame/time range、slot duration 和 3.1F contract；真实 time-grid 与 step start/end 在 window construction 前验证；development trajectories 的 future-reference audit 独立保存为 observation-only JSON，当前 12/12/0/0；normalization 单位明确为 `m/s`、`m/s^2`、`AirFogSim data-unit`。该 Patch 不决定正式 split 比例，不改变 Raw 或 3.1F 语义。

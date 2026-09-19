@@ -1,0 +1,38 @@
+{
+  "affected_window_rate": 0.0,
+  "by_action_family": {
+    "comm": {
+      "references": 0,
+      "windows": 0
+    },
+    "comp": {
+      "references": 0,
+      "windows": 0
+    },
+    "mobility": {
+      "references": 0,
+      "windows": 0
+    },
+    "route": {
+      "references": 0,
+      "windows": 0
+    }
+  },
+  "by_object_kind": {
+    "physical_entity": {
+      "references": 0,
+      "windows": 0
+    },
+    "task": {
+      "references": 0,
+      "windows": 0
+    }
+  },
+  "decision": "RESEARCHER_DECISION_REQUIRED_IF_NONZERO",
+  "observation_only": true,
+  "schema_version": "PI-JWM-Step-3.2-Future-Reference-Audit-v1",
+  "successfully_constructed_windows": 12,
+  "total_candidate_windows": 12,
+  "unresolved_reference_count": 0,
+  "unresolved_reference_windows": 0
+}

@@ -870,3 +870,10 @@
 - 发现：`994da0b` 的 Future Action 使用 anchor-only index，在 History union 包含已消失对象时会把合法对象重新编号。
 - 证据：disappearing-object fixture 在修复前稳定复现 `History index=1` 被写成 `0`；修复后 validator 逐字段核对 ID 与 static index。
 - 边界：audit 的 18 窗口/0 unresolved 仍只是当前非 locked Raw observation，不是正式 Dataset 可用率；STEP 3.2 未授权。
+
+## 2026-09-19 STEP 3.2-PATCH findings
+
+- 旧 batch provenance 只有 path/hash/trajectory/split/schema，无法完整证明 seed/config lineage 与 time-grid；本 Patch 从真实 Raw environment/execution 字段补齐，缺失字段保留 null，不伪造 metadata。
+- Raw decisions 为 7 帧、steps 为 6 帧；冻结 slot duration 为 0.1 s。每个 step 的 execution start/end 与 decision/outcome 时间均通过逐项检查。
+- Batch audit 必须重新按 Step 3.2 的三条 development trajectory 统计；当前为 12/12/0/0，不能引用 Step 3.1F 的 18-window audit 作为替代。
+- task size 单位只能写 `AirFogSim data-unit`；现有源码和记录没有可靠 bit/byte 换算证据。

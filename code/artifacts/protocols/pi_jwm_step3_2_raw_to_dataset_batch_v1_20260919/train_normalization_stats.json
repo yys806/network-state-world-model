@@ -6,6 +6,7 @@
       "mean": 7.447306496125759,
       "source_field": "canonical_acceleration_mps2",
       "std": 25.682056451941545,
+      "unit": "m/s^2",
       "zero_variance_handling": "population_std"
     },
     "entity.speed_mps": {
@@ -14,6 +15,7 @@
       "mean": 2.265105350897042,
       "source_field": "speed_mps",
       "std": 4.099410491487269,
+      "unit": "m/s",
       "zero_variance_handling": "population_std"
     },
     "task.task_size": {
@@ -22,9 +24,15 @@
       "mean": 0.4396624166358481,
       "source_field": "task_size",
       "std": 0.12376278283580429,
+      "unit": "AirFogSim data-unit",
       "zero_variance_handling": "population_std"
     }
   },
   "schema_version": "PI-JWM-Step-3.2-Train-Only-Normalization-v1",
-  "source_split": "dev_train"
+  "source_split": "dev_train",
+  "units": {
+    "entity.canonical_acceleration_mps2": "m/s^2",
+    "entity.speed_mps": "m/s",
+    "task.task_size": "AirFogSim data-unit"
+  }
 }

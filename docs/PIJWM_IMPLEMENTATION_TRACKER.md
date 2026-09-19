@@ -78,6 +78,8 @@ Step 2.1 v4 完成真实单步验收；Step 2.2 完成真实多步独立重采�
 
 STEP 3.2 已完成最小 non-locked validation：3 条独立 development trajectory、12 个 H=2/L=2 windows，trajectory-level split，train-only mask-aware normalization，deterministic rebuild 和 serialize/load 均有机器证据。该结果不是正式 Dataset、训练或泛化结论。
 
+STEP 3.2-PATCH 已补齐 Dataset isolation evidence：Raw provenance 含真实 trajectory/seed/source SHA/config lineage/time range/slot duration/sample contract；time-grid 与 step start/end 对齐在 window construction 前检查；train/validation trajectory 无交集；batch future-reference audit 独立保存并统计 12/12/0/0，仍为 observation-only；normalization 单位为 `m/s`、`m/s^2`、`AirFogSim data-unit`。
+
 ## 下一步边界
 
 研究者审阅 STEP 3.2 证据后再单独授权下一 Step；本 Step 不自动进入后续 Tensor、模型或训练工作。

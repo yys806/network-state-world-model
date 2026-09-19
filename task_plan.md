@@ -7,6 +7,13 @@
 - Gate: `formal_dataset=false`, `training=false`, `gpu=false`, `locked_test_accessed=false`; no Tensor/model/loss/planner work.
 - Next: researcher review; do not automatically enter a later Step.
 
+## 2026-09-19 STEP 3.2-PATCH
+
+- Scope: finalize Dataset isolation evidence only: Raw provenance/lineage, real time-grid continuity, development future-reference batch audit, normalization units, presence padding counterfactual, computed validation checks.
+- Result: 3 trajectories, 12 candidate/12 constructed windows, 0 unresolved references; observation-only and non-locked.
+- Gate: formal_dataset=false, training=false, gpu=false, locked_test_accessed=false; no Tensor/model/loss/planner work.
+- Next: researcher review STEP 3.2-PATCH; do not automatically enter a later Step.
+
 ## 2026-09-19 STEP 3.1 execution note
 
 - Scope: freeze minimal Raw Trajectory -> Model-ready Sample -> Tensor Contract only.

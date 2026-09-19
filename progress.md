@@ -12,6 +12,14 @@
 - STEP 3.1R 真实 artifact 已重建：History `[1,2]`、Action/Target `[2,3]`，17 项机器检查、6 项 focused tests 和 serialize→load equality 通过；旧 Step 3.1 的 10/4 记录已被本修正取代。
 - 当前边界：正式 batch/split、模型、loss、planner、训练、GPU、locked_test 均未开始。唯一下一动作是研究者审阅后授权 STEP 3.2。
 
+## 2026-09-19 STEP 3.2-PATCH completion
+
+- 已补齐 provenance：trajectory_id/seed/source path+SHA/split/schema/config lineage、frame/time range、slot duration、3.1F sample contract version。
+- 已加入真实 slot time-grid 与 execution start/end 对齐检查，time-gap fixture 在 window construction 前拒绝。
+- development batch future-reference audit：12 candidate、12 constructed、0 unresolved window、0 unresolved reference，结果仅 observation。
+- normalization metadata 已保存 `m/s`、`m/s^2`、`AirFogSim data-unit`；presence=false 极端 padding 不改变 train stats。
+- validation report 改为从最终 bundle/provenance/stats 计算；仍为 formal_dataset=false、training=false、gpu=false、locked_test_accessed=false。
+
 ## 2026-08-26 双约束计划重构（本次会话）
 
 - 用户明确给出老师组会原话，已逐字写入 `记录/本地计划表.md`、`记录/PIJWM主文档.md`、`记录/8.12之后推进.md` 以及记忆更新；原话与解释分开保存。

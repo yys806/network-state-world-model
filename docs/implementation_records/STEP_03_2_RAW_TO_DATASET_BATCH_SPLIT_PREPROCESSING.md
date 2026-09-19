@@ -1,4 +1,15 @@
-# STEP 3.2 - Raw-to-Dataset Batch / Split Preprocessing Validation
+# STEP 3.2-PATCH - Dataset Isolation Evidence Finalization
+
+本 Patch 只补齐 Dataset-level isolation 的机器合同和证据，不重做核心流水、不增加正式 Dataset，也不进入 Tensor、模型、训练或 GPU。
+
+## Patch Changes
+
+- provenance 从每条 Raw 实际读取 `trajectory_id`、`seed`、`source_path`、`source_sha256`、`split`、`schema_version`、`config_hash`（缺失则保留 `null`）、decision/step frame 与 simulation-time range、`slot_duration_s`、Step 3.1F sample contract version 和 seed/config lineage。
+- 在 window construction 前检查 frame 连续性、decision time-grid、每个 step 的 execution start/end 与 decision/outcome 时间关系；中间 time gap 或跨 reset 不得构造 window。
+- 增加 trajectory-id 唯一性、train/validation 无交集、source SHA 可追溯和相同 seed/config lineage 不得跨 split 的机器检查。
+- 生成独立 `future_action_reference_audit.json`，统计本 Step development trajectories 的 candidate/constructed/unresolved windows、action family、object kind 和 affected rate；结果是 observation-only。
+- normalization metadata 明确 `m/s`、`m/s^2`、`AirFogSim data-unit`，并增加 presence=false 极端 padding counterfactual 测试。
+- validation report 的 split、causal、train-only、source SHA 和 lineage 检查均从最终 bundle/provenance/stats 计算，保留 evidence source，不使用未经计算的常量 True。
 
 ## Step Goal
 
@@ -56,6 +67,13 @@
 - 仅 3 条短 development trajectory，不能支持正式 split 比例、scenario 覆盖或泛化结论。
 - 只验证 JSON-native batch/collate；尚未进入 Tensor、模型、训练或 GPU。
 - future-reference audit 仍为 STEP 3.1F observation，不外推 Dataset 结论。
+
+## Patch Validation
+
+- Step 3.2 focused tests: 9/9 PASS，包含 provenance、time-gap rejection、train-only validation counterfactual、mask=false 与 presence=false padding counterfactual、batch future-reference audit。
+- development batch audit: 12 candidate windows，12 successfully constructed，0 unresolved-reference windows，0 unresolved references，affected rate `0.0`；四类 action family 与 task/physical_entity 均为 0；结果仅为 Observation。
+- 三条 development trajectory 的 provenance 均有真实 seed/config/source SHA/time-grid；train/validation trajectory-id 无交集。
+- normalization units: entity speed `m/s`，canonical acceleration `m/s^2`，task size `AirFogSim data-unit`。
 
 ## Git
 
