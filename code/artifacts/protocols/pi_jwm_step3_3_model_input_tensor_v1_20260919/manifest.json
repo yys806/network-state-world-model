@@ -382,6 +382,236 @@
         3
       ]
     },
+    "past_outcome_dag_edges": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        7,
+        2
+      ]
+    },
+    "past_outcome_dag_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_entity_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        10,
+        1
+      ]
+    },
+    "past_outcome_entity_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        10,
+        1
+      ]
+    },
+    "past_outcome_entity_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        10
+      ]
+    },
+    "past_outcome_entity_type_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        10
+      ]
+    },
+    "past_outcome_flow_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_source_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_transport_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_transport_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_relation_endpoints": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        72,
+        2
+      ]
+    },
+    "past_outcome_relation_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        72
+      ]
+    },
+    "past_outcome_served_cpu_work": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_served_cpu_work_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_task_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7,
+        1
+      ]
+    },
+    "past_outcome_task_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7,
+        1
+      ]
+    },
+    "past_outcome_task_lifecycle_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_task_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_total_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_total_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_wired_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_wired_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_wireless_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_wireless_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
     "past_route_hop_mask": {
       "dtype": "bool",
       "shape": [
@@ -469,6 +699,24 @@
         72
       ]
     },
+    "target_entity_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        10,
+        1
+      ]
+    },
+    "target_entity_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        10,
+        1
+      ]
+    },
     "target_entity_presence": {
       "dtype": "bool",
       "shape": [
@@ -477,7 +725,79 @@
         10
       ]
     },
+    "target_entity_type_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        10
+      ]
+    },
+    "target_flow_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
     "target_flow_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_source_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_transport_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_transport_mask": {
       "dtype": "bool",
       "shape": [
         12,
@@ -512,6 +832,54 @@
       ]
     },
     "target_task_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_total_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_total_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_wired_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_wired_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_wireless_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_wireless_service_mask": {
       "dtype": "bool",
       "shape": [
         12,
@@ -565,10 +933,10 @@
   },
   "capacity_semantics": "development observed maxima only; not final formal research capacity",
   "files": {
-    "tensor.npz": "a1d5de7c17af53da7d17a35286e0724ae87240885ec3d9e8318beb7446cc2ea6",
-    "tensor_schema.json": "6778b976ef58be2073bcd49cfae54bb172ee01b71496e8ed98164b22a4af49bc"
+    "tensor.npz": "cfd3b17bb50536e61f5cdcfa2d2989b080f2b414cdbb553111c618fad99baf44",
+    "tensor_schema.json": "fc430a447a12d6219517c595c038be8e0a8944ca72720748bd255be3a73c13f4"
   },
-  "input_batch_manifest_sha256": "70318b2b4446dcd97d5c76cf45c40b0970d8b72cc2fec7c5f61de15e5a449050",
+  "input_batch_manifest_sha256": "4d0adceb9c90c3712297878a82c19175f98e11315477e8f335425a496ee6da6e",
   "mask_presence_counts": {
     "dag_mask": 50,
     "entity_feature_mask": 362,
@@ -592,50 +960,132 @@
     "past_comm_rb_mask": 4,
     "past_comp_allocated_cpu_mask": 0,
     "past_mobility_feature_mask": 72,
+    "past_outcome_dag_mask": 29,
+    "past_outcome_entity_feature_mask": 98,
+    "past_outcome_entity_presence": 98,
+    "past_outcome_flow_presence": 7,
+    "past_outcome_flow_service_mask": 7,
+    "past_outcome_flow_transport_mask": 7,
+    "past_outcome_relation_mask": 534,
+    "past_outcome_served_cpu_work_mask": 0,
+    "past_outcome_task_feature_mask": 57,
+    "past_outcome_task_presence": 57,
+    "past_outcome_total_service_mask": 4,
+    "past_outcome_wired_service_mask": 3,
+    "past_outcome_wireless_service_mask": 4,
     "past_route_hop_mask": 6,
     "past_route_kind_mask": 3,
     "relation_mask": 1038,
+    "target_entity_feature_mask": 202,
     "target_entity_presence": 202,
+    "target_flow_feature_mask": 2,
     "target_flow_presence": 2,
+    "target_flow_transport_mask": 2,
     "target_task_feature_mask": 130,
     "target_task_presence": 130,
+    "target_total_service_mask": 1,
+    "target_wired_service_mask": 1,
+    "target_wireless_service_mask": 1,
     "task_feature_mask": 109,
     "task_presence": 109
   },
-  "sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+  "sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
   "sample_count": 12,
-  "schema_version": "PI-JWM-Step-3.3-Model-Input-Tensor-Collation-v1",
+  "schema_version": "PI-JWM-Step-3.3-Model-Input-Tensor-Collation-v2",
   "scope": {
     "formal_dataset": false,
     "gpu": false,
     "locked_test": false,
     "training": false
   },
+  "source_files": {
+    "code/scripts/build_step3_3_model_input_tensor_v1.py": "d145b427ac181f88dba6f57728af9392b0daaa836db0582965a352277323dc14",
+    "code/src/pi_jwm/model_ready_sample_contract_v1.py": "f01de4b885a3a0b8a2be28660c14dc4060ba60b044b9d8ff29fa755d7d735e33",
+    "code/src/pi_jwm/step3_3_model_input_tensor_v1.py": "a1e8fc0744a090fc9a0c51b103111e7484b283d051332f0eb4c95651a8b6ee87",
+    "code/tests/test_step3_3_model_input_tensor_v1.py": "910b0932635c813ccaafc525092d8edc970898c713ede106d3e600eb8ed9b513"
+  },
   "tensor_input_gap_table": [
     {
-      "field": "channel_rows.feature_values",
+      "field": "entity_type",
+      "follow_up": null,
+      "raw_source": "present",
+      "sample": "static and history",
+      "status": "02_required_and_fixed",
+      "tensor": "entity_type_index"
+    },
+    {
+      "field": "position_m / spatial state",
       "follow_up": "03/04 mapping",
-      "status": "endpoint_ids_only; numeric feature not exposed"
+      "raw_source": "present",
+      "sample": "not exposed",
+      "status": "feature_selection_not_decided",
+      "tensor": "absent"
+    },
+    {
+      "field": "channel_rows.feature_values / CSI",
+      "follow_up": "03/04 mapping",
+      "raw_source": "source-dependent",
+      "sample": "endpoint_ids_only",
+      "status": "numeric feature not exposed",
+      "tensor": "absent"
     },
     {
       "field": "node_cpu_capacity_per_s",
-      "follow_up": "record source/mask when sample exposes it",
-      "status": "missing_or_masked; not synthesized"
+      "follow_up": "03/04 mapping",
+      "raw_source": "not reliable in current sample",
+      "sample": "not exposed",
+      "status": "not synthesized",
+      "tensor": "absent"
     },
     {
-      "field": "comp.allocated_cpu",
-      "follow_up": "extend Raw/sample only with authorization",
-      "status": "no comp entries in current development bundle"
+      "field": "current Flow total/rem state",
+      "follow_up": "03/04 definition",
+      "raw_source": "not exposed as stateful field",
+      "sample": "past hop service event only",
+      "status": "not equivalent to current Flow state",
+      "tensor": "past_outcome_flow_service"
     },
     {
       "field": "raw_simulator_acceleration_mps2",
       "follow_up": "excluded from model feature",
-      "status": "audit_only"
+      "raw_source": "present",
+      "sample": "audit metadata",
+      "status": "audit_only",
+      "tensor": "absent"
     },
     {
       "field": "future_task_schedule",
-      "follow_up": "excluded from input namespace",
-      "status": "metadata_only"
+      "follow_up": null,
+      "raw_source": "internal metadata",
+      "sample": "excluded",
+      "status": "metadata_only",
+      "tensor": "absent"
     }
-  ]
+  ],
+  "validation_receipt": {
+    "evidence_source": {
+      "current_y_t_excluded_by_axis_contract": "past_outcome axis is exactly H-1 and is populated only from history[:-1].outcome",
+      "id_json_index_tensor_slot_alignment": "sample_static index uniqueness/range plus _id checks during tensor construction",
+      "no_silent_capacity_truncation": "builder rejects observed maxima above contract capacity; receipt also checks emitted capacity axes"
+    },
+    "passed": true,
+    "required_checks": {
+      "action_references_semantically_valid": true,
+      "categorical_codes_in_vocabularies": true,
+      "categorical_padding_code_zero": true,
+      "current_y_t_excluded_by_axis_contract": true,
+      "dag_direction_contract": true,
+      "fixed_shapes": true,
+      "id_json_index_tensor_slot_alignment": true,
+      "input_target_namespace_isolation": true,
+      "masked_numeric_placeholder_zero": true,
+      "no_silent_capacity_truncation": true,
+      "padding_index_is_minus_one_or_valid": true,
+      "passed": true,
+      "past_outcome_time_axis": true,
+      "relation_and_dag_endpoints_in_range": true,
+      "static_per_sample": true,
+      "target_flow_references_in_target_namespace": true
+    }
+  }
 }

@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 
-SCHEMA_VERSION = "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F"
+SCHEMA_VERSION = "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F"
 ACTION_FAMILIES = ("route", "comm", "comp", "mobility")
 
 
@@ -152,7 +152,7 @@ def _observation_entities(decision: Mapping[str, Any], input_nodes: list[str], n
         present = row is not None
         row = row or {}
         result.append({
-            "entity_index": node_index[entity_id], "entity_id": entity_id, "presence": present,
+            "entity_index": node_index[entity_id], "entity_id": entity_id, "entity_type": row.get("entity_type") if present else None, "presence": present,
             "feature_mask": {"speed_mps": present and row.get("speed_mps") is not None,
                               "canonical_acceleration_mps2": present and bool(row.get("canonical_acceleration_observed_mask", False))},
             "speed_mps": _presence_mask(row.get("speed_mps"), present),
@@ -188,7 +188,7 @@ def _outcome_rows(outcome: Mapping[str, Any], input_nodes: list[str], input_task
         present = row is not None
         row = row or {}
         entities.append({
-            "entity_index": node_index[entity_id], "entity_id": entity_id, "presence": present,
+            "entity_index": node_index[entity_id], "entity_id": entity_id, "entity_type": row.get("entity_type") if present else None, "presence": present,
             "feature_mask": {"speed_mps": present and row.get("speed_mps") is not None},
             "speed_mps": _presence_mask(row.get("speed_mps"), present),
         })
@@ -356,7 +356,7 @@ def build_sample(raw: Mapping[str, Any], *, anchor_step: int = 2, contract: Tens
         targets.append({
             "frame_index": step["frame_index"],
             "simulation_time_s": outcome["simulation_time_s"],
-            "entities": [{"target_index": target_index["physical"][str(row["entity_id"])], "entity_id": str(row["entity_id"]), "presence": True,
+            "entities": [{"target_index": target_index["physical"][str(row["entity_id"])], "entity_id": str(row["entity_id"]), "entity_type": row.get("entity_type"), "presence": True,
                            "speed_mps": _presence_mask(row.get("speed_mps"), True)} for row in outcome.get("entities", [])],
             "tasks": [{"target_index": target_index["task"][str(row["task_id"])], "task_id": str(row["task_id"]), "presence": True,
                        "lifecycle": row.get("lifecycle"), "transmitted_size": _presence_mask(row.get("transmitted_size"), True)}
@@ -378,6 +378,7 @@ def build_sample(raw: Mapping[str, Any], *, anchor_step: int = 2, contract: Tens
         "history": history,
         "static": {
             "input_entity_index": {"physical": node_index, "task": task_index, "flow": flow_index},
+            "input_entity_type_by_index": {str(index): next((row.get("entity_type") for decision in history_decisions for row in decision.get("entities", []) if str(row.get("entity_id")) == entity_id and row.get("entity_type") is not None), None) for entity_id, index in node_index.items()},
             "target_index": target_index,
             "target_only_objects": target_only,
             "relation_endpoints": [
@@ -434,6 +435,7 @@ def validate_sample(sample: Mapping[str, Any]) -> dict[str, bool]:
     target_only = sample["static"]["target_only_objects"]
     input_index = sample["static"]["input_entity_index"]
     target_index = sample["static"]["target_index"]
+    entity_type_by_index = sample["static"].get("input_entity_type_by_index", {})
     all_action_indices = [value for action in actions for family in ACTION_FAMILIES
                           for entry in action[family]["entries"]
                           for key, value in entry.items() if key.endswith("_index")]
@@ -516,6 +518,8 @@ def validate_sample(sample: Mapping[str, Any]) -> dict[str, bool]:
         "target_only_not_in_input_index": all(not (set(values) & set(input_index.get(namespace, {}))) for namespace, values in target_only.items()),
         "target_namespaces_separate": set(target_index) == {"physical", "task", "flow"} and set(input_index) == {"physical", "task", "flow"},
         "history_fixed_index_rows": all(len(row["entities"]) == len(input_index["physical"]) and len(row["tasks"]) == len(input_index["task"]) for row in history),
+        "causal_entity_type_static_complete": set(entity_type_by_index) == {str(value) for value in input_index["physical"].values()} and all(value is not None for value in entity_type_by_index.values()),
+        "history_entity_type_matches_static": all(row.get("entity_type") is None or row.get("entity_type") == entity_type_by_index.get(str(row["entity_index"])) for frame in history for row in frame["entities"]),
         "no_unresolved_action_index": all(value is not None and int(value) >= 0 for value in [*all_action_indices, *all_action_index_lists]),
         "future_action_indices_match_input_index": future_action_indices_match_input_index,
         "no_unresolved_history_reference_index": all(value is not None and int(value) >= 0 for value in history_reference_values),

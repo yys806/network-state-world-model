@@ -1,7 +1,7 @@
 {
   "schema_version": "PI-JWM-Step-3.1F-Minimal-Real-Sample-Manifest-v3",
   "artifact": "model_ready_sample.json",
-  "artifact_sha256": "4ef043c68d4f7fc70a884422960d7f84119c28d9b7be80c105ecab9623f2446c",
+  "artifact_sha256": "44e319f5f9d3b632391ea0ea694540ca9d69f6758034ce3970a242dd048c95c6",
   "passed": true,
   "checks": {
     "schema_present": true,
@@ -18,6 +18,8 @@
     "target_only_not_in_input_index": true,
     "target_namespaces_separate": true,
     "history_fixed_index_rows": true,
+    "causal_entity_type_static_complete": true,
+    "history_entity_type_matches_static": true,
     "no_unresolved_action_index": true,
     "future_action_indices_match_input_index": true,
     "no_unresolved_history_reference_index": true,
@@ -29,12 +31,12 @@
     "metadata_not_model_input": true
   },
   "source_files": {
-    "code/src/pi_jwm/model_ready_sample_contract_v1.py": "853d3bf67aa2955e66c460982f7803e9f0b4aa66fb8a8d1a15f778344a686fc3",
+    "code/src/pi_jwm/model_ready_sample_contract_v1.py": "f01de4b885a3a0b8a2be28660c14dc4060ba60b044b9d8ff29fa755d7d735e33",
     "code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py": "d8a4eeeb8b00ed741dc8a4f582a5e3c942254a73f1b27f1683563792175cbc0d",
     "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de",
-    "code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py": "898ca7d387486766d7b060db1ff599029dfa22e6fa1741dd3b29a377843339ca",
+    "code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py": "74c4f4432323a06fe9a79694042d690f81009d504ffb5d4f16e19f1a75d50123",
     "code/tests/test_model_ready_sample_contract_v1.py": "456e9e2ca7f28c7856e7300c74d7068ba0fec413077f422e6248363e4e926b5a",
-    "docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md": "e1e70a8c765557c90d19d3cc4990b5ccd3e9a3ba222ac7ea308a6c946648ffe9",
+    "docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md": "491857720cb044d2b698ac4334661fa4c5e20a2656a010df9fe0476e04400800",
     "code/scripts/audit_step3_1f_future_action_references_v1.py": "46b6d2e9ee852d4903cd97de9895315117fd4c8800664fd5ebe0bc1b9a3b57b6"
   },
   "raw_source_sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",

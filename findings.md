@@ -1,5 +1,12 @@
 # Findings
 
+## 2026-09-19 STEP 3.3F
+
+- fixed-shape 通过不代表语义完整；Past Outcome 和 Target future facts 必须作为独立 tensor 角色保存。
+- category code 不能由 development batch 中“碰巧出现的值”决定；固定 vocab 才能保证 subset/reorder 稳定。
+- past hop service event 不等于定义 03 的 current stateful Flow total/rem state；Gap Table 已明确区分。
+- 实际 artifact 有 past offload Route，`max_route_hops=2`；旧记录中的“无 Route/max=0”与机器证据冲突，已纠正。
+
 ## 2026-09-19 STEP 3.3
 
 - Tensor collation 必须使用 JSON sample 的 stable ID/index，不能按每帧可见集合重新编号。

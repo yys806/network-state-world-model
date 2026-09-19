@@ -155,7 +155,8 @@ class Step32BatchPreprocessingTests(unittest.TestCase):
             self.assertEqual(row["decision_frame_range"], [0, 6])
             self.assertEqual(row["step_frame_range"], [0, 5])
             self.assertEqual(row["slot_duration_s"], 0.1)
-            self.assertEqual(row["model_ready_sample_contract_version"], "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F")
+            self.assertEqual(row["model_ready_sample_contract_version"], MODEL_READY_SAMPLE_CONTRACT_VERSION)
+            self.assertEqual(row["model_ready_sample_contract_version"], FROZEN_SAMPLE_SCHEMA_VERSION)
         self.assertEqual(bundle["normalization_units"], {
             "entity.speed_mps": "m/s",
             "entity.canonical_acceleration_mps2": "m/s^2",

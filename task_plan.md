@@ -1,5 +1,13 @@
 # 2026-08-26 双约束实施计划 v2
 
+## 2026-09-19 STEP 3.3F
+
+- Scope: finalize JSON sample -> tensor semantic completeness only; no graph/model/training work.
+- Completed: Past Outcome H-1 tensors, full Target facts/service, `allocated_cpu_per_s`, fixed vocabularies, causal entity type amendment, semantic receipt and regenerated development artifacts.
+- Gate: `formal_dataset=false`, `training=false`, `gpu=false`, `locked_test=false`.
+- Status: STEP 3.3 and definition 02 COMPLETE / FROZEN for the current minimal data contract.
+- Next: researcher authorization for 03 object-field-relation mapping freeze; do not implement a full GNN automatically.
+
 ## 2026-09-19 STEP 3.2
 
 - Scope: Raw -> trajectory-level split -> causal H=2/L=2 windows -> train-only masked preprocessing -> batch/load.

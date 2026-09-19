@@ -70,7 +70,7 @@
         "config_hash": "0f2bad0ecdf1e8a0b3e10b6514edda80703e5f348049610bb96323d303950064",
         "seed": 0
       },
-      "model_ready_sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "model_ready_sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
       "seed": 0,
       "slot_duration_s": 0.1,
@@ -101,7 +101,7 @@
         "config_hash": "9e196354cabdf8c600b14929fa6c6216c1aed11e5f89dd1da12ffb6032ae547b",
         "seed": 1
       },
-      "model_ready_sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "model_ready_sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
       "seed": 1,
       "slot_duration_s": 0.1,
@@ -132,7 +132,7 @@
         "config_hash": "b2cad48fa6d845314a6ac7fb14da62d59ab7ec36992673a0e9e456f913f91c75",
         "seed": 2
       },
-      "model_ready_sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "model_ready_sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
       "seed": 2,
       "slot_duration_s": 0.1,
@@ -164,7 +164,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -371,6 +371,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -396,6 +397,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -421,6 +423,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -446,6 +449,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -471,6 +475,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -496,6 +501,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -521,6 +527,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -546,6 +553,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -593,6 +601,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -618,6 +627,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -643,6 +653,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -668,6 +679,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -693,6 +705,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -718,6 +731,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -743,6 +757,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -768,6 +783,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -1150,6 +1166,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -1163,6 +1180,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -1176,6 +1194,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -1189,6 +1208,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -1202,6 +1222,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -1215,6 +1236,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -1228,6 +1250,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -1241,6 +1264,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -1966,6 +1990,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -1991,6 +2016,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -2016,6 +2042,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -2041,6 +2068,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -2066,6 +2094,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -2091,6 +2120,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -2116,6 +2146,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -2141,6 +2172,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -2188,6 +2220,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -2213,6 +2246,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -2238,6 +2272,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -2263,6 +2298,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -2288,6 +2324,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -2313,6 +2350,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -2338,6 +2376,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -2363,6 +2402,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -3064,7 +3104,7 @@
         "split": "dev_train",
         "trajectory_id": "step2.4-real-communication-seed0"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -3112,6 +3152,16 @@
             "Task_5": 3,
             "Task_6": 4
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -3409,6 +3459,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3419,6 +3470,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3429,6 +3481,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3439,6 +3492,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3449,6 +3503,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3459,6 +3514,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3469,6 +3525,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3479,6 +3536,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3561,6 +3619,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3571,6 +3630,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3581,6 +3641,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3591,6 +3652,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3601,6 +3663,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3611,6 +3674,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3621,6 +3685,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3631,6 +3696,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -3727,7 +3793,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -3908,6 +3974,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -3933,6 +4000,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -3958,6 +4026,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -3983,6 +4052,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -4008,6 +4078,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -4033,6 +4104,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -4058,6 +4130,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -4083,6 +4156,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -4130,6 +4204,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -4155,6 +4230,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -4180,6 +4256,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -4205,6 +4282,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -4230,6 +4308,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -4255,6 +4334,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -4280,6 +4360,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -4305,6 +4386,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -4681,6 +4763,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -4694,6 +4777,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -4707,6 +4791,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -4720,6 +4805,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -4733,6 +4819,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -4746,6 +4833,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -4759,6 +4847,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -4772,6 +4861,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -5470,6 +5560,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -5495,6 +5586,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -5520,6 +5612,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -5545,6 +5638,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -5570,6 +5664,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -5595,6 +5690,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -5620,6 +5716,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -5645,6 +5742,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -5692,6 +5790,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -5717,6 +5816,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -5742,6 +5842,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -5767,6 +5868,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -5792,6 +5894,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -5817,6 +5920,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -5842,6 +5946,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -5867,6 +5972,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -6568,7 +6674,7 @@
         "split": "dev_train",
         "trajectory_id": "step2.4-real-communication-seed0"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -6613,6 +6719,16 @@
             "Task_5": 3,
             "Task_6": 4
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -6912,6 +7028,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -6922,6 +7039,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -6932,6 +7050,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -6942,6 +7061,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -6952,6 +7072,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -6962,6 +7083,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -6972,6 +7094,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -6982,6 +7105,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -7075,6 +7199,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -7085,6 +7210,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -7095,6 +7221,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -7105,6 +7232,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -7115,6 +7243,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -7125,6 +7254,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -7135,6 +7265,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -7145,6 +7276,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -7252,7 +7384,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -7433,6 +7565,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -7458,6 +7591,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -7483,6 +7617,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -7508,6 +7643,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -7533,6 +7669,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -7558,6 +7695,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -7583,6 +7721,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -7608,6 +7747,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -7655,6 +7795,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -7680,6 +7821,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -7705,6 +7847,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -7730,6 +7873,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -7755,6 +7899,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -7780,6 +7925,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -7805,6 +7951,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -7830,6 +7977,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -8232,6 +8380,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -8245,6 +8394,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -8258,6 +8408,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -8271,6 +8422,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -8284,6 +8436,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -8297,6 +8450,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -8310,6 +8464,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -8323,6 +8478,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -9061,6 +9217,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -9086,6 +9243,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -9111,6 +9269,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -9136,6 +9295,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -9161,6 +9321,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -9186,6 +9347,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -9211,6 +9373,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -9236,6 +9399,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -9295,6 +9459,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -9320,6 +9485,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -9345,6 +9511,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -9370,6 +9537,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -9395,6 +9563,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -9420,6 +9589,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -9445,6 +9615,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -9470,6 +9641,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -10199,7 +10371,7 @@
         "split": "dev_train",
         "trajectory_id": "step2.4-real-communication-seed0"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -10257,6 +10429,16 @@
             "Task_6": 4,
             "Task_7": 5
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -10555,6 +10737,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10565,6 +10748,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10575,6 +10759,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10585,6 +10770,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10595,6 +10781,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10605,6 +10792,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10615,6 +10803,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10625,6 +10814,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10729,6 +10919,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10739,6 +10930,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10749,6 +10941,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10759,6 +10952,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10769,6 +10963,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10779,6 +10974,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10789,6 +10985,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10799,6 +10996,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -10906,7 +11104,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -11099,6 +11297,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -11124,6 +11323,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -11149,6 +11349,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -11174,6 +11375,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -11199,6 +11401,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -11224,6 +11427,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -11249,6 +11453,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -11274,6 +11479,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -11333,6 +11539,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -11358,6 +11565,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -11383,6 +11591,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -11408,6 +11617,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -11433,6 +11643,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -11458,6 +11669,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -11483,6 +11695,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -11508,6 +11721,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -11942,6 +12156,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -11955,6 +12170,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -11968,6 +12184,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -11981,6 +12198,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -11994,6 +12212,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -12007,6 +12226,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -12020,6 +12240,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -12033,6 +12254,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -12817,6 +13039,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -12842,6 +13065,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -12867,6 +13091,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -12892,6 +13117,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -12917,6 +13143,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -12942,6 +13169,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -12967,6 +13195,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -12992,6 +13221,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -13069,6 +13299,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -13094,6 +13325,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -13119,6 +13351,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -13144,6 +13377,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -13169,6 +13403,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -13194,6 +13429,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -13219,6 +13455,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -13244,6 +13481,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -14001,7 +14239,7 @@
         "split": "dev_train",
         "trajectory_id": "step2.4-real-communication-seed0"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -14078,6 +14316,16 @@
             "Task_7": 5,
             "Task_8": 6
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -14377,6 +14625,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14387,6 +14636,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14397,6 +14647,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14407,6 +14658,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14417,6 +14669,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14427,6 +14680,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14437,6 +14691,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14447,6 +14702,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14551,6 +14807,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14561,6 +14818,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14571,6 +14829,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14581,6 +14840,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14591,6 +14851,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14601,6 +14862,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14611,6 +14873,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14621,6 +14884,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -14739,7 +15003,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -14946,6 +15210,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -14971,6 +15236,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -14996,6 +15262,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -15021,6 +15288,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -15046,6 +15314,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -15071,6 +15340,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -15096,6 +15366,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -15121,6 +15392,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -15168,6 +15440,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -15193,6 +15466,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -15218,6 +15492,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -15243,6 +15518,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -15268,6 +15544,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -15293,6 +15570,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -15318,6 +15596,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -15343,6 +15622,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -15697,6 +15977,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -15710,6 +15991,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -15723,6 +16005,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -15736,6 +16019,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -15749,6 +16033,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -15762,6 +16047,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -15775,6 +16061,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -15788,6 +16075,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -16457,6 +16745,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -16482,6 +16771,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -16507,6 +16797,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -16532,6 +16823,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -16557,6 +16849,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -16582,6 +16875,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -16607,6 +16901,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -16632,6 +16927,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -16679,6 +16975,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -16704,6 +17001,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -16729,6 +17027,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -16754,6 +17053,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -16779,6 +17079,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -16804,6 +17105,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -16829,6 +17131,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -16854,6 +17157,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -17499,7 +17803,7 @@
         "split": "dev_train",
         "trajectory_id": "step3.2-dev-seed1"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -17545,6 +17849,16 @@
             "Task_12": 1,
             "Task_13": 2
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -17840,6 +18154,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17850,6 +18165,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17860,6 +18176,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17870,6 +18187,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17880,6 +18198,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17890,6 +18209,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17900,6 +18220,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17910,6 +18231,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17970,6 +18292,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17980,6 +18303,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -17990,6 +18314,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -18000,6 +18325,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -18010,6 +18336,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -18020,6 +18347,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -18030,6 +18358,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -18040,6 +18369,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -18114,7 +18444,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -18295,6 +18625,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -18320,6 +18651,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -18345,6 +18677,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -18370,6 +18703,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -18395,6 +18729,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -18420,6 +18755,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -18445,6 +18781,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -18470,6 +18807,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -18517,6 +18855,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -18542,6 +18881,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -18567,6 +18907,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -18592,6 +18933,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -18617,6 +18959,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -18642,6 +18985,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -18667,6 +19011,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -18692,6 +19037,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -19040,6 +19386,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -19053,6 +19400,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -19066,6 +19414,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -19079,6 +19428,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -19092,6 +19442,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -19105,6 +19456,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -19118,6 +19470,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -19131,6 +19484,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -19773,6 +20127,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -19798,6 +20153,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -19823,6 +20179,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -19848,6 +20205,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -19873,6 +20231,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -19898,6 +20257,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -19923,6 +20283,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -19948,6 +20309,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -19995,6 +20357,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -20020,6 +20383,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -20045,6 +20409,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -20070,6 +20435,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -20095,6 +20461,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -20120,6 +20487,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -20145,6 +20513,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -20170,6 +20539,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -20815,7 +21185,7 @@
         "split": "dev_train",
         "trajectory_id": "step3.2-dev-seed1"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -20858,6 +21228,16 @@
             "Task_12": 1,
             "Task_13": 2
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -21153,6 +21533,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21163,6 +21544,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21173,6 +21555,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21183,6 +21566,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21193,6 +21577,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21203,6 +21588,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21213,6 +21599,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21223,6 +21610,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21294,6 +21682,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21304,6 +21693,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21314,6 +21704,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21324,6 +21715,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21334,6 +21726,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21344,6 +21737,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21354,6 +21748,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21364,6 +21759,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -21438,7 +21834,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -21619,6 +22015,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -21644,6 +22041,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -21669,6 +22067,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -21694,6 +22093,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -21719,6 +22119,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -21744,6 +22145,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -21769,6 +22171,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -21794,6 +22197,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -21841,6 +22245,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -21866,6 +22271,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -21891,6 +22297,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -21916,6 +22323,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -21941,6 +22349,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -21966,6 +22375,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -21991,6 +22401,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -22016,6 +22427,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -22378,6 +22790,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -22391,6 +22804,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -22404,6 +22818,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -22417,6 +22832,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -22430,6 +22846,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -22443,6 +22860,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -22456,6 +22874,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -22469,6 +22888,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -23139,6 +23559,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -23164,6 +23585,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -23189,6 +23611,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -23214,6 +23637,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -23239,6 +23663,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -23264,6 +23689,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -23289,6 +23715,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -23314,6 +23741,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -23361,6 +23789,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -23386,6 +23815,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -23411,6 +23841,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -23436,6 +23867,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -23461,6 +23893,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -23486,6 +23919,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -23511,6 +23945,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -23536,6 +23971,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -24209,7 +24645,7 @@
         "split": "dev_train",
         "trajectory_id": "step3.2-dev-seed1"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -24253,6 +24689,16 @@
             "Task_13": 2,
             "Task_21": 3
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -24546,6 +24992,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24556,6 +25003,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24566,6 +25014,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24576,6 +25025,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24586,6 +25036,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24596,6 +25047,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24606,6 +25058,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24616,6 +25069,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24687,6 +25141,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24697,6 +25152,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24707,6 +25163,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24717,6 +25174,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24727,6 +25185,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24737,6 +25196,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24747,6 +25207,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24757,6 +25218,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -24831,7 +25293,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -25012,6 +25474,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -25037,6 +25500,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -25062,6 +25526,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -25087,6 +25552,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -25112,6 +25578,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -25137,6 +25604,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -25162,6 +25630,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -25187,6 +25656,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -25234,6 +25704,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -25259,6 +25730,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -25284,6 +25756,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -25309,6 +25782,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -25334,6 +25808,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -25359,6 +25834,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -25384,6 +25860,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -25409,6 +25886,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -25771,6 +26249,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -25784,6 +26263,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -25797,6 +26277,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -25810,6 +26291,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -25823,6 +26305,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -25836,6 +26319,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -25849,6 +26333,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -25862,6 +26347,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -26532,6 +27018,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -26557,6 +27044,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -26582,6 +27070,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -26607,6 +27096,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -26632,6 +27122,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -26657,6 +27148,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -26682,6 +27174,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -26707,6 +27200,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -26754,6 +27248,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -26779,6 +27274,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -26804,6 +27300,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -26829,6 +27326,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -26854,6 +27352,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -26879,6 +27378,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -26904,6 +27404,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -26929,6 +27430,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -27602,7 +28104,7 @@
         "split": "dev_train",
         "trajectory_id": "step3.2-dev-seed1"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -27646,6 +28148,16 @@
             "Task_13": 2,
             "Task_21": 3
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -27939,6 +28451,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -27949,6 +28462,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -27959,6 +28473,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -27969,6 +28484,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -27979,6 +28495,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -27989,6 +28506,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -27999,6 +28517,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28009,6 +28528,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28080,6 +28600,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28090,6 +28611,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28100,6 +28622,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28110,6 +28633,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28120,6 +28644,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28130,6 +28655,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28140,6 +28666,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28150,6 +28677,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -28224,7 +28752,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -28426,6 +28954,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -28451,6 +28980,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -28476,6 +29006,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -28501,6 +29032,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -28526,6 +29058,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -28551,6 +29084,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -28576,6 +29110,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -28601,6 +29136,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -28635,6 +29171,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -28660,6 +29197,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -28685,6 +29223,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -28710,6 +29249,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -28735,6 +29275,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -28760,6 +29301,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -28785,6 +29327,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -28810,6 +29353,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -29163,6 +29707,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -29176,6 +29721,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -29189,6 +29735,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -29202,6 +29749,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -29215,6 +29763,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -29228,6 +29777,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -29241,6 +29791,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -29254,6 +29805,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -29925,6 +30477,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -29950,6 +30503,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -29975,6 +30529,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -30000,6 +30555,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -30025,6 +30581,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -30050,6 +30607,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -30075,6 +30633,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -30100,6 +30659,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -30134,6 +30694,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -30159,6 +30720,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -30184,6 +30746,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -30209,6 +30772,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -30234,6 +30798,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -30259,6 +30824,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -30284,6 +30850,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -30309,6 +30876,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -30982,7 +31550,7 @@
         "split": "dev_validation",
         "trajectory_id": "step3.2-dev-seed2"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -31015,6 +31583,16 @@
             "Task_11": 2,
             "Task_2": 3
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -31324,6 +31902,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31334,6 +31913,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31344,6 +31924,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31354,6 +31935,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31364,6 +31946,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31374,6 +31957,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31384,6 +31968,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31394,6 +31979,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31492,6 +32078,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31502,6 +32089,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31512,6 +32100,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31522,6 +32111,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31532,6 +32122,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31542,6 +32133,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31552,6 +32144,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31562,6 +32155,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -31658,7 +32252,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -31834,6 +32428,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -31859,6 +32454,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -31884,6 +32480,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -31909,6 +32506,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -31934,6 +32532,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -31959,6 +32558,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -31984,6 +32584,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -32009,6 +32610,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -32043,6 +32645,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -32068,6 +32671,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -32093,6 +32697,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -32118,6 +32723,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -32143,6 +32749,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -32168,6 +32775,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -32193,6 +32801,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -32218,6 +32827,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -32573,6 +33183,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -32586,6 +33197,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -32599,6 +33211,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -32612,6 +33225,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -32625,6 +33239,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -32638,6 +33253,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -32651,6 +33267,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -32664,6 +33281,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -33348,6 +33966,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -33373,6 +33992,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -33398,6 +34018,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -33423,6 +34044,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -33448,6 +34070,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -33473,6 +34096,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -33498,6 +34122,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -33523,6 +34148,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -33557,6 +34183,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -33582,6 +34209,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -33607,6 +34235,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -33632,6 +34261,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -33657,6 +34287,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -33682,6 +34313,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -33707,6 +34339,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -33732,6 +34365,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -34405,7 +35039,7 @@
         "split": "dev_validation",
         "trajectory_id": "step3.2-dev-seed2"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -34439,6 +35073,16 @@
             "Task_11": 2,
             "Task_2": 3
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -34742,6 +35386,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34752,6 +35397,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34762,6 +35408,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34772,6 +35419,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34782,6 +35430,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34792,6 +35441,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34802,6 +35452,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34812,6 +35463,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34905,6 +35557,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34915,6 +35568,7 @@
             },
             {
               "entity_id": "vehicle_1",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34925,6 +35579,7 @@
             },
             {
               "entity_id": "vehicle_2",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34935,6 +35590,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34945,6 +35601,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34955,6 +35612,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34965,6 +35623,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34975,6 +35634,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34985,6 +35645,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -34995,6 +35656,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -35091,7 +35753,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -35259,6 +35921,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -35284,6 +35947,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -35309,6 +35973,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -35334,6 +35999,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -35359,6 +36025,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -35384,6 +36051,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -35409,6 +36077,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -35434,6 +36103,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -35468,6 +36138,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -35493,6 +36164,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -35518,6 +36190,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -35543,6 +36216,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -35568,6 +36242,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -35593,6 +36268,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -35618,6 +36294,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -35643,6 +36320,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -36039,6 +36717,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -36052,6 +36731,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -36065,6 +36745,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -36078,6 +36759,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -36091,6 +36773,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -36104,6 +36787,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -36117,6 +36801,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -36130,6 +36815,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -36862,6 +37548,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -36887,6 +37574,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -36912,6 +37600,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -36937,6 +37626,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -36962,6 +37652,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -36987,6 +37678,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -37012,6 +37704,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -37037,6 +37730,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -37090,6 +37784,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -37115,6 +37810,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -37140,6 +37836,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -37165,6 +37862,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -37190,6 +37888,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -37215,6 +37914,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -37240,6 +37940,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -37265,6 +37966,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -37994,7 +38696,7 @@
         "split": "dev_validation",
         "trajectory_id": "step3.2-dev-seed2"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -38046,6 +38748,16 @@
             "Task_3": 4,
             "Task_4": 5
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -38346,6 +39058,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38356,6 +39069,7 @@
             },
             {
               "entity_id": "vehicle_1",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38366,6 +39080,7 @@
             },
             {
               "entity_id": "vehicle_2",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38376,6 +39091,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38386,6 +39102,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38396,6 +39113,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38406,6 +39124,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38416,6 +39135,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38426,6 +39146,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38436,6 +39157,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38529,6 +39251,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38539,6 +39262,7 @@
             },
             {
               "entity_id": "vehicle_1",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38549,6 +39273,7 @@
             },
             {
               "entity_id": "vehicle_2",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38559,6 +39284,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38569,6 +39295,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38579,6 +39306,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38589,6 +39317,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38599,6 +39328,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38609,6 +39339,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38619,6 +39350,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -38715,7 +39447,7 @@
         "history_steps": 2,
         "horizon_steps": 2,
         "input_index_policy": "history_causal_observable_object_union",
-        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+        "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
         "target_new_object_policy": "target_only_index_never_reused_as_input_index"
       },
       "future_action": [
@@ -38902,6 +39634,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -38927,6 +39660,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -38952,6 +39686,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -38977,6 +39712,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -39002,6 +39738,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -39027,6 +39764,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -39052,6 +39790,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -39077,6 +39816,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -39102,6 +39842,7 @@
               },
               "entity_id": "vehicle_1",
               "entity_index": 8,
+              "entity_type": null,
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": false
@@ -39127,6 +39868,7 @@
               },
               "entity_id": "vehicle_2",
               "entity_index": 9,
+              "entity_type": null,
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": false
@@ -39180,6 +39922,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -39205,6 +39948,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -39230,6 +39974,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -39255,6 +40000,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -39280,6 +40026,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -39305,6 +40052,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -39330,6 +40078,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -39355,6 +40104,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -39380,6 +40130,7 @@
                 },
                 "entity_id": "vehicle_1",
                 "entity_index": 8,
+                "entity_type": null,
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": false
@@ -39405,6 +40156,7 @@
                 },
                 "entity_id": "vehicle_2",
                 "entity_index": 9,
+                "entity_type": null,
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": false
@@ -39801,6 +40553,7 @@
               {
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -39814,6 +40567,7 @@
               {
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -39827,6 +40581,7 @@
               {
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -39840,6 +40595,7 @@
               {
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -39853,6 +40609,7 @@
               {
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -39866,6 +40623,7 @@
               {
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -39879,6 +40637,7 @@
               {
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -39892,6 +40651,7 @@
               {
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -39905,6 +40665,7 @@
               {
                 "entity_id": "vehicle_1",
                 "entity_index": 8,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -39918,6 +40679,7 @@
               {
                 "entity_id": "vehicle_2",
                 "entity_index": 9,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "speed_mps": true
                 },
@@ -40830,6 +41592,7 @@
               },
               "entity_id": "RSU_0",
               "entity_index": 0,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -40855,6 +41618,7 @@
               },
               "entity_id": "RSU_1",
               "entity_index": 1,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -40880,6 +41644,7 @@
               },
               "entity_id": "RSU_2",
               "entity_index": 2,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -40905,6 +41670,7 @@
               },
               "entity_id": "RSU_3",
               "entity_index": 3,
+              "entity_type": "rsu",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -40930,6 +41696,7 @@
               },
               "entity_id": "UAV_0",
               "entity_index": 4,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -40955,6 +41722,7 @@
               },
               "entity_id": "UAV_1",
               "entity_index": 5,
+              "entity_type": "uav",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -40980,6 +41748,7 @@
               },
               "entity_id": "cloudServer_4",
               "entity_index": 6,
+              "entity_type": "cloud",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -41005,6 +41774,7 @@
               },
               "entity_id": "vehicle_0",
               "entity_index": 7,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": true,
                 "speed_mps": true
@@ -41030,6 +41800,7 @@
               },
               "entity_id": "vehicle_1",
               "entity_index": 8,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -41055,6 +41826,7 @@
               },
               "entity_id": "vehicle_2",
               "entity_index": 9,
+              "entity_type": "vehicle",
               "feature_mask": {
                 "canonical_acceleration_mps2": false,
                 "speed_mps": true
@@ -41108,6 +41880,7 @@
                 },
                 "entity_id": "RSU_0",
                 "entity_index": 0,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -41133,6 +41906,7 @@
                 },
                 "entity_id": "RSU_1",
                 "entity_index": 1,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -41158,6 +41932,7 @@
                 },
                 "entity_id": "RSU_2",
                 "entity_index": 2,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -41183,6 +41958,7 @@
                 },
                 "entity_id": "RSU_3",
                 "entity_index": 3,
+                "entity_type": "rsu",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -41208,6 +41984,7 @@
                 },
                 "entity_id": "UAV_0",
                 "entity_index": 4,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -41233,6 +42010,7 @@
                 },
                 "entity_id": "UAV_1",
                 "entity_index": 5,
+                "entity_type": "uav",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -41258,6 +42036,7 @@
                 },
                 "entity_id": "cloudServer_4",
                 "entity_index": 6,
+                "entity_type": "cloud",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -41283,6 +42062,7 @@
                 },
                 "entity_id": "vehicle_0",
                 "entity_index": 7,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": true,
                   "speed_mps": true
@@ -41308,6 +42088,7 @@
                 },
                 "entity_id": "vehicle_1",
                 "entity_index": 8,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -41333,6 +42114,7 @@
                 },
                 "entity_id": "vehicle_2",
                 "entity_index": 9,
+                "entity_type": "vehicle",
                 "feature_mask": {
                   "canonical_acceleration_mps2": false,
                   "speed_mps": true
@@ -42422,7 +43204,7 @@
         "split": "dev_validation",
         "trajectory_id": "step3.2-dev-seed2"
       },
-      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
+      "schema_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
       "static": {
         "dag_relations": {
           "future_filtered_edge_count": 0,
@@ -42476,6 +43258,18 @@
             "Task_3": 4,
             "Task_4": 5
           }
+        },
+        "input_entity_type_by_index": {
+          "0": "rsu",
+          "1": "rsu",
+          "2": "rsu",
+          "3": "rsu",
+          "4": "uav",
+          "5": "uav",
+          "6": "cloud",
+          "7": "vehicle",
+          "8": "vehicle",
+          "9": "vehicle"
         },
         "relation_endpoints": [
           {
@@ -42953,6 +43747,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -42963,6 +43758,7 @@
             },
             {
               "entity_id": "vehicle_1",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -42973,6 +43769,7 @@
             },
             {
               "entity_id": "vehicle_2",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -42983,6 +43780,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -42993,6 +43791,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43003,6 +43802,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43013,6 +43813,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43023,6 +43824,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43033,6 +43835,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43043,6 +43846,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43136,6 +43940,7 @@
           "entities": [
             {
               "entity_id": "vehicle_0",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43146,6 +43951,7 @@
             },
             {
               "entity_id": "vehicle_1",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43156,6 +43962,7 @@
             },
             {
               "entity_id": "vehicle_2",
+              "entity_type": "vehicle",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43166,6 +43973,7 @@
             },
             {
               "entity_id": "UAV_0",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43176,6 +43984,7 @@
             },
             {
               "entity_id": "UAV_1",
+              "entity_type": "uav",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43186,6 +43995,7 @@
             },
             {
               "entity_id": "RSU_0",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43196,6 +44006,7 @@
             },
             {
               "entity_id": "RSU_1",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43206,6 +44017,7 @@
             },
             {
               "entity_id": "RSU_2",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43216,6 +44028,7 @@
             },
             {
               "entity_id": "RSU_3",
+              "entity_type": "rsu",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,
@@ -43226,6 +44039,7 @@
             },
             {
               "entity_id": "cloudServer_4",
+              "entity_type": "cloud",
               "presence": true,
               "speed_mps": {
                 "feature_mask": true,

@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-19：STEP 3.3F Tensor Semantic Completeness
+
+- Model-ready sample 升级 v4，因果 Static/History/Target 保留真实 entity type；Raw schema 与时间边界不变。
+- Tensor 升级 v2：增加 Past Outcome H-1 轴、完整 Target entity/task/flow/service、固定 category vocab 和 Comp `allocated_cpu_per_s`。
+- machine receipt 对 required semantic checks 取 AND；STEP 3.3 与定义 02 按当前最小数据合同冻结。
+
 ## 2026-09-19：STEP 3.3 Model Input Tensor / Collation Contract
 
 - 新增 CPU NumPy fixed-shape JSON sample collation、builder、focused tests 和 machine-readable schema/manifest artifact。

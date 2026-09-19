@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-19。**Raw Trajectory Layer / 定义 01、STEP 3.1F、STEP 3.2 已完成并冻结**；STEP 3.3 已完成最小 CPU Model Input Tensor / Collation Contract。双图、模型和训练仍未开始。
+更新时间：2026-09-19。**Raw Trajectory Layer / 定义 01、STEP 3.1F、STEP 3.2、STEP 3.3 已完成并冻结**；**02 数据集构建与模型输入 COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT**。双图、模型和训练仍未开始。
 
 ## 当前依据与执行边界
 
@@ -20,8 +20,8 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | AirFogSim trajectory | 01 原始轨迹与时间语义 | Raw contract、Step 2.1–2.4 runner/artifact | COMPLETE / FROZEN | MINOR_MODIFICATION | Raw 层已闭合；尚未映射到新 Dataset/Tensor | Step 3 冻结 Dataset/Tensor Contract |
 | Decision / Execution / Outcome | 01；02 | Raw contract、causal helper、Step 2.3/2.4 真实 artifact | COMPLETE / FROZEN | MINOR_MODIFICATION | future schedule 已与 `O_t`/History/input index 隔离；wireless/wired slot outcome 已拆分并实测 | Step 3 保持同一因果边界 |
 | Dataset / split / masks | 02 | `formal_airfogsim_dataset_v1.py` | AUDITED | MINOR_MODIFICATION | split/mask隔离复用；对象和字段变更后重新构建 | 新 schema 验收后适配 |
-| Model-ready sample / tensor contract | 02 | `model_ready_sample_contract_v1.py`、Step 3.1F artifact、Step 3.2 bundle | COMPLETE / FROZEN FOR MINIMAL CONTRACT | MINOR_MODIFICATION | History 已包含 past `A/Y`；union input index、Future Action 统一 namespace、fixed presence、typed target 和 strict refs 已验收；batch/split/preprocessing 已完成最小 non-locked validation | 研究者审阅后再决定是否授权后续 Tensor/Step |
-| tensor contract | 02；03 | `step3_3_model_input_tensor_v1.py`、`build_step3_3_model_input_tensor_v1.py` | COMPLETE / FROZEN FOR MINIMAL COLLATION | MINOR_MODIFICATION | 仅完成 JSON sample -> CPU fixed-shape collation；双图字段语义和正式容量尚未冻结 | 研究者审阅后再单独授权双图字段映射 |
+| Model-ready sample / tensor contract | 02 | `model_ready_sample_contract_v1.py`、Step 3.1F artifact、Step 3.2 bundle | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | History past A/Y、entity type、union input index、typed target、batch/split/preprocessing 已验收；不是正式大规模 Dataset | 进入 03 前先冻结对象-字段-关系映射 |
+| tensor contract | 02；03 | `step3_3_model_input_tensor_v1.py`、`build_step3_3_model_input_tensor_v1.py` | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | Past Outcome、完整 Target facts、固定 vocab、Comp 正式字段与 semantic receipt 已验收；03/04 feature selection 和正式容量未决定 | 单独授权双图字段映射 |
 | Physical / Information 双图 | 03 | `formal_graph_ops_v1.py`、`formal_dual_graph_world_model_v1.py` | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 通信仍混在physical_edge；Agent复用node输入；旧跨图路径不同 | 依合同重构，尚未授权 |
 | entity alignment 局部工具 | 02；03 | `airfogsim_tensor_v2.py`、`formal_graph_ops_v1.py` | AUDITED | DIRECT_REUSE | ID/index/mask原则可复用；新增对象映射需扩展 | 保留身份稳定性检查 |
 | Route action | 06 §2.1；04 §3.3 | Step 2.3 真实 offload/return setter 与 lifecycle 证据 | RAW CONTRACT COMPLETE / FROZEN | MINOR_MODIFICATION | Raw 执行已闭合；尚未进入 tensor/model | Step 3 映射动作张量 |
@@ -84,8 +84,8 @@ STEP 3.2-PATCH-RECEIPT 已修正最终机器验收：顶层 `passed` 现在是�
 
 ## 当前 STEP 3.3 结果
 
-STEP 3.3 已完成最小 Model Input Tensor / Collation Contract：复用 12 个 Step 3.2 sample，固定 `H=2/L=2` 轴，按 stable ID/index 生成 entity/task/flow、relation、DAG、past/future action、route hop、Comm RB 和独立 target namespace；presence/mask 与 numeric padding 分离，容量超限拒绝，NPZ round-trip 和 focused tests 通过。artifact 位于 `code/artifacts/protocols/pi_jwm_step3_3_model_input_tensor_v1_20260919/`。这是 CPU collation 证据，不是双图、模型、训练或正式 Dataset 结论；当前 development capacities 不代表正式研究容量。
+STEP 3.3F 已补齐 JSON→Tensor 语义：Past Outcome 使用独立 `H-1` 轴，Target 保留 entity/task/flow/service future facts，Comp 读取 `allocated_cpu_per_s`，entity/lifecycle/route/transport 使用固定 vocab，Static entity type 来自 causal History。semantic validation receipt 由 required checks 实际 AND。artifact 位于 `code/artifacts/protocols/pi_jwm_step3_3_model_input_tensor_v1_20260919/`。因此 STEP 3.3 正式 COMPLETE / FROZEN，02 数据集构建与模型输入已按当前最小数据合同冻结；这不等于正式大规模 Dataset 已生成，也不决定 03/04 最终 feature selection。
 
 ## 下一步边界
 
-研究者审阅 STEP 3.3 contract 后再单独授权后续 Physical/Information 双图字段映射；本 Step 不自动进入 03、模型或训练工作。
+唯一建议是单独授权 03 的第一步：先冻结 Physical / Information object-field-relation mapping，不直接实现完整 GNN。本 Step 不自动进入 03、模型或训练工作。

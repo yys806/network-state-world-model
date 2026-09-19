@@ -1,6 +1,6 @@
-# PI-JWM Model-ready Sample & Tensor Contract v3 (STEP 3.1F)
+# PI-JWM Model-ready Sample & Tensor Contract v4 (STEP 3.3F)
 
-状态：STEP 3.1F 完成最小真实样本验收；不是正式大规模数据集，也不是模型输入已冻结为最终研究模型。
+状态：STEP 3.3F 完成 JSON sample → CPU tensor 的语义完整性收尾；不是正式大规模数据集，也未决定 03/04 的最终 feature selection。
 
 依据：研究者只读定义 `D:\shen\OB\科研\PIJWM\02数据集构建与模型输入.md`，以及已冻结的 Step 2 Raw Contract。研究笔记只读，本仓库保存实现映射和证据，不复制私有笔记。
 
@@ -27,6 +27,8 @@ H_{t-H+1:t} = (O_{t-H+1:t}, A_{t-H+1:t-1}, Y_{t-H+1:t-1})
 ## Index、Presence 和 Mask
 
 输入 index 由整个 History `O_{t-H+1:t}` 中已因果可观测到的 physical/task 对象并集建立，并在整个 History 窗口固定；机器合同 policy 为 `history_causal_observable_object_union`。Future Action 的机器 policy 为 `anchor_visibility_then_history_union_input_index`：先按 anchor visibility 拒绝不可见引用，再返回统一 History-union 数值 index。过去存在而后离开的对象也保留 index，后续帧使用 `presence=false`。较晚进入的对象在更早帧使用 `presence=false`。缺失 feature 和真实值为 0 仍分别处理，padding 位置不参与归一化统计。Flow index 同样由历史 Outcome 中已出现的传输 event 建立。
+
+Static 另保存 `input_entity_type_by_index`，类型只来自截至 anchor 的 History/Raw 可见事实，并与 physical input index 一一对应。canonical entity type code 固定为 `<PAD>, unknown, vehicle, uav, rsu, edge, cloud`，不会因 development sample 的子集或顺序改变。
 
 未来新对象不提前加入输入 index。Target 单独保留 `target_index.physical/task/flow` 三个 namespace 和 `target_only_objects`，因此新出现 task/flow/entity 可以在 Target 中表示，同时不进入当前 History 或 input-side index。
 
@@ -76,6 +78,10 @@ History 中的过去 Outcome 也保留对齐的 relation endpoints、DAG rows �
 固定顺序：`Trajectory-level Split -> Window Construction -> Fit preprocessing on Train only -> Apply to Validation/Test`。统计量只使用 valid/masked-in 值；padding、missing 和无效 feature 不参与统计。保留原始单位、mask 和 normalization metadata。
 
 ## 机器合同和边界
+
+STEP 3.3F tensor 明确区分 Observation、Past Action、Past Outcome、Future Action 和 Target：Past Outcome 使用 `[B,H-1,...]`，Target 使用独立 namespace。Past Outcome tensor 保留 entity/task/flow、通信 service、served CPU work（有来源时）、relation 和 DAG；Target tensor 保留 future entity speed、task lifecycle/progress、flow endpoints/transport/service，以及 wireless/wired/total service。通信 hop service 不与 task end-to-end progress 合并。
+
+类别 vocabulary 为稳定合同，不从当前 batch 动态生成：padding code=`0`、unknown code=`1`；lifecycle、entity type、route kind 与 transport 的合法 code 固定。Comp Action 正式字段为 `allocated_cpu_per_s`。
 
 机器定义在 `code/src/pi_jwm/model_ready_sample_contract_v1.py`，最小真实构造入口为 `code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py`。最小证据使用非 locked Step 2.4 最终通信 Raw artifact，`H=2, L=2`，不训练、不用 GPU、不访问 `locked_test`。
 

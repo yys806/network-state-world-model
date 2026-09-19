@@ -7,7 +7,12 @@
   ],
   "entity_type_vocab": [
     "<PAD>",
-    "unknown"
+    "unknown",
+    "vehicle",
+    "uav",
+    "rsu",
+    "edge",
+    "cloud"
   ],
   "feature_units": {
     "entity.canonical_acceleration_mps2": "m/s^2",
@@ -22,15 +27,20 @@
   "lifecycle_vocab": [
     "<PAD>",
     "unknown",
-    "computing",
-    "offloading",
     "to_generate",
-    "waiting_to_offload"
+    "waiting_to_offload",
+    "offloading",
+    "computing",
+    "transmitting",
+    "completed",
+    "failed"
   ],
   "max_action_entries": 2,
   "max_dag": 7,
   "max_entity": 10,
   "max_flow": 2,
+  "max_past_outcome_dag": 7,
+  "max_past_outcome_relation": 72,
   "max_relation": 72,
   "max_route_hops": 2,
   "max_target_entity": 10,
@@ -47,15 +57,17 @@
   "padding_policy": "numeric=0; index=-1; categorical=0; presence/mask=false",
   "route_kind_vocab": [
     "<PAD>",
-    "unknown"
+    "unknown",
+    "offload",
+    "return"
   ],
-  "sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v3-step3.1F",
-  "schema_version": "PI-JWM-Step-3.3-Model-Input-Tensor-Collation-v1",
+  "sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v4-step3.3F",
+  "schema_version": "PI-JWM-Step-3.3-Model-Input-Tensor-Collation-v2",
   "transport_vocab": [
     "<PAD>",
     "unknown",
-    "wired",
-    "wireless"
+    "wireless",
+    "wired"
   ],
   "unknown_policy": "categorical unknown code=1; padding code=0",
   "vehicle_motion_policy": "SUMO_external_not_in_mobility_action"
