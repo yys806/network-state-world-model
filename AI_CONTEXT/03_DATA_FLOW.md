@@ -70,6 +70,7 @@ DataLoader → 模型 prior/teacher 输出 → `formal_world_model_loss()`。bas
 - `formal_performance_claim_ready=false`。
 - 通信 Outcome 拆为 `wireless_delivered_data_by_task`、`wired_delivered_data_by_task` 和两部分按 task 聚合的 `delivered_data_by_task`。wired source 是真实 `WiredNetworkManager.step` 返回的 slot transmitted bytes；`{}` + observed mask 表示已观测但无服务，`null` + missing mask/reason 表示不可恢复。
 - Raw Trajectory Layer / 01 已冻结；没有生成新定义 tensor，Step 3 未开始。
+- Step 3.1 最小样本：History 为 anchor 前连续 `H=2` 帧，Future Action/Target 为连续 `L=2` 帧；input-side index 不含 target-only 对象，target-side index 单独表达未来对象。通信 service 与 task progress 分离，DAG dependency source 缺失显式 mask/reason。
 
 Unverified：未在当前 tensor manifest、loader 或模型实际读路径出现的字段，不得推断为当前模型输入。
 

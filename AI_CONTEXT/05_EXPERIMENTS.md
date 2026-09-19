@@ -51,3 +51,4 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 - `STEP 1` 只有只读实现审计和 49 项旧 synthetic CPU contract 回归；它们不是新定义性能实验。
 - 新 dataset/tensor/model/loss/planner 实验均为 `NOT_STARTED`。
 - 下一实验步骤尚未授权；Step 2 建议仅冻结一步轨迹和四类动作合同，不训练。
+- STEP 3.1 不是训练实验：真实非 locked 最小样本 `H=2/L=2` 构造通过 10 项检查、4 项合同测试和 serialize→load equality；artifact 位于 `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/`。

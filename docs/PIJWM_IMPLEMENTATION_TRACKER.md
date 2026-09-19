@@ -1,13 +1,13 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-19。**Raw Trajectory Layer / 定义 01 已完成并冻结**：Step 2–2.4 的单步、多步、因果可观测边界、真实字段、offload/return 四类动作和 wireless/wired Communication Outcome 语义验收均通过。下一 Step 仅建议进入 Dataset/Tensor Contract，尚未执行。
+更新时间：2026-09-19。**Raw Trajectory Layer / 定义 01 已完成并冻结**；STEP 3.1 已完成最小 Model-ready Sample & Tensor Contract 验收。正式大数据集、模型和训练仍未开始。
 
 ## 当前依据与执行边界
 
 - 目标研究定义：`D:\shen\OB\科研\PIJWM` 中七个 `00–06` Markdown 文件，只读。文件名、大小、行数和 SHA-256 见 `code/artifacts/audit/pi_jwm_new_definition_step01_20260918/initial_snapshot.json`。
 - 实现事实：本仓库源码、配置、测试和原始 artifact。笔记中“当前代码已经……”的描述也必须核对。
 - 工程工作区：`D:\shen\PKU\PIJWM`；旧 P4/P6/P0–P10 工作流为 **Historical / Archived**，不再是 active workflow。旧结果保留原验收含义，不变成新定义结果。
-- 本轮不改变模型、数据、loss、协议、planner 或 checkpoint；不训练、不使用 GPU、不访问 `locked_test`、不自动执行 Step 3。
+- 本轮不生成正式大规模数据集，不改变双图、World Model、loss、planner 或 checkpoint；不训练、不使用 GPU、不访问 `locked_test`。
 - 主报告：[STEP_01_AUDIT.md](implementation_records/STEP_01_AUDIT.md)；数据附件：[STEP_01_DATA_GRAPH_AUDIT.md](implementation_records/STEP_01_DATA_GRAPH_AUDIT.md)。下表中的 00–06 对应上述源文件章节；详细定位在报告中。
 
 ## 总体实施状态
@@ -20,6 +20,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | AirFogSim trajectory | 01 原始轨迹与时间语义 | Raw contract、Step 2.1–2.4 runner/artifact | COMPLETE / FROZEN | MINOR_MODIFICATION | Raw 层已闭合；尚未映射到新 Dataset/Tensor | Step 3 冻结 Dataset/Tensor Contract |
 | Decision / Execution / Outcome | 01；02 | Raw contract、causal helper、Step 2.3/2.4 真实 artifact | COMPLETE / FROZEN | MINOR_MODIFICATION | future schedule 已与 `O_t`/History/input index 隔离；wireless/wired slot outcome 已拆分并实测 | Step 3 保持同一因果边界 |
 | Dataset / split / masks | 02 | `formal_airfogsim_dataset_v1.py` | AUDITED | MINOR_MODIFICATION | split/mask隔离复用；对象和字段变更后重新构建 | 新 schema 验收后适配 |
+| Model-ready sample / tensor contract | 02 | `model_ready_sample_contract_v1.py`、Step 3.1 artifact | COMPLETE / FROZEN FOR MINIMAL CONTRACT | MINOR_MODIFICATION | H=2/L=2 最小真实样本已闭合；正式 batch/split builder 未开始 | Step 3.2 批量与 split preprocessing 验收 |
 | tensor contract | 02；03 | `airfogsim_tensor_v2.py`、v5 tensor contract | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | Agent/Comm/四类动作与新关系不存在于当前完整合同 | 字段和关系合同 |
 | Physical / Information 双图 | 03 | `formal_graph_ops_v1.py`、`formal_dual_graph_world_model_v1.py` | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 通信仍混在physical_edge；Agent复用node输入；旧跨图路径不同 | 依合同重构，尚未授权 |
 | entity alignment 局部工具 | 02；03 | `airfogsim_tensor_v2.py`、`formal_graph_ops_v1.py` | AUDITED | DIRECT_REUSE | ID/index/mask原则可复用；新增对象映射需扩展 | 保留身份稳定性检查 |
@@ -69,6 +70,10 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 
 Step 2.1 v4 完成真实单步验收；Step 2.2 完成真实多步独立重采集与 no-op 连续性；Step 2.3 用 8 个连续真实步完成因果和字段收尾；Step 2.4 在真实 `RSU_0 ↔ cloudServer_4` 有线链路上补齐 Communication Outcome。AirFogSim 未来 schedule 只保留为 internal metadata，不进入 `O_t`、History 或 input-side Entity Index；Decision CSI、CPU capacity/missing mask、wireless/wired split slot service、total 聚合、`setTaskReturnRoute` 和 return lifecycle 均有真实证据。AirFogSim raw acceleration 与 PI-JWM canonical backward difference 使用不同字段，缺历史时为 `null + mask=false`。最终机器证据位于 `code/artifacts/protocols/pi_jwm_raw_contract_causal_complete_v2_20260919/` 和 `code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/`，并要求纳入 Git。
 
-## 唯一建议的 STEP 3（NOT_STARTED）
+## STEP 3.1 Model-ready Sample & Tensor Contract
 
-研究者审阅已冻结 Raw Trajectory Layer 后，明确授权 **STEP 3 — Dataset / Tensor Contract**；本 Step 不自动执行。
+最小真实证据位于 `code/artifacts/protocols/pi_jwm_model_ready_sample_v1_20260919/`。History frame `0,1`、Future Action/Target frame `2,3`；input-side index 不包含 target-only `Task_7/Task_8`；四类 action、presence/mask、通信 service 与 task progress 分离、DAG missing gap 和 round-trip 均有机器检查。该结果冻结最小 schema 语义，不等于正式数据集完成。
+
+## 唯一建议的下一步
+
+研究者审阅本次最小合同后，单独授权 **STEP 3.2 — Raw-to-Dataset Batch / Split Preprocessing Validation**；本 Step 不自动执行。

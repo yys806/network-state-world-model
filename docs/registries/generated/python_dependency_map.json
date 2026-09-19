@@ -1205,6 +1205,21 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.build_step3_1_minimal_real_model_ready_sample_v1",
+        "tests.test_model_ready_sample_contract_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.model_ready_sample_contract_v1",
+      "path": "code/src/pi_jwm/model_ready_sample_contract_v1.py",
+      "test_files": [
+        "code/tests/test_model_ready_sample_contract_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
         "scripts.run_p2_multistep_collector_preflight_v1",
         "tests.test_multistep_collector_contract_v1"
       ],
@@ -3057,6 +3072,18 @@
       "test_files": [
         "code/tests/test_build_r6_online_gpu_readiness.py"
       ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.model_ready_sample_contract_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step3_1_minimal_real_model_ready_sample_v1",
+      "path": "code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py",
+      "test_files": []
     },
     {
       "category": "runnable_script",
@@ -7854,6 +7881,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_main_experiment_contract",
       "path": "code/tests/test_main_experiment_contract.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.model_ready_sample_contract_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_model_ready_sample_contract_v1",
+      "path": "code/tests/test_model_ready_sample_contract_v1.py",
       "test_files": []
     },
     {

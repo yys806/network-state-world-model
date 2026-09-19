@@ -41,3 +41,4 @@ Source of truth：本 changelog 只说明发生了什么；实现和实验真假
 Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文件推断。
 
 - 2026-09-18: Step 2 froze raw single-step and four action-family contract; added source adapter, focused tests, evidence script, and protocol artifacts.
+- 2026-09-19: Added Step 3.1 model-ready sample/tensor contract, minimal real sample artifact, source-hash manifest, focused tests, and navigation records; formal dataset and training remain unopened.

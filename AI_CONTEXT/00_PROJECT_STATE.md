@@ -52,6 +52,7 @@
 - 2026-09-09：第二个正式 seed `20260830` 完成并通过单 seed 验收；第三 seed 暂停。
 - 2026-09-09：建立项目文件、依赖、artifact、实验、结果、历史方法和问答路由索引。
 - 2026-09-10：新增面向 ChatGPT 网页端的 `AI_CONTEXT/`，并将三方协作和同步规则写入 `AGENTS.md`。
+- 2026-09-19：STEP 3.1 冻结最小 Model-ready Sample & Tensor Contract；`H=2/L=2` 真实样本、四类 action、input/target index 隔离和 mask 语义通过机器检查。正式 batch/split builder 未开始。
 
 Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能声明已开放”的证据。
 

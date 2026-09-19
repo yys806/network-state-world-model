@@ -67,3 +67,4 @@
 - 未修改模型、loss、metrics、tensor、协议、checkpoint、实验结果或 `code/artifacts/`。
 
 - 2026-09-18: Added Step 2 raw trajectory/four-action contract, minimum closure validation, and evidence artifacts.
+- 2026-09-19: Added Step 3.1 model-ready sample/tensor contract, minimal real sample artifact and focused validation; formal dataset/model/training remain unopened.

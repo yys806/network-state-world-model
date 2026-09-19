@@ -1,5 +1,12 @@
 # 2026-08-26 双约束实施计划 v2
 
+## 2026-09-19 STEP 3.1 execution note
+
+- Scope: freeze minimal Raw Trajectory -> Model-ready Sample -> Tensor Contract only.
+- Completed: H=2/L=2 causal windows, input/target index separation, four actions, masks, communication service/progress split, minimal real artifact and tests.
+- Gate: no formal dataset, graph/model/loss/planner/training/GPU/locked_test.
+- Next: researcher review and explicit STEP 3.2 authorization.
+
 ## 2026-08-29 P4 节点位置误差聚焦处理计划
 
 当前门：P4 最终精度门仍未关闭。GPU 三 seed 训练、回收和结构审计已完成，但验证集节点位置 MAE 相对 persistence 在三个 seed 均变差（`+0.4621/+0.8483/+1.3708 m`）。

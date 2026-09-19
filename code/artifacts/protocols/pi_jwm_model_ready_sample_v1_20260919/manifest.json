@@ -1,0 +1,32 @@
+{
+  "schema_version": "PI-JWM-Step-3.1-Minimal-Real-Sample-Manifest-v1",
+  "artifact": "model_ready_sample.json",
+  "artifact_sha256": "209a99f66e0028c80ad49783b507e90cea4b860f319914c147cd43ffa9f53c1d",
+  "passed": true,
+  "checks": {
+    "schema_present": true,
+    "history_length": true,
+    "action_target_alignment": true,
+    "four_action_families": true,
+    "no_future_action_in_history": true,
+    "target_only_not_in_input_index": true,
+    "missing_distinct_from_empty": true,
+    "flow_hop_semantics_explicit": true,
+    "dag_gap_explicit": true,
+    "metadata_not_model_input": true
+  },
+  "source_files": {
+    "code/src/pi_jwm/model_ready_sample_contract_v1.py": "504e33c66ae00406e57a20edd363516a03ce9ff38cf37630daaab48308993b4a",
+    "code/scripts/build_step3_1_minimal_real_model_ready_sample_v1.py": "b526874385b984b099cb542fddccacc596d8d92ae53b26ddbea0f4f79dca84a1",
+    "code/tests/test_model_ready_sample_contract_v1.py": "9de30d8702bcce425d96447676eb69748b6a2e03d0bc3e4aa60a06433d2f245a",
+    "docs/contracts_PIJWM_MODEL_READY_SAMPLE_TENSOR_CONTRACT_V1.md": "94c55d9e69a53cc28276cad9d3832b5ef866962214b087089d18015d7aadfb89"
+  },
+  "scope": {
+    "raw_source": "code\\artifacts\\protocols\\pi_jwm_communication_outcome_semantics_v1_20260919\\real_communication_outcome_semantics.json",
+    "H": 2,
+    "L": 2,
+    "locked_test": false,
+    "training": false,
+    "gpu": false
+  }
+}

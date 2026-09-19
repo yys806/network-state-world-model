@@ -2617,6 +2617,12 @@ P4 长期位置误差的首个具体原因已由代码和完整 h20 数据扫描
 
 追踪报告位于`code/artifacts/audit/pi_jwm_p4_edge_gru_interface_trace_20260905/`，报告SHA-256=`87b4fe4b17d06928a1a3583be45f0521b51aa90866d39ce43a95075d868027d9`。P4继续blocked，`formal_performance_claim_ready=false`、`locked_test_accessed=false`；用户确认候选设计前不改模型、不训练、不启动follow-up seeds、不进入P6。
 
+### 新定义 Dataset/Tensor 最小合同（2026-09-19）
+
+Step 3.1 已依据只读 `02数据集构建与模型输入.md` 冻结一条最小真实 model-ready sample：`H=2, L=2`，History 截止 anchor 前一帧，Future Action 与 Target 对齐于 anchor 起始的连续两帧。input-side entity index 只来自当前及历史可见对象；未来新对象使用独立 target-side index 表达，不进入 History 或 input index。presence、feature mask 和真实零值分离，四类 action 保持 Route/Comm/Comp/UAV Mobility 统一结构，车辆运动仍由 SUMO 外生推进。
+
+通信 service 继续表示 wireless/wired hop-level transport volume；task/data transmitted progress 与 service 分离，不能把多跳 service 相加解释为端到端 payload progress。Raw DAG dependency rows 当前没有独立真实来源，样本显式保存 observed mask=false 和缺失原因，不从旧 tensor 推断。Static 保存实体/关系索引与结构，Metadata 保存轨迹、时间、split、合同和审计信息，默认不作为模型输入。正式 batch/split builder 尚未开始。
+
 ### P4 link activity持久性残差候选的CPU实现边界（2026-09-05，当前覆盖）
 
 经用户确认后，当前只新增`link_activity_persistence_residual_v1`：历史最后一帧活动先形成未加权事件状态`u0=(+20或-20)-log(pos_weight)`，现有link head每步只输出变化量`delta`，h2以后只递推模型自己的`u`，正式`link_activity_logits=u+log(pos_weight)`。未来target和target mask不进入forward，temperature仍只属于训练后的calibration流程。
