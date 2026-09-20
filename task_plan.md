@@ -1261,6 +1261,6 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] TDD freeze current-frame causality, Physical/Information separation, Flow/Carrying semantics, topology independence, Align/GeoComm, overflow, round-trip, and target counterfactual.
 - [x] Implement eleven typed graph blocks and explicit development-only topology config without changing upstream Tensor semantics.
 - [x] Add actual-AND receipt, twenty negative/counterfactual fixtures, deterministic artifact, schema/config, hashes, and provenance.
-- [ ] Finish frozen regressions, compileall, knowledge-index write/check, diff/status review, commit and push `main`.
+- [x] Finish frozen regressions, compileall, knowledge-index write/check, diff/status review, commit and push `main`.
 - Stop boundary: no Encoder/GNN/message passing/P2A/P2C/World Model/Loss/Planner/Training/GPU/locked_test/formal Dataset.
 - Only next recommendation: STEP 4.3B Dual-Graph Encoder Contract; do not auto-start.

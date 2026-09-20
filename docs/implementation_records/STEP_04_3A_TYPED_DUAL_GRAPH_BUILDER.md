@@ -58,7 +58,7 @@ Expected: preserve strict Physical/Information semantics, logical Flow identity,
 
 ## Git
 
-This record, source, tests, and force-added artifact/manifest are committed together. The exact final commit and push state are reported in the Completion Report.
+Implementation commit `e91881abba5ebfcc4761b9c422f0c0187c4fc0b6` (`feat(graph): freeze typed dual-graph builder contract`) was pushed to `origin/main`. A documentation-only closure commit records the post-push process state.
 
 ## Next Step
 

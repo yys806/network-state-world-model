@@ -986,7 +986,7 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 
 - 新增 current `history[-1]` typed dual-graph builder、11 个独立 block、development-only Physical topology config、Align/GeoComm、NPZ round-trip 和真实 AND receipt。
 - 20 项负向/反事实已在 artifact builder 中通过，包括语义混入、hop endpoint、dedup、方向、shortcut、future target、overflow/truncation 与 receipt tamper。
-- focused tests 与 artifact builder 已通过；最终冻结回归、compile/index/diff、commit/push 待收口。无训练、GPU、`locked_test` 或 formal Dataset。
+- focused 15/15、冻结回归 66/66、artifact 24/24 required + 20/20 negative、deterministic/hash/round-trip、compile/index/diff 均通过；实现 commit `e91881abba5ebfcc4761b9c422f0c0187c4fc0b6` 已推送 `origin/main`。无训练、GPU、`locked_test` 或 formal Dataset。
 # 2026-09-19 STEP 4.1-PATCH
 
 - 从 `WiredNetworkManager`、真实 Raw `environment.wired_edges` 和 Decision `channel_rows` 核实：wired relation 有可靠 topology/`hasLink` 来源，但当前未逐 Decision 物化；没有 CSI 时可由 `relation_type=wired` 与 `csi_feature_mask=false` 表示。
