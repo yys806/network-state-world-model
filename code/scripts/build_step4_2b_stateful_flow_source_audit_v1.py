@@ -23,6 +23,36 @@ SOURCE_FILES = [
     "code/src/pi_jwm/airfogsim_full_dual_graph_frame_builder_v1.py",
     "code/src/pi_jwm/full_dual_graph_collector_contract_v1.py",
 ]
+SOURCE_SYMBOLS = {
+    SOURCE_FILES[0]: [
+        {"symbol": "Task.transmit_to_Node", "semantic_claim": "updates and resets stage-local transmitted_size", "anchor": "symbol:Task.transmit_to_Node"},
+        {"symbol": "Task.startToReturn", "semantic_claim": "switches return route and reuses transmission stage", "anchor": "symbol:Task.startToReturn"},
+        {"symbol": "Task.getReturnedSize", "semantic_claim": "returns required return total", "anchor": "symbol:Task.getReturnedSize"},
+    ],
+    SOURCE_FILES[1]: [
+        {"symbol": "TaskManager._task_dependencies", "semantic_claim": "DAG dependency gating", "anchor": "attribute:TaskManager._task_dependencies"},
+        {"symbol": "TaskManager.offloadTask", "semantic_claim": "checks parent tasks before offload", "anchor": "symbol:TaskManager.offloadTask"},
+    ],
+    SOURCE_FILES[2]: [
+        {"symbol": "AirFogSimEnv._updateWirelessCommunication", "semantic_claim": "wireless transfer hook", "anchor": "symbol:AirFogSimEnv._updateWirelessCommunication"},
+        {"symbol": "AirFogSimEnv._updateWiredCommunication", "semantic_claim": "wired transfer hook", "anchor": "symbol:AirFogSimEnv._updateWiredCommunication"},
+    ],
+    SOURCE_FILES[3]: [
+        {"symbol": "WiredNetworkManager.step", "semantic_claim": "wired service result source", "anchor": "symbol:WiredNetworkManager.step"},
+    ],
+    SOURCE_FILES[4]: [
+        {"symbol": "_extract_tasks", "semantic_claim": "decision snapshot task fields", "anchor": "symbol:_extract_tasks"},
+        {"symbol": "_extract_dag_edges", "semantic_claim": "DAG snapshot with communication_mapping=not_modeled", "anchor": "symbol:_extract_dag_edges"},
+    ],
+    SOURCE_FILES[5]: [
+        {"symbol": "build_logical_flow_id", "semantic_claim": "action-side logical Flow naming convention", "anchor": "symbol:build_logical_flow_id"},
+        {"symbol": "_preview_revision", "semantic_claim": "action-side route revision ledger", "anchor": "symbol:_preview_revision"},
+    ],
+    SOURCE_FILES[6]: [
+        {"symbol": "LogicalFlow", "semantic_claim": "data class lacks runtime remaining/presence", "anchor": "symbol:LogicalFlow"},
+        {"symbol": "CarryingHop", "semantic_claim": "data class describes bearer hop", "anchor": "symbol:CarryingHop"},
+    ],
+}
 
 
 def sha256(path: Path) -> str:
@@ -31,7 +61,7 @@ def sha256(path: Path) -> str:
 
 def main() -> None:
     provenance = [
-        {"path": path, "sha256": sha256(ROOT / path)}
+        {"path": path, "sha256": sha256(ROOT / path), "symbols": SOURCE_SYMBOLS[path]}
         for path in SOURCE_FILES
     ]
     report = build_stateful_flow_source_audit(source_provenance=provenance)

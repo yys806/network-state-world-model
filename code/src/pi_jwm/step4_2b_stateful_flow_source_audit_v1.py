@@ -19,6 +19,22 @@ VERDICTS = {
 }
 
 
+def expected_flow_verdict(report: Mapping[str, Any]) -> str:
+    """Compute the Flow-only verdict; unrelated resource gaps are excluded."""
+
+    required = report["flow_specific_required_evidence"]
+    values = [bool(required[name]) for name in required]
+    if all(values):
+        return "FLOW_CONTRACT_CONSTRUCTIBLE"
+    critical_missing = {
+        "input_current_remaining_causal",
+        "return_current_remaining_causal",
+    }
+    if any(not bool(required[name]) for name in critical_missing):
+        return "FLOW_CONTRACT_NOT_YET_SUPPORTED"
+    return "FLOW_CONTRACT_PARTIALLY_CONSTRUCTIBLE"
+
+
 def _check(name: str, passed: bool, detail: str) -> dict[str, Any]:
     return {"name": name, "passed": bool(passed), "detail": detail}
 
@@ -45,14 +61,21 @@ def build_stateful_flow_source_audit(*, source_provenance: list[Mapping[str, Any
             "candidate_a_logical_end_to_end": {
                 "total_data": "task.task_size is observable",
                 "current_remaining_data": "not causally reconstructable across completed hops",
-                "stable_identity": "no simulator Flow ID; task ID plus route revision is not runtime identity",
+                "stable_identity": {
+                    "implementation_fact": "simulator-issued Flow ID = unavailable",
+                    "research_boundary": "RESEARCHER_DECISION_REQUIRED / DERIVABLE_IF_LOGICAL_FLOW_SEMANTICS_SELECTED",
+                    "candidate_not_selected": "task_id + input",
+                },
                 "endpoints": "current task node and current node observable; end-to-end endpoint history not frozen",
                 "verdict": "PARTIALLY_CONSTRUCTIBLE",
             },
             "candidate_b_hop_local": {
                 "total_data": "task.task_size is observable for offload stage",
                 "current_remaining_data": "in-stage transmitted progress is observable before hop completion",
-                "stable_identity": "hop can be named only by observation context; no runtime stable hop ID",
+                "stable_identity": {
+                    "implementation_fact": "no runtime stable hop ID",
+                    "research_boundary": "hop-local naming is not selected as Definition 03 logical Flow identity",
+                },
                 "endpoints": "current route/current node and transfer event endpoints are observable",
                 "verdict": "PARTIALLY_CONSTRUCTIBLE",
             },
@@ -61,14 +84,20 @@ def build_stateful_flow_source_audit(*, source_provenance: list[Mapping[str, Any
         "return": {
             "total_data": "task.required_returned_size/getReturnedSize is observable",
             "current_remaining_data": "returning reuses stage-local transmitted_size and resets after each hop",
-            "stable_identity": "no independent return Flow identity or revision in simulator",
+            "stable_identity": {
+                "implementation_fact": "simulator-issued Flow ID = unavailable",
+                "research_boundary": "RESEARCHER_DECISION_REQUIRED / DERIVABLE_IF_LOGICAL_FLOW_SEMANTICS_SELECTED",
+                "candidate_not_selected": "task_id + return",
+            },
             "endpoints": "return destination and current node are observable when configured",
             "verdict": "PARTIALLY_CONSTRUCTIBLE",
         },
         "dependency_data": {
             "dag_gate": "TaskManager _task_dependencies gates parent completion",
             "transfer_source": "no dependency payload, Flow ID, or dependency transfer event in audited source",
-            "verdict": "NOT_YET_SUPPORTED",
+            "fact": "current AirFogSim audited mechanism has no real DepData transfer process",
+            "research_boundary": "retain empty DepData type under current simulator semantics, or extend simulator with dependency-result transfer",
+            "verdict": "RESEARCHER_DECISION_REQUIRED",
         },
         "task_progress_vs_flow_progress": {
             "task_size": "task-level offload total; not sufficient for end-to-end remaining",
@@ -80,6 +109,7 @@ def build_stateful_flow_source_audit(*, source_provenance: list[Mapping[str, Any
         "route_revision": {
             "route_change": "changeOffloadTo replaces unfinished route suffix",
             "identity_source": "no simulator-issued Flow identity or revision; builder revision is an action-side convention",
+            "research_boundary": "logical business Flow identity may be derived only after researcher selects that semantic",
             "causal_status": "route revision cannot be promoted to stable Flow identity without additive source",
         },
         "remaining_raw_sources": {
@@ -90,19 +120,47 @@ def build_stateful_flow_source_audit(*, source_provenance: list[Mapping[str, Any
             "dag_dependency_payload": "RAW_INSUFFICIENT",
         },
     }
+    flow_specific_required_evidence = {
+        "identity_semantics_selected": False,
+        "flow_type_semantics_available": True,
+        "associated_task_causal": True,
+        "logical_source_causal": False,
+        "logical_destination_causal": False,
+        "presence_causal": True,
+        "input_total_source": True,
+        "input_current_remaining_causal": False,
+        "return_total_source": True,
+        "return_current_remaining_causal": False,
+        "route_multi_hop_semantics": False,
+        "route_revision_identity_causal": False,
+    }
     checks = [
         _check("definition_03_minimum_fields_audited", True, "All required Flow fields are listed separately."),
-        _check("input_end_to_end_remaining_proven", False, "transmitted_size resets at hop completion; no causal end-to-end remaining source."),
-        _check("return_end_to_end_remaining_proven", False, "return stage reuses the same hop-local accumulator."),
-        _check("dependency_data_transfer_proven", False, "DAG provides gating only; no dependency-data transfer source."),
+        _check("input_end_to_end_remaining_proven", flow_specific_required_evidence["input_current_remaining_causal"], "transmitted_size resets at hop completion; no causal end-to-end remaining source."),
+        _check("return_end_to_end_remaining_proven", flow_specific_required_evidence["return_current_remaining_causal"], "return stage reuses the same hop-local accumulator."),
+        _check("dependency_data_transfer_proven", False, "DAG provides gating only; no dependency-data transfer source; this is not an Input/Return blocker."),
         _check("past_outcome_not_used_as_current_state", True, "Outcome service is explicitly excluded from current Flow state."),
-        _check("dynamic_resource_sources_complete", False, "available CPU, storage and wired queue/load remain unsupported."),
     ]
+    other_graph_input_gaps = {
+        "dynamic_available_cpu": False,
+        "storage": False,
+        "wired_queue_load_utilization": False,
+    }
+    report_without_verdict = {
+        "schema_version": AUDIT_SCHEMA_VERSION,
+        "flow_specific_required_evidence": flow_specific_required_evidence,
+        "other_graph_input_gaps": other_graph_input_gaps,
+        "evidence": evidence,
+    }
+    verdict = expected_flow_verdict(report_without_verdict)
     failed = [row["name"] for row in checks if not row["passed"]]
-    verdict = "FLOW_CONTRACT_NOT_YET_SUPPORTED"
     result = {
         "schema_version": AUDIT_SCHEMA_VERSION,
         "verdict": verdict,
+        "expected_verdict": verdict,
+        "flow_specific_required_evidence": flow_specific_required_evidence,
+        "other_graph_input_gaps": other_graph_input_gaps,
+        "other_graph_input_gaps_complete": all(other_graph_input_gaps.values()),
         "graph_builder_started": False,
         "formal_dataset": False,
         "training": False,
@@ -126,16 +184,21 @@ def validate_stateful_flow_source_audit(report: Mapping[str, Any]) -> dict[str, 
         "return_end_to_end_remaining_proven",
         "dependency_data_transfer_proven",
         "past_outcome_not_used_as_current_state",
-        "dynamic_resource_sources_complete",
     }
     names = {str(row.get("name")) for row in checks}
     checks_ok = required <= names and all(isinstance(row.get("passed"), bool) for row in checks if row.get("name") in required)
     scope_ok = all(report.get(name) is False for name in ("graph_builder_started", "formal_dataset", "training", "gpu", "locked_test"))
     verdict_ok = report.get("verdict") in VERDICTS
+    expected = expected_flow_verdict(report)
+    verdict_matches_evidence = report.get("verdict") == expected
+    other_gaps_present = isinstance(report.get("other_graph_input_gaps"), Mapping)
     return {
         "schema_version": report.get("schema_version") == AUDIT_SCHEMA_VERSION,
         "required_checks_present": checks_ok,
         "scope_non_expansive": scope_ok,
         "verdict_valid": verdict_ok,
-        "passed": bool(checks_ok and scope_ok and verdict_ok),
+        "expected_verdict": expected,
+        "verdict_matches_flow_evidence": verdict_matches_evidence,
+        "other_graph_gaps_separate": other_gaps_present,
+        "passed": bool(checks_ok and scope_ok and verdict_ok and verdict_matches_evidence and other_gaps_present),
     }

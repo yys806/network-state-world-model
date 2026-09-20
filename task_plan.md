@@ -13,6 +13,14 @@
 - [ ] 运行 focused audit、必要回归、deterministic rebuild/hash、compileall、knowledge index check、diff checks，commit + push `main` 后停止。
 - Stop rule：任一 minimum Flow 的 identity/type/logical endpoints/total/rem/presence 缺少可靠 causal source，就不得给出 `FLOW_CONTRACT_CONSTRUCTIBLE`，不得进入 Graph Builder。
 
+## 2026-09-20 STEP 4.2B-PATCH — Flow Readiness Receipt & Decision Boundary
+
+- [x] Flow verdict 改为由 Flow-specific required evidence 计算，并加入 verdict tamper negative fixture。
+- [x] 将 dynamic available CPU、storage、wired queue/load/utilization 移至独立 `other_information_graph_gaps`，不参与 Flow verdict。
+- [x] 将 simulator-issued Flow ID 与 DepData process 区分为 implementation fact 和 researcher decision boundary，不实际选择 logical Flow 语义。
+- [x] provenance 增加 source path、relevant symbol、semantic claim、symbol-level anchor；更新原 contract、record、Tracker、AI_CONTEXT 和 artifact。
+- [x] focused/regression/deterministic/compileall/knowledge-index/diff 验收通过；待 commit + push `main` 后停止。
+
 ## 2026-09-20 STEP 4.2A-PATCH — Comm Mask Semantics & Gap Reclassification
 
 - 当前门：只解耦 wireless structural relation validity 与 CSI feature observability，并纠正 Task observer-source gap 分类；不新增 Raw 字段、不实现 stateful Flow 或 Graph Builder。

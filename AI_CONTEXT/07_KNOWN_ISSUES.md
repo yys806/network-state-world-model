@@ -42,6 +42,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - 没有 simulator-issued stable Flow identity 或独立 Return identity；`LogicalFlow`/`CarryingHop` 是动作侧对象，不能替代运行时 provenance。
 - `_task_dependencies` 只做 DAG completion gating，当前没有 DepData payload/transfer event。dynamic available CPU、storage、wired queue/load/utilization 也没有可靠 decision-time Raw source。
 - Evidence：`code/artifacts/protocols/pi_jwm_step4_2b_stateful_flow_source_audit_v1_20260920/stateful_flow_source_audit.json`；综合 verdict=`FLOW_CONTRACT_NOT_YET_SUPPORTED`。
+- STEP 4.2B-PATCH：顶层 verdict 已由 Flow-specific evidence 实际计算并加入篡改负例；其他 graph input gaps 不再参与 Flow verdict。真正的 Flow blocker 是 Input/Return 跨 multi-hop 的动作前 current remaining source-of-truth，以及尚未冻结的 identity/type/端点/route semantics。
 
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
 

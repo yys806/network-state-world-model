@@ -6,6 +6,12 @@
 - 机器化记录 Input/Return/DepData、Task/Flow progress、Flow/Hop、route revision 和 remaining source gap；综合 verdict 为 `FLOW_CONTRACT_NOT_YET_SUPPORTED`。
 - 同步 Tracker、authority records、AI_CONTEXT；未实现 Graph Builder、模型或训练。
 
+## 2026-09-20：STEP 4.2B-PATCH Flow Readiness Receipt
+
+- Flow verdict 改为由 Flow-specific evidence 实际计算，并加入 verdict tamper negative test。
+- dynamic CPU/storage/wired queue 等与 Flow readiness 解耦；stable Flow ID 与 DepData 改为 implementation fact + researcher decision boundary。
+- provenance manifest 增加 source symbol、semantic claim 和 symbol-level anchor。
+
 ## 2026-09-20：STEP 4.2A-PATCH Comm Mask Semantics & Gap Reclassification
 
 - 解耦 wireless structural relation presence/validity 与 CSI observed/mask；missing CSI 保留 relation，Sample/Tensor 使用 masked zero placeholder 和 missing reason。

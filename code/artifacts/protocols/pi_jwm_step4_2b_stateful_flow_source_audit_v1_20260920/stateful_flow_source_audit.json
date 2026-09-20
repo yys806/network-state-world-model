@@ -16,7 +16,7 @@
       "passed": false
     },
     {
-      "detail": "DAG provides gating only; no dependency-data transfer source.",
+      "detail": "DAG provides gating only; no dependency-data transfer source; this is not an Input/Return blocker.",
       "name": "dependency_data_transfer_proven",
       "passed": false
     },
@@ -24,31 +24,35 @@
       "detail": "Outcome service is explicitly excluded from current Flow state.",
       "name": "past_outcome_not_used_as_current_state",
       "passed": true
-    },
-    {
-      "detail": "available CPU, storage and wired queue/load remain unsupported.",
-      "name": "dynamic_resource_sources_complete",
-      "passed": false
     }
   ],
   "evidence": {
     "dependency_data": {
       "dag_gate": "TaskManager _task_dependencies gates parent completion",
+      "fact": "current AirFogSim audited mechanism has no real DepData transfer process",
+      "research_boundary": "retain empty DepData type under current simulator semantics, or extend simulator with dependency-result transfer",
       "transfer_source": "no dependency payload, Flow ID, or dependency transfer event in audited source",
-      "verdict": "NOT_YET_SUPPORTED"
+      "verdict": "RESEARCHER_DECISION_REQUIRED"
     },
     "input": {
       "candidate_a_logical_end_to_end": {
         "current_remaining_data": "not causally reconstructable across completed hops",
         "endpoints": "current task node and current node observable; end-to-end endpoint history not frozen",
-        "stable_identity": "no simulator Flow ID; task ID plus route revision is not runtime identity",
+        "stable_identity": {
+          "candidate_not_selected": "task_id + input",
+          "implementation_fact": "simulator-issued Flow ID = unavailable",
+          "research_boundary": "RESEARCHER_DECISION_REQUIRED / DERIVABLE_IF_LOGICAL_FLOW_SEMANTICS_SELECTED"
+        },
         "total_data": "task.task_size is observable",
         "verdict": "PARTIALLY_CONSTRUCTIBLE"
       },
       "candidate_b_hop_local": {
         "current_remaining_data": "in-stage transmitted progress is observable before hop completion",
         "endpoints": "current route/current node and transfer event endpoints are observable",
-        "stable_identity": "hop can be named only by observation context; no runtime stable hop ID",
+        "stable_identity": {
+          "implementation_fact": "no runtime stable hop ID",
+          "research_boundary": "hop-local naming is not selected as Definition 03 logical Flow identity"
+        },
         "total_data": "task.task_size is observable for offload stage",
         "verdict": "PARTIALLY_CONSTRUCTIBLE"
       },
@@ -78,13 +82,18 @@
     "return": {
       "current_remaining_data": "returning reuses stage-local transmitted_size and resets after each hop",
       "endpoints": "return destination and current node are observable when configured",
-      "stable_identity": "no independent return Flow identity or revision in simulator",
+      "stable_identity": {
+        "candidate_not_selected": "task_id + return",
+        "implementation_fact": "simulator-issued Flow ID = unavailable",
+        "research_boundary": "RESEARCHER_DECISION_REQUIRED / DERIVABLE_IF_LOGICAL_FLOW_SEMANTICS_SELECTED"
+      },
       "total_data": "task.required_returned_size/getReturnedSize is observable",
       "verdict": "PARTIALLY_CONSTRUCTIBLE"
     },
     "route_revision": {
       "causal_status": "route revision cannot be promoted to stable Flow identity without additive source",
       "identity_source": "no simulator-issued Flow identity or revision; builder revision is an action-side convention",
+      "research_boundary": "logical business Flow identity may be derived only after researcher selects that semantic",
       "route_change": "changeOffloadTo replaces unfinished route suffix"
     },
     "task_progress_vs_flow_progress": {
@@ -95,53 +104,160 @@
       "task_size": "task-level offload total; not sufficient for end-to-end remaining"
     }
   },
+  "expected_verdict": "FLOW_CONTRACT_NOT_YET_SUPPORTED",
   "failed_checks": [
     "input_end_to_end_remaining_proven",
     "return_end_to_end_remaining_proven",
-    "dependency_data_transfer_proven",
-    "dynamic_resource_sources_complete"
+    "dependency_data_transfer_proven"
   ],
+  "flow_specific_required_evidence": {
+    "associated_task_causal": true,
+    "flow_type_semantics_available": true,
+    "identity_semantics_selected": false,
+    "input_current_remaining_causal": false,
+    "input_total_source": true,
+    "logical_destination_causal": false,
+    "logical_source_causal": false,
+    "presence_causal": true,
+    "return_current_remaining_causal": false,
+    "return_total_source": true,
+    "route_multi_hop_semantics": false,
+    "route_revision_identity_causal": false
+  },
   "formal_dataset": false,
   "gpu": false,
   "graph_builder_started": false,
   "locked_test": false,
+  "other_graph_input_gaps": {
+    "dynamic_available_cpu": false,
+    "storage": false,
+    "wired_queue_load_utilization": false
+  },
+  "other_graph_input_gaps_complete": false,
   "schema_version": "PI-JWM-Step4.2B-Stateful-Flow-Source-Audit-v1",
   "source_provenance": [
     {
       "path": "code/reference/AirFogSim/airfogsim/entities/task.py",
-      "sha256": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0"
+      "sha256": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0",
+      "symbols": [
+        {
+          "anchor": "symbol:Task.transmit_to_Node",
+          "semantic_claim": "updates and resets stage-local transmitted_size",
+          "symbol": "Task.transmit_to_Node"
+        },
+        {
+          "anchor": "symbol:Task.startToReturn",
+          "semantic_claim": "switches return route and reuses transmission stage",
+          "symbol": "Task.startToReturn"
+        },
+        {
+          "anchor": "symbol:Task.getReturnedSize",
+          "semantic_claim": "returns required return total",
+          "symbol": "Task.getReturnedSize"
+        }
+      ]
     },
     {
       "path": "code/reference/AirFogSim/airfogsim/manager/task_manager.py",
-      "sha256": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104"
+      "sha256": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+      "symbols": [
+        {
+          "anchor": "attribute:TaskManager._task_dependencies",
+          "semantic_claim": "DAG dependency gating",
+          "symbol": "TaskManager._task_dependencies"
+        },
+        {
+          "anchor": "symbol:TaskManager.offloadTask",
+          "semantic_claim": "checks parent tasks before offload",
+          "symbol": "TaskManager.offloadTask"
+        }
+      ]
     },
     {
       "path": "code/reference/AirFogSim/airfogsim/airfogsim_env.py",
-      "sha256": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce"
+      "sha256": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+      "symbols": [
+        {
+          "anchor": "symbol:AirFogSimEnv._updateWirelessCommunication",
+          "semantic_claim": "wireless transfer hook",
+          "symbol": "AirFogSimEnv._updateWirelessCommunication"
+        },
+        {
+          "anchor": "symbol:AirFogSimEnv._updateWiredCommunication",
+          "semantic_claim": "wired transfer hook",
+          "symbol": "AirFogSimEnv._updateWiredCommunication"
+        }
+      ]
     },
     {
       "path": "code/reference/AirFogSim/airfogsim/manager/wired_manager.py",
-      "sha256": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe"
+      "sha256": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe",
+      "symbols": [
+        {
+          "anchor": "symbol:WiredNetworkManager.step",
+          "semantic_claim": "wired service result source",
+          "symbol": "WiredNetworkManager.step"
+        }
+      ]
     },
     {
       "path": "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py",
-      "sha256": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd"
+      "sha256": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd",
+      "symbols": [
+        {
+          "anchor": "symbol:_extract_tasks",
+          "semantic_claim": "decision snapshot task fields",
+          "symbol": "_extract_tasks"
+        },
+        {
+          "anchor": "symbol:_extract_dag_edges",
+          "semantic_claim": "DAG snapshot with communication_mapping=not_modeled",
+          "symbol": "_extract_dag_edges"
+        }
+      ]
     },
     {
       "path": "code/src/pi_jwm/airfogsim_full_dual_graph_frame_builder_v1.py",
-      "sha256": "b8d153699c0e1f960a7415d38f5c70d499dd54b05ef50ba4debf11773baad6ae"
+      "sha256": "b8d153699c0e1f960a7415d38f5c70d499dd54b05ef50ba4debf11773baad6ae",
+      "symbols": [
+        {
+          "anchor": "symbol:build_logical_flow_id",
+          "semantic_claim": "action-side logical Flow naming convention",
+          "symbol": "build_logical_flow_id"
+        },
+        {
+          "anchor": "symbol:_preview_revision",
+          "semantic_claim": "action-side route revision ledger",
+          "symbol": "_preview_revision"
+        }
+      ]
     },
     {
       "path": "code/src/pi_jwm/full_dual_graph_collector_contract_v1.py",
-      "sha256": "75322543577a0f9ff3762a37489491cccdb8a10dba8a7373e4829585451ce8fa"
+      "sha256": "75322543577a0f9ff3762a37489491cccdb8a10dba8a7373e4829585451ce8fa",
+      "symbols": [
+        {
+          "anchor": "symbol:LogicalFlow",
+          "semantic_claim": "data class lacks runtime remaining/presence",
+          "symbol": "LogicalFlow"
+        },
+        {
+          "anchor": "symbol:CarryingHop",
+          "semantic_claim": "data class describes bearer hop",
+          "symbol": "CarryingHop"
+        }
+      ]
     }
   ],
   "training": false,
   "validation": {
+    "expected_verdict": "FLOW_CONTRACT_NOT_YET_SUPPORTED",
+    "other_graph_gaps_separate": true,
     "passed": true,
     "required_checks_present": true,
     "schema_version": true,
     "scope_non_expansive": true,
+    "verdict_matches_flow_evidence": true,
     "verdict_valid": true
   },
   "verdict": "FLOW_CONTRACT_NOT_YET_SUPPORTED"

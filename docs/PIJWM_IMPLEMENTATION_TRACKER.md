@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、STEP 3.1F、STEP 3.2、STEP 3.3 已完成并冻结**；**02 数据集构建与模型输入 COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT**；**STEP 4.1 mapping 已冻结，STEP 4.2A existing-source additive input extension 已完成，STEP 4.2B source audit 已完成但 Flow contract 尚未支持**。新 graph builder、模型和训练仍未开始。
+更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、STEP 3.1F、STEP 3.2、STEP 3.3 已完成并冻结**；**02 数据集构建与模型输入 COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT**；**STEP 4.1 mapping 已冻结，STEP 4.2A existing-source additive input extension 已完成，STEP 4.2B-PATCH receipt 已完成但 Flow contract 尚未支持**。新 graph builder、模型和训练仍未开始。
 
 ## 当前依据与执行边界
 
@@ -22,7 +22,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | Dataset / split / masks | 02 | `step3_2_batch_preprocessing_v1.py`、Step 3.2 bundle | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | trajectory split、lineage、time-grid、train-only normalization、mask/presence counterfactual 已验收；不是正式大规模 Dataset | 03 所需新增字段只能走 additive extension |
 | Model-ready sample / tensor contract | 02 | `model_ready_sample_contract_v1.py`、Step 3.1F artifact、Step 3.2 bundle | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | History past A/Y、entity type、union input index、typed target、batch/split/preprocessing 已验收；不是正式大规模 Dataset | 进入 03 前先冻结对象-字段-关系映射 |
 | tensor contract | 02；03 | `step3_3_model_input_tensor_v1.py`、`build_step3_3_model_input_tensor_v1.py` | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | Past Outcome、完整 Target facts、固定 vocab、Comp 正式字段与 semantic receipt 已验收；03/04 feature selection 和正式容量未决定 | 单独授权双图字段映射 |
-| Physical / Information 双图 | 03 | Step 4.1 mapping；Step 4.2A additive Sample/Tensor；Step 4.2B source audit；旧 `formal_graph_ops_v1.py` / `formal_dual_graph_world_model_v1.py` | FLOW CONTRACT NOT YET SUPPORTED / GRAPH NOT_STARTED | STRUCTURAL_CHANGE | position/CSI/wired/CPU capability/部分 Task state 已输入化；Input/Return stable Flow remaining、DepData transfer、dynamic resources 仍缺 | 研究者审阅 source audit；禁止直接建图 |
+| Physical / Information 双图 | 03 | Step 4.1 mapping；Step 4.2A additive Sample/Tensor；Step 4.2B-PATCH source receipt；旧 `formal_graph_ops_v1.py` / `formal_dual_graph_world_model_v1.py` | FLOW CONTRACT NOT YET SUPPORTED / GRAPH NOT_STARTED | STRUCTURAL_CHANGE | Flow verdict 仅由 identity/type/Task/端点/presence/total/remaining/causality/multi-hop/route evidence 计算；其他 dynamic resources 单独记录 | 研究者先冻结最小 Stateful Flow 语义合同；禁止直接建图 |
 | entity alignment 局部工具 | 02；03 | `airfogsim_tensor_v2.py`、`formal_graph_ops_v1.py` | AUDITED | DIRECT_REUSE | ID/index/mask原则可复用；新增对象映射需扩展 | 保留身份稳定性检查 |
 | Route action | 06 §2.1；04 §3.3 | Step 2 Raw + Step 3.3 past/future route tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | route kind/target/task node/hops 与 mask 已映射；尚未接新 graph/model | 后续按新对象路由，未授权 |
 | Comm action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 per-RB action tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | RB indices/mask 与 split outcome 已映射；Comm graph state 仍缺 numeric CSI exposure | 先做 additive state extension |

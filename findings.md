@@ -920,3 +920,10 @@
 - `_task_dependencies` 是 DAG gating，不等于 DepData Flow；当前无 dependency payload/transfer source。
 - 旧 `LogicalFlow`/`CarryingHop` 提供动作侧命名，但不是 simulator-issued stable Flow provenance。
 - 机器 receipt：`FLOW_CONTRACT_NOT_YET_SUPPORTED`；停止进入 Graph Builder。
+
+## 2026-09-20 STEP 4.2B-PATCH
+
+- Flow verdict 现在由 identity/type/Task/端点/presence/total/remaining/causality/multi-hop/route evidence 计算；篡改 verdict 会被 validator 拒绝。
+- dynamic available CPU、storage、wired queue/load/utilization 已移至 `other_information_graph_gaps`。
+- simulator-issued Flow ID 缺失改为 implementation fact；logical identity 是否按 `task_id + input/return` 派生留给 researcher decision。
+- DepData 当前无真实 transfer process，但不再作为 Input/Return readiness 的直接 blocker；DAG 仍禁止生成 fake Flow。

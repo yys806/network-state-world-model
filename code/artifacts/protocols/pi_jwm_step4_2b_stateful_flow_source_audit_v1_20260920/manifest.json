@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "stateful_flow_source_audit.json",
-      "sha256": "6688d5b89c6d7d2d18c8106e719d517fcfdeff143c08887e90d5afb328e8b8fe"
+      "sha256": "2c5d1ee807d4e21bc38805898079ffd97a4bc40b1339a5628ccb70098ab2e195"
     }
   ],
   "formal_dataset": false,
@@ -13,31 +13,115 @@
   "source_files": [
     {
       "path": "code/reference/AirFogSim/airfogsim/entities/task.py",
-      "sha256": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0"
+      "sha256": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0",
+      "symbols": [
+        {
+          "anchor": "symbol:Task.transmit_to_Node",
+          "semantic_claim": "updates and resets stage-local transmitted_size",
+          "symbol": "Task.transmit_to_Node"
+        },
+        {
+          "anchor": "symbol:Task.startToReturn",
+          "semantic_claim": "switches return route and reuses transmission stage",
+          "symbol": "Task.startToReturn"
+        },
+        {
+          "anchor": "symbol:Task.getReturnedSize",
+          "semantic_claim": "returns required return total",
+          "symbol": "Task.getReturnedSize"
+        }
+      ]
     },
     {
       "path": "code/reference/AirFogSim/airfogsim/manager/task_manager.py",
-      "sha256": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104"
+      "sha256": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+      "symbols": [
+        {
+          "anchor": "attribute:TaskManager._task_dependencies",
+          "semantic_claim": "DAG dependency gating",
+          "symbol": "TaskManager._task_dependencies"
+        },
+        {
+          "anchor": "symbol:TaskManager.offloadTask",
+          "semantic_claim": "checks parent tasks before offload",
+          "symbol": "TaskManager.offloadTask"
+        }
+      ]
     },
     {
       "path": "code/reference/AirFogSim/airfogsim/airfogsim_env.py",
-      "sha256": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce"
+      "sha256": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+      "symbols": [
+        {
+          "anchor": "symbol:AirFogSimEnv._updateWirelessCommunication",
+          "semantic_claim": "wireless transfer hook",
+          "symbol": "AirFogSimEnv._updateWirelessCommunication"
+        },
+        {
+          "anchor": "symbol:AirFogSimEnv._updateWiredCommunication",
+          "semantic_claim": "wired transfer hook",
+          "symbol": "AirFogSimEnv._updateWiredCommunication"
+        }
+      ]
     },
     {
       "path": "code/reference/AirFogSim/airfogsim/manager/wired_manager.py",
-      "sha256": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe"
+      "sha256": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe",
+      "symbols": [
+        {
+          "anchor": "symbol:WiredNetworkManager.step",
+          "semantic_claim": "wired service result source",
+          "symbol": "WiredNetworkManager.step"
+        }
+      ]
     },
     {
       "path": "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py",
-      "sha256": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd"
+      "sha256": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd",
+      "symbols": [
+        {
+          "anchor": "symbol:_extract_tasks",
+          "semantic_claim": "decision snapshot task fields",
+          "symbol": "_extract_tasks"
+        },
+        {
+          "anchor": "symbol:_extract_dag_edges",
+          "semantic_claim": "DAG snapshot with communication_mapping=not_modeled",
+          "symbol": "_extract_dag_edges"
+        }
+      ]
     },
     {
       "path": "code/src/pi_jwm/airfogsim_full_dual_graph_frame_builder_v1.py",
-      "sha256": "b8d153699c0e1f960a7415d38f5c70d499dd54b05ef50ba4debf11773baad6ae"
+      "sha256": "b8d153699c0e1f960a7415d38f5c70d499dd54b05ef50ba4debf11773baad6ae",
+      "symbols": [
+        {
+          "anchor": "symbol:build_logical_flow_id",
+          "semantic_claim": "action-side logical Flow naming convention",
+          "symbol": "build_logical_flow_id"
+        },
+        {
+          "anchor": "symbol:_preview_revision",
+          "semantic_claim": "action-side route revision ledger",
+          "symbol": "_preview_revision"
+        }
+      ]
     },
     {
       "path": "code/src/pi_jwm/full_dual_graph_collector_contract_v1.py",
-      "sha256": "75322543577a0f9ff3762a37489491cccdb8a10dba8a7373e4829585451ce8fa"
+      "sha256": "75322543577a0f9ff3762a37489491cccdb8a10dba8a7373e4829585451ce8fa",
+      "symbols": [
+        {
+          "anchor": "symbol:LogicalFlow",
+          "semantic_claim": "data class lacks runtime remaining/presence",
+          "symbol": "LogicalFlow"
+        },
+        {
+          "anchor": "symbol:CarryingHop",
+          "semantic_claim": "data class describes bearer hop",
+          "symbol": "CarryingHop"
+        }
+      ]
     }
   ],
   "training": false
