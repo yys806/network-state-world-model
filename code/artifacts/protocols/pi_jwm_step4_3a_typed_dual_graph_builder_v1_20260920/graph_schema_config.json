@@ -1,0 +1,150 @@
+{
+  "align_semantics": "same_entity_physical_to_information_agent",
+  "block_capacities": {
+    "agent_nodes": 8,
+    "align_relations": 8,
+    "comm_relations": 44,
+    "dag_relations": 7,
+    "flow_carrying_state": 4,
+    "flow_relations": 4,
+    "geo_comm_relations": 44,
+    "physical_nodes": 8,
+    "physical_relations": 56,
+    "task_agent_relations": 22,
+    "task_nodes": 7
+  },
+  "block_feature_orders": {
+    "agent_nodes": [
+      "cpu_capacity_per_s(static_capability)"
+    ],
+    "comm_relations": [
+      "per_rb_csi"
+    ],
+    "flow_carrying_state": [
+      "carrying.hop_progress",
+      "carrying.hop_remaining"
+    ],
+    "flow_relations": [
+      "logical.total_data",
+      "logical.e2e_delivered",
+      "logical.e2e_remaining"
+    ],
+    "physical_nodes": [
+      "x",
+      "y",
+      "z",
+      "speed_mps",
+      "canonical_acceleration_mps2"
+    ],
+    "physical_relations": [
+      "delta_x",
+      "delta_y",
+      "delta_z",
+      "distance",
+      "relative_speed",
+      "relative_acceleration"
+    ],
+    "task_nodes": [
+      "task_size",
+      "task_cpu_work",
+      "computed_cpu_work",
+      "transmitted_size",
+      "elapsed_time_s"
+    ]
+  },
+  "block_schemas": {
+    "agent_nodes": {
+      "endpoint_semantics": null,
+      "source": "history[-1].entity_* + agent_cpu_capacity_*"
+    },
+    "align_relations": {
+      "endpoint_semantics": "Physical entity<->same Information Agent",
+      "source": "physical eligibility + same entity tensor index"
+    },
+    "comm_relations": {
+      "endpoint_semantics": "Agent->Agent",
+      "source": "history[-1].comm_*"
+    },
+    "dag_relations": {
+      "endpoint_semantics": "predecessor Task->dependent Task",
+      "source": "history[-1].dag_*"
+    },
+    "flow_carrying_state": {
+      "endpoint_semantics": "side state, not relation",
+      "source": "history[-1].carrying_* + route_node_*"
+    },
+    "flow_relations": {
+      "endpoint_semantics": "logical source Agent->logical destination Agent",
+      "source": "history[-1].logical_flow_*"
+    },
+    "geo_comm_relations": {
+      "endpoint_semantics": "wireless Comm relation depends on endpoint Physical representations",
+      "source": "Comm endpoints + Physical membership"
+    },
+    "physical_nodes": {
+      "endpoint_semantics": null,
+      "source": "history[-1].entity_* + entity_position_*"
+    },
+    "physical_relations": {
+      "endpoint_semantics": "directed spatial source->target",
+      "source": "derived only from current physical spatial state and topology config"
+    },
+    "task_agent_relations": {
+      "endpoint_semantics": "Task->Agent",
+      "source": "history[-1].task_agent_*"
+    },
+    "task_nodes": {
+      "endpoint_semantics": null,
+      "source": "history[-1].task_* + task_history_extended_*"
+    }
+  },
+  "carrying_semantics": "side_state_keyed_by_logical_flow_slot_not_second_flow_relation",
+  "comm_validity_independent_of_csi": true,
+  "current_frame_policy": "history[-1]_only_no_temporal_aggregation",
+  "dag_direction": "predecessor_to_dependent; never_implies_DepData",
+  "flow_endpoint_semantics": "logical_source_to_logical_destination_not_current_hop",
+  "flow_feature_policy": "total,e2e_delivered,e2e_remaining retained verbatim; delivered is redundant provenance, not recomputed",
+  "geo_comm_semantics": "comm_endpoint_projection_independent_of_physical_edge_existence",
+  "learned_components": false,
+  "physical_membership_policy": "current_presence_and_valid_xyz_any_frozen_entity_type",
+  "physical_membership_reason_vocab": [
+    "<PAD>",
+    "eligible_current_valid_spatial_state",
+    "entity_not_present",
+    "position_unavailable"
+  ],
+  "physical_node_feature_order": [
+    "x",
+    "y",
+    "z",
+    "speed_mps",
+    "canonical_acceleration_mps2"
+  ],
+  "physical_relation_feature_order": [
+    "delta_x",
+    "delta_y",
+    "delta_z",
+    "distance",
+    "relative_speed",
+    "relative_acceleration"
+  ],
+  "physical_topology": {
+    "development_only": true,
+    "k": 2,
+    "max_physical_relations": null,
+    "mode": "radius_knn",
+    "physical_membership_policy": "current_presence_and_valid_xyz_any_frozen_entity_type",
+    "radius_m": 1000.0,
+    "research_frozen": false,
+    "self_loops": false
+  },
+  "physical_topology_source": "physical_nodes_only",
+  "schema_version": "PI-JWM-Typed-Dual-Graph-Builder-v1-step4.3A",
+  "source_tensor_schema_version": "PI-JWM-Model-Input-Tensor-Collation-v5-step4.2C-C-PATCH",
+  "target_namespace_consumed": false,
+  "unavailable_task_fields": {
+    "deadline": "AVAILABLE_UPSTREAM_BUT_NOT_IN_FROZEN_TENSOR",
+    "priority": "AVAILABLE_UPSTREAM_BUT_NOT_IN_FROZEN_TENSOR",
+    "return_size": "AVAILABLE_UPSTREAM_BUT_NOT_IN_FROZEN_TENSOR"
+  }
+}

@@ -94,3 +94,8 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - STEP 3.1F（研究者明确批准）：History 必须包含 `O_{t-H+1:t}` 和过去 `A_{t-H+1:t-1}/Y_{t-H+1:t-1}`；input index 必须覆盖 History 的因果对象 union，过去 flow/relation/DAG 必须与同一套 index 对齐；future unresolved reference 只做事实审计，不自行决定未来对象表示。STEP 3.2 仍未授权。
 - STEP 3.1F-PATCH（研究者明确批准）：Future Action 先按 anchor visibility 判断是否允许引用，再使用同一 History-union `static.input_entity_index` 返回数值 index；`input_index_policy=history_causal_observable_object_union`、`future_action_index_policy=anchor_visibility_then_history_union_input_index`。STEP 3.2 仍未授权。
 - STEP 4.1（研究者明确批准）：只冻结定义 03 的 Physical / Information object-field-relation mapping，必须区分真实可用、Raw 有但未暴露、Raw 不足、Derived、禁止归属和待研究者决定；禁止在本 Step 实现 graph builder、GNN、encoder、coupling、World Model、Loss、Planner、训练、GPU 或访问 `locked_test`。发现最小定义缺口时记录并停止在 mapping 层。
+## 2026-09-20：STEP 4.3A 实施授权
+
+- 研究者明确授权 Frozen Tensor → typed Physical / Information dual-graph objects + Align/GeoComm。
+- Physical topology 参数只允许作为 deterministic development config，必须标记 `development_only=true`、`research_frozen=false`。
+- 明确禁止 Encoder/MLP/GRU/message passing/P2A/P2C/GNN/World Model/Loss/Planner/Training/GPU/locked_test/formal Dataset；完成后停止。

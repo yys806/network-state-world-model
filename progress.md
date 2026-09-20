@@ -981,6 +981,12 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 - 补齐 History Logical、History Carrying、target Logical、target Carrying 四组全字段 Sample→Tensor equality；ID/provenance metadata 防止只修改字符串而保留同一 numeric index 的篡改漏检。新增 target carrying namespace，并明确其为 future ground-truth/deterministic-transition state，不是 learned prediction head。
 - receipt/build 已由实际 semantic subchecks、target namespace、future Epoch、placeholder/bounds/route mask、normalization policy、deterministic/round-trip 和 scope AND 生成；receipt/semantic tamper 与 overflow negative fixtures 均拒绝。
 - 当前已通过 focused 23/23 与 builder；最终跨 Step 回归、compileall、知识索引、diff、Git commit/push 仍是本任务收口门。范围保持 `training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+
+## 2026-09-20 STEP 4.3A
+
+- 新增 current `history[-1]` typed dual-graph builder、11 个独立 block、development-only Physical topology config、Align/GeoComm、NPZ round-trip 和真实 AND receipt。
+- 20 项负向/反事实已在 artifact builder 中通过，包括语义混入、hop endpoint、dedup、方向、shortcut、future target、overflow/truncation 与 receipt tamper。
+- focused tests 与 artifact builder 已通过；最终冻结回归、compile/index/diff、commit/push 待收口。无训练、GPU、`locked_test` 或 formal Dataset。
 # 2026-09-19 STEP 4.1-PATCH
 
 - 从 `WiredNetworkManager`、真实 Raw `environment.wired_edges` 和 Decision `channel_rows` 核实：wired relation 有可靠 topology/`hasLink` 来源，但当前未逐 Decision 物化；没有 CSI 时可由 `relation_type=wired` 与 `csi_feature_mask=false` 表示。

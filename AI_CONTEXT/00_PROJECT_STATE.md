@@ -12,7 +12,7 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 4.2C-C`（含 `STEP 4.2C-C-PATCH`）已 COMPLETE / FROZEN。Input destination 来自 established offload route terminal，Return 来自 `return_destination_id`；`target_node_id` 不再被误当 end-to-end destination。C-B Raw Flow 已进入独立 Sample/Tensor logical namespace；presence-aware train-only normalization、History/target Logical/Carrying 四组全字段 semantic equality 与独立 target carrying namespace 已由机器 receipt 验收。真实跨时隙 Input trace验证同一 FlowID/Epoch、固定 destination、稳定 Tensor slot 与 final-hop-only E2E。DepData runtime instances=0。Graph Builder、GNN 与模型仍未开始。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_2c_c_flow_sample_tensor_v1_20260920/`。
+- 当前 Step：`STEP 4.3A` 已 COMPLETE / FROZEN。冻结 Tensor `history[-1]` 已确定性映射为 11 个 typed Physical/Information/cross-domain blocks；Flow 为 logical multiedge，Carrying 为 side state，Physical topology 不消费 Comm/Task/Flow/target。当前 radius/kNN 仅为 development config，`research_frozen=false`。Graph Encoder、GNN 与模型仍未开始。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_3a_typed_dual_graph_builder_v1_20260920/`。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - 新定义实现状态：Raw 因果可观测、四类动作、slot Outcome 已验收；STEP 3.2/3.3 完成最小 Dataset/Tensor 合同；STEP 4.2A 已把 position/CSI/wired relation/CPU static capability/部分 Task 状态和 typed Task-Agent relation 输入化。Wireless structural relation 不因 CSI missing 而失效。source audit 确认 `transmitted_size` 是 hop-local 且完成 hop 后 reset；Input/Return stable Flow remaining、DepData transfer 和动态资源 Raw 仍不足。双图、World Model、Loss、Planner 仍未开始。
@@ -26,7 +26,7 @@
 
 ## 单一科研下一步
 
-STEP 4.2C-C（含 PATCH）已完成并冻结；唯一建议是研究者审阅后另行授权 **Definition 03 Graph Builder Contract**。不要自动执行 Graph Builder，不启动 GPU，不访问 `locked_test`。
+STEP 4.3A 已完成并冻结；唯一建议是研究者另行授权 **STEP 4.3B — Definition 03 Dual-Graph Encoder Contract**。不要自动执行 Encoder，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 

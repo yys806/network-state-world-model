@@ -960,3 +960,10 @@
 - A second semantic gap was found: changing a logical destination/holder/route ID without changing its numeric index could pass numeric-only checks. Tensor metadata now preserves source ID/provenance projections and equality rejects that tamper.
 - `target_carrying_*` arrays are a separate future target namespace. They are deterministic ground-truth transition state for this contract only; their presence does not imply a learned prediction head or Graph Builder input.
 - Scope remains non-formal and CPU-only: no Graph Builder, model, Loss, Planner, training, GPU, or `locked_test`.
+
+## 2026-09-20 STEP 4.3A
+
+- The frozen current tensor already contains sufficient minimum fields to materialize typed Physical/Information graph objects without reading the simulator or target namespace.
+- Physical membership can remain policy-driven: current presence plus valid XYZ admits a node without hard-coding entity classes. Development radius/kNN values are configuration evidence, not a research conclusion.
+- Carrying hop endpoints cannot replace logical Flow endpoints. In the current real multihop frame the hop destination may equal the logical destination, so the negative fixture also checks the stage-local hop source.
+- GeoComm is an endpoint-Physical dependency for wireless Comm and does not require an identical Physical edge; wired/no-spatial rows remain explicit but invalid.

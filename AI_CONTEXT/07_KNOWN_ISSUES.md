@@ -105,6 +105,7 @@ Unverified：没有代码、config、experiment 或可读 audit 支持的问题�
 - STEP 3.1R 已关闭原 DAG source 判断错误：observer 已提供真实 DAG rows，Raw `_capture()` 已接线；当前样本过滤两端不在 anchor input task namespace 的 future-only edges。正式 batch/split preprocessing、数据规模和模型输入选择仍未验收。
 - STEP 3.1F-PATCH 已修正 Future Action 的 anchor-only 重编号：anchor visibility 与 History-union numeric index 已分离，validator 和 disappearing-object fixture 已覆盖。4 个非 locked Raw artifact 的 18 个窗口扫描暂未发现 unresolved future reference；该短样本观察不能代替正式 dataset 可用率；未来对象到达的建模方案仍未决定。
 - STEP 4.2C-C-PATCH 已解决当前授权范围内的 Flow Sample/Tensor 贯穿与 normalization/semantic completeness，但仍有明确边界：Return multi-hop、same-destination partial-hop reroute runtime、formal Flow capacity 和 Graph Builder Contract 未冻结；artifact 只能支持 Raw→Sample→Tensor 合同，不支持图、模型或性能声明。
+- STEP 4.3A 已冻结 typed Graph Builder，但 Physical topology mode/radius/k 仍只是 development config；Return multi-hop、same-destination reroute runtime 和 formal graph capacities 仍未获得更强证据。Graph Encoder/GNN、World Model 与性能均未实现或验证。
 
 ## 2026-09-19
 

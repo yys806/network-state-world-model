@@ -1254,3 +1254,13 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [ ] Run final focused/regression, compileall, knowledge-index write/check, diff check, inspect status, commit and push `main`.
 - Stop boundary: `graph_builder=false`, `information_graph=false`, `physical_topology=false`, `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
 - Only next recommendation after independent freeze: researcher review, then separately authorize Definition 03 Graph Builder Contract; do not auto-start.
+
+## 2026-09-20 STEP 4.3A — Definition 03 Typed Dual-Graph Builder Contract
+
+- [x] Confirm clean frozen baseline `fd20e86a99b20f71a5dfd031fa673bd862a4f2bf` and read Definition 03 plus current Tensor contracts.
+- [x] TDD freeze current-frame causality, Physical/Information separation, Flow/Carrying semantics, topology independence, Align/GeoComm, overflow, round-trip, and target counterfactual.
+- [x] Implement eleven typed graph blocks and explicit development-only topology config without changing upstream Tensor semantics.
+- [x] Add actual-AND receipt, twenty negative/counterfactual fixtures, deterministic artifact, schema/config, hashes, and provenance.
+- [ ] Finish frozen regressions, compileall, knowledge-index write/check, diff/status review, commit and push `main`.
+- Stop boundary: no Encoder/GNN/message passing/P2A/P2C/World Model/Loss/Planner/Training/GPU/locked_test/formal Dataset.
+- Only next recommendation: STEP 4.3B Dual-Graph Encoder Contract; do not auto-start.

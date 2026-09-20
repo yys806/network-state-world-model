@@ -2164,14 +2164,32 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.build_step4_2c_c_flow_sample_tensor_v1",
-        "tests.test_step4_2c_c_flow_sample_tensor_v1"
+        "scripts.build_step4_3a_typed_dual_graph_builder_v1",
+        "tests.test_step4_2c_c_flow_sample_tensor_v1",
+        "tests.test_step4_3a_typed_dual_graph_builder_v1"
       ],
       "imports": [],
       "lifecycle_status": "support",
       "module": "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
       "path": "code/src/pi_jwm/step4_2c_c_flow_sample_tensor_v1.py",
       "test_files": [
-        "code/tests/test_step4_2c_c_flow_sample_tensor_v1.py"
+        "code/tests/test_step4_2c_c_flow_sample_tensor_v1.py",
+        "code/tests/test_step4_3a_typed_dual_graph_builder_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.build_step4_3a_typed_dual_graph_builder_v1",
+        "tests.test_step4_3a_typed_dual_graph_builder_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step4_3a_typed_dual_graph_builder_v1",
+      "path": "code/src/pi_jwm/step4_3a_typed_dual_graph_builder_v1.py",
+      "test_files": [
+        "code/tests/test_step4_3a_typed_dual_graph_builder_v1.py"
       ]
     },
     {
@@ -3326,6 +3344,19 @@
       "lifecycle_status": "support",
       "module": "scripts.build_step4_2c_c_flow_sample_tensor_v1",
       "path": "code/scripts/build_step4_2c_c_flow_sample_tensor_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step4_3a_typed_dual_graph_builder_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step4_3a_typed_dual_graph_builder_v1",
+      "path": "code/scripts/build_step4_3a_typed_dual_graph_builder_v1.py",
       "test_files": []
     },
     {
@@ -9334,6 +9365,19 @@
       "lifecycle_status": "support",
       "module": "tests.test_step4_2c_c_flow_sample_tensor_v1",
       "path": "code/tests/test_step4_2c_c_flow_sample_tensor_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step4_3a_typed_dual_graph_builder_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step4_3a_typed_dual_graph_builder_v1",
+      "path": "code/tests/test_step4_3a_typed_dual_graph_builder_v1.py",
       "test_files": []
     },
     {

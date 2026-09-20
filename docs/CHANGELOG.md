@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-20：STEP 4.3A Definition 03 Typed Dual-Graph Builder Contract
+
+- 新增冻结 Tensor `history[-1]` 到 11 个 typed Physical/Information/cross-domain blocks 的确定性 builder；Flow 保持 logical multiedge，Carrying 仅为 side state。
+- Physical topology 只读位置/运动与显式 development config；Comm validity 与 CSI mask 分离，Align/GeoComm 不引入旧 Task/Flow↔Physical shortcuts。
+- acceptance 对 24 项 required checks 实际 AND，并保存 20 项 negative/counterfactual、deterministic digest、round-trip 与 source hashes；未实现 Encoder、GNN、World Model、Loss、Planner 或训练。
+
 ## 2026-09-20：STEP 4.2C-C-PATCH Presence-aware Normalization & Full Flow Semantic Coverage
 
 - Flow normalization stats 固定为 `known=true AND presence=true AND feature_mask=true AND value!=null AND split=dev_train`，并补 presence=false completed/superseded repeated-lineage negative fixture。
