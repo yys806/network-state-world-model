@@ -1157,3 +1157,13 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 完成 focused tests、相关回归、compileall、知识索引 write/check、`git diff --check`；待 commit + push。
 - 边界：`formal_dataset=false`、`training=false`、`gpu=false`、`locked_test=false`；任何定义 03 最小必需信息不足都记录为 gap，不在本 Step 伪造或实现图。
 - 唯一下一动作：完成 STEP 4.1 映射证据并提交，等待研究者审阅；不自动执行 STEP 4.2。
+
+## 2026-09-19 STEP 4.1-PATCH — Minimum Gap Semantic Correction
+
+- 当前门：只修正 wired minimum relation 与 CPU capability/resource 分类；不重做 mapping，不修改 frozen 02，不实现 graph builder/GNN/model/training。
+- [x] 核实 WiredNetworkManager topology/`hasLink`、Raw `environment.wired_edges`、FogProfile CPU 配置/使用路径和真实跨帧数值。
+- [x] 先用 focused tests 固定：wired relation 与 optional numeric state 分离、no-CSI type+mask、CPU 四类语义分离、negative tamper 使顶层 receipt 失败。
+- [x] 最小修改 mapping/validator/文档/artifact，并同步原 Step 4.1 record、Tracker、authority/process records 与必要 AI_CONTEXT。
+- [x] 重跑 focused/Step 3.3 regression、deterministic rebuild/hash、compileall、knowledge index write/check、diff checks；待 commit + push 后停止。
+- 边界：`graph_builder_implemented=false`、`training=false`、`gpu=false`、`locked_test=false`。
+- 唯一下一动作：完成本 Patch；通过后 STEP 4.1 正式 COMPLETE / FROZEN，等待研究者另行授权最小 Data Contract Additive Extension。

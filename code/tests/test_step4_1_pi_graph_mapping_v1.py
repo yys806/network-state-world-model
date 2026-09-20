@@ -47,8 +47,32 @@ class Step41PIGraphMappingTests(unittest.TestCase):
         self.assertEqual(gaps["physical.position_m"], "RAW_AVAILABLE_BUT_NOT_EXPOSED")
         self.assertEqual(gaps["comm.wireless_csi"], "RAW_AVAILABLE_BUT_NOT_EXPOSED")
         self.assertEqual(gaps["flow.current_state"], "RAW_INSUFFICIENT")
-        self.assertEqual(gaps["comm.wired_state"], "RAW_INSUFFICIENT")
+        self.assertEqual(gaps["comm.wired_relation"], "RAW_AVAILABLE_BUT_NOT_EXPOSED")
+        self.assertEqual(gaps["comm.wired_optional_dynamic_state"], "RAW_INSUFFICIENT")
+        optional = next(row for row in mapping["required_additive_data_extensions"] if row["item"] == "comm.wired_optional_dynamic_state")
+        self.assertFalse(optional["minimum_for_03"])
+        self.assertNotIn("comm.wired_optional_dynamic_state", mapping["graph_readiness"]["blocking_gaps"])
         self.assertFalse(mapping["graph_readiness"]["minimum_definition_supported_by_current_tensor"])
+
+    def test_wired_relation_uses_type_and_mask_without_fabricated_csi(self):
+        mapping = build_mapping()
+        comm = next(row for row in mapping["relations"] if row["relation"] == "comm")
+        wired = comm["type_contracts"]["wired"]
+        self.assertEqual(wired["relation_source"], "environment.wired_edges / WiredNetworkManager.hasLink")
+        self.assertEqual(wired["csi_feature_mask"], False)
+        self.assertIsNone(wired["csi_value"])
+        self.assertEqual(wired["relation_type"], "wired")
+        self.assertTrue(wired["minimum_relation_fields_complete_without_csi"])
+
+    def test_cpu_capacity_allocation_service_and_availability_are_distinct(self):
+        mapping = build_mapping()
+        contract = mapping["cpu_semantic_contract"]
+        self.assertEqual(contract["capacity"]["graph_role"], "information_agent.static_capability")
+        self.assertEqual(contract["allocation"]["graph_role"], "comp_action")
+        self.assertEqual(contract["actual_service"]["graph_role"], "execution_outcome")
+        self.assertEqual(contract["available_cpu"]["graph_role"], "information_agent.dynamic_resource")
+        self.assertEqual(contract["available_cpu"]["availability"], "RAW_INSUFFICIENT")
+        self.assertEqual(len({row["graph_role"] for row in contract.values()}), 4)
 
     def test_forbidden_placements_and_flow_event_distinction(self):
         mapping = build_mapping()
@@ -67,6 +91,13 @@ class Step41PIGraphMappingTests(unittest.TestCase):
         csi["graph_role"] = "physical_edge.dynamic_feature"
         checks = validate_mapping_checks(broken, self.raw, self.tensor_schema)
         self.assertFalse(checks["forbidden_placement_absent"])
+        self.assertFalse(checks["passed"])
+
+        broken_cpu = copy.deepcopy(mapping)
+        capacity = next(row for row in broken_cpu["field_mappings"] if row["field_id"] == "agent.cpu_capacity_per_s")
+        capacity["graph_role"] = "information_agent.dynamic_resource"
+        checks = validate_mapping_checks(broken_cpu, self.raw, self.tensor_schema)
+        self.assertFalse(checks["cpu_semantics_distinct"])
         self.assertFalse(checks["passed"])
 
     def test_round_trip(self):

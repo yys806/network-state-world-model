@@ -18,20 +18,32 @@
     "required_change": "add directed per-RB CSI/type/mask to Sample/Tensor"
   },
   {
-    "availability": "RAW_INSUFFICIENT",
-    "item": "comm.wired_state",
+    "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
+    "item": "comm.wired_relation",
     "minimum_for_03": true,
-    "required_change": "define and collect decision-time wired relation/state; outcome service is not state"
+    "required_change": "materialize decision-time source/target/direction/relation_type=wired/presence from environment.wired_edges and WiredNetworkManager.hasLink; expose null CSI with feature mask false"
+  },
+  {
+    "availability": "RAW_INSUFFICIENT",
+    "item": "comm.wired_optional_dynamic_state",
+    "minimum_for_03": false,
+    "required_change": "optional only: collect genuine live wired queue/load/utilization if later selected; configured capacity_mbps and prop_ms are static link capabilities, and service outcome is not current state"
   },
   {
     "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED",
     "item": "agent.cpu_capacity_per_s",
     "minimum_for_03": true,
-    "required_change": "additive Sample/Tensor resource exposure with observed mask"
+    "required_change": "additive Sample/Tensor static capability exposure with observed mask"
   },
   {
     "availability": "RAW_INSUFFICIENT",
-    "item": "agent.available_cpu_storage",
+    "item": "agent.available_cpu",
+    "minimum_for_03": false,
+    "required_change": "only add if a genuine decision-time remaining/available CPU source is established; do not infer it from capacity, allocation, or service"
+  },
+  {
+    "availability": "RAW_INSUFFICIENT",
+    "item": "agent.storage",
     "minimum_for_03": false,
     "required_change": "only add if selected and genuinely observed; do not zero-fill"
   },

@@ -952,3 +952,9 @@
 - 修正 Future Action anchor-only 重编号：合法 action 现在引用统一 `static.input_entity_index`，anchor visibility 仍单独拒绝不可见 object。
 - 新增 disappearing-object fixture、ID↔index validator 和错位拒绝测试；machine policy 改为 `history_causal_observable_object_union`。
 - 重新生成 sample/manifest/audit JSON，manifest 保存 audit SHA-256 provenance；未进入 STEP 3.2、模型或训练。
+# 2026-09-19 STEP 4.1-PATCH
+
+- 从 `WiredNetworkManager`、真实 Raw `environment.wired_edges` 和 Decision `channel_rows` 核实：wired relation 有可靠 topology/`hasLink` 来源，但当前未逐 Decision 物化；没有 CSI 时可由 `relation_type=wired` 与 `csi_feature_mask=false` 表示。
+- 从 FogProfile 配置、源码调用点和真实跨帧观测核实：`capacity_per_s` 是 CPU 静态能力上限；已与 Comp allocation、Outcome actual service、dynamic available CPU 分离。
+- focused tests 扩展为 7 项并通过；negative semantic tamper 会使 required check 和顶层 `passed` 同时失败。
+- 范围保持 graph builder/training/GPU/locked_test 全 false；最终回归、artifact、索引和 Git 收口待完成。

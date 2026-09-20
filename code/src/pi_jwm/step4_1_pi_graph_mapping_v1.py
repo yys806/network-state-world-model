@@ -71,7 +71,7 @@ def build_mapping() -> dict[str, Any]:
         _field("physical.distance", "physical_relation.dynamic_feature", raw_source="derived from endpoint position_m", sample_source=None, tensor_source=None, temporal_role="dynamic", mapping_class="DERIVED", availability="DERIVABLE_CAUSALLY", mask_policy="both endpoints present and position masks true", note="Radius/kNN/radius+kNN is deliberately not decided in Step 4.1."),
         _field("physical.relative_motion", "physical_relation.dynamic_feature", raw_source="derived from endpoint speed/direction", sample_source=None, tensor_source=None, temporal_role="dynamic", mapping_class="DERIVED", availability="DERIVABLE_CAUSALLY", mask_policy="both endpoint motion masks true", note="Requires canonical motion direction exposure."),
         _field("agent.entity_type", "information_agent.static_type", raw_source="decisions[].entities[].entity_type", sample_source="static.input_entity_type_by_index", tensor_source="entity_type_index", temporal_role="static", mapping_class="DIRECT", availability="AVAILABLE_NOW", mask_policy="agent presence; categorical padding is distinct", note="Store once as type/static information, not as repeated continuous state."),
-        _field("agent.cpu_capacity_per_s", "information_agent.dynamic_resource", raw_source="decisions[].node_cpu_capacity_observation_rows[].capacity_per_s", sample_source=None, tensor_source=None, temporal_role="decision-time dynamic observation", mapping_class="DIRECT", availability="RAW_AVAILABLE_BUT_NOT_EXPOSED", mask_policy="observed_mask plus missing_reason", note="Current Raw source is real and audited; frozen v4 sample/v2 tensor does not expose it."),
+        _field("agent.cpu_capacity_per_s", "information_agent.static_capability", raw_source="decisions[].node_cpu_capacity_observation_rows[].capacity_per_s", sample_source=None, tensor_source=None, temporal_role="configured static capability repeated in decision observations", mapping_class="DIRECT", availability="RAW_AVAILABLE_BUT_NOT_EXPOSED", mask_policy="observed_mask plus missing_reason", note="Source is entity.getFogProfile()['cpu']; current configuration and audited decisions keep it constant. It is capacity, not current available CPU, allocation, or actual service."),
         _field("agent.available_cpu", "information_agent.dynamic_resource", raw_source=None, sample_source=None, tensor_source=None, temporal_role="dynamic", mapping_class="MISSING", availability="RAW_INSUFFICIENT", mask_policy="required if introduced", note="Capacity is not the same as currently available CPU."),
         _field("agent.storage", "information_agent.dynamic_resource", raw_source=None, sample_source=None, tensor_source=None, temporal_role="dynamic", mapping_class="MISSING", availability="RAW_INSUFFICIENT", mask_policy="required if introduced", note="Legacy zero fill is not evidence of storage state."),
         _field("agent.service_load", "information_agent.dynamic_resource", raw_source=None, sample_source=None, tensor_source=None, temporal_role="dynamic", mapping_class="RESEARCHER_DECISION_REQUIRED", availability="RESEARCHER_DECISION_REQUIRED", mask_policy="only if a non-derivable source is approved", note="Do not duplicate a load that can be aggregated from explicit Task/Flow objects."),
@@ -95,9 +95,11 @@ def build_mapping() -> dict[str, Any]:
         {"item": "physical.position_m", "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED", "minimum_for_03": True, "required_change": "additive Sample/Tensor input exposure with mask and unit"},
         {"item": "physical.spatial_relations", "availability": "DERIVABLE_CAUSALLY", "minimum_for_03": True, "required_change": "derive only after position/motion exposure; topology policy remains undecided"},
         {"item": "comm.wireless_csi", "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED", "minimum_for_03": True, "required_change": "add directed per-RB CSI/type/mask to Sample/Tensor"},
-        {"item": "comm.wired_state", "availability": "RAW_INSUFFICIENT", "minimum_for_03": True, "required_change": "define and collect decision-time wired relation/state; outcome service is not state"},
-        {"item": "agent.cpu_capacity_per_s", "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED", "minimum_for_03": True, "required_change": "additive Sample/Tensor resource exposure with observed mask"},
-        {"item": "agent.available_cpu_storage", "availability": "RAW_INSUFFICIENT", "minimum_for_03": False, "required_change": "only add if selected and genuinely observed; do not zero-fill"},
+        {"item": "comm.wired_relation", "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED", "minimum_for_03": True, "required_change": "materialize decision-time source/target/direction/relation_type=wired/presence from environment.wired_edges and WiredNetworkManager.hasLink; expose null CSI with feature mask false"},
+        {"item": "comm.wired_optional_dynamic_state", "availability": "RAW_INSUFFICIENT", "minimum_for_03": False, "required_change": "optional only: collect genuine live wired queue/load/utilization if later selected; configured capacity_mbps and prop_ms are static link capabilities, and service outcome is not current state"},
+        {"item": "agent.cpu_capacity_per_s", "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED", "minimum_for_03": True, "required_change": "additive Sample/Tensor static capability exposure with observed mask"},
+        {"item": "agent.available_cpu", "availability": "RAW_INSUFFICIENT", "minimum_for_03": False, "required_change": "only add if a genuine decision-time remaining/available CPU source is established; do not infer it from capacity, allocation, or service"},
+        {"item": "agent.storage", "availability": "RAW_INSUFFICIENT", "minimum_for_03": False, "required_change": "only add if selected and genuinely observed; do not zero-fill"},
         {"item": "task.demand_progress_time", "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED", "minimum_for_03": True, "required_change": "expose CPU demand and current progress; extend Raw for return size/priority/deadline"},
         {"item": "task_agent.typed_relations", "availability": "DERIVABLE_CAUSALLY", "minimum_for_03": True, "required_change": "materialize Src/Host/Exec/Ret with lifecycle-conditioned validity and stable entity index"},
         {"item": "flow.current_state", "availability": "RAW_INSUFFICIENT", "minimum_for_03": True, "required_change": "collect stable Flow ID/type/endpoints/presence/total/remaining; include Input/Return/DepData"},
@@ -106,7 +108,7 @@ def build_mapping() -> dict[str, Any]:
 
     relations = [
         {"relation": "physical_spatial", "source": "physical_node", "target": "physical_node", "directed": "construction policy not frozen", "endpoint_index_namespace": "static.input_entity_index.physical filtered by approved physical membership", "state_source_status": "DERIVABLE_CAUSALLY", "allowed_current_state_sources": ["position_m", "speed_mps", "motion_direction", "canonical_acceleration_mps2"]},
-        {"relation": "comm", "source": "agent", "target": "agent", "directed": True, "endpoint_index_namespace": "static.input_entity_index.physical reused as agent identity namespace", "state_source_status": "RAW_AVAILABLE_BUT_NOT_EXPOSED", "allowed_current_state_sources": ["decision channel_rows channel_attenuation_db", "channel_type", "observed_mask"]},
+        {"relation": "comm", "source": "agent", "target": "agent", "directed": True, "endpoint_index_namespace": "static.input_entity_index.physical reused as agent identity namespace", "state_source_status": "RAW_AVAILABLE_BUT_NOT_EXPOSED", "minimum_relation_fields": ["source_agent_id", "target_agent_id", "direction", "relation_type", "presence"], "allowed_current_state_sources": ["decision channel_rows channel_attenuation_db", "channel_type", "observed_mask", "environment.wired_edges / WiredNetworkManager.hasLink"], "type_contracts": {"wireless": {"relation_source": "decisions[].channel_rows", "relation_type": "wireless channel_type", "csi_value": "channel_attenuation_db", "csi_feature_mask": "observed_mask"}, "wired": {"relation_source": "environment.wired_edges / WiredNetworkManager.hasLink", "relation_type": "wired", "csi_value": None, "csi_feature_mask": False, "minimum_relation_fields_complete_without_csi": True, "presence_semantics": "decision-time hasLink(source,target); never post-action service outcome"}}},
         {"relation": "task_agent_src", "source": "task", "target": "agent", "directed": True, "endpoint_index_namespace": "task + physical/agent input namespaces", "state_source_status": "DERIVABLE_CAUSALLY", "raw_source": "tasks[].task_node_id", "validity": "task present and referenced agent present"},
         {"relation": "task_agent_host", "source": "task", "target": "agent", "directed": True, "endpoint_index_namespace": "task + physical/agent input namespaces", "state_source_status": "DERIVABLE_CAUSALLY", "raw_source": "tasks[].current_node_id", "validity": "current decision-time location/host only; never a newly selected A_t^Route target"},
         {"relation": "task_agent_exec", "source": "task", "target": "agent", "directed": True, "endpoint_index_namespace": "task + physical/agent input namespaces", "state_source_status": "DERIVABLE_CAUSALLY", "raw_source": "tasks[].current_node_id conditioned on computing lifecycle", "validity": "only when current lifecycle establishes execution"},
@@ -121,6 +123,7 @@ def build_mapping() -> dict[str, Any]:
         {"fact": "RB_allocation", "forbidden_role": "physical_edge_feature", "required_role": "comm_action"},
         {"fact": "CPU_allocation", "forbidden_role": "information_agent_state", "required_role": "comp_action"},
         {"fact": "actual_CPU_service", "forbidden_role": "comp_action", "required_role": "execution_outcome"},
+        {"fact": "CPU_capacity", "forbidden_role": "information_agent.dynamic_available_resource", "required_role": "information_agent.static_capability"},
         {"fact": "source_host_exec_ret", "forbidden_role": "task_continuous_feature", "required_role": "typed_task_agent_relation"},
         {"fact": "past_hop_service", "forbidden_role": "current_flow_remaining_state", "required_role": "past_execution_outcome"},
         {"fact": "DAG", "forbidden_role": "dependency_data_flow", "required_role": "task_dependency_relation"},
@@ -171,6 +174,12 @@ def build_mapping() -> dict[str, Any]:
             "physical_agent_alignment": "same real entity ID and same stable numeric slot where both representations exist",
             "presence_rule": "Physical and Agent presence are separate masks even when identity index is shared",
         },
+        "cpu_semantic_contract": {
+            "capacity": {"source": "decisions[].node_cpu_capacity_observation_rows[].capacity_per_s from entity.getFogProfile()['cpu']", "graph_role": "information_agent.static_capability", "availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED"},
+            "allocation": {"source": "A_t^Comp.allocated_cpu_per_s", "graph_role": "comp_action", "availability": "AVAILABLE_NOW"},
+            "actual_service": {"source": "Outcome.served_cpu_work_by_task", "graph_role": "execution_outcome", "availability": "AVAILABLE_NOW"},
+            "available_cpu": {"source": None, "graph_role": "information_agent.dynamic_resource", "availability": "RAW_INSUFFICIENT"},
+        },
         "entity_membership": [
             {"entity_type": "vehicle", "physical": True, "information_agent": True, "status": "FROZEN"},
             {"entity_type": "uav", "physical": True, "information_agent": True, "status": "FROZEN"},
@@ -189,6 +198,8 @@ def build_mapping() -> dict[str, Any]:
             {"current_fact": "speed + canonical acceleration", "graph_role": "Physical node motion", "disposition": "DIRECT"},
             {"current_fact": "position/heading/elevation in Raw", "graph_role": "Physical node spatial/motion input", "disposition": "ADDITIVE_EXPOSURE_REQUIRED"},
             {"current_fact": "channel_rows endpoints + per-RB attenuation", "graph_role": "directed wireless Comm relation", "disposition": "REINTERPRET_AND_EXPOSE"},
+            {"current_fact": "environment.wired_edges / WiredNetworkManager.hasLink", "graph_role": "directed wired Comm relation with type and presence; CSI null and masked", "disposition": "MATERIALIZE_AND_EXPOSE"},
+            {"current_fact": "FogProfile cpu capacity", "graph_role": "Information Agent static capability", "disposition": "ADDITIVE_EXPOSURE_REQUIRED"},
             {"current_fact": "task size/lifecycle", "graph_role": "Task demand/lifecycle", "disposition": "DIRECT"},
             {"current_fact": "task_node/current_node/return_destination", "graph_role": "typed Task->Agent relation candidates", "disposition": "DERIVE_WITH_VALIDITY"},
             {"current_fact": "slot_transfer_events / past_outcome_flow_service", "graph_role": "past service outcome only", "disposition": "NOT_CURRENT_FLOW_STATE"},
@@ -200,7 +211,8 @@ def build_mapping() -> dict[str, Any]:
         "old_implementation_reuse_conflict": old,
         "graph_readiness": {
             "minimum_definition_supported_by_current_tensor": False,
-            "blocking_gaps": ["physical.position_m", "comm.wireless_csi", "comm.wired_state", "agent.cpu_capacity_per_s", "task.demand_progress_time", "task_agent.typed_relations", "flow.current_state"],
+            "blocking_gaps": ["physical.position_m", "comm.wireless_csi", "comm.wired_relation", "agent.cpu_capacity_per_s", "task.demand_progress_time", "task_agent.typed_relations", "flow.current_state"],
+            "rationale": "Minimum graph remains blocked by missing additive exposure/materialization, including wired relation identity/presence. Optional wired numeric dynamic state is not a minimum blocker because wired is represented by relation type with CSI masked absent.",
             "decision": "DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1",
         },
     }
@@ -217,6 +229,7 @@ def validate_mapping_checks(
     entity_rows = [row for decision in decisions for row in decision.get("entities", [])]
     task_rows = [row for decision in decisions for row in decision.get("tasks", [])]
     channel_rows = [row for decision in decisions for row in decision.get("channel_rows", [])]
+    cpu_rows = [row for decision in decisions for row in decision.get("node_cpu_capacity_observation_rows", [])]
     dag_rows = [row for decision in decisions for row in decision.get("dag_edges", [])]
     fields = list(mapping.get("field_mappings", []))
     relations = list(mapping.get("relations", []))
@@ -229,13 +242,25 @@ def validate_mapping_checks(
     relation_names = {row.get("relation") for row in relations}
     forbidden_pairs = {(row.get("fact"), row.get("forbidden_role")) for row in forbidden}
     csi_rows = [row for row in fields if row.get("field_id") == "comm.csi"]
+    cpu_capacity_rows = [row for row in fields if row.get("field_id") == "agent.cpu_capacity_per_s"]
+    comm_rows = [row for row in relations if row.get("relation") == "comm"]
     flow_rows = [row for row in relations if row.get("relation") == "flow"]
     dag_contract = [row for row in relations if row.get("relation") == "dag"]
     required_gap_items = {
         "physical.position_m", "physical.spatial_relations", "comm.wireless_csi",
-        "comm.wired_state", "agent.cpu_capacity_per_s", "task.demand_progress_time",
+        "comm.wired_relation", "comm.wired_optional_dynamic_state", "agent.cpu_capacity_per_s", "task.demand_progress_time",
         "task_agent.typed_relations", "flow.current_state",
     }
+    extension_by_item = {row.get("item"): row for row in extensions}
+    blocking_gaps = set(mapping.get("graph_readiness", {}).get("blocking_gaps", []))
+    wired_contract = comm_rows[0].get("type_contracts", {}).get("wired", {}) if comm_rows else {}
+    cpu_contract = dict(mapping.get("cpu_semantic_contract", {}))
+    cpu_roles = [row.get("graph_role") for row in cpu_contract.values()]
+    observed_cpu_by_node: dict[str, set[float]] = {}
+    for row in cpu_rows:
+        if row.get("observed_mask") is True and row.get("capacity_per_s") is not None:
+            observed_cpu_by_node.setdefault(str(row.get("node_id")), set()).add(float(row["capacity_per_s"]))
+    wired_edges = list(raw_artifact.get("environment", {}).get("wired_edges", []))
 
     raw_entity_required = {"entity_id", "entity_type", "position_m", "speed_mps", "heading", "heading_unit", "elevation_rad", "canonical_acceleration_mps2"}
     raw_task_required = {"task_id", "task_node_id", "current_node_id", "return_destination_id", "arrival_time_s", "task_size", "task_cpu_work", "computed_cpu_work", "transmitted_size", "lifecycle"}
@@ -251,8 +276,12 @@ def validate_mapping_checks(
         "real_raw_entity_sources_present": bool(entity_rows) and all(raw_entity_required.issubset(row) for row in entity_rows),
         "real_raw_task_sources_present": bool(task_rows) and all(raw_task_required.issubset(row) for row in task_rows),
         "wireless_csi_direction_and_mask_present": bool(channel_rows) and all(raw_channel_required.issubset(row) and row.get("source_id") != row.get("target_id") for row in channel_rows),
-        "wired_decision_state_correctly_marked_missing": not any(str(row.get("channel_type")).lower() == "wired" for row in channel_rows) and any(row.get("item") == "comm.wired_state" and row.get("availability") == "RAW_INSUFFICIENT" for row in extensions),
+        "wired_relation_source_available_but_not_exposed": bool(wired_edges) and not any(str(row.get("channel_type")).lower() == "wired" for row in channel_rows) and extension_by_item.get("comm.wired_relation", {}).get("availability") == "RAW_AVAILABLE_BUT_NOT_EXPOSED" and extension_by_item.get("comm.wired_relation", {}).get("minimum_for_03") is True,
+        "wired_no_csi_type_mask_contract": wired_contract.get("relation_source") == "environment.wired_edges / WiredNetworkManager.hasLink" and wired_contract.get("relation_type") == "wired" and wired_contract.get("csi_value") is None and wired_contract.get("csi_feature_mask") is False and wired_contract.get("minimum_relation_fields_complete_without_csi") is True,
+        "wired_optional_numeric_state_not_minimum": extension_by_item.get("comm.wired_optional_dynamic_state", {}).get("availability") == "RAW_INSUFFICIENT" and extension_by_item.get("comm.wired_optional_dynamic_state", {}).get("minimum_for_03") is False and "comm.wired_optional_dynamic_state" not in blocking_gaps,
         "cpu_capacity_raw_but_tensor_missing": all("node_cpu_capacity_observation_rows" in decision for decision in decisions) and "agent.cpu_capacity_per_s" in field_ids and not any("cpu" in str(name).lower() for name in tensor_schema.get("entity_feature_order", [])),
+        "cpu_capacity_static_capability_semantics": bool(cpu_capacity_rows) and cpu_capacity_rows[0].get("graph_role") == "information_agent.static_capability" and "static capability" in str(cpu_capacity_rows[0].get("temporal_role")) and bool(observed_cpu_by_node) and all(len(values) == 1 for values in observed_cpu_by_node.values()) and all(row.get("source_method") == "entity.getFogProfile()['cpu']" for row in cpu_rows),
+        "cpu_semantics_distinct": bool(cpu_capacity_rows) and cpu_capacity_rows[0].get("graph_role") == cpu_contract.get("capacity", {}).get("graph_role") == "information_agent.static_capability" and cpu_contract.get("allocation", {}).get("graph_role") == "comp_action" and cpu_contract.get("actual_service", {}).get("graph_role") == "execution_outcome" and cpu_contract.get("available_cpu", {}).get("graph_role") == "information_agent.dynamic_resource" and cpu_contract.get("available_cpu", {}).get("availability") == "RAW_INSUFFICIENT" and len(cpu_roles) == 4 and len(set(cpu_roles)) == 4,
         "position_raw_but_tensor_missing": all("position_m" in row for row in entity_rows) and "position_m" not in tensor_schema.get("entity_feature_order", []),
         "flow_current_state_not_fabricated": bool(flow_rows) and flow_rows[0].get("state_source_status") == "RAW_INSUFFICIENT" and not flow_rows[0].get("allowed_current_state_sources") and not any("flows" in decision for decision in decisions),
         "dag_direct_reuse_direction": bool(dag_rows) and bool(dag_contract) and dag_contract[0].get("direction_semantics") == "j -> k means task k depends on task j" and tensor_schema.get("dag_direction") == "source_task_j -> target_task_k; k depends on j",
@@ -260,7 +289,7 @@ def validate_mapping_checks(
         "forbidden_table_complete": {("CSI", "physical_edge_feature"), ("past_hop_service", "current_flow_remaining_state"), ("position_or_speed", "information_agent_resource_feature"), ("future_action_result", "current_graph_state")}.issubset(forbidden_pairs),
         "forbidden_placement_absent": bool(csi_rows) and csi_rows[0].get("graph_role") == "information_comm_relation.dynamic_feature" and not any(row.get("graph_role") == "physical_edge.dynamic_feature" and row.get("field_id") in {"comm.csi", "comm.rate", "comm.rb", "comm.service"} for row in fields),
         "old_implementation_audited": {row.get("component") for row in mapping.get("old_implementation_reuse_conflict", [])}.issuperset({"airfogsim_tensor_v2.EDGE_FEATURES", "formal_graph_ops_v1.couple_flow_bearer", "formal_dual_graph_world_model_v1"}),
-        "graph_blocked_by_real_gaps": mapping.get("graph_readiness", {}).get("minimum_definition_supported_by_current_tensor") is False and mapping.get("graph_readiness", {}).get("decision") == "DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1",
+        "graph_blocked_by_real_gaps": mapping.get("graph_readiness", {}).get("minimum_definition_supported_by_current_tensor") is False and mapping.get("graph_readiness", {}).get("decision") == "DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1" and "comm.wired_relation" in blocking_gaps and "comm.wired_optional_dynamic_state" not in blocking_gaps,
     }
     checks["passed"] = bool(all(checks.values()))
     return checks

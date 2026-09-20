@@ -8,6 +8,8 @@
   "required_checks": {
     "classification_vocabularies": true,
     "cpu_capacity_raw_but_tensor_missing": true,
+    "cpu_capacity_static_capability_semantics": true,
+    "cpu_semantics_distinct": true,
     "dag_direct_reuse_direction": true,
     "field_ids_unique": true,
     "flow_current_state_not_fabricated": true,
@@ -24,7 +26,9 @@
     "required_relation_types_complete": true,
     "schema_version": true,
     "scope_is_mapping_only": true,
-    "wired_decision_state_correctly_marked_missing": true,
+    "wired_no_csi_type_mask_contract": true,
+    "wired_optional_numeric_state_not_minimum": true,
+    "wired_relation_source_available_but_not_exposed": true,
     "wireless_csi_direction_and_mask_present": true
   },
   "schema_version": "PI-JWM-Step-4.1-PI-Graph-Object-Field-Relation-Mapping-v1"

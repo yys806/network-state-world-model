@@ -35,7 +35,7 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 - 当前路线：研究者最新 `00–06` 目标定义 → 经授权的 Implementation Step。
 - 当前 Step：STEP 4.1 mapping 已完成；Raw / 01 与最小 Dataset/Tensor / 02 已冻结，graph builder 未开始。
 - 新定义实现：尚未开始；现有 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 都是旧协议 Historical / Archived evidence。
-- 当前主要缺口：position/CSI/CPU/Task additive exposure、wired current state、stable stateful Flow，以及后续 graph builder、目标 stochastic-state 边界、逐步规则反馈/动态图、正式候选生成和真实反馈重规划。
+- 当前主要缺口：position/CSI/CPU static capability/Task additive exposure、wired relation 逐 Decision 物化、stable stateful Flow，以及后续 graph builder、目标 stochastic-state 边界、逐步规则反馈/动态图、正式候选生成和真实反馈重规划。可选 wired numeric state 不是定义 03 minimum blocker。
 - `locked_test`：继续封存；`formal_performance_claim_ready=false`。
 
 ## 3. 顶层目录地图

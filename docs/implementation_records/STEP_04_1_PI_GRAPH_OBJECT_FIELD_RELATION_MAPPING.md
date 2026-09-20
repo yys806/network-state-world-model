@@ -33,8 +33,16 @@
 - 对 26 个字段形成 Raw/Sample/Tensor source、Static/Dynamic、Direct/Derived、mask 和 availability 记录。
 - 对 8 类 relation 冻结方向、端点 namespace、当前状态来源及 validity。
 - 形成 Current Data → Graph Role、Required Additive Data Extension、Forbidden Placement、Old Implementation Reuse/Conflict 四张机器表。
-- validator 从真实 Raw 和 tensor schema 计算 acceptance；negative fixture 篡改 CSI placement 后 receipt 必须失败。
+- validator 从真实 Raw 和 tensor schema 计算 acceptance；negative fixture 篡改 CSI placement 或把 CPU capacity 误标为动态 resource 后，receipt 必须失败。
 - 生成 mapping schema、四张独立 JSON 表、validation report 与 hash/provenance manifest。
+
+### STEP 4.1-PATCH — Minimum Gap Semantic Correction
+
+- 把 wired 最小 relation 与 wired 可选 numeric state 分开：端点、方向、`relation_type=wired`、presence 可由 `environment.wired_edges` / `WiredNetworkManager.hasLink` 取得，分类为 `RAW_AVAILABLE_BUT_NOT_EXPOSED`；无 CSI 时使用 `null + feature_mask=false`。
+- wired latency、带宽能力及其他动态 numeric state 不属于定义 03 minimum，保持 optional；真实动态 queue/load/utilization 当前为 `RAW_INSUFFICIENT`，不作为 graph readiness blocker。
+- 核实 `capacity_per_s` 来自 `entity.getFogProfile()['cpu']`。配置注释将其定义为 CPU capacity，当前源码没有运行期 `setFogProfile` 调用，真实决策帧中每节点观测值保持不变，因此归入 `information_agent.static_capability`。
+- 明确四类 CPU 语义：capacity = 静态 Agent capability；allocation = `A_t^Comp`；actual service = Outcome；available CPU = 动态 Agent resource，但当前没有可靠来源。
+- 未改动其他 object/field/relation mapping，也未实现 graph builder。
 
 ## Reuse
 
@@ -43,17 +51,17 @@
 ## Validation
 
 - TDD red：新增测试在模块不存在时以 `ModuleNotFoundError` 失败。
-- focused：`python -m unittest discover -s code/tests -p 'test_step4_1_pi_graph_mapping_v1.py' -v` → 5/5 passed。
-- artifact builder：`python code/scripts/build_step4_1_pi_graph_mapping_v1.py` → `passed=true`，生成 7 个 JSON 文件。
+- focused：`python -m unittest discover -s code/tests -p 'test_step4_1_pi_graph_mapping_v1.py' -v` → 7/7 passed（含 wired type+mask 与 CPU 四类语义、negative tamper）。
+- artifact builder：`python code/scripts/build_step4_1_pi_graph_mapping_v1.py` → `passed=true`，生成 7 个 JSON 文件；required checks 包含 wired relation source/type/mask、optional numeric non-minimum、CPU static capability 与 CPU 四类语义分离。
 - Step 3.3 regression：8/8 passed；Step 3.1F regression：12/12 passed。
-- deterministic artifact rebuild：两次 builder 后 7 个 JSON SHA-256 全部一致；`mapping_schema.json=652f9111...b91e575`，`manifest.json=2515a570...2ab8f3c`。
+- deterministic artifact rebuild：两次 builder 后 7 个 JSON SHA-256 全部一致；`mapping_schema.json=62aa4ef0...f0b8ea37`，`manifest.json=f72e5742...3f1d8e92`。
 - `python -m compileall -q code/src code/scripts code/tests`：通过。
 - knowledge index write / `--check`：5 个输出，`mismatches=[]`、`passed=true`。
 - `git diff --check`：通过；仅显示现有工作区行尾转换 warning，无 whitespace error。
 
 ## Results
 
-字段归属和旧实现冲突已经机器化。当前 Tensor 不足以支撑定义 03 最小图；当前 Raw 也不足以可靠构造动作前 wired Comm state 和 stable stateful Flow。因此 readiness 冻结为 `DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1`。
+字段归属和旧实现冲突已经机器化。当前 Tensor 不足以支撑定义 03 最小图；wired relation 有可靠 simulator/Raw topology 来源但尚未逐 Decision 物化和输入化，stable stateful Flow 的 Raw 仍不足。因此 readiness 保持 `DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1`；缺少 wired 可选 numeric state 本身不再构成最小图 blocker。
 
 ## Expected vs Actual
 
@@ -63,7 +71,8 @@
 
 - edge/cloud 是否进入 Physical Graph 需要研究者确认其 simulator coordinate 是否具有独立空间意义。
 - Physical topology 的 radius/kNN/radius+kNN 未决定，符合本 Step 范围。
-- Frozen Raw 缺 wired decision-time state、完整 Flow state、return size/priority/deadline；v4 Sample/v2 Tensor 还未暴露 position、CSI、CPU capacity 和当前完整 Task state。
+- Frozen Raw 尚未逐 Decision 物化 wired relation，且缺完整 Flow state、return size/priority/deadline；v4 Sample/v2 Tensor 还未暴露 position、CSI、CPU static capacity 和当前完整 Task state。
+- Dynamic available CPU 与 wired queue/load/utilization 仍无可靠来源，但它们不是本 Patch 新增的定义 03 minimum blocker。
 - 这些 gap 阻止直接进入 graph builder，但不是本 Step 的实现失败。
 
 ## Git

@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-19：STEP 4.1-PATCH Minimum Gap Semantic Correction
+
+- wired 最小 relation 改为 simulator/Raw topology 已有但尚未逐 Decision 暴露；以 relation type + CSI mask 表示，无需伪造 CSI。
+- wired 可选动态 numeric state 标记为非 03 minimum；CPU capacity 改为 Agent static capability，并与 Comp allocation、actual service、dynamic available CPU 分离。
+- 更新 validator negative tamper、mapping artifact、原 Step 4.1 记录、Tracker、authority records 与 AI_CONTEXT；仍未实现 graph builder 或训练。
+
 ## 2026-09-19：STEP 4.1 PI Graph Object–Field–Relation Mapping
 
 - 新增机器 mapping schema、四张独立 matrix、validator/focused tests 和 hash/provenance artifact。

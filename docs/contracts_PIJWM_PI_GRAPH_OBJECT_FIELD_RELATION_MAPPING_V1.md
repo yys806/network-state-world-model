@@ -4,7 +4,7 @@
 
 ## 1. 结论
 
-当前 stable entity/task identity、速度、规范加速度、任务大小、lifecycle 和 DAG 可以直接复用。Raw 还有位置、运动方向、无线 CSI、CPU capacity、任务 CPU 需求与当前进度，但 v4 Sample / v2 Tensor 没有暴露。当前 Raw 仍缺定义 03 最小图所需的动作前 wired communication state，以及具有稳定 ID、类型、端点、总量和剩余量的 current stateful Flow。
+当前 stable entity/task identity、速度、规范加速度、任务大小、lifecycle 和 DAG 可以直接复用。Raw 还有位置、运动方向、无线 CSI、CPU capacity、任务 CPU 需求与当前进度，但 v4 Sample / v2 Tensor 没有暴露。wired relation 的端点、方向与存在性可由 `environment.wired_edges` / `WiredNetworkManager.hasLink` 可靠取得，但尚未逐 Decision 物化并进入 Sample/Tensor；当前 Raw 仍缺具有稳定 ID、类型、端点、总量和剩余量的 current stateful Flow。
 
 因此：**不得在当前合同上直接实现完整新图 builder**。下一步若获授权，应先做 Data Contract Additive Extension；不能用旧 `physical_edge_state` 或过去 hop service 填补缺口。
 
@@ -38,12 +38,12 @@ Physical relation 的硬约束：由物理空间状态构造，不由通信、�
 | 字段 | 真实来源 | 当前结论 |
 |---|---|---|
 | entity type | Raw → Static → Tensor category | `AVAILABLE_NOW`，静态/type 信息 |
-| CPU capacity | Raw `node_cpu_capacity_observation_rows` | `RAW_AVAILABLE_BUT_NOT_EXPOSED` |
+| CPU capacity | Raw `node_cpu_capacity_observation_rows`，来自 `entity.getFogProfile()['cpu']` | `RAW_AVAILABLE_BUT_NOT_EXPOSED`；配置的静态能力上限，不是动态可用量 |
 | available CPU | 无可靠当前字段 | `RAW_INSUFFICIENT`；不能把 capacity 当 availability |
 | storage | 无可靠当前字段 | `RAW_INSUFFICIENT`；旧 zero-fill 不可复用 |
 | service/load | 可能可从 Task/Flow 聚合 | `RESEARCHER_DECISION_REQUIRED`；未证明不可推导前不重复存储 |
 
-Position/speed 属于 Physical Node，不能作为 Agent resource continuous feature。
+Position/speed 属于 Physical Node，不能作为 Agent resource continuous feature。CPU 四类语义必须分开：capacity 是 Agent 静态 capability；allocation 是 `A_t^Comp`；actual served CPU 是 Outcome；available CPU 才是动态 Agent resource，当前无可靠 decision-time source。
 
 ## 5. Task Node 与 Task–Agent Relation
 
@@ -67,7 +67,7 @@ Position/speed 属于 Physical Node，不能作为 Agent resource continuous fea
 
 ## 6. Comm、Flow 与 DAG
 
-Comm 是 directed `Agent -> Agent` relation。Raw `channel_rows` 给出无线 source/target、类型、每 RB attenuation、observed mask；当前 Sample/Tensor 只保留端点，未保留 numeric CSI。wired 只有拓扑/执行结果线索，没有动作前 decision-time channel state。实际 throughput、delivered data、RB allocation、past service 都不是动作前 Comm state。
+Comm 是 directed `Agent -> Agent` relation。Raw `channel_rows` 给出无线 source/target、类型、每 RB attenuation、observed mask；当前 Sample/Tensor 只保留端点，未保留 numeric CSI。wired 最小 relation 由 source Agent、target Agent、direction、`relation_type=wired` 和当前 presence 构成；这些字段可从 `environment.wired_edges` / `WiredNetworkManager.hasLink` 可靠物化，但当前冻结合同尚未逐 Decision 暴露。wired relation 不要求伪造 CSI：`csi_value=null`、`csi_feature_mask=false`，由 relation type 区分。wired latency、带宽能力及其他 wired-specific numeric state 不是当前定义 03 minimum；其中配置的 capacity/propagation delay 是静态 link capability，真实动态 queue/load/utilization 仍无冻结 Raw 来源。实际 throughput、delivered data、RB allocation、past service 都不是动作前 Comm state。
 
 Flow 是 directed stateful multiedge，并关联 Task。最低字段为 stable Flow ID、Input/Return/DepData 类型、端点、presence、total data、remaining data。当前 Raw 的 task lifecycle/route/progress 只能提供部分候选线索；缺少完整稳定 Flow 状态，特别是 return size、dependency-data flow 和明确 stage total/rem。`slot_transfer_events` / `past_outcome_flow_service` 只表示过去某个 hop 的 service，不可冒充 current Flow state。
 
@@ -82,8 +82,10 @@ DAG 可直接复用：`j -> k` 表示 Task k depends on Task j；端点使用 in
 | Physical position | `RAW_AVAILABLE_BUT_NOT_EXPOSED` | 暴露 position、单位和 mask |
 | Spatial relations | `DERIVABLE_CAUSALLY` | 暴露位置/运动后再推导；本 Step 不定拓扑策略 |
 | Wireless CSI | `RAW_AVAILABLE_BUT_NOT_EXPOSED` | 暴露 directed per-RB CSI/type/mask |
-| Wired current state | `RAW_INSUFFICIENT` | 定义并采集动作前 wired relation/state |
-| Agent CPU capacity | `RAW_AVAILABLE_BUT_NOT_EXPOSED` | 暴露 capacity 与 observed mask |
+| Wired relation | `RAW_AVAILABLE_BUT_NOT_EXPOSED` | 从拓扑/`hasLink` 逐 Decision 物化端点、方向、type、presence；CSI 保持 null + mask=false |
+| Wired optional dynamic numeric state | `RAW_INSUFFICIENT`，且 `minimum_for_03=false` | 只有未来明确选择并存在真实来源时才采集；不阻塞最小 Information Graph |
+| Agent CPU capacity | `RAW_AVAILABLE_BUT_NOT_EXPOSED` | 作为静态 capability 暴露 capacity 与 observed mask |
+| Agent available CPU | `RAW_INSUFFICIENT`，且 `minimum_for_03=false` | 需要独立、真实的 decision-time 剩余资源来源；不能从 capacity/allocation/service 推断 |
 | Task demand/progress/time | 混合 | 暴露 Raw 已有字段；补采 return size/priority/deadline |
 | Typed Task–Agent relations | `DERIVABLE_CAUSALLY` | lifecycle-conditioned materialization |
 | Current stateful Flow | `RAW_INSUFFICIENT` | 补 stable ID/type/endpoints/presence/total/remaining |
@@ -100,6 +102,7 @@ DAG 可直接复用：`j -> k` 表示 Task k depends on Task j；端点使用 in
 | RB allocation | Physical Edge | Comm Action |
 | CPU allocation | Agent state | Comp Action |
 | actual CPU service | Comp Action | Execution Outcome |
+| CPU capacity | dynamic available resource | Agent static capability |
 | Src/Host/Exec/Ret | Task continuous feature | typed Task–Agent relation |
 | past hop service | current Flow remaining | past execution outcome |
 | DAG | dependency-data Flow | Task dependency relation |

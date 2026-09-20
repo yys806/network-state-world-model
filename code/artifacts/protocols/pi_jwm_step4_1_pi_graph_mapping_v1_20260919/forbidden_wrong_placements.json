@@ -25,6 +25,11 @@
     "required_role": "execution_outcome"
   },
   {
+    "fact": "CPU_capacity",
+    "forbidden_role": "information_agent.dynamic_available_resource",
+    "required_role": "information_agent.static_capability"
+  },
+  {
     "fact": "source_host_exec_ret",
     "forbidden_role": "task_continuous_feature",
     "required_role": "typed_task_agent_relation"

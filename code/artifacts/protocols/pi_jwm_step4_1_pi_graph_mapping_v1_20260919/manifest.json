@@ -1,10 +1,10 @@
 {
   "counts": {
     "field_mappings": 26,
-    "forbidden_wrong_placements": 12,
+    "forbidden_wrong_placements": 13,
     "old_implementation_reuse_conflict": 11,
     "relations": 8,
-    "required_additive_data_extensions": 10
+    "required_additive_data_extensions": 12
   },
   "definition_basis": {
     "document": "D:\\shen\\OB\\科研\\PIJWM\\03物理-信息双图建模.md",
@@ -12,25 +12,26 @@
     "sha256": "6f3e17b0691aa81c60c2ea1e76a1031d2f7f622abf4b40884e9ae4380953c15e"
   },
   "files": {
-    "current_data_to_graph_role.json": "b290964a2e6e2cdda94b0bee3fee4d7e1427fd019da0ea590643bb159a3617e6",
-    "forbidden_wrong_placements.json": "a8259ca70d02fa4d5c3ef060ac6e646859c1efa3c425edc73143bae056826308",
-    "mapping_schema.json": "652f9111de56c1ed770d66e8a938421a55271477cfb30d1cef6545314b91e575",
+    "current_data_to_graph_role.json": "e40802cbc246bb462f760ff967a4fd5cb7b7a8c6c9f53dcd04b808ab71c198f9",
+    "forbidden_wrong_placements.json": "d1bd4042a2b09a4213571602f4c01ffa92baea6428c6b61051772394d69d7e25",
+    "mapping_schema.json": "62aa4ef0dbcca5ef7d181e765d8f5857de570f48f48eb0e02e092929f0b8ea37",
     "old_implementation_reuse_conflict.json": "d03d8182f7c5c8736dc12f0a8a9f6659b2aaff07f5d68569c3d9b2ebaf613ea4",
-    "required_additive_data_extensions.json": "582c8940ca6739a29b0d72e6e289feb2312eb17efeddfb278144b71f8722c1da",
-    "validation_report.json": "a5c5b22d219e473283ffd798f934f3bca7f58dd8f5f09847acfb1153747026e4"
+    "required_additive_data_extensions.json": "d66f6d48a640371b3f1b92648d90f70bf64bea60479e7e24d7cd37c1854eb673",
+    "validation_report.json": "ceb55465a55ec068a67651c08246d0db368d91819680b6f21c180022e8ccd401"
   },
   "graph_readiness": {
     "blocking_gaps": [
       "physical.position_m",
       "comm.wireless_csi",
-      "comm.wired_state",
+      "comm.wired_relation",
       "agent.cpu_capacity_per_s",
       "task.demand_progress_time",
       "task_agent.typed_relations",
       "flow.current_state"
     ],
     "decision": "DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1",
-    "minimum_definition_supported_by_current_tensor": false
+    "minimum_definition_supported_by_current_tensor": false,
+    "rationale": "Minimum graph remains blocked by missing additive exposure/materialization, including wired relation identity/presence. Optional wired numeric dynamic state is not a minimum blocker because wired is represented by relation type with CSI masked absent."
   },
   "input_evidence": {
     "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
@@ -51,8 +52,8 @@
   },
   "source_files": {
     "code/scripts/build_step4_1_pi_graph_mapping_v1.py": "c631740ca4d5f35017f53d9bfafb1be50d0b3a5fa23be4eb378ba54acf53da3d",
-    "code/src/pi_jwm/step4_1_pi_graph_mapping_v1.py": "cdd3231bb30f3c59a5313fea8736f4ba37f851e89b1403543221fd8572d96061",
-    "code/tests/test_step4_1_pi_graph_mapping_v1.py": "856c3dc1b35d84a30adfdd9f88c2b44a14618f4ccbeb7d9ae60517188a328be1"
+    "code/src/pi_jwm/step4_1_pi_graph_mapping_v1.py": "c78f12805d401ceeffeeccb28a6edca3b033afd601190f6f8d2bcef831a8faba",
+    "code/tests/test_step4_1_pi_graph_mapping_v1.py": "13d15b69e3c91fd8dfd78da26f2dc01632828050eeade6fde4414339a19c2d07"
   },
   "validation_passed": true
 }

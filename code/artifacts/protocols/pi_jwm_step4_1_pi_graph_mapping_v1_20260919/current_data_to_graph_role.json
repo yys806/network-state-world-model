@@ -20,6 +20,16 @@
     "graph_role": "directed wireless Comm relation"
   },
   {
+    "current_fact": "environment.wired_edges / WiredNetworkManager.hasLink",
+    "disposition": "MATERIALIZE_AND_EXPOSE",
+    "graph_role": "directed wired Comm relation with type and presence; CSI null and masked"
+  },
+  {
+    "current_fact": "FogProfile cpu capacity",
+    "disposition": "ADDITIVE_EXPOSURE_REQUIRED",
+    "graph_role": "Information Agent static capability"
+  },
+  {
     "current_fact": "task size/lifecycle",
     "disposition": "DIRECT",
     "graph_role": "Task demand/lifecycle"

@@ -15,7 +15,7 @@
 - 当前 Step：`STEP 4.1` 已冻结 Physical / Information 对象—字段—关系映射；定义 03 的 graph builder、GNN 与模型仍未开始。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_1_pi_graph_mapping_v1_20260919/`。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
-- 新定义实现状态：Raw 因果可观测、四类动作、slot Outcome 已验收；STEP 3.2/3.3 完成最小 Dataset/Tensor 合同；STEP 4.1 证明 position/CSI/CPU/部分 Task 状态需 additive exposure，wired current state 与 stable stateful Flow 的 Raw 仍不足。双图、World Model、Loss、Planner 仍未开始。
+- 新定义实现状态：Raw 因果可观测、四类动作、slot Outcome 已验收；STEP 3.2/3.3 完成最小 Dataset/Tensor 合同；STEP 4.1 证明 position/CSI/CPU static capability/部分 Task 状态需 additive exposure，wired relation 有 topology/`hasLink` 来源但尚未逐 Decision 物化，stable stateful Flow 的 Raw 仍不足。双图、World Model、Loss、Planner 仍未开始。
 - 审计结论：时间因果、稳定 ID/index、mask/split 和部分规则/评价工具可复用；严格双图、四类动作、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环需要结构性修改或新增实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step `training=false`、`gpu=false`。
@@ -49,7 +49,7 @@
 
 ## 最近重要变化
 
-- 2026-09-19：STEP 4.1 冻结 PI graph object-field-relation mapping；无线 CSI/position/CPU 是 Raw 有但未暴露，wired current state 与 stateful Flow 是 Raw 不足；graph builder 保持关闭。
+- 2026-09-19：STEP 4.1-PATCH 修正最小 gap 语义：wired relation 是 Raw/simulator 有来源但未暴露，无 CSI 时用 type + mask；wired 可选 numeric state 不阻塞 03 minimum；CPU capacity 是静态 capability，并与 allocation/service/available CPU 分离。graph builder 保持关闭。
 
 - 2026-09-19：完成 Step 2.4 wireless/wired/total communication Outcome 语义最终验收；wired 服务来自真实 `WiredNetworkManager.step`，空 map 与 missing 分开，冻结 Raw Trajectory Layer / 01。
 - 2026-09-19：完成 Step 2.2 真实 AirFogSim 6 步轨迹与独立下一 Decision 验收；补齐 Step 2.1/2.2 机器证据 Git 追溯。
@@ -67,5 +67,5 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 
 - Raw Trajectory / 01 与当前最小 Dataset/Tensor / 02 均已冻结；STEP 4.1 mapping 已冻结。
 - Causal boundary: future task schedule is internal metadata only; canonical acceleration is backward speed difference with an explicit missing-history mask.
-- Current blocker: additive exposure plus wired current-state/stateful-Flow Raw gaps；graph builder 未授权、未开始。
+- Current blocker: additive exposure（含 wired relation 逐 Decision 物化）与 stateful-Flow Raw gap；可选 wired numeric state 不是 minimum blocker；graph builder 未授权、未开始。
 - Boundary: no graph/model/planner/training, no GPU, no `locked_test`.
