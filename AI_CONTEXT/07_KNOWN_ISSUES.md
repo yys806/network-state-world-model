@@ -36,6 +36,13 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - 影响：不得直接实现 graph builder；不得用旧 mixed `physical_edge_state`、past hop service 或 outcome 指标填补当前状态。
 - Evidence：`docs/contracts_PIJWM_STEP_04_2A_GRAPH_INPUT_ADDITIVE_EXTENSION_V1.md` 与 Step 4.2A artifact。
 
+## 2B. Stateful Flow source audit
+
+- 当前 AirFogSim `Task._transmitted_size` 是阶段/当前 hop 累计量，完成 hop 后 reset；不能当作定义 03 的 end-to-end current remaining。
+- 没有 simulator-issued stable Flow identity 或独立 Return identity；`LogicalFlow`/`CarryingHop` 是动作侧对象，不能替代运行时 provenance。
+- `_task_dependencies` 只做 DAG completion gating，当前没有 DepData payload/transfer event。dynamic available CPU、storage、wired queue/load/utilization 也没有可靠 decision-time Raw source。
+- Evidence：`code/artifacts/protocols/pi_jwm_step4_2b_stateful_flow_source_audit_v1_20260920/stateful_flow_source_audit.json`；综合 verdict=`FLOW_CONTRACT_NOT_YET_SUPPORTED`。
+
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
 
 - Actual Implementation：当前正式 runner 支持三个冻结 seed，前两个已完成。

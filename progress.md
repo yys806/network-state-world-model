@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-20 STEP 4.2B
+
+完成 Remaining Raw Source & Stateful Flow Contract Audit。新增 source audit helper、builder、focused tests、contract、实施记录和 provenance artifact。5/5 focused tests 通过；Input/Return 只能部分构造，DepData 无真实传输来源，综合 verdict=`FLOW_CONTRACT_NOT_YET_SUPPORTED`。未实现 Graph Builder、Tensor、模型、训练、GPU 或 locked_test。
+
 ## 2026-09-20 STEP 4.2A-PATCH
 
 已完成 wireless relation validity 与 CSI feature observability 解耦，并将 missing CSI counterfactual/negative tamper 纳入 Sample/Tensor validator 与 machine receipt。return size/priority/deadline 已按 `_extract_tasks()` 真实 getter 纠正为 observer available but frozen Raw not exposed；stateful Flow 仍未解决。focused tests 17/17 通过；未新增正式数据、未建图、未训练、未用 GPU/`locked_test`。

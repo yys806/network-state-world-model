@@ -13,6 +13,7 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 | Step 2.4 通信 runner/observer | `code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py`, `code/scripts/run_p2_single_step_collector_preflight_v1.py` | wired/wireless split、total 与 empty/missing 验收 | current/evidence |
 | STEP 4.1 PI graph mapping | `code/src/pi_jwm/step4_1_pi_graph_mapping_v1.py`、mapping artifact | 对象/字段/关系、gap、forbidden placement、旧实现冲突 | current/frozen mapping |
 | STEP 4.2A graph input extension | `code/src/pi_jwm/step4_2a_graph_input_extension_v1.py`、Step 4.2A artifact | existing-source Raw amendment、Sample/preprocessing/Tensor | current/complete；no graph object |
+| STEP 4.2B Flow source audit | `code/src/pi_jwm/step4_2b_stateful_flow_source_audit_v1.py`、Step 4.2B artifact | source evidence / gap verdict only | current/audit complete；`FLOW_CONTRACT_NOT_YET_SUPPORTED`; no graph object |
 | 当前模型如何递推 | `code/src/pi_jwm/formal_entity_aligned_rssm_world_model_v1.py` | `FormalEntityAlignedRSSMWorldModel.forward()` | model/current |
 | 双图如何传播 | `code/src/pi_jwm/formal_dual_graph_world_model_v1.py` | `FormalDualGraphWorldModel.forward()` | model/current |
 | 图与跨图算子 | `code/src/pi_jwm/formal_graph_ops_v1.py` | physical/information/coupling functions | model/support |

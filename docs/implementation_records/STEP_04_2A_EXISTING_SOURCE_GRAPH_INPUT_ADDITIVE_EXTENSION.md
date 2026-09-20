@@ -69,6 +69,10 @@ Step 4.1 中 position、wireless CSI、wired relation、CPU static capability、
 - stable stateful Flow、dynamic available CPU、storage、wired queue/load/utilization 继续 `RAW_INSUFFICIENT`。return size/priority/deadline 仍未进入 Raw/Sample/Tensor，但已有 simulator observer source，不能再称为 simulator 无可靠来源。
 - edge/cloud Physical membership、Physical neighborhood 和后续模型字段选择继续等待研究者决定。
 
+## STEP 4.2B follow-up reference
+
+本记录中的 stable stateful Flow、dynamic available CPU、storage 和 wired queue/load/utilization gap 已由 STEP 4.2B 独立 source audit 复核；`transmitted_size` hop 完成后 reset，DAG 不等于 DepData Flow，综合 verdict=`FLOW_CONTRACT_NOT_YET_SUPPORTED`。本记录不把这些 gap 改写为已解决。详见 `docs/implementation_records/STEP_04_2B_REMAINING_RAW_SOURCE_STATEFUL_FLOW_AUDIT.md`。
+
 ## Git
 
 最终 commit/hash/push 状态见 Completion Report。

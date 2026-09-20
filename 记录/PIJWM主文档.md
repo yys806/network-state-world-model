@@ -5,6 +5,7 @@
 > **2026-09-20 STEP 4.2A 实现边界：** 定义 03 中已有可靠来源的 position、wireless CSI、wired relation、CPU static capability、部分 Task state 和 typed Task–Agent relation 已经独立 additive 版本链进入 Sample/Tensor。stable stateful Flow 仍无足够 Raw 来源，Physical topology 与 graph builder 仍未实现；因此这不是严格双图、消息传递、模型或训练证据。CPU capacity 继续不等于 allocation、service 或 available CPU，wired outcome 继续不等于 current relation。
 
 > **2026-09-20 STEP 4.2A-PATCH：** wireless directed structural relation 与 CSI feature observability 已分离；missing CSI 不删除 relation。return size、priority、deadline 已核实有 simulator observer getter/TaskSnapshot 来源，但 frozen Raw/Sample/Tensor 尚未透传。旧 LogicalFlow/CarryingHop 或 past outcome 均不能证明定义 03 stateful Flow 已存在。
+> **2026-09-20 STEP 4.2B：** 对真实 Task/TaskManager、传输环境、observer 和旧 LogicalFlow/CarryingHop 做了 source audit。`transmitted_size` 在当前 hop 完成后归零，不能推出端到端 Flow remaining；DAG 只有依赖门控，没有 DepData transfer source。Input/Return 只能部分构造，综合 verdict 为 `FLOW_CONTRACT_NOT_YET_SUPPORTED`，因此不进入 Graph Builder。
 
 > 最后核查日期：2026-08-11<br>
 > 当前文件位置：`记录/PIJWM主文档.md`；2026-08-15已从原外部知识库迁入PI-JWM仓库，后续只维护本文件。<br>

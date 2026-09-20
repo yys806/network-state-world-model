@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "path": "stateful_flow_source_audit.json",
+      "sha256": "6688d5b89c6d7d2d18c8106e719d517fcfdeff143c08887e90d5afb328e8b8fe"
+    }
+  ],
+  "formal_dataset": false,
+  "gpu": false,
+  "locked_test": false,
+  "observation_only": true,
+  "schema_version": "PI-JWM-Step4.2B-Audit-Manifest-v1",
+  "source_files": [
+    {
+      "path": "code/reference/AirFogSim/airfogsim/entities/task.py",
+      "sha256": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0"
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/task_manager.py",
+      "sha256": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104"
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/airfogsim_env.py",
+      "sha256": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce"
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/wired_manager.py",
+      "sha256": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe"
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py",
+      "sha256": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd"
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_frame_builder_v1.py",
+      "sha256": "b8d153699c0e1f960a7415d38f5c70d499dd54b05ef50ba4debf11773baad6ae"
+    },
+    {
+      "path": "code/src/pi_jwm/full_dual_graph_collector_contract_v1.py",
+      "sha256": "75322543577a0f9ff3762a37489491cccdb8a10dba8a7373e4829585451ce8fa"
+    }
+  ],
+  "training": false
+}

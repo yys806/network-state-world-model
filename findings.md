@@ -913,3 +913,10 @@
 - Raw decisions 为 7 帧、steps 为 6 帧；冻结 slot duration 为 0.1 s。每个 step 的 execution start/end 与 decision/outcome 时间均通过逐项检查。
 - Batch audit 必须重新按 Step 3.2 的三条 development trajectory 统计；当前为 12/12/0/0，不能引用 Step 3.1F 的 18-window audit 作为替代。
 - task size 单位只能写 `AirFogSim data-unit`；现有源码和记录没有可靠 bit/byte 换算证据。
+## 2026-09-20 STEP 4.2B
+
+- `Task._transmitted_size` 每个 hop 完成后 reset；不能作为端到端 Flow remaining。
+- `Task.getReturnedSize()` 是 return total requirement，不是 already-returned amount。
+- `_task_dependencies` 是 DAG gating，不等于 DepData Flow；当前无 dependency payload/transfer source。
+- 旧 `LogicalFlow`/`CarryingHop` 提供动作侧命名，但不是 simulator-issued stable Flow provenance。
+- 机器 receipt：`FLOW_CONTRACT_NOT_YET_SUPPORTED`；停止进入 Graph Builder。

@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-20：STEP 4.2B Stateful Flow Source Audit
+
+- 新增 Definition 03 Flow source audit helper、builder、focused tests 和 provenance artifact。
+- 机器化记录 Input/Return/DepData、Task/Flow progress、Flow/Hop、route revision 和 remaining source gap；综合 verdict 为 `FLOW_CONTRACT_NOT_YET_SUPPORTED`。
+- 同步 Tracker、authority records、AI_CONTEXT；未实现 Graph Builder、模型或训练。
+
 ## 2026-09-20：STEP 4.2A-PATCH Comm Mask Semantics & Gap Reclassification
 
 - 解耦 wireless structural relation presence/validity 与 CSI observed/mask；missing CSI 保留 relation，Sample/Tensor 使用 masked zero placeholder 和 missing reason。

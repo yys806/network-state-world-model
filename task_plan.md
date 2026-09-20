@@ -1,5 +1,18 @@
 # 2026-08-26 双约束实施计划 v2
 
+## 2026-09-20 STEP 4.2B — Remaining Raw Source & Stateful Flow Contract Audit
+
+- Goal：仅用定义 03、真实 AirFogSim source 与最小 non-locked CPU 机制证据，判断 stateful Flow 是否可因果构造并冻结 A/B/C readiness verdict；不实现 Raw/Sample/Tensor Flow 或 Graph Builder。
+- Non-goals：不修改 simulator semantics、4.2A、Physical topology、模型/loss/planner/training；不使用 GPU/`locked_test`。
+- [x] 恢复 `main@dd9582e8050d817458ca432632575a12e85e5335`、clean workspace；读取 03 Flow 定义、Step 4.1/4.2A contracts/receipt 与 AI_CONTEXT。
+- [x] 静态审计 Task/TaskManager、offload/return route、dependency、wireless/wired transfer hooks，记录字段初始化/更新/reset/单位/decision-time visibility。
+- [x] 用源码机制证据确认 multi-hop Input、Return、route transition 与 `transmitted_size` reset；未把合成机制 trace 当作真实 Dataset 结果。
+- [x] TDD 实现 audit helper/validator，生成 Flow Evidence Matrix、Task Progress↔Flow Progress、Task remaining-source、Candidate A/B、other Raw-source 与 source provenance。
+- [x] 机器 verdict 只能是 CONSTRUCTIBLE / PARTIALLY_CONSTRUCTIBLE / NOT_YET_SUPPORTED；DepData 无真实传输不得由 DAG 虚构，past service 不得当 current Flow。
+- [x] 生成确定性 audit artifact 与实施记录，同步 Tracker、4.1/4.2A references、AI_CONTEXT、authority/process records 与知识索引。
+- [ ] 运行 focused audit、必要回归、deterministic rebuild/hash、compileall、knowledge index check、diff checks，commit + push `main` 后停止。
+- Stop rule：任一 minimum Flow 的 identity/type/logical endpoints/total/rem/presence 缺少可靠 causal source，就不得给出 `FLOW_CONTRACT_CONSTRUCTIBLE`，不得进入 Graph Builder。
+
 ## 2026-09-20 STEP 4.2A-PATCH — Comm Mask Semantics & Gap Reclassification
 
 - 当前门：只解耦 wireless structural relation validity 与 CSI feature observability，并纠正 Task observer-source gap 分类；不新增 Raw 字段、不实现 stateful Flow 或 Graph Builder。

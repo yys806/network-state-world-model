@@ -65,3 +65,7 @@ Artifact：`code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20
 `validation_report.json` 对 required checks 取逻辑 AND，并实际运行 wireless missing-CSI counterfactual；`step4_1_gap_resolution.json` 记录 Step 4.1 历史 gap 到当前 availability/source classification 的 overlay；`manifest.json` 保存输入/source/artifact hash、版本、array shape/dtype、unit、resolved/blocked 字段和范围。
 
 范围固定为：`graph_builder=false`、`physical_topology=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+
+## 8. STEP 4.2B source-audit reference
+
+后续 STEP 4.2B 对本合同仍列为 `RAW_INSUFFICIENT` 的 stable stateful Flow、dynamic available CPU、storage 与 wired queue/load/utilization 做了独立源码审计。审计确认 `transmitted_size` 是 hop-local stage progress，DAG 只是 completion gating；综合 verdict 为 `FLOW_CONTRACT_NOT_YET_SUPPORTED`。本合同不因此把任何 Flow 字段输入化，详见 `docs/contracts_PIJWM_STEP_04_2B_STATEFUL_FLOW_SOURCE_AUDIT_V1.md` 与对应 artifact。
