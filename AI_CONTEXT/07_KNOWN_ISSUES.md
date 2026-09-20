@@ -44,6 +44,13 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - Evidence：`code/artifacts/protocols/pi_jwm_step4_2b_stateful_flow_source_audit_v1_20260920/stateful_flow_source_audit.json`；综合 verdict=`FLOW_CONTRACT_NOT_YET_SUPPORTED`。
 - STEP 4.2B-PATCH：顶层 verdict 已由 Flow-specific evidence 实际计算并加入篡改负例；其他 graph input gaps 不再参与 Flow verdict。真正的 Flow blocker 是 Input/Return 跨 multi-hop 的动作前 current remaining source-of-truth，以及尚未冻结的 identity/type/端点/route semantics。
 
+## 2C-A. Causal Flow Ledger feasibility
+
+- 真实 transfer event 可证明 task/phase/hop/端点和 delivered service，但不能单独证明 logical end-to-end remaining 或 final-destination delivery。
+- 多 hop invariant 只统计最终目的地交付；中间 hop service 不得再次累加。reroute 仍缺 payload holder、保留/重传语义的 causal event。
+- 当前 verdict=`CAUSAL_FLOW_LEDGER_PARTIALLY_FEASIBLE`，由 `ledger_specific_required_evidence` 计算；篡改 verdict 会被 validator 拒绝。DepData 无真实 transfer process，DAG 不得生成 fake Flow。
+- Evidence：`code/artifacts/protocols/pi_jwm_step4_2c_a_causal_flow_ledger_feasibility_v1_20260920/`。下一步需研究者审阅 event/hook 边界；不自动实现长期 Ledger 或 Graph Builder。
+
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
 
 - Actual Implementation：当前正式 runner 支持三个冻结 seed，前两个已完成。

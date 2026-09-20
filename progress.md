@@ -974,3 +974,6 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 - 从 FogProfile 配置、源码调用点和真实跨帧观测核实：`capacity_per_s` 是 CPU 静态能力上限；已与 Comp allocation、Outcome actual service、dynamic available CPU 分离。
 - focused tests 扩展为 7 项并通过；negative semantic tamper 会使 required check 和顶层 `passed` 同时失败。
 - 范围保持 graph builder/training/GPU/locked_test 全 false；最终回归、artifact、索引和 Git 收口待完成。
+## 2026-09-20 STEP 4.2C-A
+
+Implemented Real Event -> Causal Flow Ledger feasibility audit. Verdict is `CAUSAL_FLOW_LEDGER_PARTIALLY_FEASIBLE`: Input/Return hop events are partially traceable; cross-hop remaining, final delivery, and reroute payload ownership need a hook. DepData is not fabricated from DAG. Focused tests and artifact builder pass; final repository-wide verification remains.

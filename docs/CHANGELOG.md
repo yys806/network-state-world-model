@@ -119,3 +119,8 @@
 - 2026-09-19: Corrected Step 3.1R History alignment, fixed typed indices/presence, real DAG capture and relation endpoints; regenerated non-locked evidence without entering Step 3.2.
 - 2026-09-19: Finalized Step 3.1F History with past action/outcome, causal History-union indices, aligned historical flow/relation/DAG rows, and an observation-only audit of future action references; Step 3.2 remains unauthorized.
 - 2026-09-19: Applied the bounded Step 3.1F-PATCH: Future Action now uses anchor visibility only for admissibility and the shared History-union input namespace for numeric indices; added ID↔index validation, corrected policy provenance, and tracked the audit JSON in Git.
+## 2026-09-20：STEP 4.2C-A Causal Flow Ledger Feasibility Audit
+
+- 新增 observation-only Real Event → Causal Ledger feasibility helper、builder、focused tests、合同、实施记录和源码 SHA-256/symbol provenance artifact。
+- 机器 verdict=`CAUSAL_FLOW_LEDGER_PARTIALLY_FEASIBLE`：Input/Return hop events 可部分追溯；跨 hop remaining、final delivery、reroute payload ownership 仍需 hook；DepData 不由 DAG 虚构。
+- 未修改 Raw/Sample/Tensor、simulator、Graph Builder、World Model、Loss、Planner、training、GPU 或 locked_test。
