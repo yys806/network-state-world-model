@@ -1279,6 +1279,6 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] TDD type-specific mask-explicit encoders, object-wise presence-gated GRUs, Flow/Carrying fusion, typed directed message passing, P2A/P2C and aligned output.
 - [x] Add consistent entity/task/flow slot permutation, target leakage, missing/zero, history causality, padding, direction/coupling, deterministic, round-trip, CPU backward and receipt-tamper checks.
 - [x] Build `UNTRAINED_DEVELOPMENT_ENCODER_EVIDENCE`, contract, implementation record, manifest and current-state updates.
-- [ ] Run final focused/regression, deterministic artifact/hash/reload, compileall, knowledge index write/check, diff/status review, commit and push `main`.
+- [x] Run final focused/regression, deterministic artifact/hash/reload, compileall, knowledge index write/check, diff/status review, commit and push `main`.
 - Stop boundary: `world_model=false`, `prediction=false`, `loss=false`, `planner=false`, `training=false`, `optimizer=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
 - Only next recommendation: Definition 04 — World Model Representation / Dynamics Contract; exact Step name remains a researcher decision.

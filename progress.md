@@ -999,6 +999,7 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 - Input audit confirmed frozen non-Flow `*_features` equal raw values; encoder therefore reuses fixed Step 3.2/4.2A train-only stats and fits only new Physical-relation stats on `dev_train`.
 - Implemented typed History GRUs, current typed directed graph refinement, P2A/P2C, aligned `Z_t^{PI,L_g}`, deterministic package/output and actual-AND acceptance.
 - Focused tests reached 19/19; artifact receipt reached 37/37 required and 17/17 negative/counterfactual checks. Scope remains untrained CPU only; no World Model, optimizer, GPU, `locked_test`, or formal Dataset.
+- Implementation commit `9c45b32` records source, tests, contract, machine artifacts, tracker and context updates; final documentation closure and push are the remaining Git-only actions.
 # 2026-09-19 STEP 4.1-PATCH
 
 - 从 `WiredNetworkManager`、真实 Raw `environment.wired_edges` 和 Decision `channel_rows` 核实：wired relation 有可靠 topology/`hasLink` 来源，但当前未逐 Decision 物化；没有 CSI 时可由 `relation_type=wired` 与 `csi_feature_mask=false` 表示。

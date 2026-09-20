@@ -61,7 +61,7 @@ Expected: an entity/relation-aligned `Z_t^{PI,L_g}` with typed temporal and grap
 
 ## Git
 
-Pending final commit and push.
+Implementation commit: `9c45b32` (`feat(graph): freeze dual-graph encoder contract`). A documentation-only closure commit records the post-commit status; both are pushed to `origin/main`.
 
 ## Next Step
 
