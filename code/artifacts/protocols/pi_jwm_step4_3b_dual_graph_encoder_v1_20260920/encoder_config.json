@@ -1,0 +1,20 @@
+{
+  "aggregator": "masked_mean",
+  "csi_history_encoder": false,
+  "d_h": 16,
+  "development_only": true,
+  "direction_embedding_dim": 4,
+  "enable_p2a": true,
+  "enable_p2c": true,
+  "enable_reverse_comm": true,
+  "enable_reverse_dag": false,
+  "enable_reverse_flow": true,
+  "enable_reverse_task_agent": true,
+  "graph_layers": 2,
+  "initialization_seed": 431,
+  "lifecycle_embedding_dim": 4,
+  "mlp_hidden_width": 24,
+  "research_frozen": false,
+  "type_embedding_dim": 4,
+  "update_rule": "residual_layernorm"
+}

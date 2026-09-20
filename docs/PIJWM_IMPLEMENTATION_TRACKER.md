@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、当前最小 Dataset/Tensor / 定义 02、STEP 4.2C-B/C-C 与 STEP 4.3A Typed Dual-Graph Builder 均已完成并冻结**。Frozen Tensor → 11 个 typed Physical/Information/cross-domain blocks 已实现；Physical topology config 仍为 development-only、`research_frozen=false`。Graph Encoder/GNN、World Model、Loss、Planner 与 Training 均为 NOT STARTED。
+更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、当前最小 Dataset/Tensor / 定义 02、STEP 4.2C-B/C-C、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已完成并冻结**。Frozen History + current typed graph 已可生成 entity/relation-aligned `Z_t^{PI,L_g}`；Physical topology 和 Encoder 数值超参数仍为 development-only、`research_frozen=false`。World Model、Loss、Planner 与 Training 均为 NOT STARTED。
 
 ## 当前依据与执行边界
 
@@ -22,7 +22,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | Dataset / split / masks | 02 | `step3_2_batch_preprocessing_v1.py`、Step 3.2 bundle | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | trajectory split、lineage、time-grid、train-only normalization、mask/presence counterfactual 已验收；不是正式大规模 Dataset | 03 所需新增字段只能走 additive extension |
 | Model-ready sample / tensor contract | 02 | `model_ready_sample_contract_v1.py`、Step 3.1F artifact、Step 3.2 bundle | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | History past A/Y、entity type、union input index、typed target、batch/split/preprocessing 已验收；不是正式大规模 Dataset | 进入 03 前先冻结对象-字段-关系映射 |
 | tensor contract | 02；03 | `step3_3_model_input_tensor_v1.py`、`build_step3_3_model_input_tensor_v1.py` | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | Past Outcome、完整 Target facts、固定 vocab、Comp 正式字段与 semantic receipt 已验收；03/04 feature selection 和正式容量未决定 | 单独授权双图字段映射 |
-| Physical / Information 双图 | 03 | Step 4.1 mapping；Step 4.2A additive Sample/Tensor；Step 4.2C-B Ledger/Raw；Step 4.2C-C Flow Sample/Tensor；Step 4.3A typed builder | TYPED DUAL-GRAPH BUILDER COMPLETE / FROZEN; ENCODER NOT_STARTED | STRUCTURAL_CHANGE | `history[-1]` 已映射为 11 个 typed blocks；Physical topology 参数仅为 development config、未研究冻结；Return multi-hop/reroute/formal capacity 未外推 | 仅建议另行授权 STEP 4.3B Dual-Graph Encoder Contract；不自动执行 |
+| Physical / Information 双图 | 03 | Step 4.1 mapping；Step 4.2A additive Sample/Tensor；Step 4.2C-B Ledger/Raw；Step 4.2C-C Flow Sample/Tensor；Step 4.3A typed builder；Step 4.3B encoder | BUILDER + ENCODER COMPLETE / FROZEN | STRUCTURAL_CHANGE | History temporal encoding、typed directed propagation、P2A/P2C 与 aligned `Z_t^{PI,L_g}` 已实现；topology/encoder config 仅为 development、未研究冻结；这不是 World Model latent | 仅建议 Definition 04 World Model Representation / Dynamics Contract；不自动执行 |
 | entity alignment 局部工具 | 02；03 | `airfogsim_tensor_v2.py`、`formal_graph_ops_v1.py` | AUDITED | DIRECT_REUSE | ID/index/mask原则可复用；新增对象映射需扩展 | 保留身份稳定性检查 |
 | Route action | 06 §2.1；04 §3.3 | Step 2 Raw + Step 3.3 past/future route tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | route kind/target/task node/hops 与 mask 已映射；尚未接新 graph/model | 后续按新对象路由，未授权 |
 | Comm action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 per-RB action tensors；Step 4.2A per-RB CSI additive tensor；Step 4.3A Comm relation | INPUT TENSOR + CURRENT COMM GRAPH COMPLETE / FROZEN | MINOR_MODIFICATION | CSI/typed relation 已进入 current Graph Builder；动作尚未接 Graph Encoder/model | 后续按独立授权接 Encoder/model，当前不执行 |
@@ -52,7 +52,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 ## 已完成、未开始与待决策
 
 - 本轮完成范围：Step 1 审计矩阵、只读权限与新工作流、实施记录框架、历史逻辑归档、导航与注册表同步；实际验证见 Step 1 报告。
-- 新方案的 Raw→Dataset/Tensor→Typed Graph Builder 已按当前最小合同完成并冻结；Graph Encoder/GNN、World Model、loss、训练、candidate proposal 和在线闭环仍未开始。不得把 representation builder 的完成外推为模型实现完成。
+- 新方案的 Raw→Dataset/Tensor→Typed Graph Builder→Dual-Graph Encoder 已按当前最小合同完成并冻结；World Model、loss、训练、candidate proposal 和在线闭环仍未开始。不得把 `Z_t^{PI,L_g}` 外推为 `xi_t^Lat` 或模型实现完成。
 - 研究者已明确目标：严格Physical/Information划分，四类动作含CPU与UAV，结构化RSSM，只学习未知动态，混合proposal+世界模型选择。无需再次确认这些方向。
 - 仍待决定：通信状态不足时的补充字段/必要residual；未知未来到达与离开；proposal训练方式；objective权重/风险/硬约束/fallback；新合同下实验预算与门槛。
 
@@ -101,6 +101,10 @@ STEP 4.2C-C 已完成并冻结 Raw Flow → Model-ready Sample → CPU Tensor ad
 
 这是 STEP 4.2C-C 当时的历史范围：`graph_builder=false`、`information_graph=false`、`physical_topology=false`。之后 STEP 4.3A 已完成 Graph Builder；`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false` 继续有效。
 
+## 当前 STEP 4.3B 结果
+
+STEP 4.3B 使用完整冻结 History Tensor 编码 Physical/Agent/Task/Flow 的对象级时间状态，并使用 STEP 4.3A current typed graph 完成 Physical/Comm/Flow/Task-Agent/DAG 分族有向传播、relation-wise masked mean、P2A Align 与 wireless-only P2C GeoComm。Logical Flow 与 Carrying 分支独立编码后融合，最终只产生一个 Flow relation latent。输出保持 entity/relation alignment，只到 `Z_t^{PI,L_g}`。artifact 是 `UNTRAINED_DEVELOPMENT_ENCODER_EVIDENCE`；不代表 `xi_t^Lat`、World Model、预测或性能。数值配置与 Physical topology 均为 development-only，`research_frozen=false`。
+
 ## 下一步边界
 
-STEP 4.2C-B 与 STEP 4.2C-C（含 PATCH）正式 COMPLETE / FROZEN；其当时“另行授权 Graph Builder”的下一步已由 STEP 4.3A 完成。当前唯一建议为 **STEP 4.3B — Definition 03 Dual-Graph Encoder Contract**，不得自动执行。
+STEP 4.3A Typed Graph Builder 与 STEP 4.3B Dual-Graph Encoder 正式 COMPLETE / FROZEN。当前输出只到 `Z_t^{PI,L_g}`，不是 `xi_t^Lat`；当前唯一建议为 **Definition 04 — World Model Representation / Dynamics Contract**，具体 Step 名称由研究者决定，不得自动执行。

@@ -14,11 +14,11 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 ## 1. 新定义仅部分实现
 
 - Documented Intent：最新 `00–06` 要求严格 Physical/Information 双图、Route/Comm/Comp/UAV 四类动作、主要面向 Physical/Communication 未知动态的 RSSM、逐步学习—规则—动态图闭环和真实反馈重规划。
-- Actual Implementation：STEP 4.3A 已实现严格 typed Physical/Information graph representation；旧模型代码仍使用混合语义 `physical_edge`，尚未由新的 Graph Encoder/GNN、RSSM layout、loss、训练和 planner 接管。
+- Actual Implementation：STEP 4.3A 已实现严格 typed graph，STEP 4.3B 已实现 Definition 03 encoder 与 aligned `Z_t^{PI,L_g}`；旧模型代码仍使用混合语义 `physical_edge`，尚未由新的 World Model layout、loss、训练和 planner 接管。
 - Evidence：`docs/PIJWM_IMPLEMENTATION_TRACKER.md`、`docs/implementation_records/STEP_01_AUDIT.md`、`STEP_01_DATA_GRAPH_AUDIT.md`。
 - Affected Files：旧 tensor/model/loss/training/planner、AI_CONTEXT 旧 P4 描述和旧 checkpoint/result。
 - Conflict：STEP 4.3A builder acceptance 只能证明 current graph representation，不能证明 Graph Encoder、World Model 或完整新定义已经实现；旧接口、测试或两个 seed 验收也不能补足该证据。
-- Status：Raw Trajectory / 01、当前最小 Dataset/Tensor / 02 与 STEP 4.3A builder 已完成并冻结；Graph Encoder/GNN、World Model、Loss、Planner 与 Training 等待后续授权。
+- Status：Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.3A builder 与 STEP 4.3B encoder 已完成并冻结；World Model、Loss、Planner 与 Training 等待后续授权。
 
 ## 2. 研究边界仍需决定
 
@@ -57,7 +57,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - Causal Flow Ledger 与 Raw additive Flow state 已实现；上述“长期 Ledger、Raw extension 未授权”是 4.2C-A 时点的历史描述，已由 4.2C-B 覆盖。
 - 真实 non-locked trace 已覆盖直接 Input/Return 与独立 Input 两跳；尚未真实观察 Return multi-hop、same-destination reroute、destination-change Epoch 和 local execution no-flow，这些目前只有 contract fixture evidence。
 - 旧无线 Return hook 的 delivered amount 可超过 observer return_size；Ledger 按冻结 min rule 封顶守恒。该 observation 不等于修改 simulator，也不能外推为正式 Dataset 结论。
-- Flow Sample/Tensor additive extension（含 presence-aware normalization、四组全字段 semantic equality 与 target carrying namespace）已在 STEP 4.2C-C-PATCH 完成并冻结；其后的 STEP 4.3A Graph Builder 也已完成。Graph Encoder/GNN、World Model、Loss、Planner 和训练仍未开始。
+- Flow Sample/Tensor additive extension 已在 STEP 4.2C-C-PATCH 完成并冻结；其后的 STEP 4.3A Graph Builder 与 STEP 4.3B Graph Encoder 也已完成。World Model、Loss、Planner 和训练仍未开始。
 - Input multi-hop logical destination continuity 已由真实 trace 闭合；Return multi-hop 和 same-destination partial-hop reroute 仍缺真实 runtime evidence。后者不得被当前 contract fixture 描述成 simulator 已支持。
 
 ## 3. 旧 P4 尚未闭合（Historical / Archived）

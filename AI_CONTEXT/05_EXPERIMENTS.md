@@ -52,6 +52,7 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 - 新 dataset/tensor/model/loss/planner 实验均为 `NOT_STARTED`。
 - STEP 4.2C-C 是非训练的 CPU/non-locked contract validation：真实 direct Input/Return、真实两-hop和低 wired capacity cross-slot trace进入 additive Flow Sample/Tensor artifact；`passed=true`，不构成 formal Dataset、模型或性能实验。
 - STEP 4.3A 是非训练的 CPU/non-locked representation validation：复用冻结的五个 development Tensor samples，生成 typed graph artifact；24 项 required checks 与 20 项 negative/counterfactual 均通过。这不是图编码器实验、正式 Dataset 或性能结论。
+- STEP 4.3B 是 `UNTRAINED_DEVELOPMENT_ENCODER_EVIDENCE`：复用同一批 frozen development inputs，在 CPU 上验证结构接线、History 因果、mask、方向、P2A/P2C、置换等变、序列化、确定性与 backward。没有 optimizer step、训练或性能结论。
 - 下一实验步骤尚未授权；Step 2 建议仅冻结一步轨迹和四类动作合同，不训练。
 - STEP 3.1 原 10 项/4 tests 记录已由 STEP 3.1R 修正证据取代，不再作为当前合同验收。
 - STEP 3.1F 不是训练实验：最小样本通过 24 项合同 checks、12 项 focused tests、round-trip；History 为 `O_1+A_1+Y_1+O_2`，Action/Target `[2,3]`，History union index、Future Action ID↔index 对齐、history relation/DAG/flow 对齐已验收。未来 reference audit 扫描 4 个非 locked Raw artifact、18 个窗口，0 个 unresolved reference；locked/training/gpu 均为 false。

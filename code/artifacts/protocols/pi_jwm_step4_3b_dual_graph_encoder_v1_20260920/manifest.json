@@ -1,0 +1,31 @@
+{
+  "evidence_class": "UNTRAINED_DEVELOPMENT_ENCODER_EVIDENCE",
+  "files": {
+    "acceptance_report.json": "a5305387b90e73723166c67930e9e4bb15929ffbd4cf8f8b035b90ff7ad016d0",
+    "deterministic_encoder_output.pt": "2aa437548e8ae26c77761e5d109218f11dc55ca199ead611b3b9205b77c8baf4",
+    "encoder_config.json": "f97d7f7afee6b5f2668aed9b4f6c33ae951fc289314a737982bf897b08d2563f",
+    "encoder_input_audit.json": "a2b1f52b7394775dd66feafe3f94b940a3d849d5cfa0581095985567248caf6d",
+    "encoder_normalization_stats.json": "7a503f145b15d4c3414a9807d90d167d627088042f9d3edbc8787ec4b1c87ca8",
+    "untrained_encoder_package.pt": "7ff4c5471e59712a70f904f02793e092c26d4987fd511b765b8ad194826c221d"
+  },
+  "formal_dataset": false,
+  "gpu": false,
+  "locked_test": false,
+  "optimizer": false,
+  "schema_version": "PI-JWM-Step-4.3B-Artifact-Manifest-v1",
+  "sources": {
+    "history_tensor": {
+      "path": "code/artifacts/protocols/pi_jwm_step4_2c_c_flow_sample_tensor_v1_20260920/flow_tensor.npz",
+      "sha256": "adf6ab22fcdc2d6338bec0ab5ef7db11e595981fe4d3f1e260c68d4e5756155f"
+    },
+    "typed_graph": {
+      "path": "code/artifacts/protocols/pi_jwm_step4_3a_typed_dual_graph_builder_v1_20260920/typed_dual_graph_batch.npz",
+      "sha256": "6e0f6d68bb7214babf706f5af94fd004a664d61d714bbcb8b502867f45ec2bc6"
+    },
+    "upstream_normalization": {
+      "path": "code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/train_normalization_stats.json",
+      "sha256": "f03c39438fc3b1ef3bbdaadf24faa622f184c1cc7358d3b810ced5a61ec05579"
+    }
+  },
+  "training": false
+}

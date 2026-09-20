@@ -972,3 +972,10 @@
 
 - Stale current-state wording survived mainly in the `00_PROJECT_STATE` blocker, Tracker header/Step 4.2C-C summary, and generated PROJECT_INDEX/RESEARCH_STATUS summaries.
 - Historical statements are still valid for their original Step, but require explicit “at that Step” wording so they cannot override current STEP 4.3A COMPLETE / FROZEN state.
+
+## 2026-09-20 STEP 4.3B
+
+- Current non-Flow Tensor arrays named normalized `*_features` are exactly equal to their raw counterparts; treating them as normalized would be an unsupported assumption. Fixed upstream train-only stats are therefore applied explicitly inside the encoder input path without fitting in forward.
+- The stable Flow representation can exclude `e2e_delivered`, Epoch and Flow Index: total plus E2E remaining carry the minimum learned numeric state, while identity/provenance remain structural.
+- Strong slot-permutation evidence must permute entity, task and flow rows and consistently remap every consumed reference. Passing only a batch permutation would not prove that numeric IDs are excluded.
+- STEP 4.3B establishes encoder wiring and differentiability only. `Z_t^{PI,L_g}` remains distinct from `xi_t^Lat`; no representation-quality or prediction claim follows from deterministic untrained output.

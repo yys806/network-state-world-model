@@ -1,0 +1,88 @@
+{
+  "checks": {
+    "no_target_namespace_consumed": true,
+    "normalization_source_dev_train": true,
+    "raw_non_flow_normalization_truth_recorded": true,
+    "required_statistics_available": true,
+    "tensor_graph_schema_lineage": true,
+    "tensor_graph_source_hash_lineage": true
+  },
+  "continuous_inputs": {
+    "agent": {
+      "mask": "agent presence and CPU mask",
+      "normalization": "fixed dev_train statistics",
+      "source": "static CPU capacity"
+    },
+    "carrying": {
+      "excluded_structural_fields": [
+        "route_revision",
+        "current_hop_index",
+        "holder_index",
+        "hop_source_index",
+        "hop_destination_index",
+        "route_node_indices"
+      ],
+      "learned_fields": [
+        "carrying.hop_progress",
+        "carrying.hop_remaining",
+        "carrying.active"
+      ],
+      "source": "History carrying raw fields"
+    },
+    "comm": {
+      "mask": "relation presence/validity and CSI mask",
+      "normalization": "fixed dev_train statistics",
+      "source": "current CSI"
+    },
+    "logical_flow": {
+      "excluded_redundant_fields": [
+        "logical.e2e_delivered"
+      ],
+      "excluded_structural_fields": [
+        "epoch",
+        "flow_index"
+      ],
+      "learned_fields": [
+        "logical.total_data",
+        "logical.e2e_remaining"
+      ],
+      "source": "History logical Flow raw fields"
+    },
+    "physical_node": {
+      "mask": "entity presence and per-feature mask",
+      "normalization": "fixed dev_train statistics",
+      "source": "History raw position/speed/acceleration"
+    },
+    "physical_relation": {
+      "mask": "relation presence/validity and per-feature mask",
+      "normalization": "4.3B dev_train-only additive statistics",
+      "source": "4.3A current derived relation features"
+    },
+    "task": {
+      "mask": "task presence and per-feature mask",
+      "normalization": "fixed dev_train statistics",
+      "source": "History task raw fields"
+    }
+  },
+  "current_non_flow_tensor_features_are_pre_normalized": false,
+  "normalization_schema_version": "PI-JWM-Step-4.3B-Fixed-Train-Only-Normalization-v1",
+  "passed": true,
+  "schema_version": "PI-JWM-Step-4.3B-Encoder-Input-Audit-v1",
+  "source_graph_schema_version": "PI-JWM-Typed-Dual-Graph-Builder-v1-step4.3A",
+  "source_hash_evidence": {
+    "actual_tensor_sha256": "adf6ab22fcdc2d6338bec0ab5ef7db11e595981fe4d3f1e260c68d4e5756155f",
+    "graph_manifest": "code/artifacts/protocols/pi_jwm_step4_3a_typed_dual_graph_builder_v1_20260920/manifest.json",
+    "recorded_tensor_sha256": "adf6ab22fcdc2d6338bec0ab5ef7db11e595981fe4d3f1e260c68d4e5756155f",
+    "tensor_path": "code/artifacts/protocols/pi_jwm_step4_2c_c_flow_sample_tensor_v1_20260920/flow_tensor.npz"
+  },
+  "source_tensor_schema_version": "PI-JWM-Model-Input-Tensor-Collation-v5-step4.2C-C-PATCH",
+  "unavailable_fields": {
+    "agent.dynamic_available_cpu": "UPSTREAM_FIELD_NOT_AVAILABLE",
+    "agent.storage": "UPSTREAM_FIELD_NOT_AVAILABLE",
+    "comm.queue_or_service_load": "UPSTREAM_FIELD_NOT_AVAILABLE",
+    "physical.heading_elevation_posture": "UPSTREAM_FIELD_NOT_AVAILABLE",
+    "task.deadline": "UPSTREAM_FIELD_NOT_AVAILABLE",
+    "task.priority": "UPSTREAM_FIELD_NOT_AVAILABLE",
+    "task.return_size": "UPSTREAM_FIELD_NOT_AVAILABLE"
+  }
+}

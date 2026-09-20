@@ -12,21 +12,21 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 4.3A` 已 COMPLETE / FROZEN。冻结 Tensor `history[-1]` 已确定性映射为 11 个 typed Physical/Information/cross-domain blocks；Flow 为 logical multiedge，Carrying 为 side state，Physical topology 不消费 Comm/Task/Flow/target。当前 radius/kNN 仅为 development config，`research_frozen=false`。Graph Encoder、GNN 与模型仍未开始。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_3a_typed_dual_graph_builder_v1_20260920/`。
+- 当前 Step：`STEP 4.3B` 已 COMPLETE / FROZEN。冻结 History Tensor + STEP 4.3A current typed graph 已实现 type-specific temporal encoding、五类有向消息传递、P2A/P2C 与 aligned `Z_t^{PI,L_g}`。该结果是确定性初始化、未训练的 CPU development evidence，不是 `xi_t^Lat` 或 World Model。Physical topology 和 Encoder 数值配置均 `research_frozen=false`。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_3b_dual_graph_encoder_v1_20260920/`。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
-- 新定义实现状态：Raw 因果可观测、四类动作、slot Outcome、最小 Dataset/Tensor 合同与 STEP 4.3A Typed Dual-Graph Builder 已验收；冻结 Tensor `history[-1]` 可生成 11 个 typed Physical/Information/cross-domain blocks。Physical topology 参数仍是 development-only，尚未 research freeze。Graph Encoder/GNN、World Model、Loss、Planner 与 Training 均未开始。
-- 审计结论：时间因果、稳定 ID/index、mask/split 和部分规则/评价工具可复用；strict typed dual-graph representation 已由 STEP 4.3A 落地，Graph Encoder、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环仍需后续授权与实现。
+- 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder 与 Dual-Graph Encoder 已验收；当前可生成 aligned `Z_t^{PI,L_g}`。Physical topology 和 Encoder 参数仍是 development-only。World Model、Loss、Planner 与 Training 均未开始。
+- 审计结论：时间因果、稳定 ID/index、mask/split、typed graph 与 Definition 03 encoder 已落地；`Z_t^{PI,L_g}→xi_t^Lat`、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环仍需后续授权与实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step `training=false`、`gpu=false`。
 
 ## 当前最重要问题
 
-当前实现不能按模块名称或旧测试推断为符合新定义。STEP 4.3A 已用冻结 Tensor 实现最小 typed dual-graph representation，但这不等于 Graph Encoder 或模型已经实现；四类动作尚未接入新 model。旧随机状态范围、逐步规则反馈、预测态动态图和 planner 真实反馈仍未实现。
+当前实现不能按模块名称或旧测试推断为符合新定义。STEP 4.3B 已实现未训练的双图编码器，但 `Z_t^{PI,L_g}` 不等于 World Model latent；四类动作尚未接入新 model。旧随机状态范围、逐步规则反馈、预测态动态图和 planner 真实反馈仍未实现。
 
 ## 单一科研下一步
 
-STEP 4.3A 已完成并冻结；唯一建议是研究者另行授权 **STEP 4.3B — Definition 03 Dual-Graph Encoder Contract**。不要自动执行 Encoder，不启动 GPU，不访问 `locked_test`。
+STEP 4.3B 已完成并冻结；唯一建议是研究者另行定义并授权 **Definition 04 — World Model Representation / Dynamics Contract**。不要自动执行，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 
@@ -55,7 +55,7 @@ STEP 4.3A 已完成并冻结；唯一建议是研究者另行授权 **STEP 4.3B 
 - 2026-09-20：STEP 4.2C-A-PATCH 通过 audit-only replay 修正 verdict：logical destination 过滤 final delivery，E2E remaining 与 holder 可因果派生，same-destination reroute 可保持 Flow epoch；`flow_completed` 禁止作为 logical completion；机器 verdict=`CAUSAL_FLOW_LEDGER_FEASIBLE`。destination change/DepData 仍需研究者决定。
 - 2026-09-20：STEP 4.2C-B 实现 FlowID/Epoch/RouteRevision、Flow/Carrying 分离、Input/Return lifecycle、clean-boundary destination change、lineage 与 Raw additive state；真实 non-locked trace覆盖 Input/Return，DepData runtime=0。随后 STEP 4.2C-C 完成 Sample/Tensor additive extension；在该 Step 当时 Graph Builder 尚未开始，之后已由 STEP 4.3A 完成。
 - 2026-09-20：STEP 4.2C-B-PATCH 修正 logical destination provenance：Input 使用已成立 route terminal，Return 使用 `return_destination_id`；真实 `UAV_0→RSU_0→cloudServer_4` 两跳通过单 FlowID/Epoch、固定 destination、无重复 E2E 计数验收。
-- 2026-09-20：STEP 4.2C-C-PATCH 将 normalization stats 收紧为 `known=true AND presence=true AND feature_mask=true AND value!=null AND split=dev_train`，并补齐 History/target Logical/Carrying 四组全字段 semantic equality、ID/provenance tamper 检查与 target carrying future-ground-truth namespace；23/23 focused、跨时隙真实 trace、deterministic/round-trip/receipt negative checks 通过。在该 Step 当时 Graph Builder 尚未开始；之后已由 STEP 4.3A 完成，模型和训练仍未开始。
+- 2026-09-20：STEP 4.2C-C-PATCH 将 normalization stats 收紧为 `known=true AND presence=true AND feature_mask=true AND value!=null AND split=dev_train`，并补齐 History/target Logical/Carrying 四组全字段 semantic equality、ID/provenance tamper 检查与 target carrying future-ground-truth namespace；23/23 focused、跨时隙真实 trace、deterministic/round-trip/receipt negative checks 通过。在该 Step 当时 Graph Builder 尚未开始；之后 STEP 4.3A/4.3B 已完成 Builder/Encoder，World Model 和训练仍未开始。
 
 - 2026-09-19：STEP 4.1-PATCH 修正最小 gap 语义：wired relation 是 Raw/simulator 有来源但未暴露，无 CSI 时用 type + mask；wired 可选 numeric state 不阻塞 03 minimum；CPU capacity 是静态 capability，并与 allocation/service/available CPU 分离。在该 Step 当时 graph builder 保持关闭，之后已由 STEP 4.3A 完成。
 
@@ -73,7 +73,7 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 
 ## Freeze chain（2026-09-20 current）
 
-- Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.1 mapping、STEP 4.2A existing-source input extension、STEP 4.2C-B Raw Flow、STEP 4.2C-C Flow Sample/Tensor 与 STEP 4.3A Typed Dual-Graph Builder 均已冻结。
+- Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.1 mapping、STEP 4.2A existing-source input extension、STEP 4.2C-B Raw Flow、STEP 4.2C-C Flow Sample/Tensor、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已冻结。
 - Causal boundary: future task schedule is internal metadata only; canonical acceleration is backward speed difference with an explicit missing-history mask.
 - Current boundary: Physical topology 的 `radius_knn/radius=1000m/k=2` 仅是 deterministic development config，`research_frozen=false`；Return multi-hop、same-destination reroute runtime 与 formal capacities 仍未冻结。
-- Boundary: Graph Encoder/GNN、World Model、Loss、Planner、Training 均为 NOT STARTED；`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+- Boundary: Graph Encoder 已 COMPLETE / FROZEN；World Model、Loss、Planner、Training 均为 NOT STARTED；`gpu=false`、`locked_test=false`、`formal_dataset=false`。

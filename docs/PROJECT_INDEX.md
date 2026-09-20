@@ -1,7 +1,7 @@
 # PI-JWM 项目索引
 
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
-> 生成于 2026-09-08，状态更新于 2026-09-20。定义 01、当前最小定义 02 与 STEP 4.3A Typed Dual-Graph Builder 已完成并冻结；Frozen Tensor → 11 个 typed blocks 已实现。Physical topology config 仍为 development-only、`research_frozen=false`；Graph Encoder/GNN、World Model、Loss、Planner 与 Training 未开始。旧训练与结果已逻辑归档。`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
+> 生成于 2026-09-08，状态更新于 2026-09-20。定义 01、当前最小定义 02、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 已完成并冻结；Frozen History + current typed graph → aligned `Z_t^{PI,L_g}` 已实现。Physical topology 与 Encoder config 仍为 development-only、`research_frozen=false`；World Model、Loss、Planner 与 Training 未开始。旧训练与结果已逻辑归档。`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
 
 ## 1. 进入项目的最短路径
 
@@ -33,9 +33,9 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 - 项目：PI-JWM（Physical-Information Joint World Model）。
 - AirFogSim：只作为仿真器和数据生成工具，不是 PI-JWM 框架主体。
 - 当前路线：研究者最新 `00–06` 目标定义 → 经授权的 Implementation Step。
-- 当前 Step：STEP 4.3A Typed Dual-Graph Builder COMPLETE / FROZEN；Raw / 01、最小 Dataset/Tensor / 02 与 Flow Raw/Sample/Tensor 均已冻结。
-- 新定义实现：typed dual-graph representation 已实现；Graph Encoder/GNN 与后续 World Model 尚未开始。现有 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 都是旧协议 Historical / Archived evidence。
-- 当前主要缺口：STEP 4.3B Graph Encoder、目标 stochastic-state 边界、逐步规则反馈/预测态动态图、正式候选生成和真实反馈重规划。真实 Return multi-hop 与 same-destination partial-hop reroute 仍缺 runtime evidence；formal capacities 未冻结。
+- 当前 Step：STEP 4.3B Dual-Graph Encoder COMPLETE / FROZEN；Raw / 01、最小 Dataset/Tensor / 02、Flow Raw/Sample/Tensor 与 STEP 4.3A graph builder 均已冻结。
+- 新定义实现：typed graph 与 aligned `Z_t^{PI,L_g}` encoder 已实现；后续 World Model 尚未开始。现有 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 都是旧协议 Historical / Archived evidence。
+- 当前主要缺口：Definition 04 representation/dynamics、目标 stochastic-state 边界、逐步规则反馈/预测态动态图、正式候选生成和真实反馈重规划。真实 Return multi-hop 与 same-destination partial-hop reroute 仍缺 runtime evidence；formal capacities 未冻结。
 - `locked_test`：继续封存；`formal_performance_claim_ready=false`。
 
 ## 3. 顶层目录地图

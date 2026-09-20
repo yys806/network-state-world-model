@@ -993,6 +993,12 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 - 仅修正 current-state 文档：Graph Builder 统一为 COMPLETE / FROZEN，Graph Encoder/GNN、World Model、Loss、Planner、Training 统一为 NOT STARTED；旧 Step 的“未授权/未开始”表述加上历史时间边界。
 - 保留 development-only topology、Return multi-hop/reroute/formal capacity、GPU/locked_test/formal Dataset 等原有边界；未修改代码、Tensor、artifact 或科研定义。
 - current-state 10 文件 stale scan 通过，4 条旧 Graph Builder 状态均带明确历史限定；knowledge index write/check、docs-only scope 与 `git diff --check` 通过。
+
+## 2026-09-20 STEP 4.3B
+
+- Input audit confirmed frozen non-Flow `*_features` equal raw values; encoder therefore reuses fixed Step 3.2/4.2A train-only stats and fits only new Physical-relation stats on `dev_train`.
+- Implemented typed History GRUs, current typed directed graph refinement, P2A/P2C, aligned `Z_t^{PI,L_g}`, deterministic package/output and actual-AND acceptance.
+- Focused tests reached 19/19; artifact receipt reached 37/37 required and 17/17 negative/counterfactual checks. Scope remains untrained CPU only; no World Model, optimizer, GPU, `locked_test`, or formal Dataset.
 # 2026-09-19 STEP 4.1-PATCH
 
 - 从 `WiredNetworkManager`、真实 Raw `environment.wired_edges` 和 Decision `channel_rows` 核实：wired relation 有可靠 topology/`hasLink` 来源，但当前未逐 Decision 物化；没有 CSI 时可由 `relation_type=wired` 与 `csi_feature_mask=false` 表示。

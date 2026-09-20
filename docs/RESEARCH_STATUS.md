@@ -1,14 +1,14 @@
 # PI-JWM 当前科研状态
 
 > 本文是导航性状态摘要。当前结果必须回到原始 checkpoint、metrics、manifest 和 audit 验证。
-> 截至 2026-09-20，Raw Trajectory Layer / 定义 01、最小 Dataset/Tensor / 定义 02 与 STEP 4.3A Typed Dual-Graph Builder 已冻结；Frozen Tensor → 11 个 typed Physical/Information/cross-domain blocks 已实现。Physical topology config 仍为 development-only、`research_frozen=false`。Graph Encoder/GNN、World Model、Loss、Planner 与 Training 均未开始。旧 P4/P6 和训练结果为 Historical / Archived；当前没有 GPU 训练，`locked_test` 未访问，`formal_dataset=false`。
+> 截至 2026-09-20，Raw Trajectory Layer / 定义 01、最小 Dataset/Tensor / 定义 02、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 已冻结；Frozen History + current typed graph → aligned `Z_t^{PI,L_g}` 已实现。Physical topology 与 Encoder config 仍为 development-only、`research_frozen=false`。World Model、Loss、Planner 与 Training 均未开始。旧 P4/P6 和训练结果为 Historical / Archived；当前没有 GPU 训练，`locked_test` 未访问，`formal_dataset=false`。
 
 ## 0. 当前实施状态
 
 - Step 2.4 已用真实 non-locked AirFogSim 完成通信 Outcome 最终验收；Step 3.2/3.3 已冻结最小 Dataset/Tensor 合同。
-- STEP 4.1 已冻结对象—字段—关系映射；STEP 4.2A/4.2C-B/4.2C-C 已闭合 graph inputs 与 Flow Raw→Tensor；STEP 4.3A 已把 `history[-1]` 映射为 11 个 typed graph blocks。Graph Encoder/GNN、World Model、Loss、Planner、Training 和 closed loop 均未开始。
-- 现有代码可复用时间因果、稳定索引、mask/split 和部分规则/指标工具；strict typed dual-graph representation 已完成，但四类动作到新模型的路由、Graph Encoder、RSSM 边界、逐步反馈和真实重规划仍存在结构性缺口。
-- 唯一建议下一步是 **STEP 4.3B — Definition 03 Dual-Graph Encoder Contract**；不要自动执行。
+- STEP 4.1 已冻结映射；STEP 4.2A/4.2C-B/4.2C-C 已闭合 graph inputs 与 Flow Raw→Tensor；STEP 4.3A 已物化 typed graph；STEP 4.3B 已实现 History temporal encoding、typed message passing 与 P2A/P2C，输出 `Z_t^{PI,L_g}`。
+- 现有代码可复用时间因果、稳定索引、mask/split、typed graph 与 encoder；四类动作到新模型的路由、`Z_t^{PI,L_g}→xi_t^Lat`、RSSM 边界、逐步反馈和真实重规划仍存在结构性缺口。
+- 唯一建议下一步是 **Definition 04 — World Model Representation / Dynamics Contract**；具体 Step 名称由研究者决定，不要自动执行。
 
 ## 1. 当前研究问题
 

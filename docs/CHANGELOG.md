@@ -1,5 +1,12 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-20：STEP 4.3B Definition 03 Dual-Graph Encoder Contract
+
+- 新增 mask-explicit type-specific MLP、Physical/Agent/Task/Flow object-wise GRU、五类 directed relation processors、family-wise masked mean、独立 node update 与 P2A/P2C。
+- Logical Flow 与 Carrying 独立编码后 fuse，只形成一个 Flow relation latent；Future Target/Action、delivered、Epoch 和 numeric ID 不进入 learned inputs。
+- 新增 additive Physical-relation train-only stats、input audit、37 项 actual-AND receipt、counterfactual/permutation/round-trip/CPU backward 证据。
+- artifact 明确为 `UNTRAINED_DEVELOPMENT_ENCODER_EVIDENCE`；无 World Model、prediction、loss、planner、training、GPU 或 locked_test。
+
 ## 2026-09-20：STEP 4.3A Definition 03 Typed Dual-Graph Builder Contract
 
 - 新增冻结 Tensor `history[-1]` 到 11 个 typed Physical/Information/cross-domain blocks 的确定性 builder；Flow 保持 logical multiedge，Carrying 仅为 side state。
