@@ -92,8 +92,8 @@ Physical / Information object-field-relation mapping 已冻结。vehicle/UAV/RSU
 
 ## 当前 STEP 4.2A 结果
 
-Step 4.1 中已有可靠来源的 position、wireless per-RB CSI、wired typed relation、CPU static capability、Task demand/progress/elapsed 与 Src/Host/Exec/Ret 已通过独立版本链贯穿 Raw amendment → Sample → train-only preprocessing → Tensor。三条 development trajectory 共形成 12 个样本；这是机器合同证据，不是正式 Dataset 或容量结论。旧 Step 2/3 artifact 未覆盖，History union index、Future Action 因果边界和 split isolation 保持不变。stable stateful Flow、return size/priority/deadline、dynamic available CPU 等仍未补造；Physical topology 与 graph object 均未实现。机器 artifact 位于 `code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/`。
+Step 4.1 中已有可靠来源的 position、wireless per-RB CSI、wired typed relation、CPU static capability、Task demand/progress/elapsed 与 Src/Host/Exec/Ret 已通过独立版本链贯穿 Raw amendment → Sample → train-only preprocessing → Tensor。PATCH 已把 wireless structural validity 与 CSI observability 解耦：CSI missing 不删除 relation，mask=false 的 numeric placeholder 为 0；wired valid/no-CSI 保持合法。三条 development trajectory 共形成 12 个样本；这是机器合同证据，不是正式 Dataset 或容量结论。return size/priority/deadline 已核实存在 simulator observer source，但冻结 Raw 未透传；stable stateful Flow 等仍为 Raw-insufficient。Physical topology 与 graph object 均未实现。机器 artifact 位于 `code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/`。
 
 ## 下一步边界
 
-唯一建议是研究者审阅仍然 Raw-insufficient 的 minimum graph gaps，特别是 stable stateful Flow；不要自动进入 Graph Builder。
+唯一建议是 STEP 4.2B — Remaining Raw Source & Stateful Flow Contract Audit；不要自动实现 Graph Builder。

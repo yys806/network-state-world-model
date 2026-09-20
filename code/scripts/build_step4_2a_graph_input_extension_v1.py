@@ -118,12 +118,14 @@ def main() -> int:
         "required_checks": checks,
         "fields_resolved": bundle["fields_resolved"],
         "fields_still_blocked": bundle["fields_still_blocked"],
+        "remaining_gap_classification": bundle["remaining_gap_classification"],
         "raw_to_sample_to_tensor_provenance": bundle["provenance"],
         "new_normalization_stats": stats["features"],
         "communication_relation_semantics": {
-            "wireless": "decision channel_rows; directed per-RB attenuation and mask",
+            "wireless": "decision channel_rows; structural relation presence/validity is independent of per-RB CSI observability; missing CSI stays masked with zero placeholder and explicit reason",
             "wired": "pre-action environment.wired_edges expanded with WiredNetworkManager directed hasLink semantics; valid relation with CSI null/mask=false",
             "execution_outcome_used": False,
+            "relation_validity_independent_of_feature_observability": checks["communication_mask_counterfactual"],
         },
         "task_agent_relation_semantics": {
             "src": "task_node_id",
@@ -189,6 +191,7 @@ def main() -> int:
         "normalization_units": {key: value["unit"] for key, value in stats["features"].items()},
         "fields_resolved": bundle["fields_resolved"],
         "fields_still_blocked": bundle["fields_still_blocked"],
+        "remaining_gap_classification": bundle["remaining_gap_classification"],
         "deterministic_rebuild": deterministic,
         "deterministic_semantic_digest": first_digest,
         "validation_passed": checks["passed"],

@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-20：STEP 4.2A-PATCH Comm Mask Semantics & Gap Reclassification
+
+- 解耦 wireless structural relation presence/validity 与 CSI observed/mask；missing CSI 保留 relation，Sample/Tensor 使用 masked zero placeholder 和 missing reason。
+- 强化 Sample/Tensor validator 与 machine counterfactual，覆盖无线/有线 no-CSI、absent relation、tampered validity 和 masked placeholder。
+- return size/priority/deadline 改为 simulator observer available but frozen Raw not exposed；stateful Flow 继续 Raw-insufficient，未实现 Graph Builder。
+
 ## 2026-09-20：STEP 4.2A Existing-Source Graph Input Additive Extension
 
 - 新增独立 Raw amendment / Sample v5 / preprocessing v1 / Tensor v3 链路，把 position、wireless CSI、wired typed relation、CPU static capability、Task demand/progress/elapsed 与 Src/Host/Exec/Ret 输入化。

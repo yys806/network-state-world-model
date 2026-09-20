@@ -1,6 +1,6 @@
 # PI-JWM Current State Snapshot
 
-更新时间：2026-09-19
+更新时间：2026-09-20
 
 这是 ChatGPT 网页端进入仓库后的第一读取入口。它只提供当前快照和继续查证的路径，不替代源码、配置、checkpoint、metrics、manifest 或 audit。
 
@@ -12,10 +12,10 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 4.2A` 已完成 existing-source graph input additive extension；定义 03 的 graph builder、GNN 与模型仍未开始。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/`。
+- 当前 Step：`STEP 4.2A-PATCH` 已完成 Communication relation/CSI mask 语义修正与 gap source reclassification；通过后 STEP 4.2A COMPLETE / FROZEN。定义 03 的 graph builder、GNN 与模型仍未开始。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/`。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
-- 新定义实现状态：Raw 因果可观测、四类动作、slot Outcome 已验收；STEP 3.2/3.3 完成最小 Dataset/Tensor 合同；STEP 4.2A 已把 position/CSI/wired relation/CPU static capability/部分 Task 状态和 typed Task-Agent relation 输入化。stable stateful Flow 的 Raw 仍不足。双图、World Model、Loss、Planner 仍未开始。
+- 新定义实现状态：Raw 因果可观测、四类动作、slot Outcome 已验收；STEP 3.2/3.3 完成最小 Dataset/Tensor 合同；STEP 4.2A 已把 position/CSI/wired relation/CPU static capability/部分 Task 状态和 typed Task-Agent relation 输入化。Wireless structural relation 不因 CSI missing 而失效。return size/priority/deadline 有 observer source 但冻结 Raw 未透传；stable stateful Flow 的 Raw 仍不足。双图、World Model、Loss、Planner 仍未开始。
 - 审计结论：时间因果、稳定 ID/index、mask/split 和部分规则/评价工具可复用；严格双图、四类动作、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环需要结构性修改或新增实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step `training=false`、`gpu=false`。
@@ -26,7 +26,7 @@
 
 ## 单一科研下一步
 
-研究者审阅仍然 Raw-insufficient 的 minimum graph gaps，特别是 stable stateful Flow；不要自动进入 Graph Builder，不启动 GPU，不访问 `locked_test`。
+STEP 4.2B — Remaining Raw Source & Stateful Flow Contract Audit；不要自动实现 Graph Builder，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 
@@ -49,6 +49,8 @@
 
 ## 最近重要变化
 
+- 2026-09-20：STEP 4.2A-PATCH 解耦 wireless structural relation validity 与 CSI observability；missing CSI 保留 relation 并使用 mask=false/zero placeholder。return size/priority/deadline 改为 observer available but frozen Raw not exposed；stateful Flow 仍未解决。
+
 - 2026-09-19：STEP 4.1-PATCH 修正最小 gap 语义：wired relation 是 Raw/simulator 有来源但未暴露，无 CSI 时用 type + mask；wired 可选 numeric state 不阻塞 03 minimum；CPU capacity 是静态 capability，并与 allocation/service/available CPU 分离。graph builder 保持关闭。
 
 - 2026-09-19：完成 Step 2.4 wireless/wired/total communication Outcome 语义最终验收；wired 服务来自真实 `WiredNetworkManager.step`，空 map 与 missing 分开，冻结 Raw Trajectory Layer / 01。
@@ -67,5 +69,5 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 
 - Raw Trajectory / 01 与当前最小 Dataset/Tensor / 02 均已冻结；STEP 4.1 mapping 已冻结，STEP 4.2A existing-source input extension 已完成。
 - Causal boundary: future task schedule is internal metadata only; canonical acceleration is backward speed difference with an explicit missing-history mask.
-- Current blocker: additive exposure（含 wired relation 逐 Decision 物化）与 stateful-Flow Raw gap；可选 wired numeric state 不是 minimum blocker；graph builder 未授权、未开始。
+- Current blocker: remaining Raw source audit 与 stateful-Flow contract gap；可选 wired numeric state 不是 minimum blocker；graph builder 未授权、未开始。
 - Boundary: no graph/model/planner/training, no GPU, no `locked_test`.

@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-20 STEP 4.2A-PATCH
+
+已完成 wireless relation validity 与 CSI feature observability 解耦，并将 missing CSI counterfactual/negative tamper 纳入 Sample/Tensor validator 与 machine receipt。return size/priority/deadline 已按 `_extract_tasks()` 真实 getter 纠正为 observer available but frozen Raw not exposed；stateful Flow 仍未解决。focused tests 17/17 通过；未新增正式数据、未建图、未训练、未用 GPU/`locked_test`。
+
 ## 2026-09-20 STEP 4.2A
 
 已实现 existing-source graph input additive extension：新增版本化 Raw wired relation amendment、Sample/Tensor position/typed Comm/static CPU/Task current/typed Task–Agent 字段，以及 train-only mask-aware normalization。focused tests 14/14 通过；3 条 development trajectory 形成 12 个样本，receipt `passed=true`、semantic deterministic rebuild=true。Graph Builder、Physical topology、模型和训练均未开始；GPU/`locked_test` 均未使用。

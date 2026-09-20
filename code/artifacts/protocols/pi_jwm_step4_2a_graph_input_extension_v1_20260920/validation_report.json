@@ -1,10 +1,11 @@
 {
   "communication_relation_semantics": {
     "execution_outcome_used": false,
+    "relation_validity_independent_of_feature_observability": true,
     "wired": "pre-action environment.wired_edges expanded with WiredNetworkManager directed hasLink semantics; valid relation with CSI null/mask=false",
-    "wireless": "decision channel_rows; directed per-RB attenuation and mask"
+    "wireless": "decision channel_rows; structural relation presence/validity is independent of per-RB CSI observability; missing CSI stays masked with zero placeholder and explicit reason"
   },
-  "deterministic_semantic_digest": "7884b03aeea533ba95b72ecf5cf89cd0e1f3e2836b7d8b1942d41b300b3a103d",
+  "deterministic_semantic_digest": "c8edd4e18963e588807056609e8ba6b1d088997a95a9f25958c33a452275688d",
   "fields_resolved": [
     "physical.position_m",
     "comm.wireless_csi",
@@ -15,12 +16,12 @@
   ],
   "fields_still_blocked": [
     "flow.current_state.total_remaining_type_endpoints",
-    "task.return_size",
-    "task.priority",
-    "task.deadline",
     "agent.dynamic_available_cpu",
     "agent.storage",
-    "comm.wired_queue_load_utilization"
+    "comm.wired_queue_load_utilization",
+    "task.return_size",
+    "task.priority",
+    "task.deadline"
   ],
   "graph_readiness": {
     "graph_builder_implemented": false,
@@ -188,14 +189,87 @@
       "trajectory_id": "step3.2-dev-seed2"
     }
   ],
+  "remaining_gap_classification": [
+    {
+      "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "frozen_raw_exposed": false,
+      "item": "task.return_size",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getReturnedSize() -> TaskSnapshot.return_size"
+    },
+    {
+      "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "frozen_raw_exposed": false,
+      "item": "task.priority",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getTaskPriority() -> TaskSnapshot.priority"
+    },
+    {
+      "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "frozen_raw_exposed": false,
+      "item": "task.deadline",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getTaskDeadline() -> TaskSnapshot.deadline"
+    },
+    {
+      "availability": "AVAILABLE_AS_CAUSAL_DERIVATION_IN_STEP_4.2A",
+      "frozen_raw_exposed": false,
+      "item": "task.task_delay",
+      "sample_tensor_exposed": true,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> max(simulation_time - task.getTaskArrivalTime(), 0) -> TaskSnapshot.task_delay",
+      "step4_2a_representation": "history[].tasks[].elapsed_time_s"
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "definition_03_proven": false,
+      "forbidden_substitute": "past_outcome_flow_service",
+      "frozen_raw_exposed": false,
+      "item": "flow.current_state.total_remaining_type_endpoints",
+      "required_proof": [
+        "stable Flow identity",
+        "Input/Return/DepData type",
+        "logical source/destination and associated Task",
+        "total/current remaining data",
+        "multi-hop semantics",
+        "identity under route revision",
+        "pre-action current-state causality"
+      ],
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "frozen_raw_exposed": false,
+      "item": "agent.dynamic_available_cpu",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "frozen_raw_exposed": false,
+      "item": "agent.storage",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "frozen_raw_exposed": false,
+      "item": "comm.wired_queue_load_utilization",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    }
+  ],
   "required_checks": {
     "all_samples_valid": true,
+    "communication_mask_counterfactual": true,
     "deterministic_rebuild": true,
+    "fields_not_yet_in_sample_tensor_explicit": true,
     "passed": true,
-    "raw_insufficient_fields_still_blocked": true,
     "raw_sample_tensor_provenance": true,
+    "remaining_gap_classification_correct": true,
     "resolved_fields_explicit": true,
     "scope_false": true,
+    "stateful_flow_still_unresolved": true,
     "tensor_valid": true,
     "train_only_normalization": true,
     "trajectory_level_split": true,

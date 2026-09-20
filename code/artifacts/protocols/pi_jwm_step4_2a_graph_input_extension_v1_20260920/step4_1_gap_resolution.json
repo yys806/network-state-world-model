@@ -1,6 +1,82 @@
 {
   "graph_ready": false,
   "historical_mapping_preserved": true,
+  "raw_insufficient": [
+    "flow.current_state.total_remaining_type_endpoints",
+    "agent.dynamic_available_cpu",
+    "agent.storage",
+    "comm.wired_queue_load_utilization"
+  ],
+  "remaining_gap_classification": [
+    {
+      "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "frozen_raw_exposed": false,
+      "item": "task.return_size",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getReturnedSize() -> TaskSnapshot.return_size"
+    },
+    {
+      "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "frozen_raw_exposed": false,
+      "item": "task.priority",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getTaskPriority() -> TaskSnapshot.priority"
+    },
+    {
+      "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "frozen_raw_exposed": false,
+      "item": "task.deadline",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getTaskDeadline() -> TaskSnapshot.deadline"
+    },
+    {
+      "availability": "AVAILABLE_AS_CAUSAL_DERIVATION_IN_STEP_4.2A",
+      "frozen_raw_exposed": false,
+      "item": "task.task_delay",
+      "sample_tensor_exposed": true,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> max(simulation_time - task.getTaskArrivalTime(), 0) -> TaskSnapshot.task_delay",
+      "step4_2a_representation": "history[].tasks[].elapsed_time_s"
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "definition_03_proven": false,
+      "forbidden_substitute": "past_outcome_flow_service",
+      "frozen_raw_exposed": false,
+      "item": "flow.current_state.total_remaining_type_endpoints",
+      "required_proof": [
+        "stable Flow identity",
+        "Input/Return/DepData type",
+        "logical source/destination and associated Task",
+        "total/current remaining data",
+        "multi-hop semantics",
+        "identity under route revision",
+        "pre-action current-state causality"
+      ],
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "frozen_raw_exposed": false,
+      "item": "agent.dynamic_available_cpu",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "frozen_raw_exposed": false,
+      "item": "agent.storage",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "frozen_raw_exposed": false,
+      "item": "comm.wired_queue_load_utilization",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    }
+  ],
   "resolved": [
     {
       "current_availability": "AVAILABLE_IN_STEP_4.2A_SAMPLE_TENSOR",
@@ -33,13 +109,18 @@
       "step4_1_availability": "DERIVABLE_CAUSALLY"
     }
   ],
-  "still_blocked": [
-    "flow.current_state.total_remaining_type_endpoints",
+  "simulator_observer_available_but_frozen_raw_not_exposed": [
     "task.return_size",
     "task.priority",
-    "task.deadline",
+    "task.deadline"
+  ],
+  "still_blocked": [
+    "flow.current_state.total_remaining_type_endpoints",
     "agent.dynamic_available_cpu",
     "agent.storage",
-    "comm.wired_queue_load_utilization"
+    "comm.wired_queue_load_utilization",
+    "task.return_size",
+    "task.priority",
+    "task.deadline"
   ]
 }

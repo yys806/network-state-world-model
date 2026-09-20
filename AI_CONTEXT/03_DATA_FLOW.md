@@ -74,6 +74,8 @@ DataLoader → 模型 prior/teacher 输出 → `formal_world_model_loss()`。bas
 - STEP 3.3F CPU collation 入口为 `code/src/pi_jwm/step3_3_model_input_tensor_v1.py`；12 个 Step 3.2 sample 生成 fixed-shape arrays。Past Outcome 为独立 H-1 轴；Target 保留 future entity/task/flow/service；stable index、固定 vocab、padding/mask 和 target namespace 均有 semantic receipt。该 tensor 尚未被双图或模型读取。
 - STEP 4.1 mapping 已核实：position、heading/elevation、wireless CSI、CPU static capacity 和若干 Task current fields 在 Raw 有来源但未进入当前 input tensor；wired relation 可由 `environment.wired_edges` / `hasLink` 取得但尚未逐 Decision 物化，无 CSI 时以 type + feature mask 表示；可选 wired numeric state 不属于 03 minimum。完整 stateful Flow 在当前 Raw 不足。过去 `past_outcome_flow_service` 仍只是一条 hop service outcome，不能改名成 current Flow total/rem。
 - STEP 4.2A 当前链路：原 Raw + decision-before-action wired amendment → Sample v5（position、typed Comm、static CPU、Task current、Src/Host/Exec/Ret）→ trajectory split/train-only normalization → Tensor v3。旧 Step 3 arrays 保留；Future Target 只用于隔离校验，不进入 History input。stable stateful Flow、Physical topology 和 graph object 仍不存在。
+- STEP 4.2A-PATCH mask rule：observer 的 supported wireless directed relation 与 CSI feature observability 是两个层次。endpoint present 且 structural row 存在时，CSI `observed_mask=false` 仍保留 relation validity；CSI tensor mask=false、placeholder=0。relation presence=false 时 CSI mask 不得为 true。wired valid/no-CSI 使用同一分层原则。
+- Remaining Task source：`_extract_tasks()` 已读取 return size/deadline/priority，但 frozen Raw decision row 未透传；它们不是 simulator-source missing。`task_delay` 已由当前 `elapsed_time_s=max(decision_time-arrival_time,0)` 因果表达。
 
 Unverified：未在当前 tensor manifest、loader 或模型实际读路径出现的字段，不得推断为当前模型输入。
 

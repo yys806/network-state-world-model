@@ -8,6 +8,7 @@ import numpy as np
 
 from pi_jwm.step4_2a_graph_input_extension_v1 import (
     COMM_RELATION_TYPE_VOCAB,
+    REMAINING_GAP_CLASSIFICATION,
     RAW_SCHEMA_VERSION,
     SAMPLE_SCHEMA_VERSION,
     TENSOR_SCHEMA_VERSION,
@@ -57,6 +58,18 @@ class Step42AGraphInputExtensionTests(unittest.TestCase):
             self.assertTrue(all(row["presence"] and row["validity"] for row in rows))
             self.assertTrue(all(row["csi_value"] is None and row["csi_feature_mask"] is False for row in rows))
 
+    def test_remaining_task_gaps_distinguish_observer_source_from_frozen_raw(self):
+        gaps = {row["item"]: row for row in REMAINING_GAP_CLASSIFICATION}
+        expected = "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED"
+        for item in ("task.return_size", "task.priority", "task.deadline"):
+            self.assertEqual(gaps[item]["availability"], expected)
+            self.assertIsNotNone(gaps[item]["simulator_observer_source"])
+            self.assertFalse(gaps[item]["frozen_raw_exposed"])
+            self.assertFalse(gaps[item]["sample_tensor_exposed"])
+        self.assertEqual(gaps["task.task_delay"]["availability"], "AVAILABLE_AS_CAUSAL_DERIVATION_IN_STEP_4.2A")
+        self.assertEqual(gaps["flow.current_state.total_remaining_type_endpoints"]["availability"], "RAW_INSUFFICIENT")
+        self.assertFalse(gaps["flow.current_state.total_remaining_type_endpoints"]["definition_03_proven"])
+
     def test_future_target_position_does_not_change_history_position_tensor(self):
         _, sample = self._sample()
         baseline, _ = self._tensor(sample)
@@ -82,6 +95,71 @@ class Step42AGraphInputExtensionTests(unittest.TestCase):
         wired = tensor["comm_relation_type_index"] == wired_code
         self.assertTrue(np.any(wired & tensor["comm_relation_validity"]))
         self.assertFalse(np.any(tensor["comm_csi_mask"][wired]))
+
+    def test_wireless_relation_survives_missing_csi_with_masked_zero_placeholder(self):
+        changed_raw = copy.deepcopy(self.raw)
+        for decision in changed_raw["decisions"]:
+            row = decision["channel_rows"][0]
+            row["channel_attenuation_db"] = []
+            row["observed_mask"] = False
+            row["missing_reason"] = "COUNTERFACTUAL_CSI_UNAVAILABLE"
+            row["source_method"] = None
+        _, sample = self._sample(changed_raw)
+        relation = next(row for row in sample["history"][0]["communication_relations"] if row["relation_type"] == "wireless")
+        self.assertTrue(relation["presence"])
+        self.assertTrue(relation["validity"])
+        self.assertFalse(any(relation["csi_mask"]))
+        self.assertTrue(all(value == 0.0 for value in relation["csi_values"]))
+        self.assertEqual(relation["csi_missing_reason"], "COUNTERFACTUAL_CSI_UNAVAILABLE")
+        self.assertTrue(validate_extended_sample_checks(sample)["passed"])
+        deleted_relation = copy.deepcopy(sample)
+        deleted_wireless = next(row for row in deleted_relation["history"][0]["communication_relations"] if row["relation_type"] == "wireless")
+        deleted_wireless["validity"] = False
+        self.assertFalse(validate_extended_sample_checks(deleted_relation)["relation_validity_independent_of_feature_observability"])
+
+        tensor, _ = self._tensor(sample)
+        wireless_code = COMM_RELATION_TYPE_VOCAB.index("wireless")
+        wireless = tensor["comm_relation_type_index"] == wireless_code
+        missing_csi = wireless & tensor["comm_relation_validity"] & ~np.any(tensor["comm_csi_mask"], axis=-1)
+        self.assertTrue(np.any(missing_csi))
+        self.assertTrue(np.all(tensor["comm_csi_raw"][missing_csi] == 0))
+        self.assertTrue(np.all(tensor["comm_csi"][missing_csi] == 0))
+        self.assertTrue(validate_extended_tensor_checks(tensor)["passed"])
+        deleted_tensor_relation = copy.deepcopy(tensor)
+        missing_location = np.argwhere(missing_csi)[0]
+        deleted_tensor_relation["comm_relation_validity"][tuple(int(value) for value in missing_location)] = False
+        self.assertFalse(validate_extended_tensor_checks(deleted_tensor_relation)["relation_validity_independent_of_feature_observability"])
+
+    def test_comm_validators_reject_feature_mask_on_absent_relation(self):
+        _, sample = self._sample()
+        tampered = copy.deepcopy(sample)
+        relation = next(row for row in tampered["history"][0]["communication_relations"] if row["relation_type"] == "wireless")
+        relation["presence"] = False
+        relation["validity"] = False
+        relation["csi_mask"][0] = True
+        self.assertFalse(validate_extended_sample_checks(tampered)["relation_validity_independent_of_feature_observability"])
+        self.assertFalse(validate_extended_sample_checks(tampered)["passed"])
+
+        tensor, _ = self._tensor(sample)
+        tensor_tampered = copy.deepcopy(tensor)
+        wireless_code = COMM_RELATION_TYPE_VOCAB.index("wireless")
+        location = np.argwhere(tensor_tampered["comm_relation_type_index"] == wireless_code)[0]
+        b, h, relation_index = (int(value) for value in location)
+        tensor_tampered["comm_relation_presence"][b, h, relation_index] = False
+        tensor_tampered["comm_relation_validity"][b, h, relation_index] = False
+        tensor_tampered["comm_csi_mask"][b, h, relation_index, 0] = True
+        checks = validate_extended_tensor_checks(tensor_tampered)
+        self.assertFalse(checks["relation_validity_independent_of_feature_observability"])
+        self.assertFalse(checks["passed"])
+
+        nonzero_placeholder = copy.deepcopy(tensor)
+        wired_code = COMM_RELATION_TYPE_VOCAB.index("wired")
+        wired_location = np.argwhere(nonzero_placeholder["comm_relation_type_index"] == wired_code)[0]
+        b, h, relation_index = (int(value) for value in wired_location)
+        nonzero_placeholder["comm_csi"][b, h, relation_index, 0] = 123.0
+        placeholder_checks = validate_extended_tensor_checks(nonzero_placeholder)
+        self.assertFalse(placeholder_checks["masked_placeholders_zero"])
+        self.assertFalse(placeholder_checks["passed"])
 
     def test_wired_service_outcome_does_not_change_decision_relation(self):
         _, baseline = self._sample()

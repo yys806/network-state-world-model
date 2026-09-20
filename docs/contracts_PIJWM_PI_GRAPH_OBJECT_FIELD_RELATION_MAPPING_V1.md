@@ -128,4 +128,4 @@ Artifact：`code/artifacts/protocols/pi_jwm_step4_1_pi_graph_mapping_v1_20260919
 
 本文件冻结的是 Step 4.1 当时的 mapping 与 gap，不改写历史分类。后续 Step 4.2A 已用独立版本链把 position、wireless per-RB CSI、wired typed relation、CPU static capability、已有 Task demand/progress/elapsed 以及 Src/Host/Exec/Ret 贯穿到 Sample/Tensor。机器化 resolution overlay 见 `code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/step4_1_gap_resolution.json`。
 
-仍未解决且不得补造的 minimum gap 是 stable stateful Flow；return size/priority/deadline、dynamic available CPU、storage 和 wired queue/load/utilization 也继续缺少可靠 Raw 来源。Physical topology 与 graph builder 未实现。
+仍未解决且不得补造的 minimum gap 是 stable stateful Flow。STEP 4.2A-PATCH 进一步核实 return size/priority/deadline 有 `_extract_tasks()` getter/TaskSnapshot 来源，但冻结 Raw 尚未透传，因此分类为 `SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED`；不是 simulator 无来源，也未在该 Patch 输入化。dynamic available CPU、storage 和 wired queue/load/utilization 继续缺少可靠 Raw 来源。Physical topology 与 graph builder 未实现。

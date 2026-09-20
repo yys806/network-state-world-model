@@ -33,6 +33,13 @@ Step 3 Tensor 只有 speed/canonical acceleration/task size 等当前最小输�
 - Tensor v3 additive 增加 Physical position、typed Comm、static CPU、Task extended features 和 typed Task–Agent arrays；保留 Step 3.3 v2 arrays 和 semantic checks。
 - 形成 Step 4.1 gap-resolution overlay；不改写 Step 4.1 当时“未暴露”的历史事实。
 
+### STEP 4.2A-PATCH — Comm Mask Semantics & Gap Reclassification
+
+- 依据 `_physical_structure()` 修正 wireless 语义：structural relation presence/validity 不再依赖 CSI `observed_mask`；CSI 缺失时保留 relation，记录 missing reason，CSI mask=false、placeholder=0。
+- Sample/Tensor validator 增加 `relation_validity_independent_of_feature_observability`、masked-zero、inactive-relation feature-mask 检查；machine receipt 实际运行 missing-CSI 正向与删除-relation 负向 counterfactual。
+- 核实 `_extract_tasks()`：return size、priority、deadline 改为 `SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED`；task delay 已由 Step 4.2A 因果 elapsed 表达。本 Patch 未修改 Raw collector 或输入化前三项。
+- stateful Flow 继续 `RAW_INSUFFICIENT`；旧 `LogicalFlow`、`CarryingHop` 和 `past_outcome_flow_service` 均不作为定义 03 current Flow 已存在的证据。
+
 ## Reuse
 
 复用三条 Step 3.2 development trajectory、Step 3.1F sample builder 的时间/index/action/target 语义、Step 3.2 Raw continuity/split 和旧字段 normalization、Step 3.3 fixed-shape/action/target arrays。未修改第三方 AirFogSim、旧 artifact、模型或图算子。
@@ -40,11 +47,12 @@ Step 3 Tensor 只有 speed/canonical acceleration/task size 等当前最小输�
 ## Validation
 
 - TDD red：新增 focused test 先以 `ModuleNotFoundError` 失败。
-- focused：14/14，覆盖未来 position/progress 隔离、validation CSI counterfactual、wired valid+no-CSI、outcome independence、CPU capacity/allocation/service 分离、Task progress、Future Route isolation、endpoint triple consistency、late-entry/disappearing stable slot 和 NPZ round-trip。
+- PATCH TDD red：missing-CSI fixture 先以 `ValueError: wireless CSI and RB identity lengths differ` 失败，validator negative fixture 先因缺少 `relation_validity_independent_of_feature_observability` 返回项失败；gap classification fixture 先以缺少机器常量的 `ImportError` 失败。
+- focused：PATCH 后 17/17，新增 wireless missing-CSI relation 保留、masked-zero、inactive relation/tampered validity rejection 和 Task gap source classification；其余 future isolation、wired no-CSI、CPU 四语义、Task–Agent、stable slot 与 NPZ round-trip 保持通过。
 - development artifact：3 trajectories、12 samples；machine receipt `passed=true`；semantic deterministic rebuild=true。
 - Tensor observation shapes：position `[12,2,10,3]`，Comm CSI `[12,2,74,50]`，static CPU `[12,10]`，Task–Agent endpoint `[12,2,22]`。这些容量只描述当前 development bundle，不是正式研究容量。
-- regressions：Step 4.1 7/7、Step 3.3 8/8、Step 3.2 11/11、Raw causal 4/4，全部通过。
-- deterministic artifact rebuild：两个独立临时目录各生成 11 个文件，逐文件 SHA-256 `DifferenceCount=0`；正式 `manifest.json=c6341b0a...74bb649a`、`tensor.npz=fc36946c...3d38620`、`validation_report.json=d0281b2d...785c42c3`。JSON 固定 UTF-8/LF，manifest 内 7 个文件 hash 均与 Git 可保存字节一致。
+- PATCH regressions：Step 4.1 7/7、Step 3.3 8/8、Step 3.2 11/11、Raw causal 4/4，全部通过。
+- PATCH deterministic artifact rebuild：两个独立临时目录各生成 11 个文件，逐文件 SHA-256 `DifferenceCount=0`；正式 `manifest.json=cacdee9c...4d440edf`、`tensor.npz=489bf4c2...7a1981df`、`validation_report.json=07361ac5...da6f69af`。JSON 固定 UTF-8/LF，manifest 内 7 个文件 hash 均与 Git 可保存字节一致。
 - `python -m compileall -q code/src code/scripts code/tests`：通过；knowledge index write / `--check`：5 个输出、`mismatches=[]`、`passed=true`；`git diff --check`：通过。
 
 ## Results
@@ -58,7 +66,7 @@ Step 4.1 中 position、wireless CSI、wired relation、CPU static capability、
 ## Known Issues
 
 - 当前只有三条短 development trajectory 和 12 个窗口，不代表正式 Dataset 或 feature capacity。
-- stable stateful Flow、return size/priority/deadline、dynamic available CPU、storage、wired queue/load/utilization 继续 blocked。
+- stable stateful Flow、dynamic available CPU、storage、wired queue/load/utilization 继续 `RAW_INSUFFICIENT`。return size/priority/deadline 仍未进入 Raw/Sample/Tensor，但已有 simulator observer source，不能再称为 simulator 无可靠来源。
 - edge/cloud Physical membership、Physical neighborhood 和后续模型字段选择继续等待研究者决定。
 
 ## Git
@@ -67,4 +75,4 @@ Step 4.1 中 position、wireless CSI、wired relation、CPU static capability、
 
 ## Next Step
 
-唯一建议：审阅仍然 Raw-insufficient 的 minimum graph gaps，特别是 stable stateful Flow；不要自动进入 Graph Builder。
+唯一建议：STEP 4.2B — Remaining Raw Source & Stateful Flow Contract Audit；不要自动实现 Graph Builder。

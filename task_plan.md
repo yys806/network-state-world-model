@@ -1,5 +1,16 @@
 # 2026-08-26 双约束实施计划 v2
 
+## 2026-09-20 STEP 4.2A-PATCH — Comm Mask Semantics & Gap Reclassification
+
+- 当前门：只解耦 wireless structural relation validity 与 CSI feature observability，并纠正 Task observer-source gap 分类；不新增 Raw 字段、不实现 stateful Flow 或 Graph Builder。
+- [x] 核实 `airfogsim_full_dual_graph_observer_v1._physical_structure()` 与 `_extract_tasks()` 的真实源码语义。
+- [x] TDD 固定 wireless endpoints present + CSI missing、wired valid/no-CSI、inactive relation feature mask、placeholder 与 validator negative tamper。
+- [x] 最小修改 Sample/Tensor mask 语义、机器 validator 和 remaining-gap classification。
+- [x] 重建 receipt/gap overlay/manifest，同步 Step 4.2A record/contract、Tracker、必要 AI_CONTEXT 和过程记录。
+- [x] 运行 focused、Step 4.1/3.3/3.2/Raw 回归、deterministic rebuild/hash、round-trip、compileall、knowledge index write/check、diff checks；待 commit + push `main` 后停止。
+- 边界：`graph_builder=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`；`past_outcome_flow_service` 继续禁止作为 current Flow state。
+- 唯一下一动作：完成本 Patch；通过后 STEP 4.2A COMPLETE / FROZEN，等待研究者授权 STEP 4.2B audit。
+
 ## 2026-09-19 STEP 3.3F
 
 - Scope: finalize JSON sample -> tensor semantic completeness only; no graph/model/training work.

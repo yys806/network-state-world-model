@@ -1,5 +1,12 @@
 # Findings
 
+## 2026-09-20 STEP 4.2A-PATCH
+
+- `_physical_structure()` 先建立 V/U/I directed structural relation，再读取 CSI；`observed_mask=false` 只证明 CSI feature 缺失，不证明 relation 不存在。
+- relation mask 与 feature mask 必须分层；否则 node-index 暂不可用会错误删除 Information Graph 的结构边。
+- `_extract_tasks()` 已提供 return size、deadline、priority、task delay 的 simulator observer source；冻结 Raw 未透传不能写成 simulator 无可靠来源。
+- 旧 `LogicalFlow`/`CarryingHop` 类型名和 past hop service 仍不足以证明定义 03 stateful Flow 的 identity、total/rem、multi-hop 与 route-revision 语义。
+
 ## 2026-09-20 STEP 4.2A
 
 - wired topology 可以在动作执行前物化为 directed typed relation；CSI 缺失由 type + mask 表示，不能借用 wired service outcome。

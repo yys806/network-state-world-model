@@ -1124,7 +1124,7 @@
     }
   },
   "deterministic_rebuild": true,
-  "deterministic_semantic_digest": "7884b03aeea533ba95b72ecf5cf89cd0e1f3e2836b7d8b1942d41b300b3a103d",
+  "deterministic_semantic_digest": "c8edd4e18963e588807056609e8ba6b1d088997a95a9f25958c33a452275688d",
   "fields_resolved": [
     "physical.position_m",
     "comm.wireless_csi",
@@ -1135,21 +1135,21 @@
   ],
   "fields_still_blocked": [
     "flow.current_state.total_remaining_type_endpoints",
-    "task.return_size",
-    "task.priority",
-    "task.deadline",
     "agent.dynamic_available_cpu",
     "agent.storage",
-    "comm.wired_queue_load_utilization"
+    "comm.wired_queue_load_utilization",
+    "task.return_size",
+    "task.priority",
+    "task.deadline"
   ],
   "files": {
-    "batch.json": "9c368f528e0cee36bff4be0e35bcf586c561cd9c180ccadb8ab4cdc14b8201d9",
-    "normalized_samples.json": "c97f339f6b8fc821fd36faaa475ad45cc7ca978ef15b386671195ee6c24c04f5",
-    "step4_1_gap_resolution.json": "b68870f609a2fedd96ea9bb37c5640662ac1002d328f3f3fdc735a99e8ea3345",
-    "tensor.npz": "fc36946c7de219d608f6b959d3b9c3cb81bf037a6b3c6ede17d96882c3d38620",
-    "tensor_schema.json": "6acfba387cc6a49384d6e9b1d1c9747fd524a11482d05afd7ff7257c07f05f87",
+    "batch.json": "612c4b3791ba02371769b3dd35973a762d4584412b65d632e76cb34c1ca3ebec",
+    "normalized_samples.json": "be44e75d6c0eb2d0202b2bad01e51ce95f3f961d39890a09b6b4a6b3fb2dda91",
+    "step4_1_gap_resolution.json": "52a189d7696f8ff5c3991d98047d1ace1df187119698816998e59965f5cddbdd",
+    "tensor.npz": "489bf4c2e0890910102b7c21c5097cc2e3ab1296e8cd1bc5bab8712a7a1981df",
+    "tensor_schema.json": "23f574983e3e75938371eacd40f9a86859293397dfdecd0d78d43808538da82c",
     "train_normalization_stats.json": "f03c39438fc3b1ef3bbdaadf24faa622f184c1cc7358d3b810ced5a61ec05579",
-    "validation_report.json": "d0281b2da85d48269def3c1034db1d221e2f663089709087cd06b202785c42c3"
+    "validation_report.json": "07361ac554bee64f1ef1939c4b31a45ed4d453aea70b80789ee1b7a1da6f69af"
   },
   "input_sources": {
     "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
@@ -1172,6 +1172,76 @@
     "raw_amendments/step3.2-dev-seed1.json": "31799ad9c60baa39deaa41f9c9434815be2f4493f2f666c6fada3c9d4aa5f7ff",
     "raw_amendments/step3.2-dev-seed2.json": "d093b68ec13571081bbf363130ead90d4e6df5e058b7b4b00d1c701f4203a6b8"
   },
+  "remaining_gap_classification": [
+    {
+      "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "frozen_raw_exposed": false,
+      "item": "task.return_size",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getReturnedSize() -> TaskSnapshot.return_size"
+    },
+    {
+      "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "frozen_raw_exposed": false,
+      "item": "task.priority",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getTaskPriority() -> TaskSnapshot.priority"
+    },
+    {
+      "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "frozen_raw_exposed": false,
+      "item": "task.deadline",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getTaskDeadline() -> TaskSnapshot.deadline"
+    },
+    {
+      "availability": "AVAILABLE_AS_CAUSAL_DERIVATION_IN_STEP_4.2A",
+      "frozen_raw_exposed": false,
+      "item": "task.task_delay",
+      "sample_tensor_exposed": true,
+      "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> max(simulation_time - task.getTaskArrivalTime(), 0) -> TaskSnapshot.task_delay",
+      "step4_2a_representation": "history[].tasks[].elapsed_time_s"
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "definition_03_proven": false,
+      "forbidden_substitute": "past_outcome_flow_service",
+      "frozen_raw_exposed": false,
+      "item": "flow.current_state.total_remaining_type_endpoints",
+      "required_proof": [
+        "stable Flow identity",
+        "Input/Return/DepData type",
+        "logical source/destination and associated Task",
+        "total/current remaining data",
+        "multi-hop semantics",
+        "identity under route revision",
+        "pre-action current-state causality"
+      ],
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "frozen_raw_exposed": false,
+      "item": "agent.dynamic_available_cpu",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "frozen_raw_exposed": false,
+      "item": "agent.storage",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    },
+    {
+      "availability": "RAW_INSUFFICIENT",
+      "frozen_raw_exposed": false,
+      "item": "comm.wired_queue_load_utilization",
+      "sample_tensor_exposed": false,
+      "simulator_observer_source": null
+    }
+  ],
   "sample_count": 12,
   "schema_versions": {
     "dataset_preprocessing": "PI-JWM-Step-4.2A-Dataset-Preprocessing-v1",
@@ -1189,9 +1259,9 @@
   },
   "source_files": {
     "code/reference/AirFogSim/airfogsim/manager/wired_manager.py": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe",
-    "code/scripts/build_step4_2a_graph_input_extension_v1.py": "ab7c3676bc3e27fa5fb61dbb5f7eeb5070318ea3ce53c087929b8c6f50484d15",
-    "code/src/pi_jwm/step4_2a_graph_input_extension_v1.py": "a528d151e007f09cb2818ea3af78320ebee99f7d06e173f4b0d94f9f62c2a3f3",
-    "code/tests/test_step4_2a_graph_input_extension_v1.py": "c3fa9b4340c5d27ce1814381ba82bf03fe98e79d99e99e11c17097ffc23fece0"
+    "code/scripts/build_step4_2a_graph_input_extension_v1.py": "da023325c86d330f8f3b291c1ae0c7d0ea12ac85c9c6a7f1bd4c397193ab7b6c",
+    "code/src/pi_jwm/step4_2a_graph_input_extension_v1.py": "a13216842aa2e430f885b97d3eb86d6e61ccfe2cd88bc3bb04ac2ecdfaaa49a0",
+    "code/tests/test_step4_2a_graph_input_extension_v1.py": "5e9a4414e4fae0899b0aa81f1514db6d57b5e00454ef181b879e3becfcf98d8c"
   },
   "trajectory_count": 3,
   "validation_passed": true

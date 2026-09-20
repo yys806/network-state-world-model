@@ -54,14 +54,80 @@ NORMALIZATION_SPECS = {
     "task.elapsed_time_s": ("s", "decision_time_s - tasks[].arrival_time_s"),
 }
 
-STILL_BLOCKED_FIELDS = (
-    "flow.current_state.total_remaining_type_endpoints",
+OBSERVER_AVAILABLE_FROZEN_RAW_NOT_EXPOSED_FIELDS = (
     "task.return_size",
     "task.priority",
     "task.deadline",
+)
+
+RAW_INSUFFICIENT_FIELDS = (
+    "flow.current_state.total_remaining_type_endpoints",
     "agent.dynamic_available_cpu",
     "agent.storage",
     "comm.wired_queue_load_utilization",
+)
+
+STILL_BLOCKED_FIELDS = RAW_INSUFFICIENT_FIELDS + OBSERVER_AVAILABLE_FROZEN_RAW_NOT_EXPOSED_FIELDS
+
+REMAINING_GAP_CLASSIFICATION = (
+    {
+        "item": "task.return_size",
+        "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+        "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getReturnedSize() -> TaskSnapshot.return_size",
+        "frozen_raw_exposed": False,
+        "sample_tensor_exposed": False,
+    },
+    {
+        "item": "task.priority",
+        "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+        "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getTaskPriority() -> TaskSnapshot.priority",
+        "frozen_raw_exposed": False,
+        "sample_tensor_exposed": False,
+    },
+    {
+        "item": "task.deadline",
+        "availability": "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+        "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> task.getTaskDeadline() -> TaskSnapshot.deadline",
+        "frozen_raw_exposed": False,
+        "sample_tensor_exposed": False,
+    },
+    {
+        "item": "task.task_delay",
+        "availability": "AVAILABLE_AS_CAUSAL_DERIVATION_IN_STEP_4.2A",
+        "simulator_observer_source": "airfogsim_full_dual_graph_observer_v1._extract_tasks -> max(simulation_time - task.getTaskArrivalTime(), 0) -> TaskSnapshot.task_delay",
+        "frozen_raw_exposed": False,
+        "sample_tensor_exposed": True,
+        "step4_2a_representation": "history[].tasks[].elapsed_time_s",
+    },
+    {
+        "item": "flow.current_state.total_remaining_type_endpoints",
+        "availability": "RAW_INSUFFICIENT",
+        "simulator_observer_source": None,
+        "frozen_raw_exposed": False,
+        "sample_tensor_exposed": False,
+        "definition_03_proven": False,
+        "required_proof": [
+            "stable Flow identity",
+            "Input/Return/DepData type",
+            "logical source/destination and associated Task",
+            "total/current remaining data",
+            "multi-hop semantics",
+            "identity under route revision",
+            "pre-action current-state causality",
+        ],
+        "forbidden_substitute": "past_outcome_flow_service",
+    },
+    *(
+        {
+            "item": item,
+            "availability": "RAW_INSUFFICIENT",
+            "simulator_observer_source": None,
+            "frozen_raw_exposed": False,
+            "sample_tensor_exposed": False,
+        }
+        for item in RAW_INSUFFICIENT_FIELDS
+        if item != "flow.current_state.total_remaining_type_endpoints"
+    ),
 )
 
 
@@ -166,9 +232,16 @@ def _communication_rows(decision: Mapping[str, Any], node_index: Mapping[str, in
         observed = bool(row.get("observed_mask", False))
         csi = list(row.get("channel_attenuation_db") or [])
         rb_indices = [int(value) for value in row.get("rb_indices", [])]
-        if len(csi) != len(rb_indices):
+        if observed and len(csi) != len(rb_indices):
             raise ValueError("wireless CSI and RB identity lengths differ")
-        valid = source in present and target in present and observed
+        relation_present = source in present and target in present
+        # The observer emits the supported directed structural relation before
+        # trying to read CSI.  CSI observability therefore cannot determine
+        # whether the relation itself exists.  Missing CSI uses zero only as a
+        # masked tensor placeholder.
+        csi_feature_valid = relation_present and observed
+        csi_values = [float(value) for value in csi] if csi_feature_valid else [0.0] * len(rb_indices)
+        csi_mask = [csi_feature_valid] * len(rb_indices)
         rows.append({
             "communication_relation_id": f"comm::wireless::{row.get('physical_edge_id')}",
             "source_id": source,
@@ -177,13 +250,15 @@ def _communication_rows(decision: Mapping[str, Any], node_index: Mapping[str, in
             "target_agent_index": int(node_index[target]),
             "relation_type": "wireless",
             "wireless_channel_type": row.get("channel_type"),
-            "presence": source in present and target in present,
-            "validity": valid,
+            "presence": relation_present,
+            "validity": relation_present,
             "rb_indices": rb_indices,
-            "rb_mask": [valid] * len(rb_indices),
-            "csi_values": [float(value) for value in csi],
-            "csi_mask": [valid] * len(csi),
+            "rb_mask": [relation_present] * len(rb_indices),
+            "csi_values": csi_values,
+            "csi_mask": csi_mask,
             "csi_unit": "dB",
+            "csi_observed": observed,
+            "csi_missing_reason": row.get("missing_reason"),
             "source_provenance": row.get("source_method", "channel_manager.getCSI"),
         })
     for row in decision.get("wired_relation_rows", []):
@@ -206,6 +281,8 @@ def _communication_rows(decision: Mapping[str, Any], node_index: Mapping[str, in
             "csi_values": None,
             "csi_mask": False,
             "csi_unit": "dB",
+            "csi_observed": False,
+            "csi_missing_reason": "CSI_NOT_APPLICABLE_TO_WIRED_RELATION",
             "source_provenance": copy.deepcopy(row.get("source_provenance")),
         })
     return sorted(rows, key=lambda item: item["communication_relation_id"])
@@ -334,6 +411,7 @@ def build_extended_sample(raw: Mapping[str, Any], *, anchor_step: int = 2) -> di
     sample["contract"]["schema_version"] = SAMPLE_SCHEMA_VERSION
     sample["contract"]["base_sample_schema_version"] = BASE_SAMPLE_SCHEMA_VERSION
     sample["contract"]["additive_graph_input_extension"] = True
+    sample["contract"]["communication_mask_semantics"] = "relation_validity_independent_of_feature_observability_v2"
     sample["metadata"]["raw_contract_version"] = RAW_SCHEMA_VERSION
     sample["metadata"]["normalization_policy"] = "trajectory split then train-only valid-value fit; validation reuse"
     checks = validate_extended_sample_checks(sample)
@@ -355,6 +433,24 @@ def validate_extended_sample_checks(sample: Mapping[str, Any]) -> dict[str, bool
         "history_position_complete": bool(history) and all("position_m" in row and row["position_m"].get("unit") == "m" for frame in history for row in frame.get("entities", [])),
         "typed_comm_separate": bool(comm_rows) and all(row.get("relation_type") in {"wireless", "wired"} for row in comm_rows),
         "wired_valid_without_csi": bool(wired) and all(row.get("csi_values") is None and row.get("csi_mask") is False for row in wired),
+        "relation_validity_independent_of_feature_observability": all(
+            bool(row.get("validity")) == bool(row.get("presence"))
+            and (
+                row.get("csi_mask") is False
+                if row.get("relation_type") == "wired"
+                else not any(row.get("csi_mask", [])) if not row.get("presence") else True
+            )
+            for row in comm_rows
+        ),
+        "comm_masked_csi_placeholder_zero": all(
+            row.get("relation_type") != "wireless"
+            or (
+                len(row.get("rb_indices", [])) == len(row.get("rb_mask", [])) == len(row.get("csi_values", [])) == len(row.get("csi_mask", []))
+                and all(bool(csi_valid) <= bool(rb_valid) for csi_valid, rb_valid in zip(row.get("csi_mask", []), row.get("rb_mask", [])))
+                and all(bool(mask) or float(value) == 0.0 for value, mask in zip(row.get("csi_values", []), row.get("csi_mask", [])))
+            )
+            for row in comm_rows
+        ),
         "comm_endpoint_namespace": all(row.get("source_id") in node_index and row.get("source_agent_index") == node_index[row["source_id"]] and row.get("target_id") in node_index and row.get("target_agent_index") == node_index[row["target_id"]] for row in comm_rows),
         "cpu_static_capability_only": len(sample.get("static", {}).get("agent_static_capability", [])) == len(node_index) and all(row["cpu_capacity_per_s"].get("semantic_role") == "information_agent.static_capability" for row in sample.get("static", {}).get("agent_static_capability", [])),
         "task_current_fields_complete": all("arrival_time_s" in row and all(field in row for field in TASK_HISTORY_FEATURE_ORDER) for frame in history for row in frame.get("tasks", [])),
@@ -534,6 +630,7 @@ def build_extended_tensor_batch(samples: Sequence[Mapping[str, Any]], *, stats: 
         "entity_position_feature_order": ["x", "y", "z"],
         "task_history_feature_order": list(TASK_HISTORY_FEATURE_ORDER),
         "comm_relation_type_vocab": list(COMM_RELATION_TYPE_VOCAB),
+        "communication_mask_semantics": "relation_validity_independent_of_feature_observability_v2",
         "task_agent_relation_type_vocab": list(TASK_AGENT_RELATION_TYPE_VOCAB),
         "cpu_capacity_semantic_role": "information_agent.static_capability",
         "physical_topology_policy": "NOT_BUILT_RESEARCHER_DECISION_REQUIRED",
@@ -613,13 +710,19 @@ def build_extended_tensor_batch(samples: Sequence[Mapping[str, Any]], *, stats: 
                 output["comm_relation_validity"][batch_index, history_index, relation_index] = bool(row.get("validity"))
                 if row["relation_type"] == "wireless":
                     normalized = row.get("csi_normalized_values", row.get("csi_values", []))
-                    for rb, raw_value, norm_value, valid in zip(row.get("rb_indices", []), row.get("csi_values", []), normalized, row.get("csi_mask", [])):
+                    for rb, raw_value, norm_value, rb_valid, csi_valid in zip(
+                        row.get("rb_indices", []),
+                        row.get("csi_values", []),
+                        normalized,
+                        row.get("rb_mask", []),
+                        row.get("csi_mask", []),
+                    ):
                         rb = int(rb)
                         if rb < 0 or rb >= n_rb:
                             raise ValueError("communication RB index exceeds tensor capacity")
                         output["comm_rb_indices"][batch_index, history_index, relation_index, rb] = rb
-                        output["comm_rb_mask"][batch_index, history_index, relation_index, rb] = bool(valid)
-                        if valid and norm_value is not None:
+                        output["comm_rb_mask"][batch_index, history_index, relation_index, rb] = bool(rb_valid)
+                        if csi_valid and norm_value is not None:
                             output["comm_csi_raw"][batch_index, history_index, relation_index, rb] = float(raw_value)
                             output["comm_csi"][batch_index, history_index, relation_index, rb] = float(norm_value)
                             output["comm_csi_mask"][batch_index, history_index, relation_index, rb] = True
@@ -645,6 +748,8 @@ def validate_extended_tensor_checks(tensor: Mapping[str, Any]) -> dict[str, bool
     max_entity = int(contract.get("max_entity", -1))
     max_task = int(contract.get("max_task", -1))
     wired_code = COMM_RELATION_TYPE_VOCAB.index("wired")
+    actual_comm = np.asarray(comm_types) != COMM_RELATION_TYPE_VOCAB.index("<PAD>")
+    comm_presence = np.asarray(tensor.get("comm_relation_presence"), dtype=bool)
     active_comm = np.asarray(comm_valid, dtype=bool)
     wired = np.asarray(comm_types) == wired_code
     active_task_agent = np.asarray(tensor.get("task_agent_validity_mask"), dtype=bool)
@@ -657,6 +762,10 @@ def validate_extended_tensor_checks(tensor: Mapping[str, Any]) -> dict[str, bool
         "entity_position_shape": isinstance(entity_position, np.ndarray) and entity_position.shape[-1] == 3 and tensor["entity_position_mask"].shape == entity_position.shape,
         "typed_comm_tensor_separate": all(name in tensor for name in ("comm_source_index", "comm_target_index", "comm_relation_type_index", "comm_relation_presence", "comm_relation_validity", "comm_csi", "comm_csi_mask")),
         "wired_valid_without_csi": bool(np.any(wired & active_comm)) and not bool(np.any(np.asarray(comm_csi_mask)[wired])),
+        "relation_validity_independent_of_feature_observability": bool(
+            np.all(active_comm[actual_comm] == comm_presence[actual_comm])
+            and not np.any(np.asarray(comm_csi_mask, dtype=bool)[~(comm_presence & active_comm)])
+        ),
         "comm_endpoints_in_entity_namespace": bool(np.all((comm_source[active_comm] >= 0) & (comm_source[active_comm] < max_entity)) and np.all((comm_target[active_comm] >= 0) & (comm_target[active_comm] < max_entity))),
         "cpu_static_has_no_history_axis": tensor["agent_cpu_capacity"].ndim == 2 and tensor["agent_cpu_capacity"].shape[1] == max_entity,
         "task_extended_shape": tensor["task_history_extended_features"].shape[-1] == len(TASK_HISTORY_FEATURE_ORDER),
@@ -702,6 +811,56 @@ def load_extended_tensor_batch(path: str | Path) -> dict[str, Any]:
         result.update({key: data[key] for key in data.files if key not in json_names})
     result["schema_version"] = TENSOR_SCHEMA_VERSION
     return result
+
+
+def validate_communication_mask_counterfactual(sample: Mapping[str, Any], stats: Mapping[str, Any]) -> bool:
+    """Exercise missing-CSI semantics independently of the development trace."""
+
+    probe = copy.deepcopy(dict(sample))
+    wireless = next(
+        (
+            row
+            for frame in probe.get("history", [])
+            for row in frame.get("communication_relations", [])
+            if row.get("relation_type") == "wireless" and row.get("presence")
+        ),
+        None,
+    )
+    if wireless is None:
+        return False
+    width = len(wireless.get("rb_indices", []))
+    wireless["validity"] = True
+    wireless["csi_values"] = [0.0] * width
+    wireless["csi_mask"] = [False] * width
+    wireless["csi_observed"] = False
+    wireless["csi_missing_reason"] = "COUNTERFACTUAL_CSI_UNAVAILABLE"
+    positive_sample = validate_extended_sample_checks(probe)
+    normalized = apply_extension_normalization([probe], stats)
+    probe_tensor = build_extended_tensor_batch(normalized, stats=stats)
+    wireless_code = COMM_RELATION_TYPE_VOCAB.index("wireless")
+    wireless_slots = probe_tensor["comm_relation_type_index"] == wireless_code
+    missing_feature_slots = (
+        wireless_slots
+        & probe_tensor["comm_relation_presence"]
+        & probe_tensor["comm_relation_validity"]
+        & ~np.any(probe_tensor["comm_csi_mask"], axis=-1)
+    )
+    positive_tensor = (
+        validate_extended_tensor_checks(probe_tensor)["passed"]
+        and bool(np.any(missing_feature_slots))
+        and bool(np.all(probe_tensor["comm_csi_raw"][missing_feature_slots] == 0))
+        and bool(np.all(probe_tensor["comm_csi"][missing_feature_slots] == 0))
+    )
+    negative = copy.deepcopy(probe)
+    deleted = next(
+        row
+        for frame in negative["history"]
+        for row in frame["communication_relations"]
+        if row.get("relation_type") == "wireless" and row.get("presence")
+    )
+    deleted["validity"] = False
+    negative_rejected = not validate_extended_sample_checks(negative)["passed"]
+    return bool(positive_sample["passed"] and positive_tensor and negative_rejected)
 
 
 def build_extension_batch(sources: Sequence[RawSource], *, history_steps: int = 2, horizon_steps: int = 2) -> dict[str, Any]:
@@ -771,6 +930,7 @@ def build_extension_batch(sources: Sequence[RawSource], *, history_steps: int = 
             "task_agent.typed_relations",
         ],
         "fields_still_blocked": list(STILL_BLOCKED_FIELDS),
+        "remaining_gap_classification": copy.deepcopy(list(REMAINING_GAP_CLASSIFICATION)),
         "step4_1_gap_resolution": {
             "historical_mapping_preserved": True,
             "resolved": [
@@ -782,6 +942,9 @@ def build_extension_batch(sources: Sequence[RawSource], *, history_steps: int = 
                 {"item": "task_agent.typed_relations", "step4_1_availability": "DERIVABLE_CAUSALLY", "current_availability": "AVAILABLE_IN_STEP_4.2A_SAMPLE_TENSOR"},
             ],
             "still_blocked": list(STILL_BLOCKED_FIELDS),
+            "simulator_observer_available_but_frozen_raw_not_exposed": list(OBSERVER_AVAILABLE_FROZEN_RAW_NOT_EXPOSED_FIELDS),
+            "raw_insufficient": list(RAW_INSUFFICIENT_FIELDS),
+            "remaining_gap_classification": copy.deepcopy(list(REMAINING_GAP_CLASSIFICATION)),
             "graph_ready": False,
         },
         "scope": {
@@ -814,7 +977,22 @@ def validate_extension_acceptance(
         "train_only_normalization": stats.get("source_split") == "dev_train" and all("validation excluded" in row.get("mask_policy", "") for row in stats.get("features", {}).values()),
         "tensor_valid": validate_extended_tensor_checks(tensor)["passed"],
         "resolved_fields_explicit": set(bundle.get("fields_resolved", [])) == {"physical.position_m", "comm.wireless_csi", "comm.wired_relation", "agent.cpu_capacity_per_s", "task.demand_progress_time_existing_fields", "task_agent.typed_relations"},
-        "raw_insufficient_fields_still_blocked": set(bundle.get("fields_still_blocked", [])) == set(STILL_BLOCKED_FIELDS),
+        "fields_not_yet_in_sample_tensor_explicit": set(bundle.get("fields_still_blocked", [])) == set(STILL_BLOCKED_FIELDS),
+        "remaining_gap_classification_correct": {
+            row["item"] for row in bundle.get("remaining_gap_classification", [])
+            if row.get("availability") == "SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED"
+        } == set(OBSERVER_AVAILABLE_FROZEN_RAW_NOT_EXPOSED_FIELDS) and {
+            row["item"] for row in bundle.get("remaining_gap_classification", [])
+            if row.get("availability") == "RAW_INSUFFICIENT"
+        } == set(RAW_INSUFFICIENT_FIELDS),
+        "stateful_flow_still_unresolved": any(
+            row.get("item") == "flow.current_state.total_remaining_type_endpoints"
+            and row.get("availability") == "RAW_INSUFFICIENT"
+            and row.get("definition_03_proven") is False
+            and row.get("forbidden_substitute") == "past_outcome_flow_service"
+            for row in bundle.get("remaining_gap_classification", [])
+        ),
+        "communication_mask_counterfactual": bool(bundle.get("samples")) and validate_communication_mask_counterfactual(bundle["samples"][0], stats),
         "deterministic_rebuild": bool(deterministic_rebuild),
         "scope_false": all(scope.get(key) is False for key in ("graph_builder", "physical_topology", "training", "gpu", "locked_test", "formal_dataset")),
     }
@@ -826,7 +1004,10 @@ __all__ = [
     "COMM_RELATION_TYPE_VOCAB",
     "DATASET_SCHEMA_VERSION",
     "NORMALIZATION_SCHEMA_VERSION",
+    "OBSERVER_AVAILABLE_FROZEN_RAW_NOT_EXPOSED_FIELDS",
+    "RAW_INSUFFICIENT_FIELDS",
     "RAW_SCHEMA_VERSION",
+    "REMAINING_GAP_CLASSIFICATION",
     "SAMPLE_SCHEMA_VERSION",
     "STILL_BLOCKED_FIELDS",
     "TASK_AGENT_RELATION_TYPE_VOCAB",
@@ -842,5 +1023,6 @@ __all__ = [
     "save_extended_tensor_batch",
     "validate_extended_sample_checks",
     "validate_extended_tensor_checks",
+    "validate_communication_mask_counterfactual",
     "validate_extension_acceptance",
 ]

@@ -5,6 +5,7 @@
     "wireless",
     "wired"
   ],
+  "communication_mask_semantics": "relation_validity_independent_of_feature_observability_v2",
   "cpu_capacity_semantic_role": "information_agent.static_capability",
   "dag_direction": "source_task_j -> target_task_k; k depends on j",
   "dataset_contract_version": "PI-JWM-Step-4.2A-Dataset-Preprocessing-v1",

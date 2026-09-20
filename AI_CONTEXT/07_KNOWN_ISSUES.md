@@ -28,7 +28,9 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 ## 2A. STEP 4.2A 后仍存在的图输入缺口
 
 - STEP 4.2A 已暴露：position、wireless per-RB CSI、CPU static capacity、已有 Task demand/progress/time fields、wired typed relation 与 Src/Host/Exec/Ret。canonical motion direction 所需 heading/elevation 尚未加入本轮最小 extension。
-- 当前 Raw 不足：可选 wired live queue/load/utilization（不是 03 minimum）；具有 stable ID、Input/Return/DepData type、endpoints、presence、total/rem 的 current stateful Flow；冻结 Raw 行中的 return size/priority/deadline；dynamic available CPU。
+- Simulator observer 已有但冻结 Raw 未暴露：return size、priority、deadline。`_extract_tasks()` 有真实 getter/TaskSnapshot 来源；后续是否透传属于下一合同，不是本 Patch 的数据实现。
+- 当前 Raw 仍不足：可选 wired live queue/load/utilization（不是 03 minimum）；具有 stable ID、Input/Return/DepData type、endpoints、presence、total/rem、multi-hop/route-revision identity 与动作前因果性的 current stateful Flow；dynamic available CPU。
+- Wireless structural relation validity 与 CSI observability 已解耦；missing CSI 不得删除 relation，mask=false 的 tensor placeholder 必须为 0。wired valid/no-CSI 同样合法。
 - CPU capacity、`A_t^Comp` allocation、Outcome actual service 与 dynamic available CPU 是四种不同语义；不得互相替代。
 - edge/cloud 是否具有 Physical representation 以及 radius/kNN topology 仍为 `RESEARCHER_DECISION_REQUIRED`。
 - 影响：不得直接实现 graph builder；不得用旧 mixed `physical_edge_state`、past hop service 或 outcome 指标填补当前状态。

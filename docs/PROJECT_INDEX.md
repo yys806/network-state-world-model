@@ -1,7 +1,7 @@
 # PI-JWM 项目索引
 
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
-> 生成于 2026-09-08，状态更新于 2026-09-20。定义 01 与当前最小定义 02 已冻结；STEP 4.1 mapping 已冻结，STEP 4.2A existing-source graph input extension 已完成，graph builder 未开始；旧训练与结果已逻辑归档。`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
+> 生成于 2026-09-08，状态更新于 2026-09-20。定义 01 与当前最小定义 02 已冻结；STEP 4.1 mapping 已冻结，STEP 4.2A 及 Comm mask/gap-classification PATCH 已完成，graph builder 未开始；旧训练与结果已逻辑归档。`code/artifacts/` 仍是受保护证据区，不做移动、覆盖或清理。
 
 ## 1. 进入项目的最短路径
 
@@ -33,7 +33,7 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 - 项目：PI-JWM（Physical-Information Joint World Model）。
 - AirFogSim：只作为仿真器和数据生成工具，不是 PI-JWM 框架主体。
 - 当前路线：研究者最新 `00–06` 目标定义 → 经授权的 Implementation Step。
-- 当前 Step：STEP 4.2A additive input extension 已完成；Raw / 01 与最小 Dataset/Tensor / 02 已冻结，graph builder 未开始。
+- 当前 Step：STEP 4.2A COMPLETE / FROZEN（待本 Patch Git 验收）；Raw / 01 与最小 Dataset/Tensor / 02 已冻结，graph builder 未开始。
 - 新定义实现：尚未开始；现有 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 都是旧协议 Historical / Archived evidence。
 - 当前主要缺口：position/CSI/CPU static capability/Task additive exposure、wired relation 逐 Decision 物化、stable stateful Flow，以及后续 graph builder、目标 stochastic-state 边界、逐步规则反馈/动态图、正式候选生成和真实反馈重规划。可选 wired numeric state 不是定义 03 minimum blocker。
 - `locked_test`：继续封存；`formal_performance_claim_ready=false`。

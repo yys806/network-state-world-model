@@ -23,7 +23,8 @@
 ## 3. Model-ready Sample
 
 - Physical History entity 增加 `position_m=[x,y,z]`、逐坐标 mask、单位 `m`。
-- 每个 History frame 增加独立 `communication_relations`：wireless 保存 directed endpoint、type、presence/validity、RB identity、per-RB attenuation/mask；wired 保存有效 typed relation，但没有 CSI。
+- 每个 History frame 增加独立 `communication_relations`：wireless 保存 directed endpoint、type、presence/validity、RB identity、per-RB attenuation/mask 和 missing reason；wired 保存有效 typed relation，但没有 CSI。
+- Communication relation level 与 CSI feature level 分离：observer 先建立支持的 V/U/I directed structural relation，再尝试读取 CSI。endpoint 当前存在时，即使 CSI `observed_mask=false`，relation 仍保持 presence/validity=true；CSI 使用 `mask=false`、numeric placeholder=0 和非空 missing reason。`communication_mask_semantics=relation_validity_independent_of_feature_observability_v2`。
 - Static 增加 `agent_static_capability`，CPU capacity 只保存一次，不带 H 轴；保留 observed mask、missing reason、单位与 `getFogProfile()['cpu']` 来源。
 - History Task 增加 `task_cpu_work`、`computed_cpu_work`、`transmitted_size`、`elapsed_time_s`；`arrival_time_s` 只作为 causal derivation source。`elapsed_time_s=decision_time-arrival_time`，不读取未来完成时间。
 - 每帧增加 Task→Agent 的 Src/Host/Exec/Ret typed relation。Exec 只在当前 lifecycle=`computing` 时建立；所有关系仅读取 Decision 字段，不读取 Future Route Action。
@@ -38,7 +39,7 @@
 ## 5. Tensor
 
 - `entity_position[_raw] / entity_position_mask`：`[B,H,E,3]`。
-- typed Comm：source/target/type/presence/validity `[B,H,C]`；CSI/RB arrays `[B,H,C,N_RB]`。wired relation validity 可以为 true，同时 CSI mask 全 false。
+- typed Comm：source/target/type/presence/validity `[B,H,C]`；CSI/RB arrays `[B,H,C,N_RB]`。wireless 或 wired relation validity 可以为 true，同时 CSI mask 全 false；mask=false 的 CSI numeric placeholder 固定为 0 且无真实数值语义。relation presence=false 时 CSI mask 必须全 false。
 - `agent_cpu_capacity[_raw] / mask`：`[B,E]`，没有 H 轴。
 - `task_history_extended_*`：`[B,H,T,4]`，feature order 为 CPU demand、computed progress、transmitted progress、elapsed time。
 - typed Task–Agent relation：task index、agent index、Src/Host/Exec/Ret type、validity `[B,H,K]`。
@@ -47,7 +48,13 @@
 
 ## 6. 仍然阻塞
 
-以下字段未实现：stable stateful Flow total/rem/type/endpoints、return size、priority、deadline、dynamic available CPU、storage、wired queue/load/utilization。radius/kNN/hybrid、edge/cloud Physical membership、motion encoder 和 final feature subset 仍为 `RESEARCHER_DECISION_REQUIRED`。
+以下字段仍未进入当前 Sample/Tensor，但来源类别不同：
+
+- `return_size`、`priority`、`deadline`：`SIMULATOR_OBSERVER_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED`。`_extract_tasks()` 已分别调用 `getReturnedSize()`、`getTaskPriority()`、`getTaskDeadline()` 并写入 `TaskSnapshot`，但冻结 Raw decision row 尚未透传，本 Patch 不新增字段。
+- `task_delay`：observer 已提供；Step 4.2A 已用同一因果式 `max(decision_time-arrival_time,0)` 作为 `elapsed_time_s` 输入化。
+- stable stateful Flow total/rem/type/endpoints、dynamic available CPU、storage、wired queue/load/utilization：继续 `RAW_INSUFFICIENT`。
+
+旧 `LogicalFlow` / `CarryingHop` 名称不足以证明定义 03 Flow。仍需证明 stable identity、Input/Return/DepData type、logical endpoints、Task association、total/rem、multi-hop、route revision identity 与动作前因果性；`past_outcome_flow_service` 禁止替代 current Flow state。radius/kNN/hybrid、edge/cloud Physical membership、motion encoder 和 final feature subset 仍为 `RESEARCHER_DECISION_REQUIRED`。
 
 因此 graph readiness 仍为 false；本合同不能作为 Graph Builder 已完成的证据。
 
@@ -55,6 +62,6 @@
 
 Artifact：`code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/`。
 
-`validation_report.json` 对 required checks 取逻辑 AND；`step4_1_gap_resolution.json` 记录 Step 4.1 历史 gap 到当前 availability 的 overlay；`manifest.json` 保存输入/source/artifact hash、版本、array shape/dtype、unit、resolved/blocked 字段和范围。
+`validation_report.json` 对 required checks 取逻辑 AND，并实际运行 wireless missing-CSI counterfactual；`step4_1_gap_resolution.json` 记录 Step 4.1 历史 gap 到当前 availability/source classification 的 overlay；`manifest.json` 保存输入/source/artifact hash、版本、array shape/dtype、unit、resolved/blocked 字段和范围。
 
 范围固定为：`graph_builder=false`、`physical_topology=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
