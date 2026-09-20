@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-20：STEP 4.2A Existing-Source Graph Input Additive Extension
+
+- 新增独立 Raw amendment / Sample v5 / preprocessing v1 / Tensor v3 链路，把 position、wireless CSI、wired typed relation、CPU static capability、Task demand/progress/elapsed 与 Src/Host/Exec/Ret 输入化。
+- 保持 History union、Future Action、trajectory split、train-only normalization 和 mask/index 合同；旧 Step 2/3 artifacts 不覆盖。
+- 新增 focused tests、validation receipt、gap-resolution overlay 与 hash/provenance manifest；stable stateful Flow 继续 blocked，未实现 graph builder、模型或训练。
+
 ## 2026-09-19：STEP 4.1-PATCH Minimum Gap Semantic Correction
 
 - wired 最小 relation 改为 simulator/Raw topology 已有但尚未逐 Decision 暴露；以 relation type + CSI mask 表示，无需伪造 CSI。

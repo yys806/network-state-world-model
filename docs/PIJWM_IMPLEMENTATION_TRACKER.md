@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-19。**Raw Trajectory Layer / 定义 01、STEP 3.1F、STEP 3.2、STEP 3.3 已完成并冻结**；**02 数据集构建与模型输入 COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT**；**STEP 4.1 对象—字段—关系映射已冻结**。新 graph builder、模型和训练仍未开始。
+更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、STEP 3.1F、STEP 3.2、STEP 3.3 已完成并冻结**；**02 数据集构建与模型输入 COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT**；**STEP 4.1 mapping 已冻结，STEP 4.2A existing-source additive input extension 已完成**。新 graph builder、模型和训练仍未开始。
 
 ## 当前依据与执行边界
 
@@ -22,7 +22,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | Dataset / split / masks | 02 | `step3_2_batch_preprocessing_v1.py`、Step 3.2 bundle | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | trajectory split、lineage、time-grid、train-only normalization、mask/presence counterfactual 已验收；不是正式大规模 Dataset | 03 所需新增字段只能走 additive extension |
 | Model-ready sample / tensor contract | 02 | `model_ready_sample_contract_v1.py`、Step 3.1F artifact、Step 3.2 bundle | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | History past A/Y、entity type、union input index、typed target、batch/split/preprocessing 已验收；不是正式大规模 Dataset | 进入 03 前先冻结对象-字段-关系映射 |
 | tensor contract | 02；03 | `step3_3_model_input_tensor_v1.py`、`build_step3_3_model_input_tensor_v1.py` | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | Past Outcome、完整 Target facts、固定 vocab、Comp 正式字段与 semantic receipt 已验收；03/04 feature selection 和正式容量未决定 | 单独授权双图字段映射 |
-| Physical / Information 双图 | 03 | Step 4.1 mapping schema；旧 `formal_graph_ops_v1.py` / `formal_dual_graph_world_model_v1.py` | MAPPING FROZEN / GRAPH NOT_STARTED | STRUCTURAL_CHANGE | Tensor 缺 position/CSI/CPU/完整 Task state；wired relation 有拓扑来源但未逐 Decision 暴露；Raw 缺 stable stateful Flow | 先审阅并授权 additive data extension；禁止直接建图 |
+| Physical / Information 双图 | 03 | Step 4.1 mapping；Step 4.2A additive Sample/Tensor；旧 `formal_graph_ops_v1.py` / `formal_dual_graph_world_model_v1.py` | EXISTING-SOURCE INPUT EXTENSION COMPLETE / GRAPH NOT_STARTED | STRUCTURAL_CHANGE | position/CSI/wired/CPU capability/部分 Task state 已输入化；Raw 仍缺 stable stateful Flow，Physical topology 未决定 | 审阅 Raw-insufficient minimum gaps；禁止直接建图 |
 | entity alignment 局部工具 | 02；03 | `airfogsim_tensor_v2.py`、`formal_graph_ops_v1.py` | AUDITED | DIRECT_REUSE | ID/index/mask原则可复用；新增对象映射需扩展 | 保留身份稳定性检查 |
 | Route action | 06 §2.1；04 §3.3 | Step 2 Raw + Step 3.3 past/future route tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | route kind/target/task node/hops 与 mask 已映射；尚未接新 graph/model | 后续按新对象路由，未授权 |
 | Comm action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 per-RB action tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | RB indices/mask 与 split outcome 已映射；Comm graph state 仍缺 numeric CSI exposure | 先做 additive state extension |
@@ -90,6 +90,10 @@ STEP 3.3F 已补齐 JSON→Tensor 语义：Past Outcome 使用独立 `H-1` 轴�
 
 Physical / Information object-field-relation mapping 已冻结。vehicle/UAV/RSU 同时具有 Physical + Info identity；edge/cloud 的 Physical membership 等待研究者决定。Position、无线 CSI、CPU static capacity 和部分 Task current state 在 Raw 有来源但未进入当前 Sample/Tensor；wired relation 可由 `environment.wired_edges` / `WiredNetworkManager.hasLink` 取得，但尚未逐 Decision 物化与输入化，无 CSI 时由 `relation_type=wired + feature_mask=false` 表示。wired 可选动态 numeric state 不属于 03 minimum；稳定 stateful Flow 的 total/rem/type/endpoints 在当前 Raw 不足。CPU capacity、Comp allocation、actual service、available CPU 四类语义已分离。旧 `physical_edge_state` 混合 CSI/rate/task/RB 的语义禁止继续作为 Physical relation。机器 artifact 位于 `code/artifacts/protocols/pi_jwm_step4_1_pi_graph_mapping_v1_20260919/`，readiness 为 `DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1`。
 
+## 当前 STEP 4.2A 结果
+
+Step 4.1 中已有可靠来源的 position、wireless per-RB CSI、wired typed relation、CPU static capability、Task demand/progress/elapsed 与 Src/Host/Exec/Ret 已通过独立版本链贯穿 Raw amendment → Sample → train-only preprocessing → Tensor。三条 development trajectory 共形成 12 个样本；这是机器合同证据，不是正式 Dataset 或容量结论。旧 Step 2/3 artifact 未覆盖，History union index、Future Action 因果边界和 split isolation 保持不变。stable stateful Flow、return size/priority/deadline、dynamic available CPU 等仍未补造；Physical topology 与 graph object 均未实现。机器 artifact 位于 `code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/`。
+
 ## 下一步边界
 
-唯一建议是研究者审阅 STEP 4.1 mapping/gap 后，单独授权最小 Data Contract Additive Extension；不直接实现 graph builder、GNN、模型或训练。
+唯一建议是研究者审阅仍然 Raw-insufficient 的 minimum graph gaps，特别是 stable stateful Flow；不要自动进入 Graph Builder。

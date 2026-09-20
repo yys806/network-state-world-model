@@ -15,7 +15,7 @@ PI-JWM 研究的是一个同时包含物理网络和信息网络的动态系统�
 
 ### 当前已冻结的 Raw 边界
 
-Step 2.4 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision` 的真实采集层；Step 3.2/3.3 已冻结当前最小 Dataset/Tensor。STEP 4.1 进一步确认 position、wireless CSI、CPU static capacity 和部分 Task current state 尚未进入当前 input tensor；wired relation 有 topology/`hasLink` 来源但尚未逐 Decision 物化，完整 stateful Flow 还不在当前 Raw 合同中。CPU capacity 不等于 allocation、actual service 或 dynamic available CPU。
+Step 2.4 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision` 的真实采集层；Step 3.2/3.3 已冻结当前最小 Dataset/Tensor。STEP 4.2A 已以独立版本链输入化 position、wireless CSI、wired typed relation、CPU static capability、部分 Task current state 和 typed Task-Agent relation；完整 stateful Flow 仍不在当前 Raw 合同中，Physical topology 与 graph builder 未实现。CPU capacity 不等于 allocation、actual service 或 dynamic available CPU。
 
 ### 新定义 03 的已冻结映射（尚未实现）
 

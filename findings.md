@@ -1,5 +1,12 @@
 # Findings
 
+## 2026-09-20 STEP 4.2A
+
+- wired topology 可以在动作执行前物化为 directed typed relation；CSI 缺失由 type + mask 表示，不能借用 wired service outcome。
+- CPU capacity 应作为无 H 轴的静态 Agent capability；Comp allocation 和 actual service 的反事实变化都不改变该张量。
+- Task progress/elapsed 与 Src/Host/Exec/Ret 可以从当前 Decision 因果构造；Future Route target 不得倒灌到当前关系。
+- 已有来源字段贯穿 Tensor 后，stable stateful Flow 仍是独立的 Raw-insufficient blocker；不能用 past hop service 改名填补。
+
 ## 2026-09-19 STEP 4.1
 
 - 当前数据缺口分层处理：position/无线 CSI/CPU static capacity 等是 Raw 已有但未暴露；wired 最小 relation 有 topology/`hasLink` 来源但未逐 Decision 物化；wired 可选动态 numeric state 与完整 stable stateful Flow 才是 Raw 本身不足，不能用同一种 patch 处理。

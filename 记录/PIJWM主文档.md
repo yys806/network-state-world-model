@@ -2,7 +2,7 @@
 
 > **2026-09-18 当前定义入口：** 研究者已明确将只读目录 `D:\shen\OB\科研\PIJWM` 中七个 `00–06` Markdown 文件作为当前目标定义。本文件保留此前理论、决策和证据边界；若具体对象、动作、图语义、世界模型、loss、训练或 planner 定义与最新 `00–06` 冲突，以最新定义为目标，并以 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/STEP_01_AUDIT.md` 记录实现差距。目标定义不等于代码已实现；旧 P4/P6/P0–P10 方法和结果仅按原协议作 Historical / Archived evidence。
 
-> **2026-09-19 STEP 4.1 实现边界：** 定义 03 的对象—字段—关系映射已在 `docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING_V1.md` 冻结。wired 最小 relation 有 topology/`hasLink` 来源但尚未逐 Decision 暴露，无 CSI 时由 type + mask 表示；wired 可选 numeric state 不属于 minimum。FogProfile CPU 是静态 capability，不等于 allocation、service 或 available CPU。该记录证明当前数据仍缺 graph builder 的其他最小输入，不代表严格双图或消息传递已经实现；旧 mixed `physical_edge_state` 不能代替新映射。
+> **2026-09-20 STEP 4.2A 实现边界：** 定义 03 中已有可靠来源的 position、wireless CSI、wired relation、CPU static capability、部分 Task state 和 typed Task–Agent relation 已经独立 additive 版本链进入 Sample/Tensor。stable stateful Flow 仍无足够 Raw 来源，Physical topology 与 graph builder 仍未实现；因此这不是严格双图、消息传递、模型或训练证据。CPU capacity 继续不等于 allocation、service 或 available CPU，wired outcome 继续不等于 current relation。
 
 > 最后核查日期：2026-08-11<br>
 > 当前文件位置：`记录/PIJWM主文档.md`；2026-08-15已从原外部知识库迁入PI-JWM仓库，后续只维护本文件。<br>

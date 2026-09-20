@@ -25,14 +25,14 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - 通信状态是否足以规则计算 service、外生 task/entity/background load 的未来边界、proposal 训练方式、planner objective/risk/hard constraints/fallback 尚未冻结。
 - Codex 不自行选择这些科研定义；相关实现保持停止。
 
-## 2A. STEP 4.1 图输入缺口
+## 2A. STEP 4.2A 后仍存在的图输入缺口
 
-- Raw/simulator 已有但当前 Sample/Tensor 未暴露：position、canonical motion direction 所需 heading/elevation、wireless per-RB CSI、CPU static capacity、部分 Task demand/progress/time fields；wired relation 端点/方向/presence 可由 topology/`hasLink` 逐 Decision 物化。
+- STEP 4.2A 已暴露：position、wireless per-RB CSI、CPU static capacity、已有 Task demand/progress/time fields、wired typed relation 与 Src/Host/Exec/Ret。canonical motion direction 所需 heading/elevation 尚未加入本轮最小 extension。
 - 当前 Raw 不足：可选 wired live queue/load/utilization（不是 03 minimum）；具有 stable ID、Input/Return/DepData type、endpoints、presence、total/rem 的 current stateful Flow；冻结 Raw 行中的 return size/priority/deadline；dynamic available CPU。
 - CPU capacity、`A_t^Comp` allocation、Outcome actual service 与 dynamic available CPU 是四种不同语义；不得互相替代。
 - edge/cloud 是否具有 Physical representation 以及 radius/kNN topology 仍为 `RESEARCHER_DECISION_REQUIRED`。
 - 影响：不得直接实现 graph builder；不得用旧 mixed `physical_edge_state`、past hop service 或 outcome 指标填补当前状态。
-- Evidence：`docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING_V1.md` 与 Step 4.1 mapping artifact。
+- Evidence：`docs/contracts_PIJWM_STEP_04_2A_GRAPH_INPUT_ADDITIVE_EXTENSION_V1.md` 与 Step 4.2A artifact。
 
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
 

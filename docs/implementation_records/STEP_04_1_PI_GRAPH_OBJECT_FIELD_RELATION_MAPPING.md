@@ -82,3 +82,7 @@ Commit / push 状态以最终回执为准。
 ## Next Step
 
 唯一建议：研究者审阅本映射和 gap 后，单独授权最小 Data Contract Additive Extension；不要自动进入 graph builder。
+
+## Subsequent Resolution Note（2026-09-20）
+
+研究者随后授权的 STEP 4.2A 已以独立 additive 版本链解决 Step 4.1 中“已有来源但未输入化”的 position、wireless CSI、wired relation、CPU static capability、部分 Task current state 与 typed Task–Agent relation。原 Step 4.1 artifact 保持不变；当前 overlay 与剩余 gap 见 `STEP_04_2A_EXISTING_SOURCE_GRAPH_INPUT_ADDITIVE_EXTENSION.md`。stable stateful Flow 仍为 Raw-insufficient，graph builder 仍未开始。

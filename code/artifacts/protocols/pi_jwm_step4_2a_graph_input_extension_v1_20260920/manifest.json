@@ -1,0 +1,1198 @@
+{
+  "array_shapes_dtypes": {
+    "agent_cpu_capacity": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        10
+      ]
+    },
+    "agent_cpu_capacity_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        10
+      ]
+    },
+    "agent_cpu_capacity_raw": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        10
+      ]
+    },
+    "comm_csi": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        74,
+        50
+      ]
+    },
+    "comm_csi_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        74,
+        50
+      ]
+    },
+    "comm_csi_raw": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        74,
+        50
+      ]
+    },
+    "comm_rb_indices": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        74,
+        50
+      ]
+    },
+    "comm_rb_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        74,
+        50
+      ]
+    },
+    "comm_relation_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        74
+      ]
+    },
+    "comm_relation_type_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        74
+      ]
+    },
+    "comm_relation_validity": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        74
+      ]
+    },
+    "comm_source_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        74
+      ]
+    },
+    "comm_target_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        74
+      ]
+    },
+    "dag_edges": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        7,
+        2
+      ]
+    },
+    "dag_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        7
+      ]
+    },
+    "entity_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        10,
+        2
+      ]
+    },
+    "entity_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        10,
+        2
+      ]
+    },
+    "entity_position": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        10,
+        3
+      ]
+    },
+    "entity_position_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        10,
+        3
+      ]
+    },
+    "entity_position_raw": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        10,
+        3
+      ]
+    },
+    "entity_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        10
+      ]
+    },
+    "entity_raw_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        10,
+        2
+      ]
+    },
+    "entity_type_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        10
+      ]
+    },
+    "flow_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2,
+        1
+      ]
+    },
+    "flow_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        2,
+        1
+      ]
+    },
+    "flow_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_source_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_transport_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "flow_transport_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_action_empty": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        4
+      ]
+    },
+    "future_action_entry_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "future_action_missing": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        4
+      ]
+    },
+    "future_action_present": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        4
+      ]
+    },
+    "future_comm_rb_indices": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2,
+        1
+      ]
+    },
+    "future_comm_rb_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2,
+        1
+      ]
+    },
+    "future_comp_allocated_cpu": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_comp_allocated_cpu_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_comp_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_mobility_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2,
+        3
+      ]
+    },
+    "future_mobility_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        2,
+        3
+      ]
+    },
+    "future_route_hop_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2,
+        2
+      ]
+    },
+    "future_route_kind_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_route_kind_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "future_route_node_indices": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2,
+        2
+      ]
+    },
+    "future_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "future_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "future_task_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "future_uav_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        4,
+        2
+      ]
+    },
+    "past_action_empty": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        4
+      ]
+    },
+    "past_action_entry_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "past_action_missing": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        4
+      ]
+    },
+    "past_action_present": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        4
+      ]
+    },
+    "past_comm_rb_indices": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2,
+        1
+      ]
+    },
+    "past_comm_rb_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2,
+        1
+      ]
+    },
+    "past_comp_allocated_cpu": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_comp_allocated_cpu_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_comp_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_mobility_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2,
+        3
+      ]
+    },
+    "past_mobility_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        2,
+        3
+      ]
+    },
+    "past_outcome_dag_edges": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        7,
+        2
+      ]
+    },
+    "past_outcome_dag_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_entity_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        10,
+        1
+      ]
+    },
+    "past_outcome_entity_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        10,
+        1
+      ]
+    },
+    "past_outcome_entity_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        10
+      ]
+    },
+    "past_outcome_entity_type_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        10
+      ]
+    },
+    "past_outcome_flow_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_source_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_transport_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_flow_transport_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_outcome_relation_endpoints": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        72,
+        2
+      ]
+    },
+    "past_outcome_relation_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        72
+      ]
+    },
+    "past_outcome_served_cpu_work": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_served_cpu_work_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_task_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7,
+        1
+      ]
+    },
+    "past_outcome_task_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7,
+        1
+      ]
+    },
+    "past_outcome_task_lifecycle_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_task_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_total_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_total_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_wired_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_wired_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_wireless_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_outcome_wireless_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        7
+      ]
+    },
+    "past_route_hop_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2,
+        2
+      ]
+    },
+    "past_route_kind_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_route_kind_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        1,
+        2
+      ]
+    },
+    "past_route_node_indices": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        2,
+        2
+      ]
+    },
+    "past_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "past_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "past_task_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "past_uav_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        1,
+        4,
+        2
+      ]
+    },
+    "relation_endpoints": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        72,
+        2
+      ]
+    },
+    "relation_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        72
+      ]
+    },
+    "target_entity_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        10,
+        1
+      ]
+    },
+    "target_entity_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        10,
+        1
+      ]
+    },
+    "target_entity_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        10
+      ]
+    },
+    "target_entity_type_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        10
+      ]
+    },
+    "target_flow_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_source_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_target_node_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_transport_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_flow_transport_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        2
+      ]
+    },
+    "target_task_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8,
+        1
+      ]
+    },
+    "target_task_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        8,
+        1
+      ]
+    },
+    "target_task_lifecycle_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_task_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_total_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_total_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_wired_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_wired_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_wireless_service": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "target_wireless_service_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        8
+      ]
+    },
+    "task_agent_agent_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        22
+      ]
+    },
+    "task_agent_relation_type_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        22
+      ]
+    },
+    "task_agent_task_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        22
+      ]
+    },
+    "task_agent_validity_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        22
+      ]
+    },
+    "task_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        7,
+        1
+      ]
+    },
+    "task_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        7,
+        1
+      ]
+    },
+    "task_history_extended_feature_mask": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        7,
+        4
+      ]
+    },
+    "task_history_extended_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        7,
+        4
+      ]
+    },
+    "task_history_extended_raw_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        7,
+        4
+      ]
+    },
+    "task_lifecycle_index": {
+      "dtype": "int64",
+      "shape": [
+        12,
+        2,
+        7
+      ]
+    },
+    "task_presence": {
+      "dtype": "bool",
+      "shape": [
+        12,
+        2,
+        7
+      ]
+    },
+    "task_raw_features": {
+      "dtype": "float32",
+      "shape": [
+        12,
+        2,
+        7,
+        1
+      ]
+    }
+  },
+  "deterministic_rebuild": true,
+  "deterministic_semantic_digest": "7884b03aeea533ba95b72ecf5cf89cd0e1f3e2836b7d8b1942d41b300b3a103d",
+  "fields_resolved": [
+    "physical.position_m",
+    "comm.wireless_csi",
+    "comm.wired_relation",
+    "agent.cpu_capacity_per_s",
+    "task.demand_progress_time_existing_fields",
+    "task_agent.typed_relations"
+  ],
+  "fields_still_blocked": [
+    "flow.current_state.total_remaining_type_endpoints",
+    "task.return_size",
+    "task.priority",
+    "task.deadline",
+    "agent.dynamic_available_cpu",
+    "agent.storage",
+    "comm.wired_queue_load_utilization"
+  ],
+  "files": {
+    "batch.json": "9c368f528e0cee36bff4be0e35bcf586c561cd9c180ccadb8ab4cdc14b8201d9",
+    "normalized_samples.json": "c97f339f6b8fc821fd36faaa475ad45cc7ca978ef15b386671195ee6c24c04f5",
+    "step4_1_gap_resolution.json": "b68870f609a2fedd96ea9bb37c5640662ac1002d328f3f3fdc735a99e8ea3345",
+    "tensor.npz": "fc36946c7de219d608f6b959d3b9c3cb81bf037a6b3c6ede17d96882c3d38620",
+    "tensor_schema.json": "6acfba387cc6a49384d6e9b1d1c9747fd524a11482d05afd7ff7257c07f05f87",
+    "train_normalization_stats.json": "f03c39438fc3b1ef3bbdaadf24faa622f184c1cc7358d3b810ced5a61ec05579",
+    "validation_report.json": "d0281b2da85d48269def3c1034db1d221e2f663089709087cd06b202785c42c3"
+  },
+  "input_sources": {
+    "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
+    "code/artifacts/protocols/pi_jwm_step3_2_raw_dev_seed1_20260919/real_communication_outcome_semantics.json": "3fc4da5cac00a645a73228a6bf437b2d61fd82ee3e3be976442567d1e1e6fc5d",
+    "code/artifacts/protocols/pi_jwm_step3_2_raw_dev_seed2_20260919/real_communication_outcome_semantics.json": "02f186f5e7f109760c85a6bad879c7e2dd745ea015179c85850313cac3256bad"
+  },
+  "normalization_units": {
+    "agent.cpu_capacity_per_s": "AirFogSim CPU-work-unit/s",
+    "comm.channel_attenuation_db": "dB",
+    "entity.position_x_m": "m",
+    "entity.position_y_m": "m",
+    "entity.position_z_m": "m",
+    "task.computed_cpu_work": "AirFogSim CPU-work-unit",
+    "task.elapsed_time_s": "s",
+    "task.task_cpu_work": "AirFogSim CPU-work-unit",
+    "task.transmitted_size": "AirFogSim data-unit"
+  },
+  "raw_amendment_files": {
+    "raw_amendments/step2.4-real-communication-seed0.json": "275e3c4f739e167b1eb6ab22cf7f1f3b9fae28b5a53f9caedc7b29600cf9643e",
+    "raw_amendments/step3.2-dev-seed1.json": "31799ad9c60baa39deaa41f9c9434815be2f4493f2f666c6fada3c9d4aa5f7ff",
+    "raw_amendments/step3.2-dev-seed2.json": "d093b68ec13571081bbf363130ead90d4e6df5e058b7b4b00d1c701f4203a6b8"
+  },
+  "sample_count": 12,
+  "schema_versions": {
+    "dataset_preprocessing": "PI-JWM-Step-4.2A-Dataset-Preprocessing-v1",
+    "raw": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
+    "sample": "PI-JWM-Model-Ready-Sample-Contract-v5-step4.2A",
+    "tensor": "PI-JWM-Model-Input-Tensor-Collation-v3-step4.2A"
+  },
+  "scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "graph_builder": false,
+    "locked_test": false,
+    "physical_topology": false,
+    "training": false
+  },
+  "source_files": {
+    "code/reference/AirFogSim/airfogsim/manager/wired_manager.py": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe",
+    "code/scripts/build_step4_2a_graph_input_extension_v1.py": "ab7c3676bc3e27fa5fb61dbb5f7eeb5070318ea3ce53c087929b8c6f50484d15",
+    "code/src/pi_jwm/step4_2a_graph_input_extension_v1.py": "a528d151e007f09cb2818ea3af78320ebee99f7d06e173f4b0d94f9f62c2a3f3",
+    "code/tests/test_step4_2a_graph_input_extension_v1.py": "c3fa9b4340c5d27ce1814381ba82bf03fe98e79d99e99e11c17097ffc23fece0"
+  },
+  "trajectory_count": 3,
+  "validation_passed": true
+}

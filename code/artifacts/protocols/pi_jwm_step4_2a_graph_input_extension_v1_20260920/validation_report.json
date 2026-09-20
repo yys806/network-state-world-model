@@ -1,0 +1,222 @@
+{
+  "communication_relation_semantics": {
+    "execution_outcome_used": false,
+    "wired": "pre-action environment.wired_edges expanded with WiredNetworkManager directed hasLink semantics; valid relation with CSI null/mask=false",
+    "wireless": "decision channel_rows; directed per-RB attenuation and mask"
+  },
+  "deterministic_semantic_digest": "7884b03aeea533ba95b72ecf5cf89cd0e1f3e2836b7d8b1942d41b300b3a103d",
+  "fields_resolved": [
+    "physical.position_m",
+    "comm.wireless_csi",
+    "comm.wired_relation",
+    "agent.cpu_capacity_per_s",
+    "task.demand_progress_time_existing_fields",
+    "task_agent.typed_relations"
+  ],
+  "fields_still_blocked": [
+    "flow.current_state.total_remaining_type_endpoints",
+    "task.return_size",
+    "task.priority",
+    "task.deadline",
+    "agent.dynamic_available_cpu",
+    "agent.storage",
+    "comm.wired_queue_load_utilization"
+  ],
+  "graph_readiness": {
+    "graph_builder_implemented": false,
+    "ready": false,
+    "reason": "stable stateful Flow and other Raw-insufficient fields remain blocked"
+  },
+  "new_normalization_stats": {
+    "agent.cpu_capacity_per_s": {
+      "count": 56,
+      "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+      "mean": 6.857142857142857,
+      "preprocessing_policy": "z_score_on_valid_train_values",
+      "source_field": "node_cpu_capacity_observation_rows[].capacity_per_s",
+      "std": 3.6421567954234177,
+      "unit": "AirFogSim CPU-work-unit/s",
+      "zero_variance_handling": "population_std"
+    },
+    "comm.channel_attenuation_db": {
+      "count": 33600,
+      "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+      "mean": 98.34974797337962,
+      "preprocessing_policy": "z_score_on_valid_train_values",
+      "source_field": "channel_rows[].channel_attenuation_db",
+      "std": 5.447668248691379,
+      "unit": "dB",
+      "zero_variance_handling": "population_std"
+    },
+    "entity.position_x_m": {
+      "count": 128,
+      "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+      "mean": 311.9611903239539,
+      "preprocessing_policy": "z_score_on_valid_train_values",
+      "source_field": "entities[].position_m[0]",
+      "std": 289.9769918292785,
+      "unit": "m",
+      "zero_variance_handling": "population_std"
+    },
+    "entity.position_y_m": {
+      "count": 128,
+      "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+      "mean": 381.53089427788217,
+      "preprocessing_policy": "z_score_on_valid_train_values",
+      "source_field": "entities[].position_m[1]",
+      "std": 277.31656328789245,
+      "unit": "m",
+      "zero_variance_handling": "population_std"
+    },
+    "entity.position_z_m": {
+      "count": 128,
+      "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+      "mean": 37.74232126279132,
+      "preprocessing_policy": "z_score_on_valid_train_values",
+      "source_field": "entities[].position_m[2]",
+      "std": 65.78666419476802,
+      "unit": "m",
+      "zero_variance_handling": "population_std"
+    },
+    "task.computed_cpu_work": {
+      "count": 71,
+      "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+      "mean": 0.0,
+      "preprocessing_policy": "z_score_on_valid_train_values",
+      "source_field": "tasks[].computed_cpu_work",
+      "std": 1.0,
+      "unit": "AirFogSim CPU-work-unit",
+      "zero_variance_handling": "scale=1.0"
+    },
+    "task.elapsed_time_s": {
+      "count": 71,
+      "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+      "mean": 0.9267605633802817,
+      "preprocessing_policy": "z_score_on_valid_train_values",
+      "source_field": "decision_time_s - tasks[].arrival_time_s",
+      "std": 0.804206852109558,
+      "unit": "s",
+      "zero_variance_handling": "population_std"
+    },
+    "task.task_cpu_work": {
+      "count": 71,
+      "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+      "mean": 0.4786925045797568,
+      "preprocessing_policy": "z_score_on_valid_train_values",
+      "source_field": "tasks[].task_cpu_work",
+      "std": 0.14179113806328747,
+      "unit": "AirFogSim CPU-work-unit",
+      "zero_variance_handling": "population_std"
+    },
+    "task.transmitted_size": {
+      "count": 71,
+      "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+      "mean": 0.0,
+      "preprocessing_policy": "z_score_on_valid_train_values",
+      "source_field": "tasks[].transmitted_size",
+      "std": 1.0,
+      "unit": "AirFogSim data-unit",
+      "zero_variance_handling": "scale=1.0"
+    }
+  },
+  "passed": true,
+  "raw_to_sample_to_tensor_provenance": [
+    {
+      "amended_raw_schema_version": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
+      "config_hash": "0f2bad0ecdf1e8a0b3e10b6514edda80703e5f348049610bb96323d303950064",
+      "dataset_schema_version": "PI-JWM-Step-4.2A-Dataset-Preprocessing-v1",
+      "decision_frame_range": [
+        0,
+        6
+      ],
+      "sample_schema_version": "PI-JWM-Model-Ready-Sample-Contract-v5-step4.2A",
+      "seed": 0,
+      "slot_duration_s": 0.1,
+      "source_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_communication_outcome_semantics_v2_20260919\\real_communication_outcome_semantics.json",
+      "source_raw_schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
+      "source_sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
+      "split": "dev_train",
+      "step_frame_range": [
+        0,
+        5
+      ],
+      "tensor_schema_version": "PI-JWM-Model-Input-Tensor-Collation-v3-step4.2A",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "amended_raw_schema_version": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
+      "config_hash": "9e196354cabdf8c600b14929fa6c6216c1aed11e5f89dd1da12ffb6032ae547b",
+      "dataset_schema_version": "PI-JWM-Step-4.2A-Dataset-Preprocessing-v1",
+      "decision_frame_range": [
+        0,
+        6
+      ],
+      "sample_schema_version": "PI-JWM-Model-Ready-Sample-Contract-v5-step4.2A",
+      "seed": 1,
+      "slot_duration_s": 0.1,
+      "source_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step3_2_raw_dev_seed1_20260919\\real_communication_outcome_semantics.json",
+      "source_raw_schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
+      "source_sha256": "3fc4da5cac00a645a73228a6bf437b2d61fd82ee3e3be976442567d1e1e6fc5d",
+      "split": "dev_train",
+      "step_frame_range": [
+        0,
+        5
+      ],
+      "tensor_schema_version": "PI-JWM-Model-Input-Tensor-Collation-v3-step4.2A",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "amended_raw_schema_version": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
+      "config_hash": "b2cad48fa6d845314a6ac7fb14da62d59ab7ec36992673a0e9e456f913f91c75",
+      "dataset_schema_version": "PI-JWM-Step-4.2A-Dataset-Preprocessing-v1",
+      "decision_frame_range": [
+        0,
+        6
+      ],
+      "sample_schema_version": "PI-JWM-Model-Ready-Sample-Contract-v5-step4.2A",
+      "seed": 2,
+      "slot_duration_s": 0.1,
+      "source_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step3_2_raw_dev_seed2_20260919\\real_communication_outcome_semantics.json",
+      "source_raw_schema_version": "PIJWM-Step-2.4-Communication-Outcome-Semantics-v2-dag-amendment",
+      "source_sha256": "02f186f5e7f109760c85a6bad879c7e2dd745ea015179c85850313cac3256bad",
+      "split": "dev_validation",
+      "step_frame_range": [
+        0,
+        5
+      ],
+      "tensor_schema_version": "PI-JWM-Model-Input-Tensor-Collation-v3-step4.2A",
+      "trajectory_id": "step3.2-dev-seed2"
+    }
+  ],
+  "required_checks": {
+    "all_samples_valid": true,
+    "deterministic_rebuild": true,
+    "passed": true,
+    "raw_insufficient_fields_still_blocked": true,
+    "raw_sample_tensor_provenance": true,
+    "resolved_fields_explicit": true,
+    "scope_false": true,
+    "tensor_valid": true,
+    "train_only_normalization": true,
+    "trajectory_level_split": true,
+    "versioned_additive_contracts": true
+  },
+  "sample_count": 12,
+  "schema_version": "PI-JWM-Step-4.2A-Validation-Receipt-v1",
+  "scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "graph_builder": false,
+    "locked_test": false,
+    "physical_topology": false,
+    "training": false
+  },
+  "task_agent_relation_semantics": {
+    "exec": "current_node_id only when lifecycle=computing",
+    "future_route_action_used": false,
+    "host": "current decision current_node_id",
+    "ret": "current non-null return_destination_id",
+    "src": "task_node_id"
+  },
+  "trajectory_count": 3
+}

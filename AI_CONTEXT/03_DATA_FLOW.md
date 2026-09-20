@@ -69,10 +69,11 @@ DataLoader → 模型 prior/teacher 输出 → `formal_world_model_loss()`。bas
 - `locked_test_accessed=false`。
 - `formal_performance_claim_ready=false`。
 - 通信 Outcome 拆为 `wireless_delivered_data_by_task`、`wired_delivered_data_by_task` 和两部分按 task 聚合的 `delivered_data_by_task`。wired source 是真实 `WiredNetworkManager.step` 返回的 slot transmitted bytes；`{}` + observed mask 表示已观测但无服务，`null` + missing mask/reason 表示不可恢复。
-- Raw Trajectory Layer / 01 与当前最小 Dataset/Tensor / 02 已冻结；STEP 4.1 只冻结 graph semantic mapping，尚未生成新 graph input extension 或 graph object。
+- Raw Trajectory Layer / 01 与当前最小 Dataset/Tensor / 02 已冻结；STEP 4.2A 以独立版本链生成 graph input extension，但尚未生成 graph object。
 - Step 3.1F 最小样本：History 为 `[t-H+1,t]` 的 `H=2` observation，并在过去 `tau<t` 行保留对齐的已执行四类 Action 和 Outcome；当前帧不含 `A_t/Y_t`。Future Action/Target 为 `[t,t+L-1]` 的 `L=2` 帧。input physical/task index 来自整个 History 的因果可观对象 union，flow index 来自过去 Outcome transfer event；Future Action 先按 anchor visibility 拒绝不可见 object，再引用同一 static union index；future-only endpoint 仍不进入 input Static。
 - STEP 3.3F CPU collation 入口为 `code/src/pi_jwm/step3_3_model_input_tensor_v1.py`；12 个 Step 3.2 sample 生成 fixed-shape arrays。Past Outcome 为独立 H-1 轴；Target 保留 future entity/task/flow/service；stable index、固定 vocab、padding/mask 和 target namespace 均有 semantic receipt。该 tensor 尚未被双图或模型读取。
 - STEP 4.1 mapping 已核实：position、heading/elevation、wireless CSI、CPU static capacity 和若干 Task current fields 在 Raw 有来源但未进入当前 input tensor；wired relation 可由 `environment.wired_edges` / `hasLink` 取得但尚未逐 Decision 物化，无 CSI 时以 type + feature mask 表示；可选 wired numeric state 不属于 03 minimum。完整 stateful Flow 在当前 Raw 不足。过去 `past_outcome_flow_service` 仍只是一条 hop service outcome，不能改名成 current Flow total/rem。
+- STEP 4.2A 当前链路：原 Raw + decision-before-action wired amendment → Sample v5（position、typed Comm、static CPU、Task current、Src/Host/Exec/Ret）→ trajectory split/train-only normalization → Tensor v3。旧 Step 3 arrays 保留；Future Target 只用于隔离校验，不进入 History input。stable stateful Flow、Physical topology 和 graph object 仍不存在。
 
 Unverified：未在当前 tensor manifest、loader 或模型实际读路径出现的字段，不得推断为当前模型输入。
 

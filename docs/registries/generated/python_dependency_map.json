@@ -2050,6 +2050,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.build_step3_2_raw_to_dataset_batch_v1",
+        "scripts.build_step4_2a_graph_input_extension_v1",
         "tests.test_step3_2_batch_preprocessing_v1",
         "tests.test_step3_3_model_input_tensor_v1"
       ],
@@ -2090,6 +2091,21 @@
       "path": "code/src/pi_jwm/step4_1_pi_graph_mapping_v1.py",
       "test_files": [
         "code/tests/test_step4_1_pi_graph_mapping_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.build_step4_2a_graph_input_extension_v1",
+        "tests.test_step4_2a_graph_input_extension_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step4_2a_graph_input_extension_v1",
+      "path": "code/src/pi_jwm/step4_2a_graph_input_extension_v1.py",
+      "test_files": [
+        "code/tests/test_step4_2a_graph_input_extension_v1.py"
       ]
     },
     {
@@ -3181,6 +3197,19 @@
       "lifecycle_status": "support",
       "module": "scripts.build_step4_1_pi_graph_mapping_v1",
       "path": "code/scripts/build_step4_1_pi_graph_mapping_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step3_2_batch_preprocessing_v1",
+        "pi_jwm.step4_2a_graph_input_extension_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step4_2a_graph_input_extension_v1",
+      "path": "code/scripts/build_step4_2a_graph_input_extension_v1.py",
       "test_files": []
     },
     {
@@ -9100,6 +9129,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step4_1_pi_graph_mapping_v1",
       "path": "code/tests/test_step4_1_pi_graph_mapping_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2a_graph_input_extension_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step4_2a_graph_input_extension_v1",
+      "path": "code/tests/test_step4_2a_graph_input_extension_v1.py",
       "test_files": []
     },
     {

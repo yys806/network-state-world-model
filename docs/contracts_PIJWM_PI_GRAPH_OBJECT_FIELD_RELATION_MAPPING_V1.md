@@ -123,3 +123,9 @@ Artifact：`code/artifacts/protocols/pi_jwm_step4_1_pi_graph_mapping_v1_20260919
 `mapping_schema.json` 是总合同；四张独立 matrix JSON 和 `validation_report.json` 由 builder 生成；`manifest.json` 绑定真实 Raw、Step 3.3 tensor schema/manifest、定义 03 SHA 和本 Step 源码/测试 hash。机器 receipt 对所有 required checks 取逻辑 AND。
 
 范围固定为：`graph_builder_implemented=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+
+## 11. STEP 4.2A resolution overlay（2026-09-20）
+
+本文件冻结的是 Step 4.1 当时的 mapping 与 gap，不改写历史分类。后续 Step 4.2A 已用独立版本链把 position、wireless per-RB CSI、wired typed relation、CPU static capability、已有 Task demand/progress/elapsed 以及 Src/Host/Exec/Ret 贯穿到 Sample/Tensor。机器化 resolution overlay 见 `code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/step4_1_gap_resolution.json`。
+
+仍未解决且不得补造的 minimum gap 是 stable stateful Flow；return size/priority/deadline、dynamic available CPU、storage 和 wired queue/load/utilization 也继续缺少可靠 Raw 来源。Physical topology 与 graph builder 未实现。

@@ -1167,3 +1167,15 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 重跑 focused/Step 3.3 regression、deterministic rebuild/hash、compileall、knowledge index write/check、diff checks；待 commit + push 后停止。
 - 边界：`graph_builder_implemented=false`、`training=false`、`gpu=false`、`locked_test=false`。
 - 唯一下一动作：完成本 Patch；通过后 STEP 4.1 正式 COMPLETE / FROZEN，等待研究者另行授权最小 Data Contract Additive Extension。
+# 2026-09-20 STEP 4.2A — Existing-Source Graph Input Additive Extension
+
+- 当前门：只将 STEP 4.1 已确认 Raw/Simulator 已有或可因果推导的 graph minimum inputs，以新版本 additive contract 贯穿 Raw → Sample → Dataset/Normalization → Tensor；不实现 graph builder。
+- [x] 恢复 `main@db000291563eb23ac8a0a577cc35fd84bb7b95c3`，工作树 clean；读取 02/03 只读定义、Step 3.1F/3.2/3.3、Step 4.1 mapping/receipt、Tracker 与 AI_CONTEXT。
+- [x] 核实既有三条 development trajectory 的 position、wireless CSI、CPU capacity、Task current fields、wired topology 和 stable index 来源。
+- [x] TDD 红灯固定 Raw wired decision rows、Sample typed Comm/static capability/Task-Agent、train-only normalization、Tensor shape/index/mask 与 12 项因果反事实。
+- [x] 实现独立版本化 additive extension 与 builder，不覆盖旧 artifact，不改变 frozen Step 3 语义。
+- [x] 生成最小 development artifact、Step 4.2A receipt/hash/provenance，回写 Step 4.1 resolved/blocked 状态但保留历史事实。
+- [x] 运行 focused、Step 4.1/3.3/3.2/Raw 回归、deterministic rebuild、round-trip、compileall、knowledge index write/check、diff checks；待 commit + push `main` 后停止。
+- 阻塞保持：stable stateful Flow total/rem/type/endpoints、return size/priority/deadline、dynamic available CPU、storage、wired queue/load/utilization；任何非零 unresolved future reference 仍为 `RESEARCHER_DECISION_REQUIRED`。
+- 范围：`graph_builder=false`、`physical_topology=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+- 唯一下一动作：完成 STEP 4.2A；之后只建议审阅仍 Raw-insufficient 的 minimum graph gaps，特别是 stable stateful Flow。

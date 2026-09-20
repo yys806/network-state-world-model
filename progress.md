@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-20 STEP 4.2A
+
+已实现 existing-source graph input additive extension：新增版本化 Raw wired relation amendment、Sample/Tensor position/typed Comm/static CPU/Task current/typed Task–Agent 字段，以及 train-only mask-aware normalization。focused tests 14/14 通过；3 条 development trajectory 形成 12 个样本，receipt `passed=true`、semantic deterministic rebuild=true。Graph Builder、Physical topology、模型和训练均未开始；GPU/`locked_test` 均未使用。
+
 ## 2026-09-19 STEP 4.1
 
 已完成 Physical / Information object-field-relation mapping freeze：26 个字段、8 类关系、10 个 additive extension 项、12 个 forbidden placements 与 11 个旧实现复用/冲突项已机器化。focused tests 5/5 和 artifact validation 首轮通过；当前 readiness 明确阻止 graph builder。未训练、未使用 GPU、未访问 `locked_test`。

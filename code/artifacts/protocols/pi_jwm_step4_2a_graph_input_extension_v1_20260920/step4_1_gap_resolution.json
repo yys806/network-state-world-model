@@ -1,0 +1,45 @@
+{
+  "graph_ready": false,
+  "historical_mapping_preserved": true,
+  "resolved": [
+    {
+      "current_availability": "AVAILABLE_IN_STEP_4.2A_SAMPLE_TENSOR",
+      "item": "physical.position_m",
+      "step4_1_availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED"
+    },
+    {
+      "current_availability": "AVAILABLE_IN_STEP_4.2A_SAMPLE_TENSOR",
+      "item": "comm.wireless_csi",
+      "step4_1_availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED"
+    },
+    {
+      "current_availability": "AVAILABLE_IN_STEP_4.2A_RAW_SAMPLE_TENSOR",
+      "item": "comm.wired_relation",
+      "step4_1_availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED"
+    },
+    {
+      "current_availability": "AVAILABLE_IN_STEP_4.2A_STATIC_SAMPLE_TENSOR",
+      "item": "agent.cpu_capacity_per_s",
+      "step4_1_availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED"
+    },
+    {
+      "current_availability": "AVAILABLE_IN_STEP_4.2A_SAMPLE_TENSOR",
+      "item": "task.existing_demand_progress_elapsed",
+      "step4_1_availability": "RAW_AVAILABLE_BUT_NOT_EXPOSED_OR_DERIVABLE"
+    },
+    {
+      "current_availability": "AVAILABLE_IN_STEP_4.2A_SAMPLE_TENSOR",
+      "item": "task_agent.typed_relations",
+      "step4_1_availability": "DERIVABLE_CAUSALLY"
+    }
+  ],
+  "still_blocked": [
+    "flow.current_state.total_remaining_type_endpoints",
+    "task.return_size",
+    "task.priority",
+    "task.deadline",
+    "agent.dynamic_available_cpu",
+    "agent.storage",
+    "comm.wired_queue_load_utilization"
+  ]
+}
