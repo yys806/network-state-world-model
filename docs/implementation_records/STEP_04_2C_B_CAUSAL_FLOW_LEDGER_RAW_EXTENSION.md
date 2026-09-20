@@ -41,6 +41,19 @@ Researcher Decision：Flow/Hop 分离、FlowID 三元组、same-destination 不�
 
 真实 trace 尚未覆盖 Return multi-hop、same-destination reroute、destination-change Epoch 和 local execution；这些只有 contract fixture evidence。Sample/Tensor Flow extension、Graph Builder、模型和训练未开始。
 
+## PATCH — Logical Destination Provenance & Multi-hop Single-Flow Continuity
+
+- 基线：`85b8671c5feae50ef3ac2d2b7f0d183b8f3cddb0`。
+- Source audit：`TaskManager.offloadTask` 强制 accepted route terminal 等于 assigned execution target；`Task.transmit_to_Node` 只在 hop 完成时删除 remaining route 首元素，因此 Input 使用 established offload route terminal。Return 使用独立的 `Task.getToReturnNodeId()` / Decision `return_destination_id`。
+- 修复：Raw amendment 不再把 `entry.target_node_id` 当 end-to-end destination；旧字段保留 current action/carrying-hop target 语义，additive overlay 写入 logical destination、source、capture phase 和 logical route。
+- Invariant：同一 `(TaskID, FlowType, Epoch)` logical destination 固定；普通 hop advancement 保持 FlowID/Epoch/RouteRevision，只有 hop index 前进。
+- Real Trace Observation：真实 `Task_1` Input 两跳为 `UAV_0→RSU_0→cloudServer_4`，FlowID sequence=`flow::Task_1::Input::0` 两次，Epoch=`0,0`，destination=`cloudServer_4,cloudServer_4`，E2E delivered=`0,0.28065475894249814`。
+- Machine acceptance：19 项 required checks 全部由实际证据计算并 AND；fake multi-hop、next-hop-as-destination、new epoch/revision、destination mutation 均有负例。
+- Remaining runtime evidence：Return multi-hop 与 same-destination partial-hop reroute 尚无真实观察；没有把 fixture 外推为 simulator 支持结论。
+- Scope：`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`、`sample_tensor=false`、`graph_builder=false`。
+
+Patch validation actual outputs：focused 25/25；4.2C-A 10/10；4.2B audit 7/7；4.2A 17/17；4.1 7/7；Raw causal 4/4；Raw single-step 9/9。Artifact 连续两次 rebuild 的 5 个 JSON SHA-256 完全一致；JSON reload=5；compileall、knowledge index write/check、`git diff --check` 均通过。
+
 ## Git / Next Step
 
 本记录随本 Step commit。若最终验收通过，唯一建议为 `STEP 4.2C-C — Flow Sample/Tensor Additive Extension`，不得直接进入 Graph Builder。

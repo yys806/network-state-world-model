@@ -980,3 +980,10 @@ Corrected the feasibility boundary with audit-only event replay. Under the froze
 ## 2026-09-20 STEP 4.2C-B
 
 Causal Flow Ledger and Raw additive contract implemented and verified. Real AirFogSim evidence covers direct Input/Return and a separate real Input two-hop trace; remaining unobserved scenarios are contract fixtures. Sample/Tensor, graph/model/training, GPU and locked_test remain unopened. Required regressions, indexes, deterministic/hash checks and Git closure passed.
+
+## 2026-09-20 STEP 4.2C-B-PATCH
+
+- Verified source semantics: accepted Input route terminal is the assigned execution destination; hop completion removes only the remaining route head. Return destination is independently exposed by `getToReturnNodeId()` / `return_destination_id`.
+- Fixed Raw amendment so current action/hop target is never silently promoted to logical destination; added explicit destination source and capture phase.
+- Real two-hop Input now passes single FlowID, single Epoch, constant destination, distinct hops, no normal-hop reroute, intermediate-not-E2E and final-hop-E2E checks.
+- Focused suite passes 25 tests. Regressions pass: 4.2C-A 10, 4.2B audit 7, 4.2A 17, 4.1 7, Raw causal 4 and Raw single-step 9. Deterministic rebuild/hash, 5-file JSON reload, compileall, knowledge-index write/check and diff check pass; Git commit/push remain.

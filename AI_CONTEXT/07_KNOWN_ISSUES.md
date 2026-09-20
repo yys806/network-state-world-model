@@ -58,6 +58,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - 真实 non-locked trace 已覆盖直接 Input/Return 与独立 Input 两跳；尚未真实观察 Return multi-hop、same-destination reroute、destination-change Epoch 和 local execution no-flow，这些目前只有 contract fixture evidence。
 - 旧无线 Return hook 的 delivered amount 可超过 observer return_size；Ledger 按冻结 min rule 封顶守恒。该 observation 不等于修改 simulator，也不能外推为正式 Dataset 结论。
 - Flow Sample/Tensor additive extension、Graph Builder、GNN、World Model、Loss、Planner 和训练仍未开始。
+- Input multi-hop logical destination continuity 已由真实 trace 闭合；Return multi-hop 和 same-destination partial-hop reroute 仍缺真实 runtime evidence。后者不得被当前 contract fixture 描述成 simulator 已支持。
 
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
 

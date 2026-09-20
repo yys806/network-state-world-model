@@ -77,6 +77,7 @@ DataLoader → 模型 prior/teacher 输出 → `formal_world_model_loss()`。bas
 - STEP 4.2B 机器证据：`transmitted_size` 是当前 stage/hop progress，完成 hop 后 reset；Input/Return remaining 与 stable identity 未证明，DAG 不生成 DepData Flow。综合 verdict=`FLOW_CONTRACT_NOT_YET_SUPPORTED`。
 - STEP 4.2B-PATCH：Flow verdict 仅由 Flow-specific evidence 计算；dynamic available CPU、storage、wired queue/load/utilization 是独立 `other_information_graph_gaps`。simulator-issued Flow ID unavailable 是事实，logical `task_id + input/return` identity 是否采用留待研究者决定；DepData 无真实 transfer process 也不允许由 DAG 虚构。
 - STEP 4.2A-PATCH mask rule：observer 的 supported wireless directed relation 与 CSI feature observability 是两个层次。endpoint present 且 structural row 存在时，CSI `observed_mask=false` 仍保留 relation validity；CSI tensor mask=false、placeholder=0。relation presence=false 时 CSI mask 不得为 true。wired valid/no-CSI 使用同一分层原则。
+- STEP 4.2C-B Raw Flow rule：`target_node_id` 是 current action/carrying-hop target，不是可靠的 end-to-end destination。Input logical destination 从已建立 offload route terminal 捕获；Return 从 Decision task `return_destination_id` 捕获。Flow row 保存 source/capture phase；同一 `(TaskID, FlowType, Epoch)` destination 固定。真实两跳只在最终 hop 增加 E2E delivered，普通 hop advancement 只推进 hop index。
 - Remaining Task source：`_extract_tasks()` 已读取 return size/deadline/priority，但 frozen Raw decision row 未透传；它们不是 simulator-source missing。`task_delay` 已由当前 `elapsed_time_s=max(decision_time-arrival_time,0)` 因果表达。
 
 Unverified：未在当前 tensor manifest、loader 或模型实际读路径出现的字段，不得推断为当前模型输入。

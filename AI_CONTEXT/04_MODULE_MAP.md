@@ -45,6 +45,7 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 - STEP 3.3F CPU tensor collation: `code/src/pi_jwm/step3_3_model_input_tensor_v1.py`; JSON sample -> semantically complete fixed-shape Observation/Past Outcome/Action/Target arrays with stable index, fixed vocab, mask/padding and validation receipt. Not consumed by a graph/model yet.
 - STEP 4.1 mapping builder/validator: `code/scripts/build_step4_1_pi_graph_mapping_v1.py` and `pi_jwm.step4_1_pi_graph_mapping_v1.validate_mapping_checks`; audit-only, no graph construction.
 - STEP 4.2A builder/validator: `code/scripts/build_step4_2a_graph_input_extension_v1.py` and `pi_jwm.step4_2a_graph_input_extension_v1`; versioned existing-source input extension, no graph construction/model read path.
+- STEP 4.2C-B Ledger/Raw amendment: `code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py` and `code/scripts/build_step4_2c_b_causal_flow_ledger_raw_v1.py`; logical destination provenance, single-Flow multi-hop continuity, E2E conservation and acceptance receipt. No Sample/Tensor or graph construction.
 - Raw DAG capture amendment: `code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py::_capture`; source `airfogsim_full_dual_graph_observer_v1._extract_dag_edges`.
 
 ## 历史代码定位

@@ -2689,3 +2689,5 @@ STEP 3.2-PATCH 已将 Dataset isolation 证据补齐：provenance 从 Raw 读取
 ### Causal Flow Ledger 与 Raw additive Flow state（2026-09-20）
 
 研究者冻结 Flow 为 logical end-to-end business Flow，Hop 为 carrying segment；FlowID 使用 `(TaskID, FlowType, Epoch)`。PI-JWM 不修改 AirFogSim 核心传输状态机，而以真实 state/event 和历史 Ledger 因果维护 Input/Return 的 E2E delivered/remaining、current holder、RouteRevision 与 Epoch lineage。same-destination reroute 不换 Epoch；destination change 只允许 clean hop boundary 并创建新 Epoch。DepData vocabulary 保留但当前 runtime instances=0，DAG 不生成假 Flow。STEP 4.2C-B 已实现 Ledger 与 Raw amendment；Flow Sample/Tensor 和 Graph Builder 尚未开始。
+
+STEP 4.2C-B-PATCH 进一步冻结 endpoint provenance：Raw `target_node_id` 只表示当前 action/carrying-hop target，不能直接作为 end-to-end destination。Input 的 logical destination 来自动作成立后的 offload route terminal；Return 来自独立 `return_destination_id`。同一 `(TaskID, FlowType, Epoch)` destination 固定，普通 hop advancement 只推进 hop index，不增加 RouteRevision/Epoch。真实两跳 Input 已按单 FlowID/Epoch 和 final-hop-only E2E 通过机器验收；Return multi-hop 与 same-destination partial-hop reroute 尚无真实 runtime evidence。

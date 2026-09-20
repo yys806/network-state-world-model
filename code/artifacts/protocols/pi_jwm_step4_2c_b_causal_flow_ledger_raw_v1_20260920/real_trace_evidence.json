@@ -1,17 +1,45 @@
 {
   "checks": {
+    "e2e_no_double_count": true,
+    "input_logical_destination_causal": true,
     "legacy_completion_overlay_only": true,
+    "logical_destination_provenance_proven": true,
+    "normal_hop_advancement_not_destination_change": true,
+    "normal_hop_advancement_not_reroute": true,
     "real_decision_causality": true,
     "real_input_flow_completed": true,
-    "real_multihop_input_completed": true,
+    "real_multihop_final_hop_advances_e2e": true,
+    "real_multihop_intermediate_service_not_e2e": true,
+    "real_multihop_logical_destination_constant": true,
+    "real_multihop_multiple_distinct_hops": true,
+    "real_multihop_single_epoch": true,
+    "real_multihop_single_flow_id": true,
     "real_non_locked_airfogsim": true,
     "real_return_flow_completed": true,
-    "real_transitions_applied_without_error": true
+    "real_transitions_applied_without_error": true,
+    "return_logical_destination_causal": true
   },
   "evidence_class": "REAL_TRACE_EVIDENCE",
   "limitations": [
     "Real trace covers direct-hop Input/Return plus a separate real two-hop Input trace; Return multi-hop and same-destination reroute are contract fixtures.",
     "Legacy wireless Return event amount can exceed observer return_size; the frozen min(total, delivered+delta) rule caps logical delivery and preserves conservation."
+  ],
+  "logical_destination_source_provenance": [
+    {
+      "flow_type": "Input",
+      "semantic_claim": "accepted offload route terminal equals the assigned execution target",
+      "semantic_claim_2": "route is stored as remaining ordered hops; completed hop removes only element zero, preserving its terminal destination",
+      "source_path": "code/reference/AirFogSim/airfogsim/manager/task_manager.py",
+      "source_path_2": "code/reference/AirFogSim/airfogsim/entities/task.py",
+      "symbol": "TaskManager.offloadTask",
+      "symbol_2": "Task.offloadTo / Task.transmit_to_Node / Task.getToOffloadRoute"
+    },
+    {
+      "flow_type": "Return",
+      "semantic_claim": "return route terminal is captured as stable return destination and then exposed independently from remaining route",
+      "source_path": "code/reference/AirFogSim/airfogsim/entities/task.py",
+      "symbol": "Task.setToReturnRoute / Task.getToReturnNodeId / Task.startToReturn"
+    }
   ],
   "multi_hop_source_path": "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json",
   "multi_hop_source_sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
@@ -20,6 +48,63 @@
     "completed_return_count": 2,
     "flow_count": 9,
     "local_execution_observed": false,
+    "real_multihop_single_flow_analysis": {
+      "checks": {
+        "normal_hop_advancement_not_reroute": true,
+        "real_multihop_final_hop_advances_e2e": true,
+        "real_multihop_intermediate_service_not_e2e": true,
+        "real_multihop_logical_destination_constant": true,
+        "real_multihop_multiple_distinct_hops": true,
+        "real_multihop_single_epoch": true,
+        "real_multihop_single_flow_id": true
+      },
+      "e2e_delivered_sequence": [
+        0.0,
+        0.28065475894249814
+      ],
+      "e2e_remaining_sequence": [
+        0.28065475894249814,
+        0.0
+      ],
+      "epoch_sequence": [
+        0,
+        0
+      ],
+      "established_logical_destination": "cloudServer_4",
+      "evidence_status": "REAL_TRACE_SUFFICIENT_FOR_LOGICAL_DESTINATION_CONTINUITY",
+      "final_e2e_delivered": 0.28065475894249814,
+      "final_e2e_remaining": 0.0,
+      "flow_id_sequence": [
+        "flow::Task_1::Input::0",
+        "flow::Task_1::Input::0"
+      ],
+      "flow_type": "Input",
+      "hop_sequence": [
+        {
+          "source_id": "UAV_0",
+          "target_id": "RSU_0"
+        },
+        {
+          "source_id": "RSU_0",
+          "target_id": "cloudServer_4"
+        }
+      ],
+      "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+      "logical_destination_sequence": [
+        "cloudServer_4",
+        "cloudServer_4"
+      ],
+      "logical_destination_source": "established_offload_route_terminal",
+      "original_source": "UAV_0",
+      "passed": true,
+      "per_hop_service_sequence": [
+        0.28065475894249814,
+        0.28065475894249814
+      ],
+      "per_hop_service_sum": 0.5613095178849963,
+      "task_id": "Task_1",
+      "total_data": 0.28065475894249814
+    },
     "runtime_depdata_instances": 0,
     "same_destination_reroute_observed": false,
     "transition_count": 12

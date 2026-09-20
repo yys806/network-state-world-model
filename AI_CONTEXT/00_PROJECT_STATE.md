@@ -12,7 +12,7 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 4.2C-B` 已实现 Causal Flow Ledger 与 Raw additive Flow contract。FlowID/Epoch/RouteRevision、Input/Return、E2E progress、holder、lineage、presence 和 clean-boundary guard 已机器验证；DepData runtime instances=0。Flow Sample/Tensor、Graph Builder、GNN 与模型仍未开始。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_2c_b_causal_flow_ledger_raw_v1_20260920/`。
+- 当前 Step：`STEP 4.2C-B`（含 logical-destination patch）已 COMPLETE / FROZEN。Input destination 来自 established offload route terminal，Return 来自 `return_destination_id`；`target_node_id` 不再被误当 end-to-end destination。真实 Input 两跳已验证同一 FlowID/Epoch、固定 destination、普通 hop 不增 RouteRevision 与 final-hop-only E2E。DepData runtime instances=0。Flow Sample/Tensor、Graph Builder、GNN 与模型仍未开始。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_2c_b_causal_flow_ledger_raw_v1_20260920/`。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - 新定义实现状态：Raw 因果可观测、四类动作、slot Outcome 已验收；STEP 3.2/3.3 完成最小 Dataset/Tensor 合同；STEP 4.2A 已把 position/CSI/wired relation/CPU static capability/部分 Task 状态和 typed Task-Agent relation 输入化。Wireless structural relation 不因 CSI missing 而失效。source audit 确认 `transmitted_size` 是 hop-local 且完成 hop 后 reset；Input/Return stable Flow remaining、DepData transfer 和动态资源 Raw 仍不足。双图、World Model、Loss、Planner 仍未开始。
@@ -54,6 +54,7 @@ STEP 4.2C-B 完成后唯一建议是 `STEP 4.2C-C — Flow Sample/Tensor Additiv
 - 2026-09-20：STEP 4.2B-PATCH 将 verdict 改为 Flow-specific evidence 的实际计算；resource gaps 与 Flow readiness 解耦，stable ID/DepData 改为 implementation fact + researcher decision boundary；provenance 增加 symbol anchors。
 - 2026-09-20：STEP 4.2C-A-PATCH 通过 audit-only replay 修正 verdict：logical destination 过滤 final delivery，E2E remaining 与 holder 可因果派生，same-destination reroute 可保持 Flow epoch；`flow_completed` 禁止作为 logical completion；机器 verdict=`CAUSAL_FLOW_LEDGER_FEASIBLE`。destination change/DepData 仍需研究者决定。
 - 2026-09-20：STEP 4.2C-B 实现 FlowID/Epoch/RouteRevision、Flow/Carrying 分离、Input/Return lifecycle、clean-boundary destination change、lineage 与 Raw additive state；真实 non-locked trace覆盖 Input/Return，DepData runtime=0。Sample/Tensor 与 Graph Builder 未开始。
+- 2026-09-20：STEP 4.2C-B-PATCH 修正 logical destination provenance：Input 使用已成立 route terminal，Return 使用 `return_destination_id`；真实 `UAV_0→RSU_0→cloudServer_4` 两跳通过单 FlowID/Epoch、固定 destination、无重复 E2E 计数验收。
 
 - 2026-09-19：STEP 4.1-PATCH 修正最小 gap 语义：wired relation 是 Raw/simulator 有来源但未暴露，无 CSI 时用 type + mask；wired 可选 numeric state 不阻塞 03 minimum；CPU capacity 是静态 capability，并与 allocation/service/available CPU 分离。graph builder 保持关闭。
 

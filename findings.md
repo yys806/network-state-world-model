@@ -939,3 +939,11 @@
 - Raw `O_t` exposes only Ledger state updated through the previous Outcome; same-slot delivery first appears in `O_{t+1}`.
 - Real non-locked traces cover direct Input/Return and Input multi-hop. Return multi-hop, reroute, Epoch switch and local no-flow remain fixture-only observations.
 - Legacy wireless Return event delivery may exceed observer return_size; frozen min-capping preserves logical conservation and the mismatch is retained as a real-trace limitation.
+
+## 2026-09-20 STEP 4.2C-B-PATCH
+
+- Root cause: Raw amendment used `entry.target_node_id` for logical destination, but ongoing actions expose the current carrying-hop target there.
+- Proven Input source: `TaskManager.offloadTask` asserts `route[-1] == target_node_id`; `Task.offloadTo` stores that assigned target and remaining route; `transmit_to_Node` deletes only route element zero after each completed hop.
+- Proven Return source: `Task.setToReturnRoute` stores its terminal in `_to_return_node_id`, and observer exposes it as `return_destination_id` independently from remaining route.
+- Real `Task_1` service sequence is `UAV_0→RSU_0→cloudServer_4`; both events bind `flow::Task_1::Input::0`, Epoch 0 and destination `cloudServer_4`. Per-hop service sums to twice the payload, while E2E delivered counts only final-destination delivery once.
+- Same-destination partial-hop reroute remains unresolved runtime evidence; no new research rule was invented.

@@ -2,19 +2,19 @@
   "files": [
     {
       "path": "raw_causal_flow_ledger_amendment.json",
-      "sha256": "d91e960477cbf6e53231d093b15b90f8d8da10f77b58e316308e294457e8f125"
+      "sha256": "01b2a1debca0283f52aa318702f10a35e3190aff102a853460a92adebe38ec87"
     },
     {
       "path": "real_trace_evidence.json",
-      "sha256": "d0307c5dc74cd950ef5af52f6f7e2c7040626de72fdcfcfc79f94b567703f174"
+      "sha256": "a6b32a6f32d605bc77bb3f89ec1408b6f2ef7aedb9b25918d5a2d7bf7fd7b830"
     },
     {
       "path": "contract_fixture_receipt.json",
-      "sha256": "781a834a734c80db671f730e5ba95650bbd976216fda4fc39827d23acbb71b2f"
+      "sha256": "67ed07cb2712acd6a72991fb5de8fac051ee2de3fa7569310638538d72b42727"
     },
     {
       "path": "acceptance.json",
-      "sha256": "62c0ae2ec048065c1632ace3cf1951007af2d0ecaf168c29a463205a007bc02e"
+      "sha256": "60606840b34907f3403d7451a07dc86e6e6278bd0796b29220f17158d39197eb"
     }
   ],
   "formal_dataset": false,
@@ -37,12 +37,12 @@
     {
       "path": "code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py",
       "role": "implementation_or_provenance_source",
-      "sha256": "5c80bf43849379232b92fb5421ed36ec124ec75a305ebc515ecc9183c80ebf48"
+      "sha256": "83b7933ac10ea48e173197ab90685f72e080eb0d12642be3df46cf3c0543761a"
     },
     {
       "path": "code/scripts/build_step4_2c_b_causal_flow_ledger_raw_v1.py",
       "role": "implementation_or_provenance_source",
-      "sha256": "7c4f1640f15b61295b55183e6bd2a9656fec1b8fcaa28f556069d4ea349d0a91"
+      "sha256": "83c8b7140fb0ba762c0012ccb21df415eb9bcbbfdec334ce1a870597a3ab39b2"
     },
     {
       "path": "code/scripts/run_step4_2c_b_real_flow_trace_v1.py",
@@ -63,6 +63,36 @@
       "path": "code/src/pi_jwm/airfogsim_full_dual_graph_collector_v1.py",
       "role": "implementation_or_provenance_source",
       "sha256": "5cfc7b3d677d6159635e01ca69fb580a16dee5640dff45dc0e73fee504865064"
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_frame_builder_v1.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "b8d153699c0e1f960a7415d38f5c70d499dd54b05ef50ba4debf11773baad6ae"
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/entities/task.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0"
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/task_manager.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104"
+    },
+    {
+      "path": "code/tests/test_step4_2c_b_causal_flow_ledger_raw_v1.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "0bf005abd72ac63ebc0085d372370090065f72717bbca9e70a8fe075dc3ffd21"
+    },
+    {
+      "path": "docs/contracts_PIJWM_STEP_04_2C_B_CAUSAL_FLOW_LEDGER_RAW_V1.md",
+      "role": "implementation_or_provenance_source",
+      "sha256": "952de22c6f987f2b2163136eae5e139ec33f155c86b1381e4ac632e164e2610c"
+    },
+    {
+      "path": "docs/implementation_records/STEP_04_2C_B_CAUSAL_FLOW_LEDGER_RAW_EXTENSION.md",
+      "role": "implementation_or_provenance_source",
+      "sha256": "133925d08b2954d23c593770d8cf73ea62cdacb9f5cf84b11ff7a2c0d8b2afdd"
     }
   ],
   "training": false

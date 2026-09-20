@@ -10,6 +10,8 @@ from pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1 import (
     amend_raw_with_causal_flow_ledger,
     validate_epoch_transition,
     validate_flow_ledger_receipt,
+    validate_real_multihop_single_flow,
+    validate_step4_2c_b_acceptance,
 )
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -23,6 +25,12 @@ IMPLEMENTATION_SOURCES = (
     "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py",
     "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py",
     "code/src/pi_jwm/airfogsim_full_dual_graph_collector_v1.py",
+    "code/src/pi_jwm/airfogsim_full_dual_graph_frame_builder_v1.py",
+    "code/reference/AirFogSim/airfogsim/entities/task.py",
+    "code/reference/AirFogSim/airfogsim/manager/task_manager.py",
+    "code/tests/test_step4_2c_b_causal_flow_ledger_raw_v1.py",
+    "docs/contracts_PIJWM_STEP_04_2C_B_CAUSAL_FLOW_LEDGER_RAW_V1.md",
+    "docs/implementation_records/STEP_04_2C_B_CAUSAL_FLOW_LEDGER_RAW_EXTENSION.md",
 )
 
 
@@ -87,13 +95,52 @@ def main() -> None:
     transitions = [row for step in amended["steps"] for row in step["outcome"].get("flow_ledger_transition_evidence", [])]
     flows = amended["flow_ledger_history"]
     completed_types = {row["flow_type"] for row in flows if row["status"] == "COMPLETED"}
+    multihop_transitions = [
+        row
+        for step in amended_multihop["steps"]
+        for row in step["outcome"].get("flow_ledger_transition_evidence", [])
+        if row.get("task_id") == "Task_1" and row.get("flow_type") == "Input" and "error" not in row
+    ]
+    multihop_analysis = validate_real_multihop_single_flow(multihop_transitions)
+    multihop_flow = next(
+        row for row in amended_multihop["flow_ledger_history"]
+        if row["task_id"] == "Task_1" and row["flow_type"] == "Input"
+    )
+    multihop_analysis.update({
+        "evidence_status": "REAL_TRACE_SUFFICIENT_FOR_LOGICAL_DESTINATION_CONTINUITY",
+        "task_id": multihop_flow["task_id"],
+        "original_source": multihop_flow["logical_source"],
+        "established_logical_destination": multihop_flow["logical_destination"],
+        "logical_destination_source": multihop_flow["logical_destination_source"],
+        "logical_destination_capture_phase": multihop_flow["logical_destination_capture_phase"],
+        "flow_type": multihop_flow["flow_type"],
+        "total_data": multihop_flow["total_data"],
+        "per_hop_service_sum": sum(float(row["delivered_data"]) for row in multihop_transitions),
+        "final_e2e_delivered": multihop_flow["e2e_delivered"],
+        "final_e2e_remaining": multihop_flow["e2e_remaining"],
+    })
+    e2e_no_double_count = (
+        multihop_analysis["passed"]
+        and multihop_analysis["per_hop_service_sum"] > multihop_analysis["final_e2e_delivered"]
+        and abs(multihop_analysis["final_e2e_delivered"] - multihop_analysis["total_data"]) <= 1e-9
+    )
+    input_destinations = [row for row in amended["flow_ledger_history"] + amended_multihop["flow_ledger_history"] if row["flow_type"] == "Input"]
+    return_destinations = [row for row in amended["flow_ledger_history"] if row["flow_type"] == "Return"]
     real_checks = {
         "real_non_locked_airfogsim": raw.get("checks", {}).get("real_airfogsim_environment") is True and raw.get("scope", {}).get("locked_test") is False,
         "real_input_flow_completed": "Input" in completed_types,
         "real_return_flow_completed": "Return" in completed_types,
         "real_transitions_applied_without_error": bool(transitions) and not any("error" in row for row in transitions),
         "real_decision_causality": ledger_receipt["checks"]["raw_decision_causality"],
-        "real_multihop_input_completed": any(row["flow_type"] == "Input" and row["status"] == "COMPLETED" for row in amended_multihop["flow_ledger_history"]),
+        **multihop_analysis["checks"],
+        "input_logical_destination_causal": bool(input_destinations) and all(row["logical_destination_source"] == "established_offload_route_terminal" for row in input_destinations),
+        "return_logical_destination_causal": bool(return_destinations) and all(row["logical_destination_source"] == "decision.tasks[].return_destination_id" for row in return_destinations),
+        "logical_destination_provenance_proven": all(
+            bool(row.get("logical_destination_source")) and bool(row.get("logical_destination_capture_phase"))
+            for row in input_destinations + return_destinations
+        ),
+        "normal_hop_advancement_not_destination_change": len(set(multihop_analysis["logical_destination_sequence"])) == 1,
+        "e2e_no_double_count": e2e_no_double_count,
         "legacy_completion_overlay_only": all(row.get("legacy_flow_completed_forbidden_as_logical_completion") is True for row in transitions),
     }
     real_evidence = {
@@ -112,7 +159,25 @@ def main() -> None:
             "runtime_depdata_instances": 0,
             "same_destination_reroute_observed": False,
             "local_execution_observed": False,
+            "real_multihop_single_flow_analysis": multihop_analysis,
         },
+        "logical_destination_source_provenance": [
+            {
+                "flow_type": "Input",
+                "source_path": "code/reference/AirFogSim/airfogsim/manager/task_manager.py",
+                "symbol": "TaskManager.offloadTask",
+                "semantic_claim": "accepted offload route terminal equals the assigned execution target",
+                "source_path_2": "code/reference/AirFogSim/airfogsim/entities/task.py",
+                "symbol_2": "Task.offloadTo / Task.transmit_to_Node / Task.getToOffloadRoute",
+                "semantic_claim_2": "route is stored as remaining ordered hops; completed hop removes only element zero, preserving its terminal destination",
+            },
+            {
+                "flow_type": "Return",
+                "source_path": "code/reference/AirFogSim/airfogsim/entities/task.py",
+                "symbol": "Task.setToReturnRoute / Task.getToReturnNodeId / Task.startToReturn",
+                "semantic_claim": "return route terminal is captured as stable return destination and then exposed independently from remaining route",
+            },
+        ],
         "limitations": [
             "Real trace covers direct-hop Input/Return plus a separate real two-hop Input trace; Return multi-hop and same-destination reroute are contract fixtures.",
             "Legacy wireless Return event amount can exceed observer return_size; the frozen min(total, delivered+delta) rule caps logical delivery and preserves conservation.",
@@ -123,6 +188,18 @@ def main() -> None:
         "multi_hop_receipt": multihop_receipt["passed"],
         "real_trace": real_evidence["passed"],
         "contract_fixture": fixture["passed"],
+        "logical_destination_provenance_proven": real_checks["logical_destination_provenance_proven"],
+        "input_logical_destination_causal": real_checks["input_logical_destination_causal"],
+        "return_logical_destination_causal": real_checks["return_logical_destination_causal"],
+        "real_multihop_single_flow_id": real_checks["real_multihop_single_flow_id"],
+        "real_multihop_single_epoch": real_checks["real_multihop_single_epoch"],
+        "real_multihop_logical_destination_constant": real_checks["real_multihop_logical_destination_constant"],
+        "real_multihop_multiple_distinct_hops": real_checks["real_multihop_multiple_distinct_hops"],
+        "real_multihop_intermediate_service_not_e2e": real_checks["real_multihop_intermediate_service_not_e2e"],
+        "real_multihop_final_hop_advances_e2e": real_checks["real_multihop_final_hop_advances_e2e"],
+        "normal_hop_advancement_not_reroute": real_checks["normal_hop_advancement_not_reroute"],
+        "normal_hop_advancement_not_destination_change": real_checks["normal_hop_advancement_not_destination_change"],
+        "e2e_no_double_count": real_checks["e2e_no_double_count"],
         "flow_id_index_stable": ledger_receipt["checks"]["flow_identity_reversible"] and ledger_receipt["checks"]["flow_index_unique"],
         "depdata_zero": ledger_receipt["checks"]["depdata_zero_instances"],
         "scope": all(ledger_receipt[name] is False for name in ("training", "gpu", "locked_test", "formal_dataset", "sample_tensor_extended", "graph_builder_started")),
@@ -135,9 +212,12 @@ def main() -> None:
         "real_trace_observation": real_evidence,
         "derived_ledger_state": {"input_return": "existing real state/event plus deterministic causal rules", "depdata_instances": 0},
         "researcher_decision": {"flow_identity": "TaskID+FlowType+Epoch", "destination_change": "new epoch at clean hop boundary", "same_destination_reroute": "same epoch", "depdata": "vocabulary only, zero runtime instances"},
-        "remaining_gap": ["real Return multi-hop not observed", "real same-destination reroute not observed", "Sample/Tensor Flow extension not started"],
+        "remaining_gap": ["real Return multi-hop not observed", "same-destination partial-hop reroute runtime support remains unresolved", "Sample/Tensor Flow extension not started"],
         "scope": {"training": False, "gpu": False, "locked_test": False, "formal_dataset": False, "sample_tensor": False, "graph_builder": False},
     }
+    acceptance["validation"] = validate_step4_2c_b_acceptance(acceptance)
+    if not acceptance["validation"]["passed"]:
+        raise RuntimeError("STEP 4.2C-B acceptance validation failed")
     OUT.mkdir(parents=True, exist_ok=True)
     write(OUT / "raw_causal_flow_ledger_amendment.json", amended)
     write(OUT / "real_trace_evidence.json", real_evidence)

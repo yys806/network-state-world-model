@@ -134,3 +134,10 @@
 - 实现稳定 FlowID/FlowIndex、Flow/Carrying 分离、Input/Return lifecycle、E2E progress、holder、RouteRevision、clean-boundary Epoch lineage 和 DepData zero-instance guard。
 - 新增独立 Raw amendment：`O_t` 只含此前已发生事件更新后的 Ledger，当前 `Y_t` 只进入 `O_{t+1}`；legacy `flow_completed` 只映射为 hop/stage completion。
 - 真实 non-locked trace 覆盖 Input/Return，独立真实 trace 覆盖 Input 两跳；未真实覆盖场景明确保留为 contract fixture，不进入 Sample/Tensor 或 Graph Builder。
+
+## 2026-09-20：STEP 4.2C-B-PATCH Logical Destination Provenance
+
+- 修正 Raw amendment 的 next-hop-as-destination bug：Input logical destination 使用 established offload route terminal，Return 使用 Decision `return_destination_id`；旧 `target_node_id` 语义不改。
+- Flow row 增加 destination source/capture phase，并新增 within-Epoch destination continuity 与普通 hop 不增 Epoch/RouteRevision 的机器约束。
+- 真实两跳 Input 按单 FlowID/Epoch、固定 destination、distinct hops 和 final-hop-only E2E 验收；fake multi-hop 与语义篡改负例会令顶层 acceptance 失败。
+- 未修改 simulator、Sample/Tensor、Graph Builder、模型或训练；GPU/locked_test 未使用。

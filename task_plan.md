@@ -1222,3 +1222,13 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] Implement Causal Flow Ledger and additive Raw amendment without changing frozen Raw artifacts.
 - [x] Collect non-locked real Input/Return trace and build machine acceptance/provenance artifacts.
 - [x] Completed regressions, indexes, deterministic/hash checks, commit and push.
+
+## 2026-09-20 STEP 4.2C-B-PATCH
+
+- [x] Audit AirFogSim route mutation and Return destination source; prove Input route terminal and Return `return_destination_id` provenance.
+- [x] Add failing tests for next-hop-as-destination, hop-created epoch/revision, destination mutation and fake multi-hop acceptance.
+- [x] Fix Raw amendment, preserve legacy target semantics, add destination provenance and within-Epoch continuity guard.
+- [x] Replace weak completed-Flow check with real single-Flow/two-hop sequence checks and top-level required-check AND.
+- [x] Finish regressions, deterministic/hash/reload, compileall, knowledge index and diff checks; commit and push remain as the final repository closure.
+- Scope: `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`, `sample_tensor=false`, `graph_builder=false`.
+- Only next recommendation after acceptance: STEP 4.2C-C Flow Sample/Tensor Additive Extension; do not auto-start.

@@ -12,6 +12,9 @@ from pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1 import (
     validate_epoch_transition,
     validate_flow_transition,
     validate_flow_ledger_receipt,
+    validate_logical_destination_continuity,
+    validate_real_multihop_single_flow,
+    validate_step4_2c_b_acceptance,
 )
 
 
@@ -45,6 +48,25 @@ class Step42CBLedgerTests(unittest.TestCase):
         ledger.apply_transfer_event(event(source="B", target="C", amount=7.0), observed_task_current_node_id="C")
         self.assertEqual("COMPLETED", ledger.flow(flow_id)["status"])
         self.assertFalse(ledger.flow(flow_id)["presence"])
+
+    def test_normal_hop_advancement_keeps_flow_epoch_destination_and_route_revision(self):
+        ledger = CausalFlowLedger()
+        flow_id = ledger.create_input_flow(
+            task(),
+            logical_destination="C",
+            route=["B", "C"],
+            logical_destination_source="established_offload_route_terminal",
+            logical_destination_capture_phase="after_route_action_established_before_outcome",
+        )
+        before = ledger.flow(flow_id)
+        ledger.apply_transfer_event(event(target="B"), observed_task_current_node_id="B")
+        after = ledger.flow(flow_id)
+        carrying = ledger.carrying(flow_id)
+        self.assertEqual(flow_id, after["flow_id"])
+        self.assertEqual(before["epoch"], after["epoch"])
+        self.assertEqual("C", after["logical_destination"])
+        self.assertEqual(0, carrying["route_revision"])
+        self.assertEqual(1, carrying["current_hop_index"])
 
     def test_return_is_independent_and_multihop(self):
         ledger = CausalFlowLedger()
@@ -133,6 +155,50 @@ class Step42CBLedgerTests(unittest.TestCase):
         self.assertEqual("stage_or_hop_completed", amended["steps"][0]["outcome"]["flow_ledger_transition_evidence"][0]["legacy_flow_completed_semantics"])
         self.assertTrue(receipt["passed"])
 
+    def test_raw_amendment_does_not_use_current_next_hop_as_input_destination(self):
+        raw = {
+            "schema_version": "base-v1",
+            "decisions": [{"frame_index": 0, "tasks": [task()]}],
+            "steps": [{
+                "frame_index": 0,
+                "action": {"route": {"entries": [{
+                    "task_id": "T", "route_kind": "offload",
+                    "target_node_id": "B", "route_node_ids": ["B", "C"],
+                }]}},
+                "outcome": {"tasks": [task(holder="B")], "slot_transfer_events": []},
+            }],
+        }
+        amended, receipt = amend_raw_with_causal_flow_ledger(raw)
+        flow = amended["flow_ledger_history"][0]
+        action = amended["steps"][0]["action"]["route"]["entries"][0]
+        self.assertEqual("B", action["target_node_id"])
+        self.assertEqual("C", flow["logical_destination"])
+        self.assertEqual("established_offload_route_terminal", flow["logical_destination_source"])
+        self.assertEqual("after_route_action_established_before_outcome", flow["logical_destination_capture_phase"])
+        self.assertEqual("C", action["logical_destination_id"])
+        self.assertTrue(receipt["passed"])
+
+    def test_return_destination_comes_from_task_return_destination_not_current_hop(self):
+        return_task = task(holder="C", lifecycle="waiting_to_return", return_destination="A")
+        return_task["return_size"] = 4.0
+        raw = {
+            "schema_version": "base-v1",
+            "decisions": [{"frame_index": 0, "tasks": [return_task]}],
+            "steps": [{
+                "frame_index": 0,
+                "action": {"route": {"entries": [{
+                    "task_id": "T", "route_kind": "return",
+                    "target_node_id": "B", "route_node_ids": ["B", "A"],
+                }]}},
+                "outcome": {"tasks": [return_task], "slot_transfer_events": []},
+            }],
+        }
+        amended, receipt = amend_raw_with_causal_flow_ledger(raw)
+        flow = amended["flow_ledger_history"][0]
+        self.assertEqual("A", flow["logical_destination"])
+        self.assertEqual("decision.tasks[].return_destination_id", flow["logical_destination_source"])
+        self.assertTrue(receipt["passed"])
+
     def test_receipt_tamper_fails_required_and_top_level_and(self):
         ledger = CausalFlowLedger()
         receipt = ledger.validation_receipt(runtime_depdata_instances=0)
@@ -174,6 +240,72 @@ class Step42CBLedgerTests(unittest.TestCase):
         self.assertFalse(validate_epoch_transition(old, same_destination_bad, destination_changed=False)["passed"])
         changed_without_epoch = {**old, "total_data": 7.0}
         self.assertFalse(validate_epoch_transition(old, changed_without_epoch, destination_changed=True)["passed"])
+
+    def test_logical_destination_mutation_in_same_epoch_is_rejected(self):
+        rows = [
+            {"task_id": "T", "flow_type": "Input", "epoch": 0, "logical_destination": "C"},
+            {"task_id": "T", "flow_type": "Input", "epoch": 0, "logical_destination": "D"},
+        ]
+        self.assertFalse(validate_logical_destination_continuity(rows)["passed"])
+
+    def test_fake_multihop_from_two_independent_flows_is_rejected(self):
+        fake = [
+            {"task_id": "T1", "flow_id": "F1", "epoch": 0, "logical_destination": "B", "source_id": "A", "target_id": "B", "logical_delivery_delta": 10.0, "e2e_delivered_after": 10.0, "e2e_remaining_after": 0.0, "route_revision_before": 0, "route_revision_after": 0},
+            {"task_id": "T2", "flow_id": "F2", "epoch": 0, "logical_destination": "C", "source_id": "B", "target_id": "C", "logical_delivery_delta": 10.0, "e2e_delivered_after": 10.0, "e2e_remaining_after": 0.0, "route_revision_before": 0, "route_revision_after": 0},
+        ]
+        result = validate_real_multihop_single_flow(fake)
+        self.assertFalse(result["checks"]["real_multihop_single_flow_id"])
+        self.assertFalse(result["passed"])
+
+    def test_fake_multihop_required_check_forces_top_level_acceptance_false(self):
+        from pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1 import STEP42CB_PATCH_REQUIRED_CHECKS
+
+        required = {name: True for name in STEP42CB_PATCH_REQUIRED_CHECKS}
+        required["real_multihop_single_flow_id"] = False
+        receipt = {
+            "required_checks": required,
+            "passed": True,
+            "scope": {"training": False, "gpu": False, "locked_test": False, "formal_dataset": False, "sample_tensor": False, "graph_builder": False},
+        }
+        validation = validate_step4_2c_b_acceptance(receipt)
+        self.assertFalse(validation["expected_passed"])
+        self.assertFalse(validation["declared_matches_expected"])
+        self.assertFalse(validation["passed"])
+
+    def test_multihop_identity_epoch_destination_and_revision_tampers_are_rejected(self):
+        rows = [
+            {"task_id": "T", "flow_id": "F", "epoch": 0, "logical_destination": "C", "source_id": "A", "target_id": "B", "delivered_data": 10.0, "logical_delivery_delta": 0.0, "e2e_delivered_after": 0.0, "e2e_remaining_after": 10.0, "route_revision_before": 0, "route_revision_after": 0},
+            {"task_id": "T", "flow_id": "F", "epoch": 0, "logical_destination": "C", "source_id": "B", "target_id": "C", "delivered_data": 10.0, "logical_delivery_delta": 10.0, "e2e_delivered_after": 10.0, "e2e_remaining_after": 0.0, "route_revision_before": 0, "route_revision_after": 0},
+        ]
+        self.assertTrue(validate_real_multihop_single_flow(rows)["passed"])
+        for field, value, check in (
+            ("flow_id", "F2", "real_multihop_single_flow_id"),
+            ("epoch", 1, "real_multihop_single_epoch"),
+            ("logical_destination", "D", "real_multihop_logical_destination_constant"),
+            ("route_revision_after", 1, "normal_hop_advancement_not_reroute"),
+        ):
+            tampered = copy.deepcopy(rows)
+            tampered[1][field] = value
+            result = validate_real_multihop_single_flow(tampered)
+            self.assertFalse(result["checks"][check])
+            self.assertFalse(result["passed"])
+
+    def test_real_two_hop_trace_is_one_flow_one_epoch_with_final_only_e2e_delivery(self):
+        path = self.ROOT / "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json"
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        amended, receipt = amend_raw_with_causal_flow_ledger(raw)
+        transitions = [
+            item
+            for step in amended["steps"]
+            for item in step["outcome"].get("flow_ledger_transition_evidence", [])
+            if item.get("task_id") == "Task_1" and item.get("flow_type") == "Input" and item.get("applied", True)
+        ]
+        result = validate_real_multihop_single_flow(transitions)
+        self.assertTrue(result["passed"])
+        self.assertEqual(["UAV_0", "RSU_0"], [row["source_id"] for row in result["hop_sequence"]])
+        self.assertEqual(["RSU_0", "cloudServer_4"], [row["target_id"] for row in result["hop_sequence"]])
+        self.assertEqual([0.0, raw["decisions"][0]["tasks"][0]["task_size"]], result["e2e_delivered_sequence"])
+        self.assertTrue(receipt["passed"])
 
     def test_future_action_mutation_does_not_change_raw_current_state(self):
         raw = {"schema_version": "base", "decisions": [{"frame_index": 0, "tasks": [task()]}], "steps": []}
