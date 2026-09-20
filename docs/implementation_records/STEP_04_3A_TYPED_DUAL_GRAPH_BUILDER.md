@@ -63,3 +63,9 @@ Implementation commit `e91881abba5ebfcc4761b9c422f0c0187c4fc0b6` (`feat(graph): 
 ## Next Step
 
 Only recommend `STEP 4.3B — Definition 03 Dual-Graph Encoder Contract`; do not execute automatically.
+
+## Context consistency closure
+
+`STEP 4.3A-CONTEXT-PATCH` changes documentation state only. Current summaries now distinguish the completed/frozen Graph Builder from the not-started Graph Encoder/GNN/model/training layers. Older Step-specific stop gates remain historical statements, not current blockers. No source, Tensor, artifact semantics, topology config, graph schema, or research definition changed.
+
+Context-patch validation: ten current-state files were scanned; no unqualified stale Graph Builder status remained, and four historical matches were explicitly time-qualified. Knowledge-index write/check, docs-only scope verification, and `git diff --check` passed. No graph/test suite rerun was required because executable code and artifacts were unchanged.

@@ -987,6 +987,12 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 - 新增 current `history[-1]` typed dual-graph builder、11 个独立 block、development-only Physical topology config、Align/GeoComm、NPZ round-trip 和真实 AND receipt。
 - 20 项负向/反事实已在 artifact builder 中通过，包括语义混入、hop endpoint、dedup、方向、shortcut、future target、overflow/truncation 与 receipt tamper。
 - focused 15/15、冻结回归 66/66、artifact 24/24 required + 20/20 negative、deterministic/hash/round-trip、compile/index/diff 均通过；实现 commit `e91881abba5ebfcc4761b9c422f0c0187c4fc0b6` 已推送 `origin/main`。无训练、GPU、`locked_test` 或 formal Dataset。
+
+## 2026-09-20 STEP 4.3A-CONTEXT-PATCH
+
+- 仅修正 current-state 文档：Graph Builder 统一为 COMPLETE / FROZEN，Graph Encoder/GNN、World Model、Loss、Planner、Training 统一为 NOT STARTED；旧 Step 的“未授权/未开始”表述加上历史时间边界。
+- 保留 development-only topology、Return multi-hop/reroute/formal capacity、GPU/locked_test/formal Dataset 等原有边界；未修改代码、Tensor、artifact 或科研定义。
+- current-state 10 文件 stale scan 通过，4 条旧 Graph Builder 状态均带明确历史限定；knowledge index write/check、docs-only scope 与 `git diff --check` 通过。
 # 2026-09-19 STEP 4.1-PATCH
 
 - 从 `WiredNetworkManager`、真实 Raw `environment.wired_edges` 和 Decision `channel_rows` 核实：wired relation 有可靠 topology/`hasLink` 来源，但当前未逐 Decision 物化；没有 CSI 时可由 `relation_type=wired` 与 `csi_feature_mask=false` 表示。

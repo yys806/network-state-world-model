@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、STEP 3.1F、STEP 3.2、STEP 3.3 已完成并冻结**；**02 数据集构建与模型输入 COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT**；**STEP 4.2C-B、STEP 4.2C-C 及对应 provenance/semantic patches 已完成并冻结**。Graph Builder、模型和训练仍未开始。
+更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、当前最小 Dataset/Tensor / 定义 02、STEP 4.2C-B/C-C 与 STEP 4.3A Typed Dual-Graph Builder 均已完成并冻结**。Frozen Tensor → 11 个 typed Physical/Information/cross-domain blocks 已实现；Physical topology config 仍为 development-only、`research_frozen=false`。Graph Encoder/GNN、World Model、Loss、Planner 与 Training 均为 NOT STARTED。
 
 ## 当前依据与执行边界
 
@@ -25,7 +25,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | Physical / Information 双图 | 03 | Step 4.1 mapping；Step 4.2A additive Sample/Tensor；Step 4.2C-B Ledger/Raw；Step 4.2C-C Flow Sample/Tensor；Step 4.3A typed builder | TYPED DUAL-GRAPH BUILDER COMPLETE / FROZEN; ENCODER NOT_STARTED | STRUCTURAL_CHANGE | `history[-1]` 已映射为 11 个 typed blocks；Physical topology 参数仅为 development config、未研究冻结；Return multi-hop/reroute/formal capacity 未外推 | 仅建议另行授权 STEP 4.3B Dual-Graph Encoder Contract；不自动执行 |
 | entity alignment 局部工具 | 02；03 | `airfogsim_tensor_v2.py`、`formal_graph_ops_v1.py` | AUDITED | DIRECT_REUSE | ID/index/mask原则可复用；新增对象映射需扩展 | 保留身份稳定性检查 |
 | Route action | 06 §2.1；04 §3.3 | Step 2 Raw + Step 3.3 past/future route tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | route kind/target/task node/hops 与 mask 已映射；尚未接新 graph/model | 后续按新对象路由，未授权 |
-| Comm action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 per-RB action tensors；Step 4.2A per-RB CSI additive tensor | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | RB indices/mask、split outcome 与 graph-input CSI exposure 已映射；尚未接 Graph Builder | 后续按授权接图，当前不执行 |
+| Comm action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 per-RB action tensors；Step 4.2A per-RB CSI additive tensor；Step 4.3A Comm relation | INPUT TENSOR + CURRENT COMM GRAPH COMPLETE / FROZEN | MINOR_MODIFICATION | CSI/typed relation 已进入 current Graph Builder；动作尚未接 Graph Encoder/model | 后续按独立授权接 Encoder/model，当前不执行 |
 | Comp action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 node/allocated CPU tensors | INPUT TENSOR COMPLETE / FROZEN | STRUCTURAL_CHANGE | `allocated_cpu_per_s` 已张量化；新 graph/model 执行语义尚未接入 | 后续单独授权模型路由 |
 | UAV Mobility action | 06 §2.1/5.1 | Step 2 Raw + Step 3.3 UAV index/azimuth/elevation/speed tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | UAV action 已张量化、vehicle motion 仍为 SUMO external；尚未接新 graph/model | 后续单独授权模型路由 |
 | action routing | 04 §3.3 | `FormalDualGraphWorldModel.forward` | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | task→node/agent/task不能覆盖新Phy/Comm/Comp/Mob路径 | 建四类对象路由表 |
@@ -52,7 +52,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 ## 已完成、未开始与待决策
 
 - 本轮完成范围：Step 1 审计矩阵、只读权限与新工作流、实施记录框架、历史逻辑归档、导航与注册表同步；实际验证见 Step 1 报告。
-- 新方案的数据重构、模型、loss、训练、candidate proposal和在线闭环均未开始；不把审计完成写成实现完成。
+- 新方案的 Raw→Dataset/Tensor→Typed Graph Builder 已按当前最小合同完成并冻结；Graph Encoder/GNN、World Model、loss、训练、candidate proposal 和在线闭环仍未开始。不得把 representation builder 的完成外推为模型实现完成。
 - 研究者已明确目标：严格Physical/Information划分，四类动作含CPU与UAV，结构化RSSM，只学习未知动态，混合proposal+世界模型选择。无需再次确认这些方向。
 - 仍待决定：通信状态不足时的补充字段/必要residual；未知未来到达与离开；proposal训练方式；objective权重/风险/硬约束/fallback；新合同下实验预算与门槛。
 
@@ -88,7 +88,7 @@ STEP 3.3F 已补齐 JSON→Tensor 语义：Past Outcome 使用独立 `H-1` 轴�
 
 ## 当前 STEP 4.1 结果
 
-Physical / Information object-field-relation mapping 已冻结。vehicle/UAV/RSU 同时具有 Physical + Info identity；edge/cloud 的 Physical membership 等待研究者决定。Position、无线 CSI、CPU static capacity 和部分 Task current state 在 Raw 有来源但未进入当前 Sample/Tensor；wired relation 可由 `environment.wired_edges` / `WiredNetworkManager.hasLink` 取得，但尚未逐 Decision 物化与输入化，无 CSI 时由 `relation_type=wired + feature_mask=false` 表示。wired 可选动态 numeric state 不属于 03 minimum；稳定 stateful Flow 的 total/rem/type/endpoints 在当前 Raw 不足。CPU capacity、Comp allocation、actual service、available CPU 四类语义已分离。旧 `physical_edge_state` 混合 CSI/rate/task/RB 的语义禁止继续作为 Physical relation。机器 artifact 位于 `code/artifacts/protocols/pi_jwm_step4_1_pi_graph_mapping_v1_20260919/`，readiness 为 `DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1`。
+STEP 4.1 当时完成 Physical / Information object-field-relation mapping，并以 `DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1` 停止；该历史 readiness 已由后续 4.2A/4.2C 数据闭合和 STEP 4.3A builder 实施覆盖。其 CPU capacity/allocation/service/available resource 分离及禁止旧 mixed `physical_edge_state` 的语义仍有效。
 
 ## 当前 STEP 4.2A 结果
 
@@ -99,8 +99,8 @@ Step 4.1 中已有可靠来源的 position、wireless per-RB CSI、wired typed r
 
 STEP 4.2C-C 已完成并冻结 Raw Flow → Model-ready Sample → CPU Tensor additive extension。新增独立 `logical_flow` History-union/target namespace，Flow 与 Carrying state 分离，completed/superseded 与 padding 分离，五个连续字段仅在 `dev_train` 且 `presence=true AND feature_mask=true AND value!=null` 上标准化，capacity overflow 显式拒绝；Sample/Tensor 不重新解释 C-B Raw。随后 `STEP 4.2C-C-PATCH` 补齐 presence-aware stats、History/target Logical/Carrying 四组全字段 semantic equality 和完整 target carrying namespace，并由 receipt 实际 AND 子检查、target namespace、future Epoch、placeholder/bounds/route mask 与 normalization policy。23 项 focused tests、4.2B/4.2A/3.3 回归、真实低 wired capacity 跨时隙 trace、deterministic rebuild/hash、serialize/load 和 receipt/semantic tamper 均通过。artifact 位于 `code/artifacts/protocols/pi_jwm_step4_2c_c_flow_sample_tensor_v1_20260920/`；真实 Return multi-hop、reroute runtime 与 formal capacity 仍未声称。
 
-范围仍为 `graph_builder=false`、`information_graph=false`、`physical_topology=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+这是 STEP 4.2C-C 当时的历史范围：`graph_builder=false`、`information_graph=false`、`physical_topology=false`。之后 STEP 4.3A 已完成 Graph Builder；`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false` 继续有效。
 
 ## 下一步边界
 
-STEP 4.2C-B 与 STEP 4.2C-C（含 PATCH）正式 COMPLETE / FROZEN。唯一建议：研究者审阅后另行授权 **Definition 03 Graph Builder Contract**；不要自动实现 Graph Builder。
+STEP 4.2C-B 与 STEP 4.2C-C（含 PATCH）正式 COMPLETE / FROZEN；其当时“另行授权 Graph Builder”的下一步已由 STEP 4.3A 完成。当前唯一建议为 **STEP 4.3B — Definition 03 Dual-Graph Encoder Contract**，不得自动执行。

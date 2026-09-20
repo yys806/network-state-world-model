@@ -62,14 +62,14 @@ Source of truth：以下实现事实来自所列源码与冻结协议；运行�
 
 - STEP 4.1 已冻结目标 mapping：Physical 只包含实体空间/运动与空间关系；Information Nodes 为 Agent/Task，Relations 为 Comm、Src/Host/Exec/Ret、Flow、DAG。
 - 现有 `physical_edge` 混合空间、CSI、rate、任务数和 RB，不符合目标严格双图划分，禁止按原语义继续使用。
-- STEP 4.2C-C（含 PATCH）已冻结 Flow Sample/Tensor additive extension：C-B Raw logical Flow/Carrying rows 进入独立 `logical_flow` History-union/target namespace；Flow 与 carrying 分离，History/target Logical/Carrying 四组语义逐字段核对；target carrying 明确是 future ground-truth/deterministic-transition state，不是 learned prediction head；Sample/Tensor 不重算 Flow semantics；该层仍不是 Graph Builder。
+- STEP 4.2C-C（含 PATCH）已冻结 Flow Sample/Tensor additive extension：C-B Raw logical Flow/Carrying rows 进入独立 `logical_flow` History-union/target namespace；Flow 与 carrying 分离，History/target Logical/Carrying 四组语义逐字段核对；target carrying 明确是 future ground-truth/deterministic-transition state，不是 learned prediction head。该层在其完成时仍不是 Graph Builder；后续 STEP 4.3A 已完成 current typed graph materialization。
 - STEP 4.3A 已冻结 current typed dual-graph representation：Physical nodes/relations 与 Agent/Task/Comm/Task-Agent/Flow/DAG 严格分离，Carrying 保持 side state，Align/GeoComm 仅为 structural cross-domain references。builder 不包含编码、传播、聚合或 latent。
 - 独立 Agent/Communication/Task-Agent/current stateful Flow graph 尚未实现；四类动作 tensor 已冻结但尚未接入新图或模型。
 - 旧 entity RSSM 对 node/physical_edge/flow/task 均维护随机状态，与新定义的未知动态边界不同。
 - base 的逐步规则和 RSSM 修正尚未组成“预测→规则→重构图→下一步”的完整闭环。
 - 因此现有模型、tensor、checkpoint 和结果为 Historical / Archived；新定义模型尚未实现。
 
-STEP 4.1 source of truth：`docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING_V1.md` 与 `code/artifacts/protocols/pi_jwm_step4_1_pi_graph_mapping_v1_20260919/`。当前 readiness 是 `DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1`。
+STEP 4.1 source of truth：`docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING_V1.md` 与 `code/artifacts/protocols/pi_jwm_step4_1_pi_graph_mapping_v1_20260919/`。其中 `DO_NOT_IMPLEMENT_GRAPH_BUILDER_IN_STEP_4.1` 是该 Step 当时的停止门；后续 STEP 4.3A 已在数据合同闭合后完成 builder。
 
 ## 7. 当前不属于新定义正式架构的内容
 

@@ -967,3 +967,8 @@
 - Physical membership can remain policy-driven: current presence plus valid XYZ admits a node without hard-coding entity classes. Development radius/kNN values are configuration evidence, not a research conclusion.
 - Carrying hop endpoints cannot replace logical Flow endpoints. In the current real multihop frame the hop destination may equal the logical destination, so the negative fixture also checks the stage-local hop source.
 - GeoComm is an endpoint-Physical dependency for wireless Comm and does not require an identical Physical edge; wired/no-spatial rows remain explicit but invalid.
+
+## 2026-09-20 STEP 4.3A-CONTEXT-PATCH
+
+- Stale current-state wording survived mainly in the `00_PROJECT_STATE` blocker, Tracker header/Step 4.2C-C summary, and generated PROJECT_INDEX/RESEARCH_STATUS summaries.
+- Historical statements are still valid for their original Step, but require explicit “at that Step” wording so they cannot override current STEP 4.3A COMPLETE / FROZEN state.

@@ -1264,3 +1264,11 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] Finish frozen regressions, compileall, knowledge-index write/check, diff/status review, commit and push `main`.
 - Stop boundary: no Encoder/GNN/message passing/P2A/P2C/World Model/Loss/Planner/Training/GPU/locked_test/formal Dataset.
 - Only next recommendation: STEP 4.3B Dual-Graph Encoder Contract; do not auto-start.
+
+## 2026-09-20 STEP 4.3A-CONTEXT-PATCH — Graph Builder State Consistency Closure
+
+- [x] Scan current-state AI_CONTEXT, Tracker, RESEARCH_STATUS, and PROJECT_INDEX for stale pre-4.3A wording.
+- [x] Mark old Step boundaries as historical and set current state to Graph Builder COMPLETE / FROZEN; Graph Encoder/GNN/model/training NOT STARTED.
+- [x] Run knowledge-index check, stale-state search, diff/status checks, commit and push `main`.
+- Scope: documentation and generated indexes only; no source, Tensor, artifact semantics, topology, schema, or research-definition change.
+- Only next recommendation: STEP 4.3B Dual-Graph Encoder Contract; do not auto-start.
