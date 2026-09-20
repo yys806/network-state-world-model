@@ -1,0 +1,159 @@
+{
+  "contract_fixture_checks": {
+    "capacity_overflow_rejected": true,
+    "categorical_identity_not_normalized": true,
+    "flow_id_tensor_slot_tamper_rejected": true,
+    "future_epoch_leak_rejected": true,
+    "receipt_tamper_rejected": true
+  },
+  "deterministic_semantic_digest": "0a8ddedcb009e664c6ceb66044569ae989ae0efe4c5e5f2c61e61e1ffe5b3a5e",
+  "evidence_boundary": {
+    "contract_fixture": "wired structural relation only for the older direct Input/Return source; future Epoch and tamper counterfactuals",
+    "not_claimed": [
+      "real Return multi-hop",
+      "real same-destination partial-hop reroute",
+      "formal Dataset capacity"
+    ],
+    "real_trace": "direct Input/Return Flow rows, real two-hop events, and real cross-slot partial final-hop Decision states"
+  },
+  "passed": true,
+  "real_multihop_checks": {
+    "constant_logical_destination": true,
+    "distinct_cross_slot_carrying_progress": true,
+    "final_hop_advances_e2e": true,
+    "intermediate_hop_service_not_e2e": true,
+    "no_duplicate_flow_row_per_hop": true,
+    "single_epoch": true,
+    "single_flow_id": true,
+    "single_tensor_slot": true
+  },
+  "required_checks": {
+    "depdata_runtime_zero": true,
+    "deterministic_rebuild": true,
+    "epoch_isolation": true,
+    "history_causal_flow_union": true,
+    "input_return_categories": true,
+    "multi_hop_single_flow_tensor_identity": true,
+    "no_silent_truncation": true,
+    "presence_mask_correctness": true,
+    "raw_sample_semantic_equality": true,
+    "sample_tensor_semantic_equality": true,
+    "scope": true,
+    "serialize_load": true,
+    "stable_flow_identity": true,
+    "target_only_future_flow_isolation": true,
+    "train_only_preprocessing": true
+  },
+  "sample_checks": [
+    {
+      "depdata_runtime_zero": true,
+      "flow_conservation": true,
+      "flow_id_epoch_identity": true,
+      "history_causal_flow_union": true,
+      "input_return_explicit_categories": true,
+      "known_inactive_distinct_from_padding": true,
+      "logical_destination_provenance": true,
+      "no_duplicate_flow_per_frame": true,
+      "passed": true,
+      "raw_only_no_recomputation": true,
+      "raw_sample_semantic_digest_equality": true,
+      "schema_version": true,
+      "stable_flow_id_index": true,
+      "target_only_future_flow_isolation": true
+    },
+    {
+      "depdata_runtime_zero": true,
+      "flow_conservation": true,
+      "flow_id_epoch_identity": true,
+      "history_causal_flow_union": true,
+      "input_return_explicit_categories": true,
+      "known_inactive_distinct_from_padding": true,
+      "logical_destination_provenance": true,
+      "no_duplicate_flow_per_frame": true,
+      "passed": true,
+      "raw_only_no_recomputation": true,
+      "raw_sample_semantic_digest_equality": true,
+      "schema_version": true,
+      "stable_flow_id_index": true,
+      "target_only_future_flow_isolation": true
+    },
+    {
+      "depdata_runtime_zero": true,
+      "flow_conservation": true,
+      "flow_id_epoch_identity": true,
+      "history_causal_flow_union": true,
+      "input_return_explicit_categories": true,
+      "known_inactive_distinct_from_padding": true,
+      "logical_destination_provenance": true,
+      "no_duplicate_flow_per_frame": true,
+      "passed": true,
+      "raw_only_no_recomputation": true,
+      "raw_sample_semantic_digest_equality": true,
+      "schema_version": true,
+      "stable_flow_id_index": true,
+      "target_only_future_flow_isolation": true
+    },
+    {
+      "depdata_runtime_zero": true,
+      "flow_conservation": true,
+      "flow_id_epoch_identity": true,
+      "history_causal_flow_union": true,
+      "input_return_explicit_categories": true,
+      "known_inactive_distinct_from_padding": true,
+      "logical_destination_provenance": true,
+      "no_duplicate_flow_per_frame": true,
+      "passed": true,
+      "raw_only_no_recomputation": true,
+      "raw_sample_semantic_digest_equality": true,
+      "schema_version": true,
+      "stable_flow_id_index": true,
+      "target_only_future_flow_isolation": true
+    },
+    {
+      "depdata_runtime_zero": true,
+      "flow_conservation": true,
+      "flow_id_epoch_identity": true,
+      "history_causal_flow_union": true,
+      "input_return_explicit_categories": true,
+      "known_inactive_distinct_from_padding": true,
+      "logical_destination_provenance": true,
+      "no_duplicate_flow_per_frame": true,
+      "passed": true,
+      "raw_only_no_recomputation": true,
+      "raw_sample_semantic_digest_equality": true,
+      "schema_version": true,
+      "stable_flow_id_index": true,
+      "target_only_future_flow_isolation": true
+    }
+  ],
+  "schema_version": "PI-JWM-Step-4.2C-C-Acceptance-v1",
+  "scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "graph_builder": false,
+    "information_graph": false,
+    "locked_test": false,
+    "physical_topology": false,
+    "training": false
+  },
+  "tensor_checks": {
+    "categorical_not_normalized": true,
+    "endpoint_indices_bounded": true,
+    "flow_id_tensor_index_round_trip": true,
+    "graph_builder_false": true,
+    "known_presence_independent": true,
+    "masked_placeholder_zero": true,
+    "no_silent_truncation": true,
+    "passed": true,
+    "schema_version": true,
+    "separate_logical_flow_namespace": true,
+    "task_indices_bounded": true
+  },
+  "validation": {
+    "declared_matches_expected": true,
+    "expected_passed": true,
+    "passed": true,
+    "required_checks": true,
+    "scope": true
+  }
+}

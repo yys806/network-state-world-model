@@ -947,3 +947,9 @@
 - Proven Return source: `Task.setToReturnRoute` stores its terminal in `_to_return_node_id`, and observer exposes it as `return_destination_id` independently from remaining route.
 - Real `Task_1` service sequence is `UAV_0→RSU_0→cloudServer_4`; both events bind `flow::Task_1::Input::0`, Epoch 0 and destination `cloudServer_4`. Per-hop service sums to twice the payload, while E2E delivered counts only final-destination delivery once.
 - Same-destination partial-hop reroute remains unresolved runtime evidence; no new research rule was invented.
+
+## 2026-09-20 STEP 4.2C-C
+
+- Sample/Tensor keeps logical Flow identity separate from hop carrying state: FlowID/Epoch/destination/E2E state come from C-B Raw, while stable history slots, target isolation, presence/mask, and route/holder arrays are collated independently.
+- Only five continuous data-unit fields are fit with train-only, mask-aware normalization; identity/category/reference fields are not normalized and capacity overflow is rejected rather than truncated.
+- The real cross-slot trace proves one Input Flow remains in one Tensor slot while intermediate hop service does not advance E2E delivery; it does not prove Return multi-hop, reroute runtime, formal capacity, Graph Builder, model, or training behavior.

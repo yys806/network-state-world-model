@@ -14,6 +14,7 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 | STEP 4.1 PI graph mapping | `code/src/pi_jwm/step4_1_pi_graph_mapping_v1.py`、mapping artifact | 对象/字段/关系、gap、forbidden placement、旧实现冲突 | current/frozen mapping |
 | STEP 4.2A graph input extension | `code/src/pi_jwm/step4_2a_graph_input_extension_v1.py`、Step 4.2A artifact | existing-source Raw amendment、Sample/preprocessing/Tensor | current/complete；no graph object |
 | STEP 4.2B Flow source audit | `code/src/pi_jwm/step4_2b_stateful_flow_source_audit_v1.py`、Step 4.2B artifact | source evidence / gap verdict only | current/audit complete；`FLOW_CONTRACT_NOT_YET_SUPPORTED`; no graph object |
+| STEP 4.2C-C Flow Sample/Tensor | `code/src/pi_jwm/step4_2c_c_flow_sample_tensor_v1.py`、`code/scripts/build_step4_2c_c_flow_sample_tensor_v1.py`、Step 4.2C-C artifact | C-B Raw logical Flow/Carrying → Sample/Tensor, masks, train-only normalization | current/frozen additive extension；no graph object/model |
 | 当前模型如何递推 | `code/src/pi_jwm/formal_entity_aligned_rssm_world_model_v1.py` | `FormalEntityAlignedRSSMWorldModel.forward()` | model/current |
 | 双图如何传播 | `code/src/pi_jwm/formal_dual_graph_world_model_v1.py` | `FormalDualGraphWorldModel.forward()` | model/current |
 | 图与跨图算子 | `code/src/pi_jwm/formal_graph_ops_v1.py` | physical/information/coupling functions | model/support |
@@ -46,6 +47,7 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 - STEP 4.1 mapping builder/validator: `code/scripts/build_step4_1_pi_graph_mapping_v1.py` and `pi_jwm.step4_1_pi_graph_mapping_v1.validate_mapping_checks`; audit-only, no graph construction.
 - STEP 4.2A builder/validator: `code/scripts/build_step4_2a_graph_input_extension_v1.py` and `pi_jwm.step4_2a_graph_input_extension_v1`; versioned existing-source input extension, no graph construction/model read path.
 - STEP 4.2C-B Ledger/Raw amendment: `code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py` and `code/scripts/build_step4_2c_b_causal_flow_ledger_raw_v1.py`; logical destination provenance, single-Flow multi-hop continuity, E2E conservation and acceptance receipt. No Sample/Tensor or graph construction.
+- STEP 4.2C-C Flow Sample/Tensor: `code/src/pi_jwm/step4_2c_c_flow_sample_tensor_v1.py` and `code/scripts/build_step4_2c_c_flow_sample_tensor_v1.py`; independent logical Flow namespace, carrying state, target isolation, train-only normalization, overflow/round-trip/tamper receipt. No graph construction or model read path.
 - Raw DAG capture amendment: `code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py::_capture`; source `airfogsim_full_dual_graph_observer_v1._extract_dag_edges`.
 
 ## 历史代码定位

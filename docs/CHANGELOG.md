@@ -141,3 +141,10 @@
 - Flow row 增加 destination source/capture phase，并新增 within-Epoch destination continuity 与普通 hop 不增 Epoch/RouteRevision 的机器约束。
 - 真实两跳 Input 按单 FlowID/Epoch、固定 destination、distinct hops 和 final-hop-only E2E 验收；fake multi-hop 与语义篡改负例会令顶层 acceptance 失败。
 - 未修改 simulator、Sample/Tensor、Graph Builder、模型或训练；GPU/locked_test 未使用。
+
+## 2026-09-20：STEP 4.2C-C Stateful Flow Sample/Tensor Additive Extension
+
+- 新增 C-B Raw → 独立 `logical_flow` History-union/target Sample/Tensor additive extension、builder、focused tests、合同/实施记录和机器 artifact。
+- Flow 与 Carrying state、known inactive 与 padding、Input/Return/DepData vocabulary、train-only numeric normalization、explicit development capacity、round-trip 和 receipt tamper 均已机器化；真实低 wired capacity cross-slot trace 补齐多个 Decision 的 carrying evidence。
+- 12/12 focused、4.2B/4.2A/3.3 regressions、deterministic rebuild/hash、serialize/load 和 scope checks 通过；不进入 Graph Builder、模型、Loss、Planner、训练、GPU、locked_test 或 formal Dataset。
+- 下一步仅建议研究者另行授权 Definition 03 Graph Builder Contract。

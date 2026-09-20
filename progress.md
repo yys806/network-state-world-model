@@ -968,6 +968,12 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 - 修正 Future Action anchor-only 重编号：合法 action 现在引用统一 `static.input_entity_index`，anchor visibility 仍单独拒绝不可见 object。
 - 新增 disappearing-object fixture、ID↔index validator 和错位拒绝测试；machine policy 改为 `history_causal_observable_object_union`。
 - 重新生成 sample/manifest/audit JSON，manifest 保存 audit SHA-256 provenance；未进入 STEP 3.2、模型或训练。
+
+## 2026-09-20 STEP 4.2C-C
+
+- 完成并冻结 C-B Raw logical Flow/Carrying rows 到独立 `logical_flow` History-union/target Sample 与 CPU Tensor 的 additive extension。
+- focused 与冻结回归、真实低 wired capacity 跨时隙 trace、deterministic/hash、serialize/load、tamper、compileall、知识索引和 diff 检查均通过；artifact/manifest/NPZ 已纳入 Git。
+- 范围保持 `graph_builder=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`；Return multi-hop、reroute runtime 和 formal capacity 不作结论。
 # 2026-09-19 STEP 4.1-PATCH
 
 - 从 `WiredNetworkManager`、真实 Raw `environment.wired_edges` 和 Decision `channel_rows` 核实：wired relation 有可靠 topology/`hasLink` 来源，但当前未逐 Decision 物化；没有 CSI 时可由 `relation_type=wired` 与 `csi_feature_mask=false` 表示。

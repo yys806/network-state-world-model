@@ -1,0 +1,31 @@
+{
+  "deterministic_semantic_digest": "0a8ddedcb009e664c6ceb66044569ae989ae0efe4c5e5f2c61e61e1ffe5b3a5e",
+  "files": {
+    "acceptance.json": "69a2812d59a4f20c768459a9be1b251f5619fc42061e731b1f975e41d82877f3",
+    "flow_tensor.npz": "6c2dda3ecbb216be6d9f9749cf981238945f770b079928d765452b72a9927f69",
+    "flow_train_normalization_stats.json": "c0486f067e2957765a40928764f81e705ec48f50341df58369fbc02f0bada825",
+    "model_ready_flow_samples.json": "93390093a3c5e9e14603bd46aa16630b2457f9ecb86de4d09440bb21ac8a43d0",
+    "tensor_schema.json": "2513148d928a732ecc2d5bd3e4afe069166ae39f952defeacf925a806eb1d83d"
+  },
+  "passed": true,
+  "sample_schema_version": "PI-JWM-Model-Ready-Sample-Contract-v6-step4.2C-C",
+  "schema_version": "PI-JWM-Step-4.2C-C-Manifest-v1",
+  "scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "graph_builder": false,
+    "information_graph": false,
+    "locked_test": false,
+    "physical_topology": false,
+    "training": false
+  },
+  "source_files": {
+    "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
+    "code/artifacts/protocols/pi_jwm_step4_2c_b_real_flow_trace_source_v1_20260920/real_raw_contract_finalization.json": "e398cf2f2255d8d46101c68d9f98f766e0c0a16bb29d688cb5cc0c07e710193a",
+    "code/artifacts/protocols/pi_jwm_step4_2c_c_real_multihop_cross_slot_v1_20260920/real_communication_outcome_semantics.json": "66742fad7006f2d7ecacf8324149440c811935fc7313d26a9a4b7e4f4a7a2526",
+    "code/scripts/build_step4_2c_c_flow_sample_tensor_v1.py": "51e7fbdd69bf2669dbe0d29bbc2f4e725f01c8d1041bd3a7b94df3e1746d8e28",
+    "code/src/pi_jwm/step4_2c_c_flow_sample_tensor_v1.py": "021f6ebfe21c331d1aa64fe24bbc18922f21adb07a30a2ec7b14f04b8b545db3",
+    "code/tests/test_step4_2c_c_flow_sample_tensor_v1.py": "a39c47e016d2e37ec84faaab0c6dcc835f739198b72084f13ab000c5194a1cdd"
+  },
+  "tensor_schema_version": "PI-JWM-Model-Input-Tensor-Collation-v4-step4.2C-C"
+}

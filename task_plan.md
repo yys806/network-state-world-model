@@ -1232,3 +1232,14 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] Finish regressions, deterministic/hash/reload, compileall, knowledge index and diff checks; commit and push remain as the final repository closure.
 - Scope: `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`, `sample_tensor=false`, `graph_builder=false`.
 - Only next recommendation after acceptance: STEP 4.2C-C Flow Sample/Tensor Additive Extension; do not auto-start.
+
+## 2026-09-20 STEP 4.2C-C — Stateful Flow Sample/Tensor Additive Extension
+
+- Goal: causally extend the frozen 4.2C-B logical Flow/carrying rows through model-ready Sample and fixed-shape CPU Tensor only.
+- [x] Confirm clean `main@a7be0eeaf2424d6d9001acc5ee73f98e72f6aa47`, read frozen records and review the execution plan.
+- [x] TDD freeze History causal Flow union, Epoch isolation, completed/superseded versus padding, target-only future Flow, Raw/Sample/Tensor equality, normalization and overflow rejection.
+- [x] Implement versioned Flow Sample/Dataset normalization/Tensor extension on top of frozen 4.2A/3.3 contracts; do not reinterpret Raw Flow semantics.
+- [x] Build real Input/Return and real two-hop evidence; collect a tiny CPU/non-locked cross-slot multi-hop trace only if needed for distinct carrying Decisions.
+- [x] Generate schema/receipt/manifest, update contract/record/Tracker/AI_CONTEXT/authority records, run focused and frozen regressions, deterministic/hash/reload/compileall/index/diff, commit and push `main`.
+- Stop boundary: `graph_builder=false`, `information_graph=false`, `physical_topology=false`, `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
+- Only next recommendation after independent freeze: researcher review, then separately authorize Definition 03 Graph Builder Contract; do not auto-start.

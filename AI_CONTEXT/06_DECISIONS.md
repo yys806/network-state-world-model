@@ -80,6 +80,14 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - DepData vocabulary 保留，但当前 AirFogSim runtime instances=0；DAG 不得生成 fake DepData Flow。
 - 本 Step 只授权 Ledger + Raw additive Flow contract；Sample/Tensor、Graph Builder、模型、训练、GPU 和 locked_test 均未授权。
 
+## 2026-09-20：STEP 4.2C-C 实施授权
+
+**Researcher Decision**
+
+- 明确授权将 STEP 4.2C-B Raw logical Flow/Carrying state additive 贯穿到 Model-ready Sample 与 CPU Tensor；只允许 index、align、mask、train-only normalization 和 collation。
+- 明确禁止 Graph Builder、Physical/Information graph、GNN/Encoder、World Model、Loss、Planner、Training、GPU、locked_test 和 formal Dataset；完成后停止等待审阅。
+- 真实 Return multi-hop、same-destination reroute runtime 与 formal Flow capacity 不得因实现便利被默认为已解决；只记录机器证据和边界。
+
 - Step 2.4（研究者明确批准）：Communication Outcome 在 Raw 层拆为 wireless、wired 和按 task 聚合 total；空 map 是已观测无服务，missing 必须是 null 加 mask/reason。该决定只冻结 Raw 语义，不授权 Dataset/Tensor 或模型实现。
 - STEP 3.1（研究者明确批准）：model-ready sample 使用因果 History、严格对齐的 Future Action/Target、无 future-object leakage 的 stable input index、独立 target-side future object 表示、四类 action 和显式 presence/feature mask；本决定不授权正式数据集、模型、loss、planner 或训练。
 - STEP 3.1R（研究者明确批准）：History 必须为 `[t-H+1,t]`；固定 input index/presence、真实 DAG source、typed target index、relation endpoint 和不可静默 `-1` 的 Action reference 属于修正合同。STEP 3.2 仍未授权。

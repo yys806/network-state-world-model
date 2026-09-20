@@ -6,6 +6,7 @@
 
 > **2026-09-20 STEP 4.2A-PATCH：** wireless directed structural relation 与 CSI feature observability 已分离；missing CSI 不删除 relation。return size、priority、deadline 已核实有 simulator observer getter/TaskSnapshot 来源，但 frozen Raw/Sample/Tensor 尚未透传。旧 LogicalFlow/CarryingHop 或 past outcome 均不能证明定义 03 stateful Flow 已存在。
 > **2026-09-20 STEP 4.2B：** 对真实 Task/TaskManager、传输环境、observer 和旧 LogicalFlow/CarryingHop 做了 source audit。`transmitted_size` 在当前 hop 完成后归零，不能推出端到端 Flow remaining；DAG 只有依赖门控，没有 DepData transfer source。Input/Return 只能部分构造，综合 verdict 为 `FLOW_CONTRACT_NOT_YET_SUPPORTED`，因此不进入 Graph Builder。
+> **2026-09-20 STEP 4.2C-C：** 已将 C-B Raw logical Flow/Carrying state 以独立 `logical_flow` History-union/target namespace 贯穿到 Model-ready Sample 与 CPU Tensor。Sample/Tensor 只做 index、align、mask、train-only normalization 和 collation，不重算 destination、Epoch、E2E remaining 或 holder；Graph Builder、模型、Loss、Planner、训练和 GPU 仍未开始。真实低 wired capacity trace 仅作为跨 Decision carrying evidence，formal Dataset 与容量未冻结。
 
 > 最后核查日期：2026-08-11<br>
 > 当前文件位置：`记录/PIJWM主文档.md`；2026-08-15已从原外部知识库迁入PI-JWM仓库，后续只维护本文件。<br>
@@ -2688,6 +2689,8 @@ STEP 3.2 只验证 Raw 到 model-ready batch 的流水线：先按 trajectory �
 STEP 3.2-PATCH 已将 Dataset isolation 证据补齐：provenance 从 Raw 读取 trajectory/seed/source SHA/config lineage、frame/time range、slot duration 和 3.1F contract；真实 time-grid 与 step start/end 在 window construction 前验证；development trajectories 的 future-reference audit 独立保存为 observation-only JSON，当前 12/12/0/0；normalization 单位明确为 `m/s`、`m/s^2`、`AirFogSim data-unit`。该 Patch 不决定正式 split 比例，不改变 Raw 或 3.1F 语义。
 ### Causal Flow Ledger 与 Raw additive Flow state（2026-09-20）
 
-研究者冻结 Flow 为 logical end-to-end business Flow，Hop 为 carrying segment；FlowID 使用 `(TaskID, FlowType, Epoch)`。PI-JWM 不修改 AirFogSim 核心传输状态机，而以真实 state/event 和历史 Ledger 因果维护 Input/Return 的 E2E delivered/remaining、current holder、RouteRevision 与 Epoch lineage。same-destination reroute 不换 Epoch；destination change 只允许 clean hop boundary 并创建新 Epoch。DepData vocabulary 保留但当前 runtime instances=0，DAG 不生成假 Flow。STEP 4.2C-B 已实现 Ledger 与 Raw amendment；Flow Sample/Tensor 和 Graph Builder 尚未开始。
+研究者冻结 Flow 为 logical end-to-end business Flow，Hop 为 carrying segment；FlowID 使用 `(TaskID, FlowType, Epoch)`。PI-JWM 不修改 AirFogSim 核心传输状态机，而以真实 state/event 和历史 Ledger 因果维护 Input/Return 的 E2E delivered/remaining、current holder、RouteRevision 与 Epoch lineage。same-destination reroute 不换 Epoch；destination change 只允许 clean hop boundary 并创建新 Epoch。DepData vocabulary 保留但当前 runtime instances=0，DAG 不生成假 Flow。STEP 4.2C-B 已实现 Ledger/Raw amendment，STEP 4.2C-C 已将其 additive 贯穿 Sample/Tensor；Graph Builder 尚未开始。
 
 STEP 4.2C-B-PATCH 进一步冻结 endpoint provenance：Raw `target_node_id` 只表示当前 action/carrying-hop target，不能直接作为 end-to-end destination。Input 的 logical destination 来自动作成立后的 offload route terminal；Return 来自独立 `return_destination_id`。同一 `(TaskID, FlowType, Epoch)` destination 固定，普通 hop advancement 只推进 hop index，不增加 RouteRevision/Epoch。真实两跳 Input 已按单 FlowID/Epoch 和 final-hop-only E2E 通过机器验收；Return multi-hop 与 same-destination partial-hop reroute 尚无真实 runtime evidence。
+
+STEP 4.2C-C 进一步冻结 Sample/Tensor additive boundary：History Flow index 是因果 union，target Flow 使用独立 namespace；completed/superseded known row 不被压成 padding；Input/Return 类别与 provenance 来自 Raw；DepData 仍为 vocabulary-only。机器 artifact 位于 `code/artifacts/protocols/pi_jwm_step4_2c_c_flow_sample_tensor_v1_20260920/`，receipt `passed=true`。本 Step 不形成正式 Dataset，不进入 Graph Builder；唯一后续建议由研究者另行授权 Definition 03 Graph Builder Contract。

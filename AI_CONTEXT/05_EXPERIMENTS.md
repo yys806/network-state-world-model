@@ -50,6 +50,7 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 
 - `STEP 1` 只有只读实现审计和 49 项旧 synthetic CPU contract 回归；它们不是新定义性能实验。
 - 新 dataset/tensor/model/loss/planner 实验均为 `NOT_STARTED`。
+- STEP 4.2C-C 是非训练的 CPU/non-locked contract validation：真实 direct Input/Return、真实两-hop和低 wired capacity cross-slot trace进入 additive Flow Sample/Tensor artifact；`passed=true`，不构成 formal Dataset、模型或性能实验。
 - 下一实验步骤尚未授权；Step 2 建议仅冻结一步轨迹和四类动作合同，不训练。
 - STEP 3.1 原 10 项/4 tests 记录已由 STEP 3.1R 修正证据取代，不再作为当前合同验收。
 - STEP 3.1F 不是训练实验：最小样本通过 24 项合同 checks、12 项 focused tests、round-trip；History 为 `O_1+A_1+Y_1+O_2`，Action/Target `[2,3]`，History union index、Future Action ID↔index 对齐、history relation/DAG/flow 对齐已验收。未来 reference audit 扫描 4 个非 locked Raw artifact、18 个窗口，0 个 unresolved reference；locked/training/gpu 均为 false。
