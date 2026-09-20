@@ -195,6 +195,22 @@ class Step43BDualGraphEncoderTests(unittest.TestCase):
         no_edges = model(self.tensor, changed_graph, validate_inputs=False)
         self.assertTrue(torch.equal(out["diagnostics"]["p2c_initial_message"], no_edges["diagnostics"]["p2c_initial_message"]))
 
+    def test_cross_processor_values_depend_on_joint_context(self):
+        model = self.model().eval()
+        d = self.config.d_h
+        phy = torch.zeros((1, 1, d))
+        self.assertFalse(torch.equal(model.p2a_value(torch.cat((phy, torch.zeros_like(phy)), -1)), model.p2a_value(torch.cat((phy, torch.ones_like(phy)), -1))))
+        self.assertFalse(torch.equal(model.p2c_value(torch.cat((phy, phy, torch.zeros_like(phy)), -1)), model.p2c_value(torch.cat((phy, phy, torch.ones_like(phy)), -1))))
+
+    def test_structural_interface_is_complete_and_tamper_rejected(self):
+        model = self.model().eval()
+        output = model(self.tensor, self.graph)
+        self.assertTrue(validate_encoder_contract_checks(model, output, self.tensor, self.graph)["checks"]["complete_structural_interface"])
+        tampered = dict(output)
+        tampered["structural"] = {name: {key: (value.detach().clone() if isinstance(value, torch.Tensor) else value) for key, value in block.items()} for name, block in output["structural"].items()}
+        tampered["structural"]["geo_comm_relations"]["source_physical_index"][0, 0] += 1
+        self.assertFalse(validate_encoder_contract_checks(model, tampered, self.tensor, self.graph)["passed"])
+
     def test_padding_object_does_not_influence_active_latents(self):
         model = self.model().eval()
         baseline = model(self.tensor, self.graph)

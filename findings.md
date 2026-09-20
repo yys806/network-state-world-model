@@ -979,3 +979,9 @@
 - The stable Flow representation can exclude `e2e_delivered`, Epoch and Flow Index: total plus E2E remaining carry the minimum learned numeric state, while identity/provenance remain structural.
 - Strong slot-permutation evidence must permute entity, task and flow rows and consistently remap every consumed reference. Passing only a batch permutation would not prove that numeric IDs are excluded.
 - STEP 4.3B establishes encoder wiring and differentiability only. `Z_t^{PI,L_g}` remains distinct from `xi_t^Lat`; no representation-quality or prediction claim follows from deterministic untrained output.
+## 2026-09-20 STEP 4.3B-PATCH
+
+- Found and corrected two formula mismatches: P2A value had ignored Agent latent and P2C value had ignored Comm relation latent, despite their gates using joint context.
+- Found and corrected incomplete `Z_t^{PI,L_g}` structural output: all eleven STEP 4.3A blocks are now preserved as side information, with semantic equality and tamper rejection checks.
+- Removed the Comm CSI width source constant `50`; actual width is read from tensor contract `n_comm_rb` and mismatch fails explicitly.
+- Evidence remains untrained CPU development wiring only; no World Model/RSSM/dynamics/training/GPU/locked-test/formal Dataset.

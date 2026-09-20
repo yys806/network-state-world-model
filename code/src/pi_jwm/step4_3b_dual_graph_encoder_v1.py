@@ -30,6 +30,10 @@ REQUIRED_ACCEPTANCE_CHECKS = frozenset({
     "wired_p2c_disabled", "no_matching_physical_edge_requirement", "no_info_to_physical",
     "no_shortcut_relations", "history_causal", "future_target_isolation", "index_not_numeric_feature",
     "permutation_equivariance", "inactive_padding_isolation", "output_alignment",
+    "p2a_joint_context_value_processor", "p2c_joint_context_value_processor",
+    "p2a_gate_value_separated", "p2c_gate_value_separated", "complete_structural_interface",
+    "node_alignment_preserved", "relation_alignment_preserved", "cross_alignment_preserved",
+    "structural_presence_validity_preserved", "complete_output_digest", "comm_width_from_tensor_contract",
     "z_pi_not_world_model_latent", "deterministic_forward", "serialize_load", "autograd_smoke", "scope",
 })
 
@@ -223,7 +227,11 @@ class PIJointGraphEncoder(nn.Module):
         self.agent_encoder = TypeMLP(1 + 1 + te, w, d)
         self.task_encoder = TypeMLP(5 + 5 + le, w, d)
         self.physical_relation_encoder = TypeMLP(6 + 6, w, d)
-        self.comm_relation_encoder = TypeMLP(50 + 50 + te, w, d)
+        n_comm_rb = int(tensor_contract.get("n_comm_rb", 0))
+        if n_comm_rb <= 0:
+            raise ValueError("tensor contract must provide positive n_comm_rb")
+        self.n_comm_rb = n_comm_rb
+        self.comm_relation_encoder = TypeMLP(n_comm_rb + n_comm_rb + te, w, d)
         self.logical_flow_encoder = TypeMLP(2 + 2 + te, w, d)
         self.carrying_encoder = TypeMLP(2 + 2 + 1, w, d)
         self.flow_fuse_encoder = TypeMLP(2 * d, w, d)
@@ -242,9 +250,9 @@ class PIJointGraphEncoder(nn.Module):
         self.agent_node_update = TypeMLP(2 * d, w, d)
         self.task_node_update = TypeMLP(2 * d, w, d)
         self.p2a_gate = nn.Linear(2 * d, d)
-        self.p2a_value = nn.Linear(d, d)
+        self.p2a_value = TypeMLP(2 * d, w, d)
         self.p2c_gate = nn.Linear(3 * d, d)
-        self.p2c_value = nn.Linear(2 * d, d)
+        self.p2c_value = TypeMLP(3 * d, w, d)
         self.physical_node_norm = nn.LayerNorm(d)
         self.agent_node_norm = nn.LayerNorm(d)
         self.task_node_norm = nn.LayerNorm(d)
@@ -358,6 +366,8 @@ class PIJointGraphEncoder(nn.Module):
         phy_rel_latent = self.physical_relation_encoder(torch.cat((pr_values, pr_mask.float()), -1))
         comm = blocks["comm_relations"]
         csi_mask = _t(comm["csi_mask"], dtype=torch.bool).to(device)
+        if int(comm["csi"].shape[-1]) != self.n_comm_rb:
+            raise ValueError(f"communication CSI width {comm['csi'].shape[-1]} != tensor contract n_comm_rb {self.n_comm_rb}")
         csi = self._normalize(_t(comm["csi"], dtype=torch.float32).to(device), csi_mask, ["comm.channel_attenuation_db"] * int(csi_mask.shape[-1]))
         comm_type_idx = _t(comm["relation_type_index"], dtype=torch.long).to(device)
         comm_latent = self.comm_relation_encoder(torch.cat((csi, csi_mask.float(), self.comm_type_embedding(comm_type_idx.clamp(0, 7))), -1))
@@ -391,12 +401,14 @@ class PIJointGraphEncoder(nn.Module):
             aligned_phy = self._safe_gather(physical_hidden, align_phy)
             aligned_agent = self._safe_gather(agent_hidden, align_agent)
             p2a_gate = torch.sigmoid(self.p2a_gate(torch.cat((aligned_phy, aligned_agent), -1))) * align_valid[..., None]
-            p2a_edge_message = p2a_gate * self.p2a_value(aligned_phy) * align_valid[..., None]
+            p2a_value_message = self.p2a_value(torch.cat((aligned_phy, aligned_agent), -1))
+            p2a_edge_message = p2a_gate * p2a_value_message * align_valid[..., None]
             p2a_message, p2a_has = self._masked_mean(p2a_edge_message, align_agent, align_valid, agent_hidden.shape[1])
             geo_src = self._safe_gather(physical_hidden, geo_src_index)
             geo_dst = self._safe_gather(physical_hidden, geo_dst_index)
             p2c_gate = torch.sigmoid(self.p2c_gate(torch.cat((geo_src, geo_dst, comm_latent), -1))) * geo_valid[..., None]
-            p2c_message = p2c_gate * self.p2c_value(torch.cat((geo_src, geo_dst), -1)) * geo_valid[..., None]
+            p2c_value_message = self.p2c_value(torch.cat((geo_src, geo_dst, comm_latent), -1))
+            p2c_message = p2c_gate * p2c_value_message * geo_valid[..., None]
             if layer_index == 0:
                 initial_p2c_message = p2c_message
             phy_rel_latent, phy_reverse, phy_reverse_has, phy_forward, phy_forward_has = self._relation_pass(
@@ -446,21 +458,26 @@ class PIJointGraphEncoder(nn.Module):
             "physical": {"node_latent": physical_hidden, "relation_latent": phy_rel_latent},
             "information": {"agent_latent": agent_hidden, "task_latent": task_hidden, "comm_relation_latent": comm_latent, "flow_relation_latent": flow_latent, "task_agent_relation_latent": ta_latent, "dag_relation_latent": dag_latent},
             "structural": {
-                "physical_relations": {k: _t(v).to(device) for k, v in physical_rel.items() if k not in {"features"}},
-                "comm_relations": {k: _t(v).to(device) for k, v in comm.items() if k not in {"csi"}},
-                "flow_relations": {k: _t(v).to(device) for k, v in flow_block.items() if k not in {"features"}},
+                "physical_nodes": {k: _t(v).to(device) for k, v in blocks["physical_nodes"].items()},
+                "agent_nodes": {k: _t(v).to(device) for k, v in blocks["agent_nodes"].items()},
+                "task_nodes": {k: _t(v).to(device) for k, v in blocks["task_nodes"].items()},
+                "physical_relations": {k: _t(v).to(device) for k, v in physical_rel.items()},
+                "comm_relations": {k: _t(v).to(device) for k, v in comm.items()},
+                "flow_relations": {k: _t(v).to(device) for k, v in flow_block.items()},
                 "flow_carrying_state": {k: _t(v).to(device) for k, v in blocks["flow_carrying_state"].items()},
                 "task_agent_relations": {k: _t(v).to(device) for k, v in ta.items()},
                 "dag_relations": {k: _t(v).to(device) for k, v in dag.items()},
+                "align_relations": {k: _t(v).to(device) for k, v in align.items()},
+                "geo_comm_relations": {k: _t(v).to(device) for k, v in geo.items()},
             },
-            "diagnostics": {"p2a_gate": p2a_gate, "p2a_message": p2a_edge_message, "p2c_gate": p2c_gate, "p2c_message": p2c_message, "p2c_initial_message": initial_p2c_message, "p2a_valid": align_valid, "p2c_valid": geo_valid},
+            "diagnostics": {"p2a_gate": p2a_gate, "p2a_value_message": p2a_value_message, "p2a_message": p2a_edge_message, "p2c_gate": p2c_gate, "p2c_value_message": p2c_value_message, "p2c_message": p2c_message, "p2c_initial_message": initial_p2c_message, "p2a_valid": align_valid, "p2c_valid": geo_valid},
         }
         return output
 
 
 def output_semantic_digest(output: Mapping[str, Any]) -> str:
     payload: dict[str, Any] = {"schema_version": output.get("schema_version"), "contract": output.get("contract")}
-    for section in ("physical", "information", "diagnostics"):
+    for section in ("physical", "information", "structural", "diagnostics"):
         payload[section] = {key: _jsonable(value) for key, value in output.get(section, {}).items()}
     return hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")).hexdigest()
 
@@ -502,6 +519,26 @@ def validate_encoder_architecture_checks(model: PIJointGraphEncoder) -> dict[str
 
 def validate_encoder_contract_checks(model: PIJointGraphEncoder, output: Mapping[str, Any], tensor: Mapping[str, Any], graph: Mapping[str, Any]) -> dict[str, Any]:
     blocks = graph["blocks"]
+    structural_names = ("physical_nodes", "agent_nodes", "task_nodes", "physical_relations", "comm_relations", "flow_relations", "task_agent_relations", "dag_relations", "flow_carrying_state", "align_relations", "geo_comm_relations")
+    def equal_value(left: Any, right: Any) -> bool:
+        if isinstance(left, torch.Tensor):
+            left = left.detach().cpu().numpy()
+        if isinstance(right, torch.Tensor):
+            right = right.detach().cpu().numpy()
+        if isinstance(left, np.ndarray) or isinstance(right, np.ndarray):
+            try:
+                return bool(np.array_equal(np.asarray(left), np.asarray(right)))
+            except (TypeError, ValueError):
+                return False
+        if isinstance(left, Mapping) and isinstance(right, Mapping):
+            return set(left) == set(right) and all(equal_value(left[k], right[k]) for k in left)
+        return left == right
+    structural = output.get("structural", {})
+    structural_equal = all(name in structural and equal_value(structural[name], blocks[name]) for name in structural_names)
+    node_alignment = all(equal_value(structural.get(name, {}).get(index_key), blocks[name].get(index_key)) for name, index_key in (("physical_nodes", "entity_index"), ("agent_nodes", "entity_index"), ("task_nodes", "task_index")))
+    relation_alignment = all(equal_value(structural.get(name, {}).get(index_key), blocks[name].get(index_key)) for name, index_key in (("physical_relations", "source_index"), ("comm_relations", "relation_index"), ("flow_relations", "flow_index"), ("task_agent_relations", "relation_index"), ("dag_relations", "relation_index")))
+    cross_alignment = all(equal_value(structural.get(name), blocks[name]) for name in ("align_relations", "geo_comm_relations"))
+    presence_validity = all(equal_value(structural.get(name, {}).get("presence"), blocks[name].get("presence")) and ("validity" not in blocks[name] or equal_value(structural.get(name, {}).get("validity"), blocks[name].get("validity"))) for name in ("physical_relations", "comm_relations", "flow_relations", "task_agent_relations", "dag_relations", "align_relations", "geo_comm_relations"))
     checks = {
         "schema": output.get("schema_version") == SCHEMA_VERSION,
         "tensor_lineage": output.get("contract", {}).get("source_tensor_schema_version") == tensor.get("schema_version"),
@@ -516,6 +553,12 @@ def validate_encoder_contract_checks(model: PIJointGraphEncoder, output: Mapping
         "masked_padding_zero": bool(torch.all(output["physical"]["node_latent"][~_t(blocks["physical_nodes"]["presence"], dtype=torch.bool)] == 0)) and bool(torch.all(output["information"]["task_latent"][~_t(blocks["task_nodes"]["presence"], dtype=torch.bool)] == 0)),
         "p2c_wireless_only": bool(torch.all(output["diagnostics"]["p2c_message"][_t(blocks["comm_relations"]["relation_type_index"], dtype=torch.long) != 2] == 0)),
         "development_scope": model.config.development_only and not model.config.research_frozen,
+        "complete_structural_interface": structural_equal,
+        "node_alignment_preserved": node_alignment,
+        "relation_alignment_preserved": relation_alignment,
+        "cross_alignment_preserved": cross_alignment,
+        "structural_presence_validity_preserved": presence_validity,
+        "comm_width_from_tensor_contract": model.n_comm_rb == int(tensor.get("contract", {}).get("n_comm_rb", -1)),
     }
     architecture = validate_encoder_architecture_checks(model)
     checks["architecture"] = architecture["passed"]

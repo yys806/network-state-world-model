@@ -1,3 +1,10 @@
+# 2026-09-20 STEP 4.3B-PATCH — Cross-Processor Formula & Z_PI Structural Interface Closure
+
+- Scope: close Definition 03 P2A/P2C formulas, complete structural side interface, digest/round-trip coverage, and contract-derived CSI width; no World Model or training.
+- Status: implementation and artifact rebuild passed; final regressions, index check, diff check, commit and push are pending.
+- Boundary: `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
+- Single next action: finish verification and commit/push, then stop for researcher review.
+
 # 2026-08-26 双约束实施计划 v2
 
 ## 2026-09-20 STEP 4.2B — Remaining Raw Source & Stateful Flow Contract Audit

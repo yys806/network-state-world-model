@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-20：STEP 4.3B-PATCH Cross-Processor Formula & Z_PI Structural Interface Closure
+
+- P2A/P2C value processors now consume the complete Definition 03 joint contexts, with gates and values kept as separate processors.
+- `Z_t^{PI,L_g}` output preserves all eleven STEP 4.3A structural blocks; semantic equality, complete digest and serialize/load checks include structural side information.
+- Comm CSI width is derived from tensor-contract `n_comm_rb` with explicit mismatch rejection. Acceptance artifact reports 48 required and 29 negative/counterfactual checks, all passing; evidence remains untrained CPU development only.
+
 ## 2026-09-20：STEP 4.3B Definition 03 Dual-Graph Encoder Contract
 
 - 新增 mask-explicit type-specific MLP、Physical/Agent/Task/Flow object-wise GRU、五类 directed relation processors、family-wise masked mean、独立 node update 与 P2A/P2C。

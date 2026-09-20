@@ -137,6 +137,17 @@ def fixture_checks(model: PIJointGraphEncoder, tensor: dict[str, Any], graph: di
     comm_type = torch.as_tensor(graph["blocks"]["comm_relations"]["relation_type_index"])
     geo_valid = torch.as_tensor(graph["blocks"]["geo_comm_relations"]["validity"])
     p2c_masks = bool(torch.all(baseline["diagnostics"]["p2c_message"][comm_type != 2] == 0) and torch.all(baseline["diagnostics"]["p2c_message"][~geo_valid] == 0))
+    d = model.config.d_h
+    fixed_phy = torch.zeros((1, 1, d))
+    agent_a, agent_b = torch.zeros((1, 1, d)), torch.ones((1, 1, d))
+    p2a_value_dep = not torch.equal(model.p2a_value(torch.cat((fixed_phy, agent_a), -1)), model.p2a_value(torch.cat((fixed_phy, agent_b), -1)))
+    comm_a, comm_b = torch.zeros((1, 1, d)), torch.ones((1, 1, d))
+    p2c_value_dep = not torch.equal(model.p2c_value(torch.cat((fixed_phy, fixed_phy, comm_a), -1)), model.p2c_value(torch.cat((fixed_phy, fixed_phy, comm_b), -1)))
+    structural_checks = validate_encoder_contract_checks(model, baseline, tensor, graph)
+    structural_tamper = dict(baseline)
+    structural_tamper["structural"] = {name: {key: (value.detach().clone() if isinstance(value, torch.Tensor) else value) for key, value in block.items()} for name, block in baseline["structural"].items()}
+    structural_tamper["structural"]["align_relations"]["physical_entity_index"][0, 0] += 1
+    structural_tamper_rejected = not validate_encoder_contract_checks(model, structural_tamper, tensor, graph)["passed"]
 
     padded = copy.deepcopy(tensor); padding = np.argwhere(~padded["task_presence"])
     padding_ignored = False
@@ -183,6 +194,18 @@ def fixture_checks(model: PIJointGraphEncoder, tensor: dict[str, Any], graph: di
         "cpu_autograd_without_optimizer": bool(autograd), "physical_bidirectional_no_double_count": bool(bidirectional),
         "input_objects_unchanged": tensor_before == _array_mapping_digest(tensor) and graph_before == graph_semantic_digest(graph),
         "acceptance_receipt_tamper_rejected": not validate_encoder_acceptance(tampered)["passed"],
+        "p2a_joint_context_value_processor": bool(p2a_value_dep),
+        "p2c_joint_context_value_processor": bool(p2c_value_dep),
+        "p2a_gate_value_separated": model.p2a_gate is not model.p2a_value,
+        "p2c_gate_value_separated": model.p2c_gate is not model.p2c_value,
+        "complete_structural_interface": structural_checks["checks"]["complete_structural_interface"],
+        "node_alignment_preserved": structural_checks["checks"]["node_alignment_preserved"],
+        "relation_alignment_preserved": structural_checks["checks"]["relation_alignment_preserved"],
+        "cross_alignment_preserved": structural_checks["checks"]["cross_alignment_preserved"],
+        "structural_presence_validity_preserved": structural_checks["checks"]["structural_presence_validity_preserved"],
+        "structural_tamper_rejected": structural_tamper_rejected,
+        "complete_output_digest": "structural" in baseline and output_semantic_digest(baseline) == baseline_digest,
+        "comm_width_from_tensor_contract": structural_checks["checks"]["comm_width_from_tensor_contract"],
     }
 
 
@@ -237,6 +260,17 @@ def main() -> int:
         "permutation_equivariance": fixtures["entity_slot_permutation_equivariant"],
         "inactive_padding_isolation": fixtures["inactive_padding_isolated"],
         "output_alignment": all(contract_checks["checks"][name] for name in ("physical_shape", "agent_shape", "task_shape", "flow_shape")),
+        "p2a_joint_context_value_processor": fixtures["p2a_joint_context_value_processor"],
+        "p2c_joint_context_value_processor": fixtures["p2c_joint_context_value_processor"],
+        "p2a_gate_value_separated": fixtures["p2a_gate_value_separated"],
+        "p2c_gate_value_separated": fixtures["p2c_gate_value_separated"],
+        "complete_structural_interface": fixtures["complete_structural_interface"],
+        "node_alignment_preserved": fixtures["node_alignment_preserved"],
+        "relation_alignment_preserved": fixtures["relation_alignment_preserved"],
+        "cross_alignment_preserved": fixtures["cross_alignment_preserved"],
+        "structural_presence_validity_preserved": fixtures["structural_presence_validity_preserved"],
+        "complete_output_digest": fixtures["complete_output_digest"],
+        "comm_width_from_tensor_contract": fixtures["comm_width_from_tensor_contract"],
         "z_pi_not_world_model_latent": contract_checks["checks"]["z_pi_only"],
         "deterministic_forward": fixtures["deterministic_initialization_and_forward"],
         "serialize_load": fixtures["serialize_load_round_trip"],

@@ -107,4 +107,4 @@ STEP 4.3B 使用完整冻结 History Tensor 编码 Physical/Agent/Task/Flow 的�
 
 ## 下一步边界
 
-STEP 4.3A Typed Graph Builder 与 STEP 4.3B Dual-Graph Encoder 正式 COMPLETE / FROZEN。当前输出只到 `Z_t^{PI,L_g}`，不是 `xi_t^Lat`；当前唯一建议为 **Definition 04 — World Model Representation / Dynamics Contract**，具体 Step 名称由研究者决定，不得自动执行。
+STEP 4.3A Typed Graph Builder 与 STEP 4.3B Dual-Graph Encoder（含 Cross-Processor Formula & Z_PI Structural Interface Closure patch）正式 COMPLETE / FROZEN。当前输出只到完整结构化 `Z_t^{PI,L_g}`，不是 `xi_t^Lat`；当前唯一建议为 **Definition 04 — World Model Representation / Dynamics Contract**，具体 Step 名称由研究者决定，不得自动执行。

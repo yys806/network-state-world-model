@@ -1000,6 +1000,13 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 - Implemented typed History GRUs, current typed directed graph refinement, P2A/P2C, aligned `Z_t^{PI,L_g}`, deterministic package/output and actual-AND acceptance.
 - Focused tests reached 19/19; artifact receipt reached 37/37 required and 17/17 negative/counterfactual checks. Scope remains untrained CPU only; no World Model, optimizer, GPU, `locked_test`, or formal Dataset.
 - Implementation commit `9c45b32` records source, tests, contract, machine artifacts, tracker and context updates; final documentation closure and push are the remaining Git-only actions.
+
+## 2026-09-20 STEP 4.3B-PATCH
+
+- P2A/P2C value processors now consume the exact Definition 03 joint contexts, independently of their gates; focused dependence and invalid-mask fixtures pass.
+- `Z_t^{PI,L_g}` now carries all eleven source graph structural blocks with endpoint/index/presence/validity equality checks; complete semantic digest and round-trip include structural output.
+- Comm CSI width is contract-derived from `n_comm_rb` with explicit mismatch rejection. Artifact remains untrained CPU development evidence (`training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`).
+- Next: final cross-Step regression, compileall, knowledge-index check, diff check, commit/push, then stop. Only recommend Definition 04 afterward.
 # 2026-09-19 STEP 4.1-PATCH
 
 - 从 `WiredNetworkManager`、真实 Raw `environment.wired_edges` 和 Decision `channel_rows` 核实：wired relation 有可靠 topology/`hasLink` 来源，但当前未逐 Decision 物化；没有 CSI 时可由 `relation_type=wired` 与 `csi_feature_mask=false` 表示。

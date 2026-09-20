@@ -66,3 +66,31 @@ Implementation commit: `9c45b32` (`feat(graph): freeze dual-graph encoder contra
 ## Next Step
 
 Only recommend **Definition 04 — World Model Representation / Dynamics Contract**. The researcher will choose the exact Step name; do not execute automatically.
+
+## 2026-09-20 STEP 4.3B-PATCH — Cross-Processor Formula & Z_PI Structural Interface Closure
+
+### Scope
+
+This patch closes the Definition 03 encoder formula and output-interface gaps only. It does not enter World Model, RSSM, dynamics, prediction, Loss, Planner, Training, GPU, locked_test, or formal Dataset.
+
+### Changes
+
+- P2A value now consumes `[aligned_physical, aligned_agent]`; P2C value now consumes `[geo_source, geo_target, comm_latent]`. Gate and value processors remain parameter-independent.
+- The output structural interface now preserves all eleven STEP 4.3A blocks, including physical/agent/task nodes, all five relation families, Flow Carrying state, Align, and GeoComm. It is copied side information, not learned numeric input.
+- Structural endpoint/index/presence/validity equality is checked against the source graph. Structural tampering is a negative fixture.
+- `n_comm_rb` is read from the frozen tensor contract and checked against actual CSI width; no `50` source constant remains.
+- Semantic digest and serialize/load acceptance now cover latent, structural, contract, and diagnostics output.
+
+### Validation
+
+- Focused 4.3B tests: 21/21 passed.
+- Rebuilt artifact: all required checks and negative/counterfactual checks passed; `passed=true`.
+- Evidence class remains `UNTRAINED_DEVELOPMENT_ENCODER_EVIDENCE`; CPU autograd only, no optimizer.
+
+### Result and boundary
+
+The implementation now matches the frozen P2A/P2C joint-context formulas and exposes a complete aligned `Z_t^{PI,L_g}` structural interface. This is wiring and semantic acceptance evidence, not representation-quality or performance evidence. `training=false`, `gpu=false`, `locked_test=false`, and `formal_dataset=false`.
+
+### Git
+
+This patch is pending final regression, index, diff, commit, and push in the current task.

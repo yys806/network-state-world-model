@@ -36,6 +36,7 @@ Logical Flow learns only `total_data` and `e2e_remaining` plus masks/type. `e2e_
 
 - P2A exists only on valid Align rows and uses a vector sigmoid gate.
 - P2C exists only on valid wireless GeoComm rows and uses a vector sigmoid gate. Wired and invalid rows receive zero P2C.
+- P2A value and gate processors both consume `[h_phy, h_agent]` with independent parameters. P2C value and gate processors both consume `[h_src, h_dst, r_comm]` with independent parameters; a joint-context gate with a physical-only value path is not compliant.
 - P2C requires valid endpoint Physical representations but does not require a matching Physical relation row.
 - There is no Information→Physical path and no Task↔Physical or Flow↔PhysicalEdge shortcut.
 
@@ -43,7 +44,7 @@ Logical Flow learns only `total_data` and `e2e_remaining` plus masks/type. `e2e_
 
 All dimensions, `L_g`, coupling/reverse toggles, aggregation/update policies, and initialization seed are explicit. The development evidence uses `d_h=16`, hidden width `24`, embedding widths `4`, and `L_g=2`; these values are `development_only=true`, `research_frozen=false`.
 
-The output contains aligned Physical node/relation latents; Information Agent/Task/Comm/Flow/Task-Agent/DAG latents; graph connectivity, indices, masks, presence/validity, and Flow Carrying side state. It performs no global pooling and exposes no `world_model_latent`, `rssm_state`, or `xi_lat`.
+The output contains aligned Physical node/relation latents; Information Agent/Task/Comm/Flow/Task-Agent/DAG latents; and an immutable structural side interface copied from all eleven STEP 4.3A blocks: node indices/presence, relation endpoints/indices/presence/validity, Align, GeoComm, and Flow Carrying state. Structural equality is checked against the source graph and is not appended to learned numeric inputs. Communication CSI width is read from tensor-contract `n_comm_rb`, never from a source-code constant.
 
 ## Evidence boundary
 
