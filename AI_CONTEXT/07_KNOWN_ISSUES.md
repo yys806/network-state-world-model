@@ -57,7 +57,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - Causal Flow Ledger 与 Raw additive Flow state 已实现；上述“长期 Ledger、Raw extension 未授权”是 4.2C-A 时点的历史描述，已由 4.2C-B 覆盖。
 - 真实 non-locked trace 已覆盖直接 Input/Return 与独立 Input 两跳；尚未真实观察 Return multi-hop、same-destination reroute、destination-change Epoch 和 local execution no-flow，这些目前只有 contract fixture evidence。
 - 旧无线 Return hook 的 delivered amount 可超过 observer return_size；Ledger 按冻结 min rule 封顶守恒。该 observation 不等于修改 simulator，也不能外推为正式 Dataset 结论。
-- Flow Sample/Tensor additive extension 已在 STEP 4.2C-C 完成并冻结；Graph Builder、GNN、World Model、Loss、Planner 和训练仍未开始。
+- Flow Sample/Tensor additive extension（含 presence-aware normalization、四组全字段 semantic equality 与 target carrying namespace）已在 STEP 4.2C-C-PATCH 完成并冻结；Graph Builder、GNN、World Model、Loss、Planner 和训练仍未开始。
 - Input multi-hop logical destination continuity 已由真实 trace 闭合；Return multi-hop 和 same-destination partial-hop reroute 仍缺真实 runtime evidence。后者不得被当前 contract fixture 描述成 simulator 已支持。
 
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
@@ -104,7 +104,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 Unverified：没有代码、config、experiment 或可读 audit 支持的问题只能标记为待核验，不能写成确认缺陷。
 - STEP 3.1R 已关闭原 DAG source 判断错误：observer 已提供真实 DAG rows，Raw `_capture()` 已接线；当前样本过滤两端不在 anchor input task namespace 的 future-only edges。正式 batch/split preprocessing、数据规模和模型输入选择仍未验收。
 - STEP 3.1F-PATCH 已修正 Future Action 的 anchor-only 重编号：anchor visibility 与 History-union numeric index 已分离，validator 和 disappearing-object fixture 已覆盖。4 个非 locked Raw artifact 的 18 个窗口扫描暂未发现 unresolved future reference；该短样本观察不能代替正式 dataset 可用率；未来对象到达的建模方案仍未决定。
-- STEP 4.2C-C 已解决当前授权范围内的 Flow Sample/Tensor 贯穿，但仍有明确边界：Return multi-hop、same-destination partial-hop reroute runtime、formal Flow capacity 和 Graph Builder Contract 未冻结；artifact 只能支持 Raw→Sample→Tensor 合同，不支持图、模型或性能声明。
+- STEP 4.2C-C-PATCH 已解决当前授权范围内的 Flow Sample/Tensor 贯穿与 normalization/semantic completeness，但仍有明确边界：Return multi-hop、same-destination partial-hop reroute runtime、formal Flow capacity 和 Graph Builder Contract 未冻结；artifact 只能支持 Raw→Sample→Tensor 合同，不支持图、模型或性能声明。
 
 ## 2026-09-19
 

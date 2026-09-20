@@ -974,6 +974,13 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 - 完成并冻结 C-B Raw logical Flow/Carrying rows 到独立 `logical_flow` History-union/target Sample 与 CPU Tensor 的 additive extension。
 - focused 与冻结回归、真实低 wired capacity 跨时隙 trace、deterministic/hash、serialize/load、tamper、compileall、知识索引和 diff 检查均通过；artifact/manifest/NPZ 已纳入 Git。
 - 范围保持 `graph_builder=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`；Return multi-hop、reroute runtime 和 formal capacity 不作结论。
+
+## 2026-09-20 STEP 4.2C-C-PATCH
+
+- 修正 presence-aware normalization：`_iter_numeric()` 与 stats policy 现在只接受 `known=true AND presence=true AND feature_mask=true AND value!=null AND split=dev_train`；重复 inactive completed/superseded lineage 不影响 stats。
+- 补齐 History Logical、History Carrying、target Logical、target Carrying 四组全字段 Sample→Tensor equality；ID/provenance metadata 防止只修改字符串而保留同一 numeric index 的篡改漏检。新增 target carrying namespace，并明确其为 future ground-truth/deterministic-transition state，不是 learned prediction head。
+- receipt/build 已由实际 semantic subchecks、target namespace、future Epoch、placeholder/bounds/route mask、normalization policy、deterministic/round-trip 和 scope AND 生成；receipt/semantic tamper 与 overflow negative fixtures 均拒绝。
+- 当前已通过 focused 23/23 与 builder；最终跨 Step 回归、compileall、知识索引、diff、Git commit/push 仍是本任务收口门。范围保持 `training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
 # 2026-09-19 STEP 4.1-PATCH
 
 - 从 `WiredNetworkManager`、真实 Raw `environment.wired_edges` 和 Decision `channel_rows` 核实：wired relation 有可靠 topology/`hasLink` 来源，但当前未逐 Decision 物化；没有 CSI 时可由 `relation_type=wired` 与 `csi_feature_mask=false` 表示。

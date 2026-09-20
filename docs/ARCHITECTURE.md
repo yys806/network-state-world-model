@@ -15,7 +15,7 @@ PI-JWM 研究的是一个同时包含物理网络和信息网络的动态系统�
 
 ### 当前已冻结的 Raw 边界
 
-Step 2.4 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision` 的真实采集层；Step 3.2/3.3 已冻结当前最小 Dataset/Tensor。STEP 4.2A 已以独立版本链输入化 position、wireless CSI、wired typed relation、CPU static capability、部分 Task current state 和 typed Task-Agent relation；PATCH 明确 relation validity 独立于 CSI feature observability。STEP 4.2C-B 已在独立 Raw amendment 中实现 stateful Flow：Input logical destination 来自 established route terminal，Return 来自 `return_destination_id`；`target_node_id` 仍是当前 action/carrying-hop target，不能充当 end-to-end destination。真实 Input 两跳已证明普通 hop advancement 不改变 FlowID/Epoch/RouteRevision。Flow Sample/Tensor、Physical topology 与 graph builder 尚未实现。CPU capacity 不等于 allocation、actual service 或 dynamic available CPU。
+Step 2.4 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision` 的真实采集层；Step 3.2/3.3 已冻结当前最小 Dataset/Tensor。STEP 4.2A 已以独立版本链输入化 position、wireless CSI、wired typed relation、CPU static capability、部分 Task current state 和 typed Task-Agent relation；PATCH 明确 relation validity 独立于 CSI feature observability。STEP 4.2C-B 已在独立 Raw amendment 中实现 stateful Flow：Input logical destination 来自 established route terminal，Return 来自 `return_destination_id`；`target_node_id` 仍是当前 action/carrying-hop target，不能充当 end-to-end destination。真实 Input 两跳已证明普通 hop advancement 不改变 FlowID/Epoch/RouteRevision。STEP 4.2C-C（含 PATCH）已将 C-B Flow/Carrying 贯穿独立 Sample/Tensor，并冻结 presence-aware normalization、四组全字段 semantic equality 与 target carrying future-ground-truth namespace；Physical topology 与 graph builder 尚未实现。CPU capacity 不等于 allocation、actual service 或 dynamic available CPU。
 
 ### 新定义 03 的已冻结映射（尚未实现）
 

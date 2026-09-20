@@ -25,6 +25,7 @@ from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import (
     fit_flow_normalization_stats,
     load_flow_tensor_batch,
     save_flow_tensor_batch,
+    sample_tensor_semantic_equality,
     validate_flow_acceptance,
     validate_flow_sample_checks,
     validate_flow_tensor_checks,
@@ -222,6 +223,142 @@ class Step42CCFlowSampleTensorTests(unittest.TestCase):
         receipt = {"required_checks": required, "passed": True, "scope": {"graph_builder": False, "information_graph": False, "physical_topology": False, "training": False, "gpu": False, "locked_test": False, "formal_dataset": False}}
         result = validate_flow_acceptance(receipt)
         self.assertFalse(result["expected_passed"])
+        self.assertFalse(result["passed"])
+
+    def test_presence_aware_normalization_excludes_repeated_inactive_completed_lineage(self):
+        _, active = self._sample(self.direct_original, anchor=4, split="dev_train")
+        baseline = fit_flow_normalization_stats([active])
+        inactive = copy.deepcopy(active)
+        for frame in inactive["history"]:
+            for row in frame["logical_flows"]:
+                if row.get("known"):
+                    row.update({"presence": False, "status": "COMPLETED", "total_data": 10_000.0, "e2e_delivered": 10_000.0, "e2e_remaining": 0.0})
+                    row["feature_mask"] = {"total_data": True, "e2e_delivered": True, "e2e_remaining": True}
+            for row in frame["carrying_states"]:
+                if row.get("known"):
+                    row.update({"hop_progress": 10_000.0, "hop_remaining": 10_000.0})
+                    row["feature_mask"] = {"hop_progress": True, "hop_remaining": True}
+        repeated = fit_flow_normalization_stats([active, inactive, copy.deepcopy(inactive)])
+        self.assertEqual(baseline["features"], repeated["features"])
+        self.assertGreater(baseline["features"]["logical.total_data"]["count"], 0)
+        self.assertTrue(all(feature["mask_policy"] == "presence=true AND feature_mask=true AND value!=null; train split only" for feature in baseline["features"].values()))
+
+    def test_validation_and_target_never_enter_presence_aware_fit(self):
+        _, active = self._sample(self.direct_original, anchor=4, split="dev_train")
+        baseline = fit_flow_normalization_stats([active])
+        validation = copy.deepcopy(active)
+        validation["metadata"]["split"] = "dev_validation"
+        target_only = copy.deepcopy(active)
+        target_only["metadata"]["split"] = "dev_train"
+        for frame in target_only["history"]:
+            for row in frame["logical_flows"]:
+                row["presence"] = False
+        for frame in target_only["target"]:
+            for row in frame["logical_flows"]:
+                if row.get("known"):
+                    row["total_data"] = 999_999.0
+                    row["e2e_delivered"] = 999_999.0
+                    row["e2e_remaining"] = 0.0
+            for row in frame["carrying_states"]:
+                if row.get("known"):
+                    row["hop_progress"] = 999_999.0
+                    row["hop_remaining"] = 999_999.0
+        fitted = fit_flow_normalization_stats([active, validation, target_only])
+        self.assertEqual(baseline["features"], fitted["features"])
+
+    def test_target_carrying_namespace_is_preserved_and_validated(self):
+        _, sample = self._sample(anchor=1)
+        tensor, _ = self._tensor([sample])
+        for key in (
+            "target_carrying_known_mask", "target_carrying_active", "target_carrying_route_revision",
+            "target_carrying_current_hop_index", "target_carrying_holder_index",
+            "target_carrying_hop_source_index", "target_carrying_hop_destination_index",
+            "target_carrying_raw_features", "target_carrying_features", "target_carrying_feature_mask",
+            "target_route_node_indices", "target_route_node_mask",
+        ):
+            self.assertIn(key, tensor)
+        self.assertTrue(validate_flow_tensor_checks(tensor)["passed"])
+        self.assertTrue(sample_tensor_semantic_equality([sample], tensor))
+
+    def test_full_sample_tensor_equality_rejects_history_carrying_holder_and_route_tamper(self):
+        _, sample = self._sample(anchor=1)
+        tensor, _ = self._tensor([sample])
+        tampered = copy.deepcopy(sample)
+        carry = next(row for row in tampered["history"][1]["carrying_states"] if row["known"])
+        carry["current_holder"] = "RSU_0"
+        self.assertFalse(sample_tensor_semantic_equality([tampered], tensor))
+        tampered = copy.deepcopy(sample)
+        carry = next(row for row in tampered["history"][1]["carrying_states"] if row["known"])
+        carry["route"] = list(reversed(carry["route"]))
+        self.assertFalse(sample_tensor_semantic_equality([tampered], tensor))
+
+    def test_full_target_logical_equality_rejects_destination_status_and_epoch_tamper(self):
+        _, sample = self._sample(anchor=1)
+        tensor, _ = self._tensor([sample])
+        for field, value in (("logical_destination", "RSU_0"), ("status", "ACTIVE"), ("epoch", 9)):
+            tampered = copy.deepcopy(sample)
+            row = next(row for row in tampered["target"][0]["logical_flows"] if row["known"])
+            row[field] = value
+            self.assertFalse(sample_tensor_semantic_equality([tampered], tensor), field)
+
+    def test_full_target_carrying_equality_rejects_holder_hop_and_route_mask_tamper(self):
+        _, sample = self._sample(anchor=1)
+        tensor, _ = self._tensor([sample])
+        tampered = copy.deepcopy(sample)
+        row = next(row for row in tampered["target"][0]["carrying_states"] if row["known"])
+        row["current_holder"] = "RSU_0"
+        self.assertFalse(sample_tensor_semantic_equality([tampered], tensor))
+        tampered_tensor = copy.deepcopy(tensor)
+        tampered_tensor["target_route_node_mask"][0, 0, 0, 0] = False
+        self.assertFalse(sample_tensor_semantic_equality([sample], tampered_tensor))
+
+    def test_target_only_flow_cannot_be_inserted_into_history_tensor_namespace(self):
+        _, sample = self._sample(anchor=1)
+        future = copy.deepcopy(sample["target"][0]["logical_flows"][0])
+        future.update({"flow_id": "flow::Task_1::Input::9", "epoch": 9, "flow_index": 1, "target_index": 1, "status": "ACTIVE", "presence": True})
+        sample["target"][0]["logical_flows"].append(future)
+        sample["target"][0]["carrying_states"].append(copy.deepcopy(sample["target"][0]["carrying_states"][0]))
+        sample["target"][0]["carrying_states"][-1].update({"flow_id": future["flow_id"], "flow_index": 1, "target_index": 1})
+        sample["static"]["target_index"]["logical_flow"][future["flow_id"]] = 1
+        sample["static"]["target_only_objects"]["logical_flow"].append(future["flow_id"])
+        tensor, _ = self._tensor([sample])
+        tampered = copy.deepcopy(tensor)
+        tampered["sample_static"][0]["input_entity_index"]["logical_flow"][future["flow_id"]] = 1
+        self.assertFalse(validate_flow_tensor_checks(tampered)["target_only_future_flow_isolation"])
+
+    def test_missing_target_carrying_tensor_cannot_claim_semantic_equality(self):
+        _, sample = self._sample(anchor=1)
+        tensor, _ = self._tensor([sample])
+        tampered = copy.deepcopy(tensor)
+        tampered.pop("target_carrying_holder_index")
+        self.assertFalse(sample_tensor_semantic_equality([sample], tampered))
+
+    def test_target_tensor_destination_tamper_is_rejected_by_validator(self):
+        _, sample = self._sample(anchor=1)
+        tensor, _ = self._tensor([sample])
+        tampered = copy.deepcopy(tensor)
+        tampered["target_logical_flow_destination_index"][0, 0, 0] = 0
+        self.assertFalse(validate_flow_tensor_checks(tampered)["sample_target_logical_equality"])
+
+    def test_target_tensor_status_and_future_epoch_identity_tamper_are_rejected(self):
+        _, sample = self._sample(anchor=1)
+        tensor, _ = self._tensor([sample])
+        for key, value in (("target_logical_flow_status_index", 1), ("target_logical_flow_epoch", 9)):
+            tampered = copy.deepcopy(tensor)
+            tampered[key][0, 0, 0] = value
+            checks = validate_flow_tensor_checks(tampered)
+            self.assertFalse(checks["sample_target_logical_equality"], key)
+
+    def test_receipt_subcheck_and_normalization_policy_tamper_force_top_level_false(self):
+        _, sample = self._sample(anchor=1)
+        tensor, _ = self._tensor([sample])
+        tampered = copy.deepcopy(tensor)
+        tampered["flow_normalization_stats"]["features"]["logical.total_data"]["mask_policy"] = "known=true only"
+        self.assertFalse(validate_flow_tensor_checks(tampered)["presence_aware_normalization_policy"])
+        required = {name: True for name in ("raw_sample_semantic_equality", "sample_tensor_semantic_equality", "history_causal_flow_union", "stable_flow_identity", "target_only_future_flow_isolation", "epoch_isolation", "multi_hop_single_flow_tensor_identity", "presence_mask_correctness", "train_only_preprocessing", "presence_aware_normalization_policy", "no_silent_truncation", "input_return_categories", "depdata_runtime_zero", "deterministic_rebuild", "serialize_load", "scope")}
+        required["sample_target_carrying_equality"] = False
+        receipt = {"required_checks": required, "passed": True, "scope": {name: False for name in ("graph_builder", "information_graph", "physical_topology", "training", "gpu", "locked_test", "formal_dataset")}}
+        result = validate_flow_acceptance(receipt)
         self.assertFalse(result["passed"])
 
 

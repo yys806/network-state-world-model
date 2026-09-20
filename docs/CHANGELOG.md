@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-20：STEP 4.2C-C-PATCH Presence-aware Normalization & Full Flow Semantic Coverage
+
+- Flow normalization stats 固定为 `known=true AND presence=true AND feature_mask=true AND value!=null AND split=dev_train`，并补 presence=false completed/superseded repeated-lineage negative fixture。
+- Sample/Tensor receipt 新增 History/target Logical/Carrying 四组全字段 semantic equality、ID/provenance tamper、target carrying future-ground-truth namespace、target namespace/Epoch、placeholder/bounds/route-mask 与 normalization policy 的实际 required checks。
+- 更新 contract/record/Tracker/AI_CONTEXT、重建 artifact/manifest；23/23 focused、deterministic rebuild、serialize/load 和 scope 通过；未触及 Graph Builder、模型、训练、GPU 或 `locked_test`。
+
 ## 2026-09-20：STEP 4.2B Stateful Flow Source Audit
 
 - 新增 Definition 03 Flow source audit helper、builder、focused tests 和 provenance artifact。

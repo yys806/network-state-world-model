@@ -1243,3 +1243,14 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] Generate schema/receipt/manifest, update contract/record/Tracker/AI_CONTEXT/authority records, run focused and frozen regressions, deterministic/hash/reload/compileall/index/diff, commit and push `main`.
 - Stop boundary: `graph_builder=false`, `information_graph=false`, `physical_topology=false`, `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
 - Only next recommendation after independent freeze: researcher review, then separately authorize Definition 03 Graph Builder Contract; do not auto-start.
+
+## 2026-09-20 STEP 4.2C-C-PATCH — Presence-aware Normalization & Full Sample→Tensor Flow Semantic Coverage
+
+- Goal: only finalize presence-aware normalization and complete History/target Logical/Carrying Sample→Tensor semantic coverage on the frozen 4.2C-C contract.
+- [x] `_iter_numeric()`/stats mask policy requires `known=true`, `presence=true`, `feature_mask=true`, `value!=null`, `split=dev_train`; repeated inactive completed lineage negative fixture passes.
+- [x] Add and validate full target carrying namespace; mark it future ground-truth/deterministic-transition state, not a learned prediction head.
+- [x] Make receipt required checks actual ANDs for four semantic layers, target namespace/Epoch isolation, masked placeholders, bounds, route masks, normalization policy, deterministic rebuild and scope; receipt and ID/provenance tamper fixtures fail as expected.
+- [x] Rebuild artifact and update contract/record/Tracker/AI_CONTEXT/process records.
+- [ ] Run final focused/regression, compileall, knowledge-index write/check, diff check, inspect status, commit and push `main`.
+- Stop boundary: `graph_builder=false`, `information_graph=false`, `physical_topology=false`, `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
+- Only next recommendation after independent freeze: researcher review, then separately authorize Definition 03 Graph Builder Contract; do not auto-start.

@@ -97,10 +97,10 @@ Step 4.1 中已有可靠来源的 position、wireless per-RB CSI、wired typed r
 
 ## 当前 STEP 4.2C-C 结果
 
-STEP 4.2C-C 已完成并冻结 Raw Flow → Model-ready Sample → CPU Tensor additive extension。新增独立 `logical_flow` History-union/target namespace，Flow 与 Carrying state 分离，completed/superseded 与 padding 分离，五个连续字段仅在 `dev_train` valid mask 上标准化，capacity overflow 显式拒绝；Sample/Tensor 不重新解释 C-B Raw。12 项 focused tests、4.2B/4.2A/3.3 回归、真实低 wired capacity 跨时隙 trace、deterministic rebuild/hash、serialize/load 和 receipt tamper 均通过。artifact 位于 `code/artifacts/protocols/pi_jwm_step4_2c_c_flow_sample_tensor_v1_20260920/`；真实 Return multi-hop、reroute runtime 与 formal capacity 仍未声称。
+STEP 4.2C-C 已完成并冻结 Raw Flow → Model-ready Sample → CPU Tensor additive extension。新增独立 `logical_flow` History-union/target namespace，Flow 与 Carrying state 分离，completed/superseded 与 padding 分离，五个连续字段仅在 `dev_train` 且 `presence=true AND feature_mask=true AND value!=null` 上标准化，capacity overflow 显式拒绝；Sample/Tensor 不重新解释 C-B Raw。随后 `STEP 4.2C-C-PATCH` 补齐 presence-aware stats、History/target Logical/Carrying 四组全字段 semantic equality 和完整 target carrying namespace，并由 receipt 实际 AND 子检查、target namespace、future Epoch、placeholder/bounds/route mask 与 normalization policy。23 项 focused tests、4.2B/4.2A/3.3 回归、真实低 wired capacity 跨时隙 trace、deterministic rebuild/hash、serialize/load 和 receipt/semantic tamper 均通过。artifact 位于 `code/artifacts/protocols/pi_jwm_step4_2c_c_flow_sample_tensor_v1_20260920/`；真实 Return multi-hop、reroute runtime 与 formal capacity 仍未声称。
 
 范围仍为 `graph_builder=false`、`information_graph=false`、`physical_topology=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
 
 ## 下一步边界
 
-STEP 4.2C-B 与 STEP 4.2C-C 正式 COMPLETE / FROZEN。唯一建议：研究者审阅后另行授权 **Definition 03 Graph Builder Contract**；不要自动实现 Graph Builder。
+STEP 4.2C-B 与 STEP 4.2C-C（含 PATCH）正式 COMPLETE / FROZEN。唯一建议：研究者审阅后另行授权 **Definition 03 Graph Builder Contract**；不要自动实现 Graph Builder。

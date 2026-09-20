@@ -21707,8 +21707,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_0",
@@ -31539,8 +31539,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -42725,15 +42725,163 @@
         2
       ],
       "future_task_schedule_role": "internal_raw_metadata_only",
+      "history_carrying_semantic_digests": {
+        "0": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "1": "ae895f3a07f4c693ac3c5137a831826a90c5debe8710a25390ddfab81271cf9d"
+      },
       "history_contract": "H_{t-H+1:t}=(O_{t-H+1:t},A_{t-H+1:t-1},Y_{t-H+1:t-1}); current A_t/Y_t excluded",
       "history_flow_semantic_digests": {
         "0": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-        "1": "4df072469a45dc9f0bec7c86e782e63590212c16e9f9a7a41491922923e1b1f9"
+        "1": "c79dd3f6fd2acf49d57d6b8cc5390a52ce1ac7b8992e6d3e05b6f38bd56732b6"
       },
+      "history_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": null,
+              "current_holder_index": -1,
+              "current_hop_index": -1,
+              "feature_mask": [
+                false,
+                false
+              ],
+              "flow_id": null,
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": null,
+              "hop_source_index": -1,
+              "known": false,
+              "normalized_features": [
+                0.0,
+                0.0
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [],
+              "route_node_indices": [],
+              "route_revision": -1
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": -1,
+              "epoch": -1,
+              "feature_mask": [
+                false,
+                false,
+                false
+              ],
+              "flow_id": null,
+              "flow_index": 0,
+              "flow_type": null,
+              "known": false,
+              "logical_destination": null,
+              "logical_destination_capture_phase": null,
+              "logical_destination_source": null,
+              "logical_source": null,
+              "normalized_features": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "presence": false,
+              "raw_features": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "source_index": -1,
+              "status": null,
+              "task_id": null,
+              "task_index": -1
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "cloudServer_4",
+              "current_holder_index": 6,
+              "current_hop_index": 2,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "cloudServer_4",
+              "hop_source_index": 6,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
       "history_frame_indices": [
         0,
         1
       ],
+      "history_logical_flow_semantic_digests": {
+        "0": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "1": "b44766f724cff11a4199059e9fb109ca7b9f2e241883cdb1734495b83864618d"
+      },
       "metadata_is_model_input": false,
       "normalization_policy": "trajectory split then train-only valid-value fit; validation reuse",
       "raw_contract_version": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
@@ -42744,9 +42892,163 @@
       "source_path": "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json",
       "source_sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
       "split": "dev_train",
+      "target_carrying_semantic_digests": {
+        "1": "ae895f3a07f4c693ac3c5137a831826a90c5debe8710a25390ddfab81271cf9d",
+        "2": "ae895f3a07f4c693ac3c5137a831826a90c5debe8710a25390ddfab81271cf9d"
+      },
       "target_flow_semantic_digests": {
-        "1": "4df072469a45dc9f0bec7c86e782e63590212c16e9f9a7a41491922923e1b1f9",
-        "2": "4df072469a45dc9f0bec7c86e782e63590212c16e9f9a7a41491922923e1b1f9"
+        "1": "c79dd3f6fd2acf49d57d6b8cc5390a52ce1ac7b8992e6d3e05b6f38bd56732b6",
+        "2": "c79dd3f6fd2acf49d57d6b8cc5390a52ce1ac7b8992e6d3e05b6f38bd56732b6"
+      },
+      "target_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "cloudServer_4",
+              "current_holder_index": 6,
+              "current_hop_index": 2,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "cloudServer_4",
+              "hop_source_index": 6,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "cloudServer_4",
+              "current_holder_index": 6,
+              "current_hop_index": 2,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "cloudServer_4",
+              "hop_source_index": 6,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
+      "target_logical_flow_semantic_digests": {
+        "1": "b44766f724cff11a4199059e9fb109ca7b9f2e241883cdb1734495b83864618d",
+        "2": "b44766f724cff11a4199059e9fb109ca7b9f2e241883cdb1734495b83864618d"
       },
       "trajectory_id": "step2.4-real-communication-seed0"
     },
@@ -43236,8 +43538,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_0",
@@ -43486,8 +43788,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -43648,8 +43950,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_0",
@@ -43898,8 +44200,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -65772,8 +66074,8 @@
             "known": true,
             "missing_reason": null,
             "normalized_numeric": {
-              "hop_progress": 0.0,
-              "hop_remaining": 0.9882790496496511
+              "hop_progress": -0.7071067811865474,
+              "hop_remaining": 0.7071067811865476
             },
             "route": [
               "RSU_0",
@@ -75604,8 +75906,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": -0.9882790496496511,
-              "e2e_remaining": 0.9882790496496511,
+              "e2e_delivered": -0.7071067811865474,
+              "e2e_remaining": 0.7071067811865476,
               "total_data": 0.0
             },
             "presence": true,
@@ -86768,15 +87070,163 @@
         2
       ],
       "future_task_schedule_role": "internal_raw_metadata_only",
+      "history_carrying_semantic_digests": {
+        "0": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "1": "ce71cf46a007833755334c3614b78485cc6f383691b1f3e6eb0438a699bb9064"
+      },
       "history_contract": "H_{t-H+1:t}=(O_{t-H+1:t},A_{t-H+1:t-1},Y_{t-H+1:t-1}); current A_t/Y_t excluded",
       "history_flow_semantic_digests": {
         "0": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-        "1": "7317e9cd660650e2b4b30a07e87cd92720dabd95f956748b7f69e6fe53940005"
+        "1": "96ff2e917afe1f022f30c314b14d12b628d7ebc529adff21935370b36f091e02"
       },
+      "history_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": null,
+              "current_holder_index": -1,
+              "current_hop_index": -1,
+              "feature_mask": [
+                false,
+                false
+              ],
+              "flow_id": null,
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": null,
+              "hop_source_index": -1,
+              "known": false,
+              "normalized_features": [
+                0.0,
+                0.0
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [],
+              "route_node_indices": [],
+              "route_revision": -1
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": -1,
+              "epoch": -1,
+              "feature_mask": [
+                false,
+                false,
+                false
+              ],
+              "flow_id": null,
+              "flow_index": 0,
+              "flow_type": null,
+              "known": false,
+              "logical_destination": null,
+              "logical_destination_capture_phase": null,
+              "logical_destination_source": null,
+              "logical_source": null,
+              "normalized_features": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "presence": false,
+              "raw_features": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "source_index": -1,
+              "status": null,
+              "task_id": null,
+              "task_index": -1
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": true,
+              "current_holder": "RSU_0",
+              "current_holder_index": 0,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": "cloudServer_4",
+              "hop_destination_index": 6,
+              "hop_source": "RSU_0",
+              "hop_source_index": 0,
+              "known": true,
+              "normalized_features": [
+                -0.7071067811865474,
+                0.7071067811865476
+              ],
+              "raw_features": [
+                0.125,
+                0.15565475894249814
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                -0.7071067811865474,
+                0.7071067811865476
+              ],
+              "presence": true,
+              "raw_features": [
+                0.28065475894249814,
+                0.125,
+                0.15565475894249814
+              ],
+              "source_index": 4,
+              "status": "ACTIVE",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
       "history_frame_indices": [
         0,
         1
       ],
+      "history_logical_flow_semantic_digests": {
+        "0": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "1": "f5e1ddf520b88d44350000c174eb4fddd9a5a719a57130004eb7e471dd724218"
+      },
       "metadata_is_model_input": false,
       "normalization_policy": "trajectory split then train-only valid-value fit; validation reuse",
       "raw_contract_version": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
@@ -86787,9 +87237,163 @@
       "source_path": "code/artifacts/protocols/pi_jwm_step4_2c_c_real_multihop_cross_slot_v1_20260920/real_communication_outcome_semantics.json",
       "source_sha256": "66742fad7006f2d7ecacf8324149440c811935fc7313d26a9a4b7e4f4a7a2526",
       "split": "dev_train",
+      "target_carrying_semantic_digests": {
+        "1": "2f291acb4fba9ba1f385a5ff31191aedec7fc0ce5a909362c0228a047ad3c249",
+        "2": "ae895f3a07f4c693ac3c5137a831826a90c5debe8710a25390ddfab81271cf9d"
+      },
       "target_flow_semantic_digests": {
-        "1": "17fa3dc8d836764538f1873ba6e3d834c864ff046ca6c2f27f63110e3fb80253",
-        "2": "4df072469a45dc9f0bec7c86e782e63590212c16e9f9a7a41491922923e1b1f9"
+        "1": "c09f82ef1734bb2f7cfcbd6062091e49e67020d9ac4489fb790c25b55b0ded8f",
+        "2": "c79dd3f6fd2acf49d57d6b8cc5390a52ce1ac7b8992e6d3e05b6f38bd56732b6"
+      },
+      "target_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": true,
+              "current_holder": "RSU_0",
+              "current_holder_index": 0,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": "cloudServer_4",
+              "hop_destination_index": 6,
+              "hop_source": "RSU_0",
+              "hop_source_index": 0,
+              "known": true,
+              "normalized_features": [
+                1.4142135623730951,
+                -1.414213562373095
+              ],
+              "raw_features": [
+                0.25,
+                0.03065475894249814
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.4142135623730951,
+                -1.414213562373095
+              ],
+              "presence": true,
+              "raw_features": [
+                0.28065475894249814,
+                0.25,
+                0.03065475894249814
+              ],
+              "source_index": 4,
+              "status": "ACTIVE",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "cloudServer_4",
+              "current_holder_index": 6,
+              "current_hop_index": 2,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "cloudServer_4",
+              "hop_source_index": 6,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
+      "target_logical_flow_semantic_digests": {
+        "1": "3672b6dd4d9cb37de6e36106f5386b5fee0a4ba7feb0337261e3b7ec08cd153f",
+        "2": "b44766f724cff11a4199059e9fb109ca7b9f2e241883cdb1734495b83864618d"
       },
       "trajectory_id": "step4.2c-c-real-multihop-cross-slot-seed0"
     },
@@ -87281,8 +87885,8 @@
             "known": true,
             "missing_reason": null,
             "normalized_numeric": {
-              "hop_progress": 1.414213562373095,
-              "hop_remaining": -0.7723877806108939
+              "hop_progress": 1.4142135623730951,
+              "hop_remaining": -1.414213562373095
             },
             "route": [
               "RSU_0",
@@ -87549,8 +88153,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 0.7723877806108939,
-              "e2e_remaining": -0.7723877806108939,
+              "e2e_delivered": 1.4142135623730951,
+              "e2e_remaining": -1.414213562373095,
               "total_data": 0.0
             },
             "presence": true,
@@ -87711,8 +88315,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_0",
@@ -87979,8 +88583,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -88340,8 +88944,8 @@
             "known": true,
             "missing_reason": null,
             "normalized_numeric": {
-              "hop_progress": 0.0,
-              "hop_remaining": 0.9882790496496511
+              "hop_progress": -0.7071067811865474,
+              "hop_remaining": 0.7071067811865476
             },
             "route": [
               "RSU_0",
@@ -98172,8 +98776,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": -0.9882790496496511,
-              "e2e_remaining": 0.9882790496496511,
+              "e2e_delivered": -0.7071067811865474,
+              "e2e_remaining": 0.7071067811865476,
               "total_data": 0.0
             },
             "presence": true,
@@ -109833,8 +110437,8 @@
             "known": true,
             "missing_reason": null,
             "normalized_numeric": {
-              "hop_progress": 1.414213562373095,
-              "hop_remaining": -0.7723877806108939
+              "hop_progress": 1.4142135623730951,
+              "hop_remaining": -1.414213562373095
             },
             "route": [
               "RSU_0",
@@ -119665,8 +120269,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 0.7723877806108939,
-              "e2e_remaining": -0.7723877806108939,
+              "e2e_delivered": 1.4142135623730951,
+              "e2e_remaining": -1.414213562373095,
               "total_data": 0.0
             },
             "presence": true,
@@ -130829,15 +131433,169 @@
         3
       ],
       "future_task_schedule_role": "internal_raw_metadata_only",
+      "history_carrying_semantic_digests": {
+        "1": "ce71cf46a007833755334c3614b78485cc6f383691b1f3e6eb0438a699bb9064",
+        "2": "2f291acb4fba9ba1f385a5ff31191aedec7fc0ce5a909362c0228a047ad3c249"
+      },
       "history_contract": "H_{t-H+1:t}=(O_{t-H+1:t},A_{t-H+1:t-1},Y_{t-H+1:t-1}); current A_t/Y_t excluded",
       "history_flow_semantic_digests": {
-        "1": "7317e9cd660650e2b4b30a07e87cd92720dabd95f956748b7f69e6fe53940005",
-        "2": "17fa3dc8d836764538f1873ba6e3d834c864ff046ca6c2f27f63110e3fb80253"
+        "1": "96ff2e917afe1f022f30c314b14d12b628d7ebc529adff21935370b36f091e02",
+        "2": "c09f82ef1734bb2f7cfcbd6062091e49e67020d9ac4489fb790c25b55b0ded8f"
       },
+      "history_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": true,
+              "current_holder": "RSU_0",
+              "current_holder_index": 0,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": "cloudServer_4",
+              "hop_destination_index": 6,
+              "hop_source": "RSU_0",
+              "hop_source_index": 0,
+              "known": true,
+              "normalized_features": [
+                -0.7071067811865474,
+                0.7071067811865476
+              ],
+              "raw_features": [
+                0.125,
+                0.15565475894249814
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                -0.7071067811865474,
+                0.7071067811865476
+              ],
+              "presence": true,
+              "raw_features": [
+                0.28065475894249814,
+                0.125,
+                0.15565475894249814
+              ],
+              "source_index": 4,
+              "status": "ACTIVE",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": true,
+              "current_holder": "RSU_0",
+              "current_holder_index": 0,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": "cloudServer_4",
+              "hop_destination_index": 6,
+              "hop_source": "RSU_0",
+              "hop_source_index": 0,
+              "known": true,
+              "normalized_features": [
+                1.4142135623730951,
+                -1.414213562373095
+              ],
+              "raw_features": [
+                0.25,
+                0.03065475894249814
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.4142135623730951,
+                -1.414213562373095
+              ],
+              "presence": true,
+              "raw_features": [
+                0.28065475894249814,
+                0.25,
+                0.03065475894249814
+              ],
+              "source_index": 4,
+              "status": "ACTIVE",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
       "history_frame_indices": [
         1,
         2
       ],
+      "history_logical_flow_semantic_digests": {
+        "1": "f5e1ddf520b88d44350000c174eb4fddd9a5a719a57130004eb7e471dd724218",
+        "2": "3672b6dd4d9cb37de6e36106f5386b5fee0a4ba7feb0337261e3b7ec08cd153f"
+      },
       "metadata_is_model_input": false,
       "normalization_policy": "trajectory split then train-only valid-value fit; validation reuse",
       "raw_contract_version": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
@@ -130848,9 +131606,163 @@
       "source_path": "code/artifacts/protocols/pi_jwm_step4_2c_c_real_multihop_cross_slot_v1_20260920/real_communication_outcome_semantics.json",
       "source_sha256": "66742fad7006f2d7ecacf8324149440c811935fc7313d26a9a4b7e4f4a7a2526",
       "split": "dev_train",
+      "target_carrying_semantic_digests": {
+        "2": "ae895f3a07f4c693ac3c5137a831826a90c5debe8710a25390ddfab81271cf9d",
+        "3": "ae895f3a07f4c693ac3c5137a831826a90c5debe8710a25390ddfab81271cf9d"
+      },
       "target_flow_semantic_digests": {
-        "2": "4df072469a45dc9f0bec7c86e782e63590212c16e9f9a7a41491922923e1b1f9",
-        "3": "4df072469a45dc9f0bec7c86e782e63590212c16e9f9a7a41491922923e1b1f9"
+        "2": "c79dd3f6fd2acf49d57d6b8cc5390a52ce1ac7b8992e6d3e05b6f38bd56732b6",
+        "3": "c79dd3f6fd2acf49d57d6b8cc5390a52ce1ac7b8992e6d3e05b6f38bd56732b6"
+      },
+      "target_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "cloudServer_4",
+              "current_holder_index": 6,
+              "current_hop_index": 2,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "cloudServer_4",
+              "hop_source_index": 6,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "cloudServer_4",
+              "current_holder_index": 6,
+              "current_hop_index": 2,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "cloudServer_4",
+              "hop_source_index": 6,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
+      "target_logical_flow_semantic_digests": {
+        "2": "b44766f724cff11a4199059e9fb109ca7b9f2e241883cdb1734495b83864618d",
+        "3": "b44766f724cff11a4199059e9fb109ca7b9f2e241883cdb1734495b83864618d"
       },
       "trajectory_id": "step4.2c-c-real-multihop-cross-slot-seed0"
     },
@@ -131343,8 +132255,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_0",
@@ -131611,8 +132523,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -131797,8 +132709,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_0",
@@ -132047,8 +132959,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -132432,8 +133344,8 @@
             "known": true,
             "missing_reason": null,
             "normalized_numeric": {
-              "hop_progress": 1.414213562373095,
-              "hop_remaining": -0.7723877806108939
+              "hop_progress": 1.4142135623730951,
+              "hop_remaining": -1.414213562373095
             },
             "route": [
               "RSU_0",
@@ -142264,8 +143176,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 0.7723877806108939,
-              "e2e_remaining": -0.7723877806108939,
+              "e2e_delivered": 1.4142135623730951,
+              "e2e_remaining": -1.414213562373095,
               "total_data": 0.0
             },
             "presence": true,
@@ -154049,8 +154961,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_0",
@@ -163893,8 +164805,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -175255,15 +176167,169 @@
         4
       ],
       "future_task_schedule_role": "internal_raw_metadata_only",
+      "history_carrying_semantic_digests": {
+        "2": "2f291acb4fba9ba1f385a5ff31191aedec7fc0ce5a909362c0228a047ad3c249",
+        "3": "ae895f3a07f4c693ac3c5137a831826a90c5debe8710a25390ddfab81271cf9d"
+      },
       "history_contract": "H_{t-H+1:t}=(O_{t-H+1:t},A_{t-H+1:t-1},Y_{t-H+1:t-1}); current A_t/Y_t excluded",
       "history_flow_semantic_digests": {
-        "2": "17fa3dc8d836764538f1873ba6e3d834c864ff046ca6c2f27f63110e3fb80253",
-        "3": "4df072469a45dc9f0bec7c86e782e63590212c16e9f9a7a41491922923e1b1f9"
+        "2": "c09f82ef1734bb2f7cfcbd6062091e49e67020d9ac4489fb790c25b55b0ded8f",
+        "3": "c79dd3f6fd2acf49d57d6b8cc5390a52ce1ac7b8992e6d3e05b6f38bd56732b6"
       },
+      "history_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": true,
+              "current_holder": "RSU_0",
+              "current_holder_index": 0,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": "cloudServer_4",
+              "hop_destination_index": 6,
+              "hop_source": "RSU_0",
+              "hop_source_index": 0,
+              "known": true,
+              "normalized_features": [
+                1.4142135623730951,
+                -1.414213562373095
+              ],
+              "raw_features": [
+                0.25,
+                0.03065475894249814
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.4142135623730951,
+                -1.414213562373095
+              ],
+              "presence": true,
+              "raw_features": [
+                0.28065475894249814,
+                0.25,
+                0.03065475894249814
+              ],
+              "source_index": 4,
+              "status": "ACTIVE",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "cloudServer_4",
+              "current_holder_index": 6,
+              "current_hop_index": 2,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "cloudServer_4",
+              "hop_source_index": 6,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
       "history_frame_indices": [
         2,
         3
       ],
+      "history_logical_flow_semantic_digests": {
+        "2": "3672b6dd4d9cb37de6e36106f5386b5fee0a4ba7feb0337261e3b7ec08cd153f",
+        "3": "b44766f724cff11a4199059e9fb109ca7b9f2e241883cdb1734495b83864618d"
+      },
       "metadata_is_model_input": false,
       "normalization_policy": "trajectory split then train-only valid-value fit; validation reuse",
       "raw_contract_version": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
@@ -175274,9 +176340,163 @@
       "source_path": "code/artifacts/protocols/pi_jwm_step4_2c_c_real_multihop_cross_slot_v1_20260920/real_communication_outcome_semantics.json",
       "source_sha256": "66742fad7006f2d7ecacf8324149440c811935fc7313d26a9a4b7e4f4a7a2526",
       "split": "dev_validation",
+      "target_carrying_semantic_digests": {
+        "3": "ae895f3a07f4c693ac3c5137a831826a90c5debe8710a25390ddfab81271cf9d",
+        "4": "ae895f3a07f4c693ac3c5137a831826a90c5debe8710a25390ddfab81271cf9d"
+      },
       "target_flow_semantic_digests": {
-        "3": "4df072469a45dc9f0bec7c86e782e63590212c16e9f9a7a41491922923e1b1f9",
-        "4": "4df072469a45dc9f0bec7c86e782e63590212c16e9f9a7a41491922923e1b1f9"
+        "3": "c79dd3f6fd2acf49d57d6b8cc5390a52ce1ac7b8992e6d3e05b6f38bd56732b6",
+        "4": "c79dd3f6fd2acf49d57d6b8cc5390a52ce1ac7b8992e6d3e05b6f38bd56732b6"
+      },
+      "target_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "cloudServer_4",
+              "current_holder_index": 6,
+              "current_hop_index": 2,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "cloudServer_4",
+              "hop_source_index": 6,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "cloudServer_4",
+              "current_holder_index": 6,
+              "current_hop_index": 2,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "cloudServer_4",
+              "hop_source_index": 6,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_0",
+                "cloudServer_4"
+              ],
+              "route_node_indices": [
+                0,
+                6
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 6,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "cloudServer_4",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
+      "target_logical_flow_semantic_digests": {
+        "3": "b44766f724cff11a4199059e9fb109ca7b9f2e241883cdb1734495b83864618d",
+        "4": "b44766f724cff11a4199059e9fb109ca7b9f2e241883cdb1734495b83864618d"
       },
       "trajectory_id": "step4.2c-c-real-multihop-cross-slot-seed0"
     },
@@ -175779,8 +176999,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_0",
@@ -176029,8 +177249,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -176239,8 +177459,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_0",
@@ -176489,8 +177709,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -176947,8 +178167,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "vehicle_0"
@@ -176978,8 +178198,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "vehicle_0"
@@ -177009,8 +178229,8 @@
             "known": true,
             "missing_reason": null,
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": 3.514472938949756
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": 3.750764102972612
             },
             "route": [
               "RSU_2"
@@ -186873,8 +188093,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -186908,8 +188128,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 0.7449101653856717,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.381107455545864,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": -0.032605554995516595
             },
             "presence": false,
@@ -186943,8 +188163,8 @@
             "logical_source_index": 5,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": -2.7489458799101962,
-              "e2e_remaining": 3.514472938949756,
+              "e2e_delivered": -2.82842712474619,
+              "e2e_remaining": 3.750764102972612,
               "total_data": 0.0543492276535843
             },
             "presence": true,
@@ -198985,8 +200205,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "vehicle_0"
@@ -199016,8 +200236,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "vehicle_0"
@@ -199047,8 +200267,8 @@
             "known": true,
             "missing_reason": null,
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": 3.514472938949756
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": 3.750764102972612
             },
             "route": [
               "RSU_2"
@@ -199078,8 +200298,8 @@
             "known": true,
             "missing_reason": null,
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -0.17149642243968716
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -0.6902361235699025
             },
             "route": [
               "UAV_0"
@@ -208938,8 +210158,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -208973,8 +210193,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 0.7449101653856717,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.381107455545864,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": -0.032605554995516595
             },
             "presence": false,
@@ -209008,8 +210228,8 @@
             "logical_source_index": 5,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": -2.7489458799101962,
-              "e2e_remaining": 3.514472938949756,
+              "e2e_delivered": -2.82842712474619,
+              "e2e_remaining": 3.750764102972612,
               "total_data": 0.0543492276535843
             },
             "presence": true,
@@ -209043,8 +210263,8 @@
             "logical_source_index": 7,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": -2.7489458799101962,
-              "e2e_remaining": -0.17149642243968716,
+              "e2e_delivered": -2.82842712474619,
+              "e2e_remaining": -0.6902361235699025,
               "total_data": -0.20733922029968282
             },
             "presence": true,
@@ -220587,15 +221807,545 @@
         5
       ],
       "future_task_schedule_role": "internal_raw_metadata_only",
+      "history_carrying_semantic_digests": {
+        "3": "add10e8a043cb32a9fe9ce0817fcd4d34966aeacf9364b6125fb143cb240bbcb",
+        "4": "e5ca08c9abada824323c1b6ca88dc8d24f3e7170fc41567a9bcfe5f633765978"
+      },
       "history_contract": "H_{t-H+1:t}=(O_{t-H+1:t},A_{t-H+1:t-1},Y_{t-H+1:t-1}); current A_t/Y_t excluded",
       "history_flow_semantic_digests": {
-        "3": "192d528d9f6c69b62f97ce303400908ce07da29180af544a5616eb3d8a1052b2",
-        "4": "6c35fd1a6a680c92efad0c4726912d43e1422b46f4306db328e2ca1f52be114d"
+        "3": "861bb8a29f11d4408684b6d5354f2ace4076c2047a68c4cb2d09af30c7b9e930",
+        "4": "1b79f92cf2c260d3e37b7d662153211f9736e2a259e5972785f4209bd45b2e76"
       },
+      "history_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "vehicle_0",
+              "current_holder_index": 7,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "vehicle_0",
+              "hop_source_index": 7,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "vehicle_0"
+              ],
+              "route_node_indices": [
+                7
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": false,
+              "current_holder": "vehicle_0",
+              "current_holder_index": 7,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_2::Input::0",
+              "flow_index": 1,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "vehicle_0",
+              "hop_source_index": 7,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "vehicle_0"
+              ],
+              "route_node_indices": [
+                7
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": true,
+              "current_holder": "UAV_1",
+              "current_holder_index": 5,
+              "current_hop_index": 0,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_4::Input::0",
+              "flow_index": 2,
+              "hop_destination": "RSU_2",
+              "hop_destination_index": 2,
+              "hop_source": "UAV_1",
+              "hop_source_index": 5,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                3.750764102972612
+              ],
+              "raw_features": [
+                0.0,
+                0.33500398659608244
+              ],
+              "route": [
+                "RSU_2"
+              ],
+              "route_node_indices": [
+                2
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": false,
+              "current_holder": null,
+              "current_holder_index": -1,
+              "current_hop_index": -1,
+              "feature_mask": [
+                false,
+                false
+              ],
+              "flow_id": null,
+              "flow_index": 3,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": null,
+              "hop_source_index": -1,
+              "known": false,
+              "normalized_features": [
+                0.0,
+                0.0
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [],
+              "route_node_indices": [],
+              "route_revision": -1
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 7,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "vehicle_0",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            },
+            {
+              "destination_index": 7,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_2::Input::0",
+              "flow_index": 1,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "vehicle_0",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                -0.032605554995516595,
+                1.381107455545864,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.24804920394698154,
+                0.24804920394698154,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_2",
+              "task_index": 1
+            },
+            {
+              "destination_index": 2,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_4::Input::0",
+              "flow_index": 2,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "RSU_2",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_1",
+              "normalized_features": [
+                0.0543492276535843,
+                -2.82842712474619,
+                3.750764102972612
+              ],
+              "presence": true,
+              "raw_features": [
+                0.33500398659608244,
+                0.0,
+                0.33500398659608244
+              ],
+              "source_index": 5,
+              "status": "ACTIVE",
+              "task_id": "Task_4",
+              "task_index": 2
+            },
+            {
+              "destination_index": -1,
+              "epoch": -1,
+              "feature_mask": [
+                false,
+                false,
+                false
+              ],
+              "flow_id": null,
+              "flow_index": 3,
+              "flow_type": null,
+              "known": false,
+              "logical_destination": null,
+              "logical_destination_capture_phase": null,
+              "logical_destination_source": null,
+              "logical_source": null,
+              "normalized_features": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "presence": false,
+              "raw_features": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "source_index": -1,
+              "status": null,
+              "task_id": null,
+              "task_index": -1
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "vehicle_0",
+              "current_holder_index": 7,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "vehicle_0",
+              "hop_source_index": 7,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "vehicle_0"
+              ],
+              "route_node_indices": [
+                7
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": false,
+              "current_holder": "vehicle_0",
+              "current_holder_index": 7,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_2::Input::0",
+              "flow_index": 1,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "vehicle_0",
+              "hop_source_index": 7,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "vehicle_0"
+              ],
+              "route_node_indices": [
+                7
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": true,
+              "current_holder": "UAV_1",
+              "current_holder_index": 5,
+              "current_hop_index": 0,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_4::Input::0",
+              "flow_index": 2,
+              "hop_destination": "RSU_2",
+              "hop_destination_index": 2,
+              "hop_source": "UAV_1",
+              "hop_source_index": 5,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                3.750764102972612
+              ],
+              "raw_features": [
+                0.0,
+                0.33500398659608244
+              ],
+              "route": [
+                "RSU_2"
+              ],
+              "route_node_indices": [
+                2
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": true,
+              "current_holder": "vehicle_0",
+              "current_holder_index": 7,
+              "current_hop_index": 0,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Return::0",
+              "flow_index": 3,
+              "hop_destination": "UAV_0",
+              "hop_destination_index": 4,
+              "hop_source": "vehicle_0",
+              "hop_source_index": 7,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -0.6902361235699025
+              ],
+              "raw_features": [
+                0.0,
+                0.07331553864281531
+              ],
+              "route": [
+                "UAV_0"
+              ],
+              "route_node_indices": [
+                4
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 7,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "vehicle_0",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            },
+            {
+              "destination_index": 7,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_2::Input::0",
+              "flow_index": 1,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "vehicle_0",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                -0.032605554995516595,
+                1.381107455545864,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.24804920394698154,
+                0.24804920394698154,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_2",
+              "task_index": 1
+            },
+            {
+              "destination_index": 2,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_4::Input::0",
+              "flow_index": 2,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "RSU_2",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_1",
+              "normalized_features": [
+                0.0543492276535843,
+                -2.82842712474619,
+                3.750764102972612
+              ],
+              "presence": true,
+              "raw_features": [
+                0.33500398659608244,
+                0.0,
+                0.33500398659608244
+              ],
+              "source_index": 5,
+              "status": "ACTIVE",
+              "task_id": "Task_4",
+              "task_index": 2
+            },
+            {
+              "destination_index": 4,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Return::0",
+              "flow_index": 3,
+              "flow_type": "Return",
+              "known": true,
+              "logical_destination": "UAV_0",
+              "logical_destination_capture_phase": "after_return_route_established_before_outcome",
+              "logical_destination_source": "decision.tasks[].return_destination_id",
+              "logical_source": "vehicle_0",
+              "normalized_features": [
+                -0.20733922029968282,
+                -2.82842712474619,
+                -0.6902361235699025
+              ],
+              "presence": true,
+              "raw_features": [
+                0.07331553864281531,
+                0.0,
+                0.07331553864281531
+              ],
+              "source_index": 7,
+              "status": "ACTIVE",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
       "history_frame_indices": [
         3,
         4
       ],
+      "history_logical_flow_semantic_digests": {
+        "3": "77b7c68207bd3a37ed599e556fac56bbd1d2d6db76096b26cd25800852633418",
+        "4": "bf99d8a699ebde3e8ce3268fb03ab1657522e65c1a632d071897164a84656534"
+      },
       "metadata_is_model_input": false,
       "normalization_policy": "trajectory split then train-only valid-value fit; validation reuse",
       "raw_contract_version": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
@@ -220606,9 +222356,543 @@
       "source_path": "code/artifacts/protocols/pi_jwm_step4_2c_b_real_flow_trace_source_v1_20260920/real_raw_contract_finalization.json",
       "source_sha256": "e398cf2f2255d8d46101c68d9f98f766e0c0a16bb29d688cb5cc0c07e710193a",
       "split": "dev_validation",
+      "target_carrying_semantic_digests": {
+        "4": "1d23dfe7b1ea3d57f87ce822d66b0045cbd63500dc8a9ef615e783760b9b23b1",
+        "5": "1d23dfe7b1ea3d57f87ce822d66b0045cbd63500dc8a9ef615e783760b9b23b1"
+      },
       "target_flow_semantic_digests": {
-        "4": "ec650756491a865b77f92c33bfd2b86eccf98ee2b4e89b86dba74e637c73ded7",
-        "5": "ec650756491a865b77f92c33bfd2b86eccf98ee2b4e89b86dba74e637c73ded7"
+        "4": "9b5c1ecf225c630d019f1e1fe40b7d23b13e77a559824008aef1b4f34e8f3760",
+        "5": "9b5c1ecf225c630d019f1e1fe40b7d23b13e77a559824008aef1b4f34e8f3760"
+      },
+      "target_flow_tensor_semantics": [
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "vehicle_0",
+              "current_holder_index": 7,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "vehicle_0",
+              "hop_source_index": 7,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "vehicle_0"
+              ],
+              "route_node_indices": [
+                7
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": false,
+              "current_holder": "vehicle_0",
+              "current_holder_index": 7,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_2::Input::0",
+              "flow_index": 1,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "vehicle_0",
+              "hop_source_index": 7,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "vehicle_0"
+              ],
+              "route_node_indices": [
+                7
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": false,
+              "current_holder": "RSU_2",
+              "current_holder_index": 2,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_4::Input::0",
+              "flow_index": 2,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "RSU_2",
+              "hop_source_index": 2,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_2"
+              ],
+              "route_node_indices": [
+                2
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": false,
+              "current_holder": "UAV_0",
+              "current_holder_index": 4,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Return::0",
+              "flow_index": 3,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "UAV_0",
+              "hop_source_index": 4,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "UAV_0"
+              ],
+              "route_node_indices": [
+                4
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 7,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "vehicle_0",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            },
+            {
+              "destination_index": 7,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_2::Input::0",
+              "flow_index": 1,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "vehicle_0",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                -0.032605554995516595,
+                1.381107455545864,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.24804920394698154,
+                0.24804920394698154,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_2",
+              "task_index": 1
+            },
+            {
+              "destination_index": 2,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_4::Input::0",
+              "flow_index": 2,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "RSU_2",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_1",
+              "normalized_features": [
+                0.0543492276535843,
+                2.856779050772622,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.33500398659608244,
+                0.33500398659608244,
+                0.0
+              ],
+              "source_index": 5,
+              "status": "COMPLETED",
+              "task_id": "Task_4",
+              "task_index": 2
+            },
+            {
+              "destination_index": 4,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Return::0",
+              "flow_index": 3,
+              "flow_type": "Return",
+              "known": true,
+              "logical_destination": "UAV_0",
+              "logical_destination_capture_phase": "after_return_route_established_before_outcome",
+              "logical_destination_source": "decision.tasks[].return_destination_id",
+              "logical_source": "vehicle_0",
+              "normalized_features": [
+                -0.20733922029968282,
+                -1.584221175769892,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.07331553864281531,
+                0.07331553864281531,
+                0.0
+              ],
+              "source_index": 7,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        },
+        {
+          "carrying": [
+            {
+              "active": false,
+              "current_holder": "vehicle_0",
+              "current_holder_index": 7,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "vehicle_0",
+              "hop_source_index": 7,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "vehicle_0"
+              ],
+              "route_node_indices": [
+                7
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": false,
+              "current_holder": "vehicle_0",
+              "current_holder_index": 7,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_2::Input::0",
+              "flow_index": 1,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "vehicle_0",
+              "hop_source_index": 7,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "vehicle_0"
+              ],
+              "route_node_indices": [
+                7
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": false,
+              "current_holder": "RSU_2",
+              "current_holder_index": 2,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_4::Input::0",
+              "flow_index": 2,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "RSU_2",
+              "hop_source_index": 2,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "RSU_2"
+              ],
+              "route_node_indices": [
+                2
+              ],
+              "route_revision": 0
+            },
+            {
+              "active": false,
+              "current_holder": "UAV_0",
+              "current_holder_index": 4,
+              "current_hop_index": 1,
+              "feature_mask": [
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Return::0",
+              "flow_index": 3,
+              "hop_destination": null,
+              "hop_destination_index": -1,
+              "hop_source": "UAV_0",
+              "hop_source_index": 4,
+              "known": true,
+              "normalized_features": [
+                -2.82842712474619,
+                -1.9344420725462004
+              ],
+              "raw_features": [
+                0.0,
+                0.0
+              ],
+              "route": [
+                "UAV_0"
+              ],
+              "route_node_indices": [
+                4
+              ],
+              "route_revision": 0
+            }
+          ],
+          "logical": [
+            {
+              "destination_index": 7,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Input::0",
+              "flow_index": 0,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "vehicle_0",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                0.0,
+                1.9344420725462006,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.28065475894249814,
+                0.28065475894249814,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            },
+            {
+              "destination_index": 7,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_2::Input::0",
+              "flow_index": 1,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "vehicle_0",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_0",
+              "normalized_features": [
+                -0.032605554995516595,
+                1.381107455545864,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.24804920394698154,
+                0.24804920394698154,
+                0.0
+              ],
+              "source_index": 4,
+              "status": "COMPLETED",
+              "task_id": "Task_2",
+              "task_index": 1
+            },
+            {
+              "destination_index": 2,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_4::Input::0",
+              "flow_index": 2,
+              "flow_type": "Input",
+              "known": true,
+              "logical_destination": "RSU_2",
+              "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+              "logical_destination_source": "established_offload_route_terminal",
+              "logical_source": "UAV_1",
+              "normalized_features": [
+                0.0543492276535843,
+                2.856779050772622,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.33500398659608244,
+                0.33500398659608244,
+                0.0
+              ],
+              "source_index": 5,
+              "status": "COMPLETED",
+              "task_id": "Task_4",
+              "task_index": 2
+            },
+            {
+              "destination_index": 4,
+              "epoch": 0,
+              "feature_mask": [
+                true,
+                true,
+                true
+              ],
+              "flow_id": "flow::Task_1::Return::0",
+              "flow_index": 3,
+              "flow_type": "Return",
+              "known": true,
+              "logical_destination": "UAV_0",
+              "logical_destination_capture_phase": "after_return_route_established_before_outcome",
+              "logical_destination_source": "decision.tasks[].return_destination_id",
+              "logical_source": "vehicle_0",
+              "normalized_features": [
+                -0.20733922029968282,
+                -1.584221175769892,
+                -1.9344420725462004
+              ],
+              "presence": false,
+              "raw_features": [
+                0.07331553864281531,
+                0.07331553864281531,
+                0.0
+              ],
+              "source_index": 7,
+              "status": "COMPLETED",
+              "task_id": "Task_1",
+              "task_index": 0
+            }
+          ]
+        }
+      ],
+      "target_logical_flow_semantic_digests": {
+        "4": "a0bd773476751e05ec9fceba672c5921915109124c9eaf06fa535672cf28306a",
+        "5": "a0bd773476751e05ec9fceba672c5921915109124c9eaf06fa535672cf28306a"
       },
       "trajectory_id": "step4.2c-b-real-flow-ledger-seed0"
     },
@@ -221142,8 +223426,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "vehicle_0"
@@ -221174,8 +223458,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "vehicle_0"
@@ -221206,8 +223490,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_2"
@@ -221238,8 +223522,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "UAV_0"
@@ -221519,8 +223803,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -221555,8 +223839,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 0.7449101653856717,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.381107455545864,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": -0.032605554995516595
             },
             "presence": false,
@@ -221591,8 +223875,8 @@
             "logical_source_index": 5,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.9696973777279685,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 2.856779050772622,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0543492276535843
             },
             "presence": false,
@@ -221627,8 +223911,8 @@
             "logical_source_index": 7,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": -1.716271983661475,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": -1.584221175769892,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": -0.20733922029968282
             },
             "presence": false,
@@ -221837,8 +224121,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "vehicle_0"
@@ -221869,8 +224153,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "vehicle_0"
@@ -221901,8 +224185,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "RSU_2"
@@ -221933,8 +224217,8 @@
             "known": true,
             "missing_reason": "NO_ACTIVE_CARRYING_HOP",
             "normalized_numeric": {
-              "hop_progress": -1.414213562373095,
-              "hop_remaining": -1.2041703186884083
+              "hop_progress": -2.82842712474619,
+              "hop_remaining": -1.9344420725462004
             },
             "route": [
               "UAV_0"
@@ -222181,8 +224465,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.2041703186884083,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.9344420725462006,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0
             },
             "presence": false,
@@ -222217,8 +224501,8 @@
             "logical_source_index": 4,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 0.7449101653856717,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 1.381107455545864,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": -0.032605554995516595
             },
             "presence": false,
@@ -222253,8 +224537,8 @@
             "logical_source_index": 5,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": 1.9696973777279685,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": 2.856779050772622,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": 0.0543492276535843
             },
             "presence": false,
@@ -222289,8 +224573,8 @@
             "logical_source_index": 7,
             "missing_reason": null,
             "normalized_numeric": {
-              "e2e_delivered": -1.716271983661475,
-              "e2e_remaining": -1.2041703186884083,
+              "e2e_delivered": -1.584221175769892,
+              "e2e_remaining": -1.9344420725462004,
               "total_data": -0.20733922029968282
             },
             "presence": false,

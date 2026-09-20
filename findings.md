@@ -953,3 +953,10 @@
 - Sample/Tensor keeps logical Flow identity separate from hop carrying state: FlowID/Epoch/destination/E2E state come from C-B Raw, while stable history slots, target isolation, presence/mask, and route/holder arrays are collated independently.
 - Only five continuous data-unit fields are fit with train-only, mask-aware normalization; identity/category/reference fields are not normalized and capacity overflow is rejected rather than truncated.
 - The real cross-slot trace proves one Input Flow remains in one Tensor slot while intermediate hop service does not advance E2E delivery; it does not prove Return multi-hop, reroute runtime, formal capacity, Graph Builder, model, or training behavior.
+
+## 2026-09-20 STEP 4.2C-C-PATCH
+
+- Root cause of the first equality failure: the tensor was built from `apply_flow_normalization()`'s copy while the negative/coverage test passed the pre-normalization sample; equality now derives expected normalized values from the recorded stats when needed, while still comparing raw fields and masks.
+- A second semantic gap was found: changing a logical destination/holder/route ID without changing its numeric index could pass numeric-only checks. Tensor metadata now preserves source ID/provenance projections and equality rejects that tamper.
+- `target_carrying_*` arrays are a separate future target namespace. They are deterministic ground-truth transition state for this contract only; their presence does not imply a learned prediction head or Graph Builder input.
+- Scope remains non-formal and CPU-only: no Graph Builder, model, Loss, Planner, training, GPU, or `locked_test`.

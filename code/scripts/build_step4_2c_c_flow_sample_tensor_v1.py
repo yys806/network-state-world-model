@@ -16,12 +16,15 @@ from pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1 import amend_raw_with_causal_fl
 from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import (
     SAMPLE_SCHEMA_VERSION,
     TENSOR_SCHEMA_VERSION,
+    REQUIRED_ACCEPTANCE_CHECKS,
+    STEP32_NORMALIZATION_MASK_POLICY,
     apply_flow_normalization,
     build_flow_extended_sample,
     build_flow_tensor_batch,
     fit_flow_normalization_stats,
     load_flow_tensor_batch,
     sample_tensor_semantic_equality,
+    sample_tensor_semantic_equality_checks,
     save_flow_tensor_batch,
     validate_flow_acceptance,
     validate_flow_sample_checks,
@@ -107,6 +110,10 @@ def fixture_checks(sample: dict[str, Any], tensor: dict[str, Any], stats: dict[s
     leaked = copy.deepcopy(target_only)
     leaked["static"]["input_entity_index"]["logical_flow"][future["flow_id"]] = 1
 
+    semantic_tamper = copy.deepcopy(sample)
+    semantic_row = next(row for frame in semantic_tamper["history"] for row in frame["logical_flows"] if row.get("known"))
+    semantic_row["logical_destination"] = "__tampered_destination__"
+
     tampered_tensor = copy.deepcopy(tensor)
     known_position = np.argwhere(tampered_tensor["logical_flow_known_mask"])[0]
     bi, hi, fi = (int(value) for value in known_position)
@@ -120,22 +127,17 @@ def fixture_checks(sample: dict[str, Any], tensor: dict[str, Any], stats: dict[s
         )
     except ValueError as exc:
         overflow_rejected = "capacity overflow" in str(exc)
+    receipt_required = {name: True for name in REQUIRED_ACCEPTANCE_CHECKS}
+    receipt_required["epoch_isolation"] = False
     receipt = {
-        "required_checks": {
-            "raw_sample_semantic_equality": True, "sample_tensor_semantic_equality": True,
-            "history_causal_flow_union": True, "stable_flow_identity": True,
-            "target_only_future_flow_isolation": True, "epoch_isolation": False,
-            "presence_mask_correctness": True, "train_only_preprocessing": True,
-            "no_silent_truncation": True, "input_return_categories": True,
-            "depdata_runtime_zero": True, "deterministic_rebuild": True,
-            "serialize_load": True, "scope": True,
-        },
+        "required_checks": receipt_required,
         "passed": True,
         "scope": {name: False for name in ("graph_builder", "information_graph", "physical_topology", "training", "gpu", "locked_test", "formal_dataset")},
     }
     return {
         "future_epoch_leak_rejected": not validate_flow_sample_checks(leaked)["target_only_future_flow_isolation"],
         "flow_id_tensor_slot_tamper_rejected": not validate_flow_tensor_checks(tampered_tensor)["passed"],
+        "sample_tensor_semantic_tamper_rejected": not sample_tensor_semantic_equality([semantic_tamper], tensor),
         "capacity_overflow_rejected": overflow_rejected,
         "receipt_tamper_rejected": not validate_flow_acceptance(receipt)["passed"],
         "categorical_identity_not_normalized": not bool({"epoch", "flow_index", "flow_type", "status", "presence", "route_revision"} & set(stats["features"])),
@@ -157,6 +159,7 @@ def main() -> int:
     deterministic = digest == semantic_digest(samples_2, stats_2, tensor_2)
     sample_checks = [validate_flow_sample_checks(sample) for sample in samples]
     tensor_checks = validate_flow_tensor_checks(tensor)
+    tensor_semantic_checks = sample_tensor_semantic_equality_checks(samples, tensor)
 
     cross_indices = [index for index, sample in enumerate(samples) if sample["metadata"]["source_path"].endswith("pi_jwm_step4_2c_c_real_multihop_cross_slot_v1_20260920/real_communication_outcome_semantics.json")]
     flow_id = "flow::Task_1::Input::0"
@@ -187,28 +190,60 @@ def main() -> int:
         loaded = load_flow_tensor_batch(path)
         round_trip = tensor["contract"] == loaded["contract"] and all(np.array_equal(value, loaded[key]) for key, value in tensor.items() if isinstance(value, np.ndarray))
 
+    scope = {name: False for name in ("graph_builder", "information_graph", "physical_topology", "training", "gpu", "locked_test", "formal_dataset")}
+    scope_ok = all(value is False for value in scope.values())
     required = {
-        "raw_sample_semantic_equality": all(row["raw_sample_semantic_digest_equality"] for row in sample_checks),
-        "sample_tensor_semantic_equality": sample_tensor_semantic_equality(samples, tensor),
+        "raw_sample_history_logical_equality": all(row["raw_sample_history_logical_equality"] for row in sample_checks),
+        "raw_sample_history_carrying_equality": all(row["raw_sample_history_carrying_equality"] for row in sample_checks),
+        "raw_sample_target_logical_equality": all(row["raw_sample_target_logical_equality"] for row in sample_checks),
+        "raw_sample_target_carrying_equality": all(row["raw_sample_target_carrying_equality"] for row in sample_checks),
+        "raw_sample_semantic_equality": all(row["raw_sample_semantic_digest_equality"] for row in sample_checks) and all(
+            row[name] for row in sample_checks for name in (
+                "raw_sample_history_logical_equality", "raw_sample_history_carrying_equality",
+                "raw_sample_target_logical_equality", "raw_sample_target_carrying_equality",
+            )
+        ),
+        "sample_tensor_history_logical_equality": tensor_semantic_checks["sample_tensor_history_logical_equality"] and tensor_checks["history_logical_sample_tensor_equality"],
+        "sample_tensor_history_carrying_equality": tensor_semantic_checks["sample_tensor_history_carrying_equality"] and tensor_checks["history_carrying_sample_tensor_equality"],
+        "sample_tensor_target_logical_equality": tensor_semantic_checks["sample_tensor_target_logical_equality"] and tensor_checks["target_logical_sample_tensor_equality"],
+        "sample_tensor_target_carrying_equality": tensor_semantic_checks["sample_tensor_target_carrying_equality"] and tensor_checks["target_carrying_sample_tensor_equality"],
+        "sample_tensor_semantic_equality": tensor_semantic_checks["sample_tensor_semantic_equality"] and all(
+            tensor_checks[name] for name in (
+                "history_logical_sample_tensor_equality", "history_carrying_sample_tensor_equality",
+                "target_logical_sample_tensor_equality", "target_carrying_sample_tensor_equality",
+            )
+        ),
         "history_causal_flow_union": all(row["history_causal_flow_union"] for row in sample_checks),
         "stable_flow_identity": all(row["stable_flow_id_index"] and row["flow_id_epoch_identity"] for row in sample_checks),
         "multi_hop_single_flow_tensor_identity": all(real_multihop.values()),
         "target_only_future_flow_isolation": fixtures["future_epoch_leak_rejected"] and all(row["target_only_future_flow_isolation"] for row in sample_checks),
         "epoch_isolation": fixtures["future_epoch_leak_rejected"],
-        "presence_mask_correctness": known_inactive and tensor_checks["known_presence_independent"] and tensor_checks["masked_placeholder_zero"],
-        "train_only_preprocessing": stats["source_split"] == "dev_train" and all("dev_train only" in row["mask_policy"] for row in stats["features"].values()),
+        "future_epoch_target_identity": tensor_checks["future_epoch_target_identity"],
+        "target_known_presence_relation": tensor_checks["target_known_presence_relation"],
+        "presence_mask_correctness": known_inactive and tensor_checks["known_presence_independent"] and tensor_checks["masked_placeholder_zero"] and tensor_checks["target_masked_placeholder_zero"],
+        "masked_placeholder_zero": tensor_checks["masked_placeholder_zero"],
+        "target_masked_placeholder_zero": tensor_checks["target_masked_placeholder_zero"],
+        "train_only_preprocessing": stats["source_split"] == "dev_train" and all(row["mask_policy"] == STEP32_NORMALIZATION_MASK_POLICY for row in stats["features"].values()),
+        "presence_aware_normalization_policy": tensor_checks["presence_aware_normalization_policy"],
+        "endpoint_indices_bounded": tensor_checks["endpoint_indices_bounded"],
+        "task_indices_bounded": tensor_checks["task_indices_bounded"],
+        "target_endpoint_indices_bounded": tensor_checks["target_endpoint_indices_bounded"],
+        "target_carrying_alignment": tensor_checks["target_carrying_alignment"],
+        "target_route_mask": tensor_checks["target_route_mask"],
+        "target_namespace": tensor_checks["target_namespace"],
+        "target_carrying_ground_truth": tensor_checks["target_carrying_ground_truth"],
+        "route_node_mask": tensor_checks["route_node_mask"],
         "no_silent_truncation": tensor_checks["no_silent_truncation"] and fixtures["capacity_overflow_rejected"],
         "input_return_categories": {"Input", "Return"} <= categories,
         "depdata_runtime_zero": "DepData" not in categories,
         "deterministic_rebuild": deterministic,
         "serialize_load": round_trip,
-        "scope": True,
+        "scope": scope_ok,
     }
-    scope = {name: False for name in ("graph_builder", "information_graph", "physical_topology", "training", "gpu", "locked_test", "formal_dataset")}
     acceptance = {
-        "schema_version": "PI-JWM-Step-4.2C-C-Acceptance-v1",
+        "schema_version": "PI-JWM-Step-4.2C-C-PATCH-Acceptance-v1",
         "required_checks": required,
-        "passed": all(required.values()) and all(value is False for value in scope.values()),
+        "passed": bool(all(required.values()) and scope_ok),
         "scope": scope,
         "sample_checks": sample_checks,
         "tensor_checks": tensor_checks,
@@ -220,10 +255,22 @@ def main() -> int:
             "contract_fixture": "wired structural relation only for the older direct Input/Return source; future Epoch and tamper counterfactuals",
             "not_claimed": ["real Return multi-hop", "real same-destination partial-hop reroute", "formal Dataset capacity"],
         },
+        "patch_scope": {
+            "presence_aware_normalization": required["presence_aware_normalization_policy"],
+            "full_history_and_target_flow_semantic_equality": required["sample_tensor_semantic_equality"],
+            "target_carrying_namespace": {
+                "check": required["target_namespace"],
+                "semantics": tensor["contract"]["target_carrying_semantics"],
+            },
+            "graph_builder": scope["graph_builder"],
+            "training": scope["training"],
+            "gpu": scope["gpu"],
+            "locked_test": scope["locked_test"],
+            "formal_dataset": scope["formal_dataset"],
+        },
     }
     acceptance["validation"] = validate_flow_acceptance(acceptance)
     # multi-hop is an extra required check beyond the shared validator set.
-    acceptance["validation"]["passed"] = bool(acceptance["validation"]["passed"] and required["multi_hop_single_flow_tensor_identity"])
     if not acceptance["validation"]["passed"]:
         raise RuntimeError(json.dumps(acceptance, ensure_ascii=False, default=str))
 
@@ -235,7 +282,7 @@ def main() -> int:
     files = ["model_ready_flow_samples.json", "flow_train_normalization_stats.json", "tensor_schema.json", "acceptance.json", "flow_tensor.npz"]
     sources = [MULTI_SOURCE, CROSS_SOURCE, DIRECT_SOURCE, Path(__file__), ROOT / "code/src/pi_jwm/step4_2c_c_flow_sample_tensor_v1.py", ROOT / "code/tests/test_step4_2c_c_flow_sample_tensor_v1.py"]
     manifest = {
-        "schema_version": "PI-JWM-Step-4.2C-C-Manifest-v1",
+        "schema_version": "PI-JWM-Step-4.2C-C-PATCH-Manifest-v1",
         "sample_schema_version": SAMPLE_SCHEMA_VERSION,
         "tensor_schema_version": TENSOR_SCHEMA_VERSION,
         "files": {name: sha256(args.output_dir / name) for name in files},
