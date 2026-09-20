@@ -67,6 +67,19 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - 首个有效时间点或缺少历史速度必须使用明确 mask，不得伪造数值；raw 与 canonical 不得混名。
 - Step 2.3 只收尾 Raw Contract；后续 Dataset/Tensor 必须另行授权。
 
+## 2026-09-20：Stateful Flow Ledger 决策
+
+**Researcher Decision**
+
+- Flow 是 logical end-to-end business Flow；Hop 是 carrying segment。Flow 不等于 Hop、Route 或 Communication edge。
+- 使用 `AirFogSim real state/event → PI-JWM Causal Flow Ledger → Raw logical Flow state`，不修改 AirFogSim 核心传输状态机；Ledger 禁止读取 future action/outcome、target tensor、rollout prediction 或 future task schedule。
+- FlowID 固定为 `(TaskID, FlowType, Epoch)`，FlowType 为 `Input/Return/DepData`；不依赖 Hop 或 RouteRevision。
+- same-destination reroute 保持 FlowID/Epoch/E2E remaining，RouteRevision 增加。
+- logical destination change 创建新 Epoch；旧 Epoch `SUPERSEDED`，新 source=current holder，新 total/remaining=旧 remaining。
+- v1 destination change 只允许 clean hop boundary；partial active hop 必须拒绝或延迟，不在本 Step 实现 Planner。
+- DepData vocabulary 保留，但当前 AirFogSim runtime instances=0；DAG 不得生成 fake DepData Flow。
+- 本 Step 只授权 Ledger + Raw additive Flow contract；Sample/Tensor、Graph Builder、模型、训练、GPU 和 locked_test 均未授权。
+
 - Step 2.4（研究者明确批准）：Communication Outcome 在 Raw 层拆为 wireless、wired 和按 task 聚合 total；空 map 是已观测无服务，missing 必须是 null 加 mask/reason。该决定只冻结 Raw 语义，不授权 Dataset/Tensor 或模型实现。
 - STEP 3.1（研究者明确批准）：model-ready sample 使用因果 History、严格对齐的 Future Action/Target、无 future-object leakage 的 stable input index、独立 target-side future object 表示、四类 action 和显式 presence/feature mask；本决定不授权正式数据集、模型、loss、planner 或训练。
 - STEP 3.1R（研究者明确批准）：History 必须为 `[t-H+1,t]`；固定 input index/presence、真实 DAG source、typed target index、relation endpoint 和不可静默 `-1` 的 Action reference 属于修正合同。STEP 3.2 仍未授权。

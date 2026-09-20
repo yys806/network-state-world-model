@@ -1,0 +1,30 @@
+{
+  "checks": {
+    "legacy_completion_overlay_only": true,
+    "real_decision_causality": true,
+    "real_input_flow_completed": true,
+    "real_multihop_input_completed": true,
+    "real_non_locked_airfogsim": true,
+    "real_return_flow_completed": true,
+    "real_transitions_applied_without_error": true
+  },
+  "evidence_class": "REAL_TRACE_EVIDENCE",
+  "limitations": [
+    "Real trace covers direct-hop Input/Return plus a separate real two-hop Input trace; Return multi-hop and same-destination reroute are contract fixtures.",
+    "Legacy wireless Return event amount can exceed observer return_size; the frozen min(total, delivered+delta) rule caps logical delivery and preserves conservation."
+  ],
+  "multi_hop_source_path": "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json",
+  "multi_hop_source_sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
+  "observations": {
+    "completed_input_count": 5,
+    "completed_return_count": 2,
+    "flow_count": 9,
+    "local_execution_observed": false,
+    "runtime_depdata_instances": 0,
+    "same_destination_reroute_observed": false,
+    "transition_count": 12
+  },
+  "passed": true,
+  "source_path": "code/artifacts/protocols/pi_jwm_step4_2c_b_real_flow_trace_source_v1_20260920/real_raw_contract_finalization.json",
+  "source_sha256": "e398cf2f2255d8d46101c68d9f98f766e0c0a16bb29d688cb5cc0c07e710193a"
+}

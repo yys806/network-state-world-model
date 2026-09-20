@@ -933,3 +933,9 @@
 - Final-destination delivery must be counted separately from intermediate hop service to avoid double counting.
 - Future action changes do not alter replayed current ledger state; past outcome service remains non-current evidence.
 - DepData has no audited transfer process; DAG gating cannot create a fake Flow.
+## 2026-09-20 STEP 4.2C-B
+
+- Flow identity is stable across carrying hops and same-destination reroute; only destination change at a clean boundary increments Epoch.
+- Raw `O_t` exposes only Ledger state updated through the previous Outcome; same-slot delivery first appears in `O_{t+1}`.
+- Real non-locked traces cover direct Input/Return and Input multi-hop. Return multi-hop, reroute, Epoch switch and local no-flow remain fixture-only observations.
+- Legacy wireless Return event delivery may exceed observer return_size; frozen min-capping preserves logical conservation and the mismatch is retained as a real-trace limitation.

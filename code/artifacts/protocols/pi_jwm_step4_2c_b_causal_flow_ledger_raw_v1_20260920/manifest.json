@@ -1,0 +1,69 @@
+{
+  "files": [
+    {
+      "path": "raw_causal_flow_ledger_amendment.json",
+      "sha256": "d91e960477cbf6e53231d093b15b90f8d8da10f77b58e316308e294457e8f125"
+    },
+    {
+      "path": "real_trace_evidence.json",
+      "sha256": "d0307c5dc74cd950ef5af52f6f7e2c7040626de72fdcfcfc79f94b567703f174"
+    },
+    {
+      "path": "contract_fixture_receipt.json",
+      "sha256": "781a834a734c80db671f730e5ba95650bbd976216fda4fc39827d23acbb71b2f"
+    },
+    {
+      "path": "acceptance.json",
+      "sha256": "62c0ae2ec048065c1632ace3cf1951007af2d0ecaf168c29a463205a007bc02e"
+    }
+  ],
+  "formal_dataset": false,
+  "gpu": false,
+  "locked_test": false,
+  "observation_only_real_trace": true,
+  "passed": true,
+  "schema_version": "PI-JWM-Step4.2C-B-Manifest-v1",
+  "source_files": [
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step4_2c_b_real_flow_trace_source_v1_20260920/real_raw_contract_finalization.json",
+      "role": "real_input_return_trace",
+      "sha256": "e398cf2f2255d8d46101c68d9f98f766e0c0a16bb29d688cb5cc0c07e710193a"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json",
+      "role": "real_input_multihop_trace",
+      "sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d"
+    },
+    {
+      "path": "code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "5c80bf43849379232b92fb5421ed36ec124ec75a305ebc515ecc9183c80ebf48"
+    },
+    {
+      "path": "code/scripts/build_step4_2c_b_causal_flow_ledger_raw_v1.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "7c4f1640f15b61295b55183e6bd2a9656fec1b8fcaa28f556069d4ea349d0a91"
+    },
+    {
+      "path": "code/scripts/run_step4_2c_b_real_flow_trace_v1.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "3613733b318dbe198a8ce44f0fac3746dfbac0fa650df927280c4679005e5126"
+    },
+    {
+      "path": "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de"
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd"
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_collector_v1.py",
+      "role": "implementation_or_provenance_source",
+      "sha256": "5cfc7b3d677d6159635e01ca69fb580a16dee5640dff45dc0e73fee504865064"
+    }
+  ],
+  "training": false
+}

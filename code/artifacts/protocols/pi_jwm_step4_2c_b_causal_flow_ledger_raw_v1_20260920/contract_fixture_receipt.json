@@ -1,0 +1,112 @@
+{
+  "carrying_rows": [
+    {
+      "active": false,
+      "current_holder": "B",
+      "current_hop_index": 0,
+      "feature_mask": {
+        "hop_destination": true,
+        "hop_progress": true,
+        "hop_remaining": true,
+        "hop_source": true
+      },
+      "flow_id": "flow::FixtureTask::Input::0",
+      "hop_destination": "D",
+      "hop_progress": 0.0,
+      "hop_remaining": 10.0,
+      "hop_source": "B",
+      "missing_reason": null,
+      "route": [
+        "D",
+        "C"
+      ],
+      "route_revision": 1
+    },
+    {
+      "active": true,
+      "current_holder": "B",
+      "current_hop_index": 0,
+      "feature_mask": {
+        "hop_destination": true,
+        "hop_progress": true,
+        "hop_remaining": true,
+        "hop_source": true
+      },
+      "flow_id": "flow::FixtureTask::Input::1",
+      "hop_destination": "E",
+      "hop_progress": 0.0,
+      "hop_remaining": 10.0,
+      "hop_source": "B",
+      "missing_reason": null,
+      "route": [
+        "E"
+      ],
+      "route_revision": 0
+    }
+  ],
+  "checks": {
+    "depdata_from_dag_forbidden": true,
+    "destination_change_epoch_conservation": true,
+    "destination_change_epoch_lineage": true,
+    "local_execution_no_fake_input_flow": true,
+    "partial_hop_destination_change_rejected": true,
+    "runtime_depdata_instances_zero": true,
+    "same_destination_reroute_identity": true
+  },
+  "evidence_class": "SYNTHETIC_CONTRACT_FIXTURE",
+  "flow_rows": [
+    {
+      "e2e_delivered": 0.0,
+      "e2e_remaining": 10.0,
+      "epoch": 0,
+      "feature_mask": {
+        "e2e_delivered": true,
+        "e2e_remaining": true,
+        "logical_destination": true,
+        "logical_source": true,
+        "total_data": true
+      },
+      "flow_id": "flow::FixtureTask::Input::0",
+      "flow_index": 0,
+      "flow_type": "Input",
+      "logical_destination": "C",
+      "logical_source": "A",
+      "missing_reason": null,
+      "presence": false,
+      "previous_flow_id": null,
+      "source_provenance": "established_task_route_and_causal_ledger_history",
+      "status": "SUPERSEDED",
+      "supersede_reason": null,
+      "superseded_by_flow_id": "flow::FixtureTask::Input::1",
+      "task_id": "FixtureTask",
+      "total_data": 10.0
+    },
+    {
+      "e2e_delivered": 0.0,
+      "e2e_remaining": 10.0,
+      "epoch": 1,
+      "feature_mask": {
+        "e2e_delivered": true,
+        "e2e_remaining": true,
+        "logical_destination": true,
+        "logical_source": true,
+        "total_data": true
+      },
+      "flow_id": "flow::FixtureTask::Input::1",
+      "flow_index": 1,
+      "flow_type": "Input",
+      "logical_destination": "E",
+      "logical_source": "B",
+      "missing_reason": null,
+      "presence": true,
+      "previous_flow_id": "flow::FixtureTask::Input::0",
+      "source_provenance": "established_task_route_and_causal_ledger_history",
+      "status": "ACTIVE",
+      "supersede_reason": "logical_destination_change",
+      "superseded_by_flow_id": null,
+      "task_id": "FixtureTask",
+      "total_data": 10.0
+    }
+  ],
+  "passed": true
+}

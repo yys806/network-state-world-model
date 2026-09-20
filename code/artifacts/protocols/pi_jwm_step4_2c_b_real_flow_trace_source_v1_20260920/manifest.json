@@ -1,0 +1,35 @@
+{
+  "artifact": "real_raw_contract_finalization.json",
+  "artifact_sha256": "e398cf2f2255d8d46101c68d9f98f766e0c0a16bb29d688cb5cc0c07e710193a",
+  "passed": true,
+  "all_checks": {
+    "real_airfogsim_environment": true,
+    "future_schedule_observed_in_internal_metadata": true,
+    "no_future_task_in_O_t": true,
+    "no_future_task_in_input_entity_index": true,
+    "observable_task_ids_equal_input_task_ids": true,
+    "decision_channel_rows_real_and_nonempty": true,
+    "decision_cpu_capacities_real_and_nonempty": true,
+    "slot_delivered_data_observed": true,
+    "slot_served_cpu_work_observed": true,
+    "return_route_setter_called_and_queued": true,
+    "return_route_lifecycle_reached": true,
+    "raw_and_canonical_acceleration_distinct": true,
+    "first_decision_canonical_acceleration_masked": true,
+    "later_canonical_acceleration_uses_history": true,
+    "four_action_fields_present": true,
+    "mobility_uav_only": true,
+    "scope_non_locked_no_training_no_gpu": true
+  },
+  "source_files": {
+    "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de",
+    "code/src/pi_jwm/raw_trajectory_causal_contract_v1.py": "a784ee732e2ec5c4b4583bbc73e695ddceab7d68a7179adf7b93ee5642daf1e1",
+    "code/src/pi_jwm/raw_single_decision_step_contract_v1.py": "261b05d96c3164903c5a3aa399bd987570ee76cc95098885dc2edc6a22fb8837",
+    "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd",
+    "code/reference/AirFogSim/airfogsim/airfogsim_env.py": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+    "code/reference/AirFogSim/airfogsim/manager/traffic_manager.py": "52a986bf6c36bd6d6417219dd9895046ad8065d4537a9d55e4cd61cb1c432c67",
+    "code/reference/AirFogSim/airfogsim/manager/task_manager.py": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+    "code/reference/AirFogSim/airfogsim/scheduler/task_sched.py": "05fd0290c0f01a9cb7a92c561a6151ab86c4209faafa2fa8101e93f57b42f572"
+  },
+  "git_tracking_requirement": "artifact and manifest must be force-added"
+}

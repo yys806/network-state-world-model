@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、STEP 3.1F、STEP 3.2、STEP 3.3 已完成并冻结**；**02 数据集构建与模型输入 COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT**；**STEP 4.1 mapping、STEP 4.2A additive input extension、STEP 4.2B source audit 与 STEP 4.2C-A causal ledger feasibility audit 已完成**。新 graph builder、模型和训练仍未开始。
+更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、STEP 3.1F、STEP 3.2、STEP 3.3 已完成并冻结**；**02 数据集构建与模型输入 COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT**；**STEP 4.2C-B 已实现 Causal Flow Ledger 与 Raw additive Flow contract**。Flow Sample/Tensor、graph builder、模型和训练仍未开始。
 
 ## 当前依据与执行边界
 
@@ -22,10 +22,10 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | Dataset / split / masks | 02 | `step3_2_batch_preprocessing_v1.py`、Step 3.2 bundle | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | trajectory split、lineage、time-grid、train-only normalization、mask/presence counterfactual 已验收；不是正式大规模 Dataset | 03 所需新增字段只能走 additive extension |
 | Model-ready sample / tensor contract | 02 | `model_ready_sample_contract_v1.py`、Step 3.1F artifact、Step 3.2 bundle | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | History past A/Y、entity type、union input index、typed target、batch/split/preprocessing 已验收；不是正式大规模 Dataset | 进入 03 前先冻结对象-字段-关系映射 |
 | tensor contract | 02；03 | `step3_3_model_input_tensor_v1.py`、`build_step3_3_model_input_tensor_v1.py` | COMPLETE / FROZEN FOR CURRENT MINIMAL DATA CONTRACT | MINOR_MODIFICATION | Past Outcome、完整 Target facts、固定 vocab、Comp 正式字段与 semantic receipt 已验收；03/04 feature selection 和正式容量未决定 | 单独授权双图字段映射 |
-| Physical / Information 双图 | 03 | Step 4.1 mapping；Step 4.2A additive Sample/Tensor；Step 4.2C-A-PATCH causal replay receipt；旧 `formal_graph_ops_v1.py` / `formal_dual_graph_world_model_v1.py` | CAUSAL FLOW LEDGER FEASIBLE / GRAPH NOT_STARTED | STRUCTURAL_CHANGE | E2E remaining、final delivery、holder 和 same-destination reroute 可由 existing event/state + deterministic replay 派生；destination change epoch 与 DepData 仍需研究者决定 | 冻结 destination-change/DepData 边界后，另行授权 Raw/sample extension；禁止直接建图 |
+| Physical / Information 双图 | 03 | Step 4.1 mapping；Step 4.2A additive Sample/Tensor；Step 4.2C-B Ledger/Raw amendment；旧 `formal_graph_ops_v1.py` / `formal_dual_graph_world_model_v1.py` | FLOW LEDGER + RAW COMPLETE / SAMPLE-TENSOR AND GRAPH NOT_STARTED | STRUCTURAL_CHANGE | FlowID/Epoch/RouteRevision、Input/Return、E2E progress、holder、lineage、presence 已实现；DepData runtime=0；真实 trace 未覆盖 Return multi-hop/reroute/Epoch change | STEP 4.2C-C 单独扩展 Flow Sample/Tensor；禁止直接建图 |
 | entity alignment 局部工具 | 02；03 | `airfogsim_tensor_v2.py`、`formal_graph_ops_v1.py` | AUDITED | DIRECT_REUSE | ID/index/mask原则可复用；新增对象映射需扩展 | 保留身份稳定性检查 |
 | Route action | 06 §2.1；04 §3.3 | Step 2 Raw + Step 3.3 past/future route tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | route kind/target/task node/hops 与 mask 已映射；尚未接新 graph/model | 后续按新对象路由，未授权 |
-| Comm action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 per-RB action tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | RB indices/mask 与 split outcome 已映射；Comm graph state 仍缺 numeric CSI exposure | 先做 additive state extension |
+| Comm action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 per-RB action tensors；Step 4.2A per-RB CSI additive tensor | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | RB indices/mask、split outcome 与 graph-input CSI exposure 已映射；尚未接 Graph Builder | 后续按授权接图，当前不执行 |
 | Comp action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 node/allocated CPU tensors | INPUT TENSOR COMPLETE / FROZEN | STRUCTURAL_CHANGE | `allocated_cpu_per_s` 已张量化；新 graph/model 执行语义尚未接入 | 后续单独授权模型路由 |
 | UAV Mobility action | 06 §2.1/5.1 | Step 2 Raw + Step 3.3 UAV index/azimuth/elevation/speed tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | UAV action 已张量化、vehicle motion 仍为 SUMO external；尚未接新 graph/model | 后续单独授权模型路由 |
 | action routing | 04 §3.3 | `FormalDualGraphWorldModel.forward` | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | task→node/agent/task不能覆盖新Phy/Comm/Comp/Mob路径 | 建四类对象路由表 |
@@ -96,4 +96,4 @@ Step 4.1 中已有可靠来源的 position、wireless per-RB CSI、wired typed r
 
 ## 下一步边界
 
-唯一建议是 STEP 4.2B — Remaining Raw Source & Stateful Flow Contract Audit；不要自动实现 Graph Builder。
+唯一建议是 `STEP 4.2C-C — Flow Sample/Tensor Additive Extension`；不要自动实现，也不要直接进入 Graph Builder。

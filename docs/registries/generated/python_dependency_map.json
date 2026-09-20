@@ -2142,6 +2142,21 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.build_step4_2c_b_causal_flow_ledger_raw_v1",
+        "tests.test_step4_2c_b_causal_flow_ledger_raw_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1",
+      "path": "code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py",
+      "test_files": [
+        "code/tests/test_step4_2c_b_causal_flow_ledger_raw_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
         "scripts.run_r3_cpu_preflight",
         "scripts.run_r4_gpu_screening",
         "tests.test_teacher_evaluation_v3"
@@ -3264,6 +3279,18 @@
       "lifecycle_status": "support",
       "module": "scripts.build_step4_2c_a_causal_flow_ledger_feasibility_v1",
       "path": "code/scripts/build_step4_2c_a_causal_flow_ledger_feasibility_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step4_2c_b_causal_flow_ledger_raw_v1",
+      "path": "code/scripts/build_step4_2c_b_causal_flow_ledger_raw_v1.py",
       "test_files": []
     },
     {
@@ -5758,7 +5785,8 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
-        "scripts.run_step2_4_real_airfogsim_communication_outcome_semantics_v1"
+        "scripts.run_step2_4_real_airfogsim_communication_outcome_semantics_v1",
+        "scripts.run_step4_2c_b_real_flow_trace_v1"
       ],
       "imports": [
         "pi_jwm.airfogsim_cpu_inner_rule_v1",
@@ -5783,6 +5811,18 @@
       "lifecycle_status": "support",
       "module": "scripts.run_step2_4_real_airfogsim_communication_outcome_semantics_v1",
       "path": "code/scripts/run_step2_4_real_airfogsim_communication_outcome_semantics_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "scripts.run_step2_3_real_airfogsim_raw_contract_finalization_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step4_2c_b_real_flow_trace_v1",
+      "path": "code/scripts/run_step4_2c_b_real_flow_trace_v1.py",
       "test_files": []
     },
     {
@@ -9219,6 +9259,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step4_2c_a_causal_flow_ledger_feasibility_v1",
       "path": "code/tests/test_step4_2c_a_causal_flow_ledger_feasibility_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step4_2c_b_causal_flow_ledger_raw_v1",
+      "path": "code/tests/test_step4_2c_b_causal_flow_ledger_raw_v1.py",
       "test_files": []
     },
     {

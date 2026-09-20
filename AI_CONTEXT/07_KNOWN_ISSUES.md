@@ -52,6 +52,13 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - 当前 verdict=`CAUSAL_FLOW_LEDGER_FEASIBLE`，由 `ledger_specific_required_evidence` 计算；篡改 verdict 会被 validator 拒绝。destination-change epoch inheritance 和 DepData process 仍是 researcher decision，DAG 不得生成 fake Flow。
 - Evidence：`code/artifacts/protocols/pi_jwm_step4_2c_a_causal_flow_ledger_feasibility_patch_v1_20260920/`。长期 Ledger、Raw extension 和 Graph Builder 仍未授权。
 
+## 2C-B. Ledger / Raw 已实现后的剩余边界
+
+- Causal Flow Ledger 与 Raw additive Flow state 已实现；上述“长期 Ledger、Raw extension 未授权”是 4.2C-A 时点的历史描述，已由 4.2C-B 覆盖。
+- 真实 non-locked trace 已覆盖直接 Input/Return 与独立 Input 两跳；尚未真实观察 Return multi-hop、same-destination reroute、destination-change Epoch 和 local execution no-flow，这些目前只有 contract fixture evidence。
+- 旧无线 Return hook 的 delivered amount 可超过 observer return_size；Ledger 按冻结 min rule 封顶守恒。该 observation 不等于修改 simulator，也不能外推为正式 Dataset 结论。
+- Flow Sample/Tensor additive extension、Graph Builder、GNN、World Model、Loss、Planner 和训练仍未开始。
+
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
 
 - Actual Implementation：当前正式 runner 支持三个冻结 seed，前两个已完成。

@@ -1216,3 +1216,9 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] Reclassified cross-hop remaining/final delivery/holder as causally derivable under frozen logical Flow semantics.
 - [x] Added audit-only Input/Return replay, same-destination reroute boundary, flow_completed prohibition, and real-trace/schema-equivalent provenance.
 - [ ] Final regression, index, diff, commit and push.
+## 2026-09-20 STEP 4.2C-B
+
+- [x] TDD freeze FlowID/Epoch/RouteRevision, Input/Return, holder, conservation, causality and negative guards.
+- [x] Implement Causal Flow Ledger and additive Raw amendment without changing frozen Raw artifacts.
+- [x] Collect non-locked real Input/Return trace and build machine acceptance/provenance artifacts.
+- [x] Completed regressions, indexes, deterministic/hash checks, commit and push.

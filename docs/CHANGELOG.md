@@ -129,3 +129,8 @@
 - 新增 audit-only pure replay：按 logical destination 过滤 final delivery，因果维护 E2E delivered/remaining，并验证 Input/Return multi-hop、holder transition 和 same-destination reroute。
 - 明确 `transfer_row.flow_completed` 不是 logical Flow completion；真实 Step 2.4 trace 作为部分 real evidence，严格 phase replay 作为 schema-equivalent fixture。
 - 机器 verdict 更新为 `CAUSAL_FLOW_LEDGER_FEASIBLE`；destination-change epoch、DepData、长期 Ledger、Raw extension 和 Graph Builder 仍未授权。
+## 2026-09-20：STEP 4.2C-B Causal Flow Ledger & Raw Additive Extension
+
+- 实现稳定 FlowID/FlowIndex、Flow/Carrying 分离、Input/Return lifecycle、E2E progress、holder、RouteRevision、clean-boundary Epoch lineage 和 DepData zero-instance guard。
+- 新增独立 Raw amendment：`O_t` 只含此前已发生事件更新后的 Ledger，当前 `Y_t` 只进入 `O_{t+1}`；legacy `flow_completed` 只映射为 hop/stage completion。
+- 真实 non-locked trace 覆盖 Input/Return，独立真实 trace 覆盖 Input 两跳；未真实覆盖场景明确保留为 contract fixture，不进入 Sample/Tensor 或 Graph Builder。

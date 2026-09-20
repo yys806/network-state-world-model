@@ -2686,3 +2686,6 @@ Step 2.4 将通信 Outcome 的真实语义最终固定为三层字段：无线�
 STEP 3.2 只验证 Raw 到 model-ready batch 的流水线：先按 trajectory 切分，再在各 split 内构造冻结的 H=2/L=2 causal window，连续字段统计只来自 train 且遵守 presence/feature mask。当前产物为 non-locked observation-only validation bundle，不改变 Raw、双图、World Model、Loss、Planner 或训练定义。
 
 STEP 3.2-PATCH 已将 Dataset isolation 证据补齐：provenance 从 Raw 读取 trajectory/seed/source SHA/config lineage、frame/time range、slot duration 和 3.1F contract；真实 time-grid 与 step start/end 在 window construction 前验证；development trajectories 的 future-reference audit 独立保存为 observation-only JSON，当前 12/12/0/0；normalization 单位明确为 `m/s`、`m/s^2`、`AirFogSim data-unit`。该 Patch 不决定正式 split 比例，不改变 Raw 或 3.1F 语义。
+### Causal Flow Ledger 与 Raw additive Flow state（2026-09-20）
+
+研究者冻结 Flow 为 logical end-to-end business Flow，Hop 为 carrying segment；FlowID 使用 `(TaskID, FlowType, Epoch)`。PI-JWM 不修改 AirFogSim 核心传输状态机，而以真实 state/event 和历史 Ledger 因果维护 Input/Return 的 E2E delivered/remaining、current holder、RouteRevision 与 Epoch lineage。same-destination reroute 不换 Epoch；destination change 只允许 clean hop boundary 并创建新 Epoch。DepData vocabulary 保留但当前 runtime instances=0，DAG 不生成假 Flow。STEP 4.2C-B 已实现 Ledger 与 Raw amendment；Flow Sample/Tensor 和 Graph Builder 尚未开始。

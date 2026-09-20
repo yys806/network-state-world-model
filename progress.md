@@ -977,3 +977,6 @@ verdict 改为由 Flow-specific evidence 实际计算；增加 verdict tamper ne
 ## 2026-09-20 STEP 4.2C-A-PATCH
 
 Corrected the feasibility boundary with audit-only event replay. Under the frozen logical Flow A->C semantics, Input/Return E2E remaining, final delivery and current holder are derivable from existing events/state; same-destination reroute is feasible. Verdict is `CAUSAL_FLOW_LEDGER_FEASIBLE`; destination-change epoch and DepData remain researcher decisions.
+## 2026-09-20 STEP 4.2C-B
+
+Causal Flow Ledger and Raw additive contract implemented and verified. Real AirFogSim evidence covers direct Input/Return and a separate real Input two-hop trace; remaining unobserved scenarios are contract fixtures. Sample/Tensor, graph/model/training, GPU and locked_test remain unopened. Required regressions, indexes, deterministic/hash checks and Git closure passed.
