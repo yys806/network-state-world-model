@@ -1,0 +1,385 @@
+{
+  "checks": [
+    {
+      "detail": "Step 2.4 transfer events carry task, phase, endpoints and delivered data.",
+      "name": "input_hop_events_causal",
+      "passed": true
+    },
+    {
+      "detail": "Return uses real stage-local transfer events, separately audited.",
+      "name": "return_hop_events_causal",
+      "passed": true
+    },
+    {
+      "detail": "Logical-destination filtered real events causally maintain e2e remaining.",
+      "name": "cross_hop_remaining_source",
+      "passed": true
+    },
+    {
+      "detail": "target_id compared with Ledger logical destination separates final from intermediate service.",
+      "name": "final_destination_delivery_source",
+      "passed": true
+    },
+    {
+      "detail": "Task current_node_id and hop completion maintain simulator task payload location.",
+      "name": "current_holder_source",
+      "passed": true
+    },
+    {
+      "detail": "Same-destination route change preserves Flow epoch and remaining.",
+      "name": "same_destination_reroute_source",
+      "passed": true
+    },
+    {
+      "detail": "Past outcome service is evidence, not current Flow state.",
+      "name": "past_outcome_not_current_state",
+      "passed": true
+    },
+    {
+      "detail": "DAG gating is kept separate from DepData transfer.",
+      "name": "depdata_not_fabricated_from_dag",
+      "passed": true
+    }
+  ],
+  "counterfactual": {
+    "changed_future_action": {
+      "route": [
+        "D",
+        "C"
+      ],
+      "target": "D"
+    },
+    "current_ledger_state": {
+      "current_holder": "B",
+      "e2e_remaining": 7.0,
+      "logical_destination": "C",
+      "phase": "offload",
+      "task_id": "Task_A"
+    },
+    "future_action_reads": [],
+    "passed": true,
+    "past_event_count": 2,
+    "replayed_current_ledger_state": {
+      "current_holder": "B",
+      "e2e_remaining": 7.0,
+      "logical_destination": "C",
+      "phase": "offload",
+      "task_id": "Task_A"
+    }
+  },
+  "expected_verdict": "CAUSAL_FLOW_LEDGER_FEASIBLE",
+  "failed_checks": [],
+  "flow_evidence": {
+    "depdata": {
+      "boundary": "DAG must not generate fake DepData; keep empty type or extend simulator only after researcher decision.",
+      "fact": "Audited simulator has DAG dependency gating but no dependency payload transfer event or DepData Flow identity.",
+      "status": "DECISION_REQUIRED"
+    },
+    "input": {
+      "available": [
+        "task_id",
+        "flow_id",
+        "hop_id",
+        "source",
+        "target",
+        "phase",
+        "remaining_before",
+        "delivered_data",
+        "flow_completed"
+      ],
+      "derived": [
+        "logical-destination filtered e2e delivery/remaining",
+        "current holder from task location and hop completion"
+      ],
+      "flow_completed_semantics": "stage_or_hop_completed; FORBIDDEN_AS_LOGICAL_FLOW_COMPLETION_SOURCE",
+      "missing": [
+        "destination-change epoch inheritance decision"
+      ],
+      "status": "FEASIBLE",
+      "sufficient_for": [
+        "task/phase/hop service transition"
+      ]
+    },
+    "return": {
+      "available": [
+        "task_id",
+        "flow_id",
+        "hop_id",
+        "phase",
+        "remaining_before",
+        "delivered_data"
+      ],
+      "derived": [
+        "logical-destination filtered e2e delivery/remaining",
+        "current holder from task location and hop completion"
+      ],
+      "flow_completed_semantics": "stage_or_hop_completed; FORBIDDEN_AS_LOGICAL_FLOW_COMPLETION_SOURCE",
+      "missing": [
+        "destination-change epoch inheritance decision"
+      ],
+      "status": "FEASIBLE",
+      "sufficient_for": [
+        "return stage-local hop transition"
+      ]
+    },
+    "scope": "Existing real event -> causal ledger derivability validation only; no ledger implementation."
+  },
+  "formal_dataset": false,
+  "gpu": false,
+  "graph_builder_started": false,
+  "hop_service_progress_e2e_matrix": {
+    "final_destination_source": true,
+    "input_phase": "offload",
+    "intermediate_hop_service_is_not_e2e_delivery": true,
+    "return_phase": "return"
+  },
+  "invariants": {
+    "multi_hop_no_double_count": {
+      "e2e_delivered": 10.0,
+      "hop_service_sum": 20.0,
+      "input_replay": {
+        "current_holder": "C",
+        "e2e_delivered": 10.0,
+        "e2e_remaining": 0.0,
+        "last_event": {
+          "delivered_data": 7.0,
+          "phase": "offload",
+          "source_id": "B",
+          "stage_or_hop_completed": true,
+          "target_id": "C",
+          "task_id": "Task_A"
+        },
+        "logical_destination": "C",
+        "phase": "offload",
+        "task_id": "Task_A",
+        "total": 10.0
+      },
+      "passed": true,
+      "return_replay": {
+        "current_holder": "A",
+        "e2e_delivered": 10.0,
+        "e2e_remaining": 0.0,
+        "last_event": {
+          "delivered_data": 6.0,
+          "phase": "return",
+          "source_id": "B",
+          "stage_or_hop_completed": true,
+          "target_id": "A",
+          "task_id": "Task_R"
+        },
+        "logical_destination": "A",
+        "phase": "return",
+        "task_id": "Task_R",
+        "total": 10.0
+      },
+      "rule": "Only final-destination delivery counts toward end-to-end delivery; intermediate hop service is not added again.",
+      "total_data": 10.0
+    }
+  },
+  "ledger_specific_required_evidence": {
+    "cross_hop_current_remaining": true,
+    "current_holder_causal": true,
+    "final_destination_delivery": true,
+    "input_hop_event_source": true,
+    "logical_destination_causal": true,
+    "return_hop_event_source": true,
+    "same_destination_reroute": true,
+    "task_and_phase_causality": true
+  },
+  "locked_test": false,
+  "other_graph_input_gaps_complete": false,
+  "other_information_graph_gaps": {
+    "dynamic_available_cpu": false,
+    "storage": false,
+    "wired_queue_load_utilization": false
+  },
+  "passed": true,
+  "reroute": {
+    "available": [
+      "current holder",
+      "current route",
+      "real route transition",
+      "logical Flow identity"
+    ],
+    "destination_change": "RESEARCHER_DECISION_REQUIRED: freeze Flow epoch/remaining inheritance",
+    "same_destination": "keep Flow ID/e2e remaining, increment route revision, start a new carrying hop from current holder",
+    "status": "SAME_DESTINATION_FEASIBLE"
+  },
+  "schema_version": "PI-JWM-Step4.2C-A-Patch-Causal-Flow-Ledger-Derivability-v1",
+  "source_provenance": [
+    {
+      "path": "code/reference/AirFogSim/airfogsim/entities/task.py",
+      "sha256": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0",
+      "symbols": [
+        {
+          "anchor": "symbol:Task.transmit_to_Node",
+          "semantic_claim": "stage-local transmitted size updates and resets",
+          "symbol": "Task.transmit_to_Node"
+        },
+        {
+          "anchor": "symbol:Task.startToReturn",
+          "semantic_claim": "return stage reuses transmission mechanism",
+          "symbol": "Task.startToReturn"
+        }
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/task_manager.py",
+      "sha256": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+      "symbols": [
+        {
+          "anchor": "attribute:TaskManager._task_dependencies",
+          "semantic_claim": "DAG dependency gating, not payload transfer",
+          "symbol": "TaskManager._task_dependencies"
+        }
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/airfogsim_env.py",
+      "sha256": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+      "symbols": [
+        {
+          "anchor": "symbol:AirFogSimEnv._updateWirelessCommunication",
+          "semantic_claim": "wireless transfer event source",
+          "symbol": "AirFogSimEnv._updateWirelessCommunication"
+        },
+        {
+          "anchor": "symbol:AirFogSimEnv._updateWiredCommunication",
+          "semantic_claim": "wired transfer event source",
+          "symbol": "AirFogSimEnv._updateWiredCommunication"
+        }
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/wired_manager.py",
+      "sha256": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe",
+      "symbols": [
+        {
+          "anchor": "symbol:WiredNetworkManager.step",
+          "semantic_claim": "wired per-task service source",
+          "symbol": "WiredNetworkManager.step"
+        }
+      ]
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py",
+      "sha256": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd",
+      "symbols": [
+        {
+          "anchor": "symbol:_extract_tasks",
+          "semantic_claim": "decision-time task/current-node snapshot",
+          "symbol": "_extract_tasks"
+        }
+      ]
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_collector_v1.py",
+      "sha256": "5cfc7b3d677d6159635e01ca69fb580a16dee5640dff45dc0e73fee504865064",
+      "symbols": [
+        {
+          "anchor": "symbol:build_transfer_events",
+          "semantic_claim": "collector transfer-event assembly",
+          "symbol": "build_transfer_events"
+        }
+      ]
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/real_communication_outcome_semantics.json",
+      "sha256": "91c88796d34b4fce3c10f3ee5b040891766031376e46e659446c470879bc686f",
+      "symbols": [
+        {
+          "anchor": "json:steps[*].outcome.slot_transfer_events",
+          "semantic_claim": "real non-locked communication transfer events; outcome-only",
+          "symbol": "steps[*].outcome.slot_transfer_events"
+        }
+      ]
+    }
+  ],
+  "source_sufficiency_matrix": [
+    {
+      "claim": "task/phase/hop service",
+      "status": "EXISTING_EVENT_SUFFICIENT"
+    },
+    {
+      "claim": "Input total",
+      "status": "EXISTING_STATE_SUFFICIENT"
+    },
+    {
+      "claim": "Return total",
+      "status": "EXISTING_STATE_SUFFICIENT"
+    },
+    {
+      "claim": "cross-hop current remaining",
+      "status": "DERIVABLE_CAUSALLY"
+    },
+    {
+      "claim": "final destination delivery",
+      "status": "DERIVABLE_CAUSALLY"
+    },
+    {
+      "claim": "current payload holder",
+      "status": "EXISTING_STATE_SUFFICIENT"
+    },
+    {
+      "claim": "same-destination reroute",
+      "status": "DERIVABLE_CAUSALLY"
+    },
+    {
+      "claim": "DepData transfer",
+      "status": "RESEARCHER_DECISION_REQUIRED"
+    }
+  ],
+  "trace_evidence": {
+    "real_trace_limit": "Step 2.4 artifact has source/target and phase on wired event; wireless event lacks phase. Strict Input/Return phase replay is schema-equivalent fixture evidence.",
+    "real_trace_source_sha256": "91c88796d34b4fce3c10f3ee5b040891766031376e46e659446c470879bc686f",
+    "real_trace_status": "REAL_TRACE_EVIDENCE_PARTIAL",
+    "real_trace_trajectory_id": "step2.4-real-communication-seed0",
+    "real_transfer_event_count": 2
+  },
+  "training": false,
+  "transition_table": [
+    {
+      "flow_type": "Input",
+      "source": "real transfer event",
+      "status": "EXISTING_EVENT_SUFFICIENT",
+      "transition": "hop service"
+    },
+    {
+      "flow_type": "Return",
+      "source": "real transfer event",
+      "status": "EXISTING_EVENT_SUFFICIENT",
+      "transition": "hop service"
+    },
+    {
+      "flow_type": "Input/Return",
+      "source": "logical-destination filtered real event replay",
+      "status": "DERIVABLE_CAUSALLY",
+      "transition": "end-to-end remaining"
+    },
+    {
+      "flow_type": "DepData",
+      "source": "no audited event",
+      "status": "RESEARCHER_DECISION_REQUIRED",
+      "transition": "dependency transfer"
+    },
+    {
+      "flow_type": "Input/Return",
+      "source": "current holder + route transition",
+      "status": "DERIVABLE_CAUSALLY",
+      "transition": "same-destination route revision"
+    }
+  ],
+  "validation": {
+    "expected_verdict": "CAUSAL_FLOW_LEDGER_FEASIBLE",
+    "future_action_counterfactual": true,
+    "multi_hop_no_double_count": true,
+    "passed": true,
+    "required_checks_present": true,
+    "schema_version": true,
+    "scope_non_expansive": true,
+    "source_statuses_valid": true,
+    "verdict_matches_evidence": true
+  },
+  "verdict": "CAUSAL_FLOW_LEDGER_FEASIBLE",
+  "verdict_matches_evidence": true
+}

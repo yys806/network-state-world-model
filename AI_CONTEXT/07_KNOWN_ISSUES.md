@@ -48,8 +48,9 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 
 - 真实 transfer event 可证明 task/phase/hop/端点和 delivered service，但不能单独证明 logical end-to-end remaining 或 final-destination delivery。
 - 多 hop invariant 只统计最终目的地交付；中间 hop service 不得再次累加。reroute 仍缺 payload holder、保留/重传语义的 causal event。
-- 当前 verdict=`CAUSAL_FLOW_LEDGER_PARTIALLY_FEASIBLE`，由 `ledger_specific_required_evidence` 计算；篡改 verdict 会被 validator 拒绝。DepData 无真实 transfer process，DAG 不得生成 fake Flow。
-- Evidence：`code/artifacts/protocols/pi_jwm_step4_2c_a_causal_flow_ledger_feasibility_v1_20260920/`。下一步需研究者审阅 event/hook 边界；不自动实现长期 Ledger 或 Graph Builder。
+- 4.2C-A-PATCH 证明 logical destination 已确定时，E2E remaining/final delivery/current holder/same-destination reroute 可由 existing event/state + audit-only replay 派生；`flow_completed` 仅是 stage/hop 语义，禁止当 logical completion。
+- 当前 verdict=`CAUSAL_FLOW_LEDGER_FEASIBLE`，由 `ledger_specific_required_evidence` 计算；篡改 verdict 会被 validator 拒绝。destination-change epoch inheritance 和 DepData process 仍是 researcher decision，DAG 不得生成 fake Flow。
+- Evidence：`code/artifacts/protocols/pi_jwm_step4_2c_a_causal_flow_ledger_feasibility_patch_v1_20260920/`。长期 Ledger、Raw extension 和 Graph Builder 仍未授权。
 
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
 

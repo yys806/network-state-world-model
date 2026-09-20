@@ -927,9 +927,9 @@
 - dynamic available CPU、storage、wired queue/load/utilization 已移至 `other_information_graph_gaps`。
 - simulator-issued Flow ID 缺失改为 implementation fact；logical identity 是否按 `task_id + input/return` 派生留给 researcher decision。
 - DepData 当前无真实 transfer process，但不再作为 Input/Return readiness 的直接 blocker；DAG 仍禁止生成 fake Flow。
-## 2026-09-20 STEP 4.2C-A
+## 2026-09-20 STEP 4.2C-A-PATCH
 
-- `Task._transmitted_size` and hop service events cannot prove logical end-to-end remaining after hop reset.
+- `Task._transmitted_size` remains hop-local, but it need not be the logical remaining source: logical-destination filtered real transfer events causally maintain E2E remaining.
 - Final-destination delivery must be counted separately from intermediate hop service to avoid double counting.
-- Future action changes do not alter current ledger state in the audit counterfactual; past outcome service remains non-current evidence.
+- Future action changes do not alter replayed current ledger state; past outcome service remains non-current evidence.
 - DepData has no audited transfer process; DAG gating cannot create a fake Flow.

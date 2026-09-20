@@ -124,3 +124,8 @@
 - 新增 observation-only Real Event → Causal Ledger feasibility helper、builder、focused tests、合同、实施记录和源码 SHA-256/symbol provenance artifact。
 - 机器 verdict=`CAUSAL_FLOW_LEDGER_PARTIALLY_FEASIBLE`：Input/Return hop events 可部分追溯；跨 hop remaining、final delivery、reroute payload ownership 仍需 hook；DepData 不由 DAG 虚构。
 - 未修改 Raw/Sample/Tensor、simulator、Graph Builder、World Model、Loss、Planner、training、GPU 或 locked_test。
+## 2026-09-20：STEP 4.2C-A-PATCH Existing Event → Causal Ledger Derivability
+
+- 新增 audit-only pure replay：按 logical destination 过滤 final delivery，因果维护 E2E delivered/remaining，并验证 Input/Return multi-hop、holder transition 和 same-destination reroute。
+- 明确 `transfer_row.flow_completed` 不是 logical Flow completion；真实 Step 2.4 trace 作为部分 real evidence，严格 phase replay 作为 schema-equivalent fixture。
+- 机器 verdict 更新为 `CAUSAL_FLOW_LEDGER_FEASIBLE`；destination-change epoch、DepData、长期 Ledger、Raw extension 和 Graph Builder 仍未授权。

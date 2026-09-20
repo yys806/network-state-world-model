@@ -11,7 +11,7 @@ from pi_jwm.step4_2c_a_causal_flow_ledger_feasibility_v1 import (
 )
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "code/artifacts/protocols/pi_jwm_step4_2c_a_causal_flow_ledger_feasibility_v1_20260920"
+OUT = ROOT / "code/artifacts/protocols/pi_jwm_step4_2c_a_causal_flow_ledger_feasibility_patch_v1_20260920"
 SOURCE_FILES = [
     "code/reference/AirFogSim/airfogsim/entities/task.py",
     "code/reference/AirFogSim/airfogsim/manager/task_manager.py",
@@ -19,6 +19,7 @@ SOURCE_FILES = [
     "code/reference/AirFogSim/airfogsim/manager/wired_manager.py",
     "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py",
     "code/src/pi_jwm/airfogsim_full_dual_graph_collector_v1.py",
+    "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/real_communication_outcome_semantics.json",
 ]
 SYMBOLS = {
     SOURCE_FILES[0]: [
@@ -33,6 +34,7 @@ SYMBOLS = {
     SOURCE_FILES[3]: [{"symbol": "WiredNetworkManager.step", "semantic_claim": "wired per-task service source", "anchor": "symbol:WiredNetworkManager.step"}],
     SOURCE_FILES[4]: [{"symbol": "_extract_tasks", "semantic_claim": "decision-time task/current-node snapshot", "anchor": "symbol:_extract_tasks"}],
     SOURCE_FILES[5]: [{"symbol": "build_transfer_events", "semantic_claim": "collector transfer-event assembly", "anchor": "symbol:build_transfer_events"}],
+    SOURCE_FILES[6]: [{"symbol": "steps[*].outcome.slot_transfer_events", "semantic_claim": "real non-locked communication transfer events; outcome-only", "anchor": "json:steps[*].outcome.slot_transfer_events"}],
 }
 
 def sha256(path: Path) -> str:
@@ -41,12 +43,17 @@ def sha256(path: Path) -> str:
 def main() -> None:
     provenance = [{"path": path, "sha256": sha256(ROOT / path), "symbols": SYMBOLS[path]} for path in SOURCE_FILES]
     report = build_causal_flow_ledger_feasibility_audit(source_provenance=provenance)
+    trace = json.loads((ROOT / SOURCE_FILES[6]).read_text(encoding="utf-8"))
+    events = [event for step in trace["steps"] for event in step["outcome"].get("slot_transfer_events", [])]
+    report["trace_evidence"]["real_transfer_event_count"] = len(events)
+    report["trace_evidence"]["real_trace_trajectory_id"] = trace["steps"][0]["outcome"].get("trajectory_id") if trace.get("steps") else None
+    report["trace_evidence"]["real_trace_source_sha256"] = sha256(ROOT / SOURCE_FILES[6])
     report["validation"] = validate_causal_flow_ledger_feasibility_audit(report)
     OUT.mkdir(parents=True, exist_ok=True)
     target = OUT / "causal_flow_ledger_feasibility_audit.json"
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     manifest = {
-        "schema_version": "PI-JWM-Step4.2C-A-Audit-Manifest-v1",
+        "schema_version": "PI-JWM-Step4.2C-A-Patch-Audit-Manifest-v1",
         "files": [{"path": target.name, "sha256": sha256(target)}],
         "source_files": provenance,
         "observation_only": True,

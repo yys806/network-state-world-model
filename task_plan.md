@@ -1211,8 +1211,8 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - 阻塞保持：stable stateful Flow total/rem/type/endpoints、return size/priority/deadline、dynamic available CPU、storage、wired queue/load/utilization；任何非零 unresolved future reference 仍为 `RESEARCHER_DECISION_REQUIRED`。
 - 范围：`graph_builder=false`、`physical_topology=false`、`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
 - 唯一下一动作：完成 STEP 4.2A；之后只建议审阅仍 Raw-insufficient 的 minimum graph gaps，特别是 stable stateful Flow。
-## 2026-09-20 STEP 4.2C-A
+## 2026-09-20 STEP 4.2C-A-PATCH
 
-- [x] Implemented observation-only causal Flow Ledger feasibility audit with computed verdict, source matrix, counterfactual, and no-double-count invariant.
-- [x] Generated provenance artifact and updated contract, implementation record, tracker, authority records, AI_CONTEXT, and changelog.
+- [x] Reclassified cross-hop remaining/final delivery/holder as causally derivable under frozen logical Flow semantics.
+- [x] Added audit-only Input/Return replay, same-destination reroute boundary, flow_completed prohibition, and real-trace/schema-equivalent provenance.
 - [ ] Final regression, index, diff, commit and push.
