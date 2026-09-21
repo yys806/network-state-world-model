@@ -992,3 +992,10 @@
 - Therefore `CSI + A^Comm + known parameters` does not uniquely determine actual service. Promoting the outcome outage to input would be future leakage.
 - Wired service needs configured capacity and active-flow count. Both exist in simulator state but are not frozen Raw/Tensor inputs, so they are additive gaps rather than unobservable residual evidence.
 - Required verdict: `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`; residual target/architecture remains unselected and STEP 4.4 implementation is stopped.
+
+## 2026-09-21 STEP 4.4 resolved service boundary and model finding
+
+- The researcher selected outage as a conditional known stochastic transition, not Comm latent and not learned residual. The earlier audit verdict is preserved as pre-decision evidence, not current blocker state.
+- Complete RB allocation and predicted CSI feed channel-type power/interference/noise SINR. AirFogSim nominal-rate and Rayleigh-outage formulas are explicit; `sample` requires a generator and `expectation` is marked approximate.
+- Existing Flow Carrying state exactly derives wired active membership/count in the real manager equality fixture; no extra membership tensor is needed. Capacity itself is read from the causal trajectory config and remains an explicit World Model state input.
+- The implemented artifact proves untrained mechanism only. Accuracy, calibration, loss, training, planning and performance remain unknown.

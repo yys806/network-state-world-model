@@ -1,7 +1,7 @@
 # PI-JWM 项目索引
 
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
-> 生成于 2026-09-08，状态更新于 2026-09-21。定义 01、当前最小定义 02、STEP 4.3A Builder 与 STEP 4.3B Encoder 已完成并冻结。STEP 4.4 communication service gate 已触发 `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`，World Model 尚未实现。Loss、Planner 与 Training 未开始；旧训练与结果已逻辑归档。
+> 生成于 2026-09-08，状态更新于 2026-09-21。定义 01、当前最小定义 02、STEP 4.3A Builder、STEP 4.3B Encoder 与 STEP 4.4 Structured RSSM World Model Contract 已完成并冻结。Loss、Planner 与 Training 未开始；旧训练与结果已逻辑归档。
 
 ## 1. 进入项目的最短路径
 
@@ -33,9 +33,9 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 - 项目：PI-JWM（Physical-Information Joint World Model）。
 - AirFogSim：只作为仿真器和数据生成工具，不是 PI-JWM 框架主体。
 - 当前路线：研究者最新 `00–06` 目标定义 → 经授权的 Implementation Step。
-- 当前 Step：STEP 4.4 BLOCKED / AWAITING RESEARCHER DECISION at communication service gate；STEP 4.3B 及上游合同保持 COMPLETE / FROZEN。
-- 新定义实现：typed graph 与 aligned `Z_t^{PI,L_g}` encoder 已实现；后续 World Model 尚未开始。现有 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 都是旧协议 Historical / Archived evidence。
-- 当前主要缺口：Definition 04 representation/dynamics、目标 stochastic-state 边界、逐步规则反馈/预测态动态图、正式候选生成和真实反馈重规划。真实 Return multi-hop 与 same-destination partial-hop reroute 仍缺 runtime evidence；formal capacities 未冻结。
+- 当前 Step：STEP 4.4 COMPLETE / FROZEN；Definition 05 Loss/Training 尚未授权。
+- 新定义实现：typed graph、aligned `Z_t^{PI,L_g}` encoder 与未训练 Structured RSSM prior rollout 已实现。现有旧 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 仍是 Historical / Archived evidence。
+- 当前主要缺口：Definition 05 loss/training、正式候选生成和真实反馈重规划。真实 Return multi-hop 与 same-destination partial-hop reroute 仍缺更强 runtime evidence；formal capacities 未冻结。
 - `locked_test`：继续封存；`formal_performance_claim_ready=false`。
 
 ## 3. 顶层目录地图
@@ -65,6 +65,7 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 | 正式图编码 | `code/src/pi_jwm/formal_dual_graph_world_model_v1.py` | 物理图、信息图、任务图和跨图消息传播 |
 | 确定性规则层 | `code/src/pi_jwm/formal_deterministic_rule_layer_v1.py` | 更新容量、交付量、工作量、生命周期和 DAG 状态 |
 | 实体级 RSSM | `code/src/pi_jwm/formal_entity_aligned_rssm_world_model_v1.py` | 节点、物理边、数据流、任务的实体级 prior/posterior |
+| 当前 Structured RSSM | `code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py` | 五类 aligned h、Vehicle/Comm z、Action routing、known stochastic outage、rule feedback 与 dynamic graph rollout；未训练 |
 | 损失与指标 | `code/src/pi_jwm/formal_world_model_loss_v1.py`、`formal_world_model_metrics_v1.py` | 训练目标、状态预测和系统指标 |
 | P4 门控 | `code/src/pi_jwm/formal_p4_gate_v1.py` | 计算正式单 seed 数值门 |
 | 正式 GPU seed 入口 | `code/scripts/run_formal_p4_entity_rssm_gpu_v1.py` | 校验 seed、冻结前提、输出目录和 `locked_test` 边界后调用底层训练器 |

@@ -12,21 +12,21 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 4.4` 在强制 communication service sufficiency gate 暂停。机器 verdict=`SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`：nominal pre-outage rate 可规则恢复，但 actual wireless service 还受 Decision 时不可见的随机 per-RB outage realization 影响。未实现 `xi_t^Lat` 或 World Model；STEP 4.3B 仍 COMPLETE / FROZEN。
+- 当前 Step：`STEP 4.4 — Structured RSSM World Model Contract` 已 COMPLETE / FROZEN。研究者已将 wireless outage 冻结为独立 known stochastic service event；未训练 CPU 模型完成 structured h/z、prior/posterior、四类 Action 路由、vehicle/CSI dynamics、规则 transition、动态图与递归 prior rollout。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
-- 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder 与 Dual-Graph Encoder 已验收；当前可生成 aligned `Z_t^{PI,L_g}`。Physical topology 和 Encoder 参数仍是 development-only。World Model、Loss、Planner 与 Training 均未开始。
+- 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder 与 Structured RSSM World Model Contract 已验收。Physical topology、Encoder/World Model 参数仍是 development-only；Loss、Planner 与 Training 均未开始。
 - 审计结论：时间因果、稳定 ID/index、mask/split、typed graph 与 Definition 03 encoder 已落地；`Z_t^{PI,L_g}→xi_t^Lat`、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环仍需后续授权与实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step `training=false`、`gpu=false`。
 
 ## 当前最重要问题
 
-当前实现不能按模块名称或旧测试推断为符合新定义。STEP 4.3B 已实现未训练的双图编码器，但 `Z_t^{PI,L_g}` 不等于 World Model latent；四类动作尚未接入新 model。旧随机状态范围、逐步规则反馈、预测态动态图和 planner 真实反馈仍未实现。
+当前实现不能按模块名称或旧测试外推性能。STEP 4.4 已把 `Z_t^{PI,L_g}` 接入当前定义的结构化 latent 和未训练 prior rollout，但尚无 Loss、优化、训练、校准或预测精度证据；planner 真实反馈也未实现。
 
 ## 单一科研下一步
 
-唯一下一动作是研究者冻结 outage/effective-service 的 stochastic target、独立 stochastic event 或 learned residual 边界。决定前不恢复 STEP 4.4，不进入 Definition 05，不启动 GPU，不访问 `locked_test`。
+唯一下一动作建议是 **Definition 05 — World Model Loss / Training Contract**。不得自动执行，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 
@@ -55,7 +55,7 @@
 - 2026-09-20：STEP 4.2C-A-PATCH 通过 audit-only replay 修正 verdict：logical destination 过滤 final delivery，E2E remaining 与 holder 可因果派生，same-destination reroute 可保持 Flow epoch；`flow_completed` 禁止作为 logical completion；机器 verdict=`CAUSAL_FLOW_LEDGER_FEASIBLE`。destination change/DepData 仍需研究者决定。
 - 2026-09-20：STEP 4.2C-B 实现 FlowID/Epoch/RouteRevision、Flow/Carrying 分离、Input/Return lifecycle、clean-boundary destination change、lineage 与 Raw additive state；真实 non-locked trace覆盖 Input/Return，DepData runtime=0。随后 STEP 4.2C-C 完成 Sample/Tensor additive extension；在该 Step 当时 Graph Builder 尚未开始，之后已由 STEP 4.3A 完成。
 - 2026-09-20：STEP 4.2C-B-PATCH 修正 logical destination provenance：Input 使用已成立 route terminal，Return 使用 `return_destination_id`；真实 `UAV_0→RSU_0→cloudServer_4` 两跳通过单 FlowID/Epoch、固定 destination、无重复 E2E 计数验收。
-- 2026-09-20：STEP 4.2C-C-PATCH 将 normalization stats 收紧为 `known=true AND presence=true AND feature_mask=true AND value!=null AND split=dev_train`，并补齐 History/target Logical/Carrying 四组全字段 semantic equality、ID/provenance tamper 检查与 target carrying future-ground-truth namespace；23/23 focused、跨时隙真实 trace、deterministic/round-trip/receipt negative checks 通过。在该 Step 当时 Graph Builder 尚未开始；之后 STEP 4.3A/4.3B 已完成 Builder/Encoder，World Model 和训练仍未开始。
+- 2026-09-20：STEP 4.2C-C-PATCH 将 normalization stats 收紧为 `known=true AND presence=true AND feature_mask=true AND value!=null AND split=dev_train`，并补齐 History/target Logical/Carrying 四组全字段 semantic equality、ID/provenance tamper 检查与 target carrying future-ground-truth namespace；23/23 focused、跨时隙真实 trace、deterministic/round-trip/receipt negative checks 通过。在该 Step 当时 Graph Builder 尚未开始；之后 STEP 4.3A/4.3B/4.4 已依次完成 Builder/Encoder/World Model Contract，训练仍未开始。
 
 - 2026-09-19：STEP 4.1-PATCH 修正最小 gap 语义：wired relation 是 Raw/simulator 有来源但未暴露，无 CSI 时用 type + mask；wired 可选 numeric state 不阻塞 03 minimum；CPU capacity 是静态 capability，并与 allocation/service/available CPU 分离。在该 Step 当时 graph builder 保持关闭，之后已由 STEP 4.3A 完成。
 
@@ -76,4 +76,4 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 - Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.1 mapping、STEP 4.2A existing-source input extension、STEP 4.2C-B Raw Flow、STEP 4.2C-C Flow Sample/Tensor、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已冻结。
 - Causal boundary: future task schedule is internal metadata only; canonical acceleration is backward speed difference with an explicit missing-history mask.
 - Current boundary: Physical topology 的 `radius_knn/radius=1000m/k=2` 仅是 deterministic development config，`research_frozen=false`；Return multi-hop、same-destination reroute runtime 与 formal capacities 仍未冻结。
-- Boundary: Graph Encoder 已 COMPLETE / FROZEN；World Model、Loss、Planner、Training 均为 NOT STARTED；`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+- Boundary: Graph Encoder 与 STEP 4.4 World Model Contract 已 COMPLETE / FROZEN；Loss、Planner、Training 均为 NOT STARTED；`gpu=false`、`locked_test=false`、`formal_dataset=false`。

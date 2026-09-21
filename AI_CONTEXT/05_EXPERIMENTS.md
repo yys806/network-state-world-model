@@ -63,8 +63,14 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 - STEP 3.2-PATCH finalized isolation evidence in the same bundle: provenance records real seed/source SHA/config lineage/time ranges/slot duration and 3.1F contract version; time-grid and execution timing checks run before windowing; future-reference audit is a separate Git-tracked observation artifact with 12 candidate/12 constructed/0 unresolved windows; normalization units are `m/s`, `m/s^2`, and `AirFogSim data-unit`.
 - STEP 3.2-PATCH-RECEIPT finalized the machine receipt: top-level `passed` is the AND of computed required checks plus explicit non-locked scope checks; negative fixture verified failure propagation; sample contract provenance reuses the frozen schema constant. STEP 3.2 is COMPLETE / FROZEN.
 - The split is trajectory-level; normalization is fit only on train valid masked values for speed, canonical acceleration and task size. The bundle is not a formal Dataset and has no training/GPU/locked-test evidence.
-# 2026-09-21 STEP 4.4 Communication Service Source Audit
+# 2026-09-21 STEP 4.4 Communication Service Source Audit（历史前置门）
 
 - Evidence class: `SOURCE_AUDIT_ONLY_NO_WORLD_MODEL_IMPLEMENTATION`.
 - Verdict: `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`.
+
+# 2026-09-21 STEP 4.4 Structured RSSM acceptance
+
+- Researcher resolved the audit gate by selecting an independent known stochastic outage event and closing learned service residual.
+- Focused tests: 17/17. Machine receipt: 71/71 required checks. Frozen STEP 4.3B output is used for initialization; deterministic two-step prior rollout, seeded stochastic replay, real `WiredNetworkManager` membership equality, serialize/load, CPU autograd, dynamic graph rebuild, and absent-relation CSI-mask protection pass.
+- Evidence class: `UNTRAINED_DEVELOPMENT_WORLD_MODEL_EVIDENCE`. No prediction/calibration/planning/performance claim; `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
 - This is source/contract evidence only, not training, prediction accuracy, stochastic quality, or performance evidence.

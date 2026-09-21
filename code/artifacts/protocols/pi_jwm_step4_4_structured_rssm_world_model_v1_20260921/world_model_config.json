@@ -1,0 +1,68 @@
+{
+  "config": {
+    "d_encoder": 16,
+    "d_h": 16,
+    "d_z": 4,
+    "development_only": true,
+    "graph_layers": 2,
+    "initialization_seed": 440,
+    "mlp_width": 24,
+    "n_comm_rb": 50,
+    "noise_power_mw": 3.9810717055349695e-12,
+    "outage_snr_threshold": 10.0,
+    "physical_k": 2,
+    "physical_radius_m": 1000.0,
+    "physical_topology_mode": "radius_knn",
+    "posterior_log_std_max": 2.0,
+    "posterior_log_std_min": -5.0,
+    "prior_log_std_max": 2.0,
+    "prior_log_std_min": -5.0,
+    "rb_bandwidth_mhz": 2.0,
+    "research_frozen": false,
+    "rollout_horizon": 2,
+    "slot_duration_s": 0.1,
+    "uav_or_rsu_tx_power_dbm": 29.0,
+    "v2v_tx_power_dbm": 23.0,
+    "vehicle_to_infra_tx_power_dbm": 26.0
+  },
+  "contract": {
+    "evidence_class": "UNTRAINED_DEVELOPMENT_WORLD_MODEL_EVIDENCE",
+    "fixed_current_object_support": true,
+    "future_history_encoder_reused": false,
+    "future_target_consumed_by_prior": false,
+    "known_stochastic_transition": "wireless_per_valid_rb_outage",
+    "latent_layout": {
+      "h": [
+        "physical",
+        "agent",
+        "communication",
+        "flow",
+        "task"
+      ],
+      "z": [
+        "physical_vehicle",
+        "communication"
+      ]
+    },
+    "learned_heads": [
+      "vehicle_delta_xyz_next_speed",
+      "future_per_rb_csi"
+    ],
+    "learned_outage_head": false,
+    "learned_rate_head": false,
+    "learned_service_residual": false,
+    "physical_topology": {
+      "development_only": true,
+      "k": 2,
+      "mode": "radius_knn",
+      "radius_m": 1000.0,
+      "research_frozen": false
+    },
+    "schema_version": "PI-JWM-Structured-RSSM-World-Model-v1-step4.4",
+    "stochastic_families": [
+      "physical_vehicle",
+      "communication"
+    ]
+  },
+  "schema_version": "PI-JWM-Structured-RSSM-World-Model-v1-step4.4"
+}

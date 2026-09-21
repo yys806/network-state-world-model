@@ -1028,7 +1028,14 @@ Causal Flow Ledger and Raw additive contract implemented and verified. Real AirF
 - Focused suite passes 25 tests. Regressions pass: 4.2C-A 10, 4.2B audit 7, 4.2A 17, 4.1 7, Raw causal 4 and Raw single-step 9. Deterministic rebuild/hash, 5-file JSON reload, compileall, knowledge-index write/check and diff check pass; Git commit/push remain.
 ## 2026-09-21 STEP 4.4 communication service gate
 
-- Completed the mandatory source-provenance audit before any Structured RSSM implementation.
+- Completed the mandatory source-provenance audit before Structured RSSM implementation; the original stop verdict is retained as historical pre-decision evidence.
 - Machine verdict is `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`: nominal pre-outage rate is rule-recoverable, but actual service depends on a random per-RB outage realization recorded only after execution. Wired capacity/competition are separate additive-state gaps.
-- The authorized stop gate fired. No World Model source, residual target, training, GPU, planner, formal Dataset, or locked-test access was started.
-- Next action is a researcher decision on whether outage/effective service is part of the communication stochastic state, a separate stochastic service event, or a learned residual.
+- The authorized stop gate was later resolved by the researcher-selected known stochastic event. Structured RSSM remains untrained CPU development evidence; no Loss, optimizer, Training, GPU, Planner, formal Dataset, or locked-test access was started.
+
+## 2026-09-21 STEP 4.4 Structured RSSM implementation
+
+- Researcher resolved the pre-gate with a known stochastic outage event and explicitly closed learned service residual.
+- Added structured RSSM source, builder, 17 focused tests, contract, implementation record, and a canonical artifact initialized from the frozen real STEP 4.3B representation.
+- Machine receipt currently passes 71/71 required checks. Real source config provides wired `0.00001 Mbps`; Flow Carrying-derived membership equals a real `WiredNetworkManager` fixture. Deterministic expectation rollout, seeded sample replay, reload, CPU autograd, and dynamic two-step prior recursion pass.
+- Final regression/index/diff checks now pass; Git closure remains pending. No Loss/training/GPU/planner/locked-test/formal Dataset work occurred.
+- Next action is Definition 05 Loss / Training Contract only after separate researcher authorization.

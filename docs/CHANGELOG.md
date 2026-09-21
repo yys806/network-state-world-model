@@ -1,5 +1,12 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-21：STEP 4.4 Structured RSSM World Model Contract
+
+- 研究者将 wireless outage 冻结为独立 known stochastic service event，并关闭 learned outage/rate/service residual heads。
+- 新增 structured h/z、diagonal-Gaussian prior/posterior、四类局部 Action routing、独立 dynamics graph interaction、vehicle/CSI learned heads、deterministic rules、dynamic graph rebuild 与 recursive prior rollout。
+- wired capacity 从真实 source config 读取；Flow Carrying-derived membership/count 与真实 `WiredNetworkManager` equality 通过。focused 16/16、machine receipt 71/71。
+- artifact 明确为 untrained CPU development evidence；无 Loss/optimizer/Training/GPU/Planner/locked-test/formal Dataset/performance claim。
+
 ## 2026-09-20：STEP 4.3B-PATCH Cross-Processor Formula & Z_PI Structural Interface Closure
 
 - P2A/P2C value processors now consume the complete Definition 03 joint contexts, with gates and values kept as separate processors.

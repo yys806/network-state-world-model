@@ -99,3 +99,9 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - 研究者明确授权 Frozen Tensor → typed Physical / Information dual-graph objects + Align/GeoComm。
 - Physical topology 参数只允许作为 deterministic development config，必须标记 `development_only=true`、`research_frozen=false`。
 - 明确禁止 Encoder/MLP/GRU/message passing/P2A/P2C/GNN/World Model/Loss/Planner/Training/GPU/locked_test/formal Dataset；完成后停止。
+# 2026-09-21 STEP 4.4 communication uncertainty decision
+
+- Researcher explicitly selected `Learned Future CSI -> Rule Nominal Rate -> Known Stochastic Outage Event -> Actual Service`.
+- Comm z represents CSI/channel uncertainty only. Outage is not a latent/head/input/target leak; both seeded `sample` and marked `expectation` modes are required. `learned_service_residual=false`.
+- Wired capacity may be added from causal simulator configuration; active membership/count must first be derived from Flow Carrying and checked equal to `WiredNetworkManager`.
+- STEP 4.4 implementation is authorized within the untrained CPU contract only; Loss, optimizer, Training, GPU, Planner, candidate generation, formal Dataset, and `locked_test` remain forbidden.

@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-21。**Raw Trajectory Layer / 定义 01、当前最小 Dataset/Tensor / 定义 02、STEP 4.2C-B/C-C、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已完成并冻结**。STEP 4.4 已完成强制通信 service sufficiency audit，但因 actual wireless service 含 Decision 时不可见的随机 outage realization，机器 verdict=`SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`，World Model 实现尚未开始。Loss、Planner 与 Training 均为 NOT STARTED。
+更新时间：2026-09-21。**Raw / 最小 Dataset-Tensor / Stateful Flow / Typed Dual-Graph Builder / Dual-Graph Encoder / STEP 4.4 Structured RSSM World Model Contract 均已完成并冻结**。STEP 4.4 采用研究者冻结的 known stochastic outage event，完成未训练 CPU prior rollout、规则 transition 与动态图重建；Loss、Planner 与 Training 均为 NOT STARTED。
 
 ## 当前依据与执行边界
 
@@ -28,14 +28,14 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | Comm action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 per-RB action tensors；Step 4.2A per-RB CSI additive tensor；Step 4.3A Comm relation | INPUT TENSOR + CURRENT COMM GRAPH COMPLETE / FROZEN | MINOR_MODIFICATION | CSI/typed relation 已进入 current Graph Builder；动作尚未接 Graph Encoder/model | 后续按独立授权接 Encoder/model，当前不执行 |
 | Comp action | 06 §2.1；04 §2.3 | Step 2 Raw + Step 3.3 node/allocated CPU tensors | INPUT TENSOR COMPLETE / FROZEN | STRUCTURAL_CHANGE | `allocated_cpu_per_s` 已张量化；新 graph/model 执行语义尚未接入 | 后续单独授权模型路由 |
 | UAV Mobility action | 06 §2.1/5.1 | Step 2 Raw + Step 3.3 UAV index/azimuth/elevation/speed tensors | INPUT TENSOR COMPLETE / FROZEN | MINOR_MODIFICATION | UAV action 已张量化、vehicle motion 仍为 SUMO external；尚未接新 graph/model | 后续单独授权模型路由 |
-| action routing | 04 §3.3 | `FormalDualGraphWorldModel.forward` | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | task→node/agent/task不能覆盖新Phy/Comm/Comp/Mob路径 | 建四类对象路由表 |
-| RSSM prior/posterior 局部机制 | 04 §3.1/4.1 | `formal_entity_aligned_rssm_world_model_v1.py` | AUDITED | MINOR_MODIFICATION | 可复用分工与实体维度，不可复用全部布局/解码头 | 新layout完成后迁移 |
-| latent layout | 04 §3.2 | 同上 | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 旧node/edge/flow/task均有z；新Flow/Task不设独立z | 按Phy/Comm未知动态划分 |
-| learned / deterministic boundary | 04 §2；05 §1 | `formal_world_model_loss_v1.py`、model heads | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 学习大量可规则恢复的状态/事件和派生指标 | 目标字段→生成方式表 |
-| 通信状态充分性 | 04 §4.2 第一个边界 | STEP 4.4 communication service audit / ChannelManagerCP / WiredNetworkManager | AUDITED / BLOCKED | RESEARCHER_DECISION_REQUIRED | nominal pre-outage rate 可由 CSI/RB/已知参数恢复；actual rate 还受随机 per-RB outage realization 置零，且该值只在 Outcome 出现；wired capacity/active-flow count 可走 additive extension | 研究者冻结 outage/effective-service stochastic target 或 residual 边界后，才可恢复 STEP 4.4 |
+| action routing | 04 §3.3 | `step4_4_structured_rssm_world_model_v1.py` | COMPLETE / FROZEN | STRUCTURAL_CHANGE | 四类动作按 stable slot 局部路由并拒绝无效引用；尚未用于训练/Planner | Definition 05 单独冻结 loss/training |
+| RSSM prior/posterior 局部机制 | 04 §3.1/4.1 | `step4_4_structured_rssm_world_model_v1.py` | COMPLETE / FROZEN | MINOR_MODIFICATION | Phy/Comm diagonal Gaussian prior/posterior、mean/sample 与 prior-only rollout 已实现；未训练 | Definition 05 单独冻结 loss/training |
+| latent layout | 04 §3.2 | 同上 | COMPLETE / FROZEN | STRUCTURAL_CHANGE | 五类独立 h；仅 Vehicle Physical 与 Comm 有 z；slot 对齐且无 global pooling | 保持 v1 合同 |
+| learned / deterministic boundary | 04 §2；05 §1 | Step 4.4 model/rule transition | COMPLETE / FROZEN FOR DEFINITION 04 CONTRACT | STRUCTURAL_CHANGE | 仅 vehicle motion/CSI 为 learned head；outage 为 known stochastic event；Flow/Task/CPU/UAV 为规则 | Definition 05 冻结监督与 Loss |
+| 通信状态充分性 | 04 §4.2 第一个边界 | STEP 4.4 audit + model / ChannelManagerCP / WiredNetworkManager | COMPLETE / FROZEN | MINOR_MODIFICATION | 研究者已选择独立 known stochastic outage；wired capacity 从真实 config 读入，Carrying-derived membership 与 simulator equality 通过；无 learned residual | 保持 `learned_service_residual=false` |
 | 外生事件 | 04 §2.3/4.2 | 固定entity slot/mask；presence head | AUDITED / OPEN | RESEARCHER_DECISION_REQUIRED | 已知未来场景还是随机到达过程未冻结 | 研究者定观测与生成边界 |
-| deterministic rule feedback | 04 §3.3–3.4 | base.forward + RSSM.forward/_decode | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | base逐步规则存在；RSSM修正在整段规则后，无完整反馈 | 新单步transition统一接入 |
-| 动态重构图 | 04 §3.4/4.2 | static endpoints / bearer mappings | AUDITED / NOT_STARTED | MISSING | 未基于预测位置/状态重构新图再进入下一步 | 新图更新接口，尚未实现 |
+| deterministic rule feedback | 04 §3.3–3.4 | Step 4.4 `deterministic_transition` | COMPLETE / FROZEN | STRUCTURAL_CHANGE | 每步 learned dynamics 后执行 known stochastic + deterministic rules，并反馈下一 latent | Definition 05 仅定义训练监督 |
+| 动态重构图 | 04 §3.4/4.2 | Step 4.4 `rebuild_graph` | COMPLETE / FROZEN | MISSING→IMPLEMENTED | 每步由 predicted state 更新 Physical/Comm/Flow/Task/DAG/Align/GeoComm；topology config 仍 development-only | 不擅自研究冻结 topology |
 | training | 05 §2 | `run_formal_dual_graph_gpu_train_v1.py` | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | base→freeze→RSSM不同于posterior teacher→prior训练 | 新训练阶段合同 |
 | loss / overshooting | 05 §1.2 | `formal_world_model_loss_v1.py`、RSSM末尾切片 | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 多任务目标与新边界不同；切片KL不等于多起点多距离公式 | 冻结公式→计算图映射 |
 | checkpoint selection | 05 §2.2 | `p4_gate_aware_v1`、frozen v2 | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 旧门控字典序不同于新validation Pred loss | 新协议单独批准 |
@@ -52,9 +52,13 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 ## 已完成、未开始与待决策
 
 - 本轮完成范围：Step 1 审计矩阵、只读权限与新工作流、实施记录框架、历史逻辑归档、导航与注册表同步；实际验证见 Step 1 报告。
-- 新方案的 Raw→Dataset/Tensor→Typed Graph Builder→Dual-Graph Encoder 已按当前最小合同完成并冻结；World Model、loss、训练、candidate proposal 和在线闭环仍未开始。不得把 `Z_t^{PI,L_g}` 外推为 `xi_t^Lat` 或模型实现完成。
+- 新方案的 Raw→Dataset/Tensor→Typed Graph Builder→Dual-Graph Encoder→Structured RSSM World Model Contract 已按当前最小合同完成并冻结；World Model 仅有未训练 CPU 机制证据，loss、训练、candidate proposal 和在线闭环仍未开始。
 - 研究者已明确目标：严格Physical/Information划分，四类动作含CPU与UAV，结构化RSSM，只学习未知动态，混合proposal+世界模型选择。无需再次确认这些方向。
-- 仍待决定：通信状态不足时的补充字段/必要residual；未知未来到达与离开；proposal训练方式；objective权重/风险/硬约束/fallback；新合同下实验预算与门槛。
+- 仍待决定：Definition 05 loss/training、未知未来到达与离开、proposal训练方式、objective权重/风险/硬约束/fallback、新合同下实验预算与门槛。当前通信 residual 明确关闭。
+
+## 当前 STEP 4.4 结果
+
+STEP 4.4 已将冻结 `Z_t^{PI,L_g}` 接入五类 entity/relation-aligned deterministic state，并只为 Vehicle Physical 与 Communication 建立 stochastic state。四类 Action 局部路由、独立 dynamics graph interaction、vehicle/CSI learned heads、known stochastic wireless outage、wired fair-share、Flow/Task/CPU/UAV 规则、预测态动态图重建和两步 prior-only recursive rollout 已通过未训练 CPU acceptance。receipt 为 71/71；artifact 位于 `code/artifacts/protocols/pi_jwm_step4_4_structured_rssm_world_model_v1_20260921/`。它只证明 architecture wiring、因果边界、规则执行、随机 replay 和 differentiability，不证明预测精度、校准、规划或性能。`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
 
 ## Checkpoint 与结果复用边界
 
@@ -107,4 +111,4 @@ STEP 4.3B 使用完整冻结 History Tensor 编码 Physical/Agent/Task/Flow 的�
 
 ## 下一步边界
 
-STEP 4.3A Typed Graph Builder 与 STEP 4.3B Dual-Graph Encoder（含 patch）正式 COMPLETE / FROZEN。STEP 4.4 在 communication service gate 暂停，未实现 `xi_t^Lat` 或 rollout。当前唯一下一动作是研究者决定 outage/effective-service 的随机状态或 residual target；决定前不得继续 World Model、Definition 05、训练、GPU 或 `locked_test`。
+STEP 4.3A、STEP 4.3B 与 STEP 4.4 均正式 COMPLETE / FROZEN。STEP 4.4 只冻结未训练 World Model contract，不包含 Loss、优化、训练、校准或性能结论。唯一下一步建议是 **Definition 05 — World Model Loss / Training Contract**；未另行授权前不得执行，不得启动 GPU 或访问 `locked_test`。

@@ -57,7 +57,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - Causal Flow Ledger 与 Raw additive Flow state 已实现；上述“长期 Ledger、Raw extension 未授权”是 4.2C-A 时点的历史描述，已由 4.2C-B 覆盖。
 - 真实 non-locked trace 已覆盖直接 Input/Return 与独立 Input 两跳；尚未真实观察 Return multi-hop、same-destination reroute、destination-change Epoch 和 local execution no-flow，这些目前只有 contract fixture evidence。
 - 旧无线 Return hook 的 delivered amount 可超过 observer return_size；Ledger 按冻结 min rule 封顶守恒。该 observation 不等于修改 simulator，也不能外推为正式 Dataset 结论。
-- Flow Sample/Tensor additive extension 已在 STEP 4.2C-C-PATCH 完成并冻结；其后的 STEP 4.3A Graph Builder 与 STEP 4.3B Graph Encoder 也已完成。World Model、Loss、Planner 和训练仍未开始。
+- Flow Sample/Tensor additive extension 已在 STEP 4.2C-C-PATCH 完成并冻结；其后的 STEP 4.3A Graph Builder、STEP 4.3B Graph Encoder 与 STEP 4.4 World Model Contract 也已完成。Loss、Planner 和训练仍未开始。
 - Input multi-hop logical destination continuity 已由真实 trace 闭合；Return multi-hop 和 same-destination partial-hop reroute 仍缺真实 runtime evidence。后者不得被当前 contract fixture 描述成 simulator 已支持。
 
 ## 3. 旧 P4 尚未闭合（Historical / Archived）
@@ -95,7 +95,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 - Evidence：`code/src/pi_jwm/formal_dual_graph_world_model_v1.py`、`formal_airfogsim_window_v1.py`、当前 tensor contract。
 - Affected Files：较早理论材料、旧 PPT 与后续论文表述。
 - Conflict：最终理论术语如何命名仍属于科研决策。
-- Status：目标定义已由最新 `00–06` 给出；typed Graph Builder 迁移已由 STEP 4.3A 完成，Graph Encoder/World Model 迁移未开始。
+- Status：目标定义已由最新 `00–06` 给出；typed Graph Builder、Graph Encoder 与 untrained World Model Contract 迁移已由 STEP 4.3A/4.3B/4.4 完成；Loss/Training/Planner 尚未迁移。
 
 ## 冲突记录模板
 
@@ -105,7 +105,7 @@ Unverified：没有代码、config、experiment 或可读 audit 支持的问题�
 - STEP 3.1R 已关闭原 DAG source 判断错误：observer 已提供真实 DAG rows，Raw `_capture()` 已接线；当前样本过滤两端不在 anchor input task namespace 的 future-only edges。正式 batch/split preprocessing、数据规模和模型输入选择仍未验收。
 - STEP 3.1F-PATCH 已修正 Future Action 的 anchor-only 重编号：anchor visibility 与 History-union numeric index 已分离，validator 和 disappearing-object fixture 已覆盖。4 个非 locked Raw artifact 的 18 个窗口扫描暂未发现 unresolved future reference；该短样本观察不能代替正式 dataset 可用率；未来对象到达的建模方案仍未决定。
 - STEP 4.2C-C-PATCH 当时已解决 Flow Sample/Tensor 贯穿与 normalization/semantic completeness；其“Graph Builder Contract 未冻结”边界随后由 STEP 4.3A 关闭。Return multi-hop、same-destination partial-hop reroute runtime 与 formal capacities 仍未冻结；4.2C-C artifact 本身仍只支持 Raw→Sample→Tensor 合同。
-- STEP 4.3A 已冻结 typed Graph Builder，但 Physical topology mode/radius/k 仍只是 development config；Return multi-hop、same-destination reroute runtime 和 formal graph capacities 仍未获得更强证据。Graph Encoder/GNN、World Model 与性能均未实现或验证。
+- STEP 4.3A/4.3B/4.4 已冻结 typed Graph Builder、Encoder 与 untrained World Model Contract，但 Physical topology mode/radius/k 仍只是 development config；Return multi-hop、same-destination reroute runtime 和 formal graph capacities 仍未获得更强证据。Loss/Training 尚未实现，World Model 性能尚未验证。
 
 ## 2026-09-19
 
@@ -116,6 +116,6 @@ STEP 3.2-PATCH has finalized machine-readable Dataset isolation evidence for the
 
 - The small bundle covers only three short development trajectories and cannot support formal split-ratio, scenario-coverage, generalization, or Dataset claims.
 - Tensor/model/loss/planner integration remains unimplemented; `formal_performance_claim_ready=false`, `gpu=false`, `training=false`, `locked_test_accessed=false`.
-# STEP 4.4 blocker（2026-09-21）
+# STEP 4.4 remaining boundary（2026-09-21）
 
-AirFogSim actual wireless rate is zeroed by a random per-RB outage realization. Current Decision input exposes CSI but not that future draw; Outcome records it only after execution. Researcher must decide its model boundary before World Model implementation continues. Wired capacity and active-flow count are separate additive input gaps.
+The previous outage blocker is resolved: outage is an independent known stochastic event, and learned service residual is closed. STEP 4.4 contract is COMPLETE / FROZEN, but its artifact is untrained CPU development evidence. Model accuracy, posterior/prior training loss, KL/overshooting, calibration, formal capacities, Planner behavior, and performance remain unverified. Physical topology parameters remain development-only; Return multi-hop and same-destination partial-hop reroute retain their prior evidence limits.

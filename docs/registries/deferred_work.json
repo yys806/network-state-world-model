@@ -2,27 +2,6 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
-      "id": "STEP-4.4-COMM-SERVICE-UNCERTAINTY-DECISION",
-      "type": "research_decision",
-      "status": "deferred",
-      "reason": "actual wireless service contains a random per-RB outage realization unavailable at Decision time; nominal rate and actual service are not identical",
-      "summary_zh": "STEP 4.4 已在通信 service 强制门暂停；研究者需冻结 outage/effective-service 的随机状态、独立事件或 residual target 边界。",
-      "authorization_required": true,
-      "auto_start": false,
-      "locked_test_accessed": false,
-      "entrypoint": "code/artifacts/protocols/pi_jwm_step4_4_communication_service_audit_v1_20260921/communication_service_sufficiency_audit.json",
-      "required_predecessors": [
-        "researcher decision on communication service uncertainty representation"
-      ],
-      "forbidden_until_authorized": [
-        "Structured RSSM implementation continuation",
-        "learned service residual target selection",
-        "Definition 05 loss or training",
-        "GPU execution",
-        "locked_test access"
-      ]
-    },
-    {
       "id": "P4-SEED-20260832",
       "type": "formal_gpu_training",
       "status": "deferred",

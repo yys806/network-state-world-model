@@ -1,10 +1,14 @@
-# 2026-09-21 STEP 4.4 — Communication Service Audit Gate
+# 2026-09-21 STEP 4.4 — Structured RSSM World Model Contract
 
-- Authorized goal: Structured RSSM World Model, but implementation is gated by communication-service causal sufficiency.
-- Audit verdict: `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED` because actual wireless rate includes a random per-RB outage realization unavailable at Decision time; nominal pre-outage rate is rule-recoverable.
-- Wired capacity and per-link active-flow count are simulator-available additive gaps, not the residual blocker.
-- Stop rule triggered: no World Model, residual target, Loss, Planner, Training, GPU, formal Dataset, or locked_test work may continue until the researcher freezes the uncertainty boundary.
-- Single next action: researcher decision on outage/effective-service stochastic target versus learned residual.
+- Authorized decision: wireless outage is an independent known stochastic service event; Comm z predicts CSI only; `learned_service_residual=false`.
+- Implemented: structured h/z, initializer, prior/posterior, four local Action routes, dynamics graph interaction, vehicle/CSI learned dynamics, seeded outage/expectation modes, wired fair-share, deterministic Flow/Task/CPU/UAV rules, dynamic graph rebuild, state feedback, and two-step recursive prior rollout.
+- Acceptance: focused 17/17 and machine required checks 71/71 currently pass; final regressions/index/diff/commit/push remain before closure.
+- Boundary: no Loss, optimizer, Training, GPU, Planner, candidate generation, locked_test, formal Dataset, or performance claim.
+- Single next action: finish final evidence chain, commit/push, mark STEP 4.4 COMPLETE / FROZEN, then stop.
+
+# 2026-09-21 STEP 4.4 — Communication Service Audit Gate（historical pre-gate）
+
+- Audit verdict was `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`; the researcher later resolved it by selecting an independent known stochastic outage event.
 
 # 2026-09-20 STEP 4.3B-PATCH — Cross-Processor Formula & Z_PI Structural Interface Closure
 

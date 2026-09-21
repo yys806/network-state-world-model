@@ -1,0 +1,47 @@
+{
+  "expected_service_approximation": true,
+  "mode": "expectation",
+  "source_provenance": [
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/channel_manager_cp.py",
+      "sha256": "7566ac1c663f11d59b176614803d4b9ec679a28b6b3da7840a1c9744770f16f7",
+      "symbols": [
+        "ChannelManagerCP.computeRate",
+        "ChannelManagerCP._get_power_db"
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/channel_callback/outage_callback.py",
+      "sha256": "318f32a427ae1e2f3e6fa8b16ab61071fd39a1b235e73e2f6b39e089b3f6be59",
+      "symbols": [
+        "rayleigh_outage_prob"
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/wired_manager.py",
+      "sha256": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe",
+      "symbols": [
+        "WiredNetworkManager.step"
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/examples/config.yaml",
+      "sha256": "5d4bc789d16ef73612477de197c621aa3cdcb7992780939148909ddcf2d7b12b",
+      "symbols": [
+        "channel.outage_snr_threshold"
+      ]
+    }
+  ],
+  "wired_membership_equality": {
+    "derived_count": 2,
+    "derived_flow_indices": [
+      3,
+      4
+    ],
+    "simulator_count": 2,
+    "simulator_flow_indices": [
+      3,
+      4
+    ]
+  }
+}

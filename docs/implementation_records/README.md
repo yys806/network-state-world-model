@@ -20,7 +20,7 @@
 | STEP 3.3 | [STEP_03_3_MODEL_INPUT_TENSOR_COLLATION_CONTRACT.md](STEP_03_3_MODEL_INPUT_TENSOR_COLLATION_CONTRACT.md) | fixed-shape CPU tensor/collation、Past Outcome、Target、四类 action、stable vocab/mask | COMPLETE / FROZEN；双图/模型未开始 |
 | STEP 4.1 | [STEP_04_1_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING.md](STEP_04_1_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING.md) | Physical / Information 对象—字段—关系映射、数据缺口和旧实现冲突 | COMPLETE / FROZEN mapping；graph builder 未开始 |
 | STEP 4.2A | [STEP_04_2A_EXISTING_SOURCE_GRAPH_INPUT_ADDITIVE_EXTENSION.md](STEP_04_2A_EXISTING_SOURCE_GRAPH_INPUT_ADDITIVE_EXTENSION.md) | 已有来源的 graph minimum inputs 贯穿 Raw amendment、Sample、preprocessing 与 Tensor | COMPLETE；graph builder 未开始 |
-| STEP 4.4 | [STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL.md](STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL.md) | Structured RSSM 前置 communication service sufficiency gate | BLOCKED；`SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`；World Model 未实现 |
+| STEP 4.4 | [STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL.md](STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL.md) | Structured RSSM、known stochastic outage、deterministic transition 与 dynamic graph rollout | COMPLETE / FROZEN；未训练 CPU development evidence；Definition 05 未开始 |
 
 不预建貌似已经执行的后续 Step 文件。`00–06` 是研究定义章节，不是可以自动执行的七个工程 Step。
 
