@@ -58,7 +58,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 
 ## 当前 STEP 4.4 结果
 
-STEP 4.4 已将冻结 `Z_t^{PI,L_g}` 接入五类 entity/relation-aligned deterministic state，并只为 Vehicle Physical 与 Communication 建立 stochastic state。四类 Action 局部路由、独立 dynamics graph interaction、vehicle/CSI learned heads、known stochastic wireless outage、wired fair-share、Flow/Task/CPU/UAV 规则、预测态动态图重建和两步 prior-only recursive rollout 已通过未训练 CPU acceptance。receipt 为 71/71；artifact 位于 `code/artifacts/protocols/pi_jwm_step4_4_structured_rssm_world_model_v1_20260921/`。它只证明 architecture wiring、因果边界、规则执行、随机 replay 和 differentiability，不证明预测精度、校准、规划或性能。`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+STEP 4.4 已将冻结 `Z_t^{PI,L_g}` 接入五类 entity/relation-aligned deterministic state，并只为 Vehicle Physical 与 Communication 建立 stochastic state。四类 Action 局部路由、独立 dynamics graph interaction、vehicle/CSI learned heads、known stochastic wireless outage、wired fair-share、Flow/Task/CPU/UAV 规则、预测态动态图重建和两步 prior-only recursive rollout 已通过未训练 CPU acceptance。STEP 4.4-PATCH 进一步闭合 carrying/hop、Flow 完成同步、4.3A topology reuse、端点有效性、Task lifecycle 与 recursive counterfactual 规则；receipt 为 87/87，artifact 位于 `code/artifacts/protocols/pi_jwm_step4_4_structured_rssm_world_model_v1_20260921/`。它只证明 architecture wiring、因果边界、规则执行、随机 replay 和 differentiability，不证明预测精度、校准、规划或性能。`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
 
 ## Checkpoint 与结果复用边界
 

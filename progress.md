@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-21 STEP 4.4-PATCH
+
+完成 Structured RSSM 结构与规则 transition 语义收尾：补齐 carrying/hop state、intermediate-hop advancement、Flow completion/presence 同步、动态 Flow-Comm relation 重绑定，并复用 4.3A physical topology policy（无意外 self edge）。receipt 扩展为 87/87（50 original + 21 service + 16 structural），canonical 两步 rollout 第二步使用负索引 no-op，仍严格拒绝 absent Flow action。focused tests 20/20；training=false、gpu=false、locked_test=false、formal_dataset=false，未进入 Definition 05。
+
 ## 2026-09-20 STEP 4.2B
 
 完成 Remaining Raw Source & Stateful Flow Contract Audit。新增 source audit helper、builder、focused tests、contract、实施记录和 provenance artifact。5/5 focused tests 通过；Input/Return 只能部分构造，DepData 无真实传输来源，综合 verdict=`FLOW_CONTRACT_NOT_YET_SUPPORTED`。未实现 Graph Builder、Tensor、模型、训练、GPU 或 locked_test。
@@ -1036,6 +1040,6 @@ Causal Flow Ledger and Raw additive contract implemented and verified. Real AirF
 
 - Researcher resolved the pre-gate with a known stochastic outage event and explicitly closed learned service residual.
 - Added structured RSSM source, builder, 17 focused tests, contract, implementation record, and a canonical artifact initialized from the frozen real STEP 4.3B representation.
-- Machine receipt currently passes 71/71 required checks. Real source config provides wired `0.00001 Mbps`; Flow Carrying-derived membership equals a real `WiredNetworkManager` fixture. Deterministic expectation rollout, seeded sample replay, reload, CPU autograd, and dynamic two-step prior recursion pass.
+- Machine receipt currently passes 87/87 required checks (50 original + 21 service + 16 structural). Real source config provides wired `0.00001 Mbps`; Flow Carrying-derived membership/count equals a real `WiredNetworkManager` fixture. Deterministic expectation rollout, seeded sample replay, reload, CPU autograd, and dynamic two-step prior recursion pass.
 - Final regression/index/diff checks now pass; Git closure remains pending. No Loss/training/GPU/planner/locked-test/formal Dataset work occurred.
 - Next action is Definition 05 Loss / Training Contract only after separate researcher authorization.

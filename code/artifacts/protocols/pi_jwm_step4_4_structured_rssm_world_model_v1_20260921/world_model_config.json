@@ -26,10 +26,12 @@
     "vehicle_to_infra_tx_power_dbm": 26.0
   },
   "contract": {
+    "categorical_feature_policy": "typed_embedding_only_no_continuous_index_scalars",
     "evidence_class": "UNTRAINED_DEVELOPMENT_WORLD_MODEL_EVIDENCE",
     "fixed_current_object_support": true,
     "future_history_encoder_reused": false,
     "future_target_consumed_by_prior": false,
+    "graph_layers": 2,
     "known_stochastic_transition": "wireless_per_valid_rb_outage",
     "latent_layout": {
       "h": [

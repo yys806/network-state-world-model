@@ -41,13 +41,14 @@ Reused the frozen STEP 4.3B encoder package and verified diagonal-Gaussian/GRU i
 ## Validation
 
 - TDD red: focused test failed with `ModuleNotFoundError` before the new module existed.
-- Focused tests: 17/17 passed after implementation, covering formulas, explicit RNG, complete Comm allocation write, local routing, invalid index rejection, posterior/prior separation, recursive feedback, dynamic graph, route/identity semantics, intermediate-hop conservation, serialization, negative receipt logic, and absent-relation CSI-mask protection.
-- Artifact builder: 71/71 required checks (50 original + 21 service checks), zero failed; top-level `passed` is validated from the logical AND plus explicit scope booleans.
+- Focused tests: 20/20 passed after implementation, covering formulas, explicit RNG, complete Comm allocation write, local routing, invalid index rejection, posterior/prior separation, recursive feedback, dynamic graph, route/identity semantics, intermediate-hop conservation, serialization, negative receipt logic, absent-relation CSI-mask protection, graph depth, carrying state, and hop advancement.
+- Artifact builder: 87/87 required checks (50 original + 21 service + 16 structural/rule checks), zero failed; top-level `passed` is validated from the logical AND plus explicit scope booleans. The recursive receipt uses a contract-valid negative-index no-op on step two when step one has completed a Flow, so absent Flow references remain rejected.
 - Frozen real Encoder output is used for latent initialization; the canonical wired capacity `0.00001 Mbps` is read from its real non-locked source trajectory config.
 - Real `WiredNetworkManager` equality fixture: derived and simulator active memberships/counts match.
 - Deterministic expectation rollout, seeded sampled outage replay, state-dict reload, CPU autograd, immutable input, and machine provenance are included in the artifact.
 - Independent double rebuild produced identical files; final rollout file SHA-256 `892de87e79326f4ec02cd5a461667f80252304bbddefd348a4b2ebc97b8a16bb`, package SHA-256 `dfead8977bb95b9d082dd03762a9a6040bc562403bfb401b6abf290bba997684`, manifest SHA-256 `327d186b9ac64c4a0c0dcc2f8de4e0e227979b3b750a0e474ac0fc866a44e221`.
-- Final regressions, compileall, deterministic double rebuild/hash, knowledge-index write/check, and `git diff --check` are recorded after final documentation synchronization.
+- Structural closure checks typed categorical embeddings, effective graph depth, 4.3A physical topology reuse/no self edges, carrying/hop state and advancement, dynamic Flow-Comm rebinding, completion/presence synchronization, lifecycle/DAG/endpoint validity rules, and a state-changing recursive counterfactual.
+- Final focused/regression tests, compileall, deterministic double rebuild/hash, knowledge-index write/check, and `git diff --check` are recorded after final documentation synchronization.
 
 ## Results
 
@@ -68,7 +69,7 @@ Expected and actual agree for the authorized v1 boundary. The earlier audit bloc
 
 ## Git
 
-Pending final validation, commit, and push. The final completion receipt records the resulting commit and branch.
+Pending final validation, commit, and push for STEP 4.4-PATCH. The final completion receipt records the resulting commit and branch.
 
 ## Next Step
 

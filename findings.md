@@ -999,3 +999,8 @@
 - Complete RB allocation and predicted CSI feed channel-type power/interference/noise SINR. AirFogSim nominal-rate and Rayleigh-outage formulas are explicit; `sample` requires a generator and `expectation` is marked approximate.
 - Existing Flow Carrying state exactly derives wired active membership/count in the real manager equality fixture; no extra membership tensor is needed. Capacity itself is read from the causal trajectory config and remains an explicit World Model state input.
 - The implemented artifact proves untrained mechanism only. Accuracy, calibration, loss, training, planning and performance remain unknown.
+## 2026-09-21 STEP 4.4-PATCH structural closure
+
+- Root cause: canonical recursive receipt reused a route action after step one completed its Flow; the existing absent-index rejection was correct. The builder now uses a contract-valid negative-index no-op for step two while retaining complete RB allocation.
+- The final receipt contains 87 required checks: 50 original, 21 service-transition, and 16 structural/rule checks. It passed with zero failures. Task lifecycle acceptance reads the frozen `LIFECYCLE_VOCAB` instead of a numeric literal.
+- Evidence remains untrained CPU development only. No Raw/Tensor/graph schema, Loss, Training, Planner, GPU, `locked_test`, or formal Dataset was changed or used.

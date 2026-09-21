@@ -15,10 +15,12 @@ import numpy as np
 import torch
 
 from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import load_flow_tensor_batch
+from pi_jwm.step3_3_model_input_tensor_v1 import LIFECYCLE_VOCAB
 from pi_jwm.step4_3a_typed_dual_graph_builder_v1 import load_typed_dual_graph_batch
 from pi_jwm.step4_3b_dual_graph_encoder_v1 import load_encoder_package
 from pi_jwm.step4_4_structured_rssm_world_model_v1 import (
     ADDITIONAL_SERVICE_CHECKS,
+    ADDITIONAL_STRUCTURAL_CHECKS,
     COMM_WIRED,
     COMM_WIRELESS,
     ENTITY_UAV,
@@ -117,6 +119,9 @@ def _real_state(tensor: dict[str, Any], graph: dict[str, Any], index: int = 2) -
     rb_active = torch.zeros_like(gt("comm_relations", "csi_mask", torch.bool))
     # Contract-valid development allocation; the resolver always receives the complete matrix.
     rb_active[:, comm_type[0] == COMM_WIRELESS, 0] = True
+    carrying_features = gt("flow_carrying_state", "features", torch.float32)
+    carrying_route_nodes = gt("flow_carrying_state", "route_node_indices", torch.long)
+    carrying_route_mask = gt("flow_carrying_state", "route_node_mask", torch.bool)
     state = {
         "entity_presence": t("entity_presence", torch.bool)[:, current], "entity_type_index": entity_type,
         "vehicle_mask": entity_type == ENTITY_VEHICLE, "uav_mask": entity_type == ENTITY_UAV,
@@ -129,6 +134,8 @@ def _real_state(tensor: dict[str, Any], graph: dict[str, Any], index: int = 2) -
         "flow_presence": flow_presence, "flow_total": flow_raw[..., 0], "flow_remaining": flow_raw[..., 2],
         "flow_source_index": gt("flow_relations", "source_index", torch.long), "flow_destination_index": gt("flow_relations", "destination_index", torch.long),
         "flow_identity_index": gt("flow_relations", "flow_index", torch.long), "flow_route_revision": gt("flow_carrying_state", "route_revision", torch.long),
+        "current_holder_index": gt("flow_carrying_state", "holder_index", torch.long), "current_hop_index": gt("flow_carrying_state", "current_hop_index", torch.long),
+        "hop_progress": carrying_features[..., 0], "hop_remaining": carrying_features[..., 1], "route_node_indices": carrying_route_nodes, "route_node_mask": carrying_route_mask,
         "carrying_active": gt("flow_carrying_state", "active", torch.bool), "carrying_hop_source_index": gt("flow_carrying_state", "hop_source_index", torch.long), "carrying_hop_destination_index": gt("flow_carrying_state", "hop_destination_index", torch.long), "flow_comm_relation_index": flow_comm,
         "task_presence": gt("task_nodes", "presence", torch.bool), "task_work_total": task_total,
         "task_work_remaining": (task_total - task_computed).clamp_min(0), "task_progress": torch.where(task_total > 0, task_computed / task_total.clamp_min(1e-9), torch.zeros_like(task_total)), "task_lifecycle_index": gt("task_nodes", "lifecycle_index", torch.long),
@@ -138,7 +145,7 @@ def _real_state(tensor: dict[str, Any], graph: dict[str, Any], index: int = 2) -
         "physical_relation_features": torch.zeros((1, entity_type.shape[1], entity_type.shape[1], 4)),
         "physical_relation_validity": torch.ones((1, entity_type.shape[1], entity_type.shape[1]), dtype=torch.bool),
         "comm_csi": state["csi"].clone(), "comm_csi_mask": state["csi_mask"].clone(), "comm_validity": state["comm_validity"].clone(), "comm_source_index": comm_src.clone(), "comm_target_index": comm_dst.clone(),
-        "flow_presence": state["flow_presence"].clone(), "flow_source_index": state["flow_source_index"].clone(), "flow_destination_index": state["flow_destination_index"].clone(), "task_presence": state["task_presence"].clone(),
+        "flow_presence": state["flow_presence"].clone(), "flow_source_index": state["flow_source_index"].clone(), "flow_destination_index": state["flow_destination_index"].clone(), "flow_type_index": gt("flow_relations", "flow_type_index", torch.long), "flow_status_index": gt("flow_relations", "status_index", torch.long), "task_presence": state["task_presence"].clone(),
         "task_agent_task_index": gt("task_agent_relations", "task_index", torch.long), "task_agent_agent_index": gt("task_agent_relations", "agent_index", torch.long), "task_agent_validity": gt("task_agent_relations", "validity", torch.bool),
         "dag_edges": torch.stack((gt("dag_relations", "source_task_index", torch.long), gt("dag_relations", "target_task_index", torch.long)), -1), "dag_validity": gt("dag_relations", "validity", torch.bool),
         "align_validity": state["entity_presence"].clone(), "geo_comm_validity": state["comm_wireless_mask"] & state["comm_validity"],
@@ -195,9 +202,15 @@ def build(output_dir: Path) -> dict[str, Any]:
     config = StructuredRSSMConfig()
     model = StructuredRSSMWorldModel(config).eval()
     state_before = {k: v.clone() for k, v in state.items()}
-    output = model.rollout(zpi, state, graph, [action, action], prior_mode="mean", service_mode="expectation")
+    # The second recursive step must not reuse an action that may have
+    # completed its Flow in step one.  Negative indices are the contract's
+    # explicit no-op encoding; the complete RB allocation remains present.
+    second_action = copy.deepcopy(action)
+    for name in ("mobility_entity_index", "comm_relation_index", "comp_agent_index", "comp_task_index", "route_task_index", "route_flow_index"):
+        second_action[name] = torch.full_like(second_action[name], -1)
+    output = model.rollout(zpi, state, graph, [action, second_action], prior_mode="mean", service_mode="expectation")
     repeat_model = StructuredRSSMWorldModel(config).eval()
-    repeat = repeat_model.rollout(zpi, state, graph, [action, action], prior_mode="mean", service_mode="expectation")
+    repeat = repeat_model.rollout(zpi, state, graph, [action, second_action], prior_mode="mean", service_mode="expectation")
     wired_equal, wired_details = _wired_manager_equality()
 
     sinr = torch.full((256,), 10.0)
@@ -237,7 +250,7 @@ def build(output_dir: Path) -> dict[str, Any]:
     with tempfile.TemporaryDirectory() as tmp:
         package_tmp = Path(tmp) / "model.pt"; save_world_model_package(model, package_tmp)
         loaded = load_world_model_package(package_tmp).eval()
-        round_trip = world_model_digest(output) == world_model_digest(loaded.rollout(zpi, state, graph, [action, action], prior_mode="mean", service_mode="expectation"))
+        round_trip = world_model_digest(output) == world_model_digest(loaded.rollout(zpi, state, graph, [action, second_action], prior_mode="mean", service_mode="expectation"))
 
     terminal = torch.tensor([100.0, 10000.0]); capped = wired_fair_share_service(terminal, capacity_mbps=1.0, slot_duration_s=0.1, active_count=2)
     forbidden_heads = ("outage_head", "rate_head", "service_head", "service_residual", "flow_remaining_head", "task_progress_head", "acceleration_decoder")
@@ -277,7 +290,31 @@ def build(output_dir: Path) -> dict[str, Any]:
         "intermediate_hop_no_e2e_reduction": bool(torch.all(output["traces"][0]["rule"]["e2e_reduction_bytes"][~output["traces"][0]["rule"]["terminal_hop"]] == 0)),
         "complete_stochastic_event_trace": output["diagnostics"]["stochastic_event_trace_included"],
     }
-    required = {**{k: bool(v) for k, v in original.items()}, **{k: bool(v) for k, v in service.items()}}
+    syn_zpi, syn_state, syn_graph, syn_action = model.synthetic_fixture()
+    syn_out = model.rollout(syn_zpi, syn_state, syn_graph, [syn_action], prior_mode="mean", service_mode="expectation")
+    cfg_one = StructuredRSSMConfig(**{**asdict(config), "graph_layers": 1})
+    model_one = StructuredRSSMWorldModel(cfg_one).eval()
+    one_out = model_one.rollout(syn_zpi, syn_state, syn_graph, [syn_action], prior_mode="mean", service_mode="expectation")
+    structural = {
+        "no_raw_index_learned_feature": model.contract["categorical_feature_policy"] == "typed_embedding_only_no_continuous_index_scalars",
+        "categorical_embedding_semantics": all(name in dict(model.named_modules()) for name in ("entity_type_embedding", "comm_type_embedding", "lifecycle_embedding", "flow_type_embedding", "flow_status_embedding", "task_agent_type_embedding")),
+        "graph_layers_effective": config.graph_layers != 1 and not torch.equal(syn_out["latents"][0]["h"]["agent"], one_out["latents"][0]["h"]["agent"]),
+        "future_topology_matches_builder_policy": bool(torch.all(output["graphs"][0]["physical_relation_validity"] == model.rebuild_graph(state, graph)["physical_relation_validity"])),
+        "no_unintended_self_physical_edges": bool(torch.all(torch.diagonal(output["graphs"][0]["physical_relation_validity"], dim1=1, dim2=2) == 0)),
+        "carrying_state_complete": all(k in state for k in ("current_holder_index", "current_hop_index", "hop_progress", "hop_remaining", "route_node_indices", "route_node_mask")),
+        "hop_service_capped_by_hop_remaining": bool(torch.all(output["traces"][0]["rule"]["delivered_bytes"] <= state["hop_remaining"])),
+        "hop_advancement": bool(torch.any(syn_out["states"][0]["current_hop_index"] > syn_state["current_hop_index"])),
+        "dynamic_flow_comm_mapping": bool(torch.all((output["states"][0]["flow_comm_relation_index"] < 0) | (output["states"][0]["flow_comm_relation_index"] < state["comm_presence"].shape[1]))),
+        "flow_completion_presence_sync": bool(torch.all(output["states"][0]["flow_presence"] == (output["states"][0]["flow_remaining"] > 0))),
+        "route_revision_semantics": bool(torch.all(output["states"][0]["flow_route_revision"] >= state["flow_route_revision"])),
+        "task_lifecycle_rule_complete": bool(torch.all(~output["states"][0]["task_presence"] | (output["states"][0]["task_work_remaining"] > 0) | (output["states"][0]["task_lifecycle_index"] == LIFECYCLE_VOCAB.index("completed")))),
+        "dag_dynamic_rule": torch.equal(output["graphs"][0]["dag_edges"], graph["dag_edges"]) and torch.equal(output["graphs"][0]["dag_validity"], graph["dag_validity"]),
+        "comm_endpoint_presence_validity": bool(torch.all(~output["graphs"][0]["comm_validity"] | (state["entity_presence"].gather(1, state["comm_source_index"].clamp_min(0)) & state["entity_presence"].gather(1, state["comm_target_index"].clamp_min(0))))),
+        "task_agent_dynamic_validity": bool(torch.all(~output["graphs"][0]["task_agent_validity"] | (state["task_presence"].gather(1, state["task_agent_task_index"].clamp_min(0)) & state["entity_presence"].gather(1, state["task_agent_agent_index"].clamp_min(0))))),
+        "strong_recursive_counterfactual": state_feedback_changes and output["diagnostics"]["recursive_state_feedback"],
+    }
+    assert set(structural) == set(ADDITIONAL_STRUCTURAL_CHECKS)
+    required = {**{k: bool(v) for k, v in original.items()}, **{k: bool(v) for k, v in service.items()}, **{k: bool(v) for k, v in structural.items()}}
     assert set(required) == set(REQUIRED_ACCEPTANCE_CHECKS)
     scope = {name: False for name in ("loss", "optimizer", "training", "gpu", "planner", "candidate_generation", "locked_test", "formal_dataset", "performance_claim")}
     receipt = {"schema_version": "PI-JWM-Step-4.4-Acceptance-Receipt-v1", "evidence_class": "UNTRAINED_DEVELOPMENT_WORLD_MODEL_EVIDENCE", "required_checks": required, "scope": scope}

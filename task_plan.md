@@ -1,8 +1,16 @@
+# 2026-09-21 STEP 4.4-PATCH — World Model Structural & Rule-Transition Semantic Closure
+
+- [x] Close carrying/hop state, intermediate-hop advancement, Flow completion/presence synchronization, dynamic Flow-Comm rebinding, 4.3A topology reuse, endpoint/lifecycle/DAG validity, and recursive counterfactual evidence.
+- [x] Keep absent/invalid action references rejected; canonical receipt uses an explicit negative-index no-op after a Flow completes.
+- [x] Final receipt: 87/87 required checks (50 original + 21 service + 16 structural); no training, GPU, locked_test, formal Dataset, Definition 05, Loss, or Planner.
+- [x] Fresh final regressions, knowledge-index check, diff review, commit/push, and completion report remain only for the final handoff.
+- Single next action after closure: researcher authorization for **Definition 05 — World Model Loss / Training Contract**; do not execute automatically.
+
 # 2026-09-21 STEP 4.4 — Structured RSSM World Model Contract
 
 - Authorized decision: wireless outage is an independent known stochastic service event; Comm z predicts CSI only; `learned_service_residual=false`.
 - Implemented: structured h/z, initializer, prior/posterior, four local Action routes, dynamics graph interaction, vehicle/CSI learned dynamics, seeded outage/expectation modes, wired fair-share, deterministic Flow/Task/CPU/UAV rules, dynamic graph rebuild, state feedback, and two-step recursive prior rollout.
-- Acceptance: focused 17/17 and machine required checks 71/71 currently pass; final regressions/index/diff/commit/push remain before closure.
+- Acceptance: focused 20/20 and machine required checks 87/87 pass after STEP 4.4-PATCH; final commit/push and handoff remain before closure.
 - Boundary: no Loss, optimizer, Training, GPU, Planner, candidate generation, locked_test, formal Dataset, or performance claim.
 - Single next action: finish final evidence chain, commit/push, mark STEP 4.4 COMPLETE / FROZEN, then stop.
 

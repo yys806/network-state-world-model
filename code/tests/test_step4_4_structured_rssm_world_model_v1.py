@@ -21,6 +21,7 @@ from pi_jwm.step4_4_structured_rssm_world_model_v1 import (
     wired_fair_share_service,
     wireless_nominal_rate_mbps,
     world_model_digest,
+    ADDITIONAL_STRUCTURAL_CHECKS,
 )
 
 
@@ -73,6 +74,36 @@ class Step44ServiceRuleTests(unittest.TestCase):
 
 
 class Step44ArchitectureTests(unittest.TestCase):
+    def test_structural_acceptance_checks_are_declared(self):
+        expected = {
+            "no_raw_index_learned_feature", "categorical_embedding_semantics", "graph_layers_effective",
+            "future_topology_matches_builder_policy", "no_unintended_self_physical_edges", "carrying_state_complete",
+            "hop_service_capped_by_hop_remaining", "hop_advancement", "dynamic_flow_comm_mapping",
+            "flow_completion_presence_sync", "route_revision_semantics", "task_lifecycle_rule_complete",
+            "dag_dynamic_rule", "comm_endpoint_presence_validity", "task_agent_dynamic_validity",
+            "strong_recursive_counterfactual",
+        }
+        self.assertEqual(set(ADDITIONAL_STRUCTURAL_CHECKS), expected)
+
+    def test_graph_layers_really_change_processor_depth(self):
+        one = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+        two = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=2, n_comm_rb=4))
+        self.assertEqual(len(one.dynamics_processor_layers), 1)
+        self.assertEqual(len(two.dynamics_processor_layers), 2)
+        self.assertNotEqual(world_model_digest(one.dynamics_processor_layers.state_dict()), world_model_digest(two.dynamics_processor_layers.state_dict()))
+
+    def test_flow_state_contains_carrying_progress_and_hop_advances(self):
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+        zpi, state, graph, action = model.synthetic_fixture()
+        for key in ("current_holder_index", "current_hop_index", "hop_progress", "hop_remaining", "route_node_indices", "route_node_mask"):
+            self.assertIn(key, state)
+        state["flow_remaining"][0, 0] = 1000.0
+        state["hop_remaining"][0, 0] = 1.0
+        state["route_node_indices"][0, 0] = torch.tensor([0, 1, 2, 3])
+        state["route_node_mask"][0, 0] = True
+        out = model.rollout(zpi, state, graph, [action], prior_mode="mean", service_mode="expectation")
+        self.assertEqual(int(out["states"][0]["current_hop_index"][0, 0]), 1)
+        self.assertTrue(bool(out["states"][0]["carrying_active"][0, 0]))
     def test_structured_layout_and_forbidden_heads(self):
         model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
         modules = dict(model.named_modules())
