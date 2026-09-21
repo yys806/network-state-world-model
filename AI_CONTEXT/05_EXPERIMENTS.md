@@ -52,6 +52,12 @@ Step 2.4 机器证据：`code/artifacts/protocols/pi_jwm_communication_outcome_s
 
 Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终泛化和正式 planner 收益均不存在。
 
+## 2026-09-21 STEP 5.1B Posterior / Loss / KL / Metric
+
+新增 `step5_1b_posterior_loss_metric_v1.py` 与 CPU receipt。Future Motion/CSI target 只进入 training-only posterior target encoder；prior 没有 target 入参。已验证 family-wise masked MSE、冻结统计量 raw→normalized bridge、analytic diagonal Gaussian KL（raw/adjusted free-bits/count）、`L_Val` 与逐 horizon Motion/CSI 指标。
+
+Focused 5/5，12-sample non-locked development receipt `passed=true`；finite forward、finite gradients、serialization reload 和 deterministic CPU path 通过。范围明确为 `training=false`、`optimizer_step=false`、`gpu=false`、`formal_dataset=false`、`locked_test_accessed=false`、`performance_claim=false`。不构成训练收敛、正式 Dataset 或预测性能结果；STEP 5.2 未授权。
+
 ## 当前新定义实验状态
 
 - `STEP 1` 只有只读实现审计和 49 项旧 synthetic CPU contract 回归；它们不是新定义性能实验。

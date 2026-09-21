@@ -1363,3 +1363,11 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] PATCH2 pre-Return-boundary receipt reached 87 checks and focused 22/22; superseded by the final 91-check / 26-test boundary above.
 - [x] Final regression/index/diff review passed.
 - [ ] Commit and push main, then stop.
+# 2026-09-21 STEP 5.1B — Definition 05 Posterior / Loss / KL / Metric Implementation
+
+- [x] Add target-only Motion/CSI encoders, explicit posterior teacher and target-free prior primitive.
+- [x] Add family mask-normalized MSE, frozen raw/normalized bridge, analytic masked KL with configurable free bits, `L_Val`, and raw-unit metric primitives.
+- [x] Run focused CPU receipt on the existing 12-sample STEP 5.1A-PATCH artifact; no optimizer/training/GPU/locked-test.
+- [ ] Complete final regression, context/index consistency, commit and push.
+- Boundary: no training loop, optimizer step, GPU, formal dataset, planner, baseline, or `locked_test`.
+- Single next action after closure: researcher review; do not enter STEP 5.2 automatically.

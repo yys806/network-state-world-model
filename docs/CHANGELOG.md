@@ -204,3 +204,9 @@
 - 修正 horizon 2+ Motion：从固定 History anchor 的累计位移改为相邻 future frame 的 local one-step displacement，并新增缺失前一 future position component 的 mask 回归。
 - Motion tensor 现在严格按 current physical input slots；future row/target-index permutation、future-only Vehicle 和 disappearing Vehicle 不再改变槽位。
 - CSI 增加 current model relation slot、relation identity、endpoint input slots、type 与 RB identity 的机器验收；12-sample non-locked receipt 重建通过。
+
+# 2026-09-21：STEP 5.1B Posterior / Loss / KL / Metric
+
+- 新增 Motion/CSI target-only encoder、training-only posterior、target-free prior、family-wise masked MSE、冻结统计量 raw→normalized bridge、analytic KL、`L_Val` 与逐 horizon Motion/CSI metrics。
+- 新增 CPU receipt：focused 5/5、finite forward/gradients、serialization reload、deterministic path 通过；12-sample non-locked development artifact `passed=true`。
+- 明确 scope：`training=false`、`optimizer_step=false`、`gpu=false`、`formal_dataset=false`、`locked_test_accessed=false`、`performance_claim=false`；STEP 5.2 未开始。

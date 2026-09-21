@@ -1047,3 +1047,8 @@
 - Root causes were weak hop cap, pre-route rebinding, scalar route revision input, unused Flow categorical embeddings, and static-only DAG receipt.
 - Existing Return Flow is not fabricated or omitted: the adapter now binds frozen 4.3A `task_index + flow_type_index=Return`; future-only Return birth remains unsupported and missing required support is an explicit blocking side-state.
 - Evidence remains mechanism-level, CPU-only, untrained, and non-formal.
+# 2026-09-21 STEP 5.1B
+
+- 当前实现只允许对应 family 的 normalized target 和 mask 进入 target encoder；prior predictor 的接口不接受 target，tampering invariance test 通过。
+- family loss 在各自有效 mask 内归一化，空 mask 返回零和零计数；KL 显式返回 raw、free-bit adjusted 和 eligible count，未实现 balancing/overshooting。
+- 12-sample CPU receipt 证明原语可执行，不构成训练收敛、性能或正式数据集证据。

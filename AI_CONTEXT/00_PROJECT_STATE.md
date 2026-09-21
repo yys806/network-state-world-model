@@ -12,12 +12,12 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 5.1A-PATCH — Multi-Horizon Motion Semantics & Stable Slot Alignment Fix` 已完成并冻结 target contract。初版 horizon 2+ Motion 错用 History anchor 且 Motion rows 依赖 future entity order；现已改为 local one-step displacement，并按 current physical input slots 固定对齐。CSI 已显式绑定 current model relation slot/identity/endpoint/type/RB。Loss/Posterior/Metric 仍为 NOT STARTED。STEP 4.4-PATCH3 继续 COMPLETE / FROZEN。
+- 当前 Step：`STEP 5.1B — Definition 05 Posterior / Loss / KL / Metric Implementation` 已完成 CPU 原语与 non-locked receipt。5.1A-PATCH target contract 继续冻结；Motion 使用 local one-step displacement/current physical slots，CSI 绑定 current model relation slot/identity/endpoint/type/RB。训练、GPU、formal dataset、planner、locked-test 仍未开始。STEP 4.4-PATCH3 继续 COMPLETE / FROZEN。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - STEP 4.4-PATCH3 已在源码中显式区分 Return requirement 的 known/unknown：冻结 current-side 不含 `Task.return_size`，所以 no slot 是 unknown，不是 no-return；unknown 或 known-required/no-slot 都不能错误 final-complete，但 side-state 可区分两者。DAG 只按有效前驱动态释放，terminal Flow completion 同步 remaining/presence/carrying/status。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
 - Definition 05 v1 已决定：deterministic mean decoder；Motion/CSI family-wise mask-MSE；Phy/Comm analytic KL + warm-up/free-bits；overshooting OFF；Future Target 仅进入 family-specific training posterior；joint training；prior-only validation；checkpoint=`argmin L_Val`；逐 horizon raw-unit Motion/CSI MAE/RMSE。STEP 5.1A 已补齐 target contract，但 Loss/Posterior/Metric/Training 尚未实现，禁止开始训练。
-- 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder 与 Structured RSSM World Model Contract 已验收；Definition 05 的科研决策已冻结，但 Loss/Posterior/Metric/Training 实现仍未开始。Physical topology、Encoder/World Model 参数仍是 development-only。
+- 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder、Structured RSSM World Model Contract 与 5.1B CPU posterior/loss/KL/metric primitives 已验收；训练实现仍未开始。Physical topology、Encoder/World Model 参数仍是 development-only。
 - 审计结论：时间因果、稳定 ID/index、mask/split、typed graph 与 Definition 03 encoder 已落地；`Z_t^{PI,L_g}→xi_t^Lat`、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环仍需后续授权与实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step `training=false`、`gpu=false`。

@@ -1072,3 +1072,6 @@ Causal Flow Ledger and Raw additive contract implemented and verified. Real AirF
 # 2026-09-21 STEP 4.4-PATCH2
 
 Implemented the authorized transition closure only. Hop service now respects hop-local remaining and accumulates progress; route/hop rules settle before Flow-to-Comm rebinding; Flow type/status embeddings are effective; task final completion uses typed existing-Return binding and fixed-support blocking; DAG release is dynamic. Builder receipt is 91/91 and focused tests are 26/26. Relevant regressions, compileall, deterministic six-file artifact comparison, knowledge-index write plus repeated checks, and diff check pass; Git handoff remains.
+# 2026-09-21 STEP 5.1B — Definition 05 Posterior / Loss / KL / Metric Implementation
+
+新增 Definition 05 的 CPU 原语：Motion/CSI target-only encoder、posterior mean/sample、target-free prior、family mask-normalized MSE、冻结统计量 raw→normalized bridge、Physical/Communication analytic KL（raw/adjusted free bits）和逐 horizon Motion/CSI 指标。使用现有 12-sample STEP 5.1A-PATCH tensor 生成 non-locked receipt；focused 5/5、5.1A 19/19、4.3B 21/21、4.4 37/37 通过。训练、optimizer、GPU、formal dataset、planner、locked_test 均未执行。
