@@ -105,3 +105,16 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - Comm z represents CSI/channel uncertainty only. Outage is not a latent/head/input/target leak; both seeded `sample` and marked `expectation` modes are required. `learned_service_residual=false`.
 - Wired capacity may be added from causal simulator configuration; active membership/count must first be derived from Flow Carrying and checked equal to `WiredNetworkManager`.
 - STEP 4.4 implementation is authorized within the untrained CPU contract only; Loss, optimizer, Training, GPU, Planner, candidate generation, formal Dataset, and `locked_test` remain forbidden.
+# 2026-09-21 STEP 5.0 — Definition 05 researcher decisions
+
+- Prediction distribution: retain stochastic `z^Phy/z^Comm`; Vehicle Motion/CSI observation decoders are deterministic mean heads; no learned observation variance.
+- Prediction loss: Motion and CSI each use independently mask-normalized normalized-space MSE; v1 combines them equally.
+- Posterior teacher: only corresponding future Vehicle Motion or CSI targets may enter family-specific training-only target encoders; prior never reads Future Target; Future Graph/Flow/Task/DAG/rule-state are forbidden posterior evidence.
+- KL: separate analytic diagonal-Gaussian Physical/Communication KL. Physical mask is valid Vehicle slots only; Communication mask is valid+present+wireless+CSI-target-valid. Use configurable warm-up and small free bits; no KL balancing.
+- Overshooting: OFF in v1. Total objective is Prediction plus beta-weighted family KL.
+- Schedule: posterior-assisted short-horizon warm-up, then prior-dominant recursive curriculum `1→2→4→L`; Stage 2 posterior is KL teacher only; validation is always prior-only.
+- Fixed support: unsupported future structure uses component-level mask/exclude/classify with separate counts; valid Motion/CSI supervision remains; whole-window deletion is forbidden.
+- Rule states: no Flow/Task/DAG/Lifecycle/Completion learned head or independent loss; natural differentiable rule paths may carry gradients, but discrete rules stay exact.
+- Trainable modules: jointly train Dual-Graph Encoder, RSSM dynamics, Prior, Posterior, Target Encoders and Motion/CSI Decoders. STEP 4.3B FROZEN means architecture/interface, not weights.
+- Validation/evaluation: checkpoint and early stopping use prior-only horizon-mean `L_Val`; KL is diagnostic. Report Motion/CSI separately with per-horizon raw-unit MAE/RMSE; uncertainty sampling is auxiliary; system metrics remain closed-loop metrics.
+- These explicit decisions supersede conflicting observation-NLL/Event/Residual/overshooting clauses in the read-only older Definition 05 note. The private note remains unchanged.

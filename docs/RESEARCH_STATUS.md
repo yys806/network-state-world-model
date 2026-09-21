@@ -1,14 +1,15 @@
 # PI-JWM 当前科研状态
 
 > 本文是导航性状态摘要。当前结果必须回到原始 checkpoint、metrics、manifest 和 audit 验证。
-> 截至 2026-09-21，Raw/定义 01、最小 Dataset/Tensor/定义 02、STEP 4.3A Builder、STEP 4.3B Encoder 与 STEP 4.4 Structured RSSM World Model Contract 已冻结。STEP 4.4 是未训练 CPU 机制证据；Loss、Planner 与 Training 均未开始，GPU 未使用，`locked_test` 未访问，`formal_dataset=false`。
+> 截至 2026-09-21，Raw/定义 01、最小 Dataset/Tensor/定义 02、STEP 4.3A Builder、STEP 4.3B Encoder 与 STEP 4.4 Structured RSSM World Model Contract 已冻结。STEP 5.0 已冻结 Definition 05 的 10 项 loss/training/evaluation 决策，但实现尚未开始。GPU 未使用，`locked_test` 未访问，`formal_dataset=false`。
 
 ## 0. 当前实施状态
 
 - Step 2.4 已用真实 non-locked AirFogSim 完成通信 Outcome 最终验收；Step 3.2/3.3 已冻结最小 Dataset/Tensor 合同。
 - STEP 4.1 已冻结映射；STEP 4.2A/4.2C-B/4.2C-C 已闭合 graph inputs 与 Flow Raw→Tensor；STEP 4.3A 已物化 typed graph；STEP 4.3B 已实现 History temporal encoding、typed message passing 与 P2A/P2C，输出 `Z_t^{PI,L_g}`。
 - 现有代码已在 STEP 4.4 contract 中接入四类动作路由、`Z_t^{PI,L_g}→xi_t^Lat`、结构化 RSSM 边界、逐步规则反馈与预测态动态图重建；真实重规划、Loss/训练与性能验证仍未开始。
-- 唯一下一动作建议是研究者另行授权 **Definition 05 — World Model Loss / Training Contract**；不自动执行。
+- STEP 5.0 已冻结 deterministic mean decoder、Motion/CSI mask-normalized MSE、family-specific posterior teacher、分族 KL、overshooting OFF、prior-dominant curriculum、component mask、无规则状态 loss、joint training 与 prior-only validation/evaluation。
+- 当前训练阻塞：future per-RB CSI target 缺失；future Motion position 尚未归一化并张量化。唯一下一动作建议是研究者另行授权 **STEP 5.1 — Definition 05 Loss / Posterior / Metric Implementation**；不自动执行。
 
 ## 1. 当前研究问题
 

@@ -24,7 +24,7 @@
   "historical_method_count": 6,
   "important_experiment_count": 7,
   "lifecycle_counts": {
-    "current": 110,
+    "current": 112,
     "historical": 228,
     "prototype": 5,
     "support": 678
@@ -36,6 +36,6 @@
   "result_evidence_mismatch_count": 0,
   "schema_version": "PI-JWM-project-knowledge-index-v2",
   "source_scope": "version-controlled project files excluding generated registries; artifact control files only",
-  "tracked_file_count": 1021,
+  "tracked_file_count": 1023,
   "verified_result_count": 2
 }

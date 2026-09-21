@@ -74,3 +74,9 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 - PATCH3 focused tests: 30/30. Formal machine receipt: 92/92 required checks (50 original + 21 service + 21 structural), including the canonical real-adapter unknown Return path, typed Existing Return binding, Future-Target support isolation, valid/invalid/multiple-predecessor DAG changes, and partial/intermediate/terminal Flow status transitions. Six formal artifact files match an independent rebuild by SHA-256 and size; evidence remains untrained CPU development only.
 - Evidence class: `UNTRAINED_DEVELOPMENT_WORLD_MODEL_EVIDENCE`. No prediction/calibration/planning/performance claim; `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
 - This is source/contract evidence only, not training, prediction accuracy, stochastic quality, or performance evidence.
+# 2026-09-21 STEP 5.0 Definition 05 decision/audit
+
+- Documentation and source audit only; no forward/backward, optimizer, training, GPU, or metric result was produced.
+- Current target audit: STEP 4.2A sample future position is raw-only; frozen tensor has no target position and no future CSI target. This blocks STEP 5.1 runtime until additive target/mask/normalization implementation.
+- Historical P4 checkpoints/results remain Historical Reference only and cannot be compared with the new method without matching dataset/split/history/horizon/target/normalization/metrics/seed policy.
+- Scope: `implementation=false`, `training=false`, `gpu=false`, `formal_dataset=false`, `locked_test=false`, `performance_claim=false`.

@@ -3,6 +3,12 @@
 > 本文解释当前代码和证据中的架构，不重新设计研究方法。若本文与代码、冻结协议或机器产物冲突，以后者为准。
 > 2026-09-18：下文描述的是 Step 1 被审计的旧协议实现。最新目标来自只读 `00–06`；现有架构与目标的逐项差异见 `PIJWM_IMPLEMENTATION_TRACKER.md`，不能把下文直接称为新定义已实现。
 
+## 当前 Definition 05 训练边界（STEP 5.0）
+
+研究者已冻结目标架构，但实现尚未开始：STEP 4.3B encoder 与 STEP 4.4 RSSM/decoder 将与 family-specific training-only target encoder 联合优化；Motion/CSI 使用独立 component-mask-normalized MSE，Vehicle/Comm latent 使用分族解析 KL；不使用 learned observation variance、latent overshooting、KL balancing 或 Flow/Task/DAG 辅助 loss。训练计划由 posterior warmup 转到 prior-dominant 的 `1→2→4→L` horizon，验证始终 prior-only。
+
+这只是架构合同，不是可运行训练链。当前 future per-RB CSI target 缺失，future Motion position 还未归一化并张量化；因此 loss、posterior teacher、curriculum、optimizer/checkpoint 和新 evaluation 均不能被宣称已实现。旧训练器的 staged base-freeze 与旧综合 loss 不属于当前架构。
+
 ## 1. 要解决的问题
 
 PI-JWM 研究的是一个同时包含物理网络和信息网络的动态系统。设备会移动，通信链路会变化，任务数据会传输和计算，资源动作会反过来影响后续状态。因此目标不是只预测一个信号，而是学习：

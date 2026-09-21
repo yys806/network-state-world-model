@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-21：STEP 5.0 Definition 05 Decision Freeze / Context Sync
+
+- 新增 Definition 05 loss/training/evaluation 决策合同与 STEP 5.0 实施审计记录，冻结 10 项研究者决策；与旧只读 Definition 05 冲突的 NLL/Event/Residual/overshooting 条款由更晚的明确决策取代。
+- 审计当前 STEP 4.4、Dataset/Tensor 与历史 loss/metrics/RSSM/training runner，逐项标注 `DIRECT_REUSE`、`MINOR_MODIFICATION`、`STRUCTURAL_CHANGE`、`MISSING` 或 `HISTORICAL_ONLY`。
+- 当前训练前阻塞为未来逐 RB CSI target 缺失，以及未来 Motion position 尚未归一化并张量化。未实现 STEP 5.1，未训练、未用 GPU、未访问 `locked_test`、未生成正式 Dataset。
+
 ## 2026-09-21：STEP 4.4 Structured RSSM World Model Contract
 
 - PATCH3：冻结 current-side 缺少 `Task.return_size`，所以 real adapter 显式保留 Return requirement unknown，unknown/known-required-no-slot 均阻止虚假 final completion且 side-state 可区分。DAG release 只看有效前驱并要求全部完成；terminal Flow 使用冻结 status vocabulary 同步 COMPLETED，partial/intermediate 保持非完成。focused 30/30、正式 receipt 92/92、6 文件独立重建 hash/size equality 通过；STEP 4.4 COMPLETE / FROZEN。

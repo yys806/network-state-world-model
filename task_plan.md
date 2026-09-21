@@ -1,3 +1,14 @@
+# 2026-09-21 STEP 5.0 — Definition 05 Decision Freeze / Context Sync
+
+- [x] Verify clean `main` baseline `faf3b1bc6f40c17599138cae19a0fa9b6f0d96e1` against `origin/main`.
+- [x] Freeze the 10 researcher decisions for prediction distribution, Motion/CSI loss, posterior teacher, family KL, overshooting OFF, curriculum, fixed-support masking, rule-state supervision, joint training, and prior-only validation/evaluation.
+- [x] Record the explicit supersession of older Definition 05 NLL/Event/Residual/overshooting clauses without modifying the read-only private note.
+- [x] Audit current target/tensor/STEP 4.4 interfaces and historical loss/metrics/RSSM/training runner with reuse classifications.
+- [x] Synchronize authority records, AI_CONTEXT, tracker, changelog, indexes, and registries; verify, commit, push, and stop.
+- Boundary: documentation/audit only; no STEP 5.1 implementation, optimizer, training, GPU, formal Dataset, baseline rerun, or `locked_test` access.
+- Current blocker for training: future CSI target is absent; future Motion position is not normalized/tensorized; Definition 05 loss/posterior/metric code does not exist.
+- Single next action after closure: researcher review and explicit authorization of STEP 5.1 — Definition 05 Loss / Posterior / Metric Implementation.
+
 # 2026-09-21 STEP 4.4-PATCH3 — Return Requirement, Dynamic DAG & Flow Completion Status Final Closure
 
 - [x] Restore and verify clean `main` baseline `eaedfebcc8a79a90e5b9984bbffd9c759f93b04f` against `origin/main`.

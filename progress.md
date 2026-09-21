@@ -1,5 +1,11 @@
 # Progress
 
+## 2026-09-21 STEP 5.0 — Definition 05 Decision Freeze / Context Sync
+
+Frozen the researcher's ten Definition 05 decisions in the engineering repository and audited current/historical interfaces without implementing training. The new active contract replaces old observation-NLL/Event/Residual/overshooting clauses with deterministic mean decoders, family-normalized Motion/CSI MSE, family KL, overshooting OFF, posterior-only target evidence, joint training, and prior-only validation. Audit found future position raw values exist only in sample form and future CSI target is absent, so STEP 5.1 must first establish additive target/mask/normalization paths. `training=false`, `gpu=false`, `formal_dataset=false`, `locked_test_accessed=false`.
+
+Verification: Definition 05 contract checks pass (10/10 decisions, 5/5 reuse classes), related regressions pass 75/75, compileall and knowledge-index write/check pass. The optional full repository suite ran 1849 tests with 33 pre-existing environment/historical-dependency errors (GBK AirFogSim output, absent archived artifacts, legacy fixture drift, dirty-tree assumptions); no source or test code changed in this Step, and no full-suite pass is claimed.
+
 ## 2026-09-21 STEP 4.4-PATCH3
 
 Implemented the three bounded closure fixes: real-adapter Return requirement tri-state with conservative unknown completion blocking, valid-edge/all-predecessor DAG release semantics, and terminal-only Flow status synchronization through the frozen vocabulary. Focused tests pass 30/30, related regressions 82/82, formal artifact receipt 92/92, compileall, and six-file independent hash/size equality pass. STEP 4.4 is COMPLETE / FROZEN; Definition 05 was not started.

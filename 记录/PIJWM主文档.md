@@ -1,5 +1,21 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-21 Definition 05 冻结训练合同
+
+本节记录研究者在 STEP 5.0 中作出的最新明确决策；它取代只读 Definition 05 旧稿中与之冲突的 observation NLL、Event/Residual loss 和 latent overshooting，但不表示训练代码已经实现。
+
+- 预测分布：Motion 与 CSI decoder 输出确定性均值；随机性只由 latent `z` 表达，不学习 observation variance。
+- 重建损失：Motion 与 CSI 各自做 component-mask-normalized MSE，默认等权；训练在归一化空间，评价回到原始单位。
+- posterior teacher：只在训练时使用 family-specific future target encoder；prior 不读取 future target；posterior 不读取完整未来图、Flow、Task 或 DAG。
+- KL：Phy 只覆盖 Vehicle latent；Comm 只覆盖 wireless、present、valid 且 CSI-valid 的 relation latent。使用解析 KL，可配置 warmup/free bits，不使用 balancing。
+- 多步：latent overshooting 关闭；训练由 posterior warmup 转向 prior-dominant，horizon 按 `1→2→4→L` 推进；validation 始终 prior-only。
+- 固定支持：不支持的结构只 mask 对应 component，不丢整窗；分别计数 unsupported、unresolved 与 fixed-blocked。
+- 规则状态：不新增 Flow/Task/DAG 等规则状态 loss；允许自然可微的规则链路，但不为不可微规则制造 soft proxy。
+- 优化范围：encoder、RSSM/prior/posterior、target encoder、decoder 端到端联合训练；冻结的是结构合同，不是参数权重。
+- 选择与评价：`LVal` 为各 horizon 等权后的 Motion/CSI 等权均值，用于 `argmin` checkpoint selection 与 early stop；主报告为原始单位的逐 horizon Motion/CSI MAE/RMSE。KL 只作诊断，不确定性只作辅助，系统指标单列。
+
+当前实现缺口：未来逐 RB CSI target 尚未进入数据/张量；未来 Motion position 尚未按 train-only stats 归一化并张量化；Definition 05 loss、posterior teacher、curriculum、训练器与评价器均未实现。因此当前状态只是 `RESEARCHER DECISION FROZEN / IMPLEMENTATION NOT STARTED`，不得据此启动训练、GPU、正式 Dataset 或 `locked_test`。
+
 > **2026-09-18 当前定义入口：** 研究者已明确将只读目录 `D:\shen\OB\科研\PIJWM` 中七个 `00–06` Markdown 文件作为当前目标定义。本文件保留此前理论、决策和证据边界；若具体对象、动作、图语义、世界模型、loss、训练或 planner 定义与最新 `00–06` 冲突，以最新定义为目标，并以 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/STEP_01_AUDIT.md` 记录实现差距。目标定义不等于代码已实现；旧 P4/P6/P0–P10 方法和结果仅按原协议作 Historical / Archived evidence。
 
 > **2026-09-20 STEP 4.2A 实现边界：** 定义 03 中已有可靠来源的 position、wireless CSI、wired relation、CPU static capability、部分 Task state 和 typed Task–Agent relation 已经独立 additive 版本链进入 Sample/Tensor。stable stateful Flow 仍无足够 Raw 来源，Physical topology 与 graph builder 仍未实现；因此这不是严格双图、消息传递、模型或训练证据。CPU capacity 继续不等于 allocation、service 或 available CPU，wired outcome 继续不等于 current relation。

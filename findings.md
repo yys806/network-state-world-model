@@ -1,5 +1,15 @@
 # Findings
 
+## 2026-09-21 STEP 5.0 — Definition 05 audit
+
+- The read-only Definition 05 note (SHA-256 `62eebb05e2eeefe9edb0038f12964f59915a7acce03a683d6c7e5c71f85684e9`) still specifies observation NLL, Event/Residual learning, and overshooting. The researcher's newer explicit ten decisions resolve this conflict: deterministic mean decoder + Motion/CSI MSE + family KL, Event/Residual heads absent in v1, and overshooting OFF.
+- Current STEP 4.2A normalized samples contain future entity `position_m` only as raw value/mask/unit; it is neither normalized nor collated into the frozen tensor. `target_entity_features` contains only speed.
+- Current target/sample/tensor namespace has no future per-RB CSI. History CSI and future communication service are not valid substitutes for CSI target.
+- Current STEP 4.4 state adapter uses raw position while Comm CSI comes through the normalized graph path. STEP 5.1 needs an explicit normalized-loss/raw-rule bridge before training.
+- Historical `_masked_mean`, analytic diagonal KL, horizon accumulation, seeding, AdamW, logging, checkpoint reload and manifest patterns are locally reusable. Old total loss, full-target posterior, overshooting tensors, staged encoder freezing, P4 gate selector, historical checkpoints and result numbers are not current Definition 05 evidence.
+- No Definition 05 runtime was executed. Training remains blocked by target/data/loss implementation, not by GPU availability.
+- Optional full-suite audit ran 1849 tests with 33 errors outside this documentation-only diff: Windows GBK output failure in AirFogSim import, absent historical artifact files, old teacher-tensor fixtures rejected by current RB-action validation, and clean-tree assumptions. Relevant Definition 05/STEP 4.4 audit regression remains 75/75 pass; do not report the whole suite as passing.
+
 ## 2026-09-21 STEP 4.4-PATCH3
 
 - Frozen Task History features expose work/computed/transmitted/elapsed only; `return_size` is explicitly unavailable to the frozen Tensor/Graph contract. Therefore current-side no Return slot is epistemically unknown, not known-no-Return.

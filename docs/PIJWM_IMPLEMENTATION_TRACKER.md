@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-21。**Raw / 最小 Dataset-Tensor / Stateful Flow / Typed Dual-Graph Builder / Dual-Graph Encoder / STEP 4.4 Structured RSSM World Model Contract 均已完成并冻结**。PATCH3 源码、focused 30/30、正式 receipt 92/92 与 6 文件独立重建 hash/size equality 已通过。Loss、Planner 与 Training 均为 NOT STARTED。
+更新时间：2026-09-21。**Raw / 最小 Dataset-Tensor / Stateful Flow / Typed Dual-Graph Builder / Dual-Graph Encoder / STEP 4.4 Structured RSSM World Model Contract 均已完成并冻结；Definition 05 的 10 项 Researcher Decision 已由 STEP 5.0 冻结**。Loss/Posterior/Metric、Training loop、GPU training 与 Planner 仍为 NOT STARTED。
 
 ## 当前依据与执行边界
 
@@ -36,10 +36,11 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | 外生事件 | 04 §2.3/4.2 | 固定entity slot/mask；presence head | AUDITED / OPEN | RESEARCHER_DECISION_REQUIRED | 已知未来场景还是随机到达过程未冻结 | 研究者定观测与生成边界 |
 | deterministic rule feedback | 04 §3.3–3.4 | Step 4.4 `deterministic_transition` | COMPLETE / FROZEN | STRUCTURAL_CHANGE | 每步 learned dynamics 后执行 known stochastic + deterministic rules，并反馈下一 latent | Definition 05 仅定义训练监督 |
 | 动态重构图 | 04 §3.4/4.2 | Step 4.4 `rebuild_graph` | COMPLETE / FROZEN | MISSING→IMPLEMENTED | 每步由 predicted state 更新 Physical/Comm/Flow/Task/DAG/Align/GeoComm；topology config 仍 development-only | 不擅自研究冻结 topology |
-| training | 05 §2 | `run_formal_dual_graph_gpu_train_v1.py` | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | base→freeze→RSSM不同于posterior teacher→prior训练 | 新训练阶段合同 |
-| loss / overshooting | 05 §1.2 | `formal_world_model_loss_v1.py`、RSSM末尾切片 | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 多任务目标与新边界不同；切片KL不等于多起点多距离公式 | 冻结公式→计算图映射 |
-| checkpoint selection | 05 §2.2 | `p4_gate_aware_v1`、frozen v2 | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 旧门控字典序不同于新validation Pred loss | 新协议单独批准 |
-| prediction evaluation | 05 §3 | `formal_world_model_metrics_v1.py` | AUDITED / NOT_STARTED | MINOR_MODIFICATION | MAE/RMSE/NLL/coverage/F1/AUPRC及逐步工具可用，评价对象需改 | 区分未知动态/规则检查 |
+| Definition 05 decision contract | 05；研究者 STEP 5.0 明确决定 | `contracts_PIJWM_DEFINITION_05_LOSS_TRAINING_EVALUATION_V1.md` | DECISION FROZEN / IMPLEMENTATION NOT STARTED | STRUCTURAL_CHANGE | 10 项决策已冻结；current Motion/CSI target path 尚不完整 | 单独授权 STEP 5.1 |
+| training | 05 §2 | 历史 `run_formal_dual_graph_gpu_train_v1.py` | DECISION FROZEN / NOT_STARTED | STRUCTURAL_CHANGE | 旧 staged base-freeze/P4 gate 不符合 joint posterior-warmup→prior curriculum | STEP 5.2 后续实现；本轮不执行 |
+| loss / posterior / KL | 05 §1.2；STEP 5.0 决策 | 历史 `formal_world_model_loss_v1.py`；当前 STEP 4.4 | DECISION FROZEN / NOT_STARTED | STRUCTURAL_CHANGE | v1 只用 Motion/CSI mask-MSE + family analytic KL；overshooting OFF；target encoder/mask/free-bits未实现 | STEP 5.1 实现与 CPU 验收 |
+| checkpoint selection | 05 §2.2；STEP 5.0 决策 | 历史 `p4_gate_aware_v1`、validation-loss selector | DECISION FROZEN / NOT_STARTED | STRUCTURAL_CHANGE | selector 已定为 prior-only horizon-mean `L_Val`；旧 gate 不可直接使用 | STEP 5.2 实现 |
+| prediction evaluation | 05 §3；STEP 5.0 决策 | 历史 `formal_world_model_metrics_v1.py` | DECISION FROZEN / NOT_STARTED | MINOR_MODIFICATION | 逐 horizon 累积与反归一化模式可复用；v1 只主报 Motion/CSI raw-unit MAE/RMSE，NLL非核心 | STEP 5.1 实现 |
 | learned candidate generation | 06 §4.3 | planner的callback | AUDITED / NOT_STARTED | MISSING | 尚无新四类动作proposal模型/训练 | 后续单独授权 |
 | legality / fallback / warm start | 06 §2.2/3.3/4.3 | CandidateAction.legal、空集raise | AUDITED / NOT_STARTED | MISSING | bool过滤不等于合法性规则；无安全fallback与warm start | 冻结场景约束 |
 | candidate rollout | 06 §3.1 | `FormalCandidateRolloutPlanner.plan` | AUDITED / PROTOTYPE_ONLY | MINOR_MODIFICATION | 逐候选调用可复用；共同latent快照/随机评估/新动作未接通 | 保留原型，后续适配 |
@@ -54,7 +55,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 - 本轮完成范围：Step 1 审计矩阵、只读权限与新工作流、实施记录框架、历史逻辑归档、导航与注册表同步；实际验证见 Step 1 报告。
 - 新方案的 Raw→Dataset/Tensor→Typed Graph Builder→Dual-Graph Encoder→Structured RSSM World Model Contract 已按当前最小合同完成并冻结；World Model 仅有未训练 CPU 机制证据，loss、训练、candidate proposal 和在线闭环仍未开始。
 - 研究者已明确目标：严格Physical/Information划分，四类动作含CPU与UAV，结构化RSSM，只学习未知动态，混合proposal+世界模型选择。无需再次确认这些方向。
-- 仍待决定：Definition 05 loss/training、未知未来到达与离开、proposal训练方式、objective权重/风险/硬约束/fallback、新合同下实验预算与门槛。当前通信 residual 明确关闭。
+- Definition 05 的 distribution、loss、posterior、KL、overshooting、training stage、fixed-support mask、rule-state supervision、trainable modules 和 validation/evaluation 已决定；具体超参数、正式 Dataset资格和训练预算仍待后续独立 Step 冻结。未知未来到达与离开、proposal训练方式、objective权重/风险/硬约束/fallback仍待后续处理。当前通信 residual 明确关闭。
 
 ## 当前 STEP 4.4 结果
 
@@ -111,4 +112,4 @@ STEP 4.3B 使用完整冻结 History Tensor 编码 Physical/Agent/Task/Flow 的�
 
 ## 下一步边界
 
-STEP 4.3A、STEP 4.3B 与 STEP 4.4 均正式 COMPLETE / FROZEN。唯一下一步建议是 **Definition 05 — World Model Loss / Training Contract**；未另行授权前不得执行，不得启动 GPU 或访问 `locked_test`。
+STEP 4.3A、STEP 4.3B 与 STEP 4.4 均正式 COMPLETE / FROZEN；STEP 5.0 已冻结 Definition 05 决策和复用审计，但没有实现 Loss/Posterior/Metric。唯一下一步建议是研究者另行授权 **STEP 5.1 — Definition 05 Loss / Posterior / Metric Implementation**；未授权前不得继续，不得启动 GPU 或访问 `locked_test`。

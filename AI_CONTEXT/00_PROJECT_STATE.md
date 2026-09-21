@@ -1,6 +1,6 @@
 # PI-JWM Current State Snapshot
 
-更新时间：2026-09-20
+更新时间：2026-09-21
 
 这是 ChatGPT 网页端进入仓库后的第一读取入口。它只提供当前快照和继续查证的路径，不替代源码、配置、checkpoint、metrics、manifest 或 audit。
 
@@ -12,11 +12,12 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 4.4-PATCH3` 已 COMPLETE / FROZEN。源码、focused 30/30、正式 receipt 92/92 与 6 文件独立重建 hash/size equality 已通过。研究者冻结的 wireless outage 仍是独立 known stochastic service event。
+- 当前 Step：`STEP 5.0 — Definition 05 Decision Freeze / Context Sync` 已完成。10 项 Loss/Training/Evaluation Researcher Decision 已冻结；Loss/Posterior/Metric 实现仍为 NOT STARTED。STEP 4.4-PATCH3 继续 COMPLETE / FROZEN。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - STEP 4.4-PATCH3 已在源码中显式区分 Return requirement 的 known/unknown：冻结 current-side 不含 `Task.return_size`，所以 no slot 是 unknown，不是 no-return；unknown 或 known-required/no-slot 都不能错误 final-complete，但 side-state 可区分两者。DAG 只按有效前驱动态释放，terminal Flow completion 同步 remaining/presence/carrying/status。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
-- 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder 与 Structured RSSM World Model Contract 已验收。Physical topology、Encoder/World Model 参数仍是 development-only；Loss、Planner 与 Training 均未开始。
+- Definition 05 v1 已决定：deterministic mean decoder；Motion/CSI family-wise mask-MSE；Phy/Comm analytic KL + warm-up/free-bits；overshooting OFF；Future Target 仅进入 family-specific training posterior；joint training；prior-only validation；checkpoint=`argmin L_Val`；逐 horizon raw-unit Motion/CSI MAE/RMSE。当前 future position 未 normalized/tensorized，future CSI target 缺失，禁止开始训练。
+- 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder 与 Structured RSSM World Model Contract 已验收；Definition 05 的科研决策已冻结，但 Loss/Posterior/Metric/Training 实现仍未开始。Physical topology、Encoder/World Model 参数仍是 development-only。
 - 审计结论：时间因果、稳定 ID/index、mask/split、typed graph 与 Definition 03 encoder 已落地；`Z_t^{PI,L_g}→xi_t^Lat`、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环仍需后续授权与实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step `training=false`、`gpu=false`。
@@ -27,7 +28,7 @@
 
 ## 单一科研下一步
 
-唯一下一动作建议是 **Definition 05 — World Model Loss / Training Contract**。不得自动执行，不启动 GPU，不访问 `locked_test`。
+唯一下一动作建议是研究者审阅后另行授权 **STEP 5.1 — Definition 05 Loss / Posterior / Metric Implementation**。不得自动执行，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 
@@ -77,4 +78,4 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 - Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.1 mapping、STEP 4.2A existing-source input extension、STEP 4.2C-B Raw Flow、STEP 4.2C-C Flow Sample/Tensor、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已冻结。
 - Causal boundary: future task schedule is internal metadata only; canonical acceleration is backward speed difference with an explicit missing-history mask.
 - Current boundary: Physical topology 的 `radius_knn/radius=1000m/k=2` 仅是 deterministic development config，`research_frozen=false`；Return multi-hop、same-destination reroute runtime 与 formal capacities 仍未冻结。
-- Boundary: Graph Encoder 与 STEP 4.4 World Model Contract 已 COMPLETE / FROZEN。Loss、Planner、Training 均为 NOT STARTED；`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+- Boundary: Graph Encoder 与 STEP 4.4 World Model Contract 已 COMPLETE / FROZEN；Definition 05 decisions FROZEN，但 implementation NOT STARTED。`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
