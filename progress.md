@@ -6,6 +6,8 @@ Confirmed two training-correctness defects at `main@7ea9e4b`: horizon 2+ Motion 
 
 CSI now carries and validates explicit current relation slot, relation ID, endpoints, model input endpoint slots, relation type index and RB identity against the current tensor path consumed by STEP 4.3A/4.4. Future outcome row/RB permutations do not change identity-bound targets. Focused tests are 19/19; STEP 4.2A/4.3A/4.3B/4.4/5.1A related regression is 102/102. The rebuilt 12-sample non-locked development receipt is `passed=true`, digest `dc6c5b0b0d957f0e1e57ee09c19d2b54e7b2ecd0bb631a9612a8200078ab579a`; compile and knowledge-index write/check pass. Git receipt is recorded after commit/push.
 
+Primary implementation commit `a1989da971c0caec918e64400b9758cc3bb286f9` (`fix(pi-jwm): align step 5.1a local motion targets`) was pushed to `origin/main`; the final documentation receipt commit records the closing HEAD.
+
 ## 2026-09-21 STEP 5.1A — Motion / CSI Target & Normalization Contract Closure
 
 新增 additive future target contract 与构建脚本：Vehicle 使用 delta xyz + next speed，CSI 仅来自 future outcome `channel_rows`，按 current communication support 对齐；wired、缺失组件和 unsupported structure 保留身份并独立 mask。复用 STEP 4.3B train-only stats，完成 NPZ round-trip、tamper rejection、deterministic digest。真实 non-locked development artifact 含 12 samples，receipt `passed=true`；`formal_dataset=false`、`training=false`、`gpu=false`、`locked_test_accessed=false`。未实现 Loss/Posterior/Metric/Training/Planner。

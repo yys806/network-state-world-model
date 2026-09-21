@@ -55,7 +55,8 @@
 
 ## Patch Git
 
-实现、artifact、记录和索引将在本 Patch 验证通过后提交并推送 `main`；准确 commit/HEAD 在最终 Completion Report 与后续 Git receipt 中给出。
+- Primary implementation commit：`a1989da971c0caec918e64400b9758cc3bb286f9` / `fix(pi-jwm): align step 5.1a local motion targets`。
+- 已推送 `origin/main`；提交后核验 local HEAD 与 `origin/main` 一致。最终文档回执 commit 和 clean worktree 状态由 Completion Report 给出。
 
 ## Patch Next Step
 
