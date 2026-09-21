@@ -116,3 +116,6 @@ STEP 3.2-PATCH has finalized machine-readable Dataset isolation evidence for the
 
 - The small bundle covers only three short development trajectories and cannot support formal split-ratio, scenario-coverage, generalization, or Dataset claims.
 - Tensor/model/loss/planner integration remains unimplemented; `formal_performance_claim_ready=false`, `gpu=false`, `training=false`, `locked_test_accessed=false`.
+# STEP 4.4 blocker（2026-09-21）
+
+AirFogSim actual wireless rate is zeroed by a random per-RB outage realization. Current Decision input exposes CSI but not that future draw; Outcome records it only after execution. Researcher must decide its model boundary before World Model implementation continues. Wired capacity and active-flow count are separate additive input gaps.

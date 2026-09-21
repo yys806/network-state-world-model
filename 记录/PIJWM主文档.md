@@ -2703,3 +2703,6 @@ STEP 4.2C-C-PATCH 进一步冻结 Sample/Tensor 的语义完整性边界：五�
 # 2026-09-20 STEP 4.3B Dual-Graph Encoder 补充
 
 定义 03 的工程实现已从 typed graph builder 延伸到 aligned encoder representation：完整 History 只对 Physical/Agent/Task/Flow 做对象级、presence-gated 时间编码；当前 typed graph 只做同一决策时刻的有向 representation refinement。P2A 仅沿 Align 从 Physical 到 Agent，P2C 仅沿 valid wireless GeoComm 注入 Comm relation；不存在 Information→Physical 或 Task/Flow 与 Physical 的 shortcut。Logical Flow 与 Carrying 分别编码、融合后只保留一个 Flow relation latent。正式输出为 `Z_t^{PI,L_g}`，不等于 `xi_t^Lat`，也不构成 World Model dynamics。当前配置与 artifact 仅用于未训练 CPU development acceptance，未形成性能结论。
+# 2026-09-21 Definition 04 通信服务边界核验
+
+当前源码审计证明：AirFogSim nominal wireless rate 可由 CSI、RB 分配、功率、干扰、噪声和 RB bandwidth 按规则恢复；actual rate 还受到独立随机 outage realization 的置零影响。该 realization 在当前因果边界下只属于执行后 Outcome，不属于 Decision input。因此当前不能把 nominal rate 称为 actual service，也不能擅自增加 learned rate head。STEP 4.4 必须等待研究者决定该不确定性属于通信随机状态、独立 stochastic service event，还是 learned residual。Flow/Task 规则递推边界不变。

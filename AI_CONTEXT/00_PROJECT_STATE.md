@@ -12,7 +12,7 @@
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 4.3B` 已 COMPLETE / FROZEN。冻结 History Tensor + STEP 4.3A current typed graph 已实现 type-specific temporal encoding、五类有向消息传递、P2A/P2C 与 aligned `Z_t^{PI,L_g}`。该结果是确定性初始化、未训练的 CPU development evidence，不是 `xi_t^Lat` 或 World Model。Physical topology 和 Encoder 数值配置均 `research_frozen=false`。机器证据位于 `code/artifacts/protocols/pi_jwm_step4_3b_dual_graph_encoder_v1_20260920/`。
+- 当前 Step：`STEP 4.4` 在强制 communication service sufficiency gate 暂停。机器 verdict=`SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`：nominal pre-outage rate 可规则恢复，但 actual wireless service 还受 Decision 时不可见的随机 per-RB outage realization 影响。未实现 `xi_t^Lat` 或 World Model；STEP 4.3B 仍 COMPLETE / FROZEN。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder 与 Dual-Graph Encoder 已验收；当前可生成 aligned `Z_t^{PI,L_g}`。Physical topology 和 Encoder 参数仍是 development-only。World Model、Loss、Planner 与 Training 均未开始。
@@ -26,7 +26,7 @@
 
 ## 单一科研下一步
 
-STEP 4.3B 已完成并冻结；唯一建议是研究者另行定义并授权 **Definition 04 — World Model Representation / Dynamics Contract**。不要自动执行，不启动 GPU，不访问 `locked_test`。
+唯一下一动作是研究者冻结 outage/effective-service 的 stochastic target、独立 stochastic event 或 learned residual 边界。决定前不恢复 STEP 4.4，不进入 Definition 05，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 

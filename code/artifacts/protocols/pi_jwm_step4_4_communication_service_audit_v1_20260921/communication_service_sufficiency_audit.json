@@ -1,0 +1,252 @@
+{
+  "authority_source": {
+    "access": "read_only",
+    "path": "D:\\shen\\OB\\科研\\PIJWM\\04世界模型预测边界与当前模型.md",
+    "sha256": "ef49cd0802a163886ae324879c01e9fbbd3f3f2dc1ec4079e4022b2c4f7a46c5"
+  },
+  "definition_basis": "Definition 04 communication service Rule -> Add Missing Causal State -> Learn Residual gate",
+  "dependency_matrix": [
+    {
+      "classification": "CURRENT_CAUSAL_STATE_AVAILABLE",
+      "decision_time_role": "current per-RB attenuation observed through channel_manager.getCSI; future value is the authorized learned channel dynamic",
+      "name": "csi",
+      "path": "wireless",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "CURRENT_CAUSAL_STATE_AVAILABLE",
+      "decision_time_role": "future action A^Comm",
+      "name": "rb_allocation",
+      "path": "wireless",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "CURRENT_CAUSAL_STATE_AVAILABLE",
+      "decision_time_role": "known ChannelManagerCP.RB_bandwidth configuration",
+      "name": "bandwidth",
+      "path": "wireless",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "CURRENT_CAUSAL_STATE_AVAILABLE",
+      "decision_time_role": "known channel-type power constants",
+      "name": "transmit_power",
+      "path": "wireless",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "DERIVED",
+      "decision_time_role": "derived from all active links/RB allocations, channel attenuation, and channel-type transmit powers",
+      "name": "interference",
+      "path": "wireless",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "CURRENT_CAUSAL_STATE_AVAILABLE",
+      "decision_time_role": "known ChannelManagerCP.sig2 configuration",
+      "name": "noise",
+      "path": "wireless",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "DERIVED",
+      "decision_time_role": "already included in getCSI channel attenuation after updateFastFading",
+      "name": "fast_fading",
+      "path": "wireless",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "UNAVAILABLE_UNOBSERVABLE",
+      "decision_time_role": "not_available; outcome_only_after_random_draw",
+      "name": "outage_draw",
+      "path": "wireless",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "SIMULATOR_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "decision_time_role": "WiredNetworkManager._links capacity_mbps",
+      "name": "wired_capacity",
+      "path": "wired",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "SIMULATOR_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "decision_time_role": "WiredNetworkManager._flows grouped per link for fair sharing",
+      "name": "wired_active_flow_count",
+      "path": "wired",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "CURRENT_CAUSAL_STATE_AVAILABLE",
+      "decision_time_role": "frozen simulation_interval/slot duration",
+      "name": "slot_duration",
+      "path": "wireless_and_wired",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "CURRENT_CAUSAL_STATE_AVAILABLE",
+      "decision_time_role": "Causal Flow Ledger logical/carrying remaining state",
+      "name": "flow_remaining_cap",
+      "path": "wireless_and_wired",
+      "required_for_actual_service": true
+    },
+    {
+      "classification": "CURRENT_CAUSAL_STATE_AVAILABLE",
+      "decision_time_role": "current route, holder, hop and task lifecycle determine active transfer",
+      "name": "route_and_lifecycle_activation",
+      "path": "wireless_and_wired",
+      "required_for_actual_service": true
+    }
+  ],
+  "evidence_class": "SOURCE_AUDIT_ONLY_NO_WORLD_MODEL_IMPLEMENTATION",
+  "research_stop": {
+    "nominal_recovery_boundary": "nominal pre-outage per-RB rate is rule-recoverable when future CSI and all RB actions are supplied",
+    "reason": "actual wireless service contains a random outage realization that is not a decision-time causal input",
+    "required_researcher_decision": "choose whether outage/effective service is modeled as channel state, a stochastic service event, or a learned residual; then freeze its target and architecture",
+    "residual_candidate_target_not_selected": true,
+    "triggered": true
+  },
+  "schema_version": "PI-JWM-Step-4.4-Communication-Service-Sufficiency-Audit-v1",
+  "scope": {
+    "candidate_generation": false,
+    "formal_dataset": false,
+    "gpu": false,
+    "locked_test": false,
+    "loss": false,
+    "optimizer": false,
+    "performance_claim": false,
+    "planner": false,
+    "training": false
+  },
+  "service_paths": {
+    "wired": {
+      "actual_service_uniquely_recoverable_from_frozen_tensor": false,
+      "gap_class": "SIMULATOR_AVAILABLE_BUT_FROZEN_RAW_NOT_EXPOSED",
+      "minimal_additive_extension_possible": true,
+      "missing_current_inputs": [
+        "capacity_mbps",
+        "per-link active flow membership/count"
+      ],
+      "nominal_rule": "min(link_capacity_bytes_per_slot / active_flow_count, flow_remaining_bytes)"
+    },
+    "wireless": {
+      "actual_service_uniquely_recoverable": false,
+      "causal_boundary": "outage is recorded only after runtime random draw as outcome_only_not_same_frame_decision_input",
+      "nominal_rate_rule_recoverable": true,
+      "nominal_rule": "RB_bandwidth * log2(1 + SINR_linear), with SINR derived from signal/(interference+noise)",
+      "outage_effect": "rate is set to zero when sampled outage is true",
+      "unresolved_actual_service_factor": "random per-RB outage realization"
+    }
+  },
+  "source_claim_checks": {
+    "outage_is_outcome_only_in_collector": true,
+    "outage_zeroes_rate_found": true,
+    "per_rb_random_outage_draw_found": true,
+    "wired_capacity_share_formula_found": true,
+    "wireless_nominal_formula_found": true
+  },
+  "source_provenance": [
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/channel_manager_cp.py",
+      "sha256": "7566ac1c663f11d59b176614803d4b9ec679a28b6b3da7840a1c9744770f16f7",
+      "symbols": [
+        {
+          "anchor": "symbol:ChannelManagerCP.computeRate",
+          "semantic_claim": "derives SINR/rate from signal, interference, noise and RB bandwidth, then applies a random per-RB outage mask",
+          "symbol": "ChannelManagerCP.computeRate"
+        },
+        {
+          "anchor": "symbol:ChannelManagerCP.getCSI",
+          "semantic_claim": "returns per-RB channel attenuation including fast fading",
+          "symbol": "ChannelManagerCP.getCSI"
+        }
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/channel_callback/outage_callback.py",
+      "sha256": "318f32a427ae1e2f3e6fa8b16ab61071fd39a1b235e73e2f6b39e089b3f6be59",
+      "symbols": [
+        {
+          "anchor": "symbol:rayleigh_outage_prob",
+          "semantic_claim": "maps SINR and threshold to outage probability, not a deterministic outage realization",
+          "symbol": "rayleigh_outage_prob"
+        }
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/airfogsim_env.py",
+      "sha256": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+      "symbols": [
+        {
+          "anchor": "symbol:AirFogSimEnv._compute_communication_rate",
+          "semantic_claim": "updates fast fading before computeRate",
+          "symbol": "AirFogSimEnv._compute_communication_rate"
+        },
+        {
+          "anchor": "symbol:AirFogSimEnv._execute_communication",
+          "semantic_claim": "actual transferred data is summed rate times simulation interval",
+          "symbol": "AirFogSimEnv._execute_communication"
+        },
+        {
+          "anchor": "symbol:AirFogSimEnv._updateWiredCommunication",
+          "semantic_claim": "wired runtime enqueues active task flows and consumes WiredNetworkManager.step results",
+          "symbol": "AirFogSimEnv._updateWiredCommunication"
+        }
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/wired_manager.py",
+      "sha256": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe",
+      "symbols": [
+        {
+          "anchor": "symbol:WiredNetworkManager.step",
+          "semantic_claim": "shares configured link capacity equally among active flows on that link",
+          "symbol": "WiredNetworkManager.step"
+        }
+      ]
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py",
+      "sha256": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd",
+      "symbols": [
+        {
+          "anchor": "symbol:_physical_structure",
+          "semantic_claim": "Decision snapshot exposes per-RB CSI but not the future outage realization",
+          "symbol": "_physical_structure"
+        }
+      ]
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_collector_v1.py",
+      "sha256": "5cfc7b3d677d6159635e01ca69fb580a16dee5640dff45dc0e73fee504865064",
+      "symbols": [
+        {
+          "anchor": "symbol:_capture_wireless_profile_rows",
+          "semantic_claim": "outage and actual rate are recorded after runtime channel computation as outcome-only evidence",
+          "symbol": "_capture_wireless_profile_rows"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "checks": {
+      "classifications_valid": true,
+      "dependency_fields_complete": true,
+      "nominal_actual_separated": true,
+      "outage_boundary_truthful": true,
+      "schema": true,
+      "scope_non_expansive": true,
+      "source_claims_computed_true": true,
+      "stop_boundary": true,
+      "verdict_allowed": true,
+      "verdict_matches_evidence": true,
+      "wired_additive_gap_recorded": true,
+      "world_model_not_started": true
+    },
+    "expected_verdict": "SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED",
+    "passed": true,
+    "verdict_matches_evidence": true
+  },
+  "verdict": "SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED",
+  "world_model_implementation_started": false
+}

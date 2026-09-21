@@ -173,3 +173,8 @@
 - Flow 与 Carrying state、known inactive 与 padding、Input/Return/DepData vocabulary、train-only numeric normalization、explicit development capacity、round-trip 和 receipt tamper 均已机器化；真实低 wired capacity cross-slot trace 补齐多个 Decision 的 carrying evidence。
 - 12/12 focused、4.2B/4.2A/3.3 regressions、deterministic rebuild/hash、serialize/load 和 scope checks 通过；不进入 Graph Builder、模型、Loss、Planner、训练、GPU、locked_test 或 formal Dataset。
 - 下一步仅建议研究者另行授权 Definition 03 Graph Builder Contract。
+# 2026-09-21：STEP 4.4 Communication Service Audit Gate
+
+- Added a source-hashed dependency matrix and computed three-way sufficiency verdict before Structured RSSM implementation.
+- Found nominal pre-outage wireless rate rule-recoverable, but actual rate depends on a random per-RB outage realization unavailable at Decision time. Wired capacity/active-flow competition are separate additive gaps.
+- Verdict is `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`; no residual target, World Model, training, GPU, planner, or locked-test work was started.

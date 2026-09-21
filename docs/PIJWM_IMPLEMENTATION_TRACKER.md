@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-20。**Raw Trajectory Layer / 定义 01、当前最小 Dataset/Tensor / 定义 02、STEP 4.2C-B/C-C、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已完成并冻结**。Frozen History + current typed graph 已可生成 entity/relation-aligned `Z_t^{PI,L_g}`；Physical topology 和 Encoder 数值超参数仍为 development-only、`research_frozen=false`。World Model、Loss、Planner 与 Training 均为 NOT STARTED。
+更新时间：2026-09-21。**Raw Trajectory Layer / 定义 01、当前最小 Dataset/Tensor / 定义 02、STEP 4.2C-B/C-C、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已完成并冻结**。STEP 4.4 已完成强制通信 service sufficiency audit，但因 actual wireless service 含 Decision 时不可见的随机 outage realization，机器 verdict=`SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`，World Model 实现尚未开始。Loss、Planner 与 Training 均为 NOT STARTED。
 
 ## 当前依据与执行边界
 
@@ -32,7 +32,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | RSSM prior/posterior 局部机制 | 04 §3.1/4.1 | `formal_entity_aligned_rssm_world_model_v1.py` | AUDITED | MINOR_MODIFICATION | 可复用分工与实体维度，不可复用全部布局/解码头 | 新layout完成后迁移 |
 | latent layout | 04 §3.2 | 同上 | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 旧node/edge/flow/task均有z；新Flow/Task不设独立z | 按Phy/Comm未知动态划分 |
 | learned / deterministic boundary | 04 §2；05 §1 | `formal_world_model_loss_v1.py`、model heads | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | 学习大量可规则恢复的状态/事件和派生指标 | 目标字段→生成方式表 |
-| 通信状态充分性 | 04 §4.2 第一个边界 | channel manager / `DeterministicRuleLayer` | AUDITED / OPEN | RESEARCHER_DECISION_REQUIRED | CSI均值+RB计数未证明可还原实际服务；不能默认另加rate头 | 给出所需状态证据再决定 |
+| 通信状态充分性 | 04 §4.2 第一个边界 | STEP 4.4 communication service audit / ChannelManagerCP / WiredNetworkManager | AUDITED / BLOCKED | RESEARCHER_DECISION_REQUIRED | nominal pre-outage rate 可由 CSI/RB/已知参数恢复；actual rate 还受随机 per-RB outage realization 置零，且该值只在 Outcome 出现；wired capacity/active-flow count 可走 additive extension | 研究者冻结 outage/effective-service stochastic target 或 residual 边界后，才可恢复 STEP 4.4 |
 | 外生事件 | 04 §2.3/4.2 | 固定entity slot/mask；presence head | AUDITED / OPEN | RESEARCHER_DECISION_REQUIRED | 已知未来场景还是随机到达过程未冻结 | 研究者定观测与生成边界 |
 | deterministic rule feedback | 04 §3.3–3.4 | base.forward + RSSM.forward/_decode | AUDITED / NOT_STARTED | STRUCTURAL_CHANGE | base逐步规则存在；RSSM修正在整段规则后，无完整反馈 | 新单步transition统一接入 |
 | 动态重构图 | 04 §3.4/4.2 | static endpoints / bearer mappings | AUDITED / NOT_STARTED | MISSING | 未基于预测位置/状态重构新图再进入下一步 | 新图更新接口，尚未实现 |
@@ -107,4 +107,4 @@ STEP 4.3B 使用完整冻结 History Tensor 编码 Physical/Agent/Task/Flow 的�
 
 ## 下一步边界
 
-STEP 4.3A Typed Graph Builder 与 STEP 4.3B Dual-Graph Encoder（含 Cross-Processor Formula & Z_PI Structural Interface Closure patch）正式 COMPLETE / FROZEN。当前输出只到完整结构化 `Z_t^{PI,L_g}`，不是 `xi_t^Lat`；当前唯一建议为 **Definition 04 — World Model Representation / Dynamics Contract**，具体 Step 名称由研究者决定，不得自动执行。
+STEP 4.3A Typed Graph Builder 与 STEP 4.3B Dual-Graph Encoder（含 patch）正式 COMPLETE / FROZEN。STEP 4.4 在 communication service gate 暂停，未实现 `xi_t^Lat` 或 rollout。当前唯一下一动作是研究者决定 outage/effective-service 的随机状态或 residual target；决定前不得继续 World Model、Definition 05、训练、GPU 或 `locked_test`。

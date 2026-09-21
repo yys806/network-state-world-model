@@ -79,3 +79,6 @@ STEP 4.1 source of truth：`docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_
 - v11 selector/ranking 是历史诊断，不是当前 PI-JWM 主线。
 
 Unverified：任何只由旧 PPT、文件名或历史聊天提出但没有当前代码/config/experiment 支持的架构声明。
+# STEP 4.4 当前阻塞（2026-09-21）
+
+Structured RSSM 目标结构已获授权，但尚未实现。前置通信 service audit 证明 nominal pre-outage rate 可规则恢复，actual service 仍含未进入 Decision input 的随机 outage realization，因此必须等待研究者冻结 stochastic service/residual 边界。不得把旧 RSSM、历史 rate head 或 audit artifact描述为当前 World Model。

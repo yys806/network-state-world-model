@@ -1,0 +1,107 @@
+{
+  "authority_source": {
+    "access": "read_only",
+    "path": "D:\\shen\\OB\\科研\\PIJWM\\04世界模型预测边界与当前模型.md",
+    "sha256": "ef49cd0802a163886ae324879c01e9fbbd3f3f2dc1ec4079e4022b2c4f7a46c5"
+  },
+  "evidence_class": "SOURCE_AUDIT_ONLY_NO_WORLD_MODEL_IMPLEMENTATION",
+  "files": {
+    "communication_service_sufficiency_audit.json": "af1ce2ca5ac8586e30e328717e8367ce5d090695791a475fcabbce0e4c97b9b7"
+  },
+  "schema_version": "PI-JWM-Step-4.4-Communication-Service-Audit-Manifest-v1",
+  "scope": {
+    "candidate_generation": false,
+    "formal_dataset": false,
+    "gpu": false,
+    "locked_test": false,
+    "loss": false,
+    "optimizer": false,
+    "performance_claim": false,
+    "planner": false,
+    "training": false
+  },
+  "source_files": [
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/channel_manager_cp.py",
+      "sha256": "7566ac1c663f11d59b176614803d4b9ec679a28b6b3da7840a1c9744770f16f7",
+      "symbols": [
+        {
+          "anchor": "symbol:ChannelManagerCP.computeRate",
+          "semantic_claim": "derives SINR/rate from signal, interference, noise and RB bandwidth, then applies a random per-RB outage mask",
+          "symbol": "ChannelManagerCP.computeRate"
+        },
+        {
+          "anchor": "symbol:ChannelManagerCP.getCSI",
+          "semantic_claim": "returns per-RB channel attenuation including fast fading",
+          "symbol": "ChannelManagerCP.getCSI"
+        }
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/channel_callback/outage_callback.py",
+      "sha256": "318f32a427ae1e2f3e6fa8b16ab61071fd39a1b235e73e2f6b39e089b3f6be59",
+      "symbols": [
+        {
+          "anchor": "symbol:rayleigh_outage_prob",
+          "semantic_claim": "maps SINR and threshold to outage probability, not a deterministic outage realization",
+          "symbol": "rayleigh_outage_prob"
+        }
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/airfogsim_env.py",
+      "sha256": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+      "symbols": [
+        {
+          "anchor": "symbol:AirFogSimEnv._compute_communication_rate",
+          "semantic_claim": "updates fast fading before computeRate",
+          "symbol": "AirFogSimEnv._compute_communication_rate"
+        },
+        {
+          "anchor": "symbol:AirFogSimEnv._execute_communication",
+          "semantic_claim": "actual transferred data is summed rate times simulation interval",
+          "symbol": "AirFogSimEnv._execute_communication"
+        },
+        {
+          "anchor": "symbol:AirFogSimEnv._updateWiredCommunication",
+          "semantic_claim": "wired runtime enqueues active task flows and consumes WiredNetworkManager.step results",
+          "symbol": "AirFogSimEnv._updateWiredCommunication"
+        }
+      ]
+    },
+    {
+      "path": "code/reference/AirFogSim/airfogsim/manager/wired_manager.py",
+      "sha256": "6b81a36401f71d2a99af53f3f1d846550d56fc175a1ac6eed1bc0aeea86721fe",
+      "symbols": [
+        {
+          "anchor": "symbol:WiredNetworkManager.step",
+          "semantic_claim": "shares configured link capacity equally among active flows on that link",
+          "symbol": "WiredNetworkManager.step"
+        }
+      ]
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_observer_v1.py",
+      "sha256": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd",
+      "symbols": [
+        {
+          "anchor": "symbol:_physical_structure",
+          "semantic_claim": "Decision snapshot exposes per-RB CSI but not the future outage realization",
+          "symbol": "_physical_structure"
+        }
+      ]
+    },
+    {
+      "path": "code/src/pi_jwm/airfogsim_full_dual_graph_collector_v1.py",
+      "sha256": "5cfc7b3d677d6159635e01ca69fb580a16dee5640dff45dc0e73fee504865064",
+      "symbols": [
+        {
+          "anchor": "symbol:_capture_wireless_profile_rows",
+          "semantic_claim": "outage and actual rate are recorded after runtime channel computation as outcome-only evidence",
+          "symbol": "_capture_wireless_profile_rows"
+        }
+      ]
+    }
+  ],
+  "world_model_implementation_started": false
+}

@@ -1026,3 +1026,9 @@ Causal Flow Ledger and Raw additive contract implemented and verified. Real AirF
 - Fixed Raw amendment so current action/hop target is never silently promoted to logical destination; added explicit destination source and capture phase.
 - Real two-hop Input now passes single FlowID, single Epoch, constant destination, distinct hops, no normal-hop reroute, intermediate-not-E2E and final-hop-E2E checks.
 - Focused suite passes 25 tests. Regressions pass: 4.2C-A 10, 4.2B audit 7, 4.2A 17, 4.1 7, Raw causal 4 and Raw single-step 9. Deterministic rebuild/hash, 5-file JSON reload, compileall, knowledge-index write/check and diff check pass; Git commit/push remain.
+## 2026-09-21 STEP 4.4 communication service gate
+
+- Completed the mandatory source-provenance audit before any Structured RSSM implementation.
+- Machine verdict is `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`: nominal pre-outage rate is rule-recoverable, but actual service depends on a random per-RB outage realization recorded only after execution. Wired capacity/competition are separate additive-state gaps.
+- The authorized stop gate fired. No World Model source, residual target, training, GPU, planner, formal Dataset, or locked-test access was started.
+- Next action is a researcher decision on whether outage/effective service is part of the communication stochastic state, a separate stochastic service event, or a learned residual.

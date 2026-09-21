@@ -4,6 +4,8 @@
 
 ## 2026-09-20
 
+- 2026-09-21：STEP 4.4 强制通信 service audit 得到 `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`。nominal pre-outage rate 可规则恢复，actual service 含 Decision 时不可见的随机 outage realization；按授权停止，未实现 World Model 或 residual。
+
 - 完成 STEP 4.3B-PATCH：P2A/P2C value processor 回到 Definition 03 联合上下文公式；`Z_t^{PI,L_g}` 保留 STEP 4.3A 全部 11 个 structural blocks，并加入 endpoint/index/presence/validity equality、完整 digest、round-trip 与 structural tamper 机器检查；Comm CSI width 改为读取 tensor contract `n_comm_rb`。仍为未训练 CPU development evidence。
 
 - 完成 Step 2.4 通信 Outcome 语义最终验收：真实 wired manager service 与 wireless event 分拆，total 聚合和 empty/missing 语义冻结；6 slot、7 Decision、14 checks 通过。

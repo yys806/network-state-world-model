@@ -985,3 +985,10 @@
 - Found and corrected incomplete `Z_t^{PI,L_g}` structural output: all eleven STEP 4.3A blocks are now preserved as side information, with semantic equality and tamper rejection checks.
 - Removed the Comm CSI width source constant `50`; actual width is read from tensor contract `n_comm_rb` and mismatch fails explicitly.
 - Evidence remains untrained CPU development wiring only; no World Model/RSSM/dynamics/training/GPU/locked-test/formal Dataset.
+## 2026-09-21 STEP 4.4 communication service sufficiency finding
+
+- `ChannelManagerCP.computeRate` computes nominal per-RB rate from signal/interference/noise and bandwidth, but independently samples Rayleigh outage with `random.rand` and zeroes rate on sampled outage.
+- The frozen Decision observer exposes per-RB CSI including fast fading; the actual outage realization is only available in the execution collector with `temporal_role=outcome_only_not_same_frame_decision_input`.
+- Therefore `CSI + A^Comm + known parameters` does not uniquely determine actual service. Promoting the outcome outage to input would be future leakage.
+- Wired service needs configured capacity and active-flow count. Both exist in simulator state but are not frozen Raw/Tensor inputs, so they are additive gaps rather than unobservable residual evidence.
+- Required verdict: `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`; residual target/architecture remains unselected and STEP 4.4 implementation is stopped.

@@ -1,3 +1,11 @@
+# 2026-09-21 STEP 4.4 — Communication Service Audit Gate
+
+- Authorized goal: Structured RSSM World Model, but implementation is gated by communication-service causal sufficiency.
+- Audit verdict: `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED` because actual wireless rate includes a random per-RB outage realization unavailable at Decision time; nominal pre-outage rate is rule-recoverable.
+- Wired capacity and per-link active-flow count are simulator-available additive gaps, not the residual blocker.
+- Stop rule triggered: no World Model, residual target, Loss, Planner, Training, GPU, formal Dataset, or locked_test work may continue until the researcher freezes the uncertainty boundary.
+- Single next action: researcher decision on outage/effective-service stochastic target versus learned residual.
+
 # 2026-09-20 STEP 4.3B-PATCH — Cross-Processor Formula & Z_PI Structural Interface Closure
 
 - Scope: close Definition 03 P2A/P2C formulas, complete structural side interface, digest/round-trip coverage, and contract-derived CSI width; no World Model or training.

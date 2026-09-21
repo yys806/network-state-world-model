@@ -63,3 +63,8 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 - STEP 3.2-PATCH finalized isolation evidence in the same bundle: provenance records real seed/source SHA/config lineage/time ranges/slot duration and 3.1F contract version; time-grid and execution timing checks run before windowing; future-reference audit is a separate Git-tracked observation artifact with 12 candidate/12 constructed/0 unresolved windows; normalization units are `m/s`, `m/s^2`, and `AirFogSim data-unit`.
 - STEP 3.2-PATCH-RECEIPT finalized the machine receipt: top-level `passed` is the AND of computed required checks plus explicit non-locked scope checks; negative fixture verified failure propagation; sample contract provenance reuses the frozen schema constant. STEP 3.2 is COMPLETE / FROZEN.
 - The split is trajectory-level; normalization is fit only on train valid masked values for speed, canonical acceleration and task size. The bundle is not a formal Dataset and has no training/GPU/locked-test evidence.
+# 2026-09-21 STEP 4.4 Communication Service Source Audit
+
+- Evidence class: `SOURCE_AUDIT_ONLY_NO_WORLD_MODEL_IMPLEMENTATION`.
+- Verdict: `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`.
+- This is source/contract evidence only, not training, prediction accuracy, stochastic quality, or performance evidence.
