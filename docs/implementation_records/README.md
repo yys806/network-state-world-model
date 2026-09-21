@@ -4,6 +4,8 @@
 
 ## 记录目录
 
+| STEP 5.1A | [STEP_05_1A_MOTION_CSI_TARGET_CONTRACT.md](STEP_05_1A_MOTION_CSI_TARGET_CONTRACT.md) | Future Motion/CSI target、mask、stable support alignment、normalization 与 raw-rule bridge | COMPLETE；non-locked development evidence，不是正式 Dataset |
+
 | Step | 记录 | 范围 | 状态 |
 | --- | --- | --- | --- |
 | STEP 1 | [STEP_01_AUDIT.md](STEP_01_AUDIT.md) | 新定义与现有实现审计、治理与导航同步 | 见记录中的验证和 Git 状态 |

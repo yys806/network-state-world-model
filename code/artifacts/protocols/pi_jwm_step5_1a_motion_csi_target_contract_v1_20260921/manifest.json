@@ -1,0 +1,28 @@
+{
+  "schema_version": "PI-JWM-Step5.1A-Future-Target-Artifact-Manifest-v1",
+  "artifact_kind": "non_locked_development_target_contract",
+  "source_artifact": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920",
+  "stats_source": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_3b_dual_graph_encoder_v1_20260920\\encoder_normalization_stats.json",
+  "sample_count": 12,
+  "future_target_digest": "57280ca746aee5fcbe6c065d080ab719f6c79d65f1e884cc288ea2770dcc880f",
+  "scope": {
+    "formal_dataset": false,
+    "training": false,
+    "gpu": false,
+    "locked_test_accessed": false
+  },
+  "files": {
+    "acceptance_receipt.json": {
+      "size_bytes": 1005,
+      "sha256": "6c763706bef1f80ae66f11174c2a52af5d0173e5790f8e34fb6233b906e48a6c"
+    },
+    "extended_samples.json": {
+      "size_bytes": 26116313,
+      "sha256": "2d14eb5a9db5b14686c3644a8321955108b2daf6bb5e476968ad9aa6b1aa9124"
+    },
+    "tensor.npz": {
+      "size_bytes": 234780,
+      "sha256": "9dbb5d3af2048335600ab9c89406c64139dfdff8e9ab059e5042d0ad960c23f1"
+    }
+  }
+}

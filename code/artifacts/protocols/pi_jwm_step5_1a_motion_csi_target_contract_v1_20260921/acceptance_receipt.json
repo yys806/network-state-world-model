@@ -1,0 +1,26 @@
+{
+  "required_checks": {
+    "sample_checks": true,
+    "tensor_checks": true,
+    "deterministic_rebuild": true,
+    "real_trajectory_verified": true,
+    "formal_dataset_false": true,
+    "training_false": true,
+    "gpu_false": true,
+    "locked_test_accessed_false": true
+  },
+  "scope": {
+    "formal_dataset": false,
+    "training": false,
+    "gpu": false,
+    "locked_test_accessed": false
+  },
+  "passed": true,
+  "step": "5.1A",
+  "artifact_kind": "non_locked_development_target_contract",
+  "sample_count": 12,
+  "digest": "57280ca746aee5fcbe6c065d080ab719f6c79d65f1e884cc288ea2770dcc880f",
+  "deterministic_rebuild_digest": "57280ca746aee5fcbe6c065d080ab719f6c79d65f1e884cc288ea2770dcc880f",
+  "stats_source": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_3b_dual_graph_encoder_v1_20260920\\encoder_normalization_stats.json",
+  "source_artifact": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920"
+}

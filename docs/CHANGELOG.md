@@ -194,3 +194,8 @@
 - Added a source-hashed dependency matrix and computed three-way sufficiency verdict before Structured RSSM implementation.
 - Found nominal pre-outage wireless rate rule-recoverable, but actual rate depends on a random per-RB outage realization unavailable at Decision time. Wired capacity/active-flow competition are separate additive gaps.
 - Verdict is `SERVICE_RESIDUAL_RESEARCH_DECISION_REQUIRED`; no residual target, World Model, training, GPU, planner, or locked-test work was started.
+# 2026-09-21：STEP 5.1A Future Motion / CSI Target Contract
+
+- 新增 additive Future Target sample/tensor contract：Vehicle delta Motion `[delta_x, delta_y, delta_z, next_speed]`、future outcome per-RB CSI、current support/RB identity alignment、component masks、wired/missing/unsupported side metadata。
+- 复用 STEP 4.3B frozen train-only normalization stats，完成 normalized↔raw bridge、NPZ serialize/load、tamper checks、deterministic rebuild 和真实 non-locked development receipt；12 samples，receipt `passed=true`。
+- 明确边界：不是正式 Dataset、Loss/Posterior/Metric、训练、GPU 或 `locked_test` 证据；当前模型尚未读取 Future Target。

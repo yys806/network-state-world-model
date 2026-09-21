@@ -2,6 +2,11 @@
 
 Source of truth：本文件是入口；具体事实必须回到列出的代码、配置、测试或 artifact。
 
+## STEP 5.1A 已闭合但仍未进入模型
+
+- Future Motion/CSI target contract 已通过 non-locked development receipt；当前实现只生成 additive target namespace，STEP 4.3B encoder/STEP 4.4 world model 尚未读取这些 target。
+- Loss、posterior target encoder、KL、metric、optimizer、training、GPU、planner 和 `locked_test` 仍未开始；artifact 不是正式 Dataset 或性能证据。
+
 ## Step 2.4 raw boundary observations
 
 - AirFogSim reports vehicle `angle` in degrees and UAV `angle`/`phi` in radians; the contract distinguishes observation `heading` from UAV action `azimuth_rad`.

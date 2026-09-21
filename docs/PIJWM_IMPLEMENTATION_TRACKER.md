@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-21。**Raw / 最小 Dataset-Tensor / Stateful Flow / Typed Dual-Graph Builder / Dual-Graph Encoder / STEP 4.4 Structured RSSM World Model Contract 均已完成并冻结；Definition 05 的 10 项 Researcher Decision 已由 STEP 5.0 冻结**。Loss/Posterior/Metric、Training loop、GPU training 与 Planner 仍为 NOT STARTED。
+更新时间：2026-09-21。**Raw / 最小 Dataset-Tensor / Stateful Flow / Typed Dual-Graph Builder / Dual-Graph Encoder / STEP 4.4 Structured RSSM World Model Contract 均已完成并冻结；Definition 05 的 10 项 Researcher Decision 已由 STEP 5.0 冻结；STEP 5.1A Future Motion/CSI target contract 已完成**。Loss/Posterior/Metric、Training loop、GPU training 与 Planner 仍为 NOT STARTED。
 
 ## 当前依据与执行边界
 
@@ -36,11 +36,12 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 | 外生事件 | 04 §2.3/4.2 | 固定entity slot/mask；presence head | AUDITED / OPEN | RESEARCHER_DECISION_REQUIRED | 已知未来场景还是随机到达过程未冻结 | 研究者定观测与生成边界 |
 | deterministic rule feedback | 04 §3.3–3.4 | Step 4.4 `deterministic_transition` | COMPLETE / FROZEN | STRUCTURAL_CHANGE | 每步 learned dynamics 后执行 known stochastic + deterministic rules，并反馈下一 latent | Definition 05 仅定义训练监督 |
 | 动态重构图 | 04 §3.4/4.2 | Step 4.4 `rebuild_graph` | COMPLETE / FROZEN | MISSING→IMPLEMENTED | 每步由 predicted state 更新 Physical/Comm/Flow/Task/DAG/Align/GeoComm；topology config 仍 development-only | 不擅自研究冻结 topology |
-| Definition 05 decision contract | 05；研究者 STEP 5.0 明确决定 | `contracts_PIJWM_DEFINITION_05_LOSS_TRAINING_EVALUATION_V1.md` | DECISION FROZEN / IMPLEMENTATION NOT STARTED | STRUCTURAL_CHANGE | 10 项决策已冻结；current Motion/CSI target path 尚不完整 | 单独授权 STEP 5.1 |
+| Definition 05 decision contract | 05；研究者 STEP 5.0 明确决定 | `contracts_PIJWM_DEFINITION_05_LOSS_TRAINING_EVALUATION_V1.md` | DECISION FROZEN / IMPLEMENTATION NOT STARTED | STRUCTURAL_CHANGE | 10 项决策已冻结；Loss/Posterior/Metric 尚未实现 | 单独授权 STEP 5.1B |
+| Future Motion / CSI target contract | 05 §1；STEP 5.1A 授权 | `code/src/pi_jwm/step5_1a_motion_csi_target_contract_v1.py`、`code/scripts/build_step5_1a_motion_csi_target_contract_v1.py` | COMPLETE / FROZEN FOR TARGET CONTRACT | MINOR_MODIFICATION | 12 个 non-locked development samples；不是正式 Dataset，当前模型尚未读取 target | 研究者审阅后另行授权 STEP 5.1B |
 | training | 05 §2 | 历史 `run_formal_dual_graph_gpu_train_v1.py` | DECISION FROZEN / NOT_STARTED | STRUCTURAL_CHANGE | 旧 staged base-freeze/P4 gate 不符合 joint posterior-warmup→prior curriculum | STEP 5.2 后续实现；本轮不执行 |
-| loss / posterior / KL | 05 §1.2；STEP 5.0 决策 | 历史 `formal_world_model_loss_v1.py`；当前 STEP 4.4 | DECISION FROZEN / NOT_STARTED | STRUCTURAL_CHANGE | v1 只用 Motion/CSI mask-MSE + family analytic KL；overshooting OFF；target encoder/mask/free-bits未实现 | STEP 5.1 实现与 CPU 验收 |
+| loss / posterior / KL | 05 §1.2；STEP 5.0 决策 | 历史 `formal_world_model_loss_v1.py`；当前 STEP 4.4 | DECISION FROZEN / NOT_STARTED | STRUCTURAL_CHANGE | v1 只用 Motion/CSI mask-MSE + family analytic KL；overshooting OFF；target encoder/mask/free-bits未实现 | STEP 5.1B 实现与 CPU 验收 |
 | checkpoint selection | 05 §2.2；STEP 5.0 决策 | 历史 `p4_gate_aware_v1`、validation-loss selector | DECISION FROZEN / NOT_STARTED | STRUCTURAL_CHANGE | selector 已定为 prior-only horizon-mean `L_Val`；旧 gate 不可直接使用 | STEP 5.2 实现 |
-| prediction evaluation | 05 §3；STEP 5.0 决策 | 历史 `formal_world_model_metrics_v1.py` | DECISION FROZEN / NOT_STARTED | MINOR_MODIFICATION | 逐 horizon 累积与反归一化模式可复用；v1 只主报 Motion/CSI raw-unit MAE/RMSE，NLL非核心 | STEP 5.1 实现 |
+| prediction evaluation | 05 §3；STEP 5.0 决策 | 历史 `formal_world_model_metrics_v1.py` | DECISION FROZEN / NOT_STARTED | MINOR_MODIFICATION | 逐 horizon 累积与反归一化模式可复用；v1 只主报 Motion/CSI raw-unit MAE/RMSE，NLL非核心 | STEP 5.1B 后续实现 |
 | learned candidate generation | 06 §4.3 | planner的callback | AUDITED / NOT_STARTED | MISSING | 尚无新四类动作proposal模型/训练 | 后续单独授权 |
 | legality / fallback / warm start | 06 §2.2/3.3/4.3 | CandidateAction.legal、空集raise | AUDITED / NOT_STARTED | MISSING | bool过滤不等于合法性规则；无安全fallback与warm start | 冻结场景约束 |
 | candidate rollout | 06 §3.1 | `FormalCandidateRolloutPlanner.plan` | AUDITED / PROTOTYPE_ONLY | MINOR_MODIFICATION | 逐候选调用可复用；共同latent快照/随机评估/新动作未接通 | 保留原型，后续适配 |
@@ -112,4 +113,4 @@ STEP 4.3B 使用完整冻结 History Tensor 编码 Physical/Agent/Task/Flow 的�
 
 ## 下一步边界
 
-STEP 4.3A、STEP 4.3B 与 STEP 4.4 均正式 COMPLETE / FROZEN；STEP 5.0 已冻结 Definition 05 决策和复用审计，但没有实现 Loss/Posterior/Metric。唯一下一步建议是研究者另行授权 **STEP 5.1 — Definition 05 Loss / Posterior / Metric Implementation**；未授权前不得继续，不得启动 GPU 或访问 `locked_test`。
+STEP 4.3A、STEP 4.3B 与 STEP 4.4 均正式 COMPLETE / FROZEN；STEP 5.0 已冻结 Definition 05 决策和复用审计；STEP 5.1A 已闭合 Future Motion/CSI target、mask、stable support alignment、frozen train-only normalization 和 raw-unit bridge。其 artifact 仍是 non-locked development evidence，不是正式 Dataset，当前模型尚未读取 target。唯一下一步建议是研究者另行授权 **STEP 5.1B — Definition 05 Loss / Posterior / Metric Implementation**；未授权前不得继续，不得启动 GPU 或访问 `locked_test`。

@@ -1,5 +1,11 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-21 STEP 5.1A Future Target 合同实现边界
+
+STEP 5.1A 已实现 Definition 05 所需的 Future Target 数据层闭合：Vehicle Motion 使用 `[delta_x, delta_y, delta_z, next_speed]`，delta 只使用冻结 position std，speed/CSI 使用 STEP 4.3B train-only stats；CSI 从真实 future outcome `channel_rows[].channel_attenuation_db` 读取，并按 current directed communication support 与 RB identity 对齐。wired、未来不可观测 CSI、invalid relation 和 unsupported Return birth 不删除对象或窗口，而是保留 identity、独立 mask 与 side metadata。实现位于 `code/src/pi_jwm/step5_1a_motion_csi_target_contract_v1.py`，开发 artifact 位于 `code/artifacts/protocols/pi_jwm_step5_1a_motion_csi_target_contract_v1_20260921/`。
+
+该合同只扩展 target namespace，不代表当前 encoder/world model 已读取 Future Target；12 个 non-locked development samples 不是正式 Dataset、训练或性能证据。Loss、Posterior、Metric、GPU 和 `locked_test` 仍未开始。
+
 ## 2026-09-21 Definition 05 冻结训练合同
 
 本节记录研究者在 STEP 5.0 中作出的最新明确决策；它取代只读 Definition 05 旧稿中与之冲突的 observation NLL、Event/Residual loss 和 latent overshooting，但不表示训练代码已经实现。

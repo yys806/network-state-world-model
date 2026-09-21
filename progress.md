@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-21 STEP 5.1A — Motion / CSI Target & Normalization Contract Closure
+
+新增 additive future target contract 与构建脚本：Vehicle 使用 delta xyz + next speed，CSI 仅来自 future outcome `channel_rows`，按 current communication support 对齐；wired、缺失组件和 unsupported structure 保留身份并独立 mask。复用 STEP 4.3B train-only stats，完成 NPZ round-trip、tamper rejection、deterministic digest。真实 non-locked development artifact 含 12 samples，receipt `passed=true`；`formal_dataset=false`、`training=false`、`gpu=false`、`locked_test_accessed=false`。未实现 Loss/Posterior/Metric/Training/Planner。
+
 ## 2026-09-21 STEP 5.0 — Definition 05 Decision Freeze / Context Sync
 
 Frozen the researcher's ten Definition 05 decisions in the engineering repository and audited current/historical interfaces without implementing training. The new active contract replaces old observation-NLL/Event/Residual/overshooting clauses with deterministic mean decoders, family-normalized Motion/CSI MSE, family KL, overshooting OFF, posterior-only target evidence, joint training, and prior-only validation. Audit found future position raw values exist only in sample form and future CSI target is absent, so STEP 5.1 must first establish additive target/mask/normalization paths. `training=false`, `gpu=false`, `formal_dataset=false`, `locked_test_accessed=false`.

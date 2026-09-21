@@ -1,5 +1,10 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-21 STEP 5.1A
+
+- 新增 Future Motion/CSI additive target contract、frozen train-only normalization、stable current-support/RB alignment、raw-unit bridge、NPZ round-trip 和 tamper validation。
+- 真实 non-locked development artifact 含 12 samples，receipt `passed=true`；没有训练、GPU、formal Dataset 或 `locked_test`。
+
 只记录影响项目结构、模型实现、实验流程或 AI 上下文恢复的重要变化。微小代码编辑不在此逐条登记。
 
 ## 2026-09-20

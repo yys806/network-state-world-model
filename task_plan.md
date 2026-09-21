@@ -1,3 +1,13 @@
+# 2026-09-21 STEP 5.1A — Motion / CSI Target & Normalization Contract Closure
+
+- [x] Verify clean `main@667e560c30f019e5ed576cdba3ee1caa838b3cdd` against `origin/main` and restore STEP 5.0 decisions/boundaries.
+- [x] Add failing tests for Motion delta/next-speed semantics, component masks, train-only normalization, raw-rule round-trip, CSI future-observation alignment, fixed-support isolation, unsupported-structure independence, serialization, tamper rejection, deterministic rebuild, and receipt AND.
+- [x] Implement an additive Future Target sample/tensor contract without changing frozen History/Input or STEP 4.4 transition semantics.
+- [x] Build real non-locked AirFogSim development evidence and machine-readable acceptance receipt.
+- [x] Run focused/regression/compile/index/context/Git verification, commit, push, report, and stop.
+- Boundary: no Posterior, q path, Loss, KL, free bits, warm-up, Metric, optimizer, training, GPU, planner, formal Dataset, baseline rerun, or `locked_test`.
+- Single next action after closure: researcher review and separate authorization of STEP 5.1B; do not execute automatically.
+
 # 2026-09-21 STEP 5.0 — Definition 05 Decision Freeze / Context Sync
 
 - [x] Verify clean `main` baseline `faf3b1bc6f40c17599138cae19a0fa9b6f0d96e1` against `origin/main`.

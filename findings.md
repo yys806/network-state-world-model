@@ -1,5 +1,11 @@
 # Findings
 
+## 2026-09-21 STEP 5.1A
+
+- Future Motion 的可核验实现是 Vehicle `[delta_x, delta_y, delta_z, next_speed]`；position delta 只除以冻结 position std，不减 position mean。
+- Future CSI 必须由 target frame 对应 outcome 的 `channel_rows` 提取，不能读取 History CSI，也不能用 rate/service/outage 替代；输出只覆盖当前支持关系。
+- 12 个真实 non-locked development samples 通过 focused contract、tensor round-trip、篡改检测和 receipt AND；这不是正式 Dataset、训练或性能结果。
+
 ## 2026-09-21 STEP 5.0 — Definition 05 audit
 
 - The read-only Definition 05 note (SHA-256 `62eebb05e2eeefe9edb0038f12964f59915a7acce03a683d6c7e5c71f85684e9`) still specifies observation NLL, Event/Residual learning, and overshooting. The researcher's newer explicit ten decisions resolve this conflict: deterministic mean decoder + Motion/CSI MSE + family KL, Event/Residual heads absent in v1, and overshooting OFF.
