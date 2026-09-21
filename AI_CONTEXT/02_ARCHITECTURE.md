@@ -82,3 +82,5 @@ Unverified：任何只由旧 PPT、文件名或历史聊天提出但没有当前
 # STEP 4.4 Structured RSSM（2026-09-21）
 
 STEP 4.4 已完成并冻结未训练 CPU 机制：五类 aligned deterministic h，仅 Vehicle Physical/Comm 有 z；posterior teacher-compatible initialization 与未来 prior-only rollout 分离；四类 Action 局部路由；独立 future dynamics graph interaction；只学习 vehicle motion 与 CSI。Wireless outage 是显式 known stochastic event，wired/Flow/Task/CPU/UAV 按规则推进，每步由 predicted state 重构图并反馈。该实现不是精度、校准、规划或性能证据，Definition 05 Loss/Training 尚未开始。
+
+PATCH2 的 Return 结构只复用 current-support typed Flow identity：`task_index + flow_type_index=Return`。v1 不生成 future-only Return Flow；缺少 required current slot 时使用 blocking side-state，不把 computation finished 写成 final completed。

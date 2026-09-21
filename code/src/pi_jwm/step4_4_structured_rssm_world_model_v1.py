@@ -16,6 +16,8 @@ import torch
 from torch import nn
 
 from pi_jwm.step4_3a_typed_dual_graph_builder_v1 import PhysicalTopologyConfig, _physical_edges
+from pi_jwm.step3_3_model_input_tensor_v1 import LIFECYCLE_VOCAB
+from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import FLOW_TYPE_VOCAB
 
 
 SCHEMA_VERSION = "PI-JWM-Structured-RSSM-World-Model-v1-step4.4"
@@ -48,9 +50,39 @@ ADDITIONAL_STRUCTURAL_CHECKS = (
     "hop_service_capped_by_hop_remaining", "hop_advancement", "dynamic_flow_comm_mapping",
     "flow_completion_presence_sync", "route_revision_semantics", "task_lifecycle_rule_complete",
     "dag_dynamic_rule", "comm_endpoint_presence_validity", "task_agent_dynamic_validity",
-    "strong_recursive_counterfactual",
+    "strong_recursive_counterfactual", "existing_return_flow_typed_binding",
+    "future_return_birth_unsupported", "computation_finished_not_final_without_return",
+    "input_flow_not_return_substitute",
 )
 REQUIRED_ACCEPTANCE_CHECKS = frozenset(ORIGINAL_ACCEPTANCE_CHECKS + ADDITIONAL_SERVICE_CHECKS + ADDITIONAL_STRUCTURAL_CHECKS)
+
+
+def bind_existing_return_flows(
+    task_presence: torch.Tensor,
+    flow_known: torch.Tensor,
+    flow_task_index: torch.Tensor,
+    flow_type_index: torch.Tensor,
+) -> torch.Tensor:
+    """Bind current-support Return Flows by typed structural identity."""
+    if not (flow_known.shape == flow_task_index.shape == flow_type_index.shape):
+        raise ValueError("Flow support tensors must have identical shapes")
+    mapping = torch.full(task_presence.shape, -1, dtype=torch.long, device=task_presence.device)
+    return_type = FLOW_TYPE_VOCAB.index("Return")
+    for batch_index in range(task_presence.shape[0]):
+        for task_index in range(task_presence.shape[1]):
+            if not bool(task_presence[batch_index, task_index]):
+                continue
+            hits = torch.nonzero(
+                flow_known[batch_index]
+                & (flow_task_index[batch_index] == task_index)
+                & (flow_type_index[batch_index] == return_type),
+                as_tuple=False,
+            ).flatten()
+            if len(hits) > 1:
+                raise ValueError(f"multiple current-support Return Flows for task {task_index}")
+            if len(hits) == 1:
+                mapping[batch_index, task_index] = hits[0]
+    return mapping
 
 
 @dataclass(frozen=True)
@@ -244,7 +276,7 @@ class StructuredRSSMWorldModel(nn.Module):
         self.route_action_encoder = MLP(2 + 2 * d, w, d)
         self.state_encoders = nn.ModuleDict({
             "physical": MLP(7 + d, w, d), "agent": MLP(7 + d, w, d),
-            "communication": MLP(6 + d, w, d), "flow": MLP(8, w, d), "task": MLP(4 + d, w, d),
+            "communication": MLP(6 + d, w, d), "flow": MLP(7 + 2 * d, w, d), "task": MLP(4 + d, w, d),
         })
         processor_names = ("physical", "communication", "flow", "task_agent", "dag", "p2a", "p2c")
         self.dynamics_processor_layers = nn.ModuleList([
@@ -283,6 +315,7 @@ class StructuredRSSMWorldModel(nn.Module):
             "future_target_consumed_by_prior": False,
             "future_history_encoder_reused": False,
             "fixed_current_object_support": True,
+            "future_return_birth_supported": False,
             "physical_topology": {"mode": config.physical_topology_mode, "radius_m": config.physical_radius_m, "k": config.physical_k, "development_only": True, "research_frozen": False},
             "graph_layers": config.graph_layers,
             "categorical_feature_policy": "typed_embedding_only_no_continuous_index_scalars",
@@ -377,7 +410,9 @@ class StructuredRSSMWorldModel(nn.Module):
             typed = self.comm_type_embedding(state["comm_type_index"].clamp(0, 15))
             raw = torch.cat((csi.mean(-1, keepdim=True), csi.std(-1, keepdim=True), typed, state["comm_validity"][..., None].float(), state["comm_presence"][..., None].float(), state["csi_mask"].float().mean(-1, keepdim=True), torch.zeros((*csi.shape[:2], 1), device=csi.device)), -1)
         elif family == "flow":
-            raw = torch.cat((state["flow_total"][..., None], state["flow_remaining"][..., None], state["carrying_active"][..., None].float(), state["flow_presence"][..., None].float(), state["hop_progress"][..., None], state["hop_remaining"][..., None], state["flow_route_revision"][..., None].float(), torch.zeros((*state["flow_total"].shape, 1), device=state["flow_total"].device)), -1)
+            flow_type = self.flow_type_embedding(state["flow_type_index"].clamp(0, 15))
+            flow_status = self.flow_status_embedding(state["flow_status_index"].clamp(0, 15))
+            raw = torch.cat((state["flow_total"][..., None], state["flow_remaining"][..., None], state["carrying_active"][..., None].float(), state["flow_presence"][..., None].float(), state["hop_progress"][..., None], state["hop_remaining"][..., None], flow_type, flow_status, torch.zeros((*state["flow_total"].shape, 1), device=state["flow_total"].device)), -1)
         else:
             typed = self.lifecycle_embedding(state["task_lifecycle_index"].clamp(0, 15))
             raw = torch.cat((state["task_work_remaining"][..., None], state["task_progress"][..., None], typed, state["task_presence"][..., None].float(), torch.zeros((*state["task_progress"].shape, 1), device=state["task_progress"].device)), -1)
@@ -466,11 +501,11 @@ class StructuredRSSMWorldModel(nn.Module):
             "vehicle_motion": self.vehicle_decoder(torch.cat((next_h["physical"], next_z["physical"]), -1)) * state["vehicle_mask"][..., None],
             "csi": self.csi_decoder(torch.cat((next_h["communication"], next_z["communication"]), -1)) * state["comm_presence"][..., None],
         }
-        next_state, rule_trace = self.deterministic_transition(state, action, learned, service_mode=service_mode, generator=generator)
+        next_state, rule_trace = self.deterministic_transition(state, action, learned, graph=graph, service_mode=service_mode, generator=generator)
         next_graph = self.rebuild_graph(next_state, graph)
         return {"h": next_h, "z": next_z, "prior": {"physical": phy_p, "communication": comm_p}}, next_state, next_graph, {"learned": learned, "rule": rule_trace, "routed": routed}
 
-    def deterministic_transition(self, state: Mapping[str, torch.Tensor], action: Mapping[str, torch.Tensor], learned: Mapping[str, torch.Tensor], *, service_mode: str, generator: torch.Generator | None) -> tuple[dict[str, torch.Tensor], dict[str, Any]]:
+    def deterministic_transition(self, state: Mapping[str, torch.Tensor], action: Mapping[str, torch.Tensor], learned: Mapping[str, torch.Tensor], *, graph: Mapping[str, torch.Tensor] | None = None, service_mode: str, generator: torch.Generator | None) -> tuple[dict[str, torch.Tensor], dict[str, Any]]:
         nxt = {k: v.clone() for k, v in state.items()}
         old_speed = state["speed"]
         vehicle = state["vehicle_mask"]
@@ -521,9 +556,12 @@ class StructuredRSSMWorldModel(nn.Module):
                     same = state["carrying_active"][b] & (state["flow_comm_relation_index"][b] == relation)
                     count = int(same.sum())
                     amount = wired_fair_share_service(state["flow_remaining"][b, f:f+1], capacity_mbps=float(state["wired_capacity_mbps"][b, relation]), slot_duration_s=self.config.slot_duration_s, active_count=count)[0]
-                delivered[b, f] = torch.minimum(amount, state["flow_remaining"][b, f])
+                delivered[b, f] = torch.minimum(torch.minimum(amount, state["flow_remaining"][b, f]), state["hop_remaining"][b, f])
         terminal_hop = state["carrying_hop_destination_index"] == state["flow_destination_index"]
-        hop_complete = state["carrying_active"] & (state["hop_remaining"] > 0) & (delivered >= state["hop_remaining"])
+        next_hop_remaining = (state["hop_remaining"] - delivered).clamp_min(0)
+        hop_complete = state["carrying_active"] & (state["hop_remaining"] > 0) & (next_hop_remaining == 0)
+        nxt["hop_progress"] = state["hop_progress"] + delivered
+        nxt["hop_remaining"] = next_hop_remaining
         e2e = delivered * terminal_hop
         nxt["flow_remaining"] = (state["flow_remaining"] - e2e).clamp_min(0)
         nxt["flow_presence"] = state["flow_presence"] & (nxt["flow_remaining"] > 0)
@@ -547,16 +585,6 @@ class StructuredRSSMWorldModel(nn.Module):
                 nxt["carrying_hop_destination_index"][b, f] = route[next_hop + 1]
                 nxt["hop_progress"][b, f] = 0.0
                 nxt["hop_remaining"][b, f] = state["flow_remaining"][b, f]
-        # Rebind each active Flow to the current structural communication
-        # relation after a hop or route update; missing links remain -1.
-        nxt["flow_comm_relation_index"].fill_(-1)
-        for b in range(nxt["flow_comm_relation_index"].shape[0]):
-            for f in range(nxt["flow_comm_relation_index"].shape[1]):
-                src = int(nxt["carrying_hop_source_index"][b, f])
-                dst = int(nxt["carrying_hop_destination_index"][b, f])
-                hits = torch.nonzero((state["comm_source_index"][b] == src) & (state["comm_target_index"][b] == dst) & state["comm_presence"][b], as_tuple=False)
-                if len(hits):
-                    nxt["flow_comm_relation_index"][b, f] = hits[0, 0]
         # CPU/task rules, not heads.
         cpu_service = action["comp_values"][..., 0].clamp_min(0) * self.config.slot_duration_s
         for b in range(cpu_service.shape[0]):
@@ -572,15 +600,43 @@ class StructuredRSSMWorldModel(nn.Module):
                 if fi < 0 or ti < 0:
                     continue
                 src, dst = int(action["route_values"][b, r, 0]), int(action["route_values"][b, r, 1])
+                changed = (int(state["carrying_hop_source_index"][b, fi]) != src or int(state["carrying_hop_destination_index"][b, fi]) != dst)
                 nxt["carrying_hop_source_index"][b, fi] = src
                 nxt["carrying_hop_destination_index"][b, fi] = dst
-                nxt["flow_route_revision"][b, fi] = state["flow_route_revision"][b, fi] + 1
+                if changed:
+                    nxt["flow_route_revision"][b, fi] = state["flow_route_revision"][b, fi] + 1
                 host = (state["task_agent_task_index"][b] == ti) & (state["task_agent_relation_type_index"][b] == 3) & state["task_agent_validity"][b]
                 if bool(host.any()):
                     nxt["task_agent_agent_index"][b, torch.nonzero(host, as_tuple=False)[0, 0]] = dst
         total_work = state["task_work_total"].clamp_min(1e-9)
         nxt["task_progress"] = 1.0 - nxt["task_work_remaining"] / total_work
-        nxt["task_lifecycle_index"] = torch.where((nxt["task_work_remaining"] <= 0) & state["task_presence"], torch.full_like(state["task_lifecycle_index"], 4), state["task_lifecycle_index"])
+        completed_idx = LIFECYCLE_VOCAB.index("completed")
+        return_idx = state.get("return_flow_index", torch.full_like(state["task_lifecycle_index"], -1))
+        requires_return = state.get("task_requires_return", return_idx >= 0)
+        mapped_return_done = (return_idx >= 0) & (~nxt["flow_presence"].gather(1, return_idx.clamp_min(0)))
+        return_done = (~requires_return) | mapped_return_done
+        computation_finished = nxt["task_work_remaining"] <= 0
+        return_birth_required = requires_return & (return_idx < 0) & state["task_presence"]
+        final_done = computation_finished & return_done & state["task_presence"]
+        nxt["task_completed"] = final_done
+        nxt["return_birth_required"] = return_birth_required
+        nxt["final_completion_blocked_by_fixed_support"] = computation_finished & return_birth_required
+        nxt["task_released"] = state.get("task_released", state["task_presence"]).clone()
+        nxt["task_lifecycle_index"] = torch.where(final_done, torch.full_like(state["task_lifecycle_index"], completed_idx), state["task_lifecycle_index"])
+        if graph is not None and "dag_edges" in graph:
+            for b in range(nxt["task_released"].shape[0]):
+                for t in range(nxt["task_released"].shape[1]):
+                    pred = graph["dag_edges"][b, :, 1] == t
+                    nxt["task_released"][b, t] = bool((~pred).all() or nxt["task_completed"][b, graph["dag_edges"][b, pred, 0].long()].all())
+        # Rebind after every hop and route rule has settled; missing links stay -1.
+        nxt["flow_comm_relation_index"].fill_(-1)
+        for b in range(nxt["flow_comm_relation_index"].shape[0]):
+            for f in range(nxt["flow_comm_relation_index"].shape[1]):
+                if not bool(nxt["flow_presence"][b, f] & nxt["carrying_active"][b, f]):
+                    continue
+                src = int(nxt["carrying_hop_source_index"][b, f]); dst = int(nxt["carrying_hop_destination_index"][b, f])
+                hits = torch.nonzero((state["comm_source_index"][b] == src) & (state["comm_target_index"][b] == dst) & state["comm_presence"][b] & state["comm_validity"][b], as_tuple=False)
+                if len(hits): nxt["flow_comm_relation_index"][b, f] = hits[0, 0]
         trace = {"wireless": wireless, "delivered_bytes": delivered, "terminal_hop": terminal_hop, "e2e_reduction_bytes": e2e, "cpu_service": cpu_service}
         return nxt, trace
 
@@ -606,13 +662,16 @@ class StructuredRSSMWorldModel(nn.Module):
         graph["flow_source_index"] = state["flow_source_index"]
         graph["flow_destination_index"] = state["flow_destination_index"]
         graph["task_presence"] = state["task_presence"]
+        graph["task_released"] = state.get("task_released", state["task_presence"])
+        graph["task_completed"] = state.get("task_completed", torch.zeros_like(state["task_presence"]))
         graph["task_agent_task_index"] = state["task_agent_task_index"]
         graph["task_agent_agent_index"] = state["task_agent_agent_index"]
         task_valid = state["task_presence"].gather(1, state["task_agent_task_index"].clamp_min(0))
         agent_valid = state["entity_presence"].gather(1, state["task_agent_agent_index"].clamp_min(0))
         graph["task_agent_validity"] = state["task_agent_validity"] & task_valid & agent_valid
         graph["dag_edges"] = previous["dag_edges"]  # identity/static semantics preserved
-        graph["dag_validity"] = previous["dag_validity"]
+        graph["dag_validity"] = previous["dag_validity"] & graph["task_presence"].gather(1, graph["dag_edges"][..., 0].clamp_min(0)) & graph["task_presence"].gather(1, graph["dag_edges"][..., 1].clamp_min(0))
+        graph["dag_satisfied"] = graph["dag_validity"] & graph["task_completed"].gather(1, graph["dag_edges"][..., 0].clamp_min(0))
         graph["align_validity"] = state["entity_presence"]
         graph["geo_comm_validity"] = state["comm_presence"] & state["comm_wireless_mask"] & state["comm_validity"]
         return graph
@@ -629,7 +688,7 @@ class StructuredRSSMWorldModel(nn.Module):
             latent, current_state, current_graph, trace = self.one_step(latent, current_state, current_graph, action, prior_mode=prior_mode, service_mode=service_mode, generator=generator)
             states.append(current_state); graphs.append(current_graph); latents.append(latent); traces.append(trace)
         recursive = len(states) < 2 or states[1]["position"].grad_fn is not None or not torch.equal(states[1]["position"], state["position"])
-        return {"schema_version": SCHEMA_VERSION, "states": states, "graphs": graphs, "latents": latents, "traces": traces, "diagnostics": {"future_target_ignored": True, "prior_only_after_t": True, "recursive_state_feedback": bool(recursive), "expected_service_approximation": service_mode == "expectation", "stochastic_event_trace_included": all("wireless" in row["rule"] for row in traces)}}
+        return {"schema_version": SCHEMA_VERSION, "states": states, "graphs": graphs, "latents": latents, "traces": traces, "diagnostics": {"future_target_ignored": True, "prior_only_after_t": True, "fixed_current_object_support": True, "future_return_birth_supported": False, "recursive_state_feedback": bool(recursive), "expected_service_approximation": service_mode == "expectation", "stochastic_event_trace_included": all("wireless" in row["rule"] for row in traces)}}
 
     def synthetic_fixture(self, batch_size: int = 1) -> tuple[dict[str, Any], dict[str, torch.Tensor], dict[str, torch.Tensor], dict[str, torch.Tensor]]:
         b, ne, nc, nf, nt, rb, de = batch_size, 4, 3, 2, 3, self.config.n_comm_rb, self.config.d_encoder
@@ -642,13 +701,14 @@ class StructuredRSSMWorldModel(nn.Module):
             "comm_wireless_mask": torch.tensor([[True, True, False]]).expand(b, -1).clone(), "comm_wired_mask": torch.tensor([[False, False, True]]).expand(b, -1).clone(),
             "csi": torch.full((b, nc, rb), 80.0), "csi_mask": torch.tensor([[[True] * rb, [True] * rb, [False] * rb]]).expand(b, -1, -1).clone(), "rb_active_mask": torch.ones((b, nc, rb), dtype=torch.bool), "wired_capacity_mbps": torch.tensor([[0.0, 0.0, 100.0]]).expand(b, -1).clone(),
             "comm_source_index": torch.tensor([[0, 1, 2]]).expand(b, -1).clone(), "comm_target_index": torch.tensor([[1, 0, 3]]).expand(b, -1).clone(), "comm_source_type_index": torch.tensor([[ENTITY_VEHICLE, ENTITY_UAV, 4]]).expand(b, -1).clone(), "comm_target_type_index": torch.tensor([[ENTITY_UAV, ENTITY_VEHICLE, 4]]).expand(b, -1).clone(),
-            "flow_presence": torch.ones((b, nf), dtype=torch.bool), "flow_total": torch.full((b, nf), 10000.0), "flow_remaining": torch.full((b, nf), 5000.0), "flow_source_index": torch.zeros((b, nf), dtype=torch.long), "flow_destination_index": torch.tensor([[2, 3]]).expand(b, -1).clone(), "flow_type_index": torch.ones((b, nf), dtype=torch.long), "flow_status_index": torch.full((b, nf), 2, dtype=torch.long),
+            "flow_presence": torch.ones((b, nf), dtype=torch.bool), "flow_known": torch.ones((b, nf), dtype=torch.bool), "flow_task_index": torch.tensor([[0, 1]]).expand(b, -1).clone(), "flow_total": torch.full((b, nf), 10000.0), "flow_remaining": torch.full((b, nf), 5000.0), "flow_source_index": torch.zeros((b, nf), dtype=torch.long), "flow_destination_index": torch.tensor([[2, 3]]).expand(b, -1).clone(), "flow_type_index": torch.ones((b, nf), dtype=torch.long), "flow_status_index": torch.full((b, nf), 2, dtype=torch.long),
             "flow_identity_index": torch.arange(nf)[None].expand(b, -1).clone(), "flow_route_revision": torch.zeros((b, nf), dtype=torch.long), "current_holder_index": torch.tensor([[0, 2]]).expand(b, -1).clone(), "current_hop_index": torch.zeros((b, nf), dtype=torch.long), "hop_progress": torch.zeros((b, nf)), "hop_remaining": torch.full((b, nf), 5000.0), "route_node_indices": torch.tensor([[[0, 1, 2, -1], [2, 3, -1, -1]]]).expand(b, -1, -1).clone(), "route_node_mask": torch.tensor([[[True, True, True, False], [True, True, False, False]]]).expand(b, -1, -1).clone(),
             "carrying_active": torch.ones((b, nf), dtype=torch.bool), "carrying_hop_source_index": torch.tensor([[0, 2]]).expand(b, -1).clone(), "carrying_hop_destination_index": torch.tensor([[1, 3]]).expand(b, -1).clone(), "flow_comm_relation_index": torch.tensor([[0, 2]]).expand(b, -1).clone(),
             "task_presence": torch.ones((b, nt), dtype=torch.bool), "task_work_total": torch.full((b, nt), 100.0), "task_work_remaining": torch.full((b, nt), 80.0), "task_progress": torch.full((b, nt), 0.2), "task_lifecycle_index": torch.ones((b, nt), dtype=torch.long),
+            "task_completed": torch.zeros((b, nt), dtype=torch.bool), "task_released": torch.tensor([[True, False, False]]).expand(b, -1).clone(), "return_flow_index": torch.full((b, nt), -1, dtype=torch.long), "task_requires_return": torch.zeros((b, nt), dtype=torch.bool), "return_birth_required": torch.zeros((b, nt), dtype=torch.bool), "final_completion_blocked_by_fixed_support": torch.zeros((b, nt), dtype=torch.bool),
             "task_agent_task_index": torch.tensor([[0, 1]]).expand(b, -1).clone(), "task_agent_agent_index": torch.tensor([[2, 3]]).expand(b, -1).clone(), "task_agent_relation_type_index": torch.tensor([[3, 4]]).expand(b, -1).clone(), "task_agent_validity": torch.ones((b, 2), dtype=torch.bool),
         }
-        graph = {"physical_relation_features": torch.zeros((b, ne, ne, 4)), "physical_relation_validity": torch.ones((b, ne, ne), dtype=torch.bool), "comm_csi": state["csi"].clone(), "comm_csi_mask": state["csi_mask"].clone(), "comm_validity": state["comm_validity"].clone(), "comm_source_index": state["comm_source_index"].clone(), "comm_target_index": state["comm_target_index"].clone(), "comm_type_index": state["comm_type_index"].clone(), "flow_presence": state["flow_presence"].clone(), "flow_source_index": state["flow_source_index"].clone(), "flow_destination_index": state["flow_destination_index"].clone(), "flow_type_index": state["flow_type_index"].clone(), "flow_status_index": state["flow_status_index"].clone(), "task_presence": state["task_presence"].clone(), "task_agent_task_index": state["task_agent_task_index"].clone(), "task_agent_agent_index": state["task_agent_agent_index"].clone(), "task_agent_relation_type_index": state["task_agent_relation_type_index"].clone(), "task_agent_validity": state["task_agent_validity"].clone(), "dag_edges": torch.tensor([[[0, 1], [1, 2]]]).expand(b, -1, -1).clone(), "dag_validity": torch.ones((b, 2), dtype=torch.bool), "align_validity": state["entity_presence"].clone(), "geo_comm_validity": state["comm_wireless_mask"].clone()}
+        graph = {"physical_relation_features": torch.zeros((b, ne, ne, 4)), "physical_relation_validity": torch.ones((b, ne, ne), dtype=torch.bool), "comm_csi": state["csi"].clone(), "comm_csi_mask": state["csi_mask"].clone(), "comm_validity": state["comm_validity"].clone(), "comm_source_index": state["comm_source_index"].clone(), "comm_target_index": state["comm_target_index"].clone(), "comm_type_index": state["comm_type_index"].clone(), "flow_presence": state["flow_presence"].clone(), "flow_source_index": state["flow_source_index"].clone(), "flow_destination_index": state["flow_destination_index"].clone(), "flow_type_index": state["flow_type_index"].clone(), "flow_status_index": state["flow_status_index"].clone(), "task_presence": state["task_presence"].clone(), "task_released": state["task_released"].clone(), "task_completed": state["task_completed"].clone(), "task_agent_task_index": state["task_agent_task_index"].clone(), "task_agent_agent_index": state["task_agent_agent_index"].clone(), "task_agent_relation_type_index": state["task_agent_relation_type_index"].clone(), "task_agent_validity": state["task_agent_validity"].clone(), "dag_edges": torch.tensor([[[0, 1], [1, 2]]]).expand(b, -1, -1).clone(), "dag_validity": torch.ones((b, 2), dtype=torch.bool), "align_validity": state["entity_presence"].clone(), "geo_comm_validity": state["comm_wireless_mask"].clone()}
         zpi = {"physical": {"node_latent": torch.randn((b, ne, de))}, "information": {"agent_latent": torch.randn((b, ne, de)), "comm_relation_latent": torch.randn((b, nc, de)), "flow_relation_latent": torch.randn((b, nf, de)), "task_latent": torch.randn((b, nt, de))}}
         zeros4 = lambda n: torch.zeros((b, n, 4))
         allocation = torch.zeros((b, nc, rb), dtype=torch.bool); allocation[:, 0, 0] = True

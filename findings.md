@@ -1,5 +1,12 @@
 # Findings
 
+## 2026-09-21 STEP 4.4-PATCH2
+
+- 4.3A 已真实保留 Flow `task_index` 与 `flow_type_index`；此前 World Model adapter 丢弃前者并把所有 `return_flow_index` 初始化为 `-1`，这是已有 Return 无法绑定的直接根因。
+- Return gate 必须由 typed structural identity 建立，不能依赖 slot 位置；完成的 Input Flow 不能替代 Return Flow。
+- frozen Task tensor 没有 `return_size`，因此 future-only Return birth 不能从当前 support 可靠推断或创建；v1 必须显式声明不支持，并让外部已知的 `task_requires_return` side-state在缺少 slot 时阻止 final completion。
+- Definition 05 应把跨越 unsupported Return birth 的 window mask/exclude/分类，不能把对象支持缺失当作普通预测误差。
+
 ## 2026-09-20 STEP 4.2A-PATCH
 
 - `_physical_structure()` 先建立 V/U/I directed structural relation，再读取 CSI；`observed_mask=false` 只证明 CSI feature 缺失，不证明 relation 不存在。
@@ -1004,3 +1011,8 @@
 - Root cause: canonical recursive receipt reused a route action after step one completed its Flow; the existing absent-index rejection was correct. The builder now uses a contract-valid negative-index no-op for step two while retaining complete RB allocation.
 - The final receipt contains 87 required checks: 50 original, 21 service-transition, and 16 structural/rule checks. It passed with zero failures. Task lifecycle acceptance reads the frozen `LIFECYCLE_VOCAB` instead of a numeric literal.
 - Evidence remains untrained CPU development only. No Raw/Tensor/graph schema, Loss, Training, Planner, GPU, `locked_test`, or formal Dataset was changed or used.
+# 2026-09-21 STEP 4.4-PATCH2
+
+- Root causes were weak hop cap, pre-route rebinding, scalar route revision input, unused Flow categorical embeddings, and static-only DAG receipt.
+- Existing Return Flow is not fabricated or omitted: the adapter now binds frozen 4.3A `task_index + flow_type_index=Return`; future-only Return birth remains unsupported and missing required support is an explicit blocking side-state.
+- Evidence remains mechanism-level, CPU-only, untrained, and non-formal.

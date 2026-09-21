@@ -2067,6 +2067,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step4_4_structured_rssm_world_model_v1",
         "scripts.build_step3_3_model_input_tensor_v1",
         "scripts.build_step4_4_structured_rssm_world_model_v1",
         "tests.test_step3_3_model_input_tensor_v1"
@@ -2164,6 +2165,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step4_4_structured_rssm_world_model_v1",
         "scripts.build_step4_2c_c_flow_sample_tensor_v1",
         "scripts.build_step4_3a_typed_dual_graph_builder_v1",
         "scripts.build_step4_3b_dual_graph_encoder_v1",
@@ -2241,6 +2243,8 @@
         "tests.test_step4_4_structured_rssm_world_model_v1"
       ],
       "imports": [
+        "pi_jwm.step3_3_model_input_tensor_v1",
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
         "pi_jwm.step4_3a_typed_dual_graph_builder_v1"
       ],
       "lifecycle_status": "support",

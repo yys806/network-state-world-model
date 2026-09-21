@@ -1,27 +1,27 @@
 {
   "acceptance_passed": true,
-  "deterministic_output_digest": "662fabb0419147eec152fb27e4f033d9e9eb8edf901b6ec42c3e1f744604b125",
+  "deterministic_output_digest": "1caa0423011a44ca64a411e53f2533626ab958fef64f086c71fd0153bb05ad29",
   "evidence_class": "UNTRAINED_DEVELOPMENT_WORLD_MODEL_EVIDENCE",
   "files": {
     "acceptance_report.json": {
-      "bytes": 4033,
-      "sha256": "6c5b72ca9e0f38d7618da38efd19ce8239311fcbd8feb06413c7c12f5238b0e0"
+      "bytes": 4231,
+      "sha256": "3bdf8ecdccddb70a7290d16f7d0cdabcaebd3756178f50157390e253e5c2cac2"
     },
     "deterministic_prior_rollout.pt": {
-      "bytes": 198335,
-      "sha256": "8a907d38b76d0ed72da524f94c7a9ab7313f5eb92a3d2307faa091af550325fa"
+      "bytes": 206081,
+      "sha256": "58544fa35b903134021349dd2c5d05dd50950d0c7887b0ee9b6b58a3052dab21"
     },
     "service_transition_audit.json": {
       "bytes": 1288,
       "sha256": "a6dc2db645ef27f542df382a09a0631592e120cfa929ee3c1e35676f8e803105"
     },
     "untrained_world_model_package.pt": {
-      "bytes": 338747,
-      "sha256": "9bc96dcba6824e1af72e7b8b1717e8103e7d4864d2ed969d96e4b3f3358302de"
+      "bytes": 341691,
+      "sha256": "c015a169dc82322417bbc01653df4fa695d4d2ab044b9820e39f0eb895161db1"
     },
     "world_model_config.json": {
-      "bytes": 1931,
-      "sha256": "84b843affd81ad833396a1c841bed0081d4c57fc4868580d11bc5808d4601c57"
+      "bytes": 1975,
+      "sha256": "e333892d1d3c6df5526472d3f84c0e7b2f02310c592e87ccfd46e61a536b8ff2"
     }
   },
   "schema_version": "PI-JWM-Step-4.4-Manifest-v1",
@@ -41,8 +41,8 @@
     "code/artifacts/protocols/pi_jwm_step4_3a_typed_dual_graph_builder_v1_20260920/typed_dual_graph_batch.npz": "6e0f6d68bb7214babf706f5af94fd004a664d61d714bbcb8b502867f45ec2bc6",
     "code/artifacts/protocols/pi_jwm_step4_3b_dual_graph_encoder_v1_20260920/untrained_encoder_package.pt": "c308e4bac21aa4a49c57a6bd4924e6206b399a18d4f4ba75c2c9875e500caf28",
     "code/artifacts/protocols/pi_jwm_step4_4_communication_service_audit_v1_20260921/communication_service_sufficiency_audit.json": "af1ce2ca5ac8586e30e328717e8367ce5d090695791a475fcabbce0e4c97b9b7",
-    "code/scripts/build_step4_4_structured_rssm_world_model_v1.py": "13ffc6c2bc257fff1f1a893533bba83c251528bd401f80e8448d570804321266",
-    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": "13513f5ff65b221c06102467529dc72886d2a9e896ecd8d1219851f5068a65d0",
-    "docs/contracts_PIJWM_STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL_V1.md": "558fb2775546a9e86c653c4f751883d7b6668c0a7b325a8cf5a2d783442a9d1e"
+    "code/scripts/build_step4_4_structured_rssm_world_model_v1.py": "8a55b0c79fcb02e540e5be5437705b8d1e5f4f76e99106feb2f084cc99395318",
+    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": "f640abbd459904aad4d93c71c1a170b206ad5363774fd238ca23b8a5b8644111",
+    "docs/contracts_PIJWM_STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL_V1.md": "31c033670fb791873f981a0b14d9c0ec685a95d73c16147e19e7f8ba87fa6cbf"
   }
 }

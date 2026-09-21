@@ -6,6 +6,7 @@
 - 新增 structured h/z、diagonal-Gaussian prior/posterior、四类局部 Action routing、独立 dynamics graph interaction、vehicle/CSI learned heads、deterministic rules、dynamic graph rebuild 与 recursive prior rollout。
 - wired capacity 从真实 source config 读取；Flow Carrying-derived membership/count 与真实 `WiredNetworkManager` equality 通过。focused 16/16、machine receipt 71/71。
 - artifact 明确为 untrained CPU development evidence；无 Loss/optimizer/Training/GPU/Planner/locked-test/formal Dataset/performance claim。
+- PATCH2：existing Return Flow 只按 current-support `(task_index, flow_type_index=Return)` 绑定，Input/其他 Task Return 不可替代；`future_return_birth_supported=false`，缺少 required slot 时阻止 final completion并输出 side-state。focused 26/26、machine receipt 91/91。
 
 ## 2026-09-20：STEP 4.3B-PATCH Cross-Processor Formula & Z_PI Structural Interface Closure
 

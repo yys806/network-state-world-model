@@ -4,6 +4,10 @@
 
 完成 Structured RSSM 结构与规则 transition 语义收尾：补齐 carrying/hop state、intermediate-hop advancement、Flow completion/presence 同步、动态 Flow-Comm relation 重绑定，并复用 4.3A physical topology policy（无意外 self edge）。receipt 扩展为 87/87（50 original + 21 service + 16 structural），canonical 两步 rollout 第二步使用负索引 no-op，仍严格拒绝 absent Flow action。focused tests 20/20；training=false、gpu=false、locked_test=false、formal_dataset=false，未进入 Definition 05。
 
+## 2026-09-21 STEP 4.4-PATCH2 Return Flow support boundary
+
+新增 current-support Return typed binding：只使用 `task_index + flow_type_index=Return`，不会把 Input 或其他 Task Return 当作 gate。固定 `future_return_birth_supported=false`；显式要求 Return 但 current support 缺失时，计算完成不会变成 final completed，而输出 `return_birth_required` 与 `final_completion_blocked_by_fixed_support`。focused 26/26、临时 receipt 91/91；正式 artifact/registry/Git completion gate 待最终验证。
+
 ## 2026-09-20 STEP 4.2B
 
 完成 Remaining Raw Source & Stateful Flow Contract Audit。新增 source audit helper、builder、focused tests、contract、实施记录和 provenance artifact。5/5 focused tests 通过；Input/Return 只能部分构造，DepData 无真实传输来源，综合 verdict=`FLOW_CONTRACT_NOT_YET_SUPPORTED`。未实现 Graph Builder、Tensor、模型、训练、GPU 或 locked_test。
@@ -1043,3 +1047,6 @@ Causal Flow Ledger and Raw additive contract implemented and verified. Real AirF
 - Machine receipt currently passes 87/87 required checks (50 original + 21 service + 16 structural). Real source config provides wired `0.00001 Mbps`; Flow Carrying-derived membership/count equals a real `WiredNetworkManager` fixture. Deterministic expectation rollout, seeded sample replay, reload, CPU autograd, and dynamic two-step prior recursion pass.
 - Final regression/index/diff checks now pass; Git closure remains pending. No Loss/training/GPU/planner/locked-test/formal Dataset work occurred.
 - Next action is Definition 05 Loss / Training Contract only after separate researcher authorization.
+# 2026-09-21 STEP 4.4-PATCH2
+
+Implemented the authorized transition closure only. Hop service now respects hop-local remaining and accumulates progress; route/hop rules settle before Flow-to-Comm rebinding; Flow type/status embeddings are effective; task final completion uses typed existing-Return binding and fixed-support blocking; DAG release is dynamic. Builder receipt is 91/91 and focused tests are 26/26. Relevant regressions, compileall, deterministic six-file artifact comparison, knowledge-index write plus repeated checks, and diff check pass; Git handoff remains.

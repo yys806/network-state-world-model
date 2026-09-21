@@ -1,16 +1,19 @@
-# 2026-09-21 STEP 4.4-PATCH — World Model Structural & Rule-Transition Semantic Closure
+# 2026-09-21 STEP 4.4-PATCH2 — Carrying, Route Rebinding & Task-DAG Transition Closure
 
 - [x] Close carrying/hop state, intermediate-hop advancement, Flow completion/presence synchronization, dynamic Flow-Comm rebinding, 4.3A topology reuse, endpoint/lifecycle/DAG validity, and recursive counterfactual evidence.
 - [x] Keep absent/invalid action references rejected; canonical receipt uses an explicit negative-index no-op after a Flow completes.
-- [x] Final receipt: 87/87 required checks (50 original + 21 service + 16 structural); no training, GPU, locked_test, formal Dataset, Definition 05, Loss, or Planner.
-- [x] Fresh final regressions, knowledge-index check, diff review, commit/push, and completion report remain only for the final handoff.
+- [x] Bind existing Return Flow by `(task_index, flow_type_index=Return)` and reject Input/other-Task substitution.
+- [x] Freeze fixed current object support: `future_return_birth_supported=false`; missing required Return support blocks final completion with explicit side-state.
+- [x] Focused 26/26 and temporary receipt 91/91 pass; no training, GPU, locked_test, formal Dataset, Definition 05, Loss, or Planner.
+- [x] Fresh final regressions, deterministic final artifact rebuild, stable repeated knowledge-index checks, and diff review pass.
+- [ ] Commit/push and completion report.
 - Single next action after closure: researcher authorization for **Definition 05 — World Model Loss / Training Contract**; do not execute automatically.
 
 # 2026-09-21 STEP 4.4 — Structured RSSM World Model Contract
 
 - Authorized decision: wireless outage is an independent known stochastic service event; Comm z predicts CSI only; `learned_service_residual=false`.
 - Implemented: structured h/z, initializer, prior/posterior, four local Action routes, dynamics graph interaction, vehicle/CSI learned dynamics, seeded outage/expectation modes, wired fair-share, deterministic Flow/Task/CPU/UAV rules, dynamic graph rebuild, state feedback, and two-step recursive prior rollout.
-- Acceptance: focused 20/20 and machine required checks 87/87 pass after STEP 4.4-PATCH; final commit/push and handoff remain before closure.
+- Acceptance: focused 26/26 and machine required checks 91/91 pass after STEP 4.4-PATCH2; final deterministic artifact/registry/Git gate remains before closure.
 - Boundary: no Loss, optimizer, Training, GPU, Planner, candidate generation, locked_test, formal Dataset, or performance claim.
 - Single next action: finish final evidence chain, commit/push, mark STEP 4.4 COMPLETE / FROZEN, then stop.
 
@@ -1309,3 +1312,11 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] Run final focused/regression, deterministic artifact/hash/reload, compileall, knowledge index write/check, diff/status review, commit and push `main`.
 - Stop boundary: `world_model=false`, `prediction=false`, `loss=false`, `planner=false`, `training=false`, `optimizer=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
 - Only next recommendation: Definition 04 — World Model Representation / Dynamics Contract; exact Step name remains a researcher decision.
+# 2026-09-21 STEP 4.4-PATCH2
+
+- [x] Close carrying hop cap/progress and intermediate/terminal completion.
+- [x] Rebind active Flow to Comm after route/hop rules with endpoint validity.
+- [x] Add typed Flow embeddings, Return-aware lifecycle gate, and dynamic DAG release state.
+- [x] PATCH2 pre-Return-boundary receipt reached 87 checks and focused 22/22; superseded by the final 91-check / 26-test boundary above.
+- [x] Final regression/index/diff review passed.
+- [ ] Commit and push main, then stop.

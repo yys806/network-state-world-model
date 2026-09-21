@@ -15,6 +15,7 @@
 - 当前 Step：`STEP 4.4 — Structured RSSM World Model Contract` 已 COMPLETE / FROZEN。研究者已将 wireless outage 冻结为独立 known stochastic service event；未训练 CPU 模型完成 structured h/z、prior/posterior、四类 Action 路由、vehicle/CSI dynamics、规则 transition、动态图与递归 prior rollout。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
+- STEP 4.4-PATCH2 已闭合 carrying hop cap/progress、intermediate/terminal completion、规则后的 Flow→Comm rebinding、RouteRevision、typed Flow embedding、Return-aware task lifecycle 与 dynamic DAG release。Existing Return 仅按 Task+Return typed identity 绑定；future-only Return birth 不支持，缺少 required current support 时 computation finished 不会成为 final completed。focused 26/26、receipt 91/91。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
 - 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder 与 Structured RSSM World Model Contract 已验收。Physical topology、Encoder/World Model 参数仍是 development-only；Loss、Planner 与 Training 均未开始。
 - 审计结论：时间因果、稳定 ID/index、mask/split、typed graph 与 Definition 03 encoder 已落地；`Z_t^{PI,L_g}→xi_t^Lat`、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环仍需后续授权与实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。

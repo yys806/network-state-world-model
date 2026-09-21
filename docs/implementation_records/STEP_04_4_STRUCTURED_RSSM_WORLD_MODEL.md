@@ -41,8 +41,8 @@ Reused the frozen STEP 4.3B encoder package and verified diagonal-Gaussian/GRU i
 ## Validation
 
 - TDD red: focused test failed with `ModuleNotFoundError` before the new module existed.
-- Focused tests: 20/20 passed after implementation, covering formulas, explicit RNG, complete Comm allocation write, local routing, invalid index rejection, posterior/prior separation, recursive feedback, dynamic graph, route/identity semantics, intermediate-hop conservation, serialization, negative receipt logic, absent-relation CSI-mask protection, graph depth, carrying state, and hop advancement.
-- Artifact builder: 87/87 required checks (50 original + 21 service + 16 structural/rule checks), zero failed; top-level `passed` is validated from the logical AND plus explicit scope booleans. The recursive receipt uses a contract-valid negative-index no-op on step two when step one has completed a Flow, so absent Flow references remain rejected.
+- Focused tests: final PATCH2 suite 26/26 passed, covering the original mechanism plus carrying/route/DAG closure and four Return-support boundary cases.
+- Artifact builder: final PATCH2 receipt 91/91 required checks (50 original + 21 service + 20 structural/rule checks), zero failed; top-level `passed` is validated from the logical AND plus explicit scope booleans. The recursive receipt uses a contract-valid negative-index no-op on step two when step one has completed a Flow, so absent Flow references remain rejected.
 - Frozen real Encoder output is used for latent initialization; the canonical wired capacity `0.00001 Mbps` is read from its real non-locked source trajectory config.
 - Real `WiredNetworkManager` equality fixture: derived and simulator active memberships/counts match.
 - Deterministic expectation rollout, seeded sampled outage replay, state-dict reload, CPU autograd, immutable input, and machine provenance are included in the artifact.
@@ -74,3 +74,11 @@ Pending final validation, commit, and push for STEP 4.4-PATCH. The final complet
 ## Next Step
 
 Only recommend **Definition 05 — World Model Loss / Training Contract**. Do not execute it automatically.
+
+## STEP 4.4-PATCH2 — Carrying, Route Rebinding & Task-DAG Transition Closure
+
+- Goal: close hop-local carrying progress, post-rule Flow→Comm rebinding, typed Flow semantics, Task completion/Return boundary, and dynamic DAG release without changing Raw, Tensor, graph schema, or training.
+- Changes: service is capped by `min(raw_service, hop_remaining, flow_remaining)`; partial progress accumulates and resets only on intermediate hop advancement; terminal completion synchronizes Flow presence and carrying state. Rebinding occurs after hop/route rules and validates source, destination, presence, and validity. Route revision increments only on an actual hop change; it remains structural bookkeeping and is not a learned scalar. Flow type/status embeddings now enter Flow state features. Task completion uses the frozen lifecycle vocabulary and optional Return Flow gate; dynamic predecessor completion produces `task_released`/`dag_satisfied` state.
+- Validation: focused tests 26/26; builder receipt 91/91 (50 original + 21 service + 20 structural); compileall, deterministic artifact rebuild, and scope remain CPU-only with `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
+- Existing Return boundary: the adapter now carries frozen 4.3A `task_index` and `flow_type_index`, and binds only the unique current-support `(TaskIndex, Return)` Flow. Input and another Task's Return cannot substitute. A mapped Return must complete under the frozen Flow semantics before final Task completion.
+- Future birth boundary: `future_return_birth_supported=false`. Future Target/route never creates a slot. When explicit current side state requires Return but no current-support Return exists, `return_birth_required` and `final_completion_blocked_by_fixed_support` are set while `task_completed` remains false and the frozen lifecycle vocabulary is unchanged. Definition 05 must mask, exclude, or explicitly classify such windows; Loss is not implemented here.

@@ -30,6 +30,7 @@
     "evidence_class": "UNTRAINED_DEVELOPMENT_WORLD_MODEL_EVIDENCE",
     "fixed_current_object_support": true,
     "future_history_encoder_reused": false,
+    "future_return_birth_supported": false,
     "future_target_consumed_by_prior": false,
     "graph_layers": 2,
     "known_stochastic_transition": "wireless_per_valid_rb_outage",

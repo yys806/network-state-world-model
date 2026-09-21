@@ -12,6 +12,7 @@ from pi_jwm.step4_4_structured_rssm_world_model_v1 import (
     StructuredRSSMWorldModel,
     REQUIRED_ACCEPTANCE_CHECKS,
     apply_known_stochastic_wireless_service,
+    bind_existing_return_flows,
     derive_wired_active_membership,
     rayleigh_outage_probability,
     resolve_wireless_sinr_db,
@@ -74,6 +75,81 @@ class Step44ServiceRuleTests(unittest.TestCase):
 
 
 class Step44ArchitectureTests(unittest.TestCase):
+    def test_existing_return_flow_binding_uses_task_and_type_identity(self):
+        mapping = bind_existing_return_flows(
+            task_presence=torch.tensor([[True, True]]),
+            flow_known=torch.tensor([[True, True, True]]),
+            flow_task_index=torch.tensor([[0, 0, 1]]),
+            flow_type_index=torch.tensor([[2, 3, 3]]),
+        )
+        self.assertTrue(torch.equal(mapping, torch.tensor([[1, 2]])))
+
+    def test_computation_finished_waits_for_existing_return_flow(self):
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+        _, state, graph, action = model.synthetic_fixture()
+        state["flow_task_index"] = torch.tensor([[0, 0]])
+        state["flow_known"] = torch.tensor([[True, True]])
+        state["flow_type_index"] = torch.tensor([[2, 3]])
+        state["return_flow_index"] = bind_existing_return_flows(
+            state["task_presence"], state["flow_known"], state["flow_task_index"], state["flow_type_index"]
+        )
+        state["task_requires_return"] = state["return_flow_index"] >= 0
+        state["task_work_remaining"][0, 0] = 0.0
+        state["flow_presence"][0, 1] = True
+        state["carrying_active"][0, 1] = False
+        learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": state["csi"].clone()}
+        next_state, _ = model.deterministic_transition(state, action, learned, graph=graph, service_mode="expectation", generator=None)
+        self.assertFalse(bool(next_state["task_completed"][0, 0]))
+        self.assertFalse(bool(next_state["return_birth_required"][0, 0]))
+
+        completed_return = {key: value.clone() for key, value in state.items()}
+        completed_return["flow_presence"][0, 1] = False
+        next_state, _ = model.deterministic_transition(completed_return, action, learned, graph=graph, service_mode="expectation", generator=None)
+        self.assertTrue(bool(next_state["task_completed"][0, 0]))
+
+    def test_missing_required_return_support_blocks_final_completion(self):
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+        _, state, graph, action = model.synthetic_fixture()
+        state["task_work_remaining"][0, 0] = 0.0
+        state["task_requires_return"][0, 0] = True
+        state["return_flow_index"][0, 0] = -1
+        learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": state["csi"].clone()}
+        next_state, _ = model.deterministic_transition(state, action, learned, graph=graph, service_mode="expectation", generator=None)
+        self.assertFalse(bool(next_state["task_completed"][0, 0]))
+        self.assertTrue(bool(next_state["return_birth_required"][0, 0]))
+        self.assertTrue(bool(next_state["final_completion_blocked_by_fixed_support"][0, 0]))
+
+    def test_rollout_declares_fixed_support_and_no_future_return_birth(self):
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+        zpi, state, graph, action = model.synthetic_fixture()
+        out = model.rollout(zpi, state, graph, [action], future_target={"return_flow": torch.tensor([99])}, prior_mode="mean", service_mode="expectation")
+        self.assertTrue(out["diagnostics"]["fixed_current_object_support"])
+        self.assertFalse(out["diagnostics"]["future_return_birth_supported"])
+
+    def test_hop_cap_and_partial_progress_are_distinct_from_flow_remaining(self):
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+        zpi, state, graph, action = model.synthetic_fixture()
+        state["flow_remaining"][0, 0] = 1000.0
+        state["hop_remaining"][0, 0] = 10.0
+        state["hop_progress"][0, 0] = 0.0
+        learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": state["csi"].clone()}
+        next_state, trace = model.deterministic_transition(state, action, learned, graph=graph, service_mode="expectation", generator=None)
+        self.assertLessEqual(float(trace["delivered_bytes"][0, 0]), 10.0)
+        self.assertTrue(float(next_state["hop_progress"][0, 0]) <= 10.0)
+        self.assertTrue(float(next_state["hop_remaining"][0, 0]) >= 0.0)
+
+    def test_unchanged_route_does_not_increment_revision_and_flow_embeddings_are_semantic(self):
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+        _, state, graph, action = model.synthetic_fixture()
+        action["route_values"][0, 0, :2] = torch.tensor([0.0, 1.0])
+        learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": state["csi"].clone()}
+        next_state, _ = model.deterministic_transition(state, action, learned, graph=graph, service_mode="expectation", generator=None)
+        self.assertTrue(torch.equal(next_state["flow_route_revision"], state["flow_route_revision"]))
+        base = model._state_features("flow", state)
+        changed = {k: v.clone() for k, v in state.items()}
+        changed["flow_type_index"][0, 0] += 1
+        self.assertFalse(torch.equal(base, model._state_features("flow", changed)))
+
     def test_structural_acceptance_checks_are_declared(self):
         expected = {
             "no_raw_index_learned_feature", "categorical_embedding_semantics", "graph_layers_effective",
@@ -81,7 +157,9 @@ class Step44ArchitectureTests(unittest.TestCase):
             "hop_service_capped_by_hop_remaining", "hop_advancement", "dynamic_flow_comm_mapping",
             "flow_completion_presence_sync", "route_revision_semantics", "task_lifecycle_rule_complete",
             "dag_dynamic_rule", "comm_endpoint_presence_validity", "task_agent_dynamic_validity",
-            "strong_recursive_counterfactual",
+            "strong_recursive_counterfactual", "existing_return_flow_typed_binding",
+            "future_return_birth_unsupported", "computation_finished_not_final_without_return",
+            "input_flow_not_return_substitute",
         }
         self.assertEqual(set(ADDITIONAL_STRUCTURAL_CHECKS), expected)
 
