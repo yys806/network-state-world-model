@@ -85,4 +85,6 @@ STEP 4.4-PATCH3 已 COMPLETE / FROZEN，闭合未训练 CPU 机制的三个剩�
 
 STEP 5.0 已冻结训练架构边界：Motion/CSI 是唯一直接 prediction supervision；对应 training-only Target Encoder 只允许读本 family future target；Phy/Comm 分别做 analytic KL；v1 overshooting OFF。Encoder、RSSM、Prior、Posterior、Target Encoder、Decoder 后续 joint train，规则无 optimizer 参数。此处是 target contract，不是已实现训练图。
 
+STEP 5.1A-PATCH 已把 training target 与 STEP 4.4 对齐：Vehicle Motion 为逐步 `p_(t+k)-p_(t+k-1)`，并严格使用 current physical input slots；CSI 严格使用 current communication relation slots。Future GT 仍只在 target/training supervision，未进入 prior 或 current state。该 Patch 不实现 Posterior/Loss/Metric/Training。
+
 PATCH3 保持 Return 只复用 current-support typed Flow identity：`task_index + flow_type_index=Return`。冻结输入未暴露 `Task.return_size`，所以 real adapter 用 `task_return_requirement_known=false` 表示 unknown；unknown 不等于 no-return，computation finished 后输出 unresolved/blocking side-state。known-required/no-slot 则单独输出 `return_birth_required`。v1 不生成 future-only Return Flow。

@@ -2101,8 +2101,10 @@
       "imported_by": [
         "scripts.build_step4_2a_graph_input_extension_v1",
         "scripts.build_step4_2c_c_flow_sample_tensor_v1",
+        "scripts.build_step5_1a_motion_csi_target_contract_v1",
         "tests.test_step4_2a_graph_input_extension_v1",
-        "tests.test_step4_2c_c_flow_sample_tensor_v1"
+        "tests.test_step4_2c_c_flow_sample_tensor_v1",
+        "tests.test_step5_1a_motion_csi_target_contract_v1"
       ],
       "imports": [],
       "lifecycle_status": "support",
@@ -2110,7 +2112,8 @@
       "path": "code/src/pi_jwm/step4_2a_graph_input_extension_v1.py",
       "test_files": [
         "code/tests/test_step4_2a_graph_input_extension_v1.py",
-        "code/tests/test_step4_2c_c_flow_sample_tensor_v1.py"
+        "code/tests/test_step4_2c_c_flow_sample_tensor_v1.py",
+        "code/tests/test_step5_1a_motion_csi_target_contract_v1.py"
       ]
     },
     {
@@ -3489,6 +3492,7 @@
       "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [
+        "pi_jwm.step4_2a_graph_input_extension_v1",
         "pi_jwm.step5_1a_motion_csi_target_contract_v1"
       ],
       "lifecycle_status": "support",
@@ -9562,6 +9566,7 @@
       "evidence_role": "test_evidence",
       "imported_by": [],
       "imports": [
+        "pi_jwm.step4_2a_graph_input_extension_v1",
         "pi_jwm.step5_1a_motion_csi_target_contract_v1"
       ],
       "lifecycle_status": "support",

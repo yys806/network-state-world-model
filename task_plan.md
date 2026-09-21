@@ -1,4 +1,14 @@
-# 2026-09-21 STEP 5.1A — Motion / CSI Target & Normalization Contract Closure
+# 2026-09-21 STEP 5.1A-PATCH — Multi-Horizon Motion Semantics & Stable Slot Alignment Fix
+
+- [x] Confirm `main == origin/main == 7ea9e4bed621e6d9e201ed4fe9175c26ca2c2252`, clean initial worktree, and reproduce both reported defects in current source.
+- [x] Add red tests for local-step H>1 Motion, missing previous future position, current physical-slot alignment, future permutation/birth/disappearance, target-index independence, CSI row/RB/current-slot identity, tamper rejection, serialization, deterministic rebuild, unsupported Return birth, and receipt AND.
+- [x] Fix only the Future Target contract/tensor: local one-step displacement and explicit current physical/communication slot metadata; preserve History/Input/Prior and frozen normalization.
+- [x] Rebuild the 12-sample real non-locked development artifact and machine receipt.
+- [x] Finish 102/102 related regression, compile, context/index consistency and pre-commit diff review; commit/push/final Git receipt follows as the last workflow action.
+- Boundary: no STEP 5.1B, Posterior, Loss, KL, Metric, optimizer, training, GPU, planner, formal Dataset, baseline, Definition 05 decision change, normalization refit, or `locked_test`.
+- Single next action after closure: researcher review and separate authorization of STEP 5.1B; do not execute automatically.
+
+# 2026-09-21 STEP 5.1A — Motion / CSI Target & Normalization Contract Closure (superseded by PATCH closure above)
 
 - [x] Verify clean `main@667e560c30f019e5ed576cdba3ee1caa838b3cdd` against `origin/main` and restore STEP 5.0 decisions/boundaries.
 - [x] Add failing tests for Motion delta/next-speed semantics, component masks, train-only normalization, raw-rule round-trip, CSI future-observation alignment, fixed-support isolation, unsupported-structure independence, serialization, tamper rejection, deterministic rebuild, and receipt AND.

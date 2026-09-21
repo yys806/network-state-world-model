@@ -1,8 +1,14 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-21 STEP 5.1A-PATCH — Motion 局部一步语义与稳定槽位
+
+Motion learned head 与 STEP 4.4 recursive transition 的统一语义为：第 `k` 个 future target 使用 `[p_(t+k)-p_(t+k-1), v_(t+k)]`。第一步参考 History 最后一帧，第二步以后参考前一个 Future Ground-Truth frame；这只是 training target 构造，不允许 prior、History 或 current graph 读取 Future Target。delta 每个坐标分量仅在相邻两帧该分量都有效时 mask=true，禁止跨缺失帧累计位移。
+
+Motion supervision 的 entity 轴固定采用 `static.input_entity_index["physical"]`。每个 slot 永远绑定同一个 current input entity ID；current non-Vehicle 全 mask=false，current Vehicle 消失时保留 slot，future-only Vehicle 只记 side metadata。CSI supervision 的 relation 轴固定绑定 current model communication slot，并显式核对 relation ID、source/target input slot、relation type 与 RB identity。旧初版中 horizon 2+ anchor-to-future delta 和 future-row-order Motion alignment 已由本 Patch 废止。
+
 ## 2026-09-21 STEP 5.1A Future Target 合同实现边界
 
-STEP 5.1A 已实现 Definition 05 所需的 Future Target 数据层闭合：Vehicle Motion 使用 `[delta_x, delta_y, delta_z, next_speed]`，delta 只使用冻结 position std，speed/CSI 使用 STEP 4.3B train-only stats；CSI 从真实 future outcome `channel_rows[].channel_attenuation_db` 读取，并按 current directed communication support 与 RB identity 对齐。wired、未来不可观测 CSI、invalid relation 和 unsupported Return birth 不删除对象或窗口，而是保留 identity、独立 mask 与 side metadata。实现位于 `code/src/pi_jwm/step5_1a_motion_csi_target_contract_v1.py`，开发 artifact 位于 `code/artifacts/protocols/pi_jwm_step5_1a_motion_csi_target_contract_v1_20260921/`。
+STEP 5.1A-PATCH 后，Definition 05 的 Future Target 数据层使用 local one-step Vehicle Motion `[delta_x, delta_y, delta_z, next_speed]`，delta 只使用冻结 position std，speed/CSI 使用 STEP 4.3B train-only stats；CSI 从真实 future outcome `channel_rows[].channel_attenuation_db` 读取，并按 current directed communication model slot 与 RB identity 对齐。wired、未来不可观测 CSI、invalid relation 和 unsupported Return birth 不删除对象或窗口，而是保留 identity、独立 mask 与 side metadata。实现位于 `code/src/pi_jwm/step5_1a_motion_csi_target_contract_v1.py`，开发 artifact 位于 `code/artifacts/protocols/pi_jwm_step5_1a_motion_csi_target_contract_v1_20260921/`。
 
 该合同只扩展 target namespace，不代表当前 encoder/world model 已读取 Future Target；12 个 non-locked development samples 不是正式 Dataset、训练或性能证据。Loss、Posterior、Metric、GPU 和 `locked_test` 仍未开始。
 

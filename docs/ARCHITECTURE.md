@@ -7,11 +7,11 @@
 
 研究者已冻结目标架构，但实现尚未开始：STEP 4.3B encoder 与 STEP 4.4 RSSM/decoder 将与 family-specific training-only target encoder 联合优化；Motion/CSI 使用独立 component-mask-normalized MSE，Vehicle/Comm latent 使用分族解析 KL；不使用 learned observation variance、latent overshooting、KL balancing 或 Flow/Task/DAG 辅助 loss。训练计划由 posterior warmup 转到 prior-dominant 的 `1→2→4→L` horizon，验证始终 prior-only。
 
-这只是架构合同，不是可运行训练链。STEP 5.1A 已在 additive target namespace 中闭合 future per-RB CSI、delta Motion、mask、冻结 train-only normalization 和 raw-unit bridge，但 loss、posterior teacher、curriculum、optimizer/checkpoint 和新 evaluation 均仍未实现。旧训练器的 staged base-freeze 与旧综合 loss 不属于当前架构。
+这只是架构合同，不是可运行训练链。STEP 5.1A-PATCH 已在 additive target namespace 中把 Motion 修正为 multi-horizon local one-step delta，并固定到 current physical input slots；future per-RB CSI 显式绑定 current model relation slots。mask、冻结 train-only normalization 和 raw-unit bridge保持不变，但 loss、posterior teacher、curriculum、optimizer/checkpoint 和新 evaluation 均仍未实现。旧训练器的 staged base-freeze 与旧综合 loss 不属于当前架构。
 
 ### STEP 5.1A Future Target 边界
 
-`code/src/pi_jwm/step5_1a_motion_csi_target_contract_v1.py` 从真实 non-locked development sample 与 raw future outcome 构造 `[delta_x, delta_y, delta_z, next_speed]` Motion target，以及按 current communication support 和 RB identity 对齐的 future CSI target。position delta 只除以冻结 position std；speed/CSI 复用冻结 train-only mean/std。wired、缺失 CSI、invalid relation 和 unsupported future structure 保留身份并使用独立 mask/side metadata。该 target contract 尚未接入 encoder、posterior 或训练器；12 个样本和 receipt 只是开发合同证据，不是正式 Dataset 或性能结果。
+`code/src/pi_jwm/step5_1a_motion_csi_target_contract_v1.py` 从真实 non-locked development sample 与 raw future outcome 构造 `[p_(t+k)-p_(t+k-1), next_speed]` Motion target，以及按 current model communication slot 和 RB identity 对齐的 future CSI target。Motion entity 轴固定使用 `input_entity_index["physical"]`；position delta 只除以冻结 position std，speed/CSI 复用冻结 train-only mean/std。wired、缺失 CSI、invalid relation 和 unsupported future structure 保留身份并使用独立 mask/side metadata。该 target contract 尚未接入 encoder、posterior 或训练器；12 个样本和 receipt 只是开发合同证据，不是正式 Dataset 或性能结果。
 
 ## 1. 要解决的问题
 

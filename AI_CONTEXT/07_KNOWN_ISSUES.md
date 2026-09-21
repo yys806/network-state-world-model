@@ -2,9 +2,10 @@
 
 Source of truth：本文件是入口；具体事实必须回到列出的代码、配置、测试或 artifact。
 
-## STEP 5.1A 已闭合但仍未进入模型
+## STEP 5.1A-PATCH 已修复初版语义/槽位缺陷，仍未进入模型
 
-- Future Motion/CSI target contract 已通过 non-locked development receipt；当前实现只生成 additive target namespace，STEP 4.3B encoder/STEP 4.4 world model 尚未读取这些 target。
+- 初版 STEP 5.1A 的 horizon 2+ Motion anchor 与 future-row-order Motion alignment 已确认错误；旧 COMPLETE/FROZEN 证据被 PATCH 取代。当前代码和 non-locked development receipt 已覆盖 local-step semantics、current physical slots 和 current model CSI relation slots，PATCH target contract 已重新冻结。
+- 当前实现仍只生成 additive target namespace，STEP 4.3B encoder/STEP 4.4 world model 尚未读取这些 target。
 - Loss、posterior target encoder、KL、metric、optimizer、training、GPU、planner 和 `locked_test` 仍未开始；artifact 不是正式 Dataset 或性能证据。
 
 ## Step 2.4 raw boundary observations

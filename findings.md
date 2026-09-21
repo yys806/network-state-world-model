@@ -1,5 +1,12 @@
 # Findings
 
+## 2026-09-21 STEP 5.1A-PATCH
+
+- Root cause 1: `extend_future_motion_csi_targets()` kept `history[-1]` as the position reference for every horizon, while STEP 4.4 recursively applies `state.position + vehicle_motion[..., :3]`; this produced cumulative anchor-to-future targets for horizon 2+ instead of local one-step targets.
+- Root cause 2: Motion rows were enumerated from each future frame, and tensor rows were written by enumeration order. That made supervision depend on future row order/target index and allowed disappearance or future-only birth to change model slots.
+- CSI values were already looked up by relation ID and RB ID, but the former receipt did not bind those rows to the actual current tensor relation slots used by STEP 4.3A/4.4. The patch adds and verifies the full slot/identity/endpoint/type/RB chain.
+- The old STEP 5.1A receipt therefore did not prove multi-horizon Motion correctness or model-slot equality. The patched receipt requires all local-step, fixed-slot, current-model identity, normalization/mask, deterministic, real-development and scope checks to be true.
+
 ## 2026-09-21 STEP 5.1A
 
 - Future Motion 的可核验实现是 Vehicle `[delta_x, delta_y, delta_z, next_speed]`；position delta 只除以冻结 position std，不减 position mean。

@@ -1,10 +1,10 @@
 {
-  "schema_version": "PI-JWM-Step5.1A-Future-Target-Artifact-Manifest-v1",
-  "artifact_kind": "non_locked_development_target_contract",
+  "schema_version": "PI-JWM-Step5.1A-Future-Target-Artifact-Manifest-v2-local-step-stable-slot",
+  "artifact_kind": "non_locked_development_target_contract_patch",
   "source_artifact": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920",
   "stats_source": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_3b_dual_graph_encoder_v1_20260920\\encoder_normalization_stats.json",
   "sample_count": 12,
-  "future_target_digest": "57280ca746aee5fcbe6c065d080ab719f6c79d65f1e884cc288ea2770dcc880f",
+  "future_target_digest": "dc6c5b0b0d957f0e1e57ee09c19d2b54e7b2ecd0bb631a9612a8200078ab579a",
   "scope": {
     "formal_dataset": false,
     "training": false,
@@ -13,16 +13,16 @@
   },
   "files": {
     "acceptance_receipt.json": {
-      "size_bytes": 1005,
-      "sha256": "6c763706bef1f80ae66f11174c2a52af5d0173e5790f8e34fb6233b906e48a6c"
+      "size_bytes": 1367,
+      "sha256": "3debd64d65604e646c7220a9602f7b22d80674c05c5e3376c75f4292fd97639e"
     },
     "extended_samples.json": {
-      "size_bytes": 26116313,
-      "sha256": "2d14eb5a9db5b14686c3644a8321955108b2daf6bb5e476968ad9aa6b1aa9124"
+      "size_bytes": 26378764,
+      "sha256": "43effd51ae3a8dab851b5c67bffe54366b119ff5f16d4bb7bdb41abb16d0b62c"
     },
     "tensor.npz": {
-      "size_bytes": 234780,
-      "sha256": "9dbb5d3af2048335600ab9c89406c64139dfdff8e9ab059e5042d0ad960c23f1"
+      "size_bytes": 244770,
+      "sha256": "9f73a5d47be1d732a7c4d2983c3bf6f9a4340c783136c3c23043b22cbed1afa6"
     }
   }
 }

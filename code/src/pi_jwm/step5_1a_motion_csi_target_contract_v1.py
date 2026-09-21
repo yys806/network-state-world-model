@@ -15,9 +15,9 @@ from typing import Any, Mapping, Sequence
 import numpy as np
 
 
-COMM_RELATION_TYPE_VOCAB = ["wired", "wireless"]
-SAMPLE_SCHEMA_VERSION = "PI-JWM-Step5.1A-Future-Target-Sample-v1"
-TENSOR_SCHEMA_VERSION = "PI-JWM-Step5.1A-Future-Target-Tensor-v1"
+COMM_RELATION_TYPE_VOCAB = ["<PAD>", "unknown", "wireless", "wired"]
+SAMPLE_SCHEMA_VERSION = "PI-JWM-Step5.1A-Future-Target-Sample-v2-local-step-stable-slot"
+TENSOR_SCHEMA_VERSION = "PI-JWM-Step5.1A-Future-Target-Tensor-v2-local-step-stable-slot"
 MOTION_SEMANTIC_ORDER = ["delta_x_m", "delta_y_m", "delta_z_m", "next_speed_mps"]
 
 
@@ -137,6 +137,14 @@ def _support(sample: Mapping[str, Any]) -> list[Mapping[str, Any]]:
     return [relation for relation in relations if _relation_id(relation)]
 
 
+def _physical_slot_items(sample: Mapping[str, Any]) -> list[tuple[str, int]]:
+    namespace = sample.get("static", {}).get("input_entity_index", {}).get("physical", {})
+    items = sorted(((str(entity_id), int(slot)) for entity_id, slot in namespace.items()), key=lambda item: item[1])
+    if [slot for _, slot in items] != list(range(len(items))):
+        raise ValueError("static.input_entity_index['physical'] must be contiguous from slot 0")
+    return items
+
+
 def _future_outcome(raw: Mapping[str, Any], frame_index: Any) -> Mapping[str, Any]:
     for step in raw.get("steps", []):
         if step.get("frame_index") == frame_index:
@@ -169,15 +177,24 @@ def _future_row_components(row: Mapping[str, Any], current_rb_indices: Sequence[
     return output_values, output_mask
 
 
-def _side_metadata(frame: Mapping[str, Any], future_rows: Sequence[Mapping[str, Any]], support_ids: Sequence[str]) -> dict[str, Any]:
+def _side_metadata(
+    frame: Mapping[str, Any],
+    future_rows: Sequence[Mapping[str, Any]],
+    support_ids: Sequence[str],
+    future_entities: Mapping[str, Mapping[str, Any]],
+    physical_support_ids: Sequence[str],
+) -> dict[str, Any]:
     unsupported = frame.get("unsupported_future_structure", {}) or {}
     future_only_ids = sorted({_future_relation_id(row) for row in future_rows if _future_relation_id(row)} - set(support_ids))
+    future_only_entity_ids = sorted(set(future_entities) - set(physical_support_ids))
     return {
         "unsupported_count": len(unsupported.get("unsupported", [])),
         "unresolved_count": len(unsupported.get("unresolved", [])),
         "fixed_support_blocked_count": len(unsupported.get("fixed_support_blocked", [])),
         "future_only_relation_count": len(future_only_ids),
         "future_only_relation_ids": future_only_ids,
+        "future_only_entity_count": len(future_only_entity_ids),
+        "future_only_entity_ids": future_only_entity_ids,
     }
 
 
@@ -191,39 +208,69 @@ def extend_future_motion_csi_targets(
     current_entities = {
         row.get("entity_id"): row for row in (history_frames[-1].get("entities", []) if history_frames else [])
     }
+    physical_slot_items = _physical_slot_items(sample)
+    physical_support_ids = [entity_id for entity_id, _ in physical_slot_items]
     support = _support(sample)
     support_ids = [_relation_id(relation) for relation in support]
     trajectory_id = sample.get("metadata", {}).get("trajectory_id") or raw.get("trajectory_id")
 
     # This is target-alignment metadata only. It is not consumed as model input.
-    output.setdefault("static", {})["future_target_current_comm_support"] = [
+    output.setdefault("static", {})["future_target_current_physical_support"] = [
         {
-            "relation_id": _relation_id(relation),
-            "relation_type": relation.get("relation_type"),
-            "source_id": relation.get("source_id"),
-            "target_id": relation.get("target_id"),
-            "rb_indices": list(relation.get("rb_indices", [])),
-            "validity": bool(relation.get("validity", True)),
-            "presence": bool(relation.get("presence", True)),
+            "input_slot": slot,
+            "entity_id": entity_id,
+            "entity_type": current_entities.get(entity_id, {}).get("entity_type"),
+            "current_presence": bool(current_entities.get(entity_id)),
             "target_alignment_only": True,
             "model_input": False,
         }
-        for relation in support
+        for entity_id, slot in physical_slot_items
     ]
+    comm_support: list[dict[str, Any]] = []
+    physical_index = dict(physical_slot_items)
+    for relation_slot, relation in enumerate(support):
+        relation_type = str(relation.get("relation_type", "unknown"))
+        source_id = str(relation.get("source_id"))
+        target_id = str(relation.get("target_id"))
+        if source_id not in physical_index or target_id not in physical_index:
+            raise ValueError(f"communication support endpoint is outside current physical input support: {source_id}->{target_id}")
+        comm_support.append(
+            {
+                "relation_slot": relation_slot,
+                "relation_id": _relation_id(relation),
+                "relation_type": relation_type,
+                "relation_type_index": COMM_RELATION_TYPE_VOCAB.index(relation_type),
+                "source_id": source_id,
+                "target_id": target_id,
+                "source_input_slot": physical_index[source_id],
+                "target_input_slot": physical_index[target_id],
+                "rb_indices": list(relation.get("rb_indices", [])),
+                "validity": bool(relation.get("validity", True)),
+                "presence": bool(relation.get("presence", True)),
+                "target_alignment_only": True,
+                "model_input": False,
+            }
+        )
+    output["static"]["future_target_current_comm_support"] = comm_support
 
+    reference_entities = current_entities
+    reference_frame_index = history_frames[-1].get("frame_index") if history_frames else None
     for horizon_index, frame in enumerate(output.get("target", [])):
         future_entities = {row.get("entity_id"): row for row in frame.get("entities", [])}
         motion_targets: list[dict[str, Any]] = []
-        for entity_id, future in future_entities.items():
+        for entity_id, input_slot in physical_slot_items:
             current = current_entities.get(entity_id, {})
+            future = future_entities.get(entity_id, {})
+            reference = reference_entities.get(entity_id, {})
             raw_value = [0.0, 0.0, 0.0, 0.0]
             mask = [False, False, False, False]
-            if future.get("entity_type") == "vehicle" and current:
+            current_vehicle = current.get("entity_type") == "vehicle"
+            if current_vehicle and future:
                 for component in range(3):
                     future_value, future_valid = _entity_value(future, "position_m", component)
-                    current_value, current_valid = _entity_value(current, "position_m", component)
-                    if future_valid and current_valid:
-                        raw_value[component] = float(future_value) - float(current_value)
+                    reference_value, reference_valid = _entity_value(reference, "position_m", component)
+                    if future_valid and reference_valid:
+                        raw_value[component] = float(future_value) - float(reference_value)
                         mask[component] = True
                 speed, speed_valid = _entity_value(future, "speed_mps")
                 if speed_valid:
@@ -232,9 +279,9 @@ def extend_future_motion_csi_targets(
             motion_targets.append(
                 {
                     "entity_id": entity_id,
-                    "entity_type": future.get("entity_type"),
-                    "target_index": future.get("target_index"),
-                    "reference_frame_index": history_frames[-1].get("frame_index") if history_frames else None,
+                    "entity_type": current.get("entity_type"),
+                    "input_slot": input_slot,
+                    "reference_frame_index": reference_frame_index,
                     "target_frame_index": frame.get("frame_index"),
                     "horizon_index": horizon_index,
                     "trajectory_id": trajectory_id,
@@ -251,9 +298,9 @@ def extend_future_motion_csi_targets(
             _future_relation_id(row): row for row in future_rows if _future_relation_id(row)
         }
         csi_targets: list[dict[str, Any]] = []
-        for relation in support:
-            relation_id = _relation_id(relation)
-            rb_indices = list(relation.get("rb_indices", []))
+        for relation in comm_support:
+            relation_id = relation["relation_id"]
+            rb_indices = list(relation["rb_indices"])
             future_row = rows_by_relation.get(relation_id)
             raw_value = [0.0] * len(rb_indices)
             mask = [False] * len(rb_indices)
@@ -267,9 +314,13 @@ def extend_future_motion_csi_targets(
             csi_targets.append(
                 {
                     "relation_id": relation_id,
-                    "relation_type": relation.get("relation_type"),
-                    "source_id": relation.get("source_id"),
-                    "target_id": relation.get("target_id"),
+                    "relation_slot": relation["relation_slot"],
+                    "relation_type": relation["relation_type"],
+                    "relation_type_index": relation["relation_type_index"],
+                    "source_id": relation["source_id"],
+                    "target_id": relation["target_id"],
+                    "source_input_slot": relation["source_input_slot"],
+                    "target_input_slot": relation["target_input_slot"],
                     "rb_indices": rb_indices,
                     "raw_value": raw_value,
                     "normalized_value": normalize_csi(raw_value, mask, stats),
@@ -285,14 +336,18 @@ def extend_future_motion_csi_targets(
             )
         frame["vehicle_motion_targets"] = motion_targets
         frame["comm_csi_targets"] = csi_targets
-        frame["future_target_side_metadata"] = _side_metadata(frame, future_rows, support_ids)
+        frame["future_target_side_metadata"] = _side_metadata(
+            frame, future_rows, support_ids, future_entities, physical_support_ids
+        )
+        reference_entities = future_entities
+        reference_frame_index = frame.get("frame_index")
 
     output["schema_version"] = SAMPLE_SCHEMA_VERSION
     output["future_target_contract"] = {
         "namespace": "target",
-        "motion_semantics": "delta_xyz_plus_next_speed",
+        "motion_semantics": "local_step_delta_xyz_plus_next_speed",
         "csi_source": "future_outcome.channel_rows.channel_attenuation_db",
-        "support_policy": "current_input_support_only",
+        "support_policy": "current_input_physical_and_communication_slots_only",
         "normalization": "frozen_step4_3b_train_stats",
         "raw_rule_bridge": "normalized_target_denormalizes_to_step4_4_raw_motion_units",
         "relation_type_vocab": list(COMM_RELATION_TYPE_VOCAB),
@@ -310,17 +365,25 @@ def _metadata_contract(samples: Sequence[Mapping[str, Any]], stats: Mapping[str,
         for frame in sample.get("target", []):
             sample_motion.append(
                 [
-                    {"entity_id": row.get("entity_id"), "entity_type": row.get("entity_type"), "target_index": row.get("target_index")}
+                    {
+                        "input_slot": row.get("input_slot"),
+                        "entity_id": row.get("entity_id"),
+                        "entity_type": row.get("entity_type"),
+                    }
                     for row in frame.get("vehicle_motion_targets", [])
                 ]
             )
             sample_comm.append(
                 [
                     {
+                        "relation_slot": row.get("relation_slot"),
                         "relation_id": row.get("relation_id"),
                         "relation_type": row.get("relation_type"),
+                        "relation_type_index": row.get("relation_type_index"),
                         "source_id": row.get("source_id"),
                         "target_id": row.get("target_id"),
+                        "source_input_slot": row.get("source_input_slot"),
+                        "target_input_slot": row.get("target_input_slot"),
                         "rb_indices": list(row.get("rb_indices", [])),
                         "presence": row.get("presence"),
                         "validity": row.get("validity"),
@@ -333,7 +396,7 @@ def _metadata_contract(samples: Sequence[Mapping[str, Any]], stats: Mapping[str,
     return {
         "motion_semantic_order": list(MOTION_SEMANTIC_ORDER),
         "comm_relation_type_vocab": list(COMM_RELATION_TYPE_VOCAB),
-        "support_policy": "current_input_support_only",
+        "support_policy": "current_input_physical_and_communication_slots_only",
         "normalization": "frozen_step4_3b_train_stats",
         "normalization_parameters": _normalization_parameters(stats),
         "stats_digest": hashlib.sha256(json.dumps(stats, sort_keys=True).encode("utf-8")).hexdigest(),
@@ -367,11 +430,13 @@ def build_future_target_tensor_batch(samples: Sequence[Mapping[str, Any]], stats
     csi_mask = np.zeros_like(csi_raw, dtype=bool)
     for batch_index, sample in enumerate(samples):
         for horizon_index, frame in enumerate(sample.get("target", [])):
-            for entity_index, row in enumerate(frame.get("vehicle_motion_targets", [])):
+            for row in frame.get("vehicle_motion_targets", []):
+                entity_index = int(row["input_slot"])
                 motion_raw[batch_index, horizon_index, entity_index] = row["raw_value"]
                 motion_normalized[batch_index, horizon_index, entity_index] = row["normalized_value"]
                 motion_mask[batch_index, horizon_index, entity_index] = row["mask"]
-            for relation_index, row in enumerate(frame.get("comm_csi_targets", [])):
+            for row in frame.get("comm_csi_targets", []):
+                relation_index = int(row["relation_slot"])
                 width = len(row["raw_value"])
                 csi_raw[batch_index, horizon_index, relation_index, :width] = row["raw_value"]
                 csi_normalized[batch_index, horizon_index, relation_index, :width] = row["normalized_value"]
@@ -427,20 +492,58 @@ def validate_future_target_sample_checks(sample: Mapping[str, Any]) -> dict[str,
             for frame in sample.get("history", [])
         ),
         "motion_semantics": True,
+        "motion_local_step_semantics": True,
+        "motion_current_input_slot_alignment": True,
         "motion_mask_zero_placeholder": True,
         "csi_support_alignment": True,
+        "csi_current_relation_slot_alignment": True,
         "csi_mask_semantics": True,
         "side_metadata": True,
     }
+    physical_items = _physical_slot_items(sample)
+    physical_ids = [entity_id for entity_id, _ in physical_items]
+    physical_support = sample.get("static", {}).get("future_target_current_physical_support", [])
+    checks["motion_current_input_slot_alignment"] &= [row.get("entity_id") for row in physical_support] == physical_ids
+    checks["motion_current_input_slot_alignment"] &= [row.get("input_slot") for row in physical_support] == list(range(len(physical_ids)))
     support = sample.get("static", {}).get("future_target_current_comm_support", [])
     support_ids = [row.get("relation_id") for row in support]
+    checks["csi_current_relation_slot_alignment"] &= [row.get("relation_slot") for row in support] == list(range(len(support)))
+    current_entities = {
+        row.get("entity_id"): row for row in (sample.get("history", [])[-1].get("entities", []) if sample.get("history") else [])
+    }
+    reference_entities = current_entities
+    reference_frame_index = sample.get("history", [])[-1].get("frame_index") if sample.get("history") else None
     for frame in sample.get("target", []):
-        for row in frame.get("vehicle_motion_targets", []):
+        future_entities = {row.get("entity_id"): row for row in frame.get("entities", [])}
+        motion_targets = frame.get("vehicle_motion_targets", [])
+        checks["motion_current_input_slot_alignment"] &= [row.get("entity_id") for row in motion_targets] == physical_ids
+        checks["motion_current_input_slot_alignment"] &= [row.get("input_slot") for row in motion_targets] == list(range(len(physical_ids)))
+        for row in motion_targets:
             checks["motion_semantics"] &= row.get("semantic_order") == MOTION_SEMANTIC_ORDER
             mask = list(row.get("mask", []))
             raw = list(row.get("raw_value", []))
             normalized = list(row.get("normalized_value", []))
             checks["motion_semantics"] &= len(mask) == len(raw) == len(normalized) == 4
+            entity_id = row.get("entity_id")
+            current = current_entities.get(entity_id, {})
+            future = future_entities.get(entity_id, {})
+            reference = reference_entities.get(entity_id, {})
+            checks["motion_local_step_semantics"] &= row.get("reference_frame_index") == reference_frame_index
+            expected_raw = [0.0, 0.0, 0.0, 0.0]
+            expected_mask = [False, False, False, False]
+            if current.get("entity_type") == "vehicle" and future:
+                for component in range(3):
+                    future_value, future_valid = _entity_value(future, "position_m", component)
+                    reference_value, reference_valid = _entity_value(reference, "position_m", component)
+                    if future_valid and reference_valid:
+                        expected_raw[component] = float(future_value) - float(reference_value)
+                        expected_mask[component] = True
+                speed, speed_valid = _entity_value(future, "speed_mps")
+                if speed_valid:
+                    expected_raw[3] = float(speed)
+                    expected_mask[3] = True
+            checks["motion_local_step_semantics"] &= mask == expected_mask
+            checks["motion_local_step_semantics"] &= bool(np.allclose(raw, expected_raw, atol=1e-12, rtol=1e-12))
             if row.get("entity_type") != "vehicle":
                 checks["motion_semantics"] &= not any(mask)
             if len(mask) == len(raw) == len(normalized) == 4:
@@ -450,7 +553,16 @@ def validate_future_target_sample_checks(sample: Mapping[str, Any]) -> dict[str,
                 )
         targets = frame.get("comm_csi_targets", [])
         checks["csi_support_alignment"] &= [row.get("relation_id") for row in targets] == support_ids
-        for row in targets:
+        checks["csi_current_relation_slot_alignment"] &= [row.get("relation_slot") for row in targets] == list(range(len(support)))
+        for relation_slot, row in enumerate(targets):
+            identity = support[relation_slot] if relation_slot < len(support) else {}
+            checks["csi_current_relation_slot_alignment"] &= all(
+                row.get(name) == identity.get(name)
+                for name in (
+                    "relation_id", "relation_type", "relation_type_index", "source_id", "target_id",
+                    "source_input_slot", "target_input_slot", "rb_indices",
+                )
+            )
             mask = list(row.get("mask", []))
             raw = list(row.get("raw_value", []))
             normalized = list(row.get("normalized_value", []))
@@ -465,8 +577,13 @@ def validate_future_target_sample_checks(sample: Mapping[str, Any]) -> dict[str,
         side = frame.get("future_target_side_metadata", {})
         checks["side_metadata"] &= all(
             isinstance(side.get(name, 0), int) and side.get(name, 0) >= 0
-            for name in ("unsupported_count", "unresolved_count", "fixed_support_blocked_count", "future_only_relation_count")
+            for name in (
+                "unsupported_count", "unresolved_count", "fixed_support_blocked_count",
+                "future_only_relation_count", "future_only_entity_count",
+            )
         )
+        reference_entities = future_entities
+        reference_frame_index = frame.get("frame_index")
     checks["passed"] = all(checks.values())
     return checks
 
@@ -482,6 +599,8 @@ def validate_future_target_tensor_checks(tensor: Mapping[str, Any]) -> dict[str,
         "motion_normalization_semantic_equality": False,
         "csi_normalization_semantic_equality": False,
         "masked_zero_placeholders": False,
+        "motion_current_input_slot_alignment": False,
+        "csi_current_relation_slot_alignment": False,
     }
     if checks["required_arrays"]:
         parameters = (tensor.get("contract", {}) or {}).get("normalization_parameters")
@@ -504,6 +623,89 @@ def validate_future_target_tensor_checks(tensor: Mapping[str, Any]) -> dict[str,
                 and np.all(csi_raw[~csi_mask] == 0.0)
                 and np.all(csi_normalized[~csi_mask] == 0.0)
             )
+            motion_identity = tensor.get("contract", {}).get("motion_identity", [])
+            checks["motion_current_input_slot_alignment"] = bool(motion_identity) and all(
+                all(
+                    [row.get("input_slot") for row in horizon_rows] == list(range(len(horizon_rows)))
+                    and len(horizon_rows) <= motion_raw.shape[2]
+                    for horizon_rows in sample_rows
+                )
+                and len({tuple(row.get("entity_id") for row in horizon_rows) for horizon_rows in sample_rows}) <= 1
+                for sample_rows in motion_identity
+            )
+            comm_identity = tensor.get("contract", {}).get("comm_identity", [])
+            checks["csi_current_relation_slot_alignment"] = bool(comm_identity) and all(
+                all(
+                    [row.get("relation_slot") for row in horizon_rows] == list(range(len(horizon_rows)))
+                    and len(horizon_rows) <= csi_raw.shape[2]
+                    for horizon_rows in sample_rows
+                )
+                and len({
+                    tuple(
+                        (row.get("relation_id"), row.get("source_input_slot"), row.get("target_input_slot"),
+                         row.get("relation_type_index"), tuple(row.get("rb_indices", [])))
+                        for row in horizon_rows
+                    )
+                    for horizon_rows in sample_rows
+                }) <= 1
+                for sample_rows in comm_identity
+            )
+    checks["passed"] = all(checks.values())
+    return checks
+
+
+def validate_current_model_slot_alignment(
+    samples: Sequence[Mapping[str, Any]], current_tensor: Mapping[str, Any]
+) -> dict[str, bool]:
+    """Bind target slots to the current tensor slots consumed by STEP 4.3A/4.4."""
+
+    required = (
+        "comm_source_index", "comm_target_index", "comm_relation_type_index",
+        "comm_rb_indices", "comm_rb_mask",
+    )
+    checks = {
+        "sample_identity": bool(samples) and all(name in current_tensor for name in required),
+        "physical_input_slot_identity": True,
+        "comm_relation_slot_identity": True,
+        "comm_endpoint_slot_identity": True,
+        "comm_relation_type_identity": True,
+        "comm_rb_identity": True,
+    }
+    sample_ids = list(current_tensor.get("sample_ids", []))
+    type_vocab = list(current_tensor.get("contract", {}).get("comm_relation_type_vocab", []))
+    for batch_index, sample in enumerate(samples):
+        sample_id = sample.get("metadata", {}).get("sample_id")
+        checks["sample_identity"] &= batch_index < len(sample_ids) and sample_ids[batch_index] == sample_id
+        tensor_static = current_tensor.get("sample_static", [])
+        checks["physical_input_slot_identity"] &= (
+            batch_index < len(tensor_static)
+            and tensor_static[batch_index].get("input_entity_index", {}).get("physical")
+            == sample.get("static", {}).get("input_entity_index", {}).get("physical")
+        )
+        support = sample.get("static", {}).get("future_target_current_comm_support", [])
+        if not all(name in current_tensor for name in required) or batch_index >= len(sample_ids):
+            continue
+        for relation_slot, identity in enumerate(support):
+            checks["comm_relation_slot_identity"] &= identity.get("relation_slot") == relation_slot
+            checks["comm_endpoint_slot_identity"] &= (
+                int(current_tensor["comm_source_index"][batch_index, -1, relation_slot]) == identity.get("source_input_slot")
+                and int(current_tensor["comm_target_index"][batch_index, -1, relation_slot]) == identity.get("target_input_slot")
+            )
+            expected_type = type_vocab.index(identity.get("relation_type")) if identity.get("relation_type") in type_vocab else -1
+            checks["comm_relation_type_identity"] &= (
+                int(current_tensor["comm_relation_type_index"][batch_index, -1, relation_slot]) == expected_type
+                and identity.get("relation_type_index") == expected_type
+            )
+            rb_indices = list(identity.get("rb_indices", []))
+            tensor_rb_indices = current_tensor["comm_rb_indices"][batch_index, -1, relation_slot]
+            tensor_rb_mask = current_tensor["comm_rb_mask"][batch_index, -1, relation_slot]
+            checks["comm_rb_identity"] &= all(
+                0 <= int(rb) < len(tensor_rb_indices)
+                and int(tensor_rb_indices[int(rb)]) == int(rb)
+                and bool(tensor_rb_mask[int(rb)])
+                for rb in rb_indices
+            )
+            checks["comm_rb_identity"] &= int(np.count_nonzero(tensor_rb_mask)) == len(rb_indices)
     checks["passed"] = all(checks.values())
     return checks
 
@@ -532,18 +734,66 @@ def future_target_digest(samples: Sequence[Mapping[str, Any]], tensor: Mapping[s
     return hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
 
 
+def _has_non_cumulative_horizon_witness(sample: Mapping[str, Any]) -> bool:
+    targets = sample.get("target", [])
+    history = sample.get("history", [])
+    if len(targets) < 2 or not history:
+        return False
+    current = {row.get("entity_id"): row for row in history[-1].get("entities", [])}
+    first = {row.get("entity_id"): row for row in targets[0].get("entities", [])}
+    second = {row.get("entity_id"): row for row in targets[1].get("entities", [])}
+    second_target = {row.get("entity_id"): row for row in targets[1].get("vehicle_motion_targets", [])}
+    for entity_id, row in second_target.items():
+        if row.get("entity_type") != "vehicle":
+            continue
+        for component in range(3):
+            current_value, current_valid = _entity_value(current.get(entity_id, {}), "position_m", component)
+            first_value, first_valid = _entity_value(first.get(entity_id, {}), "position_m", component)
+            second_value, second_valid = _entity_value(second.get(entity_id, {}), "position_m", component)
+            if not (current_valid and first_valid and second_valid and row.get("mask", [False] * 4)[component]):
+                continue
+            local = float(second_value) - float(first_value)
+            cumulative = float(second_value) - float(current_value)
+            if not np.isclose(local, cumulative) and np.isclose(float(row["raw_value"][component]), local):
+                return True
+    return False
+
+
 def validate_step5_1a_acceptance(
     samples: Sequence[Mapping[str, Any]],
     tensor: Mapping[str, Any],
     *,
     deterministic_rebuild: bool,
     real_trajectory_verified: bool,
+    current_model_slot_checks: Mapping[str, Any],
 ) -> dict[str, Any]:
+    sample_checks = [validate_future_target_sample_checks(sample) for sample in samples]
+    tensor_checks = validate_future_target_tensor_checks(tensor)
     required_checks = {
-        "sample_checks": all(validate_future_target_sample_checks(sample).get("passed", False) for sample in samples),
-        "tensor_checks": validate_future_target_tensor_checks(tensor).get("passed", False),
+        "sample_checks": bool(sample_checks) and all(check.get("passed", False) for check in sample_checks),
+        "tensor_checks": tensor_checks.get("passed", False),
+        "multi_horizon_local_motion_semantics": bool(samples)
+        and all(len(sample.get("target", [])) >= 2 for sample in samples)
+        and all(check.get("motion_local_step_semantics", False) for check in sample_checks),
+        "motion_current_input_slot_alignment": all(
+            check.get("motion_current_input_slot_alignment", False) for check in sample_checks
+        )
+        and tensor_checks.get("motion_current_input_slot_alignment", False),
+        "csi_current_relation_slot_alignment": all(
+            check.get("csi_current_relation_slot_alignment", False) for check in sample_checks
+        )
+        and tensor_checks.get("csi_current_relation_slot_alignment", False),
+        "current_model_slot_identity": bool(current_model_slot_checks.get("passed", False)),
+        "motion_normalization_and_mask_semantics": tensor_checks.get("motion_normalization_semantic_equality", False)
+        and tensor_checks.get("masked_zero_placeholders", False),
+        "csi_normalization_and_mask_semantics": tensor_checks.get("csi_normalization_semantic_equality", False)
+        and tensor_checks.get("masked_zero_placeholders", False),
         "deterministic_rebuild": bool(deterministic_rebuild),
         "real_trajectory_verified": bool(real_trajectory_verified),
+        "real_development_horizon_1_2_verified": bool(real_trajectory_verified)
+        and bool(samples)
+        and all(len(sample.get("target", [])) >= 2 for sample in samples)
+        and any(_has_non_cumulative_horizon_witness(sample) for sample in samples),
         "formal_dataset_false": True,
         "training_false": True,
         "gpu_false": True,

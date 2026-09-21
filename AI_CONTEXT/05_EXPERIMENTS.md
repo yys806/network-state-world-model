@@ -1,10 +1,10 @@
 # 当前与历史实验
 
-## 2026-09-21 STEP 5.1A target-contract validation
+## 2026-09-21 STEP 5.1A-PATCH target-contract validation
 
 - 这不是训练实验：脚本从真实 STEP 4.2A non-locked development trajectory 和 STEP 4.3B frozen train-only stats 构造 12 个 Future Target samples/tensor。
-- 12/12 focused contract tests 通过；receipt 的 sample/tensor、deterministic rebuild、real trajectory、formal_dataset/training/gpu/locked_test scope checks 全部为 true，顶层 `passed=true`。artifact digest 由 receipt 记录。
-- 证据覆盖 Motion delta/next-speed、component masks、未来 outcome per-RB CSI、History CSI 隔离、current support、wired/missing masks、future-only isolation、unsupported side metadata、normalization round-trip、serialization 和 tamper rejection。它不是正式 Dataset、Loss/Posterior/Metric、训练或性能结论。
+- 19/19 focused contract tests 与 102/102 related regression 通过；receipt 的 local H1/H2 Motion、current physical/model comm slots、sample/tensor、deterministic rebuild、real trajectory、formal_dataset/training/gpu/locked_test scope checks全部为 true，顶层 `passed=true`。artifact digest 为 `dc6c5b0b0d957f0e1e57ee09c19d2b54e7b2ecd0bb631a9612a8200078ab579a`。
+- 证据覆盖 local one-step Motion/next-speed、相邻帧 component masks、future entity/order/birth/disappearance、未来 outcome per-RB CSI、History CSI 隔离、current model slot identity、wired/missing masks、future-only isolation、unsupported side metadata、normalization round-trip、serialization 和 tamper rejection。它不是正式 Dataset、Loss/Posterior/Metric、训练或性能结论。
 
 本文件只记录客观状态，不自动解释科研意义。Source of truth：完整字段见 `docs/registries/experiment_registry.json`，正式数字见 `results_registry.json` 和对应 acceptance JSON。
 

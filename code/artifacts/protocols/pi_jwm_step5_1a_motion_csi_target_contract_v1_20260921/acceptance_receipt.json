@@ -2,8 +2,15 @@
   "required_checks": {
     "sample_checks": true,
     "tensor_checks": true,
+    "multi_horizon_local_motion_semantics": true,
+    "motion_current_input_slot_alignment": true,
+    "csi_current_relation_slot_alignment": true,
+    "current_model_slot_identity": true,
+    "motion_normalization_and_mask_semantics": true,
+    "csi_normalization_and_mask_semantics": true,
     "deterministic_rebuild": true,
     "real_trajectory_verified": true,
+    "real_development_horizon_1_2_verified": true,
     "formal_dataset_false": true,
     "training_false": true,
     "gpu_false": true,
@@ -16,11 +23,11 @@
     "locked_test_accessed": false
   },
   "passed": true,
-  "step": "5.1A",
-  "artifact_kind": "non_locked_development_target_contract",
+  "step": "5.1A-PATCH",
+  "artifact_kind": "non_locked_development_target_contract_patch",
   "sample_count": 12,
-  "digest": "57280ca746aee5fcbe6c065d080ab719f6c79d65f1e884cc288ea2770dcc880f",
-  "deterministic_rebuild_digest": "57280ca746aee5fcbe6c065d080ab719f6c79d65f1e884cc288ea2770dcc880f",
+  "digest": "dc6c5b0b0d957f0e1e57ee09c19d2b54e7b2ecd0bb631a9612a8200078ab579a",
+  "deterministic_rebuild_digest": "dc6c5b0b0d957f0e1e57ee09c19d2b54e7b2ecd0bb631a9612a8200078ab579a",
   "stats_source": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_3b_dual_graph_encoder_v1_20260920\\encoder_normalization_stats.json",
   "source_artifact": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920"
 }

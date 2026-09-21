@@ -199,3 +199,8 @@
 - 新增 additive Future Target sample/tensor contract：Vehicle delta Motion `[delta_x, delta_y, delta_z, next_speed]`、future outcome per-RB CSI、current support/RB identity alignment、component masks、wired/missing/unsupported side metadata。
 - 复用 STEP 4.3B frozen train-only normalization stats，完成 normalized↔raw bridge、NPZ serialize/load、tamper checks、deterministic rebuild 和真实 non-locked development receipt；12 samples，receipt `passed=true`。
 - 明确边界：不是正式 Dataset、Loss/Posterior/Metric、训练、GPU 或 `locked_test` 证据；当前模型尚未读取 Future Target。
+# 2026-09-21：STEP 5.1A-PATCH Multi-Horizon Motion / Stable Slot Alignment
+
+- 修正 horizon 2+ Motion：从固定 History anchor 的累计位移改为相邻 future frame 的 local one-step displacement，并新增缺失前一 future position component 的 mask 回归。
+- Motion tensor 现在严格按 current physical input slots；future row/target-index permutation、future-only Vehicle 和 disappearing Vehicle 不再改变槽位。
+- CSI 增加 current model relation slot、relation identity、endpoint input slots、type 与 RB identity 的机器验收；12-sample non-locked receipt 重建通过。

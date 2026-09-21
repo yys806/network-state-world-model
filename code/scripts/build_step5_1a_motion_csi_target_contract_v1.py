@@ -11,8 +11,10 @@ from pi_jwm.step5_1a_motion_csi_target_contract_v1 import (
     extend_future_motion_csi_targets,
     future_target_digest,
     save_future_target_tensor_batch,
+    validate_current_model_slot_alignment,
     validate_step5_1a_acceptance,
 )
+from pi_jwm.step4_2a_graph_input_extension_v1 import load_extended_tensor_batch
 
 
 def main() -> int:
@@ -26,6 +28,7 @@ def main() -> int:
     samples = json.loads((args.input / "normalized_samples.json").read_text(encoding="utf-8"))
     stats = json.loads(args.stats.read_text(encoding="utf-8"))
     raw = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (args.input / "raw_amendments").glob("*.json")}
+    current_tensor = load_extended_tensor_batch(args.input / "tensor.npz")
     extended = [extend_future_motion_csi_targets(s, raw[s["metadata"]["trajectory_id"]], stats) for s in samples]
     tensor = build_future_target_tensor_batch(extended, stats)
     rebuilt = [extend_future_motion_csi_targets(s, raw[s["metadata"]["trajectory_id"]], stats) for s in samples]
@@ -50,8 +53,9 @@ def main() -> int:
         tensor,
         deterministic_rebuild=deterministic_rebuild,
         real_trajectory_verified=real_trajectory_verified,
+        current_model_slot_checks=validate_current_model_slot_alignment(extended, current_tensor),
     )
-    receipt.update({"step": "5.1A", "artifact_kind": "non_locked_development_target_contract", "sample_count": len(extended), "digest": digest, "deterministic_rebuild_digest": future_target_digest(rebuilt, rebuilt_tensor), "stats_source": str(args.stats), "source_artifact": str(args.input)})
+    receipt.update({"step": "5.1A-PATCH", "artifact_kind": "non_locked_development_target_contract_patch", "sample_count": len(extended), "digest": digest, "deterministic_rebuild_digest": future_target_digest(rebuilt, rebuilt_tensor), "stats_source": str(args.stats), "source_artifact": str(args.input)})
     (args.output / "acceptance_receipt.json").write_text(json.dumps(receipt, ensure_ascii=False, indent=2), encoding="utf-8")
     files = {}
     for path in sorted(args.output.iterdir()):
@@ -61,8 +65,8 @@ def main() -> int:
                 "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
             }
     manifest = {
-        "schema_version": "PI-JWM-Step5.1A-Future-Target-Artifact-Manifest-v1",
-        "artifact_kind": "non_locked_development_target_contract",
+        "schema_version": "PI-JWM-Step5.1A-Future-Target-Artifact-Manifest-v2-local-step-stable-slot",
+        "artifact_kind": "non_locked_development_target_contract_patch",
         "source_artifact": str(args.input),
         "stats_source": str(args.stats),
         "sample_count": len(extended),

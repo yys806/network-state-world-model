@@ -21,8 +21,10 @@ from pi_jwm.step5_1a_motion_csi_target_contract_v1 import (
     save_future_target_tensor_batch,
     validate_future_target_sample_checks,
     validate_future_target_tensor_checks,
+    validate_current_model_slot_alignment,
     validate_step5_1a_acceptance,
 )
+from pi_jwm.step4_2a_graph_input_extension_v1 import load_extended_tensor_batch
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -35,6 +37,7 @@ class Step51AMotionCsiTargetContractTests(unittest.TestCase):
     def setUpClass(cls):
         cls.samples = json.loads((ARTIFACT / "normalized_samples.json").read_text(encoding="utf-8"))
         cls.stats = json.loads(STATS.read_text(encoding="utf-8"))
+        cls.current_tensor = load_extended_tensor_batch(ARTIFACT / "tensor.npz")
         cls.raw_by_trajectory = {
             path.stem: json.loads(path.read_text(encoding="utf-8"))
             for path in (ARTIFACT / "raw_amendments").glob("*.json")
@@ -50,16 +53,24 @@ class Step51AMotionCsiTargetContractTests(unittest.TestCase):
         rows = samples or [self._extended()]
         return build_future_target_tensor_batch(rows, self.stats)
 
-    def test_vehicle_motion_is_delta_xyz_plus_next_speed_and_nonvehicle_is_masked(self):
+    def test_vehicle_motion_is_local_step_delta_xyz_plus_next_speed_and_nonvehicle_is_masked(self):
         extended = self._extended()
         current = {row["entity_id"]: row for row in extended["history"][-1]["entities"]}
-        first = extended["target"][0]
-        vehicle = next(row for row in first["vehicle_motion_targets"] if row["entity_type"] == "vehicle")
-        future = next(row for row in first["entities"] if row["entity_id"] == vehicle["entity_id"])
-        expected_delta = np.asarray(future["position_m"]["value"]) - np.asarray(current[vehicle["entity_id"]]["position_m"]["value"])
-        self.assertTrue(np.allclose(vehicle["raw_value"][:3], expected_delta))
-        self.assertAlmostEqual(vehicle["raw_value"][3], future["speed_mps"]["value"])
-        self.assertEqual(vehicle["semantic_order"], ["delta_x_m", "delta_y_m", "delta_z_m", "next_speed_mps"])
+        first, second = extended["target"][:2]
+        first_vehicle = next(row for row in first["vehicle_motion_targets"] if row["entity_type"] == "vehicle")
+        second_vehicle = next(row for row in second["vehicle_motion_targets"] if row["entity_id"] == first_vehicle["entity_id"])
+        first_future = next(row for row in first["entities"] if row["entity_id"] == first_vehicle["entity_id"])
+        second_future = next(row for row in second["entities"] if row["entity_id"] == first_vehicle["entity_id"])
+        first_delta = np.asarray(first_future["position_m"]["value"]) - np.asarray(current[first_vehicle["entity_id"]]["position_m"]["value"])
+        second_delta = np.asarray(second_future["position_m"]["value"]) - np.asarray(first_future["position_m"]["value"])
+        cumulative_delta = np.asarray(second_future["position_m"]["value"]) - np.asarray(current[first_vehicle["entity_id"]]["position_m"]["value"])
+        self.assertTrue(np.allclose(first_vehicle["raw_value"][:3], first_delta))
+        self.assertTrue(np.allclose(second_vehicle["raw_value"][:3], second_delta))
+        self.assertFalse(np.allclose(second_vehicle["raw_value"][:3], cumulative_delta))
+        self.assertEqual(first_vehicle["reference_frame_index"], extended["history"][-1]["frame_index"])
+        self.assertEqual(second_vehicle["reference_frame_index"], first["frame_index"])
+        self.assertAlmostEqual(second_vehicle["raw_value"][3], second_future["speed_mps"]["value"])
+        self.assertEqual(second_vehicle["semantic_order"], ["delta_x_m", "delta_y_m", "delta_z_m", "next_speed_mps"])
         non_vehicle = next(row for row in first["vehicle_motion_targets"] if row["entity_type"] != "vehicle")
         self.assertFalse(any(non_vehicle["mask"]))
 
@@ -75,6 +86,74 @@ class Step51AMotionCsiTargetContractTests(unittest.TestCase):
         self.assertEqual(row["mask"], [True, False, True, False])
         self.assertEqual(row["raw_value"][1], 0.0)
         self.assertEqual(row["normalized_value"][3], 0.0)
+
+    def test_missing_previous_future_position_blocks_next_local_delta(self):
+        sample = copy.deepcopy(self.samples[0])
+        vehicle_id = next(row["entity_id"] for row in sample["target"][0]["entities"] if row["entity_type"] == "vehicle")
+        first = next(row for row in sample["target"][0]["entities"] if row["entity_id"] == vehicle_id)
+        second = next(row for row in sample["target"][1]["entities"] if row["entity_id"] == vehicle_id)
+        first["position_m"]["feature_mask"][0] = False
+        first["position_m"]["value"][0] = None
+        self.assertTrue(second["position_m"]["feature_mask"][0])
+        extended = self._extended(sample=sample)
+        first_target = next(row for row in extended["target"][0]["vehicle_motion_targets"] if row["entity_id"] == vehicle_id)
+        second_target = next(row for row in extended["target"][1]["vehicle_motion_targets"] if row["entity_id"] == vehicle_id)
+        self.assertFalse(first_target["mask"][0])
+        self.assertFalse(second_target["mask"][0])
+        self.assertEqual(second_target["raw_value"][0], 0.0)
+
+    def test_motion_uses_current_input_physical_slots_not_future_row_or_target_index_order(self):
+        baseline = self._extended()
+        changed = copy.deepcopy(self.samples[0])
+        for frame in changed["target"]:
+            frame["entities"].reverse()
+            for index, row in enumerate(frame["entities"]):
+                row["target_index"] = 1000 + index
+        permuted = self._extended(sample=changed)
+        expected = [entity_id for entity_id, _ in sorted(
+            baseline["static"]["input_entity_index"]["physical"].items(), key=lambda item: item[1]
+        )]
+        for base_frame, changed_frame in zip(baseline["target"], permuted["target"]):
+            self.assertEqual([row["entity_id"] for row in base_frame["vehicle_motion_targets"]], expected)
+            self.assertEqual([row["entity_id"] for row in changed_frame["vehicle_motion_targets"]], expected)
+            self.assertEqual([row["input_slot"] for row in changed_frame["vehicle_motion_targets"]], list(range(len(expected))))
+            self.assertEqual(
+                [(row["raw_value"], row["mask"]) for row in base_frame["vehicle_motion_targets"]],
+                [(row["raw_value"], row["mask"]) for row in changed_frame["vehicle_motion_targets"]],
+            )
+        baseline_tensor = self._tensor([baseline])
+        changed_tensor = self._tensor([permuted])
+        for key in ("target_vehicle_motion_raw", "target_vehicle_motion_normalized", "target_vehicle_motion_mask"):
+            self.assertTrue(np.array_equal(baseline_tensor[key], changed_tensor[key]))
+
+    def test_future_only_vehicle_does_not_expand_or_shift_motion_support(self):
+        baseline = self._extended()
+        sample = copy.deepcopy(self.samples[0])
+        added = copy.deepcopy(next(row for row in sample["target"][0]["entities"] if row["entity_type"] == "vehicle"))
+        added["entity_id"] = "future_only_vehicle"
+        added["target_index"] = 999
+        sample["target"][0]["entities"].insert(0, added)
+        changed = self._extended(sample=sample)
+        self.assertEqual(
+            [row["entity_id"] for row in baseline["target"][0]["vehicle_motion_targets"]],
+            [row["entity_id"] for row in changed["target"][0]["vehicle_motion_targets"]],
+        )
+        self.assertFalse(any(row["entity_id"] == "future_only_vehicle" for row in changed["target"][0]["vehicle_motion_targets"]))
+        self.assertIn("future_only_vehicle", changed["target"][0]["future_target_side_metadata"]["future_only_entity_ids"])
+
+    def test_disappearing_current_vehicle_keeps_slot_and_does_not_shift_other_entities(self):
+        baseline = self._extended()
+        sample = copy.deepcopy(self.samples[0])
+        vehicle_id = next(row["entity_id"] for row in sample["target"][0]["entities"] if row["entity_type"] == "vehicle")
+        sample["target"][0]["entities"] = [row for row in sample["target"][0]["entities"] if row["entity_id"] != vehicle_id]
+        changed = self._extended(sample=sample)
+        expected_ids = [row["entity_id"] for row in baseline["target"][0]["vehicle_motion_targets"]]
+        self.assertEqual([row["entity_id"] for row in changed["target"][0]["vehicle_motion_targets"]], expected_ids)
+        first = next(row for row in changed["target"][0]["vehicle_motion_targets"] if row["entity_id"] == vehicle_id)
+        second = next(row for row in changed["target"][1]["vehicle_motion_targets"] if row["entity_id"] == vehicle_id)
+        self.assertFalse(any(first["mask"]))
+        self.assertEqual(second["mask"][:3], [False, False, False])
+        self.assertTrue(second["mask"][3])
 
     def test_motion_normalization_uses_position_scale_not_mean_and_round_trips(self):
         raw = np.asarray([12.0, -7.0, 3.5, 9.0])
@@ -152,6 +231,67 @@ class Step51AMotionCsiTargetContractTests(unittest.TestCase):
         self.assertEqual(changed_row["rb_indices"], baseline_row["rb_indices"])
         self.assertTrue(np.allclose(changed_row["raw_value"], baseline_row["raw_value"]))
 
+    def test_future_csi_row_permutation_does_not_change_tensor(self):
+        baseline = self._extended()
+        raw = copy.deepcopy(self.raw_by_trajectory[baseline["metadata"]["trajectory_id"]])
+        for step in raw["steps"]:
+            step.get("outcome", {}).get("channel_rows", []).reverse()
+        changed = self._extended(raw=raw)
+        baseline_tensor = self._tensor([baseline])
+        changed_tensor = self._tensor([changed])
+        for key in ("target_comm_csi_raw", "target_comm_csi_normalized", "target_comm_csi_mask"):
+            self.assertTrue(np.array_equal(baseline_tensor[key], changed_tensor[key]))
+
+    def test_permuted_current_comm_slots_keep_csi_bound_to_relation_identity(self):
+        baseline = self._extended()
+        sample = copy.deepcopy(self.samples[0])
+        sample["history"][-1]["communication_relations"].reverse()
+        changed = self._extended(sample=sample)
+        baseline_by_id = {
+            row["relation_id"]: (row["raw_value"], row["mask"], row["rb_indices"])
+            for row in baseline["target"][0]["comm_csi_targets"]
+        }
+        changed_by_id = {
+            row["relation_id"]: (row["raw_value"], row["mask"], row["rb_indices"])
+            for row in changed["target"][0]["comm_csi_targets"]
+        }
+        self.assertEqual(changed_by_id, baseline_by_id)
+        self.assertEqual(
+            [row["relation_slot"] for row in changed["target"][0]["comm_csi_targets"]],
+            list(range(len(changed_by_id))),
+        )
+
+    def test_csi_relation_slot_identity_matches_current_model_support(self):
+        extended = self._extended()
+        physical = extended["static"]["input_entity_index"]["physical"]
+        support = extended["static"]["future_target_current_comm_support"]
+        current = extended["history"][-1]["communication_relations"]
+        self.assertEqual(len(support), len(current))
+        for slot, (identity, relation) in enumerate(zip(support, current)):
+            self.assertEqual(identity["relation_slot"], slot)
+            self.assertEqual(identity["relation_id"], relation.get("communication_relation_id") or relation.get("relation_id"))
+            self.assertEqual(identity["source_input_slot"], physical[relation["source_id"]])
+            self.assertEqual(identity["target_input_slot"], physical[relation["target_id"]])
+            self.assertEqual(identity["relation_type"], relation["relation_type"])
+            self.assertEqual(identity["rb_indices"], relation["rb_indices"])
+        for frame in extended["target"]:
+            for slot, row in enumerate(frame["comm_csi_targets"]):
+                self.assertEqual(row["relation_slot"], slot)
+                self.assertEqual(row["relation_id"], support[slot]["relation_id"])
+                self.assertEqual(row["source_input_slot"], support[slot]["source_input_slot"])
+                self.assertEqual(row["target_input_slot"], support[slot]["target_input_slot"])
+                self.assertEqual(row["relation_type_index"], support[slot]["relation_type_index"])
+                self.assertEqual(row["rb_indices"], support[slot]["rb_indices"])
+        checks = validate_current_model_slot_alignment([self._extended(index) for index in range(len(self.samples))], self.current_tensor)
+        self.assertTrue(checks["passed"], checks)
+        tampered = copy.deepcopy(self.current_tensor)
+        tampered["comm_source_index"][0, -1, 0] = tampered["comm_source_index"][0, -1, 0] + 1
+        tampered_checks = validate_current_model_slot_alignment(
+            [self._extended(index) for index in range(len(self.samples))], tampered
+        )
+        self.assertFalse(tampered_checks["comm_endpoint_slot_identity"])
+        self.assertFalse(tampered_checks["passed"])
+
     def test_csi_normalization_uses_frozen_train_stats_and_round_trips(self):
         raw = np.asarray([80.0, 95.0, 110.0])
         mask = np.asarray([True, True, True])
@@ -211,9 +351,24 @@ class Step51AMotionCsiTargetContractTests(unittest.TestCase):
         tensor_a = self._tensor(first)
         tensor_b = self._tensor(second)
         self.assertEqual(future_target_digest(first, tensor_a), future_target_digest(second, tensor_b))
-        receipt = validate_step5_1a_acceptance(first, tensor_a, deterministic_rebuild=True, real_trajectory_verified=True)
+        current_model_checks = validate_current_model_slot_alignment(
+            [self._extended(index) for index in range(len(self.samples))], self.current_tensor
+        )
+        receipt = validate_step5_1a_acceptance(
+            first,
+            tensor_a,
+            deterministic_rebuild=True,
+            real_trajectory_verified=True,
+            current_model_slot_checks=current_model_checks,
+        )
         self.assertTrue(receipt["passed"], receipt)
-        failed = validate_step5_1a_acceptance(first, tensor_a, deterministic_rebuild=False, real_trajectory_verified=True)
+        failed = validate_step5_1a_acceptance(
+            first,
+            tensor_a,
+            deterministic_rebuild=False,
+            real_trajectory_verified=True,
+            current_model_slot_checks=current_model_checks,
+        )
         self.assertFalse(failed["passed"])
         self.assertTrue(all(receipt["required_checks"].values()))
         self.assertEqual(receipt["scope"], {"formal_dataset": False, "training": False, "gpu": False, "locked_test_accessed": False})
