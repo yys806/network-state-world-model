@@ -1,6 +1,6 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-21。**Raw / 最小 Dataset-Tensor / Stateful Flow / Typed Dual-Graph Builder / Dual-Graph Encoder / STEP 4.4 Structured RSSM World Model Contract 均已完成并冻结**。STEP 4.4 采用研究者冻结的 known stochastic outage event，完成未训练 CPU prior rollout、规则 transition 与动态图重建；Loss、Planner 与 Training 均为 NOT STARTED。
+更新时间：2026-09-21。**Raw / 最小 Dataset-Tensor / Stateful Flow / Typed Dual-Graph Builder / Dual-Graph Encoder / STEP 4.4 Structured RSSM World Model Contract 均已完成并冻结**。PATCH3 源码、focused 30/30、正式 receipt 92/92 与 6 文件独立重建 hash/size equality 已通过。Loss、Planner 与 Training 均为 NOT STARTED。
 
 ## 当前依据与执行边界
 
@@ -58,7 +58,7 @@ Status 表示工程进度；Reuse 表示与目标定义的匹配类别。`DIRECT
 
 ## 当前 STEP 4.4 结果
 
-STEP 4.4 已将冻结 `Z_t^{PI,L_g}` 接入五类 entity/relation-aligned deterministic state，并只为 Vehicle Physical 与 Communication 建立 stochastic state。四类 Action 局部路由、独立 dynamics graph interaction、vehicle/CSI learned heads、known stochastic wireless outage、wired fair-share、Flow/Task/CPU/UAV 规则、预测态动态图重建和两步 prior-only recursive rollout 已通过未训练 CPU acceptance。STEP 4.4-PATCH2 进一步闭合 hop cap/progress、intermediate/terminal completion、规则后的 Flow→Comm rebinding、RouteRevision、typed Flow embedding、Return-aware task lifecycle 与 dynamic DAG release；existing Return 只按 `(task_index, flow_type_index=Return)` 绑定，Input/其他 Task Return 不可替代；future-only Return birth 明确不支持，缺失 support 时用 side-state 阻止 final completion。receipt 为 91/91，focused tests 为 26/26，artifact 位于 `code/artifacts/protocols/pi_jwm_step4_4_structured_rssm_world_model_v1_20260921/`。它只证明 architecture wiring、因果边界、规则执行、随机 replay 和 differentiability，不证明预测精度、校准、规划或性能。`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+STEP 4.4 已将冻结 `Z_t^{PI,L_g}` 接入五类 entity/relation-aligned deterministic state，并只为 Vehicle Physical 与 Communication 建立 stochastic state。PATCH3 明确：冻结 current-side 输入没有 `Task.return_size`，所以无 Return slot 表示 requirement unknown，而不是 no-return；真实 adapter 的 unknown 状态在 computation finished 后输出 unresolved/blocking side-state，Existing Return 仍只按 `(task_index, flow_type_index=Return)` 绑定，Future Target 不改变 object support。DAG release 只计算有效前驱，并要求所有有效前驱完成；terminal Flow completion 使用冻结 `FLOW_STATUS_VOCAB` 同步 remaining/presence/carrying/status，partial/intermediate 不会错误 completed。focused tests 30/30、正式 receipt 92/92、6 文件独立重建 hash/size equality 均通过，STEP 4.4 = COMPLETE / FROZEN。证据始终仅为 untrained CPU development，`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
 
 ## Checkpoint 与结果复用边界
 
@@ -111,4 +111,4 @@ STEP 4.3B 使用完整冻结 History Tensor 编码 Physical/Agent/Task/Flow 的�
 
 ## 下一步边界
 
-STEP 4.3A、STEP 4.3B 与 STEP 4.4 均正式 COMPLETE / FROZEN。STEP 4.4 只冻结未训练 World Model contract，不包含 Loss、优化、训练、校准或性能结论。唯一下一步建议是 **Definition 05 — World Model Loss / Training Contract**；未另行授权前不得执行，不得启动 GPU 或访问 `locked_test`。
+STEP 4.3A、STEP 4.3B 与 STEP 4.4 均正式 COMPLETE / FROZEN。唯一下一步建议是 **Definition 05 — World Model Loss / Training Contract**；未另行授权前不得执行，不得启动 GPU 或访问 `locked_test`。

@@ -14,7 +14,7 @@ from typing import Any
 import numpy as np
 import torch
 
-from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import load_flow_tensor_batch
+from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import FLOW_STATUS_VOCAB, load_flow_tensor_batch
 from pi_jwm.step3_3_model_input_tensor_v1 import LIFECYCLE_VOCAB
 from pi_jwm.step4_3a_typed_dual_graph_builder_v1 import load_typed_dual_graph_batch
 from pi_jwm.step4_3b_dual_graph_encoder_v1 import load_encoder_package
@@ -128,7 +128,12 @@ def _real_state(tensor: dict[str, Any], graph: dict[str, Any], index: int = 2) -
     carrying_route_mask = gt("flow_carrying_state", "route_node_mask", torch.bool)
     task_presence = gt("task_nodes", "presence", torch.bool)
     return_flow_index = bind_existing_return_flows(task_presence, flow_known, flow_task_index, flow_type_index)
-    task_requires_return = return_flow_index >= 0
+    # Frozen STEP 4.2C-C/4.3A inputs do not expose Task.return_size.  An
+    # existing typed Return proves the requirement; slot absence stays unknown
+    # and must never be interpreted as known-no-Return.
+    existing_return = return_flow_index >= 0
+    task_requires_return = existing_return.clone()
+    task_return_requirement_known = existing_return.clone()
     state = {
         "entity_presence": t("entity_presence", torch.bool)[:, current], "entity_type_index": entity_type,
         "vehicle_mask": entity_type == ENTITY_VEHICLE, "uav_mask": entity_type == ENTITY_UAV,
@@ -145,7 +150,7 @@ def _real_state(tensor: dict[str, Any], graph: dict[str, Any], index: int = 2) -
         "hop_progress": carrying_features[..., 0], "hop_remaining": carrying_features[..., 1], "route_node_indices": carrying_route_nodes, "route_node_mask": carrying_route_mask,
         "carrying_active": gt("flow_carrying_state", "active", torch.bool), "carrying_hop_source_index": gt("flow_carrying_state", "hop_source_index", torch.long), "carrying_hop_destination_index": gt("flow_carrying_state", "hop_destination_index", torch.long), "flow_comm_relation_index": flow_comm,
         "task_presence": task_presence, "task_work_total": task_total,
-        "task_work_remaining": (task_total - task_computed).clamp_min(0), "task_progress": torch.where(task_total > 0, task_computed / task_total.clamp_min(1e-9), torch.zeros_like(task_total)), "task_lifecycle_index": gt("task_nodes", "lifecycle_index", torch.long), "task_completed": torch.zeros_like(task_total, dtype=torch.bool), "task_released": task_presence.clone(), "return_flow_index": return_flow_index, "task_requires_return": task_requires_return, "task_return_requirement_known": task_requires_return.clone(), "return_birth_required": torch.zeros_like(task_presence), "final_completion_blocked_by_fixed_support": torch.zeros_like(task_presence),
+        "task_work_remaining": (task_total - task_computed).clamp_min(0), "task_progress": torch.where(task_total > 0, task_computed / task_total.clamp_min(1e-9), torch.zeros_like(task_total)), "task_lifecycle_index": gt("task_nodes", "lifecycle_index", torch.long), "task_completed": torch.zeros_like(task_total, dtype=torch.bool), "task_released": task_presence.clone(), "return_flow_index": return_flow_index, "task_requires_return": task_requires_return, "task_return_requirement_known": task_return_requirement_known, "return_birth_required": torch.zeros_like(task_presence), "final_completion_unresolved_by_return_requirement": torch.zeros_like(task_presence), "final_completion_blocked_by_fixed_support": torch.zeros_like(task_presence),
         "task_agent_task_index": gt("task_agent_relations", "task_index", torch.long), "task_agent_agent_index": gt("task_agent_relations", "agent_index", torch.long), "task_agent_relation_type_index": gt("task_agent_relations", "relation_type_index", torch.long), "task_agent_validity": gt("task_agent_relations", "validity", torch.bool),
     }
     dyn_graph = {
@@ -310,15 +315,172 @@ def build(output_dir: Path) -> dict[str, Any]:
     )
     blocked_state = copy.deepcopy(syn_state)
     blocked_state["task_work_remaining"][0, 0] = 0.0
+    blocked_state["task_return_requirement_known"][0, 0] = True
     blocked_state["task_requires_return"][0, 0] = True
     blocked_state["return_flow_index"][0, 0] = -1
     blocked_learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": blocked_state["csi"].clone()}
     blocked_next, _ = model.deterministic_transition(
         blocked_state, syn_action, blocked_learned, graph=syn_graph, service_mode="expectation", generator=None
     )
+
+    unknown_mask = state["task_presence"] & (~state["task_return_requirement_known"]) & (state["return_flow_index"] < 0)
+    real_unknown_adapter_ok = False
+    if bool(unknown_mask.any()):
+        unknown_task = int(torch.nonzero(unknown_mask[0], as_tuple=False)[0])
+        unknown_state = copy.deepcopy(state)
+        unknown_state["task_work_remaining"][0, unknown_task] = 0.0
+        unknown_action = copy.deepcopy(action)
+        unknown_action["comp_task_index"].fill_(-1)
+        unknown_action["route_task_index"].fill_(-1)
+        unknown_action["route_flow_index"].fill_(-1)
+        unknown_learned = {"vehicle_motion": torch.zeros((*state["position"].shape[:-1], 4)), "csi": state["csi"].clone()}
+        unknown_next, _ = model.deterministic_transition(
+            unknown_state, unknown_action, unknown_learned, graph=graph, service_mode="expectation", generator=None
+        )
+        real_unknown_adapter_ok = (
+            not bool(unknown_next["task_completed"][0, unknown_task])
+            and bool(unknown_next["final_completion_unresolved_by_return_requirement"][0, unknown_task])
+            and bool(unknown_next["final_completion_blocked_by_fixed_support"][0, unknown_task])
+            and not bool(unknown_next["return_birth_required"][0, unknown_task])
+        )
+
+    known_return_state = copy.deepcopy(syn_state)
+    known_return_state["flow_task_index"] = torch.tensor([[0, 0]])
+    known_return_state["flow_type_index"] = torch.tensor([[2, 3]])
+    known_return_state["return_flow_index"] = bind_existing_return_flows(
+        known_return_state["task_presence"], known_return_state["flow_known"],
+        known_return_state["flow_task_index"], known_return_state["flow_type_index"],
+    )
+    known_return_state["task_return_requirement_known"] = known_return_state["return_flow_index"] >= 0
+    known_return_state["task_requires_return"] = known_return_state["return_flow_index"] >= 0
+    known_return_state["task_work_remaining"][0, 0] = 0.0
+    known_return_state["carrying_active"][0, 1] = False
+    known_return_action = copy.deepcopy(syn_action)
+    known_return_action["comp_task_index"].fill_(-1)
+    known_return_learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": known_return_state["csi"].clone()}
+    unfinished_return_next, _ = model.deterministic_transition(
+        known_return_state, known_return_action, known_return_learned, graph=syn_graph, service_mode="expectation", generator=None
+    )
+    finished_return_state = copy.deepcopy(known_return_state)
+    finished_return_state["flow_presence"][0, 1] = False
+    finished_return_next, _ = model.deterministic_transition(
+        finished_return_state, known_return_action, known_return_learned, graph=syn_graph, service_mode="expectation", generator=None
+    )
+    existing_return_transition_ok = (
+        not bool(unfinished_return_next["task_completed"][0, 0])
+        and bool(finished_return_next["task_completed"][0, 0])
+    )
+
+    no_target_rollout = model.rollout(zpi, state, graph, [second_action], prior_mode="mean", service_mode="expectation")
+    target_rollout = model.rollout(
+        zpi, state, graph, [second_action], future_target={"return_flow": torch.tensor([99])},
+        prior_mode="mean", service_mode="expectation",
+    )
+    future_target_support_unchanged = (
+        world_model_digest(no_target_rollout) == world_model_digest(target_rollout)
+        and torch.equal(target_rollout["states"][0]["flow_identity_index"], state["flow_identity_index"])
+        and torch.equal(target_rollout["states"][0]["return_flow_index"], state["return_flow_index"])
+        and target_rollout["states"][0]["flow_presence"].shape == state["flow_presence"].shape
+    )
+
+    active_status = FLOW_STATUS_VOCAB.index("ACTIVE")
+    completed_status = FLOW_STATUS_VOCAB.index("COMPLETED")
+    partial_flow = copy.deepcopy(syn_state)
+    partial_flow["flow_status_index"][0, 0] = active_status
+    partial_flow["flow_destination_index"][0, 0] = 1
+    partial_flow["flow_remaining"][0, 0] = 1_000_000_000.0
+    partial_flow["hop_remaining"][0, 0] = 1_000_000_000.0
+    partial_next, partial_trace = model.deterministic_transition(
+        partial_flow, syn_action, {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": partial_flow["csi"].clone()},
+        graph=syn_graph, service_mode="expectation", generator=None,
+    )
+    intermediate_flow = copy.deepcopy(syn_state)
+    intermediate_flow["flow_status_index"][0, 0] = active_status
+    intermediate_flow["flow_destination_index"][0, 0] = 2
+    intermediate_flow["flow_remaining"][0, 0] = 100.0
+    intermediate_flow["hop_remaining"][0, 0] = 1.0
+    intermediate_next, _ = model.deterministic_transition(
+        intermediate_flow, syn_action, {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": intermediate_flow["csi"].clone()},
+        graph=syn_graph, service_mode="expectation", generator=None,
+    )
+    terminal_flow = copy.deepcopy(syn_state)
+    terminal_flow["flow_status_index"][0, 0] = active_status
+    terminal_flow["flow_destination_index"][0, 0] = 1
+    terminal_flow["flow_remaining"][0, 0] = 1.0
+    terminal_flow["hop_remaining"][0, 0] = 1.0
+    terminal_next, _ = model.deterministic_transition(
+        terminal_flow, syn_action, {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": terminal_flow["csi"].clone()},
+        graph=syn_graph, service_mode="expectation", generator=None,
+    )
+    flow_completion_semantics_ok = (
+        float(partial_trace["delivered_bytes"][0, 0]) > 0
+        and float(partial_next["hop_remaining"][0, 0]) > 0
+        and int(partial_next["flow_status_index"][0, 0]) == active_status
+        and float(intermediate_next["flow_remaining"][0, 0]) == float(intermediate_flow["flow_remaining"][0, 0])
+        and int(intermediate_next["flow_status_index"][0, 0]) == active_status
+        and float(terminal_next["flow_remaining"][0, 0]) == 0.0
+        and not bool(terminal_next["flow_presence"][0, 0])
+        and not bool(terminal_next["carrying_active"][0, 0])
+        and int(terminal_next["flow_status_index"][0, 0]) == completed_status
+    )
+
+    def dag_case(work: list[float], edges: list[list[int]], validity: list[bool]) -> tuple[dict[str, torch.Tensor], dict[str, torch.Tensor]]:
+        case_state, case_graph, case_action = copy.deepcopy(syn_state), copy.deepcopy(syn_graph), copy.deepcopy(syn_action)
+        case_state["task_work_remaining"][0] = torch.tensor(work)
+        case_state["task_return_requirement_known"][0] = True
+        case_state["task_requires_return"][0] = False
+        case_action["comp_task_index"].fill_(-1)
+        case_graph["dag_edges"][0] = torch.tensor(edges)
+        case_graph["dag_validity"][0] = torch.tensor(validity)
+        case_next, _ = model.deterministic_transition(
+            case_state, case_action, {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": case_state["csi"].clone()},
+            graph=case_graph, service_mode="expectation", generator=None,
+        )
+        return case_next, model.rebuild_graph(case_next, case_graph)
+
+    dag_incomplete, dag_incomplete_graph = dag_case([1.0, 1.0, 1.0], [[0, 1], [0, 2]], [True, False])
+    dag_completed, dag_completed_graph = dag_case([0.0, 1.0, 1.0], [[0, 1], [0, 2]], [True, False])
+    dag_one_of_two, _ = dag_case([0.0, 1.0, 1.0], [[0, 2], [1, 2]], [True, True])
+    dag_all_two, dag_all_two_graph = dag_case([0.0, 0.0, 1.0], [[0, 2], [1, 2]], [True, True])
+    dag_semantics_ok = (
+        bool(dag_incomplete["task_released"][0, 0])
+        and not bool(dag_incomplete["task_released"][0, 1])
+        and not bool(dag_incomplete_graph["dag_satisfied"][0, 0])
+        and bool(dag_incomplete["task_released"][0, 2])
+        and bool(dag_completed["task_released"][0, 1])
+        and bool(dag_completed_graph["dag_satisfied"][0, 0])
+        and not bool(dag_one_of_two["task_released"][0, 2])
+        and bool(dag_all_two["task_released"][0, 2])
+        and bool(dag_all_two_graph["dag_satisfied"][0].all())
+    )
+
+    no_op_route = copy.deepcopy(syn_action)
+    no_op_route["route_values"][0, 0, :2] = torch.stack((
+        syn_state["carrying_hop_source_index"][0, 0],
+        syn_state["carrying_hop_destination_index"][0, 0],
+    )).to(dtype=no_op_route["route_values"].dtype)
+    changed_route = copy.deepcopy(no_op_route)
+    changed_route["route_values"][0, 0, :2] = torch.tensor([1.0, 0.0])
+    route_learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": syn_state["csi"].clone()}
+    no_op_route_next, _ = model.deterministic_transition(syn_state, no_op_route, route_learned, graph=syn_graph, service_mode="expectation", generator=None)
+    changed_route_next, _ = model.deterministic_transition(syn_state, changed_route, route_learned, graph=syn_graph, service_mode="expectation", generator=None)
+    route_revision_semantics_ok = (
+        torch.equal(no_op_route_next["flow_route_revision"], syn_state["flow_route_revision"])
+        and int(changed_route_next["flow_route_revision"][0, 0]) == int(syn_state["flow_route_revision"][0, 0]) + 1
+    )
+
+    flow_features = model._state_features("flow", syn_state)
+    typed_flow_state = copy.deepcopy(syn_state); typed_flow_state["flow_type_index"][0, 0] += 1
+    status_flow_state = copy.deepcopy(syn_state); status_flow_state["flow_status_index"][0, 0] += 1
+    raw_index_flow_state = copy.deepcopy(syn_state); raw_index_flow_state["flow_identity_index"][0, 0] += 100; raw_index_flow_state["flow_route_revision"][0, 0] += 100
+    categorical_semantics_ok = (
+        not torch.equal(flow_features, model._state_features("flow", typed_flow_state))
+        and not torch.equal(flow_features, model._state_features("flow", status_flow_state))
+    )
+    raw_index_excluded = torch.equal(flow_features, model._state_features("flow", raw_index_flow_state))
     structural = {
-        "no_raw_index_learned_feature": model.contract["categorical_feature_policy"] == "typed_embedding_only_no_continuous_index_scalars",
-        "categorical_embedding_semantics": all(name in dict(model.named_modules()) for name in ("entity_type_embedding", "comm_type_embedding", "lifecycle_embedding", "flow_type_embedding", "flow_status_embedding", "task_agent_type_embedding")),
+        "no_raw_index_learned_feature": raw_index_excluded,
+        "categorical_embedding_semantics": categorical_semantics_ok,
         "graph_layers_effective": config.graph_layers != 1 and not torch.equal(syn_out["latents"][0]["h"]["agent"], one_out["latents"][0]["h"]["agent"]),
         "future_topology_matches_builder_policy": bool(torch.all(output["graphs"][0]["physical_relation_validity"] == model.rebuild_graph(state, graph)["physical_relation_validity"])),
         "no_unintended_self_physical_edges": bool(torch.all(torch.diagonal(output["graphs"][0]["physical_relation_validity"], dim1=1, dim2=2) == 0)),
@@ -332,19 +494,17 @@ def build(output_dir: Path) -> dict[str, Any]:
                & (state["comm_target_index"].gather(1, output["states"][0]["flow_comm_relation_index"].clamp_min(0)) == output["states"][0]["carrying_hop_destination_index"])
                & state["comm_presence"].gather(1, output["states"][0]["flow_comm_relation_index"].clamp_min(0))
                & state["comm_validity"].gather(1, output["states"][0]["flow_comm_relation_index"].clamp_min(0))))),
-        "flow_completion_presence_sync": bool(torch.all(output["states"][0]["flow_presence"] == (output["states"][0]["flow_remaining"] > 0))),
-        "route_revision_semantics": bool(torch.all(output["states"][0]["flow_route_revision"] >= state["flow_route_revision"])) and bool(torch.all(output["states"][0]["flow_route_revision"] <= state["flow_route_revision"] + 1)),
+        "flow_completion_presence_sync": flow_completion_semantics_ok,
+        "flow_completion_status_sync": flow_completion_semantics_ok,
+        "route_revision_semantics": route_revision_semantics_ok,
         "task_lifecycle_rule_complete": bool(torch.all(~output["states"][0]["task_presence"] | (output["states"][0]["task_work_remaining"] > 0) | (output["states"][0]["task_lifecycle_index"] == LIFECYCLE_VOCAB.index("completed")))),
-        "dag_dynamic_rule": torch.equal(output["graphs"][0]["dag_edges"], graph["dag_edges"]) and ("dag_satisfied" in output["graphs"][0]) and torch.equal(output["graphs"][0]["dag_validity"], graph["dag_validity"]),
+        "dag_dynamic_rule": dag_semantics_ok,
         "comm_endpoint_presence_validity": bool(torch.all(~output["graphs"][0]["comm_validity"] | (state["entity_presence"].gather(1, state["comm_source_index"].clamp_min(0)) & state["entity_presence"].gather(1, state["comm_target_index"].clamp_min(0))))),
         "task_agent_dynamic_validity": bool(torch.all(~output["graphs"][0]["task_agent_validity"] | (state["task_presence"].gather(1, state["task_agent_task_index"].clamp_min(0)) & state["entity_presence"].gather(1, state["task_agent_agent_index"].clamp_min(0))))),
         "strong_recursive_counterfactual": state_feedback_changes and output["diagnostics"]["recursive_state_feedback"],
-        "existing_return_flow_typed_binding": torch.equal(
-            state["return_flow_index"],
-            bind_existing_return_flows(state["task_presence"], state["flow_known"], state["flow_task_index"], state["flow_type_index"]),
-        ),
-        "future_return_birth_unsupported": model.contract["future_return_birth_supported"] is False and output["diagnostics"]["future_return_birth_supported"] is False,
-        "computation_finished_not_final_without_return": bool(blocked_next["return_birth_required"][0, 0]) and not bool(blocked_next["task_completed"][0, 0]),
+        "existing_return_flow_typed_binding": torch.equal(typed_fixture_mapping, torch.tensor([[1, 2]])) and existing_return_transition_ok,
+        "future_return_birth_unsupported": model.contract["future_return_birth_supported"] is False and output["diagnostics"]["future_return_birth_supported"] is False and future_target_support_unchanged,
+        "computation_finished_not_final_without_return": bool(blocked_next["return_birth_required"][0, 0]) and not bool(blocked_next["task_completed"][0, 0]) and real_unknown_adapter_ok,
         "input_flow_not_return_substitute": torch.equal(typed_fixture_mapping, torch.tensor([[1, 2]])),
     }
     assert set(structural) == set(ADDITIONAL_STRUCTURAL_CHECKS)

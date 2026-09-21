@@ -1,15 +1,15 @@
 {
   "acceptance_passed": true,
-  "deterministic_output_digest": "1caa0423011a44ca64a411e53f2533626ab958fef64f086c71fd0153bb05ad29",
+  "deterministic_output_digest": "dcd7024a3bf180f735f784cf95c8b3f7f2190cc96c7cdc878a4501ce20091563",
   "evidence_class": "UNTRAINED_DEVELOPMENT_WORLD_MODEL_EVIDENCE",
   "files": {
     "acceptance_report.json": {
-      "bytes": 4231,
-      "sha256": "3bdf8ecdccddb70a7290d16f7d0cdabcaebd3756178f50157390e253e5c2cac2"
+      "bytes": 4272,
+      "sha256": "3537b98a4e21746f1af388e9405bdb9634fef24112f9931f4f5d0132dee4c4eb"
     },
     "deterministic_prior_rollout.pt": {
-      "bytes": 206081,
-      "sha256": "58544fa35b903134021349dd2c5d05dd50950d0c7887b0ee9b6b58a3052dab21"
+      "bytes": 206145,
+      "sha256": "dd8fb89e6a38535b171e83c994f12edfdb03b5acdf57f150c15124a9cd129868"
     },
     "service_transition_audit.json": {
       "bytes": 1288,
@@ -41,8 +41,8 @@
     "code/artifacts/protocols/pi_jwm_step4_3a_typed_dual_graph_builder_v1_20260920/typed_dual_graph_batch.npz": "6e0f6d68bb7214babf706f5af94fd004a664d61d714bbcb8b502867f45ec2bc6",
     "code/artifacts/protocols/pi_jwm_step4_3b_dual_graph_encoder_v1_20260920/untrained_encoder_package.pt": "c308e4bac21aa4a49c57a6bd4924e6206b399a18d4f4ba75c2c9875e500caf28",
     "code/artifacts/protocols/pi_jwm_step4_4_communication_service_audit_v1_20260921/communication_service_sufficiency_audit.json": "af1ce2ca5ac8586e30e328717e8367ce5d090695791a475fcabbce0e4c97b9b7",
-    "code/scripts/build_step4_4_structured_rssm_world_model_v1.py": "8a55b0c79fcb02e540e5be5437705b8d1e5f4f76e99106feb2f084cc99395318",
-    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": "f640abbd459904aad4d93c71c1a170b206ad5363774fd238ca23b8a5b8644111",
-    "docs/contracts_PIJWM_STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL_V1.md": "31c033670fb791873f981a0b14d9c0ec685a95d73c16147e19e7f8ba87fa6cbf"
+    "code/scripts/build_step4_4_structured_rssm_world_model_v1.py": "ebab51ee079346c14ed174a8ec0cb29178e5f24e99133199cefa92bb132ac1c1",
+    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": "91ed8a45b42635918429009231a674c91a69aa575bb5ba4b4adb36e6c4ff6458",
+    "docs/contracts_PIJWM_STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL_V1.md": "320f33d6a54b427fb4fd951110534148105fa6a73c66c450474dd20c65540f93"
   }
 }

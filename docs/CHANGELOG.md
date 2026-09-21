@@ -2,6 +2,8 @@
 
 ## 2026-09-21：STEP 4.4 Structured RSSM World Model Contract
 
+- PATCH3：冻结 current-side 缺少 `Task.return_size`，所以 real adapter 显式保留 Return requirement unknown，unknown/known-required-no-slot 均阻止虚假 final completion且 side-state 可区分。DAG release 只看有效前驱并要求全部完成；terminal Flow 使用冻结 status vocabulary 同步 COMPLETED，partial/intermediate 保持非完成。focused 30/30、正式 receipt 92/92、6 文件独立重建 hash/size equality 通过；STEP 4.4 COMPLETE / FROZEN。
+
 - 研究者将 wireless outage 冻结为独立 known stochastic service event，并关闭 learned outage/rate/service residual heads。
 - 新增 structured h/z、diagonal-Gaussian prior/posterior、四类局部 Action routing、独立 dynamics graph interaction、vehicle/CSI learned heads、deterministic rules、dynamic graph rebuild 与 recursive prior rollout。
 - wired capacity 从真实 source config 读取；Flow Carrying-derived membership/count 与真实 `WiredNetworkManager` equality 通过。focused 16/16、machine receipt 71/71。

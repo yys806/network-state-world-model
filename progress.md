@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-21 STEP 4.4-PATCH3
+
+Implemented the three bounded closure fixes: real-adapter Return requirement tri-state with conservative unknown completion blocking, valid-edge/all-predecessor DAG release semantics, and terminal-only Flow status synchronization through the frozen vocabulary. Focused tests pass 30/30, related regressions 82/82, formal artifact receipt 92/92, compileall, and six-file independent hash/size equality pass. STEP 4.4 is COMPLETE / FROZEN; Definition 05 was not started.
+
 ## 2026-09-21 STEP 4.4-PATCH
 
 完成 Structured RSSM 结构与规则 transition 语义收尾：补齐 carrying/hop state、intermediate-hop advancement、Flow completion/presence 同步、动态 Flow-Comm relation 重绑定，并复用 4.3A physical topology policy（无意外 self edge）。receipt 扩展为 87/87（50 original + 21 service + 16 structural），canonical 两步 rollout 第二步使用负索引 no-op，仍严格拒绝 absent Flow action。focused tests 20/20；training=false、gpu=false、locked_test=false、formal_dataset=false，未进入 Definition 05。

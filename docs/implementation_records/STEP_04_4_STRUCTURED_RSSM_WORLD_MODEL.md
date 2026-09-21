@@ -41,12 +41,12 @@ Reused the frozen STEP 4.3B encoder package and verified diagonal-Gaussian/GRU i
 ## Validation
 
 - TDD red: focused test failed with `ModuleNotFoundError` before the new module existed.
-- Focused tests: final PATCH2 suite 26/26 passed, covering the original mechanism plus carrying/route/DAG closure and four Return-support boundary cases.
-- Artifact builder: final PATCH2 receipt 91/91 required checks (50 original + 21 service + 20 structural/rule checks), zero failed; top-level `passed` is validated from the logical AND plus explicit scope booleans. The recursive receipt uses a contract-valid negative-index no-op on step two when step one has completed a Flow, so absent Flow references remain rejected.
+- Focused tests: PATCH3 suite 30/30 passed, including the canonical real adapter unknown-Return path, Return tri-state, valid/invalid/multiple-predecessor DAG behavior, and partial/intermediate/terminal Flow status transitions.
+- Artifact builder: PATCH3 formal receipt 92/92 required checks (50 original + 21 service + 21 structural/rule checks), zero failed; top-level `passed` is validated from computed semantic counterfactuals plus explicit scope booleans. The recursive receipt uses a contract-valid negative-index no-op on step two when step one has completed a Flow, so absent Flow references remain rejected.
 - Frozen real Encoder output is used for latent initialization; the canonical wired capacity `0.00001 Mbps` is read from its real non-locked source trajectory config.
 - Real `WiredNetworkManager` equality fixture: derived and simulator active memberships/counts match.
 - Deterministic expectation rollout, seeded sampled outage replay, state-dict reload, CPU autograd, immutable input, and machine provenance are included in the artifact.
-- Independent double rebuild produced identical files; final rollout file SHA-256 `892de87e79326f4ec02cd5a461667f80252304bbddefd348a4b2ebc97b8a16bb`, package SHA-256 `dfead8977bb95b9d082dd03762a9a6040bc562403bfb401b6abf290bba997684`, manifest SHA-256 `327d186b9ac64c4a0c0dcc2f8de4e0e227979b3b750a0e474ac0fc866a44e221`.
+- Independent rebuild produced six byte-count/SHA-256-identical files. Final hashes include rollout `dd8fb89e6a38535b171e83c994f12edfdb03b5acdf57f150c15124a9cd129868`, package `c015a169dc82322417bbc01653df4fa695d4d2ab044b9820e39f0eb895161db1`, and manifest `6dd93eddd87b8f169a396b193b0ea056e9b14f7b9df04e2ca736616bc4f13c79`.
 - Structural closure checks typed categorical embeddings, effective graph depth, 4.3A physical topology reuse/no self edges, carrying/hop state and advancement, dynamic Flow-Comm rebinding, completion/presence synchronization, lifecycle/DAG/endpoint validity rules, and a state-changing recursive counterfactual.
 - Final focused/regression tests, compileall, deterministic double rebuild/hash, knowledge-index write/check, and `git diff --check` are recorded after final documentation synchronization.
 
@@ -69,7 +69,7 @@ Expected and actual agree for the authorized v1 boundary. The earlier audit bloc
 
 ## Git
 
-Pending final validation, commit, and push for STEP 4.4-PATCH. The final completion receipt records the resulting commit and branch.
+STEP 4.4-PATCH3 is COMPLETE / FROZEN after focused 30/30, related regression 82/82, compileall, formal receipt 92/92, deterministic six-file comparison, registry, diff, and Git closure. The exact final commit and push synchronization are reported in the completion response.
 
 ## Next Step
 
@@ -82,3 +82,12 @@ Only recommend **Definition 05 — World Model Loss / Training Contract**. Do no
 - Validation: focused tests 26/26; builder receipt 91/91 (50 original + 21 service + 20 structural); compileall, deterministic artifact rebuild, and scope remain CPU-only with `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
 - Existing Return boundary: the adapter now carries frozen 4.3A `task_index` and `flow_type_index`, and binds only the unique current-support `(TaskIndex, Return)` Flow. Input and another Task's Return cannot substitute. A mapped Return must complete under the frozen Flow semantics before final Task completion.
 - Future birth boundary: `future_return_birth_supported=false`. Future Target/route never creates a slot. When explicit current side state requires Return but no current-support Return exists, `return_birth_required` and `final_completion_blocked_by_fixed_support` are set while `task_completed` remains false and the frozen lifecycle vocabulary is unchanged. Definition 05 must mask, exclude, or explicitly classify such windows; Loss is not implemented here.
+
+## STEP 4.4-PATCH3 — Return Requirement, Dynamic DAG & Flow Completion Status Final Closure
+
+- Goal: close the three remaining source/contract mismatches without modifying Raw, STEP 4.2C-C Tensor, STEP 4.3A Graph, stochastic boundary, learned heads, or training scope.
+- Return source fact: frozen current-side inputs do not expose `Task.return_size`. The real adapter therefore uses a tri-state side contract: an existing typed Return proves `known=true/requires=true`; no typed slot is `known=false`, not known-no-Return. Computation-finished unknown state is conservatively unresolved and blocked, while known-required/no-slot separately requests unsupported Return birth.
+- DAG rule: release and satisfaction are recomputed from valid incoming edges only. Machine cases prove root release, incomplete predecessor blocking, completed predecessor release, invalid-edge isolation, and the all-valid-predecessors requirement.
+- Flow completion: `FLOW_STATUS_VOCAB` supplies the `COMPLETED` index. Only terminal logical completion synchronizes remaining, presence, carrying activity, and status; partial and intermediate hop cases remain non-completed.
+- Acceptance strength: the builder now computes real state changes for Return, DAG, Flow status, RouteRevision, categorical embedding, and raw-index exclusion checks rather than accepting field/module/policy-string existence.
+- Validation: focused 30/30, related regression 82/82, compileall, formal builder receipt 92/92, and six-file independent hash/size equality pass. No Definition 05 work was started.

@@ -81,6 +81,6 @@ STEP 4.1 source of truth：`docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_
 Unverified：任何只由旧 PPT、文件名或历史聊天提出但没有当前代码/config/experiment 支持的架构声明。
 # STEP 4.4 Structured RSSM（2026-09-21）
 
-STEP 4.4 已完成并冻结未训练 CPU 机制：五类 aligned deterministic h，仅 Vehicle Physical/Comm 有 z；posterior teacher-compatible initialization 与未来 prior-only rollout 分离；四类 Action 局部路由；独立 future dynamics graph interaction；只学习 vehicle motion 与 CSI。Wireless outage 是显式 known stochastic event，wired/Flow/Task/CPU/UAV 按规则推进，每步由 predicted state 重构图并反馈。该实现不是精度、校准、规划或性能证据，Definition 05 Loss/Training 尚未开始。
+STEP 4.4-PATCH3 已 COMPLETE / FROZEN，闭合未训练 CPU 机制的三个剩余语义。五类 aligned deterministic h 中仅 Vehicle Physical/Comm 有 z；只学习 vehicle motion 与 CSI。Wireless outage 是显式 known stochastic event，wired/Flow/Task/CPU/UAV 按规则推进，每步由 predicted state 重构图并反馈。该实现不是精度、校准、规划或性能证据，Definition 05 Loss/Training 尚未开始。
 
-PATCH2 的 Return 结构只复用 current-support typed Flow identity：`task_index + flow_type_index=Return`。v1 不生成 future-only Return Flow；缺少 required current slot 时使用 blocking side-state，不把 computation finished 写成 final completed。
+PATCH3 保持 Return 只复用 current-support typed Flow identity：`task_index + flow_type_index=Return`。冻结输入未暴露 `Task.return_size`，所以 real adapter 用 `task_return_requirement_known=false` 表示 unknown；unknown 不等于 no-return，computation finished 后输出 unresolved/blocking side-state。known-required/no-slot 则单独输出 `return_birth_required`。v1 不生成 future-only Return Flow。

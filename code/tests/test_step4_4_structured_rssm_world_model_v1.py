@@ -7,6 +7,8 @@ from pathlib import Path
 
 import torch
 
+from build_step4_4_structured_rssm_world_model_v1 import _real_state, _real_zpi
+from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import FLOW_STATUS_VOCAB
 from pi_jwm.step4_4_structured_rssm_world_model_v1 import (
     StructuredRSSMConfig,
     StructuredRSSMWorldModel,
@@ -119,6 +121,45 @@ class Step44ArchitectureTests(unittest.TestCase):
         self.assertTrue(bool(next_state["return_birth_required"][0, 0]))
         self.assertTrue(bool(next_state["final_completion_blocked_by_fixed_support"][0, 0]))
 
+    def test_unknown_return_requirement_is_not_treated_as_no_return(self):
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+        _, state, graph, action = model.synthetic_fixture()
+        state["task_work_remaining"][0, 0] = 0.0
+        state["return_flow_index"][0, 0] = -1
+        state["task_return_requirement_known"][0, 0] = False
+        state["task_requires_return"][0, 0] = False
+        learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": state["csi"].clone()}
+        next_state, _ = model.deterministic_transition(state, action, learned, graph=graph, service_mode="expectation", generator=None)
+        self.assertFalse(bool(next_state["task_completed"][0, 0]))
+        self.assertFalse(bool(next_state["return_birth_required"][0, 0]))
+        self.assertTrue(bool(next_state["final_completion_unresolved_by_return_requirement"][0, 0]))
+        self.assertTrue(bool(next_state["final_completion_blocked_by_fixed_support"][0, 0]))
+
+        known_no_return = {key: value.clone() for key, value in state.items()}
+        known_no_return["task_return_requirement_known"][0, 0] = True
+        next_state, _ = model.deterministic_transition(known_no_return, action, learned, graph=graph, service_mode="expectation", generator=None)
+        self.assertTrue(bool(next_state["task_completed"][0, 0]))
+
+    def test_real_adapter_exposes_unknown_return_requirement_conservatively(self):
+        tensor, upstream_graph, _ = _real_zpi()
+        state, graph, action = _real_state(tensor, upstream_graph)
+        unknown = state["task_presence"] & (~state["task_return_requirement_known"]) & (state["return_flow_index"] < 0)
+        self.assertTrue(bool(unknown.any()))
+        task_index = int(torch.nonzero(unknown[0], as_tuple=False)[0])
+        state["task_work_remaining"][0, task_index] = 0.0
+        action["comp_task_index"].fill_(-1)
+        action["route_task_index"].fill_(-1)
+        action["route_flow_index"].fill_(-1)
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig())
+        learned = {
+            "vehicle_motion": torch.zeros((*state["position"].shape[:-1], 4)),
+            "csi": state["csi"].clone(),
+        }
+        next_state, _ = model.deterministic_transition(state, action, learned, graph=graph, service_mode="expectation", generator=None)
+        self.assertFalse(bool(next_state["task_completed"][0, task_index]))
+        self.assertTrue(bool(next_state["final_completion_unresolved_by_return_requirement"][0, task_index]))
+        self.assertTrue(bool(next_state["final_completion_blocked_by_fixed_support"][0, task_index]))
+
     def test_rollout_declares_fixed_support_and_no_future_return_birth(self):
         model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
         zpi, state, graph, action = model.synthetic_fixture()
@@ -149,13 +190,90 @@ class Step44ArchitectureTests(unittest.TestCase):
         changed = {k: v.clone() for k, v in state.items()}
         changed["flow_type_index"][0, 0] += 1
         self.assertFalse(torch.equal(base, model._state_features("flow", changed)))
+        changed = {k: v.clone() for k, v in state.items()}
+        changed["flow_status_index"][0, 0] += 1
+        self.assertFalse(torch.equal(base, model._state_features("flow", changed)))
+        raw_index_only = {k: v.clone() for k, v in state.items()}
+        raw_index_only["flow_identity_index"][0, 0] += 100
+        raw_index_only["flow_route_revision"][0, 0] += 100
+        self.assertTrue(torch.equal(base, model._state_features("flow", raw_index_only)))
+
+    def test_flow_status_changes_only_on_terminal_completion(self):
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+        active = FLOW_STATUS_VOCAB.index("ACTIVE")
+        completed = FLOW_STATUS_VOCAB.index("COMPLETED")
+
+        def run(configure):
+            _, state, graph, action = model.synthetic_fixture()
+            state["flow_status_index"][0, 0] = active
+            configure(state)
+            learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": state["csi"].clone()}
+            return state, model.deterministic_transition(state, action, learned, graph=graph, service_mode="expectation", generator=None)
+
+        partial_state, (partial, partial_trace) = run(lambda state: (
+            state["flow_destination_index"].__setitem__((0, 0), 1),
+            state["flow_remaining"].__setitem__((0, 0), 1_000_000_000.0),
+            state["hop_remaining"].__setitem__((0, 0), 1_000_000_000.0),
+        ))
+        self.assertGreater(float(partial_trace["delivered_bytes"][0, 0]), 0.0)
+        self.assertGreater(float(partial["hop_remaining"][0, 0]), 0.0)
+        self.assertEqual(int(partial["flow_status_index"][0, 0]), active)
+
+        intermediate_state, (intermediate, _) = run(lambda state: (
+            state["flow_destination_index"].__setitem__((0, 0), 2),
+            state["flow_remaining"].__setitem__((0, 0), 100.0),
+            state["hop_remaining"].__setitem__((0, 0), 1.0),
+        ))
+        self.assertEqual(float(intermediate["flow_remaining"][0, 0]), float(intermediate_state["flow_remaining"][0, 0]))
+        self.assertEqual(int(intermediate["flow_status_index"][0, 0]), active)
+
+        _, (terminal, _) = run(lambda state: (
+            state["flow_destination_index"].__setitem__((0, 0), 1),
+            state["flow_remaining"].__setitem__((0, 0), 1.0),
+            state["hop_remaining"].__setitem__((0, 0), 1.0),
+        ))
+        self.assertEqual(float(terminal["flow_remaining"][0, 0]), 0.0)
+        self.assertFalse(bool(terminal["flow_presence"][0, 0]))
+        self.assertFalse(bool(terminal["carrying_active"][0, 0]))
+        self.assertEqual(int(terminal["flow_status_index"][0, 0]), completed)
+
+    def test_dag_release_and_satisfaction_follow_all_valid_predecessors(self):
+        model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
+
+        def run(work, edges, validity):
+            _, state, graph, action = model.synthetic_fixture()
+            state["task_work_remaining"][0] = torch.tensor(work)
+            state["task_return_requirement_known"][0] = True
+            state["task_requires_return"][0] = False
+            action["comp_task_index"].fill_(-1)
+            graph["dag_edges"][0] = torch.tensor(edges)
+            graph["dag_validity"][0] = torch.tensor(validity)
+            learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": state["csi"].clone()}
+            next_state, _ = model.deterministic_transition(state, action, learned, graph=graph, service_mode="expectation", generator=None)
+            return next_state, model.rebuild_graph(next_state, graph)
+
+        incomplete, incomplete_graph = run([1.0, 1.0, 1.0], [[0, 1], [0, 2]], [True, False])
+        self.assertTrue(bool(incomplete["task_released"][0, 0]))
+        self.assertFalse(bool(incomplete["task_released"][0, 1]))
+        self.assertFalse(bool(incomplete_graph["dag_satisfied"][0, 0]))
+        self.assertTrue(bool(incomplete["task_released"][0, 2]))  # invalid edge is ignored
+
+        completed_pred, completed_graph = run([0.0, 1.0, 1.0], [[0, 1], [0, 2]], [True, False])
+        self.assertTrue(bool(completed_pred["task_released"][0, 1]))
+        self.assertTrue(bool(completed_graph["dag_satisfied"][0, 0]))
+
+        one_of_two, _ = run([0.0, 1.0, 1.0], [[0, 2], [1, 2]], [True, True])
+        self.assertFalse(bool(one_of_two["task_released"][0, 2]))
+        all_two, all_two_graph = run([0.0, 0.0, 1.0], [[0, 2], [1, 2]], [True, True])
+        self.assertTrue(bool(all_two["task_released"][0, 2]))
+        self.assertTrue(bool(all_two_graph["dag_satisfied"][0].all()))
 
     def test_structural_acceptance_checks_are_declared(self):
         expected = {
             "no_raw_index_learned_feature", "categorical_embedding_semantics", "graph_layers_effective",
             "future_topology_matches_builder_policy", "no_unintended_self_physical_edges", "carrying_state_complete",
             "hop_service_capped_by_hop_remaining", "hop_advancement", "dynamic_flow_comm_mapping",
-            "flow_completion_presence_sync", "route_revision_semantics", "task_lifecycle_rule_complete",
+            "flow_completion_presence_sync", "flow_completion_status_sync", "route_revision_semantics", "task_lifecycle_rule_complete",
             "dag_dynamic_rule", "comm_endpoint_presence_validity", "task_agent_dynamic_validity",
             "strong_recursive_counterfactual", "existing_return_flow_typed_binding",
             "future_return_birth_unsupported", "computation_finished_not_final_without_return",

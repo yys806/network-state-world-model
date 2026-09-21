@@ -71,6 +71,6 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 # 2026-09-21 STEP 4.4 Structured RSSM acceptance
 
 - Researcher resolved the audit gate by selecting an independent known stochastic outage event and closing learned service residual.
-- Focused tests: 26/26. STEP 4.4-PATCH2 machine receipt: 91/91 required checks (50 original + 21 service + 20 structural), including typed existing-Return binding, Input/other-Task isolation, unsupported future Return birth, and computation-finished/final-completed separation. Frozen STEP 4.3B output is used for initialization; evidence remains untrained CPU development only.
+- PATCH3 focused tests: 30/30. Formal machine receipt: 92/92 required checks (50 original + 21 service + 21 structural), including the canonical real-adapter unknown Return path, typed Existing Return binding, Future-Target support isolation, valid/invalid/multiple-predecessor DAG changes, and partial/intermediate/terminal Flow status transitions. Six formal artifact files match an independent rebuild by SHA-256 and size; evidence remains untrained CPU development only.
 - Evidence class: `UNTRAINED_DEVELOPMENT_WORLD_MODEL_EVIDENCE`. No prediction/calibration/planning/performance claim; `training=false`, `gpu=false`, `locked_test=false`, `formal_dataset=false`.
 - This is source/contract evidence only, not training, prediction accuracy, stochastic quality, or performance evidence.

@@ -28,6 +28,7 @@
     "fixed_current_object_support": true,
     "fixed_seed_deterministic": true,
     "flow_completion_presence_sync": true,
+    "flow_completion_status_sync": true,
     "flow_identity_preserved": true,
     "flow_no_remaining_head": true,
     "flow_no_stochastic_state": true,

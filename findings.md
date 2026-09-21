@@ -1,5 +1,13 @@
 # Findings
 
+## 2026-09-21 STEP 4.4-PATCH3
+
+- Frozen Task History features expose work/computed/transmitted/elapsed only; `return_size` is explicitly unavailable to the frozen Tensor/Graph contract. Therefore current-side no Return slot is epistemically unknown, not known-no-Return.
+- The previous transition ignored `task_return_requirement_known`, so computation-finished unknown tasks could be falsely completed. PATCH3 adds a distinct unresolved side-state and keeps known-required/no-slot separate through `return_birth_required`.
+- Previous DAG release counted invalid edges as predecessors. PATCH3 masks by `dag_validity` and machine-tests root, incomplete, completed, invalid, and multiple-predecessor cases.
+- Previous terminal completion did not change `flow_status_index`. PATCH3 uses `FLOW_STATUS_VOCAB.index("COMPLETED")`; partial and intermediate-hop counterfactuals remain active.
+- Builder acceptance now observes state changes rather than relying on field/module/policy-string existence. Focused 30/30, related regressions 82/82, formal receipt 92/92, compileall, and six-file independent hash/size equality pass; STEP 4.4 is COMPLETE / FROZEN.
+
 ## 2026-09-21 STEP 4.4-PATCH2
 
 - 4.3A 已真实保留 Flow `task_index` 与 `flow_type_index`；此前 World Model adapter 丢弃前者并把所有 `return_flow_index` 初始化为 `-1`，这是已有 Return 无法绑定的直接根因。

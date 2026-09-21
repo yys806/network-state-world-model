@@ -1,3 +1,15 @@
+# 2026-09-21 STEP 4.4-PATCH3 — Return Requirement, Dynamic DAG & Flow Completion Status Final Closure
+
+- [x] Restore and verify clean `main` baseline `eaedfebcc8a79a90e5b9984bbffd9c759f93b04f` against `origin/main`.
+- [x] Audit frozen current-side Tensor/Graph boundary: `return_size` is not exposed, so Return requirement can be unknown and must not be collapsed to `false`.
+- [x] Add failing focused tests for Return-requirement tri-state, real adapter reachability, dynamic DAG release/satisfaction, and terminal Flow status synchronization.
+- [x] Apply the smallest source/builder correction and strengthen semantic acceptance predicates without changing frozen upstream contracts.
+- [x] Complete focused/regression/compile, documentation synchronization, and deterministic formal artifact comparison.
+- [x] Complete registry closure, diff review, commit, push, and post-commit checks.
+- Boundary: no Definition 05, Loss, optimizer, Training, GPU, Planner, candidate generation, `locked_test`, formal Dataset, new learned head, or stochastic-boundary change.
+- Current blocker: none within STEP 4.4-PATCH3.
+- Single next action after closure: researcher authorization for Definition 05; do not execute automatically.
+
 # 2026-09-21 STEP 4.4-PATCH2 — Carrying, Route Rebinding & Task-DAG Transition Closure
 
 - [x] Close carrying/hop state, intermediate-hop advancement, Flow completion/presence synchronization, dynamic Flow-Comm rebinding, 4.3A topology reuse, endpoint/lifecycle/DAG validity, and recursive counterfactual evidence.
