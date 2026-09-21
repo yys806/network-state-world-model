@@ -33,7 +33,7 @@
 这是合同和真实 non-locked development artifact 证据，不是正式 Dataset、训练结果、性能结果或当前模型已读取该 target 的证据。Loss、Posterior、Metric、optimizer、GPU、Planner、`locked_test` 未进入。
 
 ## Git
-本记录在最终验证完成后与代码一起提交并推送；commit hash、push 状态和 GitHub branch 以最终回执为准。
+实现主提交：`e815b99efb304aa60974f008695f8372bc0ee985` / `feat(pi-jwm): close step 5.1a motion csi targets`；已推送 `origin/main`，GitHub branch 为 `main`。本段记录的末次同步提交由最终 `git log -1 --oneline` 回执确认。
 
 ## Next Step
 后续若要实现 Definition 05 Loss/Posterior/Metric，需研究者另行授权 STEP 5.1B；本 Step 停止，不自动推进。
