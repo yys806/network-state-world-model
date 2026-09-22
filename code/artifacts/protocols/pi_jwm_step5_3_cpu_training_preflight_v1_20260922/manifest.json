@@ -1,0 +1,51 @@
+{
+  "files": {
+    "acceptance_receipt.json": {
+      "bytes": 942,
+      "sha256": "f84733792057edd75173f607c38277558ae673276424e607ca08862b90049e20"
+    },
+    "config.json": {
+      "bytes": 320,
+      "sha256": "adc14e0c43dee6a751f89619a79986b2851fb226456d4bfeb847355f4a41bdec"
+    },
+    "gradient_audit.json": {
+      "bytes": 2912,
+      "sha256": "d7f07687d62acb5c33b7d993ee838e727dac0edfec1c71106a22e98bbd4459ee"
+    },
+    "manifest.json": {
+      "bytes": 1678,
+      "sha256": "95c2825473262fe38fa0981f061fdab5ce2a49b2c5b067089c159339b9c07c28"
+    },
+    "phase_a.json": {
+      "bytes": 99876,
+      "sha256": "a80fdecb243cfaf20ff40cc7d7747249a94da5403af0125390e59fa330738ead"
+    },
+    "phase_b.json": {
+      "bytes": 99711,
+      "sha256": "7572c9a106724b3ac52aec348fffb436c6aa66658fdc86c60f1d6e4a1be40e27"
+    },
+    "phase_c.json": {
+      "bytes": 133705,
+      "sha256": "0c72382acaa512f4c99032d8cb23205c2d1ecbef26e8f4613842d3454a2a6669"
+    },
+    "resume.json": {
+      "bytes": 116,
+      "sha256": "6637b68001ea78742a2d870ae8e4dba23e6c92ca05863d518200497ae698485e"
+    },
+    "sample_identities.json": {
+      "bytes": 796,
+      "sha256": "f1c7376e9c4b6e3af93a82edaf8b67e26c23fc99c6dfa66ff06262417c0cd480"
+    },
+    "target_distribution.json": {
+      "bytes": 965,
+      "sha256": "e8bd7ccdf6a7751046176d4f9acc62e77c36d5b2785b2540a9651dfb4fc1e4b9"
+    },
+    "validation.json": {
+      "bytes": 1110,
+      "sha256": "eb3cf9bcd06ab31b519640306ad197cb614b061a09368bde11ad964202aafa36"
+    }
+  },
+  "local_only": [],
+  "passed": true,
+  "schema_version": "PI-JWM-Step-5.3-CPU-Preflight-Manifest-v1"
+}

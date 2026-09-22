@@ -1,0 +1,32 @@
+{
+  "phase_a": [
+    {
+      "anchor": 1,
+      "index": 0,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    }
+  ],
+  "phase_b": [
+    {
+      "anchor": 1,
+      "index": 0,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    }
+  ],
+  "phase_c": [
+    {
+      "anchor": 1,
+      "index": 0,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor": 2,
+      "index": 1,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    }
+  ]
+}

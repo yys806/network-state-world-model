@@ -1,0 +1,38 @@
+{
+  "phase_a": {
+    "csi": {
+      "normalized_mean": 0.06792976707220078,
+      "normalized_std": 1.043117642402649,
+      "valid_element_count": 4200
+    },
+    "motion": {
+      "normalized_mean": -0.09974716603755951,
+      "normalized_std": 0.17324575781822205,
+      "valid_element_count": 8
+    }
+  },
+  "phase_b": {
+    "csi": {
+      "normalized_mean": 0.06792976707220078,
+      "normalized_std": 1.043117642402649,
+      "valid_element_count": 4200
+    },
+    "motion": {
+      "normalized_mean": -0.09974716603755951,
+      "normalized_std": 0.17324575781822205,
+      "valid_element_count": 8
+    }
+  },
+  "phase_c": {
+    "csi": {
+      "normalized_mean": 0.166471928358078,
+      "normalized_std": 1.0372258424758911,
+      "valid_element_count": 8400
+    },
+    "motion": {
+      "normalized_mean": -0.09246953576803207,
+      "normalized_std": 0.16133499145507812,
+      "valid_element_count": 16
+    }
+  }
+}

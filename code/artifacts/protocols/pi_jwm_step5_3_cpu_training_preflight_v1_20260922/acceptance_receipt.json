@@ -1,0 +1,33 @@
+{
+  "development_gate": {
+    "max_steps_phase_a": 30,
+    "max_steps_phase_b": 30,
+    "max_steps_phase_c": 40,
+    "max_steps_resume": 20,
+    "relative_family_loss_drop": 0.005,
+    "relative_prior_loss_drop": 0.005
+  },
+  "forbidden_scope": {
+    "baseline": false,
+    "formal_dataset": false,
+    "formal_training": false,
+    "gpu": false,
+    "locked_test": false,
+    "performance_claim": false,
+    "planner": false
+  },
+  "passed": true,
+  "required_checks": {
+    "finite_no_nan_inf": true,
+    "future_target_leakage_closed": true,
+    "locked_test_not_accessed": true,
+    "module_learning_signal": true,
+    "no_persistent_gradient_starvation": true,
+    "phase_a_stage1_family_drop": true,
+    "phase_b_prior_h1_h2_drop": true,
+    "phase_c_two_sample_family_drop": true,
+    "recursive_h2_stable": true,
+    "resume_trajectory_match": true,
+    "validation_diagnostic_prior_only": true
+  }
+}

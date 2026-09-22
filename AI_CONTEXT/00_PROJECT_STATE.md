@@ -16,7 +16,7 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前状态：`STEP 5.1D = COMPLETE / FROZEN FOR CPU DEVELOPMENT INTEGRATION`，`STEP 5.2 = COMPLETE / FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION`。Stage 1 posterior-assisted warm-up、Stage 2 prior-dominant recursive curriculum、KL schedule、CPU optimizer smoke、prior-only validation 和 checkpoint/resume 均有机器证据。下一步只能在研究者另行授权后进入 `STEP 5.3`；full training、GPU、formal dataset、planner、baseline、locked-test 仍未开始。
+- 当前状态：`STEP 5.1D = COMPLETE / FROZEN FOR CPU DEVELOPMENT INTEGRATION`，`STEP 5.2 = COMPLETE / FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION`，`STEP 5.3 = GO / DEVELOPMENT-ONLY CPU PREFLIGHT`。固定 1/2 个 dev_train samples 的 Stage 1、prior H1/H2、2-sample 1→2、模块 learning-signal、resume 和 validation diagnostic 均有机器证据。下一步只能在研究者另行授权后进入 `STEP 5.4`；full training、GPU、formal dataset、planner、baseline、locked-test 仍未开始。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - STEP 4.4-PATCH3 已在源码中显式区分 Return requirement 的 known/unknown：冻结 current-side 不含 `Task.return_size`，所以 no slot 是 unknown，不是 no-return；unknown 或 known-required/no-slot 都不能错误 final-complete，但 side-state 可区分两者。DAG 只按有效前驱动态释放，terminal Flow completion 同步 remaining/presence/carrying/status。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
@@ -32,7 +32,7 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 
 ## 单一科研下一步
 
-唯一建议下一动作是另行授权 `STEP 5.3 — CPU Training Preflight / Tiny-Data Overfit / Go-No-Go`；本轮不自动执行，不启动 GPU，不访问 `locked_test`。
+唯一建议下一动作是另行授权 `STEP 5.4 — GPU Training Readiness / Formal Training Preparation`；本轮不自动执行，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 
@@ -93,7 +93,7 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 
 - `code/src/pi_jwm/step5_2_training_loop_v1.py` 连接当前 Encoder、Structured RSSM、5.1B target/posterior/loss/KL 原语；Stage 1 使用 family-specific posterior teacher，Stage 2/Validation 从 current-observation posterior 初始化，之后 prior-only recursive rollout。
 - 配置化 curriculum 为 `1→2→4`，当前 development `L=2` 自然为 `1→2`；`beta_KL`、warm-up、free bits、optimizer、clip、seed、batch size 和 epoch/step 均进入 config。
-- 真实 8/4 unified non-locked bundle CPU smoke：两步 optimizer update、4 validation samples prior-only、checkpoint save/load/resume；receipt `20/20`，`passed=true`。这不是 tiny-data overfit、收敛或性能证据。
+- 真实 8/4 unified non-locked bundle CPU smoke：两步 optimizer update、4 validation samples prior-only、checkpoint save/load/resume；5.2-PATCH receipt `26/26`，`passed=true`。随后 5.3 固定 dev_train 1/2-sample preflight receipt=`GO`；这两者都不是正式性能证据。
 - optimizer audit 覆盖 Encoder、RSSM dynamics、两类 prior、两类 future posterior、两类 target encoder、Motion/CSI decoder；known rule parameter count=0。Route non-empty=0、Comp non-empty=0、Comm=1、Mobility=48，Route/Comp 仍是 future formal training/data coverage gate。
 
 ## Freeze chain（2026-09-20 current）

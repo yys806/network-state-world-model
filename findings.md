@@ -1095,3 +1095,8 @@
 - 事实：Validation 已按每个 horizon 的 Motion/CSI numerator/count 全集聚合；Future posterior teacher 与 Target Encoder 调用为 0。
 - 事实：checkpoint 错误 data identity/normalization 被拒绝，compatible reload 保持 forward digest。
 - 边界：仍无 tiny-data overfit、full training、GPU、formal Dataset、locked_test、baseline、Planner、性能结论；Route/Comp non-empty coverage=0/0。
+# 2026-09-22 STEP 5.3
+
+- GO 证据：Phase A Motion/CSI 均下降；Phase B prior H1/H2 均下降；Phase C 两样本双 family 均下降；无 NaN/Inf；resume trajectory 一致。
+- CSI 数值 loss 较大与 normalized target scale/difficulty 相关，未发现 stats 实现错误，不改 0.5/0.5 权重。
+- 部分 teacher groups 存在零梯度步骤但非全程，已由 zero_gradient_steps 审计；Route/Comp coverage、GPU、formal training、locked_test 仍关闭。

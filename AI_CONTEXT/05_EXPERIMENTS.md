@@ -60,10 +60,18 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 
 ## 当前新定义实验状态
 
+## 2026-09-22 STEP 5.3 CPU Training Preflight
+
+- 固定 `dev_train` tiny subset：Phase A/B 使用 sample index `0`（`step2.4-real-communication-seed0::anchor-0001`），Phase C 使用 index `0,1` 两个真实 samples；4 个 `dev_validation` 只作 prior-only diagnostic。
+- 预注册 development-only gate 为 family/prior relative loss drop `>=0.5%`，A/B/C bounded steps 为 `30/30/40`；receipt 所有 required checks 为 true，结果 `GO`。
+- Phase A Stage 1 Motion `0.0005155009→0.0000088083`、CSI `324.4449→320.2018`；Phase B prior H1/H2 `L_Pred` 相对下降 `1.20%/1.19%`；Phase C 两样本 H1/H2 Motion `78.57%/84.69%`、CSI `1.68%/1.69%`。
+- 11 个 trainable module groups 均有 finite gradient 并发生更新；zero-gradient step 数、KL raw/adjusted、free-bits、normalized distribution、raw-unit Motion/CSI MAE/RMSE 均写入 artifact。Resume 后续轨迹与 uninterrupted run 完全一致。
+- 这是 CPU development capacity/optimization preflight，不是正式训练、泛化或性能结论；full training/GPU/formal Dataset/locked_test/baseline/Planner 仍未开始。
+
 ## 2026-09-22 STEP 5.2 Training Loop / Curriculum / Joint Training
 
 - 这是 CPU development implementation smoke，不是正式训练实验。`Step52Trainer` 接入 8 个 `dev_train` 与 4 个 `dev_validation` unified samples；Stage 1 使用 family-specific posterior teacher，Stage 2 使用 prior-only recursive rollout，当前 `L=2` 的配置化 curriculum 为 `1→2`。
-- receipt `code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/acceptance_receipt.json` 的 20/20 required checks 为 true：KL warm-up/free bits、joint optimizer groups、known-rule 参数排除、两步 CPU optimizer update、prior-only validation、`argmin L_Val` selector、checkpoint/reload/resume、causal leakage negative checks 和 reproducibility 均通过。
+- receipt `code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/acceptance_receipt.json` 的 26/26 required checks 为 true：KL warm-up/free bits、joint optimizer groups、known-rule 参数排除、两步 CPU optimizer update、prior-only validation、`argmin L_Val` selector、checkpoint/reload/resume、causal leakage negative checks 和 reproducibility 均通过；5.2-PATCH 还闭合了 current-observation posterior 与 identity-safe resume。
 - smoke diagnostic `L_Val=168.31609344482422` 不是性能结果；没有 tiny-data overfit、full training、GPU、formal Dataset、baseline、Planner 或 locked-test。Route/Comp non-empty coverage=0，Comm=1，Mobility=48，Route/Comp 仍是 future formal training/data coverage gate。
 
 - `STEP 1` 只有只读实现审计和 49 项旧 synthetic CPU contract 回归；它们不是新定义性能实验。

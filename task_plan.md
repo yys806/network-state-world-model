@@ -1419,3 +1419,9 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 修正 validation global mask-normalized aggregation 与 runtime posterior isolation
 - [x] 增加 checkpoint identity-safe resume、focused tests、receipt 与 context sync
 - [ ] 完成全量回归、knowledge index、commit/push 后停止；不进入 STEP 5.3
+# 2026-09-22 STEP 5.3
+
+- [x] 固定 1/2 个 dev_train tiny subset 与 development-only 阈值
+- [x] 完成 Phase A/B/C、learning-signal、KL/scale、validation、reproducibility、resume
+- [x] receipt、record、AI_CONTEXT、tracker 与 artifact index 同步
+- [ ] 完成 focused/regression、compileall、knowledge index、diff check 后 commit/push；不进入 GPU/5.4

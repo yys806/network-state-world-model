@@ -1106,3 +1106,6 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 # 2026-09-22 STEP 5.2-PATCH
 
 已完成初始 latent、validation 聚合、validation posterior isolation 和 checkpoint identity closure。Focused 12/12；CPU smoke receipt 26/26 passed。下一步仅运行回归、索引/一致性检查和 Git 收尾。
+# 2026-09-22 STEP 5.3
+
+固定 dev_train 1/2-sample CPU preflight 已完成：Phase A/B/C、模块 learning-signal、KL/normalization、validation prior-only、resume 全部通过，receipt=GO。下一步做回归与 Git 收尾，停止在 5.3。

@@ -1,0 +1,2968 @@
+{
+  "after": {
+    "L_CSI": 320.8428039550781,
+    "L_Mot": 8.485199941787869e-06,
+    "L_Pred": 160.42140197753906,
+    "csi_raw_mae": 5.304043769836426,
+    "csi_raw_rmse": 6.957304000854492,
+    "future_state_not_rollout_input": true,
+    "horizon": 1,
+    "motion_raw_mae": 6.914283752441406,
+    "motion_raw_rmse": 8.583602905273438,
+    "prior_only": true
+  },
+  "before": {
+    "L_CSI": 324.3993835449219,
+    "L_Mot": 0.00043116140295751393,
+    "L_Pred": 162.1999053955078,
+    "csi_raw_mae": 4.379701614379883,
+    "csi_raw_rmse": 5.6065568923950195,
+    "future_state_not_rollout_input": true,
+    "horizon": 1,
+    "motion_raw_mae": 7.171992778778076,
+    "motion_raw_rmse": 10.454856872558594,
+    "prior_only": true
+  },
+  "trajectory": [
+    {
+      "L_CSI": 324.44488525390625,
+      "L_KL": 1.8943877220153809,
+      "L_KL_Comm_adjusted": 0.9932065010070801,
+      "L_KL_Comm_raw": 0.9912494421005249,
+      "L_KL_Phy_adjusted": 0.9011812210083008,
+      "L_KL_Phy_raw": 0.8728166818618774,
+      "L_Mot": 0.0005155008984729648,
+      "L_Pred": 162.2227020263672,
+      "L_Total": 162.2227020263672,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.398996353149414,
+      "csi_raw_rmse": 5.638009548187256,
+      "future_state_not_rollout_input": true,
+      "global_step": 0,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.08759599179029465,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.6260143518447876,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.02666039951145649,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.03049551509320736,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.5018658638000488,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 5.7555931562092155e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00025645384448580444,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.5889879465103149,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0037967837415635586,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.3308547735214233,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 9.148621559143066,
+      "motion_raw_rmse": 10.233903884887695,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 324.2804260253906,
+      "L_KL": 2.3114943504333496,
+      "L_KL_Comm_adjusted": 1.5489290952682495,
+      "L_KL_Comm_raw": 1.5335500240325928,
+      "L_KL_Phy_adjusted": 0.7625653743743896,
+      "L_KL_Phy_raw": 0.7625653743743896,
+      "L_Mot": 0.00037556065944954753,
+      "L_Pred": 162.14039611816406,
+      "L_Total": 162.14039611816406,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.409518241882324,
+      "csi_raw_rmse": 5.661952972412109,
+      "future_state_not_rollout_input": true,
+      "global_step": 1,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.08470674604177475,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.8156895041465759,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.026635408401489258,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.026356646791100502,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.25936561822891235,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 4.721842924482189e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00021918608399573714,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.5087062120437622,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.004106664098799229,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.0538747310638428,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 11.93185043334961,
+      "motion_raw_rmse": 13.28794002532959,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 324.16204833984375,
+      "L_KL": 2.427391767501831,
+      "L_KL_Comm_adjusted": 1.682789921760559,
+      "L_KL_Comm_raw": 1.6554336547851562,
+      "L_KL_Phy_adjusted": 0.744601845741272,
+      "L_KL_Phy_raw": 0.7356030941009521,
+      "L_Mot": 0.0002509715559426695,
+      "L_Pred": 162.08114624023438,
+      "L_Total": 162.08114624023438,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.421299934387207,
+      "csi_raw_rmse": 5.68743896484375,
+      "future_state_not_rollout_input": true,
+      "global_step": 2,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.07961662858724594,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.851402759552002,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.023570038378238678,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.02291288413107395,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.20937591791152954,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.7286267140880227e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0001373522827634588,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.4731198847293854,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0034046939108520746,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.0641775131225586,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 12.522941589355469,
+      "motion_raw_rmse": 14.968245506286621,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 324.0501708984375,
+      "L_KL": 2.5404603481292725,
+      "L_KL_Comm_adjusted": 1.7636610269546509,
+      "L_KL_Comm_raw": 1.7284364700317383,
+      "L_KL_Phy_adjusted": 0.7767993211746216,
+      "L_KL_Phy_raw": 0.7108443379402161,
+      "L_Mot": 0.0001773220719769597,
+      "L_Pred": 162.02517700195312,
+      "L_Total": 162.02517700195312,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.4338226318359375,
+      "csi_raw_rmse": 5.715714931488037,
+      "future_state_not_rollout_input": true,
+      "global_step": 3,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.08186473697423935,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.8732789754867554,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.021760568022727966,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.020367933437228203,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.20526164770126343,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 1.5944500773912296e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 8.363156666746363e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.433188259601593,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.002753735985606909,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.1084994077682495,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 12.539916038513184,
+      "motion_raw_rmse": 16.17003059387207,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.94244384765625,
+      "L_KL": 2.6692824363708496,
+      "L_KL_Comm_adjusted": 1.8977373838424683,
+      "L_KL_Comm_raw": 1.857025146484375,
+      "L_KL_Phy_adjusted": 0.7715451717376709,
+      "L_KL_Phy_raw": 0.6706351041793823,
+      "L_Mot": 0.0001345341734122485,
+      "L_Pred": 161.97128295898438,
+      "L_Total": 161.97128295898438,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.447116851806641,
+      "csi_raw_rmse": 5.745449542999268,
+      "future_state_not_rollout_input": true,
+      "global_step": 4,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.08877094089984894,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.8976401090621948,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.021120071411132812,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.01843271590769291,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.1771676242351532,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 9.978247362596449e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 5.279208198771812e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.3926587998867035,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0022834797855466604,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.1596014499664307,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 12.518308639526367,
+      "motion_raw_rmse": 17.3909854888916,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.84088134765625,
+      "L_KL": 2.7963128089904785,
+      "L_KL_Comm_adjusted": 2.0459022521972656,
+      "L_KL_Comm_raw": 1.999303936958313,
+      "L_KL_Phy_adjusted": 0.7504106760025024,
+      "L_KL_Phy_raw": 0.6259608864784241,
+      "L_Mot": 0.00010138961806660518,
+      "L_Pred": 161.9204864501953,
+      "L_Total": 161.9204864501953,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.462646007537842,
+      "csi_raw_rmse": 5.776274681091309,
+      "future_state_not_rollout_input": true,
+      "global_step": 5,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.09683184325695038,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.917561948299408,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.021143462508916855,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.01664021611213684,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.14274434745311737,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 6.433466751332162e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 3.448723509791307e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.35720929503440857,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.001887085265479982,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.2134498357772827,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 13.369460105895996,
+      "motion_raw_rmse": 18.706411361694336,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.7447814941406,
+      "L_KL": 2.91005277633667,
+      "L_KL_Comm_adjusted": 2.1863245964050293,
+      "L_KL_Comm_raw": 2.1341724395751953,
+      "L_KL_Phy_adjusted": 0.7237282991409302,
+      "L_KL_Phy_raw": 0.5842201113700867,
+      "L_Mot": 7.05951897543855e-05,
+      "L_Pred": 161.87242126464844,
+      "L_Total": 161.87242126464844,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.481112003326416,
+      "csi_raw_rmse": 5.808729648590088,
+      "future_state_not_rollout_input": true,
+      "global_step": 6,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.10410615056753159,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9282345771789551,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.02152298577129841,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.01486888900399208,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.1297600120306015,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 4.134986738790758e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 2.3705932107986882e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.3316881060600281,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.001494905329309404,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.2723296880722046,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 14.658101081848145,
+      "motion_raw_rmse": 20.05445098876953,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.6502685546875,
+      "L_KL": 3.032459259033203,
+      "L_KL_Comm_adjusted": 2.3353610038757324,
+      "L_KL_Comm_raw": 2.274371385574341,
+      "L_KL_Phy_adjusted": 0.6970981359481812,
+      "L_KL_Phy_raw": 0.5502538681030273,
+      "L_Mot": 4.1785875509958714e-05,
+      "L_Pred": 161.8251495361328,
+      "L_Total": 161.8251495361328,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.501587390899658,
+      "csi_raw_rmse": 5.843055725097656,
+      "future_state_not_rollout_input": true,
+      "global_step": 7,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.1110018715262413,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9360109567642212,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.022317126393318176,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.013417105190455914,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.1206425204873085,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.587006292742444e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.676930878602434e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.3103649914264679,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0010887868702411652,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.3313246965408325,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 15.813575744628906,
+      "motion_raw_rmse": 21.2742977142334,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.5542907714844,
+      "L_KL": 3.1808714866638184,
+      "L_KL_Comm_adjusted": 2.5065226554870605,
+      "L_KL_Comm_raw": 2.4361026287078857,
+      "L_KL_Phy_adjusted": 0.6743488311767578,
+      "L_KL_Phy_raw": 0.5272355675697327,
+      "L_Mot": 1.8151307813241147e-05,
+      "L_Pred": 161.77716064453125,
+      "L_Total": 161.77716064453125,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.52406644821167,
+      "csi_raw_rmse": 5.879599571228027,
+      "future_state_not_rollout_input": true,
+      "global_step": 8,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.11779707670211792,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9424709677696228,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.023507749661803246,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.012457749806344509,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.11030683666467667,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 1.4414240467885975e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.0392388503532857e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.2915392220020294,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0006653210148215294,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.3919093608856201,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 16.76414680480957,
+      "motion_raw_rmse": 22.20198631286621,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.4553527832031,
+      "L_KL": 3.372239112854004,
+      "L_KL_Comm_adjusted": 2.7150790691375732,
+      "L_KL_Comm_raw": 2.6398398876190186,
+      "L_KL_Phy_adjusted": 0.6571599245071411,
+      "L_KL_Phy_raw": 0.5151908993721008,
+      "L_Mot": 4.235781943862094e-06,
+      "L_Pred": 161.72767639160156,
+      "L_Total": 161.72767639160156,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.548883438110352,
+      "csi_raw_rmse": 5.919425010681152,
+      "future_state_not_rollout_input": true,
+      "global_step": 9,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.12437146157026291,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9462707042694092,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.024990957230329514,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.011952350847423077,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.10535679012537003,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 4.2331731719968957e-07,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 3.206037490599556e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.277910977602005,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0002438511000946164,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.4582465887069702,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 17.46255111694336,
+      "motion_raw_rmse": 22.7488956451416,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.3520812988281,
+      "L_KL": 3.635108232498169,
+      "L_KL_Comm_adjusted": 2.9904022216796875,
+      "L_KL_Comm_raw": 2.9104371070861816,
+      "L_KL_Phy_adjusted": 0.6447060108184814,
+      "L_KL_Phy_raw": 0.5106691122055054,
+      "L_Mot": 2.56700786849251e-06,
+      "L_Pred": 161.67604064941406,
+      "L_Total": 161.67604064941406,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.576828479766846,
+      "csi_raw_rmse": 5.9634857177734375,
+      "future_state_not_rollout_input": true,
+      "global_step": 10,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.13086067140102386,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9487608671188354,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.026719022542238235,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.011820719577372074,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.10001523792743683,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 6.938774390619074e-07,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 4.993195489078062e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.268086701631546,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00013820899766869843,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.5300225019454956,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 17.879243850708008,
+      "motion_raw_rmse": 22.886930465698242,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.2434997558594,
+      "L_KL": 3.980151653289795,
+      "L_KL_Comm_adjusted": 3.345858573913574,
+      "L_KL_Comm_raw": 3.2642788887023926,
+      "L_KL_Phy_adjusted": 0.6342930793762207,
+      "L_KL_Phy_raw": 0.5082715153694153,
+      "L_Mot": 1.0985725566570181e-05,
+      "L_Pred": 161.6217498779297,
+      "L_Total": 161.6217498779297,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.607965469360352,
+      "csi_raw_rmse": 6.012124538421631,
+      "future_state_not_rollout_input": true,
+      "global_step": 11,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.13732779026031494,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9512563943862915,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.02865603193640709,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.011994174681603909,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.08795728534460068,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 1.833329520195548e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.2663226698350627e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.25990280508995056,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00044018978951498866,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.605626106262207,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 17.984365463256836,
+      "motion_raw_rmse": 22.593231201171875,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.129150390625,
+      "L_KL": 4.409657955169678,
+      "L_KL_Comm_adjusted": 3.78696870803833,
+      "L_KL_Comm_raw": 3.706662178039551,
+      "L_KL_Phy_adjusted": 0.6226893663406372,
+      "L_KL_Phy_raw": 0.502752423286438,
+      "L_Mot": 2.3415046598529443e-05,
+      "L_Pred": 161.56459045410156,
+      "L_Total": 161.56459045410156,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.642014503479004,
+      "csi_raw_rmse": 6.065289497375488,
+      "future_state_not_rollout_input": true,
+      "global_step": 12,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.1435835361480713,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9533799290657043,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.03072766214609146,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.012374559417366982,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.07134674489498138,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.8688632482953835e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.90156206372194e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.2534979283809662,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0006385629530996084,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.6853646039962769,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 17.763914108276367,
+      "motion_raw_rmse": 21.853759765625,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 323.00872802734375,
+      "L_KL": 4.910557746887207,
+      "L_KL_Comm_adjusted": 4.302783966064453,
+      "L_KL_Comm_raw": 4.226184844970703,
+      "L_KL_Phy_adjusted": 0.6077735424041748,
+      "L_KL_Phy_raw": 0.49110472202301025,
+      "L_Mot": 3.3352451282553375e-05,
+      "L_Pred": 161.50437927246094,
+      "L_Total": 161.50437927246094,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.680882930755615,
+      "csi_raw_rmse": 6.122743606567383,
+      "future_state_not_rollout_input": true,
+      "global_step": 13,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.14959442615509033,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9549563527107239,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.03287409245967865,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.012731259688735008,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.05586404725909233,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 3.5744030810747063e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 2.2977805201662704e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.247618168592453,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0007280826102942228,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.7695298194885254,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 17.25132942199707,
+      "motion_raw_rmse": 20.732114791870117,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 322.882080078125,
+      "L_KL": 5.458223342895508,
+      "L_KL_Comm_adjusted": 4.869147777557373,
+      "L_KL_Comm_raw": 4.7966389656066895,
+      "L_KL_Phy_adjusted": 0.5890755653381348,
+      "L_KL_Phy_raw": 0.47259658575057983,
+      "L_Mot": 3.679640212794766e-05,
+      "L_Pred": 161.44105529785156,
+      "L_Total": 161.44105529785156,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.723593711853027,
+      "csi_raw_rmse": 6.184293270111084,
+      "future_state_not_rollout_input": true,
+      "global_step": 14,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.15550221502780914,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9562138319015503,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.035091616213321686,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.012860001996159554,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.045999426394701004,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 3.8227140066737775e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 2.4088443751679733e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.24074870347976685,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0007209060713648796,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.857404112815857,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 16.52377700805664,
+      "motion_raw_rmse": 19.374616622924805,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 322.74969482421875,
+      "L_KL": 6.031369686126709,
+      "L_KL_Comm_adjusted": 5.464079856872559,
+      "L_KL_Comm_raw": 5.395076751708984,
+      "L_KL_Phy_adjusted": 0.5672900080680847,
+      "L_KL_Phy_raw": 0.44783663749694824,
+      "L_Mot": 3.299257150501944e-05,
+      "L_Pred": 161.37486267089844,
+      "L_Total": 161.37486267089844,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.770750999450684,
+      "csi_raw_rmse": 6.249983787536621,
+      "future_state_not_rollout_input": true,
+      "global_step": 15,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.16132444143295288,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9568747282028198,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.03739507123827934,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.012789473868906498,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.043146464973688126,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 3.614361276049749e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 2.251368096040096e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.23439271748065948,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0006375326192937791,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 1.9487662315368652,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 15.678030014038086,
+      "motion_raw_rmse": 17.963212966918945,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 322.6119384765625,
+      "L_KL": 6.620217323303223,
+      "L_KL_Comm_adjusted": 6.076566219329834,
+      "L_KL_Comm_raw": 6.009182453155518,
+      "L_KL_Phy_adjusted": 0.5436509251594543,
+      "L_KL_Phy_raw": 0.4182528257369995,
+      "L_Mot": 2.3921291358419694e-05,
+      "L_Pred": 161.3059844970703,
+      "L_Total": 161.3059844970703,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.822705268859863,
+      "csi_raw_rmse": 6.320093631744385,
+      "future_state_not_rollout_input": true,
+      "global_step": 16,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.1670331060886383,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9568251371383667,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.03980398550629616,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.012655182741582394,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.04362340644001961,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 3.0364165013452293e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.8809951143339276e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.23007984459400177,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0005015339120291173,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 2.04345440864563,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 14.80807113647461,
+      "motion_raw_rmse": 16.663536071777344,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 322.4684753417969,
+      "L_KL": 7.2194108963012695,
+      "L_KL_Comm_adjusted": 6.699878692626953,
+      "L_KL_Comm_raw": 6.633044242858887,
+      "L_KL_Phy_adjusted": 0.519532322883606,
+      "L_KL_Phy_raw": 0.3859061598777771,
+      "L_Mot": 1.3242278328107204e-05,
+      "L_Pred": 161.23423767089844,
+      "L_Total": 161.23423767089844,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.878462314605713,
+      "csi_raw_rmse": 6.394904136657715,
+      "future_state_not_rollout_input": true,
+      "global_step": 17,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.17265605926513672,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9564089179039001,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.042347501963377,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.012523174285888672,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0427759513258934,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.2050569441489642e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.3637620213557966e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.2273564636707306,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00033657500171102583,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 2.140808343887329,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 13.990682601928711,
+      "motion_raw_rmse": 15.588371276855469,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 322.3190612792969,
+      "L_KL": 7.828749656677246,
+      "L_KL_Comm_adjusted": 7.33056116104126,
+      "L_KL_Comm_raw": 7.2625274658203125,
+      "L_KL_Phy_adjusted": 0.49818840622901917,
+      "L_KL_Phy_raw": 0.3533554673194885,
+      "L_Mot": 4.9311097427562345e-06,
+      "L_Pred": 161.15953063964844,
+      "L_Total": 161.15953063964844,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.937109470367432,
+      "csi_raw_rmse": 6.474550724029541,
+      "future_state_not_rollout_input": true,
+      "global_step": 18,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.17824161052703857,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9559440612792969,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.04505746439099312,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.012366898357868195,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.03868225961923599,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 1.2246376854818664e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 7.578696113341721e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.22521211206912994,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00016413342382293195,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 2.2401397228240967,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 13.279335975646973,
+      "motion_raw_rmse": 14.786361694335938,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 322.163330078125,
+      "L_KL": 8.46146297454834,
+      "L_KL_Comm_adjusted": 7.967562198638916,
+      "L_KL_Comm_raw": 7.89736795425415,
+      "L_KL_Phy_adjusted": 0.493900328874588,
+      "L_KL_Phy_raw": 0.3234019875526428,
+      "L_Mot": 1.856689323176397e-06,
+      "L_Pred": 161.0816650390625,
+      "L_Total": 161.0816650390625,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 4.999081611633301,
+      "csi_raw_rmse": 6.559048652648926,
+      "future_state_not_rollout_input": true,
+      "global_step": 19,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.18381622433662415,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9554295539855957,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.04795818775892258,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.01213586051017046,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.03166642040014267,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 1.9017383579011948e-07,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.198496079268807e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.2234172523021698,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 7.650533007108606e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 2.341228485107422,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 12.7056884765625,
+      "motion_raw_rmse": 14.254928588867188,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 322.0014343261719,
+      "L_KL": 9.107156753540039,
+      "L_KL_Comm_adjusted": 8.617372512817383,
+      "L_KL_Comm_raw": 8.545345306396484,
+      "L_KL_Phy_adjusted": 0.4897840917110443,
+      "L_KL_Phy_raw": 0.29862624406814575,
+      "L_Mot": 4.659425940189976e-06,
+      "L_Pred": 161.00071716308594,
+      "L_Total": 161.00071716308594,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.064932346343994,
+      "csi_raw_rmse": 6.648443222045898,
+      "future_state_not_rollout_input": true,
+      "global_step": 20,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.18938317894935608,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.954608678817749,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.05106211453676224,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.011808602139353752,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.023717613890767097,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 8.429100262219436e-07,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 5.180315383768175e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.22259004414081573,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00013545621186494827,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 2.4444339275360107,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 12.281883239746094,
+      "motion_raw_rmse": 13.958720207214355,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 321.83319091796875,
+      "L_KL": 9.78342342376709,
+      "L_KL_Comm_adjusted": 9.29712200164795,
+      "L_KL_Comm_raw": 9.224051475524902,
+      "L_KL_Phy_adjusted": 0.4863015115261078,
+      "L_KL_Phy_raw": 0.28070521354675293,
+      "L_Mot": 1.1449925295892172e-05,
+      "L_Pred": 160.91659545898438,
+      "L_Total": 160.91659545898438,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.135653018951416,
+      "csi_raw_rmse": 6.743003845214844,
+      "future_state_not_rollout_input": true,
+      "global_step": 21,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.19494768977165222,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9531893134117126,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.054375141859054565,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.011406810022890568,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.018948910757899284,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 1.721428930068214e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.0583252333162818e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.22355914115905762,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00023782224161550403,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 2.5504209995269775,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 11.993568420410156,
+      "motion_raw_rmse": 13.837996482849121,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 321.65850830078125,
+      "L_KL": 10.51745319366455,
+      "L_KL_Comm_adjusted": 10.03364086151123,
+      "L_KL_Comm_raw": 9.960713386535645,
+      "L_KL_Phy_adjusted": 0.48381200432777405,
+      "L_KL_Phy_raw": 0.26981252431869507,
+      "L_Mot": 1.892243562906515e-05,
+      "L_Pred": 160.8292694091797,
+      "L_Total": 160.8292694091797,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.211021900177002,
+      "csi_raw_rmse": 6.843357563018799,
+      "future_state_not_rollout_input": true,
+      "global_step": 22,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.20054979622364044,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9510940909385681,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.057907577604055405,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.010980449616909027,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.02082800306379795,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.3608424726262456e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.4515894690703135e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.2264758199453354,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00030215628794394433,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 2.659668207168579,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 11.801277160644531,
+      "motion_raw_rmse": 13.822412490844727,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 321.47674560546875,
+      "L_KL": 11.343706130981445,
+      "L_KL_Comm_adjusted": 10.861244201660156,
+      "L_KL_Comm_raw": 10.789963722229004,
+      "L_KL_Phy_adjusted": 0.482462078332901,
+      "L_KL_Phy_raw": 0.2648129463195801,
+      "L_Mot": 2.4306640625582077e-05,
+      "L_Pred": 160.73838806152344,
+      "L_Total": 160.73838806152344,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.292006492614746,
+      "csi_raw_rmse": 6.950409889221191,
+      "future_state_not_rollout_input": true,
+      "global_step": 23,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.20627237856388092,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9485630393028259,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.06168064475059509,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.010579310357570648,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.025847861543297768,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.714625225053169e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.67049602168845e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.23042312264442444,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0003317463560961187,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 2.7721524238586426,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 11.65933895111084,
+      "motion_raw_rmse": 13.850677490234375,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 321.2871398925781,
+      "L_KL": 12.299149513244629,
+      "L_KL_Comm_adjusted": 11.816962242126465,
+      "L_KL_Comm_raw": 11.749064445495605,
+      "L_KL_Phy_adjusted": 0.48218753933906555,
+      "L_KL_Phy_raw": 0.26407337188720703,
+      "L_Mot": 2.63859546976164e-05,
+      "L_Pred": 160.64358520507812,
+      "L_Total": 160.64358520507812,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.382524013519287,
+      "csi_raw_rmse": 7.065102577209473,
+      "future_state_not_rollout_input": true,
+      "global_step": 24,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.2122037708759308,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9460045099258423,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0657203420996666,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.010231313295662403,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.02959996648132801,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.798244850055198e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.7244443370145746e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.23397524654865265,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00033336409251205623,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 2.8875200748443604,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 11.530220985412598,
+      "motion_raw_rmse": 13.879862785339355,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 321.0888366699219,
+      "L_KL": 13.417689323425293,
+      "L_KL_Comm_adjusted": 12.93488883972168,
+      "L_KL_Comm_raw": 12.872261047363281,
+      "L_KL_Phy_adjusted": 0.48280033469200134,
+      "L_KL_Phy_raw": 0.2660704255104065,
+      "L_Mot": 2.531447898945771e-05,
+      "L_Pred": 160.54443359375,
+      "L_Total": 160.54443359375,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.479588985443115,
+      "csi_raw_rmse": 7.188194274902344,
+      "future_state_not_rollout_input": true,
+      "global_step": 25,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.21838624775409698,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9437358379364014,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.07004383206367493,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.009938924573361874,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.030378542840480804,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.665104830157361e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.6451585906906985e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.23609629273414612,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00031439305166713893,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 3.0055603981018066,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 11.389030456542969,
+      "motion_raw_rmse": 13.885505676269531,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 320.88134765625,
+      "L_KL": 14.727391242980957,
+      "L_KL_Comm_adjusted": 14.243339538574219,
+      "L_KL_Comm_raw": 14.186625480651855,
+      "L_KL_Phy_adjusted": 0.48405179381370544,
+      "L_KL_Phy_raw": 0.2696138024330139,
+      "L_Mot": 2.199898699473124e-05,
+      "L_Pred": 160.44068908691406,
+      "L_Total": 160.44068908691406,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.585438251495361,
+      "csi_raw_rmse": 7.320174217224121,
+      "future_state_not_rollout_input": true,
+      "global_step": 26,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.22479213774204254,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9418290853500366,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.07465001940727234,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.009688414633274078,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.02796456217765808,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.381470039836131e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.4723106687597465e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.23659521341323853,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0002814993495121598,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 3.1265602111816406,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 11.222906112670898,
+      "motion_raw_rmse": 13.858237266540527,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 320.66436767578125,
+      "L_KL": 16.246967315673828,
+      "L_KL_Comm_adjusted": 15.761296272277832,
+      "L_KL_Comm_raw": 15.710760116577148,
+      "L_KL_Phy_adjusted": 0.48567071557044983,
+      "L_KL_Phy_raw": 0.2738568186759949,
+      "L_Mot": 1.7545542505104095e-05,
+      "L_Pred": 160.3321990966797,
+      "L_Total": 160.3321990966797,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.701874256134033,
+      "csi_raw_rmse": 7.4613518714904785,
+      "future_state_not_rollout_input": true,
+      "global_step": 27,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.231338232755661,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9401262402534485,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.07952001690864563,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00946089718490839,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.02294856123626232,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 2.00988506549038e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 1.2438918929547071e-05,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.23601901531219482,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00024022720754146576,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 3.2513301372528076,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 11.02877140045166,
+      "motion_raw_rmse": 13.799875259399414,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 320.4378967285156,
+      "L_KL": 17.990375518798828,
+      "L_KL_Comm_adjusted": 17.502979278564453,
+      "L_KL_Comm_raw": 17.455978393554688,
+      "L_KL_Phy_adjusted": 0.4873964488506317,
+      "L_KL_Phy_raw": 0.27823835611343384,
+      "L_Mot": 1.2920891094836406e-05,
+      "L_Pred": 160.2189483642578,
+      "L_Total": 160.2189483642578,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.828429698944092,
+      "csi_raw_rmse": 7.6120195388793945,
+      "future_state_not_rollout_input": true,
+      "global_step": 28,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.23792238533496857,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.938369631767273,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.08462479710578918,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0092394994571805,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.016589557752013206,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 1.6013093500077957e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 9.914000656863209e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.2352297455072403,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.00019499656627885997,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 3.3809516429901123,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 10.810452461242676,
+      "motion_raw_rmse": 13.719229698181152,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 320.2017517089844,
+      "L_KL": 19.96050262451172,
+      "L_KL_Comm_adjusted": 19.471500396728516,
+      "L_KL_Comm_raw": 19.4289608001709,
+      "L_KL_Phy_adjusted": 0.48900189995765686,
+      "L_KL_Phy_raw": 0.2824079394340515,
+      "L_Mot": 8.80834340932779e-06,
+      "L_Pred": 160.1008758544922,
+      "L_Total": 160.1008758544922,
+      "beta_kl": 0.0,
+      "csi_raw_mae": 5.9640793800354,
+      "csi_raw_rmse": 7.772608280181885,
+      "future_state_not_rollout_input": true,
+      "global_step": 29,
+      "gradient_audit": {
+        "comm_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.2444630116224289,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "comm_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "csi_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.9363499879837036,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "csi_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.08993567526340485,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "current_observation_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.009012619964778423,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.011175443418323994,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "motion_target_encoder": {
+          "gradient_finite": true,
+          "gradient_norm": 1.192970330521348e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_future_posterior": {
+          "gradient_finite": true,
+          "gradient_norm": 7.382700005109655e-06,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "phy_prior": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0,
+          "gradient_present": true,
+          "parameter_changed": false
+        },
+        "rssm_dynamics": {
+          "gradient_finite": true,
+          "gradient_norm": 0.23492927849292755,
+          "gradient_present": true,
+          "parameter_changed": true
+        },
+        "vehicle_motion_decoder": {
+          "gradient_finite": true,
+          "gradient_norm": 0.0001492083683842793,
+          "gradient_present": true,
+          "parameter_changed": true
+        }
+      },
+      "gradient_norm_before_clip": 3.5164287090301514,
+      "gradients_finite": true,
+      "loss_finite": true,
+      "motion_raw_mae": 10.57575511932373,
+      "motion_raw_rmse": 13.628031730651855,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    }
+  ]
+}

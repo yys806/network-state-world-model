@@ -1,9 +1,15 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-22 STEP 5.3
+
+- 新增 bounded CPU tiny-data preflight runner、focused tests 和 machine-readable evidence。
+- 固定 1-sample/2-sample dev_train subset，完成 Stage 1 双 family、prior H1/H2、2-sample 1→2、module learning-signal、KL/normalization diagnostics、validation prior-only 与 deterministic checkpoint-resume。
+- 预注册 0.5% development gate 全部通过，STEP 5.3=`GO`；仍未启动 GPU、full training、formal Dataset、Planner、baseline 或 locked_test。
+
 ## 2026-09-22 STEP 5.2
 
 - 新增 `step5_2_training_loop_v1.py`、CPU smoke script、focused tests 和实现记录；Stage 1 posterior teacher、Stage 2 prior-only recursive rollout、`1→2→4` curriculum、KL schedule、joint optimizer audit、prior-only validation、`L_Val` selector、checkpoint/resume 已接入。
-- 8/4 unified non-locked development smoke 的 20/20 receipt checks 和 focused 9/9 通过；这是 training-loop implementation evidence，不是 tiny-data overfit、full training、GPU 或性能结果。
+- 8/4 unified non-locked development smoke 的 5.2-PATCH 26/26 receipt checks 和 focused 12/12 通过；这是 training-loop implementation evidence，不是 tiny-data overfit、full training、GPU 或性能结果。5.3 preflight 后续已有独立记录。
 - 更新当前状态、实验、已知问题、模块地图、tracker 与 Definition 05 contract；Route/Comp non-empty coverage=0 继续作为 future formal training/data gate，未进入 STEP 5.3。
 
 ## 2026-09-22 STEP 5.1D
@@ -123,7 +129,7 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 
 - 新增配置化 CPU training loop：Stage 1 posterior-assisted warm-up、Stage 2 prior-dominant recursive curriculum、KL warm-up/free bits、joint optimizer parameter audit、prior-only validation、`L_Val` checkpoint selector 与 checkpoint/resume。
 - 8/4 unified non-locked development smoke 完成两步 optimizer update；20/20 required receipt checks、focused 9/9 和相关 current regressions 通过。Receipt 与 compact audit 位于 `code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/`；`.pt` checkpoint 保持 local-only。
-- 保持边界：`full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`；Route/Comp non-empty coverage=0，未进入 STEP 5.3。
+- 保持边界：`full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`；Route/Comp non-empty coverage=0，5.3 仅完成 bounded CPU preflight。
 
 # 2026-09-22 STEP 5.1C-PATCH
 

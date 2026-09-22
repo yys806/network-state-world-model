@@ -609,10 +609,25 @@ class Step52Trainer(nn.Module):
         self.optimizer.step()
         after = self._parameter_snapshot()
         changed, changed_count = self._changed(before, after)
+        gradient_audit = {}
+        for group in self._optimizer_groups:
+            gradients = [parameter.grad for parameter in group["params"] if parameter.grad is not None]
+            before_names = set()
+            if group["name"] == "encoder":
+                before_names = {f"encoder.{name}" for name, _ in self.encoder.named_parameters()}
+            elif group["name"] == "rssm_dynamics":
+                before_names = {f"model.{name}" for name, parameter in self.model.named_parameters() if not name.startswith(("phy_prior.", "comm_prior.", "vehicle_decoder.", "csi_decoder.", "phy_posterior.", "comm_posterior."))}
+            else:
+                prefixes = {"phy_prior": "model.phy_prior.", "comm_prior": "model.comm_prior.", "vehicle_motion_decoder": "model.vehicle_decoder.", "csi_decoder": "model.csi_decoder.", "current_observation_posterior": ("model.phy_posterior.", "model.comm_posterior."), "phy_future_posterior": "future_posterior.phy_future_posterior.", "comm_future_posterior": "future_posterior.comm_future_posterior.", "motion_target_encoder": "target_encoder.motion.", "csi_target_encoder": "target_encoder.csi."}
+                prefix = prefixes[group["name"]]
+                before_names = {prefix} if isinstance(prefix, str) else set(prefix)
+                before_names = {name for name in before if any(name.startswith(item) for item in before_names)}
+            gradient_audit[group["name"]] = {"gradient_present": bool(gradients), "gradient_finite": bool(gradients) and all(bool(torch.isfinite(grad).all()) for grad in gradients), "gradient_norm": float(torch.sqrt(sum(grad.detach().square().sum() for grad in gradients))) if gradients else 0.0, "parameter_changed": any(not torch.equal(before[name], after[name]) for name in before_names if name in after)}
         result.update({
             "epoch": int(epoch), "global_step": int(global_step), "rollout_horizon": horizon,
             "loss_finite": bool(torch.isfinite(loss).item()), "gradients_finite": grad_finite,
             "gradient_norm_before_clip": grad_norm, "parameter_update": {"any_changed": changed, "changed_count": changed_count},
+            "gradient_audit": gradient_audit,
             "prior_only_rollout": bool(result["rollout"]["prior_only"]), "posterior_used_as_rollout_state": bool(result["rollout"]["posterior_used_as_rollout_state"]),
             "recursive_state_feedback": bool(result["rollout"]["recursive_state_feedback"]),
             "future_state_not_rollout_input": not bool(result["rollout"]["future_target_consumed_by_rollout"]),

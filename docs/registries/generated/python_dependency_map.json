@@ -2311,6 +2311,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.run_step5_2_training_loop_smoke_v1",
+        "scripts.step5_3_cpu_training_preflight_v1",
         "tests.test_step5_2_training_loop_v1"
       ],
       "imports": [
@@ -7061,6 +7062,22 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "tests.test_step5_3_cpu_training_preflight_v1"
+      ],
+      "imports": [
+        "pi_jwm.step5_2_training_loop_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.step5_3_cpu_training_preflight_v1",
+      "path": "code/scripts/step5_3_cpu_training_preflight_v1.py",
+      "test_files": [
+        "code/tests/test_step5_3_cpu_training_preflight_v1.py"
+      ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
         "scripts.export_multiseed_dataset_v0",
         "scripts.export_strict_actions_v0",
         "tests.test_strict_action_helpers"
@@ -9726,6 +9743,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step5_2_training_loop_v1",
       "path": "code/tests/test_step5_2_training_loop_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "scripts.step5_3_cpu_training_preflight_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step5_3_cpu_training_preflight_v1",
+      "path": "code/tests/test_step5_3_cpu_training_preflight_v1.py",
       "test_files": []
     },
     {

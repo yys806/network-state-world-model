@@ -4,9 +4,9 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 
 ## STEP 5.2 当前边界
 
-- STEP 5.2 CPU development training loop 已实现并通过 20/20 receipt checks；这只证明 Stage 1/Stage 2、optimizer smoke、prior-only validation 与 checkpoint/resume 的工程链路，不证明训练收敛、泛化或性能。
+- STEP 5.2 CPU development training loop 已实现并通过 26/26 receipt checks；5.3 bounded CPU preflight 另以固定 1/2-sample dev_train 通过 GO。两者都不证明正式训练、泛化或性能。
 - 当前只使用 unified non-locked development bundle（`dev_train=8`、`dev_validation=4`）。Route/Comp non-empty coverage 均为 0，仅有 explicit no-op；正式训练数据覆盖仍需后续 gate。
-- `training_loop_implemented=true`、`cpu_optimizer_smoke=true`，但 `full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`。下一独立门是 STEP 5.3，不在本轮自动执行。
+- `training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`step5_3_preflight=GO`，但 `full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`。下一独立门是 STEP 5.4 readiness review，不在本轮自动执行。
 
 ## STEP 5.1A/5.1D target boundary
 
@@ -157,3 +157,9 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 - Validation `L_Val` 现在按 horizon 跨完整 validation set 聚合 Motion/CSI numerator/count；不再平均 sample-level normalized loss。
 - Checkpoint resume 现在拒绝错误 data identity、normalization provenance 或 architecture-critical config；compatible reload 已通过。
 - 仍未解决且不属于本 Patch：tiny-data overfit、full training、GPU、formal Dataset、locked_test、baseline、Planner、performance claim；Route/Comp non-empty development coverage 仍为 0/0。
+## 2026-09-22 STEP 5.3 preflight result
+
+- Fixed development tiny-data preflight is `GO`：1-sample Stage 1、1-sample prior H1/H2 和 2-sample prior 1→2 均达到预注册 0.5% family/prior drop gate，且无 NaN/Inf。
+- CSI loss 仍明显高于 Motion，但 train-only normalized CSI std 约 1.04、Motion std 约 0.16，当前证据不支持 normalization bug；没有修改冻结的 0.5/0.5 权重。
+- 部分 future posterior/target encoder steps 梯度为 0，已记录 zero-gradient step count；各组均有 finite learning signal 和参数更新，不构成持续性 gradient starvation。
+- 该 GO 只开放未来独立的 STEP 5.4 readiness review，不自动启动 GPU。Route/Comp non-empty coverage 仍为 0/0，full training/formal Dataset/locked_test/performance claim 仍关闭。
