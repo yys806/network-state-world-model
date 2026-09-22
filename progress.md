@@ -1088,3 +1088,9 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 # 2026-09-22 STEP 5.1D
 
 已完成 unified Tensor→Graph→Encoder→STEP 4.4→Prior/Posterior→Decoder→Loss/KL/Metric CPU integration。receipt 42/42，12/12 pairing，Physical/Comm capacity 10/74，gradient 与 deterministic rebuild 通过；模型仍 untrained。
+# 2026-09-22 STEP 5.1D-PATCH
+
+- 完成 Evidence / Context / Action-Coverage Closure；receipt 47/47，GitHub tracked compact evidence 已生成。
+- exact upstream normalization train lineage、runtime prior-target isolation、posterior sensitivity、executed/forbidden scope 均通过。
+- 真实 paired development coverage：Mobility 48、Comm 1、Route 0、Comp 0；后两者只有显式 no-op，保留为未来 formal training/data coverage gate。
+- 当前仍是 untrained CPU/non-locked evidence；training、optimizer、GPU、formal_dataset、locked_test、performance claim、Planner 和 STEP 5.2 未开始。

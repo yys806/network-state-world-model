@@ -31,6 +31,8 @@ class Step51DUnifiedModelChainTests(unittest.TestCase):
         cls.pairing = json.loads((cls.output / "sample_pairing_audit.json").read_text(encoding="utf-8"))
         cls.identity = json.loads((cls.output / "identity_audit.json").read_text(encoding="utf-8"))
         cls.actions = json.loads((cls.output / "action_mapping_audit.json").read_text(encoding="utf-8"))
+        cls.normalization_lineage = json.loads((cls.output / "normalization_lineage_audit.json").read_text(encoding="utf-8"))
+        cls.manifest = json.loads((cls.output / "manifest.json").read_text(encoding="utf-8"))
 
     def test_full_tensor_package_semantic_roundtrip(self):
         package = self.output / "unified_flow_tensor_package.npz"
@@ -59,9 +61,25 @@ class Step51DUnifiedModelChainTests(unittest.TestCase):
     def test_receipt_and_pairing_identity(self):
         self.assertTrue(self.receipt["passed"])
         self.assertEqual(self.receipt["sample_count"], 12)
-        self.assertEqual(len(self.receipt["checks"]), 42)
+        self.assertEqual(len(self.receipt["checks"]), 47)
         self.assertTrue(all(self.receipt["checks"].values()))
-        self.assertTrue(all(value is False for value in self.receipt["scope"].values()))
+        self.assertTrue(all(self.receipt["executed_scope"].values()))
+        self.assertTrue(all(value is False for value in self.receipt["forbidden_scope"].values()))
+        self.assertEqual(self.receipt["action_coverage"]["route_nonempty_coverage"], 0)
+        self.assertEqual(self.receipt["action_coverage"]["comp_nonempty_coverage"], 0)
+        self.assertEqual(self.receipt["action_coverage"]["comm_nonempty_coverage"], 1)
+        self.assertEqual(self.receipt["action_coverage"]["mobility_nonempty_coverage"], 48)
+        self.assertTrue(self.receipt["checks"]["upstream_normalization_exact_train_lineage"])
+        self.assertTrue(self.normalization_lineage["exact_stats_source_lineage"])
+        self.assertTrue(self.normalization_lineage["unified_stats_source_lineage_exact"])
+        self.assertTrue(self.normalization_lineage["upstream_stats_source_lineage_exact"])
+        self.assertEqual(self.normalization_lineage["upstream_stats_source_ids_mode"], "recovered_from_frozen_4_2a_batch")
+        self.assertTrue(self.receipt["checks"]["prior_target_runtime_isolation"])
+        self.assertTrue(self.receipt["checks"]["posterior_target_runtime_sensitivity"])
+        self.assertTrue(self.receipt["provenance"]["source_script_sha256"])
+        self.assertTrue(self.manifest["passed"])
+        tracked = {"acceptance_receipt.json", "sample_pairing_audit.json", "identity_audit.json", "action_mapping_audit.json", "gradient_summary.json", "recursive_horizon_summary.json", "metric_summary.json"}
+        self.assertTrue(tracked <= set(self.manifest["github_tracked_evidence"]))
         self.assertEqual(len(self.pairing), 12)
         self.assertTrue(all(row["sample_id"] == row["target_sample_id"] for row in self.pairing))
         self.assertTrue(all(row["trajectory_id"] == row["target_trajectory_id"] for row in self.pairing))
@@ -100,7 +118,13 @@ class Step51DUnifiedModelChainTests(unittest.TestCase):
         tampered = copy.deepcopy(self.receipt["checks"])
         tampered["paired_12"] = False
         self.assertFalse(all(tampered.values()))
+        self.assertFalse(bool(all(tampered.values()) and all(not value for value in self.receipt["forbidden_scope"].values())))
         self.assertTrue(self.receipt["checks"]["receipt_tamper_negative"])
+        forbidden = copy.deepcopy(self.receipt["forbidden_scope"])
+        forbidden["training"] = True
+        self.assertFalse(all(not value for value in forbidden.values()))
+        self.assertFalse(bool(all(self.receipt["checks"].values()) and all(not value for value in forbidden.values())))
+        self.assertTrue(self.receipt["checks"]["forbidden_scope_tamper_negative"])
 
 
 if __name__ == "__main__":

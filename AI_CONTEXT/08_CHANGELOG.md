@@ -3,7 +3,7 @@
 ## 2026-09-22 STEP 5.1D
 
 - 新增 unified Tensor full-package roundtrip，补齐 sample IDs 与 base Step 3.3 validation provenance。
-- 从同一 12-sample bundle 重建 4.3A/4.3B/4.4，并完成 paired recursive prior/posterior/decoder、Loss/KL/raw-unit metric/gradient receipt；42/42 checks 与 deterministic rebuild 通过。
+- 从同一 12-sample bundle 重建 4.3A/4.3B/4.4，并完成 paired recursive prior/posterior/decoder、Loss/KL/raw-unit metric/gradient receipt；当前 5.1D-PATCH receipt 47/47 checks 与 deterministic rebuild 通过。
 - 仍不训练、不用 GPU、不访问 formal dataset/locked_test，不进入 STEP 5.2。
 
 ## 2026-09-21 STEP 5.1A-PATCH
@@ -110,4 +110,5 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 
 - 完成 unified development bundle 的 Physical/Communication slot-wise identity proof、端点真实 ID 反查、10/74 capacity exact alignment、no-prefix/no-crop 机器证明和 tamper negative。
 - 重新拟合 `unified_flow_train_normalization_stats.json`：仅使用 8 个 `dev_train` samples 的 History，4 个 validation samples 排除，Future Target 不参与；旧 5-sample stats 仅保留为历史 provenance。
-- receipt、lineage audit、tensor contract、deterministic rebuild 与 serialize/reload 通过；4.3A/4.3B/4.4 unified rebuild 和 paired 5.1B acceptance 未执行，STEP 5.2 仍禁止。
+- 截至 STEP 5.1C-PATCH 当时，4.3A/4.3B/4.4 unified rebuild 和 paired 5.1B acceptance 尚未执行；该历史边界已由后续 STEP 5.1D-PATCH 闭合，STEP 5.2 仍需单独授权。
+- 2026-09-22：STEP 5.1D-PATCH 完成 Evidence / Context / Action-Coverage Closure。receipt 改为 executed/forbidden scope，跟踪 compact GitHub evidence；机器比较 unified stats source IDs、4.2A frozen batch 恢复的 fit source 与逐窗口 normalized samples；新增 runtime prior-target isolation 与 posterior sensitivity negative test。真实覆盖为 Mobility=48、Comm=1、Route=0、Comp=0，Route/Comp 仅显式 no-op；47/47 checks 通过。仍为 untrained CPU/non-locked evidence。

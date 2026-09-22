@@ -1,0 +1,87 @@
+{
+  "full_audit_local_only": true,
+  "source_file": "gradient_audit.json",
+  "summary": {
+    "comm_future_posterior": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 1.9245710372924805,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "comm_prior": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.8147237300872803,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "csi_decoder": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.571153461933136,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "csi_target_encoder": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.8610166311264038,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "encoder": {
+      "all_finite": true,
+      "all_nonzero": false,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 2.8554656505584717,
+      "nonzero_count": 1812,
+      "parameter_count": 2184
+    },
+    "motion_target_encoder": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.3223111927509308,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "phy_future_posterior": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 2.492208480834961,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "phy_prior": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.8432369232177734,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "vehicle_decoder": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.021960020065307617,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    }
+  }
+}

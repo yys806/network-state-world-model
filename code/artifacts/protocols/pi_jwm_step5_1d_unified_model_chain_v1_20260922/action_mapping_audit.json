@@ -1,0 +1,298 @@
+[
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step2.4-real-communication-seed0::anchor-0001"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step2.4-real-communication-seed0::anchor-0001"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step2.4-real-communication-seed0::anchor-0002"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step2.4-real-communication-seed0::anchor-0002"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step2.4-real-communication-seed0::anchor-0003"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step2.4-real-communication-seed0::anchor-0003"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step2.4-real-communication-seed0::anchor-0004"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step2.4-real-communication-seed0::anchor-0004"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed1::anchor-0001"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed1::anchor-0001"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed1::anchor-0002"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed1::anchor-0002"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed1::anchor-0003"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed1::anchor-0003"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed1::anchor-0004"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed1::anchor-0004"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [
+        {
+          "rb_indices": [
+            0
+          ],
+          "relation_index": 26,
+          "task_index": 0
+        }
+      ],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed2::anchor-0001"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed2::anchor-0001"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed2::anchor-0002"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed2::anchor-0002"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed2::anchor-0003"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed2::anchor-0003"
+  },
+  {
+    "horizon": 0,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed2::anchor-0004"
+  },
+  {
+    "horizon": 1,
+    "mapping": {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    "sample_id": "step3.2-dev-seed2::anchor-0004"
+  }
+]

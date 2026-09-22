@@ -2,7 +2,7 @@
 
 ## STEP 5.1D 当前状态（2026-09-22）
 
-Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B Encoder→STEP 4.4 state/recursive h→Prior/Posterior→Decoder→Loss/KL/Metric；receipt 42/42。模型仍未训练，training/gpu/formal_dataset/locked_test/performance_claim 均为 false，STEP 5.2 未开始。
+Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B Encoder→STEP 4.4 state/recursive h→Prior/Posterior→Decoder→Loss/KL/Metric；STEP 5.1D-PATCH receipt 47/47。模型仍未训练，training/gpu/formal_dataset/locked_test/performance_claim 均为 false，STEP 5.2 未开始。
 
 更新时间：2026-09-22
 
@@ -16,23 +16,23 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前 Step：`STEP 5.1C — Unified Development Training Bundle & Support Alignment`。12 个 5.1A window 已通过真实 4.2A→4.2C-B→4.2C-C feasibility，并生成 additive unified bundle；4.3A/4.3B/4.4 重建与 paired 5.1B receipt 尚未完成。训练、GPU、formal dataset、planner、locked-test 仍未开始。不得进入 STEP 5.2。
+- 当前状态：`STEP 5.1D = COMPLETE / FROZEN FOR CPU DEVELOPMENT INTEGRATION`；本次 Evidence / Context / Action-Coverage Closure 已完成。下一步只能在研究者另行授权后进入 `STEP 5.2`。训练、GPU、formal dataset、planner、locked-test 仍未开始。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - STEP 4.4-PATCH3 已在源码中显式区分 Return requirement 的 known/unknown：冻结 current-side 不含 `Task.return_size`，所以 no slot 是 unknown，不是 no-return；unknown 或 known-required/no-slot 都不能错误 final-complete，但 side-state 可区分两者。DAG 只按有效前驱动态释放，terminal Flow completion 同步 remaining/presence/carrying/status。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
-- Definition 05 v1 已决定：deterministic mean decoder；Motion/CSI family-wise mask-MSE；Phy/Comm analytic KL + warm-up/free-bits；overshooting OFF；Future Target 仅进入 family-specific training posterior；joint training；prior-only validation；checkpoint=`argmin L_Val`；逐 horizon raw-unit Motion/CSI MAE/RMSE。STEP 5.1A 已补齐 target contract，但 Loss/Posterior/Metric/Training 尚未实现，禁止开始训练。
-- 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder、Structured RSSM World Model Contract 已验收；5.1C additive bundle 已将 12 个 paired window 的 support 对齐为 observed `10/74`，并复用既有 normalization。4.3A/4.3B/4.4 尚未从该 bundle 重建，5.1B paired receipt 尚未完成。训练实现仍未开始。Physical topology、Encoder/World Model 参数仍是 development-only。
+- Definition 05 v1 decisions 已冻结：deterministic mean decoder；Motion/CSI family-wise mask-MSE；Phy/Comm analytic KL + warm-up/free-bits；overshooting OFF；Future Target 仅进入 family-specific training posterior；joint training；prior-only validation；checkpoint=`argmin L_Val`；逐 horizon raw-unit Motion/CSI MAE/RMSE。STEP 5.1A target、5.1B primitives/paired integration、5.1C development bundle 和 5.1D CPU chain 均已有对应证据；Training Loop 尚未开始。
+- 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder、Structured RSSM World Model、5.1B loss/KL/metric primitives 已验收；5.1C additive bundle 将 12 个 paired window 的 support 对齐为 observed `10/74`，5.1D 从同一 bundle 完成 graph/encoder/world-model paired CPU integration。Physical topology、Encoder/World Model 参数仍是 development-only，模型权重未训练。
 - 审计结论：时间因果、稳定 ID/index、mask/split、typed graph 与 Definition 03 encoder 已落地；`Z_t^{PI,L_g}→xi_t^Lat`、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环仍需后续授权与实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；本 Step `training=false`、`gpu=false`。
 
 ## 当前最重要问题
 
-当前实现不能按模块名称或旧测试外推性能。STEP 4.4 已把 `Z_t^{PI,L_g}` 接入当前定义的结构化 latent 和未训练 prior rollout，但尚无 Loss、优化、训练、校准或预测精度证据；planner 真实反馈也未实现。
+当前实现不能按模块名称或旧测试外推性能。STEP 4.4 已把 `Z_t^{PI,L_g}` 接入当前定义的结构化 latent 和未训练 prior rollout，5.1D 已有 CPU Loss/KL/Metric integration evidence，但尚无 optimizer、训练、校准或预测精度证据；planner 真实反馈也未实现。
 
 ## 单一科研下一步
 
-唯一下一动作是从 unified bundle 重建 4.3A/4.3B/4.4 并运行逐 sample paired 5.1B receipt；不得进入 STEP 5.2，不启动 GPU，不访问 `locked_test`。
+唯一建议下一动作是另行授权 `STEP 5.2 — Training Loop / Curriculum / Joint Training Implementation`；本轮不自动执行，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 
@@ -81,11 +81,11 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 
 - Unified bundle 对 12 个 paired windows 完成 slot-wise Physical/Communication identity proof；统一容量为 `max_entity=10`、`max_comm_relation=74`，no-prefix/pairing crop 机器检查通过。
 - Flow normalization 新 stats 只从 8 个 unified `dev_train` samples 的 History 拟合；4 个 `dev_validation` samples 排除，Future Target 未参与 fit；旧 5-sample stats 仅保留为历史 provenance。
-- receipt、lineage audit、tensor contract、deterministic rebuild 和 serialize/reload 通过；仍为 CPU/non-locked development evidence，4.3A/4.3B/4.4 unified rebuild 与 paired 5.1B acceptance 尚未开始，STEP 5.2 禁止进入。
+- receipt、exact upstream train lineage、runtime prior-target isolation、tensor contract、deterministic rebuild 和 serialize/reload 通过；仍为 CPU/non-locked development evidence。Route/Comp non-empty coverage 在真实 12-sample bundle 中均为 0，只验证 explicit no-op；这是未来 formal training/data coverage gate，不是完整四动作族训练证据。
 
 ## Freeze chain（2026-09-20 current）
 
 - Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.1 mapping、STEP 4.2A existing-source input extension、STEP 4.2C-B Raw Flow、STEP 4.2C-C Flow Sample/Tensor、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已冻结。
 - Causal boundary: future task schedule is internal metadata only; canonical acceleration is backward speed difference with an explicit missing-history mask.
 - Current boundary: Physical topology 的 `radius_knn/radius=1000m/k=2` 仅是 deterministic development config，`research_frozen=false`；Return multi-hop、same-destination reroute runtime 与 formal capacities 仍未冻结。
-- Boundary: Graph Encoder 与 STEP 4.4 World Model Contract 已 COMPLETE / FROZEN；Definition 05 decisions FROZEN，但 implementation NOT STARTED。`training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`。
+- Boundary: Definition 05 decisions FROZEN；5.1A COMPLETE/FROZEN，5.1B COMPLETE/FROZEN FOR CPU DEVELOPMENT PRIMITIVES + PAIRED INTEGRATION，5.1C COMPLETE/FROZEN FOR DEVELOPMENT，5.1D COMPLETE/FROZEN FOR CPU DEVELOPMENT INTEGRATION。`training=false`、`optimizer_step=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`、`performance_claim=false`。

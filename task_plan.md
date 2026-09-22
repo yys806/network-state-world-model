@@ -7,6 +7,16 @@
 - Boundary: training/optimizer/GPU/formal dataset/locked_test/performance claim/Planner/STEP 5.2 均未开始。
 - Single next action: 研究者审阅并另行授权 STEP 5.2；本任务停止。
 
+# 2026-09-22 STEP 5.1D-PATCH — Evidence / Context / Action-Coverage Closure
+
+- [x] 将 receipt、manifest、pairing/identity/action audits、gradient/recursive/metric summaries 纳入可追踪 GitHub evidence。
+- [x] 证明 unified 8 个 dev_train windows 与 4.2A upstream normalized samples 的 exact lineage。
+- [x] 通过真实 runtime prior-target isolation 与 posterior sensitivity negative test，修正 executed/forbidden scope 语义。
+- [x] 明确真实 coverage：Mobility=48、Comm=1、Route=0、Comp=0；Route/Comp 仅 explicit no-op。
+- [x] 更新 implementation record、Tracker、AI_CONTEXT、findings/progress，并完成 focused/regression/index/diff/Git 验证。
+- Boundary: training/optimizer/GPU/formal dataset/locked_test/performance claim/Planner/STEP 5.2 均未开始。
+- Single next action: 研究者另行授权 STEP 5.2；本任务停止。
+
 # 2026-09-21 STEP 5.1A-PATCH — Multi-Horizon Motion Semantics & Stable Slot Alignment Fix
 
 - [x] Confirm `main == origin/main == 7ea9e4bed621e6d9e201ed4fe9175c26ca2c2252`, clean initial worktree, and reproduce both reported defects in current source.

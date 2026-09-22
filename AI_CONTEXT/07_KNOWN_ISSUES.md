@@ -2,11 +2,11 @@
 
 Source of truth：本文件是入口；具体事实必须回到列出的代码、配置、测试或 artifact。
 
-## STEP 5.1A-PATCH 已修复初版语义/槽位缺陷，仍未进入模型
+## STEP 5.1A/5.1D target boundary
 
 - 初版 STEP 5.1A 的 horizon 2+ Motion anchor 与 future-row-order Motion alignment 已确认错误；旧 COMPLETE/FROZEN 证据被 PATCH 取代。当前代码和 non-locked development receipt 已覆盖 local-step semantics、current physical slots 和 current model CSI relation slots，PATCH target contract 已重新冻结。
-- 当前实现仍只生成 additive target namespace，STEP 4.3B encoder/STEP 4.4 world model 尚未读取这些 target。
-- Loss、posterior target encoder、KL、metric、optimizer、training、GPU、planner 和 `locked_test` 仍未开始；artifact 不是正式 Dataset 或性能证据。
+- Future Target 保持 additive namespace；5.1D 只在 target encoder/posterior/decoder/loss 路径读取它，STEP 4.3B encoder 和 STEP 4.4 current prior 不读取 target。
+- Loss/posterior/KL/metric 已有 CPU paired integration evidence；optimizer、Training Loop、GPU、planner 和 `locked_test` 仍未开始，artifact 不是正式 Dataset 或性能证据。
 
 ## Step 2.4 raw boundary observations
 
@@ -20,11 +20,11 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 ## 1. 新定义仅部分实现
 
 - Documented Intent：最新 `00–06` 要求严格 Physical/Information 双图、Route/Comm/Comp/UAV 四类动作、主要面向 Physical/Communication 未知动态的 RSSM、逐步学习—规则—动态图闭环和真实反馈重规划。
-- Actual Implementation：STEP 4.3A 已实现严格 typed graph，STEP 4.3B 已实现 Definition 03 encoder 与 aligned `Z_t^{PI,L_g}`；旧模型代码仍使用混合语义 `physical_edge`，尚未由新的 World Model layout、loss、训练和 planner 接管。
+- Actual Implementation：STEP 4.3A 已实现严格 typed graph，STEP 4.3B 已实现 Definition 03 encoder 与 aligned `Z_t^{PI,L_g}`，STEP 4.4 与 5.1D 已接入新的 World Model/loss CPU path；旧模型代码仍使用混合语义 `physical_edge`，不属于当前新链路。Training Loop 和 planner 尚未接管。
 - Evidence：`docs/PIJWM_IMPLEMENTATION_TRACKER.md`、`docs/implementation_records/STEP_01_AUDIT.md`、`STEP_01_DATA_GRAPH_AUDIT.md`。
 - Affected Files：旧 tensor/model/loss/training/planner、AI_CONTEXT 旧 P4 描述和旧 checkpoint/result。
 - Conflict：STEP 4.3A builder acceptance 只能证明 current graph representation，不能证明 Graph Encoder、World Model 或完整新定义已经实现；旧接口、测试或两个 seed 验收也不能补足该证据。
-- Status：Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.3A builder 与 STEP 4.3B encoder 已完成并冻结；World Model、Loss、Planner 与 Training 等待后续授权。
+- Status：Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.3A builder、STEP 4.3B encoder、STEP 4.4 World Model、5.1B primitives/paired integration 与 5.1D CPU closure 已完成并冻结；Training Loop、Planner 与正式性能仍等待后续授权。
 
 ## 2. 研究边界仍需决定
 
@@ -111,7 +111,7 @@ Unverified：没有代码、config、experiment 或可读 audit 支持的问题�
 - STEP 3.1R 已关闭原 DAG source 判断错误：observer 已提供真实 DAG rows，Raw `_capture()` 已接线；当前样本过滤两端不在 anchor input task namespace 的 future-only edges。正式 batch/split preprocessing、数据规模和模型输入选择仍未验收。
 - STEP 3.1F-PATCH 已修正 Future Action 的 anchor-only 重编号：anchor visibility 与 History-union numeric index 已分离，validator 和 disappearing-object fixture 已覆盖。4 个非 locked Raw artifact 的 18 个窗口扫描暂未发现 unresolved future reference；该短样本观察不能代替正式 dataset 可用率；未来对象到达的建模方案仍未决定。
 - STEP 4.2C-C-PATCH 当时已解决 Flow Sample/Tensor 贯穿与 normalization/semantic completeness；其“Graph Builder Contract 未冻结”边界随后由 STEP 4.3A 关闭。Return multi-hop、same-destination partial-hop reroute runtime 与 formal capacities 仍未冻结；4.2C-C artifact 本身仍只支持 Raw→Sample→Tensor 合同。
-- STEP 4.3A/4.3B/4.4 已冻结 typed Graph Builder、Encoder 与 untrained World Model Contract，但 Physical topology mode/radius/k 仍只是 development config；Return multi-hop、same-destination reroute runtime 和 formal graph capacities 仍未获得更强证据。Loss/Training 尚未实现，World Model 性能尚未验证。
+- STEP 4.3A/4.3B/4.4 已冻结 typed Graph Builder、Encoder 与 untrained World Model Contract，但 Physical topology mode/radius/k 仍只是 development config；Return multi-hop、same-destination reroute runtime 和 formal graph capacities 仍未获得更强证据。5.1D 已有 CPU loss/KL/metric integration evidence，但 Training Loop、World Model 性能和 formal acceptance 尚未验证。
 
 ## 2026-09-19
 
@@ -127,22 +127,21 @@ STEP 3.2-PATCH has finalized machine-readable Dataset isolation evidence for the
 The previous outage blocker is resolved: outage is an independent known stochastic event, and learned service residual is closed. STEP 4.4-PATCH3 is COMPLETE / FROZEN. Frozen current-side input cannot determine Return requirement when no typed Return slot exists; the adapter preserves this as unknown and blocks false final completion. Future-only Return Flow birth remains explicitly unsupported because v1 cannot create new object slots. Definition 05 must mask, exclude, or classify windows crossing that boundary. Model accuracy, posterior/prior training loss, KL/overshooting, calibration, formal capacities, Planner behavior, and performance remain unverified. Physical topology parameters remain development-only; Return multi-hop and same-destination partial-hop reroute retain their prior evidence limits.
 # STEP 5.1B-PATCH Definition 05 implementation boundary（2026-09-22）
 
-- Decisions are frozen and the 5.1B-PATCH CPU Loss/Posterior/Metric integration receipt passes; the patch is not yet COMPLETE/FROZEN and training runtime is still not implemented.
-- STEP 4.2A future position exists only as raw sample value; it is not normalized or collated into target tensor. `target_entity_features` currently carries speed only.
-- Future per-RB CSI is absent from current target sample/tensor. History CSI and future communication service cannot substitute.
-- STEP 4.4 real state uses raw position while Comm CSI follows the normalized graph path; the patch tests the normalized-loss/raw-rule bridge. Target support is 10/74 while the development model support is 8/44, so full support alignment remains open.
+- Decisions are frozen and the 5.1B-PATCH CPU Loss/Posterior/Metric primitives are COMPLETE/FROZEN FOR CPU DEVELOPMENT PRIMITIVES + PAIRED INTEGRATION through 5.1D.
+- 5.1A target tensor now carries normalized Motion and future per-RB CSI with explicit masks; 5.1D consumes them only in target encoder/posterior/loss.
+- STEP 4.4 real state uses raw position while Comm CSI follows the normalized graph path; the paired receipt tests the normalized-loss/raw-rule bridge. Unified support is 10/74.
 - Historical loss/runner/checkpoints are incompatible as complete implementations because they use old NLL/downstream losses/KL balancing/overshooting/staged freezing/P4 selection semantics.
 - Therefore training is NO-START, not a GPU blocker. Receipt evidence remains development-only: `training=false`, `optimizer_step=false`, `gpu=false`, `formal_dataset=false`, `locked_test_accessed=false`, `performance_claim=false`.
 
 # STEP 5.1C-PATCH remaining boundary（2026-09-22）
 
-- Unified identity and normalization lineage is closed for the 12 non-locked development windows; it does not prove rebuilt 4.3A/4.3B/4.4 execution.
-- The historical 8/44 model artifacts cannot be paired with the 10/74 target contract; only the new unified bundle is eligible for the next separately authorized rebuild.
+- Unified identity and normalization lineage is closed for the 12 non-locked development windows, and 5.1D proves rebuilt 4.3A/4.3B/4.4 execution on that bundle.
+- Historical 8/44 model artifacts remain incompatible with the 10/74 target contract; the new unified bundle is the only paired development evidence.
 # 2026-09-22 STEP 5.1C lineage alignment
 
 - Historical model artifacts and STEP 5.1A targets came from different development lineages (5 vs 12 samples; 8/44 vs 10/74 support). The old 5.1B receipt reused one carrier and prefix-truncated targets; that receipt is not acceptable for closure.
 - All 12 target windows now pass the real 4.2A graph amendment and 4.2C-B/C Flow path. Additive unified bundle: `code/artifacts/protocols/pi_jwm_step5_1c_unified_development_bundle_v1_20260922/`.
-- Remaining issue: 4.3A/4.3B/4.4 must be rebuilt from the unified bundle and 5.1B must use paired model/target samples. Until then STEP 5.1C is in progress and STEP 5.2 is prohibited.
+- Remaining issue: unified 4.3A/4.3B/4.4 paired rebuild and 5.1B model/target pairing are now closed by 5.1D-PATCH. Exact upstream train lineage and runtime prior-target isolation passed; the evidence remains CPU/non-locked and does not authorize training automatically.
 # STEP 5.1D boundary（2026-09-22）
 
-Unified chain 已闭合为 untrained CPU development evidence。Training Loop/optimizer、CPU tiny-data overfit、GPU/formal Dataset、baseline、Planner 和 performance claim 仍未实现；下一步必须单独授权 STEP 5.2。
+Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample bundle 的 Route/Comp non-empty coverage 均为 0，仅 explicit no-op path 已验证；这保留为未来 formal training/data coverage gate。Training Loop/optimizer、CPU tiny-data overfit、GPU/formal Dataset、baseline、Planner 和 performance claim 仍未实现；下一步必须单独授权 STEP 5.2。

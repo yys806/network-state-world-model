@@ -1075,3 +1075,9 @@
 - 完整 Flow Tensor package 需要显式保留 sample IDs 和 upstream base Step 3.3 checks；已补齐并加 roundtrip test。
 - CPU evidence seed 固定为 5101 后，两次独立 rebuild 的全部输出 SHA-256 相同。
 - 结论仅为 non-locked CPU development integration，不是训练或性能结论。
+# 2026-09-22 STEP 5.1D-PATCH findings
+
+- `normalized_samples.json` 提供了 upstream 4.2A 逐窗口 metadata；与 unified bundle 的 8 个 dev_train sample_id/trajectory_id/anchor/split 顺序完全一致，未重新拟合 stats。
+- 改变真实 paired target 后，actual `phy_prior`/`comm_prior` 的 mean 和 log_std 保持完全一致，而 posterior 改变；这是 runtime isolation，不只是 contract 字段检查。
+- 旧 receipt 的全 false scope 会误导；现拆为 executed scope 与 forbidden scope，passed 只由 required checks 和 forbidden scope 共同决定。
+- 真实 12-sample action coverage 中 Route/Comp non-empty 均为 0；不能外推为完整四动作族正式训练覆盖。

@@ -1,0 +1,11 @@
+{
+  "horizons_per_sample": 2,
+  "path_counts": {
+    "csi_decoder_calls": 24,
+    "motion_decoder_calls": 24,
+    "posterior_horizons": 24,
+    "prior_steps": 24
+  },
+  "sample_count": 12,
+  "source_file": "recursive_horizon_audit.json"
+}

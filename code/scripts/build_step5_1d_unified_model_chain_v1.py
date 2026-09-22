@@ -38,6 +38,8 @@ ROOT = Path(__file__).resolve().parents[2]
 BUNDLE = ROOT / "code/artifacts/protocols/pi_jwm_step5_1c_unified_development_bundle_v1_20260922"
 TARGET = ROOT / "code/artifacts/protocols/pi_jwm_step5_1a_motion_csi_target_contract_v1_20260921"
 UPSTREAM_STATS = ROOT / "code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/train_normalization_stats.json"
+UPSTREAM_NORMALIZED_SAMPLES = ROOT / "code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/normalized_samples.json"
+UPSTREAM_BATCH = ROOT / "code/artifacts/protocols/pi_jwm_step4_2a_graph_input_extension_v1_20260920/batch.json"
 BASE_FLOW_PACKAGE = ROOT / "code/artifacts/protocols/pi_jwm_step4_2c_c_flow_sample_tensor_v1_20260920/flow_tensor.npz"
 OUT = ROOT / "code/artifacts/protocols/pi_jwm_step5_1d_unified_model_chain_v1_20260922"
 
@@ -201,6 +203,15 @@ def _state_signature(state: dict[str, torch.Tensor]) -> str:
     return digest.hexdigest()
 
 
+def _lineage_key(metadata: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "sample_id": metadata["sample_id"],
+        "trajectory_id": metadata["trajectory_id"],
+        "anchor_decision_frame": int(metadata["anchor_decision_frame"]),
+        "split": metadata.get("split", metadata.get("source_split")),
+    }
+
+
 def _identity_audit(sample: dict[str, Any], target: dict[str, Any], tensor: dict[str, Any], graph: dict[str, Any], index: int) -> dict[str, Any]:
     static = sample["static"]; history = sample["history"][-1]
     physical_inverse = {int(slot): str(entity_id) for entity_id, slot in static["input_entity_index"]["physical"].items()}
@@ -228,6 +239,42 @@ def main() -> int:
     ap = argparse.ArgumentParser(); ap.add_argument("--output-dir", type=Path, default=OUT); ap.add_argument("--beta-kl", type=float, default=1.0); args = ap.parse_args(); args.output_dir.mkdir(parents=True, exist_ok=True)
     np.random.seed(5101); torch.manual_seed(5101)
     samples = json.loads((BUNDLE / "unified_flow_samples.json").read_text(encoding="utf-8")); targets = json.loads((TARGET / "extended_samples.json").read_text(encoding="utf-8"))
+    upstream_samples = json.loads(UPSTREAM_NORMALIZED_SAMPLES.read_text(encoding="utf-8")); upstream_batch = json.loads(UPSTREAM_BATCH.read_text(encoding="utf-8"))
+    unified_flow_stats = json.loads((BUNDLE / "unified_flow_train_normalization_stats.json").read_text(encoding="utf-8")); upstream_stats = json.loads(UPSTREAM_STATS.read_text(encoding="utf-8"))
+    unified_train_lineage = [_lineage_key(s["metadata"]) for s in samples if s["metadata"].get("split") == "dev_train"]
+    upstream_train_lineage = [_lineage_key(s["metadata"]) for s in upstream_samples if s["metadata"].get("split") == "dev_train"]
+    upstream_batch_train_lineage = [_lineage_key(s["metadata"]) for s in upstream_batch.get("samples", []) if s.get("metadata", {}).get("split") == "dev_train"]
+    upstream_batch_train_trajectories = sorted({row.get("trajectory_id") for row in upstream_batch.get("provenance", []) if row.get("split") == "dev_train"})
+    unified_stats_source_sample_ids = list(unified_flow_stats.get("source_sample_ids", []))
+    unified_stats_source_trajectory_ids = sorted(unified_flow_stats.get("source_trajectory_ids", []))
+    upstream_stats_source_sample_ids = upstream_stats.get("source_sample_ids")
+    upstream_stats_source_ids_recovered = upstream_stats_source_sample_ids if upstream_stats_source_sample_ids is not None else [row["sample_id"] for row in upstream_batch_train_lineage]
+    upstream_stats_source_ids_mode = "explicit_source_sample_ids" if upstream_stats_source_sample_ids is not None else "recovered_from_frozen_4_2a_batch"
+    unified_stats_lineage_exact = unified_flow_stats.get("source_split") == "dev_train" and int(unified_flow_stats.get("fit_sample_count", -1)) == len(unified_train_lineage) and unified_stats_source_sample_ids == [row["sample_id"] for row in unified_train_lineage] and unified_stats_source_trajectory_ids == sorted({row["trajectory_id"] for row in unified_train_lineage})
+    upstream_stats_lineage_exact = upstream_stats.get("source_split") == "dev_train" and upstream_stats_source_ids_recovered == [row["sample_id"] for row in upstream_train_lineage] and upstream_batch_train_lineage == upstream_train_lineage and upstream_batch_train_trajectories == sorted({row["trajectory_id"] for row in upstream_train_lineage})
+    normalization_lineage_audit = {
+        "unified_train_lineage": unified_train_lineage,
+        "upstream_train_lineage": upstream_train_lineage,
+        "upstream_batch_train_lineage": upstream_batch_train_lineage,
+        "unified_stats_source_sample_ids": unified_stats_source_sample_ids,
+        "unified_stats_source_trajectory_ids": unified_stats_source_trajectory_ids,
+        "upstream_stats_source_sample_ids": upstream_stats_source_sample_ids,
+        "upstream_stats_source_ids_recovered": upstream_stats_source_ids_recovered,
+        "upstream_stats_source_ids_mode": upstream_stats_source_ids_mode,
+        "upstream_batch_train_trajectories": upstream_batch_train_trajectories,
+        "unified_train_count": len(unified_train_lineage),
+        "upstream_train_count": len(upstream_train_lineage),
+        "exact_sample_order": unified_train_lineage == upstream_train_lineage,
+        "unified_stats_source_lineage_exact": unified_stats_lineage_exact,
+        "upstream_stats_source_lineage_exact": upstream_stats_lineage_exact,
+        "exact_stats_source_lineage": unified_stats_lineage_exact and upstream_stats_lineage_exact,
+        "evidence": {
+            "unified_bundle": str(BUNDLE / "unified_flow_train_normalization_stats.json"),
+            "upstream_normalized_samples": str(UPSTREAM_NORMALIZED_SAMPLES),
+            "upstream_batch": str(UPSTREAM_BATCH),
+            "upstream_stats": str(UPSTREAM_STATS),
+        },
+    }
     base_package = load_flow_tensor_batch(BASE_FLOW_PACKAGE)
     tensor = load_flow_tensor_batch(BUNDLE / "unified_flow_tensor.npz"); tensor.update({"contract": json.loads((BUNDLE / "tensor_contract.json").read_text()), "sample_ids": [s["metadata"]["sample_id"] for s in samples], "sample_metadata": [s["metadata"] for s in samples], "sample_static": [s["static"] for s in samples], "base_step3_3_validation_checks": base_package["base_step3_3_validation_checks"], "flow_normalization_stats": json.loads((BUNDLE / "unified_flow_train_normalization_stats.json").read_text())})
     if not tensor["base_step3_3_validation_checks"].get("passed", False):
@@ -243,7 +290,7 @@ def main() -> int:
     encoder_path = args.output_dir / "unified_encoder_package.pt"; save_encoder_package(encoder, encoder_path); encoder_loaded = load_encoder_package(encoder_path, tensor["contract"], graph["contract"]); encoder_loaded.eval(); reload_zpi = encoder_loaded(_torch_tree(tensor), _torch_tree(graph_loaded)); encoder_roundtrip = all(torch.equal(zpi_all[section][field], reload_zpi[section][field]) for section, field in (("physical", "node_latent"), ("information", "agent_latent"), ("information", "task_latent"), ("information", "comm_relation_latent"), ("information", "flow_relation_latent")))
     model = StructuredRSSMWorldModel(StructuredRSSMConfig()); teacher = FuturePosterior(Step5_1BConfig(target_dim=4, csi_dim=50, hidden_dim=model.config.d_h, latent_dim=model.config.d_z, d_h=model.config.d_h, d_z=model.config.d_z, d_encoder=model.config.d_encoder)); target_encoder = TargetEncoder(Step5_1BConfig(target_dim=4, csi_dim=50, hidden_dim=model.config.d_h, latent_dim=model.config.d_z, d_h=model.config.d_h, d_z=model.config.d_z, d_encoder=model.config.d_encoder))
     target_np = np.load(TARGET / "tensor.npz"); target_contract = json.loads(str(target_np["__contract__"]))["contract"]; target_norm = target_contract["normalization_parameters"]; target_t = {k: torch.from_numpy(target_np[k].astype("float32" if target_np[k].dtype != np.bool_ else "bool")) for k in target_np.files if k.startswith("target_")}
-    all_grads, pair_rows, horizon_contexts = [], [], []; action_audit = []; losses = []; pred_losses = []; kl_losses = []; metric_rows = []; gradient_records = []; identity_audit = []; state_signatures = []; recursion_trace = []; unsupported_total = 0; unresolved_total = 0; fixed_support_total = 0; prior_steps = 0; posterior_horizons = 0; motion_decoder_calls = 0; csi_decoder_calls = 0; temporal_isolation = True; mask_as_evidence_runtime = True
+    all_grads, pair_rows, horizon_contexts = [], [], []; action_audit = []; losses = []; pred_losses = []; kl_losses = []; metric_rows = []; gradient_records = []; identity_audit = []; state_signatures = []; recursion_trace = []; unsupported_total = 0; unresolved_total = 0; fixed_support_total = 0; prior_steps = 0; posterior_horizons = 0; motion_decoder_calls = 0; csi_decoder_calls = 0; temporal_isolation = True; prior_target_runtime_isolation = True; posterior_target_runtime_sensitivity = True; mask_as_evidence_runtime = True
     for i, sample in enumerate(samples):
         state, dyn = build_state(tensor, graph, i); identity_audit.append(_identity_audit(sample, targets[i], tensor, graph, i)); state_signatures.append(_state_signature(state)); latent = model.initialize_latent(_slice_zpi(zpi_all, i), state); step_rows = []
         unsupported_total += sum(int(frame.get("future_target_side_metadata", {}).get("unsupported_count", 0)) for frame in targets[i].get("target", []))
@@ -260,6 +307,21 @@ def main() -> int:
                 q_mut = teacher(h_phy, h_comm, target_encoder.motion(motion_mut, motion_m), target_encoder.csi(csi_mut, csi_m))
             temporal_isolation = bool(torch.equal(q["physical"].mean[:, 0], q_mut["physical"].mean[:, 0]) and torch.equal(q["communication"].mean[:, 0], q_mut["communication"].mean[:, 0]))
         p_phy = torch.stack([r[0]["prior"]["physical"]["mean"][0] for r in step_rows], 0).unsqueeze(0); p_phy_ls = torch.stack([r[0]["prior"]["physical"]["log_std"][0] for r in step_rows], 0).unsqueeze(0); p_comm = torch.stack([r[0]["prior"]["communication"]["mean"][0] for r in step_rows], 0).unsqueeze(0); p_comm_ls = torch.stack([r[0]["prior"]["communication"]["log_std"][0] for r in step_rows], 0).unsqueeze(0)
+        if i == 0:
+            motion_mut, csi_mut = motion_t.clone(), csi_t.clone()
+            motion_mut[:, 0] = motion_mut[:, 0] + motion_m[:, 0].to(motion_mut.dtype)
+            csi_mut[:, 0] = csi_mut[:, 0] + csi_m[:, 0].to(csi_mut.dtype)
+            with torch.no_grad():
+                p_phy_mut = model.phy_prior(h_phy); p_comm_mut = model.comm_prior(h_comm)
+                q_target_mut = teacher(h_phy, h_comm, target_encoder.motion(motion_mut, motion_m), target_encoder.csi(csi_mut, csi_m))
+            prior_target_runtime_isolation = bool(
+                torch.equal(p_phy, p_phy_mut["mean"]) and torch.equal(p_phy_ls, p_phy_mut["log_std"])
+                and torch.equal(p_comm, p_comm_mut["mean"]) and torch.equal(p_comm_ls, p_comm_mut["log_std"])
+            )
+            posterior_target_runtime_sensitivity = bool(
+                not torch.equal(q["physical"].mean, q_target_mut["physical"].mean)
+                or not torch.equal(q["communication"].mean, q_target_mut["communication"].mean)
+            )
         pred_m, pred_c = [], []
         for h, r in enumerate(step_rows): pred_m.append(model.vehicle_decoder(torch.cat((r[0]["h"]["physical"], q["physical"].mean[:, h]), -1))); pred_c.append(model.csi_decoder(torch.cat((r[0]["h"]["communication"], q["communication"].mean[:, h]), -1))); motion_decoder_calls += 1; csi_decoder_calls += 1
         pred_m_raw, pred_c_raw = torch.stack(pred_m, 1), torch.stack(pred_c, 1); pred_m = _normalize_motion_prediction(pred_m_raw, target_norm); pred_c = _normalize_csi_prediction(pred_c_raw, target_norm); mot = family_horizon_mse(pred_m, motion_t, motion_m); cs = family_horizon_mse(pred_c, csi_t, csi_m); elig_m = motion_m.any(-1); elig_c = csi_m.any(-1) & torch.stack([r[1]["comm_presence"][0] & r[1]["comm_validity"][0] & r[1]["comm_wireless_mask"][0] for r in step_rows], 0)[None]; klp = diagonal_gaussian_kl(q["physical"].mean, q["physical"].log_std, p_phy, p_phy_ls, elig_m, free_bits=.1); klc = diagonal_gaussian_kl(q["communication"].mean, q["communication"].log_std, p_comm, p_comm_ls, elig_c, free_bits=.1); pred_loss = .5 * mot["loss"].mean() + .5 * cs["loss"].mean(); kl_loss = klp.adjusted + klc.adjusted; probe = pred_loss + float(args.beta_kl) * kl_loss; pred_losses.append(float(pred_loss.detach())); kl_losses.append(float(kl_loss.detach())); params = [(f"encoder::{name}", parameter) for name, parameter in encoder.named_parameters()] + [(f"phy_prior::{name}", parameter) for name, parameter in model.phy_prior.named_parameters()] + [(f"comm_prior::{name}", parameter) for name, parameter in model.comm_prior.named_parameters()] + [(f"phy_future_posterior::{name}", parameter) for name, parameter in teacher.phy_future_posterior.named_parameters()] + [(f"comm_future_posterior::{name}", parameter) for name, parameter in teacher.comm_future_posterior.named_parameters()] + [(f"motion_target_encoder::{name}", parameter) for name, parameter in target_encoder.motion.named_parameters()] + [(f"csi_target_encoder::{name}", parameter) for name, parameter in target_encoder.csi.named_parameters()] + [(f"vehicle_decoder::{name}", parameter) for name, parameter in model.vehicle_decoder.named_parameters()] + [(f"csi_decoder::{name}", parameter) for name, parameter in model.csi_decoder.named_parameters()]; grads = torch.autograd.grad(probe, [parameter for _, parameter in params], allow_unused=True, retain_graph=True); all_grads.extend(grads); gradient_records.extend({"name": name, "present": gradient is not None, "finite": bool(gradient is not None and torch.isfinite(gradient).all()), "norm": float(gradient.norm()) if gradient is not None else 0.0} for (name, _), gradient in zip(params, grads)); losses.append(float(probe.detach())); motion_metric_values = {key: value.detach().cpu().tolist() for key, value in motion_metrics(pred_m_raw.detach(), target_t["target_vehicle_motion_raw"][i:i+1], motion_m).items() if torch.is_tensor(value)}; motion_metric_values["units"] = ("m", "m", "m", "m/s"); csi_metric_values = {key: value.detach().cpu().tolist() for key, value in csi_metrics(pred_c_raw.detach(), target_t["target_comm_csi_raw"][i:i+1], csi_m).items() if torch.is_tensor(value)}; csi_metric_values["unit"] = "dB"; metric_rows.append({"sample_id": sample["metadata"]["sample_id"], "motion": motion_metric_values, "csi": csi_metric_values}); pair_rows.append({"sample_id": sample["metadata"]["sample_id"], "trajectory_id": sample["metadata"]["trajectory_id"], "anchor_decision_frame": sample["metadata"]["anchor_decision_frame"], "recursive_horizons": 2, "state_signature": state_signatures[-1], "target_sample_id": targets[i]["metadata"]["sample_id"], "target_trajectory_id": targets[i]["metadata"]["trajectory_id"], "target_anchor_decision_frame": targets[i]["metadata"]["anchor_decision_frame"], "future_frame_indices": sample["metadata"].get("future_frame_indices", sample["metadata"].get("future_action_frame_indices"))})
@@ -271,6 +333,14 @@ def main() -> int:
     grad_ok = bool(all_grads) and all(g is not None and torch.isfinite(g).all().item() for g in all_grads) and all(required_gradient_groups.values())
     source = Path(__file__).read_text(encoding="utf-8"); no_optimizer = not any(isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr == "step" for n in ast.walk(ast.parse(source)))
     action_counts = {"route": sum(1 for row in action_audit if row["mapping"].get("route")), "comm": sum(len(row["mapping"].get("comm", [])) for row in action_audit), "comp": sum(len(row["mapping"].get("comp", [])) for row in action_audit), "mobility": sum(row["mapping"]["mobility"] for row in action_audit)}
+    action_coverage = {
+        "action_contract_available": {"route": True, "comp": True, "comm": True, "mobility": True},
+        "route_nonempty_coverage": action_counts["route"], "comp_nonempty_coverage": action_counts["comp"],
+        "comm_nonempty_coverage": action_counts["comm"], "mobility_nonempty_coverage": action_counts["mobility"],
+        "route_explicit_noop_count": sum(bool(row["mapping"].get("route_explicit_noop")) for row in action_audit),
+        "comp_explicit_noop_count": sum(bool(row["mapping"].get("comp_explicit_noop")) for row in action_audit),
+        "real_development_coverage_observed": {"route": action_counts["route"], "comp": action_counts["comp"], "comm": action_counts["comm"], "mobility": action_counts["mobility"]},
+    }
     identity_ok = len(identity_audit) == 12 and all(all(row[key] for key in ("motion_slot_identity", "comm_relation_identity", "flow_slot_identity", "task_slot_identity")) for row in identity_audit)
     action_semantics_ok = len(action_audit) == 24 and all(row["mapping"].get("comp_explicit_noop", False) and row["mapping"].get("route_explicit_noop", False) for row in action_audit)
     path_checks = {"actual_prior": prior_steps == 24, "actual_posterior": posterior_horizons == 24, "actual_decoders": motion_decoder_calls == 24 and csi_decoder_calls == 24}
@@ -282,13 +352,28 @@ def main() -> int:
     mask_as_evidence = mask_as_evidence_runtime and all(int(row["motion"]["valid_count"][0][0]) >= 0 and int(row["csi"]["valid_count"][0][0]) >= 0 for row in metric_rows)
     raw_metric_units = len(metric_rows) == 12 and all(tuple(row["motion"]["units"]) == ("m", "m", "m", "m/s") and row["csi"]["unit"] == "dB" for row in metric_rows)
     required_gradient_checks = {f"gradient_{name}": value for name, value in required_gradient_groups.items()}
-    checks = {"tensor_package_roundtrip": tensor_roundtrip, "base_step3_3_validation_checks": bool(tensor["base_step3_3_validation_checks"].get("passed", False)), "sample_ids_roundtrip": tensor["sample_ids"] == [row["sample_id"] for row in pair_rows], "sample_count_12": len(samples) == 12, "physical_capacity_10": int(tensor["contract"]["max_entity"]) == 10, "comm_capacity_74": int(tensor["contract"]["max_comm_relation"]) == 74, "graph_roundtrip": graph_roundtrip, "graph_batch_12": int(graph["blocks"]["physical_nodes"]["presence"].shape[0]) == 12, "encoder_batch_12": int(zpi_all["physical"]["node_latent"].shape[0]) == 12, "encoder_reload_roundtrip": encoder_roundtrip, "encoder_target_isolation": graph["contract"]["target_namespace_consumed"] is False, "normalization_upstream_dev_train": stats["source_split"] == "dev_train", "normalization_target_contract": target_contract["normalization"] == "frozen_step4_3b_train_stats", "action_mapping_unique": all(not fam["missing"] for s in samples for a in s["future_action"] for fam in a.values()), "action_semantics_explicit_noop": action_semantics_ok, "identity_12": identity_ok, "paired_12": len(pair_rows) == 12 and all(r["sample_id"] == r["target_sample_id"] and r["trajectory_id"] == r["target_trajectory_id"] and r["anchor_decision_frame"] == r["target_anchor_decision_frame"] for r in pair_rows), "no_repeated_state_carrier": no_repeated_state_carrier, "no_hardcoded_sample_index": no_hardcoded_sample_index, "recursive_horizon_context": len(horizon_contexts) == 24 and len(recursion_trace) == 24, **path_checks, "prior_target_isolation": model.contract["future_target_consumed_by_prior"] is False, "mask_as_evidence": mask_as_evidence, "raw_metric_units": raw_metric_units, "gradient_probe": grad_ok, "finite_forward_backward": grad_ok, "no_optimizer_step": no_optimizer, "nonzero_signal": bool(losses) and all(np.isfinite(losses)), "deterministic_rules_have_no_learnable_parameters": not any("deterministic_transition" in name for name, _ in model.named_parameters())}
+    checks = {"tensor_package_roundtrip": tensor_roundtrip, "base_step3_3_validation_checks": bool(tensor["base_step3_3_validation_checks"].get("passed", False)), "sample_ids_roundtrip": tensor["sample_ids"] == [row["sample_id"] for row in pair_rows], "sample_count_12": len(samples) == 12, "physical_capacity_10": int(tensor["contract"]["max_entity"]) == 10, "comm_capacity_74": int(tensor["contract"]["max_comm_relation"]) == 74, "graph_roundtrip": graph_roundtrip, "graph_batch_12": int(graph["blocks"]["physical_nodes"]["presence"].shape[0]) == 12, "encoder_batch_12": int(zpi_all["physical"]["node_latent"].shape[0]) == 12, "encoder_reload_roundtrip": encoder_roundtrip, "encoder_target_isolation": graph["contract"]["target_namespace_consumed"] is False, "normalization_upstream_dev_train": stats["source_split"] == "dev_train", "upstream_normalization_exact_train_lineage": normalization_lineage_audit["exact_sample_order"] and normalization_lineage_audit["exact_stats_source_lineage"] and len(unified_train_lineage) == 8, "normalization_target_contract": target_contract["normalization"] == "frozen_step4_3b_train_stats", "action_mapping_unique": all(not fam["missing"] for s in samples for a in s["future_action"] for fam in a.values()), "action_semantics_explicit_noop": action_semantics_ok, "action_coverage_observed": action_coverage["route_nonempty_coverage"] == 0 and action_coverage["comp_nonempty_coverage"] == 0 and action_coverage["comm_nonempty_coverage"] == 1 and action_coverage["mobility_nonempty_coverage"] == 48, "identity_12": identity_ok, "paired_12": len(pair_rows) == 12 and all(r["sample_id"] == r["target_sample_id"] and r["trajectory_id"] == r["target_trajectory_id"] and r["anchor_decision_frame"] == r["target_anchor_decision_frame"] for r in pair_rows), "no_repeated_state_carrier": no_repeated_state_carrier, "no_hardcoded_sample_index": no_hardcoded_sample_index, "recursive_horizon_context": len(horizon_contexts) == 24 and len(recursion_trace) == 24, **path_checks, "prior_target_isolation": model.contract["future_target_consumed_by_prior"] is False, "prior_target_runtime_isolation": prior_target_runtime_isolation, "posterior_target_runtime_sensitivity": posterior_target_runtime_sensitivity, "mask_as_evidence": mask_as_evidence, "raw_metric_units": raw_metric_units, "gradient_probe": grad_ok, "finite_forward_backward": grad_ok, "no_optimizer_step": no_optimizer, "nonzero_signal": bool(losses) and all(np.isfinite(losses)), "deterministic_rules_have_no_learnable_parameters": not any("deterministic_transition" in name for name, _ in model.named_parameters())}
     checks.update(required_gradient_checks); checks["temporal_target_isolation"] = temporal_isolation; checks["mask_as_evidence"] = mask_as_evidence
-    tamper = dict(checks); tamper["paired_12"] = False; tamper_passed = bool(all(tamper.values())); checks["receipt_tamper_negative"] = not tamper_passed
-    scope = {"encoder": False, "gnn": False, "message_passing": False, "world_model": False, "loss": False, "planner": False, "training": False, "optimizer_step": False, "gpu": False, "formal_dataset": False, "locked_test_accessed": False, "locked_test": False, "performance_claim": False}
-    receipt = {"schema_version": "PI-JWM-Step-5.1D-Unified-Paired-Receipt-v1", "deterministic_seed": 5101, "passed": bool(all(checks.values()) and all(not v for v in scope.values())), "checks": checks, "scope": scope, "sample_count": 12, "capacities": {"max_entity": 10, "max_comm_relation": 74}, "action_counts": action_counts, "unsupported_count": unsupported_total, "unresolved_count": unresolved_total, "fixed_support_blocked_count": fixed_support_total, "loss_probe_mean": float(np.mean(losses)), "beta_kl": float(args.beta_kl), "gradient_summary": gradient_summary, "path_counts": {"prior_steps": prior_steps, "posterior_horizons": posterior_horizons, "motion_decoder_calls": motion_decoder_calls, "csi_decoder_calls": csi_decoder_calls}}
-    _write(args.output_dir / "sample_pairing_audit.json", pair_rows); _write(args.output_dir / "identity_audit.json", identity_audit); _write(args.output_dir / "recursive_horizon_audit.json", recursion_trace); _write(args.output_dir / "action_mapping_audit.json", action_audit); _write(args.output_dir / "metric_audit.json", metric_rows); _write(args.output_dir / "gradient_audit.json", {"summary": gradient_summary, "records": gradient_records}); _write(args.output_dir / "acceptance_receipt.json", receipt); _write(args.output_dir / "manifest.json", {"schema_version": "PI-JWM-Step-5.1D-Unified-Manifest-v1", "deterministic_seed": 5101, "files": {p.name: {"sha256": _sha(p), "bytes": p.stat().st_size} for p in args.output_dir.iterdir() if p.is_file() and p.name != "manifest.json"}, "scope": scope, "passed": receipt["passed"]})
-    print(json.dumps({"passed": receipt["passed"], "checks": checks, "scope": scope, "gradient_summary": gradient_summary}, sort_keys=True)); return 0 if receipt["passed"] else 1
+    executed_scope = {"encoder": True, "graph": True, "message_passing": True, "world_model": True, "posterior": True, "loss": True, "metric": True}
+    forbidden_scope = {"optimizer_step": False, "training": False, "gpu": False, "planner": False, "formal_dataset": False, "locked_test_accessed": False, "locked_test": False, "performance_claim": False}
+    provenance = {
+        "source_script": "code/scripts/build_step5_1d_unified_model_chain_v1.py",
+        "source_script_sha256": _sha(Path(__file__)),
+        "unified_bundle_manifest": str(BUNDLE / "manifest.json"),
+        "unified_bundle_manifest_sha256": _sha(BUNDLE / "manifest.json"),
+        "target_contract_npz": str(TARGET / "tensor.npz"),
+        "target_contract_npz_sha256": _sha(TARGET / "tensor.npz"),
+        "upstream_normalized_samples_sha256": _sha(UPSTREAM_NORMALIZED_SAMPLES),
+    }
+    tamper = dict(checks); tamper["paired_12"] = False; checks["receipt_tamper_negative"] = not bool(all(tamper.values()))
+    tamper_forbidden = dict(forbidden_scope); tamper_forbidden["training"] = True; checks["forbidden_scope_tamper_negative"] = not bool(all(checks.values()) and all(not v for v in tamper_forbidden.values()))
+    receipt = {"schema_version": "PI-JWM-Step-5.1D-Unified-Paired-Receipt-v2", "deterministic_seed": 5101, "passed": bool(all(checks.values()) and all(not v for v in forbidden_scope.values())), "checks": checks, "executed_scope": executed_scope, "forbidden_scope": forbidden_scope, "scope": {"executed": executed_scope, "forbidden": forbidden_scope}, "sample_count": 12, "capacities": {"max_entity": 10, "max_comm_relation": 74}, "action_counts": action_counts, "action_coverage": action_coverage, "normalization_lineage": normalization_lineage_audit, "provenance": provenance, "unsupported_count": unsupported_total, "unresolved_count": unresolved_total, "fixed_support_blocked_count": fixed_support_total, "loss_probe_mean": float(np.mean(losses)), "beta_kl": float(args.beta_kl), "gradient_summary": gradient_summary, "path_counts": {"prior_steps": prior_steps, "posterior_horizons": posterior_horizons, "motion_decoder_calls": motion_decoder_calls, "csi_decoder_calls": csi_decoder_calls}}
+    gradient_summary_path = args.output_dir / "gradient_summary.json"; recursive_summary_path = args.output_dir / "recursive_horizon_summary.json"; metric_summary_path = args.output_dir / "metric_summary.json"
+    _write(args.output_dir / "sample_pairing_audit.json", pair_rows); _write(args.output_dir / "identity_audit.json", identity_audit); _write(args.output_dir / "recursive_horizon_audit.json", recursion_trace); _write(args.output_dir / "action_mapping_audit.json", action_audit); _write(args.output_dir / "metric_audit.json", metric_rows); _write(args.output_dir / "gradient_audit.json", {"summary": gradient_summary, "records": gradient_records}); _write(args.output_dir / "gradient_summary.json", {"summary": gradient_summary, "source_file": "gradient_audit.json", "full_audit_local_only": True}); _write(recursive_summary_path, {"sample_count": 12, "horizons_per_sample": 2, "path_counts": {"prior_steps": prior_steps, "posterior_horizons": posterior_horizons, "motion_decoder_calls": motion_decoder_calls, "csi_decoder_calls": csi_decoder_calls}, "source_file": "recursive_horizon_audit.json"}); _write(metric_summary_path, {"sample_count": len(metric_rows), "motion_units": ["m", "m", "m", "m/s"], "csi_unit": "dB", "source_file": "metric_audit.json"}); _write(args.output_dir / "normalization_lineage_audit.json", normalization_lineage_audit); _write(args.output_dir / "acceptance_receipt.json", receipt)
+    tracked = ["acceptance_receipt.json", "manifest.json", "sample_pairing_audit.json", "identity_audit.json", "action_mapping_audit.json", "gradient_summary.json", "recursive_horizon_summary.json", "metric_summary.json", "normalization_lineage_audit.json"]
+    manifest = {"schema_version": "PI-JWM-Step-5.1D-Unified-Manifest-v2", "deterministic_seed": 5101, "files": {p.name: {"sha256": _sha(p), "bytes": p.stat().st_size} for p in args.output_dir.iterdir() if p.is_file() and p.name != "manifest.json"}, "github_tracked_evidence": tracked, "full_audit_local_only": ["gradient_audit.json", "recursive_horizon_audit.json", "metric_audit.json"], "provenance": provenance, "executed_scope": executed_scope, "forbidden_scope": forbidden_scope, "passed": receipt["passed"]}
+    _write(args.output_dir / "manifest.json", manifest)
+    print(json.dumps({"passed": receipt["passed"], "checks": checks, "executed_scope": executed_scope, "forbidden_scope": forbidden_scope, "gradient_summary": gradient_summary}, sort_keys=True)); return 0 if receipt["passed"] else 1
 
 
 if __name__ == "__main__": raise SystemExit(main())

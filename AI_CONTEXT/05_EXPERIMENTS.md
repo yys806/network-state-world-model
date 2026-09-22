@@ -56,7 +56,7 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 
 修正原 5.1B 的跨 horizon target aggregation、mask evidence 缺失、独立 prior、zero-h/identity loss、batch-level free bits、raw-unit metric 和硬编码 receipt。当前 `TargetEncoder` 输出保留 `[B,L,S,D]`，future teacher 按 Physical/Communication 分离；receipt 真实调用 STEP 4.4 current latent/dynamics/priors/decoders，并验证 temporal isolation、mask evidence、per-dim free bits、gradient、raw-unit metric、prior target isolation。
 
-Focused 5/5，STEP 4.4 regression 30/30，12-sample non-locked development receipt `passed=true`，compileall 和 knowledge-index check 通过。范围明确为 `training=false`、`optimizer_step=false`、`gpu=false`、`formal_dataset=false`、`locked_test_accessed=false`、`performance_claim=false`。当前 target support 10/74 与 STEP 4.4 model support 8/44 的完整对齐仍未解决，因此 STEP 5.1B 尚未 COMPLETE/FROZEN，STEP 5.2 未授权。
+截至 STEP 5.1B-PATCH 的历史快照：Focused 5/5，STEP 4.4 regression 30/30，12-sample non-locked development receipt `passed=true`。随后 5.1C/5.1D 已统一 support 为 10/74 并完成 paired integration；当前仍明确 `training=false`、`optimizer_step=false`、`gpu=false`、`formal_dataset=false`、`locked_test_accessed=false`、`performance_claim=false`。
 
 ## 当前新定义实验状态
 
@@ -89,9 +89,9 @@ Focused 5/5，STEP 4.4 regression 30/30，12-sample non-locked development recei
 # 2026-09-21 STEP 5.0 Definition 05 decision/audit
 
 - Documentation and source audit only; no forward/backward, optimizer, training, GPU, or metric result was produced.
-- Current target audit: STEP 4.2A sample future position is raw-only; frozen tensor has no target position and no future CSI target. This blocks STEP 5.1 runtime until additive target/mask/normalization implementation.
+- Historical pre-5.1A audit: STEP 4.2A sample future position was raw-only and frozen tensor lacked future CSI target; the additive 5.1A target contract has since closed this prerequisite.
 - Historical P4 checkpoints/results remain Historical Reference only and cannot be compared with the new method without matching dataset/split/history/horizon/target/normalization/metrics/seed policy.
 - Scope: `implementation=false`, `training=false`, `gpu=false`, `formal_dataset=false`, `locked_test=false`, `performance_claim=false`.
-# STEP 5.1D acceptance（2026-09-22）
+# STEP 5.1D-PATCH acceptance（2026-09-22）
 
-receipt 为 42/42 checks true，12 samples，capacity 10/74，prior/posterior/decoder calls 24/24/24，gradient probe finite/non-zero，deterministic rebuild identical；仅为 non-locked CPU development integration evidence。
+receipt 为 47/47 checks true，12 samples，capacity 10/74，prior/posterior/decoder calls 24/24/24，gradient probe finite/non-zero，unified stats source IDs、4.2A frozen batch recovery、exact upstream train lineage 与 runtime prior-target isolation 通过，deterministic rebuild identical；仅为 non-locked CPU development integration evidence。真实 action coverage 为 Mobility=48、Comm=1、Route=0、Comp=0，Route/Comp 仅 explicit no-op。

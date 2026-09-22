@@ -1,0 +1,422 @@
+{
+  "action_counts": {
+    "comm": 1,
+    "comp": 0,
+    "mobility": 48,
+    "route": 0
+  },
+  "action_coverage": {
+    "action_contract_available": {
+      "comm": true,
+      "comp": true,
+      "mobility": true,
+      "route": true
+    },
+    "comm_nonempty_coverage": 1,
+    "comp_explicit_noop_count": 24,
+    "comp_nonempty_coverage": 0,
+    "mobility_nonempty_coverage": 48,
+    "real_development_coverage_observed": {
+      "comm": 1,
+      "comp": 0,
+      "mobility": 48,
+      "route": 0
+    },
+    "route_explicit_noop_count": 24,
+    "route_nonempty_coverage": 0
+  },
+  "beta_kl": 1.0,
+  "capacities": {
+    "max_comm_relation": 74,
+    "max_entity": 10
+  },
+  "checks": {
+    "action_coverage_observed": true,
+    "action_mapping_unique": true,
+    "action_semantics_explicit_noop": true,
+    "actual_decoders": true,
+    "actual_posterior": true,
+    "actual_prior": true,
+    "base_step3_3_validation_checks": true,
+    "comm_capacity_74": true,
+    "deterministic_rules_have_no_learnable_parameters": true,
+    "encoder_batch_12": true,
+    "encoder_reload_roundtrip": true,
+    "encoder_target_isolation": true,
+    "finite_forward_backward": true,
+    "forbidden_scope_tamper_negative": true,
+    "gradient_comm_future_posterior": true,
+    "gradient_comm_prior": true,
+    "gradient_csi_decoder": true,
+    "gradient_csi_target_encoder": true,
+    "gradient_encoder": true,
+    "gradient_motion_target_encoder": true,
+    "gradient_phy_future_posterior": true,
+    "gradient_phy_prior": true,
+    "gradient_probe": true,
+    "gradient_vehicle_decoder": true,
+    "graph_batch_12": true,
+    "graph_roundtrip": true,
+    "identity_12": true,
+    "mask_as_evidence": true,
+    "no_hardcoded_sample_index": true,
+    "no_optimizer_step": true,
+    "no_repeated_state_carrier": true,
+    "nonzero_signal": true,
+    "normalization_target_contract": true,
+    "normalization_upstream_dev_train": true,
+    "paired_12": true,
+    "physical_capacity_10": true,
+    "posterior_target_runtime_sensitivity": true,
+    "prior_target_isolation": true,
+    "prior_target_runtime_isolation": true,
+    "raw_metric_units": true,
+    "receipt_tamper_negative": true,
+    "recursive_horizon_context": true,
+    "sample_count_12": true,
+    "sample_ids_roundtrip": true,
+    "temporal_target_isolation": true,
+    "tensor_package_roundtrip": true,
+    "upstream_normalization_exact_train_lineage": true
+  },
+  "deterministic_seed": 5101,
+  "executed_scope": {
+    "encoder": true,
+    "graph": true,
+    "loss": true,
+    "message_passing": true,
+    "metric": true,
+    "posterior": true,
+    "world_model": true
+  },
+  "fixed_support_blocked_count": 0,
+  "forbidden_scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "locked_test": false,
+    "locked_test_accessed": false,
+    "optimizer_step": false,
+    "performance_claim": false,
+    "planner": false,
+    "training": false
+  },
+  "gradient_summary": {
+    "comm_future_posterior": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 1.9245710372924805,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "comm_prior": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.8147237300872803,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "csi_decoder": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.571153461933136,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "csi_target_encoder": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.8610166311264038,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "encoder": {
+      "all_finite": true,
+      "all_nonzero": false,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 2.8554656505584717,
+      "nonzero_count": 1812,
+      "parameter_count": 2184
+    },
+    "motion_target_encoder": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.3223111927509308,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "phy_future_posterior": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 2.492208480834961,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "phy_prior": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.8432369232177734,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    },
+    "vehicle_decoder": {
+      "all_finite": true,
+      "all_nonzero": true,
+      "all_present": true,
+      "any_nonzero": true,
+      "max_norm": 0.021960020065307617,
+      "nonzero_count": 48,
+      "parameter_count": 48
+    }
+  },
+  "loss_probe_mean": 168.5239575703939,
+  "normalization_lineage": {
+    "evidence": {
+      "unified_bundle": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1c_unified_development_bundle_v1_20260922\\unified_flow_train_normalization_stats.json",
+      "upstream_batch": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920\\batch.json",
+      "upstream_normalized_samples": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920\\normalized_samples.json",
+      "upstream_stats": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920\\train_normalization_stats.json"
+    },
+    "exact_sample_order": true,
+    "exact_stats_source_lineage": true,
+    "unified_stats_source_lineage_exact": true,
+    "unified_stats_source_sample_ids": [
+      "step2.4-real-communication-seed0::anchor-0001",
+      "step2.4-real-communication-seed0::anchor-0002",
+      "step2.4-real-communication-seed0::anchor-0003",
+      "step2.4-real-communication-seed0::anchor-0004",
+      "step3.2-dev-seed1::anchor-0001",
+      "step3.2-dev-seed1::anchor-0002",
+      "step3.2-dev-seed1::anchor-0003",
+      "step3.2-dev-seed1::anchor-0004"
+    ],
+    "unified_stats_source_trajectory_ids": [
+      "step2.4-real-communication-seed0",
+      "step3.2-dev-seed1"
+    ],
+    "unified_train_count": 8,
+    "unified_train_lineage": [
+      {
+        "anchor_decision_frame": 1,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 2,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 3,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0003",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 4,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0004",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 1,
+        "sample_id": "step3.2-dev-seed1::anchor-0001",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      },
+      {
+        "anchor_decision_frame": 2,
+        "sample_id": "step3.2-dev-seed1::anchor-0002",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      },
+      {
+        "anchor_decision_frame": 3,
+        "sample_id": "step3.2-dev-seed1::anchor-0003",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      },
+      {
+        "anchor_decision_frame": 4,
+        "sample_id": "step3.2-dev-seed1::anchor-0004",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      }
+    ],
+    "upstream_batch_train_lineage": [
+      {
+        "anchor_decision_frame": 1,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 2,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 3,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0003",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 4,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0004",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 1,
+        "sample_id": "step3.2-dev-seed1::anchor-0001",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      },
+      {
+        "anchor_decision_frame": 2,
+        "sample_id": "step3.2-dev-seed1::anchor-0002",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      },
+      {
+        "anchor_decision_frame": 3,
+        "sample_id": "step3.2-dev-seed1::anchor-0003",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      },
+      {
+        "anchor_decision_frame": 4,
+        "sample_id": "step3.2-dev-seed1::anchor-0004",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      }
+    ],
+    "upstream_batch_train_trajectories": [
+      "step2.4-real-communication-seed0",
+      "step3.2-dev-seed1"
+    ],
+    "upstream_stats_source_ids_mode": "recovered_from_frozen_4_2a_batch",
+    "upstream_stats_source_ids_recovered": [
+      "step2.4-real-communication-seed0::anchor-0001",
+      "step2.4-real-communication-seed0::anchor-0002",
+      "step2.4-real-communication-seed0::anchor-0003",
+      "step2.4-real-communication-seed0::anchor-0004",
+      "step3.2-dev-seed1::anchor-0001",
+      "step3.2-dev-seed1::anchor-0002",
+      "step3.2-dev-seed1::anchor-0003",
+      "step3.2-dev-seed1::anchor-0004"
+    ],
+    "upstream_stats_source_lineage_exact": true,
+    "upstream_stats_source_sample_ids": null,
+    "upstream_train_count": 8,
+    "upstream_train_lineage": [
+      {
+        "anchor_decision_frame": 1,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 2,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 3,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0003",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 4,
+        "sample_id": "step2.4-real-communication-seed0::anchor-0004",
+        "split": "dev_train",
+        "trajectory_id": "step2.4-real-communication-seed0"
+      },
+      {
+        "anchor_decision_frame": 1,
+        "sample_id": "step3.2-dev-seed1::anchor-0001",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      },
+      {
+        "anchor_decision_frame": 2,
+        "sample_id": "step3.2-dev-seed1::anchor-0002",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      },
+      {
+        "anchor_decision_frame": 3,
+        "sample_id": "step3.2-dev-seed1::anchor-0003",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      },
+      {
+        "anchor_decision_frame": 4,
+        "sample_id": "step3.2-dev-seed1::anchor-0004",
+        "split": "dev_train",
+        "trajectory_id": "step3.2-dev-seed1"
+      }
+    ]
+  },
+  "passed": true,
+  "path_counts": {
+    "csi_decoder_calls": 24,
+    "motion_decoder_calls": 24,
+    "posterior_horizons": 24,
+    "prior_steps": 24
+  },
+  "provenance": {
+    "source_script": "code/scripts/build_step5_1d_unified_model_chain_v1.py",
+    "source_script_sha256": "d7623ed45c5c820d12569ffeca0de97829d1a43087ef68792b53e917d81fbf43",
+    "target_contract_npz": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1a_motion_csi_target_contract_v1_20260921\\tensor.npz",
+    "target_contract_npz_sha256": "9f73a5d47be1d732a7c4d2983c3bf6f9a4340c783136c3c23043b22cbed1afa6",
+    "unified_bundle_manifest": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1c_unified_development_bundle_v1_20260922\\manifest.json",
+    "unified_bundle_manifest_sha256": "65a8c72ff5a7c156e1a1b65b6ab4d68114480ed95fd086bfb847106e87c5ef6f",
+    "upstream_normalized_samples_sha256": "be44e75d6c0eb2d0202b2bad01e51ce95f3f961d39890a09b6b4a6b3fb2dda91"
+  },
+  "sample_count": 12,
+  "schema_version": "PI-JWM-Step-5.1D-Unified-Paired-Receipt-v2",
+  "scope": {
+    "executed": {
+      "encoder": true,
+      "graph": true,
+      "loss": true,
+      "message_passing": true,
+      "metric": true,
+      "posterior": true,
+      "world_model": true
+    },
+    "forbidden": {
+      "formal_dataset": false,
+      "gpu": false,
+      "locked_test": false,
+      "locked_test_accessed": false,
+      "optimizer_step": false,
+      "performance_claim": false,
+      "planner": false,
+      "training": false
+    }
+  },
+  "unresolved_count": 0,
+  "unsupported_count": 0
+}

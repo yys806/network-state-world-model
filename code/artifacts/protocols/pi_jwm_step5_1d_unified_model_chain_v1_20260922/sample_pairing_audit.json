@@ -1,0 +1,170 @@
+[
+  {
+    "anchor_decision_frame": 1,
+    "future_frame_indices": [
+      1,
+      2
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+    "state_signature": "ebcb2acdf1cbf4d10eec29a99a9beda548ccb8f466c0b17ee1ee0aa93054fa1e",
+    "target_anchor_decision_frame": 1,
+    "target_sample_id": "step2.4-real-communication-seed0::anchor-0001",
+    "target_trajectory_id": "step2.4-real-communication-seed0",
+    "trajectory_id": "step2.4-real-communication-seed0"
+  },
+  {
+    "anchor_decision_frame": 2,
+    "future_frame_indices": [
+      2,
+      3
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+    "state_signature": "a32881c3e8bf6c09b9ffa5f0de8ef4e3254b10abd9df554367a7a775d3ff603d",
+    "target_anchor_decision_frame": 2,
+    "target_sample_id": "step2.4-real-communication-seed0::anchor-0002",
+    "target_trajectory_id": "step2.4-real-communication-seed0",
+    "trajectory_id": "step2.4-real-communication-seed0"
+  },
+  {
+    "anchor_decision_frame": 3,
+    "future_frame_indices": [
+      3,
+      4
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step2.4-real-communication-seed0::anchor-0003",
+    "state_signature": "3c7537c52d75e402a4b594f8495354d98de1f494ebfcc4492f4472114b925722",
+    "target_anchor_decision_frame": 3,
+    "target_sample_id": "step2.4-real-communication-seed0::anchor-0003",
+    "target_trajectory_id": "step2.4-real-communication-seed0",
+    "trajectory_id": "step2.4-real-communication-seed0"
+  },
+  {
+    "anchor_decision_frame": 4,
+    "future_frame_indices": [
+      4,
+      5
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step2.4-real-communication-seed0::anchor-0004",
+    "state_signature": "bf8a797b0fb4833996fd574f72183346a359993b8b7369afdeaed5e78dd1c6d0",
+    "target_anchor_decision_frame": 4,
+    "target_sample_id": "step2.4-real-communication-seed0::anchor-0004",
+    "target_trajectory_id": "step2.4-real-communication-seed0",
+    "trajectory_id": "step2.4-real-communication-seed0"
+  },
+  {
+    "anchor_decision_frame": 1,
+    "future_frame_indices": [
+      1,
+      2
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step3.2-dev-seed1::anchor-0001",
+    "state_signature": "c094cc1f536b4269cc086ee9b81cdf36283f7ab437d2eb42149ef5c43aabd813",
+    "target_anchor_decision_frame": 1,
+    "target_sample_id": "step3.2-dev-seed1::anchor-0001",
+    "target_trajectory_id": "step3.2-dev-seed1",
+    "trajectory_id": "step3.2-dev-seed1"
+  },
+  {
+    "anchor_decision_frame": 2,
+    "future_frame_indices": [
+      2,
+      3
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step3.2-dev-seed1::anchor-0002",
+    "state_signature": "018cdfcc8431085abcdb75b21a4d76664b00f38dd66e341f0e12497f54199af7",
+    "target_anchor_decision_frame": 2,
+    "target_sample_id": "step3.2-dev-seed1::anchor-0002",
+    "target_trajectory_id": "step3.2-dev-seed1",
+    "trajectory_id": "step3.2-dev-seed1"
+  },
+  {
+    "anchor_decision_frame": 3,
+    "future_frame_indices": [
+      3,
+      4
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step3.2-dev-seed1::anchor-0003",
+    "state_signature": "ada9e800fa579f86fc20b6845c4f6348c33dc3f397cf5786c2e6947f3105add5",
+    "target_anchor_decision_frame": 3,
+    "target_sample_id": "step3.2-dev-seed1::anchor-0003",
+    "target_trajectory_id": "step3.2-dev-seed1",
+    "trajectory_id": "step3.2-dev-seed1"
+  },
+  {
+    "anchor_decision_frame": 4,
+    "future_frame_indices": [
+      4,
+      5
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step3.2-dev-seed1::anchor-0004",
+    "state_signature": "1d849faf1847f1a68de810f9dd713830e4e3434a1d264894f739c2be11e68467",
+    "target_anchor_decision_frame": 4,
+    "target_sample_id": "step3.2-dev-seed1::anchor-0004",
+    "target_trajectory_id": "step3.2-dev-seed1",
+    "trajectory_id": "step3.2-dev-seed1"
+  },
+  {
+    "anchor_decision_frame": 1,
+    "future_frame_indices": [
+      1,
+      2
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step3.2-dev-seed2::anchor-0001",
+    "state_signature": "493089f20e89fa0fbcb8b2f000459cff144571d00b57c4caacaed384f850ffe5",
+    "target_anchor_decision_frame": 1,
+    "target_sample_id": "step3.2-dev-seed2::anchor-0001",
+    "target_trajectory_id": "step3.2-dev-seed2",
+    "trajectory_id": "step3.2-dev-seed2"
+  },
+  {
+    "anchor_decision_frame": 2,
+    "future_frame_indices": [
+      2,
+      3
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step3.2-dev-seed2::anchor-0002",
+    "state_signature": "b52e558c2914e987c9129e14ac23527123a50a49991d26ac112c0d565c80922f",
+    "target_anchor_decision_frame": 2,
+    "target_sample_id": "step3.2-dev-seed2::anchor-0002",
+    "target_trajectory_id": "step3.2-dev-seed2",
+    "trajectory_id": "step3.2-dev-seed2"
+  },
+  {
+    "anchor_decision_frame": 3,
+    "future_frame_indices": [
+      3,
+      4
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step3.2-dev-seed2::anchor-0003",
+    "state_signature": "d3b88c73d4df9f9fa5b2787876c1744e0e52991f54184b0de520c329acffdb73",
+    "target_anchor_decision_frame": 3,
+    "target_sample_id": "step3.2-dev-seed2::anchor-0003",
+    "target_trajectory_id": "step3.2-dev-seed2",
+    "trajectory_id": "step3.2-dev-seed2"
+  },
+  {
+    "anchor_decision_frame": 4,
+    "future_frame_indices": [
+      4,
+      5
+    ],
+    "recursive_horizons": 2,
+    "sample_id": "step3.2-dev-seed2::anchor-0004",
+    "state_signature": "9937ef7a707000cda30c765ab93dea5d003cc161492c4abfd6088b407f09b45f",
+    "target_anchor_decision_frame": 4,
+    "target_sample_id": "step3.2-dev-seed2::anchor-0004",
+    "target_trajectory_id": "step3.2-dev-seed2",
+    "trajectory_id": "step3.2-dev-seed2"
+  }
+]

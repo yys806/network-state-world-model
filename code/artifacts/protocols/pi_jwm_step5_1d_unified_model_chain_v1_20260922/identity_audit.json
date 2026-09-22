@@ -1,0 +1,110 @@
+[
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step2.4-real-communication-seed0::anchor-0003",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step2.4-real-communication-seed0::anchor-0004",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step3.2-dev-seed1::anchor-0001",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step3.2-dev-seed1::anchor-0002",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step3.2-dev-seed1::anchor-0003",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step3.2-dev-seed1::anchor-0004",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step3.2-dev-seed2::anchor-0001",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step3.2-dev-seed2::anchor-0002",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 88,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 16,
+    "sample_id": "step3.2-dev-seed2::anchor-0003",
+    "task_slot_identity": true
+  },
+  {
+    "comm_relation_identity": true,
+    "comm_target_rows": 148,
+    "flow_slot_identity": true,
+    "motion_slot_identity": true,
+    "physical_target_rows": 20,
+    "sample_id": "step3.2-dev-seed2::anchor-0004",
+    "task_slot_identity": true
+  }
+]

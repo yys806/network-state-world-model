@@ -1,0 +1,194 @@
+{
+  "evidence": {
+    "unified_bundle": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1c_unified_development_bundle_v1_20260922\\unified_flow_train_normalization_stats.json",
+    "upstream_batch": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920\\batch.json",
+    "upstream_normalized_samples": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920\\normalized_samples.json",
+    "upstream_stats": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step4_2a_graph_input_extension_v1_20260920\\train_normalization_stats.json"
+  },
+  "exact_sample_order": true,
+  "exact_stats_source_lineage": true,
+  "unified_stats_source_lineage_exact": true,
+  "unified_stats_source_sample_ids": [
+    "step2.4-real-communication-seed0::anchor-0001",
+    "step2.4-real-communication-seed0::anchor-0002",
+    "step2.4-real-communication-seed0::anchor-0003",
+    "step2.4-real-communication-seed0::anchor-0004",
+    "step3.2-dev-seed1::anchor-0001",
+    "step3.2-dev-seed1::anchor-0002",
+    "step3.2-dev-seed1::anchor-0003",
+    "step3.2-dev-seed1::anchor-0004"
+  ],
+  "unified_stats_source_trajectory_ids": [
+    "step2.4-real-communication-seed0",
+    "step3.2-dev-seed1"
+  ],
+  "unified_train_count": 8,
+  "unified_train_lineage": [
+    {
+      "anchor_decision_frame": 1,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 2,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 3,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0003",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 4,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0004",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 1,
+      "sample_id": "step3.2-dev-seed1::anchor-0001",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 2,
+      "sample_id": "step3.2-dev-seed1::anchor-0002",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 3,
+      "sample_id": "step3.2-dev-seed1::anchor-0003",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 4,
+      "sample_id": "step3.2-dev-seed1::anchor-0004",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    }
+  ],
+  "upstream_batch_train_lineage": [
+    {
+      "anchor_decision_frame": 1,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 2,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 3,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0003",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 4,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0004",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 1,
+      "sample_id": "step3.2-dev-seed1::anchor-0001",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 2,
+      "sample_id": "step3.2-dev-seed1::anchor-0002",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 3,
+      "sample_id": "step3.2-dev-seed1::anchor-0003",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 4,
+      "sample_id": "step3.2-dev-seed1::anchor-0004",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    }
+  ],
+  "upstream_batch_train_trajectories": [
+    "step2.4-real-communication-seed0",
+    "step3.2-dev-seed1"
+  ],
+  "upstream_stats_source_ids_mode": "recovered_from_frozen_4_2a_batch",
+  "upstream_stats_source_ids_recovered": [
+    "step2.4-real-communication-seed0::anchor-0001",
+    "step2.4-real-communication-seed0::anchor-0002",
+    "step2.4-real-communication-seed0::anchor-0003",
+    "step2.4-real-communication-seed0::anchor-0004",
+    "step3.2-dev-seed1::anchor-0001",
+    "step3.2-dev-seed1::anchor-0002",
+    "step3.2-dev-seed1::anchor-0003",
+    "step3.2-dev-seed1::anchor-0004"
+  ],
+  "upstream_stats_source_lineage_exact": true,
+  "upstream_stats_source_sample_ids": null,
+  "upstream_train_count": 8,
+  "upstream_train_lineage": [
+    {
+      "anchor_decision_frame": 1,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 2,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 3,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0003",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 4,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0004",
+      "split": "dev_train",
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 1,
+      "sample_id": "step3.2-dev-seed1::anchor-0001",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 2,
+      "sample_id": "step3.2-dev-seed1::anchor-0002",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 3,
+      "sample_id": "step3.2-dev-seed1::anchor-0003",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 4,
+      "sample_id": "step3.2-dev-seed1::anchor-0004",
+      "split": "dev_train",
+      "trajectory_id": "step3.2-dev-seed1"
+    }
+  ]
+}

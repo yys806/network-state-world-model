@@ -81,7 +81,7 @@ STEP 4.1 source of truth：`docs/contracts_PIJWM_PI_GRAPH_OBJECT_FIELD_RELATION_
 Unverified：任何只由旧 PPT、文件名或历史聊天提出但没有当前代码/config/experiment 支持的架构声明。
 # STEP 4.4 Structured RSSM（2026-09-21）
 
-STEP 4.4-PATCH3 已 COMPLETE / FROZEN，闭合未训练 CPU 机制的三个剩余语义。五类 aligned deterministic h 中仅 Vehicle Physical/Comm 有 z；只学习 vehicle motion 与 CSI。Wireless outage 是显式 known stochastic event，wired/Flow/Task/CPU/UAV 按规则推进，每步由 predicted state 重构图并反馈。该实现不是精度、校准、规划或性能证据，Definition 05 Loss/Training 尚未开始。
+STEP 4.4-PATCH3 已 COMPLETE / FROZEN，闭合未训练 CPU 机制的三个剩余语义。五类 aligned deterministic h 中仅 Vehicle Physical/Comm 有 z；只学习 vehicle motion 与 CSI。Wireless outage 是显式 known stochastic event，wired/Flow/Task/CPU/UAV 按规则推进，每步由 predicted state 重构图并反馈。5.1D 已补充 CPU Loss/KL/Metric integration；该实现仍不是精度、校准、规划或性能证据，Training Loop 尚未开始。
 
 STEP 5.0 已冻结训练架构边界：Motion/CSI 是唯一直接 prediction supervision；对应 training-only Target Encoder 只允许读本 family future target；Phy/Comm 分别做 analytic KL；v1 overshooting OFF。Encoder、RSSM、Prior、Posterior、Target Encoder、Decoder 后续 joint train，规则无 optimizer 参数。此处是 target contract，不是已实现训练图。
 

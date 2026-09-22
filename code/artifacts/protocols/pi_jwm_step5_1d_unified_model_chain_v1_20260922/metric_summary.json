@@ -1,0 +1,11 @@
+{
+  "csi_unit": "dB",
+  "motion_units": [
+    "m",
+    "m",
+    "m",
+    "m/s"
+  ],
+  "sample_count": 12,
+  "source_file": "metric_audit.json"
+}

@@ -38,7 +38,7 @@ STEP 5.1C 已提供 12 个 paired development windows，容量 `max_entity=10`�
 
 ## Validation
 
-- 5.1D receipt：42/42 checks true，`passed=true`；12 samples；prior/posterior/decoder 路径各 24 次；full Tensor package round-trip true；gradient probe finite/non-zero；tamper negative true。
+- 初始 5.1D receipt：42/42 checks true；本 Patch 更新后的最终 receipt：47/47 checks true，`passed=true`；12 samples；prior/posterior/decoder 路径各 24 次；full Tensor package round-trip true；gradient probe finite/non-zero；required-check 与 forbidden-scope tamper negative true。
 - capacities：Physical 10，Communication 74；pairing 12/12；unsupported/unresolved/fixed-support blocked counts 均为 0。
 - focused tests：5/5。
 - regression tests：4.3A 15/15、4.3B 21/21、4.4 30/30、5.1A 19/19、5.1B 5/5、4.4 communication audit 7/7。
@@ -51,9 +51,29 @@ STEP 5.1C 已提供 12 个 paired development windows，容量 `max_entity=10`�
 
 `training=false`, `optimizer_step=false`, `gpu=false`, `formal_dataset=false`, `locked_test_accessed=false`, `performance_claim=false`, `planner=false`。模型权重仍为 untrained development evidence；STEP 5.2 未开始。
 
+## STEP 5.1D-PATCH — Evidence / Context / Action-Coverage Closure
+
+### Goal and Changes
+
+本 Patch 不改变模型或科研设计，只闭合共享证据、上下文状态、动作覆盖和 prior-target 隔离。receipt 现在区分 `executed_scope` 与 `forbidden_scope`；小型 JSON evidence 被明确列入 GitHub tracked manifest。unified Flow stats 的 8 个 `source_sample_ids` 与 bundle `dev_train` lineage 精确一致；旧 4.2A stats 没有逐 sample IDs，审计从冻结 `batch.json` 的 samples/provenance 恢复 fit source，并与 4.2A `normalized_samples.json` 的 `sample_id/trajectory_id/anchor_decision_frame/split` 逐项、同序比较。对真实 paired sample 改变 Motion/CSI target 后，actual `phy_prior`/`comm_prior` 的 mean/log_std 保持完全一致，posterior 发生变化。
+
+### Validation
+
+- receipt：47/47 required checks true，`passed=true`。
+- exact upstream train lineage：true，8/8 exact order。
+- runtime prior-target isolation：true；posterior target sensitivity：true。
+- action coverage：Mobility=48，Comm=1，Route=0，Comp=0；Route/Comp 仅 explicit no-op，未伪造非空动作。
+- executed scope：encoder/graph/message passing/world model/posterior/loss/metric=true。
+- forbidden scope：training/optimizer_step/GPU/formal_dataset/locked_test/Planner/performance_claim 全为 false；required-check tamper 与 forbidden-scope tamper 均使计算结果失败。
+- GitHub tracked evidence：`acceptance_receipt.json`、`manifest.json`、pairing/identity/action audits、gradient/recursive/metric summaries、normalization lineage audit；巨大 full audit 与 binary package 保留 local-only。
+
+### Boundary
+
+这是 non-locked CPU development integration evidence；模型权重仍未训练。未开始 Training Loop、optimizer、tiny-data overfit、GPU、formal Dataset、locked_test、Planner、baseline 或 performance claim。Route/Comp non-empty coverage 是未来 formal training/data coverage gate，不在本 Patch 作科研决定。
+
 ## Git
 
-待最终 verification 后提交并推送到 `main`。
+本 Patch 完成最终 verification 后提交并推送到 `main`。
 
 ## Next Step
 

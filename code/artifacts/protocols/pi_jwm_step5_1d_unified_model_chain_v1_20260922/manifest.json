@@ -1,0 +1,111 @@
+{
+  "deterministic_seed": 5101,
+  "executed_scope": {
+    "encoder": true,
+    "graph": true,
+    "loss": true,
+    "message_passing": true,
+    "metric": true,
+    "posterior": true,
+    "world_model": true
+  },
+  "files": {
+    "acceptance_receipt.json": {
+      "bytes": 14067,
+      "sha256": "e80b42d5de8aaf6be235d639c9cb1eec90fec05ab3920e31fb9460c492b842db"
+    },
+    "action_mapping_audit.json": {
+      "bytes": 6439,
+      "sha256": "f8e8deb34326ee449c7d151e0ac7a74e1c63ad4449717513256f46d41d6c957b"
+    },
+    "gradient_audit.json": {
+      "bytes": 394689,
+      "sha256": "512537917e5146686efb14185094ad748cf4a33303fa2dd2e9537ab629858988"
+    },
+    "gradient_summary.json": {
+      "bytes": 2272,
+      "sha256": "be40e10ab6cdec646e6bf0233f8674aeb22f6b26c7ec57a3995a9f5e61910a3a"
+    },
+    "identity_audit.json": {
+      "bytes": 3210,
+      "sha256": "8c23b9c181e0a371558c95d66c5e4ce0d2b1af6237a7d0d2282e9bde00820f07"
+    },
+    "metric_audit.json": {
+      "bytes": 18770,
+      "sha256": "f9c256b3e69015467398f52bb43cc03bbbbdd30902c163f9ca92580035f426f2"
+    },
+    "metric_summary.json": {
+      "bytes": 156,
+      "sha256": "310853109aea34728ad7a40164dc9da46cf542e69d332bdfe7108e5581db8a28"
+    },
+    "normalization_lineage_audit.json": {
+      "bytes": 6794,
+      "sha256": "d503989b3d7fb5e99801e387fc5b6b0581b1b406ecab1864e2dfb39f1c3114bb"
+    },
+    "recursive_horizon_audit.json": {
+      "bytes": 10229,
+      "sha256": "20ab549c75a685a9c2156bfd325c33e47b5836ae3a87564797955f6f3018033c"
+    },
+    "recursive_horizon_summary.json": {
+      "bytes": 250,
+      "sha256": "66b64d013646a78fdfafd3756f1a1715df23771c4407768f7536cba649a6c204"
+    },
+    "sample_pairing_audit.json": {
+      "bytes": 5849,
+      "sha256": "cdd8da97ef0b425c63ad51ee9be08a8fbb6bdedeeb6a0c12403db4aa8d8118ca"
+    },
+    "unified_encoder_normalization_stats.json": {
+      "bytes": 10399,
+      "sha256": "c8350a3fbb1535331809e16cfdf8ac440cc910c01d0154477785130563395761"
+    },
+    "unified_encoder_package.pt": {
+      "bytes": 221203,
+      "sha256": "b7baf7b71d226fbfde6a242cd58072b7e708fec0bc6198b9e897725f5ae354e4"
+    },
+    "unified_flow_tensor_package.npz": {
+      "bytes": 169448,
+      "sha256": "bf6adebe1b6185d640e9b0baadb96c33bfa70b50d213f4e7b8276ac6c139a698"
+    },
+    "unified_typed_dual_graph.npz": {
+      "bytes": 64504,
+      "sha256": "4af32e332ea6f0483abe01403ec6a55705eff49db28341c9ddc7ffc8f4c3b4d4"
+    }
+  },
+  "forbidden_scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "locked_test": false,
+    "locked_test_accessed": false,
+    "optimizer_step": false,
+    "performance_claim": false,
+    "planner": false,
+    "training": false
+  },
+  "full_audit_local_only": [
+    "gradient_audit.json",
+    "recursive_horizon_audit.json",
+    "metric_audit.json"
+  ],
+  "github_tracked_evidence": [
+    "acceptance_receipt.json",
+    "manifest.json",
+    "sample_pairing_audit.json",
+    "identity_audit.json",
+    "action_mapping_audit.json",
+    "gradient_summary.json",
+    "recursive_horizon_summary.json",
+    "metric_summary.json",
+    "normalization_lineage_audit.json"
+  ],
+  "passed": true,
+  "provenance": {
+    "source_script": "code/scripts/build_step5_1d_unified_model_chain_v1.py",
+    "source_script_sha256": "d7623ed45c5c820d12569ffeca0de97829d1a43087ef68792b53e917d81fbf43",
+    "target_contract_npz": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1a_motion_csi_target_contract_v1_20260921\\tensor.npz",
+    "target_contract_npz_sha256": "9f73a5d47be1d732a7c4d2983c3bf6f9a4340c783136c3c23043b22cbed1afa6",
+    "unified_bundle_manifest": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1c_unified_development_bundle_v1_20260922\\manifest.json",
+    "unified_bundle_manifest_sha256": "65a8c72ff5a7c156e1a1b65b6ab4d68114480ed95fd086bfb847106e87c5ef6f",
+    "upstream_normalized_samples_sha256": "be44e75d6c0eb2d0202b2bad01e51ce95f3f961d39890a09b6b4a6b3fb2dda91"
+  },
+  "schema_version": "PI-JWM-Step-5.1D-Unified-Manifest-v2"
+}
