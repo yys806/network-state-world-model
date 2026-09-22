@@ -1,0 +1,16 @@
+{
+  "baseline_verdict": "TINY_OVERFIT_NO_GO",
+  "diagnostic_only": true,
+  "forbidden_scope": {
+    "baseline": false,
+    "formal_dataset": false,
+    "formal_training": false,
+    "gpu": false,
+    "locked_test": false,
+    "performance_claim": false,
+    "planner": false
+  },
+  "mean_bias_diagnostic_verdict": "TINY_OVERFIT_GO",
+  "passed": true,
+  "scale_bridge_check": true
+}

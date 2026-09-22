@@ -165,3 +165,9 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 - CSI loss 仍明显高于 Motion，但 train-only normalized CSI std 约 1.04、Motion std 约 0.16，当前证据不支持 normalization bug；没有修改冻结的 0.5/0.5 权重。
 - 部分 future posterior/target encoder steps 梯度为 0，已记录 zero-gradient step count；各组均有 finite learning signal 和参数更新，不构成持续性 gradient starvation。
 - 该结果不开放 STEP 5.4 或 GPU；需要先做 bounded CPU tiny-overfit diagnosis。Route/Comp non-empty coverage 仍为 0/0，full training/formal Dataset/locked_test/performance claim 仍关闭。
+
+## 2026-09-22 STEP 5.3D result
+
+- Scale bridge machine check passed exactly for fixed `[0,1]`: actual normalized CSI MSE equals `(raw prediction - raw target)^2 / csi_std^2` aggregation for H1/H2.
+- Baseline 200-step CPU run remains `TINY_OVERFIT_NO_GO` (H1 `329.3315→117.6610`, H2 `332.8831→119.7404`). Mean-bias diagnostic reaches H1 `1.0935→0.1405`, H2 `1.1040→0.1633`, but this is diagnostic evidence only.
+- Current interpretation supports raw-output initialization/conditioning bottleneck; no formal initialization or normalized-output bridge has been selected. Researcher decision is required before any such change.

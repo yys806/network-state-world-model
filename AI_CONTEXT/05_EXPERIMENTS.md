@@ -69,6 +69,12 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 - 独立 fresh run 与 checkpoint resume 均 deterministic；CSI scale audit 显示 prediction 初始约 0 dB、target 约 98–99 dB，未发现 normalization bridge bug。
 - Verdict 分离为 `LEARNING_SIGNAL_GO` 与 `TINY_OVERFIT_NO_GO`；不得写成 tiny-data overfit 或 GPU readiness。
 
+### STEP 5.3D CSI Scale / Optimization Diagnosis
+
+- 固定 `[0,1]` dev_train subset，CPU 200-step baseline 与 mean-bias diagnostic 对照均复用 5.2 的 Stage 1→Stage 2、1→2 curriculum、KL warm-up/free-bits 和 0.5/0.5 loss。
+- H1/H2 actual CSI normalized MSE 与 raw bridge expected MSE 完全一致；baseline 最终约 `117.66/119.74`，mean-bias diagnostic 最终约 `0.141/0.163`。
+- Observation 支持 raw-output initialization/conditioning bottleneck；这不是 researcher decision。正式 raw-head bias 或 normalized-output bridge 均未采用。
+
 - 固定 `dev_train` tiny subset：Phase A/B 使用 sample index `0`（`step2.4-real-communication-seed0::anchor-0001`），Phase C 使用 index `0,1` 两个真实 samples；4 个 `dev_validation` 只作 prior-only diagnostic。
 - 预注册 development-only gate 为 family/prior relative loss drop `>=0.5%`，A/B/C bounded steps 为 `30/30/40`；receipt 所有 required checks 为 true，结果 `GO`。
 - Phase A Stage 1 Motion `0.0005155009→0.0000088083`、CSI `324.4449→320.2018`；Phase B prior H1/H2 `L_Pred` 相对下降 `1.20%/1.19%`；Phase C 两样本 H1/H2 Motion `78.57%/84.69%`、CSI `1.68%/1.69%`。

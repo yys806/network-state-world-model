@@ -6,6 +6,12 @@
 - receipt 现在分离 `LEARNING_SIGNAL_GO` 与 `TINY_OVERFIT_NO_GO`；CSI scale audit 与分阶段 gradient/leakage/resume evidence 已生成。
 - 未进入 STEP 5.4、GPU、正式训练或 locked_test。
 
+## 2026-09-22 STEP 5.3D
+
+- 完成固定 `[0,1]`、CPU 200-step CSI scale/optimization diagnosis；actual/expected raw bridge MSE exact match。
+- Baseline 未通过 stronger tiny-overfit；mean-bias 仅诊断对照达到 H1/H2 normalized CSI MSE `0.1405/0.1633`。
+- 记录为 raw-output initialization/conditioning bottleneck observation；不自动采用任何正式初始化或 decoder bridge 方案，等待研究者决定。
+
 ## 2026-09-22 STEP 5.3
 
 - 新增 bounded CPU tiny-data preflight runner、focused tests 和 machine-readable evidence。

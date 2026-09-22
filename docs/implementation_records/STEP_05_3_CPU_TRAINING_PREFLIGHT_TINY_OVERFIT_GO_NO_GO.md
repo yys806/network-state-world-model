@@ -70,3 +70,12 @@ GO 仅表示当前 CPU development bundle 上的 bounded capacity/optimization p
 ## Validation / Git
 
 Focused 5.3、5.2 regression、5.1D、5.1B、4.4、必要 upstream、compileall、knowledge index write/check、git diff --check 均在提交前执行并记录；receipt/manifest 位于 `code/artifacts/protocols/pi_jwm_step5_3_cpu_training_preflight_v1_20260922/`。由于 tiny-overfit 未通过，下一步只建议一个 bounded CPU tiny-overfit diagnosis；不进入 GPU/STEP 5.4。
+
+## STEP 5.3D diagnosis (2026-09-22)
+
+- 固定 samples `[0,1]`、seed `5303`、CPU、200 steps、每 20 steps 记录，正式模型路径和 Definition 05 不变。
+- Scale bridge：H1 actual/expected normalized CSI MSE=`329.3314819/329.3314819`，H2=`332.8831482/332.8831482`，误差为 0。
+- Baseline：H1 CSI `329.3315 → 117.6610`（64.27%），H2 `332.8831 → 119.7404`（64.03%），但最终仍高于 normalized MSE `1.0`，故 `TINY_OVERFIT_NO_GO`。
+- Mean-bias diagnostic（仅内存初始化最后一层 bias 为 train CSI mean，未改变正式默认）：H1 `1.0935 → 0.1405`，H2 `1.1040 → 0.1633`，诊断 gate 通过。CSI raw prediction 从约 98 dB target-aligned 开始，Motion/H1/H2/KL/gradient 轨迹均落盘。
+- Observation：当前证据支持 raw-output initialization/conditioning bottleneck；Interpretation：这不是 researcher decision，也不自动采用 mean-bias 或 normalized-output bridge。
+- 如需改变正式初始化/decoder bridge，必须由研究者在 raw-head mean-bias initialization 与 normalized-output decoder bridge 两个候选间决定。

@@ -1430,3 +1430,8 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 修正 raw-unit metric bridge、真实 Phase A pre/post、Phase C 正常 1→2 + KL warm-up。
 - [x] 生成分阶段 gradient、CSI scale、leakage、独立 fresh-run 与 resume evidence；learning signal GO，tiny overfit NO-GO。
 - [x] 更新 records、tracker、AI_CONTEXT、artifact receipt；下一步仅为 bounded CPU tiny-overfit diagnosis，不进入 GPU/STEP 5.4。
+# 2026-09-22 STEP 5.3D — CSI Scale / Optimization Diagnosis
+
+- [x] 固定 `[0,1]`、CPU、200 steps，完成 raw bridge exact audit、baseline continuation 与 mean-bias diagnostic。
+- [x] baseline `TINY_OVERFIT_NO_GO`；mean-bias diagnostic `TINY_OVERFIT_GO`，仅作为 observation，不改变正式模型。
+- [x] 更新 artifact、record、Tracker、AI_CONTEXT；下一动作等待 researcher 在两个候选 bridge/initialization 方案间决定。

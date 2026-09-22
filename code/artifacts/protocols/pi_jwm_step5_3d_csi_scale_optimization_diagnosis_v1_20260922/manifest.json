@@ -1,0 +1,26 @@
+{
+  "files": {
+    "baseline_longer_run.json": {
+      "bytes": 54053,
+      "sha256": "3939d7c81195b66a2e44e22d23425430229958d037a28e9c112d2810d9a168bf"
+    },
+    "comparison.json": {
+      "bytes": 649,
+      "sha256": "7c5b38d6935f690e16edf1a25a4e3031ca1d05d511aee3b73174f8d0564a4f1f"
+    },
+    "mean_bias_diagnostic.json": {
+      "bytes": 53980,
+      "sha256": "0734d7984939fd0abe9142272917bd27ce71900d57f47b0fc2ce7532cf357010"
+    },
+    "receipt.json": {
+      "bytes": 398,
+      "sha256": "c803094099691e026916e660b708f88aa75f2ab1148c260882508c81c6aa9257"
+    },
+    "scale_bridge_audit.json": {
+      "bytes": 2889,
+      "sha256": "2aa77435d795c99221645dd17151ab941df1cac7568c986563d8d59a194e52da"
+    }
+  },
+  "passed": true,
+  "schema_version": "PI-JWM-Step-5.3D-Manifest-v1"
+}

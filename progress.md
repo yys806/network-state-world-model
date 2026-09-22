@@ -1115,3 +1115,9 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 - [x] Phase A 使用无更新 pre/post；Phase C 复用 5.2 `train_step` 实际执行 H=1→H=2、KL beta 0→1 warm-up。
 - [x] bounded rerun：LEARNING_SIGNAL_GO，TINY_OVERFIT_NO_GO；独立 fresh run、resume、phase-specific gradient 和 CSI scale evidence 已落盘。
 - [ ] 不进入 STEP 5.4/GPU；下一动作仅为一个最小 bounded CPU tiny-overfit diagnosis。
+# 2026-09-22 STEP 5.3D
+
+- [x] Scale bridge exact：H1/H2 actual normalized CSI MSE 与 raw-unit expected MSE 一致。
+- [x] Baseline 200-step：H1 `329.3315→117.6610`，H2 `332.8831→119.7404`，stronger tiny-overfit NO-GO。
+- [x] Mean-bias diagnostic：H1 `1.0935→0.1405`，H2 `1.1040→0.1633`，diagnostic gate GO；不作为正式科研决定。
+- [ ] 等待研究者在 raw-head mean-bias initialization 与 normalized-output decoder bridge 之间做决定；不进入 GPU/STEP 5.4。

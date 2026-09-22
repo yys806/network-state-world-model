@@ -1105,3 +1105,8 @@
 - 5.3 原 Phase C 没有执行冻结的 schedule；修正后直接复用 `Step52Trainer.train_step(global_step=...)`，step 0–9 为 H1/Stage1，step 10+ 为 H2/Stage2，KL 在 20 steps 内 warm-up。
 - `motion_predictions`/`csi_predictions` 是 decoder raw outputs；raw metric 只 inverse-transform targets。CSI audit 实测 prediction 约 0 dB、target 约 98–99 dB，未发现二次 bridge bug。
 - 真实 pre/post 与独立 fresh-run 均通过；learning signal 可接受，但强 tiny-overfit 双条件均未通过，不能进入 GPU/STEP 5.4。
+# 2026-09-22 STEP 5.3D
+
+- Observation：H1/H2 actual CSI normalized MSE 与 `(pred_raw-target_raw)/csi_std` expected MSE 完全一致；normalization bridge 无 bug 证据。
+- Observation：baseline 200 steps 从约 `329/333` 降到 `117.66/119.74`，未达到 stronger gate；mean-bias diagnostic 从约 `1.09/1.10` 降到 `0.1405/0.1633`。
+- Interpretation：更支持 raw-output initialization/conditioning bottleneck，而不是当前证据支持 decoder capacity 或 normalization bug；正式方案仍需 researcher decision。

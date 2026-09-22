@@ -16,7 +16,7 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前状态：`STEP 5.1D = COMPLETE / FROZEN FOR CPU DEVELOPMENT INTEGRATION`，`STEP 5.2 = COMPLETE / FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION`，`STEP 5.3-PATCH = LEARNING_SIGNAL_GO / TINY_OVERFIT_NO_GO`。修正后的证据包含真实 Phase A pre/post、Phase C 1→2 + KL warm-up、raw-unit 分量指标、分阶段梯度、独立 fresh-run reproducibility 与 resume。tiny-data overfit 尚未建立；full training、GPU、formal dataset、planner、baseline、locked-test 仍未开始。
+- 当前状态：`STEP 5.1D = COMPLETE / FROZEN FOR CPU DEVELOPMENT INTEGRATION`，`STEP 5.2 = COMPLETE / FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION`，`STEP 5.3-PATCH = LEARNING_SIGNAL_GO / TINY_OVERFIT_NO_GO`。STEP 5.3D 已完成 CPU-only CSI scale/optimization diagnosis：scale bridge 数学一致；baseline 200-step CSI 仍未达到 stronger tiny-overfit gate；mean-bias 仅诊断对照通过。正式初始化/decoder bridge 尚未选择；full training、GPU、formal dataset、planner、baseline、locked-test 仍未开始。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - STEP 4.4-PATCH3 已在源码中显式区分 Return requirement 的 known/unknown：冻结 current-side 不含 `Task.return_size`，所以 no slot 是 unknown，不是 no-return；unknown 或 known-required/no-slot 都不能错误 final-complete，但 side-state 可区分两者。DAG 只按有效前驱动态释放，terminal Flow completion 同步 remaining/presence/carrying/status。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
@@ -32,7 +32,7 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 
 ## 单一科研下一步
 
-唯一建议下一动作是一个最小 bounded CPU tiny-overfit diagnosis；本轮不进入 STEP 5.4，不启动 GPU，不访问 `locked_test`。
+唯一待研究者决定的是 raw-head mean-bias initialization 与 normalized-output decoder bridge；本轮不进入 STEP 5.4，不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 
