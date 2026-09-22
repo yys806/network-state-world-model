@@ -2245,6 +2245,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.build_step4_4_structured_rssm_world_model_v1",
+        "scripts.build_step5_1b_posterior_loss_metric_receipt_v1",
         "tests.test_step4_4_structured_rssm_world_model_v1"
       ],
       "imports": [
@@ -3486,6 +3487,7 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "scripts.build_step5_1b_posterior_loss_metric_receipt_v1",
         "tests.test_step4_4_structured_rssm_world_model_v1"
       ],
       "imports": [
@@ -3520,7 +3522,9 @@
       "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [
-        "pi_jwm.step5_1b_posterior_loss_metric_v1"
+        "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "pi_jwm.step5_1b_posterior_loss_metric_v1",
+        "scripts.build_step4_4_structured_rssm_world_model_v1"
       ],
       "lifecycle_status": "support",
       "module": "scripts.build_step5_1b_posterior_loss_metric_receipt_v1",

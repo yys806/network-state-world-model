@@ -1371,3 +1371,11 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [ ] Complete final regression, context/index consistency, commit and push.
 - Boundary: no training loop, optimizer step, GPU, formal dataset, planner, baseline, or `locked_test`.
 - Single next action after closure: researcher review; do not enter STEP 5.2 automatically.
+# 2026-09-22 STEP 5.1B-PATCH — Per-Horizon Posterior / Real World-Model Integration / KL-Metric Correction
+
+- [x] 从最新 `main@cbe2f05` 复现原 5.1B 的跨 horizon aggregation、独立 prior、zero-h/identity loss、KL/metric/receipt 语义问题。
+- [x] 以 focused tests 固定 per-horizon target isolation、mask evidence、family-specific teacher、per-dim free bits、empty counts 与 raw-unit metrics。
+- [x] 接入真实 STEP 4.4 `initialize_latent → one_step → phy_prior/comm_prior → vehicle_decoder/csi_decoder` CPU path；禁止 optimizer/training/GPU/locked_test。
+- [x] 重建 12-sample non-locked CPU receipt；focused 5/5、STEP 4.4 regression 30/30、compileall 通过。
+- [ ] 完成 support alignment decision/documentation、knowledge index、最终回归、commit/push 后再报告 Patch 状态。
+- Boundary: 当前仍未 COMPLETE/FROZEN；禁止 STEP 5.2。

@@ -210,3 +210,6 @@
 - 新增 Motion/CSI target-only encoder、training-only posterior、target-free prior、family-wise masked MSE、冻结统计量 raw→normalized bridge、analytic KL、`L_Val` 与逐 horizon Motion/CSI metrics。
 - 新增 CPU receipt：focused 5/5、finite forward/gradients、serialization reload、deterministic path 通过；12-sample non-locked development artifact `passed=true`。
 - 明确 scope：`training=false`、`optimizer_step=false`、`gpu=false`、`formal_dataset=false`、`locked_test_accessed=false`、`performance_claim=false`；STEP 5.2 未开始。
+# 2026-09-22 STEP 5.1B-PATCH
+
+- 修正 Definition 05 posterior/loss/KL/metric 的逐 horizon、真实 STEP 4.4 接线、free-bits、raw-unit metric 和 receipt 语义；CPU-only，未进入训练/GPU/locked_test。

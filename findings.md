@@ -1,5 +1,11 @@
 # Findings
 
+## 2026-09-22 STEP 5.1B-PATCH
+
+- 原实现把 `[B,L,S,F]` target 沿 horizon 求和为 `[B,S,D]`，导致 future posterior 可读取其他 horizon；Patch 保留 horizon，并验证篡改 horizon 2 不改变 horizon 1 embedding/q。
+- 原 receipt 使用零 h、target==prediction 和硬编码 checks；Patch 真实调用 STEP 4.4 current latent/dynamics/priors/decoders，所有 required checks 由计算结果产生。
+- 当前 5.1A target support 为 10 physical / 74 communication，STEP 4.4 development model support 为 8 / 44；receipt 使用显式固定支持子集，完整支持对齐仍是 blocker，不能因此宣称 COMPLETE/FROZEN。
+
 ## 2026-09-21 STEP 5.1A-PATCH
 
 - Root cause 1: `extend_future_motion_csi_targets()` kept `history[-1]` as the position reference for every horizon, while STEP 4.4 recursively applies `state.position + vehicle_motion[..., :3]`; this produced cumulative anchor-to-future targets for horizon 2+ instead of local one-step targets.

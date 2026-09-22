@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-22 STEP 5.1B-PATCH — Per-Horizon Posterior / Real World-Model Integration / KL-Metric Correction
+
+研究者复核确认原 5.1B 存在跨 horizon teacher aggregation、mask evidence 缺失、独立 prior、zero-h/identity prediction loss、错误 free-bits reduction、raw-unit metric 与硬编码 receipt。当前 Patch 已将 Target Encoder 保留为 `[B,L,S,D]`，加入 family-specific future teachers，正式 receipt 走真实 STEP 4.4 `initialize_latent/one_step`、`phy_prior/comm_prior` 与真实 decoders；focused 5/5、STEP 4.4 regression 30/30、receipt 通过、compileall 通过。当前仍未 COMPLETE/FROZEN；target support 10/74 与 model support 8/44 的对齐限制已记录。禁止 Training、optimizer、GPU、formal Dataset、Planner、baseline、locked_test。
+
 ## 2026-09-21 STEP 5.1A-PATCH — Multi-Horizon Motion Semantics & Stable Slot Alignment Fix
 
 Confirmed two training-correctness defects at `main@7ea9e4b`: horizon 2+ Motion deltas were anchored to History current state, and Motion tensor rows followed future entity row order instead of `static.input_entity_index["physical"]`. Added red tests (old code: 5 failures + 1 missing-slot error), then changed only the target contract. Motion now uses `p_(t+k)-p_(t+k-1)` with component masks requiring both adjacent positions; every current physical input entity keeps its fixed slot, non-Vehicles stay fully masked, future-only entities cannot enter support, and disappearance cannot shift rows.

@@ -2744,3 +2744,6 @@ STEP 4.4-PATCH3 进一步核实：冻结 current-side Tensor/Graph 没有 `Task.
 # 2026-09-21 STEP 5.1B Definition 05 Loss / Posterior / Metric 边界
 
 STEP 5.1B 已实现 Definition 05 的 additive CPU primitives。Future Motion/CSI target 只能进入 training-only posterior target encoder；prior predictor 不接收 target。当前实现包含 family-wise mask-normalized MSE、冻结统计量 raw→normalized loss bridge、diagonal Gaussian KL（raw/adjusted free-bits/count）、`L_Val` 和逐 horizon Motion/CSI MAE/RMSE。它们是接口与可执行性证据，不是训练循环、GPU、正式 Dataset、locked-test 或性能结果。Event/outage/rate/service residual、Flow/Task/DAG/lifecycle loss、NLL、overshooting、KL balancing 均未加入。
+# 2026-09-22 Definition 05 implementation boundary correction
+
+原 5.1B primitive implementation 不足以作为 Definition 05 完成证据：其 target encoder 聚合 horizon，receipt 使用 zero h/identity prediction，prior/decoder 未接入真实 STEP 4.4，KL/metric/gradient checks 不足。当前只执行 5.1B-PATCH，采用逐 horizon target evidence、family-specific future teacher、真实 STEP 4.4 prior/decoder、逐维 free bits 和 raw-unit metrics；未完成前不得进入 STEP 5.2。

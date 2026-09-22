@@ -1,15 +1,17 @@
 {
-  "schema_version": "PI-JWM-Step5.1B-Receipt-v1",
+  "schema_version": "PI-JWM-Step5.1B-Patch-Receipt-v1",
   "passed": true,
   "checks": {
-    "target_encoder_posterior_prediction_loss_kl_metric": true,
-    "finite": true,
-    "finite_gradients": true,
-    "serialization_reload": true,
+    "temporal_isolation": true,
+    "mask_evidence": true,
+    "actual_prior_decoder_integration": true,
+    "free_bits_per_dimension": true,
+    "gradient_connection": true,
+    "raw_unit_metrics": true,
+    "real_12_sample_cpu_path": true,
     "prior_target_invariant": true,
-    "free_bits_raw_and_adjusted_exposed": true,
-    "empty_mask_safe": true,
-    "no_downstream_rule_state_loss": true
+    "no_optimizer_step": true,
+    "receipt_tamper_negative": true
   },
   "scope": {
     "training": false,
@@ -19,18 +21,16 @@
     "locked_test_accessed": false,
     "performance_claim": false
   },
+  "model_config": {
+    "d_h": 16,
+    "d_z": 4,
+    "n_comm_rb": 50
+  },
   "valid_counts": {
     "motion": 112,
-    "csi": 53400,
-    "kl_physical": 14,
-    "kl_communication": 534
+    "csi": 53400
   },
   "values": {
-    "motion_loss": 0.0,
-    "csi_loss": 0.0,
-    "kl_physical_raw": 0.8685054779052734,
-    "kl_physical_adjusted": 0.8685054779052734,
-    "kl_communication_raw": 0.7373533844947815,
-    "kl_communication_adjusted": 0.7373533844947815
+    "mean_probe_loss": 167.33888244628906
   }
 }

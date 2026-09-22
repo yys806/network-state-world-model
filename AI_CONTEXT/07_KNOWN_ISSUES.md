@@ -125,11 +125,11 @@ STEP 3.2-PATCH has finalized machine-readable Dataset isolation evidence for the
 # STEP 4.4 remaining boundary（2026-09-21）
 
 The previous outage blocker is resolved: outage is an independent known stochastic event, and learned service residual is closed. STEP 4.4-PATCH3 is COMPLETE / FROZEN. Frozen current-side input cannot determine Return requirement when no typed Return slot exists; the adapter preserves this as unknown and blocks false final completion. Future-only Return Flow birth remains explicitly unsupported because v1 cannot create new object slots. Definition 05 must mask, exclude, or classify windows crossing that boundary. Model accuracy, posterior/prior training loss, KL/overshooting, calibration, formal capacities, Planner behavior, and performance remain unverified. Physical topology parameters remain development-only; Return multi-hop and same-destination partial-hop reroute retain their prior evidence limits.
-# STEP 5.1B Definition 05 implementation boundary（2026-09-21）
+# STEP 5.1B-PATCH Definition 05 implementation boundary（2026-09-22）
 
-- Decisions are frozen and the CPU Loss/Posterior/Metric primitives are implemented in STEP 5.1B; training runtime is still not implemented.
+- Decisions are frozen and the 5.1B-PATCH CPU Loss/Posterior/Metric integration receipt passes; the patch is not yet COMPLETE/FROZEN and training runtime is still not implemented.
 - STEP 4.2A future position exists only as raw sample value; it is not normalized or collated into target tensor. `target_entity_features` currently carries speed only.
 - Future per-RB CSI is absent from current target sample/tensor. History CSI and future communication service cannot substitute.
-- STEP 4.4 real state uses raw position while Comm CSI follows the normalized graph path; STEP 5.1 must freeze and test a normalized-loss/raw-rule unit bridge.
+- STEP 4.4 real state uses raw position while Comm CSI follows the normalized graph path; the patch tests the normalized-loss/raw-rule bridge. Target support is 10/74 while the development model support is 8/44, so full support alignment remains open.
 - Historical loss/runner/checkpoints are incompatible as complete implementations because they use old NLL/downstream losses/KL balancing/overshooting/staged freezing/P4 selection semantics.
 - Therefore training is NO-START, not a GPU blocker. Receipt evidence remains development-only: `training=false`, `optimizer_step=false`, `gpu=false`, `formal_dataset=false`, `locked_test_accessed=false`, `performance_claim=false`.

@@ -52,11 +52,11 @@ Step 2.4 机器证据：`code/artifacts/protocols/pi_jwm_communication_outcome_s
 
 Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终泛化和正式 planner 收益均不存在。
 
-## 2026-09-21 STEP 5.1B Posterior / Loss / KL / Metric
+## 2026-09-22 STEP 5.1B-PATCH Posterior / Loss / KL / Metric
 
-新增 `step5_1b_posterior_loss_metric_v1.py` 与 CPU receipt。Future Motion/CSI target 只进入 training-only posterior target encoder；prior 没有 target 入参。已验证 family-wise masked MSE、冻结统计量 raw→normalized bridge、analytic diagonal Gaussian KL（raw/adjusted free-bits/count）、`L_Val` 与逐 horizon Motion/CSI 指标。
+修正原 5.1B 的跨 horizon target aggregation、mask evidence 缺失、独立 prior、zero-h/identity loss、batch-level free bits、raw-unit metric 和硬编码 receipt。当前 `TargetEncoder` 输出保留 `[B,L,S,D]`，future teacher 按 Physical/Communication 分离；receipt 真实调用 STEP 4.4 current latent/dynamics/priors/decoders，并验证 temporal isolation、mask evidence、per-dim free bits、gradient、raw-unit metric、prior target isolation。
 
-Focused 5/5，12-sample non-locked development receipt `passed=true`；finite forward、finite gradients、serialization reload 和 deterministic CPU path 通过。范围明确为 `training=false`、`optimizer_step=false`、`gpu=false`、`formal_dataset=false`、`locked_test_accessed=false`、`performance_claim=false`。不构成训练收敛、正式 Dataset 或预测性能结果；STEP 5.2 未授权。
+Focused 5/5，STEP 4.4 regression 30/30，12-sample non-locked development receipt `passed=true`，compileall 和 knowledge-index check 通过。范围明确为 `training=false`、`optimizer_step=false`、`gpu=false`、`formal_dataset=false`、`locked_test_accessed=false`、`performance_claim=false`。当前 target support 10/74 与 STEP 4.4 model support 8/44 的完整对齐仍未解决，因此 STEP 5.1B 尚未 COMPLETE/FROZEN，STEP 5.2 未授权。
 
 ## 当前新定义实验状态
 

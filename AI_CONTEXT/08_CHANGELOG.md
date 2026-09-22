@@ -95,6 +95,7 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 - Flow 采用 Logical/Carrying 独立分支后 fusion，只输出一个 Flow relation latent；delivered/Epoch/index 不作为 learned numeric input。
 - 输出冻结为 aligned `Z_t^{PI,L_g}`；artifact 是未训练 CPU development evidence，不进入 World Model/dynamics/loss/planner/training。
 - 2026-09-21：STEP 5.0 冻结 Definition 05 十项研究决定并审计旧实现。新 active contract 固定 deterministic mean decoder、Motion/CSI mask-MSE、family KL、overshooting OFF、family-only posterior teacher、joint training 与 prior-only validation。发现 future position 尚未 normalized/tensorized、future CSI target 缺失；Loss/Training 仍未实现，无 GPU/locked-test。
-# 2026-09-21 STEP 5.1B
+# 2026-09-22 STEP 5.1B-PATCH
 
-- 新增 Definition 05 posterior/loss/KL/metric CPU 原语和 12-sample non-locked receipt；明确 target-only posterior、target-free prior、Motion/CSI family MSE、analytic KL/free bits 与逐 horizon指标。未进入 training/optimizer/GPU/locked-test。
+- 修正原 5.1B 的跨 horizon target aggregation、mask 不可见、独立 PriorPredictor、zero-h/identity loss、batch-level free bits、raw-unit metric 和硬编码 receipt 问题。
+- 当前 CPU receipt 真实调用 STEP 4.4 `initialize_latent → one_step → phy_prior/comm_prior → vehicle_decoder/csi_decoder`，并验证逐 horizon isolation、mask evidence、逐维 free bits、gradient、raw-unit metric 与 target isolation；仍未进入 training/optimizer/GPU/locked-test。
