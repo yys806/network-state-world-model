@@ -1,0 +1,136 @@
+{
+  "capacity_scope": "explicit_development_bound_not_formal_capacity",
+  "carrying_numeric_feature_order": [
+    "carrying.hop_progress",
+    "carrying.hop_remaining"
+  ],
+  "comm_relation_type_vocab": [
+    "<PAD>",
+    "unknown",
+    "wireless",
+    "wired"
+  ],
+  "communication_mask_semantics": "relation_validity_independent_of_feature_observability_v2",
+  "cpu_capacity_semantic_role": "information_agent.static_capability",
+  "dag_direction": "source_task_j -> target_task_k; k depends on j",
+  "dataset_contract_version": "PI-JWM-Step-4.2A-Dataset-Preprocessing-v1",
+  "dtype": "float32",
+  "entity_feature_order": [
+    "speed_mps",
+    "canonical_acceleration_mps2"
+  ],
+  "entity_position_feature_order": [
+    "x",
+    "y",
+    "z"
+  ],
+  "entity_type_vocab": [
+    "<PAD>",
+    "unknown",
+    "vehicle",
+    "uav",
+    "rsu",
+    "edge",
+    "cloud"
+  ],
+  "feature_units": {},
+  "flow_status_vocab": [
+    "<PAD>",
+    "unknown",
+    "ACTIVE",
+    "COMPLETED",
+    "SUPERSEDED"
+  ],
+  "flow_type_vocab": [
+    "<PAD>",
+    "unknown",
+    "Input",
+    "Return",
+    "DepData"
+  ],
+  "future_action_index_policy": "anchor_visibility_then_history_union_input_index",
+  "graph_builder": false,
+  "history_steps": 2,
+  "horizon_steps": 2,
+  "index_dtype": "int64",
+  "input_index_policy": "history_causal_observable_object_union",
+  "lifecycle_vocab": [
+    "<PAD>",
+    "unknown",
+    "to_generate",
+    "waiting_to_offload",
+    "offloading",
+    "computing",
+    "transmitting",
+    "completed",
+    "failed"
+  ],
+  "logical_destination_provenance_model_feature": false,
+  "logical_flow_numeric_feature_order": [
+    "logical.total_data",
+    "logical.e2e_delivered",
+    "logical.e2e_remaining"
+  ],
+  "max_action_entries": 2,
+  "max_comm_relation": 74,
+  "max_dag": 7,
+  "max_entity": 10,
+  "max_flow": 2,
+  "max_logical_flow": 1,
+  "max_past_outcome_dag": 7,
+  "max_past_outcome_relation": 72,
+  "max_relation": 72,
+  "max_route_hops": 2,
+  "max_route_nodes": 2,
+  "max_target_entity": 10,
+  "max_target_flow": 2,
+  "max_target_logical_flow": 1,
+  "max_target_task": 8,
+  "max_task": 7,
+  "max_task_agent_relation": 22,
+  "mobility_feature_order": [
+    "azimuth_rad",
+    "elevation_rad",
+    "speed_mps"
+  ],
+  "n_comm_rb": 50,
+  "n_rb": 1,
+  "normalization_mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+  "normalization_policy": "reuse_step3_2_train_only_stats; no_refit_in_collation",
+  "padding_policy": "numeric=0; index=-1; categorical=0; presence/mask=false",
+  "physical_topology_policy": "NOT_BUILT_RESEARCHER_DECISION_REQUIRED",
+  "raw_contract_version": "PI-JWM-Raw-Graph-Input-Additive-Amendment-v1-step4.2A",
+  "raw_flow_contract_version": "PI-JWM-Raw-Causal-Flow-Ledger-Amendment-v1-step4.2C-B",
+  "route_kind_vocab": [
+    "<PAD>",
+    "unknown",
+    "offload",
+    "return"
+  ],
+  "sample_contract_version": "PI-JWM-Model-Ready-Sample-Contract-v6-step4.2C-C",
+  "schema_version": "PI-JWM-Model-Input-Tensor-Collation-v5-step4.2C-C-PATCH",
+  "stateful_flow_policy": "STEP_4.2C_C_LOGICAL_FLOW_SEPARATE_FROM_LEGACY_HOP_SERVICE",
+  "target_carrying_semantics": "future_ground_truth_deterministic_transition_state; not_a_learned_prediction_head",
+  "task_agent_relation_type_vocab": [
+    "<PAD>",
+    "unknown",
+    "src",
+    "host",
+    "exec",
+    "ret"
+  ],
+  "task_history_feature_order": [
+    "task_cpu_work",
+    "computed_cpu_work",
+    "transmitted_size",
+    "elapsed_time_s"
+  ],
+  "transport_vocab": [
+    "<PAD>",
+    "unknown",
+    "wireless",
+    "wired"
+  ],
+  "unknown_policy": "categorical unknown code=1; padding code=0",
+  "vehicle_motion_policy": "SUMO_external_not_in_mobility_action"
+}

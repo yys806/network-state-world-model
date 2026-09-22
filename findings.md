@@ -1063,3 +1063,9 @@
 - The support mismatch is lineage-level: historical 4.2C-C/4.3/4.4 artifacts contain 5 samples at 8/44, while STEP 5.1A contains 12 samples at 10/74.
 - The suspected raw-support blocker did not reproduce. All 12 windows have real source provenance and pass the actual 4.2A + 4.2C-B + 4.2C-C path.
 - The new unified bundle proves paired sample/window identity and capacity alignment, but does not yet prove rebuilt 4.3A/4.3B/4.4 execution. Do not call STEP 5.1C complete or enter STEP 5.2 until that rerun and paired 5.1B receipt pass.
+# 2026-09-22 STEP 5.1C-PATCH findings
+
+- 旧 5.1B/Flow artifact 的 8/44 support 与 5.1A 的 10/74 target 不能作为 paired evidence；当前统一 bundle 已消除该 lineage mismatch。
+- `no_prefix_truncation` 不能由常量 receipt 证明；本 Patch 改为由逐样本 identity、support width、capacity 和 target tensor shape 的真实比较计算。
+- 历史 `flow_train_normalization_stats.json` 未被删除，已明确标为历史 provenance；当前 bundle 使用独立 unified dev_train stats。
+- 当前证据仍是 CPU/non-locked contract evidence；4.3A/4.3B/4.4 unified rebuild 是唯一后续候选动作，需研究者另行授权。

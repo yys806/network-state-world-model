@@ -1,0 +1,79 @@
+{
+  "features": {
+    "carrying.hop_progress": {
+      "count": 0,
+      "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+      "mean": 0.0,
+      "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+      "source_field": "carrying.hop_progress",
+      "std": 1.0,
+      "unit": "AirFogSim data-unit",
+      "zero_variance_handling": "std_replaced_with_1"
+    },
+    "carrying.hop_remaining": {
+      "count": 0,
+      "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+      "mean": 0.0,
+      "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+      "source_field": "carrying.hop_remaining",
+      "std": 1.0,
+      "unit": "AirFogSim data-unit",
+      "zero_variance_handling": "std_replaced_with_1"
+    },
+    "logical.e2e_delivered": {
+      "count": 0,
+      "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+      "mean": 0.0,
+      "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+      "source_field": "logical.e2e_delivered",
+      "std": 1.0,
+      "unit": "AirFogSim data-unit",
+      "zero_variance_handling": "std_replaced_with_1"
+    },
+    "logical.e2e_remaining": {
+      "count": 0,
+      "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+      "mean": 0.0,
+      "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+      "source_field": "logical.e2e_remaining",
+      "std": 1.0,
+      "unit": "AirFogSim data-unit",
+      "zero_variance_handling": "std_replaced_with_1"
+    },
+    "logical.total_data": {
+      "count": 0,
+      "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+      "mean": 0.0,
+      "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+      "source_field": "logical.total_data",
+      "std": 1.0,
+      "unit": "AirFogSim data-unit",
+      "zero_variance_handling": "std_replaced_with_1"
+    }
+  },
+  "fit_policy": "unified_samples_only; history rows; known=true AND presence=true AND feature_mask=true AND value!=null",
+  "fit_sample_count": 8,
+  "future_target_in_fit": false,
+  "schema_version": "PI-JWM-Step-4.2C-C-Train-Only-Flow-Normalization-v2-presence-aware",
+  "source_sample_ids": [
+    "step2.4-real-communication-seed0::anchor-0001",
+    "step2.4-real-communication-seed0::anchor-0002",
+    "step2.4-real-communication-seed0::anchor-0003",
+    "step2.4-real-communication-seed0::anchor-0004",
+    "step3.2-dev-seed1::anchor-0001",
+    "step3.2-dev-seed1::anchor-0002",
+    "step3.2-dev-seed1::anchor-0003",
+    "step3.2-dev-seed1::anchor-0004"
+  ],
+  "source_split": "dev_train",
+  "source_trajectory_ids": [
+    "step2.4-real-communication-seed0",
+    "step3.2-dev-seed1"
+  ],
+  "validation_sample_ids_excluded": [
+    "step3.2-dev-seed2::anchor-0001",
+    "step3.2-dev-seed2::anchor-0002",
+    "step3.2-dev-seed2::anchor-0003",
+    "step3.2-dev-seed2::anchor-0004"
+  ]
+}

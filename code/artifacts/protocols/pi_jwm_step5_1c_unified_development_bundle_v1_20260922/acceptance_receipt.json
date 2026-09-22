@@ -1,0 +1,59 @@
+{
+  "capacities": {
+    "max_comm_relation": 74,
+    "max_entity": 10
+  },
+  "checks": {
+    "all_sample_support_within_full_capacity": true,
+    "anchor_alignment": true,
+    "comm_capacity_exact_alignment": true,
+    "comm_endpoint_identity_alignment_per_sample": true,
+    "comm_identity_alignment_per_sample": true,
+    "comm_rb_identity_alignment_per_sample": true,
+    "comm_relation_type_alignment_per_sample": true,
+    "deterministic_rebuild": true,
+    "flow_stats_fit_only_unified_dev_train": true,
+    "flow_tensor_lineage_equality": true,
+    "future_frame_indices_alignment": true,
+    "future_only_entity_not_in_current_support": true,
+    "future_only_relation_not_in_current_support": true,
+    "graph_input_lineage_equality": true,
+    "history_frame_indices_alignment": true,
+    "no_future_target_in_normalization_fit": true,
+    "no_pairing_crop_required": true,
+    "no_prefix_truncation_pairing_logic": true,
+    "no_target_only_current_support": true,
+    "padding_isolation": true,
+    "padding_slots_presence_mask_false": true,
+    "paired_sample_id_alignment": true,
+    "physical_capacity_exact_alignment": true,
+    "physical_identity_alignment_per_sample": true,
+    "physical_slot_index_alignment_per_sample": true,
+    "receipt_tamper_negative": true,
+    "serialize_reload": true,
+    "target_lineage_equality": true,
+    "target_tensor_comm_width_matches_unified": true,
+    "target_tensor_physical_width_matches_unified": true,
+    "tensor_checks_passed": true,
+    "trajectory_id_alignment": true,
+    "validation_samples_excluded_from_stats": true
+  },
+  "dev_train_sample_count": 8,
+  "dev_validation_sample_count": 4,
+  "lineage": {
+    "base_graph_input": "612c4b3791ba02371769b3dd35973a762d4584412b65d632e76cb34c1ca3ebec",
+    "historical_flow_stats": "e42544237229365da9962e4e4dd31f6aec07a440259a143c434f8192e9fae768",
+    "new_stats_source": "unified dev_train samples only",
+    "target": "43effd51ae3a8dab851b5c67bffe54366b119ff5f16d4bb7bdb41abb16d0b62c"
+  },
+  "passed": true,
+  "sample_count": 12,
+  "schema_version": "PI-JWM-Step-5.1C-Unified-Development-Bundle-Receipt-v2",
+  "scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "locked_test_accessed": false,
+    "optimizer_step": false,
+    "training": false
+  }
+}

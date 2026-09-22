@@ -1,0 +1,272 @@
+{
+  "comm_identity_alignment_per_sample": [
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0001"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0002"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0003"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0004"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0001"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0002"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0003"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0004"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0001"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0002"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0003"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0004"
+    }
+  ],
+  "normalization": {
+    "fit_sample_ids": [
+      "step2.4-real-communication-seed0::anchor-0001",
+      "step2.4-real-communication-seed0::anchor-0002",
+      "step2.4-real-communication-seed0::anchor-0003",
+      "step2.4-real-communication-seed0::anchor-0004",
+      "step3.2-dev-seed1::anchor-0001",
+      "step3.2-dev-seed1::anchor-0002",
+      "step3.2-dev-seed1::anchor-0003",
+      "step3.2-dev-seed1::anchor-0004"
+    ],
+    "future_target_in_fit": false,
+    "historical_stats_file": "code/artifacts/protocols/pi_jwm_step4_2c_c_flow_sample_tensor_v1_20260920/flow_train_normalization_stats.json",
+    "stats_file": "unified_flow_train_normalization_stats.json",
+    "validation_excluded": [
+      "step3.2-dev-seed2::anchor-0001",
+      "step3.2-dev-seed2::anchor-0002",
+      "step3.2-dev-seed2::anchor-0003",
+      "step3.2-dev-seed2::anchor-0004"
+    ]
+  },
+  "physical_identity_alignment_per_sample": [
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0001"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0002"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0003"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0004"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0001"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0002"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0003"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0004"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0001"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0002"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0003"
+    },
+    {
+      "mismatches": [],
+      "passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0004"
+    }
+  ],
+  "rows": [
+    {
+      "anchor_decision_frame": 1,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0001",
+      "target_paired": true,
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 2,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0002",
+      "target_paired": true,
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 3,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0003",
+      "target_paired": true,
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 4,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step2.4-real-communication-seed0::anchor-0004",
+      "target_paired": true,
+      "trajectory_id": "step2.4-real-communication-seed0"
+    },
+    {
+      "anchor_decision_frame": 1,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0001",
+      "target_paired": true,
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 2,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0002",
+      "target_paired": true,
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 3,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0003",
+      "target_paired": true,
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 4,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step3.2-dev-seed1::anchor-0004",
+      "target_paired": true,
+      "trajectory_id": "step3.2-dev-seed1"
+    },
+    {
+      "anchor_decision_frame": 1,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0001",
+      "target_paired": true,
+      "trajectory_id": "step3.2-dev-seed2"
+    },
+    {
+      "anchor_decision_frame": 2,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0002",
+      "target_paired": true,
+      "trajectory_id": "step3.2-dev-seed2"
+    },
+    {
+      "anchor_decision_frame": 3,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0003",
+      "target_paired": true,
+      "trajectory_id": "step3.2-dev-seed2"
+    },
+    {
+      "anchor_decision_frame": 4,
+      "failed_checks": [],
+      "flow_ledger_passed": true,
+      "sample_checks_passed": true,
+      "sample_id": "step3.2-dev-seed2::anchor-0004",
+      "target_paired": true,
+      "trajectory_id": "step3.2-dev-seed2"
+    }
+  ],
+  "schema_version": "PI-JWM-Step-5.1C-Lineage-Audit-v2",
+  "trajectory_ledgers": {
+    "step2.4-real-communication-seed0": {
+      "sha256": "9bdd75c09c122cc5401e6b0226444af189670f1157c20f66e3c6085c761dc49d",
+      "source": "code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v2_20260919/real_communication_outcome_semantics.json"
+    },
+    "step3.2-dev-seed1": {
+      "sha256": "3fc4da5cac00a645a73228a6bf437b2d61fd82ee3e3be976442567d1e1e6fc5d",
+      "source": "code/artifacts/protocols/pi_jwm_step3_2_raw_dev_seed1_20260919/real_communication_outcome_semantics.json"
+    },
+    "step3.2-dev-seed2": {
+      "sha256": "02f186f5e7f109760c85a6bad879c7e2dd745ea015179c85850313cac3256bad",
+      "source": "code/artifacts/protocols/pi_jwm_step3_2_raw_dev_seed2_20260919/real_communication_outcome_semantics.json"
+    }
+  }
+}

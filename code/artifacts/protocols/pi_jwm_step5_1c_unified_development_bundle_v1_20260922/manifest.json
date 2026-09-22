@@ -1,0 +1,52 @@
+{
+  "builder_source_commit": "9d8c37e4fd15024807b14b73fdd471389596dca4",
+  "files": {
+    "acceptance_receipt.json": {
+      "bytes": 2334,
+      "sha256": "29d9196531a0f3710191e9872f44d428f28070ae7980e4de1b945385196275d6"
+    },
+    "lineage_audit.json": {
+      "bytes": 8229,
+      "sha256": "8b9496a48ecbef7b92ea3f11cc8847845271996a18920d58a11eb84c8dec5508"
+    },
+    "manifest.json": {
+      "bytes": 1959,
+      "sha256": "3f5bf042df74930e602af1a9c7b2ccfaf7bbf5960441c9989d64a777d9a1d595"
+    },
+    "tensor_contract.json": {
+      "bytes": 3816,
+      "sha256": "c25f935aa961cc64cfbf6969bf7159bca934d77e76cc2929d5076a79673ecad7"
+    },
+    "unified_flow_samples.json": {
+      "bytes": 14590177,
+      "sha256": "4b175a156ffe34becb1c1b64d1dd1a3c7432fba5f46c430df442a065c3939cd5"
+    },
+    "unified_flow_tensor.npz": {
+      "bytes": 139466,
+      "sha256": "8986ec967db242a0b7736da7e634714dbda76aeef6c391827b70f0afa977368d"
+    },
+    "unified_flow_train_normalization_stats.json": {
+      "bytes": 3439,
+      "sha256": "16a33c4e34ec472eb6ed7058fd26af8e17c10baed35f32a98035ed36b76fa36e"
+    }
+  },
+  "large_artifact_provenance": {
+    "unified_flow_samples.json": {
+      "path": "code/artifacts/protocols/pi_jwm_step5_1c_unified_development_bundle_v1_20260922/unified_flow_samples.json",
+      "source": "STEP 4.2A batch + STEP 4.2C-B ledger + unified dev_train/dev_validation pairing"
+    },
+    "unified_flow_tensor.npz": {
+      "path": "code/artifacts/protocols/pi_jwm_step5_1c_unified_development_bundle_v1_20260922/unified_flow_tensor.npz",
+      "source": "unified_flow_samples.json + unified_flow_train_normalization_stats.json"
+    }
+  },
+  "passed": true,
+  "schema_version": "PI-JWM-Step-5.1C-Unified-Development-Bundle-Manifest-v2",
+  "scope": {
+    "formal_dataset": false,
+    "gpu": false,
+    "locked_test_accessed": false,
+    "optimizer_step": false,
+    "training": false
+  }
+}

@@ -8,6 +8,14 @@
 - Boundary: no STEP 5.1B, Posterior, Loss, KL, Metric, optimizer, training, GPU, planner, formal Dataset, baseline, Definition 05 decision change, normalization refit, or `locked_test`.
 - Single next action after closure: researcher review and separate authorization of STEP 5.1B; do not execute automatically.
 
+# 2026-09-22 STEP 5.1C-PATCH — Identity-Proof & Training-Normalization Lineage Closure
+
+- [x] 对 12 个 paired windows 完成 Physical/Communication slot-wise identity、端点 ID/RB identity 和 tamper negative。
+- [x] 由真实 support 与 target tensor 计算 10/74 capacity exact alignment，证明无 pairing crop/no-prefix truncation。
+- [x] 只从 unified `dev_train` 8 samples 的 History 拟合新 Flow stats；validation 4 samples apply-only，Future Target excluded；重建 tensor 并通过 deterministic/serialize checks。
+- [x] 更新 implementation record、tracker、AI_CONTEXT、过程记录和知识索引。
+- Boundary: 不重建 4.3A/4.3B/4.4，不运行 paired 5.1B receipt，不训练、不用 GPU、不访问 `locked_test`，不进入 STEP 5.2。
+
 # 2026-09-21 STEP 5.1A — Motion / CSI Target & Normalization Contract Closure (superseded by PATCH closure above)
 
 - [x] Verify clean `main@667e560c30f019e5ed576cdba3ee1caa838b3cdd` against `origin/main` and restore STEP 5.0 decisions/boundaries.

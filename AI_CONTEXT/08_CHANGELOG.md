@@ -99,3 +99,9 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 
 - 修正原 5.1B 的跨 horizon target aggregation、mask 不可见、独立 PriorPredictor、zero-h/identity loss、batch-level free bits、raw-unit metric 和硬编码 receipt 问题。
 - 当前 CPU receipt 真实调用 STEP 4.4 `initialize_latent → one_step → phy_prior/comm_prior → vehicle_decoder/csi_decoder`，并验证逐 horizon isolation、mask evidence、逐维 free bits、gradient、raw-unit metric 与 target isolation；仍未进入 training/optimizer/GPU/locked-test。
+
+# 2026-09-22 STEP 5.1C-PATCH
+
+- 完成 unified development bundle 的 Physical/Communication slot-wise identity proof、端点真实 ID 反查、10/74 capacity exact alignment、no-prefix/no-crop 机器证明和 tamper negative。
+- 重新拟合 `unified_flow_train_normalization_stats.json`：仅使用 8 个 `dev_train` samples 的 History，4 个 validation samples 排除，Future Target 不参与；旧 5-sample stats 仅保留为历史 provenance。
+- receipt、lineage audit、tensor contract、deterministic rebuild 与 serialize/reload 通过；4.3A/4.3B/4.4 unified rebuild 和 paired 5.1B acceptance 未执行，STEP 5.2 仍禁止。

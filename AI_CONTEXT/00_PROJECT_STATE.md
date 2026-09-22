@@ -73,6 +73,12 @@
 
 Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能声明已开放”的证据。
 
+## 2026-09-22 STEP 5.1C-PATCH
+
+- Unified bundle 对 12 个 paired windows 完成 slot-wise Physical/Communication identity proof；统一容量为 `max_entity=10`、`max_comm_relation=74`，no-prefix/pairing crop 机器检查通过。
+- Flow normalization 新 stats 只从 8 个 unified `dev_train` samples 的 History 拟合；4 个 `dev_validation` samples 排除，Future Target 未参与 fit；旧 5-sample stats 仅保留为历史 provenance。
+- receipt、lineage audit、tensor contract、deterministic rebuild 和 serialize/reload 通过；仍为 CPU/non-locked development evidence，4.3A/4.3B/4.4 unified rebuild 与 paired 5.1B acceptance 尚未开始，STEP 5.2 禁止进入。
+
 ## Freeze chain（2026-09-20 current）
 
 - Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.1 mapping、STEP 4.2A existing-source input extension、STEP 4.2C-B Raw Flow、STEP 4.2C-C Flow Sample/Tensor、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已冻结。

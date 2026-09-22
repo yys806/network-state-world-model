@@ -133,6 +133,11 @@ The previous outage blocker is resolved: outage is an independent known stochast
 - STEP 4.4 real state uses raw position while Comm CSI follows the normalized graph path; the patch tests the normalized-loss/raw-rule bridge. Target support is 10/74 while the development model support is 8/44, so full support alignment remains open.
 - Historical loss/runner/checkpoints are incompatible as complete implementations because they use old NLL/downstream losses/KL balancing/overshooting/staged freezing/P4 selection semantics.
 - Therefore training is NO-START, not a GPU blocker. Receipt evidence remains development-only: `training=false`, `optimizer_step=false`, `gpu=false`, `formal_dataset=false`, `locked_test_accessed=false`, `performance_claim=false`.
+
+# STEP 5.1C-PATCH remaining boundary（2026-09-22）
+
+- Unified identity and normalization lineage is closed for the 12 non-locked development windows; it does not prove rebuilt 4.3A/4.3B/4.4 execution.
+- The historical 8/44 model artifacts cannot be paired with the 10/74 target contract; only the new unified bundle is eligible for the next separately authorized rebuild.
 # 2026-09-22 STEP 5.1C lineage alignment
 
 - Historical model artifacts and STEP 5.1A targets came from different development lineages (5 vs 12 samples; 8/44 vs 10/74 support). The old 5.1B receipt reused one carrier and prefix-truncated targets; that receipt is not acceptable for closure.

@@ -57,6 +57,8 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 - STEP 4.2C-C Flow Sample/Tensor: `code/src/pi_jwm/step4_2c_c_flow_sample_tensor_v1.py` and `code/scripts/build_step4_2c_c_flow_sample_tensor_v1.py`; independent logical Flow namespace, carrying state, target isolation, presence-aware train-only normalization, full four-way Sample→Tensor semantic equality, overflow/round-trip/tamper receipt. No graph construction or model read path.
 - Raw DAG capture amendment: `code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py::_capture`; source `airfogsim_full_dual_graph_observer_v1._extract_dag_edges`.
 
+- STEP 5.1C unified lineage builder: `code/scripts/build_step5_1c_unified_development_bundle_v1.py`; emits slot-wise identity audit, no-prefix capacity proof, unified dev_train normalization stats, tensor contract, deterministic/serialization receipt. It is CPU/non-locked development evidence and is not yet consumed by a rebuilt 4.3A/4.3B/4.4 path.
+
 ## 历史代码定位
 
 不要按文件名猜是否弃用。先查 `docs/registries/historical_method_registry.json`，再查 `docs/registries/generated/archive_candidate_registry.csv` 和依赖图。211 个历史候选当前只做逻辑归档，未物理移动。

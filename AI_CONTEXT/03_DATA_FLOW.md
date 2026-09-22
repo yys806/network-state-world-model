@@ -86,6 +86,10 @@ DataLoader → 模型 prior/teacher 输出 → `formal_world_model_loss()`。bas
 - STEP 4.2C-B Raw Flow rule：`target_node_id` 是 current action/carrying-hop target，不是可靠的 end-to-end destination。Input logical destination 从已建立 offload route terminal 捕获；Return 从 Decision task `return_destination_id` 捕获。Flow row 保存 source/capture phase；同一 `(TaskID, FlowType, Epoch)` destination 固定。真实两跳只在最终 hop 增加 E2E delivered，普通 hop advancement 只推进 hop index。
 - Remaining Task source：`_extract_tasks()` 已读取 return size/deadline/priority，但 frozen Raw decision row 未透传；它们不是 simulator-source missing。`task_delay` 已由当前 `elapsed_time_s=max(decision_time-arrival_time,0)` 因果表达。
 
+## 2026-09-22 STEP 5.1C-PATCH
+
+Unified Flow samples now use the same 12-window lineage as the 5.1A target. Physical and Communication support identity is checked slot by slot, with endpoint indices reverse-mapped to real entity IDs. Normalization is fit from unified `dev_train` History only (8 samples); validation (4 samples) is apply-only and Future Target is excluded. Historical 5-sample Flow stats remain provenance-only.
+
 Unverified：未在当前 tensor manifest、loader 或模型实际读路径出现的字段，不得推断为当前模型输入。
 
 ## 2026-09-19 Raw 状态
