@@ -226,6 +226,8 @@ class Step52TrainingConfig:
     kl_schedule: KLSchedule = field(default_factory=KLSchedule)
     rssm: StructuredRSSMConfig = field(default_factory=StructuredRSSMConfig)
     encoder: DualGraphEncoderConfig = field(default_factory=DualGraphEncoderConfig)
+    csi_decoder_output_space: str = "raw_db"
+    csi_decoder_bias_init_policy: str = "train_only_csi_mean"
 
     def __post_init__(self) -> None:
         if self.learning_rate <= 0 or self.weight_decay < 0 or self.batch_size <= 0:
@@ -234,6 +236,10 @@ class Step52TrainingConfig:
             raise ValueError("invalid training limits")
         if self.stage1_steps < 0 or self.checkpoint_patience < 0 or self.max_horizon <= 0:
             raise ValueError("invalid stage/curriculum configuration")
+        if self.csi_decoder_output_space != "raw_db":
+            raise ValueError("STEP 5.3E v1 requires raw_db CSI decoder output")
+        if self.csi_decoder_bias_init_policy != "train_only_csi_mean":
+            raise ValueError("STEP 5.3E v1 requires train_only_csi_mean bias initialization")
 
 
 @dataclass
@@ -343,6 +349,7 @@ class Step52Trainer(nn.Module):
         encoder_stats = fit_encoder_normalization_stats(data.tensor, data.graph, UPSTREAM_STATS)
         self.encoder = PIJointGraphEncoder(config.encoder, tensor_contract, graph_contract, encoder_stats)
         self.model = StructuredRSSMWorldModel(config.rssm)
+        self.initialization_contract = self._initialize_csi_decoder()
         target_config = Step5_1BConfig(target_dim=4, csi_dim=int(tensor_contract["n_comm_rb"]), hidden_dim=config.rssm.d_h, latent_dim=config.rssm.d_z, d_h=config.rssm.d_h, d_z=config.rssm.d_z, d_encoder=config.rssm.d_encoder)
         self.target_encoder = TargetEncoder(target_config)
         self.future_posterior = FuturePosterior(target_config)
@@ -353,6 +360,28 @@ class Step52Trainer(nn.Module):
         self.current_posterior_calls = 0
         self.posterior_rollout_calls = 0
         self.last_validation: dict[str, Any] | None = None
+
+    def _initialize_csi_decoder(self) -> dict[str, Any]:
+        """Apply the frozen train-only raw-CSI mean before optimizer creation."""
+        stats = self.data.target_normalization
+        resolved = float(stats["csi_mean"])
+        with torch.no_grad():
+            self.model.csi_decoder[-1].bias.fill_(resolved)
+        return {
+            "schema_version": "PI-JWM-STEP-5.3E-Initialization-v1",
+            "csi_decoder_output_space": self.config.csi_decoder_output_space,
+            "csi_decoder_bias_init_policy": self.config.csi_decoder_bias_init_policy,
+            "resolved_bias_value": resolved,
+            "bias_width": int(self.config.rssm.n_comm_rb),
+            "normalization_provenance": {
+                "source_split": "dev_train",
+                "stats": _jsonable(stats),
+                "validation_used": False,
+                "future_target_used": False,
+                "locked_test_used": False,
+            },
+            "motion_decoder_initialization_untouched": True,
+        }
 
     @classmethod
     def from_unified_development_bundle(cls, config: Step52TrainingConfig | None = None) -> "Step52Trainer":
@@ -786,6 +815,7 @@ class Step52Trainer(nn.Module):
             "optimizer_state": self.optimizer.state_dict(),
             "state": dict(state), "config": _jsonable(asdict(self.config)), "data_identity": self.data.identity,
             "git_commit": git_commit, "normalization_provenance": {"target": self.data.target_normalization, "encoder_source_split": "dev_train"},
+            "initialization_contract": _jsonable(self.initialization_contract),
             "architecture_identity": {"rssm": _jsonable(asdict(self.config.rssm)), "encoder": _jsonable(asdict(self.config.encoder))},
             "rng_state": {"torch": torch.get_rng_state(), "numpy": np.random.get_state(), "python": random.getstate()},
         }
@@ -806,6 +836,8 @@ class Step52Trainer(nn.Module):
         expected_arch = {"rssm": _jsonable(asdict(self.config.rssm)), "encoder": _jsonable(asdict(self.config.encoder))}
         if payload.get("architecture_identity") != expected_arch:
             raise ValueError("incompatible STEP 5.2 checkpoint architecture config")
+        if payload.get("initialization_contract") != _jsonable(self.initialization_contract):
+            raise ValueError("incompatible STEP 5.3E CSI decoder initialization contract")
         states = payload["model_state"]
         self.encoder.load_state_dict(states["encoder"]); self.model.load_state_dict(states["rssm"]); self.target_encoder.load_state_dict(states["target_encoder"]); self.future_posterior.load_state_dict(states["future_posterior"])
         self.optimizer.load_state_dict(payload["optimizer_state"])

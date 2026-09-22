@@ -2313,8 +2313,10 @@
         "scripts.run_step5_2_training_loop_smoke_v1",
         "scripts.step5_3_cpu_training_preflight_v1",
         "scripts.step5_3d_csi_scale_optimization_diagnosis_v1",
+        "scripts.step5_3e_csi_train_mean_bias_formalization_v1",
         "tests.test_step5_2_training_loop_v1",
-        "tests.test_step5_3_cpu_training_preflight_v1"
+        "tests.test_step5_3_cpu_training_preflight_v1",
+        "tests.test_step5_3e_csi_train_mean_bias_formalization_v1"
       ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
@@ -2329,7 +2331,8 @@
       "path": "code/src/pi_jwm/step5_2_training_loop_v1.py",
       "test_files": [
         "code/tests/test_step5_2_training_loop_v1.py",
-        "code/tests/test_step5_3_cpu_training_preflight_v1.py"
+        "code/tests/test_step5_3_cpu_training_preflight_v1.py",
+        "code/tests/test_step5_3e_csi_train_mean_bias_formalization_v1.py"
       ]
     },
     {
@@ -7066,6 +7069,7 @@
       "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.step5_3d_csi_scale_optimization_diagnosis_v1",
+        "scripts.step5_3e_csi_train_mean_bias_formalization_v1",
         "tests.test_step5_3_cpu_training_preflight_v1"
       ],
       "imports": [
@@ -7093,6 +7097,21 @@
       "path": "code/scripts/step5_3d_csi_scale_optimization_diagnosis_v1.py",
       "test_files": [
         "code/tests/test_step5_3d_csi_scale_optimization_diagnosis_v1.py"
+      ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_2_training_loop_v1",
+        "scripts.step5_3_cpu_training_preflight_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.step5_3e_csi_train_mean_bias_formalization_v1",
+      "path": "code/scripts/step5_3e_csi_train_mean_bias_formalization_v1.py",
+      "test_files": [
+        "code/tests/test_step5_3e_csi_train_mean_bias_formalization_v1.py"
       ]
     },
     {
@@ -9789,6 +9808,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step5_3d_csi_scale_optimization_diagnosis_v1",
       "path": "code/tests/test_step5_3d_csi_scale_optimization_diagnosis_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_2_training_loop_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step5_3e_csi_train_mean_bias_formalization_v1",
+      "path": "code/tests/test_step5_3e_csi_train_mean_bias_formalization_v1.py",
       "test_files": []
     },
     {

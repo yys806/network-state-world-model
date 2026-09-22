@@ -171,3 +171,9 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 - Scale bridge machine check passed exactly for fixed `[0,1]`: actual normalized CSI MSE equals `(raw prediction - raw target)^2 / csi_std^2` aggregation for H1/H2.
 - Baseline 200-step CPU run remains `TINY_OVERFIT_NO_GO` (H1 `329.3315→117.6610`, H2 `332.8831→119.7404`). Mean-bias diagnostic reaches H1 `1.0935→0.1405`, H2 `1.1040→0.1633`, but this is diagnostic evidence only.
 - Current interpretation supports raw-output initialization/conditioning bottleneck; no formal initialization or normalized-output bridge has been selected. Researcher decision is required before any such change.
+
+## 2026-09-22 STEP 5.3E closure
+
+- raw CSI decoder + train-only CSI mean bias 已由研究者明确选定并正式接入 CPU Trainer；normalized-output bridge 仍是未来可选 ablation。
+- tiny-overfit gate 在固定 `[0,1]` development subset 上通过，但不外推为 formal training、泛化或性能结果。
+- Route/Comp non-empty development coverage 仍为 `0/0`，继续作为 future formal data coverage gate。

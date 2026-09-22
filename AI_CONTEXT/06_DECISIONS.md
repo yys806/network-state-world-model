@@ -105,6 +105,14 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - Comm z represents CSI/channel uncertainty only. Outage is not a latent/head/input/target leak; both seeded `sample` and marked `expectation` modes are required. `learned_service_residual=false`.
 - Wired capacity may be added from causal simulator configuration; active membership/count must first be derived from Flow Carrying and checked equal to `WiredNetworkManager`.
 - STEP 4.4 implementation is authorized within the untrained CPU contract only; Loss, optimizer, Training, GPU, Planner, candidate generation, formal Dataset, and `locked_test` remain forbidden.
+
+## 2026-09-22 STEP 5.3E — CSI train-mean bias initialization
+
+**Researcher Decision**
+
+- PI-JWM v1 采用 raw CSI decoder，直接输出 CSI `[dB]` 并进入冻结的规则转移链；不采用 normalized-output decoder 作为 v1 主线。
+- CSI decoder 最后一层 bias 使用 frozen train-only CSI normalization mean 初始化，初始化发生在 optimizer 创建前；所有 RB 使用同一 global mean。
+- 当前 development provenance 为 `dev_train`；validation、Future Target 和 `locked_test` 不参与 mean fit。normalized-output bridge 仅保留为未来可选 ablation。
 # 2026-09-21 STEP 5.0 — Definition 05 researcher decisions
 
 - Prediction distribution: retain stochastic `z^Phy/z^Comm`; Vehicle Motion/CSI observation decoders are deterministic mean heads; no learned observation variance.

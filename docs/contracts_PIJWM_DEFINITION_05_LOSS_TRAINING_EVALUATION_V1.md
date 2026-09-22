@@ -86,6 +86,12 @@ Validation 只使用 prior recursive rollout。每个 horizon `k` 独立计算 m
 - whole-window deletion 代替 component mask；
 - development result 冒充 formal/locked-test result。
 
+## 4.1 STEP 5.3E Researcher Decision — CSI raw-dB initialization
+
+- PI-JWM v1 的 CSI decoder 直接输出 raw CSI `[dB]`，并直接进入 `F^Trans → SINR → Rate → known stochastic outage → service`。
+- CSI decoder 最后一层所有 RB bias 在 optimizer 创建前由 frozen train-only CSI normalization mean 初始化；当前 development provenance 为 `dev_train`。
+- 不采用 normalized-output decoder bridge 作为 v1 主线；该方案仅保留为未来可选 ablation，未经新的 Researcher Decision 不得实现。
+
 ## 5. 当前证据边界
 
 本合同的研究决定已冻结；5.1B/5.1D 已实现并验收 Loss/Posterior/Metric primitives，STEP 5.2 已实现少量 CPU development training-loop/optimizer smoke。该证据不证明 tiny-data overfit、full training、GPU readiness、预测精度、校准、baseline 公平比较或最终性能。当前固定：`training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`。

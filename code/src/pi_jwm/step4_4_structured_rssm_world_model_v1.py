@@ -308,6 +308,7 @@ class StructuredRSSMWorldModel(nn.Module):
             "latent_layout": {"h": list(self.FAMILIES), "z": ["physical_vehicle", "communication"]},
             "stochastic_families": ["physical_vehicle", "communication"],
             "learned_heads": ["vehicle_delta_xyz_next_speed", "future_per_rb_csi"],
+            "csi_decoder_output_space": "raw_db",
             "known_stochastic_transition": "wireless_per_valid_rb_outage",
             "learned_outage_head": False,
             "learned_rate_head": False,

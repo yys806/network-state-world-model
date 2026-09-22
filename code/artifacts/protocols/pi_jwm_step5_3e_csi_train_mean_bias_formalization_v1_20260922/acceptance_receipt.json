@@ -1,0 +1,55 @@
+{
+  "forbidden_scope": {
+    "baseline": false,
+    "formal_dataset": false,
+    "formal_training": false,
+    "gpu": false,
+    "locked_test": false,
+    "performance_claim": false,
+    "planner": false
+  },
+  "formalization_verdict": "FORMALIZATION_PASS",
+  "gate": {
+    "final_normalized_family_mse": 1.0,
+    "relative_family_loss_drop": 0.5
+  },
+  "passed": true,
+  "required_checks": {
+    "checkpoint": true,
+    "finite": true,
+    "formalization_contract": true,
+    "prior_recursive": true,
+    "reproducible": true
+  },
+  "tiny_overfit": {
+    "h1": {
+      "L_CSI": {
+        "final": 0.1405198574066162,
+        "final_below_1": true,
+        "initial": 1.0934864282608032,
+        "relative_drop": 0.8714937343757307
+      },
+      "L_Mot": {
+        "final": 0.0002258055319543928,
+        "final_below_1": true,
+        "initial": 0.0014187975320965052,
+        "relative_drop": 0.8408472478657838
+      }
+    },
+    "h2": {
+      "L_CSI": {
+        "final": 0.16331860423088074,
+        "final_below_1": true,
+        "initial": 1.1040018796920776,
+        "relative_drop": 0.8520667335490111
+      },
+      "L_Mot": {
+        "final": 0.00022391036327462643,
+        "final_below_1": true,
+        "initial": 0.002951141446828842,
+        "relative_drop": 0.924127539357617
+      }
+    }
+  },
+  "tiny_overfit_verdict": "TINY_OVERFIT_GO"
+}

@@ -1435,3 +1435,8 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 固定 `[0,1]`、CPU、200 steps，完成 raw bridge exact audit、baseline continuation 与 mean-bias diagnostic。
 - [x] baseline `TINY_OVERFIT_NO_GO`；mean-bias diagnostic `TINY_OVERFIT_GO`，仅作为 observation，不改变正式模型。
 - [x] 更新 artifact、record、Tracker、AI_CONTEXT；下一动作等待 researcher 在两个候选 bridge/initialization 方案间决定。
+# 2026-09-22 STEP 5.3E
+
+- [x] 正式接入 raw CSI decoder 的 train-only CSI mean bias initialization。
+- [x] 完成固定 `[0,1]`、200-step CPU tiny-overfit、checkpoint/reproducibility 与 focused regressions。
+- [x] 生成 receipt/context/record；不进入 STEP 5.4。

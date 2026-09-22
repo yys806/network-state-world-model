@@ -12,6 +12,11 @@
 - Baseline 未通过 stronger tiny-overfit；mean-bias 仅诊断对照达到 H1/H2 normalized CSI MSE `0.1405/0.1633`。
 - 记录为 raw-output initialization/conditioning bottleneck observation；不自动采用任何正式初始化或 decoder bridge 方案，等待研究者决定。
 
+## 2026-09-22 STEP 5.3E
+
+- 正式接入 raw CSI decoder train-only mean bias initialization；checkpoint 保存/校验初始化 contract 与 normalization provenance。
+- 固定 CPU tiny subset `[0,1]` 的 H1/H2 Motion/CSI stronger gate 通过；receipt=`FORMALIZATION_PASS`、`TINY_OVERFIT_GO`。不开放 GPU、formal training、locked_test 或性能声明。
+
 ## 2026-09-22 STEP 5.3
 
 - 新增 bounded CPU tiny-data preflight runner、focused tests 和 machine-readable evidence。

@@ -1,0 +1,7 @@
+{
+  "parameter_digest_equal": true,
+  "same_config": true,
+  "same_seed": true,
+  "same_subset": true,
+  "trajectory_digest_equal": true
+}

@@ -1110,3 +1110,8 @@
 - Observation：H1/H2 actual CSI normalized MSE 与 `(pred_raw-target_raw)/csi_std` expected MSE 完全一致；normalization bridge 无 bug 证据。
 - Observation：baseline 200 steps 从约 `329/333` 降到 `117.66/119.74`，未达到 stronger gate；mean-bias diagnostic 从约 `1.09/1.10` 降到 `0.1405/0.1633`。
 - Interpretation：更支持 raw-output initialization/conditioning bottleneck，而不是当前证据支持 decoder capacity 或 normalization bug；正式方案仍需 researcher decision。
+# 2026-09-22 STEP 5.3E
+
+- train CSI mean = 98.34974797337962 dB，provenance=dev_train；所有 RB bias 一致，optimizer 创建前初始化。
+- H1/H2 normalized family loss final 均 <1，relative drop 均 >50%；结果仅是 development tiny-data capacity/optimization evidence。
+- Route/Comp non-empty coverage 仍为 0/0；不得据此声称完整动作族训练或 formal performance。

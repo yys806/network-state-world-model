@@ -1,5 +1,7 @@
 # STEP 5.3 — CPU Training Preflight / Tiny-Data Overfit / Go-No-Go
 
+> Historical snapshot: the `TINY_OVERFIT_NO_GO` result below predates the researcher-authorized STEP 5.3E raw CSI train-mean bias initialization. It remains provenance for the pre-patch path; the current closure is recorded in `STEP_05_3E_CSI_TRAIN_MEAN_BIAS_FORMALIZATION_TINY_OVERFIT_ACCEPTANCE.md`.
+
 日期：2026-09-22
 
 状态：**LEARNING-SIGNAL-GO / TINY-OVERFIT-NO-GO（PATCH 后）**

@@ -1,0 +1,18 @@
+{
+  "phase_c": {
+    "groups": [
+      "comm_future_posterior",
+      "comm_prior",
+      "csi_decoder",
+      "csi_target_encoder",
+      "current_observation_posterior",
+      "encoder",
+      "motion_target_encoder",
+      "phy_future_posterior",
+      "phy_prior",
+      "rssm_dynamics",
+      "vehicle_motion_decoder"
+    ],
+    "steps": 11
+  }
+}

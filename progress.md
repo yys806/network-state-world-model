@@ -1121,3 +1121,6 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 - [x] Baseline 200-step：H1 `329.3315→117.6610`，H2 `332.8831→119.7404`，stronger tiny-overfit NO-GO。
 - [x] Mean-bias diagnostic：H1 `1.0935→0.1405`，H2 `1.1040→0.1633`，diagnostic gate GO；不作为正式科研决定。
 - [ ] 等待研究者在 raw-head mean-bias initialization 与 normalized-output decoder bridge 之间做决定；不进入 GPU/STEP 5.4。
+# 2026-09-22 STEP 5.3E
+
+正式 raw-dB CSI decoder + train-only CSI mean bias 已接入 Trainer。固定 dev_train `[0,1]` 的 H1/H2 Motion/CSI 均通过 stronger tiny-overfit gate；FORMALIZATION_PASS / TINY_OVERFIT_GO。保持 CPU-only，未启动 GPU、formal training 或 locked_test。

@@ -1,0 +1,78 @@
+{
+  "h1": {
+    "L_CSI": 1.0934864282608032,
+    "L_Mot": 0.0014187975320965052,
+    "L_Pred": 0.5474526286125183,
+    "future_state_not_rollout_input": true,
+    "horizon": 1,
+    "prior_only": true,
+    "raw_metrics": {
+      "csi_raw_mae": 4.511071681976318,
+      "csi_raw_mae_db": 4.511071681976318,
+      "csi_raw_rmse": 5.696621417999268,
+      "csi_raw_rmse_db": 5.696621417999268,
+      "motion_delta_x_m_mae": 0.13707971572875977,
+      "motion_delta_x_m_rmse": 0.13807082176208496,
+      "motion_delta_y_m_mae": 0.01396125927567482,
+      "motion_delta_y_m_rmse": 0.017510633915662766,
+      "motion_delta_z_m_mae": 0.06676913797855377,
+      "motion_delta_z_m_rmse": 0.06677081435918808,
+      "motion_next_speed_mps_mae": 0.28617650270462036,
+      "motion_next_speed_mps_rmse": 0.3087901175022125,
+      "motion_raw_mae": 0.1259966492652893,
+      "motion_raw_rmse": 0.17261217534542084
+    },
+    "scale_audit": {
+      "csi_prediction_normalized_mean": -0.00016119684732984751,
+      "csi_prediction_normalized_std": 0.027209458872675896,
+      "csi_prediction_raw_mean_db": 98.34886932373047,
+      "csi_prediction_raw_std_db": 0.14822809398174286,
+      "csi_target_normalized_mean": 0.06792976707220078,
+      "csi_target_normalized_std": 1.043117642402649,
+      "csi_target_raw_mean_db": 98.71980285644531,
+      "csi_target_raw_std_db": 5.682558536529541,
+      "motion_prediction_raw_mean": 0.08437827974557877,
+      "motion_prediction_raw_std": 0.15832817554473877,
+      "motion_target_raw_mean": 0.1418350785970688,
+      "motion_target_raw_std": 0.2894250452518463
+    }
+  },
+  "h2": {
+    "L_CSI": 1.1040018796920776,
+    "L_Mot": 0.002951141446828842,
+    "L_Pred": 0.5534765124320984,
+    "future_state_not_rollout_input": true,
+    "horizon": 2,
+    "prior_only": true,
+    "raw_metrics": {
+      "csi_raw_mae": 4.536494731903076,
+      "csi_raw_mae_db": 4.536494731903076,
+      "csi_raw_rmse": 5.723946571350098,
+      "csi_raw_rmse_db": 5.723946571350098,
+      "motion_delta_x_m_mae": 0.13646453619003296,
+      "motion_delta_x_m_rmse": 0.1372631937265396,
+      "motion_delta_y_m_mae": 0.03874781355261803,
+      "motion_delta_y_m_rmse": 0.04661322012543678,
+      "motion_delta_z_m_mae": 0.07691047340631485,
+      "motion_delta_z_m_rmse": 0.07771530747413635,
+      "motion_next_speed_mps_mae": 0.4106692671775818,
+      "motion_next_speed_mps_rmse": 0.4453650116920471,
+      "motion_raw_mae": 0.16569802165031433,
+      "motion_raw_rmse": 0.23738346993923187
+    },
+    "scale_audit": {
+      "csi_prediction_normalized_mean": 0.0006222676020115614,
+      "csi_prediction_normalized_std": 0.028111666440963745,
+      "csi_prediction_raw_mean_db": 98.35313415527344,
+      "csi_prediction_raw_std_db": 0.1531430333852768,
+      "csi_target_normalized_mean": 0.166471928358078,
+      "csi_target_normalized_std": 1.0372258424758911,
+      "csi_target_raw_mean_db": 99.25662994384766,
+      "csi_target_raw_std_db": 5.6504621505737305,
+      "motion_prediction_raw_mean": 0.08714151382446289,
+      "motion_prediction_raw_std": 0.1556292623281479,
+      "motion_target_raw_mean": 0.1687236875295639,
+      "motion_target_raw_std": 0.34746459126472473
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "all_rb_bias_equal": true,
+  "fresh_bias_matches_train_mean": true,
+  "future_target_used": false,
+  "locked_test_used": false,
+  "optimizer_created_after_initialization": true,
+  "raw_db_contract": true,
+  "source_split": "dev_train",
+  "validation_used": false
+}

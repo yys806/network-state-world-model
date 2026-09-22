@@ -1,0 +1,17 @@
+{
+  "future_target_used": false,
+  "locked_test_used": false,
+  "source_split": "dev_train",
+  "stats": {
+    "csi_mean": 98.34974797337962,
+    "csi_std": 5.447668248691379,
+    "position_std": [
+      289.9769918292785,
+      277.31656328789245,
+      65.78666419476802
+    ],
+    "speed_mean": 2.265105350897042,
+    "speed_std": 4.099410491487269
+  },
+  "validation_used": false
+}

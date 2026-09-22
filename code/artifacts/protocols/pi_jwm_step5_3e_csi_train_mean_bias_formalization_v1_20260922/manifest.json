@@ -1,0 +1,54 @@
+{
+  "files": {
+    "acceptance_receipt.json": {
+      "bytes": 1413,
+      "sha256": "7ca10a792573561bfc699786f5619af4491e1e47cdc8804015ddd2f0e066afb7"
+    },
+    "checkpoint_audit.json": {
+      "bytes": 130,
+      "sha256": "3759094143d49827f77d0aeed87859bde1277b8b5fed45777b642370a0e99b4e"
+    },
+    "final_metrics.json": {
+      "bytes": 3284,
+      "sha256": "7915b994fc0dbb18a0c8c85e3a1feb89f3a29e453c02f065862bdc65e73158c3"
+    },
+    "formalization.json": {
+      "bytes": 279,
+      "sha256": "4fb517c1d9f6db4f6f6b4d8f25b5fb470f139a6a01c63e8f111fe74d2b92cfc6"
+    },
+    "gradient_audit.json": {
+      "bytes": 370,
+      "sha256": "1eeaf498133fcf3cbd102f42b2fdf2c3436b377b27dc29890241e7731c7f08db"
+    },
+    "initialization_contract.json": {
+      "bytes": 746,
+      "sha256": "fb57ea744f41c5d67bfe53fef3c09aa2c8180e58c15a9d759216300081a6cba9"
+    },
+    "leakage_audit.json": {
+      "bytes": 87,
+      "sha256": "e3fdc0a9fabddf6335470d1add2fd42dbdb68b9d22442aee3b345ad940f548fe"
+    },
+    "manifest.json": {
+      "bytes": 1852,
+      "sha256": "718bc2b191d64a631957bb1ac340a311ad3f7c48dfa372baa3fac9b0822c53f1"
+    },
+    "normalization_provenance.json": {
+      "bytes": 402,
+      "sha256": "589babd40c5696fccb8f6580e06ed412c0589871cf5dd93ba54b9ee69b1e7a43"
+    },
+    "pre_training_metrics.json": {
+      "bytes": 3279,
+      "sha256": "e43cfdc6871c8ae845f8faed1bbc95af08d008bc9550ca0c9dd8fce63017601f"
+    },
+    "reproducibility_audit.json": {
+      "bytes": 146,
+      "sha256": "bd20006ecd9436ff7a1bc4365a2f104d3040762c3347e5936857ceaea9367022"
+    },
+    "training_trajectory.json": {
+      "bytes": 47734,
+      "sha256": "6c42e519dd7033aa3febbff6e994b9bea84bd5ee5b852476ffb5db917482a8ad"
+    }
+  },
+  "passed": true,
+  "schema_version": "PI-JWM-Step-5.3E-Manifest-v1"
+}

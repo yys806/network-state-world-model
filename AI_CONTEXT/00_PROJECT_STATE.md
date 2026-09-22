@@ -16,7 +16,7 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前状态：`STEP 5.1D = COMPLETE / FROZEN FOR CPU DEVELOPMENT INTEGRATION`，`STEP 5.2 = COMPLETE / FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION`，`STEP 5.3-PATCH = LEARNING_SIGNAL_GO / TINY_OVERFIT_NO_GO`。STEP 5.3D 已完成 CPU-only CSI scale/optimization diagnosis：scale bridge 数学一致；baseline 200-step CSI 仍未达到 stronger tiny-overfit gate；mean-bias 仅诊断对照通过。正式初始化/decoder bridge 尚未选择；full training、GPU、formal dataset、planner、baseline、locked-test 仍未开始。
+- 当前状态：`STEP 5.1D = COMPLETE / FROZEN FOR CPU DEVELOPMENT INTEGRATION`，`STEP 5.2 = COMPLETE / FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION`，`STEP 5.3E = FORMALIZATION_PASS / TINY_OVERFIT_GO`。v1 CSI decoder 已正式采用 raw-dB 输出与 train-only CSI mean bias initialization；当前结果仍是 bounded CPU development evidence。full training、GPU、formal dataset、planner、baseline、locked-test 仍未开始。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - STEP 4.4-PATCH3 已在源码中显式区分 Return requirement 的 known/unknown：冻结 current-side 不含 `Task.return_size`，所以 no slot 是 unknown，不是 no-return；unknown 或 known-required/no-slot 都不能错误 final-complete，但 side-state 可区分两者。DAG 只按有效前驱动态释放，terminal Flow completion 同步 remaining/presence/carrying/status。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
@@ -28,11 +28,11 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 
 ## 当前最重要问题
 
-当前实现不能按模块名称或旧测试外推性能。STEP 4.4 已把 `Z_t^{PI,L_g}` 接入当前定义的结构化 latent 和 prior rollout；5.1D 与 5.2 已有 CPU Loss/KL/Metric/training-loop evidence，但只有少量 optimizer smoke，没有 tiny-data overfit、收敛、校准或预测精度证据；planner 真实反馈也未实现。
+当前实现不能按模块名称或旧测试外推性能。STEP 4.4 已把 `Z_t^{PI,L_g}` 接入当前定义的结构化 latent 和 prior rollout；5.1D、5.2 与 5.3E 已有 CPU Loss/KL/Metric/training-loop/tiny-data evidence，但没有 formal training、收敛泛化、校准或预测精度证据；planner 真实反馈也未实现。
 
 ## 单一科研下一步
 
-唯一待研究者决定的是 raw-head mean-bias initialization 与 normalized-output decoder bridge；本轮不进入 STEP 5.4，不启动 GPU，不访问 `locked_test`。
+唯一建议是研究者审阅 STEP 5.3E 证据后决定是否授权 STEP 5.4；本轮不启动 GPU，不访问 `locked_test`。
 
 ## 当前 Git
 

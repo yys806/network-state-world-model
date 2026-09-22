@@ -69,6 +69,12 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 - 独立 fresh run 与 checkpoint resume 均 deterministic；CSI scale audit 显示 prediction 初始约 0 dB、target 约 98–99 dB，未发现 normalization bridge bug。
 - Verdict 分离为 `LEARNING_SIGNAL_GO` 与 `TINY_OVERFIT_NO_GO`；不得写成 tiny-data overfit 或 GPU readiness。
 
+## 2026-09-22 STEP 5.3E CSI Train-Mean Bias Formalization
+
+- 研究者决定 v1 使用 raw CSI decoder + train-only CSI mean bias initialization；正式接入 `Step52Trainer`，不再依赖诊断脚本手工 mutation。
+- 固定 `[0,1]` dev_train、200 CPU steps、Stage 1→Stage 2、1→2 curriculum、beta 0→1 warm-up；H1/H2 Motion 与 CSI 均满足 relative drop ≥50% 且 final normalized MSE ≤1。
+- receipt=`FORMALIZATION_PASS`、`TINY_OVERFIT_GO`；该结果仅为 development tiny-data capacity/optimization evidence，不是 formal training、泛化或性能声明。
+
 ### STEP 5.3D CSI Scale / Optimization Diagnosis
 
 - 固定 `[0,1]` dev_train subset，CPU 200-step baseline 与 mean-bias diagnostic 对照均复用 5.2 的 Stage 1→Stage 2、1→2 curriculum、KL warm-up/free-bits 和 0.5/0.5 loss。
