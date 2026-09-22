@@ -154,3 +154,6 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 - 重新拟合 `unified_flow_train_normalization_stats.json`：仅使用 8 个 `dev_train` samples 的 History，4 个 validation samples 排除，Future Target 不参与；旧 5-sample stats 仅保留为历史 provenance。
 - 截至 STEP 5.1C-PATCH 当时，4.3A/4.3B/4.4 unified rebuild 和 paired 5.1B acceptance 尚未执行；该历史边界已由后续 STEP 5.1D-PATCH 闭合，STEP 5.2 仍需单独授权。
 - 2026-09-22：STEP 5.1D-PATCH 完成 Evidence / Context / Action-Coverage Closure。receipt 改为 executed/forbidden scope，跟踪 compact GitHub evidence；机器比较 unified stats source IDs、4.2A frozen batch 恢复的 fit source 与逐窗口 normalized samples；新增 runtime prior-target isolation 与 posterior sensitivity negative test。真实覆盖为 Mobility=48、Comm=1、Route=0、Comp=0，Route/Comp 仅显式 no-op；47/47 checks 通过。仍为 untrained CPU/non-locked evidence。
+## 2026-09-22 STEP 5.4
+
+- Added manifest-driven formal interface and CPU-only readiness receipts; recorded formal data/action/horizon/topology/config/checkpoint blockers.

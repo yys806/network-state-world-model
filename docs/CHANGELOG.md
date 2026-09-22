@@ -231,3 +231,6 @@
 - Added the unified 5.1D CPU development integration entrypoint, focused tests, paired acceptance record, and generated knowledge-index updates.
 - Verified full Flow Tensor package roundtrip, unified 4.3A/4.3B/4.4 rebuild, real action pairing, recursive prior/posterior/decoder path, Loss/KL/raw-unit metrics, finite gradients, and deterministic rebuild.
 - Kept training, optimizer updates, GPU, formal Dataset, Planner, baseline, locked_test and performance claims closed.
+## 2026-09-22 STEP 5.4
+
+- Added `FormalTrainingInterface` and CPU-only formal-training readiness audit; formal Dataset and CUDA remain blocked/untested.

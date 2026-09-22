@@ -133,3 +133,6 @@ receipt 为 47/47 checks true，12 samples，capacity 10/74，prior/posterior/de
 - CPU-only semantic closure artifact：`code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/acceptance_receipt.json`，26/26 required checks passed。
 - Validation audit now records current-observation posterior calls=4, future posterior teacher calls=0, Future Target Encoder calls=0, and per-horizon Motion/CSI numerator/count plus `L_Mot/L_CSI/L_Pred/L_Val`.
 - Checkpoint audit includes compatible reload and rejection of wrong data identity / normalization provenance. This remains development smoke evidence, not convergence or performance evidence.
+## 2026-09-22 STEP 5.4 GPU Training Readiness
+
+- CPU-only readiness artifact: `code/artifacts/protocols/pi_jwm_step5_4_gpu_training_readiness_v1_20260922/`；manifest-driven interface、action coverage、config/checkpoint schema 已生成；未执行 CUDA 或 formal training。

@@ -89,6 +89,12 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 - Validation 改为每个 horizon 跨完整 validation set 的 Motion/CSI numerator/count 独立归一化，再计算 `L_Val`；补 unequal-mask fixture。
 - Checkpoint load 增加 schema、data identity、normalization provenance、architecture-critical config 拒绝检查；compatible reload、wrong-data/normalization rejection 均通过。receipt 为 26/26。
 
+## 2026-09-22 STEP 5.4
+
+- 新增 manifest-driven `FormalTrainingInterface` 与 CPU-only readiness audit；5.2 development adapter 保持回归兼容。
+- readiness：`TRAINING_STACK_READINESS=PASS`、`FORMAL_DATASET_READINESS=NOT_READY`、`GPU_CODEPATH_READINESS=PREPARED`、`FORMAL_TRAINING_READINESS=BLOCKED`。
+- 12 个 development samples 实际 coverage：Mobility=24、Comm=1、Route=0、Comp=0；正式 `L`、topology、Dataset/seed/训练预算仍需 researcher decision。
+
 ## 2026-09-22 STEP 5.2
 
 - `code/src/pi_jwm/step5_2_training_loop_v1.py` 连接当前 Encoder、Structured RSSM、5.1B target/posterior/loss/KL 原语；Stage 1 使用 family-specific posterior teacher，Stage 2/Validation 从 current-observation posterior 初始化，之后 prior-only recursive rollout。

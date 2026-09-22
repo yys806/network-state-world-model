@@ -177,3 +177,4 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 - raw CSI decoder + train-only CSI mean bias 已由研究者明确选定并正式接入 CPU Trainer；normalized-output bridge 仍是未来可选 ablation。
 - tiny-overfit gate 在固定 `[0,1]` development subset 上通过，但不外推为 formal training、泛化或性能结果。
 - Route/Comp non-empty development coverage 仍为 `0/0`，继续作为 future formal data coverage gate。
+- STEP 5.4：Formal Dataset 不存在；正式 `L`、Physical topology、Dataset scale/seeds 和 training budget 未冻结；CPU dry-run 只支持 `GPU_CODEPATH_PREPARED`，没有 CUDA 证据。

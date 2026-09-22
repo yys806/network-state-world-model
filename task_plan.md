@@ -1440,3 +1440,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 正式接入 raw CSI decoder 的 train-only CSI mean bias initialization。
 - [x] 完成固定 `[0,1]`、200-step CPU tiny-overfit、checkpoint/reproducibility 与 focused regressions。
 - [x] 生成 receipt/context/record；不进入 STEP 5.4。
+# 2026-09-22 STEP 5.4
+
+- [x] 完成 manifest-driven formal interface，保留 5.2 development adapter 回归路径。
+- [x] 完成 CPU-only readiness audit、action coverage、horizon/topology/device/config/checkpoint receipts。
+- [x] 结论：training stack PASS，formal Dataset NOT_READY，GPU codepath PREPARED，formal training BLOCKED。
+- [ ] 等研究者决定正式 Dataset、Route/Comp 数据策略、L、topology 和训练预算后再授权构建/冻结 Formal Dataset。
+- Boundary: `gpu=false`、`full_training=false`、`locked_test=false`、`baseline=false`、`planner=false`、`performance_claim=false`。

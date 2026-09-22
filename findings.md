@@ -1115,3 +1115,9 @@
 - train CSI mean = 98.34974797337962 dB，provenance=dev_train；所有 RB bias 一致，optimizer 创建前初始化。
 - H1/H2 normalized family loss final 均 <1，relative drop 均 >50%；结果仅是 development tiny-data capacity/optimization evidence。
 - Route/Comp non-empty coverage 仍为 0/0；不得据此声称完整动作族训练或 formal performance。
+# 2026-09-22 STEP 5.4
+
+- 当前 5.2 `DevelopmentBundle.load()` 确实固定了 development artifact、12 samples 和 8/4 split；新增接口已把 formal 边界改为 manifest/split 驱动。
+- 真实 development action coverage：Route=0、Comp=0、Comm=1、Mobility=24；没有用代理或伪造数据补齐 Route/Comp。
+- `L=2`、`radius_knn(1000m,k=2)`、正式 seed/预算仍是 development 或 researcher decision required，不能包装成 formal config。
+- 只完成 device-agnostic 静态审计与 CPU dry-run；`GPU_CODEPATH_PREPARED` 不等于 `GPU_TRAINING_VERIFIED`。

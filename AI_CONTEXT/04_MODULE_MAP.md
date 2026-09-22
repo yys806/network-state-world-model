@@ -60,6 +60,7 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 
 - STEP 5.1C unified lineage builder: `code/scripts/build_step5_1c_unified_development_bundle_v1.py`; emits slot-wise identity audit, no-prefix capacity proof, unified dev_train normalization stats, tensor contract, deterministic/serialization receipt. It is COMPLETE/FROZEN FOR DEVELOPMENT and is consumed by the 5.1D CPU paired graph/encoder/world-model path.
 - STEP 5.2 CPU training loop: `code/src/pi_jwm/step5_2_training_loop_v1.py`; consumes the 5.1D unified state/action adapter and 5.1B loss primitives. `run_step5_2_training_loop_smoke_v1.py` writes the 8/4 development CPU evidence. It does not perform tiny-data overfit, full training, GPU, formal Dataset, baseline, Planner or locked_test.
+- STEP 5.4 formal interface/readiness: `code/src/pi_jwm/step5_4_formal_training_readiness_v1.py` and `code/scripts/step5_4_gpu_training_readiness_v1.py`; manifest-driven split/provenance/action audit and CPU-only receipts. It does not build formal data or execute CUDA.
 
 ## 历史代码定位
 
