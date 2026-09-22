@@ -1,0 +1,7 @@
+{
+  "k": 2,
+  "mode": "radius_knn",
+  "radius_m": 1000.0,
+  "research_frozen": false,
+  "status": "development_only"
+}

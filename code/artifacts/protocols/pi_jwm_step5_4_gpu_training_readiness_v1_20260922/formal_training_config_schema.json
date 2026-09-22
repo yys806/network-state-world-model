@@ -1,0 +1,46 @@
+{
+  "dataset": {
+    "manifest": null,
+    "normalization_provenance": null,
+    "split": null
+  },
+  "evaluation": {
+    "csi_db_metrics": true,
+    "motion_raw_metrics": true,
+    "prior_only_validation": true,
+    "selector": "L_Val"
+  },
+  "model": {
+    "csi_init_contract": "raw_db+train_only_csi_mean",
+    "encoder": null,
+    "rssm": null,
+    "topology": {
+      "k": 2,
+      "mode": "radius_knn",
+      "radius_m": 1000.0,
+      "research_frozen": false,
+      "status": "development_only"
+    }
+  },
+  "research_frozen": false,
+  "runtime": {
+    "artifact_output": null,
+    "checkpoint": null,
+    "deterministic": null,
+    "device": null,
+    "resume": null
+  },
+  "schema_version": "PI-JWM-Step-5.4-Training-Config-v1",
+  "training": {
+    "batch": null,
+    "epochs_or_steps": null,
+    "grad_clip": null,
+    "horizon_curriculum": null,
+    "kl_beta_warmup_free_bits": null,
+    "learning_rate": null,
+    "patience": null,
+    "seed": null,
+    "stage1": null,
+    "weight_decay": null
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "comm": {
+    "non_empty_count": 1,
+    "sample_count": 24,
+    "trajectory_count": 1,
+    "unique_count": 1,
+    "variation_across_sample_or_trajectory": false
+  },
+  "comp": {
+    "non_empty_count": 0,
+    "sample_count": 24,
+    "trajectory_count": 0,
+    "unique_count": 0,
+    "variation_across_sample_or_trajectory": false
+  },
+  "mobility": {
+    "non_empty_count": 24,
+    "sample_count": 24,
+    "trajectory_count": 3,
+    "unique_count": 5,
+    "variation_across_sample_or_trajectory": true
+  },
+  "route": {
+    "non_empty_count": 0,
+    "sample_count": 24,
+    "trajectory_count": 0,
+    "unique_count": 0,
+    "variation_across_sample_or_trajectory": false
+  }
+}

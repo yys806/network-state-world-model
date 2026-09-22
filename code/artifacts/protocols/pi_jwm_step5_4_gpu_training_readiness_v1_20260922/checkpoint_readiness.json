@@ -1,0 +1,25 @@
+{
+  "current_dev_checkpoint_guards": true,
+  "formal_resume_ready": false,
+  "required_fields": [
+    "weights",
+    "optimizer",
+    "trainer_state",
+    "epoch",
+    "global_step",
+    "stage",
+    "curriculum_horizon",
+    "beta_KL",
+    "best_L_Val",
+    "early_stopping",
+    "config",
+    "dataset_manifest_hash",
+    "split_identity",
+    "normalization_provenance",
+    "topology",
+    "architecture",
+    "CSI_initialization_contract",
+    "git_commit",
+    "RNG_state"
+  ]
+}

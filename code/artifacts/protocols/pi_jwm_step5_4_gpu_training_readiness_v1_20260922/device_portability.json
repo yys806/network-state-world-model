@@ -1,0 +1,7 @@
+{
+  "cpu_dry_run": true,
+  "cuda_executed": false,
+  "explicit_cpu_in_core_path": false,
+  "new_tensor_device_audit": "static_review_required",
+  "verdict": "GPU_CODEPATH_PREPARED"
+}

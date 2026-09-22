@@ -1,0 +1,14 @@
+{
+  "component_unsupported_mask": true,
+  "deterministic_rebuild": true,
+  "flow_semantics": true,
+  "future_target_excluded_from_input": true,
+  "manifest_hash": "9dd3d88988cd19a6bc13fad7cbbb2eae8a0856cbb6be19867db709970d560ad2",
+  "motion_future_target": true,
+  "provenance_present": true,
+  "real_causal_trajectory": true,
+  "stable_id_index_presence_mask": true,
+  "train_only_normalization": true,
+  "trajectory_level_split": true,
+  "wireless_per_rb_csi_target": true
+}

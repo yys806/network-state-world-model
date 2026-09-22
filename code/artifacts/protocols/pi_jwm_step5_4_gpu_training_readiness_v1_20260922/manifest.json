@@ -1,0 +1,16 @@
+{
+  "files": [
+    "action_coverage_audit.json",
+    "checkpoint_readiness.json",
+    "dataset_readiness.json",
+    "device_portability.json",
+    "formal_training_config_schema.json",
+    "horizon_readiness.json",
+    "readiness_receipt.json",
+    "research_decision_gaps.json",
+    "topology_readiness.json"
+  ],
+  "formal_dataset": false,
+  "gpu": false,
+  "schema_version": "PI-JWM-Step-5.4-Manifest-v1"
+}

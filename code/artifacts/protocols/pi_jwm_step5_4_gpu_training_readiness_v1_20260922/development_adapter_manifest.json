@@ -1,0 +1,20 @@
+{
+  "contract": {
+    "component_unsupported_mask": true,
+    "deterministic_rebuild": true,
+    "flow_semantics": true,
+    "future_target_excluded_from_input": true,
+    "motion_future_target": true,
+    "real_causal_trajectory": true,
+    "stable_id_index_presence_mask": true,
+    "train_only_normalization": true,
+    "trajectory_level_split": true,
+    "wireless_per_rb_csi_target": true
+  },
+  "provenance": {
+    "formal_dataset": false,
+    "source": "STEP 5.1C development bundle"
+  },
+  "sample_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1c_unified_development_bundle_v1_20260922\\unified_flow_samples.json",
+  "schema_version": "PI-JWM-Step-5.4-Manifest-v1"
+}

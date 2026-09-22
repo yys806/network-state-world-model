@@ -1,0 +1,21 @@
+{
+  "baseline": false,
+  "formal_dataset": false,
+  "formal_dataset_readiness": "NOT_READY",
+  "formal_training_readiness": "BLOCKED",
+  "full_training": false,
+  "gpu": false,
+  "gpu_codepath_readiness": "PREPARED",
+  "interface": {
+    "development_adapter_unchanged": true,
+    "manifest_driven": true,
+    "sample_count": 12,
+    "train_count": 8,
+    "validation_count": 4
+  },
+  "locked_test": false,
+  "performance_claim": false,
+  "planner": false,
+  "schema_version": "PI-JWM-Step-5.4-Readiness-v1",
+  "training_stack_readiness": "PASS"
+}
