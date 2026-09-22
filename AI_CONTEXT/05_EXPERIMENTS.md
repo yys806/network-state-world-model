@@ -56,15 +56,21 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 
 修正原 5.1B 的跨 horizon target aggregation、mask evidence 缺失、独立 prior、zero-h/identity loss、batch-level free bits、raw-unit metric 和硬编码 receipt。当前 `TargetEncoder` 输出保留 `[B,L,S,D]`，future teacher 按 Physical/Communication 分离；receipt 真实调用 STEP 4.4 current latent/dynamics/priors/decoders，并验证 temporal isolation、mask evidence、per-dim free bits、gradient、raw-unit metric、prior target isolation。
 
-截至 STEP 5.1B-PATCH 的历史快照：Focused 5/5，STEP 4.4 regression 30/30，12-sample non-locked development receipt `passed=true`。随后 5.1C/5.1D 已统一 support 为 10/74 并完成 paired integration；当前仍明确 `training=false`、`optimizer_step=false`、`gpu=false`、`formal_dataset=false`、`locked_test_accessed=false`、`performance_claim=false`。
+截至 STEP 5.1B-PATCH 的历史快照：Focused 5/5，STEP 4.4 regression 30/30，12-sample non-locked development receipt `passed=true`。随后 5.1C/5.1D 已统一 support 为 10/74 并完成 paired integration；5.2 仅增加 CPU development optimizer smoke，当前仍明确 `full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test_accessed=false`、`performance_claim=false`。
 
 ## 当前新定义实验状态
 
+## 2026-09-22 STEP 5.2 Training Loop / Curriculum / Joint Training
+
+- 这是 CPU development implementation smoke，不是正式训练实验。`Step52Trainer` 接入 8 个 `dev_train` 与 4 个 `dev_validation` unified samples；Stage 1 使用 family-specific posterior teacher，Stage 2 使用 prior-only recursive rollout，当前 `L=2` 的配置化 curriculum 为 `1→2`。
+- receipt `code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/acceptance_receipt.json` 的 20/20 required checks 为 true：KL warm-up/free bits、joint optimizer groups、known-rule 参数排除、两步 CPU optimizer update、prior-only validation、`argmin L_Val` selector、checkpoint/reload/resume、causal leakage negative checks 和 reproducibility 均通过。
+- smoke diagnostic `L_Val=168.31609344482422` 不是性能结果；没有 tiny-data overfit、full training、GPU、formal Dataset、baseline、Planner 或 locked-test。Route/Comp non-empty coverage=0，Comm=1，Mobility=48，Route/Comp 仍是 future formal training/data coverage gate。
+
 - `STEP 1` 只有只读实现审计和 49 项旧 synthetic CPU contract 回归；它们不是新定义性能实验。
-- 新 dataset/tensor/model/loss/planner 实验均为 `NOT_STARTED`。
+- 新定义正式 Dataset、full training、性能、planner 实验均为 `NOT_STARTED`；5.1B/5.1D primitives 与 5.2 CPU development loop 不是正式性能实验。
 - STEP 4.2C-C 是非训练的 CPU/non-locked contract validation：真实 direct Input/Return、真实两-hop和低 wired capacity cross-slot trace进入 additive Flow Sample/Tensor artifact；`passed=true`，不构成 formal Dataset、模型或性能实验。
 - STEP 4.3A 是非训练的 CPU/non-locked representation validation：复用冻结的五个 development Tensor samples，生成 typed graph artifact；24 项 required checks 与 20 项 negative/counterfactual 均通过。这不是图编码器实验、正式 Dataset 或性能结论。
-- STEP 4.3B 是 `UNTRAINED_DEVELOPMENT_ENCODER_EVIDENCE`：复用同一批 frozen development inputs，在 CPU 上验证结构接线、History 因果、mask、方向、P2A/P2C、置换等变、序列化、确定性与 backward。没有 optimizer step、训练或性能结论。
+- STEP 4.3B 是 `UNTRAINED_DEVELOPMENT_ENCODER_EVIDENCE`：复用同一批 frozen development inputs，在 CPU 上验证结构接线、History 因果、mask、方向、P2A/P2C、置换等变、序列化、确定性与 backward。5.2 之后该 encoder 可在 CPU development loop 中参与 joint optimizer smoke，但没有正式训练或性能结论。
 - 下一实验步骤尚未授权；Step 2 建议仅冻结一步轨迹和四类动作合同，不训练。
 - STEP 3.1 原 10 项/4 tests 记录已由 STEP 3.1R 修正证据取代，不再作为当前合同验收。
 - STEP 3.1F 不是训练实验：最小样本通过 24 项合同 checks、12 项 focused tests、round-trip；History 为 `O_1+A_1+Y_1+O_2`，Action/Target `[2,3]`，History union index、Future Action ID↔index 对齐、history relation/DAG/flow 对齐已验收。未来 reference audit 扫描 4 个非 locked Raw artifact、18 个窗口，0 个 unresolved reference；locked/training/gpu 均为 false。

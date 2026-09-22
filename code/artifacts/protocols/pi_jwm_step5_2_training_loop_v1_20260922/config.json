@@ -1,0 +1,26 @@
+{
+  "batch_size": 1,
+  "curriculum": {
+    "horizons": [
+      1,
+      2,
+      4
+    ],
+    "max_horizon": 2,
+    "start_steps": [
+      0,
+      1,
+      2
+    ]
+  },
+  "gradient_clip_norm": 1.0,
+  "kl_schedule": {
+    "free_bits": 0.1,
+    "target_beta": 1.0,
+    "warmup_steps": 10
+  },
+  "learning_rate": 0.001,
+  "seed": 5201,
+  "stage1_steps": 1,
+  "weight_decay": 0.0
+}

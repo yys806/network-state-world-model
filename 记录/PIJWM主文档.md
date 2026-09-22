@@ -1,5 +1,11 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-22 STEP 5.2 实现边界（当前）
+
+STEP 5.2 已把冻结的 Definition 05 loss/KL/metric primitives 与 4.3B Encoder、4.4 Structured RSSM 接成 CPU development training loop。Stage 1 使用对应 Motion/CSI future posterior teacher；Stage 2 与 validation 使用 prior-only recursive rollout；`beta_KL`、free bits、curriculum、optimizer、checkpoint/resume 均为配置化 engineering path。8/4 unified non-locked development bundle 的两步 smoke 和 20/20 receipt checks 通过。
+
+这只证明训练循环、参数更新、验证隔离和恢复机制在 CPU development scope 可执行，不证明 tiny-data overfit、full training、预测性能、GPU readiness、正式 Dataset、baseline、Planner 或 `locked_test`。当前仍保持 `full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`；Route/Comp non-empty coverage=0 继续作为未来 formal training/data coverage gate。下一独立门是 STEP 5.3。
+
 ## 2026-09-21 STEP 5.1A-PATCH — Motion 局部一步语义与稳定槽位
 
 Motion learned head 与 STEP 4.4 recursive transition 的统一语义为：第 `k` 个 future target 使用 `[p_(t+k)-p_(t+k-1), v_(t+k)]`。第一步参考 History 最后一帧，第二步以后参考前一个 Future Ground-Truth frame；这只是 training target 构造，不允许 prior、History 或 current graph 读取 Future Target。delta 每个坐标分量仅在相邻两帧该分量都有效时 mask=true，禁止跨缺失帧累计位移。
@@ -14,7 +20,7 @@ STEP 5.1A-PATCH 后，Definition 05 的 Future Target 数据层使用 local one-
 
 ## 2026-09-21 Definition 05 冻结训练合同
 
-本节记录研究者在 STEP 5.0 中作出的最新明确决策；它取代只读 Definition 05 旧稿中与之冲突的 observation NLL、Event/Residual loss 和 latent overshooting，但不表示训练代码已经实现。
+本节记录研究者在 STEP 5.0 中作出的最新明确决策；它取代只读 Definition 05 旧稿中与之冲突的 observation NLL、Event/Residual loss 和 latent overshooting。5.1B/5.1D/5.2 已按本合同形成 CPU development primitives/integration；仍不等于正式训练或性能结果。
 
 - 预测分布：Motion 与 CSI decoder 输出确定性均值；随机性只由 latent `z` 表达，不学习 observation variance。
 - 重建损失：Motion 与 CSI 各自做 component-mask-normalized MSE，默认等权；训练在归一化空间，评价回到原始单位。
@@ -26,7 +32,7 @@ STEP 5.1A-PATCH 后，Definition 05 的 Future Target 数据层使用 local one-
 - 优化范围：encoder、RSSM/prior/posterior、target encoder、decoder 端到端联合训练；冻结的是结构合同，不是参数权重。
 - 选择与评价：`LVal` 为各 horizon 等权后的 Motion/CSI 等权均值，用于 `argmin` checkpoint selection 与 early stop；主报告为原始单位的逐 horizon Motion/CSI MAE/RMSE。KL 只作诊断，不确定性只作辅助，系统指标单列。
 
-当前实现缺口：未来逐 RB CSI target 尚未进入数据/张量；未来 Motion position 尚未按 train-only stats 归一化并张量化；Definition 05 loss、posterior teacher、curriculum、训练器与评价器均未实现。因此当前状态只是 `RESEARCHER DECISION FROZEN / IMPLEMENTATION NOT STARTED`，不得据此启动训练、GPU、正式 Dataset 或 `locked_test`。
+历史前置缺口（STEP 5.0 时点）：未来逐 RB CSI target 和 Motion normalization 尚未进入数据/张量；这些已由 5.1A/5.1B/5.1D closure 补齐。当前 5.2 仅完成 CPU development training-loop integration，不得据此启动 full training、GPU、正式 Dataset 或 `locked_test`。
 
 > **2026-09-18 当前定义入口：** 研究者已明确将只读目录 `D:\shen\OB\科研\PIJWM` 中七个 `00–06` Markdown 文件作为当前目标定义。本文件保留此前理论、决策和证据边界；若具体对象、动作、图语义、世界模型、loss、训练或 planner 定义与最新 `00–06` 冲突，以最新定义为目标，并以 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/STEP_01_AUDIT.md` 记录实现差距。目标定义不等于代码已实现；旧 P4/P6/P0–P10 方法和结果仅按原协议作 Historical / Archived evidence。
 

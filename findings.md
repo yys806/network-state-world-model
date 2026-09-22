@@ -1081,3 +1081,11 @@
 - 改变真实 paired target 后，actual `phy_prior`/`comm_prior` 的 mean 和 log_std 保持完全一致，而 posterior 改变；这是 runtime isolation，不只是 contract 字段检查。
 - 旧 receipt 的全 false scope 会误导；现拆为 executed scope 与 forbidden scope，passed 只由 required checks 和 forbidden scope 共同决定。
 - 真实 12-sample action coverage 中 Route/Comp non-empty 均为 0；不能外推为完整四动作族正式训练覆盖。
+
+# 2026-09-22 STEP 5.2 findings
+
+- 当前 5.2 loop 真正把 5.1D unified state/action adapter、4.3B encoder、4.4 RSSM 和 5.1B target/posterior/loss/KL/metric primitives 接成 CPU optimizer path；不是只检查接口存在。
+- Stage 1 的 Future Motion/CSI 只进入对应 family posterior teacher；Stage 2/validation 由 `initialize_latent(posterior_mode="prior")` 和 prior recursive state feedback 驱动。receipt negative checks 证明 Future Target 与 Future GT state 不进入 prior rollout。
+- optimizer audit 覆盖 encoder、RSSM dynamics、两类 prior、两类 future posterior、两类 target encoder 和两个 decoder；known deterministic rule 参数为 0。两步 smoke 后有真实 parameter update，validation `parameter_changed_count=0`。
+- `L_Val=168.31609344482422` 仅为 8/4 development smoke diagnostic；不支持 tiny-data overfit、收敛、泛化、正式训练或性能结论。Route/Comp non-empty coverage 仍为 0，作为 future formal training/data coverage gate。
+- 全量历史 suite fresh 运行结果为 `1887 tests / 33 errors`；错误集中于 AirFogSim GBK 输出、缺失 archived artifact/fixture drift 和旧 runner 环境边界。5.2 focused 与 current regression 无新错误。

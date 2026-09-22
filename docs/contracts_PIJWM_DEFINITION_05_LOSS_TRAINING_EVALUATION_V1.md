@@ -1,6 +1,6 @@
 # PI-JWM Definition 05 — Loss / Training / Evaluation Contract v1
 
-状态：**RESEARCHER DECISION FROZEN；IMPLEMENTATION NOT STARTED**
+状态：**RESEARCHER DECISION FROZEN；PRIMITIVES AND STEP 5.2 CPU DEVELOPMENT LOOP IMPLEMENTED**
 冻结日期：2026-09-21
 适用起点：STEP 5.1 及其后的 Definition 05 子步骤
 
@@ -88,4 +88,4 @@ Validation 只使用 prior recursive rollout。每个 horizon `k` 独立计算 m
 
 ## 5. 当前证据边界
 
-本合同只证明研究决定已经冻结并映射到已审计接口，不证明 Loss/Posterior/Metric 已实现，不证明 CPU training 可运行，不证明 GPU readiness、预测精度、校准、baseline 公平比较或最终性能。当前固定：`implementation=false`、`training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`。
+本合同的研究决定已冻结；5.1B/5.1D 已实现并验收 Loss/Posterior/Metric primitives，STEP 5.2 已实现少量 CPU development training-loop/optimizer smoke。该证据不证明 tiny-data overfit、full training、GPU readiness、预测精度、校准、baseline 公平比较或最终性能。当前固定：`training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`。

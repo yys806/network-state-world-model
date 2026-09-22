@@ -1,15 +1,15 @@
 # PI-JWM 当前科研状态
 
 > 本文是导航性状态摘要。当前结果必须回到原始 checkpoint、metrics、manifest 和 audit 验证。
-> 截至 2026-09-21，Raw/定义 01、最小 Dataset/Tensor/定义 02、STEP 4.3A Builder、STEP 4.3B Encoder 与 STEP 4.4 Structured RSSM World Model Contract 已冻结。STEP 5.1A 初版冻结声明因 multi-horizon Motion/slot 问题被撤回，STEP 5.1A-PATCH 已修复并冻结 target contract。STEP 5.0 的 10 项 loss/training/evaluation 决策不变；Loss/Posterior/Metric/Training 实现仍未开始。GPU 未使用，`locked_test` 未访问，`formal_dataset=false`。
+> 截至 2026-09-22，Raw/定义 01、最小 Dataset/Tensor/定义 02、STEP 4.3A Builder、STEP 4.3B Encoder、STEP 4.4 Structured RSSM World Model Contract、5.1B/5.1D primitives/integration 与 STEP 5.2 CPU training-loop integration 已冻结。STEP 5.2 仅是 8/4 development CPU smoke；GPU 未使用，`locked_test` 未访问，`formal_dataset=false`。
 
 ## 0. 当前实施状态
 
 - Step 2.4 已用真实 non-locked AirFogSim 完成通信 Outcome 最终验收；Step 3.2/3.3 已冻结最小 Dataset/Tensor 合同。
 - STEP 4.1 已冻结映射；STEP 4.2A/4.2C-B/4.2C-C 已闭合 graph inputs 与 Flow Raw→Tensor；STEP 4.3A 已物化 typed graph；STEP 4.3B 已实现 History temporal encoding、typed message passing 与 P2A/P2C，输出 `Z_t^{PI,L_g}`。
-- 现有代码已在 STEP 4.4 contract 中接入四类动作路由、`Z_t^{PI,L_g}→xi_t^Lat`、结构化 RSSM 边界、逐步规则反馈与预测态动态图重建；真实重规划、Loss/训练与性能验证仍未开始。
+- 现有代码已在 STEP 4.4 contract 中接入四类动作路由、`Z_t^{PI,L_g}→xi_t^Lat`、结构化 RSSM 边界、逐步规则反馈与预测态动态图重建；5.1B/5.1D 已接入 Loss/KL/Metric，5.2 已接入 CPU training loop；真实重规划与性能验证仍未开始。
 - STEP 5.0 已冻结 deterministic mean decoder、Motion/CSI mask-normalized MSE、family-specific posterior teacher、分族 KL、overshooting OFF、prior-dominant curriculum、component mask、无规则状态 loss、joint training 与 prior-only validation/evaluation。
-- STEP 5.1A-PATCH 已把 Motion 改为 local one-step delta 并固定到 current physical input slots，同时把 CSI 绑定到 current model relation slot/identity/endpoint/type/RB；12-sample non-locked development receipt 已重建通过，19/19 focused 与 102/102 related regression 通过。现在停止并等待研究者决定是否授权 STEP 5.1B。Loss/Posterior/Metric/Training 仍未实现。
+- STEP 5.1A-PATCH 已把 Motion 改为 local one-step delta 并固定到 current physical input slots，同时把 CSI 绑定到 current model relation slot/identity/endpoint/type/RB；5.1B/5.1D 已完成 posterior/loss/metric 与 paired integration，5.2 已完成 CPU training-loop smoke。下一独立门是 STEP 5.3；这不是正式训练或性能证据。
 
 ## 1. 当前研究问题
 

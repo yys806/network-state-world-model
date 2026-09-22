@@ -2,11 +2,17 @@
 
 Source of truth：本文件是入口；具体事实必须回到列出的代码、配置、测试或 artifact。
 
+## STEP 5.2 当前边界
+
+- STEP 5.2 CPU development training loop 已实现并通过 20/20 receipt checks；这只证明 Stage 1/Stage 2、optimizer smoke、prior-only validation 与 checkpoint/resume 的工程链路，不证明训练收敛、泛化或性能。
+- 当前只使用 unified non-locked development bundle（`dev_train=8`、`dev_validation=4`）。Route/Comp non-empty coverage 均为 0，仅有 explicit no-op；正式训练数据覆盖仍需后续 gate。
+- `training_loop_implemented=true`、`cpu_optimizer_smoke=true`，但 `full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`。下一独立门是 STEP 5.3，不在本轮自动执行。
+
 ## STEP 5.1A/5.1D target boundary
 
 - 初版 STEP 5.1A 的 horizon 2+ Motion anchor 与 future-row-order Motion alignment 已确认错误；旧 COMPLETE/FROZEN 证据被 PATCH 取代。当前代码和 non-locked development receipt 已覆盖 local-step semantics、current physical slots 和 current model CSI relation slots，PATCH target contract 已重新冻结。
 - Future Target 保持 additive namespace；5.1D 只在 target encoder/posterior/decoder/loss 路径读取它，STEP 4.3B encoder 和 STEP 4.4 current prior 不读取 target。
-- Loss/posterior/KL/metric 已有 CPU paired integration evidence；optimizer、Training Loop、GPU、planner 和 `locked_test` 仍未开始，artifact 不是正式 Dataset 或性能证据。
+- Loss/posterior/KL/metric 已有 CPU paired integration evidence；STEP 5.2 已补齐 CPU training-loop/optimizer smoke，但 full training、GPU、planner 和 `locked_test` 仍未开始，artifact 不是正式 Dataset 或性能证据。
 
 ## Step 2.4 raw boundary observations
 

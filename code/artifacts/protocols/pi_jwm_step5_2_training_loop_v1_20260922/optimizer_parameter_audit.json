@@ -1,0 +1,59 @@
+{
+  "all_required_groups_present": true,
+  "groups": {
+    "comm_future_posterior": {
+      "in_optimizer": true,
+      "parameter_count": 4,
+      "trainable_count": 4
+    },
+    "comm_prior": {
+      "in_optimizer": true,
+      "parameter_count": 4,
+      "trainable_count": 4
+    },
+    "csi_decoder": {
+      "in_optimizer": true,
+      "parameter_count": 4,
+      "trainable_count": 4
+    },
+    "csi_target_encoder": {
+      "in_optimizer": true,
+      "parameter_count": 4,
+      "trainable_count": 4
+    },
+    "encoder": {
+      "in_optimizer": true,
+      "parameter_count": 182,
+      "trainable_count": 182
+    },
+    "motion_target_encoder": {
+      "in_optimizer": true,
+      "parameter_count": 4,
+      "trainable_count": 4
+    },
+    "phy_future_posterior": {
+      "in_optimizer": true,
+      "parameter_count": 4,
+      "trainable_count": 4
+    },
+    "phy_prior": {
+      "in_optimizer": true,
+      "parameter_count": 4,
+      "trainable_count": 4
+    },
+    "rssm_dynamics": {
+      "in_optimizer": true,
+      "parameter_count": 206,
+      "trainable_count": 206
+    },
+    "vehicle_motion_decoder": {
+      "in_optimizer": true,
+      "parameter_count": 4,
+      "trainable_count": 4
+    }
+  },
+  "known_rule_parameter_count": 0,
+  "known_rule_parameter_names": [],
+  "known_rule_parameters_excluded": true,
+  "total_trainable_parameters": 101158
+}

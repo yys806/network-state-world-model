@@ -1,5 +1,14 @@
 # Progress
 
+## 2026-09-22 STEP 5.2 — Training Loop / Curriculum / Joint Training Implementation
+
+- [x] 新增 `step5_2_training_loop_v1.py`、CPU smoke、9 项 focused tests 和实现记录；实现 Stage 1 posterior-assisted warm-up、Stage 2 prior-only recursive rollout、配置化 `1→2→4` curriculum、KL warm-up/free bits、joint optimizer groups、prior-only validation、`L_Val` selector 与 checkpoint/resume。
+- [x] 真实 8/4 unified non-locked development bundle 完成两步 CPU optimizer smoke：loss/gradient finite、trainable parameters 真实更新、known rule 参数不进 optimizer；validation 4 samples prior-only 且参数未更新。
+- [x] receipt `20/20` required checks 通过，checkpoint reload forward digest 一致，resume state 保留；Route/Comp non-empty=0、Comm=1、Mobility=48。
+- [x] focused 5.2 `9/9`，5.1D `5/5`，5.1B `5/5`，5.1A `19/19`，4.4 `30/30`，4.3B `21/21`，4.3A `15/15`，4.2C-C `23/23`，4.2A `17/17`，3.3 `8/8`，3.2 `11/11`，compileall 通过。
+- [ ] 不把两步 smoke 写成 tiny-data overfit、收敛、泛化或性能结果；full training、GPU、formal Dataset、baseline、Planner、locked_test 均关闭。全量历史 suite 为 `1887 tests / 33 errors`，错误仍是已知历史/环境/缺失 artifact，不是当前 5.2 focused regression。
+- Boundary: `training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`。唯一下一动作是 STEP 5.3，需研究者另行授权。
+
 ## 2026-09-22 STEP 5.1B-PATCH — Per-Horizon Posterior / Real World-Model Integration / KL-Metric Correction
 
 研究者复核确认原 5.1B 存在跨 horizon teacher aggregation、mask evidence 缺失、独立 prior、zero-h/identity prediction loss、错误 free-bits reduction、raw-unit metric 与硬编码 receipt。当前 Patch 已将 Target Encoder 保留为 `[B,L,S,D]`，加入 family-specific future teachers，正式 receipt 走真实 STEP 4.4 `initialize_latent/one_step`、`phy_prior/comm_prior` 与真实 decoders；focused 5/5、STEP 4.4 regression 30/30、receipt 通过、compileall 通过。当前仍未 COMPLETE/FROZEN；target support 10/74 与 model support 8/44 的对齐限制已记录。禁止 Training、optimizer、GPU、formal Dataset、Planner、baseline、locked_test。

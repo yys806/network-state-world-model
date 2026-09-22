@@ -1,0 +1,28 @@
+{
+  "L_Val": 168.31609344482422,
+  "future_state_not_rollout_input": true,
+  "l_val_finite": true,
+  "model_eval": true,
+  "no_grad": true,
+  "parameter_changed_count": 0,
+  "per_horizon": [
+    {
+      "L_Pred": 167.52954483032227,
+      "available_sample_count": 4,
+      "csi_count": 9900,
+      "horizon": 1,
+      "motion_count": 24
+    },
+    {
+      "L_Pred": 169.10264205932617,
+      "available_sample_count": 4,
+      "csi_count": 9900,
+      "horizon": 2,
+      "motion_count": 24
+    }
+  ],
+  "posterior_rollout_calls": 0,
+  "prior_only_rollout": true,
+  "selector_uses_l_val_only": true,
+  "validation_no_parameter_update": true
+}

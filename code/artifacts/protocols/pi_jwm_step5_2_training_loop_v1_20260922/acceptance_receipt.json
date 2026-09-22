@@ -1,0 +1,360 @@
+{
+  "checkpoint_audit": {
+    "config_saved": true,
+    "data_identity_saved": true,
+    "forward_digest_after": "bc7792d5936b1f83c33546084d281a28c407c41642c17a05f82622c000cedbb0",
+    "forward_digest_before": "bc7792d5936b1f83c33546084d281a28c407c41642c17a05f82622c000cedbb0",
+    "git_commit_saved": true,
+    "normalization_provenance_saved": true,
+    "optimizer_state_saved": true,
+    "restored_best_l_val": 168.31609344482422,
+    "restored_beta_kl": 0.2,
+    "restored_curriculum_horizon": 2,
+    "restored_early_stopping_counter": 1,
+    "restored_epoch": 0,
+    "restored_global_step": 2,
+    "rng_state_saved": true,
+    "same_input_forward_equal": true,
+    "save_load": true
+  },
+  "config": {
+    "batch_size": 1,
+    "curriculum": {
+      "horizons": [
+        1,
+        2,
+        4
+      ],
+      "max_horizon": 2,
+      "start_steps": [
+        0,
+        1,
+        2
+      ]
+    },
+    "gradient_clip_norm": 1.0,
+    "kl_schedule": {
+      "free_bits": 0.1,
+      "target_beta": 1.0,
+      "warmup_steps": 10
+    },
+    "learning_rate": 0.001,
+    "seed": 5201,
+    "stage1_steps": 1,
+    "weight_decay": 0.0
+  },
+  "data_identity": {
+    "bundle_manifest": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1c_unified_development_bundle_v1_20260922\\manifest.json",
+    "bundle_manifest_sha256": "94e8f31da5f6de3e92f9404ff7ba2e10ad7c97549fb42ac87beb0ec67828574f",
+    "sample_ids": [
+      "step2.4-real-communication-seed0::anchor-0001",
+      "step2.4-real-communication-seed0::anchor-0002",
+      "step2.4-real-communication-seed0::anchor-0003",
+      "step2.4-real-communication-seed0::anchor-0004",
+      "step3.2-dev-seed1::anchor-0001",
+      "step3.2-dev-seed1::anchor-0002",
+      "step3.2-dev-seed1::anchor-0003",
+      "step3.2-dev-seed1::anchor-0004",
+      "step3.2-dev-seed2::anchor-0001",
+      "step3.2-dev-seed2::anchor-0002",
+      "step3.2-dev-seed2::anchor-0003",
+      "step3.2-dev-seed2::anchor-0004"
+    ],
+    "target_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1a_motion_csi_target_contract_v1_20260921\\tensor.npz",
+    "target_sha256": "9f73a5d47be1d732a7c4d2983c3bf6f9a4340c783136c3c23043b22cbed1afa6",
+    "tensor_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1d_unified_model_chain_v1_20260922\\unified_flow_tensor_package.npz",
+    "tensor_sha256": "bf6adebe1b6185d640e9b0baadb96c33bfa70b50d213f4e7b8276ac6c139a698",
+    "train_sample_count": 8,
+    "validation_sample_count": 4
+  },
+  "executed_scope": {
+    "checkpoint_resume": true,
+    "cpu_optimizer_smoke": true,
+    "cpu_optimizer_step": true,
+    "optimizer_implemented": true,
+    "stage1_posterior_assisted_warmup": true,
+    "stage2_prior_recursive_curriculum": true,
+    "training_loop_implemented": true,
+    "validation_smoke": true
+  },
+  "forbidden_scope": {
+    "baseline": false,
+    "formal_dataset": false,
+    "formal_optimizer_step": false,
+    "formal_training": false,
+    "full_training": false,
+    "gpu": false,
+    "locked_test": false,
+    "locked_test_accessed": false,
+    "performance_claim": false,
+    "planner": false
+  },
+  "normalization_provenance": {
+    "encoder_source_split": "dev_train",
+    "target": {
+      "csi_mean": 98.34974797337962,
+      "csi_std": 5.447668248691379,
+      "position_std": [
+        289.9769918292785,
+        277.31656328789245,
+        65.78666419476802
+      ],
+      "speed_mean": 2.265105350897042,
+      "speed_std": 4.099410491487269
+    }
+  },
+  "optimizer_parameter_audit": {
+    "all_required_groups_present": true,
+    "groups": {
+      "comm_future_posterior": {
+        "in_optimizer": true,
+        "parameter_count": 4,
+        "trainable_count": 4
+      },
+      "comm_prior": {
+        "in_optimizer": true,
+        "parameter_count": 4,
+        "trainable_count": 4
+      },
+      "csi_decoder": {
+        "in_optimizer": true,
+        "parameter_count": 4,
+        "trainable_count": 4
+      },
+      "csi_target_encoder": {
+        "in_optimizer": true,
+        "parameter_count": 4,
+        "trainable_count": 4
+      },
+      "encoder": {
+        "in_optimizer": true,
+        "parameter_count": 182,
+        "trainable_count": 182
+      },
+      "motion_target_encoder": {
+        "in_optimizer": true,
+        "parameter_count": 4,
+        "trainable_count": 4
+      },
+      "phy_future_posterior": {
+        "in_optimizer": true,
+        "parameter_count": 4,
+        "trainable_count": 4
+      },
+      "phy_prior": {
+        "in_optimizer": true,
+        "parameter_count": 4,
+        "trainable_count": 4
+      },
+      "rssm_dynamics": {
+        "in_optimizer": true,
+        "parameter_count": 206,
+        "trainable_count": 206
+      },
+      "vehicle_motion_decoder": {
+        "in_optimizer": true,
+        "parameter_count": 4,
+        "trainable_count": 4
+      }
+    },
+    "known_rule_parameter_count": 0,
+    "known_rule_parameter_names": [],
+    "known_rule_parameters_excluded": true,
+    "total_trainable_parameters": 101158
+  },
+  "passed": true,
+  "prior_target_isolation": {
+    "future_target_consumed_by_prior": false,
+    "posterior_mean_changed": true,
+    "prior_log_std_unchanged": true,
+    "prior_mean_unchanged": true
+  },
+  "required_checks": {
+    "checkpoint_reload": true,
+    "curriculum_1_to_2": true,
+    "finite_and_reproducible": true,
+    "free_bits_contract": true,
+    "future_return_birth_unsupported": true,
+    "future_state_not_rollout_input": true,
+    "independent_normalization": true,
+    "kl_warmup": true,
+    "known_rule_excluded": true,
+    "locked_test_not_accessed": true,
+    "optimizer_parameter_groups": true,
+    "padding_and_noop_contract": true,
+    "parameter_update": true,
+    "prior_target_isolation": true,
+    "resume_state": true,
+    "stage1_posterior_teacher": true,
+    "stage2_prior_recursive": true,
+    "target_posterior_sensitivity": true,
+    "validation_no_parameter_update": true,
+    "validation_prior_only": true
+  },
+  "route_comp_coverage_gate": {
+    "comm_nonempty_coverage": 1,
+    "comp_nonempty_coverage": 0,
+    "mobility_nonempty_coverage": 48,
+    "route_nonempty_coverage": 0,
+    "status": "future_formal_training_data_coverage_gate"
+  },
+  "schema_version": "PI-JWM-Step-5.2-Training-Loop-Receipt-v1",
+  "scope": {
+    "executed": {
+      "checkpoint_resume": true,
+      "cpu_optimizer_smoke": true,
+      "cpu_optimizer_step": true,
+      "optimizer_implemented": true,
+      "stage1_posterior_assisted_warmup": true,
+      "stage2_prior_recursive_curriculum": true,
+      "training_loop_implemented": true,
+      "validation_smoke": true
+    },
+    "forbidden": {
+      "baseline": false,
+      "formal_dataset": false,
+      "formal_optimizer_step": false,
+      "formal_training": false,
+      "full_training": false,
+      "gpu": false,
+      "locked_test": false,
+      "locked_test_accessed": false,
+      "performance_claim": false,
+      "planner": false
+    }
+  },
+  "split": {
+    "formal_dataset": false,
+    "train_count": 8,
+    "validation_count": 4
+  },
+  "stage_rows": [
+    {
+      "L_CSI": 324.43048095703125,
+      "L_KL": 1.894179105758667,
+      "L_KL_Comm_adjusted": 0.839239776134491,
+      "L_KL_Comm_raw": 0.8091794848442078,
+      "L_KL_Phy_adjusted": 1.0549393892288208,
+      "L_KL_Phy_raw": 0.9413271546363831,
+      "L_Mot": 0.0004148994048591703,
+      "L_Pred": 162.2154541015625,
+      "L_Total": 162.2154541015625,
+      "beta_kl": 0.0,
+      "csi_count": 2100.0,
+      "epoch": 0,
+      "future_state_not_rollout_input": true,
+      "global_step": 0,
+      "gradient_norm_before_clip": 1.4044189453125,
+      "gradients_finite": true,
+      "horizon_rows": [
+        {
+          "L_CSI": 324.43048095703125,
+          "L_Mot": 0.0004148994048591703,
+          "L_Pred": 162.2154541015625,
+          "available": true,
+          "csi_count": 2100,
+          "horizon": 1,
+          "motion_count": 4
+        }
+      ],
+      "kl_comm_count": 42.0,
+      "kl_phy_count": 1.0,
+      "loss_finite": true,
+      "motion_count": 4.0,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 273
+      },
+      "posterior_teacher_used": true,
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 1,
+      "stage": "posterior_assisted_warmup"
+    },
+    {
+      "L_CSI": 336.2921447753906,
+      "L_KL": 2.2176218032836914,
+      "L_KL_Comm_adjusted": 1.1841882467269897,
+      "L_KL_Comm_raw": 1.1584542989730835,
+      "L_KL_Phy_adjusted": 1.033433437347412,
+      "L_KL_Phy_raw": 0.971304714679718,
+      "L_Mot": 0.00382577464915812,
+      "L_Pred": 168.14797973632812,
+      "L_Total": 168.36973571777344,
+      "beta_kl": 0.1,
+      "csi_count": 4200.0,
+      "epoch": 0,
+      "future_state_not_rollout_input": true,
+      "global_step": 1,
+      "gradient_norm_before_clip": 2.501715898513794,
+      "gradients_finite": true,
+      "horizon_rows": [
+        {
+          "L_CSI": 334.0927734375,
+          "L_Mot": 0.002032236196100712,
+          "L_Pred": 167.0474090576172,
+          "available": true,
+          "csi_count": 2100,
+          "horizon": 1,
+          "motion_count": 4
+        },
+        {
+          "L_CSI": 338.4914855957031,
+          "L_Mot": 0.005619313567876816,
+          "L_Pred": 169.24855041503906,
+          "available": true,
+          "csi_count": 2100,
+          "horizon": 2,
+          "motion_count": 4
+        }
+      ],
+      "kl_comm_count": 84.0,
+      "kl_phy_count": 2.0,
+      "loss_finite": true,
+      "motion_count": 8.0,
+      "parameter_update": {
+        "any_changed": true,
+        "changed_count": 328
+      },
+      "posterior_teacher_used": true,
+      "posterior_used_as_rollout_state": false,
+      "prior_only_rollout": true,
+      "recursive_state_feedback": true,
+      "rollout_horizon": 2,
+      "stage": "prior_dominant_recursive"
+    }
+  ],
+  "tamper_negative": {
+    "forbidden_scope_tamper_passed": true,
+    "required_check_tamper_passed": true
+  },
+  "validation": {
+    "L_Val": 168.31609344482422,
+    "future_state_not_rollout_input": true,
+    "l_val_finite": true,
+    "model_eval": true,
+    "no_grad": true,
+    "parameter_changed_count": 0,
+    "per_horizon": [
+      {
+        "L_Pred": 167.52954483032227,
+        "available_sample_count": 4,
+        "csi_count": 9900,
+        "horizon": 1,
+        "motion_count": 24
+      },
+      {
+        "L_Pred": 169.10264205932617,
+        "available_sample_count": 4,
+        "csi_count": 9900,
+        "horizon": 2,
+        "motion_count": 24
+      }
+    ],
+    "posterior_rollout_calls": 0,
+    "prior_only_rollout": true,
+    "selector_uses_l_val_only": true,
+    "validation_no_parameter_update": true
+  }
+}

@@ -1,0 +1,97 @@
+[
+  {
+    "L_CSI": 324.43048095703125,
+    "L_KL": 1.894179105758667,
+    "L_KL_Comm_adjusted": 0.839239776134491,
+    "L_KL_Comm_raw": 0.8091794848442078,
+    "L_KL_Phy_adjusted": 1.0549393892288208,
+    "L_KL_Phy_raw": 0.9413271546363831,
+    "L_Mot": 0.0004148994048591703,
+    "L_Pred": 162.2154541015625,
+    "L_Total": 162.2154541015625,
+    "beta_kl": 0.0,
+    "csi_count": 2100.0,
+    "epoch": 0,
+    "future_state_not_rollout_input": true,
+    "global_step": 0,
+    "gradient_norm_before_clip": 1.4044189453125,
+    "gradients_finite": true,
+    "horizon_rows": [
+      {
+        "L_CSI": 324.43048095703125,
+        "L_Mot": 0.0004148994048591703,
+        "L_Pred": 162.2154541015625,
+        "available": true,
+        "csi_count": 2100,
+        "horizon": 1,
+        "motion_count": 4
+      }
+    ],
+    "kl_comm_count": 42.0,
+    "kl_phy_count": 1.0,
+    "loss_finite": true,
+    "motion_count": 4.0,
+    "parameter_update": {
+      "any_changed": true,
+      "changed_count": 273
+    },
+    "posterior_teacher_used": true,
+    "posterior_used_as_rollout_state": false,
+    "prior_only_rollout": true,
+    "recursive_state_feedback": true,
+    "rollout_horizon": 1,
+    "stage": "posterior_assisted_warmup"
+  },
+  {
+    "L_CSI": 336.2921447753906,
+    "L_KL": 2.2176218032836914,
+    "L_KL_Comm_adjusted": 1.1841882467269897,
+    "L_KL_Comm_raw": 1.1584542989730835,
+    "L_KL_Phy_adjusted": 1.033433437347412,
+    "L_KL_Phy_raw": 0.971304714679718,
+    "L_Mot": 0.00382577464915812,
+    "L_Pred": 168.14797973632812,
+    "L_Total": 168.36973571777344,
+    "beta_kl": 0.1,
+    "csi_count": 4200.0,
+    "epoch": 0,
+    "future_state_not_rollout_input": true,
+    "global_step": 1,
+    "gradient_norm_before_clip": 2.501715898513794,
+    "gradients_finite": true,
+    "horizon_rows": [
+      {
+        "L_CSI": 334.0927734375,
+        "L_Mot": 0.002032236196100712,
+        "L_Pred": 167.0474090576172,
+        "available": true,
+        "csi_count": 2100,
+        "horizon": 1,
+        "motion_count": 4
+      },
+      {
+        "L_CSI": 338.4914855957031,
+        "L_Mot": 0.005619313567876816,
+        "L_Pred": 169.24855041503906,
+        "available": true,
+        "csi_count": 2100,
+        "horizon": 2,
+        "motion_count": 4
+      }
+    ],
+    "kl_comm_count": 84.0,
+    "kl_phy_count": 2.0,
+    "loss_finite": true,
+    "motion_count": 8.0,
+    "parameter_update": {
+      "any_changed": true,
+      "changed_count": 328
+    },
+    "posterior_teacher_used": true,
+    "posterior_used_as_rollout_state": false,
+    "prior_only_rollout": true,
+    "recursive_state_feedback": true,
+    "rollout_horizon": 2,
+    "stage": "prior_dominant_recursive"
+  }
+]

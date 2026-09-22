@@ -1,11 +1,17 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-22：STEP 5.2 Training Loop / Curriculum / Joint Training
+
+- 新增配置化 CPU development training loop：Stage 1 posterior-assisted warm-up、Stage 2 prior-dominant recursive curriculum、KL warm-up/free bits、joint optimizer audit、prior-only validation、`L_Val` selector 与 checkpoint/resume。
+- 8/4 unified non-locked development smoke 完成两步 optimizer update；focused 9/9、current regressions、compileall、receipt tamper checks 通过。Receipt 与 compact audit 位于 `code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/`，checkpoint `.pt` 保持 local-only。
+- 保持边界：`full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`；Route/Comp non-empty coverage=0，未执行 STEP 5.3。
+
 ## 2026-09-22：STEP 5.1D-PATCH Evidence / Context / Action-Coverage Closure
 
 - 将 5.1D 的 compact acceptance receipt、manifest、pairing/identity/action audit、gradient/recursive/metric summary 和 normalization lineage audit 纳入 GitHub 可追踪 evidence；巨大 full audit 与 binary package 保持 local-only。
 - receipt 拆分 `executed_scope` 与 `forbidden_scope`，required checks 取实际 AND；47/47 checks 通过，tamper required check 与 forbidden scope 均会失败。
 - 机器核对 unified stats 的 8 个 `dev_train` source IDs、4.2A frozen `batch.json` 恢复的 upstream fit source，以及逐窗口 `normalized_samples.json` lineage；真实 coverage 为 Mobility=48、Comm=1、Route=0、Comp=0，Route/Comp 仅显式 no-op。
-- 增加真实 paired runtime prior-target isolation 与 posterior target sensitivity；保持 CPU/non-locked、未训练、无 optimizer/GPU/formal Dataset/locked_test/Planner/performance claim，不进入 STEP 5.2。
+- 增加真实 paired runtime prior-target isolation 与 posterior target sensitivity；保持 CPU/non-locked、无 full training/GPU/formal Dataset/locked_test/Planner/performance claim；随后由 STEP 5.2 接入 CPU development loop。
 
 ## 2026-09-21：STEP 5.0 Definition 05 Decision Freeze / Context Sync
 

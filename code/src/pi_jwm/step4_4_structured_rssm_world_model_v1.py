@@ -327,6 +327,15 @@ class StructuredRSSMWorldModel(nn.Module):
         return x * mask[..., None]
 
     def initialize_latent(self, z_pi: Mapping[str, Any], state: Mapping[str, torch.Tensor], *, posterior_mode: str = "mean", generator: torch.Generator | None = None) -> dict[str, Any]:
+        """Initialize the structured latent state.
+
+        ``mean`` and ``sample`` preserve the original development contract and
+        use the current-observation posterior.  ``prior`` is the explicit
+        training/validation rollout mode: it derives the initial stochastic
+        state from the prior heads and never evaluates a posterior.  In
+        particular, callers must use this mode for prior-only recursive
+        validation so a training-only teacher cannot enter the rollout state.
+        """
         p = z_pi["physical"]["node_latent"]
         i = z_pi["information"]
         h = {
@@ -336,13 +345,21 @@ class StructuredRSSMWorldModel(nn.Module):
             "flow": self._mask(self.flow_init(i["flow_relation_latent"]), state["flow_presence"]),
             "task": self._mask(self.task_init(i["task_latent"]), state["task_presence"]),
         }
-        phy_q = self.phy_posterior(torch.cat((h["physical"], p), -1))
-        comm_q = self.comm_posterior(torch.cat((h["communication"], i["comm_relation_latent"]), -1))
+        if posterior_mode == "prior":
+            phy_q = self.phy_prior(h["physical"])
+            comm_q = self.comm_prior(h["communication"])
+            selected_mode = "mean"
+            posterior = None
+        else:
+            phy_q = self.phy_posterior(torch.cat((h["physical"], p), -1))
+            comm_q = self.comm_posterior(torch.cat((h["communication"], i["comm_relation_latent"]), -1))
+            selected_mode = posterior_mode
+            posterior = {"physical": phy_q, "communication": comm_q}
         z = {
-            "physical": self._select_z(phy_q, posterior_mode, generator) * state["vehicle_mask"][..., None],
-            "communication": self._select_z(comm_q, posterior_mode, generator) * state["comm_presence"][..., None],
+            "physical": self._select_z(phy_q, selected_mode, generator) * state["vehicle_mask"][..., None],
+            "communication": self._select_z(comm_q, selected_mode, generator) * state["comm_presence"][..., None],
         }
-        return {"h": h, "z": z, "posterior": {"physical": phy_q, "communication": comm_q}}
+        return {"h": h, "z": z, "posterior": posterior, "initial_prior": {"physical": phy_q, "communication": comm_q} if posterior_mode == "prior" else None}
 
     @staticmethod
     def _select_z(dist: Mapping[str, torch.Tensor], mode: str, generator: torch.Generator | None) -> torch.Tensor:

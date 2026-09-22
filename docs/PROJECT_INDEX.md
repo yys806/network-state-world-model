@@ -1,7 +1,7 @@
 # PI-JWM 项目索引
 
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
-> 生成于 2026-09-08，状态更新于 2026-09-21。定义 01、当前最小定义 02、STEP 4.3A Builder、STEP 4.3B Encoder 与 STEP 4.4 Structured RSSM World Model Contract 已完成并冻结。STEP 5.0 已冻结 Definition 05 的研究决策，但 Loss/Training 实现未开始；旧训练与结果已逻辑归档。
+> 生成于 2026-09-08，状态更新于 2026-09-22。定义 01、当前最小定义 02、STEP 4.3A Builder、STEP 4.3B Encoder、STEP 4.4 Structured RSSM World Model Contract、5.1B/5.1D primitives/integration 与 STEP 5.2 CPU training-loop integration 已完成并冻结。Full training、GPU、formal Dataset、Planner 与 locked-test 仍关闭；旧训练与结果已逻辑归档。
 
 ## 1. 进入项目的最短路径
 
@@ -35,9 +35,9 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 - 项目：PI-JWM（Physical-Information Joint World Model）。
 - AirFogSim：只作为仿真器和数据生成工具，不是 PI-JWM 框架主体。
 - 当前路线：研究者最新 `00–06` 目标定义 → 经授权的 Implementation Step。
-- 当前 Step：STEP 5.0 COMPLETE / FROZEN（决策合同与审计）；Definition 05 实现尚未开始。
-- 新定义实现：typed graph、aligned `Z_t^{PI,L_g}` encoder 与未训练 Structured RSSM prior rollout 已实现。现有旧 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 仍是 Historical / Archived evidence。
-- 当前主要缺口：future per-RB CSI target 缺失、future Motion position 未归一化/张量化、Definition 05 loss/posterior/curriculum/training/evaluation 未实现，以及正式候选生成和真实反馈重规划。真实 Return multi-hop 与 same-destination partial-hop reroute 仍缺更强 runtime evidence；formal capacities 未冻结。
+- 当前 Step：STEP 5.2 COMPLETE / FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION；STEP 5.3 尚未执行。
+- 新定义实现：typed graph、aligned `Z_t^{PI,L_g}` encoder、Structured RSSM prior rollout、5.1B loss/posterior/KL/metric primitives 与 5.2 CPU training loop 已实现。现有旧 `entity_aligned_dual_graph_rssm_v1`、P4/P6、两个 seed 和 checkpoint 仍是 Historical / Archived evidence。
+- 当前主要缺口：STEP 5.2 只有少量 CPU optimizer smoke，尚无 tiny-data overfit、full training、性能或校准结果；正式候选生成和真实反馈重规划仍未实现。Route/Comp non-empty development coverage=0；真实 Return multi-hop 与 same-destination partial-hop reroute 仍缺更强 runtime evidence；formal capacities 未冻结。
 - `locked_test`：继续封存；`formal_performance_claim_ready=false`。
 
 ## 3. 顶层目录地图

@@ -1,0 +1,18 @@
+{
+  "config_saved": true,
+  "data_identity_saved": true,
+  "forward_digest_after": "bc7792d5936b1f83c33546084d281a28c407c41642c17a05f82622c000cedbb0",
+  "forward_digest_before": "bc7792d5936b1f83c33546084d281a28c407c41642c17a05f82622c000cedbb0",
+  "git_commit_saved": true,
+  "normalization_provenance_saved": true,
+  "optimizer_state_saved": true,
+  "restored_best_l_val": 168.31609344482422,
+  "restored_beta_kl": 0.2,
+  "restored_curriculum_horizon": 2,
+  "restored_early_stopping_counter": 1,
+  "restored_epoch": 0,
+  "restored_global_step": 2,
+  "rng_state_saved": true,
+  "same_input_forward_equal": true,
+  "save_load": true
+}

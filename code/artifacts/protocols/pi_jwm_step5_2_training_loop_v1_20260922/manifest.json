@@ -1,0 +1,70 @@
+{
+  "files": {
+    "acceptance_receipt.json": {
+      "bytes": 11102,
+      "sha256": "0d906f5b549da88b0d1d0fccfb9750f72878604407a512ad1c4a3613c8a6d578"
+    },
+    "checkpoint_audit.json": {
+      "bytes": 652,
+      "sha256": "2fa4df36671f7c541845b4c6be3fcc4edb56bf34dea7b124195fd880b2f5ff82"
+    },
+    "config.json": {
+      "bytes": 405,
+      "sha256": "a17e647144d2ba9cd52cf2b1ff83d594ebae1961984dffcc8c641be515c5a0df"
+    },
+    "optimizer_parameter_audit.json": {
+      "bytes": 1432,
+      "sha256": "20fcd1c133c922b4d8b79f93ec3a84eeadc863bdcd95dfd291c7a8fb62481194"
+    },
+    "prior_target_isolation_audit.json": {
+      "bytes": 154,
+      "sha256": "3664dcc33f25cb260a992b9d165e216959cb50767ab92aebe4030afc0eac0101"
+    },
+    "training_step_audit.json": {
+      "bytes": 2773,
+      "sha256": "4deeb064588c1b50ffa8676e90a810708e507f269258c1a07d929f67f1e90954"
+    },
+    "validation_audit.json": {
+      "bytes": 672,
+      "sha256": "cc0c524fbfe86c4c5c75952a9b713b92633837c148566e1cdf051d2d22b64820"
+    }
+  },
+  "github_tracked_evidence": [
+    "acceptance_receipt.json",
+    "checkpoint_audit.json",
+    "config.json",
+    "optimizer_parameter_audit.json",
+    "prior_target_isolation_audit.json",
+    "training_step_audit.json",
+    "validation_audit.json"
+  ],
+  "local_only": [
+    "step5_2_cpu_smoke_checkpoint.pt"
+  ],
+  "passed": true,
+  "schema_version": "PI-JWM-Step-5.2-Training-Loop-Manifest-v1",
+  "scope": {
+    "executed": {
+      "checkpoint_resume": true,
+      "cpu_optimizer_smoke": true,
+      "cpu_optimizer_step": true,
+      "optimizer_implemented": true,
+      "stage1_posterior_assisted_warmup": true,
+      "stage2_prior_recursive_curriculum": true,
+      "training_loop_implemented": true,
+      "validation_smoke": true
+    },
+    "forbidden": {
+      "baseline": false,
+      "formal_dataset": false,
+      "formal_optimizer_step": false,
+      "formal_training": false,
+      "full_training": false,
+      "gpu": false,
+      "locked_test": false,
+      "locked_test_accessed": false,
+      "performance_claim": false,
+      "planner": false
+    }
+  }
+}

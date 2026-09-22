@@ -4,10 +4,10 @@
 
 ## 记录目录
 
-| STEP 5.1A | [STEP_05_1A_MOTION_CSI_TARGET_CONTRACT.md](STEP_05_1A_MOTION_CSI_TARGET_CONTRACT.md) | Future Motion/CSI target、mask、stable support alignment、normalization 与 raw-rule bridge | COMPLETE；non-locked development evidence，不是正式 Dataset |
-
 | Step | 记录 | 范围 | 状态 |
 | --- | --- | --- | --- |
+| STEP 5.1A | [STEP_05_1A_MOTION_CSI_TARGET_CONTRACT.md](STEP_05_1A_MOTION_CSI_TARGET_CONTRACT.md) | Future Motion/CSI target、mask、stable support alignment、normalization 与 raw-rule bridge | COMPLETE；non-locked development evidence，不是正式 Dataset |
+| STEP 5.2 | [STEP_05_2_TRAINING_LOOP_CURRICULUM_JOINT_TRAINING.md](STEP_05_2_TRAINING_LOOP_CURRICULUM_JOINT_TRAINING.md) | CPU training loop、posterior warm-up、prior recursive curriculum、KL schedule、validation、checkpoint/resume | COMPLETE；CPU development smoke，不是 formal training/performance |
 | STEP 1 | [STEP_01_AUDIT.md](STEP_01_AUDIT.md) | 新定义与现有实现审计、治理与导航同步 | 见记录中的验证和 Git 状态 |
 | STEP 1 数据/双图附件 | [STEP_01_DATA_GRAPH_AUDIT.md](STEP_01_DATA_GRAPH_AUDIT.md) | 01–03 定义、时间、张量、实体和动作映射 | 支撑证据，不是下一 Step |
 | STEP 2 | [STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md](STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md) | 单决策步 Raw Trajectory 与四类动作合同 | COMPLETE |
@@ -22,8 +22,8 @@
 | STEP 3.3 | [STEP_03_3_MODEL_INPUT_TENSOR_COLLATION_CONTRACT.md](STEP_03_3_MODEL_INPUT_TENSOR_COLLATION_CONTRACT.md) | fixed-shape CPU tensor/collation、Past Outcome、Target、四类 action、stable vocab/mask | COMPLETE / FROZEN；双图/模型未开始 |
 | STEP 4.1 | [STEP_04_1_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING.md](STEP_04_1_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING.md) | Physical / Information 对象—字段—关系映射、数据缺口和旧实现冲突 | COMPLETE / FROZEN mapping；graph builder 未开始 |
 | STEP 4.2A | [STEP_04_2A_EXISTING_SOURCE_GRAPH_INPUT_ADDITIVE_EXTENSION.md](STEP_04_2A_EXISTING_SOURCE_GRAPH_INPUT_ADDITIVE_EXTENSION.md) | 已有来源的 graph minimum inputs 贯穿 Raw amendment、Sample、preprocessing 与 Tensor | COMPLETE；graph builder 未开始 |
-| STEP 4.4 | [STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL.md](STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL.md) | Structured RSSM、known stochastic outage、deterministic transition 与 dynamic graph rollout | COMPLETE / FROZEN；PATCH3 92/92；未训练 CPU evidence；Definition 05 未开始 |
-| STEP 5.0 | [STEP_05_0_DEFINITION_05_DECISION_FREEZE.md](STEP_05_0_DEFINITION_05_DECISION_FREEZE.md) | Definition 05 十项研究决定冻结、旧 Loss/Training/Evaluation 定向复用审计 | DECISION FROZEN；IMPLEMENTATION NOT STARTED；无训练/GPU/locked-test |
+| STEP 4.4 | [STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL.md](STEP_04_4_STRUCTURED_RSSM_WORLD_MODEL.md) | Structured RSSM、known stochastic outage、deterministic transition 与 dynamic graph rollout | COMPLETE / FROZEN；PATCH3 92/92；untrained CPU model evidence；5.1B/5.2 consumes it |
+| STEP 5.0 | [STEP_05_0_DEFINITION_05_DECISION_FREEZE.md](STEP_05_0_DEFINITION_05_DECISION_FREEZE.md) | Definition 05 十项研究决定冻结、旧 Loss/Training/Evaluation 定向复用审计 | DECISION FROZEN；5.1B/5.2 implementation follows；无 full training/GPU/locked-test |
 
 不预建貌似已经执行的后续 Step 文件。`00–06` 是研究定义章节，不是可以自动执行的七个工程 Step。
 

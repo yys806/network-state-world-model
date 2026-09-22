@@ -1,10 +1,16 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-22 STEP 5.2
+
+- 新增 `step5_2_training_loop_v1.py`、CPU smoke script、focused tests 和实现记录；Stage 1 posterior teacher、Stage 2 prior-only recursive rollout、`1→2→4` curriculum、KL schedule、joint optimizer audit、prior-only validation、`L_Val` selector、checkpoint/resume 已接入。
+- 8/4 unified non-locked development smoke 的 20/20 receipt checks 和 focused 9/9 通过；这是 training-loop implementation evidence，不是 tiny-data overfit、full training、GPU 或性能结果。
+- 更新当前状态、实验、已知问题、模块地图、tracker 与 Definition 05 contract；Route/Comp non-empty coverage=0 继续作为 future formal training/data gate，未进入 STEP 5.3。
+
 ## 2026-09-22 STEP 5.1D
 
 - 新增 unified Tensor full-package roundtrip，补齐 sample IDs 与 base Step 3.3 validation provenance。
 - 从同一 12-sample bundle 重建 4.3A/4.3B/4.4，并完成 paired recursive prior/posterior/decoder、Loss/KL/raw-unit metric/gradient receipt；当前 5.1D-PATCH receipt 47/47 checks 与 deterministic rebuild 通过。
-- 仍不训练、不用 GPU、不访问 formal dataset/locked_test，不进入 STEP 5.2。
+- 当时仍不训练、不用 GPU、不访问 formal dataset/locked_test；该边界随后由研究者授权的 STEP 5.2 CPU development loop 更新。
 
 ## 2026-09-21 STEP 5.1A-PATCH
 
@@ -105,6 +111,12 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 
 - 修正原 5.1B 的跨 horizon target aggregation、mask 不可见、独立 PriorPredictor、zero-h/identity loss、batch-level free bits、raw-unit metric 和硬编码 receipt 问题。
 - 当前 CPU receipt 真实调用 STEP 4.4 `initialize_latent → one_step → phy_prior/comm_prior → vehicle_decoder/csi_decoder`，并验证逐 horizon isolation、mask evidence、逐维 free bits、gradient、raw-unit metric 与 target isolation；仍未进入 training/optimizer/GPU/locked-test。
+
+# 2026-09-22 STEP 5.2
+
+- 新增配置化 CPU training loop：Stage 1 posterior-assisted warm-up、Stage 2 prior-dominant recursive curriculum、KL warm-up/free bits、joint optimizer parameter audit、prior-only validation、`L_Val` checkpoint selector 与 checkpoint/resume。
+- 8/4 unified non-locked development smoke 完成两步 optimizer update；20/20 required receipt checks、focused 9/9 和相关 current regressions 通过。Receipt 与 compact audit 位于 `code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/`；`.pt` checkpoint 保持 local-only。
+- 保持边界：`full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`；Route/Comp non-empty coverage=0，未进入 STEP 5.3。
 
 # 2026-09-22 STEP 5.1C-PATCH
 

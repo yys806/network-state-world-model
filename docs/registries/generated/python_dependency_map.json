@@ -2171,6 +2171,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "pi_jwm.step5_2_training_loop_v1",
         "scripts.build_step4_2c_c_flow_sample_tensor_v1",
         "scripts.build_step4_3a_typed_dual_graph_builder_v1",
         "scripts.build_step4_3b_dual_graph_encoder_v1",
@@ -2200,6 +2201,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "pi_jwm.step5_2_training_loop_v1",
         "scripts.build_step4_3a_typed_dual_graph_builder_v1",
         "scripts.build_step4_3b_dual_graph_encoder_v1",
         "scripts.build_step4_4_structured_rssm_world_model_v1",
@@ -2220,6 +2222,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step5_2_training_loop_v1",
         "scripts.build_step4_3b_dual_graph_encoder_v1",
         "scripts.build_step4_4_structured_rssm_world_model_v1",
         "scripts.build_step5_1d_unified_model_chain_v1",
@@ -2252,6 +2255,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step5_2_training_loop_v1",
         "scripts.build_step4_4_structured_rssm_world_model_v1",
         "scripts.build_step5_1b_posterior_loss_metric_receipt_v1",
         "scripts.build_step5_1d_unified_model_chain_v1",
@@ -2288,8 +2292,10 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step5_2_training_loop_v1",
         "scripts.build_step5_1b_posterior_loss_metric_receipt_v1",
         "scripts.build_step5_1d_unified_model_chain_v1",
+        "scripts.run_step5_2_training_loop_smoke_v1",
         "tests.test_step5_1b_posterior_loss_metric_v1"
       ],
       "imports": [],
@@ -2298,6 +2304,28 @@
       "path": "code/src/pi_jwm/step5_1b_posterior_loss_metric_v1.py",
       "test_files": [
         "code/tests/test_step5_1b_posterior_loss_metric_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.run_step5_2_training_loop_smoke_v1",
+        "tests.test_step5_2_training_loop_v1"
+      ],
+      "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step4_3a_typed_dual_graph_builder_v1",
+        "pi_jwm.step4_3b_dual_graph_encoder_v1",
+        "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "pi_jwm.step5_1b_posterior_loss_metric_v1",
+        "scripts.build_step5_1d_unified_model_chain_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step5_2_training_loop_v1",
+      "path": "code/src/pi_jwm/step5_2_training_loop_v1.py",
+      "test_files": [
+        "code/tests/test_step5_2_training_loop_v1.py"
       ]
     },
     {
@@ -3559,6 +3587,7 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "pi_jwm.step5_2_training_loop_v1",
         "tests.test_step5_1d_unified_model_chain_v1"
       ],
       "imports": [
@@ -6119,6 +6148,19 @@
       "lifecycle_status": "support",
       "module": "scripts.run_step4_2c_c_real_multihop_cross_slot_v1",
       "path": "code/scripts/run_step4_2c_c_real_multihop_cross_slot_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_1b_posterior_loss_metric_v1",
+        "pi_jwm.step5_2_training_loop_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step5_2_training_loop_smoke_v1",
+      "path": "code/scripts/run_step5_2_training_loop_smoke_v1.py",
       "test_files": []
     },
     {
@@ -9672,6 +9714,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step5_1d_unified_model_chain_v1",
       "path": "code/tests/test_step5_1d_unified_model_chain_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_2_training_loop_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step5_2_training_loop_v1",
+      "path": "code/tests/test_step5_2_training_loop_v1.py",
       "test_files": []
     },
     {
