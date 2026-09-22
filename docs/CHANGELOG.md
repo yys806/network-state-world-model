@@ -213,3 +213,8 @@
 # 2026-09-22 STEP 5.1B-PATCH
 
 - 修正 Definition 05 posterior/loss/KL/metric 的逐 horizon、真实 STEP 4.4 接线、free-bits、raw-unit metric 和 receipt 语义；CPU-only，未进入训练/GPU/locked_test。
+# 2026-09-22 STEP 5.1D
+
+- Added the unified 5.1D CPU development integration entrypoint, focused tests, paired acceptance record, and generated knowledge-index updates.
+- Verified full Flow Tensor package roundtrip, unified 4.3A/4.3B/4.4 rebuild, real action pairing, recursive prior/posterior/decoder path, Loss/KL/raw-unit metrics, finite gradients, and deterministic rebuild.
+- Kept training, optimizer updates, GPU, formal Dataset, Planner, baseline, locked_test and performance claims closed.

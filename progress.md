@@ -1085,3 +1085,6 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 # 2026-09-22 STEP 5.1C-PATCH
 
 已完成统一 development bundle 的 identity 与 normalization lineage closure。12/12 Physical 和 Communication slot identity 通过；Communication endpoint numeric index 均反查真实 entity ID。统一 capacity 为 10 Physical / 74 Communication，no-prefix/no-pairing-crop 通过。新 stats 来自 8 个 dev_train samples 的 History，4 个 dev_validation 排除，Future Target 未参与 fit。receipt、lineage audit、tensor contract、deterministic rebuild、serialize/reload 通过。仍未重建 4.3A/4.3B/4.4，未运行 paired 5.1B、训练、GPU 或 locked_test。
+# 2026-09-22 STEP 5.1D
+
+已完成 unified Tensor→Graph→Encoder→STEP 4.4→Prior/Posterior→Decoder→Loss/KL/Metric CPU integration。receipt 42/42，12/12 pairing，Physical/Comm capacity 10/74，gradient 与 deterministic rebuild 通过；模型仍 untrained。

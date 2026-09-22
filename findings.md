@@ -1069,3 +1069,9 @@
 - `no_prefix_truncation` 不能由常量 receipt 证明；本 Patch 改为由逐样本 identity、support width、capacity 和 target tensor shape 的真实比较计算。
 - 历史 `flow_train_normalization_stats.json` 未被删除，已明确标为历史 provenance；当前 bundle 使用独立 unified dev_train stats。
 - 当前证据仍是 CPU/non-locked contract evidence；4.3A/4.3B/4.4 unified rebuild 是唯一后续候选动作，需研究者另行授权。
+# 2026-09-22 STEP 5.1D
+
+- 旧 5.1B receipt 的单 carrier/旧 support 不可作为 paired closure；新 receipt 只使用统一 12-sample lineage。
+- 完整 Flow Tensor package 需要显式保留 sample IDs 和 upstream base Step 3.3 checks；已补齐并加 roundtrip test。
+- CPU evidence seed 固定为 5101 后，两次独立 rebuild 的全部输出 SHA-256 相同。
+- 结论仅为 non-locked CPU development integration，不是训练或性能结论。

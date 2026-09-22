@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## STEP 5.1D 当前状态（2026-09-22）
+
+Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B Encoder→STEP 4.4 state/recursive h→Prior/Posterior→Decoder→Loss/KL/Metric；receipt 42/42。模型仍未训练，training/gpu/formal_dataset/locked_test/performance_claim 均为 false，STEP 5.2 未开始。
+
 更新时间：2026-09-22
 
 这是 ChatGPT 网页端进入仓库后的第一读取入口。它只提供当前快照和继续查证的路径，不替代源码、配置、checkpoint、metrics、manifest 或 audit。

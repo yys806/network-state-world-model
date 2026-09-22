@@ -92,3 +92,6 @@ Focused 5/5，STEP 4.4 regression 30/30，12-sample non-locked development recei
 - Current target audit: STEP 4.2A sample future position is raw-only; frozen tensor has no target position and no future CSI target. This blocks STEP 5.1 runtime until additive target/mask/normalization implementation.
 - Historical P4 checkpoints/results remain Historical Reference only and cannot be compared with the new method without matching dataset/split/history/horizon/target/normalization/metrics/seed policy.
 - Scope: `implementation=false`, `training=false`, `gpu=false`, `formal_dataset=false`, `locked_test=false`, `performance_claim=false`.
+# STEP 5.1D acceptance（2026-09-22）
+
+receipt 为 42/42 checks true，12 samples，capacity 10/74，prior/posterior/decoder calls 24/24/24，gradient probe finite/non-zero，deterministic rebuild identical；仅为 non-locked CPU development integration evidence。

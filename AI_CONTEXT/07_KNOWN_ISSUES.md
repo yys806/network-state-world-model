@@ -143,3 +143,6 @@ The previous outage blocker is resolved: outage is an independent known stochast
 - Historical model artifacts and STEP 5.1A targets came from different development lineages (5 vs 12 samples; 8/44 vs 10/74 support). The old 5.1B receipt reused one carrier and prefix-truncated targets; that receipt is not acceptable for closure.
 - All 12 target windows now pass the real 4.2A graph amendment and 4.2C-B/C Flow path. Additive unified bundle: `code/artifacts/protocols/pi_jwm_step5_1c_unified_development_bundle_v1_20260922/`.
 - Remaining issue: 4.3A/4.3B/4.4 must be rebuilt from the unified bundle and 5.1B must use paired model/target samples. Until then STEP 5.1C is in progress and STEP 5.2 is prohibited.
+# STEP 5.1D boundary（2026-09-22）
+
+Unified chain 已闭合为 untrained CPU development evidence。Training Loop/optimizer、CPU tiny-data overfit、GPU/formal Dataset、baseline、Planner 和 performance claim 仍未实现；下一步必须单独授权 STEP 5.2。

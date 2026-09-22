@@ -1,3 +1,12 @@
+# 2026-09-22 STEP 5.1D — Unified Graph / Encoder / World-Model Rebuild & Paired 5.1B Acceptance
+
+- [x] 完整 Flow Tensor package roundtrip，含 contract/IDs/static/metadata/base checks/stats/ndarray。
+- [x] Unified 12-sample 4.3A/4.3B/4.4 rebuild，真实 action pairing、recursive h、prior/posterior/decoder、Loss/KL/Metric 和 gradient probe。
+- [x] focused/regression/compile/deterministic rebuild/receipt tamper 验证通过。
+- [x] implementation record、Tracker、AI_CONTEXT、process files 和 knowledge index 同步。
+- Boundary: training/optimizer/GPU/formal dataset/locked_test/performance claim/Planner/STEP 5.2 均未开始。
+- Single next action: 研究者审阅并另行授权 STEP 5.2；本任务停止。
+
 # 2026-09-21 STEP 5.1A-PATCH — Multi-Horizon Motion Semantics & Stable Slot Alignment Fix
 
 - [x] Confirm `main == origin/main == 7ea9e4bed621e6d9e201ed4fe9175c26ca2c2252`, clean initial worktree, and reproduce both reported defects in current source.

@@ -1,5 +1,11 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-22 STEP 5.1D
+
+- 新增 unified Tensor full-package roundtrip，补齐 sample IDs 与 base Step 3.3 validation provenance。
+- 从同一 12-sample bundle 重建 4.3A/4.3B/4.4，并完成 paired recursive prior/posterior/decoder、Loss/KL/raw-unit metric/gradient receipt；42/42 checks 与 deterministic rebuild 通过。
+- 仍不训练、不用 GPU、不访问 formal dataset/locked_test，不进入 STEP 5.2。
+
 ## 2026-09-21 STEP 5.1A-PATCH
 
 - 修正 multi-horizon Motion：horizon 2+ 从 anchor-to-future cumulative delta 改为 adjacent-frame local one-step delta，缺失上一 future position component 时下一步对应 mask=false。

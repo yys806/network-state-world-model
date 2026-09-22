@@ -95,3 +95,6 @@ Unverified：未在当前 tensor manifest、loader 或模型实际读路径出�
 ## 2026-09-19 Raw 状态
 
 单步、多步、因果字段与 return route 已完成真实验收。Raw 层冻结不等于 Dataset/Tensor 已实现。
+# STEP 5.1D unified paired path（2026-09-22）
+
+12 个 unified samples 使用完整 Flow Tensor package，保留 contract、sample IDs/static/metadata、base Step 3.3 checks、unified dev_train-only Flow stats 和 ndarray。每个 sample 独立重建 4.3A graph（10/74 capacity）与 4.3B encoder，再由自身 state、真实 Future Action 和 target 进入两步 recursive STEP 4.4 prior/posterior/decoder。5.1D receipt 42/42，pairing 12/12。
