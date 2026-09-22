@@ -95,6 +95,12 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 - readiness：`TRAINING_STACK_READINESS=PASS`、`FORMAL_DATASET_READINESS=NOT_READY`、`GPU_CODEPATH_READINESS=PREPARED`、`FORMAL_TRAINING_READINESS=BLOCKED`。
 - 12 个 development samples 实际 coverage：Mobility=24、Comm=1、Route=0、Comp=0；正式 `L`、topology、Dataset/seed/训练预算仍需 researcher decision。
 
+## 2026-09-23 STEP 5.4-PATCH2
+
+- 四动作 adapter 与 CPU device portability 已闭合；optimizer 在最终 device migration 后创建，Route/Comp adapter support 通过 synthetic fixture。
+- 当前 readiness：`TRAINING_STACK_READINESS=PASS`、`FORMAL_DATASET_READINESS=NOT_READY`、`GPU_CODEPATH_READINESS=PREPARED`、`FORMAL_TRAINING_READINESS=BLOCKED`。
+- Formal Dataset 不存在，真实 development Route/Comp coverage 仍为 `0/0`；formal L/topology/budget 未决，GPU/locked_test 未执行。
+
 ## 2026-09-22 STEP 5.2
 
 - `code/src/pi_jwm/step5_2_training_loop_v1.py` 连接当前 Encoder、Structured RSSM、5.1B target/posterior/loss/KL 原语；Stage 1 使用 family-specific posterior teacher，Stage 2/Validation 从 current-observation posterior 初始化，之后 prior-only recursive rollout。
