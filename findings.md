@@ -1058,3 +1058,8 @@
 - 当前实现只允许对应 family 的 normalized target 和 mask 进入 target encoder；prior predictor 的接口不接受 target，tampering invariance test 通过。
 - family loss 在各自有效 mask 内归一化，空 mask 返回零和零计数；KL 显式返回 raw、free-bit adjusted 和 eligible count，未实现 balancing/overshooting。
 - 12-sample CPU receipt 证明原语可执行，不构成训练收敛、性能或正式数据集证据。
+# 2026-09-22 STEP 5.1C findings
+
+- The support mismatch is lineage-level: historical 4.2C-C/4.3/4.4 artifacts contain 5 samples at 8/44, while STEP 5.1A contains 12 samples at 10/74.
+- The suspected raw-support blocker did not reproduce. All 12 windows have real source provenance and pass the actual 4.2A + 4.2C-B + 4.2C-C path.
+- The new unified bundle proves paired sample/window identity and capacity alignment, but does not yet prove rebuilt 4.3A/4.3B/4.4 execution. Do not call STEP 5.1C complete or enter STEP 5.2 until that rerun and paired 5.1B receipt pass.

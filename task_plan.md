@@ -1379,3 +1379,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 重建 12-sample non-locked CPU receipt；focused 5/5、STEP 4.4 regression 30/30、compileall 通过。
 - [ ] 完成 support alignment decision/documentation、knowledge index、最终回归、commit/push 后再报告 Patch 状态。
 - Boundary: 当前仍未 COMPLETE/FROZEN；禁止 STEP 5.2。
+# 2026-09-22 STEP 5.1C — Unified Development Training Bundle & Support Alignment
+
+- [x] Verify clean baseline `main@c4e9a7a` and read current authority/context records.
+- [x] Run real feasibility audit for all 12 STEP 5.1A windows through STEP 4.2A amendment and STEP 4.2C-B/C lineage.
+- [x] Build additive paired unified development bundle with reused normalization, no prefix truncation, and observed capacities.
+- [ ] Rebuild 4.3A/4.3B/4.4 model artifacts and rerun paired 5.1B receipt; this remains the single remaining closure action.
+- Boundary: `training=false`, `optimizer_step=false`, `gpu=false`, `formal_dataset=false`, `locked_test_accessed=false`; no STEP 5.2, planner, baseline, or research-definition change.
