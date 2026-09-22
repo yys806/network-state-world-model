@@ -169,10 +169,18 @@ def build_state(tensor: dict[str, Any], graph: dict[str, Any], index: int) -> tu
 def build_action(sample: dict[str, Any], state: dict[str, torch.Tensor], horizon: int) -> tuple[dict[str, torch.Tensor], dict[str, Any]]:
     fam = sample["future_action"][horizon]
     mob = fam["mobility"]["entries"]
-    if fam["comp"]["entries"] or fam["route"]["entries"]:
-        raise ValueError("current unified action contract contains non-empty Comp/Route entries that need an explicit adapter mapping")
-    mob_i = torch.tensor([[int(x["uav_index"]) for x in mob]], dtype=torch.long) if mob else torch.empty((1, 0), dtype=torch.long)
-    mob_v = torch.tensor([[[float(x["azimuth_rad"]), float(x["elevation_rad"]), float(x["speed_mps"]), 1.0] for x in mob]], dtype=torch.float32) if mob else torch.empty((1, 0, 4))
+    device = state["position"].device
+    static = sample.get("static", {}).get("input_entity_index", {})
+    physical = {str(key): int(value) for key, value in static.get("physical", {}).items()}
+    tasks = {str(key): int(value) for key, value in static.get("task", {}).items()}
+    flows = {str(key): int(value) for key, value in static.get("logical_flow", {}).items()}
+    def index_from(mapping: dict[str, int], value: Any, field: str) -> int:
+        if value is None: return -1
+        key = str(value)
+        if key not in mapping: raise ValueError(f"{field} id is not in causal input index: {key}")
+        return mapping[key]
+    mob_i = torch.tensor([[int(x["uav_index"]) for x in mob]], dtype=torch.long, device=device) if mob else torch.empty((1, 0), dtype=torch.long, device=device)
+    mob_v = torch.tensor([[[float(x["azimuth_rad"]), float(x["elevation_rad"]), float(x["speed_mps"]), 1.0] for x in mob]], dtype=torch.float32, device=device) if mob else torch.empty((1, 0, 4), device=device)
     comm_entries = fam["comm"]["entries"]
     comm_i, comm_v, mapping = [], [], []
     for x in comm_entries:
@@ -180,8 +188,8 @@ def build_action(sample: dict[str, Any], state: dict[str, torch.Tensor], horizon
         if len(hits) != 1: raise ValueError(f"Comm action task {task} does not uniquely map to a current Flow/hop relation")
         ri = int(state["flow_comm_relation_index"][0, hits[0, 0]])
         comm_i.append(ri); comm_v.append([0.0, 1.0, 0.0, 0.0]); mapping.append({"task_index": task, "relation_index": ri, "rb_indices": x["rb_indices"]})
-    comm_idx = torch.tensor([comm_i], dtype=torch.long) if comm_i else torch.empty((1, 0), dtype=torch.long)
-    comm_values = torch.tensor([comm_v], dtype=torch.float32) if comm_v else torch.empty((1, 0, 4))
+    comm_idx = torch.tensor([comm_i], dtype=torch.long, device=device) if comm_i else torch.empty((1, 0), dtype=torch.long, device=device)
+    comm_values = torch.tensor([comm_v], dtype=torch.float32, device=device) if comm_v else torch.empty((1, 0, 4), device=device)
     alloc = state["rb_active_mask"].clone()
     for x, ri in zip(comm_entries, comm_i):
         for rb in x["rb_indices"]: alloc[0, ri, int(rb)] = True
@@ -190,9 +198,27 @@ def build_action(sample: dict[str, Any], state: dict[str, torch.Tensor], horizon
     flow_idx = int(torch.nonzero(state["flow_presence"][0], as_tuple=False)[0]) if bool(state["flow_presence"].any()) else -1
     # The frozen model interface requires one route row so it can construct a
     # stacked tensor; -1 is the contract's explicit absent-action sentinel.
-    route_idx = torch.full((1, 1), -1, dtype=torch.long)
-    route_values = torch.tensor([[[-1.0, -1.0, 0.0, 0.0]]], dtype=torch.float32)
-    return {"mobility_entity_index": mob_i, "mobility_values": mob_v, "comm_relation_index": comm_idx, "comm_values": comm_values, "comm_allocation_mask": alloc, "comp_agent_index": torch.empty((1, 0), dtype=torch.long), "comp_task_index": torch.empty((1, 0), dtype=torch.long), "comp_values": torch.empty((1, 0, 4)), "route_task_index": route_idx, "route_flow_index": route_idx.clone(), "route_values": route_values}, {"mobility": len(mob), "comm": mapping, "comp": [], "route": [], "comp_explicit_noop": bool(fam["comp"].get("empty", False) and not fam["comp"].get("missing", False)), "route_explicit_noop": bool(fam["route"].get("empty", False) and not fam["route"].get("missing", False))}
+    comp_entries = fam["comp"]["entries"]
+    comp_agent = [[index_from(physical, x.get("node_id"), "comp.node_id") for x in comp_entries]]
+    comp_task = [[index_from(tasks, x.get("task_id"), "comp.task_id") for x in comp_entries]]
+    comp_values = [[[float(x["allocated_cpu_per_s"]), 0.0, 0.0, 0.0] for x in comp_entries]]
+    comp_agent_t = torch.tensor(comp_agent, dtype=torch.long, device=device) if comp_entries else torch.empty((1, 0), dtype=torch.long, device=device)
+    comp_task_t = torch.tensor(comp_task, dtype=torch.long, device=device) if comp_entries else torch.empty((1, 0), dtype=torch.long, device=device)
+    comp_values_t = torch.tensor(comp_values, dtype=torch.float32, device=device) if comp_entries else torch.empty((1, 0, 4), device=device)
+    route_entries = fam["route"]["entries"]
+    route_task, route_flow, route_values = [], [], []
+    route_kind_code = {"offload": 2.0, "return": 3.0}
+    for entry in route_entries:
+        task_id = str(entry["task_id"]); ti = index_from(tasks, task_id, "route.task_id")
+        flow_candidates = [slot for flow_id, slot in flows.items() if flow_id.startswith(f"flow::{task_id}::")]
+        if len(flow_candidates) != 1: raise ValueError(f"route task must map to exactly one causal flow: {task_id}")
+        hops = entry["route_node_indices"]
+        if len(hops) < 2: raise ValueError("route requires at least source and target node indices")
+        route_task.append(ti); route_flow.append(flow_candidates[0]); route_values.append([float(hops[0]), float(hops[-1]), route_kind_code.get(str(entry["route_kind"]), 1.0), float(len(hops) - 1)])
+    route_task_t = torch.tensor([route_task], dtype=torch.long, device=device) if route_entries else torch.full((1, 1), -1, dtype=torch.long, device=device)
+    route_flow_t = torch.tensor([route_flow], dtype=torch.long, device=device) if route_entries else route_task_t.clone()
+    route_values_t = torch.tensor([route_values], dtype=torch.float32, device=device) if route_entries else torch.tensor([[[-1.0, -1.0, 0.0, 0.0]]], dtype=torch.float32, device=device)
+    return {"mobility_entity_index": mob_i, "mobility_values": mob_v, "comm_relation_index": comm_idx, "comm_values": comm_values, "comm_allocation_mask": alloc, "comp_agent_index": comp_agent_t, "comp_task_index": comp_task_t, "comp_values": comp_values_t, "route_task_index": route_task_t, "route_flow_index": route_flow_t, "route_values": route_values_t}, {"mobility": len(mob), "comm": mapping, "comp": comp_entries, "route": route_entries, "comp_explicit_noop": bool(fam["comp"].get("empty", False) and not fam["comp"].get("missing", False)), "route_explicit_noop": bool(fam["route"].get("empty", False) and not fam["route"].get("missing", False))}
 
 
 def _state_signature(state: dict[str, torch.Tensor]) -> str:

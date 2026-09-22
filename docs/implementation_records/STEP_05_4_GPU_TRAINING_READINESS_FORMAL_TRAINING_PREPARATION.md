@@ -62,3 +62,9 @@ Data blocker 是 formal Dataset 缺失且 Route/Comp non-empty coverage=0/0；re
 - Generic interface loads and hashes samples, tensor, graph, target and normalization packages.
 - `Step52Trainer.from_formal_interface()` executes the real CPU train step, prior-only validation, checkpoint reload and wrong-identity rejection.
 - Device contract supports `cpu|cuda`; this patch only verifies CPU. Readiness is computed from machine checks; L=4 is a config fixture only (`L_gt_2_runtime_verified=false`).
+
+## STEP 5.4-PATCH2 Closure
+
+- Optimizer creation follows final-device model/data migration; encoder, state, action and padding tensors share the configured device.
+- Frozen Route/Comp fields map to route task/flow/node tensors and comp agent/task/value tensors; existing no-op paths remain valid.
+- Package hashes are mandatory; missing/wrong hashes fail. Four-action adapter support is separate from development coverage (Route=0, Comp=0).

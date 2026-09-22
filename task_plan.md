@@ -1453,3 +1453,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] generic package loading/hash and real Trainer CPU dry-run.
 - [x] device contract, machine-computed readiness, relative manifest, L=4 config fixture.
 - [ ] formal Dataset, formal L/topology and CUDA remain unauthorized/unexecuted.
+
+# 2026-09-23 STEP 5.4-PATCH2
+
+- [x] optimizer/device order and runtime tensor device closure。
+- [x] frozen Route/Comp adapter and no-op regression。
+- [x] mandatory package hash checks, conditional CUDA RNG checkpoint preparation, readiness separation。
+- [ ] GPU, Formal Dataset, formal training and locked_test remain closed。

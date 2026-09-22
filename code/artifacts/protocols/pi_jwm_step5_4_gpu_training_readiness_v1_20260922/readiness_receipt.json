@@ -1,18 +1,22 @@
 {
   "baseline": false,
   "checks": {
+    "action_adapter_support": true,
     "action_coverage": true,
     "checkpoint_map_location": true,
     "checkpoint_negative_reject": true,
     "checkpoint_reload": true,
+    "comp_action_adapter": true,
     "cpu_generic_dry_run": true,
     "cpu_train_step": true,
     "data_device": true,
+    "dataset_action_coverage": true,
     "dataset_contract": true,
     "horizon_l4_config_fixture": true,
     "model_device": true,
     "package_load": true,
     "prior_only_validation": true,
+    "route_action_adapter": true,
     "split_isolation": true,
     "trainer_construct": true
   },

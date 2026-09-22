@@ -72,15 +72,15 @@ def _sha(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _torch_tree(value: Any) -> Any:
+def _torch_tree(value: Any, device: torch.device | None = None) -> Any:
     if isinstance(value, np.ndarray):
         if value.dtype == np.bool_:
-            return torch.from_numpy(value.copy()).bool()
+            return torch.from_numpy(value.copy()).bool().to(device=device)
         if np.issubdtype(value.dtype, np.integer):
-            return torch.from_numpy(value.copy()).long()
-        return torch.from_numpy(value.copy()).float()
+            return torch.from_numpy(value.copy()).long().to(device=device)
+        return torch.from_numpy(value.copy()).float().to(device=device)
     if isinstance(value, Mapping):
-        return {key: _torch_tree(item) for key, item in value.items()}
+        return {key: _torch_tree(item, device=device) for key, item in value.items()}
     return value
 
 
@@ -118,7 +118,7 @@ def _pad_action_rows(actions: Sequence[Mapping[str, torch.Tensor]], key: str, wi
         if pad:
             shape = (1, pad) if value.ndim == 2 else (1, pad, value.shape[-1])
             fill = -1 if key.endswith("_index") else 0.0
-            value = torch.cat((value, torch.full(shape, fill, dtype=value.dtype)), dim=1)
+            value = torch.cat((value, torch.full(shape, fill, dtype=value.dtype, device=value.device)), dim=1)
         rows.append(value)
     return torch.cat(rows, dim=0)
 
@@ -383,8 +383,6 @@ class Step52Trainer(nn.Module):
         target_config = Step5_1BConfig(target_dim=4, csi_dim=int(tensor_contract["n_comm_rb"]), hidden_dim=config.rssm.d_h, latent_dim=config.rssm.d_z, d_h=config.rssm.d_h, d_z=config.rssm.d_z, d_encoder=config.rssm.d_encoder)
         self.target_encoder = TargetEncoder(target_config)
         self.future_posterior = FuturePosterior(target_config)
-        self._optimizer_groups = self._build_optimizer_groups()
-        self.optimizer = torch.optim.AdamW(self._optimizer_groups, lr=config.learning_rate, weight_decay=config.weight_decay)
         self.posterior_teacher_calls = 0
         self.future_target_encoder_calls = 0
         self.current_posterior_calls = 0
@@ -392,6 +390,8 @@ class Step52Trainer(nn.Module):
         self.last_validation: dict[str, Any] | None = None
         self._move_data_to_device()
         self.to(self.device)
+        self._optimizer_groups = self._build_optimizer_groups()
+        self.optimizer = torch.optim.AdamW(self._optimizer_groups, lr=config.learning_rate, weight_decay=config.weight_decay)
 
     @staticmethod
     def _move_tree(value: Any, device: torch.device) -> Any:
@@ -491,8 +491,8 @@ class Step52Trainer(nn.Module):
         }
 
     def _encoder_output(self) -> dict[str, Any]:
-        tensor = _torch_tree(self.data.tensor)
-        graph = _torch_tree(self.data.graph)
+        tensor = _torch_tree(self.data.tensor, device=self.device)
+        graph = _torch_tree(self.data.graph, device=self.device)
         return self.encoder(tensor, graph)
 
     @staticmethod
@@ -868,7 +868,7 @@ class Step52Trainer(nn.Module):
             "git_commit": git_commit, "normalization_provenance": {"target": self.data.target_normalization, "encoder_source_split": "dev_train"},
             "initialization_contract": _jsonable(self.initialization_contract),
             "architecture_identity": {"rssm": _jsonable(asdict(self.config.rssm)), "encoder": _jsonable(asdict(self.config.encoder))},
-            "rng_state": {"torch": torch.get_rng_state(), "numpy": np.random.get_state(), "python": random.getstate()},
+            "rng_state": {"torch": torch.get_rng_state(), "cuda": torch.cuda.get_rng_state_all() if self.device.type == "cuda" and torch.cuda.is_available() else None, "numpy": np.random.get_state(), "python": random.getstate()},
         }
         torch.save(payload, path)
 
@@ -894,6 +894,7 @@ class Step52Trainer(nn.Module):
         self.optimizer.load_state_dict(payload["optimizer_state"])
         rng = payload.get("rng_state", {})
         if "torch" in rng: torch.set_rng_state(rng["torch"])
+        if self.device.type == "cuda" and rng.get("cuda") is not None: torch.cuda.set_rng_state_all(rng["cuda"])
         if "numpy" in rng: np.random.set_state(rng["numpy"])
         if "python" in rng: random.setstate(rng["python"])
         return dict(payload["state"])

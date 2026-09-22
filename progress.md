@@ -1127,3 +1127,7 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 # 2026-09-22 STEP 5.4
 
 完成 CPU-only GPU Training Readiness / Formal Training Preparation。新增 manifest-driven `FormalTrainingInterface`，不要求 12 samples 或 8/4 split；现有 development adapter 保持不变。机器审计显示 Mobility=24、Comm=1、Route=0、Comp=0，formal Dataset 不存在；horizon/topology/正式训练数值仍未冻结。readiness=`PASS / NOT_READY / PREPARED / BLOCKED`（training stack / formal data / GPU codepath / formal training）。focused 5.4、5.3E、5.2 回归通过，未运行 CUDA、formal training 或 locked_test。
+
+# 2026-09-23 STEP 5.4-PATCH2
+
+四动作 adapter 与 device portability closure 完成。optimizer 在 `.to(device)` 后创建；encoder/data/action/padding 同 device；Route/Comp synthetic fixture 与 no-op 回归通过；package hash 缺失/错误拒绝；CPU RNG 与条件式 CUDA RNG checkpoint 字段已准备。未运行 GPU、formal Dataset 或 locked_test。

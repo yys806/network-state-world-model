@@ -179,3 +179,4 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 - Route/Comp non-empty development coverage 仍为 `0/0`，继续作为 future formal data coverage gate。
 - STEP 5.4：Formal Dataset 不存在；正式 `L`、Physical topology、Dataset scale/seeds 和 training budget 未冻结；CPU dry-run 只支持 `GPU_CODEPATH_PREPARED`，没有 CUDA 证据。
 - STEP 5.4-PATCH：generic package 与真实 Trainer CPU dry-run 已闭合；L=4 只有 config fixture，`L_gt_2_runtime_verified=false`；formal Dataset、CUDA 和 formal training 仍阻塞。
+- STEP 5.4-PATCH2：四动作 adapter 与 CPU device portability 已闭合；Route/Comp 仍无真实 development coverage，正式 L/topology/budget 未冻结，CUDA 未验证。

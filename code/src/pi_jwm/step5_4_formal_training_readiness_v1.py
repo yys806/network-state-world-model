@@ -79,7 +79,7 @@ class FormalTrainingInterface:
                 continue
             expected = self.manifest.get("hashes", {}).get(name)
             actual = sha256_file(path)
-            verified[name] = {"exists": True, "sha256": actual, "hash_matches": expected is None or expected == actual}
+            verified[name] = {"exists": True, "sha256": actual, "expected_sha256_declared": isinstance(expected, str) and bool(expected), "hash_matches": isinstance(expected, str) and expected == actual}
         verified["all_present_and_matching"] = all(item.get("exists") and item.get("hash_matches", False) for item in verified.values())
         return verified
 
@@ -151,7 +151,7 @@ def unresolved_training_fields(config: Mapping[str, Any]) -> list[str]:
 
 
 def validate_readiness(checks: Mapping[str, bool], *, formal_dataset: bool, research_decisions_frozen: bool) -> dict[str, Any]:
-    training_checks = ("package_load", "trainer_construct", "cpu_train_step", "prior_only_validation", "checkpoint_reload")
+    training_checks = ("package_load", "trainer_construct", "action_adapter_support", "cpu_train_step", "prior_only_validation", "checkpoint_reload")
     device_checks = ("model_device", "data_device", "checkpoint_map_location", "cpu_generic_dry_run")
     training_stack = all(bool(checks.get(name, False)) for name in training_checks)
     device_ready = all(bool(checks.get(name, False)) for name in device_checks)
