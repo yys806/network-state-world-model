@@ -23,6 +23,7 @@ from pi_jwm.step5_2_training_loop_v1 import (  # noqa: E402
     REQUIRED_STEP52_CHECKS,
     Step52TrainingConfig,
     Step52Trainer,
+    aggregate_validation_horizon_rows,
     validate_step52_receipt,
 )
 
@@ -64,6 +65,7 @@ class Step52TrainingLoopTests(unittest.TestCase):
             "rssm_dynamics",
             "phy_prior",
             "comm_prior",
+            "current_observation_posterior",
             "phy_future_posterior",
             "comm_future_posterior",
             "motion_target_encoder",
@@ -96,6 +98,11 @@ class Step52TrainingLoopTests(unittest.TestCase):
         self.assertTrue(audit["prior_log_std_unchanged"])
         self.assertTrue(audit["posterior_mean_changed"])
 
+    def test_current_observation_posterior_ignores_future_target(self):
+        audit = self.trainer.current_latent_target_isolation_probe()
+        self.assertTrue(audit["current_posterior_uses_current_observation"])
+        self.assertTrue(audit["future_target_mutation_does_not_change_current_posterior"])
+
     def test_validation_is_prior_only_and_does_not_update_parameters(self):
         before = self.trainer.parameter_digest()
         result = self.trainer.validate()
@@ -105,8 +112,26 @@ class Step52TrainingLoopTests(unittest.TestCase):
         self.assertTrue(result["no_grad"])
         self.assertTrue(result["prior_only_rollout"])
         self.assertEqual(result["posterior_rollout_calls"], 0)
+        self.assertEqual(result["future_posterior_teacher_calls"], 0)
+        self.assertEqual(result["future_target_encoder_calls"], 0)
+        self.assertGreater(result["current_observation_posterior_calls"], 0)
+        for row in result["per_horizon"]:
+            self.assertIn("motion_numerator", row)
+            self.assertIn("csi_numerator", row)
+            self.assertIn("L_Mot", row)
+            self.assertIn("L_CSI", row)
         self.assertTrue(result["selector_uses_l_val_only"])
         self.assertTrue(result["l_val_finite"])
+
+    def test_validation_aggregation_uses_global_unequal_mask_counts(self):
+        rows = aggregate_validation_horizon_rows({1: [
+            {"motion_numerator": 2.0, "motion_count": 1, "csi_numerator": 10.0, "csi_count": 2, "available": False},
+            {"motion_numerator": 6.0, "motion_count": 3, "csi_numerator": 0.0, "csi_count": 1, "available": False},
+        ]})
+        self.assertEqual(len(rows), 1)
+        self.assertAlmostEqual(rows[0]["L_Mot"], 2.0)
+        self.assertAlmostEqual(rows[0]["L_CSI"], 10.0 / 3.0)
+        self.assertAlmostEqual(rows[0]["L_Pred"], 0.5 * (2.0 + 10.0 / 3.0))
 
     def test_checkpoint_selector_and_early_stopping_use_only_l_val(self):
         state = self.trainer.state_snapshot(global_step=2, epoch=0, curriculum_horizon=2, best_l_val=1.0, early_stopping_counter=1)
@@ -133,6 +158,24 @@ class Step52TrainingLoopTests(unittest.TestCase):
             left = self.trainer.deterministic_forward_digest()
             right = reloaded.deterministic_forward_digest()
             self.assertEqual(left, right)
+
+    def test_checkpoint_rejects_wrong_data_and_normalization_identity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "step52.pt"
+            self.trainer.save_checkpoint(path, state=self.trainer.state_snapshot(global_step=1))
+            payload = torch.load(path, map_location="cpu", weights_only=False)
+            payload["data_identity"] = dict(payload["data_identity"])
+            payload["data_identity"]["target_sha256"] = "wrong"
+            wrong_data = Path(tmp) / "wrong_data.pt"
+            torch.save(payload, wrong_data)
+            with self.assertRaisesRegex(ValueError, "data identity"):
+                Step52Trainer.from_unified_development_bundle(self.config).load_checkpoint(wrong_data)
+            payload = torch.load(path, map_location="cpu", weights_only=False)
+            payload["normalization_provenance"] = {"target": {"csi_mean": -1.0}, "encoder_source_split": "dev_train"}
+            wrong_norm = Path(tmp) / "wrong_norm.pt"
+            torch.save(payload, wrong_norm)
+            with self.assertRaisesRegex(ValueError, "normalization provenance"):
+                Step52Trainer.from_unified_development_bundle(self.config).load_checkpoint(wrong_norm)
 
     def test_receipt_validator_rejects_required_and_forbidden_tampering(self):
         receipt = {

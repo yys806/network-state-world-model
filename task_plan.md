@@ -1413,3 +1413,9 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] Build additive paired unified development bundle with reused normalization, no prefix truncation, and observed capacities.
 - [ ] Rebuild 4.3A/4.3B/4.4 model artifacts and rerun paired 5.1B receipt; this remains the single remaining closure action.
 - Boundary: `training=false`, `optimizer_step=false`, `gpu=false`, `formal_dataset=false`, `locked_test_accessed=false`; no STEP 5.2, planner, baseline, or research-definition change.
+# 2026-09-22 STEP 5.2-PATCH
+
+- [x] 修正 current-observation posterior 初始化、future prior-only recursion 与 trainability audit
+- [x] 修正 validation global mask-normalized aggregation 与 runtime posterior isolation
+- [x] 增加 checkpoint identity-safe resume、focused tests、receipt 与 context sync
+- [ ] 完成全量回归、knowledge index、commit/push 后停止；不进入 STEP 5.3

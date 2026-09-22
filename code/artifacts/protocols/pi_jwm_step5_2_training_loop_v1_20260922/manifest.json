@@ -1,32 +1,32 @@
 {
   "files": {
     "acceptance_receipt.json": {
-      "bytes": 11102,
-      "sha256": "0d906f5b549da88b0d1d0fccfb9750f72878604407a512ad1c4a3613c8a6d578"
+      "bytes": 12565,
+      "sha256": "35a77203a6f4cda3c822bcf1a56779efaa5a07be826abc06493769609c19730a"
     },
     "checkpoint_audit.json": {
       "bytes": 652,
-      "sha256": "2fa4df36671f7c541845b4c6be3fcc4edb56bf34dea7b124195fd880b2f5ff82"
+      "sha256": "40176570b5367eec2ff812ce1aa12667c4caa8e61f39915c8211b6806540e8b4"
     },
     "config.json": {
       "bytes": 405,
       "sha256": "a17e647144d2ba9cd52cf2b1ff83d594ebae1961984dffcc8c641be515c5a0df"
     },
     "optimizer_parameter_audit.json": {
-      "bytes": 1432,
-      "sha256": "20fcd1c133c922b4d8b79f93ec3a84eeadc863bdcd95dfd291c7a8fb62481194"
+      "bytes": 1566,
+      "sha256": "d71d39ab332484940bef0a2074b98d73f7be0ef0cc19e6d44d221546c8251a6b"
     },
     "prior_target_isolation_audit.json": {
       "bytes": 154,
       "sha256": "3664dcc33f25cb260a992b9d165e216959cb50767ab92aebe4030afc0eac0101"
     },
     "training_step_audit.json": {
-      "bytes": 2773,
-      "sha256": "4deeb064588c1b50ffa8676e90a810708e507f269258c1a07d929f67f1e90954"
+      "bytes": 3055,
+      "sha256": "3df01318a23049a78d28881b73432652023f63d84ba21f2539d08039ac5b3ca4"
     },
     "validation_audit.json": {
-      "bytes": 672,
-      "sha256": "cc0c524fbfe86c4c5c75952a9b713b92633837c148566e1cdf051d2d22b64820"
+      "bytes": 1109,
+      "sha256": "03f7bfaee6b174c66225734d73d5b8ca1f7394acd29cbd67bd591846a444e77f"
     }
   },
   "github_tracked_evidence": [

@@ -329,12 +329,14 @@ class StructuredRSSMWorldModel(nn.Module):
     def initialize_latent(self, z_pi: Mapping[str, Any], state: Mapping[str, torch.Tensor], *, posterior_mode: str = "mean", generator: torch.Generator | None = None) -> dict[str, Any]:
         """Initialize the structured latent state.
 
-        ``mean`` and ``sample`` preserve the original development contract and
-        use the current-observation posterior.  ``prior`` is the explicit
-        training/validation rollout mode: it derives the initial stochastic
-        state from the prior heads and never evaluates a posterior.  In
-        particular, callers must use this mode for prior-only recursive
-        validation so a training-only teacher cannot enter the rollout state.
+        ``mean`` and ``sample`` use the current-observation posterior
+        ``q(z_t | h_t, Z_t)`` and are the semantic initialization for the
+        training-loop current time step.  ``prior`` remains an explicit
+        diagnostic mode that derives the initial stochastic state from prior
+        heads without evaluating a posterior; it is not a substitute for the
+        current-observation posterior in Stage 2 or validation.  Future
+        recursive steps are prior-only, while Future Target teachers live in
+        the separate training-only branch.
         """
         p = z_pi["physical"]["node_latent"]
         i = z_pi["information"]

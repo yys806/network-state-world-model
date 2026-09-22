@@ -21,6 +21,11 @@
       "parameter_count": 4,
       "trainable_count": 4
     },
+    "current_observation_posterior": {
+      "in_optimizer": true,
+      "parameter_count": 8,
+      "trainable_count": 8
+    },
     "encoder": {
       "in_optimizer": true,
       "parameter_count": 182,
@@ -55,5 +60,5 @@
   "known_rule_parameter_count": 0,
   "known_rule_parameter_names": [],
   "known_rule_parameters_excluded": true,
-  "total_trainable_parameters": 101158
+  "total_trainable_parameters": 103142
 }

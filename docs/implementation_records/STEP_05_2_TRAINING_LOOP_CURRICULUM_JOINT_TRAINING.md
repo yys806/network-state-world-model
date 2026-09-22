@@ -1,5 +1,7 @@
 # STEP 5.2 — Training Loop / Curriculum / Joint Training Implementation
 
+> 2026-09-22 PATCH closure is recorded in `STEP_05_2_PATCH_INITIAL_LATENT_VALIDATION_RESUME.md`; the original record's prior-only initialization wording is superseded for current latent initialization by current-observation posterior semantics.
+
 日期：2026-09-22
 状态：**COMPLETE / FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION**
 

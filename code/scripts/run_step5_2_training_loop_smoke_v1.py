@@ -5,6 +5,7 @@ import argparse
 import json
 from pathlib import Path
 import sys
+import tempfile
 
 import torch
 
@@ -46,6 +47,7 @@ def main() -> int:
     optimizer_audit = trainer.optimizer_parameter_audit()
     stage_rows = [trainer.train_step(global_step=step, epoch=0) for step in range(args.max_steps)]
     validation = trainer.validate()
+    current_isolation = trainer.current_latent_target_isolation_probe()
     state = trainer.state_snapshot(global_step=args.max_steps, epoch=0, curriculum_horizon=config.curriculum.horizon_for_step(args.max_steps - 1, config.max_horizon), best_l_val=validation["L_Val"], early_stopping_counter=0)
     selected_state = trainer.update_validation_state(state, validation)
     checkpoint_path = output / "step5_2_cpu_smoke_checkpoint.pt"
@@ -72,6 +74,29 @@ def main() -> int:
         "normalization_provenance_saved": True,
         "rng_state_saved": True,
     }
+    with tempfile.TemporaryDirectory() as tmp:
+        wrong_data_payload = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
+        wrong_data_payload["data_identity"] = dict(wrong_data_payload["data_identity"])
+        wrong_data_payload["data_identity"]["target_sha256"] = "wrong"
+        wrong_data_path = Path(tmp) / "wrong_data.pt"
+        torch.save(wrong_data_payload, wrong_data_path)
+        try:
+            Step52Trainer.from_unified_development_bundle(config).load_checkpoint(wrong_data_path)
+        except ValueError as exc:
+            wrong_data_rejected = "data identity" in str(exc)
+        else:
+            wrong_data_rejected = False
+        wrong_norm_payload = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
+        wrong_norm_payload["normalization_provenance"] = {"target": {"csi_mean": -1.0}, "encoder_source_split": "dev_train"}
+        wrong_norm_path = Path(tmp) / "wrong_norm.pt"
+        torch.save(wrong_norm_payload, wrong_norm_path)
+        try:
+            Step52Trainer.from_unified_development_bundle(config).load_checkpoint(wrong_norm_path)
+        except ValueError as exc:
+            wrong_norm_rejected = "normalization provenance" in str(exc)
+        else:
+            wrong_norm_rejected = False
+    checkpoint_identity_guards = wrong_data_rejected and wrong_norm_rejected
     prior_isolation = trainer.prior_target_isolation_probe()
 
     # A direct free-bits probe keeps this receipt tied to the frozen 5.1B
@@ -94,6 +119,12 @@ def main() -> int:
         "known_rule_excluded": optimizer_audit["known_rule_parameter_count"] == 0 and optimizer_audit["known_rule_parameters_excluded"],
         "parameter_update": all(row["parameter_update"]["any_changed"] and row["gradients_finite"] for row in stage_rows),
         "validation_prior_only": validation["prior_only_rollout"] and validation["posterior_rollout_calls"] == 0,
+        "current_posterior_initialization": current_isolation["current_posterior_uses_current_observation"],
+        "current_posterior_target_isolation": current_isolation["future_target_mutation_does_not_change_current_posterior"],
+        "validation_future_posterior_isolation": validation["future_posterior_teacher_calls"] == 0,
+        "validation_target_encoder_isolation": validation["future_target_encoder_calls"] == 0,
+        "global_validation_aggregation": bool(validation["per_horizon"] and all("motion_numerator" in row and "csi_numerator" in row and "L_Mot" in row and "L_CSI" in row for row in validation["per_horizon"]) and abs(validation["L_Val"] - sum(row["L_Pred"] for row in validation["per_horizon"]) / len(validation["per_horizon"])) < 1e-9),
+        "checkpoint_identity_guards": checkpoint_identity_guards,
         "validation_no_parameter_update": validation["validation_no_parameter_update"],
         "checkpoint_reload": checkpoint_audit["same_input_forward_equal"],
         "resume_state": all(checkpoint_audit[key] == restored_state[value] for key, value in (("restored_global_step", "global_step"), ("restored_epoch", "epoch"), ("restored_beta_kl", "beta_kl"), ("restored_curriculum_horizon", "curriculum_horizon"), ("restored_best_l_val", "best_l_val"), ("restored_early_stopping_counter", "early_stopping_counter"))),
@@ -151,7 +182,9 @@ def main() -> int:
         "validation": validation,
         "optimizer_parameter_audit": optimizer_audit,
         "checkpoint_audit": checkpoint_audit,
+        "checkpoint_identity_guards": {"wrong_data_rejected": wrong_data_rejected, "wrong_normalization_rejected": wrong_norm_rejected},
         "prior_target_isolation": prior_isolation,
+        "current_latent_isolation": current_isolation,
         "data_identity": trainer.data.identity,
         "normalization_provenance": {"target": trainer.data.target_normalization, "encoder_source_split": "dev_train"},
     }

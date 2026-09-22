@@ -1089,3 +1089,9 @@
 - optimizer audit 覆盖 encoder、RSSM dynamics、两类 prior、两类 future posterior、两类 target encoder 和两个 decoder；known deterministic rule 参数为 0。两步 smoke 后有真实 parameter update，validation `parameter_changed_count=0`。
 - `L_Val=168.31609344482422` 仅为 8/4 development smoke diagnostic；不支持 tiny-data overfit、收敛、泛化、正式训练或性能结论。Route/Comp non-empty coverage 仍为 0，作为 future formal training/data coverage gate。
 - 全量历史 suite fresh 运行结果为 `1887 tests / 33 errors`；错误集中于 AirFogSim GBK 输出、缺失 archived artifact/fixture drift 和旧 runner 环境边界。5.2 focused 与 current regression 无新错误。
+# 2026-09-22 STEP 5.2-PATCH
+
+- 事实：Stage 2/Validation 当前 latent 由 current-observation posterior 初始化，Future Target 不改变 current posterior 或 future prior。
+- 事实：Validation 已按每个 horizon 的 Motion/CSI numerator/count 全集聚合；Future posterior teacher 与 Target Encoder 调用为 0。
+- 事实：checkpoint 错误 data identity/normalization 被拒绝，compatible reload 保持 forward digest。
+- 边界：仍无 tiny-data overfit、full training、GPU、formal Dataset、locked_test、baseline、Planner、性能结论；Route/Comp non-empty coverage=0/0。

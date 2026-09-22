@@ -151,3 +151,9 @@ The previous outage blocker is resolved: outage is an independent known stochast
 # STEP 5.1D boundary（2026-09-22）
 
 Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample bundle 的 Route/Comp non-empty coverage 均为 0，仅 explicit no-op path 已验证；这保留为未来 formal training/data coverage gate。Training Loop/optimizer、CPU tiny-data overfit、GPU/formal Dataset、baseline、Planner 和 performance claim 仍未实现；下一步必须单独授权 STEP 5.2。
+## 2026-09-22 STEP 5.2-PATCH closure
+
+- STEP 5.2 的 current latent 已改为 current-observation posterior；Future Target posterior teacher 与 Future Target Encoder 在 validation 的 runtime 调用为 0。
+- Validation `L_Val` 现在按 horizon 跨完整 validation set 聚合 Motion/CSI numerator/count；不再平均 sample-level normalized loss。
+- Checkpoint resume 现在拒绝错误 data identity、normalization provenance 或 architecture-critical config；compatible reload 已通过。
+- 仍未解决且不属于本 Patch：tiny-data overfit、full training、GPU、formal Dataset、locked_test、baseline、Planner、performance claim；Route/Comp non-empty development coverage 仍为 0/0。

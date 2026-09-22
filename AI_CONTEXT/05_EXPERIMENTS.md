@@ -101,3 +101,8 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 # STEP 5.1D-PATCH acceptance（2026-09-22）
 
 receipt 为 47/47 checks true，12 samples，capacity 10/74，prior/posterior/decoder calls 24/24/24，gradient probe finite/non-zero，unified stats source IDs、4.2A frozen batch recovery、exact upstream train lineage 与 runtime prior-target isolation 通过，deterministic rebuild identical；仅为 non-locked CPU development integration evidence。真实 action coverage 为 Mobility=48、Comm=1、Route=0、Comp=0，Route/Comp 仅 explicit no-op。
+# 2026-09-22 STEP 5.2-PATCH
+
+- CPU-only semantic closure artifact：`code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/acceptance_receipt.json`，26/26 required checks passed。
+- Validation audit now records current-observation posterior calls=4, future posterior teacher calls=0, Future Target Encoder calls=0, and per-horizon Motion/CSI numerator/count plus `L_Mot/L_CSI/L_Pred/L_Val`.
+- Checkpoint audit includes compatible reload and rejection of wrong data identity / normalization provenance. This remains development smoke evidence, not convergence or performance evidence.

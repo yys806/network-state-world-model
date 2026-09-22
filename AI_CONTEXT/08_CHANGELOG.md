@@ -114,6 +114,13 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 
 # 2026-09-22 STEP 5.2
 
+# 2026-09-22 STEP 5.2-PATCH
+
+- 修正 Stage 2/Validation 初始 latent：使用 current-observation posterior，未来递推仍为 prior-only；current posterior 纳入 optimizer audit。
+- 增加 validation future-posterior/target-encoder runtime guards，并验证调用次数为 0。
+- Validation 改为跨完整 validation set 的 per-horizon Motion/CSI numerator/count 聚合，补 unequal-mask fixture。
+- Checkpoint load 增加 schema、data identity、normalization provenance、architecture-critical config 兼容性拒绝；receipt 26/26。
+
 - 新增配置化 CPU training loop：Stage 1 posterior-assisted warm-up、Stage 2 prior-dominant recursive curriculum、KL warm-up/free bits、joint optimizer parameter audit、prior-only validation、`L_Val` checkpoint selector 与 checkpoint/resume。
 - 8/4 unified non-locked development smoke 完成两步 optimizer update；20/20 required receipt checks、focused 9/9 和相关 current regressions 通过。Receipt 与 compact audit 位于 `code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/`；`.pt` checkpoint 保持 local-only。
 - 保持边界：`full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`；Route/Comp non-empty coverage=0，未进入 STEP 5.3。

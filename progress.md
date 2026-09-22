@@ -1103,3 +1103,6 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 - exact upstream normalization train lineage、runtime prior-target isolation、posterior sensitivity、executed/forbidden scope 均通过。
 - 真实 paired development coverage：Mobility 48、Comm 1、Route 0、Comp 0；后两者只有显式 no-op，保留为未来 formal training/data coverage gate。
 - 当前仍是 untrained CPU/non-locked evidence；training、optimizer、GPU、formal_dataset、locked_test、performance claim、Planner 和 STEP 5.2 未开始。
+# 2026-09-22 STEP 5.2-PATCH
+
+已完成初始 latent、validation 聚合、validation posterior isolation 和 checkpoint identity closure。Focused 12/12；CPU smoke receipt 26/26 passed。下一步仅运行回归、索引/一致性检查和 Git 收尾。

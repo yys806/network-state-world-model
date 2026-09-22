@@ -2,7 +2,7 @@
 
 ## STEP 5.2 当前状态（2026-09-22）
 
-Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B Encoder→STEP 4.4 state/recursive h→Prior/Posterior→Decoder→Loss/KL/Metric，并已接入 STEP 5.2 CPU training loop；5.1D-PATCH receipt 47/47，5.2 receipt 20/20。当前只做 8/4 development bundle 的少量 CPU optimizer smoke 和 prior-only validation；full/formal training、GPU、formal_dataset、locked_test、performance_claim 均为 false。
+Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B Encoder→`Z_t^{PI,L_g}`→current-observation posterior→Structured RSSM recursive state feedback→Prior/Posterior→Decoder→Loss/KL/Metric，并已接入 STEP 5.2 CPU training loop；5.1D-PATCH receipt 47/47，5.2-PATCH receipt 26/26。当前只做 8/4 development bundle 的少量 CPU optimizer smoke 和 prior-only validation；full/formal training、GPU、formal_dataset、locked_test、performance_claim 均为 false。
 
 更新时间：2026-09-22
 
@@ -22,7 +22,7 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 - STEP 4.4-PATCH3 已在源码中显式区分 Return requirement 的 known/unknown：冻结 current-side 不含 `Task.return_size`，所以 no slot 是 unknown，不是 no-return；unknown 或 known-required/no-slot 都不能错误 final-complete，但 side-state 可区分两者。DAG 只按有效前驱动态释放，terminal Flow completion 同步 remaining/presence/carrying/status。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
 - Definition 05 v1 decisions 已冻结：deterministic mean decoder；Motion/CSI family-wise mask-MSE；Phy/Comm analytic KL + warm-up/free-bits；overshooting OFF；Future Target 仅进入 family-specific training posterior；joint training；prior-only validation；checkpoint=`argmin L_Val`；逐 horizon raw-unit Motion/CSI MAE/RMSE。STEP 5.1A target、5.1B primitives/paired integration、5.1C development bundle、5.1D CPU chain 和 5.2 CPU training loop 均已有对应证据；full training 尚未开始。
 - 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder、Structured RSSM World Model、5.1B loss/KL/metric primitives 已验收；5.1C additive bundle 将 12 个 paired window 的 support 对齐为 observed `10/74`，5.1D 从同一 bundle 完成 graph/encoder/world-model paired CPU integration。Physical topology、Encoder/World Model 参数仍是 development-only，模型权重未训练。
-- 审计结论：时间因果、稳定 ID/index、mask/split、typed graph 与 Definition 03 encoder 已落地；`Z_t^{PI,L_g}→xi_t^Lat`、目标 RSSM 边界、逐步规则反馈和完整 planner 闭环仍需后续授权与实现。
+- 审计结论：时间因果、稳定 ID/index、mask/split、typed graph、`Z_t^{PI,L_g}→xi_t^Lat`、current-observation posterior、目标 RSSM 边界和逐步规则反馈已落地；完整 planner 闭环仍需后续授权与实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；`training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`full_training=false`、`gpu=false`。
 
@@ -83,9 +83,15 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 - Flow normalization 新 stats 只从 8 个 unified `dev_train` samples 的 History 拟合；4 个 `dev_validation` samples 排除，Future Target 未参与 fit；旧 5-sample stats 仅保留为历史 provenance。
 - receipt、exact upstream train lineage、runtime prior-target isolation、tensor contract、deterministic rebuild 和 serialize/reload 通过；仍为 CPU/non-locked development evidence。Route/Comp non-empty coverage 在真实 12-sample bundle 中均为 0，只验证 explicit no-op；这是未来 formal training/data coverage gate，不是完整四动作族训练证据。
 
+## 2026-09-22 STEP 5.2-PATCH
+
+- Stage 2/Validation 初始 latent 改为 current-observation posterior；未来递推继续 prior-only。current posterior 纳入 joint optimizer，Future Target teacher 独立且 validation 调用为 0。
+- Validation 改为每个 horizon 跨完整 validation set 的 Motion/CSI numerator/count 独立归一化，再计算 `L_Val`；补 unequal-mask fixture。
+- Checkpoint load 增加 schema、data identity、normalization provenance、architecture-critical config 拒绝检查；compatible reload、wrong-data/normalization rejection 均通过。receipt 为 26/26。
+
 ## 2026-09-22 STEP 5.2
 
-- `code/src/pi_jwm/step5_2_training_loop_v1.py` 连接当前 Encoder、Structured RSSM、5.1B target/posterior/loss/KL 原语；Stage 1 使用 family-specific posterior teacher，Stage 2 使用 `initialize_latent(posterior_mode="prior")` 的 prior-only recursive rollout。
+- `code/src/pi_jwm/step5_2_training_loop_v1.py` 连接当前 Encoder、Structured RSSM、5.1B target/posterior/loss/KL 原语；Stage 1 使用 family-specific posterior teacher，Stage 2/Validation 从 current-observation posterior 初始化，之后 prior-only recursive rollout。
 - 配置化 curriculum 为 `1→2→4`，当前 development `L=2` 自然为 `1→2`；`beta_KL`、warm-up、free bits、optimizer、clip、seed、batch size 和 epoch/step 均进入 config。
 - 真实 8/4 unified non-locked bundle CPU smoke：两步 optimizer update、4 validation samples prior-only、checkpoint save/load/resume；receipt `20/20`，`passed=true`。这不是 tiny-data overfit、收敛或性能证据。
 - optimizer audit 覆盖 Encoder、RSSM dynamics、两类 prior、两类 future posterior、两类 target encoder、Motion/CSI decoder；known rule parameter count=0。Route non-empty=0、Comp non-empty=0、Comm=1、Mobility=48，Route/Comp 仍是 future formal training/data coverage gate。

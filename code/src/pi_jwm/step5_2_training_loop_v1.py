@@ -137,6 +137,37 @@ def _stack_actions(actions: Sequence[Mapping[str, torch.Tensor]]) -> dict[str, t
     return output
 
 
+def aggregate_validation_horizon_rows(horizon_rows: Mapping[int, Sequence[Mapping[str, Any]]]) -> list[dict[str, Any]]:
+    """Aggregate validation errors over all valid elements for each horizon.
+
+    Motion and CSI are normalized independently before the frozen 0.5/0.5
+    prediction combination.  A sample missing one family therefore does not
+    remove the other family's valid elements from the global numerator/count.
+    """
+    per_horizon: list[dict[str, Any]] = []
+    for horizon, rows in sorted(horizon_rows.items()):
+        motion_numerator = float(sum(float(row.get("motion_numerator", 0.0)) for row in rows))
+        csi_numerator = float(sum(float(row.get("csi_numerator", 0.0)) for row in rows))
+        motion_count = int(sum(int(row.get("motion_count", 0)) for row in rows))
+        csi_count = int(sum(int(row.get("csi_count", 0)) for row in rows))
+        if motion_count <= 0 or csi_count <= 0:
+            continue
+        l_mot = motion_numerator / motion_count
+        l_csi = csi_numerator / csi_count
+        per_horizon.append({
+            "horizon": int(horizon),
+            "motion_numerator": motion_numerator,
+            "motion_count": motion_count,
+            "csi_numerator": csi_numerator,
+            "csi_count": csi_count,
+            "L_Mot": l_mot,
+            "L_CSI": l_csi,
+            "L_Pred": 0.5 * l_mot + 0.5 * l_csi,
+            "available_sample_count": sum(int(bool(row.get("available", False))) for row in rows),
+        })
+    return per_horizon
+
+
 @dataclass(frozen=True)
 class CurriculumConfig:
     """Explicit horizon schedule; ``start_steps`` are global optimizer steps."""
@@ -293,6 +324,9 @@ REQUIRED_STEP52_CHECKS = frozenset({
     "checkpoint_reload", "resume_state", "prior_target_isolation", "target_posterior_sensitivity",
     "future_state_not_rollout_input", "independent_normalization", "finite_and_reproducible",
     "padding_and_noop_contract", "future_return_birth_unsupported", "locked_test_not_accessed",
+    "current_posterior_initialization", "current_posterior_target_isolation",
+    "validation_future_posterior_isolation", "validation_target_encoder_isolation",
+    "global_validation_aggregation", "checkpoint_identity_guards",
 })
 
 
@@ -312,14 +346,11 @@ class Step52Trainer(nn.Module):
         target_config = Step5_1BConfig(target_dim=4, csi_dim=int(tensor_contract["n_comm_rb"]), hidden_dim=config.rssm.d_h, latent_dim=config.rssm.d_z, d_h=config.rssm.d_h, d_z=config.rssm.d_z, d_encoder=config.rssm.d_encoder)
         self.target_encoder = TargetEncoder(target_config)
         self.future_posterior = FuturePosterior(target_config)
-        # The legacy current-observation posterior is not part of Definition
-        # 05's future teacher and is never evaluated by the training loop.
-        for name, parameter in self.model.named_parameters():
-            if name.startswith(("phy_posterior.", "comm_posterior.")):
-                parameter.requires_grad_(False)
         self._optimizer_groups = self._build_optimizer_groups()
         self.optimizer = torch.optim.AdamW(self._optimizer_groups, lr=config.learning_rate, weight_decay=config.weight_decay)
         self.posterior_teacher_calls = 0
+        self.future_target_encoder_calls = 0
+        self.current_posterior_calls = 0
         self.posterior_rollout_calls = 0
         self.last_validation: dict[str, Any] | None = None
 
@@ -341,6 +372,7 @@ class Step52Trainer(nn.Module):
             ("rssm_dynamics", dynamics),
             ("phy_prior", list(self.model.phy_prior.named_parameters())),
             ("comm_prior", list(self.model.comm_prior.named_parameters())),
+            ("current_observation_posterior", [(n, p) for n, p in self.model.named_parameters() if n.startswith(("phy_posterior.", "comm_posterior."))]),
             ("phy_future_posterior", list(self.future_posterior.phy_future_posterior.named_parameters())),
             ("comm_future_posterior", list(self.future_posterior.comm_future_posterior.named_parameters())),
             ("motion_target_encoder", list(self.target_encoder.motion.named_parameters())),
@@ -371,7 +403,7 @@ class Step52Trainer(nn.Module):
         known_rule_names = [name for name in model_names if name.startswith("deterministic_transition.")]
         return {
             "groups": groups,
-            "all_required_groups_present": set(groups) == {"encoder", "rssm_dynamics", "phy_prior", "comm_prior", "phy_future_posterior", "comm_future_posterior", "motion_target_encoder", "csi_target_encoder", "vehicle_motion_decoder", "csi_decoder"},
+            "all_required_groups_present": set(groups) == {"encoder", "rssm_dynamics", "phy_prior", "comm_prior", "current_observation_posterior", "phy_future_posterior", "comm_future_posterior", "motion_target_encoder", "csi_target_encoder", "vehicle_motion_decoder", "csi_decoder"},
             "known_rule_parameter_count": len(known_rule_names),
             "known_rule_parameter_names": known_rule_names,
             "known_rule_parameters_excluded": not known_rule_names and all(parameter.requires_grad for group in self._optimizer_groups for parameter in group["params"]),
@@ -403,7 +435,8 @@ class Step52Trainer(nn.Module):
 
         state, graph = self._batch_initial_state(indices)
         zpi = self._slice_zpi(self._encoder_output(), indices, len(self.data.samples))
-        latent = self.model.initialize_latent(zpi, state, posterior_mode="prior")
+        latent = self.model.initialize_latent(zpi, state, posterior_mode="mean")
+        self.current_posterior_calls += 1
         states: list[dict[str, torch.Tensor]] = []
         graphs: list[dict[str, torch.Tensor]] = []
         latents: list[dict[str, Any]] = []
@@ -444,6 +477,7 @@ class Step52Trainer(nn.Module):
         h_comm = torch.stack([item["h"]["communication"] for item in rollout["latents"]], dim=1)
         e_motion = self.target_encoder.motion(motion[:, :horizon], motion_mask[:, :horizon])
         e_csi = self.target_encoder.csi(csi[:, :horizon], csi_mask[:, :horizon])
+        self.future_target_encoder_calls += 1
         if count_call:
             self.posterior_teacher_calls += 1
         q = self.future_posterior(h_phy, h_comm, e_motion, e_csi)
@@ -504,7 +538,9 @@ class Step52Trainer(nn.Module):
         for h in range(motion_target.shape[1]):
             mot_h, mot_n = masked_family_mse(motion_pred[:, h], motion_target[:, h], motion_mask[:, h])
             csi_h, csi_n = masked_family_mse(csi_pred[:, h], csi_target[:, h], csi_mask[:, h])
-            horizon_rows.append({"horizon": h + 1, "L_Mot": float(mot_h.detach()), "L_CSI": float(csi_h.detach()), "L_Pred": float((0.5 * mot_h + 0.5 * csi_h).detach()), "motion_count": int(mot_n), "csi_count": int(csi_n), "available": bool(mot_n > 0 and csi_n > 0)})
+            mot_num = ((motion_pred[:, h] - motion_target[:, h]).square() * motion_mask[:, h].to(motion_pred.dtype)).sum()
+            csi_num = ((csi_pred[:, h] - csi_target[:, h]).square() * csi_mask[:, h].to(csi_pred.dtype)).sum()
+            horizon_rows.append({"horizon": h + 1, "L_Mot": float(mot_h.detach()), "L_CSI": float(csi_h.detach()), "L_Pred": float((0.5 * mot_h + 0.5 * csi_h).detach()), "motion_numerator": float(mot_num.detach()), "csi_numerator": float(csi_num.detach()), "motion_count": int(mot_n), "csi_count": int(csi_n), "available": bool(mot_n > 0 and csi_n > 0)})
         return {
             "L_Total": total, "L_Pred": l_pred, "L_Mot": motion_loss, "L_CSI": csi_loss, "L_KL": kl,
             "L_KL_Phy_raw": raw_phy, "L_KL_Phy_adjusted": adjusted_phy, "L_KL_Comm_raw": raw_comm, "L_KL_Comm_adjusted": adjusted_comm,
@@ -586,7 +622,10 @@ class Step52Trainer(nn.Module):
     def validate(self) -> dict[str, Any]:
         was_training = self.training
         self.eval()
+        self.posterior_teacher_calls = 0
         self.posterior_rollout_calls = 0
+        self.future_target_encoder_calls = 0
+        self.current_posterior_calls = 0
         before = self._parameter_snapshot()
         horizon_rows: dict[int, list[dict[str, Any]]] = {}
         with torch.no_grad():
@@ -596,18 +635,16 @@ class Step52Trainer(nn.Module):
                     horizon_rows.setdefault(int(row["horizon"]), []).append(row)
         after = self._parameter_snapshot()
         _, changed_count = self._changed(before, after)
-        per_horizon = []
-        for horizon, rows in sorted(horizon_rows.items()):
-            available = [row for row in rows if row["available"]]
-            if not available:
-                continue
-            per_horizon.append({"horizon": horizon, "L_Pred": float(np.mean([row["L_Pred"] for row in available])), "available_sample_count": len(available), "motion_count": sum(row["motion_count"] for row in available), "csi_count": sum(row["csi_count"] for row in available)})
+        per_horizon = aggregate_validation_horizon_rows(horizon_rows)
         l_val = float(np.mean([row["L_Pred"] for row in per_horizon])) if per_horizon else float("nan")
         result = {
             "model_eval": not was_training or not self.training,
             "no_grad": True,
             "prior_only_rollout": True,
             "posterior_rollout_calls": int(self.posterior_rollout_calls),
+            "future_posterior_teacher_calls": int(self.posterior_teacher_calls),
+            "future_target_encoder_calls": int(self.future_target_encoder_calls),
+            "current_observation_posterior_calls": int(self.current_posterior_calls),
             "per_horizon": per_horizon,
             "L_Val": l_val,
             "l_val_finite": bool(np.isfinite(l_val)),
@@ -621,6 +658,32 @@ class Step52Trainer(nn.Module):
             self.train()
         return result
 
+    def current_latent_target_isolation_probe(self) -> dict[str, Any]:
+        """Prove current-observation posterior initialization ignores Future Target."""
+        self.eval()
+        index = self.data.train_indices[0]
+        zpi_all = self._encoder_output()
+        zpi = self._slice_zpi(zpi_all, [index], len(self.data.samples))
+        state, _ = self._batch_initial_state([index])
+        with torch.no_grad():
+            before = self.model.initialize_latent(zpi, state, posterior_mode="mean")["posterior"]
+            originals = {key: value[index:index + 1].clone() for key, value in self.data.target_tensors.items() if key.startswith("target_")}
+            for key, value in originals.items():
+                if value.dtype.is_floating_point:
+                    self.data.target_tensors[key][index:index + 1].add_(1.0)
+            after = self.model.initialize_latent(zpi, state, posterior_mode="mean")["posterior"]
+            for key, value in originals.items():
+                self.data.target_tensors[key][index:index + 1].copy_(value)
+        return {
+            "current_posterior_uses_current_observation": True,
+            "future_target_mutation_does_not_change_current_posterior": bool(
+                torch.equal(before["physical"]["mean"], after["physical"]["mean"])
+                and torch.equal(before["physical"]["log_std"], after["physical"]["log_std"])
+                and torch.equal(before["communication"]["mean"], after["communication"]["mean"])
+                and torch.equal(before["communication"]["log_std"], after["communication"]["log_std"])
+            ),
+        }
+
     def prior_target_isolation_probe(self) -> dict[str, Any]:
         self.eval()
         index = self.data.train_indices[0]
@@ -629,7 +692,13 @@ class Step52Trainer(nn.Module):
             p_phy = rollout["latents"][0]["prior"]["physical"]
             p_comm = rollout["latents"][0]["prior"]["communication"]
             original = self._future_teacher(rollout, [index], count_call=False)["q"]
+            originals = {key: value[index:index + 1].clone() for key, value in self.data.target_tensors.items() if key.startswith("target_")}
+            for key, value in originals.items():
+                if value.dtype.is_floating_point:
+                    self.data.target_tensors[key][index:index + 1].add_(1.0)
             mutated_rollout = self._recursive_rollout([index], 1, stage="prior_dominant_recursive")
+            for key, value in originals.items():
+                self.data.target_tensors[key][index:index + 1].copy_(value)
             p_phy_mut = mutated_rollout["latents"][0]["prior"]["physical"]
             p_comm_mut = mutated_rollout["latents"][0]["prior"]["communication"]
             motion = self.data.target_tensors["target_vehicle_motion_normalized"][index:index + 1, :1].clone()
@@ -702,6 +771,7 @@ class Step52Trainer(nn.Module):
             "optimizer_state": self.optimizer.state_dict(),
             "state": dict(state), "config": _jsonable(asdict(self.config)), "data_identity": self.data.identity,
             "git_commit": git_commit, "normalization_provenance": {"target": self.data.target_normalization, "encoder_source_split": "dev_train"},
+            "architecture_identity": {"rssm": _jsonable(asdict(self.config.rssm)), "encoder": _jsonable(asdict(self.config.encoder))},
             "rng_state": {"torch": torch.get_rng_state(), "numpy": np.random.get_state(), "python": random.getstate()},
         }
         torch.save(payload, path)
@@ -713,6 +783,14 @@ class Step52Trainer(nn.Module):
             payload = torch.load(Path(path), map_location="cpu")
         if payload.get("schema_version") != SCHEMA_VERSION:
             raise ValueError("unsupported STEP 5.2 checkpoint schema")
+        expected_norm = {"target": self.data.target_normalization, "encoder_source_split": "dev_train"}
+        if payload.get("data_identity") != self.data.identity:
+            raise ValueError("incompatible STEP 5.2 checkpoint data identity")
+        if payload.get("normalization_provenance") != expected_norm:
+            raise ValueError("incompatible STEP 5.2 checkpoint normalization provenance")
+        expected_arch = {"rssm": _jsonable(asdict(self.config.rssm)), "encoder": _jsonable(asdict(self.config.encoder))}
+        if payload.get("architecture_identity") != expected_arch:
+            raise ValueError("incompatible STEP 5.2 checkpoint architecture config")
         states = payload["model_state"]
         self.encoder.load_state_dict(states["encoder"]); self.model.load_state_dict(states["rssm"]); self.target_encoder.load_state_dict(states["target_encoder"]); self.future_posterior.load_state_dict(states["future_posterior"])
         self.optimizer.load_state_dict(payload["optimizer_state"])
@@ -745,6 +823,6 @@ def validate_step52_receipt(receipt: Mapping[str, Any]) -> dict[str, bool]:
 
 
 __all__ = [
-    "CurriculumConfig", "KLSchedule", "Step52TrainingConfig", "DevelopmentBundle", "Step52Trainer",
+    "CurriculumConfig", "KLSchedule", "Step52TrainingConfig", "DevelopmentBundle", "Step52Trainer", "aggregate_validation_horizon_rows",
     "REQUIRED_STEP52_CHECKS", "validate_step52_receipt",
 ]
