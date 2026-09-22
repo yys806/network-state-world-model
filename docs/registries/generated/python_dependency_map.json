@@ -2314,9 +2314,11 @@
         "scripts.step5_3_cpu_training_preflight_v1",
         "scripts.step5_3d_csi_scale_optimization_diagnosis_v1",
         "scripts.step5_3e_csi_train_mean_bias_formalization_v1",
+        "scripts.step5_4_gpu_training_readiness_v1",
         "tests.test_step5_2_training_loop_v1",
         "tests.test_step5_3_cpu_training_preflight_v1",
-        "tests.test_step5_3e_csi_train_mean_bias_formalization_v1"
+        "tests.test_step5_3e_csi_train_mean_bias_formalization_v1",
+        "tests.test_step5_4_gpu_training_readiness_v1"
       ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
@@ -2332,7 +2334,8 @@
       "test_files": [
         "code/tests/test_step5_2_training_loop_v1.py",
         "code/tests/test_step5_3_cpu_training_preflight_v1.py",
-        "code/tests/test_step5_3e_csi_train_mean_bias_formalization_v1.py"
+        "code/tests/test_step5_3e_csi_train_mean_bias_formalization_v1.py",
+        "code/tests/test_step5_4_gpu_training_readiness_v1.py"
       ]
     },
     {
@@ -7134,6 +7137,7 @@
       "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [
+        "pi_jwm.step5_2_training_loop_v1",
         "pi_jwm.step5_4_formal_training_readiness_v1"
       ],
       "lifecycle_status": "support",
@@ -9856,6 +9860,7 @@
       "evidence_role": "test_evidence",
       "imported_by": [],
       "imports": [
+        "pi_jwm.step5_2_training_loop_v1",
         "pi_jwm.step5_4_formal_training_readiness_v1"
       ],
       "lifecycle_status": "support",

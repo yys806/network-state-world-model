@@ -56,16 +56,43 @@ class FormalTrainingInterface:
     validation_indices: tuple[int, ...]
     dataset_manifest_hash: str
 
+    @property
+    def package_paths(self) -> dict[str, Path]:
+        packages = self.manifest.get("packages", {})
+        required = ("samples", "tensor", "graph", "target", "normalization")
+        result: dict[str, Path] = {}
+        for name in required:
+            value = packages.get(name)
+            if not value:
+                raise ValueError(f"manifest must declare packages.{name}")
+            path = Path(value)
+            if not path.is_absolute():
+                path = (self.manifest_path.parent / path).resolve()
+            result[name] = path
+        return result
+
+    def verify_packages(self) -> dict[str, Any]:
+        verified: dict[str, Any] = {}
+        for name, path in self.package_paths.items():
+            if not path.exists():
+                verified[name] = {"exists": False, "sha256": None}
+                continue
+            expected = self.manifest.get("hashes", {}).get(name)
+            actual = sha256_file(path)
+            verified[name] = {"exists": True, "sha256": actual, "hash_matches": expected is None or expected == actual}
+        verified["all_present_and_matching"] = all(item.get("exists") and item.get("hash_matches", False) for item in verified.values())
+        return verified
+
     @classmethod
     def from_manifest(cls, manifest_path: str | Path) -> "FormalTrainingInterface":
         path = Path(manifest_path)
         manifest = json.loads(path.read_text(encoding="utf-8"))
-        sample_path = manifest.get("sample_path") or manifest.get("files", {}).get("samples", {}).get("path")
+        sample_path = manifest.get("sample_path") or manifest.get("files", {}).get("samples", {}).get("path") or manifest.get("packages", {}).get("samples")
         if not sample_path:
             raise ValueError("manifest must declare sample_path")
         sample_file = Path(sample_path)
         if not sample_file.is_absolute():
-            sample_file = path.parent.parent.parent / sample_file
+            sample_file = path.parent / sample_file
         samples = json.loads(sample_file.read_text(encoding="utf-8"))
         if not isinstance(samples, list) or not samples:
             raise ValueError("manifest samples must be a non-empty list")
@@ -95,7 +122,41 @@ class FormalTrainingInterface:
             "deterministic_rebuild": bool(contract.get("deterministic_rebuild", False)),
             "manifest_hash": self.dataset_manifest_hash,
             "provenance_present": bool(self.manifest.get("provenance")),
+            "package_paths_declared": all(name in self.manifest.get("packages", {}) for name in ("samples", "tensor", "graph", "target", "normalization")),
+            "package_hashes_verified": self.verify_packages()["all_present_and_matching"] if "packages" in self.manifest else False,
         }
 
 
 __all__ = ["FormalTrainingInterface", "sha256_file"]
+
+
+REQUIRED_CONFIG_FIELDS = ("dataset", "model", "training", "evaluation", "runtime")
+
+
+def load_training_config(path: str | Path) -> dict[str, Any]:
+    payload = json.loads(Path(path).read_text(encoding="utf-8"))
+    missing = [key for key in REQUIRED_CONFIG_FIELDS if key not in payload]
+    if missing:
+        raise ValueError(f"training config missing sections: {missing}")
+    return payload
+
+
+def unresolved_training_fields(config: Mapping[str, Any]) -> list[str]:
+    unresolved: list[str] = []
+    for section in REQUIRED_CONFIG_FIELDS:
+        value = config.get(section, {})
+        if isinstance(value, Mapping):
+            unresolved.extend(f"{section}.{key}" for key, item in value.items() if item is None)
+    return sorted(unresolved)
+
+
+def validate_readiness(checks: Mapping[str, bool], *, formal_dataset: bool, research_decisions_frozen: bool) -> dict[str, Any]:
+    training_checks = ("package_load", "trainer_construct", "cpu_train_step", "prior_only_validation", "checkpoint_reload")
+    device_checks = ("model_device", "data_device", "checkpoint_map_location", "cpu_generic_dry_run")
+    training_stack = all(bool(checks.get(name, False)) for name in training_checks)
+    device_ready = all(bool(checks.get(name, False)) for name in device_checks)
+    dataset_ready = bool(formal_dataset and all(bool(checks.get(name, False)) for name in ("dataset_contract", "action_coverage", "split_isolation")))
+    return {"training_stack_readiness": "PASS" if training_stack else "FAIL", "formal_dataset_readiness": "READY" if dataset_ready else "NOT_READY", "gpu_codepath_readiness": "PREPARED" if device_ready else "NOT_PREPARED", "formal_training_readiness": "READY" if training_stack and dataset_ready and device_ready and research_decisions_frozen else "BLOCKED", "checks": dict(checks)}
+
+
+__all__ += ["load_training_config", "unresolved_training_fields", "validate_readiness"]

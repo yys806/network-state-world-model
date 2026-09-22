@@ -1,21 +1,37 @@
 {
   "baseline": false,
+  "checks": {
+    "action_coverage": true,
+    "checkpoint_map_location": true,
+    "checkpoint_negative_reject": true,
+    "checkpoint_reload": true,
+    "cpu_generic_dry_run": true,
+    "cpu_train_step": true,
+    "data_device": true,
+    "dataset_contract": true,
+    "horizon_l4_config_fixture": true,
+    "model_device": true,
+    "package_load": true,
+    "prior_only_validation": true,
+    "split_isolation": true,
+    "trainer_construct": true
+  },
   "formal_dataset": false,
   "formal_dataset_readiness": "NOT_READY",
   "formal_training_readiness": "BLOCKED",
   "full_training": false,
+  "generic_package": {
+    "graph": true,
+    "normalization": true,
+    "samples": true,
+    "target": true,
+    "tensor": true
+  },
   "gpu": false,
   "gpu_codepath_readiness": "PREPARED",
-  "interface": {
-    "development_adapter_unchanged": true,
-    "manifest_driven": true,
-    "sample_count": 12,
-    "train_count": 8,
-    "validation_count": 4
-  },
   "locked_test": false,
+  "negative_fixture": true,
   "performance_claim": false,
   "planner": false,
-  "schema_version": "PI-JWM-Step-5.4-Readiness-v1",
   "training_stack_readiness": "PASS"
 }

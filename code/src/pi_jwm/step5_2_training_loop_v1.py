@@ -228,6 +228,7 @@ class Step52TrainingConfig:
     encoder: DualGraphEncoderConfig = field(default_factory=DualGraphEncoderConfig)
     csi_decoder_output_space: str = "raw_db"
     csi_decoder_bias_init_policy: str = "train_only_csi_mean"
+    device: str = "cpu"
 
     def __post_init__(self) -> None:
         if self.learning_rate <= 0 or self.weight_decay < 0 or self.batch_size <= 0:
@@ -240,6 +241,8 @@ class Step52TrainingConfig:
             raise ValueError("STEP 5.3E v1 requires raw_db CSI decoder output")
         if self.csi_decoder_bias_init_policy != "train_only_csi_mean":
             raise ValueError("STEP 5.3E v1 requires train_only_csi_mean bias initialization")
+        if self.device not in {"cpu", "cuda"}:
+            raise ValueError("device must be cpu or cuda")
 
 
 @dataclass
@@ -322,6 +325,30 @@ class DevelopmentBundle:
         _ = build_action
         return cls(samples, targets, tensor, graph, target_tensors, target_contract["normalization_parameters"], states, graphs, train_indices, validation_indices, identity)
 
+    @classmethod
+    def from_formal_interface(cls, interface: Any) -> "DevelopmentBundle":
+        from build_step5_1d_unified_model_chain_v1 import build_state
+        from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import load_flow_tensor_batch
+        from pi_jwm.step4_3a_typed_dual_graph_builder_v1 import load_typed_dual_graph_batch
+        packages = interface.package_paths
+        samples = json.loads(packages["samples"].read_text(encoding="utf-8"))
+        tensor = load_flow_tensor_batch(packages["tensor"])
+        graph = load_typed_dual_graph_batch(packages["graph"])
+        with np.load(packages["target"], allow_pickle=False) as target_np:
+            target_tensors = {key: torch.from_numpy(value.copy()).bool() if value.dtype == np.bool_ else torch.from_numpy(value.copy()).float() for key, value in target_np.items() if key.startswith("target_")}
+            target_contract = json.loads(str(target_np["__contract__"]))["contract"]
+        targets = [{} for _ in samples]
+        tensor_for_state = dict(tensor)
+        tensor_for_state["sample_metadata"] = [{**metadata, "source_path": str((ROOT / metadata["source_path"]).resolve()) if not Path(metadata["source_path"]).is_absolute() else metadata["source_path"]} for metadata in tensor.get("sample_metadata", [])]
+        states, graphs = [], []
+        for index in range(len(samples)):
+            state, graph_t = build_state(tensor_for_state, graph, index)
+            states.append(state); graphs.append(graph_t)
+        train_indices = list(interface.train_indices); validation_indices = list(interface.validation_indices)
+        normalization = json.loads(packages["normalization"].read_text(encoding="utf-8"))
+        identity = {"dataset_manifest_hash": interface.dataset_manifest_hash, "package_hashes": {name: _sha(path) for name, path in packages.items()}, "sample_ids": [sample["metadata"]["sample_id"] for sample in samples], "train_sample_count": len(train_indices), "validation_sample_count": len(validation_indices)}
+        return cls(samples, targets, tensor, graph, target_tensors, normalization.get("normalization_parameters", target_contract["normalization_parameters"]), states, graphs, train_indices, validation_indices, identity)
+
 
 REQUIRED_STEP52_CHECKS = frozenset({
     "stage1_posterior_teacher", "stage2_prior_recursive", "curriculum_1_to_2",
@@ -343,6 +370,9 @@ class Step52Trainer(nn.Module):
         super().__init__()
         self.config = config
         self.data = data
+        self.device = torch.device(config.device)
+        if self.device.type == "cuda" and not torch.cuda.is_available():
+            raise RuntimeError("CUDA requested but unavailable")
         self._seed_everything(config.seed)
         graph_contract = data.graph["contract"]
         tensor_contract = data.tensor["contract"]
@@ -360,6 +390,23 @@ class Step52Trainer(nn.Module):
         self.current_posterior_calls = 0
         self.posterior_rollout_calls = 0
         self.last_validation: dict[str, Any] | None = None
+        self._move_data_to_device()
+        self.to(self.device)
+
+    @staticmethod
+    def _move_tree(value: Any, device: torch.device) -> Any:
+        if isinstance(value, torch.Tensor):
+            return value.to(device)
+        if isinstance(value, Mapping):
+            return {key: Step52Trainer._move_tree(item, device) for key, item in value.items()}
+        if isinstance(value, list):
+            return [Step52Trainer._move_tree(item, device) for item in value]
+        return value
+
+    def _move_data_to_device(self) -> None:
+        self.data.target_tensors = self._move_tree(self.data.target_tensors, self.device)
+        self.data.states = self._move_tree(self.data.states, self.device)
+        self.data.graphs = self._move_tree(self.data.graphs, self.device)
 
     def _initialize_csi_decoder(self) -> dict[str, Any]:
         """Apply the frozen train-only raw-CSI mean before optimizer creation."""
@@ -386,6 +433,10 @@ class Step52Trainer(nn.Module):
     @classmethod
     def from_unified_development_bundle(cls, config: Step52TrainingConfig | None = None) -> "Step52Trainer":
         return cls(config or Step52TrainingConfig(), DevelopmentBundle.load())
+
+    @classmethod
+    def from_formal_interface(cls, interface: Any, config: Step52TrainingConfig | None = None) -> "Step52Trainer":
+        return cls(config or Step52TrainingConfig(), DevelopmentBundle.from_formal_interface(interface))
 
     @staticmethod
     def _seed_everything(seed: int) -> None:
@@ -823,9 +874,9 @@ class Step52Trainer(nn.Module):
 
     def load_checkpoint(self, path: str | Path) -> dict[str, Any]:
         try:
-            payload = torch.load(Path(path), map_location="cpu", weights_only=False)
+            payload = torch.load(Path(path), map_location=self.device, weights_only=False)
         except TypeError:
-            payload = torch.load(Path(path), map_location="cpu")
+            payload = torch.load(Path(path), map_location=self.device)
         if payload.get("schema_version") != SCHEMA_VERSION:
             raise ValueError("unsupported STEP 5.2 checkpoint schema")
         expected_norm = {"target": self.data.target_normalization, "encoder_source_split": "dev_train"}

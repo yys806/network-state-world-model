@@ -10,7 +10,33 @@
     "research_decision_gaps.json",
     "topology_readiness.json"
   ],
-  "formal_dataset": false,
-  "gpu": false,
-  "schema_version": "PI-JWM-Step-5.4-Manifest-v1"
+  "package_verification": {
+    "all_present_and_matching": true,
+    "graph": {
+      "exists": true,
+      "hash_matches": true,
+      "sha256": "4af32e332ea6f0483abe01403ec6a55705eff49db28341c9ddc7ffc8f4c3b4d4"
+    },
+    "normalization": {
+      "exists": true,
+      "hash_matches": true,
+      "sha256": "8ec7529f3c4922fff24b014fbef2953e275ec87a46497a40ca951288bca74acb"
+    },
+    "samples": {
+      "exists": true,
+      "hash_matches": true,
+      "sha256": "4b175a156ffe34becb1c1b64d1dd1a3c7432fba5f46c430df442a065c3939cd5"
+    },
+    "target": {
+      "exists": true,
+      "hash_matches": true,
+      "sha256": "9f73a5d47be1d732a7c4d2983c3bf6f9a4340c783136c3c23043b22cbed1afa6"
+    },
+    "tensor": {
+      "exists": true,
+      "hash_matches": true,
+      "sha256": "bf6adebe1b6185d640e9b0baadb96c33bfa70b50d213f4e7b8276ac6c139a698"
+    }
+  },
+  "schema_version": "PI-JWM-Step-5.4-PATCH-Receipt-v1"
 }

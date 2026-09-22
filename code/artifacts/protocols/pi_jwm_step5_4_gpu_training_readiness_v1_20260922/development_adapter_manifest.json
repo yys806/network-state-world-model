@@ -11,10 +11,23 @@
     "trajectory_level_split": true,
     "wireless_per_rb_csi_target": true
   },
+  "hashes": {
+    "graph": "4af32e332ea6f0483abe01403ec6a55705eff49db28341c9ddc7ffc8f4c3b4d4",
+    "normalization": "8ec7529f3c4922fff24b014fbef2953e275ec87a46497a40ca951288bca74acb",
+    "samples": "4b175a156ffe34becb1c1b64d1dd1a3c7432fba5f46c430df442a065c3939cd5",
+    "target": "9f73a5d47be1d732a7c4d2983c3bf6f9a4340c783136c3c23043b22cbed1afa6",
+    "tensor": "bf6adebe1b6185d640e9b0baadb96c33bfa70b50d213f4e7b8276ac6c139a698"
+  },
+  "packages": {
+    "graph": "../pi_jwm_step5_1d_unified_model_chain_v1_20260922/unified_typed_dual_graph.npz",
+    "normalization": "normalization_provenance.json",
+    "samples": "../pi_jwm_step5_1c_unified_development_bundle_v1_20260922/unified_flow_samples.json",
+    "target": "../pi_jwm_step5_1a_motion_csi_target_contract_v1_20260921/tensor.npz",
+    "tensor": "../pi_jwm_step5_1d_unified_model_chain_v1_20260922/unified_flow_tensor_package.npz"
+  },
   "provenance": {
     "formal_dataset": false,
-    "source": "STEP 5.1C development bundle"
+    "source": "STEP 5.1C/5.1D development packages"
   },
-  "sample_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step5_1c_unified_development_bundle_v1_20260922\\unified_flow_samples.json",
-  "schema_version": "PI-JWM-Step-5.4-Manifest-v1"
+  "schema_version": "PI-JWM-Step-5.4-PATCH-Manifest-v1"
 }

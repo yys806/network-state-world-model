@@ -3,7 +3,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from pi_jwm.step5_4_formal_training_readiness_v1 import FormalTrainingInterface
+from pi_jwm.step5_4_formal_training_readiness_v1 import FormalTrainingInterface, validate_readiness
+from pi_jwm.step5_2_training_loop_v1 import CurriculumConfig
 
 
 class Step54InterfaceTests(unittest.TestCase):
@@ -20,6 +21,16 @@ class Step54InterfaceTests(unittest.TestCase):
             self.assertEqual(coverage["route"]["non_empty_count"], 1)
             self.assertEqual(coverage["comp"]["non_empty_count"], 1)
             self.assertEqual(coverage["mobility"]["non_empty_count"], 1)
+
+    def test_readiness_negative_check_cannot_pass(self):
+        checks = {"package_load": True, "trainer_construct": False, "cpu_train_step": True, "prior_only_validation": True, "checkpoint_reload": True, "model_device": True, "data_device": True, "checkpoint_map_location": True, "cpu_generic_dry_run": True, "dataset_contract": True, "action_coverage": True, "split_isolation": True}
+        result = validate_readiness(checks, formal_dataset=False, research_decisions_frozen=False)
+        self.assertEqual(result["training_stack_readiness"], "FAIL")
+        self.assertEqual(result["formal_training_readiness"], "BLOCKED")
+
+    def test_horizon_four_configuration_fixture(self):
+        schedule = CurriculumConfig(horizons=(1, 2, 4), start_steps=(0, 1, 2))
+        self.assertEqual(schedule.horizon_for_step(2, 4), 4)
 
 
 if __name__ == "__main__":

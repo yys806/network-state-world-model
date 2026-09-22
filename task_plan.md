@@ -1447,3 +1447,9 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 结论：training stack PASS，formal Dataset NOT_READY，GPU codepath PREPARED，formal training BLOCKED。
 - [ ] 等研究者决定正式 Dataset、Route/Comp 数据策略、L、topology 和训练预算后再授权构建/冻结 Formal Dataset。
 - Boundary: `gpu=false`、`full_training=false`、`locked_test=false`、`baseline=false`、`planner=false`、`performance_claim=false`。
+
+# 2026-09-22 STEP 5.4-PATCH
+
+- [x] generic package loading/hash and real Trainer CPU dry-run.
+- [x] device contract, machine-computed readiness, relative manifest, L=4 config fixture.
+- [ ] formal Dataset, formal L/topology and CUDA remain unauthorized/unexecuted.

@@ -1,7 +1,10 @@
 {
-  "cpu_dry_run": true,
+  "checks": {
+    "checkpoint_map_location": true,
+    "cpu_generic_dry_run": true,
+    "data_device": true,
+    "model_device": true
+  },
   "cuda_executed": false,
-  "explicit_cpu_in_core_path": false,
-  "new_tensor_device_audit": "static_review_required",
-  "verdict": "GPU_CODEPATH_PREPARED"
+  "verdict": "PREPARED"
 }

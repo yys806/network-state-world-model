@@ -1,14 +1,31 @@
 {
-  "component_unsupported_mask": true,
-  "deterministic_rebuild": true,
-  "flow_semantics": true,
-  "future_target_excluded_from_input": true,
-  "manifest_hash": "9dd3d88988cd19a6bc13fad7cbbb2eae8a0856cbb6be19867db709970d560ad2",
-  "motion_future_target": true,
-  "provenance_present": true,
-  "real_causal_trajectory": true,
-  "stable_id_index_presence_mask": true,
-  "train_only_normalization": true,
-  "trajectory_level_split": true,
-  "wireless_per_rb_csi_target": true
+  "formal_dataset": false,
+  "manifest_declared": {
+    "component_unsupported_mask": true,
+    "deterministic_rebuild": true,
+    "flow_semantics": true,
+    "future_target_excluded_from_input": true,
+    "motion_future_target": true,
+    "real_causal_trajectory": true,
+    "stable_id_index_presence_mask": true,
+    "train_only_normalization": true,
+    "trajectory_level_split": true,
+    "wireless_per_rb_csi_target": true
+  },
+  "verified_from_packages": {
+    "component_unsupported_mask": true,
+    "deterministic_rebuild": true,
+    "flow_semantics": true,
+    "future_target_excluded_from_input": true,
+    "manifest_hash": "d5a843119354742f5efefa00327bf1aedb3aba2acfcc67d82ab6519f8a94aea3",
+    "motion_future_target": true,
+    "package_hashes_verified": true,
+    "package_paths_declared": true,
+    "provenance_present": true,
+    "real_causal_trajectory": true,
+    "stable_id_index_presence_mask": true,
+    "train_only_normalization": true,
+    "trajectory_level_split": true,
+    "wireless_per_rb_csi_target": true
+  }
 }

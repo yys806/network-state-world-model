@@ -1,10 +1,8 @@
 {
   "comp_non_empty": 0,
-  "cuda_verification": "not_run",
-  "formal_dataset": "required",
-  "formal_horizon": "researcher_decision_required",
-  "formal_seed_and_budget": "researcher_decision_required",
-  "model_and_training_numeric_config": "researcher_decision_required",
-  "physical_topology": "researcher_decision_required",
-  "route_non_empty": 0
+  "formal_dataset": true,
+  "formal_horizon": true,
+  "route_non_empty": 0,
+  "topology": true,
+  "training_budget": true
 }

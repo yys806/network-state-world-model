@@ -1,6 +1,6 @@
 {
-  "development_horizon": 2,
+  "L_gt_2_runtime_verified": false,
   "formal_horizon": null,
-  "research_frozen": false,
-  "supports_generic_manifest_horizon": true
+  "generic_horizon_interface_prepared": true,
+  "research_decision_required": true
 }

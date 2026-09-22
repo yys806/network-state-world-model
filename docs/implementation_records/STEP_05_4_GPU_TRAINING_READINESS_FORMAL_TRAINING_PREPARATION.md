@@ -56,3 +56,9 @@ Artifact：`code/artifacts/protocols/pi_jwm_step5_4_gpu_training_readiness_v1_20
 ## 8. Known Issues / Next Step
 
 Data blocker 是 formal Dataset 缺失且 Route/Comp non-empty coverage=0/0；research blocker 是 `L`、topology 和训练预算未冻结；GPU blocker 是尚未运行 CUDA。唯一下一动作：研究者先决定并授权 Formal Dataset 构建/冻结；本 Step 到此停止。
+
+## STEP 5.4-PATCH Closure
+
+- Generic interface loads and hashes samples, tensor, graph, target and normalization packages.
+- `Step52Trainer.from_formal_interface()` executes the real CPU train step, prior-only validation, checkpoint reload and wrong-identity rejection.
+- Device contract supports `cpu|cuda`; this patch only verifies CPU. Readiness is computed from machine checks; L=4 is a config fixture only (`L_gt_2_runtime_verified=false`).

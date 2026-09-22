@@ -1121,3 +1121,9 @@
 - 真实 development action coverage：Route=0、Comp=0、Comm=1、Mobility=24；没有用代理或伪造数据补齐 Route/Comp。
 - `L=2`、`radius_knn(1000m,k=2)`、正式 seed/预算仍是 development 或 researcher decision required，不能包装成 formal config。
 - 只完成 device-agnostic 静态审计与 CPU dry-run；`GPU_CODEPATH_PREPARED` 不等于 `GPU_TRAINING_VERIFIED`。
+
+# 2026-09-22 STEP 5.4-PATCH
+
+- Generic package now loads samples/tensor/graph/target/normalization and enters the real Trainer.
+- `validate_readiness()` computes verdicts from checks; negative identity fixture passes.
+- L=4 is config-only evidence, not runtime rollout verification.
