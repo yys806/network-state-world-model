@@ -1109,3 +1109,9 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 # 2026-09-22 STEP 5.3
 
 固定 dev_train 1/2-sample CPU preflight 已完成：Phase A/B/C、模块 learning-signal、KL/normalization、validation prior-only、resume 全部通过，receipt=GO。下一步做回归与 Git 收尾，停止在 5.3。
+# 2026-09-22 STEP 5.3-PATCH
+
+- [x] raw metric 改为 decoder raw prediction + normalized target 单次逆变换，加入 Motion 四分量与 CSI dB 指标和已知桥接单测。
+- [x] Phase A 使用无更新 pre/post；Phase C 复用 5.2 `train_step` 实际执行 H=1→H=2、KL beta 0→1 warm-up。
+- [x] bounded rerun：LEARNING_SIGNAL_GO，TINY_OVERFIT_NO_GO；独立 fresh run、resume、phase-specific gradient 和 CSI scale evidence 已落盘。
+- [ ] 不进入 STEP 5.4/GPU；下一动作仅为一个最小 bounded CPU tiny-overfit diagnosis。

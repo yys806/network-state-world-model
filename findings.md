@@ -1100,3 +1100,8 @@
 - GO 证据：Phase A Motion/CSI 均下降；Phase B prior H1/H2 均下降；Phase C 两样本双 family 均下降；无 NaN/Inf；resume trajectory 一致。
 - CSI 数值 loss 较大与 normalized target scale/difficulty 相关，未发现 stats 实现错误，不改 0.5/0.5 权重。
 - 部分 teacher groups 存在零梯度步骤但非全程，已由 zero_gradient_steps 审计；Route/Comp coverage、GPU、formal training、locked_test 仍关闭。
+# 2026-09-22 STEP 5.3-PATCH
+
+- 5.3 原 Phase C 没有执行冻结的 schedule；修正后直接复用 `Step52Trainer.train_step(global_step=...)`，step 0–9 为 H1/Stage1，step 10+ 为 H2/Stage2，KL 在 20 steps 内 warm-up。
+- `motion_predictions`/`csi_predictions` 是 decoder raw outputs；raw metric 只 inverse-transform targets。CSI audit 实测 prediction 约 0 dB、target 约 98–99 dB，未发现二次 bridge bug。
+- 真实 pre/post 与独立 fresh-run 均通过；learning signal 可接受，但强 tiny-overfit 双条件均未通过，不能进入 GPU/STEP 5.4。

@@ -157,9 +157,11 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 - Validation `L_Val` 现在按 horizon 跨完整 validation set 聚合 Motion/CSI numerator/count；不再平均 sample-level normalized loss。
 - Checkpoint resume 现在拒绝错误 data identity、normalization provenance 或 architecture-critical config；compatible reload 已通过。
 - 仍未解决且不属于本 Patch：tiny-data overfit、full training、GPU、formal Dataset、locked_test、baseline、Planner、performance claim；Route/Comp non-empty development coverage 仍为 0/0。
-## 2026-09-22 STEP 5.3 preflight result
+## 2026-09-22 STEP 5.3-PATCH result
 
-- Fixed development tiny-data preflight is `GO`：1-sample Stage 1、1-sample prior H1/H2 和 2-sample prior 1→2 均达到预注册 0.5% family/prior drop gate，且无 NaN/Inf。
+- 修正后的 bounded CPU preflight 为 `LEARNING_SIGNAL_GO`，但 `TINY_OVERFIT_NO_GO`：1-sample Stage 1、1-sample prior H1/H2 和 2-sample 正常 1→2 均有双 family learning signal、无 NaN/Inf；强 tiny-overfit 的 50% relative-drop + final normalized MSE<=1.0 未通过。
+- raw metric 已改为只反归一化 target 一次，并写出 Motion x/y/z/speed 与 CSI dB 指标；CSI scale audit 显示 decoder 初始约 0 dB 而目标约 98–99 dB，当前记录为初始化/优化难度观察，不改 0.5/0.5 权重。
+- 独立 fresh-run、checkpoint resume、phase-specific gradient audit 和 leakage audit 均已写入 receipt/artifact。
 - CSI loss 仍明显高于 Motion，但 train-only normalized CSI std 约 1.04、Motion std 约 0.16，当前证据不支持 normalization bug；没有修改冻结的 0.5/0.5 权重。
 - 部分 future posterior/target encoder steps 梯度为 0，已记录 zero-gradient step count；各组均有 finite learning signal 和参数更新，不构成持续性 gradient starvation。
-- 该 GO 只开放未来独立的 STEP 5.4 readiness review，不自动启动 GPU。Route/Comp non-empty coverage 仍为 0/0，full training/formal Dataset/locked_test/performance claim 仍关闭。
+- 该结果不开放 STEP 5.4 或 GPU；需要先做 bounded CPU tiny-overfit diagnosis。Route/Comp non-empty coverage 仍为 0/0，full training/formal Dataset/locked_test/performance claim 仍关闭。

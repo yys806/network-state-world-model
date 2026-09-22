@@ -1425,3 +1425,8 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 完成 Phase A/B/C、learning-signal、KL/scale、validation、reproducibility、resume
 - [x] receipt、record、AI_CONTEXT、tracker 与 artifact index 同步
 - [ ] 完成 focused/regression、compileall、knowledge index、diff check 后 commit/push；不进入 GPU/5.4
+# 2026-09-22 STEP 5.3-PATCH — Correct Training-Path / Raw-Metric / Reproducibility Closure
+
+- [x] 修正 raw-unit metric bridge、真实 Phase A pre/post、Phase C 正常 1→2 + KL warm-up。
+- [x] 生成分阶段 gradient、CSI scale、leakage、独立 fresh-run 与 resume evidence；learning signal GO，tiny overfit NO-GO。
+- [x] 更新 records、tracker、AI_CONTEXT、artifact receipt；下一步仅为 bounded CPU tiny-overfit diagnosis，不进入 GPU/STEP 5.4。

@@ -1,5 +1,5 @@
 {
-  "L_Val": 165.78919385671992,
+  "L_Val": 165.7297225150266,
   "current_observation_posterior_calls": 4,
   "future_posterior_teacher_calls": 0,
   "future_state_not_rollout_input": true,
@@ -10,26 +10,26 @@
   "parameter_changed_count": 0,
   "per_horizon": [
     {
-      "L_CSI": 329.8292803030303,
-      "L_Mot": 0.0018423622253370315,
-      "L_Pred": 164.91556133262782,
+      "L_CSI": 329.70810606060604,
+      "L_Mot": 0.0017656082059147593,
+      "L_Pred": 164.85493583440598,
       "available_sample_count": 4,
       "csi_count": 9900,
-      "csi_numerator": 3265309.875,
+      "csi_numerator": 3264110.25,
       "horizon": 1,
       "motion_count": 24,
-      "motion_numerator": 0.04421669340808876
+      "motion_numerator": 0.04237459694195422
     },
     {
-      "L_CSI": 333.3232386363636,
-      "L_Mot": 0.002414125260353709,
-      "L_Pred": 166.662826380812,
+      "L_CSI": 333.20684974747473,
+      "L_Mot": 0.0021686438196108306,
+      "L_Pred": 166.60450919564718,
       "available_sample_count": 4,
       "csi_count": 9900,
-      "csi_numerator": 3299900.0625,
+      "csi_numerator": 3298747.8125,
       "horizon": 2,
       "motion_count": 24,
-      "motion_numerator": 0.05793900624848902
+      "motion_numerator": 0.05204745167065994
     }
   ],
   "posterior_rollout_calls": 0,

@@ -62,6 +62,13 @@ Unverified：第三 seed 结果、三 seed 均值/方差、locked test、最终�
 
 ## 2026-09-22 STEP 5.3 CPU Training Preflight
 
+### STEP 5.3-PATCH closure
+
+- 修正 raw metric bridge：decoder prediction 保持 raw units，只对 normalized target 逆变换一次；Motion 按 x/y/z/speed 分量报告，CSI 按 dB 报告。
+- Phase A 使用真正无更新 pre 与训练后同路径比较；Phase C 真实复用 5.2 `train_step` 的 H=1→H=2 与 beta 0→1 KL warm-up。
+- 独立 fresh run 与 checkpoint resume 均 deterministic；CSI scale audit 显示 prediction 初始约 0 dB、target 约 98–99 dB，未发现 normalization bridge bug。
+- Verdict 分离为 `LEARNING_SIGNAL_GO` 与 `TINY_OVERFIT_NO_GO`；不得写成 tiny-data overfit 或 GPU readiness。
+
 - 固定 `dev_train` tiny subset：Phase A/B 使用 sample index `0`（`step2.4-real-communication-seed0::anchor-0001`），Phase C 使用 index `0,1` 两个真实 samples；4 个 `dev_validation` 只作 prior-only diagnostic。
 - 预注册 development-only gate 为 family/prior relative loss drop `>=0.5%`，A/B/C bounded steps 为 `30/30/40`；receipt 所有 required checks 为 true，结果 `GO`。
 - Phase A Stage 1 Motion `0.0005155009→0.0000088083`、CSI `324.4449→320.2018`；Phase B prior H1/H2 `L_Pred` 相对下降 `1.20%/1.19%`；Phase C 两样本 H1/H2 Motion `78.57%/84.69%`、CSI `1.68%/1.69%`。

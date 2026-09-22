@@ -1,11 +1,16 @@
 {
   "development_gate": {
+    "kl_warmup_steps": 20,
     "max_steps_phase_a": 30,
     "max_steps_phase_b": 30,
     "max_steps_phase_c": 40,
     "max_steps_resume": 20,
     "relative_family_loss_drop": 0.005,
-    "relative_prior_loss_drop": 0.005
+    "relative_prior_loss_drop": 0.005,
+    "stage1_steps": 10,
+    "target_beta": 1.0,
+    "tiny_overfit_final_normalized_family_mse": 1.0,
+    "tiny_overfit_relative_family_loss_drop": 0.5
   },
   "forbidden_scope": {
     "baseline": false,
@@ -16,10 +21,12 @@
     "performance_claim": false,
     "planner": false
   },
+  "learning_signal_verdict": "LEARNING_SIGNAL_GO",
   "passed": true,
   "required_checks": {
     "finite_no_nan_inf": true,
     "future_target_leakage_closed": true,
+    "independent_fresh_run_reproducibility": true,
     "locked_test_not_accessed": true,
     "module_learning_signal": true,
     "no_persistent_gradient_starvation": true,
@@ -29,5 +36,10 @@
     "recursive_h2_stable": true,
     "resume_trajectory_match": true,
     "validation_diagnostic_prior_only": true
-  }
+  },
+  "tiny_overfit_checks": {
+    "final_normalized_mse_all_families": false,
+    "relative_drop_all_families": false
+  },
+  "tiny_overfit_verdict": "TINY_OVERFIT_NO_GO"
 }

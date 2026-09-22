@@ -1,0 +1,9 @@
+{
+  "final_metrics_match": true,
+  "final_parameter_digest_match": true,
+  "same_config": true,
+  "same_seed": true,
+  "same_subset": true,
+  "steps": 12,
+  "trajectory_match": true
+}

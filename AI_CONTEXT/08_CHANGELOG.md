@@ -1,5 +1,11 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-22 STEP 5.3-PATCH
+
+- 修正 5.3 Phase A 真正 pre/post、Phase C 复用 5.2 的 H=1→H=2 + KL warm-up、raw-unit metric bridge 与独立 fresh-run reproducibility。
+- receipt 现在分离 `LEARNING_SIGNAL_GO` 与 `TINY_OVERFIT_NO_GO`；CSI scale audit 与分阶段 gradient/leakage/resume evidence 已生成。
+- 未进入 STEP 5.4、GPU、正式训练或 locked_test。
+
 ## 2026-09-22 STEP 5.3
 
 - 新增 bounded CPU tiny-data preflight runner、focused tests 和 machine-readable evidence。

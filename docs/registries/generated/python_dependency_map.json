@@ -2312,7 +2312,8 @@
       "imported_by": [
         "scripts.run_step5_2_training_loop_smoke_v1",
         "scripts.step5_3_cpu_training_preflight_v1",
-        "tests.test_step5_2_training_loop_v1"
+        "tests.test_step5_2_training_loop_v1",
+        "tests.test_step5_3_cpu_training_preflight_v1"
       ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
@@ -2326,7 +2327,8 @@
       "module": "pi_jwm.step5_2_training_loop_v1",
       "path": "code/src/pi_jwm/step5_2_training_loop_v1.py",
       "test_files": [
-        "code/tests/test_step5_2_training_loop_v1.py"
+        "code/tests/test_step5_2_training_loop_v1.py",
+        "code/tests/test_step5_3_cpu_training_preflight_v1.py"
       ]
     },
     {
@@ -9750,6 +9752,7 @@
       "evidence_role": "test_evidence",
       "imported_by": [],
       "imports": [
+        "pi_jwm.step5_2_training_loop_v1",
         "scripts.step5_3_cpu_training_preflight_v1"
       ],
       "lifecycle_status": "support",
