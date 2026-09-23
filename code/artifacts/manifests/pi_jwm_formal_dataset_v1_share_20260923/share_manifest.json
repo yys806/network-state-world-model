@@ -1,0 +1,38 @@
+{
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "source_dataset_manifest_hash": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "compatible_code_commit": "0408fcdcc4125748daddc73e88e256ac5f991e4d",
+  "training_bundle_filename": "PIJWM_FormalDataset_v1_H2L4_training.zip",
+  "training_bundle_bytes": 5470152944,
+  "training_bundle_sha256": "394f172f4a5a830a843e41144b9ea0d77b930c5ed9ae3ffbeae01d8160a98c03",
+  "raw_bundle_filename": "PIJWM_FormalDataset_v1_H2L4_raw.zip",
+  "raw_bundle_bytes": 837338566,
+  "raw_bundle_sha256": "bd190f7185019b45196c8b3943906d6ff16a6cefb90ad534765ce9a04fc118cb",
+  "train_trajectories": 48,
+  "validation_trajectories": 12,
+  "train_windows": 4416,
+  "validation_windows": 1104,
+  "total_windows": 5520,
+  "package_hashes": {
+    "graph": "8bf3be889332cdb92e99c5881f27d575db7074d0280bdf1d392bbf373101ddb3",
+    "normalization": "8208dff6c97059a9ac9a8bac5c5e4a4928d1db6f0ab7bdbc2500fc5b92140b28",
+    "samples": "21e4f2ea527a8e0c658b30029e1c4a37633c26216222d06a5fb2d4edf2cbd0cb",
+    "target": "e37a0eaf02e6b08dddcc4af6f4bde2aeb9dea64e64352640d3919440038dad22",
+    "tensor": "fb7eb8b25581d0e0b23e62676b6ac02e9bcbdcded6bf83d9db904c83b3967b0f"
+  },
+  "runtime_package_hashes": {
+    "graph": "95d23695e6901c02aa8768414157bed08c5456a7ec8c62d0045927dd631bfe1d",
+    "normalization": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+    "samples": "d062328bd96b73dfa7c48f0ebe087dcc729b45b456f2ab9cb191324d68aac98e",
+    "target": "99355ae9218e495c0164b73ab4b9560a4f0000c6c1042e468974d8c18388fa47",
+    "tensor": "13918fc1f99b51e16cee309a8d4d5907af8b7e62a0b9a186270bf4b43fd5b1b5"
+  },
+  "scope": {
+    "packaging_only": true,
+    "dataset_modified": false,
+    "training": false,
+    "gpu": false,
+    "locked_test": false
+  },
+  "source_dataset_path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/"
+}

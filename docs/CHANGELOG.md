@@ -1,5 +1,10 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-23：STEP 5.5-SHARE Formal Dataset v1 Export Bundle
+
+- 基于已接受的 Formal Dataset v1 生成本地 portable Training Bundle 与 Raw Add-on Bundle；仅提交分享 README、manifest、内容清单和 verification receipt，Dataset 内容与 identity 未变化。
+
+
 ## 2026-09-23：STEP 5.5-PATCH Full Consumption & Fixed Support
 
 - 新增 Formal Dataset 全量索引、trajectory shard 按需 batch 加载与 `FullFormalTrainer`，CPU H4/验证/checkpoint 机器验收独立于旧 runtime 1+1 mini smoke。
