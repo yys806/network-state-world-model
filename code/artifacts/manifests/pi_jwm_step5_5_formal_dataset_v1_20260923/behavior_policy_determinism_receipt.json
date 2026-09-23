@@ -1,0 +1,27 @@
+{
+  "checks": {
+    "different_policy_seed_action_variation": true,
+    "locked_test_accessed_false": true,
+    "real_airfogsim_96_transitions": true,
+    "same_seed_action_audit_equal": true,
+    "same_seed_full_payload_equal": true
+  },
+  "digests": {
+    "different_policy_action": "87ef39524fdfafd18a1bc09dab76f82b41962139e8e7f7808e3c3b091899dcb5",
+    "reference_action": "610a94646acbd292a285b6c2c232994268f84f7b3a00f6c163932e9a20cc19fe",
+    "reference_payload": "694839ee94c2d533f1c7464bbaab7b91ac00a5cfdd8ff6b6a18799b843ae0762",
+    "same_seed_action": "610a94646acbd292a285b6c2c232994268f84f7b3a00f6c163932e9a20cc19fe",
+    "same_seed_payload": "694839ee94c2d533f1c7464bbaab7b91ac00a5cfdd8ff6b6a18799b843ae0762"
+  },
+  "passed": true,
+  "reference_policy_seed": 2026092400,
+  "schema_version": "PI-JWM-Step-5.5-Behavior-Policy-Determinism-v1",
+  "scope": {
+    "formal_dataset_generation": false,
+    "gpu": false,
+    "locked_test": false,
+    "training": false
+  },
+  "simulator_seed": 2026092300,
+  "variation_policy_seed": 2026092401
+}

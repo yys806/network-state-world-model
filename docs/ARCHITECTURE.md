@@ -1,7 +1,7 @@
 # PI-JWM 架构说明
 
 > 本文解释当前代码和证据中的架构，不重新设计研究方法。若本文与代码、冻结协议或机器产物冲突，以后者为准。
-> 2026-09-22：下文保留 Step 1/历史协议说明；最新目标来自只读 `00–06`。当前 5.1B/5.1D primitives 与 5.2 CPU training-loop integration 已由对应源码和 receipt 证明，但不能把 development smoke 称为正式训练或性能结果。
+> 2026-09-23：下文保留 Step 1/历史协议说明；STEP 5.5 已用 60 条真实 trajectory 接通 H2/L4 五类 formal package 与 CPU H4 training-interface smoke。该证据不能称为正式训练、GPU runtime 或性能结果。
 
 ## 当前 Definition 05 训练边界（STEP 5.0）
 

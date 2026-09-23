@@ -1,0 +1,148 @@
+{
+  "checks": {
+    "all_noop_present": true,
+    "at_least_four_bitmasks": true,
+    "comm_signature_diversity": true,
+    "comm_train_rate_25_75": true,
+    "comm_train_trajectory_coverage": true,
+    "comm_validation_trajectory_coverage": true,
+    "comp_signature_diversity": true,
+    "comp_train_rate_25_75": true,
+    "comp_train_trajectory_coverage": true,
+    "comp_validation_trajectory_coverage": true,
+    "mobility_signature_diversity": true,
+    "mobility_train_rate_25_75": true,
+    "mobility_train_trajectory_coverage": true,
+    "mobility_validation_trajectory_coverage": true,
+    "multi_family_present": true,
+    "route_signature_diversity": true,
+    "route_train_rate_25_75": true,
+    "route_train_trajectory_coverage": true,
+    "route_validation_trajectory_coverage": true,
+    "single_family_present": true
+  },
+  "passed": true,
+  "protocol": "intervention_count / eligible_opportunity_count",
+  "splits": {
+    "dev_train": {
+      "families": {
+        "comm": {
+          "eligible_count": 1178,
+          "intervention_count": 504,
+          "intervention_rate": 0.42784380305602715,
+          "intervention_trajectory_count": 48,
+          "no_op_count": 674,
+          "unique_legal_signatures": 488
+        },
+        "comp": {
+          "eligible_count": 1485,
+          "intervention_count": 572,
+          "intervention_rate": 0.3851851851851852,
+          "intervention_trajectory_count": 48,
+          "no_op_count": 913,
+          "unique_legal_signatures": 543
+        },
+        "mobility": {
+          "eligible_count": 4608,
+          "intervention_count": 1847,
+          "intervention_rate": 0.4008246527777778,
+          "intervention_trajectory_count": 48,
+          "no_op_count": 2761,
+          "unique_legal_signatures": 727
+        },
+        "route": {
+          "eligible_count": 3865,
+          "intervention_count": 1492,
+          "intervention_rate": 0.38602846054333767,
+          "intervention_trajectory_count": 48,
+          "no_op_count": 2373,
+          "unique_legal_signatures": 853
+        }
+      },
+      "joint_action": {
+        "activation_bitmask_counts": {
+          "0000": 1797,
+          "0001": 903,
+          "0010": 155,
+          "0011": 142,
+          "0100": 57,
+          "0101": 36,
+          "0110": 10,
+          "0111": 16,
+          "1000": 467,
+          "1001": 471,
+          "1010": 88,
+          "1011": 81,
+          "1100": 142,
+          "1101": 163,
+          "1110": 45,
+          "1111": 35
+        },
+        "global_noop_count": 922,
+        "multi_family_count": 1229,
+        "single_family_count": 1582,
+        "unique_activation_bitmasks": 16
+      }
+    },
+    "dev_validation": {
+      "families": {
+        "comm": {
+          "eligible_count": 341,
+          "intervention_count": 153,
+          "intervention_rate": 0.44868035190615835,
+          "intervention_trajectory_count": 12,
+          "no_op_count": 188,
+          "unique_legal_signatures": 152
+        },
+        "comp": {
+          "eligible_count": 376,
+          "intervention_count": 157,
+          "intervention_rate": 0.4175531914893617,
+          "intervention_trajectory_count": 12,
+          "no_op_count": 219,
+          "unique_legal_signatures": 154
+        },
+        "mobility": {
+          "eligible_count": 1152,
+          "intervention_count": 474,
+          "intervention_rate": 0.4114583333333333,
+          "intervention_trajectory_count": 12,
+          "no_op_count": 678,
+          "unique_legal_signatures": 317
+        },
+        "route": {
+          "eligible_count": 985,
+          "intervention_count": 416,
+          "intervention_rate": 0.42233502538071066,
+          "intervention_trajectory_count": 12,
+          "no_op_count": 569,
+          "unique_legal_signatures": 309
+        }
+      },
+      "joint_action": {
+        "activation_bitmask_counts": {
+          "0000": 420,
+          "0001": 196,
+          "0010": 39,
+          "0011": 35,
+          "0100": 16,
+          "0101": 22,
+          "0110": 6,
+          "0111": 2,
+          "1000": 120,
+          "1001": 143,
+          "1010": 25,
+          "1011": 21,
+          "1100": 39,
+          "1101": 39,
+          "1110": 13,
+          "1111": 16
+        },
+        "global_noop_count": 233,
+        "multi_family_count": 361,
+        "single_family_count": 371,
+        "unique_activation_bitmasks": 16
+      }
+    }
+  }
+}

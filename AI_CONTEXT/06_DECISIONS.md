@@ -126,3 +126,14 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - Trainable modules: jointly train Dual-Graph Encoder, RSSM dynamics, Prior, Posterior, Target Encoders and Motion/CSI Decoders. STEP 4.3B FROZEN means architecture/interface, not weights.
 - Validation/evaluation: checkpoint and early stopping use prior-only horizon-mean `L_Val`; KL is diagnostic. Report Motion/CSI separately with per-horizon raw-unit MAE/RMSE; uncertainty sampling is auxiliary; system metrics remain closed-loop metrics.
 - These explicit decisions supersede conflicting observation-NLL/Event/Residual/overshooting clauses in the read-only older Definition 05 note. The private note remains unchanged.
+
+## 2026-09-23 STEP 5.5 — Formal Dataset v1 protocol
+
+**Researcher Decision**
+
+- Formal Dataset v1 使用 `H=2`、`L=4`；每条真实 AirFogSim trajectory 含 96 个连续 transition 和 97 个 Decision，由此每条构造 92 个 windows。
+- 接受 60 条完整 trajectory；simulator primary seeds 为 `2026092300..2026092359`，对应 policy seeds 为 `2026092400..2026092459`。失败条目不得部分接受，按后续未用 deterministic seed pair 替换并记录 lineage。
+- 固定 `split_seed=20260923`，先按 trajectory deterministic shuffle，再分为 48 train / 12 validation；禁止 window-level random split，禁止根据后续 loss 或统计量改 split。
+- Formal Physical topology v1 固定为 `radius_knn(radius=1000m,k=2)`；这是 Dataset v1 protocol choice，不是 topology optimality claim。
+- 数据采集采用 causal coverage-oriented 四动作 policy：`A_t=(Route,Comm,Comp,Mobility)`，动作只能依赖当前观察/因果 History，车辆仍由 SUMO 外生推进；policy 不是 Planner，也不作 reward 最优声明。
+- Dataset 不包含或物化 `locked_test`。本 Step 仅 CPU Dataset/Interface acceptance；GPU、formal training、baseline、Planner 和 performance claim 均未授权。

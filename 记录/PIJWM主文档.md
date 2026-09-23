@@ -2753,3 +2753,6 @@ STEP 5.1B 已实现 Definition 05 的 additive CPU primitives。Future Motion/CS
 # 2026-09-22 Definition 05 implementation boundary correction
 
 原 5.1B primitive implementation 不足以作为 Definition 05 完成证据：其 target encoder 聚合 horizon，receipt 使用 zero h/identity prediction，prior/decoder 未接入真实 STEP 4.4，KL/metric/gradient checks 不足。当前只执行 5.1B-PATCH，采用逐 horizon target evidence、family-specific future teacher、真实 STEP 4.4 prior/decoder、逐维 free bits 和 raw-unit metrics；未完成前不得进入 STEP 5.2。
+# 2026-09-23 当前实施边界（STEP 5.5）
+
+Formal Dataset v1 已按研究者冻结协议构建并通过机器验收：H=2、L=4、60 条真实 trajectory、48/12 trajectory-level split、每条 96 transitions、`radius_knn(1000m,k=2)`，四类动作来自真实 causal behavior-policy setter/scheduler 路径。该结论只证明数据与 CPU 训练接口已就绪，不是正式训练、预测性能、拓扑最优性或 Planner 结论；GPU、formal training、baseline、locked test 均未执行。

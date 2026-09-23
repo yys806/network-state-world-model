@@ -1,5 +1,11 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-23 STEP 5.5
+
+- 建成并接受 Formal Dataset v1：60×96 real transitions、H2/L4、48/12 trajectory split、5520 windows、五类 hashed package 与 train-only normalization。
+- 四动作真实 coverage、deterministic rebuild、negative hash fixtures 和 CPU H=4 trainer/checkpoint smoke 通过。
+- readiness 更新为 Training Stack PASS、Formal Dataset READY、GPU Codepath PREPARED、Formal Training BLOCKED；未执行 GPU/formal training/locked test。
+
 ## 2026-09-22 STEP 5.3-PATCH
 
 - 修正 5.3 Phase A 真正 pre/post、Phase C 复用 5.2 的 H=1→H=2 + KL warm-up、raw-unit metric bridge 与独立 fresh-run reproducibility。

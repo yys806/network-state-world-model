@@ -4,6 +4,8 @@
 
 当前可引用数字的结构化副本见 `docs/registries/results_registry.json`；它只负责定位，最终仍以对应原始 metrics 和独立 audit 为准。`build_project_knowledge_index_v1.py --check` 会把 seed、最佳 epoch、9 项门控指标、audit SHA-256、验收状态和 `locked_test` 边界与原始 `single_seed_acceptance.json` 自动比较，不一致时直接失败。
 
+STEP 5.5 只有 Dataset/CPU interface 验收结果，没有预测性能结果：60 trajectories、5520 windows、四动作 coverage、package hashes 与 machine receipts 定位在 `code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/`，不得写入性能比较。
+
 > 2026-09-18：以下数字仍可在旧协议边界内引用，但全部属于 Historical / Archived evidence。新 `00–06` 尚无性能结果，不能用这些数字证明新双图、四类动作、目标 RSSM 或 planner 已实现。
 
 ## 1. 旧协议可引用结果

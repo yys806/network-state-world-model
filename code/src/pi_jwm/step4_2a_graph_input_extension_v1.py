@@ -18,9 +18,10 @@ import numpy as np
 
 from .model_ready_sample_contract_v1 import (
     SCHEMA_VERSION as BASE_SAMPLE_SCHEMA_VERSION,
+    TensorContract as BaseTensorContract,
     build_sample as build_base_sample,
 )
-from .step3_2_batch_preprocessing_v1 import RawSource, _check_raw
+from .step3_2_batch_preprocessing_v1 import RawSource, _check_raw, _load as load_raw_source
 from .step3_3_model_input_tensor_v1 import (
     build_tensor_batch as build_base_tensor_batch,
     validate_tensor_batch_checks as validate_base_tensor_checks,
@@ -343,10 +344,20 @@ def _extend_target(sample: dict[str, Any], raw: Mapping[str, Any]) -> None:
                 row[field] = _wrapped(source.get(field), True, unit=unit)
 
 
-def build_extended_sample(raw: Mapping[str, Any], *, anchor_step: int = 2) -> dict[str, Any]:
+def build_extended_sample(
+    raw: Mapping[str, Any], *, anchor_step: int = 2,
+    history_steps: int = 2, horizon_steps: int = 2,
+) -> dict[str, Any]:
     if raw.get("schema_version") != RAW_SCHEMA_VERSION:
         raise ValueError("Step 4.2A Raw amendment version required")
-    sample = build_base_sample(raw, anchor_step=anchor_step)
+    sample = build_base_sample(
+        raw,
+        anchor_step=anchor_step,
+        contract=BaseTensorContract(
+            history_steps=history_steps,
+            horizon_steps=horizon_steps,
+        ),
+    )
     node_index = sample["static"]["input_entity_index"]["physical"]
     task_index = sample["static"]["input_entity_index"]["task"]
     decision_by_frame = {int(row["frame_index"]): row for row in raw.get("decisions", [])}
@@ -874,7 +885,7 @@ def build_extension_batch(sources: Sequence[RawSource], *, history_steps: int = 
     validation_ids: set[str] = set()
     for source in sources:
         path = Path(source.path)
-        original = json.loads(path.read_text(encoding="utf-8"))
+        original = load_raw_source(path)
         trajectory_id = _check_raw(original, source)
         if trajectory_id in seen_trajectories:
             raise ValueError(f"duplicate trajectory_id: {trajectory_id}")
@@ -901,7 +912,12 @@ def build_extension_batch(sources: Sequence[RawSource], *, history_steps: int = 
             "slot_duration_s": float(amended.get("environment", {})["slot_duration_s"]),
         })
         for anchor in range(history_steps - 1, len(steps) - horizon_steps + 1):
-            sample = build_extended_sample(amended, anchor_step=anchor)
+            sample = build_extended_sample(
+                amended,
+                anchor_step=anchor,
+                history_steps=history_steps,
+                horizon_steps=horizon_steps,
+            )
             sample["metadata"]["split"] = source.split
             sample["metadata"]["source_split"] = source.split
             sample["metadata"]["sample_id"] = f"{trajectory_id}::anchor-{anchor:04d}"

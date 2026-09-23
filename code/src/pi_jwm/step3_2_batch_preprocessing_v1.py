@@ -7,6 +7,7 @@ the frozen Step 3.1F model-ready sample contract.
 from __future__ import annotations
 
 import copy
+import gzip
 import hashlib
 import json
 from dataclasses import dataclass
@@ -44,7 +45,8 @@ def _sha256(path: Path) -> str:
 
 
 def _load(path: Path) -> dict[str, Any]:
-    value = json.loads(path.read_text(encoding="utf-8"))
+    payload = gzip.decompress(path.read_bytes()).decode("utf-8") if path.suffix == ".gz" else path.read_text(encoding="utf-8")
+    value = json.loads(payload)
     if not isinstance(value, dict):
         raise ValueError(f"raw source must be an object: {path}")
     return value

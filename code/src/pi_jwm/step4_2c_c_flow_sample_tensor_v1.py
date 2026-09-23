@@ -575,9 +575,19 @@ def build_flow_tensor_batch(
     F, TF, Q = c.max_logical_flow, c.max_target_logical_flow, c.max_route_nodes
     E = int(base_contract["max_entity"])
     T = int(base_contract["max_task"])
+    target_entity_capacity = max(
+        (len(sample.get("static", {}).get("target_index", {}).get("physical", {})) for sample in samples),
+        default=0,
+    )
+    target_task_capacity = max(
+        (len(sample.get("static", {}).get("target_index", {}).get("task", {})) for sample in samples),
+        default=0,
+    )
     out["schema_version"] = TENSOR_SCHEMA_VERSION
     out["contract"] = {
         **base_contract, **c.to_dict(), "schema_version": TENSOR_SCHEMA_VERSION,
+        "target_entity_capacity": target_entity_capacity,
+        "target_task_capacity": target_task_capacity,
         "sample_contract_version": SAMPLE_SCHEMA_VERSION,
         "raw_flow_contract_version": STEP42CB_RAW_SCHEMA_VERSION,
         "flow_type_vocab": list(FLOW_TYPE_VOCAB), "flow_status_vocab": list(FLOW_STATUS_VOCAB),
@@ -902,14 +912,16 @@ def validate_flow_tensor_checks(tensor: Mapping[str, Any]) -> dict[str, bool]:
     max_task = int(contract.get("max_task", -1))
     endpoint_bounded = bool(arrays_present and np.all((np.asarray(tensor["logical_flow_source_index"])[known] >= 0) & (np.asarray(tensor["logical_flow_source_index"])[known] < max_entity)) and np.all((np.asarray(tensor["logical_flow_destination_index"])[known] >= 0) & (np.asarray(tensor["logical_flow_destination_index"])[known] < max_entity)))
     task_bounded = bool(arrays_present and np.all((np.asarray(tensor["logical_flow_task_index"])[known] >= 0) & (np.asarray(tensor["logical_flow_task_index"])[known] < max_task)))
-    target_endpoint_bounded = bool(arrays_present and np.all((np.asarray(tensor["target_logical_flow_source_index"])[target_known] >= 0) & (np.asarray(tensor["target_logical_flow_source_index"])[target_known] < max_entity)) and np.all((np.asarray(tensor["target_logical_flow_destination_index"])[target_known] >= 0) & (np.asarray(tensor["target_logical_flow_destination_index"])[target_known] < max_entity)))
-    target_task_bounded = bool(arrays_present and np.all((np.asarray(tensor["target_logical_flow_task_index"])[target_known] >= 0) & (np.asarray(tensor["target_logical_flow_task_index"])[target_known] < max_task)))
+    target_entity_capacity = int(contract.get("target_entity_capacity", max_entity))
+    target_task_capacity = int(contract.get("target_task_capacity", max_task))
+    target_endpoint_bounded = bool(arrays_present and np.all((np.asarray(tensor["target_logical_flow_source_index"])[target_known] >= 0) & (np.asarray(tensor["target_logical_flow_source_index"])[target_known] < target_entity_capacity)) and np.all((np.asarray(tensor["target_logical_flow_destination_index"])[target_known] >= 0) & (np.asarray(tensor["target_logical_flow_destination_index"])[target_known] < target_entity_capacity)))
+    target_task_bounded = bool(arrays_present and np.all((np.asarray(tensor["target_logical_flow_task_index"])[target_known] >= 0) & (np.asarray(tensor["target_logical_flow_task_index"])[target_known] < target_task_capacity)))
     route_mask = np.asarray(tensor.get("route_node_mask", np.zeros((0,), dtype=bool)), dtype=bool)
     route_values = np.asarray(tensor.get("route_node_indices", np.zeros((0,), dtype=np.int64)))
     target_route_mask = np.asarray(tensor.get("target_route_node_mask", np.zeros((0,), dtype=bool)), dtype=bool)
     target_route_values = np.asarray(tensor.get("target_route_node_indices", np.zeros((0,), dtype=np.int64)))
     route_bounds = bool(arrays_present and np.all((route_values[route_mask] >= 0) & (route_values[route_mask] < max_entity)) and np.all(route_values[~route_mask] == -1))
-    target_route_bounds = bool(arrays_present and np.all((target_route_values[target_route_mask] >= 0) & (target_route_values[target_route_mask] < max_entity)) and np.all(target_route_values[~target_route_mask] == -1))
+    target_route_bounds = bool(arrays_present and np.all((target_route_values[target_route_mask] >= 0) & (target_route_values[target_route_mask] < target_entity_capacity)) and np.all(target_route_values[~target_route_mask] == -1))
     masked_zero = bool(arrays_present and all(_masked_zero_v2(tensor, feature, mask) for feature, mask in (
         ("logical_flow_features", "logical_flow_feature_mask"), ("logical_flow_raw_features", "logical_flow_feature_mask"),
         ("carrying_features", "carrying_feature_mask"), ("carrying_raw_features", "carrying_feature_mask"),

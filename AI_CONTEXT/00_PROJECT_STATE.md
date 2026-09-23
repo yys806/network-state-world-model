@@ -1,8 +1,8 @@
 # PI-JWM Current State Snapshot
 
-## STEP 5.2 当前状态（2026-09-22）
+## STEP 5.5 当前状态（2026-09-23）
 
-Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B Encoder→`Z_t^{PI,L_g}`→current-observation posterior→Structured RSSM recursive state feedback→Prior/Posterior→Decoder→Loss/KL/Metric，并已接入 STEP 5.2 CPU training loop；5.1D-PATCH receipt 47/47，5.2-PATCH receipt 26/26。当前只做 8/4 development bundle 的少量 CPU optimizer smoke 和 prior-only validation；full/formal training、GPU、formal_dataset、locked_test、performance_claim 均为 false。
+Formal Dataset v1 已由 60 条真实 AirFogSim trajectory 构建并机器验收：H=2/L=4、每条 96 transitions、48/12 trajectory split、4416/1104/5520 windows，五类 package、四动作 coverage、train-only normalization、deterministic rebuild 与 CPU H=4 trainer smoke 均通过。`formal_dataset=true` 只表示数据包 READY；full/formal training、GPU execution、locked_test、baseline、Planner、performance claim 仍为 false。
 
 更新时间：2026-09-22
 
@@ -16,7 +16,7 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前状态：`STEP 5.1D = COMPLETE / FROZEN FOR CPU DEVELOPMENT INTEGRATION`，`STEP 5.2 = COMPLETE / FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION`，`STEP 5.3E = FORMALIZATION_PASS / TINY_OVERFIT_GO`。v1 CSI decoder 已正式采用 raw-dB 输出与 train-only CSI mean bias initialization；当前结果仍是 bounded CPU development evidence。full training、GPU、formal dataset、planner、baseline、locked-test 仍未开始。
+- 当前状态：`STEP 5.5 = COMPLETE / FORMAL DATASET V1 ACCEPTED`。60/60 trajectory、五类 package、四动作真实 coverage、H1-H4 Motion/CSI、hash/identity、确定性重建和 CPU H=4 interface smoke 均有机器证据。正式训练、GPU execution、planner、baseline、locked-test 仍未开始。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - STEP 4.4-PATCH3 已在源码中显式区分 Return requirement 的 known/unknown：冻结 current-side 不含 `Task.return_size`，所以 no slot 是 unknown，不是 no-return；unknown 或 known-required/no-slot 都不能错误 final-complete，但 side-state 可区分两者。DAG 只按有效前驱动态释放，terminal Flow completion 同步 remaining/presence/carrying/status。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
@@ -24,15 +24,15 @@ Unified 12-sample development bundle 已真实贯穿 Tensor→4.3A Graph→4.3B 
 - 新定义实现状态：Raw、最小 Dataset/Tensor、Typed Graph Builder、Dual-Graph Encoder、Structured RSSM World Model、5.1B loss/KL/metric primitives 已验收；5.1C additive bundle 将 12 个 paired window 的 support 对齐为 observed `10/74`，5.1D 从同一 bundle 完成 graph/encoder/world-model paired CPU integration。Physical topology、Encoder/World Model 参数仍是 development-only，模型权重未训练。
 - 审计结论：时间因果、稳定 ID/index、mask/split、typed graph、`Z_t^{PI,L_g}→xi_t^Lat`、current-observation posterior、目标 RSSM 边界和逐步规则反馈已落地；完整 planner 闭环仍需后续授权与实现。
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
-- `locked_test_accessed=false`；`formal_performance_claim_ready=false`；`training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`full_training=false`、`gpu=false`。
+- `locked_test_accessed=false`；`formal_performance_claim_ready=false`；`formal_dataset=true`、`training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`full_training=false`、`gpu=false`。
 
 ## 当前最重要问题
 
-当前实现不能按模块名称或旧测试外推性能。STEP 4.4 已把 `Z_t^{PI,L_g}` 接入当前定义的结构化 latent 和 prior rollout；5.1D、5.2 与 5.3E 已有 CPU Loss/KL/Metric/training-loop/tiny-data evidence，但没有 formal training、收敛泛化、校准或预测精度证据；planner 真实反馈也未实现。
+当前实现不能按 Dataset READY 或 CPU smoke 外推性能。STEP 5.5 证明正式数据与 H=4 训练接口可执行，但没有 formal training、GPU runtime、收敛泛化、校准或预测精度证据；Planner 真实反馈也未实现。
 
 ## 单一科研下一步
 
-唯一建议是研究者审阅 STEP 5.3E 证据后决定是否授权 STEP 5.4；本轮不启动 GPU，不访问 `locked_test`。
+唯一建议是研究者另行授权 **STEP 5.6A — GPU Smoke + Formal Training Config Freeze**；在此之前不启动正式训练，也不访问 `locked_test`。
 
 ## 当前 Git
 

@@ -4,6 +4,8 @@
 
 重要实验的结构化记录见 `docs/registries/experiment_registry.json`；全部 artifact 一级目录的自动目录见 `docs/registries/generated/artifact_catalog.csv`。注册表 v2 对每条重要实验使用统一字段；未知或不适用的内容必须写成 `null` 并在 `field_notes` 解释，不能直接省略。
 
+STEP 5.5 Formal Dataset v1 acceptance 不是性能实验：60 条真实 trajectory、H2/L4、四动作覆盖、五类 package、确定性重建和 CPU H=4 interface smoke 的可追踪证据位于 `code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/`。
+
 > 2026-09-19：新 `00–06` 已完成 Raw Trajectory Layer 的真实接口验收，但没有新训练实验。下列 P4/P6 条目全部按旧定义作 Historical / Archived evidence。
 
 Step 2.4 真实接口验收不属于训练实验：机器证据位于 `code/artifacts/protocols/pi_jwm_communication_outcome_semantics_v1_20260919/`，覆盖 6 个 execution slot、7 个独立 Decision 和 14 项检查。

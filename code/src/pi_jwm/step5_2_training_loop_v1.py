@@ -330,7 +330,7 @@ class DevelopmentBundle:
         from build_step5_1d_unified_model_chain_v1 import build_state
         from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import load_flow_tensor_batch
         from pi_jwm.step4_3a_typed_dual_graph_builder_v1 import load_typed_dual_graph_batch
-        packages = interface.package_paths
+        packages = interface.runtime_package_paths
         samples = json.loads(packages["samples"].read_text(encoding="utf-8"))
         tensor = load_flow_tensor_batch(packages["tensor"])
         graph = load_typed_dual_graph_batch(packages["graph"])
@@ -344,9 +344,12 @@ class DevelopmentBundle:
         for index in range(len(samples)):
             state, graph_t = build_state(tensor_for_state, graph, index)
             states.append(state); graphs.append(graph_t)
-        train_indices = list(interface.train_indices); validation_indices = list(interface.validation_indices)
+        train_indices = [index for index, sample in enumerate(samples) if sample.get("metadata", {}).get("split") in {"train", "dev_train"}]
+        validation_indices = [index for index, sample in enumerate(samples) if sample.get("metadata", {}).get("split") in {"validation", "dev_validation"}]
+        if not train_indices or not validation_indices:
+            raise ValueError("runtime packages must include train and validation samples")
         normalization = json.loads(packages["normalization"].read_text(encoding="utf-8"))
-        identity = {"dataset_manifest_hash": interface.dataset_manifest_hash, "package_hashes": {name: _sha(path) for name, path in packages.items()}, "sample_ids": [sample["metadata"]["sample_id"] for sample in samples], "train_sample_count": len(train_indices), "validation_sample_count": len(validation_indices)}
+        identity = {"dataset_manifest_hash": interface.dataset_manifest_hash, "formal_package_hashes": dict(interface.manifest.get("hashes", {})), "runtime_package_hashes": {name: _sha(path) for name, path in packages.items()}, "sample_ids": [sample["metadata"]["sample_id"] for sample in samples], "train_sample_count": len(train_indices), "validation_sample_count": len(validation_indices)}
         return cls(samples, targets, tensor, graph, target_tensors, normalization.get("normalization_parameters", target_contract["normalization_parameters"]), states, graphs, train_indices, validation_indices, identity)
 
 

@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from pi_jwm.model_ready_sample_contract_v1 import audit_future_action_references, build_sample, load_sample, validate_sample, write_sample
+from pi_jwm.model_ready_sample_contract_v1 import TensorContract, audit_future_action_references, build_sample, load_sample, validate_sample, write_sample
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -205,6 +205,20 @@ class ModelReadySampleContractTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(ValueError, "RESEARCHER_DECISION_REQUIRED.*future_only_node"):
             build_sample(raw, anchor_step=2)
+
+    def test_h2_l4_contract_and_h2_l2_backward_compatibility(self):
+        l2 = build_sample(self.raw, anchor_step=2)
+        l4 = build_sample(
+            self.raw,
+            anchor_step=1,
+            contract=TensorContract(history_steps=2, horizon_steps=4),
+        )
+        self.assertEqual(2, len(l2["history"]))
+        self.assertEqual(2, len(l2["future_action"]))
+        self.assertEqual(2, len(l4["history"]))
+        self.assertEqual(4, len(l4["future_action"]))
+        self.assertEqual(4, len(l4["target"]))
+        self.assertEqual([1, 2, 3, 4], [row["frame_index"] for row in l4["target"]])
 
 
 if __name__ == "__main__":

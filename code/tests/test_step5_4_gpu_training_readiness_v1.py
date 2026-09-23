@@ -38,12 +38,16 @@ class Step54InterfaceTests(unittest.TestCase):
             root = Path(tmp); sample = root / "samples.json"; sample.write_text(json.dumps([{"metadata": {"split": "train"}}, {"metadata": {"split": "validation"}}]), encoding="utf-8")
             files = {name: root / f"{name}.bin" for name in ("tensor", "graph", "target", "normalization")}
             for path in files.values(): path.write_bytes(b"package")
-            manifest = root / "manifest.json"; payload = {"packages": {"samples": "samples.json", **{k: v.name for k, v in files.items()}}, "hashes": {k: "wrong" for k in ("samples", *files)}, "contract": {}, "provenance": {}}
+            package_paths = {"samples": "samples.json", **{k: v.name for k, v in files.items()}}
+            manifest = root / "manifest.json"; payload = {"packages": package_paths, "hashes": {k: "wrong" for k in ("samples", *files)}, "runtime_packages": package_paths, "runtime_hashes": {k: "wrong" for k in ("samples", *files)}, "contract": {}, "provenance": {}}
             manifest.write_text(json.dumps(payload), encoding="utf-8")
             interface = FormalTrainingInterface.from_manifest(manifest)
             self.assertFalse(interface.verify_packages()["all_present_and_matching"])
+            self.assertFalse(interface.verify_runtime_packages()["all_present_and_matching"])
             del payload["hashes"]["graph"]; manifest.write_text(json.dumps(payload), encoding="utf-8")
             self.assertFalse(FormalTrainingInterface.from_manifest(manifest).verify_packages()["all_present_and_matching"])
+            del payload["runtime_hashes"]["graph"]; manifest.write_text(json.dumps(payload), encoding="utf-8")
+            self.assertFalse(FormalTrainingInterface.from_manifest(manifest).verify_runtime_packages()["all_present_and_matching"])
 
     def test_trainer_moves_before_optimizer_and_action_has_device_contract(self):
         source = Path(__file__).parents[1] / "src/pi_jwm/step5_2_training_loop_v1.py"

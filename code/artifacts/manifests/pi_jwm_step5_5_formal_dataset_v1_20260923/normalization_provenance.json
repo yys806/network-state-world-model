@@ -1,0 +1,286 @@
+{
+  "base_step3_2": {
+    "features": {
+      "entity.canonical_acceleration_mps2": {
+        "count": 112641,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 0.8979659177651065,
+        "source_field": "canonical_acceleration_mps2",
+        "std": 29.89540980504297,
+        "unit": "m/s^2",
+        "zero_variance_handling": "population_std"
+      },
+      "entity.speed_mps": {
+        "count": 113924,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 3.6690784413119184,
+        "source_field": "speed_mps",
+        "std": 4.730096680485999,
+        "unit": "m/s",
+        "zero_variance_handling": "population_std"
+      },
+      "task.task_size": {
+        "count": 362043,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 0.453361966885255,
+        "source_field": "task_size",
+        "std": 0.1438824712661682,
+        "unit": "AirFogSim data-unit",
+        "zero_variance_handling": "population_std"
+      }
+    },
+    "schema_version": "PI-JWM-Step-3.2-Train-Only-Normalization-v1",
+    "source_split": "dev_train",
+    "units": {
+      "entity.canonical_acceleration_mps2": "m/s^2",
+      "entity.speed_mps": "m/s",
+      "task.task_size": "AirFogSim data-unit"
+    }
+  },
+  "excluded_validation_trajectory_ids": [
+    "formal-v1-sim-2026092302-policy-2026092402",
+    "formal-v1-sim-2026092341-policy-2026092441",
+    "formal-v1-sim-2026092301-policy-2026092401",
+    "formal-v1-sim-2026092313-policy-2026092413",
+    "formal-v1-sim-2026092331-policy-2026092431",
+    "formal-v1-sim-2026092326-policy-2026092426",
+    "formal-v1-sim-2026092358-policy-2026092458",
+    "formal-v1-sim-2026092350-policy-2026092450",
+    "formal-v1-sim-2026092323-policy-2026092423",
+    "formal-v1-sim-2026092318-policy-2026092418",
+    "formal-v1-sim-2026092315-policy-2026092415",
+    "formal-v1-sim-2026092322-policy-2026092422"
+  ],
+  "extension_step4_2a": {
+    "features": {
+      "agent.cpu_capacity_per_s": {
+        "count": 52770,
+        "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+        "mean": 4.84525298465037,
+        "preprocessing_policy": "z_score_on_valid_train_values",
+        "source_field": "node_cpu_capacity_observation_rows[].capacity_per_s",
+        "std": 3.6735520374911896,
+        "unit": "AirFogSim CPU-work-unit/s",
+        "zero_variance_handling": "population_std"
+      },
+      "comm.channel_attenuation_db": {
+        "count": 62794400,
+        "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+        "mean": 102.92660927827409,
+        "preprocessing_policy": "z_score_on_valid_train_values",
+        "source_field": "channel_rows[].channel_attenuation_db",
+        "std": 7.642768787712573,
+        "unit": "dB",
+        "zero_variance_handling": "population_std"
+      },
+      "entity.canonical_acceleration_mps2": {
+        "count": 112641,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 0.8979659177651065,
+        "source_field": "canonical_acceleration_mps2",
+        "std": 29.89540980504297,
+        "unit": "m/s^2",
+        "zero_variance_handling": "population_std"
+      },
+      "entity.position_x_m": {
+        "count": 113924,
+        "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+        "mean": 382.67901915836063,
+        "preprocessing_policy": "z_score_on_valid_train_values",
+        "source_field": "entities[].position_m[0]",
+        "std": 281.7077691076206,
+        "unit": "m",
+        "zero_variance_handling": "population_std"
+      },
+      "entity.position_y_m": {
+        "count": 113924,
+        "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+        "mean": 376.7766716061934,
+        "preprocessing_policy": "z_score_on_valid_train_values",
+        "source_field": "entities[].position_m[1]",
+        "std": 280.0428006940073,
+        "unit": "m",
+        "zero_variance_handling": "population_std"
+      },
+      "entity.position_z_m": {
+        "count": 113924,
+        "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+        "mean": 22.879106041752014,
+        "preprocessing_policy": "z_score_on_valid_train_values",
+        "source_field": "entities[].position_m[2]",
+        "std": 54.50902472879061,
+        "unit": "m",
+        "zero_variance_handling": "population_std"
+      },
+      "entity.speed_mps": {
+        "count": 113924,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 3.6690784413119184,
+        "source_field": "speed_mps",
+        "std": 4.730096680485999,
+        "unit": "m/s",
+        "zero_variance_handling": "population_std"
+      },
+      "task.computed_cpu_work": {
+        "count": 362043,
+        "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+        "mean": 0.07731805136235413,
+        "preprocessing_policy": "z_score_on_valid_train_values",
+        "source_field": "tasks[].computed_cpu_work",
+        "std": 0.1809300445132109,
+        "unit": "AirFogSim CPU-work-unit",
+        "zero_variance_handling": "population_std"
+      },
+      "task.elapsed_time_s": {
+        "count": 362043,
+        "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+        "mean": 2.7411605803727124,
+        "preprocessing_policy": "z_score_on_valid_train_values",
+        "source_field": "decision_time_s - tasks[].arrival_time_s",
+        "std": 2.1974362660691584,
+        "unit": "s",
+        "zero_variance_handling": "population_std"
+      },
+      "task.task_cpu_work": {
+        "count": 362043,
+        "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+        "mean": 0.4512267358698683,
+        "preprocessing_policy": "z_score_on_valid_train_values",
+        "source_field": "tasks[].task_cpu_work",
+        "std": 0.14660873878837427,
+        "unit": "AirFogSim CPU-work-unit",
+        "zero_variance_handling": "population_std"
+      },
+      "task.task_size": {
+        "count": 362043,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 0.453361966885255,
+        "source_field": "task_size",
+        "std": 0.1438824712661682,
+        "unit": "AirFogSim data-unit",
+        "zero_variance_handling": "population_std"
+      },
+      "task.transmitted_size": {
+        "count": 362043,
+        "mask_policy": "dev_train only AND presence/validity=true AND feature_mask=true AND value!=null; validation excluded",
+        "mean": 0.0,
+        "preprocessing_policy": "z_score_on_valid_train_values",
+        "source_field": "tasks[].transmitted_size",
+        "std": 1.0,
+        "unit": "AirFogSim data-unit",
+        "zero_variance_handling": "scale=1.0"
+      }
+    },
+    "schema_version": "PI-JWM-Step-4.2A-Train-Only-Normalization-v1",
+    "source_split": "dev_train"
+  },
+  "flow_step4_2c": {
+    "features": {
+      "carrying.hop_progress": {
+        "count": 36396,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 0.0,
+        "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+        "source_field": "carrying.hop_progress",
+        "std": 1.0,
+        "unit": "AirFogSim data-unit",
+        "zero_variance_handling": "std_replaced_with_1"
+      },
+      "carrying.hop_remaining": {
+        "count": 36396,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 0.07830455239676098,
+        "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+        "source_field": "carrying.hop_remaining",
+        "std": 0.04653101173484686,
+        "unit": "AirFogSim data-unit",
+        "zero_variance_handling": "not_required"
+      },
+      "logical.e2e_delivered": {
+        "count": 36396,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 0.0,
+        "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+        "source_field": "logical.e2e_delivered",
+        "std": 1.0,
+        "unit": "AirFogSim data-unit",
+        "zero_variance_handling": "std_replaced_with_1"
+      },
+      "logical.e2e_remaining": {
+        "count": 36396,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 0.07830455239676098,
+        "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+        "source_field": "logical.e2e_remaining",
+        "std": 0.04653101173484686,
+        "unit": "AirFogSim data-unit",
+        "zero_variance_handling": "not_required"
+      },
+      "logical.total_data": {
+        "count": 36396,
+        "mask_policy": "presence=true AND feature_mask=true AND value!=null; train split only",
+        "mean": 0.07830455239676098,
+        "presence_source": "logical_flow.presence for logical fields; corresponding logical_flow.presence plus carrying.known for carrying fields",
+        "source_field": "logical.total_data",
+        "std": 0.04653101173484686,
+        "unit": "AirFogSim data-unit",
+        "zero_variance_handling": "not_required"
+      }
+    },
+    "schema_version": "PI-JWM-Step-4.2C-C-Train-Only-Flow-Normalization-v2-presence-aware",
+    "source_split": "dev_train"
+  },
+  "future_target_in_fit": false,
+  "schema_version": "PI-JWM-Step-5.5-Formal-Train-Only-Normalization-v1",
+  "source_split": "dev_train",
+  "source_trajectory_ids": [
+    "formal-v1-sim-2026092354-policy-2026092454",
+    "formal-v1-sim-2026092345-policy-2026092445",
+    "formal-v1-sim-2026092306-policy-2026092406",
+    "formal-v1-sim-2026092338-policy-2026092438",
+    "formal-v1-sim-2026092349-policy-2026092449",
+    "formal-v1-sim-2026092334-policy-2026092434",
+    "formal-v1-sim-2026092359-policy-2026092459",
+    "formal-v1-sim-2026092317-policy-2026092417",
+    "formal-v1-sim-2026092311-policy-2026092411",
+    "formal-v1-sim-2026092353-policy-2026092453",
+    "formal-v1-sim-2026092307-policy-2026092407",
+    "formal-v1-sim-2026092327-policy-2026092427",
+    "formal-v1-sim-2026092348-policy-2026092448",
+    "formal-v1-sim-2026092328-policy-2026092428",
+    "formal-v1-sim-2026092332-policy-2026092432",
+    "formal-v1-sim-2026092325-policy-2026092425",
+    "formal-v1-sim-2026092342-policy-2026092442",
+    "formal-v1-sim-2026092344-policy-2026092444",
+    "formal-v1-sim-2026092329-policy-2026092429",
+    "formal-v1-sim-2026092320-policy-2026092420",
+    "formal-v1-sim-2026092330-policy-2026092430",
+    "formal-v1-sim-2026092309-policy-2026092409",
+    "formal-v1-sim-2026092340-policy-2026092440",
+    "formal-v1-sim-2026092308-policy-2026092408",
+    "formal-v1-sim-2026092336-policy-2026092436",
+    "formal-v1-sim-2026092304-policy-2026092404",
+    "formal-v1-sim-2026092319-policy-2026092419",
+    "formal-v1-sim-2026092346-policy-2026092446",
+    "formal-v1-sim-2026092357-policy-2026092457",
+    "formal-v1-sim-2026092310-policy-2026092410",
+    "formal-v1-sim-2026092316-policy-2026092416",
+    "formal-v1-sim-2026092324-policy-2026092424",
+    "formal-v1-sim-2026092312-policy-2026092412",
+    "formal-v1-sim-2026092300-policy-2026092400",
+    "formal-v1-sim-2026092339-policy-2026092439",
+    "formal-v1-sim-2026092356-policy-2026092456",
+    "formal-v1-sim-2026092335-policy-2026092435",
+    "formal-v1-sim-2026092355-policy-2026092455",
+    "formal-v1-sim-2026092314-policy-2026092414",
+    "formal-v1-sim-2026092321-policy-2026092421",
+    "formal-v1-sim-2026092343-policy-2026092443",
+    "formal-v1-sim-2026092305-policy-2026092405",
+    "formal-v1-sim-2026092352-policy-2026092452",
+    "formal-v1-sim-2026092303-policy-2026092403",
+    "formal-v1-sim-2026092337-policy-2026092437",
+    "formal-v1-sim-2026092347-policy-2026092447",
+    "formal-v1-sim-2026092351-policy-2026092451",
+    "formal-v1-sim-2026092333-policy-2026092433"
+  ]
+}

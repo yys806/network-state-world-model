@@ -1,0 +1,48 @@
+{
+  "schema_version": "PI-JWM-Step-5.5-Formal-Dataset-Protocol-v1",
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "history_steps": 2,
+  "prediction_horizon_steps": 4,
+  "accepted_trajectory_count": 60,
+  "transitions_per_trajectory": 96,
+  "decisions_per_trajectory": 97,
+  "windows_per_trajectory": 92,
+  "split": {
+    "level": "trajectory_before_window_construction",
+    "seed": 20260923,
+    "train_trajectories": 48,
+    "validation_trajectories": 12,
+    "train_windows": 4416,
+    "validation_windows": 1104,
+    "total_windows": 5520,
+    "locked_test": null
+  },
+  "seed_protocol": {
+    "primary_simulator_seed_range": [2026092300, 2026092359],
+    "primary_policy_seed_range": [2026092400, 2026092459],
+    "replacement": "next unused deterministic simulator/policy seed pair after a rejected full trajectory"
+  },
+  "physical_topology": {
+    "mode": "radius_knn",
+    "radius_m": 1000.0,
+    "k": 2,
+    "claim_boundary": "Formal Dataset v1 protocol choice, not a topology optimality claim"
+  },
+  "behavior_policy": {
+    "name": "causal_coverage_oriented_four_action_v1",
+    "action_families": ["Route", "Comm", "Comp", "Mobility"],
+    "global_noop_probability": 0.2,
+    "eligible_family_intervention_probability": 0.5,
+    "future_schedule_read": false,
+    "vehicle_motion": "SUMO external"
+  },
+  "scope": {
+    "cpu_only": true,
+    "gpu": false,
+    "formal_training": false,
+    "baseline": false,
+    "planner": false,
+    "locked_test_accessed": false,
+    "performance_claim": false
+  }
+}

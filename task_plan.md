@@ -1460,3 +1460,24 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] frozen Route/Comp adapter and no-op regression。
 - [x] mandatory package hash checks, conditional CUDA RNG checkpoint preparation, readiness separation。
 - [ ] GPU, Formal Dataset, formal training and locked_test remain closed。
+
+# 2026-09-23 STEP 5.5 — Formal Dataset v1 Build & Acceptance
+
+- [x] 确认 `main@36a66a8`、工作区仅保留用户原有未跟踪 `TASK/`，并冻结 H=2、L=4、60 条、48/12 trajectory split 与 `radius_knn(1000m,k=2)`。
+- [x] 完成 60/60 条真实 AirFogSim Raw trajectory 采集；每条 96 transitions / 97 Decisions，0 rejected，未访问 `locked_test`。
+- [x] 四动作 eligible/intervention/no-op/signature 审计通过；train/validation 均跨多 trajectory 覆盖。
+- [ ] 完成 5520 windows 的 Sample/Tensor/Graph/Target/Normalization package、全量 reload/identity/hash 和二次确定性重建。
+- [ ] 完成 FormalTrainingInterface → Step52Trainer 的 CPU H=4 optimizer/validation/checkpoint smoke。
+- [ ] 完成 upstream regressions、Context Consistency、knowledge index、commit/push 后停止。
+- Boundary: `gpu=false`、`formal_training=false`、`locked_test=false`、`baseline=false`、`planner=false`、`performance_claim=false`。
+# 2026-09-23 STEP 5.5 — Formal Dataset v1 Build & Acceptance
+
+- [x] 60 条真实 AirFogSim trajectory，96 transitions/trajectory，0 rejected/replacement。
+- [x] H2/L4、48/12 trajectory split、4416/1104/5520 windows。
+- [x] 五类 package、train-only normalization、mandatory hash、四动作 coverage 与 negative fixtures。
+- [x] deterministic rebuild 与 FormalTrainingInterface CPU H=4 optimizer/validation/checkpoint smoke。
+- [x] tracked evidence、implementation record、Tracker、AI_CONTEXT/authority/process records 同步。
+- [x] fresh focused/upstream regression、compileall、knowledge index write/check、Context Consistency 与 `git diff --check`。
+- Git commit/push 与远端 HEAD 核对是本记录之后的最后操作。
+- Boundary: GPU/formal training/baseline/Planner/locked_test/performance claim 均未执行。
+- Single next action after closure: STEP 5.6A — GPU Smoke + Formal Training Config Freeze，需研究者另行授权。

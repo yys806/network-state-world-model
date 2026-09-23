@@ -242,8 +242,8 @@ def _outcome_rows(outcome: Mapping[str, Any], input_nodes: list[str], input_task
 def build_sample(raw: Mapping[str, Any], *, anchor_step: int = 2, contract: TensorContract = TensorContract()) -> dict[str, Any]:
     decisions = list(raw.get("decisions", []))
     steps = list(raw.get("steps", []))
-    if contract.history_steps != 2 or contract.horizon_steps != 2:
-        raise ValueError("Step 3.1 minimum artifact is fixed at H=2, L=2")
+    if contract.history_steps <= 0 or contract.horizon_steps <= 0:
+        raise ValueError("history_steps and horizon_steps must be positive")
     if anchor_step < contract.history_steps - 1 or anchor_step + contract.horizon_steps > len(steps):
         raise ValueError("anchor does not fit one continuous trajectory")
     if len(decisions) <= anchor_step:

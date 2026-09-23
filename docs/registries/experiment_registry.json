@@ -302,6 +302,37 @@
       "field_notes": {"tiny_subset": "Phase A/B index 0; Phase C indices 0,1", "validation": "dev_validation only prior-only diagnostic and no parameter update", "route_comp": "non-empty development coverage remains 0/0", "gpu": "not started"}
     },
     {
+      "id": "STEP-5.5-FORMAL-DATASET-V1-20260923",
+      "name": "Formal Dataset v1 build and CPU interface acceptance",
+      "date": "2026-09-23",
+      "research_question": "Can the frozen H2/L4 protocol produce a real causal four-action Formal Dataset whose five packages and current training interface pass machine acceptance?",
+      "method": "pi_jwm_step5_5_formal_dataset_v1",
+      "code": "code/scripts/build_step5_5_formal_dataset_v1.py",
+      "code_version": {
+        "identity_type": "git_commit_after_validation",
+        "manifest": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/package_identity.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Commit identity is confirmed after final validation and push; package SHA-256 values are frozen in the tracked manifest."
+      },
+      "configuration": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/formal_dataset_protocol.json",
+      "parameters": {"device": "cpu", "history_steps": 2, "horizon_steps": 4, "trajectories": 60, "transitions_per_trajectory": 96, "train_trajectories": 48, "validation_trajectories": 12, "split_seed": 20260923, "topology": "radius_knn(1000m,k=2)", "formal_training": false, "gpu": false, "locked_test_accessed": false},
+      "protocol": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/formal_dataset_protocol.json",
+      "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+      "split": ["dev_train", "dev_validation"],
+      "seed": 20260923,
+      "checkpoint": null,
+      "result": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/package_identity.json",
+      "metrics": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/action_coverage_audit.json",
+      "audit": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/dataset_acceptance_receipt.json",
+      "status": "formal_dataset_ready_cpu_interface_accepted",
+      "conclusion": "All Formal Dataset v1 gates and the CPU H4 interface smoke passed; no formal training, GPU execution, planner or performance result exists.",
+      "summary_zh": "Formal Dataset v1 与 CPU H4 接口验收通过；未执行正式训练、GPU、Planner 或性能实验。",
+      "claim_boundary": "formal dataset and CPU interface acceptance only",
+      "locked_test_accessed": false,
+      "field_notes": {"data": "Large Raw and package artifacts are local-only; tracked manifests preserve portable identity, hashes, sizes and regeneration commands.", "checkpoint": "The dry-run checkpoint is transient local acceptance evidence; no formal trained checkpoint exists.", "seed": "20260923 is the frozen trajectory split seed; simulator and behavior-policy seed ranges are recorded in seed_lineage.json."}
+    },
+    {
       "id": "P6-CANDIDATE-ROLLOUT-AUDIT-20260826",
       "name": "candidate-action world-model rollout planner audit",
       "date": "2026-08-26",

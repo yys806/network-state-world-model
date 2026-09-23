@@ -1,0 +1,727 @@
+{
+  "accepted": [
+    {
+      "path": "raw/formal-v1-sim-2026092300-policy-2026092400.json.gz",
+      "policy_seed": 2026092400,
+      "primary": true,
+      "simulator_seed": 2026092300,
+      "source_sha256": "11a8aba61d817b28eefdf7b7608a7282b16ce878815cf7eeccf4e2ccba5c929f",
+      "trajectory_id": "formal-v1-sim-2026092300-policy-2026092400"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092301-policy-2026092401.json.gz",
+      "policy_seed": 2026092401,
+      "primary": true,
+      "simulator_seed": 2026092301,
+      "source_sha256": "6310ef6b8423b9e5f549dad463bb837e1393436763a1902e51624b2ba89f768e",
+      "trajectory_id": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092302-policy-2026092402.json.gz",
+      "policy_seed": 2026092402,
+      "primary": true,
+      "simulator_seed": 2026092302,
+      "source_sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+      "trajectory_id": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092303-policy-2026092403.json.gz",
+      "policy_seed": 2026092403,
+      "primary": true,
+      "simulator_seed": 2026092303,
+      "source_sha256": "91302873c664cd372833a8872ab6b8dc054668bcf1dbb79d596583136a3da6e8",
+      "trajectory_id": "formal-v1-sim-2026092303-policy-2026092403"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092304-policy-2026092404.json.gz",
+      "policy_seed": 2026092404,
+      "primary": true,
+      "simulator_seed": 2026092304,
+      "source_sha256": "2728421d5e256ed1c9a1528967ac54ee9a6d6e55e7c9c8f06cbc583b2502da4e",
+      "trajectory_id": "formal-v1-sim-2026092304-policy-2026092404"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092305-policy-2026092405.json.gz",
+      "policy_seed": 2026092405,
+      "primary": true,
+      "simulator_seed": 2026092305,
+      "source_sha256": "3aa4fc1b3b13c2a55387f8af0655ae6e19d3b1cb6a67cd6ab0e6b2ba3b02dd4f",
+      "trajectory_id": "formal-v1-sim-2026092305-policy-2026092405"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092306-policy-2026092406.json.gz",
+      "policy_seed": 2026092406,
+      "primary": true,
+      "simulator_seed": 2026092306,
+      "source_sha256": "8992a1c1c5be35cb4635ddf47e6aef711c1e8608d9f8a99db29f8cefd1754a2c",
+      "trajectory_id": "formal-v1-sim-2026092306-policy-2026092406"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092307-policy-2026092407.json.gz",
+      "policy_seed": 2026092407,
+      "primary": true,
+      "simulator_seed": 2026092307,
+      "source_sha256": "4e05823581c0ee26f5c173566236f5925fabe15d8a2ec62c1cfcdd51de4d555f",
+      "trajectory_id": "formal-v1-sim-2026092307-policy-2026092407"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092308-policy-2026092408.json.gz",
+      "policy_seed": 2026092408,
+      "primary": true,
+      "simulator_seed": 2026092308,
+      "source_sha256": "db6143c15d16394542397a22120ac89971351e744d4e437fd53f9ec18b16705b",
+      "trajectory_id": "formal-v1-sim-2026092308-policy-2026092408"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092309-policy-2026092409.json.gz",
+      "policy_seed": 2026092409,
+      "primary": true,
+      "simulator_seed": 2026092309,
+      "source_sha256": "4e0baac495d22c15355be56a941fc0ff724096a73ac3601bbaf6318efd00b64a",
+      "trajectory_id": "formal-v1-sim-2026092309-policy-2026092409"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092310-policy-2026092410.json.gz",
+      "policy_seed": 2026092410,
+      "primary": true,
+      "simulator_seed": 2026092310,
+      "source_sha256": "6fd533a404dfc1d726011ad3424bb86cdce8a8a545379ced3aed827a7da3a452",
+      "trajectory_id": "formal-v1-sim-2026092310-policy-2026092410"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092311-policy-2026092411.json.gz",
+      "policy_seed": 2026092411,
+      "primary": true,
+      "simulator_seed": 2026092311,
+      "source_sha256": "48bbbf88549ce4f0548ca55a54e53369bae7f6877487189fbd4692f24f1d7d44",
+      "trajectory_id": "formal-v1-sim-2026092311-policy-2026092411"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092312-policy-2026092412.json.gz",
+      "policy_seed": 2026092412,
+      "primary": true,
+      "simulator_seed": 2026092312,
+      "source_sha256": "4c2882add61c5466aa1525323dd34016ba49fe2287d08e43d9b279f3f203100a",
+      "trajectory_id": "formal-v1-sim-2026092312-policy-2026092412"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092313-policy-2026092413.json.gz",
+      "policy_seed": 2026092413,
+      "primary": true,
+      "simulator_seed": 2026092313,
+      "source_sha256": "13de80b9848adfba0466e365167cfff16614eb8163032071a75d5e4b8d6ece43",
+      "trajectory_id": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092314-policy-2026092414.json.gz",
+      "policy_seed": 2026092414,
+      "primary": true,
+      "simulator_seed": 2026092314,
+      "source_sha256": "640defa7d6d04d989fc1ee7189c765fc1b8b67fdae6b1170ced86e342b554712",
+      "trajectory_id": "formal-v1-sim-2026092314-policy-2026092414"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092315-policy-2026092415.json.gz",
+      "policy_seed": 2026092415,
+      "primary": true,
+      "simulator_seed": 2026092315,
+      "source_sha256": "625d825d09ecbe8b8a4dd0e885a9e2d6dada01dc4e5fefd17bbd006599f9cf68",
+      "trajectory_id": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092316-policy-2026092416.json.gz",
+      "policy_seed": 2026092416,
+      "primary": true,
+      "simulator_seed": 2026092316,
+      "source_sha256": "51e4babd55f02046f59da079d162a461b41046dadf3486c20a541dcfcdfb0c3a",
+      "trajectory_id": "formal-v1-sim-2026092316-policy-2026092416"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092317-policy-2026092417.json.gz",
+      "policy_seed": 2026092417,
+      "primary": true,
+      "simulator_seed": 2026092317,
+      "source_sha256": "56265d5cbb8d2782714370f17798a9719094e81c2e428a860947d7ec5564d597",
+      "trajectory_id": "formal-v1-sim-2026092317-policy-2026092417"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092318-policy-2026092418.json.gz",
+      "policy_seed": 2026092418,
+      "primary": true,
+      "simulator_seed": 2026092318,
+      "source_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "trajectory_id": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092319-policy-2026092419.json.gz",
+      "policy_seed": 2026092419,
+      "primary": true,
+      "simulator_seed": 2026092319,
+      "source_sha256": "c5c4198e60649ee4715f4602febf1ff27d329e952fec37beff7f5ec4b8d1abc2",
+      "trajectory_id": "formal-v1-sim-2026092319-policy-2026092419"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092320-policy-2026092420.json.gz",
+      "policy_seed": 2026092420,
+      "primary": true,
+      "simulator_seed": 2026092320,
+      "source_sha256": "8382af8089f764ff8a5f40499e20a4c52ac0c3893851da67c14321badedb3ea5",
+      "trajectory_id": "formal-v1-sim-2026092320-policy-2026092420"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092321-policy-2026092421.json.gz",
+      "policy_seed": 2026092421,
+      "primary": true,
+      "simulator_seed": 2026092321,
+      "source_sha256": "aaed9f82f37306498808ed930de7e1588ac589db4e0e8267a6df18dc94a024da",
+      "trajectory_id": "formal-v1-sim-2026092321-policy-2026092421"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092322-policy-2026092422.json.gz",
+      "policy_seed": 2026092422,
+      "primary": true,
+      "simulator_seed": 2026092322,
+      "source_sha256": "63d7cd8f0f5d07052d784606d843cc3a3cbede6067c597a17c14367bf54727ba",
+      "trajectory_id": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092323-policy-2026092423.json.gz",
+      "policy_seed": 2026092423,
+      "primary": true,
+      "simulator_seed": 2026092323,
+      "source_sha256": "80447266b7670b37a1b032a9216bd466b4afe6a105aa05bf1ccc3615c0098ed1",
+      "trajectory_id": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092324-policy-2026092424.json.gz",
+      "policy_seed": 2026092424,
+      "primary": true,
+      "simulator_seed": 2026092324,
+      "source_sha256": "0a6f7de35de8335640b5ad7a70e640bea0792ba40b037511deb1312f3c9018fe",
+      "trajectory_id": "formal-v1-sim-2026092324-policy-2026092424"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092325-policy-2026092425.json.gz",
+      "policy_seed": 2026092425,
+      "primary": true,
+      "simulator_seed": 2026092325,
+      "source_sha256": "13298bf2b3caba6261d719383c0ffbfd645d9337ab4f1b8796079ddbe52462fd",
+      "trajectory_id": "formal-v1-sim-2026092325-policy-2026092425"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092326-policy-2026092426.json.gz",
+      "policy_seed": 2026092426,
+      "primary": true,
+      "simulator_seed": 2026092326,
+      "source_sha256": "25db48bf1a2a889c98d213e8b5835f27373958389d56e6623127515ba18c1d9a",
+      "trajectory_id": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092327-policy-2026092427.json.gz",
+      "policy_seed": 2026092427,
+      "primary": true,
+      "simulator_seed": 2026092327,
+      "source_sha256": "83b1c963a3e1ee2be3409f5a1929c11ba403b77cdf771a362ce7d3f54328f66f",
+      "trajectory_id": "formal-v1-sim-2026092327-policy-2026092427"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092328-policy-2026092428.json.gz",
+      "policy_seed": 2026092428,
+      "primary": true,
+      "simulator_seed": 2026092328,
+      "source_sha256": "225b1c54e21bb90cc6e406a69d6e68f455ffec1af8df544a1a4aedaeec7d845e",
+      "trajectory_id": "formal-v1-sim-2026092328-policy-2026092428"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092329-policy-2026092429.json.gz",
+      "policy_seed": 2026092429,
+      "primary": true,
+      "simulator_seed": 2026092329,
+      "source_sha256": "fb51bfbfe41f5697722dd772829642e9c9a8d8a996743f5125a0af06520e8ae2",
+      "trajectory_id": "formal-v1-sim-2026092329-policy-2026092429"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092330-policy-2026092430.json.gz",
+      "policy_seed": 2026092430,
+      "primary": true,
+      "simulator_seed": 2026092330,
+      "source_sha256": "742ae0440f897af42a022b7e7c9873c048bccf38850d99f27faf9240dafd3851",
+      "trajectory_id": "formal-v1-sim-2026092330-policy-2026092430"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092331-policy-2026092431.json.gz",
+      "policy_seed": 2026092431,
+      "primary": true,
+      "simulator_seed": 2026092331,
+      "source_sha256": "5440faadbc9286fe5ce84ae9cb1c7ef5732d2893229a5a13c9e9666db6c490e6",
+      "trajectory_id": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092332-policy-2026092432.json.gz",
+      "policy_seed": 2026092432,
+      "primary": true,
+      "simulator_seed": 2026092332,
+      "source_sha256": "6971cf8eb0a7b3d5e58161a21e0b0a9914634570b0ecf35f69a6fa329febb7cd",
+      "trajectory_id": "formal-v1-sim-2026092332-policy-2026092432"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092333-policy-2026092433.json.gz",
+      "policy_seed": 2026092433,
+      "primary": true,
+      "simulator_seed": 2026092333,
+      "source_sha256": "09d7dc1217f9f0e40a0fb896dcb328ecd3b75a5b6e228212dbc4514d5a07ec98",
+      "trajectory_id": "formal-v1-sim-2026092333-policy-2026092433"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092334-policy-2026092434.json.gz",
+      "policy_seed": 2026092434,
+      "primary": true,
+      "simulator_seed": 2026092334,
+      "source_sha256": "94f01a54ad51c65e08d8c5ca4f714fb0744e7d750692c5adaf9e951752f0b662",
+      "trajectory_id": "formal-v1-sim-2026092334-policy-2026092434"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092335-policy-2026092435.json.gz",
+      "policy_seed": 2026092435,
+      "primary": true,
+      "simulator_seed": 2026092335,
+      "source_sha256": "fc0f87cd7bb71c0782b1728d614f5c89dcd469ba34d5495b0252d19a50ad9f43",
+      "trajectory_id": "formal-v1-sim-2026092335-policy-2026092435"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092336-policy-2026092436.json.gz",
+      "policy_seed": 2026092436,
+      "primary": true,
+      "simulator_seed": 2026092336,
+      "source_sha256": "22259ffddba5e53da5b3ea654c76964da7664321f8151ce39ebae02e07a90fe5",
+      "trajectory_id": "formal-v1-sim-2026092336-policy-2026092436"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092337-policy-2026092437.json.gz",
+      "policy_seed": 2026092437,
+      "primary": true,
+      "simulator_seed": 2026092337,
+      "source_sha256": "4dc63e3eec15e08c88e496e990e5d6c4d262488b10a4006e94619511b26dde99",
+      "trajectory_id": "formal-v1-sim-2026092337-policy-2026092437"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092338-policy-2026092438.json.gz",
+      "policy_seed": 2026092438,
+      "primary": true,
+      "simulator_seed": 2026092338,
+      "source_sha256": "3df35dd6e67994b3b3afcb8fa28df2ca39433f938ca9e267fc61ad7f002d4d65",
+      "trajectory_id": "formal-v1-sim-2026092338-policy-2026092438"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092339-policy-2026092439.json.gz",
+      "policy_seed": 2026092439,
+      "primary": true,
+      "simulator_seed": 2026092339,
+      "source_sha256": "aef216034d8eb128a8d80b80a64e35caec3c2cc2776bc698fa3cce8124088acc",
+      "trajectory_id": "formal-v1-sim-2026092339-policy-2026092439"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092340-policy-2026092440.json.gz",
+      "policy_seed": 2026092440,
+      "primary": true,
+      "simulator_seed": 2026092340,
+      "source_sha256": "f28e3d47249f7fa70c49e9626a78b37524338b79c661a8344e358d94b0419596",
+      "trajectory_id": "formal-v1-sim-2026092340-policy-2026092440"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092341-policy-2026092441.json.gz",
+      "policy_seed": 2026092441,
+      "primary": true,
+      "simulator_seed": 2026092341,
+      "source_sha256": "0286f04d3f4e795b29a0ba745865b919fdb06c8c0f37e38e1de42e9ca6a6d4fb",
+      "trajectory_id": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092342-policy-2026092442.json.gz",
+      "policy_seed": 2026092442,
+      "primary": true,
+      "simulator_seed": 2026092342,
+      "source_sha256": "2c3d6d744a807fb6200b890cf17a42bb9161956d1163051f9b0ceaea7eaf1755",
+      "trajectory_id": "formal-v1-sim-2026092342-policy-2026092442"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092343-policy-2026092443.json.gz",
+      "policy_seed": 2026092443,
+      "primary": true,
+      "simulator_seed": 2026092343,
+      "source_sha256": "03bde7184375224a87c4ae8639dda892584374f9ad8872f2469d9bfefb90f74b",
+      "trajectory_id": "formal-v1-sim-2026092343-policy-2026092443"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092344-policy-2026092444.json.gz",
+      "policy_seed": 2026092444,
+      "primary": true,
+      "simulator_seed": 2026092344,
+      "source_sha256": "58cc2a7a2d4f06b79e15549595b41565dd2ad95110c0ede5be156d85da2f2b94",
+      "trajectory_id": "formal-v1-sim-2026092344-policy-2026092444"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092345-policy-2026092445.json.gz",
+      "policy_seed": 2026092445,
+      "primary": true,
+      "simulator_seed": 2026092345,
+      "source_sha256": "ac80605a1de884363c359515f2d885a07c0d789bd664d50aa594594a5cd751da",
+      "trajectory_id": "formal-v1-sim-2026092345-policy-2026092445"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092346-policy-2026092446.json.gz",
+      "policy_seed": 2026092446,
+      "primary": true,
+      "simulator_seed": 2026092346,
+      "source_sha256": "9bd2c57f22d64cfdba295cfc686de74e147ebc29cf59c5a62675c0d7899cc7c7",
+      "trajectory_id": "formal-v1-sim-2026092346-policy-2026092446"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092347-policy-2026092447.json.gz",
+      "policy_seed": 2026092447,
+      "primary": true,
+      "simulator_seed": 2026092347,
+      "source_sha256": "5aea3010a8337975afe693783c2f972280681f73df550dc968a8e944abed68bc",
+      "trajectory_id": "formal-v1-sim-2026092347-policy-2026092447"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092348-policy-2026092448.json.gz",
+      "policy_seed": 2026092448,
+      "primary": true,
+      "simulator_seed": 2026092348,
+      "source_sha256": "530e8411d5098b039c349fdc366d92bd75a2ff3ead9238a96ff770d6b506aab0",
+      "trajectory_id": "formal-v1-sim-2026092348-policy-2026092448"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092349-policy-2026092449.json.gz",
+      "policy_seed": 2026092449,
+      "primary": true,
+      "simulator_seed": 2026092349,
+      "source_sha256": "5c2303a10841af9847e4534fcd272ab5c114812294b9f6c40ff7b5b053275427",
+      "trajectory_id": "formal-v1-sim-2026092349-policy-2026092449"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092350-policy-2026092450.json.gz",
+      "policy_seed": 2026092450,
+      "primary": true,
+      "simulator_seed": 2026092350,
+      "source_sha256": "987bd61060c5942ca588c9e36b3961ead5fae0a80122e3eb46ec749b8f47b82a",
+      "trajectory_id": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092351-policy-2026092451.json.gz",
+      "policy_seed": 2026092451,
+      "primary": true,
+      "simulator_seed": 2026092351,
+      "source_sha256": "297ea6a46d0b6a02cb434b8a99fdce779cbeed8eab255027646fa75d5d24f046",
+      "trajectory_id": "formal-v1-sim-2026092351-policy-2026092451"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092352-policy-2026092452.json.gz",
+      "policy_seed": 2026092452,
+      "primary": true,
+      "simulator_seed": 2026092352,
+      "source_sha256": "cc7b51692677025f51d518a496b97baf879e6c4399e50a85d64cc95ed39c769b",
+      "trajectory_id": "formal-v1-sim-2026092352-policy-2026092452"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092353-policy-2026092453.json.gz",
+      "policy_seed": 2026092453,
+      "primary": true,
+      "simulator_seed": 2026092353,
+      "source_sha256": "632fc1ed4c8215f6c196043c59411c3cbb3140de8308a91b3e943525caab6da6",
+      "trajectory_id": "formal-v1-sim-2026092353-policy-2026092453"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092354-policy-2026092454.json.gz",
+      "policy_seed": 2026092454,
+      "primary": true,
+      "simulator_seed": 2026092354,
+      "source_sha256": "0cb409c5ba462083a9c20e3d238311968d51481d25d04c53d7785a0ea81811e3",
+      "trajectory_id": "formal-v1-sim-2026092354-policy-2026092454"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092355-policy-2026092455.json.gz",
+      "policy_seed": 2026092455,
+      "primary": true,
+      "simulator_seed": 2026092355,
+      "source_sha256": "4ed5481b53d6203da5cfb6ab47568d481ba023ae6de0f2f988258fd6d48f64c2",
+      "trajectory_id": "formal-v1-sim-2026092355-policy-2026092455"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092356-policy-2026092456.json.gz",
+      "policy_seed": 2026092456,
+      "primary": true,
+      "simulator_seed": 2026092356,
+      "source_sha256": "2fbf839707f6eb25ac13869229c6a59cfc9f9ebade576f321731329f70d95aef",
+      "trajectory_id": "formal-v1-sim-2026092356-policy-2026092456"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092357-policy-2026092457.json.gz",
+      "policy_seed": 2026092457,
+      "primary": true,
+      "simulator_seed": 2026092357,
+      "source_sha256": "4a0291e16a015b46226fbffb552e81e204d10e3491163cba674ff8abfe666186",
+      "trajectory_id": "formal-v1-sim-2026092357-policy-2026092457"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092358-policy-2026092458.json.gz",
+      "policy_seed": 2026092458,
+      "primary": true,
+      "simulator_seed": 2026092358,
+      "source_sha256": "9e551ecf5579cb89da55a6b0d95f761461fde9473f288e8e62b010b1089ec543",
+      "trajectory_id": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "path": "raw/formal-v1-sim-2026092359-policy-2026092459.json.gz",
+      "policy_seed": 2026092459,
+      "primary": true,
+      "simulator_seed": 2026092359,
+      "source_sha256": "25093f68461e2e80a414b1e042a61581f8d30f8822765c61b9a1ca1e2fe0e0b5",
+      "trajectory_id": "formal-v1-sim-2026092359-policy-2026092459"
+    }
+  ],
+  "primary_pairs": [
+    [
+      2026092300,
+      2026092400
+    ],
+    [
+      2026092301,
+      2026092401
+    ],
+    [
+      2026092302,
+      2026092402
+    ],
+    [
+      2026092303,
+      2026092403
+    ],
+    [
+      2026092304,
+      2026092404
+    ],
+    [
+      2026092305,
+      2026092405
+    ],
+    [
+      2026092306,
+      2026092406
+    ],
+    [
+      2026092307,
+      2026092407
+    ],
+    [
+      2026092308,
+      2026092408
+    ],
+    [
+      2026092309,
+      2026092409
+    ],
+    [
+      2026092310,
+      2026092410
+    ],
+    [
+      2026092311,
+      2026092411
+    ],
+    [
+      2026092312,
+      2026092412
+    ],
+    [
+      2026092313,
+      2026092413
+    ],
+    [
+      2026092314,
+      2026092414
+    ],
+    [
+      2026092315,
+      2026092415
+    ],
+    [
+      2026092316,
+      2026092416
+    ],
+    [
+      2026092317,
+      2026092417
+    ],
+    [
+      2026092318,
+      2026092418
+    ],
+    [
+      2026092319,
+      2026092419
+    ],
+    [
+      2026092320,
+      2026092420
+    ],
+    [
+      2026092321,
+      2026092421
+    ],
+    [
+      2026092322,
+      2026092422
+    ],
+    [
+      2026092323,
+      2026092423
+    ],
+    [
+      2026092324,
+      2026092424
+    ],
+    [
+      2026092325,
+      2026092425
+    ],
+    [
+      2026092326,
+      2026092426
+    ],
+    [
+      2026092327,
+      2026092427
+    ],
+    [
+      2026092328,
+      2026092428
+    ],
+    [
+      2026092329,
+      2026092429
+    ],
+    [
+      2026092330,
+      2026092430
+    ],
+    [
+      2026092331,
+      2026092431
+    ],
+    [
+      2026092332,
+      2026092432
+    ],
+    [
+      2026092333,
+      2026092433
+    ],
+    [
+      2026092334,
+      2026092434
+    ],
+    [
+      2026092335,
+      2026092435
+    ],
+    [
+      2026092336,
+      2026092436
+    ],
+    [
+      2026092337,
+      2026092437
+    ],
+    [
+      2026092338,
+      2026092438
+    ],
+    [
+      2026092339,
+      2026092439
+    ],
+    [
+      2026092340,
+      2026092440
+    ],
+    [
+      2026092341,
+      2026092441
+    ],
+    [
+      2026092342,
+      2026092442
+    ],
+    [
+      2026092343,
+      2026092443
+    ],
+    [
+      2026092344,
+      2026092444
+    ],
+    [
+      2026092345,
+      2026092445
+    ],
+    [
+      2026092346,
+      2026092446
+    ],
+    [
+      2026092347,
+      2026092447
+    ],
+    [
+      2026092348,
+      2026092448
+    ],
+    [
+      2026092349,
+      2026092449
+    ],
+    [
+      2026092350,
+      2026092450
+    ],
+    [
+      2026092351,
+      2026092451
+    ],
+    [
+      2026092352,
+      2026092452
+    ],
+    [
+      2026092353,
+      2026092453
+    ],
+    [
+      2026092354,
+      2026092454
+    ],
+    [
+      2026092355,
+      2026092455
+    ],
+    [
+      2026092356,
+      2026092456
+    ],
+    [
+      2026092357,
+      2026092457
+    ],
+    [
+      2026092358,
+      2026092458
+    ],
+    [
+      2026092359,
+      2026092459
+    ]
+  ],
+  "rejected": []
+}

@@ -1,5 +1,11 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-23：STEP 5.5 Formal Dataset v1 Build & Acceptance
+
+- 新增真实 AirFogSim 60-trajectory causal collector、H2/L4 sharded Formal Dataset builder、coverage/determinism/finalization/CPU interface acceptance 工具与 focused tests。
+- 五类 package 使用 portable relative paths 和 mandatory SHA-256；tracked manifest 保存 protocol、seed/split lineage、coverage、normalization、package identity/size、acceptance/rebuild/smoke receipts 与 regeneration command。
+- Machine verdict：Training Stack PASS、Formal Dataset READY、GPU Codepath PREPARED、Formal Training BLOCKED；GPU/formal training/locked test 均未执行。
+
 ## 2026-09-22：STEP 5.2 Training Loop / Curriculum / Joint Training
 
 - 新增配置化 CPU development training loop：Stage 1 posterior-assisted warm-up、Stage 2 prior-dominant recursive curriculum、KL warm-up/free bits、joint optimizer audit、prior-only validation、`L_Val` selector 与 checkpoint/resume。

@@ -1,7 +1,7 @@
 # PI-JWM 项目索引
 
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
-> 生成于 2026-09-08，状态更新于 2026-09-22。定义 01、当前最小定义 02、STEP 4.3A Builder、STEP 4.3B Encoder、STEP 4.4 Structured RSSM World Model Contract、5.1B/5.1D primitives/integration 与 STEP 5.2 CPU training-loop integration 已完成并冻结。Full training、GPU、formal Dataset、Planner 与 locked-test 仍关闭；旧训练与结果已逻辑归档。
+> 生成于 2026-09-08，状态更新于 2026-09-23。STEP 5.5 Formal Dataset v1 与 CPU H=4 interface acceptance 已完成；full/formal training、GPU execution、Planner 与 locked-test 仍关闭，旧训练与结果继续逻辑归档。
 
 ## 1. 进入项目的最短路径
 

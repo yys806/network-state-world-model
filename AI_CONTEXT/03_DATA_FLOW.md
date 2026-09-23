@@ -1,5 +1,11 @@
 # 数据流与张量合同
 
+## 2026-09-23 Formal Dataset v1 当前链路
+
+真实 AirFogSim Raw（60×96 transitions）→ H=2/L=4 model-ready Samples → trajectory-sharded Tensor / Typed Graph / Motion-CSI Target → 仅 48 条 train trajectory 拟合的 Normalization → manifest-relative 五类 package。固定 split 为 48 train/12 validation，对应 4416/1104 windows；Future Target 保持独立 namespace，Future Action unresolved=0，`locked_test` 不存在。五类 package 的 SHA-256、identity alignment、serialize/reload 和 deterministic rebuild 已通过机器验收。
+
+正式 package 由 `FormalTrainingInterface` 加载后进入 `Step52Trainer`；CPU smoke 执行一次 optimizer step 和 H1-H4 prior-only validation。该链路证明接口可执行，不是正式训练或性能证据。
+
 > 2026-09-18 Step 1 结论：下列 v5 数据流是旧协议下可追溯资产，尚未满足新 `00–06` 的 Agent/Communication/Task-Agent 关系和 Route/Comm/Comp/UAV 四类动作合同。稳定 ID/index、mask、split 和 train-only normalization 原则可复用；新 schema 尚未冻结。
 
 ## Step 2.2 real raw flow

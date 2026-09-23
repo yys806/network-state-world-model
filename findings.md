@@ -1127,3 +1127,17 @@
 - Generic package now loads samples/tensor/graph/target/normalization and enters the real Trainer.
 - `validate_readiness()` computes verdicts from checks; negative identity fixture passes.
 - L=4 is config-only evidence, not runtime rollout verification.
+
+# 2026-09-23 STEP 5.5 findings
+
+- 原 Step 3.1 sample builder 的 H=2/L=2 固定拒绝是 Formal L=4 的真实工程阻塞；已泛化为正整数 H/L，同时保留 H2/L2 regression。
+- 长 trajectory 暴露了 target-only future entity/task/route index 不应按 current input capacity 验证；validator 现使用独立 target namespace capacity，没有把 future-only object 偷放进 input index。
+- `np.savez_compressed` 默认 ZIP member 时间戳会破坏 byte-level deterministic rebuild；Formal builder 对每个 NPZ 进行固定时间戳和排序 canonicalization，并计划用完整二次重建 package SHA 比较验收。
+- 全量 package 必须按 trajectory 分 shard 构建，避免一次把 5520 windows 的 Tensor/Graph/Target 常驻内存；每个 shard 写出后立即 reload 并检查 sample identity、batch 维和 semantic digest。
+- Raw coverage 不是伪造 action row：collector 真实调用 Route setter、RB scheduler、capacity-respecting CPU callback 与 UAV mobility setter，并在每个 Decision 记录 eligibility/intervention/no-op/signature。
+# 2026-09-23 STEP 5.5 final findings
+
+- 60 个 primary simulator/policy seed pair 全部成功，因此 rejected/replacement=0；这不是省略失败记录，而是 collection summary 的实际结果。
+- Formal five-package hashes 与第二次完整 rebuild 完全一致；路径身份均为 portable relative paths，大型 Raw/package 保持 local-only。
+- Formal action coverage 已消除 development Route/Comp 0/0 数据 blocker；pending Flow 时 Route/Comm 只证明模型路由，不被夸大为已执行服务 transition。
+- CPU H=4 runtime 真实经过 optimizer、prior-only H1-H4 validation 与 checkpoint reload；GPU 未执行，formal training 仍由 5.6A 配置冻结/GPU smoke 阻塞。

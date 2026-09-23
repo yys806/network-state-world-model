@@ -1,0 +1,53 @@
+{
+  "schema_version": "PI-JWM-Step-5.5-Package-Identity-v1",
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "local_artifact_root": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+  "portable_paths": true,
+  "history_steps": 2,
+  "horizon_steps": 4,
+  "accepted_trajectories": 60,
+  "rejected_trajectories": 0,
+  "train_trajectories": 48,
+  "validation_trajectories": 12,
+  "train_windows": 4416,
+  "validation_windows": 1104,
+  "total_windows": 5520,
+  "topology": {
+    "mode": "radius_knn",
+    "radius_m": 1000.0,
+    "k": 2,
+    "claim_boundary": "Formal Dataset v1 protocol choice; not a topology optimality claim"
+  },
+  "artifact_sizes_bytes": {
+    "raw_trajectories": 837223503,
+    "packages_total": 5466661071,
+    "packages": {
+      "samples": 3307051344,
+      "tensor": 418296573,
+      "graph": 91735328,
+      "target": 1649561593,
+      "normalization": 16233
+    }
+  },
+  "package_hashes": {
+    "samples": "21e4f2ea527a8e0c658b30029e1c4a37633c26216222d06a5fb2d4edf2cbd0cb",
+    "tensor": "fb7eb8b25581d0e0b23e62676b6ac02e9bcbdcded6bf83d9db904c83b3967b0f",
+    "graph": "8bf3be889332cdb92e99c5881f27d575db7074d0280bdf1d392bbf373101ddb3",
+    "target": "e37a0eaf02e6b08dddcc4af6f4bde2aeb9dea64e64352640d3919440038dad22",
+    "normalization": "8208dff6c97059a9ac9a8bac5c5e4a4928d1db6f0ab7bdbc2500fc5b92140b28"
+  },
+  "normalization": {
+    "provenance": "normalization_provenance.json",
+    "fit_split": "dev_train",
+    "validation_excluded": true,
+    "future_target_in_fit": false
+  },
+  "scope": {
+    "gpu": false,
+    "formal_training": false,
+    "baseline": false,
+    "planner": false,
+    "locked_test_accessed": false,
+    "performance_claim": false
+  }
+}

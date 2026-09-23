@@ -1,7 +1,7 @@
 # PI-JWM 当前科研状态
 
 > 本文是导航性状态摘要。当前结果必须回到原始 checkpoint、metrics、manifest 和 audit 验证。
-> 截至 2026-09-22，Raw/定义 01、最小 Dataset/Tensor/定义 02、STEP 4.3A Builder、STEP 4.3B Encoder、STEP 4.4 Structured RSSM World Model Contract、5.1B/5.1D primitives/integration 与 STEP 5.2 CPU training-loop integration 已冻结。STEP 5.2 仅是 8/4 development CPU smoke；GPU 未使用，`locked_test` 未访问，`formal_dataset=false`。
+> 截至 2026-09-23，STEP 5.5 Formal Dataset v1 已接受：60 条真实 trajectory、H2/L4、48/12 split、5520 windows、五类 package 与 CPU H=4 interface smoke 均通过。GPU 未使用，`locked_test` 未访问，formal training 未开始。
 
 ## 0. 当前实施状态
 

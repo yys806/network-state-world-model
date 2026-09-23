@@ -1,5 +1,12 @@
 # 当前与历史实验
 
+## 2026-09-23 STEP 5.5 Formal Dataset v1 acceptance
+
+- 60/60 真实 causal trajectories，0 rejected/replacement；H=2/L=4、每条 96 transitions、48/12 trajectory split、4416/1104/5520 windows。
+- 四动作 train intervention rate：Route 38.60%、Comm 42.78%、Comp 38.52%、Mobility 40.08%；每族干预覆盖 48 条 train 与 12 条 validation trajectory。
+- Dataset acceptance 25/25、deterministic rebuild 5/5、CPU FormalTrainingInterface smoke 13/13 均为 true；真实 H=4 optimizer/validation/checkpoint path 通过。
+- 证据入口：`code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/`。这是 Dataset/CPU interface acceptance，不是 formal training 或 performance run。
+
 ## 2026-09-21 STEP 5.1A-PATCH target-contract validation
 
 - 这不是训练实验：脚本从真实 STEP 4.2A non-locked development trajectory 和 STEP 4.3B frozen train-only stats 构造 12 个 Future Target samples/tensor。

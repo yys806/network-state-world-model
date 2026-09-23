@@ -2,11 +2,11 @@
 
 Source of truth：本文件是入口；具体事实必须回到列出的代码、配置、测试或 artifact。
 
-## STEP 5.2 当前边界
+## STEP 5.5 当前边界
 
-- STEP 5.2 CPU development training loop 已实现并通过 26/26 receipt checks；5.3 bounded CPU preflight 另以固定 1/2-sample dev_train 通过 GO。两者都不证明正式训练、泛化或性能。
-- 当前只使用 unified non-locked development bundle（`dev_train=8`、`dev_validation=4`）。Route/Comp non-empty coverage 均为 0，仅有 explicit no-op；正式训练数据覆盖仍需后续 gate。
-- `training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`step5_3_preflight=GO`，但 `full_training=false`、`gpu=false`、`formal_dataset=false`、`locked_test=false`、`performance_claim=false`。下一独立门是 STEP 5.4 readiness review，不在本轮自动执行。
+- Formal Dataset v1 已 READY：60 条真实 trajectory、H2/L4、48/12 split、五类 package 与四动作 coverage 均通过机器验收；development Route/Comp 0/0 已不再是 formal Dataset blocker。
+- 当前唯一正式训练 blocker 是 STEP 5.6A 尚未冻结 training seed/batch/epoch/max_steps/patience/budget，且 GPU smoke 未执行。`GPU_CODEPATH_READINESS=PREPARED` 不等于 `GPU_TRAINING_VERIFIED`。
+- `formal_dataset=true`、`training_stack=PASS`，但 `full_training=false`、`gpu=false`、`locked_test=false`、`performance_claim=false`。
 
 ## STEP 5.1A/5.1D target boundary
 

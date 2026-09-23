@@ -21,6 +21,21 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def sha256_path(path: Path) -> str:
+    if path.is_file():
+        return sha256_file(path)
+    if not path.is_dir():
+        raise FileNotFoundError(path)
+    digest = hashlib.sha256()
+    for file_path in sorted(item for item in path.rglob("*") if item.is_file()):
+        relative = file_path.relative_to(path).as_posix()
+        digest.update(relative.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(sha256_file(file_path).encode("ascii"))
+        digest.update(b"\n")
+    return digest.hexdigest()
+
+
 def _action_counts(samples: list[Mapping[str, Any]]) -> dict[str, dict[str, Any]]:
     counts = {name: {"non_empty_count": 0, "unique_count": 0, "sample_count": 0, "trajectory_count": 0, "signatures": set(), "trajectories": set()} for name in ("route", "comm", "comp", "mobility")}
     for sample in samples:
@@ -71,6 +86,20 @@ class FormalTrainingInterface:
             result[name] = path
         return result
 
+    @property
+    def runtime_package_paths(self) -> dict[str, Path]:
+        values = self.manifest.get("runtime_packages")
+        if not values:
+            return self.package_paths
+        result: dict[str, Path] = {}
+        for name in ("samples", "tensor", "graph", "target", "normalization"):
+            value = values.get(name)
+            if not value:
+                raise ValueError(f"manifest must declare runtime_packages.{name}")
+            path = Path(value)
+            result[name] = path if path.is_absolute() else (self.manifest_path.parent / path).resolve()
+        return result
+
     def verify_packages(self) -> dict[str, Any]:
         verified: dict[str, Any] = {}
         for name, path in self.package_paths.items():
@@ -78,9 +107,30 @@ class FormalTrainingInterface:
                 verified[name] = {"exists": False, "sha256": None}
                 continue
             expected = self.manifest.get("hashes", {}).get(name)
-            actual = sha256_file(path)
+            actual = sha256_path(path)
             verified[name] = {"exists": True, "sha256": actual, "expected_sha256_declared": isinstance(expected, str) and bool(expected), "hash_matches": isinstance(expected, str) and expected == actual}
         verified["all_present_and_matching"] = all(item.get("exists") and item.get("hash_matches", False) for item in verified.values())
+        return verified
+
+    def verify_runtime_packages(self) -> dict[str, Any]:
+        verified: dict[str, Any] = {}
+        expected_hashes = self.manifest.get("runtime_hashes", {})
+        for name, path in self.runtime_package_paths.items():
+            if not path.exists():
+                verified[name] = {"exists": False, "sha256": None}
+                continue
+            expected = expected_hashes.get(name)
+            actual = sha256_path(path)
+            verified[name] = {
+                "exists": True,
+                "sha256": actual,
+                "expected_sha256_declared": isinstance(expected, str) and bool(expected),
+                "hash_matches": isinstance(expected, str) and expected == actual,
+            }
+        verified["all_present_and_matching"] = all(
+            item.get("exists") and item.get("hash_matches", False)
+            for item in verified.values()
+        )
         return verified
 
     @classmethod
@@ -93,6 +143,8 @@ class FormalTrainingInterface:
         sample_file = Path(sample_path)
         if not sample_file.is_absolute():
             sample_file = path.parent / sample_file
+        if sample_file.is_dir():
+            sample_file = sample_file / "index.json"
         samples = json.loads(sample_file.read_text(encoding="utf-8"))
         if not isinstance(samples, list) or not samples:
             raise ValueError("manifest samples must be a non-empty list")
@@ -127,7 +179,7 @@ class FormalTrainingInterface:
         }
 
 
-__all__ = ["FormalTrainingInterface", "sha256_file"]
+__all__ = ["FormalTrainingInterface", "sha256_file", "sha256_path"]
 
 
 REQUIRED_CONFIG_FIELDS = ("dataset", "model", "training", "evaluation", "runtime")

@@ -1,13 +1,13 @@
 # PI-JWM Implementation Tracker
 
-更新时间：2026-09-22。**Raw / 最小 Dataset-Tensor / Stateful Flow / Typed Dual-Graph Builder / Dual-Graph Encoder / STEP 4.4 Structured RSSM World Model Contract 均已完成并冻结；Definition 05 的 10 项 Researcher Decision 已由 STEP 5.0 冻结；STEP 5.1A-PATCH、STEP 5.1C-PATCH、STEP 5.1D 与 STEP 5.2 已分别闭合 Future target、统一 identity lineage、dev_train normalization provenance、paired model-chain CPU integration 和 CPU training-loop integration**。Full training、GPU training、formal Dataset、Planner 与 locked_test 仍未开始。
+更新时间：2026-09-23。**STEP 5.5 已完成 Formal Dataset v1 的 60 条真实 trajectory、H=2/L=4 五类 package、48/12 split、四动作 coverage、deterministic rebuild 与 CPU H=4 trainer smoke**。`FORMAL_DATASET_READINESS=READY`、`TRAINING_STACK_READINESS=PASS`；full/formal training、GPU execution、Planner、baseline 与 locked_test 仍未开始。
 
 ## 当前依据与执行边界
 
 - 目标研究定义：`D:\shen\OB\科研\PIJWM` 中七个 `00–06` Markdown 文件，只读。文件名、大小、行数和 SHA-256 见 `code/artifacts/audit/pi_jwm_new_definition_step01_20260918/initial_snapshot.json`。
 - 实现事实：本仓库源码、配置、测试和原始 artifact。笔记中“当前代码已经……”的描述也必须核对。
 - 工程工作区：`D:\shen\PKU\PIJWM`；旧 P4/P6/P0–P10 工作流为 **Historical / Archived**，不再是 active workflow。旧结果保留原验收含义，不变成新定义结果。
-- 本轮不生成正式大规模数据集，不改变双图、World Model、loss、planner 或 checkpoint；不训练、不使用 GPU、不访问 `locked_test`。
+- 当前正式数据集协议与 artifact identity 已冻结；本轮未进行正式训练，不改变模型科学结构/loss/planner，不使用 GPU，不访问 `locked_test`。
 - 主报告：[STEP_01_AUDIT.md](implementation_records/STEP_01_AUDIT.md)；数据附件：[STEP_01_DATA_GRAPH_AUDIT.md](implementation_records/STEP_01_DATA_GRAPH_AUDIT.md)。下表中的 00–06 对应上述源文件章节；详细定位在报告中。
 
 ## 总体实施状态

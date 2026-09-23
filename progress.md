@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-09-23 STEP 5.5 — Formal Dataset v1 Build & Acceptance
+
+- [x] 60/60 primary seed pairs 被完整接受；每条 96 transitions/97 Decisions，时间网格连续，无 partial/replacement。
+- [x] 48/12 trajectory split 与 4416/1104/5520 H2/L4 windows 冻结；五类真实 package 和 SHA-256 exact match。
+- [x] Route/Comm/Comp/Mobility 在 train/validation 均满足 eligible-rate、signature 与多 trajectory gate；no-op/single/multi-family joint action 均存在。
+- [x] Acceptance 25/25、deterministic rebuild 5/5、CPU H4 interface smoke 13/13；错误 hash/identity/config 被拒绝。
+- [x] Fresh final verification：STEP 5.5 focused 11/11、相关 upstream 221/221、formal finalizer、deterministic rebuild、CPU H4 smoke、behavior-policy determinism、compileall、knowledge index write/check、JSON/context/diff checks 均通过。
+- Git commit/push 与远端 HEAD 核对是本记录之后的最后操作。
+- Boundary: `formal_dataset=true`；`gpu=false`、`formal_training=false`、`locked_test=false`、`baseline=false`、`planner=false`、`performance_claim=false`。
+
+
 ## 2026-09-22 STEP 5.2 — Training Loop / Curriculum / Joint Training Implementation
 
 - [x] 新增 `step5_2_training_loop_v1.py`、CPU smoke、9 项 focused tests 和实现记录；实现 Stage 1 posterior-assisted warm-up、Stage 2 prior-only recursive rollout、配置化 `1→2→4` curriculum、KL warm-up/free bits、joint optimizer groups、prior-only validation、`L_Val` selector 与 checkpoint/resume。
@@ -1131,3 +1142,11 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 # 2026-09-23 STEP 5.4-PATCH2
 
 四动作 adapter 与 device portability closure 完成。optimizer 在 `.to(device)` 后创建；encoder/data/action/padding 同 device；Route/Comp synthetic fixture 与 no-op 回归通过；package hash 缺失/错误拒绝；CPU RNG 与条件式 CUDA RNG checkpoint 字段已准备。未运行 GPU、formal Dataset 或 locked_test。
+
+# 2026-09-23 STEP 5.5 progress
+
+- 真实 AirFogSim Raw collection 已得到 60/60 accepted、0 rejected；每条 96 transitions / 97 Decisions，primary simulator/policy seed pair 全部使用，`locked_test_accessed=false`。
+- 固定 trajectory split 为 48 train / 12 validation；目标 windows 为 4416 / 1104 / 5520。
+- 四动作 coverage machine gate 已通过；train 四类 intervention rate 均在 25%–75%，Route/Comm/Comp/Mobility 均覆盖 48 条 train 与 12 条 validation trajectory。
+- H2/L4 sample、causal Flow、typed graph 与 Motion/CSI H1-H4 单 trajectory probe 已通过；当前正在构建完整五类 package，并执行逐 shard identity/reload/hash 验收。
+- 当前边界保持 `gpu=false`、`formal_training=false`、`locked_test=false`、`baseline=false`、`planner=false`、`performance_claim=false`。

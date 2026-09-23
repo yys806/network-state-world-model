@@ -455,7 +455,10 @@ def amend_raw_with_causal_flow_ledger(raw: Mapping[str, Any]) -> tuple[dict[str,
                 if destination != active_same_type[0]["logical_destination"] or ledger_route != remaining_route:
                     ledger.reroute(active_id, new_route=ledger_route, new_logical_destination=destination)
             elif route_kind == "return":
-                total = source_task.get("return_size", entry.get("return_size"))
+                total = source_task.get(
+                    "return_size",
+                    source_task.get("required_returned_size", entry.get("return_size")),
+                )
                 if total is not None:
                     ledger.create_return_flow(
                         source_task, logical_destination=destination, total_data=total, route=ledger_route,
@@ -498,7 +501,14 @@ def amend_raw_with_causal_flow_ledger(raw: Mapping[str, Any]) -> tuple[dict[str,
             try:
                 transition = ledger.apply_transfer_event(overlay, observed_task_current_node_id=observed_holder)
             except ValueError as exc:
-                transition = {"task_id": str(overlay["task_id"]), "applied": False, "error": str(exc)}
+                transition = {
+                    "task_id": str(overlay["task_id"]),
+                    "applied": False,
+                    "error": str(exc),
+                    "active_flow_count": len(active_for_task),
+                    "active_flow_types": sorted(str(row["flow_type"]) for row in active_for_task),
+                    "active_flow_ids": sorted(str(row["flow_id"]) for row in active_for_task),
+                }
                 transition_errors.append(copy.deepcopy(transition))
             transition["legacy_flow_completed_semantics"] = "stage_or_hop_completed"
             transition["legacy_flow_completed_forbidden_as_logical_completion"] = True

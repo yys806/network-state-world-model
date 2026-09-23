@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import gzip
 import hashlib
 import json
 from pathlib import Path
@@ -125,7 +126,9 @@ def build_state(tensor: dict[str, Any], graph: dict[str, Any], index: int) -> tu
     for f in range(flow_presence.shape[1]):
         hits = torch.nonzero((comm_src[0] == c_src[0, f]) & (comm_dst[0] == c_dst[0, f]), as_tuple=False)
         if len(hits): flow_comm[0, f] = hits[0, 0]
-    raw_source = json.loads(Path(tensor["sample_metadata"][index]["source_path"]).read_text(encoding="utf-8"))
+    raw_path = Path(tensor["sample_metadata"][index]["source_path"])
+    raw_payload = gzip.decompress(raw_path.read_bytes()).decode("utf-8") if raw_path.suffix == ".gz" else raw_path.read_text(encoding="utf-8")
+    raw_source = json.loads(raw_payload)
     entity_ids = {int(v): k for k, v in tensor["sample_static"][index]["input_entity_index"]["physical"].items()}
     capacity = {}
     for edge in raw_source.get("environment", {}).get("wired_edges", []):
@@ -181,13 +184,100 @@ def build_action(sample: dict[str, Any], state: dict[str, torch.Tensor], horizon
         return mapping[key]
     mob_i = torch.tensor([[int(x["uav_index"]) for x in mob]], dtype=torch.long, device=device) if mob else torch.empty((1, 0), dtype=torch.long, device=device)
     mob_v = torch.tensor([[[float(x["azimuth_rad"]), float(x["elevation_rad"]), float(x["speed_mps"]), 1.0] for x in mob]], dtype=torch.float32, device=device) if mob else torch.empty((1, 0, 4), device=device)
+    def task_node_index(task_id: str, task_index: int) -> int:
+        """Resolve the task's current physical holder from the causal frame.
+
+        A waiting-to-offload task has no Logical Flow yet, but its Route action
+        still names the task's current node.  This is action-time information,
+        not a future observation, and is the only source used for the pending
+        Route/Comm adapter below.
+        """
+        for row in reversed(sample.get("history", [])):
+            for task_row in row.get("tasks", []):
+                if str(task_row.get("task_id")) == str(task_id):
+                    node_id = task_row.get("current_node_id", task_row.get("task_node_id"))
+                    if node_id is not None:
+                        return index_from(physical, node_id, "task.current_node_id")
+        # The model-ready task History intentionally keeps task progress
+        # fields separate from the physical holder.  A same-step Route row
+        # carries the causal task-node reference, so use only the supplied
+        # action prefix as the adapter fallback.
+        for action_frame in sample.get("future_action", [])[: horizon + 1]:
+            for entry in action_frame.get("route", {}).get("entries", []):
+                if int(entry.get("task_index", -1)) == int(task_index) or str(entry.get("task_id")) == str(task_id):
+                    value = entry.get("task_node_index")
+                    if value is not None:
+                        return int(value)
+        return -1
+
+    def route_target_for_task(task_id: str, task_index: int) -> tuple[int, str, int] | None:
+        """Return the latest causal Route target available at this rollout step.
+
+        Route and Comm are submitted in the same AirFogSim decision.  The
+        Logical Flow ledger is updated only after that decision, so a valid
+        Comm row can precede any current Flow/hop row.  Prefer the current
+        Route, then earlier Route rows in this supplied action prefix; never
+        inspect later actions or targets.
+        """
+        candidates: list[dict[str, Any]] = []
+        for action_frame in sample.get("future_action", [])[: horizon + 1]:
+            candidates.extend(
+                entry for entry in action_frame.get("route", {}).get("entries", [])
+                if int(entry.get("task_index", -1)) == int(task_index)
+                or str(entry.get("task_id")) == str(task_id)
+            )
+        if not candidates:
+            return None
+        entry = candidates[-1]
+        target_index = entry.get("target_node_index")
+        if target_index is None:
+            route_indices = entry.get("route_node_indices", [])
+            target_index = route_indices[-1] if route_indices else None
+        if target_index is None:
+            return None
+        source_index = entry.get("task_node_index")
+        return int(target_index), str(entry.get("route_kind", "offload")), (-1 if source_index is None else int(source_index))
+
     comm_entries = fam["comm"]["entries"]
     comm_i, comm_v, mapping = [], [], []
     for x in comm_entries:
-        task = int(x["task_index"]); hits = torch.nonzero((state["flow_task_index"][0] == task) & (state["flow_comm_relation_index"][0] >= 0), as_tuple=False)
-        if len(hits) != 1: raise ValueError(f"Comm action task {task} does not uniquely map to a current Flow/hop relation")
-        ri = int(state["flow_comm_relation_index"][0, hits[0, 0]])
-        comm_i.append(ri); comm_v.append([0.0, 1.0, 0.0, 0.0]); mapping.append({"task_index": task, "relation_index": ri, "rb_indices": x["rb_indices"]})
+        task = int(x["task_index"])
+        hits = torch.nonzero(
+            (state["flow_task_index"][0] == task)
+            & state["flow_presence"][0]
+            & (state["flow_comm_relation_index"][0] >= 0),
+            as_tuple=False,
+        )
+        mode = "current_flow"
+        if len(hits) == 1:
+            ri = int(state["flow_comm_relation_index"][0, hits[0, 0]])
+        else:
+            if len(hits) > 1:
+                raise ValueError(f"Comm action task {task} maps to multiple current Flow/hop relations")
+            task_id = str(x.get("task_id"))
+            target = route_target_for_task(task_id, task)
+            source = task_node_index(task_id, task)
+            if target is None or source < 0:
+                raise ValueError(f"Comm action task {task} has no causal current Flow or pending Route endpoint")
+            target_index, _, route_source = target
+            if route_source >= 0:
+                source = route_source
+            relation_hits = torch.nonzero(
+                (state["comm_source_index"][0] == source)
+                & (state["comm_target_index"][0] == target_index)
+                & state["comm_presence"][0]
+                & state["comm_validity"][0],
+                as_tuple=False,
+            )
+            if len(relation_hits) != 1:
+                raise ValueError(
+                    f"Comm action task {task} pending Route does not uniquely map to a current communication relation"
+                )
+            ri = int(relation_hits[0, 0])
+            mode = "pending_route_endpoint"
+        comm_i.append(ri)
+        comm_v.append([0.0, 1.0, 0.0, 0.0])
+        mapping.append({"task_index": task, "relation_index": ri, "rb_indices": x["rb_indices"], "mode": mode, "transition_applied": mode == "current_flow"})
     comm_idx = torch.tensor([comm_i], dtype=torch.long, device=device) if comm_i else torch.empty((1, 0), dtype=torch.long, device=device)
     comm_values = torch.tensor([comm_v], dtype=torch.float32, device=device) if comm_v else torch.empty((1, 0, 4), device=device)
     alloc = state["rb_active_mask"].clone()
@@ -207,18 +297,42 @@ def build_action(sample: dict[str, Any], state: dict[str, torch.Tensor], horizon
     comp_values_t = torch.tensor(comp_values, dtype=torch.float32, device=device) if comp_entries else torch.empty((1, 0, 4), device=device)
     route_entries = fam["route"]["entries"]
     route_task, route_flow, route_values = [], [], []
+    route_mapping: list[dict[str, Any]] = []
     route_kind_code = {"offload": 2.0, "return": 3.0}
     for entry in route_entries:
         task_id = str(entry["task_id"]); ti = index_from(tasks, task_id, "route.task_id")
-        flow_candidates = [slot for flow_id, slot in flows.items() if flow_id.startswith(f"flow::{task_id}::")]
-        if len(flow_candidates) != 1: raise ValueError(f"route task must map to exactly one causal flow: {task_id}")
-        hops = entry["route_node_indices"]
-        if len(hops) < 2: raise ValueError("route requires at least source and target node indices")
-        route_task.append(ti); route_flow.append(flow_candidates[0]); route_values.append([float(hops[0]), float(hops[-1]), route_kind_code.get(str(entry["route_kind"]), 1.0), float(len(hops) - 1)])
+        target = int(entry.get("target_node_index", entry.get("route_node_indices", [-1])[-1]))
+        hops = [int(value) for value in entry.get("route_node_indices", [])]
+        active_flow_hits = torch.nonzero(
+            (state["flow_task_index"][0] == ti) & state["flow_presence"][0],
+            as_tuple=False,
+        )
+        if len(active_flow_hits) > 1:
+            raise ValueError(f"route task maps to multiple active causal flows: {task_id}")
+        if len(active_flow_hits) == 1:
+            flow_slot = int(active_flow_hits[0, 0])
+            source = int(state["carrying_hop_source_index"][0, flow_slot])
+            destination = hops[0] if hops else target
+            mode = "current_flow"
+            route_flow.append(flow_slot)
+        else:
+            # AirFogSim legitimately accepts an offload/return Route before
+            # the post-action Causal Flow ledger row exists.  Keep the Route
+            # action on its task slot and leave Flow=-1; the Step 4.4 model
+            # contract intentionally does not fabricate a new Flow identity.
+            source = task_node_index(task_id, ti)
+            destination = target
+            mode = "pending_flow"
+            route_flow.append(-1)
+        if source < 0 or destination < 0:
+            raise ValueError(f"route action has unresolved causal endpoint: {task_id}")
+        route_task.append(ti)
+        route_values.append([float(source), float(destination), route_kind_code.get(str(entry["route_kind"]), 1.0), float(max(len(hops) - 1, 0))])
+        route_mapping.append({"task_index": ti, "flow_index": route_flow[-1], "source_index": source, "target_index": destination, "mode": mode, "transition_applied": route_flow[-1] >= 0})
     route_task_t = torch.tensor([route_task], dtype=torch.long, device=device) if route_entries else torch.full((1, 1), -1, dtype=torch.long, device=device)
     route_flow_t = torch.tensor([route_flow], dtype=torch.long, device=device) if route_entries else route_task_t.clone()
     route_values_t = torch.tensor([route_values], dtype=torch.float32, device=device) if route_entries else torch.tensor([[[-1.0, -1.0, 0.0, 0.0]]], dtype=torch.float32, device=device)
-    return {"mobility_entity_index": mob_i, "mobility_values": mob_v, "comm_relation_index": comm_idx, "comm_values": comm_values, "comm_allocation_mask": alloc, "comp_agent_index": comp_agent_t, "comp_task_index": comp_task_t, "comp_values": comp_values_t, "route_task_index": route_task_t, "route_flow_index": route_flow_t, "route_values": route_values_t}, {"mobility": len(mob), "comm": mapping, "comp": comp_entries, "route": route_entries, "comp_explicit_noop": bool(fam["comp"].get("empty", False) and not fam["comp"].get("missing", False)), "route_explicit_noop": bool(fam["route"].get("empty", False) and not fam["route"].get("missing", False))}
+    return {"mobility_entity_index": mob_i, "mobility_values": mob_v, "comm_relation_index": comm_idx, "comm_values": comm_values, "comm_allocation_mask": alloc, "comp_agent_index": comp_agent_t, "comp_task_index": comp_task_t, "comp_values": comp_values_t, "route_task_index": route_task_t, "route_flow_index": route_flow_t, "route_values": route_values_t}, {"mobility": len(mob), "comm": mapping, "comp": comp_entries, "route": route_mapping, "comp_explicit_noop": bool(fam["comp"].get("empty", False) and not fam["comp"].get("missing", False)), "route_explicit_noop": bool(fam["route"].get("empty", False) and not fam["route"].get("missing", False))}
 
 
 def _state_signature(state: dict[str, torch.Tensor]) -> str:
