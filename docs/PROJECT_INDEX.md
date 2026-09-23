@@ -1,7 +1,7 @@
 # PI-JWM 项目索引
 
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
-> 生成于 2026-09-08，状态更新于 2026-09-23。STEP 5.5 Formal Dataset v1 与 CPU H=4 interface acceptance 已完成；full/formal training、GPU execution、Planner 与 locked-test 仍关闭，旧训练与结果继续逻辑归档。
+> 生成于 2026-09-08，状态更新于 2026-09-23。STEP 5.5 Formal Dataset v1 已接受；原 H4 interface smoke 只读 runtime 1+1，STEP 5.5-PATCH 另行验证 full-shard 4416/1104 CPU 消费路径与 Return/lifecycle 审计。full/formal training、GPU execution、Planner 与 locked-test 仍关闭，旧训练与结果继续逻辑归档。
 
 ## 1. 进入项目的最短路径
 
@@ -15,10 +15,11 @@ ChatGPT 网页端先读 [`AI_CONTEXT/00_PROJECT_STATE.md`](../AI_CONTEXT/00_PROJ
 6. [`docs/implementation_records/STEP_04_1_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING.md`](implementation_records/STEP_04_1_PI_GRAPH_OBJECT_FIELD_RELATION_MAPPING.md)：当前对象—字段—关系 mapping、数据 gap 与旧实现冲突。
 7. [`docs/contracts_PIJWM_DEFINITION_05_LOSS_TRAINING_EVALUATION_V1.md`](contracts_PIJWM_DEFINITION_05_LOSS_TRAINING_EVALUATION_V1.md)：Definition 05 最新冻结决策、评价口径和禁止项。
 8. [`docs/implementation_records/STEP_05_0_DEFINITION_05_DECISION_FREEZE.md`](implementation_records/STEP_05_0_DEFINITION_05_DECISION_FREEZE.md)：STEP 5.0 定向审计、复用分类、缺口和证据边界。
-9. [`AI_CONTEXT/04_MODULE_MAP.md`](../AI_CONTEXT/04_MODULE_MAP.md)：问题到真实源码的最短路由。
-10. [`docs/COLLABORATION_GUIDE.md`](COLLABORATION_GUIDE.md)：用户与 AI 的职责、独立判断、解释和问答规则。
-11. [`docs/RESTRUCTURE_ACCEPTANCE.md`](RESTRUCTURE_ACCEPTANCE.md)：重构目标、可观察验收和剩余安全限制。
-12. [`task_plan.md`](../task_plan.md)：当前任务、停止门和唯一下一动作。
+9. [`docs/implementation_records/STEP_05_5_PATCH_FULL_CONSUMPTION_FIXED_SUPPORT_CLOSURE.md`](implementation_records/STEP_05_5_PATCH_FULL_CONSUMPTION_FIXED_SUPPORT_CLOSURE.md)：Formal Dataset full-shard CPU 消费、future Return 与 lifecycle repair 补丁证据。
+10. [`AI_CONTEXT/04_MODULE_MAP.md`](../AI_CONTEXT/04_MODULE_MAP.md)：问题到真实源码的最短路由。
+11. [`docs/COLLABORATION_GUIDE.md`](COLLABORATION_GUIDE.md)：用户与 AI 的职责、独立判断、解释和问答规则。
+12. [`docs/RESTRUCTURE_ACCEPTANCE.md`](RESTRUCTURE_ACCEPTANCE.md)：重构目标、可观察验收和剩余安全限制。
+13. [`task_plan.md`](../task_plan.md)：当前任务、停止门和唯一下一动作。
 13. [`记录/文件树与证据分层_20260826.md`](../记录/文件树与证据分层_20260826.md)：文件职责和证据等级。
 14. [`记录/本地计划表.md`](../记录/本地计划表.md)：项目粗粒度路线和阶段边界。
 15. [`记录/PIJWM主文档.md`](../记录/PIJWM主文档.md)：理论、数据、方法和评价定义。

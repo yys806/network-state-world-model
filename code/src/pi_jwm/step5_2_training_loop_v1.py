@@ -369,7 +369,7 @@ REQUIRED_STEP52_CHECKS = frozenset({
 class Step52Trainer(nn.Module):
     """A small CPU trainer around the accepted 5.1D paired bundle."""
 
-    def __init__(self, config: Step52TrainingConfig, data: DevelopmentBundle):
+    def __init__(self, config: Step52TrainingConfig, data: DevelopmentBundle, *, encoder_stats: Mapping[str, Any] | None = None):
         super().__init__()
         self.config = config
         self.data = data
@@ -379,7 +379,7 @@ class Step52Trainer(nn.Module):
         self._seed_everything(config.seed)
         graph_contract = data.graph["contract"]
         tensor_contract = data.tensor["contract"]
-        encoder_stats = fit_encoder_normalization_stats(data.tensor, data.graph, UPSTREAM_STATS)
+        encoder_stats = encoder_stats if encoder_stats is not None else fit_encoder_normalization_stats(data.tensor, data.graph, UPSTREAM_STATS)
         self.encoder = PIJointGraphEncoder(config.encoder, tensor_contract, graph_contract, encoder_stats)
         self.model = StructuredRSSMWorldModel(config.rssm)
         self.initialization_contract = self._initialize_csi_decoder()

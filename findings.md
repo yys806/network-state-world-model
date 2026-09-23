@@ -1,5 +1,11 @@
 # Findings
 
+## 2026-09-23 STEP 5.5-PATCH
+
+- `DevelopmentBundle.from_formal_interface()` 只读取 `interface.runtime_package_paths`，原 CPU H4 证据实际上是 1+1 subset，不支持完整 5520-window Trainer 声明。
+- 原 `unsupported_count/unresolved_count/fixed_support_blocked_count` 仅从不存在的 `unsupported_future_structure` 字段取长度；全量真实 typed Return 对照 current logical Flow index 后，unsupported/fixed-support 各 8828 次，unresolved 0。按窗口与 horizon 计，不能解读成 8828 个独立物理任务。
+- Raw 日志的 duplicate Task repair 为 213 次、50 trajectory、124 trajectory-task；collector 遇不同对象同 task_id 会抛错。函数只移动相同对象的集合引用，fixture 的 transmitted/computed/returned/done 值不变；未做关修复反事实重跑。
+
 ## 2026-09-22 STEP 5.1B-PATCH
 
 - 原实现把 `[B,L,S,F]` target 沿 horizon 求和为 `[B,S,D]`，导致 future posterior 可读取其他 horizon；Patch 保留 horizon，并验证篡改 horizon 2 不改变 horizon 1 embedding/q。

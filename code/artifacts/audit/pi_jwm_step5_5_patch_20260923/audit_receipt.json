@@ -1,0 +1,176 @@
+{
+  "checks": {
+    "exact_index_shard_alignment": true,
+    "full_index_4416_1104": true,
+    "repair_only_collection_references": true,
+    "repair_rows_valid": true,
+    "repair_same_object_and_outcomes_fixture": true,
+    "unique_sample_ids": true
+  },
+  "dataset_manifest_hash": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "future_fixed_support": {
+    "accounting_scope": "all 5520 accepted sample windows and four future frames per window; repeated window-horizon events are counted separately",
+    "affected_trajectory_count": 60,
+    "affected_window_count": 2901,
+    "detector": "pi_jwm.step5_5_fixed_support_audit_v1.detect_future_return_birth",
+    "fixed_support_blocked": 8828,
+    "positive_examples": [
+      {
+        "future_frame_index": 11,
+        "rows": [
+          {
+            "flow_id": "flow::Task_1::Return::0",
+            "reason": "future_return_birth_outside_current_fixed_support",
+            "task_id": "Task_1"
+          }
+        ],
+        "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0008"
+      },
+      {
+        "future_frame_index": 11,
+        "rows": [
+          {
+            "flow_id": "flow::Task_1::Return::0",
+            "reason": "future_return_birth_outside_current_fixed_support",
+            "task_id": "Task_1"
+          }
+        ],
+        "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0009"
+      },
+      {
+        "future_frame_index": 12,
+        "rows": [
+          {
+            "flow_id": "flow::Task_1::Return::0",
+            "reason": "future_return_birth_outside_current_fixed_support",
+            "task_id": "Task_1"
+          }
+        ],
+        "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0009"
+      },
+      {
+        "future_frame_index": 11,
+        "rows": [
+          {
+            "flow_id": "flow::Task_1::Return::0",
+            "reason": "future_return_birth_outside_current_fixed_support",
+            "task_id": "Task_1"
+          }
+        ],
+        "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0010"
+      },
+      {
+        "future_frame_index": 12,
+        "rows": [
+          {
+            "flow_id": "flow::Task_1::Return::0",
+            "reason": "future_return_birth_outside_current_fixed_support",
+            "task_id": "Task_1"
+          }
+        ],
+        "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0010"
+      },
+      {
+        "future_frame_index": 13,
+        "rows": [
+          {
+            "flow_id": "flow::Task_1::Return::0",
+            "reason": "future_return_birth_outside_current_fixed_support",
+            "task_id": "Task_1"
+          }
+        ],
+        "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0010"
+      },
+      {
+        "future_frame_index": 11,
+        "rows": [
+          {
+            "flow_id": "flow::Task_1::Return::0",
+            "reason": "future_return_birth_outside_current_fixed_support",
+            "task_id": "Task_1"
+          }
+        ],
+        "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0011"
+      },
+      {
+        "future_frame_index": 12,
+        "rows": [
+          {
+            "flow_id": "flow::Task_1::Return::0",
+            "reason": "future_return_birth_outside_current_fixed_support",
+            "task_id": "Task_1"
+          }
+        ],
+        "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0011"
+      }
+    ],
+    "previous_field_only_receipt_counts_superseded": true,
+    "supported_return_continuation_count": 143320,
+    "unresolved": 0,
+    "unsupported": 8828
+  },
+  "lifecycle_repair": {
+    "affected_task_count": 124,
+    "affected_trajectory_count": 50,
+    "before_lifecycle_collections": {
+      "_done_tasks:UAV_0": 31,
+      "_done_tasks:UAV_1": 26,
+      "_done_tasks:vehicle_0": 7,
+      "_done_tasks:vehicle_1": 3,
+      "_done_tasks:vehicle_2": 1,
+      "_offloading_tasks:UAV_0": 257,
+      "_offloading_tasks:UAV_1": 211,
+      "_offloading_tasks:vehicle_0": 62,
+      "_offloading_tasks:vehicle_1": 52,
+      "_offloading_tasks:vehicle_2": 7,
+      "_offloading_tasks:vehicle_4": 3,
+      "_out_of_ddl_tasks:UAV_0": 15,
+      "_out_of_ddl_tasks:UAV_1": 21,
+      "_out_of_ddl_tasks:vehicle_0": 11,
+      "_out_of_ddl_tasks:vehicle_1": 6,
+      "_out_of_ddl_tasks:vehicle_2": 1,
+      "_returning_tasks:UAV_0": 40,
+      "_returning_tasks:UAV_1": 33,
+      "_returning_tasks:vehicle_0": 9,
+      "_returning_tasks:vehicle_1": 8,
+      "_returning_tasks:vehicle_2": 1
+    },
+    "distinct_task_object_same_id_rejected_by_collector": true,
+    "invalid_repair_rows": [],
+    "kept_lifecycle": {
+      "_done_tasks:UAV_0": 31,
+      "_done_tasks:UAV_1": 26,
+      "_done_tasks:vehicle_0": 7,
+      "_done_tasks:vehicle_1": 3,
+      "_done_tasks:vehicle_2": 1,
+      "_out_of_ddl_tasks:UAV_0": 15,
+      "_out_of_ddl_tasks:UAV_1": 21,
+      "_out_of_ddl_tasks:vehicle_0": 11,
+      "_out_of_ddl_tasks:vehicle_1": 6,
+      "_out_of_ddl_tasks:vehicle_2": 1,
+      "_returning_tasks:UAV_0": 40,
+      "_returning_tasks:UAV_1": 33,
+      "_returning_tasks:vehicle_0": 9,
+      "_returning_tasks:vehicle_1": 8,
+      "_returning_tasks:vehicle_2": 1
+    },
+    "lifecycle_repair_count": 213,
+    "repair_semantics_verified": true,
+    "same_task_object_duplicate_required_by_collector": true,
+    "task_object_fields_modified_by_repair": false
+  },
+  "passed": true,
+  "sample_counts": {
+    "dev_train": 4416,
+    "dev_validation": 1104
+  },
+  "schema_version": "PI-JWM-Step-5.5-PATCH-Audit-v1",
+  "scope": {
+    "baseline": false,
+    "formal_training": false,
+    "gpu": false,
+    "locked_test_accessed": false,
+    "performance_claim": false,
+    "planner": false
+  }
+}

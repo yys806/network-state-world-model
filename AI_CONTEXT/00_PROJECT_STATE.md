@@ -1,8 +1,14 @@
 # PI-JWM Current State Snapshot
 
-## STEP 5.5 当前状态（2026-09-23）
+## STEP 5.5-PATCH 当前状态（2026-09-23）
 
-Formal Dataset v1 已由 60 条真实 AirFogSim trajectory 构建并机器验收：H=2/L=4、每条 96 transitions、48/12 trajectory split、4416/1104/5520 windows，五类 package、四动作 coverage、train-only normalization、deterministic rebuild 与 CPU H=4 trainer smoke 均通过。`formal_dataset=true` 只表示数据包 READY；full/formal training、GPU execution、locked_test、baseline、Planner、performance claim 仍为 false。
+STEP 5.5 的原 CPU H=4 smoke 只消费 `runtime/` 的 1 train + 1 validation，不能作为 5520-window Trainer 证据。PATCH 新增 `FullFormalShardDataset → FullFormalTrainer`：4416/1104 全量索引、按请求加载 trajectory shard、跨 shard batch、H=4 CPU 参数更新、prior-only validation batch、checkpoint reload/错误身份拒绝已有独立凭证。原 runtime mini 与 8/4 development 路径仍保留。
+
+旧 Dataset receipt 的 `unsupported/unresolved/fixed_support_blocked=0/0/0` 是字段计数，未检测真实 future Return birth；PATCH 对全部 5520 windows 的独立结构审计发现 8828 次按窗口与未来步计数的 Return-birth unsupported/fixed-support 事件，涉及 2901 个窗口和 60 条轨迹；143320 次已有支持的 Return continuation 未误判。新 detector 只写 target-side component 记录，不创建 current Return slot，也不删 Motion/CSI 监督。旧零值已被新审计替代。60 条 Raw 中有 213 次同一 Task 对象的 lifecycle collection 修复，涉及 50 条轨迹、124 个 trajectory-task；保留最远 lifecycle，直接 Task 状态字段不改。
+
+机器凭证：`code/artifacts/audit/pi_jwm_step5_5_patch_20260923/`。`FULL_FORMAL_DATASET_LOADER=VERIFIED`、`H4_FULL_DATA_CONSUMPTION_PATH=VERIFIED` 指全量可索引的 CPU 数据路径和抽样执行，不表示 5520 窗口已完整正式训练。`gpu=false`、`formal_training=false`、`locked_test_accessed=false`。
+
+Formal Dataset v1 已由 60 条真实 AirFogSim trajectory 构建并机器验收：H=2/L=4、每条 96 transitions、48/12 trajectory split、4416/1104/5520 windows，五类 package、四动作 coverage、train-only normalization 与 deterministic rebuild 均通过。原 CPU H=4 trainer smoke 是 runtime 1+1 mini；PATCH 另行验证 full-shard CPU batch 路径。`formal_dataset=true` 只表示数据包 READY；full/formal training、GPU execution、locked_test、baseline、Planner、performance claim 仍为 false。
 
 更新时间：2026-09-22
 
@@ -16,7 +22,7 @@ Formal Dataset v1 已由 60 条真实 AirFogSim trajectory 构建并机器验收
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
-- 当前状态：`STEP 5.5 = COMPLETE / FORMAL DATASET V1 ACCEPTED`。60/60 trajectory、五类 package、四动作真实 coverage、H1-H4 Motion/CSI、hash/identity、确定性重建和 CPU H=4 interface smoke 均有机器证据。正式训练、GPU execution、planner、baseline、locked-test 仍未开始。
+- 当前状态：`STEP 5.5 = COMPLETE / FORMAL DATASET V1 ACCEPTED`，PATCH 的 full-shard CPU 数据路径另行验收。60/60 trajectory、五类 package、四动作真实 coverage、H1-H4 Motion/CSI、hash/identity、确定性重建和 runtime mini CPU H=4 smoke 均有机器证据。正式训练、GPU execution、planner、baseline、locked-test 仍未开始。
 - `STEP 3.2-PATCH` 已补齐 Dataset isolation provenance、time-grid、development future-reference audit 与 normalization units；仍是 observation-only/non-locked evidence，不是正式 Dataset。
 - `STEP 3.2-PATCH-RECEIPT` 已修正顶层 acceptance AND、显式 scope checks 和 frozen sample schema reuse；STEP 3.2 现正式 COMPLETE / FROZEN。
 - STEP 4.4-PATCH3 已在源码中显式区分 Return requirement 的 known/unknown：冻结 current-side 不含 `Task.return_size`，所以 no slot 是 unknown，不是 no-return；unknown 或 known-required/no-slot 都不能错误 final-complete，但 side-state 可区分两者。DAG 只按有效前驱动态释放，terminal Flow completion 同步 remaining/presence/carrying/status。仍是 untrained CPU development evidence，不代表预测精度或训练结果。
@@ -28,7 +34,7 @@ Formal Dataset v1 已由 60 条真实 AirFogSim trajectory 构建并机器验收
 
 ## 当前最重要问题
 
-当前实现不能按 Dataset READY 或 CPU smoke 外推性能。STEP 5.5 证明正式数据与 H=4 训练接口可执行，但没有 formal training、GPU runtime、收敛泛化、校准或预测精度证据；Planner 真实反馈也未实现。
+当前实现不能按 Dataset READY、runtime mini smoke 或 PATCH full-shard CPU batch 外推性能。没有 formal training、GPU runtime、收敛泛化、校准或预测精度证据；Planner 真实反馈也未实现。
 
 ## 单一科研下一步
 

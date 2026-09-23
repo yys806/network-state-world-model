@@ -1,0 +1,19 @@
+{
+  "all_payload_hashes_verified": true,
+  "bounded_cached_trajectory_shards": 1,
+  "dataset_manifest_hash": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "passed": true,
+  "schema_version": "PI-JWM-Step-5.5-PATCH-Full-Shard-Traversal-v1",
+  "scope": {
+    "cpu": true,
+    "formal_training": false,
+    "gpu": false,
+    "locked_test_accessed": false
+  },
+  "shards": 60,
+  "split_counts": {
+    "dev_train": 4416,
+    "dev_validation": 1104
+  },
+  "unique_windows": 5520
+}

@@ -256,6 +256,15 @@ def extend_future_motion_csi_targets(
     reference_entities = current_entities
     reference_frame_index = history_frames[-1].get("frame_index") if history_frames else None
     for horizon_index, frame in enumerate(output.get("target", [])):
+        # Side accounting is derived from actual future typed Return rows.
+        # It never changes current input support or Motion/CSI masks.
+        from pi_jwm.step5_5_fixed_support_audit_v1 import detect_future_return_birth
+        detected = detect_future_return_birth(sample, frame)
+        prior_structure = frame.get("unsupported_future_structure", {}) or {}
+        frame["unsupported_future_structure"] = {
+            name: list(prior_structure.get(name, [])) + [row for row in detected[name] if row not in prior_structure.get(name, [])]
+            for name in ("unsupported", "unresolved", "fixed_support_blocked")
+        }
         future_entities = {row.get("entity_id"): row for row in frame.get("entities", [])}
         motion_targets: list[dict[str, Any]] = []
         for entity_id, input_slot in physical_slot_items:

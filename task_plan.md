@@ -1,3 +1,11 @@
+# 2026-09-23 STEP 5.5-PATCH — Full Consumption & Fixed Support
+
+- [x] 起点 `main=a65bd6d` 与本地状态核对，未跟踪 `TASK/` 和绘图脚本保持原状。
+- [x] 补齐 Formal Dataset 4416/1104 full-shard lazy/batch Trainer 路径与 CPU H4/checkpoint 验收。
+- [x] 真实 future Return birth 正反例、全量计数与生命周期修复审计。
+- [x] 最后回归、Context Consistency、knowledge index write/check、diff/status、commit、push、HEAD 核对。
+- 当前 gate：STEP 5.5-PATCH；科研语义无待决冲突。唯一下一交付：本 Step 机器验收与 Git 收口；完成后只建议 STEP 5.6A，不能自动执行。
+
 # 2026-09-22 STEP 5.1D — Unified Graph / Encoder / World-Model Rebuild & Paired 5.1B Acceptance
 
 - [x] 完整 Flow Tensor package roundtrip，含 contract/IDs/static/metadata/base checks/stats/ndarray。

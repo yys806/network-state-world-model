@@ -1,5 +1,11 @@
 # 已知问题与冲突
 
+## STEP 5.5-PATCH 修正的证据边界
+
+- STEP 5.5 原 CPU smoke 使用 `runtime/` 的 1+1 subset；新的 full-shard CPU 路径单独验收。不能把 mini smoke 写成全部正式窗口进入 Trainer。
+- 原 package acceptance receipt 将未生成的 unsupported 结构字段统计为 0/0/0；全量真实 Return-birth detector 得到 unsupported 8828、unresolved 0、fixed-support blocked 8828（窗口-未来步事件，重叠窗口会重复计）。旧三个零值不是无 future-birth 的证据。
+- 213 次 AirFogSim lifecycle repair 涉及同一 Task 对象的重复集合引用；修复直接保留最远 lifecycle，不修改该对象的 transmitted/computed/returned/done 字段。此结论限于 collection-side sanitation，不是有/无修复两次仿真结果的因果比较。
+
 Source of truth：本文件是入口；具体事实必须回到列出的代码、配置、测试或 artifact。
 
 ## STEP 5.5 当前边界

@@ -1,5 +1,7 @@
 # PI-JWM 实验索引
 
+STEP 5.5-PATCH 是正式数据消费路径和语义审计，不是训练/性能实验；机器凭证见 `code/artifacts/audit/pi_jwm_step5_5_patch_20260923/`。原 STEP 5.5 H4 smoke 只消费 `runtime/` 的 1+1 mini subset，PATCH 另行验证 4416/1104 full-shard 可索引及跨轨迹 CPU batch。
+
 > 本索引负责回答“实验做过没有、它回答什么问题、结果在哪里”。具体结论必须回到原始实验目录和机器可读产物。
 
 重要实验的结构化记录见 `docs/registries/experiment_registry.json`；全部 artifact 一级目录的自动目录见 `docs/registries/generated/artifact_catalog.csv`。注册表 v2 对每条重要实验使用统一字段；未知或不适用的内容必须写成 `null` 并在 `field_notes` 解释，不能直接省略。

@@ -261,7 +261,7 @@ def _all_imports(source: str) -> set[str]:
 
 def _git_paths(repo_root: Path) -> list[str]:
     result = subprocess.run(
-        ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+        ["git", "ls-files", "--cached", "-z"],
         cwd=repo_root,
         check=True,
         capture_output=True,

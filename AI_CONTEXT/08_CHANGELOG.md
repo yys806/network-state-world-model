@@ -1,5 +1,11 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-23 STEP 5.5-PATCH
+
+- 增加正式 60-shard lazy/batch Trainer 消费路径与 train-only encoder 统计；将原 1+1 runtime mini smoke 从 full-shard 证据中分离。
+- Future Return birth 改由真实 target typed Flow 与 current support 比较；全量审计 8828 次 unsupported/fixed-support，旧字段零计数失效。生命周期修复 213 次经 Raw 和同对象 fixture 审计。
+- CPU only；没有 GPU、正式训练、locked_test、baseline、Planner 或性能声明。
+
 ## 2026-09-23 STEP 5.5
 
 - 建成并接受 Formal Dataset v1：60×96 real transitions、H2/L4、48/12 trajectory split、5520 windows、五类 hashed package 与 train-only normalization。

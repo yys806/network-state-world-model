@@ -7,6 +7,8 @@
 
 研究者已冻结目标架构；STEP 5.2 已把 STEP 4.3B encoder、STEP 4.4 RSSM/decoder 与 family-specific training-only target encoder 接入 CPU development loop。Motion/CSI 使用独立 component-mask-normalized MSE，Vehicle/Comm latent 使用分族解析 KL；不使用 learned observation variance、latent overshooting、KL balancing 或 Flow/Task/DAG 辅助 loss。训练计划由 posterior warmup 转到 prior-dominant 的 `1→2→4→L` horizon，验证始终 prior-only。
 
+STEP 5.5-PATCH 只扩展数据消费架构：完整 Formal Dataset index 选择 60 个 trajectory shard 中 batch 所需的文件，并按同一 sample ID 切取 Sample/Tensor/Graph/Target；原 Encoder/RSSM/loss 结构不变。旧 `runtime/` 1+1 mini smoke 与 full-shard CPU 路径分别记录。Future Return birth 只进入 target-side fixed-support accounting，不进入 current graph/input。
+
 STEP 5.1A-PATCH 已在 additive target namespace 中把 Motion 修正为 multi-horizon local one-step delta，并固定到 current physical input slots；future per-RB CSI 显式绑定 current model relation slots。5.1B/5.1D 已闭合 loss、posterior teacher、KL、metric 与 paired integration；5.2 已实现配置化 curriculum、optimizer/checkpoint 和 prior-only validation。当前仍仅为 8/4 development CPU smoke，不是正式训练；旧训练器的 staged base-freeze 与旧综合 loss 不属于当前架构。
 
 ### STEP 5.1A Future Target 边界

@@ -1,10 +1,14 @@
 # 当前与历史实验
 
+## 2026-09-23 STEP 5.5-PATCH CPU full-shard acceptance
+
+这是数据路径验收，不是正式训练或性能实验。正式 package 的 4416 train、1104 validation 全部可索引；跨不同 trajectory 的 batch、H=4 CPU optimizer step、prior-only validation batch、checkpoint reload 和错误 dataset identity 拒绝见 `code/artifacts/audit/pi_jwm_step5_5_patch_20260923/`。旧 `runtime/` 1+1 smoke 仍为独立 mini 证据。全量 future Return 结构审计识别 8828 次 unsupported/fixed-support 事件；旧字段计数 0/0/0 已被取代。GPU、formal training、locked_test、baseline、Planner 和 performance claim 均为 false。
+
 ## 2026-09-23 STEP 5.5 Formal Dataset v1 acceptance
 
 - 60/60 真实 causal trajectories，0 rejected/replacement；H=2/L=4、每条 96 transitions、48/12 trajectory split、4416/1104/5520 windows。
 - 四动作 train intervention rate：Route 38.60%、Comm 42.78%、Comp 38.52%、Mobility 40.08%；每族干预覆盖 48 条 train 与 12 条 validation trajectory。
-- Dataset acceptance 25/25、deterministic rebuild 5/5、CPU FormalTrainingInterface smoke 13/13 均为 true；真实 H=4 optimizer/validation/checkpoint path 通过。
+- Dataset acceptance 25/25、deterministic rebuild 5/5、CPU FormalTrainingInterface **runtime 1+1 mini** smoke 13/13 均为 true；其 H=4 optimizer/validation/checkpoint path 不证明 5520-window full-shard consumption，后者由 STEP 5.5-PATCH 单独验证。
 - 证据入口：`code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/`。这是 Dataset/CPU interface acceptance，不是 formal training 或 performance run。
 
 ## 2026-09-21 STEP 5.1A-PATCH target-contract validation

@@ -1,0 +1,52 @@
+{
+  "checks": {
+    "batch_validation_aggregation": true,
+    "bounded_shard_memory": true,
+    "checkpoint_reload": true,
+    "cross_train_trajectory_batch": true,
+    "cross_validation_trajectory_batch": true,
+    "full_index_4416_1104": true,
+    "h4_cross_train_forward": true,
+    "h4_optimizer_step": true,
+    "h4_prior_only_validation": true,
+    "train_only_encoder_stats": true,
+    "wrong_dataset_identity_rejected": true
+  },
+  "cross_train_sample_ids": [
+    "formal-v1-sim-2026092354-policy-2026092454::anchor-0001",
+    "formal-v1-sim-2026092345-policy-2026092445::anchor-0001"
+  ],
+  "cross_validation_sample_ids": [
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0001"
+  ],
+  "dataset_manifest_hash": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "h4_train_step": {
+    "loss_finite": true,
+    "parameter_update": {
+      "any_changed": true,
+      "changed_count": 317
+    },
+    "rollout_horizon": 4
+  },
+  "h4_validation": {
+    "horizon_count": 4,
+    "prior_only": true
+  },
+  "max_simultaneously_loaded_trajectory_shards": 2,
+  "passed": true,
+  "sample_counts": {
+    "train": 4416,
+    "validation": 1104
+  },
+  "schema_version": "PI-JWM-Step-5.5-PATCH-CPU-Acceptance-v1",
+  "scope": {
+    "baseline": false,
+    "cpu": true,
+    "formal_training": false,
+    "gpu": false,
+    "locked_test_accessed": false,
+    "performance_claim": false,
+    "planner": false
+  }
+}

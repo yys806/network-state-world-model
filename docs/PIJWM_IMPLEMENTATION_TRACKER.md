@@ -1,5 +1,7 @@
 # PI-JWM Implementation Tracker
 
+**2026-09-23 STEP 5.5-PATCH：** 纠正原 H=4 `runtime/` 1+1 mini smoke 的边界。新增 `FullFormalShardDataset → FullFormalTrainer` 全量 4416/1104 索引与按 batch/shard 加载；真实 CPU H=4 参数更新、跨轨迹验证与 checkpoint 通过。全量 fixed-support audit 发现 8828 次 Return-birth unsupported/fixed-support；旧 receipt 的 0/0/0 为未检测字段读数，已被新凭证取代。AirFogSim lifecycle repair 为 213 次 collection-side 同对象去重。证据见 `docs/implementation_records/STEP_05_5_PATCH_FULL_CONSUMPTION_FIXED_SUPPORT_CLOSURE.md`。GPU/formal training/locked_test 均未执行。
+
 更新时间：2026-09-23。**STEP 5.5 已完成 Formal Dataset v1 的 60 条真实 trajectory、H=2/L=4 五类 package、48/12 split、四动作 coverage、deterministic rebuild 与 CPU H=4 trainer smoke**。`FORMAL_DATASET_READINESS=READY`、`TRAINING_STACK_READINESS=PASS`；full/formal training、GPU execution、Planner、baseline 与 locked_test 仍未开始。
 
 ## 当前依据与执行边界

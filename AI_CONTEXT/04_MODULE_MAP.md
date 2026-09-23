@@ -7,8 +7,10 @@ Source of truth：文件存在性、依赖和反向引用可查 `docs/registries
 | 问题 | 当前入口 | 核心对象 | 分类 |
 | --- | --- | --- | --- |
 | 新定义实施状态 | `docs/PIJWM_IMPLEMENTATION_TRACKER.md` | Step/模块矩阵 | audit/current |
+| STEP 5.5-PATCH full-shard consumption | `code/src/pi_jwm/step5_5_full_sharded_loader_v1.py`、`code/scripts/accept_step5_5_patch_cpu_v1.py` | 4416/1104 index、按需 shard/batch、H4 CPU Trainer/checkpoint | current/CPU acceptance；no formal training/GPU |
+| STEP 5.5-PATCH Return/lifecycle audit | `code/src/pi_jwm/step5_5_fixed_support_audit_v1.py`、`code/src/pi_jwm/step5_5_lifecycle_repair_v1.py`、`code/scripts/audit_step5_5_patch_v1.py` | target-only Return birth 检测、Raw 213 次同对象集合修复审计 | current/audit |
 | STEP 5.5 Formal Dataset collector/builder | `code/scripts/collect_step5_5_formal_raw_v1.py`、`code/scripts/build_step5_5_formal_dataset_v1.py` | 60×96 Raw、H2/L4 sharded five-package build、coverage/hash/acceptance | current/accepted formal dataset |
-| STEP 5.5 CPU interface acceptance | `code/scripts/step5_5_formal_dataset_cpu_acceptance_v1.py` | FormalTrainingInterface → Step52Trainer → H4 optimizer/validation/checkpoint | current/CPU smoke only；no formal training/GPU |
+| STEP 5.5 CPU interface acceptance | `code/scripts/step5_5_formal_dataset_cpu_acceptance_v1.py` | FormalTrainingInterface → `runtime/` 1+1 subset → Step52Trainer → H4 optimizer/validation/checkpoint | historical mini smoke；no full-shard proof |
 | Step 1 详细证据 | `docs/implementation_records/STEP_01_AUDIT.md` | 定义—实现—验证 | audit/current |
 | Raw 因果合同 | `code/src/pi_jwm/raw_trajectory_causal_contract_v1.py` | future-task 分区、canonical acceleration、slot outcome 聚合 | current/frozen raw |
 | Step 2.3 真实 runner | `code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py` | 真实字段、return route 与因果验收 | current/evidence |

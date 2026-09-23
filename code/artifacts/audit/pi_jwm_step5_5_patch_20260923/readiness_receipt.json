@@ -1,0 +1,36 @@
+{
+  "baseline": false,
+  "checks": {
+    "formal_dataset_artifact_ready": true,
+    "full_shard_index_and_payloads": true,
+    "future_fixed_support_accounting": true,
+    "gpu_prepared_prior_static_audit": true,
+    "h4_cpu_full_shard_batch": true,
+    "lifecycle_repair_audit": true,
+    "same_dataset_identity": true,
+    "training_stack_prior_and_patch": true
+  },
+  "dataset_manifest_hash": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "evidence": {
+    "audit": "audit_receipt.json",
+    "cpu": "cpu_acceptance_receipt.json",
+    "dataset": "dataset_acceptance_receipt.json",
+    "gpu_static_prior": "code/artifacts/protocols/pi_jwm_step5_4_gpu_training_readiness_v1_20260922/readiness_receipt.json",
+    "traversal": "full_shard_traversal_receipt.json"
+  },
+  "formal_dataset_artifact": "READY",
+  "formal_dataset_readiness": "READY",
+  "formal_training": false,
+  "full_formal_dataset_loader": "VERIFIED",
+  "future_fixed_support_accounting": "VERIFIED",
+  "gpu_codepath_readiness": "PREPARED",
+  "gpu_training_verified": false,
+  "h4_full_data_consumption_path": "VERIFIED",
+  "lifecycle_repair_audit": "PASS",
+  "locked_test_accessed": false,
+  "passed": true,
+  "performance_claim": false,
+  "planner": false,
+  "schema_version": "PI-JWM-Step-5.5-PATCH-Readiness-v1",
+  "training_stack_readiness": "PASS"
+}

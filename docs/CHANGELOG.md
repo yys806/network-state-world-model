@@ -1,5 +1,12 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-23：STEP 5.5-PATCH Full Consumption & Fixed Support
+
+- 新增 Formal Dataset 全量索引、trajectory shard 按需 batch 加载与 `FullFormalTrainer`，CPU H4/验证/checkpoint 机器验收独立于旧 runtime 1+1 mini smoke。
+- Future Return birth 使用真实 typed target Flow 与 current Flow support 检测，组件级计数 8828/0/8828；原字段零计数不再作为结构结论。
+- 审计 Raw 213 次 lifecycle collection repair；同一 Task 对象、保留最远 lifecycle、无直接 Task 结果字段修改。
+- 知识索引的 tracked-file inventory 改为只读取 Git 已跟踪文件，避免把原有未跟踪 `TASK/` 和绘图脚本的路径/哈希写进 GitHub 索引。
+
 ## 2026-09-23：STEP 5.5 Formal Dataset v1 Build & Acceptance
 
 - 新增真实 AirFogSim 60-trajectory causal collector、H2/L4 sharded Formal Dataset builder、coverage/determinism/finalization/CPU interface acceptance 工具与 focused tests。

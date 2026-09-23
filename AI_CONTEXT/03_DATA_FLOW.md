@@ -2,9 +2,13 @@
 
 ## 2026-09-23 Formal Dataset v1 当前链路
 
+STEP 5.5-PATCH 增加正式消费分支：`packages/samples/index.json` 全量 5520 个窗口 → 以 frozen 48/12 trajectory split 校验 → 每次只读取 batch 所需的 trajectory shard → 按 sample identity 同步切取 Sample/Tensor/Graph/Target → `FullFormalTrainer`。encoder 的 base/extension/Flow stats 来自 Formal Dataset train-only normalization，Physical relation stats 从 48 条 train graph shard 流式计算；validation 不参与拟合。`runtime/` 1+1 只用于原 mini smoke，不能代表全量消费。
+
+Future Return birth 从 target frame 的真实 typed Return Flow 与 current `input_entity_index.logical_flow` 比较；缺失 current slot 时只记录 target-side unsupported/fixed-support，当前 input 不变，Motion/CSI 有效 mask 保留。旧 package acceptance receipt 的三个零值仅是旧字段读取，须以 PATCH 全量结构审计为准；它按 5520 windows × 4 future frames 计数，Return-birth 事件 8828、unresolved 0、fixed-support blocked 8828。目标张量数值与原 frozen package 不变。
+
 真实 AirFogSim Raw（60×96 transitions）→ H=2/L=4 model-ready Samples → trajectory-sharded Tensor / Typed Graph / Motion-CSI Target → 仅 48 条 train trajectory 拟合的 Normalization → manifest-relative 五类 package。固定 split 为 48 train/12 validation，对应 4416/1104 windows；Future Target 保持独立 namespace，Future Action unresolved=0，`locked_test` 不存在。五类 package 的 SHA-256、identity alignment、serialize/reload 和 deterministic rebuild 已通过机器验收。
 
-正式 package 由 `FormalTrainingInterface` 加载后进入 `Step52Trainer`；CPU smoke 执行一次 optimizer step 和 H1-H4 prior-only validation。该链路证明接口可执行，不是正式训练或性能证据。
+原 STEP 5.5 CPU smoke 实际读取 `runtime/` 中 1 train + 1 validation，并非完整 5520-window package；其结论限于 `RUNTIME_MINI_SMOKE=PASS`。PATCH 另行验证正式 shard 消费路径；两种证据分开记录。
 
 > 2026-09-18 Step 1 结论：下列 v5 数据流是旧协议下可追溯资产，尚未满足新 `00–06` 的 Agent/Communication/Task-Agent 关系和 Route/Comm/Comp/UAV 四类动作合同。稳定 ID/index、mask、split 和 train-only normalization 原则可复用；新 schema 尚未冻结。
 

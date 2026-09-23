@@ -23,6 +23,7 @@ for entry in (CODE / "src", CODE / "scripts", CODE / "reference" / "AirFogSim" /
 import run_step2_3_real_airfogsim_raw_contract_finalization_v1 as step23  # noqa: E402
 import run_step2_4_real_airfogsim_communication_outcome_semantics_v1 as step24  # noqa: E402
 from pi_jwm.raw_trajectory_causal_contract_v1 import aggregate_slot_outcomes  # noqa: E402
+from pi_jwm.step5_5_lifecycle_repair_v1 import TASK_COLLECTION_PRIORITY, repair_duplicate_task_references as _repair_duplicate_task_references  # noqa: E402
 
 
 DECISION_STEPS = 96
@@ -30,11 +31,6 @@ ACCEPTED_COUNT = 60
 SIMULATOR_SEED_START = 2026092300
 POLICY_SEED_START = 2026092400
 WIRED_EDGES = step24.WIRED_EDGES
-TASK_COLLECTION_PRIORITY = (
-    "_to_generate_task_infos", "_waiting_to_offload_tasks", "_offloading_tasks",
-    "_computing_tasks", "_waiting_to_return_tasks", "_returning_tasks",
-    "_done_tasks", "_out_of_ddl_tasks",
-)
 
 
 def _json_bytes(value: Any) -> bytes:
@@ -93,41 +89,6 @@ def _causal_task_ids(decisions: list[dict[str, Any]], frame: int) -> set[str]:
 def _causal_entity_ids(decisions: list[dict[str, Any]], frame: int) -> set[str]:
     reference_frame = max(0, frame - 3)
     return {str(row["entity_id"]) for row in decisions[reference_frame].get("entities", [])}
-
-
-def _repair_duplicate_task_references(task_manager: Any, frame: int) -> list[dict[str, Any]]:
-    """Remove stale duplicate references while preserving the furthest lifecycle.
-
-    AirFogSim mutates lifecycle lists in place.  On longer runs its deadline
-    cleanup can leave the same Task object in an earlier list after adding it
-    to a terminal list.  The frozen observer requires one lifecycle per task,
-    so the collection adapter records and removes only those stale references.
-    """
-    memberships: dict[str, list[tuple[int, str, str, Any]]] = {}
-    for priority, collection_name in enumerate(TASK_COLLECTION_PRIORITY):
-        collection = getattr(task_manager, collection_name)
-        for owner, tasks in collection.items():
-            for task in tasks:
-                memberships.setdefault(str(task.getTaskId()), []).append((priority, collection_name, str(owner), task))
-    repairs: list[dict[str, Any]] = []
-    for task_id, rows in memberships.items():
-        if len(rows) <= 1:
-            continue
-        if len({id(row[3]) for row in rows}) != 1:
-            raise RuntimeError(f"distinct Task objects share task_id={task_id}")
-        chosen = max(rows, key=lambda row: row[0])
-        for collection_name in TASK_COLLECTION_PRIORITY:
-            collection = getattr(task_manager, collection_name)
-            for owner, tasks in collection.items():
-                collection[owner] = [task for task in tasks if str(task.getTaskId()) != task_id]
-        getattr(task_manager, chosen[1]).setdefault(chosen[2], []).append(chosen[3])
-        repairs.append({
-            "frame_index": frame, "task_id": task_id,
-            "before": [f"{name}:{owner}" for _, name, owner, _ in rows],
-            "kept": f"{chosen[1]}:{chosen[2]}",
-            "reason": "remove_stale_duplicate_reference_preserve_furthest_lifecycle",
-        })
-    return repairs
 
 
 def collect_trajectory(simulator_seed: int, policy_seed: int, trajectory_id: str) -> dict[str, Any]:

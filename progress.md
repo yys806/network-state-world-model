@@ -1,5 +1,11 @@
 # Progress
 
+## 2026-09-23 STEP 5.5-PATCH
+
+- 实现 full-shard Formal Dataset loader/Trainer、train-only encoder normalization 和 H4 CPU acceptance；保留原 runtime 1+1 mini 与 development 8/4。
+- 结构检测在 5520 windows 中识别 8828 次 future Return birth unsupported/fixed-support；真实目标数值/Mask 不变。Raw lifecycle repair 审计得到 213 次、50 trajectory、124 trajectory-task。
+- 原字段计数 0/0/0 是未检测结果；PATCH 机器 receipt 与 context 正在收口。GPU/formal training/locked_test/baseline/Planner/performance claim=false。
+
 ## 2026-09-23 STEP 5.5 — Formal Dataset v1 Build & Acceptance
 
 - [x] 60/60 primary seed pairs 被完整接受；每条 96 transitions/97 Decisions，时间网格连续，无 partial/replacement。

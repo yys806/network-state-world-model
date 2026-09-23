@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> STEP 5.5-PATCH 已补齐 Formal Dataset 60 trajectory shard 的全量索引与按需 CPU batch 消费；原 1+1 runtime smoke 不再承担 full-shard 证明。future Return birth 全量检测为 8828 次按窗口-未来步计数的 unsupported/fixed-support 事件，原零计数已失效。未正式训练，未用 GPU，未访问 `locked_test`。
+
 > 本文是导航性状态摘要。当前结果必须回到原始 checkpoint、metrics、manifest 和 audit 验证。
 > 截至 2026-09-23，STEP 5.5 Formal Dataset v1 已接受：60 条真实 trajectory、H2/L4、48/12 split、5520 windows、五类 package 与 CPU H=4 interface smoke 均通过。GPU 未使用，`locked_test` 未访问，formal training 未开始。
 
