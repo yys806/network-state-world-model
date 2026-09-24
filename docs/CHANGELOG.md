@@ -1,5 +1,10 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-24：STEP 5.6A GPU Smoke 与完整 Validation 验收
+
+- RTX 4090 上正式数据 H4 batch 1/2/4/8 的 CUDA 前向、反向与少量 optimizer step 通过；加入 4416 train-window 确定性 trajectory sampler、portable current-state 构造与 fixed-support 映射修复。
+- 完整 1104-window prior-only GPU validation 经四组互斥轨迹合并通过；这是未训练 smoke 模型的运行证据，不是性能结果。正式训练数值配置仍待研究者决定，未进行 formal training、locked_test、baseline 或 Planner。
+
 ## 2026-09-23：STEP 5.5-SHARE Formal Dataset v1 Export Bundle
 
 - 基于已接受的 Formal Dataset v1 生成本地 portable Training Bundle 与 Raw Add-on Bundle；仅提交分享 README、manifest、内容清单和 verification receipt，Dataset 内容与 identity 未变化。
@@ -252,3 +257,9 @@
 ## 2026-09-22 STEP 5.4
 
 - Added `FormalTrainingInterface` and CPU-only formal-training readiness audit; formal Dataset and CUDA remain blocked/untested.
+
+## 2026-09-23 STEP 5.6A — Mid-run record (superseded by 2026-09-24 closure)
+
+- Added the real Formal Dataset v1 CUDA smoke path and deterministic trajectory-aware sampler evidence. H4 forward/backward, optimizer update, cross-trajectory batches, checkpoint reload, and identity rejection passed on the remote RTX 4090.
+- Full 1104-window prior-only GPU validation is running in disjoint validation trajectory shards; no full-validation PASS is claimed before merge receipt.
+- Formal training remains closed. Numerical training configuration is explicitly awaiting researcher decision; locked_test, baseline, Planner, and performance claims remain false.

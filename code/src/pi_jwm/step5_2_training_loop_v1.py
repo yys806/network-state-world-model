@@ -896,8 +896,10 @@ class Step52Trainer(nn.Module):
         self.encoder.load_state_dict(states["encoder"]); self.model.load_state_dict(states["rssm"]); self.target_encoder.load_state_dict(states["target_encoder"]); self.future_posterior.load_state_dict(states["future_posterior"])
         self.optimizer.load_state_dict(payload["optimizer_state"])
         rng = payload.get("rng_state", {})
-        if "torch" in rng: torch.set_rng_state(rng["torch"])
-        if self.device.type == "cuda" and rng.get("cuda") is not None: torch.cuda.set_rng_state_all(rng["cuda"])
+        # torch.load(map_location=cuda) also moves RNG byte tensors to CUDA,
+        # while both RNG restore APIs require CPU byte tensors.
+        if "torch" in rng: torch.set_rng_state(rng["torch"].cpu())
+        if self.device.type == "cuda" and rng.get("cuda") is not None: torch.cuda.set_rng_state_all([state.cpu() for state in rng["cuda"]])
         if "numpy" in rng: np.random.set_state(rng["numpy"])
         if "python" in rng: random.setstate(rng["python"])
         return dict(payload["state"])

@@ -1,5 +1,7 @@
 # PI-JWM 项目上下文交接
 
+> 当前状态（2026-09-24）：STEP 5.6A 的 RTX 4090 H4 smoke 和完整 1104-window prior-only GPU validation 已通过；正式训练数值配置待研究者决定。`formal_training=false`、`locked_test_accessed=false`。下方 2026-09-09 和暂停记录均为历史时点，当前机器凭证见 `code/artifacts/audit/pi_jwm_step5_6a_20260923/readiness_receipt.json`。
+
 > 更新时间：2026-09-09（Asia/Shanghai）
 > 项目根目录：`D:\shen\PKU\PIJWM`
 > 当前分支 / HEAD：`main` / `0630515bf8c43d8212f14fcc449291bb62860c67`
@@ -418,3 +420,14 @@ ssh -o StrictHostKeyChecking=no -o ConnectTimeout=15 -p 30339 root@connect.nmb1.
 - `AI_CONTEXT` 的事实优先级低于当前源码/config/experiment，高于普通文档和历史聊天；它不能建立正式科研结论。
 - `AGENTS.md` 已按用户明确授权加入三方角色、Context Consistency Check、自动 commit/push、私人笔记禁区和冲突等待研究者决策规则。
 - 当前科研边界不变：P4 缺第三 seed 与三 seed审计；P6、GPU自动启动、远端同步、正式性能声明和 `locked_test` 均未开放。
+
+## 2026-09-24 STEP 5.6A 暂停快照
+
+- 用户已同意明天继续 STEP 5.6A；本次暂停前已停止远端 GPU validation 进程，服务器当前不再运行 `run_step5_6a_gpu_smoke_v1.py`。
+- 已验证：RTX 4090 CUDA smoke（H4 forward/backward、optimizer step、batch 1/2/4/8、跨 trajectory、checkpoint reload、错误 identity 拒绝）通过；本地 STEP 5.5-PATCH/GPU merge/STEP 5.1D focused regression 与 compileall 通过。
+- 已完成 validation 分片 0：276/276 windows、3 条 validation trajectories、prior-only、`passed=true`；receipt 位于 `code/artifacts/audit/pi_jwm_step5_6a_20260923/validation_part_0.json`。该目录仍为本地审计产物，不代表 full 1104 validation 已通过。
+- 运行时诊断确认：分片 1 的瓶颈是计算耗时和此前后台命令错误地将日志再次重定向到 `/dev/null`，不是数据身份错误或死锁。正确日志中 H4 batch size 8 单 batch 约 25 秒，后段曾观测到约 150 秒；分片 1 在停止前完成到 200/276，日志保留为 `validation_part_1.log`。
+- 当前未完成：validation 分片 1（剩余 76 windows）、分片 2、分片 3、四片合并、checkpoint forward identity 复核、最终回归/Context Consistency/Git commit/push。
+- 明天续跑入口：远端 workdir `/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work`，使用同一 `dataset/formal_dataset_manifest.json`、`gpu_smoke_checkpoint.pt` 和分片命令；先检查远端进程/日志，再从未完成分片继续。不要重新运行已通过的 smoke，不要启动 formal training。
+- 边界保持：`formal_training=false`、`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。训练数值配置仍为 `AWAITING_RESEARCHER_DECISION`。
+- 当前 Git 未提交，用户原有 `TASK/` 和 `code/scripts/plot_step5_3e_tiny_overfit.py` 保持不动；不要执行 reset/clean。

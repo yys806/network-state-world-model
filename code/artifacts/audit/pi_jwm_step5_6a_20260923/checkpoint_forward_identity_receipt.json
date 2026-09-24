@@ -1,0 +1,27 @@
+{
+  "checkpoint_sha256": "cc9850c8bfd4f199783d4f7befc11d4996c673dc273a9064f585f524bb4f6341",
+  "csi_prediction_allclose_1e_6": true,
+  "csi_prediction_bitwise_identical": false,
+  "csi_prediction_max_abs_delta": 7.62939453125e-06,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "device": "cuda",
+  "future_posterior_teacher_calls": 0,
+  "future_target_encoder_calls": 0,
+  "horizon": 4,
+  "motion_prediction_allclose_1e_6": true,
+  "motion_prediction_bitwise_identical": false,
+  "motion_prediction_max_abs_delta": 5.960464477539063e-08,
+  "parameter_digest_identical": true,
+  "passed": true,
+  "schema_version": "PI-JWM-STEP-5.6A-CUDA-Checkpoint-Forward-Identity-v1",
+  "scope": {
+    "formal_training": false,
+    "locked_test_accessed": false,
+    "performance_claim": false
+  },
+  "state_identical": true,
+  "validation_sample_ids": [
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0001"
+  ]
+}

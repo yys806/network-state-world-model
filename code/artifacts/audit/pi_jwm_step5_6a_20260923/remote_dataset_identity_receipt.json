@@ -1,0 +1,50 @@
+{
+  "all_present_and_matching": true,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "package_hashes": {
+    "graph": "8bf3be889332cdb92e99c5881f27d575db7074d0280bdf1d392bbf373101ddb3",
+    "normalization": "8208dff6c97059a9ac9a8bac5c5e4a4928d1db6f0ab7bdbc2500fc5b92140b28",
+    "samples": "21e4f2ea527a8e0c658b30029e1c4a37633c26216222d06a5fb2d4edf2cbd0cb",
+    "target": "e37a0eaf02e6b08dddcc4af6f4bde2aeb9dea64e64352640d3919440038dad22",
+    "tensor": "fb7eb8b25581d0e0b23e62676b6ac02e9bcbdcded6bf83d9db904c83b3967b0f"
+  },
+  "raw_uploaded": false,
+  "schema_version": "PI-JWM-STEP-5.6A-Remote-Dataset-Identity-v1",
+  "scope": {
+    "formal_training": false,
+    "locked_test_accessed": false
+  },
+  "verification": {
+    "all_present_and_matching": true,
+    "graph": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "8bf3be889332cdb92e99c5881f27d575db7074d0280bdf1d392bbf373101ddb3"
+    },
+    "normalization": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "8208dff6c97059a9ac9a8bac5c5e4a4928d1db6f0ab7bdbc2500fc5b92140b28"
+    },
+    "samples": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "21e4f2ea527a8e0c658b30029e1c4a37633c26216222d06a5fb2d4edf2cbd0cb"
+    },
+    "target": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "e37a0eaf02e6b08dddcc4af6f4bde2aeb9dea64e64352640d3919440038dad22"
+    },
+    "tensor": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "fb7eb8b25581d0e0b23e62676b6ac02e9bcbdcded6bf83d9db904c83b3967b0f"
+    }
+  }
+}

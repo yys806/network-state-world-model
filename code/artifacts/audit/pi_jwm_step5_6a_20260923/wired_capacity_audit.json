@@ -1,0 +1,16 @@
+{
+  "frozen_wired_edges": [
+    {
+      "bidirectional": true,
+      "capacity_mbps": 100.0,
+      "u": "RSU_0",
+      "v": "cloudServer_4"
+    }
+  ],
+  "matching_trajectories": 60,
+  "mismatched_trajectories": [],
+  "passed": true,
+  "raw_modified": false,
+  "raw_trajectories": 60,
+  "schema_version": "PI-JWM-STEP-5.6A-Wired-Capacity-Source-Audit-v1"
+}

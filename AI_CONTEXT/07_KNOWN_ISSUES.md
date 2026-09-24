@@ -1,5 +1,12 @@
 # 已知问题与冲突
 
+## STEP 5.6A 当前边界（2026-09-24）
+
+- GPU H4 few-step smoke 与完整 1104-window prior-only validation 均通过；这验证运行路径，不验证正式训练或预测性能。CUDA checkpoint 重载参数/状态完全一致；两次预测存在微小浮点差异（Motion 最大约 8.20e-8、CSI 最大约 7.63e-6），按记录的 `rtol=atol=1e-6` 均通过，不能声称逐位相同。
+- 正式训练数值配置（seed、batch、optimizer、预算、阶段和 curriculum 起点、KL 数值、验证/保存间隔、patience）仍待研究者决定。development 默认值和少量 GPU step 不构成正式配置；`FORMAL_TRAINING_CONFIG=AWAITING_RESEARCHER_DECISION`。
+- 旧 STEP 5.5-SHARE README 所列代码版本只实证了 package/index 的 portable 解压加载；本次真实 H4 远端消费暴露并修复了模型状态构造对本地 Raw 的依赖。已有分享 ZIP 的 Dataset 字节和身份不变；完整 Trainer 使用应采用 STEP 5.6A 修复后的源码。
+- Few-step smoke/未训练模型 validation 不是正式训练结果或性能证据。`formal_training=false`、`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。
+
 ## STEP 5.5-PATCH 修正的证据边界
 
 - STEP 5.5 原 CPU smoke 使用 `runtime/` 的 1+1 subset；新的 full-shard CPU 路径单独验收。不能把 mini smoke 写成全部正式窗口进入 Trainer。
@@ -11,7 +18,7 @@ Source of truth：本文件是入口；具体事实必须回到列出的代码�
 ## STEP 5.5 当前边界
 
 - Formal Dataset v1 已 READY：60 条真实 trajectory、H2/L4、48/12 split、五类 package 与四动作 coverage 均通过机器验收；development Route/Comp 0/0 已不再是 formal Dataset blocker。
-- 当前唯一正式训练 blocker 是 STEP 5.6A 尚未冻结 training seed/batch/epoch/max_steps/patience/budget，且 GPU smoke 未执行。`GPU_CODEPATH_READINESS=PREPARED` 不等于 `GPU_TRAINING_VERIFIED`。
+- STEP 5.5 当时的正式训练 blocker 是 training seed/batch/epoch/max_steps/patience/budget 未冻结，且 GPU smoke 尚未执行。该历史状态已由上方 STEP 5.6A GPU smoke 证据更新；数值配置 blocker 仍在。
 - `formal_dataset=true`、`training_stack=PASS`，但 `full_training=false`、`gpu=false`、`locked_test=false`、`performance_claim=false`。
 
 ## STEP 5.1A/5.1D target boundary

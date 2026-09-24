@@ -1,0 +1,30 @@
+{
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_training": false,
+  "gpu_query": "NVIDIA GeForce RTX 4090, 24564 MiB, 23563 MiB, 580.105.08",
+  "gpu_smoke_only": true,
+  "host": "autodl-container-ce064696ad-123328c8",
+  "local_source_sha256": {
+    "code/scripts/build_step5_1d_unified_model_chain_v1.py": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+    "code/scripts/run_step5_6a_gpu_smoke_v1.py": "9f4e5d7fbf601afddbbe42bd43594fa7d0b1bafd94d64f9b893f6816821bedbc",
+    "code/src/pi_jwm/step5_2_training_loop_v1.py": "5ed289c734cd15266feb7ff2bbe2edc387022054a71ebdd629170a748bbf1a2b",
+    "code/src/pi_jwm/step5_5_full_sharded_loader_v1.py": "cf0dd63e730139d2b09bd32edb9371fcb7502ed35f1a4b6d878df5c52536794a"
+  },
+  "locked_test_accessed": false,
+  "python_torch": {
+    "cuda": "12.8",
+    "cuda_available": true,
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128"
+  },
+  "remote_disk_available_bytes": 29407772672,
+  "remote_source_sha256": {
+    "code/scripts/build_step5_1d_unified_model_chain_v1.py": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+    "code/scripts/run_step5_6a_gpu_smoke_v1.py": "9f4e5d7fbf601afddbbe42bd43594fa7d0b1bafd94d64f9b893f6816821bedbc",
+    "code/src/pi_jwm/step5_2_training_loop_v1.py": "5ed289c734cd15266feb7ff2bbe2edc387022054a71ebdd629170a748bbf1a2b",
+    "code/src/pi_jwm/step5_5_full_sharded_loader_v1.py": "cf0dd63e730139d2b09bd32edb9371fcb7502ed35f1a4b6d878df5c52536794a"
+  },
+  "schema_version": "PI-JWM-STEP-5.6A-Remote-Environment-v1",
+  "source_base_commit": "a8c5dfacd6d1ea0ef5414934e5cbf4e8a2665725",
+  "source_sha256_match": true
+}

@@ -1147,3 +1147,13 @@
 - Formal five-package hashes 与第二次完整 rebuild 完全一致；路径身份均为 portable relative paths，大型 Raw/package 保持 local-only。
 - Formal action coverage 已消除 development Route/Comp 0/0 数据 blocker；pending Flow 时 Route/Comm 只证明模型路由，不被夸大为已执行服务 transition。
 - CPU H=4 runtime 真实经过 optimizer、prior-only H1-H4 validation 与 checkpoint reload；GPU 未执行，formal training 仍由 5.6A 配置冻结/GPU smoke 阻塞。
+# 2026-09-23 STEP 5.6A findings
+
+- Training Bundle 不含 Raw；旧 `build_state()` 读取本地 Raw 才得到 wired capacity，导致远端 full-shard batch 无法启动。60/60 Raw 的有线链路结构完全一致，Formal loader 现传入已审计的 100 Mbps 双向当前环境值，未改变 Dataset package。
+- 真实未来 Return birth 的 Comm 动作有时没有 current Flow slot；必须按 frozen fixed-support 边界记录 blocked，不能绑定同任务旧 Input Flow。未来目标不进入动作构造。
+- prior-only rollout 可能比真实 continuation 更早把已有 Flow 预测为结束；Comm 仍可绑定该锚点原本活跃的 typed current relation，不复活 Flow，也不声称服务已发生。同任务已完成 Input 与当前活跃 Return 必须按锚点 Flow 身份消歧。
+- CUDA checkpoint `map_location=cuda` 会把 RNG byte tensor 搬到 GPU；PyTorch RNG restore API 需要 CPU byte tensor。已做最小设备转换并通过 GPU reload/negative identity。
+- 现有 development 数值不是研究者冻结的正式训练配置；GPU batch 兼容性只能给工程候选，不能替代训练 seed/LR/预算/阶段/KL 等研究决定。
+# 2026-09-24 STEP 5.6A GPU 验收发现
+
+完整 1104-window validation 的四组 serial worker wall 合计 7103.09 秒、shard 数据加载合计 72.15 秒（1.02%）；CUDA event 包含主机调度，不能称纯 kernel 时间。一次 profiler 探针因高 CPU 插桩开销超过 4 分钟而停止，不纳入验收。未训练 smoke checkpoint 的 `L_Val=0.829751` 不构成预测性能结论。CUDA checkpoint 两次重载参数与状态完全一致，H4 输出有微小浮点差异（Motion 8.20e-8、CSI 7.63e-6），在 rtol=atol=1e-6 内一致，不能称逐位一致。

@@ -107,7 +107,7 @@ def _normalize_csi_prediction(raw: torch.Tensor, parameters: dict[str, Any]) -> 
     return (raw - float(parameters["csi_mean"])) / float(parameters["csi_std"])
 
 
-def build_state(tensor: dict[str, Any], graph: dict[str, Any], index: int) -> tuple[dict[str, torch.Tensor], dict[str, torch.Tensor]]:
+def build_state(tensor: dict[str, Any], graph: dict[str, Any], index: int, *, wired_edges: list[dict[str, Any]] | None = None) -> tuple[dict[str, torch.Tensor], dict[str, torch.Tensor]]:
     et = _current(tensor, "entity_type_index", index, torch.long)
     presence = _current(tensor, "entity_presence", index, torch.bool)
     comm_src = _graph_current(graph, "comm_relations", "source_index", index, torch.long)
@@ -126,12 +126,13 @@ def build_state(tensor: dict[str, Any], graph: dict[str, Any], index: int) -> tu
     for f in range(flow_presence.shape[1]):
         hits = torch.nonzero((comm_src[0] == c_src[0, f]) & (comm_dst[0] == c_dst[0, f]), as_tuple=False)
         if len(hits): flow_comm[0, f] = hits[0, 0]
-    raw_path = Path(tensor["sample_metadata"][index]["source_path"])
-    raw_payload = gzip.decompress(raw_path.read_bytes()).decode("utf-8") if raw_path.suffix == ".gz" else raw_path.read_text(encoding="utf-8")
-    raw_source = json.loads(raw_payload)
+    if wired_edges is None:
+        raw_path = Path(tensor["sample_metadata"][index]["source_path"])
+        raw_payload = gzip.decompress(raw_path.read_bytes()).decode("utf-8") if raw_path.suffix == ".gz" else raw_path.read_text(encoding="utf-8")
+        wired_edges = json.loads(raw_payload).get("environment", {}).get("wired_edges", [])
     entity_ids = {int(v): k for k, v in tensor["sample_static"][index]["input_entity_index"]["physical"].items()}
     capacity = {}
-    for edge in raw_source.get("environment", {}).get("wired_edges", []):
+    for edge in wired_edges:
         pair = (str(edge["u"]), str(edge["v"])); capacity[pair] = float(edge["capacity_mbps"])
         if edge.get("bidirectional", True): capacity[(pair[1], pair[0])] = float(edge["capacity_mbps"])
     wired_cap = torch.zeros_like(comm_type, dtype=torch.float32)
@@ -242,6 +243,16 @@ def build_action(sample: dict[str, Any], state: dict[str, torch.Tensor], horizon
     comm_i, comm_v, mapping = [], [], []
     for x in comm_entries:
         task = int(x["task_index"])
+        task_id = str(x.get("task_id"))
+        pending_route = route_target_for_task(task_id, task)
+        current_return_supported = any(flow_id.startswith(f"flow::{task_id}::Return::") for flow_id in flows)
+        # A Return Route in the supplied action prefix can refer to a Flow
+        # born after the anchor. Never bind its later Comm action to an older
+        # current Input Flow of the same task.
+        if pending_route is not None and pending_route[1] == "return" and not current_return_supported:
+            mapping.append({"task_index": task, "relation_index": -1, "rb_indices": x["rb_indices"],
+                            "mode": "future_return_birth_fixed_support_blocked", "transition_applied": False})
+            continue
         hits = torch.nonzero(
             (state["flow_task_index"][0] == task)
             & state["flow_presence"][0]
@@ -254,11 +265,48 @@ def build_action(sample: dict[str, Any], state: dict[str, torch.Tensor], horizon
         else:
             if len(hits) > 1:
                 raise ValueError(f"Comm action task {task} maps to multiple current Flow/hop relations")
-            task_id = str(x.get("task_id"))
-            target = route_target_for_task(task_id, task)
+            # Prior rollout can finish a Flow before the recorded next action.
+            # Its current typed slot and hop endpoints remain available, so
+            # retain the Comm allocation on that relation without reviving the
+            # Flow or claiming that the model served it.
+            typed_hits = torch.nonzero(
+                (state["flow_task_index"][0] == task)
+                & state["flow_known"][0]
+                & (state["flow_identity_index"][0] >= 0),
+                as_tuple=False,
+            )
+            anchor_active_slots = {
+                flows[str(row["flow_id"])]
+                for row in sample.get("history", [])[-1].get("logical_flows", [])
+                if str(row.get("task_id")) == task_id and row.get("known") and row.get("presence")
+                and str(row.get("flow_id")) in flows
+            }
+            eligible_typed_slots = [int(hit[0]) for hit in typed_hits if int(hit[0]) in anchor_active_slots]
+            if len(eligible_typed_slots) == 1:
+                slot = eligible_typed_slots[0]
+                src = int(state["carrying_hop_source_index"][0, slot])
+                dst = int(state["carrying_hop_destination_index"][0, slot])
+                typed_relations = torch.nonzero(
+                    (state["comm_source_index"][0] == src)
+                    & (state["comm_target_index"][0] == dst)
+                    & state["comm_presence"][0]
+                    & state["comm_validity"][0],
+                    as_tuple=False,
+                )
+                if len(typed_relations) == 1:
+                    ri = int(typed_relations[0, 0])
+                    mode = "typed_current_support_predicted_inactive" if not bool(state["flow_presence"][0, slot]) else "typed_current_support_relation_rebind"
+                    comm_i.append(ri)
+                    comm_v.append([0.0, 1.0, 0.0, 0.0])
+                    mapping.append({"task_index": task, "relation_index": ri, "rb_indices": x["rb_indices"],
+                                    "mode": mode, "transition_applied": bool(state["flow_presence"][0, slot])})
+                    continue
+            target = pending_route
             source = task_node_index(task_id, task)
             if target is None or source < 0:
-                raise ValueError(f"Comm action task {task} has no causal current Flow or pending Route endpoint")
+                raise ValueError(f"Comm action task {task} has no causal current Flow or pending Route endpoint "
+                                 f"(sample={sample.get('metadata', {}).get('sample_id')}, horizon={horizon}, "
+                                 f"target={target}, source={source})")
             target_index, _, route_source = target
             if route_source >= 0:
                 source = route_source
@@ -271,7 +319,9 @@ def build_action(sample: dict[str, Any], state: dict[str, torch.Tensor], horizon
             )
             if len(relation_hits) != 1:
                 raise ValueError(
-                    f"Comm action task {task} pending Route does not uniquely map to a current communication relation"
+                    f"Comm action task {task} pending Route does not uniquely map to a current communication relation "
+                    f"(sample={sample.get('metadata', {}).get('sample_id')}, horizon={horizon}, "
+                    f"source={source}, target={target_index}, matching_relations={len(relation_hits)})"
                 )
             ri = int(relation_hits[0, 0])
             mode = "pending_route_endpoint"
@@ -281,8 +331,10 @@ def build_action(sample: dict[str, Any], state: dict[str, torch.Tensor], horizon
     comm_idx = torch.tensor([comm_i], dtype=torch.long, device=device) if comm_i else torch.empty((1, 0), dtype=torch.long, device=device)
     comm_values = torch.tensor([comm_v], dtype=torch.float32, device=device) if comm_v else torch.empty((1, 0, 4), device=device)
     alloc = state["rb_active_mask"].clone()
-    for x, ri in zip(comm_entries, comm_i):
-        for rb in x["rb_indices"]: alloc[0, ri, int(rb)] = True
+    for x, row in zip(comm_entries, mapping):
+        ri = int(row["relation_index"])
+        if ri >= 0:
+            for rb in x["rb_indices"]: alloc[0, ri, int(rb)] = True
     n = 1
     task_idx = next((int(x["task_index"]) for x in sample["history"][-1]["tasks"] if x["presence"]), 0)
     flow_idx = int(torch.nonzero(state["flow_presence"][0], as_tuple=False)[0]) if bool(state["flow_presence"].any()) else -1

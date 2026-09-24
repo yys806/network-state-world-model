@@ -1,0 +1,113 @@
+{
+  "by_split": {
+    "dev_train": {
+      "affected_windows": 2260,
+      "fixed_support_blocked_components": 6873,
+      "unresolved_components": 0,
+      "unsupported_components": 6873,
+      "windows": 4416
+    },
+    "dev_validation": {
+      "affected_windows": 641,
+      "fixed_support_blocked_components": 1955,
+      "unresolved_components": 0,
+      "unsupported_components": 1955,
+      "windows": 1104
+    }
+  },
+  "counts": {
+    "affected_windows": 2901,
+    "fixed_support_blocked_components": 8828,
+    "trajectories": 60,
+    "unresolved_components": 0,
+    "unsupported_components": 8828,
+    "windows": 5520
+  },
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "dataset_packages_modified": false,
+  "examples": [
+    {
+      "horizon": 4,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0008",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 3,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0009",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 4,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0009",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 2,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0010",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 3,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0010",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 4,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0010",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 1,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0011",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 2,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0011",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 3,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0011",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 4,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0011",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 4,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0014",
+      "unresolved": 0,
+      "unsupported": 1
+    },
+    {
+      "horizon": 3,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0015",
+      "unresolved": 0,
+      "unsupported": 1
+    }
+  ],
+  "future_targets_model_input": false,
+  "passed": true,
+  "previous_acceptance_accounting": {
+    "fixed_support_blocked": 0,
+    "unresolved": 0,
+    "unsupported": 0
+  },
+  "previous_acceptance_accounting_matches": false,
+  "schema_version": "PI-JWM-STEP-5.6A-Formal-Fixed-Support-Reaudit-v1",
+  "unique_window_flow_births": 3550
+}

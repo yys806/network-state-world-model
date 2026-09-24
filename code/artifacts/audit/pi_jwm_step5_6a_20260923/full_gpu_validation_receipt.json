@@ -1,0 +1,137 @@
+{
+  "L_Val": 0.8297511641582647,
+  "batch_size_per_shard": 8,
+  "checkpoint_sha256": "cc9850c8bfd4f199783d4f7befc11d4996c673dc273a9064f585f524bb4f6341",
+  "data_loading_seconds_sum": 72.14967669732869,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "future_posterior_teacher_calls": 0,
+  "future_target_encoder_calls": 0,
+  "parameter_unchanged": true,
+  "passed": true,
+  "peak_allocated_bytes_per_worker": [
+    88562688,
+    96548352,
+    56800768,
+    51801600
+  ],
+  "peak_reserved_bytes_per_worker": [
+    102760448,
+    113246208,
+    79691776,
+    75497472
+  ],
+  "per_horizon_loss": [
+    {
+      "L_CSI": 0.9751829667928925,
+      "L_Mot": 0.6540734182066709,
+      "L_Pred": 0.8146281924997817,
+      "available_sample_count": 0,
+      "csi_count": 6179400,
+      "csi_numerator": 6026045.625,
+      "horizon": 1,
+      "motion_count": 20600,
+      "motion_numerator": 13473.91241505742
+    },
+    {
+      "L_CSI": 0.9687630824670478,
+      "L_Mot": 0.6788613386350928,
+      "L_Pred": 0.8238122105510703,
+      "available_sample_count": 0,
+      "csi_count": 6179400,
+      "csi_numerator": 5986374.591796875,
+      "horizon": 2,
+      "motion_count": 20600,
+      "motion_numerator": 13984.543575882912
+    },
+    {
+      "L_CSI": 0.9658518601118231,
+      "L_Mot": 0.7037027565136696,
+      "L_Pred": 0.8347773083127463,
+      "available_sample_count": 0,
+      "csi_count": 6179400,
+      "csi_numerator": 5968384.984375,
+      "horizon": 3,
+      "motion_count": 20600,
+      "motion_numerator": 14496.276784181595
+    },
+    {
+      "L_CSI": 0.964585369300367,
+      "L_Mot": 0.7269885212385538,
+      "L_Pred": 0.8457869452694604,
+      "available_sample_count": 0,
+      "csi_count": 6179400,
+      "csi_numerator": 5960558.8310546875,
+      "horizon": 4,
+      "motion_count": 20600,
+      "motion_numerator": 14975.96353751421
+    }
+  ],
+  "posterior_rollout_calls": 0,
+  "prior_only": true,
+  "raw_metrics": {
+    "csi": [
+      {
+        "horizon": 1,
+        "raw_mae": 6.04799676520981,
+        "raw_rmse": 7.547337621923735,
+        "valid_element_count": 6179400
+      },
+      {
+        "horizon": 2,
+        "raw_mae": 6.029618900095478,
+        "raw_rmse": 7.522453544125518,
+        "valid_element_count": 6179400
+      },
+      {
+        "horizon": 3,
+        "raw_mae": 6.020439205009791,
+        "raw_rmse": 7.511142232191685,
+        "valid_element_count": 6179400
+      },
+      {
+        "horizon": 4,
+        "raw_mae": 6.017714644625692,
+        "raw_rmse": 7.5062160287576996,
+        "valid_element_count": 6179400
+      }
+    ],
+    "motion": [
+      {
+        "horizon": 1,
+        "raw_mae": 1.778281127040826,
+        "raw_rmse": 3.8467761776039735,
+        "valid_element_count": 20600
+      },
+      {
+        "horizon": 2,
+        "raw_mae": 1.8753826119135883,
+        "raw_rmse": 3.9210239038196435,
+        "valid_element_count": 20600
+      },
+      {
+        "horizon": 3,
+        "raw_mae": 1.9560606340297217,
+        "raw_rmse": 3.9939613416078763,
+        "valid_element_count": 20600
+      },
+      {
+        "horizon": 4,
+        "raw_mae": 2.0145916748972774,
+        "raw_rmse": 4.059911385577177,
+        "valid_element_count": 20600
+      }
+    ]
+  },
+  "schema_version": "PI-JWM-STEP-5.6A-Merged-Full-GPU-Validation-v1",
+  "scope": {
+    "formal_training": false,
+    "locked_test_accessed": false,
+    "performance_claim": false,
+    "untrained_smoke_model": true
+  },
+  "shards": 4,
+  "throughput_windows_per_second_serial": 0.1554253767146282,
+  "validation_trajectories": 12,
+  "validation_windows": 1104,
+  "validation_worker_wall_seconds_sum": 7103.087174927816
+}

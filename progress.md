@@ -1156,3 +1156,9 @@ Initial feasibility is positive: all 12 target windows map to three real develop
 - 四动作 coverage machine gate 已通过；train 四类 intervention rate 均在 25%–75%，Route/Comm/Comp/Mobility 均覆盖 48 条 train 与 12 条 validation trajectory。
 - H2/L4 sample、causal Flow、typed graph 与 Motion/CSI H1-H4 单 trajectory probe 已通过；当前正在构建完整五类 package，并执行逐 shard identity/reload/hash 验收。
 - 当前边界保持 `gpu=false`、`formal_training=false`、`locked_test=false`、`baseline=false`、`planner=false`、`performance_claim=false`。
+# 2026-09-23 STEP 5.6A progress
+
+Formal Training Bundle 在 RTX 4090 上以原五类 package hash 载入。H4 CUDA batch 1/2/4/8 的有限 loss/gradient、参数更新、跨轨迹 batch、checkpoint 重载与错误身份拒绝已通过；完整 1104-window prior-only validation 正在按四组互斥 trajectory 运行。已用真实样本修正 portable wired capacity、未来 Return Comm fixed-support blocked、以及预测 Flow 提前完成后的 current typed support 绑定；Dataset/Raw/模型/Loss 均未改。正式训练配置仍待研究者数值决定；formal training、locked_test、baseline、Planner、performance claim 均未执行。
+# 2026-09-24 STEP 5.6A GPU 验收收口
+
+RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；完整 1104-window prior-only validation 的四组互斥轨迹合并、12 条轨迹唯一性和无参数更新通过。Checkpoint 重载参数/状态相同，预测在 rtol=atol=1e-6 内相同。正式数值配置待研究者决定；formal training、locked_test、baseline、Planner 和性能声明均未执行。下一动作仅为研究者配置决定。

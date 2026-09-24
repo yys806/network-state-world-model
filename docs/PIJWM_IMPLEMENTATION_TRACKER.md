@@ -1,15 +1,17 @@
 # PI-JWM Implementation Tracker
 
+**2026-09-24 STEP 5.6A（GPU 验收完成，配置待决）：** RTX 4090 上已完成正式数据 H=4 batch 1/2/4/8 的 CUDA 前向、反向、参数更新、跨轨迹 batch 与 checkpoint/错误身份拒绝。完整 1104-window prior-only validation 已通过四组互斥轨迹的唯一性合并；GPU readiness receipt 为 PASS。正式训练数值配置仍待研究者决定，formal training、baseline、Planner、locked_test 和性能声明均未执行。证据入口为 `docs/implementation_records/STEP_05_6A_GPU_SMOKE_FORMAL_CONFIG_EVIDENCE.md`。
+
 **2026-09-23 STEP 5.5-PATCH：** 纠正原 H=4 `runtime/` 1+1 mini smoke 的边界。新增 `FullFormalShardDataset → FullFormalTrainer` 全量 4416/1104 索引与按 batch/shard 加载；真实 CPU H=4 参数更新、跨轨迹验证与 checkpoint 通过。全量 fixed-support audit 发现 8828 次 Return-birth unsupported/fixed-support；旧 receipt 的 0/0/0 为未检测字段读数，已被新凭证取代。AirFogSim lifecycle repair 为 213 次 collection-side 同对象去重。证据见 `docs/implementation_records/STEP_05_5_PATCH_FULL_CONSUMPTION_FIXED_SUPPORT_CLOSURE.md`。GPU/formal training/locked_test 均未执行。
 
-更新时间：2026-09-23。**STEP 5.5 已完成 Formal Dataset v1 的 60 条真实 trajectory、H=2/L=4 五类 package、48/12 split、四动作 coverage、deterministic rebuild 与 CPU H=4 trainer smoke**。`FORMAL_DATASET_READINESS=READY`、`TRAINING_STACK_READINESS=PASS`；full/formal training、GPU execution、Planner、baseline 与 locked_test 仍未开始。
+STEP 5.5 当时状态：**Formal Dataset v1 的 60 条真实 trajectory、H=2/L=4 五类 package、48/12 split、四动作 coverage、deterministic rebuild 与 CPU H=4 trainer smoke 已完成**。`FORMAL_DATASET_READINESS=READY`、`TRAINING_STACK_READINESS=PASS`；当时尚未执行 GPU。当前 GPU smoke 状态见上方 STEP 5.6A。
 
 ## 当前依据与执行边界
 
 - 目标研究定义：`D:\shen\OB\科研\PIJWM` 中七个 `00–06` Markdown 文件，只读。文件名、大小、行数和 SHA-256 见 `code/artifacts/audit/pi_jwm_new_definition_step01_20260918/initial_snapshot.json`。
 - 实现事实：本仓库源码、配置、测试和原始 artifact。笔记中“当前代码已经……”的描述也必须核对。
 - 工程工作区：`D:\shen\PKU\PIJWM`；旧 P4/P6/P0–P10 工作流为 **Historical / Archived**，不再是 active workflow。旧结果保留原验收含义，不变成新定义结果。
-- 当前正式数据集协议与 artifact identity 已冻结；本轮未进行正式训练，不改变模型科学结构/loss/planner，不使用 GPU，不访问 `locked_test`。
+- 当前正式数据集协议与 artifact identity 已冻结；STEP 5.6A 只进行授权的 GPU smoke/validation，不进行正式训练，不改变模型科学结构/loss/planner，不访问 `locked_test`。
 - 主报告：[STEP_01_AUDIT.md](implementation_records/STEP_01_AUDIT.md)；数据附件：[STEP_01_DATA_GRAPH_AUDIT.md](implementation_records/STEP_01_DATA_GRAPH_AUDIT.md)。下表中的 00–06 对应上述源文件章节；详细定位在报告中。
 
 ## 总体实施状态

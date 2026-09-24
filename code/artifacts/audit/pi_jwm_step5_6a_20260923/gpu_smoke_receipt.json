@@ -1,0 +1,122 @@
+{
+  "batch_probe": [
+    {
+      "batch_size": 1,
+      "data_load_seconds": 3.7523449640721083,
+      "gpu_event_seconds": 3.806151611328125,
+      "gradients_finite": true,
+      "horizon": 4,
+      "loss_finite": true,
+      "parameter_updated": true,
+      "peak_allocated_bytes": 33851392,
+      "peak_reserved_bytes": 39845888,
+      "sample_ids": null,
+      "samples_per_second": 0.13205149077219394,
+      "step_wall_seconds": 7.5728035643696785,
+      "success": true
+    },
+    {
+      "batch_size": 2,
+      "data_load_seconds": 0.016691958531737328,
+      "gpu_event_seconds": 6.65012451171875,
+      "gradients_finite": true,
+      "horizon": 4,
+      "loss_finite": true,
+      "parameter_updated": true,
+      "peak_allocated_bytes": 52718080,
+      "peak_reserved_bytes": 58720256,
+      "sample_ids": null,
+      "samples_per_second": 0.29949541217273146,
+      "step_wall_seconds": 6.677898621186614,
+      "success": true
+    },
+    {
+      "batch_size": 4,
+      "data_load_seconds": 0.030722256749868393,
+      "gpu_event_seconds": 13.0704658203125,
+      "gradients_finite": true,
+      "horizon": 4,
+      "loss_finite": true,
+      "parameter_updated": true,
+      "peak_allocated_bytes": 85287936,
+      "peak_reserved_bytes": 90177536,
+      "sample_ids": null,
+      "samples_per_second": 0.3050434574681636,
+      "step_wall_seconds": 13.112885728478432,
+      "success": true
+    },
+    {
+      "batch_size": 8,
+      "data_load_seconds": 0.05422641895711422,
+      "gpu_event_seconds": 24.95408203125,
+      "gradients_finite": true,
+      "horizon": 4,
+      "loss_finite": true,
+      "parameter_updated": true,
+      "peak_allocated_bytes": 148032512,
+      "peak_reserved_bytes": 163577856,
+      "sample_ids": null,
+      "samples_per_second": 0.3196618085626781,
+      "step_wall_seconds": 25.026449158787727,
+      "success": true
+    }
+  ],
+  "checkpoint_reload_identical": true,
+  "cross_trajectory_batch": {
+    "gradients_finite": true,
+    "h4": true,
+    "loss_finite": true,
+    "parameter_updated": true,
+    "trajectory_ids": [
+      "formal-v1-sim-2026092354-policy-2026092454",
+      "formal-v1-sim-2026092345-policy-2026092445"
+    ]
+  },
+  "dataset_identity": {
+    "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+    "dataset_manifest_hash": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+    "encoder_normalization_sha256": "3a7cfe37d2124f930c2be1aa9b2b8ae868497a26631699237dbebc8240090dbd",
+    "formal_package_hashes": {
+      "graph": "8bf3be889332cdb92e99c5881f27d575db7074d0280bdf1d392bbf373101ddb3",
+      "normalization": "8208dff6c97059a9ac9a8bac5c5e4a4928d1db6f0ab7bdbc2500fc5b92140b28",
+      "samples": "21e4f2ea527a8e0c658b30029e1c4a37633c26216222d06a5fb2d4edf2cbd0cb",
+      "target": "e37a0eaf02e6b08dddcc4af6f4bde2aeb9dea64e64352640d3919440038dad22",
+      "tensor": "fb7eb8b25581d0e0b23e62676b6ac02e9bcbdcded6bf83d9db904c83b3967b0f"
+    },
+    "sample_index_sha256": "bd721fd0bfd837744392447ec742ae1d8f79a767f46f9ae6ba172316c4ff6954",
+    "train_sample_count": 4416,
+    "validation_sample_count": 1104
+  },
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "torch": "2.8.0+cu128",
+    "torch_cuda": "12.8",
+    "total_vram_bytes": 25250627584
+  },
+  "optimizer_groups_cuda": {
+    "comm_future_posterior": true,
+    "comm_prior": true,
+    "csi_decoder": true,
+    "csi_target_encoder": true,
+    "current_observation_posterior": true,
+    "encoder": true,
+    "motion_target_encoder": true,
+    "phy_future_posterior": true,
+    "phy_prior": true,
+    "rssm_dynamics": true,
+    "vehicle_motion_decoder": true
+  },
+  "passed": true,
+  "schema_version": "PI-JWM-STEP-5.6A-GPU-Smoke-v1",
+  "scope": {
+    "baseline": false,
+    "formal_training": false,
+    "gpu_smoke": true,
+    "locked_test_accessed": false,
+    "performance_claim": false,
+    "planner": false
+  },
+  "wrong_config_rejected": true,
+  "wrong_dataset_rejected": true
+}

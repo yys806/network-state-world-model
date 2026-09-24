@@ -1,5 +1,11 @@
 # 数据流与张量合同
 
+## 2026-09-24 STEP 5.6A CUDA 消费路径（运行验收完成）
+
+远端只使用可移植 Training Bundle：`formal_dataset_manifest.json → FormalTrainingInterface → FullFormalShardDataset → FullFormalTrainer(device="cuda")`。DataLoader 只读取 batch 所需的 Sample/Tensor/Graph/Target trajectory shard，五类 package 的原 hash 不变；不传 Raw。构造当前 wired capacity 所需的唯一双向链路已由本地 60/60 Raw 审计，作为 Formal v1 已冻结环境常量输入，不读取未来目标。
+
+训练抽样按 seed+epoch 先打乱 48 条 train trajectory，再打乱各轨迹内部窗口；每 epoch 4416 个窗口各一次，validation 永不混入。未来 Return Route 后出现而当前无 Return Flow 槽位的 Comm 分量显式记为 fixed-support blocked；当前锚点已有的合法 typed Flow 在 prior 预测中提前完成时，Comm 仍可绑定该 current relation，但不复活 Flow。完整 1104-window GPU validation 已按 12 条 validation trajectory 分四个互斥组串行遍历，用各 family/horizon 的 numerator/count 聚合；唯一性、prior-only 和无参数更新总回执通过。
+
 ## 2026-09-23 Formal Dataset v1 当前链路
 
 STEP 5.5-PATCH 增加正式消费分支：`packages/samples/index.json` 全量 5520 个窗口 → 以 frozen 48/12 trajectory split 校验 → 每次只读取 batch 所需的 trajectory shard → 按 sample identity 同步切取 Sample/Tensor/Graph/Target → `FullFormalTrainer`。encoder 的 base/extension/Flow stats 来自 Formal Dataset train-only normalization，Physical relation stats 从 48 条 train graph shard 流式计算；validation 不参与拟合。`runtime/` 1+1 只用于原 mini smoke，不能代表全量消费。

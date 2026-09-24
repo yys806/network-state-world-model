@@ -9,7 +9,9 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import random
 from collections import defaultdict
+from dataclasses import asdict
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
@@ -19,8 +21,15 @@ import torch
 from pi_jwm.step4_2c_c_flow_sample_tensor_v1 import load_flow_tensor_batch
 from pi_jwm.step4_3a_typed_dual_graph_builder_v1 import load_typed_dual_graph_batch
 from pi_jwm.step5_1a_motion_csi_target_contract_v1 import load_future_target_tensor_batch
-from pi_jwm.step5_2_training_loop_v1 import DevelopmentBundle, Step52Trainer, Step52TrainingConfig, ROOT, _sha, aggregate_validation_horizon_rows
+from pi_jwm.step5_2_training_loop_v1 import DevelopmentBundle, Step52Trainer, Step52TrainingConfig, ROOT, _jsonable, _sha, aggregate_validation_horizon_rows
 from pi_jwm.step5_4_formal_training_readiness_v1 import FormalTrainingInterface, sha256_path
+
+
+# The frozen Formal v1 collector uses this one bidirectional wired edge in all
+# 60 Raw trajectories. A separate audit checks the exact Raw values against
+# this source constant; this lets the Training Bundle omit Raw without changing
+# any current state or package content.
+FORMAL_V1_WIRED_EDGES = [{"u": "RSU_0", "v": "cloudServer_4", "capacity_mbps": 100.0, "bidirectional": True}]
 
 
 def _one(value: Mapping[str, Any], index: int, count: int) -> dict[str, Any]:
@@ -192,7 +201,7 @@ class FullFormalShardDataset:
         ]
         states, graphs = [], []
         for index in range(len(batch_samples)):
-            state, graph_state = build_state(tensor_for_state, batch_graph, index)
+            state, graph_state = build_state(tensor_for_state, batch_graph, index, wired_edges=FORMAL_V1_WIRED_EDGES)
             states.append(state)
             graphs.append(graph_state)
         target_tensors = {
@@ -226,8 +235,57 @@ class FullFormalShardDataset:
         return {"shards": 60, "unique_windows": len(seen), "split_counts": split_counts, "all_payload_hashes_verified": len(self._verified_shards) == 60, "bounded_cached_trajectory_shards": 1}
 
 
+class FormalTrajectorySampler:
+    """Deterministic, trajectory-aware epoch order for Formal Dataset training.
+
+    Each epoch visits every frozen train window exactly once. Trajectories are
+    shuffled first and windows within each trajectory are shuffled second, so
+    shard locality is bounded while the original trajectory order is not reused.
+    """
+
+    def __init__(self, index: Sequence[Mapping[str, Any]], train_indices: Sequence[int], *, seed: int):
+        self.seed = int(seed)
+        self.train_indices = tuple(int(i) for i in train_indices)
+        groups: dict[str, list[int]] = defaultdict(list)
+        for global_index in self.train_indices:
+            metadata = index[global_index]["metadata"]
+            if metadata.get("split") != "dev_train":
+                raise ValueError("formal sampler received a non-train window")
+            groups[str(metadata["trajectory_id"])].append(global_index)
+        if set(self.train_indices) != {i for values in groups.values() for i in values} or len(self.train_indices) != 4416:
+            raise ValueError("formal sampler must cover exactly 4416 train windows")
+        if len(groups) != 48:
+            raise ValueError("formal sampler must cover exactly 48 train trajectories")
+        self._groups = {trajectory: tuple(values) for trajectory, values in groups.items()}
+
+    def order_for_epoch(self, epoch: int) -> tuple[int, ...]:
+        rng = random.Random(self.seed + int(epoch))
+        trajectories = list(self._groups)
+        rng.shuffle(trajectories)
+        order: list[int] = []
+        for trajectory in trajectories:
+            windows = list(self._groups[trajectory])
+            rng.shuffle(windows)
+            order.extend(windows)
+        if len(order) != len(self.train_indices) or len(set(order)) != len(order):
+            raise AssertionError("formal sampler epoch order is incomplete or duplicated")
+        return tuple(order)
+
+    def batch_for_global_step(self, global_step: int, batch_size: int) -> list[int]:
+        if global_step < 0 or batch_size <= 0:
+            raise ValueError("global_step and batch_size must be positive")
+        steps_per_epoch = (len(self.train_indices) + batch_size - 1) // batch_size
+        epoch, step = divmod(int(global_step), steps_per_epoch)
+        order = self.order_for_epoch(epoch)
+        start = step * batch_size
+        return list(order[start:min(start + batch_size, len(order))])
+
+    def state_dict(self) -> dict[str, Any]:
+        return {"schema_version": "PI-JWM-FormalTrajectorySampler-v1", "seed": self.seed, "train_windows": len(self.train_indices), "train_trajectories": len(self._groups)}
+
+
 class FullFormalTrainer(Step52Trainer):
-    """Existing training loop with global index selection and transient batches."""
+    """Existing training loop with trajectory-aware sampling and transient batches."""
 
     @classmethod
     def from_interface(cls, interface: FormalTrainingInterface, config: Step52TrainingConfig) -> "FullFormalTrainer":
@@ -237,11 +295,24 @@ class FullFormalTrainer(Step52Trainer):
         shards.identity["encoder_normalization_sha256"] = hashlib.sha256(json.dumps(encoder_stats, sort_keys=True).encode("utf-8")).hexdigest()
         trainer = cls(config, representative, encoder_stats=encoder_stats)
         trainer.shards = shards
+        trainer.formal_sampler = FormalTrajectorySampler(shards.index, interface.train_indices, seed=config.seed)
         trainer.data.samples = list(interface.samples)  # index metadata only
         trainer.data.train_indices = list(interface.train_indices)
         trainer.data.validation_indices = list(interface.validation_indices)
         trainer.data.identity = shards.identity
         return trainer
+
+    def _select_train_indices(self, global_step: int) -> list[int]:
+        return self.formal_sampler.batch_for_global_step(global_step, self.config.batch_size)
+
+    def load_checkpoint(self, path: str | Path) -> dict[str, Any]:
+        try:
+            payload = torch.load(Path(path), map_location="cpu", weights_only=False)
+        except TypeError:
+            payload = torch.load(Path(path), map_location="cpu")
+        if payload.get("config") != _jsonable(asdict(self.config)):
+            raise ValueError("incompatible formal checkpoint training config")
+        return super().load_checkpoint(path)
 
     def _run_batch(self, indices: Sequence[int], horizon: int, *, stage: str, beta_kl: float, training: bool) -> dict[str, Any]:
         batch = self.shards.load_batch(indices)

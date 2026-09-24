@@ -2330,6 +2330,7 @@
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "scripts.accept_step5_5_patch_cpu_v1",
         "scripts.run_step5_2_training_loop_smoke_v1",
+        "scripts.run_step5_6a_gpu_smoke_v1",
         "scripts.step5_3_cpu_training_preflight_v1",
         "scripts.step5_3d_csi_scale_optimization_diagnosis_v1",
         "scripts.step5_3e_csi_train_mean_bias_formalization_v1",
@@ -2366,16 +2367,19 @@
       "imported_by": [
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "scripts.accept_step5_5_patch_cpu_v1",
+        "scripts.accept_step5_6a_gpu_readiness_v1",
         "scripts.audit_step5_5_patch_v1",
         "scripts.build_step5_5_formal_dataset_v1",
         "scripts.finalize_step5_5_existing_package_v1",
+        "scripts.run_step5_6a_gpu_smoke_v1",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
         "scripts.verify_step5_5_deterministic_rebuild_v1",
         "scripts.verify_step5_5_patch_full_shards_v1",
         "tests.test_step5_4_gpu_training_readiness_v1",
         "tests.test_step5_5_formal_dataset_v1",
-        "tests.test_step5_5_patch_full_consumption_v1"
+        "tests.test_step5_5_patch_full_consumption_v1",
+        "tests.test_step5_6a_gpu_validation_merge_v1"
       ],
       "imports": [],
       "lifecycle_status": "support",
@@ -2384,7 +2388,8 @@
       "test_files": [
         "code/tests/test_step5_4_gpu_training_readiness_v1.py",
         "code/tests/test_step5_5_formal_dataset_v1.py",
-        "code/tests/test_step5_5_patch_full_consumption_v1.py"
+        "code/tests/test_step5_5_patch_full_consumption_v1.py",
+        "code/tests/test_step5_6a_gpu_validation_merge_v1.py"
       ]
     },
     {
@@ -2393,6 +2398,7 @@
       "imported_by": [
         "pi_jwm.step5_1a_motion_csi_target_contract_v1",
         "scripts.audit_step5_5_patch_v1",
+        "scripts.audit_step5_6a_formal_fixed_support_v1",
         "tests.test_step5_5_patch_full_consumption_v1"
       ],
       "imports": [],
@@ -2408,7 +2414,9 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.accept_step5_5_patch_cpu_v1",
+        "scripts.accept_step5_6a_gpu_readiness_v1",
         "scripts.audit_step5_5_patch_v1",
+        "scripts.run_step5_6a_gpu_smoke_v1",
         "scripts.verify_step5_5_patch_full_shards_v1",
         "tests.test_step5_5_patch_full_consumption_v1"
       ],
@@ -2996,6 +3004,19 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.accept_step5_6a_gpu_readiness_v1",
+      "path": "code/scripts/accept_step5_6a_gpu_readiness_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
       "imports": [],
       "lifecycle_status": "support",
       "module": "scripts.analyze_pi_jwm_horizon_stage_diagnostic",
@@ -3216,6 +3237,18 @@
       "lifecycle_status": "support",
       "module": "scripts.audit_step5_5_patch_v1",
       "path": "code/scripts/audit_step5_5_patch_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_5_fixed_support_audit_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step5_6a_formal_fixed_support_v1",
+      "path": "code/scripts/audit_step5_6a_formal_fixed_support_v1.py",
       "test_files": []
     },
     {
@@ -3736,7 +3769,8 @@
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
-        "tests.test_step5_1d_unified_model_chain_v1"
+        "tests.test_step5_1d_unified_model_chain_v1",
+        "tests.test_step5_5_patch_full_consumption_v1"
       ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
@@ -3749,7 +3783,8 @@
       "module": "scripts.build_step5_1d_unified_model_chain_v1",
       "path": "code/scripts/build_step5_1d_unified_model_chain_v1.py",
       "test_files": [
-        "code/tests/test_step5_1d_unified_model_chain_v1.py"
+        "code/tests/test_step5_1d_unified_model_chain_v1.py",
+        "code/tests/test_step5_5_patch_full_consumption_v1.py"
       ]
     },
     {
@@ -6382,6 +6417,24 @@
       "module": "scripts.run_step5_2_training_loop_smoke_v1",
       "path": "code/scripts/run_step5_2_training_loop_smoke_v1.py",
       "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "tests.test_step5_6a_gpu_validation_merge_v1"
+      ],
+      "imports": [
+        "pi_jwm.step5_2_training_loop_v1",
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step5_6a_gpu_smoke_v1",
+      "path": "code/scripts/run_step5_6a_gpu_smoke_v1.py",
+      "test_files": [
+        "code/tests/test_step5_6a_gpu_validation_merge_v1.py"
+      ]
     },
     {
       "category": "runnable_script",
@@ -10145,11 +10198,25 @@
         "pi_jwm.step5_4_formal_training_readiness_v1",
         "pi_jwm.step5_5_fixed_support_audit_v1",
         "pi_jwm.step5_5_full_sharded_loader_v1",
-        "pi_jwm.step5_5_lifecycle_repair_v1"
+        "pi_jwm.step5_5_lifecycle_repair_v1",
+        "scripts.build_step5_1d_unified_model_chain_v1"
       ],
       "lifecycle_status": "support",
       "module": "tests.test_step5_5_patch_full_consumption_v1",
       "path": "code/tests/test_step5_5_patch_full_consumption_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "scripts.run_step5_6a_gpu_smoke_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step5_6a_gpu_validation_merge_v1",
+      "path": "code/tests/test_step5_6a_gpu_validation_merge_v1.py",
       "test_files": []
     },
     {

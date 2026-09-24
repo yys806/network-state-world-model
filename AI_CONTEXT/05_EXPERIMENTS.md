@@ -1,5 +1,9 @@
 # 当前与历史实验
 
+## 2026-09-24 STEP 5.6A GPU smoke / validation（运行验收完成）
+
+正式数据 H4、RTX 4090 few-step CUDA smoke 已通过 batch 1/2/4/8 的有限 loss/gradient、真实参数更新、跨轨迹 batch、checkpoint 重载与错误 Dataset/config 身份拒绝。完整 1104-window prior-only GPU validation 通过四组互斥轨迹的 sample identity 合并：12 条 validation 轨迹、无重复/遗漏、无参数更新或未来 posterior teacher；`L_Val=0.829751`，四个 horizon 的 Motion/CSI raw MAE/RMSE 已写入机器凭证。四组串行计算/遍历耗时合计 7103.09 秒、数据加载合计 72.15 秒。此处属于未训练的运行能力验收，不是预测性能、收敛或泛化结果；formal training、baseline、Planner、locked_test、performance claim 均为 false。机器证据入口：`code/artifacts/audit/pi_jwm_step5_6a_20260923/`。
+
 ## 2026-09-23 STEP 5.5-PATCH CPU full-shard acceptance
 
 这是数据路径验收，不是正式训练或性能实验。正式 package 的 4416 train、1104 validation 全部可索引；跨不同 trajectory 的 batch、H=4 CPU optimizer step、prior-only validation batch、checkpoint reload 和错误 dataset identity 拒绝见 `code/artifacts/audit/pi_jwm_step5_5_patch_20260923/`。旧 `runtime/` 1+1 smoke 仍为独立 mini 证据。全量 future Return 结构审计识别 8828 次 unsupported/fixed-support 事件；旧字段计数 0/0/0 已被取代。GPU、formal training、locked_test、baseline、Planner 和 performance claim 均为 false。

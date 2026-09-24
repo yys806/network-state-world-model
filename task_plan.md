@@ -1,3 +1,12 @@
+# 2026-09-24 STEP 5.6A — GPU Smoke + Formal Training Config Evidence
+
+- [x] Formal Dataset/远端 GPU 身份核对；H4 CUDA smoke、batch 1/2/4/8、checkpoint 与错误身份拒绝。
+- [x] 4416 train-window trajectory-aware sampler 与相关本地回归。
+- [x] 完成四个互斥分片的 1104-window prior-only GPU validation、合并与 reload 前向容差一致性验收。
+- [x] 完成数值配置候选/待决记录、Context Consistency、knowledge index write/check 与 focused regression。
+- [ ] 最后操作：review staged diff、commit/push、核对 HEAD 与 origin/main。
+- 当前边界：仅授权 GPU smoke/validation，不启动 formal training、baseline、Planner 或 locked_test；配置数值仍需研究者决定。
+
 # 2026-09-23 STEP 5.5-PATCH — Full Consumption & Fixed Support
 
 - [x] 起点 `main=a65bd6d` 与本地状态核对，未跟踪 `TASK/` 和绘图脚本保持原状。
@@ -1489,3 +1498,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - Git commit/push 与远端 HEAD 核对是本记录之后的最后操作。
 - Boundary: GPU/formal training/baseline/Planner/locked_test/performance claim 均未执行。
 - Single next action after closure: STEP 5.6A — GPU Smoke + Formal Training Config Freeze，需研究者另行授权。
+# 2026-09-23 STEP 5.6A — GPU Smoke + Formal Training Config Evidence/Freeze
+
+- [x] 确认 main 与 Formal Dataset 身份；远端 RTX 4090、CUDA/PyTorch、磁盘和五类 package hash。
+- [x] 真实 H4 CUDA batch 1/2/4/8 optimizer smoke、跨轨迹 batch、checkpoint 和错误身份拒绝。
+- [x] deterministic trajectory-aware train sampler、portable wired capacity 与 fixed-support Comm 映射定点测试。
+- [x] 1104 validation windows 完整 prior-only CUDA 遍历、唯一性及分 family/horizon raw metrics。
+- [x] 正式配置待决数值收口、相关回归、Context Consistency 与 knowledge index。
+- [ ] 最后操作：commit/push 与远端 HEAD 核对。
+- Boundary：不启动 Formal Training、baseline、Planner 或 locked_test；不作性能声明。

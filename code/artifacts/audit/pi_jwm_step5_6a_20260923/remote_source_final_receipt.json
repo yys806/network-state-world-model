@@ -1,0 +1,22 @@
+{
+  "local_source_sha256": {
+    "code/scripts/build_step5_1d_unified_model_chain_v1.py": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+    "code/scripts/run_step5_6a_gpu_smoke_v1.py": "4e50e1fe4e23a45b61262fabed26cf4f4e9672c3535225d65379dfb79f77b901",
+    "code/src/pi_jwm/step5_2_training_loop_v1.py": "5ed289c734cd15266feb7ff2bbe2edc387022054a71ebdd629170a748bbf1a2b",
+    "code/src/pi_jwm/step5_5_full_sharded_loader_v1.py": "cf0dd63e730139d2b09bd32edb9371fcb7502ed35f1a4b6d878df5c52536794a"
+  },
+  "note": "Final synced source identity after diagnostic merge and checkpoint reload code additions; initial environment receipt records smoke snapshot.",
+  "remote_source_sha256": {
+    "code/scripts/build_step5_1d_unified_model_chain_v1.py": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+    "code/scripts/run_step5_6a_gpu_smoke_v1.py": "4e50e1fe4e23a45b61262fabed26cf4f4e9672c3535225d65379dfb79f77b901",
+    "code/src/pi_jwm/step5_2_training_loop_v1.py": "5ed289c734cd15266feb7ff2bbe2edc387022054a71ebdd629170a748bbf1a2b",
+    "code/src/pi_jwm/step5_5_full_sharded_loader_v1.py": "cf0dd63e730139d2b09bd32edb9371fcb7502ed35f1a4b6d878df5c52536794a"
+  },
+  "schema_version": "PI-JWM-STEP-5.6A-Remote-Source-Final-v1",
+  "scope": {
+    "formal_training": false,
+    "locked_test_accessed": false
+  },
+  "source_base_commit": "a8c5dfacd6d1ea0ef5414934e5cbf4e8a2665725",
+  "source_sha256_match": true
+}

@@ -1,16 +1,20 @@
 # PI-JWM Current State Snapshot
 
-## STEP 5.5-PATCH 当前状态（2026-09-23）
+## STEP 5.6A 当前状态（2026-09-24，GPU 验收完成）
+
+正式数据身份保持 H=2/L=4、60 条 trajectory、48/12 split、4416/1104 windows，Dataset package/hash 未改。RTX 4090 上 H=4 CUDA 前向、反向、参数更新、跨轨迹 batch、checkpoint/错误身份拒绝和完整 1104-window prior-only GPU validation 已有通过凭证；验证集 12 条轨迹均覆盖且没有重复/遗漏。未训练 smoke checkpoint 的 `L_Val=0.829751` 仅作运行诊断，不是性能结果。正式训练配置数值未获研究者冻结，`FORMAL_TRAINING_READINESS=BLOCKED_BY_CONFIG_DECISION`；`formal_training=false`、`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。唯一下一动作是研究者决定数值配置；不得自动进入 STEP 5.6B。
+
+## STEP 5.5-PATCH 历史状态（2026-09-23）
 
 STEP 5.5 的原 CPU H=4 smoke 只消费 `runtime/` 的 1 train + 1 validation，不能作为 5520-window Trainer 证据。PATCH 新增 `FullFormalShardDataset → FullFormalTrainer`：4416/1104 全量索引、按请求加载 trajectory shard、跨 shard batch、H=4 CPU 参数更新、prior-only validation batch、checkpoint reload/错误身份拒绝已有独立凭证。原 runtime mini 与 8/4 development 路径仍保留。
 
 旧 Dataset receipt 的 `unsupported/unresolved/fixed_support_blocked=0/0/0` 是字段计数，未检测真实 future Return birth；PATCH 对全部 5520 windows 的独立结构审计发现 8828 次按窗口与未来步计数的 Return-birth unsupported/fixed-support 事件，涉及 2901 个窗口和 60 条轨迹；143320 次已有支持的 Return continuation 未误判。新 detector 只写 target-side component 记录，不创建 current Return slot，也不删 Motion/CSI 监督。旧零值已被新审计替代。60 条 Raw 中有 213 次同一 Task 对象的 lifecycle collection 修复，涉及 50 条轨迹、124 个 trajectory-task；保留最远 lifecycle，直接 Task 状态字段不改。
 
-机器凭证：`code/artifacts/audit/pi_jwm_step5_5_patch_20260923/`。`FULL_FORMAL_DATASET_LOADER=VERIFIED`、`H4_FULL_DATA_CONSUMPTION_PATH=VERIFIED` 指全量可索引的 CPU 数据路径和抽样执行，不表示 5520 窗口已完整正式训练。`gpu=false`、`formal_training=false`、`locked_test_accessed=false`。
+机器凭证：`code/artifacts/audit/pi_jwm_step5_5_patch_20260923/`。`FULL_FORMAL_DATASET_LOADER=VERIFIED`、`H4_FULL_DATA_CONSUMPTION_PATH=VERIFIED` 指全量可索引的 CPU 数据路径和抽样执行，不表示 5520 窗口已完整正式训练。当时 `gpu=false`、`formal_training=false`、`locked_test_accessed=false`。
 
-Formal Dataset v1 已由 60 条真实 AirFogSim trajectory 构建并机器验收：H=2/L=4、每条 96 transitions、48/12 trajectory split、4416/1104/5520 windows，五类 package、四动作 coverage、train-only normalization 与 deterministic rebuild 均通过。原 CPU H=4 trainer smoke 是 runtime 1+1 mini；PATCH 另行验证 full-shard CPU batch 路径。`formal_dataset=true` 只表示数据包 READY；full/formal training、GPU execution、locked_test、baseline、Planner、performance claim 仍为 false。
+Formal Dataset v1 已由 60 条真实 AirFogSim trajectory 构建并机器验收：H=2/L=4、每条 96 transitions、48/12 trajectory split、4416/1104/5520 windows，五类 package、四动作 coverage、train-only normalization 与 deterministic rebuild 均通过。原 CPU H=4 trainer smoke 是 runtime 1+1 mini；PATCH 另行验证 full-shard CPU batch 路径。`formal_dataset=true` 只表示数据包 READY；在该 PATCH 时点 GPU execution 尚未开始。
 
-更新时间：2026-09-22
+以下为历史补充；该段原更新时间为 2026-09-22，当前状态以上方最新快照为准。
 
 这是 ChatGPT 网页端进入仓库后的第一读取入口。它只提供当前快照和继续查证的路径，不替代源码、配置、checkpoint、metrics、manifest 或 audit。
 
@@ -18,7 +22,7 @@ Formal Dataset v1 已由 60 条真实 AirFogSim trajectory 构建并机器验收
 
 事实优先级固定为：当前源码/config/experiment → `AI_CONTEXT/` → 普通项目文档 → 历史聊天或推断。任何正式科研结论都必须回到第一层验证。
 
-## 当前状态
+## 2026-09-22 历史状态
 
 - 项目：PI-JWM（Physical-Information Joint World Model，物理—信息联合世界模型）。AirFogSim 只是参考仿真器和数据生成工具。
 - 当前 active workflow：研究者最新只读 `00–06` 定义链；工程执行入口为 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/`。
@@ -32,11 +36,11 @@ Formal Dataset v1 已由 60 条真实 AirFogSim trajectory 构建并机器验收
 - 当前运行：没有正式 GPU 训练或远端同步任务；旧 `seed=20260832` 仍不得自动启动。
 - `locked_test_accessed=false`；`formal_performance_claim_ready=false`；`formal_dataset=true`、`training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`full_training=false`、`gpu=false`。
 
-## 当前最重要问题
+## 2026-09-22 当时最重要问题
 
 当前实现不能按 Dataset READY、runtime mini smoke 或 PATCH full-shard CPU batch 外推性能。没有 formal training、GPU runtime、收敛泛化、校准或预测精度证据；Planner 真实反馈也未实现。
 
-## 单一科研下一步
+## 2026-09-22 当时建议的下一步
 
 唯一建议是研究者另行授权 **STEP 5.6A — GPU Smoke + Formal Training Config Freeze**；在此之前不启动正式训练，也不访问 `locked_test`。
 
@@ -104,7 +108,7 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 ## 2026-09-23 STEP 5.4-PATCH2
 
 - 四动作 adapter 与 CPU device portability 已闭合；optimizer 在最终 device migration 后创建，Route/Comp adapter support 通过 synthetic fixture。
-- 当前 readiness：`TRAINING_STACK_READINESS=PASS`、`FORMAL_DATASET_READINESS=NOT_READY`、`GPU_CODEPATH_READINESS=PREPARED`、`FORMAL_TRAINING_READINESS=BLOCKED`。
+- 当时 readiness：`TRAINING_STACK_READINESS=PASS`、`FORMAL_DATASET_READINESS=NOT_READY`、`GPU_CODEPATH_READINESS=PREPARED`、`FORMAL_TRAINING_READINESS=BLOCKED`。
 - Formal Dataset 不存在，真实 development Route/Comp coverage 仍为 `0/0`；formal L/topology/budget 未决，GPU/locked_test 未执行。
 
 ## 2026-09-22 STEP 5.2
@@ -114,9 +118,9 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 - 真实 8/4 unified non-locked bundle CPU smoke：两步 optimizer update、4 validation samples prior-only、checkpoint save/load/resume；5.2-PATCH receipt `26/26`，`passed=true`。随后 5.3 固定 dev_train 1/2-sample preflight receipt=`GO`；这两者都不是正式性能证据。
 - optimizer audit 覆盖 Encoder、RSSM dynamics、两类 prior、两类 future posterior、两类 target encoder、Motion/CSI decoder；known rule parameter count=0。Route non-empty=0、Comp non-empty=0、Comm=1、Mobility=48，Route/Comp 仍是 future formal training/data coverage gate。
 
-## Freeze chain（2026-09-20 current）
+## Freeze chain（2026-09-20 历史快照）
 
 - Raw Trajectory / 01、当前最小 Dataset/Tensor / 02、STEP 4.1 mapping、STEP 4.2A existing-source input extension、STEP 4.2C-B Raw Flow、STEP 4.2C-C Flow Sample/Tensor、STEP 4.3A Typed Dual-Graph Builder 与 STEP 4.3B Dual-Graph Encoder 均已冻结。
 - Causal boundary: future task schedule is internal metadata only; canonical acceleration is backward speed difference with an explicit missing-history mask.
-- Current boundary: Physical topology 的 `radius_knn/radius=1000m/k=2` 仅是 deterministic development config，`research_frozen=false`；Return multi-hop、same-destination reroute runtime 与 formal capacities 仍未冻结。
-- Boundary: Definition 05 decisions FROZEN；5.1A COMPLETE/FROZEN，5.1B COMPLETE/FROZEN FOR CPU DEVELOPMENT PRIMITIVES + PAIRED INTEGRATION，5.1C COMPLETE/FROZEN FOR DEVELOPMENT，5.1D COMPLETE/FROZEN FOR CPU DEVELOPMENT INTEGRATION，5.2 COMPLETE/FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION。`training_loop_implemented=true`、`cpu_optimizer_smoke=true`、`full_training=false`、`gpu=false`、`locked_test=false`、`formal_dataset=false`、`performance_claim=false`。
+- 当时边界：Physical topology 的 `radius_knn/radius=1000m/k=2` 仅是 development config，`research_frozen=false`；此项后来已由 STEP 5.5 正式数据协议冻结。Return multi-hop 与 same-destination reroute runtime 的历史边界保留。
+- 当时状态：Definition 05 decisions FROZEN；5.1A COMPLETE/FROZEN，5.1B COMPLETE/FROZEN FOR CPU DEVELOPMENT PRIMITIVES + PAIRED INTEGRATION，5.1C COMPLETE/FROZEN FOR DEVELOPMENT，5.1D COMPLETE/FROZEN FOR CPU DEVELOPMENT INTEGRATION，5.2 COMPLETE/FROZEN FOR CPU DEVELOPMENT TRAINING-LOOP INTEGRATION。该时点的 `formal_dataset=false`、`gpu=false` 不描述当前状态。

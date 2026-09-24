@@ -1,5 +1,10 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-24 STEP 5.6A
+
+- 正式数据 RTX 4090 H4 CUDA smoke 与全部 1104 validation 窗口的 prior-only GPU 遍历通过；完整唯一性、分 family/horizon raw metrics 和数值容差 checkpoint 重载记录在 STEP 5.6A 机器凭证中。
+- 正式训练数值配置待研究者决定；`FORMAL_TRAINING_READINESS=BLOCKED_BY_CONFIG_DECISION`。没有正式训练、locked_test、baseline、Planner 或性能结论。
+
 ## 2026-09-23 STEP 5.5-PATCH
 
 - 增加正式 60-shard lazy/batch Trainer 消费路径与 train-only encoder 统计；将原 1+1 runtime mini smoke 从 full-shard 证据中分离。
@@ -169,3 +174,9 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 ## 2026-09-22 STEP 5.4
 
 - Added manifest-driven formal interface and CPU-only readiness receipts; recorded formal data/action/horizon/topology/config/checkpoint blockers.
+
+## 2026-09-23 STEP 5.6A — 中途记录（由 2026-09-24 收口记录更新）
+
+- 已接入真实 Formal Dataset v1 的 CUDA smoke 路径：H4 forward/backward、optimizer step、跨 trajectory batch、checkpoint reload 与错误 dataset/config identity 拒绝均已通过；batch 1/2/4/8 均完成工程探测。
+- 全量 1104-window prior-only GPU validation 正在远端按 validation trajectory 分片执行；在合并 receipt 生成前不宣称 FULL_1104_GPU_VALIDATION=PASS。
+- Formal training 未启动；训练数值配置仍标记为 `AWAITING_RESEARCHER_DECISION`，不把 development default 当作正式决定。locked_test、baseline、Planner、performance claim 均保持关闭。

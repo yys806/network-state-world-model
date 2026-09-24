@@ -1,0 +1,71 @@
+{
+  "development_defaults_are_not_formal_values": {
+    "batch_size": 1,
+    "checkpoint_patience": 3,
+    "curriculum_start_steps": [
+      0,
+      1,
+      2
+    ],
+    "gradient_clip_norm": 1.0,
+    "kl_free_bits": 0.1,
+    "kl_target_beta": 1.0,
+    "kl_warmup_steps": 10,
+    "learning_rate": 0.001,
+    "max_epochs": 1,
+    "max_steps": 2,
+    "stage1_steps": 1,
+    "training_seed": 5201,
+    "validation_interval_steps": null,
+    "weight_decay": 0.0
+  },
+  "formal_sampler_policy": "deterministic trajectory shuffle then within-trajectory window shuffle; every train window once per epoch; global-step resume",
+  "formal_training_config": "AWAITING_RESEARCHER_DECISION",
+  "formal_training_readiness": "BLOCKED_BY_CONFIG_DECISION",
+  "frozen_research_decisions": {
+    "checkpoint_selector": "argmin L_Val",
+    "decoder": "deterministic_mean",
+    "kl": "separate analytic diagonal Gaussian Physical/Communication KL with warm-up and free bits",
+    "overshooting": false,
+    "prediction_loss": "Motion/CSI separately mask-normalized MSE, 0.5/0.5",
+    "training_stages": "posterior-assisted warm-up then prior-dominant recursive horizon 1->2->4",
+    "validation": "prior-only"
+  },
+  "gpu_measured_engineering_fact": {
+    "batch_8_peak_allocated_bytes": 148032512,
+    "batch_8_step_wall_seconds": 25.026449158787727,
+    "candidate_not_research_frozen": true,
+    "engineering_batch_candidate": 8,
+    "h4_batches_verified": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "warm_shard_loading_seconds_at_batch_8": 0.05422641895711422
+  },
+  "requires_researcher_values": [
+    "training_seed",
+    "batch_size",
+    "learning_rate",
+    "weight_decay",
+    "gradient_clip_norm",
+    "max_epochs_or_max_steps",
+    "stage1_steps",
+    "curriculum_start_steps",
+    "kl_target_beta",
+    "kl_warmup_steps",
+    "kl_free_bits",
+    "validation_interval_steps",
+    "checkpoint_patience",
+    "checkpoint_save_interval_and_resume_policy"
+  ],
+  "schema_version": "PI-JWM-STEP-5.6A-Formal-Training-Config-Decision-v1",
+  "scope": {
+    "baseline": false,
+    "formal_training": false,
+    "locked_test_accessed": false,
+    "performance_claim": false,
+    "planner": false
+  }
+}

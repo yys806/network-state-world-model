@@ -6,14 +6,16 @@ import gzip
 import json
 from pathlib import Path
 import unittest
+from unittest import mock
 
 import numpy as np
 
 from pi_jwm.step5_5_lifecycle_repair_v1 import TASK_COLLECTION_PRIORITY, repair_duplicate_task_references
 from pi_jwm.step5_4_formal_training_readiness_v1 import FormalTrainingInterface
 from pi_jwm.step5_5_fixed_support_audit_v1 import detect_future_return_birth
-from pi_jwm.step5_5_full_sharded_loader_v1 import FullFormalShardDataset
+from pi_jwm.step5_5_full_sharded_loader_v1 import FullFormalShardDataset, FormalTrajectorySampler
 from pi_jwm.step5_1a_motion_csi_target_contract_v1 import extend_future_motion_csi_targets, build_future_target_tensor_batch, load_future_target_tensor_batch
+from build_step5_1d_unified_model_chain_v1 import build_action
 
 
 MANIFEST = Path(__file__).parents[1] / "artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/formal_dataset_manifest.json"
@@ -44,6 +46,13 @@ class Step55PatchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "normalization package hash mismatch"):
             FullFormalShardDataset(forged)
 
+    def test_formal_batch_needs_no_local_raw_path(self) -> None:
+        loader = FullFormalShardDataset(FormalTrainingInterface.from_manifest(MANIFEST))
+        with mock.patch("pi_jwm.step5_5_full_sharded_loader_v1.ROOT", Path("Z:/absent-pijwm-root")):
+            batch = loader.load_batch([loader.interface.train_indices[0]])
+        self.assertEqual(1, len(batch.states))
+        self.assertEqual(1, len(batch.samples))
+
     def test_full_index_and_cross_shard_batch(self) -> None:
         loader = FullFormalShardDataset(FormalTrainingInterface.from_manifest(MANIFEST))
         self.assertEqual((4416, 1104), (len(loader.interface.train_indices), len(loader.interface.validation_indices)))
@@ -58,6 +67,79 @@ class Step55PatchTests(unittest.TestCase):
             self.assertEqual(2, batch.graph["blocks"]["physical_nodes"]["presence"].shape[0])
             self.assertEqual(2, batch.target_tensors["target_vehicle_motion_mask"].shape[0])
         self.assertEqual(2, loader.peak_loaded_shards)
+
+    def test_formal_trajectory_sampler_epoch_exact_once_and_reproducible(self) -> None:
+        loader = FullFormalShardDataset(FormalTrainingInterface.from_manifest(MANIFEST))
+        sampler = FormalTrajectorySampler(loader.index, loader.interface.train_indices, seed=5201)
+        order0 = sampler.order_for_epoch(0)
+        order0_repeat = sampler.order_for_epoch(0)
+        order1 = sampler.order_for_epoch(1)
+        self.assertEqual(order0, order0_repeat)
+        self.assertNotEqual(order0, order1)
+        self.assertEqual(set(order0), set(loader.interface.train_indices))
+        self.assertEqual(len(order0), len(set(order0)))
+        self.assertTrue(all(loader.index[i]["metadata"]["split"] == "dev_train" for i in order0))
+        batches = []
+        for step in range((len(order0) + 7) // 8):
+            batches.extend(sampler.batch_for_global_step(step, 8))
+        self.assertEqual(list(order0), batches)
+        self.assertEqual(sampler.state_dict()["train_trajectories"], 48)
+        resumed = FormalTrajectorySampler(loader.index, loader.interface.train_indices, seed=sampler.state_dict()["seed"])
+        self.assertEqual(sampler.batch_for_global_step((len(order0) + 7) // 8 + 3, 8),
+                         resumed.batch_for_global_step((len(order0) + 7) // 8 + 3, 8))
+
+    def test_future_return_comm_action_keeps_current_support_fixed(self) -> None:
+        loader = FullFormalShardDataset(FormalTrainingInterface.from_manifest(MANIFEST))
+        sample_id = "formal-v1-sim-2026092307-policy-2026092407::anchor-0058"
+        index = next(i for i, row in enumerate(loader.index) if row["metadata"]["sample_id"] == sample_id)
+        batch = loader.load_batch([index])
+        before = copy.deepcopy(batch.samples[0]["static"]["input_entity_index"]["logical_flow"])
+        action, audit = build_action(batch.samples[0], batch.states[0], 1)
+        blocked = [row for row in audit["comm"] if row["task_index"] == 22]
+        self.assertEqual(2, len(blocked))
+        self.assertTrue(all(row["mode"] == "future_return_birth_fixed_support_blocked" for row in blocked))
+        self.assertEqual(before, batch.samples[0]["static"]["input_entity_index"]["logical_flow"])
+        self.assertEqual(len(batch.samples[0]["future_action"][1]["comm"]["entries"]) - len(blocked), action["comm_relation_index"].numel())
+        self.assertFalse(bool(action["comm_allocation_mask"].any()))
+        older_input = {key: value.clone() for key, value in batch.states[0].items()}
+        input_slot = batch.samples[0]["static"]["input_entity_index"]["logical_flow"]["flow::Task_34::Input::0"]
+        older_input["flow_presence"][0, input_slot] = True
+        _, with_input_audit = build_action(batch.samples[0], older_input, 1)
+        self.assertTrue(all(row["mode"] == "future_return_birth_fixed_support_blocked"
+                            for row in with_input_audit["comm"] if row["task_index"] == 22))
+
+    def test_comm_action_rebinds_current_typed_support_after_predicted_completion(self) -> None:
+        loader = FullFormalShardDataset(FormalTrainingInterface.from_manifest(MANIFEST))
+        sample_id = "formal-v1-sim-2026092302-policy-2026092402::anchor-0022"
+        index = next(i for i, row in enumerate(loader.index) if row["metadata"]["sample_id"] == sample_id)
+        batch = loader.load_batch([index])
+        state = {key: value.clone() for key, value in batch.states[0].items()}
+        slots = np.flatnonzero((state["flow_task_index"][0] == 11).numpy() & state["flow_presence"][0].numpy())
+        self.assertEqual(1, len(slots))
+        state["flow_presence"][0, int(slots[0])] = False
+        state["flow_comm_relation_index"][0, int(slots[0])] = -1
+        action, audit = build_action(batch.samples[0], state, 1)
+        rows = [row for row in audit["comm"] if row["task_index"] == 11]
+        self.assertEqual(1, len(rows))
+        self.assertEqual("typed_current_support_predicted_inactive", rows[0]["mode"])
+        self.assertFalse(rows[0]["transition_applied"])
+        self.assertGreaterEqual(int(rows[0]["relation_index"]), 0)
+        self.assertTrue(bool(action["comm_allocation_mask"][0, rows[0]["relation_index"], 25]))
+        # A completed Input and an active Return can share a task; the causal
+        # current Return identity disambiguates the typed support.
+        second_id = "formal-v1-sim-2026092302-policy-2026092402::anchor-0041"
+        second_index = next(i for i, row in enumerate(loader.index) if row["metadata"]["sample_id"] == second_id)
+        second = loader.load_batch([second_index])
+        state = {key: value.clone() for key, value in second.states[0].items()}
+        task_slots = np.flatnonzero((state["flow_task_index"][0] == 4).numpy())
+        self.assertEqual(2, len(task_slots))
+        for slot in task_slots:
+            state["flow_presence"][0, int(slot)] = False
+            state["flow_comm_relation_index"][0, int(slot)] = -1
+        _, audit = build_action(second.samples[0], state, 1)
+        rows = [row for row in audit["comm"] if row["task_index"] == 4]
+        self.assertEqual(2, len(rows))
+        self.assertTrue(all(row["mode"] == "typed_current_support_predicted_inactive" for row in rows))
 
     def test_shard_hash_tamper_rejected(self) -> None:
         loader = FullFormalShardDataset(FormalTrainingInterface.from_manifest(MANIFEST))
