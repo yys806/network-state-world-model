@@ -2,6 +2,8 @@
 
 **2026-09-24 STEP 5.6A（GPU 验收完成，配置待决）：** RTX 4090 上已完成正式数据 H=4 batch 1/2/4/8 的 CUDA 前向、反向、参数更新、跨轨迹 batch 与 checkpoint/错误身份拒绝。完整 1104-window prior-only validation 已通过四组互斥轨迹的唯一性合并；GPU readiness receipt 为 PASS。正式训练数值配置仍待研究者决定，formal training、baseline、Planner、locked_test 和性能声明均未执行。证据入口为 `docs/implementation_records/STEP_05_6A_GPU_SMOKE_FORMAL_CONFIG_EVIDENCE.md`。
 
+**2026-09-24 STEP 5.6A-CONFIG-FREEZE：** 研究者批准的 Formal Training Config v1 已落入 `code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/`，状态为 `FORMAL_TRAINING_CONFIG=FROZEN`、`FORMAL_TRAINING_READINESS=READY_TO_START`。同时修正 validation availability bookkeeping：真实 validation target-mask 计算为 H1–H4 各 1104 个窗口，旧 GPU receipt、official numerator/count 与 `L_Val` 未改；无 GPU rerun、无 formal training。下一步需另行授权 STEP 5.6B。
+
 **2026-09-23 STEP 5.5-PATCH：** 纠正原 H=4 `runtime/` 1+1 mini smoke 的边界。新增 `FullFormalShardDataset → FullFormalTrainer` 全量 4416/1104 索引与按 batch/shard 加载；真实 CPU H=4 参数更新、跨轨迹验证与 checkpoint 通过。全量 fixed-support audit 发现 8828 次 Return-birth unsupported/fixed-support；旧 receipt 的 0/0/0 为未检测字段读数，已被新凭证取代。AirFogSim lifecycle repair 为 213 次 collection-side 同对象去重。证据见 `docs/implementation_records/STEP_05_5_PATCH_FULL_CONSUMPTION_FIXED_SUPPORT_CLOSURE.md`。GPU/formal training/locked_test 均未执行。
 
 STEP 5.5 当时状态：**Formal Dataset v1 的 60 条真实 trajectory、H=2/L=4 五类 package、48/12 split、四动作 coverage、deterministic rebuild 与 CPU H=4 trainer smoke 已完成**。`FORMAL_DATASET_READINESS=READY`、`TRAINING_STACK_READINESS=PASS`；当时尚未执行 GPU。当前 GPU smoke 状态见上方 STEP 5.6A。

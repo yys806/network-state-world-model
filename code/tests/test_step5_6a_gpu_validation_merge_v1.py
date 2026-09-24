@@ -32,7 +32,7 @@ class ValidationMergeTests(unittest.TestCase):
                     "sample_ids": sample_ids, "selected_trajectory_ids": sorted(trajectories),
                     "per_horizon_loss": [
                         {"horizon": h, "motion_numerator": 2.0, "motion_count": 2,
-                         "csi_numerator": 6.0, "csi_count": 2} for h in range(1, 5)
+                         "csi_numerator": 6.0, "csi_count": 2, "available_sample_count": len(sample_ids)} for h in range(1, 5)
                     ],
                     "raw_aggregates": {family: {str(h): {"sum_abs": 4.0, "sum_squared": 8.0, "count": 2}
                                                  for h in range(1, 5)} for family in ("motion", "csi")},
@@ -50,6 +50,7 @@ class ValidationMergeTests(unittest.TestCase):
             self.assertEqual((1104, 12), (result["validation_windows"], result["validation_trajectories"]))
             self.assertEqual(2.0, result["L_Val"])
             self.assertEqual(2.0, result["raw_metrics"]["motion"][0]["raw_mae"])
+            self.assertEqual(1104, result["per_horizon_loss"][0]["available_sample_count"])
             self.assertEqual(26.0, result["validation_worker_wall_seconds_sum"])
             self.assertAlmostEqual(1104 / 26.0, result["throughput_windows_per_second_serial"])
             broken = json.loads(paths[1].read_text(encoding="utf-8"))

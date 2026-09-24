@@ -2,7 +2,7 @@
 
 ## STEP 5.6A 当前状态（2026-09-24，GPU 验收完成）
 
-正式数据身份保持 H=2/L=4、60 条 trajectory、48/12 split、4416/1104 windows，Dataset package/hash 未改。RTX 4090 上 H=4 CUDA 前向、反向、参数更新、跨轨迹 batch、checkpoint/错误身份拒绝和完整 1104-window prior-only GPU validation 已有通过凭证；验证集 12 条轨迹均覆盖且没有重复/遗漏。未训练 smoke checkpoint 的 `L_Val=0.829751` 仅作运行诊断，不是性能结果。正式训练配置数值未获研究者冻结，`FORMAL_TRAINING_READINESS=BLOCKED_BY_CONFIG_DECISION`；`formal_training=false`、`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。唯一下一动作是研究者决定数值配置；不得自动进入 STEP 5.6B。
+正式数据身份保持 H=2/L=4、60 条 trajectory、48/12 split、4416/1104 windows，Dataset package/hash 未改。RTX 4090 上 H=4 CUDA 前向、反向、参数更新、跨轨迹 batch、checkpoint/错误身份拒绝和完整 1104-window prior-only GPU validation 已有通过凭证；验证集 12 条轨迹均覆盖且没有重复/遗漏。未训练 smoke checkpoint 的 `L_Val=0.829751` 仅作运行诊断，不是性能结果。研究者已冻结 Formal Training Config v1，机器状态为 `FORMAL_TRAINING_CONFIG=FROZEN`、`FORMAL_TRAINING_READINESS=READY_TO_START`；`formal_training=false`、`gpu_training_verified=false`、`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。唯一下一动作是另行授权 STEP 5.6B，不得自动启动。
 
 ## STEP 5.5-PATCH 历史状态（2026-09-23）
 

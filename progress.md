@@ -1162,3 +1162,6 @@ Formal Training Bundle 在 RTX 4090 上以原五类 package hash 载入。H4 CUD
 # 2026-09-24 STEP 5.6A GPU 验收收口
 
 RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；完整 1104-window prior-only validation 的四组互斥轨迹合并、12 条轨迹唯一性和无参数更新通过。Checkpoint 重载参数/状态相同，预测在 rtol=atol=1e-6 内相同。正式数值配置待研究者决定；formal training、locked_test、baseline、Planner 和性能声明均未执行。下一动作仅为研究者配置决定。
+# 2026-09-24 STEP 5.6A-CONFIG-FREEZE
+
+研究者批准的 Formal Training Config v1 已程序化并写入 tracked artifact。CPU 验证了 4416/8=552、10×552=5520、Stage 1 和 H1/H2/H4 边界、KL warmup/free bits、validation/checkpoint interval、patience、AdamW 默认 betas/eps、FormalTrajectorySampler exact-once/resume。真实 validation target mask 重算 H1–H4 availability 均为 1104；原 GPU receipt、official numerator/count 与 `L_Val=0.8297511641582647` 未变，无 GPU rerun。

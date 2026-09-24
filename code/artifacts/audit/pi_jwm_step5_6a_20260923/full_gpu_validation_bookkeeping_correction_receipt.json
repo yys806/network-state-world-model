@@ -1,0 +1,34 @@
+{
+  "bookkeeping_only": true,
+  "corrected_L_Val": 0.8297511641582647,
+  "corrected_available_sample_count": [
+    1104,
+    1104,
+    1104,
+    1104
+  ],
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "definition": "per horizon, count validation windows with at least one valid Motion target and at least one valid CSI target",
+  "motion_csi_numerator_count_unchanged": true,
+  "no_gpu_rerun": true,
+  "official_metrics_unchanged": true,
+  "original_L_Val": 0.8297511641582647,
+  "original_available_sample_count": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "original_receipt": "code/artifacts/audit/pi_jwm_step5_6a_20260923/full_gpu_validation_receipt.json",
+  "original_receipt_sha256": "55fb9c2ec8c6d4f1c074af6392701edbad2ca838a6ba584ab7e1c7b47337415e",
+  "passed": true,
+  "schema_version": "PI-JWM-STEP-5.6A-Validation-Bookkeeping-Correction-v1",
+  "scope": {
+    "formal_training": false,
+    "gpu": false,
+    "locked_test_accessed": false,
+    "performance_claim": false
+  },
+  "validation_windows": 1104
+}

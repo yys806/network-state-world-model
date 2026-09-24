@@ -54,6 +54,17 @@
 
 Unverified：任何未在本文件或项目权威记录中标为 Researcher Decision 的科研取舍。
 
+## 2026-09-24：STEP 5.6A-CONFIG-FREEZE Formal Training Config v1
+
+**Researcher Decision**
+
+- Formal Dataset remains H=2/L=4 with 4416 train and 1104 validation windows; dataset identity, split, normalization and Definition 05 semantics are unchanged.
+- Formal training seed=5601, batch_size=8, 552 steps/epoch, AdamW learning_rate=3e-4, constant schedule, weight_decay=0, betas=(0.9,0.999), eps=1e-8, gradient_clip_norm=1.0.
+- Budget is max_epochs=10 and max_steps=5520. Stage 1 is steps 0–551 posterior-assisted H1; from global_step=552 the path is prior-dominant. Curriculum starts are H1 at 0, H2 at 1104, H4 at 2208.
+- KL target_beta=1.0, warmup_steps=1104, free_bits=0.1 per latent dimension, overshooting OFF. Validation is prior-only over all 1104 windows and H1–H4, every 1104 completed steps, with checkpoint selector `argmin L_Val`.
+- Latest checkpoints save every 552 completed steps; best checkpoints save on strict L_Val improvement; patience is 3 full validations. Resume restores model, optimizer, RNG, progress, selector state and curriculum state; sampler order is derived deterministically from formal seed and global step. FP32 is retained and AMP is not introduced.
+- This freezes the formal numerical protocol. It does not authorize starting Formal Training; `formal_training=false`, `gpu_training_verified=false`, `locked_test_accessed=false`, `baseline=false`, `planner=false`, and `performance_claim=false` remain required boundaries.
+
 ## 2026-09-18 Researcher Decision
 
 Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^Mob controlling UAV mobility only; vehicle motion remains SUMO external progression. This is a researcher decision, not an engineering inference.

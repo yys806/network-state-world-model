@@ -1,5 +1,10 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-24：STEP 5.6A-CONFIG-FREEZE
+
+- 落地研究者批准的 Formal Training Config v1；development defaults 和历史 checkpoint 兼容路径保持不变。
+- 修正 validation availability bookkeeping，并以真实 target masks 生成 CPU correction receipt；原 GPU validation receipt、official metrics 和 `L_Val` 未修改。
+
 ## 2026-09-24：STEP 5.6A GPU Smoke 与完整 Validation 验收
 
 - RTX 4090 上正式数据 H4 batch 1/2/4/8 的 CUDA 前向、反向与少量 optimizer step 通过；加入 4416 train-window 确定性 trajectory sampler、portable current-state 构造与 fixed-support 映射修复。

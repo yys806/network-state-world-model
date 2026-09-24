@@ -24,6 +24,7 @@ from pi_jwm.step5_2_training_loop_v1 import (  # noqa: E402
     Step52TrainingConfig,
     Step52Trainer,
     aggregate_validation_horizon_rows,
+    count_available_validation_windows,
     validate_step52_receipt,
 )
 
@@ -132,6 +133,20 @@ class Step52TrainingLoopTests(unittest.TestCase):
         self.assertAlmostEqual(rows[0]["L_Mot"], 2.0)
         self.assertAlmostEqual(rows[0]["L_CSI"], 10.0 / 3.0)
         self.assertAlmostEqual(rows[0]["L_Pred"], 0.5 * (2.0 + 10.0 / 3.0))
+
+    def test_available_count_is_per_window_and_survives_reaggregation(self):
+        motion = torch.zeros((8, 2, 2), dtype=torch.bool)
+        csi = torch.zeros((8, 3, 2), dtype=torch.bool)
+        motion[[0, 1, 2, 3, 4, 5], 0, 0] = True
+        csi[[0, 1, 2, 3, 4, 6], 0, 0] = True
+        self.assertEqual(count_available_validation_windows(motion, csi), 5)
+        self.assertEqual(sum(count_available_validation_windows(motion[i:i + 1], csi[i:i + 1]) for i in range(8)), 5)
+        base = {"motion_numerator": 10.0, "motion_count": 5, "csi_numerator": 12.0, "csi_count": 6}
+        first = aggregate_validation_horizon_rows({1: [{**base, "available_sample_count": 5}]})
+        second = aggregate_validation_horizon_rows({1: first})
+        self.assertEqual(first[0]["available_sample_count"], 5)
+        self.assertEqual(second, first)
+        self.assertEqual(first[0]["L_Pred"], 2.0)
 
     def test_checkpoint_selector_and_early_stopping_use_only_l_val(self):
         state = self.trainer.state_snapshot(global_step=2, epoch=0, curriculum_horizon=2, best_l_val=1.0, early_stopping_counter=1)

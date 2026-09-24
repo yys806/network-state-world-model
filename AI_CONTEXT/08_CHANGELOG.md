@@ -1,5 +1,11 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-24 STEP 5.6A-CONFIG-FREEZE
+
+- 将研究者批准的 Formal Training Config v1 落入独立源、JSON 和 freeze receipt：seed 5601、batch 8、552 steps/epoch、10 epochs/5520 steps、Stage 1 552、curriculum 起点 0/1104/2208、KL warmup 1104、validation interval 1104、checkpoint interval 552、patience 3、FP32。
+- 修正 validation `available_sample_count` 的 batch/merge bookkeeping：真实 1104 validation windows 的 H1–H4 corrected counts 均为 1104；官方 numerator/count、`L_Val` 和旧 GPU receipt 均未修改。无 GPU rerun。
+- 当前状态：`FORMAL_TRAINING_CONFIG=FROZEN`、`FORMAL_TRAINING_READINESS=READY_TO_START`，但 `formal_training=false`、`gpu_training_verified=false`、`locked_test_accessed=false`。
+
 ## 2026-09-24 STEP 5.6A
 
 - 正式数据 RTX 4090 H4 CUDA smoke 与全部 1104 validation 窗口的 prior-only GPU 遍历通过；完整唯一性、分 family/horizon raw metrics 和数值容差 checkpoint 重载记录在 STEP 5.6A 机器凭证中。

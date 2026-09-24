@@ -1,5 +1,7 @@
 # STEP 5.6A — GPU Smoke + Formal Training Config Evidence/Freeze
 
+> 本记录保留 GPU smoke/full validation 收口时的历史配置待决快照。数值配置已在后续 `STEP 5.6A-CONFIG-FREEZE` 记录中由研究者明确冻结；当前正式配置以 `code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/` 为准。
+
 ## Step Goal and Definition Basis
 
 Use the accepted Formal Dataset v1 for a bounded CUDA smoke and full prior-only validation. Verify the deterministic trajectory sampler and distinguish frozen Definition 05 method choices from development numerical defaults. This step does not authorize formal training. Basis: `AI_CONTEXT/06_DECISIONS.md` STEP 5.0 and STEP 5.5 decisions, Formal Dataset manifest SHA-256 `6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc`, and STEP 5.5-PATCH audit/readiness receipts.

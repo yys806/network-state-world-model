@@ -1157,3 +1157,6 @@
 # 2026-09-24 STEP 5.6A GPU 验收发现
 
 完整 1104-window validation 的四组 serial worker wall 合计 7103.09 秒、shard 数据加载合计 72.15 秒（1.02%）；CUDA event 包含主机调度，不能称纯 kernel 时间。一次 profiler 探针因高 CPU 插桩开销超过 4 分钟而停止，不纳入验收。未训练 smoke checkpoint 的 `L_Val=0.829751` 不构成预测性能结论。CUDA checkpoint 两次重载参数与状态完全一致，H4 输出有微小浮点差异（Motion 8.20e-8、CSI 7.63e-6），在 rtol=atol=1e-6 内一致，不能称逐位一致。
+# 2026-09-24 STEP 5.6A-CONFIG-FREEZE findings
+
+原 merged GPU receipt 的 `available_sample_count=0` 是字段语义链问题：批内只保留 `available` 布尔值，merge 又把已聚合 row 当 sample row 处理。修复让每个 batch row 记录同时有 Motion 和 CSI 有效 target 的窗口数，merge 对已有 `available_sample_count` 直接累计；CPU correction receipt 从 1104 个真实 validation target windows 重算，四个 horizon 均为 1104，official loss/metric 不受影响。正式 config 与 Step 5.2 development defaults 分离；没有修改 Dataset、模型、loss 或历史 GPU receipt。

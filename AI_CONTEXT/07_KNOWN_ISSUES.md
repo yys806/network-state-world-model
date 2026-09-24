@@ -1,11 +1,13 @@
 # 已知问题与冲突
 
-## STEP 5.6A 当前边界（2026-09-24）
+## STEP 5.6A-CONFIG-FREEZE 当前边界（2026-09-24）
 
 - GPU H4 few-step smoke 与完整 1104-window prior-only validation 均通过；这验证运行路径，不验证正式训练或预测性能。CUDA checkpoint 重载参数/状态完全一致；两次预测存在微小浮点差异（Motion 最大约 8.20e-8、CSI 最大约 7.63e-6），按记录的 `rtol=atol=1e-6` 均通过，不能声称逐位相同。
-- 正式训练数值配置（seed、batch、optimizer、预算、阶段和 curriculum 起点、KL 数值、验证/保存间隔、patience）仍待研究者决定。development 默认值和少量 GPU step 不构成正式配置；`FORMAL_TRAINING_CONFIG=AWAITING_RESEARCHER_DECISION`。
+- （冻结前历史记录）正式训练数值配置曾待研究者决定；该状态已由下方 STEP 5.6A-CONFIG-FREEZE 记录取代。当前正式配置以 tracked freeze artifact 为准。
 - 旧 STEP 5.5-SHARE README 所列代码版本只实证了 package/index 的 portable 解压加载；本次真实 H4 远端消费暴露并修复了模型状态构造对本地 Raw 的依赖。已有分享 ZIP 的 Dataset 字节和身份不变；完整 Trainer 使用应采用 STEP 5.6A 修复后的源码。
 - Few-step smoke/未训练模型 validation 不是正式训练结果或性能证据。`formal_training=false`、`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。
+- Formal Training Config v1 已由研究者批准并冻结：`FORMAL_TRAINING_CONFIG=FROZEN`、`FORMAL_TRAINING_READINESS=READY_TO_START`。配置凭证位于 `code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/`；这不表示已经启动 formal training。
+- 原 GPU validation receipt 的 `available_sample_count=0` 是批内布尔字段在 merge 二次聚合时丢失的 bookkeeping 问题，不是有效目标不存在。CPU 从真实 validation target shards 重算为 `[1104,1104,1104,1104]`，numerator/count 与 `L_Val` 不变；原 receipt 保留，纠正凭证标记 `bookkeeping_only=true`、`no_gpu_rerun=true`。
 
 ## STEP 5.5-PATCH 修正的证据边界
 

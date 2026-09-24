@@ -56,8 +56,8 @@
       "id": "PIJWM-STEP-5.6B-FORMAL-GPU-TRAINING",
       "type": "formal_gpu_training",
       "status": "deferred",
-      "reason": "STEP 5.6A verified CUDA runtime and complete prior-only validation, but Definition 05 has not frozen the numerical formal training configuration",
-      "summary_zh": "正式训练数值配置待研究者决定；不得从 development 默认值或 GPU smoke 自动启动 5.6B。",
+      "reason": "STEP 5.6A verified CUDA runtime and complete prior-only validation; formal config is frozen, but formal GPU training still requires explicit STEP 5.6B authorization and an independent Go/No-Go audit",
+      "summary_zh": "正式训练配置已冻结，但不得自动启动 5.6B；需要独立 Go/No-Go 审计和明确授权。",
       "authorization_required": true,
       "auto_start": false,
       "locked_test_accessed": false,
@@ -65,7 +65,8 @@
       "required_predecessors": [
         "STEP 5.6A full 1104-window GPU validation acceptance",
         "researcher-approved formal_training_config_v1",
-        "independent formal training Go/No-Go audit"
+        "independent formal training Go/No-Go audit",
+        "explicit STEP 5.6B authorization"
       ],
       "forbidden_until_authorized": [
         "formal GPU training start",

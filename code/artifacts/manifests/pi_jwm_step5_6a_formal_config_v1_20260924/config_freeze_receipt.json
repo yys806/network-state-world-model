@@ -1,0 +1,22 @@
+{
+  "config_sha256": "a806c320f1d238a3997a94ca74af5641169a512a9551af7f3ff04c0ee2447660",
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_training_config": "FROZEN",
+  "formal_training_readiness": "READY_TO_START",
+  "formal_training_started": false,
+  "gpu_training_verified": false,
+  "locked_test_accessed": false,
+  "passed": true,
+  "researcher_decision": true,
+  "schema_version": "PI-JWM-STEP-5.6A-Formal-Training-Config-Freeze-v1",
+  "scope": {
+    "baseline": false,
+    "formal_training": false,
+    "gpu_training_verified": false,
+    "locked_test_accessed": false,
+    "performance_claim": false,
+    "planner": false
+  },
+  "source": "explicit researcher-approved STEP 5.6A-CONFIG-FREEZE values"
+}

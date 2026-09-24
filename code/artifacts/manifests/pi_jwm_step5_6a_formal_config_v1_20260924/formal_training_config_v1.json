@@ -1,0 +1,179 @@
+{
+  "checkpoint": {
+    "best_policy": "save_on_strict_L_Val_improvement",
+    "latest_interval_completed_steps": 552,
+    "patience_full_validations": 3,
+    "selector": "argmin L_Val"
+  },
+  "curriculum": {
+    "horizons": [
+      1,
+      2,
+      4
+    ],
+    "start_steps": [
+      0,
+      1104,
+      2208
+    ]
+  },
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_training_config": "FROZEN",
+  "formal_training_readiness": "READY_TO_START",
+  "formal_training_started": false,
+  "history_steps": 2,
+  "horizon_steps": 4,
+  "kl": {
+    "free_bits": 0.1,
+    "free_bits_unit": "per_latent_dimension",
+    "overshooting": false,
+    "target_beta": 1.0,
+    "warmup_steps": 1104
+  },
+  "locked_test_accessed": false,
+  "mixed_precision": false,
+  "optimizer": {
+    "effective_defaults": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08
+    },
+    "gradient_clip_norm": 1.0,
+    "learning_rate": 0.0003,
+    "learning_rate_schedule": "constant",
+    "name": "AdamW",
+    "weight_decay": 0.0
+  },
+  "precision": "fp32",
+  "researcher_decision": true,
+  "resume": {
+    "restore": [
+      "model",
+      "optimizer",
+      "rng",
+      "global_step",
+      "epoch",
+      "best_l_val",
+      "early_stopping_counter",
+      "curriculum_horizon"
+    ],
+    "sampler_order": "derive_from_formal_seed_and_global_step",
+    "step_index_policy": "global_step_is_zero_based; intervals_use_completed_steps"
+  },
+  "sampler": {
+    "policy": "trajectory_shuffle_then_within_trajectory_shuffle",
+    "seed": 5601,
+    "train_windows_exactly_once_per_epoch": true,
+    "validation_never_mixed": true
+  },
+  "schema_version": "PI-JWM-Formal-Training-Config-v1",
+  "scope": {
+    "baseline": false,
+    "formal_training": false,
+    "gpu_training_verified": false,
+    "locked_test_accessed": false,
+    "performance_claim": false,
+    "planner": false
+  },
+  "stage": {
+    "stage1": "posterior_assisted_warmup",
+    "stage1_steps": 552,
+    "stage2": "prior_dominant_recursive",
+    "transition_global_step": 552
+  },
+  "steps_per_epoch": 552,
+  "train_windows": 4416,
+  "training_config": {
+    "batch_size": 8,
+    "checkpoint_patience": 3,
+    "csi_decoder_bias_init_policy": "train_only_csi_mean",
+    "csi_decoder_output_space": "raw_db",
+    "curriculum": {
+      "horizons": [
+        1,
+        2,
+        4
+      ],
+      "start_steps": [
+        0,
+        1104,
+        2208
+      ]
+    },
+    "device": "cuda",
+    "encoder": {
+      "aggregator": "masked_mean",
+      "csi_history_encoder": false,
+      "d_h": 16,
+      "development_only": true,
+      "direction_embedding_dim": 4,
+      "enable_p2a": true,
+      "enable_p2c": true,
+      "enable_reverse_comm": true,
+      "enable_reverse_dag": false,
+      "enable_reverse_flow": true,
+      "enable_reverse_task_agent": true,
+      "graph_layers": 2,
+      "initialization_seed": 431,
+      "lifecycle_embedding_dim": 4,
+      "mlp_hidden_width": 24,
+      "research_frozen": false,
+      "type_embedding_dim": 4,
+      "update_rule": "residual_layernorm"
+    },
+    "gradient_clip_norm": 1.0,
+    "kl_schedule": {
+      "free_bits": 0.1,
+      "target_beta": 1.0,
+      "warmup_steps": 1104
+    },
+    "learning_rate": 0.0003,
+    "max_epochs": 10,
+    "max_horizon": 4,
+    "max_steps": 5520,
+    "rssm": {
+      "d_encoder": 16,
+      "d_h": 16,
+      "d_z": 4,
+      "development_only": true,
+      "graph_layers": 2,
+      "initialization_seed": 440,
+      "mlp_width": 24,
+      "n_comm_rb": 50,
+      "noise_power_mw": 3.9810717055349695e-12,
+      "outage_snr_threshold": 10.0,
+      "physical_k": 2,
+      "physical_radius_m": 1000.0,
+      "physical_topology_mode": "radius_knn",
+      "posterior_log_std_max": 2.0,
+      "posterior_log_std_min": -5.0,
+      "prior_log_std_max": 2.0,
+      "prior_log_std_min": -5.0,
+      "rb_bandwidth_mhz": 2.0,
+      "research_frozen": false,
+      "rollout_horizon": 2,
+      "slot_duration_s": 0.1,
+      "uav_or_rsu_tx_power_dbm": 29.0,
+      "v2v_tx_power_dbm": 23.0,
+      "vehicle_to_infra_tx_power_dbm": 26.0
+    },
+    "seed": 5601,
+    "stage1_steps": 552,
+    "weight_decay": 0.0
+  },
+  "validation": {
+    "horizons": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "interval_completed_steps": 1104,
+    "mode": "prior_only",
+    "windows": 1104
+  },
+  "validation_windows": 1104
+}

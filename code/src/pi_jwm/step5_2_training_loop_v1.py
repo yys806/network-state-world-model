@@ -137,6 +137,15 @@ def _stack_actions(actions: Sequence[Mapping[str, torch.Tensor]]) -> dict[str, t
     return output
 
 
+def count_available_validation_windows(motion_mask: torch.Tensor, csi_mask: torch.Tensor) -> int:
+    """Count windows with at least one valid target element in both families."""
+    if motion_mask.ndim < 2 or csi_mask.ndim < 2 or motion_mask.shape[0] == 0 or motion_mask.shape[0] != csi_mask.shape[0]:
+        raise ValueError("Motion and CSI masks must have the same nonempty batch axis")
+    motion_available = motion_mask.reshape(motion_mask.shape[0], -1).bool().any(dim=1)
+    csi_available = csi_mask.reshape(csi_mask.shape[0], -1).bool().any(dim=1)
+    return int((motion_available & csi_available).sum().item())
+
+
 def aggregate_validation_horizon_rows(horizon_rows: Mapping[int, Sequence[Mapping[str, Any]]]) -> list[dict[str, Any]]:
     """Aggregate validation errors over all valid elements for each horizon.
 
@@ -163,7 +172,10 @@ def aggregate_validation_horizon_rows(horizon_rows: Mapping[int, Sequence[Mappin
             "L_Mot": l_mot,
             "L_CSI": l_csi,
             "L_Pred": 0.5 * l_mot + 0.5 * l_csi,
-            "available_sample_count": sum(int(bool(row.get("available", False))) for row in rows),
+            "available_sample_count": sum(
+                int(row["available_sample_count"]) if "available_sample_count" in row
+                else int(bool(row.get("available", False))) for row in rows
+            ),
         })
     return per_horizon
 
@@ -623,7 +635,8 @@ class Step52Trainer(nn.Module):
             csi_h, csi_n = masked_family_mse(csi_pred[:, h], csi_target[:, h], csi_mask[:, h])
             mot_num = ((motion_pred[:, h] - motion_target[:, h]).square() * motion_mask[:, h].to(motion_pred.dtype)).sum()
             csi_num = ((csi_pred[:, h] - csi_target[:, h]).square() * csi_mask[:, h].to(csi_pred.dtype)).sum()
-            horizon_rows.append({"horizon": h + 1, "L_Mot": float(mot_h.detach()), "L_CSI": float(csi_h.detach()), "L_Pred": float((0.5 * mot_h + 0.5 * csi_h).detach()), "motion_numerator": float(mot_num.detach()), "csi_numerator": float(csi_num.detach()), "motion_count": int(mot_n), "csi_count": int(csi_n), "available": bool(mot_n > 0 and csi_n > 0)})
+            available_count = count_available_validation_windows(motion_mask[:, h], csi_mask[:, h])
+            horizon_rows.append({"horizon": h + 1, "L_Mot": float(mot_h.detach()), "L_CSI": float(csi_h.detach()), "L_Pred": float((0.5 * mot_h + 0.5 * csi_h).detach()), "motion_numerator": float(mot_num.detach()), "csi_numerator": float(csi_num.detach()), "motion_count": int(mot_n), "csi_count": int(csi_n), "available": available_count > 0, "available_sample_count": available_count})
         return {
             "L_Total": total, "L_Pred": l_pred, "L_Mot": motion_loss, "L_CSI": csi_loss, "L_KL": kl,
             "L_KL_Phy_raw": raw_phy, "L_KL_Phy_adjusted": adjusted_phy, "L_KL_Comm_raw": raw_comm, "L_KL_Comm_adjusted": adjusted_comm,
@@ -927,6 +940,6 @@ def validate_step52_receipt(receipt: Mapping[str, Any]) -> dict[str, bool]:
 
 
 __all__ = [
-    "CurriculumConfig", "KLSchedule", "Step52TrainingConfig", "DevelopmentBundle", "Step52Trainer", "aggregate_validation_horizon_rows",
+    "CurriculumConfig", "KLSchedule", "Step52TrainingConfig", "DevelopmentBundle", "Step52Trainer", "aggregate_validation_horizon_rows", "count_available_validation_windows",
     "REQUIRED_STEP52_CHECKS", "validate_step52_receipt",
 ]

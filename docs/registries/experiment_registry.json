@@ -28,7 +28,11 @@
       },
       "protocol": "code/artifacts/protocol/pi_jwm_p4_entity_rssm_frozen_protocol_20260906_v2/protocol.json",
       "data": "code/artifacts/formal_tensor/pi_jwm_v4_tensor_v5_causal_motion_h20_unlocked_20260906",
-      "split": ["train", "validation", "calibration"],
+      "split": [
+        "train",
+        "validation",
+        "calibration"
+      ],
       "seed": 20260831,
       "checkpoint": "code/artifacts/experiments/pi_jwm_p4_entity_rssm_gpu_formal_seed_20260831_v1/checkpoints/entity_aligned_dual_graph_rssm_v1__best.pt",
       "result": "code/artifacts/experiments/pi_jwm_p4_entity_rssm_gpu_formal_seed_20260831_v1",
@@ -67,7 +71,11 @@
       },
       "protocol": "code/artifacts/protocol/pi_jwm_p4_entity_rssm_frozen_protocol_20260906_v2/protocol.json",
       "data": "code/artifacts/formal_tensor/pi_jwm_v4_tensor_v5_causal_motion_h20_unlocked_20260906",
-      "split": ["train", "validation", "calibration"],
+      "split": [
+        "train",
+        "validation",
+        "calibration"
+      ],
       "seed": 20260830,
       "checkpoint": "code/artifacts/experiments/pi_jwm_p4_entity_rssm_gpu_formal_seed_20260830_v1/checkpoints/entity_aligned_dual_graph_rssm_v1__best.pt",
       "result": "code/artifacts/experiments/pi_jwm_p4_entity_rssm_gpu_formal_seed_20260830_v1",
@@ -95,10 +103,20 @@
         "note": "Exact run identity will be recorded only after explicit authorization and execution."
       },
       "configuration": null,
-      "parameters": {"allowed_runtime_changes": ["seed", "output_dir"], "seed": 20260832},
+      "parameters": {
+        "allowed_runtime_changes": [
+          "seed",
+          "output_dir"
+        ],
+        "seed": 20260832
+      },
       "protocol": "code/artifacts/protocol/pi_jwm_p4_entity_rssm_frozen_protocol_20260906_v2/protocol.json",
       "data": "code/artifacts/formal_tensor/pi_jwm_v4_tensor_v5_causal_motion_h20_unlocked_20260906",
-      "split": ["train", "validation", "calibration"],
+      "split": [
+        "train",
+        "validation",
+        "calibration"
+      ],
       "seed": 20260832,
       "checkpoint": null,
       "result": null,
@@ -133,10 +151,17 @@
         "note": "The audit manifest is the available source identity; no verified Git commit is claimed."
       },
       "configuration": null,
-      "parameters": {"device": "cpu", "purpose": "mechanism_and_reload_consistency"},
+      "parameters": {
+        "device": "cpu",
+        "purpose": "mechanism_and_reload_consistency"
+      },
       "protocol": "code/artifacts/protocol/pi_jwm_p4_entity_rssm_frozen_protocol_20260906_v2/protocol.json",
       "data": "code/artifacts/formal_tensor/pi_jwm_v4_tensor_v5_causal_motion_h20_unlocked_20260906",
-      "split": ["train", "validation", "calibration"],
+      "split": [
+        "train",
+        "validation",
+        "calibration"
+      ],
       "seed": null,
       "checkpoint": null,
       "result": "code/artifacts/audit/pi_jwm_p4_entity_rssm_cpu_consistency_20260906_v2",
@@ -169,7 +194,16 @@
         "note": "The probe manifest is the available source identity; no verified Git commit is claimed."
       },
       "configuration": "code/artifacts/audit/pi_jwm_p4_entity_rssm_gpu_batch_probe_20260906_v1/gpu_batch_probe.json",
-      "parameters": {"batch_sizes": [8, 4, 2, 1], "optimizer_step": false, "memory_fraction_limit": 0.85},
+      "parameters": {
+        "batch_sizes": [
+          8,
+          4,
+          2,
+          1
+        ],
+        "optimizer_step": false,
+        "memory_fraction_limit": 0.85
+      },
       "protocol": "code/artifacts/protocol/pi_jwm_p4_entity_rssm_frozen_protocol_20260906_v2/protocol.json",
       "data": "code/artifacts/formal_tensor/pi_jwm_v4_tensor_v5_causal_motion_h20_unlocked_20260906",
       "split": null,
@@ -205,10 +239,16 @@
         "note": "The audit records checkpoint, tensor and sample-ID hashes rather than a Git commit."
       },
       "configuration": null,
-      "parameters": {"device": "cpu", "validation_sample_count": 128, "read_only": true},
+      "parameters": {
+        "device": "cpu",
+        "validation_sample_count": 128,
+        "read_only": true
+      },
       "protocol": null,
       "data": "code/artifacts/formal_tensor/pi_jwm_v4_tensor_v4_rule_contract_h20_rb_repair_unlocked_20260827",
-      "split": ["validation"],
+      "split": [
+        "validation"
+      ],
       "seed": null,
       "checkpoint": null,
       "result": "code/artifacts/audit/pi_jwm_p4_first_principles_audit_20260906_v1",
@@ -233,9 +273,21 @@
       "research_question": "Can the frozen Definition 05 target-only posterior, target-free prior, masked losses, analytic KL and metrics execute consistently on the development tensor?",
       "method": "pi_jwm_step5_1b_posterior_loss_metric_v1",
       "code": "code/src/pi_jwm/step5_1b_posterior_loss_metric_v1.py",
-      "code_version": {"identity_type": "git_commit_after_validation", "manifest": "code/artifacts/protocols/pi_jwm_step5_1b_posterior_loss_metric_v1_20260921/manifest.json", "manifest_sha256": null, "git_commit": null, "note": "Commit identity is filled only after final validation and commit."},
+      "code_version": {
+        "identity_type": "git_commit_after_validation",
+        "manifest": "code/artifacts/protocols/pi_jwm_step5_1b_posterior_loss_metric_v1_20260921/manifest.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Commit identity is filled only after final validation and commit."
+      },
       "configuration": null,
-      "parameters": {"device": "cpu", "training": false, "optimizer_step": false, "posterior_target_only": true, "prior_target_free": true},
+      "parameters": {
+        "device": "cpu",
+        "training": false,
+        "optimizer_step": false,
+        "posterior_target_only": true,
+        "prior_target_free": true
+      },
       "protocol": "docs/contracts_PIJWM_DEFINITION_05_LOSS_TRAINING_EVALUATION_V1.md",
       "data": "code/artifacts/protocols/pi_jwm_step5_1a_motion_csi_target_contract_v1_20260921/tensor.npz",
       "split": null,
@@ -249,7 +301,13 @@
       "summary_zh": "CPU 原语前向、有限梯度、序列化重载和确定性 receipt 通过；不存在训练或性能结果。",
       "claim_boundary": "non-locked CPU development mechanism only",
       "locked_test_accessed": false,
-      "field_notes": {"configuration": "No training configuration; this is a primitive receipt.", "split": "The 12-sample tensor is development evidence, not a formal dataset split.", "seed": "No formal stochastic training seed.", "checkpoint": "No optimizer step or checkpoint.", "metrics": "Metric functions are exercised only for finite self-consistency, not performance."}
+      "field_notes": {
+        "configuration": "No training configuration; this is a primitive receipt.",
+        "split": "The 12-sample tensor is development evidence, not a formal dataset split.",
+        "seed": "No formal stochastic training seed.",
+        "checkpoint": "No optimizer step or checkpoint.",
+        "metrics": "Metric functions are exercised only for finite self-consistency, not performance."
+      }
     },
     {
       "id": "STEP-5.2-TRAINING-LOOP-20260922",
@@ -258,12 +316,32 @@
       "research_question": "Can the frozen Definition 05 primitives be connected to a prior-recursive CPU training loop with correct optimizer, validation and checkpoint boundaries?",
       "method": "pi_jwm_step5_2_training_loop_v1",
       "code": "code/src/pi_jwm/step5_2_training_loop_v1.py",
-      "code_version": {"identity_type": "git_commit_after_validation", "manifest": "code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/manifest.json", "manifest_sha256": null, "git_commit": null, "note": "Commit identity is filled after final validation and commit."},
+      "code_version": {
+        "identity_type": "git_commit_after_validation",
+        "manifest": "code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/manifest.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Commit identity is filled after final validation and commit."
+      },
       "configuration": "code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/config.json",
-      "parameters": {"device": "cpu", "development_bundle": true, "train_sample_count": 8, "validation_sample_count": 4, "max_steps": 2, "stage1_steps": 1, "full_training": false, "gpu": false, "formal_dataset": false, "locked_test_accessed": false},
+      "parameters": {
+        "device": "cpu",
+        "development_bundle": true,
+        "train_sample_count": 8,
+        "validation_sample_count": 4,
+        "max_steps": 2,
+        "stage1_steps": 1,
+        "full_training": false,
+        "gpu": false,
+        "formal_dataset": false,
+        "locked_test_accessed": false
+      },
       "protocol": "docs/contracts_PIJWM_DEFINITION_05_LOSS_TRAINING_EVALUATION_V1.md",
       "data": "code/artifacts/protocols/pi_jwm_step5_1c_unified_development_bundle_v1_20260922",
-      "split": ["dev_train", "dev_validation"],
+      "split": [
+        "dev_train",
+        "dev_validation"
+      ],
       "seed": 5201,
       "checkpoint": "code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922/checkpoint_audit.json",
       "result": "code/artifacts/protocols/pi_jwm_step5_2_training_loop_v1_20260922",
@@ -274,7 +352,12 @@
       "summary_zh": "Stage 1/2、联合优化器 smoke、prior-only 验证和 checkpoint/resume 的 CPU development checks 通过；不存在正式训练或性能结果。",
       "claim_boundary": "non-locked CPU development training-loop implementation only",
       "locked_test_accessed": false,
-      "field_notes": {"configuration": "Two optimizer smoke steps only; not a full training protocol.", "split": "The 8/4 unified bundle is development evidence, not a formal Dataset.", "checkpoint": "The binary checkpoint is local-only; checkpoint_audit.json is the tracked evidence.", "metrics": "L_Val is a smoke diagnostic and not a performance claim."}
+      "field_notes": {
+        "configuration": "Two optimizer smoke steps only; not a full training protocol.",
+        "split": "The 8/4 unified bundle is development evidence, not a formal Dataset.",
+        "checkpoint": "The binary checkpoint is local-only; checkpoint_audit.json is the tracked evidence.",
+        "metrics": "L_Val is a smoke diagnostic and not a performance claim."
+      }
     },
     {
       "id": "STEP-5.3-CPU-PREFLIGHT-20260922",
@@ -283,12 +366,31 @@
       "research_question": "Does the accepted CPU training loop show finite dual-family learning signal, prior H1/H2 improvement, and deterministic checkpoint resume on fixed development tiny subsets?",
       "method": "pi_jwm_step5_3_cpu_training_preflight_v1",
       "code": "code/scripts/step5_3_cpu_training_preflight_v1.py",
-      "code_version": {"identity_type": "git_commit_after_validation", "manifest": "code/artifacts/protocols/pi_jwm_step5_3_cpu_training_preflight_v1_20260922/manifest.json", "manifest_sha256": null, "git_commit": null, "note": "Commit identity is filled after final validation and commit."},
+      "code_version": {
+        "identity_type": "git_commit_after_validation",
+        "manifest": "code/artifacts/protocols/pi_jwm_step5_3_cpu_training_preflight_v1_20260922/manifest.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Commit identity is filled after final validation and commit."
+      },
       "configuration": "code/artifacts/protocols/pi_jwm_step5_3_cpu_training_preflight_v1_20260922/config.json",
-      "parameters": {"device": "cpu", "phase_a_steps": 30, "phase_b_steps": 30, "phase_c_steps": 40, "relative_drop_threshold": 0.005, "formal_training": false, "gpu": false, "formal_dataset": false, "locked_test_accessed": false},
+      "parameters": {
+        "device": "cpu",
+        "phase_a_steps": 30,
+        "phase_b_steps": 30,
+        "phase_c_steps": 40,
+        "relative_drop_threshold": 0.005,
+        "formal_training": false,
+        "gpu": false,
+        "formal_dataset": false,
+        "locked_test_accessed": false
+      },
       "protocol": "docs/contracts_PIJWM_DEFINITION_05_LOSS_TRAINING_EVALUATION_V1.md",
       "data": "code/artifacts/protocols/pi_jwm_step5_1c_unified_development_bundle_v1_20260922",
-      "split": ["dev_train", "dev_validation"],
+      "split": [
+        "dev_train",
+        "dev_validation"
+      ],
       "seed": 5301,
       "checkpoint": "code/artifacts/protocols/pi_jwm_step5_3_cpu_training_preflight_v1_20260922/resume.json",
       "result": "code/artifacts/protocols/pi_jwm_step5_3_cpu_training_preflight_v1_20260922",
@@ -299,7 +401,12 @@
       "summary_zh": "固定 dev_train 一/两样本 CPU preflight 通过双 family 学习、prior H1/H2、模块梯度、resume 与泄漏边界；不是正式训练或性能证据。",
       "claim_boundary": "bounded non-locked CPU development preflight only",
       "locked_test_accessed": false,
-      "field_notes": {"tiny_subset": "Phase A/B index 0; Phase C indices 0,1", "validation": "dev_validation only prior-only diagnostic and no parameter update", "route_comp": "non-empty development coverage remains 0/0", "gpu": "not started"}
+      "field_notes": {
+        "tiny_subset": "Phase A/B index 0; Phase C indices 0,1",
+        "validation": "dev_validation only prior-only diagnostic and no parameter update",
+        "route_comp": "non-empty development coverage remains 0/0",
+        "gpu": "not started"
+      }
     },
     {
       "id": "STEP-5.5-FORMAL-DATASET-V1-20260923",
@@ -316,10 +423,26 @@
         "note": "Commit identity is confirmed after final validation and push; package SHA-256 values are frozen in the tracked manifest."
       },
       "configuration": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/formal_dataset_protocol.json",
-      "parameters": {"device": "cpu", "history_steps": 2, "horizon_steps": 4, "trajectories": 60, "transitions_per_trajectory": 96, "train_trajectories": 48, "validation_trajectories": 12, "split_seed": 20260923, "topology": "radius_knn(1000m,k=2)", "formal_training": false, "gpu": false, "locked_test_accessed": false},
+      "parameters": {
+        "device": "cpu",
+        "history_steps": 2,
+        "horizon_steps": 4,
+        "trajectories": 60,
+        "transitions_per_trajectory": 96,
+        "train_trajectories": 48,
+        "validation_trajectories": 12,
+        "split_seed": 20260923,
+        "topology": "radius_knn(1000m,k=2)",
+        "formal_training": false,
+        "gpu": false,
+        "locked_test_accessed": false
+      },
       "protocol": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/formal_dataset_protocol.json",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train", "dev_validation"],
+      "split": [
+        "dev_train",
+        "dev_validation"
+      ],
       "seed": 20260923,
       "checkpoint": null,
       "result": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/package_identity.json",
@@ -330,7 +453,11 @@
       "summary_zh": "Formal Dataset v1 与 CPU H4 接口验收通过；未执行正式训练、GPU、Planner 或性能实验。",
       "claim_boundary": "formal dataset and CPU interface acceptance only",
       "locked_test_accessed": false,
-      "field_notes": {"data": "Large Raw and package artifacts are local-only; tracked manifests preserve portable identity, hashes, sizes and regeneration commands.", "checkpoint": "The dry-run checkpoint is transient local acceptance evidence; no formal trained checkpoint exists.", "seed": "20260923 is the frozen trajectory split seed; simulator and behavior-policy seed ranges are recorded in seed_lineage.json."}
+      "field_notes": {
+        "data": "Large Raw and package artifacts are local-only; tracked manifests preserve portable identity, hashes, sizes and regeneration commands.",
+        "checkpoint": "The dry-run checkpoint is transient local acceptance evidence; no formal trained checkpoint exists.",
+        "seed": "20260923 is the frozen trajectory split seed; simulator and behavior-policy seed ranges are recorded in seed_lineage.json."
+      }
     },
     {
       "id": "STEP-5.5-PATCH-FULL-SHARD-CPU-20260923",
@@ -339,12 +466,32 @@
       "research_question": "Can every frozen Formal Dataset window be indexed for bounded-memory Trainer consumption, while real future Return births and simulator collection repairs are counted correctly?",
       "method": "pi_jwm_step5_5_patch_cpu_full_shard_audit",
       "code": "code/scripts/accept_step5_5_patch_cpu_v1.py",
-      "code_version": {"identity_type": "git_commit_after_validation", "manifest": "code/artifacts/audit/pi_jwm_step5_5_patch_20260923/cpu_acceptance_receipt.json", "manifest_sha256": null, "git_commit": null, "note": "Commit and receipt identity are finalized after regression and push."},
+      "code_version": {
+        "identity_type": "git_commit_after_validation",
+        "manifest": "code/artifacts/audit/pi_jwm_step5_5_patch_20260923/cpu_acceptance_receipt.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Commit and receipt identity are finalized after regression and push."
+      },
       "configuration": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/formal_dataset_protocol.json",
-      "parameters": {"device": "cpu", "history_steps": 2, "horizon_steps": 4, "train_windows": 4416, "validation_windows": 1104, "batch_size": 2, "optimizer_steps": 1, "formal_training": false, "gpu": false, "locked_test_accessed": false},
+      "parameters": {
+        "device": "cpu",
+        "history_steps": 2,
+        "horizon_steps": 4,
+        "train_windows": 4416,
+        "validation_windows": 1104,
+        "batch_size": 2,
+        "optimizer_steps": 1,
+        "formal_training": false,
+        "gpu": false,
+        "locked_test_accessed": false
+      },
       "protocol": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/formal_dataset_protocol.json",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train", "dev_validation"],
+      "split": [
+        "dev_train",
+        "dev_validation"
+      ],
       "seed": 5505,
       "checkpoint": null,
       "result": "code/artifacts/audit/pi_jwm_step5_5_patch_20260923/readiness_receipt.json",
@@ -355,7 +502,13 @@
       "summary_zh": "完整正式数据按 shard 可索引并完成 CPU H4 抽样验收；Return birth 结构计数和 lifecycle repair 已审计，未进行正式训练或性能实验。",
       "claim_boundary": "bounded CPU data-path and semantic audit only; no full-epoch training, GPU, locked test, baseline, planner or performance claim",
       "locked_test_accessed": false,
-      "field_notes": {"checkpoint": "Transient CPU acceptance checkpoint; no trained checkpoint retained.", "code_version.manifest_sha256": "Receipt is tracked directly; hash can be read after final commit.", "code_version.git_commit": "Final commit is reported in the Step completion report.", "future_fixed_support": "Window-horizon events can repeat across overlapping windows; use audit receipt for exact counts.", "lifecycle_repair": "Collection-side same-object sanitation only; no no-repair counterfactual run."}
+      "field_notes": {
+        "checkpoint": "Transient CPU acceptance checkpoint; no trained checkpoint retained.",
+        "code_version.manifest_sha256": "Receipt is tracked directly; hash can be read after final commit.",
+        "code_version.git_commit": "Final commit is reported in the Step completion report.",
+        "future_fixed_support": "Window-horizon events can repeat across overlapping windows; use audit receipt for exact counts.",
+        "lifecycle_repair": "Collection-side same-object sanitation only; no no-repair counterfactual run."
+      }
     },
     {
       "id": "STEP-5.6A-FORMAL-GPU-SMOKE-VALIDATION-20260923",
@@ -364,23 +517,55 @@
       "research_question": "Does the accepted Formal Dataset execute the frozen H4 model path on CUDA, and can all 1104 validation windows be evaluated prior-only without training?",
       "method": "pi_jwm_step5_6a_gpu_smoke_validation",
       "code": "code/scripts/run_step5_6a_gpu_smoke_v1.py",
-      "code_version": {"identity_type": "remote_source_sha256", "manifest": "code/artifacts/audit/pi_jwm_step5_6a_20260923/remote_environment_receipt.json", "manifest_sha256": null, "git_commit": null, "note": "Remote source is main@a8c5dfa plus the locally verified STEP 5.6A changes; final commit is reported after validation."},
-      "configuration": "code/artifacts/manifests/pi_jwm_step5_6a_20260923/formal_training_config_decision_receipt.json",
-      "parameters": {"device": "cuda", "history_steps": 2, "horizon_steps": 4, "train_windows": 4416, "validation_windows": 1104, "smoke_batch_sizes": [1, 2, 4, 8], "validation_batch_size_per_group": 8, "validation_trajectory_groups": 4, "validation_execution": "serial_one_gpu", "formal_training": false, "locked_test_accessed": false},
+      "code_version": {
+        "identity_type": "remote_source_sha256",
+        "manifest": "code/artifacts/audit/pi_jwm_step5_6a_20260923/remote_environment_receipt.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Remote source is main@a8c5dfa plus the locally verified STEP 5.6A changes; final commit is reported after validation."
+      },
+      "configuration": "code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/formal_training_config_v1.json",
+      "parameters": {
+        "device": "cuda",
+        "history_steps": 2,
+        "horizon_steps": 4,
+        "train_windows": 4416,
+        "validation_windows": 1104,
+        "smoke_batch_sizes": [
+          1,
+          2,
+          4,
+          8
+        ],
+        "validation_batch_size_per_group": 8,
+        "validation_trajectory_groups": 4,
+        "validation_execution": "serial_one_gpu",
+        "formal_training": false,
+        "locked_test_accessed": false
+      },
       "protocol": "code/artifacts/manifests/pi_jwm_step5_5_formal_dataset_v1_20260923/formal_dataset_protocol.json",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train", "dev_validation"],
+      "split": [
+        "dev_train",
+        "dev_validation"
+      ],
       "seed": 5601,
       "checkpoint": null,
       "result": "code/artifacts/audit/pi_jwm_step5_6a_20260923/readiness_receipt.json",
       "metrics": "code/artifacts/audit/pi_jwm_step5_6a_20260923/full_gpu_validation_receipt.json",
-      "audit": "code/artifacts/audit/pi_jwm_step5_6a_20260923/readiness_receipt.json",
-      "status": "gpu_smoke_and_full_validation_pass_config_pending",
-      "conclusion": "Bounded H4 CUDA smoke and complete 1104-window prior-only GPU validation pass; numerical formal-training configuration remains a researcher decision. No formal training or performance claim is authorized.",
-      "summary_zh": "正式数据的少量 H4 CUDA smoke 与全部 1104 窗口先验验证通过；数值训练配置待决，不是训练或性能结果。",
+      "audit": "code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/config_freeze_receipt.json",
+      "status": "gpu_smoke_and_full_validation_pass_formal_config_frozen",
+      "conclusion": "Bounded H4 CUDA smoke and complete 1104-window prior-only GPU validation pass. The researcher-approved numerical formal-training configuration is frozen; formal training itself has not started.",
+      "summary_zh": "正式数据 H4 CUDA smoke 与全部 1104 窗口先验验证通过；正式训练配置已冻结，但正式训练尚未开始。",
       "claim_boundary": "few-step GPU execution and untrained smoke-model validation only; formal training, locked test, baseline, planner and performance claim excluded",
       "locked_test_accessed": false,
-      "field_notes": {"checkpoint": "Few-step remote smoke checkpoint is transient and not a formally trained checkpoint.", "code_version.manifest_sha256": "Remote source hashes are stored per file; no single source manifest hash was generated.", "code_version.git_commit": "Final implementation commit is reported after regression and push.", "configuration": "Development defaults are not formal values; the researcher must freeze numerical settings.", "metrics": "Full 1104-window prior-only metric receipt is a runtime diagnostic from an untrained smoke model, not a trained-model performance result."}
+      "field_notes": {
+        "checkpoint": "Few-step remote smoke checkpoint is transient and not a formally trained checkpoint.",
+        "code_version.manifest_sha256": "Remote source hashes are stored per file; no single source manifest hash was generated.",
+        "code_version.git_commit": "Final implementation commit is reported after regression and push.",
+        "configuration": "Researcher-approved Formal Training Config v1 is frozen in code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/; this does not authorize automatic training start.",
+        "metrics": "Full 1104-window prior-only metric receipt is a runtime diagnostic from an untrained smoke model, not a trained-model performance result. Availability bookkeeping correction is separate CPU-only provenance."
+      }
     },
     {
       "id": "P6-CANDIDATE-ROLLOUT-AUDIT-20260826",
@@ -397,7 +582,11 @@
         "note": "The artifact records inspected source paths; no Git commit was recorded."
       },
       "configuration": null,
-      "parameters": {"device": "cpu", "training_started": false, "audit_scope": "code_only"},
+      "parameters": {
+        "device": "cpu",
+        "training_started": false,
+        "audit_scope": "code_only"
+      },
       "protocol": null,
       "data": null,
       "split": null,

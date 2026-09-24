@@ -1507,3 +1507,9 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 正式配置待决数值收口、相关回归、Context Consistency 与 knowledge index。
 - [ ] 最后操作：commit/push 与远端 HEAD 核对。
 - Boundary：不启动 Formal Training、baseline、Planner 或 locked_test；不作性能声明。
+# 2026-09-24 STEP 5.6A-CONFIG-FREEZE — Formal Training Config v1
+
+- [x] 将研究者批准的正式数值独立落到程序化配置、JSON 与冻结验收；保留 Step 5.2 development defaults。
+- [x] 从 Formal validation target mask 在 CPU 上重算逐窗口可用数，保留旧 GPU receipt，新增纠正 provenance；修正未来 batch/merge 聚合。
+- [ ] focused/regression、compileall、knowledge index、Context Consistency、Git commit/push 与 HEAD 核对。
+- 当前 gate 仅为 CPU 配置冻结与 diagnostic bookkeeping；不运行 GPU/SSH/正式训练/locked_test。唯一下一交付是本 Step 冻结回执，下一步只建议另行授权 STEP 5.6B。
