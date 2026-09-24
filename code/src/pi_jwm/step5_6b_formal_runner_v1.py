@@ -27,6 +27,15 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def verify_frozen_config_artifact(path: Path) -> str:
+    """Require byte identity with the accepted freeze receipt, not just equal fields."""
+    digest = sha256(path)
+    receipt = json.loads((path.parent / "config_freeze_receipt.json").read_text(encoding="utf-8"))
+    if not receipt.get("passed") or receipt.get("config_sha256") != digest:
+        raise ValueError("formal config byte SHA differs from accepted freeze receipt")
+    return digest
+
+
 def atomic_json(path: Path, value: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(path.name + ".tmp")
@@ -139,7 +148,7 @@ def run(manifest: Path, config_path: Path, run_dir: Path, source_sha: str, resum
     elif not run_dir.is_dir() or not resume.is_file() or resume.parent != run_dir / "checkpoints":
         raise ValueError("resume must use an existing checkpoint inside the same run directory")
     start = time.time()
-    config_sha = sha256(config_path)
+    config_sha = verify_frozen_config_artifact(config_path)
     protocol = formal_training_config_v1(manifest)
     frozen = json.loads(config_path.read_text(encoding="utf-8"))
     canonical = json.loads(json.dumps(protocol.as_manifest()))

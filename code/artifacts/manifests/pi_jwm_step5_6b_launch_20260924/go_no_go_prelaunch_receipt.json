@@ -15,7 +15,8 @@
     "step5_6a_full_1104_prior_only_gpu_validation_passed": true,
     "step5_6a_config_freeze_passed": true,
     "existing_trainer_model_loss_loader_scientific_sources_unchanged": true,
-    "new_runner_focused_cpu_tests": "2/2",
+    "new_runner_focused_cpu_tests": "3/3",
+    "frozen_config_byte_sha_guard_added_after_failed_first_attempt": true,
     "config_freeze_regression": "3/3",
     "step5_2_regression": "13/13",
     "step5_4_regression": "5/5",
@@ -33,7 +34,13 @@
     "remote exact source archive/hash verification",
     "remote detached process and three-step observation"
   ],
-  "formal_training_started": false,
+  "sustained_formal_training_started": false,
+  "prior_aborted_attempt": {
+    "run_id": "pi_jwm_formal_train_v1_seed5601_20260924T111824Z",
+    "completed_steps": 1,
+    "status": "FAILED",
+    "reason": "Git archive normalized config JSON bytes to a SHA different from frozen receipt; terminated and not resumable"
+  },
   "performance_claim": false,
   "estimated_runtime": {
     "measured_h4_batch8_step_seconds": 25.026449158787727,

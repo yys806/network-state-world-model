@@ -13,6 +13,7 @@ Added `code/src/pi_jwm/step5_6b_formal_runner_v1.py`, the thin CLI `code/scripts
 ## Changes and Reuse
 
 - Verify the frozen config JSON against the programmatic config, Dataset manifest and all five package hashes before constructing a trainer.
+- Require the exact config JSON byte SHA from the accepted freeze receipt. A Git archive normalizes that tracked JSON's CRLF bytes to LF; field equivalence alone is insufficient for the frozen artifact identity.
 - Use the frozen 5601/8/552/5520 schedule. Each step records the actual stage, horizon, KL beta, family/KL losses, gradient norm, learning rate, elapsed time and ETA. The sampler remains the accepted exact-once trajectory sampler.
 - Run complete 1104-window H1–H4 prior-only validation every 1104 completed steps, reuse the official per-family loss aggregation, and record raw Motion/CSI MAE/RMSE. Reject duplicate/missing windows, future posterior teacher calls, nonfinite `L_Val` or parameter changes.
 - Save `latest.pt` every 552 completed steps and after validation; save `best.pt` only on strict `L_Val` improvement. Existing checkpoint schema carries model, optimizer, RNG, progress and architecture/data identity; additive runner state binds formal-config SHA and source Git SHA. Resume requires the same run directory and matching identities.
@@ -29,3 +30,7 @@ An independent launch Go/No-Go checks the accepted dataset identity/package hash
 Focused CPU tests: new runner 2/2; formal config 3/3; Step 5.2 13/13; Step 5.4 5/5; Step 5.5 11/11; Step 5.5-PATCH 10/10; Step 5.6A validation merge 1/1. `python -m compileall -q code/src code/scripts code/tests` passed. A mistaken filename pattern found 0 tests, then the real `test_step5_5_patch_full_consumption_v1.py` suite was run and passed 10/10. Knowledge index write/check and `git diff --check` are final commit gates. At the source commit stage, launch is intentionally pending. Once detached, the run must show a live PID, GPU process, `RUNNING` heartbeat and at least 2–3 recorded optimizer steps; then Codex stops. No final performance result, `locked_test`, baseline or Planner is authorized. Source commit hash and push are read from Git; the runtime manifest binds that exact SHA.
 
 The only next action after confirmed launch is waiting and monitoring this run. No new Step starts automatically.
+
+## Prelaunch identity incident
+
+The first detached attempt used the exact committed code archive but its Git-normalized config JSON had SHA `7c4358df233daa345cfc2a3b2959a83175aff175e8c993372e997d176dab356d`, differing from frozen receipt SHA `a806c320f1d238a3997a94ca74af5641169a512a9551af7f3ff04c0ee2447660`. The fields agreed, but the byte identity did not. The attempt was terminated after 1 optimizer step and marked `FAILED`; it must not be resumed or presented as the formal sustained run. The original frozen config bytes were transferred separately and verified on the server. The runner now enforces the receipt byte hash before creating a Trainer. A new source commit and new run ID are required for the accepted launch.

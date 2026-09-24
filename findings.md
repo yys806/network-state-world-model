@@ -1162,6 +1162,8 @@
 原 merged GPU receipt 的 `available_sample_count=0` 是字段语义链问题：批内只保留 `available` 布尔值，merge 又把已聚合 row 当 sample row 处理。修复让每个 batch row 记录同时有 Motion 和 CSI 有效 target 的窗口数，merge 对已有 `available_sample_count` 直接累计；CPU correction receipt 从 1104 个真实 validation target windows 重算，四个 horizon 均为 1104，official loss/metric 不受影响。正式 config 与 Step 5.2 development defaults 分离；没有修改 Dataset、模型、loss 或历史 GPU receipt。
 # 2026-09-24 STEP 5.6B 预启动发现
 
+- 首次 detached attempt 在 1 步后因 config byte identity mismatch 终止并保存远端失败凭证。Git archive 将冻结 JSON 的 CRLF 工作树字节规范化为 LF，字段相同但 SHA 从 `a806c320...` 变为 `7c4358df...`；原始冻结 JSON 已单独传输并恢复精确 SHA。runner 新增 freeze receipt 的 byte-SHA 拒绝门，下一次必须是新 run ID。
+
 - 5.6A 实测 H4 batch-8 约 25.026 s/step、完整验证约 7103.09 s；按 H1/H2 horizon 比例推算的最多 5 次验证总时长约 38.65 h，H1/H2 仅为估计。
 - 新服务器 driver 为 595.71.05，RTX 4090 24,564 MiB，数据盘约 28 GB 可用；已有训练包沿用原 manifest 与五类 SHA，不上传 Raw。
 - 远端当前 source 是旧 5.6A snapshot，无本 Step runner；必须提交后同步精确 Git archive 并校验，不能直接在旧 source 上训练。

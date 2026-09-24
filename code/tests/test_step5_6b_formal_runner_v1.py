@@ -5,7 +5,7 @@ import math
 import tempfile
 import unittest
 
-from pi_jwm.step5_6b_formal_runner_v1 import atomic_json, estimate_seconds, sha256
+from pi_jwm.step5_6b_formal_runner_v1 import atomic_json, estimate_seconds, sha256, verify_frozen_config_artifact
 
 
 class FormalRunnerBookkeepingTests(unittest.TestCase):
@@ -30,6 +30,16 @@ class FormalRunnerBookkeepingTests(unittest.TestCase):
             self.assertEqual(sha256(path), sha256(path))
             with self.assertRaises(ValueError):
                 atomic_json(path, {"bad": math.nan})
+
+    def test_frozen_config_requires_byte_hash_receipt(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "formal_training_config_v1.json"
+            path.write_bytes(b'{"batch_size":8}\r\n')
+            atomic_json(path.parent / "config_freeze_receipt.json", {"passed": True, "config_sha256": sha256(path)})
+            self.assertEqual(sha256(path), verify_frozen_config_artifact(path))
+            path.write_bytes(b'{"batch_size":8}\n')
+            with self.assertRaisesRegex(ValueError, "byte SHA"):
+                verify_frozen_config_artifact(path)
 
 
 if __name__ == "__main__":
