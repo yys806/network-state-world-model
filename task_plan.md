@@ -1513,3 +1513,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 从 Formal validation target mask 在 CPU 上重算逐窗口可用数，保留旧 GPU receipt，新增纠正 provenance；修正未来 batch/merge 聚合。
 - [ ] focused/regression、compileall、knowledge index、Context Consistency、Git commit/push 与 HEAD 核对。
 - 当前 gate 仅为 CPU 配置冻结与 diagnostic bookkeeping；不运行 GPU/SSH/正式训练/locked_test。唯一下一交付是本 Step 冻结回执，下一步只建议另行授权 STEP 5.6B。
+# 2026-09-24 STEP 5.6B — Formal GPU Training Launch
+
+- [x] 研究者授权 RTX 4090 上启动已冻结 Formal Training Config v1；当前门槛是独立 Go/No-Go、正式 runner 验证、精确 source SHA 同步。
+- [ ] focused tests、compileall、index、context、remote code/dataset identity 和预启动预计时长验收。
+- [ ] commit/push runner 后，用同一 Git SHA detached 启动，观察至少 2–3 个真实 step、heartbeat 与 GPU PID，然后立即 STOP。
+- 阻塞：无待决科研数值；训练是否可启动仍取决于上述工程与身份验收。唯一交付：一次可监控、可恢复的正式训练启动。
+- Boundary：`locked_test=false`、`baseline=false`、`planner=false`、`performance_claim=false`；本轮不等待训练完成。

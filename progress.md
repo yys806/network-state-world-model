@@ -1165,3 +1165,6 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 # 2026-09-24 STEP 5.6A-CONFIG-FREEZE
 
 研究者批准的 Formal Training Config v1 已程序化并写入 tracked artifact。CPU 验证了 4416/8=552、10×552=5520、Stage 1 和 H1/H2/H4 边界、KL warmup/free bits、validation/checkpoint interval、patience、AdamW 默认 betas/eps、FormalTrajectorySampler exact-once/resume。真实 validation target mask 重算 H1–H4 availability 均为 1104；原 GPU receipt、official numerator/count 与 `L_Val=0.8297511641582647` 未变，无 GPU rerun。
+# 2026-09-24 STEP 5.6B 预启动进展
+
+已建立正式 runner、逐步 metrics、atomic heartbeat/progress、全量 prior-only validation、checkpoint/identity resume 路径。远端新 SSH endpoint 已连通：RTX 4090、PyTorch 2.8.0+cu128、CUDA 12.8 可用；Formal Dataset manifest 和五类 package hash 实测与冻结值一致，4416/1104 index 正确。尚未启动正式训练；下一动作是完成独立 Go/No-Go、source commit/push 与远端精确同步。

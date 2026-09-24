@@ -1,0 +1,46 @@
+{
+  "schema_version": "PI-JWM-STEP-5.6B-Go-No-Go-Prelaunch-v1",
+  "verdict": "GO_FOR_SOURCE_COMMIT_AND_REMOTE_SYNC",
+  "researcher_authorized_step5_6b": true,
+  "source_base_commit": "10d2aa5cd828d627e72ad3017c4ee93447c98bc9",
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_config_sha256": "a806c320f1d238a3997a94ca74af5641169a512a9551af7f3ff04c0ee2447660",
+  "checks": {
+    "dataset_4416_train_1104_validation": true,
+    "five_package_hashes_match_frozen_manifest_on_remote": true,
+    "raw_not_uploaded": true,
+    "formal_config_programmatic_json_equivalence": true,
+    "step5_6a_cuda_smoke_passed": true,
+    "step5_6a_full_1104_prior_only_gpu_validation_passed": true,
+    "step5_6a_config_freeze_passed": true,
+    "existing_trainer_model_loss_loader_scientific_sources_unchanged": true,
+    "new_runner_focused_cpu_tests": "2/2",
+    "config_freeze_regression": "3/3",
+    "step5_2_regression": "13/13",
+    "step5_4_regression": "5/5",
+    "step5_5_regression": "11/11",
+    "step5_5_patch_regression": "10/10",
+    "step5_6a_validation_merge_regression": "1/1",
+    "compileall": true,
+    "gpu_rtx_4090_reachable": true,
+    "remote_disk_free_bytes_at_preflight": 29411229696,
+    "locked_test_accessed": false
+  },
+  "pending_before_launch": [
+    "knowledge index write/check after final staging",
+    "source commit and push",
+    "remote exact source archive/hash verification",
+    "remote detached process and three-step observation"
+  ],
+  "formal_training_started": false,
+  "performance_claim": false,
+  "estimated_runtime": {
+    "measured_h4_batch8_step_seconds": 25.026449158787727,
+    "measured_full_validation_seconds": 7103.09,
+    "estimated_training_seconds": 103609.49951738119,
+    "estimated_five_validation_seconds": 35515.45,
+    "estimated_total_seconds": 139124.9495173812,
+    "h1_h2_time_assumption": "linear scaling from measured H4, not measured"
+  }
+}

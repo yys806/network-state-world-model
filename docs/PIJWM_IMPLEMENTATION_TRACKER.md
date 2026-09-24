@@ -1,5 +1,7 @@
 # PI-JWM Implementation Tracker
 
+**2026-09-24 STEP 5.6B（预启动）：** 研究者已授权 RTX 4090 正式训练启动，冻结配置不变。runner、atomic heartbeat、完整 prior-only validation 和 identity-safe checkpoint 已增加，须经独立 Go/No-Go、source commit/push/remote SHA 核对后才启动。此源码快照尚无训练结果；真实运行状态以远端 `run_manifest.json`/`heartbeat.json` 为准。`locked_test`、baseline、Planner、性能声明均保持关闭。记录入口：`docs/implementation_records/STEP_05_6B_FORMAL_GPU_TRAINING_LAUNCH.md`。
+
 **2026-09-24 STEP 5.6A（GPU 验收完成，配置待决）：** RTX 4090 上已完成正式数据 H=4 batch 1/2/4/8 的 CUDA 前向、反向、参数更新、跨轨迹 batch 与 checkpoint/错误身份拒绝。完整 1104-window prior-only validation 已通过四组互斥轨迹的唯一性合并；GPU readiness receipt 为 PASS。正式训练数值配置仍待研究者决定，formal training、baseline、Planner、locked_test 和性能声明均未执行。证据入口为 `docs/implementation_records/STEP_05_6A_GPU_SMOKE_FORMAL_CONFIG_EVIDENCE.md`。
 
 **2026-09-24 STEP 5.6A-CONFIG-FREEZE：** 研究者批准的 Formal Training Config v1 已落入 `code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/`，状态为 `FORMAL_TRAINING_CONFIG=FROZEN`、`FORMAL_TRAINING_READINESS=READY_TO_START`。同时修正 validation availability bookkeeping：真实 validation target-mask 计算为 H1–H4 各 1104 个窗口，旧 GPU receipt、official numerator/count 与 `L_Val` 未改；无 GPU rerun、无 formal training。下一步需另行授权 STEP 5.6B。

@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## STEP 5.6B 预启动状态（2026-09-24）
+
+研究者已明确授权使用冻结 Formal Training Config v1 在 RTX 4090 启动一次正式训练。正式 runner 与监控/恢复路径正在做启动前验收；截至此源码快照，`formal_training=false`。5.6A 的完整 CUDA smoke 和 prior-only validation 仍是运行证据，不是性能结论。启动后的真实状态只以远端 `run_manifest.json`、`progress.json` 和 `heartbeat.json` 为准。`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。唯一下一动作：完成 Go/No-Go、提交精确 source、远端 detached launch，并在 2–3 步确认后停止。
+
 ## STEP 5.6A 当前状态（2026-09-24，GPU 验收完成）
 
 正式数据身份保持 H=2/L=4、60 条 trajectory、48/12 split、4416/1104 windows，Dataset package/hash 未改。RTX 4090 上 H=4 CUDA 前向、反向、参数更新、跨轨迹 batch、checkpoint/错误身份拒绝和完整 1104-window prior-only GPU validation 已有通过凭证；验证集 12 条轨迹均覆盖且没有重复/遗漏。未训练 smoke checkpoint 的 `L_Val=0.829751` 仅作运行诊断，不是性能结果。研究者已冻结 Formal Training Config v1，机器状态为 `FORMAL_TRAINING_CONFIG=FROZEN`、`FORMAL_TRAINING_READINESS=READY_TO_START`；`formal_training=false`、`gpu_training_verified=false`、`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。唯一下一动作是另行授权 STEP 5.6B，不得自动启动。

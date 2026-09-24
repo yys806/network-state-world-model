@@ -155,3 +155,6 @@ receipt 为 47/47 checks true，12 samples，capacity 10/74，prior/posterior/de
 ## 2026-09-22 STEP 5.4 GPU Training Readiness
 
 - CPU-only readiness artifact: `code/artifacts/protocols/pi_jwm_step5_4_gpu_training_readiness_v1_20260922/`；manifest-driven interface、action coverage、config/checkpoint schema 已生成；未执行 CUDA 或 formal training。
+# 2026-09-24 STEP 5.6B 预启动
+
+研究者已授权正式 GPU 训练启动，runner 与独立 Go/No-Go 正在预启动验收。此源码快照尚无正式训练结果或性能结论；训练一旦开始，run ID、Git SHA、Dataset/Config SHA 和进度以远端 run manifest/heartbeat 为准，不以旧 5.6A smoke receipt 代替。

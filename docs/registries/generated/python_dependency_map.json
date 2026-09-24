@@ -2331,6 +2331,7 @@
       "imported_by": [
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "pi_jwm.step5_6a_formal_training_config_v1",
+        "pi_jwm.step5_6b_formal_runner_v1",
         "scripts.accept_step5_5_patch_cpu_v1",
         "scripts.run_step5_2_training_loop_smoke_v1",
         "scripts.run_step5_6a_gpu_smoke_v1",
@@ -2372,6 +2373,7 @@
       "imported_by": [
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "pi_jwm.step5_6a_formal_training_config_v1",
+        "pi_jwm.step5_6b_formal_runner_v1",
         "scripts.accept_step5_5_patch_cpu_v1",
         "scripts.accept_step5_6a_gpu_readiness_v1",
         "scripts.audit_step5_5_patch_v1",
@@ -2422,6 +2424,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step5_6b_formal_runner_v1",
         "scripts.accept_step5_5_patch_cpu_v1",
         "scripts.accept_step5_6a_gpu_readiness_v1",
         "scripts.audit_step5_5_patch_v1",
@@ -2467,6 +2470,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step5_6b_formal_runner_v1",
         "scripts.freeze_step5_6a_formal_training_config_v1",
         "tests.test_step5_6a_config_freeze_v1"
       ],
@@ -2479,6 +2483,26 @@
       "path": "code/src/pi_jwm/step5_6a_formal_training_config_v1.py",
       "test_files": [
         "code/tests/test_step5_6a_config_freeze_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.run_step5_6b_formal_training_v1",
+        "tests.test_step5_6b_formal_runner_v1"
+      ],
+      "imports": [
+        "pi_jwm.step5_2_training_loop_v1",
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step5_6a_formal_training_config_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step5_6b_formal_runner_v1",
+      "path": "code/src/pi_jwm/step5_6b_formal_runner_v1.py",
+      "test_files": [
+        "code/tests/test_step5_6b_formal_runner_v1.py"
       ]
     },
     {
@@ -6494,6 +6518,18 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_6b_formal_runner_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step5_6b_formal_training_v1",
+      "path": "code/scripts/run_step5_6b_formal_training_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.run_structured_robustness_v0",
         "scripts.run_structured_timing_v0",
@@ -10287,6 +10323,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step5_6a_gpu_validation_merge_v1",
       "path": "code/tests/test_step5_6a_gpu_validation_merge_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_6b_formal_runner_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step5_6b_formal_runner_v1",
+      "path": "code/tests/test_step5_6b_formal_runner_v1.py",
       "test_files": []
     },
     {

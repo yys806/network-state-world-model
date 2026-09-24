@@ -186,3 +186,6 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 - 已接入真实 Formal Dataset v1 的 CUDA smoke 路径：H4 forward/backward、optimizer step、跨 trajectory batch、checkpoint reload 与错误 dataset/config identity 拒绝均已通过；batch 1/2/4/8 均完成工程探测。
 - 全量 1104-window prior-only GPU validation 正在远端按 validation trajectory 分片执行；在合并 receipt 生成前不宣称 FULL_1104_GPU_VALIDATION=PASS。
 - Formal training 未启动；训练数值配置仍标记为 `AWAITING_RESEARCHER_DECISION`，不把 development default 当作正式决定。locked_test、baseline、Planner、performance claim 均保持关闭。
+# 2026-09-24 STEP 5.6B 预启动
+
+新增复用 FormalTrainingInterface/FullFormalTrainer 的正式 runner、全量 prior-only validation、逐步日志、atomic heartbeat 和身份约束 checkpoint/resume。此变更先提交并同步精确 source 后才允许启动；运行证据另由远端 run manifest 和 heartbeat 给出。

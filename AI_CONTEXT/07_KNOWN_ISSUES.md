@@ -195,3 +195,6 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 - STEP 5.4：Formal Dataset 不存在；正式 `L`、Physical topology、Dataset scale/seeds 和 training budget 未冻结；CPU dry-run 只支持 `GPU_CODEPATH_PREPARED`，没有 CUDA 证据。
 - STEP 5.4-PATCH：generic package 与真实 Trainer CPU dry-run 已闭合；L=4 只有 config fixture，`L_gt_2_runtime_verified=false`；formal Dataset、CUDA 和 formal training 仍阻塞。
 - STEP 5.4-PATCH2：四动作 adapter 与 CPU device portability 已闭合；Route/Comp 仍无真实 development coverage，正式 L/topology/budget 未冻结，CUDA 未验证。
+# 2026-09-24 STEP 5.6B 预启动边界
+
+正式 runner 仍须通过独立 Go/No-Go、精确 Git source 同步及 detached launch 的持续进度检查。此源码快照中的 `formal_training=false` 为启动前状态；启动后的实时事实应读远端 heartbeat。H1/H2 step 时间尚无实测，38.65 小时是按 horizon 比例的估计，不是训练结果。`locked_test`、baseline、Planner 和性能声明仍关闭。

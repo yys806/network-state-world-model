@@ -13,6 +13,7 @@
 | STEP 5.4 | [STEP_05_4_GPU_TRAINING_READINESS_FORMAL_TRAINING_PREPARATION.md](STEP_05_4_GPU_TRAINING_READINESS_FORMAL_TRAINING_PREPARATION.md) | manifest-driven formal interface、formal data/action coverage、config/checkpoint/device readiness | BLOCKED；formal Dataset 与研究者参数未决，GPU 未执行 |
 | STEP 5.5 | [STEP_05_5_FORMAL_DATASET_V1_BUILD_ACCEPTANCE.md](STEP_05_5_FORMAL_DATASET_V1_BUILD_ACCEPTANCE.md) | 60 条真实 trajectory、H2/L4 五类 package、四动作 coverage、deterministic rebuild 与 CPU trainer smoke | COMPLETE；FORMAL_DATASET_READY，formal training 仍等待 5.6A 配置冻结/GPU smoke |
 | STEP 5.6A | [STEP_05_6A_GPU_SMOKE_FORMAL_CONFIG_EVIDENCE.md](STEP_05_6A_GPU_SMOKE_FORMAL_CONFIG_EVIDENCE.md) / [STEP_05_6A_CONFIG_FREEZE.md](STEP_05_6A_CONFIG_FREEZE.md) | Formal Dataset H4 CUDA smoke、全量 prior-only validation、trajectory-aware sampler、Formal Training Config v1 与 availability bookkeeping | GPU smoke/full validation PASS；config FROZEN；bookkeeping correction CPU-only；formal training 未开始 |
+| STEP 5.6B | [STEP_05_6B_FORMAL_GPU_TRAINING_LAUNCH.md](STEP_05_6B_FORMAL_GPU_TRAINING_LAUNCH.md) | 冻结配置正式 runner、独立 Go/No-Go、日志/心跳/checkpoint 与 detached GPU launch | source 提交时为预启动；实时状态以远端 run manifest/heartbeat 为准 |
 | STEP 1 | [STEP_01_AUDIT.md](STEP_01_AUDIT.md) | 新定义与现有实现审计、治理与导航同步 | 见记录中的验证和 Git 状态 |
 | STEP 1 数据/双图附件 | [STEP_01_DATA_GRAPH_AUDIT.md](STEP_01_DATA_GRAPH_AUDIT.md) | 01–03 定义、时间、张量、实体和动作映射 | 支撑证据，不是下一 Step |
 | STEP 2 | [STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md](STEP_02_RAW_TRAJECTORY_ACTION_CONTRACT.md) | 单决策步 Raw Trajectory 与四类动作合同 | COMPLETE |

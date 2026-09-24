@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-24：STEP 5.6B Formal GPU Training Launch 预启动
+
+- 新增正式 runner，复用冻结训练栈；提供逐步 metrics、全量 prior-only validation、atomic heartbeat、checkpoint/resume 身份约束。提交前不启动训练，运行状态由远端机器文件提供。
+
 ## 2026-09-24：STEP 5.6A-CONFIG-FREEZE
 
 - 落地研究者批准的 Formal Training Config v1；development defaults 和历史 checkpoint 兼容路径保持不变。
