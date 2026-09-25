@@ -4,7 +4,7 @@
   "archive_candidate_count": 211,
   "archive_candidates_with_current_references": 0,
   "artifact_family_counts": {
-    "audit": 98,
+    "audit": 99,
     "experiments": 538,
     "formal_data": 6,
     "formal_tensor": 11,
@@ -18,7 +18,7 @@
     "small_experiments": 14
   },
   "artifact_read_error_count": 0,
-  "artifact_record_count": 826,
+  "artifact_record_count": 827,
   "deferred_item_count": 3,
   "formal_performance_claim_ready": false,
   "historical_method_count": 6,

@@ -1170,3 +1170,7 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 第一次 detached attempt 在发现配置文件字节 SHA 与 frozen receipt 不一致后于 1 个 step 终止，远端已标记 FAILED；不复用该 run。已同步原冻结 JSON 并核对精确 SHA，runner 正增加同一强制检查，待新 commit 与 source archive 同步后重启新 run ID。
 
 已建立正式 runner、逐步 metrics、atomic heartbeat/progress、全量 prior-only validation、checkpoint/identity resume 路径。远端新 SSH endpoint 已连通：RTX 4090、PyTorch 2.8.0+cu128、CUDA 12.8 可用；Formal Dataset manifest 和五类 package hash 实测与冻结值一致，4416/1104 index 正确。尚未启动正式训练；下一动作是完成独立 Go/No-Go、source commit/push 与远端精确同步。
+
+# 2026-09-25 STEP 5.6B 中途过程图
+
+从活跃 run 复制只读快照，心跳 `RUNNING`、2646/5520 completed steps；日志 2646 个逐步记录，无缺失/重复；两次 prior-only 全量验证分别位于 1104、2208 步。生成训练 loss、验证 loss、Motion/CSI raw MAE/RMSE 图。远端进程、训练代码和指标日志没有修改；下一个动作仅为继续监控并在新验证完成后更新过程图。

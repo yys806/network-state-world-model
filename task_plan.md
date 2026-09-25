@@ -1520,3 +1520,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [ ] commit/push runner 后，用同一 Git SHA detached 启动，观察至少 2–3 个真实 step、heartbeat 与 GPU PID，然后立即 STOP。
 - 阻塞：无待决科研数值；训练是否可启动仍取决于上述工程与身份验收。唯一交付：一次可监控、可恢复的正式训练启动。
 - Boundary：`locked_test=false`、`baseline=false`、`planner=false`、`performance_claim=false`；本轮不等待训练完成。
+
+# 2026-09-25 STEP 5.6B — 中途过程图
+
+- [x] 只读复制活跃 run 的训练、验证、心跳和身份日志；检查同一 run ID 和逐步完整性。
+- [x] 生成训练 loss、完整验证 `L_Val/L_Pred`、Motion/CSI raw MAE/RMSE 三组图与 SHA 凭证。
+- [x] 验证绘图脚本、知识索引与 Context Consistency；小型图/说明随本任务提交，commit/push 结果以 Git log 为准。
+- 当前 gate 是过程记录；不改变远端训练、checkpoint、研究定义、locked_test、baseline、Planner。唯一交付是可核验的中途图。

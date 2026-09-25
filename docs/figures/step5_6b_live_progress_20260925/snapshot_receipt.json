@@ -1,0 +1,37 @@
+{
+  "schema_version": "step5_6b_progress_snapshot_v1",
+  "created_at_utc": "2026-09-25T13:37:50.757843+00:00",
+  "run_id": "pi_jwm_formal_train_v1_seed5601_20260924T112424Z",
+  "run_source_git_sha": "6e15ec2da0e3a6e0561dc821d0aaef90696a2387",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_config_sha256": "a806c320f1d238a3997a94ca74af5641169a512a9551af7f3ff04c0ee2447660",
+  "copied_heartbeat_timestamp": "2026-09-25T13:33:59.774429+00:00",
+  "copied_heartbeat_status": "RUNNING",
+  "last_logged_completed_step": 2646,
+  "validation_completed_steps": [
+    1104,
+    2208
+  ],
+  "validation_L_Val": [
+    0.17661245681400606,
+    0.08010126911119236
+  ],
+  "input_sha256": {
+    "train_metrics.jsonl": "640a9107ca25a82ed5481a10434c35f45c5093cf2d0e32a1dd21172b81f112be",
+    "validation_metrics.jsonl": "83c38c867a6dc7c3f2528bd7a5fbcae57be599c8f00f44bc0630fa4dbb1ff09e",
+    "heartbeat.json": "32b2ad10b180c08ae412b57f4b3f57c2db10d71565a6191323a783c4c4396972",
+    "run_manifest.json": "04cd7b7dfcacfb7ef2188d769e97fd374f255cd1adc206158495cdb63c1f2650"
+  },
+  "figure_sha256": {
+    "training_loss": "b3dfe85fe7c6b749e998b67fdd9adb121218ab16c9fdd6e8db9217b6cac3919f",
+    "validation_loss": "ec0c6955d2cb321b1e3811a8973dae090d90f3179d88b6449f573efde21ba7b8",
+    "validation_raw_errors": "b9cac47550695a56fe2ad4041a5066b56523742f300d39bdef682093a64e6ddd"
+  },
+  "scope": {
+    "interim_snapshot": true,
+    "formal_result": false,
+    "training_modified": false,
+    "locked_test_accessed": false,
+    "performance_claim": false
+  }
+}

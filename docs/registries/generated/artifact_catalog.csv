@@ -97,6 +97,7 @@ audit/pi_jwm_p4_world_model_gate_20260826,audit,blocked,20260824,,false,1,3878,1
 audit/pi_jwm_p4_world_model_gate_h20_20260826,audit,passed,20260824,,false,1,4313,1787741282789698500,,,,,
 audit/pi_jwm_step5_5_patch_20260923,audit,unclassified,,,false,4,9362,1790151054858985400,,,,,
 audit/pi_jwm_step5_6a_20260923,audit,unclassified,,,false,18,125954,1790228304826545500,,,,,
+audit/pi_jwm_step5_6b_progress_snapshot_20260925,audit,RUNNING,,,false,9,2117523,1790343470808010700,,,,,
 experiments/airfogsim_v0,experiments,unclassified,,,,1820,50763724,1780059580362196800,,,,,
 experiments/formal_rule_layer_cpu_gate_seed20260824_20260823,experiments,unclassified,20260824,,false,19,2333109,1787496609099745700,experiments/formal_rule_layer_cpu_gate_seed20260824_20260823/config.json,experiments/formal_rule_layer_cpu_gate_seed20260824_20260823/manifest.json,experiments/formal_rule_layer_cpu_gate_seed20260824_20260823/run_summary.json,experiments/formal_rule_layer_cpu_gate_seed20260824_20260823/manifest.json:a4ca68650f8a849e38f356a7da335bc637190add556332bc080c2dc95b560dbe;experiments/formal_rule_layer_cpu_gate_seed20260824_20260823/config.json:ff7c7a5347bb56a1b02fda5141ddd2fb2b9fe1b2aa0f9887a674f2d134ca4ed8;experiments/formal_rule_layer_cpu_gate_seed20260824_20260823/run_summary.json:c51fb12fd84edaf6ea3480d82c270db468a68672a22a38080ac665088ba5699a,
 experiments/formal_rule_layer_cpu_gate_seed20260825_20260823,experiments,unclassified,,,,0,0,1787496610272099000,,,,,

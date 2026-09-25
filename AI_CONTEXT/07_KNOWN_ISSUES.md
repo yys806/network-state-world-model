@@ -1,6 +1,10 @@
 # 已知问题与冲突
 
-## STEP 5.6A-CONFIG-FREEZE 当前边界（2026-09-24）
+## STEP 5.6B 训练中证据边界（2026-09-25）
+
+- 正式训练已启动并仍在运行；当前只有 step 1104、2208 两次完整 validation。中途图是过程诊断，不是训练完成、最终性能或泛化结论。训练 loss 的 Stage/Horizon 在 552/1104/2208 步变化，跨边界不可直接比较。Motion raw aggregate 混合不同单位；CSI raw error 使用 dB。图和原始日志 hash 见 `docs/figures/step5_6b_live_progress_20260925/`。locked_test、baseline、Planner 均未执行。
+
+## STEP 5.6A-CONFIG-FREEZE 当时边界（2026-09-24，历史）
 
 - GPU H4 few-step smoke 与完整 1104-window prior-only validation 均通过；这验证运行路径，不验证正式训练或预测性能。CUDA checkpoint 重载参数/状态完全一致；两次预测存在微小浮点差异（Motion 最大约 8.20e-8、CSI 最大约 7.63e-6），按记录的 `rtol=atol=1e-6` 均通过，不能声称逐位相同。
 - （冻结前历史记录）正式训练数值配置曾待研究者决定；该状态已由下方 STEP 5.6A-CONFIG-FREEZE 记录取代。当前正式配置以 tracked freeze artifact 为准。

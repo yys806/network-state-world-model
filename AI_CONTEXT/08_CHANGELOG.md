@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-25 STEP 5.6B 中途过程图
+
+- 活跃正式 run 的 2646-step 日志只读快照产出三组过程图及源日志 SHA 凭证；两次完整验证分别在 1104/2208 步。训练未改，尚无最终性能结论；当前状态以远端 heartbeat 为准。
+
 ## 2026-09-24 STEP 5.6A-CONFIG-FREEZE
 
 - 将研究者批准的 Formal Training Config v1 落入独立源、JSON 和 freeze receipt：seed 5601、batch 8、552 steps/epoch、10 epochs/5520 steps、Stage 1 552、curriculum 起点 0/1104/2208、KL warmup 1104、validation interval 1104、checkpoint interval 552、patience 3、FP32。

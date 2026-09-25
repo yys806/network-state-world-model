@@ -1167,3 +1167,9 @@
 - 5.6A 实测 H4 batch-8 约 25.026 s/step、完整验证约 7103.09 s；按 H1/H2 horizon 比例推算的最多 5 次验证总时长约 38.65 h，H1/H2 仅为估计。
 - 新服务器 driver 为 595.71.05，RTX 4090 24,564 MiB，数据盘约 28 GB 可用；已有训练包沿用原 manifest 与五类 SHA，不上传 Raw。
 - 远端当前 source 是旧 5.6A snapshot，无本 Step runner；必须提交后同步精确 Git archive 并校验，不能直接在旧 source 上训练。
+
+# 2026-09-25 STEP 5.6B 中途过程图发现
+
+- 活跃 run 已完成两次各 1104 window 的 prior-only validation，`L_Val` 从 0.1766124568 变为 0.0801012691。H4 Motion raw MAE 从 1.0051 到 0.2689，CSI raw MAE 从 3.8036 到 2.2791 dB；均是同一 validation split 的中途诊断，不是最终测试/泛化结论。
+- 训练 loss 在 552、1104、2208 步发生 Stage/Horizon 改变，跨边界的高低不可直接解释成模型退化或改善；需要以同协议的完整 validation 序列判断。
+- Motion raw aggregate 混合位置/速度等单位，因此不写成米；CSI raw error 才可写 dB。绘图脚本按 run ID、逐步完整性和 prior-only validation provenance 拒绝不一致快照。

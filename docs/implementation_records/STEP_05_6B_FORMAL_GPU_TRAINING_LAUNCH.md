@@ -34,3 +34,7 @@ The only next action after confirmed launch is waiting and monitoring this run. 
 ## Prelaunch identity incident
 
 The first detached attempt used the exact committed code archive but its Git-normalized config JSON had SHA `7c4358df233daa345cfc2a3b2959a83175aff175e8c993372e997d176dab356d`, differing from frozen receipt SHA `a806c320f1d238a3997a94ca74af5641169a512a9551af7f3ff04c0ee2447660`. The fields agreed, but the byte identity did not. The attempt was terminated after 1 optimizer step and marked `FAILED`; it must not be resumed or presented as the formal sustained run. The original frozen config bytes were transferred separately and verified on the server. The runner now enforces the receipt byte hash before creating a Trainer. A new source commit and new run ID are required for the accepted launch.
+
+## Interim process visualization (2026-09-25)
+
+The accepted active run has ID `pi_jwm_formal_train_v1_seed5601_20260924T112424Z` and source Git SHA `6e15ec2da0e3a6e0561dc821d0aaef90696a2387`. A read-only copy of its live JSONL logs at 13:35 UTC contained 2646 consecutive optimizer steps and full prior-only validations at steps 1104 and 2208. `code/scripts/plot_step5_6b_training_progress_v1.py` renders training losses and validation loss/raw-error curves; `docs/figures/step5_6b_live_progress_20260925/` stores the PNGs and source/plot SHA receipt. The training process and original logs were not modified. This is a running-process diagnostic, not final result acceptance; future snapshot updates must use fresh log copies and retain this provenance.

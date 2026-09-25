@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-25：STEP 5.6B 中途过程可视化
+
+- 从正在运行的正式训练复制只读日志快照，新增可重复绘图脚本和带 SHA 凭证的训练/验证图。图截至 2646/5520 步和两次完整验证；训练进程及源代码未改，尚无最终性能结论。
+
 ## 2026-09-24：STEP 5.6B Formal GPU Training Launch 预启动
 
 - 新增正式 runner，复用冻结训练栈；提供逐步 metrics、全量 prior-only validation、atomic heartbeat、checkpoint/resume 身份约束。提交前不启动训练，运行状态由远端机器文件提供。

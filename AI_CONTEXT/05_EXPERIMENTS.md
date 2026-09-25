@@ -155,6 +155,10 @@ receipt 为 47/47 checks true，12 samples，capacity 10/74，prior/posterior/de
 ## 2026-09-22 STEP 5.4 GPU Training Readiness
 
 - CPU-only readiness artifact: `code/artifacts/protocols/pi_jwm_step5_4_gpu_training_readiness_v1_20260922/`；manifest-driven interface、action coverage、config/checkpoint schema 已生成；未执行 CUDA 或 formal training。
-# 2026-09-24 STEP 5.6B 预启动
+# 2026-09-25 STEP 5.6B 中途过程图
+
+远端正式 run 的 2646-step 只读日志快照生成训练损失、两次完整验证损失及 Motion/CSI 分 horizon raw MAE/RMSE 图；`docs/figures/step5_6b_live_progress_20260925/` 保存 PNG 和源日志/图 SHA 凭证。训练源码 Git SHA 为 `6e15ec2da0e3a6e0561dc821d0aaef90696a2387`，本地后续文档提交不改变该 run 身份。已完成验证的 `L_Val` 为 0.1766124568、0.0801012691；这只是中途诊断，不是最终性能结论。训练仍运行，未访问 locked_test。
+
+# 2026-09-24 STEP 5.6B 预启动（历史）
 
 研究者已授权正式 GPU 训练启动，runner 与独立 Go/No-Go 正在预启动验收。此源码快照尚无正式训练结果或性能结论；训练一旦开始，run ID、Git SHA、Dataset/Config SHA 和进度以远端 run manifest/heartbeat 为准，不以旧 5.6A smoke receipt 代替。

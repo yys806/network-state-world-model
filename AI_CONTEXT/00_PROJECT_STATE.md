@@ -1,6 +1,10 @@
 # PI-JWM Current State Snapshot
 
-## STEP 5.6B 预启动状态（2026-09-24）
+## STEP 5.6B 训练中快照（2026-09-25）
+
+正式训练已按冻结配置在 RTX 4090 上运行。远端 run ID 为 `pi_jwm_formal_train_v1_seed5601_20260924T112424Z`，训练源码 Git SHA 为 `6e15ec2da0e3a6e0561dc821d0aaef90696a2387`。2026-09-25 13:34 UTC 的只读心跳为 `RUNNING`、2646/5520 completed steps；已有 step 1104、2208 两次完整 1104-window prior-only validation。中途曲线和复制日志哈希见 `docs/figures/step5_6b_live_progress_20260925/`。这是过程诊断，不是最终性能结论；`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。下一动作仅为继续监控此 run。
+
+## STEP 5.6B 预启动状态（2026-09-24，历史）
 
 研究者已明确授权使用冻结 Formal Training Config v1 在 RTX 4090 启动一次正式训练。正式 runner 与监控/恢复路径正在做启动前验收；截至此源码快照，`formal_training=false`。5.6A 的完整 CUDA smoke 和 prior-only validation 仍是运行证据，不是性能结论。启动后的真实状态只以远端 `run_manifest.json`、`progress.json` 和 `heartbeat.json` 为准。`locked_test_accessed=false`、`baseline=false`、`planner=false`、`performance_claim=false`。唯一下一动作：完成 Go/No-Go、提交精确 source、远端 detached launch，并在 2–3 步确认后停止。
 
