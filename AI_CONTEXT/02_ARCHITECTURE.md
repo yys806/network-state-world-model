@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## STEP 6.0A 静态候选生成层（2026-09-26）
+
+当前因果支持与约束 → 四动作高层 CandidateActionStep → 长度 1–4 的 CandidateActionSequence → Search/Learned/Hybrid 接口 → 去重 CandidatePool → 包装正式训练 `build_action` 的张量编译器。到此为止。没有候选 World Model rollout、评价、选择或执行；旧 P6 `formal_candidate_rollout_planner_v1.py` 使用过期 `task_action*`，仅是历史原型。见新合同及 STEP 6.0A 实施记录。
+
 > 下列 1–5 节描述被 Step 1 审计的现有旧协议实现，不表示它符合 2026-09-18 的新 `00–06` 目标。总体差异见 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/STEP_01_AUDIT.md`。
 
 ## 总体结构

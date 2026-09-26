@@ -1,0 +1,39 @@
+{
+  "action_families": [
+    "Route",
+    "Comm",
+    "Comp",
+    "Mob"
+  ],
+  "adapter": "code/scripts/build_step5_1d_unified_model_chain_v1.py",
+  "adapter_sha256": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+  "candidate_module_sha256": "abb6a2b63047a35020780d02d608168718117aa2a71f07004abeae1c9bd15cc3",
+  "dynamic_cpu_available": "UNKNOWN",
+  "evidence_kind": "SYNTHETIC_CONTRACT_EVIDENCE",
+  "formal_tensor_fields": [
+    "mobility_entity_index",
+    "mobility_values",
+    "comm_relation_index",
+    "comm_values",
+    "comm_allocation_mask",
+    "comp_agent_index",
+    "comp_task_index",
+    "comp_values",
+    "route_task_index",
+    "route_flow_index",
+    "route_values"
+  ],
+  "future_return_birth": "fixed-support blocked",
+  "horizon": {
+    "basis": "formal H1-H4 supervision/validation boundary; no optimality claim",
+    "max": 4,
+    "min": 1
+  },
+  "mobility_bounds": "UNKNOWN",
+  "planner_performance": false,
+  "proposal_training": false,
+  "schema": "PIJWM_STEP_06_0A_CANDIDATE_GENERATION_V1",
+  "test_sha256": "f8bdf1c59d4f7d9fa0bc2cab4bc8321f80910b9688563abd80f3e72d9b3f8096",
+  "unknown_constraint_policy": "retain in pool, reject compilation; researcher decision pending",
+  "world_model_rollout": false
+}

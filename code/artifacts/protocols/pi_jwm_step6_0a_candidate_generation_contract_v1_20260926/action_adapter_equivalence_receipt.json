@@ -1,0 +1,20 @@
+{
+  "comparison": "torch.equal for all 11 tensor fields plus mapping equality; explicit semantic assertions",
+  "evidence_kind": "SYNTHETIC_CONTRACT_EVIDENCE",
+  "fields": [
+    "mobility_entity_index",
+    "mobility_values",
+    "comm_relation_index",
+    "comm_values",
+    "comm_allocation_mask",
+    "comp_agent_index",
+    "comp_task_index",
+    "comp_values",
+    "route_task_index",
+    "route_flow_index",
+    "route_values"
+  ],
+  "fixture": "test_four_action_exact_adapter_equivalence",
+  "passed": true,
+  "real_simulator_candidate_coverage": false
+}

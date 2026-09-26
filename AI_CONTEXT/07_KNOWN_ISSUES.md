@@ -1,5 +1,9 @@
 # 已知问题与冲突
 
+## STEP 6.0A（2026-09-26）
+
+当前可可靠验证的是静态对象支持和动作张量结构；dynamic available CPU 没有已证实因果源，数值 UAV 控制边界未冻结，UNKNOWN 约束不得静默当成满足。未来专属 Return Flow birth 被 fixed-support 阻止。L>1 编译需要外部逐步因果状态，本 Step 不生成这些状态。合成四动作 fixture 不是现实 Planner 候选覆盖；无 fallback safety 或性能证据。
+
 ## STEP 5.6B 训练中证据边界（2026-09-25）
 
 - 正式训练已启动并仍在运行；当前只有 step 1104、2208 两次完整 validation。中途图是过程诊断，不是训练完成、最终性能或泛化结论。训练 loss 的 Stage/Horizon 在 552/1104/2208 步变化，跨边界不可直接比较。Motion raw aggregate 混合不同单位；CSI raw error 使用 dB。图和原始日志 hash 见 `docs/figures/step5_6b_live_progress_20260925/`。locked_test、baseline、Planner 均未执行。

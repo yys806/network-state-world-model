@@ -1,5 +1,11 @@
 # 已确认决策
 
+## 2026-09-26：STEP 6.0A 研究者授权边界
+
+**Researcher Decision**：后续使用 MPC 滚动选择框架，动作仍为 Route/Comm/Comp/Mob，Vehicle 移动外生；候选生成采用统一可插拔合同；正式模型完成前不做模型依赖的候选评价。当前实现 horizon 最大 4 是 H1–H4 证据边界，不是最优值结论。
+
+**Research Pending**：Search/Learned/Hybrid 最终选型；优化器、proposal 结构与训练、数量/迭代/elite 等超参数；目标权重、风险、未来硬约束、动态 CPU 与 UNKNOWN 策略、fallback 安全性、延迟预算。Hybrid 没有被选定。
+
 这里只记录研究者明确作出的科研或工程决策。Codex 分析、候选建议和实验现象不能自动写成 Researcher Decision。
 
 ## 2026-09-18：新定义与 Step 实施工作流

@@ -1,5 +1,7 @@
 # PI-JWM 架构说明
 
+> 2026-09-26：STEP 6.0A 新增 CPU 静态 Candidate 结构与编译器，包装正式 Trainer 的 `build_action`。Search/Learned/Hybrid 仅有统一接口和开发 stub；没有 World Model 候选 rollout/评价。5.6B 远端正式训练是独立线路。
+
 > 本文解释当前代码和证据中的架构，不重新设计研究方法。若本文与代码、冻结协议或机器产物冲突，以后者为准。
 > 2026-09-23：下文保留 Step 1/历史协议说明；STEP 5.5 已用 60 条真实 trajectory 接通 H2/L4 五类 formal package 与 CPU H4 training-interface smoke。该证据不能称为正式训练、GPU runtime 或性能结果。
 

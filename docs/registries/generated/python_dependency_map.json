@@ -2509,6 +2509,23 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.step6_0a_candidate_contract_acceptance_v1",
+        "tests.test_step6_0a_candidate_generation_v1"
+      ],
+      "imports": [
+        "scripts.build_step5_1d_unified_model_chain_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_0a_candidate_generation_v1",
+      "path": "code/src/pi_jwm/step6_0a_candidate_generation_v1.py",
+      "test_files": [
+        "code/tests/test_step6_0a_candidate_generation_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
         "scripts.run_r3_cpu_preflight",
         "scripts.run_r4_gpu_screening",
         "tests.test_teacher_evaluation_v3"
@@ -3820,10 +3837,12 @@
       "imported_by": [
         "pi_jwm.step5_2_training_loop_v1",
         "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
         "tests.test_step5_1d_unified_model_chain_v1",
-        "tests.test_step5_5_patch_full_consumption_v1"
+        "tests.test_step5_5_patch_full_consumption_v1",
+        "tests.test_step6_0a_candidate_generation_v1"
       ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
@@ -3837,7 +3856,8 @@
       "path": "code/scripts/build_step5_1d_unified_model_chain_v1.py",
       "test_files": [
         "code/tests/test_step5_1d_unified_model_chain_v1.py",
-        "code/tests/test_step5_5_patch_full_consumption_v1.py"
+        "code/tests/test_step5_5_patch_full_consumption_v1.py",
+        "code/tests/test_step6_0a_candidate_generation_v1.py"
       ]
     },
     {
@@ -5141,6 +5161,16 @@
       "lifecycle_status": "support",
       "module": "scripts.plot_module1_candidate_results_v1",
       "path": "code/scripts/plot_module1_candidate_results_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.plot_step5_6b_training_progress_v1",
+      "path": "code/scripts/plot_step5_6b_training_progress_v1.py",
       "test_files": []
     },
     {
@@ -7505,6 +7535,18 @@
       "test_files": [
         "code/tests/test_step5_5_formal_dataset_v1.py"
       ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_0a_candidate_generation_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.step6_0a_candidate_contract_acceptance_v1",
+      "path": "code/scripts/step6_0a_candidate_contract_acceptance_v1.py",
+      "test_files": []
     },
     {
       "category": "runnable_script",
@@ -10335,6 +10377,19 @@
       "lifecycle_status": "support",
       "module": "tests.test_step5_6b_formal_runner_v1",
       "path": "code/tests/test_step5_6b_formal_runner_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "scripts.build_step5_1d_unified_model_chain_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_0a_candidate_generation_v1",
+      "path": "code/tests/test_step6_0a_candidate_generation_v1.py",
       "test_files": []
     },
     {

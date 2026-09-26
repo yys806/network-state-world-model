@@ -1,5 +1,13 @@
 # Findings
 
+## 2026-09-26 STEP 6.0A
+
+- 当前正式 FullFormalTrainer 通过 `step5_2_training_loop_v1.py` 复用 `build_step5_1d_unified_model_chain_v1.py::build_action`；输出 11 个动作张量字段。旧 P6 `task_action*` 是历史合同，不能续用。
+- Comm mask 继承当前 `rb_active_mask` 并增量置位；正式 World Model 按同时分配计算干扰，不能自行增加全局 RB 排他规则。
+- CPU static capability、Comp 请求、actual service 与 dynamic available CPU 不等价；后者仍无已证实因果源。数值 UAV 约束同样未冻结。
+- 新四动作合成 fixture 与当前 adapter 所有张量逐值相等。该结果限于 `SYNTHETIC_CONTRACT_EVIDENCE`，不表示真实候选覆盖/规划效果。
+- 5.6B 独立远端训练未连接；仓库仅有 9 月 25 日过程快照，不能推断当前训练已结束。
+
 ## 2026-09-23 STEP 5.5-PATCH
 
 - `DevelopmentBundle.from_formal_interface()` 只读取 `interface.runtime_package_paths`，原 CPU H4 证据实际上是 1+1 subset，不支持完整 5520-window Trainer 声明。

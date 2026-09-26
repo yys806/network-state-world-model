@@ -1,5 +1,7 @@
 # PI-JWM 项目索引
 
+> 2026-09-26 当前增量：STEP 6.0A CPU 候选生成静态合同与机器验收见 `contracts/PIJWM_STEP_06_0A_UNIFIED_CANDIDATE_GENERATION_CONTRACT_V1.md`、`implementation_records/STEP_06_0A_UNIFIED_CANDIDATE_GENERATION_CONTRACT_CPU.md`。5.6B 独立远端训练未接触；下文较早的“未正式训练/GPU”是历史快照。
+
 > 这是项目的导航入口，不替代代码、配置、原始实验产物或机器可读验收文件。
 > 生成于 2026-09-08，状态更新于 2026-09-23。STEP 5.5 Formal Dataset v1 已接受；原 H4 interface smoke 只读 runtime 1+1，STEP 5.5-PATCH 另行验证 full-shard 4416/1104 CPU 消费路径与 Return/lifecycle 审计。full/formal training、GPU execution、Planner 与 locked-test 仍关闭，旧训练与结果继续逻辑归档。
 

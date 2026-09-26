@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-26 STEP 6.0A
+
+从 GitHub fetch 验证 main 为 `b25bcda`。静态审计正式 Trainer 实际导入 5.1D `build_action`，旧 P6 接口过期。新增候选合同模块、合成合同测试、机器 receipt、合同/实施记录和状态路由；focused 6/6、历史 5.1D 5/5、5.4 5/5、5.5 11/11、compileall、index write/check 与 diff check 已通过。Comp/UAV 非空自动标记未知动态 CPU/数值边界，正式编译拒绝，只有合成等价 fixture 明确绕过。仍需 Git 收口。5.6B 远端训练未接触，GPU/`locked_test` 未用。唯一下一动作：完成 staged 审查并 push。
+
 ## 2026-09-23 STEP 5.5-PATCH
 
 - 实现 full-shard Formal Dataset loader/Trainer、train-only encoder normalization 和 H4 CPU acceptance；保留原 runtime 1+1 mini 与 development 8/4。

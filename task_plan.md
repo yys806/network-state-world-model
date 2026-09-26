@@ -1527,3 +1527,13 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 生成训练 loss、完整验证 `L_Val/L_Pred`、Motion/CSI raw MAE/RMSE 三组图与 SHA 凭证。
 - [x] 验证绘图脚本、知识索引与 Context Consistency；小型图/说明随本任务提交，commit/push 结果以 Git log 为准。
 - 当前 gate 是过程记录；不改变远端训练、checkpoint、研究定义、locked_test、baseline、Planner。唯一交付是可核验的中途图。
+# 2026-09-26 STEP 6.0A — Unified Candidate Generation Contract
+
+- [x] fetch 并确认 `main=origin/main=b25bcda`；保留原有未跟踪 `TASK/` 与绘图脚本。
+- [x] 核实正式 Trainer 使用 `build_action` 的 11 字段合同，隔离旧 P6 `task_action*`。
+- [x] CPU 实现四动作结构、三态约束、固定支持、正式 adapter wrapper、后端接口、暖启动、fallback 与候选池。
+- [x] 合成合同 fixture 逐张量等价、负例、机器 receipt；文档与 AI_CONTEXT 同步。
+- [x] 相关历史测试（5.1D 5/5、5.4 5/5、5.5 11/11）、compileall、focused 6/6、diff check 通过。
+- [x] index write/check 通过；最终 staged 内容还需再次确认。
+- [ ] commit/push 与 HEAD 核对。
+- 当前 blocker：动态可用 CPU、UAV 数值边界、UNKNOWN 科研策略和最终候选方法未冻结；不影响静态合同验收，但阻止完整可行性/安全/效果声明。唯一下一交付：本 Step Git 收口，随后等 5.6B best checkpoint 与研究者另行授权。

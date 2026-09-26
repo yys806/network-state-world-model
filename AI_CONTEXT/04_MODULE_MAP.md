@@ -1,5 +1,9 @@
 # 模块导航地图
 
+## 2026-09-26 新入口
+
+STEP 6.0A：`code/src/pi_jwm/step6_0a_candidate_generation_v1.py`（CPU 候选结构、三态约束、固定支持、三后端接口、池、暖启动、正式动作编译器）；`code/scripts/step6_0a_candidate_contract_acceptance_v1.py`（合成合同 receipt）；正式 Trainer 仍通过 `step5_2_training_loop_v1.py` 导入 `build_step5_1d_unified_model_chain_v1.py::build_action`。旧 P6 Planner 不是当前接口。
+
 > 当前实施入口先读 `docs/PIJWM_IMPLEMENTATION_TRACKER.md` 和 `docs/implementation_records/STEP_02_3_RAW_CONTRACT_CAUSAL_COMPLETENESS.md`。下表中的模型、训练和 P4 gate 是被审计的旧协议路径；它们不能自动代表新定义实现。
 
 Source of truth：文件存在性、依赖和反向引用可查 `docs/registries/generated/python_dependency_map.json`；生命周期可查 `docs/CODE_INDEX.md`。本表用于决定下一步读哪些源码。

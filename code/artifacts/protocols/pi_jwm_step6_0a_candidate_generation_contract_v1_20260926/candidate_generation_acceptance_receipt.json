@@ -1,0 +1,28 @@
+{
+  "checkpoint_consumed_for_planner": false,
+  "checks": {
+    "backend_names": true,
+    "current_action_fields_identified": true,
+    "focused_tests": true,
+    "no_model_rollout_optimizer_training_cuda": true,
+    "obsolete_p6_fields_absent": true,
+    "training_adapter_wrapped": true,
+    "tri_state": true
+  },
+  "closed_loop_performed": false,
+  "cpu_only": true,
+  "evidence_kind": "SYNTHETIC_CONTRACT_EVIDENCE",
+  "focused_test_count": 6,
+  "formal_dataset_modified": false,
+  "formal_training_config_modified": false,
+  "formal_training_process_modified": false,
+  "gpu_used": false,
+  "locked_test_accessed": false,
+  "passed": true,
+  "planner_objective_computed": false,
+  "proposal_training": false,
+  "ssh_used": false,
+  "step5_6b_remote_contacted": false,
+  "world_model_rollout_performed": false,
+  "world_model_training_code_modified": false
+}

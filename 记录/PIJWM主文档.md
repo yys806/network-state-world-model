@@ -1,5 +1,9 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-26 实现边界：STEP 6.0A
+
+研究者选定的后续 MPC 路线和 Route/Comm/Comp/Mob 四动作保持不变。当前只实现候选生成的 CPU 静态结构、约束与正式动作张量编译；Search/Learned/Hybrid 最终选型、未来评价和选择尚未决定或实现。最大长度 4 来自 World Model H1–H4 证据边界，并非最优时域结论。详细合同与合成验收见 STEP 6.0A 实施记录，不能把它表述为已完成世界模型候选规划。
+
 ## 2026-09-22 STEP 5.2 实现边界（当前）
 
 STEP 5.2 已把冻结的 Definition 05 loss/KL/metric primitives 与 4.3B Encoder、4.4 Structured RSSM 接成 CPU development training loop。Stage 1 使用对应 Motion/CSI future posterior teacher；Stage 2 与 validation 使用 prior-only recursive rollout；`beta_KL`、free bits、curriculum、optimizer、checkpoint/resume 均为配置化 engineering path。8/4 unified non-locked development bundle 的两步 smoke 和 20/20 receipt checks 通过。

@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-26 STEP 6.0A
+
+- 增加 CPU 静态统一 Candidate 合同、三态约束、当前固定支持、四动作正式 adapter wrapper、Search/Learned/Hybrid 接口、暖启动及去重池；合成 fixture 做 11 字段精确等价。5.6B 远端独立、未联系；无 World Model 候选 rollout、GPU、proposal training 或性能结论。
+
 ## 2026-09-25 STEP 5.6B 中途过程图
 
 - 活跃正式 run 的 2646-step 日志只读快照产出三组过程图及源日志 SHA 凭证；两次完整验证分别在 1104/2208 步。训练未改，尚无最终性能结论；当前状态以远端 heartbeat 为准。

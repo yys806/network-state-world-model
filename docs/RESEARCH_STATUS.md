@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> 2026-09-26 最新增量：5.6B 正式训练由研究者先前授权在远端独立运行，本 Step 未联系远端，当前进度和 best checkpoint 未核实。6.0A 只通过 CPU 静态候选合同与合成 fixture 验收；最终候选方法、World Model 候选 rollout 和性能仍待后续授权。下文旧的“未正式训练/GPU”属于当时快照。
+
 > STEP 5.5-PATCH 已补齐 Formal Dataset 60 trajectory shard 的全量索引与按需 CPU batch 消费；原 1+1 runtime smoke 不再承担 full-shard 证明。future Return birth 全量检测为 8828 次按窗口-未来步计数的 unsupported/fixed-support 事件，原零计数已失效。未正式训练，未用 GPU，未访问 `locked_test`。
 
 > 本文是导航性状态摘要。当前结果必须回到原始 checkpoint、metrics、manifest 和 audit 验证。
