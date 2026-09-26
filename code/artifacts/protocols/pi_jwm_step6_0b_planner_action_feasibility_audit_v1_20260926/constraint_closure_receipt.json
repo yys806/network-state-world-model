@@ -1,0 +1,62 @@
+{
+  "acceptance_status": "SOURCE_FACTS_COMPLETE_GIT_PROVENANCE_LIMITED",
+  "airfogsim_git_identity_reason": "LOCAL_DIRECTORY_HAS_NO_INDEPENDENT_GIT_METADATA; git -C resolves PI-JWM parent",
+  "airfogsim_local_relevant_source_sha256": "49abbf8dee4397dd897e6d99ab06e3626d3075ffb300f10c1e52d53ee2e4e316",
+  "airfogsim_official_upstream_comparison": {
+    "candidate_commit_not_local_identity": "76c0edb4ac6c7b5e09cc146db9928c1bc64bbb60",
+    "repository": "https://github.com/ZhiweiWei-NAMI/AirFogSim",
+    "sampled_blob_matches": "3/5; local task_manager.py and airfogsim_env.py differ",
+    "sampled_upstream_git_blob_sha": {
+      "README.md": "cb4f0090befb498d09fe1d2115dc19cdc823de26",
+      "airfogsim/airfogsim_env.py": "44dbbdceb2cbcceeac4992e68ababe92c9ba1d15",
+      "airfogsim/manager/task_manager.py": "0e9c6f2a3437ac953bbc5b549bb4a5b76298c793",
+      "airfogsim/manager/traffic_manager.py": "381af01c7fe05adb2cc339414abf8e845f9d8a5c",
+      "examples/config.yaml": "a857d1a00020babf22ced79fbae27a0f019db9b1"
+    }
+  },
+  "airfogsim_relevant_file_sha256": {
+    "algorithm": "863a878ef2e5a1f55c21499dfcc96de70814308e1d55167a218ef15591bd79a6",
+    "cpu_manager": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+    "cpu_scheduler": "1f7e5e5ca0e8b2dc0585cefb3fb707781214b7db67b0071c9fbfbaa1b9357843",
+    "env": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+    "fog_node": "f8e24859428cffcebf12da3638cf0973b233a834b6ee6912bd142500e37e7e88",
+    "scenario_config": "5d4bc789d16ef73612477de197c621aa3cdcb7992780939148909ddcf2d7b12b",
+    "task": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0",
+    "traffic_manager": "52a986bf6c36bd6d6417219dd9895046ad8065d4537a9d55e4cd61cb1c432c67",
+    "traffic_scheduler": "eec01556d1b2fa9e25861a5d8269f2cb0fe4fdbe10b47566c3c2335f79b818f5"
+  },
+  "airfogsim_source_sha": null,
+  "airfogsim_worktree_clean_or_dirty": "UNDETERMINABLE_WITHOUT_GIT_METADATA",
+  "candidate_constraint_code_modified": false,
+  "checkpoint_consumed": false,
+  "cpu_verdict": "STATIC_CAPACITY_ONLY",
+  "gpu_used": false,
+  "locked_test_accessed": false,
+  "mobility_verdicts": {
+    "azimuth": "DATASET_SUPPORT_BOUND_ONLY",
+    "elevation": "DATASET_SUPPORT_BOUND_ONLY",
+    "spatial_geofence": "CONFIG_BOUND_FOUND",
+    "speed": "CONFIG_BOUND_FOUND"
+  },
+  "no_world_model_candidate_rollout": true,
+  "pi_jwm_relevant_file_sha256": {
+    "candidate": "abb6a2b63047a35020780d02d608168718117aa2a71f07004abeae1c9bd15cc3",
+    "collector": "e0842db84fb005c8a2c489a316314e2ee0cedd55d7b39f10dc60110495b9d603",
+    "graph": "0a4f795ff19771ca306d4a4518c300395211771151e00389a5ad02c63a5f1908",
+    "raw_adapter": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de",
+    "sample_tensor": "8b65f6ef21f6b9b2dd3704a4cbb6bd0ecf18e4fcb1e89712f6837091241fe4bd",
+    "world_model": "8c33bbf96963981f8428cfc474e843b99406712eb038dadc3055f992666d8709"
+  },
+  "pi_jwm_source_sha": "2a9c06aa7737d112722b0d1f53d239ce828f9107",
+  "planner_objective_computed": false,
+  "runtime_probe_performed": false,
+  "schema": "PIJWM_STEP_06_0B_SOURCE_AUDIT_V1",
+  "source_facts_audited": true,
+  "source_git_provenance_complete": false,
+  "step5_6b_remote_contacted": false,
+  "unknown_constraints_remaining": [
+    "dynamic_available_cpu",
+    "mobility_numeric_bounds"
+  ],
+  "world_model_rollout_performed": false
+}

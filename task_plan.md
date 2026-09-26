@@ -1537,3 +1537,13 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] index write/check 通过；最终 staged 内容还需再次确认。
 - [ ] commit/push 与 HEAD 核对。
 - 当前 blocker：动态可用 CPU、UAV 数值边界、UNKNOWN 科研策略和最终候选方法未冻结；不影响静态合同验收，但阻止完整可行性/安全/效果声明。唯一下一交付：本 Step Git 收口，随后等 5.6B best checkpoint 与研究者另行授权。
+# 2026-09-26 STEP 6.0B — Planner Action Feasibility Source Audit
+
+- [x] fetch 确认 `main=origin/main=2a9c06a`，保留用户未跟踪文件。
+- [x] 核查 AirFogSim 目录：源码存在，但无独立 `.git`；`git -C` 上溯 PI-JWM，不能冒充 AirFogSim SHA。
+- [x] 定点审计 CPU 容量/分配/实际服务/动态可用量与 UAV setter/更新/边界；60 条正式 Raw 哈希全匹配，统计 11520 行行为范围。
+- [x] 两项 UNKNOWN 不作无证据闭合；Candidate 代码不变。建立五份机器凭证、测试和实施记录。
+- [x] focused 6.0B 4/4、6.0A 6/6、4.4 30/30、5.5 11/11、5.4 5/5、5.1D 5/5；compileall 与 diff check 通过。
+- [x] index write/check、Context Consistency（00/02/03/04/06/07/08）、diff check 通过。
+- [ ] 最终 staged diff 审查、commit/push/HEAD 核对。
+- 当前关口：6.0B 来源事实已查明，精确 AirFogSim Git provenance 缺失；未进入 World Model Planner。唯一下一交付：本审计质量门与 Git 收口。

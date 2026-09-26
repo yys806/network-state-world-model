@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> 2026-09-26 STEP 6.0B：CPU verdict=`STATIC_CAPACITY_ONLY`；UAV 配置和行为数据未构成 simulator hard bound。两项约束保持 UNKNOWN，未开始模型依赖候选推演。AirFogSim 本地源码可读，但缺独立 Git metadata，精确本地 Git SHA 不能确认；5.6B 远端未查询。
+
 > 2026-09-26 最新增量：5.6B 正式训练由研究者先前授权在远端独立运行，本 Step 未联系远端，当前进度和 best checkpoint 未核实。6.0A 只通过 CPU 静态候选合同与合成 fixture 验收；最终候选方法、World Model 候选 rollout 和性能仍待后续授权。下文旧的“未正式训练/GPU”属于当时快照。
 
 > STEP 5.5-PATCH 已补齐 Formal Dataset 60 trajectory shard 的全量索引与按需 CPU batch 消费；原 1+1 runtime smoke 不再承担 full-shard 证明。future Return birth 全量检测为 8828 次按窗口-未来步计数的 unsupported/fixed-support 事件，原零计数已失效。未正式训练，未用 GPU，未访问 `locked_test`。

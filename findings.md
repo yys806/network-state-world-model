@@ -1,5 +1,13 @@
 # Findings
 
+## 2026-09-26 STEP 6.0B
+
+- 本地 `code/reference/AirFogSim/` 无 `.git`；`git -C` 的 SHA/remote/status 实为 PI-JWM。官方上游候选 commit 与本地抽检 3/5 blob 相同，不能当本地 source SHA。相关源码内容哈希已写 receipt。
+- `FogProfile.cpu` 是可观察静态容量；TaskManager 无节点分配总额检查，callback 可超分配；动态可用 CPU 无决策时刻直接字段或严格推导公式。结论 `STATIC_CAPACITY_ONLY`。
+- UAV setter 直接保存 angle/phi/speed，step 按三角公式×traffic_interval 更新，未限速/限角/限高/裁剪地图。示例 config 速度和高度范围只用于生成/初始化；正式 Raw 动作范围仅 DATASET_BEHAVIOR_SUPPORT_ONLY。
+- World Model UAV 位置方程与 simulator 相同；simulator raw 加速度符号与 PI-JWM canonical 相反，已有 Raw 字段分离，不是新模型改动授权。
+- 两项 Candidate UNKNOWN 留存；没有训练服务器接触或 Planner rollout。
+
 ## 2026-09-26 STEP 6.0A
 
 - 当前正式 FullFormalTrainer 通过 `step5_2_training_loop_v1.py` 复用 `build_step5_1d_unified_model_chain_v1.py::build_action`；输出 11 个动作张量字段。旧 P6 `task_action*` 是历史合同，不能续用。

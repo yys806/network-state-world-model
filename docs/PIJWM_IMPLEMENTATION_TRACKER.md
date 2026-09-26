@@ -1,5 +1,7 @@
 # PI-JWM Implementation Tracker
 
+**2026-09-26 STEP 6.0B（CPU 只读来源审计）：** AirFogSim 静态容量可见，动态可用 CPU 未建立，verdict=`STATIC_CAPACITY_ONLY`；UAV 直接执行无硬数值边界，配置/正式数据仅是生成、初始化及行为支持。6.0A 两项 UNKNOWN 和 Candidate 代码保持不变。AirFogSim 本地目录无独立 Git 元数据，相关文件哈希可核验但 Git SHA 不可声称。记录：`docs/implementation_records/STEP_06_0B_PLANNER_ACTION_FEASIBILITY_SOURCE_AUDIT.md`；5.6B 未接触。
+
 **2026-09-26 STEP 6.0A（CPU 静态合同验收）：** 新统一候选动作合同、四族语义、三态约束、固定支持、正式 `build_action` wrapper、Search/Learned/Hybrid 接口、暖启动、规则空动作和去重池完成。合成合同 fixture 的 11 个正式张量字段逐值等价；无模型 rollout/目标函数/GPU/`locked_test`。5.6B 独立远端训练未接触；最终候选方法待研究者决定。记录：`docs/implementation_records/STEP_06_0A_UNIFIED_CANDIDATE_GENERATION_CONTRACT_CPU.md`。
 
 **2026-09-24 STEP 5.6B（预启动）：** 研究者已授权 RTX 4090 正式训练启动，冻结配置不变。runner、atomic heartbeat、完整 prior-only validation 和 identity-safe checkpoint 已增加，须经独立 Go/No-Go、source commit/push/remote SHA 核对后才启动。此源码快照尚无训练结果；真实运行状态以远端 `run_manifest.json`/`heartbeat.json` 为准。`locked_test`、baseline、Planner、性能声明均保持关闭。记录入口：`docs/implementation_records/STEP_05_6B_FORMAL_GPU_TRAINING_LAUNCH.md`。

@@ -1,5 +1,7 @@
 # PI-JWM 架构说明
 
+> 2026-09-26 STEP 6.0B：静态 CPU 容量经 Raw→Sample→Tensor→Graph 保留，动态可用量没有可靠字段。UAV 控制在仿真器直接更新位置，未见硬数值限幅；6.0A Candidate gate 不变。详见 STEP 6.0B 实施记录。
+
 > 2026-09-26：STEP 6.0A 新增 CPU 静态 Candidate 结构与编译器，包装正式 Trainer 的 `build_action`。Search/Learned/Hybrid 仅有统一接口和开发 stub；没有 World Model 候选 rollout/评价。5.6B 远端正式训练是独立线路。
 
 > 本文解释当前代码和证据中的架构，不重新设计研究方法。若本文与代码、冻结协议或机器产物冲突，以后者为准。

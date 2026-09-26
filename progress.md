@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-09-26 STEP 6.0B
+
+从最新 GitHub main `2a9c06a` 恢复。只读审计本地 AirFogSim CPU/UAV 路径、PI-JWM Raw→Graph/World Model 和正式行为策略。源码确认 simulator callback 允许按节点超分配，PI-JWM collector 另行限制；动态可用 CPU 不存在，UAV setter/step 无硬数值限幅。60 条已验哈希 Raw 的 11520 行动作只用于数据支持。AirFogSim 无独立 Git metadata，未伪造 SHA。五份机器凭证、focused audit 4/4、6.0A 6/6、4.4 30/30、5.5 11/11、5.4 5/5、5.1D 5/5、compileall、index write/check 与 diff check 通过；待 Git 收口。GPU/SSH/checkpoint/`locked_test` 均未使用。
+
 ## 2026-09-26 STEP 6.0A
 
 从 GitHub fetch 验证 main 为 `b25bcda`。静态审计正式 Trainer 实际导入 5.1D `build_action`，旧 P6 接口过期。新增候选合同模块、合成合同测试、机器 receipt、合同/实施记录和状态路由；focused 6/6、历史 5.1D 5/5、5.4 5/5、5.5 11/11、compileall、index write/check 与 diff check 已通过。Comp/UAV 非空自动标记未知动态 CPU/数值边界，正式编译拒绝，只有合成等价 fixture 明确绕过。仍需 Git 收口。5.6B 远端训练未接触，GPU/`locked_test` 未用。唯一下一动作：完成 staged 审查并 push。

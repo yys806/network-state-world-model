@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-26：STEP 6.0B 可行性来源审计
+
+- 增加 CPU/UAV 本地源码、配置、正式行为数据与 World Model 对照的五份机器凭证及实施记录；没有找到动态可用 CPU 或 UAV simulator hard numeric bound，Candidate 两项 UNKNOWN 保留。记录 AirFogSim 缺独立 Git 元数据，禁止误用 PI-JWM SHA 作为其身份。未改正式训练、World Model 或第三方源码。
+
 ## 2026-09-26：STEP 6.0A CPU Candidate Contract
 
 - 新增四动作高层候选、三态约束、当前固定支持、正式动作 adapter wrapper、三类 backend 接口、暖启动与去重池；合成四动作 fixture 的全部正式张量逐值等价。5.6B 训练源码/配置/数据和远端进程未触碰；没有候选模型 rollout、GPU、`locked_test` 或性能声明。

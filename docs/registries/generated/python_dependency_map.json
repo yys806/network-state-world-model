@@ -3888,6 +3888,20 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [
+        "tests.test_step6_0b_planner_action_feasibility_audit_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step6_0b_planner_action_feasibility_audit_v1",
+      "path": "code/scripts/build_step6_0b_planner_action_feasibility_audit_v1.py",
+      "test_files": [
+        "code/tests/test_step6_0b_planner_action_feasibility_audit_v1.py"
+      ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [
         "pi_jwm.evaluation_bundle_v3"
@@ -10390,6 +10404,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_0a_candidate_generation_v1",
       "path": "code/tests/test_step6_0a_candidate_generation_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "scripts.build_step6_0b_planner_action_feasibility_audit_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_0b_planner_action_feasibility_audit_v1",
+      "path": "code/tests/test_step6_0b_planner_action_feasibility_audit_v1.py",
       "test_files": []
     },
     {

@@ -1,5 +1,9 @@
 # 数据流与张量合同
 
+## STEP 6.0B CPU/UAV 数据来源审计
+
+CPU：`FogProfile.cpu` → Raw 决策容量行（带观察 mask）→ Sample `static.agent_static_capability` → Tensor `agent_cpu_capacity_raw`/mask → Graph `agent_nodes.cpu_capacity`；以上始终是静态容量。Comp action `allocated_cpu_per_s` → simulator callback → Task 实际服务；过去服务不是当前动态可用量。后者在当前输入链中 absent。UAV：Formal Dataset 行为策略写 `azimuth_rad/elevation_rad/speed_mps`，经 `TrafficScheduler.setUAVMobilityPatterns` 进入 AirFogSim；60 条已验哈希 Raw 的 11520 行动作范围只是数据支持，不是硬可行域。
+
 ## 2026-09-24 STEP 5.6A CUDA 消费路径（运行验收完成）
 
 远端只使用可移植 Training Bundle：`formal_dataset_manifest.json → FormalTrainingInterface → FullFormalShardDataset → FullFormalTrainer(device="cuda")`。DataLoader 只读取 batch 所需的 Sample/Tensor/Graph/Target trajectory shard，五类 package 的原 hash 不变；不传 Raw。构造当前 wired capacity 所需的唯一双向链路已由本地 60/60 Raw 审计，作为 Formal v1 已冻结环境常量输入，不读取未来目标。

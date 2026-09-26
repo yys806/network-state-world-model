@@ -1,5 +1,12 @@
 # 已知问题与冲突
 
+## STEP 6.0B（2026-09-26）
+
+- AirFogSim 本地源码目录无独立 `.git`；`git -C` 返回 PI-JWM 主仓库。相关文件 SHA-256 可核验，AirFogSim Git commit/branch/clean 状态不可声称。
+- `dynamic_available_cpu`：静态容量可观察，但 simulator callback 没有原生总量约束/决策时刻可用量；维持 UNKNOWN。
+- `mobility_numeric_bounds`：直接 setter/step 无硬数值检查；场景配置与行为数据均不能当 Planner hard bound，维持 UNKNOWN。
+- Simulator raw UAV acceleration 是 `(old-new)/dt`，PI-JWM canonical/World Model 是 `(new-old)/dt`；Raw 已显式分离，不能混用。示例配置速度注释“每时隙距离”与执行公式乘以秒不一致，以执行源码为单位依据。
+
 ## STEP 6.0A（2026-09-26）
 
 当前可可靠验证的是静态对象支持和动作张量结构；dynamic available CPU 没有已证实因果源，数值 UAV 控制边界未冻结，UNKNOWN 约束不得静默当成满足。未来专属 Return Flow birth 被 fixed-support 阻止。L>1 编译需要外部逐步因果状态，本 Step 不生成这些状态。合成四动作 fixture 不是现实 Planner 候选覆盖；无 fallback safety 或性能证据。

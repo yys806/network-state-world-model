@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-26 STEP 6.0B 来源审计
+
+CPU 只读源码审计得到 `STATIC_CAPACITY_ONLY`：决策时刻有带 mask 的静态 CPU 容量，未证实动态可用量；AirFogSim 原生计算回调不按节点容量裁剪，PI-JWM 正式采集器另行限制自身分配。UAV 直接执行接口没有数值硬边界；示例配置是生成/初始化设定，正式数据动作范围只是行为支持。因此 6.0A 的两项 `UNKNOWN` 均保留，Candidate 代码未改。AirFogSim 本地目录没有独立 `.git`，`git -C` 上溯到 PI-JWM；不能声称本地 AirFogSim Git SHA/clean 状态，机器凭证提供相关源码文件哈希。5.6B 远端未联系，训练结束与 best checkpoint 未核实。详见 STEP 6.0B 实施记录及机器凭证；下一步先补齐仿真器历史 Git 身份（若需要精确 commit），模型依赖 Planner 仍需另行授权。
+
 ## 2026-09-26 STEP 6.0A 当前状态
 
 Line A：STEP 5.6B 正式训练是独立远端 run `pi_jwm_formal_train_v1_seed5601_20260924T112424Z`，源码 SHA `6e15ec2da0e3a6e0561dc821d0aaef90696a2387`；本 Step 未连接远端，仓库只保留既有 2026-09-25 过程快照，不能据此断言当前远端进度或最终 best checkpoint。Line B：STEP 6.0A 已完成 CPU 静态候选生成合同和合成 fixture 验收；Search/Learned/Hybrid 只是可插拔接口，最终方法待研究者决定。当前正式训练动作适配器仍是 `build_step5_1d_unified_model_chain_v1.py::build_action`，新编译器包装它。没有 World Model 候选 rollout、objective、proposal training、GPU、closed loop、baseline 或 `locked_test`。证据：`docs/implementation_records/STEP_06_0A_UNIFIED_CANDIDATE_GENERATION_CONTRACT_CPU.md` 和对应机器 receipt。唯一下一动作：等待正式 best checkpoint，再由研究者授权模型依赖的 Planner Rollout Step。

@@ -1,5 +1,11 @@
 # 已确认决策
 
+## 2026-09-26 STEP 6.0B 审计事实与待决
+
+**Implementation/Simulator Fact（非 Researcher Decision）**：只证实静态 CPU 容量，未证实动态可用 CPU；UAV 示例配置和正式数据支持范围均非 simulator hard action bound。候选代码未改，两个 UNKNOWN 保留。
+
+**Research Pending**：动态 CPU 可行性如何定义/新增因果来源；UAV Planner 数值与空间域、越界策略和安全声称；若要求精确 AirFogSim Git commit，需补本地目录缺失的独立 Git provenance。此处没有新的研究者方法决定。
+
 ## 2026-09-26：STEP 6.0A 研究者授权边界
 
 **Researcher Decision**：后续使用 MPC 滚动选择框架，动作仍为 Route/Comm/Comp/Mob，Vehicle 移动外生；候选生成采用统一可插拔合同；正式模型完成前不做模型依赖的候选评价。当前实现 horizon 最大 4 是 H1–H4 证据边界，不是最优值结论。

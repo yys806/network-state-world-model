@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## STEP 6.0B 约束来源边界
+
+Simulator Fact：AirFogSim CPU callback 直接给每个 Task 分配率，`Task.compute` 按率×时隙执行，无原生节点总量裁剪；静态 `FogProfile.cpu` 不等于动态可用 CPU。UAV setter/更新无数值硬边界。Implementation Fact：6.0A 的两项 UNKNOWN 保持，未改候选、World Model 或训练架构；世界模型的位置公式与仿真器一致，加速度使用已标注的 PI-JWM canonical 符号，与 simulator raw 符号相反。
+
 ## STEP 6.0A 静态候选生成层（2026-09-26）
 
 当前因果支持与约束 → 四动作高层 CandidateActionStep → 长度 1–4 的 CandidateActionSequence → Search/Learned/Hybrid 接口 → 去重 CandidatePool → 包装正式训练 `build_action` 的张量编译器。到此为止。没有候选 World Model rollout、评价、选择或执行；旧 P6 `formal_candidate_rollout_planner_v1.py` 使用过期 `task_action*`，仅是历史原型。见新合同及 STEP 6.0A 实施记录。

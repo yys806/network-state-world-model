@@ -1,5 +1,9 @@
 # 模块导航地图
 
+## 2026-09-26 STEP 6.0B 审计入口
+
+`code/scripts/build_step6_0b_planner_action_feasibility_audit_v1.py` 和 `docs/implementation_records/STEP_06_0B_PLANNER_ACTION_FEASIBILITY_SOURCE_AUDIT.md` 定位 CPU/UAV 来源；机器凭证在 `code/artifacts/protocols/pi_jwm_step6_0b_planner_action_feasibility_audit_v1_20260926/`。AirFogSim 本地 `code/reference/AirFogSim/` 只读、无独立 Git 元数据；源码路径与逐文件哈希在凭证中，不能将 PI-JWM SHA 当成 AirFogSim SHA。
+
 ## 2026-09-26 新入口
 
 STEP 6.0A：`code/src/pi_jwm/step6_0a_candidate_generation_v1.py`（CPU 候选结构、三态约束、固定支持、三后端接口、池、暖启动、正式动作编译器）；`code/scripts/step6_0a_candidate_contract_acceptance_v1.py`（合成合同 receipt）；正式 Trainer 仍通过 `step5_2_training_loop_v1.py` 导入 `build_step5_1d_unified_model_chain_v1.py::build_action`。旧 P6 Planner 不是当前接口。
