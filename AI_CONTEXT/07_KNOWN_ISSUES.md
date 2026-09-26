@@ -1,5 +1,9 @@
 # 已知问题与冲突
 
+## STEP 6.0C 之后仍未解决
+
+6.0C 将 Comp/Mobility 的**Planner v1 操作域**冻结，不会把 6.0B 的 simulator `dynamic_available_cpu=unavailable` 或 UAV hard bounds absent 改写成已解决。缺 UAV 当前 heading/elevation 时域结果仍 UNKNOWN、不可编译；无当前静态 CPU 容量的正 Comp 请求为 VIOLATED。空间工作区、禁飞区、未来可行性与 fallback 安全性未验证。多 UAV 不同 profile 只是每架边际数据支持，非正式数据中精确联合采集模式。本地 AirFogSim 精确 Git 身份仍未取得。
+
 ## STEP 6.0B（2026-09-26）
 
 - AirFogSim 本地源码目录无独立 `.git`；`git -C` 返回 PI-JWM 主仓库。相关文件 SHA-256 可核验，AirFogSim Git commit/branch/clean 状态不可声称。

@@ -1,0 +1,11 @@
+{
+  "comm": "no-op",
+  "comp": "no allocation",
+  "evidence_kind": "SYNTHETIC_CONTRACT_EVIDENCE",
+  "future_feasibility_claim": false,
+  "mobility": "explicit PROFILE_HOLD row for every current present UAV",
+  "requires_current_uav_heading_elevation": true,
+  "route": "no-op",
+  "safe": false,
+  "schema": "PIJWM_RULE_FALLBACK_V1_RECEIPT"
+}

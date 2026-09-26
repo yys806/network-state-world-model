@@ -1,5 +1,15 @@
 # 已确认决策
 
+## 2026-09-26 STEP 6.0C 研究者决定
+
+**Researcher Decision A**：Planner v1 Comp 使用 `STATIC_PER_SLOT_BUDGET_V1`，同一节点同一时隙的分配总和不得超过当前观察到的原始单位静态 CPU 容量；容量缺失时拒绝正分配。这不是动态可用 CPU。**Simulator Fact**：动态可用 CPU 没有可靠决策时刻来源；`dynamic_available_cpu_available=false`，但 `planner_requires_dynamic_available_cpu=false`。
+
+**Researcher Decision B**：第一版正式 Planner rollout 的 UAV 域使用 `FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1` 六档控制，当前 heading/elevation 来自因果 Raw Planner-only side-state，HOLD 是显式零速命令。每 UAV 独立属于六档；不同 UAV 组合只标 marginal support，不称为已观测 exact joint support。
+
+**Researcher Decision C**：这是保守的首次 rollout 操作域，不是最终最优动作空间、仿真器硬界或安全规则。
+
+**Research Pending**：Search/Learned/Hybrid；连续或插值动作扩展；非零 elevation；空间/geofence；核心域外 OOD 处理；Planner objective/risk；fallback 安全声明；最终动作空间消融。
+
 ## 2026-09-26 STEP 6.0B 审计事实与待决
 
 **Implementation/Simulator Fact（非 Researcher Decision）**：只证实静态 CPU 容量，未证实动态可用 CPU；UAV 示例配置和正式数据支持范围均非 simulator hard action bound。候选代码未改，两个 UNKNOWN 保留。

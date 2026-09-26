@@ -1,0 +1,45 @@
+{
+  "baseline": false,
+  "checkpoint_consumed": false,
+  "closed_loop": false,
+  "dynamic_available_cpu_available": false,
+  "evidence_kind": "SYNTHETIC_CONTRACT_EVIDENCE",
+  "focused_test_count": 12,
+  "focused_test_file": "code/tests/test_step6_0c_planner_action_domain_v1.py",
+  "focused_test_status": "PASSED",
+  "formal_dataset_modified": false,
+  "formal_training_config_modified": false,
+  "formal_training_modified": false,
+  "four_family_exact_formal_tensor_equivalence_test": true,
+  "gpu_used": false,
+  "locked_test_accessed": false,
+  "multi_step_control_side_horizon": 4,
+  "planner_objective_computed": false,
+  "planner_requires_dynamic_available_cpu": false,
+  "proposal_training": false,
+  "provenance": {
+    "airfogsim_git_identity_note": "Local third-party directory has no independent Git metadata; 6.0B records inspected source hashes.",
+    "airfogsim_source_sha": null,
+    "pi_jwm_start_sha": "1c24fc4b4f919b06352ad86f94174dc0020682cb",
+    "source_file_sha256": {
+      "formal_action_adapter": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+      "formal_collector": "e0842db84fb005c8a2c489a316314e2ee0cedd55d7b39f10dc60110495b9d603",
+      "generic_candidate": "8e509115ce68ce09fc5b7ba79aff5f9106c848ce34b748a9d7cfa37d927f3537",
+      "planner_domain": "1975d31774a3160e60dbf47882f6bc4ca858da5f41ebefca9f6a99b29e10e74f",
+      "raw_adapter": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de"
+    },
+    "step6_0b_airfogsim_local_relevant_source_sha256": "49abbf8dee4397dd897e6d99ab06e3626d3075ffb300f10c1e52d53ee2e4e316",
+    "step6_0b_receipt": "code/artifacts/protocols/pi_jwm_step6_0b_planner_action_feasibility_audit_v1_20260926/planner_action_feasibility_source_audit.json",
+    "step6_0b_receipt_sha256": "8de1da57b85be517bd36f35d8c64d7cda13dabc5f295d8243a1eac24bc7dbe5d"
+  },
+  "schema": "PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_ACCEPTANCE_V1",
+  "ssh_used": false,
+  "status": "CPU_CONTRACT_TESTED",
+  "step5_6b_remote_contacted": false,
+  "unknown_constraints_remaining": [
+    "dynamic_available_cpu as simulator fact; not Planner v1 legality input",
+    "spatial_workspace_constraint",
+    "geofence_safety"
+  ],
+  "world_model_rollout_performed": false
+}

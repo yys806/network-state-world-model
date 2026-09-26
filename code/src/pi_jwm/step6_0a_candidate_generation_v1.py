@@ -88,10 +88,11 @@ class CandidateActionSequence:
     @property
     def unresolved_constraints(self) -> tuple[Constraint, ...]:
         unresolved = [c for c in self.constraints if c.status is ConstraintStatus.UNKNOWN]
-        if any(step.comp for step in self.steps):
+        operational_v1 = self.generation_metadata.get("planner_action_domain") == "V1"
+        if any(step.comp for step in self.steps) and not operational_v1:
             unresolved.append(Constraint("dynamic_available_cpu", ConstraintStatus.UNKNOWN,
                 "NO_RELIABLE_CAUSAL_SOURCE", "STEP_4_2A_SOURCE_AUDIT"))
-        if any(step.mob for step in self.steps):
+        if any(step.mob for step in self.steps) and not operational_v1:
             unresolved.append(Constraint("mobility_numeric_bounds", ConstraintStatus.UNKNOWN,
                 "BOUNDS_NOT_FROZEN", "STEP_6_0A_ACTION_AUDIT"))
         return tuple(dict.fromkeys(unresolved))
@@ -179,7 +180,8 @@ def validate_step(step: CandidateActionStep, context: PlannerCandidateContext) -
 
 def compile_candidate(sequence: CandidateActionSequence, context: PlannerCandidateContext,
                       states: tuple[Mapping[str, torch.Tensor], ...], *,
-                      synthetic_contract_test_only: bool = False) -> tuple[tuple[dict[str, torch.Tensor], ...], tuple[dict[str, Any], ...]]:
+                      synthetic_contract_test_only: bool = False,
+                      planner_domain_context: Any = None) -> tuple[tuple[dict[str, torch.Tensor], ...], tuple[dict[str, Any], ...]]:
     """Wrap the actual training adapter; later states must be supplied causally.
 
     UNKNOWN is retained in the pool but cannot be compiled until the researcher
@@ -187,8 +189,13 @@ def compile_candidate(sequence: CandidateActionSequence, context: PlannerCandida
     """
     _require(not any(c.status is ConstraintStatus.VIOLATED for c in context.constraints),
              "known violated context constraint rejects compilation")
-    _require(synthetic_contract_test_only or (not sequence.unresolved_constraints and
-             not any(c.status is ConstraintStatus.UNKNOWN for c in context.constraints)),
+    if planner_domain_context is not None:
+        from pi_jwm.step6_0c_planner_action_domain_v1 import require_domain_admissible
+        require_domain_admissible(sequence, context, planner_domain_context)
+    explicit_unknown = any(c.status is ConstraintStatus.UNKNOWN for c in (*sequence.constraints, *context.constraints))
+    _require(synthetic_contract_test_only or (not explicit_unknown and
+             (planner_domain_context is not None or sequence.generation_metadata.get("planner_action_domain") != "V1") and
+             (planner_domain_context is not None or not sequence.unresolved_constraints)),
              "UNKNOWN constraint requires researcher policy before compilation")
     _require(len(states) == sequence.horizon, "one causal state required per action step")
     for step in sequence.steps:

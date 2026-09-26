@@ -2509,17 +2509,38 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step6_0c_planner_action_domain_v1",
         "scripts.step6_0a_candidate_contract_acceptance_v1",
-        "tests.test_step6_0a_candidate_generation_v1"
+        "tests.test_step6_0a_candidate_generation_v1",
+        "tests.test_step6_0c_planner_action_domain_v1"
       ],
       "imports": [
+        "pi_jwm.step6_0c_planner_action_domain_v1",
         "scripts.build_step5_1d_unified_model_chain_v1"
       ],
       "lifecycle_status": "support",
       "module": "pi_jwm.step6_0a_candidate_generation_v1",
       "path": "code/src/pi_jwm/step6_0a_candidate_generation_v1.py",
       "test_files": [
-        "code/tests/test_step6_0a_candidate_generation_v1.py"
+        "code/tests/test_step6_0a_candidate_generation_v1.py",
+        "code/tests/test_step6_0c_planner_action_domain_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "tests.test_step6_0c_planner_action_domain_v1"
+      ],
+      "imports": [
+        "pi_jwm.step6_0a_candidate_generation_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_0c_planner_action_domain_v1",
+      "path": "code/src/pi_jwm/step6_0c_planner_action_domain_v1.py",
+      "test_files": [
+        "code/tests/test_step6_0c_planner_action_domain_v1.py"
       ]
     },
     {
@@ -3842,7 +3863,8 @@
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
         "tests.test_step5_1d_unified_model_chain_v1",
         "tests.test_step5_5_patch_full_consumption_v1",
-        "tests.test_step6_0a_candidate_generation_v1"
+        "tests.test_step6_0a_candidate_generation_v1",
+        "tests.test_step6_0c_planner_action_domain_v1"
       ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
@@ -3857,7 +3879,8 @@
       "test_files": [
         "code/tests/test_step5_1d_unified_model_chain_v1.py",
         "code/tests/test_step5_5_patch_full_consumption_v1.py",
-        "code/tests/test_step6_0a_candidate_generation_v1.py"
+        "code/tests/test_step6_0a_candidate_generation_v1.py",
+        "code/tests/test_step6_0c_planner_action_domain_v1.py"
       ]
     },
     {
@@ -3897,6 +3920,20 @@
       "path": "code/scripts/build_step6_0b_planner_action_feasibility_audit_v1.py",
       "test_files": [
         "code/tests/test_step6_0b_planner_action_feasibility_audit_v1.py"
+      ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "tests.test_step6_0c_planner_action_domain_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step6_0c_planner_action_domain_v1",
+      "path": "code/scripts/build_step6_0c_planner_action_domain_v1.py",
+      "test_files": [
+        "code/tests/test_step6_0c_planner_action_domain_v1.py"
       ]
     },
     {
@@ -10416,6 +10453,21 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_0b_planner_action_feasibility_audit_v1",
       "path": "code/tests/test_step6_0b_planner_action_feasibility_audit_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_0c_planner_action_domain_v1",
+        "scripts.build_step5_1d_unified_model_chain_v1",
+        "scripts.build_step6_0c_planner_action_domain_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_0c_planner_action_domain_v1",
+      "path": "code/tests/test_step6_0c_planner_action_domain_v1.py",
       "test_files": []
     },
     {

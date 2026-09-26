@@ -1,5 +1,9 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-26 STEP 6.0C 方法边界
+
+研究者决定：第一版 Planner Comp 使用当前因果 Raw 静态 CPU 容量的每节点每时隙预算；UAV 使用正式行为支持的六档边际动作，heading/elevation 仅为 Planner 控制侧状态。HOLD 是显式零速命令。本域不是仿真器动态可用量/硬界、安全或最优动作空间；模型依赖 rollout、目标函数与闭环尚未执行。详见 `docs/contracts/PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md`。
+
 ## 2026-09-26 STEP 6.0B 来源审计边界
 
 静态 CPU 容量、Comp 请求、实际服务、动态可用 CPU 是四种不同量；当前仅前三者有各自来源，第四者仍未知。UAV 示例配置和正式行为数据范围不是可直接冻结的 Planner 硬可行域。6.0A 两项 UNKNOWN 保留，未改变研究者选择的 MPC 后续框架或四动作空间。

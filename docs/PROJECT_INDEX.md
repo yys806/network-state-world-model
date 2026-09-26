@@ -1,5 +1,7 @@
 # PI-JWM 项目索引
 
+> 2026-09-26 STEP 6.0C：Planner v1 静态 CPU 预算、UAV 六档操作域与 CPU 合同验收见 `contracts/PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md`、`implementation_records/STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md`；五份机器凭证在 `code/artifacts/protocols/pi_jwm_step6_0c_planner_action_domain_v1_20260926/`。无模型候选 rollout 或性能结果。
+
 > 2026-09-26 STEP 6.0B：CPU/UAV 可行性来源审计见 `implementation_records/STEP_06_0B_PLANNER_ACTION_FEASIBILITY_SOURCE_AUDIT.md`；五份机器凭证在 `code/artifacts/protocols/pi_jwm_step6_0b_planner_action_feasibility_audit_v1_20260926/`。静态容量不等于动态可用量，UAV 配置/数据范围不等于硬边界，两项 UNKNOWN 保留。
 
 > 2026-09-26 当前增量：STEP 6.0A CPU 候选生成静态合同与机器验收见 `contracts/PIJWM_STEP_06_0A_UNIFIED_CANDIDATE_GENERATION_CONTRACT_V1.md`、`implementation_records/STEP_06_0A_UNIFIED_CANDIDATE_GENERATION_CONTRACT_CPU.md`。5.6B 独立远端训练未接触；下文较早的“未正式训练/GPU”是历史快照。

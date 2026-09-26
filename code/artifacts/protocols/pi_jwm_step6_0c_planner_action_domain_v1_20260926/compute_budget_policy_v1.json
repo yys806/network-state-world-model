@@ -1,0 +1,30 @@
+{
+  "dynamic_available_cpu_available": false,
+  "formula": "for each current node n and decision slot t: sum_i allocated_cpu_per_s(i,n,t) <= observed C_static(n)",
+  "graph_correspondence": "agent_nodes.cpu_capacity + mask",
+  "missing_capacity_no_comp_request": "SATISFIED",
+  "missing_capacity_nonzero_request": "VIOLATED: STATIC_CPU_CAPACITY_UNOBSERVED",
+  "planner_requires_dynamic_available_cpu": false,
+  "policy": "STATIC_PER_SLOT_BUDGET_V1",
+  "provenance": {
+    "airfogsim_git_identity_note": "Local third-party directory has no independent Git metadata; 6.0B records inspected source hashes.",
+    "airfogsim_source_sha": null,
+    "pi_jwm_start_sha": "1c24fc4b4f919b06352ad86f94174dc0020682cb",
+    "source_file_sha256": {
+      "formal_action_adapter": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+      "formal_collector": "e0842db84fb005c8a2c489a316314e2ee0cedd55d7b39f10dc60110495b9d603",
+      "generic_candidate": "8e509115ce68ce09fc5b7ba79aff5f9106c848ce34b748a9d7cfa37d927f3537",
+      "planner_domain": "1975d31774a3160e60dbf47882f6bc4ca858da5f41ebefca9f6a99b29e10e74f",
+      "raw_adapter": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de"
+    },
+    "step6_0b_airfogsim_local_relevant_source_sha256": "49abbf8dee4397dd897e6d99ab06e3626d3075ffb300f10c1e52d53ee2e4e316",
+    "step6_0b_receipt": "code/artifacts/protocols/pi_jwm_step6_0b_planner_action_feasibility_audit_v1_20260926/planner_action_feasibility_source_audit.json",
+    "step6_0b_receipt_sha256": "8de1da57b85be517bd36f35d8c64d7cda13dabc5f295d8243a1eac24bc7dbe5d"
+  },
+  "schema": "PIJWM_PLANNER_COMPUTE_BUDGET_POLICY_V1",
+  "simulator_native_capacity_enforcement": false,
+  "source": "current Raw decision.node_cpu_capacity_observation_rows; cross-check causal Sample static.agent_static_capability.value",
+  "tensor_normalized_not_used": "agent_cpu_capacity",
+  "tensor_raw_correspondence": "agent_cpu_capacity_raw + agent_cpu_capacity_mask",
+  "unit": "AirFogSim CPU-work-unit/s"
+}

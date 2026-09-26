@@ -1189,3 +1189,4 @@
 - 活跃 run 已完成两次各 1104 window 的 prior-only validation，`L_Val` 从 0.1766124568 变为 0.0801012691。H4 Motion raw MAE 从 1.0051 到 0.2689，CSI raw MAE 从 3.8036 到 2.2791 dB；均是同一 validation split 的中途诊断，不是最终测试/泛化结论。
 - 训练 loss 在 552、1104、2208 步发生 Stage/Horizon 改变，跨边界的高低不可直接解释成模型退化或改善；需要以同协议的完整 validation 序列判断。
 - Motion raw aggregate 混合位置/速度等单位，因此不写成米；CSI raw error 才可写 dB。绘图脚本按 run ID、逐步完整性和 prior-only validation provenance 拒绝不一致快照。
+# 2026-09-26 STEP 6.0C：6.0B 源码事实与本次研究者方法决定分离。当前 Raw 的原始单位静态 CPU 容量支持 per-slot operational budget；normalized feature 不可替代。当前 UAV heading(rad)/elevation 需 Planner-only 侧状态；正式采集的零速 HOLD 是显式动作，多 UAV 不同档仅是边际支持。没有新增 AirFogSim native hard bound 或安全声明。

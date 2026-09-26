@@ -1,5 +1,9 @@
 # 数据流与张量合同
 
+## STEP 6.0C Planner-only 因果侧输入
+
+当前 Raw `node_cpu_capacity_observation_rows` 的原始单位值和 observed mask → Planner 静态每时隙预算；Sample `static.agent_static_capability.value` 交叉核对，Tensor `agent_cpu_capacity_raw`/mask 与 Graph `agent_nodes.cpu_capacity`/mask 是对应静态表示。normalized CPU 不参与预算。当前 Raw `entities[]` 仅对 UAV 读取 `heading_unit=rad` 的 heading 和 elevation_rad → Planner-only 控制侧状态 → 六档绝对命令；下一步控制侧 heading/elevation 等于命令值，不预测 position/CSI/task/flow。Future Target、Model 输入、Formal Dataset 均不变。
+
 ## STEP 6.0B CPU/UAV 数据来源审计
 
 CPU：`FogProfile.cpu` → Raw 决策容量行（带观察 mask）→ Sample `static.agent_static_capability` → Tensor `agent_cpu_capacity_raw`/mask → Graph `agent_nodes.cpu_capacity`；以上始终是静态容量。Comp action `allocated_cpu_per_s` → simulator callback → Task 实际服务；过去服务不是当前动态可用量。后者在当前输入链中 absent。UAV：Formal Dataset 行为策略写 `azimuth_rad/elevation_rad/speed_mps`，经 `TrafficScheduler.setUAVMobilityPatterns` 进入 AirFogSim；60 条已验哈希 Raw 的 11520 行动作范围只是数据支持，不是硬可行域。

@@ -1,3 +1,11 @@
+## 2026-09-26 STEP 6.0C — Planner Action Domain v1
+
+- [x] 从 GitHub main 恢复源码并核对 6.0A/6.0B 合同与机器证据。
+- [x] 实现静态 CPU 每时隙预算、UAV 六档控制侧动作域、显式 HOLD 与跨后端候选池准入。
+- [x] 完成 H4 静态控制侧测试、11 tensor 适配器等价、历史与相关回归、机器收据和 Context Consistency。
+- [x] 最终 staged diff 与禁止修改路径核对；Git commit/push、HEAD==origin/main 核对是本任务最后操作。
+- 当前关口：6.0C CPU 合同验收通过；模型依赖 Planner 的阻塞是正式 best checkpoint 和另行授权。唯一下一交付：本 Step Git 收口，然后停止。
+
 # 2026-09-24 STEP 5.6A — GPU Smoke + Formal Training Config Evidence
 
 - [x] Formal Dataset/远端 GPU 身份核对；H4 CUDA smoke、batch 1/2/4/8、checkpoint 与错误身份拒绝。

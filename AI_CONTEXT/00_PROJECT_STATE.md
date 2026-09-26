@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-26 STEP 6.0C Planner v1 动作域
+
+研究者已冻结第一版 Planner **操作动作域**：Comp 对每个节点/时隙按当前 Raw 观测的静态 CPU 容量限制请求总和；缺容量则拒绝正分配。UAV 使用正式采集策略的六档边际控制，heading/elevation 从当前 Raw 只进入 Planner 控制侧状态；HOLD 是每架当前 UAV 的显式零速行。6.0B 的事实未改变：动态可用 CPU 仍无可靠来源，仿真器无 UAV 数值硬界。此动作域不是安全或最优声明。6.0C 仅 CPU 合同与测试，5.6B 远端未联系，训练是否完成仍未核实；无模型候选 rollout/目标函数/`locked_test`。见 6.0C 合同、实施记录和机器 receipt。唯一下一步：等待正式 best checkpoint 并由研究者另行授权模型依赖 Planner Step。
+
 ## 2026-09-26 STEP 6.0B 来源审计
 
 CPU 只读源码审计得到 `STATIC_CAPACITY_ONLY`：决策时刻有带 mask 的静态 CPU 容量，未证实动态可用量；AirFogSim 原生计算回调不按节点容量裁剪，PI-JWM 正式采集器另行限制自身分配。UAV 直接执行接口没有数值硬边界；示例配置是生成/初始化设定，正式数据动作范围只是行为支持。因此 6.0A 的两项 `UNKNOWN` 均保留，Candidate 代码未改。AirFogSim 本地目录没有独立 `.git`，`git -C` 上溯到 PI-JWM；不能声称本地 AirFogSim Git SHA/clean 状态，机器凭证提供相关源码文件哈希。5.6B 远端未联系，训练结束与 best checkpoint 未核实。详见 STEP 6.0B 实施记录及机器凭证；下一步先补齐仿真器历史 Git 身份（若需要精确 commit），模型依赖 Planner 仍需另行授权。

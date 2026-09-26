@@ -1,6 +1,7 @@
 """Read-only receipt validation for source facts; no AirFogSim runtime."""
 import hashlib
 import json
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -13,7 +14,16 @@ from build_step6_0b_planner_action_feasibility_audit_v1 import OUT, payloads
 class Step60BSourceAuditTests(unittest.TestCase):
     def test_rebuild_exact_receipts(self):
         for name, record in payloads().items():
-            self.assertEqual(json.loads((OUT / name).read_text(encoding="utf-8")), record, name)
+            historical = json.loads((OUT / name).read_text(encoding="utf-8"))
+            # STEP 6.0B is a frozen source snapshot. Later Planner-only 6.0C
+            # integration changes the current candidate module, not its receipt.
+            old_candidate = subprocess.check_output(
+                ["git", "show", "1c24fc4b4f919b06352ad86f94174dc0020682cb:code/src/pi_jwm/step6_0a_candidate_generation_v1.py"],
+                cwd=ROOT)
+            self.assertEqual(historical["pi_jwm_relevant_file_sha256"]["candidate"],
+                             hashlib.sha256(old_candidate).hexdigest())
+            record["pi_jwm_relevant_file_sha256"]["candidate"] = historical["pi_jwm_relevant_file_sha256"]["candidate"]
+            self.assertEqual(historical, record, name)
 
     def test_no_git_sha_substitution(self):
         receipt = payloads()["constraint_closure_receipt.json"]

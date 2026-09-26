@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> 2026-09-26 STEP 6.0C：Planner v1 operational action domain 已按研究者决定冻结并做 CPU 合同测试；Search/Learned/Hybrid、目标函数、模型候选 rollout、性能、闭环与安全性仍未决定或未执行。动态可用 CPU 的 simulator source 仍不存在；本域改用静态预算。5.6B 远端状态本 Step 未查询。
+
 > 2026-09-26 STEP 6.0B：CPU verdict=`STATIC_CAPACITY_ONLY`；UAV 配置和行为数据未构成 simulator hard bound。两项约束保持 UNKNOWN，未开始模型依赖候选推演。AirFogSim 本地源码可读，但缺独立 Git metadata，精确本地 Git SHA 不能确认；5.6B 远端未查询。
 
 > 2026-09-26 最新增量：5.6B 正式训练由研究者先前授权在远端独立运行，本 Step 未联系远端，当前进度和 best checkpoint 未核实。6.0A 只通过 CPU 静态候选合同与合成 fixture 验收；最终候选方法、World Model 候选 rollout 和性能仍待后续授权。下文旧的“未正式训练/GPU”属于当时快照。

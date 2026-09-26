@@ -1,5 +1,9 @@
 # 模块导航地图
 
+## STEP 6.0C 新入口
+
+`code/src/pi_jwm/step6_0c_planner_action_domain_v1.py`：静态 CPU 预算证据、UAV 当前控制侧状态、六档域验证、联合支持分类、显式 HOLD fallback。`code/tests/test_step6_0c_planner_action_domain_v1.py`：合成 CPU 合同与原正式 adapter 11 tensor 等价。`code/scripts/build_step6_0c_planner_action_domain_v1.py`：五份可复核机器合同/收据。`step6_0a_candidate_generation_v1.py::compile_candidate` 只加 6.0C 域验证入口，训练 `build_action` 未改。
+
 ## 2026-09-26 STEP 6.0B 审计入口
 
 `code/scripts/build_step6_0b_planner_action_feasibility_audit_v1.py` 和 `docs/implementation_records/STEP_06_0B_PLANNER_ACTION_FEASIBILITY_SOURCE_AUDIT.md` 定位 CPU/UAV 来源；机器凭证在 `code/artifacts/protocols/pi_jwm_step6_0b_planner_action_feasibility_audit_v1_20260926/`。AirFogSim 本地 `code/reference/AirFogSim/` 只读、无独立 Git 元数据；源码路径与逐文件哈希在凭证中，不能将 PI-JWM SHA 当成 AirFogSim SHA。

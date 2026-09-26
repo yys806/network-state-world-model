@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-26 STEP 6.0C
+
+- 研究者冻结 Planner v1 静态每时隙 CPU 预算与六档 UAV 核心域；新增独立域模块、显式 HOLD fallback、控制侧 H4 验证及原 adapter 11 tensor 等价测试。保留 6.0B 仿真器事实；无训练/模型候选 rollout/GPU/`locked_test`。
+
 ## 2026-09-26 STEP 6.0B
 
 - 只读审计本地 AirFogSim CPU/UAV 实际执行源码、当前配置及 Formal Raw 行为支持。CPU verdict=`STATIC_CAPACITY_ONLY`；UAV 无 simulator hard numeric bound，两个候选 UNKNOWN 保留。记录本地 AirFogSim 缺独立 Git 元数据的来源身份限制。未改 Candidate/World Model/训练代码，未联系 5.6B。

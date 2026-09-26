@@ -1,0 +1,70 @@
+{
+  "angle_wrap_or_clamp": false,
+  "current_control_side_state": "current Raw entities UAV heading(rad), elevation_rad; Planner-only, no World Model feature change",
+  "hold": "one explicit speed=0 row for every current UAV; empty mobility is NO_MOBILITY_COMMAND",
+  "joint_behavior_support_classes": [
+    "EXACT_COLLECTION_SHARED_PROFILE",
+    "PER_UAV_MARGINAL_SUPPORT_COMPOSITION"
+  ],
+  "policy": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1",
+  "profiles": [
+    {
+      "delta_azimuth_rad": 0.0,
+      "delta_elevation_rad": 0.0,
+      "name": "PROFILE_HOLD",
+      "speed_mps": 0.0
+    },
+    {
+      "delta_azimuth_rad": -0.2,
+      "delta_elevation_rad": 0.0,
+      "name": "PROFILE_1",
+      "speed_mps": 5.0
+    },
+    {
+      "delta_azimuth_rad": -0.1,
+      "delta_elevation_rad": 0.0,
+      "name": "PROFILE_2",
+      "speed_mps": 8.0
+    },
+    {
+      "delta_azimuth_rad": 0.05,
+      "delta_elevation_rad": 0.0,
+      "name": "PROFILE_3",
+      "speed_mps": 10.0
+    },
+    {
+      "delta_azimuth_rad": 0.1,
+      "delta_elevation_rad": 0.0,
+      "name": "PROFILE_4",
+      "speed_mps": 12.0
+    },
+    {
+      "delta_azimuth_rad": 0.2,
+      "delta_elevation_rad": 0.0,
+      "name": "PROFILE_5",
+      "speed_mps": 15.0
+    }
+  ],
+  "provenance": {
+    "airfogsim_git_identity_note": "Local third-party directory has no independent Git metadata; 6.0B records inspected source hashes.",
+    "airfogsim_source_sha": null,
+    "pi_jwm_start_sha": "1c24fc4b4f919b06352ad86f94174dc0020682cb",
+    "source_file_sha256": {
+      "formal_action_adapter": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+      "formal_collector": "e0842db84fb005c8a2c489a316314e2ee0cedd55d7b39f10dc60110495b9d603",
+      "generic_candidate": "8e509115ce68ce09fc5b7ba79aff5f9106c848ce34b748a9d7cfa37d927f3537",
+      "planner_domain": "1975d31774a3160e60dbf47882f6bc4ca858da5f41ebefca9f6a99b29e10e74f",
+      "raw_adapter": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de"
+    },
+    "step6_0b_airfogsim_local_relevant_source_sha256": "49abbf8dee4397dd897e6d99ab06e3626d3075ffb300f10c1e52d53ee2e4e316",
+    "step6_0b_receipt": "code/artifacts/protocols/pi_jwm_step6_0b_planner_action_feasibility_audit_v1_20260926/planner_action_feasibility_source_audit.json",
+    "step6_0b_receipt_sha256": "8de1da57b85be517bd36f35d8c64d7cda13dabc5f295d8243a1eac24bc7dbe5d"
+  },
+  "safety_or_geofence_claim": false,
+  "schema": "PIJWM_FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1",
+  "simulator_hard_bound": false,
+  "source": "code/scripts/collect_step5_5_formal_raw_v1.py; profile=(frame+policy_seed)%5",
+  "source_status_before_decision": "DATASET_BEHAVIOR_SUPPORT_ONLY",
+  "state_update": "next heading=command azimuth; next elevation=command elevation; no physical prediction",
+  "status_after_researcher_decision": "PLANNER_V1_OPERATIONAL_DOMAIN"
+}

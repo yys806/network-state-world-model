@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-26：STEP 6.0C Planner v1 操作动作域
+
+新增静态 CPU 预算、UAV 六档核心域/显式 HOLD/H4 控制侧验证、跨后端池准入、机器合同与 CPU 合成测试；正式训练与 AirFogSim 源码不变。
+
 ## 2026-09-26：STEP 6.0B 可行性来源审计
 
 - 增加 CPU/UAV 本地源码、配置、正式行为数据与 World Model 对照的五份机器凭证及实施记录；没有找到动态可用 CPU 或 UAV simulator hard numeric bound，Candidate 两项 UNKNOWN 保留。记录 AirFogSim 缺独立 Git 元数据，禁止误用 PI-JWM SHA 作为其身份。未改正式训练、World Model 或第三方源码。

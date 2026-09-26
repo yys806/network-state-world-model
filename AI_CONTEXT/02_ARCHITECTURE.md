@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## STEP 6.0C Planner v1 动作域层
+
+6.0A 通用 Candidate 合同 → 6.0C 当前 Raw CPU 容量/UAV heading-elevation 控制侧状态 → 静态预算与六档 Mobility 验证 → 原 `build_action` 11 tensor 编译。6.0C 只更新 control-command side-state，不做物理状态或 World Model rollout。静态预算是研究者 Planner 操作规则，不是 AirFogSim 原生动态可用量。形式见 `docs/contracts/PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md`。
+
 ## STEP 6.0B 约束来源边界
 
 Simulator Fact：AirFogSim CPU callback 直接给每个 Task 分配率，`Task.compute` 按率×时隙执行，无原生节点总量裁剪；静态 `FogProfile.cpu` 不等于动态可用 CPU。UAV setter/更新无数值硬边界。Implementation Fact：6.0A 的两项 UNKNOWN 保持，未改候选、World Model 或训练架构；世界模型的位置公式与仿真器一致，加速度使用已标注的 PI-JWM canonical 符号，与 simulator raw 符号相反。
