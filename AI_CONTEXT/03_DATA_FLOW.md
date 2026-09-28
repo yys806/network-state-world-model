@@ -1,5 +1,9 @@
 # 数据流与张量合同
 
+## STEP 6.1 当前观测到 H4 反事实推演
+
+Formal Validation 当前 Sample/Tensor/Graph + 同 frame/time 的 Raw 静态 CPU/UAV 控制侧状态 → 同一个 `PreparedRolloutAnchor`（当前 `Z_t^{PI,L_g}` 与 posterior mean）→ CONTROL/单一动作族改变 → 每步按预测 state 编译正式 11 action tensors → `one_step(prior_mode=mean, service_mode=expectation)` → 下一步预测 state/graph/latent，直到 H4。Future Target package 不进入此链；future posterior teacher/target encoder 未实例化。`stochastic_common_seed_diagnostic.json` 仅另行以显式 generator 做小范围配对复现。
+
 ## STEP 6.0C Planner-only 因果侧输入
 
 当前 Raw `node_cpu_capacity_observation_rows` 的原始单位值和 observed mask → Planner 静态每时隙预算；Sample `static.agent_static_capability.value` 交叉核对，Tensor `agent_cpu_capacity_raw`/mask 与 Graph `agent_nodes.cpu_capacity`/mask 是对应静态表示。normalized CPU 不参与预算。当前 Raw `entities[]` 仅对 UAV 读取 `heading_unit=rad` 的 heading 和 elevation_rad → Planner-only 控制侧状态 → 六档绝对命令；下一步控制侧 heading/elevation 等于命令值，不预测 position/CSI/task/flow。Future Target、Model 输入、Formal Dataset 均不变。

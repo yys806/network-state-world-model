@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-28 STEP 6.1
+
+- 新增冻结 `best.pt` 的 CPU 候选递归 rollout：相同当前 belief、四类当前因果动作探针、H4 每步按预测 state 编译、逐 horizon 指纹/潜变量/decoder 诊断、随机配对复现与串行/批量计时。状态限定为 `TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT=PASS` 的机制证据；MPC objective、候选方法选择和闭环仍未开始。
+
 ## 2026-09-28 STEP 5.6C
 
 - 本地 CPU 核验正式 run 5520/5520、五次完整 prior-only validation、严格最终 `argmin L_Val=0.0743133878`；best/latest 都是 step 5520 且 428 个模型张量相同。CPU bounded H1–H4 推理、SHA manifest 和机器回执通过。`STEP 5.6B=COMPLETE`、`FORMAL_BEST_CHECKPOINT=FROZEN`；仍无 baseline、locked_test、Planner rollout 或性能声明。

@@ -2,6 +2,14 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP-6.1-TRAINED-ROLLOUT",
+      "title": "正式训练模型候选推演机制",
+      "keywords": ["STEP 6.1", "trained rollout", "candidate rollout", "候选推演", "四类动作", "same current belief"],
+      "summary": "先读 STEP 6.1 实施记录和机器 receipt，再核对冻结 checkpoint、四族响应、递归指纹与当前源码；该门没有目标函数或闭环性能结果。",
+      "primary_sources": ["docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md", "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/candidate_rollout_preflight_receipt.json"],
+      "verification_sources": ["code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py", "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/action_family_response.json", "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/recursive_feedback_audit.json"]
+    },
+    {
       "id": "ROUTE-NEW-DEFINITION-IMPLEMENTATION",
       "title": "新定义实施状态与差异",
       "keywords": ["00-06", "00–06", "新定义", "实施状态", "Step 1", "差异", "复用", "结构性修改", "下一 Step"],

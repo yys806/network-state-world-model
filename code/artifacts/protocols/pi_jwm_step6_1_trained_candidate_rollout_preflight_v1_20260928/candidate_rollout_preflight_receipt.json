@@ -1,0 +1,37 @@
+{
+  "baseline": false,
+  "candidate_method_selection": "RESEARCH_PENDING",
+  "closed_loop": false,
+  "current_posterior_mode": "mean",
+  "family_status": {
+    "Comm": "PASS",
+    "Comp": "PASS",
+    "Mob": "PASS",
+    "Route": "PASS"
+  },
+  "future_posterior_teacher_calls": 0,
+  "future_prior_mode": "mean",
+  "future_target_consumed_by_rollout": false,
+  "future_target_encoder_calls": 0,
+  "horizons": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "locked_test_accessed": false,
+  "model_eval": true,
+  "mpc_objective": "NOT_STARTED",
+  "parameter_digest_after": "a51f2081eff2015c2fa2771ad720dd6184c1aaced2d3b2d738978b870a36c811",
+  "parameter_digest_before": "a51f2081eff2015c2fa2771ad720dd6184c1aaced2d3b2d738978b870a36c811",
+  "parameter_unchanged": true,
+  "performance_claim": false,
+  "planner_optimization": false,
+  "posterior_used_as_future_rollout_state": false,
+  "serial_batch_consistency": true,
+  "status": "PASS",
+  "stochastic_status": "PASS",
+  "torch_no_grad": true,
+  "trained_world_model_candidate_rollout": "PASS",
+  "wireless_service_mode": "expectation"
+}

@@ -1,5 +1,12 @@
 # 模块导航地图
 
+## STEP 6.1 当前入口
+
+- `code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py`：共同当前 belief、串行/批量 H4 递归推演、指纹和 action-response 摘要。
+- `code/src/pi_jwm/step6_0a_candidate_generation_v1.py::compile_candidate_step`：在每步预测状态上包装未改的正式 `build_action`。
+- `code/scripts/run_step6_1_trained_candidate_rollout_preflight_v1.py`：冻结 checkpoint、validation/Raw 身份、四族机制与 CPU 诊断的运行入口；机器收据在 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/`。
+- `code/tests/test_step6_1_trained_candidate_rollout_v1.py`：合成合同测试；真实机制证据需查机器收据。
+
 ## STEP 6.0C 新入口
 
 `code/src/pi_jwm/step6_0c_planner_action_domain_v1.py`：静态 CPU 预算证据、UAV 当前控制侧状态、六档域验证、联合支持分类、显式 HOLD fallback。`code/tests/test_step6_0c_planner_action_domain_v1.py`：合成 CPU 合同与原正式 adapter 11 tensor 等价。`code/scripts/build_step6_0c_planner_action_domain_v1.py`：五份可复核机器合同/收据。`step6_0a_candidate_generation_v1.py::compile_candidate` 只加 6.0C 域验证入口，训练 `build_action` 未改。

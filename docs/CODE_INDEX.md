@@ -1,5 +1,7 @@
 # PI-JWM 代码状态索引
 
+> STEP 6.1 当前正式候选推演机制入口：`code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py`，运行器 `code/scripts/run_step6_1_trained_candidate_rollout_preflight_v1.py`，与 6.0A/C 候选/动作域和冻结 5.6C Encoder/RSSM 相连；历史 `formal_candidate_rollout_planner_v1.py` 不在该链上。仅预检，尚无目标函数或候选选择。
+
 > 本页区分“当前正式代码、支撑代码、原型和历史兼容代码”。精确依赖以 `registries/generated/python_dependency_map.json` 为准。
 
 ## 当前正式 P4 核心

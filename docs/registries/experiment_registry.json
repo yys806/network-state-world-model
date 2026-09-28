@@ -611,6 +611,51 @@
       }
     },
     {
+      "id": "STEP-6.1-TRAINED-CANDIDATE-ROLLOUT-20260928",
+      "name": "frozen trained world model candidate rollout CPU preflight",
+      "date": "2026-09-28",
+      "research_question": "From the same current Formal Validation belief, do four legal action-family interventions cause finite H1-H4 recursive model and rule responses?",
+      "method": "pi_jwm_step6_1_trained_candidate_rollout_v1",
+      "code": "code/scripts/run_step6_1_trained_candidate_rollout_preflight_v1.py",
+      "code_version": {
+        "identity_type": "checkpoint_sha256_and_git_commit",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/checkpoint_identity_receipt.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Frozen best.pt SHA is exact in the receipt; this Step's final Git commit is recorded after verification and push."
+      },
+      "configuration": "docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md",
+      "parameters": {
+        "device": "cpu",
+        "horizons": [1, 2, 3, 4],
+        "current_posterior": "mean",
+        "future_prior": "mean",
+        "service": "expectation",
+        "stochastic_seeds": [6101, 6102, 6103],
+        "candidate_batch_sizes": [1, 2, 4, 8]
+      },
+      "protocol": "docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md",
+      "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+      "split": ["dev_validation"],
+      "seed": null,
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/candidate_rollout_preflight_receipt.json",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/recursive_feedback_audit.json",
+      "status": "cpu_mechanism_pass",
+      "conclusion": "One Formal Validation anchor and frozen best checkpoint pass four-family action-conditioning, H4 recursion, stochastic replay and CPU batching mechanism checks; no candidate evaluation or control result.",
+      "summary_zh": "一个正式验证集当前样本上的四动作族、H4 递归、随机复现和 CPU 批量机制通过；不包含候选优劣或控制结果。",
+      "claim_boundary": "single dev_validation anchor and one frozen training seed; CPU mechanism only; no objective, winner, baseline, locked test, closed loop or performance claim",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "code_version.manifest_sha256": "Receipt byte hash can be regenerated; it is not a frozen source manifest.",
+        "code_version.git_commit": "Final implementation commit is recorded in the Step record and completion report after push.",
+        "seed": "There is no single new training/experiment seed; three fixed seeds are only paired stochastic diagnostics.",
+        "checkpoint": "Checkpoint bytes are local-only; the registry path is provenance, not a Git tracked artifact.",
+        "metrics": "No prediction-quality, objective, risk, ranking or performance metric is defined in this Step."
+      }
+    },
+    {
       "id": "P6-CANDIDATE-ROLLOUT-AUDIT-20260826",
       "name": "candidate-action world-model rollout planner audit",
       "date": "2026-08-26",

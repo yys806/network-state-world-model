@@ -1,5 +1,13 @@
 # Findings
 
+## 2026-09-28 STEP 6.1
+
+- 第一 Formal Validation anchor `...::anchor-0001` 的 Raw frame/capture 和 Sample 身份可逐项对齐；同一当前 Flow/Task-Agent/UAV/CPU/RB support 能构造四个独立 `CAUSAL_DOMAIN_PROBE`，无需第一未来已执行动作。
+- 冻结模型在四类动作各自对应的 routed embedding 和 hidden latent 上有非零响应；Comp 的 H1 Motion/CSI 仍可相同，不能据此判为动作路径断裂。Route 对现有 Flow 改路且保持固定 identity，Comm 对 carrying relation 的 delivered service 有变化。
+- 已查证期望服务 trace 的 `outage_uniform_draw` 全 NaN 是 `apply_known_stochastic_wireless_service` 对未抽样的显式记录；actual/nominal/probability 有限。Mob 大绝对坐标上的 FP32 相减会放大小位移表示误差，但按模型同一 FP32 运算的绝对下一位置相符。
+- 机制证据限定一个 validation anchor/一个训练 seed；不推出反事实预测精度、最终 Planner latency、安全、目标函数或闭环收益。`locked_test` 未访问，GPU 未使用。
+
+
 ## 2026-09-26 STEP 6.0B
 
 - 本地 `code/reference/AirFogSim/` 无 `.git`；`git -C` 的 SHA/remote/status 实为 PI-JWM。官方上游候选 commit 与本地抽检 3/5 blob 相同，不能当本地 source SHA。相关源码内容哈希已写 receipt。

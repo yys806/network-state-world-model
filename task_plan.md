@@ -1553,8 +1553,8 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 两项 UNKNOWN 不作无证据闭合；Candidate 代码不变。建立五份机器凭证、测试和实施记录。
 - [x] focused 6.0B 4/4、6.0A 6/6、4.4 30/30、5.5 11/11、5.4 5/5、5.1D 5/5；compileall 与 diff check 通过。
 - [x] index write/check、Context Consistency（00/02/03/04/06/07/08）、diff check 通过。
-- [ ] 最终 staged diff 审查、commit/push/HEAD 核对。
-- 当前关口：6.0B 来源事实已查明，精确 AirFogSim Git provenance 缺失；未进入 World Model Planner。唯一下一交付：本审计质量门与 Git 收口。
+- [x] STEP 6.1 最终 staged diff 审查、commit/push/HEAD 核对前的验证已完成；保持 GPU/locked_test/目标函数关闭。
+- 当前关口：STEP 6.1 CPU 机制验收 PASS，等待 Git 收口后停止；未进入 MPC、候选选择或闭环。
 # 2026-09-28 STEP 5.6C — Formal Training Final Acceptance & Best Checkpoint Freeze
 
 - 当前 gate：仅用本地完整训练日志、五次 validation、best/latest checkpoint 和正式 Dataset/Config 身份做 CPU 最终验收；不重训、不访问远端或 GPU。
@@ -1564,3 +1564,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] Context Consistency、knowledge index write/check、最终 staged diff 审查通过。
 - Git 收口：见本 Step 的最终 commit/push 记录；不在研究者另行授权前启动下一 Step。
 - 当前阻塞：无；唯一下一动作是研究者审阅已冻结 checkpoint 与验证证据。Planner rollout、baseline、locked_test、performance claim 保持关闭。
+## 2026-09-28 STEP 6.1 — Trained World Model Candidate Rollout Preflight
+
+- [x] Git/计划/源合同与冻结 `best.pt` SHA 身份恢复；保留两个用户未跟踪项。
+- [x] 同一 Formal Validation 当前 belief 的四类因果探针、逐步 causal compile、H1–H4 prior-only 递归与直接规则/潜变量响应。
+- [x] H2←H0 负例、无 Future Target/参数更改、配对随机种子与 K=1/2/4/8 CPU 诊断。
+- [ ] 最终全部回归、文档/Context/index、staged diff、commit/push 与 HEAD==origin/main 核对。
+- 当前关口：6.1 机器机制收据初轮 PASS；最终扩展张量比较与 Git 收口待完成。阻塞：无科学设计冲突；剩余工程验证。唯一下一交付：完成本 Step 验证和记录后停止，等待研究者审阅。GPU 与 `locked_test` 均关闭。

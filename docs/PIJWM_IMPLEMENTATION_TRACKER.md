@@ -1,5 +1,7 @@
 # PI-JWM Implementation Tracker
 
+**2026-09-28 STEP 6.1（冻结训练模型候选推演预检）：** 正式 `best.pt` SHA 与 CPU 加载核对后，在同一个 Formal Validation anchor 上用四类当前因果合法动作，完成 H1–H4 逐步编译、prior-only recursive rollout、规则/潜变量响应、配对随机种子与串行/批量 CPU 诊断。机器入口 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/`，实施记录见 `implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md`。只验收模型候选推演机制，不含 objective/winner、closed loop、baseline、locked_test 或性能声明。
+
 **2026-09-28 STEP 5.6C（正式训练最终验收）：** 本地 CPU 验收 run `pi_jwm_formal_train_v1_seed5601_20260924T112424Z`：5520/5520 步、五次完整 prior-only 1104-window validation、最终 step 5520 严格最低 `L_Val=0.07431338784170399`。best/latest 都记录最终步且 428 个模型张量逐项相同；单 validation window H1–H4 CPU replay 通过。`STEP 5.6B=COMPLETE`、`FORMAL_BEST_CHECKPOINT=FROZEN`。机器回执和完整分 horizon 指标见 `code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/`，实施记录见 `docs/implementation_records/STEP_05_6C_FORMAL_TRAINING_FINAL_ACCEPTANCE.md`。这是 Formal Validation Observation，未进入 baseline、locked_test、模型候选 Planner rollout 或性能声明。
 
 **2026-09-26 STEP 6.0C（Planner v1 操作域冻结，CPU 合同）：** 研究者决定使用当前 Raw 静态 CPU 容量的每节点每时隙预算，并使用正式行为支持的 UAV 六档核心动作域。HOLD 为每架当前 UAV 的显式零速命令；H4 只更新 Planner 控制侧 heading/elevation，不预测物理状态。与正式 `build_action` 的 11 tensor 逐值等价已有合成合同测试。动态可用 CPU 仍无来源，UAV 无仿真器硬数值界；无安全/性能声明。见 `docs/contracts/PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md` 和实施记录。5.6B 未接触。

@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-28：STEP 6.1 冻结训练模型候选推演预检
+
+新增正式 checkpoint 上的 CPU 候选推演模块、每步因果动作编译 helper、validation/Raw 机制验收脚本、focused tests、七份机器收据与实施记录。同步 Tracker、计划/进展/发现、权威进展和 AI_CONTEXT；6.0A–C 合同、模型结构、正式数据/配置、checkpoint 与 AirFogSim 源码保持不变。此项是机制证据，不是候选选择或性能结果。
+
 ## 2026-09-28：STEP 5.6C 正式训练最终验收
 
 - 新增本地 CPU 验收脚本与负例测试；5520 步、五次完整验证、最终 strict `argmin L_Val`、best/latest 相同模型张量及 bounded H4 inference 均通过。tracked SHA manifest 冻结 local-only best checkpoint 身份；没有 baseline、locked_test、Planner rollout 或性能声明。

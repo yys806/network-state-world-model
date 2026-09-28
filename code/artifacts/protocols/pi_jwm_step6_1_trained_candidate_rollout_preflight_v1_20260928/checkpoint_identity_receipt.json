@@ -1,0 +1,14 @@
+{
+  "best_checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "bytes_in_git": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "device": "cpu",
+  "loaded_components": [
+    "encoder",
+    "rssm"
+  ],
+  "optimizer_step": false,
+  "run_id": "pi_jwm_formal_train_v1_seed5601_20260924T112424Z",
+  "status": "PASS",
+  "training_source_git_sha": "6e15ec2da0e3a6e0561dc821d0aaef90696a2387"
+}

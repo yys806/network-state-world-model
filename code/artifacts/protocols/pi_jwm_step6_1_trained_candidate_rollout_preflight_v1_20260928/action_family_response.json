@@ -1,0 +1,656 @@
+{
+  "families": {
+    "Comm": {
+      "anchor_fingerprints": {
+        "anchor": "c0f99370316bc0294a9dcee49874a7236cdcca45c14f89638ca212285e2cc9f6",
+        "graph": "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "latent": "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "state": "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "z_pi": "8d2a38bfccac10e460610e405c9870b8291bc6a932db63a3b1f31fe99aa7aebd"
+      },
+      "deployment_candidate_evidence": true,
+      "direct": {
+        "carrying_uses_relation": true,
+        "delivered_service_delta": 0.5502674579620361,
+        "expectation_draw_is_intentional_nan": true,
+        "formal_action_changed": true,
+        "rb_mask_matches_action": true,
+        "relation_index": 27,
+        "routed_delta": {
+          "communication": 2.1465985774993896
+        },
+        "routed_response": true,
+        "wireless_service_trace_finite": true
+      },
+      "planner_generator_evidence": true,
+      "probe_source": "CAUSAL_DOMAIN_PROBE",
+      "provenance": "active Flow 0; free current RB",
+      "recorded_action_probe": false,
+      "same_current_belief": true,
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "sensitivity": [
+        {
+          "decoder_delta": {
+            "csi": 0.27437591552734375,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.0,
+            "communication": 0.32575249671936035,
+            "flow": 0.0,
+            "physical": 0.0,
+            "task": 0.0
+          },
+          "horizon": 1,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0,
+              "mean": 0.12621355056762695
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.3240203857421875,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.27290013432502747,
+            "communication": 0.28699809312820435,
+            "flow": 1.8887754678726196,
+            "physical": 0.0,
+            "task": 0.21486297249794006
+          },
+          "horizon": 2,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0,
+              "mean": 0.13589096069335938
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.3243408203125,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.4214756488800049,
+            "communication": 0.24841421842575073,
+            "flow": 1.4031916856765747,
+            "physical": 0.0,
+            "task": 0.3101477026939392
+          },
+          "horizon": 3,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0006239414215087891,
+              "mean": 0.13151907920837402
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.29924774169921875,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.6104442477226257,
+            "communication": 0.21540814638137817,
+            "flow": 0.9168683290481567,
+            "physical": 0.0,
+            "task": 0.3756309151649475
+          },
+          "horizon": 4,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.004284858703613281,
+              "mean": 0.119171142578125
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        }
+      ],
+      "status": "PASS",
+      "target_family_latent_response": true
+    },
+    "Comp": {
+      "anchor_fingerprints": {
+        "anchor": "c0f99370316bc0294a9dcee49874a7236cdcca45c14f89638ca212285e2cc9f6",
+        "graph": "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "latent": "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "state": "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "z_pi": "8d2a38bfccac10e460610e405c9870b8291bc6a932db63a3b1f31fe99aa7aebd"
+      },
+      "deployment_candidate_evidence": true,
+      "direct": {
+        "actual_remaining": 0.13608403503894806,
+        "expected_remaining": 0.13608404397964477,
+        "formal_action_changed": true,
+        "progress_rule_ok": true,
+        "routed_delta": {
+          "agent": 2.1332297325134277,
+          "task": 2.268467903137207
+        },
+        "routed_response": true,
+        "task_index": 0,
+        "work_rule_ok": true
+      },
+      "planner_generator_evidence": true,
+      "probe_source": "CAUSAL_DOMAIN_PROBE",
+      "provenance": "current Task-Agent relation 0; static CPU budget",
+      "recorded_action_probe": false,
+      "same_current_belief": true,
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "sensitivity": [
+        {
+          "decoder_delta": {
+            "csi": 0.0,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": false,
+          "hidden_delta": {
+            "agent": 1.0389461517333984,
+            "communication": 0.0,
+            "flow": 0.0,
+            "physical": 0.0,
+            "task": 0.8266209363937378
+          },
+          "horizon": 1,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0,
+              "mean": 0.0
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.05480194091796875,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.25358304381370544,
+            "communication": 0.03355199098587036,
+            "flow": 0.02028776705265045,
+            "physical": 0.0,
+            "task": 0.6060885190963745
+          },
+          "horizon": 2,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.00118255615234375,
+              "mean": 0.017957210540771484
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.04212188720703125,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.17109078168869019,
+            "communication": 0.032807767391204834,
+            "flow": 0.01226988434791565,
+            "physical": 0.0,
+            "task": 0.4638795852661133
+          },
+          "horizon": 3,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0019583702087402344,
+              "mean": 0.01249074935913086
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.049896240234375,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.09295734763145447,
+            "communication": 0.03193551301956177,
+            "flow": 0.007864713668823242,
+            "physical": 0.0,
+            "task": 0.3737369477748871
+          },
+          "horizon": 4,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0009050369262695312,
+              "mean": 0.014238834381103516
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        }
+      ],
+      "status": "PASS",
+      "target_family_latent_response": true
+    },
+    "Mob": {
+      "anchor_fingerprints": {
+        "anchor": "c0f99370316bc0294a9dcee49874a7236cdcca45c14f89638ca212285e2cc9f6",
+        "graph": "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "latent": "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "state": "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "z_pi": "8d2a38bfccac10e460610e405c9870b8291bc6a932db63a3b1f31fe99aa7aebd"
+      },
+      "deployment_candidate_evidence": true,
+      "direct": {
+        "actual_delta_m": [
+          0.49005126953125,
+          -0.09930419921875,
+          0.0
+        ],
+        "expected_delta_m": [
+          0.4900332987308502,
+          -0.09933466464281082,
+          0.0
+        ],
+        "formal_action_changed": true,
+        "position_delta_fp32_cancellation_m": 3.0465424060821533e-05,
+        "position_rule_ok": true,
+        "routed_delta": {
+          "physical": 2.3298091888427734
+        },
+        "routed_response": true,
+        "speed_rule_ok": true,
+        "uav_index": 4
+      },
+      "planner_generator_evidence": true,
+      "probe_source": "CAUSAL_DOMAIN_PROBE",
+      "provenance": "current observed UAV + frozen PROFILE_1",
+      "recorded_action_probe": false,
+      "same_current_belief": true,
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "sensitivity": [
+        {
+          "decoder_delta": {
+            "csi": 0.0,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.0,
+            "communication": 0.0,
+            "flow": 0.0,
+            "physical": 1.1903181076049805,
+            "task": 0.0
+          },
+          "horizon": 1,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0,
+              "mean": 0.0
+            },
+            "physical": {
+              "log_std": 0.18949580192565918,
+              "mean": 0.5620539784431458
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.6063385009765625,
+            "vehicle_motion": 0.006090998649597168
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.19479012489318848,
+            "communication": 0.17798131704330444,
+            "flow": 0.014586139470338821,
+            "physical": 0.20176546275615692,
+            "task": 0.02495741844177246
+          },
+          "horizon": 2,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0,
+              "mean": 0.2209949493408203
+            },
+            "physical": {
+              "log_std": 0.06346550583839417,
+              "mean": 0.18827390670776367
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.38019561767578125,
+            "vehicle_motion": 0.0035681724548339844
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.09298032522201538,
+            "communication": 0.15301689505577087,
+            "flow": 0.00853603333234787,
+            "physical": 0.204901784658432,
+            "task": 0.015912890434265137
+          },
+          "horizon": 3,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0009584426879882812,
+              "mean": 0.14107036590576172
+            },
+            "physical": {
+              "log_std": 0.03909456729888916,
+              "mean": 0.11318230628967285
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.25716400146484375,
+            "vehicle_motion": 0.001223921775817871
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.0581015944480896,
+            "communication": 0.1093733012676239,
+            "flow": 0.007240757346153259,
+            "physical": 0.19016219675540924,
+            "task": 0.013589084148406982
+          },
+          "horizon": 4,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0016999244689941406,
+              "mean": 0.09292030334472656
+            },
+            "physical": {
+              "log_std": 0.033718109130859375,
+              "mean": 0.10209488868713379
+            }
+          },
+          "state_different": true
+        }
+      ],
+      "status": "PASS",
+      "target_family_latent_response": true
+    },
+    "Route": {
+      "anchor_fingerprints": {
+        "anchor": "c0f99370316bc0294a9dcee49874a7236cdcca45c14f89638ca212285e2cc9f6",
+        "graph": "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "latent": "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "state": "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "z_pi": "8d2a38bfccac10e460610e405c9870b8291bc6a932db63a3b1f31fe99aa7aebd"
+      },
+      "deployment_candidate_evidence": true,
+      "direct": {
+        "fixed_flow_support_preserved": true,
+        "flow_index": 0,
+        "formal_action_changed": true,
+        "hop_destination_matches_action": true,
+        "hop_source_matches_action": true,
+        "host_matches_action_if_present": true,
+        "host_relation_present": true,
+        "route_mapping": [
+          {
+            "flow_index": 0,
+            "mode": "current_flow",
+            "source_index": 4,
+            "target_index": 0,
+            "task_index": 0,
+            "transition_applied": true
+          }
+        ],
+        "route_revision_changed": true,
+        "routed_delta": {
+          "flow": 2.262456178665161,
+          "task": 2.262456178665161
+        },
+        "routed_response": true,
+        "structural_response_required": true,
+        "task_index": 0
+      },
+      "planner_generator_evidence": true,
+      "probe_source": "CAUSAL_DOMAIN_PROBE",
+      "provenance": "active Flow 0; current relation 26",
+      "recorded_action_probe": false,
+      "same_current_belief": true,
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "sensitivity": [
+        {
+          "decoder_delta": {
+            "csi": 0.0,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.0,
+            "communication": 0.0,
+            "flow": 0.5881263017654419,
+            "physical": 0.0,
+            "task": 0.850990891456604
+          },
+          "horizon": 1,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0,
+              "mean": 0.0
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.2759552001953125,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.20762448012828827,
+            "communication": 0.10533279180526733,
+            "flow": 0.3325071334838867,
+            "physical": 0.0,
+            "task": 0.8407615423202515
+          },
+          "horizon": 2,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.03290915489196777,
+              "mean": 0.09259891510009766
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.5699844360351562,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.22423720359802246,
+            "communication": 0.1555989384651184,
+            "flow": 0.2768174409866333,
+            "physical": 0.0,
+            "task": 0.6071369647979736
+          },
+          "horizon": 3,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.07672619819641113,
+              "mean": 0.18264198303222656
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        },
+        {
+          "decoder_delta": {
+            "csi": 0.6872329711914062,
+            "vehicle_motion": 0.0
+          },
+          "graph_different": true,
+          "hidden_delta": {
+            "agent": 0.3444153070449829,
+            "communication": 0.15652859210968018,
+            "flow": 0.2949235439300537,
+            "physical": 0.0,
+            "task": 0.41312581300735474
+          },
+          "horizon": 4,
+          "prior_delta": {
+            "communication": {
+              "log_std": 0.0813755989074707,
+              "mean": 0.22689151763916016
+            },
+            "physical": {
+              "log_std": 0.0,
+              "mean": 0.0
+            }
+          },
+          "state_different": true
+        }
+      ],
+      "status": "PASS",
+      "target_family_latent_response": true
+    }
+  },
+  "serial_batch_consistency": {
+    "Comm": {
+      "component_max_abs_delta": [
+        {
+          "actions": 0.0,
+          "graphs": 0.0,
+          "latents": 7.450580596923828e-09,
+          "model_traces": 0.0,
+          "states": 0.0
+        },
+        {
+          "actions": 0.0,
+          "graphs": 7.62939453125e-06,
+          "latents": 4.76837158203125e-07,
+          "model_traces": 7.62939453125e-06,
+          "states": 7.62939453125e-06
+        }
+      ],
+      "max_abs_delta": 7.62939453125e-06,
+      "within_1e_minus_4": true
+    },
+    "Comp": {
+      "component_max_abs_delta": [
+        {
+          "actions": 0.0,
+          "graphs": 0.0,
+          "latents": 7.450580596923828e-09,
+          "model_traces": 0.0,
+          "states": 0.0
+        },
+        {
+          "actions": 0.0,
+          "graphs": 7.62939453125e-06,
+          "latents": 9.5367431640625e-07,
+          "model_traces": 7.62939453125e-06,
+          "states": 7.62939453125e-06
+        }
+      ],
+      "max_abs_delta": 7.62939453125e-06,
+      "within_1e_minus_4": true
+    },
+    "Mob": {
+      "component_max_abs_delta": [
+        {
+          "actions": 0.0,
+          "graphs": 0.0,
+          "latents": 7.450580596923828e-09,
+          "model_traces": 0.0,
+          "states": 0.0
+        },
+        {
+          "actions": 0.0,
+          "graphs": 7.62939453125e-06,
+          "latents": 9.5367431640625e-07,
+          "model_traces": 7.62939453125e-06,
+          "states": 7.62939453125e-06
+        }
+      ],
+      "max_abs_delta": 7.62939453125e-06,
+      "within_1e_minus_4": true
+    },
+    "Route": {
+      "component_max_abs_delta": [
+        {
+          "actions": 0.0,
+          "graphs": 0.0,
+          "latents": 7.450580596923828e-09,
+          "model_traces": 0.0,
+          "states": 0.0
+        },
+        {
+          "actions": 0.0,
+          "graphs": 7.62939453125e-06,
+          "latents": 9.5367431640625e-07,
+          "model_traces": 7.62939453125e-06,
+          "states": 7.62939453125e-06
+        }
+      ],
+      "max_abs_delta": 7.62939453125e-06,
+      "within_1e_minus_4": true
+    }
+  }
+}

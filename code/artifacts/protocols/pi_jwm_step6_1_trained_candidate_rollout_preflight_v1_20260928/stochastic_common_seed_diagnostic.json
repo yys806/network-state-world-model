@@ -1,0 +1,103 @@
+{
+  "families": {
+    "Comm": [
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6101
+      },
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6102
+      },
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6103
+      }
+    ],
+    "Comp": [
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6101
+      },
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6102
+      },
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6103
+      }
+    ],
+    "Mob": [
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6101
+      },
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6102
+      },
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6103
+      }
+    ],
+    "Route": [
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6101
+      },
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6102
+      },
+      {
+        "finite": true,
+        "paired_common_seed": true,
+        "same_candidate_same_seed_reproducible": true,
+        "same_current_belief": true,
+        "seed": 6103
+      }
+    ]
+  },
+  "rng_stream_limitation": "single generator couples latent and wireless outage draws",
+  "seeds": [
+    6101,
+    6102,
+    6103
+  ],
+  "status": "PASS"
+}

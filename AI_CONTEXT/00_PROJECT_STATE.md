@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-28 STEP 6.1 正式训练模型候选推演预检
+
+`TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT=PASS`（以最新机器 receipt 为准）：从同一个正式 validation 当前样本及同一 Encoder/当前 posterior latent 出发，四类合法当前因果动作分别完成 H1–H4 逐步编译和 prior-only 递归 World Model 推演；动作注入、对应潜变量、规则状态更新、串行/批量一致性与三组配对随机种子诊断通过。正式 `best.pt` SHA 精确匹配且参数未改变。证据见 `docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md` 和 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/`。这是单 validation anchor 的 CPU 机制验收；没有候选优劣、预测质量或闭环性能结论。`MPC_OBJECTIVE=NOT_STARTED`、`CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`、`CLOSED_LOOP=NOT_STARTED`；baseline、GPU、locked_test 均未执行。唯一下一动作：研究者审阅 Step 6.1 的机制与边界，决定是否单独授权下一研究 Step。
+
 ## 2026-09-28 STEP 5.6C 正式训练最终验收
 
 `STEP 5.6B=COMPLETE`：正式 run `pi_jwm_formal_train_v1_seed5601_20260924T112424Z` 的本地日志严格有 5520 步和 1104/2208/3312/4416/5520 五次完整 1104-window prior-only validation，无 NaN/Inf 或失败凭证。第 5520 步是严格最低 `L_Val=0.07431338784170399`；`best.pt` 和 `latest.pt` 均记录该最终步，428 个模型张量完全相同。CPU 单 validation window H1–H4 checkpoint reload/推理通过。`FORMAL_BEST_CHECKPOINT=FROZEN`，best SHA-256=`941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`。训练源码 SHA=`6e15ec2da0e3a6e0561dc821d0aaef90696a2387`，当前 main 的后续提交不改变训练身份。机器回执、五次全部分 horizon 指标和本地文件 SHA 见 `code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/`；checkpoint 字节在 local-only `code/artifacts/formal_training/`。这是 **Formal Validation Observation**，未执行 baseline、locked_test、模型候选 Planner rollout 或性能声明；已有 6.0A–C 静态 Planner 合同不等于模型 rollout。唯一下一动作：研究者审阅验收后的 checkpoint 与验证证据，不自动进入 Planner。

@@ -1,5 +1,9 @@
 # 已知问题与冲突
 
+## STEP 6.1 之后的证据限制
+
+四族机制验收只覆盖同一 Formal Validation anchor 和一个训练 seed；H1–H4 有响应不等于反事实预测准确、长时可靠、可用规划目标、候选生成覆盖或闭环收益。6.0C 的静态 CPU 预算不证明动态可用 CPU；UAV 空间/禁飞约束与 fallback 安全性未验证。配对随机诊断共用单个 generator，latent sampling 与无线 outage draw stream 未严格拆开。期望服务模式的 `outage_uniform_draw=NaN` 是未抽样哨兵值，有限性只针对实际 service 输出。
+
 ## STEP 5.6C 验收后的证据边界（2026-09-28）
 
 - 正式训练已完成且 best checkpoint 冻结；此前“仍在运行/未核实”的段落是历史快照。当前只有一个 seed、12 条 validation trajectory 的观测；没有 baseline、locked-test、跨 seed 稳定性或闭环系统评价。`L_Val` 的下降不直接证明最终任务完成率、时延或 Planner 收益。Motion raw aggregate 混合不同物理量单位，不能标成单一米数。

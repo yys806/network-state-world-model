@@ -1,0 +1,221 @@
+{
+  "h2_negative_test": "replace recorded H2 input fingerprint with H0; equality assertion rejects it",
+  "rows": {
+    "Comm:CONTROL": {
+      "feedback_exact": true,
+      "finite_h1_h4": true,
+      "graph_fingerprints": [
+        "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "74563b5514d1d4f5ed6c0a206ab7235c812fd11fb25bc394173d73f57c01e4ea",
+        "7c38f574990562378b922daad4acf4684fb740165d6c23f97ac05fa522aa00de",
+        "961a8e9c71e918b7ce825986a33d864dc9ab43f4eaeb8a2cc25dc3db2176b9fc",
+        "e7c48251da4ff6ef3f4245396bf7b4b6f7c0b3ab952250bad6d3543cde423095"
+      ],
+      "h2_h0_substitution_rejected_by_fingerprint_audit": true,
+      "latent_fingerprints": [
+        "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "2599017e600a5b25630af4609b8fe1375acb971a26b1d27ad541939c7874a1e1",
+        "c56691bad7a5be6bf45fce750fd40721f3a886e81005e551af2d773b05039033",
+        "c89766b3542f368827d01624ff9f04a671d4a1b385fc43f1c3f2ac539f93ed7e",
+        "37b2dc795e34185e95ac81a6193ba9d4c696f886ac574bc326a31e99cca72cff"
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "state_fingerprints": [
+        "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "6ebde7c5d77f16af4eadcdd6c478cb07a2645c2e87ed27b3827365cfb2168f01",
+        "dfb03c75d0c3694cee0b3282c790d23ec77d5e30b0be0b8db7d2c0ca18bd4919",
+        "71e5a67e4e12e5e8bf29167b17356abfb38d4c488775fa0f607c979ee1fd081c",
+        "f0bbe7d29229e3576e635d0f3d69452e9c0ae2dc142ead4483e4105178b7b9f5"
+      ]
+    },
+    "Comm:Comm": {
+      "feedback_exact": true,
+      "finite_h1_h4": true,
+      "graph_fingerprints": [
+        "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "25715afd2349579c4634dfca73458486a3bdd9f0f7fabdb06654a1fc6d4e4222",
+        "9cdad851f9ecede569d092c4913ba93cb528fb6622aeb8cfb0babec97f9364aa",
+        "0635b9d1e1bb3b6ef39a55e0ce165c0a83e5873ecc4e92241b65457c8c6d66b0",
+        "b81500af23e500e52196b7ec1027982345659ed37e728cbed11dd98586415996"
+      ],
+      "h2_h0_substitution_rejected_by_fingerprint_audit": true,
+      "latent_fingerprints": [
+        "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "44d5cfc6b7c27473627910214f00ac426372f9c468022cff75c4ea87861ca39c",
+        "515cee139c3907c934d0749ab5581fb282d765c488ca7184fdf03e6fe66b1061",
+        "47afe13d40454fdacceccf88f02e43d8420372f52a25769db05116cab707fcd4",
+        "efbe1d0c599ab3949e6d2db49fd2b7458b55d5085c7687c49ee7cfa0addc2eb2"
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "state_fingerprints": [
+        "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "b15f72a8f7827220f3d74b61ebe180b15b6a8ca4268f27b4362b7325f6812ed7",
+        "6614b8e66056152bdcffcc094e78067d56a9b0503f74b02f8794a5a68242616e",
+        "d0aeef68751261929a3f0d615319989699a4a8760d3d230778e89564d32ba317",
+        "7ad53af94a6b2f7e682567a7fcbcf52a6ed38106edab8a043229c1724d459250"
+      ]
+    },
+    "Comp:CONTROL": {
+      "feedback_exact": true,
+      "finite_h1_h4": true,
+      "graph_fingerprints": [
+        "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "74563b5514d1d4f5ed6c0a206ab7235c812fd11fb25bc394173d73f57c01e4ea",
+        "7c38f574990562378b922daad4acf4684fb740165d6c23f97ac05fa522aa00de",
+        "961a8e9c71e918b7ce825986a33d864dc9ab43f4eaeb8a2cc25dc3db2176b9fc",
+        "e7c48251da4ff6ef3f4245396bf7b4b6f7c0b3ab952250bad6d3543cde423095"
+      ],
+      "h2_h0_substitution_rejected_by_fingerprint_audit": true,
+      "latent_fingerprints": [
+        "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "2599017e600a5b25630af4609b8fe1375acb971a26b1d27ad541939c7874a1e1",
+        "c56691bad7a5be6bf45fce750fd40721f3a886e81005e551af2d773b05039033",
+        "c89766b3542f368827d01624ff9f04a671d4a1b385fc43f1c3f2ac539f93ed7e",
+        "37b2dc795e34185e95ac81a6193ba9d4c696f886ac574bc326a31e99cca72cff"
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "state_fingerprints": [
+        "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "6ebde7c5d77f16af4eadcdd6c478cb07a2645c2e87ed27b3827365cfb2168f01",
+        "dfb03c75d0c3694cee0b3282c790d23ec77d5e30b0be0b8db7d2c0ca18bd4919",
+        "71e5a67e4e12e5e8bf29167b17356abfb38d4c488775fa0f607c979ee1fd081c",
+        "f0bbe7d29229e3576e635d0f3d69452e9c0ae2dc142ead4483e4105178b7b9f5"
+      ]
+    },
+    "Comp:Comp": {
+      "feedback_exact": true,
+      "finite_h1_h4": true,
+      "graph_fingerprints": [
+        "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "74563b5514d1d4f5ed6c0a206ab7235c812fd11fb25bc394173d73f57c01e4ea",
+        "416b9944772e5b3e00709fe1a84439b9897600602c82b399eba35706c66c2fa5",
+        "723a36f06493f05cdb773b3c9de49ff3e1816cf7d436861cda9fcdc8bf61a39d",
+        "6e0ad85644b5809685c7f441a1d085efc05fd3fb2cad359018a892c7d6c40ca2"
+      ],
+      "h2_h0_substitution_rejected_by_fingerprint_audit": true,
+      "latent_fingerprints": [
+        "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "37366c2c802c64261e35dc4a8eefb1cbb32cbade9e02a03273a6ea9e8cb81605",
+        "cad2fbf410fd316ffdad59df33ef10f7909d7ecc9f694867399875a9012fd003",
+        "0c7fc2e437914d3ac469d153a93e412c8e53fb782bab492df0908f00a7d6ae8c",
+        "e2edc3fbe492be0d13fe1ca4f750cd237f5788fe95a1343684f109c667f7c271"
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "state_fingerprints": [
+        "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "b12748d4ae50f3315c055773320b1c1eb8748251f65c44458352df2087f54425",
+        "49cd7436b132eb8135309e5727ce8a9951d410fa5305aa9e02cdc80d7ac50353",
+        "31044d4c6e016e45627182572a326e56d740b67ad236d62903aaef6c8920a93a",
+        "e97f45c94d749181242cba82b291e77790f790566c22aca132fee44680eefd33"
+      ]
+    },
+    "Mob:CONTROL": {
+      "feedback_exact": true,
+      "finite_h1_h4": true,
+      "graph_fingerprints": [
+        "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "74563b5514d1d4f5ed6c0a206ab7235c812fd11fb25bc394173d73f57c01e4ea",
+        "7c38f574990562378b922daad4acf4684fb740165d6c23f97ac05fa522aa00de",
+        "961a8e9c71e918b7ce825986a33d864dc9ab43f4eaeb8a2cc25dc3db2176b9fc",
+        "e7c48251da4ff6ef3f4245396bf7b4b6f7c0b3ab952250bad6d3543cde423095"
+      ],
+      "h2_h0_substitution_rejected_by_fingerprint_audit": true,
+      "latent_fingerprints": [
+        "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "2599017e600a5b25630af4609b8fe1375acb971a26b1d27ad541939c7874a1e1",
+        "c56691bad7a5be6bf45fce750fd40721f3a886e81005e551af2d773b05039033",
+        "c89766b3542f368827d01624ff9f04a671d4a1b385fc43f1c3f2ac539f93ed7e",
+        "37b2dc795e34185e95ac81a6193ba9d4c696f886ac574bc326a31e99cca72cff"
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "state_fingerprints": [
+        "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "6ebde7c5d77f16af4eadcdd6c478cb07a2645c2e87ed27b3827365cfb2168f01",
+        "dfb03c75d0c3694cee0b3282c790d23ec77d5e30b0be0b8db7d2c0ca18bd4919",
+        "71e5a67e4e12e5e8bf29167b17356abfb38d4c488775fa0f607c979ee1fd081c",
+        "f0bbe7d29229e3576e635d0f3d69452e9c0ae2dc142ead4483e4105178b7b9f5"
+      ]
+    },
+    "Mob:Mob": {
+      "feedback_exact": true,
+      "finite_h1_h4": true,
+      "graph_fingerprints": [
+        "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "48e6547bd9ed58e6335bc6a08b3098aa7dc59a52fa456027284f87be6a873722",
+        "653fba1a8b892fea5f5e686e25229e26ce745e1107918eb068fb7d5f69cbc76e",
+        "018c9933762cd85d1a2cb57a1d87bb78a29520f05cfae4faebe952ffe87c3b99",
+        "76573af6475f7f3b776b1903623a7c50fafcaa3e79794c11204526e6033af49e"
+      ],
+      "h2_h0_substitution_rejected_by_fingerprint_audit": true,
+      "latent_fingerprints": [
+        "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "13cb9fb35720ef744b726b7f2b1e111550bb8fa5dbc879f2eee947bcbd9279fb",
+        "e0d0b15f443d3d22332bcbd8d07face44107b139e579c9c00d10e011de8027c0",
+        "35b86d894675fcffc50d6e8f1b0ae9e3e14fa71a9b26f0b6b6be9a6f7e8ca2ed",
+        "b6c96d531225f0fbd5ce193390e238b55d34d205441c0953882353c337c2f512"
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "state_fingerprints": [
+        "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "a378399bdc589e9dd97afbb1770cfc1bcc6ef5ed97197bbed725e6905814876c",
+        "fd5f98722df46f22f4970cc08f2352e2d4bac48b255dd0a09864c3e0ae8be18c",
+        "55dda4864666967780f20a228497f1ca44d1568e54a466981dda3cd95b273bb4",
+        "4aa4b41b97c3d0c33c91878a1bc3378f7a3ca457d2ef5d2a206ecfdd6f5a0ad9"
+      ]
+    },
+    "Route:CONTROL": {
+      "feedback_exact": true,
+      "finite_h1_h4": true,
+      "graph_fingerprints": [
+        "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "74563b5514d1d4f5ed6c0a206ab7235c812fd11fb25bc394173d73f57c01e4ea",
+        "7c38f574990562378b922daad4acf4684fb740165d6c23f97ac05fa522aa00de",
+        "961a8e9c71e918b7ce825986a33d864dc9ab43f4eaeb8a2cc25dc3db2176b9fc",
+        "e7c48251da4ff6ef3f4245396bf7b4b6f7c0b3ab952250bad6d3543cde423095"
+      ],
+      "h2_h0_substitution_rejected_by_fingerprint_audit": true,
+      "latent_fingerprints": [
+        "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "2599017e600a5b25630af4609b8fe1375acb971a26b1d27ad541939c7874a1e1",
+        "c56691bad7a5be6bf45fce750fd40721f3a886e81005e551af2d773b05039033",
+        "c89766b3542f368827d01624ff9f04a671d4a1b385fc43f1c3f2ac539f93ed7e",
+        "37b2dc795e34185e95ac81a6193ba9d4c696f886ac574bc326a31e99cca72cff"
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "state_fingerprints": [
+        "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "6ebde7c5d77f16af4eadcdd6c478cb07a2645c2e87ed27b3827365cfb2168f01",
+        "dfb03c75d0c3694cee0b3282c790d23ec77d5e30b0be0b8db7d2c0ca18bd4919",
+        "71e5a67e4e12e5e8bf29167b17356abfb38d4c488775fa0f607c979ee1fd081c",
+        "f0bbe7d29229e3576e635d0f3d69452e9c0ae2dc142ead4483e4105178b7b9f5"
+      ]
+    },
+    "Route:Route": {
+      "feedback_exact": true,
+      "finite_h1_h4": true,
+      "graph_fingerprints": [
+        "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "e1bec47d1d22fe68ee214c80e37be90b36b8a2894d4d3a07bbdb7373061013aa",
+        "6f94400f7b236803e6f8c085ac8effda520673e3af11b4603b589a749138ffd7",
+        "972e47378ae6148f7e97765eb7d44c6baa3aeeb441152df3761a7655f8ce71a2",
+        "f2fad5b6a3b27260650a8c18aa4b53f1af28afc97b8b16abc870ba29c40f8239"
+      ],
+      "h2_h0_substitution_rejected_by_fingerprint_audit": true,
+      "latent_fingerprints": [
+        "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "322524e744f458f867e0ce907d4adf8eaf7c192960fd27b63d37d5e1a6a547ec",
+        "33c11edb9a3a1cf34e000ed4960e07a568c6661e1251935ab116803945b04603",
+        "87218b078f40443ab879be7e2795198e76847ae90ec7a026129394db4a01a68b",
+        "b385bbaa15266bef412b46d4072c0aa12a0c37705668901b1e3a32cee5900743"
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "state_fingerprints": [
+        "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7",
+        "d165ffa026a5f40b5aafb4c285ee54a20152fcda616527fdbd2600fcafbc281d",
+        "43d110d2d325c647e7794eae56717a49bc5747856ea368bea817a404f7e681eb",
+        "a24f2d95f30710ab7bf49c8ac75741a7a0c26a82c2eaab3cd2db2fcb4c8f666e",
+        "ff1b940dc3cc987f8f7a901a5d6f719616602c0a2cbe34eeac26f7cc18ff1642"
+      ]
+    }
+  }
+}

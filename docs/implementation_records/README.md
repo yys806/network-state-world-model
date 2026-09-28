@@ -6,6 +6,7 @@
 
 | Step | 记录 | 范围 | 状态 |
 | --- | --- | --- | --- |
+| STEP 6.1 | [STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md](STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md) | 冻结 best checkpoint、同一当前 belief、四族合法动作、H4 递归 prior-only 推演、随机配对和 CPU 批量诊断 | 机制预检 PASS；无 objective/winner/闭环性能声明 |
 | STEP 5.1A | [STEP_05_1A_MOTION_CSI_TARGET_CONTRACT.md](STEP_05_1A_MOTION_CSI_TARGET_CONTRACT.md) | Future Motion/CSI target、mask、stable support alignment、normalization 与 raw-rule bridge | COMPLETE；non-locked development evidence，不是正式 Dataset |
 | STEP 5.2 | [STEP_05_2_TRAINING_LOOP_CURRICULUM_JOINT_TRAINING.md](STEP_05_2_TRAINING_LOOP_CURRICULUM_JOINT_TRAINING.md) | CPU training loop、posterior warm-up、prior recursive curriculum、KL schedule、validation、checkpoint/resume | COMPLETE；CPU development smoke，不是 formal training/performance |
 | STEP 5.3 | [STEP_05_3_CPU_TRAINING_PREFLIGHT_TINY_OVERFIT_GO_NO_GO.md](STEP_05_3_CPU_TRAINING_PREFLIGHT_TINY_OVERFIT_GO_NO_GO.md) | 固定 dev_train tiny subset、Stage 1/2 capacity、H1/H2 recursive learning、learning-signal、resume 与 Go/No-Go | GO；development-only CPU preflight，不是 formal training/performance |

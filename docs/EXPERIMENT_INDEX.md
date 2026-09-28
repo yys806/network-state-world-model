@@ -1,5 +1,7 @@
 # PI-JWM 实验索引
 
+STEP 6.1 CPU 机制诊断：正式 validation 样本 `...::anchor-0001`、冻结 `best.pt`、四类当前因果探针、H1–H4 递归、3 种配对随机 seed 与 K=1/2/4/8 CPU 实现计时。机器入口 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/`；实施记录在 `docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md`。非正式效果实验，不生成候选排名。
+
 STEP 5.6B 正式训练 run `pi_jwm_formal_train_v1_seed5601_20260924T112424Z` 已由 STEP 5.6C 本地 CPU 验收：5520 步、五次完整 prior-only validation、最终 best checkpoint SHA 冻结。机器入口 `code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/`，大文件在 local-only `code/artifacts/formal_training/`。这是 Formal Validation Observation，未做 locked-test、baseline、Planner rollout 或性能声明。
 
 STEP 5.5-PATCH 是正式数据消费路径和语义审计，不是训练/性能实验；机器凭证见 `code/artifacts/audit/pi_jwm_step5_5_patch_20260923/`。原 STEP 5.5 H4 smoke 只消费 `runtime/` 的 1+1 mini subset，PATCH 另行验证 4416/1104 full-shard 可索引及跨轨迹 CPU batch。

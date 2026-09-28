@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> 2026-09-28 STEP 6.1：`TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT=PASS` 限于一个 Formal Validation anchor/冻结 seed 5601 的 CPU 机制验收，四类当前因果动作的 H4 路径、对应潜变量和规则响应有机器收据。此状态不证明反事实预测准确或 Planner 控制效果；`MPC_OBJECTIVE=NOT_STARTED`、`CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`、`CLOSED_LOOP=NOT_STARTED`，baseline/locked-test/performance claim 均无。
+
 > 2026-09-28 STEP 5.6C：正式 seed 5601 训练已完整结束并通过本地 CPU 验收，`STEP 5.6B=COMPLETE`、`FORMAL_BEST_CHECKPOINT=FROZEN`。五次完整 validation 的最终严格最低 `L_Val=0.07431338784170399`，best/latest 均为 step 5520 且模型张量逐项相同；这是 Formal Validation Observation。之前 6.0A–C 段落对 5.6B“未查询”的说法是各自历史时点，不是当前状态。仍无 baseline、locked-test、模型候选 Planner rollout 或闭环性能结果。
 
 > 2026-09-26 STEP 6.0C：Planner v1 operational action domain 已按研究者决定冻结并做 CPU 合同测试；Search/Learned/Hybrid、目标函数、模型候选 rollout、性能、闭环与安全性仍未决定或未执行。动态可用 CPU 的 simulator source 仍不存在；本域改用静态预算。5.6B 远端状态本 Step 未查询。

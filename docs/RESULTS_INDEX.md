@@ -1,5 +1,7 @@
 # PI-JWM 结果索引
 
+2026-09-28 STEP 6.1：`action_family_response.json`、`recursive_feedback_audit.json` 和 `stochastic_common_seed_diagnostic.json` 仅证明冻结训练模型的动作条件、递归和数值稳定机制；CPU runtime 只说明本机实现开销。没有 reward/cost/risk、winner、baseline、locked-test、闭环收益或性能优越性结果。原始收据见 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/`。
+
 2026-09-28：STEP 5.6C 的 `formal_validation_observation.json` 记录正式 run 五次 validation 和 H1–H4 `L_Pred`、Motion/CSI raw MAE/RMSE；最终 `L_Val=0.07431338784170399` 是同一验证集的严格最低值。对应 checkpoint SHA 和 CPU 验收见 `code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/`。这是 **Formal Validation Observation**，不是 test performance、baseline 对比、SOTA、泛化或闭环系统结论。
 
 > 结果索引连接“数字—实验—配置—代码—数据—研究问题”。数字本身不是最终真相，必须回到原始 metrics、checkpoint、manifest 和 audit。

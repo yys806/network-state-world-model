@@ -1,5 +1,9 @@
 # 已确认决策
 
+## 2026-09-28 STEP 6.1 授权边界
+
+研究者授权执行冻结模型上的 H1–H4 候选推演机制与敏感性预检，明确禁止目标函数、候选选择、训练、GPU、baseline、locked_test 和闭环。本 Step 未新增科学方法、指标阈值或 Search/Learned/Hybrid 选型决定；6.0C 操作域和 5.6C checkpoint 身份保持不变。
+
 ## 2026-09-26 STEP 6.0C 研究者决定
 
 **Researcher Decision A**：Planner v1 Comp 使用 `STATIC_PER_SLOT_BUDGET_V1`，同一节点同一时隙的分配总和不得超过当前观察到的原始单位静态 CPU 容量；容量缺失时拒绝正分配。这不是动态可用 CPU。**Simulator Fact**：动态可用 CPU 没有可靠决策时刻来源；`dynamic_available_cpu_available=false`，但 `planner_requires_dynamic_available_cpu=false`。

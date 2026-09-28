@@ -1,0 +1,29 @@
+{
+  "anchors": [
+    {
+      "families": [
+        "Route",
+        "Comm",
+        "Comp",
+        "Mob"
+      ],
+      "raw_capture_event_id": "capture-002",
+      "raw_frame_index": 1,
+      "raw_sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+      "sample_index": 4416,
+      "split": "dev_validation"
+    }
+  ],
+  "family_probe_sources": {
+    "Comm": "CAUSAL_DOMAIN_PROBE",
+    "Comp": "CAUSAL_DOMAIN_PROBE",
+    "Mob": "CAUSAL_DOMAIN_PROBE",
+    "Route": "CAUSAL_DOMAIN_PROBE"
+  },
+  "future_target_used_for_probe": false,
+  "locked_test_accessed": false,
+  "missing_families": [],
+  "selection": "first 24 Formal Validation windows, first legal probe per family",
+  "status": "READY"
+}

@@ -1,5 +1,10 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-28 STEP 6.1 实现与理论边界
+
+Definition 06 的“同一当前状态/双图/latent → 不同候选动作 → 逐步世界模型未来轨迹”已在冻结 5.6C 模型上做 CPU H1–H4 机制预检：当前 posterior mean 仅计算一次，未来只用 prior mean 和期望无线服务；Route/Comm/Comp/Mob 的当前因果合法动作逐族注入并记录状态、潜变量和 decoder 响应。该预检不含候选轨迹评价/选择、MPC objective 或下一真实观测的闭环重规划，不得称 Planner 已完成。`TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT` 只表示机器 receipt 的机制验收状态；科学方法与性能结论仍由研究者另行决定。
+
+
 ## 2026-09-26 STEP 6.0C 方法边界
 
 研究者决定：第一版 Planner Comp 使用当前因果 Raw 静态 CPU 容量的每节点每时隙预算；UAV 使用正式行为支持的六档边际动作，heading/elevation 仅为 Planner 控制侧状态。HOLD 是显式零速命令。本域不是仿真器动态可用量/硬界、安全或最优动作空间；模型依赖 rollout、目标函数与闭环尚未执行。详见 `docs/contracts/PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md`。

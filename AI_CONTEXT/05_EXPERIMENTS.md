@@ -1,5 +1,9 @@
 # 当前与历史实验
 
+## 2026-09-28 STEP 6.1 Formal Validation CPU mechanism diagnostic
+
+冻结 seed 5601 `best.pt`、一个确定性 Formal Validation anchor、四种 `CAUSAL_DOMAIN_PROBE`，分别与 H4 RULE_FALLBACK 对照；H1–H4 action-conditioned/recursive/finite、三种固定随机种子配对复现和 K=1/2/4/8 CPU 实现计时通过。原始数值见 `action_family_response.json`、`recursive_feedback_audit.json`、`stochastic_common_seed_diagnostic.json`、`cpu_batch_runtime_diagnostic.json`。这不是新训练、预测质量评估、性能比较、MPC 优化或 closed-loop 实验。
+
 ## 2026-09-28 STEP 5.6C Formal Validation Observation
 
 正式 seed 5601 训练 5520/5520 步完成；五次完整 1104-window prior-only validation 的 `L_Val` 依次为 `0.1766124568, 0.0801012691, 0.0775463209, 0.0764608792, 0.0743133878`。最终步是严格 `argmin L_Val`，best/latest 都是 step 5520 且 428 个模型张量逐项一致。完整 H1–H4 `L_Pred`、Motion/CSI raw MAE/RMSE、CPU 单样本推理和文件 SHA 见 `code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/`。训练源 Git SHA=`6e15ec2`；Dataset/Config SHA 分别为 `6392a08b...`/`a806c320...`。这是单 seed、同一 validation split 的 **Formal Validation Observation**，不是 locked-test、baseline、泛化或闭环系统性能证据。

@@ -1,5 +1,13 @@
 # Progress
 
+## 2026-09-28 STEP 6.1
+
+- `git fetch origin` 后起点 `HEAD=origin/main=ebb04418554e525b823cf33b642fb66a09ff471e`，工作树仅有预存 `TASK/` 和绘图脚本未跟踪；正式 best checkpoint 实测 SHA `941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`。
+- 新增 PreparedRolloutAnchor、H4 每步实际状态编译、串行/批量统一推演和 CPU 真实 validation 运行脚本；四族当前因果探针均来自同一 validation anchor。最终完整收据 PASS，包含全张量串行/批量比较、真实 H2 负例、三组配对随机种子和 K=1/2/4/8 CPU 诊断。
+- 发现并修正 Mob H1 改向后 H2–H4 HOLD 必须沿用新控制朝向；期望模式 `outage_uniform_draw` 的 NaN 是源码定义的未抽样哨兵；Mob FP32 大坐标差分按 frozen `old+delta` 比较。focused 6.1 测试 2/2 通过。
+- 边界：CPU-only、无训练 optimizer step、SSH/GPU、Future Target 消费、baseline、locked_test、闭环、目标函数或候选选择。66 个相关回归测试、compileall、diff check、knowledge index write/check 已通过；下一动作是提交并推送本 Step。
+
+
 ## 2026-09-26 STEP 6.0B
 
 从最新 GitHub main `2a9c06a` 恢复。只读审计本地 AirFogSim CPU/UAV 路径、PI-JWM Raw→Graph/World Model 和正式行为策略。源码确认 simulator callback 允许按节点超分配，PI-JWM collector 另行限制；动态可用 CPU 不存在，UAV setter/step 无硬数值限幅。60 条已验哈希 Raw 的 11520 行动作只用于数据支持。AirFogSim 无独立 Git metadata，未伪造 SHA。五份机器凭证、focused audit 4/4、6.0A 6/6、4.4 30/30、5.5 11/11、5.4 5/5、5.1D 5/5、compileall、index write/check 与 diff check 通过；待 Git 收口。GPU/SSH/checkpoint/`locked_test` 均未使用。

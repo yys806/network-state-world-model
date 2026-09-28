@@ -1,0 +1,50 @@
+{
+  "horizon": 4,
+  "memory_source": "psutil.Process.memory_info; peak_wset is process lifetime peak on Windows",
+  "repeats": 3,
+  "rows": [
+    {
+      "K": 1,
+      "batch_per_candidate_median_s": 2.6322481999959564,
+      "batch_wall_median_s": 2.6322481999959564,
+      "process_peak_wset_bytes": 4666347520,
+      "rss_after_bytes": 1735360512,
+      "rss_before_bytes": 1735008256,
+      "serial_per_candidate_median_s": 2.7199657000019215,
+      "serial_wall_median_s": 2.7199657000019215
+    },
+    {
+      "K": 2,
+      "batch_per_candidate_median_s": 2.8052657000007457,
+      "batch_wall_median_s": 5.610531400001491,
+      "process_peak_wset_bytes": 4666347520,
+      "rss_after_bytes": 1739460608,
+      "rss_before_bytes": 1735360512,
+      "serial_per_candidate_median_s": 2.8047703499978525,
+      "serial_wall_median_s": 5.609540699995705
+    },
+    {
+      "K": 4,
+      "batch_per_candidate_median_s": 3.1562801000000036,
+      "batch_wall_median_s": 12.625120400000014,
+      "process_peak_wset_bytes": 4666347520,
+      "rss_after_bytes": 1741938688,
+      "rss_before_bytes": 1739460608,
+      "serial_per_candidate_median_s": 3.1200867500010645,
+      "serial_wall_median_s": 12.480347000004258
+    },
+    {
+      "K": 8,
+      "batch_per_candidate_median_s": 2.679196850000153,
+      "batch_wall_median_s": 21.433574800001225,
+      "process_peak_wset_bytes": 4666347520,
+      "rss_after_bytes": 53309440,
+      "rss_before_bytes": 1741938688,
+      "serial_per_candidate_median_s": 2.828501824998966,
+      "serial_wall_median_s": 22.62801459999173
+    }
+  ],
+  "scope": "CPU_IMPLEMENTATION_DIAGNOSTIC",
+  "status": "PASS",
+  "warmup": 1
+}
