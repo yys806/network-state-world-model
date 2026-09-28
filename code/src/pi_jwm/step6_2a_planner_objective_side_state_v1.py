@@ -47,10 +47,11 @@ class PlannerRouteCausalSideState:
     current_hop_index: int
     route_revision: int
     source_time_s: float
+    current_holder_index: int
 
     @property
     def remaining_hops_after_current(self) -> int:
-        return len(self.route_node_indices) - 2 - self.current_hop_index
+        return len(self.route_node_indices) - 1 - self.current_hop_index
 
 
 @dataclass(frozen=True)
@@ -132,18 +133,19 @@ def check_route_model_alignment(route: PlannerRouteCausalSideState, state: Mappi
     f = route.flow_index
     nodes = route.route_node_indices
     i = route.current_hop_index
-    if not (len(nodes) >= 2 and 0 <= i < len(nodes)-1 and nodes[-1] == route.logical_destination_index):
+    if not (len(nodes) >= 1 and 0 <= i < len(nodes) and nodes[-1] == route.logical_destination_index):
         raise ValueError("invalid causal route suffix")
     checks = (
         int(state["flow_identity_index"][0, f]) == f,
         int(state["flow_destination_index"][0, f]) == route.logical_destination_index,
         int(state["flow_route_revision"][0, f]) == route.route_revision,
         int(state["current_hop_index"][0, f]) == i,
-        int(state["current_holder_index"][0, f]) == nodes[i],
-        int(state["carrying_hop_source_index"][0, f]) == nodes[i],
-        int(state["carrying_hop_destination_index"][0, f]) == nodes[i+1],
+        int(state["current_holder_index"][0, f]) == route.current_holder_index,
+        int(state["carrying_hop_source_index"][0, f]) == route.current_holder_index,
+        int(state["carrying_hop_destination_index"][0, f]) == nodes[i],
     )
-    if not all(checks):
+    model_route = tuple(int(x) for x in state["route_node_indices"][0, f][state["route_node_mask"][0, f]]) if "route_node_indices" in state and "route_node_mask" in state else None
+    if not all(checks) or (model_route is not None and model_route != nodes):
         raise ValueError("Planner route and predicted model state diverged")
 
 
@@ -177,16 +179,19 @@ def advance_objective_side_state(
             raise ValueError("Route cannot create a Flow slot")
         old = routes[f]
         nodes = tuple(int(x) for x in action["route_node_indices"])
-        if not nodes or nodes[0] != int(predicted_state["current_holder_index"][0, f]) or nodes[-1] != old.logical_destination_index:
-            raise ValueError("route must start at predicted holder and retain logical destination")
+        if not nodes or nodes[-1] != old.logical_destination_index:
+            raise ValueError("route must retain logical destination")
         routes[f] = replace(old, route_node_indices=nodes, current_hop_index=0,
-                            route_revision=int(predicted_state["flow_route_revision"][0, f]), source_time_s=side.current_time_s)
+                            route_revision=int(predicted_state["flow_route_revision"][0, f]),
+                            current_holder_index=int(predicted_state["current_holder_index"][0, f]),
+                            source_time_s=side.current_time_s)
     aligned = []
     for route in routes.values():
         f = route.flow_index
         model_i = int(predicted_state["current_hop_index"][0, f])
         if f not in {int(x["flow_index"]) for x in route_actions}:
-            route = replace(route, current_hop_index=model_i)
+            route = replace(route, current_hop_index=model_i,
+                            current_holder_index=int(predicted_state["current_holder_index"][0, f]))
         check_route_model_alignment(route, predicted_state)
         aligned.append(route)
     return replace(side, current_time_s=now, routes=tuple(sorted(aligned, key=lambda x: x.flow_index)))

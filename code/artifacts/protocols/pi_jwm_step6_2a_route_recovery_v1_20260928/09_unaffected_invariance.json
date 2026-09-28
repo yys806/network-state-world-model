@@ -1,0 +1,7 @@
+{
+  "H1_H4": true,
+  "checkpoint_unchanged": true,
+  "paired_windows": 54,
+  "state_graph_prior_decoder_motion_csi_all_equal": true,
+  "status": "PASS"
+}

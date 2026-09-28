@@ -1590,3 +1590,11 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 冻结三类 effort、双吞吐及 baseline sync；生成 01–12 回执。
 - [x] 完成全套指定回归、compileall、索引 write/check 与 Context Consistency；待最终 diff 审查、commit/push。
 - 当前关口：6.2A-PATCH。阻塞：4.2C-C 路线数组与冻结 4.4 跨跳规则不一致，Route action 不更新完整数组。唯一下一交付：本 PATCH 验证和 Git 收口后停止，研究者再决定修复边界。GPU、`locked_test`、scorer、baseline、闭环均关闭。
+## 2026-09-28 STEP 6.2A-ROUTE-RECOVERY — Deterministic Route Transition Repair
+
+- [x] 起点 `main=origin/main=2d9a72d`、best.pt SHA=`941ee941...` 核对；保留两个用户未跟踪项。
+- [x] 从 4.2C-B 源码冻结 destination-list 路线语义，以真实两跳 Input 建立先失败的跨层测试。
+- [x] 修复 4.4 中间跳与 same-destination Route 完整路径的确定性规则；保持 11 个 learned action 张量和 checkpoint 参数接口不变。
+- [x] 扫描 4416/1104 Formal windows 的 route 激活，成对比较 54 个潜在重叠窗口；完整 1104-window patched validation 标记为需单独授权。
+- [x] 建立跨层训练前 gate、12 项机器回执、文档与合同更新；focused 回归、compile、diff 审查待 Git 收口。
+- 当前关口：6.2A-ROUTE-RECOVERY 已完成工程修复与兼容性审计。结论：`CHECKPOINT_NO_RETRAIN_SALVAGE=SUPPORTED_WITH_LIMITATIONS`。限制：Formal Dataset 未覆盖多跳/完整 reroute。唯一下一交付：提交、推送并报告；严禁重训、optimizer、GPU、checkpoint 修改、6.2B、baseline、closed loop、locked_test。

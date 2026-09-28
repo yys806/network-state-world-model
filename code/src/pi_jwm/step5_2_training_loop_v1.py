@@ -523,7 +523,7 @@ class Step52Trainer(nn.Module):
     def _batch_initial_state(self, indices: Sequence[int]) -> tuple[dict[str, torch.Tensor], dict[str, torch.Tensor]]:
         return _cat_mappings([self.data.states[index] for index in indices]), _cat_mappings([self.data.graphs[index] for index in indices])
 
-    def _recursive_rollout(self, indices: Sequence[int], horizon: int, *, stage: str) -> dict[str, Any]:
+    def _recursive_rollout(self, indices: Sequence[int], horizon: int, *, stage: str, route_rule_mode: str = "PATCHED_ROUTE_RULE") -> dict[str, Any]:
         if horizon <= 0 or horizon > self.config.max_horizon:
             raise ValueError("rollout horizon is outside configured development support")
         from build_step5_1d_unified_model_chain_v1 import build_action
@@ -539,9 +539,15 @@ class Step52Trainer(nn.Module):
         actions: list[dict[str, torch.Tensor]] = []
         state_signatures: list[list[float]] = []
         for step in range(horizon):
-            single_actions = [build_action(self.data.samples[index], _slice_mapping(state, row, len(indices)), step)[0] for row, index in enumerate(indices)]
+            from pi_jwm.step6_2a_route_rule_metadata_v1 import build_route_rule_metadata
+            current_states = [_slice_mapping(state, row, len(indices)) for row in range(len(indices))]
+            compiled = [build_action(self.data.samples[index], current_states[row], step) for row, index in enumerate(indices)]
+            single_actions = [item[0] for item in compiled]
+            route_rule_metadata = [item for row, index in enumerate(indices)
+                                   for item in build_route_rule_metadata(self.data.samples[index],
+                                       current_states[row], single_actions[row], step, batch_index=row)]
             action = _stack_actions(single_actions)
-            latent, state, graph, trace = self.model.one_step(latent, state, graph, action, prior_mode="mean", service_mode="expectation", generator=None)
+            latent, state, graph, trace = self.model.one_step(latent, state, graph, action, prior_mode="mean", service_mode="expectation", generator=None, route_rule_metadata=route_rule_metadata, route_rule_mode=route_rule_mode)
             # ``learned`` is the raw decoder output used by the deterministic
             # rule transition.  Keep it beside the latent for the prior-only
             # prediction head; it is not fed back as a future observation.

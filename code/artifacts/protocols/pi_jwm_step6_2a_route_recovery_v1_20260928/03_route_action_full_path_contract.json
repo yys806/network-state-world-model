@@ -1,0 +1,15 @@
+{
+  "destination_change": "UNSUPPORTED_BY_FIXED_OBJECT_SUPPORT",
+  "learned_action_embedding_changed": false,
+  "learned_action_tensors": 11,
+  "rule_side_metadata": [
+    "flow_index",
+    "task_index",
+    "route_revision",
+    "current_holder",
+    "route_node_indices",
+    "route_node_mask"
+  ],
+  "same_destination_reroute": "full destination list, index=0, source=holder, hop_remaining=e2e_remaining, RouteRevision+1",
+  "status": "PASS_WITH_LIMITATIONS"
+}

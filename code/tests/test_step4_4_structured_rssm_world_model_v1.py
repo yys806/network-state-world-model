@@ -295,8 +295,8 @@ class Step44ArchitectureTests(unittest.TestCase):
             self.assertIn(key, state)
         state["flow_remaining"][0, 0] = 1000.0
         state["hop_remaining"][0, 0] = 1.0
-        state["route_node_indices"][0, 0] = torch.tensor([0, 1, 2, 3])
-        state["route_node_mask"][0, 0] = True
+        state["route_node_indices"][0, 0] = torch.tensor([1, 2, -1, -1])
+        state["route_node_mask"][0, 0] = torch.tensor([True, True, False, False])
         out = model.rollout(zpi, state, graph, [action], prior_mode="mean", service_mode="expectation")
         self.assertEqual(int(out["states"][0]["current_hop_index"][0, 0]), 1)
         self.assertTrue(bool(out["states"][0]["carrying_active"][0, 0]))
@@ -376,11 +376,19 @@ class Step44ArchitectureTests(unittest.TestCase):
         model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
         zpi, state, graph, action = model.synthetic_fixture()
         identity = state["flow_identity_index"].clone()
-        action["route_values"][0, 0, :2] = torch.tensor([1.0, 0.0])
-        out = model.rollout(zpi, state, graph, [action], prior_mode="mean", service_mode="expectation")
-        self.assertTrue(torch.equal(out["states"][0]["flow_identity_index"], identity))
-        self.assertEqual(int(out["states"][0]["carrying_hop_destination_index"][0, 0]), 0)
-        self.assertEqual(int(out["graphs"][0]["task_agent_agent_index"][0, 0]), 0)
+        action["route_task_index"][0, 0] = 0
+        action["route_flow_index"][0, 0] = 0
+        action["route_values"][0, 0, :2] = torch.tensor([0.0, 3.0])
+        metadata = ({"batch_index": 0, "action_row": 0, "flow_index": 0,
+                     "task_index": 0, "current_holder_index": 0,
+                     "route_revision_before": 0, "route_node_indices": (3, 2)},)
+        latent = model.initialize_latent(zpi, state, posterior_mode="mean")
+        _, next_state, next_graph, _ = model.one_step(latent, state, graph, action,
+            prior_mode="mean", service_mode="expectation", generator=None,
+            route_rule_metadata=metadata)
+        self.assertTrue(torch.equal(next_state["flow_identity_index"], identity))
+        self.assertEqual(int(next_state["carrying_hop_destination_index"][0, 0]), 3)
+        self.assertEqual(int(next_graph["task_agent_agent_index"][0, 0]), 3)
 
     def test_package_round_trip(self):
         model = StructuredRSSMWorldModel(StructuredRSSMConfig(d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))

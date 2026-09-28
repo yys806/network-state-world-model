@@ -1213,6 +1213,13 @@
 - 收口验证：6.2A focused 1/1、6.0C 12/12、6.1 2/2、4.4 37/37、4.2C-B Flow ledger 25/25、5.6C checkpoint 3/3、5.5 Formal Dataset 21/21、6.0A adapter/fixed-support 6/6；compileall、knowledge index write/check、Context Consistency 与 diff check 通过。
 ## 2026-09-28 STEP 6.2A-PATCH findings
 
+## 2026-09-28 STEP 6.2A-ROUTE-RECOVERY findings
+
+- 4.2C-B/C canonical route 是不含当前 holder 的目的节点列表；修复后中间跳完成设置 holder/source=completed destination、index+1、next destination=route[index]、hop_remaining=E2E remaining。
+- same-destination Route 通过规则侧 metadata 写完整 path，保留 FlowID/Epoch，RouteRevision 增 1；destination-change 在 fixed object support 下显式拒绝，不伪造新 Flow Epoch。
+- Formal Dataset 4416/1104 的 anchor/target/future route 宽度均为 1，multi-hop 直接激活计数为 0。54 个 existing-Flow/Route-overlap 窗口 paired rollout 完全 invariant；这不能证明正式多跳性能。
+- checkpoint strict load、428 state-dict tensors、SHA-256 与 parameter digest 全部保持；`CHECKPOINT_NO_RETRAIN_SALVAGE=SUPPORTED_WITH_LIMITATIONS`。
+
 - 4.2B “Raw 无端到端 remaining”只适用于 4.2C-B Ledger 之前；当前 Raw Ledger、Sample/Tensor、Graph/4.4 均有 Flow E2E state。真实 Input 两跳和 direct Return 证据与合成 reroute/Epoch fixture 必须分开。
 - 4.2C-C route 数组为剩余目的地、不含 holder；4.4 跨跳索引按含 holder 路径使用。确定性负例显示 hop service >0 且 hop remaining=0，holder/index 未推进。Route action 只改 endpoints/revision，完整 route array 未更新；side-state 只能发现不一致，不能修复冻结模型。6.2B BLOCKED。
 - Accepted Formal Raw 含 `required_returned_size` 和 `return_destination_id`；但 AirFogSim `requireReturn()` 还依赖计算节点是否等于 Return 目的地。正 size 不是无条件 Return birth。

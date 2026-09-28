@@ -1,0 +1,8 @@
+{
+  "intermediate_completion_rule": "holder=completed destination; index+=1; next destination=route[index]; hop_remaining=e2e_remaining",
+  "raw_evidence": "step4_2c_c_real_multihop_cross_slot",
+  "real_two_hop_fixture": "UAV_0 -> RSU_0 -> cloudServer_4",
+  "route_definition": "ordered hop destination list excluding current holder",
+  "source": "step4_2c_b_causal_flow_ledger_raw_v1.py",
+  "status": "PASS"
+}

@@ -1,0 +1,14 @@
+{
+  "checkpoint": "code\\artifacts\\formal_training\\pi_jwm_formal_train_v1_seed5601_20260924T112424Z\\checkpoints\\best.pt",
+  "expected_matches": true,
+  "expected_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "gpu": false,
+  "optimizer_step": false,
+  "parameter_digest_after": "9304504676f8cfdda600fbea5bca43afa61a41eb6fdebfc71af5cc18cf3f8b51",
+  "parameter_digest_before": "9304504676f8cfdda600fbea5bca43afa61a41eb6fdebfc71af5cc18cf3f8b51",
+  "sha256_after": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "sha256_before": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "state_dict_key_count": 428,
+  "state_dict_strict_load": true,
+  "status": "PASS"
+}

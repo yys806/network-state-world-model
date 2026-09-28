@@ -305,3 +305,7 @@
 ## 2026-09-28 STEP 6.2A-PATCH
 
 Reconciled current Flow E2E evidence with historical 4.2B, added exact-aligned Planner-only deadline/Return/Route side-state and a common real Flow throughput extractor, revised objective/baseline contracts, and recorded a reproduced 4.2C-C/4.4 route semantic blocker. STEP 6.2B remains BLOCKED. No trained model, Formal Dataset, checkpoint, GPU, locked_test or baseline execution changed.
+
+## 2026-09-28 STEP 6.2A-ROUTE-RECOVERY
+
+Repaired destination-list intermediate-hop advancement and same-destination full-path Route rule metadata without changing the frozen 11 learned action tensors. Added real two-hop cross-layer regression, legacy/patched CPU paired audit, Formal Dataset static activation audit, checkpoint identity receipt, and mandatory cross-layer semantics gate. Formal route width is one throughout; no formal multi-hop performance claim is made. Full patched validation is separately authorized work. No retraining, GPU, optimizer, locked_test, baseline, scorer, ranking or closed loop was run.

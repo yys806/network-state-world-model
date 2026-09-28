@@ -1,0 +1,18 @@
+{
+  "does_not_authorize_retraining": true,
+  "limitations": [
+    "formal train/validation route arrays have width 1",
+    "no formal multi-hop activation",
+    "full patched validation not executed",
+    "same-destination reroute not observed in formal paired windows"
+  ],
+  "passed": [
+    "strict checkpoint load",
+    "learned parameter identity",
+    "patched deterministic fixture semantics",
+    "unaffected paired invariance",
+    "finite bounded H1-H4 CPU rollout",
+    "no new leakage"
+  ],
+  "verdict": "SUPPORTED_WITH_LIMITATIONS"
+}

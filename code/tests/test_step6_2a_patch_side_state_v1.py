@@ -14,21 +14,25 @@ from pi_jwm.step4_4_structured_rssm_world_model_v1 import StructuredRSSMConfig, 
 from pi_jwm.step6_2a_throughput_metric_v1 import extract_real_throughput
 
 
-def model(route=(0, 1, 2), index=0, revision=0, hop=10, e2e=10):
+def model(route=(1, 2), index=0, revision=0, hop=10, e2e=10):
+    holder = 0 if index == 0 else route[index - 1]
     return {
         "flow_identity_index": torch.tensor([[0]]), "flow_destination_index": torch.tensor([[2]]),
         "flow_route_revision": torch.tensor([[revision]]), "current_hop_index": torch.tensor([[index]]),
-        "current_holder_index": torch.tensor([[route[index]]]),
-        "carrying_hop_source_index": torch.tensor([[route[index]]]),
-        "carrying_hop_destination_index": torch.tensor([[route[index+1]]]),
+        "current_holder_index": torch.tensor([[holder]]),
+        "carrying_hop_source_index": torch.tensor([[holder]]),
+        "carrying_hop_destination_index": torch.tensor([[route[index]]]),
+        "route_node_indices": torch.tensor([[[*route, *([-1] * (4 - len(route)))]]]),
+        "route_node_mask": torch.tensor([[[*([True] * len(route)), *([False] * (4 - len(route)))]]], dtype=torch.bool),
         "hop_remaining": torch.tensor([[float(hop)]]), "flow_remaining": torch.tensor([[float(e2e)]]),
         "task_presence": torch.tensor([[True]]), "rb_active_mask": torch.tensor([[True, True]]),
     }
 
 
-def route(nodes=(0, 1, 2), index=0, revision=0):
+def route(nodes=(1, 2), index=0, revision=0):
     return PlannerRouteCausalSideState("flow::Task_1::Input::0", 0, "Task_1", "Input", 0,
-                                      2, tuple(nodes), index, revision, 1.9)
+                                      2, tuple(nodes), index, revision, 1.9,
+                                      0 if index == 0 else nodes[index - 1])
 
 
 def prepared():
@@ -81,7 +85,7 @@ class SideStateTest(unittest.TestCase):
         self.assertEqual(transmission_burden(route(index=1), model(index=1, hop=10, e2e=10)), 10)
         self.assertEqual(transmission_burden(route(index=1), model(index=1, hop=6, e2e=6)), 6)
         with self.assertRaises(ValueError):
-            check_route_model_alignment(route(nodes=(0, 3, 2), revision=1), model(revision=1))
+            check_route_model_alignment(route(nodes=(3, 2), revision=1), model(revision=1))
 
     def test_return_birth_and_support_off_by_one(self):
         decision, sidecar = prepared()
@@ -102,11 +106,11 @@ class SideStateTest(unittest.TestCase):
         current = prepare_objective_side_state(decision=decision, deadline_sidecar=sidecar,
                   task_slots={"Task_1": 0}, physical_slots={"S": 0, "D": 2},
                   routes=[route()], model_state=model())
-        # The trained model can update endpoints/revision, but a later hop
-        # completion still reads its unchanged route_node_indices.
-        predicted = model(route=(0, 3, 2), revision=1)
+        # Preserve the historical stale-array negative case; the current
+        # patched rule writes the full array before service.
+        predicted = model(route=(3, 2), revision=1)
         updated = advance_objective_side_state(current, predicted_state=predicted,
-            slot_duration_s=.1, route_actions=[{"flow_index": 0, "route_node_indices": [0, 3, 2]}])
+            slot_duration_s=.1, route_actions=[{"flow_index": 0, "route_node_indices": [3, 2]}])
         self.assertEqual(updated.routes[0].remaining_hops_after_current, 1)
         with self.assertRaises(ValueError):
             advance_objective_side_state(updated, predicted_state=model(index=1, revision=1), slot_duration_s=.1)
@@ -123,7 +127,8 @@ class SideStateTest(unittest.TestCase):
         action["route_task_index"].fill_(-1)
         learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": state["csi"].clone()}
         future, diagnostic = world.deterministic_transition(state, action, learned,
-            graph=graph, service_mode="expectation", generator=None)
+            graph=graph, service_mode="expectation", generator=None,
+            route_rule_mode="LEGACY_ROUTE_RULE")
         self.assertGreater(float(diagnostic["delivered_bytes"][0, 0]), 0)
         self.assertEqual(float(future["hop_remaining"][0, 0]), 0)
         self.assertEqual(int(future["current_hop_index"][0, 0]), 0)  # blocker, not desired semantics
@@ -135,17 +140,21 @@ class SideStateTest(unittest.TestCase):
             d_h=8, d_z=3, mlp_width=12, graph_layers=1, n_comm_rb=4))
         _, state, graph, action = world.synthetic_fixture()
         state["carrying_active"][0, 0] = False  # isolate the Route rule
+        action["route_flow_index"][0, 0] = 0
+        action["route_task_index"][0, 0] = 0
         action["route_values"][0, 0] = torch.tensor([0., 3., 2., 2.])
         learned = {"vehicle_motion": torch.zeros((1, 4, 4)), "csi": state["csi"].clone()}
         first, _ = world.deterministic_transition(state, action, learned,
-            graph=graph, service_mode="expectation", generator=None)
+            graph=graph, service_mode="expectation", generator=None,
+            route_rule_mode="LEGACY_ROUTE_RULE")
         self.assertEqual(int(first["carrying_hop_destination_index"][0, 0]), 3)
         self.assertEqual(int(first["flow_route_revision"][0, 0]), 1)
         self.assertTrue(torch.equal(first["route_node_indices"], state["route_node_indices"]))
         self.assertTrue(torch.equal(first["route_node_mask"], state["route_node_mask"]))
         action["route_values"][0, 0, 3] = 99.
         second, _ = world.deterministic_transition(state, action, learned,
-            graph=graph, service_mode="expectation", generator=None)
+            graph=graph, service_mode="expectation", generator=None,
+            route_rule_mode="LEGACY_ROUTE_RULE")
         for key in ("route_node_indices", "route_node_mask", "current_hop_index",
                     "carrying_hop_source_index", "carrying_hop_destination_index", "flow_route_revision"):
             self.assertTrue(torch.equal(first[key], second[key]), key)

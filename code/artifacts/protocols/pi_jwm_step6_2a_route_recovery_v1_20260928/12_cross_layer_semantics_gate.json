@@ -1,0 +1,44 @@
+{
+  "coverage": {
+    "comm_rebind": "test_hop_completion_rebinds_current_comm_relation",
+    "cpu_rule": "test_computation_finished_waits_for_existing_return_flow",
+    "e2e_useful_throughput_extractor": "test_shared_real_throughput_uses_ledger_e2e_delta",
+    "fixed_support_birth": "test_missing_required_return_support_blocks_final_completion",
+    "mob_rule": "test_vehicle_uav_static_stochastic_eligibility",
+    "normal_multihop_partial_and_completion": "test_two_hop_partial_and_terminal_lifecycle",
+    "raw_to_tensor_to_graph_to_rule_two_hop_input": "test_real_two_hop_input_tensor_state_rule_alignment",
+    "return": "test_return_is_independent_and_multihop",
+    "same_destination_full_path_route": "test_same_destination_reroute_writes_full_destination_list",
+    "task_completion": "test_computation_finished_waits_for_existing_return_flow"
+  },
+  "errors": [],
+  "failures": [],
+  "gpu": false,
+  "locked_test": false,
+  "mandatory_before_future_formal_training": true,
+  "missing_coverage": {},
+  "output": ".................................................................................................................\n----------------------------------------------------------------------\nRan 113 tests in 6.548s\n\nOK\n",
+  "source_sha256": {
+    "code/scripts/build_step5_1d_unified_model_chain_v1.py": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+    "code/scripts/run_cross_layer_rule_semantics_gate_v1.py": "d5dec1d835d06976ad51ef5692e63dcad0a22d9f94dedeea9e588b3cdbbe2589",
+    "code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py": "4949933a06100f7db70ceb594893794b8509433b7b1f19f9e0f43b3100b8827d",
+    "code/src/pi_jwm/step4_2c_c_flow_sample_tensor_v1.py": "8ed4492b2bcd239998869f869a10d0ac21c4861bcabd51c21f4003dfc4f144c6",
+    "code/src/pi_jwm/step4_3a_typed_dual_graph_builder_v1.py": "0a4f795ff19771ca306d4a4518c300395211771151e00389a5ad02c63a5f1908",
+    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": "b4b3bf30be7541013c0e7a1539cdf9fd62624237345d71c79de301fe51770d27",
+    "code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py": "205eece11c6946525558984e28534635001395c10db12c66497a107b58bc47b5",
+    "code/src/pi_jwm/step6_2a_route_rule_metadata_v1.py": "d290f47a6ecf7c9779c3237cd2b2d0cd412fa77a2235fd37785b8879163982f8",
+    "code/tests/test_step6_2a_route_recovery_v1.py": "6e940b7ffbecc63acf11fe153ac6432ddc13c34420b942d2184a2d65b85349dd"
+  },
+  "status": "PASS",
+  "test_count": 113,
+  "test_patterns": [
+    "test_step4_2c_b_causal_flow_ledger_raw_v1.py",
+    "test_step4_2c_c_flow_sample_tensor_v1.py",
+    "test_step4_3a_typed_dual_graph_builder_v1.py",
+    "test_step4_4_structured_rssm_world_model_v1.py",
+    "test_step5_1d_unified_model_chain_v1.py",
+    "test_step6_2a_patch_side_state_v1.py",
+    "test_step6_2a_route_recovery_v1.py"
+  ],
+  "training": false
+}

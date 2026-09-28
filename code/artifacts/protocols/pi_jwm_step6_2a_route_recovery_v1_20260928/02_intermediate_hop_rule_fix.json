@@ -1,0 +1,7 @@
+{
+  "invalid_no_next_hop": "explicit ValueError",
+  "legacy_mode_retained_for_pairing": true,
+  "patched": true,
+  "status": "PASS",
+  "synthetic_partial_complete_terminal_regression": "PASS"
+}

@@ -1,10 +1,12 @@
 # PI-JWM Current State Snapshot
 
-## 2026-09-28 STEP 6.2A-PATCH — 当前关口
+## 2026-09-28 STEP 6.2A-ROUTE-RECOVERY — 当前关口
+
+4.2C-B/C destination-list route semantics are now implemented in 4.4 deterministic intermediate-hop advancement. Same-destination Route uses rule-side full-path metadata and does not alter the frozen 11 learned action tensors. Real two-hop Raw → Tensor → Graph/State → rule tests and a 113-test cross-layer semantics gate pass. The frozen best checkpoint strict-loads unchanged: SHA-256 `941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`, parameter digest unchanged. Full Formal Dataset static audit: 4416 train/1104 validation, route width 1 throughout, zero multi-hop rows; paired legacy/patched CPU rollout on 38 train + 16 validation overlap windows is exactly invariant H1–H4. Full patched validation is `NOT_EXECUTED_REQUIRES_SEPARATE_RUNTIME_AUTHORIZATION`. `CHECKPOINT_NO_RETRAIN_SALVAGE=SUPPORTED_WITH_LIMITATIONS`; no retraining decision is made. GPU, optimizer, `locked_test`, 6.2B, scorer, ranking, baseline and closed loop remain closed. Receipts: `code/artifacts/protocols/pi_jwm_step6_2a_route_recovery_v1_20260928/`. Next action: researcher review after Git push.
 
 `STEP_6_2B_READINESS=BLOCKED`。补丁已证实 4.2C-B/C 当前 Flow Ledger 保存端到端剩余量，旧 4.2B“无法恢复”是历史事实。一个非锁定 Formal Validation anchor 的真实 deadline 已通过同种子/配置/动作前缀/当前状态的重放精确对齐，Task ID 与模型槽位一致；Formal Raw 本就含返回数据大小，但实际是否需要 Return 还取决于预测计算节点与返回目的地。研究者已删除 Route effort、Priority prerequisite，冻结业务主吞吐为 E2E useful，all-hop service 仅诊断。新的 Planner-only side-state 不进训练模型。
 
-阻塞是当前 4.2C-C 路线数组与冻结 4.4 跨跳索引语义不一致，Route action 后完整数组也不更新；真实确定性规则测试已复现中间跳完成却无法推进 holder/跳序号。side-state 能发现冲突，不能修复模型预测。证据见 `docs/implementation_records/STEP_06_2A_PATCH_PLANNER_OBJECTIVE_READINESS_RECONCILIATION.md` 和对应 01–12 机器回执。未开始 scorer、6.2B、候选排序、baseline、GPU、`locked_test` 或闭环。唯一下一动作：研究者审阅路线冲突，另行决定修复边界。
+原 route mismatch blocker 已由 STEP 6.2A-ROUTE-RECOVERY 修复；旧段落仅保留为历史记录。当前边界是 Formal Dataset 没有多跳/完整 reroute 激活，因此正式性能影响尚未被数据覆盖。未开始 scorer、6.2B、候选排序、baseline、GPU、`locked_test` 或闭环。唯一下一动作：研究者审阅本 Step 的有限 salvage 证据。
 
 ## 2026-09-28 STEP 6.2A — Objective Source Audit
 

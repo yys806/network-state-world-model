@@ -1,0 +1,61 @@
+{
+  "splits": {
+    "dev_train": {
+      "windows": 38,
+      "state_different_window_horizons": 0,
+      "graph_different_window_horizons": 0,
+      "decoder_different_window_horizons": 0,
+      "prior_different_window_horizons": 0,
+      "max_abs_delta_h_physical": 0,
+      "max_abs_delta_h_agent": 0,
+      "max_abs_delta_h_communication": 0,
+      "max_abs_delta_h_flow": 0,
+      "max_abs_delta_h_task": 0,
+      "max_abs_delta_prior_physical_mean": 0,
+      "max_abs_delta_prior_physical_log_std": 0,
+      "max_abs_delta_prior_communication_mean": 0,
+      "max_abs_delta_prior_communication_log_std": 0,
+      "max_abs_delta_motion": 0,
+      "max_abs_delta_csi": 0,
+      "H1_window_count": 38,
+      "H2_window_count": 38,
+      "H3_window_count": 38,
+      "H4_window_count": 38
+    },
+    "dev_validation": {
+      "windows": 16,
+      "state_different_window_horizons": 0,
+      "graph_different_window_horizons": 0,
+      "decoder_different_window_horizons": 0,
+      "prior_different_window_horizons": 0,
+      "max_abs_delta_h_physical": 0,
+      "max_abs_delta_h_agent": 0,
+      "max_abs_delta_h_communication": 0,
+      "max_abs_delta_h_flow": 0,
+      "max_abs_delta_h_task": 0,
+      "max_abs_delta_prior_physical_mean": 0,
+      "max_abs_delta_prior_physical_log_std": 0,
+      "max_abs_delta_prior_communication_mean": 0,
+      "max_abs_delta_prior_communication_log_std": 0,
+      "max_abs_delta_motion": 0,
+      "max_abs_delta_csi": 0,
+      "H1_window_count": 16,
+      "H2_window_count": 16,
+      "H3_window_count": 16,
+      "H4_window_count": 16
+    }
+  },
+  "errors": [],
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "parameter_digest": "9304504676f8cfdda600fbea5bca43afa61a41eb6fdebfc71af5cc18cf3f8b51",
+  "elapsed_seconds": 699.4797871000046,
+  "cpu_only": true,
+  "prior_mode": "mean",
+  "service_mode": "expectation",
+  "horizons": [
+    1,
+    2,
+    3,
+    4
+  ]
+}

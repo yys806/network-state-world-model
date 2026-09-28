@@ -59,11 +59,11 @@ def main():
     for row in sample["history"][-1]["logical_flows"]:
         if row.get("known") and row.get("presence") and row["flow_id"] in carrying:
             c = carrying[row["flow_id"]]
-            nodes = (int(c["current_holder_index"]), *map(int, c["route_node_indices"][c["current_hop_index"]:]))
+            nodes = tuple(map(int, c["route_node_indices"]))
             routes.append(PlannerRouteCausalSideState(row["flow_id"], int(row["flow_index"]),
                 row["task_id"], row["flow_type"], int(row["epoch"]),
-                int(row["logical_destination_index"]), nodes, 0, int(c["route_revision"]),
-                float(anchor["simulation_time_s"])))
+                int(row["logical_destination_index"]), nodes, int(c["current_hop_index"]), int(c["route_revision"]),
+                float(anchor["simulation_time_s"]), int(c["current_holder_index"])))
     prepared = prepare_objective_side_state(decision=anchor, deadline_sidecar=side,
         task_slots=sample["static"]["input_entity_index"]["task"],
         physical_slots=sample["static"]["input_entity_index"]["physical"], routes=routes,

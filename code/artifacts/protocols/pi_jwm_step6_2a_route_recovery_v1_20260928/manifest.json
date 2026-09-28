@@ -1,0 +1,23 @@
+{
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "git_start": "2d9a72d54f0b3416e9ce8d8be7ee395f6caf1d38",
+  "gpu": false,
+  "locked_test": false,
+  "receipts": [
+    "01_",
+    "02_",
+    "03_",
+    "04_",
+    "05_",
+    "06_",
+    "07_",
+    "08_",
+    "09_",
+    "10_",
+    "11_",
+    "12_"
+  ],
+  "schema_version": "pi_jwm_step6_2a_route_recovery_v1",
+  "step": "6.2A-ROUTE-RECOVERY",
+  "training": false
+}

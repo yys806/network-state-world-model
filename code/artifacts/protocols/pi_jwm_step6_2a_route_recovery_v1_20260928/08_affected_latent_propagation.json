@@ -1,0 +1,13 @@
+{
+  "delta_csi": 0,
+  "delta_h_agent": 0,
+  "delta_h_comm": 0,
+  "delta_h_flow": 0,
+  "delta_h_phy": 0,
+  "delta_h_task": 0,
+  "delta_motion": 0,
+  "delta_prior_mean_log_std": 0,
+  "interpretation": "formal data did not activate the repaired multi-hop/full-path branch",
+  "paired_windows": 54,
+  "status": "NO_FORMAL_AFFECTED_WINDOW_OBSERVED"
+}

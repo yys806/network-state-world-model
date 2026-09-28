@@ -507,7 +507,7 @@ class StructuredRSSMWorldModel(nn.Module):
         flat = self.gru_cells[family](x.reshape(-1, x.shape[-1]), latent["h"][family].reshape(-1, self.config.d_h)).reshape_as(latent["h"][family])
         return self._mask(flat, presence)
 
-    def one_step(self, latent: Mapping[str, Any], state: Mapping[str, torch.Tensor], graph: Mapping[str, torch.Tensor], action: Mapping[str, torch.Tensor], *, prior_mode: str, service_mode: str, generator: torch.Generator | None) -> tuple[dict[str, Any], dict[str, torch.Tensor], dict[str, torch.Tensor], dict[str, Any]]:
+    def one_step(self, latent: Mapping[str, Any], state: Mapping[str, torch.Tensor], graph: Mapping[str, torch.Tensor], action: Mapping[str, torch.Tensor], *, prior_mode: str, service_mode: str, generator: torch.Generator | None, route_rule_metadata: Sequence[Mapping[str, Any]] = (), route_rule_mode: str = "PATCHED_ROUTE_RULE") -> tuple[dict[str, Any], dict[str, torch.Tensor], dict[str, torch.Tensor], dict[str, Any]]:
         routed = self.route_actions(action, state, graph, latent["h"]["agent"])
         messages = self.dynamics_interaction(latent, graph)
         presence = {"physical": state["entity_presence"], "agent": state["entity_presence"], "communication": state["comm_presence"], "flow": state["flow_presence"], "task": state["task_presence"]}
@@ -521,11 +521,60 @@ class StructuredRSSMWorldModel(nn.Module):
             "vehicle_motion": self.vehicle_decoder(torch.cat((next_h["physical"], next_z["physical"]), -1)) * state["vehicle_mask"][..., None],
             "csi": self.csi_decoder(torch.cat((next_h["communication"], next_z["communication"]), -1)) * state["comm_presence"][..., None],
         }
-        next_state, rule_trace = self.deterministic_transition(state, action, learned, graph=graph, service_mode=service_mode, generator=generator)
+        next_state, rule_trace = self.deterministic_transition(state, action, learned, graph=graph, service_mode=service_mode, generator=generator, route_rule_metadata=route_rule_metadata, route_rule_mode=route_rule_mode)
         next_graph = self.rebuild_graph(next_state, graph)
         return {"h": next_h, "z": next_z, "prior": {"physical": phy_p, "communication": comm_p}}, next_state, next_graph, {"learned": learned, "rule": rule_trace, "routed": routed}
 
-    def deterministic_transition(self, state: Mapping[str, torch.Tensor], action: Mapping[str, torch.Tensor], learned: Mapping[str, torch.Tensor], *, graph: Mapping[str, torch.Tensor] | None = None, service_mode: str, generator: torch.Generator | None) -> tuple[dict[str, torch.Tensor], dict[str, Any]]:
+    def deterministic_transition(self, state: Mapping[str, torch.Tensor], action: Mapping[str, torch.Tensor], learned: Mapping[str, torch.Tensor], *, graph: Mapping[str, torch.Tensor] | None = None, service_mode: str, generator: torch.Generator | None, route_rule_metadata: Sequence[Mapping[str, Any]] = (), route_rule_mode: str = "PATCHED_ROUTE_RULE") -> tuple[dict[str, torch.Tensor], dict[str, Any]]:
+        if route_rule_mode not in {"PATCHED_ROUTE_RULE", "LEGACY_ROUTE_RULE"}:
+            raise ValueError("unknown route rule mode")
+        # Route is submitted before the slot's service. Apply its complete
+        # path in rule side-state first, leaving learned action tensors intact.
+        if route_rule_mode == "PATCHED_ROUTE_RULE" and bool((action["route_flow_index"] >= 0).any()):
+            metadata_by_row = {(int(item["batch_index"]), int(item["action_row"])): item for item in route_rule_metadata}
+            routed_state = {key: value.clone() for key, value in state.items()}
+            for b in range(action["route_flow_index"].shape[0]):
+                for r in range(action["route_flow_index"].shape[1]):
+                    fi = int(action["route_flow_index"][b, r])
+                    ti = int(action["route_task_index"][b, r])
+                    if fi < 0 or ti < 0:
+                        continue
+                    item = metadata_by_row.get((b, r))
+                    if item is None:
+                        raise ValueError("ROUTE_FULL_PATH_METADATA_REQUIRED")
+                    path = tuple(int(x) for x in item["route_node_indices"])
+                    holder = int(state["current_holder_index"][b, fi])
+                    src, dst = (int(x) for x in action["route_values"][b, r, :2])
+                    if path and path[-1] != int(state["flow_destination_index"][b, fi]):
+                        raise ValueError("UNSUPPORTED_BY_FIXED_OBJECT_SUPPORT: destination-change Route requires a new Flow Epoch")
+                    if (int(item["flow_index"]) != fi or int(item["task_index"]) != ti
+                            or int(item["current_holder_index"]) != holder
+                            or int(item["route_revision_before"]) != int(state["flow_route_revision"][b, fi])
+                            or src != holder or not path or path[0] != dst
+                            or len(path) > state["route_node_indices"].shape[-1]):
+                        raise ValueError("ROUTE_METADATA_CONFLICT")
+                    old_route = tuple(int(x) for x in state["route_node_indices"][b, fi][state["route_node_mask"][b, fi]])
+                    old_suffix = old_route[int(state["current_hop_index"][b, fi]):]
+                    if path != old_suffix:
+                        routed_state["route_node_indices"][b, fi].fill_(-1)
+                        routed_state["route_node_mask"][b, fi].fill_(False)
+                        routed_state["route_node_indices"][b, fi, :len(path)] = torch.tensor(path, device=state["route_node_indices"].device)
+                        routed_state["route_node_mask"][b, fi, :len(path)] = True
+                        routed_state["current_hop_index"][b, fi] = 0
+                        routed_state["current_holder_index"][b, fi] = holder
+                        routed_state["carrying_hop_source_index"][b, fi] = holder
+                        routed_state["carrying_hop_destination_index"][b, fi] = path[0]
+                        routed_state["hop_progress"][b, fi] = 0.0
+                        routed_state["hop_remaining"][b, fi] = state["flow_remaining"][b, fi]
+                        routed_state["flow_route_revision"][b, fi] = state["flow_route_revision"][b, fi] + 1
+                    host = (state["task_agent_task_index"][b] == ti) & (state["task_agent_relation_type_index"][b] == 3) & state["task_agent_validity"][b]
+                    if bool(host.any()):
+                        routed_state["task_agent_agent_index"][b, torch.nonzero(host, as_tuple=False)[0, 0]] = dst
+                    hits = torch.nonzero((state["comm_source_index"][b] == holder) &
+                                         (state["comm_target_index"][b] == path[0]) &
+                                         state["comm_presence"][b] & state["comm_validity"][b], as_tuple=False)
+                    routed_state["flow_comm_relation_index"][b, fi] = hits[0, 0] if len(hits) else -1
+            state = routed_state
         nxt = {k: v.clone() for k, v in state.items()}
         old_speed = state["speed"]
         vehicle = state["vehicle_mask"]
@@ -604,12 +653,26 @@ class StructuredRSSMWorldModel(nn.Module):
                 route = state["route_node_indices"][b, f]
                 route_mask = state["route_node_mask"][b, f]
                 next_hop = current + 1
-                if next_hop + 1 >= route.shape[0] or not bool(route_mask[next_hop]) or not bool(route_mask[next_hop + 1]):
+                if route_rule_mode == "LEGACY_ROUTE_RULE":
+                    if next_hop + 1 < route.shape[0] and bool(route_mask[next_hop + 1]):
+                        nxt["current_holder_index"][b, f] = route[next_hop]
+                        nxt["current_hop_index"][b, f] = next_hop
+                        nxt["carrying_hop_source_index"][b, f] = route[next_hop]
+                        nxt["carrying_hop_destination_index"][b, f] = route[next_hop + 1]
+                        nxt["hop_progress"][b, f] = 0.0
+                        nxt["hop_remaining"][b, f] = state["flow_remaining"][b, f]
                     continue
+                # 4.2C-B/C freezes `route` as hop destinations only.  The
+                # completed destination becomes holder; route[next_hop] is
+                # the next destination, not the next holder.
+                if current < 0 or current >= route.shape[0] or not bool(route_mask[current]) or int(route[current]) != int(state["carrying_hop_destination_index"][b, f]):
+                    raise ValueError("ROUTE_CURRENT_HOP_INCONSISTENT_WITH_LEDGER")
+                if next_hop >= route.shape[0] or not bool(route_mask[next_hop]):
+                    raise ValueError("ROUTE_NO_NEXT_HOP_BEFORE_LOGICAL_DESTINATION")
                 nxt["current_hop_index"][b, f] = next_hop
-                nxt["current_holder_index"][b, f] = route[next_hop]
-                nxt["carrying_hop_source_index"][b, f] = route[next_hop]
-                nxt["carrying_hop_destination_index"][b, f] = route[next_hop + 1]
+                nxt["current_holder_index"][b, f] = state["carrying_hop_destination_index"][b, f]
+                nxt["carrying_hop_source_index"][b, f] = state["carrying_hop_destination_index"][b, f]
+                nxt["carrying_hop_destination_index"][b, f] = route[next_hop]
                 nxt["hop_progress"][b, f] = 0.0
                 nxt["hop_remaining"][b, f] = state["flow_remaining"][b, f]
         # CPU/task rules, not heads.
@@ -626,6 +689,8 @@ class StructuredRSSMWorldModel(nn.Module):
                 fi, ti = int(action["route_flow_index"][b, r]), int(action["route_task_index"][b, r])
                 if fi < 0 or ti < 0:
                     continue
+                if route_rule_mode == "PATCHED_ROUTE_RULE":
+                    continue  # already applied before this slot's service
                 src, dst = int(action["route_values"][b, r, 0]), int(action["route_values"][b, r, 1])
                 changed = (int(state["carrying_hop_source_index"][b, fi]) != src or int(state["carrying_hop_destination_index"][b, fi]) != dst)
                 nxt["carrying_hop_source_index"][b, fi] = src
@@ -736,7 +801,7 @@ class StructuredRSSMWorldModel(nn.Module):
             "csi": torch.full((b, nc, rb), 80.0), "csi_mask": torch.tensor([[[True] * rb, [True] * rb, [False] * rb]]).expand(b, -1, -1).clone(), "rb_active_mask": torch.ones((b, nc, rb), dtype=torch.bool), "wired_capacity_mbps": torch.tensor([[0.0, 0.0, 100.0]]).expand(b, -1).clone(),
             "comm_source_index": torch.tensor([[0, 1, 2]]).expand(b, -1).clone(), "comm_target_index": torch.tensor([[1, 0, 3]]).expand(b, -1).clone(), "comm_source_type_index": torch.tensor([[ENTITY_VEHICLE, ENTITY_UAV, 4]]).expand(b, -1).clone(), "comm_target_type_index": torch.tensor([[ENTITY_UAV, ENTITY_VEHICLE, 4]]).expand(b, -1).clone(),
             "flow_presence": torch.ones((b, nf), dtype=torch.bool), "flow_known": torch.ones((b, nf), dtype=torch.bool), "flow_task_index": torch.tensor([[0, 1]]).expand(b, -1).clone(), "flow_total": torch.full((b, nf), 10000.0), "flow_remaining": torch.full((b, nf), 5000.0), "flow_source_index": torch.zeros((b, nf), dtype=torch.long), "flow_destination_index": torch.tensor([[2, 3]]).expand(b, -1).clone(), "flow_type_index": torch.ones((b, nf), dtype=torch.long), "flow_status_index": torch.full((b, nf), 2, dtype=torch.long),
-            "flow_identity_index": torch.arange(nf)[None].expand(b, -1).clone(), "flow_route_revision": torch.zeros((b, nf), dtype=torch.long), "current_holder_index": torch.tensor([[0, 2]]).expand(b, -1).clone(), "current_hop_index": torch.zeros((b, nf), dtype=torch.long), "hop_progress": torch.zeros((b, nf)), "hop_remaining": torch.full((b, nf), 5000.0), "route_node_indices": torch.tensor([[[0, 1, 2, -1], [2, 3, -1, -1]]]).expand(b, -1, -1).clone(), "route_node_mask": torch.tensor([[[True, True, True, False], [True, True, False, False]]]).expand(b, -1, -1).clone(),
+            "flow_identity_index": torch.arange(nf)[None].expand(b, -1).clone(), "flow_route_revision": torch.zeros((b, nf), dtype=torch.long), "current_holder_index": torch.tensor([[0, 2]]).expand(b, -1).clone(), "current_hop_index": torch.zeros((b, nf), dtype=torch.long), "hop_progress": torch.zeros((b, nf)), "hop_remaining": torch.full((b, nf), 5000.0), "route_node_indices": torch.tensor([[[1, 2, -1, -1], [3, -1, -1, -1]]]).expand(b, -1, -1).clone(), "route_node_mask": torch.tensor([[[True, True, False, False], [True, False, False, False]]]).expand(b, -1, -1).clone(),
             "carrying_active": torch.ones((b, nf), dtype=torch.bool), "carrying_hop_source_index": torch.tensor([[0, 2]]).expand(b, -1).clone(), "carrying_hop_destination_index": torch.tensor([[1, 3]]).expand(b, -1).clone(), "flow_comm_relation_index": torch.tensor([[0, 2]]).expand(b, -1).clone(),
             "task_presence": torch.ones((b, nt), dtype=torch.bool), "task_work_total": torch.full((b, nt), 100.0), "task_work_remaining": torch.full((b, nt), 80.0), "task_progress": torch.full((b, nt), 0.2), "task_lifecycle_index": torch.ones((b, nt), dtype=torch.long),
             "task_completed": torch.zeros((b, nt), dtype=torch.bool), "task_released": torch.tensor([[True, False, False]]).expand(b, -1).clone(), "return_flow_index": torch.full((b, nt), -1, dtype=torch.long), "task_requires_return": torch.zeros((b, nt), dtype=torch.bool), "task_return_requirement_known": torch.ones((b, nt), dtype=torch.bool), "return_birth_required": torch.zeros((b, nt), dtype=torch.bool), "final_completion_unresolved_by_return_requirement": torch.zeros((b, nt), dtype=torch.bool), "final_completion_blocked_by_fixed_support": torch.zeros((b, nt), dtype=torch.bool),
@@ -746,7 +811,7 @@ class StructuredRSSMWorldModel(nn.Module):
         zpi = {"physical": {"node_latent": torch.randn((b, ne, de))}, "information": {"agent_latent": torch.randn((b, ne, de)), "comm_relation_latent": torch.randn((b, nc, de)), "flow_relation_latent": torch.randn((b, nf, de)), "task_latent": torch.randn((b, nt, de))}}
         zeros4 = lambda n: torch.zeros((b, n, 4))
         allocation = torch.zeros((b, nc, rb), dtype=torch.bool); allocation[:, 0, 0] = True
-        action = {"mobility_entity_index": torch.tensor([[1]]).expand(b, -1).clone(), "mobility_values": torch.tensor([[[0.0, 0.0, 2.0, 1.0]]]).expand(b, -1, -1).clone(), "comm_relation_index": torch.tensor([[0]]).expand(b, -1).clone(), "comm_values": torch.tensor([[[1.0, 0.0, 0.0, 0.0]]]).expand(b, -1, -1).clone(), "comm_allocation_mask": allocation, "comp_agent_index": torch.tensor([[2]]).expand(b, -1).clone(), "comp_task_index": torch.tensor([[0]]).expand(b, -1).clone(), "comp_values": torch.tensor([[[10.0, 0.0, 0.0, 0.0]]]).expand(b, -1, -1).clone(), "route_task_index": torch.tensor([[0]]).expand(b, -1).clone(), "route_flow_index": torch.tensor([[0]]).expand(b, -1).clone(), "route_values": zeros4(1)}
+        action = {"mobility_entity_index": torch.tensor([[1]]).expand(b, -1).clone(), "mobility_values": torch.tensor([[[0.0, 0.0, 2.0, 1.0]]]).expand(b, -1, -1).clone(), "comm_relation_index": torch.tensor([[0]]).expand(b, -1).clone(), "comm_values": torch.tensor([[[1.0, 0.0, 0.0, 0.0]]]).expand(b, -1, -1).clone(), "comm_allocation_mask": allocation, "comp_agent_index": torch.tensor([[2]]).expand(b, -1).clone(), "comp_task_index": torch.tensor([[0]]).expand(b, -1).clone(), "comp_values": torch.tensor([[[10.0, 0.0, 0.0, 0.0]]]).expand(b, -1, -1).clone(), "route_task_index": torch.full((b, 1), -1, dtype=torch.long), "route_flow_index": torch.full((b, 1), -1, dtype=torch.long), "route_values": zeros4(1)}
         return zpi, state, graph, action
 
 

@@ -1,0 +1,58 @@
+{
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "mode_pair": [
+    "LEGACY_ROUTE_RULE",
+    "PATCHED_ROUTE_RULE"
+  ],
+  "paired_windows": {
+    "dev_train": {
+      "H1_window_count": 38,
+      "H2_window_count": 38,
+      "H3_window_count": 38,
+      "H4_window_count": 38,
+      "decoder_different_window_horizons": 0,
+      "graph_different_window_horizons": 0,
+      "max_abs_delta_csi": 0,
+      "max_abs_delta_h_agent": 0,
+      "max_abs_delta_h_communication": 0,
+      "max_abs_delta_h_flow": 0,
+      "max_abs_delta_h_physical": 0,
+      "max_abs_delta_h_task": 0,
+      "max_abs_delta_motion": 0,
+      "max_abs_delta_prior_communication_log_std": 0,
+      "max_abs_delta_prior_communication_mean": 0,
+      "max_abs_delta_prior_physical_log_std": 0,
+      "max_abs_delta_prior_physical_mean": 0,
+      "prior_different_window_horizons": 0,
+      "state_different_window_horizons": 0,
+      "windows": 38
+    },
+    "dev_validation": {
+      "H1_window_count": 16,
+      "H2_window_count": 16,
+      "H3_window_count": 16,
+      "H4_window_count": 16,
+      "decoder_different_window_horizons": 0,
+      "graph_different_window_horizons": 0,
+      "max_abs_delta_csi": 0,
+      "max_abs_delta_h_agent": 0,
+      "max_abs_delta_h_communication": 0,
+      "max_abs_delta_h_flow": 0,
+      "max_abs_delta_h_physical": 0,
+      "max_abs_delta_h_task": 0,
+      "max_abs_delta_motion": 0,
+      "max_abs_delta_prior_communication_log_std": 0,
+      "max_abs_delta_prior_communication_mean": 0,
+      "max_abs_delta_prior_physical_log_std": 0,
+      "max_abs_delta_prior_physical_mean": 0,
+      "prior_different_window_horizons": 0,
+      "state_different_window_horizons": 0,
+      "windows": 16
+    }
+  },
+  "parameter_digest": "9304504676f8cfdda600fbea5bca43afa61a41eb6fdebfc71af5cc18cf3f8b51",
+  "prior_mode": "mean",
+  "route_bug_triggered_in_formal_paired_windows": false,
+  "service_mode": "expectation",
+  "status": "PASS_WITH_LIMITATIONS"
+}

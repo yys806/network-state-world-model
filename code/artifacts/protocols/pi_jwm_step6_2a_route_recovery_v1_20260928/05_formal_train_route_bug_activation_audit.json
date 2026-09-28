@@ -1,0 +1,23 @@
+{
+  "active_multihop_distinct_flows": 0,
+  "active_multihop_windows": 0,
+  "horizon_distribution": {
+    "H1": 1406,
+    "H2": 1414,
+    "H3": 1421,
+    "H4": 1430
+  },
+  "legacy_intermediate_completion_count": 0,
+  "legacy_should_advance_but_did_not_count": 0,
+  "locked_test": false,
+  "route_action_existing_flow_overlap_windows": 38,
+  "route_action_multihop_occurrences": 0,
+  "route_action_nonempty_occurrences": 5671,
+  "status": "PASS_STATIC_COVERAGE",
+  "tensor_anchor_route_gt1_flow_occurrences": 0,
+  "tensor_future_route_gt1_action_occurrences": 0,
+  "tensor_target_route_gt1_flow_occurrences": 0,
+  "trajectories": 48,
+  "trajectory_count": 48,
+  "windows": 4416
+}

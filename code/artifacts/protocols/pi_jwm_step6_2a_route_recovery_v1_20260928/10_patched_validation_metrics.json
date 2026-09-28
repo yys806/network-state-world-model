@@ -1,0 +1,6 @@
+{
+  "legacy_LVal": 0.07431338784170399,
+  "legacy_result_untouched": true,
+  "reason": "full 1104-window H1-H4 CPU revalidation estimated materially longer than bounded audit; no metrics fabricated",
+  "status": "NOT_EXECUTED_REQUIRES_SEPARATE_RUNTIME_AUTHORIZATION"
+}

@@ -176,11 +176,18 @@ def _run(model: torch.nn.Module, anchor: PreparedRolloutAnchor,
             action, mapping = compile_candidate_step(candidate, anchor.context, states[i], step_index,
                                                       planner_domain_context=anchor.domain)
             actions.append(action); mappings.append(mapping)
+        from pi_jwm.step6_2a_route_rule_metadata_v1 import build_route_rule_metadata
+        route_rule_metadata = []
+        for i, candidate in enumerate(candidates):
+            sample = {"future_action": [step.frame() for step in candidate.steps[:step_index + 1]]}
+            route_rule_metadata.extend(build_route_rule_metadata(sample, states[i], actions[i],
+                step_index, batch_index=i if batched else 0))
         if batched:
             batch_action = _stack_actions(actions)
             batch_latent, batch_state, batch_graph, batch_trace = model.one_step(
                 _batch_tree(latents), _batch_tree(states), _batch_tree(graphs), batch_action,
-                prior_mode="mean", service_mode="expectation", generator=None)
+                prior_mode="mean", service_mode="expectation", generator=None,
+                route_rule_metadata=route_rule_metadata)
             count = len(candidates)
             next_values = [(_one(batch_latent, i, count), _one(batch_state, i, count),
                             _one(batch_graph, i, count), _one(batch_trace, i, count))
@@ -188,7 +195,8 @@ def _run(model: torch.nn.Module, anchor: PreparedRolloutAnchor,
         else:
             next_values = [model.one_step(latents[0], states[0], graphs[0], actions[0],
                                           prior_mode=prior_mode, service_mode=service_mode,
-                                          generator=generators[0])]
+                                          generator=generators[0],
+                                          route_rule_metadata=route_rule_metadata)]
         for i, (latent, state, graph, trace) in enumerate(next_values):
             if batched:
                 # _stack_actions pads variable-width Comp rows. The rule trace
