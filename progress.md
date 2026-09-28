@@ -1200,4 +1200,4 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 - 已核实 AirFogSim deadline 为 arrival-relative duration；完成路径允许 equality，后续 active-task sweep 仅 `delay > deadline` 失败；completion handling 先于 sweep。
 - 当前 Formal Raw/Tensor/World Model 没有完整 Planner deadline/arrival/priority/return-support side-state；`B_Tx` 跨 hop 证据和 Route effort denominator 也未闭合。
 - 已生成 `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/` 全套回执，focused audit test 通过。
-- 回归：6.2A 1/1、6.0C 12/12、6.1 2/2、4.4 37/37、4.2C-B 25/25、5.6C 3/3、5.5 21/21、6.0A 6/6；compileall、knowledge index write/check（5 outputs、0 mismatch）、Context Consistency 与 diff check 通过。Git staged diff / commit / push 是最后收口步骤。GPU、SSH、locked_test、baseline、ranking、MPC、closed-loop 均未执行。
+- 回归：6.2A 1/1、6.0C 12/12、6.1 2/2、4.4 37/37、4.2C-B 25/25、5.6C 3/3、5.5 21/21、6.0A 6/6；compileall、knowledge index write/check（5 outputs、0 mismatch）、Context Consistency 与 diff check 通过。审计主提交 `fa7c369` 已推送 `origin/main`；本条完成态记录随后补充提交。GPU、SSH、locked_test、baseline、ranking、MPC、closed-loop 均未执行。

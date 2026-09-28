@@ -1578,6 +1578,6 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 生成 13 项机器回执及 objective/baseline 合同；纠正 provenance 矩阵，移除无来源的 `CAUSALLY_DERIVABLE` 标签。
 - [x] 记录 `PASS_WITH_READINESS_BLOCKERS`；`STEP_6_2B_READINESS=BLOCKED`。
 - [x] 完成回归、compileall、knowledge index write/check 与 Context Consistency。
-- [ ] 最终检查 staged diff，commit/push 并核对 `HEAD==origin/main`。
+- [x] 最终检查 staged diff，提交并推送；首次 Git 收口 commit `fa7c369` 已到 `origin/main`。
 - Boundary: `gpu=false`、`locked_test=false`、`baseline=false`、`planner_ranking=false`、`closed_loop=false`、`performance_claim=false`。
 - Single next action after closure: 研究者审阅 6.2A blocker 后，另行决定是否授权 Planner-only causal side-state additive exposure / STEP 6.2B；不得自动开始。

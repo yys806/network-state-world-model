@@ -63,3 +63,7 @@ Validation commands and results:
 - Contract/protocol cross-check: the Markdown objective and baseline interfaces agree with the corresponding machine-readable JSON contracts on tuple/order, inactive dimensions, metric separation, relative-improvement direction, and readiness blockers.
 
 The evidence bundle is ignored by the repository-wide `code/artifacts/*` rule, so only this Step-specific receipt directory is force-added. No other ignored artifact, Formal Dataset, checkpoint, or user-untracked file is included.
+
+## Git
+
+The verified audit commit `fa7c369` (`audit(pi-jwm): freeze planner objective source semantics`) was pushed to `origin/main`. A follow-up documentation-only closure commit records the completed Git gate and is reported in the final completion report. `TASK/` and `code/scripts/plot_step5_3e_tiny_overfit.py` remain untracked and were not added.
