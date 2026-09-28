@@ -1,6 +1,6 @@
 # STEP 6.0C — Planner Feasible Action Domain v1
 
-**Status: researcher-frozen Planner v1 operational domain.** This is the conservative first formal-rollout action domain, not the final optimal action space, AirFogSim native legality, or a safety certification. No World Model rollout or Planner objective has run.
+**Status: researcher-frozen Planner v1 operational domain, amended by STEP 6.2B-PATCH.** This is a learned-support restriction, not AirFogSim native legality or a safety certification. The historical 6.0C receipt predates the scorer and remains unchanged.
 
 ## Why this domain exists
 
@@ -33,10 +33,10 @@ After a command the next **control side-state only** is `heading_next = azimuth_
 
 The 6.0A generic Candidate contract and fixed-support/Route/Comm checks remain. A supplied 6.0C domain context validates before the unchanged formal `build_action` mapping to 11 tensors; unresolved explicit constraints still block compilation. The domain pool-admission gate checks candidates from any backend, records rejected seeds, and adds explicit HOLD fallback; it performs no scoring or ranking. The generic 6.0A Search fixture's empty mobility is rejected when a UAV is present. `RULE_FALLBACK` v1 has Route/Comm/Comp no-op and one explicit PROFILE_HOLD row per present UAV, requiring observed current control side-state. Its metadata states `safe=false`. It has no spatial/geofence, future-feasibility or performance claim.
 
-Research Pending: Search/Learned/Hybrid selection; continuous/interpolated mobility and nonzero elevation; spatial workspace/geofence policy; treatment of outside-core actions; Planner objective/risk; fallback safety; final action-space ablation. The domain does not authorize model-dependent rollout, optimizer, proposal training, baseline, closed loop or `locked_test`.
+Research Pending: Search/Learned/Hybrid selection; continuous/interpolated mobility and nonzero elevation; spatial workspace/geofence policy; treatment of outside-core actions; fallback safety; final action-space ablation. The later STEP 6.2B-PATCH accepted the CPU Objective scorer contract; this domain alone still does not authorize a candidate method, optimizer, proposal training, baseline, closed loop or `locked_test`.
 
-## Route: `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1`
+## Route: `EXPLICIT_NOOP_ONLY` (STEP 6.2B-PATCH)
 
-Route remains enabled in Planner v1 (`ROUTE_ENABLED_V1=true`). Each Route candidate must have exactly one `route_node_indices` entry equal to the current frozen logical destination. Intermediate relay nodes, logical-destination changes, new Flow/Epoch creation and unsupported Flow birth are outside this action domain. The candidate admission gate reports multi-hop candidates as `VIOLATED: OUTSIDE_PLANNER_ROUTE_SINGLE_HOP_DOMAIN_V1`; existing Flow destination changes are rejected against current frozen state. Route no-op/fallback remains available.
+**Current researcher decision:** every Planner v1 horizon has `route.entries=[]`. Any nonempty Route row is `VIOLATED: OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1` at candidate admission, including pending/no-current-Flow, existing-Flow same-path, direct destination change and multi-hop rows. The Route schema, 11 learned action tensors, encoder and repaired multi-hop deterministic rule remain in the code. Planner v1 optimizes Comm, Comp and Mob; `ROUTE_INTERFACE_RETAINED=true`, `ROUTE_OPTIMIZATION_ACTIVE_V1=false`.
 
-This restriction reflects accepted Formal Dataset learned support, not AirFogSim physical legality. Repaired multi-hop deterministic code remains available for future expansion/ablation, but train/validation multi-hop coverage is zero and multi-hop is outside Planner v1. Direct Route choices remain enabled where the frozen object/action contract allows them.
+The earlier single-hop direct-route admission rule was the **historical STEP 6.2A-CLOSURE domain**. STEP 6.2B observed that pending Route mapped to `flow_index=-1` without creating a Flow, while an existing same-path Route changed Task-Agent state and learned latent. This amendment excludes both from the current Planner domain without changing frozen model semantics. It does not assert that AirFogSim lacks Route support or that all Route actions are physically invalid. Future Route/offload/multi-hop optimization requires a separate research decision and evidence.

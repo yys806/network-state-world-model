@@ -201,6 +201,30 @@ class ObjectiveScorerTests(unittest.TestCase):
         self.assertEqual(result.scores[0].objective_tuple[:4], result.scores[1].objective_tuple[:4])
         self.assertEqual(len(result.scores[0].per_horizon_rows[0].effort_components), 3)
 
+    def test_each_non_route_action_family_is_individually_scoreable(self):
+        from dataclasses import replace
+        anchor = state()
+        anchor["comm_presence"] = torch.tensor([[True]])
+        anchor["comm_validity"] = torch.tensor([[True]])
+        anchor["comm_wireless_mask"] = torch.tensor([[True]])
+        anchor["csi_mask"] = torch.tensor([[[True, True, True, True]]])
+        anchor["rb_active_mask"] = torch.zeros((1, 1, 4), dtype=torch.bool)
+        frozen = replace(side(), effort_component_mask=(True, True, True),
+                         effort_denominators=(4., 10., 15.))
+        actions = {
+            "Comm": CandidateActionStep(comm=({"relation_index": 0, "rb_indices": [0]},)),
+            "Comp": CandidateActionStep(comp=({"task_id": "q", "node_id": "host", "allocated_cpu_per_s": 2.},)),
+            "Mob": CandidateActionStep(mob=({"uav_index": 1, "speed_mps": 5.},)),
+        }
+        for family, action in actions.items():
+            with self.subTest(family=family):
+                candidate, trace = pair(family, [9.])
+                candidate = replace(candidate, steps=(action,))
+                result = score_candidate_set(anchor, frozen, ((candidate, trace),), slot_duration_s=1.)
+                self.assertEqual(result.status, "SCOREABLE")
+                self.assertGreater(result.scores[0].J_Effort, 0.)
+                self.assertFalse(candidate.steps[0].route)
+
     def test_pending_route_with_no_flow_is_not_silently_scored(self):
         from dataclasses import replace
         candidate, trace = pair("a", [9.])

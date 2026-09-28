@@ -1,6 +1,10 @@
 # PI-JWM Current State Snapshot
 
-## 2026-09-28 STEP 6.2B — 当前关口
+## 2026-09-28 STEP 6.2B-PATCH — 当前状态
+
+研究者已冻结 `PLANNER_V1_ROUTE_POLICY=EXPLICIT_NOOP_ONLY`：Planner v1 每个 horizon 的 Route family 必须为空，实际优化动作族为 Comm/Comp/Mob。pending、已有 Flow 同路径、多跳及改目的地的非空 Route 都在准入层拒绝，4.4/learned Route/checkpoint 未改。冻结 best.pt 的非锁定 validation anchor 上两个合法 H1–H4 候选经 CPU rollout 与五项 scorer 均有限，Route 编译为缺席哨兵；选定 anchor 的 Comm 分母仍为 50 个全局 RB ID（不是 242 条关系行）。`STEP_6_2B=PASS` 只表示 Objective scorer 与严格字典序比较器通过 CPU 合同验收；`CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`，`CLOSED_LOOP_READINESS=NOT_READY`，无性能结论。GPU、`locked_test`、训练、baseline 未执行。证据：`docs/implementation_records/STEP_06_2B_PATCH_ROUTE_NOOP_CLOSURE.md` 与 `code/artifacts/protocols/pi_jwm_step6_2b_patch_route_noop_v1_20260928/`。下一动作仅为研究者审阅本 Step；后续方法另行授权。
+
+## 2026-09-28 STEP 6.2B — 历史阻塞关口
 
 `STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`。五项 Objective scorer 和严格字典序比较器已实现，CPU 合同测试与一个非锁定 validation anchor 的冻结 checkpoint H1–H4 集成通过；但尚不能宣称 6.2B 验收 PASS。当前 single-hop gate 允许 pending/no-current-Flow Route，正式 adapter 却映射为 `flow_index=-1`，4.4 不创建 Flow；Objective 合同只定义未来 Return birth 的 `H_sup`，未定义该 pending Route 的评分支持范围。scorer 已拒绝静默评分此类 trace。同路径 existing-Flow Route 还会在 hop 完成前改 Task-Agent Host，需与 frozen holder 语义核对。研究者尚未决定处理方式；Route 域和 4.4 本 Step 未改。Comm effort 分母已从误数通信关系行修为当前有效的全局 RB ID 数；选定 anchor 从 242 修为 50，旧 receipt 保持历史原值。best.pt SHA 不变；未用 GPU、locked_test、训练、baseline 或闭环。下一动作仅为研究者裁决上述两个 Route 语义冲突，随后再重算 6.2B acceptance。证据见 `docs/implementation_records/STEP_06_2B_PLANNER_OBJECTIVE_SCORER_AND_COMPARATOR.md` 和 `code/artifacts/protocols/pi_jwm_step6_2b_objective_scorer_v1_20260928/`。
 

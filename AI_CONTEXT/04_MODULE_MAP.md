@@ -1,6 +1,13 @@
 # 模块导航地图
 
-## STEP 6.2B 当前入口
+## STEP 6.2B-PATCH 当前入口
+
+- `code/src/pi_jwm/step6_0c_planner_action_domain_v1.py`：每 horizon 非空 Route 统一拒绝 `OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1`；Comm/Comp/Mob 准入沿用原逻辑。
+- `code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py`：五项目标和严格字典序，无公式更改；当前 `STEP_6_2B=PASS` 仅为 CPU 合同验收。
+- `code/scripts/build_step6_2b_patch_route_noop_receipts_v1.py`：门控、Route 缺席编译、有效自由度、Comm 分母和冻结 checkpoint 的新机器收据。
+- `code/tests/test_step6_0c_planner_action_domain_v1.py`、`test_step6_2b_planner_objective_scorer_v1.py`：Route no-op 和三种剩余动作族回归。下文 STEP 6.2B 条目是历史阻塞时的导航。
+
+## STEP 6.2B 历史入口
 
 - `code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py`：已给定 rollout 的 common `H_eff`、逐 Task/Horizon 五项目标与严格字典序；pending Flow Route 拒绝静默评分。验收状态为 `BLOCKED_ON_OBJECTIVE_SEMANTICS`。
 - `code/scripts/run_step6_2b_objective_scorer_cpu_v1.py`、`build_step6_2b_objective_receipts_v1.py`：单非锁定 validation anchor 的冻结 checkpoint CPU 机制证据与收据。

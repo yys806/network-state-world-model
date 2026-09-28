@@ -1,6 +1,10 @@
 # 当前与历史实验
 
-## 2026-09-28 STEP 6.2B CPU scorer probe
+## 2026-09-28 STEP 6.2B-PATCH CPU 机制验收
+
+同一非锁定 Formal Validation `anchor-0001` 的两个 Route 空动作候选，共用冻结 best.pt、mean prior、expected service，H1–H4 rollout/scorer 有限；Route 编译为缺席哨兵，参数摘要与 checkpoint SHA 不变。Comm 分母复核为 50 个全局 RB ID，而非 242 条关系行。8 份新收据在 `code/artifacts/protocols/pi_jwm_step6_2b_patch_route_noop_v1_20260928/`。`STEP_6_2B=PASS` 是 scorer 合同结果，不是候选优劣、闭环或性能结果。无 GPU、`locked_test`、训练、baseline。
+
+## 2026-09-28 STEP 6.2B CPU scorer probe（历史阻塞）
 
 一个非锁定 Formal Validation `anchor-0001` 上的冻结 `best.pt` strict-load、mean-prior/expected-service H1–H4 rollout 与 scorer 均有限，参数 digest 和 checkpoint SHA 未变。这是机制证据，不是候选优劣或性能结果。13 份机器收据位于 `code/artifacts/protocols/pi_jwm_step6_2b_objective_scorer_v1_20260928/`；`STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`，因 pending Route 固定支持与同路径 Host 语义待裁决。GPU、locked_test、baseline、闭环未执行。
 

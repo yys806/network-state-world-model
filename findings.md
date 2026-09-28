@@ -1,5 +1,13 @@
 # Findings
 
+## 2026-09-28 STEP 6.2B-PATCH
+
+- 旧 6.2B 阻塞来自 Planner v1 曾准入会改变 4.4 Task-Agent/learned latent 的非空 Route；研究者现冻结 Route no-op，故无需修改 4.4 或 checkpoint。
+- 有界因果 fixture 的 pending、existing same-path、多跳、改目的地 Route 全部在 gate 拒绝；合法非空 Route 和合法可改变状态 Route 计数均为 0，`ROUTE_EFFECTIVE_FREEDOM_V1=NONE`。Route 接口与多跳代码保留。
+- 选定真实 anchor 的 RB 支持是 50 个全局 ID；242 是 communication relation 行数，不能作 Comm effort 分母。
+- CPU scorer 合同 PASS 不意味着候选方法、排序质量、闭环或真实吞吐有证据；未来 Route/offload 语义需另行研究。
+
+
 ## 2026-09-28 STEP 6.1
 
 - 第一 Formal Validation anchor `...::anchor-0001` 的 Raw frame/capture 和 Sample 身份可逐项对齐；同一当前 Flow/Task-Agent/UAV/CPU/RB support 能构造四个独立 `CAUSAL_DOMAIN_PROBE`，无需第一未来已执行动作。

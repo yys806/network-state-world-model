@@ -1,5 +1,9 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-28 STEP 6.2B-PATCH 方法边界
+
+研究者将 Planner v1 Route 正式限定为 `EXPLICIT_NOOP_ONLY`：每个 horizon Route family 为空，Comm/Comp/Mob 是当前可优化动作族。Route schema、learned encoder 和多跳确定性代码保留，未来真正 Route/offload/multi-hop 优化另行研究。冻结 Objective `(N_DDL,A_DDL,J_Delay,J_Burden,J_Effort)` 与严格字典序不变。当前 `STEP_6_2B=PASS` 只证明已给定合法 H1–H4 候选轨迹的 CPU scorer/comparator 合同，不证明候选生成、闭环或性能。先前单跳 Route 域是历史决定，现由更严格 no-op 边界覆盖。
+
 ## 2026-09-28 STEP 6.1 实现与理论边界
 
 Definition 06 的“同一当前状态/双图/latent → 不同候选动作 → 逐步世界模型未来轨迹”已在冻结 5.6C 模型上做 CPU H1–H4 机制预检：当前 posterior mean 仅计算一次，未来只用 prior mean 和期望无线服务；Route/Comm/Comp/Mob 的当前因果合法动作逐族注入并记录状态、潜变量和 decoder 响应。该预检不含候选轨迹评价/选择、MPC objective 或下一真实观测的闭环重规划，不得称 Planner 已完成。`TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT` 只表示机器 receipt 的机制验收状态；科学方法与性能结论仍由研究者另行决定。

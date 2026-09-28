@@ -1,6 +1,10 @@
 # 研究背景与问题
 
-## 2026-09-28 Planner v1 support boundary
+## 2026-09-28 Planner v1 当前 Route 研究边界
+
+研究者已把 Planner v1 Route 从此前的单跳直达进一步收紧为每 horizon `EXPLICIT_NOOP_ONLY`。这是当前 frozen learned model 的支持域决定；Route/多跳代码和 AirFogSim 能力并未被否定。未来真正 Route/offload 优化与多跳 learned 性能需另行研究，不能由目前 CPU scorer 验收推出。下方单跳段是历史决定。
+
+## 2026-09-28 Planner v1 support boundary（历史）
 
 Researcher decision: the first Planner Route domain stays within the frozen Formal Dataset's single-hop support. This is a learned-support restriction, not a claim that multi-hop is physically illegal or unavailable in repaired code. No formal multi-hop performance claim is made.
 

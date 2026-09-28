@@ -1,0 +1,22 @@
+{
+  "step": "STEP 6.2B-PATCH",
+  "git_start_sha": "3ac4470080b11906d16c3a4c33c3a3306f7f31c4",
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "checkpoint_modified": false,
+  "gpu": false,
+  "training": false,
+  "optimizer_step": false,
+  "formal_dataset_modified": false,
+  "locked_test": false,
+  "candidate_method_selected": false,
+  "closed_loop": false,
+  "baseline": false,
+  "performance_claim": false,
+  "selected_anchor_valid_global_rb_id_count": 50.0,
+  "comm_relation_row_count": 242,
+  "denominator_unit": "global simulator RB IDs",
+  "numerator_unit": "requested relation-RB assignments",
+  "anchor_frozen": true,
+  "source_rule": "rb_active_mask last-axis width when any current valid wireless relation exists",
+  "previous_step6_2b_correction_retained": true
+}

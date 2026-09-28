@@ -1,0 +1,37 @@
+{
+  "step": "STEP 6.2B-PATCH",
+  "files": {
+    "01_route_noop_policy.json": {
+      "sha256": "e67f792d464196a6e68a55c1d7f42ac8f08322ac41be134efe8ae5fcb1fd7faf",
+      "bytes": 726
+    },
+    "02_pending_route_rejection.json": {
+      "sha256": "a3ce7b38495e309da0c3f43cac22f3d5a4b926562e3f738127165b487178b6e0",
+      "bytes": 606
+    },
+    "03_existing_route_rejection.json": {
+      "sha256": "a869a543d028db70f8862b89efbec023ccd2124f0e1b366a1560dc2aafae0fd9",
+      "bytes": 816
+    },
+    "04_route_action_absence_compile_audit.json": {
+      "sha256": "65d55cabc851fc1d48ab1e6325dacff77ca0e866777a61b1b7389012cf893028",
+      "bytes": 638
+    },
+    "05_effective_route_freedom.json": {
+      "sha256": "1aae23836a2a517805097bf09aad2b60a31c65143782955aa61c23b1bf2fc170",
+      "bytes": 1234
+    },
+    "06_comm_effort_denominator_regression.json": {
+      "sha256": "4931ecb42ffa4a1b495f5498001d1accb54216f908c966f1cde386203499f51c",
+      "bytes": 820
+    },
+    "07_frozen_checkpoint_no_route_integration.json": {
+      "sha256": "ccbeafedf82854b6b88edaf8983bad64c9287ab855d5875fe3a7838412d1ecd4",
+      "bytes": 54303
+    },
+    "08_step6_2b_final_acceptance.json": {
+      "sha256": "7df6b6c62e8ceec87d09583be3a6109244f26393b323f966dd36fdacb3e0b271",
+      "bytes": 1127
+    }
+  }
+}

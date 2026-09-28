@@ -44,7 +44,7 @@ def sha(path: Path) -> str:
     return digest.hexdigest()
 
 
-def run() -> dict:
+def run(*, include_historical_route_audit: bool = False) -> dict:
     torch.set_num_threads(1)
     if sha(CHECKPOINT) != EXPECTED_SHA:
         raise ValueError("frozen best.pt SHA mismatch")
@@ -145,12 +145,22 @@ def run() -> dict:
                                 state, graph, base, domain, meta["sample_id"])
         traces = tuple(rollout_candidate_sequential(model, anchor, candidate)
                        for candidate in (control, probe))
+        route_absence = all(
+            not candidate.steps[h].route and
+            bool((trace.actions[h]["route_task_index"] < 0).all()) and
+            bool((trace.actions[h]["route_flow_index"] < 0).all())
+            for candidate, trace in zip((control, probe), traces) for h in range(4))
+        if not route_absence:
+            raise AssertionError("explicit Route no-op did not compile to absence sentinels")
+        if not all(bool((traces[0].model_traces[h]["routed"][family] == 0).all())
+                   for h in range(4) for family in ("task", "flow")):
+            raise AssertionError("no-op control injected learned Task/Flow action")
         scored = score_candidate_set(state, side, tuple(zip((control, probe), traces)),
             slot_duration_s=protocol.training.rssm.slot_duration_s)
         # Bounded effective-action audit: current existing Flow and one
         # pending task, both chosen solely from the anchor's causal support.
         audit_rows = []
-        for kind in ("existing_flow", "pending_no_current_flow"):
+        for kind in (("existing_flow", "pending_no_current_flow") if include_historical_route_audit else ()):
             target_task = None
             for task in side.tasks:
                 hits = [f for f in range(state["flow_presence"].shape[1])
@@ -224,6 +234,8 @@ def run() -> dict:
             "strict_load": True, "parameter_digest_unchanged": before == after,
             "prior_mode": "mean", "service_mode": "expectation", "horizon": 4,
             "H_eff": scored.H_eff, "candidate_count": len(scored.scores),
+            "comm_effort_denominator": side.effort_denominators[0],
+            "comm_relation_rows": int(state["comm_presence"].shape[1]),
             "candidate_scores": [{"candidate_id": x.candidate_id,
                                   "candidate_fingerprint": x.candidate_fingerprint,
                                   "anchor_fingerprint": x.anchor_fingerprint,
@@ -237,6 +249,8 @@ def run() -> dict:
                                   "per_task_rows": x.per_task_rows, "diagnostics": x.diagnostics}
                                  for x in scored.scores],
             "effective_route_action_audit": audit_rows,
+            "route_noop_compiled_to_absence_sentinels": route_absence,
+            "no_route_task_flow_latent_injection_on_hold": True,
             "future_target_used": False, "candidate_method_claim": False,
             "performance_claim": False, "gpu": False, "locked_test": False,
             "training": False, "optimizer_step": False}

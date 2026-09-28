@@ -1,0 +1,19 @@
+{
+  "step": "STEP 6.2B-PATCH",
+  "git_start_sha": "3ac4470080b11906d16c3a4c33c3a3306f7f31c4",
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "checkpoint_modified": false,
+  "gpu": false,
+  "training": false,
+  "optimizer_step": false,
+  "formal_dataset_modified": false,
+  "locked_test": false,
+  "candidate_method_selected": false,
+  "closed_loop": false,
+  "baseline": false,
+  "performance_claim": false,
+  "empty_route_admitted": true,
+  "route_task_and_flow_indices_all_negative": true,
+  "no_route_task_flow_latent_injection_on_hold": true,
+  "formal_learned_action_tensor_count": 11
+}

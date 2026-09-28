@@ -1,6 +1,10 @@
 # 已知问题与冲突
 
-## 2026-09-28 STEP 6.2B Objective acceptance blocker
+## 2026-09-28 STEP 6.2B-PATCH 当前边界
+
+先前的 pending Route `flow_index=-1` 与 existing same-path Route 改 Task-Agent Host/learned latent 是真实实现观察；研究者现以 Planner v1 Route 显式 no-op 策略把二者排除出正式候选域，故不再阻塞 `STEP_6_2B=PASS`。4.4 Route→Host 语义及真正 Route/offload/multi-hop Planner 留待未来单独研究；4.4 本 Patch 未改。Formal multi-hop learned coverage 仍为零，单 anchor CPU scorer 验收不等于候选排序质量或闭环性能。
+
+## 2026-09-28 STEP 6.2B Objective acceptance blocker（历史）
 
 `BLOCKED_ON_OBJECTIVE_SEMANTICS`：单跳 domain gate 实际允许 pending/no-current-Flow Route；正式 adapter 将它映射为 `pending_flow / flow_index=-1`，4.4 不创建 Flow，而 frozen Objective 只规定未来 Return birth 的 `H_sup`。scorer 现拒绝静默给此类 trace 正式评分，待研究者决定支持范围。另，同路径 existing-Flow Route 的 4.4 规则会在 hop 完成前修改 Task-Agent Host，尽管 holder/Flow 路线未变；需核对 Route/Host 因果语义。Comm effort 原分母把 242 条关系行当 RB support，已修为选定 anchor 的 50 个全局有效 RB ID；旧机器观测仍保留。scorer 的 fixed-support CPU 机制通过不等于 6.2B 完整验收。
 

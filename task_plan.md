@@ -1612,3 +1612,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 发现 pending Flow Route / same-path Host 语义冲突；scorer 拒绝静默评分，验收 `BLOCKED_ON_OBJECTIVE_SEMANTICS`。
 - [x] 完成回归、文档/Context/index 与 diff review；本 Step 以 commit/push 收口后停止。
 - 当前关口：6.2B 被既有合同语义阻塞。唯一下一动作：研究者裁决 Route 两处冲突后重新计算 acceptance；GPU、locked_test、训练、baseline、闭环关闭。
+## 2026-09-28 STEP 6.2B-PATCH — Route No-Op Closure
+
+- [x] 以最新 origin/main `3ac4470` 为起点，核对源码、合同、先前阻塞与禁止修改路径。
+- [x] 先失败测试复现 direct Route 被接受，再将每 horizon 非空 Route 改为 `OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1`。
+- [x] 用冻结 checkpoint 完成无 Route H1–H4 scorer 集成、Comm 分母与有效自由度机器审计。
+- [x] 全回归、跨层 gate、知识索引、Context Consistency 与 diff 检查通过；Git commit/push 为最后收口操作。
+- 当前 gate：`STEP_6_2B=PASS`（仅 scorer/comparator CPU 合同）；唯一下一交付为 Patch Git 收口。GPU、`locked_test`、训练、候选方法、闭环均不在本 Step。

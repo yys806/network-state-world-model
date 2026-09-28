@@ -7,6 +7,7 @@ from pathlib import Path
 
 from run_step6_2b_objective_scorer_cpu_v1 import ROOT, CHECKPOINT, EXPECTED_SHA, run, sha
 from pi_jwm.step4_2a_graph_input_extension_v1 import TASK_AGENT_RELATION_TYPE_VOCAB
+from pi_jwm.step6_0c_planner_action_domain_v1 import ROUTE_DOMAIN
 
 OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_2b_objective_scorer_v1_20260928"
 
@@ -18,6 +19,10 @@ def emit(name: str, value: dict) -> None:
 
 
 def main() -> None:
+    if ROUTE_DOMAIN == "PLANNER_V1_ROUTE_EXPLICIT_NOOP_ONLY":
+        raise RuntimeError(
+            "Historical STEP 6.2B blocked receipts are frozen; use "
+            "build_step6_2b_patch_route_noop_receipts_v1.py for current evidence")
     integration = run()
     audit = integration.pop("effective_route_action_audit")
     source = ROOT / "code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py"

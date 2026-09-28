@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-28：STEP 6.2B-PATCH Route no-op 收口
+
+研究者冻结 Planner v1 每 horizon Route 为空；6.0C 准入层拒绝所有非空 Route，4.4/learned Route/checkpoint 不变。新增拒绝与缺席编译测试、8 份 CPU 机器收据、Patch 实施记录并同步 AI_CONTEXT/权威计划。`STEP_6_2B=PASS` 限于 Objective scorer/比较器合同；原 6.2B blocked 收据保留历史。
+
 ## 2026-09-28：STEP 6.2B scorer 实现与语义阻塞
 
 新增 supplied-rollout 五项 Objective scorer、严格字典序、focused tests、非锁定 validation 冻结 checkpoint CPU 集成和 13 份 additive receipts；修正 Planner side-state Comm RB denominator。bounded Route audit 发现 pending Flow 准入和同路径 Host 更新合同冲突，故仅提交可复核的 `BLOCKED_ON_OBJECTIVE_SEMANTICS` 证据，不展开候选方法或闭环。

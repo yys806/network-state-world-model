@@ -1,6 +1,10 @@
 # AI_CONTEXT 重要变更
 
-## 2026-09-28 STEP 6.2B（验收阻塞）
+## 2026-09-28 STEP 6.2B-PATCH
+
+研究者冻结 Planner v1 Route `EXPLICIT_NOOP_ONLY`，6.0C gate 统一拒绝非空 Route；底层 Route/多跳与 learned encoder 保留。新 CPU receipts 验证负索引缺席编译、有效 Route 自由度为 NONE、Comm 分母 50、冻结 checkpoint 无 Route H4 集成；`STEP_6_2B=PASS` 限于 scorer 合同。原 6.2B blocked 观察保留为历史。无候选方法、闭环、baseline、GPU、`locked_test` 或训练。
+
+## 2026-09-28 STEP 6.2B（历史验收阻塞）
 
 新增五项 scorer、严格字典序、CPU 合同与冻结 checkpoint 单 anchor 机制证据；修正 Comm effort RB 分母。bounded Route audit 发现 pending Flow admission 与同路径 Host 更新的合同冲突，`STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`。没有新的研究者 Objective 决定，未开始候选方法、baseline、GPU、locked_test 或闭环。
 

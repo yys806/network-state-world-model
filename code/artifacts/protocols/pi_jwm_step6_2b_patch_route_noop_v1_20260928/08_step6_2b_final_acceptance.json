@@ -1,0 +1,35 @@
+{
+  "step": "STEP 6.2B-PATCH",
+  "git_start_sha": "3ac4470080b11906d16c3a4c33c3a3306f7f31c4",
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "checkpoint_modified": false,
+  "gpu": false,
+  "training": false,
+  "optimizer_step": false,
+  "formal_dataset_modified": false,
+  "locked_test": false,
+  "candidate_method_selected": false,
+  "closed_loop": false,
+  "baseline": false,
+  "performance_claim": false,
+  "STEP_6_2B": "PASS",
+  "PLANNER_OBJECTIVE_SCORER": "IMPLEMENTED_AND_CPU_CONTRACT_VERIFIED",
+  "MPC_OBJECTIVE": "FROZEN_AND_IMPLEMENTED",
+  "CANDIDATE_METHOD_SELECTION": "RESEARCH_PENDING",
+  "CLOSED_LOOP_READINESS": "NOT_READY",
+  "MULTIHOP_PLANNER_READINESS": "NOT_IN_V1_DOMAIN",
+  "ROUTE_OPTIMIZATION_ACTIVE_V1": false,
+  "objective_tuple": [
+    "N_DDL",
+    "A_DDL",
+    "J_Delay",
+    "J_Burden",
+    "J_Effort"
+  ],
+  "comparison": "STRICT_LEXICOGRAPHIC_MINIMIZATION",
+  "patch_blockers_closed": [
+    "pending_flow_route",
+    "existing_same_path_route"
+  ],
+  "remaining_scope": "CPU scorer mechanism; no candidate method, ranking quality or closed-loop claim"
+}

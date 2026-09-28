@@ -1,5 +1,7 @@
 # STEP 6.2B — Planner Objective Scorer & Lexicographic Comparator v1
 
+> Historical STEP 6.2B implementation record: the Route blocker and blocked verdict below describe the state at commit `3ac4470`. The separately authorized STEP 6.2B-PATCH resolved Planner v1 admission by freezing Route to explicit no-op only. Current CPU scorer acceptance is recorded in `STEP_06_2B_PATCH_ROUTE_NOOP_CLOSURE.md`; original observations below remain unchanged.
+
 ## Step Goal and Definition Basis
 
 Implement the researcher-frozen `(N_DDL,A_DDL,J_Delay,J_Burden,J_Effort)` tuple on already supplied Step 6.1 candidate rollouts, with a common candidate-set support horizon and strict lexicographic comparison. The governing sources are `PIJWM_STEP_06_2_PLANNER_OBJECTIVE_CONTRACT_V1.md`, the 6.0C single-hop action domain, STEP 6.2A-PATCH/CLOSURE receipts, and the 2026-09-28 authorization. No candidate-generation method or scientific objective change was authorized.

@@ -19,8 +19,8 @@ CPU_POLICY = "STATIC_PER_SLOT_BUDGET_V1"
 MOB_POLICY = "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1"
 CPU_SOURCE = "Raw decision.node_cpu_capacity_observation_rows; entity.getFogProfile()['cpu']"
 MOB_SOURCE = "Raw decision.entities UAV heading/heading_unit/elevation_rad"
-ROUTE_DOMAIN = "FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1"
-ROUTE_SOURCE = "STEP_6_2A-CLOSURE researcher-frozen Planner v1 support domain"
+ROUTE_DOMAIN = "PLANNER_V1_ROUTE_EXPLICIT_NOOP_ONLY"
+ROUTE_SOURCE = "STEP_6_2B-PATCH researcher-frozen Planner v1 learned-support boundary"
 PROFILES = (
     ("PROFILE_HOLD", 0.0, 0.0),
     ("PROFILE_1", -0.2, 5.0),
@@ -186,35 +186,6 @@ def _profile(row: Mapping[str, Any], state: PlannerMobilityControlState) -> str 
     return None
 
 
-def _validate_single_hop_route(row: Mapping[str, Any], base: PlannerCandidateContext) -> Constraint | None:
-    """Keep Planner v1 inside the formal single-hop support domain.
-
-    The repaired world-model rule still accepts general destination lists. This
-    gate applies only to Planner v1 candidates and never changes model tensors.
-    """
-    path = tuple(int(x) for x in row.get("route_node_indices", ()))
-    if len(path) != 1:
-        return _constraint(ROUTE_DOMAIN, ConstraintStatus.VIOLATED,
-                           "OUTSIDE_PLANNER_ROUTE_SINGLE_HOP_DOMAIN_V1", ROUTE_SOURCE)
-    target = row.get("target_node_index")
-    if target is None:
-        return _constraint(ROUTE_DOMAIN, ConstraintStatus.UNKNOWN,
-                           "FROZEN_LOGICAL_DESTINATION_UNOBSERVED", ROUTE_SOURCE)
-    frozen_destination = int(target)
-    flow_id = row.get("flow_id")
-    flow_slots = base.static.get("input_entity_index", {}).get("logical_flow", {})
-    state = base.current_state
-    if flow_id is not None:
-        if flow_id not in flow_slots or "flow_destination_index" not in state:
-            return _constraint(ROUTE_DOMAIN, ConstraintStatus.UNKNOWN,
-                               "FROZEN_LOGICAL_DESTINATION_UNOBSERVED", ROUTE_SOURCE)
-        frozen_destination = int(state["flow_destination_index"][0, int(flow_slots[flow_id])])
-    if path[0] != frozen_destination or int(target) != frozen_destination:
-        return _constraint(ROUTE_DOMAIN, ConstraintStatus.VIOLATED,
-                           "EXISTING_FLOW_LOGICAL_DESTINATION_IMMUTABLE", ROUTE_SOURCE)
-    return None
-
-
 def validate_domain_sequence(candidate: CandidateActionSequence, base: PlannerCandidateContext,
                              domain: PlannerActionDomainContext) -> DomainResult:
     if candidate.provenance != base.causal_provenance or domain.causal_provenance != base.causal_provenance:
@@ -228,13 +199,12 @@ def validate_domain_sequence(candidate: CandidateActionSequence, base: PlannerCa
         # domain retains a named VIOLATED result so the source/reason is auditable.
         negative_rows = tuple(row for row in step.comp if float(row["allocated_cpu_per_s"]) < 0)
         if negative_rows:
-            validate_step(replace(step, comp=tuple(row for row in step.comp if row not in negative_rows)), base)
+            validate_step(replace(step, route=(), comp=tuple(row for row in step.comp if row not in negative_rows)), base)
         else:
-            validate_step(step, base)
-        for row in step.route:
-            route_constraint = _validate_single_hop_route(row, base)
-            if route_constraint is not None:
-                constraints.append(route_constraint)
+            validate_step(replace(step, route=()), base)
+        if step.route:
+            constraints.append(_constraint(ROUTE_DOMAIN, ConstraintStatus.VIOLATED,
+                "OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1", ROUTE_SOURCE))
         by_node: dict[str, float] = {}
         for row in step.comp:
             node_id = str(row["node_id"])

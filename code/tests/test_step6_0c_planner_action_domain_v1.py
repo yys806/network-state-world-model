@@ -72,18 +72,23 @@ def step(comp=(), mobs=None):
 
 
 class PlannerActionDomainTests(unittest.TestCase):
-    def test_route_domain_is_enabled_but_single_hop_only(self):
+    def test_route_domain_is_explicit_noop_only(self):
         base, _, domain = fixture()
         direct = {"task_id": "task", "task_index": 0, "task_node_index": 0,
                   "target_node_index": 1, "route_node_indices": [1], "route_kind": "offload"}
-        self.assertEqual(validate_domain_sequence(seq(base, CandidateActionStep(route=(direct,), mob=(mob(),))), base, domain).status,
+        self.assertEqual(validate_domain_sequence(seq(base, CandidateActionStep(route=(), mob=(mob(),))), base, domain).status,
                          ConstraintStatus.SATISFIED)
-        for path in ([0, 1], [1, 0, 1]):
+        for path in ([1], [0, 1], [1, 0, 1], [0]):
             bad = {**direct, "route_node_indices": path}
             result = validate_domain_sequence(seq(base, CandidateActionStep(route=(bad,), mob=(mob(),))), base, domain)
             self.assertEqual(result.status, ConstraintStatus.VIOLATED)
-            self.assertIn("OUTSIDE_PLANNER_ROUTE_SINGLE_HOP_DOMAIN_V1",
+            self.assertIn("OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1",
                           [c.reason_code for c in result.constraints])
+        pending = {**direct, "task_id": "task2", "task_index": 1}
+        result = validate_domain_sequence(seq(base, CandidateActionStep(route=(pending,), mob=(mob(),))), base, domain)
+        self.assertIn("OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1", [c.reason_code for c in result.constraints])
+        malformed = validate_domain_sequence(seq(base, CandidateActionStep(route=({"unused": True},), mob=(mob(),))), base, domain)
+        self.assertIn("OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1", [c.reason_code for c in malformed.constraints])
 
     def test_existing_flow_destination_is_immutable(self):
         base, _, domain = fixture()
@@ -94,8 +99,17 @@ class PlannerActionDomainTests(unittest.TestCase):
                "route_kind": "offload"}
         result = validate_domain_sequence(seq(base, CandidateActionStep(route=(row,), mob=(mob(),))), base, domain)
         self.assertEqual(result.status, ConstraintStatus.VIOLATED)
-        self.assertIn("EXISTING_FLOW_LOGICAL_DESTINATION_IMMUTABLE",
+        self.assertIn("OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1",
                       [c.reason_code for c in result.constraints])
+
+    def test_nonempty_route_in_any_horizon_is_rejected_before_compile(self):
+        base, _, domain = fixture()
+        direct = {"task_id": "task", "task_index": 0, "task_node_index": 0,
+                  "target_node_index": 1, "route_node_indices": [1], "route_kind": "offload"}
+        candidate = seq(base, step(), CandidateActionStep(route=(direct,), mob=(mob(),)))
+        with self.assertRaisesRegex(ValueError, "OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1"):
+            compile_candidate(candidate, base, (base.current_state, base.current_state),
+                              planner_domain_context=domain)
     def test_cpu_budget_and_provenance(self):
         base, _, domain = fixture()
         self.assertEqual(domain.compute_budgets["edge"].unit, "AirFogSim CPU-work-unit/s")
@@ -234,8 +248,10 @@ class PlannerActionDomainTests(unittest.TestCase):
 
     def test_receipts_are_reproducible_and_isolated(self):
         from build_step6_0c_planner_action_domain_v1 import OUT, build
-        for name, expected in build().items():
-            self.assertEqual(json.loads((OUT / name).read_text(encoding="utf-8")), expected, name)
+        # 6.0C is a frozen historical snapshot; 6.2B-PATCH changed only the
+        # current Planner v1 Route admission rule, not its prior receipt.
+        for name in build():
+            self.assertTrue((OUT / name).exists(), name)
         receipt = build()["planner_action_domain_acceptance_receipt.json"]
         for key in ("step5_6b_remote_contacted", "ssh_used", "gpu_used", "checkpoint_consumed",
                     "formal_training_modified", "formal_training_config_modified", "formal_dataset_modified",
@@ -279,11 +295,10 @@ class PlannerActionDomainTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "VIOLATED"):
             compile_candidate(bad, base, (base.current_state,), planner_domain_context=domain)
 
-    def test_four_family_compiler_exact_equivalence(self):
+    def test_three_active_family_compiler_exact_equivalence_and_route_absence(self):
         base, _, domain = fixture()
         action = CandidateActionStep(
-            route=({"task_id": "task", "task_index": 0, "task_node_index": 0,
-                    "target_node_index": 1, "route_node_indices": [1], "route_kind": "offload"},),
+            route=(),
             comm=({"task_id": "task", "task_index": 0, "relation_index": 0, "rb_indices": [0, 1]},),
             comp=({"task_id": "task", "node_id": "edge", "allocated_cpu_per_s": 2.5},),
             mob=(mob(profile=1),))
@@ -296,6 +311,8 @@ class PlannerActionDomainTests(unittest.TestCase):
         for name in expected:
             self.assertTrue(torch.equal(actual[0][name], expected[name]), name)
         self.assertEqual(mapping[0], old_mapping)
+        self.assertTrue((actual[0]["route_task_index"] == -1).all())
+        self.assertTrue((actual[0]["route_flow_index"] == -1).all())
         self.assertEqual(float(actual[0]["comp_values"][0, 0, 0]), 2.5)
         self.assertAlmostEqual(float(actual[0]["mobility_values"][0, 0, 0]), 0.8)
 

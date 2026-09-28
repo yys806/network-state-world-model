@@ -1,6 +1,12 @@
 # 已确认决策
 
-## 2026-09-28 STEP 6.2A-CLOSURE — Researcher Decisions
+## 2026-09-28 STEP 6.2B-PATCH — Researcher Decision
+
+- `PLANNER_V1_ROUTE_POLICY=EXPLICIT_NOOP_ONLY`：Planner v1 每个 horizon 的 Route family 为空；pending、已有 Flow 同路径、多跳、改目的地等所有非空 Route 候选均不得进入正式 v1 rollout。
+- Route schema/interface、4.4 learned Route encoder 与底层确定性多跳能力保留；Planner v1 实际优化动作族为 Comm/Comp/Mob。此策略是当前 learned-support 边界，不是 AirFogSim 物理合法性判断。
+- Objective `(N_DDL,A_DDL,J_Delay,J_Burden,J_Effort)` 及严格字典序不变。此前 6.2A-CLOSURE 的单跳 Route 决定已被本次更严格的 v1 决定取代；下文原记录保留为历史。
+
+## 2026-09-28 STEP 6.2A-CLOSURE — Historical Researcher Decisions
 
 - 保留当前 Formal `best.pt`，`RETRAIN_AFTER_ROUTE_RECOVERY=false`；SHA-256 保持 `941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`。
 - Planner v1 Route 保持启用，但 action domain 限定为 `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1`：单节点直达当前冻结 destination；multi-hop code 保留但移出 v1，作为后续扩展/消融，不作正式 learned-performance claim。

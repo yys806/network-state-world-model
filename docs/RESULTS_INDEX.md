@@ -1,5 +1,7 @@
 # PI-JWM 结果索引
 
+2026-09-28 STEP 6.2B-PATCH：机器 receipt 的 `STEP_6_2B=PASS` 是冻结 best.pt、非锁定单 anchor、mean-prior/expected-service H1–H4 的 Objective scorer/严格比较器 CPU 机制验收；Route 有效自由度 `NONE`，Comm effort 分母 50 全局 RB ID。见 `code/artifacts/protocols/pi_jwm_step6_2b_patch_route_noop_v1_20260928/`、实施记录和 6.0C/6.2B 源码。不得解释成候选优劣、性能或闭环结果。
+
 2026-09-28 STEP 6.1：`action_family_response.json`、`recursive_feedback_audit.json` 和 `stochastic_common_seed_diagnostic.json` 仅证明冻结训练模型的动作条件、递归和数值稳定机制；CPU runtime 只说明本机实现开销。没有 reward/cost/risk、winner、baseline、locked-test、闭环收益或性能优越性结果。原始收据见 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/`。
 
 2026-09-28：STEP 5.6C 的 `formal_validation_observation.json` 记录正式 run 五次 validation 和 H1–H4 `L_Pred`、Motion/CSI raw MAE/RMSE；最终 `L_Val=0.07431338784170399` 是同一验证集的严格最低值。对应 checkpoint SHA 和 CPU 验收见 `code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/`。这是 **Formal Validation Observation**，不是 test performance、baseline 对比、SOTA、泛化或闭环系统结论。

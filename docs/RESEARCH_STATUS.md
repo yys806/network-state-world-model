@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> 2026-09-28 STEP 6.2B-PATCH（当前）：研究者冻结 Planner v1 Route `EXPLICIT_NOOP_ONLY`，非空 Route 准入拒绝；`STEP_6_2B=PASS`、`MPC_OBJECTIVE=FROZEN_AND_IMPLEMENTED` 只表示五项 scorer/字典序的 CPU 合同验收。候选方法待决、闭环未就绪；无 Route 优化、性能、baseline、GPU 或 locked-test 结论。下方 6.2B BLOCKED 是历史观察。
+
 > 2026-09-28 STEP 6.2B：冻结 Objective 五项 scorer 与严格字典序已实现并通过一条 validation anchor 的 CPU checkpoint 机制验证，但 pending Route 固定支持和同路径 Host 更新与现有合同存在冲突，`STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`。不把 scorer 接通视为 Planner 方法或性能验收；candidate method、closed loop、baseline、GPU、locked_test 均未开始。
 
 > 2026-09-28 STEP 6.1：`TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT=PASS` 限于一个 Formal Validation anchor/冻结 seed 5601 的 CPU 机制验收，四类当前因果动作的 H4 路径、对应潜变量和规则响应有机器收据。此状态不证明反事实预测准确或 Planner 控制效果；`MPC_OBJECTIVE=NOT_STARTED`、`CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`、`CLOSED_LOOP=NOT_STARTED`，baseline/locked-test/performance claim 均无。

@@ -1,6 +1,10 @@
 # 数据流与张量合同
 
-## STEP 6.2B 当前评分数据流
+## STEP 6.2B-PATCH 当前 Route no-op 数据流
+
+Planner v1 候选每 horizon 的 `route.entries=[]` → 6.0C gate PASS → 原 11 tensor adapter 将 Route Task/Flow indices 编译为负数哨兵 → 4.4 不执行 Route encoder 注入或 Route rule。任何非空 Route 在 gate 以 `OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1` 拒绝，pending `flow_index=-1` 不再进入正式 rollout。Comm/Comp/Mob、scorer 五项和共用 `H_eff` 的数据流不变。下方 6.2B/6.2A-CLOSURE 段是历史路径。
+
+## STEP 6.2B 历史评分数据流
 
 当前因果 anchor/已对齐 deadline sidecar → Planner-only objective side-state；同一 anchor 的已给定合法候选 → Step 6.1 H1–H4 predicted trace；scorer 先对各候选求 `H_sup`、对集合求共用 `H_eff`，再计算五项 score/逐 Task/Horizon 分解。Future Target、future truth/FAILED label 不进入评分。Comm 分母取 anchor 当前有效无线关系条件下正式张量的全局 RB 维度，非旧 `rb_active_mask` 的关系行数。pending Flow Route 映射 `flow_index=-1` 时评分拒绝；需研究者处理当前 gate 与 fixed-support 合同冲突。
 

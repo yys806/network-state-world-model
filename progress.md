@@ -1,5 +1,13 @@
 # Progress
 
+## 2026-09-28 STEP 6.2B-PATCH
+
+- 起点 `HEAD=origin/main=3ac4470080b11906d16c3a4c33c3a3306f7f31c4`；原有未跟踪 `TASK/` 和绘图脚本保持。
+- 6.0C 先失败测试证实单跳 direct Route 被接受；改为所有非空 Route 统一拒绝。Focused 6.0C 15/15、6.2B 11/11 PASS。
+- 冻结 checkpoint CPU 非锁定 anchor 上两个 Route 空动作候选 H1–H4 scorer PASS；负索引缺席编译和无 Route Task/Flow 注入通过，SHA 与参数摘要不变。Comm 分母 50，关系行 242。8 份 Patch receipts 已生成。
+- 待全部回归、索引和 Git 收口；无 GPU、`locked_test`、训练、baseline 或闭环。
+
+
 ## 2026-09-28 STEP 6.1
 
 - `git fetch origin` 后起点 `HEAD=origin/main=ebb04418554e525b823cf33b642fb66a09ff471e`，工作树仅有预存 `TASK/` 和绘图脚本未跟踪；正式 best checkpoint 实测 SHA `941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`。

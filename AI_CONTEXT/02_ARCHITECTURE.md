@@ -1,6 +1,10 @@
 # 当前代码架构与新定义差异
 
-## 2026-09-28 STEP 6.2B scorer 层（验收阻塞）
+## 2026-09-28 STEP 6.2B-PATCH Planner v1 Route 边界
+
+Planner v1 的 6.0C 准入层只接受空 Route family；Route schema、11 tensor adapter、4.4 learned Route encoder 和多跳确定性规则都保留。合法候选实际变化来自 Comm/Comp/Mob。此策略是研究者对当前 learned-support 的限制，不是删除 Route 架构。STEP 6.2B scorer/字典序比较器通过 CPU 合同验收；候选生成方法和闭环仍未建立。下文 6.2B 阻塞段是 Patch 前历史状态。
+
+## 2026-09-28 STEP 6.2B scorer 层（历史验收阻塞）
 
 `CandidateRolloutTrace + PlannerObjectiveCausalSideState + CandidateActionSequence + anchor state → CandidateObjectiveScore` 是独立 CPU scorer 层，不进入 Encoder/RSSM learned tensors；先求共用 `H_eff`，再逐 Task/Horizon 汇总五项目标，最后严格字典序。当前只证明 fixed-support 机制。pending Route admission 与 same-path Host 规则冲突使 6.2B 完整验收阻塞；不改变原模型结构、训练 checkpoint 或 Planner v1 single-hop 决定。
 
