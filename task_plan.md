@@ -1598,3 +1598,8 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 扫描 4416/1104 Formal windows 的 route 激活，成对比较 54 个潜在重叠窗口；完整 1104-window patched validation 标记为需单独授权。
 - [x] 建立跨层训练前 gate、12 项机器回执、文档与合同更新；focused 回归、compile、diff 审查待 Git 收口。
 - 当前关口：6.2A-ROUTE-RECOVERY 已完成工程修复与兼容性审计。结论：`CHECKPOINT_NO_RETRAIN_SALVAGE=SUPPORTED_WITH_LIMITATIONS`。限制：Formal Dataset 未覆盖多跳/完整 reroute。唯一下一交付：提交、推送并报告；严禁重训、optimizer、GPU、checkpoint 修改、6.2B、baseline、closed loop、locked_test。
+## 2026-09-28 STEP 6.2A-CLOSURE
+
+- [x] 接受 no-retrain checkpoint salvage，冻结 Planner v1 single-hop Route domain。
+- [x] 完成 domain gate、burden contract test、closure receipts 和合同/AI_CONTEXT同步。
+- [ ] 最后完成完整 CPU 回归、index/check、diff review、commit/push；随后停止等待研究者审阅。

@@ -2,6 +2,8 @@
 
 > 2026-09-28 STEP 6.1：冻结训练模型上的 H4 候选推演机制入口见 `implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md`；源码 `code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py`、CPU 运行脚本与七份 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/` 收据。无 objective/winner/闭环性能结论。
 
+> 2026-09-28 STEP 6.2A-CLOSURE：no-retrain checkpoint acceptance、Planner v1 single-hop Route domain 与 `STEP_6_2B_READINESS=READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION` 收口入口见 `implementation_records/STEP_06_2A_CLOSURE_NO_RETRAIN_SINGLE_HOP_PLANNER_V1.md` 和 `code/artifacts/protocols/pi_jwm_step6_2a_closure_single_hop_v1_20260928/`；无 scorer、ranking、baseline、closed-loop 或性能结论。
+
 > 2026-09-26 STEP 6.0C：Planner v1 静态 CPU 预算、UAV 六档操作域与 CPU 合同验收见 `contracts/PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md`、`implementation_records/STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md`；五份机器凭证在 `code/artifacts/protocols/pi_jwm_step6_0c_planner_action_domain_v1_20260926/`。无模型候选 rollout 或性能结果。
 
 > 2026-09-26 STEP 6.0B：CPU/UAV 可行性来源审计见 `implementation_records/STEP_06_0B_PLANNER_ACTION_FEASIBILITY_SOURCE_AUDIT.md`；五份机器凭证在 `code/artifacts/protocols/pi_jwm_step6_0b_planner_action_feasibility_audit_v1_20260926/`。静态容量不等于动态可用量，UAV 配置/数据范围不等于硬边界，两项 UNKNOWN 保留。

@@ -1,5 +1,12 @@
 # 已确认决策
 
+## 2026-09-28 STEP 6.2A-CLOSURE — Researcher Decisions
+
+- 保留当前 Formal `best.pt`，`RETRAIN_AFTER_ROUTE_RECOVERY=false`；SHA-256 保持 `941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`。
+- Planner v1 Route 保持启用，但 action domain 限定为 `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1`：单节点直达当前冻结 destination；multi-hop code 保留但移出 v1，作为后续扩展/消融，不作正式 learned-performance claim。
+- Future formal training 的 mandatory prerequisite 是 `CROSS_LAYER_RULE_SEMANTICS_GATE=PASS`。
+- 以上是研究者决定；完整 patched validation 未执行，旧 `LVal` 不改标为 patched 结果。
+
 ## 2026-09-28 STEP 6.1 授权边界
 
 研究者授权执行冻结模型上的 H1–H4 候选推演机制与敏感性预检，明确禁止目标函数、候选选择、训练、GPU、baseline、locked_test 和闭环。本 Step 未新增科学方法、指标阈值或 Search/Learned/Hybrid 选型决定；6.0C 操作域和 5.6C checkpoint 身份保持不变。

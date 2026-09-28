@@ -21,3 +21,7 @@ Diagnostic Throughput is `NETWORK_SERVICE_THROUGHPUT`: all real successful hop-c
 Energy and fairness retain separate final-metric boundaries. This interface does not activate them in Planner Objective v1.
 
 No baseline, locked-test, GPU, closed-loop, or performance experiment is authorized by this interface document.
+
+PI-JWM Planner v1 uses `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1`. A future primary fair comparison that claims the same action domain must apply the same single-hop Route restriction. A native/full-action-space baseline may retain its own domain, but must be labeled `ACTION_DOMAIN_NOT_IDENTICAL`; this contract does not select that future baseline method. The shared Flow/Outcome extractor must pass the cross-layer rule semantics gate before any baseline execution.
+
+The route/flow metric extractor has passed `CROSS_LAYER_DETERMINISTIC_SEMANTICS_GATE`; this records extractor semantic consistency only and does not authorize or claim a baseline run.

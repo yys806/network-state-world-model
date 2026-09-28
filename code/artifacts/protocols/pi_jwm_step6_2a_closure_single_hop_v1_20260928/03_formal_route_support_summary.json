@@ -1,0 +1,55 @@
+{
+  "baseline": false,
+  "candidate_ranking_executed": false,
+  "checkpoint_replaced": false,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "checkpoint_sha256_unchanged": true,
+  "closed_loop": false,
+  "formal_dataset_modified": false,
+  "formal_multihop_train_coverage": false,
+  "formal_multihop_validation_coverage": false,
+  "formal_training_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "multihop_code_retained": true,
+  "multihop_performance_claim": false,
+  "multihop_planner_v1_enabled": false,
+  "objective_scorer_implemented": false,
+  "planner_v1_route_domain": "FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1",
+  "retrain": false,
+  "schema": "PIJWM_FORMAL_ROUTE_SUPPORT_SUMMARY_V1",
+  "train": {
+    "active_multihop_flows": 0,
+    "active_multihop_windows": 0,
+    "existing_flow_route_overlap_windows": 38,
+    "horizon_distribution": {
+      "H1": 1406,
+      "H2": 1414,
+      "H3": 1421,
+      "H4": 1430
+    },
+    "legacy_intermediate_completion": 0,
+    "route_action_multihop": 0,
+    "route_action_nonempty": 5671,
+    "route_width_gt_1": 0,
+    "trajectories": 48,
+    "windows": 4416
+  },
+  "validation": {
+    "active_multihop_flows": 0,
+    "active_multihop_windows": 0,
+    "existing_flow_route_overlap_windows": 16,
+    "horizon_distribution": {
+      "H1": 397,
+      "H2": 399,
+      "H3": 399,
+      "H4": 399
+    },
+    "legacy_intermediate_completion": 0,
+    "route_action_multihop": 0,
+    "route_action_nonempty": 1594,
+    "route_width_gt_1": 0,
+    "trajectories": 12,
+    "windows": 1104
+  }
+}

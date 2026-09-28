@@ -309,3 +309,8 @@ Reconciled current Flow E2E evidence with historical 4.2B, added exact-aligned P
 ## 2026-09-28 STEP 6.2A-ROUTE-RECOVERY
 
 Repaired destination-list intermediate-hop advancement and same-destination full-path Route rule metadata without changing the frozen 11 learned action tensors. Added real two-hop cross-layer regression, legacy/patched CPU paired audit, Formal Dataset static activation audit, checkpoint identity receipt, and mandatory cross-layer semantics gate. Formal route width is one throughout; no formal multi-hop performance claim is made. Full patched validation is separately authorized work. No retraining, GPU, optimizer, locked_test, baseline, scorer, ranking or closed loop was run.
+## 2026-09-28 STEP 6.2A-CLOSURE
+
+- 接受 no-retrain checkpoint salvage，保持 best SHA 与 11 learned action tensor interface。
+- 新增 Planner v1 single-hop Route admission gate 与 burden contract test；同步 closure receipts、Objective/Baseline contracts、AI_CONTEXT 和 readiness。
+- 未执行 scorer、candidate ranking、baseline、closed loop、GPU、locked_test 或 patched full validation。

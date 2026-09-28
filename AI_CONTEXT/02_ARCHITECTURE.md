@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## 2026-09-28 STEP 6.2A-CLOSURE Route boundary
+
+4.4 repaired multi-hop deterministic rule and rule-side route metadata remain code capabilities. Planner v1 admission applies the separate `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1` domain: one direct destination node per Route action. The domain gate does not alter the 11 learned action tensors or remove the multi-hop rule.
+
 ## STEP 6.1 冻结模型候选推演层
 
 `step6_1_trained_candidate_rollout_v1.py` 在 6.0A/C Candidate/Domain 与冻结 5.6C Encoder/RSSM 之间建立 CPU 推演层：每个 anchor 只算一次当前 Encoder/posterior，候选克隆同一 state/graph/latent，每步在预测 state 上经本模块的 `compile_candidate_step` 调用未改的正式 `build_action`，再调用 4.4 `one_step` 递归更新 state/graph/latent。无目标函数、候选选择、闭环执行；历史 `formal_candidate_rollout_planner_v1.py` 不在当前路径。

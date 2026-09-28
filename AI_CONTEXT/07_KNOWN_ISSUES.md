@@ -1,5 +1,11 @@
 # 已知问题与冲突
 
+## 2026-09-28 Route recovery closure
+
+- Route deterministic mismatch：`RESOLVED_IN_CODE`，包括 intermediate-hop advancement 与 same-destination full-path reroute；证据见 ROUTE-RECOVERY receipts。
+- `FORMAL_MULTIHOP_COVERAGE_MISSING`：train 4416 / validation 1104 windows 的 route width > 1 与 active multi-hop 均为 0。它是 coverage/generalization limitation，不是当前 checkpoint corruption evidence。
+- Planner v1 明确排除 multi-hop，当前 readiness 只到 single-hop scorer implementation；patched full validation 未执行。
+
 ## STEP 6.1 之后的证据限制
 
 四族机制验收只覆盖同一 Formal Validation anchor 和一个训练 seed；H1–H4 有响应不等于反事实预测准确、长时可靠、可用规划目标、候选生成覆盖或闭环收益。6.0C 的静态 CPU 预算不证明动态可用 CPU；UAV 空间/禁飞约束与 fallback 安全性未验证。配对随机诊断共用单个 generator，latent sampling 与无线 outage draw stream 未严格拆开。期望服务模式的 `outage_uniform_draw=NaN` 是未抽样哨兵值，有限性只针对实际 service 输出。

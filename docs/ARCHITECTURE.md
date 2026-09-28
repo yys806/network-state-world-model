@@ -2,6 +2,8 @@
 
 > 2026-09-28 STEP 6.1：同一 Formal Validation current Sample/Tensor/Graph/Raw 控制侧状态 → 一次 Encoder/current posterior mean → 候选各自克隆同一 state/graph/latent → 每步用预测 state 调用本模块 `compile_candidate_step`/正式 `build_action` → 4.4 `one_step` prior-only 递归 H4。仅 CPU 机制预检；没有评价、选择或闭环。
 
+> 2026-09-28 STEP 6.2A-CLOSURE：4.4 multi-hop deterministic capability remains in code, while Planner v1 Route admission is restricted to one direct node in `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1`; learned tensor interface is unchanged.
+
 > 2026-09-26 STEP 6.0C：6.0A 通用候选 → 当前 Raw 静态容量/UAV 控制侧状态 → 每时隙预算与六档域验证 → 原 `build_action` 编译。控制侧 H4 更新不是 World Model rollout；详见 `contracts/PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md`。
 
 > 2026-09-26 STEP 6.0B：静态 CPU 容量经 Raw→Sample→Tensor→Graph 保留，动态可用量没有可靠字段。UAV 控制在仿真器直接更新位置，未见硬数值限幅；6.0A Candidate gate 不变。详见 STEP 6.0B 实施记录。

@@ -53,7 +53,7 @@
       "formal_action_adapter": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
       "formal_collector": "e0842db84fb005c8a2c489a316314e2ee0cedd55d7b39f10dc60110495b9d603",
       "generic_candidate": "8e509115ce68ce09fc5b7ba79aff5f9106c848ce34b748a9d7cfa37d927f3537",
-      "planner_domain": "1975d31774a3160e60dbf47882f6bc4ca858da5f41ebefca9f6a99b29e10e74f",
+      "planner_domain": "6582f1ae9d42dad96cc5a5b060b87d98a70d0a7ec1cbbcde3c6fb6cf804b1298",
       "raw_adapter": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de"
     },
     "step6_0b_airfogsim_local_relevant_source_sha256": "49abbf8dee4397dd897e6d99ab06e3626d3075ffb300f10c1e52d53ee2e4e316",

@@ -1,6 +1,6 @@
 # PI-JWM Planner Objective Contract v1
 
-**Status:** `RESEARCHER-FROZEN TARGET CONTRACT` / `SOURCE-RECONCILED IN STEP 6.2A-PATCH` / `PLANNER SIDE-STATE FOUNDATION AVAILABLE` / `SCORER IMPLEMENTATION NOT STARTED`
+**Status:** `RESEARCHER-FROZEN TARGET CONTRACT` / `SOURCE-RECONCILED` / `PLANNER V1 ROUTE DOMAIN SINGLE-HOP` / `READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION` / `SCORER IMPLEMENTATION NOT STARTED`
 
 ## Scope
 
@@ -25,7 +25,7 @@ The frozen target definitions are:
 - `b_Comp=W_rem(q,h)/max(W_rem(q,0),epsilon)`. If `W_rem(q,0)=0`, compute burden is zero. A computation-finished task is not final-complete when a required Return is unresolved.
 - `b(q,h)=(m_Tx*b_Tx+m_Comp*b_Comp)/(m_Tx+m_Comp)`. Masks are frozen from the anchor, candidate-independent, and completed task burden is zero. `J_Burden=mean(b(q,h))`.
 
-These are target formulas only. STEP 6.2A-ROUTE-RECOVERY executes no scoring. The selected Formal Validation anchor now has a causally aligned deadline sidecar. The repaired canonical route convention is a destination list excluding the current holder; deterministic cross-hop state and same-destination full-path reroute now follow that convention. Formal route tensors remain single-hop in the current dataset, so formal multi-hop Tx burden evidence remains unavailable.
+These are target formulas only. STEP 6.2A-ROUTE-RECOVERY executes no scoring. The selected Formal Validation anchor has a causally aligned deadline sidecar. The repaired canonical route convention is a destination list excluding the current holder; deterministic cross-hop state and same-destination full-path reroute follow that convention. Formal train/validation multi-hop coverage is zero. Planner v1 therefore uses the researcher-frozen `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1`; multi-hop code remains available but outside v1 and carries no formal learned-performance claim. For a legal single-hop active Flow, `N_hop=1` and `current_hop_index=0`, so `remaining_hops_after_current=0` and `B_Tx=R_hop`; the general formula remains unchanged for later domains.
 
 ## Source boundaries
 
@@ -47,4 +47,6 @@ Main final system throughput is **End-to-End Useful Throughput**: actual termina
 
 Only source-backed hard constraints are allowed. Future task schedules, Future Target, FAILED labels, and candidate-dependent denominators must not be used to fill missing causal state. Unsupported future Return birth is a model support boundary, not an illegal candidate. The anchor cohort excludes already terminal `DONE` and `FAILED` tasks; task presence, release, computation-finished, and final completion are distinct states.
 
-**Readiness:** `STEP_6_2B_READINESS=BLOCKED`. Deadline and Return source readiness are closed for the selected anchor; E2E Flow fields and the revised effort/throughput definitions are closed. The remaining critical blocker is the current 4.2C-C/4.4 route-array semantic mismatch, including stale arrays after Route action. Repair requires a separate researcher decision because it changes trained-model route semantics or the accepted Planner action domain. No scorer, ranking or performance run has begun.
+**Historical blocker:** the 4.2C-C/4.4 route mismatch blocked the earlier 6.2A-PATCH readiness calculation. STEP 6.2A-ROUTE-RECOVERY repaired deterministic route semantics, and this closure freezes Planner v1 to Formal Dataset single-hop support. The existing formal best checkpoint is retained by researcher decision; retraining is false. The original `LVal=0.07431338784170399` remains a legacy accepted observation, not patched full validation; patched full validation was not executed.
+
+**Current readiness:** `STEP_6_2B_READINESS=READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`. This permits only implementation of the objective scorer and lexicographic comparator with CPU contract tests. It does not mean Planner/MPC/closed-loop readiness, candidate method selection, ranking quality, multi-hop readiness, baseline readiness or performance readiness. `CLOSED_LOOP_READINESS=NOT_READY`; `CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`; `MULTIHOP_PLANNER_READINESS=NOT_IN_V1_DOMAIN`. No scorer, ranking or performance run has begun.

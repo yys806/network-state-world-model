@@ -1225,3 +1225,8 @@
 - Accepted Formal Raw 含 `required_returned_size` 和 `return_destination_id`；但 AirFogSim `requireReturn()` 还依赖计算节点是否等于 Return 目的地。正 size 不是无条件 Return birth。
 - deadline 不在 Formal Raw，但所选非锁定 anchor 可通过 exact-aligned 决策前重放因果获得；训练身份与 checkpoint 未变。
 - Route effort 已由研究者删除；Priority 不启用。主业务吞吐是 E2E useful，all-hop network service 仅诊断，两者不能混用。
+## 2026-09-28 STEP 6.2A-CLOSURE
+
+- 研究者接受 no-retrain salvage；旧 LVal 保持 legacy observation，patched full validation 未执行。
+- Formal train 4416 / val 1104 均无 multi-hop activation；54 个 existing-Flow overlap windows legacy/patched H1-H4 完全 invariant。
+- Planner v1 Route enabled 但每条 path 只能一个 frozen destination；multi-hop code repaired and tested, outside v1 domain。

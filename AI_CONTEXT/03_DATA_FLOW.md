@@ -1,5 +1,9 @@
 # 数据流与张量合同
 
+## STEP 6.2A-CLOSURE Planner Route domain
+
+Candidate Route rows pass through the 6.0C admission gate: Route remains enabled, but a nonempty `route_node_indices` must contain exactly the current frozen logical destination. The rule-side repaired multi-hop path remains outside this Planner v1 candidate domain. No learned feature, formal tensor, or Future Target data is added.
+
 ## STEP 6.1 当前观测到 H4 反事实推演
 
 Formal Validation 当前 Sample/Tensor/Graph + 同 frame/time 的 Raw 静态 CPU/UAV 控制侧状态 → 同一个 `PreparedRolloutAnchor`（当前 `Z_t^{PI,L_g}` 与 posterior mean）→ CONTROL/单一动作族改变 → 每步按预测 state 编译正式 11 action tensors → `one_step(prior_mode=mean, service_mode=expectation)` → 下一步预测 state/graph/latent，直到 H4。Future Target package 不进入此链；future posterior teacher/target encoder 未实例化。`stochastic_common_seed_diagnostic.json` 仅另行以显式 generator 做小范围配对复现。

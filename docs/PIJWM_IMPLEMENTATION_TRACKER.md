@@ -138,6 +138,10 @@ STEP 4.3B 使用完整冻结 History Tensor 编码 Physical/Agent/Task/Flow 的�
 
 ## 下一步边界
 
+## STEP 6.2A-CLOSURE — No-Retrain + Single-Hop Planner v1
+
+研究者已接受 ROUTE-RECOVERY 的 no-retrain salvage：best checkpoint 保留，Formal train/validation multi-hop coverage 均为零。Planner v1 Route 保持 enabled 但限制为 `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1`；multi-hop deterministic code 保留为未来扩展/消融。当前 `STEP_6_2B_READINESS=READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`，只开放 scorer/comparator 的 CPU 合同实现；`CLOSED_LOOP_READINESS=NOT_READY`、candidate method `RESEARCH_PENDING`、multi-hop `NOT_IN_V1_DOMAIN`。任何未来 formal training 前必须通过 `CROSS_LAYER_RULE_SEMANTICS_GATE=PASS`。证据与实现记录见 closure receipt bundle 和 `STEP_06_2A_CLOSURE_NO_RETRAIN_SINGLE_HOP_PLANNER_V1.md`。
+
 STEP 4.3A、STEP 4.3B 与 STEP 4.4 均正式 COMPLETE / FROZEN；STEP 5.0 已冻结 Definition 05 决策和复用审计。STEP 5.1A-PATCH 已冻结 local one-step Motion、current physical slots 与 current model CSI slots。STEP 5.1B-PATCH、STEP 5.1D-PATCH 与 STEP 5.2 已 COMPLETE/FROZEN FOR CPU DEVELOPMENT PRIMITIVES + PAIRED/TRAINING-LOOP INTEGRATION；full training、GPU、`locked_test`、formal Dataset、baseline 与 Planner 仍未开始。
 # STEP 6.2A — Planner Objective Source & Semantics Audit (2026-09-28)
 

@@ -18,6 +18,19 @@
       "J_Effort"
     ]
   },
+  "planner": {
+    "route_domain": "FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1",
+    "multihop_enabled": false,
+    "multihop_code_available": true,
+    "multihop_formal_training_coverage": false,
+    "retrain_after_route_recovery": false,
+    "checkpoint": {
+      "best_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9"
+    }
+  },
+  "comparison": {
+    "same_action_domain_required_for_primary_fair_comparison": true
+  },
   "planner_side_state": {
     "required_fields": [
       "task_id",

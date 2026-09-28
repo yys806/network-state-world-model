@@ -1,0 +1,23 @@
+{
+  "artifact_files": [
+    "01_researcher_decision_closure.json",
+    "02_checkpoint_no_retrain_acceptance.json",
+    "03_formal_route_support_summary.json",
+    "04_single_hop_planner_domain_contract.json",
+    "05_single_hop_candidate_gate_test.json",
+    "06_single_hop_btx_readiness.json",
+    "07_deadline_return_readiness_scope.json",
+    "08_step6_2b_readiness_final.json",
+    "09_baseline_sync_closure.json",
+    "10_patched_validation_metrics.json",
+    "11_no_leakage_and_scope.json",
+    "12_cross_layer_semantics_gate.json",
+    "manifest.json"
+  ],
+  "gpu": false,
+  "locked_test": false,
+  "no_retrain": true,
+  "schema": "PIJWM_STEP_6_2A_CLOSURE_MANIFEST_V1",
+  "source_evidence": "STEP 6.2A-ROUTE-RECOVERY receipts",
+  "status": "READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION"
+}

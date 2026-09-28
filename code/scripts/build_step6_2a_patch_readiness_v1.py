@@ -210,6 +210,11 @@ def main():
             "no_return_completion":"delay <= deadline + 1e-5"},
         "support_boundary":{"H_sup":"first unsupported state index - 1",
             "H_eff":"minimum H_sup over candidates","zero":"OBJECTIVE_UNSCOREABLE"},
+        "planner":{"route_domain":"FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1",
+            "multihop_enabled":False,"multihop_code_available":True,
+            "multihop_formal_training_coverage":False,"retrain_after_route_recovery":False,
+            "checkpoint":{"best_sha256":"941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9"}},
+        "comparison":{"same_action_domain_required_for_primary_fair_comparison":True},
         "separation":["Planner Objective != Final Evaluation Metric",
             "Predicted Metric != Real Closed-loop Metric","Evaluation Metric != Acceptance Gate"]}
     write("baseline_sync_contract_v1.json", baseline)

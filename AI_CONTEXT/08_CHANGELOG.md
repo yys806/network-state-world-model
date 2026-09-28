@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-28 STEP 6.2A-CLOSURE
+
+接受 no-retrain salvage，冻结 Planner v1 single-hop Route support，更新 STEP 6.2B scorer implementation readiness；保留 multi-hop code capability 与零 Formal coverage 边界。patched full validation、scorer、ranking、baseline、GPU、locked_test、closed loop均未执行。
+
 ## 2026-09-28 STEP 6.1
 
 - 新增冻结 `best.pt` 的 CPU 候选递归 rollout：相同当前 belief、四类当前因果动作探针、H4 每步按预测 state 编译、逐 horizon 指纹/潜变量/decoder 诊断、随机配对复现与串行/批量计时。状态限定为 `TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT=PASS` 的机制证据；MPC objective、候选方法选择和闭环仍未开始。

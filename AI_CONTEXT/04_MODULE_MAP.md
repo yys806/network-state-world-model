@@ -1,5 +1,11 @@
 # 模块导航地图
 
+## STEP 6.2A-CLOSURE
+
+- Route v1 admission: `code/src/pi_jwm/step6_0c_planner_action_domain_v1.py::_validate_single_hop_route`
+- Burden/readiness semantics: `code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py::transmission_burden`
+- Closure receipts: `code/scripts/build_step6_2a_closure_receipts_v1.py`
+
 ## STEP 6.1 当前入口
 
 - `code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py`：共同当前 belief、串行/批量 H4 递归推演、指纹和 action-response 摘要。

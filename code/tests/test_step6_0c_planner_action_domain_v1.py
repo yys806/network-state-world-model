@@ -72,6 +72,30 @@ def step(comp=(), mobs=None):
 
 
 class PlannerActionDomainTests(unittest.TestCase):
+    def test_route_domain_is_enabled_but_single_hop_only(self):
+        base, _, domain = fixture()
+        direct = {"task_id": "task", "task_index": 0, "task_node_index": 0,
+                  "target_node_index": 1, "route_node_indices": [1], "route_kind": "offload"}
+        self.assertEqual(validate_domain_sequence(seq(base, CandidateActionStep(route=(direct,), mob=(mob(),))), base, domain).status,
+                         ConstraintStatus.SATISFIED)
+        for path in ([0, 1], [1, 0, 1]):
+            bad = {**direct, "route_node_indices": path}
+            result = validate_domain_sequence(seq(base, CandidateActionStep(route=(bad,), mob=(mob(),))), base, domain)
+            self.assertEqual(result.status, ConstraintStatus.VIOLATED)
+            self.assertIn("OUTSIDE_PLANNER_ROUTE_SINGLE_HOP_DOMAIN_V1",
+                          [c.reason_code for c in result.constraints])
+
+    def test_existing_flow_destination_is_immutable(self):
+        base, _, domain = fixture()
+        base.current_state["flow_destination_index"] = torch.tensor([[1]])
+        base.static["input_entity_index"]["logical_flow"]["flow::task::Input::0"] = 0
+        row = {"task_id": "task", "task_index": 0, "flow_id": "flow::task::Input::0",
+               "task_node_index": 0, "target_node_index": 0, "route_node_indices": [0],
+               "route_kind": "offload"}
+        result = validate_domain_sequence(seq(base, CandidateActionStep(route=(row,), mob=(mob(),))), base, domain)
+        self.assertEqual(result.status, ConstraintStatus.VIOLATED)
+        self.assertIn("EXISTING_FLOW_LOGICAL_DESTINATION_IMMUTABLE",
+                      [c.reason_code for c in result.constraints])
     def test_cpu_budget_and_provenance(self):
         base, _, domain = fixture()
         self.assertEqual(domain.compute_budgets["edge"].unit, "AirFogSim CPU-work-unit/s")

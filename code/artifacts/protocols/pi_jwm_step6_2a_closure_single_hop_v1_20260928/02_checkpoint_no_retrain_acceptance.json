@@ -1,0 +1,30 @@
+{
+  "baseline": false,
+  "candidate_ranking_executed": false,
+  "checkpoint_bytes_unchanged": true,
+  "checkpoint_replaced": false,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "checkpoint_sha256_unchanged": true,
+  "closed_loop": false,
+  "formal_dataset_modified": false,
+  "formal_multihop_train_coverage": false,
+  "formal_multihop_validation_coverage": false,
+  "formal_training_modified": false,
+  "gpu": false,
+  "legacy_formal_validation_observation": {
+    "LVal": 0.07431338784170399,
+    "classification": "LEGACY_FORMAL_VALIDATION_OBSERVATION_UNDER_ORIGINAL_ACCEPTED_RUN"
+  },
+  "locked_test": false,
+  "multihop_code_retained": true,
+  "multihop_performance_claim": false,
+  "multihop_planner_v1_enabled": false,
+  "objective_scorer_implemented": false,
+  "parameter_digest_unchanged": true,
+  "patched_full_validation_executed": false,
+  "planner_v1_route_domain": "FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1",
+  "retrain": false,
+  "schema": "PIJWM_CHECKPOINT_NO_RETRAIN_ACCEPTANCE_V1",
+  "strict_load_tensors": 428,
+  "verdict": "SUPPORTED_WITH_LIMITATIONS"
+}

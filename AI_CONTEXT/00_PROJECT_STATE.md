@@ -1,6 +1,12 @@
 # PI-JWM Current State Snapshot
 
-## 2026-09-28 STEP 6.2A-ROUTE-RECOVERY — 当前关口
+## 2026-09-28 STEP 6.2A-CLOSURE — 当前关口
+
+研究者正式接受 no-retrain salvage：原 `best.pt` 继续作为 `FORMAL_BEST_CHECKPOINT`，SHA-256=`941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`；不重训。形式 train/validation multi-hop coverage 均为 0，54 个 overlap windows 的 H1–H4 state/graph/prior/Motion/CSI legacy 与 patched 完全相同；这不构成 multi-hop 性能证明。旧 `LVal=0.07431338784170399` 仍是原 accepted run 观测，patched full validation 未执行。
+
+Planner v1 Route 保持启用，但冻结为 `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1`：每个实际 Route path 长度为 1，节点必须是已有 Flow 的 frozen logical destination；multi-hop 规则代码保留，移出 Planner v1，留待扩展/消融。Objective 保持 `(N_DDL,A_DDL,J_Delay,J_Burden,J_Effort)` 字典序，单跳 `B_Tx=R_hop`。当前 `STEP_6_2B_READINESS=READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`，仅允许后续 scorer/comparator 实现与 CPU 合同测试；`CLOSED_LOOP_READINESS=NOT_READY`、`CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`。未开始 scorer、ranking、baseline、GPU、locked_test 或闭环。任何未来正式训练前必须 `CROSS_LAYER_RULE_SEMANTICS_GATE=PASS`。本 Step 收据和记录见 `code/artifacts/protocols/pi_jwm_step6_2a_closure_single_hop_v1_20260928/` 与 `docs/implementation_records/STEP_06_2A_CLOSURE_NO_RETRAIN_SINGLE_HOP_PLANNER_V1.md`。
+
+## 2026-09-28 STEP 6.2A-ROUTE-RECOVERY — 历史关口
 
 4.2C-B/C destination-list route semantics are now implemented in 4.4 deterministic intermediate-hop advancement. Same-destination Route uses rule-side full-path metadata and does not alter the frozen 11 learned action tensors. Real two-hop Raw → Tensor → Graph/State → rule tests and a 113-test cross-layer semantics gate pass. The frozen best checkpoint strict-loads unchanged: SHA-256 `941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`, parameter digest unchanged. Full Formal Dataset static audit: 4416 train/1104 validation, route width 1 throughout, zero multi-hop rows; paired legacy/patched CPU rollout on 38 train + 16 validation overlap windows is exactly invariant H1–H4. Full patched validation is `NOT_EXECUTED_REQUIRES_SEPARATE_RUNTIME_AUTHORIZATION`. `CHECKPOINT_NO_RETRAIN_SALVAGE=SUPPORTED_WITH_LIMITATIONS`; no retraining decision is made. GPU, optimizer, `locked_test`, 6.2B, scorer, ranking, baseline and closed loop remain closed. Receipts: `code/artifacts/protocols/pi_jwm_step6_2a_route_recovery_v1_20260928/`. Next action: researcher review after Git push.
 

@@ -84,6 +84,13 @@ class SideStateTest(unittest.TestCase):
         self.assertEqual(transmission_burden(route(), model(hop=8, e2e=10)), 18)
         self.assertEqual(transmission_burden(route(index=1), model(index=1, hop=10, e2e=10)), 10)
         self.assertEqual(transmission_burden(route(index=1), model(index=1, hop=6, e2e=6)), 6)
+
+    def test_single_hop_burden_tracks_partial_service_and_terminal_completion(self):
+        single = route(nodes=(2,), index=0)
+        self.assertEqual(single.remaining_hops_after_current, 0)
+        self.assertEqual(transmission_burden(single, model(route=(2,), index=0, hop=8, e2e=8)), 8)
+        self.assertEqual(transmission_burden(single, model(route=(2,), index=0, hop=3, e2e=3)), 3)
+        self.assertEqual(transmission_burden(single, model(route=(2,), index=0, hop=0, e2e=0)), 0)
         with self.assertRaises(ValueError):
             check_route_model_alignment(route(nodes=(3, 2), revision=1), model(revision=1))
 

@@ -1,5 +1,9 @@
 # 当前与历史实验
 
+## 2026-09-28 STEP 6.2A-CLOSURE
+
+`NO_RETRAIN_ACCEPTED=true`; existing formal checkpoint retained. Planner v1 has enabled single-hop Route only. Current readiness is `READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`; no scorer/ranking/closed-loop/baseline run. Formal multi-hop train/validation coverage is zero; patched full validation did not run. Receipts: `code/artifacts/protocols/pi_jwm_step6_2a_closure_single_hop_v1_20260928/`.
+
 ## 2026-09-28 STEP 6.1 Formal Validation CPU mechanism diagnostic
 
 冻结 seed 5601 `best.pt`、一个确定性 Formal Validation anchor、四种 `CAUSAL_DOMAIN_PROBE`，分别与 H4 RULE_FALLBACK 对照；H1–H4 action-conditioned/recursive/finite、三种固定随机种子配对复现和 K=1/2/4/8 CPU 实现计时通过。原始数值见 `action_family_response.json`、`recursive_feedback_audit.json`、`stochastic_common_seed_diagnostic.json`、`cpu_batch_runtime_diagnostic.json`。这不是新训练、预测质量评估、性能比较、MPC 优化或 closed-loop 实验。

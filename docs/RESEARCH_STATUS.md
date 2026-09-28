@@ -123,3 +123,6 @@
 ## STEP 6.2A-PATCH (2026-09-28)
 
 Objective source reconciliation and a single non-locked Formal Validation deadline sidecar passed. E2E Flow state exists. Route action and cross-hop model route semantics remain inconsistent with 4.2C-C; `STEP_6_2B_READINESS=BLOCKED`. No scorer, candidate ranking, baseline, GPU, locked_test or closed-loop result exists from this Patch.
+## 2026-09-28 STEP 6.2A-CLOSURE
+
+研究者接受现有 Formal best checkpoint、不重训；Planner v1 Route 限定为 Formal Dataset single-hop support。当前只达到 `READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`，不代表 Planner、ranking、closed loop、baseline 或 performance ready。Formal multi-hop coverage 为零，multi-hop code 保留作未来扩展/消融。

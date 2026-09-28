@@ -1,5 +1,9 @@
 # 研究背景与问题
 
+## 2026-09-28 Planner v1 support boundary
+
+Researcher decision: the first Planner Route domain stays within the frozen Formal Dataset's single-hop support. This is a learned-support restriction, not a claim that multi-hop is physically illegal or unavailable in repaired code. No formal multi-hop performance claim is made.
+
 > 2026-09-18 当前目标定义来自研究者只读目录中的 `00–06`；本文件下方的旧 P4 描述只用于说明被审计的当前代码。实现差异见 `docs/PIJWM_IMPLEMENTATION_TRACKER.md`。
 
 ## 研究对象

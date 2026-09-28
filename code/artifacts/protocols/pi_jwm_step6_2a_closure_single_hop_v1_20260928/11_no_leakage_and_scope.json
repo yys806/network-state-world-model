@@ -1,0 +1,33 @@
+{
+  "baseline": false,
+  "candidate_ranking_executed": false,
+  "checkpoint_replaced": false,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "checkpoint_sha256_unchanged": true,
+  "closed_loop": false,
+  "cross_layer_gate": "PASS",
+  "formal_dataset_modified": false,
+  "formal_multihop_train_coverage": false,
+  "formal_multihop_validation_coverage": false,
+  "formal_training_modified": false,
+  "future_target_in_planner_runtime": false,
+  "gpu": false,
+  "locked_test": false,
+  "multihop_code_retained": true,
+  "multihop_performance_claim": false,
+  "multihop_planner_v1_enabled": false,
+  "objective_order": "LEXICOGRAPHIC_MINIMIZE",
+  "objective_scorer_implemented": false,
+  "objective_tuple": [
+    "N_DDL",
+    "A_DDL",
+    "J_Delay",
+    "J_Burden",
+    "J_Effort"
+  ],
+  "planner_v1_route_domain": "FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1",
+  "retrain": false,
+  "route_effort_in_objective": false,
+  "schema": "PIJWM_CLOSURE_SCOPE_V1",
+  "throughput_weighted_objective_term": false
+}
