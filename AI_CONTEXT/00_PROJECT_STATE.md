@@ -1,5 +1,24 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-28 STEP 6.3A — 当前状态
+
+`STEP_6_3A=PASS`：CPU-only support audit measured Formal TRAIN Comm/Comp/Mob,
+their joint/temporal structure and bounded search-space illustrations. Comp
+base allocation is causally reproducible with the existing CPU inner rule and
+observed global alpha `{0.5,0.75,1.0}`. Comm widths are 1/2/3 over RB IDs 0–49;
+two-UAV mobility was observed as shared-profile joint actions. Independent
+family factorization is `NOT_SUPPORTED`. Evidence-based recommendation is to
+study support-constrained structured/conditional search; no method is frozen
+or implemented. Validation was descriptive only. No candidate ranking,
+optimizer, World Model rollout, GPU, Formal model training, baseline, closed loop or
+`locked_test` was used. See the STEP 6.3A implementation record and receipts.
+
+Verification note: the full repository unittest command was not clean (1993
+tests: 34 errors and one historical receipt mismatch). It also executed
+synthetic CPU trainer tests outside this Step's audit-only scope; no Formal
+training, checkpoint/data write, GPU or `locked_test` occurred. The exact scope
+deviation is recorded in the STEP 6.3A implementation record.
+
 ## 2026-09-28 STEP 6.2B-PATCH — 当前状态
 
 研究者已冻结 `PLANNER_V1_ROUTE_POLICY=EXPLICIT_NOOP_ONLY`：Planner v1 每个 horizon 的 Route family 必须为空，实际优化动作族为 Comm/Comp/Mob。pending、已有 Flow 同路径、多跳及改目的地的非空 Route 都在准入层拒绝，4.4/learned Route/checkpoint 未改。冻结 best.pt 的非锁定 validation anchor 上两个合法 H1–H4 候选经 CPU rollout 与五项 scorer 均有限，Route 编译为缺席哨兵；选定 anchor 的 Comm 分母仍为 50 个全局 RB ID（不是 242 条关系行）。`STEP_6_2B=PASS` 只表示 Objective scorer 与严格字典序比较器通过 CPU 合同验收；`CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`，`CLOSED_LOOP_READINESS=NOT_READY`，无性能结论。GPU、`locked_test`、训练、baseline 未执行。证据：`docs/implementation_records/STEP_06_2B_PATCH_ROUTE_NOOP_CLOSURE.md` 与 `code/artifacts/protocols/pi_jwm_step6_2b_patch_route_noop_v1_20260928/`。下一动作仅为研究者审阅本 Step；后续方法另行授权。

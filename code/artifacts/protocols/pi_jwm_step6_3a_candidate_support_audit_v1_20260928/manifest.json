@@ -1,0 +1,57 @@
+{
+  "files": {
+    "01_security_preflight.json": {
+      "bytes": 396,
+      "sha256": "13840bbfeceef758e9bc2ff3a01ce5e19d6cc3c2ddfa664034e1881ea352dd04"
+    },
+    "02_comm_train_support.json": {
+      "bytes": 5790,
+      "sha256": "7de98802d90792a57a4dc77b76da8aa25cfbe26be50cb61b77b47934e7b08e2d"
+    },
+    "03_comp_train_support.json": {
+      "bytes": 24036,
+      "sha256": "d85bd5364e1cd777fe63f2ae8046af97d93cf1b7d07bab0f092dc7253d39e39e"
+    },
+    "04_mob_train_support.json": {
+      "bytes": 2276,
+      "sha256": "74d445e0d32081d696c8c823dc8bced881de34d80531c8db246ea91f12b1d1c2"
+    },
+    "05_joint_family_support.json": {
+      "bytes": 196426,
+      "sha256": "c94f429a6ba08cba07311aeb1c7290ad51c31a8378a8880c02597990578d7c21"
+    },
+    "06_temporal_support_h1_h4.json": {
+      "bytes": 3684,
+      "sha256": "4081c641b27586bfb0d860bf25586a13abf35b6f01f55dc04d43e8e3e6b02e2a"
+    },
+    "07_search_space_size.json": {
+      "bytes": 9958,
+      "sha256": "b9271a321dc636578fd17e72afcc670c145fa89a1e8ba7c147b70fd212eab2a0"
+    },
+    "08_support_tier_analysis.json": {
+      "bytes": 1445,
+      "sha256": "9a62e4405d90f6d2beb1dcd754a3921e41add0731c438cd32b3fc25e402e7315"
+    },
+    "09_hsup_search_interaction.json": {
+      "bytes": 1048,
+      "sha256": "1c4a8f5b64ccafd69b2414f6038c5903db9212bfde5b2749d6ca9f2d77459550"
+    },
+    "10_validation_descriptive_check.json": {
+      "bytes": 1097623,
+      "sha256": "5fea0102d1b65aea814f5c5124eb3a029bc0117bde23f8821a19033cb1186f92"
+    },
+    "11_candidate_method_readiness.json": {
+      "bytes": 2715,
+      "sha256": "a7b8dc7af3cfacefa6511f56e1ec40e292678e718a2598ff36bfdf46e2c6f0ba"
+    },
+    "12_future_fair_comparison_contract.json": {
+      "bytes": 738,
+      "sha256": "34ac6543e18c53d0f369891bef31e00a619f3b70b32b431a6ad3b3995def5c98"
+    },
+    "13_step6_3a_acceptance.json": {
+      "bytes": 546,
+      "sha256": "cbf8848935c0fd151a4a96af1d7ded5447a827a0acf5a98faba1983fe9717da6"
+    }
+  },
+  "step": "STEP 6.3A"
+}

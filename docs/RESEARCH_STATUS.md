@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> 2026-09-28 STEP 6.3A：Formal TRAIN action-support 证据审计 `PASS`；Comp causal template 可复现，独立 family factorization 不受支持。候选算法仅有证据建议、未由研究者冻结；无 optimizer、ranking、闭环或 baseline。
+
 > 2026-09-28 STEP 6.2B-PATCH（当前）：研究者冻结 Planner v1 Route `EXPLICIT_NOOP_ONLY`，非空 Route 准入拒绝；`STEP_6_2B=PASS`、`MPC_OBJECTIVE=FROZEN_AND_IMPLEMENTED` 只表示五项 scorer/字典序的 CPU 合同验收。候选方法待决、闭环未就绪；无 Route 优化、性能、baseline、GPU 或 locked-test 结论。下方 6.2B BLOCKED 是历史观察。
 
 > 2026-09-28 STEP 6.2B：冻结 Objective 五项 scorer 与严格字典序已实现并通过一条 validation anchor 的 CPU checkpoint 机制验证，但 pending Route 固定支持和同路径 Host 更新与现有合同存在冲突，`STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`。不把 scorer 接通视为 Planner 方法或性能验收；candidate method、closed loop、baseline、GPU、locked_test 均未开始。

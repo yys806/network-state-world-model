@@ -1,0 +1,19 @@
+{
+  "SECURITY_PREFLIGHT": "PASS",
+  "gitignore_hardened": true,
+  "missing_ignore_rules": [],
+  "required_ignore_rules": [
+    ".env",
+    ".env.*",
+    "*.pem",
+    "*.key",
+    "credentials*.json",
+    ".netrc",
+    "id_rsa",
+    "id_rsa.*"
+  ],
+  "secret_value_printed": false,
+  "tracked_matches": [],
+  "tracked_secret_filenames": [],
+  "untracked_secret_filenames": []
+}

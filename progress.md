@@ -1,5 +1,13 @@
 # Progress
 
+## 2026-09-28 STEP 6.3A
+
+- Security preflight PASS; no secret value printed; requested credential patterns are ignored.
+- Frozen Formal TRAIN 48 trajectories/4416 windows audited. Comp base reconstructed for all 1969 action entries using the existing causal CPU rule; slot-global alpha support is `{0.5,0.75,1.0}`. Comm widths are 1/2/3 over RB IDs 0–49; two-UAV mobility uses same-profile joint actions.
+- Joint family factorization is `NOT_SUPPORTED`; rolling formal-index H1–H4 signatures and representative-anchor candidate count illustrations were recorded. Validation 12 trajectories/1104 windows was descriptive only.
+- `STEP_6_3A=PASS` is limited to support evidence; no optimizer/method choice, ranking, World Model rollout, GPU, Formal model training, baseline, closed loop or `locked_test`.
+- Verification note: `compileall` PASS and cross-layer gate 115/115 PASS. Full repository unittest discovery: 1993 run, 34 errors + 1 historical receipt mismatch; errors include GBK console Unicode and missing historical artifacts. The broad suite also invoked synthetic CPU trainer tests, an out-of-scope execution deviation; no Formal training/checkpoint/data write occurred. Historical cross-layer receipt was restored.
+
 ## 2026-09-28 STEP 6.2B-PATCH
 
 - 起点 `HEAD=origin/main=3ac4470080b11906d16c3a4c33c3a3306f7f31c4`；原有未跟踪 `TASK/` 和绘图脚本保持。

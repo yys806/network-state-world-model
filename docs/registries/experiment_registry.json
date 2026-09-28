@@ -3,6 +3,58 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.3A-CANDIDATE-SUPPORT-AUDIT-20260928",
+      "name": "Planner candidate support and search architecture audit",
+      "date": "2026-09-28",
+      "research_question": "Does Formal TRAIN provide measurable Comm/Comp/Mob and joint/temporal support evidence to inform a later candidate-method decision?",
+      "method": "cpu_formal_train_action_support_audit_v1",
+      "code": "code/scripts/run_step6_3a_candidate_support_audit_v1.py",
+      "code_version": {
+        "identity_type": "git_commit_and_receipt_sha256",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_3a_candidate_support_audit_v1_20260928/manifest.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Final commit is recorded in the implementation record after Git closure; individual receipt hashes are in manifest.json."
+      },
+      "configuration": "docs/contracts/PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md",
+      "parameters": {
+        "device": "cpu",
+        "formal_train_trajectories": 48,
+        "formal_train_windows": 4416,
+        "validation_trajectories": 12,
+        "validation_windows": 1104,
+        "validation_use": "descriptive_only",
+        "candidate_optimizer_implemented": false,
+        "candidate_ranking_executed": false,
+        "world_model_rollout": false,
+        "training": false,
+        "gpu": false,
+        "baseline_execution": false,
+        "closed_loop": false,
+        "locked_test_accessed": false
+      },
+      "protocol": "docs/implementation_records/STEP_06_3A_CANDIDATE_SUPPORT_AND_SEARCH_ARCHITECTURE_AUDIT.md",
+      "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+      "split": "Formal TRAIN defines support; Formal validation is descriptive only; locked_test not accessed",
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/protocols/pi_jwm_step6_3a_candidate_support_audit_v1_20260928",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_3a_candidate_support_audit_v1_20260928/13_step6_3a_acceptance.json",
+      "status": "pass_support_audit_only",
+      "conclusion": "Formal TRAIN support is measured; causal Comp templates are reconstructible; independent family factorization is not supported; no candidate method is selected.",
+      "summary_zh": "Formal TRAIN 的 Comm/Comp/Mob 联合与时序支持完成审计；Comp 可重建，独立族因子化不受支持；候选算法仍待研究者决定。",
+      "claim_boundary": "support audit and evidence-based research recommendation only; no optimizer, ranking, world-model rollout, closed-loop, baseline or performance claim",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "code_version.manifest_sha256": "Computed from generated machine receipts after execution; not an experiment bundle hash.",
+        "code_version.git_commit": "Filled after final Git closure.",
+        "seed": "No stochastic experiment was run; source trajectories were read as fixed data.",
+        "checkpoint": "Checkpoint was neither loaded nor modified.",
+        "metrics": "No candidate objective score or system performance metric was computed."
+      }
+    },
+    {
       "id": "STEP-6.2A-OBJECTIVE-SOURCE-AUDIT-20260928",
       "name": "Planner objective source semantics audit and baseline metric interface foundation",
       "date": "2026-09-28",

@@ -1,0 +1,42 @@
+{
+  "checkpoint_modified": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "marginal_structural_cardinalities": [
+    13,
+    12,
+    6
+  ],
+  "status": "RESEARCH_PROPOSAL_ONLY",
+  "tiers": [
+    {
+      "coverage_of_train_observed_steps": 1.0,
+      "definition": "exact observed structural Comm/Comp/Mob joint signature in TRAIN",
+      "future_planner": "highest-fidelity proposal",
+      "risk": "identity and temporal support still need checking",
+      "structural_signature_count": 251,
+      "tier": 0
+    },
+    {
+      "coverage_of_train_observed_steps": 0.0,
+      "definition": "each structural family signature observed marginally in TRAIN but triple unseen",
+      "future_planner": "researcher decision required",
+      "potential_cartesian_structural_count": 685,
+      "risk": "composition shift",
+      "tier": 1
+    },
+    {
+      "count": "unbounded; no frozen proposal distribution",
+      "coverage_of_train_observed_steps": 0.0,
+      "definition": "at least one structural family signature outside TRAIN marginal",
+      "future_planner": "exclude from formal-support claim",
+      "risk": "outside Formal TRAIN",
+      "tier": 2
+    }
+  ],
+  "training": false,
+  "validation_used_for_template_selection": false
+}

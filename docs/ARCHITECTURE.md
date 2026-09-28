@@ -1,5 +1,7 @@
 # PI-JWM 架构说明
 
+> 2026-09-28 STEP 6.3A：候选支持审计确认 Comp 可以由现有 causal CPU inner rule 重建；Formal TRAIN 的联合/时序签名不支持独立 Comm/Comp/Mob 因子化。该证据尚未冻结任何搜索算法。
+
 > 2026-09-28 STEP 6.2B-PATCH：6.0C Planner v1 gate 只接受空 Route family，11 张量 adapter 编译为缺席哨兵；4.4 learned Route encoder 和多跳确定性能力保留。6.2B scorer 消费已给定 H1–H4 trace，候选方法与闭环未实现。下方单跳 Route 是历史 6.2A-CLOSURE 边界。
 
 > 2026-09-28 STEP 6.1：同一 Formal Validation current Sample/Tensor/Graph/Raw 控制侧状态 → 一次 Encoder/current posterior mean → 候选各自克隆同一 state/graph/latent → 每步用预测 state 调用本模块 `compile_candidate_step`/正式 `build_action` → 4.4 `one_step` prior-only 递归 H4。仅 CPU 机制预检；没有评价、选择或闭环。

@@ -1,5 +1,14 @@
 # 已知问题与冲突
 
+## 2026-09-28 STEP 6.3A
+
+Formal TRAIN Comp base is reproducible from current computing-task CPU work,
+static node capacity and slot duration using the existing deterministic inner
+CPU rule; observed global alpha is `{0.5,0.75,1.0}`. Independent Comm/Comp/Mob
+factorization is `NOT_SUPPORTED` because observed joint and temporal structure
+is sparse. Candidate syntax, support tiers and any optimizer remain unselected;
+the recommendation is not a researcher decision.
+
 ## 2026-09-28 STEP 6.2B-PATCH 当前边界
 
 先前的 pending Route `flow_index=-1` 与 existing same-path Route 改 Task-Agent Host/learned latent 是真实实现观察；研究者现以 Planner v1 Route 显式 no-op 策略把二者排除出正式候选域，故不再阻塞 `STEP_6_2B=PASS`。4.4 Route→Host 语义及真正 Route/offload/multi-hop Planner 留待未来单独研究；4.4 本 Patch 未改。Formal multi-hop learned coverage 仍为零，单 anchor CPU scorer 验收不等于候选排序质量或闭环性能。

@@ -1,0 +1,23 @@
+{
+  "H_eff": "min_k H_sup(k)",
+  "candidate_pool_implication": "different H_sup values shorten the common score horizon for every candidate",
+  "checkpoint_modified": false,
+  "counts_split": "all 5520 Formal train+validation windows; prior accepted audit does not retain a train/validation or H1-H4 histogram, so no fabricated distribution is reported",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "existing_dataset_scope_counts": {
+    "affected_trajectory_count": 60,
+    "affected_window_count": 2901,
+    "fixed_support_blocked": 8828,
+    "supported_return_continuation_count": 143320,
+    "unresolved": 0,
+    "unsupported": 8828
+  },
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "objective_unchanged": true,
+  "proposal": "record H_sup groups diagnostically for a future candidate method; scorer/objective remain unchanged",
+  "training": false,
+  "validation_used_for_template_selection": false
+}

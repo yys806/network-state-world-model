@@ -1,0 +1,15 @@
+{
+  "STEP_6_3A": "PASS",
+  "blocking_facts": [],
+  "checkpoint_modified": false,
+  "checkpoint_sha256_expected": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "no_candidate_optimizer": true,
+  "training": false,
+  "validation_descriptive_only": true,
+  "validation_used_for_template_selection": false
+}

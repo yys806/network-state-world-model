@@ -1,4 +1,12 @@
 # Python caches, environments, and build outputs
+.env
+.env.*
+*.pem
+*.key
+credentials*.json
+.netrc
+id_rsa
+id_rsa.*
 __pycache__/
 *.py[cod]
 .pytest_cache/

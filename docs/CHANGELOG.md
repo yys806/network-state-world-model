@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-28：STEP 6.3A Candidate support 审计
+
+新增 Formal TRAIN action-support 审计脚本、13 份机器收据与实施记录；确认 Comp 可由 frozen causal CPU inner rule 和 global alpha `{0.5,0.75,1.0}` 重建，独立 Comm/Comp/Mob 因子化不受联合数据支持。更新当前 AI_CONTEXT、计划、进展与知识索引入口；未实现候选 optimizer 或运行模型 rollout。
+
 ## 2026-09-28：STEP 6.2B-PATCH Route no-op 收口
 
 研究者冻结 Planner v1 每 horizon Route 为空；6.0C 准入层拒绝所有非空 Route，4.4/learned Route/checkpoint 不变。新增拒绝与缺席编译测试、8 份 CPU 机器收据、Patch 实施记录并同步 AI_CONTEXT/权威计划。`STEP_6_2B=PASS` 限于 Objective scorer/比较器合同；原 6.2B blocked 收据保留历史。

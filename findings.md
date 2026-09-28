@@ -1,5 +1,14 @@
 # Findings
 
+## 2026-09-28 STEP 6.3A
+
+- Formal TRAIN contains 1969 non-empty Comp entries; every entry reconstructs from decision-time computing tasks/static CPU using the existing `allocate_work_conserving_cpu` rule, with global alpha counts 0.5=248, 0.75=242, 1.0=1479.
+- Comm support rows have widths 1/2/3, cyclic-contiguous RB IDs 0–49, and cross-task RB reuse in 100 slots; Raw does not carry a relation slot index.
+- Two present UAVs use shared profile pairs only; independent profile marginals cannot be treated as exact joint support. Family product is `NOT_SUPPORTED`; temporal sequence uniqueness rises to 2842/4416 at H4.
+- Historical Return fixed-support receipt aggregates train and validation: 8828 window-horizon events, 2901 windows; no train-only horizon histogram is available, so no such distribution was inferred.
+- Recommendation remains proposal-only: measure a support-constrained structured syntax and conditional designs before method selection. No candidate optimizer, ranking, training, GPU, baseline, closed loop or `locked_test`.
+- Full unittest discovery was not clean (1993 run, 34 errors, 1 historical receipt mismatch) and executed synthetic CPU trainer tests outside the audit scope. Formal model/data/checkpoint were not modified; the test deviation is disclosed in the implementation record.
+
 ## 2026-09-28 STEP 6.2B-PATCH
 
 - 旧 6.2B 阻塞来自 Planner v1 曾准入会改变 4.4 Task-Agent/learned latent 的非空 Route；研究者现冻结 Route no-op，故无需修改 4.4 或 checkpoint。

@@ -1,0 +1,59 @@
+{
+  "checkpoint_modified": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "eligible_noop_nonempty_counts": {
+    "eligible": 4608,
+    "no_op": 2761,
+    "non_empty_intervention": 1847
+  },
+  "exact_joint_intervention_signatures": {
+    "('HOLD', 'HOLD')": 2761,
+    "('PROFILE_1', 'PROFILE_1')": 374,
+    "('PROFILE_2', 'PROFILE_2')": 373,
+    "('PROFILE_3', 'PROFILE_3')": 375,
+    "('PROFILE_4', 'PROFILE_4')": 356,
+    "('PROFILE_5', 'PROFILE_5')": 369
+  },
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "intervention_per_uav_profile_counts": {
+    "HOLD": 5522,
+    "PROFILE_1": 748,
+    "PROFILE_2": 746,
+    "PROFILE_3": 750,
+    "PROFILE_4": 712,
+    "PROFILE_5": 738
+  },
+  "joint_signature_type": "EXACT_JOINT_TRAIN_SUPPORT",
+  "locked_test": false,
+  "profile_scope": "HOLD maps absent Mobility action rows to hold for every present UAV; five intervention profiles are explicit rows",
+  "profile_transition_counts": {
+    "(('HOLD', 'HOLD'), ('HOLD', 'HOLD'))": 1644,
+    "(('HOLD', 'HOLD'), ('PROFILE_1', 'PROFILE_1'))": 216,
+    "(('HOLD', 'HOLD'), ('PROFILE_2', 'PROFILE_2'))": 213,
+    "(('HOLD', 'HOLD'), ('PROFILE_3', 'PROFILE_3'))": 221,
+    "(('HOLD', 'HOLD'), ('PROFILE_4', 'PROFILE_4'))": 218,
+    "(('HOLD', 'HOLD'), ('PROFILE_5', 'PROFILE_5'))": 218,
+    "(('PROFILE_1', 'PROFILE_1'), ('HOLD', 'HOLD'))": 213,
+    "(('PROFILE_1', 'PROFILE_1'), ('PROFILE_2', 'PROFILE_2'))": 157,
+    "(('PROFILE_2', 'PROFILE_2'), ('HOLD', 'HOLD'))": 220,
+    "(('PROFILE_2', 'PROFILE_2'), ('PROFILE_3', 'PROFILE_3'))": 150,
+    "(('PROFILE_3', 'PROFILE_3'), ('HOLD', 'HOLD'))": 239,
+    "(('PROFILE_3', 'PROFILE_3'), ('PROFILE_4', 'PROFILE_4'))": 132,
+    "(('PROFILE_4', 'PROFILE_4'), ('HOLD', 'HOLD'))": 207,
+    "(('PROFILE_4', 'PROFILE_4'), ('PROFILE_5', 'PROFILE_5'))": 147,
+    "(('PROFILE_5', 'PROFILE_5'), ('HOLD', 'HOLD'))": 212,
+    "(('PROFILE_5', 'PROFILE_5'), ('PROFILE_1', 'PROFILE_1'))": 153
+  },
+  "six_profile_support": [
+    "HOLD",
+    "PROFILE_1",
+    "PROFILE_2",
+    "PROFILE_3",
+    "PROFILE_4",
+    "PROFILE_5"
+  ],
+  "training": false,
+  "validation_used_for_template_selection": false
+}

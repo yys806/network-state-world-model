@@ -1,0 +1,259 @@
+{
+  "cem": "not shown necessary by this audit",
+  "checkpoint_modified": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "exact_enumeration": "not certifiable from these independent family counts; grows exponentially with H",
+  "factorization": "independent product conflicts with measured joint structure",
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "hierarchy": "conditional structure is evidence-compatible proposal, not selected method",
+  "interpretation": "support-template upper-bound illustrations; action syntax multi-row combinations and predicted eligibility are not frozen",
+  "locked_test": false,
+  "random_search": "not shown necessary; useful only after support policy freeze",
+  "representative_train_anchors": [
+    {
+      "active_task_count": 0,
+      "anchor_decision_frame": 35,
+      "behavior_policy_comm_eligibility_at_H1": false,
+      "behavior_policy_comp_eligibility_at_H1": false,
+      "comm_candidates_as_rowwise_observed_width_start_upper_bound": 1,
+      "comp_candidates_noop_plus_global_alpha": 1,
+      "computing_task_count": 0,
+      "horizon_candidate_count_illustrations": {
+        "1": {
+          "comm": 1,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 36,
+          "mob_exact_joint": 6,
+          "mob_independent_marginal": 36
+        },
+        "2": {
+          "comm": 1,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 1296,
+          "mob_exact_joint": 36,
+          "mob_independent_marginal": 1296
+        },
+        "3": {
+          "comm": 1,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 46656,
+          "mob_exact_joint": 216,
+          "mob_independent_marginal": 46656
+        },
+        "4": {
+          "comm": 1,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 1679616,
+          "mob_exact_joint": 1296,
+          "mob_independent_marginal": 1679616
+        }
+      },
+      "mob_candidates_exact_joint_train_template": 6,
+      "mob_candidates_independent_marginal_product_not_formal_joint": 36,
+      "observed_comm_rows_at_H1": 0,
+      "remaining_compute_work": 0.0,
+      "single_step_joint_naive_cartesian_upper_bound": 36,
+      "status": "support-count illustration from recorded family eligibility; not an exact candidate count because multi-row candidate syntax is not frozen",
+      "stratum": "low_activity",
+      "trajectory_id": "formal-v1-sim-2026092354-policy-2026092454",
+      "uav_count": 2
+    },
+    {
+      "active_task_count": 32,
+      "anchor_decision_frame": 82,
+      "behavior_policy_comm_eligibility_at_H1": true,
+      "behavior_policy_comp_eligibility_at_H1": false,
+      "comm_candidates_as_rowwise_observed_width_start_upper_bound": 151,
+      "comp_candidates_noop_plus_global_alpha": 1,
+      "computing_task_count": 0,
+      "horizon_candidate_count_illustrations": {
+        "1": {
+          "comm": 151,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 5436,
+          "mob_exact_joint": 6,
+          "mob_independent_marginal": 36
+        },
+        "2": {
+          "comm": 22801,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 29550096,
+          "mob_exact_joint": 36,
+          "mob_independent_marginal": 1296
+        },
+        "3": {
+          "comm": 3442951,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 160634321856,
+          "mob_exact_joint": 216,
+          "mob_independent_marginal": 46656
+        },
+        "4": {
+          "comm": 519885601,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 873208173609216,
+          "mob_exact_joint": 1296,
+          "mob_independent_marginal": 1679616
+        }
+      },
+      "mob_candidates_exact_joint_train_template": 6,
+      "mob_candidates_independent_marginal_product_not_formal_joint": 36,
+      "observed_comm_rows_at_H1": 4,
+      "remaining_compute_work": 0.0,
+      "single_step_joint_naive_cartesian_upper_bound": 5436,
+      "status": "support-count illustration from recorded family eligibility; not an exact candidate count because multi-row candidate syntax is not frozen",
+      "stratum": "high_comm",
+      "trajectory_id": "formal-v1-sim-2026092316-policy-2026092416",
+      "uav_count": 2
+    },
+    {
+      "active_task_count": 31,
+      "anchor_decision_frame": 63,
+      "behavior_policy_comm_eligibility_at_H1": false,
+      "behavior_policy_comp_eligibility_at_H1": true,
+      "comm_candidates_as_rowwise_observed_width_start_upper_bound": 1,
+      "comp_candidates_noop_plus_global_alpha": 4,
+      "computing_task_count": 4,
+      "horizon_candidate_count_illustrations": {
+        "1": {
+          "comm": 1,
+          "comp": 4,
+          "joint_naive_cartesian_upper_bound": 144,
+          "mob_exact_joint": 6,
+          "mob_independent_marginal": 36
+        },
+        "2": {
+          "comm": 1,
+          "comp": 16,
+          "joint_naive_cartesian_upper_bound": 20736,
+          "mob_exact_joint": 36,
+          "mob_independent_marginal": 1296
+        },
+        "3": {
+          "comm": 1,
+          "comp": 64,
+          "joint_naive_cartesian_upper_bound": 2985984,
+          "mob_exact_joint": 216,
+          "mob_independent_marginal": 46656
+        },
+        "4": {
+          "comm": 1,
+          "comp": 256,
+          "joint_naive_cartesian_upper_bound": 429981696,
+          "mob_exact_joint": 1296,
+          "mob_independent_marginal": 1679616
+        }
+      },
+      "mob_candidates_exact_joint_train_template": 6,
+      "mob_candidates_independent_marginal_product_not_formal_joint": 36,
+      "observed_comm_rows_at_H1": 0,
+      "remaining_compute_work": 1.606475,
+      "single_step_joint_naive_cartesian_upper_bound": 144,
+      "status": "support-count illustration from recorded family eligibility; not an exact candidate count because multi-row candidate syntax is not frozen",
+      "stratum": "high_comp",
+      "trajectory_id": "formal-v1-sim-2026092354-policy-2026092454",
+      "uav_count": 2
+    },
+    {
+      "active_task_count": 11,
+      "anchor_decision_frame": 9,
+      "behavior_policy_comm_eligibility_at_H1": false,
+      "behavior_policy_comp_eligibility_at_H1": false,
+      "comm_candidates_as_rowwise_observed_width_start_upper_bound": 1,
+      "comp_candidates_noop_plus_global_alpha": 1,
+      "computing_task_count": 0,
+      "horizon_candidate_count_illustrations": {
+        "1": {
+          "comm": 1,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 36,
+          "mob_exact_joint": 6,
+          "mob_independent_marginal": 36
+        },
+        "2": {
+          "comm": 1,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 1296,
+          "mob_exact_joint": 36,
+          "mob_independent_marginal": 1296
+        },
+        "3": {
+          "comm": 1,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 46656,
+          "mob_exact_joint": 216,
+          "mob_independent_marginal": 46656
+        },
+        "4": {
+          "comm": 1,
+          "comp": 1,
+          "joint_naive_cartesian_upper_bound": 1679616,
+          "mob_exact_joint": 1296,
+          "mob_independent_marginal": 1679616
+        }
+      },
+      "mob_candidates_exact_joint_train_template": 6,
+      "mob_candidates_independent_marginal_product_not_formal_joint": 36,
+      "observed_comm_rows_at_H1": 0,
+      "remaining_compute_work": 0.0,
+      "single_step_joint_naive_cartesian_upper_bound": 36,
+      "status": "support-count illustration from recorded family eligibility; not an exact candidate count because multi-row candidate syntax is not frozen",
+      "stratum": "median_activity",
+      "trajectory_id": "formal-v1-sim-2026092352-policy-2026092452",
+      "uav_count": 2
+    },
+    {
+      "active_task_count": 77,
+      "anchor_decision_frame": 92,
+      "behavior_policy_comm_eligibility_at_H1": false,
+      "behavior_policy_comp_eligibility_at_H1": true,
+      "comm_candidates_as_rowwise_observed_width_start_upper_bound": 1,
+      "comp_candidates_noop_plus_global_alpha": 4,
+      "computing_task_count": 2,
+      "horizon_candidate_count_illustrations": {
+        "1": {
+          "comm": 1,
+          "comp": 4,
+          "joint_naive_cartesian_upper_bound": 144,
+          "mob_exact_joint": 6,
+          "mob_independent_marginal": 36
+        },
+        "2": {
+          "comm": 1,
+          "comp": 16,
+          "joint_naive_cartesian_upper_bound": 20736,
+          "mob_exact_joint": 36,
+          "mob_independent_marginal": 1296
+        },
+        "3": {
+          "comm": 1,
+          "comp": 64,
+          "joint_naive_cartesian_upper_bound": 2985984,
+          "mob_exact_joint": 216,
+          "mob_independent_marginal": 46656
+        },
+        "4": {
+          "comm": 1,
+          "comp": 256,
+          "joint_naive_cartesian_upper_bound": 429981696,
+          "mob_exact_joint": 1296,
+          "mob_independent_marginal": 1679616
+        }
+      },
+      "mob_candidates_exact_joint_train_template": 6,
+      "mob_candidates_independent_marginal_product_not_formal_joint": 36,
+      "observed_comm_rows_at_H1": 0,
+      "remaining_compute_work": 0.336605,
+      "single_step_joint_naive_cartesian_upper_bound": 144,
+      "status": "support-count illustration from recorded family eligibility; not an exact candidate count because multi-row candidate syntax is not frozen",
+      "stratum": "high_activity",
+      "trajectory_id": "formal-v1-sim-2026092327-policy-2026092427",
+      "uav_count": 2
+    }
+  ],
+  "training": false,
+  "validation_used_for_template_selection": false,
+  "world_model_rollout": false
+}

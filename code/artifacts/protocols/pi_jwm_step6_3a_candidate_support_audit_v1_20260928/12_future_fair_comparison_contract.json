@@ -1,0 +1,25 @@
+{
+  "checkpoint_modified": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "executed": false,
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "reserved_methods": [
+    "Rule fallback",
+    "Greedy/H1",
+    "Support-aware Random MPC",
+    "Flat/standard CEM",
+    "Proposed structured search"
+  ],
+  "same_H_max": 4,
+  "same_action_domain": true,
+  "same_candidate_rollout_budget": true,
+  "same_causal_information": true,
+  "same_frozen_world_model": true,
+  "same_objective_scorer": true,
+  "same_support_policy": true,
+  "training": false,
+  "validation_used_for_template_selection": false
+}

@@ -1,3 +1,10 @@
+## 2026-09-28 STEP 6.3A — Candidate Support & Search Architecture Audit
+
+- [x] 起点 `HEAD=origin/main=f58f08087bf27b2ffc21c2e6c68ec1d153acc439`，确认并保留已有未跟踪 `TASK/` 与绘图脚本。
+- [x] Secret-pattern preflight 和最小 `.gitignore` hardening；Formal TRAIN causal action support、Comp reconstruction、joint/temporal signatures、anchor search-space illustrations、validation descriptive check。
+- [x] 完成 receipts、implementation record、AI_CONTEXT/索引/过程记录同步。
+- 当前 gate：支持审计证据 `STEP_6_3A=PASS`，但全仓 unittest 回归未通过且误执行 synthetic CPU trainer tests，记录为范围偏差；Formal 训练/数据/checkpoint 未触碰。唯一下一动作：同步偏差记录、knowledge index write/check、diff review 与 Git 收口后停止。不得继续任何训练类测试、optimizer、ranking、closed loop、baseline、GPU 或 `locked_test`。
+
 ## 2026-09-26 STEP 6.0C — Planner Action Domain v1
 
 - [x] 从 GitHub main 恢复源码并核对 6.0A/6.0B 合同与机器证据。
@@ -1619,3 +1626,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 用冻结 checkpoint 完成无 Route H1–H4 scorer 集成、Comm 分母与有效自由度机器审计。
 - [x] 全回归、跨层 gate、知识索引、Context Consistency 与 diff 检查通过；Git commit/push 为最后收口操作。
 - 当前 gate：`STEP_6_2B=PASS`（仅 scorer/comparator CPU 合同）；唯一下一交付为 Patch Git 收口。GPU、`locked_test`、训练、候选方法、闭环均不在本 Step。
+## 2026-09-28 STEP 6.3A — Candidate Support Audit
+
+- [x] Security preflight, Git and dataset split boundary.
+- [x] CPU-only Formal TRAIN support statistics and validation descriptive audit.
+- [x] Search-space, support tiers, H_sup interaction and fair-comparison contract receipts.
+- [x] Concrete blocker recorded: COMP_TEMPLATE_READY=false; independent factorization has measured gap.
+- 当前 gate：STEP_6_3A=BLOCKED_ON_CANDIDATE_SUPPORT_SEMANTICS; stop and await researcher decision. No optimizer implementation.

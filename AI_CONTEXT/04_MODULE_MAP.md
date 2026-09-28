@@ -1,5 +1,11 @@
 # 模块导航地图
 
+## STEP 6.3A audit
+
+- `code/scripts/run_step6_3a_candidate_support_audit_v1.py` scans Formal Raw and aligns temporal signatures using the accepted sample index; Comp reconstruction calls the existing deterministic CPU allocation rule.
+- `code/artifacts/protocols/pi_jwm_step6_3a_candidate_support_audit_v1_20260928/` contains Comm/Comp/Mob, joint/temporal support, anchor search-size illustrations, H_sup boundary, security and acceptance receipts.
+- `STEP_6_3A=PASS` means support evidence was measured. Independent family factorization is `NOT_SUPPORTED`; no optimizer or candidate method is implemented/selected.
+
 ## STEP 6.2B-PATCH 当前入口
 
 - `code/src/pi_jwm/step6_0c_planner_action_domain_v1.py`：每 horizon 非空 Route 统一拒绝 `OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1`；Comm/Comp/Mob 准入沿用原逻辑。

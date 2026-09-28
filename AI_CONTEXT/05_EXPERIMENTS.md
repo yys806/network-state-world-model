@@ -1,5 +1,24 @@
 # 当前与历史实验
 
+## 2026-09-28 STEP 6.3A support audit
+
+CPU-only support audit over Formal TRAIN 48 trajectories/4416 windows and
+validation 12 trajectories/1104 windows. TRAIN support: Comm widths 1/2/3,
+RB IDs 0–49; Mob HOLD plus five profiles with same-profile two-UAV joint
+observations; Comp reconstructs from the causal CPU base rule with global alpha
+`{0.5,0.75,1.0}`. Joint family factorization is `NOT_SUPPORTED`. Formal-index
+rolling H1–H4 sequences were audited. No Future Target, checkpoint or World
+Model rollout was used. Verdict: `PASS` for support evidence only; no candidate
+method was selected.
+
+Verification boundary: `compileall` passed and CROSS_LAYER gate passed 115/115.
+Full repository unittest discovery was not clean (1993 run, 34 errors, 1
+historical receipt mismatch); Windows GBK output and missing historical local
+artifacts caused errors. The broad suite also ran synthetic CPU trainer tests,
+an execution deviation outside the audit-only scope. No Formal training,
+checkpoint or dataset write occurred; the rewritten historical cross-layer
+receipt was restored.
+
 ## 2026-09-28 STEP 6.2B-PATCH CPU 机制验收
 
 同一非锁定 Formal Validation `anchor-0001` 的两个 Route 空动作候选，共用冻结 best.pt、mean prior、expected service，H1–H4 rollout/scorer 有限；Route 编译为缺席哨兵，参数摘要与 checkpoint SHA 不变。Comm 分母复核为 50 个全局 RB ID，而非 242 条关系行。8 份新收据在 `code/artifacts/protocols/pi_jwm_step6_2b_patch_route_noop_v1_20260928/`。`STEP_6_2B=PASS` 是 scorer 合同结果，不是候选优劣、闭环或性能结果。无 GPU、`locked_test`、训练、baseline。

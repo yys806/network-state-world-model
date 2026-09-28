@@ -1,0 +1,80 @@
+{
+  "1": {
+    "marginal_actions_in_temporally_unseen_combinations": {
+      "marginally_supported_but_temporally_unseen_possible": false,
+      "observed_structural_sequences": 244,
+      "singleton_structural_sequence_count": 94,
+      "unseen_composition_fraction": "not a probability without a frozen candidate sampler"
+    },
+    "observed_adjacent_transition_count": 0,
+    "rolling_sequence_count": 4416,
+    "sequence_repetition_fraction": 0.7964221014492754,
+    "singleton_sequence_count": 899,
+    "singleton_window_fraction": 0.20357789855072464,
+    "structural_sequence_repetition_fraction": 0.978713768115942,
+    "structural_singleton_sequence_count": 94,
+    "unique_sequence_count": 932,
+    "unique_structural_sequence_count": 244
+  },
+  "2": {
+    "marginal_actions_in_temporally_unseen_combinations": {
+      "marginally_supported_but_temporally_unseen_possible": true,
+      "observed_structural_sequences": 1165,
+      "singleton_structural_sequence_count": 814,
+      "unseen_composition_fraction": "not a probability without a frozen candidate sampler"
+    },
+    "observed_adjacent_transition_count": 1637,
+    "rolling_sequence_count": 4416,
+    "sequence_repetition_fraction": 0.6580615942028986,
+    "singleton_sequence_count": 1510,
+    "singleton_window_fraction": 0.34193840579710144,
+    "structural_sequence_repetition_fraction": 0.8156702898550725,
+    "structural_singleton_sequence_count": 814,
+    "unique_sequence_count": 1637,
+    "unique_structural_sequence_count": 1165
+  },
+  "3": {
+    "marginal_actions_in_temporally_unseen_combinations": {
+      "marginally_supported_but_temporally_unseen_possible": true,
+      "observed_structural_sequences": 2070,
+      "singleton_structural_sequence_count": 1733,
+      "unseen_composition_fraction": "not a probability without a frozen candidate sampler"
+    },
+    "observed_adjacent_transition_count": 1657,
+    "rolling_sequence_count": 4416,
+    "sequence_repetition_fraction": 0.5264945652173914,
+    "singleton_sequence_count": 2091,
+    "singleton_window_fraction": 0.4735054347826087,
+    "structural_sequence_repetition_fraction": 0.6075634057971014,
+    "structural_singleton_sequence_count": 1733,
+    "unique_sequence_count": 2294,
+    "unique_structural_sequence_count": 2070
+  },
+  "4": {
+    "marginal_actions_in_temporally_unseen_combinations": {
+      "marginally_supported_but_temporally_unseen_possible": true,
+      "observed_structural_sequences": 2719,
+      "singleton_structural_sequence_count": 2425,
+      "unseen_composition_fraction": "not a probability without a frozen candidate sampler"
+    },
+    "observed_adjacent_transition_count": 1678,
+    "rolling_sequence_count": 4416,
+    "sequence_repetition_fraction": 0.40466485507246375,
+    "singleton_sequence_count": 2629,
+    "singleton_window_fraction": 0.5953351449275363,
+    "structural_sequence_repetition_fraction": 0.45086050724637683,
+    "structural_singleton_sequence_count": 2425,
+    "unique_sequence_count": 2842,
+    "unique_structural_sequence_count": 2719
+  },
+  "checkpoint_modified": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "temporal_policy_recommendation": "TEMPORAL_SUPPORT_CONDITIONING is needed for exact-support claims; per-step support alone permits unseen sequences",
+  "training": false,
+  "validation_used_for_template_selection": false,
+  "window_alignment_source": "packages/samples/index.json metadata.future_action_frame_indices"
+}

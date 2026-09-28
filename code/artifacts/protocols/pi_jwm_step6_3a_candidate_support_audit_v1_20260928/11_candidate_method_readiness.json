@@ -1,0 +1,46 @@
+{
+  "CANDIDATE_METHOD_RECOMMENDATION": "NO_FINAL_METHOD_SELECTION; first define support-constrained structured syntax, then compare conditional designs; researcher owns method decision",
+  "checkpoint_modified": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "methods": {
+    "conditional_hierarchical_categorical_cem": {
+      "combinatorial_scalability": "reduces impossible products but sequence space remains large",
+      "compatibility": "can encode eligibility and family coupling",
+      "implementation_complexity": "high",
+      "required_assumptions": "causal conditioning variables, conditional order and support policy are frozen",
+      "scientific_risk": "modeling choices can encode untested assumptions",
+      "train_support_fidelity": "closer to observed conditional support, not proven until policy is specified"
+    },
+    "exact_structured_enumeration": {
+      "combinatorial_scalability": "anchor/horizon counts grow rapidly; no universal feasibility conclusion",
+      "compatibility": "fits typed action rows and explicit support constraints",
+      "implementation_complexity": "medium-high",
+      "required_assumptions": "candidate grammar and eligibility are frozen and enumerable",
+      "scientific_risk": "omits useful but unobserved legal compositions",
+      "train_support_fidelity": "highest for enumerated observed templates"
+    },
+    "independent_factorized_categorical_cem": {
+      "combinatorial_scalability": "compact parameterization but combinations grow exponentially",
+      "compatibility": "simple per-family categorical encoding",
+      "implementation_complexity": "medium",
+      "required_assumptions": "family independence or acceptable measured approximation",
+      "scientific_risk": "creates unsupported co-occurrences; evidence does not support independence",
+      "train_support_fidelity": "conflicts with measured joint/temporal support"
+    },
+    "support_aware_random_search": {
+      "combinatorial_scalability": "linear in rollout budget, though coverage can be poor",
+      "compatibility": "works with structured candidate samplers",
+      "implementation_complexity": "medium",
+      "required_assumptions": "sampling distribution and support admission are explicit",
+      "scientific_risk": "stochastic coverage variance and sampler bias",
+      "train_support_fidelity": "depends on selected tier and sampler"
+    }
+  },
+  "optimizer_implemented": false,
+  "training": false,
+  "validation_used_for_template_selection": false
+}

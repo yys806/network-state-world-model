@@ -1,5 +1,16 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-28 STEP 6.3A
+
+Completed CPU-only Formal TRAIN support evidence and security preflight. Corrected
+the provisional Comp blocker by reconstructing the causal base with the existing
+CPU rule and confirming global alpha `{0.5,0.75,1.0}`. Measured family/joint and
+formal-index H1–H4 support; independent factorization is `NOT_SUPPORTED`. No
+candidate method or optimizer was selected or run. Full unittest discovery
+failed historical cases and invoked synthetic CPU trainer tests outside the
+audit scope; no Formal training/checkpoint/dataset write occurred. See the
+STEP 6.3A record for the exact verification limits.
+
 ## 2026-09-28 STEP 6.2B-PATCH
 
 研究者冻结 Planner v1 Route `EXPLICIT_NOOP_ONLY`，6.0C gate 统一拒绝非空 Route；底层 Route/多跳与 learned encoder 保留。新 CPU receipts 验证负索引缺席编译、有效 Route 自由度为 NONE、Comm 分母 50、冻结 checkpoint 无 Route H4 集成；`STEP_6_2B=PASS` 限于 scorer 合同。原 6.2B blocked 观察保留为历史。无候选方法、闭环、baseline、GPU、`locked_test` 或训练。

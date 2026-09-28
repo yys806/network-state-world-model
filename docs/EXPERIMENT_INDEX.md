@@ -1,5 +1,7 @@
 # PI-JWM 实验索引
 
+STEP 6.3A CPU-only support audit：Formal TRAIN 48 trajectories/4416 windows，validation 12/1104 descriptive-only。Comp 1969/1969 action entries 从 causal CPU rule 重建，alpha `{0.5,0.75,1.0}`；Comm/Mob/joint/temporal 和 anchor search-size receipts 见 `code/artifacts/protocols/pi_jwm_step6_3a_candidate_support_audit_v1_20260928/`。不是候选选择或性能实验。
+
 STEP 6.2B-PATCH CPU 机制诊断：同一非锁定 validation `anchor-0001`、冻结 best.pt、两个 Route 空动作候选的 H1–H4 rollout 与五项 scorer；新机器入口 `code/artifacts/protocols/pi_jwm_step6_2b_patch_route_noop_v1_20260928/`。这是合同测试，不是候选方法或性能实验。
 
 STEP 6.1 CPU 机制诊断：正式 validation 样本 `...::anchor-0001`、冻结 `best.pt`、四类当前因果探针、H1–H4 递归、3 种配对随机 seed 与 K=1/2/4/8 CPU 实现计时。机器入口 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/`；实施记录在 `docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md`。非正式效果实验，不生成候选排名。
