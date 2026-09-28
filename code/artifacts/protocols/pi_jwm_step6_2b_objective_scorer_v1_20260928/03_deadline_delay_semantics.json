@@ -1,0 +1,22 @@
+{
+  "A_DDL": "latched failed task-horizon indicators / (cohort_count * H_eff)",
+  "J_Delay": "non-successful task-horizon indicators / (cohort_count * H_eff)",
+  "N_DDL": "distinct failed anchor tasks within H_eff",
+  "absolute_deadline": "arrival_time_s + deadline_s",
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "failed_not_successful_completion": true,
+  "failure_latched": true,
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "no_return_completion_tolerance_s": 1e-05,
+  "optimizer_step": false,
+  "performance_claim": false,
+  "return_completion_tolerance_s": 0.0,
+  "status": "CONTRACT_TESTED",
+  "training": false,
+  "unfinished_failure_rule": "current_time_s > absolute_deadline_s"
+}

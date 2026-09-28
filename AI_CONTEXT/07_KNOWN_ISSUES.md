@@ -1,5 +1,9 @@
 # 已知问题与冲突
 
+## 2026-09-28 STEP 6.2B Objective acceptance blocker
+
+`BLOCKED_ON_OBJECTIVE_SEMANTICS`：单跳 domain gate 实际允许 pending/no-current-Flow Route；正式 adapter 将它映射为 `pending_flow / flow_index=-1`，4.4 不创建 Flow，而 frozen Objective 只规定未来 Return birth 的 `H_sup`。scorer 现拒绝静默给此类 trace 正式评分，待研究者决定支持范围。另，同路径 existing-Flow Route 的 4.4 规则会在 hop 完成前修改 Task-Agent Host，尽管 holder/Flow 路线未变；需核对 Route/Host 因果语义。Comm effort 原分母把 242 条关系行当 RB support，已修为选定 anchor 的 50 个全局有效 RB ID；旧机器观测仍保留。scorer 的 fixed-support CPU 机制通过不等于 6.2B 完整验收。
+
 ## 2026-09-28 Route recovery closure
 
 - Route deterministic mismatch：`RESOLVED_IN_CODE`，包括 intermediate-hop advancement 与 same-destination full-path reroute；证据见 ROUTE-RECOVERY receipts。

@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-28：STEP 6.2B scorer 实现与语义阻塞
+
+新增 supplied-rollout 五项 Objective scorer、严格字典序、focused tests、非锁定 validation 冻结 checkpoint CPU 集成和 13 份 additive receipts；修正 Planner side-state Comm RB denominator。bounded Route audit 发现 pending Flow 准入和同路径 Host 更新合同冲突，故仅提交可复核的 `BLOCKED_ON_OBJECTIVE_SEMANTICS` 证据，不展开候选方法或闭环。
+
 ## 2026-09-28：STEP 6.1 冻结训练模型候选推演预检
 
 新增正式 checkpoint 上的 CPU 候选推演模块、每步因果动作编译 helper、validation/Raw 机制验收脚本、focused tests、七份机器收据与实施记录。同步 Tracker、计划/进展/发现、权威进展和 AI_CONTEXT；6.0A–C 合同、模型结构、正式数据/配置、checkpoint 与 AirFogSim 源码保持不变。此项是机制证据，不是候选选择或性能结果。

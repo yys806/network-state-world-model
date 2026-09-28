@@ -1230,3 +1230,10 @@
 - 研究者接受 no-retrain salvage；旧 LVal 保持 legacy observation，patched full validation 未执行。
 - Formal train 4416 / val 1104 均无 multi-hop activation；54 个 existing-Flow overlap windows legacy/patched H1-H4 完全 invariant。
 - Planner v1 Route enabled 但每条 path 只能一个 frozen destination；multi-hop code repaired and tested, outside v1 domain。
+
+## 2026-09-28 STEP 6.2B
+
+- `rb_active_mask[0]` 是二维 relation×RB，Python `sum(bool(row)...)` 误数 relation 行；实际 global RB 编号来自 AirFogSim `RB_Nos`，当前有效 RB support 在所选 anchor 为 50，旧值 242 仅是历史误计。
+- 当前单跳 gate 会接受 pending/no-current-Flow Route，正式 adapter 给 `flow_index=-1`，4.4 只改变 learned latent，不创建 Flow。冻结 Objective 只有 future Return birth 的 `H_sup`，不应自行扩展到 pending Input Route。
+- same-path existing Flow Route 在 Flow route fields 不变时仍改 Task-Agent Host；与 holder 在 hop 完成前不变的合同需核对。
+- 6.2B scorer 的 fixed-support 机制证据已通过，但完整接受因以上冲突阻塞，不能作 Planner 性能声明。

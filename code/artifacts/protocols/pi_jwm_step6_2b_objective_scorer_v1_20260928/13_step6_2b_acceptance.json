@@ -1,0 +1,24 @@
+{
+  "STEP_6_2B": "BLOCKED_ON_OBJECTIVE_SEMANTICS",
+  "baseline": false,
+  "blocking_conflicts": [
+    "pending single-hop Route is admitted with flow_index=-1; no deterministic Flow is created and its scoring support horizon is not frozen",
+    "same-path existing-Flow Route changes task_agent host before hop completion in 4.4; whether this is intended needs contract reconciliation"
+  ],
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "checkpoint_sha256_unchanged": true,
+  "closed_loop": false,
+  "comparator_implemented": true,
+  "focused_tests_pass": true,
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "next_action": "researcher resolves pending Route support and same-path host semantics before final 6.2B acceptance",
+  "optimizer_step": false,
+  "performance_claim": false,
+  "real_frozen_checkpoint_integration_pass": true,
+  "scorer_implemented": true,
+  "training": false
+}

@@ -1,5 +1,9 @@
 # 数据流与张量合同
 
+## STEP 6.2B 当前评分数据流
+
+当前因果 anchor/已对齐 deadline sidecar → Planner-only objective side-state；同一 anchor 的已给定合法候选 → Step 6.1 H1–H4 predicted trace；scorer 先对各候选求 `H_sup`、对集合求共用 `H_eff`，再计算五项 score/逐 Task/Horizon 分解。Future Target、future truth/FAILED label 不进入评分。Comm 分母取 anchor 当前有效无线关系条件下正式张量的全局 RB 维度，非旧 `rb_active_mask` 的关系行数。pending Flow Route 映射 `flow_index=-1` 时评分拒绝；需研究者处理当前 gate 与 fixed-support 合同冲突。
+
 ## STEP 6.2A-CLOSURE Planner Route domain
 
 Candidate Route rows pass through the 6.0C admission gate: Route remains enabled, but a nonempty `route_node_indices` must contain exactly the current frozen logical destination. The rule-side repaired multi-hop path remains outside this Planner v1 candidate domain. No learned feature, formal tensor, or Future Target data is added.

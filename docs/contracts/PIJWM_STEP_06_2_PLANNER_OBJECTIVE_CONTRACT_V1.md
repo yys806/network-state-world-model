@@ -1,6 +1,6 @@
 # PI-JWM Planner Objective Contract v1
 
-**Status:** `RESEARCHER-FROZEN TARGET CONTRACT` / `SOURCE-RECONCILED` / `PLANNER V1 ROUTE DOMAIN SINGLE-HOP` / `READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION` / `SCORER IMPLEMENTATION NOT STARTED`
+**Status:** `RESEARCHER-FROZEN TARGET CONTRACT` / `SOURCE-RECONCILED` / `PLANNER V1 ROUTE DOMAIN SINGLE-HOP` / `SCORER IMPLEMENTED FOR VERIFIED FIXED SUPPORT` / `STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`
 
 ## Scope
 
@@ -49,4 +49,8 @@ Only source-backed hard constraints are allowed. Future task schedules, Future T
 
 **Historical blocker:** the 4.2C-C/4.4 route mismatch blocked the earlier 6.2A-PATCH readiness calculation. STEP 6.2A-ROUTE-RECOVERY repaired deterministic route semantics, and this closure freezes Planner v1 to Formal Dataset single-hop support. The existing formal best checkpoint is retained by researcher decision; retraining is false. The original `LVal=0.07431338784170399` remains a legacy accepted observation, not patched full validation; patched full validation was not executed.
 
-**Current readiness:** `STEP_6_2B_READINESS=READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`. This permits only implementation of the objective scorer and lexicographic comparator with CPU contract tests. It does not mean Planner/MPC/closed-loop readiness, candidate method selection, ranking quality, multi-hop readiness, baseline readiness or performance readiness. `CLOSED_LOOP_READINESS=NOT_READY`; `CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`; `MULTIHOP_PLANNER_READINESS=NOT_IN_V1_DOMAIN`. No scorer, ranking or performance run has begun.
+**Historical 6.2A-CLOSURE readiness:** `STEP_6_2B_READINESS=READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`. This authorized only implementation of the objective scorer and lexicographic comparator with CPU contract tests. It did not mean Planner/MPC/closed-loop readiness, candidate method selection, ranking quality, multi-hop readiness, baseline readiness or performance readiness. `CLOSED_LOOP_READINESS=NOT_READY`; `CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`; `MULTIHOP_PLANNER_READINESS=NOT_IN_V1_DOMAIN`. At that closure no scorer, ranking or performance run had begun.
+
+## STEP 6.2B implementation observation (2026-09-28)
+
+The five-part scorer and strict comparator now execute on supplied fixed-support H1–H4 traces; the 6.2A readiness statement above remains a historical authorization gate. `STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`, so this is not an accepted Planner objective. A pending/no-current-Flow single-hop Route currently passes 6.0C admission, but the formal adapter maps it to `flow_index=-1` and 4.4 creates no Flow. This conflicts with the v1 action-domain exclusion of unsupported Flow birth. The current Objective contract defines `H_sup` for future Return birth, not this pending Input Route. The scorer refuses to silently score that mapping pending a researcher decision. A same-path existing-Flow Route also updates the Task-Agent Host relation before hop completion while the route holder remains unchanged; that deterministic rule behavior requires source/contract reconciliation. The general objective tuple, ordering and formulas above have not changed. No candidate method, performance, baseline or closed-loop result follows from the bounded CPU scorer evidence.

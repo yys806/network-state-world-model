@@ -1,0 +1,25 @@
+{
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "formal_dataset_modified": false,
+  "future_failed_label_mutation_score_invariant": true,
+  "future_target_mutation_score_invariant": true,
+  "future_truth_in_runtime": false,
+  "gpu": false,
+  "locked_test": false,
+  "optimizer_step": false,
+  "performance_claim": false,
+  "prior_mode": "mean",
+  "risk_active": false,
+  "runtime_inputs": [
+    "anchor model state",
+    "causal objective side-state",
+    "CandidateActionSequence",
+    "CandidateRolloutTrace"
+  ],
+  "service_mode": "expectation",
+  "status": "CONTRACT_TESTED",
+  "training": false
+}

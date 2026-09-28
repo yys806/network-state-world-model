@@ -1,0 +1,30 @@
+{
+  "artifact_files": [
+    "01_objective_contract_receipt.json",
+    "02_anchor_cohort_and_masks.json",
+    "03_deadline_delay_semantics.json",
+    "04_support_horizon_cases.json",
+    "05_burden_component_audit.json",
+    "06_comm_effort_denominator_audit.json",
+    "07_effort_component_audit.json",
+    "08_lexicographic_comparator_cases.json",
+    "09_real_frozen_checkpoint_score_integration.json",
+    "10_order_independence_and_tie_break.json",
+    "11_future_leakage_audit.json",
+    "12_effective_action_audit.json",
+    "13_step6_2b_acceptance.json",
+    "manifest.json"
+  ],
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "closed_loop": false,
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "optimizer_step": false,
+  "performance_claim": false,
+  "status": "BLOCKED_ON_OBJECTIVE_SEMANTICS",
+  "training": false
+}

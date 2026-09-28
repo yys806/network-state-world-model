@@ -26,6 +26,8 @@ def model(route=(1, 2), index=0, revision=0, hop=10, e2e=10):
         "route_node_mask": torch.tensor([[[*([True] * len(route)), *([False] * (4 - len(route)))]]], dtype=torch.bool),
         "hop_remaining": torch.tensor([[float(hop)]]), "flow_remaining": torch.tensor([[float(e2e)]]),
         "task_presence": torch.tensor([[True]]), "rb_active_mask": torch.tensor([[True, True]]),
+        "comm_presence": torch.tensor([[True]]), "comm_validity": torch.tensor([[True]]),
+        "comm_wireless_mask": torch.tensor([[True]]), "csi_mask": torch.tensor([[[True, True]]]),
     }
 
 
@@ -70,6 +72,24 @@ class SideStateTest(unittest.TestCase):
         self.assertEqual(advanced.effort_denominators, current.effort_denominators)
         self.assertAlmostEqual(advanced.tasks[0].absolute_deadline_s, 2.7)
         self.assertAlmostEqual(advanced.current_time_s, 2.0)
+
+    def test_comm_denominator_counts_global_rb_ids_not_active_relation_rows(self):
+        decision, sidecar = prepared()
+        state = model()
+        state["rb_active_mask"] = torch.zeros((1, 2, 4), dtype=torch.bool)
+        state["comm_presence"] = torch.tensor([[True, True]])
+        state["comm_validity"] = torch.tensor([[True, True]])
+        state["comm_wireless_mask"] = torch.tensor([[True, True]])
+        state["csi_mask"] = torch.ones((1, 2, 4), dtype=torch.bool)
+        current = prepare_objective_side_state(decision=decision, deadline_sidecar=sidecar,
+                  task_slots={"Task_1": 0}, physical_slots={"S": 0, "D": 2},
+                  routes=[route()], model_state=state)
+        self.assertEqual(current.effort_denominators[0], 4)
+        state["csi_mask"].fill_(False)  # measurement absence does not shrink simulator RB IDs
+        still_allocatable = prepare_objective_side_state(decision=decision, deadline_sidecar=sidecar,
+                  task_slots={"Task_1": 0}, physical_slots={"S": 0, "D": 2},
+                  routes=[route()], model_state=state)
+        self.assertEqual(still_allocatable.effort_denominators[0], 4)
 
     def test_future_fields_and_unaligned_sidecar_rejected(self):
         decision, sidecar = prepared()

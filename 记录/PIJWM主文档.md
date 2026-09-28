@@ -2776,3 +2776,7 @@ Formal Dataset v1 已按研究者冻结协议构建并通过机器验收：H=2�
 ## 2026-09-28 Planner Objective v1 研究者修订边界
 
 目标仍为 `(N_DDL,A_DDL,J_Delay,J_Burden,J_Effort)` 字典序最小化。`J_Effort` 仅聚合 anchor 适用的 Comm/Comp/Mob 归一化项，不含 RouteRevision 独立处罚；Priority 权重为 1，不作为 readiness 前提。最终业务主吞吐为真实 terminal-hop E2E useful bytes / 真实仿真时间，all-hop network service throughput 仅为诊断。允许 Planner-only 因果 side-state 携带当前已知 deadline、Return 目的地和 Route 控制结构，不进入训练模型。当前 4.2C-C/4.4 路线语义冲突仍阻塞多跳 `B_Tx` 和 STEP 6.2B；上述目标修订不是 scorer 已实现声明。证据见 STEP 6.2A-PATCH 实施记录。
+
+## 2026-09-28 STEP 6.2B 工程观察与验收边界
+
+冻结五项目标和严格字典序已经接入已有候选 rollout，单个 non-locked Formal Validation anchor 的 CPU checkpoint 机制通过；这不是候选性能结论。Comm effort 的旧分母把 242 条通信关系行当成 RB support，本 Step 按 AirFogSim 全局 RB 编号和当前有效无线关系改为 50 个 RB ID，并单独保存纠正 receipt。有效动作审计发现 pending/no-current-Flow Route 被现有 gate 接受但正式 adapter 映射 `flow_index=-1`、确定性规则不创建 Flow；同路径 existing-Flow Route 在 holder 未移动前修改 Task-Agent Host。上述冲突尚无研究者裁决，故 `STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`，不宣称完整 Objective 验收。当前研究者冻结的 Objective、single-hop Route 研究边界、no-retrain checkpoint 决定均未改。证据见 STEP 6.2B 实施记录与机器 receipts；唯一下一动作是研究者决定 pending Route 支持处理和 same-path Host 语义。

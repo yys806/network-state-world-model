@@ -1,5 +1,7 @@
 # PI-JWM 项目索引
 
+> 2026-09-28 STEP 6.2B：Objective scorer/comparator 的固定支持 CPU 机制已实现，Comm effort RB 分母已核正；pending Route 与同路径 Host 语义冲突使验收 `BLOCKED_ON_OBJECTIVE_SEMANTICS`。见 `implementation_records/STEP_06_2B_PLANNER_OBJECTIVE_SCORER_AND_COMPARATOR.md` 与对应 13 份机器 receipt。无 Planner 性能或闭环结果。
+
 > 2026-09-28 STEP 6.1：冻结训练模型上的 H4 候选推演机制入口见 `implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md`；源码 `code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py`、CPU 运行脚本与七份 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/` 收据。无 objective/winner/闭环性能结论。
 
 > 2026-09-28 STEP 6.2A-CLOSURE：no-retrain checkpoint acceptance、Planner v1 single-hop Route domain 与 `STEP_6_2B_READINESS=READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION` 收口入口见 `implementation_records/STEP_06_2A_CLOSURE_NO_RETRAIN_SINGLE_HOP_PLANNER_V1.md` 和 `code/artifacts/protocols/pi_jwm_step6_2a_closure_single_hop_v1_20260928/`；无 scorer、ranking、baseline、closed-loop 或性能结论。

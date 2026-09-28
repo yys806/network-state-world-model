@@ -1,0 +1,22 @@
+{
+  "all_H_sup_4": "H_eff=4",
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "existing_return_slot": "identified by frozen return_flow_index, not current presence",
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "one_H_sup_2": "all use H_eff=2",
+  "optimizer_step": false,
+  "performance_claim": false,
+  "status": "CONTRACT_TESTED",
+  "task_agent_exec_vocab_index": 4,
+  "task_agent_host_vocab_index": 3,
+  "task_agent_vocab_source": "code/src/pi_jwm/step4_2a_graph_input_extension_v1.py::TASK_AGENT_RELATION_TYPE_VOCAB",
+  "training": false,
+  "unsupported_at_H1": "OBJECTIVE_UNSCOREABLE; no winner",
+  "unsupported_at_H3": "H3/H4 excluded for every candidate",
+  "unsupported_future_return_birth": "first state u => H_sup=u-1"
+}

@@ -1603,3 +1603,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 接受 no-retrain checkpoint salvage，冻结 Planner v1 single-hop Route domain。
 - [x] 完成 domain gate、burden contract test、closure receipts 和合同/AI_CONTEXT同步。
 - [ ] 最后完成完整 CPU 回归、index/check、diff review、commit/push；随后停止等待研究者审阅。
+
+## 2026-09-28 STEP 6.2B — Objective Scorer & Comparator
+
+- [x] 冻结合同/源码与 Comm RB 分母来源复核；测试先失败后修正。
+- [x] 实现 supplied-rollout scorer、common H_eff、deadline latch、burden/effort 与严格字典序。
+- [x] 单非锁定 validation anchor 的 frozen checkpoint CPU 机制集成和 effective Route-action audit。
+- [x] 发现 pending Flow Route / same-path Host 语义冲突；scorer 拒绝静默评分，验收 `BLOCKED_ON_OBJECTIVE_SEMANTICS`。
+- [x] 完成回归、文档/Context/index 与 diff review；本 Step 以 commit/push 收口后停止。
+- 当前关口：6.2B 被既有合同语义阻塞。唯一下一动作：研究者裁决 Route 两处冲突后重新计算 acceptance；GPU、locked_test、训练、baseline、闭环关闭。

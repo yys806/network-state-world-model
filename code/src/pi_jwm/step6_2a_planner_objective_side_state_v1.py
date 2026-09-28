@@ -118,7 +118,14 @@ def prepare_objective_side_state(
         check_route_model_alignment(route, model_state)
         if route.source_time_s > time + 1e-9:
             raise ValueError("future route source")
-    n_rb = sum(bool(v) for v in model_state["rb_active_mask"][0].tolist())
+    # AirFogSim numbers RBs in one global pool; the action tensor repeats that
+    # pool per communication relation to represent link allocation/interference.
+    # rb_active_mask is the prior allocation, not allocatable support.
+    wireless = (model_state["comm_presence"][0] & model_state["comm_validity"][0]
+                & model_state["comm_wireless_mask"][0])
+    # CSI observation masks describe available channel measurements, not RB
+    # legality. AirFogSim accepts globally numbered RB_Nos up to n_RB.
+    n_rb = int(model_state["rb_active_mask"].shape[-1]) if bool(wireless.any()) else 0
     cpu = sum(_number(row["capacity_per_s"], "CPU capacity") for row in decision["node_cpu_capacity_observation_rows"]
               if row.get("observed_mask") and row.get("capacity_per_s") is not None)
     uavs = sum(str(row.get("entity_type", "")).lower() == "uav" for row in decision["entities"])
@@ -226,7 +233,7 @@ def planner_derived_return_birth_required(task: PlannerTaskCausalSideState,
                                            predicted_computation_finished: bool,
                                            existing_return_slot: bool,
                                            predicted_compute_host_index: int | None) -> bool:
-    if not predicted_computation_finished or existing_return_slot:
+    if not predicted_computation_finished or existing_return_slot or task.required_returned_size <= 0:
         return False
     if predicted_compute_host_index is None:
         raise ValueError("predicted computation host required to resolve Return")

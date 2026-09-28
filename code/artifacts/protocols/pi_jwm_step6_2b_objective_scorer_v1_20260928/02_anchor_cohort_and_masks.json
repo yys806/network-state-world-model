@@ -1,0 +1,18 @@
+{
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "cohort": "anchor causal present tasks excluding terminal DONE/FAILED; fixed across candidates/horizons",
+  "effort_applicability": "Comm/Comp/Mob frozen at anchor",
+  "empty_cohort": "OBJECTIVE_UNSCOREABLE_EMPTY_COHORT",
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "masks": "m_Tx and m_Comp frozen from anchor B_Tx0/W_rem0",
+  "optimizer_step": false,
+  "performance_claim": false,
+  "selected_anchor": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+  "selected_anchor_cohort_count": 6,
+  "training": false
+}

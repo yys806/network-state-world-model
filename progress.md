@@ -1211,3 +1211,7 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 ## 2026-09-28 STEP 6.2A-CLOSURE
 
 已完成 route recovery 后状态收口：best checkpoint 保留且不重训；Formal train/validation multi-hop coverage=0；Planner v1 Route single-hop gate 通过。当前 6.2B 仅 READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION；未执行 scorer、ranking、closed loop、baseline、GPU、locked_test。
+
+## 2026-09-28 STEP 6.2B
+
+实现 supplied-trace scorer/严格字典序；Comm denominator 真值从 242 relation rows 修正为 50 global RB IDs。10 项 scorer focused 与 11 项 side-state focused 通过；冻结 checkpoint 在 validation anchor-0001 的两候选 H4 CPU 机制集成通过。Route audit 发现 pending Flow action 仍被 admission 接受但规则不创建 Flow；同路径 Route 提前改 Host。验收保持 `BLOCKED_ON_OBJECTIVE_SEMANTICS`；未执行 GPU、locked_test、训练、baseline、闭环或性能评估。

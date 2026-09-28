@@ -1,5 +1,11 @@
 # 模块导航地图
 
+## STEP 6.2B 当前入口
+
+- `code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py`：已给定 rollout 的 common `H_eff`、逐 Task/Horizon 五项目标与严格字典序；pending Flow Route 拒绝静默评分。验收状态为 `BLOCKED_ON_OBJECTIVE_SEMANTICS`。
+- `code/scripts/run_step6_2b_objective_scorer_cpu_v1.py`、`build_step6_2b_objective_receipts_v1.py`：单非锁定 validation anchor 的冻结 checkpoint CPU 机制证据与收据。
+- `code/tests/test_step6_2b_planner_objective_scorer_v1.py`：合同测试；Route admission/4.4 Host 冲突见实施记录。
+
 ## STEP 6.2A-CLOSURE
 
 - Route v1 admission: `code/src/pi_jwm/step6_0c_planner_action_domain_v1.py::_validate_single_hop_route`

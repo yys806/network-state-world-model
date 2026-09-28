@@ -1,6 +1,10 @@
 # PI-JWM Current State Snapshot
 
-## 2026-09-28 STEP 6.2A-CLOSURE — 当前关口
+## 2026-09-28 STEP 6.2B — 当前关口
+
+`STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`。五项 Objective scorer 和严格字典序比较器已实现，CPU 合同测试与一个非锁定 validation anchor 的冻结 checkpoint H1–H4 集成通过；但尚不能宣称 6.2B 验收 PASS。当前 single-hop gate 允许 pending/no-current-Flow Route，正式 adapter 却映射为 `flow_index=-1`，4.4 不创建 Flow；Objective 合同只定义未来 Return birth 的 `H_sup`，未定义该 pending Route 的评分支持范围。scorer 已拒绝静默评分此类 trace。同路径 existing-Flow Route 还会在 hop 完成前改 Task-Agent Host，需与 frozen holder 语义核对。研究者尚未决定处理方式；Route 域和 4.4 本 Step 未改。Comm effort 分母已从误数通信关系行修为当前有效的全局 RB ID 数；选定 anchor 从 242 修为 50，旧 receipt 保持历史原值。best.pt SHA 不变；未用 GPU、locked_test、训练、baseline 或闭环。下一动作仅为研究者裁决上述两个 Route 语义冲突，随后再重算 6.2B acceptance。证据见 `docs/implementation_records/STEP_06_2B_PLANNER_OBJECTIVE_SCORER_AND_COMPARATOR.md` 和 `code/artifacts/protocols/pi_jwm_step6_2b_objective_scorer_v1_20260928/`。
+
+## 2026-09-28 STEP 6.2A-CLOSURE — 历史关口
 
 研究者正式接受 no-retrain salvage：原 `best.pt` 继续作为 `FORMAL_BEST_CHECKPOINT`，SHA-256=`941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`；不重训。形式 train/validation multi-hop coverage 均为 0，54 个 overlap windows 的 H1–H4 state/graph/prior/Motion/CSI legacy 与 patched 完全相同；这不构成 multi-hop 性能证明。旧 `LVal=0.07431338784170399` 仍是原 accepted run 观测，patched full validation 未执行。
 

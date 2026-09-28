@@ -1,0 +1,27 @@
+{
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "deadline_dominates_effort": true,
+  "delay_dominates_burden": true,
+  "effort_only_after_first_four_tie": true,
+  "exact_tie_break": "candidate_fingerprint",
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "optimizer_step": false,
+  "order": [
+    "N_DDL",
+    "A_DDL",
+    "J_Delay",
+    "J_Burden",
+    "J_Effort"
+  ],
+  "performance_claim": false,
+  "research_epsilon": null,
+  "status": "CONTRACT_TESTED",
+  "strict_compare": true,
+  "training": false,
+  "weighted_sum": false
+}

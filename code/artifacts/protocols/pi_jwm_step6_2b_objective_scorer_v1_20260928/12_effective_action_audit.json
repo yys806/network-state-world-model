@@ -1,0 +1,49 @@
+{
+  "ROUTE_EFFECTIVE_FREEDOM_V1": "LIMITED",
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "conflict": "pending Route passes current domain admission but adapter flow_index=-1 and rule creates no Flow; frozen objective contract defines H_sup for future Return birth only",
+  "existing_flow_legal_route_action_count": 1,
+  "fixed_support_blocked_count": 1,
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "legal_and_predicted_state_changing_count": 1,
+  "legal_but_deterministic_flow_noop_count": 2,
+  "legal_but_deterministic_noop_count": 1,
+  "locked_test": false,
+  "observations": [
+    {
+      "action_mapping_mode": "current_flow",
+      "candidate_id": "route_effective_existing_flow",
+      "deterministic_rule_changed_keys": [
+        "task_agent_agent_index"
+      ],
+      "fixed_support_flow_created": false,
+      "kind": "existing_flow",
+      "learned_latent_changed": true,
+      "predicted_state_changed_keys": [
+        "task_agent_agent_index"
+      ],
+      "route_flow_index": 0
+    },
+    {
+      "action_mapping_mode": "pending_flow",
+      "candidate_id": "route_effective_pending_no_current_flow",
+      "deterministic_rule_changed_keys": [],
+      "fixed_support_flow_created": false,
+      "kind": "pending_no_current_flow",
+      "learned_latent_changed": true,
+      "predicted_state_changed_keys": [],
+      "route_flow_index": -1
+    }
+  ],
+  "optimizer_step": false,
+  "pending_no_current_flow_route_action_count": 1,
+  "performance_claim": false,
+  "research_decision": false,
+  "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+  "status": "BOUNDED_CAUSAL_FIXTURE",
+  "training": false
+}

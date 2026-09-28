@@ -1,0 +1,22 @@
+{
+  "absent_flow_positive_remaining": "SCORER_STATE_INCONSISTENCY",
+  "anchor_flow_set": "known and present fixed-support slots belonging to task",
+  "baseline": false,
+  "both_masks_zero_and_unfinished": "BURDEN_SEMANTICS_BLOCKED",
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "completed_task_burden": 0,
+  "deadline_failed_task_burden": "remaining component burden retained",
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "m_Comp": "W_rem(q,0)>0",
+  "m_Tx": "B_Tx(q,0)>0",
+  "optimizer_step": false,
+  "performance_claim": false,
+  "single_hop_B_Tx": "hop_remaining",
+  "status": "CONTRACT_TESTED_WITH_BOUNDARY",
+  "terminal_completed_flow_burden": 0,
+  "training": false
+}

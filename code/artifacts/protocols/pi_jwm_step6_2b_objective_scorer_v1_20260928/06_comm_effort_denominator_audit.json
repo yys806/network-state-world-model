@@ -1,0 +1,28 @@
+{
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "new_selected_anchor_denominator": 50,
+  "new_unit": "global simulator RB IDs, gated by current valid wireless relation",
+  "normalized_value_may_exceed_one_due_to_rb_reuse": true,
+  "numerator_unit": "candidate requested task-RB assignments",
+  "old_nested_mask_result_selected_anchor": 242,
+  "old_result_unit": "communication relation rows, not RB support",
+  "optimizer_step": false,
+  "performance_claim": false,
+  "previous_receipt_historical_observation_unchanged": true,
+  "side_state_source_sha256": "30fa7f5f0cbc47a9edaad16d7ff9026cbf488bca080b9dcc95df14580ea4cd78",
+  "source": [
+    "AirFogSim airfogsim_env._allocate_communication_RBs task_id -> RB_Nos",
+    "AirFogSim channel_manager.activateLink(tx,rx,allocated_RBs,type)",
+    "Formal action adapter comm_allocation_mask[relation,RB]",
+    "formal rb_active_mask last-axis width equals global n_RB; prior allocation values do not define support",
+    "CSI observation mask is not simulator RB-allocation legality"
+  ],
+  "status": "SOURCE_CORRECTED",
+  "training": false
+}

@@ -1,0 +1,26 @@
+{
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "comparison": "STRICT_LEXICOGRAPHIC_MINIMIZE",
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "objective_tuple": [
+    "N_DDL",
+    "A_DDL",
+    "J_Delay",
+    "J_Burden",
+    "J_Effort"
+  ],
+  "optimizer_step": false,
+  "performance_claim": false,
+  "planner_route_domain": "FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1",
+  "route_effort": false,
+  "scorer_source_sha256": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad",
+  "status": "IMPLEMENTED_FOR_FIXED_SUPPORT",
+  "throughput_objective_term": false,
+  "training": false,
+  "weighted_sum": false
+}

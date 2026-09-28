@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-28 STEP 6.2B（验收阻塞）
+
+新增五项 scorer、严格字典序、CPU 合同与冻结 checkpoint 单 anchor 机制证据；修正 Comm effort RB 分母。bounded Route audit 发现 pending Flow admission 与同路径 Host 更新的合同冲突，`STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`。没有新的研究者 Objective 决定，未开始候选方法、baseline、GPU、locked_test 或闭环。
+
 ## 2026-09-28 STEP 6.2A-CLOSURE
 
 接受 no-retrain salvage，冻结 Planner v1 single-hop Route support，更新 STEP 6.2B scorer implementation readiness；保留 multi-hop code capability 与零 Formal coverage 边界。patched full validation、scorer、ranking、baseline、GPU、locked_test、closed loop均未执行。

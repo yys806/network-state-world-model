@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## 2026-09-28 STEP 6.2B scorer 层（验收阻塞）
+
+`CandidateRolloutTrace + PlannerObjectiveCausalSideState + CandidateActionSequence + anchor state → CandidateObjectiveScore` 是独立 CPU scorer 层，不进入 Encoder/RSSM learned tensors；先求共用 `H_eff`，再逐 Task/Horizon 汇总五项目标，最后严格字典序。当前只证明 fixed-support 机制。pending Route admission 与 same-path Host 规则冲突使 6.2B 完整验收阻塞；不改变原模型结构、训练 checkpoint 或 Planner v1 single-hop 决定。
+
 ## 2026-09-28 STEP 6.2A-CLOSURE Route boundary
 
 4.4 repaired multi-hop deterministic rule and rule-side route metadata remain code capabilities. Planner v1 admission applies the separate `FORMAL_DATASET_SINGLE_HOP_SUPPORT_V1` domain: one direct destination node per Route action. The domain gate does not alter the 11 learned action tensors or remove the multi-hop rule.

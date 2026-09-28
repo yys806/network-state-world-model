@@ -1,8 +1,12 @@
 # 当前与历史实验
 
+## 2026-09-28 STEP 6.2B CPU scorer probe
+
+一个非锁定 Formal Validation `anchor-0001` 上的冻结 `best.pt` strict-load、mean-prior/expected-service H1–H4 rollout 与 scorer 均有限，参数 digest 和 checkpoint SHA 未变。这是机制证据，不是候选优劣或性能结果。13 份机器收据位于 `code/artifacts/protocols/pi_jwm_step6_2b_objective_scorer_v1_20260928/`；`STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`，因 pending Route 固定支持与同路径 Host 语义待裁决。GPU、locked_test、baseline、闭环未执行。
+
 ## 2026-09-28 STEP 6.2A-CLOSURE
 
-`NO_RETRAIN_ACCEPTED=true`; existing formal checkpoint retained. Planner v1 has enabled single-hop Route only. Current readiness is `READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`; no scorer/ranking/closed-loop/baseline run. Formal multi-hop train/validation coverage is zero; patched full validation did not run. Receipts: `code/artifacts/protocols/pi_jwm_step6_2a_closure_single_hop_v1_20260928/`.
+`NO_RETRAIN_ACCEPTED=true`; existing formal checkpoint retained. Planner v1 has enabled single-hop Route only. At this closure, readiness was `READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`; scorer had not yet started. The later 6.2B blocker is recorded above. Formal multi-hop train/validation coverage is zero; patched full validation did not run. Receipts: `code/artifacts/protocols/pi_jwm_step6_2a_closure_single_hop_v1_20260928/`.
 
 ## 2026-09-28 STEP 6.1 Formal Validation CPU mechanism diagnostic
 

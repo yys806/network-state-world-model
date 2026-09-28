@@ -1,0 +1,24 @@
+{
+  "Comm": "requested RB assignment count / anchor valid global RB IDs",
+  "Comp": "requested allocated_cpu_per_s / anchor observed static CPU capacity",
+  "Mob": "requested present UAV speed / (15 m/s * anchor present UAV count)",
+  "aggregation": "mean of anchor-applicable components per horizon, then H1..H_eff mean",
+  "baseline": false,
+  "candidate_method_selected": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "components": [
+    "Comm",
+    "Comp",
+    "Mob"
+  ],
+  "empty_action_does_not_remove_applicable_component": true,
+  "formal_dataset_modified": false,
+  "gpu": false,
+  "locked_test": false,
+  "optimizer_step": false,
+  "performance_claim": false,
+  "route_effort": false,
+  "status": "CONTRACT_TESTED",
+  "training": false
+}

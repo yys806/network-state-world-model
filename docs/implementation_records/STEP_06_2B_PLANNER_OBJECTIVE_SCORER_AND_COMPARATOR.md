@@ -1,0 +1,35 @@
+# STEP 6.2B — Planner Objective Scorer & Lexicographic Comparator v1
+
+## Step Goal and Definition Basis
+
+Implement the researcher-frozen `(N_DDL,A_DDL,J_Delay,J_Burden,J_Effort)` tuple on already supplied Step 6.1 candidate rollouts, with a common candidate-set support horizon and strict lexicographic comparison. The governing sources are `PIJWM_STEP_06_2_PLANNER_OBJECTIVE_CONTRACT_V1.md`, the 6.0C single-hop action domain, STEP 6.2A-PATCH/CLOSURE receipts, and the 2026-09-28 authorization. No candidate-generation method or scientific objective change was authorized.
+
+## Initial State and Files Involved
+
+Start `d54e9a2e3fbc5f1c3f9092a8f3f9d476ae00f05f`, equal to fetched `origin/main`. The workspace had only the existing untracked `TASK/` and `code/scripts/plot_step5_3e_tiny_overfit.py`; neither is touched. Frozen `best.pt` SHA-256 is `941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`.
+
+The implementation is `code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py`. A minimal causal denominator correction is in `step6_2a_planner_objective_side_state_v1.py`. CPU tests, a bounded checkpoint script and additive receipts live in `code/tests/`, `code/scripts/` and `code/artifacts/protocols/pi_jwm_step6_2b_objective_scorer_v1_20260928/`.
+
+## Changes and Reuse
+
+`score_candidate_set` consumes `CandidateActionSequence`, `CandidateRolloutTrace`, anchor model state and `PlannerObjectiveCausalSideState`. It calls no model and samples no latent. It first computes each `H_sup` from source-backed Return requirement and frozen Return slot identity, then applies `H_eff=min_k H_sup(k)` to every candidate. `H_eff=0` and empty anchor cohort return explicit unscoreable results. For scoreable candidates it retains task/horizon/component rows and a five-part objective tuple. Strict tuple comparison uses candidate fingerprint only after exact objective equality; it uses no weight or research epsilon.
+
+Planner-derived `DEADLINE_FAILED` latches after the first late unfinished/completed state; a later model `task_completed` cannot revive it. Return completion uses the exact deadline; no-Return completion alone has `1e-5` acceptance tolerance. `N_DDL` counts unique failed anchor tasks, `A_DDL` counts latched failed task-horizons, and `J_Delay` counts all non-successful task-horizons, including failed ones. The anchor-fixed Flow set and masks determine single-hop `B_Tx=hop_remaining` and normalized compute burden. A known/present Flow turning absent with positive remaining raises scorer-state inconsistency. An unfinished task with both anchor masks zero raises `BURDEN_SEMANTICS_BLOCKED`, rather than receiving an invented burden.
+
+`J_Effort` reads only requested Comm/Comp/Mob controls. Static CPU capacity and UAV count/speed denominators remain anchor-frozen. The previous `rb_active_mask[0]` sum was a nested relation-row count; on the selected real anchor it produced 242 even though there are 50 global RB IDs. The corrected denominator is the formal RB tensor's global last-axis width, gated by a present valid wireless relation and frozen at the anchor. CSI observation mask is not simulator RB-allocation legality. AirFogSim accepts `task_id -> RB_Nos`, and the formal action tensor represents allocations by relation × globally numbered RB. Requested task-RB assignments are counted as the numerator; RB reuse across links can make this normalized effort greater than one. Historical 6.2A receipts are preserved, with the correction recorded separately.
+
+## Validation and Result
+
+Focused scorer tests cover common H_eff, H1 support failure, H3/H4 exclusion, order independence, deadline equality/tolerance/failure latch, later model completion after failure, single-hop/compute burden, zero-mask block, anchor-fixed effort and future-truth mutation. The side-state denominator test first failed at 2 versus expected 4 on a two-relation/four-RB fixture, then passed after correction. A bounded CPU integration loaded the unchanged best checkpoint strictly, prepared non-locked `dev_validation` `anchor-0001`, ran two legal H1–H4 Step 6.1 rollouts with mean prior and expected service, and produced finite scores without changing parameter digest or checkpoint bytes. This is mechanism evidence only; the two scores are not a performance comparison.
+
+The independent effective-action audit found a critical contract mismatch. A current-flow same-path direct Route maps to `current_flow`; its Flow route fields do not change, but 4.4 changes `task_agent_agent_index` before the hop completes. A pending/no-current-Flow direct Route passes the current 6.0C admission gate and maps to `pending_flow`, `flow_index=-1`; the deterministic rule creates no Flow and changes no tested Flow/Task state, although the learned latent responds. The frozen action-domain contract says unsupported new Flow birth lies outside Planner v1, while the Objective contract only defines `H_sup` for future Return birth. Scorer now rejects a pending-flow Route trace rather than silently assigning a full objective. Deciding whether admission must reject this Route or whether a new support-horizon rule applies would change the frozen policy; no such decision is made here.
+
+Actual CPU regression commands: `python -m unittest discover -s code/tests -p <pattern>` for 6.0A (6), 6.0C (14), 6.1 (2), 6.2A (1), 6.2A-PATCH (11), 6.2A-ROUTE-RECOVERY (6), and 6.2B (10); all passed. `run_cross_layer_rule_semantics_gate_v1.py` passed 115 tests. `python -m compileall -q code/src code/scripts code/tests` passed. The gate rewrote its older historical receipt as a byproduct; that worktree change was restored, leaving historical machine observation intact. `git diff --check` passed. The knowledge index write/check and final Git identity are checked after staging.
+
+## Expected vs Actual / Acceptance
+
+Expected: fully accepted scorer/comparator on every admitted Planner v1 candidate. Actual: scorer and comparator work on verified fixed-support traces, but the admitted pending-flow Route and same-path host transition conflict with frozen semantics. `STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`; no `PLANNER_OBJECTIVE_SCORER=IMPLEMENTED_AND_CPU_CONTRACT_VERIFIED` or `MPC_OBJECTIVE=FROZEN_AND_IMPLEMENTED` claim is made. `CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`, `CLOSED_LOOP_READINESS=NOT_READY`, `MULTIHOP_PLANNER_READINESS=NOT_IN_V1_DOMAIN`, and baseline not started.
+
+## Known Issues, Git and Next Step
+
+No patched full validation, candidate method, online ranking, winner selection, closed loop, baseline, GPU, locked test, retraining, optimizer step or Formal Dataset rebuild was performed. The selected deadline sidecar proves source alignment for one validation anchor, not broad runtime coverage. The Route conflict is an implementation observation requiring researcher review; it is not entered into `AI_CONTEXT/06_DECISIONS.md` as a research decision. Final commit and push identities are reported at closure. The one next action is for the researcher to resolve pending Route support treatment and same-path Host semantics before STEP 6.2B acceptance is recalculated.
