@@ -48,3 +48,5 @@ This is one validation anchor and one frozen training seed. It establishes mecha
 ## Validation, Git and Next Step
 
 Machine evidence: `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/` contains checkpoint identity, anchor manifest, preflight receipt, four-family response, recursive feedback, stochastic paired diagnostic and CPU batch/runtime diagnostic. The receipt is the result authority. Focused 6.1/6.0A-C contract tests passed (24/24); required 5.6C, 5.1D, 5.5 and 4.4 regression tests passed (66/66); compileall, diff check and knowledge index write/check passed. The sole next proposed action is researcher review of this bounded rollout mechanism and its remaining scientific boundaries; no MPC objective or candidate-method selection starts automatically.
+
+Git closure: commit `1bce6057e9959b9f78268410d675d710888331fe` (`feat(pi-jwm): verify trained candidate rollouts`) was pushed to `origin/main`; local `HEAD` and `origin/main` match. The pre-existing untracked `TASK/` directory and `code/scripts/plot_step5_3e_tiny_overfit.py` remain untouched.
