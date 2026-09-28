@@ -1,0 +1,18 @@
+{
+  "actual_current_hop_index_after": 0,
+  "actual_delivered_hop_bytes": 0.0010000000474974513,
+  "actual_hop_remaining_after": 0.0,
+  "actual_rule_executed": true,
+  "blocker": "Side-state can detect divergence but cannot repair frozen model transition without changing predicted state semantics.",
+  "c_c_tensor_route_semantics": "remaining destination list, excludes current holder",
+  "expected_current_hop_index_after": 1,
+  "model_rule_route_semantics": "indexes route[current_hop_index+1] as holder and route[current_hop_index+2] as next destination",
+  "planner_route_side_state_required": true,
+  "planner_route_side_state_sufficient_for_trained_model_multi_hop": false,
+  "route_action_actual_rule_executed": true,
+  "route_action_updates_endpoints": true,
+  "route_action_updates_full_array": false,
+  "route_action_updates_revision_on_endpoint_change": true,
+  "route_values_hop_count_consumed_by_deterministic_rule": false,
+  "status": "BLOCKED"
+}

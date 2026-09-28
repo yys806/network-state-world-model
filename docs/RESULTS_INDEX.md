@@ -89,3 +89,6 @@ STEP 5.5 只有 Dataset/CPU interface 验收结果，没有预测性能结果：
 ```
 
 反向查询时，从数字先找到 audit 或原始 metrics，再回到 run summary、checkpoint、manifest、配置和代码；不要只依赖 PPT、README 或摘要表。
+## 2026-09-28 STEP 6.2A-PATCH
+
+No new performance result. The only accepted result is a readiness diagnostic: deadline sidecar alignment passes for one non-locked validation anchor, and 6.2B remains blocked by a reproduced route transition mismatch. Primary future throughput is E2E useful delivery; network service throughput is diagnostic. See the PATCH machine readiness receipt and implementation record.

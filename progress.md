@@ -1201,3 +1201,6 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 - 当前 Formal Raw/Tensor/World Model 没有完整 Planner deadline/arrival/priority/return-support side-state；`B_Tx` 跨 hop 证据和 Route effort denominator 也未闭合。
 - 已生成 `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/` 全套回执，focused audit test 通过。
 - 回归：6.2A 1/1、6.0C 12/12、6.1 2/2、4.4 37/37、4.2C-B 25/25、5.6C 3/3、5.5 21/21、6.0A 6/6；compileall、knowledge index write/check（5 outputs、0 mismatch）、Context Consistency 与 diff check 通过。审计主提交 `fa7c369` 已推送 `origin/main`；本条完成态记录随后补充提交。GPU、SSH、locked_test、baseline、ranking、MPC、closed-loop 均未执行。
+## 2026-09-28 STEP 6.2A-PATCH
+
+已从 `main=origin/main=6ba5b48` 重新审计 Flow、Route、Deadline/Return、effort 和吞吐；单条 Formal Validation 因果重放与 6 Task 槽位对齐通过。新增独立 Planner-only side-state、共用真实吞吐提取器和机器回执。4.4 实际规则复现两跳中间 hop 完成但不推进、Route action 不写回完整数组，故 6.2B BLOCKED；未修改训练数据、checkpoint 或模型。9 个 PATCH 测试及指定 4.2C-B/C、4.4、5.5、6.0A/C、6.1、6.2A 回归通过，compileall、索引 write/check 通过。剩余：最终 diff 审查与 Git 收口。唯一下一动作：提交并推送本 PATCH；GPU、locked_test 关闭。

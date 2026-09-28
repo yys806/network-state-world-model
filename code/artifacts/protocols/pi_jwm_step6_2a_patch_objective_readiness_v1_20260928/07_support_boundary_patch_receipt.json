@@ -1,0 +1,14 @@
+{
+  "H_eff": "min across candidates H_sup",
+  "H_eff_zero": "OBJECTIVE_UNSCOREABLE; no fallback winner",
+  "H_sup": 1,
+  "cases": {
+    "existing_return": "supported continuation",
+    "future_return_birth": "u-1 if positive size and predicted compute host differs from Return destination",
+    "model_requirement_unknown_planner_known_true": "planner derives host-conditioned Return birth boundary",
+    "no_return": "no Return-birth boundary"
+  },
+  "first_unsupported_state_u": 2,
+  "status": "FORMULA_READY",
+  "unsupported_state_scored": false
+}

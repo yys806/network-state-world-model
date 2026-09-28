@@ -2185,6 +2185,7 @@
         "scripts.build_step5_1c_unified_development_bundle_v1",
         "scripts.build_step5_1d_unified_model_chain_v1",
         "scripts.build_step5_5_formal_dataset_v1",
+        "scripts.build_step6_2a_patch_readiness_v1",
         "scripts.correct_step5_6a_validation_bookkeeping_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "tests.test_step4_2c_c_flow_sample_tensor_v1",
@@ -2217,6 +2218,7 @@
         "scripts.build_step4_4_structured_rssm_world_model_v1",
         "scripts.build_step5_1d_unified_model_chain_v1",
         "scripts.build_step5_5_formal_dataset_v1",
+        "scripts.build_step6_2a_patch_readiness_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "tests.test_step4_3a_typed_dual_graph_builder_v1",
         "tests.test_step4_3b_dual_graph_encoder_v1"
@@ -2272,9 +2274,11 @@
         "scripts.build_step4_4_structured_rssm_world_model_v1",
         "scripts.build_step5_1b_posterior_loss_metric_receipt_v1",
         "scripts.build_step5_1d_unified_model_chain_v1",
+        "scripts.build_step6_2a_patch_readiness_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
-        "tests.test_step4_4_structured_rssm_world_model_v1"
+        "tests.test_step4_4_structured_rssm_world_model_v1",
+        "tests.test_step6_2a_patch_side_state_v1"
       ],
       "imports": [
         "pi_jwm.step3_3_model_input_tensor_v1",
@@ -2285,7 +2289,8 @@
       "module": "pi_jwm.step4_4_structured_rssm_world_model_v1",
       "path": "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py",
       "test_files": [
-        "code/tests/test_step4_4_structured_rssm_world_model_v1.py"
+        "code/tests/test_step4_4_structured_rssm_world_model_v1.py",
+        "code/tests/test_step6_2a_patch_side_state_v1.py"
       ]
     },
     {
@@ -2584,6 +2589,36 @@
       "path": "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py",
       "test_files": [
         "code/tests/test_step6_1_trained_candidate_rollout_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.build_step6_2a_patch_readiness_v1",
+        "tests.test_step6_2a_patch_side_state_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_2a_planner_objective_side_state_v1",
+      "path": "code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py",
+      "test_files": [
+        "code/tests/test_step6_2a_patch_side_state_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.build_step6_2a_patch_readiness_v1",
+        "tests.test_step6_2a_patch_side_state_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_2a_throughput_metric_v1",
+      "path": "code/src/pi_jwm/step6_2a_throughput_metric_v1.py",
+      "test_files": [
+        "code/tests/test_step6_2a_patch_side_state_v1.py"
       ]
     },
     {
@@ -3922,6 +3957,7 @@
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "pi_jwm.step6_0a_candidate_generation_v1",
         "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "scripts.build_step6_2a_patch_readiness_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
@@ -4005,6 +4041,23 @@
       "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step4_3a_typed_dual_graph_builder_v1",
+        "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "pi_jwm.step6_2a_planner_objective_side_state_v1",
+        "pi_jwm.step6_2a_throughput_metric_v1",
+        "scripts.build_step5_1d_unified_model_chain_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step6_2a_patch_readiness_v1",
+      "path": "code/scripts/build_step6_2a_patch_readiness_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
         "pi_jwm.evaluation_bundle_v3"
       ],
       "lifecycle_status": "support",
@@ -4082,6 +4135,7 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "scripts.replay_step6_2a_patch_deadline_sidecar_v1",
         "scripts.verify_step5_5_behavior_policy_determinism_v1"
       ],
       "imports": [
@@ -5332,6 +5386,18 @@
       "test_files": [
         "code/tests/test_reevaluate_formal_cpu_runs_v1.py"
       ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "scripts.collect_step5_5_formal_raw_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.replay_step6_2a_patch_deadline_sidecar_v1",
+      "path": "code/scripts/replay_step6_2a_patch_deadline_sidecar_v1.py",
+      "test_files": []
     },
     {
       "category": "runnable_script",
@@ -10592,6 +10658,20 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_1_trained_candidate_rollout_v1",
       "path": "code/tests/test_step6_1_trained_candidate_rollout_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "pi_jwm.step6_2a_planner_objective_side_state_v1",
+        "pi_jwm.step6_2a_throughput_metric_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_2a_patch_side_state_v1",
+      "path": "code/tests/test_step6_2a_patch_side_state_v1.py",
       "test_files": []
     },
     {

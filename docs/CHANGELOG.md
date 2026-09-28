@@ -302,3 +302,6 @@
 - Corrected the provenance matrix to distinguish source availability from actual causal exposure and removed unsupported `CAUSALLY_DERIVABLE` status.
 - Recorded `PASS_WITH_READINESS_BLOCKERS`; STEP 6.2B remains blocked by missing Planner-only causal side-state, incomplete cross-hop E2E burden provenance and missing normalized Route-effort denominator.
 - No scorer/ranking, candidate selection, baseline, GPU, locked-test, or closed-loop experiment was run.
+## 2026-09-28 STEP 6.2A-PATCH
+
+Reconciled current Flow E2E evidence with historical 4.2B, added exact-aligned Planner-only deadline/Return/Route side-state and a common real Flow throughput extractor, revised objective/baseline contracts, and recorded a reproduced 4.2C-C/4.4 route semantic blocker. STEP 6.2B remains BLOCKED. No trained model, Formal Dataset, checkpoint, GPU, locked_test or baseline execution changed.

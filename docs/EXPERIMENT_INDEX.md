@@ -75,3 +75,6 @@ Step 3.1F 最小样本与 History 修正也不属于训练实验：证据位于 
 - 是否访问 `locked_test`。
 
 新增实验只能在用户批准研究目的和方法变量后执行。索引登记不等于实验通过。
+## 2026-09-28 STEP 6.2A-PATCH diagnostic only
+
+One exact-aligned non-locked Formal Validation trajectory replay captured current Task deadlines; a deterministic 4.4 transition reproduced the destination-only route-index mismatch. Receipts: `code/artifacts/protocols/pi_jwm_step6_2a_patch_objective_readiness_v1_20260928/`. No performance experiment or baseline was run.

@@ -180,3 +180,10 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - Throughput is diagnostic/final metric, not a separate weighted objective. Energy and Fairness are outside Planner v1. Priority is inactive (`w_q=1`). Risk is defined but inactive.
 - A common support-aware horizon is required. Future-only Return birth is a model-support boundary, not candidate illegality.
 - These semantics are a target definition; 6.2A did not implement scoring. `CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING` remains unchanged.
+# 2026-09-28 STEP 6.2A-PATCH — Researcher Decisions
+
+- Planner Objective v1 仍按 `(N_DDL,A_DDL,J_Delay,J_Burden,J_Effort)` 字典序最小化；RouteRevision 不单独进入 effort。`J_Effort` 只用 Comm/Comp/Mob 的当前 anchor 适用项和冻结分母。
+- Priority 权重关闭，所有当前任务 `w_q=1`，Priority 字段不是 6.2B 前置条件。Risk 已定义但不启用；Energy、Fairness 不进入 Objective v1。
+- 真实闭环业务主吞吐为 End-to-End Useful Throughput；all-hop Network Service Throughput 只作诊断。Planner 中 throughput 不是单独加权项。
+- 允许独立 Planner-only causal side-state 携带当前已知、可确定递推的 deadline、Return/control route 元数据；不改 Formal Dataset、训练 Tensor 或 learned 模型。
+- `B_Tx` 和 6.2B readiness 是工程审计事实，不是研究者决定。本补丁机器结论为 BLOCKED；路线语义修复方案尚待研究者决定。

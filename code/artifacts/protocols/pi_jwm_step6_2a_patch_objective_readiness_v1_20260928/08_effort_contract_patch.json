@@ -1,0 +1,17 @@
+{
+  "aggregation": "mean of anchor-applicable normalized components",
+  "components": [
+    "Comm",
+    "Comp",
+    "Mob"
+  ],
+  "effort_component_mask": "anchor-frozen, candidate-independent",
+  "effort_denominator_contract": {
+    "Comm": "current valid allocatable RB count",
+    "Comp": "sum applicable observed raw static CPU capacity per second",
+    "Mob": "15 m/s times present UAV count; formal mobility core domain, not physical limit"
+  },
+  "priority_weighting": false,
+  "route_effort": false,
+  "status": "SOURCE_DEFINED"
+}

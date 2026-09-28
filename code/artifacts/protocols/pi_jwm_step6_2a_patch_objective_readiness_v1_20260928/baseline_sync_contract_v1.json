@@ -1,0 +1,52 @@
+{
+  "deadline": {
+    "active_failure": "elapsed > deadline",
+    "no_return_completion": "delay <= deadline + 1e-5",
+    "return_completion": "delay <= deadline"
+  },
+  "planner_objective": {
+    "energy": false,
+    "fairness": false,
+    "priority_weighting": false,
+    "risk_active": false,
+    "route_effort": false,
+    "tuple": [
+      "N_DDL",
+      "A_DDL",
+      "J_Delay",
+      "J_Burden",
+      "J_Effort"
+    ]
+  },
+  "planner_side_state": {
+    "required_fields": [
+      "task_id",
+      "arrival_time_s",
+      "elapsed_time_s",
+      "deadline_s",
+      "absolute_deadline_s",
+      "required_returned_size",
+      "return_destination_index",
+      "requires_return",
+      "flow_id",
+      "route_node_indices",
+      "current_hop_index",
+      "route_revision"
+    ]
+  },
+  "separation": [
+    "Planner Objective != Final Evaluation Metric",
+    "Predicted Metric != Real Closed-loop Metric",
+    "Evaluation Metric != Acceptance Gate"
+  ],
+  "support_boundary": {
+    "H_eff": "minimum H_sup over candidates",
+    "H_sup": "first unsupported state index - 1",
+    "zero": "OBJECTIVE_UNSCOREABLE"
+  },
+  "throughput": {
+    "diagnostic": "NETWORK_SERVICE_THROUGHPUT",
+    "extractor": "pi_jwm.step6_2a_throughput_metric_v1.extract_real_throughput",
+    "primary": "END_TO_END_USEFUL_THROUGHPUT"
+  }
+}

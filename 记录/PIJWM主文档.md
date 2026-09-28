@@ -2773,3 +2773,6 @@ STEP 5.1B 已实现 Definition 05 的 additive CPU primitives。Future Motion/CS
 # 2026-09-23 当前实施边界（STEP 5.5）
 
 Formal Dataset v1 已按研究者冻结协议构建并通过机器验收：H=2、L=4、60 条真实 trajectory、48/12 trajectory-level split、每条 96 transitions、`radius_knn(1000m,k=2)`，四类动作来自真实 causal behavior-policy setter/scheduler 路径。该结论只证明数据与 CPU 训练接口已就绪，不是正式训练、预测性能、拓扑最优性或 Planner 结论；GPU、formal training、baseline、locked test 均未执行。
+## 2026-09-28 Planner Objective v1 研究者修订边界
+
+目标仍为 `(N_DDL,A_DDL,J_Delay,J_Burden,J_Effort)` 字典序最小化。`J_Effort` 仅聚合 anchor 适用的 Comm/Comp/Mob 归一化项，不含 RouteRevision 独立处罚；Priority 权重为 1，不作为 readiness 前提。最终业务主吞吐为真实 terminal-hop E2E useful bytes / 真实仿真时间，all-hop network service throughput 仅为诊断。允许 Planner-only 因果 side-state 携带当前已知 deadline、Return 目的地和 Route 控制结构，不进入训练模型。当前 4.2C-C/4.4 路线语义冲突仍阻塞多跳 `B_Tx` 和 STEP 6.2B；上述目标修订不是 scorer 已实现声明。证据见 STEP 6.2A-PATCH 实施记录。

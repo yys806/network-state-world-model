@@ -1,0 +1,26 @@
+{
+  "active_flow_count": 1,
+  "effort_component_mask": [
+    true,
+    true,
+    true
+  ],
+  "effort_denominators": [
+    242.0,
+    48.0,
+    30.0
+  ],
+  "model_state_route_current_alignment": true,
+  "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+  "source_time_s": 1.9,
+  "status": "PASS",
+  "task_count": 6,
+  "task_slot_alignment": {
+    "Task_1": 0,
+    "Task_10": 1,
+    "Task_2": 2,
+    "Task_3": 3,
+    "Task_8": 4,
+    "Task_9": 5
+  }
+}

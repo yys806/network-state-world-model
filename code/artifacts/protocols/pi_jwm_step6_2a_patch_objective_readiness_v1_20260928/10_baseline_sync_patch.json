@@ -1,0 +1,5 @@
+{
+  "common_metric_extractor_required": true,
+  "machine_contract": "baseline_sync_contract_v1.json",
+  "status": "INTERFACE_SYNCED_NOT_EXECUTED"
+}

@@ -1,0 +1,64 @@
+{
+  "CURRENT_IMPLEMENTATION_FACT": "4.2C-B records FlowID=(TaskID,FlowType,Epoch), logical destination, total/e2e delivered/e2e remaining, holder, hop, route revision; 4.2C-C tensors these fields; graph and 4.4 carry them.",
+  "CURRENT_VERDICT": "E2E_FLOW_FIELDS_PRESENT_AND_CONSERVED; do not reuse 4.2B missing-field verdict",
+  "HISTORICAL_FACT": "4.2B source audit preceded the 4.2C-B causal ledger; E2E remaining was then not reconstructable from Raw alone.",
+  "field_coverage": [
+    "FlowID",
+    "TaskID",
+    "FlowType",
+    "Epoch",
+    "RouteRevision",
+    "logical_source",
+    "logical_destination",
+    "total_data",
+    "e2e_delivered",
+    "e2e_remaining",
+    "current_holder",
+    "current_hop_index",
+    "hop_progress",
+    "hop_remaining",
+    "route_node_indices",
+    "route_node_mask",
+    "carrying_active",
+    "flow_presence",
+    "flow_status"
+  ],
+  "real_limitations": [
+    "Real trace covers direct-hop Input/Return plus a separate real two-hop Input trace; Return multi-hop and same-destination reroute are contract fixtures.",
+    "Legacy wireless Return event amount can exceed observer return_size; the frozen min(total, delivered+delta) rule caps logical delivery and preserves conservation."
+  ],
+  "real_runtime_evidence": {
+    "e2e_no_double_count": true,
+    "input_logical_destination_causal": true,
+    "legacy_completion_overlay_only": true,
+    "logical_destination_provenance_proven": true,
+    "normal_hop_advancement_not_destination_change": true,
+    "normal_hop_advancement_not_reroute": true,
+    "real_decision_causality": true,
+    "real_input_flow_completed": true,
+    "real_multihop_final_hop_advances_e2e": true,
+    "real_multihop_intermediate_service_not_e2e": true,
+    "real_multihop_logical_destination_constant": true,
+    "real_multihop_multiple_distinct_hops": true,
+    "real_multihop_single_epoch": true,
+    "real_multihop_single_flow_id": true,
+    "real_non_locked_airfogsim": true,
+    "real_return_flow_completed": true,
+    "real_transitions_applied_without_error": true,
+    "return_logical_destination_causal": true
+  },
+  "source_sha256": {
+    "code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py": "4949933a06100f7db70ceb594893794b8509433b7b1f19f9e0f43b3100b8827d",
+    "code/src/pi_jwm/step4_2c_c_flow_sample_tensor_v1.py": "8ed4492b2bcd239998869f869a10d0ac21c4861bcabd51c21f4003dfc4f144c6",
+    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": "8c33bbf96963981f8428cfc474e843b99406712eb038dadc3055f992666d8709"
+  },
+  "synthetic_contract_evidence": {
+    "depdata_from_dag_forbidden": true,
+    "destination_change_epoch_conservation": true,
+    "destination_change_epoch_lineage": true,
+    "local_execution_no_fake_input_flow": true,
+    "partial_hop_destination_change_rejected": true,
+    "runtime_depdata_instances_zero": true,
+    "same_destination_reroute_identity": true
+  }
+}

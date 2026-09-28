@@ -1,0 +1,25 @@
+{
+  "alignment_receipt": "04_task_side_state_source_receipt.json",
+  "deadline_failure_is_planner_derived": true,
+  "deadline_semantics": {
+    "absolute": "arrival_time_s + deadline_s",
+    "active_failure": "elapsed > deadline",
+    "completion_before_active_failure_sweep": true,
+    "no_return_completion": "delay <= deadline + 1e-5",
+    "relative": true,
+    "return_completion": "delay <= deadline",
+    "unit": "simulation seconds"
+  },
+  "learned_output": false,
+  "source": "live Task.getTaskDeadline at decision-before-action",
+  "status": "READY_FOR_SELECTED_ANCHOR",
+  "task_count": 6,
+  "task_ids": [
+    "Task_1",
+    "Task_10",
+    "Task_2",
+    "Task_3",
+    "Task_8",
+    "Task_9"
+  ]
+}

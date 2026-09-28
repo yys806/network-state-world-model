@@ -1,0 +1,41 @@
+{
+  "trajectory_id": "formal-v1-sim-2026092302-policy-2026092402",
+  "frame_index": 1,
+  "capture_event_id": "capture-002",
+  "simulation_time_s": 1.9,
+  "source_time_s": 1.9,
+  "alignment_passed": true,
+  "tasks": [
+    {
+      "task_id": "Task_1",
+      "arrival_time_s": 0.7,
+      "deadline_s": 10.748153830913816
+    },
+    {
+      "task_id": "Task_10",
+      "arrival_time_s": 0.4,
+      "deadline_s": 11.94412958194749
+    },
+    {
+      "task_id": "Task_2",
+      "arrival_time_s": 1.5000000000000002,
+      "deadline_s": 8.538080145107863
+    },
+    {
+      "task_id": "Task_3",
+      "arrival_time_s": 1.6000000000000003,
+      "deadline_s": 8.432399247681104
+    },
+    {
+      "task_id": "Task_8",
+      "arrival_time_s": 0.1,
+      "deadline_s": 10.894051030653035
+    },
+    {
+      "task_id": "Task_9",
+      "arrival_time_s": 0.2,
+      "deadline_s": 11.132089859015634
+    }
+  ],
+  "source": "live Task.getTaskDeadline at decision-before-action"
+}

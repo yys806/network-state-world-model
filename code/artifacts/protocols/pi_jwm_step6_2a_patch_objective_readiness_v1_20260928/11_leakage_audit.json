@@ -1,0 +1,13 @@
+{
+  "checkpoint_identity_unchanged": true,
+  "formal_dataset_identity_unchanged": true,
+  "future_outcome_used": false,
+  "future_schedule_used": false,
+  "future_target_used": false,
+  "locked_test_accessed": false,
+  "negative_tests": "test_step6_2a_patch_side_state_v1.py",
+  "recorded_future_action_used": false,
+  "side_state_source_time_le_anchor": true,
+  "status": "PASS_FOR_SELECTED_ANCHOR_AND_SIDE_STATE_CODE",
+  "training_tensor_unchanged": true
+}

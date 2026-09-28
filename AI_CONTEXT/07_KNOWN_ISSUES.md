@@ -233,3 +233,6 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 - `B_Tx` remains partially supported because cross-hop E2E remaining and stable route/epoch evidence are incomplete.
 - Route effort has no candidate-independent normalized denominator.
 - Therefore `STEP_6_2B_READINESS=BLOCKED`. Do not derive missing fields from Future Target or start 6.2B automatically.
+# 2026-09-28 当前阻塞：Route 状态语义
+
+4.2C-C `route_node_indices` 是剩余目的节点列表；4.4 规则以“含 holder 的完整路径”索引并在 Route action 后保留旧数组。真实规则负例复现 hop 完成但下一跳不推进。Planner side-state 无法合法改写 frozen model state；因此多跳/重路由 `B_Tx` 和 STEP 6.2B BLOCKED。另需注意正 `required_returned_size` 不代表本地计算必有 Return：仿真器还比较计算节点与返回目的地。

@@ -216,3 +216,6 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 # 2026-09-28 STEP 6.2A
 
 Added a source-semantics audit runner, focused test, Planner objective target contract, baseline system metric interface, machine-readable receipts, and implementation record. Corrected the provenance matrix to distinguish actual pipeline exposure and removed unsupported `CAUSALLY_DERIVABLE`. Verdict: `PASS_WITH_READINESS_BLOCKERS`; STEP 6.2B remains blocked. No scoring, candidate selection, baseline, GPU, locked test, or closed-loop execution.
+# 2026-09-28 STEP 6.2A-PATCH
+
+重新裁决当前 Flow/E2E 事实，新增 Planner-only Task/Route side-state 与单 validation anchor deadline 因果重放，冻结 Useful/Network Service 双吞吐及 Comm/Comp/Mob effort，移除 Route/Priority blocker。机器发现 4.2C-C/4.4 路线语义冲突，保持 6.2B BLOCKED；无模型、Dataset、checkpoint、GPU、locked_test 改动。

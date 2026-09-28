@@ -1,0 +1,37 @@
+{
+  "artifact_files": [
+    "01_historical_vs_current_flow_reconciliation.json",
+    "02_btx_current_support_audit.json",
+    "03_route_state_rollout_consistency.json",
+    "04_task_side_state_source_receipt.json",
+    "04a_anchor_prepared_side_state.json",
+    "05_deadline_side_state_receipt.json",
+    "06_return_requirement_receipt.json",
+    "07_support_boundary_patch_receipt.json",
+    "08_effort_contract_patch.json",
+    "09_throughput_metric_freeze.json",
+    "10_baseline_sync_patch.json",
+    "11_leakage_audit.json",
+    "12_step6_2b_readiness_recomputed.json",
+    "baseline_sync_contract_v1.json",
+    "deadline_sidecar_anchor_0001.json",
+    "manifest.json"
+  ],
+  "baseline_executed": false,
+  "candidate_ranking": false,
+  "cpu_only": true,
+  "gpu": false,
+  "locked_test_accessed": false,
+  "objective_scorer_implemented": false,
+  "schema_version": "PI-JWM-Step6.2A-PATCH-v1",
+  "source_hashes": {
+    "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092302-policy-2026092402.json.gz": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+    "code/scripts/build_step5_1d_unified_model_chain_v1.py": "11c49ab029d0d88bf3d60a17b4955cfcba8625896a35197882b51696049e29ed",
+    "code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py": "4949933a06100f7db70ceb594893794b8509433b7b1f19f9e0f43b3100b8827d",
+    "code/src/pi_jwm/step4_2c_c_flow_sample_tensor_v1.py": "8ed4492b2bcd239998869f869a10d0ac21c4861bcabd51c21f4003dfc4f144c6",
+    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": "8c33bbf96963981f8428cfc474e843b99406712eb038dadc3055f992666d8709",
+    "code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py": "a9f22f930be50d43cd7faf596c2b016c144428c86e4e87e113b59a5e5f13d2f1",
+    "code/src/pi_jwm/step6_2a_throughput_metric_v1.py": "f8960580759bd97988fd8313d0c7746da5a03276a7978db20fb032d8b7a618cc"
+  },
+  "status": "BLOCKED_FOR_STEP_6_2B"
+}

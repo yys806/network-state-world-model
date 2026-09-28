@@ -130,3 +130,6 @@ Step 2.4 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision`
 - 不把单 seed 通过写成最终性能结论。
 - 不把执行 sentinel、短 smoke 或 checkpoint 名称写成方法验收。
 - 不把只读取 belief 的策略叫作候选动作世界模型规划器。
+## Planner objective causal side-state (2026-09-28)
+
+The Planner-only Task/Route side-state is separate from the trained Encoder/RSSM. It carries a decision-aligned deadline and known Return/control metadata. It detects route divergence; it does not modify predicted tensors. Current 4.2C-C route arrays omit the holder but 4.4 cross-hop indexing assumes it, so multi-hop objective readiness is blocked pending an authorized repair.

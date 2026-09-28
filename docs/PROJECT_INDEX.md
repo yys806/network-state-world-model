@@ -144,3 +144,6 @@ P6 逐候选推演、选首动作、执行后滚动重规划
 - 任何正在被 Python/GPU 进程写入的文件。
 
 第一阶段只新增导航文件。当前训练虽然已经结束，但后续如果需要归档或移动，仍必须先确认同步静止，并准备逐文件路径映射、哈希和回滚方案。
+## Current Planner objective PATCH (2026-09-28)
+
+STEP 6.2A-PATCH reconciles the current 4.2C Flow Ledger and adds a Planner-only causal side-state. STEP 6.2B remains BLOCKED by the 4.2C-C/4.4 route-index mismatch. Start with `docs/implementation_records/STEP_06_2A_PATCH_PLANNER_OBJECTIVE_READINESS_RECONCILIATION.md`, then `code/artifacts/protocols/pi_jwm_step6_2a_patch_objective_readiness_v1_20260928/12_step6_2b_readiness_recomputed.json`.

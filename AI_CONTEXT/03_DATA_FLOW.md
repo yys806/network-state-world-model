@@ -130,3 +130,6 @@ Unverified：未在当前 tensor manifest、loader 或模型实际读路径出�
 # 2026-09-28 STEP 6.2A Planner objective provenance
 
 The source-to-metric matrix is `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/10_objective_field_provenance_matrix.json`. It separates simulator runtime, observer, Formal Raw, Sample, Tensor, Graph, World Model, and Planner-side availability. Deadline/arrival/priority/return support may exist upstream but are not all exposed in the frozen causal Planner state; they must not be reconstructed from Future Target, failure labels, or future schedules.
+# 2026-09-28 Planner-only sidecar
+
+Formal Raw 原样保留；当前 Raw 已含 `arrival_time_s`、`required_returned_size`、`return_destination_id`。非锁定 validation anchor 通过同种子/配置/已执行动作前缀重放，决策前新增 deadline sidecar，精确对齐 6 个 Task ID/槽位及当前物理状态。sidecar 不进入 Formal Sample/Tensor、训练 normalization 或 checkpoint。实际 Return requirement 还需预测计算节点与 Return 目的地不同；仅正返回大小不足以确定。

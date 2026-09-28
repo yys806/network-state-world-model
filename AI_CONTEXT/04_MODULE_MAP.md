@@ -103,3 +103,6 @@ Unverified：未在依赖图、当前 runner、config 或实验 manifest 中出�
 - Evidence bundle: `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/`
 
 These files audit and record semantics; there is no candidate scorer or ranking implementation in this Step.
+# 2026-09-28 STEP 6.2A-PATCH modules
+
+`code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py`：Planner-only Task/Route 元数据、当前对齐、时间推进、support 边界和路线分歧检测；无 objective scorer。`step6_2a_throughput_metric_v1.py`：未来 PI-JWM/Baseline 共用真实 Flow/Outcome 吞吐提取器。`code/scripts/replay_step6_2a_patch_deadline_sidecar_v1.py`：单条非锁定 Formal Validation 因果重放；`build_step6_2a_patch_readiness_v1.py`：机器回执与就绪矩阵。4.2C-C 路线数组与 4.4 跨跳规则冲突详见 PATCH 实施记录。

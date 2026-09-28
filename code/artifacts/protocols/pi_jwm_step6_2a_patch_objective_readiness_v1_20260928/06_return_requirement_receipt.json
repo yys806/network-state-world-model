@@ -1,0 +1,12 @@
+{
+  "formal_raw_has_required_returned_size": true,
+  "formal_raw_has_return_destination": true,
+  "future_return_birth": "planner-derived support boundary only; no new Flow slot",
+  "positive_return_count": 6,
+  "raw_sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+  "runtime_source": "code/reference/AirFogSim/airfogsim/entities/task.py:getReturnedSize/requireReturn; task_manager.py:checkTasks",
+  "semantic_rule": "Task.requireReturn() depends on assigned compute host versus return destination as well as required size; positive size alone is not sufficient for local execution",
+  "status": "READY_WITH_HOST_CONDITION_FOR_SELECTED_ANCHOR",
+  "task_count": 6,
+  "zero_return_count": 0
+}

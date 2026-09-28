@@ -46,3 +46,6 @@ Unverified：最终采用纯候选搜索、学习策略或混合策略，尚无�
 # 2026-09-28 STEP 6.2A Objective Target Definition and Evidence Boundary
 
 Researcher-specified Planner Objective v1 target is lexicographic minimization of `(N_DDL, A_DDL, J_Delay, J_Burden, J_Effort)`. Throughput is diagnostic/final evaluation metric, not a duplicate weighted objective; Energy and Fairness are outside Planner v1; Priority is inactive; Risk is defined but inactive. These are target semantics, not an implemented scorer. Source audit found causal exposure gaps and therefore blocks STEP 6.2B until separately reviewed and authorized. Full evidence and machine receipts are linked from the current state snapshot.
+# 2026-09-28 Objective v1 PATCH
+
+研究者保持 deadline→delay→burden→effort 的字典序目标，移除独立 Route effort，Priority 权重关闭；业务主吞吐冻结为端到端真实送达量/真实时间，全跳网络承载量只作诊断。实现就绪仍受当前 4.2C-C/4.4 路线语义冲突阻塞，不能把目标定义当成已实现 scorer。

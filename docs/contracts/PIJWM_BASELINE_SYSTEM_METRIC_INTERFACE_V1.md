@@ -14,6 +14,10 @@ For higher-is-better metrics, `Delta_rel=(PI-JWM-Baseline)/Baseline*100%`. For l
 
 If a baseline value is zero, relative improvement is `METRIC_SEMANTICS_PENDING`; report absolute values and do not calculate a percentage until the denominator policy has been separately specified. Reports require absolute metrics, relative improvement where defined, and cross-seed statistics. No improvement threshold is frozen here.
 
-Throughput must state whether it counts network-carried service bytes or end-to-end useful bytes. The current audit leaves this distinction `METRIC_SEMANTICS_PENDING` for multi-hop flows. Energy and fairness require their own source/definition audits before use in a Planner objective.
+Main Throughput is `END_TO_END_USEFUL_THROUGHPUT`: the sum of real terminal-hop logical E2E application bytes delivered to the Flow destination, divided by real elapsed simulation time. Wired and wireless terminal deliveries both count. The Causal Flow Ledger's decrease in `e2e_remaining` defines the useful bytes, so a simulator event exceeding remaining data is capped by the conserved Flow state.
+
+Diagnostic Throughput is `NETWORK_SERVICE_THROUGHPUT`: all real successful hop-carried bytes divided by the same elapsed time, including intermediate hops. It measures network service activity and can exceed useful throughput. For a three-hop delivery of one MB, service can be about three MB while useful delivery is one MB. PI-JWM and every future baseline must use the same Flow/Outcome-level extractor, `pi_jwm.step6_2a_throughput_metric_v1.extract_real_throughput`, with the same time window and Flow identities. Predicted rollout versions must be labeled proxies and never reported as real closed-loop metrics.
+
+Energy and fairness retain separate final-metric boundaries. This interface does not activate them in Planner Objective v1.
 
 No baseline, locked-test, GPU, closed-loop, or performance experiment is authorized by this interface document.

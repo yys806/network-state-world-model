@@ -1,5 +1,11 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-28 STEP 6.2A-PATCH — 当前关口
+
+`STEP_6_2B_READINESS=BLOCKED`。补丁已证实 4.2C-B/C 当前 Flow Ledger 保存端到端剩余量，旧 4.2B“无法恢复”是历史事实。一个非锁定 Formal Validation anchor 的真实 deadline 已通过同种子/配置/动作前缀/当前状态的重放精确对齐，Task ID 与模型槽位一致；Formal Raw 本就含返回数据大小，但实际是否需要 Return 还取决于预测计算节点与返回目的地。研究者已删除 Route effort、Priority prerequisite，冻结业务主吞吐为 E2E useful，all-hop service 仅诊断。新的 Planner-only side-state 不进训练模型。
+
+阻塞是当前 4.2C-C 路线数组与冻结 4.4 跨跳索引语义不一致，Route action 后完整数组也不更新；真实确定性规则测试已复现中间跳完成却无法推进 holder/跳序号。side-state 能发现冲突，不能修复模型预测。证据见 `docs/implementation_records/STEP_06_2A_PATCH_PLANNER_OBJECTIVE_READINESS_RECONCILIATION.md` 和对应 01–12 机器回执。未开始 scorer、6.2B、候选排序、baseline、GPU、`locked_test` 或闭环。唯一下一动作：研究者审阅路线冲突，另行决定修复边界。
+
 ## 2026-09-28 STEP 6.2A — Objective Source Audit
 
 `PLANNER_OBJECTIVE_SOURCE_AUDIT=PASS_WITH_READINESS_BLOCKERS`，`STEP_6_2B_READINESS=BLOCKED`。6.2A 核对了 deadline/lifecycle、Task cohort、multi-hop Flow、compute、support、throughput、effort、energy/priority 等来源，并冻结了 objective 与 baseline metric 接口定义；没有实现 scorer、candidate ranking 或 winner selection。AirFogSim/Observer 有 deadline 等来源，但 Formal Raw 到 Planner 未暴露完整 causal side-state；跨 hop `B_Tx` 和 Route effort denominator 也未闭合。证据见 `docs/implementation_records/STEP_06_2A_PLANNER_OBJECTIVE_SOURCE_SEMANTICS_AUDIT.md` 和 `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/`。GPU、`locked_test`、baseline、MPC、closed-loop 均未执行。下一步须研究者审阅 blocker 并单独授权；不自动开始 6.2B。

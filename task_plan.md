@@ -1581,3 +1581,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 最终检查 staged diff，提交并推送；首次 Git 收口 commit `fa7c369` 已到 `origin/main`。
 - Boundary: `gpu=false`、`locked_test=false`、`baseline=false`、`planner_ranking=false`、`closed_loop=false`、`performance_claim=false`。
 - Single next action after closure: 研究者审阅 6.2A blocker 后，另行决定是否授权 Planner-only causal side-state additive exposure / STEP 6.2B；不得自动开始。
+## 2026-09-28 STEP 6.2A-PATCH — Planner Objective Readiness Reconciliation
+
+- [x] Git 起点 `6ba5b48` 与 origin/main 对齐；保留两项原有未跟踪文件。
+- [x] 4.2B 历史与 4.2C-B/C、4.4 当前源码/证据重新裁决；E2E Flow 字段已存在。
+- [x] 单条非锁定 Formal Validation deadline 决策前重放、当前 Task/模型槽位对齐、Planner-only side-state 与泄漏负例。
+- [x] Route 数组/模型跨跳规则冲突由实际确定性转移复现；6.2B 保持 BLOCKED。
+- [x] 冻结三类 effort、双吞吐及 baseline sync；生成 01–12 回执。
+- [x] 完成全套指定回归、compileall、索引 write/check 与 Context Consistency；待最终 diff 审查、commit/push。
+- 当前关口：6.2A-PATCH。阻塞：4.2C-C 路线数组与冻结 4.4 跨跳规则不一致，Route action 不更新完整数组。唯一下一交付：本 PATCH 验证和 Git 收口后停止，研究者再决定修复边界。GPU、`locked_test`、scorer、baseline、闭环均关闭。

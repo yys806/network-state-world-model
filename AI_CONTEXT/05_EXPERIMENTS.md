@@ -173,3 +173,6 @@ receipt 为 47/47 checks true，12 samples，capacity 10/74，prior/posterior/de
 # 2026-09-28 STEP 6.2A — Planner Objective Source & Semantics Audit
 
 Status: `PASS_WITH_READINESS_BLOCKERS`; `STEP_6_2B_READINESS=BLOCKED`. CPU source/provenance audit and objective/baseline interface records only. No checkpoint load, baseline run, candidate ranking, MPC, GPU, locked test, or closed loop. Focused test: 1/1 passed before final regression closure. Receipts are under `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/`.
+# 2026-09-28 STEP 6.2A-PATCH diagnostic
+
+CPU-only 单条 Formal Validation deterministic replay 与当前 4.4 规则负例：deadline sidecar/Task 槽位对齐通过；两跳目的节点数组的中间跳服务后 holder/跳序号未推进，故 `STEP_6_2B_READINESS=BLOCKED`。这是机制诊断，不是模型效果或闭环结果。没有 GPU、`locked_test`、baseline、排序或训练。

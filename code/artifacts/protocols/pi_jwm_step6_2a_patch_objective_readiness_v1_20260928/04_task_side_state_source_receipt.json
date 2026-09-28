@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "anchor_frame": 1,
+  "raw_path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092302-policy-2026092402.json.gz",
+  "raw_sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+  "simulator_seed": 2026092302,
+  "behavior_seed": 2026092402,
+  "config_hash_equal": true,
+  "checks": {
+    "trajectory_id": true,
+    "frame": true,
+    "simulation_time": true,
+    "capture_event_id": true,
+    "task_rows": true,
+    "entity_rows": true,
+    "physical_state": true,
+    "action_prefix": true,
+    "current_task_ids": true
+  },
+  "source": "live Task at decision-before-action",
+  "future_target_used": false,
+  "locked_test_accessed": false,
+  "formal_dataset_identity_unchanged": true,
+  "checkpoint_identity_unchanged": true,
+  "training_tensor_unchanged": true,
+  "alignment_passed": true
+}

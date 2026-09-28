@@ -1211,3 +1211,10 @@
 - EnergyManager source 已审计，但能量仍只属于最终闭环指标边界；priority v1 inactive，`w_q=1`。
 - 结论：6.2A source semantics/protocol foundation 可记录，但 6.2B readiness 被上述 side-state 与 burden evidence blocker 阻塞。
 - 收口验证：6.2A focused 1/1、6.0C 12/12、6.1 2/2、4.4 37/37、4.2C-B Flow ledger 25/25、5.6C checkpoint 3/3、5.5 Formal Dataset 21/21、6.0A adapter/fixed-support 6/6；compileall、knowledge index write/check、Context Consistency 与 diff check 通过。
+## 2026-09-28 STEP 6.2A-PATCH findings
+
+- 4.2B “Raw 无端到端 remaining”只适用于 4.2C-B Ledger 之前；当前 Raw Ledger、Sample/Tensor、Graph/4.4 均有 Flow E2E state。真实 Input 两跳和 direct Return 证据与合成 reroute/Epoch fixture 必须分开。
+- 4.2C-C route 数组为剩余目的地、不含 holder；4.4 跨跳索引按含 holder 路径使用。确定性负例显示 hop service >0 且 hop remaining=0，holder/index 未推进。Route action 只改 endpoints/revision，完整 route array 未更新；side-state 只能发现不一致，不能修复冻结模型。6.2B BLOCKED。
+- Accepted Formal Raw 含 `required_returned_size` 和 `return_destination_id`；但 AirFogSim `requireReturn()` 还依赖计算节点是否等于 Return 目的地。正 size 不是无条件 Return birth。
+- deadline 不在 Formal Raw，但所选非锁定 anchor 可通过 exact-aligned 决策前重放因果获得；训练身份与 checkpoint 未变。
+- Route effort 已由研究者删除；Priority 不启用。主业务吞吐是 E2E useful，all-hop network service 仅诊断，两者不能混用。

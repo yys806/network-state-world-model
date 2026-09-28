@@ -120,3 +120,6 @@
 - 查询工具既能按自然语言定位当前方法、历史尝试、结果来源和延后任务，也能按精确文件名或 artifact 目录名检索；输出只负责导航，正式结论仍回到原始证据核实。
 - 第三个 seed 和远端同步已登记为 `deferred`、`authorization_required=true`、`auto_start=false`。
 - 历史 Python 代码先做逻辑归档；因为 94 个历史节点仍被历史脚本/测试引用且全量测试基线仍有环境与 fixture 错误，本轮不做破坏 provenance 的物理移动。
+## STEP 6.2A-PATCH (2026-09-28)
+
+Objective source reconciliation and a single non-locked Formal Validation deadline sidecar passed. E2E Flow state exists. Route action and cross-hop model route semantics remain inconsistent with 4.2C-C; `STEP_6_2B_READINESS=BLOCKED`. No scorer, candidate ranking, baseline, GPU, locked_test or closed-loop result exists from this Patch.

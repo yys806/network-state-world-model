@@ -107,3 +107,6 @@ PATCH3 保持 Return 只复用 current-support typed Flow identity：`task_index
 # 2026-09-28 STEP 6.2A objective boundary
 
 The target Planner objective is the researcher-specified lexicographic tuple `(N_DDL, A_DDL, J_Delay, J_Burden, J_Effort)`. STEP 6.2A only audits source semantics and records the protocol interface. It does not add an objective scorer to the architecture. The rollout contract remains distinct from selection: `MPC_OBJECTIVE=NOT_STARTED`, and no winner selection or closed-loop planner is implemented by this Step.
+# 2026-09-28 Planner Objective side-state boundary
+
+新增 Planner-only Task/Route 因果 side-state，独立于 Encoder/RSSM；只接当前 Raw、已对齐 deadline sidecar、候选 Route 控制及预测状态，不读 Future Target。4.2C-C route 数组不含 holder，而 4.4 跨跳规则按含 holder 的数组推进，构成当前 blocker。Route action 仅改 endpoints/revision，不改完整数组；side-state 可检测分歧，不能代替模型修复。
