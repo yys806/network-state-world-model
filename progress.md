@@ -1183,3 +1183,6 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 
 从活跃 run 复制只读快照，心跳 `RUNNING`、2646/5520 completed steps；日志 2646 个逐步记录，无缺失/重复；两次 prior-only 全量验证分别位于 1104、2208 步。生成训练 loss、验证 loss、Motion/CSI raw MAE/RMSE 图。远端进程、训练代码和指标日志没有修改；下一个动作仅为继续监控并在新验证完成后更新过程图。
 # 2026-09-26 STEP 6.0C：重新 fetch 后 `HEAD=origin/main=1c24fc4`；保留原未跟踪 TASK/ 与 plot 脚本。新增 Planner 域模块、12 项 focused synthetic tests、合同和 5 份机器凭证。运行 `python -m unittest discover -s code/tests` 的相关 pattern：`test_step6_0*.py` 22/22、`test_step5_1d*.py` 5/5、`test_step4_4*.py` 37/37、`test_step5_5*.py` 21/21（均设 `PYTHONPATH=code/src;code/scripts`）。6.0B 历史哈希测试按原 Git 快照验证，未改旧 receipt。`compileall`、`git diff --check`、receipt 5/5 重建、knowledge index write/check（5 outputs、0 mismatch）通过；AI_CONTEXT 00/02/03/04/06/07/08 已做一致性检查。远端 5.6B 未接触。
+# 2026-09-28 STEP 5.6C 进展
+
+从 GitHub fetch 确认 main=origin/main=486dec2、训练源 6e15ec2 为祖先且训练相关模块未改。本地 CPU 验收 5520 连续步骤、五次完整验证及 strict argmin；best/latest 的 428 个模型张量完全一致，best checkpoint 已 CPU 重载并对一个 validation window 执行 H1–H4 prior-only 推理。机器回执、Formal Validation Observation 与八文件 SHA manifest 已写入 tracked manifests；相关 focused/compile/index/context/Git 门待最终执行。无远端连接、GPU 或重训。

@@ -4,11 +4,11 @@
   "archive_candidate_count": 211,
   "archive_candidates_with_current_references": 0,
   "artifact_family_counts": {
-    "audit": 100,
+    "audit": 104,
     "experiments": 538,
     "formal_data": 6,
     "formal_tensor": 11,
-    "formal_training": 21,
+    "formal_training": 22,
     "main_experiment_readiness": 3,
     "preflight": 57,
     "protocol": 2,
@@ -18,24 +18,24 @@
     "small_experiments": 14
   },
   "artifact_read_error_count": 0,
-  "artifact_record_count": 831,
-  "deferred_item_count": 3,
+  "artifact_record_count": 836,
+  "deferred_item_count": 2,
   "formal_performance_claim_ready": false,
   "historical_method_count": 6,
-  "important_experiment_count": 13,
+  "important_experiment_count": 14,
   "lifecycle_counts": {
-    "current": 137,
+    "current": 138,
     "historical": 228,
     "prototype": 5,
-    "support": 857
+    "support": 862
   },
   "locked_test_boundary": "sealed",
-  "python_node_count": 714,
+  "python_node_count": 716,
   "python_parse_error_count": 0,
   "question_route_count": 7,
   "result_evidence_mismatch_count": 0,
   "schema_version": "PI-JWM-project-knowledge-index-v2",
   "source_scope": "version-controlled project files excluding generated registries; artifact control files only",
-  "tracked_file_count": 1227,
+  "tracked_file_count": 1233,
   "verified_result_count": 2
 }

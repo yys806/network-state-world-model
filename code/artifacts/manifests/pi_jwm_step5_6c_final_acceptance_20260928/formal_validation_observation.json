@@ -1,0 +1,386 @@
+{
+  "schema_version": "PI-JWM-STEP-5.6C-Formal-Validation-Observation-v1",
+  "run_id": "pi_jwm_formal_train_v1_seed5601_20260924T112424Z",
+  "evidence_class": "Formal Validation Observation",
+  "validation_split_windows": 1104,
+  "rows": [
+    {
+      "completed_steps": 1104,
+      "L_Val": 0.17661245681400606,
+      "L_Pred": [
+        {
+          "horizon": 1,
+          "value": 0.08333435295616368
+        },
+        {
+          "horizon": 2,
+          "value": 0.1501009379842071
+        },
+        {
+          "horizon": 3,
+          "value": 0.21502400373987154
+        },
+        {
+          "horizon": 4,
+          "value": 0.2579905325757819
+        }
+      ],
+      "motion": [
+        {
+          "horizon": 1,
+          "mae": 0.23005769838985887,
+          "rmse": 0.41364371081298046,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 2,
+          "mae": 0.7054180294333152,
+          "rmse": 1.2365030957281555,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 3,
+          "mae": 0.8854798863235029,
+          "rmse": 1.6035792146049639,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 4,
+          "mae": 1.0051084076085137,
+          "rmse": 1.8382643778291123,
+          "valid_element_count": 20600
+        }
+      ],
+      "csi": [
+        {
+          "horizon": 1,
+          "mae": 2.090727224730556,
+          "rmse": 3.11615067628987,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 2,
+          "mae": 2.932035197086287,
+          "rmse": 3.7396001878064715,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 3,
+          "mae": 3.5372643316402077,
+          "rmse": 4.343692881759185,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 4,
+          "mae": 3.8035581743878857,
+          "rmse": 4.668528725147596,
+          "valid_element_count": 6179400
+        }
+      ]
+    },
+    {
+      "completed_steps": 2208,
+      "L_Val": 0.08010126911119236,
+      "L_Pred": [
+        {
+          "horizon": 1,
+          "value": 0.07821038852294294
+        },
+        {
+          "horizon": 2,
+          "value": 0.07782353071747376
+        },
+        {
+          "horizon": 3,
+          "value": 0.07966032760470503
+        },
+        {
+          "horizon": 4,
+          "value": 0.08471082959964768
+        }
+      ],
+      "motion": [
+        {
+          "horizon": 1,
+          "mae": 0.22686764971723836,
+          "rmse": 0.4119997355383565,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 2,
+          "mae": 0.22796832985090978,
+          "rmse": 0.41794324119661147,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 3,
+          "mae": 0.24397763575165018,
+          "rmse": 0.43193039082060203,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 4,
+          "mae": 0.2688901481119174,
+          "rmse": 0.4526207592880428,
+          "valid_element_count": 20600
+        }
+      ],
+      "csi": [
+        {
+          "horizon": 1,
+          "mae": 2.0282402578906327,
+          "rmse": 3.0182760860791347,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 2,
+          "mae": 2.028296377758156,
+          "rmse": 3.0107910790292247,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 3,
+          "mae": 2.1204991989513546,
+          "rmse": 3.043399953073413,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 4,
+          "mae": 2.279098078772818,
+          "rmse": 3.1334916920667433,
+          "valid_element_count": 6179400
+        }
+      ]
+    },
+    {
+      "completed_steps": 3312,
+      "L_Val": 0.07754632086844497,
+      "L_Pred": [
+        {
+          "horizon": 1,
+          "value": 0.07710065994313232
+        },
+        {
+          "horizon": 2,
+          "value": 0.07690301438647364
+        },
+        {
+          "horizon": 3,
+          "value": 0.07760586850369625
+        },
+        {
+          "horizon": 4,
+          "value": 0.07857574064047766
+        }
+      ],
+      "motion": [
+        {
+          "horizon": 1,
+          "mae": 0.2510525017571681,
+          "rmse": 0.4243301527920623,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 2,
+          "mae": 0.2555927825089797,
+          "rmse": 0.4326564394950756,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 3,
+          "mae": 0.26272493613576425,
+          "rmse": 0.4414172345133621,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 4,
+          "mae": 0.27432903669412856,
+          "rmse": 0.4537603307175728,
+          "valid_element_count": 20600
+        }
+      ],
+      "csi": [
+        {
+          "horizon": 1,
+          "mae": 1.9848905499016896,
+          "rmse": 2.992701994141742,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 2,
+          "mae": 1.9911093910563729,
+          "rmse": 2.987810862457318,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 3,
+          "mae": 2.0012895268073154,
+          "rmse": 3.0005202391056915,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 4,
+          "mae": 2.019927359136304,
+          "rmse": 3.0169159635619245,
+          "valid_element_count": 6179400
+        }
+      ]
+    },
+    {
+      "completed_steps": 4416,
+      "L_Val": 0.07646087923042731,
+      "L_Pred": [
+        {
+          "horizon": 1,
+          "value": 0.07615483636481096
+        },
+        {
+          "horizon": 2,
+          "value": 0.07604511329669099
+        },
+        {
+          "horizon": 3,
+          "value": 0.07651324642660548
+        },
+        {
+          "horizon": 4,
+          "value": 0.0771303208336018
+        }
+      ],
+      "motion": [
+        {
+          "horizon": 1,
+          "mae": 0.25523025899257473,
+          "rmse": 0.431353389180749,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 2,
+          "mae": 0.26154161543522064,
+          "rmse": 0.43888781913569935,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 3,
+          "mae": 0.2691809046499937,
+          "rmse": 0.44715079337329916,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 4,
+          "mae": 0.2723235634345453,
+          "rmse": 0.4530630920542808,
+          "valid_element_count": 20600
+        }
+      ],
+      "csi": [
+        {
+          "horizon": 1,
+          "mae": 1.9843714900389804,
+          "rmse": 2.9776371103031263,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 2,
+          "mae": 1.9905456992183708,
+          "rmse": 2.9742503599037295,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 3,
+          "mae": 2.0001465554908244,
+          "rmse": 2.9824065742978423,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 4,
+          "mae": 2.0144021795198563,
+          "rmse": 2.9944127981429323,
+          "valid_element_count": 6179400
+        }
+      ]
+    },
+    {
+      "completed_steps": 5520,
+      "L_Val": 0.07431338784170399,
+      "L_Pred": [
+        {
+          "horizon": 1,
+          "value": 0.07583767000446276
+        },
+        {
+          "horizon": 2,
+          "value": 0.07401429031881357
+        },
+        {
+          "horizon": 3,
+          "value": 0.07354666934328241
+        },
+        {
+          "horizon": 4,
+          "value": 0.07385492170025725
+        }
+      ],
+      "motion": [
+        {
+          "horizon": 1,
+          "mae": 0.22199903414087388,
+          "rmse": 0.40967755058432376,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 2,
+          "mae": 0.2300854367307089,
+          "rmse": 0.4180689723357175,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 3,
+          "mae": 0.23809259710960018,
+          "rmse": 0.4267078722371768,
+          "valid_element_count": 20600
+        },
+        {
+          "horizon": 4,
+          "mae": 0.24511511976279102,
+          "rmse": 0.4351214946726997,
+          "valid_element_count": 20600
+        }
+      ],
+      "csi": [
+        {
+          "horizon": 1,
+          "mae": 2.0169909263793815,
+          "rmse": 2.9732740772691613,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 2,
+          "mae": 1.9814961723250841,
+          "rmse": 2.9372276749527413,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 3,
+          "mae": 1.9649552336948166,
+          "rmse": 2.927286676265554,
+          "valid_element_count": 6179400
+        },
+        {
+          "horizon": 4,
+          "mae": 1.9569204407992686,
+          "rmse": 2.932795353129396,
+          "valid_element_count": 6179400
+        }
+      ]
+    }
+  ],
+  "argmin_L_Val_step": 5520,
+  "argmin_L_Val": 0.07431338784170399,
+  "locked_test_accessed": false,
+  "baseline": false,
+  "planner_rollout": false,
+  "locked_test": false,
+  "planner": false,
+  "performance_claim": false
+}

@@ -1190,3 +1190,8 @@
 - 训练 loss 在 552、1104、2208 步发生 Stage/Horizon 改变，跨边界的高低不可直接解释成模型退化或改善；需要以同协议的完整 validation 序列判断。
 - Motion raw aggregate 混合位置/速度等单位，因此不写成米；CSI raw error 才可写 dB。绘图脚本按 run ID、逐步完整性和 prior-only validation provenance 拒绝不一致快照。
 # 2026-09-26 STEP 6.0C：6.0B 源码事实与本次研究者方法决定分离。当前 Raw 的原始单位静态 CPU 容量支持 per-slot operational budget；normalized feature 不可替代。当前 UAV heading(rad)/elevation 需 Planner-only 侧状态；正式采集的零速 HOLD 是显式动作，多 UAV 不同档仅是边际支持。没有新增 AirFogSim native hard bound 或安全声明。
+# 2026-09-28 STEP 5.6C 发现
+
+- 五次完整 `L_Val` 为 0.1766124568、0.0801012691、0.0775463209、0.0764608792、0.0743133878；最终 5520 步是唯一最低点。best/latest 文件 SHA 不同，但状态身份相同，428 个模型张量逐项相同。
+- 冻结 checkpoint 的 config `device=cuda` 不应改写；CPU 验收仅构造 device=cpu 的等价 Trainer，先严格验证冻结配置/数据/架构，再使用原 base loader 的身份约束重载。单 validation window H1–H4 prior-only 有限值且参数不变。
+- 当前只验证一个正式 seed 的 dev_validation；没有 baseline、locked_test、跨 seed 稳定性、Planner rollout 或闭环任务指标，不能由本次 `L_Val` 推出泛化/系统效果。Motion raw aggregate 混合单位。

@@ -1555,3 +1555,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] index write/check、Context Consistency（00/02/03/04/06/07/08）、diff check 通过。
 - [ ] 最终 staged diff 审查、commit/push/HEAD 核对。
 - 当前关口：6.0B 来源事实已查明，精确 AirFogSim Git provenance 缺失；未进入 World Model Planner。唯一下一交付：本审计质量门与 Git 收口。
+# 2026-09-28 STEP 5.6C — Formal Training Final Acceptance & Best Checkpoint Freeze
+
+- 当前 gate：仅用本地完整训练日志、五次 validation、best/latest checkpoint 和正式 Dataset/Config 身份做 CPU 最终验收；不重训、不访问远端或 GPU。
+- [x] `main=origin/main=486dec2`，训练源码 `6e15ec2` 在 Git 历史中；用户未跟踪 `TASK/` 与旧绘图脚本保持不动。
+- [x] 完成严格机器验收、CPU 单样本 H4 prior-only 推理、SHA256 manifest 与五次 Formal Validation Observation。
+- [x] focused 5.6A/B/C 10/10、compileall、diff check 通过。
+- [x] Context Consistency、knowledge index write/check、最终 staged diff 审查通过。
+- Git 收口：见本 Step 的最终 commit/push 记录；不在研究者另行授权前启动下一 Step。
+- 当前阻塞：无；唯一下一动作是研究者审阅已冻结 checkpoint 与验证证据。Planner rollout、baseline、locked_test、performance claim 保持关闭。

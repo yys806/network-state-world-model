@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-28：STEP 5.6C 正式训练最终验收
+
+- 新增本地 CPU 验收脚本与负例测试；5520 步、五次完整验证、最终 strict `argmin L_Val`、best/latest 相同模型张量及 bounded H4 inference 均通过。tracked SHA manifest 冻结 local-only best checkpoint 身份；没有 baseline、locked_test、Planner rollout 或性能声明。
+
 ## 2026-09-26：STEP 6.0C Planner v1 操作动作域
 
 新增静态 CPU 预算、UAV 六档核心域/显式 HOLD/H4 控制侧验证、跨后端池准入、机器合同与 CPU 合成测试；正式训练与 AirFogSim 源码不变。

@@ -1,0 +1,48 @@
+{
+  "schema_version": "PI-JWM-STEP-5.6C-Final-Checkpoint-Manifest-v1",
+  "run_id": "pi_jwm_formal_train_v1_seed5601_20260924T112424Z",
+  "training_source_git_sha": "6e15ec2da0e3a6e0561dc821d0aaef90696a2387",
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_config_sha256": "a806c320f1d238a3997a94ca74af5641169a512a9551af7f3ff04c0ee2447660",
+  "local_run_dir": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z",
+  "files": {
+    "checkpoints/best.pt": {
+      "bytes": 1734906,
+      "sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9"
+    },
+    "checkpoints/latest.pt": {
+      "bytes": 1738752,
+      "sha256": "a642b4654feb267caf9f711f234830416cfed30b10aa181adea15e0e7932d53f"
+    },
+    "heartbeat.json": {
+      "bytes": 1190,
+      "sha256": "c69e063b3f0c8261a6f1de076795597884f0252d8a1b534ae1458af96fbe783c"
+    },
+    "progress.json": {
+      "bytes": 1190,
+      "sha256": "c69e063b3f0c8261a6f1de076795597884f0252d8a1b534ae1458af96fbe783c"
+    },
+    "run_manifest.json": {
+      "bytes": 1055,
+      "sha256": "04cd7b7dfcacfb7ef2188d769e97fd374f255cd1adc206158495cdb63c1f2650"
+    },
+    "stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "train_metrics.jsonl": {
+      "bytes": 3077087,
+      "sha256": "af07ee8a697ddbcd444ace5b555155ebc6a7a6b3c3c553c2a0863a2c337d00b3"
+    },
+    "validation_metrics.jsonl": {
+      "bytes": 11648,
+      "sha256": "eabc6ee9766627f8f472cdf3fbe8cf86d1ea2162c1443669ce95c8201da383cb"
+    }
+  },
+  "best_step": 5520,
+  "latest_step": 5520,
+  "best_L_Val": 0.07431338784170399,
+  "best_latest_model_state_equal": true,
+  "model_tensor_count": 428
+}

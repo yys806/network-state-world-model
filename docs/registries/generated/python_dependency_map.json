@@ -2333,6 +2333,7 @@
         "pi_jwm.step5_6a_formal_training_config_v1",
         "pi_jwm.step5_6b_formal_runner_v1",
         "scripts.accept_step5_5_patch_cpu_v1",
+        "scripts.accept_step5_6c_formal_training_v1",
         "scripts.run_step5_2_training_loop_smoke_v1",
         "scripts.run_step5_6a_gpu_smoke_v1",
         "scripts.step5_3_cpu_training_preflight_v1",
@@ -2376,6 +2377,7 @@
         "pi_jwm.step5_6b_formal_runner_v1",
         "scripts.accept_step5_5_patch_cpu_v1",
         "scripts.accept_step5_6a_gpu_readiness_v1",
+        "scripts.accept_step5_6c_formal_training_v1",
         "scripts.audit_step5_5_patch_v1",
         "scripts.build_step5_5_formal_dataset_v1",
         "scripts.correct_step5_6a_validation_bookkeeping_v1",
@@ -2427,6 +2429,7 @@
         "pi_jwm.step5_6b_formal_runner_v1",
         "scripts.accept_step5_5_patch_cpu_v1",
         "scripts.accept_step5_6a_gpu_readiness_v1",
+        "scripts.accept_step5_6c_formal_training_v1",
         "scripts.audit_step5_5_patch_v1",
         "scripts.run_step5_6a_gpu_smoke_v1",
         "scripts.verify_step5_5_patch_full_shards_v1",
@@ -2471,8 +2474,10 @@
       "evidence_role": "implementation",
       "imported_by": [
         "pi_jwm.step5_6b_formal_runner_v1",
+        "scripts.accept_step5_6c_formal_training_v1",
         "scripts.freeze_step5_6a_formal_training_config_v1",
-        "tests.test_step5_6a_config_freeze_v1"
+        "tests.test_step5_6a_config_freeze_v1",
+        "tests.test_step5_6c_formal_training_acceptance_v1"
       ],
       "imports": [
         "pi_jwm.step5_2_training_loop_v1",
@@ -2482,7 +2487,8 @@
       "module": "pi_jwm.step5_6a_formal_training_config_v1",
       "path": "code/src/pi_jwm/step5_6a_formal_training_config_v1.py",
       "test_files": [
-        "code/tests/test_step5_6a_config_freeze_v1.py"
+        "code/tests/test_step5_6a_config_freeze_v1.py",
+        "code/tests/test_step5_6c_formal_training_acceptance_v1.py"
       ]
     },
     {
@@ -3103,6 +3109,25 @@
       "module": "scripts.accept_step5_6a_gpu_readiness_v1",
       "path": "code/scripts/accept_step5_6a_gpu_readiness_v1.py",
       "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "tests.test_step5_6c_formal_training_acceptance_v1"
+      ],
+      "imports": [
+        "pi_jwm.step5_2_training_loop_v1",
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step5_6a_formal_training_config_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.accept_step5_6c_formal_training_v1",
+      "path": "code/scripts/accept_step5_6c_formal_training_v1.py",
+      "test_files": [
+        "code/tests/test_step5_6c_formal_training_acceptance_v1.py"
+      ]
     },
     {
       "category": "runnable_script",
@@ -10428,6 +10453,19 @@
       "lifecycle_status": "support",
       "module": "tests.test_step5_6b_formal_runner_v1",
       "path": "code/tests/test_step5_6b_formal_runner_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_6a_formal_training_config_v1",
+        "scripts.accept_step5_6c_formal_training_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step5_6c_formal_training_acceptance_v1",
+      "path": "code/tests/test_step5_6c_formal_training_acceptance_v1.py",
       "test_files": []
     },
     {

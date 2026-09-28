@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-28 STEP 5.6C
+
+- 本地 CPU 核验正式 run 5520/5520、五次完整 prior-only validation、严格最终 `argmin L_Val=0.0743133878`；best/latest 都是 step 5520 且 428 个模型张量相同。CPU bounded H1–H4 推理、SHA manifest 和机器回执通过。`STEP 5.6B=COMPLETE`、`FORMAL_BEST_CHECKPOINT=FROZEN`；仍无 baseline、locked_test、Planner rollout 或性能声明。
+
 ## 2026-09-26 STEP 6.0C
 
 - 研究者冻结 Planner v1 静态每时隙 CPU 预算与六档 UAV 核心域；新增独立域模块、显式 HOLD fallback、控制侧 H4 验证及原 adapter 11 tensor 等价测试。保留 6.0B 仿真器事实；无训练/模型候选 rollout/GPU/`locked_test`。

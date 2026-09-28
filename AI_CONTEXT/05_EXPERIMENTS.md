@@ -1,5 +1,9 @@
 # 当前与历史实验
 
+## 2026-09-28 STEP 5.6C Formal Validation Observation
+
+正式 seed 5601 训练 5520/5520 步完成；五次完整 1104-window prior-only validation 的 `L_Val` 依次为 `0.1766124568, 0.0801012691, 0.0775463209, 0.0764608792, 0.0743133878`。最终步是严格 `argmin L_Val`，best/latest 都是 step 5520 且 428 个模型张量逐项一致。完整 H1–H4 `L_Pred`、Motion/CSI raw MAE/RMSE、CPU 单样本推理和文件 SHA 见 `code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/`。训练源 Git SHA=`6e15ec2`；Dataset/Config SHA 分别为 `6392a08b...`/`a806c320...`。这是单 seed、同一 validation split 的 **Formal Validation Observation**，不是 locked-test、baseline、泛化或闭环系统性能证据。
+
 ## 2026-09-24 STEP 5.6A-CONFIG-FREEZE
 
 研究者批准的 Formal Training Config v1 已冻结并写入 `code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/`。这是训练协议配置证据，不是训练结果；`formal_training=false`、`gpu_training_verified=false`、`locked_test_accessed=false`。旧 GPU validation receipt 的 availability bookkeeping 已由真实 validation target masks 在 CPU 重算为 H1–H4 各 1104，原始 numerator/count 和 `L_Val` 不变。

@@ -568,6 +568,49 @@
       }
     },
     {
+      "id": "STEP-5.6B-FORMAL-TRAINING-SEED5601-20260924",
+      "name": "Formal Dataset v1 training seed 5601 and final validation acceptance",
+      "date": "2026-09-24/2026-09-28",
+      "research_question": "Does the frozen Formal Training Config v1 complete 5520 steps and select the strict minimum full prior-only validation checkpoint?",
+      "method": "pi_jwm_formal_training_v1",
+      "code": "code/scripts/run_step5_6b_formal_training_v1.py",
+      "code_version": {
+        "identity_type": "git_commit_and_run_manifest_sha256",
+        "manifest": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/run_manifest.json",
+        "manifest_sha256": "04cd7b7dfcacfb7ef2188d769e97fd374f255cd1adc206158495cdb63c1f2650",
+        "git_commit": "6e15ec2da0e3a6e0561dc821d0aaef90696a2387",
+        "note": "Training ran on the frozen source commit; STEP 5.6C CPU acceptance ran on a later descendant main."
+      },
+      "configuration": "code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/formal_training_config_v1.json",
+      "parameters": {
+        "device_for_training": "cuda",
+        "device_for_acceptance": "cpu",
+        "batch_size": 8,
+        "seed": 5601,
+        "training_steps": 5520,
+        "validation_windows_per_pass": 1104,
+        "validation_steps": [1104, 2208, 3312, 4416, 5520]
+      },
+      "protocol": "code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/formal_training_config_v1.json",
+      "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+      "split": ["dev_train", "dev_validation"],
+      "seed": 5601,
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/final_acceptance_receipt.json",
+      "metrics": "code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/formal_validation_observation.json",
+      "audit": "code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/final_checkpoint_manifest.json",
+      "status": "complete_formal_validation_observation_best_checkpoint_frozen",
+      "conclusion": "The single formal seed completed all 5520 steps; five full prior-only validations gave a strict minimum L_Val at step 5520. Best/latest checkpoint model states match. This is validation observation only.",
+      "summary_zh": "正式单 seed 训练 5520 步完成，五次完整验证的最低 L_Val 位于最终步，best checkpoint 身份已冻结；只构成验证集观测。",
+      "claim_boundary": "one formal seed and dev_validation only; no locked test, baseline, planner rollout, cross-seed stability or performance claim",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "checkpoint": "The checkpoint bytes are local-only under code/artifacts/formal_training; the tracked final checkpoint manifest records its SHA256.",
+        "metrics": "Formal Validation Observation, not locked-test performance or generality evidence.",
+        "audit": "STEP 5.6C acceptance is CPU-only; the formal training run itself used the previously authorized RTX 4090."
+      }
+    },
+    {
       "id": "P6-CANDIDATE-ROLLOUT-AUDIT-20260826",
       "name": "candidate-action world-model rollout planner audit",
       "date": "2026-08-26",

@@ -1,0 +1,71 @@
+{
+  "schema_version": "PI-JWM-STEP-5.6C-Final-Acceptance-v1",
+  "accepted_at_utc": "2026-09-28T00:46:49.269168+00:00",
+  "run_id": "pi_jwm_formal_train_v1_seed5601_20260924T112424Z",
+  "training_source_git_sha": "6e15ec2da0e3a6e0561dc821d0aaef90696a2387",
+  "current_git_sha_at_acceptance": "486dec20cf4436311ea7c2cf6c2f250ff75ae921",
+  "dataset_id": "pi_jwm_formal_dataset_v1_h2_l4_20260923",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_config_sha256": "a806c320f1d238a3997a94ca74af5641169a512a9551af7f3ff04c0ee2447660",
+  "training_steps": 5520,
+  "validation_steps": [
+    1104,
+    2208,
+    3312,
+    4416,
+    5520
+  ],
+  "validation_windows_per_pass": 1104,
+  "argmin_L_Val_step": 5520,
+  "argmin_L_Val": 0.07431338784170399,
+  "best_checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "latest_checkpoint_sha256": "a642b4654feb267caf9f711f234830416cfed30b10aa181adea15e0e7932d53f",
+  "best_latest_model_state_equal": true,
+  "model_tensor_count": 428,
+  "cpu_inference_smoke": {
+    "device": "cpu",
+    "window_count": 1,
+    "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+    "horizons": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "prior_only": true,
+    "future_posterior_teacher_calls": 0,
+    "future_target_encoder_calls": 0,
+    "model_parameters_unchanged": true,
+    "checkpoint_reloaded_with_device_only_translation": true
+  },
+  "final_checkpoint_manifest_sha256": "f2109711a246b878f54ceb9fb7ef1926b82e3571b95969b9d6069bd33eae6d51",
+  "formal_validation_observation_sha256": "66db0a4098f74d5ff5ed294bab903eb12ef9402dc510cf23b1906ccb2baeb4bf",
+  "checks": {
+    "git_source_ancestor": true,
+    "dataset_config_identity": true,
+    "exact_5520_train_steps": true,
+    "five_full_prior_only_validations": true,
+    "finite_no_failure": true,
+    "strict_final_argmin_L_Val": true,
+    "best_and_latest_are_final_step": true,
+    "checkpoint_architecture_data_config_identity": true,
+    "best_latest_model_state_equal": true,
+    "cpu_best_reload_and_h4_inference": true,
+    "sha256_manifest_complete": true
+  },
+  "passed": true,
+  "step5_6b": "COMPLETE",
+  "formal_best_checkpoint": "FROZEN",
+  "scope": {
+    "cpu_only_acceptance": true,
+    "retraining": false,
+    "gpu_used": false,
+    "ssh_used": false,
+    "locked_test_accessed": false,
+    "baseline": false,
+    "locked_test": false,
+    "planner": false,
+    "planner_rollout": false,
+    "performance_claim": false
+  }
+}

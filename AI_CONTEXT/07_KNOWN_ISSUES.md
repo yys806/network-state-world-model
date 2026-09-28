@@ -1,5 +1,11 @@
 # 已知问题与冲突
 
+## STEP 5.6C 验收后的证据边界（2026-09-28）
+
+- 正式训练已完成且 best checkpoint 冻结；此前“仍在运行/未核实”的段落是历史快照。当前只有一个 seed、12 条 validation trajectory 的观测；没有 baseline、locked-test、跨 seed 稳定性或闭环系统评价。`L_Val` 的下降不直接证明最终任务完成率、时延或 Planner 收益。Motion raw aggregate 混合不同物理量单位，不能标成单一米数。
+- `best.pt` 和 `latest.pt` 均为 step 5520，模型张量逐项相同，但两个序列化文件 SHA 不同；冻结身份以 tracked final checkpoint manifest 中的 `best.pt` SHA 和本地 checkpoint 字节共同建立。CPU replay 只把冻结 CUDA 配置的运行设备映射到 CPU，未修改研究者配置或进行训练。
+- STEP 6.0A–C 的静态 Planner 候选/动作域合同存在；本 Step 的 `planner=false` 指本训练 run/验收无模型候选 rollout、闭环执行或效果声明，不否定这些先前 CPU 合同。
+
 ## STEP 6.0C 之后仍未解决
 
 6.0C 将 Comp/Mobility 的**Planner v1 操作域**冻结，不会把 6.0B 的 simulator `dynamic_available_cpu=unavailable` 或 UAV hard bounds absent 改写成已解决。缺 UAV 当前 heading/elevation 时域结果仍 UNKNOWN、不可编译；无当前静态 CPU 容量的正 Comp 请求为 VIOLATED。空间工作区、禁飞区、未来可行性与 fallback 安全性未验证。多 UAV 不同 profile 只是每架边际数据支持，非正式数据中精确联合采集模式。本地 AirFogSim 精确 Git 身份仍未取得。
