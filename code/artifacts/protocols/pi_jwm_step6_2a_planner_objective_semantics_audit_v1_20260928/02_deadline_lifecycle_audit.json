@@ -1,0 +1,23 @@
+{
+  "absolute_deadline": "arrival_time + task_deadline",
+  "check_stage": "TaskManager.generateAndCheckTasks calls checkTasks after generation; AirFogSimEnv.step calls task_manager.checkTasks after simulator updates and before clearing decisions",
+  "completion_boundary": "returning completion in removeOffloadingTaskByNodeIdAndTaskId accepts task_delay <= task_deadline; no-return completion in checkTasks accepts task_delay <= task_deadline + 1e-5. These are distinct completion predicates, and both run before the later active-task hard-deadline sweep.",
+  "deadline_kind": "relative_allowed_latency_duration",
+  "failed_lifecycle": "removed from active collection, appended to _out_of_ddl_tasks, failure code set for the hard deadline path; FAILED is terminal observation-side collection state",
+  "lifecycle_scope": "deadline covers the Task lifetime, including offload, computation, and Return when Return is required",
+  "planner_causal_exposure": "BLOCKED",
+  "planner_exposure_reason": "Runtime Task/observer has the fields, but accepted Formal Raw omits deadline/priority; Formal Sample preserves arrival_time_s and elapsed_time_s history, while the STEP 5.6C training Tensor/4.4 state does not provide deadline or priority to Planner scoring. The current Planner side-state contract is absent.",
+  "required_next_change": "Planner-only causal side-state additive exposure; do not reconstruct from Future Target or FAILED labels.",
+  "same_step_tie": "Completion handling runs before the later active-task hard-deadline sweep. Returning completion accepts delay <= deadline. No-return completion accepts delay <= deadline + 1e-5. Any task still active after completion handling fails only when elapsed time is strictly greater than deadline. DONE wins at equality for both paths; no-return completion may also win within the explicit 1e-5 tolerance.",
+  "source_anchors": {
+    "AirFogSimEnv.step": "code/reference/AirFogSim/airfogsim/airfogsim_env.py:257",
+    "Task.wait_to_ddl": "code/reference/AirFogSim/airfogsim/entities/task.py:240-249",
+    "TaskManager.addToComputeTask": "code/reference/AirFogSim/airfogsim/manager/task_manager.py:235-257",
+    "TaskManager.checkTasks": "code/reference/AirFogSim/airfogsim/manager/task_manager.py:835-891",
+    "TaskManager.generateAndCheckTasks": "code/reference/AirFogSim/airfogsim/manager/task_manager.py:797-815"
+  },
+  "status": "PARTIAL",
+  "task_delay": "observer computes max(env.simulation_time - task arrival_time, 0); Formal Raw anchor has arrival_time_s but no elapsed_time_s, Formal Sample stores arrival_time_s and elapsed_time_s; the trained Tensor/4.4 Planner path does not expose deadline/elapsed as objective side-state",
+  "unit": "seconds in the formal scenario (simulation_interval is configured in seconds); deadline is the same elapsed-time unit",
+  "violation_operator": "> in TaskManager.checkTasks hard deadline sweep; Task.wait_to_ddl uses <= as equivalent predicate"
+}

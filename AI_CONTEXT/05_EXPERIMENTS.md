@@ -170,3 +170,6 @@ receipt 为 47/47 checks true，12 samples，capacity 10/74，prior/posterior/de
 # 2026-09-24 STEP 5.6B 预启动（历史）
 
 研究者已授权正式 GPU 训练启动，runner 与独立 Go/No-Go 正在预启动验收。此源码快照尚无正式训练结果或性能结论；训练一旦开始，run ID、Git SHA、Dataset/Config SHA 和进度以远端 run manifest/heartbeat 为准，不以旧 5.6A smoke receipt 代替。
+# 2026-09-28 STEP 6.2A — Planner Objective Source & Semantics Audit
+
+Status: `PASS_WITH_READINESS_BLOCKERS`; `STEP_6_2B_READINESS=BLOCKED`. CPU source/provenance audit and objective/baseline interface records only. No checkpoint load, baseline run, candidate ranking, MPC, GPU, locked test, or closed loop. Focused test: 1/1 passed before final regression closure. Receipts are under `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/`.

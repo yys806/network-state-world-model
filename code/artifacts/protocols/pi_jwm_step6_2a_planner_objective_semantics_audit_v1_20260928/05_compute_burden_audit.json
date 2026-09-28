@@ -1,0 +1,16 @@
+{
+  "mask_semantics": "anchor-defined task applicability mask; candidate cannot change denominator",
+  "pre_computing": "remaining work is a causal state quantity even before COMPUTING, but applicability must be anchor-frozen by lifecycle/support mask.",
+  "readiness": "PARTIAL: rule is source-backed, but deadline/complete cohort and causal capacity exposure need a Planner-only side-state contract.",
+  "return_boundary": "computation-finished is not final completion when required Return is unresolved or unsupported.",
+  "source_anchors": {
+    "completion_rule": "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py:647-657",
+    "cpu_rule": "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py:616-621",
+    "planner_domain": "docs/contracts/PIJWM_STEP_06_0C_PLANNER_ACTION_DOMAIN_V1.md",
+    "progress_rule": "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py:639"
+  },
+  "status": "PARTIAL",
+  "target_formula": "b_Comp(q,h)=W_rem(q,h)/max(W_rem(q,0), epsilon)",
+  "verified_rule": "cpu_service = allocated_cpu_per_s * slot_duration_s; task_work_remaining_next=max(current-cpu_service,0); task_progress=1-next_remaining/task_work_total",
+  "zero_denominator": "If W_rem(q,0)=0, the task is already computation-finished and contributes zero compute burden; no arbitrary epsilon value may be used to manufacture positive burden."
+}

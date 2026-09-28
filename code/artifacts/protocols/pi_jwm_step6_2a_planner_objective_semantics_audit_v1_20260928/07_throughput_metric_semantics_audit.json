@@ -1,0 +1,20 @@
+{
+  "baseline_requirement": "Report which byte convention is used; do not mix carried network traffic with useful end-to-end completion.",
+  "fields": [
+    "nominal_rate",
+    "outage_probability",
+    "actual_rate",
+    "wireless_delivered_data",
+    "wired_delivered_data",
+    "hop_service",
+    "e2e_flow_progress"
+  ],
+  "final_metric_target": "Q_Thr = real successfully transmitted data / real runtime",
+  "metric_split": "NETWORK_SERVICE_THROUGHPUT versus END_TO_END_USEFUL_THROUGHPUT remains METRIC_SEMANTICS_PENDING when multi-hop bytes are counted at each hop.",
+  "planner_role": "Diagnostic only; no independent weighted Throughput term in Planner Objective v1 because delivered service already drives hop/Flow progress and J_Burden.",
+  "source_anchors": {
+    "metrics": "code/src/pi_jwm/airfogsim_metrics_v2.py",
+    "world_model_service": "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py:568-616"
+  },
+  "status": "PARTIAL"
+}

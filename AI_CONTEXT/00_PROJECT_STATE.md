@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-28 STEP 6.2A — Objective Source Audit
+
+`PLANNER_OBJECTIVE_SOURCE_AUDIT=PASS_WITH_READINESS_BLOCKERS`，`STEP_6_2B_READINESS=BLOCKED`。6.2A 核对了 deadline/lifecycle、Task cohort、multi-hop Flow、compute、support、throughput、effort、energy/priority 等来源，并冻结了 objective 与 baseline metric 接口定义；没有实现 scorer、candidate ranking 或 winner selection。AirFogSim/Observer 有 deadline 等来源，但 Formal Raw 到 Planner 未暴露完整 causal side-state；跨 hop `B_Tx` 和 Route effort denominator 也未闭合。证据见 `docs/implementation_records/STEP_06_2A_PLANNER_OBJECTIVE_SOURCE_SEMANTICS_AUDIT.md` 和 `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/`。GPU、`locked_test`、baseline、MPC、closed-loop 均未执行。下一步须研究者审阅 blocker 并单独授权；不自动开始 6.2B。
+
 ## 2026-09-28 STEP 6.1 正式训练模型候选推演预检
 
 `TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT=PASS`（以最新机器 receipt 为准）：从同一个正式 validation 当前样本及同一 Encoder/当前 posterior latent 出发，四类合法当前因果动作分别完成 H1–H4 逐步编译和 prior-only 递归 World Model 推演；动作注入、对应潜变量、规则状态更新、串行/批量一致性与三组配对随机种子诊断通过。正式 `best.pt` SHA 精确匹配且参数未改变。证据见 `docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md` 和 `code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/`。这是单 validation anchor 的 CPU 机制验收；没有候选优劣、预测质量或闭环性能结论。`MPC_OBJECTIVE=NOT_STARTED`、`CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING`、`CLOSED_LOOP=NOT_STARTED`；baseline、GPU、locked_test 均未执行。唯一下一动作：研究者审阅 Step 6.1 的机制与边界，决定是否单独授权下一研究 Step。

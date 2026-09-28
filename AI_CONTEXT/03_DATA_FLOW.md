@@ -127,3 +127,6 @@ Unverified：未在当前 tensor manifest、loader 或模型实际读路径出�
 # STEP 5.1D unified paired path（2026-09-22）
 
 12 个 unified samples 使用完整 Flow Tensor package，保留 contract、sample IDs/static/metadata、base Step 3.3 checks、unified dev_train-only Flow stats 和 ndarray。每个 sample 独立重建 4.3A graph（10/74 capacity）与 4.3B encoder，再由自身 state、真实 Future Action 和 target 进入两步 recursive STEP 4.4 prior/posterior/decoder。5.1D-PATCH receipt 47/47，pairing 12/12，unified stats source IDs、4.2A frozen batch recovery、exact upstream train lineage 与 runtime prior-target isolation 通过。Route/Comp 真实 non-empty coverage 为 0，仅验证 explicit no-op。
+# 2026-09-28 STEP 6.2A Planner objective provenance
+
+The source-to-metric matrix is `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/10_objective_field_provenance_matrix.json`. It separates simulator runtime, observer, Formal Raw, Sample, Tensor, Graph, World Model, and Planner-side availability. Deadline/arrival/priority/return support may exist upstream but are not all exposed in the frozen causal Planner state; they must not be reconstructed from Future Target, failure labels, or future schedules.

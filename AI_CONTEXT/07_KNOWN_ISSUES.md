@@ -227,3 +227,9 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 # 2026-09-24 STEP 5.6B 预启动边界
 
 正式 runner 仍须通过独立 Go/No-Go、精确 Git source 同步及 detached launch 的持续进度检查。此源码快照中的 `formal_training=false` 为启动前状态；启动后的实时事实应读远端 heartbeat。H1/H2 step 时间尚无实测，38.65 小时是按 horizon 比例的估计，不是训练结果。`locked_test`、baseline、Planner 和性能声明仍关闭。
+# 2026-09-28 STEP 6.2A blockers
+
+- Deadline, aligned arrival/elapsed, priority and Return-support state need additive Planner-only causal exposure; current frozen Formal Raw/Tensor/World Model path does not provide the complete side-state.
+- `B_Tx` remains partially supported because cross-hop E2E remaining and stable route/epoch evidence are incomplete.
+- Route effort has no candidate-independent normalized denominator.
+- Therefore `STEP_6_2B_READINESS=BLOCKED`. Do not derive missing fields from Future Target or start 6.2B automatically.

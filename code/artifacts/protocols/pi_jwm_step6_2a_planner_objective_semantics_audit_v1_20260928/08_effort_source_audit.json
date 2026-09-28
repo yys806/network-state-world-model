@@ -1,0 +1,30 @@
+{
+  "components": {
+    "Comm": {
+      "limitation": "N_RB and duplicate/multi-relation aggregation must remain anchor-frozen",
+      "status": "SOURCE_AVAILABLE",
+      "target": "allocated RB fraction",
+      "unit": "dimensionless"
+    },
+    "Comp": {
+      "limitation": "dynamic available CPU unavailable",
+      "status": "SOURCE_AVAILABLE",
+      "target": "sum allocated CPU / sum applicable observed static capacity",
+      "unit": "CPU units per second / CPU units per second"
+    },
+    "Mob": {
+      "limitation": "15 m/s is formal mobility core domain maximum, not physical or safety bound",
+      "status": "PARTIAL",
+      "target": "speed / 15 m/s",
+      "unit": "dimensionless"
+    },
+    "Route": {
+      "limitation": "no source-backed candidate-independent normalized denominator for route changes",
+      "status": "BLOCKED",
+      "target": "route revision/change effort",
+      "unit": null
+    }
+  },
+  "planner_role": "J_Effort is last lexicographic tie-break; unavailable components cannot be silently replaced by proxies.",
+  "status": "PARTIAL"
+}

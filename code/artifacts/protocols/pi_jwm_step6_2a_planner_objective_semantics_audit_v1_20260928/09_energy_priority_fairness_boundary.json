@@ -1,0 +1,24 @@
+{
+  "computation_energy_source": "not present in the audited EnergyManager accounting path",
+  "energy_in_planner_objective_v1": false,
+  "energy_source": "code/reference/AirFogSim/airfogsim/manager/energy_manager.py:EnergyManager.updateEnergyPattern/updateEnergy; env._updateEnergy",
+  "energy_status": "FINAL_CLOSED_LOOP_METRIC_ONLY; AirFogSim EnergyManager models UAV movement/sensing/receive/send energy, but Formal Raw/Tensor/Planner causal energy state is absent; independent Energy Source/Formula Audit and causal derivation contract required before planner use",
+  "energy_terms": [
+    "flight_or_hover_per_timeslot",
+    "sensing_per_timeslot",
+    "receive_per_data_unit",
+    "send_per_data_unit"
+  ],
+  "epistemic_aleatoric_separate": true,
+  "fairness_in_objective_v1": false,
+  "fairness_status": "Final metric only; Agent-based versus Task-based Jain support quantity remains METRIC_DEFINITION_PENDING.",
+  "planner_energy_availability": "UNAVAILABLE",
+  "priority_deadline_coupling": "none in audited deadline predicates",
+  "priority_generation": "TaskManager._generatePriority",
+  "priority_range": "configuration-dependent; no single formal range asserted",
+  "priority_scheduling_use": "no use found in audited TaskManager scheduling/deadline path",
+  "priority_status": "TaskManager supports Uniform(low,high) or Normal(mean,std) generation and Task.getTaskPriority; audited scheduling/lifecycle source does not use priority for deadline checks; Formal Raw omits it. v1 uses w_q=1 and does not use priority.",
+  "priority_weighting_v1": false,
+  "risk_mode_v1": "DEFINED_BUT_INACTIVE",
+  "risk_status": "mean prior + expectation service is primary; stochastic latent/outage exists, but no calibration, chance guarantee, CVaR or tail-risk claim"
+}

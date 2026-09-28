@@ -3,6 +3,53 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.2A-OBJECTIVE-SOURCE-AUDIT-20260928",
+      "name": "Planner objective source semantics audit and baseline metric interface foundation",
+      "date": "2026-09-28",
+      "research_question": "Do frozen source semantics support the Planner Objective v1 target and its system-metric synchronization interface, and what blocks implementation readiness?",
+      "method": "pi_jwm_step6_2a_planner_objective_semantics_audit_v1",
+      "code": "code/scripts/run_step6_2a_planner_objective_semantics_audit_v1.py",
+      "code_version": {
+        "identity_type": "git_commit_and_source_receipt_sha256",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/manifest.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Final Git commit is recorded in the implementation record after closure; source-file SHA256 values are in 01_source_semantics_receipt.json."
+      },
+      "configuration": "docs/contracts/PIJWM_STEP_06_2_PLANNER_OBJECTIVE_CONTRACT_V1.md",
+      "parameters": {
+        "device": "cpu",
+        "candidate_ranking": false,
+        "baseline_execution": false,
+        "closed_loop": false,
+        "locked_test_accessed": false,
+        "objective_tuple": ["N_DDL", "A_DDL", "J_Delay", "J_Burden", "J_Effort"],
+        "comparison": "lexicographic_minimization"
+      },
+      "protocol": "docs/contracts/PIJWM_STEP_06_2_PLANNER_OBJECTIVE_CONTRACT_V1.md",
+      "data": null,
+      "split": null,
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/13_step6_2b_readiness.json",
+      "status": "pass_with_readiness_blockers",
+      "conclusion": "Source semantics and machine-readable objective/baseline interfaces were audited and recorded; STEP 6.2B remains blocked by missing Planner causal side-state exposure, incomplete cross-hop E2E burden evidence, and absent candidate-independent Route effort normalization.",
+      "summary_zh": "目标语义与系统指标接口已完成来源审计和机器化记录；因 Planner 因果侧状态暴露、跨 hop 端到端负担证据及 Route effort 归一化基准缺失，6.2B 仍受阻。",
+      "claim_boundary": "source audit and protocol foundation only; objective scorer, candidate ranking, baseline, locked test, GPU, closed loop and performance claim excluded",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "code_version.manifest_sha256": "No single bundle SHA is frozen; source hashes are stored per file in the source semantics receipt.",
+        "code_version.git_commit": "Filled by the final Step record and Git closure report.",
+        "data": "Formal Raw artifacts were inspected read-only; no training or evaluation split was executed.",
+        "split": "No model evaluation split applies; source inspection was constrained to unlocked Formal Raw provenance.",
+        "seed": "No stochastic experiment or model execution occurred.",
+        "checkpoint": "No checkpoint was loaded or modified.",
+        "metrics": "No objective score or system performance metric was computed; this Step records target semantics and source provenance only."
+      }
+    },
+    {
       "id": "P4-EARSSM-SEED-20260831",
       "name": "entity-aligned dual-graph RSSM formal seed 20260831",
       "date": "2026-09-06/2026-09-08",

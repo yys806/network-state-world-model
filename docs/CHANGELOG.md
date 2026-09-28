@@ -296,3 +296,9 @@
 - Added the real Formal Dataset v1 CUDA smoke path and deterministic trajectory-aware sampler evidence. H4 forward/backward, optimizer update, cross-trajectory batches, checkpoint reload, and identity rejection passed on the remote RTX 4090.
 - Full 1104-window prior-only GPU validation is running in disjoint validation trajectory shards; no full-validation PASS is claimed before merge receipt.
 - Formal training remains closed. Numerical training configuration is explicitly awaiting researcher decision; locked_test, baseline, Planner, and performance claims remain false.
+# 2026-09-28 STEP 6.2A — Planner Objective Source & Semantics Audit
+
+- Added a CPU audit runner/test and 13 machine-readable receipts covering deadline lifecycle, cohort, Flow/compute burden, support, throughput, effort, energy/priority boundary, field provenance, objective target semantics, baseline metric synchronization and STEP 6.2B readiness.
+- Corrected the provenance matrix to distinguish source availability from actual causal exposure and removed unsupported `CAUSALLY_DERIVABLE` status.
+- Recorded `PASS_WITH_READINESS_BLOCKERS`; STEP 6.2B remains blocked by missing Planner-only causal side-state, incomplete cross-hop E2E burden provenance and missing normalized Route-effort denominator.
+- No scorer/ranking, candidate selection, baseline, GPU, locked-test, or closed-loop experiment was run.

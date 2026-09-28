@@ -1,0 +1,29 @@
+{
+  "artifact_files": [
+    "01_source_semantics_receipt.json",
+    "02_deadline_lifecycle_audit.json",
+    "03_task_objective_cohort_audit.json",
+    "04_flow_multihop_burden_audit.json",
+    "05_compute_burden_audit.json",
+    "06_support_boundary_audit.json",
+    "07_throughput_metric_semantics_audit.json",
+    "08_effort_source_audit.json",
+    "09_energy_priority_fairness_boundary.json",
+    "10_objective_field_provenance_matrix.json",
+    "11_planner_objective_contract_v1.json",
+    "12_baseline_sync_contract_v1.json",
+    "13_step6_2b_readiness.json",
+    "manifest.json"
+  ],
+  "baseline_executed": false,
+  "candidate_ranking": false,
+  "checkpoint_modified": false,
+  "formal_dataset_modified": false,
+  "future_only_task_in_objective_cohort": false,
+  "future_task_schedule_used_by_objective": false,
+  "gpu": false,
+  "locked_test_accessed": false,
+  "schema_version": "PI-JWM-Step6.2A-Manifest-v1",
+  "status": "PARTIAL_BLOCKED_FOR_6_2B",
+  "winner_selection": false
+}

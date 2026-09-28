@@ -1,0 +1,25 @@
+{
+  "common_support_rule": "A candidate whose first unsupported Return state is u_k has H_sup=u_k-1; H_eff=min_k H_sup(k), and H_eff=0 is OBJECTIVE_UNSCOREABLE.",
+  "formula_limitations": [
+    "Current causal flow audit does not prove end-to-end remaining across completed hops for all Input/Return flows.",
+    "Route revision and superseded Epoch identity are not fully runtime-source-backed.",
+    "DepData transfer is absent in the audited simulator runtime."
+  ],
+  "formula_verdict": "PARTIALLY_SUPPORTED",
+  "source_anchors": {
+    "flow_source_audit": "code/src/pi_jwm/step4_2b_stateful_flow_source_audit_v1.py",
+    "hop_advance": "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py:581-614",
+    "one_step_service": "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py:568-616",
+    "route_revision": "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py:626-636"
+  },
+  "status": "PARTIALLY_SUPPORTED",
+  "target_formula": "B_Tx = R_hop + (N_hop - 1 - current_hop_index) * R_e2e",
+  "verified_semantics": {
+    "completed_or_inactive": "exclude from active burden mask",
+    "identity": "flow identity, FlowType, Epoch/RouteRevision and current holder are required for a stable burden calculation; current route revision is model state/action-side revision",
+    "intermediate_hop": "hop_remaining decreases and current_hop_index advances; flow_remaining does not decrease",
+    "reroute": "recompute from predicted route/hop state only when identity and route revision remain supported",
+    "terminal_hop": "e2e delivered reduces flow_remaining; completed Flow loses presence/carrying",
+    "unknown_padded": "exclude; never use padding as service support"
+  }
+}

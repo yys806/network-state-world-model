@@ -1,0 +1,12 @@
+{
+  "BASELINE_SYNC_INTERFACE": "RECORDED",
+  "COMP_BURDEN_SOURCE_READINESS": "PARTIAL",
+  "DEADLINE_SOURCE_READINESS": "BLOCKED",
+  "DELAY_SOURCE_READINESS": "PARTIAL",
+  "EFFORT_SOURCE_READINESS": "PARTIAL",
+  "FINAL_METRIC_INTERFACE": "RECORDED",
+  "STEP_6_2B_READINESS": "BLOCKED",
+  "SUPPORT_BOUNDARY_READINESS": "PARTIAL",
+  "TX_BURDEN_SOURCE_READINESS": "PARTIAL",
+  "minimum_blocker": "Additive Planner-only causal side-state for deadline/arrival/priority/return support, plus source-backed end-to-end Flow remaining and candidate-independent Route effort denominator; do not reconstruct from future data."
+}

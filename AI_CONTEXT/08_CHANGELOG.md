@@ -213,3 +213,6 @@ Unverified：未在 Git diff 和相应证据中出现的变化不得仅凭本文
 # 2026-09-24 STEP 5.6B 预启动
 
 新增复用 FormalTrainingInterface/FullFormalTrainer 的正式 runner、全量 prior-only validation、逐步日志、atomic heartbeat 和身份约束 checkpoint/resume。此变更先提交并同步精确 source 后才允许启动；运行证据另由远端 run manifest 和 heartbeat 给出。
+# 2026-09-28 STEP 6.2A
+
+Added a source-semantics audit runner, focused test, Planner objective target contract, baseline system metric interface, machine-readable receipts, and implementation record. Corrected the provenance matrix to distinguish actual pipeline exposure and removed unsupported `CAUSALLY_DERIVABLE`. Verdict: `PASS_WITH_READINESS_BLOCKERS`; STEP 6.2B remains blocked. No scoring, candidate selection, baseline, GPU, locked test, or closed-loop execution.

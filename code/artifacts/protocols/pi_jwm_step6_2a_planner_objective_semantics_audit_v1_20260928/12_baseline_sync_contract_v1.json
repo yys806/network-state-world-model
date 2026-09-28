@@ -1,0 +1,58 @@
+{
+  "baseline_method_selection": "NOT_SELECTED",
+  "final_metric_families": [
+    "Task Completion Rate",
+    "Deadline Violation Rate",
+    "Throughput",
+    "Average Task Delay",
+    "P95 Task Delay",
+    "P99 Task Delay",
+    "Energy Consumption",
+    "Resource Utilization",
+    "Fairness/Jain when applicable"
+  ],
+  "planner_semantics": {
+    "energy": "not in Planner v1",
+    "fairness": "not in Planner v1",
+    "h_eff": "common support-aware horizon",
+    "order": "lexicographic_minimize",
+    "priority": "inactive",
+    "risk": "inactive",
+    "tuple": [
+      "N_DDL",
+      "A_DDL",
+      "J_Delay",
+      "J_Burden",
+      "J_Effort"
+    ]
+  },
+  "relative_improvement": {
+    "higher_is_better": "(PIJWM-Baseline)/Baseline*100%",
+    "lower_is_better": "(Baseline-PIJWM)/Baseline*100%",
+    "positive_means": "PI-JWM improvement",
+    "required_reporting": [
+      "absolute",
+      "relative",
+      "cross-seed statistics"
+    ],
+    "zero_baseline": "METRIC_SEMANTICS_PENDING; specify denominator policy before reporting"
+  },
+  "same_protocol": [
+    "simulator scenario",
+    "task generation",
+    "random seed protocol",
+    "decision interval",
+    "action execution semantics",
+    "metric definitions",
+    "episode horizon",
+    "warm-up rule",
+    "failure/deadline semantics"
+  ],
+  "separation": [
+    "Planner Objective != Final Evaluation Metric",
+    "Predicted metric != Real closed-loop metric",
+    "Evaluation Metric != Acceptance Gate"
+  ],
+  "status": "RECORDED",
+  "throughput_semantics": "NETWORK_SERVICE_THROUGHPUT versus END_TO_END_USEFUL_THROUGHPUT remains pending until byte counting is frozen"
+}

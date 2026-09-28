@@ -1,0 +1,14 @@
+{
+  "blocked_flags": "final_completion_blocked_by_fixed_support is set when computation_finished and return_birth_required or unresolved_return_requirement",
+  "common_support": "H_eff=min candidate H_sup; no candidate may use a longer horizon; H_eff=0 => OBJECTIVE_UNSCOREABLE.",
+  "first_unsupported_state_rule": "If first unsupported state is u_k, score only H1..H_(u_k-1); the unsupported state itself is not scored.",
+  "future_return_birth_supported": false,
+  "limitation": "The detector proves fixed-support absence/blocked status; it does not create a new Return slot or make future Return prediction safe.",
+  "source_anchors": {
+    "detector": "code/src/pi_jwm/step5_5_fixed_support_audit_v1.py:7-38",
+    "formal_audit": "code/scripts/audit_step5_5_patch_v1.py",
+    "world_model": "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py:641-657"
+  },
+  "status": "PARTIAL",
+  "trigger": "task_return_requirement_known AND task_requires_return AND return_flow_index<0 AND task_presence"
+}

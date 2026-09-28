@@ -1,0 +1,12 @@
+{
+  "anchor_terminal_exclusion": "DONE and FAILED are excluded from the current scoring cohort; presence alone is insufficient.",
+  "cohort_definition": "current causally visible tasks with presence=true and lifecycle not terminal DONE or FAILED",
+  "computation_finished": "task_work_remaining <= 0; this is not final completion when return is required or unsupported.",
+  "delay_surrogate": "u(q,h)=1 iff q is not successfully final-complete at predicted h; FAILED is not successful completion.",
+  "future_birth_exclusion": "future-only tasks and future-only Return flows are excluded from cohort and denominator.",
+  "readiness": "PARTIAL: cohort rule is defined, but deadline failure and some task fields are not planner-causally exposed.",
+  "released": "task_released is dependency/DAG availability and is distinct from presence and completion.",
+  "status": "PARTIAL",
+  "terminal_done": "World Model task_completed/final_done is true only when computation is finished and no unresolved required Return remains; lifecycle index is changed to completed index.",
+  "terminal_failed": "Current anchor FAILED is represented by the frozen lifecycle vocabulary/index and can be excluded; future deadline-driven transition to FAILED is absent from one_step and cannot be forecast without causal deadline side-state/rule."
+}

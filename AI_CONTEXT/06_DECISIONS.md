@@ -174,3 +174,9 @@ Researcher explicitly fixed A_t=(A_t^Route,A_t^Comm,A_t^Comp,A_t^Mob), with A_t^
 - Formal Physical topology v1 固定为 `radius_knn(radius=1000m,k=2)`；这是 Dataset v1 protocol choice，不是 topology optimality claim。
 - 数据采集采用 causal coverage-oriented 四动作 policy：`A_t=(Route,Comm,Comp,Mobility)`，动作只能依赖当前观察/因果 History，车辆仍由 SUMO 外生推进；policy 不是 Planner，也不作 reward 最优声明。
 - Dataset 不包含或物化 `locked_test`。本 Step 仅 CPU Dataset/Interface acceptance；GPU、formal training、baseline、Planner 和 performance claim 均未授权。
+# 2026-09-28 — Researcher-specified Planner Objective v1 target
+
+- Target tuple: `(N_DDL, A_DDL, J_Delay, J_Burden, J_Effort)`, minimized lexicographically.
+- Throughput is diagnostic/final metric, not a separate weighted objective. Energy and Fairness are outside Planner v1. Priority is inactive (`w_q=1`). Risk is defined but inactive.
+- A common support-aware horizon is required. Future-only Return birth is a model-support boundary, not candidate illegality.
+- These semantics are a target definition; 6.2A did not implement scoring. `CANDIDATE_METHOD_SELECTION=RESEARCH_PENDING` remains unchanged.

@@ -1203,3 +1203,11 @@
 - 五次完整 `L_Val` 为 0.1766124568、0.0801012691、0.0775463209、0.0764608792、0.0743133878；最终 5520 步是唯一最低点。best/latest 文件 SHA 不同，但状态身份相同，428 个模型张量逐项相同。
 - 冻结 checkpoint 的 config `device=cuda` 不应改写；CPU 验收仅构造 device=cpu 的等价 Trainer，先严格验证冻结配置/数据/架构，再使用原 base loader 的身份约束重载。单 validation window H1–H4 prior-only 有限值且参数不变。
 - 当前只验证一个正式 seed 的 dev_validation；没有 baseline、locked_test、跨 seed 稳定性、Planner rollout 或闭环任务指标，不能由本次 `L_Val` 推出泛化/系统效果。Motion raw aggregate 混合单位。
+# 2026-09-28 STEP 6.2A findings
+
+- Deadline 不是绝对时间戳，而是相对允许时长；`arrival_time + deadline` 才是绝对截止时间。DONE 与 hard-failure 的边界分属不同运行阶段，不能用一个 `>=`/`>` 规则替代。
+- Observer/Simulator 中存在 deadline、return size、priority 等来源，但 frozen Formal Raw 没有把它们作为 Planner 当前因果 side-state 暴露；不得从 Future Target、FAILED label 或 future schedule 反推。
+- 当前 `B_Tx` 目标公式与中间 hop/terminal hop 语义部分一致，但跨 hop E2E remaining、稳定 route/epoch identity 的证据尚未完整；Route effort 也缺少 candidate-independent normalized denominator。
+- EnergyManager source 已审计，但能量仍只属于最终闭环指标边界；priority v1 inactive，`w_q=1`。
+- 结论：6.2A source semantics/protocol foundation 可记录，但 6.2B readiness 被上述 side-state 与 burden evidence blocker 阻塞。
+- 收口验证：6.2A focused 1/1、6.0C 12/12、6.1 2/2、4.4 37/37、4.2C-B Flow ledger 25/25、5.6C checkpoint 3/3、5.5 Formal Dataset 21/21、6.0A adapter/fixed-support 6/6；compileall、knowledge index write/check、Context Consistency 与 diff check 通过。

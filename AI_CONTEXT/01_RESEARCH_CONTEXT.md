@@ -43,3 +43,6 @@ Source of truth：理论边界见 `记录/PIJWM主文档.md`；实际实现见 `
 目标定义是“同一 belief 下逐候选调用世界模型 → 预测未来状态/任务/成本/风险 → 选择动作 → 只执行首动作 → 接收真实反馈后重规划”。当前 `code/src/pi_jwm/formal_candidate_rollout_planner_v1.py` 仅为 CPU 原型；合法候选生成、目标函数、风险定义和真实执行反馈尚未冻结。
 
 Unverified：最终采用纯候选搜索、学习策略或混合策略，尚无研究者决策。
+# 2026-09-28 STEP 6.2A Objective Target Definition and Evidence Boundary
+
+Researcher-specified Planner Objective v1 target is lexicographic minimization of `(N_DDL, A_DDL, J_Delay, J_Burden, J_Effort)`. Throughput is diagnostic/final evaluation metric, not a duplicate weighted objective; Energy and Fairness are outside Planner v1; Priority is inactive; Risk is defined but inactive. These are target semantics, not an implemented scorer. Source audit found causal exposure gaps and therefore blocks STEP 6.2B until separately reviewed and authorized. Full evidence and machine receipts are linked from the current state snapshot.

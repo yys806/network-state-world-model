@@ -1,0 +1,44 @@
+{
+  "burden": "masked mean of anchor-supported normalized Tx and Comp burden",
+  "deadline": "source semantics <= at equality, but Planner readiness BLOCKED until causal side-state exposure",
+  "deadline_comparison": {
+    "active_failure": "delay > deadline",
+    "no_return_completion": "delay <= deadline + 1e-5",
+    "return_completion": "delay <= deadline",
+    "unit": "scenario simulation-time seconds"
+  },
+  "delay": "unfinished-task time area over current nonterminal cohort; FAILED is not successful completion",
+  "effort": "last tie-break; no invented proxy for unavailable Route component",
+  "energy": false,
+  "fairness": false,
+  "h_eff": "min candidate H_sup; common H1..H_eff only; H_eff=0 OBJECTIVE_UNSCOREABLE",
+  "hard_constraint_principle": "only source-backed constraints; unsupported Return is model support boundary, not candidate illegality",
+  "implementation_status": "NOT_STARTED",
+  "leakage": "no future task schedule, Future Target, failed label reconstruction, or candidate-dependent denominator",
+  "order": "lexicographic_minimize",
+  "priority": false,
+  "risk": "defined but inactive; primary mean/expectation",
+  "scope": "generic computation tasks",
+  "score_readiness": "target definition only; objective execution blocked by missing Planner causal deadline side-state, partially supported Tx burden and unavailable Route effort denominator",
+  "status": "RESEARCHER_FROZEN_TARGET_CONTRACT_SOURCE_AUDITED_IMPLEMENTATION_NOT_STARTED",
+  "target_formulas": {
+    "A_DDL": "sum(v(q,h))/(|Q_t|*H_eff)",
+    "J_Burden": "mean b_task over anchor cohort and common horizon",
+    "J_Delay": "mean(u(q,h)) over anchor cohort and common horizon; finite-horizon surrogate, not realized delay percentile/mean",
+    "J_Effort": "last tie-break over source-backed normalized Comp/Comm/Mob/Route components; Route currently unavailable",
+    "N_DDL": "count current cohort tasks with any violation over H_eff",
+    "b_Comp": "W_rem(q,h)/max(W_rem(q,0),epsilon); if W_rem(q,0)=0 then contribution is zero",
+    "b_Tx": "R_hop + (N_hop - 1 - current_hop_index)*R_e2e; partially source-supported",
+    "b_task": "(m_Tx*b_Tx + m_Comp*b_Comp)/(m_Tx+m_Comp); masks frozen at anchor; completed task burden is zero",
+    "u(q,h)": "1 iff task is not successfully final-complete at t+h; FAILED is not successful completion",
+    "v(q,h)": "deadline violation at predicted t+h and not timely completed under source semantics"
+  },
+  "throughput": "diagnostic/final metric, no independent weighted Planner term",
+  "tuple": [
+    "N_DDL",
+    "A_DDL",
+    "J_Delay",
+    "J_Burden",
+    "J_Effort"
+  ]
+}

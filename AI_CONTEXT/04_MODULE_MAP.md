@@ -94,3 +94,12 @@ Unverified：未在依赖图、当前 runner、config 或实验 manifest 中出�
 # STEP 5.1D module integration（2026-09-22）
 
 `code/scripts/build_step5_1d_unified_model_chain_v1.py` 复用 4.2C package API、4.3A builder、4.3B encoder、4.4 Structured RSSM 与 5.1B primitives；新增 focused test 覆盖 package roundtrip、pairing、action mapping、hardcoded-index/optimizer guard 和 receipt tamper。
+# STEP 6.2A — objective source audit
+
+- Audit runner: `code/scripts/run_step6_2a_planner_objective_semantics_audit_v1.py`
+- Focused test: `code/tests/test_step6_2a_planner_objective_audit_v1.py`
+- Objective target contract: `docs/contracts/PIJWM_STEP_06_2_PLANNER_OBJECTIVE_CONTRACT_V1.md`
+- Baseline metric interface: `docs/contracts/PIJWM_BASELINE_SYSTEM_METRIC_INTERFACE_V1.md`
+- Evidence bundle: `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/`
+
+These files audit and record semantics; there is no candidate scorer or ranking implementation in this Step.

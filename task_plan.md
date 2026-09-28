@@ -1571,3 +1571,13 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] H2←H0 负例、无 Future Target/参数更改、配对随机种子与 K=1/2/4/8 CPU 诊断。
 - [ ] 最终全部回归、文档/Context/index、staged diff、commit/push 与 HEAD==origin/main 核对。
 - 当前关口：6.1 机器机制收据初轮 PASS；最终扩展张量比较与 Git 收口待完成。阻塞：无科学设计冲突；剩余工程验证。唯一下一交付：完成本 Step 验证和记录后停止，等待研究者审阅。GPU 与 `locked_test` 均关闭。
+# 2026-09-28 STEP 6.2A — Planner Objective Source & Semantics Audit
+
+- [x] 核对 Git 起点与 origin/main，保留原有未跟踪用户文件。
+- [x] 完成 AirFogSim deadline/lifecycle、task cohort、Flow burden、compute burden、support、throughput、effort、energy/priority 来源审计。
+- [x] 生成 13 项机器回执及 objective/baseline 合同；纠正 provenance 矩阵，移除无来源的 `CAUSALLY_DERIVABLE` 标签。
+- [x] 记录 `PASS_WITH_READINESS_BLOCKERS`；`STEP_6_2B_READINESS=BLOCKED`。
+- [x] 完成回归、compileall、knowledge index write/check 与 Context Consistency。
+- [ ] 最终检查 staged diff，commit/push 并核对 `HEAD==origin/main`。
+- Boundary: `gpu=false`、`locked_test=false`、`baseline=false`、`planner_ranking=false`、`closed_loop=false`、`performance_claim=false`。
+- Single next action after closure: 研究者审阅 6.2A blocker 后，另行决定是否授权 Planner-only causal side-state additive exposure / STEP 6.2B；不得自动开始。

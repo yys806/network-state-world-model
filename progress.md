@@ -1194,3 +1194,10 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 # 2026-09-28 STEP 5.6C 进展
 
 从 GitHub fetch 确认 main=origin/main=486dec2、训练源 6e15ec2 为祖先且训练相关模块未改。本地 CPU 验收 5520 连续步骤、五次完整验证及 strict argmin；best/latest 的 428 个模型张量完全一致，best checkpoint 已 CPU 重载并对一个 validation window 执行 H1–H4 prior-only 推理。机器回执、Formal Validation Observation 与八文件 SHA manifest 已写入 tracked manifests；相关 focused/compile/index/context/Git 门待最终执行。无远端连接、GPU 或重训。
+# 2026-09-28 STEP 6.2A — Planner Objective Source & Semantics Audit
+
+- 当前结果：`PASS_WITH_READINESS_BLOCKERS`；不是 Planner objective implementation，也不是 candidate ranking 结果。
+- 已核实 AirFogSim deadline 为 arrival-relative duration；完成路径允许 equality，后续 active-task sweep 仅 `delay > deadline` 失败；completion handling 先于 sweep。
+- 当前 Formal Raw/Tensor/World Model 没有完整 Planner deadline/arrival/priority/return-support side-state；`B_Tx` 跨 hop 证据和 Route effort denominator 也未闭合。
+- 已生成 `code/artifacts/protocols/pi_jwm_step6_2a_planner_objective_semantics_audit_v1_20260928/` 全套回执，focused audit test 通过。
+- 回归：6.2A 1/1、6.0C 12/12、6.1 2/2、4.4 37/37、4.2C-B 25/25、5.6C 3/3、5.5 21/21、6.0A 6/6；compileall、knowledge index write/check（5 outputs、0 mismatch）、Context Consistency 与 diff check 通过。Git staged diff / commit / push 是最后收口步骤。GPU、SSH、locked_test、baseline、ranking、MPC、closed-loop 均未执行。

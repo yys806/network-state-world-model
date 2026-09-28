@@ -1,0 +1,80 @@
+{
+  "airfogsim_git_identity": null,
+  "airfogsim_git_identity_note": "The reference directory has no independent Git identity; file SHA256 is used.",
+  "definition_sha256": {
+    "00": "AC651586CADD2638C7CB8F68E80144C5BF087B62B2E1923C6D6625C5DE2B82F0",
+    "01": "01478D0C61065ADCCC50CD58747CB28CDF554A5B963E07EF154B8AFCBAD43AC1",
+    "03": "6F3E17B0691AA81C60C2EA1E76A1031D2F7F622ABF4B40884E9AE4380953C15E",
+    "04": "EF49CD0802A163886AE324879C01E9FBBD3F3F2DC1EC4079E4022B2C4F7A46C5",
+    "05": "62EEBB05E2EEEFE9EDB0038F12964F59915A7ACCE03A683D6C7E5C71F85684E9",
+    "06": "F20294BD8708076AE7583BE679A8182A0990ECF6777E05DF378AE4C2855431F1"
+  },
+  "formal_raw_anchor": {
+    "arrival_time_field_present": true,
+    "capture_event_id": "capture-002",
+    "deadline_field_present": false,
+    "entity_fields": [
+      "canonical_acceleration_missing_reason",
+      "canonical_acceleration_mps2",
+      "canonical_acceleration_observed_mask",
+      "canonical_acceleration_source",
+      "elevation_rad",
+      "entity_id",
+      "entity_type",
+      "heading",
+      "heading_unit",
+      "position_m",
+      "raw_simulator_acceleration_mps2",
+      "raw_simulator_acceleration_source",
+      "speed_mps"
+    ],
+    "frame_index": 1,
+    "path": "raw/formal-v1-sim-2026092302-policy-2026092402.json.gz",
+    "priority_field_present": false,
+    "return_size_field_present": true,
+    "scope": "one first legal STEP 6.1 validation anchor Raw decision only; no future frames/targets read",
+    "sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+    "simulation_time_s": 1.9,
+    "task_fields": [
+      "arrival_time_s",
+      "computed_cpu_work",
+      "current_node_id",
+      "lifecycle",
+      "required_returned_size",
+      "return_destination_id",
+      "route_node_ids",
+      "task_cpu_work",
+      "task_id",
+      "task_node_id",
+      "task_size",
+      "transmitted_size",
+      "visibility"
+    ],
+    "task_sample_count": 6,
+    "trajectory_id": "formal-v1-sim-2026092302-policy-2026092402"
+  },
+  "schema_version": "PI-JWM-Step6.2A-Source-Semantics-v1",
+  "scope": {
+    "checkpoint_loaded": false,
+    "closed_loop": false,
+    "cpu_only": true,
+    "formal_dataset_modified": false,
+    "locked_test_accessed": false,
+    "optimizer_step": false,
+    "performance_claim": false,
+    "ranking": false,
+    "training": false
+  },
+  "source_sha256": {
+    "environment": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+    "flow_audit": "aef6c5ad0ffad30d7454d072e0834c950ca8c132501d673d4c061d6d047c69f7",
+    "metrics": "780ae420b1448e5edd432db032de7b9ded995c76f3c75815ad2c89ba5d46cacf",
+    "observer": "6f7d91563af8da1d2f98b2f7bb409ac4c678ff76f1737827cea5ee5670cb99cd",
+    "support_audit": "3067eba4133574959ec90dc9653a58a031992cf04052841853af5d53d17eddaf",
+    "task": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0",
+    "task_manager": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+    "tensor": "883954e87ed458a666c9a6caef9306b87d98fcd8b69faceaac1be5ba43037421",
+    "world_model": "8c33bbf96963981f8428cfc474e843b99406712eb038dadc3055f992666d8709"
+  },
+  "status": "PASS_WITH_READINESS_BLOCKERS"
+}
