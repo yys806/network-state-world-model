@@ -127,3 +127,12 @@ gate run and is not part of this change.
 
 Machine evidence is in
 `code/artifacts/protocols/pi_jwm_step6_3a_candidate_support_audit_v1_20260928/`.
+
+## Git and next step
+
+Implementation/evidence commit `b2059c4dbe173669f296b9f20a1225c9695d459e`
+was pushed to `origin/main`. The final context/closure note is committed
+separately so the current project status is recorded after the verification
+deviation was discovered. Worktree-only user files `TASK/` and
+`code/scripts/plot_step5_3e_tiny_overfit.py` were not included. Next action is
+researcher review; do not start a candidate optimizer or closed loop.

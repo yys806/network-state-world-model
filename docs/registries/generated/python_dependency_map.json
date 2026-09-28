@@ -399,6 +399,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.run_cpu_inner_rule_preflight_v1",
+        "scripts.run_step6_3a_candidate_support_audit_v1",
         "tests.test_airfogsim_cpu_inner_rule_v1",
         "tests.test_cpu_inner_rule_v1"
       ],
@@ -6963,6 +6964,18 @@
       "lifecycle_status": "support",
       "module": "scripts.run_step6_2b_objective_scorer_cpu_v1",
       "path": "code/scripts/run_step6_2b_objective_scorer_cpu_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.cpu_inner_rule_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_3a_candidate_support_audit_v1",
+      "path": "code/scripts/run_step6_3a_candidate_support_audit_v1.py",
       "test_files": []
     },
     {

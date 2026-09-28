@@ -3,7 +3,9 @@
 - [x] 起点 `HEAD=origin/main=f58f08087bf27b2ffc21c2e6c68ec1d153acc439`，确认并保留已有未跟踪 `TASK/` 与绘图脚本。
 - [x] Secret-pattern preflight 和最小 `.gitignore` hardening；Formal TRAIN causal action support、Comp reconstruction、joint/temporal signatures、anchor search-space illustrations、validation descriptive check。
 - [x] 完成 receipts、implementation record、AI_CONTEXT/索引/过程记录同步。
-- 当前 gate：支持审计证据 `STEP_6_3A=PASS`，但全仓 unittest 回归未通过且误执行 synthetic CPU trainer tests，记录为范围偏差；Formal 训练/数据/checkpoint 未触碰。唯一下一动作：同步偏差记录、knowledge index write/check、diff review 与 Git 收口后停止。不得继续任何训练类测试、optimizer、ranking、closed loop、baseline、GPU 或 `locked_test`。
+- [x] 完成 `compileall`、cross-layer gate（115/115）、knowledge index write/check 与 diff review；全仓 unittest 失败及误执行 synthetic CPU trainer tests 的范围偏差已如实记录。
+- [x] 实现/证据提交 `b2059c4dbe173669f296b9f20a1225c9695d459e` 已推送；本次仅补记收尾状态，随后提交并推送。
+- 当前 gate：`STEP_6_3A=PASS`（support audit evidence only）。唯一下一动作：研究者审阅；不得自动进入 Candidate Method、optimizer、ranking、closed loop、baseline、GPU、训练或 `locked_test`。
 
 ## 2026-09-26 STEP 6.0C — Planner Action Domain v1
 
