@@ -1,5 +1,11 @@
 # Findings
 
+## 2026-09-29 STEP 6.3D（进行中）
+
+- 6.3D 的 96 个分层选中锚点都能从原始轨迹只读重放建立 exact-aligned causal deadline sidecar；不需要改变 Raw、Objective 或 CandidateDomain。
+- 真实冻结模型探针可严格计量 `B_WM`，但选定首个 TRAIN anchor 的 H4 完整轨迹在 8、32、256、512 预算探针里均无法按冻结 6.2B Objective 完整评分。512 次新源码重跑的 130 条完整轨迹均在 H1 触发 `UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15`；旧 512 收据保留为诊断前对照。该事实只属于一个 anchor，不能推广为方法胜负或整体成功率。
+- 正式矩阵若预算都耗尽共 2,113,536 次 unique one-step transition。256 次探针为 262.665 秒，512 次为 558.291 秒；串行 CPU 完成需要数周量级。运行时间是资源诊断，不可用于选择 HRS/S-CEM/MH-CEM。研究者当前仅要求本机 CPU，故未使用 GPU 或改动预算。
+
 ## 2026-09-29 STEP 6.3B
 
 - Formal TRAIN: 293/4608 raw slots include repeated Comm rows for one Task, 251 joint structural signatures and 145 observed cyclic `(start,width)` pairs. Policy no-intervention is not empty action: Comm 674, Comp 913, Mob 2761 raw slots still have rows.

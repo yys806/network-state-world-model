@@ -1,0 +1,1163 @@
+{
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "ready_count": 96,
+  "rejected_count": 0,
+  "rows": [
+    {
+      "cohort_count": 6,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092310-policy-2026092410::anchor-0011",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 13
+    },
+    {
+      "cohort_count": 45,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092319-policy-2026092419::anchor-0066",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 78
+    },
+    {
+      "cohort_count": 0,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092328-policy-2026092428::anchor-0025",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 15
+    },
+    {
+      "cohort_count": 10,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092333-policy-2026092433::anchor-0049",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 35
+    },
+    {
+      "cohort_count": 0,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092344-policy-2026092444::anchor-0023",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 24
+    },
+    {
+      "cohort_count": 26,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092329-policy-2026092429::anchor-0069",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 93
+    },
+    {
+      "cohort_count": 38,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092330-policy-2026092430::anchor-0063",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 63
+    },
+    {
+      "cohort_count": 14,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092327-policy-2026092427::anchor-0035",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 21
+    },
+    {
+      "cohort_count": 9,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092357-policy-2026092457::anchor-0038",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 23
+    },
+    {
+      "cohort_count": 14,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092332-policy-2026092432::anchor-0031",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 32
+    },
+    {
+      "cohort_count": 55,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092340-policy-2026092440::anchor-0082",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 92
+    },
+    {
+      "cohort_count": 9,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092309-policy-2026092409::anchor-0040",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 27
+    },
+    {
+      "cohort_count": 38,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092347-policy-2026092447::anchor-0073",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 99
+    },
+    {
+      "cohort_count": 55,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092304-policy-2026092404::anchor-0080",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 103
+    },
+    {
+      "cohort_count": 8,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092330-policy-2026092430::anchor-0013",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 9
+    },
+    {
+      "cohort_count": 4,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092305-policy-2026092405::anchor-0004",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 4
+    },
+    {
+      "cohort_count": 2,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092342-policy-2026092442::anchor-0029",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 13
+    },
+    {
+      "cohort_count": 29,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092334-policy-2026092434::anchor-0043",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 42
+    },
+    {
+      "cohort_count": 37,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092340-policy-2026092440::anchor-0057",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 51
+    },
+    {
+      "cohort_count": 39,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092334-policy-2026092434::anchor-0087",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 105
+    },
+    {
+      "cohort_count": 9,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092305-policy-2026092405::anchor-0083",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 70
+    },
+    {
+      "cohort_count": 5,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092351-policy-2026092451::anchor-0012",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 14
+    },
+    {
+      "cohort_count": 2,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092325-policy-2026092425::anchor-0003",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 2
+    },
+    {
+      "cohort_count": 0,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092328-policy-2026092428::anchor-0031",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 19
+    },
+    {
+      "cohort_count": 8,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092338-policy-2026092438::anchor-0070",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 28
+    },
+    {
+      "cohort_count": 11,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092349-policy-2026092449::anchor-0035",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 23
+    },
+    {
+      "cohort_count": 34,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092343-policy-2026092443::anchor-0091",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 98
+    },
+    {
+      "cohort_count": 8,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092352-policy-2026092452::anchor-0084",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 83
+    },
+    {
+      "cohort_count": 5,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092307-policy-2026092407::anchor-0011",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 7
+    },
+    {
+      "cohort_count": 1,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092325-policy-2026092425::anchor-0024",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 10
+    },
+    {
+      "cohort_count": 14,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092320-policy-2026092420::anchor-0029",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 21
+    },
+    {
+      "cohort_count": 33,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0083",
+      "split": "dev_train",
+      "status": "READY",
+      "task_count": 90
+    },
+    {
+      "cohort_count": 3,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 3
+    },
+    {
+      "cohort_count": 4,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 17
+    },
+    {
+      "cohort_count": 5,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 29
+    },
+    {
+      "cohort_count": 18,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 32
+    },
+    {
+      "cohort_count": 0,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0021",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 17
+    },
+    {
+      "cohort_count": 17,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 55
+    },
+    {
+      "cohort_count": 33,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 67
+    },
+    {
+      "cohort_count": 0,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0010",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 5
+    },
+    {
+      "cohort_count": 6,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 8
+    },
+    {
+      "cohort_count": 0,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0028",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 11
+    },
+    {
+      "cohort_count": 3,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 17
+    },
+    {
+      "cohort_count": 7,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 16
+    },
+    {
+      "cohort_count": 62,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 112
+    },
+    {
+      "cohort_count": 50,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 98
+    },
+    {
+      "cohort_count": 4,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 11
+    },
+    {
+      "cohort_count": 5,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 5
+    },
+    {
+      "cohort_count": 4,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 26
+    },
+    {
+      "cohort_count": 7,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 18
+    },
+    {
+      "cohort_count": 56,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 101
+    },
+    {
+      "cohort_count": 17,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 68
+    },
+    {
+      "cohort_count": 7,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 38
+    },
+    {
+      "cohort_count": 1,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 9
+    },
+    {
+      "cohort_count": 12,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 30
+    },
+    {
+      "cohort_count": 3,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 7
+    },
+    {
+      "cohort_count": 6,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 44
+    },
+    {
+      "cohort_count": 0,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0030",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 17
+    },
+    {
+      "cohort_count": 37,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 96
+    },
+    {
+      "cohort_count": 22,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 103
+    },
+    {
+      "cohort_count": 4,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 4
+    },
+    {
+      "cohort_count": 6,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 6
+    },
+    {
+      "cohort_count": 1,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 23
+    },
+    {
+      "cohort_count": 35,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 64
+    },
+    {
+      "cohort_count": 0,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0030",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 13
+    },
+    {
+      "cohort_count": 5,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 55
+    },
+    {
+      "cohort_count": 27,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 83
+    },
+    {
+      "cohort_count": 6,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 6
+    },
+    {
+      "cohort_count": 11,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 19
+    },
+    {
+      "cohort_count": 2,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 10
+    },
+    {
+      "cohort_count": 14,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 65
+    },
+    {
+      "cohort_count": 31,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 49
+    },
+    {
+      "cohort_count": 20,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 58
+    },
+    {
+      "cohort_count": 21,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 55
+    },
+    {
+      "cohort_count": 1,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 9
+    },
+    {
+      "cohort_count": 3,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 26
+    },
+    {
+      "cohort_count": 14,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 29
+    },
+    {
+      "cohort_count": 22,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 43
+    },
+    {
+      "cohort_count": 8,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 21
+    },
+    {
+      "cohort_count": 25,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 81
+    },
+    {
+      "cohort_count": 11,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 50
+    },
+    {
+      "cohort_count": 4,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 4
+    },
+    {
+      "cohort_count": 11,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 17
+    },
+    {
+      "cohort_count": 10,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 35
+    },
+    {
+      "cohort_count": 9,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 23
+    },
+    {
+      "cohort_count": 4,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 40
+    },
+    {
+      "cohort_count": 61,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 110
+    },
+    {
+      "cohort_count": 21,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 72
+    },
+    {
+      "cohort_count": 6,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 8
+    },
+    {
+      "cohort_count": 12,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 12
+    },
+    {
+      "cohort_count": 9,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 28
+    },
+    {
+      "cohort_count": 18,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 38
+    },
+    {
+      "cohort_count": 19,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 32
+    },
+    {
+      "cohort_count": 18,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 56
+    },
+    {
+      "cohort_count": 26,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 83
+    },
+    {
+      "cohort_count": 1,
+      "effort_component_mask": [
+        true,
+        true,
+        true
+      ],
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "split": "dev_validation",
+      "status": "READY",
+      "task_count": 9
+    }
+  ],
+  "selected_anchor_count": 96,
+  "training": false
+}

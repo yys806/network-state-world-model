@@ -1,3 +1,12 @@
+## 2026-09-29 STEP 6.3D — Fixed-Budget Structured Search Method Comparison v1
+
+- [x] 核实 `HEAD=origin/main=963aed07575c87b062abf9ba66de51132f99c1fd`，保留原有未跟踪文件；审计 CandidateDomain、SearchNode、`B_WM`、one-step 和 Objective 接口。
+- [x] 冻结 TRAIN 32 / Validation 64 个非空 anchor 的分层哈希清单；38 条轨迹只读重放形成 96/96 exact-aligned 因果 deadline sidecar，96/96 目标侧状态就绪。
+- [x] 实现共享结构化 proposal、HRS/S-CEM/MH-CEM、H4-only Objective 和 exact-oracle correctness gate；9/9 定向测试及 compileall 通过。
+- [ ] 完成 TRAIN tuning、Validation 三预算 paired comparison、cluster bootstrap、方法选择、收据/Context/index/Git 收口。
+- 当前阻塞：正式 TRAIN/Validation 矩阵尚未完成。本机无 CUDA，研究者要求先仅用本机 CPU；256 次一步转移真实探针耗时 262.665 秒，按固定矩阵 2,113,536 次预算估计需数周串行 CPU 时间。该估计仅用于资源安排，不是性能或方法比较结果。
+- 唯一下一动作：首条 B_WM=512 正式 TRAIN solve 已核验；确认本机长期 CPU 占用安排后，按未改动的可恢复矩阵继续 TRAIN tuning。无完整 H4 比较结果不得选方法。详见 `docs/implementation_records/STEP_06_3D_FIXED_BUDGET_SEARCH_METHOD_COMPARISON_V1.md`。
+
 ## 2026-09-28 STEP 6.3A — Candidate Support & Search Architecture Audit
 
 - [x] 起点 `HEAD=origin/main=f58f08087bf27b2ffc21c2e6c68ec1d153acc439`，确认并保留已有未跟踪 `TASK/` 与绘图脚本。

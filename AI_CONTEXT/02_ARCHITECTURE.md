@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## 2026-09-29 STEP 6.3D CPU 搜索架构（进行中）
+
+`step6_3d_structured_proposal_v1.py` 在唯一 `CandidateDomain` 上实现共享的联合结构→任务数→任务子集→通信行分配→RB 起点层级。`step6_3d_fixed_budget_search_v1.py` 让 HRS/S-CEM/MH-CEM 共享 `SearchNode`、一步 rollout 和 `TransitionBudgetAccountant`；只把完整可评分 H4 候选交给既有 6.2B 五项字典序 Objective。HRS 不更新，S-CEM 只更新粗层，MH-CEM 更新全部层。TRAIN/Validation 方法比较尚未完成，架构可运行不等于方法已选或闭环已建。
+
 ## 2026-09-29 STEP 6.3B/6.3C-PATCH 通信任务选择
 
 研究者已批准当前可唯一绑定到**已有无线 Flow** 的 Task 集合 `E_comm(t)` 中按 TRAIN 通信结构的已见任务数量选择子集。`step6_3b_candidate_grammar_v1.py` 负责逐步绑定和准入；`step6_3c_candidate_domain_v1.py` 用相同条件计数并惰性枚举。未选任务只是不在当前时隙调度。依赖同决策 Route 才能产生 Flow 的历史 Comm 行由审计层排除，并与原始动作分开保存；Route 仍显式空。其余 Comp/Mob/联合结构/时间标签、World Model、`B_WM` 和 Objective 不变。

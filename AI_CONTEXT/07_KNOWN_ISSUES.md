@@ -1,5 +1,9 @@
 # 已知问题与冲突
 
+## 2026-09-29 STEP 6.3D 执行资源与评分支持
+
+完整冻结比较若预算均耗尽，需要 2,113,536 次独特候选一步 World Model 转移；本机只有 CPU，探针按单进程外推为数周量级。当前只证实一个 TRAIN 锚点的多条完整 H4 轨迹仍受既有 6.2B `H_sup` 支持边界限制，不能按完整 H4 评分。不得将此推广为整体成功率，也不得对其使用 H1–H3 backoff。TRAIN tuning、Validation paired comparison、cluster bootstrap 和正式方法选择尚未完成；不能标记 `STEP_6_3D=PASS`。
+
 ## 2026-09-29 STEP 6.3B/6.3C-PATCH 剩余边界
 
 原全 eligible Task 覆盖规则与部分选择的冲突已由研究者正式决定解决。TRAIN 4416 H1 投影中，728 条依赖同决策 offload Route 的历史 Comm 行排除，任务数量条件拒绝为 0；1 个投影后未见通信结构、349 个 Comp alpha 不符、15 个正请求但 CPU base 为零、6 个未见联合结构仍拒绝，不因追求 100% 重放而放宽。TRAIN/Validation 静态空域为 14/4416、6/1104；结构准入 4045/4416 中，逐字段语义重放 3920 通过，125 个 Comp amount 差异超过既定绝对容差 `1e-7`（最大 `2.9793e-7`），未调整容差。没有 GPU、训练或 `locked_test`。

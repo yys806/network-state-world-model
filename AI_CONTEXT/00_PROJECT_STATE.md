@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-29 STEP 6.3D 进行中
+
+研究者已冻结 HRS、S-CEM、MH-CEM 的同域同预算 H4 方法比较；本机仅使用 CPU。TRAIN 32、Validation 64 个非空 anchor 的确定性清单与 96/96 对齐的因果 deadline sidecar 已建立；三种方法共享结构化 proposal / CandidateDomain / 一步 World Model 转移 / 6.2B 字典序 Objective 的代码与 9/9 CPU 定向测试已通过。真实模型探针和首条 B_WM=512 TRAIN solve 均未取得该单锚点的 H4 可评分候选。完整 TRAIN tuning 与 Validation 三预算比较尚未完成，`STEP_6_3D=IN_PROGRESS`、`SEARCH_METHOD=NOT_SELECTED`。正式矩阵总预算约 211 万次独特一步转移，本机探针推算数周串行 CPU；此推算仅为资源安排。未用 GPU、`locked_test`、训练或闭环。详见 STEP 6.3D 实施记录与源码；旧条目为此前 Step 的历史状态。
+
 ## 2026-09-29 STEP 6.3B/6.3C-PATCH 当前状态
 
 研究者已明确批准 Comm 在当前已有无线 Flow 唯一可绑定 Task 中选择子集，并按 TRAIN 对应通信结构已见的选中任务数准入；原全部覆盖要求已取消。4416 TRAIN H1 投影把 728 条依赖同决策 offload Route 的历史 Comm 行逐条排除，任务数量拒绝为 0；结构准入 4045/4416，语义字段 3920 通过，125 个 Comp 数值差异和未见结构残余保留。TRAIN/Validation 静态空域为 14/4416、6/1104。验收、回归、索引和 Git 收口已完成，等待研究者审阅。没有运行 GPU、训练、baseline、闭环或 `locked_test`；不进入 6.3D。

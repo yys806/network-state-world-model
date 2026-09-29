@@ -1,5 +1,13 @@
 # Progress
 
+## 2026-09-29 STEP 6.3D（进行中，正式比较未完成）
+
+- 核实起点 `HEAD=origin/main=963aed07575c87b062abf9ba66de51132f99c1fd`；未改原有未跟踪文件。
+- 固定 TRAIN 32、Validation 64 个非空 anchor，六个 Validation 静态空域单列；38 条轨迹的只读历史重放形成 96/96 对齐 deadline sidecar，96/96 冻结 Objective 侧状态就绪。
+- 实现共享五层结构化 proposal、HRS/S-CEM/MH-CEM、H4-only 搜索、固定预算、TRAIN 配置选择和 Validation anchor-cluster bootstrap 路径。9/9 focused tests 与 compileall 通过，synthetic exact oracle 三种方法均恢复已知 H4 最优。
+- 冻结模型 CPU 256 次探针耗时 262.665 秒；首条 B_WM=512 TRAIN solve 完成 512 次独特转移、11 cache hits、130 条完整 H4、0 条可评分，原诊断耗时 558.291 秒，增加原因字段后的重跑耗时 547.008 秒。旧结果保留为 pre-diagnostic probe；130 条均为 `UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1`。八份关键机器收据已写入 SHA-256 readiness manifest，明确不是正式接受收据。
+- 完整固定矩阵需约 2,113,536 次独特转移，按本机单进程速度为数周 CPU；正式 TRAIN tuning、Validation 三预算比较和方法选择均未完成。无 GPU、`locked_test`、训练、baseline 或闭环。唯一下一动作：核对重跑的 512 收据并决定本机长期 CPU 执行安排。
+
 ## 2026-09-29 STEP 6.3B
 
 - Verified current 6.3A/6.2B accepted boundary and corrected policy no-op versus empty-action interpretation.

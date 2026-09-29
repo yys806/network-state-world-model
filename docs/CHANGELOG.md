@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-29：STEP 6.3D CPU 搜索路径进行中
+
+新增 Formal TRAIN/Validation 确定性锚点清单、只读因果 deadline sidecar、共享 HRS/S-CEM/MH-CEM 结构化 proposal 与 H4 固定预算搜索路径。定向合同测试及 synthetic exact oracle 通过。完整 TRAIN tuning 和 Validation comparison 尚未结束，搜索方法未选；未用 GPU、`locked_test`、训练或闭环。
+
 ## 2026-09-29：STEP 6.3B/6.3C-PATCH 收口
 
 研究者冻结 Comm 当前可绑定 Task 子集选择与 TRAIN 条件 selected-task-count 支持；Route-created Flow 历史行从 Planner-v1 投影目标排除并保留 raw provenance。新增 4416 TRAIN H1 projected self-replay、Comp residual 诊断和接受收据；更新 CandidateDomain 前后统计、AI_CONTEXT、authority/process records、registry 和索引。Comp 精确值差异及未见结构残余保留；未进入 6.3D。

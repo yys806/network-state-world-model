@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-29 STEP 6.3D 进行中
+
+研究者授权 HRS/S-CEM/MH-CEM 固定预算 H4 方法比较。新增分层锚点清单、只读因果 deadline 重放、共享五层提议分布与 CPU H4 搜索/调参/成对 bootstrap 代码；96/96 目标侧状态就绪，9/9 focused tests 与 synthetic exact oracle 通过。正式 TRAIN/Validation 矩阵尚未完成，方法未选；单锚点 CPU 探针不可作为方法性能结论。无 GPU、`locked_test`、训练或闭环。
+
 ## 2026-09-29 STEP 6.3B/6.3C-PATCH
 
 研究者将 Comm 全 eligible Task 覆盖改为当前已有无线 Flow 唯一绑定的 Task 中按 TRAIN 结构条件数量选子集。代码、合同、TRAIN 支持目录、4416 H1 raw/projected/排除行审计和 4416/1104 静态域收据同步；余下结构/Comp/joint 失败保留。H1–H4 非空 Comm 机制路径继续与冻结模型顺序推演等价。无搜索器、排名、GPU、训练、`locked_test` 或闭环。

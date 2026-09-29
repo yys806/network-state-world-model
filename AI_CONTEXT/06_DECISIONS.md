@@ -1,5 +1,9 @@
 # 已确认决策
 
+## 2026-09-29 STEP 6.3D — Researcher Decision
+
+研究者明确要求在同一 6.3BC CandidateDomain、interleaved frozen World Model rollout、6.2B 五项目标严格字典序与 `B_WM` 下比较 HRS、S-CEM、MH-CEM。三者共享五层结构化 proposal，第一层是 Comm+Comp+Mob 联合模式；HRS 全部合法层均匀且不更新，S-CEM 只更新模式/选中任务数，MH-CEM 还更新任务子集/行分配/RB 起点。CEM 只用当前轮完整可评分 elite，`η=0.5`、`ε=0.05`、保留精英最多 5；不足 2 条 H4 可评分候选不更新。正式 H=4 只比较 `H_sup=4`，禁止 H1–H3 回退。TRAIN 32 锚点/3 seeds/512 预算仅调各 CEM 的 K∈{3,4}、ρ∈{0.1,0.2}；Validation 64 锚点/5 seeds/三个预算成对比较，最终只以 1024 预算 anchor cluster bootstrap 的 95% CI 与冻结简约规则选方法。研究者当前指定先仅用本机 CPU；这不是对性能结果或最终方法的预先裁决。
+
 ## 2026-09-29 STEP 6.3B/6.3C-PATCH — Researcher Decision
 
 研究者明确删除 6.3B 旧的“全部当前 eligible wireless Task 必须有 Comm row”要求。Planner v1 的 `E_comm(t)` 只含能从当前 causal/predicted state 中**已有** wireless Flow 唯一绑定的 Task；当步实际选中集合 `S_comm(t) ⊆ E_comm(t)`，未选任务只是本时隙未调度。对每个 TRAIN 已见 Comm row-width 结构，仅允许 TRAIN 在该结构下观察过的 unique selected-task-count；每个选中 Task 至少一行，同 Task 可多行。依赖同一 decision 的 Route 动作才新建/启动 Flow 的历史 Comm row 不进入 Planner v1 正式候选或自重放目标；保留原始 TRAIN，并分开报告原始动作、Planner v1 投影和排除行原因。Route 显式空、145 个 `(start,width)`、width 1/2/3、251 个 joint 签名、Comp/Mob、时间标签、CandidateDomain、interleaved rollout、`B_WM`、Objective、冻结模型/检查点均不变。其余残余失败不得为追求 100% 重放而放宽政策。

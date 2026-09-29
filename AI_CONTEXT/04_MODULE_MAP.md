@@ -1,5 +1,13 @@
 # 模块导航地图
 
+## 2026-09-29 STEP 6.3D（方法比较进行中）
+
+- `code/src/pi_jwm/step6_3d_anchor_selection_v1.py`：split 内候选数对数四分位、Comp-base 与 sample-id hash 锚点选择。
+- `code/src/pi_jwm/step6_3d_structured_proposal_v1.py`：同一五层动态 mask 提议分布；HRS/S-CEM/MH-CEM 仅更新范围不同。
+- `code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py`：共享 H4 搜索、现有预算/cache/rollout/Objective 接口。
+- `code/src/pi_jwm/step6_3d_method_selection_v1.py`：TRAIN CEM 配置规则、Validation paired outcome 与 anchor-cluster bootstrap。
+- `code/scripts/run_step6_3d_formal_cpu_matrix_v1.py`：可恢复的正式矩阵 runner；目前仅首条 TRAIN solve 已完成，不能用其选择方法。
+
 ## 2026-09-29 STEP 6.3B/6.3C-PATCH
 
 - `code/src/pi_jwm/step6_3b_candidate_grammar_v1.py`：当前已有无线 Flow 的唯一 Task 绑定、TRAIN 结构条件下的选中任务数准入。

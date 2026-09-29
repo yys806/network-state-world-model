@@ -1,5 +1,9 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-29 STEP 6.3D 研究者冻结的方法比较边界
+
+研究者指定在同一候选域、同一冻结世界模型、同一 6.2B 五项目标严格字典序、同一独特一步转移预算下比较分层均匀随机搜索 HRS、只更新联合结构/选中任务数的 S-CEM，以及额外更新任务子集/行分配/RB 起点的 MH-CEM。H4 只允许 `H_sup=4` 的完整轨迹评分，禁止短时域回退；CEM 概率只在单次 anchor solve 内更新。TRAIN 32 锚点/3 seeds/512 预算仅调 K 和 elite ratio；Validation 64 锚点/5 seeds/256、512、1024 预算成对比较，最终只凭 1024 预算按 anchor cluster bootstrap 的冻结简约规则选方法。当前实现和 CPU 合同测试已建立，但正式矩阵尚未完成，方法未选，也没有闭环或性能结论。
+
 ## 2026-09-29 STEP 6.3B 候选语法与支持政策
 
 研究者冻结 Planner v1 正式候选池：Route 每步显式空；Comm 只在当前已有因果无线 Flow/关系上唯一可绑定的 Task 集合中选择，选中子集的数量必须属于该 TRAIN Comm 结构下已观察到的数量，每个选中 Task 至少一行，同 Task 可多条 TRAIN 支持的循环 RB block；未选任务只是当前时隙未调度。原“覆盖全部 eligible Task”要求由 6.3B/6.3C-PATCH 研究者决定删除。依赖同一 decision 的 Route 新建/启动 Flow 的历史 Comm row 排除于 Planner v1 正式候选/投影自重放目标，原始 TRAIN 保留并单列排除原因。Comp 在当前 predicted computing/Exec 状态逐步重建既有 CPU base，采用单时隙全局 alpha 0.5/0.75/1.0；Mob 在场 UAV 共享同一 HOLD/PROFILE_1–5。每步联合粗粒度结构须为 Formal TRAIN 已见签名；边际已见但联合未见留作未来消融。时间观察性仅标记，不作为准入硬门槛。未来每步重新绑定预测状态，`H_sup` 由后续实际推演/scorer 判定。详见 STEP 6.3B 合同；这不选择搜索算法或声明规划性能。

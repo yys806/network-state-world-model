@@ -3,6 +3,55 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.3D-FIXED-BUDGET-STRUCTURED-SEARCH-20260929",
+      "name": "HRS, S-CEM and MH-CEM fixed-budget H4 method comparison",
+      "date": "2026-09-29",
+      "research_question": "Which researcher-specified structured search method wins under the same CandidateDomain, frozen World Model, H4 Objective and unique-transition budget?",
+      "method": "step6_3d_shared_structured_proposal_and_fixed_budget_search_v1",
+      "code": "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py",
+      "code_version": {
+        "identity_type": "source_sha256_and_frozen_checkpoint_sha256",
+        "manifest": null,
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Per-solve source and checkpoint hashes are recorded; the full comparison and final manifest are not yet complete."
+      },
+      "configuration": "docs/implementation_records/STEP_06_3D_FIXED_BUDGET_SEARCH_METHOD_COMPARISON_V1.md",
+      "parameters": {
+        "device": "cpu",
+        "horizon": 4,
+        "budget_units": [256, 512, 1024],
+        "train_tuning_budget": 512,
+        "train_anchor_count": 32,
+        "validation_anchor_count": 64,
+        "route_policy": "EXPLICIT_NOOP_ONLY",
+        "train_tuning_seeds": [6301, 6302, 6303],
+        "validation_seeds": [6311, 6312, 6313, 6314, 6315],
+        "training": false,
+        "gpu": false,
+        "closed_loop": false
+      },
+      "protocol": "docs/implementation_records/STEP_06_3D_FIXED_BUDGET_SEARCH_METHOD_COMPARISON_V1.md",
+      "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+      "split": ["dev_train_tuning", "dev_validation_formal_comparison"],
+      "seed": [6301, 6302, 6303, 6311, 6312, 6313, 6314, 6315],
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/12_exact_oracle_receipt.json",
+      "status": "in_progress_no_method_selected",
+      "conclusion": "Anchor side-state and CPU correctness path are ready; TRAIN tuning and Validation comparison are incomplete, so no search method is selected.",
+      "summary_zh": "锚点侧状态和 CPU 正确性路径已就绪；TRAIN 调参与 Validation 比较未完成，搜索方法未选。",
+      "claim_boundary": "In-progress CPU contract and one-anchor diagnostic only; no formal method outcome, GPU, training, locked test or closed loop",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "code_version.manifest": "Final experiment manifest is generated only after all required cases complete.",
+        "code_version.manifest_sha256": "No final manifest exists while the matrix is incomplete.",
+        "code_version.git_commit": "Filled after a validated Git commit and push; not predicted.",
+        "metrics": "No complete Formal Validation method-comparison metrics exist yet."
+      }
+    },
+    {
       "id": "STEP-6.3BC-PATCH-COMM-SELECTION-TRAIN-PROJECTION-20260929",
       "name": "Planner v1 Comm selection and Formal TRAIN projected H1 CPU audit",
       "date": "2026-09-29",

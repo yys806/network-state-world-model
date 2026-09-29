@@ -1,0 +1,34 @@
+# STEP 6.3D — Fixed-Budget Structured Search Method Comparison v1
+
+Status: `IN_PROGRESS; FORMAL_COMPARISON_NOT_COMPLETE; METHOD_NOT_SELECTED`.
+
+## Goal and frozen basis
+
+Compare HRS, S-CEM and MH-CEM on the same STEP 6.3B/6.3BC CandidateDomain, STEP 6.3C interleaved one-step rollout and `B_WM` accountant, frozen World Model and STEP 6.2B five-part lexicographic Objective. H4 candidates with `H_sup<4` are unscoreable. The researcher specified the train/validation splits, seeds, budgets, CEM updates, paired comparison and cluster-bootstrap decision rule in the 2026-09-29 STEP 6.3D instruction. Route remains explicit NOOP; no model training, learned proposal, simulator closed loop or `locked_test`.
+
+## Initial state and dependencies
+
+Start `HEAD=origin/main=963aed07575c87b062abf9ba66de51132f99c1fd`. The working tree contains unrelated untracked `TASK/` and `code/scripts/plot_step5_3e_tiny_overfit.py`; leave them alone. The accepted 6.3C receipt reports 14/4416 TRAIN and 6/1104 Validation static empty domains. The existing 6.2B scorer requires an exactly aligned causal deadline sidecar. Current source/evidence provides one such sidecar for one Validation anchor only (`replay_step6_2a_patch_deadline_sidecar_v1.py`, `deadline_sidecar_anchor_0001.json`). Formal Raw lacks `deadline_s`; no future target or failed label can substitute. Current local PyTorch reports `cuda.is_available()=False`; the accepted four-step CPU mechanism receipt used 6.1968 s diagnostic wall time.
+
+## Dependency-ordered work
+
+1. Freeze deterministic nonempty TRAIN 32 and Validation 64 anchor manifests using log-cardinality quartile × causal Comp-base stratum and sample-id hash. Record six Validation empty anchors separately; verify no split overlap.
+2. Extend the existing decision-before-action simulator replay audit to selected anchor trajectories, collecting per-anchor deadline sidecars. Verify exact alignment with original Raw identity/current task/action prefix and preserve original data. Do not score anchors lacking passed alignment.
+3. Implement one structured proposal interface atop `CandidateDomain` and `bind_structured_step`: joint mode, conditional selected count, subset, canonical covering row assignment and supported RB start. HRS stays uniform; S-CEM updates only mode/count; MH-CEM also updates fine choices. Use current-state masks at every depth.
+4. Implement all three solvers on shared `SearchNode`, `TransitionBudgetAccountant`, `rollout_one_step` and the existing `score_candidate_set`. Test H4-only scoreability, cache, per-iteration quotas, elite retention, fixed updates and exact-oracle fixture before formal execution.
+5. Complete CPU/GPU equivalence gate if GPU is available. Run TRAIN tuning only on frozen 32 × 3 seeds × 512 and freeze separate CEM configs. Then run 64 × 5 × 3 budgets × 3 methods Validation paired comparison on one device/checkpoint. Do not tune from Validation.
+6. Build paired outcomes and anchor-cluster bootstrap at Validation 1024, apply the preregistered selection rule, write receipts/manifest, update context/registries/authority records, verify and commit/push. Stop.
+
+## Implemented path and current evidence
+
+- `step6_3d_anchor_selection_v1.py` and `build_step6_3d_anchor_manifests_v1.py` selected 32 nonempty Formal TRAIN and 64 nonempty Formal Validation anchors by split-local log-cardinality quartile, Comp-base presence and sample-id hash. The six static empty Validation anchors remain separate.
+- `replay_step6_3d_selected_deadline_sidecars_v1.py` read-only replayed 38 selected trajectories; 96/96 selected decisions passed exact action-prefix/current-task alignment. `audit_step6_3d_selected_side_state_v1.py` confirmed 96/96 frozen 6.2B objective side-states can be constructed, with zero rejected anchors. Raw data was not changed.
+- `step6_3d_structured_proposal_v1.py` and `step6_3d_fixed_budget_search_v1.py` implement one masked five-layer proposal and shared CandidateDomain/SearchNode/TransitionBudgetAccountant/one-step primitive. `step6_3d_method_selection_v1.py` implements paired outcomes, TRAIN config selection and anchor-cluster bootstrap. Formal execution uses `run_step6_3d_one_cpu_solve_v1.py` and the atomically resumable matrix runner.
+- Focused 6.3D tests: 9/9 passed; `python -m compileall -q code/src code/scripts code/tests` passed. The tiny exact-oracle fixture exhaustively has 16 H4 sequences; all three methods recovered the known optimum at B_WM=30 while counting 30 unique transitions and cache hits. This is correctness evidence, not Formal performance evidence.
+- Real frozen-model CPU probes: HRS B_WM=8 used 8 unique transitions and found 2 complete H4 sequences, 0 scoreable. HRS B_WM=256 used 256 unique transitions in 262.665 s, found 65 complete H4 sequences, 0 scoreable. S-CEM B_WM=32 used 32 unique transitions, found 7 complete H4 sequences, 0 scoreable; its proposal was correctly not updated. These are isolated diagnostics, not TRAIN tuning or Validation comparison.
+- A single S-CEM Formal TRAIN configuration at B_WM=512, K=3, rho=0.1, seed 6301 produced 512 unique transitions, 11 cache hits and 130 complete H4 sequences in 547.008 s. All 130 are unscoreable at H1 because the frozen scorer reports `UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1`. The earlier 558.291 s receipt is preserved as `11_pre_diagnostic_formal_train_probe.json`; it used the same semantic code but lacked the specific residual-reason field. The 547.008 s receipt is preserved as `14_pre_input_identity_formal_train_probe.json`: after that run, execution identity checks were strengthened to hash the anchor manifests, aligned sidecars and TRAIN catalog. Both are labeled probes; the final source identity must be used for future formal solves. This one anchor is not an estimator of overall H4 success or method quality.
+- `12_exact_oracle_receipt.json` records the passing exact-oracle unittest and source hashes. `13_cpu_readiness_manifest.json` lists twelve bounded readiness receipts with actual bytes and SHA-256; this is explicitly not a final method-selection acceptance receipt.
+
+## Current blocker and single next action
+
+The required fixed matrix totals 2,113,536 unique one-step budget units if fully spent. At the measured local serial CPU rate, it may take weeks; this is a throughput extrapolation, not a scientific result. There is no local CUDA; the researcher requested CPU only for now. The remaining device-use decision is whether to leave a multi-day local CPU process active. Next action: continue the unchanged, resumable Formal TRAIN matrix once long-running local CPU use is confirmed. No final-source-identity Formal TRAIN matrix case, CEM config, Validation outcome, bootstrap CI or search method may be claimed before the complete required evidence exists. No `locked_test`, GPU, training, learned proposal, baseline or simulator closed loop was executed.

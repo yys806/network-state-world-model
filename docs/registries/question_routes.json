@@ -2,6 +2,14 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP-6.3D-METHOD-COMPARISON",
+      "title": "STEP 6.3D 固定预算搜索方法比较状态",
+      "keywords": ["STEP 6.3D", "HRS", "S-CEM", "MH-CEM", "H4", "搜索方法选择"],
+      "summary": "先看 6.3D 实施记录与锚点/精确 oracle 收据；目前正式 TRAIN/Validation 矩阵未完成，不得从单锚点 CPU 探针宣称选出方法。",
+      "primary_sources": ["docs/implementation_records/STEP_06_3D_FIXED_BUDGET_SEARCH_METHOD_COMPARISON_V1.md", "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/12_exact_oracle_receipt.json"],
+      "verification_sources": ["code/src/pi_jwm/step6_3d_structured_proposal_v1.py", "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py", "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/01_train_anchor_manifest.json", "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/02_validation_anchor_manifest.json"]
+    },
+    {
       "id": "ROUTE-STEP-6.3BC-PATCH-COMM-SELECTION",
       "title": "Planner v1 通信任务选择与 TRAIN 投影",
       "keywords": ["STEP 6.3B", "STEP 6.3C", "Comm 任务选择", "TRAIN 自重放", "候选域空域", "Route 创建 Flow"],

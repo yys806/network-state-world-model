@@ -1,0 +1,70 @@
+{
+  "files": [
+    {
+      "bytes": 11110,
+      "filename": "01_train_anchor_manifest.json",
+      "sha256": "256e265aa4f0b97bfb598b3fa8ec37d92cd2aef9e489c18af3f9c0da8033807a"
+    },
+    {
+      "bytes": 19631,
+      "filename": "02_validation_anchor_manifest.json",
+      "sha256": "6de2f1e6cbdb665780d58a2812e116ffb15e7bd904acff0ce1ceb1e9578f0607"
+    },
+    {
+      "bytes": 532230,
+      "filename": "03_selected_deadline_sidecars.json",
+      "sha256": "304cd846f2514ed54542c5925a50eeedc5e265630f455100140668406c74f835"
+    },
+    {
+      "bytes": 27283,
+      "filename": "04_selected_deadline_alignment_receipt.json",
+      "sha256": "17049282f744a09a23736ee31743ecfbf02783ccf91646cded28f1920e938954"
+    },
+    {
+      "bytes": 1506,
+      "filename": "05_cpu_contract_smoke.json",
+      "sha256": "96a88352b457c2a0eb38e2a8a9eff9249c6998ec05ba010928d49fd18ec5b7b0"
+    },
+    {
+      "bytes": 1528,
+      "filename": "06_cpu_budget256_probe.json",
+      "sha256": "2e828bc12268e95f187204fa9c455be0281fa4ebb30c59d86c43badec372e7d7"
+    },
+    {
+      "bytes": 1549,
+      "filename": "07_validation_cpu_contract_smoke.json",
+      "sha256": "9f473a80116b9d2d8dbd1216bf487e1e7b66906c3945fd47c3fd79847dc9bcf6"
+    },
+    {
+      "bytes": 26941,
+      "filename": "09_selected_side_state_readiness.json",
+      "sha256": "076798d4e15b810d94c66e4da281662aa36f7514afd9d08e19a058a8dd61192d"
+    },
+    {
+      "bytes": 3664,
+      "filename": "10_scem_cpu_contract_smoke.json",
+      "sha256": "74fa3fba1b5402565f22acde9e290b94dd8dcf8d3d24cfdeb75efb2a64bf461c"
+    },
+    {
+      "bytes": 3689,
+      "filename": "11_pre_diagnostic_formal_train_probe.json",
+      "sha256": "f3bb9f4ee16bef64de14ed680cfa43559a32e005ac5bf8637187047db6657346"
+    },
+    {
+      "bytes": 1394,
+      "filename": "12_exact_oracle_receipt.json",
+      "sha256": "ce3ff2f08d99b19d9332271b73b7aa1edee6c307f8ba582e66c90755c37d98f4"
+    },
+    {
+      "bytes": 3764,
+      "filename": "14_pre_input_identity_formal_train_probe.json",
+      "sha256": "1938c653967d077495ecd02c51436a60323d6a593765ef3896a2a5524d0d9e66"
+    }
+  ],
+  "locked_test": false,
+  "method_selected": null,
+  "status": "CPU_READINESS_ONLY_FORMAL_COMPARISON_INCOMPLETE",
+  "step": "STEP 6.3D",
+  "train_tuning_complete": false,
+  "validation_comparison_complete": false
+}

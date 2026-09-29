@@ -1,0 +1,682 @@
+{
+  "alignment_passed": true,
+  "anchor_count": 96,
+  "checks": [
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "11a8aba61d817b28eefdf7b7608a7282b16ce878815cf7eeccf4e2ccba5c929f",
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0083"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6310ef6b8423b9e5f549dad463bb837e1393436763a1902e51624b2ba89f768e",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6310ef6b8423b9e5f549dad463bb837e1393436763a1902e51624b2ba89f768e",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0010"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6310ef6b8423b9e5f549dad463bb837e1393436763a1902e51624b2ba89f768e",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6310ef6b8423b9e5f549dad463bb837e1393436763a1902e51624b2ba89f768e",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6310ef6b8423b9e5f549dad463bb837e1393436763a1902e51624b2ba89f768e",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6310ef6b8423b9e5f549dad463bb837e1393436763a1902e51624b2ba89f768e",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6310ef6b8423b9e5f549dad463bb837e1393436763a1902e51624b2ba89f768e",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6310ef6b8423b9e5f549dad463bb837e1393436763a1902e51624b2ba89f768e",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "139f4d74cd5ca7f14cc0a1facfefec978d3c4849f1616720c344ecd8df93b4a1",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "2728421d5e256ed1c9a1528967ac54ee9a6d6e55e7c9c8f06cbc583b2502da4e",
+      "sample_id": "formal-v1-sim-2026092304-policy-2026092404::anchor-0080"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "3aa4fc1b3b13c2a55387f8af0655ae6e19d3b1cb6a67cd6ab0e6b2ba3b02dd4f",
+      "sample_id": "formal-v1-sim-2026092305-policy-2026092405::anchor-0004"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "3aa4fc1b3b13c2a55387f8af0655ae6e19d3b1cb6a67cd6ab0e6b2ba3b02dd4f",
+      "sample_id": "formal-v1-sim-2026092305-policy-2026092405::anchor-0083"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "4e05823581c0ee26f5c173566236f5925fabe15d8a2ec62c1cfcdd51de4d555f",
+      "sample_id": "formal-v1-sim-2026092307-policy-2026092407::anchor-0011"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "4e0baac495d22c15355be56a941fc0ff724096a73ac3601bbaf6318efd00b64a",
+      "sample_id": "formal-v1-sim-2026092309-policy-2026092409::anchor-0040"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6fd533a404dfc1d726011ad3424bb86cdce8a8a545379ced3aed827a7da3a452",
+      "sample_id": "formal-v1-sim-2026092310-policy-2026092410::anchor-0011"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "13de80b9848adfba0466e365167cfff16614eb8163032071a75d5e4b8d6ece43",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "13de80b9848adfba0466e365167cfff16614eb8163032071a75d5e4b8d6ece43",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "13de80b9848adfba0466e365167cfff16614eb8163032071a75d5e4b8d6ece43",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0030"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "13de80b9848adfba0466e365167cfff16614eb8163032071a75d5e4b8d6ece43",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "13de80b9848adfba0466e365167cfff16614eb8163032071a75d5e4b8d6ece43",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "13de80b9848adfba0466e365167cfff16614eb8163032071a75d5e4b8d6ece43",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "625d825d09ecbe8b8a4dd0e885a9e2d6dada01dc4e5fefd17bbd006599f9cf68",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "625d825d09ecbe8b8a4dd0e885a9e2d6dada01dc4e5fefd17bbd006599f9cf68",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "625d825d09ecbe8b8a4dd0e885a9e2d6dada01dc4e5fefd17bbd006599f9cf68",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "625d825d09ecbe8b8a4dd0e885a9e2d6dada01dc4e5fefd17bbd006599f9cf68",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "625d825d09ecbe8b8a4dd0e885a9e2d6dada01dc4e5fefd17bbd006599f9cf68",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "625d825d09ecbe8b8a4dd0e885a9e2d6dada01dc4e5fefd17bbd006599f9cf68",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "625d825d09ecbe8b8a4dd0e885a9e2d6dada01dc4e5fefd17bbd006599f9cf68",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "625d825d09ecbe8b8a4dd0e885a9e2d6dada01dc4e5fefd17bbd006599f9cf68",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "c5c4198e60649ee4715f4602febf1ff27d329e952fec37beff7f5ec4b8d1abc2",
+      "sample_id": "formal-v1-sim-2026092319-policy-2026092419::anchor-0066"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "8382af8089f764ff8a5f40499e20a4c52ac0c3893851da67c14321badedb3ea5",
+      "sample_id": "formal-v1-sim-2026092320-policy-2026092420::anchor-0029"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "63d7cd8f0f5d07052d784606d843cc3a3cbede6067c597a17c14367bf54727ba",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "63d7cd8f0f5d07052d784606d843cc3a3cbede6067c597a17c14367bf54727ba",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "63d7cd8f0f5d07052d784606d843cc3a3cbede6067c597a17c14367bf54727ba",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "63d7cd8f0f5d07052d784606d843cc3a3cbede6067c597a17c14367bf54727ba",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "63d7cd8f0f5d07052d784606d843cc3a3cbede6067c597a17c14367bf54727ba",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "80447266b7670b37a1b032a9216bd466b4afe6a105aa05bf1ccc3615c0098ed1",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0028"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "80447266b7670b37a1b032a9216bd466b4afe6a105aa05bf1ccc3615c0098ed1",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "80447266b7670b37a1b032a9216bd466b4afe6a105aa05bf1ccc3615c0098ed1",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "80447266b7670b37a1b032a9216bd466b4afe6a105aa05bf1ccc3615c0098ed1",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "80447266b7670b37a1b032a9216bd466b4afe6a105aa05bf1ccc3615c0098ed1",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "80447266b7670b37a1b032a9216bd466b4afe6a105aa05bf1ccc3615c0098ed1",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "80447266b7670b37a1b032a9216bd466b4afe6a105aa05bf1ccc3615c0098ed1",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "13298bf2b3caba6261d719383c0ffbfd645d9337ab4f1b8796079ddbe52462fd",
+      "sample_id": "formal-v1-sim-2026092325-policy-2026092425::anchor-0003"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "13298bf2b3caba6261d719383c0ffbfd645d9337ab4f1b8796079ddbe52462fd",
+      "sample_id": "formal-v1-sim-2026092325-policy-2026092425::anchor-0024"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "25db48bf1a2a889c98d213e8b5835f27373958389d56e6623127515ba18c1d9a",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "25db48bf1a2a889c98d213e8b5835f27373958389d56e6623127515ba18c1d9a",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "25db48bf1a2a889c98d213e8b5835f27373958389d56e6623127515ba18c1d9a",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "83b1c963a3e1ee2be3409f5a1929c11ba403b77cdf771a362ce7d3f54328f66f",
+      "sample_id": "formal-v1-sim-2026092327-policy-2026092427::anchor-0035"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "225b1c54e21bb90cc6e406a69d6e68f455ffec1af8df544a1a4aedaeec7d845e",
+      "sample_id": "formal-v1-sim-2026092328-policy-2026092428::anchor-0025"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "225b1c54e21bb90cc6e406a69d6e68f455ffec1af8df544a1a4aedaeec7d845e",
+      "sample_id": "formal-v1-sim-2026092328-policy-2026092428::anchor-0031"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "fb51bfbfe41f5697722dd772829642e9c9a8d8a996743f5125a0af06520e8ae2",
+      "sample_id": "formal-v1-sim-2026092329-policy-2026092429::anchor-0069"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "742ae0440f897af42a022b7e7c9873c048bccf38850d99f27faf9240dafd3851",
+      "sample_id": "formal-v1-sim-2026092330-policy-2026092430::anchor-0063"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "742ae0440f897af42a022b7e7c9873c048bccf38850d99f27faf9240dafd3851",
+      "sample_id": "formal-v1-sim-2026092330-policy-2026092430::anchor-0013"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "5440faadbc9286fe5ce84ae9cb1c7ef5732d2893229a5a13c9e9666db6c490e6",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0021"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "5440faadbc9286fe5ce84ae9cb1c7ef5732d2893229a5a13c9e9666db6c490e6",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "5440faadbc9286fe5ce84ae9cb1c7ef5732d2893229a5a13c9e9666db6c490e6",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "5440faadbc9286fe5ce84ae9cb1c7ef5732d2893229a5a13c9e9666db6c490e6",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "6971cf8eb0a7b3d5e58161a21e0b0a9914634570b0ecf35f69a6fa329febb7cd",
+      "sample_id": "formal-v1-sim-2026092332-policy-2026092432::anchor-0031"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "09d7dc1217f9f0e40a0fb896dcb328ecd3b75a5b6e228212dbc4514d5a07ec98",
+      "sample_id": "formal-v1-sim-2026092333-policy-2026092433::anchor-0049"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "94f01a54ad51c65e08d8c5ca4f714fb0744e7d750692c5adaf9e951752f0b662",
+      "sample_id": "formal-v1-sim-2026092334-policy-2026092434::anchor-0043"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "94f01a54ad51c65e08d8c5ca4f714fb0744e7d750692c5adaf9e951752f0b662",
+      "sample_id": "formal-v1-sim-2026092334-policy-2026092434::anchor-0087"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "3df35dd6e67994b3b3afcb8fa28df2ca39433f938ca9e267fc61ad7f002d4d65",
+      "sample_id": "formal-v1-sim-2026092338-policy-2026092438::anchor-0070"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "f28e3d47249f7fa70c49e9626a78b37524338b79c661a8344e358d94b0419596",
+      "sample_id": "formal-v1-sim-2026092340-policy-2026092440::anchor-0082"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "f28e3d47249f7fa70c49e9626a78b37524338b79c661a8344e358d94b0419596",
+      "sample_id": "formal-v1-sim-2026092340-policy-2026092440::anchor-0057"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "0286f04d3f4e795b29a0ba745865b919fdb06c8c0f37e38e1de42e9ca6a6d4fb",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "0286f04d3f4e795b29a0ba745865b919fdb06c8c0f37e38e1de42e9ca6a6d4fb",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "2c3d6d744a807fb6200b890cf17a42bb9161956d1163051f9b0ceaea7eaf1755",
+      "sample_id": "formal-v1-sim-2026092342-policy-2026092442::anchor-0029"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "03bde7184375224a87c4ae8639dda892584374f9ad8872f2469d9bfefb90f74b",
+      "sample_id": "formal-v1-sim-2026092343-policy-2026092443::anchor-0091"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "58cc2a7a2d4f06b79e15549595b41565dd2ad95110c0ede5be156d85da2f2b94",
+      "sample_id": "formal-v1-sim-2026092344-policy-2026092444::anchor-0023"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "5aea3010a8337975afe693783c2f972280681f73df550dc968a8e944abed68bc",
+      "sample_id": "formal-v1-sim-2026092347-policy-2026092447::anchor-0073"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "5c2303a10841af9847e4534fcd272ab5c114812294b9f6c40ff7b5b053275427",
+      "sample_id": "formal-v1-sim-2026092349-policy-2026092449::anchor-0035"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "987bd61060c5942ca588c9e36b3961ead5fae0a80122e3eb46ec749b8f47b82a",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "987bd61060c5942ca588c9e36b3961ead5fae0a80122e3eb46ec749b8f47b82a",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0030"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "987bd61060c5942ca588c9e36b3961ead5fae0a80122e3eb46ec749b8f47b82a",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "987bd61060c5942ca588c9e36b3961ead5fae0a80122e3eb46ec749b8f47b82a",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "297ea6a46d0b6a02cb434b8a99fdce779cbeed8eab255027646fa75d5d24f046",
+      "sample_id": "formal-v1-sim-2026092351-policy-2026092451::anchor-0012"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "cc7b51692677025f51d518a496b97baf879e6c4399e50a85d64cc95ed39c769b",
+      "sample_id": "formal-v1-sim-2026092352-policy-2026092452::anchor-0084"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "4a0291e16a015b46226fbffb552e81e204d10e3491163cba674ff8abfe666186",
+      "sample_id": "formal-v1-sim-2026092357-policy-2026092457::anchor-0038"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "9e551ecf5579cb89da55a6b0d95f761461fde9473f288e8e62b010b1089ec543",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "9e551ecf5579cb89da55a6b0d95f761461fde9473f288e8e62b010b1089ec543",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "9e551ecf5579cb89da55a6b0d95f761461fde9473f288e8e62b010b1089ec543",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "9e551ecf5579cb89da55a6b0d95f761461fde9473f288e8e62b010b1089ec543",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042"
+    }
+  ],
+  "future_target_used": false,
+  "locked_test": false,
+  "source": "read-only exact replay of frozen Formal Raw",
+  "trajectory_count": 38
+}

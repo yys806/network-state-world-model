@@ -1,5 +1,9 @@
 # 数据流与张量合同
 
+## 2026-09-29 STEP 6.3D 进行中的搜索数据流
+
+Formal TRAIN/Validation 静态候选域收据 → split 内分层哈希选取 32/64 非空锚点 → 原始轨迹只读重放得到精确对齐的当前 deadline sidecar → 冻结 checkpoint 的当前 latent/state/graph → 每步由预测状态重建 CandidateDomain 并按共享五层分布提出合法动作 → 一步 World Model 转移按 unique transition 计入 `B_WM` 且 cache hit 不重复计数 → 完整 H4 经既有 6.2B scorer 判定 `H_sup=4` 后才可参与 elite/比较。TRAIN 仅用于 CEM 配置选择；Validation 全矩阵和正式方法选择尚未完成。Future Target、`locked_test`、训练和闭环不进入此路径。
+
 ## 2026-09-29 STEP 6.3B/6.3C-PATCH 投影数据流
 
 Formal TRAIN 原始 H1 action 保持不变 → 当前 causal state 的已有无线 Flow 唯一绑定出 `E_comm(t)` → 保留可绑定 Comm 行形成 Planner-v1 投影动作，逐行列出因同决策 Route 新建 Flow 而排除的历史行 → 在 TRAIN Comm 结构条件下检查选中 Task 数量、RB pair 和 251 个 joint 结构 → 记录 Comm 准入和 Comp/联合结构等残余。Formal Validation 只用于候选域描述；没有 Future Target、GPU、训练或 `locked_test`。

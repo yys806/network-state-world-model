@@ -1,0 +1,55 @@
+{
+  "budget": 256,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "closed_loop": false,
+  "elite_ratio": null,
+  "gpu": false,
+  "iterations": 1,
+  "locked_test": false,
+  "method": "HRS",
+  "outcome": {
+    "best_fingerprint": null,
+    "best_objective": null,
+    "budget": 256,
+    "budget_receipt": {
+      "B_WM": 256,
+      "N_admitted_steps": 263,
+      "N_cache_hits": 6,
+      "N_complete_sequences": 65,
+      "N_dead_end_branches": 0,
+      "N_proposed_steps": 263,
+      "N_rejected_steps": 0,
+      "N_unique_transition_evals": 256,
+      "budget_unit": "candidate_one_step_transition",
+      "wall_clock_seconds_diagnostic_only": 262.66529830000945
+    },
+    "complete_sequence_count": 65,
+    "elite_ratio": null,
+    "h4_scoreable_count": 0,
+    "h4_unscoreable_count": 65,
+    "iteration_rows": [
+      {
+        "elite_count": 0,
+        "iteration": 1,
+        "proposal_updated": false,
+        "proposed_sequences": 66,
+        "quota": 256,
+        "retained_count": 0,
+        "unique_h4_scoreable": 0,
+        "unique_transition_evals": 256
+      }
+    ],
+    "iterations": 1,
+    "method": "HRS",
+    "seed": 6301
+  },
+  "parameter_digest": "f5dc7f523af1e3137f520187bb2b9e7697e835b4374d45bb025460f58c778123",
+  "sample_id": "formal-v1-sim-2026092310-policy-2026092410::anchor-0011",
+  "score_residuals": {
+    "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 65
+  },
+  "seed": 6301,
+  "sidecar_alignment_passed": true,
+  "split": "dev_train",
+  "training": false
+}

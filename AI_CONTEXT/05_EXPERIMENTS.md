@@ -1,5 +1,9 @@
 # 当前与历史实验
 
+## 2026-09-29 STEP 6.3D（进行中，非方法比较结论）
+
+32 个 Formal TRAIN、64 个 Formal Validation 非空锚点按各 split 的候选数对数四分位、Comp-base 有无和 sample-id hash 固定；Validation 六个静态空域单列。38 条原始轨迹只读重放对齐 96/96 因果 deadline sidecar，96/96 冻结目标侧状态就绪。Synthetic exact oracle 的 16 个 H4 序列上，HRS/S-CEM/MH-CEM 均能恢复最优；9/9 focused tests 与 compileall 通过。冻结模型 CPU 的首个 TRAIN 锚点 B_WM=512 当前收据：512 次独特转移、130 条完整 H4、0 条可评分、547.008 秒，均在 H1 触发既有 future Return birth 支持边界；558.291 秒的原收据保留为诊断字段增加前对照。它只是一条配置和一个锚点的诊断，不构成 TRAIN 调参、Validation 比较或最终方法选择。完整矩阵尚未完成；无 GPU、训练、闭环或 `locked_test`。
+
 ## 2026-09-29 STEP 6.3B/6.3C-PATCH
 
 CPU-only 4416 个 Formal TRAIN H1 raw→Planner-v1 投影审计：728 条同决策 offload Route 依赖 Comm 行逐条排除，任务数量条件拒绝为 0；结构准入 4045/4416，剩余 1 个投影后未见 Comm 结构、349/15 个 Comp 类别和 6 个未见 joint 结构。TRAIN/Validation 静态候选域空数为 14/4416、6/1104；候选数增长只是规则变化，非性能改善。冻结 checkpoint 单非锁定 Validation anchor 的非空 Comm H1–H4 机制路径仍与原顺序推演等价，`B_WM=4`。结构准入后的动作语义字段对照完成：3920/4045 通过，125 个 Comp amount 差异超过绝对容差 `1e-7`，绝对差中位数 `1.4475e-7`、最大 `2.9793e-7`；容差和策略均未修改。无优化器、排名、baseline、闭环、GPU、训练或 `locked_test`。
