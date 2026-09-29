@@ -1,5 +1,9 @@
 # 当前与历史实验
 
+## 2026-09-29 STEP 6.3C
+
+CPU-only static CandidateDomain audit: TRAIN 4416 anchors, Validation 1104 anchors (descriptive only). TRAIN empty domains: 1935; non-empty exact candidate cardinality median 6, P90 205701120, max 313949952. Fixed accepted 6.1 Validation anchor interleaved H1-H4 smoke completed with exact existing-rollout equivalence and `B_WM=4`. No optimizer, ranking, baseline, closed loop, GPU, training or locked_test.
+
 ## 2026-09-29 STEP 6.3B
 
 CPU-only Formal TRAIN support-catalog and bounded synthetic grammar/admission tests. No World Model candidate ranking, frozen-checkpoint rollout, GPU, training, locked test, baseline or closed-loop run. Validation scan is descriptive after TRAIN catalog freeze. `STEP_6_3B=PASS` means grammar/labels/admission only; no performance claim.

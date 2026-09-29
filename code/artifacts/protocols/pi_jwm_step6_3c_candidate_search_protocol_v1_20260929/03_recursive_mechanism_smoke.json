@@ -1,0 +1,166 @@
+{
+  "anchor_sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0001",
+  "anchor_sample_index": 4416,
+  "anchor_selected_by": "accepted STEP 6.1 anchor_probe_manifest; no reselection",
+  "budget": {
+    "B_WM": 4,
+    "N_admitted_steps": 4,
+    "N_cache_hits": 0,
+    "N_complete_sequences": 4,
+    "N_dead_end_branches": 0,
+    "N_proposed_steps": 4,
+    "N_rejected_steps": 0,
+    "N_unique_transition_evals": 4,
+    "budget_unit": "candidate_one_step_transition",
+    "wall_clock_seconds_diagnostic_only": 5.836221899982775
+  },
+  "candidate_ranking": false,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "dead_end": null,
+  "future_target_used": false,
+  "gpu": false,
+  "horizon_feasibility": {
+    "H1": "COMPLETE",
+    "H2": "COMPLETE",
+    "H3": "COMPLETE",
+    "H4": "COMPLETE"
+  },
+  "locked_test": false,
+  "model_eval": true,
+  "optimizer": false,
+  "parameter_digest_after": "a51f2081eff2015c2fa2771ad720dd6184c1aaced2d3b2d738978b870a36c811",
+  "parameter_digest_before": "a51f2081eff2015c2fa2771ad720dd6184c1aaced2d3b2d738978b870a36c811",
+  "parameter_unchanged": true,
+  "performance_claim": false,
+  "prior_mode": "mean",
+  "sequential_equivalence": {
+    "component_max_abs_delta": {
+      "actions": 0.0,
+      "graphs": 0.0,
+      "latents": 0.0,
+      "model_traces": 0.0,
+      "states": 0.0
+    },
+    "equivalent_prebound_horizon": 4,
+    "executed": true,
+    "formal_action_fingerprints_exact": true,
+    "input_fingerprints_exact": true,
+    "output_fingerprints_exact": true,
+    "pass": true,
+    "within_existing_1e_minus_4_tolerance": true
+  },
+  "service_mode": "expectation",
+  "torch_no_grad": true,
+  "training": false,
+  "transitions": [
+    {
+      "action_fingerprint": "630294d070b1e60acf92ca2bd2eaff1dbc1cb91d101945721d0eceb1472de72a",
+      "choice_rule": "first canonical grammar iteration; mechanism fixture only",
+      "domain_exact_concrete_count": 9527358,
+      "domain_structural_mode_count": 57,
+      "horizon": 1,
+      "input_fingerprints": {
+        "graph": "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",
+        "latent": "c515ea63587cbaade9494ba58eb68e04f05ffcde310270e874697d85989898ce",
+        "state": "1b6e00ca2682fa34a0d4568e5590630a6c0527f5afa7e37e2f3919a9bc306ec7"
+      },
+      "output_fingerprints": {
+        "graph": "25715afd2349579c4634dfca73458486a3bdd9f0f7fabdb06654a1fc6d4e4222",
+        "latent": "44d5cfc6b7c27473627910214f00ac426372f9c468022cff75c4ea87861ca39c",
+        "state": "b15f72a8f7827220f3d74b61ebe180b15b6a8ca4268f27b4362b7325f6812ed7"
+      },
+      "structural_signature": [
+        "rows:1",
+        "NOOP",
+        "HOLD,HOLD"
+      ],
+      "support_label": {
+        "joint": "TRAIN_OBSERVED_STRUCTURAL",
+        "temporal_adjacent": "NOT_APPLICABLE_H1",
+        "temporal_prefix": "TRAIN_OBSERVED_PREFIX"
+      }
+    },
+    {
+      "action_fingerprint": "5f64faed504895d704ec76c9fe10e37a963d511ed4ce7ddebb040b7122e87812",
+      "choice_rule": "first canonical grammar iteration; mechanism fixture only",
+      "domain_exact_concrete_count": 6,
+      "domain_structural_mode_count": 6,
+      "horizon": 2,
+      "input_fingerprints": {
+        "graph": "25715afd2349579c4634dfca73458486a3bdd9f0f7fabdb06654a1fc6d4e4222",
+        "latent": "44d5cfc6b7c27473627910214f00ac426372f9c468022cff75c4ea87861ca39c",
+        "state": "b15f72a8f7827220f3d74b61ebe180b15b6a8ca4268f27b4362b7325f6812ed7"
+      },
+      "output_fingerprints": {
+        "graph": "9cdad851f9ecede569d092c4913ba93cb528fb6622aeb8cfb0babec97f9364aa",
+        "latent": "515cee139c3907c934d0749ab5581fb282d765c488ca7184fdf03e6fe66b1061",
+        "state": "6614b8e66056152bdcffcc094e78067d56a9b0503f74b02f8794a5a68242616e"
+      },
+      "structural_signature": [
+        "NOOP",
+        "NOOP",
+        "HOLD,HOLD"
+      ],
+      "support_label": {
+        "joint": "TRAIN_OBSERVED_STRUCTURAL",
+        "temporal_adjacent": "TRAIN_UNSEEN_ADJACENT",
+        "temporal_prefix": "TRAIN_UNSEEN_PREFIX"
+      }
+    },
+    {
+      "action_fingerprint": "5f64faed504895d704ec76c9fe10e37a963d511ed4ce7ddebb040b7122e87812",
+      "choice_rule": "first canonical grammar iteration; mechanism fixture only",
+      "domain_exact_concrete_count": 6,
+      "domain_structural_mode_count": 6,
+      "horizon": 3,
+      "input_fingerprints": {
+        "graph": "9cdad851f9ecede569d092c4913ba93cb528fb6622aeb8cfb0babec97f9364aa",
+        "latent": "515cee139c3907c934d0749ab5581fb282d765c488ca7184fdf03e6fe66b1061",
+        "state": "6614b8e66056152bdcffcc094e78067d56a9b0503f74b02f8794a5a68242616e"
+      },
+      "output_fingerprints": {
+        "graph": "0635b9d1e1bb3b6ef39a55e0ce165c0a83e5873ecc4e92241b65457c8c6d66b0",
+        "latent": "47afe13d40454fdacceccf88f02e43d8420372f52a25769db05116cab707fcd4",
+        "state": "d0aeef68751261929a3f0d615319989699a4a8760d3d230778e89564d32ba317"
+      },
+      "structural_signature": [
+        "NOOP",
+        "NOOP",
+        "HOLD,HOLD"
+      ],
+      "support_label": {
+        "joint": "TRAIN_OBSERVED_STRUCTURAL",
+        "temporal_adjacent": "TRAIN_OBSERVED_ADJACENT",
+        "temporal_prefix": "TRAIN_UNSEEN_PREFIX"
+      }
+    },
+    {
+      "action_fingerprint": "5f64faed504895d704ec76c9fe10e37a963d511ed4ce7ddebb040b7122e87812",
+      "choice_rule": "first canonical grammar iteration; mechanism fixture only",
+      "domain_exact_concrete_count": 6,
+      "domain_structural_mode_count": 6,
+      "horizon": 4,
+      "input_fingerprints": {
+        "graph": "0635b9d1e1bb3b6ef39a55e0ce165c0a83e5873ecc4e92241b65457c8c6d66b0",
+        "latent": "47afe13d40454fdacceccf88f02e43d8420372f52a25769db05116cab707fcd4",
+        "state": "d0aeef68751261929a3f0d615319989699a4a8760d3d230778e89564d32ba317"
+      },
+      "output_fingerprints": {
+        "graph": "b81500af23e500e52196b7ec1027982345659ed37e728cbed11dd98586415996",
+        "latent": "efbe1d0c599ab3949e6d2db49fd2b7458b55d5085c7687c49ee7cfa0addc2eb2",
+        "state": "7ad53af94a6b2f7e682567a7fcbcf52a6ed38106edab8a043229c1724d459250"
+      },
+      "structural_signature": [
+        "NOOP",
+        "NOOP",
+        "HOLD,HOLD"
+      ],
+      "support_label": {
+        "joint": "TRAIN_OBSERVED_STRUCTURAL",
+        "temporal_adjacent": "TRAIN_OBSERVED_ADJACENT",
+        "temporal_prefix": "TRAIN_UNSEEN_PREFIX"
+      }
+    }
+  ],
+  "validation_used_for_selection": false
+}

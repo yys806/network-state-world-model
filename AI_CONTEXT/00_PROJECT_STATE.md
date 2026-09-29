@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-29 STEP 6.3C — 当前状态
+
+`STEP_6_3C=PASS`。已实现唯一的 search-independent `CandidateDomain`、lazy/symbolic canonical candidate counting、共享 `SearchNode` 与 `B_WM` budget/cache contract，以及复用 STEP 6.1 frozen World Model 的 one-step primitive。Formal TRAIN 4416 个 anchor 的静态审计完成；1935 个空域按冻结 TRAIN joint-support/causal Comp 规则记录为无正式候选，不做自动 horizon backoff。Validation 1104 个 anchor 仅作 descriptive audit，未改变 TRAIN catalog 或 policy。固定非锁定 validation anchor 的 H1-H4 interleaved smoke 与既有 6.1 预绑定 rollout 指纹和数值完全一致，4 次 transition、无 cache hit、无 dead-end。该 PASS 只表示候选域/搜索协议/可行性证据闭合，不表示任何 optimizer、候选质量、H4 可行率或闭环性能；未执行 Random/CEM/Beam/Learned Proposal、ranking、baseline、GPU、training、locked_test。
+
 ## 2026-09-29 STEP 6.3B — 当前状态
 
 `STEP_6_3B=PASS`（仅 CPU 候选语法/支持标签/准入合同）。研究者已冻结 Planner v1 的结构化候选语法与支持准入：Route 显式空；Comm 按当前无线 Flow/关系绑定、允许同 Task 多 row、每 row 为 TRAIN 观察到的循环连续 RB block；Comp 在当前 computing/Exec 关系上逐时隙重建 CPU base，并用全局 alpha `{0.5,0.75,1.0}`；Mob 正式池只允许所有在场 UAV 共享一个 profile。每一步的 Comm–Comp–Mob 粗粒度联合结构必须在 Formal TRAIN 251 种观察签名中；未见联合组合留作未来消融。时间序列观察性只作标签，不作硬门槛。`H_sup` 需实际 rollout 后由既有 scorer 判定。见 STEP 6.3B 合同、实施记录和机器收据。此处的语法闭合不等于已选优化器、候选质量或闭环性能；GPU、训练、`locked_test`、baseline 均未执行。

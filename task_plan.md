@@ -1642,3 +1642,15 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] focused tests（11+6+15+11）、机器收据、文档/Context/index、diff review。
 - [x] Git 收口准备、远端基线 SHA 核对；commit/push 执行于本次任务最后。
 - 当前 gate：`STEP_6_3B=PASS`（语法/标签/准入 CPU 合同）；下一研究动作须另行授权，不进入优化器、闭环、GPU 或 `locked_test`。
+## 2026-09-29 STEP 6.3C — Candidate Search Protocol & Domain Feasibility
+
+- [x] CandidateDomain、one-step primitive、SearchNode 与 B_WM accounting 完成。
+- [x] TRAIN/Validation 静态审计、递归 smoke、focused tests 与 receipts 完成。
+- [x] STEP_6_3C=PASS；未实现 optimizer/ranking/closed loop。
+
+- [x] 起点 `HEAD=origin/main=df029647c748c9a4be66173abd388b805f954618`，保留用户未跟踪项；6.3B 冻结政策未重开。
+- [x] 共享 CandidateDomain、lazy/symbolic unique count 与小空间暴力枚举交叉核对。
+- [x] 复用 6.1 adapter/model.one_step 的单步 primitive、共享 SearchNode 与 `B_WM` cache/batch 记账；固定 6.1 anchor 的 H4 等价机制通过。
+- [ ] Formal TRAIN 全 4416 H1 anchors 与 Validation 全 1104 anchors 的静态域审计正在执行。
+- [ ] 汇总收据、合同、Context/index、定向回归、commit/push。
+- 当前 gate：等待全量域统计并核对是否存在新的源码冲突；唯一下一动作是审计收口。优化器、排名、GPU、训练、`locked_test`、baseline、闭环关闭。

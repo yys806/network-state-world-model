@@ -1261,3 +1261,5 @@
 - 当前单跳 gate 会接受 pending/no-current-Flow Route，正式 adapter 给 `flow_index=-1`，4.4 只改变 learned latent，不创建 Flow。冻结 Objective 只有 future Return birth 的 `H_sup`，不应自行扩展到 pending Input Route。
 - same-path existing Flow Route 在 Flow route fields 不变时仍改 Task-Agent Host；与 holder 在 hop 完成前不变的合同需核对。
 - 6.2B scorer 的 fixed-support 机制证据已通过，但完整接受因以上冲突阻塞，不能作 Planner 性能声明。
+
+2026-09-29 STEP 6.3C：静态候选域中 TRAIN 1935/4416 anchor 为空，主要原因是当前 state 无兼容 TRAIN joint structure；该结果是冻结支持政策下的机器事实，不允许自动放宽。非空域 cardinality 可达 313,949,952，因此 lazy/symbolic enumeration 是必要条件。H1-H4 canonical smoke 与旧 6.1 rollout exact equivalent。

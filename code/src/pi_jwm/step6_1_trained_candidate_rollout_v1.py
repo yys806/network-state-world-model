@@ -14,7 +14,7 @@ import torch
 
 from pi_jwm.step5_2_training_loop_v1 import _stack_actions
 from pi_jwm.step6_0a_candidate_generation_v1 import (
-    CandidateActionSequence, PlannerCandidateContext, validate_step,
+    Backend, CandidateActionSequence, CandidateActionStep, PlannerCandidateContext, validate_step,
 )
 from pi_jwm.step6_0c_planner_action_domain_v1 import PlannerActionDomainContext, require_domain_admissible
 
@@ -122,6 +122,58 @@ class CandidateRolloutTrace:
     states: tuple[Mapping[str, torch.Tensor], ...]
     graphs: tuple[Mapping[str, torch.Tensor], ...]
     model_traces: tuple[Mapping[str, Any], ...]
+
+
+@dataclass(frozen=True)
+class OneStepRolloutResult:
+    """One frozen-model transition using the existing formal action adapter."""
+    latent: Mapping[str, Any]
+    state: Mapping[str, torch.Tensor]
+    graph: Mapping[str, torch.Tensor]
+    mobility_control: Mapping[int, Any]
+    action_tensor: Mapping[str, torch.Tensor]
+    action_mapping: Mapping[str, Any]
+    model_trace: Mapping[str, Any]
+    input_fingerprints: Mapping[str, str]
+    output_fingerprints: Mapping[str, str]
+
+
+def rollout_one_step(model: torch.nn.Module, context: PlannerCandidateContext,
+                     domain: PlannerActionDomainContext,
+                     latent: Mapping[str, Any], state: Mapping[str, torch.Tensor],
+                     graph: Mapping[str, torch.Tensor], mobility_control: Mapping[int, Any],
+                     bound_step: Any) -> OneStepRolloutResult:
+    """Interleaved-search primitive; no new model transition semantics.
+
+    The caller must bind and admit the step with STEP 6.3B on this exact input
+    state. Route is explicit no-op, so its rule metadata is empty as in 6.1.
+    """
+    if model.training or torch.is_grad_enabled():
+        raise ValueError("one-step rollout requires model.eval() and torch.no_grad()")
+    if context.causal_provenance != domain.causal_provenance:
+        raise ValueError("causal provenance mismatch")
+    step: CandidateActionStep = bound_step.action
+    if step.route or not bound_step.support.formal_pool_admitted:
+        raise ValueError("one-step rollout requires admitted Route-no-op grammar step")
+    current_context = replace(context, current_state=state)
+    current_domain = replace(domain, mobility_states=mobility_control)
+    one = CandidateActionSequence((step,), "one_step_grammar", Backend.RULE_FALLBACK,
+                                  None, context.causal_provenance)
+    action, mapping = compile_candidate_step(one, current_context, state, 0,
+                                              planner_domain_context=current_domain)
+    from pi_jwm.step6_2a_route_rule_metadata_v1 import build_route_rule_metadata
+    route_metadata = build_route_rule_metadata({"future_action": [step.frame()]}, state,
+                                                 action, 0, batch_index=0)
+    input_fingerprints = {"state": fingerprint(state), "graph": fingerprint(graph),
+                          "latent": fingerprint(latent)}
+    next_latent, next_state, next_graph, trace = model.one_step(
+        latent, state, graph, action, prior_mode="mean", service_mode="expectation",
+        generator=None, route_rule_metadata=route_metadata)
+    output_fingerprints = {"state": fingerprint(next_state), "graph": fingerprint(next_graph),
+                           "latent": fingerprint(next_latent)}
+    return OneStepRolloutResult(next_latent, next_state, next_graph,
+                                bound_step.next_mobility_control, action, mapping, trace,
+                                input_fingerprints, output_fingerprints)
 
 
 def prepare_anchor(model: torch.nn.Module, encoder: torch.nn.Module,

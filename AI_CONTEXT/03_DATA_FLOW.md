@@ -14,7 +14,7 @@ Planner v1 候选每 horizon 的 `route.entries=[]` → 6.0C gate PASS → 原 1
 
 ## STEP 6.2A-CLOSURE Planner Route domain
 
-Candidate Route rows pass through the 6.0C admission gate: Route remains enabled, but a nonempty `route_node_indices` must contain exactly the current frozen logical destination. The rule-side repaired multi-hop path remains outside this Planner v1 candidate domain. No learned feature, formal tensor, or Future Target data is added.
+Planner v1 CandidateDomain emits only explicit Route no-op. Comm/Comp/Mob are rebuilt from the current causal or predicted state, then one admitted step is compiled by the existing adapter and passed to the unchanged frozen World Model transition. The domain uses TRAIN support only; no Future Target data is loaded. After each transition, state/graph/control fingerprints become the input to the next CandidateDomain.
 
 ## STEP 6.1 当前观测到 H4 反事实推演
 

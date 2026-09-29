@@ -1,5 +1,12 @@
 # 模块导航地图
 
+## 2026-09-29 STEP 6.3C
+
+- `code/src/pi_jwm/step6_3c_candidate_domain_v1.py`: lazy state-conditioned CandidateDomain, structural-mode filtering, canonical Comm multiset counting, and binding through the frozen 6.3B admission path.
+- `code/src/pi_jwm/step6_3c_search_protocol_v1.py`: search node/prefix contract and `B_WM` transition/cache accountant; no optimizer.
+- `code/scripts/run_step6_3c_candidate_domain_audit_v1.py`: complete TRAIN static feasibility and descriptive Validation audit.
+- `code/scripts/run_step6_3c_recursive_mechanism_smoke_v1.py`: bounded interleaved H1-H4 mechanism smoke and 6.1 equivalence receipt.
+
 ## 2026-09-29 STEP 6.3B
 
 `step6_3b_candidate_grammar_v1.py` binds current causal/predicted state to Comm/Comp/shared-Mob action rows and validates a supplied `CandidateActionSequence`; `step6_3b_candidate_support_v1.py` labels TRAIN family/joint/temporal/causal/fixed-support axes from the frozen TRAIN catalog. `run_step6_3b_comm_support_boundary_audit_v1.py` creates the catalog and a separate descriptive validation receipt. The 6.0A adapter remains shared; no search optimizer exists in these modules.

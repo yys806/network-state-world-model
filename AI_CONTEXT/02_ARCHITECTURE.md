@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## 2026-09-29 STEP 6.3C CandidateDomain / rollout boundary
+
+`step6_3c_candidate_domain_v1.py` is the only search-independent candidate-domain entry. It derives current eligibility, TRAIN-observed joint structures and concrete causal bindings lazily; it never materializes the full domain. `step6_3c_search_protocol_v1.py` supplies the shared prefix node and one-transition `B_WM` accounting/cache. Interleaved search rebuilds the domain after every frozen-model transition. Empty H1 is `NO_FORMAL_CANDIDATE`; later empty branches are `GRAMMAR_DEAD_END`; no fallback or horizon backoff is introduced.
+
 ## 2026-09-29 STEP 6.3B Candidate Grammar boundary
 
 The Planner v1 candidate layer now has a search-independent structured grammar and Formal TRAIN support admission before the existing candidate adapter, trained World Model rollout and objective scorer. It binds Comm/Comp/Mob from each current or predicted state; Route stays explicit no-op. No optimizer, new World Model parameter or candidate ranking path was added.

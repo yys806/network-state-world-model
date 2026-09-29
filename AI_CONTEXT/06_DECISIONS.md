@@ -1,5 +1,9 @@
 # 已确认决策
 
+## 2026-09-29 STEP 6.3C — Protocol implementation boundary
+
+Researcher-frozen 6.3B grammar and admission are unchanged. The implementation fact is that all future search methods must call one state-conditioned CandidateDomain and one interleaved one-step rollout protocol; `B_WM` counts unique admitted candidate-step transitions, with deterministic cache hits free. This is an implementation contract, not a choice of optimizer. Empty domains remain explicit dead ends and do not trigger horizon backoff.
+
 ## 2026-09-29 STEP 6.3B — Researcher Decisions
 
 - Planner v1 允许一个 Task 多条 Comm row；修正旧 6.0A 重复 Task 拒绝。每 row 保持 TRAIN width 1/2/3、循环连续 block，正式池按 TRAIN 观察到的 `(start,width)` 对与当前因果关系绑定；有 eligible wireless Task 时每个都要有 row。

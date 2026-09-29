@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-29 STEP 6.3C
+
+新增 `CandidateDomain`、`SearchNode`、one-step frozen rollout primitive、lazy/symbolic cardinality and budget/cache receipts. Full TRAIN/Validation static audits and recursive equivalence smoke passed. `STEP_6_3C=PASS`; no optimizer or closed-loop execution.
+
 ## 2026-09-29 STEP 6.3B
 
 新增 Formal TRAIN 结构支持目录、search-independent 候选语法/准入器、focused CPU tests 与合同；修正 6.0A 同 Task 多 Comm row 拒绝。研究者冻结 shared-profile Mob、已见联合结构正式准入及时间诊断标签；Objective/Route no-op/checkpoint 不变。无优化器或闭环执行。

@@ -1,0 +1,12 @@
+{
+  "step": "STEP_6_3C",
+  "verdict": "PASS",
+  "files": [
+    {"path": "01_formal_train_domain_feasibility.json", "bytes": 1980404, "sha256": "98bb071d129a2948244b69afac4a82d4821766cc669fea725659548b00f6de64"},
+    {"path": "02_formal_validation_domain_descriptive.json", "bytes": 498444, "sha256": "3de1c01afe6a01eed31c6edef76d57302bb12d002d0ba026e0e9a799ca7bb5b0"},
+    {"path": "03_recursive_mechanism_smoke.json", "bytes": 6414, "sha256": "611cc3916f031144138063cb47a1e85fa4cbda4ad4aff219086d33a8e5900dd3"},
+    {"path": "04_budget_and_cache_contract.json", "bytes": 808, "sha256": "60a7fb10318f85d3f76a87cf4ec84701c84464d32a9734314d94ea224dbc3623"},
+    {"path": "05_step6_3c_acceptance.json", "bytes": 1071, "sha256": "dfe16fa62f03df2183969d3535e491064dac850c24270564cb45e6734597f967"}
+  ],
+  "sha256_check": "verified 2026-09-29; manifest self-hash excluded"
+}

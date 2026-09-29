@@ -1,0 +1,19 @@
+{
+  "step": "STEP_6_3C",
+  "budget_unit": "candidate_one_step_transition",
+  "B_WM_semantics": "one unit per unique admitted candidate-step evaluation; every batch member counts separately",
+  "cache_key_fields": ["causal_provenance", "parent_latent_state_graph_fingerprint", "canonical_action_step_fingerprint"],
+  "cache_hits_consume_budget": false,
+  "mutation_after_fingerprint_rejected": true,
+  "batch_duplicate_parent_action_reused": true,
+  "synthetic_contract": {
+    "distinct_batch_steps": {"N_unique_transition_evals": 2, "N_cache_hits": 0, "pass": true},
+    "duplicate_parent_action": {"N_unique_transition_evals": 1, "N_cache_hits": 1, "pass": true}
+  },
+  "optimizer": false,
+  "candidate_ranking": false,
+  "closed_loop": false,
+  "gpu": false,
+  "training": false,
+  "locked_test": false
+}

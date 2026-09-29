@@ -30,7 +30,6 @@ from pi_jwm.step5_5_full_sharded_loader_v1 import FullFormalShardDataset, FORMAL
 from pi_jwm.step5_6a_formal_training_config_v1 import formal_training_config_v1
 from pi_jwm.step6_0a_candidate_generation_v1 import (
     Backend, CandidateActionSequence, CandidateActionStep, PlannerCandidateContext,
-    compile_candidate_step,
 )
 from pi_jwm.step6_0c_planner_action_domain_v1 import (
     PROFILES, annotate_domain, context_from_current_raw, rule_fallback_v1,
