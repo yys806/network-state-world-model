@@ -1,5 +1,11 @@
 # Findings
 
+## 2026-09-29 STEP 6.3B
+
+- Formal TRAIN: 293/4608 raw slots include repeated Comm rows for one Task, 251 joint structural signatures and 145 observed cyclic `(start,width)` pairs. Policy no-intervention is not empty action: Comm 674, Comp 913, Mob 2761 raw slots still have rows.
+- Current model rule does not promote offloading to computing at Flow completion. Future Comp grammar therefore requires predicted `computing` and unique Exec binding. TRAIN-only future Return `H_sup` histogram remains unavailable; the grammar does not require it and does not invent one.
+- Structural TRAIN support does not mean an exact concrete action was observed; current Task, relation, node, RB start and UAV are causally rebound. Temporal unseen labels are diagnostic under the researcher-approved policy.
+
 ## 2026-09-28 STEP 6.3A
 
 - Formal TRAIN contains 1969 non-empty Comp entries; every entry reconstructs from decision-time computing tasks/static CPU using the existing `allocate_work_conserving_cpu` rule, with global alpha counts 0.5=248, 0.75=242, 1.0=1479.

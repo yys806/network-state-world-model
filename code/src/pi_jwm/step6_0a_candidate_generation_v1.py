@@ -157,9 +157,9 @@ def validate_step(step: CandidateActionStep, context: PlannerCandidateContext) -
         rb_count = int(state["rb_active_mask"].shape[-1])
         rb = [int(x) for x in row["rb_indices"]]
         _require(bool(rb) and len(rb) == len(set(rb)) and all(0 <= x < rb_count for x in rb), "invalid/duplicate RB assignment")
-        key = ("comm", task_id)
-        _require(key not in seen, "duplicate comm task assignment")
-        seen.add(key)
+        # Formal TRAIN contains multiple RB rows for one Task in a slot.
+        # They retain row multiplicity in the learned action and bind to the
+        # same current relation; per-row RB uniqueness is checked above.
     for row in step.comp:
         _require(str(row["node_id"]) in physical and str(row["task_id"]) in tasks,
                  "comp node/task outside current support")

@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## 2026-09-29 STEP 6.3B Candidate Grammar boundary
+
+The Planner v1 candidate layer now has a search-independent structured grammar and Formal TRAIN support admission before the existing candidate adapter, trained World Model rollout and objective scorer. It binds Comm/Comp/Mob from each current or predicted state; Route stays explicit no-op. No optimizer, new World Model parameter or candidate ranking path was added.
+
 ## 2026-09-28 STEP 6.2B-PATCH Planner v1 Route 边界
 
 Planner v1 的 6.0C 准入层只接受空 Route family；Route schema、11 tensor adapter、4.4 learned Route encoder 和多跳确定性规则都保留。合法候选实际变化来自 Comm/Comp/Mob。此策略是研究者对当前 learned-support 的限制，不是删除 Route 架构。STEP 6.2B scorer/字典序比较器通过 CPU 合同验收；候选生成方法和闭环仍未建立。下文 6.2B 阻塞段是 Patch 前历史状态。

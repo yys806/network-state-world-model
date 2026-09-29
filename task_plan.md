@@ -1633,5 +1633,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] Security preflight, Git and dataset split boundary.
 - [x] CPU-only Formal TRAIN support statistics and validation descriptive audit.
 - [x] Search-space, support tiers, H_sup interaction and fair-comparison contract receipts.
-- [x] Concrete blocker recorded: COMP_TEMPLATE_READY=false; independent factorization has measured gap.
-- 当前 gate：STEP_6_3A=BLOCKED_ON_CANDIDATE_SUPPORT_SEMANTICS; stop and await researcher decision. No optimizer implementation.
+- [x] Temporary Comp blocker was resolved by complete causal CPU-base reconstruction; independent factorization has a measured gap.
+- Historical gate closed: `STEP_6_3A=PASS` (support audit only). No optimizer implementation.
+## 2026-09-29 STEP 6.3B — Structured Candidate Grammar
+
+- [x] 核实 Git、6.3A/6.2B receipts 和源代码；研究者明确推荐支持政策。
+- [x] TRAIN catalog、当前状态绑定语法、跨后端 validator 和同 Task 多 Comm row 修正。
+- [x] focused tests（11+6+15+11）、机器收据、文档/Context/index、diff review。
+- [x] Git 收口准备、远端基线 SHA 核对；commit/push 执行于本次任务最后。
+- 当前 gate：`STEP_6_3B=PASS`（语法/标签/准入 CPU 合同）；下一研究动作须另行授权，不进入优化器、闭环、GPU 或 `locked_test`。

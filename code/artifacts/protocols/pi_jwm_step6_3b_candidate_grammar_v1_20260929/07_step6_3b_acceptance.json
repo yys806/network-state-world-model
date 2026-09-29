@@ -1,0 +1,41 @@
+{
+  "STEP_6_3B": "PASS",
+  "acceptance_scope": "CANDIDATE_GRAMMAR_SUPPORT_LABELING_ADMISSION_CPU_CONTRACT_ONLY",
+  "baseline": false,
+  "candidate_ranking_executed": false,
+  "checkpoint_hash_rechecked_this_step": false,
+  "checkpoint_modified": false,
+  "checkpoint_sha256_expected_from_prior_acceptance": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "closed_loop": false,
+  "compileall": "PASS",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "focused_test_counts": {
+    "step6_0a": 6,
+    "step6_0c": 15,
+    "step6_2b": 11,
+    "step6_3b": 11
+  },
+  "focused_test_suites": [
+    "test_step6_3b_candidate_support_v1.py",
+    "test_step6_3b_candidate_grammar_v1.py",
+    "test_step6_0a_candidate_generation_v1.py",
+    "test_step6_0c_planner_action_domain_v1.py",
+    "test_step6_2b_planner_objective_scorer_v1.py"
+  ],
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "method_selected": false,
+  "optimizer_implemented": false,
+  "remaining_limits": [
+    "TRAIN-only future Return H_sup histogram unavailable",
+    "future Comp needs explicit predicted computing and unique Exec relation",
+    "temporally unseen sequence generalization untested",
+    "concrete action composition beyond structural signature is not exact TRAIN replay"
+  ],
+  "source": "FORMAL_TRAIN_ONLY_FOR_SUPPORT",
+  "step": "STEP_6_3B",
+  "training": false,
+  "validation_used_for_selection": false
+}

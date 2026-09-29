@@ -1,5 +1,13 @@
 # 已确认决策
 
+## 2026-09-29 STEP 6.3B — Researcher Decisions
+
+- Planner v1 允许一个 Task 多条 Comm row；修正旧 6.0A 重复 Task 拒绝。每 row 保持 TRAIN width 1/2/3、循环连续 block，正式池按 TRAIN 观察到的 `(start,width)` 对与当前因果关系绑定；有 eligible wireless Task 时每个都要有 row。
+- 正式 Mobility 候选只允许在场 UAV 共享同一个 HOLD/PROFILE_1–5；底层 6.0C 独立控制接口不因此删除。
+- 正式候选池只准 Formal TRAIN 已见的 Comm–Comp–Mob 联合结构；边际已见但联合未见只保留未来消融标签。时间支持只贴标签，相邻历史转移不作硬门槛。
+- 有当前可分配 computing Task 时 Comp 必须按现有因果 CPU base 与全局 alpha `{0.5,0.75,1.0}` 提交完整非空行；仅无该 Task 时 Comp 空 family。未来预测状态需显式 computing/唯一 Exec 才能构建 Comp base。
+- 这些决定只冻结候选语法和支持政策，不选择 Random/CEM/其他优化器，也不修改既有 Objective。
+
 ## 2026-09-28 STEP 6.2B-PATCH — Researcher Decision
 
 - `PLANNER_V1_ROUTE_POLICY=EXPLICIT_NOOP_ONLY`：Planner v1 每个 horizon 的 Route family 为空；pending、已有 Flow 同路径、多跳、改目的地等所有非空 Route 候选均不得进入正式 v1 rollout。

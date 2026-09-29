@@ -1,5 +1,9 @@
 # 已知问题与冲突
 
+## 2026-09-29 STEP 6.3B support boundaries
+
+旧 6.3A 文档的 policy “no-op” 标签不能解释为空 action：TRAIN 中 Comm/Comp/Mob 分别有 674/913/2761 个该标签但 action 非空的 raw slots。6.0A 旧版同 Task 多 Comm row 拒绝与 TRAIN 293/4608 raw slots 冲突，现已修正。TRAIN-only future-Return `H_sup` 分布尚未统计；候选语法不依赖该直方图，实际 `H_sup` 仍需 rollout/scorer。4.4 预测状态不会在 Flow 完成时自动把 Task lifecycle 从 offloading 提升为 computing；未来 Comp 准入只用显式 predicted computing/唯一 Exec 关系，未证实的转变不能猜测。时间上未见的结构序列仅作标签且允许，泛化效果未验证。
+
 ## 2026-09-28 STEP 6.3A
 
 Formal TRAIN Comp base is reproducible from current computing-task CPU work,

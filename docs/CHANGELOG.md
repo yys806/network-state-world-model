@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-29 STEP 6.3B
+
+Frozen the Formal TRAIN-backed Planner v1 Comm/Comp/shared-Mob structured candidate grammar and joint-support admission policy. Added TRAIN-only catalog, multidimensional support labels, state-conditioned validator, and focused tests; corrected the 6.0A repeated-Task Comm row rejection. Route no-op, Objective, model and checkpoint are unchanged. This is no optimizer or performance claim.
+
 ## 2026-09-28：STEP 6.3A Candidate support 审计
 
 新增 Formal TRAIN action-support 审计脚本、13 份机器收据与实施记录；确认 Comp 可由 frozen causal CPU inner rule 和 global alpha `{0.5,0.75,1.0}` 重建，独立 Comm/Comp/Mob 因子化不受联合数据支持。更新当前 AI_CONTEXT、计划、进展与知识索引入口；未实现候选 optimizer 或运行模型 rollout。

@@ -1,5 +1,9 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-29 STEP 6.3B 候选语法与支持政策
+
+研究者冻结 Planner v1 正式候选池：Route 每步显式空；Comm 在当前因果无线 Flow/关系上覆盖 eligible Task，允许同 Task 多条 TRAIN 支持的循环 RB block；Comp 在当前 predicted computing/Exec 状态逐步重建既有 CPU base，采用单时隙全局 alpha 0.5/0.75/1.0；Mob 在场 UAV 共享同一 HOLD/PROFILE_1–5。每步联合粗粒度结构须为 Formal TRAIN 已见签名；边际已见但联合未见留作未来消融。时间观察性仅标记，不作为准入硬门槛。未来每步重新绑定预测状态，`H_sup` 由后续实际推演/scorer 判定。详见 STEP 6.3B 合同；这不选择搜索算法或声明规划性能。
+
 ## 2026-09-28 STEP 6.2B-PATCH 方法边界
 
 研究者将 Planner v1 Route 正式限定为 `EXPLICIT_NOOP_ONLY`：每个 horizon Route family 为空，Comm/Comp/Mob 是当前可优化动作族。Route schema、learned encoder 和多跳确定性代码保留，未来真正 Route/offload/multi-hop 优化另行研究。冻结 Objective `(N_DDL,A_DDL,J_Delay,J_Burden,J_Effort)` 与严格字典序不变。当前 `STEP_6_2B=PASS` 只证明已给定合法 H1–H4 候选轨迹的 CPU scorer/comparator 合同，不证明候选生成、闭环或性能。先前单跳 Route 域是历史决定，现由更严格 no-op 边界覆盖。

@@ -1,5 +1,7 @@
 # PI-JWM 实施记录
 
+**当前 STEP 6.3B：** [Structured Candidate Grammar and Support Policy](STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_AND_SUPPORT_POLICY.md) 记录 TRAIN-only 证据、研究者准入决定、CPU 语法/validator 和明确未开始的 optimizer/闭环。
+
 **当前 STEP 6.2B-PATCH：** [Route no-op closure](STEP_06_2B_PATCH_ROUTE_NOOP_CLOSURE.md) 记录研究者新 Route 域、冻结 checkpoint CPU 验收及 `STEP_6_2B=PASS` 的严格范围；此前 [STEP 6.2B](STEP_06_2B_PLANNER_OBJECTIVE_SCORER_AND_COMPARATOR.md) 的 BLOCKED 观察保留历史。
 
 当前工作以研究者 2026-09-18 授权的只读 `00–06` 定义为目标，以仓库 source/config/test/artifact 为实现事实。总体状态见 [Implementation Tracker](../PIJWM_IMPLEMENTATION_TRACKER.md)。

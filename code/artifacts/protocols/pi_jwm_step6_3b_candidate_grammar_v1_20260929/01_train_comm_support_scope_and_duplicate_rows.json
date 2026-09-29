@@ -1,0 +1,44 @@
+{
+  "candidate_validator_duplicate_task_rule_before_6_3b_fix": "step6_0a_candidate_generation_v1.validate_step rejected a second Comm row with the same task_id",
+  "checkpoint_modified": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "eligible_with_empty_action_count": {
+    "comm": 0,
+    "comp": 0,
+    "mobility": 0
+  },
+  "formal_dataset_modified": false,
+  "formal_future_comm_start_width_pair_count": 145,
+  "formal_h1_h4_positions_with_same_task_multiple_comm_rows": 1146,
+  "formal_h1_h4_union_structural_joint_count": 251,
+  "formal_h1_h4_window_positions": 17664,
+  "formal_h1_structural_joint_count": 244,
+  "formal_h1_windows": 4416,
+  "formal_h1_windows_with_same_task_multiple_comm_rows": 280,
+  "future_target_used": false,
+  "gpu": false,
+  "h1_h4_only_structural_joint_count": 0,
+  "locked_test": false,
+  "policy_noop_with_nonempty_action_count": {
+    "comm": 674,
+    "comp": 913,
+    "mobility": 2761
+  },
+  "raw_comm_row_count_per_slot": {
+    "0": 3430,
+    "1": 829,
+    "2": 267,
+    "3": 77,
+    "4": 5
+  },
+  "raw_only_structural_joint_count": 0,
+  "raw_slots_with_same_task_multiple_comm_rows": 293,
+  "raw_trajectory_decision_slots": 4608,
+  "raw_trajectory_structural_joint_count": 251,
+  "scientific_interpretation": "Policy no-op flags are distinct from empty action families; formal future-action positions define the train structural catalog.",
+  "source": "FORMAL_TRAIN_ONLY",
+  "step": "STEP_6_3B_PREDECISION_EVIDENCE",
+  "training": false,
+  "unique_train_future_action_frames": 4560,
+  "validation_used": false
+}

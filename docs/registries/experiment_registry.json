@@ -3,6 +3,49 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.3B-STRUCTURED-CANDIDATE-GRAMMAR-20260929",
+      "name": "Formal TRAIN structured candidate grammar and support policy CPU audit",
+      "date": "2026-09-29",
+      "research_question": "Which state-conditioned Comm, Comp and Mob candidate structures enter the Planner v1 formal pool?",
+      "method": "pi_jwm_step6_3b_candidate_grammar_v1",
+      "code": "code/scripts/run_step6_3b_comm_support_boundary_audit_v1.py",
+      "code_version": {
+        "identity_type": "train_dataset_manifest_sha256_and_git_commit",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/manifest.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "TRAIN dataset manifest hash is in the machine receipt; final code commit is recorded after push."
+      },
+      "configuration": "docs/contracts/PIJWM_STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_V1.md",
+      "parameters": {
+        "device": "cpu",
+        "horizon_max": 4,
+        "route_policy": "EXPLICIT_NOOP_ONLY",
+        "joint_admission": "TRAIN_OBSERVED_STRUCTURAL_ONLY",
+        "temporal_admission": "LABEL_ONLY"
+      },
+      "protocol": "docs/implementation_records/STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_AND_SUPPORT_POLICY.md",
+      "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+      "split": ["dev_train", "dev_validation_descriptive_only"],
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/07_step6_3b_acceptance.json",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/02_train_structural_support_catalog.json",
+      "status": "cpu_grammar_contract_pass",
+      "conclusion": "Formal TRAIN structural catalog and state-conditioned candidate admission pass focused CPU checks; no optimizer, ranking or closed-loop result.",
+      "summary_zh": "Formal TRAIN 候选结构目录与当前状态绑定的准入合同通过定向 CPU 检查；无优化器、排序或闭环结果。",
+      "claim_boundary": "TRAIN defines support; validation descriptive only; synthetic grammar tests; no World Model performance evidence",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "code_version.manifest_sha256": "The receipt manifest is generated in this Step; byte digest is not a source-version identity.",
+        "code_version.git_commit": "The final commit is recorded after the verification and push.",
+        "seed": "Deterministic support audit and synthetic CPU tests have no experiment seed.",
+        "checkpoint": "The frozen best checkpoint is unchanged and not loaded for this grammar audit.",
+        "metrics": "No candidate quality or system performance metric is measured in this Step."
+      }
+    },
+    {
       "id": "STEP-6.3A-CANDIDATE-SUPPORT-AUDIT-20260928",
       "name": "Planner candidate support and search architecture audit",
       "date": "2026-09-28",

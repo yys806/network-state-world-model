@@ -1,5 +1,9 @@
 # 研究背景与问题
 
+## 2026-09-29 Planner v1 Candidate Grammar 研究边界
+
+研究者把 Formal TRAIN 已见的 Comm–Comp–Mob 联合**结构**作为正式候选池准入依据，并要求每步从当前预测状态重新绑定 Task、关系、CPU base 和 UAV；时间未见转移只贴标签。它保持形式训练支持的结构边界，但并不证明具体新组合的模型预测可靠或搜索方法有效。优化器、预算、闭环效果仍待后续研究。
+
 ## 2026-09-28 Planner v1 当前 Route 研究边界
 
 研究者已把 Planner v1 Route 从此前的单跳直达进一步收紧为每 horizon `EXPLICIT_NOOP_ONLY`。这是当前 frozen learned model 的支持域决定；Route/多跳代码和 AirFogSim 能力并未被否定。未来真正 Route/offload 优化与多跳 learned 性能需另行研究，不能由目前 CPU scorer 验收推出。下方单跳段是历史决定。

@@ -1,5 +1,7 @@
 # PI-JWM 项目索引
 
+> 2026-09-29 STEP 6.3B（当前）：Planner v1 候选语法和 Formal TRAIN 支持准入见 `contracts/PIJWM_STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_V1.md`、`implementation_records/STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_AND_SUPPORT_POLICY.md`；源码 `code/src/pi_jwm/step6_3b_candidate_grammar_v1.py` 与 `step6_3b_candidate_support_v1.py`。仅语法/准入，不含优化器、性能或闭环。
+
 > 2026-09-28 STEP 6.3A（当前）：`STEP_6_3A=PASS` 仅表示 Formal TRAIN 候选支持审计完成；Comm/Comp/Mob 联合结构不支持独立因子化，Candidate Method 仍待研究者决定。记录与收据：`implementation_records/STEP_06_3A_CANDIDATE_SUPPORT_AND_SEARCH_ARCHITECTURE_AUDIT.md`、`code/artifacts/protocols/pi_jwm_step6_3a_candidate_support_audit_v1_20260928/`。
 
 > 2026-09-28 STEP 6.2B-PATCH（当前）：Planner v1 Route 仅显式 no-op；`STEP_6_2B=PASS` 仅为 CPU Objective scorer/比较器合同。入口：`implementation_records/STEP_06_2B_PATCH_ROUTE_NOOP_CLOSURE.md`、`code/src/pi_jwm/step6_0c_planner_action_domain_v1.py`、`code/artifacts/protocols/pi_jwm_step6_2b_patch_route_noop_v1_20260928/`。下方 6.2B BLOCKED 为历史状态。

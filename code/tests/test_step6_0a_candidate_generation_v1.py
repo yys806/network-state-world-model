@@ -148,8 +148,11 @@ class CandidateContractTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "RB assignment"):
                 compile_candidate(sequence(ctx, CandidateActionStep(comm=({**row, "rb_indices": invalid},))),
                                   ctx, (ctx.current_state,))
-        with self.assertRaisesRegex(ValueError, "duplicate comm"):
-            compile_candidate(sequence(ctx, CandidateActionStep(comm=(row, row))), ctx, (ctx.current_state,))
+        multirow = CandidateActionStep(comm=(row, {**row, "rb_indices": [1]}))
+        compiled, mappings = compile_candidate(sequence(ctx, multirow), ctx, (ctx.current_state,))
+        self.assertEqual(compiled[0]["comm_relation_index"].tolist(), [[0, 0]])
+        self.assertEqual([x["rb_indices"] for x in mappings[0]["comm"]], [[0], [1]])
+        self.assertEqual(compiled[0]["comm_allocation_mask"][0, 0].tolist(), [True, True])
         with self.assertRaises(ValueError):
             compile_candidate(sequence(ctx, CandidateActionStep(mob=({"uav_index": 0,
                 "azimuth_rad": float("nan"), "elevation_rad": 0, "speed_mps": 1},))),

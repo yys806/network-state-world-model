@@ -398,6 +398,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step6_3b_candidate_grammar_v1",
         "scripts.run_cpu_inner_rule_preflight_v1",
         "scripts.run_step6_3a_candidate_support_audit_v1",
         "tests.test_airfogsim_cpu_inner_rule_v1",
@@ -2072,6 +2073,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
         "scripts.build_step3_3_model_input_tensor_v1",
         "scripts.build_step4_4_structured_rssm_world_model_v1",
         "tests.test_step3_3_model_input_tensor_v1"
@@ -2104,6 +2106,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "pi_jwm.step6_2b_planner_objective_scorer_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
         "scripts.build_step4_2a_graph_input_extension_v1",
         "scripts.build_step4_2c_c_flow_sample_tensor_v1",
         "scripts.build_step5_1a_motion_csi_target_contract_v1",
@@ -2558,6 +2561,7 @@
         "pi_jwm.step6_0c_planner_action_domain_v1",
         "pi_jwm.step6_1_trained_candidate_rollout_v1",
         "pi_jwm.step6_2b_planner_objective_scorer_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
         "scripts.build_step6_2b_patch_route_noop_receipts_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
@@ -2565,7 +2569,8 @@
         "tests.test_step6_0a_candidate_generation_v1",
         "tests.test_step6_0c_planner_action_domain_v1",
         "tests.test_step6_1_trained_candidate_rollout_v1",
-        "tests.test_step6_2b_planner_objective_scorer_v1"
+        "tests.test_step6_2b_planner_objective_scorer_v1",
+        "tests.test_step6_3b_candidate_grammar_v1"
       ],
       "imports": [
         "pi_jwm.step6_0c_planner_action_domain_v1",
@@ -2578,7 +2583,8 @@
         "code/tests/test_step6_0a_candidate_generation_v1.py",
         "code/tests/test_step6_0c_planner_action_domain_v1.py",
         "code/tests/test_step6_1_trained_candidate_rollout_v1.py",
-        "code/tests/test_step6_2b_planner_objective_scorer_v1.py"
+        "code/tests/test_step6_2b_planner_objective_scorer_v1.py",
+        "code/tests/test_step6_3b_candidate_grammar_v1.py"
       ]
     },
     {
@@ -2587,12 +2593,14 @@
       "imported_by": [
         "pi_jwm.step6_0a_candidate_generation_v1",
         "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
         "scripts.build_step6_2b_objective_receipts_v1",
         "scripts.build_step6_2b_patch_route_noop_receipts_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
         "tests.test_step6_0c_planner_action_domain_v1",
-        "tests.test_step6_1_trained_candidate_rollout_v1"
+        "tests.test_step6_1_trained_candidate_rollout_v1",
+        "tests.test_step6_3b_candidate_grammar_v1"
       ],
       "imports": [
         "pi_jwm.step6_0a_candidate_generation_v1"
@@ -2602,7 +2610,8 @@
       "path": "code/src/pi_jwm/step6_0c_planner_action_domain_v1.py",
       "test_files": [
         "code/tests/test_step6_0c_planner_action_domain_v1.py",
-        "code/tests/test_step6_1_trained_candidate_rollout_v1.py"
+        "code/tests/test_step6_1_trained_candidate_rollout_v1.py",
+        "code/tests/test_step6_3b_candidate_grammar_v1.py"
       ]
     },
     {
@@ -2697,6 +2706,44 @@
       "path": "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py",
       "test_files": [
         "code/tests/test_step6_2b_planner_objective_scorer_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "tests.test_step6_3b_candidate_grammar_v1"
+      ],
+      "imports": [
+        "pi_jwm.cpu_inner_rule_v1",
+        "pi_jwm.step3_3_model_input_tensor_v1",
+        "pi_jwm.step4_2a_graph_input_extension_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_0c_planner_action_domain_v1",
+        "pi_jwm.step6_3b_candidate_support_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_3b_candidate_grammar_v1",
+      "path": "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py",
+      "test_files": [
+        "code/tests/test_step6_3b_candidate_grammar_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "pi_jwm.step6_3b_candidate_grammar_v1",
+        "tests.test_step6_3b_candidate_grammar_v1",
+        "tests.test_step6_3b_candidate_support_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_3b_candidate_support_v1",
+      "path": "code/src/pi_jwm/step6_3b_candidate_support_v1.py",
+      "test_files": [
+        "code/tests/test_step6_3b_candidate_grammar_v1.py",
+        "code/tests/test_step6_3b_candidate_support_v1.py"
       ]
     },
     {
@@ -4197,6 +4244,16 @@
       "lifecycle_status": "support",
       "module": "scripts.build_step6_2b_patch_route_noop_receipts_v1",
       "path": "code/scripts/build_step6_2b_patch_route_noop_receipts_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step6_3b_closure_receipts_v1",
+      "path": "code/scripts/build_step6_3b_closure_receipts_v1.py",
       "test_files": []
     },
     {
@@ -6969,13 +7026,27 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "scripts.run_step6_3b_comm_support_boundary_audit_v1"
+      ],
       "imports": [
         "pi_jwm.cpu_inner_rule_v1"
       ],
       "lifecycle_status": "support",
       "module": "scripts.run_step6_3a_candidate_support_audit_v1",
       "path": "code/scripts/run_step6_3a_candidate_support_audit_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "scripts.run_step6_3a_candidate_support_audit_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_3b_comm_support_boundary_audit_v1",
+      "path": "code/scripts/run_step6_3b_comm_support_boundary_audit_v1.py",
       "test_files": []
     },
     {
@@ -10935,6 +11006,33 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_2b_planner_objective_scorer_v1",
       "path": "code/tests/test_step6_2b_planner_objective_scorer_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_0c_planner_action_domain_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
+        "pi_jwm.step6_3b_candidate_support_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_3b_candidate_grammar_v1",
+      "path": "code/tests/test_step6_3b_candidate_grammar_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_3b_candidate_support_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_3b_candidate_support_v1",
+      "path": "code/tests/test_step6_3b_candidate_support_v1.py",
       "test_files": []
     },
     {

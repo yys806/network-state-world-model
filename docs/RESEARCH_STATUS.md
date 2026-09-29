@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> 2026-09-29 STEP 6.3B：候选语法与支持政策 `PASS`（CPU 合同）。正式池 Route 空、Comm 当前关系绑定、Comp 当前因果 CPU base、Mob 共享 profile，联合结构须为 TRAIN 已见签名；时间观察性只作标签。仍未选候选优化器、未排名、未进入闭环或性能验证。见 STEP 6.3B 合同与收据。
+
 > 2026-09-28 STEP 6.3A：Formal TRAIN action-support 证据审计 `PASS`；Comp causal template 可复现，独立 family factorization 不受支持。候选算法仅有证据建议、未由研究者冻结；无 optimizer、ranking、闭环或 baseline。
 
 > 2026-09-28 STEP 6.2B-PATCH（当前）：研究者冻结 Planner v1 Route `EXPLICIT_NOOP_ONLY`，非空 Route 准入拒绝；`STEP_6_2B=PASS`、`MPC_OBJECTIVE=FROZEN_AND_IMPLEMENTED` 只表示五项 scorer/字典序的 CPU 合同验收。候选方法待决、闭环未就绪；无 Route 优化、性能、baseline、GPU 或 locked-test 结论。下方 6.2B BLOCKED 是历史观察。

@@ -1,0 +1,25 @@
+{
+  "baseline": false,
+  "candidate_ranking_executed": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "optimizer_implemented": false,
+  "source": "FORMAL_TRAIN_ONLY_FOR_SUPPORT",
+  "step": "STEP_6_3B",
+  "training": false,
+  "validation": {
+    "comm_pair_unseen_in_train": 2,
+    "comm_rows": 479,
+    "joint_structural_observed_in_train": 1106,
+    "joint_structural_unseen_in_train": 46,
+    "raw_slots": 1152
+  },
+  "validation_changed_catalog_or_policy": false,
+  "validation_is_support_definition_source": false,
+  "validation_used_for_selection": false
+}

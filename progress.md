@@ -1,5 +1,11 @@
 # Progress
 
+## 2026-09-29 STEP 6.3B
+
+- Verified current 6.3A/6.2B accepted boundary and corrected policy no-op versus empty-action interpretation.
+- Built TRAIN-only structural catalog, causal Comm/Comp/shared-Mob binding, multidimensional labels and search-independent admission; repaired duplicate-Task Comm validation.
+- Focused verification and final Git synchronization are this Step's remaining closeout. No optimizer, GPU, training or locked test.
+
 ## 2026-09-28 STEP 6.3A
 
 - Security preflight PASS; no secret value printed; requested credential patterns are ignored.

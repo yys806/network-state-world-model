@@ -1,5 +1,9 @@
 # 当前与历史实验
 
+## 2026-09-29 STEP 6.3B
+
+CPU-only Formal TRAIN support-catalog and bounded synthetic grammar/admission tests. No World Model candidate ranking, frozen-checkpoint rollout, GPU, training, locked test, baseline or closed-loop run. Validation scan is descriptive after TRAIN catalog freeze. `STEP_6_3B=PASS` means grammar/labels/admission only; no performance claim.
+
 ## 2026-09-28 STEP 6.3A support audit
 
 CPU-only support audit over Formal TRAIN 48 trajectories/4416 windows and

@@ -1,5 +1,9 @@
 # 数据流与张量合同
 
+## 2026-09-29 STEP 6.3B Candidate data flow
+
+Formal TRAIN action frames → frozen structural catalog; at each future step current/predicted state + catalog + structural choice → causal Task/relation/Exec/UAV binding → complete CandidateActionStep → multidimensional support label/admission. An admitted CandidateActionSequence can use the existing adapter/rollout/scorer; the grammar itself does not call them. `H_sup` remains pending until actual rollout. Validation is descriptive only and never alters the TRAIN catalog.
+
 ## STEP 6.2B-PATCH 当前 Route no-op 数据流
 
 Planner v1 候选每 horizon 的 `route.entries=[]` → 6.0C gate PASS → 原 11 tensor adapter 将 Route Task/Flow indices 编译为负数哨兵 → 4.4 不执行 Route encoder 注入或 Route rule。任何非空 Route 在 gate 以 `OUTSIDE_PLANNER_ROUTE_NOOP_ONLY_V1` 拒绝，pending `flow_index=-1` 不再进入正式 rollout。Comm/Comp/Mob、scorer 五项和共用 `H_eff` 的数据流不变。下方 6.2B/6.2A-CLOSURE 段是历史路径。

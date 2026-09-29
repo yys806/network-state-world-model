@@ -1,0 +1,32 @@
+{
+  "baseline": false,
+  "candidate_ranking_executed": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "formal_dataset_modified": false,
+  "future_target_used": false,
+  "gpu": false,
+  "locked_test": false,
+  "optimizer_implemented": false,
+  "predecessor_step6_2b": "PASS",
+  "predecessor_step6_3a": "PASS",
+  "researcher_decisions": {
+    "comp_alpha": [
+      0.5,
+      0.75,
+      1.0
+    ],
+    "comp_eligible_empty_action": "REJECT",
+    "joint_formal_pool": "FORMAL_TRAIN_OBSERVED_STRUCTURAL_TRIPLES_ONLY",
+    "joint_unseen_marginal_seen": "FUTURE_ABLATION_ONLY",
+    "mobility_formal_pool": "SHARED_PROFILE_ONLY",
+    "route": "EXPLICIT_NOOP_ONLY",
+    "same_task_multirow_comm": "ALLOW_ON_UNIQUE_CURRENT_WIRELESS_RELATION",
+    "temporal_observed_transition": "DIAGNOSTIC_LABEL_NOT_HARD_GATE"
+  },
+  "source": "FORMAL_TRAIN_ONLY_FOR_SUPPORT",
+  "step": "STEP_6_3B",
+  "training": false,
+  "validation_used_for_selection": false
+}

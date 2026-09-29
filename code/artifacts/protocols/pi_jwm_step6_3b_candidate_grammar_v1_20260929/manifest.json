@@ -1,0 +1,41 @@
+{
+  "STEP_6_3B": "PASS",
+  "files": [
+    {
+      "bytes": 1611,
+      "path": "01_train_comm_support_scope_and_duplicate_rows.json",
+      "sha256": "563acc3b1d05b63d8d621cb87e71461d030ebf23110d16b3b3430f7d32c92e37"
+    },
+    {
+      "bytes": 2478259,
+      "path": "02_train_structural_support_catalog.json",
+      "sha256": "ed0d7e22016ef57a4ec9db2c8aa87512a8941e59281e816ec475d16901da495e"
+    },
+    {
+      "bytes": 415,
+      "path": "03_validation_descriptive_only.json",
+      "sha256": "e94ceeefda5f18010f97ece6f5ae3154e2cb1bcb0a0388a2c56ddf006af04d2b"
+    },
+    {
+      "bytes": 1056,
+      "path": "04_researcher_policy_closure.json",
+      "sha256": "a7ad51622b9f197c20c0ae2efdb7e42151e95f36b6e8d030d1f7182c0c6c79fb"
+    },
+    {
+      "bytes": 1119,
+      "path": "05_grammar_and_support_labels.json",
+      "sha256": "111866bfbe610df178d905304625a64df2fc11eab818b51ac022295537388712"
+    },
+    {
+      "bytes": 784,
+      "path": "06_validation_descriptive_scope.json",
+      "sha256": "3f0ae7eb0db51b05998299028ec385dc84b24d8963708ed634ac2cb0392e0248"
+    },
+    {
+      "bytes": 1515,
+      "path": "07_step6_3b_acceptance.json",
+      "sha256": "6054194082cbb0d64bfac2f32ef9c1e3a1f9fbddebb6bf3a3eaca046251365af"
+    }
+  ],
+  "step": "STEP_6_3B"
+}

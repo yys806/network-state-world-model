@@ -1,0 +1,14 @@
+{
+  "counts": {
+    "comm_pair_unseen_in_train": 2,
+    "comm_rows": 479,
+    "joint_structural_observed_in_train": 1106,
+    "joint_structural_unseen_in_train": 46,
+    "raw_slots": 1152
+  },
+  "future_target_used": false,
+  "locked_test": false,
+  "source": "FORMAL_VALIDATION_DESCRIPTIVE_ONLY",
+  "train_catalog_frozen_before_validation_scan": true,
+  "validation_used_for_template_or_policy_selection": false
+}

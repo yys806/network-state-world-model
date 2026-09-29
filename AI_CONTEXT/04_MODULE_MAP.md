@@ -1,5 +1,9 @@
 # 模块导航地图
 
+## 2026-09-29 STEP 6.3B
+
+`step6_3b_candidate_grammar_v1.py` binds current causal/predicted state to Comm/Comp/shared-Mob action rows and validates a supplied `CandidateActionSequence`; `step6_3b_candidate_support_v1.py` labels TRAIN family/joint/temporal/causal/fixed-support axes from the frozen TRAIN catalog. `run_step6_3b_comm_support_boundary_audit_v1.py` creates the catalog and a separate descriptive validation receipt. The 6.0A adapter remains shared; no search optimizer exists in these modules.
+
 ## STEP 6.3A audit
 
 - `code/scripts/run_step6_3a_candidate_support_audit_v1.py` scans Formal Raw and aligns temporal signatures using the accepted sample index; Comp reconstruction calls the existing deterministic CPU allocation rule.

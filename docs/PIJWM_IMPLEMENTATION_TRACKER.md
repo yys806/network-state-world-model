@@ -1,5 +1,7 @@
 # PI-JWM Implementation Tracker
 
+**2026-09-29 STEP 6.3B（当前）：** 研究者冻结 Planner v1 的 state-conditioned Comm/Comp/shared-Mob Candidate Grammar 与 Formal TRAIN 已见联合结构准入；Route 继续显式空，时间支持仅作标签。实现 TRAIN-only 目录、跨后端准入器和定向 CPU 测试，修正 6.0A 同 Task 多 Comm row 拒绝。`STEP_6_3B=PASS` 仅表示语法/支持标签/准入合同，不表示选择了 optimizer 或证明候选质量、闭环性能。见 `contracts/PIJWM_STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_V1.md` 与 STEP 6.3B 实施记录/收据。
+
 **2026-09-28 STEP 6.2B-PATCH（当前）：** 研究者冻结 `PLANNER_V1_ROUTE_POLICY=EXPLICIT_NOOP_ONLY`，6.0C gate 在每 horizon 拒绝所有非空 Route。4.4/learned Route/checkpoint 保留。新 CPU 机器证据核对 pending 与 existing 同路径拒绝、Route 缺席编译、有效 Route 自由度 NONE、Comm 分母 50 个全局 RB ID、冻结 checkpoint 两个合法 no-Route H4 候选可评分。`STEP_6_2B=PASS` 仅为 Objective scorer 和字典序比较器合同验收；候选方法、闭环、baseline、GPU、`locked_test` 与性能声明未开始。证据见 `implementation_records/STEP_06_2B_PATCH_ROUTE_NOOP_CLOSURE.md` 和 `code/artifacts/protocols/pi_jwm_step6_2b_patch_route_noop_v1_20260928/`。下方 6.2B BLOCKED 是 Patch 前历史状态。
 
 **2026-09-28 STEP 6.2B（当前）：** 五项 Objective scorer 与严格字典序比较器已在 CPU 上实现，单 non-locked Formal Validation anchor 的冻结 checkpoint H4 机制集成通过；Comm RB 分母从关系行误计修为全局 RB ID。有效动作审计发现 pending Route 经 gate 通过却映射 `flow_index=-1`、规则不创建 Flow；同路径 Route 还提前改 Host。因此 `STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`，不宣称 scorer 完整验收；待研究者裁决这两个 Route 语义冲突。机器记录在 `code/artifacts/protocols/pi_jwm_step6_2b_objective_scorer_v1_20260928/`，实施记录见 `implementation_records/STEP_06_2B_PLANNER_OBJECTIVE_SCORER_AND_COMPARATOR.md`。无候选方法、闭环、baseline、GPU、locked_test 或性能结论。
