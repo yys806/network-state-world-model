@@ -2,6 +2,14 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP-6.3BC-PATCH-COMM-SELECTION",
+      "title": "Planner v1 通信任务选择与 TRAIN 投影",
+      "keywords": ["STEP 6.3B", "STEP 6.3C", "Comm 任务选择", "TRAIN 自重放", "候选域空域", "Route 创建 Flow"],
+      "summary": "先读 6.3B/6.3C-PATCH 研究者决定与实施记录，再核对 TRAIN 原始/投影/排除行收据和候选域前后统计；残余 Comp/未见结构不得解释为已关闭。",
+      "primary_sources": ["docs/implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md", "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json"],
+      "verification_sources": ["code/src/pi_jwm/step6_3b_candidate_grammar_v1.py", "code/src/pi_jwm/step6_3c_candidate_domain_v1.py", "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/06_train_h1_projected_self_replay.json"]
+    },
+    {
       "id": "ROUTE-STEP-6.1-TRAINED-ROLLOUT",
       "title": "正式训练模型候选推演机制",
       "keywords": ["STEP 6.1", "trained rollout", "candidate rollout", "候选推演", "四类动作", "same current belief"],

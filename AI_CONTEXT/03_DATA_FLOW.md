@@ -1,5 +1,9 @@
 # 数据流与张量合同
 
+## 2026-09-29 STEP 6.3B/6.3C-PATCH 投影数据流
+
+Formal TRAIN 原始 H1 action 保持不变 → 当前 causal state 的已有无线 Flow 唯一绑定出 `E_comm(t)` → 保留可绑定 Comm 行形成 Planner-v1 投影动作，逐行列出因同决策 Route 新建 Flow 而排除的历史行 → 在 TRAIN Comm 结构条件下检查选中 Task 数量、RB pair 和 251 个 joint 结构 → 记录 Comm 准入和 Comp/联合结构等残余。Formal Validation 只用于候选域描述；没有 Future Target、GPU、训练或 `locked_test`。
+
 ## 2026-09-29 STEP 6.3B Candidate data flow
 
 Formal TRAIN action frames → frozen structural catalog; at each future step current/predicted state + catalog + structural choice → causal Task/relation/Exec/UAV binding → complete CandidateActionStep → multidimensional support label/admission. An admitted CandidateActionSequence can use the existing adapter/rollout/scorer; the grammar itself does not call them. `H_sup` remains pending until actual rollout. Validation is descriptive only and never alters the TRAIN catalog.

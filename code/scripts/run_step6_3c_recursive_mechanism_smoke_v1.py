@@ -101,7 +101,11 @@ def main() -> None:
                             "domain_reason": candidate_domain.empty_reason}
                 budget.dead_end()
                 break
-            bound = next(candidate_domain.iter_bound())
+            # Keep the accepted fixture's H1 nonempty Comm mechanism visible
+            # after the patch made Comm NOOP legal with eligible Tasks.
+            choices = candidate_domain.iter_bound()
+            bound = (next(item for item in choices if item.action.comm)
+                     if target_depth == 1 else next(choices))
             before_fp = node.fingerprints
             budget.proposed(True)
             result, hit = budget.evaluate(node, bound, lambda: rollout_one_step(
@@ -113,7 +117,9 @@ def main() -> None:
             transitions.append({"horizon": target_depth,
                                 "domain_structural_mode_count": len(candidate_domain.modes),
                                 "domain_exact_concrete_count": candidate_domain.exact_unique_single_step_count,
-                                "choice_rule": "first canonical grammar iteration; mechanism fixture only",
+                                "choice_rule": ("first canonical nonempty Comm at H1; mechanism fixture only"
+                                                if target_depth == 1 else
+                                                "first canonical grammar iteration; mechanism fixture only"),
                                 "structural_signature": list(bound.structural_signature),
                                 "action_fingerprint": action_step_fingerprint(bound.action),
                                 "input_fingerprints": before_fp,

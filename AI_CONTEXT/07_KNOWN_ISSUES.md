@@ -1,5 +1,9 @@
 # 已知问题与冲突
 
+## 2026-09-29 STEP 6.3B/6.3C-PATCH 剩余边界
+
+原全 eligible Task 覆盖规则与部分选择的冲突已由研究者正式决定解决。TRAIN 4416 H1 投影中，728 条依赖同决策 offload Route 的历史 Comm 行排除，任务数量条件拒绝为 0；1 个投影后未见通信结构、349 个 Comp alpha 不符、15 个正请求但 CPU base 为零、6 个未见联合结构仍拒绝，不因追求 100% 重放而放宽。TRAIN/Validation 静态空域为 14/4416、6/1104；结构准入 4045/4416 中，逐字段语义重放 3920 通过，125 个 Comp amount 差异超过既定绝对容差 `1e-7`（最大 `2.9793e-7`），未调整容差。没有 GPU、训练或 `locked_test`。
+
 ## 2026-09-29 STEP 6.3C
 
 Static TRAIN feasibility shows 1935/4416 anchors with no formal candidate under the frozen joint-support and causal Comp rules. This is recorded evidence, not a license to widen support. The audit does not provide dynamic H2-H4 feasibility rates; `H_sup` remains a post-rollout scorer result. Candidate cardinalities can exceed 300 million, so full materialization is prohibited. Future optimizer work must preserve the shared domain, interleaved rebinding and `B_WM` contract.

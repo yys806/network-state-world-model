@@ -15,6 +15,16 @@ from pi_jwm.step6_3b_candidate_grammar_v1 import admit_structured_candidate
 from pi_jwm.step6_3b_candidate_support_v1 import TrainStructuralSupportCatalog
 
 
+class SelectedTaskCountTests(unittest.TestCase):
+    def test_noop_is_one_choice_with_eligible_tasks(self):
+        self.assertEqual(count_comm_multisets(2, (), {1: 50, 2: 50, 3: 45}, (0,)), 1)
+
+    def test_selected_one_of_two_tasks(self):
+        self.assertEqual(count_comm_multisets(2, (1,), {1: 2}, (1,)), 4)
+        self.assertEqual(count_comm_multisets(2, (1,), {1: 2}, (2,)), 0)
+        self.assertEqual(count_comm_multisets(2, (1, 1), {1: 2}, (1, 2)), 10)
+
+
 class CandidateDomainTests(unittest.TestCase):
     def test_symbolic_comm_multiset_count_equals_bruteforce(self):
         starts = {1: 2, 2: 1, 3: 0}
@@ -55,7 +65,7 @@ class CandidateDomainTests(unittest.TestCase):
         tiny = TrainStructuralSupportCatalog("synthetic", frozenset((signature,)),
             tuple(frozenset((signature[i],)) for i in range(3)),
             (frozenset(((signature,),)), frozenset(), frozenset(), frozenset()),
-            frozenset(), frozenset(((0, 1),)))
+            frozenset(), frozenset(((0, 1),)), {"NOOP": frozenset({0})})
         candidate_domain = CandidateDomain.from_state(context, domain, state, control, tiny)
         self.assertTrue(candidate_domain.is_empty)
         self.assertEqual(candidate_domain.exact_unique_single_step_count, 0)
@@ -71,7 +81,7 @@ class CandidateDomainTests(unittest.TestCase):
             tuple(frozenset(sig[i] for sig in signatures) for i in range(3)),
             (frozenset((sig,) for sig in signatures), frozenset(),
              frozenset(), frozenset()), frozenset(),
-            frozenset(((0, 1), (1, 1))))
+            frozenset(((0, 1), (1, 1))), {"rows:1": frozenset({1})})
         candidate_domain = CandidateDomain.from_state(context, domain, state, control, tiny)
         concrete = list(candidate_domain.iter_bound())
         unique_frames = {str(bound.action.frame()) for bound in concrete}

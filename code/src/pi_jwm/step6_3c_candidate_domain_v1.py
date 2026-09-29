@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from itertools import combinations_with_replacement
+from itertools import combinations, combinations_with_replacement
 from typing import Iterator, Mapping, Sequence
 
 import torch
@@ -33,8 +33,8 @@ def _widths(signature: str) -> tuple[int, ...] | None:
     return widths if widths and len(widths) <= 4 and all(w in (1, 2, 3) for w in widths) else None
 
 
-def count_comm_multisets(task_count: int, widths: Sequence[int],
-                         pair_counts: Mapping[int, int]) -> int:
+def _count_covering_multisets(task_count: int, widths: Sequence[int],
+                              pair_counts: Mapping[int, int]) -> int:
     """Inclusion-exclusion: unique row multisets covering every eligible Task.
 
     For each width group of multiplicity m, choose a multiset of (Task,start)
@@ -59,11 +59,26 @@ def count_comm_multisets(task_count: int, widths: Sequence[int],
     return total
 
 
+def count_comm_multisets(task_count: int, widths: Sequence[int],
+                         pair_counts: Mapping[int, int],
+                         selected_task_counts: Sequence[int] | None = None) -> int:
+    """Count canonical rows over TRAIN-supported selected-task subset sizes."""
+    selected_task_counts = ((task_count,) if selected_task_counts is None
+                            else tuple(sorted(set(int(value) for value in selected_task_counts))))
+    if not widths:
+        return int(0 in selected_task_counts)
+    return sum(math.comb(task_count, selected) * _count_covering_multisets(
+        selected, widths, pair_counts)
+        for selected in selected_task_counts
+        if 1 <= selected <= min(task_count, len(widths)))
+
+
 @dataclass(frozen=True)
 class StructuralMode:
     signature: Signature
     widths: tuple[int, ...]
     comm_concrete_count: int
+    selected_task_counts: tuple[int, ...]
 
 
 @dataclass(frozen=True)
@@ -131,9 +146,12 @@ class CandidateDomain:
             widths = _widths(comm)
             if widths is None:
                 continue
-            count = count_comm_multisets(len(wireless), widths, pair_counts)
+            selected_counts = tuple(sorted(catalog.comm_selected_task_counts.get(comm, frozenset())))
+            if not selected_counts:
+                continue
+            count = count_comm_multisets(len(wireless), widths, pair_counts, selected_counts)
             if count:
-                modes.append(StructuralMode(signature, widths, count))
+                modes.append(StructuralMode(signature, widths, count, selected_counts))
         return cls(context, operational_domain, state, mobility_control, catalog,
                    tuple(prior_signatures), wireless, base, present, tuple(modes), starts,
                    None if modes else "NO_TRAIN_OBSERVED_JOINT_STRUCTURE_COMPATIBLE",
@@ -168,19 +186,26 @@ class CandidateDomain:
             mob = ("PROFILE_HOLD" if mode.signature[2] in ("NOOP", ",".join("HOLD" for _ in self.present_uav_slots))
                    else mode.signature[2].split(",")[0])
 
-            def rows_at(index: int, accumulated: tuple[CommBlockChoice, ...]) -> Iterator[tuple[CommBlockChoice, ...]]:
-                if index == len(groups):
-                    if {row.task_id for row in accumulated} == set(tasks):
-                        yield accumulated
-                    return
-                width, multiplicity = groups[index]
-                options = tuple(CommBlockChoice(task, start, width)
-                                for task in tasks for start in self.pair_starts_by_width[width])
-                for row_indices in combinations_with_replacement(range(len(options)), multiplicity):
-                    yield from rows_at(index + 1, accumulated + tuple(options[i] for i in row_indices))
-
-            for rows in rows_at(0, ()):
-                yield StructuredStepChoice(rows, comp, mob)
+            for selected_count in mode.selected_task_counts:
+                if selected_count == 0 and not mode.widths:
+                    yield StructuredStepChoice((), comp, mob)
+                    continue
+                if not 1 <= selected_count <= len(tasks):
+                    continue
+                for selected_tasks in combinations(tasks, selected_count):
+                    selected = set(selected_tasks)
+                    def rows_at(index: int, accumulated: tuple[CommBlockChoice, ...]) -> Iterator[tuple[CommBlockChoice, ...]]:
+                        if index == len(groups):
+                            if {row.task_id for row in accumulated} == selected:
+                                yield accumulated
+                            return
+                        width, multiplicity = groups[index]
+                        options = tuple(CommBlockChoice(task, start, width)
+                                        for task in selected_tasks for start in self.pair_starts_by_width[width])
+                        for row_indices in combinations_with_replacement(range(len(options)), multiplicity):
+                            yield from rows_at(index + 1, accumulated + tuple(options[i] for i in row_indices))
+                    for rows in rows_at(0, ()):
+                        yield StructuredStepChoice(rows, comp, mob)
 
     def iter_bound(self) -> Iterator[BoundStructuredStep]:
         for choice in self.iter_choices():

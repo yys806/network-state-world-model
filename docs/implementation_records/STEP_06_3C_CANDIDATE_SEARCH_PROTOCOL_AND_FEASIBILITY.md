@@ -1,5 +1,7 @@
 # STEP 6.3C — Candidate Search Protocol and Domain Feasibility Closure v1
 
+> 2026-09-29 supersession: STEP 6.3B/6.3C-PATCH changed only the researcher-approved Comm Task selection boundary and the resulting static domain cardinalities. The original 1935/4416 TRAIN and 550/1104 Validation empty-domain counts below are historical before-patch values. Current counts and projected H1 residuals belong in `STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md` and the new patch receipt.
+
 ## Step Goal and Definition Basis
 
 Implement a search-independent, state-conditioned CandidateDomain; a one-step recursive frozen World Model primitive; a shared prefix and `B_WM` accounting contract; and all-anchor static domain feasibility evidence. The researcher explicitly froze interleaved search, no automatic horizon backoff, temporal support as diagnostic only, and candidate one-step transitions as the primary fair compute unit. STEP 6.3B grammar, Route no-op and Objective are not changed. No optimizer, ranking, baseline, closed loop, GPU, training or locked test belongs to this Step.

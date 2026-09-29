@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-29 STEP 6.3B/6.3C-PATCH
+
+研究者将 Comm 全 eligible Task 覆盖改为当前已有无线 Flow 唯一绑定的 Task 中按 TRAIN 结构条件数量选子集。代码、合同、TRAIN 支持目录、4416 H1 raw/projected/排除行审计和 4416/1104 静态域收据同步；余下结构/Comp/joint 失败保留。H1–H4 非空 Comm 机制路径继续与冻结模型顺序推演等价。无搜索器、排名、GPU、训练、`locked_test` 或闭环。
+
 ## 2026-09-29 STEP 6.3C
 
 新增 `CandidateDomain`、`SearchNode`、one-step frozen rollout primitive、lazy/symbolic cardinality and budget/cache receipts. Full TRAIN/Validation static audits and recursive equivalence smoke passed. `STEP_6_3C=PASS`; no optimizer or closed-loop execution.

@@ -74,33 +74,36 @@ def _bool(state: Mapping[str, torch.Tensor], name: str, slot: int) -> bool:
 
 def _wireless_bindings(state: Mapping[str, torch.Tensor],
                        task_ids: Mapping[str, int]) -> dict[str, int]:
-    """Resolve active fixed-support Flow -> current wireless relation uniquely."""
+    """Return only Tasks with one valid existing wireless Flow binding."""
     inverse = {int(slot): str(task_id) for task_id, slot in task_ids.items()}
-    resolved: dict[str, int] = {}
+    candidates: dict[str, list[int]] = {}
+    unresolved: set[str] = set()
     for flow in range(state["flow_presence"].shape[1]):
         if not (_bool(state, "flow_known", flow) and _bool(state, "flow_presence", flow)
                 and _bool(state, "carrying_active", flow)):
             continue
         task_slot = _int(state, "flow_task_index", flow)
         if task_slot not in inverse or not _bool(state, "task_presence", task_slot):
-            raise CandidateGrammarViolation("ACTIVE_FLOW_TASK_OUTSIDE_CAUSAL_SUPPORT")
+            continue
+        task_id = inverse[task_slot]
         relation = _int(state, "flow_comm_relation_index", flow)
         if relation < 0:
-            raise CandidateGrammarViolation("ACTIVE_FLOW_COMM_RELATION_UNRESOLVED")
+            unresolved.add(task_id)
+            continue
         if relation >= state["comm_presence"].shape[1] or not (
                 _bool(state, "comm_presence", relation)
                 and _bool(state, "comm_validity", relation)):
-            raise CandidateGrammarViolation("ACTIVE_FLOW_COMM_RELATION_INVALID")
+            unresolved.add(task_id)
+            continue
         if (_int(state, "comm_source_index", relation) != _int(state, "carrying_hop_source_index", flow)
                 or _int(state, "comm_target_index", relation) != _int(state, "carrying_hop_destination_index", flow)):
-            raise CandidateGrammarViolation("FLOW_COMM_ENDPOINT_BINDING_MISMATCH")
+            unresolved.add(task_id)
+            continue
         if not _bool(state, "comm_wireless_mask", relation):
             continue  # wired service has no RB action row
-        task_id = inverse[task_slot]
-        if task_id in resolved:
-            raise CandidateGrammarViolation("TASK_HAS_AMBIGUOUS_ACTIVE_WIRELESS_FLOWS")
-        resolved[task_id] = relation
-    return resolved
+        candidates.setdefault(task_id, []).append(relation)
+    return {task_id: relations[0] for task_id, relations in candidates.items()
+            if task_id not in unresolved and len(relations) == 1}
 
 
 def _compute_base(state: Mapping[str, torch.Tensor], task_ids: Mapping[str, int],
@@ -162,12 +165,21 @@ def bind_structured_step(choice: StructuredStepChoice,
     n_rb = int(state["rb_active_mask"].shape[-1])
     if len(choice.comm) > 4:
         raise CandidateGrammarViolation("COMM_ROW_COUNT_OUTSIDE_TRAIN_SUPPORT")
-    if {row.task_id for row in choice.comm} != set(wireless):
-        raise CandidateGrammarViolation("COMM_TASK_COVERAGE_DIFFERS_FROM_CAUSAL_ELIGIBILITY")
+    if any(block.width not in (1, 2, 3) or not 0 <= block.start_rb < n_rb
+           for block in choice.comm):
+        raise CandidateGrammarViolation("COMM_BLOCK_OUTSIDE_TRAIN_CORE")
+    comm_signature_hint = ("NOOP" if not choice.comm else
+                           "rows:" + ",".join(map(str, sorted(row.width for row in choice.comm))))
+    selected_tasks = {row.task_id for row in choice.comm}
+    if comm_signature_hint not in catalog.comm_selected_task_counts:
+        raise CandidateGrammarViolation("COMM_STRUCTURAL_SIGNATURE_UNSEEN_IN_TRAIN")
+    allowed_counts = catalog.comm_selected_task_counts.get(comm_signature_hint, frozenset())
+    if len(selected_tasks) not in allowed_counts:
+        raise CandidateGrammarViolation("COMM_SELECTED_TASK_COUNT_OUTSIDE_TRAIN_SUPPORT")
+    if any(task_id not in wireless for task_id in selected_tasks):
+        raise CandidateGrammarViolation("COMM_TASK_OUTSIDE_CAUSAL_ELIGIBILITY")
     comm_rows = []
     for block in choice.comm:
-        if block.width not in (1, 2, 3) or not 0 <= block.start_rb < n_rb:
-            raise CandidateGrammarViolation("COMM_BLOCK_OUTSIDE_TRAIN_CORE")
         if (block.start_rb, block.width) not in catalog.comm_start_width_pairs:
             raise CandidateGrammarViolation("COMM_START_WIDTH_PAIR_UNSEEN_IN_TRAIN")
         comm_rows.append({"task_id": block.task_id, "task_index": int(tasks[block.task_id]),

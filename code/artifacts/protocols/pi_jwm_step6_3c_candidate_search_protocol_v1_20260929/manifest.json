@@ -1,12 +1,46 @@
 {
-  "step": "STEP_6_3C",
-  "verdict": "PASS",
   "files": [
-    {"path": "01_formal_train_domain_feasibility.json", "bytes": 1980404, "sha256": "98bb071d129a2948244b69afac4a82d4821766cc669fea725659548b00f6de64"},
-    {"path": "02_formal_validation_domain_descriptive.json", "bytes": 498444, "sha256": "3de1c01afe6a01eed31c6edef76d57302bb12d002d0ba026e0e9a799ca7bb5b0"},
-    {"path": "03_recursive_mechanism_smoke.json", "bytes": 6414, "sha256": "611cc3916f031144138063cb47a1e85fa4cbda4ad4aff219086d33a8e5900dd3"},
-    {"path": "04_budget_and_cache_contract.json", "bytes": 808, "sha256": "60a7fb10318f85d3f76a87cf4ec84701c84464d32a9734314d94ea224dbc3623"},
-    {"path": "05_step6_3c_acceptance.json", "bytes": 1071, "sha256": "dfe16fa62f03df2183969d3535e491064dac850c24270564cb45e6734597f967"}
+    {
+      "bytes": 1932367,
+      "path": "01_formal_train_domain_feasibility.json",
+      "sha256": "d14057fb3afce6bc4d4ec69352f8b664a1911f7712b6928e32f0c51afdcc4ab4"
+    },
+    {
+      "bytes": 485532,
+      "path": "02_formal_validation_domain_descriptive.json",
+      "sha256": "266ca91c4038b360f9adc8974377858959e515db3789a83ca4454a36eb50ab75"
+    },
+    {
+      "bytes": 6414,
+      "path": "03_recursive_mechanism_smoke.json",
+      "sha256": "b911798e5642224a80f374a8e09a6d27ac5c43232da165c66d2d60b9f2200990"
+    },
+    {
+      "bytes": 808,
+      "path": "04_budget_and_cache_contract.json",
+      "sha256": "60a7fb10318f85d3f76a87cf4ec84701c84464d32a9734314d94ea224dbc3623"
+    },
+    {
+      "bytes": 1204,
+      "path": "05_step6_3c_acceptance.json",
+      "sha256": "108e1ce82fa0c5ef5de91a32b214986e02afdebfbffa1b44bcc9828946d89371"
+    },
+    {
+      "bytes": 12656897,
+      "path": "06_train_h1_projected_self_replay.json",
+      "sha256": "f2b809fbce8c9bccbc23dcd2c1571efbd25cd381e647df2d2ca27cfe402a1e52"
+    },
+    {
+      "bytes": 3063,
+      "path": "07_step6_3bc_patch_acceptance.json",
+      "sha256": "1ede11b6af0f9a8a1cf311c9355310f490189d1ccd8e07094cfd6267a0926a80"
+    },
+    {
+      "bytes": 1756,
+      "path": "08_comp_amount_residual_diagnostic.json",
+      "sha256": "8aa09c01beabc2a538af4ff993df0c659cd122abdd3f814f984077e3e85f056b"
+    }
   ],
-  "sha256_check": "verified 2026-09-29; manifest self-hash excluded"
+  "status": "PASS_FOR_COMM_TASK_SELECTION_AND_PROJECTED_H1_AUDIT",
+  "step": "STEP_6_3BC_PATCH"
 }

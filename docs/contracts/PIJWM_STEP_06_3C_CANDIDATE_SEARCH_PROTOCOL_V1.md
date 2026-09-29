@@ -14,11 +14,11 @@ H2–H4 concrete identity, relation and CPU base are never bound at H0. The `Sea
 
 ## Exact symbolic one-step cardinality
 
-For a TRAIN-observed Comm width multiset with multiplicity `m_w`, current eligible wireless Task count `T`, and TRAIN-supported RB starts `P_w` for width `w`, the number of **unique canonical** Comm row multisets covering all `T` Tasks is
+For a TRAIN-observed Comm width multiset with multiplicity `m_w`, current bindable wireless Task count `T`, and TRAIN-supported RB starts `P_w` for width `w`, let `K(signature)` be the TRAIN-observed unique selected-task counts for that Comm signature. For each `k∈K(signature)`, choose `k` of the `T` current Tasks, then count unique canonical row multisets covering exactly those `k` selected Tasks:
 
-`C_Comm(T,{m_w}) = Σ_{j=0}^T (-1)^j binom(T,j) Π_w binom((T-j)P_w + m_w - 1,m_w)`.
+`C_Comm(T,{m_w},K) = Σ_{k∈K,1≤k≤min(T,r)} binom(T,k) Σ_{j=0}^k (-1)^j binom(k,j) Π_w binom((k-j)P_w + m_w - 1,m_w)`, where `r=Σ_w m_w` is the number of Comm rows.
 
-The zero-alternative term is zero for positive `m_w`. If no Comm rows, the count is one only when `T=0`. Repeated identical rows are counted once as a multiset; row permutations are not new actions. The implementation cross-checks this count against brute-force enumeration on bounded synthetic domains. A compatible joint structural mode contributes its Comm count times its one Comp alpha and one shared Mob profile. Across modes, the exact one-step count is their sum after excluding states where numeric Comp alpha is unidentifiable. Counts are integer symbolic values; full concrete spaces are never materialized merely to count them. Lazy iteration binds only actions requested by a caller.
+The zero-alternative term is zero for positive `m_w`. With no Comm rows, the count is one when selected count zero is TRAIN-supported, even if `T>0`. Repeated identical rows are counted once as a multiset; row permutations are not new actions. The implementation cross-checks this count against brute-force enumeration on bounded synthetic domains. A compatible joint structural mode contributes its Comm count times its one Comp alpha and one shared Mob profile. Across modes, the exact one-step count is their sum after excluding states where numeric Comp alpha is unidentifiable. Counts are integer symbolic values; full concrete spaces are never materialized merely to count them. Lazy iteration binds only actions requested by a caller.
 
 ## Dead ends and horizon
 

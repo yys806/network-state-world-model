@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## 2026-09-29 STEP 6.3B/6.3C-PATCH 通信任务选择
+
+研究者已批准当前可唯一绑定到**已有无线 Flow** 的 Task 集合 `E_comm(t)` 中按 TRAIN 通信结构的已见任务数量选择子集。`step6_3b_candidate_grammar_v1.py` 负责逐步绑定和准入；`step6_3c_candidate_domain_v1.py` 用相同条件计数并惰性枚举。未选任务只是不在当前时隙调度。依赖同决策 Route 才能产生 Flow 的历史 Comm 行由审计层排除，并与原始动作分开保存；Route 仍显式空。其余 Comp/Mob/联合结构/时间标签、World Model、`B_WM` 和 Objective 不变。
+
 ## 2026-09-29 STEP 6.3C CandidateDomain / rollout boundary
 
 `step6_3c_candidate_domain_v1.py` is the only search-independent candidate-domain entry. It derives current eligibility, TRAIN-observed joint structures and concrete causal bindings lazily; it never materializes the full domain. `step6_3c_search_protocol_v1.py` supplies the shared prefix node and one-transition `B_WM` accounting/cache. Interleaved search rebuilds the domain after every frozen-model transition. Empty H1 is `NO_FORMAL_CANDIDATE`; later empty branches are `GRAMMAR_DEAD_END`; no fallback or horizon backoff is introduced.

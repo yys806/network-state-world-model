@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-29：STEP 6.3B/6.3C-PATCH 收口
+
+研究者冻结 Comm 当前可绑定 Task 子集选择与 TRAIN 条件 selected-task-count 支持；Route-created Flow 历史行从 Planner-v1 投影目标排除并保留 raw provenance。新增 4416 TRAIN H1 projected self-replay、Comp residual 诊断和接受收据；更新 CandidateDomain 前后统计、AI_CONTEXT、authority/process records、registry 和索引。Comp 精确值差异及未见结构残余保留；未进入 6.3D。
+
 ## 2026-09-29 STEP 6.3B
 
 Frozen the Formal TRAIN-backed Planner v1 Comm/Comp/shared-Mob structured candidate grammar and joint-support admission policy. Added TRAIN-only catalog, multidimensional support labels, state-conditioned validator, and focused tests; corrected the 6.0A repeated-Task Comm row rejection. Route no-op, Objective, model and checkpoint are unchanged. This is no optimizer or performance claim.
@@ -330,3 +334,6 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 - 接受 no-retrain checkpoint salvage，保持 best SHA 与 11 learned action tensor interface。
 - 新增 Planner v1 single-hop Route admission gate 与 burden contract test；同步 closure receipts、Objective/Baseline contracts、AI_CONTEXT 和 readiness。
 - 未执行 scorer、candidate ranking、baseline、closed loop、GPU、locked_test 或 patched full validation。
+## 2026-09-29 — STEP 6.3B/6.3C-PATCH 恢复审计（未验收）
+
+- 从未提交工作区复核 Comm Task 选择与 TRAIN H1 自重放，发现候选池边界与冻结合同冲突，6.3B 定向测试 3/11 失败；详情见 `docs/implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md`。未提交或推送该补丁，未运行 GPU、训练或 `locked_test`。

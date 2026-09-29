@@ -1240,3 +1240,6 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 实现 supplied-trace scorer/严格字典序；Comm denominator 真值从 242 relation rows 修正为 50 global RB IDs。10 项 scorer focused 与 11 项 side-state focused 通过；冻结 checkpoint 在 validation anchor-0001 的两候选 H4 CPU 机制集成通过。Route audit 发现 pending Flow action 仍被 admission 接受但规则不创建 Flow；同路径 Route 提前改 Host。验收保持 `BLOCKED_ON_OBJECTIVE_SEMANTICS`；未执行 GPU、locked_test、训练、baseline、闭环或性能评估。
 
 2026-09-29：STEP 6.3C 完成。CandidateDomain、共享 one-step rollout 与 B_WM/cache 合同已验证；TRAIN 4416、Validation 1104 静态审计完成，STEP_6_3C=PASS。未执行搜索优化器、GPU、训练、locked_test、baseline 或闭环。
+## 2026-09-29 STEP 6.3B/6.3C-PATCH 恢复审计（已收口）
+
+研究者批准 Comm 部分选择及 Route-created Flow 排除后，补丁合同、源码、测试和收据已对齐。TRAIN 4416 H1 完成 raw/projected/excluded 审计；728 行排除，任务数量拒绝为 0。TRAIN/Validation 空域为 14/4416 与 6/1104；完整结构准入 4045/4416，语义字段 3920 通过，125 个 Comp amount 差异保留（绝对差中位数 `1.4475e-7`，最大 `2.9793e-7`，不改 `1e-7` 容差）。定向回归、编译、索引与 diff 检查通过。未运行 GPU、训练、baseline、闭环或 `locked_test`；不进入 6.3D。

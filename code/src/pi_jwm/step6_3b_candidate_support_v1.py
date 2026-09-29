@@ -34,6 +34,7 @@ class TrainStructuralSupportCatalog:
     temporal_prefixes: tuple[frozenset[tuple[Signature, ...]], ...]
     adjacent_pairs: frozenset[tuple[Signature, Signature]]
     comm_start_width_pairs: frozenset[tuple[int, int]]
+    comm_selected_task_counts: Mapping[str, frozenset[int]]
 
     @classmethod
     def from_json(cls, path: str | Path) -> "TrainStructuralSupportCatalog":
@@ -55,11 +56,22 @@ class TrainStructuralSupportCatalog:
         marginal = tuple(frozenset(signature[i] for signature in joint) for i in range(3))
         pairs = frozenset((int(row["start"]), int(row["width"]))
                           for row in raw["comm_start_width_pairs"])
+        selected = {str(key): frozenset(int(value) for value in values)
+                    for key, values in raw["comm_selected_task_counts"].items()}
+        comm_signatures = {signature[0] for signature in joint}
+        if set(selected) != comm_signatures:
+            raise ValueError("TRAIN selected-task-count support must cover every Comm signature")
+        for signature, counts in selected.items():
+            row_count = 0 if signature == "NOOP" else len(signature.removeprefix("rows:").split(","))
+            if not counts or any(count < 0 or count > row_count for count in counts):
+                raise ValueError("invalid TRAIN selected-task-count support")
+            if signature == "NOOP" and counts != frozenset({0}):
+                raise ValueError("NOOP selected-task-count support must be zero")
         adjacent = frozenset((sequence[i], sequence[i + 1])
                              for horizon in temporal[1:] for sequence in horizon
                              for i in range(len(sequence) - 1))
         return cls(str(raw["dataset_manifest_sha256"]), joint, marginal, temporal,
-                   adjacent, pairs)
+                   adjacent, pairs, selected)
 
     def label(self, signature: Signature, prior: Sequence[Signature] = (), *,
               causal_binding: str = "VALID", fixed_support: str = "PENDING_ROLLOUT",

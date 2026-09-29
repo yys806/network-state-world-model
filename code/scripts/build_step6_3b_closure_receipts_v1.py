@@ -31,6 +31,8 @@ def main() -> None:
     assert step63a["STEP_6_3A"] == "PASS" and step62b["STEP_6_2B"] == "PASS"
     assert train["source"] == "FORMAL_TRAIN_ONLY"
     assert catalog["source"] == "FORMAL_TRAIN_ONLY" and len(catalog["joint_structural_signatures"]) == 251
+    assert train["comm_selected_task_counts"] == catalog["comm_selected_task_counts"]
+    assert catalog["comm_selected_task_counts"]["NOOP"] == [0]
     assert validation["validation_used_for_template_or_policy_selection"] is False
     assert train["raw_slots_with_same_task_multiple_comm_rows"] == 293
     assert train["eligible_with_empty_action_count"] == {"comm": 0, "comp": 0, "mobility": 0}
@@ -44,6 +46,9 @@ def main() -> None:
     write("04_researcher_policy_closure.json", {**common,
           "researcher_decisions": {
               "same_task_multirow_comm": "ALLOW_ON_UNIQUE_CURRENT_WIRELESS_RELATION",
+              "comm_eligible_set": "TASKS_WITH_UNIQUE_BINDING_TO_EXISTING_CURRENT_WIRELESS_FLOW",
+              "comm_task_selection": "SUBSET_WITH_TRAIN_SIGNATURE_CONDITIONAL_SELECTED_TASK_COUNT",
+              "route_created_flow_comm_rows": "EXCLUDED_FROM_PLANNER_V1_PROJECTION",
               "mobility_formal_pool": "SHARED_PROFILE_ONLY",
               "joint_formal_pool": "FORMAL_TRAIN_OBSERVED_STRUCTURAL_TRIPLES_ONLY",
               "joint_unseen_marginal_seen": "FUTURE_ABLATION_ONLY",
@@ -58,6 +63,7 @@ def main() -> None:
           "train_comm_start_width_pair_count": len(catalog["comm_start_width_pairs"]),
           "train_max_comm_rows_per_slot": max(map(int, train["raw_comm_row_count_per_slot"])),
           "train_same_task_multirow_raw_slots": train["raw_slots_with_same_task_multiple_comm_rows"],
+          "train_comm_selected_task_counts_by_signature": catalog["comm_selected_task_counts"],
           "support_axes": ["family_marginal", "joint_structural", "temporal_prefix",
                            "temporal_adjacent", "causal_binding", "fixed_support", "h_sup"],
           "concrete_identity_rebound_from_current_state": True,
@@ -78,7 +84,7 @@ def main() -> None:
                                   "test_step6_0a_candidate_generation_v1.py",
                                   "test_step6_0c_planner_action_domain_v1.py",
                                   "test_step6_2b_planner_objective_scorer_v1.py"],
-          "focused_test_counts": {"step6_3b": 11, "step6_0a": 6,
+          "focused_test_counts": {"step6_3b": 18, "step6_0a": 6,
                                   "step6_0c": 15, "step6_2b": 11},
           "compileall": "PASS", "method_selected": False,
           "checkpoint_sha256_expected_from_prior_acceptance":
@@ -87,6 +93,7 @@ def main() -> None:
           "remaining_limits": ["TRAIN-only future Return H_sup histogram unavailable",
                                "future Comp needs explicit predicted computing and unique Exec relation",
                                "temporally unseen sequence generalization untested",
+                               "raw historical Route-created Comm rows are outside Planner-v1 projected replay",
                                "concrete action composition beyond structural signature is not exact TRAIN replay"]})
     files = sorted(p for p in OUT.glob("*.json") if p.name != "manifest.json")
     manifest = {"step": "STEP_6_3B", "STEP_6_3B": "PASS",

@@ -2,6 +2,29 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
+      "id": "STEP-6.3D-CANDIDATE-OPTIMIZER-SELECTION",
+      "type": "candidate_method_research",
+      "status": "deferred",
+      "reason": "The researcher authorized only STEP 6.3B/6.3C-PATCH closure and explicitly prohibited starting STEP 6.3D or implementing Random Search/CEM in this task.",
+      "summary_zh": "STEP 6.3D 候选优化器选择未授权；本补丁收口后停止，不自动实现 Random Search 或 CEM。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": null,
+      "required_predecessors": [
+        "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json",
+        "researcher review and separate STEP 6.3D authorization"
+      ],
+      "forbidden_until_authorized": [
+        "Random Search implementation",
+        "CEM implementation",
+        "candidate ranking experiment",
+        "closed-loop execution",
+        "GPU run",
+        "locked_test access"
+      ]
+    },
+    {
       "id": "P4-SEED-20260832",
       "type": "formal_gpu_training",
       "status": "deferred",

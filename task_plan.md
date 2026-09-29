@@ -1654,3 +1654,10 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [ ] Formal TRAIN 全 4416 H1 anchors 与 Validation 全 1104 anchors 的静态域审计正在执行。
 - [ ] 汇总收据、合同、Context/index、定向回归、commit/push。
 - 当前 gate：等待全量域统计并核对是否存在新的源码冲突；唯一下一动作是审计收口。优化器、排名、GPU、训练、`locked_test`、baseline、闭环关闭。
+## 2026-09-29 STEP 6.3B/6.3C-PATCH — 已完成，等待研究者审阅
+
+- [x] 从未提交工作区恢复补丁，核对 6.3B 冻结合同、候选域改动和 TRAIN 自重放机器产物。
+- [x] 复跑 6.3B/6.3C 定向测试、TRAIN/Validation CandidateDomain、4416 H1 raw/projected/excluded 审计、Comp 残差诊断和验收收据。
+- [x] 完成合同、索引、Context Consistency、过程记录与 Git 收口。
+- 当前限制：Comm 任务数量拒绝 0；728 条 Route-created Flow 行排除；结构准入 4045/4416，语义字段 3920 通过，125 个 Comp 数值差异及其它残余保留，不放宽策略。
+- 唯一下一动作：研究者审阅本 Step；停止于 6.3B/6.3C-PATCH，不进入 6.3D，不实现 Random Search/CEM，不运行 GPU、训练、baseline、闭环或 `locked_test`。

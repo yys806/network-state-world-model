@@ -1,5 +1,12 @@
 # 模块导航地图
 
+## 2026-09-29 STEP 6.3B/6.3C-PATCH
+
+- `code/src/pi_jwm/step6_3b_candidate_grammar_v1.py`：当前已有无线 Flow 的唯一 Task 绑定、TRAIN 结构条件下的选中任务数准入。
+- `code/src/pi_jwm/step6_3c_candidate_domain_v1.py`：同一条件支持的符号计数和 lazy 子集枚举，含有 eligible Task 时的 Comm NOOP。
+- `code/scripts/run_step6_3bc_train_self_replay_v1.py`：逐锚点保存 raw historical action、Planner-v1 projected action、被排除的 Comm/Route 行及拒绝原因。
+- `code/scripts/build_step6_3bc_patch_acceptance_v1.py`：验证全量审计、残余分类和前后候选域收据。它不运行搜索器。
+
 ## 2026-09-29 STEP 6.3C
 
 - `code/src/pi_jwm/step6_3c_candidate_domain_v1.py`: lazy state-conditioned CandidateDomain, structural-mode filtering, canonical Comm multiset counting, and binding through the frozen 6.3B admission path.

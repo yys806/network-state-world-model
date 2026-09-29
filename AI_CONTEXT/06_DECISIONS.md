@@ -1,12 +1,16 @@
 # 已确认决策
 
+## 2026-09-29 STEP 6.3B/6.3C-PATCH — Researcher Decision
+
+研究者明确删除 6.3B 旧的“全部当前 eligible wireless Task 必须有 Comm row”要求。Planner v1 的 `E_comm(t)` 只含能从当前 causal/predicted state 中**已有** wireless Flow 唯一绑定的 Task；当步实际选中集合 `S_comm(t) ⊆ E_comm(t)`，未选任务只是本时隙未调度。对每个 TRAIN 已见 Comm row-width 结构，仅允许 TRAIN 在该结构下观察过的 unique selected-task-count；每个选中 Task 至少一行，同 Task 可多行。依赖同一 decision 的 Route 动作才新建/启动 Flow 的历史 Comm row 不进入 Planner v1 正式候选或自重放目标；保留原始 TRAIN，并分开报告原始动作、Planner v1 投影和排除行原因。Route 显式空、145 个 `(start,width)`、width 1/2/3、251 个 joint 签名、Comp/Mob、时间标签、CandidateDomain、interleaved rollout、`B_WM`、Objective、冻结模型/检查点均不变。其余残余失败不得为追求 100% 重放而放宽政策。
+
 ## 2026-09-29 STEP 6.3C — Protocol implementation boundary
 
 Researcher-frozen 6.3B grammar and admission are unchanged. The implementation fact is that all future search methods must call one state-conditioned CandidateDomain and one interleaved one-step rollout protocol; `B_WM` counts unique admitted candidate-step transitions, with deterministic cache hits free. This is an implementation contract, not a choice of optimizer. Empty domains remain explicit dead ends and do not trigger horizon backoff.
 
 ## 2026-09-29 STEP 6.3B — Researcher Decisions
 
-- Planner v1 允许一个 Task 多条 Comm row；修正旧 6.0A 重复 Task 拒绝。每 row 保持 TRAIN width 1/2/3、循环连续 block，正式池按 TRAIN 观察到的 `(start,width)` 对与当前因果关系绑定；有 eligible wireless Task 时每个都要有 row。
+- Planner v1 允许一个 Task 多条 Comm row；修正旧 6.0A 重复 Task 拒绝。每 row 保持 TRAIN width 1/2/3、循环连续 block，正式池按 TRAIN 观察到的 `(start,width)` 对与当前因果关系绑定。旧“有 eligible wireless Task 时每个都要有 row”要求已由上方 6.3B/6.3C-PATCH 研究者决定取代。
 - 正式 Mobility 候选只允许在场 UAV 共享同一个 HOLD/PROFILE_1–5；底层 6.0C 独立控制接口不因此删除。
 - 正式候选池只准 Formal TRAIN 已见的 Comm–Comp–Mob 联合结构；边际已见但联合未见只保留未来消融标签。时间支持只贴标签，相邻历史转移不作硬门槛。
 - 有当前可分配 computing Task 时 Comp 必须按现有因果 CPU base 与全局 alpha `{0.5,0.75,1.0}` 提交完整非空行；仅无该 Task 时 Comp 空 family。未来预测状态需显式 computing/唯一 Exec 才能构建 Comp base。

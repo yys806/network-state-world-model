@@ -1,5 +1,7 @@
 # STEP 6.3B — Structured Candidate Grammar and Support Policy Closure v1
 
+> 2026-09-29 supersession: STEP 6.3B/6.3C-PATCH researcher decision removed the all-eligible Comm Task coverage rule. For current Planner-v1 Comm selection, use `STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md` and the amended contract. Counts and claims below describe the original 6.3B acceptance at its time.
+
 ## Step Goal and definition basis
 
 Define a search-independent Comm/Comp/Mob candidate grammar, multidimensional Formal TRAIN support labels and formal pool admission. Researcher choices in this conversation authorize repeated Comm rows for one Task, shared-profile Mobility, TRAIN-observed joint structural signatures only, temporal labels without a hard transition gate, and nonempty Comp when current computing Tasks exist. The frozen Route no-op and five-part lexicographic Objective remain unchanged. This is a contract/CPU mechanism step, not a search algorithm or performance experiment.

@@ -27,7 +27,8 @@ class StructuralSupportTests(unittest.TestCase):
             tuple(frozenset(signature[i] for signature in (a, b)) for i in range(3)),
             (frozenset(((a,), (b,))), frozenset(((a, b),)), frozenset(), frozenset()),
             frozenset(((a, b),)),
-            frozenset(((0, 1),)))
+            frozenset(((0, 1),)),
+            {"rows:1": frozenset({1}), "NOOP": frozenset({0})})
         observed = catalog.label(a)
         self.assertTrue(observed.formal_pool_admitted)
         self.assertEqual(observed.temporal_prefix, "TRAIN_OBSERVED_PREFIX")

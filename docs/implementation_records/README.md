@@ -1,5 +1,7 @@
 # PI-JWM 实施记录
 
+**当前 STEP 6.3B/6.3C-PATCH：** [Comm Task Selection & TRAIN Projected H1 Audit](STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md) 记录研究者新任务选择边界、原始/投影/排除行、全量候选域与残余。完成本补丁后停止；STEP 6.3D 需单独授权。
+
 **当前 STEP 6.3B：** [Structured Candidate Grammar and Support Policy](STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_AND_SUPPORT_POLICY.md) 记录 TRAIN-only 证据、研究者准入决定、CPU 语法/validator 和明确未开始的 optimizer/闭环。
 
 **当前 STEP 6.2B-PATCH：** [Route no-op closure](STEP_06_2B_PATCH_ROUTE_NOOP_CLOSURE.md) 记录研究者新 Route 域、冻结 checkpoint CPU 验收及 `STEP_6_2B=PASS` 的严格范围；此前 [STEP 6.2B](STEP_06_2B_PLANNER_OBJECTIVE_SCORER_AND_COMPARATOR.md) 的 BLOCKED 观察保留历史。

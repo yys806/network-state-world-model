@@ -13,7 +13,7 @@
     "step6_0a": 6,
     "step6_0c": 15,
     "step6_2b": 11,
-    "step6_3b": 11
+    "step6_3b": 18
   },
   "focused_test_suites": [
     "test_step6_3b_candidate_support_v1.py",
@@ -32,6 +32,7 @@
     "TRAIN-only future Return H_sup histogram unavailable",
     "future Comp needs explicit predicted computing and unique Exec relation",
     "temporally unseen sequence generalization untested",
+    "raw historical Route-created Comm rows are outside Planner-v1 projected replay",
     "concrete action composition beyond structural signature is not exact TRAIN replay"
   ],
   "source": "FORMAL_TRAIN_ONLY_FOR_SUPPORT",

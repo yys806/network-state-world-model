@@ -12,7 +12,7 @@
     "N_rejected_steps": 0,
     "N_unique_transition_evals": 4,
     "budget_unit": "candidate_one_step_transition",
-    "wall_clock_seconds_diagnostic_only": 5.836221899982775
+    "wall_clock_seconds_diagnostic_only": 6.196814400027506
   },
   "candidate_ranking": false,
   "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
@@ -55,9 +55,9 @@
   "transitions": [
     {
       "action_fingerprint": "630294d070b1e60acf92ca2bd2eaff1dbc1cb91d101945721d0eceb1472de72a",
-      "choice_rule": "first canonical grammar iteration; mechanism fixture only",
-      "domain_exact_concrete_count": 9527358,
-      "domain_structural_mode_count": 57,
+      "choice_rule": "first canonical nonempty Comm at H1; mechanism fixture only",
+      "domain_exact_concrete_count": 47628,
+      "domain_structural_mode_count": 47,
       "horizon": 1,
       "input_fingerprints": {
         "graph": "22554c2712574e386398fb77f231ad636b88772def218087b518e2d6ba2a4293",

@@ -1,8 +1,12 @@
 # 当前与历史实验
 
+## 2026-09-29 STEP 6.3B/6.3C-PATCH
+
+CPU-only 4416 个 Formal TRAIN H1 raw→Planner-v1 投影审计：728 条同决策 offload Route 依赖 Comm 行逐条排除，任务数量条件拒绝为 0；结构准入 4045/4416，剩余 1 个投影后未见 Comm 结构、349/15 个 Comp 类别和 6 个未见 joint 结构。TRAIN/Validation 静态候选域空数为 14/4416、6/1104；候选数增长只是规则变化，非性能改善。冻结 checkpoint 单非锁定 Validation anchor 的非空 Comm H1–H4 机制路径仍与原顺序推演等价，`B_WM=4`。结构准入后的动作语义字段对照完成：3920/4045 通过，125 个 Comp amount 差异超过绝对容差 `1e-7`，绝对差中位数 `1.4475e-7`、最大 `2.9793e-7`；容差和策略均未修改。无优化器、排名、baseline、闭环、GPU、训练或 `locked_test`。
+
 ## 2026-09-29 STEP 6.3C
 
-CPU-only static CandidateDomain audit: TRAIN 4416 anchors, Validation 1104 anchors (descriptive only). TRAIN empty domains: 1935; non-empty exact candidate cardinality median 6, P90 205701120, max 313949952. Fixed accepted 6.1 Validation anchor interleaved H1-H4 smoke completed with exact existing-rollout equivalence and `B_WM=4`. No optimizer, ranking, baseline, closed loop, GPU, training or locked_test.
+Historical before-patch CPU-only static CandidateDomain audit: TRAIN 4416 anchors, Validation 1104 anchors (descriptive only). TRAIN empty domains: 1935; exact candidate cardinality median 6, P90 205701120, max 313949952. These counts have been superseded by the 6.3B/6.3C-PATCH Task selection boundary above. No optimizer, ranking, baseline, closed loop, GPU, training or locked_test.
 
 ## 2026-09-29 STEP 6.3B
 

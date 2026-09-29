@@ -3,6 +3,49 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.3BC-PATCH-COMM-SELECTION-TRAIN-PROJECTION-20260929",
+      "name": "Planner v1 Comm selection and Formal TRAIN projected H1 CPU audit",
+      "date": "2026-09-29",
+      "research_question": "Under the researcher-frozen partial Comm Task selection rule, which Formal TRAIN H1 actions remain representable after Route-created Flow rows are projected out?",
+      "method": "pi_jwm_step6_3bc_patch_comm_selected_task_count_v1",
+      "code": "code/scripts/run_step6_3bc_train_self_replay_v1.py",
+      "code_version": {
+        "identity_type": "dataset_manifest_sha256_and_git_commit",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/manifest.json",
+        "manifest_sha256": null,
+        "git_commit": null,
+        "note": "Machine manifest hashes the patch receipts; final code commit is recorded after push."
+      },
+      "configuration": "docs/contracts/PIJWM_STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_V1.md",
+      "parameters": {
+        "device": "cpu",
+        "horizon": 1,
+        "route_policy": "EXPLICIT_NOOP_ONLY",
+        "comm_selection": "TRAIN_SIGNATURE_CONDITIONAL_SELECTED_TASK_COUNT",
+        "numeric_semantic_tolerance_absolute": 1e-7
+      },
+      "protocol": "docs/implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md",
+      "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+      "split": ["dev_train", "dev_validation_descriptive_only"],
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/06_train_h1_projected_self_replay.json",
+      "status": "cpu_comm_selection_and_projected_h1_audit_pass_with_residuals",
+      "conclusion": "Comm selected-task-count projected rejection is zero; Route-created Flow rows are excluded with provenance; Comp and unseen-structure residuals remain. This does not establish search or system performance.",
+      "summary_zh": "TRAIN H1 投影中通信任务数量拒绝为零；Route 创建 Flow 的历史行逐条排除，Comp 与未见结构残余保留。没有搜索或系统性能结论。",
+      "claim_boundary": "CPU H1 projection and static domain audit only; original TRAIN unchanged; Validation descriptive; no optimizer, ranking, baseline, GPU, locked test or closed loop",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "code_version.manifest_sha256": "The machine manifest is generated in this Step and is not a source-version identity.",
+        "code_version.git_commit": "Filled in the completion report after the commit and push; the registry does not predict a hash.",
+        "seed": "Deterministic CPU action projection has no new random seed; the frozen model mechanism smoke uses the accepted 6.1 anchor.",
+        "checkpoint": "The projected H1 and static domain audits do not load a checkpoint; a separate unchanged 6.3C mechanism smoke verifies the frozen checkpoint SHA.",
+        "metrics": "No candidate quality or system performance metric is measured; counts are audit and candidate-domain diagnostics."
+      }
+    },
+    {
       "id": "STEP-6.3B-STRUCTURED-CANDIDATE-GRAMMAR-20260929",
       "name": "Formal TRAIN structured candidate grammar and support policy CPU audit",
       "date": "2026-09-29",

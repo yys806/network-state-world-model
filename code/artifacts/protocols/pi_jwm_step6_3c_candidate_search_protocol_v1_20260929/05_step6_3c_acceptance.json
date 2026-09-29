@@ -1,27 +1,37 @@
 {
   "STEP_6_3C": "PASS",
-  "candidate_domain_unique_search_interface": true,
-  "grammar_policy_unchanged": true,
-  "symbolic_vs_bruteforce_crosscheck": true,
-  "formal_train_domain_audit": {"anchors": 4416, "completed": true, "empty_domains_observed": 1935},
-  "formal_validation_descriptive_only": {"anchors": 1104, "completed": true, "policy_changed": false},
-  "one_step_rollout_equivalence": true,
-  "recursive_h1_h4_smoke": true,
-  "dead_end_semantics": "GRAMMAR_DEAD_END; H1 empty is NO_FORMAL_CANDIDATE; no automatic horizon backoff",
-  "budget_accounting": true,
-  "checkpoint_modified": false,
-  "future_target_used": false,
-  "optimizer_implemented": false,
-  "candidate_ranking": false,
-  "closed_loop": false,
   "baseline": false,
+  "budget_accounting": true,
+  "candidate_domain_unique_search_interface": true,
+  "candidate_ranking": false,
+  "checkpoint_modified": false,
+  "closed_loop": false,
+  "dead_end_semantics": "GRAMMAR_DEAD_END; H1 empty is NO_FORMAL_CANDIDATE; no automatic horizon backoff",
+  "formal_train_domain_audit": {
+    "anchors": 4416,
+    "completed": true,
+    "empty_domains_observed": 14
+  },
+  "formal_validation_descriptive_only": {
+    "anchors": 1104,
+    "completed": true,
+    "empty_domains_observed": 6,
+    "policy_changed": false
+  },
+  "future_target_used": false,
   "gpu": false,
-  "training": false,
-  "locked_test": false,
-  "performance_claim": false,
+  "grammar_policy_unchanged": false,
   "limitations": [
     "static cardinality does not establish dynamic H2-H4 feasibility",
     "canonical recursive smoke is a mechanism fixture, not a search-quality result",
     "H_sup remains an outcome of actual scorer rollout"
-  ]
+  ],
+  "locked_test": false,
+  "one_step_rollout_equivalence": true,
+  "optimizer_implemented": false,
+  "performance_claim": false,
+  "recursive_h1_h4_smoke": true,
+  "superseding_patch_receipt": "07_step6_3bc_patch_acceptance.json",
+  "symbolic_vs_bruteforce_crosscheck": true,
+  "training": false
 }

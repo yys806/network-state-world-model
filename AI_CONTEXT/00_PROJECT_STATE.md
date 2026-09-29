@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-29 STEP 6.3B/6.3C-PATCH 当前状态
+
+研究者已明确批准 Comm 在当前已有无线 Flow 唯一可绑定 Task 中选择子集，并按 TRAIN 对应通信结构已见的选中任务数准入；原全部覆盖要求已取消。4416 TRAIN H1 投影把 728 条依赖同决策 offload Route 的历史 Comm 行逐条排除，任务数量拒绝为 0；结构准入 4045/4416，语义字段 3920 通过，125 个 Comp 数值差异和未见结构残余保留。TRAIN/Validation 静态空域为 14/4416、6/1104。验收、回归、索引和 Git 收口已完成，等待研究者审阅。没有运行 GPU、训练、baseline、闭环或 `locked_test`；不进入 6.3D。
+
 ## 2026-09-29 STEP 6.3C — 当前状态
 
 `STEP_6_3C=PASS`。已实现唯一的 search-independent `CandidateDomain`、lazy/symbolic canonical candidate counting、共享 `SearchNode` 与 `B_WM` budget/cache contract，以及复用 STEP 6.1 frozen World Model 的 one-step primitive。Formal TRAIN 4416 个 anchor 的静态审计完成；1935 个空域按冻结 TRAIN joint-support/causal Comp 规则记录为无正式候选，不做自动 horizon backoff。Validation 1104 个 anchor 仅作 descriptive audit，未改变 TRAIN catalog 或 policy。固定非锁定 validation anchor 的 H1-H4 interleaved smoke 与既有 6.1 预绑定 rollout 指纹和数值完全一致，4 次 transition、无 cache hit、无 dead-end。该 PASS 只表示候选域/搜索协议/可行性证据闭合，不表示任何 optimizer、候选质量、H4 可行率或闭环性能；未执行 Random/CEM/Beam/Learned Proposal、ranking、baseline、GPU、training、locked_test。

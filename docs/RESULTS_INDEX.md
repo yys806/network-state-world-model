@@ -1,5 +1,7 @@
 # PI-JWM 结果索引
 
+2026-09-29 STEP 6.3B/6.3C-PATCH：TRAIN 条件选中任务数的候选准入使静态空域从原合同的 1935/4416 变为 14/4416；Validation 描述性空域从 550/1104 变为 6/1104。TRAIN H1 投影排除 728 条依赖同决策 offload Route 的历史 Comm 行；任务数量条件的投影拒绝为 0。其余通信结构、Comp 和联合结构残余保留，详见 `code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json`。这是候选域/准入证据，不是优化效果或闭环性能。
+
 2026-09-28 STEP 6.3A：`STEP_6_3A=PASS` 表示候选支持审计有完整 CPU 证据。Formal TRAIN Comp 1969/1969 action entries 可按现有 causal CPU rule 重建，alpha 为 `{0.5,0.75,1.0}`；独立 Comm/Comp/Mob factorization 为 `NOT_SUPPORTED`。无候选排名、优化器或性能结论。
 
 2026-09-28 STEP 6.2B-PATCH：机器 receipt 的 `STEP_6_2B=PASS` 是冻结 best.pt、非锁定单 anchor、mean-prior/expected-service H1–H4 的 Objective scorer/严格比较器 CPU 机制验收；Route 有效自由度 `NONE`，Comm effort 分母 50 全局 RB ID。见 `code/artifacts/protocols/pi_jwm_step6_2b_patch_route_noop_v1_20260928/`、实施记录和 6.0C/6.2B 源码。不得解释成候选优劣、性能或闭环结果。

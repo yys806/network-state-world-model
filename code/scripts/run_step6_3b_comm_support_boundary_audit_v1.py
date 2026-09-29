@@ -51,6 +51,7 @@ def main() -> None:
     future_structures: set[tuple[str, str, str]] = set()
     future_joint_counts: collections.Counter[tuple[str, str, str]] = collections.Counter()
     comm_block_pair_counts: collections.Counter[tuple[int, int]] = collections.Counter()
+    comm_selected_task_counts: dict[str, set[int]] = collections.defaultdict(set)
     temporal_counts: dict[int, collections.Counter[tuple[tuple[str, str, str], ...]]] = {
         h: collections.Counter() for h in range(1, 5)
     }
@@ -86,6 +87,9 @@ def main() -> None:
                 future_duplicate_positions += int(_comm_summary(steps[frame])[1])
                 future_structures.add(structures[frame])
                 future_joint_counts[structures[frame]] += 1
+                comm_signature = structures[frame][0]
+                comm_selected_task_counts[comm_signature].add(
+                    len({str(row["task_id"]) for row in steps[frame]["action"]["comm"]["entries"]}))
                 n_rb = int(decisions[frame]["n_rb"])
                 for row in steps[frame]["action"]["comm"]["entries"]:
                     rb_set = set(map(int, row["rb_indices"]))
@@ -114,6 +118,9 @@ def main() -> None:
         "raw_only_structural_joint_count": len(raw_structures - future_structures),
         "h1_h4_only_structural_joint_count": len(future_structures - raw_structures),
         "formal_future_comm_start_width_pair_count": len(comm_block_pair_counts),
+        "comm_selected_task_counts": {
+            key: sorted(values) for key, values in sorted(comm_selected_task_counts.items())
+        },
         "policy_noop_with_nonempty_action_count": dict(policy_noop_with_rows),
         "eligible_with_empty_action_count": dict(eligible_with_empty_action),
         "candidate_validator_duplicate_task_rule_before_6_3b_fix": "step6_0a_candidate_generation_v1.validate_step rejected a second Comm row with the same task_id",
@@ -142,6 +149,9 @@ def main() -> None:
             {"start": start, "width": width, "count_over_formal_window_positions": count}
             for (start, width), count in sorted(comm_block_pair_counts.items())
         ],
+        "comm_selected_task_counts": {
+            key: sorted(values) for key, values in sorted(comm_selected_task_counts.items())
+        },
         "temporal_structural_prefixes": {
             str(h): [{"sequence": [list(signature) for signature in sequence], "count": count}
                      for sequence, count in sorted(temporal_counts[h].items())]
