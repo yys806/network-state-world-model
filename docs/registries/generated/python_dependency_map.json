@@ -2195,8 +2195,10 @@
         "scripts.build_step5_5_formal_dataset_v1",
         "scripts.build_step6_2a_patch_readiness_v1",
         "scripts.correct_step5_6a_validation_bookkeeping_v1",
+        "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "tests.test_step4_2c_c_flow_sample_tensor_v1",
         "tests.test_step4_3a_typed_dual_graph_builder_v1",
@@ -2231,8 +2233,10 @@
         "scripts.build_step5_1d_unified_model_chain_v1",
         "scripts.build_step5_5_formal_dataset_v1",
         "scripts.build_step6_2a_patch_readiness_v1",
+        "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "tests.test_step4_3a_typed_dual_graph_builder_v1",
         "tests.test_step4_3b_dual_graph_encoder_v1",
@@ -2418,10 +2422,12 @@
         "scripts.audit_step6_2a_paired_rollout_cpu_v1",
         "scripts.build_step5_5_formal_dataset_v1",
         "scripts.correct_step5_6a_validation_bookkeeping_v1",
+        "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.finalize_step5_5_existing_package_v1",
         "scripts.run_step5_6a_gpu_smoke_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
         "scripts.smoke_step6_2a_patched_checkpoint_cpu_v1",
@@ -2474,9 +2480,11 @@
         "scripts.accept_step5_6c_formal_training_v1",
         "scripts.audit_step5_5_patch_v1",
         "scripts.audit_step6_2a_paired_rollout_cpu_v1",
+        "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step5_6a_gpu_smoke_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
         "scripts.smoke_step6_2a_patched_checkpoint_cpu_v1",
@@ -2575,8 +2583,10 @@
         "pi_jwm.step6_3c_candidate_domain_v1",
         "pi_jwm.step6_3c_search_protocol_v1",
         "scripts.build_step6_2b_patch_route_noop_receipts_v1",
+        "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
         "scripts.step6_0a_candidate_contract_acceptance_v1",
@@ -2613,8 +2623,10 @@
         "pi_jwm.step6_3c_candidate_domain_v1",
         "scripts.build_step6_2b_objective_receipts_v1",
         "scripts.build_step6_2b_patch_route_noop_receipts_v1",
+        "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "tests.test_step6_0c_planner_action_domain_v1",
         "tests.test_step6_1_trained_candidate_rollout_v1",
@@ -2736,6 +2748,8 @@
       "imported_by": [
         "pi_jwm.step6_3c_candidate_domain_v1",
         "pi_jwm.step6_3c_search_protocol_v1",
+        "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1",
         "tests.test_step6_3b_candidate_grammar_v1",
         "tests.test_step6_3c_candidate_domain_v1",
         "tests.test_step6_3c_search_protocol_v1"
@@ -2764,10 +2778,13 @@
         "pi_jwm.step6_3b_candidate_grammar_v1",
         "pi_jwm.step6_3c_candidate_domain_v1",
         "pi_jwm.step6_3c_search_protocol_v1",
+        "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
         "tests.test_step6_3b_candidate_grammar_v1",
         "tests.test_step6_3b_candidate_support_v1",
+        "tests.test_step6_3bc_self_replay_projection_v1",
         "tests.test_step6_3c_candidate_domain_v1"
       ],
       "imports": [],
@@ -2777,6 +2794,7 @@
       "test_files": [
         "code/tests/test_step6_3b_candidate_grammar_v1.py",
         "code/tests/test_step6_3b_candidate_support_v1.py",
+        "code/tests/test_step6_3bc_self_replay_projection_v1.py",
         "code/tests/test_step6_3c_candidate_domain_v1.py"
       ]
     },
@@ -4187,6 +4205,7 @@
         "scripts.build_step6_2a_patch_readiness_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
@@ -4330,6 +4349,16 @@
       "lifecycle_status": "support",
       "module": "scripts.build_step6_3b_closure_receipts_v1",
       "path": "code/scripts/build_step6_3b_closure_receipts_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step6_3bc_patch_acceptance_v1",
+      "path": "code/scripts/build_step6_3bc_patch_acceptance_v1.py",
       "test_files": []
     },
     {
@@ -4714,6 +4743,26 @@
       "lifecycle_status": "support",
       "module": "scripts.correct_step5_6a_validation_bookkeeping_v1",
       "path": "code/scripts/correct_step5_6a_validation_bookkeeping_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step4_3a_typed_dual_graph_builder_v1",
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_0c_planner_action_domain_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
+        "pi_jwm.step6_3b_candidate_support_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
+      "path": "code/scripts/diagnose_step6_3bc_comp_amount_residual_v1.py",
       "test_files": []
     },
     {
@@ -7130,7 +7179,35 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
+        "tests.test_step6_3bc_self_replay_projection_v1"
+      ],
+      "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step4_3a_typed_dual_graph_builder_v1",
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_0c_planner_action_domain_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
+        "pi_jwm.step6_3b_candidate_support_v1",
+        "scripts.build_step5_1d_unified_model_chain_v1",
+        "scripts.run_step6_3c_candidate_domain_audit_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_3bc_train_self_replay_v1",
+      "path": "code/scripts/run_step6_3bc_train_self_replay_v1.py",
+      "test_files": [
+        "code/tests/test_step6_3bc_self_replay_projection_v1.py"
+      ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.run_step6_3bc_train_self_replay_v1"
+      ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
         "pi_jwm.step4_3a_typed_dual_graph_builder_v1",
@@ -11154,6 +11231,19 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_3b_candidate_support_v1",
       "path": "code/tests/test_step6_3b_candidate_support_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_3b_candidate_support_v1",
+        "scripts.run_step6_3bc_train_self_replay_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_3bc_self_replay_projection_v1",
+      "path": "code/tests/test_step6_3bc_self_replay_projection_v1.py",
       "test_files": []
     },
     {

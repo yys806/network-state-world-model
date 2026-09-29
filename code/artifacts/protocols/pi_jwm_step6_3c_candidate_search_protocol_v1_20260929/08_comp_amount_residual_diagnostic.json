@@ -1,0 +1,50 @@
+{
+  "absolute_delta_max": 2.9792917732862634e-07,
+  "absolute_delta_median": 1.447510755703263e-07,
+  "absolute_delta_min": 1.0027360497488758e-07,
+  "acceptance_tolerance_changed": false,
+  "affected_anchor_count": 125,
+  "differing_comp_row_count": 127,
+  "examples": [
+    {
+      "absolute_delta": 1.389234904891623e-07,
+      "bound_amount": 3.440823554992676,
+      "raw_amount": 3.4408236939161663,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0002",
+      "task_id": "Task_1"
+    },
+    {
+      "absolute_delta": 1.3727511571914874e-07,
+      "bound_amount": 5.643224120140076,
+      "raw_amount": 5.643224257415191,
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0045",
+      "task_id": "Task_13"
+    },
+    {
+      "absolute_delta": 1.3949722887929283e-07,
+      "bound_amount": 5.06119966506958,
+      "raw_amount": 5.061199525572351,
+      "sample_id": "formal-v1-sim-2026092303-policy-2026092403::anchor-0002",
+      "task_id": "Task_1"
+    },
+    {
+      "absolute_delta": 1.1205781191847564e-07,
+      "bound_amount": 4.962193071842194,
+      "raw_amount": 4.962192959784382,
+      "sample_id": "formal-v1-sim-2026092303-policy-2026092403::anchor-0003",
+      "task_id": "Task_2"
+    },
+    {
+      "absolute_delta": 1.1146903222680749e-07,
+      "bound_amount": 6.943032145500183,
+      "raw_amount": 6.943032034031151,
+      "sample_id": "formal-v1-sim-2026092303-policy-2026092403::anchor-0005",
+      "task_id": "Task_7"
+    }
+  ],
+  "gpu": false,
+  "locked_test": false,
+  "relative_delta_max": 1.5187606450250968e-07,
+  "source_receipt_sha256": "f2b809fbce8c9bccbc23dcd2c1571efbd25cd381e647df2d2ca27cfe402a1e52",
+  "training": false
+}
