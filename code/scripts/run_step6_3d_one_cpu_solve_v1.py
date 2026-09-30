@@ -10,7 +10,7 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "-1")
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -126,9 +126,24 @@ def objective_side(sample, state, context, decision, sidecar):
         routes=routes, model_state=state)
 
 
-def load_frozen_runtime(sample_id: str):
-    """Prepare one authenticated CPU anchor for solve or equivalence audit."""
+def _to_device(value, device: torch.device):
+    if isinstance(value, torch.Tensor):
+        return value.to(device)
+    if isinstance(value, dict):
+        return {key: _to_device(item, device) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_to_device(item, device) for item in value]
+    if isinstance(value, tuple):
+        return tuple(_to_device(item, device) for item in value)
+    return value
+
+
+def load_frozen_runtime(sample_id: str, *, device: str = "cpu"):
+    """Prepare one authenticated anchor on one requested device."""
     torch.set_num_threads(1)
+    target_device = torch.device(device)
+    if target_device.type == "cuda" and not torch.cuda.is_available():
+        raise ValueError("CUDA unavailable for GPU rollout")
     if sha(CHECKPOINT) != EXPECTED_SHA:
         raise ValueError("frozen best checkpoint SHA mismatch")
     selected = json.loads((OUT / "19_formal_selected_deadline_sidecars.json").read_text(encoding="utf-8"))
@@ -156,11 +171,14 @@ def load_frozen_runtime(sample_id: str):
     model = StructuredRSSMWorldModel(protocol.training.rssm)
     encoder.load_state_dict(payload["model_state"]["encoder"], strict=True)
     model.load_state_dict(payload["model_state"]["rssm"], strict=True)
-    encoder.eval(); model.eval()
+    encoder.to(target_device).eval(); model.to(target_device).eval()
     before = fingerprint({"encoder": encoder.state_dict(), "rssm": model.state_dict()})
     with torch.no_grad():
-        prepared = prepare_anchor(model, encoder, _torch_tree(tensor),
-            _torch_tree(graph_input), state, graph, context, domain, sample_id)
+        prepared = prepare_anchor(model, encoder,
+            _to_device(_torch_tree(tensor), target_device),
+            _to_device(_torch_tree(graph_input), target_device),
+            _to_device(state, target_device), _to_device(graph, target_device),
+            context, domain, sample_id)
     return model, encoder, prepared, side, catalog, protocol, meta, before
 
 

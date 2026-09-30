@@ -1,0 +1,388 @@
+{
+  "archive_bytes": 284862759,
+  "archive_sha256": "f38f649aac63f915233a378c4c3d348571fc217bde6c43afcbbfcf3f38bf13d7",
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "files": [
+    {
+      "bytes": 2639,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/formal_dataset_manifest.json",
+      "sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc"
+    },
+    {
+      "bytes": 3106708,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092300-policy-2026092400.npz",
+      "sha256": "d3c7b659cdbe31eaec32b9f156cdedac0bf23eaede95d2a5bea6004adf32005b"
+    },
+    {
+      "bytes": 975051,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092301-policy-2026092401.npz",
+      "sha256": "0cc20925cf5866f7a16075814d00e5871bf5698b8fb48e32a26bbc922bf7bbea"
+    },
+    {
+      "bytes": 1212307,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092302-policy-2026092402.npz",
+      "sha256": "a1337721390ed740980719052fdd7c21a1643f76b61aa1474cfecd35e1e4771a"
+    },
+    {
+      "bytes": 1552988,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092303-policy-2026092403.npz",
+      "sha256": "4022901a273d3c386ed9d6d161239646f190d01c34b38d5fddd3d63c0fe7fc24"
+    },
+    {
+      "bytes": 2579393,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092304-policy-2026092404.npz",
+      "sha256": "a32027c06acf154516d7906703740f898d91230d9adae2c75bb40de0c20b4a99"
+    },
+    {
+      "bytes": 1083831,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092305-policy-2026092405.npz",
+      "sha256": "2c22ff162925ffb8d6067d2e3c093544dc81ca885411e1fefeae07a267a39061"
+    },
+    {
+      "bytes": 518528,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092306-policy-2026092406.npz",
+      "sha256": "10dc4bc6d2d30d35c835d23ed561e43c25c9b26ce791bac110198e5110c8416d"
+    },
+    {
+      "bytes": 1078116,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092307-policy-2026092407.npz",
+      "sha256": "a70ad7121aa7159532b86daa5a311b8a934aeb738fe86caabb5f2d476357ad53"
+    },
+    {
+      "bytes": 793721,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092308-policy-2026092408.npz",
+      "sha256": "fc4c21ae5553efce6476b18f2361bac74831c5557e79657c79d4a79757fd58dd"
+    },
+    {
+      "bytes": 490919,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092309-policy-2026092409.npz",
+      "sha256": "410b9994d6a371dda3528b85e40b5e4131b98a3bffc75f74d18c0f95e926ca7c"
+    },
+    {
+      "bytes": 1522147,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092310-policy-2026092410.npz",
+      "sha256": "861eb9d84cff899f84f2bd46d54efb873471f118290bd13f8aac93e6f0b37d88"
+    },
+    {
+      "bytes": 1375889,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092311-policy-2026092411.npz",
+      "sha256": "7b22a3368c7c1bfdda520d8bd6e1a52538facad3de805fe6627006bd27311c2f"
+    },
+    {
+      "bytes": 928125,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092312-policy-2026092412.npz",
+      "sha256": "c28c45cc96b9426da56a3a1c1777135c7a04bb89801b0e91f8f127251cc07ba2"
+    },
+    {
+      "bytes": 961938,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092313-policy-2026092413.npz",
+      "sha256": "d87cba5213444da7761525f397b8690f4bb0235699b36ee0d38abeb0bc8149de"
+    },
+    {
+      "bytes": 1530918,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092314-policy-2026092414.npz",
+      "sha256": "7628961a67e3e029317d8f122b02645034fa8a148ede738e630784d238d78f08"
+    },
+    {
+      "bytes": 557686,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092315-policy-2026092415.npz",
+      "sha256": "87180c8f2e7a35055f7afcc88e88753ebf22b4822b07a61977fcbaa5cd9813b3"
+    },
+    {
+      "bytes": 1488029,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092316-policy-2026092416.npz",
+      "sha256": "ec1de111fd2c79d32fc75e3921bd99a487bcf47f12dbf9463cb317bc847e9c98"
+    },
+    {
+      "bytes": 1097860,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092317-policy-2026092417.npz",
+      "sha256": "28aaad3554a8df524d976d7923c141ce4c30ebee0fc430abe316555c74c4c25b"
+    },
+    {
+      "bytes": 2071227,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092318-policy-2026092418.npz",
+      "sha256": "fc70ed69fc4c6cf4f7d084830ee268a5701736208572e14f535cc59682bfa49b"
+    },
+    {
+      "bytes": 2243959,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092319-policy-2026092419.npz",
+      "sha256": "0f38c123f798e661e291a3907f16f6a8c6aa6b8ded624c64349c324a76749652"
+    },
+    {
+      "bytes": 1608958,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092320-policy-2026092420.npz",
+      "sha256": "67ffd8b424176d2e439ec70b894de21f2516b3c07fa0d71f734b36bfb46de769"
+    },
+    {
+      "bytes": 2843560,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092321-policy-2026092421.npz",
+      "sha256": "4dc34e90ed5198bc08d7d7e9d88cbe734a41a0576baf472fed61dacd7e09c14c"
+    },
+    {
+      "bytes": 881904,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092322-policy-2026092422.npz",
+      "sha256": "dc8cc0193424961de777739005b842a943b7194644cefa339677ff53158b6d17"
+    },
+    {
+      "bytes": 984469,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092323-policy-2026092423.npz",
+      "sha256": "1da098b628f8f8ec0379265676505fb675fa0aa4c198eb147895c17afef531b1"
+    },
+    {
+      "bytes": 2174006,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092324-policy-2026092424.npz",
+      "sha256": "22ea014ec6209afc4f146b59db62582b33707e0ed430d7d6d6e269ee7a957ce8"
+    },
+    {
+      "bytes": 913272,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092325-policy-2026092425.npz",
+      "sha256": "7e1ec9b9d405609eb1b3977499d7a5fc721612600fbd0e9606cc1bda872f24eb"
+    },
+    {
+      "bytes": 833509,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092326-policy-2026092426.npz",
+      "sha256": "178f4c979842a94b12b5f24a406d7efbec21b8f83c631f27d454e85a656e707b"
+    },
+    {
+      "bytes": 1705802,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092327-policy-2026092427.npz",
+      "sha256": "1410b4b6266e71b06a903eef02a2e722ac32fc5065d9826568cce9e7eb29b355"
+    },
+    {
+      "bytes": 1481301,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092328-policy-2026092428.npz",
+      "sha256": "db8cc5146b84b57da96419b2b8c11647da6cbc7a05ccd2bad4b1e4c08dfe9eb0"
+    },
+    {
+      "bytes": 1661725,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092329-policy-2026092429.npz",
+      "sha256": "8b8be645e59ed5c44fde84ead035b7563cacfc09900b1ca16d808f1e8970ba5e"
+    },
+    {
+      "bytes": 1322214,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092330-policy-2026092430.npz",
+      "sha256": "24d0a9a9d34fcaadbbe7e828de23012c8095d18b1fbb6d777cdee8e60bb4ffdf"
+    },
+    {
+      "bytes": 2550560,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092331-policy-2026092431.npz",
+      "sha256": "62835cfbfc064d99474c94cb92bc6bb6571a5c09b5989588374dc06ea44f3df9"
+    },
+    {
+      "bytes": 2331076,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092332-policy-2026092432.npz",
+      "sha256": "027a57aa64f318117cf12d54bf12452d62f73b946bbd3b4442ed7052c7dec17e"
+    },
+    {
+      "bytes": 1107119,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092333-policy-2026092433.npz",
+      "sha256": "3b8e42cb1d86cd1ec1885feabddb333f3502d5d86f41514b3d5a52ce92263f70"
+    },
+    {
+      "bytes": 2125805,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092334-policy-2026092434.npz",
+      "sha256": "38c0e6854c05e27a6faeda971b9972333c9fd74239fc0c091c172d5c3b8e6f3a"
+    },
+    {
+      "bytes": 1531824,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092335-policy-2026092435.npz",
+      "sha256": "6735e7d5dbb246228e5b5b3839bfd5d86cccff3c49a62b0b445e4e66dd1cc608"
+    },
+    {
+      "bytes": 1038250,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092336-policy-2026092436.npz",
+      "sha256": "f07796a1adf4ef59582c1a38ac4062cd9be2712f850088df828aa0930eee8a15"
+    },
+    {
+      "bytes": 930592,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092337-policy-2026092437.npz",
+      "sha256": "d786ed9b825972d7233e5c3a3cce74b522e4633b6cb5a2a3804c8ed6c840521b"
+    },
+    {
+      "bytes": 806394,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092338-policy-2026092438.npz",
+      "sha256": "6b74c9c0fb1d722bdd3c08abff074af51cc7c484cfc8bb916764e9be650475d6"
+    },
+    {
+      "bytes": 1664252,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092339-policy-2026092439.npz",
+      "sha256": "480703d7d4311af2d0f31b53dfb4a801cf11c90325bcabf419c3d28882586a8a"
+    },
+    {
+      "bytes": 2269538,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092340-policy-2026092440.npz",
+      "sha256": "d9aac4be19fcbc29cab8b41d03d96e380169f9c402c1ac7b10089beee2b654c5"
+    },
+    {
+      "bytes": 895539,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092341-policy-2026092441.npz",
+      "sha256": "85891b2e80ba431d3fff786b11b735c7599462046f4c93af36609e95e7d0f541"
+    },
+    {
+      "bytes": 1979136,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092342-policy-2026092442.npz",
+      "sha256": "61d619bd301ba03ecd1cf1bef826bbc93de147d1a0691639285f5560c7a7303d"
+    },
+    {
+      "bytes": 1961072,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092343-policy-2026092443.npz",
+      "sha256": "2164a0fcec835e70a10ce5a6be3be43eccd3629981aba63afe727acaba4aa760"
+    },
+    {
+      "bytes": 1285005,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092344-policy-2026092444.npz",
+      "sha256": "55552208e073a0d009d11d7c84043704484153630d31911599f32c8510b0014c"
+    },
+    {
+      "bytes": 1838677,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092345-policy-2026092445.npz",
+      "sha256": "3830690d2e84778f591099b403afd48bdac4c725a55ae71856b5222bc1baf7f5"
+    },
+    {
+      "bytes": 2003847,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092346-policy-2026092446.npz",
+      "sha256": "5a5951529060a83f1bb174c478a5d0898a1e1f1570912e72697f158f1db34e02"
+    },
+    {
+      "bytes": 1859073,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092347-policy-2026092447.npz",
+      "sha256": "1859f50462903ffce934c98010b4b24bd5cebfac5ebf1e993c8ff2fc0c386dcf"
+    },
+    {
+      "bytes": 2621865,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092348-policy-2026092448.npz",
+      "sha256": "4f60e558eaeff1add5c998d4026d11bbe85b06ea978bbd1aa652c1ee47fa831b"
+    },
+    {
+      "bytes": 549778,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092349-policy-2026092449.npz",
+      "sha256": "d902bd2a56de0862eba241b05065c889e0ed83a5ec8567ac818e037cb143b77d"
+    },
+    {
+      "bytes": 962959,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092350-policy-2026092450.npz",
+      "sha256": "f40dca5f93d39548b0788e9529aa0f4fa8538bcfbb872bc288b5ba9455e54e1c"
+    },
+    {
+      "bytes": 857184,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092351-policy-2026092451.npz",
+      "sha256": "63a2cc94c8e3d16e26a3d337817ae7c2a904e1b0e8d78e9af9703aa305ffd337"
+    },
+    {
+      "bytes": 797582,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092352-policy-2026092452.npz",
+      "sha256": "71abd91a8833b11e4d698a38605bdc8609c5f3d33f1ac0a1b984cbd6d7a3e977"
+    },
+    {
+      "bytes": 2504500,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092353-policy-2026092453.npz",
+      "sha256": "72f8d2dafe0ea209911725867d8e0e3cad3e755a7f126291e0c38871127357e3"
+    },
+    {
+      "bytes": 2194935,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092354-policy-2026092454.npz",
+      "sha256": "34b897a4b8b5cd532e57bffaf3d032dbec1243dc3c0973b147e5e3770add3978"
+    },
+    {
+      "bytes": 2329758,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092355-policy-2026092455.npz",
+      "sha256": "76787943f64a3ef0ac4cd76283b52a2e31cdbc9b2829eb9bdb28cf82d245b490"
+    },
+    {
+      "bytes": 1419424,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092356-policy-2026092456.npz",
+      "sha256": "b91e712d36dd4f9d2662752a84942fdaa2d4b477602cdf3aba7ccf6d2cb05516"
+    },
+    {
+      "bytes": 947657,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092357-policy-2026092457.npz",
+      "sha256": "8709e671e3182a0aac703499f448d4e6ce843fc1cd678095ca3437f00c555b8f"
+    },
+    {
+      "bytes": 1240246,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092358-policy-2026092458.npz",
+      "sha256": "a7f78a79ed3e8cc1d6d6395ba0bee85fc741a59d134b6adf20ec6b905f4053e8"
+    },
+    {
+      "bytes": 3455363,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/formal-v1-sim-2026092359-policy-2026092459.npz",
+      "sha256": "5304d23e92b9053a71adeca757b5d9261d2cc0472d8f2bb791dd31953bae671a"
+    },
+    {
+      "bytes": 96258,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/graph/index.json",
+      "sha256": "a3a6c03d07e6ca41fb01b519967e3bc64efa009f8d04f0b2f886ff3d4ec607b1"
+    },
+    {
+      "bytes": 3221,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/normalization/index.json",
+      "sha256": "798d9438b8f30bb4c52e077809ba5e51396f9d6f1c9023bd1da23f510416b3f6"
+    },
+    {
+      "bytes": 13012,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/normalization/stats.json",
+      "sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5"
+    },
+    {
+      "bytes": 36679837,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/samples/formal-v1-sim-2026092310-policy-2026092410.json.gz",
+      "sha256": "3996048e2e1f65b2f3695e4beff4a8c449f15808765c25e46e5fb4a8609a0ad5"
+    },
+    {
+      "bytes": 42953773,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/samples/formal-v1-sim-2026092345-policy-2026092445.json.gz",
+      "sha256": "b9d9fd0cf5a3c4aa9ea608ffb8ee247263b00a8508539477f0d7fc2d4d623beb"
+    },
+    {
+      "bytes": 1031951064,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/samples/index.json",
+      "sha256": "bd721fd0bfd837744392447ec742ae1d8f79a767f46f9ae6ba172316c4ff6954"
+    },
+    {
+      "bytes": 7260605,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/tensor/formal-v1-sim-2026092310-policy-2026092410.npz",
+      "sha256": "977193af82230027292065d0f065c3b575172d7a2ba2171d18a64c9e2564ca83"
+    },
+    {
+      "bytes": 8522545,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/tensor/formal-v1-sim-2026092345-policy-2026092445.npz",
+      "sha256": "1a81ff5261e727ad1a9e6a6b62cf3f51f883f8000eb0da0e85caf2c832efa4f6"
+    },
+    {
+      "bytes": 96258,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/tensor/index.json",
+      "sha256": "a3a6c03d07e6ca41fb01b519967e3bc64efa009f8d04f0b2f886ff3d4ec607b1"
+    },
+    {
+      "bytes": 14430089,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092310-policy-2026092410.json.gz",
+      "sha256": "6fd533a404dfc1d726011ad3424bb86cdce8a8a545379ced3aed827a7da3a452"
+    },
+    {
+      "bytes": 16645097,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092345-policy-2026092445.json.gz",
+      "sha256": "ac80605a1de884363c359515f2d885a07c0d789bd664d50aa594594a5cd751da"
+    },
+    {
+      "bytes": 3371,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/split_manifest.json",
+      "sha256": "443bf9517e07013c8711483a69d6af5fbc532e4a6827d7c5f3879c107d4861dd"
+    },
+    {
+      "bytes": 1734906,
+      "path": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9"
+    }
+  ],
+  "fixture_sample_ids": [
+    "formal-v1-sim-2026092310-policy-2026092410::anchor-0011",
+    "formal-v1-sim-2026092345-policy-2026092445::anchor-0028"
+  ],
+  "fixture_trajectory_ids": [
+    "formal-v1-sim-2026092310-policy-2026092410",
+    "formal-v1-sim-2026092345-policy-2026092445"
+  ],
+  "locked_test": false,
+  "training": false,
+  "validation_search": false
+}

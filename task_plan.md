@@ -1,3 +1,12 @@
+## 2026-09-30 STEP 6.3D-GPU-EXECUTION — 24GB GPU batch throughput closure
+
+- [x] 核实 `HEAD=origin/main=1391b0f07339d849f1e31e08a9ec9db30effe11c`，保留原未跟踪文件。研究者将 H4 readiness 冻结为 `SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`，本 Step 不启动正式矩阵。
+- [x] 远端 RTX 4090 / 24GB、CUDA 可用，best.pt SHA 与冻结值一致；在独立远端目录准备当前 Git 源码和两条非锁定 TRAIN fixture。
+- [ ] 完成 CPU FP32 ↔ GPU FP32 一步及 H4 等价、batch/cache/B_WM/encoder reuse 门控。
+- [ ] 完成 24GB batch 8/16/32/64/128/256 吞吐与显存探针、bucket/padding 诊断，冻结稳定推荐配置。
+- [ ] 收据、实施记录、AI_CONTEXT/索引、测试、commit/push 收口后停止；禁止正式 TRAIN tuning、Validation 方法比较、方法选型或 `locked_test`。
+- 当前 gate：远端 GPU 已可用，fixture 传输中；唯一下一交付为可核验的 GPU 环境与 CPU/GPU FP32 等价收据。
+
 ## 2026-09-29 STEP 6.3D — Fixed-Budget Structured Search Method Comparison v1
 
 - [x] 核实 `HEAD=origin/main=963aed07575c87b062abf9ba66de51132f99c1fd`，保留原有未跟踪文件；审计 CandidateDomain、SearchNode、`B_WM`、one-step 和 Objective 接口。
@@ -1678,3 +1687,12 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 实现复用 6.1 transition 语义的 batched one-step，接入现有 `evaluate_batch`；CPU batch 1/4/8/16 等价与吞吐探针。
 - [ ] 完成收据/Context/index/回归/commit/push，然后停止；不启动正式 6.3D 调参或 Validation 方法比较。
 - 当前 gate：`STEP_6_3D_PREFLIGHT_PATCH=PASS`（待最终 Git 收口）；32 TRAIN 中 16 个至少有一条 H4 可评分、16 个没有，275 条完整轨迹受 future Return birth 支持边界影响。`H4_SEARCH_COMPARISON_READINESS=PENDING_RESEARCHER_DECISION_ON_MODEL_OBJECTIVE_SUPPORT`；唯一下一交付是收据/Context/index/Git 同步，正式矩阵保持关闭。
+
+## 2026-09-30 世界模型训练复现参考包（资料整理）
+
+- [x] 只读核对 seed5601 正式 run、冻结配置、Dataset 清单、5520 条训练指标、五次验证、最终验收与 AI_CONTEXT。
+- [x] 生成并检验 PIJWM_world_model_training_reference.zip（18 文件，原始配置与日志、结果说明、源码索引）；未放入权重或数据集。
+- 边界：未修改模型/训练代码或 AI_CONTEXT，未重训、未访问 GPU/locked_test，未 commit/push。唯一下一动作：交付 ZIP 供研究者转发。
+
+## 2026-09-30 STEP 6.3D-GPU-EXECUTION 鈥?宸插畬鎴恅n
+RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixtures 鐨?CPU FP32/GPU FP32 batch 1/4/8/16/32/64/128/256 鍗曟鍜?H4 绂绘暎绛変环閫氳繃锛涘悶鍚?batch 8/16/32/64 绋冲畾锛?28/256 OOM銆傛帹鑽?FP32銆乥atch=32銆佹棤 bucketing锛岀害 12.71 transitions/s銆佸嘲鍊?2.03 GiB銆佺害 13.19x CPU batch8銆傛湭杩愯姝ｅ紡 TRAIN tuning銆乂alidation comparison銆佹柟娉曢€夋嫨銆佽缁冦€侀棴鐜垨 locked_test銆傚敮涓€涓嬩竴鍔ㄤ綔锛氱爺绌惰€呭彟琛屾巿鏉冩寮?STEP 6.3D 姣旇緝銆俙n

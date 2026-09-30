@@ -1,0 +1,76 @@
+{
+  "action_mapping_equal": true,
+  "adopt_bucket": false,
+  "bucketed_speedup": 0.9097455863578102,
+  "budget_equal": true,
+  "equivalence_pass": true,
+  "formal_method_comparison": false,
+  "locked_test": false,
+  "max_absolute_delta_by_field": {
+    "action_tensor": 0.0,
+    "graph": 7.62939453125e-06,
+    "latent": 1.430511474609375e-06,
+    "model_trace": 7.62939453125e-06,
+    "state": 7.62939453125e-06
+  },
+  "numeric_tolerance": 0.0001,
+  "parameter_digest": "f5dc7f523af1e3137f520187bb2b9e7697e835b4374d45bb025460f58c778123",
+  "request_count": 32,
+  "rows": [
+    {
+      "repeats": [
+        {
+          "cache_hits": 0,
+          "seconds": 2.297493102028966,
+          "transitions_per_second": 13.928224625240487,
+          "unique_transitions": 32
+        },
+        {
+          "cache_hits": 0,
+          "seconds": 2.2895004083402455,
+          "transitions_per_second": 13.976848347975677,
+          "unique_transitions": 32
+        },
+        {
+          "cache_hits": 0,
+          "seconds": 2.3241875050589442,
+          "transitions_per_second": 13.768252316281359,
+          "unique_transitions": 32
+        }
+      ],
+      "strategy": "unbucketed"
+    },
+    {
+      "repeats": [
+        {
+          "cache_hits": 0,
+          "seconds": 2.525423740968108,
+          "transitions_per_second": 12.671140878612698,
+          "unique_transitions": 32
+        },
+        {
+          "cache_hits": 0,
+          "seconds": 2.543396359309554,
+          "transitions_per_second": 12.581601716488622,
+          "unique_transitions": 32
+        },
+        {
+          "cache_hits": 0,
+          "seconds": 2.510326866991818,
+          "transitions_per_second": 12.747343949812532,
+          "unique_transitions": 32
+        }
+      ],
+      "strategy": "bucketed"
+    }
+  ],
+  "sample_id": "formal-v1-sim-2026092345-policy-2026092445::anchor-0028",
+  "split": "dev_train",
+  "structural_row_count_groups": {
+    "(0, 0)": 2,
+    "(0, 1)": 12,
+    "(0, 2)": 9,
+    "(0, 3)": 4,
+    "(0, 4)": 5
+  }
+}

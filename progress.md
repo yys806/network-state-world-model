@@ -1258,3 +1258,8 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 ## 2026-09-29 STEP 6.3B/6.3C-PATCH 恢复审计（已收口）
 
 研究者批准 Comm 部分选择及 Route-created Flow 排除后，补丁合同、源码、测试和收据已对齐。TRAIN 4416 H1 完成 raw/projected/excluded 审计；728 行排除，任务数量拒绝为 0。TRAIN/Validation 空域为 14/4416 与 6/1104；完整结构准入 4045/4416，语义字段 3920 通过，125 个 Comp amount 差异保留（绝对差中位数 `1.4475e-7`，最大 `2.9793e-7`，不改 `1e-7` 容差）。定向回归、编译、索引与 diff 检查通过。未运行 GPU、训练、baseline、闭环或 `locked_test`；不进入 6.3D。
+
+2026-09-30 世界模型训练复现包：核验正式 run 配置 SHA、Dataset SHA、八个本地 run 文件 SHA；5520 条训练与五次完整 prior-only validation 一致。已生成 18 文件 ZIP，压缩包自检通过。未用 GPU/locked_test，未重训、未 commit/push；下一动作交付。
+
+## 2026-09-30 STEP 6.3D-GPU-EXECUTION 鈥?宸插畬鎴恅n
+RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixtures 鐨?CPU FP32/GPU FP32 batch 1/4/8/16/32/64/128/256 鍗曟鍜?H4 绂绘暎绛変环閫氳繃锛涘悶鍚?batch 8/16/32/64 绋冲畾锛?28/256 OOM銆傛帹鑽?FP32銆乥atch=32銆佹棤 bucketing锛岀害 12.71 transitions/s銆佸嘲鍊?2.03 GiB銆佺害 13.19x CPU batch8銆傛湭杩愯姝ｅ紡 TRAIN tuning銆乂alidation comparison銆佹柟娉曢€夋嫨銆佽缁冦€侀棴鐜垨 locked_test銆傚敮涓€涓嬩竴鍔ㄤ綔锛氱爺绌惰€呭彟琛屾巿鏉冩寮?STEP 6.3D 姣旇緝銆俙n

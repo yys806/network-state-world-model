@@ -1,3 +1,7 @@
+## 2026-09-30 STEP 6.3D-GPU-EXECUTION 当前状态
+
+`STEP_6_3D_GPU_EXECUTION=PASS`：RTX 4090 24GB 上冻结 checkpoint 的 FP32 CPU/GPU 单步与 H4 离散等价通过，测试 batch 1/4/8/16/32/64/128/256；batch 128/256 正式吞吐探测 OOM。推荐不分桶 batch=32，稳定中位数约 12.71 unique transitions/s、峰值约 2.03 GiB，约 13.19x CPU batch8；完整 2,113,536 transitions 理论约 46.2 小时。未运行正式 TRAIN tuning、Validation comparison、方法选择、训练、闭环或 `locked_test`。收据见 `code/artifacts/protocols/pi_jwm_step6_3d_gpu_execution_v1_20260930/`。
+
 # PI-JWM Current State Snapshot
 
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 当前关口

@@ -13,7 +13,7 @@ from dataclasses import asdict, replace
 from pathlib import Path
 from typing import Any
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "-1")
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 
 import torch

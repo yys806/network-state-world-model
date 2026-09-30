@@ -1,0 +1,35 @@
+{
+  "anchor_encoder_reuse": "PASS",
+  "bucket_strategy": "none; equivalence PASS but median speedup 0.910, so not adopted",
+  "cache_bwm_accounting": "PASS",
+  "cpu_gpu_equivalence": "PASS",
+  "equivalence_tested_batch_sizes": [
+    1,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256
+  ],
+  "formal_comparison_executed": false,
+  "gpu_gate": "PASS",
+  "h4_discrete_consistency": "PASS",
+  "h4_numeric_diagnostic": "intermediate max 1.220703125e-4; no grammar/H_sup/scoreability/objective-order change",
+  "locked_test": false,
+  "receipt_sha256": {
+    "02_gpu_environment.json": "90809404756580453eeafabf1660d8af7eba5aad19a6cf995a184c4c4223ea88",
+    "03_cpu_gpu_equivalence_1_to_32.json": "3a2329a24c2eaa01b255de37dd92b2bc0d4de1e1aa35f6739d05c3cd78ea4789",
+    "03_cpu_gpu_equivalence_64_256.json": "3a2329a24c2eaa01b255de37dd92b2bc0d4de1e1aa35f6739d05c3cd78ea4789",
+    "04_gpu_batch_throughput.json": "61eb783607d13cd2c5ac11bb02fd7b035ee1a9c338b813160f45dd08b911d49c",
+    "05_bucket_diagnostic.json": "15c7bf779637ff09f44562eaaecaa8f0c2b4a149b5de6873d9ca45baa8068086"
+  },
+  "recommended_batch_size": 32,
+  "source_checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "step": "6.3D-GPU-EXECUTION",
+  "throughput_receipt": "04_gpu_batch_throughput.json",
+  "train_tuning_executed": false,
+  "validation_comparison_executed": false,
+  "verdict": "PASS"
+}

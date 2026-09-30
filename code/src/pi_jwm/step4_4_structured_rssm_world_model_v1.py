@@ -208,6 +208,52 @@ def resolve_wireless_sinr_db(
     directed V/U/I support required here.
     """
     bsz, n_rel, n_rb = csi_attenuation_db.shape
+    if csi_attenuation_db.is_cuda:
+        # The CPU reference below visits interfering relations in index order.
+        # Keep that exact accumulation order while resolving all receivers on
+        # the device; scalar bool()/int() on CUDA otherwise synchronizes once
+        # for every relation pair in every candidate transition.
+        pair_base = 1 << 32
+        valid_relation = (source_index >= 0) & (target_index >= 0)
+        pair_keys = source_index.long() * pair_base + target_index.long()
+        pair_keys = torch.where(valid_relation, pair_keys,
+                                torch.full_like(pair_keys, -1))
+        sorted_keys, sorted_order = torch.sort(pair_keys, dim=1, stable=True)
+        queries = (source_index.long().unsqueeze(2) * pair_base +
+                   target_index.long().unsqueeze(1))
+        location = torch.searchsorted(sorted_keys.contiguous(),
+                                       queries.flatten(1).contiguous(), right=True) - 1
+        location = location.clamp_min(0)
+        located_key = sorted_keys.gather(1, location).reshape(bsz, n_rel, n_rel)
+        cross = sorted_order.gather(1, location).reshape(bsz, n_rel, n_rel)
+        cross_valid = ((located_key == queries) &
+                       (source_index.unsqueeze(2) >= 0) &
+                       (target_index.unsqueeze(1) >= 0))
+        receiver_indices = torch.arange(n_rel, device=csi_attenuation_db.device)
+        tx_type = source_type_index.long()
+        rx_type = target_type_index.long()
+        signal_power = torch.where(
+            tx_type == ENTITY_VEHICLE,
+            torch.where(rx_type == ENTITY_VEHICLE, v2v_tx_power_dbm,
+                        vehicle_to_infra_tx_power_dbm), uav_or_rsu_tx_power_dbm)
+        signal = torch.pow(10.0, (signal_power.unsqueeze(-1) - csi_attenuation_db) / 10.0) * rb_allocation
+        interference = torch.full_like(signal, float(noise_power_mw))
+        for other in range(n_rel):
+            cross_i = cross[:, other]
+            csi_cross = csi_attenuation_db.gather(
+                1, cross_i.unsqueeze(-1).expand(-1, -1, n_rb))
+            rx_cross = target_type_index.gather(1, cross_i)
+            other_power = torch.where(
+                tx_type[:, other:other + 1] == ENTITY_VEHICLE,
+                torch.where(rx_cross == ENTITY_VEHICLE, v2v_tx_power_dbm,
+                            vehicle_to_infra_tx_power_dbm), uav_or_rsu_tx_power_dbm)
+            active = (cross_valid[:, other] &
+                      (receiver_indices.unsqueeze(0) != other)).unsqueeze(-1)
+            interference = interference + (
+                torch.pow(10.0, (other_power.unsqueeze(-1) - csi_cross) / 10.0) *
+                rb_allocation[:, other:other + 1] * active)
+        linear = (signal + 1e-10) / (interference + 1e-10)
+        return (10.0 * torch.log10(linear)).clamp_min(1e-9)
     def power(tx_type: int, rx_type: int) -> float:
         if tx_type == ENTITY_VEHICLE:
             return float(v2v_tx_power_dbm if rx_type == ENTITY_VEHICLE else vehicle_to_infra_tx_power_dbm)
