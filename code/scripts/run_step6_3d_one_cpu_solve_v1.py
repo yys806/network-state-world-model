@@ -28,7 +28,9 @@ from pi_jwm.step5_5_full_sharded_loader_v1 import FullFormalShardDataset, FORMAL
 from pi_jwm.step5_6a_formal_training_config_v1 import formal_training_config_v1
 from pi_jwm.step6_0a_candidate_generation_v1 import PlannerCandidateContext
 from pi_jwm.step6_0c_planner_action_domain_v1 import context_from_current_raw
-from pi_jwm.step6_1_trained_candidate_rollout_v1 import prepare_anchor, rollout_one_step, fingerprint
+from pi_jwm.step6_1_trained_candidate_rollout_v1 import (
+    prepare_anchor, rollout_one_step, rollout_one_step_batch, fingerprint,
+)
 from pi_jwm.step6_2a_planner_objective_side_state_v1 import PlannerRouteCausalSideState, prepare_objective_side_state
 from pi_jwm.step6_2b_planner_objective_scorer_v1 import (
     BurdenSemanticsBlocked, ScorerStateInconsistency, score_candidate_set,
@@ -54,9 +56,9 @@ SOURCE_FILES = (
     "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py",
     "code/scripts/run_step6_3d_one_cpu_solve_v1.py",
     "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py",
-    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/01_train_anchor_manifest.json",
-    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/02_validation_anchor_manifest.json",
-    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/03_selected_deadline_sidecars.json",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/15_train_anchor_manifest_objective_eligible.json",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/19_formal_selected_deadline_sidecars.json",
     "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/02_train_structural_support_catalog.json",
 )
 
@@ -124,12 +126,12 @@ def objective_side(sample, state, context, decision, sidecar):
         routes=routes, model_state=state)
 
 
-def run(sample_id: str, method: str, seed: int, budget: int,
-        iterations: int, elite_ratio: float | None) -> dict:
+def load_frozen_runtime(sample_id: str):
+    """Prepare one authenticated CPU anchor for solve or equivalence audit."""
     torch.set_num_threads(1)
     if sha(CHECKPOINT) != EXPECTED_SHA:
         raise ValueError("frozen best checkpoint SHA mismatch")
-    selected = json.loads((OUT / "03_selected_deadline_sidecars.json").read_text(encoding="utf-8"))
+    selected = json.loads((OUT / "19_formal_selected_deadline_sidecars.json").read_text(encoding="utf-8"))
     if sample_id not in selected or not selected[sample_id]["alignment_passed"]:
         raise ValueError("selected anchor lacks aligned deadline sidecar")
     interface = FormalTrainingInterface.from_manifest(DATASET)
@@ -156,7 +158,18 @@ def run(sample_id: str, method: str, seed: int, budget: int,
     model.load_state_dict(payload["model_state"]["rssm"], strict=True)
     encoder.eval(); model.eval()
     before = fingerprint({"encoder": encoder.state_dict(), "rssm": model.state_dict()})
+    with torch.no_grad():
+        prepared = prepare_anchor(model, encoder, _torch_tree(tensor),
+            _torch_tree(graph_input), state, graph, context, domain, sample_id)
+    return model, encoder, prepared, side, catalog, protocol, meta, before
+
+
+def run(sample_id: str, method: str, seed: int, budget: int,
+        iterations: int, elite_ratio: float | None, batch_size: int = 1) -> dict:
+    model, encoder, prepared, side, catalog, protocol, meta, before = load_frozen_runtime(sample_id)
+    state, context, domain = prepared.state, prepared.context, prepared.domain
     score_residuals = {}
+    support_horizons = {}
     def score_h4(candidate, trace):
         try:
             scored = score_candidate_set(state, side, ((candidate, trace),),
@@ -164,7 +177,11 @@ def run(sample_id: str, method: str, seed: int, budget: int,
         except (ScorerStateInconsistency, BurdenSemanticsBlocked) as exc:
             reason = type(exc).__name__ + ":" + str(exc)
             score_residuals[reason] = score_residuals.get(reason, 0) + 1
+            support_horizons["SCORER_EXCEPTION"] = support_horizons.get("SCORER_EXCEPTION", 0) + 1
             return None
+        for horizon in scored.support_horizons.values():
+            key = str(horizon)
+            support_horizons[key] = support_horizons.get(key, 0) + 1
         if scored.status != "SCOREABLE" or scored.H_eff != 4 or not scored.scores or scored.scores[0].H_sup != 4:
             reason = "H4_UNSCOREABLE:" + scored.status
             score_residuals[reason] = score_residuals.get(reason, 0) + 1
@@ -176,13 +193,14 @@ def run(sample_id: str, method: str, seed: int, budget: int,
             return None
         return scored.scores[0]
     with torch.no_grad():
-        prepared = prepare_anchor(model, encoder, _torch_tree(tensor),
-            _torch_tree(graph_input), state, graph, context, domain, sample_id)
         outcome = solve_fixed_budget(method=method, seed=seed, b_wm=budget,
             anchor=prepared, catalog=catalog,
             transition=lambda node, bound: rollout_one_step(
                 model, context, domain, node.latent, node.state, node.graph,
                 node.mobility_control, bound), score_h4=score_h4,
+            transition_batch=(lambda requests: rollout_one_step_batch(
+                model, context, domain, requests)) if batch_size > 1 else None,
+            batch_size=batch_size,
             iterations=iterations, elite_ratio=elite_ratio)
     after = fingerprint({"encoder": encoder.state_dict(), "rssm": model.state_dict()})
     if before != after:
@@ -191,6 +209,7 @@ def run(sample_id: str, method: str, seed: int, budget: int,
             "seed": seed, "budget": budget, "iterations": iterations,
             "elite_ratio": elite_ratio, "outcome": asdict(outcome),
             "score_residuals": score_residuals,
+            "support_horizon_counts": support_horizons,
             "checkpoint_sha256": EXPECTED_SHA, "parameter_digest": before,
             "source_sha256": source_hashes(),
             "sidecar_alignment_passed": True, "gpu": False, "training": False,
@@ -205,10 +224,11 @@ def main() -> None:
     parser.add_argument("--budget", type=int, required=True)
     parser.add_argument("--iterations", type=int, default=1)
     parser.add_argument("--elite-ratio", type=float)
+    parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--out", type=Path)
     args = parser.parse_args()
     result = run(args.sample_id, args.method, args.seed, args.budget,
-                 args.iterations, args.elite_ratio)
+                 args.iterations, args.elite_ratio, args.batch_size)
     if args.out:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(json.dumps(result, sort_keys=True, indent=2, ensure_ascii=False) + "\n",

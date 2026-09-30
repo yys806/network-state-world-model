@@ -1,5 +1,7 @@
 # PI-JWM 实验索引
 
+STEP 6.3D-PREFLIGHT-PATCH CPU 前置诊断：保留历史清单，静态替换 3 TRAIN / 5 Validation 零 cohort 样本并精确重放新 deadline sidecar；32 TRAIN 上固定 HRS seed6391/B_WM64 完成 2048 次 unique 一步转移的 H4 支持诊断。另在真实 TRAIN 样本检查 batch 1/4/8/16 的一步/H4 等价与 64 转移吞吐。机器收据 15–25 位于 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/`，解释见独立 Patch 实施记录。没有 Validation 搜索或三方法正式比较。
+
 STEP 6.3B/6.3C-PATCH CPU 合同与投影审计：Formal TRAIN 4416 个 H1 锚点逐项记录 raw historical action、Planner-v1 projected action 和排除行；TRAIN/Validation 静态候选域分别审计 4416/1104 个锚点，Validation 只作描述。机器入口 `code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/`，解释见 `docs/implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md`。它不是候选排序或系统性能实验。
 
 STEP 6.3A CPU-only support audit：Formal TRAIN 48 trajectories/4416 windows，validation 12/1104 descriptive-only。Comp 1969/1969 action entries 从 causal CPU rule 重建，alpha `{0.5,0.75,1.0}`；Comm/Mob/joint/temporal 和 anchor search-size receipts 见 `code/artifacts/protocols/pi_jwm_step6_3a_candidate_support_audit_v1_20260928/`。不是候选选择或性能实验。

@@ -1,5 +1,7 @@
 # PI-JWM 架构说明
 
+> 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH：新增静态同层哈希 Objective 资格修正；正式 32/64 清单和 96 个精确 sidecar 作为后续比较输入。CPU 批量一步转移与串行共用 6.1 动作适配、冻结 `model.one_step` 和确定性规则，通过 6.3C `evaluate_batch` 逐 unique transition 计费。真实 TRAIN batch 1/4/8/16 的一步/H4 等价已核验；搜索方法、Grammar、Objective 未改。详见 Patch 实施记录。
+
 > 2026-09-29 STEP 6.3B/6.3C-PATCH：当前/预测状态中已有无线 Flow 唯一绑定出 `E_comm(t)`，候选语法从中选 `S_comm(t)`，并按 TRAIN 对应 Comm 结构已见的选中任务数准入；未选任务保持在状态中。CandidateDomain 用同一规则计数/惰性枚举，每步模型推演后重新构造。原始 TRAIN 与投影动作在审计脚本中分存；Route、Comp/Mob、模型和 Objective 的既定边界不变。
 
 > 2026-09-28 STEP 6.3A：候选支持审计确认 Comp 可以由现有 causal CPU inner rule 重建；Formal TRAIN 的联合/时序签名不支持独立 Comm/Comp/Mob 因子化。该证据尚未冻结任何搜索算法。

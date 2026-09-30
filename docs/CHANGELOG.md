@@ -1,5 +1,9 @@
 # 项目结构与知识入口变更记录
 
+## 2026-09-30：STEP 6.3D-PREFLIGHT-PATCH
+
+按冻结静态分层/哈希规则替换 8 个零 Objective cohort 锚点，保留历史清单和 Raw；精确重放 8 个新 deadline sidecar。新增共享批量一步转移、现有 `B_WM` cache 接口、真实 TRAIN 一步/H4 等价与 CPU 吞吐，以及 32-anchor H4 支持诊断和 SHA 验收。Patch PASS，H4 readiness 待研究者判断；正式方法比较未运行，搜索方法未选。
+
 ## 2026-09-29：STEP 6.3D CPU 搜索路径进行中
 
 新增 Formal TRAIN/Validation 确定性锚点清单、只读因果 deadline sidecar、共享 HRS/S-CEM/MH-CEM 结构化 proposal 与 H4 固定预算搜索路径。定向合同测试及 synthetic exact oracle 通过。完整 TRAIN tuning 和 Validation comparison 尚未结束，搜索方法未选；未用 GPU、`locked_test`、训练或闭环。

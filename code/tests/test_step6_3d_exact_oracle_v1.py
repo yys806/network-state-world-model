@@ -56,14 +56,17 @@ class ExactOracleTests(unittest.TestCase):
         for method, config in (("HRS", {}),
                                ("S-CEM", {"iterations": 3, "elite_ratio": 0.1}),
                                ("MH-CEM", {"iterations": 3, "elite_ratio": 0.1})):
-            with self.subTest(method=method):
-                result = solve_fixed_budget(method=method, seed=6301, b_wm=30,
-                    anchor=anchor, catalog=catalog, transition=transition,
-                    score_h4=score, **config)
-                self.assertEqual(result.best_objective, expected)
-                self.assertEqual(result.budget_receipt["N_unique_transition_evals"], 30)
-                self.assertEqual(result.h4_scoreable_count, 16)
-                self.assertGreater(result.budget_receipt["N_cache_hits"], 0)
+            for batch_size in (1, 4):
+                with self.subTest(method=method, batch_size=batch_size):
+                    result = solve_fixed_budget(method=method, seed=6301, b_wm=30,
+                        anchor=anchor, catalog=catalog, transition=transition,
+                        transition_batch=(lambda requests: tuple(transition(n, b)
+                            for n, b in requests)) if batch_size > 1 else None,
+                        batch_size=batch_size, score_h4=score, **config)
+                    self.assertEqual(result.best_objective, expected)
+                    self.assertEqual(result.budget_receipt["N_unique_transition_evals"], 30)
+                    self.assertEqual(result.h4_scoreable_count, 16)
+                    self.assertGreater(result.budget_receipt["N_cache_hits"], 0)
 
 
 if __name__ == "__main__":

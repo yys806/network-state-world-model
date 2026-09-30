@@ -1,5 +1,9 @@
 # 当前代码架构与新定义差异
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 执行路径
+
+串行与批量一步转移共用 6.1 的动作适配、冻结 `model.one_step`、确定性规则和当前/预测状态。批量路径复用 `_batch_tree`、`_stack_actions`、按候选拆回结果，并交给现有 `TransitionBudgetAccountant.evaluate_batch` 按每条 unique candidate-step 收费；缓存和 causal parent fingerprint 不变。真实 TRAIN fixture 上 batch 1/4/8/16 的动作、状态、图、模型 trace、Grammar/H_sup 和 Objective 排序与串行等价。搜索方法、候选域、Objective、模型及 checkpoint 未改变；正式方法矩阵仍暂停。
+
 ## 2026-09-29 STEP 6.3D CPU 搜索架构（进行中）
 
 `step6_3d_structured_proposal_v1.py` 在唯一 `CandidateDomain` 上实现共享的联合结构→任务数→任务子集→通信行分配→RB 起点层级。`step6_3d_fixed_budget_search_v1.py` 让 HRS/S-CEM/MH-CEM 共享 `SearchNode`、一步 rollout 和 `TransitionBudgetAccountant`；只把完整可评分 H4 候选交给既有 6.2B 五项字典序 Objective。HRS 不更新，S-CEM 只更新粗层，MH-CEM 更新全部层。TRAIN/Validation 方法比较尚未完成，架构可运行不等于方法已选或闭环已建。

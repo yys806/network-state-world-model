@@ -1,5 +1,7 @@
 # PI-JWM 项目索引
 
+> 2026-09-30 当前关口：STEP 6.3D-PREFLIGHT-PATCH 的静态 Objective 资格、TRAIN-only H4 支持诊断和 CPU batch 等价已通过；正式 6.3D 搜索方法比较暂停，方法未选。入口：`docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md` 与 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json`。
+
 > 2026-09-29 STEP 6.3B/6.3C-PATCH：研究者批准 Comm 在当前已有无线 Flow 唯一绑定任务中按 TRAIN 通信结构条件数量选子集；Route 依赖的历史 Comm 行只在投影审计中排除，原始 TRAIN 不变。当前代码、合同和机器入口见 `implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md`、`code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json`。不含优化器或闭环。
 
 > 2026-09-29 STEP 6.3B（当前）：Planner v1 候选语法和 Formal TRAIN 支持准入见 `contracts/PIJWM_STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_V1.md`、`implementation_records/STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_AND_SUPPORT_POLICY.md`；源码 `code/src/pi_jwm/step6_3b_candidate_grammar_v1.py` 与 `step6_3b_candidate_support_v1.py`。仅语法/准入，不含优化器、性能或闭环。

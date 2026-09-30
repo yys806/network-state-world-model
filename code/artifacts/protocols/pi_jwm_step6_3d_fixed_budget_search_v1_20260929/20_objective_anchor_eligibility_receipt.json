@@ -1,0 +1,788 @@
+{
+  "cohort_zero_count": 0,
+  "locked_test": false,
+  "replacement_count": 8,
+  "rows": [
+    {
+      "cohort_count": 6,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092310-policy-2026092410::anchor-0011",
+      "split": "dev_train",
+      "static_candidate_count": 47628,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 45,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092319-policy-2026092419::anchor-0066",
+      "split": "dev_train",
+      "static_candidate_count": 2261059,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 5,
+      "evidence_source": "new_exact_replay_and_frozen_scorer_side_state",
+      "sample_id": "formal-v1-sim-2026092345-policy-2026092445::anchor-0028",
+      "split": "dev_train",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 10,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092333-policy-2026092433::anchor-0049",
+      "split": "dev_train",
+      "static_candidate_count": 34062443,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 14,
+      "evidence_source": "new_exact_replay_and_frozen_scorer_side_state",
+      "sample_id": "formal-v1-sim-2026092306-policy-2026092406::anchor-0075",
+      "split": "dev_train",
+      "static_candidate_count": 980122590,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 26,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092329-policy-2026092429::anchor-0069",
+      "split": "dev_train",
+      "static_candidate_count": 128067697,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 38,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092330-policy-2026092430::anchor-0063",
+      "split": "dev_train",
+      "static_candidate_count": 3591494538,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 14,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092327-policy-2026092427::anchor-0035",
+      "split": "dev_train",
+      "static_candidate_count": 6,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 9,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092357-policy-2026092457::anchor-0038",
+      "split": "dev_train",
+      "static_candidate_count": 54679,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 14,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092332-policy-2026092432::anchor-0031",
+      "split": "dev_train",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 55,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092340-policy-2026092440::anchor-0082",
+      "split": "dev_train",
+      "static_candidate_count": 71339797,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 9,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092309-policy-2026092409::anchor-0040",
+      "split": "dev_train",
+      "static_candidate_count": 980122590,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 38,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092347-policy-2026092447::anchor-0073",
+      "split": "dev_train",
+      "static_candidate_count": 122132799,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 55,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092304-policy-2026092404::anchor-0080",
+      "split": "dev_train",
+      "static_candidate_count": 23630926248,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 8,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092330-policy-2026092430::anchor-0013",
+      "split": "dev_train",
+      "static_candidate_count": 6,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 4,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092305-policy-2026092405::anchor-0004",
+      "split": "dev_train",
+      "static_candidate_count": 18,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 2,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092342-policy-2026092442::anchor-0029",
+      "split": "dev_train",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 29,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092334-policy-2026092434::anchor-0043",
+      "split": "dev_train",
+      "static_candidate_count": 8565377,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 37,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092340-policy-2026092440::anchor-0057",
+      "split": "dev_train",
+      "static_candidate_count": 980122590,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 39,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092334-policy-2026092434::anchor-0087",
+      "split": "dev_train",
+      "static_candidate_count": 187801169,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 9,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092305-policy-2026092405::anchor-0083",
+      "split": "dev_train",
+      "static_candidate_count": 17622373986,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 5,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092351-policy-2026092451::anchor-0012",
+      "split": "dev_train",
+      "static_candidate_count": 47628,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 2,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092325-policy-2026092425::anchor-0003",
+      "split": "dev_train",
+      "static_candidate_count": 18,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 6,
+      "evidence_source": "new_exact_replay_and_frozen_scorer_side_state",
+      "sample_id": "formal-v1-sim-2026092306-policy-2026092406::anchor-0052",
+      "split": "dev_train",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 8,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092338-policy-2026092438::anchor-0070",
+      "split": "dev_train",
+      "static_candidate_count": 20492134,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 11,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092349-policy-2026092449::anchor-0035",
+      "split": "dev_train",
+      "static_candidate_count": 980122590,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 34,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092343-policy-2026092443::anchor-0091",
+      "split": "dev_train",
+      "static_candidate_count": 122132799,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 8,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092352-policy-2026092452::anchor-0084",
+      "split": "dev_train",
+      "static_candidate_count": 8834544054,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 5,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092307-policy-2026092407::anchor-0011",
+      "split": "dev_train",
+      "static_candidate_count": 47628,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 1,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092325-policy-2026092425::anchor-0024",
+      "split": "dev_train",
+      "static_candidate_count": 3488252,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 14,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092320-policy-2026092420::anchor-0029",
+      "split": "dev_train",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 33,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0083",
+      "split": "dev_train",
+      "static_candidate_count": 79707537,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 3,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "split": "dev_validation",
+      "static_candidate_count": 6,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 4,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "split": "dev_validation",
+      "static_candidate_count": 54679,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 5,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "split": "dev_validation",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 18,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "split": "dev_validation",
+      "static_candidate_count": 34062443,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 12,
+      "evidence_source": "new_exact_replay_and_frozen_scorer_side_state",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "split": "dev_validation",
+      "static_candidate_count": 375971064,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 17,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "split": "dev_validation",
+      "static_candidate_count": 122132799,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 33,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "split": "dev_validation",
+      "static_candidate_count": 8834544054,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 5,
+      "evidence_source": "new_exact_replay_and_frozen_scorer_side_state",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "split": "dev_validation",
+      "static_candidate_count": 47628,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 6,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "split": "dev_validation",
+      "static_candidate_count": 639,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 2,
+      "evidence_source": "new_exact_replay_and_frozen_scorer_side_state",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "split": "dev_validation",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 3,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "split": "dev_validation",
+      "static_candidate_count": 10300737,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 7,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "split": "dev_validation",
+      "static_candidate_count": 375971064,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 62,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "split": "dev_validation",
+      "static_candidate_count": 122132799,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 50,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "split": "dev_validation",
+      "static_candidate_count": 12728292540,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 4,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "split": "dev_validation",
+      "static_candidate_count": 47628,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 5,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "split": "dev_validation",
+      "static_candidate_count": 18,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 4,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "split": "dev_validation",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 7,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "split": "dev_validation",
+      "static_candidate_count": 10300737,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 56,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "split": "dev_validation",
+      "static_candidate_count": 2013917796,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 17,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "split": "dev_validation",
+      "static_candidate_count": 152597668,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 7,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "split": "dev_validation",
+      "static_candidate_count": 5826990672,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 1,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "split": "dev_validation",
+      "static_candidate_count": 47628,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 12,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "split": "dev_validation",
+      "static_candidate_count": 679265,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 3,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "split": "dev_validation",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 6,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "split": "dev_validation",
+      "static_candidate_count": 34062443,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 3,
+      "evidence_source": "new_exact_replay_and_frozen_scorer_side_state",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "split": "dev_validation",
+      "static_candidate_count": 375971064,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 37,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "split": "dev_validation",
+      "static_candidate_count": 258907953,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 22,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "split": "dev_validation",
+      "static_candidate_count": 23630926248,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 4,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "split": "dev_validation",
+      "static_candidate_count": 6,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 6,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "split": "dev_validation",
+      "static_candidate_count": 54679,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 1,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "split": "dev_validation",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 35,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "split": "dev_validation",
+      "static_candidate_count": 95046842,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 8,
+      "evidence_source": "new_exact_replay_and_frozen_scorer_side_state",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "split": "dev_validation",
+      "static_candidate_count": 980122590,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 5,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "split": "dev_validation",
+      "static_candidate_count": 122132799,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 27,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "split": "dev_validation",
+      "static_candidate_count": 8834544054,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 6,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "split": "dev_validation",
+      "static_candidate_count": 47628,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 11,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "split": "dev_validation",
+      "static_candidate_count": 3488252,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 2,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "split": "dev_validation",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 14,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "split": "dev_validation",
+      "static_candidate_count": 10166904,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 31,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "split": "dev_validation",
+      "static_candidate_count": 2013917796,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 20,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "split": "dev_validation",
+      "static_candidate_count": 122132799,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 21,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "split": "dev_validation",
+      "static_candidate_count": 3591494538,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 1,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "split": "dev_validation",
+      "static_candidate_count": 47628,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 3,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "split": "dev_validation",
+      "static_candidate_count": 3488252,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 14,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "split": "dev_validation",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 22,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "split": "dev_validation",
+      "static_candidate_count": 10300737,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 8,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "split": "dev_validation",
+      "static_candidate_count": 980122590,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 25,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "split": "dev_validation",
+      "static_candidate_count": 122132799,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 11,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "split": "dev_validation",
+      "static_candidate_count": 8834544054,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 4,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "split": "dev_validation",
+      "static_candidate_count": 6,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 11,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "split": "dev_validation",
+      "static_candidate_count": 3488252,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 10,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "split": "dev_validation",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 9,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "split": "dev_validation",
+      "static_candidate_count": 17107153,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 4,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "split": "dev_validation",
+      "static_candidate_count": 2013917796,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 61,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "split": "dev_validation",
+      "static_candidate_count": 122132799,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 21,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "split": "dev_validation",
+      "static_candidate_count": 8834544054,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 6,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "split": "dev_validation",
+      "static_candidate_count": 6,
+      "stratum": "q0:comp0"
+    },
+    {
+      "cohort_count": 12,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "split": "dev_validation",
+      "static_candidate_count": 18,
+      "stratum": "q0:comp1"
+    },
+    {
+      "cohort_count": 9,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "split": "dev_validation",
+      "static_candidate_count": 87325362,
+      "stratum": "q1:comp0"
+    },
+    {
+      "cohort_count": 18,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "split": "dev_validation",
+      "static_candidate_count": 20492134,
+      "stratum": "q1:comp1"
+    },
+    {
+      "cohort_count": 19,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "split": "dev_validation",
+      "static_candidate_count": 2013917796,
+      "stratum": "q2:comp0"
+    },
+    {
+      "cohort_count": 18,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "split": "dev_validation",
+      "static_candidate_count": 102465953,
+      "stratum": "q2:comp1"
+    },
+    {
+      "cohort_count": 26,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "split": "dev_validation",
+      "static_candidate_count": 12728292540,
+      "stratum": "q3:comp0"
+    },
+    {
+      "cohort_count": 1,
+      "evidence_source": "accepted_prior_side_state_and_exact_replay",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "split": "dev_validation",
+      "static_candidate_count": 47628,
+      "stratum": "q0:comp0"
+    }
+  ],
+  "selection_uses_rollout_or_search_outcome": false,
+  "source_sha256": {
+    "15_train_anchor_manifest_objective_eligible.json": "561886c08dd857a725cf10e076e93171ecbdc6254b2b897da1f1b9b3c240c511",
+    "16_validation_anchor_manifest_objective_eligible.json": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e",
+    "17_replacement_deadline_sidecars.json": "0d7c5b82839384cc91db418a814755a62bfb035f8e63a0d31010105dae86fb0b",
+    "18_replacement_deadline_alignment_receipt.json": "b51d8a5ad84e54ec606ce2656f64495c0683e08780e5ee70425042d448f6fdc4",
+    "19_formal_selected_deadline_sidecars.json": "7c9128f11043af2048ed6939544be5e08800ba81b89cdc00258d691aeba86695"
+  },
+  "static_empty_count": 0,
+  "train_count": 32,
+  "validation_count": 64,
+  "validation_search_executed": false,
+  "verdict": "OBJECTIVE_ANCHOR_ELIGIBILITY_PASS"
+}

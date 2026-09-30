@@ -1,5 +1,12 @@
 # Findings
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH
+
+- 原 96 个方法比较锚点中 8 个 `cohort_count=0` 是冻结 6.2B scorer 的必然不可评分输入。静态同 split/四分位/Comp stratum/hash 替换后，32/64 全部非空且 cohort>0；样本选择不读取 rollout/search 结果。
+- TRAIN-only 固定诊断的 32 个锚点恰好 16 有 H4 可评分候选、16 没有。275 条不可评分完整轨迹都具有 `UNSUPPORTED_FUTURE_RETURN_BIRTH`；27/32 个锚点至少有一次该原因，14/32 有语法死路。空 cohort 残余和 scorer inconsistency 均为 0。该诊断只说明固定 HRS seed6391/B64 下的评分支持，不能推断三种搜索器的胜负。
+- 真实 TRAIN CPU 串行/批量转移在 batch 1/4/8/16 通过既有 `1e-4` 数值容差及 Grammar、`H_sup`、字典序排序检查；batch 8 在本次 64 转移探针中最快但只比 batch 1 快约 1.11 倍。`B_WM` 仍按 unique candidate-step 计费，重复请求命中缓存。
+- 研究者未冻结“大量不可评分”的数值阈值，16/16 不构成“多数样本可评分”；因此 H4 readiness 需研究者基于完整分布判断，正式 6.3D 大矩阵暂停。本 Patch 的输入/执行路径可验收，不改变 Objective、模型、搜索方法或正式选型协议。
+
 ## 2026-09-29 STEP 6.3D（进行中）
 
 - 6.3D 的 96 个分层选中锚点都能从原始轨迹只读重放建立 exact-aligned causal deadline sidecar；不需要改变 Raw、Objective 或 CandidateDomain。

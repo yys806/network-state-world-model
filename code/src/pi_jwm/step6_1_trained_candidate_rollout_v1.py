@@ -148,6 +148,26 @@ def rollout_one_step(model: torch.nn.Module, context: PlannerCandidateContext,
     The caller must bind and admit the step with STEP 6.3B on this exact input
     state. Route is explicit no-op, so its rule metadata is empty as in 6.1.
     """
+    action, mapping, route_metadata, input_fingerprints = _prepare_one_step(
+        model, context, domain, latent, state, graph, mobility_control,
+        bound_step, batch_index=0)
+    next_latent, next_state, next_graph, trace = model.one_step(
+        latent, state, graph, action, prior_mode="mean", service_mode="expectation",
+        generator=None, route_rule_metadata=route_metadata)
+    output_fingerprints = {"state": fingerprint(next_state), "graph": fingerprint(next_graph),
+                           "latent": fingerprint(next_latent)}
+    return OneStepRolloutResult(next_latent, next_state, next_graph,
+                                bound_step.next_mobility_control, action, mapping, trace,
+                                input_fingerprints, output_fingerprints)
+
+
+def _prepare_one_step(model: torch.nn.Module, context: PlannerCandidateContext,
+                      domain: PlannerActionDomainContext, latent: Mapping[str, Any],
+                      state: Mapping[str, torch.Tensor], graph: Mapping[str, torch.Tensor],
+                      mobility_control: Mapping[int, Any], bound_step: Any, *,
+                      batch_index: int) -> tuple[Mapping[str, torch.Tensor], Mapping[str, Any],
+                                                  list[Any], Mapping[str, str]]:
+    """The shared formal action adapter for serial and batched transitions."""
     if model.training or torch.is_grad_enabled():
         raise ValueError("one-step rollout requires model.eval() and torch.no_grad()")
     if context.causal_provenance != domain.causal_provenance:
@@ -163,17 +183,51 @@ def rollout_one_step(model: torch.nn.Module, context: PlannerCandidateContext,
                                               planner_domain_context=current_domain)
     from pi_jwm.step6_2a_route_rule_metadata_v1 import build_route_rule_metadata
     route_metadata = build_route_rule_metadata({"future_action": [step.frame()]}, state,
-                                                 action, 0, batch_index=0)
-    input_fingerprints = {"state": fingerprint(state), "graph": fingerprint(graph),
-                          "latent": fingerprint(latent)}
-    next_latent, next_state, next_graph, trace = model.one_step(
-        latent, state, graph, action, prior_mode="mean", service_mode="expectation",
-        generator=None, route_rule_metadata=route_metadata)
-    output_fingerprints = {"state": fingerprint(next_state), "graph": fingerprint(next_graph),
-                           "latent": fingerprint(next_latent)}
-    return OneStepRolloutResult(next_latent, next_state, next_graph,
-                                bound_step.next_mobility_control, action, mapping, trace,
-                                input_fingerprints, output_fingerprints)
+                                                action, 0, batch_index=batch_index)
+    inputs = {"state": fingerprint(state), "graph": fingerprint(graph),
+              "latent": fingerprint(latent)}
+    return action, mapping, route_metadata, inputs
+
+
+def rollout_one_step_batch(model: torch.nn.Module, context: PlannerCandidateContext,
+                           domain: PlannerActionDomainContext,
+                           requests: Sequence[tuple[Any, Any]]) -> tuple[OneStepRolloutResult, ...]:
+    """Batch current/predicted SearchNode transitions via the existing 6.1 path."""
+    if not requests:
+        raise ValueError("nonempty one-step batch required")
+    actions, mappings, metadata, inputs = [], [], [], []
+    latents, states, graphs = [], [], []
+    for i, (node, bound) in enumerate(requests):
+        action, mapping, route_rows, fingerprints = _prepare_one_step(
+            model, context, domain, node.latent, node.state, node.graph,
+            node.mobility_control, bound, batch_index=i)
+        actions.append(action)
+        mappings.append(mapping)
+        metadata.extend(route_rows)
+        inputs.append(fingerprints)
+        latents.append(node.latent)
+        states.append(node.state)
+        graphs.append(node.graph)
+    batch_latent, batch_state, batch_graph, batch_trace = model.one_step(
+        _batch_tree(latents), _batch_tree(states), _batch_tree(graphs),
+        _stack_actions(actions), prior_mode="mean", service_mode="expectation",
+        generator=None, route_rule_metadata=metadata)
+    count = len(requests)
+    results = []
+    for i, (_, bound) in enumerate(requests):
+        latent = _one(batch_latent, i, count)
+        state = _one(batch_state, i, count)
+        graph = _one(batch_graph, i, count)
+        trace = _one(batch_trace, i, count)
+        # The 6.1 batch path removes diagnostic Comp rows added by action padding.
+        trace["rule"]["cpu_service"] = trace["rule"]["cpu_service"][
+            :, :actions[i]["comp_values"].shape[1]]
+        outputs = {"state": fingerprint(state), "graph": fingerprint(graph),
+                   "latent": fingerprint(latent)}
+        results.append(OneStepRolloutResult(latent, state, graph,
+            bound.next_mobility_control, actions[i], mappings[i], trace,
+            inputs[i], outputs))
+    return tuple(results)
 
 
 def prepare_anchor(model: torch.nn.Module, encoder: torch.nn.Module,

@@ -2425,8 +2425,10 @@
         "scripts.accept_step5_6c_formal_training_v1",
         "scripts.audit_step5_5_patch_v1",
         "scripts.audit_step6_2a_paired_rollout_cpu_v1",
+        "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.audit_step6_3d_selected_side_state_v1",
         "scripts.build_step5_5_formal_dataset_v1",
+        "scripts.build_step6_3d_objective_eligible_anchors_v1",
         "scripts.correct_step5_6a_validation_bookkeeping_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.finalize_step5_5_existing_package_v1",
@@ -2488,7 +2490,9 @@
         "scripts.accept_step5_6c_formal_training_v1",
         "scripts.audit_step5_5_patch_v1",
         "scripts.audit_step6_2a_paired_rollout_cpu_v1",
+        "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.audit_step6_3d_selected_side_state_v1",
+        "scripts.build_step6_3d_objective_eligible_anchors_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step5_6a_gpu_smoke_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
@@ -2601,6 +2605,7 @@
         "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
+        "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
         "scripts.step6_0a_candidate_contract_acceptance_v1",
         "tests.test_step6_0a_candidate_generation_v1",
@@ -2668,6 +2673,8 @@
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
+        "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
+        "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
         "tests.test_step6_1_trained_candidate_rollout_v1",
         "tests.test_step6_2b_planner_objective_scorer_v1",
@@ -2746,6 +2753,7 @@
       "imported_by": [
         "pi_jwm.step6_3d_fixed_budget_search_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
+        "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
         "tests.test_step6_2b_planner_objective_scorer_v1"
       ],
@@ -2800,6 +2808,7 @@
         "pi_jwm.step6_3b_candidate_grammar_v1",
         "pi_jwm.step6_3c_candidate_domain_v1",
         "pi_jwm.step6_3c_search_protocol_v1",
+        "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
@@ -2831,8 +2840,11 @@
       "imported_by": [
         "pi_jwm.step6_3d_fixed_budget_search_v1",
         "pi_jwm.step6_3d_structured_proposal_v1",
+        "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
+        "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
+        "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "tests.test_step6_3c_candidate_domain_v1",
         "tests.test_step6_3d_exact_oracle_v1",
         "tests.test_step6_3d_structured_proposal_v1"
@@ -2858,6 +2870,8 @@
       "imported_by": [
         "pi_jwm.step6_3d_fixed_budget_search_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
+        "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
+        "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "tests.test_step6_3c_search_protocol_v1"
       ],
       "imports": [
@@ -2892,6 +2906,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
         "tests.test_step6_3d_exact_oracle_v1"
       ],
@@ -2929,7 +2944,24 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.build_step6_3d_objective_eligible_anchors_v1",
+        "tests.test_step6_3d_objective_anchor_patch_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_3d_objective_anchor_patch_v1",
+      "path": "code/src/pi_jwm/step6_3d_objective_anchor_patch_v1.py",
+      "test_files": [
+        "code/tests/test_step6_3d_objective_anchor_patch_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
         "pi_jwm.step6_3d_fixed_budget_search_v1",
+        "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
+        "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "tests.test_step6_3d_structured_proposal_v1"
       ],
       "imports": [
@@ -3795,6 +3827,22 @@
       "imports": [
         "pi_jwm.step5_4_formal_training_readiness_v1",
         "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_3b_candidate_support_v1",
+        "pi_jwm.step6_3c_candidate_domain_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_3d_objective_eligible_anchors_v1",
+      "path": "code/scripts/audit_step6_3d_objective_eligible_anchors_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1"
       ],
       "lifecycle_status": "support",
@@ -4500,6 +4548,31 @@
       "lifecycle_status": "support",
       "module": "scripts.build_step6_3d_exact_oracle_receipt_v1",
       "path": "code/scripts/build_step6_3d_exact_oracle_receipt_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_3d_objective_anchor_patch_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step6_3d_objective_eligible_anchors_v1",
+      "path": "code/scripts/build_step6_3d_objective_eligible_anchors_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.build_step6_3d_preflight_patch_acceptance_v1",
+      "path": "code/scripts/build_step6_3d_preflight_patch_acceptance_v1.py",
       "test_files": []
     },
     {
@@ -5894,6 +5967,20 @@
       "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [
+        "scripts.replay_step6_3d_selected_deadline_sidecars_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.replay_step6_3d_replacement_deadline_sidecars_v1",
+      "path": "code/scripts/replay_step6_3d_replacement_deadline_sidecars_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.replay_step6_3d_replacement_deadline_sidecars_v1"
+      ],
+      "imports": [
         "pi_jwm.step5_4_formal_training_readiness_v1",
         "scripts.collect_step5_5_formal_raw_v1"
       ],
@@ -7256,6 +7343,8 @@
       "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
+        "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
+        "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1"
       ],
       "imports": [
@@ -7418,6 +7507,23 @@
       "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [
+        "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "pi_jwm.step6_3c_candidate_domain_v1",
+        "pi_jwm.step6_3c_search_protocol_v1",
+        "pi_jwm.step6_3d_structured_proposal_v1",
+        "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
+      "path": "code/scripts/run_step6_3d_batch_transition_cpu_gate_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
         "pi_jwm.step6_3d_method_selection_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1"
       ],
@@ -7429,9 +7535,34 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "pi_jwm.step6_2b_planner_objective_scorer_v1",
+        "pi_jwm.step6_3c_candidate_domain_v1",
+        "pi_jwm.step6_3c_search_protocol_v1",
+        "pi_jwm.step6_3d_fixed_budget_search_v1",
+        "pi_jwm.step6_3d_structured_proposal_v1",
+        "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_3d_h4_batch_equivalence_v1",
+      "path": "code/scripts/run_step6_3d_h4_batch_equivalence_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
+        "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.audit_step6_3d_selected_side_state_v1",
-        "scripts.run_step6_3d_formal_cpu_matrix_v1"
+        "scripts.build_step6_3d_objective_eligible_anchors_v1",
+        "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
+        "scripts.run_step6_3d_formal_cpu_matrix_v1",
+        "scripts.run_step6_3d_h4_batch_equivalence_v1",
+        "scripts.run_step6_3d_train_h4_scoreability_preflight_v1"
       ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
@@ -7455,6 +7586,18 @@
       "lifecycle_status": "support",
       "module": "scripts.run_step6_3d_one_cpu_solve_v1",
       "path": "code/scripts/run_step6_3d_one_cpu_solve_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_3d_train_h4_scoreability_preflight_v1",
+      "path": "code/scripts/run_step6_3d_train_h4_scoreability_preflight_v1.py",
       "test_files": []
     },
     {
@@ -11522,6 +11665,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_3d_method_selection_v1",
       "path": "code/tests/test_step6_3d_method_selection_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_3d_objective_anchor_patch_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_3d_objective_anchor_patch_v1",
+      "path": "code/tests/test_step6_3d_objective_anchor_patch_v1.py",
       "test_files": []
     },
     {

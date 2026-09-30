@@ -1,5 +1,7 @@
 # PI-JWM Implementation Tracker
 
+**2026-09-30 STEP 6.3D-PREFLIGHT-PATCH（输入/执行路径 PASS，正式比较暂停）：** 原选中 TRAIN 3、Validation 5 个零 Objective cohort 已按原同层哈希规则确定性替换；修正后 32/64 全部 CandidateDomain 非空、cohort>0，8 个 replacement deadline sidecar 精确对齐。TRAIN-only HRS seed6391/B64：16/32 锚点有 H4 可评分候选，16/32 无；275 条不可评分完整 H4 都有 future Return birth 支持边界。batch 1/4/8/16 一步与 H4 串行等价，batch 8 的本次 CPU 吞吐最高。Patch 验收不等于 H4 readiness；因 16/16 分布且无“大量”阈值，研究者需判断支持 blocker。正式 TRAIN tuning/Validation 比较未运行、方法未选；无 GPU、`locked_test`、训练、闭环。详见独立 Patch 实施记录和 25 接受收据。
+
 **2026-09-29 STEP 6.3D（进行中，方法未选）：** 研究者冻结 HRS/S-CEM/MH-CEM 同一 CandidateDomain、H4-only 五项严格字典序 Objective 和 `B_WM={256,512,1024}` 的 TRAIN 调参与 Validation 成对比较。32/64 个非空锚点及 96/96 对齐因果侧状态已就绪；共享五层 proposal、固定预算搜索与 bootstrap 代码通过 9/9 focused tests 和 synthetic exact oracle。真实冻结模型首个 TRAIN anchor 的 B_WM=512 探针为 512 次独特一步转移、130 条完整 H4、0 条可评分，仅作诊断。完整矩阵尚未完成，`STEP_6_3D=IN_PROGRESS`、`SEARCH_METHOD=NOT_SELECTED`；本机仅 CPU，未用 GPU、`locked_test`、训练或闭环。见 STEP 6.3D 实施记录及机器探针。
 
 **2026-09-29 STEP 6.3B/6.3C-PATCH（当前）：** 研究者正式将 Comm 当前任务域改为已有无线 Flow 唯一可绑定的 `E_comm(t)`，允许按 TRAIN 对应 Comm 结构观察到的 selected-task-count 选择子集；未选任务只是当前时隙未调度。原始 TRAIN 不改，依赖同决策 offload Route 的 Comm 历史行从 Planner-v1 投影目标排除并逐条说明。4416 TRAIN H1 投影任务数量拒绝为 0，728 条 Route 依赖行排除；Comp/未见结构残余照录。TRAIN/Validation 静态空域为 14/4416、6/1104；H1–H4 非空 Comm 机制路径与顺序 rollout 等价。`STEP_6_3BC_PATCH` 仅为 CPU 候选准入/投影审计，不是优化器、排名、闭环或性能验收；GPU、训练、`locked_test` 关闭。见补丁实施记录与 07 机器收据。

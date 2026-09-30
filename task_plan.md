@@ -1670,3 +1670,11 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 - [x] 完成合同、索引、Context Consistency、过程记录与 Git 收口。
 - 当前限制：Comm 任务数量拒绝 0；728 条 Route-created Flow 行排除；结构准入 4045/4416，语义字段 3920 通过，125 个 Comp 数值差异及其它残余保留，不放宽策略。
 - 唯一下一动作：研究者审阅本 Step；停止于 6.3B/6.3C-PATCH，不进入 6.3D，不实现 Random Search/CEM，不运行 GPU、训练、baseline、闭环或 `locked_test`。
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH — Objective eligibility / H4 scoreability / batch closure
+
+- [x] 核实 `HEAD=origin/main=34f38183c21227f9a8e95d4f13a9513a4cf88506`；保留原有未跟踪 `TASK/` 与绘图脚本；旧 96 锚点的空 cohort 为 TRAIN 3、Validation 5。
+- [x] 保留旧 manifest/sidecar，按同 split/四分位/Comp stratum 与原 sample-id hash 确定性替换，重新对齐 replacement 的 deadline，核实正式 32/64 全部 nonempty 且 cohort>0。
+- [x] 仅对修正后 TRAIN 32 以 HRS、seed6391、B_WM64 完成 H4 scoreability preflight 和原因分布；不因诊断淘汰 anchor。
+- [x] 实现复用 6.1 transition 语义的 batched one-step，接入现有 `evaluate_batch`；CPU batch 1/4/8/16 等价与吞吐探针。
+- [ ] 完成收据/Context/index/回归/commit/push，然后停止；不启动正式 6.3D 调参或 Validation 方法比较。
+- 当前 gate：`STEP_6_3D_PREFLIGHT_PATCH=PASS`（待最终 Git 收口）；32 TRAIN 中 16 个至少有一条 H4 可评分、16 个没有，275 条完整轨迹受 future Return birth 支持边界影响。`H4_SEARCH_COMPARISON_READINESS=PENDING_RESEARCHER_DECISION_ON_MODEL_OBJECTIVE_SUPPORT`；唯一下一交付是收据/Context/index/Git 同步，正式矩阵保持关闭。

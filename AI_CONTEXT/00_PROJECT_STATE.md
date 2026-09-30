@@ -1,5 +1,9 @@
 # PI-JWM Current State Snapshot
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 当前关口
+
+`STEP_6_3D_PREFLIGHT_PATCH=PASS` 只表示样本输入与 CPU 批量执行路径就绪。旧 32 TRAIN / 64 Validation 锚点中 3/5 个零 Objective cohort 已按原分层/哈希静态替换，修正后 32/64 全部候选域非空、cohort>0；8 个新 deadline sidecar 精确对齐。固定 TRAIN-only HRS seed6391/B_WM64 诊断：16/32 锚点找到可评分 H4，16/32 未找到，275 条不可评分完整 H4 均有 future Return birth 支持边界。CPU batch 1/4/8/16 一步与 H4 串行等价。`H4_SEARCH_COMPARISON_READINESS=PENDING_RESEARCHER_DECISION_ON_MODEL_OBJECTIVE_SUPPORT`：16/16 分布不满足“多数可评分”，研究者未冻结“大量”阈值。正式 TRAIN tuning/Validation 方法比较未运行，方法未选；无 GPU、`locked_test`、训练或闭环。详见 `docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md` 和 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json`；下方 6.3D 段落是补丁前状态。
+
 ## 2026-09-29 STEP 6.3D 进行中
 
 研究者已冻结 HRS、S-CEM、MH-CEM 的同域同预算 H4 方法比较；本机仅使用 CPU。TRAIN 32、Validation 64 个非空 anchor 的确定性清单与 96/96 对齐的因果 deadline sidecar 已建立；三种方法共享结构化 proposal / CandidateDomain / 一步 World Model 转移 / 6.2B 字典序 Objective 的代码与 9/9 CPU 定向测试已通过。真实模型探针和首条 B_WM=512 TRAIN solve 均未取得该单锚点的 H4 可评分候选。完整 TRAIN tuning 与 Validation 三预算比较尚未完成，`STEP_6_3D=IN_PROGRESS`、`SEARCH_METHOD=NOT_SELECTED`。正式矩阵总预算约 211 万次独特一步转移，本机探针推算数周串行 CPU；此推算仅为资源安排。未用 GPU、`locked_test`、训练或闭环。详见 STEP 6.3D 实施记录与源码；旧条目为此前 Step 的历史状态。

@@ -30,6 +30,7 @@ class SearchOutcome:
     complete_sequence_count: int
     budget_receipt: Mapping[str, Any]
     iteration_rows: tuple[Mapping[str, Any], ...]
+    batch_size: int = 1
 
 
 def quotas(budget: int, iterations: int) -> tuple[int, ...]:
@@ -58,6 +59,9 @@ def solve_fixed_budget(
     score_h4: Callable[[CandidateActionSequence, CandidateRolloutTrace], Any | None],
     iterations: int = 1, elite_ratio: float | None = None,
     max_stalled_proposals: int = 5000,
+    transition_batch: Callable[[list[tuple[SearchNode, Any]]],
+                               tuple[OneStepRolloutResult, ...]] | None = None,
+    batch_size: int = 1,
 ) -> SearchOutcome:
     """Search H4; score_h4 returns None for any H_sup<4 or scorer failure.
 
@@ -71,6 +75,8 @@ def solve_fixed_budget(
             raise ValueError("HRS uses one immutable uniform proposal")
     elif method not in {"S-CEM", "MH-CEM"} or iterations not in (3, 4) or elite_ratio not in (0.1, 0.2):
         raise ValueError("CEM configuration outside frozen search grid")
+    if batch_size < 1 or (batch_size > 1 and transition_batch is None):
+        raise ValueError("positive batch size and batch transition callback required")
     rng = random.Random(seed)
     proposal = StructuredProposalDistribution(method)
     accountant = TransitionBudgetAccountant(b_wm)
@@ -82,12 +88,81 @@ def solve_fixed_budget(
     retained: list[tuple[Any, dict]] = []
     unscoreable = 0
     iteration_rows = []
+    def score_complete(node: SearchNode, results: list[OneStepRolloutResult],
+                       draws: list, current: list[tuple[Any, dict]]) -> None:
+        nonlocal unscoreable
+        if node.depth != 4:
+            return
+        accountant.complete()
+        candidate = CandidateActionSequence(node.action_prefix, "step6_3d_candidate",
+            Backend.SEARCH, seed, anchor.context.causal_provenance,
+            generation_metadata={"planner_action_domain": "V1"})
+        candidate_id = candidate.fingerprint
+        candidate = CandidateActionSequence(node.action_prefix, candidate_id,
+            Backend.SEARCH, seed, anchor.context.causal_provenance,
+            generation_metadata={"planner_action_domain": "V1"})
+        if candidate_id in scoreable:
+            score = scoreable[candidate_id][0]
+        else:
+            score = score_h4(candidate, _trace(candidate_id, anchor.fingerprints, tuple(results)))
+        if score is None:
+            unscoreable += 1
+        else:
+            pair = (score, {"draws": draws})
+            scoreable[candidate_id] = pair
+            current.append(pair)
+
     for iteration, quota in enumerate(allocation):
         limit = accountant.n_unique_transition_evals + quota
         current: list[tuple[Any, dict]] = []
         stalled = 0
         proposed_sequences = 0
         while accountant.n_unique_transition_evals < limit:
+            if batch_size > 1:
+                branches = [(root, [], []) for _ in range(batch_size)]
+                proposed_sequences += len(branches)
+                new_this_wave = 0
+                for _depth in range(1, 5):
+                    requests = []
+                    branch_rows = []
+                    pending_new = set()
+                    remaining = limit - accountant.n_unique_transition_evals
+                    for node, results, draws in branches:
+                        domain = CandidateDomain.from_state(anchor.context, anchor.domain,
+                            node.state, node.mobility_control, catalog,
+                            node.structural_signature_prefix)
+                        if domain.is_empty:
+                            accountant.dead_end()
+                            continue
+                        bound, path = sample_structured_step(domain, proposal, rng)
+                        accountant.proposed(True)
+                        key = accountant.cache_key(node, bound)
+                        if key not in accountant._cache and key not in pending_new:
+                            if len(pending_new) >= remaining:
+                                continue
+                            pending_new.add(key)
+                        requests.append((node, bound))
+                        branch_rows.append((node, results, draws, bound, path))
+                    if not requests:
+                        break
+                    outcomes = accountant.evaluate_batch(requests, transition_batch)
+                    next_branches = []
+                    for (node, results, draws, bound, path), (result, hit) in zip(branch_rows, outcomes):
+                        new_this_wave += int(not hit)
+                        next_node = node.advance(bound, result, cache_hit=hit)
+                        next_results = results + [result]
+                        next_draws = draws + path["draws"]
+                        if next_node.depth == 4:
+                            score_complete(next_node, next_results, next_draws, current)
+                        else:
+                            next_branches.append((next_node, next_results, next_draws))
+                    branches = next_branches
+                    if not branches:
+                        break
+                stalled = stalled + batch_size if new_this_wave == 0 else 0
+                if stalled >= max_stalled_proposals:
+                    raise RuntimeError("B_WM_QUOTA_UNFILLED_PROPOSAL_STALL")
+                continue
             proposed_sequences += 1
             node = root
             results = []
@@ -113,25 +188,7 @@ def solve_fixed_budget(
                 results.append(result)
                 draws.extend(path["draws"])
                 node = node.advance(bound, result, cache_hit=hit)
-            if node.depth == 4:
-                accountant.complete()
-                candidate = CandidateActionSequence(node.action_prefix, "step6_3d_candidate",
-                    Backend.SEARCH, seed, anchor.context.causal_provenance,
-                    generation_metadata={"planner_action_domain": "V1"})
-                candidate_id = candidate.fingerprint
-                candidate = CandidateActionSequence(node.action_prefix, candidate_id,
-                    Backend.SEARCH, seed, anchor.context.causal_provenance,
-                    generation_metadata={"planner_action_domain": "V1"})
-                if candidate_id in scoreable:
-                    score = scoreable[candidate_id][0]
-                else:
-                    score = score_h4(candidate, _trace(candidate_id, anchor.fingerprints, tuple(results)))
-                if score is None:
-                    unscoreable += 1
-                else:
-                    pair = (score, {"draws": draws})
-                    scoreable[candidate_id] = pair
-                    current.append(pair)
+            score_complete(node, results, draws, current)
             stalled = stalled + 1 if new_this_proposal == 0 else 0
             if stalled >= max_stalled_proposals:
                 raise RuntimeError("B_WM_QUOTA_UNFILLED_PROPOSAL_STALL")
@@ -164,4 +221,4 @@ def solve_fixed_budget(
         None if best is None else best.objective_tuple,
         None if best is None else best.candidate_fingerprint,
         len(scoreable), unscoreable, accountant.n_complete_sequences,
-        accountant.receipt(), tuple(iteration_rows))
+        accountant.receipt(), tuple(iteration_rows), batch_size)

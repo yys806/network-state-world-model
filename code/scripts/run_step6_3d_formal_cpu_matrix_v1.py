@@ -79,7 +79,7 @@ def selected_ids(name: str, split: str, expected: int) -> tuple[str, ...]:
 
 
 def train() -> None:
-    anchors = selected_ids("01_train_anchor_manifest.json", "dev_train", 32)
+    anchors = selected_ids("15_train_anchor_manifest_objective_eligible.json", "dev_train", 32)
     expected_source = source_hashes()
     grids = {}
     for method in ("S-CEM", "MH-CEM"):
@@ -107,7 +107,7 @@ def train() -> None:
 
 
 def validation() -> None:
-    anchors = selected_ids("02_validation_anchor_manifest.json", "dev_validation", 64)
+    anchors = selected_ids("16_validation_anchor_manifest_objective_eligible.json", "dev_validation", 64)
     frozen = read(OUT / "06_frozen_selected_cem_configs.json")
     expected_source = source_hashes()
     if frozen["source_sha256"] != expected_source or frozen["checkpoint_sha256"] != EXPECTED_SHA:

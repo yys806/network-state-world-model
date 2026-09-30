@@ -1,0 +1,617 @@
+{
+  "B_WM_per_anchor": 64,
+  "actual_unique_transitions": 2048,
+  "anchor_replacement_based_on_preflight": false,
+  "anchors_with_h4_scoreable_candidate": 16,
+  "anchors_without_h4_scoreable_candidate": 16,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "diagnostic_seed": 6391,
+  "empty_cohort_residual_count": 0,
+  "grammar_dead_end_total": 240,
+  "locked_test": false,
+  "maximum_total_B_WM": 2048,
+  "optimizer_comparison": false,
+  "preflight": "TRAIN_ONLY_HRS_H4_SCOREABILITY",
+  "rows": [
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/0015f0f9e99f68b1.json",
+      "result_sha256": "345a4dc0207bec02473b7d94a017c9953f21292f153dde2fc72913b3d155de6a",
+      "sample_id": "formal-v1-sim-2026092310-policy-2026092410::anchor-0011",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 4,
+      "grammar_dead_end_count": 21,
+      "h4_scoreable_count": 1,
+      "h4_unscoreable_count": 3,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/00370067f5642776.json",
+      "result_sha256": "37576ba9b1f5193a49089e8376fe5ce183fcec081e40592c28d76112098164b3",
+      "sample_id": "formal-v1-sim-2026092319-policy-2026092419::anchor-0066",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_32:H1": 2,
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_32:H4": 1,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 2,
+        "H4_UNSCOREABLE:SCOREABLE": 1
+      },
+      "support_horizon_counts": {
+        "0": 2,
+        "3": 1,
+        "4": 1
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 16,
+      "h4_unscoreable_count": 0,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/031ee1f365ca2ead.json",
+      "result_sha256": "6b9af3f57d544d6dcd265402f8d0babbc9c5c8a6bd6e812261bd1510dfbb88a0",
+      "sample_id": "formal-v1-sim-2026092345-policy-2026092445::anchor-0028",
+      "scorer_residual_reasons": {},
+      "support_horizon_counts": {
+        "4": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 7,
+      "grammar_dead_end_count": 22,
+      "h4_scoreable_count": 6,
+      "h4_unscoreable_count": 1,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/0079d1c7e55b2cf2.json",
+      "result_sha256": "2da395cd2cfc4fd970d8da5d816ee09f8ec0e0bb883ad259ff20360e2dc62863",
+      "sample_id": "formal-v1-sim-2026092333-policy-2026092433::anchor-0049",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_40:H4": 1,
+        "H4_UNSCOREABLE:SCOREABLE": 1
+      },
+      "support_horizon_counts": {
+        "3": 1,
+        "4": 6
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/014049f974a773fb.json",
+      "result_sha256": "c0503914f2e1870e5c9855332da20d830cc4f96f5d5b67f97a60296d77819ea1",
+      "sample_id": "formal-v1-sim-2026092306-policy-2026092406::anchor-0075",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_19:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 13,
+      "grammar_dead_end_count": 3,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 13,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/007e801767f0dd83.json",
+      "result_sha256": "093d7479445ae15ae5999feede22bc783bd02a21916a9e34280de500a7cfc37d",
+      "sample_id": "formal-v1-sim-2026092329-policy-2026092429::anchor-0069",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_68:H1": 13,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 13
+      },
+      "support_horizon_counts": {
+        "0": 13
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 16,
+      "h4_unscoreable_count": 0,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/001b02e224d0793f.json",
+      "result_sha256": "4565cec5fa099a8e7dfeac764ce8653fddee5e8e60c4c358fcc4d82b8a4cb089",
+      "sample_id": "formal-v1-sim-2026092330-policy-2026092430::anchor-0063",
+      "scorer_residual_reasons": {},
+      "support_horizon_counts": {
+        "4": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 21,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 21,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/002ff378a1f642df.json",
+      "result_sha256": "47bc04c4b3ceca0badf2b06bb6c2fa9829ba6e3b0c644eb2bc20c7ccc561604d",
+      "sample_id": "formal-v1-sim-2026092327-policy-2026092427::anchor-0035",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_6:H1": 21,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 21
+      },
+      "support_horizon_counts": {
+        "0": 21
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 9,
+      "grammar_dead_end_count": 14,
+      "h4_scoreable_count": 5,
+      "h4_unscoreable_count": 4,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/01197921c08a776e.json",
+      "result_sha256": "808f76a90b330ea0fd4396192a2f96e2b6aa60911739f506e7d6ba7b4b697320",
+      "sample_id": "formal-v1-sim-2026092357-policy-2026092457::anchor-0038",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H4": 4,
+        "H4_UNSCOREABLE:SCOREABLE": 4
+      },
+      "support_horizon_counts": {
+        "3": 4,
+        "4": 5
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/00ca6581f19a847f.json",
+      "result_sha256": "7e2c3e46b2f803fbbeadb96bb5168f39aad8a4e4bcb5b60fbe4a6ed2bafd620c",
+      "sample_id": "formal-v1-sim-2026092332-policy-2026092432::anchor-0031",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_19:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 5,
+      "grammar_dead_end_count": 24,
+      "h4_scoreable_count": 2,
+      "h4_unscoreable_count": 3,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/019ee2507e08f03c.json",
+      "result_sha256": "6db2858ea7983a1149a6c74c0657c68c36b80903286c7a861eee0939bbff80e2",
+      "sample_id": "formal-v1-sim-2026092340-policy-2026092440::anchor-0082",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_73:H4": 3,
+        "H4_UNSCOREABLE:SCOREABLE": 3
+      },
+      "support_horizon_counts": {
+        "3": 3,
+        "4": 2
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/0085c742d385b4d3.json",
+      "result_sha256": "3ddefb2ad1500f0b1fcf74d0a3ca2d9e5f5bca68052ccaeee2e870e9d767269b",
+      "sample_id": "formal-v1-sim-2026092309-policy-2026092409::anchor-0040",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_2:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 10,
+      "grammar_dead_end_count": 7,
+      "h4_scoreable_count": 7,
+      "h4_unscoreable_count": 3,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/00f6232a393d2ff8.json",
+      "result_sha256": "5fb090c77b050a7769793867876e05f8ba6ee72857688690e787568c46ca17ca",
+      "sample_id": "formal-v1-sim-2026092347-policy-2026092447::anchor-0073",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_62:H4": 3,
+        "H4_UNSCOREABLE:SCOREABLE": 3
+      },
+      "support_horizon_counts": {
+        "3": 3,
+        "4": 7
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 16,
+      "h4_unscoreable_count": 0,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/007793a64af2ad6e.json",
+      "result_sha256": "bc1c7b1aa6d6fb204b150d26d75e266cad408e7b91fbc77e9a847c3e6b6265c2",
+      "sample_id": "formal-v1-sim-2026092304-policy-2026092404::anchor-0080",
+      "scorer_residual_reasons": {},
+      "support_horizon_counts": {
+        "4": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 21,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 21,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/009d1e4ea1b36af7.json",
+      "result_sha256": "f6a1298cbda5b4468d9fbd7e410b89a8b3f8af847e8234c54ed0958eb2ce0b23",
+      "sample_id": "formal-v1-sim-2026092330-policy-2026092430::anchor-0013",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_9:H1": 21,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 21
+      },
+      "support_horizon_counts": {
+        "0": 21
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 11,
+      "grammar_dead_end_count": 13,
+      "h4_scoreable_count": 5,
+      "h4_unscoreable_count": 6,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/020c1904a0610616.json",
+      "result_sha256": "973c6b7ae1655c0489482f412f2829a30ed7a190480e20a894e42741e11bcef6",
+      "sample_id": "formal-v1-sim-2026092305-policy-2026092405::anchor-0004",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_1:H4": 6,
+        "H4_UNSCOREABLE:SCOREABLE": 6
+      },
+      "support_horizon_counts": {
+        "3": 6,
+        "4": 5
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/00cc1ee7ae8266ba.json",
+      "result_sha256": "9385f37421aaced9bd0d9b08b908eb03cfd35f19f56ce255d14b78a091a18eb3",
+      "sample_id": "formal-v1-sim-2026092342-policy-2026092442::anchor-0029",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_9:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 8,
+      "grammar_dead_end_count": 13,
+      "h4_scoreable_count": 6,
+      "h4_unscoreable_count": 2,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/01e0bf5e10ea6a53.json",
+      "result_sha256": "555140429c733466af497d723b8b372afa42badab9f3b23837d2a043a52aefe3",
+      "sample_id": "formal-v1-sim-2026092334-policy-2026092434::anchor-0043",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_16:H4": 1,
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_23:H4": 1,
+        "H4_UNSCOREABLE:SCOREABLE": 2
+      },
+      "support_horizon_counts": {
+        "3": 2,
+        "4": 6
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/010e54da526ec01c.json",
+      "result_sha256": "e09d5625db09b52244f8068fe085718b1e124000d8bd9d4a1d65c278e8719f41",
+      "sample_id": "formal-v1-sim-2026092340-policy-2026092440::anchor-0057",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_14:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 9,
+      "grammar_dead_end_count": 9,
+      "h4_scoreable_count": 5,
+      "h4_unscoreable_count": 4,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/028565ddd8f1675f.json",
+      "result_sha256": "b6bfdbde101a527c6135c0be9326eaf5b87f9ab2b4e1a0a32927e543756f1c12",
+      "sample_id": "formal-v1-sim-2026092334-policy-2026092434::anchor-0087",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_46:H4": 2,
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_76:H1": 2,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 2,
+        "H4_UNSCOREABLE:SCOREABLE": 2
+      },
+      "support_horizon_counts": {
+        "0": 2,
+        "3": 2,
+        "4": 5
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/00a7015c38368a48.json",
+      "result_sha256": "9c0e760c781484a8ff88b102d70fed44a201d0c50e641af4a08a43c843d206d1",
+      "sample_id": "formal-v1-sim-2026092305-policy-2026092405::anchor-0083",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_91:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 16,
+      "h4_unscoreable_count": 0,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/00a5152a1295f11e.json",
+      "result_sha256": "04eea9a98a89e40e30c069ceb6872d8a3f4daf11372dff96ece40d5b71c6465e",
+      "sample_id": "formal-v1-sim-2026092351-policy-2026092451::anchor-0012",
+      "scorer_residual_reasons": {},
+      "support_horizon_counts": {
+        "4": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 10,
+      "grammar_dead_end_count": 29,
+      "h4_scoreable_count": 7,
+      "h4_unscoreable_count": 3,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/0231c1af82d4e877.json",
+      "result_sha256": "9683fc5115866355c1dc8ad16f6e6413d62b4bb6f189623c2fae5e1e081e4a1e",
+      "sample_id": "formal-v1-sim-2026092325-policy-2026092425::anchor-0003",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_8:H4": 3,
+        "H4_UNSCOREABLE:SCOREABLE": 3
+      },
+      "support_horizon_counts": {
+        "3": 3,
+        "4": 7
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 16,
+      "h4_unscoreable_count": 0,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/04201b0ccb415890.json",
+      "result_sha256": "c3f85a0ed845f936233f5e218e7245911e162960f4cbff75702b5552b600af5d",
+      "sample_id": "formal-v1-sim-2026092306-policy-2026092406::anchor-0052",
+      "scorer_residual_reasons": {},
+      "support_horizon_counts": {
+        "4": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 6,
+      "grammar_dead_end_count": 25,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 6,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/02aeb1b558b09af8.json",
+      "result_sha256": "10d433e8dcf4611a53b14ab1d3127356ed76fd5c4346889e2874288d9eaa9e8b",
+      "sample_id": "formal-v1-sim-2026092338-policy-2026092438::anchor-0070",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_34:H1": 6,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 6
+      },
+      "support_horizon_counts": {
+        "0": 6
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/0110fd9157fcb525.json",
+      "result_sha256": "21af162f99c3a18181d2cb5d26cf9f17a39a6a1a26b0fb85c028d02e51af9359",
+      "sample_id": "formal-v1-sim-2026092349-policy-2026092449::anchor-0035",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_9:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 6,
+      "grammar_dead_end_count": 23,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 6,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/0674fddbb68ea225.json",
+      "result_sha256": "75caf3dcac7aed551ba591c228200717923006acf53ae5b4fea5b77733a14078",
+      "sample_id": "formal-v1-sim-2026092343-policy-2026092443::anchor-0091",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_82:H1": 6,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 6
+      },
+      "support_horizon_counts": {
+        "0": 6
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/00f5328b4427e261.json",
+      "result_sha256": "f247ab8e8f4c9820c274047e437cdb97e10974b7efb6a3210ff831cd6704bdfe",
+      "sample_id": "formal-v1-sim-2026092352-policy-2026092452::anchor-0084",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_92:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/00cbee0fa693b4f0.json",
+      "result_sha256": "7da159f8fd2b12a1d79e491c89bd4e209162049c2923eea6ed57e61aecc9c650",
+      "sample_id": "formal-v1-sim-2026092307-policy-2026092407::anchor-0011",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_1:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 4,
+      "grammar_dead_end_count": 20,
+      "h4_scoreable_count": 3,
+      "h4_unscoreable_count": 1,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/02643ea5b9d67ad1.json",
+      "result_sha256": "1d372615a0142305b087c2b19cb3971400068a434a9a24905cbbc2bb12e49e4e",
+      "sample_id": "formal-v1-sim-2026092325-policy-2026092425::anchor-0024",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_4:H4": 1,
+        "H4_UNSCOREABLE:SCOREABLE": 1
+      },
+      "support_horizon_counts": {
+        "3": 1,
+        "4": 3
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 16,
+      "grammar_dead_end_count": 0,
+      "h4_scoreable_count": 0,
+      "h4_unscoreable_count": 16,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/02e71ca7407f9b30.json",
+      "result_sha256": "58a661d897f4018fb647d72e5e1edf62089cd2f00f8a139f9990f27e4be1ac73",
+      "sample_id": "formal-v1-sim-2026092320-policy-2026092420::anchor-0029",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_8:H1": 16,
+        "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 16
+      },
+      "support_horizon_counts": {
+        "0": 16
+      },
+      "unique_transitions": 64
+    },
+    {
+      "complete_h4_sequences": 6,
+      "grammar_dead_end_count": 17,
+      "h4_scoreable_count": 4,
+      "h4_unscoreable_count": 2,
+      "result_file": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/h4_train_preflight_results/02c545b09f19bd94.json",
+      "result_sha256": "474be6f9e8dd1009c3ac2f685b4d709136454ca0ec4272983e687ff25f0b5063",
+      "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0083",
+      "scorer_residual_reasons": {
+        "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_112:H4": 2,
+        "H4_UNSCOREABLE:SCOREABLE": 2
+      },
+      "support_horizon_counts": {
+        "3": 2,
+        "4": 4
+      },
+      "unique_transitions": 64
+    }
+  ],
+  "selected_train_anchor_count": 32,
+  "source_sha256": {
+    "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/02_train_structural_support_catalog.json": "9545baa8a5b21e4a6da6f072202807d0569f3edd66f9927eb9d2e6571e1bfef1",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/15_train_anchor_manifest_objective_eligible.json": "561886c08dd857a725cf10e076e93171ecbdc6254b2b897da1f1b9b3c240c511",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/19_formal_selected_deadline_sidecars.json": "7c9128f11043af2048ed6939544be5e08800ba81b89cdc00258d691aeba86695",
+    "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py": "b4e180374d73d0bbaecca6ba8784dec831e770c102103c81d932aeb6ad205bd5",
+    "code/scripts/run_step6_3d_one_cpu_solve_v1.py": "b8e371c65c3065a05927b93ea72cde719d53b21582a9dcf948382f60c8ede2c7",
+    "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py": "25ca59719023ed8d94b4f864041f7edf56b1b495a6fe86d5417cef94742c8a48",
+    "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad",
+    "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py": "e27e460962f1dcff8dfab8bb33fbc05753a6d8a8358ac78b1cab1c8714c45daa",
+    "code/src/pi_jwm/step6_3b_candidate_support_v1.py": "d15638fb4697c49129ce17489fde4ce5b048c5a92aacd577a2119357105159a1",
+    "code/src/pi_jwm/step6_3c_candidate_domain_v1.py": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409",
+    "code/src/pi_jwm/step6_3c_search_protocol_v1.py": "6c2ec893325a56515e451d3b3594fd05ce810eb4c9cc420f29a7fb863caf719c",
+    "code/src/pi_jwm/step6_3d_anchor_selection_v1.py": "d55c18ee5d5812b66247446f0df85794ab590ef4777896c1c9ab091e32edac7d",
+    "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py": "f602bb5797a776f76f13cd9b9e3038ef202d6c78098f5f8401a76f198807e5c5",
+    "code/src/pi_jwm/step6_3d_method_selection_v1.py": "8606f916e1c8c2590d78c26611be3337ce37274cbb6cbf834dd48b901aef70ba",
+    "code/src/pi_jwm/step6_3d_structured_proposal_v1.py": "8b18e62de3cdd3746ac5a89dd5bafb8d3ae62ce0729ca9156c593f4d6bada040"
+  },
+  "support_boundary_and_scorer_reason_counts": {
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_112:H4": 2,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_14:H1": 16,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1": 16,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H4": 4,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_16:H4": 1,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_19:H1": 32,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_1:H1": 16,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_1:H4": 6,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_23:H4": 1,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_2:H1": 16,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_32:H1": 2,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_32:H4": 1,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_34:H1": 6,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_40:H4": 1,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_46:H4": 2,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_4:H4": 1,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_62:H4": 3,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_68:H1": 13,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_6:H1": 21,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_73:H4": 3,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_76:H1": 2,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_82:H1": 6,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_8:H1": 16,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_8:H4": 3,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_91:H1": 16,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_92:H1": 16,
+    "H4_SUPPORT_BOUNDARY:UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_9:H1": 53,
+    "H4_UNSCOREABLE:OBJECTIVE_UNSCOREABLE": 247,
+    "H4_UNSCOREABLE:SCOREABLE": 28
+  },
+  "train_manifest_sha256": "561886c08dd857a725cf10e076e93171ecbdc6254b2b897da1f1b9b3c240c511",
+  "unsupported_future_return_birth_count": 275,
+  "validation_search_executed": false
+}

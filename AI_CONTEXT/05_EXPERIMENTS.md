@@ -1,5 +1,9 @@
 # 当前与历史实验
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH（TRAIN 诊断）
+
+修正后 TRAIN 32 的 HRS seed6391/B_WM64 固定诊断共 2048 次 unique World Model 一步转移；16/32 锚点有至少一个 H4 可评分候选，16/32 没有。406 条完整 H4 中 131 可评分、275 不可评分；275 条均有 future Return birth 支持边界。240 个语法死路分支。Validation 64 仅修正静态 Objective 资格及 deadline sidecar，不做方法搜索。CPU batch 1/4/8/16 一步与 H4 等价，吞吐分别约 0.87/0.89/0.96/0.92 unique transitions/s。详见 20–25 机器收据；这些是前置诊断，不是 HRS/CEM 对比或性能证据。
+
 ## 2026-09-29 STEP 6.3D（进行中，非方法比较结论）
 
 32 个 Formal TRAIN、64 个 Formal Validation 非空锚点按各 split 的候选数对数四分位、Comp-base 有无和 sample-id hash 固定；Validation 六个静态空域单列。38 条原始轨迹只读重放对齐 96/96 因果 deadline sidecar，96/96 冻结目标侧状态就绪。Synthetic exact oracle 的 16 个 H4 序列上，HRS/S-CEM/MH-CEM 均能恢复最优；9/9 focused tests 与 compileall 通过。冻结模型 CPU 的首个 TRAIN 锚点 B_WM=512 当前收据：512 次独特转移、130 条完整 H4、0 条可评分、547.008 秒，均在 H1 触发既有 future Return birth 支持边界；558.291 秒的原收据保留为诊断字段增加前对照。它只是一条配置和一个锚点的诊断，不构成 TRAIN 调参、Validation 比较或最终方法选择。完整矩阵尚未完成；无 GPU、训练、闭环或 `locked_test`。

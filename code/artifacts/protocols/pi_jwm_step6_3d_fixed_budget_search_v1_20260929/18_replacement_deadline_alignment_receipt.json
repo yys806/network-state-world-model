@@ -1,0 +1,66 @@
+{
+  "alignment_passed": true,
+  "anchor_count": 8,
+  "checks": [
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "8992a1c1c5be35cb4635ddf47e6aef711c1e8608d9f8a99db29f8cefd1754a2c",
+      "sample_id": "formal-v1-sim-2026092306-policy-2026092406::anchor-0075"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "8992a1c1c5be35cb4635ddf47e6aef711c1e8608d9f8a99db29f8cefd1754a2c",
+      "sample_id": "formal-v1-sim-2026092306-policy-2026092406::anchor-0052"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "63d7cd8f0f5d07052d784606d843cc3a3cbede6067c597a17c14367bf54727ba",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "0286f04d3f4e795b29a0ba745865b919fdb06c8c0f37e38e1de42e9ca6a6d4fb",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "0286f04d3f4e795b29a0ba745865b919fdb06c8c0f37e38e1de42e9ca6a6d4fb",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "0286f04d3f4e795b29a0ba745865b919fdb06c8c0f37e38e1de42e9ca6a6d4fb",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040"
+    },
+    {
+      "action_prefix_equal": true,
+      "deadline_task_ids_equal": true,
+      "decision_equal": true,
+      "raw_sha256": "ac80605a1de884363c359515f2d885a07c0d789bd664d50aa594594a5cd751da",
+      "sample_id": "formal-v1-sim-2026092345-policy-2026092445::anchor-0028"
+    }
+  ],
+  "future_target_used": false,
+  "locked_test": false,
+  "source": "read-only exact replay of frozen Formal Raw",
+  "trajectory_count": 5
+}

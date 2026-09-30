@@ -1,5 +1,9 @@
 # 数据流与张量合同
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 锚点与诊断流
+
+历史 01/02 锚点清单保留 → 原 split/规模四分位/Comp-base 分层中按 sample-id hash 替换 3/5 个静态零 cohort 锚点 → 新 15/16 正式清单（32/64）→ 8 个新 Raw 决策只读精确重放 → 19 合并 deadline sidecar → 20 静态资格验收。仅修正后的 32 TRAIN 进入 HRS seed6391/B_WM64 的 22 H4 支持诊断；Validation 不做搜索。21/23 是真实 TRAIN 的 CPU 批量等价/吞吐检查，24/25 是 manifest/接受收据。没有使用 future target 选样或改变 Raw。
+
 ## 2026-09-29 STEP 6.3D 进行中的搜索数据流
 
 Formal TRAIN/Validation 静态候选域收据 → split 内分层哈希选取 32/64 非空锚点 → 原始轨迹只读重放得到精确对齐的当前 deadline sidecar → 冻结 checkpoint 的当前 latent/state/graph → 每步由预测状态重建 CandidateDomain 并按共享五层分布提出合法动作 → 一步 World Model 转移按 unique transition 计入 `B_WM` 且 cache hit 不重复计数 → 完整 H4 经既有 6.2B scorer 判定 `H_sup=4` 后才可参与 elite/比较。TRAIN 仅用于 CEM 配置选择；Validation 全矩阵和正式方法选择尚未完成。Future Target、`locked_test`、训练和闭环不进入此路径。

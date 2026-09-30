@@ -1,5 +1,9 @@
 # 已知问题与冲突
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 后待决问题
+
+静态零 cohort 输入已从正式清单中清除，但 TRAIN-only 固定 HRS/B64 的 H4 支持诊断恰好 16/32 锚点可评分、16/32 无可评分候选；27/32 锚点至少一条完整轨迹触发 future Return birth 边界。研究者未定义“大量不可评分”的比例阈值，所以 `H4_SEARCH_COMPARISON_READINESS=PENDING_RESEARCHER_DECISION_ON_MODEL_OBJECTIVE_SUPPORT`，正式 6.3D 比较保持暂停。CPU batch 8 探针只带来约 1.11 倍于 batch 1 的吞吐，长期 CPU 资源仍是限制。没有据此放宽 H_sup、删除 Return 要求、改变评分器、增加搜索预算或筛除难样本。
+
 ## 2026-09-29 STEP 6.3D 执行资源与评分支持
 
 完整冻结比较若预算均耗尽，需要 2,113,536 次独特候选一步 World Model 转移；本机只有 CPU，探针按单进程外推为数周量级。当前只证实一个 TRAIN 锚点的多条完整 H4 轨迹仍受既有 6.2B `H_sup` 支持边界限制，不能按完整 H4 评分。不得将此推广为整体成功率，也不得对其使用 H1–H3 backoff。TRAIN tuning、Validation paired comparison、cluster bootstrap 和正式方法选择尚未完成；不能标记 `STEP_6_3D=PASS`。

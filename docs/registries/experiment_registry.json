@@ -3,6 +3,52 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.3D-PREFLIGHT-PATCH-20260930",
+      "name": "Objective anchor eligibility and TRAIN H4 scoreability CPU preflight",
+      "date": "2026-09-30",
+      "research_question": "Are the fixed search comparison anchors Objective-eligible, and does frozen H4 scoring have usable TRAIN signal under a bounded HRS diagnostic?",
+      "method": "static_same_stratum_hash_replacement_plus_HRS_H4_support_and_batch_equivalence",
+      "code": "code/scripts/run_step6_3d_train_h4_scoreability_preflight_v1.py",
+      "code_version": {
+        "identity_type": "source_manifest_sha256_and_frozen_checkpoint_sha256",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/24_preflight_patch_manifest.json",
+        "manifest_sha256": "cdc92797f7668299b185fd1e785a3fb713275b2a2b04901f4f392c00108c0a51",
+        "git_commit": null,
+        "note": "Manifest hashes the bounded CPU evidence and implementation; final Git commit is recorded in the Step implementation record after push."
+      },
+      "configuration": "docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md",
+      "parameters": {
+        "device": "cpu",
+        "train_anchor_count": 32,
+        "validation_anchor_count_static_only": 64,
+        "method": "HRS",
+        "diagnostic_seed": 6391,
+        "B_WM_per_train_anchor": 64,
+        "horizon": 4,
+        "batch_sizes_tested": [1, 4, 8, 16],
+        "checkpoint_frozen": true,
+        "validation_search_executed": false
+      },
+      "protocol": "docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md",
+      "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+      "split": ["dev_train_H4_preflight", "dev_validation_static_eligibility_only"],
+      "seed": 6391,
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json",
+      "metrics": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/22_train_h4_scoreability_preflight.json",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/20_objective_anchor_eligibility_receipt.json",
+      "status": "preflight_patch_pass_h4_readiness_researcher_decision_pending",
+      "conclusion": "Corrected 32/64 anchors are statically Objective-eligible and CPU batch equivalence passes; 16/32 TRAIN anchors find an H4 scoreable HRS candidate at B_WM 64, so formal search comparison remains paused for researcher support assessment.",
+      "summary_zh": "32/64 正式锚点静态 Objective 资格及 CPU 批量等价通过；TRAIN H4 固定诊断为 16/32 锚点可评分，正式搜索方法比较暂停待研究者判断支持问题。",
+      "claim_boundary": "bounded TRAIN-only HRS support diagnostic and Validation static eligibility; no CEM tuning, paired method comparison, search method selection, GPU, locked test, training or closed loop",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "code_version.git_commit": "Final patch commit is reported after validated push; not guessed in the preregistry entry.",
+        "checkpoint": "Checkpoint bytes remain local-only; the diagnostic and acceptance receipts verify its SHA256.",
+        "metrics": "H4 scoreability and support-boundary counts are diagnostic, not method comparison or control performance."
+      }
+    },
+    {
       "id": "STEP-6.3D-FIXED-BUDGET-STRUCTURED-SEARCH-20260929",
       "name": "HRS, S-CEM and MH-CEM fixed-budget H4 method comparison",
       "date": "2026-09-29",
@@ -39,10 +85,10 @@
       "result": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929",
       "metrics": null,
       "audit": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/12_exact_oracle_receipt.json",
-      "status": "in_progress_no_method_selected",
-      "conclusion": "Anchor side-state and CPU correctness path are ready; TRAIN tuning and Validation comparison are incomplete, so no search method is selected.",
-      "summary_zh": "锚点侧状态和 CPU 正确性路径已就绪；TRAIN 调参与 Validation 比较未完成，搜索方法未选。",
-      "claim_boundary": "In-progress CPU contract and one-anchor diagnostic only; no formal method outcome, GPU, training, locked test or closed loop",
+      "status": "formal_matrix_paused_on_h4_readiness_researcher_decision",
+      "conclusion": "The preflight patch corrected Objective-empty anchors, but its bounded TRAIN H4 diagnostic found only 16/32 anchors scoreable; TRAIN tuning and Validation comparison are paused pending researcher support assessment. No search method is selected.",
+      "summary_zh": "前置补丁已修正零 cohort 锚点，但 TRAIN H4 固定诊断仅 16/32 锚点可评分；正式比较暂停待研究者判断，搜索方法未选。",
+      "claim_boundary": "Preflight diagnostic only; no complete TRAIN tuning or Validation method outcome, GPU, training, locked test or closed loop",
       "locked_test_accessed": false,
       "field_notes": {
         "code_version.manifest": "Final experiment manifest is generated only after all required cases complete.",

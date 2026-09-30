@@ -1,0 +1,920 @@
+{
+  "formal-v1-sim-2026092306-policy-2026092406::anchor-0052": {
+    "alignment_passed": true,
+    "capture_event_id": "capture-104",
+    "frame_index": 52,
+    "simulation_time_s": 5.7,
+    "source": "live Task.getTaskDeadline at decision-before-action",
+    "source_time_s": 5.7,
+    "tasks": [
+      {
+        "arrival_time_s": 0.30000000000000004,
+        "deadline_s": 8.762955718722981,
+        "task_id": "Task_1"
+      },
+      {
+        "arrival_time_s": 2.1000000000000005,
+        "deadline_s": 8.150899484941172,
+        "task_id": "Task_10"
+      },
+      {
+        "arrival_time_s": 3.1000000000000014,
+        "deadline_s": 9.481766263361875,
+        "task_id": "Task_11"
+      },
+      {
+        "arrival_time_s": 3.1000000000000014,
+        "deadline_s": 10.999112533115817,
+        "task_id": "Task_12"
+      },
+      {
+        "arrival_time_s": 3.4000000000000017,
+        "deadline_s": 9.3918408182161,
+        "task_id": "Task_13"
+      },
+      {
+        "arrival_time_s": 3.700000000000002,
+        "deadline_s": 8.854021105544955,
+        "task_id": "Task_14"
+      },
+      {
+        "arrival_time_s": 3.800000000000002,
+        "deadline_s": 10.568168728712596,
+        "task_id": "Task_15"
+      },
+      {
+        "arrival_time_s": 5.099999999999996,
+        "deadline_s": 10.763711511232023,
+        "task_id": "Task_16"
+      },
+      {
+        "arrival_time_s": 5.499999999999995,
+        "deadline_s": 9.496725221758926,
+        "task_id": "Task_17"
+      },
+      {
+        "arrival_time_s": 0.8999999999999999,
+        "deadline_s": 10.679206016840102,
+        "task_id": "Task_2"
+      },
+      {
+        "arrival_time_s": 4.399999999999999,
+        "deadline_s": 10.049984469826285,
+        "task_id": "Task_24"
+      },
+      {
+        "arrival_time_s": 5.099999999999996,
+        "deadline_s": 9.346715864693234,
+        "task_id": "Task_25"
+      },
+      {
+        "arrival_time_s": 4.199999999999999,
+        "deadline_s": 9.91907259629063,
+        "task_id": "Task_29"
+      },
+      {
+        "arrival_time_s": 1.3,
+        "deadline_s": 9.32717934481983,
+        "task_id": "Task_3"
+      },
+      {
+        "arrival_time_s": 4.599999999999998,
+        "deadline_s": 11.264301785819253,
+        "task_id": "Task_30"
+      },
+      {
+        "arrival_time_s": 4.9999999999999964,
+        "deadline_s": 11.272158408469066,
+        "task_id": "Task_31"
+      },
+      {
+        "arrival_time_s": 5.199999999999996,
+        "deadline_s": 9.664098214974006,
+        "task_id": "Task_32"
+      },
+      {
+        "arrival_time_s": 3.0000000000000013,
+        "deadline_s": 9.831653566949868,
+        "task_id": "Task_4"
+      },
+      {
+        "arrival_time_s": 3.700000000000002,
+        "deadline_s": 10.893259853981725,
+        "task_id": "Task_5"
+      },
+      {
+        "arrival_time_s": 3.800000000000002,
+        "deadline_s": 10.825876184371129,
+        "task_id": "Task_6"
+      },
+      {
+        "arrival_time_s": 0.6,
+        "deadline_s": 9.339981760570241,
+        "task_id": "Task_7"
+      },
+      {
+        "arrival_time_s": 1.5000000000000002,
+        "deadline_s": 8.217539447590868,
+        "task_id": "Task_8"
+      },
+      {
+        "arrival_time_s": 1.6000000000000003,
+        "deadline_s": 11.851301652874419,
+        "task_id": "Task_9"
+      }
+    ],
+    "trajectory_id": "formal-v1-sim-2026092306-policy-2026092406"
+  },
+  "formal-v1-sim-2026092306-policy-2026092406::anchor-0075": {
+    "alignment_passed": true,
+    "capture_event_id": "capture-150",
+    "frame_index": 75,
+    "simulation_time_s": 8.0,
+    "source": "live Task.getTaskDeadline at decision-before-action",
+    "source_time_s": 8.0,
+    "tasks": [
+      {
+        "arrival_time_s": 0.30000000000000004,
+        "deadline_s": 8.762955718722981,
+        "task_id": "Task_1"
+      },
+      {
+        "arrival_time_s": 2.1000000000000005,
+        "deadline_s": 8.150899484941172,
+        "task_id": "Task_10"
+      },
+      {
+        "arrival_time_s": 3.1000000000000014,
+        "deadline_s": 9.481766263361875,
+        "task_id": "Task_11"
+      },
+      {
+        "arrival_time_s": 3.1000000000000014,
+        "deadline_s": 10.999112533115817,
+        "task_id": "Task_12"
+      },
+      {
+        "arrival_time_s": 3.4000000000000017,
+        "deadline_s": 9.3918408182161,
+        "task_id": "Task_13"
+      },
+      {
+        "arrival_time_s": 3.700000000000002,
+        "deadline_s": 8.854021105544955,
+        "task_id": "Task_14"
+      },
+      {
+        "arrival_time_s": 3.800000000000002,
+        "deadline_s": 10.568168728712596,
+        "task_id": "Task_15"
+      },
+      {
+        "arrival_time_s": 5.099999999999996,
+        "deadline_s": 10.763711511232023,
+        "task_id": "Task_16"
+      },
+      {
+        "arrival_time_s": 5.499999999999995,
+        "deadline_s": 9.496725221758926,
+        "task_id": "Task_17"
+      },
+      {
+        "arrival_time_s": 5.799999999999994,
+        "deadline_s": 9.352092307337992,
+        "task_id": "Task_18"
+      },
+      {
+        "arrival_time_s": 5.999999999999993,
+        "deadline_s": 9.573293071286678,
+        "task_id": "Task_19"
+      },
+      {
+        "arrival_time_s": 0.8999999999999999,
+        "deadline_s": 10.679206016840102,
+        "task_id": "Task_2"
+      },
+      {
+        "arrival_time_s": 6.599999999999991,
+        "deadline_s": 10.118338164472302,
+        "task_id": "Task_20"
+      },
+      {
+        "arrival_time_s": 7.099999999999989,
+        "deadline_s": 11.359431620770804,
+        "task_id": "Task_21"
+      },
+      {
+        "arrival_time_s": 7.7999999999999865,
+        "deadline_s": 10.712697349682841,
+        "task_id": "Task_22"
+      },
+      {
+        "arrival_time_s": 7.999999999999986,
+        "deadline_s": 10.152936721888995,
+        "task_id": "Task_23"
+      },
+      {
+        "arrival_time_s": 4.399999999999999,
+        "deadline_s": 10.049984469826285,
+        "task_id": "Task_24"
+      },
+      {
+        "arrival_time_s": 5.099999999999996,
+        "deadline_s": 9.346715864693234,
+        "task_id": "Task_25"
+      },
+      {
+        "arrival_time_s": 5.899999999999993,
+        "deadline_s": 11.838494746231182,
+        "task_id": "Task_26"
+      },
+      {
+        "arrival_time_s": 6.0999999999999925,
+        "deadline_s": 10.160547725819491,
+        "task_id": "Task_27"
+      },
+      {
+        "arrival_time_s": 7.999999999999986,
+        "deadline_s": 9.760156425628672,
+        "task_id": "Task_28"
+      },
+      {
+        "arrival_time_s": 4.199999999999999,
+        "deadline_s": 9.91907259629063,
+        "task_id": "Task_29"
+      },
+      {
+        "arrival_time_s": 1.3,
+        "deadline_s": 9.32717934481983,
+        "task_id": "Task_3"
+      },
+      {
+        "arrival_time_s": 4.599999999999998,
+        "deadline_s": 11.264301785819253,
+        "task_id": "Task_30"
+      },
+      {
+        "arrival_time_s": 4.9999999999999964,
+        "deadline_s": 11.272158408469066,
+        "task_id": "Task_31"
+      },
+      {
+        "arrival_time_s": 5.199999999999996,
+        "deadline_s": 9.664098214974006,
+        "task_id": "Task_32"
+      },
+      {
+        "arrival_time_s": 6.69999999999999,
+        "deadline_s": 9.064573436708946,
+        "task_id": "Task_33"
+      },
+      {
+        "arrival_time_s": 7.199999999999989,
+        "deadline_s": 8.026286435672418,
+        "task_id": "Task_34"
+      },
+      {
+        "arrival_time_s": 7.199999999999989,
+        "deadline_s": 9.25605320546019,
+        "task_id": "Task_35"
+      },
+      {
+        "arrival_time_s": 7.599999999999987,
+        "deadline_s": 8.55323694062475,
+        "task_id": "Task_36"
+      },
+      {
+        "arrival_time_s": 7.899999999999986,
+        "deadline_s": 8.739098670868449,
+        "task_id": "Task_37"
+      },
+      {
+        "arrival_time_s": 7.999999999999986,
+        "deadline_s": 9.258862577046811,
+        "task_id": "Task_38"
+      },
+      {
+        "arrival_time_s": 3.0000000000000013,
+        "deadline_s": 9.831653566949868,
+        "task_id": "Task_4"
+      },
+      {
+        "arrival_time_s": 3.700000000000002,
+        "deadline_s": 10.893259853981725,
+        "task_id": "Task_5"
+      },
+      {
+        "arrival_time_s": 3.800000000000002,
+        "deadline_s": 10.825876184371129,
+        "task_id": "Task_6"
+      },
+      {
+        "arrival_time_s": 0.6,
+        "deadline_s": 9.339981760570241,
+        "task_id": "Task_7"
+      },
+      {
+        "arrival_time_s": 1.5000000000000002,
+        "deadline_s": 8.217539447590868,
+        "task_id": "Task_8"
+      },
+      {
+        "arrival_time_s": 1.6000000000000003,
+        "deadline_s": 11.851301652874419,
+        "task_id": "Task_9"
+      }
+    ],
+    "trajectory_id": "formal-v1-sim-2026092306-policy-2026092406"
+  },
+  "formal-v1-sim-2026092318-policy-2026092418::anchor-0023": {
+    "alignment_passed": true,
+    "capture_event_id": "capture-046",
+    "frame_index": 23,
+    "simulation_time_s": 3.5,
+    "source": "live Task.getTaskDeadline at decision-before-action",
+    "source_time_s": 3.5,
+    "tasks": [
+      {
+        "arrival_time_s": 1.9000000000000006,
+        "deadline_s": 9.83963051400374,
+        "task_id": "Task_1"
+      },
+      {
+        "arrival_time_s": 2.800000000000001,
+        "deadline_s": 8.693935072930326,
+        "task_id": "Task_10"
+      },
+      {
+        "arrival_time_s": 3.2000000000000015,
+        "deadline_s": 10.17246634314144,
+        "task_id": "Task_11"
+      },
+      {
+        "arrival_time_s": 3.5000000000000018,
+        "deadline_s": 11.029519587107895,
+        "task_id": "Task_12"
+      },
+      {
+        "arrival_time_s": 2.600000000000001,
+        "deadline_s": 8.22325862361633,
+        "task_id": "Task_2"
+      },
+      {
+        "arrival_time_s": 2.700000000000001,
+        "deadline_s": 9.785137361383532,
+        "task_id": "Task_3"
+      },
+      {
+        "arrival_time_s": 0.6,
+        "deadline_s": 8.59828601164002,
+        "task_id": "Task_5"
+      },
+      {
+        "arrival_time_s": 1.2,
+        "deadline_s": 8.846242755522551,
+        "task_id": "Task_6"
+      },
+      {
+        "arrival_time_s": 1.8000000000000005,
+        "deadline_s": 9.640591933139122,
+        "task_id": "Task_7"
+      },
+      {
+        "arrival_time_s": 1.9000000000000006,
+        "deadline_s": 9.159762060051934,
+        "task_id": "Task_8"
+      },
+      {
+        "arrival_time_s": 2.500000000000001,
+        "deadline_s": 10.83369954231198,
+        "task_id": "Task_9"
+      }
+    ],
+    "trajectory_id": "formal-v1-sim-2026092318-policy-2026092418"
+  },
+  "formal-v1-sim-2026092322-policy-2026092422::anchor-0015": {
+    "alignment_passed": true,
+    "capture_event_id": "capture-030",
+    "frame_index": 15,
+    "simulation_time_s": 3.0,
+    "source": "live Task.getTaskDeadline at decision-before-action",
+    "source_time_s": 3.0,
+    "tasks": [
+      {
+        "arrival_time_s": 0.2,
+        "deadline_s": 9.309354455551198,
+        "task_id": "Task_1"
+      },
+      {
+        "arrival_time_s": 2.800000000000001,
+        "deadline_s": 10.690942463983449,
+        "task_id": "Task_10"
+      },
+      {
+        "arrival_time_s": 0.7,
+        "deadline_s": 9.495445528760774,
+        "task_id": "Task_2"
+      },
+      {
+        "arrival_time_s": 0.8999999999999999,
+        "deadline_s": 9.889837106621616,
+        "task_id": "Task_3"
+      },
+      {
+        "arrival_time_s": 1.3,
+        "deadline_s": 8.18453991677527,
+        "task_id": "Task_5"
+      },
+      {
+        "arrival_time_s": 2.0000000000000004,
+        "deadline_s": 8.873624643690384,
+        "task_id": "Task_6"
+      },
+      {
+        "arrival_time_s": 2.1000000000000005,
+        "deadline_s": 11.100084202362925,
+        "task_id": "Task_7"
+      },
+      {
+        "arrival_time_s": 2.2000000000000006,
+        "deadline_s": 10.344712219094676,
+        "task_id": "Task_8"
+      },
+      {
+        "arrival_time_s": 2.800000000000001,
+        "deadline_s": 10.444396253741878,
+        "task_id": "Task_9"
+      }
+    ],
+    "trajectory_id": "formal-v1-sim-2026092322-policy-2026092422"
+  },
+  "formal-v1-sim-2026092341-policy-2026092441::anchor-0014": {
+    "alignment_passed": true,
+    "capture_event_id": "capture-028",
+    "frame_index": 14,
+    "simulation_time_s": 2.4,
+    "source": "live Task.getTaskDeadline at decision-before-action",
+    "source_time_s": 2.4,
+    "tasks": [
+      {
+        "arrival_time_s": 0.1,
+        "deadline_s": 9.909085048043936,
+        "task_id": "Task_1"
+      },
+      {
+        "arrival_time_s": 0.9999999999999999,
+        "deadline_s": 11.147440611172957,
+        "task_id": "Task_10"
+      },
+      {
+        "arrival_time_s": 1.4000000000000001,
+        "deadline_s": 8.235149335636873,
+        "task_id": "Task_11"
+      },
+      {
+        "arrival_time_s": 1.7000000000000004,
+        "deadline_s": 11.650363228938502,
+        "task_id": "Task_12"
+      },
+      {
+        "arrival_time_s": 2.0000000000000004,
+        "deadline_s": 9.323717294081721,
+        "task_id": "Task_13"
+      },
+      {
+        "arrival_time_s": 2.1000000000000005,
+        "deadline_s": 11.066345532598053,
+        "task_id": "Task_14"
+      },
+      {
+        "arrival_time_s": 0.1,
+        "deadline_s": 11.043656706005628,
+        "task_id": "Task_2"
+      },
+      {
+        "arrival_time_s": 0.4,
+        "deadline_s": 10.146217429846182,
+        "task_id": "Task_3"
+      },
+      {
+        "arrival_time_s": 1.3,
+        "deadline_s": 11.25416254460586,
+        "task_id": "Task_4"
+      },
+      {
+        "arrival_time_s": 1.7000000000000004,
+        "deadline_s": 8.886490509340344,
+        "task_id": "Task_5"
+      },
+      {
+        "arrival_time_s": 2.400000000000001,
+        "deadline_s": 8.065456940204145,
+        "task_id": "Task_6"
+      },
+      {
+        "arrival_time_s": 0.5,
+        "deadline_s": 9.444379048769312,
+        "task_id": "Task_8"
+      },
+      {
+        "arrival_time_s": 0.8999999999999999,
+        "deadline_s": 10.212154247210186,
+        "task_id": "Task_9"
+      }
+    ],
+    "trajectory_id": "formal-v1-sim-2026092341-policy-2026092441"
+  },
+  "formal-v1-sim-2026092341-policy-2026092441::anchor-0040": {
+    "alignment_passed": true,
+    "capture_event_id": "capture-080",
+    "frame_index": 40,
+    "simulation_time_s": 5.0,
+    "source": "live Task.getTaskDeadline at decision-before-action",
+    "source_time_s": 5.0,
+    "tasks": [
+      {
+        "arrival_time_s": 0.1,
+        "deadline_s": 9.909085048043936,
+        "task_id": "Task_1"
+      },
+      {
+        "arrival_time_s": 0.9999999999999999,
+        "deadline_s": 11.147440611172957,
+        "task_id": "Task_10"
+      },
+      {
+        "arrival_time_s": 1.4000000000000001,
+        "deadline_s": 8.235149335636873,
+        "task_id": "Task_11"
+      },
+      {
+        "arrival_time_s": 1.7000000000000004,
+        "deadline_s": 11.650363228938502,
+        "task_id": "Task_12"
+      },
+      {
+        "arrival_time_s": 2.0000000000000004,
+        "deadline_s": 9.323717294081721,
+        "task_id": "Task_13"
+      },
+      {
+        "arrival_time_s": 2.1000000000000005,
+        "deadline_s": 11.066345532598053,
+        "task_id": "Task_14"
+      },
+      {
+        "arrival_time_s": 2.700000000000001,
+        "deadline_s": 8.724762966712735,
+        "task_id": "Task_15"
+      },
+      {
+        "arrival_time_s": 2.700000000000001,
+        "deadline_s": 11.620823444269002,
+        "task_id": "Task_16"
+      },
+      {
+        "arrival_time_s": 4.899999999999997,
+        "deadline_s": 11.461102009148066,
+        "task_id": "Task_17"
+      },
+      {
+        "arrival_time_s": 0.1,
+        "deadline_s": 11.043656706005628,
+        "task_id": "Task_2"
+      },
+      {
+        "arrival_time_s": 4.1,
+        "deadline_s": 10.568240219149967,
+        "task_id": "Task_26"
+      },
+      {
+        "arrival_time_s": 4.499999999999998,
+        "deadline_s": 11.28891702147136,
+        "task_id": "Task_27"
+      },
+      {
+        "arrival_time_s": 4.6999999999999975,
+        "deadline_s": 11.771437949956344,
+        "task_id": "Task_28"
+      },
+      {
+        "arrival_time_s": 4.799999999999997,
+        "deadline_s": 9.01522189414275,
+        "task_id": "Task_29"
+      },
+      {
+        "arrival_time_s": 0.4,
+        "deadline_s": 10.146217429846182,
+        "task_id": "Task_3"
+      },
+      {
+        "arrival_time_s": 4.9999999999999964,
+        "deadline_s": 9.545908159403767,
+        "task_id": "Task_30"
+      },
+      {
+        "arrival_time_s": 4.499999999999998,
+        "deadline_s": 9.773046777879683,
+        "task_id": "Task_38"
+      },
+      {
+        "arrival_time_s": 4.6999999999999975,
+        "deadline_s": 8.973523113806591,
+        "task_id": "Task_39"
+      },
+      {
+        "arrival_time_s": 1.3,
+        "deadline_s": 11.25416254460586,
+        "task_id": "Task_4"
+      },
+      {
+        "arrival_time_s": 4.199999999999999,
+        "deadline_s": 9.836523691755511,
+        "task_id": "Task_47"
+      },
+      {
+        "arrival_time_s": 1.7000000000000004,
+        "deadline_s": 8.886490509340344,
+        "task_id": "Task_5"
+      },
+      {
+        "arrival_time_s": 2.400000000000001,
+        "deadline_s": 8.065456940204145,
+        "task_id": "Task_6"
+      },
+      {
+        "arrival_time_s": 2.500000000000001,
+        "deadline_s": 11.01597001487523,
+        "task_id": "Task_7"
+      },
+      {
+        "arrival_time_s": 0.5,
+        "deadline_s": 9.444379048769312,
+        "task_id": "Task_8"
+      },
+      {
+        "arrival_time_s": 0.8999999999999999,
+        "deadline_s": 10.212154247210186,
+        "task_id": "Task_9"
+      }
+    ],
+    "trajectory_id": "formal-v1-sim-2026092341-policy-2026092441"
+  },
+  "formal-v1-sim-2026092341-policy-2026092441::anchor-0046": {
+    "alignment_passed": true,
+    "capture_event_id": "capture-092",
+    "frame_index": 46,
+    "simulation_time_s": 5.6,
+    "source": "live Task.getTaskDeadline at decision-before-action",
+    "source_time_s": 5.6,
+    "tasks": [
+      {
+        "arrival_time_s": 0.1,
+        "deadline_s": 9.909085048043936,
+        "task_id": "Task_1"
+      },
+      {
+        "arrival_time_s": 0.9999999999999999,
+        "deadline_s": 11.147440611172957,
+        "task_id": "Task_10"
+      },
+      {
+        "arrival_time_s": 1.4000000000000001,
+        "deadline_s": 8.235149335636873,
+        "task_id": "Task_11"
+      },
+      {
+        "arrival_time_s": 1.7000000000000004,
+        "deadline_s": 11.650363228938502,
+        "task_id": "Task_12"
+      },
+      {
+        "arrival_time_s": 2.0000000000000004,
+        "deadline_s": 9.323717294081721,
+        "task_id": "Task_13"
+      },
+      {
+        "arrival_time_s": 2.1000000000000005,
+        "deadline_s": 11.066345532598053,
+        "task_id": "Task_14"
+      },
+      {
+        "arrival_time_s": 2.700000000000001,
+        "deadline_s": 8.724762966712735,
+        "task_id": "Task_15"
+      },
+      {
+        "arrival_time_s": 2.700000000000001,
+        "deadline_s": 11.620823444269002,
+        "task_id": "Task_16"
+      },
+      {
+        "arrival_time_s": 4.899999999999997,
+        "deadline_s": 11.461102009148066,
+        "task_id": "Task_17"
+      },
+      {
+        "arrival_time_s": 5.399999999999995,
+        "deadline_s": 11.392769421289422,
+        "task_id": "Task_18"
+      },
+      {
+        "arrival_time_s": 0.1,
+        "deadline_s": 11.043656706005628,
+        "task_id": "Task_2"
+      },
+      {
+        "arrival_time_s": 4.1,
+        "deadline_s": 10.568240219149967,
+        "task_id": "Task_26"
+      },
+      {
+        "arrival_time_s": 4.499999999999998,
+        "deadline_s": 11.28891702147136,
+        "task_id": "Task_27"
+      },
+      {
+        "arrival_time_s": 4.6999999999999975,
+        "deadline_s": 11.771437949956344,
+        "task_id": "Task_28"
+      },
+      {
+        "arrival_time_s": 4.799999999999997,
+        "deadline_s": 9.01522189414275,
+        "task_id": "Task_29"
+      },
+      {
+        "arrival_time_s": 0.4,
+        "deadline_s": 10.146217429846182,
+        "task_id": "Task_3"
+      },
+      {
+        "arrival_time_s": 4.9999999999999964,
+        "deadline_s": 9.545908159403767,
+        "task_id": "Task_30"
+      },
+      {
+        "arrival_time_s": 5.099999999999996,
+        "deadline_s": 11.308933461178366,
+        "task_id": "Task_31"
+      },
+      {
+        "arrival_time_s": 5.399999999999995,
+        "deadline_s": 11.557086417665047,
+        "task_id": "Task_32"
+      },
+      {
+        "arrival_time_s": 4.499999999999998,
+        "deadline_s": 9.773046777879683,
+        "task_id": "Task_38"
+      },
+      {
+        "arrival_time_s": 4.6999999999999975,
+        "deadline_s": 8.973523113806591,
+        "task_id": "Task_39"
+      },
+      {
+        "arrival_time_s": 1.3,
+        "deadline_s": 11.25416254460586,
+        "task_id": "Task_4"
+      },
+      {
+        "arrival_time_s": 5.099999999999996,
+        "deadline_s": 11.187927446385219,
+        "task_id": "Task_40"
+      },
+      {
+        "arrival_time_s": 4.199999999999999,
+        "deadline_s": 9.836523691755511,
+        "task_id": "Task_47"
+      },
+      {
+        "arrival_time_s": 5.199999999999996,
+        "deadline_s": 10.736006507182594,
+        "task_id": "Task_48"
+      },
+      {
+        "arrival_time_s": 1.7000000000000004,
+        "deadline_s": 8.886490509340344,
+        "task_id": "Task_5"
+      },
+      {
+        "arrival_time_s": 2.400000000000001,
+        "deadline_s": 8.065456940204145,
+        "task_id": "Task_6"
+      },
+      {
+        "arrival_time_s": 2.500000000000001,
+        "deadline_s": 11.01597001487523,
+        "task_id": "Task_7"
+      },
+      {
+        "arrival_time_s": 0.5,
+        "deadline_s": 9.444379048769312,
+        "task_id": "Task_8"
+      },
+      {
+        "arrival_time_s": 0.8999999999999999,
+        "deadline_s": 10.212154247210186,
+        "task_id": "Task_9"
+      }
+    ],
+    "trajectory_id": "formal-v1-sim-2026092341-policy-2026092441"
+  },
+  "formal-v1-sim-2026092345-policy-2026092445::anchor-0028": {
+    "alignment_passed": true,
+    "capture_event_id": "capture-056",
+    "frame_index": 28,
+    "simulation_time_s": 3.1,
+    "source": "live Task.getTaskDeadline at decision-before-action",
+    "source_time_s": 3.1,
+    "tasks": [
+      {
+        "arrival_time_s": 0.7,
+        "deadline_s": 10.30919164663225,
+        "task_id": "Task_1"
+      },
+      {
+        "arrival_time_s": 0.30000000000000004,
+        "deadline_s": 9.408847342821861,
+        "task_id": "Task_10"
+      },
+      {
+        "arrival_time_s": 0.6,
+        "deadline_s": 10.317535791055814,
+        "task_id": "Task_11"
+      },
+      {
+        "arrival_time_s": 0.7,
+        "deadline_s": 9.749438876919957,
+        "task_id": "Task_12"
+      },
+      {
+        "arrival_time_s": 0.7999999999999999,
+        "deadline_s": 11.380311316268742,
+        "task_id": "Task_13"
+      },
+      {
+        "arrival_time_s": 1.2,
+        "deadline_s": 9.999008436564303,
+        "task_id": "Task_14"
+      },
+      {
+        "arrival_time_s": 1.7000000000000004,
+        "deadline_s": 10.94552186328368,
+        "task_id": "Task_15"
+      },
+      {
+        "arrival_time_s": 1.8000000000000005,
+        "deadline_s": 8.157655498645196,
+        "task_id": "Task_16"
+      },
+      {
+        "arrival_time_s": 2.0000000000000004,
+        "deadline_s": 8.624270531621988,
+        "task_id": "Task_17"
+      },
+      {
+        "arrival_time_s": 2.400000000000001,
+        "deadline_s": 11.633929340159295,
+        "task_id": "Task_18"
+      },
+      {
+        "arrival_time_s": 2.600000000000001,
+        "deadline_s": 10.980751890921855,
+        "task_id": "Task_19"
+      },
+      {
+        "arrival_time_s": 1.5000000000000002,
+        "deadline_s": 11.001573815289131,
+        "task_id": "Task_2"
+      },
+      {
+        "arrival_time_s": 2.600000000000001,
+        "deadline_s": 10.104282395229102,
+        "task_id": "Task_20"
+      },
+      {
+        "arrival_time_s": 2.9000000000000012,
+        "deadline_s": 9.374810346591318,
+        "task_id": "Task_21"
+      },
+      {
+        "arrival_time_s": 3.1000000000000014,
+        "deadline_s": 9.787444907486773,
+        "task_id": "Task_22"
+      },
+      {
+        "arrival_time_s": 0.2,
+        "deadline_s": 9.764470537359731,
+        "task_id": "Task_8"
+      },
+      {
+        "arrival_time_s": 0.2,
+        "deadline_s": 10.231030829035596,
+        "task_id": "Task_9"
+      }
+    ],
+    "trajectory_id": "formal-v1-sim-2026092345-policy-2026092445"
+  }
+}

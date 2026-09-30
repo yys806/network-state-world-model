@@ -1,5 +1,7 @@
 # PI-JWM 结果索引
 
+2026-09-30 STEP 6.3D-PREFLIGHT-PATCH：正式 32 TRAIN / 64 Validation 锚点静态候选域均非空且 Objective cohort>0。TRAIN-only HRS seed6391/B_WM64：16/32 锚点有 H4 可评分候选，16/32 无；406 条完整 H4 中 131 可评分、275 不可评分，275 条均有 future Return birth 支持边界；另有 240 个 Grammar dead-end 分支。CPU batch 1/4/8/16 与串行等价，本次吞吐 0.8695/0.8911/0.9640/0.9218 unique transitions/s。原始 20–25 机器收据可核验；这是前置诊断，不是 HRS/S-CEM/MH-CEM 胜负或闭环性能结果。
+
 2026-09-29 STEP 6.3B/6.3C-PATCH：TRAIN 条件选中任务数的候选准入使静态空域从原合同的 1935/4416 变为 14/4416；Validation 描述性空域从 550/1104 变为 6/1104。TRAIN H1 投影排除 728 条依赖同决策 offload Route 的历史 Comm 行；任务数量条件的投影拒绝为 0。其余通信结构、Comp 和联合结构残余保留，详见 `code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json`。这是候选域/准入证据，不是优化效果或闭环性能。
 
 2026-09-28 STEP 6.3A：`STEP_6_3A=PASS` 表示候选支持审计有完整 CPU 证据。Formal TRAIN Comp 1969/1969 action entries 可按现有 causal CPU rule 重建，alpha 为 `{0.5,0.75,1.0}`；独立 Comm/Comp/Mob factorization 为 `NOT_SUPPORTED`。无候选排名、优化器或性能结论。

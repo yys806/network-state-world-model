@@ -1,0 +1,60 @@
+{
+  "gpu": false,
+  "locked_test": false,
+  "numeric_tolerance": 0.0001,
+  "parameter_digest": "f5dc7f523af1e3137f520187bb2b9e7697e835b4374d45bb025460f58c778123",
+  "rows": [
+    {
+      "H_sup_and_support_equal": true,
+      "batch_size": 1,
+      "complete_h4": 1,
+      "grammar_admission_equal": true,
+      "h4_scoreable": 1,
+      "max_abs_numeric_delta": 0.0,
+      "objective_ordering_equal": true,
+      "objective_values_equal": true,
+      "pass": true,
+      "paths": 1
+    },
+    {
+      "H_sup_and_support_equal": true,
+      "batch_size": 4,
+      "complete_h4": 4,
+      "grammar_admission_equal": true,
+      "h4_scoreable": 4,
+      "max_abs_numeric_delta": 7.62939453125e-06,
+      "objective_ordering_equal": true,
+      "objective_values_equal": true,
+      "pass": true,
+      "paths": 4
+    },
+    {
+      "H_sup_and_support_equal": true,
+      "batch_size": 8,
+      "complete_h4": 8,
+      "grammar_admission_equal": true,
+      "h4_scoreable": 8,
+      "max_abs_numeric_delta": 6.103515625e-05,
+      "objective_ordering_equal": true,
+      "objective_values_equal": true,
+      "pass": true,
+      "paths": 8
+    },
+    {
+      "H_sup_and_support_equal": true,
+      "batch_size": 16,
+      "complete_h4": 16,
+      "grammar_admission_equal": true,
+      "h4_scoreable": 16,
+      "max_abs_numeric_delta": 6.103515625e-05,
+      "objective_ordering_equal": true,
+      "objective_values_equal": true,
+      "pass": true,
+      "paths": 16
+    }
+  ],
+  "sample_id": "formal-v1-sim-2026092345-policy-2026092445::anchor-0028",
+  "split": "dev_train",
+  "validation_search_executed": false,
+  "verdict": "PASS"
+}

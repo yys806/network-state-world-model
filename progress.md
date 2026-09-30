@@ -1,5 +1,12 @@
 # Progress
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH
+
+- 从 `34f38183c21227f9a8e95d4f13a9513a4cf88506` 起核验，保留旧清单。按原哈希/分层静态规则替换 TRAIN 3、Validation 5 个零 cohort 锚点；8/8 replacement deadline sidecar 精确对齐，修正后 TRAIN 32 / Validation 64 均有非空候选域和正 cohort。
+- 仅用修正后的 32 TRAIN、HRS seed6391、每锚点 `B_WM=64` 完成 2048 次唯一一步转移。16/32 锚点至少找到一条可评分 H4；16/32 未找到。406 条完整 H4 中 131 可评分、275 不可评分；275 条均触发 future Return birth 支持边界，另有 240 个语法死路分支。
+- 复用 STEP 6.1 一步模型语义实现 batch 1/4/8/16；真实 TRAIN 的一步数值、动作映射、候选域支持，以及有评分信号的 H4 `H_sup`/目标排序均等价。吞吐分别为 0.8695/0.8911/0.9640/0.9218 unique transitions/s，推荐 batch 8。CPU focused 6.3D 11/11、6.1 2/2、6.3C 10/10 与 compileall 通过。
+- `STEP_6_3D_PREFLIGHT_PATCH=PASS`，H4 readiness 因 16/16 分布和未冻结“大量”阈值等待研究者判断；正式 TRAIN tuning/Validation 比较未启动，方法未选。唯一下一动作：完成 Context、索引、receipt SHA 与 Git 收口，随后停止。
+
 ## 2026-09-29 STEP 6.3D（进行中，正式比较未完成）
 
 - 核实起点 `HEAD=origin/main=963aed07575c87b062abf9ba66de51132f99c1fd`；未改原有未跟踪文件。

@@ -1,5 +1,9 @@
 # 模块导航地图
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 增量
+
+`step6_3d_objective_anchor_patch_v1.py` 静态同层哈希替换零 cohort；对应 builder、replacement sidecar replay 和 eligibility audit 在 `code/scripts/`。`step6_1_trained_candidate_rollout_v1.py::rollout_one_step_batch` 与串行共用转移准备；`step6_3d_fixed_budget_search_v1.py` 可选批量 wavefront，继续使用 6.3C 的预算/cache。真实 TRAIN 检查脚本分别生成 21 一步等价与吞吐、22 H4 支持、23 四步等价；25 接受收据没有方法选择含义。
+
 ## 2026-09-29 STEP 6.3D（方法比较进行中）
 
 - `code/src/pi_jwm/step6_3d_anchor_selection_v1.py`：split 内候选数对数四分位、Comp-base 与 sample-id hash 锚点选择。

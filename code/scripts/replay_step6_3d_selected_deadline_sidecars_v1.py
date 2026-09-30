@@ -27,16 +27,23 @@ def canonical(value: object) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
 
 
-def main() -> None:
+def replay_selected(*, manifest_names=("01_train_anchor_manifest.json",
+                                 "02_validation_anchor_manifest.json"),
+                    selected_ids=None, expected_count=96,
+                    sidecar_name="03_selected_deadline_sidecars.json",
+                    evidence_name="04_selected_deadline_alignment_receipt.json") -> None:
+    if len(manifest_names) != 2:
+        raise ValueError("TRAIN and Validation manifest pair required")
     interface = FormalTrainingInterface.from_manifest(DATASET)
     indexed = {row["metadata"]["sample_id"]: row["metadata"] for row in interface.samples}
     selected = defaultdict(list)
-    for name, split in (("01_train_anchor_manifest.json", "dev_train"),
-                        ("02_validation_anchor_manifest.json", "dev_validation")):
+    for name, split in zip(manifest_names, ("dev_train", "dev_validation")):
         manifest = json.loads((OUT / name).read_text(encoding="utf-8"))
         if manifest["split"] != split:
             raise ValueError("selected manifest split mismatch")
         for row in manifest["selected"]:
+            if selected_ids is not None and row["sample_id"] not in selected_ids:
+                continue
             meta = indexed[row["sample_id"]]
             if meta["split"] != split:
                 raise ValueError("selected sample crosses split")
@@ -98,16 +105,20 @@ def main() -> None:
                              "decision_equal": True, "action_prefix_equal": True,
                              "deadline_task_ids_equal": True})
         print(f"aligned {trajectory_id}: {len(metas)} selected anchors", flush=True)
-    if len(sidecars) != 96:
-        raise ValueError("selected sidecar count differs from 32+64")
-    for name, value in (("03_selected_deadline_sidecars.json", sidecars),
-                        ("04_selected_deadline_alignment_receipt.json", {
+    if len(sidecars) != expected_count:
+        raise ValueError("selected sidecar count differs from expected")
+    for name, value in ((sidecar_name, sidecars),
+                        (evidence_name, {
                             "anchor_count": len(sidecars), "trajectory_count": len(selected),
                             "checks": evidence, "alignment_passed": True,
                             "source": "read-only exact replay of frozen Formal Raw",
                             "future_target_used": False, "locked_test": False})):
         (OUT / name).write_text(json.dumps(value, sort_keys=True, indent=2, ensure_ascii=False) + "\n",
                                 encoding="utf-8", newline="\n")
+
+
+def main() -> None:
+    replay_selected()
 
 
 if __name__ == "__main__":

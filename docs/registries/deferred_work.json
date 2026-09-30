@@ -5,20 +5,20 @@
       "id": "STEP-6.3D-CANDIDATE-OPTIMIZER-SELECTION",
       "type": "candidate_method_research",
       "status": "deferred",
-      "reason": "The researcher authorized only STEP 6.3B/6.3C-PATCH closure and explicitly prohibited starting STEP 6.3D or implementing Random Search/CEM in this task.",
-      "summary_zh": "STEP 6.3D 候选优化器选择未授权；本补丁收口后停止，不自动实现 Random Search 或 CEM。",
+      "reason": "STEP 6.3D methods and protocol are frozen and the 6.3D-PREFLIGHT-PATCH passed, but the bounded TRAIN H4 diagnostic found 16/32 anchors without a scoreable candidate. The researcher must assess whether the common future Return support boundary blocks the formal matrix; this patch expressly stops before tuning/comparison.",
+      "summary_zh": "6.3D 方法代码与前置补丁已就绪；TRAIN H4 固定诊断 16/32 锚点无可评分候选，正式调参/比较暂停待研究者判断支持问题，不自动继续。",
       "authorization_required": true,
       "auto_start": false,
       "locked_test_accessed": false,
-      "entrypoint": null,
+      "entrypoint": "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py",
       "required_predecessors": [
-        "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json",
-        "researcher review and separate STEP 6.3D authorization"
+        "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json",
+        "researcher assessment of H4 model/objective support and separate instruction to resume the formal matrix"
       ],
       "forbidden_until_authorized": [
-        "Random Search implementation",
-        "CEM implementation",
-        "candidate ranking experiment",
+        "formal TRAIN CEM tuning",
+        "formal Validation paired method comparison",
+        "search method selection",
         "closed-loop execution",
         "GPU run",
         "locked_test access"

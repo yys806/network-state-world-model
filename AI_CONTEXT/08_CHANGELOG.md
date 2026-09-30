@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH
+
+修正 3/5 个零 cohort TRAIN/Validation 锚点并精确重放 8 个 deadline sidecar；新增 TRAIN-only 32×64 H4 诊断与 CPU batch 1/4/8/16 一步/四步等价、吞吐及 SHA 收据。Patch PASS，H4 readiness 待研究者基于 16/16 分布判断，正式搜索比较未启动。更新 00/02/03/04/05/07/08；研究决定 06 未改。
+
 ## 2026-09-29 STEP 6.3D 进行中
 
 研究者授权 HRS/S-CEM/MH-CEM 固定预算 H4 方法比较。新增分层锚点清单、只读因果 deadline 重放、共享五层提议分布与 CPU H4 搜索/调参/成对 bootstrap 代码；96/96 目标侧状态就绪，9/9 focused tests 与 synthetic exact oracle 通过。正式 TRAIN/Validation 矩阵尚未完成，方法未选；单锚点 CPU 探针不可作为方法性能结论。无 GPU、`locked_test`、训练或闭环。

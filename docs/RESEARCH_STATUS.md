@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH：`PASS` 只验收修正后 TRAIN 32 / Validation 64 锚点的静态 Objective 资格和 CPU 批量执行路径。TRAIN-only 固定 HRS seed6391/B_WM64 的 32-anchor 诊断中 16 个锚点找到可评分 H4、16 个没有；275 条不可评分完整 H4 均触发 future Return birth 支持边界。`H4_SEARCH_COMPARISON_READINESS=PENDING_RESEARCHER_DECISION_ON_MODEL_OBJECTIVE_SUPPORT`，正式 TRAIN tuning/Validation 比较未运行，方法未选。证据见 20–25 收据和 Patch 实施记录；无 GPU、`locked_test`、训练或闭环。
+
 > 2026-09-29 STEP 6.3B/6.3C-PATCH：研究者已冻结 Comm 子集选择和 TRAIN 通信结构条件数量支持；原“所有 eligible Task 都有行”的旧限制不再适用。4416 TRAIN H1 投影中任务数量拒绝为 0，728 条依赖同决策 offload Route 的历史 Comm 行已排除并逐条记录；其他 Comp/联合结构残余没有放宽。静态域 TRAIN 14/4416、Validation 6/1104 为空。证据只涉及 CPU 候选准入与机制；优化器、排名、baseline、闭环、GPU 和 `locked_test` 均未进入。
 
 > 2026-09-29 STEP 6.3B：候选语法与支持政策 `PASS`（CPU 合同）。正式池 Route 空、Comm 当前关系绑定、Comp 当前因果 CPU base、Mob 共享 profile，联合结构须为 TRAIN 已见签名；时间观察性只作标签。仍未选候选优化器、未排名、未进入闭环或性能验证。见 STEP 6.3B 合同与收据。

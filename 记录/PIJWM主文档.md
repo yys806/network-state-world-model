@@ -1,5 +1,9 @@
 # PI-JWM 理论定义与固定技术规范
 
+## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 实施边界
+
+本 Patch 没有更改 6.3D 三种搜索方法、CandidateDomain、H4-only 严格五项目标、`H_sup`、`B_WM` 或最终选型规则。静态目标资格修正只排除冻结 scorer 必然不可评分的零 cohort 输入：保留原 32/64 清单，在原 split/候选域规模四分位/Comp-base 分层中按原样本 ID 哈希替换 3/5 个样本，并精确重放新 deadline sidecar。修正后 TRAIN 32 / Validation 64 全部非空且 cohort>0。TRAIN-only HRS seed6391/B64 诊断得到 16/32 锚点有可评分 H4，16/32 无；所有 275 条不可评分完整轨迹均出现 future Return birth 支持边界。未冻结“大量不可评分”阈值，是否构成模型/目标支持的科研 blocker 由研究者判断；正式方法比较停在此前置判断。CPU batch 等价和吞吐仅是执行路径证据，不是新搜索方法或性能结论。无 Validation 搜索、GPU、训练、闭环或 `locked_test`。
+
 ## 2026-09-29 STEP 6.3D 研究者冻结的方法比较边界
 
 研究者指定在同一候选域、同一冻结世界模型、同一 6.2B 五项目标严格字典序、同一独特一步转移预算下比较分层均匀随机搜索 HRS、只更新联合结构/选中任务数的 S-CEM，以及额外更新任务子集/行分配/RB 起点的 MH-CEM。H4 只允许 `H_sup=4` 的完整轨迹评分，禁止短时域回退；CEM 概率只在单次 anchor solve 内更新。TRAIN 32 锚点/3 seeds/512 预算仅调 K 和 elite ratio；Validation 64 锚点/5 seeds/256、512、1024 预算成对比较，最终只凭 1024 预算按 anchor cluster bootstrap 的冻结简约规则选方法。当前实现和 CPU 合同测试已建立，但正式矩阵尚未完成，方法未选，也没有闭环或性能结论。
