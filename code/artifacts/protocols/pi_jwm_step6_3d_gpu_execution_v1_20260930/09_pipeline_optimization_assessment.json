@@ -1,0 +1,53 @@
+{
+  "baseline_tps": 12.71,
+  "bottleneck": {
+    "fingerprint_cache_fraction": 0.021237026295565717,
+    "model_one_step_fraction": 0.8758240090256462,
+    "proposal_domain_bind_fraction": 0.038950365826138755,
+    "scorer_hsup_fraction": 0.06398859885264932
+  },
+  "equivalence": "accepted GPU CPU/FP32 and H4 equivalence receipts remain authoritative; no optimized path adopted",
+  "formal_config": {
+    "batch_size": 32,
+    "bucket_strategy": "none",
+    "cache_policy": "existing transition cache; B_WM per unique transition",
+    "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+    "device": "cuda:0 RTX 4090",
+    "inference_mode": "torch.inference_mode",
+    "precision": "FP32"
+  },
+  "h4_search_comparison_readiness": "SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION",
+  "optimization_assessment": [
+    {
+      "evidence": "fingerprint/cache is 2.12% of bounded wall-clock; no semantic change justified; cache key and B_WM remain unchanged",
+      "name": "fingerprint_cache_fast_path",
+      "status": "REJECTED_FOR_INSUFFICIENT_EXPECTED_GAIN"
+    },
+    {
+      "evidence": "profiler does not show control synchronization as dominant; no scattered-sync optimization implemented",
+      "name": "cpu_control_shadow",
+      "status": "NOT_ADOPTED"
+    },
+    {
+      "evidence": "single batch model.one_step is 87.58% of wall-clock; profiler does not support CPU scheduling as dominant",
+      "name": "multi_anchor_wavefront",
+      "status": "NOT_ADOPTED"
+    }
+  ],
+  "profiler_receipt": "08_gpu_pipeline_bottleneck_profile.json",
+  "scientific_boundaries": {
+    "formal_train_tuning": false,
+    "locked_test": false,
+    "method_selection": false,
+    "research_semantics_changed": false,
+    "validation_comparison": false
+  },
+  "step": "6.3D-GPU-PIPELINE-OPT",
+  "stop_rule": {
+    "gain_fraction": 0.0,
+    "optimized_tps": 12.71,
+    "threshold_tps": 15.252,
+    "verdict": "PIPELINE_OPT_GAIN=INSUFFICIENT"
+  },
+  "verdict": "PASS"
+}

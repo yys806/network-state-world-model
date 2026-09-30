@@ -1263,3 +1263,7 @@ RTX 4090 上正式数据 H4 batch 1/2/4/8 少量 CUDA optimizer smoke 通过；�
 
 ## 2026-09-30 STEP 6.3D-GPU-EXECUTION 鈥?宸插畬鎴恅n
 RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixtures 鐨?CPU FP32/GPU FP32 batch 1/4/8/16/32/64/128/256 鍗曟鍜?H4 绂绘暎绛変环閫氳繃锛涘悶鍚?batch 8/16/32/64 绋冲畾锛?28/256 OOM銆傛帹鑽?FP32銆乥atch=32銆佹棤 bucketing锛岀害 12.71 transitions/s銆佸嘲鍊?2.03 GiB銆佺害 13.19x CPU batch8銆傛湭杩愯姝ｅ紡 TRAIN tuning銆乂alidation comparison銆佹柟娉曢€夋嫨銆佽缁冦€侀棴鐜垨 locked_test銆傚敮涓€涓嬩竴鍔ㄤ綔锛氱爺绌惰€呭彟琛屾巿鏉冩寮?STEP 6.3D 姣旇緝銆俙n
+
+## 2026-09-30 STEP 6.3D-GPU-PIPELINE-OPT — 已完成
+
+GPU profiling 显示 model.one_step 占 87.58%，fingerprint/cache 2.12%；fingerprint fast path、CPU shadow、multi-anchor 均不采用，停止规则为 INSUFFICIENT。正式配置保持 FP32 batch=32 no-bucketing，未运行正式 TRAIN/Validation comparison 或 locked_test。

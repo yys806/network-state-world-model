@@ -6,7 +6,7 @@
 
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 当前关口
 
-`STEP_6_3D_PREFLIGHT_PATCH=PASS` 只表示样本输入与 CPU 批量执行路径就绪。旧 32 TRAIN / 64 Validation 锚点中 3/5 个零 Objective cohort 已按原分层/哈希静态替换，修正后 32/64 全部候选域非空、cohort>0；8 个新 deadline sidecar 精确对齐。固定 TRAIN-only HRS seed6391/B_WM64 诊断：16/32 锚点找到可评分 H4，16/32 未找到，275 条不可评分完整 H4 均有 future Return birth 支持边界。CPU batch 1/4/8/16 一步与 H4 串行等价。`H4_SEARCH_COMPARISON_READINESS=PENDING_RESEARCHER_DECISION_ON_MODEL_OBJECTIVE_SUPPORT`：16/16 分布不满足“多数可评分”，研究者未冻结“大量”阈值。正式 TRAIN tuning/Validation 方法比较未运行，方法未选；无 GPU、`locked_test`、训练或闭环。详见 `docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md` 和 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json`；下方 6.3D 段落是补丁前状态。
+`STEP_6_3D_PREFLIGHT_PATCH=PASS` 只表示样本输入与 CPU 批量执行路径就绪。旧 32 TRAIN / 64 Validation 锚点中 3/5 个零 Objective cohort 已按原分层/哈希静态替换，修正后 32/64 全部候选域非空、cohort>0；8 个新 deadline sidecar 精确对齐。固定 TRAIN-only HRS seed6391/B_WM64 诊断：16/32 锚点找到可评分 H4，16/32 未找到，275 条不可评分完整 H4 均有 future Return birth 支持边界。CPU batch 1/4/8/16 一步与 H4 串行等价。`H4_SEARCH_COMPARISON_READINESS=SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`：16/16 分布不满足“多数可评分”，研究者已确认 future Return birth 是固定支持边界限制；正式 6.3D 可以继续，H4 scoreable success rate 单独报告。正式 TRAIN tuning/Validation 方法比较未运行，方法未选；GPU 执行路径已闭合，未访问 `locked_test`、训练或闭环。详见 `docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md` 和 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json`；下方 6.3D 段落是补丁前状态。
 
 ## 2026-09-29 STEP 6.3D 进行中
 

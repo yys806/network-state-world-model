@@ -1,0 +1,65 @@
+{
+  "files": [
+    {
+      "bytes": 21008,
+      "filename": "01_fixture_transfer_manifest.json",
+      "sha256": "e5866b2120a3bfa4d2f26c9b185ede015974f91fcdc57680c7a9db64e6357300"
+    },
+    {
+      "bytes": 1399,
+      "filename": "02_gpu_environment.json",
+      "sha256": "90809404756580453eeafabf1660d8af7eba5aad19a6cf995a184c4c4223ea88"
+    },
+    {
+      "bytes": 15213,
+      "filename": "03_cpu_gpu_equivalence.json",
+      "sha256": "3a2329a24c2eaa01b255de37dd92b2bc0d4de1e1aa35f6739d05c3cd78ea4789"
+    },
+    {
+      "bytes": 15213,
+      "filename": "03_cpu_gpu_equivalence_1_to_32.json",
+      "sha256": "3a2329a24c2eaa01b255de37dd92b2bc0d4de1e1aa35f6739d05c3cd78ea4789"
+    },
+    {
+      "bytes": 15213,
+      "filename": "03_cpu_gpu_equivalence_64_256.json",
+      "sha256": "3a2329a24c2eaa01b255de37dd92b2bc0d4de1e1aa35f6739d05c3cd78ea4789"
+    },
+    {
+      "bytes": 71015,
+      "filename": "04_gpu_batch_throughput.json",
+      "sha256": "61eb783607d13cd2c5ac11bb02fd7b035ee1a9c338b813160f45dd08b911d49c"
+    },
+    {
+      "bytes": 2018,
+      "filename": "05_bucket_diagnostic.json",
+      "sha256": "15c7bf779637ff09f44562eaaecaa8f0c2b4a149b5de6873d9ca45baa8068086"
+    },
+    {
+      "bytes": 1437,
+      "filename": "06_gpu_execution_acceptance.json",
+      "sha256": "3cfe5d53a34c777109cf6f0fe929af7eb2014d328dcf1c40f1bb55a915d62588"
+    },
+    {
+      "bytes": 1068,
+      "filename": "07_manifest.json",
+      "sha256": "678755f2228068cca1c8f2bfe5ae86d52cf142c9f3fb357b841436bd2e98cead"
+    },
+    {
+      "bytes": 1404,
+      "filename": "08_gpu_pipeline_bottleneck_profile.json",
+      "sha256": "a1b45c5e6a58c0d13730340279c99485fda597c4123853fbe6224360644de8be"
+    },
+    {
+      "bytes": 2053,
+      "filename": "09_pipeline_optimization_assessment.json",
+      "sha256": "13b0ecb1643035163a8f1473fb7ae4c056c8f188ef1c2ab8ca155198b03b2b87"
+    },
+    {
+      "bytes": 725,
+      "filename": "10_pipeline_optimization_acceptance.json",
+      "sha256": "a1e36458efccbdfbcb98814d4241f2bd9f64373e6579b75b8daa8fbec94462fa"
+    }
+  ],
+  "step": "6.3D-GPU-PIPELINE-OPT"
+}

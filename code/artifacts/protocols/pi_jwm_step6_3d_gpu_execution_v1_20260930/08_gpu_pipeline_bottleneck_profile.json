@@ -1,0 +1,41 @@
+{
+  "checkpoint_parameter_digest": "f5dc7f523af1e3137f520187bb2b9e7697e835b4374d45bb025460f58c778123",
+  "formal_comparison": false,
+  "locked_test": false,
+  "precision": "FP32",
+  "rows": [
+    {
+      "batch_size": 32,
+      "cache_keys": 32,
+      "gpu_memory_peak_bytes": 144509952,
+      "gpu_utilization": "not sampled during bounded stage run",
+      "model_forward_calls": 1,
+      "requests": 32,
+      "score_status": "SCOREABLE",
+      "stage_percent": {
+        "fingerprint_cache_bookkeeping": 0.021237026295565717,
+        "host_device_copy": 0.0,
+        "model_one_step": 0.8758240090256462,
+        "proposal_candidate_domain_bind": 0.038950365826138755,
+        "python_scheduling_sync": 0.0,
+        "scorer_hsup": 0.06398859885264932,
+        "total_wall_clock": 1.0,
+        "unbatch_state_reconstruction": 0.0
+      },
+      "stages_seconds": {
+        "fingerprint_cache_bookkeeping": 0.056643927935510874,
+        "host_device_copy": 0.0,
+        "model_one_step": 2.336019712034613,
+        "proposal_candidate_domain_bind": 0.103889390360564,
+        "python_scheduling_sync": 0.0,
+        "scorer_hsup": 0.1706719920039177,
+        "total_wall_clock": 2.6672250223346055,
+        "unbatch_state_reconstruction": 0.0
+      }
+    }
+  ],
+  "sample_id": "formal-v1-sim-2026092345-policy-2026092445::anchor-0028",
+  "split": "dev_train",
+  "training": false,
+  "verdict": "PASS"
+}

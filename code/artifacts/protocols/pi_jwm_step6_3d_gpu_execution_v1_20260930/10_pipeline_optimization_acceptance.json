@@ -1,0 +1,21 @@
+{
+  "adopted_optimization": "none; retained accepted FP32 batch=32 no-bucketing configuration",
+  "baseline_tps": 12.71,
+  "estimated_hours_for_2113536": 46.19145030159979,
+  "estimated_seconds_for_2113536": 166289.22108575923,
+  "formal_comparison_executed": false,
+  "h4_search_comparison_readiness": "SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION",
+  "locked_test": false,
+  "optimized_tps": 12.71,
+  "peak_vram_gib": 2.03,
+  "profiling": "PASS",
+  "rejected_or_not_adopted": [
+    "fingerprint_cache_fast_path",
+    "cpu_control_shadow",
+    "multi_anchor_wavefront"
+  ],
+  "speedup": 1.0,
+  "step": "6.3D-GPU-PIPELINE-OPT",
+  "stop_rule": "PIPELINE_OPT_GAIN=INSUFFICIENT",
+  "verdict": "PASS"
+}
