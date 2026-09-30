@@ -1,0 +1,33 @@
+{
+  "batch_size": 32,
+  "budget": 256,
+  "cpu_stored": {
+    "best_fingerprint": "311331bc60865f780b0a36cd2f50ce1b9d0460f6579171513f0cabeb30b41615",
+    "best_objective": [
+      0,
+      0.0,
+      1.0,
+      1.0,
+      0.032777777777777774
+    ],
+    "complete_sequence_count": 64,
+    "h4_scoreable_count": 64
+  },
+  "direct": {
+    "best_fingerprint": "311331bc60865f780b0a36cd2f50ce1b9d0460f6579171513f0cabeb30b41615",
+    "best_objective": [
+      0,
+      0.0,
+      1.0,
+      1.0,
+      0.032777777777777774
+    ],
+    "complete_sequence_count": 64,
+    "h4_scoreable_count": 64
+  },
+  "direct_gpu_vs_cpu_stored_gpu_same_discrete_result": false,
+  "locked_test": false,
+  "peak_vram_bytes": 153341440,
+  "state_storage": "cpu_cache_and_prefix",
+  "verdict": "BLOCKED"
+}

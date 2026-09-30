@@ -142,3 +142,4 @@ The target Planner objective is the researcher-specified lexicographic tuple `(N
 # 2026-09-28 Planner Objective side-state boundary
 
 新增 Planner-only Task/Route 因果 side-state，独立于 Encoder/RSSM；只接当前 Raw、已对齐 deadline sidecar、候选 Route 控制及预测状态，不读 Future Target。4.2C-C route 数组不含 holder，而 4.4 跨跳规则按含 holder 的数组推进，构成当前 blocker。Route action 仅改 endpoints/revision，不改完整数组；side-state 可检测分歧，不能代替模型修复。
+2026-09-30 执行路径更新：正式 6.3D matrix runner 可在 CPU 或 RTX 3080 Ti CUDA FP32 上运行，GPU 复用同一 `rollout_one_step_batch`/`solve_fixed_budget`/`TransitionBudgetAccountant`；CUDA 搜索缓存和前缀使用主机内存保存精确张量，batch16 配置冻结。科研搜索定义未变；证据见 3080 Ti Step 实施记录。

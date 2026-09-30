@@ -1267,3 +1267,4 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 ## 2026-09-30 STEP 6.3D-GPU-PIPELINE-OPT — 已完成
 
 GPU profiling 显示 model.one_step 占 87.58%，fingerprint/cache 2.12%；fingerprint fast path、CPU shadow、multi-anchor 均不采用，停止规则为 INSUFFICIENT。正式配置保持 FP32 batch=32 no-bucketing，未运行正式 TRAIN/Validation comparison 或 locked_test。
+2026-09-30 STEP 6.3D-3080TI-MIGRATION-QUALIFICATION：3080 Ti 正式数据/冻结 checkpoint 身份、CPU/GPU 离散等价、batch16、formal CUDA runner、resume 和 bounded HRS/S-CEM smoke PASS；正式 TRAIN tuning、Validation 比较和 locked_test 未运行。下一步研究者审阅。

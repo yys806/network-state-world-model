@@ -1,0 +1,16 @@
+{
+  "batch_size": 64,
+  "budget": 1024,
+  "cache_hits": 27,
+  "complete_h4": 256,
+  "elapsed_seconds": 131.15231763618067,
+  "formal_tuning": false,
+  "host_rss_bytes": 2397736960,
+  "locked_test": false,
+  "peak_vram_bytes": 289944064,
+  "purpose": "single TRAIN max-budget capacity diagnostic",
+  "scoreable_h4": 256,
+  "unique_transitions": 1024,
+  "validation_comparison": false,
+  "verdict": "PASS"
+}

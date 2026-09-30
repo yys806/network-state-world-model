@@ -227,3 +227,4 @@ Status: `PASS_WITH_READINESS_BLOCKERS`; `STEP_6_2B_READINESS=BLOCKED`. CPU sourc
 # 2026-09-28 STEP 6.2A-PATCH diagnostic
 
 CPU-only 单条 Formal Validation deterministic replay 与当前 4.4 规则负例：deadline sidecar/Task 槽位对齐通过；两跳目的节点数组的中间跳服务后 holder/跳序号未推进，故 `STEP_6_2B_READINESS=BLOCKED`。这是机制诊断，不是模型效果或闭环结果。没有 GPU、`locked_test`、baseline、排序或训练。
+2026-09-30：`STEP_6_3D_3080TI_MIGRATION_QUALIFICATION=PASS`，仅为迁移、FP32 GPU 等价、batch 探针和 bounded TRAIN smoke。batch 8/16/32/64 中位分别 10.3593/10.9154/12.4562/12.6699 unique transitions/s；正式选 batch16，因为 CEM K4/B256 在 32/64 没有完整 H4。完整矩阵与 Validation 方法比较未运行，未选搜索方法、未访问 `locked_test`。

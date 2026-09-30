@@ -1,0 +1,10 @@
+{
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "checkpoint_source_git_commit": "6e15ec2da0e3a6e0561dc821d0aaef90696a2387",
+  "checkpoint_source_git_identity_verified": true,
+  "config_identity_verified_by_frozen_loader": true,
+  "data_identity_verified_by_frozen_loader": true,
+  "locked_test": false,
+  "parameter_digest": "f5dc7f523af1e3137f520187bb2b9e7697e835b4374d45bb025460f58c778123",
+  "verdict": "PASS"
+}

@@ -86,3 +86,4 @@ Step 3.1F 最小样本与 History 修正也不属于训练实验：证据位于 
 ## 2026-09-28 STEP 6.2A-PATCH diagnostic only
 
 One exact-aligned non-locked Formal Validation trajectory replay captured current Task deadlines; a deterministic 4.4 transition reproduced the destination-only route-index mismatch. Receipts: `code/artifacts/protocols/pi_jwm_step6_2a_patch_objective_readiness_v1_20260928/`. No performance experiment or baseline was run.
+STEP 6.3D-3080TI-MIGRATION-QUALIFICATION：正式数据迁移、真实 TRAIN CPU/GPU 等价、batch 8/16/32/64 三次稳态吞吐、CUDA formal runner bounded HRS/S-CEM smoke。机器收据见 `code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/`；正式 TRAIN tuning 与 Validation 比较未运行。

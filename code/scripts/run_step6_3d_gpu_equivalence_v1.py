@@ -218,6 +218,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--sizes", default="1,4,8,16,32")
     parser.add_argument("--h4-paths", type=int, default=8)
+    parser.add_argument("--out-dir", type=Path, default=OUT)
     args = parser.parse_args()
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA unavailable")
@@ -230,8 +231,8 @@ def main():
                "service_mode": "expectation", "numeric_tolerance": TOL,
                "fixtures": rows, "locked_test": False,
                "formal_tuning": False, "validation_comparison": False}
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "03_cpu_gpu_equivalence.json").write_text(
+    args.out_dir.mkdir(parents=True, exist_ok=True)
+    (args.out_dir / "03_cpu_gpu_equivalence.json").write_text(
         json.dumps(receipt, sort_keys=True, indent=2, ensure_ascii=False,
                    allow_nan=False) + "\n", encoding="utf-8")
     print(receipt["verdict"])

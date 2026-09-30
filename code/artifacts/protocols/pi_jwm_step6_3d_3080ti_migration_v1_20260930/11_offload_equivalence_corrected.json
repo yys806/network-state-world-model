@@ -1,0 +1,47 @@
+{
+  "batch_size": 32,
+  "budget": 256,
+  "direct_best_objective": [
+    0,
+    0.0,
+    1.0,
+    1.0,
+    0.032777777777777774
+  ],
+  "direct_complete_h4": 64,
+  "direct_scoreable_h4": 64,
+  "earlier_receipt": "07_offload_equivalence_b256_batch32.json",
+  "earlier_receipt_limitation": "in-memory tuple compared directly with JSON list; false BLOCKED, superseded by normalized comparison",
+  "fields_equal": {
+    "B_WM": true,
+    "N_admitted_steps": true,
+    "N_cache_hits": true,
+    "N_complete_sequences": true,
+    "N_dead_end_branches": true,
+    "N_proposed_steps": true,
+    "N_rejected_steps": true,
+    "N_unique_transition_evals": true,
+    "best_fingerprint": true,
+    "best_objective": true,
+    "complete_sequence_count": true,
+    "h4_scoreable_count": true,
+    "h4_unscoreable_count": true,
+    "iteration_rows": true
+  },
+  "locked_test": false,
+  "method": "HRS",
+  "offload_best_objective": [
+    0,
+    0.0,
+    1.0,
+    1.0,
+    0.032777777777777774
+  ],
+  "offload_complete_h4": 64,
+  "offload_peak_vram_bytes": 153341440,
+  "offload_scoreable_h4": 64,
+  "purpose": "same-seed, same-batch direct GPU vs CPU-stored GPU discrete and B_WM equivalence",
+  "sample_id": "formal-v1-sim-2026092345-policy-2026092445::anchor-0028",
+  "seed": 63901,
+  "verdict": "PASS"
+}

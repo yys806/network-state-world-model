@@ -1,4 +1,4 @@
-"""One frozen-checkpoint CPU H4 solve; intended for contract/throughput audit."""
+"""One frozen-checkpoint H4 solve on the selected execution device."""
 from __future__ import annotations
 
 import argparse
@@ -7,10 +7,12 @@ import hashlib
 import json
 import os
 import sys
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from pathlib import Path
 
-os.environ.setdefault("CUDA_VISIBLE_DEVICES", "-1")
+# The reused CPU preflight module defaults to hiding CUDA at import time.
+# Select the visible-device policy here; a CPU solve still uses device="cpu".
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -65,6 +67,24 @@ SOURCE_FILES = (
 
 def source_hashes() -> dict[str, str]:
     return {name: sha(ROOT / name) for name in SOURCE_FILES}
+
+
+def execution_identity(*, device: str, gpu_model: str | None, batch_size: int,
+                       checkpoint_sha256: str, source_sha256: dict[str, str],
+                       bucket_strategy: str = "none") -> dict:
+    if device not in ("cpu", "cuda") or batch_size < 1 or bucket_strategy != "none":
+        raise ValueError("unsupported formal execution configuration")
+    if (device == "cuda") != (gpu_model is not None):
+        raise ValueError("GPU model must match execution device")
+    fields = {"execution_device": device, "gpu_model": gpu_model,
+              "precision": "FP32", "batch_size": batch_size,
+              "state_storage": "cpu_cache_and_prefix" if device == "cuda" else "cpu_native",
+              "checkpoint_sha256": checkpoint_sha256,
+              "source_sha256": source_sha256,
+              "bucket_strategy": bucket_strategy, "locked_test": False}
+    fields["execution_config_id"] = hashlib.sha256(
+        json.dumps(fields, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    return fields
 
 
 def load_selected(sample_id: str, interface: FormalTrainingInterface,
@@ -138,6 +158,46 @@ def _to_device(value, device: torch.device):
     return value
 
 
+def offload_transition_result(result):
+    """Keep exact transition values in host RAM while preserving B_WM cache keys."""
+    cpu = torch.device("cpu")
+    return replace(result,
+        latent=_to_device(result.latent, cpu),
+        state=_to_device(result.state, cpu),
+        graph=_to_device(result.graph, cpu),
+        mobility_control=_to_device(result.mobility_control, cpu),
+        action_tensor=_to_device(result.action_tensor, cpu),
+        action_mapping=_to_device(result.action_mapping, cpu),
+        model_trace=_to_device(result.model_trace, cpu))
+
+
+def offload_prepared_anchor(prepared):
+    cpu = torch.device("cpu")
+    return replace(prepared, latent=_to_device(prepared.latent, cpu),
+        state=_to_device(prepared.state, cpu),
+        graph=_to_device(prepared.graph, cpu),
+        z_pi=_to_device(prepared.z_pi, cpu))
+
+
+def _gpu_search_node(node):
+    cuda = torch.device("cuda")
+    return replace(node, latent=_to_device(node.latent, cuda),
+        state=_to_device(node.state, cuda), graph=_to_device(node.graph, cuda))
+
+
+def gpu_transition_batch_with_cpu_storage(model, context, domain, requests):
+    gpu_requests = [(_gpu_search_node(node), bound) for node, bound in requests]
+    return tuple(offload_transition_result(result) for result in
+                 rollout_one_step_batch(model, context, domain, gpu_requests))
+
+
+def gpu_transition_one_with_cpu_storage(model, context, domain, node, bound):
+    gpu_node = _gpu_search_node(node)
+    return offload_transition_result(rollout_one_step(
+        model, context, domain, gpu_node.latent, gpu_node.state,
+        gpu_node.graph, gpu_node.mobility_control, bound))
+
+
 def load_frozen_runtime(sample_id: str, *, device: str = "cpu"):
     """Prepare one authenticated anchor on one requested device."""
     torch.set_num_threads(1)
@@ -183,8 +243,16 @@ def load_frozen_runtime(sample_id: str, *, device: str = "cpu"):
 
 
 def run(sample_id: str, method: str, seed: int, budget: int,
-        iterations: int, elite_ratio: float | None, batch_size: int = 1) -> dict:
-    model, encoder, prepared, side, catalog, protocol, meta, before = load_frozen_runtime(sample_id)
+        iterations: int, elite_ratio: float | None, batch_size: int = 1,
+        device: str = "cpu") -> dict:
+    model, encoder, prepared, side, catalog, protocol, meta, before = load_frozen_runtime(
+        sample_id, device=device)
+    gpu_model = torch.cuda.get_device_name(0) if device == "cuda" else None
+    identity = execution_identity(device=device, gpu_model=gpu_model,
+        batch_size=batch_size, checkpoint_sha256=EXPECTED_SHA,
+        source_sha256=source_hashes())
+    if device == "cuda":
+        prepared = offload_prepared_anchor(prepared)
     state, context, domain = prepared.state, prepared.context, prepared.domain
     score_residuals = {}
     support_horizons = {}
@@ -210,14 +278,18 @@ def run(sample_id: str, method: str, seed: int, budget: int,
                         score_residuals[key] = score_residuals.get(key, 0) + 1
             return None
         return scored.scores[0]
-    with torch.no_grad():
+    with torch.inference_mode():
         outcome = solve_fixed_budget(method=method, seed=seed, b_wm=budget,
             anchor=prepared, catalog=catalog,
-            transition=lambda node, bound: rollout_one_step(
-                model, context, domain, node.latent, node.state, node.graph,
-                node.mobility_control, bound), score_h4=score_h4,
-            transition_batch=(lambda requests: rollout_one_step_batch(
-                model, context, domain, requests)) if batch_size > 1 else None,
+            transition=(lambda node, bound: gpu_transition_one_with_cpu_storage(
+                model, context, domain, node, bound)) if device == "cuda" else
+                (lambda node, bound: rollout_one_step(model, context, domain,
+                    node.latent, node.state, node.graph, node.mobility_control, bound)),
+            score_h4=score_h4,
+            transition_batch=(lambda requests: gpu_transition_batch_with_cpu_storage(
+                model, context, domain, requests)) if device == "cuda" and batch_size > 1 else
+                (lambda requests: rollout_one_step_batch(
+                    model, context, domain, requests)) if batch_size > 1 else None,
             batch_size=batch_size,
             iterations=iterations, elite_ratio=elite_ratio)
     after = fingerprint({"encoder": encoder.state_dict(), "rssm": model.state_dict()})
@@ -228,9 +300,8 @@ def run(sample_id: str, method: str, seed: int, budget: int,
             "elite_ratio": elite_ratio, "outcome": asdict(outcome),
             "score_residuals": score_residuals,
             "support_horizon_counts": support_horizons,
-            "checkpoint_sha256": EXPECTED_SHA, "parameter_digest": before,
-            "source_sha256": source_hashes(),
-            "sidecar_alignment_passed": True, "gpu": False, "training": False,
+            **identity, "parameter_digest": before,
+            "sidecar_alignment_passed": True, "gpu": device == "cuda", "training": False,
             "closed_loop": False, "locked_test": False}
 
 
@@ -243,10 +314,11 @@ def main() -> None:
     parser.add_argument("--iterations", type=int, default=1)
     parser.add_argument("--elite-ratio", type=float)
     parser.add_argument("--batch-size", type=int, default=1)
+    parser.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
     parser.add_argument("--out", type=Path)
     args = parser.parse_args()
     result = run(args.sample_id, args.method, args.seed, args.budget,
-                 args.iterations, args.elite_ratio, args.batch_size)
+                 args.iterations, args.elite_ratio, args.batch_size, args.device)
     if args.out:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(json.dumps(result, sort_keys=True, indent=2, ensure_ascii=False) + "\n",

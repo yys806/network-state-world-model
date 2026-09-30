@@ -1,0 +1,88 @@
+{
+  "batch_size": 32,
+  "bucket_strategy": "none",
+  "budget": 256,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "closed_loop": false,
+  "elite_ratio": null,
+  "execution_config_id": "3cd8c51ec63c8c1c3ffd75081cb82a785100e030e6e517b04887566a2571527a",
+  "execution_device": "cuda",
+  "gpu": true,
+  "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+  "iterations": 1,
+  "locked_test": false,
+  "method": "HRS",
+  "outcome": {
+    "batch_size": 32,
+    "best_fingerprint": "311331bc60865f780b0a36cd2f50ce1b9d0460f6579171513f0cabeb30b41615",
+    "best_objective": [
+      0,
+      0.0,
+      1.0,
+      1.0,
+      0.032777777777777774
+    ],
+    "budget": 256,
+    "budget_receipt": {
+      "B_WM": 256,
+      "N_admitted_steps": 292,
+      "N_cache_hits": 4,
+      "N_complete_sequences": 64,
+      "N_dead_end_branches": 0,
+      "N_proposed_steps": 292,
+      "N_rejected_steps": 0,
+      "N_unique_transition_evals": 256,
+      "budget_unit": "candidate_one_step_transition",
+      "wall_clock_seconds_diagnostic_only": 35.075860337819904
+    },
+    "complete_sequence_count": 64,
+    "elite_ratio": null,
+    "h4_scoreable_count": 64,
+    "h4_unscoreable_count": 0,
+    "iteration_rows": [
+      {
+        "elite_count": 0,
+        "iteration": 1,
+        "proposal_updated": false,
+        "proposed_sequences": 96,
+        "quota": 256,
+        "retained_count": 0,
+        "retained_from_previous": 0,
+        "unique_h4_scoreable": 64,
+        "unique_transition_evals": 256
+      }
+    ],
+    "iterations": 1,
+    "method": "HRS",
+    "seed": 63901
+  },
+  "parameter_digest": "f5dc7f523af1e3137f520187bb2b9e7697e835b4374d45bb025460f58c778123",
+  "precision": "FP32",
+  "sample_id": "formal-v1-sim-2026092345-policy-2026092445::anchor-0028",
+  "score_residuals": {},
+  "seed": 63901,
+  "sidecar_alignment_passed": true,
+  "source_sha256": {
+    "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/02_train_structural_support_catalog.json": "9545baa8a5b21e4a6da6f072202807d0569f3edd66f9927eb9d2e6571e1bfef1",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/15_train_anchor_manifest_objective_eligible.json": "561886c08dd857a725cf10e076e93171ecbdc6254b2b897da1f1b9b3c240c511",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/19_formal_selected_deadline_sidecars.json": "7c9128f11043af2048ed6939544be5e08800ba81b89cdc00258d691aeba86695",
+    "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py": "8c4b7cf56d8a74d6b9c07caf6ee46e3d35870e77676c7abbd299ed1f28d9455b",
+    "code/scripts/run_step6_3d_one_cpu_solve_v1.py": "e78617b23364d1832660519d1922fdfc807acd94862c2c2b0b8e55bf95bd4218",
+    "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py": "25ca59719023ed8d94b4f864041f7edf56b1b495a6fe86d5417cef94742c8a48",
+    "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad",
+    "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py": "e27e460962f1dcff8dfab8bb33fbc05753a6d8a8358ac78b1cab1c8714c45daa",
+    "code/src/pi_jwm/step6_3b_candidate_support_v1.py": "d15638fb4697c49129ce17489fde4ce5b048c5a92aacd577a2119357105159a1",
+    "code/src/pi_jwm/step6_3c_candidate_domain_v1.py": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409",
+    "code/src/pi_jwm/step6_3c_search_protocol_v1.py": "6c2ec893325a56515e451d3b3594fd05ce810eb4c9cc420f29a7fb863caf719c",
+    "code/src/pi_jwm/step6_3d_anchor_selection_v1.py": "d55c18ee5d5812b66247446f0df85794ab590ef4777896c1c9ab091e32edac7d",
+    "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py": "f602bb5797a776f76f13cd9b9e3038ef202d6c78098f5f8401a76f198807e5c5",
+    "code/src/pi_jwm/step6_3d_method_selection_v1.py": "8606f916e1c8c2590d78c26611be3337ce37274cbb6cbf834dd48b901aef70ba",
+    "code/src/pi_jwm/step6_3d_structured_proposal_v1.py": "8b18e62de3cdd3746ac5a89dd5bafb8d3ae62ce0729ca9156c593f4d6bada040"
+  },
+  "split": "dev_train",
+  "support_horizon_counts": {
+    "4": 64
+  },
+  "training": false
+}

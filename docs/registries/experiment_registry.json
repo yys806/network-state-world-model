@@ -3,6 +3,49 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.3D-3080TI-MIGRATION-QUALIFICATION-20260930",
+      "name": "Formal data migration and RTX 3080 Ti GPU runner qualification",
+      "date": "2026-09-30",
+      "research_question": "Does the frozen 6.3D data and execution contract run correctly and economically on the RTX 3080 Ti?",
+      "method": "sha_verified_migration_cpu_gpu_equivalence_batch_probe_bounded_formal_runner_smoke",
+      "code": "code/scripts/run_step6_3d_3080ti_formal_gpu_smoke_v1.py",
+      "code_version": {
+        "identity_type": "source_sha256_and_checkpoint_sha256",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/15_sha_manifest.json",
+        "manifest_sha256": "43d5dff7b6a1ef281c25368e40877a9434c760c3224e50d8ab7f0945df9e066d",
+        "git_commit": null,
+        "note": "Final Git commit is recorded in the implementation record or Git history after push."
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/05_selected_execution_config.json",
+      "parameters": {
+        "device": "NVIDIA GeForce RTX 3080 Ti",
+        "precision": "FP32",
+        "selected_batch_size": 16,
+        "probe_batch_sizes": [8, 16, 32, 64],
+        "formal_train_tuning_executed": false,
+        "validation_search_executed": false
+      },
+      "protocol": "docs/implementation_records/STEP_06_3D_3080TI_MIGRATION_QUALIFICATION.md",
+      "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
+      "split": ["dev_train_gpu_diagnostic", "dev_validation_static_identity_only"],
+      "seed": null,
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/14_acceptance.json",
+      "metrics": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/offload_probe/04_gpu_batch_throughput.json",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/13_resume_identity_audit.json",
+      "status": "migration_and_gpu_runner_qualification_pass",
+      "conclusion": "Frozen data identity and discrete GPU equivalence passed; batch 16 CUDA runner and resume passed bounded TRAIN smoke.",
+      "summary_zh": "正式数据和冻结模型在 3080 Ti 上身份一致；CUDA 执行及恢复校验通过，正式配置为 FP32 batch16。",
+      "claim_boundary": "migration and execution qualification only; no formal TRAIN tuning, Validation comparison, method selection, locked test or closed loop",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "seed": "Several fixed diagnostic seeds were used; there is no single experiment seed.",
+        "code_version.git_commit": "Not guessed before the final validated commit and push.",
+        "checkpoint": "Checkpoint is local-only and its SHA is verified in acceptance.",
+        "metrics": "Short steady-state throughput is an engineering estimate, not scientific method performance."
+      }
+    },
+    {
       "id": "STEP-6.3D-PREFLIGHT-PATCH-20260930",
       "name": "Objective anchor eligibility and TRAIN H4 scoreability CPU preflight",
       "date": "2026-09-30",

@@ -1,0 +1,26 @@
+{
+  "locked_test": false,
+  "purpose": "TRAIN-only minimum formal budget feasibility, not tuning or comparison",
+  "rows": [
+    {
+      "batch_size": 32,
+      "budget": 256,
+      "complete_h4": 0,
+      "iterations": 4,
+      "method": "MH-CEM",
+      "scoreable_h4": 0,
+      "seed": 63912,
+      "unique": 256
+    },
+    {
+      "batch_size": 64,
+      "budget": 256,
+      "complete_h4": 0,
+      "iterations": 4,
+      "method": "MH-CEM",
+      "scoreable_h4": 0,
+      "seed": 63912,
+      "unique": 256
+    }
+  ]
+}

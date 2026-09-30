@@ -1291,3 +1291,4 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 ## 2026-09-30 STEP 6.3D-GPU-PIPELINE-OPT
 
 真实 TRAIN batch=32 profile：model.one_step 87.58%，scorer/H_sup 6.40%，proposal/domain/bind 3.90%，fingerprint/cache 2.12%。主要瓶颈是冻结模型前向；小型 cache/sync 优化不足以达到 20% 门槛。
+2026-09-30 3080 Ti 发现：4090 的 GPU fixture 副本缺 58 Raw，经研究者授权以本地 SHA 一致副本补齐；完整 Dataset 与 checkpoint 身份匹配。直接 GPU 缓存随 B_WM 增长可 OOM，精确张量移至主机内存后 B_WM1024 容量通过。batch32/64 短探针虽更快，但 CEM K4/B256 无完整 H4；选 batch16。future Return birth 支持限制不变。

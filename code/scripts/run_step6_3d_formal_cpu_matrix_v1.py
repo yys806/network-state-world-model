@@ -1,4 +1,4 @@
-"""Resumable, paired CPU execution of the researcher-frozen STEP 6.3D matrix.
+"""Resumable, paired execution of the researcher-frozen STEP 6.3D matrix.
 
 Each solve is atomically stored with source/checkpoint identity. TRAIN tuning
 finishes and freezes separate CEM configs before Validation may begin.
@@ -18,7 +18,9 @@ sys.path[:0] = [str(ROOT / "code/src"), str(ROOT / "code/scripts")]
 from pi_jwm.step6_3d_method_selection_v1 import (
     cluster_bootstrap_advantage, paired_outcome, select_method, tune_cem_config,
 )
-from run_step6_3d_one_cpu_solve_v1 import EXPECTED_SHA, OUT, run, source_hashes
+from run_step6_3d_one_cpu_solve_v1 import (
+    EXPECTED_SHA, OUT, execution_identity, run, source_hashes,
+)
 
 TRAIN_SEEDS = (6301, 6302, 6303)
 VALIDATION_SEEDS = (6311, 6312, 6313, 6314, 6315)
@@ -46,22 +48,28 @@ def result_path(phase: str, sample_id: str, method: str, seed: int,
     return RESULTS / phase / f"{anchor_key}_{method}_{seed}_b{budget}_{suffix}.json"
 
 
+def validate_resume_result(result: dict, solve_fields: dict,
+                           expected_execution: dict) -> None:
+    for key, value in {**solve_fields, **expected_execution}.items():
+        if key not in result or result[key] != value:
+            raise ValueError(f"resume identity mismatch: {key}")
+
+
 def solve_or_resume(phase: str, sample_id: str, method: str, seed: int,
-                    budget: int, k: int, rho: float | None, expected_source: dict) -> dict:
+                    budget: int, k: int, rho: float | None, expected_source: dict,
+                    execution: dict) -> dict:
     path = result_path(phase, sample_id, method, seed, budget, k, rho)
+    solve_fields = {"sample_id": sample_id, "method": method, "seed": seed,
+                    "budget": budget, "iterations": k, "elite_ratio": rho}
     if path.is_file():
         result = read(path)
-        if (result["sample_id"], result["method"], result["seed"], result["budget"],
-            result["iterations"], result["elite_ratio"], result["checkpoint_sha256"],
-            result["source_sha256"]) != (sample_id, method, seed, budget, k, rho,
-                                          EXPECTED_SHA, expected_source):
-            raise ValueError(f"resume identity mismatch: {path}")
+        validate_resume_result(result, solve_fields, execution)
         return result
     if source_hashes() != expected_source:
         raise ValueError("search source changed during formal matrix")
-    result = run(sample_id, method, seed, budget, k, rho)
-    if result["source_sha256"] != expected_source:
-        raise ValueError("search source changed inside solve")
+    result = run(sample_id, method, seed, budget, k, rho,
+                 batch_size=execution["batch_size"], device=execution["execution_device"])
+    validate_resume_result(result, solve_fields, execution)
     write_atomic(path, result)
     print(f"{phase}: {sample_id} {method} seed={seed} B_WM={budget} K={k} rho={rho}"
           f" H4={result['outcome']['h4_scoreable_count']}", flush=True)
@@ -78,7 +86,7 @@ def selected_ids(name: str, split: str, expected: int) -> tuple[str, ...]:
     return tuple(row["sample_id"] for row in manifest["selected"])
 
 
-def train() -> None:
+def train(execution: dict) -> None:
     anchors = selected_ids("15_train_anchor_manifest_objective_eligible.json", "dev_train", 32)
     expected_source = source_hashes()
     grids = {}
@@ -89,7 +97,7 @@ def train() -> None:
             for sample_id in anchors:
                 for seed in TRAIN_SEEDS:
                     result = solve_or_resume("train", sample_id, method, seed, 512,
-                                             k, rho, expected_source)
+                                             k, rho, expected_source, execution)
                     cases[(sample_id, seed)] = result["outcome"]["best_objective"]
             config_results[(k, rho)] = cases
         grids[method] = tune_cem_config(config_results)
@@ -99,19 +107,17 @@ def train() -> None:
     write_atomic(OUT / "05_train_hyperparameter_tuning_receipt.json", {
         "train_anchor_count": 32, "seeds": TRAIN_SEEDS, "B_WM": 512,
         "grids": grids, "validation_used": False, "source_sha256": expected_source,
-        "checkpoint_sha256": EXPECTED_SHA, "locked_test": False})
+        **execution, "locked_test": False})
     write_atomic(OUT / "06_frozen_selected_cem_configs.json", {
         "configs": frozen, "selected_from": "Formal TRAIN only",
-        "train_anchor_count": 32, "source_sha256": expected_source,
-        "checkpoint_sha256": EXPECTED_SHA, "locked_test": False})
+        "train_anchor_count": 32, **execution, "locked_test": False})
 
 
-def validation() -> None:
+def validation(execution: dict) -> None:
     anchors = selected_ids("16_validation_anchor_manifest_objective_eligible.json", "dev_validation", 64)
     frozen = read(OUT / "06_frozen_selected_cem_configs.json")
     expected_source = source_hashes()
-    if frozen["source_sha256"] != expected_source or frozen["checkpoint_sha256"] != EXPECTED_SHA:
-        raise ValueError("TRAIN selected configs do not match current source/checkpoint")
+    validate_resume_result(frozen, {}, execution)
     configs = {"HRS": (1, None), **{method: (row["K"], row["elite_ratio"])
                                      for method, row in frozen["configs"].items()}}
     all_results = {}
@@ -121,7 +127,8 @@ def validation() -> None:
                 for method in ("HRS", "S-CEM", "MH-CEM"):
                     k, rho = configs[method]
                     all_results[(budget, sample_id, seed, method)] = solve_or_resume(
-                        "validation", sample_id, method, seed, budget, k, rho, expected_source)
+                        "validation", sample_id, method, seed, budget, k, rho,
+                        expected_source, execution)
     summary = {}
     primary_ci = {}
     for budget in BUDGETS:
@@ -174,7 +181,7 @@ def validation() -> None:
         "seeds": VALIDATION_SEEDS, "budgets": BUDGETS,
         "comparison": summary, "primary_budget": 1024,
         "train_configs_frozen": configs, "validation_retuning": False,
-        "source_sha256": expected_source, "checkpoint_sha256": EXPECTED_SHA,
+        **execution,
         "locked_test": False})
     write_atomic(OUT / "08_selected_method.json", {
         "selected_method": winner, "rule": "frozen STEP 6.3D primary-budget bootstrap simplicity rule",
@@ -186,11 +193,29 @@ def validation() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase", choices=("train", "validation"), required=True)
+    parser.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
+    parser.add_argument("--batch-size", type=int, default=1)
+    parser.add_argument("--execution-config", type=Path)
     args = parser.parse_args()
-    if args.phase == "train":
-        train()
+    if args.device == "cuda":
+        import torch
+        if not torch.cuda.is_available() or args.execution_config is None:
+            raise ValueError("CUDA and a frozen execution config are required")
+        gpu_model = torch.cuda.get_device_name(0)
     else:
-        validation()
+        gpu_model = None
+        if args.execution_config is not None:
+            raise ValueError("CPU execution does not use a GPU config")
+    execution = execution_identity(device=args.device, gpu_model=gpu_model,
+        batch_size=args.batch_size, checkpoint_sha256=EXPECTED_SHA,
+        source_sha256=source_hashes())
+    if args.execution_config is not None:
+        frozen = read(args.execution_config)
+        validate_resume_result(frozen, {}, execution)
+    if args.phase == "train":
+        train(execution)
+    else:
+        validation(execution)
 
 
 if __name__ == "__main__":

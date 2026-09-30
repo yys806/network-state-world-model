@@ -1,0 +1,40 @@
+{
+  "locked_test": false,
+  "purpose": "TRAIN-only minimum formal budget diagnostic, not tuning or comparison",
+  "rows": [
+    {
+      "batch_size": 16,
+      "best_objective": [
+        0,
+        0.0,
+        1.0,
+        1.0,
+        0.03777777777777778
+      ],
+      "budget": 256,
+      "complete_h4": 48,
+      "iterations": 3,
+      "method": "S-CEM",
+      "scoreable_h4": 48,
+      "seed": 63911,
+      "unique": 256
+    },
+    {
+      "batch_size": 16,
+      "best_objective": [
+        0,
+        0.0,
+        1.0,
+        1.0,
+        0.005
+      ],
+      "budget": 256,
+      "complete_h4": 66,
+      "iterations": 4,
+      "method": "MH-CEM",
+      "scoreable_h4": 63,
+      "seed": 63912,
+      "unique": 256
+    }
+  ]
+}

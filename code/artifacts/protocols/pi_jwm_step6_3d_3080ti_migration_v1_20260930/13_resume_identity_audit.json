@@ -1,0 +1,21 @@
+{
+  "different_batch_rejected_by_unit_and_real_smoke": true,
+  "different_source_or_config_rejected_by_identity": true,
+  "execution_fields": [
+    "execution_device",
+    "gpu_model",
+    "precision",
+    "batch_size",
+    "state_storage",
+    "checkpoint_sha256",
+    "source_sha256",
+    "bucket_strategy",
+    "locked_test",
+    "execution_config_id"
+  ],
+  "formal_gpu_smoke_resumed_identically": true,
+  "legacy_cpu_partial_rejected_by_missing_execution_fields": true,
+  "locked_test": false,
+  "selected_execution_config_id": "3834e6b2e76c93e66dc92f0b3d0c56ad7e753c07be9ef0b8cc022a2596b7b680",
+  "verdict": "PASS"
+}

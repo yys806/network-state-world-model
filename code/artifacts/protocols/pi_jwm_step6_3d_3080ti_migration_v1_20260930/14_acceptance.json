@@ -1,0 +1,73 @@
+{
+  "batch_rows": [
+    {
+      "batch_size": 8,
+      "max_transitions_per_second": 10.386376519775823,
+      "median_transitions_per_second": 10.359280480269897,
+      "min_transitions_per_second": 10.33268833300696,
+      "peak_vram_bytes": 44430848
+    },
+    {
+      "batch_size": 16,
+      "max_transitions_per_second": 10.939960603085455,
+      "median_transitions_per_second": 10.915380596993911,
+      "min_transitions_per_second": 10.883832251907716,
+      "peak_vram_bytes": 80334848
+    },
+    {
+      "batch_size": 32,
+      "max_transitions_per_second": 12.480564330840581,
+      "median_transitions_per_second": 12.456166443209051,
+      "min_transitions_per_second": 12.209036533099532,
+      "peak_vram_bytes": 153340928
+    },
+    {
+      "batch_size": 64,
+      "max_transitions_per_second": 12.726234310970499,
+      "median_transitions_per_second": 12.669901709299461,
+      "min_transitions_per_second": 12.65905426918687,
+      "peak_vram_bytes": 291087360
+    }
+  ],
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "conditions": {
+    "batch_throughput_probe": true,
+    "bounded_gpu_smoke": true,
+    "checkpoint_data_config_source_identity": true,
+    "cpu_gpu_equivalence": true,
+    "dataset_raw_shard_normalization_identity": true,
+    "formal_batch_config_frozen": true,
+    "formal_dataset_complete": true,
+    "formal_gpu_runner_cuda_closure": true,
+    "formal_train_tuning_not_run": true,
+    "frozen_checkpoint_complete": true,
+    "gpu_exact_model": true,
+    "locked_test_false": true,
+    "resume_config_identity": true,
+    "scientific_semantics_unchanged": true,
+    "selected_32_train_64_validation_loadable": true,
+    "validation_search_not_run": true
+  },
+  "cpu_gpu_equivalence": "PASS",
+  "formal_gpu_runner_closure": "PASS",
+  "formal_train_tuning": false,
+  "full_2113536_estimated_seconds": 193629.16219174862,
+  "future_return_birth": "known fixed-support limitation unchanged",
+  "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+  "h4_search_comparison_readiness": "SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION",
+  "locked_test": false,
+  "migration_verdict": "PASS",
+  "resume_identity": "PASS",
+  "runtime_estimate_limitation": "short steady-state probe; B_WM=1024 host-storage diagnostic was slower and is not a full matrix timing",
+  "selected_batch_size": 16,
+  "selected_transitions_per_second": 10.915380596993911,
+  "source_4090_can_be_stopped": true,
+  "source_4090_stopped_or_released": false,
+  "source_target_formal_dataset_identity": "MATCH",
+  "step": "STEP_6_3D_3080TI_MIGRATION_QUALIFICATION",
+  "throughput_ratio_vs_rtx4090_12_71": 0.8588025646730063,
+  "train_tuning_393216_estimated_seconds": 36024.030175209045,
+  "validation_search": false,
+  "verdict": "PASS",
+  "vram_bytes": 12491292672
+}

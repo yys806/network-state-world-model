@@ -1,0 +1,25 @@
+{
+  "aborted_sftp_attempt": "01_aborted_relay_inventory.json; superseded by direct rsync and complete SHA checks",
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "excluded_local_build_cache": "not referenced by frozen Formal manifest or runner",
+  "formal_dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "local_authorized_raw_count": 60,
+  "local_raw_target_sha_verified": 60,
+  "local_raw_transferred_after_existing_two": 58,
+  "locked_test": false,
+  "source_4090_artifacts_modified": false,
+  "source_4090_dataset": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset",
+  "source_4090_fixture_raw": "/root/autodl-tmp/pi-jwm-step6-3d-gpu/code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw",
+  "source_4090_gpu": "NVIDIA GeForce RTX 4090",
+  "source_4090_instance_stopped_or_released": false,
+  "source_4090_raw_available": 2,
+  "source_4090_regular_files": 266,
+  "source_4090_to_target_same_sha": 266,
+  "target_3080ti_repo": "/root/autodl-tmp/pi-jwm-step6-3d",
+  "tracked_code_and_receipts_source": "GitHub origin/main",
+  "transfer_modes": [
+    "direct rsync -a --partial --append-verify without --delete",
+    "local WSL rsync -a --partial --append-verify without --delete"
+  ],
+  "verdict": "PASS"
+}

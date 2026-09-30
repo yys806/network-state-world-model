@@ -1,0 +1,112 @@
+{
+  "files": [
+    {
+      "bytes": 34169,
+      "path": "00_source_4090_sha256.txt",
+      "sha256": "c254fd5abc8d340871bb957b987f4e71481d799c6d02035c044f2e687189776f"
+    },
+    {
+      "bytes": 6677,
+      "path": "01_aborted_relay_inventory.json",
+      "sha256": "b6132933632239ebc51ba9444840e8e3372c89183d2a759bb1458a951a276348"
+    },
+    {
+      "bytes": 1339,
+      "path": "01_migration_inventory.json",
+      "sha256": "87a8ffa3706eabb396557e9c47b545db5b0fa41471a9ed493db9eb2da69dd90a"
+    },
+    {
+      "bytes": 2995,
+      "path": "02_formal_dataset_identity.json",
+      "sha256": "2883e9d31f9ffa4c9de01081517e9a54a58184079f36ddfdde6f8aaca6c9cecf"
+    },
+    {
+      "bytes": 1405,
+      "path": "02_gpu_environment.json",
+      "sha256": "aeb5957034ebc3ca427b43815d8fc68abe30f093d471c06c0c613068fa5d507e"
+    },
+    {
+      "bytes": 462,
+      "path": "03_checkpoint_identity.json",
+      "sha256": "3d57a1e3ecb22549ad94fc34140bbd9188fc4e86b5d5d3219acbb8b438b499d7"
+    },
+    {
+      "bytes": 16213,
+      "path": "03_cpu_gpu_equivalence.json",
+      "sha256": "d7efccf6559250ae0531470f9023a6c30829d9224d0fedac5a0aed507ab1c614"
+    },
+    {
+      "bytes": 69171,
+      "path": "04_gpu_batch_throughput.json",
+      "sha256": "6fd471c6741e4196327699ffbd2f0b8af6c62bf017915955e720f6e1fb2bb8b6"
+    },
+    {
+      "bytes": 3173,
+      "path": "05_rejected_native_batch64_config.json",
+      "sha256": "18ac9097da93b9c738570cfa4bd6f6b49232448b58aba3e7785c7a001b66c552"
+    },
+    {
+      "bytes": 3417,
+      "path": "05_selected_execution_config.json",
+      "sha256": "f2ee79d85a383863ffac5076431aa758c73e9e882284ca473ff5e3c3d8f1d7ab"
+    },
+    {
+      "bytes": 3643,
+      "path": "06_formal_gpu_runner_smoke.json",
+      "sha256": "afa039bff965cf3f468acad1677bd5c34850c0a5712119caac3b0f8ac61e6ebb"
+    },
+    {
+      "bytes": 4260,
+      "path": "07_diagnostic_hrs_b256_batch32.json",
+      "sha256": "333928adebd05d04b1c9ef8d331bbe8b787896c05baed85566d2fa7b63a63e78"
+    },
+    {
+      "bytes": 779,
+      "path": "07_offload_equivalence_b256_batch32.json",
+      "sha256": "9a10f26cd813facefffb599f07dffc51a831880ae3f21c06fb6e8a01e98ba7da"
+    },
+    {
+      "bytes": 406,
+      "path": "08_offload_max_budget_capacity.json",
+      "sha256": "f0da46d2df9291cf45cbfe51d3cb24134302f9eddfd35e24da70eca9d2cf1cc7"
+    },
+    {
+      "bytes": 738,
+      "path": "09_cem_min_budget_batch16_diagnostic.json",
+      "sha256": "2f5c5349b8b2ce6116f0a0b6df0acfcd02881c5dae321b0372d6de3da79920ef"
+    },
+    {
+      "bytes": 524,
+      "path": "10_cem_large_batch_feasibility_diagnostic.json",
+      "sha256": "e3111d2a8a776d0e42d9b37901e34849bb7dde553ecf3e2cf6f5557e4404b0a1"
+    },
+    {
+      "bytes": 1289,
+      "path": "11_offload_equivalence_corrected.json",
+      "sha256": "14d1fe5181f8b3b8a09ae2078fec204605b824a3e3bfd2f48801f93b142aab91"
+    },
+    {
+      "bytes": 711,
+      "path": "12_migration_sha_verification.json",
+      "sha256": "a58796c255c33cb4b13d3f05e98b2fab06f9ed3f07a9d50005dce8369a4d6301"
+    },
+    {
+      "bytes": 623,
+      "path": "13_resume_identity_audit.json",
+      "sha256": "7826c6a061300b963a01c2d2516035429679887334e33756f1e8f96388700a05"
+    },
+    {
+      "bytes": 2808,
+      "path": "14_acceptance.json",
+      "sha256": "bff5f6d0d382a1fb44505497b5e20c84d18c3b3fe97695834712f6c31409d73e"
+    },
+    {
+      "bytes": 69156,
+      "path": "offload_probe/04_gpu_batch_throughput.json",
+      "sha256": "8fd4dc6a640fa376ea8b83605bd802034f5ccb34f62095c1c2d715cdad8a8130"
+    }
+  ],
+  "formal_train_tuning": false,
+  "locked_test": false,
+  "validation_search": false
+}

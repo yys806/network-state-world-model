@@ -1698,3 +1698,8 @@ This diagnosis is CPU-only and read-only. It does not change the model, tensor c
 RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixtures 鐨?CPU FP32/GPU FP32 batch 1/4/8/16/32/64/128/256 鍗曟鍜?H4 绂绘暎绛変环閫氳繃锛涘悶鍚?batch 8/16/32/64 绋冲畾锛?28/256 OOM銆傛帹鑽?FP32銆乥atch=32銆佹棤 bucketing锛岀害 12.71 transitions/s銆佸嘲鍊?2.03 GiB銆佺害 13.19x CPU batch8銆傛湭杩愯姝ｅ紡 TRAIN tuning銆乂alidation comparison銆佹柟娉曢€夋嫨銆佽缁冦€侀棴鐜垨 locked_test銆傚敮涓€涓嬩竴鍔ㄤ綔锛氱爺绌惰€呭彟琛屾巿鏉冩寮?STEP 6.3D 姣旇緝銆俙n
 
 - [x] STEP 6.3D-GPU-PIPELINE-OPT：完成 GPU profiling；model.one_step 为 87.58% 主瓶颈，未采用优化，保留 FP32 batch=32 no-bucketing；收据与上下文已更新，未启动正式方法比较。
+## 2026-09-30 STEP 6.3D-3080TI-MIGRATION-QUALIFICATION
+
+- [x] 迁移并 SHA 验收 Formal Dataset、60 Raw、best.pt；冻结 3080 Ti batch16。
+- [x] CPU/GPU 等价、CUDA formal runner、resume identity、bounded TRAIN smoke 与接受收据 PASS。
+- [x] 只做工程验收，不运行正式 TRAIN tuning、Validation 比较或 `locked_test`。当前 gate：等待研究者审阅；唯一下一交付为单独授权后的正式 6.3D TRAIN tuning。

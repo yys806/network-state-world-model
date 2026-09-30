@@ -345,3 +345,6 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 ## 2026-09-29 — STEP 6.3B/6.3C-PATCH 恢复审计（未验收）
 
 - 从未提交工作区复核 Comm Task 选择与 TRAIN H1 自重放，发现候选池边界与冻结合同冲突，6.3B 定向测试 3/11 失败；详情见 `docs/implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md`。未提交或推送该补丁，未运行 GPU、训练或 `locked_test`。
+## 2026-09-30：STEP 6.3D-3080TI-MIGRATION-QUALIFICATION
+
+完整迁移并核对 Formal 数据/冻结 checkpoint；新增 CUDA FP32 正式矩阵执行、主机搜索状态存储和严格 resume/config 身份，冻结 batch16；CPU path 与搜索语义保持。bounded TRAIN smoke PASS；正式调参/Validation 比较/locked_test 未运行。

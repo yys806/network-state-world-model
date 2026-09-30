@@ -55,3 +55,4 @@
 ## 成本与边界
 
 正式训练之前先完成新合同下的 schema/tensor、单测、tiny forward/backward、finite gradient、tiny-data overfit、短 smoke、动作敏感性、rollout sanity 和 learning signal 验证，再向研究者提出训练请求。记录目录不是自动训练队列。`locked_test` 保持封存。
+**当前 STEP 6.3D-3080TI-MIGRATION-QUALIFICATION：** [迁移与 CUDA runner 验收](STEP_06_3D_3080TI_MIGRATION_QUALIFICATION.md) 记录正式数据/冻结 checkpoint SHA、CPU/GPU 等价、batch16 选择、formal runner/resume 和 bounded TRAIN smoke；正式调参/Validation 比较尚未运行。

@@ -143,3 +143,4 @@ Step 2.4 已冻结 `Decision -> Action -> Execution -> Outcome -> next Decision`
 ## Planner objective causal side-state (2026-09-28)
 
 The Planner-only Task/Route side-state is separate from the trained Encoder/RSSM. It carries a decision-aligned deadline and known Return/control metadata. It detects route divergence; it does not modify predicted tensors. Current 4.2C-C route arrays omit the holder but 4.4 cross-hop indexing assumes it, so multi-hop objective readiness is blocked pending an authorized repair.
+2026-09-30 执行更新：正式 6.3D matrix runner 可用 RTX 3080 Ti CUDA FP32，复用原一步推演、预算计数与固定预算求解；搜索状态移至主机内存以控制显存，CPU path 保留。冻结 batch16，resume 严格绑定执行身份。科研方法定义未改变。

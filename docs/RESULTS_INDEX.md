@@ -100,3 +100,4 @@ STEP 5.5 只有 Dataset/CPU interface 验收结果，没有预测性能结果：
 ## 2026-09-28 STEP 6.2A-PATCH
 
 No new performance result. The only accepted result is a readiness diagnostic: deadline sidecar alignment passes for one non-locked validation anchor, and 6.2B remains blocked by a reproduced route transition mismatch. Primary future throughput is E2E useful delivery; network service throughput is diagnostic. See the PATCH machine readiness receipt and implementation record.
+2026-09-30 3080 Ti 迁移/执行资格：正式 Dataset 与冻结 checkpoint SHA 一致，CPU/GPU 离散等价 PASS；batch 8/16/32/64 短稳态中位 10.3593/10.9154/12.4562/12.6699 tps，基于最小预算 CEM 完整 H4 约束冻结 batch16。bounded TRAIN smoke PASS；不是正式搜索方法比较或科学性能结论。

@@ -1,0 +1,149 @@
+{
+  "complete": false,
+  "files": [
+    {
+      "bytes": 1681,
+      "relative_path": "README_SHARE.md",
+      "sha256": "04f4c29608648f72fa8e2af4ff0c23a3ae5a8d32a9bc7d36b0cb576c4b264a60",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/README_SHARE.md",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 4540,
+      "relative_path": "action_coverage_audit.json",
+      "sha256": "950f50c94943c8bf9a94807e1bc8ac62321baf3c7266c00e3c4bc405fe330612",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/action_coverage_audit.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 1077,
+      "relative_path": "behavior_policy_determinism_receipt.json",
+      "sha256": "77358c8478222e3c33acb5af2ccee7c8a073bd99007768a8c6b68a47d7e560ef",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/behavior_policy_determinism_receipt.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 20649,
+      "relative_path": "collection_summary.json",
+      "sha256": "f1662fa145e3dbb465b832f216f452ef61384a7be74b09230b1860595cc4b2d4",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/collection_summary.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 5663,
+      "relative_path": "dataset_acceptance_receipt.json",
+      "sha256": "b894bdabfbbcd50d45f2bb75b414f62e3c479d7697124948608b1d402b1e6099",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/dataset_acceptance_receipt.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 730,
+      "relative_path": "deterministic_baseline.json",
+      "sha256": "5bc3805fb1bc83b1b6cb5eae74f9eb6e2d9e1a9dfe00fb96b3ba9b1c8e4a2359",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/deterministic_baseline.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 1213,
+      "relative_path": "deterministic_rebuild_receipt.json",
+      "sha256": "952f10358c904286cf0c4555f570339851178931d4be0fac7543cfca57ed1dbf",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/deterministic_rebuild_receipt.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 2639,
+      "relative_path": "formal_dataset_manifest.json",
+      "sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/formal_dataset_manifest.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 4564,
+      "relative_path": "formal_interface_cpu_smoke_receipt.json",
+      "sha256": "a63a41f289166d2f2649f546713660544db39850d1b737113f22d3768e295cb6",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/formal_interface_cpu_smoke_receipt.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 4564,
+      "relative_path": "formal_interface_cpu_smoke_receipt_test.json",
+      "sha256": "a63a41f289166d2f2649f546713660544db39850d1b737113f22d3768e295cb6",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/formal_interface_cpu_smoke_receipt_test.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 68389,
+      "relative_path": "future_action_reference_audit.json",
+      "sha256": "61f4e197775416172bd264fd25bb3cf5878bb874d8336987bb79be4b2663c0dc",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/future_action_reference_audit.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 96258,
+      "relative_path": "package_shards.json",
+      "sha256": "a3a6c03d07e6ca41fb01b519967e3bc64efa009f8d04f0b2f886ff3d4ec607b1",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/package_shards.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 51835,
+      "relative_path": "raw_trajectory_provenance.json",
+      "sha256": "6cf5d91a7f2234339b542ecfaf342b7fc5e51de77945e57b9bae76d091925d6d",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/raw_trajectory_provenance.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 23106,
+      "relative_path": "seed_lineage.json",
+      "sha256": "6067bcf5a48d27a410640497c4e51e64685610368c302848950a82858ee9837b",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/seed_lineage.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 3371,
+      "relative_path": "split_manifest.json",
+      "sha256": "443bf9517e07013c8711483a69d6af5fbc532e4a6827d7c5f3879c107d4861dd",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/split_manifest.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 26981,
+      "relative_path": "runtime/graph.npz",
+      "sha256": "95d23695e6901c02aa8768414157bed08c5456a7ec8c62d0045927dd631bfe1d",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/runtime/graph.npz",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 13012,
+      "relative_path": "runtime/normalization.json",
+      "sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/runtime/normalization.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 2924281,
+      "relative_path": "runtime/samples.json",
+      "sha256": "d062328bd96b73dfa7c48f0ebe087dcc729b45b456f2ab9cb191324d68aac98e",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/runtime/samples.json",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 107863,
+      "relative_path": "runtime/target.npz",
+      "sha256": "99355ae9218e495c0164b73ab4b9560a4f0000c6c1042e468974d8c18388fa47",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/runtime/target.npz",
+      "transfer_status": "copied"
+    },
+    {
+      "bytes": 75917,
+      "relative_path": "runtime/tensor.npz",
+      "sha256": "13918fc1f99b51e16cee309a8d4d5907af8b7e62a0b9a186270bf4b43fd5b1b5",
+      "source_path": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset/runtime/tensor.npz",
+      "transfer_status": "copied"
+    }
+  ],
+  "source": "RTX 4090",
+  "source_dataset": "/root/autodl-tmp/pi_jwm_step5_6a_a8c5dfa/work/dataset",
+  "target": "RTX 3080 Ti",
+  "target_dataset": "/root/autodl-tmp/pi-jwm-step6-3d/code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1"
+}

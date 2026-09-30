@@ -161,3 +161,4 @@ These files audit and record semantics; there is no candidate scorer or ranking 
 # 2026-09-28 STEP 6.2A-PATCH modules
 
 `code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py`：Planner-only Task/Route 元数据、当前对齐、时间推进、support 边界和路线分歧检测；无 objective scorer。`step6_2a_throughput_metric_v1.py`：未来 PI-JWM/Baseline 共用真实 Flow/Outcome 吞吐提取器。`code/scripts/replay_step6_2a_patch_deadline_sidecar_v1.py`：单条非锁定 Formal Validation 因果重放；`build_step6_2a_patch_readiness_v1.py`：机器回执与就绪矩阵。4.2C-C 路线数组与 4.4 跨跳规则冲突详见 PATCH 实施记录。
+2026-09-30：`code/scripts/run_step6_3d_one_cpu_solve_v1.py` 保留 CPU 路径并接入 CUDA FP32、主机搜索状态存储和 execution identity；`run_step6_3d_formal_cpu_matrix_v1.py` 接收冻结 GPU config 并严格校验 resume。迁移/身份、吞吐、小规模 smoke、接受收据分别见 `verify_step6_3d_3080ti_migration_v1.py`、`run_step6_3d_gpu_throughput_v1.py`、`run_step6_3d_3080ti_formal_gpu_smoke_v1.py`、`build_step6_3d_3080ti_acceptance_v1.py`。

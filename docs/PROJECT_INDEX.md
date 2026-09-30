@@ -161,3 +161,4 @@ P6 逐候选推演、选首动作、执行后滚动重规划
 ## Current Planner objective PATCH (2026-09-28)
 
 STEP 6.2A-PATCH reconciles the current 4.2C Flow Ledger and adds a Planner-only causal side-state. STEP 6.2B remains BLOCKED by the 4.2C-C/4.4 route-index mismatch. Start with `docs/implementation_records/STEP_06_2A_PATCH_PLANNER_OBJECTIVE_READINESS_RECONCILIATION.md`, then `code/artifacts/protocols/pi_jwm_step6_2a_patch_objective_readiness_v1_20260928/12_step6_2b_readiness_recomputed.json`.
+2026-09-30 STEP 6.3D 3080 Ti 迁移与执行资格：入口为 `docs/implementation_records/STEP_06_3D_3080TI_MIGRATION_QUALIFICATION.md`；机器证据在 `code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/`。正式调参/Validation 比较未运行。

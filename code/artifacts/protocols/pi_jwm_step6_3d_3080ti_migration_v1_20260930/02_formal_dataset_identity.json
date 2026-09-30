@@ -1,0 +1,88 @@
+{
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "deadline_sidecar_mismatches": 0,
+  "locked_test": false,
+  "normalization_source_split": "dev_train",
+  "package_hashes": {
+    "all_present_and_matching": true,
+    "graph": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "8bf3be889332cdb92e99c5881f27d575db7074d0280bdf1d392bbf373101ddb3"
+    },
+    "normalization": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "8208dff6c97059a9ac9a8bac5c5e4a4928d1db6f0ab7bdbc2500fc5b92140b28"
+    },
+    "samples": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "21e4f2ea527a8e0c658b30029e1c4a37633c26216222d06a5fb2d4edf2cbd0cb"
+    },
+    "target": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "e37a0eaf02e6b08dddcc4af6f4bde2aeb9dea64e64352640d3919440038dad22"
+    },
+    "tensor": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "fb7eb8b25581d0e0b23e62676b6ac02e9bcbdcded6bf83d9db904c83b3967b0f"
+    }
+  },
+  "raw_count": 60,
+  "raw_sha_mismatches": 0,
+  "runtime_package_hashes": {
+    "all_present_and_matching": true,
+    "graph": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "95d23695e6901c02aa8768414157bed08c5456a7ec8c62d0045927dd631bfe1d"
+    },
+    "normalization": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5"
+    },
+    "samples": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "d062328bd96b73dfa7c48f0ebe087dcc729b45b456f2ab9cb191324d68aac98e"
+    },
+    "target": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "99355ae9218e495c0164b73ab4b9560a4f0000c6c1042e468974d8c18388fa47"
+    },
+    "tensor": {
+      "exists": true,
+      "expected_sha256_declared": true,
+      "hash_matches": true,
+      "sha256": "13918fc1f99b51e16cee309a8d4d5907af8b7e62a0b9a186270bf4b43fd5b1b5"
+    }
+  },
+  "selected_static_empty_domain": 0,
+  "selected_train_anchors_loaded": 32,
+  "selected_validation_anchors_loaded": 64,
+  "selected_zero_cohort": 0,
+  "source_4090_file_count": 266,
+  "source_4090_sha_list_sha256": "c254fd5abc8d340871bb957b987f4e71481d799c6d02035c044f2e687189776f",
+  "source_target_file_sha_mismatches": 0,
+  "structural_catalog_dataset_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "target_git_head": "fc719dec323a8b74c59c14c7a6cdbe4274ac2ce1",
+  "train_trajectories": 48,
+  "train_windows": 4416,
+  "validation_trajectories": 12,
+  "validation_windows": 1104,
+  "verdict": "PASS"
+}

@@ -1,0 +1,16 @@
+{
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "dataset_manifest_sha256": "6392a08b31340812463be9e3f5f78891d39933c54d50c71cca1984b3bf9448bc",
+  "local_raw_provenance_sha_match": "60/60",
+  "locked_test": false,
+  "normalization_fit_split": "dev_train",
+  "normalization_future_target_in_fit": false,
+  "normalization_train_trajectories": 48,
+  "normalization_validation_excluded": 12,
+  "package_hashes_match": true,
+  "runtime_hashes_match": true,
+  "source_4090_sha_list_sha256": "c254fd5abc8d340871bb957b987f4e71481d799c6d02035c044f2e687189776f",
+  "source_4090_target_sha_match": "266/266",
+  "target_raw_provenance_sha_match": "60/60",
+  "verdict": "PASS"
+}

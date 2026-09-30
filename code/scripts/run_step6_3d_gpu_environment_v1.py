@@ -1,6 +1,8 @@
 """Record the CUDA host and frozen checkpoint identity without training."""
 from __future__ import annotations
 
+import argparse
+
 import hashlib
 import json
 import subprocess
@@ -25,6 +27,9 @@ def sha(path):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out-dir", type=Path, default=OUT)
+    args = parser.parse_args()
     if not torch.cuda.is_available():
         raise RuntimeError("STEP_6_3D_GPU_EXECUTION=BLOCKED_GPU_UNAVAILABLE")
     index = 0
@@ -55,8 +60,8 @@ def main():
         "source_sha256": {name: sha(ROOT/name) for name in source_files},
         "training": False, "formal_method_comparison": False,
         "locked_test": False}
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "02_gpu_environment.json").write_text(json.dumps(result,
+    args.out_dir.mkdir(parents=True, exist_ok=True)
+    (args.out_dir / "02_gpu_environment.json").write_text(json.dumps(result,
         indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({key: result[key] for key in
         ("name", "vram_bytes", "torch_version", "checkpoint_sha256")}))
