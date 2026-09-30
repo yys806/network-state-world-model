@@ -31,4 +31,4 @@
 
 ## Git and Next Step
 
-本 Step 的源码、small receipts、上下文、索引与本记录同一提交推送 `origin/main`；提交 SHA 见 Git 历史。`SOURCE_4090_CAN_BE_STOPPED=true` 只表示本 Step 证据允许研究者决定停机，未执行云平台停机/释放/删盘。唯一下一动作：研究者审阅本 Step；正式 STEP 6.3D TRAIN tuning 需后续单独指令。
+源码、small receipts、上下文、索引和本记录已推送 `origin/main`。实现提交：`c344eb12bb0be953b3e434c7c3783a49ac0d242d` (`feat(step6.3d): qualify 3080 Ti formal GPU runner`)。`SOURCE_4090_CAN_BE_STOPPED=true` 只表示本 Step 证据允许研究者决定停机，未执行云平台停机/释放/删盘。唯一下一动作：研究者审阅本 Step；正式 STEP 6.3D TRAIN tuning 需后续单独指令。
