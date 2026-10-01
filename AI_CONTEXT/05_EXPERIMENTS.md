@@ -1,5 +1,9 @@
 # 当前与历史实验
 
+## 2026-10-01 STEP 6.3D 正式 TRAIN 选参验收
+
+3080 Ti、FP32 batch16，32 锚点×3 seeds×两种 CEM×四组参数 = 768/768 正式 TRAIN solves，名义/实际独特一步转移均为 393,216。各组 48/96 cases 找到可评分 H4；原始结果独立重算后 S-CEM/MH-CEM 均选 `(K=4,rho=0.1)`。总计 90,263 条完整 H4 路径，31,667 个去重后可评分候选和 57,797 次不可评分完成尝试；16 个锚点在所有配置中均不可评分。正式耗时 21.38 小时。逐组、逐锚点/种子和 SHA 归档见 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/train_tuning_diagnostic_summary.json`、`train_tuning_closure_acceptance.json`、`train_tuning_local_archive_manifest.json`。这些仅是 TRAIN 选参观察；Validation=0，HRS 对照/方法选择/闭环/`locked_test` 均未运行。
+
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH（TRAIN 诊断）
 
 修正后 TRAIN 32 的 HRS seed6391/B_WM64 固定诊断共 2048 次 unique World Model 一步转移；16/32 锚点有至少一个 H4 可评分候选，16/32 没有。406 条完整 H4 中 131 可评分、275 不可评分；275 条均有 future Return birth 支持边界。240 个语法死路分支。Validation 64 仅修正静态 Objective 资格及 deadline sidecar，不做方法搜索。CPU batch 1/4/8/16 一步与 H4 等价，吞吐分别约 0.87/0.89/0.96/0.92 unique transitions/s。详见 20–25 机器收据；这些是前置诊断，不是 HRS/CEM 对比或性能证据。

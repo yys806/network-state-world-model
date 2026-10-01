@@ -1,5 +1,9 @@
 # AI_CONTEXT 重要变更
 
+## 2026-10-01 STEP 6.3D FORMAL TRAIN TUNING CLOSURE
+
+只读下载并 SHA 验证 RTX 3080 Ti 的 768 raw TRAIN solves、日志和两份选参收据；独立重算两种 CEM 的四组排名，生成逐组/逐锚点诊断、接受收据和本机 ZIP/tar 备份。正式状态为 TRAIN 选参 PASS、两种配置 `(4,0.1)`，Validation/方法选择未开始，future Return birth 边界及 `locked_test=false` 保持。同步 00/05/07/08；01 研究背景、02/03/04 架构/数据流/模块实现、06 研究者决定无变化。
+
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH
 
 修正 3/5 个零 cohort TRAIN/Validation 锚点并精确重放 8 个 deadline sidecar；新增 TRAIN-only 32×64 H4 诊断与 CPU batch 1/4/8/16 一步/四步等价、吞吐及 SHA 收据。Patch PASS，H4 readiness 待研究者基于 16/16 分布判断，正式搜索比较未启动。更新 00/02/03/04/05/07/08；研究决定 06 未改。

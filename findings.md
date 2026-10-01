@@ -1,5 +1,9 @@
 # Findings
 
+## 2026-10-01 STEP 6.3D FORMAL TRAIN TUNING CLOSURE
+
+八组配置各 48/96 cases 成功找到可评分 H4；16/32 锚点在 3 seeds、两种方法和四组参数下均无可评分结果。57,797 次不可评分 H4 完成尝试均记录 future Return birth 支持边界；37,940 个 Grammar dead end、scorer 异常 0、静态空域/零 cohort 0。完整 H4 90,263、去重后可评分候选 31,667；因去重，完整数不等于可评分与不可评分两列简单相加。TRAIN 选参规则分别选 S-CEM/MH-CEM `(K=4,rho=0.1)`；这不证明两方法相等或相对 HRS 优劣。Validation 1,720,320 名义转移按 TRAIN 实测有效速度粗估 93.54 小时，B_WM1024 可能更慢；仅作资源规划。
+
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH
 
 - 原 96 个方法比较锚点中 8 个 `cohort_count=0` 是冻结 6.2B scorer 的必然不可评分输入。静态同 split/四分位/Comp stratum/hash 替换后，32/64 全部非空且 cohort>0；样本选择不读取 rollout/search 结果。

@@ -1,3 +1,7 @@
+## 2026-10-01 STEP 6.3D FORMAL TRAIN TUNING CLOSURE（当前）
+
+`STEP_6_3D_FORMAL_TRAIN_TUNING_CLOSURE=PASS`：RTX 3080 Ti 上正式 TRAIN-only 搜索调参 768/768 份原始结果已逐份验身份、SHA 归档并独立重算选参。名义和实际 World Model 一步转移均为 393,216；S-CEM、MH-CEM 分别冻结 `(K=4,rho=0.1)`。所有八组参数各 48/96 次找到可评分 H4；16/32 锚点始终未找到。future Return birth 固定支持限制保留，`H4_SEARCH_COMPARISON_READINESS=SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`。这只是 TRAIN 选参，不是方法优劣或系统性能结论。`VALIDATION_COMPARISON=NOT_STARTED`、`SEARCH_METHOD=NOT_SELECTED`、`locked_test=false`。原始结果、日志、收据和本机归档 SHA 见 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/`；说明见 `docs/implementation_records/STEP_06_3D_FORMAL_TRAIN_TUNING_CLOSURE.md`。下方段落均为较早快照。
+
 ## 2026-09-30 STEP 6.3D-GPU-EXECUTION 当前状态
 
 `STEP_6_3D_GPU_EXECUTION=PASS`：RTX 4090 24GB 上冻结 checkpoint 的 FP32 CPU/GPU 单步与 H4 离散等价通过，测试 batch 1/4/8/16/32/64/128/256；batch 128/256 正式吞吐探测 OOM。推荐不分桶 batch=32，稳定中位数约 12.71 unique transitions/s、峰值约 2.03 GiB，约 13.19x CPU batch8；完整 2,113,536 transitions 理论约 46.2 小时。未运行正式 TRAIN tuning、Validation comparison、方法选择、训练、闭环或 `locked_test`。收据见 `code/artifacts/protocols/pi_jwm_step6_3d_gpu_execution_v1_20260930/`。

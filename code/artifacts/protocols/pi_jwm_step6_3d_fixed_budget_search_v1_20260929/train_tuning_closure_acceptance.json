@@ -1,0 +1,39 @@
+{
+  "actual_unique_transition_evals": 393216,
+  "backup_inventory_sha256": "deecd4a13d9d44db189cb185862a18611b3d5a92eadb345ebaefdd0c49428957",
+  "cases": 768,
+  "checks": {
+    "ai_context_synced": true,
+    "archive_integrity_pass": true,
+    "backup_inventory_all_sha_match": true,
+    "formal_runtime_recorded": true,
+    "identity_grid_exact": true,
+    "locked_test_false": true,
+    "no_mixed_execution_source_checkpoint": true,
+    "raw_768_complete": true,
+    "return_boundary_separate": true,
+    "selection_rebuilt_from_raw": true,
+    "train_diagnostic_complete": true,
+    "validation_not_started": true
+  },
+  "diagnostic_sha256": "118a4854cd8f3fe3814f4f4d635312acca80578bcb8dd0c35be1ccc5a1360af9",
+  "frozen_configs_sha256": "eb7bef040554a9aee4ede23bf04f7f131f193247ebdca48687c85c9d9a147cc6",
+  "locked_test": false,
+  "nominal_budget": 393216,
+  "remote_stream_tar_sha256": "52bb0a87e2fda2a20f15ad195353d85df54b95e2d3e45fff99389b79b76cd553",
+  "search_method": "NOT_SELECTED",
+  "selected_configs": {
+    "MH-CEM": {
+      "K": 4,
+      "elite_ratio": 0.1
+    },
+    "S-CEM": {
+      "K": 4,
+      "elite_ratio": 0.1
+    }
+  },
+  "step": "STEP_6_3D_FORMAL_TRAIN_TUNING_CLOSURE",
+  "train_receipt_sha256": "268c09d33e7ab4e0d8b77458fe4e14f71efe1d4d822fffc7cd951c4158f3af31",
+  "validation_comparison": "NOT_STARTED",
+  "verdict": "PASS"
+}

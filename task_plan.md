@@ -1,3 +1,11 @@
+## 2026-10-01 STEP 6.3D FORMAL TRAIN TUNING CLOSURE
+
+- [x] `git fetch`，确认 `HEAD=origin/main=5b48ad665489e3891250b4b5439e5ef3759addbd`、tracked clean，保留原未跟踪文件。
+- [x] 只读验收远端正式 TRAIN 768/768，核对本地/远端 16 个 source SHA、执行配置、checkpoint 与全部结果身份；下载并逐文件 SHA 验证 raw/log/05/06。
+- [x] 从 raw 结果独立重建 TRAIN 选参、逐组/逐锚点诊断、Return-birth/Grammar 残余、正式 wall-clock；制作本机 ZIP/tar、inventory/manifest/acceptance。
+- [x] 完成 Context/authority/index/registry、focused 15/15、compileall、knowledge-index write/check 和 diff 验证；仅 commit/push 待最后收口。
+- 当前 gate：TRAIN-only closure PASS（待最终文档与 Git 收口）；Validation 0、方法未选、`locked_test=false`。唯一下一交付为本 Step 验证/Git 收口；后续 Validation 需研究者另行指令。
+
 ## 2026-09-30 STEP 6.3D-GPU-EXECUTION — 24GB GPU batch throughput closure
 
 - [x] 核实 `HEAD=origin/main=1391b0f07339d849f1e31e08a9ec9db30effe11c`，保留原未跟踪文件。研究者将 H4 readiness 冻结为 `SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`，本 Step 不启动正式矩阵。

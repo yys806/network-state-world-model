@@ -1,5 +1,7 @@
 # PI-JWM 当前科研状态
 
+> 2026-10-01 STEP 6.3D FORMAL TRAIN TUNING CLOSURE：768/768 TRAIN 搜索调参已在 RTX 3080 Ti 完成并逐项验收、SHA 归档；S-CEM/MH-CEM 各冻结 `(K=4,rho=0.1)`。每组 48/96 cases 有可评分 H4，16/32 锚点无可评分结果，future Return birth 固定支持限制保持。`VALIDATION_COMPARISON=NOT_STARTED`、`SEARCH_METHOD=NOT_SELECTED`、`locked_test=false`。正式 TRAIN 耗时 21.38 小时；方法效果必须等后续 Validation，不从 TRAIN 选参推出。
+
 > 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH：`PASS` 只验收修正后 TRAIN 32 / Validation 64 锚点的静态 Objective 资格和 CPU 批量执行路径。TRAIN-only 固定 HRS seed6391/B_WM64 的 32-anchor 诊断中 16 个锚点找到可评分 H4、16 个没有；275 条不可评分完整 H4 均触发 future Return birth 支持边界。`H4_SEARCH_COMPARISON_READINESS=SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`，正式 TRAIN tuning/Validation 比较未运行，方法未选。证据见 20–25 收据和 Patch 实施记录；无 GPU、`locked_test`、训练或闭环。
 
 > 2026-09-29 STEP 6.3B/6.3C-PATCH：研究者已冻结 Comm 子集选择和 TRAIN 通信结构条件数量支持；原“所有 eligible Task 都有行”的旧限制不再适用。4416 TRAIN H1 投影中任务数量拒绝为 0，728 条依赖同决策 offload Route 的历史 Comm 行已排除并逐条记录；其他 Comp/联合结构残余没有放宽。静态域 TRAIN 14/4416、Validation 6/1104 为空。证据只涉及 CPU 候选准入与机制；优化器、排名、baseline、闭环、GPU 和 `locked_test` 均未进入。

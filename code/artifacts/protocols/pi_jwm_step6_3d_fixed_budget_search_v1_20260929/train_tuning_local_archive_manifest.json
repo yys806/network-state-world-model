@@ -1,0 +1,14 @@
+{
+  "acceptance_sha256": "d2d7b88f2200490774f785a9e4e11345413799713e6e01115316462f63bd65e2",
+  "archive_integrity_pass": true,
+  "archive_member_count": 774,
+  "archive_path": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/train_tuning_local_archive.zip",
+  "archive_sha256": "13a610b1a3f33dd66d2f47465fc34dc117b3d97e8a679fa2eb86c11cd799bded",
+  "archive_size_bytes": 1754464,
+  "backup_inventory_sha256": "deecd4a13d9d44db189cb185862a18611b3d5a92eadb345ebaefdd0c49428957",
+  "diagnostic_sha256": "118a4854cd8f3fe3814f4f4d635312acca80578bcb8dd0c35be1ccc5a1360af9",
+  "local_persistent_copy": true,
+  "raw_results_in_git": false,
+  "remote_originals_preserved": true,
+  "remote_stream_tar_sha256": "52bb0a87e2fda2a20f15ad195353d85df54b95e2d3e45fff99389b79b76cd553"
+}

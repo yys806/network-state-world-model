@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-10-01 STEP 6.3D FORMAL TRAIN TUNING CLOSURE
+
+本地/远端冻结 source SHA 16/16 一致；只读传回 768 raw JSON、正式日志、05/06 收据，771/771 SHA/size 一致。独立重算两方法四组 TRAIN ranking 与冻结参数完全相同；名义/实际 unique transitions 393,216/393,216。逐组/逐锚点诊断、接受收据、ZIP/tar 与 SHA manifest 已生成；正式运行 2026-09-30 18:30:26 至 2026-10-01 15:53:14 CST，21.38 小时。Validation=0，方法未选，`locked_test=false`。待文档/索引/回归/Git 最终收口。
+
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH
 
 - 从 `34f38183c21227f9a8e95d4f13a9513a4cf88506` 起核验，保留旧清单。按原哈希/分层静态规则替换 TRAIN 3、Validation 5 个零 cohort 锚点；8/8 replacement deadline sidecar 精确对齐，修正后 TRAIN 32 / Validation 64 均有非空候选域和正 cohort。

@@ -1,5 +1,7 @@
 # PI-JWM 实验索引
 
+2026-10-01 STEP 6.3D 正式 TRAIN 调参：RTX 3080 Ti、冻结 FP32 batch16、32 TRAIN anchors×3 seeds×S-CEM/MH-CEM×4 configs，共 768/768 cases；名义/实际 unique transitions 各 393,216。原始求解与日志保存于本机 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/solve_results/train/`，同目录有逐组/逐锚点诊断、选参/验收收据及 ZIP/SHA manifest。两方法各选 `(K=4,rho=0.1)`；Validation 0、方法未选、`locked_test=false`。见 `docs/implementation_records/STEP_06_3D_FORMAL_TRAIN_TUNING_CLOSURE.md`。这是 TRAIN 选参，不是方法效果比较。
+
 STEP 6.3D-PREFLIGHT-PATCH CPU 前置诊断：保留历史清单，静态替换 3 TRAIN / 5 Validation 零 cohort 样本并精确重放新 deadline sidecar；32 TRAIN 上固定 HRS seed6391/B_WM64 完成 2048 次 unique 一步转移的 H4 支持诊断。另在真实 TRAIN 样本检查 batch 1/4/8/16 的一步/H4 等价与 64 转移吞吐。机器收据 15–25 位于 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/`，解释见独立 Patch 实施记录。没有 Validation 搜索或三方法正式比较。
 
 STEP 6.3B/6.3C-PATCH CPU 合同与投影审计：Formal TRAIN 4416 个 H1 锚点逐项记录 raw historical action、Planner-v1 projected action 和排除行；TRAIN/Validation 静态候选域分别审计 4416/1104 个锚点，Validation 只作描述。机器入口 `code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/`，解释见 `docs/implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md`。它不是候选排序或系统性能实验。

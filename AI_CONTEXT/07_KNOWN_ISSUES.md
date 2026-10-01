@@ -1,5 +1,9 @@
 # 已知问题与冲突
 
+## 2026-10-01 STEP 6.3D TRAIN 后仍存在的边界
+
+正式 TRAIN 八组配置均仅 48/96 cases 有可评分 H4。16/32 锚点、48/96 锚点/种子组合在所有配置中都未找到可评分路径；57,797 次不可评分 H4 完成尝试均记录 future Return birth 支持边界事件。另有 37,940 次 Grammar dead end；scorer 异常为零。重复配置/种子的边界计数不能当独立 Task birth。静态零 cohort 和空域残余为零。保持 `SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`，不放宽 H4、删除困难锚点或推断两种方法相等。Validation 比较和方法选定尚未开始；正式 TRAIN wall-clock 21.38 小时，后续 Validation 的 93.54 小时仅为按 TRAIN 速度做的粗略资源估算。
+
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 后待决问题
 
 静态零 cohort 输入已从正式清单中清除，但 TRAIN-only 固定 HRS/B64 的 H4 支持诊断恰好 16/32 锚点可评分、16/32 无可评分候选；27/32 锚点至少一条完整轨迹触发 future Return birth 边界。研究者未定义“大量不可评分”的比例阈值，所以 `H4_SEARCH_COMPARISON_READINESS=SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`，正式 6.3D 可以继续；H4 scoreable success rate 单独报告。CPU batch 8 探针只带来约 1.11 倍于 batch 1 的吞吐，长期 CPU 资源仍是限制。没有据此放宽 H_sup、删除 Return 要求、改变评分器、增加搜索预算或筛除难样本。

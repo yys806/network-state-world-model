@@ -2955,6 +2955,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.close_step6_3d_formal_train_tuning_v1",
         "scripts.run_step6_3d_formal_cpu_matrix_v1",
         "tests.test_step6_3d_method_selection_v1"
       ],
@@ -4718,6 +4719,19 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_3d_method_selection_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.close_step6_3d_formal_train_tuning_v1",
+      "path": "code/scripts/close_step6_3d_formal_train_tuning_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.replay_step6_2a_patch_deadline_sidecar_v1",
         "scripts.replay_step6_3d_selected_deadline_sidecars_v1",
@@ -5675,6 +5689,16 @@
       "lifecycle_status": "support",
       "module": "scripts.export_strict_actions_v0",
       "path": "code/scripts/export_strict_actions_v0.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.fetch_step6_3d_train_evidence_v1",
+      "path": "code/scripts/fetch_step6_3d_train_evidence_v1.py",
       "test_files": []
     },
     {
@@ -7717,6 +7741,7 @@
         "scripts.audit_step6_3d_selected_side_state_v1",
         "scripts.build_step6_3d_3080ti_acceptance_v1",
         "scripts.build_step6_3d_objective_eligible_anchors_v1",
+        "scripts.close_step6_3d_formal_train_tuning_v1",
         "scripts.run_step6_3d_3080ti_formal_gpu_smoke_v1",
         "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
         "scripts.run_step6_3d_formal_cpu_matrix_v1",
