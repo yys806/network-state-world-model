@@ -1,3 +1,7 @@
+## 2026-10-01 STEP 6.3D BLOCKER CLOSURE
+
+正式runner将历史TRAIN selection identity与新Validation execution identity分开验证；只有orchestration/统计修改。primary仅1024、完成return，diagnostic独立256/512，不改变主选择；原候选/rollout/目标/搜索架构不变。 依据：`docs/contracts/PIJWM_STEP_06_3D_VALIDATION_STAGES_AND_CEM_UPDATE_SEMANTICS_V1.md`、`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_BLOCKER_CLOSURE.md`。
+
 # 当前代码架构与新定义差异
 
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 执行路径

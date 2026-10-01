@@ -3,6 +3,61 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.3D-PRE-VALIDATION-BLOCKER-CLOSURE-20261001",
+      "name": "Pre-Validation B1/B2 semantic and runner blocker closure",
+      "date": "2026-10-01",
+      "research_question": "Can the clarified CEM update gate and patched runner preserve TRAIN/scientific semantics while enforcing independent Validation stages and statistics?",
+      "method": "train_only_synthetic_semantic_oracles_source_provenance_bridge_and_orchestration_equivalence",
+      "code": "code/scripts/close_step6_3d_pre_validation_blockers_v1.py",
+      "code_version": {
+        "identity_type": "source_sha256_and_audit_manifest",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/09_sha_manifest.json",
+        "manifest_sha256": "3c6ab56aea67b07c3180ff66b63e030f08d80bac2efe85aa7ba56dfa0e2b6e1b",
+        "git_commit": "5c98c91880466cc4d76c4dfb1d56b32a34f5557d",
+        "note": "Audited baseline; patched runner SHA and new Validation identity in config/bridge. Closure commit is in Git history."
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/03_validation_execution_config_3080ti.json",
+      "parameters": {
+        "cem_configs": [
+          4,
+          0.1
+        ],
+        "primary_budget": 1024,
+        "diagnostic_budgets": [
+          256,
+          512
+        ],
+        "stage_a_hard_stop": true,
+        "batch_size": 16,
+        "formal_validation_run": false
+      },
+      "protocol": "docs/contracts/PIJWM_STEP_06_3D_VALIDATION_STAGES_AND_CEM_UPDATE_SEMANTICS_V1.md",
+      "data": "code/tests/test_step6_3b_candidate_grammar_v1.py",
+      "split": [
+        "TRAIN_ONLY_SYNTHETIC",
+        "dev_train"
+      ],
+      "seed": [
+        6301,
+        6302,
+        6316
+      ],
+      "checkpoint": null,
+      "result": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/08_final_pre_validation_acceptance.json",
+      "metrics": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/06_summary_schema_test_receipt.json",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/08_final_pre_validation_acceptance.json",
+      "status": "pre_validation_blocker_closure_pass_go_not_started",
+      "conclusion": "Iteration-local distinct update semantics match unchanged solver; stages/statistics/identity bridge and old-new runner equivalence pass. Validation GO without launch.",
+      "summary_zh": "B1/B2已关闭，TRAIN复用有效，runner仅调度/统计/身份修改，Stage A完成硬停止、Stage B不改主选择。Validation0、locked_test=false，等待单独开跑授权。",
+      "claim_boundary": "Implementation/semantic audit and TRAIN identity reuse only; synthetic summary counts are not Validation outcomes or final method evidence",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "checkpoint": "null: no checkpoint inference; real checkpoint bytes were hashed unchanged in provenance bridge.",
+        "data": "Tracked synthetic fixture plus immutable 771-file TRAIN inventory; no Validation outcomes used.",
+        "seed": "6301/6302 bounded synthetic search and 6316 bootstrap; frozen Validation seed list is represented in synthetic summary only."
+      }
+    },
+    {
       "id": "STEP-6.3D-PRE-VALIDATION-AUDIT-20261001",
       "name": "Pre-Validation scientific and implementation Go-No-Go audit",
       "date": "2026-10-01",

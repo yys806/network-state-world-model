@@ -1,3 +1,11 @@
+## 2026-10-01 STEP 6.3D PRE-VALIDATION BLOCKER CLOSURE
+
+- 当前关口：关闭已授权 B1/B2；tracked clean 起点5c98c918，Validation results=0，locked_test=false。
+- B1：研究者明确当前轮完成的 distinct fingerprints，历史重采样可计入，retained-only不可计入；原 solver 不改。
+- B2：仅改 runner 阶段控制/统计/身份；先建立失败测试再实现，保留全部历史 TRAIN provenance。
+- [x] B1四类语义oracle、771历史文件SHA/768选参重建、独立Validation身份桥、9对旧新runner等价、阶段/summary和再审计PASS。
+- [x] 最终27/27 tests、compileall、Context、knowledge-index write/check（mismatches=[]）、12项 staged SHA与diff通过；提交推送为最后操作，Git身份以本任务历史为准，之后停止等单独Stage A授权。
+
 ## 2026-10-01 STEP 6.3D PRE-VALIDATION AUDIT
 
 - [x] fetch、基线/clean、治理/权威/源码及 TRAIN 收口证据只读核对。

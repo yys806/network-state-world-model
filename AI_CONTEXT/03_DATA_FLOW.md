@@ -1,3 +1,7 @@
+## 2026-10-01 STEP 6.3D BLOCKER CLOSURE
+
+不可改的TRAIN raw/05/06/资格config/closure → SHA父级连接 → 新Validation config/current source/独立ID → 将来明确primary调用 → 1024主收据及方法选择 → STOP；将来另行授权diagnostic才读取Stage A并做256/512诊断。当前正式outcome数量仍0。 依据：`docs/contracts/PIJWM_STEP_06_3D_VALIDATION_STAGES_AND_CEM_UPDATE_SEMANTICS_V1.md`、`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_BLOCKER_CLOSURE.md`。
+
 # 数据流与张量合同
 
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 锚点与诊断流

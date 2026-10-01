@@ -1,3 +1,7 @@
+## 2026-10-01 STEP 6.3D BLOCKER CLOSURE
+
+研究者2026-10-01明确 newly scoreable 指当前iteration实际完成且可评分的不同fingerprint≥2；历史重采样可计，轮内重复只计1，retained-only不计。研究者授权runner阶段/summary/身份修补，不授权开跑。冻结顺序1024→STOP→审阅；以后另行授权256→512。主选择/参数/模型/支持边界不改。 依据：`docs/contracts/PIJWM_STEP_06_3D_VALIDATION_STAGES_AND_CEM_UPDATE_SEMANTICS_V1.md`、`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_BLOCKER_CLOSURE.md`。
+
 # 已确认决策
 
 ## 2026-09-29 STEP 6.3D — Researcher Decision

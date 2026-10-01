@@ -2794,6 +2794,7 @@
         "pi_jwm.step6_3c_search_protocol_v1",
         "pi_jwm.step6_3d_structured_proposal_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_3bc_train_self_replay_v1",
         "tests.test_step6_3b_candidate_grammar_v1",
@@ -2936,6 +2937,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.run_step6_3d_gpu_equivalence_v1",
         "scripts.run_step6_3d_gpu_pipeline_profile_v1",
         "scripts.run_step6_3d_gpu_throughput_v1",
@@ -2964,6 +2966,7 @@
       "imported_by": [
         "scripts.audit_step6_3d_pre_validation_v1",
         "scripts.close_step6_3d_formal_train_tuning_v1",
+        "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.run_step6_3d_formal_cpu_matrix_v1",
         "tests.test_step6_3d_method_selection_v1"
       ],
@@ -3880,6 +3883,7 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "scripts.close_step6_3d_pre_validation_blockers_v1",
         "tests.test_step6_3d_pre_validation_audit_v1"
       ],
       "imports": [
@@ -4762,6 +4766,23 @@
       "lifecycle_status": "support",
       "module": "scripts.close_step6_3d_formal_train_tuning_v1",
       "path": "code/scripts/close_step6_3d_formal_train_tuning_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_3b_candidate_grammar_v1",
+        "pi_jwm.step6_3d_fixed_budget_search_v1",
+        "pi_jwm.step6_3d_method_selection_v1",
+        "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.run_step6_3d_formal_cpu_matrix_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.close_step6_3d_pre_validation_blockers_v1",
+      "path": "code/scripts/close_step6_3d_pre_validation_blockers_v1.py",
       "test_files": []
     },
     {
@@ -7648,8 +7669,10 @@
       "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.run_step6_3d_3080ti_formal_gpu_smoke_v1",
-        "tests.test_step6_3d_gpu_runner_identity_v1"
+        "tests.test_step6_3d_gpu_runner_identity_v1",
+        "tests.test_step6_3d_validation_stages_v1"
       ],
       "imports": [
         "pi_jwm.step6_3d_method_selection_v1",
@@ -7659,7 +7682,8 @@
       "module": "scripts.run_step6_3d_formal_cpu_matrix_v1",
       "path": "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py",
       "test_files": [
-        "code/tests/test_step6_3d_gpu_runner_identity_v1.py"
+        "code/tests/test_step6_3d_gpu_runner_identity_v1.py",
+        "code/tests/test_step6_3d_validation_stages_v1.py"
       ]
     },
     {
@@ -7779,6 +7803,7 @@
         "scripts.build_step6_3d_3080ti_acceptance_v1",
         "scripts.build_step6_3d_objective_eligible_anchors_v1",
         "scripts.close_step6_3d_formal_train_tuning_v1",
+        "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.run_step6_3d_3080ti_formal_gpu_smoke_v1",
         "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
         "scripts.run_step6_3d_formal_cpu_matrix_v1",
@@ -11973,6 +11998,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_3d_structured_proposal_v1",
       "path": "code/tests/test_step6_3d_structured_proposal_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "scripts.run_step6_3d_formal_cpu_matrix_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_3d_validation_stages_v1",
+      "path": "code/tests/test_step6_3d_validation_stages_v1.py",
       "test_files": []
     },
     {

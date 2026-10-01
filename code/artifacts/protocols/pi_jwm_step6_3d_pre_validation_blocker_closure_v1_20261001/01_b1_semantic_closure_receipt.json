@@ -1,0 +1,274 @@
+{
+  "B1_ambiguity": "CLOSED",
+  "replayed_old_candidates_count_correctly": {
+    "MH-CEM": {
+      "cache_hits": 136,
+      "iteration_rows": [
+        {
+          "elite_count": 1,
+          "iteration": 1,
+          "proposal_updated": true,
+          "proposed_sequences": 16,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 64
+        },
+        {
+          "elite_count": 1,
+          "iteration": 2,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 128
+        },
+        {
+          "elite_count": 1,
+          "iteration": 3,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 192
+        },
+        {
+          "elite_count": 1,
+          "iteration": 4,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 256
+        }
+      ],
+      "new_scoreable_after_first_iteration": 0,
+      "total_globally_new_scoreable": 2,
+      "update_calls": [
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.525
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.299375
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.19220312499999997
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.14129648437499998
+          ],
+          "proposal_tables_changed": true
+        }
+      ]
+    },
+    "S-CEM": {
+      "cache_hits": 136,
+      "iteration_rows": [
+        {
+          "elite_count": 1,
+          "iteration": 1,
+          "proposal_updated": true,
+          "proposed_sequences": 16,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 64
+        },
+        {
+          "elite_count": 1,
+          "iteration": 2,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 128
+        },
+        {
+          "elite_count": 1,
+          "iteration": 3,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 192
+        },
+        {
+          "elite_count": 1,
+          "iteration": 4,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 256
+        }
+      ],
+      "new_scoreable_after_first_iteration": 0,
+      "total_globally_new_scoreable": 2,
+      "update_calls": [
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.525
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.299375
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.19220312499999997
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.14129648437499998
+          ],
+          "proposal_tables_changed": true
+        }
+      ]
+    }
+  },
+  "researcher_definition": "At least two distinct scoreable H4 fingerprints actually completed within the current iteration; historical resampling counts, retained-only candidates do not.",
+  "retained_only_not_counted": {
+    "MH-CEM": [
+      {
+        "elite_count": 2,
+        "iteration": 1,
+        "proposal_updated": true,
+        "proposed_sequences": 16,
+        "quota": 64,
+        "retained_count": 2,
+        "retained_from_previous": 0,
+        "unique_h4_scoreable": 16,
+        "unique_transition_evals": 64
+      },
+      {
+        "elite_count": 0,
+        "iteration": 2,
+        "proposal_updated": false,
+        "proposed_sequences": 32,
+        "quota": 64,
+        "retained_count": 1,
+        "retained_from_previous": 2,
+        "unique_h4_scoreable": 0,
+        "unique_transition_evals": 128
+      },
+      {
+        "elite_count": 0,
+        "iteration": 3,
+        "proposal_updated": false,
+        "proposed_sequences": 32,
+        "quota": 64,
+        "retained_count": 1,
+        "retained_from_previous": 1,
+        "unique_h4_scoreable": 0,
+        "unique_transition_evals": 192
+      },
+      {
+        "elite_count": 0,
+        "iteration": 4,
+        "proposal_updated": false,
+        "proposed_sequences": 32,
+        "quota": 64,
+        "retained_count": 1,
+        "retained_from_previous": 1,
+        "unique_h4_scoreable": 0,
+        "unique_transition_evals": 256
+      }
+    ],
+    "S-CEM": [
+      {
+        "elite_count": 2,
+        "iteration": 1,
+        "proposal_updated": true,
+        "proposed_sequences": 16,
+        "quota": 64,
+        "retained_count": 2,
+        "retained_from_previous": 0,
+        "unique_h4_scoreable": 16,
+        "unique_transition_evals": 64
+      },
+      {
+        "elite_count": 0,
+        "iteration": 2,
+        "proposal_updated": false,
+        "proposed_sequences": 32,
+        "quota": 64,
+        "retained_count": 1,
+        "retained_from_previous": 2,
+        "unique_h4_scoreable": 0,
+        "unique_transition_evals": 128
+      },
+      {
+        "elite_count": 0,
+        "iteration": 3,
+        "proposal_updated": false,
+        "proposed_sequences": 32,
+        "quota": 64,
+        "retained_count": 1,
+        "retained_from_previous": 1,
+        "unique_h4_scoreable": 0,
+        "unique_transition_evals": 192
+      },
+      {
+        "elite_count": 0,
+        "iteration": 4,
+        "proposal_updated": false,
+        "proposed_sequences": 32,
+        "quota": 64,
+        "retained_count": 1,
+        "retained_from_previous": 1,
+        "unique_h4_scoreable": 0,
+        "unique_transition_evals": 256
+      }
+    ]
+  },
+  "same_iteration_duplicate_fingerprints_deduplicated": true,
+  "singleton_never_updates": "PASS: sole scoreable fingerprint fixture never updates",
+  "solver_changed": false,
+  "verdict": "PASS"
+}

@@ -1,0 +1,63 @@
+{
+  "RUNNER_PATCH_SCIENTIFIC_SEMANTICS_INVARIANT": "PASS",
+  "actual_old_runner_loaded_from_git": "5c98c91880466cc4d76c4dfb1d56b32a34f5557d",
+  "both_orchestration_paths_exercised": true,
+  "case_count": 9,
+  "rows": [
+    {
+      "budget": 1024,
+      "discrete_sha256": "23cf00879da4673df8b37afef6955df18dbb8b9adc56921c537f7cfec16cdb76",
+      "matched_fields": "all discrete SearchOutcome fields; exclude only wall-clock",
+      "method": "HRS"
+    },
+    {
+      "budget": 1024,
+      "discrete_sha256": "41c1668b8d8e97588a9be17661c2a99dbcf37c73c9b594c31c277eea861fc302",
+      "matched_fields": "all discrete SearchOutcome fields; exclude only wall-clock",
+      "method": "S-CEM"
+    },
+    {
+      "budget": 1024,
+      "discrete_sha256": "6692776521dff4bc7ab6f7d8617cf306f3748070f4bd0b115d58396b6920ce4c",
+      "matched_fields": "all discrete SearchOutcome fields; exclude only wall-clock",
+      "method": "MH-CEM"
+    },
+    {
+      "budget": 256,
+      "discrete_sha256": "9180e471973bdfc091c50739630a768bb706719699bab82c9d3fa056cffae7ac",
+      "matched_fields": "all discrete SearchOutcome fields; exclude only wall-clock",
+      "method": "HRS"
+    },
+    {
+      "budget": 256,
+      "discrete_sha256": "3e133741aae0812ee5fa2bf9b137a33de2de4272ca16306324f9e7305a15127e",
+      "matched_fields": "all discrete SearchOutcome fields; exclude only wall-clock",
+      "method": "S-CEM"
+    },
+    {
+      "budget": 256,
+      "discrete_sha256": "63e44325d5c8650f92b4c95a6b047f6868acda9373994a24a1ec715d74cee30d",
+      "matched_fields": "all discrete SearchOutcome fields; exclude only wall-clock",
+      "method": "MH-CEM"
+    },
+    {
+      "budget": 512,
+      "discrete_sha256": "3ad1e94b1d1e5e624fe9b4eb110d0f98798cad1c4375677cd72a685f36cd5d7a",
+      "matched_fields": "all discrete SearchOutcome fields; exclude only wall-clock",
+      "method": "HRS"
+    },
+    {
+      "budget": 512,
+      "discrete_sha256": "9095e7fa94f32f6d0ef22655f327f2bae785a3449666d111a40ed468f15eea2e",
+      "matched_fields": "all discrete SearchOutcome fields; exclude only wall-clock",
+      "method": "S-CEM"
+    },
+    {
+      "budget": 512,
+      "discrete_sha256": "2464f7819d07e4c786471e85df0282bbeb6403628384b3769a16acda83d9af04",
+      "matched_fields": "all discrete SearchOutcome fields; exclude only wall-clock",
+      "method": "MH-CEM"
+    }
+  ],
+  "scope": "Same TRAIN-only synthetic transitions; no frozen-model execution or Validation outcome"
+}

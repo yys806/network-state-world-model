@@ -1,0 +1,18 @@
+{
+  "files": {
+    "01_b1_semantic_closure_receipt.json": "5171383074c1d118011c332fee767e00e9cea8920997bd0419bc2a43ae873272",
+    "02_runner_stage_control_receipt.json": "98689bd653c2d170e3fd595bf5430d92ff834f4aca1c002f719857ac11b68a49",
+    "03_validation_execution_config_3080ti.json": "8fc7a0ba10b9936395d8bcdc6b56ff76e76d7ac477b77659c096d47e45898b86",
+    "04_source_provenance_bridge_receipt.json": "48f736179eb143811889673731d39893ef2d3fbc3ade3b22c771cf022c49e1c6",
+    "05_old_new_runner_equivalence_receipt.json": "1cfa369f45b5b36c9ddd13bf6396d829c2ce9bcffdbd1b3d369308c9ff7efa5c",
+    "06_summary_schema_test_receipt.json": "a2d80a08ab1c38007b9a520b6ab5f2b86f3eef073dfc9eccc4d85fcba45c895d",
+    "07_final_pre_validation_oracles.json": "a0ef55274fa5bc34a44a89f3f3bb07f935ead7f44a16fb9089fad251afdef466",
+    "08_final_pre_validation_acceptance.json": "6191b6ecd97088519b73c22e81e827a424eb42a2c7feaca23a6287c9bfd3d5cb",
+    "10_context_verification_receipt.json": "76d3e1877af008b4b8d4b5cea56e3b37dc1f190949d88431981256c1a33986bc",
+    "code/scripts/close_step6_3d_pre_validation_blockers_v1.py": "e3f5e49d3feec4bc786b678f88eb46d8566999442baf29602599effe52a8c349",
+    "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py": "3f23804ce85716aa272a4b1232fc80397e791ee2a9cc2b013d3f101cb1945a0c",
+    "code/tests/test_step6_3d_validation_stages_v1.py": "147d558db7ff04933133b92f148af45ec19d4a8c05c6a0a0301bf00c08901c84"
+  },
+  "locked_test": false,
+  "schema_version": "PIJWM-blocker-closure-sha-v1"
+}

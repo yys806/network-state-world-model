@@ -1,3 +1,13 @@
+最终索引与归档验证：knowledge-index write/check passed=true、mismatches=[]；12项manifest SHA与staged Git blob一致；科研源码diff为空。收口结论VALIDATION_GO，正式Validation未开始。
+
+最终本地检查：27/27 tests（22.152秒）、compileall、diff、Context consistency均通过；新Execution ID=3b3fcfe775f947790a982929a292fb3f3b8f30396996f7f9b33270e7d6c9f215。索引与Git为最后收口；不启动Stage A。
+
+## 2026-10-01 STEP 6.3D PRE-VALIDATION BLOCKER CLOSURE（当前）
+
+PRE_VALIDATION_BLOCKER_CLOSURE=PASS，PRE_VALIDATION_AUDIT=PASS，VALIDATION_GO。研究者已明确CEM更新门统计当前轮实际完成的不同可评分四步候选；历史重采样可计入，retained-only不计入，原solver无改动。runner已分primary/diagnostic，1024完成后硬停止，256/512另行授权；六类配对统计及Return/scorer诊断完整。旧TRAIN 768 raw/log/05/06及原执行身份保持，TRAIN_REUSE_VALID=true、TRAIN_RERUN_REQUIRED=false，两种CEM仍(4,0.1)。新3080Ti Validation身份单独冻结。VALIDATION_RESULT_COUNT=0，VALIDATION_COMPARISON=NOT_STARTED，SEARCH_METHOD=NOT_SELECTED，locked_test=false；future Return-birth限制保留。唯一下一动作是研究者审阅并单独授权Stage A；本次不启动GPU或Validation。
+
+入口：`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_BLOCKER_CLOSURE.md`；机器验收：`code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/08_final_pre_validation_acceptance.json`。下方为较早快照，原B1/B2阻塞已关闭。
+
 ## 2026-10-01 STEP 6.3D PRE-VALIDATION AUDIT（当前）
 
 验证：19/19 focused tests PASS（18.101秒），compileall exit0，knowledge-index write/check passed=true、mismatches=[]，diff check exit0；Context 00–08全项复核，00/04/05/07/08同步，12项 SHA 与 staged Git内容一致。科研源码/runner/config/raw全部未改；NO_GO为本次正式审计结论。

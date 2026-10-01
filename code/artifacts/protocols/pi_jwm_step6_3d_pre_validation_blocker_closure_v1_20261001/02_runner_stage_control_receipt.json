@@ -1,0 +1,13 @@
+{
+  "diagnostic_cases": 1920,
+  "exception_count_cross_checked": true,
+  "formal_outcomes_read_or_written": false,
+  "primary_cases": 960,
+  "primary_nominal_B_WM": 983040,
+  "six_category_total_enforced": 320,
+  "stage_a_no_stage_b_dependency": true,
+  "stage_b_selection_unchanged": true,
+  "summary_schema_sha256": "ba238923f82499eaffc468c65c5c1a54296f1b656462f180cebb99a7123b0e67",
+  "test_cases": 11,
+  "verdict": "PASS"
+}

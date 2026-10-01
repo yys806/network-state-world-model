@@ -1,0 +1,1556 @@
+{
+  "diagnostic_cases": 1920,
+  "exception_count_cross_checked": true,
+  "formal_outcomes_read_or_written": false,
+  "primary_cases": 960,
+  "primary_nominal_B_WM": 983040,
+  "six_category_total_enforced": 320,
+  "stage_a_no_stage_b_dependency": true,
+  "stage_b_selection_unchanged": true,
+  "summary_schema_sha256": "ba238923f82499eaffc468c65c5c1a54296f1b656462f180cebb99a7123b0e67",
+  "synthetic_summary_oracle": {
+    "method_diagnostics": {
+      "HRS": {
+        "N_cache_hits": 1280,
+        "N_unique_transition_evals": 327680,
+        "admitted": 328000,
+        "budget_cache_and_proposal_totals": {
+          "N_admitted_steps": 328000,
+          "N_cache_hits": 1280,
+          "N_complete_sequences": 960,
+          "N_dead_end_branches": 960,
+          "N_proposed_steps": 328320,
+          "N_rejected_steps": 320,
+          "N_unique_transition_evals": 327680
+        },
+        "cache_hits": 1280,
+        "case_count": 320,
+        "grammar_dead_end_count": 960,
+        "h4_scoreable_success_count": 213,
+        "h4_scoreable_success_rate": 0.665625,
+        "nominal_B_WM_total": 327680,
+        "proposed": 328320,
+        "rejected": 320,
+        "return_birth_support_boundary_count": 640,
+        "scorer_exception_count": 320,
+        "total_complete_h4": 960,
+        "total_distinct_scoreable_h4": 213,
+        "total_unscoreable_h4": 320,
+        "wall_clock_diagnostic": {
+          "in_solve_seconds_sum": 320.0,
+          "is_elapsed_matrix_runtime": false
+        }
+      },
+      "MH-CEM": {
+        "N_cache_hits": 1280,
+        "N_unique_transition_evals": 327680,
+        "admitted": 328000,
+        "budget_cache_and_proposal_totals": {
+          "N_admitted_steps": 328000,
+          "N_cache_hits": 1280,
+          "N_complete_sequences": 960,
+          "N_dead_end_branches": 960,
+          "N_proposed_steps": 328320,
+          "N_rejected_steps": 320,
+          "N_unique_transition_evals": 327680
+        },
+        "cache_hits": 1280,
+        "case_count": 320,
+        "grammar_dead_end_count": 960,
+        "h4_scoreable_success_count": 320,
+        "h4_scoreable_success_rate": 1.0,
+        "nominal_B_WM_total": 327680,
+        "proposed": 328320,
+        "rejected": 320,
+        "return_birth_support_boundary_count": 640,
+        "scorer_exception_count": 320,
+        "total_complete_h4": 960,
+        "total_distinct_scoreable_h4": 320,
+        "total_unscoreable_h4": 320,
+        "wall_clock_diagnostic": {
+          "in_solve_seconds_sum": 320.0,
+          "is_elapsed_matrix_runtime": false
+        }
+      },
+      "S-CEM": {
+        "N_cache_hits": 1280,
+        "N_unique_transition_evals": 327680,
+        "admitted": 328000,
+        "budget_cache_and_proposal_totals": {
+          "N_admitted_steps": 328000,
+          "N_cache_hits": 1280,
+          "N_complete_sequences": 960,
+          "N_dead_end_branches": 960,
+          "N_proposed_steps": 328320,
+          "N_rejected_steps": 320,
+          "N_unique_transition_evals": 327680
+        },
+        "cache_hits": 1280,
+        "case_count": 320,
+        "grammar_dead_end_count": 960,
+        "h4_scoreable_success_count": 213,
+        "h4_scoreable_success_rate": 0.665625,
+        "nominal_B_WM_total": 327680,
+        "proposed": 328320,
+        "rejected": 320,
+        "return_birth_support_boundary_count": 640,
+        "scorer_exception_count": 320,
+        "total_complete_h4": 960,
+        "total_distinct_scoreable_h4": 213,
+        "total_unscoreable_h4": 320,
+        "wall_clock_diagnostic": {
+          "in_solve_seconds_sum": 320.0,
+          "is_elapsed_matrix_runtime": false
+        }
+      }
+    },
+    "paired_cases_per_method": 320,
+    "paired_outcomes": {
+      "MH-CEM_vs_HRS": {
+        "cluster_bootstrap": {
+          "anchor_cluster_count": 64,
+          "bootstrap_replications": 10000,
+          "bootstrap_seed": 6316,
+          "bootstrap_type": "anchor_cluster_percentile",
+          "ci95_lower": 0.134375,
+          "ci95_upper": 0.203125,
+          "mean_paired_advantage": 0.16875,
+          "seeds_per_anchor": 5
+        },
+        "loss": 53,
+        "paired_seed_order": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "per_anchor_seed_outcomes": {
+          "TRAIN_ONLY_SYNTHETIC_0": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_1": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_10": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_11": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_12": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_13": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_14": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_15": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_16": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_17": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_18": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_19": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_2": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_20": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_21": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_22": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_23": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_24": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_25": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_26": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_27": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_28": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_29": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_3": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_30": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_31": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_32": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_33": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_34": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_35": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_36": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_37": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_38": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_39": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_4": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_40": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_41": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_42": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_43": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_44": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_45": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_46": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_47": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_48": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_49": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_5": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_50": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_51": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_52": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_53": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_54": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_55": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_56": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_57": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_58": [
+            0,
+            0,
+            -1,
+            1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_59": [
+            0,
+            0,
+            0,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_6": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_60": [
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_61": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_62": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_63": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_7": [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_8": [
+            -1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_9": [
+            0,
+            -1,
+            1,
+            1,
+            0
+          ]
+        },
+        "six_category_counts": {
+          "both_scoreable_left_win": 0,
+          "both_scoreable_right_win": 53,
+          "both_scoreable_tie": 160,
+          "both_unscoreable": 0,
+          "only_left_scoreable": 107,
+          "only_right_scoreable": 0
+        },
+        "tie": 160,
+        "total_paired_cases": 320,
+        "win": 107
+      },
+      "MH-CEM_vs_S-CEM": {
+        "cluster_bootstrap": {
+          "anchor_cluster_count": 64,
+          "bootstrap_replications": 10000,
+          "bootstrap_seed": 6316,
+          "bootstrap_type": "anchor_cluster_percentile",
+          "ci95_lower": -0.05,
+          "ci95_upper": 0.05,
+          "mean_paired_advantage": 0.0,
+          "seeds_per_anchor": 5
+        },
+        "loss": 160,
+        "paired_seed_order": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "per_anchor_seed_outcomes": {
+          "TRAIN_ONLY_SYNTHETIC_0": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_1": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_10": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_11": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_12": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_13": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_14": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_15": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_16": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_17": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_18": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_19": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_2": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_20": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_21": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_22": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_23": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_24": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_25": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_26": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_27": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_28": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_29": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_3": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_30": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_31": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_32": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_33": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_34": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_35": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_36": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_37": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_38": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_39": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_4": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_40": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_41": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_42": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_43": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_44": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_45": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_46": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_47": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_48": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_49": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_5": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_50": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_51": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_52": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_53": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_54": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_55": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_56": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_57": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_58": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_59": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_6": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_60": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_61": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_62": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_63": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_7": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_8": [
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_9": [
+            1,
+            -1,
+            1,
+            -1,
+            1
+          ]
+        },
+        "six_category_counts": {
+          "both_scoreable_left_win": 53,
+          "both_scoreable_right_win": 160,
+          "both_scoreable_tie": 0,
+          "both_unscoreable": 0,
+          "only_left_scoreable": 107,
+          "only_right_scoreable": 0
+        },
+        "tie": 0,
+        "total_paired_cases": 320,
+        "win": 160
+      },
+      "S-CEM_vs_HRS": {
+        "cluster_bootstrap": {
+          "anchor_cluster_count": 64,
+          "bootstrap_replications": 10000,
+          "bootstrap_seed": 6316,
+          "bootstrap_type": "anchor_cluster_percentile",
+          "ci95_lower": -0.040625,
+          "ci95_upper": 0.040625,
+          "mean_paired_advantage": 0.0,
+          "seeds_per_anchor": 5
+        },
+        "loss": 107,
+        "paired_seed_order": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "per_anchor_seed_outcomes": {
+          "TRAIN_ONLY_SYNTHETIC_0": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_1": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_10": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_11": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_12": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_13": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_14": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_15": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_16": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_17": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_18": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_19": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_2": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_20": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_21": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_22": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_23": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_24": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_25": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_26": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_27": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_28": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_29": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_3": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_30": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_31": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_32": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_33": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_34": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_35": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_36": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_37": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_38": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_39": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_4": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_40": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_41": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_42": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_43": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_44": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_45": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_46": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_47": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_48": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_49": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_5": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_50": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_51": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_52": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_53": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_54": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_55": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_56": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_57": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_58": [
+            1,
+            -1,
+            0,
+            0,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_59": [
+            -1,
+            1,
+            -1,
+            0,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_6": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_60": [
+            1,
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "TRAIN_ONLY_SYNTHETIC_61": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_62": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_63": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_7": [
+            0,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_8": [
+            0,
+            0,
+            1,
+            -1,
+            1
+          ],
+          "TRAIN_ONLY_SYNTHETIC_9": [
+            -1,
+            0,
+            0,
+            1,
+            -1
+          ]
+        },
+        "six_category_counts": {
+          "both_scoreable_left_win": 53,
+          "both_scoreable_right_win": 53,
+          "both_scoreable_tie": 53,
+          "both_unscoreable": 53,
+          "only_left_scoreable": 54,
+          "only_right_scoreable": 54
+        },
+        "tie": 106,
+        "total_paired_cases": 320,
+        "win": 107
+      }
+    }
+  },
+  "test_cases": 11,
+  "verdict": "PASS"
+}

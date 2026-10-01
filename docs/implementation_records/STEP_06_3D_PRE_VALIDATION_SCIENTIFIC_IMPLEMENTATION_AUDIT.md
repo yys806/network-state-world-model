@@ -1,3 +1,5 @@
+> 历史审计快照：B1已由研究者明确当前轮distinct语义、B2已在后续runner修补关闭。当前Go/No-Go请读 `docs/implementation_records/STEP_06_3D_PRE_VALIDATION_BLOCKER_CLOSURE.md` 和对应final acceptance。本记录和旧机器收据保留，不代表当前阻塞。
+
 # STEP 6.3D — Validation 前科学与实现审计
 
 状态：`PRE_VALIDATION_AUDIT=BLOCKED`、`VALIDATION_NO_GO`。这是一次完成并发现阻塞的审计，不是正式比较通过。未运行 GPU search，未读取或生成正式 Validation outcome，`locked_test=false`。
