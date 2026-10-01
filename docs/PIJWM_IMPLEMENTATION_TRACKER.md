@@ -1,5 +1,7 @@
 # PI-JWM Implementation Tracker
 
+> 2026-10-01 当前：STEP 6.3D Validation 前审计完成：PRE_VALIDATION_AUDIT=BLOCKED、VALIDATION_NO_GO。数学、预算/缓存、batch16四步可完成性、随机/顺序独立性及统计 oracle 通过；CEM 旧候选重放触发更新的“newly”定义待研究者确认，runner 缺六类配对/Return/scorer 汇总与 Stage A 停止门。TRAIN MH-vs-S=26胜/58平/12负，仅诊断。TRAIN closure PASS 和两种 (4,0.1) 配置保留；Validation=0、SEARCH_METHOD=NOT_SELECTED、locked_test=false，future Return birth 限制不变。唯一下一动作是明确语义并授权必要修补后再审计；本次不启动 GPU/Validation。 入口：`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_SCIENTIFIC_IMPLEMENTATION_AUDIT.md` / `code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/09_pre_validation_audit_receipt.json`。
+
 **2026-10-01 STEP 6.3D FORMAL TRAIN TUNING CLOSURE（PASS）：** 3080 Ti 上 768/768 TRAIN 调参结果已逐份身份/SHA 验收、本机归档并独立重算；S-CEM/MH-CEM 均冻结 `(K=4,rho=0.1)`。八组配置各 48/96 cases 找到可评分 H4，16/32 锚点始终无可评分路径，future Return birth 限制不变。名义/实际 unique transitions 均 393,216，正式耗时 21.38 小时。仅 TRAIN 选参完成；`VALIDATION_COMPARISON=NOT_STARTED`、`SEARCH_METHOD=NOT_SELECTED`、`locked_test=false`。见独立 Closure 实施记录和本机/机器 SHA 收据。
 
 **2026-09-30 STEP 6.3D-PREFLIGHT-PATCH（输入/执行路径 PASS，正式比较暂停）：** 原选中 TRAIN 3、Validation 5 个零 Objective cohort 已按原同层哈希规则确定性替换；修正后 32/64 全部 CandidateDomain 非空、cohort>0，8 个 replacement deadline sidecar 精确对齐。TRAIN-only HRS seed6391/B64：16/32 锚点有 H4 可评分候选，16/32 无；275 条不可评分完整 H4 都有 future Return birth 支持边界。batch 1/4/8/16 一步与 H4 串行等价，batch 8 的本次 CPU 吞吐最高。Patch 验收不等于 H4 readiness；因 16/16 分布且无“大量”阈值，研究者需判断支持 blocker。正式 TRAIN tuning/Validation 比较未运行、方法未选；无 GPU、`locked_test`、训练、闭环。详见独立 Patch 实施记录和 25 接受收据。

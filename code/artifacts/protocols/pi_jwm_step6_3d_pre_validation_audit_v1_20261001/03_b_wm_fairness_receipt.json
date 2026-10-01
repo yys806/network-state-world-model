@@ -1,0 +1,60 @@
+{
+  "cache_key": [
+    "causal_provenance",
+    "parent_latent_state_graph_fingerprint",
+    "canonical_action_fingerprint"
+  ],
+  "paired_explicit_requests": {
+    "HRS": {
+      "forward_batch_members": [
+        2
+      ],
+      "receipt": {
+        "B_WM": 2,
+        "N_admitted_steps": 0,
+        "N_cache_hits": 3,
+        "N_complete_sequences": 0,
+        "N_dead_end_branches": 0,
+        "N_proposed_steps": 0,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 2,
+        "budget_unit": "candidate_one_step_transition"
+      }
+    },
+    "MH-CEM": {
+      "forward_batch_members": [
+        2
+      ],
+      "receipt": {
+        "B_WM": 2,
+        "N_admitted_steps": 0,
+        "N_cache_hits": 3,
+        "N_complete_sequences": 0,
+        "N_dead_end_branches": 0,
+        "N_proposed_steps": 0,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 2,
+        "budget_unit": "candidate_one_step_transition"
+      }
+    },
+    "S-CEM": {
+      "forward_batch_members": [
+        2
+      ],
+      "receipt": {
+        "B_WM": 2,
+        "N_admitted_steps": 0,
+        "N_cache_hits": 3,
+        "N_complete_sequences": 0,
+        "N_dead_end_branches": 0,
+        "N_proposed_steps": 0,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 2,
+        "budget_unit": "candidate_one_step_transition"
+      }
+    }
+  },
+  "scope": "Accounting equality for identical requests; method-specific proposals need not have identical cache hit rates.",
+  "source_path_shared": "solve_fixed_budget -> TransitionBudgetAccountant.evaluate_batch -> transition_batch",
+  "verdict": "PASS"
+}

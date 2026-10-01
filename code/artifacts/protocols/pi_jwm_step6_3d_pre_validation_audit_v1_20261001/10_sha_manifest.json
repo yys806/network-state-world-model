@@ -1,0 +1,18 @@
+{
+  "files": {
+    "01_cem_math_oracle_receipt.json": "5c3d21a2164f94fb0e8e74b888d865cf927aad6d5aea0c666de3fa213bd413e0",
+    "02_elite_update_gate_receipt.json": "3d51ba56ecf0125dee190db0a9067f7a73c9fb7e663350d0c744b47c3b0655b1",
+    "03_b_wm_fairness_receipt.json": "687566f70dffca4261b825c61787cfdfd20859103b85e6d821cf2be4927996ed",
+    "04_rng_order_independence_receipt.json": "5d286412e0cdd211f2bc3c853ce7104039f03981135ffaa0d5cfea7e4c489ff6",
+    "05_budget_quota_receipt.json": "81f090fa55dc55e395122160cda8e059a94c17371e14037daebfdd855325ca02",
+    "06_method_selection_oracle_receipt.json": "a8297ed0c260bda0f4b50504f84d9cd39c3b623252af08631a1022de50576bbc",
+    "07_validation_output_schema_receipt.json": "ba238923f82499eaffc468c65c5c1a54296f1b656462f180cebb99a7123b0e67",
+    "08_train_mh_vs_s_diagnostic.json": "31718de7652523093162903f41787fe0030b1ca99a2b710a4e0ba1a0d81103b6",
+    "09_pre_validation_audit_receipt.json": "166cf3cfe3503108809784fda8dee66fcc43fcf5fc0767f7618b88b2a8211959",
+    "11_context_verification_receipt.json": "d07b45d22a4850b70840e51a14101a150c10fd32ace15490fba708ec4f586b58",
+    "code/scripts/audit_step6_3d_pre_validation_v1.py": "aeeaba339ee5ca61e861b13861a2f003a854cbdbea6a8c40d0a4217279d6ca37",
+    "code/tests/test_step6_3d_pre_validation_audit_v1.py": "33eb22eae32e330a054241a33079bf86340b1dc420b0195c4a3656a7d8f4b8cb"
+  },
+  "locked_test": false,
+  "schema_version": "PIJWM-pre-validation-audit-sha-v1"
+}

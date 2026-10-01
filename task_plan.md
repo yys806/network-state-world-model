@@ -1,3 +1,12 @@
+## 2026-10-01 STEP 6.3D PRE-VALIDATION AUDIT
+
+- [x] fetch、基线/clean、治理/权威/源码及 TRAIN 收口证据只读核对。
+- [x] 合成 TRAIN-only CPU 数学/方法分层、quota、记账、RNG/顺序和统计 oracle；768 raw SHA/96 frozen paired diagnostic。
+- [x] 发现 cached-old H4 的 newly 定义歧义和 runner 统计/Stage A 缺口，NO_GO；保留科研源 SHA、不修算法、不跑 GPU/Validation。
+- [x] 预注册 summary/sensitivity schema、01–10 receipts 与 implementation record、Context/index/deferred registry。
+- [x] 定向测试19/19、compileall、knowledge-index write/check、diff、Context与12项 staged SHA检查通过；Git收口为最后操作，提交/推送身份以本任务 Git历史为准，随后停止。
+- STEP 6.3D Validation 前审计完成：PRE_VALIDATION_AUDIT=BLOCKED、VALIDATION_NO_GO。数学、预算/缓存、batch16四步可完成性、随机/顺序独立性及统计 oracle 通过；CEM 旧候选重放触发更新的“newly”定义待研究者确认，runner 缺六类配对/Return/scorer 汇总与 Stage A 停止门。TRAIN MH-vs-S=26胜/58平/12负，仅诊断。TRAIN closure PASS 和两种 (4,0.1) 配置保留；Validation=0、SEARCH_METHOD=NOT_SELECTED、locked_test=false，future Return birth 限制不变。唯一下一动作是明确语义并授权必要修补后再审计；本次不启动 GPU/Validation。
+
 ## 2026-10-01 STEP 6.3D FORMAL TRAIN TUNING CLOSURE
 
 - [x] `git fetch`，确认 `HEAD=origin/main=5b48ad665489e3891250b4b5439e5ef3759addbd`、tracked clean，保留原未跟踪文件。

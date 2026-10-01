@@ -1,5 +1,7 @@
 # PI-JWM 项目索引
 
+> 2026-10-01 当前：STEP 6.3D Validation 前审计完成：PRE_VALIDATION_AUDIT=BLOCKED、VALIDATION_NO_GO。数学、预算/缓存、batch16四步可完成性、随机/顺序独立性及统计 oracle 通过；CEM 旧候选重放触发更新的“newly”定义待研究者确认，runner 缺六类配对/Return/scorer 汇总与 Stage A 停止门。TRAIN MH-vs-S=26胜/58平/12负，仅诊断。TRAIN closure PASS 和两种 (4,0.1) 配置保留；Validation=0、SEARCH_METHOD=NOT_SELECTED、locked_test=false，future Return birth 限制不变。唯一下一动作是明确语义并授权必要修补后再审计；本次不启动 GPU/Validation。 入口：`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_SCIENTIFIC_IMPLEMENTATION_AUDIT.md` / `code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/09_pre_validation_audit_receipt.json`。
+
 > 2026-10-01 当前关口：`STEP_6_3D_FORMAL_TRAIN_TUNING_CLOSURE=PASS`。768 份 TRAIN 原始结果和本机 SHA 归档已验收，两种 CEM 的参数各为 `(4,0.1)`；Validation 未开始、搜索方法未选。入口：`docs/implementation_records/STEP_06_3D_FORMAL_TRAIN_TUNING_CLOSURE.md` 与 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/train_tuning_closure_acceptance.json`。future Return birth 支持边界保留。
 
 > 2026-09-30 当前关口：STEP 6.3D-PREFLIGHT-PATCH 的静态 Objective 资格、TRAIN-only H4 支持诊断和 CPU batch 等价已通过；正式 6.3D 搜索方法比较暂停，方法未选。入口：`docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md` 与 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json`。

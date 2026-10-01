@@ -1,0 +1,116 @@
+{
+  "batch_size": 16,
+  "claim": "All iterations can accommodate one 16-branch H1-H4 wave if Grammar remains legal; this does not guarantee scoreability on a real anchor.",
+  "minimum_new_transitions_per_full_wave_upper_bound": 64,
+  "rows": [
+    {
+      "budget": 256,
+      "complete_h4": 64,
+      "discrete_sha256": "9180e471973bdfc091c50739630a768bb706719699bab82c9d3fa056cffae7ac",
+      "method": "HRS",
+      "quotas": [
+        256
+      ],
+      "scoreable_distinct": 64
+    },
+    {
+      "budget": 256,
+      "complete_h4": 64,
+      "discrete_sha256": "3e133741aae0812ee5fa2bf9b137a33de2de4272ca16306324f9e7305a15127e",
+      "method": "S-CEM",
+      "quotas": [
+        64,
+        64,
+        64,
+        64
+      ],
+      "scoreable_distinct": 64
+    },
+    {
+      "budget": 256,
+      "complete_h4": 65,
+      "discrete_sha256": "63e44325d5c8650f92b4c95a6b047f6868acda9373994a24a1ec715d74cee30d",
+      "method": "MH-CEM",
+      "quotas": [
+        64,
+        64,
+        64,
+        64
+      ],
+      "scoreable_distinct": 65
+    },
+    {
+      "budget": 512,
+      "complete_h4": 156,
+      "discrete_sha256": "3ad1e94b1d1e5e624fe9b4eb110d0f98798cad1c4375677cd72a685f36cd5d7a",
+      "method": "HRS",
+      "quotas": [
+        512
+      ],
+      "scoreable_distinct": 156
+    },
+    {
+      "budget": 512,
+      "complete_h4": 131,
+      "discrete_sha256": "9095e7fa94f32f6d0ef22655f327f2bae785a3449666d111a40ed468f15eea2e",
+      "method": "S-CEM",
+      "quotas": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "scoreable_distinct": 131
+    },
+    {
+      "budget": 512,
+      "complete_h4": 152,
+      "discrete_sha256": "2464f7819d07e4c786471e85df0282bbeb6403628384b3769a16acda83d9af04",
+      "method": "MH-CEM",
+      "quotas": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "scoreable_distinct": 152
+    },
+    {
+      "budget": 1024,
+      "complete_h4": 328,
+      "discrete_sha256": "23cf00879da4673df8b37afef6955df18dbb8b9adc56921c537f7cfec16cdb76",
+      "method": "HRS",
+      "quotas": [
+        1024
+      ],
+      "scoreable_distinct": 328
+    },
+    {
+      "budget": 1024,
+      "complete_h4": 304,
+      "discrete_sha256": "41c1668b8d8e97588a9be17661c2a99dbcf37c73c9b594c31c277eea861fc302",
+      "method": "S-CEM",
+      "quotas": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "scoreable_distinct": 304
+    },
+    {
+      "budget": 1024,
+      "complete_h4": 322,
+      "discrete_sha256": "6692776521dff4bc7ab6f7d8617cf306f3748070f4bd0b115d58396b6920ce4c",
+      "method": "MH-CEM",
+      "quotas": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "scoreable_distinct": 321
+    }
+  ],
+  "verdict": "PASS"
+}

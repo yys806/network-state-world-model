@@ -1,0 +1,81 @@
+{
+  "anchors": 64,
+  "budgets": [
+    256,
+    512,
+    1024
+  ],
+  "comparisons": [
+    [
+      "S-CEM",
+      "HRS"
+    ],
+    [
+      "MH-CEM",
+      "HRS"
+    ],
+    [
+      "MH-CEM",
+      "S-CEM"
+    ]
+  ],
+  "current_runner_missing": [
+    "six-way pairwise partition and 320 invariant",
+    "Return-birth boundary counts",
+    "scorer exception counts",
+    "1024 Stage-A-only completion and stop boundary"
+  ],
+  "methods": [
+    "HRS",
+    "S-CEM",
+    "MH-CEM"
+  ],
+  "nonadditive_count_warning": "complete counts paths; scoreable counts distinct fingerprints; unscoreable counts paths. Do not claim complete=distinct_scoreable+unscoreable.",
+  "pairwise_partition": [
+    "only_left_scoreable",
+    "only_right_scoreable",
+    "both_scoreable_left_win",
+    "both_scoreable_right_win",
+    "both_scoreable_tie",
+    "both_unscoreable"
+  ],
+  "partition_invariant": "sum six mutually exclusive bins = total_paired_cases = 320",
+  "per_method_budget_required": {
+    "N_unique_transition_evals": "sum budget_receipt.N_unique_transition_evals; separate nominal B_WM",
+    "cache_hits": "sum budget_receipt.N_cache_hits",
+    "case_count": "320",
+    "grammar_dead_end_count": "sum budget_receipt.N_dead_end_branches",
+    "h4_scoreable_success_count": "best_objective != null count",
+    "h4_scoreable_success_rate": "count / 320",
+    "return_birth_support_boundary_count": "sum score_residuals counts whose key contains UNSUPPORTED_FUTURE_RETURN_BIRTH; repeated scorer events",
+    "scorer_exception_count": "sum support_horizon_counts.SCORER_EXCEPTION; do not double count score_residuals",
+    "total_complete_h4": "sum outcome.complete_sequence_count (completion attempts)",
+    "total_distinct_scoreable_h4": "sum outcome.h4_scoreable_count (deduplicated within solve)",
+    "total_unscoreable_h4": "sum outcome.h4_unscoreable_count (completion attempts)",
+    "wall_clock_diagnostic": "sum in-solve timers plus separately logged actual start/finish/elapsed"
+  },
+  "primary_budget": 1024,
+  "schema_version": "PIJWM-Validation-summary-v1",
+  "seeds": [
+    6311,
+    6312,
+    6313,
+    6314,
+    6315
+  ],
+  "sensitivity_only": {
+    "changes_primary_selection": false,
+    "optional_holm": "NOT_SELECTED: no preregistered bootstrap p-value definition; no automatic Holm test",
+    "simultaneous_diagnostic_plan": "For the three primary comparisons, reuse 10000 draws of 64 anchor clusters with seed6316; retain five paired seeds and the same draw indices across comparisons. Report per-comparison Bonferroni percentile 98.333333% intervals (tail 0.05/(2*3), indices floor(tail*10000) and floor((1-tail)*10000)). Diagnostic only; no guaranteed finite-sample simultaneous coverage or change to primary selection."
+  },
+  "statistics": {
+    "anchor_cluster_mean_advantage": true,
+    "cluster_unit": "anchor; retain five paired seed outcomes",
+    "percentile_ci95": true,
+    "raw_win_tie_loss": true,
+    "replications": 10000,
+    "seed": 6316
+  },
+  "validation_outcomes_read": false,
+  "verdict": "PREREGISTERED_RUNNER_NOT_CONFORMANT"
+}

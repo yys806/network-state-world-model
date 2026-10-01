@@ -1,3 +1,7 @@
+## 2026-10-01 Validation 前审计工具
+
+`code/scripts/audit_step6_3d_pre_validation_v1.py` 只用合成 TRAIN-only CPU fixture 与现有 TRAIN raw，生成概率/预算/随机顺序/统计 oracle 和 NO_GO 收据；不调用 formal runner、不读取 Validation outcome。证据入口 `code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/09_pre_validation_audit_receipt.json`；原搜索源码未改。
+
 # 模块导航地图
 
 ## 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH 增量

@@ -1,3 +1,9 @@
+## 2026-10-01 STEP 6.3D PRE-VALIDATION AUDIT（当前）
+
+STEP 6.3D Validation 前审计完成：PRE_VALIDATION_AUDIT=BLOCKED、VALIDATION_NO_GO。数学、预算/缓存、batch16四步可完成性、随机/顺序独立性及统计 oracle 通过；CEM 旧候选重放触发更新的“newly”定义待研究者确认，runner 缺六类配对/Return/scorer 汇总与 Stage A 停止门。TRAIN MH-vs-S=26胜/58平/12负，仅诊断。TRAIN closure PASS 和两种 (4,0.1) 配置保留；Validation=0、SEARCH_METHOD=NOT_SELECTED、locked_test=false，future Return birth 限制不变。唯一下一动作是明确语义并授权必要修补后再审计；本次不启动 GPU/Validation。
+
+记录：`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_SCIENTIFIC_IMPLEMENTATION_AUDIT.md`；机器验收：`code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/09_pre_validation_audit_receipt.json`。下方均为较早记录。
+
 ## 2026-10-01 STEP 6.3D FORMAL TRAIN TUNING CLOSURE（当前）
 
 `STEP_6_3D_FORMAL_TRAIN_TUNING_CLOSURE=PASS`：RTX 3080 Ti 上正式 TRAIN-only 搜索调参 768/768 份原始结果已逐份验身份、SHA 归档并独立重算选参。名义和实际 World Model 一步转移均为 393,216；S-CEM、MH-CEM 分别冻结 `(K=4,rho=0.1)`。所有八组参数各 48/96 次找到可评分 H4；16/32 锚点始终未找到。future Return birth 固定支持限制保留，`H4_SEARCH_COMPARISON_READINESS=SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`。这只是 TRAIN 选参，不是方法优劣或系统性能结论。`VALIDATION_COMPARISON=NOT_STARTED`、`SEARCH_METHOD=NOT_SELECTED`、`locked_test=false`。原始结果、日志、收据和本机归档 SHA 见 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/`；说明见 `docs/implementation_records/STEP_06_3D_FORMAL_TRAIN_TUNING_CLOSURE.md`。下方段落均为较早快照。

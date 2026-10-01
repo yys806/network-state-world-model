@@ -1,0 +1,96 @@
+{
+  "B_WM_cache_fairness": "PASS",
+  "H4_SEARCH_COMPARISON_READINESS": "SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION",
+  "HRS_implementation": "PASS",
+  "MH_CEM_full_implementation": "BLOCKED_NEWLY_SCOREABLE_SEMANTICS",
+  "MH_CEM_layer_implementation": "PASS",
+  "PRE_VALIDATION_AUDIT": "BLOCKED",
+  "SEARCH_METHOD": "NOT_SELECTED",
+  "S_CEM_full_implementation": "BLOCKED_NEWLY_SCOREABLE_SEMANTICS",
+  "S_CEM_layer_implementation": "PASS",
+  "TRAIN_MH_VS_S": {
+    "loss": 12,
+    "tie": 58,
+    "win": 26
+  },
+  "TRAIN_TUNING_CLOSURE": "PASS_IDENTITY_AND_FROZEN_RULE_UNCHANGED; does not establish this new semantic gate",
+  "VALIDATION_COMPARISON": "NOT_STARTED",
+  "VALIDATION_DECISION": "VALIDATION_NO_GO",
+  "VALIDATION_EXECUTION_ORDER": "UNCHANGED_PENDING_NO_GO_RESOLUTION",
+  "VALIDATION_RESULT_COUNT": 0,
+  "baseline_commit": "b9b597a654c7c07105271b1cbb1103dc9bc10dab",
+  "batch_quota_h4": "PASS",
+  "blockers": [
+    "Meaning of newly scoreable H4 is unresolved; cached previous candidates trigger later CEM updates in a deterministic counterexample.",
+    "Formal runner does not implement the preregistered six-way paired partition, Return-birth/scorer exception summaries, or Stage-A-only stop boundary."
+  ],
+  "cem_update_math": "PASS",
+  "current_runner_order": [
+    256,
+    512,
+    1024
+  ],
+  "elite_update_gate": "AWAITING_RESEARCHER_DECISION",
+  "execution_order_independence": "PASS_BOUNDED_SYNTHETIC_AND_NAMESPACE",
+  "future_stage_A": {
+    "budget": 1024,
+    "cases": 960,
+    "cem_configs": {
+      "MH-CEM": [
+        4,
+        0.1
+      ],
+      "S-CEM": [
+        4,
+        0.1
+      ]
+    },
+    "methods": [
+      "HRS",
+      "S-CEM",
+      "MH-CEM"
+    ],
+    "nominal_transitions": 983040,
+    "requires_authorization": true,
+    "stop_after_completion_for_researcher_review": true
+  },
+  "future_stage_B": {
+    "auto_start": false,
+    "budgets": [
+      256,
+      512
+    ],
+    "requires_separate_authorization": true
+  },
+  "gpu_search_started": false,
+  "locked_test": false,
+  "method_selection_oracle": "PASS",
+  "recommended_order_if_blockers_resolved": [
+    1024,
+    256,
+    512
+  ],
+  "rng_independence": "PASS_BOUNDED_SYNTHETIC",
+  "schema": "PREREGISTERED_RUNNER_NOT_CONFORMANT",
+  "scientific_sources_modified": false,
+  "source_sha256": {
+    "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/02_train_structural_support_catalog.json": "9545baa8a5b21e4a6da6f072202807d0569f3edd66f9927eb9d2e6571e1bfef1",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/15_train_anchor_manifest_objective_eligible.json": "561886c08dd857a725cf10e076e93171ecbdc6254b2b897da1f1b9b3c240c511",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/19_formal_selected_deadline_sidecars.json": "7c9128f11043af2048ed6939544be5e08800ba81b89cdc00258d691aeba86695",
+    "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py": "8c4b7cf56d8a74d6b9c07caf6ee46e3d35870e77676c7abbd299ed1f28d9455b",
+    "code/scripts/run_step6_3d_one_cpu_solve_v1.py": "31ca346037bb86b46838c30c12fa577fd26f8deca3e103c5f73c8d9f521fc544",
+    "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py": "25ca59719023ed8d94b4f864041f7edf56b1b495a6fe86d5417cef94742c8a48",
+    "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad",
+    "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py": "e27e460962f1dcff8dfab8bb33fbc05753a6d8a8358ac78b1cab1c8714c45daa",
+    "code/src/pi_jwm/step6_3b_candidate_support_v1.py": "d15638fb4697c49129ce17489fde4ce5b048c5a92aacd577a2119357105159a1",
+    "code/src/pi_jwm/step6_3c_candidate_domain_v1.py": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409",
+    "code/src/pi_jwm/step6_3c_search_protocol_v1.py": "6c2ec893325a56515e451d3b3594fd05ce810eb4c9cc420f29a7fb863caf719c",
+    "code/src/pi_jwm/step6_3d_anchor_selection_v1.py": "d55c18ee5d5812b66247446f0df85794ab590ef4777896c1c9ab091e32edac7d",
+    "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py": "f602bb5797a776f76f13cd9b9e3038ef202d6c78098f5f8401a76f198807e5c5",
+    "code/src/pi_jwm/step6_3d_method_selection_v1.py": "8606f916e1c8c2590d78c26611be3337ce37274cbb6cbf834dd48b901aef70ba",
+    "code/src/pi_jwm/step6_3d_structured_proposal_v1.py": "8b18e62de3cdd3746ac5a89dd5bafb8d3ae62ce0729ca9156c593f4d6bada040"
+  },
+  "stage_plan_status": "NOT_ACTIVATED; after research clarification and authorized implementation repair, re-audit; no automatic run",
+  "validation_outcomes_read": false
+}

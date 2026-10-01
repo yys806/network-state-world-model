@@ -1,0 +1,63 @@
+{
+  "bootstrap_oracle": {
+    "anchor_cluster_count": 64,
+    "bootstrap_replications": 10000,
+    "bootstrap_seed": 6316,
+    "bootstrap_type": "anchor_cluster_percentile",
+    "ci95_lower": -0.043750000000000004,
+    "ci95_upper": 0.037500000000000006,
+    "mean_paired_advantage": -0.003125,
+    "seeds_per_anchor": 5
+  },
+  "lower_bound_strict_positive": true,
+  "pairwise_six_categories_oracle": true,
+  "scenarios": [
+    {
+      "actual": "S-CEM",
+      "expected": "S-CEM",
+      "lower_bounds": [
+        0.1,
+        -0.1,
+        0.0
+      ]
+    },
+    {
+      "actual": "MH-CEM",
+      "expected": "MH-CEM",
+      "lower_bounds": [
+        -0.1,
+        0.1,
+        0.0
+      ]
+    },
+    {
+      "actual": "MH-CEM",
+      "expected": "MH-CEM",
+      "lower_bounds": [
+        0.1,
+        0.1,
+        0.1
+      ]
+    },
+    {
+      "actual": "S-CEM",
+      "expected": "S-CEM",
+      "lower_bounds": [
+        0.1,
+        0.1,
+        0.0
+      ]
+    },
+    {
+      "actual": "HRS",
+      "expected": "HRS",
+      "lower_bounds": [
+        0.0,
+        -0.1,
+        0.1
+      ]
+    }
+  ],
+  "superiority_language": "passes pre-registered superiority criterion; no family-wise claim",
+  "verdict": "PASS"
+}

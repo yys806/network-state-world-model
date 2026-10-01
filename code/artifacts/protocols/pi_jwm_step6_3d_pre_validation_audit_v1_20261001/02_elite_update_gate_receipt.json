@@ -1,0 +1,183 @@
+{
+  "actual_implementation": "unique_current counts distinct scoreable candidates appearing this iteration, including previously scored/cache-replayed H4",
+  "conflict": "If newly means newly discovered in this solve, the update gate violates the instruction. If it means newly completed this iteration, it can pass. No semantic choice is made by the audit.",
+  "current_and_retained_pool_deduplicated": true,
+  "documented_intent": "<2 newly scoreable H4 => proposal must not update",
+  "evidence": {
+    "MH-CEM": {
+      "cache_hits": 136,
+      "iteration_rows": [
+        {
+          "elite_count": 1,
+          "iteration": 1,
+          "proposal_updated": true,
+          "proposed_sequences": 16,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 64
+        },
+        {
+          "elite_count": 1,
+          "iteration": 2,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 128
+        },
+        {
+          "elite_count": 1,
+          "iteration": 3,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 192
+        },
+        {
+          "elite_count": 1,
+          "iteration": 4,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 256
+        }
+      ],
+      "new_scoreable_after_first_iteration": 0,
+      "total_globally_new_scoreable": 2,
+      "update_calls": [
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.525
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.299375
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.19220312499999997
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.14129648437499998
+          ],
+          "proposal_tables_changed": true
+        }
+      ]
+    },
+    "S-CEM": {
+      "cache_hits": 136,
+      "iteration_rows": [
+        {
+          "elite_count": 1,
+          "iteration": 1,
+          "proposal_updated": true,
+          "proposed_sequences": 16,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 64
+        },
+        {
+          "elite_count": 1,
+          "iteration": 2,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 128
+        },
+        {
+          "elite_count": 1,
+          "iteration": 3,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 192
+        },
+        {
+          "elite_count": 1,
+          "iteration": 4,
+          "proposal_updated": true,
+          "proposed_sequences": 32,
+          "quota": 64,
+          "retained_count": 1,
+          "retained_from_previous": 0,
+          "unique_h4_scoreable": 2,
+          "unique_transition_evals": 256
+        }
+      ],
+      "new_scoreable_after_first_iteration": 0,
+      "total_globally_new_scoreable": 2,
+      "update_calls": [
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.525
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.299375
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.19220312499999997
+          ],
+          "proposal_tables_changed": true
+        },
+        {
+          "elite_count": 1,
+          "globally_distinct_scoreable_so_far": 2,
+          "mode_q0_weight_after": [
+            0.14129648437499998
+          ],
+          "proposal_tables_changed": true
+        }
+      ]
+    }
+  },
+  "fewer_than_two_current_distinct_guard": "PASS: sole scoreable fingerprint fixture never updates",
+  "retained_cap": 5,
+  "scientific_sources_modified": false,
+  "status": "Awaiting Researcher Decision",
+  "verdict": "BLOCKED_PENDING_NEWLY_SCOREABLE_DEFINITION"
+}

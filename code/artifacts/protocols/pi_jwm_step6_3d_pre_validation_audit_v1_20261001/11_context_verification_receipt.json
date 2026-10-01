@@ -1,0 +1,44 @@
+{
+  "compileall": {
+    "command": "python -m compileall -q code/src code/scripts code/tests",
+    "exit_code": 0
+  },
+  "context_consistency": {
+    "reviewed": [
+      "00",
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08"
+    ],
+    "state": "VALIDATION_NO_GO; Validation count=0; method NOT_SELECTED; locked_test=false",
+    "unchanged_reason": {
+      "01": "research question unchanged",
+      "02": "search architecture unchanged",
+      "03": "formal data flow unchanged",
+      "06": "no new researcher decision; newly semantics explicitly pending"
+    },
+    "updated": [
+      "00",
+      "04",
+      "05",
+      "07",
+      "08"
+    ]
+  },
+  "focused_tests": {
+    "command": "python -m unittest discover -s code/tests -p 'test_step6_3d*.py'",
+    "interpretation": "Tests pass audit evidence regressions; production scientific acceptance is still NO_GO",
+    "result": "OK",
+    "seconds": 18.101,
+    "tests_run": 19
+  },
+  "locked_test": false,
+  "scientific_source_change": false,
+  "validation_outcomes_read": false,
+  "verdict": "PASS_CONTEXT_AND_LOCAL_VERIFICATION"
+}

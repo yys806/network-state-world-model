@@ -3,6 +3,60 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.3D-PRE-VALIDATION-AUDIT-20261001",
+      "name": "Pre-Validation scientific and implementation Go-No-Go audit",
+      "date": "2026-10-01",
+      "research_question": "Does the frozen three-method search and formal runner satisfy the pre-Validation implementation and statistical gates?",
+      "method": "unmodified_solver_train_only_synthetic_oracles_and_read_only_train_results",
+      "code": "code/scripts/audit_step6_3d_pre_validation_v1.py",
+      "code_version": {
+        "identity_type": "source_sha256_and_audit_manifest",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/10_sha_manifest.json",
+        "manifest_sha256": "54c2db9f87c0e1a6df6c252bb6cd6f1c26faef1e898298cbd6ae399b1a953a62",
+        "git_commit": "b9b597a654c7c07105271b1cbb1103dc9bc10dab",
+        "note": "Baseline audited; audit closure commit recorded by Git history."
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/07_validation_output_schema_receipt.json",
+      "parameters": {
+        "batch_size": 16,
+        "budgets": [
+          256,
+          512,
+          1024
+        ],
+        "frozen_cem_config": [
+          4,
+          0.1
+        ],
+        "formal_validation_run": false,
+        "gpu_search": false
+      },
+      "protocol": "docs/implementation_records/STEP_06_3D_PRE_VALIDATION_SCIENTIFIC_IMPLEMENTATION_AUDIT.md",
+      "data": "code/tests/test_step6_3b_candidate_grammar_v1.py",
+      "split": [
+        "TRAIN_ONLY_SYNTHETIC",
+        "dev_train"
+      ],
+      "seed": [
+        6301,
+        6302,
+        6316
+      ],
+      "checkpoint": null,
+      "result": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/09_pre_validation_audit_receipt.json",
+      "metrics": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/08_train_mh_vs_s_diagnostic.json",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/09_pre_validation_audit_receipt.json",
+      "status": "pre_validation_audit_blocked_no_go",
+      "conclusion": "Mechanism oracles pass; cached-old scoreable updates need semantic clarification and runner lacks required schema/Stage-A stopping. Validation NO_GO.",
+      "summary_zh": "STEP 6.3D Validation 前审计完成：PRE_VALIDATION_AUDIT=BLOCKED、VALIDATION_NO_GO。数学、预算/缓存、batch16四步可完成性、随机/顺序独立性及统计 oracle 通过；CEM 旧候选重放触发更新的“newly”定义待研究者确认，runner 缺六类配对/Return/scorer 汇总与 Stage A 停止门。TRAIN MH-vs-S=26胜/58平/12负，仅诊断。TRAIN closure PASS 和两种 (4,0.1) 配置保留；Validation=0、SEARCH_METHOD=NOT_SELECTED、locked_test=false，future Return birth 限制不变。唯一下一动作是明确语义并授权必要修补后再审计；本次不启动 GPU/Validation。",
+      "claim_boundary": "Implementation audit and TRAIN diagnostics only; no Validation outcome, final method or performance conclusion",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "checkpoint": "null: synthetic transition oracle loads no model checkpoint; original TRAIN checkpoint remains bound by the unchanged raw results.",
+        "data": "Tracked fixture defines synthetic inputs; accepted TRAIN raw files and each SHA are referenced by the diagnostic receipt."
+      }
+    },
+    {
       "id": "STEP-6.3D-FORMAL-TRAIN-TUNING-CLOSURE-20261001",
       "name": "Formal TRAIN-only S-CEM and MH-CEM tuning on RTX 3080 Ti",
       "date": "2026-10-01",

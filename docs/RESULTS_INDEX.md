@@ -1,5 +1,7 @@
 # PI-JWM 结果索引
 
+> 2026-10-01 当前：STEP 6.3D Validation 前审计完成：PRE_VALIDATION_AUDIT=BLOCKED、VALIDATION_NO_GO。数学、预算/缓存、batch16四步可完成性、随机/顺序独立性及统计 oracle 通过；CEM 旧候选重放触发更新的“newly”定义待研究者确认，runner 缺六类配对/Return/scorer 汇总与 Stage A 停止门。TRAIN MH-vs-S=26胜/58平/12负，仅诊断。TRAIN closure PASS 和两种 (4,0.1) 配置保留；Validation=0、SEARCH_METHOD=NOT_SELECTED、locked_test=false，future Return birth 限制不变。唯一下一动作是明确语义并授权必要修补后再审计；本次不启动 GPU/Validation。 入口：`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_SCIENTIFIC_IMPLEMENTATION_AUDIT.md` / `code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/09_pre_validation_audit_receipt.json`。
+
 2026-10-01 TRAIN-only 选参观察：S-CEM/MH-CEM 的四组配置均各 48/96 cases 找到可评分 H4；按冻结 TRAIN 排序分别选 `(K=4,rho=0.1)`。16/32 锚点持续无可评分结果，future Return birth 限制保留。完整计数、配对净胜、Grammar/Return 残余和每锚点/种子见 `code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/train_tuning_diagnostic_summary.json`；验收状态见 `train_tuning_closure_acceptance.json`。这些不是 Validation HRS 对照、最终方法选择或闭环性能结果。
 
 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH：正式 32 TRAIN / 64 Validation 锚点静态候选域均非空且 Objective cohort>0。TRAIN-only HRS seed6391/B_WM64：16/32 锚点有 H4 可评分候选，16/32 无；406 条完整 H4 中 131 可评分、275 不可评分，275 条均有 future Return birth 支持边界；另有 240 个 Grammar dead-end 分支。CPU batch 1/4/8/16 与串行等价，本次吞吐 0.8695/0.8911/0.9640/0.9218 unique transitions/s。原始 20–25 机器收据可核验；这是前置诊断，不是 HRS/S-CEM/MH-CEM 胜负或闭环性能结果。

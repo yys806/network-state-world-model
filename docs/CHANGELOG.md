@@ -1,5 +1,7 @@
 # 项目结构与知识入口变更记录
 
+> 2026-10-01 当前：STEP 6.3D Validation 前审计完成：PRE_VALIDATION_AUDIT=BLOCKED、VALIDATION_NO_GO。数学、预算/缓存、batch16四步可完成性、随机/顺序独立性及统计 oracle 通过；CEM 旧候选重放触发更新的“newly”定义待研究者确认，runner 缺六类配对/Return/scorer 汇总与 Stage A 停止门。TRAIN MH-vs-S=26胜/58平/12负，仅诊断。TRAIN closure PASS 和两种 (4,0.1) 配置保留；Validation=0、SEARCH_METHOD=NOT_SELECTED、locked_test=false，future Return birth 限制不变。唯一下一动作是明确语义并授权必要修补后再审计；本次不启动 GPU/Validation。 入口：`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_SCIENTIFIC_IMPLEMENTATION_AUDIT.md` / `code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/09_pre_validation_audit_receipt.json`。
+
 ## 2026-10-01：STEP 6.3D FORMAL TRAIN TUNING CLOSURE
 
 新增只读远端 TRAIN 结果备份及本机独立验收脚本；768 raw JSON、日志和两份 runner 收据经逐文件 SHA 核对、重建四组 CEM 排名，生成逐组/逐锚点诊断、接受收据、ZIP/tar 与 SHA manifest。同步实施记录、AI_CONTEXT、权威计划/进展和实验/结果索引；Validation 未启动，方法未选，模型与搜索规则未改。

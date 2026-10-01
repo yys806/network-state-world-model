@@ -1,0 +1,66 @@
+{
+  "elite": [
+    0.25,
+    0.75,
+    0
+  ],
+  "epsilon": 0.05,
+  "eta": 0.5,
+  "first_actual": {
+    "a": 0.29375,
+    "b": 0.53125,
+    "c": 0.17500000000000002
+  },
+  "first_expected_fraction": {
+    "a": "47/160",
+    "b": "17/32",
+    "c": "7/40"
+  },
+  "mask_mechanism": "Exact legal-option mask is part of the table key; changed masks get fresh normalized q0. No illegal sparse mass transfers.",
+  "method_layers": {
+    "HRS": {
+      "fresh_state": true,
+      "mask_identity_separate": true,
+      "remaining_layers_uniform": true,
+      "updated_layers": []
+    },
+    "MH-CEM": {
+      "fresh_state": true,
+      "mask_identity_separate": true,
+      "remaining_layers_uniform": true,
+      "updated_layers": [
+        "assignment",
+        "count",
+        "mode",
+        "start",
+        "subset"
+      ]
+    },
+    "S-CEM": {
+      "fresh_state": true,
+      "mask_identity_separate": true,
+      "remaining_layers_uniform": true,
+      "updated_layers": [
+        "count",
+        "mode"
+      ]
+    }
+  },
+  "q0": [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+  ],
+  "second_actual": {
+    "a": 0.15619791666666666,
+    "b": 0.26901041666666664,
+    "c": 0.5747916666666666
+  },
+  "second_oracle": {
+    "a": 0.15619791666666666,
+    "b": 0.26901041666666664,
+    "c": 0.5747916666666667
+  },
+  "strict_objective_before_fingerprint": true,
+  "verdict": "PASS"
+}
