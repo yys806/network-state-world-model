@@ -2,27 +2,23 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
-      "id": "STEP-6.3D-CANDIDATE-OPTIMIZER-SELECTION",
+      "id": "STEP-6.3D-VALIDATION-STAGE-B",
       "type": "candidate_method_research",
       "status": "deferred",
-      "reason": "B1/B2 blocker closure passed on 2026-10-01 and Validation GO is frozen. Stage A at B1024 still needs explicit researcher launch authorization; STOP after completion/review. Stage B256/512 needs separate authorization. Historical TRAIN identity is retained; new Validation config is independent.",
-      "summary_zh": "PRE_VALIDATION_BLOCKER_CLOSURE=PASS，PRE_VALIDATION_AUDIT=PASS，VALIDATION_GO。研究者已明确CEM更新门统计当前轮实际完成的不同可评分四步候选；历史重采样可计入，retained-only不计入，原solver无改动。runner已分primary/diagnostic，1024完成后硬停止，256/512另行授权；六类配对统计及Return/scorer诊断完整。旧TRAIN 768 raw/log/05/06及原执行身份保持，TRAIN_REUSE_VALID=true、TRAIN_RERUN_REQUIRED=false，两种CEM仍(4,0.1)。新3080Ti Validation身份单独冻结。VALIDATION_RESULT_COUNT=0，VALIDATION_COMPARISON=NOT_STARTED，SEARCH_METHOD=NOT_SELECTED，locked_test=false；future Return-birth限制保留。唯一下一动作是研究者审阅并单独授权Stage A；本次不启动GPU或Validation。",
+      "reason": "Stage A B1024 explicitly authorized and running. Stage B256/512 remains deferred until separate researcher authorization after Stage A review.",
+      "summary_zh": "Stage A正式运行中；只延期Stage B256/512和后续实验，不得自动接续。",
       "authorization_required": true,
       "auto_start": false,
       "locked_test_accessed": false,
       "entrypoint": "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py",
       "required_predecessors": [
-        "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/08_final_pre_validation_acceptance.json",
-        "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/03_validation_execution_config_3080ti.json",
-        "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json",
-        "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/train_tuning_closure_acceptance.json",
-        "researcher authorization of Formal Validation comparison"
+        "Stage A completion and researcher review",
+        "researcher explicit Stage B authorization"
       ],
       "forbidden_until_authorized": [
-        "formal Validation paired method comparison",
-        "search method selection",
+        "Stage B B256/B512",
         "closed-loop execution",
-        "GPU run",
+        "baseline/ablation",
         "locked_test access"
       ]
     },

@@ -1,3 +1,7 @@
+## 2026-10-01 Stage A 研究范围
+
+研究者已授权仅在B1024上正式比较HRS、S-CEM K4/rho0.1与MH-CEM K4/rho0.1。Stage A正在运行，方法尚未选出；最终SEARCH_METHOD只代表Planner v1 structured-search backbone / pure-search baseline，不代表完整hybrid PI-JWM planner冻结。learned proposal、Route当前NOOP支持边界、closed-loop warm start/fallback及baseline/ablation/locked test仍需单独研究与授权。
+
 # 研究背景与问题
 
 ## 2026-09-29 STEP 6.3D 搜索方法研究问题

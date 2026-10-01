@@ -1,3 +1,7 @@
+## 2026-10-01 Stage A 当前数据流
+
+研究者已授权primary调用；RTX3080Ti冻结身份的B1024结果正原子写入solve_results/validation，完成文件经只读SFTP验身份/SHA备份至本地D:，启动前数量0，首批已产生真实结果。正式summary/方法选择待960完成；之后STOP，Stage B仍未启动。下方为启动前快照。
+
 ## 2026-10-01 STEP 6.3D BLOCKER CLOSURE
 
 不可改的TRAIN raw/05/06/资格config/closure → SHA父级连接 → 新Validation config/current source/独立ID → 将来明确primary调用 → 1024主收据及方法选择 → STOP；将来另行授权diagnostic才读取Stage A并做256/512诊断。当前正式outcome数量仍0。 依据：`docs/contracts/PIJWM_STEP_06_3D_VALIDATION_STAGES_AND_CEM_UPDATE_SEMANTICS_V1.md`、`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_BLOCKER_CLOSURE.md`。

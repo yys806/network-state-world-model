@@ -1,3 +1,7 @@
+## 2026-10-01 Stage A 运行监控
+
+冻结formal runner不变，正在执行validation/primary。运行管理与只读备份工具位于`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/`；`backup_snapshot.py`交互输入SSH凭据，验科学source和结果identity后做原子本地备份，新增工具不属于冻结算法source集合。入口：`docs/implementation_records/STEP_06_3D_FORMAL_VALIDATION_STAGE_A.md`。没有新增科研方法模块。
+
 ## 2026-10-01 STEP 6.3D BLOCKER CLOSURE
 
 新增 `code/scripts/close_step6_3d_pre_validation_blockers_v1.py` 负责B1语义、历史TRAIN完整性、身份桥、旧新runner等价及final Go/No-Go；`run_step6_3d_formal_cpu_matrix_v1.py`新增阶段/summary/provenance检查。旧 `audit_step6_3d_pre_validation_v1.py` CLI绑定旧source与NO_GO历史快照，不对新source直接重跑；本次新审计复用其未改的局部oracle。 依据：`docs/contracts/PIJWM_STEP_06_3D_VALIDATION_STAGES_AND_CEM_UPDATE_SEMANTICS_V1.md`、`docs/implementation_records/STEP_06_3D_PRE_VALIDATION_BLOCKER_CLOSURE.md`。

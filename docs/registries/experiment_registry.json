@@ -3,6 +3,57 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.3D-VALIDATION-STAGE-A-20261001",
+      "name": "Formal Validation Stage A structured-search backbone selection",
+      "date": "2026-10-01",
+      "research_question": "Which frozen pure-search backbone passes the registered primary B1024 paired criterion?",
+      "method": "HRS S-CEM K4rho0.1 MH-CEM K4rho0.1",
+      "code": "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py",
+      "code_version": {
+        "identity_type": "frozen_source_sha256",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/03_validation_execution_config_3080ti.json",
+        "manifest_sha256": "8fc7a0ba10b9936395d8bcdc6b56ff76e76d7ac477b77659c096d47e45898b86",
+        "git_commit": "587efdfbdb460f7fa810c5c23ac651afc5a4b339",
+        "note": "Remote scientific source remains frozen throughout run; local documentation commits do not change execution identity."
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/03_validation_execution_config_3080ti.json",
+      "parameters": {
+        "budget": 1024,
+        "expected_cases": 960,
+        "nominal_budget_total": 983040,
+        "batch_size": 16,
+        "device": "cuda",
+        "precision": "FP32",
+        "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+        "stage_b_auto_start": false
+      },
+      "protocol": "docs/contracts/PIJWM_STEP_06_3D_VALIDATION_STAGES_AND_CEM_UPDATE_SEMANTICS_V1.md",
+      "data": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json",
+      "split": [
+        "dev_validation"
+      ],
+      "seed": [
+        6311,
+        6312,
+        6313,
+        6314,
+        6315
+      ],
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": null,
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/01_launch_preflight_receipt.json",
+      "status": "running_stage_a_primary",
+      "conclusion": "Launch preflight passed; final 960-case outcomes and selection are not yet accepted.",
+      "summary_zh": "研究者已单独授权并启动 Formal Validation Stage A（仅 B1024）：64锚点×5 seeds×3方法=960 cases，名义预算983,040。2026-10-01北京时间19:26在RTX3080Ti/CUDA/FP32/batch16启动，启动前源码/768 TRAIN/771文件SHA/64锚点/checkpoint/执行身份全部PASS，Validation起点0。首批2个case已通过身份检查并持久备份；这是运行快照，不是最终效果结论。STEP_6_3D_VALIDATION_STAGE_A=RUNNING，VALIDATION_COMPARISON=RUNNING，SEARCH_METHOD=NOT_SELECTED，Stage B=NOT_STARTED，locked_test=false；future Return-birth限制保留。唯一下一动作是监控并备份Stage A，960完成后独立验收并停止。选择范围仅Planner v1 structured-search backbone/pure-search baseline，不是最终hybrid planner冻结。",
+      "claim_boundary": "Stage A pure-search backbone selection only; running snapshot is not accepted method superiority or final hybrid planner freeze.",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "result": "null: formal Stage A still running, no final acceptance.",
+        "metrics": "null: final method rates/paired bootstrap/selection not yet available."
+      }
+    },
+    {
       "id": "STEP-6.3D-PRE-VALIDATION-BLOCKER-CLOSURE-20261001",
       "name": "Pre-Validation B1/B2 semantic and runner blocker closure",
       "date": "2026-10-01",
@@ -127,10 +178,34 @@
       },
       "configuration": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/05_selected_execution_config.json",
       "parameters": {
-        "methods": ["S-CEM", "MH-CEM"],
-        "configs": [[3, 0.1], [3, 0.2], [4, 0.1], [4, 0.2]],
+        "methods": [
+          "S-CEM",
+          "MH-CEM"
+        ],
+        "configs": [
+          [
+            3,
+            0.1
+          ],
+          [
+            3,
+            0.2
+          ],
+          [
+            4,
+            0.1
+          ],
+          [
+            4,
+            0.2
+          ]
+        ],
         "anchors": 32,
-        "seeds": [6301, 6302, 6303],
+        "seeds": [
+          6301,
+          6302,
+          6303
+        ],
         "budget_per_case": 512,
         "device": "NVIDIA GeForce RTX 3080 Ti",
         "precision": "FP32",
@@ -138,8 +213,14 @@
       },
       "protocol": "docs/implementation_records/STEP_06_3D_FORMAL_TRAIN_TUNING_CLOSURE.md",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train"],
-      "seed": [6301, 6302, 6303],
+      "split": [
+        "dev_train"
+      ],
+      "seed": [
+        6301,
+        6302,
+        6303
+      ],
       "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
       "result": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/06_frozen_selected_cem_configs.json",
       "metrics": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/train_tuning_diagnostic_summary.json",
@@ -174,13 +255,21 @@
         "device": "NVIDIA GeForce RTX 3080 Ti",
         "precision": "FP32",
         "selected_batch_size": 16,
-        "probe_batch_sizes": [8, 16, 32, 64],
+        "probe_batch_sizes": [
+          8,
+          16,
+          32,
+          64
+        ],
         "formal_train_tuning_executed": false,
         "validation_search_executed": false
       },
       "protocol": "docs/implementation_records/STEP_06_3D_3080TI_MIGRATION_QUALIFICATION.md",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train_gpu_diagnostic", "dev_validation_static_identity_only"],
+      "split": [
+        "dev_train_gpu_diagnostic",
+        "dev_validation_static_identity_only"
+      ],
       "seed": null,
       "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
       "result": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/14_acceptance.json",
@@ -221,13 +310,21 @@
         "diagnostic_seed": 6391,
         "B_WM_per_train_anchor": 64,
         "horizon": 4,
-        "batch_sizes_tested": [1, 4, 8, 16],
+        "batch_sizes_tested": [
+          1,
+          4,
+          8,
+          16
+        ],
         "checkpoint_frozen": true,
         "validation_search_executed": false
       },
       "protocol": "docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train_H4_preflight", "dev_validation_static_eligibility_only"],
+      "split": [
+        "dev_train_H4_preflight",
+        "dev_validation_static_eligibility_only"
+      ],
       "seed": 6391,
       "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
       "result": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json",
@@ -262,21 +359,47 @@
       "parameters": {
         "device": "cpu",
         "horizon": 4,
-        "budget_units": [256, 512, 1024],
+        "budget_units": [
+          256,
+          512,
+          1024
+        ],
         "train_tuning_budget": 512,
         "train_anchor_count": 32,
         "validation_anchor_count": 64,
         "route_policy": "EXPLICIT_NOOP_ONLY",
-        "train_tuning_seeds": [6301, 6302, 6303],
-        "validation_seeds": [6311, 6312, 6313, 6314, 6315],
+        "train_tuning_seeds": [
+          6301,
+          6302,
+          6303
+        ],
+        "validation_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
         "training": false,
         "gpu": false,
         "closed_loop": false
       },
       "protocol": "docs/implementation_records/STEP_06_3D_FIXED_BUDGET_SEARCH_METHOD_COMPARISON_V1.md",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train_tuning", "dev_validation_formal_comparison"],
-      "seed": [6301, 6302, 6303, 6311, 6312, 6313, 6314, 6315],
+      "split": [
+        "dev_train_tuning",
+        "dev_validation_formal_comparison"
+      ],
+      "seed": [
+        6301,
+        6302,
+        6303,
+        6311,
+        6312,
+        6313,
+        6314,
+        6315
+      ],
       "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
       "result": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929",
       "metrics": null,
@@ -313,11 +436,14 @@
         "horizon": 1,
         "route_policy": "EXPLICIT_NOOP_ONLY",
         "comm_selection": "TRAIN_SIGNATURE_CONDITIONAL_SELECTED_TASK_COUNT",
-        "numeric_semantic_tolerance_absolute": 1e-7
+        "numeric_semantic_tolerance_absolute": 1e-07
       },
       "protocol": "docs/implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train", "dev_validation_descriptive_only"],
+      "split": [
+        "dev_train",
+        "dev_validation_descriptive_only"
+      ],
       "seed": null,
       "checkpoint": null,
       "result": "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json",
@@ -360,7 +486,10 @@
       },
       "protocol": "docs/implementation_records/STEP_06_3B_STRUCTURED_CANDIDATE_GRAMMAR_AND_SUPPORT_POLICY.md",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train", "dev_validation_descriptive_only"],
+      "split": [
+        "dev_train",
+        "dev_validation_descriptive_only"
+      ],
       "seed": null,
       "checkpoint": null,
       "result": "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/07_step6_3b_acceptance.json",
@@ -452,7 +581,13 @@
         "baseline_execution": false,
         "closed_loop": false,
         "locked_test_accessed": false,
-        "objective_tuple": ["N_DDL", "A_DDL", "J_Delay", "J_Burden", "J_Effort"],
+        "objective_tuple": [
+          "N_DDL",
+          "A_DDL",
+          "J_Delay",
+          "J_Burden",
+          "J_Effort"
+        ],
         "comparison": "lexicographic_minimization"
       },
       "protocol": "docs/contracts/PIJWM_STEP_06_2_PLANNER_OBJECTIVE_CONTRACT_V1.md",
@@ -1065,11 +1200,20 @@
         "seed": 5601,
         "training_steps": 5520,
         "validation_windows_per_pass": 1104,
-        "validation_steps": [1104, 2208, 3312, 4416, 5520]
+        "validation_steps": [
+          1104,
+          2208,
+          3312,
+          4416,
+          5520
+        ]
       },
       "protocol": "code/artifacts/manifests/pi_jwm_step5_6a_formal_config_v1_20260924/formal_training_config_v1.json",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_train", "dev_validation"],
+      "split": [
+        "dev_train",
+        "dev_validation"
+      ],
       "seed": 5601,
       "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
       "result": "code/artifacts/manifests/pi_jwm_step5_6c_final_acceptance_20260928/final_acceptance_receipt.json",
@@ -1103,16 +1247,32 @@
       "configuration": "docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md",
       "parameters": {
         "device": "cpu",
-        "horizons": [1, 2, 3, 4],
+        "horizons": [
+          1,
+          2,
+          3,
+          4
+        ],
         "current_posterior": "mean",
         "future_prior": "mean",
         "service": "expectation",
-        "stochastic_seeds": [6101, 6102, 6103],
-        "candidate_batch_sizes": [1, 2, 4, 8]
+        "stochastic_seeds": [
+          6101,
+          6102,
+          6103
+        ],
+        "candidate_batch_sizes": [
+          1,
+          2,
+          4,
+          8
+        ]
       },
       "protocol": "docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md",
       "data": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1",
-      "split": ["dev_validation"],
+      "split": [
+        "dev_validation"
+      ],
       "seed": null,
       "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
       "result": "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/candidate_rollout_preflight_receipt.json",

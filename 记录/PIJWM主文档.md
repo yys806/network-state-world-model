@@ -1,3 +1,7 @@
+## 2026-10-01 研究者授权：Stage A backbone选择边界
+
+研究者明确只授权B1024 Stage A正式比较，960 cases后硬停止，Stage B另行授权；SEARCH_METHOD只表示Planner v1 structured-search backbone/pure-search baseline，不等于最终hybrid PI-JWM planner冻结。该决定未改变算法、Objective、候选域、参数或既有Return-birth支持边界。Stage A已启动，结果尚未验收。
+
 ## 2026-10-01 STEP 6.3D 更新门澄清与执行分阶段
 
 研究者冻结当前轮distinct scoreable H4语义，旧候选重采样可计、retained-only不可计；算法本来符合，无科研源修改。Validation执行分1024 PRIMARY完成硬停止、后续另行授权256/512 DIAGNOSTIC；预算/目标/参数/方法选择规则不变。详见 `docs/contracts/PIJWM_STEP_06_3D_VALIDATION_STAGES_AND_CEM_UPDATE_SEMANTICS_V1.md`。TRAIN复用有效，当前Validation0、方法未选、locked_test=false。

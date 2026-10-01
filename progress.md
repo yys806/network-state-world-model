@@ -1,3 +1,9 @@
+## 2026-10-01 STEP 6.3D FORMAL VALIDATION STAGE A（当前运行）
+
+研究者已单独授权并启动 Formal Validation Stage A（仅 B1024）：64锚点×5 seeds×3方法=960 cases，名义预算983,040。2026-10-01北京时间19:26在RTX3080Ti/CUDA/FP32/batch16启动，启动前源码/768 TRAIN/771文件SHA/64锚点/checkpoint/执行身份全部PASS，Validation起点0。首批2个case已通过身份检查并持久备份；这是运行快照，不是最终效果结论。STEP_6_3D_VALIDATION_STAGE_A=RUNNING，VALIDATION_COMPARISON=RUNNING，SEARCH_METHOD=NOT_SELECTED，Stage B=NOT_STARTED，locked_test=false；future Return-birth限制保留。唯一下一动作是监控并备份Stage A，960完成后独立验收并停止。选择范围仅Planner v1 structured-search backbone/pure-search baseline，不是最终hybrid planner冻结。
+
+记录：`docs/implementation_records/STEP_06_3D_FORMAL_VALIDATION_STAGE_A.md`；启动前机器收据：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/01_launch_preflight_receipt.json`；动态监控与本地备份在该运行目录。下方均为较早阶段快照，关于未授权/Validation0的表述不能代表当前运行。
+
 最终索引与归档验证：knowledge-index write/check passed=true、mismatches=[]；12项manifest SHA与staged Git blob一致；科研源码diff为空。收口结论VALIDATION_GO，正式Validation未开始。
 
 最终本地检查：27/27 tests（22.152秒）、compileall、diff、Context consistency均通过；新Execution ID=3b3fcfe775f947790a982929a292fb3f3b8f30396996f7f9b33270e7d6c9f215。索引与Git为最后收口；不启动Stage A。

@@ -1,0 +1,30 @@
+{
+  "files": [
+    {
+      "bytes": 4900,
+      "path": "01_launch_preflight_receipt.json",
+      "sha256": "91dd4276dafa31e0f1ca85f0c6a49af3a6d61a581789e489d7e04669c61bd65a"
+    },
+    {
+      "bytes": 245,
+      "path": "monitor_attachment_receipt.json",
+      "sha256": "f1a9119f1dafe171a354b973356051a2388369d66b63cbc85414a21289bd3931"
+    },
+    {
+      "bytes": 4416,
+      "path": "backup_snapshot.py",
+      "sha256": "8f95db3d517ee3aa02aa846b11273d6820f8e0b8124205528e49994c370170a4"
+    },
+    {
+      "bytes": 625,
+      "path": "remote_command.py",
+      "sha256": "11283a3cf7fecf3dee280c46dcfc3fe1fafe21dfec4e0d79648b2b209b16df84"
+    },
+    {
+      "bytes": 809,
+      "path": "03_launch_context_verification_receipt.json",
+      "sha256": "45d57cb9646021d1e7c58dd2ffdff035e34cc11573be6926eb1cb92a2d096313"
+    }
+  ],
+  "scope": "Launch evidence only; final inventory/archive acceptance pending"
+}
