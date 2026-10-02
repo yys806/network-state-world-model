@@ -1,3 +1,9 @@
+## 2026-10-02 17:23 Stage A 过半运行快照（非最终验收）
+
+515/960（53.6%）完成结果已独立验身份并逐文件SHA备份至本机D:，实际独特一步转移527,360；覆盖35锚点，315个已完成case找到可评分H4。未发现重复/错误执行身份、source drift、NaN/Inf或scorer exception。GPU仍为RTX3080Ti/CUDA/FP32/batch16，原runner持续运行，约21.9小时、23.53 cases/hour，预计还需约19小时，仅资源规划估算。Stage A=RUNNING，SEARCH_METHOD=NOT_SELECTED，Stage B=NOT_STARTED，locked_test=false；Return-birth限制保留，无新增阻塞。唯一下一动作继续监控/备份至960完成，再独立统计验收并停止。部分有序结果不得用于提前选择方法或宣称优势。
+
+证据：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/health_20261002T092315Z.json`。下方为较早快照。
+
 ## 2026-10-02 Stage A 运行监控快照（非最终验收）
 
 08:25北京时间已独立检查并逐文件SHA备份288/960 cases（30%），实际独特一步转移294,912；覆盖20个锚点，已有150个case找到可评分H4，因此未观察到全矩阵系统性零H4。没有重复/错误执行身份、NaN/Inf或评分器异常。约12.98小时、22.26 cases/hour，预计剩余约30.1小时，仅运行规划估算。源码与RTX3080Ti/CUDA/FP32/batch16身份保持冻结；Stage A仍RUNNING，SEARCH_METHOD=NOT_SELECTED，Stage B=NOT_STARTED，locked_test=false。无新增阻塞；唯一下一动作继续监控和持久备份至960完成，再独立验收并停止。

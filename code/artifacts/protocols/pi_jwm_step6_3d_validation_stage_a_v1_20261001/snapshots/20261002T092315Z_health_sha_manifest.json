@@ -1,0 +1,12 @@
+{
+  "backup_inventory": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/20261002T092228Z_backup_inventory.json",
+  "backup_inventory_sha256": "e7b36a6c7caa6a58b471ed082a0fd5a20d51b0368de629c7be77211a1364c4c4",
+  "files": [
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/health_20261002T092315Z.json",
+      "sha256": "897cfc2526a2c7b2254adb693ba1b56878eb49e8d117986435a554c350bb83c2"
+    }
+  ],
+  "locked_test": false,
+  "scope": "Running 515-case health/backup snapshot, not final acceptance"
+}

@@ -51,3 +51,9 @@ future Return-birth固定支持边界继续保留并单独统计；Grammar dead-
 ## 2026-10-02 09:09 Stage A 只读备份连接恢复
 
 01:00 UTC心跳中SFTP连接重置（10054），发生在只读source核对；重新连接确认原runner PID1663持续正常运行，未重启搜索。重试后305份完成结果已逐文件SHA备份并独立验身份，无duplicate、source drift、NaN/Inf或scorer exception。此事件属于已恢复的备份连接中断，不是正式搜索崩溃或科研阻塞。Stage A继续RUNNING；唯一下一动作继续监控/备份，Stage B=NOT_STARTED、SEARCH_METHOD=NOT_SELECTED、locked_test=false。机器记录：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/20261002T010938Z_backup_connection_recovery_receipt.json`。
+
+## 2026-10-02 17:23 Stage A 过半运行快照（非最终验收）
+
+515/960（53.6%）完成结果已独立验身份并逐文件SHA备份至本机D:，实际独特一步转移527,360；覆盖35锚点，315个已完成case找到可评分H4。未发现重复/错误执行身份、source drift、NaN/Inf或scorer exception。GPU仍为RTX3080Ti/CUDA/FP32/batch16，原runner持续运行，约21.9小时、23.53 cases/hour，预计还需约19小时，仅资源规划估算。Stage A=RUNNING，SEARCH_METHOD=NOT_SELECTED，Stage B=NOT_STARTED，locked_test=false；Return-birth限制保留，无新增阻塞。唯一下一动作继续监控/备份至960完成，再独立统计验收并停止。部分有序结果不得用于提前选择方法或宣称优势。
+
+证据：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/health_20261002T092315Z.json`。下方为较早快照。
