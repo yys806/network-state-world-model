@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/health_20261002T002545Z.json",
+      "sha256": "ef3e6360e0644825782f7e5d53318ab19b43f90462a13b9322bc907427f44c81"
+    }
+  ],
+  "locked_test": false,
+  "raw_backup_file_count": 288,
+  "raw_backup_inventory_path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/20261002T002507Z_backup_inventory.json",
+  "raw_backup_inventory_sha256": "c5b9e50fd73ab926938bac474091d658650f61e6c378c3d16625e8db588e490e",
+  "scope": "Running health snapshot, not final Stage A acceptance"
+}
