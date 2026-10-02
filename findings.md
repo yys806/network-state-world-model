@@ -1320,3 +1320,7 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 
 真实 TRAIN batch=32 profile：model.one_step 87.58%，scorer/H_sup 6.40%，proposal/domain/bind 3.90%，fingerprint/cache 2.12%。主要瓶颈是冻结模型前向；小型 cache/sync 优化不足以达到 20% 门槛。
 2026-09-30 3080 Ti 发现：4090 的 GPU fixture 副本缺 58 Raw，经研究者授权以本地 SHA 一致副本补齐；完整 Dataset 与 checkpoint 身份匹配。直接 GPU 缓存随 B_WM 增长可 OOM，精确张量移至主机内存后 B_WM1024 容量通过。batch32/64 短探针虽更快，但 CEM K4/B256 无完整 H4；选 batch16。future Return birth 支持限制不变。
+
+## 2026-10-02 09:09 Stage A 只读备份连接恢复
+
+01:00 UTC心跳中SFTP连接重置（10054），发生在只读source核对；重新连接确认原runner PID1663持续正常运行，未重启搜索。重试后305份完成结果已逐文件SHA备份并独立验身份，无duplicate、source drift、NaN/Inf或scorer exception。此事件属于已恢复的备份连接中断，不是正式搜索崩溃或科研阻塞。Stage A继续RUNNING；唯一下一动作继续监控/备份，Stage B=NOT_STARTED、SEARCH_METHOD=NOT_SELECTED、locked_test=false。机器记录：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/20261002T010938Z_backup_connection_recovery_receipt.json`。

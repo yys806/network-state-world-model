@@ -302,3 +302,7 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 
 4.2C-C `route_node_indices` 是剩余目的节点列表；4.4 规则以“含 holder 的完整路径”索引并在 Route action 后保留旧数组。真实规则负例复现 hop 完成但下一跳不推进。Planner side-state 无法合法改写 frozen model state；因此多跳/重路由 `B_Tx` 和 STEP 6.2B BLOCKED。另需注意正 `required_returned_size` 不代表本地计算必有 Return：仿真器还比较计算节点与返回目的地。
 2026-09-30：future Return birth 仍是固定支持限制；H4 readiness 为 `SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`。3080 Ti 短稳态 10.9154 tps 推算完整矩阵约 53.79 小时，但 B_WM1024 主机存储容量诊断的长预算速度较慢，故这不是实测完整矩阵工时。batch32/64 在最小预算 CEM K4 的完整 H4 为零，冻结 batch16。
+
+## 2026-10-02 09:09 Stage A 只读备份连接恢复
+
+01:00 UTC心跳中SFTP连接重置（10054），发生在只读source核对；重新连接确认原runner PID1663持续正常运行，未重启搜索。重试后305份完成结果已逐文件SHA备份并独立验身份，无duplicate、source drift、NaN/Inf或scorer exception。此事件属于已恢复的备份连接中断，不是正式搜索崩溃或科研阻塞。Stage A继续RUNNING；唯一下一动作继续监控/备份，Stage B=NOT_STARTED、SEARCH_METHOD=NOT_SELECTED、locked_test=false。机器记录：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/20261002T010938Z_backup_connection_recovery_receipt.json`。

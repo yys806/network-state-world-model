@@ -1302,3 +1302,7 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 
 GPU profiling 显示 model.one_step 占 87.58%，fingerprint/cache 2.12%；fingerprint fast path、CPU shadow、multi-anchor 均不采用，停止规则为 INSUFFICIENT。正式配置保持 FP32 batch=32 no-bucketing，未运行正式 TRAIN/Validation comparison 或 locked_test。
 2026-09-30 STEP 6.3D-3080TI-MIGRATION-QUALIFICATION：3080 Ti 正式数据/冻结 checkpoint 身份、CPU/GPU 离散等价、batch16、formal CUDA runner、resume 和 bounded HRS/S-CEM smoke PASS；正式 TRAIN tuning、Validation 比较和 locked_test 未运行。下一步研究者审阅。
+
+## 2026-10-02 09:09 Stage A 只读备份连接恢复
+
+01:00 UTC心跳中SFTP连接重置（10054），发生在只读source核对；重新连接确认原runner PID1663持续正常运行，未重启搜索。重试后305份完成结果已逐文件SHA备份并独立验身份，无duplicate、source drift、NaN/Inf或scorer exception。此事件属于已恢复的备份连接中断，不是正式搜索崩溃或科研阻塞。Stage A继续RUNNING；唯一下一动作继续监控/备份，Stage B=NOT_STARTED、SEARCH_METHOD=NOT_SELECTED、locked_test=false。机器记录：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/20261002T010938Z_backup_connection_recovery_receipt.json`。

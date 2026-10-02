@@ -1740,3 +1740,7 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 - [x] 迁移并 SHA 验收 Formal Dataset、60 Raw、best.pt；冻结 3080 Ti batch16。
 - [x] CPU/GPU 等价、CUDA formal runner、resume identity、bounded TRAIN smoke 与接受收据 PASS。
 - [x] 只做工程验收，不运行正式 TRAIN tuning、Validation 比较或 `locked_test`。当前 gate：等待研究者审阅；唯一下一交付为单独授权后的正式 6.3D TRAIN tuning。
+
+## 2026-10-02 09:09 Stage A 只读备份连接恢复
+
+01:00 UTC心跳中SFTP连接重置（10054），发生在只读source核对；重新连接确认原runner PID1663持续正常运行，未重启搜索。重试后305份完成结果已逐文件SHA备份并独立验身份，无duplicate、source drift、NaN/Inf或scorer exception。此事件属于已恢复的备份连接中断，不是正式搜索崩溃或科研阻塞。Stage A继续RUNNING；唯一下一动作继续监控/备份，Stage B=NOT_STARTED、SEARCH_METHOD=NOT_SELECTED、locked_test=false。机器记录：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/20261002T010938Z_backup_connection_recovery_receipt.json`。

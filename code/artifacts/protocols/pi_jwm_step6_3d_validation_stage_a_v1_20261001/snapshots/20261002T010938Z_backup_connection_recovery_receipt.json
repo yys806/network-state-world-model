@@ -1,0 +1,17 @@
+{
+  "backup_verified_cases": 305,
+  "error": "SSH/SFTP connection reset 10054 while reading source bytes; not a runner crash",
+  "event": "READ_ONLY_BACKUP_CONNECTION_RESET_RECOVERED",
+  "formal_search_restarted": false,
+  "health_receipt": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/health_20261002T010938Z.json",
+  "health_receipt_sha256": "e9a29e6da4179c9491613a5722c6fc32600c3d0c3b7afe62a0627248f2c0e3b4",
+  "heartbeat_utc": "2026-10-02T01:00:01.453Z",
+  "local_backup_inventory_sha256": "193a9d1a2627f5ab5b398296ed0ab8904668ef6fea34ebfa369321206b2d5e3c",
+  "locked_test": false,
+  "recovered": true,
+  "remaining_blocker": null,
+  "runner_pid_preserved": 1663,
+  "scientific_source_changed": false,
+  "stage_a": "RUNNING",
+  "stage_b": "NOT_STARTED"
+}
