@@ -28,3 +28,6 @@ future Return-birth fixed-support limitation保持；CLOSED_LOOP_BUDGET=RESEARCH
 
 ## Next Step
 仅同步和验证当前授权96-case calibration runner，然后执行与独立验收；不得启动原Stage B/环境动作/其他实验。
+
+### Deployment engineering check
+首次SSH部署已fast-forward，但non-login shell无python PATH，尚未调用planner；改管理脚本使用StageA记录的同一/root/miniconda3/bin/python绝对路径。该脚本不进入frozen planner runtime/source closure；执行身份不变，不改搜索协议。

@@ -13,6 +13,7 @@ import paramiko
 
 ROOT=Path(__file__).resolve().parents[2]
 REMOTE='/root/autodl-tmp/pi-jwm-step6-3d'
+PYTHON='/root/miniconda3/bin/python'
 REL='code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003'
 
 def main():
@@ -37,14 +38,14 @@ def main():
         # in source checkout files. Never replace historical metadata or raw results.
         payload=json.dumps(config['source_sha256'])
         script='import json,pathlib,hashlib; d=json.loads('+repr(payload)+'); print(json.dumps([n for n,h in d.items() if not pathlib.Path(n).exists() or hashlib.sha256(pathlib.Path(n).read_bytes()).hexdigest()!=h]))'
-        wrong=json.loads(command(f'cd {REMOTE} && python -c {shlex.quote(script)}'))
+        wrong=json.loads(command(f'cd {REMOTE} && {PYTHON} -c {shlex.quote(script)}'))
         for name in wrong:
             local=(ROOT/name).read_bytes()
             with sftp.open(REMOTE+'/'+name,'rb') as f: remote=f.read()
             if not name.endswith('.py') or local.replace(b'\r\n',b'\n')!=remote.replace(b'\r\n',b'\n'):
                 raise ValueError('non-newline source mismatch: '+name)
             with sftp.open(REMOTE+'/'+name,'wb') as f:f.write(local)
-        output=command(f'cd {REMOTE} && python code/scripts/run_step6_4c_mh_budget_calibration_v1.py')
+        output=command(f'cd {REMOTE} && {PYTHON} code/scripts/run_step6_4c_mh_budget_calibration_v1.py')
         dirty=command(f'git -C {REMOTE} status --porcelain --untracked-files=no').strip()
         if dirty:raise ValueError('remote tracked dirty after deployment')
         print(json.dumps({'remote_commit':actual,'exact_byte_newline_transfers':wrong,'preflight_output':output.strip(),'tracked_clean':True}))
@@ -52,11 +53,11 @@ def main():
         # Runner independently repeats every gate. No restart or Stage B command exists here.
         count=command(f'find {REMOTE}/{REL}/solve_results/calibration -name "*.json" 2>/dev/null | wc -l').strip()
         if count!='0':raise ValueError('initial launch count not zero')
-        output=command(f'cd {REMOTE} && mkdir -p {REL}/runtime && nohup python -u code/scripts/run_step6_4c_mh_budget_calibration_v1.py --execute > {REL}/runtime/formal_calibration.log 2>&1 < /dev/null &')
+        output=command(f'cd {REMOTE} && mkdir -p {REL}/runtime && nohup {PYTHON} -u code/scripts/run_step6_4c_mh_budget_calibration_v1.py --execute > {REL}/runtime/formal_calibration.log 2>&1 < /dev/null &')
         print(json.dumps({'launch_requested':True,'scope':'MH-only 96-case calibration, no Stage B','output':output}))
     else:
         script="import pathlib,json,hashlib; p=pathlib.Path("+repr(REL)+"); print(json.dumps([{'path':str(f),'sha256':hashlib.sha256(f.read_bytes()).hexdigest()} for f in sorted(p.rglob('*')) if f.is_file() and (f.suffix=='.json' or f.name=='formal_calibration.log')]))"
-        files=json.loads(command(f'cd {REMOTE} && python -c {shlex.quote(script)}'))
+        files=json.loads(command(f'cd {REMOTE} && {PYTHON} -c {shlex.quote(script)}'))
         copied=[]
         for item in files:
             name=item['path'];dest=ROOT/name
