@@ -1,0 +1,34 @@
+{
+  "Context_Consistency_Check": {
+    "errors": [],
+    "validated_file_count": 9
+  },
+  "READY_FOR_GPU_LAUNCH": true,
+  "REUSE_VALID": true,
+  "Stage B": "NOT_STARTED",
+  "anchors": 64,
+  "compileall": "PASS",
+  "execution_config_id": "1c3cd986dbda4559e94fa37013b2d70e96adf85911c44e88cc22cfe3f99fd843",
+  "focused_tests": {
+    "step6_3d": 34,
+    "step6_4c": 4,
+    "step6_4d": 6
+  },
+  "gpu_started": false,
+  "locked_test": false,
+  "new_cases": 272,
+  "new_result_count": 0,
+  "nominal_new_budget": 139264,
+  "parent_cases": 320,
+  "parent_reuse_parameter_digests_identical": true,
+  "reuse_cases": 48,
+  "seeds": [
+    6311,
+    6312,
+    6313,
+    6314,
+    6315
+  ],
+  "source_semantics_invariant": true,
+  "verdict": "PASS"
+}

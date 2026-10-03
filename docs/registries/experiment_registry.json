@@ -3,6 +3,58 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.4D-FULL-COHORT-MH-B512-20261003",
+      "name": "Full frozen 64x5 MH-CEM B512 budget expansion",
+      "date": "2026-10-03",
+      "research_question": "B512 vs original B1024 full-cohort quality/runtime and priority-component degradation",
+      "method": "MH-CEM K4 rho0.1",
+      "code": "code/scripts/run_step6_4d_full_cohort_b512_v1.py",
+      "code_version": {
+        "identity_type": "owning_protocol_commit_plus_per_file_sha256",
+        "git_commit": null,
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/05_execution_config_3080ti.json",
+        "note": "Owning protocol commit specified explicitly at launch, no self-reference"
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/05_execution_config_3080ti.json",
+      "parameters": {
+        "budget": 512,
+        "anchors": 64,
+        "seeds_per_anchor": 5,
+        "K": 4,
+        "rho": 0.1,
+        "reused_cases": 48,
+        "new_cases": 272,
+        "batch_size": 16,
+        "device": "cuda"
+      },
+      "protocol": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/02_expansion_protocol.json",
+      "data": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/01_full_cohort_manifest.json",
+      "split": [
+        "dev_validation"
+      ],
+      "seed": [
+        6311,
+        6312,
+        6313,
+        6314,
+        6315
+      ],
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": null,
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/07_cpu_preflight_receipt.json",
+      "status": "protocol_frozen_cpu_pass",
+      "conclusion": "CPU preflight/reuse/parent PASS; GPU not started, no final budget conclusion",
+      "summary_zh": "STEP 6.4D 仅完整64 anchors×5 seeds的MH-CEM K4/rho0.1、B512扩样。320份B1024父结果身份/归档SHA通过；6.4C既有48份B512全部冻结源码字节、算法/运行身份和参数摘要一致，REUSE_VALID=true，按SHA引用、不复制不重跑。只新增272 cases，名义139264转移。Protocol/manifest/config已冻结，CPU预检PASS；正式GPU尚未启动，覆盖48/320，不是最终PASS。GPU3080Ti只读可达空闲；须先commit+push协议，服务器fetch并fast-forward精确协议commit、tracked clean/source/config/checkpoint全PASS才启动。首差分量N_DDL/A_DDL/J_Delay/J_Burden/J_Effort/all_equal及主目标损失预注册；64 anchor clusters×5seed bootstrap10000/seed6316。SEARCH_METHOD仍MH纯搜索骨架；CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING，FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，Stage B=NOT_STARTED，locked_test=false；Return-birth固定支持限制保留。唯一下一动作提交并同步协议后执行剩余B512，不运行B256/B1024/环境动作。",
+      "claim_boundary": "Full-cohort budget comparison only; not equivalence, closed-loop performance or budget freeze",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "result": "null: GPU new272 not started",
+        "metrics": "null: no expansion outcomes yet",
+        "code_version": "exact protocol commit will be recorded in launch evidence; currently precommit source SHA"
+      }
+    },
+    {
       "id": "STEP-6.4C-MH-BUDGET-CALIBRATION-20261003",
       "name": "MH-only preregistered 16-anchor budget calibration",
       "date": "2026-10-03",

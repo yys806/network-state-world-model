@@ -2,6 +2,25 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP6.4D-B512-EXPANSION",
+      "keywords": [
+        "6.4D",
+        "B512 full cohort",
+        "primary objective degradation"
+      ],
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_4D_FULL_COHORT_MH_B512.md",
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/07_cpu_preflight_receipt.json"
+      ],
+      "verification_sources": [
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/01_full_cohort_manifest.json",
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/02_expansion_protocol.json",
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/03_b1024_parent_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/04_b512_reuse_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/05_execution_config_3080ti.json"
+      ]
+    },
+    {
       "id": "ROUTE-STEP-6.4C-BUDGET-CALIBRATION",
       "title": "MH-CEM小规模预算校准与配对资源取舍",
       "keywords": [

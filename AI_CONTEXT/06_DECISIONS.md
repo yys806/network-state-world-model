@@ -1,3 +1,7 @@
+## Researcher Decision — STEP 6.4D
+
+研究者本轮只授权完整64×5 MH-CEM B512及与既有B1024配对；可严格证明同义的6.4C48份B512必须优先复用；协议先提交再GPU。B256扩样/原Stage B/闭环未获授权，最终预算仍待研究者决定。
+
 ## STEP 6.4C 验收后的决定边界
 
 研究者本轮仅授权16×3 MH-CEM B256/B512校准及复用B1024。CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；扩样64×5是Codex的ENGINEERING/RESEARCH RECOMMENDATION，不是Researcher Decision，未授权。METHOD仍仅pure-search backbone；Stage B=NOT_STARTED，locked_test=false。

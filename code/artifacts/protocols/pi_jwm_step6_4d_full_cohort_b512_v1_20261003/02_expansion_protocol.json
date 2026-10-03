@@ -1,0 +1,50 @@
+{
+  "CLOSED_LOOP_BUDGET": "RESEARCHER_DECISION_PENDING",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "H": 4,
+  "K": 4,
+  "Stage B": "NOT_STARTED",
+  "bootstrap": {
+    "ci": "percentile 95%",
+    "clusters": 64,
+    "replications": 10000,
+    "seed": 6316,
+    "seeds_per_cluster": 5,
+    "unit": "anchor"
+  },
+  "budgets": [
+    512
+  ],
+  "burden_effort_only_degradation": "both scoreable; first differing component favors B1024 and belongs to J_Burden/J_Effort",
+  "claim_boundary": "full Validation cohort budget quality/compute comparison; no equivalence, optimal-budget or real closed-loop claim",
+  "coverage_cases": 320,
+  "environment_actions": false,
+  "execution_order": "original frozen manifest order, then ascending five seeds; skip verified reused identities",
+  "failure_policy": "STOP on identity/source drift, NaN/Inf, scorer inconsistency or crash; no automatic restart/retuning",
+  "hard_anchor": "all five seeds unscoreable; intersection and both directional differences retained",
+  "locked_test": false,
+  "method": "MH-CEM",
+  "new_cases": 272,
+  "nominal_new_budget": 139264,
+  "objective_first_difference": [
+    "N_DDL",
+    "A_DDL",
+    "J_Delay",
+    "J_Burden",
+    "J_Effort",
+    "all_equal"
+  ],
+  "paired_reference_budget": 1024,
+  "pairwise": "frozen strict lexicographic Objective; None stays unscoreable; six bins sum320",
+  "primary_degradation": "both scoreable; first differing component favors B1024 and belongs to N_DDL/A_DDL/J_Delay",
+  "reused_cases": 48,
+  "rho": 0.1,
+  "runtime": "original per-case in-solve timing; linear-interpolated quantiles; matrix/setup overhead separately",
+  "seeds": [
+    6311,
+    6312,
+    6313,
+    6314,
+    6315
+  ]
+}

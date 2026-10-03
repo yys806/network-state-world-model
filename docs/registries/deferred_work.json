@@ -5,7 +5,7 @@
       "id": "STEP-6.4C-MH-ONLY-CALIBRATION-EXPANSION",
       "type": "candidate_method_research",
       "status": "deferred",
-      "reason": "NEW RESEARCH PROPOSAL64anchors×5seeds MH-only budget calibration requires separate authorization/protocol; current16×3 completed, no expansion approved.",
+      "reason": "Only B512 full64x5 expansion separately authorized as STEP6.4D. B256 expansion, original Stage B, closed-loop performance and final budget freeze remain deferred and require separate researcher decision.",
       "summary_zh": "研究者审阅后决定是否单独预注册与授权64×5 MH-only扩样；不等同原完整Stage B，不自动启动。",
       "authorization_required": true,
       "auto_start": false,

@@ -1,0 +1,464 @@
+{
+  "anchor_count": 64,
+  "locked_test": false,
+  "seeds": [
+    6311,
+    6312,
+    6313,
+    6314,
+    6315
+  ],
+  "selected": [
+    {
+      "concrete_count": 6,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "sample_id_sha256": "0196df3cbefa04e4b54f3c019f1b04d1958ba88de995123f7417b0fb11d7d982",
+      "stratum": "q0:comp0"
+    },
+    {
+      "concrete_count": 54679,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "sample_id_sha256": "003fdb53cc06c0335050254f10bae06d39457b32399b63c2ba545129608af626",
+      "stratum": "q0:comp1"
+    },
+    {
+      "concrete_count": 87325362,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "sample_id_sha256": "030494ff8bd97aaceb8995951178106f14681649a52e57af7458c459dccadbd9",
+      "stratum": "q1:comp0"
+    },
+    {
+      "concrete_count": 34062443,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "sample_id_sha256": "0137068ea655e673b76fb8b35c970c148d39d4fe05802feb51f0fea8e254f7b5",
+      "stratum": "q1:comp1"
+    },
+    {
+      "concrete_count": 375971064,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "sample_id_sha256": "0940a80e6ec26ccc8ed36dc3e838fcb03a8ca7e8dcf885ebe6eccdaf38847841",
+      "stratum": "q2:comp0"
+    },
+    {
+      "concrete_count": 122132799,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "sample_id_sha256": "0386545a66fabed288b35e9233e3b7dc0366d4556ed0b141c163c1a8fb6b3fc6",
+      "stratum": "q2:comp1"
+    },
+    {
+      "concrete_count": 8834544054,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "sample_id_sha256": "001c46751fd0e093318fe4309ed90a2c153ed8d41047f7dcb025675a629b0a93",
+      "stratum": "q3:comp0"
+    },
+    {
+      "concrete_count": 47628,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "sample_id_sha256": "15afd26a0f59e89e695863beec644cef874acfa784ddd761aacde4c0edf44eea",
+      "stratum": "q0:comp0"
+    },
+    {
+      "concrete_count": 639,
+      "eligible_compute_tasks": 3,
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "sample_id_sha256": "00b1296b300a17087857d8df2013d55bd304b4d60c5d061c5b5fe780ace5add4",
+      "stratum": "q0:comp1"
+    },
+    {
+      "concrete_count": 87325362,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "sample_id_sha256": "1d022fde9cff00381c2ae12d106f2ae4b9f61687daf2678389817644028f08f8",
+      "stratum": "q1:comp0"
+    },
+    {
+      "concrete_count": 10300737,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "sample_id_sha256": "014e2e1c85a935ff88adeb64ba9427028ba53d9e554a6ecee9ea0c3df8cf0101",
+      "stratum": "q1:comp1"
+    },
+    {
+      "concrete_count": 375971064,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "sample_id_sha256": "0118391882fe0318f00625e5e88adf4ccfedf1fd5b9abccf256615233967740a",
+      "stratum": "q2:comp0"
+    },
+    {
+      "concrete_count": 122132799,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "sample_id_sha256": "077407d3db2e7627ec51abade3cade45491c9cc1ce3f73a8470f90388b11fb8f",
+      "stratum": "q2:comp1"
+    },
+    {
+      "concrete_count": 12728292540,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "sample_id_sha256": "01ad0828bef621f2a1677e34045cd19fa08eff4f58f0a9b89f3180b58350cd12",
+      "stratum": "q3:comp0"
+    },
+    {
+      "concrete_count": 47628,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "sample_id_sha256": "04400975c484f2afc2bb4c0800c0f48d55536e5a6f8d2ee0a18695d0146b8cee",
+      "stratum": "q0:comp0"
+    },
+    {
+      "concrete_count": 18,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "sample_id_sha256": "02d935eee3b81de0bacb3dec699f5f9b0c7f6616f8b4571c79b78e5d2b9d1efb",
+      "stratum": "q0:comp1"
+    },
+    {
+      "concrete_count": 87325362,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "sample_id_sha256": "0895eb725b03320ca4638a9f1fa22864e0a4809994bce681de3a8c333fb982ec",
+      "stratum": "q1:comp0"
+    },
+    {
+      "concrete_count": 10300737,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "sample_id_sha256": "01dc2bd87909d6ba0f7dae4a44c487546e2b18ee0707b95767fe958bf4170e45",
+      "stratum": "q1:comp1"
+    },
+    {
+      "concrete_count": 2013917796,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "sample_id_sha256": "01a6bef664c3ae7a07746c5477216e25c2b950e5b4eced3311f1f89d46982e1c",
+      "stratum": "q2:comp0"
+    },
+    {
+      "concrete_count": 152597668,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "sample_id_sha256": "0a60f23f1f6b0790ef5da66b53658874160aa49fbea9557710e5356875596e80",
+      "stratum": "q2:comp1"
+    },
+    {
+      "concrete_count": 5826990672,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "sample_id_sha256": "01ec3eb4a7f29a75c1c0d1c1a81d35bbedf66033e44e5382a801000b6f98d2d2",
+      "stratum": "q3:comp0"
+    },
+    {
+      "concrete_count": 47628,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "sample_id_sha256": "04a165ded80486f7e03746d40f36c844a8bd693c97436804cc0b60f476c500e4",
+      "stratum": "q0:comp0"
+    },
+    {
+      "concrete_count": 679265,
+      "eligible_compute_tasks": 3,
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "sample_id_sha256": "02db9b555b04f8a80fabc3b7353dd34a075a38bf38d8118ad0df608b48e1c812",
+      "stratum": "q0:comp1"
+    },
+    {
+      "concrete_count": 87325362,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "sample_id_sha256": "0a18625bf3577d50503904e210f7daa704873d07efce5c64d0065a34e36a8c20",
+      "stratum": "q1:comp0"
+    },
+    {
+      "concrete_count": 34062443,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "sample_id_sha256": "0324c90b2cd7fb47b50b342c4e653bf890ef4767ce15707e6c4af5b3ef548afb",
+      "stratum": "q1:comp1"
+    },
+    {
+      "concrete_count": 375971064,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "sample_id_sha256": "094fe3f3e3991c797e672edde8ac11fcc7b2b0918c21da95137b502b183fd5d1",
+      "stratum": "q2:comp0"
+    },
+    {
+      "concrete_count": 258907953,
+      "eligible_compute_tasks": 2,
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "sample_id_sha256": "0a8596c7ef0a3038a6e5f665dbe5d657a27b8473328a479d3a4918ef199c8784",
+      "stratum": "q2:comp1"
+    },
+    {
+      "concrete_count": 23630926248,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "sample_id_sha256": "01ee531e837b33406008e3c795bc325486497a371d1d3519cad5ac3950a7b88f",
+      "stratum": "q3:comp0"
+    },
+    {
+      "concrete_count": 6,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "sample_id_sha256": "058dd7e5a8fb904347c62e1d5bb2611d6910544a85fcf827798a158e7b8050a9",
+      "stratum": "q0:comp0"
+    },
+    {
+      "concrete_count": 54679,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "sample_id_sha256": "03b16a75eb059f1f68c33f5c3855241513865b91cfc1234472ad7cca6872f0d5",
+      "stratum": "q0:comp1"
+    },
+    {
+      "concrete_count": 87325362,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "sample_id_sha256": "0ac0f5a7e27ac94e9a5aff6a50048268e051a06e17e2af4ab6a54f439df4ac6f",
+      "stratum": "q1:comp0"
+    },
+    {
+      "concrete_count": 95046842,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "sample_id_sha256": "05da521c6719243f51e0f08ef4dfe533a985238498be5eb7b68282aba987c45e",
+      "stratum": "q1:comp1"
+    },
+    {
+      "concrete_count": 980122590,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "sample_id_sha256": "098b7784a8d91e2b35d370330b5fcae10a0db6f0a388122218069970e91b9289",
+      "stratum": "q2:comp0"
+    },
+    {
+      "concrete_count": 122132799,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "sample_id_sha256": "130ca1a2601a76c79b1dc5dc50f572241bb2ef33f73f05ef23b174fa12e7917d",
+      "stratum": "q2:comp1"
+    },
+    {
+      "concrete_count": 8834544054,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "sample_id_sha256": "027afb1ef0b8c93e971829590bd177db6b7deafcdf6ef64c6ace631d816b8881",
+      "stratum": "q3:comp0"
+    },
+    {
+      "concrete_count": 47628,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "sample_id_sha256": "06ad67823f201cbf73763a0639e6e50b2cd33c5623fb473e4cd90de1d5e52716",
+      "stratum": "q0:comp0"
+    },
+    {
+      "concrete_count": 3488252,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "sample_id_sha256": "058a956068391af3cc3f976b00156259bcac17232a35a90d4dd9278ab8a22478",
+      "stratum": "q0:comp1"
+    },
+    {
+      "concrete_count": 87325362,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "sample_id_sha256": "0af7ec6f70dd866b1defb8971cbc4f411900d92be50d91780c253d4e0c3d77c3",
+      "stratum": "q1:comp0"
+    },
+    {
+      "concrete_count": 10166904,
+      "eligible_compute_tasks": 3,
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "sample_id_sha256": "07ddfaae83cdf112f51e8dcd79f9626dfe65ebb94a2ce26cfa16b7d68649b2ef",
+      "stratum": "q1:comp1"
+    },
+    {
+      "concrete_count": 2013917796,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "sample_id_sha256": "05c9bfdc96fd9476baf5068c66f87dc211c83da7d76305086a211fef08b6dc9a",
+      "stratum": "q2:comp0"
+    },
+    {
+      "concrete_count": 122132799,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "sample_id_sha256": "145229006c12bcfa70e183485b9d00d16cd1a1481c0a998be4a9aec7456bed23",
+      "stratum": "q2:comp1"
+    },
+    {
+      "concrete_count": 3591494538,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "sample_id_sha256": "02f84a7b46536e06ebce9035007148b4f9c35b510630193cde2a29ce6ff9931d",
+      "stratum": "q3:comp0"
+    },
+    {
+      "concrete_count": 47628,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "sample_id_sha256": "0da5903051550686dbd9250626f9c028ecdf83328a7aa170193b2a70b1b4dfe9",
+      "stratum": "q0:comp0"
+    },
+    {
+      "concrete_count": 3488252,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "sample_id_sha256": "077cf70d683045afb26e629aa5dcf11b9ba710a13d5f7c5a7bff11b2fae7983d",
+      "stratum": "q0:comp1"
+    },
+    {
+      "concrete_count": 87325362,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "sample_id_sha256": "12a9970aee644e82368111c31a2b99244a3817656c40b51636c067513d95ee09",
+      "stratum": "q1:comp0"
+    },
+    {
+      "concrete_count": 10300737,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "sample_id_sha256": "080da0970400f32eadc3e74290ae768228058a68378b014db210aa982fdb289f",
+      "stratum": "q1:comp1"
+    },
+    {
+      "concrete_count": 980122590,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "sample_id_sha256": "06db95e7f4156271ca428cf73f2dfa30e91dc88ce23ac8145bb1c452af570ba9",
+      "stratum": "q2:comp0"
+    },
+    {
+      "concrete_count": 122132799,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "sample_id_sha256": "1a356e99ba683f17106bcf1212cd902c746b1f6851e5a67dd76bcc4b884e3040",
+      "stratum": "q2:comp1"
+    },
+    {
+      "concrete_count": 8834544054,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "sample_id_sha256": "03570ad4b17b646e9edbf0c394cb5326ac6a8a2ea52cc4490bd85e6f85e73d6f",
+      "stratum": "q3:comp0"
+    },
+    {
+      "concrete_count": 6,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "sample_id_sha256": "0f6d3edb2f889f2801c399f3213b1de2f3b2807a6e264d13e295d08d29c763f2",
+      "stratum": "q0:comp0"
+    },
+    {
+      "concrete_count": 3488252,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "sample_id_sha256": "0780b39caac502d52987313c27dd1b66456402dd70b78df38104ab32555c5ecb",
+      "stratum": "q0:comp1"
+    },
+    {
+      "concrete_count": 87325362,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "sample_id_sha256": "1bc0d45eafa706d3d7e027ac6a5a2a6ba8fe7b8f1476f113e05e18eb265a6931",
+      "stratum": "q1:comp0"
+    },
+    {
+      "concrete_count": 17107153,
+      "eligible_compute_tasks": 2,
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "sample_id_sha256": "08f47141384bd6dee5fe754465742a95c62ce8b63647a9b775230da60c93b431",
+      "stratum": "q1:comp1"
+    },
+    {
+      "concrete_count": 2013917796,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "sample_id_sha256": "07e9c4dcdf296f6116c0158943d96e24e4570698ea8d407734601bace69e08e1",
+      "stratum": "q2:comp0"
+    },
+    {
+      "concrete_count": 122132799,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "sample_id_sha256": "1e16c27abd9eeba53359741c785ed7bfbe4c850f504fc488031b846aa7f87fae",
+      "stratum": "q2:comp1"
+    },
+    {
+      "concrete_count": 8834544054,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "sample_id_sha256": "03e89ddc750ddb2e23a33486f197e77f2d267c2f032ab07b7505fc3d6a438cfa",
+      "stratum": "q3:comp0"
+    },
+    {
+      "concrete_count": 6,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "sample_id_sha256": "0fb21230624df052b839659400f3b9702a7c9e9149a9b272710cb1de0049e9d5",
+      "stratum": "q0:comp0"
+    },
+    {
+      "concrete_count": 18,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "sample_id_sha256": "0bfba6cf52469bdfacf02cd461da8b96da1b0ee44d523d412bcc085dc661e339",
+      "stratum": "q0:comp1"
+    },
+    {
+      "concrete_count": 87325362,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "sample_id_sha256": "1c46f54995bc9dbaa49399634a9710d147b501fc21406af5f0819b80a19a75bc",
+      "stratum": "q1:comp0"
+    },
+    {
+      "concrete_count": 20492134,
+      "eligible_compute_tasks": 1,
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "sample_id_sha256": "09597725b969fff453f9ad08ff57302bf736ede2d5a6ebfad743638e9b39c6ee",
+      "stratum": "q1:comp1"
+    },
+    {
+      "concrete_count": 2013917796,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "sample_id_sha256": "083124581e338ceaf31712cbf3566ad1789b92b554476f804f6fa850e5d3f692",
+      "stratum": "q2:comp0"
+    },
+    {
+      "concrete_count": 102465953,
+      "eligible_compute_tasks": 2,
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "sample_id_sha256": "2f5306aacbb7b303a2f6ee0cb74ccba4136c4e4e7aea9034780b9297f412f395",
+      "stratum": "q2:comp1"
+    },
+    {
+      "concrete_count": 12728292540,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "sample_id_sha256": "05cd9e5283bc94fa6757d05a1593633202c1b6496214ba67bf1d25a212b88b3e",
+      "stratum": "q3:comp0"
+    },
+    {
+      "concrete_count": 47628,
+      "eligible_compute_tasks": 0,
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "sample_id_sha256": "116c15c07b08d943a3d183e6972d0b8a468285fba5e0659ea2c10910a54ab5a1",
+      "stratum": "q0:comp0"
+    }
+  ],
+  "selection": "all original frozen Stage A anchors, original order; no resampling/outcome selection",
+  "source_manifest": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json",
+  "source_manifest_sha256": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e"
+}
