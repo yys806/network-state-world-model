@@ -2,29 +2,6 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
-      "id": "STEP-6.4B-NEXT-BUDGET-CALIBRATION",
-      "type": "candidate_method_research",
-      "status": "deferred",
-      "reason": "Mechanism PASS does not authorize new GPU calibration or Stage B. Final fallback/hybrid/performance remain unfrozen.",
-      "summary_zh": "研究者审阅后单独确定与授权预算校准；最终fallback/hybrid/performance保持未冻结或未开始。",
-      "authorization_required": true,
-      "auto_start": false,
-      "locked_test_accessed": false,
-      "entrypoint": "docs/implementation_records/STEP_06_4B_MINIMAL_CLOSED_LOOP_TWO_CYCLE_SMOKE.md",
-      "required_predecessors": [
-        "researcher review of mechanism evidence",
-        "separate budget calibration protocol authorization"
-      ],
-      "forbidden_until_authorized": [
-        "GPU",
-        "Stage B",
-        "formal closed-loop",
-        "baseline",
-        "ablation",
-        "locked_test"
-      ]
-    },
-    {
       "id": "STEP-6.3D-VALIDATION-STAGE-B",
       "type": "candidate_method_research",
       "status": "deferred",

@@ -1,0 +1,28 @@
+{
+  "AI_CONTEXT_sha256": {
+    "AI_CONTEXT/00_PROJECT_STATE.md": "dde688957fd8933f0dbcdf169e9f03f07cc72f9bf52e3e4f662da79813feb919",
+    "AI_CONTEXT/01_RESEARCH_CONTEXT.md": "7408d1d1ad3edd105906acd1ef0059e043d365bc2416805d684e642cea888656",
+    "AI_CONTEXT/02_ARCHITECTURE.md": "5b44dc1372acb3f1aaeeff0cccf46e8d73e31c69814a4f5a1537030996d2eef6",
+    "AI_CONTEXT/03_DATA_FLOW.md": "ae94bc31c9880d3edf70151afed52fa35a84b51207fea5b3713d6e6d69dfd46a",
+    "AI_CONTEXT/04_MODULE_MAP.md": "53440bde1caaa1ab43ced9ce5591cc04873d82518df4939b96e61b721cd3e1eb",
+    "AI_CONTEXT/05_EXPERIMENTS.md": "ffe4fd806ac7d9950ad6c549a7f944dcfa39fe1a94a3cf1b8cf4891b4d6698b4",
+    "AI_CONTEXT/06_DECISIONS.md": "fa8244c370e2c0efc5fc8ec45a4e3331e2d17fa6c596d91f6f400b5fcc3314ff",
+    "AI_CONTEXT/07_KNOWN_ISSUES.md": "282b8ed7e20812cb174beb331ebea9c520f37ed7fedb4d1508b4d381233caa6c",
+    "AI_CONTEXT/08_CHANGELOG.md": "9d2f11d2e7d73bc4ea1b70b834da1c56c899386ee5c9b8ab01f2fcc5e60e7d7c"
+  },
+  "compileall": "PASS",
+  "focused_tests": {
+    "calibration": 4,
+    "step6_3d": 34
+  },
+  "git_diff_check": "PASS",
+  "git_worktree_source_line_endings": {
+    "all_normalized_contents_identical": true,
+    "mismatches_vs_git_blob": 4,
+    "policy": "exact execution byte SHA must pass remotely; do not silently weaken guards"
+  },
+  "knowledge_index_write": "PASS",
+  "phase": "protocol_cpu_preflight_only",
+  "scope_consistency": "new96 pending; no budget selected; MH-only; no environment action; lockedfalse; historicalTRAIN/StageA unchanged",
+  "verdict": "PASS"
+}

@@ -3,6 +3,56 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.4C-MH-BUDGET-CALIBRATION-20261003",
+      "name": "MH-only preregistered 16-anchor budget calibration",
+      "date": "2026-10-03",
+      "research_question": "B256/B512 vs paired B1024 quality and compute trade-off, not method selection",
+      "method": "MH-CEM K4 rho0.1",
+      "code": "code/scripts/run_step6_4c_mh_budget_calibration_v1.py",
+      "code_version": {
+        "identity_type": "independent_calibration_source_sha256",
+        "git_commit": "db0eb13f94313763079c685b02dfa7a16615f9f9",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07_calibration_execution_config.json",
+        "note": "Baseline plus new orchestration source; owning protocol commit in Git"
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07_calibration_execution_config.json",
+      "parameters": {
+        "budgets": [
+          256,
+          512
+        ],
+        "anchors": 16,
+        "K": 4,
+        "rho": 0.1,
+        "batch_size": 16,
+        "device": "cuda"
+      },
+      "protocol": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/02_calibration_protocol.json",
+      "data": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/01_calibration_anchor_manifest.json",
+      "split": [
+        "dev_validation"
+      ],
+      "seed": [
+        6311,
+        6312,
+        6313
+      ],
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/08_cpu_preflight_receipt.json",
+      "metrics": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/04_paired_b1024_reference_summary.json",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/08_cpu_preflight_receipt.json",
+      "status": "protocol_frozen_cpu_preflight_pass_pending_execution",
+      "conclusion": "New96 pending; protocol/CPU and48 reference identity PASS",
+      "summary_zh": "16静态分层anchors/3seeds已预注册，48份B1024身份SHA通过；新96待运行。Stage B未启动，locked_test=false。",
+      "claim_boundary": "CALIBRATION SUBSET; no non-inferiority/method selection/closed-loop claim",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "metrics": "B1024 references only until new outcomes exist",
+        "code_version": "baseline plus byte SHA, owning protocol commit in Git",
+        "checkpoint": "unchanged frozen checkpoint"
+      }
+    },
+    {
       "id": "STEP-6.4B-TWO-CYCLE-SMOKE-20261003",
       "name": "Minimal CPU two-cycle real-feedback mechanism smoke",
       "date": "2026-10-03",

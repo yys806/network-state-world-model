@@ -2989,6 +2989,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "pi_jwm.step6_4c_budget_calibration_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
         "scripts.close_step6_3d_formal_train_tuning_v1",
         "scripts.close_step6_3d_pre_validation_blockers_v1",
@@ -3056,6 +3057,24 @@
       "path": "code/src/pi_jwm/step6_4b_live_bridge_v1.py",
       "test_files": [
         "code/tests/test_step6_4b_live_bridge_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.prepare_step6_4c_budget_calibration_v1",
+        "scripts.run_step6_4c_mh_budget_calibration_v1",
+        "tests.test_step6_4c_budget_calibration_v1"
+      ],
+      "imports": [
+        "pi_jwm.step6_3d_method_selection_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_4c_budget_calibration_v1",
+      "path": "code/src/pi_jwm/step6_4c_budget_calibration_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4c_budget_calibration_v1.py"
       ]
     },
     {
@@ -5959,6 +5978,16 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.inspect_step6_4c_gpu_host_v1",
+      "path": "code/scripts/inspect_step6_4c_gpu_host_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "tests.test_r6_gpu_training_launcher"
       ],
@@ -6103,6 +6132,16 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.manage_step6_4c_remote_v1",
+      "path": "code/scripts/manage_step6_4c_remote_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "tests.test_v11_crossfit"
       ],
@@ -6150,6 +6189,20 @@
       "test_files": [
         "code/tests/test_active_heavy_dataset_pipeline.py"
       ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.run_step6_4c_mh_budget_calibration_v1"
+      ],
+      "imports": [
+        "pi_jwm.step6_4c_budget_calibration_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.prepare_step6_4c_budget_calibration_v1",
+      "path": "code/scripts/prepare_step6_4c_budget_calibration_v1.py",
+      "test_files": []
     },
     {
       "category": "runnable_script",
@@ -7917,6 +7970,7 @@
         "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_train_h4_scoreability_preflight_v1",
         "scripts.run_step6_4b_two_cycle_smoke_v1",
+        "scripts.run_step6_4c_mh_budget_calibration_v1",
         "scripts.verify_step6_3d_3080ti_migration_v1",
         "tests.test_step6_3d_gpu_offload_v1"
       ],
@@ -7989,6 +8043,24 @@
       "path": "code/scripts/run_step6_4b_two_cycle_smoke_v1.py",
       "test_files": [
         "code/tests/test_step6_4b_live_bridge_v1.py"
+      ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "tests.test_step6_4c_budget_calibration_v1"
+      ],
+      "imports": [
+        "pi_jwm.step6_4c_budget_calibration_v1",
+        "scripts.prepare_step6_4c_budget_calibration_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_4c_mh_budget_calibration_v1",
+      "path": "code/scripts/run_step6_4c_mh_budget_calibration_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4c_budget_calibration_v1.py"
       ]
     },
     {
@@ -12199,6 +12271,19 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4b_live_bridge_v1",
       "path": "code/tests/test_step6_4b_live_bridge_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4c_budget_calibration_v1",
+        "scripts.run_step6_4c_mh_budget_calibration_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4c_budget_calibration_v1",
+      "path": "code/tests/test_step6_4c_budget_calibration_v1.py",
       "test_files": []
     },
     {

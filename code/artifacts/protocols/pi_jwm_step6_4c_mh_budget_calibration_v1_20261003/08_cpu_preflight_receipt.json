@@ -1,0 +1,35 @@
+{
+  "Stage B": "NOT_STARTED",
+  "cohort_count": 16,
+  "focused_calibration_tests": 4,
+  "focused_step6_3d_tests": 34,
+  "locked_test": false,
+  "new_cases": 96,
+  "new_result_count": 0,
+  "quota_receipt": {
+    "B256": [
+      64,
+      64,
+      64,
+      64
+    ],
+    "B512": [
+      128,
+      128,
+      128,
+      128
+    ],
+    "H4_feasible": true,
+    "K": 4,
+    "batch": 16
+  },
+  "reference_cases": 48,
+  "runner_scientific_semantics": "exact reuse of existing solve run; no environment execution; old MH oracle still passes",
+  "seeds": [
+    6311,
+    6312,
+    6313
+  ],
+  "source_diff_gate": "original scientific/model/solver source unchanged from db0eb13; only new orchestration/helpers/tests/docs",
+  "verdict": "PASS"
+}

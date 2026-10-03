@@ -1,0 +1,28 @@
+{
+  "N_admitted_steps": 73567,
+  "N_cache_hits": 22035,
+  "N_dead_end_branches": 3867,
+  "N_proposed_steps": 73567,
+  "N_rejected_steps": 0,
+  "N_unique_transition_evals": 49152,
+  "actual_transitions_per_second": 7.628571996379996,
+  "budget": 1024,
+  "case_count": 48,
+  "complete_h4": 15049,
+  "distinct_scoreable_h4": 6060,
+  "return_birth_boundary": 8487,
+  "runtime_scope": "in-solve only; matrix/setup overhead recorded separately",
+  "runtime_seconds": {
+    "P90": 340.6789649549406,
+    "P95": 371.54978896647225,
+    "max": 391.4432353102602,
+    "mean": 134.23219974667882,
+    "median": 88.43566726869904,
+    "sum_in_solve": 6443.145587840583
+  },
+  "scope": "selected paired references only",
+  "scoreable_cases": 30,
+  "scoreable_rate": 0.625,
+  "scorer_exceptions": 0,
+  "unscoreable_h4": 8487
+}

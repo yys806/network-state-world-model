@@ -1,0 +1,15 @@
+{
+  "files": {
+    "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/01_calibration_anchor_manifest.json": "57c94ff553b6147537cba8583e9e269eb59420e2ee5d85ecaccb93b29fcb3385",
+    "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/02_calibration_protocol.json": "031e024650d9924eadcec2ad52817607b41ba31893867e4413656e498977f0cb",
+    "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/03_b1024_paired_reference_receipt.json": "9aac22a2f2a99fd68bb9b918f8db3b337f7be56a72f557e8f944f84728d38bee",
+    "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/04_paired_b1024_reference_summary.json": "bcf98978147d4cde6df989bbcf53c6ca17a9fcca42218bbc4640d6759d0e8f36",
+    "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/05_server_reachability_receipt.json": "b3771e279179d59b71873c3f9f34f9025d0d88a511eb240614de0aa0a16ee713",
+    "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/06_remote_readonly_preflight.json": "388ccc1485611c7cd03f133b4ce77c8d7c019bddf5649e8ee0dcdc236f9e2537",
+    "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07_calibration_execution_config.json": "125a7a92c84a27d83c71c0153b079329279e47d096d0298d096fec2855f5fee9",
+    "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/08_cpu_preflight_receipt.json": "d3f3ff55c10b8b99f45f49ee46b4c452b1c411c5ac0ef2b32f2fe641199531b5",
+    "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/15_context_consistency_receipt.json": "e5839455b612eaaca0f361dc278a4eb9180fbff5e84f3b6abfc6e692802a4be4"
+  },
+  "locked_test": false,
+  "scope": "protocol/CPU preflight not GPU acceptance"
+}

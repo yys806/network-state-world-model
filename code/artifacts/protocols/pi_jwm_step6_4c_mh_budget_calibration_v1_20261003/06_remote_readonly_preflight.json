@@ -1,0 +1,24 @@
+{
+  "checkpoint": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9  /root/autodl-tmp/pi-jwm-step6-3d/code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt"
+  },
+  "git": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "587efdfbdb460f7fa810c5c23ac651afc5a4b339"
+  },
+  "gpu": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "NVIDIA GeForce RTX 3080 Ti, 0 %, 1 MiB"
+  },
+  "gpu_search_started": false,
+  "read_only": true,
+  "tracked": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+}

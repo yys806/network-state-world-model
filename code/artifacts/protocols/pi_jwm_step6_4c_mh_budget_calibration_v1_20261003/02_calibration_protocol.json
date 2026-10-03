@@ -1,0 +1,34 @@
+{
+  "CLOSED_LOOP_BUDGET": "RESEARCHER_DECISION_PENDING",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "K": 4,
+  "Stage B": "NOT_STARTED",
+  "anchors": 16,
+  "budgets": [
+    256,
+    512
+  ],
+  "environment_actions": false,
+  "execution_order": [
+    256,
+    512
+  ],
+  "failure_policy": "STOP on source/identity drift, NaN/Inf, scorer inconsistency/crash; never retune or automatically restart",
+  "frozen_science": "unchanged CandidateDomain/Grammar/H4 Objective/Return/cache/CEM/prior mean/service expectation/checkpoint",
+  "locked_test": false,
+  "manifest_sha256": "57c94ff553b6147537cba8583e9e269eb59420e2ee5d85ecaccb93b29fcb3385",
+  "method": "MH-CEM",
+  "new_cases": 96,
+  "nominal_new_budget": 36864,
+  "paired_reference_budget": 1024,
+  "paired_reference_cases": 48,
+  "rerun_b1024": false,
+  "rho": 0.1,
+  "scope": "CALIBRATION SUBSET; not full Validation; not original Stage B",
+  "seeds": [
+    6311,
+    6312,
+    6313
+  ],
+  "statistics": "paired descriptive six categories, sum48; no non-inferiority/equivalence claim; no bootstrap inference planned"
+}
