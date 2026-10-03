@@ -1,0 +1,77 @@
+{
+  "schema": "STEP_6_3D_STAGE_A_CLOSURE_SHA_MANIFEST_V1",
+  "files": [
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/07_validation_stage_a_primary_comparison_receipt.json",
+      "sha256": "1a98bee605c971565ae8538fcc2b9cf8b47d7c83e63fb793e1876107c33b4b96",
+      "bytes": 45618
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/08_selected_method.json",
+      "sha256": "71225a02225fd50a67c1847fd9d58dfb2fb2ae3efa6839fb87753d257c9cdd7f",
+      "bytes": 3914
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/10_independent_stage_a_summary.json",
+      "sha256": "c6c4841c56260a5a55107ae27620783d718ce9190e723ff35962afc5a81976b6",
+      "bytes": 44631
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/11_formal_stage_a_runtime_receipt.json",
+      "sha256": "3220e4cd25b940bd40e8f262cef6ecbfe4b9b6f0a8751075a2dcdf92f77fcc20",
+      "bytes": 1038
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/12_stage_a_local_file_inventory.json",
+      "sha256": "0496757b3e07957f93de9b5795ff4fec3d1b5d52359f370034e1653140bab984",
+      "bytes": 271305
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/13_stage_a_acceptance_receipt.json",
+      "sha256": "4ef26871b3ec2359038130d3c0b1abde1aea9e7ecbd6f793ed47d1ef208cad85",
+      "bytes": 9677
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/14_stage_a_archive_sha_manifest.json",
+      "sha256": "13d377c4eb58d1f7d351eb1ef69d096b4868a509d3fbd06e8200a7283a5fbbca",
+      "bytes": 749
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/15_final_context_verification_receipt.json",
+      "sha256": "484fda3003b56a014b6262b9aec8fe66fd350f7d97a2c31db68267d738433013",
+      "bytes": 1339
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/16_final_stage_a_closure_acceptance.json",
+      "sha256": "9ebda9cf1d6dc9974bc04169587e7277c3824b0ba59047b535972a0a96e75d5c",
+      "bytes": 1137
+    },
+    {
+      "path": "code/scripts/build_project_knowledge_index_v1.py",
+      "sha256": "0b751f69a5cfd458bc5fcd781afaca74e6a9cd153a6de71998748c13a3fd30ad",
+      "bytes": 38399
+    },
+    {
+      "path": "code/scripts/close_step6_3d_validation_stage_a_v1.py",
+      "sha256": "9b275ba6cd62a3be89dcc0c9defa6ab5018520230021e05da85fad891ba2a8ec",
+      "bytes": 16325
+    },
+    {
+      "path": "code/tests/test_step6_3d_result_registry_v1.py",
+      "sha256": "dc4db4792ccfe8e9bd52422538cf0d6825f133d5b6127d59431dbb17c07a5011",
+      "bytes": 3297
+    },
+    {
+      "path": "code/tests/test_step6_3d_stage_a_acceptance_v1.py",
+      "sha256": "59dd7f4b84955fd86ae1f98adde7f11f7a2d84b132e59b6ee020bf651d636949",
+      "bytes": 3279
+    },
+    {
+      "path": "docs/implementation_records/STEP_06_3D_FORMAL_VALIDATION_STAGE_A.md",
+      "sha256": "35cfdd614af67802e50201295c86cc9cc63b4f0e508a5e0ebb13d3c1971b5e1c",
+      "bytes": 12760
+    }
+  ],
+  "locked_test": false,
+  "raw_archive_in_git": false
+}

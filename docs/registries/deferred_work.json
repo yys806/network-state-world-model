@@ -5,7 +5,7 @@
       "id": "STEP-6.3D-VALIDATION-STAGE-B",
       "type": "candidate_method_research",
       "status": "deferred",
-      "reason": "Stage A B1024 explicitly authorized and running. Stage B256/512 remains deferred until separate researcher authorization after Stage A review.",
+      "reason": "Stage A accepted; B256/B512 requires separate researcher authorization and cannot revise primary selection.",
       "summary_zh": "Stage A正式运行中；只延期Stage B256/512和后续实验，不得自动接续。",
       "authorization_required": true,
       "auto_start": false,

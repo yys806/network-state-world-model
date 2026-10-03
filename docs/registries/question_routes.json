@@ -4,90 +4,252 @@
     {
       "id": "ROUTE-STEP-6.3D-PREFLIGHT-PATCH",
       "title": "STEP 6.3D 前置资格、H4 支持和批量转移",
-      "keywords": ["STEP 6.3D-PREFLIGHT-PATCH", "Objective cohort", "H4 scoreability", "future Return birth", "batch transition"],
+      "keywords": [
+        "STEP 6.3D-PREFLIGHT-PATCH",
+        "Objective cohort",
+        "H4 scoreability",
+        "future Return birth",
+        "batch transition"
+      ],
       "summary": "先看 Patch 实施记录与 25 接受收据，再按 24 SHA 清单核对 15–23 及 32 个 TRAIN 单锚点收据；16/16 H4 锚点分布是支持诊断，正式方法比较暂停。",
-      "primary_sources": ["docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md", "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json"],
-      "verification_sources": ["code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/24_preflight_patch_manifest.json", "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/22_train_h4_scoreability_preflight.json", "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/23_h4_batch_equivalence_cpu_gate.json"]
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_3D_PREFLIGHT_PATCH_OBJECTIVE_H4_BATCH.md",
+        "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/25_preflight_patch_acceptance.json"
+      ],
+      "verification_sources": [
+        "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/24_preflight_patch_manifest.json",
+        "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/22_train_h4_scoreability_preflight.json",
+        "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/23_h4_batch_equivalence_cpu_gate.json"
+      ]
     },
     {
       "id": "ROUTE-STEP-6.3D-METHOD-COMPARISON",
       "title": "STEP 6.3D 固定预算搜索方法比较状态",
-      "keywords": ["STEP 6.3D", "HRS", "S-CEM", "MH-CEM", "H4", "搜索方法选择"],
-      "summary": "先看 6.3D 实施记录和新的前置补丁收据；正式 TRAIN/Validation 方法矩阵暂停待研究者判断 H4 支持问题，不得从前置 HRS 诊断宣称选出方法。",
-      "primary_sources": ["docs/implementation_records/STEP_06_3D_FIXED_BUDGET_SEARCH_METHOD_COMPARISON_V1.md", "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/12_exact_oracle_receipt.json"],
-      "verification_sources": ["code/src/pi_jwm/step6_3d_structured_proposal_v1.py", "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py", "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/15_train_anchor_manifest_objective_eligible.json", "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json"]
+      "keywords": [
+        "STEP 6.3D",
+        "HRS",
+        "S-CEM",
+        "MH-CEM",
+        "H4",
+        "搜索方法选择"
+      ],
+      "summary": "STEP_6_3D_VALIDATION_STAGE_A=PASS：960/960 原始结果完成并独立验身份、选法、配对统计及 SHA 归档；名义/实际一步转移均983,040。冻结规则选择 SEARCH_METHOD=MH-CEM，仅表示 Planner v1 structured-search backbone / pure-search baseline，不是最终 hybrid PI-JWM planner 冻结。三方法各160/320可评分H4（50%）；MH 对 S 为78胜/198平/44负，anchor-cluster 95% CI=[0.03125,0.184375]。正式运行40.6074小时、23.6410 cases/hour；GPU RTX3080Ti/CUDA/FP32/batch16 已硬停止。Stage B=NOT_STARTED，locked_test=false。future Return-birth 固定支持限制保留；无未解决执行阻塞。唯一下一动作是研究者审阅本次结果，禁止自动扩展实验。",
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_3D_FORMAL_VALIDATION_STAGE_A.md",
+        "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/13_stage_a_acceptance_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/07_validation_stage_a_primary_comparison_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/08_selected_method.json"
+      ],
+      "verification_sources": [
+        "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/10_independent_stage_a_summary.json",
+        "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/14_stage_a_archive_sha_manifest.json",
+        "code/scripts/close_step6_3d_validation_stage_a_v1.py"
+      ]
     },
     {
       "id": "ROUTE-STEP-6.3BC-PATCH-COMM-SELECTION",
       "title": "Planner v1 通信任务选择与 TRAIN 投影",
-      "keywords": ["STEP 6.3B", "STEP 6.3C", "Comm 任务选择", "TRAIN 自重放", "候选域空域", "Route 创建 Flow"],
+      "keywords": [
+        "STEP 6.3B",
+        "STEP 6.3C",
+        "Comm 任务选择",
+        "TRAIN 自重放",
+        "候选域空域",
+        "Route 创建 Flow"
+      ],
       "summary": "先读 6.3B/6.3C-PATCH 研究者决定与实施记录，再核对 TRAIN 原始/投影/排除行收据和候选域前后统计；残余 Comp/未见结构不得解释为已关闭。",
-      "primary_sources": ["docs/implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md", "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json"],
-      "verification_sources": ["code/src/pi_jwm/step6_3b_candidate_grammar_v1.py", "code/src/pi_jwm/step6_3c_candidate_domain_v1.py", "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/06_train_h1_projected_self_replay.json"]
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_3BC_PATCH_COMM_TASK_SELECTION_TRAIN_SELF_REPLAY_AUDIT.md",
+        "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/07_step6_3bc_patch_acceptance.json"
+      ],
+      "verification_sources": [
+        "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py",
+        "code/src/pi_jwm/step6_3c_candidate_domain_v1.py",
+        "code/artifacts/protocols/pi_jwm_step6_3c_candidate_search_protocol_v1_20260929/06_train_h1_projected_self_replay.json"
+      ]
     },
     {
       "id": "ROUTE-STEP-6.1-TRAINED-ROLLOUT",
       "title": "正式训练模型候选推演机制",
-      "keywords": ["STEP 6.1", "trained rollout", "candidate rollout", "候选推演", "四类动作", "same current belief"],
+      "keywords": [
+        "STEP 6.1",
+        "trained rollout",
+        "candidate rollout",
+        "候选推演",
+        "四类动作",
+        "same current belief"
+      ],
       "summary": "先读 STEP 6.1 实施记录和机器 receipt，再核对冻结 checkpoint、四族响应、递归指纹与当前源码；该门没有目标函数或闭环性能结果。",
-      "primary_sources": ["docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md", "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/candidate_rollout_preflight_receipt.json"],
-      "verification_sources": ["code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py", "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/action_family_response.json", "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/recursive_feedback_audit.json"]
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_1_TRAINED_WORLD_MODEL_CANDIDATE_ROLLOUT_PREFLIGHT.md",
+        "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/candidate_rollout_preflight_receipt.json"
+      ],
+      "verification_sources": [
+        "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py",
+        "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/action_family_response.json",
+        "code/artifacts/protocols/pi_jwm_step6_1_trained_candidate_rollout_preflight_v1_20260928/recursive_feedback_audit.json"
+      ]
     },
     {
       "id": "ROUTE-NEW-DEFINITION-IMPLEMENTATION",
       "title": "新定义实施状态与差异",
-      "keywords": ["00-06", "00–06", "新定义", "实施状态", "Step 1", "差异", "复用", "结构性修改", "下一 Step"],
+      "keywords": [
+        "00-06",
+        "00–06",
+        "新定义",
+        "实施状态",
+        "Step 1",
+        "差异",
+        "复用",
+        "结构性修改",
+        "下一 Step"
+      ],
       "summary": "先读 Implementation Tracker 和当前 Step 记录，再回到目标定义指纹及对应源码、测试和 artifact；旧 P4/P6 只按历史边界解释。",
-      "primary_sources": ["docs/PIJWM_IMPLEMENTATION_TRACKER.md", "docs/implementation_records/STEP_01_AUDIT.md"],
-      "verification_sources": ["code/artifacts/audit/pi_jwm_new_definition_step01_20260918/initial_snapshot.json", "code/src/pi_jwm", "code/tests"]
+      "primary_sources": [
+        "docs/PIJWM_IMPLEMENTATION_TRACKER.md",
+        "docs/implementation_records/STEP_01_AUDIT.md"
+      ],
+      "verification_sources": [
+        "code/artifacts/audit/pi_jwm_new_definition_step01_20260918/initial_snapshot.json",
+        "code/src/pi_jwm",
+        "code/tests"
+      ]
     },
     {
       "id": "ROUTE-CURRENT-METHOD",
       "title": "当前方法与代码入口",
-      "keywords": ["当前方法", "当前算法", "现在使用", "模型入口", "训练入口", "代码在哪里"],
+      "keywords": [
+        "当前方法",
+        "当前算法",
+        "现在使用",
+        "模型入口",
+        "训练入口",
+        "代码在哪里"
+      ],
       "summary": "先确认 P4 当前候选方法及正式包装入口，再回到模型、runner、冻结协议和 acceptance 核实。",
-      "primary_sources": ["docs/RESEARCH_STATUS.md", "docs/CODE_INDEX.md", "docs/registries/experiment_registry.json"],
-      "verification_sources": ["code/src/pi_jwm/formal_entity_aligned_rssm_world_model_v1.py", "code/scripts/run_formal_p4_entity_rssm_gpu_v1.py"]
+      "primary_sources": [
+        "docs/RESEARCH_STATUS.md",
+        "docs/CODE_INDEX.md",
+        "docs/registries/experiment_registry.json"
+      ],
+      "verification_sources": [
+        "code/src/pi_jwm/formal_entity_aligned_rssm_world_model_v1.py",
+        "code/scripts/run_formal_p4_entity_rssm_gpu_v1.py"
+      ]
     },
     {
       "id": "ROUTE-EXPERIMENT-HISTORY",
       "title": "历史实验与弃用原因",
-      "keywords": ["做过没有", "试过没有", "以前试过", "历史实验", "为什么不用", "为什么弃用", "失败原因", "旧方案", "之前的"],
+      "keywords": [
+        "做过没有",
+        "试过没有",
+        "以前试过",
+        "历史实验",
+        "为什么不用",
+        "为什么弃用",
+        "失败原因",
+        "旧方案",
+        "之前的"
+      ],
       "summary": "先查历史方法语义注册表，再进入对应实验和 audit；失败结果只能按当时方法、数据和协议解释。",
-      "primary_sources": ["docs/registries/historical_method_registry.json", "docs/EXPERIMENT_INDEX.md"],
-      "verification_sources": ["code/artifacts/audit", "code/artifacts/experiments"]
+      "primary_sources": [
+        "docs/registries/historical_method_registry.json",
+        "docs/EXPERIMENT_INDEX.md"
+      ],
+      "verification_sources": [
+        "code/artifacts/audit",
+        "code/artifacts/experiments"
+      ]
     },
     {
       "id": "ROUTE-RESULT-PROVENANCE",
       "title": "结果数字与来源",
-      "keywords": ["结果", "数字", "指标", "最好结果", "从哪里来", "怎么得到", "checkpoint", "seed"],
+      "keywords": [
+        "结果",
+        "数字",
+        "指标",
+        "最好结果",
+        "从哪里来",
+        "怎么得到",
+        "checkpoint",
+        "seed"
+      ],
       "summary": "从结果注册表进入实验登记和 acceptance，再核对原始 metrics、checkpoint 与 manifest。",
-      "primary_sources": ["docs/RESULTS_INDEX.md", "docs/registries/results_registry.json", "docs/registries/experiment_registry.json"],
-      "verification_sources": ["code/artifacts/audit", "code/artifacts/experiments"]
+      "primary_sources": [
+        "docs/RESULTS_INDEX.md",
+        "docs/registries/results_registry.json",
+        "docs/registries/experiment_registry.json"
+      ],
+      "verification_sources": [
+        "code/artifacts/audit",
+        "code/artifacts/experiments"
+      ]
     },
     {
       "id": "ROUTE-DEFERRED-WORK",
       "title": "尚未执行与授权边界",
-      "keywords": ["下一步", "还缺什么", "什么时候运行", "第三个 seed", "20260832", "远端同步", "延期", "阻塞"],
+      "keywords": [
+        "下一步",
+        "还缺什么",
+        "什么时候运行",
+        "第三个 seed",
+        "20260832",
+        "远端同步",
+        "延期",
+        "阻塞"
+      ],
       "summary": "查询延期注册表和当前科研状态；登记为 deferred 不等于允许自动执行。",
-      "primary_sources": ["docs/registries/deferred_work.json", "docs/RESEARCH_STATUS.md"],
-      "verification_sources": ["记录/本地计划表.md", "记录/8.12之后推进.md"]
+      "primary_sources": [
+        "docs/registries/deferred_work.json",
+        "docs/RESEARCH_STATUS.md"
+      ],
+      "verification_sources": [
+        "记录/本地计划表.md",
+        "记录/8.12之后推进.md"
+      ]
     },
     {
       "id": "ROUTE-RESEARCH-STATUS",
       "title": "当前研究问题、证据和未知",
-      "keywords": ["研究问题", "现在做到哪里", "当前状态", "已经确认", "当前假设", "尚未解决"],
+      "keywords": [
+        "研究问题",
+        "现在做到哪里",
+        "当前状态",
+        "已经确认",
+        "当前假设",
+        "尚未解决"
+      ],
       "summary": "先读当前状态摘要，再沿项目索引定位方法、实验和原始证据。",
-      "primary_sources": ["docs/RESEARCH_STATUS.md", "docs/PROJECT_INDEX.md"],
-      "verification_sources": ["记录/PIJWM主文档.md", "code/artifacts"]
+      "primary_sources": [
+        "docs/RESEARCH_STATUS.md",
+        "docs/PROJECT_INDEX.md"
+      ],
+      "verification_sources": [
+        "记录/PIJWM主文档.md",
+        "code/artifacts"
+      ]
     },
     {
       "id": "ROUTE-CHATGPT-ONBOARDING",
       "title": "ChatGPT 新对话快速恢复项目",
-      "keywords": ["ChatGPT", "新对话", "快速了解", "项目上下文", "AI_CONTEXT", "从哪里开始读"],
+      "keywords": [
+        "ChatGPT",
+        "新对话",
+        "快速了解",
+        "项目上下文",
+        "AI_CONTEXT",
+        "从哪里开始读"
+      ],
       "summary": "先读 AI_CONTEXT 当前快照，再按研究、架构、数据、模块、实验、决策和问题文件继续定位真实源码与证据。",
-      "primary_sources": ["AI_CONTEXT/00_PROJECT_STATE.md", "AI_CONTEXT/04_MODULE_MAP.md"],
-      "verification_sources": ["docs/registries/document_authority.json", "code/src/pi_jwm", "code/artifacts"]
+      "primary_sources": [
+        "AI_CONTEXT/00_PROJECT_STATE.md",
+        "AI_CONTEXT/04_MODULE_MAP.md"
+      ],
+      "verification_sources": [
+        "docs/registries/document_authority.json",
+        "code/src/pi_jwm",
+        "code/artifacts"
+      ]
     }
   ]
 }

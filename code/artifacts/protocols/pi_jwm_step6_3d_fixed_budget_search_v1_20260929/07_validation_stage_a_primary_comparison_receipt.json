@@ -1,0 +1,1669 @@
+{
+  "batch_size": 16,
+  "bucket_strategy": "none",
+  "budgets": [
+    1024
+  ],
+  "case_count": 960,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "comparison": {
+    "1024": {
+      "method_diagnostics": {
+        "HRS": {
+          "N_cache_hits": 107962,
+          "N_unique_transition_evals": 327680,
+          "admitted": 439618,
+          "budget_cache_and_proposal_totals": {
+            "N_admitted_steps": 439618,
+            "N_cache_hits": 107962,
+            "N_complete_sequences": 86437,
+            "N_dead_end_branches": 43827,
+            "N_proposed_steps": 439618,
+            "N_rejected_steps": 0,
+            "N_unique_transition_evals": 327680
+          },
+          "cache_hits": 107962,
+          "case_count": 320,
+          "grammar_dead_end_count": 43827,
+          "h4_scoreable_success_count": 160,
+          "h4_scoreable_success_rate": 0.5,
+          "nominal_B_WM_total": 327680,
+          "proposed": 439618,
+          "rejected": 0,
+          "return_birth_support_boundary_count": 57565,
+          "scorer_exception_count": 0,
+          "total_complete_h4": 86437,
+          "total_distinct_scoreable_h4": 26877,
+          "total_unscoreable_h4": 57565,
+          "wall_clock_diagnostic": {
+            "in_solve_seconds_sum": 37022.85207029944,
+            "is_elapsed_matrix_runtime": false
+          }
+        },
+        "MH-CEM": {
+          "N_cache_hits": 200005,
+          "N_unique_transition_evals": 327680,
+          "admitted": 543789,
+          "budget_cache_and_proposal_totals": {
+            "N_admitted_steps": 543789,
+            "N_cache_hits": 200005,
+            "N_complete_sequences": 111943,
+            "N_dead_end_branches": 32097,
+            "N_proposed_steps": 543789,
+            "N_rejected_steps": 0,
+            "N_unique_transition_evals": 327680
+          },
+          "cache_hits": 200005,
+          "case_count": 320,
+          "grammar_dead_end_count": 32097,
+          "h4_scoreable_success_count": 160,
+          "h4_scoreable_success_rate": 0.5,
+          "nominal_B_WM_total": 327680,
+          "proposed": 543789,
+          "rejected": 0,
+          "return_birth_support_boundary_count": 55999,
+          "scorer_exception_count": 0,
+          "total_complete_h4": 111943,
+          "total_distinct_scoreable_h4": 33505,
+          "total_unscoreable_h4": 55999,
+          "wall_clock_diagnostic": {
+            "in_solve_seconds_sum": 38318.63259273302,
+            "is_elapsed_matrix_runtime": false
+          }
+        },
+        "S-CEM": {
+          "N_cache_hits": 193020,
+          "N_unique_transition_evals": 327680,
+          "admitted": 536971,
+          "budget_cache_and_proposal_totals": {
+            "N_admitted_steps": 536971,
+            "N_cache_hits": 193020,
+            "N_complete_sequences": 111093,
+            "N_dead_end_branches": 31564,
+            "N_proposed_steps": 536971,
+            "N_rejected_steps": 0,
+            "N_unique_transition_evals": 327680
+          },
+          "cache_hits": 193020,
+          "case_count": 320,
+          "grammar_dead_end_count": 31564,
+          "h4_scoreable_success_count": 160,
+          "h4_scoreable_success_rate": 0.5,
+          "nominal_B_WM_total": 327680,
+          "proposed": 536971,
+          "rejected": 0,
+          "return_birth_support_boundary_count": 55785,
+          "scorer_exception_count": 0,
+          "total_complete_h4": 111093,
+          "total_distinct_scoreable_h4": 32497,
+          "total_unscoreable_h4": 55785,
+          "wall_clock_diagnostic": {
+            "in_solve_seconds_sum": 38021.639833100606,
+            "is_elapsed_matrix_runtime": false
+          }
+        }
+      },
+      "paired_cases_per_method": 320,
+      "paired_outcomes": {
+        "MH-CEM_vs_HRS": {
+          "cluster_bootstrap": {
+            "anchor_cluster_count": 64,
+            "bootstrap_replications": 10000,
+            "bootstrap_seed": 6316,
+            "bootstrap_type": "anchor_cluster_percentile",
+            "ci95_lower": 0.3125,
+            "ci95_upper": 0.5375,
+            "mean_paired_advantage": 0.425,
+            "seeds_per_anchor": 5
+          },
+          "loss": 9,
+          "paired_seed_order": [
+            6311,
+            6312,
+            6313,
+            6314,
+            6315
+          ],
+          "per_anchor_seed_outcomes": {
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0030": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0043": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0050": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0054": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0066": [
+              1,
+              0,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0082": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0083": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0026": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0064": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0070": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0071": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0086": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0005": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0018": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0035": [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0045": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0049": [
+              -1,
+              1,
+              1,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0003": [
+              0,
+              0,
+              1,
+              1,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0036": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0042": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0045": [
+              1,
+              1,
+              1,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0052": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0061": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0066": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0068": [
+              1,
+              1,
+              1,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0006": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0021": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0023": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0032": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0052": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0062": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0076": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0083": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0084": [
+              1,
+              1,
+              1,
+              -1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0011": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0015": [
+              1,
+              0,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0031": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0075": [
+              1,
+              -1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0076": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0078": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0016": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0018": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0023": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0024": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0041": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0090": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092326-policy-2026092426::anchor-0029": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092326-policy-2026092426::anchor-0051": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092326-policy-2026092426::anchor-0058": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092331-policy-2026092431::anchor-0010": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092331-policy-2026092431::anchor-0064": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092331-policy-2026092431::anchor-0067": [
+              1,
+              -1,
+              -1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0010": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0014": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0040": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0045": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0046": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092350-policy-2026092450::anchor-0003": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092350-policy-2026092450::anchor-0006": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092350-policy-2026092450::anchor-0091": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0010": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0042": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0044": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0082": [
+              1,
+              1,
+              1,
+              -1,
+              1
+            ]
+          },
+          "six_category_counts": {
+            "both_scoreable_left_win": 145,
+            "both_scoreable_right_win": 9,
+            "both_scoreable_tie": 6,
+            "both_unscoreable": 160,
+            "only_left_scoreable": 0,
+            "only_right_scoreable": 0
+          },
+          "tie": 166,
+          "total_paired_cases": 320,
+          "win": 145
+        },
+        "MH-CEM_vs_S-CEM": {
+          "cluster_bootstrap": {
+            "anchor_cluster_count": 64,
+            "bootstrap_replications": 10000,
+            "bootstrap_seed": 6316,
+            "bootstrap_type": "anchor_cluster_percentile",
+            "ci95_lower": 0.03125,
+            "ci95_upper": 0.184375,
+            "mean_paired_advantage": 0.10625,
+            "seeds_per_anchor": 5
+          },
+          "loss": 44,
+          "paired_seed_order": [
+            6311,
+            6312,
+            6313,
+            6314,
+            6315
+          ],
+          "per_anchor_seed_outcomes": {
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0030": [
+              1,
+              0,
+              -1,
+              -1,
+              1
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0043": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0050": [
+              -1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0054": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0066": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0082": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0083": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0026": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0064": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0070": [
+              1,
+              0,
+              0,
+              -1,
+              -1
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0071": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0086": [
+              -1,
+              1,
+              0,
+              -1,
+              -1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0005": [
+              0,
+              0,
+              0,
+              -1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0018": [
+              1,
+              1,
+              -1,
+              0,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0035": [
+              1,
+              -1,
+              1,
+              -1,
+              -1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0045": [
+              -1,
+              1,
+              1,
+              0,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0049": [
+              1,
+              1,
+              -1,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0003": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0036": [
+              0,
+              1,
+              -1,
+              0,
+              1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0042": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0045": [
+              -1,
+              1,
+              -1,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0052": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0061": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0066": [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0068": [
+              -1,
+              1,
+              -1,
+              -1,
+              -1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0006": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0021": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0023": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0032": [
+              1,
+              1,
+              1,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0052": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0062": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0076": [
+              1,
+              1,
+              1,
+              -1,
+              -1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0083": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0084": [
+              1,
+              -1,
+              1,
+              -1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0011": [
+              0,
+              1,
+              -1,
+              0,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0015": [
+              -1,
+              0,
+              1,
+              -1,
+              0
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0031": [
+              1,
+              1,
+              1,
+              -1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0075": [
+              1,
+              1,
+              1,
+              -1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0076": [
+              1,
+              1,
+              1,
+              0,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0078": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0016": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0018": [
+              0,
+              0,
+              0,
+              -1,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0023": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0024": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0041": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0090": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092326-policy-2026092426::anchor-0029": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092326-policy-2026092426::anchor-0051": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092326-policy-2026092426::anchor-0058": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092331-policy-2026092431::anchor-0010": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092331-policy-2026092431::anchor-0064": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092331-policy-2026092431::anchor-0067": [
+              1,
+              -1,
+              0,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0010": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0014": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0040": [
+              0,
+              0,
+              1,
+              0,
+              -1
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0045": [
+              0,
+              -1,
+              0,
+              0,
+              -1
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0046": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092350-policy-2026092450::anchor-0003": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092350-policy-2026092450::anchor-0006": [
+              1,
+              1,
+              -1,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092350-policy-2026092450::anchor-0091": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0010": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0042": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0044": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0082": [
+              1,
+              1,
+              -1,
+              -1,
+              1
+            ]
+          },
+          "six_category_counts": {
+            "both_scoreable_left_win": 78,
+            "both_scoreable_right_win": 44,
+            "both_scoreable_tie": 38,
+            "both_unscoreable": 160,
+            "only_left_scoreable": 0,
+            "only_right_scoreable": 0
+          },
+          "tie": 198,
+          "total_paired_cases": 320,
+          "win": 78
+        },
+        "S-CEM_vs_HRS": {
+          "cluster_bootstrap": {
+            "anchor_cluster_count": 64,
+            "bootstrap_replications": 10000,
+            "bootstrap_seed": 6316,
+            "bootstrap_type": "anchor_cluster_percentile",
+            "ci95_lower": 0.2625,
+            "ci95_upper": 0.475,
+            "mean_paired_advantage": 0.36875,
+            "seeds_per_anchor": 5
+          },
+          "loss": 17,
+          "paired_seed_order": [
+            6311,
+            6312,
+            6313,
+            6314,
+            6315
+          ],
+          "per_anchor_seed_outcomes": {
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0030": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0043": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0050": [
+              1,
+              -1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0054": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0066": [
+              0,
+              -1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0082": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092301-policy-2026092401::anchor-0083": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0026": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0064": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0070": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0071": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092302-policy-2026092402::anchor-0086": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0005": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0018": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0035": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0045": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092313-policy-2026092413::anchor-0049": [
+              -1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0003": [
+              0,
+              0,
+              1,
+              1,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0036": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0042": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0045": [
+              1,
+              1,
+              1,
+              -1,
+              1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0052": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0061": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0066": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092315-policy-2026092415::anchor-0068": [
+              1,
+              1,
+              1,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0006": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0021": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0023": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0032": [
+              -1,
+              1,
+              -1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0052": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0062": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0076": [
+              1,
+              -1,
+              -1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0083": [
+              -1,
+              1,
+              0,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092318-policy-2026092418::anchor-0084": [
+              1,
+              1,
+              0,
+              1,
+              -1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0011": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0015": [
+              1,
+              0,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0031": [
+              1,
+              1,
+              -1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0075": [
+              1,
+              -1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0076": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092322-policy-2026092422::anchor-0078": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0016": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0018": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0023": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0024": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0041": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092323-policy-2026092423::anchor-0090": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092326-policy-2026092426::anchor-0029": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092326-policy-2026092426::anchor-0051": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092326-policy-2026092426::anchor-0058": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092331-policy-2026092431::anchor-0010": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092331-policy-2026092431::anchor-0064": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092331-policy-2026092431::anchor-0067": [
+              -1,
+              1,
+              -1,
+              0,
+              1
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0010": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0014": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0040": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0045": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092341-policy-2026092441::anchor-0046": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092350-policy-2026092450::anchor-0003": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092350-policy-2026092450::anchor-0006": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "formal-v1-sim-2026092350-policy-2026092450::anchor-0091": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0010": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0042": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0044": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formal-v1-sim-2026092358-policy-2026092458::anchor-0082": [
+              1,
+              1,
+              1,
+              -1,
+              1
+            ]
+          },
+          "six_category_counts": {
+            "both_scoreable_left_win": 135,
+            "both_scoreable_right_win": 17,
+            "both_scoreable_tie": 8,
+            "both_unscoreable": 160,
+            "only_left_scoreable": 0,
+            "only_right_scoreable": 0
+          },
+          "tie": 168,
+          "total_paired_cases": 320,
+          "win": 135
+        }
+      }
+    }
+  },
+  "execution_config_id": "3b3fcfe775f947790a982929a292fb3f3b8f30396996f7f9b33270e7d6c9f215",
+  "execution_device": "cuda",
+  "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+  "hard_stop_after_stage": true,
+  "locked_test": false,
+  "next_stage_auto_start": false,
+  "nominal_B_WM_total": 983040,
+  "precision": "FP32",
+  "primary_budget": 1024,
+  "provenance_bridge": {
+    "parents": {
+      "qualification_config": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/05_selected_execution_config.json",
+        "sha256": "f2ee79d85a383863ffac5076431aa758c73e9e882284ca473ff5e3c3d8f1d7ab"
+      },
+      "summary_schema": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/07_validation_output_schema_receipt.json",
+        "sha256": "ba238923f82499eaffc468c65c5c1a54296f1b656462f180cebb99a7123b0e67"
+      },
+      "train_closure": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/train_tuning_closure_acceptance.json",
+        "sha256": "d2d7b88f2200490774f785a9e4e11345413799713e6e01115316462f63bd65e2"
+      },
+      "train_frozen_configs": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/06_frozen_selected_cem_configs.json",
+        "sha256": "eb7bef040554a9aee4ede23bf04f7f131f193247ebdca48687c85c9d9a147cc6"
+      },
+      "train_tuning_receipt": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/05_train_hyperparameter_tuning_receipt.json",
+        "sha256": "268c09d33e7ab4e0d8b77458fe4e14f71efe1d4d822fffc7cd951c4158f3af31"
+      }
+    },
+    "source_bridge_changed_files": [
+      "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py"
+    ],
+    "summary_schema_version": "PIJWM-Validation-summary-v1",
+    "train_selection_execution_config_id": "3834e6b2e76c93e66dc92f0b3d0c56ad7e753c07be9ef0b8cc022a2596b7b680",
+    "validation_execution_config_id": "3b3fcfe775f947790a982929a292fb3f3b8f30396996f7f9b33270e7d6c9f215"
+  },
+  "runtime_diagnostic": {
+    "includes_resume_reads": true,
+    "invocation_elapsed_seconds": 146186.68076954922,
+    "invocation_finish_utc": "2026-10-03T04:02:40.939166+00:00",
+    "invocation_start_utc": "2026-10-01T11:26:17.875203+00:00",
+    "is_full_elapsed_across_resumes": false
+  },
+  "seeds": [
+    6311,
+    6312,
+    6313,
+    6314,
+    6315
+  ],
+  "selected_anchor_count": 64,
+  "selected_method": "MH-CEM",
+  "sensitivity_diagnostic": {
+    "bonferroni_percentile_intervals": {
+      "MH-CEM_vs_HRS": {
+        "lower": 0.290625,
+        "percentile_level": 0.9833333333333333,
+        "upper": 0.565625
+      },
+      "MH-CEM_vs_S-CEM": {
+        "lower": 0.015625,
+        "percentile_level": 0.9833333333333333,
+        "upper": 0.203125
+      },
+      "S-CEM_vs_HRS": {
+        "lower": 0.24375,
+        "percentile_level": 0.9833333333333333,
+        "upper": 0.503125
+      }
+    },
+    "changes_primary_selection": false,
+    "diagnostic_only": true,
+    "limitation": "Bootstrap sensitivity does not guarantee finite-sample simultaneous coverage; Holm not enabled.",
+    "replications": 10000,
+    "seed": 6316,
+    "shared_anchor_resample_indices": true
+  },
+  "source_sha256": {
+    "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/02_train_structural_support_catalog.json": "9545baa8a5b21e4a6da6f072202807d0569f3edd66f9927eb9d2e6571e1bfef1",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/15_train_anchor_manifest_objective_eligible.json": "561886c08dd857a725cf10e076e93171ecbdc6254b2b897da1f1b9b3c240c511",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/19_formal_selected_deadline_sidecars.json": "7c9128f11043af2048ed6939544be5e08800ba81b89cdc00258d691aeba86695",
+    "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py": "3f23804ce85716aa272a4b1232fc80397e791ee2a9cc2b013d3f101cb1945a0c",
+    "code/scripts/run_step6_3d_one_cpu_solve_v1.py": "31ca346037bb86b46838c30c12fa577fd26f8deca3e103c5f73c8d9f521fc544",
+    "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py": "25ca59719023ed8d94b4f864041f7edf56b1b495a6fe86d5417cef94742c8a48",
+    "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad",
+    "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py": "e27e460962f1dcff8dfab8bb33fbc05753a6d8a8358ac78b1cab1c8714c45daa",
+    "code/src/pi_jwm/step6_3b_candidate_support_v1.py": "d15638fb4697c49129ce17489fde4ce5b048c5a92aacd577a2119357105159a1",
+    "code/src/pi_jwm/step6_3c_candidate_domain_v1.py": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409",
+    "code/src/pi_jwm/step6_3c_search_protocol_v1.py": "6c2ec893325a56515e451d3b3594fd05ce810eb4c9cc420f29a7fb863caf719c",
+    "code/src/pi_jwm/step6_3d_anchor_selection_v1.py": "d55c18ee5d5812b66247446f0df85794ab590ef4777896c1c9ab091e32edac7d",
+    "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py": "f602bb5797a776f76f13cd9b9e3038ef202d6c78098f5f8401a76f198807e5c5",
+    "code/src/pi_jwm/step6_3d_method_selection_v1.py": "8606f916e1c8c2590d78c26611be3337ce37274cbb6cbf834dd48b901aef70ba",
+    "code/src/pi_jwm/step6_3d_structured_proposal_v1.py": "8b18e62de3cdd3746ac5a89dd5bafb8d3ae62ce0729ca9156c593f4d6bada040"
+  },
+  "stage": "primary",
+  "state_storage": "cpu_cache_and_prefix",
+  "train_configs_frozen": {
+    "HRS": [
+      1,
+      null
+    ],
+    "MH-CEM": [
+      4,
+      0.1
+    ],
+    "S-CEM": [
+      4,
+      0.1
+    ]
+  },
+  "validation_retuning": false
+}

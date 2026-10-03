@@ -1,0 +1,2248 @@
+{
+  "claim_boundary": "Planner v1 structured-search backbone / pure-search baseline; not final hybrid PI-JWM planner freeze.",
+  "method_diagnostics": {
+    "HRS": {
+      "N_cache_hits": 107962,
+      "N_unique_transition_evals": 327680,
+      "admitted": 439618,
+      "budget_cache_and_proposal_totals": {
+        "N_admitted_steps": 439618,
+        "N_cache_hits": 107962,
+        "N_complete_sequences": 86437,
+        "N_dead_end_branches": 43827,
+        "N_proposed_steps": 439618,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 327680
+      },
+      "cache_hits": 107962,
+      "case_count": 320,
+      "grammar_dead_end_count": 43827,
+      "h4_scoreable_success_count": 160,
+      "h4_scoreable_success_rate": 0.5,
+      "nominal_B_WM_total": 327680,
+      "proposed": 439618,
+      "rejected": 0,
+      "return_birth_support_boundary_count": 57565,
+      "scorer_exception_count": 0,
+      "total_complete_h4": 86437,
+      "total_distinct_scoreable_h4": 26877,
+      "total_unscoreable_h4": 57565,
+      "wall_clock_diagnostic": {
+        "in_solve_seconds_sum": 37022.85207029944,
+        "is_elapsed_matrix_runtime": false
+      }
+    },
+    "MH-CEM": {
+      "N_cache_hits": 200005,
+      "N_unique_transition_evals": 327680,
+      "admitted": 543789,
+      "budget_cache_and_proposal_totals": {
+        "N_admitted_steps": 543789,
+        "N_cache_hits": 200005,
+        "N_complete_sequences": 111943,
+        "N_dead_end_branches": 32097,
+        "N_proposed_steps": 543789,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 327680
+      },
+      "cache_hits": 200005,
+      "case_count": 320,
+      "grammar_dead_end_count": 32097,
+      "h4_scoreable_success_count": 160,
+      "h4_scoreable_success_rate": 0.5,
+      "nominal_B_WM_total": 327680,
+      "proposed": 543789,
+      "rejected": 0,
+      "return_birth_support_boundary_count": 55999,
+      "scorer_exception_count": 0,
+      "total_complete_h4": 111943,
+      "total_distinct_scoreable_h4": 33505,
+      "total_unscoreable_h4": 55999,
+      "wall_clock_diagnostic": {
+        "in_solve_seconds_sum": 38318.63259273302,
+        "is_elapsed_matrix_runtime": false
+      }
+    },
+    "S-CEM": {
+      "N_cache_hits": 193020,
+      "N_unique_transition_evals": 327680,
+      "admitted": 536971,
+      "budget_cache_and_proposal_totals": {
+        "N_admitted_steps": 536971,
+        "N_cache_hits": 193020,
+        "N_complete_sequences": 111093,
+        "N_dead_end_branches": 31564,
+        "N_proposed_steps": 536971,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 327680
+      },
+      "cache_hits": 193020,
+      "case_count": 320,
+      "grammar_dead_end_count": 31564,
+      "h4_scoreable_success_count": 160,
+      "h4_scoreable_success_rate": 0.5,
+      "nominal_B_WM_total": 327680,
+      "proposed": 536971,
+      "rejected": 0,
+      "return_birth_support_boundary_count": 55785,
+      "scorer_exception_count": 0,
+      "total_complete_h4": 111093,
+      "total_distinct_scoreable_h4": 32497,
+      "total_unscoreable_h4": 55785,
+      "wall_clock_diagnostic": {
+        "in_solve_seconds_sum": 38021.639833100606,
+        "is_elapsed_matrix_runtime": false
+      }
+    }
+  },
+  "paired_oracles": {
+    "MH-CEM_vs_HRS": {
+      "cluster_bootstrap": {
+        "anchor_cluster_count": 64,
+        "bootstrap_replications": 10000,
+        "bootstrap_seed": 6316,
+        "bootstrap_type": "anchor_cluster_percentile",
+        "ci95_lower": 0.3125,
+        "ci95_upper": 0.5375,
+        "mean_paired_advantage": 0.425,
+        "seeds_per_anchor": 5
+      },
+      "loss": 9,
+      "oracle": "PASS",
+      "six_category_counts": {
+        "both_scoreable_left_win": 145,
+        "both_scoreable_right_win": 9,
+        "both_scoreable_tie": 6,
+        "both_unscoreable": 160,
+        "only_left_scoreable": 0,
+        "only_right_scoreable": 0
+      },
+      "tie": 166,
+      "win": 145
+    },
+    "MH-CEM_vs_S-CEM": {
+      "cluster_bootstrap": {
+        "anchor_cluster_count": 64,
+        "bootstrap_replications": 10000,
+        "bootstrap_seed": 6316,
+        "bootstrap_type": "anchor_cluster_percentile",
+        "ci95_lower": 0.03125,
+        "ci95_upper": 0.184375,
+        "mean_paired_advantage": 0.10625,
+        "seeds_per_anchor": 5
+      },
+      "loss": 44,
+      "oracle": "PASS",
+      "six_category_counts": {
+        "both_scoreable_left_win": 78,
+        "both_scoreable_right_win": 44,
+        "both_scoreable_tie": 38,
+        "both_unscoreable": 160,
+        "only_left_scoreable": 0,
+        "only_right_scoreable": 0
+      },
+      "tie": 198,
+      "win": 78
+    },
+    "S-CEM_vs_HRS": {
+      "cluster_bootstrap": {
+        "anchor_cluster_count": 64,
+        "bootstrap_replications": 10000,
+        "bootstrap_seed": 6316,
+        "bootstrap_type": "anchor_cluster_percentile",
+        "ci95_lower": 0.2625,
+        "ci95_upper": 0.475,
+        "mean_paired_advantage": 0.36875,
+        "seeds_per_anchor": 5
+      },
+      "loss": 17,
+      "oracle": "PASS",
+      "six_category_counts": {
+        "both_scoreable_left_win": 135,
+        "both_scoreable_right_win": 17,
+        "both_scoreable_tie": 8,
+        "both_unscoreable": 160,
+        "only_left_scoreable": 0,
+        "only_right_scoreable": 0
+      },
+      "tie": 168,
+      "win": 135
+    }
+  },
+  "per_anchor_scoreability": {
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0030": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0043": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0050": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0054": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0066": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0082": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0083": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0026": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0064": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0070": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0071": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0086": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0005": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0018": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0035": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0045": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0049": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0003": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0036": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0042": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0045": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0052": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0061": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0066": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0068": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0006": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0021": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0023": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0032": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0052": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0062": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0076": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0083": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0084": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0011": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0015": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0031": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0075": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0076": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0078": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0016": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0018": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0023": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0024": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0041": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0090": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092326-policy-2026092426::anchor-0029": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092326-policy-2026092426::anchor-0051": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092326-policy-2026092426::anchor-0058": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092331-policy-2026092431::anchor-0010": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092331-policy-2026092431::anchor-0064": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092331-policy-2026092431::anchor-0067": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0010": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0014": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0040": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0045": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0046": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092350-policy-2026092450::anchor-0003": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092350-policy-2026092450::anchor-0006": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    },
+    "formal-v1-sim-2026092350-policy-2026092450::anchor-0091": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0010": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0042": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0044": {
+      "HRS": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "S-CEM": {
+        "scoreable_seeds": [],
+        "unscoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      }
+    },
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0082": {
+      "HRS": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "MH-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      },
+      "S-CEM": {
+        "scoreable_seeds": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ],
+        "unscoreable_seeds": []
+      }
+    }
+  },
+  "selected_method": "MH-CEM",
+  "sensitivity_diagnostic": {
+    "bonferroni_percentile_intervals": {
+      "MH-CEM_vs_HRS": {
+        "lower": 0.290625,
+        "percentile_level": 0.9833333333333333,
+        "upper": 0.565625
+      },
+      "MH-CEM_vs_S-CEM": {
+        "lower": 0.015625,
+        "percentile_level": 0.9833333333333333,
+        "upper": 0.203125
+      },
+      "S-CEM_vs_HRS": {
+        "lower": 0.24375,
+        "percentile_level": 0.9833333333333333,
+        "upper": 0.503125
+      }
+    },
+    "changes_primary_selection": false,
+    "diagnostic_only": true,
+    "limitation": "Bootstrap sensitivity does not guarantee finite-sample simultaneous coverage; Holm not enabled.",
+    "replications": 10000,
+    "seed": 6316,
+    "shared_anchor_resample_indices": true
+  }
+}

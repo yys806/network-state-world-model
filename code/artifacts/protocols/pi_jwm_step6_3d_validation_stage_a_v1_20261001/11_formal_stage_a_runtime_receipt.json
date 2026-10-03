@@ -1,0 +1,16 @@
+{
+  "actual_elapsed_seconds": 146186.68076954922,
+  "actual_transition_throughput_per_second": 6.724552434087196,
+  "basis": "Single uninterrupted official Stage-A invocation wall-clock; includes primary matrix and summary bootstrap, excludes launch preflight and final post-run closure.",
+  "cases_per_hour": 23.641004651087798,
+  "clock_difference_origin": "Unverified; both original time bases preserved, no equality asserted.",
+  "completed_cases": 960,
+  "elapsed_basis": "Frozen runner time.perf_counter duration in seconds",
+  "finish_utc": "2026-10-03T04:02:40.939166+00:00",
+  "in_solve_seconds_sum": 113363.12449613307,
+  "start_utc": "2026-10-01T11:26:17.875203+00:00",
+  "supervisor_elapsed_note": "Includes process startup and up to 30 seconds of monitoring detection lag; attached monitor exit_code is inferred from receipt existence, not captured OS exit status.",
+  "supervisor_elapsed_seconds": 146194.19603562355,
+  "utc_minus_monotonic_seconds": -3.6168065492238384,
+  "utc_timestamp_interval_seconds": 146183.063963
+}

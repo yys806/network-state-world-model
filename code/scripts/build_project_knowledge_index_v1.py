@@ -8,6 +8,7 @@ import csv
 import hashlib
 import io
 import json
+import math
 import subprocess
 from collections import defaultdict
 from pathlib import Path
@@ -705,6 +706,48 @@ def validate_result_registry_against_evidence(
             continue
         if _sha256(audit_path) != str(result.get("audit_sha256", "")).lower():
             mismatches.append(f"{identifier}: audit SHA-256 mismatch")
+        if result.get("result_type") == "planner_search_stage_a":
+            if (audit.get("verdict") != "STEP_6_3D_VALIDATION_STAGE_A=PASS" or
+                    result.get("status") != "passed_stage_a"):
+                mismatches.append(f"{identifier}: Stage A acceptance status mismatch")
+            if (result.get("seed") != audit.get("seed") or result.get("seed") != experiment.get("seed") or
+                    result.get("seed") != [6311, 6312, 6313, 6314, 6315]):
+                mismatches.append(f"{identifier}: Stage A paired seed mismatch")
+            if (result.get("selected_search_method") != audit.get("selected_search_method") or
+                    audit.get("selected_search_method") not in ("HRS", "S-CEM", "MH-CEM") or
+                    result.get("primary_budget") != 1024 or audit.get("primary_budget") != 1024):
+                mismatches.append(f"{identifier}: Stage A selection identity mismatch")
+            if (audit.get("locked_test") is not False or result.get("locked_test_accessed") is not False or
+                    audit.get("stage_b") != "NOT_STARTED"):
+                mismatches.append(f"{identifier}: Stage A scope boundary mismatch")
+            paths = {"case_count": ("case_count",), "nominal_B_WM_total": ("nominal_B_WM_total",),
+                     "actual_unique_transitions": ("actual_unique_transitions",),
+                     "elapsed_seconds": ("runtime", "actual_elapsed_seconds")}
+            for method in ("HRS", "S-CEM", "MH-CEM"):
+                for suffix, field in (("scoreable_count", "h4_scoreable_success_count"),
+                                      ("scoreable_rate", "h4_scoreable_success_rate")):
+                    paths[f"{method}_{suffix}"] = ("method_diagnostics", method, field)
+            for pair in ("S-CEM_vs_HRS", "MH-CEM_vs_HRS", "MH-CEM_vs_S-CEM"):
+                for field in ("win", "tie", "loss"):
+                    paths[f"{pair}_{field}"] = ("paired_comparisons", pair, field)
+                for suffix, field in (("mean", "mean_paired_advantage"),
+                                      ("ci95_lower", "ci95_lower"), ("ci95_upper", "ci95_upper")):
+                    paths[f"{pair}_{suffix}"] = ("paired_comparisons", pair, "cluster_bootstrap", field)
+            registered_metrics = result.get("metrics", {})
+            if set(registered_metrics) != set(paths):
+                mismatches.append(f"{identifier}: Stage A numeric metric keys mismatch")
+            for name, path in paths.items():
+                original = audit
+                for part in path:
+                    original = original.get(part) if isinstance(original, dict) else None
+                registered = registered_metrics.get(name)
+                if (isinstance(registered, bool) or isinstance(original, bool) or
+                        not isinstance(registered, (int, float)) or not isinstance(original, (int, float))):
+                    mismatches.append(f"{identifier}: missing numeric Stage A metric {name}")
+                elif (not math.isfinite(float(registered)) or not math.isfinite(float(original)) or
+                      abs(float(registered) - float(original)) > tolerance):
+                    mismatches.append(f"{identifier}: Stage A metric mismatch {name}")
+            continue
         if result.get("seed") != audit.get("seed") or result.get("seed") != experiment.get("seed"):
             mismatches.append(f"{identifier}: seed mismatch")
         if result.get("selected_epoch") != audit.get("selection", {}).get("best_epoch"):

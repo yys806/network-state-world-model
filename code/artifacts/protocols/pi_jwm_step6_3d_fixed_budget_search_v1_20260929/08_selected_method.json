@@ -1,0 +1,66 @@
+{
+  "batch_size": 16,
+  "bucket_strategy": "none",
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "execution_config_id": "3b3fcfe775f947790a982929a292fb3f3b8f30396996f7f9b33270e7d6c9f215",
+  "execution_device": "cuda",
+  "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+  "locked_test": false,
+  "pairwise_ci": {
+    "MH-CEM_vs_HRS": {
+      "anchor_cluster_count": 64,
+      "bootstrap_replications": 10000,
+      "bootstrap_seed": 6316,
+      "bootstrap_type": "anchor_cluster_percentile",
+      "ci95_lower": 0.3125,
+      "ci95_upper": 0.5375,
+      "mean_paired_advantage": 0.425,
+      "seeds_per_anchor": 5
+    },
+    "MH-CEM_vs_S-CEM": {
+      "anchor_cluster_count": 64,
+      "bootstrap_replications": 10000,
+      "bootstrap_seed": 6316,
+      "bootstrap_type": "anchor_cluster_percentile",
+      "ci95_lower": 0.03125,
+      "ci95_upper": 0.184375,
+      "mean_paired_advantage": 0.10625,
+      "seeds_per_anchor": 5
+    },
+    "S-CEM_vs_HRS": {
+      "anchor_cluster_count": 64,
+      "bootstrap_replications": 10000,
+      "bootstrap_seed": 6316,
+      "bootstrap_type": "anchor_cluster_percentile",
+      "ci95_lower": 0.2625,
+      "ci95_upper": 0.475,
+      "mean_paired_advantage": 0.36875,
+      "seeds_per_anchor": 5
+    }
+  },
+  "precision": "FP32",
+  "primary_budget": 1024,
+  "primary_comparison_sha256": "1a98bee605c971565ae8538fcc2b9cf8b47d7c83e63fb793e1876107c33b4b96",
+  "rule": "frozen STEP 6.3D primary-budget bootstrap simplicity rule",
+  "selected_method": "MH-CEM",
+  "source_sha256": {
+    "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/02_train_structural_support_catalog.json": "9545baa8a5b21e4a6da6f072202807d0569f3edd66f9927eb9d2e6571e1bfef1",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/15_train_anchor_manifest_objective_eligible.json": "561886c08dd857a725cf10e076e93171ecbdc6254b2b897da1f1b9b3c240c511",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e",
+    "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/19_formal_selected_deadline_sidecars.json": "7c9128f11043af2048ed6939544be5e08800ba81b89cdc00258d691aeba86695",
+    "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py": "3f23804ce85716aa272a4b1232fc80397e791ee2a9cc2b013d3f101cb1945a0c",
+    "code/scripts/run_step6_3d_one_cpu_solve_v1.py": "31ca346037bb86b46838c30c12fa577fd26f8deca3e103c5f73c8d9f521fc544",
+    "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py": "25ca59719023ed8d94b4f864041f7edf56b1b495a6fe86d5417cef94742c8a48",
+    "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad",
+    "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py": "e27e460962f1dcff8dfab8bb33fbc05753a6d8a8358ac78b1cab1c8714c45daa",
+    "code/src/pi_jwm/step6_3b_candidate_support_v1.py": "d15638fb4697c49129ce17489fde4ce5b048c5a92aacd577a2119357105159a1",
+    "code/src/pi_jwm/step6_3c_candidate_domain_v1.py": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409",
+    "code/src/pi_jwm/step6_3c_search_protocol_v1.py": "6c2ec893325a56515e451d3b3594fd05ce810eb4c9cc420f29a7fb863caf719c",
+    "code/src/pi_jwm/step6_3d_anchor_selection_v1.py": "d55c18ee5d5812b66247446f0df85794ab590ef4777896c1c9ab091e32edac7d",
+    "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py": "f602bb5797a776f76f13cd9b9e3038ef202d6c78098f5f8401a76f198807e5c5",
+    "code/src/pi_jwm/step6_3d_method_selection_v1.py": "8606f916e1c8c2590d78c26611be3337ce37274cbb6cbf834dd48b901aef70ba",
+    "code/src/pi_jwm/step6_3d_structured_proposal_v1.py": "8b18e62de3cdd3746ac5a89dd5bafb8d3ae62ce0729ca9156c593f4d6bada040"
+  },
+  "state_storage": "cpu_cache_and_prefix",
+  "validation_retuning": false
+}

@@ -1,3 +1,15 @@
+## 2026-10-03 STEP 6.3D Stage A 最终验收（当前）
+
+STEP_6_3D_VALIDATION_STAGE_A=PASS：960/960 原始结果完成并独立验身份、选法、配对统计及 SHA 归档；名义/实际一步转移均983,040。冻结规则选择 SEARCH_METHOD=MH-CEM，仅表示 Planner v1 structured-search backbone / pure-search baseline，不是最终 hybrid PI-JWM planner 冻结。三方法各160/320可评分H4（50%）；MH 对 S 为78胜/198平/44负，anchor-cluster 95% CI=[0.03125,0.184375]。正式运行40.6074小时、23.6410 cases/hour；GPU RTX3080Ti/CUDA/FP32/batch16 已硬停止。Stage B=NOT_STARTED，locked_test=false。future Return-birth 固定支持限制保留；无未解决执行阻塞。唯一下一动作是研究者审阅本次结果，禁止自动扩展实验。
+
+证据链：960 raw → runner07/08 → CPU独立重建10/13 → 文件inventory12及ZIP/SHA14 → Context验收15/最终收口16。Stage A结束硬停止，无Stage B数据。
+
+实施记录：`docs/implementation_records/STEP_06_3D_FORMAL_VALIDATION_STAGE_A.md`；独立验收：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/13_stage_a_acceptance_receipt.json`；归档 SHA：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/14_stage_a_archive_sha_manifest.json`。本机 D: 保留960 raw和ZIP，远端原始结果保留；Git仅保存小型证据。
+
+---
+
+以下均为历史记录；RUNNING / NOT_SELECTED 等较早状态不代表当前验收状态。
+
 ## 2026-10-01 Stage A 当前数据流
 
 研究者已授权primary调用；RTX3080Ti冻结身份的B1024结果正原子写入solve_results/validation，完成文件经只读SFTP验身份/SHA备份至本地D:，启动前数量0，首批已产生真实结果。正式summary/方法选择待960完成；之后STOP，Stage B仍未启动。下方为启动前快照。

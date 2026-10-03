@@ -1,3 +1,15 @@
+## 2026-10-03 STEP 6.3D Stage A 最终验收（当前）
+
+STEP_6_3D_VALIDATION_STAGE_A=PASS：960/960 原始结果完成并独立验身份、选法、配对统计及 SHA 归档；名义/实际一步转移均983,040。冻结规则选择 SEARCH_METHOD=MH-CEM，仅表示 Planner v1 structured-search backbone / pure-search baseline，不是最终 hybrid PI-JWM planner 冻结。三方法各160/320可评分H4（50%）；MH 对 S 为78胜/198平/44负，anchor-cluster 95% CI=[0.03125,0.184375]。正式运行40.6074小时、23.6410 cases/hour；GPU RTX3080Ti/CUDA/FP32/batch16 已硬停止。Stage B=NOT_STARTED，locked_test=false。future Return-birth 固定支持限制保留；无未解决执行阻塞。唯一下一动作是研究者审阅本次结果，禁止自动扩展实验。
+
+科研解释边界：三个方法找到可评分H4的比例相同；配对差异来自双方可评分时的严格字典序目标比较。本次只比较冻结模型与支持域中的纯搜索行为，不证明完整闭环性能或最终创新效果。
+
+实施记录：`docs/implementation_records/STEP_06_3D_FORMAL_VALIDATION_STAGE_A.md`；独立验收：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/13_stage_a_acceptance_receipt.json`；归档 SHA：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/14_stage_a_archive_sha_manifest.json`。本机 D: 保留960 raw和ZIP，远端原始结果保留；Git仅保存小型证据。
+
+---
+
+以下均为历史记录；RUNNING / NOT_SELECTED 等较早状态不代表当前验收状态。
+
 ## 2026-10-01 Stage A 研究范围
 
 研究者已授权仅在B1024上正式比较HRS、S-CEM K4/rho0.1与MH-CEM K4/rho0.1。Stage A正在运行，方法尚未选出；最终SEARCH_METHOD只代表Planner v1 structured-search backbone / pure-search baseline，不代表完整hybrid PI-JWM planner冻结。learned proposal、Route当前NOOP支持边界、closed-loop warm start/fallback及baseline/ablation/locked test仍需单独研究与授权。

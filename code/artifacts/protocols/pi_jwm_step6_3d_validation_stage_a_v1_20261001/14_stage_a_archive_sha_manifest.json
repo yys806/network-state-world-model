@@ -1,0 +1,13 @@
+{
+  "acceptance_sha256": "4ef26871b3ec2359038130d3c0b1abde1aea9e7ecbd6f793ed47d1ef208cad85",
+  "archive_integrity": "PASS",
+  "archive_path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/stage_a_local_persistent_archive.zip",
+  "archive_sha256": "4158f7d26217812b31c43c2abfdd64aa65f53f8d272ce26b654df65d1ad7c2ee",
+  "bytes": 2324468,
+  "inventory_sha256": "0496757b3e07957f93de9b5795ff4fec3d1b5d52359f370034e1653140bab984",
+  "local_persistent_storage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_3d_validation_stage_a_v1_20261001\\stage_a_local_persistent_archive.zip",
+  "member_count": 971,
+  "per_member_sha_verdict": "PASS",
+  "raw_results_in_git": false,
+  "remote_originals_preserved": true
+}

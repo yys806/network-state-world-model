@@ -1,0 +1,32 @@
+{
+  "verdict": "STEP_6_3D_VALIDATION_STAGE_A_CLOSURE=PASS",
+  "scientific_execution_acceptance": {
+    "path": "code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/13_stage_a_acceptance_receipt.json",
+    "sha256": "4ef26871b3ec2359038130d3c0b1abde1aea9e7ecbd6f793ed47d1ef208cad85"
+  },
+  "context_consistency": "PASS",
+  "result_registry_evidence_validation": {
+    "validated_result_count": 3,
+    "mismatches": []
+  },
+  "focused_step6_3d_tests": {
+    "passed": 34,
+    "failed": 0
+  },
+  "knowledge_index_tests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "compileall": "PASS",
+  "source_semantics_unchanged": "PASS",
+  "old_train_provenance": "PASS",
+  "archive_and_inventory_sha": "PASS",
+  "selected_search_method": "MH-CEM",
+  "selection_scope": "Planner v1 structured-search backbone / pure-search baseline, not final hybrid planner",
+  "case_count": 960,
+  "actual_unique_transitions": 983040,
+  "stage_b": "NOT_STARTED",
+  "locked_test": false,
+  "remaining_blockers": [],
+  "final_git_gate": "Commit/push only after knowledge-index write/check and git diff --check pass; identity is owning Git commit."
+}

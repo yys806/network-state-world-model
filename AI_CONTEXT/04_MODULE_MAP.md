@@ -1,3 +1,15 @@
+## 2026-10-03 STEP 6.3D Stage A 最终验收（当前）
+
+STEP_6_3D_VALIDATION_STAGE_A=PASS：960/960 原始结果完成并独立验身份、选法、配对统计及 SHA 归档；名义/实际一步转移均983,040。冻结规则选择 SEARCH_METHOD=MH-CEM，仅表示 Planner v1 structured-search backbone / pure-search baseline，不是最终 hybrid PI-JWM planner 冻结。三方法各160/320可评分H4（50%）；MH 对 S 为78胜/198平/44负，anchor-cluster 95% CI=[0.03125,0.184375]。正式运行40.6074小时、23.6410 cases/hour；GPU RTX3080Ti/CUDA/FP32/batch16 已硬停止。Stage B=NOT_STARTED，locked_test=false。future Return-birth 固定支持限制保留；无未解决执行阻塞。唯一下一动作是研究者审阅本次结果，禁止自动扩展实验。
+
+新增 `code/scripts/close_step6_3d_validation_stage_a_v1.py` 只读取完成结果做CPU验收，不执行搜索；knowledge-index新增Stage A结果的28数值与验收证据逐项核对。两项新测试覆盖身份/统计/时钟/索引拒绝门。冻结科研模块不变。
+
+实施记录：`docs/implementation_records/STEP_06_3D_FORMAL_VALIDATION_STAGE_A.md`；独立验收：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/13_stage_a_acceptance_receipt.json`；归档 SHA：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/14_stage_a_archive_sha_manifest.json`。本机 D: 保留960 raw和ZIP，远端原始结果保留；Git仅保存小型证据。
+
+---
+
+以下均为历史记录；RUNNING / NOT_SELECTED 等较早状态不代表当前验收状态。
+
 ## 2026-10-01 Stage A 运行监控
 
 冻结formal runner不变，正在执行validation/primary。运行管理与只读备份工具位于`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/`；`backup_snapshot.py`交互输入SSH凭据，验科学source和结果identity后做原子本地备份，新增工具不属于冻结算法source集合。入口：`docs/implementation_records/STEP_06_3D_FORMAL_VALIDATION_STAGE_A.md`。没有新增科研方法模块。

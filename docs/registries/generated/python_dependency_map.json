@@ -4182,13 +4182,16 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "tests.test_step6_3d_result_registry_v1"
+      ],
       "imports": [],
       "lifecycle_status": "current",
       "module": "scripts.build_project_knowledge_index_v1",
       "path": "code/scripts/build_project_knowledge_index_v1.py",
       "test_files": [
-        "code/tests/test_build_project_knowledge_index_v1.py"
+        "code/tests/test_build_project_knowledge_index_v1.py",
+        "code/tests/test_step6_3d_result_registry_v1.py"
       ]
     },
     {
@@ -4784,6 +4787,23 @@
       "module": "scripts.close_step6_3d_pre_validation_blockers_v1",
       "path": "code/scripts/close_step6_3d_pre_validation_blockers_v1.py",
       "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "tests.test_step6_3d_stage_a_acceptance_v1"
+      ],
+      "imports": [
+        "scripts.run_step6_3d_formal_cpu_matrix_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.close_step6_3d_validation_stage_a_v1",
+      "path": "code/scripts/close_step6_3d_validation_stage_a_v1.py",
+      "test_files": [
+        "code/tests/test_step6_3d_stage_a_acceptance_v1.py"
+      ]
     },
     {
       "category": "runnable_script",
@@ -7670,6 +7690,7 @@
       "imported_by": [
         "scripts.audit_step6_3d_pre_validation_v1",
         "scripts.close_step6_3d_pre_validation_blockers_v1",
+        "scripts.close_step6_3d_validation_stage_a_v1",
         "scripts.run_step6_3d_3080ti_formal_gpu_smoke_v1",
         "tests.test_step6_3d_gpu_runner_identity_v1",
         "tests.test_step6_3d_validation_stages_v1"
@@ -7804,6 +7825,7 @@
         "scripts.build_step6_3d_objective_eligible_anchors_v1",
         "scripts.close_step6_3d_formal_train_tuning_v1",
         "scripts.close_step6_3d_pre_validation_blockers_v1",
+        "scripts.close_step6_3d_validation_stage_a_v1",
         "scripts.run_step6_3d_3080ti_formal_gpu_smoke_v1",
         "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
         "scripts.run_step6_3d_formal_cpu_matrix_v1",
@@ -11984,6 +12006,30 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_3d_pre_validation_audit_v1",
       "path": "code/tests/test_step6_3d_pre_validation_audit_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "scripts.build_project_knowledge_index_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_3d_result_registry_v1",
+      "path": "code/tests/test_step6_3d_result_registry_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "scripts.close_step6_3d_validation_stage_a_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_3d_stage_a_acceptance_v1",
+      "path": "code/tests/test_step6_3d_stage_a_acceptance_v1.py",
       "test_files": []
     },
     {

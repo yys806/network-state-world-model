@@ -27,15 +27,15 @@
     "current": 164,
     "historical": 228,
     "prototype": 5,
-    "support": 1189
+    "support": 1202
   },
   "locked_test_boundary": "sealed",
-  "python_node_count": 797,
+  "python_node_count": 800,
   "python_parse_error_count": 0,
   "question_route_count": 11,
   "result_evidence_mismatch_count": 0,
   "schema_version": "PI-JWM-project-knowledge-index-v2",
   "source_scope": "version-controlled project files excluding generated registries; artifact control files only",
-  "tracked_file_count": 1586,
-  "verified_result_count": 2
+  "tracked_file_count": 1599,
+  "verified_result_count": 3
 }

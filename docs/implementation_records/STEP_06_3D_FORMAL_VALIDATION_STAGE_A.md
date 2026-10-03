@@ -1,3 +1,47 @@
+## 2026-10-03 STEP 6.3D Stage A 最终验收（当前）
+
+
+## Final Results / Expected vs Actual
+
+STEP_6_3D_VALIDATION_STAGE_A=PASS：960/960 原始结果完成并独立验身份、选法、配对统计及 SHA 归档；名义/实际一步转移均983,040。冻结规则选择 SEARCH_METHOD=MH-CEM，仅表示 Planner v1 structured-search backbone / pure-search baseline，不是最终 hybrid PI-JWM planner 冻结。三方法各160/320可评分H4（50%）；MH 对 S 为78胜/198平/44负，anchor-cluster 95% CI=[0.03125,0.184375]。正式运行40.6074小时、23.6410 cases/hour；GPU RTX3080Ti/CUDA/FP32/batch16 已硬停止。Stage B=NOT_STARTED，locked_test=false。future Return-birth 固定支持限制保留；无未解决执行阻塞。唯一下一动作是研究者审阅本次结果，禁止自动扩展实验。
+
+| 方法 | 可评分cases | 完整H4尝试 | 不同可评分候选 | 不可评分完成 | Return边界 | Grammar死路 | cache hits |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| HRS |160/320|86437|26877|57565|57565|43827|107962|
+| S-CEM |160/320|111093|32497|55785|55785|31564|193020|
+| MH-CEM |160/320|111943|33505|55999|55999|32097|200005|
+
+三方法各实际327680次转移；proposed/admitted分别439618、536971、543789，rejected均0。总完整309473、不同可评分92879、不可评分169349；完整尝试与去重候选的统计单位不同，不要求加和相等。scorer exception/inconsistency、空cohort/static-empty均0；32/64锚点所有方法/种子均无可评分H4，困难锚点未删除。
+
+| 比较（左对右） | 胜/平/负 | 仅左/仅右/双方左胜/双方右胜/双方平/双方不可评 | cluster均值 | 95% CI |
+|---|---|---|---:|---|
+| S-CEM vs HRS |135/168/17|0/0/135/17/8/160|0.36875|[0.2625,0.475]|
+| MH-CEM vs HRS |145/166/9|0/0/145/9/6/160|0.425|[0.3125,0.5375]|
+| MH-CEM vs S-CEM |78/198/44|0/0/78/44/38/160|0.10625|[0.03125,0.184375]|
+
+各组六类总和320；64 anchor clusters各含5 paired seeds，10000次bootstrap、seed6316。独立组件级字典序oracle和独立cluster重采样逐项匹配07/08。三组lower>0，按原规则选MH-CEM。额外同时敏感性区间分别[0.24375,0.503125]、[0.290625,0.565625]、[0.015625,0.203125]，仅诊断，未改变primary rule。
+
+## Runtime / Persistence / Known Issues
+
+runner开始UTC 2026-10-01T11:26:17.875203+00:00，完成UTC 2026-10-03T04:02:40.939166+00:00；正式单调计时146186.68076954922秒（40.6074113小时）、23.64100465 cases/hour。UTC起止间隔146183.063963秒，差3.61680655秒，原因Unverified，两者分别保留。solve耗时和113363.124496秒不是整个矩阵wall-clock。没有采用资格阶段benchmark充当正式耗时。
+
+本机D:原目录保留960 raw，969文件inventory逐文件SHA；ZIP971成员、2324468 bytes，archive SHA256=4158f7d26217812b31c43c2abfdd64aa65f53f8d272ce26b654df65d1ad7c2ee，ZIP CRC及每成员SHA通过，远端原始文件保留。Git不提交raw ZIP。原TRAIN771文件SHA/768结果/05/06/旧execution config未变。
+
+## Changes / Reuse / Validation / Git / Next Step
+
+新增CPU-only closure脚本与两个测试文件；knowledge-index仅增加Stage A结果的28数值真实性核验，原P4规则保留。冻结16科研source与587efdf执行身份一致，没有修改runner/算法/参数/anchors/checkpoint。运行中代码没有更新。
+
+实际验证：`python -m unittest discover -s code/tests -p 'test_step6_3d*.py'` 34/34 PASS；`python -m unittest discover -s code/tests -p 'test_build_project_knowledge_index_v1.py'` 7/7 PASS；`python -m compileall -q code/src code/scripts code/tests` PASS。knowledge-index write/check、diff、Context consistency与SHA最终记录于16/17收据。验收脚本重建了配对类别、bootstrap和选择；runtime两种时钟原值保留。预期960完整、冻结比较、公平预算和硬停止均满足。
+
+authority/process/AI_CONTEXT00–08/index/experiment+result+route+deferred registries同步。最终commit/push身份以本记录所属Git提交为准，执行科学source仍587efdf。旧运行快照保留为历史。唯一下一动作研究者审阅Stage A；已停GPU搜索，停止监控，不自动开始Stage B或任何其他实验。
+
+
+实施记录：`docs/implementation_records/STEP_06_3D_FORMAL_VALIDATION_STAGE_A.md`；独立验收：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/13_stage_a_acceptance_receipt.json`；归档 SHA：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/14_stage_a_archive_sha_manifest.json`。本机 D: 保留960 raw和ZIP，远端原始结果保留；Git仅保存小型证据。
+
+---
+
+以下均为历史记录；RUNNING / NOT_SELECTED 等较早状态不代表当前验收状态。
+
 # STEP 6.3D — FORMAL VALIDATION STAGE A
 
 ## Step Goal / Definition Basis

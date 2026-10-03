@@ -1,0 +1,22 @@
+{
+  "verdict": "CONTEXT_CONSISTENCY_CHECK=PASS",
+  "context_sha256": {
+    "AI_CONTEXT/00_PROJECT_STATE.md": "2ffadf05cf4e0bac1a05f96d88447e3589661a44d6592826c5a0a1e02c3bba72",
+    "AI_CONTEXT/01_RESEARCH_CONTEXT.md": "7dab470e7c16383086d5e994c92e7722062bf3e94f238576be79c6c626ab0d31",
+    "AI_CONTEXT/02_ARCHITECTURE.md": "9f52b9bad65d3e4db5e8dbef73139cfde2509090e53010cbdc85a0d2278ff2b3",
+    "AI_CONTEXT/03_DATA_FLOW.md": "45c1a1fd68d277f60168e955a1e2af1f9f9b7985ff4f28cc6fda909b78dbc922",
+    "AI_CONTEXT/04_MODULE_MAP.md": "d8509d903c9a9c7344c34e9388df43f56b1169cd74449e07188684a892d2856c",
+    "AI_CONTEXT/05_EXPERIMENTS.md": "7018ba58400874ac7efbe7af05556c36cfd7f12e2397202502fc3967f99733b8",
+    "AI_CONTEXT/06_DECISIONS.md": "675235ed247ee1817f4683b2fd910055aee63a22f60530e2960bf277897eebcc",
+    "AI_CONTEXT/07_KNOWN_ISSUES.md": "941fcef32d7c321d14e205a08a8e819029a977a2f10ea793ca64bb09c74557e0",
+    "AI_CONTEXT/08_CHANGELOG.md": "05b3e4dbe1e711acf611fba385c182af7da3bd46de739d8f34ee559a6223c64c"
+  },
+  "frozen_source_count": 16,
+  "frozen_source_unchanged": "PASS",
+  "protected_source_diff_vs_587efdf": "EMPTY",
+  "claim_boundary": "Planner v1 pure-search backbone only; final hybrid planner not frozen.",
+  "selected_search_method": "MH-CEM",
+  "stage_b": "NOT_STARTED",
+  "locked_test": false,
+  "remaining_blockers": []
+}

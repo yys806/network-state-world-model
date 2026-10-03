@@ -1,0 +1,268 @@
+{
+  "acceptance_scope": "Execution, independent statistics, runtime and archive integrity; researcher owns final scientific interpretation.",
+  "actual_unique_transitions": 983040,
+  "batch_size": 16,
+  "case_count": 960,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "empty_cohort_count": 0,
+  "execution_config_id": "3b3fcfe775f947790a982929a292fb3f3b8f30396996f7f9b33270e7d6c9f215",
+  "frozen_configs": {
+    "HRS": [
+      1,
+      null
+    ],
+    "MH-CEM": [
+      4,
+      0.1
+    ],
+    "S-CEM": [
+      4,
+      0.1
+    ]
+  },
+  "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+  "inventory_sha256": "0496757b3e07957f93de9b5795ff4fec3d1b5d52359f370034e1653140bab984",
+  "locked_test": false,
+  "method_diagnostics": {
+    "HRS": {
+      "N_cache_hits": 107962,
+      "N_unique_transition_evals": 327680,
+      "admitted": 439618,
+      "budget_cache_and_proposal_totals": {
+        "N_admitted_steps": 439618,
+        "N_cache_hits": 107962,
+        "N_complete_sequences": 86437,
+        "N_dead_end_branches": 43827,
+        "N_proposed_steps": 439618,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 327680
+      },
+      "cache_hits": 107962,
+      "case_count": 320,
+      "grammar_dead_end_count": 43827,
+      "h4_scoreable_success_count": 160,
+      "h4_scoreable_success_rate": 0.5,
+      "nominal_B_WM_total": 327680,
+      "proposed": 439618,
+      "rejected": 0,
+      "return_birth_support_boundary_count": 57565,
+      "scorer_exception_count": 0,
+      "total_complete_h4": 86437,
+      "total_distinct_scoreable_h4": 26877,
+      "total_unscoreable_h4": 57565,
+      "wall_clock_diagnostic": {
+        "in_solve_seconds_sum": 37022.85207029944,
+        "is_elapsed_matrix_runtime": false
+      }
+    },
+    "MH-CEM": {
+      "N_cache_hits": 200005,
+      "N_unique_transition_evals": 327680,
+      "admitted": 543789,
+      "budget_cache_and_proposal_totals": {
+        "N_admitted_steps": 543789,
+        "N_cache_hits": 200005,
+        "N_complete_sequences": 111943,
+        "N_dead_end_branches": 32097,
+        "N_proposed_steps": 543789,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 327680
+      },
+      "cache_hits": 200005,
+      "case_count": 320,
+      "grammar_dead_end_count": 32097,
+      "h4_scoreable_success_count": 160,
+      "h4_scoreable_success_rate": 0.5,
+      "nominal_B_WM_total": 327680,
+      "proposed": 543789,
+      "rejected": 0,
+      "return_birth_support_boundary_count": 55999,
+      "scorer_exception_count": 0,
+      "total_complete_h4": 111943,
+      "total_distinct_scoreable_h4": 33505,
+      "total_unscoreable_h4": 55999,
+      "wall_clock_diagnostic": {
+        "in_solve_seconds_sum": 38318.63259273302,
+        "is_elapsed_matrix_runtime": false
+      }
+    },
+    "S-CEM": {
+      "N_cache_hits": 193020,
+      "N_unique_transition_evals": 327680,
+      "admitted": 536971,
+      "budget_cache_and_proposal_totals": {
+        "N_admitted_steps": 536971,
+        "N_cache_hits": 193020,
+        "N_complete_sequences": 111093,
+        "N_dead_end_branches": 31564,
+        "N_proposed_steps": 536971,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 327680
+      },
+      "cache_hits": 193020,
+      "case_count": 320,
+      "grammar_dead_end_count": 31564,
+      "h4_scoreable_success_count": 160,
+      "h4_scoreable_success_rate": 0.5,
+      "nominal_B_WM_total": 327680,
+      "proposed": 536971,
+      "rejected": 0,
+      "return_birth_support_boundary_count": 55785,
+      "scorer_exception_count": 0,
+      "total_complete_h4": 111093,
+      "total_distinct_scoreable_h4": 32497,
+      "total_unscoreable_h4": 55785,
+      "wall_clock_diagnostic": {
+        "in_solve_seconds_sum": 38021.639833100606,
+        "is_elapsed_matrix_runtime": false
+      }
+    }
+  },
+  "nominal_B_WM_total": 983040,
+  "paired_comparisons": {
+    "MH-CEM_vs_HRS": {
+      "cluster_bootstrap": {
+        "anchor_cluster_count": 64,
+        "bootstrap_replications": 10000,
+        "bootstrap_seed": 6316,
+        "bootstrap_type": "anchor_cluster_percentile",
+        "ci95_lower": 0.3125,
+        "ci95_upper": 0.5375,
+        "mean_paired_advantage": 0.425,
+        "seeds_per_anchor": 5
+      },
+      "loss": 9,
+      "oracle": "PASS",
+      "six_category_counts": {
+        "both_scoreable_left_win": 145,
+        "both_scoreable_right_win": 9,
+        "both_scoreable_tie": 6,
+        "both_unscoreable": 160,
+        "only_left_scoreable": 0,
+        "only_right_scoreable": 0
+      },
+      "tie": 166,
+      "win": 145
+    },
+    "MH-CEM_vs_S-CEM": {
+      "cluster_bootstrap": {
+        "anchor_cluster_count": 64,
+        "bootstrap_replications": 10000,
+        "bootstrap_seed": 6316,
+        "bootstrap_type": "anchor_cluster_percentile",
+        "ci95_lower": 0.03125,
+        "ci95_upper": 0.184375,
+        "mean_paired_advantage": 0.10625,
+        "seeds_per_anchor": 5
+      },
+      "loss": 44,
+      "oracle": "PASS",
+      "six_category_counts": {
+        "both_scoreable_left_win": 78,
+        "both_scoreable_right_win": 44,
+        "both_scoreable_tie": 38,
+        "both_unscoreable": 160,
+        "only_left_scoreable": 0,
+        "only_right_scoreable": 0
+      },
+      "tie": 198,
+      "win": 78
+    },
+    "S-CEM_vs_HRS": {
+      "cluster_bootstrap": {
+        "anchor_cluster_count": 64,
+        "bootstrap_replications": 10000,
+        "bootstrap_seed": 6316,
+        "bootstrap_type": "anchor_cluster_percentile",
+        "ci95_lower": 0.2625,
+        "ci95_upper": 0.475,
+        "mean_paired_advantage": 0.36875,
+        "seeds_per_anchor": 5
+      },
+      "loss": 17,
+      "oracle": "PASS",
+      "six_category_counts": {
+        "both_scoreable_left_win": 135,
+        "both_scoreable_right_win": 17,
+        "both_scoreable_tie": 8,
+        "both_unscoreable": 160,
+        "only_left_scoreable": 0,
+        "only_right_scoreable": 0
+      },
+      "tie": 168,
+      "win": 135
+    }
+  },
+  "precision": "FP32",
+  "primary_budget": 1024,
+  "provenance_bridge": {
+    "parents": {
+      "qualification_config": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/05_selected_execution_config.json",
+        "sha256": "f2ee79d85a383863ffac5076431aa758c73e9e882284ca473ff5e3c3d8f1d7ab"
+      },
+      "summary_schema": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_audit_v1_20261001/07_validation_output_schema_receipt.json",
+        "sha256": "ba238923f82499eaffc468c65c5c1a54296f1b656462f180cebb99a7123b0e67"
+      },
+      "train_closure": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/train_tuning_closure_acceptance.json",
+        "sha256": "d2d7b88f2200490774f785a9e4e11345413799713e6e01115316462f63bd65e2"
+      },
+      "train_frozen_configs": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/06_frozen_selected_cem_configs.json",
+        "sha256": "eb7bef040554a9aee4ede23bf04f7f131f193247ebdca48687c85c9d9a147cc6"
+      },
+      "train_tuning_receipt": {
+        "path": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/05_train_hyperparameter_tuning_receipt.json",
+        "sha256": "268c09d33e7ab4e0d8b77458fe4e14f71efe1d4d822fffc7cd951c4158f3af31"
+      }
+    },
+    "source_bridge_changed_files": [
+      "code/scripts/run_step6_3d_formal_cpu_matrix_v1.py"
+    ],
+    "summary_schema_version": "PIJWM-Validation-summary-v1",
+    "train_selection_execution_config_id": "3834e6b2e76c93e66dc92f0b3d0c56ad7e753c07be9ef0b8cc022a2596b7b680",
+    "validation_execution_config_id": "3b3fcfe775f947790a982929a292fb3f3b8f30396996f7f9b33270e7d6c9f215"
+  },
+  "remaining_blockers": [],
+  "return_birth_support_limitation": "SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION",
+  "runtime": {
+    "actual_elapsed_seconds": 146186.68076954922,
+    "actual_transition_throughput_per_second": 6.724552434087196,
+    "basis": "Single uninterrupted official Stage-A invocation wall-clock; includes primary matrix and summary bootstrap, excludes launch preflight and final post-run closure.",
+    "cases_per_hour": 23.641004651087798,
+    "clock_difference_origin": "Unverified; both original time bases preserved, no equality asserted.",
+    "completed_cases": 960,
+    "elapsed_basis": "Frozen runner time.perf_counter duration in seconds",
+    "finish_utc": "2026-10-03T04:02:40.939166+00:00",
+    "in_solve_seconds_sum": 113363.12449613307,
+    "start_utc": "2026-10-01T11:26:17.875203+00:00",
+    "supervisor_elapsed_note": "Includes process startup and up to 30 seconds of monitoring detection lag; attached monitor exit_code is inferred from receipt existence, not captured OS exit status.",
+    "supervisor_elapsed_seconds": 146194.19603562355,
+    "utc_minus_monotonic_seconds": -3.6168065492238384,
+    "utc_timestamp_interval_seconds": 146183.063963
+  },
+  "scorer_exception_count": 0,
+  "scorer_inconsistency_count": 0,
+  "seed": [
+    6311,
+    6312,
+    6313,
+    6314,
+    6315
+  ],
+  "selected_search_method": "MH-CEM",
+  "source_scientific_files_unchanged": true,
+  "stage_b": "NOT_STARTED",
+  "stage_b_result_count": 0,
+  "static_empty_count": 0,
+  "train_771_file_SHA_integrity": "PASS",
+  "verdict": "STEP_6_3D_VALIDATION_STAGE_A=PASS",
+  "warnings": [
+    "Future Return-birth fixed-support limitation retained.",
+    "SEARCH_METHOD is a pure-search backbone, not final hybrid PI-JWM planner.",
+    "One read-only backup connection reset recovered without restarting search.",
+    "UTC timestamps and monotonic elapsed differ; both reported, clock-adjustment origin Unverified."
+  ]
+}
