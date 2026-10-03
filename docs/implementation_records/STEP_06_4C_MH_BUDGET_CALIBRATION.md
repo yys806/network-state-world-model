@@ -33,3 +33,6 @@ future Return-birth fixed-support limitation保持；CLOSED_LOOP_BUDGET=RESEARCH
 首次SSH部署已fast-forward，但non-login shell无python PATH，尚未调用planner；改管理脚本使用StageA记录的同一/root/miniconda3/bin/python绝对路径。该脚本不进入frozen planner runtime/source closure；执行身份不变，不改搜索协议。
 
 远端GitHub fetch因GnuTLS连接中断失败，GPU仍未启动。仅允许使用本地已push main生成的Git bundle做同一commit的传输备份，bundle verify和HEAD相等门保持；不改源文件内容或历史结果。
+
+### Canonical Git byte correction before first GPU case
+原07身份5681d3在remote tracked-clean gate失败（4个仅换行字节差异），GPU0 cases。保留07不覆盖，恢复本地到Git LF规范字节，solver数学/科学源码内容不变；添加07b新版身份及21 source byte bridge。runner新增显式execution-config参数，source SHA再次冻结；原cohort/protocol/48参考完全不变。远端只恢复本次newline transport影响的4个文件，然后以同一新提交同步重验，不隐瞒脏树或降低门槛。

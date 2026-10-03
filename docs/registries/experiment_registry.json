@@ -12,10 +12,10 @@
       "code_version": {
         "identity_type": "independent_calibration_source_sha256",
         "git_commit": "db0eb13f94313763079c685b02dfa7a16615f9f9",
-        "manifest": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07_calibration_execution_config.json",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07b_calibration_execution_config_git_lf.json",
         "note": "Baseline plus new orchestration source; owning protocol commit in Git"
       },
-      "configuration": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07_calibration_execution_config.json",
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07b_calibration_execution_config_git_lf.json",
       "parameters": {
         "budgets": [
           256,

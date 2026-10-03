@@ -1,0 +1,9 @@
+{
+  "verdict": "PASS",
+  "old07_identity_rejected": true,
+  "new07b_identity_valid": true,
+  "new_gpu_cases": 0,
+  "reference_cases": 48,
+  "cohort_protocol_reference_unchanged": true,
+  "locked_test": false
+}

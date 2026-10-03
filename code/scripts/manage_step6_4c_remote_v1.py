@@ -15,6 +15,7 @@ ROOT=Path(__file__).resolve().parents[2]
 REMOTE='/root/autodl-tmp/pi-jwm-step6-3d'
 PYTHON='/root/miniconda3/bin/python'
 REL='code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003'
+CURRENT_CONFIG=REL+'/07b_calibration_execution_config_git_lf.json'
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('user');p.add_argument('action',choices=['deploy','launch','snapshot'])
@@ -30,6 +31,18 @@ def main():
     sftp=client.open_sftp()
     if args.action=='deploy':
         head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+        dirty=command(f'git -C {REMOTE} status --porcelain --untracked-files=no').splitlines()
+        newline_only={'code/scripts/run_raw_single_decision_step_contract_v1.py',
+                      'code/scripts/run_step2_1_real_airfogsim_single_step_v1.py',
+                      'code/scripts/run_step5_6a_gpu_smoke_v1.py',
+                      'code/src/pi_jwm/step5_5_full_sharded_loader_v1.py'}
+        for entry in dirty:
+            name=entry[3:]
+            if name not in newline_only:raise ValueError('unexpected dirty remote file: '+name)
+            with sftp.open(REMOTE+'/'+name,'rb') as f: data=f.read()
+            if data.replace(b'\r\n',b'\n')!=(ROOT/name).read_bytes().replace(b'\r\n',b'\n'):
+                raise ValueError('dirty file contains non-newline changes: '+name)
+            command(f'git -C {REMOTE} restore --source=HEAD --worktree -- {shlex.quote(name)}')
         if args.bundle:
             transport='/tmp/pi-jwm-step6-4c-deployment.bundle'
             sftp.put(str(args.bundle),transport)
@@ -40,7 +53,7 @@ def main():
         command(f'git -C {REMOTE} merge --ff-only origin/main')
         actual=command(f'git -C {REMOTE} rev-parse HEAD').strip()
         if actual!=head:raise ValueError('remote HEAD mismatch')
-        config=json.loads((ROOT/REL/'07_calibration_execution_config.json').read_text())
+        config=json.loads((ROOT/CURRENT_CONFIG).read_text())
         # Verify all frozen bytes in one remote read, then fix only newline differences
         # in source checkout files. Never replace historical metadata or raw results.
         payload=json.dumps(config['source_sha256'])
@@ -52,7 +65,7 @@ def main():
             if not name.endswith('.py') or local.replace(b'\r\n',b'\n')!=remote.replace(b'\r\n',b'\n'):
                 raise ValueError('non-newline source mismatch: '+name)
             with sftp.open(REMOTE+'/'+name,'wb') as f:f.write(local)
-        output=command(f'cd {REMOTE} && {PYTHON} code/scripts/run_step6_4c_mh_budget_calibration_v1.py')
+        output=command(f'cd {REMOTE} && {PYTHON} code/scripts/run_step6_4c_mh_budget_calibration_v1.py --execution-config {CURRENT_CONFIG}')
         dirty=command(f'git -C {REMOTE} status --porcelain --untracked-files=no').strip()
         if dirty:raise ValueError('remote tracked dirty after deployment')
         print(json.dumps({'remote_commit':actual,'exact_byte_newline_transfers':wrong,'preflight_output':output.strip(),'tracked_clean':True}))
@@ -60,7 +73,7 @@ def main():
         # Runner independently repeats every gate. No restart or Stage B command exists here.
         count=command(f'find {REMOTE}/{REL}/solve_results/calibration -name "*.json" 2>/dev/null | wc -l').strip()
         if count!='0':raise ValueError('initial launch count not zero')
-        output=command(f'cd {REMOTE} && mkdir -p {REL}/runtime && nohup {PYTHON} -u code/scripts/run_step6_4c_mh_budget_calibration_v1.py --execute > {REL}/runtime/formal_calibration.log 2>&1 < /dev/null &')
+        output=command(f'cd {REMOTE} && mkdir -p {REL}/runtime && nohup {PYTHON} -u code/scripts/run_step6_4c_mh_budget_calibration_v1.py --execution-config {CURRENT_CONFIG} --execute > {REL}/runtime/formal_calibration.log 2>&1 < /dev/null &')
         print(json.dumps({'launch_requested':True,'scope':'MH-only 96-case calibration, no Stage B','output':output}))
     else:
         script="import pathlib,json,hashlib; p=pathlib.Path("+repr(REL)+"); print(json.dumps([{'path':str(f),'sha256':hashlib.sha256(f.read_bytes()).hexdigest()} for f in sorted(p.rglob('*')) if f.is_file() and (f.suffix=='.json' or f.name=='formal_calibration.log')]))"

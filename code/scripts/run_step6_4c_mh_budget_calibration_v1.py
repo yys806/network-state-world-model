@@ -106,8 +106,9 @@ def main():
     parser.add_argument('--execute',action='store_true')
     parser.add_argument('--accept-only',action='store_true')
     parser.add_argument('--resume',action='store_true')
+    parser.add_argument('--execution-config',type=Path,default=OUT/'07_calibration_execution_config.json')
     args=parser.parse_args()
-    config=read(OUT/'07_calibration_execution_config.json')
+    config=read(args.execution_config)
     validate_binding(config)
     reference_inputs()
     if args.accept_only:
