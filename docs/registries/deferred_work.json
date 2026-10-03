@@ -2,6 +2,30 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
+      "id": "STEP-6.4C-MH-ONLY-CALIBRATION-EXPANSION",
+      "type": "candidate_method_research",
+      "status": "deferred",
+      "reason": "NEW RESEARCH PROPOSAL64anchors×5seeds MH-only budget calibration requires separate authorization/protocol; current16×3 completed, no expansion approved.",
+      "summary_zh": "研究者审阅后决定是否单独预注册与授权64×5 MH-only扩样；不等同原完整Stage B，不自动启动。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": "docs/implementation_records/STEP_06_4C_MH_BUDGET_CALIBRATION.md",
+      "required_predecessors": [
+        "researcher review",
+        "separate expanded calibration authorization",
+        "new cohort/protocol/execution identity"
+      ],
+      "forbidden_until_authorized": [
+        "expanded calibration",
+        "original Stage B",
+        "formal closed-loop performance",
+        "baseline",
+        "ablation",
+        "locked_test"
+      ]
+    },
+    {
       "id": "STEP-6.3D-VALIDATION-STAGE-B",
       "type": "candidate_method_research",
       "status": "deferred",

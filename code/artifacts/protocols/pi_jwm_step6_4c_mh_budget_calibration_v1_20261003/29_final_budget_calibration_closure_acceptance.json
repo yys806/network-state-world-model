@@ -1,0 +1,43 @@
+{
+  "CLOSED_LOOP_BUDGET": "RESEARCHER_DECISION_PENDING",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "Stage B": "NOT_STARTED",
+  "actual_new_unique_transition_evals": 36864,
+  "anchor_count": 16,
+  "archive_acceptance_sha256": "22bf225e7899eae3644931b8db7aafa52663c9d597e6903b92b23117b934b754",
+  "case_count": 96,
+  "claim_boundary": "16x3 calibration subset; no non-inferiority, optimal-budget or closed-loop performance claim",
+  "context_consistency_sha256": "098e176fa6500637692610eec851a87bebfcbde3b81b272504953a07bf2f8715",
+  "cpu_checks": {
+    "Context_Consistency_Check": "PASS",
+    "compileall": "PASS",
+    "focused_calibration_tests": {
+      "failed": 0,
+      "passed": 4
+    },
+    "focused_step6_3d_tests": {
+      "failed": 0,
+      "passed": 34,
+      "seconds": 35.392
+    },
+    "git_diff_check": "PASS",
+    "knowledge_index_write_and_check": "PASS"
+  },
+  "execution_config_id": "0973bbf43d3531175b1c5a2bba62bd360833acddebda277511d6af13df37204a",
+  "git_owner": "Final closure commit in Git history; execution source commit c3c1f34e4b41b690333c77e8333265a01c69b474",
+  "locked_test": false,
+  "new_budgets": [
+    256,
+    512
+  ],
+  "nominal_new_budget": 36864,
+  "paired_reference_count": 48,
+  "raw_independent_acceptance_sha256": "99b69c63f979dec6cc097fb445cf6280c5571f96a5d9dfe7824cb96182c16570",
+  "remaining_execution_blockers": [],
+  "seeds": [
+    6311,
+    6312,
+    6313
+  ],
+  "verdict": "STEP_6_4C_BUDGET_CALIBRATION=PASS"
+}

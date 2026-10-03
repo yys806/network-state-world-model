@@ -1,0 +1,11 @@
+{
+  "archive": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/mh_budget_calibration_raw_and_receipts.zip",
+  "archive_file_count": 169,
+  "archive_sha256": "a681aea43032e70d33696cc7f947e63873cc075b1a9cebad2e12e5f9cc2f2dc9",
+  "inventory_sha256": "d15fdad076a4825d890b50221187188bd4d931fcfa22aa0a5db370420d96a9a2",
+  "local_persistent_storage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4c_mh_budget_calibration_v1_20261003",
+  "locked_test": false,
+  "original_raw_preserved": true,
+  "raw_new96_and_parent48_individually_verified": true,
+  "verdict": "PASS"
+}

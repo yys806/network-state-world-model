@@ -1,0 +1,24 @@
+{
+  "ai_context_validation": {
+    "errors": [],
+    "validated_file_count": 9
+  },
+  "current_status_markers_checked": true,
+  "execution_config_id": "0973bbf43d3531175b1c5a2bba62bd360833acddebda277511d6af13df37204a",
+  "files_sha256": {
+    "AI_CONTEXT/00_PROJECT_STATE.md": "085cb4c73d3c224a776f36fc27aa3c98108204d761a61116399dd2a657220b6f",
+    "AI_CONTEXT/01_RESEARCH_CONTEXT.md": "4f9a1e908e4c3086f6233ae9d688692b1cf87c823e96b96ba98520ff75b33854",
+    "AI_CONTEXT/02_ARCHITECTURE.md": "10f82dc0b8f8eb52d202fe02e02ce9c2b359bce2540fd57abbd5bf87f5c69e7a",
+    "AI_CONTEXT/03_DATA_FLOW.md": "e2ba066f2870b28768fd0f1eef8a937b19cfb4a8342d25db47b839a48d135b44",
+    "AI_CONTEXT/04_MODULE_MAP.md": "938bb7194a375f761b39cb559c15cbd9cfa0b456c7d6463efc0c51b3fc47a999",
+    "AI_CONTEXT/05_EXPERIMENTS.md": "7426f0c87a26b1ba6e82fc37bd71698f32a10683d8c7b4400a4af8a80cb828e8",
+    "AI_CONTEXT/06_DECISIONS.md": "eed6cb06c5519526e6c53d323bb3392ab6340be7e9ef3ec58b68c588edd406cb",
+    "AI_CONTEXT/07_KNOWN_ISSUES.md": "4cb705db43c9503c4ae34286fb60cbff9df622a0f26eee3c67929ad8885b4081",
+    "AI_CONTEXT/08_CHANGELOG.md": "3c3ee79f78d119aecc6e057f0c083f97c657d065b696361554ea004f1dc90d56"
+  },
+  "locked_test": false,
+  "registry_matches_independent_acceptance": true,
+  "scientific_source_and_train_stage_a_parent_sha_unchanged": true,
+  "scope": "CALIBRATION SUBSET; recommendation is not a researcher budget decision",
+  "verdict": "PASS"
+}

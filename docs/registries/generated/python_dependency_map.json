@@ -4018,6 +4018,16 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4c_completed_budget_calibration_v1",
+      "path": "code/scripts/audit_step6_4c_completed_budget_calibration_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.test_temporal_candidate_protocol"
       ],

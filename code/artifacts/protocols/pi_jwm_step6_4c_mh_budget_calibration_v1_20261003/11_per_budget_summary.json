@@ -1,0 +1,80 @@
+{
+  "1024": {
+    "N_admitted_steps": 73567,
+    "N_cache_hits": 22035,
+    "N_dead_end_branches": 3867,
+    "N_proposed_steps": 73567,
+    "N_rejected_steps": 0,
+    "N_unique_transition_evals": 49152,
+    "actual_transitions_per_second": 7.628571996379996,
+    "case_count": 48,
+    "complete_h4": 15049,
+    "distinct_scoreable_h4": 6060,
+    "return_birth_boundary": 8487,
+    "runtime_scope": "in-solve only; matrix/setup overhead recorded separately",
+    "runtime_seconds": {
+      "P90": 340.6789649549406,
+      "P95": 371.54978896647225,
+      "max": 391.4432353102602,
+      "mean": 134.23219974667882,
+      "median": 88.43566726869904,
+      "sum_in_solve": 6443.145587840583
+    },
+    "scoreable_cases": 30,
+    "scoreable_rate": 0.625,
+    "scorer_exceptions": 0,
+    "unscoreable_h4": 8487
+  },
+  "256": {
+    "N_admitted_steps": 17356,
+    "N_cache_hits": 3117,
+    "N_dead_end_branches": 874,
+    "N_proposed_steps": 17356,
+    "N_rejected_steps": 0,
+    "N_unique_transition_evals": 12288,
+    "actual_transitions_per_second": 8.221032193243241,
+    "case_count": 48,
+    "complete_h4": 2855,
+    "distinct_scoreable_h4": 1263,
+    "return_birth_boundary": 1511,
+    "runtime_scope": "in-solve only; matrix/setup overhead recorded separately",
+    "runtime_seconds": {
+      "P90": 70.22676593991929,
+      "P95": 90.41865968022029,
+      "max": 95.17933028703555,
+      "mean": 31.139642076867556,
+      "median": 20.13306197943166,
+      "sum_in_solve": 1494.7028196896426
+    },
+    "scoreable_cases": 30,
+    "scoreable_rate": 0.625,
+    "scorer_exceptions": 0,
+    "unscoreable_h4": 1511
+  },
+  "512": {
+    "N_admitted_steps": 34515,
+    "N_cache_hits": 7739,
+    "N_dead_end_branches": 1842,
+    "N_proposed_steps": 34515,
+    "N_rejected_steps": 0,
+    "N_unique_transition_evals": 24576,
+    "actual_transitions_per_second": 8.132836793651819,
+    "case_count": 48,
+    "complete_h4": 6518,
+    "distinct_scoreable_h4": 2850,
+    "return_birth_boundary": 3439,
+    "runtime_scope": "in-solve only; matrix/setup overhead recorded separately",
+    "runtime_seconds": {
+      "P90": 162.70478462581525,
+      "P95": 179.45867239979557,
+      "max": 187.45077456207946,
+      "mean": 62.95466305184527,
+      "median": 42.34169961255975,
+      "sum_in_solve": 3021.823826488573
+    },
+    "scoreable_cases": 30,
+    "scoreable_rate": 0.625,
+    "scorer_exceptions": 0,
+    "unscoreable_h4": 3439
+  }
+}

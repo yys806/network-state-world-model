@@ -1,0 +1,14 @@
+{
+  "256": {
+    "actual_transition_reduction": 0.75,
+    "distinct_scoreable_h4_change": -4797,
+    "runtime_mean_reduction": 0.7680166000733515,
+    "scoreable_rate_change": 0.0
+  },
+  "512": {
+    "actual_transition_reduction": 0.5,
+    "distinct_scoreable_h4_change": -3210,
+    "runtime_mean_reduction": 0.5310017777355027,
+    "scoreable_rate_change": 0.0
+  }
+}

@@ -1,0 +1,850 @@
+{
+  "CLOSED_LOOP_BUDGET": "RESEARCHER_DECISION_PENDING",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "Stage B": "NOT_STARTED",
+  "actual_new_unique_transition_evals": 36864,
+  "anchor_count": 16,
+  "case_count": 96,
+  "execution_config_id": "0973bbf43d3531175b1c5a2bba62bd360833acddebda277511d6af13df37204a",
+  "locked_test": false,
+  "nominal_new_budget": 36864,
+  "paired_comparisons": {
+    "256_vs_1024": {
+      "first_differing_component_exploratory_only": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 7,
+        "4": 22
+      },
+      "loss": 28,
+      "per_anchor_seed_outcomes": {
+        "formal-v1-sim-2026092301-policy-2026092401::anchor-0030": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": 1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092302-policy-2026092402::anchor-0026": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092313-policy-2026092413::anchor-0018": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092313-policy-2026092413::anchor-0049": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092315-policy-2026092415::anchor-0042": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092315-policy-2026092415::anchor-0052": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0006": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0062": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0076": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0084": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092322-policy-2026092422::anchor-0031": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092322-policy-2026092422::anchor-0075": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092323-policy-2026092423::anchor-0018": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092323-policy-2026092423::anchor-0090": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092341-policy-2026092441::anchor-0010": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092350-policy-2026092450::anchor-0003": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ]
+      },
+      "six_categories": {
+        "both_scoreable_left_better": 1,
+        "both_scoreable_right_better": 28,
+        "both_scoreable_tie": 1,
+        "both_unscoreable": 18,
+        "only_left_scoreable": 0,
+        "only_right_scoreable": 0
+      },
+      "tie": 19,
+      "total_paired_cases": 48,
+      "win": 1
+    },
+    "256_vs_512": {
+      "first_differing_component_exploratory_only": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 7,
+        "4": 20
+      },
+      "loss": 26,
+      "per_anchor_seed_outcomes": {
+        "formal-v1-sim-2026092301-policy-2026092401::anchor-0030": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": 1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092302-policy-2026092402::anchor-0026": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092313-policy-2026092413::anchor-0018": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092313-policy-2026092413::anchor-0049": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092315-policy-2026092415::anchor-0042": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092315-policy-2026092415::anchor-0052": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0006": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0062": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0076": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0084": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092322-policy-2026092422::anchor-0031": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092322-policy-2026092422::anchor-0075": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092323-policy-2026092423::anchor-0018": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092323-policy-2026092423::anchor-0090": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092341-policy-2026092441::anchor-0010": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092350-policy-2026092450::anchor-0003": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ]
+      },
+      "six_categories": {
+        "both_scoreable_left_better": 1,
+        "both_scoreable_right_better": 26,
+        "both_scoreable_tie": 3,
+        "both_unscoreable": 18,
+        "only_left_scoreable": 0,
+        "only_right_scoreable": 0
+      },
+      "tie": 21,
+      "total_paired_cases": 48,
+      "win": 1
+    },
+    "512_vs_1024": {
+      "first_differing_component_exploratory_only": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 25
+      },
+      "loss": 19,
+      "per_anchor_seed_outcomes": {
+        "formal-v1-sim-2026092301-policy-2026092401::anchor-0030": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092302-policy-2026092402::anchor-0026": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092313-policy-2026092413::anchor-0018": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092313-policy-2026092413::anchor-0049": [
+          {
+            "outcome": 1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": 1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092315-policy-2026092415::anchor-0042": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092315-policy-2026092415::anchor-0052": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0006": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0062": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": 1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0076": [
+          {
+            "outcome": 1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092318-policy-2026092418::anchor-0084": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": 1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092322-policy-2026092422::anchor-0031": [
+          {
+            "outcome": 1,
+            "seed": 6311
+          },
+          {
+            "outcome": -1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092322-policy-2026092422::anchor-0075": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": 1,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092323-policy-2026092423::anchor-0018": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": -1,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092323-policy-2026092423::anchor-0090": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092341-policy-2026092441::anchor-0010": [
+          {
+            "outcome": 0,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ],
+        "formal-v1-sim-2026092350-policy-2026092450::anchor-0003": [
+          {
+            "outcome": -1,
+            "seed": 6311
+          },
+          {
+            "outcome": 0,
+            "seed": 6312
+          },
+          {
+            "outcome": 0,
+            "seed": 6313
+          }
+        ]
+      },
+      "six_categories": {
+        "both_scoreable_left_better": 7,
+        "both_scoreable_right_better": 19,
+        "both_scoreable_tie": 4,
+        "both_unscoreable": 18,
+        "only_left_scoreable": 0,
+        "only_right_scoreable": 0
+      },
+      "tie": 22,
+      "total_paired_cases": 48,
+      "win": 7
+    }
+  },
+  "parameter_digest_unchanged_from_stage_a": true,
+  "per_budget": {
+    "1024": {
+      "N_admitted_steps": 73567,
+      "N_cache_hits": 22035,
+      "N_dead_end_branches": 3867,
+      "N_proposed_steps": 73567,
+      "N_rejected_steps": 0,
+      "N_unique_transition_evals": 49152,
+      "actual_transitions_per_second": 7.628571996379996,
+      "case_count": 48,
+      "complete_h4": 15049,
+      "distinct_scoreable_h4": 6060,
+      "return_birth_boundary": 8487,
+      "runtime_seconds": {
+        "P90": 340.6789649549406,
+        "P95": 371.54978896647225,
+        "max": 391.4432353102602,
+        "mean": 134.23219974667882,
+        "median": 88.43566726869904,
+        "sum_in_solve": 6443.145587840583
+      },
+      "scoreable_cases": 30,
+      "scoreable_rate": 0.625,
+      "scorer_exceptions": 0,
+      "unscoreable_h4": 8487
+    },
+    "256": {
+      "N_admitted_steps": 17356,
+      "N_cache_hits": 3117,
+      "N_dead_end_branches": 874,
+      "N_proposed_steps": 17356,
+      "N_rejected_steps": 0,
+      "N_unique_transition_evals": 12288,
+      "actual_transitions_per_second": 8.221032193243241,
+      "case_count": 48,
+      "complete_h4": 2855,
+      "distinct_scoreable_h4": 1263,
+      "return_birth_boundary": 1511,
+      "runtime_seconds": {
+        "P90": 70.22676593991928,
+        "P95": 90.4186596802203,
+        "max": 95.17933028703555,
+        "mean": 31.139642076867556,
+        "median": 20.13306197943166,
+        "sum_in_solve": 1494.7028196896426
+      },
+      "scoreable_cases": 30,
+      "scoreable_rate": 0.625,
+      "scorer_exceptions": 0,
+      "unscoreable_h4": 1511
+    },
+    "512": {
+      "N_admitted_steps": 34515,
+      "N_cache_hits": 7739,
+      "N_dead_end_branches": 1842,
+      "N_proposed_steps": 34515,
+      "N_rejected_steps": 0,
+      "N_unique_transition_evals": 24576,
+      "actual_transitions_per_second": 8.132836793651819,
+      "case_count": 48,
+      "complete_h4": 6518,
+      "distinct_scoreable_h4": 2850,
+      "return_birth_boundary": 3439,
+      "runtime_seconds": {
+        "P90": 162.70478462581522,
+        "P95": 179.4586723997956,
+        "max": 187.45077456207946,
+        "mean": 62.95466305184527,
+        "median": 42.34169961255975,
+        "sum_in_solve": 3021.823826488573
+      },
+      "scoreable_cases": 30,
+      "scoreable_rate": 0.625,
+      "scorer_exceptions": 0,
+      "unscoreable_h4": 3439
+    }
+  },
+  "reference_count": 48,
+  "runtime": {
+    "effective_cases_per_hour": 44.303128480399465,
+    "finish_last_case_utc": "2026-10-03T10:23:54.989130+00:00",
+    "in_solve_transition_throughput": 8.162024247370155,
+    "matrix_elapsed_wall_clock_seconds": 7800.80350652663,
+    "matrix_setup_and_orchestration_overhead_seconds": 3284.2768603484146,
+    "new_in_solve_wall_clock_sum": 4516.526646178216,
+    "note": "Search-internal timing excludes checkpoint/data/root preparation; matrix overhead is recorded separately. B1024 references are not rerun.",
+    "start_time_utc": "2026-10-03T08:13:54.185598+00:00"
+  },
+  "scope": "CALIBRATION SUBSET; no formal non-inferiority or online budget freeze",
+  "seeds": [
+    6311,
+    6312,
+    6313
+  ],
+  "verdict": "PASS"
+}

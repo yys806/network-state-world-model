@@ -1,0 +1,15 @@
+{
+  "CLOSED_LOOP_BUDGET": "RESEARCHER_DECISION_PENDING",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "STEP_6_4C_BUDGET_CALIBRATION": "PASS",
+  "Stage B": "NOT_STARTED",
+  "actual_new_unique_transitions": 36864,
+  "case_count": 96,
+  "claim_boundary": "CALIBRATION SUBSET; no method reselection or formal non-inferiority",
+  "execution_config_id": "0973bbf43d3531175b1c5a2bba62bd360833acddebda277511d6af13df37204a",
+  "inventory_sha256": "beb19fdfdf104fbc7651869c31661d10801bda1249476278dca485d9a7ee8242",
+  "locked_test": false,
+  "nominal_new_budget": 36864,
+  "reference_count": 48,
+  "verdict": "PASS"
+}

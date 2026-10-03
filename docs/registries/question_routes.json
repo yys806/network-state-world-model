@@ -2,6 +2,32 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP-6.4C-BUDGET-CALIBRATION",
+      "title": "MH-CEM小规模预算校准与配对资源取舍",
+      "keywords": [
+        "STEP 6.4C",
+        "budget calibration",
+        "B256",
+        "B512",
+        "B1024",
+        "16 anchors",
+        "MH-CEM"
+      ],
+      "summary": "STEP_6_4C_BUDGET_CALIBRATION=PASS。静态预注册16 anchors×3 seeds，MH-CEM K4/rho0.1，B256/B512新增96/96，48份配对B1024身份SHA通过且未重跑；新GPU名义/实际独立一步转移36864。三预算各30/48 H4可评分（62.5%）。256vs1024=1胜/19平/28负；512vs1024=7/22/19；256vs512=1/21/26；每组六类合计48。逐case去重可评分候选1263/2850/6060；内部搜索median20.133/42.342/88.436秒，mean31.140/62.955/134.232秒，低预算平均耗时减少76.802%/53.100%。总墙钟7800.804秒（2h10m），其中内部搜索4516.527秒，加载准备等3284.277秒另列。独立raw验收、144文件inventory及ZIP/SHA PASS，原raw目录保留在D:。6 anchors×3 seeds三预算均无可评分H4；future Return-birth fixed-support limitation保留；scorer exception=0。前三项最佳objective逐对一致，排序差异在J_Burden/J_Effort（额外分项只作exploratory diagnostic）。建议另预注册64×5 MH-only扩样，属于NEW RESEARCH PROPOSAL，不自动运行。SEARCH_METHOD仍MH纯搜索骨架；CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING，FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，FINAL_FALLBACK_POLICY=NOT_FROZEN，HYBRID_PLANNER=NOT_FROZEN，Stage B=NOT_STARTED，locked_test=false。GPU搜索和监控已结束。唯一下一动作研究者审阅并决定预算或是否另授权扩样。",
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_4C_MH_BUDGET_CALIBRATION.md",
+        "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/24_independent_raw_acceptance_receipt.json"
+      ],
+      "verification_sources": [
+        "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/01_calibration_anchor_manifest.json",
+        "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/02_calibration_protocol.json",
+        "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07b_calibration_execution_config_git_lf.json",
+        "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/03_b1024_paired_reference_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/26_archive_acceptance_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/27_tradeoff_and_return_boundary_observation.json"
+      ]
+    },
+    {
       "id": "ROUTE-STEP-6.4B-REAL-FEEDBACK",
       "title": "STEP 6.4B 最小闭环真实反馈与失败即终止",
       "keywords": [

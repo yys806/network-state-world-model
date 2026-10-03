@@ -1,0 +1,291 @@
+{
+  "Stage B": "NOT_STARTED",
+  "archive": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/mh_budget_calibration_raw_and_receipts.zip",
+  "archive_sha256": "a681aea43032e70d33696cc7f947e63873cc075b1a9cebad2e12e5f9cc2f2dc9",
+  "files": [
+    {
+      "bytes": 51162,
+      "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+      "sha256": "085cb4c73d3c224a776f36fc27aa3c98108204d761a61116399dd2a657220b6f"
+    },
+    {
+      "bytes": 11680,
+      "path": "AI_CONTEXT/01_RESEARCH_CONTEXT.md",
+      "sha256": "4f9a1e908e4c3086f6233ae9d688692b1cf87c823e96b96ba98520ff75b33854"
+    },
+    {
+      "bytes": 21203,
+      "path": "AI_CONTEXT/02_ARCHITECTURE.md",
+      "sha256": "10f82dc0b8f8eb52d202fe02e02ce9c2b359bce2540fd57abbd5bf87f5c69e7a"
+    },
+    {
+      "bytes": 30918,
+      "path": "AI_CONTEXT/03_DATA_FLOW.md",
+      "sha256": "e2ba066f2870b28768fd0f1eef8a937b19cfb4a8342d25db47b839a48d135b44"
+    },
+    {
+      "bytes": 29745,
+      "path": "AI_CONTEXT/04_MODULE_MAP.md",
+      "sha256": "938bb7194a375f761b39cb559c15cbd9cfa0b456c7d6463efc0c51b3fc47a999"
+    },
+    {
+      "bytes": 42691,
+      "path": "AI_CONTEXT/05_EXPERIMENTS.md",
+      "sha256": "7426f0c87a26b1ba6e82fc37bd71698f32a10683d8c7b4400a4af8a80cb828e8"
+    },
+    {
+      "bytes": 29855,
+      "path": "AI_CONTEXT/06_DECISIONS.md",
+      "sha256": "eed6cb06c5519526e6c53d323bb3392ab6340be7e9ef3ec58b68c588edd406cb"
+    },
+    {
+      "bytes": 49344,
+      "path": "AI_CONTEXT/07_KNOWN_ISSUES.md",
+      "sha256": "4cb705db43c9503c4ae34286fb60cbff9df622a0f26eee3c67929ad8885b4081"
+    },
+    {
+      "bytes": 40940,
+      "path": "AI_CONTEXT/08_CHANGELOG.md",
+      "sha256": "3c3ee79f78d119aecc6e057f0c083f97c657d065b696361554ea004f1dc90d56"
+    },
+    {
+      "bytes": 5377,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/01_calibration_anchor_manifest.json",
+      "sha256": "57c94ff553b6147537cba8583e9e269eb59420e2ee5d85ecaccb93b29fcb3385"
+    },
+    {
+      "bytes": 1079,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/02_calibration_protocol.json",
+      "sha256": "031e024650d9924eadcec2ad52817607b41ba31893867e4413656e498977f0cb"
+    },
+    {
+      "bytes": 31383,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/03_b1024_paired_reference_receipt.json",
+      "sha256": "9aac22a2f2a99fd68bb9b918f8db3b337f7be56a72f557e8f944f84728d38bee"
+    },
+    {
+      "bytes": 813,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/04_paired_b1024_reference_summary.json",
+      "sha256": "bcf98978147d4cde6df989bbcf53c6ca17a9fcca42218bbc4640d6759d0e8f36"
+    },
+    {
+      "bytes": 107,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/05_server_reachability_receipt.json",
+      "sha256": "b3771e279179d59b71873c3f9f34f9025d0d88a511eb240614de0aa0a16ee713"
+    },
+    {
+      "bytes": 626,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/06_remote_readonly_preflight.json",
+      "sha256": "388ccc1485611c7cd03f133b4ce77c8d7c019bddf5649e8ee0dcdc236f9e2537"
+    },
+    {
+      "bytes": 67790,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07_calibration_execution_config.json",
+      "sha256": "125a7a92c84a27d83c71c0153b079329279e47d096d0298d096fec2855f5fee9"
+    },
+    {
+      "bytes": 67921,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07b_calibration_execution_config_git_lf.json",
+      "sha256": "e352d67de24aba4c7a95449b880aaaccef6921ef14bea6c3708d0bee8a3bfdde"
+    },
+    {
+      "bytes": 738,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/08_cpu_preflight_receipt.json",
+      "sha256": "d3f3ff55c10b8b99f45f49ee46b4c452b1c411c5ac0ef2b32f2fe641199531b5"
+    },
+    {
+      "bytes": 480,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/09_runtime_status.json",
+      "sha256": "bc2eff7058f2d1d9f519586ad1631bd4c669c1a9b30ea7f50eb16245589f131a"
+    },
+    {
+      "bytes": 27395,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/10_raw_inventory.json",
+      "sha256": "beb19fdfdf104fbc7651869c31661d10801bda1249476278dca485d9a7ee8242"
+    },
+    {
+      "bytes": 2427,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/11_per_budget_summary.json",
+      "sha256": "680df10668f401079d4e8aff95a193dd7cd6738a2d5519679706353c2d9d3015"
+    },
+    {
+      "bytes": 14865,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/12_paired_budget_comparison.json",
+      "sha256": "7dd1338251d50c8790a3e04b326bb948457cd0e981669fec6c7004d7c56d771d"
+    },
+    {
+      "bytes": 368,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/13_runtime_tradeoff_receipt.json",
+      "sha256": "4948b999018e1270dc51d7cdbb9ab7cfb94c73cbc3f0742bec68ac2d3232ec37"
+    },
+    {
+      "bytes": 616,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/14_final_acceptance_receipt.json",
+      "sha256": "2102cf24caad1035ad835d128ccf437a6bb7135e39393c3e4bc72d6aadf2c5f4"
+    },
+    {
+      "bytes": 1542,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/15_context_consistency_receipt.json",
+      "sha256": "e5839455b612eaaca0f361dc278a4eb9180fbff5e84f3b6abfc6e692802a4be4"
+    },
+    {
+      "bytes": 1766,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/16_sha_manifest.json",
+      "sha256": "5e323ebafe29a8eec7badb4135cbdc911ea5ea889a30731fbfc432f7a313044b"
+    },
+    {
+      "bytes": 626,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/19_second_remote_readonly_check.json",
+      "sha256": "979f5b85efce4a2f872c8afc8ef1af02971b9ed14fa5418a04415e4c79894108"
+    },
+    {
+      "bytes": 846,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/20_remote_dirty_gate_receipt.json",
+      "sha256": "a344f347cb4425672d7c062e6944feb9833826b0674f06af4ad5291be15c255a"
+    },
+    {
+      "bytes": 1749,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/21_prelaunch_source_byte_bridge.json",
+      "sha256": "ad57fd767c0bf98bdffbe9b1c5b7654f1e534e1cd36b4b94be7530daf9187492"
+    },
+    {
+      "bytes": 210,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/22_canonical_source_cpu_preflight.json",
+      "sha256": "7e42e7e61f4e965d8270277c08eb04bfb477aae8790bc20467e716d91dc5d86b"
+    },
+    {
+      "bytes": 1134,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/23_launch_acceptance_receipt.json",
+      "sha256": "bc94c459a3996e1371bdf5e758e6ce4ec3c3986a31642093b505b6c62c380739"
+    },
+    {
+      "bytes": 20029,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/24_independent_raw_acceptance_receipt.json",
+      "sha256": "99b69c63f979dec6cc097fb445cf6280c5571f96a5d9dfe7824cb96182c16570"
+    },
+    {
+      "bytes": 48420,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/25_144_file_inventory.json",
+      "sha256": "d15fdad076a4825d890b50221187188bd4d931fcfa22aa0a5db370420d96a9a2"
+    },
+    {
+      "bytes": 612,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/26_archive_acceptance_receipt.json",
+      "sha256": "22bf225e7899eae3644931b8db7aafa52663c9d597e6903b92b23117b934b754"
+    },
+    {
+      "bytes": 3202,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/27_tradeoff_and_return_boundary_observation.json",
+      "sha256": "ecb7f2d536f5e81fea349edd12add73ccf4b98be27172353d63643c078058097"
+    },
+    {
+      "bytes": 1431,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/28_final_context_consistency_receipt.json",
+      "sha256": "098e176fa6500637692610eec851a87bebfcbde3b81b272504953a07bf2f8715"
+    },
+    {
+      "bytes": 1471,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/29_final_budget_calibration_closure_acceptance.json",
+      "sha256": "d836ee224504a2e9984750abce61e6cbf9fc6efb22d6000c17560399e7b4469d"
+    },
+    {
+      "bytes": 7359,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/runtime/formal_calibration.log",
+      "sha256": "d638a13e5f089fe326accd7831da558eaf71a2e22d7435ec4ad21388e978b3c3"
+    },
+    {
+      "bytes": 11587,
+      "path": "code/scripts/audit_step6_4c_completed_budget_calibration_v1.py",
+      "sha256": "dde3a5e71fe89661e160c186c106311a80973646a12e5800cd000c9349a13f54"
+    },
+    {
+      "bytes": 48010,
+      "path": "docs/CHANGELOG.md",
+      "sha256": "be66b6e2a37f30c370e7c1d2661cd42211e2985dd2f6718af7a1d9e641f6590c"
+    },
+    {
+      "bytes": 21117,
+      "path": "docs/EXPERIMENT_INDEX.md",
+      "sha256": "482d6168e52b6367aedd354b90888f576249c52ff82481872510ce6d19a3d358"
+    },
+    {
+      "bytes": 19895,
+      "path": "docs/implementation_records/README.md",
+      "sha256": "343212881532059c3fc1a119eb72c14e2c93259b5a6656e76e78abd1e8610e2b"
+    },
+    {
+      "bytes": 7814,
+      "path": "docs/implementation_records/STEP_06_4C_MH_BUDGET_CALIBRATION.md",
+      "sha256": "835b7182345441c90cf8bd002e45e76c8e50fc200e5715ff4edd7785044eec7f"
+    },
+    {
+      "bytes": 51243,
+      "path": "docs/PIJWM_IMPLEMENTATION_TRACKER.md",
+      "sha256": "3f9679274cc35558ed2111f50d863c98816831cd5b363d04366c009aeb29c25c"
+    },
+    {
+      "bytes": 4261,
+      "path": "docs/registries/deferred_work.json",
+      "sha256": "724d5293d34f9fc5cbf20d15b71cda5681dcfc476a259748ef0676759b473701"
+    },
+    {
+      "bytes": 88638,
+      "path": "docs/registries/experiment_registry.json",
+      "sha256": "a471cda5deaf5910d444ddad2c5d5aef44f75dd681e41acbb028d5a65f0f0cc4"
+    },
+    {
+      "bytes": 17028,
+      "path": "docs/registries/question_routes.json",
+      "sha256": "860a150c366770e0b083fac1cb4e6524c9acc9ca0e0b344b7406331bfe0393ab"
+    },
+    {
+      "bytes": 894,
+      "path": "docs/registries/step6_4c_calibration_registry.json",
+      "sha256": "1a81ef3b9030bb14a91fea0fee3fde1612f41740413cf09faa50e7fce9611784"
+    },
+    {
+      "bytes": 25649,
+      "path": "docs/RESEARCH_STATUS.md",
+      "sha256": "eae861e3f8528dca2b69f0e2d533e7474c2b75307276eefabc5cc255a63fde09"
+    },
+    {
+      "bytes": 19534,
+      "path": "docs/RESULTS_INDEX.md",
+      "sha256": "ddc4f4027e4cf0da5f30fbe5d95c35ee7af4c50e4903793ed99264ccb480cd61"
+    },
+    {
+      "bytes": 178594,
+      "path": "findings.md",
+      "sha256": "9a6c92e9cff70a72dc51b2b55517f25b4ac425f50555ae1e9613d3fc974484c1"
+    },
+    {
+      "bytes": 170900,
+      "path": "progress.md",
+      "sha256": "6f25e1234c633bc52031447d7a703b88aa537c7add88973965949ed52a09b092"
+    },
+    {
+      "bytes": 198376,
+      "path": "task_plan.md",
+      "sha256": "0e2a6e406dc269b18f4149ad0fcc7abc87feb245327dd3c9bfd0c350e8a9df2a"
+    },
+    {
+      "bytes": 182914,
+      "path": "记录/8.12之后推进.md",
+      "sha256": "40bb98b8ec6dfb17cfc4e60ee2ca8f435c3da1029e3136a822ef6c2615db6a08"
+    },
+    {
+      "bytes": 212223,
+      "path": "记录/PIJWM主文档.md",
+      "sha256": "31cb0ef30d8d2dd5aab3f928af2e7934f67f76eed79aa45572971b506201f193"
+    },
+    {
+      "bytes": 236199,
+      "path": "记录/本地计划表.md",
+      "sha256": "ca9fce831922069e51c538dff9d6ee4bc2803dd0fb33947d4b781fdda59d8a46"
+    }
+  ],
+  "locked_test": false,
+  "raw_inventory": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/25_144_file_inventory.json",
+  "raw_inventory_sha256": "d15fdad076a4825d890b50221187188bd4d931fcfa22aa0a5db370420d96a9a2",
+  "scope": "Final small closure evidence; generated indexes excluded to avoid checksum cycles; raw inventory and archive referenced separately"
+}

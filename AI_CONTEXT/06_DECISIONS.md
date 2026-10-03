@@ -1,3 +1,7 @@
+## STEP 6.4C 验收后的决定边界
+
+研究者本轮仅授权16×3 MH-CEM B256/B512校准及复用B1024。CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；扩样64×5是Codex的ENGINEERING/RESEARCH RECOMMENDATION，不是Researcher Decision，未授权。METHOD仍仅pure-search backbone；Stage B=NOT_STARTED，locked_test=false。
+
 ## 2026-10-03 Researcher Decision：STEP 6.4C 小规模预算校准
 
 研究者本轮明确授权：16个仅按运行前静态分层选择的Validation anchors×3 seeds，MH-CEM K4/rho0.1，仅新增B256/B512，复用配对B1024。只作预算取舍证据，不重新选择方法，不自动冻结closed-loop budget，不运行原完整Stage B或环境动作。3080Ti不可达时完成CPU预检后停止。

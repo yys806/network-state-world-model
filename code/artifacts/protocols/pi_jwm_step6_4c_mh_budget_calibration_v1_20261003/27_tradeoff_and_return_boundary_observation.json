@@ -1,0 +1,117 @@
+{
+  "scope": "CALIBRATION SUBSET; descriptive, not formal non-inferiority",
+  "no_scoreable_h4_anchors_all_three_budgets_all_three_seeds": [
+    {
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "stratum": "q0:comp0",
+      "seeds": [
+        6311,
+        6312,
+        6313
+      ],
+      "budgets": [
+        256,
+        512,
+        1024
+      ]
+    },
+    {
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "stratum": "q0:comp0",
+      "seeds": [
+        6311,
+        6312,
+        6313
+      ],
+      "budgets": [
+        256,
+        512,
+        1024
+      ]
+    },
+    {
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "stratum": "q1:comp0",
+      "seeds": [
+        6311,
+        6312,
+        6313
+      ],
+      "budgets": [
+        256,
+        512,
+        1024
+      ]
+    },
+    {
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "stratum": "q1:comp0",
+      "seeds": [
+        6311,
+        6312,
+        6313
+      ],
+      "budgets": [
+        256,
+        512,
+        1024
+      ]
+    },
+    {
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "stratum": "q2:comp0",
+      "seeds": [
+        6311,
+        6312,
+        6313
+      ],
+      "budgets": [
+        256,
+        512,
+        1024
+      ]
+    },
+    {
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "stratum": "q2:comp0",
+      "seeds": [
+        6311,
+        6312,
+        6313
+      ],
+      "budgets": [
+        256,
+        512,
+        1024
+      ]
+    }
+  ],
+  "return_birth_boundary_counts": {
+    "1024": 8487,
+    "256": 1511,
+    "512": 3439
+  },
+  "grammar_dead_end_counts": {
+    "1024": 3867,
+    "256": 874,
+    "512": 1842
+  },
+  "scorer_exception_counts": {
+    "1024": 0,
+    "256": 0,
+    "512": 0
+  },
+  "mean_runtime_reduction_vs1024": {
+    "256": 0.7680166000733515,
+    "512": 0.5310017777355027
+  },
+  "quality_observation": "All three rates30/48. Frozen lexicographic lower budgets lose28 and19 paired cases to1024; wins1 and7. Among both-scoreable pairs, first3 best-objective components agree; differences occur in J_Burden and J_Effort. The component breakdown is exploratory diagnostic only, not a new primary rule.",
+  "interpretation_boundary": "Do not infer task-completion/delay degradation from later-component wins/losses; do not infer real closed-loop performance or equivalence.",
+  "engineering_research_recommendation": "Recommend separately preregistered64-anchor5-seed MH-only calibration if selecting a population-level online budget. This is a NEW RESEARCH PROPOSAL, not original Stage B; no automatic execution.",
+  "runtime_observation": "In-solve mean time scales approximately with budget; matrix setup/loading overhead54.74min is separate. No realtime claim.",
+  "support_limitation": "Unsupported future Return birth persists; fewer boundary events at low budget do not prove support improved.",
+  "CLOSED_LOOP_BUDGET": "RESEARCHER_DECISION_PENDING",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "Stage B": "NOT_STARTED",
+  "locked_test": false
+}

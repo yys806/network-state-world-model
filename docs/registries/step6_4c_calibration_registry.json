@@ -3,9 +3,11 @@
   "scope": "CALIBRATION SUBSET",
   "protocol": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/02_calibration_protocol.json",
   "execution_config": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/07b_calibration_execution_config_git_lf.json",
-  "current_acceptance": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/23_launch_acceptance_receipt.json",
+  "current_acceptance": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/24_independent_raw_acceptance_receipt.json",
   "CLOSED_LOOP_BUDGET": "RESEARCHER_DECISION_PENDING",
   "Stage B": "NOT_STARTED",
   "locked_test": false,
-  "status": "RUNNING"
+  "status": "PASS",
+  "inventory": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/25_144_file_inventory.json",
+  "archive_acceptance": "code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003/26_archive_acceptance_receipt.json"
 }
