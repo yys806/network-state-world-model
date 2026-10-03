@@ -1,0 +1,27 @@
+{
+  "batch_size": 16,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "device": "cuda",
+  "environment_action_executed": false,
+  "execution_config_id": "0973bbf43d3531175b1c5a2bba62bd360833acddebda277511d6af13df37204a",
+  "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+  "launch_git_commit": "c3c1f34e4b41b690333c77e8333265a01c69b474",
+  "local_persistent_backup": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4c_mh_budget_calibration_v1_20261003",
+  "locked_test": false,
+  "original_stage_b_started": false,
+  "precision": "FP32",
+  "prelaunch_checks": {
+    "GPU_model": true,
+    "HEAD_equals_origin_main": true,
+    "checkpoint_SHA": true,
+    "cohort_frozen": true,
+    "current_source_bytes": true,
+    "initial_result_count_zero": true,
+    "reference48_SHA_identity": true,
+    "tracked_clean": true
+  },
+  "source_provenance_bridge": "21_prelaunch_source_byte_bridge.json",
+  "start_time_utc": "2026-10-03T08:13:54.185598+00:00",
+  "transport": "authenticated SSH/SFTP + verified local Git bundle for already-pushed main; source unchanged",
+  "verdict": "PASS"
+}
