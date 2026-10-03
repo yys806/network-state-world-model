@@ -1,0 +1,90 @@
+{
+  "CLOSED_LOOP_MECHANISM_READINESS": "PASS",
+  "GPU": "NOT_USED",
+  "STEP_6_4B": "PASS",
+  "Stage_B": "NOT_STARTED",
+  "TWO_CYCLE_REAL_FEEDBACK_SMOKE": "PASS",
+  "batch_size": 1,
+  "budget_per_cycle": 64,
+  "cycle1_predicted_h1_state": "b82fa57fe80216d814799ae359acdde323dc8fb269ebc7167e1bfc6c79b618c5",
+  "cycles": [
+    {
+      "best_fingerprint": "2f64f7090b3425bcf29937a83d21953d073b6aa317bcf579ae0e047eb88a9d2c",
+      "best_objective": [
+        0,
+        0.0,
+        1.0,
+        0.5415038990707585,
+        0.10572057201061395
+      ],
+      "budget_receipt": {
+        "B_WM": 64,
+        "N_admitted_steps": 96,
+        "N_cache_hits": 30,
+        "N_complete_sequences": 18,
+        "N_dead_end_branches": 11,
+        "N_proposed_steps": 96,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 64,
+        "budget_unit": "candidate_one_step_transition",
+        "wall_clock_seconds_diagnostic_only": 28.33522999996785
+      },
+      "complete_h4": 18,
+      "fresh_domain": true,
+      "h4_scoreable_count": 16,
+      "root": {
+        "anchor": "f3060d0c06ac974f6b92f455440db7d0688cb7ec18b6008acc91b264382b2dfb",
+        "graph": "97e734f54102e1c67f59574995e6b73695eccd1a9e2c584866079f10e833b5e0",
+        "latent": "42329d2ffe003710cfcf1ce899cd3df717e26a05fde41f46a941c223a98d3512",
+        "state": "b0e35b42fd11bbbfd0b913b922f74bb47458d98fa2783bbd7c34ff8c1da4fadb",
+        "z_pi": "128df0eaf567de3d60a9f67412e0e638f608f349ec26ce5c2e91424cf2ae7aa0"
+      },
+      "simulation_time_s": 0.6,
+      "simulator_paused_during_planning": true,
+      "wall_clock_seconds": 28.357994300022256
+    },
+    {
+      "best_fingerprint": "a71e2f181b4b15b6f1bf6fa12f2be3fe998490a2e35fbd696e8893bc3937fec0",
+      "best_objective": [
+        0,
+        0.0,
+        1.0,
+        0.54150390625,
+        0.10143014331115409
+      ],
+      "budget_receipt": {
+        "B_WM": 64,
+        "N_admitted_steps": 96,
+        "N_cache_hits": 30,
+        "N_complete_sequences": 18,
+        "N_dead_end_branches": 11,
+        "N_proposed_steps": 96,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 64,
+        "budget_unit": "candidate_one_step_transition",
+        "wall_clock_seconds_diagnostic_only": 28.56694269995205
+      },
+      "complete_h4": 18,
+      "fresh_domain": true,
+      "h4_scoreable_count": 16,
+      "root": {
+        "anchor": "cd51995be933804be94a542b7646408bae40b7ea67af9f00f79ccf1f828851b3",
+        "graph": "67d2e829d58cec24cdd468596df4f1e803c6763c75c14274c53d07edbef05955",
+        "latent": "36c01d7d587d5bdea8e024309ae33105f5d4e78d5eba82227b8da5a713241f0f",
+        "state": "f2f462244a9374c0ac47610df45851abac5d7363f88c96aac8a4176219cb383b",
+        "z_pi": "b72ff43d5af83ca477b2d244ccd73772b2cca51bfed12b4f33a5d6399b527afe"
+      },
+      "simulation_time_s": 0.7,
+      "simulator_paused_during_planning": true,
+      "wall_clock_seconds": 28.5883315000101
+    }
+  ],
+  "environment_steps_by_planner": 1,
+  "failure_handling": "FAIL_CLOSED_AND_STOP_EPISODE",
+  "fresh_root_not_predicted_state": true,
+  "latency_mode": "SYNCHRONOUS_PAUSED_SIMULATION",
+  "locked_test": false,
+  "normalization_unchanged": true,
+  "parameters_unchanged": true,
+  "pre_action_receipt_recovery_discrete_result_identical": true
+}

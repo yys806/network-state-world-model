@@ -141,13 +141,19 @@ class ValidationStageTests(unittest.TestCase):
         config_path = ROOT / "code/artifacts/protocols/pi_jwm_step6_3d_pre_validation_blocker_closure_v1_20261001/03_validation_execution_config_3080ti.json"
         config = matrix.read(config_path)
         execution = {key: config[key] for key in matrix.EXECUTION_KEYS}
-        matrix.validate_validation_provenance(config, execution)
+        # Acceptance applies to the recorded Stage A source, not later
+        # authorized interface changes. Current-source rejection stays strict.
+        if matrix.source_hashes() != execution['source_sha256']:
+            with self.assertRaisesRegex(ValueError, 'source_sha256'):
+                matrix.validate_validation_provenance(config, execution)
+        with patch.object(matrix, 'source_hashes', return_value=execution['source_sha256']):
+            matrix.validate_validation_provenance(config, execution)
         historical = matrix.read(matrix.QUALIFICATION)
-        with self.assertRaises(ValueError):
+        with patch.object(matrix, 'source_hashes', return_value=execution['source_sha256']), self.assertRaises(ValueError):
             matrix.validate_validation_provenance(historical, execution)
         parents = {key: value.copy() for key, value in config["parents"].items()}
         parents["train_frozen_configs"]["sha256"] = "bad"
-        with self.assertRaises(ValueError):
+        with patch.object(matrix, 'source_hashes', return_value=execution['source_sha256']), self.assertRaises(ValueError):
             matrix.validate_validation_provenance({**config, "parents": parents}, execution)
 
 

@@ -1,0 +1,7 @@
+{
+  "differing_arrays": [],
+  "future_targets_built": false,
+  "input_policy": "history_causal_observable_object_union",
+  "normalization_refit": false,
+  "verdict": "PASS"
+}

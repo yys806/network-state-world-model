@@ -1,0 +1,53 @@
+{
+  "GPU": "NOT_USED",
+  "STEP_6_4B": "BLOCKED",
+  "Stage_B": "NOT_STARTED",
+  "batch_size": 1,
+  "blocker": "RuntimeError",
+  "budget_per_cycle": 64,
+  "cycles": [
+    {
+      "best_fingerprint": "2f64f7090b3425bcf29937a83d21953d073b6aa317bcf579ae0e047eb88a9d2c",
+      "best_objective": [
+        0,
+        0.0,
+        1.0,
+        0.5415038990707585,
+        0.10572057201061395
+      ],
+      "budget_receipt": {
+        "B_WM": 64,
+        "N_admitted_steps": 96,
+        "N_cache_hits": 30,
+        "N_complete_sequences": 18,
+        "N_dead_end_branches": 11,
+        "N_proposed_steps": 96,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 64,
+        "budget_unit": "candidate_one_step_transition",
+        "wall_clock_seconds_diagnostic_only": 28.861953800020274
+      },
+      "complete_h4": 18,
+      "fresh_domain": true,
+      "h4_scoreable_count": 16,
+      "root": {
+        "anchor": "f3060d0c06ac974f6b92f455440db7d0688cb7ec18b6008acc91b264382b2dfb",
+        "graph": "97e734f54102e1c67f59574995e6b73695eccd1a9e2c584866079f10e833b5e0",
+        "latent": "42329d2ffe003710cfcf1ce899cd3df717e26a05fde41f46a941c223a98d3512",
+        "state": "b0e35b42fd11bbbfd0b913b922f74bb47458d98fa2783bbd7c34ff8c1da4fadb",
+        "z_pi": "128df0eaf567de3d60a9f67412e0e638f608f349ec26ce5c2e91424cf2ae7aa0"
+      },
+      "simulation_time_s": 0.6,
+      "simulator_paused_during_planning": true,
+      "wall_clock_seconds": 28.889370699995197
+    }
+  ],
+  "detail": "; duplicate_task_memberships={}",
+  "environment_steps_by_planner": 0,
+  "failure_handling": "FAIL_CLOSED_AND_STOP_EPISODE",
+  "latency_mode": "SYNCHRONOUS_PAUSED_SIMULATION",
+  "locked_test": false,
+  "normalization_unchanged": true,
+  "parameters_unchanged": true,
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\collect_step5_5_formal_raw_v1.py\", line 134, in collect_trajectory\n    on_decision(env, decisions, steps, config, communication_scheduler)\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\run_step6_4b_two_cycle_smoke_v1.py\", line 183, in hook\n    raise EpisodeStopped()\nEpisodeStopped\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\run_step6_4b_two_cycle_smoke_v1.py\", line 185, in main\n    collector.collect_trajectory(freeze['simulator_seed'],freeze['policy_seed'],freeze['sample_id'].split('::')[0],on_decision=hook)\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\collect_step5_5_formal_raw_v1.py\", line 325, in collect_trajectory\n    raise RuntimeError(f\"{exc}; duplicate_task_memberships={duplicates}\") from exc\nRuntimeError: ; duplicate_task_memberships={}\n"
+}

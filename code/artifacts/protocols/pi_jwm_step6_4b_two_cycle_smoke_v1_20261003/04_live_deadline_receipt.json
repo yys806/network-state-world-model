@@ -1,0 +1,36 @@
+{
+  "live": {
+    "alignment_passed": true,
+    "capture_event_id": "capture-006",
+    "frame_index": 3,
+    "simulation_time_s": 0.6,
+    "source": "live Task getters before action; no future replay",
+    "source_time_s": 0.6,
+    "tasks": [
+      {
+        "arrival_time_s": 0.4,
+        "deadline_s": 11.566170925551548,
+        "task_id": "Task_1"
+      },
+      {
+        "arrival_time_s": 0.1,
+        "deadline_s": 8.090069234649263,
+        "task_id": "Task_8"
+      }
+    ],
+    "trajectory_id": "formal-v1-sim-2026092325-policy-2026092425"
+  },
+  "official_tasks": [
+    {
+      "arrival_time_s": 0.4,
+      "deadline_s": 11.566170925551548,
+      "task_id": "Task_1"
+    },
+    {
+      "arrival_time_s": 0.1,
+      "deadline_s": 8.090069234649263,
+      "task_id": "Task_8"
+    }
+  ],
+  "verdict": "PASS"
+}

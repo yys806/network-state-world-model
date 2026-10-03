@@ -1,0 +1,20 @@
+{
+  "B_WM": 64,
+  "K": 4,
+  "batch_size": 1,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "execution_config_id": "c34c69dbee5405ecdfb7b9676869054c4f5218122ee5468b593d7084ff5e81b8",
+  "execution_device": "cpu",
+  "fixture_sha256": "adbeed249e99858acdd13d4cbc33eae60e2b8dd659aed69d3e316b93153a0485",
+  "locked_test": false,
+  "normalization_sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+  "precision": "FP32",
+  "rho": 0.1,
+  "seed": 6301,
+  "source_sha256": {
+    "code/scripts/collect_step5_5_formal_raw_v1.py": "2f4ea47f1c7a1ff08a2282d6c67c6465edaba237fde8a66666667874eaaf88ac",
+    "code/scripts/run_step6_4b_two_cycle_smoke_v1.py": "5bcffe9c206d623a924442648b6d3ce52438af0f0166e3b566cd0e6a8ba7ff52",
+    "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py": "9ce5852bd2b289fee734fd360b0d99b2d8176a9e736ead37f103a23914e121d4",
+    "code/src/pi_jwm/step6_4b_live_bridge_v1.py": "fa5268e827b341ba2b76c67c687e42c9ac89c319ce3f2c8a925f4ff43952ed39"
+  }
+}

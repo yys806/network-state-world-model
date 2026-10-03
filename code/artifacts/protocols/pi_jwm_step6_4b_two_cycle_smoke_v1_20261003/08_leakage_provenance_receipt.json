@@ -1,0 +1,25 @@
+{
+  "GPU": "NOT_USED",
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "deleted_future_root": {
+    "anchor": "f3060d0c06ac974f6b92f455440db7d0688cb7ec18b6008acc91b264382b2dfb",
+    "graph": "97e734f54102e1c67f59574995e6b73695eccd1a9e2c584866079f10e833b5e0",
+    "latent": "42329d2ffe003710cfcf1ce899cd3df717e26a05fde41f46a941c223a98d3512",
+    "state": "b0e35b42fd11bbbfd0b913b922f74bb47458d98fa2783bbd7c34ff8c1da4fadb",
+    "z_pi": "128df0eaf567de3d60a9f67412e0e638f608f349ec26ce5c2e91424cf2ae7aa0"
+  },
+  "locked_test": false,
+  "model_parameters_unchanged": true,
+  "new_search_calls": 0,
+  "new_world_model_transitions": 0,
+  "normalization_refit_on_live_data": false,
+  "normalization_sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+  "poisoned_future_root": {
+    "anchor": "f3060d0c06ac974f6b92f455440db7d0688cb7ec18b6008acc91b264382b2dfb",
+    "graph": "97e734f54102e1c67f59574995e6b73695eccd1a9e2c584866079f10e833b5e0",
+    "latent": "42329d2ffe003710cfcf1ce899cd3df717e26a05fde41f46a941c223a98d3512",
+    "state": "b0e35b42fd11bbbfd0b913b922f74bb47458d98fa2783bbd7c34ff8c1da4fadb",
+    "z_pi": "128df0eaf567de3d60a9f67412e0e638f608f349ec26ce5c2e91424cf2ae7aa0"
+  },
+  "verdict": "PASS"
+}

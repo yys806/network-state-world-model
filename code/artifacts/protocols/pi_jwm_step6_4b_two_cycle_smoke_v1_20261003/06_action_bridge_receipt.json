@@ -1,0 +1,232 @@
+{
+  "commands": {
+    "cpu": {
+      "Task_8": 2.5843526422977448
+    },
+    "mobility": {
+      "UAV_0": {
+        "angle": 0.05,
+        "phi": 0.0,
+        "speed": 0.0
+      },
+      "UAV_1": {
+        "angle": 0.05,
+        "phi": 0.0,
+        "speed": 0.0
+      }
+    },
+    "rb": {},
+    "route": "EXPLICIT_NOOP_ONLY"
+  },
+  "executed_horizon": 1,
+  "grammar_admission": {
+    "admitted": true,
+    "candidate_fingerprint": "862c1732b94e6f4f9691a2dd6a168ebd1be60f6f9b1f428d7af190a0d612530d",
+    "candidate_id": "2f64f7090b3425bcf29937a83d21953d073b6aa317bcf579ae0e047eb88a9d2c",
+    "h_sup": null,
+    "horizon": 1,
+    "per_step": [
+      {
+        "action": {
+          "comm": [],
+          "comp": [
+            {
+              "allocated_cpu_per_s": 2.5843526422977448,
+              "node_id": "RSU_0",
+              "task_id": "Task_8"
+            }
+          ],
+          "mob": [
+            {
+              "azimuth_rad": 0.05,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": 0.05,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 5
+            }
+          ],
+          "route": []
+        },
+        "binding": {
+          "compute_base": {
+            "Task_8": {
+              "allocation_per_s": 3.4458035230636597,
+              "node_id": "RSU_0"
+            }
+          },
+          "current_state_only": true,
+          "present_uav_slots": [
+            4,
+            5
+          ],
+          "rb_reuse_between_tasks_allowed": true,
+          "wireless_task_to_relation": {}
+        },
+        "next_mobility_control": {
+          "4": {
+            "elevation_observed": true,
+            "elevation_rad": 0.0,
+            "entity_id": "UAV_0",
+            "heading_observed": true,
+            "heading_rad": 0.05,
+            "heading_unit": "rad",
+            "observation_provenance": "formal-v1-sim-2026092325-policy-2026092425:capture-006:3:0.6",
+            "source": "previous Planner mobility command; control side-state only",
+            "uav_index": 4
+          },
+          "5": {
+            "elevation_observed": true,
+            "elevation_rad": 0.0,
+            "entity_id": "UAV_1",
+            "heading_observed": true,
+            "heading_rad": 0.05,
+            "heading_unit": "rad",
+            "observation_provenance": "formal-v1-sim-2026092325-policy-2026092425:capture-006:3:0.6",
+            "source": "previous Planner mobility command; control side-state only",
+            "uav_index": 5
+          }
+        },
+        "structural_signature": [
+          "NOOP",
+          "tasks:1;alpha:0.75",
+          "HOLD,HOLD"
+        ],
+        "support": {
+          "causal_binding": "VALID",
+          "family_marginal": {
+            "Comm": "TRAIN_OBSERVED",
+            "Comp": "TRAIN_OBSERVED",
+            "Mob": "TRAIN_OBSERVED"
+          },
+          "fixed_support": "PENDING_ROLLOUT",
+          "formal_pool_admitted": true,
+          "h_sup": null,
+          "joint_structural": "TRAIN_OBSERVED_STRUCTURAL",
+          "reason_codes": [],
+          "temporal_adjacent": "NOT_APPLICABLE_H1",
+          "temporal_prefix": "TRAIN_OBSERVED_PREFIX"
+        }
+      }
+    ],
+    "reason_codes": []
+  },
+  "verdict": "PASS",
+  "winner_sequence": {
+    "candidate_id": "2f64f7090b3425bcf29937a83d21953d073b6aa317bcf579ae0e047eb88a9d2c",
+    "constraints": [],
+    "generation_metadata": {
+      "planner_action_domain": "V1"
+    },
+    "generator_backend": "SEARCH",
+    "provenance": "live:formal-v1-sim-2026092325-policy-2026092425:3:capture-006",
+    "seed": 6301,
+    "source_tags": [],
+    "steps": [
+      {
+        "comm": [],
+        "comp": [
+          {
+            "allocated_cpu_per_s": 2.5843526422977448,
+            "node_id": "RSU_0",
+            "task_id": "Task_8"
+          }
+        ],
+        "mob": [
+          {
+            "azimuth_rad": 0.05,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.05,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [
+          {
+            "allocated_cpu_per_s": 0.6460880488157272,
+            "node_id": "RSU_0",
+            "task_id": "Task_8"
+          }
+        ],
+        "mob": [
+          {
+            "azimuth_rad": -0.15000000000000002,
+            "elevation_rad": 0.0,
+            "speed_mps": 5.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": -0.15000000000000002,
+            "elevation_rad": 0.0,
+            "speed_mps": 5.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [
+          {
+            "allocated_cpu_per_s": 0.1615220122039318,
+            "node_id": "RSU_0",
+            "task_id": "Task_8"
+          }
+        ],
+        "mob": [
+          {
+            "azimuth_rad": -0.25,
+            "elevation_rad": 0.0,
+            "speed_mps": 8.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": -0.25,
+            "elevation_rad": 0.0,
+            "speed_mps": 8.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [
+          {
+            "allocated_cpu_per_s": 0.04038050305098295,
+            "node_id": "RSU_0",
+            "task_id": "Task_8"
+          }
+        ],
+        "mob": [
+          {
+            "azimuth_rad": -0.45,
+            "elevation_rad": 0.0,
+            "speed_mps": 5.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": -0.45,
+            "elevation_rad": 0.0,
+            "speed_mps": 5.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      }
+    ]
+  }
+}

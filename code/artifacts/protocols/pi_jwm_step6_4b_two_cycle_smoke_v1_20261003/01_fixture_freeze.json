@@ -1,0 +1,20 @@
+{
+  "sample_id": "formal-v1-sim-2026092325-policy-2026092425::anchor-0003",
+  "split": "dev_train",
+  "simulator_seed": 2026092325,
+  "policy_seed": 2026092425,
+  "anchor": 3,
+  "seed": 6301,
+  "method": "MH-CEM",
+  "K": 4,
+  "rho": 0.1,
+  "B_WM": 64,
+  "batch_size": 1,
+  "fixture_selection": "Before smoke: lowest anchor frame then sample_id/seed among existing TRAIN MH K4rho0.1 cases with scoreable H4 at old B512; no selection using new B64 outcomes.",
+  "raw_path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092325-policy-2026092425.json.gz",
+  "raw_sha256": "13298bf2b3caba6261d719383c0ffbfd645d9337ab4f1b8796079ddbe52462fd",
+  "old_train_result": "code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/solve_results/train/0231c1af82d4e877_MH-CEM_6301_b512_k4_rho0p1.json",
+  "historical_source_commit": "f9b7c05fb016403b776065074de8d791126661f0",
+  "GPU": false,
+  "locked_test": false
+}

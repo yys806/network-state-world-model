@@ -1,0 +1,34 @@
+{
+  "ACTION_BRIDGE_REJECTED": "illegal Route and out-of-range RB rejected before setter",
+  "DOMAIN_EMPTY": "explicit SmokeFailure before posterior/search/action",
+  "GPU": "NOT_USED",
+  "NO_SCOREABLE_H4": {
+    "action_calls": 0,
+    "command_gate_reason": "NO_SCOREABLE_H4",
+    "synthetic_h4_scoreable_count": 0,
+    "synthetic_search_winner": null
+  },
+  "REQUIRED_LIVE_OBSERVATION_MISSING": "deleted current CPU observation rows rejected",
+  "SETTER_FAILURE": {
+    "all_three_buffers_restored": true,
+    "env_step_calls": 0,
+    "injected_failure_after_cpu_buffer_mutation": true,
+    "retry": false,
+    "simulation_time_s_after": 0.6,
+    "simulation_time_s_before": 0.6
+  },
+  "Stage_B_result_count": 0,
+  "evidence_scope": "bounded causal synthetic search/command tests + audited paused native decision buffers",
+  "final_fallback_policy": "NOT_FROZEN",
+  "locked_test": false,
+  "native_mutation_sources": {
+    "communication": "communication_sched.py:58-69 writes RB map only",
+    "computation": "computation_sched.py:45-52 writes callback only",
+    "mobility": "traffic_sched.py:38-45 organizes then writes UAV pattern map"
+  },
+  "partial_world_mutation_risk_in_audited_setter_scope": false,
+  "scope_limit": "No concurrency/unknown setters or env.step rollback guarantee; stop episode on failure, no fallback or retry.",
+  "setter_transaction_atomicity": "PASS_WITHIN_SYNCHRONOUS_SINGLE_THREAD_PAUSED_DECISION_BUFFER_SCOPE",
+  "tests": "code/tests/test_step6_4b_live_bridge_v1.py and test_step6_3d_exact_oracle_v1.py",
+  "verdict": "PASS"
+}

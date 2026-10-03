@@ -2186,6 +2186,7 @@
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "pi_jwm.step6_2b_planner_objective_scorer_v1",
         "scripts.audit_step6_2a_route_recovery_v1",
+        "scripts.audit_step6_4b_closure_v1",
         "scripts.build_step4_2c_c_flow_sample_tensor_v1",
         "scripts.build_step4_3a_typed_dual_graph_builder_v1",
         "scripts.build_step4_3b_dual_graph_encoder_v1",
@@ -2201,12 +2202,14 @@
         "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "tests.test_step4_2c_c_flow_sample_tensor_v1",
         "tests.test_step4_3a_typed_dual_graph_builder_v1",
         "tests.test_step4_3b_dual_graph_encoder_v1",
         "tests.test_step4_4_structured_rssm_world_model_v1",
         "tests.test_step5_1d_unified_model_chain_v1",
-        "tests.test_step6_2a_route_recovery_v1"
+        "tests.test_step6_2a_route_recovery_v1",
+        "tests.test_step6_4b_live_bridge_v1"
       ],
       "imports": [],
       "lifecycle_status": "support",
@@ -2218,7 +2221,8 @@
         "code/tests/test_step4_3b_dual_graph_encoder_v1.py",
         "code/tests/test_step4_4_structured_rssm_world_model_v1.py",
         "code/tests/test_step5_1d_unified_model_chain_v1.py",
-        "code/tests/test_step6_2a_route_recovery_v1.py"
+        "code/tests/test_step6_2a_route_recovery_v1.py",
+        "code/tests/test_step6_4b_live_bridge_v1.py"
       ]
     },
     {
@@ -2240,6 +2244,7 @@
         "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "tests.test_step4_3a_typed_dual_graph_builder_v1",
         "tests.test_step4_3b_dual_graph_encoder_v1",
         "tests.test_step6_2a_route_recovery_v1"
@@ -2374,12 +2379,14 @@
         "pi_jwm.step6_1_trained_candidate_rollout_v1",
         "scripts.accept_step5_5_patch_cpu_v1",
         "scripts.accept_step5_6c_formal_training_v1",
+        "scripts.audit_step6_4b_closure_v1",
         "scripts.run_step5_2_training_loop_smoke_v1",
         "scripts.run_step5_6a_gpu_smoke_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.step5_3_cpu_training_preflight_v1",
         "scripts.step5_3d_csi_scale_optimization_diagnosis_v1",
         "scripts.step5_3e_csi_train_mean_bias_formalization_v1",
@@ -2440,6 +2447,7 @@
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.smoke_step6_2a_patched_checkpoint_cpu_v1",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
@@ -2493,6 +2501,7 @@
         "scripts.audit_step6_2a_paired_rollout_cpu_v1",
         "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.audit_step6_3d_selected_side_state_v1",
+        "scripts.audit_step6_4b_closure_v1",
         "scripts.build_step6_3d_objective_eligible_anchors_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step5_6a_gpu_smoke_v1",
@@ -2502,11 +2511,13 @@
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.smoke_step6_2a_patched_checkpoint_cpu_v1",
         "scripts.verify_step5_5_patch_full_shards_v1",
         "scripts.verify_step6_3d_3080ti_migration_v1",
         "tests.test_step5_5_patch_full_consumption_v1",
-        "tests.test_step5_6a_config_freeze_v1"
+        "tests.test_step5_6a_config_freeze_v1",
+        "tests.test_step6_4b_live_bridge_v1"
       ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
@@ -2522,7 +2533,8 @@
       "path": "code/src/pi_jwm/step5_5_full_sharded_loader_v1.py",
       "test_files": [
         "code/tests/test_step5_5_patch_full_consumption_v1.py",
-        "code/tests/test_step5_6a_config_freeze_v1.py"
+        "code/tests/test_step5_6a_config_freeze_v1.py",
+        "code/tests/test_step6_4b_live_bridge_v1.py"
       ]
     },
     {
@@ -2600,6 +2612,7 @@
         "pi_jwm.step6_3c_candidate_domain_v1",
         "pi_jwm.step6_3c_search_protocol_v1",
         "pi_jwm.step6_3d_fixed_budget_search_v1",
+        "scripts.audit_step6_4b_closure_v1",
         "scripts.build_step6_2b_patch_route_noop_receipts_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
@@ -2611,13 +2624,15 @@
         "scripts.run_step6_3d_gpu_pipeline_profile_v1",
         "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.step6_0a_candidate_contract_acceptance_v1",
         "tests.test_step6_0a_candidate_generation_v1",
         "tests.test_step6_0c_planner_action_domain_v1",
         "tests.test_step6_1_trained_candidate_rollout_v1",
         "tests.test_step6_2b_planner_objective_scorer_v1",
         "tests.test_step6_3b_candidate_grammar_v1",
-        "tests.test_step6_3c_candidate_domain_v1"
+        "tests.test_step6_3c_candidate_domain_v1",
+        "tests.test_step6_4b_live_bridge_v1"
       ],
       "imports": [
         "pi_jwm.step6_0c_planner_action_domain_v1",
@@ -2632,7 +2647,8 @@
         "code/tests/test_step6_1_trained_candidate_rollout_v1.py",
         "code/tests/test_step6_2b_planner_objective_scorer_v1.py",
         "code/tests/test_step6_3b_candidate_grammar_v1.py",
-        "code/tests/test_step6_3c_candidate_domain_v1.py"
+        "code/tests/test_step6_3c_candidate_domain_v1.py",
+        "code/tests/test_step6_4b_live_bridge_v1.py"
       ]
     },
     {
@@ -2643,6 +2659,7 @@
         "pi_jwm.step6_1_trained_candidate_rollout_v1",
         "pi_jwm.step6_3b_candidate_grammar_v1",
         "pi_jwm.step6_3c_candidate_domain_v1",
+        "scripts.audit_step6_4b_closure_v1",
         "scripts.build_step6_2b_objective_receipts_v1",
         "scripts.build_step6_2b_patch_route_noop_receipts_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
@@ -2651,6 +2668,7 @@
         "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "tests.test_step6_0c_planner_action_domain_v1",
         "tests.test_step6_1_trained_candidate_rollout_v1",
         "tests.test_step6_3b_candidate_grammar_v1"
@@ -2675,6 +2693,7 @@
         "pi_jwm.step6_3c_search_protocol_v1",
         "pi_jwm.step6_3d_fixed_budget_search_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.audit_step6_4b_closure_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
@@ -2685,6 +2704,7 @@
         "scripts.run_step6_3d_gpu_throughput_v1",
         "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "tests.test_step6_1_trained_candidate_rollout_v1",
         "tests.test_step6_2b_planner_objective_scorer_v1",
         "tests.test_step6_3c_search_protocol_v1",
@@ -2770,6 +2790,7 @@
         "scripts.run_step6_3d_gpu_throughput_v1",
         "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "tests.test_step6_2b_planner_objective_scorer_v1"
       ],
       "imports": [
@@ -2798,6 +2819,7 @@
         "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_3bc_train_self_replay_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "tests.test_step6_3b_candidate_grammar_v1",
         "tests.test_step6_3c_candidate_domain_v1",
         "tests.test_step6_3c_search_protocol_v1"
@@ -2870,6 +2892,7 @@
         "scripts.run_step6_3d_gpu_pipeline_profile_v1",
         "scripts.run_step6_3d_gpu_throughput_v1",
         "scripts.run_step6_3d_h4_batch_equivalence_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.verify_step6_3d_3080ti_migration_v1",
         "tests.test_step6_3c_candidate_domain_v1",
         "tests.test_step6_3d_exact_oracle_v1",
@@ -2944,6 +2967,7 @@
         "scripts.run_step6_3d_gpu_throughput_v1",
         "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "tests.test_step6_3d_exact_oracle_v1"
       ],
       "imports": [
@@ -3017,6 +3041,21 @@
       "path": "code/src/pi_jwm/step6_3d_structured_proposal_v1.py",
       "test_files": [
         "code/tests/test_step6_3d_structured_proposal_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
+        "tests.test_step6_4b_live_bridge_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_4b_live_bridge_v1",
+      "path": "code/src/pi_jwm/step6_4b_live_bridge_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4b_live_bridge_v1.py"
       ]
     },
     {
@@ -3940,6 +3979,26 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step5_2_training_loop_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_0c_planner_action_domain_v1",
+        "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "scripts.build_step5_1d_unified_model_chain_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4b_closure_v1",
+      "path": "code/scripts/audit_step6_4b_closure_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.test_temporal_candidate_protocol"
       ],
@@ -4458,12 +4517,14 @@
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "pi_jwm.step6_0a_candidate_generation_v1",
         "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "scripts.audit_step6_4b_closure_v1",
         "scripts.build_step6_2a_patch_readiness_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
         "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
         "tests.test_step5_1d_unified_model_chain_v1",
@@ -4496,6 +4557,7 @@
       "imported_by": [
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "scripts.finalize_step5_5_existing_package_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "tests.test_step5_5_formal_dataset_v1"
       ],
       "imports": [
@@ -4828,6 +4890,7 @@
       "imported_by": [
         "scripts.replay_step6_2a_patch_deadline_sidecar_v1",
         "scripts.replay_step6_3d_selected_deadline_sidecars_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.verify_step5_5_behavior_policy_determinism_v1"
       ],
       "imports": [
@@ -7838,6 +7901,7 @@
         "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
         "scripts.audit_step6_3d_selected_side_state_v1",
+        "scripts.audit_step6_4b_closure_v1",
         "scripts.build_step6_3d_3080ti_acceptance_v1",
         "scripts.build_step6_3d_objective_eligible_anchors_v1",
         "scripts.close_step6_3d_formal_train_tuning_v1",
@@ -7852,6 +7916,7 @@
         "scripts.run_step6_3d_gpu_throughput_v1",
         "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_train_h4_scoreability_preflight_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.verify_step6_3d_3080ti_migration_v1",
         "tests.test_step6_3d_gpu_offload_v1"
       ],
@@ -7892,6 +7957,39 @@
       "module": "scripts.run_step6_3d_train_h4_scoreability_preflight_v1",
       "path": "code/scripts/run_step6_3d_train_h4_scoreability_preflight_v1.py",
       "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.audit_step6_4b_closure_v1",
+        "tests.test_step6_4b_live_bridge_v1"
+      ],
+      "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step4_3a_typed_dual_graph_builder_v1",
+        "pi_jwm.step5_2_training_loop_v1",
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_0c_planner_action_domain_v1",
+        "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "pi_jwm.step6_2b_planner_objective_scorer_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
+        "pi_jwm.step6_3c_candidate_domain_v1",
+        "pi_jwm.step6_3d_fixed_budget_search_v1",
+        "pi_jwm.step6_4b_live_bridge_v1",
+        "scripts.build_step5_1d_unified_model_chain_v1",
+        "scripts.build_step5_5_formal_dataset_v1",
+        "scripts.collect_step5_5_formal_raw_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_4b_two_cycle_smoke_v1",
+      "path": "code/scripts/run_step6_4b_two_cycle_smoke_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4b_live_bridge_v1.py"
+      ]
     },
     {
       "category": "runnable_script",
@@ -12085,6 +12183,22 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4a_readiness_audit_v1",
       "path": "code/tests/test_step6_4a_readiness_audit_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_4b_live_bridge_v1",
+        "scripts.run_step6_4b_two_cycle_smoke_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4b_live_bridge_v1",
+      "path": "code/tests/test_step6_4b_live_bridge_v1.py",
       "test_files": []
     },
     {

@@ -3,6 +3,53 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.4B-TWO-CYCLE-SMOKE-20261003",
+      "name": "Minimal CPU two-cycle real-feedback mechanism smoke",
+      "date": "2026-10-03",
+      "research_question": "Does the next planning root come from real simulator feedback rather than predicted H1?",
+      "method": "MH-CEM K4 rho0.1 CPU B64 mechanism-only",
+      "code": "code/scripts/run_step6_4b_two_cycle_smoke_v1.py",
+      "code_version": {
+        "identity_type": "independent_cpu_smoke_source_sha256",
+        "git_commit": "f9b7c05fb016403b776065074de8d791126661f0",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4b_two_cycle_smoke_v1_20261003/02_execution_identity.json",
+        "note": "Baseline plus frozen per-file source SHA; historical Stage A identity unchanged.",
+        "manifest_sha256": "73bc14364905970fc28a2b3eb8c2ce9f72958bec078fe3c46d3780c352322354"
+      },
+      "configuration": "docs/contracts/PIJWM_STEP_06_4B_LIVE_CLOSED_LOOP_SMOKE_V1.md",
+      "parameters": {
+        "B_WM": 64,
+        "K": 4,
+        "rho": 0.1,
+        "batch_size": 1,
+        "device": "cpu",
+        "gpu_used": false,
+        "planning_cycles": 2,
+        "planner_environment_steps": 1
+      },
+      "protocol": "docs/implementation_records/STEP_06_4B_MINIMAL_CLOSED_LOOP_TWO_CYCLE_SMOKE.md",
+      "data": "code/artifacts/protocols/pi_jwm_step6_4b_two_cycle_smoke_v1_20261003/01_fixture_freeze.json",
+      "split": [
+        "dev_train"
+      ],
+      "seed": [
+        6301
+      ],
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/protocols/pi_jwm_step6_4b_two_cycle_smoke_v1_20261003/13_final_acceptance.json",
+      "metrics": "code/artifacts/protocols/pi_jwm_step6_4b_two_cycle_smoke_v1_20261003/05_two_cycle_smoke_receipt.json",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4b_two_cycle_smoke_v1_20261003/13_final_acceptance.json",
+      "status": "passed_mechanism_only",
+      "conclusion": "Two real-feedback planning cycles PASS; no formal performance claim.",
+      "summary_zh": "STEP_6_4B=PASS，TWO_CYCLE_REAL_FEEDBACK_SMOKE=PASS，CLOSED_LOOP_MECHANISM_READINESS=PASS。固定TRAIN fixture、MH-CEM K4/rho0.1、CPU FP32 batch1、B64：仅执行首轮winner第一动作，仿真0.6→0.7秒，真实新观测重建state/graph/current posterior并完成第二次规划；下一轮root不是上一轮预测。两轮各64独特转移（合计128）；另保留一次动作执行前回执异常的64次尝试，实际总计192。live tensor/deadline、旧搜索不变性、防未来泄漏及参数/归一化不变全部PASS。SEARCH_METHOD=MH-CEM仍仅pure-search backbone；READY_FOR_BUDGET_CALIBRATION=true只是机制就绪，不是运行授权。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，FINAL_FALLBACK_POLICY=NOT_FROZEN，HYBRID_PLANNER=NOT_FROZEN；future Return-birth fixed-support limitation保持。Stage B=NOT_STARTED，GPU=NOT_USED，locked_test=false。唯一下一动作是研究者审阅并单独授权预算校准协议，不自动运行。",
+      "claim_boundary": "Single preregistered TRAIN fixture CPU mechanism smoke; not Stage B, realtime, performance or final hybrid.",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "checkpoint": "Frozen prior accepted checkpoint, no retraining.",
+        "code_version": "Actual execution source SHA remains separate from historical Stage A."
+      }
+    },
+    {
       "id": "STEP-6.4A-READINESS-AUDIT-20261003",
       "name": "Closed-loop readiness static audit and Stage B purpose freeze",
       "date": "2026-10-03",

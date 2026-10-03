@@ -295,9 +295,13 @@ def run(sample_id: str, method: str, seed: int, budget: int,
     after = fingerprint({"encoder": encoder.state_dict(), "rssm": model.state_dict()})
     if before != after:
         raise AssertionError("frozen World Model parameters changed")
+    # Formal comparison receipts retain their discrete historical schema.
+    # Live callers consume the in-memory winner directly, never reconstruct it.
+    outcome_receipt = asdict(outcome)
+    outcome_receipt.pop("winner_sequence", None)
     return {"sample_id": sample_id, "split": meta["split"], "method": method,
             "seed": seed, "budget": budget, "iterations": iterations,
-            "elite_ratio": elite_ratio, "outcome": asdict(outcome),
+            "elite_ratio": elite_ratio, "outcome": outcome_receipt,
             "score_residuals": score_residuals,
             "support_horizon_counts": support_horizons,
             **identity, "parameter_digest": before,

@@ -1,0 +1,165 @@
+{
+  "best_fingerprint": "2f64f7090b3425bcf29937a83d21953d073b6aa317bcf579ae0e047eb88a9d2c",
+  "best_objective": [
+    0,
+    0.0,
+    1.0,
+    0.5415038990707585,
+    0.10572057201061395
+  ],
+  "verdict": "PASS",
+  "winner_first_action": {
+    "comm": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    },
+    "comp": {
+      "empty": false,
+      "entries": [
+        {
+          "allocated_cpu_per_s": 2.5843526422977448,
+          "node_id": "RSU_0",
+          "task_id": "Task_8"
+        }
+      ],
+      "missing": false
+    },
+    "mobility": {
+      "empty": false,
+      "entries": [
+        {
+          "azimuth_rad": 0.05,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 4
+        },
+        {
+          "azimuth_rad": 0.05,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 5
+        }
+      ],
+      "missing": false
+    },
+    "route": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    }
+  },
+  "winner_sequence": {
+    "candidate_id": "2f64f7090b3425bcf29937a83d21953d073b6aa317bcf579ae0e047eb88a9d2c",
+    "constraints": [],
+    "generation_metadata": {
+      "planner_action_domain": "V1"
+    },
+    "generator_backend": "SEARCH",
+    "provenance": "live:formal-v1-sim-2026092325-policy-2026092425:3:capture-006",
+    "seed": 6301,
+    "source_tags": [],
+    "steps": [
+      {
+        "comm": [],
+        "comp": [
+          {
+            "allocated_cpu_per_s": 2.5843526422977448,
+            "node_id": "RSU_0",
+            "task_id": "Task_8"
+          }
+        ],
+        "mob": [
+          {
+            "azimuth_rad": 0.05,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.05,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [
+          {
+            "allocated_cpu_per_s": 0.6460880488157272,
+            "node_id": "RSU_0",
+            "task_id": "Task_8"
+          }
+        ],
+        "mob": [
+          {
+            "azimuth_rad": -0.15000000000000002,
+            "elevation_rad": 0.0,
+            "speed_mps": 5.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": -0.15000000000000002,
+            "elevation_rad": 0.0,
+            "speed_mps": 5.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [
+          {
+            "allocated_cpu_per_s": 0.1615220122039318,
+            "node_id": "RSU_0",
+            "task_id": "Task_8"
+          }
+        ],
+        "mob": [
+          {
+            "azimuth_rad": -0.25,
+            "elevation_rad": 0.0,
+            "speed_mps": 8.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": -0.25,
+            "elevation_rad": 0.0,
+            "speed_mps": 8.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [
+          {
+            "allocated_cpu_per_s": 0.04038050305098295,
+            "node_id": "RSU_0",
+            "task_id": "Task_8"
+          }
+        ],
+        "mob": [
+          {
+            "azimuth_rad": -0.45,
+            "elevation_rad": 0.0,
+            "speed_mps": 5.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": -0.45,
+            "elevation_rad": 0.0,
+            "speed_mps": 5.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      }
+    ]
+  }
+}

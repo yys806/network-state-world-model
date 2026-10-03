@@ -1,0 +1,44 @@
+{
+  "GPU": "NOT_USED",
+  "checks": {
+    "Context_Consistency_Check": {
+      "Researcher_Decision_checked": true,
+      "ai_context_file_count": 9,
+      "current_state_tokens_checked": true,
+      "passed": true
+    },
+    "compileall": {
+      "command": "python -m compileall -q code/src code/scripts code/tests",
+      "passed": true
+    },
+    "focused_live_CPU_tests": {
+      "count": 7,
+      "passed": true,
+      "seconds": 4.6
+    },
+    "focused_step6_3d_CPU_tests": {
+      "count": 34,
+      "passed": true,
+      "seconds": 21.849
+    },
+    "git_diff_check": {
+      "command": "git diff --cached --check",
+      "note": "Executed receipt bytes kept with -text and CR-at-EOL recognized; ordinary trailing-space checks retained.",
+      "passed": true
+    },
+    "knowledge_index": {
+      "mismatches": [],
+      "output_count": 5,
+      "passed": true,
+      "write_and_check": true
+    },
+    "winner_first_action_independent_recompute": {
+      "actual_sequence_fingerprint_recomputed": true,
+      "commands_match_stored_first_action": true,
+      "no_fingerprint_reverse_engineering": true,
+      "passed": true
+    }
+  },
+  "locked_test": false,
+  "verdict": "PASS"
+}

@@ -91,7 +91,7 @@ def _causal_entity_ids(decisions: list[dict[str, Any]], frame: int) -> set[str]:
     return {str(row["entity_id"]) for row in decisions[reference_frame].get("entities", [])}
 
 
-def collect_trajectory(simulator_seed: int, policy_seed: int, trajectory_id: str) -> dict[str, Any]:
+def collect_trajectory(simulator_seed: int, policy_seed: int, trajectory_id: str, *, on_decision=None) -> dict[str, Any]:
     old_cwd = Path.cwd()
     env = None
     rng = random.Random(policy_seed)
@@ -127,6 +127,11 @@ def collect_trajectory(simulator_seed: int, policy_seed: int, trajectory_id: str
                     task_row["required_returned_size"] = float(task_object.getReturnedSize())
             previous_speeds = {str(row["entity_id"]): float(row["speed_mps"]) for row in decision["entities"]}
             previous_time = float(decision["simulation_time_s"])
+
+            if on_decision is not None:
+                # An authorized mechanism hook runs before any policy command or
+                # policy RNG draw for this decision. It must raise to stop replay.
+                on_decision(env, decisions, steps, config, communication_scheduler)
 
             global_noop = rng.random() < 0.2
             setter_calls: list[dict[str, Any]] = []

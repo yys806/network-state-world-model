@@ -1,0 +1,40 @@
+{
+  "CLOSED_LOOP_MECHANISM_READINESS": "PASS",
+  "FINAL_FALLBACK_POLICY": "NOT_FROZEN",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "GPU": "NOT_USED",
+  "HYBRID_PLANNER": "NOT_FROZEN",
+  "READY_FOR_BUDGET_CALIBRATION": true,
+  "SEARCH_METHOD": "MH-CEM",
+  "STEP_6_4B": "PASS",
+  "Stage_B": "NOT_STARTED",
+  "aborted_pre_action_attempt_unique_transitions": 64,
+  "actual_unique_transitions_two_cycle": 128,
+  "checks": {
+    "budget64": true,
+    "deadline_parity": true,
+    "first_action_only": true,
+    "fresh_domain": true,
+    "fresh_root_not_predicted": true,
+    "leakage": true,
+    "live_tensor_parity": true,
+    "locked_test_false": true,
+    "normalization_unchanged": true,
+    "one_env_step": true,
+    "parameters_unchanged": true,
+    "real_time_increment": true,
+    "simulator_paused": true,
+    "stage_b_not_started": true,
+    "two_real_cycles": true,
+    "winner": true
+  },
+  "locked_test": false,
+  "remaining_blockers": [],
+  "total_smoke_execution_unique_transitions_including_aborted_attempt": 192,
+  "warnings": [
+    "Mechanism-only, one preregistered TRAIN fixture; not a performance or universal-state acceptance.",
+    "One pre-action receipt/control-flow failure was preserved and explicitly recovered; identical first-cycle discrete result verified.",
+    "Comm was empty in the real winner; nonempty mapping covered by causal synthetic CPU fixture.",
+    "Setter rollback scope is audited buffers in this synchronous single-thread smoke; no general simulator atomicity claim."
+  ]
+}

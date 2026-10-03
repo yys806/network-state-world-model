@@ -1,0 +1,12 @@
+{
+  "schema_version": "PI-JWM-closed-loop-mechanism-registry-v1",
+  "experiment_id": "STEP-6.4B-TWO-CYCLE-SMOKE-20261003",
+  "result_type": "mechanism_only_not_formal_performance",
+  "acceptance": "code/artifacts/protocols/pi_jwm_step6_4b_two_cycle_smoke_v1_20261003/13_final_acceptance.json",
+  "execution_identity": "code/artifacts/protocols/pi_jwm_step6_4b_two_cycle_smoke_v1_20261003/02_execution_identity.json",
+  "historical_stage_a_unchanged": true,
+  "SEARCH_METHOD": "MH-CEM",
+  "Stage_B": "NOT_STARTED",
+  "locked_test": false,
+  "note": "Formal-performance results registry remains unchanged; mechanism evidence has an independent namespace."
+}

@@ -6,7 +6,7 @@ import random
 from dataclasses import dataclass
 from typing import Any, Callable, Mapping
 
-from pi_jwm.step6_0a_candidate_generation_v1 import Backend, CandidateActionSequence
+from pi_jwm.step6_0a_candidate_generation_v1 import Backend, CandidateActionSequence, CandidateActionStep
 from pi_jwm.step6_1_trained_candidate_rollout_v1 import CandidateRolloutTrace, OneStepRolloutResult
 from pi_jwm.step6_2b_planner_objective_scorer_v1 import objective_sort_key
 from pi_jwm.step6_3c_candidate_domain_v1 import CandidateDomain
@@ -31,6 +31,11 @@ class SearchOutcome:
     budget_receipt: Mapping[str, Any]
     iteration_rows: tuple[Mapping[str, Any], ...]
     batch_size: int = 1
+    winner_sequence: CandidateActionSequence | None = None
+
+    @property
+    def winner_first_action(self) -> CandidateActionStep | None:
+        return None if self.winner_sequence is None else self.winner_sequence.steps[0]
 
 
 def quotas(budget: int, iterations: int) -> tuple[int, ...]:
@@ -85,6 +90,7 @@ def solve_fixed_budget(
                                   anchor.domain.mobility_states,
                                   anchor.context.causal_provenance)
     scoreable: dict[str, tuple[Any, dict]] = {}
+    completed_sequences: dict[str, CandidateActionSequence] = {}
     retained: list[tuple[Any, dict]] = []
     unscoreable = 0
     iteration_rows = []
@@ -110,6 +116,7 @@ def solve_fixed_budget(
         else:
             pair = (score, {"draws": draws})
             scoreable[candidate_id] = pair
+            completed_sequences[candidate_id] = candidate
             current.append(pair)
 
     for iteration, quota in enumerate(allocation):
@@ -221,4 +228,5 @@ def solve_fixed_budget(
         None if best is None else best.objective_tuple,
         None if best is None else best.candidate_fingerprint,
         len(scoreable), unscoreable, accountant.n_complete_sequences,
-        accountant.receipt(), tuple(iteration_rows), batch_size)
+        accountant.receipt(), tuple(iteration_rows), batch_size,
+        None if best is None else completed_sequences[best.candidate_fingerprint])

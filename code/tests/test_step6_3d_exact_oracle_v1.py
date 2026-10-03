@@ -2,6 +2,9 @@
 import random
 import sys
 import unittest
+import subprocess
+import types
+from dataclasses import asdict
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -64,9 +67,34 @@ class ExactOracleTests(unittest.TestCase):
                             for n, b in requests)) if batch_size > 1 else None,
                         batch_size=batch_size, score_h4=score, **config)
                     self.assertEqual(result.best_objective, expected)
+                    self.assertEqual(result.winner_sequence.fingerprint, result.best_fingerprint)
+                    self.assertEqual(result.winner_first_action, result.winner_sequence.steps[0])
                     self.assertEqual(result.budget_receipt["N_unique_transition_evals"], 30)
                     self.assertEqual(result.h4_scoreable_count, 16)
                     self.assertGreater(result.budget_receipt["N_cache_hits"], 0)
+                    name = 'pi_jwm._step64b_previous_solver_oracle'
+                    old = types.ModuleType(name)
+                    sys.modules[name] = old
+                    old_source = subprocess.check_output(['git', 'show',
+                        'f9b7c05fb016403b776065074de8d791126661f0:code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py'], cwd=ROOT, text=True)
+                    exec(compile(old_source, name, 'exec'), old.__dict__)
+                    previous = old.solve_fixed_budget(method=method, seed=6301, b_wm=30,
+                        anchor=anchor, catalog=catalog, transition=transition,
+                        transition_batch=(lambda requests: tuple(transition(n,b) for n,b in requests)) if batch_size>1 else None,
+                        batch_size=batch_size, score_h4=score, **config)
+                    left,right=asdict(previous),asdict(result)
+                    right.pop('winner_sequence')
+                    for row in (left,right):
+                        row['budget_receipt'].pop('wall_clock_seconds_diagnostic_only',None)
+                    self.assertEqual(left,right)
+
+        failed=solve_fixed_budget(method='MH-CEM',seed=6301,b_wm=16,
+            anchor=anchor,catalog=catalog,transition=transition,
+            score_h4=lambda candidate,trace:None,iterations=4,elite_ratio=0.1,batch_size=1)
+        self.assertIsNone(failed.winner_sequence)
+        self.assertIsNone(failed.winner_first_action)
+        self.assertIsNone(failed.best_objective)
+        self.assertEqual(failed.h4_scoreable_count,0)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,28 @@
+{
+  "differing_arrays": [
+    "entity_type_index",
+    "task_lifecycle_index",
+    "flow_transport_index",
+    "relation_endpoints",
+    "dag_edges",
+    "past_route_kind_index",
+    "past_outcome_entity_type_index",
+    "past_outcome_task_lifecycle_index",
+    "past_outcome_flow_transport_index",
+    "past_outcome_relation_endpoints",
+    "past_outcome_dag_edges",
+    "comm_relation_type_index",
+    "agent_cpu_capacity_raw",
+    "agent_cpu_capacity",
+    "agent_cpu_capacity_mask",
+    "task_agent_relation_type_index",
+    "logical_flow_type_index",
+    "logical_flow_status_index",
+    "logical_flow_epoch",
+    "carrying_route_revision"
+  ],
+  "future_targets_built": false,
+  "input_policy": "history_causal_observable_object_union",
+  "normalization_refit": false,
+  "verdict": "BLOCKED"
+}
