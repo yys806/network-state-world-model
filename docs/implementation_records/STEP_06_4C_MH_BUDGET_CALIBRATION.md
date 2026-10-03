@@ -31,3 +31,5 @@ future Return-birth fixed-support limitation保持；CLOSED_LOOP_BUDGET=RESEARCH
 
 ### Deployment engineering check
 首次SSH部署已fast-forward，但non-login shell无python PATH，尚未调用planner；改管理脚本使用StageA记录的同一/root/miniconda3/bin/python绝对路径。该脚本不进入frozen planner runtime/source closure；执行身份不变，不改搜索协议。
+
+远端GitHub fetch因GnuTLS连接中断失败，GPU仍未启动。仅允许使用本地已push main生成的Git bundle做同一commit的传输备份，bundle verify和HEAD相等门保持；不改源文件内容或历史结果。

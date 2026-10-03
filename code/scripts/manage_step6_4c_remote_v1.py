@@ -18,6 +18,7 @@ REL='code/artifacts/protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003'
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('user');p.add_argument('action',choices=['deploy','launch','snapshot'])
+    p.add_argument('--bundle',type=Path,help='Trusted local Git bundle fallback for unavailable GitHub TLS; no source rewrite')
     args=p.parse_args()
     client=paramiko.SSHClient();client.load_system_host_keys();client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect('connect.nmb2.seetacloud.com',port=18448,username=args.user,
@@ -29,7 +30,13 @@ def main():
     sftp=client.open_sftp()
     if args.action=='deploy':
         head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-        command(f'git -C {REMOTE} fetch origin')
+        if args.bundle:
+            transport='/tmp/pi-jwm-step6-4c-deployment.bundle'
+            sftp.put(str(args.bundle),transport)
+            command(f'git -C {REMOTE} bundle verify {transport}')
+            command(f'git -C {REMOTE} fetch {transport} main:refs/remotes/origin/main')
+        else:
+            command(f'git -C {REMOTE} fetch origin')
         command(f'git -C {REMOTE} merge --ff-only origin/main')
         actual=command(f'git -C {REMOTE} rev-parse HEAD').strip()
         if actual!=head:raise ValueError('remote HEAD mismatch')
