@@ -1,3 +1,13 @@
+## 2026-10-03 STEP 6.4A 闭环前就绪审计（当前）
+
+STEP 6.4A审计完成（审计证据PASS），CLOSED_LOOP_READINESS=BLOCKED。SEARCH_METHOD=MH-CEM仍只为pure-search backbone，非最终hybrid。局部链路7 IMPLEMENTED/3 PARTIAL/5 MISSING；缺live history-only输入/belief/sidecar、winner动作序列/首动作及真实ID执行桥、研究者fallback和latency决定、两轮真实反馈MH证据。MH B1024搜索median90.506/P90 204.916/P95 284.152/max421.701秒；仿真slot0.1秒不是墙钟deadline，DECISION_LATENCY_REQUIREMENT=UNRESOLVED，尚无在线执行证据。Stage B用途由研究者冻结为online-budget trade-off，不能重选算法；A约30.46–41.85h、B NEW PROPOSAL约10.26–14.06h、C NEW PROPOSAL约1.54–2.11h，仅成本情景。4090_MIGRATION_NOT_YET_JUSTIFIED。Stage B=NOT_STARTED，GPU=NOT_USED，locked_test=false。唯一下一动作研究者确定fallback及decision latency模式，再授权最小接口集成；不自动运行实验。
+
+
+
+记录：`docs/implementation_records/STEP_06_4A_CLOSED_LOOP_READINESS_STAGE_B_PURPOSE_FREEZE.md`；机器审计：`code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/06_go_no_go_receipt.json`。下方为历史状态，不能用Stage A PASS替代闭环readiness。
+
+---
+
 # PI-JWM 架构说明
 
 > 2026-09-30 STEP 6.3D-PREFLIGHT-PATCH：新增静态同层哈希 Objective 资格修正；正式 32/64 清单和 96 个精确 sidecar 作为后续比较输入。CPU 批量一步转移与串行共用 6.1 动作适配、冻结 `model.one_step` 和确定性规则，通过 6.3C `evaluate_batch` 逐 unique transition 计费。真实 TRAIN batch 1/4/8/16 的一步/H4 等价已核验；搜索方法、Grammar、Objective 未改。详见 Patch 实施记录。

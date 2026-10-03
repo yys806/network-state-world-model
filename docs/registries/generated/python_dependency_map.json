@@ -2794,6 +2794,7 @@
         "pi_jwm.step6_3c_search_protocol_v1",
         "pi_jwm.step6_3d_structured_proposal_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.audit_step6_4a_closed_loop_readiness_v1",
         "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_3bc_train_self_replay_v1",
@@ -3919,6 +3920,22 @@
       "module": "scripts.audit_step6_3d_selected_side_state_v1",
       "path": "code/scripts/audit_step6_3d_selected_side_state_v1.py",
       "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "tests.test_step6_4a_readiness_audit_v1"
+      ],
+      "imports": [
+        "pi_jwm.step6_3b_candidate_grammar_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4a_closed_loop_readiness_v1",
+      "path": "code/scripts/audit_step6_4a_closed_loop_readiness_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4a_readiness_audit_v1.py"
+      ]
     },
     {
       "category": "runnable_script",
@@ -12056,6 +12073,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_3d_validation_stages_v1",
       "path": "code/tests/test_step6_3d_validation_stages_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "scripts.audit_step6_4a_closed_loop_readiness_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4a_readiness_audit_v1",
+      "path": "code/tests/test_step6_4a_readiness_audit_v1.py",
       "test_files": []
     },
     {

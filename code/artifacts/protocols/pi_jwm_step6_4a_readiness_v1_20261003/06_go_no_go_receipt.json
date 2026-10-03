@@ -1,0 +1,32 @@
+{
+  "step": "STEP_6_4A",
+  "audit_execution": "PASS",
+  "closed_loop_readiness": "BLOCKED",
+  "search_method": "MH-CEM",
+  "definition_basis": {
+    "path": "D:\\shen\\OB\\科研\\PIJWM\\06策略器与候选动作规划.md",
+    "sha256": "f20294bd8708076ae7583be679a8182a0990ecf6777e05df378ae4c2855431f1",
+    "sections": [
+      "1.1",
+      "5.1",
+      "5.2"
+    ],
+    "access": "read-only; no private note copied"
+  },
+  "baseline_commit": "afbd7c82bfd549df2e64a5f16be15c1a29741e67",
+  "source_semantics_unchanged": true,
+  "validation_stage_a_receipt_sha256": "4ef26871b3ec2359038130d3c0b1abde1aea9e7ecbd6f793ed47d1ef208cad85",
+  "validation_results": 960,
+  "stage_b_result_count": 0,
+  "stage_b": "NOT_STARTED",
+  "gpu": "NOT_USED",
+  "locked_test": false,
+  "remaining_blockers": [
+    "BL1 history-only live input/belief/sidecar桥缺失；不能调用需future_steps的离线builder冒充在线输入。",
+    "BL2 MH结果缺winner动作序列、first-action输出及真实ID/setter/执行重验桥。",
+    "BL3 NO_SCOREABLE_H4和domain为空时fallback未由研究者选择；现有候选非全状态通用。",
+    "BL4 decision wall-clock latency requirement未冻结，B1024无在线端到端证据。",
+    "BL5 未有两次真实反馈刷新后的MH规划证据；warm-start和learned proposal只有工具/接口。"
+  ],
+  "scope": "Audit accepted; readiness blocked. No scientific algorithm or fallback policy changed."
+}

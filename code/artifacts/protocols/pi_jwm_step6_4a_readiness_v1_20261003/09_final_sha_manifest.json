@@ -1,0 +1,52 @@
+{
+  "files": [
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/01_current_closed_loop_call_chain.json",
+      "sha256": "c2f6f72bdfaf127151666b003da4658d64f92cc8b54a16614729339fd9a0cd68"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/02_fallback_option_audit.json",
+      "sha256": "701fbfdc9d77845b07f7f6646380f0f5b0756c234648f114deb75d8e79fd2c55"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/03_runtime_decision_interval_audit.json",
+      "sha256": "e7a4f7152ceee4f382d6aa112389f81a923f5fc6cb181836bc668fa30d6c96cb"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/04_stage_b_purpose_cost_comparison.json",
+      "sha256": "e87de0eeab1e9d8e197ade683b94ee18c5a0b26d9edfd95feca32bae69df4961"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/05_bounded_smoke_requirements.json",
+      "sha256": "c52f75188fd3a5ead62a051fc85f395934b0a33d02f2e1203a01b24b9ca542ce"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/06_go_no_go_receipt.json",
+      "sha256": "48bb10cb12bfdd08cd27536c10f003cff8ef3a7f1410e12c0d9874e88244f906"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/07_sha_manifest.json",
+      "sha256": "3fde6a0efc2ade9bd08ec9996b8ca98e4fb44badab98c401f278be12bd5cb3dc"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/08_context_verification_acceptance.json",
+      "sha256": "5fa129e87d1c83ba1ee01fac6a4f9c9365497575d206a4a9a711f3616a31816f"
+    },
+    {
+      "path": "code/scripts/audit_step6_4a_closed_loop_readiness_v1.py",
+      "sha256": "be438933ffdce98326a6212fe0b35acd05488e027e0f0cdf29726c23cf9d2961"
+    },
+    {
+      "path": "code/tests/test_step6_4a_readiness_audit_v1.py",
+      "sha256": "bb7e1b5994867b4184867c91512ba45af0b684c3d303a80053e1de8f198003a1"
+    },
+    {
+      "path": "docs/implementation_records/STEP_06_4A_CLOSED_LOOP_READINESS_STAGE_B_PURPOSE_FREEZE.md",
+      "sha256": "ea6fd18dbd0db1b1573d7e7db3ec332f2ca41cfd2e34b0afa065b2c341c622e2"
+    },
+    {
+      "path": "docs/contracts/PIJWM_STEP_06_4A_STAGE_B_PURPOSE_V1.md",
+      "sha256": "a4e0b98e3aeaa715836815cb15a11bb4832e7de485dc42dabadbe7ca91ea467e"
+    }
+  ]
+}

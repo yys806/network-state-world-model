@@ -1,0 +1,36 @@
+{
+  "authorization": "NOT_EXECUTED_THIS_STEP; separate researcher approval required",
+  "minimal_engineering_tasks": [
+    "live causal History→input slots/normalization/state/graph/posterior、current-time deadline metadata",
+    "输出winner sequence/first action并以旧discrete结果做不变性证明；需另行授权接口修改",
+    "四族真实ID和单位bridge+原子pre-setter revalidation；Route维持NOOP，不改budget/scorer",
+    "研究者确定fallback、domain-empty stop行为、smoke预算和离线慢速或实时latency模式"
+  ],
+  "required_trace": [
+    "真实capture O_t",
+    "history-only重建belief，记录观测时间和posterior来源",
+    "MH-CEM frozen参数/H4搜索",
+    "winner第一动作或研究者批准fallback",
+    "setter成功回执",
+    "one real env.step",
+    "独立capture O_t+1",
+    "更新History，真实反馈posterior重建",
+    "second MH planning cycle"
+  ],
+  "rejection_gates": [
+    "future target poison/drop不改变plan，no target/future outcome依赖",
+    "预测rollout state不得写入live root",
+    "参数/checkpoint无更新",
+    "无H4、domain-empty、setter失败路径覆盖且不H3降级",
+    "实体消失/新任务/Return birth只据真实反馈处理，不伪造slots或扩大支持"
+  ],
+  "warm_start": "MH integration MISSING; shifting utility exists. Researcher must define accounting, initialization and legal re-evaluation before integration.",
+  "learned_proposal": "NOT_IMPLEMENTED; interface location LearnedProposalBackend/HybridCompositionBackend, no implementation authorized.",
+  "blockers": [
+    "BL1 history-only live input/belief/sidecar桥缺失；不能调用需future_steps的离线builder冒充在线输入。",
+    "BL2 MH结果缺winner动作序列、first-action输出及真实ID/setter/执行重验桥。",
+    "BL3 NO_SCOREABLE_H4和domain为空时fallback未由研究者选择；现有候选非全状态通用。",
+    "BL4 decision wall-clock latency requirement未冻结，B1024无在线端到端证据。",
+    "BL5 未有两次真实反馈刷新后的MH规划证据；warm-start和learned proposal只有工具/接口。"
+  ]
+}

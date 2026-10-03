@@ -3,6 +3,47 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.4A-READINESS-AUDIT-20261003",
+      "name": "Closed-loop readiness static audit and Stage B purpose freeze",
+      "date": "2026-10-03",
+      "research_question": "Which live interfaces, fallback decisions and online budget evidence are still missing?",
+      "method": "Static source audit + existing Stage A runtime analysis + bounded CPU grammar binding",
+      "code": "code/scripts/audit_step6_4a_closed_loop_readiness_v1.py",
+      "code_version": {
+        "identity_type": "git_baseline_plus_receipt_source_sha256",
+        "git_commit": "afbd7c82bfd549df2e64a5f16be15c1a29741e67",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/07_sha_manifest.json",
+        "note": "Frozen scientific source unchanged; audit source commit identified by owning Git commit."
+      },
+      "configuration": "docs/contracts/PIJWM_STEP_06_4A_STAGE_B_PURPOSE_V1.md",
+      "parameters": {
+        "new_search_cases": 0,
+        "gpu_used": false,
+        "planner_method": "MH-CEM",
+        "online_budget_frozen": false
+      },
+      "protocol": "docs/implementation_records/STEP_06_4A_CLOSED_LOOP_READINESS_STAGE_B_PURPOSE_FREEZE.md",
+      "data": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/03_runtime_decision_interval_audit.json",
+      "split": [
+        "dev_validation"
+      ],
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/06_go_no_go_receipt.json",
+      "metrics": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/03_runtime_decision_interval_audit.json",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4a_readiness_v1_20261003/06_go_no_go_receipt.json",
+      "status": "completed_static_audit_readiness_blocked",
+      "conclusion": "Audit completed; live closed-loop readiness BLOCKED, no new experiment run.",
+      "summary_zh": "STEP 6.4A审计完成（审计证据PASS），CLOSED_LOOP_READINESS=BLOCKED。SEARCH_METHOD=MH-CEM仍只为pure-search backbone，非最终hybrid。局部链路7 IMPLEMENTED/3 PARTIAL/5 MISSING；缺live history-only输入/belief/sidecar、winner动作序列/首动作及真实ID执行桥、研究者fallback和latency决定、两轮真实反馈MH证据。MH B1024搜索median90.506/P90 204.916/P95 284.152/max421.701秒；仿真slot0.1秒不是墙钟deadline，DECISION_LATENCY_REQUIREMENT=UNRESOLVED，尚无在线执行证据。Stage B用途由研究者冻结为online-budget trade-off，不能重选算法；A约30.46–41.85h、B NEW PROPOSAL约10.26–14.06h、C NEW PROPOSAL约1.54–2.11h，仅成本情景。4090_MIGRATION_NOT_YET_JUSTIFIED。Stage B=NOT_STARTED，GPU=NOT_USED，locked_test=false。唯一下一动作研究者确定fallback及decision latency模式，再授权最小接口集成；不自动运行实验。",
+      "claim_boundary": "Readiness and runtime diagnostics only; no closed-loop or new search result.",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "seed": "null: no new search; runtime references existing seeds6311-6315; CPU fixture deterministic.",
+        "checkpoint": "null: no model loaded; Stage A frozen checkpoint unchanged.",
+        "code_version": "baseline and per-symbol receipt SHA; audit code version is owning commit."
+      }
+    },
+    {
       "id": "STEP-6.3D-VALIDATION-STAGE-A-20261001",
       "name": "Formal Validation Stage A structured-search backbone selection",
       "date": "2026-10-01",

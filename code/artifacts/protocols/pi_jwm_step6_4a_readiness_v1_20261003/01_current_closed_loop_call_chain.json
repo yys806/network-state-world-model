@@ -1,0 +1,190 @@
+{
+  "chain": [
+    {
+      "stage": "真实 O_t 采集",
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "path": "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py",
+        "symbol": "_capture",
+        "line": 182,
+        "source_sha256": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de"
+      },
+      "missing_interface": "当前raw采集可复用；没有MH闭环调用者。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "History → 当前 state/graph/latent",
+      "status": "PARTIAL",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py",
+        "symbol": "prepare_anchor",
+        "line": 233,
+        "source_sha256": "25ca59719023ed8d94b4f864041f7edf56b1b495a6fe86d5417cef94742c8a48"
+      },
+      "missing_interface": "有posterior初始化；缺history-only在线input builder、固定normalization/slot生命周期及新deadline sidecar。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "离线输入契约不能直接用于实时当前帧",
+      "status": "PARTIAL",
+      "evidence": {
+        "path": "code/src/pi_jwm/model_ready_sample_contract_v1.py",
+        "symbol": "build_sample",
+        "line": 242,
+        "source_sha256": "f0ad97036b7dbfd268d464d30793a46d89b7e3e43a4be2cae10a1e3a15873efc"
+      },
+      "missing_interface": "build_sample要求已完成future_steps；必须独立history-only入口，不补真实未来target。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "当前 CandidateDomain",
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_3c_candidate_domain_v1.py",
+        "symbol": "from_state",
+        "line": 101,
+        "source_sha256": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409"
+      },
+      "missing_interface": "实时context/domain的调用者尚缺，合法集合可为空。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "MH-CEM → H1-H4搜索",
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py",
+        "symbol": "solve_fixed_budget",
+        "line": 56,
+        "source_sha256": "f602bb5797a776f76f13cd9b9e3038ef202d6c78098f5f8401a76f198807e5c5"
+      },
+      "missing_interface": "离线solver已有；运行接口只接受已准备anchor。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "冻结World Model一步转移递归",
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py",
+        "symbol": "rollout_one_step_batch",
+        "line": 192,
+        "source_sha256": "25ca59719023ed8d94b4f864041f7edf56b1b495a6fe86d5417cef94742c8a48"
+      },
+      "missing_interface": "无算法缺口；真实下一轮不能使用这里的预测state。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "Objective与Return边界",
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py",
+        "symbol": "score_candidate_set",
+        "line": 206,
+        "source_sha256": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad"
+      },
+      "missing_interface": "实时objective causal side-state组装尚需接线，不改H4。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "可执行winner sequence输出",
+      "status": "MISSING",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py",
+        "symbol": "SearchOutcome",
+        "line": 20,
+        "source_sha256": "f602bb5797a776f76f13cd9b9e3038ef202d6c78098f5f8401a76f198807e5c5"
+      },
+      "missing_interface": "仅best_objective/fingerprint；动作prefix未作为结果返回。需另行授权不改变排名/预算的输出接口。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "取winner第一步",
+      "status": "MISSING",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_0a_candidate_generation_v1.py",
+        "symbol": "CandidateActionSequence",
+        "line": 59,
+        "source_sha256": "ca034c9d180f4ca4cbc70125bd21d4e02d7820200591e05441e83f3445a7d666"
+      },
+      "missing_interface": "没有MH winner供steps[0]消费；不能靠指纹还原动作。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "首动作→AirFogSim setters",
+      "status": "PARTIAL",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_0a_candidate_generation_v1.py",
+        "symbol": "compile_candidate",
+        "line": 181,
+        "source_sha256": "ca034c9d180f4ca4cbc70125bd21d4e02d7820200591e05441e83f3445a7d666"
+      },
+      "missing_interface": "该compile生成模型action tensor，不是仿真命令。缺task/flow/node/UAV索引到真实ID转换和执行前重验。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "真实环境一步执行",
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "path": "code/reference/AirFogSim/airfogsim/airfogsim_env.py",
+        "symbol": "step",
+        "line": 219,
+        "source_sha256": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce"
+      },
+      "missing_interface": "setter已存在；MH四动作族执行桥未接。执行一步按traffic_interval推进，可包含多个simulation_interval。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "真实下一帧独立capture",
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "path": "code/scripts/collect_step5_5_formal_raw_v1.py",
+        "symbol": "collect_trajectory",
+        "line": 94,
+        "source_sha256": "e0842db84fb005c8a2c489a316314e2ee0cedd55d7b39f10dc60110495b9d603"
+      },
+      "missing_interface": "已有behavior数据采集循环；非MH闭环证据。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "反馈刷新belief并第二次MH规划",
+      "status": "MISSING",
+      "evidence": {
+        "path": "code/scripts/run_step6_3d_one_cpu_solve_v1.py",
+        "symbol": "load_frozen_runtime",
+        "line": 201,
+        "source_sha256": "31ca346037bb86b46838c30c12fa577fd26f8deca3e103c5f73c8d9f521fc544"
+      },
+      "missing_interface": "读取选定离线sample/shard/sidecar，非live history滚动入口；无两轮MH实测。",
+      "researcher_decision_required": false
+    },
+    {
+      "stage": "NO_SCOREABLE_H4分支",
+      "status": "MISSING",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py",
+        "symbol": "solve_fixed_budget",
+        "line": 56,
+        "source_sha256": "f602bb5797a776f76f13cd9b9e3038ef202d6c78098f5f8401a76f198807e5c5"
+      },
+      "missing_interface": "best=None可以产生；未定义闭环fallback policy、记录/执行和状态重验。",
+      "researcher_decision_required": true
+    },
+    {
+      "stage": "上一winner余段→MH warm start",
+      "status": "MISSING",
+      "evidence": {
+        "path": "code/src/pi_jwm/step6_0a_candidate_generation_v1.py",
+        "symbol": "shift_warm_start",
+        "line": 294,
+        "source_sha256": "ca034c9d180f4ca4cbc70125bd21d4e02d7820200591e05441e83f3445a7d666"
+      },
+      "missing_interface": "只有shift工具和HybridCompositionBackend接口；MH solver无warm-start参数或注入路径。",
+      "researcher_decision_required": true
+    }
+  ],
+  "predicted_state_as_next_real_root": "FORBIDDEN",
+  "live_leakage_verdict": "NOT_PROVEN: live input boundary missing; offline contract alone cannot certify a nonexistent loop.",
+  "history_only_requirement": "O<=t, A/Y<t only; normalization fixed TRAIN, target/future outcome forbidden.",
+  "raw_capture_privileged_audit_fields": "_capture includes internal_metadata (future_task_schedule/future_dag_edges) future task/DAG metadata for audit; strip/whitelist before planner input. Its exclusion flag alone is not a live leakage proof.",
+  "hybrid_learned_proposal": "INTERFACE_ONLY_NOT_IMPLEMENTED",
+  "search_method": "MH-CEM"
+}

@@ -1,0 +1,119 @@
+{
+  "options": [
+    {
+      "option": "现有 rule_fallback 空动作序列 + 显式零CPU/空RB/当前方向speed0 setter组合",
+      "evidence": [
+        {
+          "path": "code/src/pi_jwm/step6_0a_candidate_generation_v1.py",
+          "symbol": "rule_fallback",
+          "line": 251,
+          "source_sha256": "ca034c9d180f4ca4cbc70125bd21d4e02d7820200591e05441e83f3445a7d666"
+        },
+        {
+          "path": "code/scripts/collect_step5_5_formal_raw_v1.py",
+          "symbol": "collect_trajectory",
+          "line": 94,
+          "source_sha256": "e0842db84fb005c8a2c489a316314e2ee0cedd55d7b39f10dc60110495b9d603"
+        }
+      ],
+      "all_states_constructible": "空序列可构造；真实HOLD需当前UAV观测，缺观测不得猜。未证明所有state可执行。",
+      "candidate_domain_contract": "NOT_UNIVERSAL: 有计算eligible base时NOOP被ELIGIBLE_COMP_REQUIRES_TRAIN_ALPHA拒绝；空mob与显式HOLD也不能混同。",
+      "simulator_contract": "已有空CPU callback、空无线分配和speed0模式；无MH专用完整桥，不能宣称安全HOLD。",
+      "needs_world_model_score": false,
+      "return_birth_blocks_execution": false,
+      "return_birth_blocks_H4_scoring": "仍可能；不得要求fallback先通过H4。",
+      "future_target_used": false,
+      "safety_performance_evidence": "只有动作/采集证据；任务超时、能耗和闭环安全未验证。",
+      "adopted": false
+    },
+    {
+      "option": "当前grammar允许的Comm-NOOP + 合法Comp alpha + 显式PROFILE_HOLD一步",
+      "evidence": [
+        {
+          "path": "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py",
+          "symbol": "bind_structured_step",
+          "line": 150,
+          "source_sha256": "e27e460962f1dcff8dfab8bb33fbc05753a6d8a8358ac78b1cab1c8714c45daa"
+        },
+        {
+          "path": "code/src/pi_jwm/step6_3c_candidate_domain_v1.py",
+          "symbol": "iter_bound",
+          "line": 210,
+          "source_sha256": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409"
+        }
+      ],
+      "all_states_constructible": "NO: joint TRAIN支持、compute观测、UAV控制观测和RB50必须满足；domain可为空。",
+      "candidate_domain_contract": "逐state bind并检查formal_pool_admitted后才成立；不把任意HOLD看作合法。",
+      "simulator_contract": "各primitive有setter；selector/ID桥/资源重验缺失。",
+      "needs_world_model_score": false,
+      "return_birth_blocks_execution": false,
+      "return_birth_blocks_H4_scoring": "仍可能",
+      "future_target_used": false,
+      "safety_performance_evidence": "无闭环安全/性能证据；只证明现有动作可表示。",
+      "adopted": false
+    },
+    {
+      "option": "现有采集behavior policy / CpuPolicyAllocator",
+      "evidence": [
+        {
+          "path": "code/scripts/collect_step5_5_formal_raw_v1.py",
+          "symbol": "collect_trajectory",
+          "line": 94,
+          "source_sha256": "e0842db84fb005c8a2c489a316314e2ee0cedd55d7b39f10dc60110495b9d603"
+        },
+        {
+          "path": "code/src/pi_jwm/airfogsim_cpu_policy_v1.py",
+          "symbol": "allocate",
+          "line": 69,
+          "source_sha256": "b98ce32f1944eb27c6aaa45632943495b0e01fa409e5b42901aa481370383197"
+        }
+      ],
+      "all_states_constructible": "完整behavior依赖真实任务/节点可见性；CPU allocator只是计算分量，不是完整四族policy。",
+      "candidate_domain_contract": "完整behavior有offload/Return route，违反Planner v1 Route explicit-NOOP边界；不能直接采用。",
+      "simulator_contract": "已有执行路径，不能因此视为当前Planner合法fallback。",
+      "needs_world_model_score": false,
+      "return_birth_blocks_execution": false,
+      "return_birth_blocks_H4_scoring": "执行不使用scorer，预测支持限制不消失。",
+      "future_target_used": false,
+      "safety_performance_evidence": "生成轨迹不等于闭环安全或baseline胜负证据。",
+      "adopted": false
+    }
+  ],
+  "selection": "AWAITING_RESEARCHER_DECISION",
+  "bounded_train_grammar_oracle": [
+    {
+      "comp": "NOOP",
+      "admitted": false,
+      "reason": "ELIGIBLE_COMP_REQUIRES_TRAIN_ALPHA"
+    },
+    {
+      "comp": "SCALE_0.5",
+      "admitted": true,
+      "signature": [
+        "NOOP",
+        "tasks:1;alpha:0.5",
+        "HOLD,HOLD"
+      ]
+    },
+    {
+      "comp": "SCALE_0.75",
+      "admitted": true,
+      "signature": [
+        "NOOP",
+        "tasks:1;alpha:0.75",
+        "HOLD,HOLD"
+      ]
+    },
+    {
+      "comp": "SCALE_1.0",
+      "admitted": true,
+      "signature": [
+        "NOOP",
+        "tasks:1;alpha:1.0",
+        "HOLD,HOLD"
+      ]
+    }
+  ],
+  "oracle_scope": "one CPU synthetic fixture, not all states or simulator safety",
+  "requirement": "指定正常无H4分支、domain为空/观测缺失分支、执行重验失败分支；不H3降级、不改H4支持。"
+}

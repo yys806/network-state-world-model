@@ -1,0 +1,68 @@
+{
+  "frozen_purpose": "固定MH-CEM后研究budget与objective、scoreability、candidate diversity、runtime/compute trade-off，为closed-loop online budget提供证据；绝不重新选SEARCH_METHOD。",
+  "metrics_requirements": [
+    "跨预算同anchor/seed配对objective和六类scoreability，不能将unscoreable填0",
+    "distinct action fingerprints及重复率，不把候选数当成语义多样性",
+    "in-solve分位数和online准备/编码/执行端到端分开",
+    "保留困难锚点/Return边界；subset不用于全矩阵优势宣称"
+  ],
+  "plans": [
+    {
+      "id": "A",
+      "status": "EXISTING_FROZEN_STAGE_B",
+      "anchors": 64,
+      "seeds": 5,
+      "methods": 3,
+      "cases": 1920,
+      "nominal_transitions": 737280,
+      "hours_compute_scaled": 30.45555849365609,
+      "hours_setup_sensitivity": 41.852626644147804,
+      "value": "完整三方法budget sensitivity；当前在线预算问题不需要重选方法，额外两方法成本高。"
+    },
+    {
+      "id": "B",
+      "status": "NEW_RESEARCH_PROPOSAL",
+      "anchors": 64,
+      "seeds": 5,
+      "methods": 1,
+      "cases": 640,
+      "nominal_transitions": 245760,
+      "hours_compute_scaled": 10.262462086917722,
+      "hours_setup_sensitivity": 14.061484803748295,
+      "value": "MH预算曲线覆盖64锚点；需新runner/provenance和授权，不能冒充原Stage B。"
+    },
+    {
+      "id": "C",
+      "status": "NEW_RESEARCH_PROPOSAL_NOT_PREREGISTERED",
+      "anchors": 16,
+      "seeds": 3,
+      "methods": 1,
+      "cases": 96,
+      "nominal_transitions": 36864,
+      "hours_compute_scaled": 1.5393693130376582,
+      "hours_setup_sensitivity": 2.109222720562244,
+      "value": "先得到小规模MH预算/延迟曲线；只是建议规模，不冻结subset名单/seed。应保留困难层，匹配既有B1024 cases，避免按新结果挑选；不足支持全部闭环状态。"
+    }
+  ],
+  "recommendation": "先补闭环接口并由研究者确定fallback/latency，再考虑C；C需预注册并另行授权，曲线有用再扩展B。A仅在需要三方法budget敏感性论文证据时值得。",
+  "cost_model": "Scenario1 all elapsed scales with transitions. Scenario2 solve scales with transitions, unattributed overhead scales with case count. No Stage-B measurements, not a guaranteed range; seed/anchor complexity, cache, early quota and bootstrap may make scaling nonlinear.",
+  "benchmark_evidence": {
+    "4090": {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_gpu_execution_v1_20260930/04_gpu_batch_throughput.json",
+      "sha256": "61eb783607d13cd2c5ac11bb02fd7b035ee1a9c338b813160f45dd08b911d49c",
+      "native_batch16_tps": 8.433192297248636
+    },
+    "3080Ti": {
+      "path": "code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/04_gpu_batch_throughput.json",
+      "sha256": "6fd471c6741e4196327699ffbd2f0b8af6c62bf017915955e720f6e1fb2bb8b6",
+      "native_batch16_tps": 7.312050487119704
+    }
+  },
+  "4090_vs_3080_native_batch16_ratio": 1.1533279634903837,
+  "4090_migration": "4090_MIGRATION_NOT_YET_JUSTIFIED",
+  "4090_reason": "约15%短native-batch16单anchor吞吐差，不是完整MH-CEM B1024 cpu_cache_and_prefix同身份长期paired实测；不能用batch32推荐或理论规格替代独立qualification。",
+  "stage_b": "NOT_STARTED",
+  "method_selection_changes": false,
+  "gpu_used": false,
+  "locked_test": false
+}

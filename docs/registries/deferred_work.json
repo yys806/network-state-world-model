@@ -2,11 +2,33 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
+      "id": "STEP-6.4A-LIVE-INTERFACE-AND-FALLBACK",
+      "type": "candidate_method_research",
+      "status": "deferred",
+      "reason": "Readiness audit blocked; researcher fallback/latency decision and explicit engineering authorization required.",
+      "summary_zh": "待研究者决定fallback/latency并授权最小实时接口集成。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": "docs/implementation_records/STEP_06_4A_CLOSED_LOOP_READINESS_STAGE_B_PURPOSE_FREEZE.md",
+      "required_predecessors": [
+        "researcher fallback and decision latency mode decision",
+        "explicit interface integration authorization"
+      ],
+      "forbidden_until_authorized": [
+        "live interface changes",
+        "closed-loop smoke",
+        "Stage B",
+        "GPU",
+        "locked_test"
+      ]
+    },
+    {
       "id": "STEP-6.3D-VALIDATION-STAGE-B",
       "type": "candidate_method_research",
       "status": "deferred",
-      "reason": "Stage A accepted; B256/B512 requires separate researcher authorization and cannot revise primary selection.",
-      "summary_zh": "Stage A正式运行中；只延期Stage B256/512和后续实验，不得自动接续。",
+      "reason": "Researcher froze Stage B purpose to online-budget trade-off; primary MH selection unchanged. Existing A remains unrun; B/C new proposals require separate preregistration and authorization.",
+      "summary_zh": "Stage B未启动，只研究预算取舍，不再选择算法；GPU未用，locked_test封存。",
       "authorization_required": true,
       "auto_start": false,
       "locked_test_accessed": false,
