@@ -1,3 +1,7 @@
+## STEP 6.4E 当前路由
+
+`step6_4e_readiness_registry.json` 定位CPU接口与真实Comm阻塞证据；不是正式闭环性能结果。预算512已由研究者冻结，最终fallback仍待决定；原Stage B未启动且不进入当前主线。真实Comm失败后未重试，readiness=BLOCKED。
+
 # PI-JWM 机器注册表
 
 本目录把人类可读索引补充为可由脚本检查的结构化入口。它们用于定位，不替代原始代码、配置、checkpoint、metrics、manifest 或 audit。

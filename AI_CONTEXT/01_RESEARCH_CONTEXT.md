@@ -1,3 +1,7 @@
+## 2026-10-04 STEP 6.4E 当前研究边界
+
+研究者已冻结 PLANNER_V1_CLOSED_LOOP_B_WM=512，仅MH-CEM pure-search；不声称等价或最优，未来hybrid预算未冻结。B1024仍是模型内高预算参考。STEP_6_4E=BLOCKED：当前Flow支持包含failed任务，真实Comm在setter前拒绝；不改Domain/support掩盖冲突。FINAL_FALLBACK_POLICY=RESEARCHER_DECISION_PENDING，FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；原Stage B=NOT_STARTED / DEFERRED / NOT_REQUIRED_FOR_CURRENT_MAINLINE，GPU=NOT_USED，locked_test=false。既有6.4B单fixture机制PASS不推出全状态执行能力。本轮已停止真实复验，唯一下一动作研究者决定一致性修复边界。以下旧预算待决定表述仅为历史。
+
 ## 2026-10-04 STEP 6.4D 验收边界
 
 完整64×5预算取舍验收通过；前三项一致与后两項损失只是冻结模型内Objective观察，不能外推真实闭环或系统收益。 CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；Stage B=NOT_STARTED；locked_test=false。 SEARCH_METHOD仍MH-CEM纯搜索骨架，非最终hybrid。

@@ -1,0 +1,123 @@
+{
+  "FINAL_FALLBACK_POLICY": "RESEARCHER_DECISION_PENDING",
+  "GPU": "NOT_USED",
+  "PLANNER_V1_CLOSED_LOOP_B_WM": 512,
+  "WM_forward_count": 0,
+  "anchor": 41,
+  "canonical_fallback_action": {
+    "comm": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    },
+    "comp": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    },
+    "mobility": {
+      "empty": false,
+      "entries": [
+        {
+          "azimuth_rad": -0.15000000000000002,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 4
+        },
+        {
+          "azimuth_rad": -0.15000000000000002,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 5
+        }
+      ],
+      "missing": false
+    },
+    "route": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    }
+  },
+  "catalog_sha256": "9545baa8a5b21e4a6da6f072202807d0569f3edd66f9927eb9d2e6571e1bfef1",
+  "current_time": 4.5,
+  "domain_count": 375971064,
+  "execution_config_id": "e299812f5b8c6920b5e39ae2e16f440d145b63f375caf5c6f9f8651a14965290",
+  "live_sample_sha256": "91e33e4140f6459ac67412642f9ad5509ea95a25927b62979d32e6e6b82c63f3",
+  "locked_test": false,
+  "no_retry": true,
+  "nonempty_comm_action": {
+    "comm": {
+      "empty": false,
+      "entries": [
+        {
+          "rb_indices": [
+            0
+          ],
+          "relation_index": 37,
+          "task_id": "Task_1",
+          "task_index": 0
+        }
+      ],
+      "missing": false
+    },
+    "comp": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    },
+    "mobility": {
+      "empty": false,
+      "entries": [
+        {
+          "azimuth_rad": -0.15000000000000002,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 4
+        },
+        {
+          "azimuth_rad": -0.15000000000000002,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 5
+        }
+      ],
+      "missing": false
+    },
+    "route": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    }
+  },
+  "normalization_sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+  "policy_seed": 2026092400,
+  "raw_path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092300-policy-2026092400.json.gz",
+  "raw_sha256": "11a8aba61d817b28eefdf7b7608a7282b16ce878815cf7eeccf4e2ccba5c929f",
+  "rejected_current_prefixes": [],
+  "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0041",
+  "scenarios": [
+    "real_nonempty_comm_one_step",
+    "simulated_NO_SCOREABLE_H4_canonical_fallback_one_step"
+  ],
+  "search_transition_count": 0,
+  "selection": "Sort dev_train trajectory IDs then frame ascending; first current offloading/transmitting observation with a legal nonempty Comm Domain action. Inspect only causal prefixes; no objective/scoreability/new outcome selection.",
+  "simulator_seed": 2026092300,
+  "source_sha256": {
+    "code/scripts/collect_step5_5_formal_raw_v1.py": "2f4ea47f1c7a1ff08a2282d6c67c6465edaba237fde8a66666667874eaaf88ac",
+    "code/scripts/run_step6_4e_comm_fallback_audit_v1.py": "83b8a6419dfebdf53c00fb49dd959535f76e3ecd17b65f85b6cdcd733c67b6be",
+    "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py": "e27e460962f1dcff8dfab8bb33fbc05753a6d8a8358ac78b1cab1c8714c45daa",
+    "code/src/pi_jwm/step6_3c_candidate_domain_v1.py": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409",
+    "code/src/pi_jwm/step6_4b_live_bridge_v1.py": "17b40846b573562db7b10acdace43fa4a525f47f682dae857240cfcf6318f959",
+    "code/src/pi_jwm/step6_4e_fallback_v1.py": "e0cc4571866d405c357763330ac2cc623719cb3b0d6b0a4d3bb5461d4d944002"
+  },
+  "split": "dev_train",
+  "split_manifest_sha256": "443bf9517e07013c8711483a69d6af5fbc532e4a6827d7c5f3879c107d4861dd",
+  "steps_per_scenario": 1,
+  "verdict": "FROZEN_BEFORE_EXECUTION",
+  "wireless_task_to_relation": {
+    "Task_1": 37,
+    "Task_24": 95,
+    "Task_6": 70
+  }
+}

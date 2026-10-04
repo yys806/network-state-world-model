@@ -134,5 +134,17 @@
       "claim_boundary": "Full-cohort budget comparison only; not equivalence, closed-loop performance or budget freeze",
       "locked_test_accessed": false
     }
+  ],
+  "mechanism_readiness_acceptance_sources": [
+    {
+      "id": "RES-STEP6.4E-COMM-FALLBACK-BLOCKED",
+      "experiment_id": "STEP-6.4E-COMM-FALLBACK-AUDIT-20261004",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/10_pre_formal_readiness_receipt.json",
+      "audit_sha256": "b142aadcc9a4fc6ce5425d967d7a30ff1f79f7adfb1cea27277e0c5da64902a2",
+      "status": "BLOCKED",
+      "numeric_validation": "No formal numeric result; literal mechanism failure receipt and source/current observation evidence",
+      "claim_boundary": "No real Comm consumption success, no nonterminating fallback execution success, no formal performance or final fallback policy.",
+      "locked_test_accessed": false
+    }
   ]
 }

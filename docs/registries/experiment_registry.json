@@ -3,6 +3,50 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.4E-COMM-FALLBACK-AUDIT-20261004",
+      "name": "Budget freeze and real Comm/fallback closure audit",
+      "date": "2026-10-04",
+      "research_question": "Current legal action to real execution and fallback readiness, not planner performance",
+      "method": "CPU current-domain action bridge; no search",
+      "code": "code/scripts/run_step6_4e_comm_fallback_audit_v1.py",
+      "code_version": {
+        "identity_type": "per_file_sha256_at_execution",
+        "git_commit": null,
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/01b_pre_environment_encoding_execution_identity.json",
+        "note": "New files were uncommitted at bounded CPU mechanism execution; final commit is documentation/source closure, not overwritten execution identity."
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/01b_pre_environment_encoding_execution_identity.json",
+      "parameters": {
+        "planner_default_budget_frozen": 512,
+        "search_calls": 0,
+        "WM_forward_count": 0,
+        "authorized_steps_completed": 0,
+        "fixture_anchor": 41,
+        "device": "cpu"
+      },
+      "protocol": "docs/contracts/PIJWM_STEP_06_4E_FALLBACK_INTERFACE_V1.md",
+      "data": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/01_fixture_and_execution_freeze.json",
+      "split": [
+        "dev_train"
+      ],
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/10_pre_formal_readiness_receipt.json",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/06_current_domain_bridge_conflict.json",
+      "status": "blocked_real_execution_consistency",
+      "conclusion": "Budget512 frozen by researcher; CPU interface/negative paths pass; real Comm rejected before setters/step; no retry.",
+      "summary_zh": "STEP_6_4E=BLOCKED，CLOSED_LOOP_PRE_FORMAL_READINESS=BLOCKED。研究者正式冻结 PLANNER_V1_CLOSED_LOOP_B_WM=512，仅 MH-CEM K4/rho0.1 pure-search；B1024保留高预算参考，不声称等价/最优，6.4D后两项目标质量损失仍记录。统一fallback接口CPU合同就绪，33 focused CPU tests通过。真实TRAIN固定anchor0041、t=4.5s的非空Comm Task_1/RB0被执行前安全门拒绝：Domain仍绑定已failed的Task_1/Task_6，无本轮setter或env.step，第二场景未启动，无换动作/样本或科学失败重试。候选A可确定性准备合法当前动作但本轮真实执行未取得；候选B缺独立current behavior offer provider；C无动作终止及空域/缺字段/bridge/setter负路径通过。当前Flow支持与真实task执行条件不一致，Status=Awaiting Researcher Decision；不改Domain/Objective/Return。FINAL_FALLBACK_POLICY=RESEARCHER_DECISION_PENDING，FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN；原Stage B=NOT_STARTED、DEFERRED / NOT_REQUIRED_FOR_CURRENT_MAINLINE；GPU=NOT_USED，locked_test=false。唯一下一动作是研究者审阅并决定一致性修复与复验范围；不自动开跑。",
+      "claim_boundary": "No real Comm consumption success, no nonterminating fallback execution success, no formal performance or final fallback policy.",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "seed": "No planner RNG/search; simulator/policy replay seeds pre-frozen in data receipt.",
+        "checkpoint": "Not loaded: no model forward or search, no model change.",
+        "metrics": "No performance metrics; literal negative mechanism receipt only.",
+        "code_version": "Actual per-file bytes at execution; later malformed-offer guard is separately versioned final source, old identity preserved."
+      }
+    },
+    {
       "id": "STEP-6.4D-FULL-COHORT-MH-B512-20261003",
       "name": "Full frozen 64x5 MH-CEM B512 budget expansion",
       "date": "2026-10-03",

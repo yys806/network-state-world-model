@@ -1,0 +1,45 @@
+{
+  "Actual Implementation": "Existing wireless Flow binding can retain failed task; Comm grammar admits it; live bridge rejects non-offloading/non-transmitting task.",
+  "Conflict": "Flow presence/active masks and actual task lifecycle do not establish the same current execution eligibility.",
+  "Documented Intent": "Current Domain action must map to currently eligible real simulator task.",
+  "Evidence": [
+    {
+      "bridge_eligible": false,
+      "current_lifecycle": "failed",
+      "relation_index": 37,
+      "task_id": "Task_1"
+    },
+    {
+      "bridge_eligible": false,
+      "current_lifecycle": "failed",
+      "relation_index": 70,
+      "task_id": "Task_6"
+    }
+  ],
+  "Status": "Awaiting Researcher Decision",
+  "attempted_comm": {
+    "empty": false,
+    "entries": [
+      {
+        "rb_indices": [
+          0
+        ],
+        "relation_index": 37,
+        "task_id": "Task_1",
+        "task_index": 0
+      }
+    ],
+    "missing": false
+  },
+  "authorized_decision_steps": 0,
+  "execution_retry": false,
+  "fixture_replaced": false,
+  "new_planner_setter_calls": 0,
+  "replay_prior_behavior_steps": 41,
+  "scientific_definition_changed": false,
+  "source_paths": [
+    "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py:_wireless_bindings",
+    "code/src/pi_jwm/step6_4b_live_bridge_v1.py:validate_command"
+  ],
+  "verdict": "BLOCKED"
+}

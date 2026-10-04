@@ -2,11 +2,33 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
+      "id": "STEP-6.4E-REAL-COMM-CONSISTENCY-RETEST",
+      "type": "researcher_decision_required",
+      "status": "deferred",
+      "reason": "Frozen current Flow Domain includes failed tasks; live bridge rejects. No fixture/action replacement, no auto-retry or Domain change.",
+      "summary_zh": "当前Flow支持与真实任务执行条件冲突，真实非空Comm及非终止fallback缺证据。研究者审阅修复边界后另授权复验。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": "docs/implementation_records/STEP_06_4E_BUDGET_COMM_FALLBACK_CLOSURE.md",
+      "required_predecessors": [
+        "researcher contract/repair scope decision",
+        "source-data-execution consistency closure",
+        "pre-registered real fixture"
+      ],
+      "forbidden_until_authorized": [
+        "scientific Domain/support changes",
+        "real smoke retry",
+        "formal closed-loop performance"
+      ],
+      "scientific_gate_status": "BLOCKED_AWAITING_RESEARCHER_DECISION"
+    },
+    {
       "id": "STEP-6.4C-MH-ONLY-CALIBRATION-EXPANSION",
       "type": "candidate_method_research",
       "status": "deferred",
-      "reason": "Only B512 full64x5 expansion separately authorized as STEP6.4D. B256 expansion, original Stage B, closed-loop performance and final budget freeze remain deferred and require separate researcher decision.",
-      "summary_zh": "STEP6.4D仅B512完整64×5扩样已验收。B256扩样/原StageB/正式闭环/最终预算仍未授权；研究者下一步审阅并决定，不自动运行。",
+      "reason": "B512 expansion6.4D complete and pure-search budget512 frozen by researcher6.4E. B256 expansion/Stage B/formal performance remain deferred.",
+      "summary_zh": "6.4D全量B512已验收，6.4E研究者冻结预算512；B256/原Stage B/正式闭环仍不启动。",
       "authorization_required": true,
       "auto_start": false,
       "locked_test_accessed": false,
@@ -29,8 +51,8 @@
       "id": "STEP-6.3D-VALIDATION-STAGE-B",
       "type": "candidate_method_research",
       "status": "deferred",
-      "reason": "Researcher froze Stage B purpose to online-budget trade-off; primary MH selection unchanged. Existing A remains unrun; B/C new proposals require separate preregistration and authorization.",
-      "summary_zh": "Stage B未启动，只研究预算取舍，不再选择算法；GPU未用，locked_test封存。",
+      "reason": "Researcher STEP6.4E budget512 freeze: original three-method Stage B remains NOT_STARTED and DEFERRED / NOT_REQUIRED_FOR_CURRENT_MAINLINE; require separate future question/authorization.",
+      "summary_zh": "原三方法Stage B未运行；当前pure-search预算512已由研究者冻结，原矩阵不进入当前主线。",
       "authorization_required": true,
       "auto_start": false,
       "locked_test_accessed": false,
@@ -44,7 +66,8 @@
         "closed-loop execution",
         "baseline/ablation",
         "locked_test access"
-      ]
+      ],
+      "mainline_disposition": "NOT_REQUIRED_FOR_CURRENT_MAINLINE"
     },
     {
       "id": "P4-SEED-20260832",

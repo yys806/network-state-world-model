@@ -1,0 +1,10 @@
+{
+  "exception": "UnicodeEncodeError",
+  "phase": "AirFogSim import before collect_trajectory",
+  "environment_created": false,
+  "action_setter_calls": 0,
+  "environment_steps": 0,
+  "WM_forward_count": 0,
+  "diagnostic": "GBK stdout cannot encode native NumPy backend symbol; remedy PYTHONIOENCODING=utf-8 only",
+  "scientific_failure_retry": false
+}

@@ -1,0 +1,24 @@
+{
+  "DOMAIN_EMPTY": "PASS",
+  "NO_SCOREABLE_H4_dispatch_prepare": "PASS_CURRENT_CAUSAL_REPLAY_ONLY",
+  "NO_SCOREABLE_H4_real_execution": "NOT_EXECUTED_AFTER_COMM_BLOCK",
+  "arbitrary_setter_atomicity_guaranteed": false,
+  "bridge_failure": "PASS",
+  "environment_steps": 0,
+  "environment_time_unchanged": true,
+  "fail_closed_termination": "PASS",
+  "injected_failures_are_synthetic": true,
+  "malformed_behavior_offer": "covered_by_focused_unit_test",
+  "missing_required_field": "PASS",
+  "native_buffers_restored": true,
+  "setter_failure": {
+    "action_executed": false,
+    "arbitrary_setter_atomicity_guaranteed": false,
+    "detail": "SETTER_FAILURE:injected CPU setter failure",
+    "native_decision_buffers_restored": true,
+    "no_retry": true,
+    "reason": "SETTER_FAILURE",
+    "terminate_episode": true
+  },
+  "verdict": "PASS"
+}

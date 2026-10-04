@@ -1,0 +1,115 @@
+{
+  "schema_version": "PI-JWM-STEP6.4E-SHA-INVENTORY-V1",
+  "files": [
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/01_fixture_and_execution_freeze.json",
+      "sha256": "2cf2dfe8e9e41a9d195ae73d9a0023954bf25e7f1ceceaf18770324b2555d880",
+      "bytes": 4138
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/01b_pre_environment_encoding_execution_identity.json",
+      "sha256": "2dc6cfc137687ab6bdbdd9b275034e21befe1f1c932c73dcac8e96ff968f50e8",
+      "bytes": 4408
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/02_future_target_poison_receipt.json",
+      "sha256": "3f1126933bc3913f05032204984e2c3c769b4ac69144df11d503b920924790aa",
+      "bytes": 172
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/03_execution_started.json",
+      "sha256": "d72f8b77098ab8627abf794dfd04fd3cf1c0d16c580a7a73ddb2f11b30baa8f3",
+      "bytes": 120
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/03a_pre_environment_import_failure.json",
+      "sha256": "ea31295cea7610c3ac2181aa1d6371c51f3d68b9ed16332553a0df299c050ee4",
+      "bytes": 363
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/03b_first_environment_execution_started.json",
+      "sha256": "750fe8f596ebe5f2a6e502f43ce96f339b4c95a65be9903f643861d21a4729ea",
+      "bytes": 168
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/04_real_nonempty_comm_one_step_receipt.json",
+      "sha256": "b62351eae65a2ac8167c638a68bdbcb14b3e56fa7004e2a888f7391582d95065",
+      "bytes": 998
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/06_current_domain_bridge_conflict.json",
+      "sha256": "08091e52860cbe519557fd1034d1bffa194afe006b1ca1009c168621d6b96b30",
+      "bytes": 1409
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/07_fallback_negative_path_receipt.json",
+      "sha256": "c3a6bbd29752ff55ce5fa849fb94cfde02b515aaf9af1dc6079056d8a8d3bb48",
+      "bytes": 870
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/08_fallback_candidate_audit.json",
+      "sha256": "3ee96c2514dfb4f6eccf0879c64eeffe4e37ab843ed2dc8919fb9247a5174eb4",
+      "bytes": 3767
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/09_budget_freeze_and_source_gate.json",
+      "sha256": "430d21b022cc307ca7827219162a31e1e6b217788d9f9b9908103c220ed60f05",
+      "bytes": 1757
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/10_pre_formal_readiness_receipt.json",
+      "sha256": "b142aadcc9a4fc6ce5425d967d7a30ff1f79f7adfb1cea27277e0c5da64902a2",
+      "bytes": 1220
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/11_closure_checks_receipt.json",
+      "sha256": "f58bcb2b94ec03d4eef0faa67758fd8b3875e4b74c0dd66dd35b842f0ee89cf1",
+      "bytes": 1886
+    },
+    {
+      "path": "code/src/pi_jwm/step6_4e_fallback_v1.py",
+      "sha256": "d59abc9d09e8a4bec27ac9f1a538bb1fc2b0a0fddad370ab03d83a8389fb9de1",
+      "bytes": 5589
+    },
+    {
+      "path": "code/scripts/run_step6_4e_comm_fallback_audit_v1.py",
+      "sha256": "cb2cc1e804bbffda7a20ebc0b7c995e2df366244038c25abea1166fb80ddf933",
+      "bytes": 15225
+    },
+    {
+      "path": "code/scripts/audit_step6_4e_closure_v1.py",
+      "sha256": "7c023676b3f21441a80f83e03537bae816b606bc487a5df70dbc0f66d7e2f8a4",
+      "bytes": 10677
+    },
+    {
+      "path": "code/tests/test_step6_4e_fallback_v1.py",
+      "sha256": "4c58fe5ec81266fff59d765b9b538a9fd91287c0951a4ca3b2d72b11ded4f9be",
+      "bytes": 7645
+    },
+    {
+      "path": "docs/contracts/PIJWM_STEP_06_4E_FALLBACK_INTERFACE_V1.md",
+      "sha256": "e47c08a8cacd1a048a3d5287bee94dffd832f7df0a59a669973eecfbe63317b3",
+      "bytes": 4625
+    },
+    {
+      "path": "docs/implementation_records/STEP_06_4E_BUDGET_COMM_FALLBACK_CLOSURE.md",
+      "sha256": "f7dc75706cc17ebe700a51498528a4ab39d17e5eabed7477d4758ee9f5984c81",
+      "bytes": 5331
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/.gitattributes",
+      "bytes": 177,
+      "sha256": "c2eacd55c09ddb5fbd173ba867cec5ebc8ff6a4215037c7dd48126e38fa1c390"
+    }
+  ],
+  "parent_raw_reference": {
+    "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092300-policy-2026092400.json.gz",
+    "sha256": "11a8aba61d817b28eefdf7b7608a7282b16ce878815cf7eeccf4e2ccba5c929f",
+    "copied_or_modified": false
+  },
+  "execution_point_identity": "01b frozen bytes; final malformed-offer error guard source separately inventoried; no second actual execution",
+  "self_excluded": true,
+  "GPU": "NOT_USED",
+  "locked_test": false,
+  "git_storage": "Scoped .gitattributes -text preserves runtime JSON bytes and SHA; no global/historical attributes changed."
+}

@@ -1,0 +1,25 @@
+{
+  "CLOSED_LOOP_PRE_FORMAL_READINESS": "BLOCKED",
+  "DOMAIN_EMPTY_path": "PASS",
+  "FALLBACK_INTERFACE": "READY_CPU_CONTRACT",
+  "FINAL_FALLBACK_POLICY": "RESEARCHER_DECISION_PENDING",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "Future_Target_leakage": "PASS",
+  "GPU": "NOT_USED",
+  "HYBRID_PLANNER": "NOT_FROZEN",
+  "NO_SCOREABLE_H4_path": "CPU_DISPATCH_PASS_REAL_EXECUTION_NOT_OBTAINED",
+  "PLANNER_V1_CLOSED_LOOP_B_WM": 512,
+  "REAL_NONEMPTY_COMM_EXECUTION": "BLOCKED",
+  "STEP_6_4E": "BLOCKED",
+  "Stage_B": "NOT_STARTED",
+  "authorized_environment_steps": 0,
+  "locked_test": false,
+  "missing_bridge_setter_failure": "PASS_FAIL_CLOSED",
+  "remaining_blockers": [
+    "Current wireless Flow binding includes failed Task_1/Task_6; frozen nonempty Comm action rejected by live task eligibility",
+    "No real nonempty Comm command consumption evidence",
+    "Nonterminating fallback real one-step evidence not obtained; scheduled second episode not started after rejection",
+    "Existing behavior projected provider missing (candidate B unavailable)"
+  ],
+  "scientific_conflict_status": "Awaiting Researcher Decision; no support/Domain/Objective change or sample replacement"
+}

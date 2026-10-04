@@ -2,6 +2,28 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP6.4E-COMM-FALLBACK-BUDGET",
+      "keywords": [
+        "6.4E",
+        "fallback",
+        "non-empty Comm",
+        "closed-loop budget512",
+        "failed task Flow binding"
+      ],
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_4E_BUDGET_COMM_FALLBACK_CLOSURE.md",
+        "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/10_pre_formal_readiness_receipt.json"
+      ],
+      "verification_sources": [
+        "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/01_fixture_and_execution_freeze.json",
+        "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/04_real_nonempty_comm_one_step_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/06_current_domain_bridge_conflict.json",
+        "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/07_fallback_negative_path_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/08_fallback_candidate_audit.json",
+        "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/09_budget_freeze_and_source_gate.json"
+      ]
+    },
+    {
       "id": "ROUTE-STEP6.4D-B512-EXPANSION",
       "keywords": [
         "6.4D",

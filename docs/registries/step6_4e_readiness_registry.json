@@ -1,0 +1,12 @@
+{
+  "schema_version": "PI-JWM-step6.4e-readiness-v1",
+  "experiment_id": "STEP-6.4E-COMM-FALLBACK-AUDIT-20261004",
+  "acceptance": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/10_pre_formal_readiness_receipt.json",
+  "status": "BLOCKED",
+  "PLANNER_V1_CLOSED_LOOP_B_WM": 512,
+  "FINAL_FALLBACK_POLICY": "RESEARCHER_DECISION_PENDING",
+  "Stage_B": "NOT_STARTED",
+  "Stage_B_disposition": "DEFERRED / NOT_REQUIRED_FOR_CURRENT_MAINLINE",
+  "GPU": "NOT_USED",
+  "locked_test": false
+}

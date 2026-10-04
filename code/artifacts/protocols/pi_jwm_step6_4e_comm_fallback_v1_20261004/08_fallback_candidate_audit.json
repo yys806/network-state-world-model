@@ -1,0 +1,100 @@
+{
+  "FALLBACK_INTERFACE": "READY_CPU_CONTRACT",
+  "FINAL_FALLBACK_POLICY": "RESEARCHER_DECISION_PENDING",
+  "RECOMMENDED_FALLBACK": "Conditional A for NO_SCOREABLE_H4 after real eligibility conflict closure; C for critical failures",
+  "candidates": {
+    "A": {
+      "CandidateDomain_legal": "YES_IF_LAZY_BOUND_AND_LIVE_VALIDATION_PASS",
+      "Route_v1_compatible": true,
+      "affected_by_future_Return_birth": "NO_FOR_CURRENT_ONE_STEP_CONSTRUCTION; H4 limitation unchanged",
+      "all_state_constructible": "NO",
+      "deterministic": true,
+      "failure_modes": [
+        "empty domain",
+        "missing live input",
+        "stale Flow/task lifecycle",
+        "bridge rejection",
+        "setter failure"
+      ],
+      "known_performance_evidence": null,
+      "known_safety_evidence": "CPU prevalidation and fail-closed only; no operational safety proof",
+      "name": "CURRENT_DOMAIN_DETERMINISTIC_LEGAL_ACTION",
+      "needs_WM_score": false,
+      "real_AirFogSim_executable": "NOT_VERIFIED_THIS_STEP",
+      "replay_action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.15000000000000002,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.15000000000000002,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "uses_Future_Target": false
+    },
+    "B": {
+      "CandidateDomain_legal": "CONDITIONAL_CURRENT_OFFER_ADMISSION_REQUIRED",
+      "Route_v1_compatible": "PROJECTION_REMOVES_ROUTE_ONLY",
+      "affected_by_future_Return_birth": "No H4 score used; current support still required",
+      "all_state_constructible": "NO",
+      "current_offer_provider": "MISSING",
+      "deterministic": false,
+      "failure_modes": [
+        "inline behavior has Route and RNG/control flow coupling",
+        "no side-effect-free current Comm/Comp/Mob offer provider",
+        "projected action may be outside frozen Domain"
+      ],
+      "known_performance_evidence": null,
+      "known_safety_evidence": null,
+      "name": "PLANNER_V1_PROJECTED_EXISTING_BEHAVIOR",
+      "needs_WM_score": false,
+      "real_AirFogSim_executable": "NOT_VERIFIED_PROVIDER_MISSING",
+      "source_sha256": "2f4ea47f1c7a1ff08a2282d6c67c6465edaba237fde8a66666667874eaaf88ac",
+      "uses_Future_Target": "Not allowed by interface; actual detached behavior provider missing"
+    },
+    "C": {
+      "CandidateDomain_legal": "NOT_APPLICABLE_NO_ACTION",
+      "Route_v1_compatible": true,
+      "affected_by_future_Return_birth": false,
+      "all_state_constructible": "YES_AS_TERMINATION_NOT_ACTION",
+      "deterministic": true,
+      "failure_modes": [
+        "episode unavailable after termination",
+        "arbitrary external setter side effects not globally reversible"
+      ],
+      "known_performance_evidence": null,
+      "known_safety_evidence": "No new setters or env.step; native buffer rollback on injected setter failure",
+      "name": "FAIL_CLOSED_TERMINATION",
+      "needs_WM_score": false,
+      "real_AirFogSim_executable": "NO_ACTION_BY_DESIGN",
+      "uses_Future_Target": false
+    }
+  },
+  "recommendation_only": true
+}
