@@ -3,6 +3,62 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.4G-REPAIRED-SEARCH-20261004",
+      "name": "Repaired-domain full TRAIN/StageA/conditional B512 requalification",
+      "date": "2026-10-04",
+      "research_question": "Requalify tuning,method,budget under repaired current Comm legality",
+      "method": "TRAIN CEM grid; fresh three-method B1024 selection; conditional fresh MH B512",
+      "code": "code/scripts/run_step6_4g_requalification_v1.py",
+      "code_version": {
+        "identity_type": "frozen_Git_LF_source_SHA256",
+        "git_commit": null,
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/00_protocol_r2.json",
+        "note": "protocol gate commit read via Git; exact per-phase gate+source checked before GPU"
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/03_phase_execution_identity_contract_r2.json",
+      "parameters": {
+        "T_cases": 768,
+        "A_cases": 960,
+        "conditional_B_cases": 320,
+        "batch_size": 16,
+        "precision": "FP32",
+        "GPU": "RTX3080Ti"
+      },
+      "protocol": "docs/contracts/PIJWM_STEP_06_4G_REPAIRED_SEARCH_REQUALIFICATION_V1.md",
+      "data": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/02_frozen_anchor_manifest.json",
+      "split": [
+        "dev_train",
+        "dev_validation"
+      ],
+      "seed": {
+        "T": [
+          6301,
+          6302,
+          6303
+        ],
+        "A_B": [
+          6311,
+          6312,
+          6313,
+          6314,
+          6315
+        ]
+      },
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/04_CPU_preflight_receipt_r2.json",
+      "status": "protocol_ready_not_started",
+      "conclusion": "No new scientific results yet; freeze complete researcher rule and run full fresh chain",
+      "summary_zh": "STEP_6_4G=IN_PROGRESS；CPU preflight/协议冻结PASS，完整旧TRAIN行为支持catalog复算一致，无需重建；原32/64anchors在修复域均非空，未替换。Phase T NOT_STARTED（须精确Git/device/source gate才开GPU），目标768；Phase A NOT_STARTED（目标960），Phase B NOT_STARTED（仅新A选MH才320）。旧调参/选法/预算均historical-under-pre-6.4F-domain；不复用任何旧raw，包含先前7不变量anchors也完整重跑。FINAL_FALLBACK_POLICY=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1，研究者本轮明确冻结：NO_SCOREABLE_H4且当前域/输入完整才一个canonical A，A任何失败及空域/缺观测/slot unsupported/bridge/setter失败均C终止，不级联、不换动作、不重试。SEARCH_METHOD_REQUALIFIED=PENDING，S/MH新K/rho=PENDING；旧MH/K4rho0.1/B512只为历史/working决定，修复域最终预算待T→A→条件B gate。B512必须scoreability set一致、前三项目标劣化0、scorer0、mean/median耗时更低和严格budget。FORMAL_SEARCH_REQUALIFICATION=PENDING；CLOSED_LOOP_PRE_FORMAL_READINESS=PENDING_SEARCH_REQUALIFICATION；READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false。3080Ti只读认证核验空闲、11912MiB free、tracked clean，无其他搜索进程；未启动实例，不换4090。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN，Stage B=NOT_STARTED / DEFERRED，locked_test=false。唯一下一动作：commit/push协议后服务器fast-forward到精确commit，重复preflight后只启动PhaseT。",
+      "claim_boundary": "pure-search requalification only; formal closedloop/hybrid not started",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "metrics": "new formal results pending; CPU/source/fixture gates are not performance",
+        "code_version": "per-file SHA before commit; exact commit required for GPU"
+      }
+    },
+    {
       "id": "STEP-6.4F-COMM-ELIGIBILITY-20261004",
       "name": "Current Comm eligibility reconciliation and real execution audit",
       "date": "2026-10-04",
@@ -143,8 +199,8 @@
         "metrics": "Complete320per budget; original reference timings retained;20separates272invocation overhead",
         "code_version": "GPU owning protocol commit9b; final analysis tools have separate commit identity"
       },
-      "current_definition_reuse": "TARGETED_REQUALIFICATION_REQUIRED",
-      "current_definition_scope_note": "Historical accepted old Comm eligibility only; see Step6.4F assessment. No historical metrics/receipts rewritten."
+      "current_definition_reuse": "historical-under-pre-6.4F-domain",
+      "current_definition_scope_note": "6.4G full fresh repaired-domain matrix authorized; no old raw enters new statistics"
     },
     {
       "id": "STEP-6.4C-MH-BUDGET-CALIBRATION-20261003",
@@ -196,8 +252,8 @@
         "checkpoint": "unchanged frozen checkpoint",
         "claim_boundary": "CALIBRATION SUBSET, no formal non-inferiority or real closed-loop performance"
       },
-      "current_definition_reuse": "TARGETED_REQUALIFICATION_REQUIRED",
-      "current_definition_scope_note": "Historical accepted old Comm eligibility only; see Step6.4F assessment. No historical metrics/receipts rewritten."
+      "current_definition_reuse": "historical-under-pre-6.4F-domain",
+      "current_definition_scope_note": "6.4G full fresh repaired-domain matrix authorized; no old raw enters new statistics"
     },
     {
       "id": "STEP-6.4B-TWO-CYCLE-SMOKE-20261003",
@@ -336,8 +392,8 @@
       "field_notes": {
         "code_version": "Frozen scientific source587efdf; closure code and documentation are separate from execution identity."
       },
-      "current_definition_reuse": "TARGETED_REQUALIFICATION_REQUIRED",
-      "current_definition_scope_note": "Historical accepted old Comm eligibility only; see Step6.4F assessment. No historical metrics/receipts rewritten."
+      "current_definition_reuse": "historical-under-pre-6.4F-domain",
+      "current_definition_scope_note": "6.4G full fresh repaired-domain matrix authorized; no old raw enters new statistics"
     },
     {
       "id": "STEP-6.3D-PRE-VALIDATION-BLOCKER-CLOSURE-20261001",

@@ -157,5 +157,7 @@
       "locked_test_accessed": false
     }
   ],
-  "current_definition_search_evidence_assessment": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/07_formal_search_evidence_reuse_assessment.json"
+  "current_definition_search_evidence_assessment": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/07_formal_search_evidence_reuse_assessment.json",
+  "current_repaired_domain_protocol": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/00_protocol_r2.json",
+  "old_search_claim_scope": "historical-under-pre-6.4F-domain"
 }

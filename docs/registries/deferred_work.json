@@ -5,8 +5,8 @@
       "id": "STEP-6.4F-TARGETED-SEARCH-REQUALIFICATION",
       "type": "researcher_decision_required",
       "status": "deferred",
-      "reason": "New action eligibility affects57 Validation root domains; propose minimal855 B1024+285 MH B512, no GPU authorization",
-      "summary_zh": "旧域搜索证据需最小57anchor重新验证；工作预算512保留，禁止自动GPU重跑。",
+      "reason": "Researcher authorizes full fresh T768/A960/conditional B320, no targeted raw reuse; future experiments remain stopped",
+      "summary_zh": "原targeted1140建议被研究者完整重验证2048条件链替代，未授权其它实验。",
       "authorization_required": true,
       "auto_start": false,
       "locked_test_accessed": false,
@@ -21,7 +21,8 @@
         "Stage A rerun",
         "B512 rerun",
         "formal closed-loop performance"
-      ]
+      ],
+      "scientific_gate_status": "SUPERSEDED_BY_EXPLICIT_FULL_STEP_6_4G_AUTHORIZATION"
     },
     {
       "id": "STEP-6.4E-REAL-COMM-CONSISTENCY-RETEST",

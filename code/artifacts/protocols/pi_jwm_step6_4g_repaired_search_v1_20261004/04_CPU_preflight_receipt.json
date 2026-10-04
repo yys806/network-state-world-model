@@ -1,0 +1,18 @@
+{
+  "GPU_device_qualification": "must inspect actual RTX3080Ti on SSH target before launch; TCP gateway alone insufficient",
+  "GPU_started": false,
+  "READY_FOR_GPU_LAUNCH": true,
+  "all32_64_domains_nonempty": true,
+  "checkpoint_SHA": "PASS",
+  "formal_result_count": 0,
+  "local_free_bytes": 221055283200,
+  "locked_test": false,
+  "minimum_free_bytes": 5368709120,
+  "old_raw_reuse": false,
+  "phase_A": "NOT_STARTED",
+  "phase_B": "NOT_STARTED",
+  "phase_T": "NOT_STARTED",
+  "protocol_sha256": "20a1c91574b427b5ddd99b91242f51e6a94b1f34b4197356be41bb96d15130cb",
+  "support_catalog_audit": "PASS",
+  "verdict": "PASS"
+}

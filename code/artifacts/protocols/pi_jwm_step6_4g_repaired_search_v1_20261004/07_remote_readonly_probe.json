@@ -1,0 +1,14 @@
+{
+  "GPU_started": false,
+  "GPU_utilization_percent": 0,
+  "SSH_authenticated": true,
+  "VRAM_free_MiB": 11912,
+  "VRAM_used_MiB": 1,
+  "active_scientific_process": false,
+  "credentials_stored": false,
+  "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+  "instance_start_attempted": false,
+  "read_only": true,
+  "remote_commit": "9b7f50e58d410e012d9b27ed04661e8c88191f2a",
+  "tracked_clean": true
+}

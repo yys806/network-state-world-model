@@ -1,0 +1,9 @@
+{
+  "GPU_started": false,
+  "earlier_00_protocol": "CPU draft, never committed/executed; retained immutable",
+  "final_protocol": "00_protocol_r2.json",
+  "formal_result_count": 0,
+  "revision_reason": "Before protocol commit: bind explicit normalization/sample packages, strengthen local archive/phase provenance and finish runner tests. Scientific source/algorithms unchanged.",
+  "scientific_algorithm_changed": false,
+  "verdict": "PASS"
+}

@@ -3002,7 +3002,9 @@
         "scripts.run_step6_3d_h4_batch_equivalence_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
         "scripts.run_step6_4b_two_cycle_smoke_v1",
-        "tests.test_step6_3d_exact_oracle_v1"
+        "scripts.run_step6_4g_requalification_v1",
+        "tests.test_step6_3d_exact_oracle_v1",
+        "tests.test_step6_4g_runner_v1"
       ],
       "imports": [
         "pi_jwm.step6_0a_candidate_generation_v1",
@@ -3016,7 +3018,8 @@
       "module": "pi_jwm.step6_3d_fixed_budget_search_v1",
       "path": "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py",
       "test_files": [
-        "code/tests/test_step6_3d_exact_oracle_v1.py"
+        "code/tests/test_step6_3d_exact_oracle_v1.py",
+        "code/tests/test_step6_4g_runner_v1.py"
       ]
     },
     {
@@ -3026,6 +3029,7 @@
         "pi_jwm.step6_4c_budget_calibration_v1",
         "pi_jwm.step6_4d_full_cohort_b512_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.audit_step6_4g_phase_v1",
         "scripts.close_step6_3d_formal_train_tuning_v1",
         "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.run_step6_3d_formal_cpu_matrix_v1",
@@ -3106,6 +3110,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "pi_jwm.step6_4d_full_cohort_b512_v1",
+        "scripts.audit_step6_4g_phase_v1",
         "scripts.prepare_step6_4c_budget_calibration_v1",
         "scripts.prepare_step6_4d_full_cohort_b512_v1",
         "scripts.run_step6_4c_mh_budget_calibration_v1",
@@ -3126,6 +3131,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.audit_step6_4g_phase_v1",
         "scripts.prepare_step6_4d_full_cohort_b512_v1",
         "scripts.run_step6_4d_full_cohort_b512_v1",
         "tests.test_step6_4d_full_cohort_b512_v1",
@@ -3171,6 +3177,23 @@
       "path": "code/src/pi_jwm/step6_4f_comm_eligibility_v1.py",
       "test_files": [
         "code/tests/test_step6_4f_comm_eligibility_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.audit_step6_4g_phase_v1",
+        "scripts.prepare_step6_4g_requalification_v1",
+        "scripts.run_step6_4g_requalification_v1",
+        "tests.test_step6_4g_requalification_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_4g_requalification_v1",
+      "path": "code/src/pi_jwm/step6_4g_requalification_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4g_requalification_v1.py"
       ]
     },
     {
@@ -4185,6 +4208,29 @@
       "module": "scripts.audit_step6_4f_comm_eligibility_v1",
       "path": "code/scripts/audit_step6_4f_comm_eligibility_v1.py",
       "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.run_step6_4g_requalification_v1",
+        "tests.test_step6_4g_runner_v1"
+      ],
+      "imports": [
+        "pi_jwm.step6_3d_method_selection_v1",
+        "pi_jwm.step6_4c_budget_calibration_v1",
+        "pi_jwm.step6_4d_full_cohort_b512_v1",
+        "pi_jwm.step6_4g_requalification_v1",
+        "scripts.prepare_step6_4g_requalification_v1",
+        "scripts.run_step6_3d_formal_cpu_matrix_v1",
+        "scripts.run_step6_4g_requalification_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4g_phase_v1",
+      "path": "code/scripts/audit_step6_4g_phase_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4g_runner_v1.py"
+      ]
     },
     {
       "category": "runnable_script",
@@ -6359,6 +6405,16 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.manage_step6_4g_remote_v1",
+      "path": "code/scripts/manage_step6_4g_remote_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "tests.test_v11_crossfit"
       ],
@@ -6442,6 +6498,22 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.audit_step6_4g_phase_v1",
+        "scripts.run_step6_4g_requalification_v1"
+      ],
+      "imports": [
+        "pi_jwm.step6_4g_requalification_v1",
+        "scripts.run_step6_3a_candidate_support_audit_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.prepare_step6_4g_requalification_v1",
+      "path": "code/scripts/prepare_step6_4g_requalification_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [],
       "lifecycle_status": "current",
@@ -6450,6 +6522,16 @@
       "test_files": [
         "code/tests/test_query_project_knowledge_v1.py"
       ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.record_step6_4g_gate_v1",
+      "path": "code/scripts/record_step6_4g_gate_v1.py",
+      "test_files": []
     },
     {
       "category": "runnable_script",
@@ -7929,6 +8011,7 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "scripts.prepare_step6_4g_requalification_v1",
         "scripts.run_step6_3b_comm_support_boundary_audit_v1"
       ],
       "imports": [
@@ -8057,6 +8140,7 @@
       "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.audit_step6_4g_phase_v1",
         "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.close_step6_3d_validation_stage_a_v1",
         "scripts.run_step6_3d_3080ti_formal_gpu_smoke_v1",
@@ -8207,6 +8291,7 @@
         "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.run_step6_4c_mh_budget_calibration_v1",
         "scripts.run_step6_4d_full_cohort_b512_v1",
+        "scripts.run_step6_4g_requalification_v1",
         "scripts.verify_step6_3d_3080ti_migration_v1",
         "tests.test_step6_3d_gpu_offload_v1"
       ],
@@ -8364,6 +8449,27 @@
       "module": "scripts.run_step6_4f_real_comm_smoke_v1",
       "path": "code/scripts/run_step6_4f_real_comm_smoke_v1.py",
       "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.audit_step6_4g_phase_v1",
+        "tests.test_step6_4g_runner_v1"
+      ],
+      "imports": [
+        "pi_jwm.step6_3d_fixed_budget_search_v1",
+        "pi_jwm.step6_4g_requalification_v1",
+        "scripts.audit_step6_4g_phase_v1",
+        "scripts.prepare_step6_4g_requalification_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_4g_requalification_v1",
+      "path": "code/scripts/run_step6_4g_requalification_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4g_runner_v1.py"
+      ]
     },
     {
       "category": "runnable_script",
@@ -12679,6 +12785,32 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4f_evidence_invariant_v1",
       "path": "code/tests/test_step6_4f_evidence_invariant_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4g_requalification_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4g_requalification_v1",
+      "path": "code/tests/test_step6_4g_requalification_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_3d_fixed_budget_search_v1",
+        "scripts.audit_step6_4g_phase_v1",
+        "scripts.run_step6_4g_requalification_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4g_runner_v1",
+      "path": "code/tests/test_step6_4g_runner_v1.py",
       "test_files": []
     },
     {

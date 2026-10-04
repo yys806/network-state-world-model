@@ -2,6 +2,24 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP6.4G-REQUALIFICATION",
+      "keywords": [
+        "6.4G",
+        "repaired-domain",
+        "TRAIN retuning",
+        "fallback freeze"
+      ],
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_4G_REPAIRED_DOMAIN_FORMAL_SEARCH_REQUALIFICATION.md",
+        "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/00_protocol_r2.json"
+      ],
+      "verification_sources": [
+        "docs/contracts/PIJWM_STEP_06_4G_REPAIRED_SEARCH_REQUALIFICATION_V1.md",
+        "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/01_support_catalog_semantic_audit.json",
+        "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/04_CPU_preflight_receipt_r2.json"
+      ]
+    },
+    {
       "id": "ROUTE-STEP6.4F-COMM-ELIGIBILITY",
       "keywords": [
         "6.4F",

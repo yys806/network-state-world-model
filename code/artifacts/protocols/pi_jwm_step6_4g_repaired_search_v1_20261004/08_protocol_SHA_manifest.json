@@ -1,0 +1,72 @@
+{
+  "files": [
+    {
+      "bytes": 113,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/.gitattributes",
+      "sha256": "b937235e4c06c886c4577348c4262e26acca02cd311c911498af6e5353f1ffe9"
+    },
+    {
+      "bytes": 67001,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/00_protocol.json",
+      "sha256": "20a1c91574b427b5ddd99b91242f51e6a94b1f34b4197356be41bb96d15130cb"
+    },
+    {
+      "bytes": 81471,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/00_protocol_r2.json",
+      "sha256": "99f7539933d64fefe9f05c19a6f4b5a6aa03afc8c8fd97faf1d2477cdb049de0"
+    },
+    {
+      "bytes": 10949,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/01_support_catalog_semantic_audit.json",
+      "sha256": "c1c5256f79856280481ae0303b954b022e0361016a0eacf62aeba1804e749080"
+    },
+    {
+      "bytes": 157349,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/02_frozen_anchor_manifest.json",
+      "sha256": "8b126142f49d6ef67ec7cb0484e2eb0316c5d0e50c85b92d1bedd49da176b9ce"
+    },
+    {
+      "bytes": 23191,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/03_phase_execution_identity_contract.json",
+      "sha256": "13c552d977e1ffefa2675b18748a7adf91ff7f6bfcbeebc67c7b21fd6c370d34"
+    },
+    {
+      "bytes": 23191,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/03_phase_execution_identity_contract_r2.json",
+      "sha256": "12f6bfcd8cd5f5ac3ff77fc4f1626ac134f9bef91cc788b6ffec098fa99e9c66"
+    },
+    {
+      "bytes": 78448,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/03b_T_execution_config_template.json",
+      "sha256": "9b42ce1cf31829f6d10be91677f2297ec9b872e21c94b37955325a8393efce5c"
+    },
+    {
+      "bytes": 626,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/04_CPU_preflight_receipt.json",
+      "sha256": "2c06f2171a8bfe283204d8344e07cd4ed95b64d81a4753eda29a02d2f132de52"
+    },
+    {
+      "bytes": 626,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/04_CPU_preflight_receipt_r2.json",
+      "sha256": "33e782b612d2a087302ffe47f9b3959a567d545aadb8c9eb688bd31c39fb8aca"
+    },
+    {
+      "bytes": 444,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/05_protocol_revision_receipt.json",
+      "sha256": "2a34e86e1b609ee468b39ff339a6676dcc15d3a108b15b301135775f582edebd"
+    },
+    {
+      "bytes": 662,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/06_CPU_checks_receipt.json",
+      "sha256": "e5576a5b933834758b4e91086e69f81a3d3fed46f9f7731e16157531e984f738"
+    },
+    {
+      "bytes": 396,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/07_remote_readonly_probe.json",
+      "sha256": "8312b3ceaf217efacf5ac487b989a3a5801f97ff7c61c4a8f96c9c916ace3448"
+    }
+  ],
+  "formal_result_count": 0,
+  "locked_test": false,
+  "old_namespaces_modified": false
+}

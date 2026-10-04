@@ -1,3 +1,18 @@
+<!-- STEP6.4G CURRENT -->
+## 2026-10-04 STEP 6.4G（当前授权 gate）
+
+新增`step6_4g_requalification_v1`仅实现阶段门/正式fallback dispatcher；复用原solver/WM/Objective/CandidateDomain修复规则，科学源码不改。A fallback复用6E prepare/execute与winner同bridge，不新增setter；dispatch不env.step，不调用模型。新增runner/independent auditor/CPU freeze，64anchor5seed统计沿用原rule，原目录只读。
+
+STEP_6_4G=IN_PROGRESS；CPU preflight/协议冻结PASS，完整旧TRAIN行为支持catalog复算一致，无需重建；原32/64anchors在修复域均非空，未替换。Phase T NOT_STARTED（须精确Git/device/source gate才开GPU），目标768；Phase A NOT_STARTED（目标960），Phase B NOT_STARTED（仅新A选MH才320）。旧调参/选法/预算均historical-under-pre-6.4F-domain；不复用任何旧raw，包含先前7不变量anchors也完整重跑。FINAL_FALLBACK_POLICY=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1，研究者本轮明确冻结：NO_SCOREABLE_H4且当前域/输入完整才一个canonical A，A任何失败及空域/缺观测/slot unsupported/bridge/setter失败均C终止，不级联、不换动作、不重试。SEARCH_METHOD_REQUALIFIED=PENDING，S/MH新K/rho=PENDING；旧MH/K4rho0.1/B512只为历史/working决定，修复域最终预算待T→A→条件B gate。B512必须scoreability set一致、前三项目标劣化0、scorer0、mean/median耗时更低和严格budget。FORMAL_SEARCH_REQUALIFICATION=PENDING；CLOSED_LOOP_PRE_FORMAL_READINESS=PENDING_SEARCH_REQUALIFICATION；READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false。3080Ti只读认证核验空闲、11912MiB free、tracked clean，无其他搜索进程；未启动实例，不换4090。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN，Stage B=NOT_STARTED / DEFERRED，locked_test=false。唯一下一动作：commit/push协议后服务器fast-forward到精确commit，重复preflight后只启动PhaseT。
+
+证据：`code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/00_protocol_r2.json`、`01_support_catalog_semantic_audit.json`、`02_frozen_anchor_manifest.json`、`04_CPU_preflight_receipt_r2.json`；实现记录`docs/implementation_records/STEP_06_4G_REPAIRED_DOMAIN_FORMAL_SEARCH_REQUALIFICATION.md`。新目标evidence_class=repaired-domain formal evidence，尚无新正式科研结论。
+
+<!-- END STEP6.4G CURRENT -->
+
+以下是历史记录；旧调参/选法/预算结果只属于historical-under-pre-6.4F-domain。
+
+---
+
 ## 2026-10-04 STEP 6.4F（当前）
 
 新增Task predicate模块、全量pre/post静态audit、assess未来域证书/旧rawSHA、真实Comm runner和6F tests。仅grammar/live bridge接入predicate；CEM、Objective、WM、Dataset保持。候选A复用6E fallback dispatch，不新增setter。
