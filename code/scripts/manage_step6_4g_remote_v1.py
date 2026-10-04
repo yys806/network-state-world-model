@@ -19,7 +19,7 @@ def main():
         _,o,e=c.exec_command(value,timeout=25);data=o.read().decode();code=o.channel.recv_exit_status()
         if code:raise RuntimeError('remote read/command failed exit='+str(code))
         return data.strip()
-    active=cmd("pgrep -af '[r]un_step6_(3d|4[cdefg])_.*\\.py' || true")
+    active=cmd("pgrep -af '[r]un_step6_(3d|4[cdefg])_.*[.]py' || true")
     gpu=cmd('nvidia-smi --query-gpu=name,utilization.gpu,memory.used,memory.free --format=csv,noheader')
     if 'NVIDIA GeForce RTX 3080 Ti' not in gpu:raise ValueError('STOP wrong GPU')
     if a.action=='probe':

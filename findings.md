@@ -1470,3 +1470,5 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 ### 2026-10-04 02:24 — Step 6.4D 只读监控重连
 
 旧监控SSH连接失活退出，cell338已结束。重新只读核验远端原runner PID2838仍运行，未重启或修改GPU实验；新watch session49023恢复SHA备份，新189/272、覆盖237/320、本地189。后续heartbeat检查watch session49023（不能再wait cell338），若它失活仅重连只读监控。StageB NOT_STARTED、lockedfalse，下一动作继续监控至完成。
+
+- STEP 6.4G: GPU启动前修正仅监控脚本的进程匹配；阳性/阴性识别通过，冻结科研源码 SHA 完全不变，服务器CPU preflight PASS，尚未启动GPU。下一动作：同步此工程修正提交，再启动Phase T。
