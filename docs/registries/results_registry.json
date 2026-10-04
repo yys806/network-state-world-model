@@ -137,6 +137,16 @@
   ],
   "mechanism_readiness_acceptance_sources": [
     {
+      "id": "RES-STEP6.4F-COMM-ELIGIBILITY",
+      "experiment_id": "STEP-6.4F-COMM-ELIGIBILITY-20261004",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/09_final_acceptance_receipt.json",
+      "audit_sha256": "66b19250f7d9447bf799c0293073f42cb8e3660549e8e134b9b3fbd47f10dfb5",
+      "status": "PASS",
+      "claim_boundary": "Mechanism only, no revised-domain search/performance acceptance",
+      "locked_test_accessed": false,
+      "numeric_validation": "Literal mechanism receipt; full static sums verified independently, not formal performance"
+    },
+    {
       "id": "RES-STEP6.4E-COMM-FALLBACK-BLOCKED",
       "experiment_id": "STEP-6.4E-COMM-FALLBACK-AUDIT-20261004",
       "audit": "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/10_pre_formal_readiness_receipt.json",
@@ -146,5 +156,6 @@
       "claim_boundary": "No real Comm consumption success, no nonterminating fallback execution success, no formal performance or final fallback policy.",
       "locked_test_accessed": false
     }
-  ]
+  ],
+  "current_definition_search_evidence_assessment": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/07_formal_search_evidence_reuse_assessment.json"
 }

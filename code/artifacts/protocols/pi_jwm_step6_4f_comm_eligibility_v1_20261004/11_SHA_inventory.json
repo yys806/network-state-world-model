@@ -1,0 +1,107 @@
+{
+  "verdict": "PASS",
+  "files": [
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/.gitattributes",
+      "bytes": 188,
+      "sha256": "866b7540a41e8977a7bc2396b7cded80905e1d7d40b77c323f3ec95c259a6b1c",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/00_pre_patch_source_snapshot.json",
+      "bytes": 45433,
+      "sha256": "3098fbbab06e10abac70efdeab8487fe03d38e3637f9f51e48011dcf818527e0",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/01_fixture_and_execution_freeze.json",
+      "bytes": 4198,
+      "sha256": "8ac87e4dfc3909536e8f234e10c798c32ac688362c00772ec9724ea8a41c0558",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/01_pre_patch_full_audit.json",
+      "bytes": 49990038,
+      "sha256": "2910ea9220c6899b1c72ba283477063da8d3fc8e4ec4e3feff74363aad9ec740",
+      "storage": "local_D_persistent_original_uncompressed"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/01_pre_patch_full_audit.json.gz",
+      "bytes": 700473,
+      "sha256": "02342ee5d3b1567aebfcb4802ce7c765f4ba52814f365eacc366be2d64522c56",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/02_future_target_poison_receipt.json",
+      "bytes": 172,
+      "sha256": "3f1126933bc3913f05032204984e2c3c769b4ac69144df11d503b920924790aa",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/03_execution_started.json",
+      "bytes": 169,
+      "sha256": "9cceb555b11c7c1c219260398bb6af140d1a38beff9b79455bedea56573a683f",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/03_post_patch_full_audit.json",
+      "bytes": 49990039,
+      "sha256": "d54f7f23db0f19a07278e9f6d9ff2aadde4dec75081c47f4a2d2bad5f6e2904a",
+      "storage": "local_D_persistent_original_uncompressed"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/03_post_patch_full_audit.json.gz",
+      "bytes": 700470,
+      "sha256": "fc8c92b7d93d747799f7615ce4386c4786635076b44378e03b7a0272c53da44a",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/04_real_nonempty_comm_one_step_receipt.json",
+      "bytes": 4303,
+      "sha256": "422c1bf563c96298748de0117aad9cfa9f6ab58edfb3329d0d162fc831be92d5",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/05_simulated_NO_SCOREABLE_H4_canonical_fallback_one_step_receipt.json",
+      "bytes": 2826,
+      "sha256": "bb6da862eeae9a84a72eb66af266f3bff464b64913afd9e38572f7c47c71d944",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/06_full_static_audit_summary.json",
+      "bytes": 336196,
+      "sha256": "3ac2525a6d46c8f7d24bcec621e60729608074cd42a78bcacd73548c302db713",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/07_formal_search_evidence_reuse_assessment.json",
+      "bytes": 523864,
+      "sha256": "7ea4ec688955e62600a070e4264602d6a30b6bc0222a9837877a7255455289c4",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/08_source_and_historical_provenance_gate.json",
+      "bytes": 4070,
+      "sha256": "0be55e0fdb1ff5045f1916052ef5e8a4f19af585606c9210a778deca1cc60bae",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/09_final_acceptance_receipt.json",
+      "bytes": 912,
+      "sha256": "66b19250f7d9447bf799c0293073f42cb8e3660549e8e134b9b3fbd47f10dfb5",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/10_verification_and_context_receipt.json",
+      "bytes": 2618,
+      "sha256": "504a9a0b28652753da37a8cc37222acba093205ca8f926be83796eef155fecdc",
+      "storage": "small_Git_evidence_or_compressed_archive"
+    }
+  ],
+  "raw_preserved": true,
+  "gzip_roundtrip_verified": true,
+  "persistent_storage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4f_comm_eligibility_v1_20261004",
+  "large_raw_not_for_Git": true,
+  "GPU": "NOT_USED",
+  "locked_test": false
+}

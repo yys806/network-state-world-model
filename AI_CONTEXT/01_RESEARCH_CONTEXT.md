@@ -1,3 +1,13 @@
+## 2026-10-04 STEP 6.4F（当前）
+
+研究边界：Flow存在与Planner动作资格分离。研究者授权当前Comm生命周期交集；旧搜索结论仅在旧资格定义成立，修复后57个Validation anchors须重新验证。MH-CEM pure-search及工作预算512保留，最终hybrid/正式闭环性能未冻结。
+
+证据：`docs/implementation_records/STEP_06_4F_COMM_ELIGIBILITY_RECONCILIATION.md`；`code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/09_final_acceptance_receipt.json`；`code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/07_formal_search_evidence_reuse_assessment.json`。历史6.4E BLOCKED及旧搜索accepted状态仅在旧定义内保留。
+
+以下为历史状态，旧PASS不代表新资格定义下已经重新验证。
+
+---
+
 ## 2026-10-04 STEP 6.4E 当前研究边界
 
 研究者已冻结 PLANNER_V1_CLOSED_LOOP_B_WM=512，仅MH-CEM pure-search；不声称等价或最优，未来hybrid预算未冻结。B1024仍是模型内高预算参考。STEP_6_4E=BLOCKED：当前Flow支持包含failed任务，真实Comm在setter前拒绝；不改Domain/support掩盖冲突。FINAL_FALLBACK_POLICY=RESEARCHER_DECISION_PENDING，FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；原Stage B=NOT_STARTED / DEFERRED / NOT_REQUIRED_FOR_CURRENT_MAINLINE，GPU=NOT_USED，locked_test=false。既有6.4B单fixture机制PASS不推出全状态执行能力。本轮已停止真实复验，唯一下一动作研究者决定一致性修复边界。以下旧预算待决定表述仅为历史。

@@ -1,0 +1,169 @@
+{
+  "GPU": "NOT_USED",
+  "WM_forward_count": 0,
+  "action": {
+    "comm": {
+      "empty": false,
+      "entries": [
+        {
+          "rb_indices": [
+            0
+          ],
+          "relation_index": 95,
+          "task_id": "Task_24",
+          "task_index": 7
+        }
+      ],
+      "missing": false
+    },
+    "comp": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    },
+    "mobility": {
+      "empty": false,
+      "entries": [
+        {
+          "azimuth_rad": -0.15000000000000002,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 4
+        },
+        {
+          "azimuth_rad": -0.15000000000000002,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 5
+        }
+      ],
+      "missing": false
+    },
+    "route": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    }
+  },
+  "behavior_policy_overwrite": false,
+  "commands_before_step": {
+    "cpu": {},
+    "mobility": {
+      "UAV_0": {
+        "angle": -0.15000000000000002,
+        "phi": 0.0,
+        "speed": 0.0
+      },
+      "UAV_1": {
+        "angle": -0.15000000000000002,
+        "phi": 0.0,
+        "speed": 0.0
+      }
+    },
+    "rb": {
+      "Task_24": [
+        0
+      ]
+    },
+    "route": "EXPLICIT_NOOP_ONLY"
+  },
+  "consumed_wireless_profiles": [
+    {
+      "channel_type": "U2V",
+      "destination_node_id": "vehicle_7",
+      "rb_indices": [
+        0
+      ],
+      "rx_idx": 7,
+      "source_node_id": "UAV_1",
+      "task_id": "Task_24",
+      "tx_idx": 1
+    }
+  ],
+  "environment_steps": 1,
+  "execution_config_id": "26d7d93a06933c4e554a987e15fe04b3e95debf6a60cb5e6d4c3290b3758357d",
+  "finish_time_s": 4.6,
+  "fresh_observation_sha256": "150e4b74c5dfa293c8d84ec287f5693ed072944c97b6986a49565b7661418471",
+  "fresh_observation_time_s": 4.6,
+  "future_target_read": false,
+  "locked_test": false,
+  "normalization_unchanged": true,
+  "observable_outcomes": {
+    "communication_observation": {
+      "total": {
+        "missing_reason": null,
+        "observed_mask": true
+      },
+      "wired": {
+        "missing_reason": null,
+        "observed_mask": true,
+        "source_method": "WiredNetworkManager.step"
+      },
+      "wireless": {
+        "missing_reason": null,
+        "observed_mask": true,
+        "source_method": "AirFogSimEnv._execute_communication"
+      }
+    },
+    "delivered_data_by_task": {
+      "Task_24": 0.6604788158018815
+    },
+    "delivered_data_missing_reason": null,
+    "delivered_data_observed_mask": true,
+    "served_cpu_work_by_task": {},
+    "wired_delivered_data_by_task": {},
+    "wired_delivered_data_observed_mask": true,
+    "wireless_delivered_data_by_task": {
+      "Task_24": 0.6604788158018815
+    },
+    "wireless_delivered_data_observed_mask": true
+  },
+  "performance_claim": false,
+  "route_command_count": 0,
+  "scenario": "real_nonempty_comm_one_step",
+  "selection_during_step": false,
+  "simulation_paused_during_preparation": true,
+  "slot_transfer_events": [
+    {
+      "capture_phase": "after_fast_fading_before_transfer",
+      "channel_type": "U2V",
+      "delivered_data": 0.6604788158018815,
+      "event_id": "event::Task_24::4.500000",
+      "evidence": "direct_runtime_channel_event",
+      "interference_plus_noise_mw": [
+        3.9810717055349695e-12
+      ],
+      "noise_power_dbm": -114.0,
+      "noise_power_mw": 3.9810717055349695e-12,
+      "outage": [
+        false
+      ],
+      "outcome_channel_attenuation_db": [
+        104.0719317403748
+      ],
+      "planned_capacity": 1.6468069315865184,
+      "rate_per_s": [
+        16.468069315865183
+      ],
+      "rb_bandwidth_mhz": 2.0,
+      "rb_indices": [
+        0
+      ],
+      "remaining_before": 0.6604788158018815,
+      "rx_idx": 7,
+      "sinr_db": [
+        24.77246592846192
+      ],
+      "slot_seconds": 0.1,
+      "source": "UAV_1",
+      "target": "vehicle_7",
+      "task_id": "Task_24",
+      "temporal_role": "outcome_only_not_same_frame_decision_input",
+      "time": 4.5,
+      "transport": "wireless",
+      "tx_idx": 1
+    }
+  ],
+  "start_time_s": 4.5,
+  "verdict": "PASS"
+}

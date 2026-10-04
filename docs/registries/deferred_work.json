@@ -2,11 +2,33 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
+      "id": "STEP-6.4F-TARGETED-SEARCH-REQUALIFICATION",
+      "type": "researcher_decision_required",
+      "status": "deferred",
+      "reason": "New action eligibility affects57 Validation root domains; propose minimal855 B1024+285 MH B512, no GPU authorization",
+      "summary_zh": "旧域搜索证据需最小57anchor重新验证；工作预算512保留，禁止自动GPU重跑。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/07_formal_search_evidence_reuse_assessment.json",
+      "required_predecessors": [
+        "researcher scope review",
+        "new protocol and execution identity",
+        "CPU scientific gate"
+      ],
+      "forbidden_until_authorized": [
+        "GPU search",
+        "Stage A rerun",
+        "B512 rerun",
+        "formal closed-loop performance"
+      ]
+    },
+    {
       "id": "STEP-6.4E-REAL-COMM-CONSISTENCY-RETEST",
       "type": "researcher_decision_required",
       "status": "deferred",
-      "reason": "Frozen current Flow Domain includes failed tasks; live bridge rejects. No fixture/action replacement, no auto-retry or Domain change.",
-      "summary_zh": "当前Flow支持与真实任务执行条件冲突，真实非空Comm及非终止fallback缺证据。研究者审阅修复边界后另授权复验。",
+      "reason": "6.4F eligibility repair and both real steps PASS; no automatic additional retest",
+      "summary_zh": "6.4E旧阻塞由明确授权6.4F修复复验；原历史记录保留，不自动再跑。",
       "authorization_required": true,
       "auto_start": false,
       "locked_test_accessed": false,
@@ -21,7 +43,7 @@
         "real smoke retry",
         "formal closed-loop performance"
       ],
-      "scientific_gate_status": "BLOCKED_AWAITING_RESEARCHER_DECISION"
+      "scientific_gate_status": "RESOLVED_BY_EXPLICIT_STEP_6_4F_AUTHORIZATION"
     },
     {
       "id": "STEP-6.4C-MH-ONLY-CALIBRATION-EXPANSION",

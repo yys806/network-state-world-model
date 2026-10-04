@@ -2,6 +2,26 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP6.4F-COMM-ELIGIBILITY",
+      "keywords": [
+        "6.4F",
+        "Comm eligibility",
+        "stale Flow",
+        "search requalification"
+      ],
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_4F_COMM_ELIGIBILITY_RECONCILIATION.md",
+        "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/09_final_acceptance_receipt.json"
+      ],
+      "verification_sources": [
+        "docs/contracts/PIJWM_STEP_06_4F_COMM_ELIGIBILITY_V1.md",
+        "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/07_formal_search_evidence_reuse_assessment.json",
+        "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/06_full_static_audit_summary.json",
+        "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/04_real_nonempty_comm_one_step_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/05_simulated_NO_SCOREABLE_H4_canonical_fallback_one_step_receipt.json"
+      ]
+    },
+    {
       "id": "ROUTE-STEP6.4E-COMM-FALLBACK-BUDGET",
       "keywords": [
         "6.4E",

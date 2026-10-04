@@ -65,13 +65,21 @@ def fixture():
         ROOT / "code/artifacts/protocols/pi_jwm_step6_3b_candidate_grammar_v1_20260929/02_train_structural_support_catalog.json")
     return context, domain, state, control, catalog
 
+def second_wireless_task(context,state):
+    # Keep the original computing Task for Comp. A distinct offloading Task
+    # supplies the second communication binding under the 6.4F contract.
+    context.static['input_entity_index']['task']['comm_second']=2
+    for field,value in [('task_presence',True),('task_completed',False),('task_lifecycle_index',4),('task_work_remaining',2.)]:
+        state[field]=torch.cat((state[field],torch.tensor([[value]],dtype=state[field].dtype)),dim=1)
+
 
 class GrammarTests(unittest.TestCase):
     def test_only_uniquely_bindable_current_wireless_tasks_enter_eligible_set(self):
         context, _, state, _, _ = fixture()
+        second_wireless_task(context,state)
         for name in ("flow_known", "flow_presence", "carrying_active"):
             state[name] = torch.tensor([[True, True, True]])
-        state["flow_task_index"] = torch.tensor([[0, 0, 1]])
+        state["flow_task_index"] = torch.tensor([[0, 0, 2]])
         state["flow_comm_relation_index"] = torch.tensor([[0, 0, 1]])
         state["carrying_hop_source_index"] = torch.tensor([[3, 3, 3]])
         state["carrying_hop_destination_index"] = torch.tensor([[2, 2, 2]])
@@ -80,7 +88,7 @@ class GrammarTests(unittest.TestCase):
         state["comm_source_index"] = torch.tensor([[3, 3]])
         state["comm_target_index"] = torch.tensor([[2, 2]])
         self.assertEqual(_wireless_bindings(
-            state, context.static["input_entity_index"]["task"]), {"compute": 1})
+            state, context.static["input_entity_index"]["task"]), {"comm_second": 1})
 
     def test_multirow_cyclic_comm_comp_scale_and_shared_hold(self):
         context, domain, state, control, catalog = fixture()
@@ -192,10 +200,11 @@ class GrammarTests(unittest.TestCase):
 
     def test_comm_selected_subset_and_noop_with_other_eligible_task(self):
         context, domain, state, control, catalog = fixture()
+        second_wireless_task(context,state)
         for name in ("flow_known", "flow_presence", "carrying_active",
                      "comm_presence", "comm_validity", "comm_wireless_mask"):
             state[name] = torch.tensor([[True, True]])
-        for name, values in (("flow_task_index", [0, 1]),
+        for name, values in (("flow_task_index", [0, 2]),
                              ("flow_comm_relation_index", [0, 1]),
                              ("carrying_hop_source_index", [3, 3]),
                              ("carrying_hop_destination_index", [2, 2]),
@@ -208,7 +217,7 @@ class GrammarTests(unittest.TestCase):
             context, domain, state, control, catalog)
         self.assertTrue(selected.support.formal_pool_admitted)
         self.assertEqual(len(selected.action.comm), 1)
-        self.assertEqual(set(selected.binding["wireless_task_to_relation"]), {"input", "compute"})
+        self.assertEqual(set(selected.binding["wireless_task_to_relation"]), {"input", "comm_second"})
         noop = bind_structured_step(StructuredStepChoice((), "SCALE_1.0", "PROFILE_HOLD"),
                                     context, domain, state, control, catalog)
         self.assertTrue(noop.support.formal_pool_admitted)
@@ -247,13 +256,14 @@ class GrammarTests(unittest.TestCase):
 
     def test_comm_width_three_reuse_and_invalid_width(self):
         context, domain, state, control, catalog = fixture()
+        second_wireless_task(context,state)
         for name, value in (
             ("flow_known", True), ("flow_presence", True), ("carrying_active", True),
             ("comm_presence", True), ("comm_validity", True), ("comm_wireless_mask", True),
         ):
             state[name] = torch.tensor([[value, value]])
         for name, values in (
-            ("flow_task_index", [0, 1]), ("flow_comm_relation_index", [0, 1]),
+            ("flow_task_index", [0, 2]), ("flow_comm_relation_index", [0, 1]),
             ("carrying_hop_source_index", [3, 3]),
             ("carrying_hop_destination_index", [2, 2]),
             ("comm_source_index", [3, 3]), ("comm_target_index", [2, 2]),
@@ -261,14 +271,14 @@ class GrammarTests(unittest.TestCase):
             state[name] = torch.tensor([values])
         state["rb_active_mask"] = torch.zeros((1, 2, 50), dtype=torch.bool)
         choice = StructuredStepChoice((CommBlockChoice("input", 49, 3),
-                                       CommBlockChoice("compute", 49, 1)),
+                                       CommBlockChoice("comm_second", 49, 1)),
                                       "SCALE_1.0", "PROFILE_HOLD")
         bound = bind_structured_step(choice, context, domain, state, control, catalog)
         self.assertEqual([row["rb_indices"] for row in bound.action.comm], [[49], [0, 1, 49]])
         self.assertEqual([row["relation_index"] for row in bound.action.comm], [1, 0])
         with self.assertRaisesRegex(CandidateGrammarViolation, "COMM_BLOCK_OUTSIDE_TRAIN_CORE"):
             bind_structured_step(StructuredStepChoice((CommBlockChoice("input", 49, 4),
-                            CommBlockChoice("compute", 49, 3)), "SCALE_1.0", "PROFILE_HOLD"),
+                            CommBlockChoice("comm_second", 49, 3)), "SCALE_1.0", "PROFILE_HOLD"),
                                  context, domain, state, control, catalog)
 
     def test_no_present_uav_has_one_empty_mobility_choice(self):

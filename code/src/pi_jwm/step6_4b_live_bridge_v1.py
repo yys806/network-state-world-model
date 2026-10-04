@@ -2,6 +2,7 @@
 from __future__ import annotations
 import copy
 import math
+from .step6_4f_comm_eligibility_v1 import comm_current_task_eligible
 from typing import Mapping
 from .model_ready_sample_contract_v1 import (
     TensorContract, ACTION_FAMILIES, _observation_entities, _observation_tasks,
@@ -122,11 +123,17 @@ def validate_command(step,context,decision,runtime_tasks):
     tasks={v['task_id']:v for v in decision['tasks']};entities={v['entity_id']:v for v in decision['entities']}
     capacities={v['node_id']:v for v in decision['node_cpu_capacity_observation_rows'] if v.get('observed_mask')}
     inverse={int(v):k for k,v in context.static['input_entity_index']['physical'].items()}
+    from .step6_3b_candidate_grammar_v1 import _wireless_bindings
+    bindings=_wireless_bindings(context.current_state,context.static['input_entity_index']['task'])
     rb={};cpu={};patterns={};totals={}
     for row in step.comm:
         task=runtime_tasks.get(row['task_id']);ids=list(row['rb_indices'])
         if task is None or row['task_id'] not in tasks or not ids or len(set(ids))!=len(ids) or any(type(v)!=int or not 0<=v<int(decision['n_rb']) for v in ids):raise SmokeFailure('ACTION_BRIDGE_REJECTED','RB/task mapping')
-        if tasks[row['task_id']]['lifecycle'] not in ('offloading','transmitting'):raise SmokeFailure('ACTION_BRIDGE_REJECTED','communication not current eligible')
+        observed=tasks[row['task_id']]
+        if not comm_current_task_eligible(present=True,lifecycle=observed.get('lifecycle'),completed=observed.get('task_completed',False)):
+            raise SmokeFailure('ACTION_BRIDGE_REJECTED','communication not current eligible')
+        if row['task_id'] not in bindings or int(row['relation_index'])!=bindings[row['task_id']]:
+            raise SmokeFailure('ACTION_BRIDGE_REJECTED','not a unique current eligible wireless Flow binding')
         rb.setdefault(row['task_id'],[]).extend(ids)
     for row in step.comp:
         task=runtime_tasks.get(row['task_id']);node=row['node_id'];amount=float(row['allocated_cpu_per_s'])

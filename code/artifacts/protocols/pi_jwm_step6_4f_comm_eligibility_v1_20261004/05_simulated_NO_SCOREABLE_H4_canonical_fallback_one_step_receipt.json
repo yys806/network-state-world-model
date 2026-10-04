@@ -1,0 +1,106 @@
+{
+  "GPU": "NOT_USED",
+  "WM_forward_count": 0,
+  "action": {
+    "comm": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    },
+    "comp": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    },
+    "mobility": {
+      "empty": false,
+      "entries": [
+        {
+          "azimuth_rad": -0.15000000000000002,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 4
+        },
+        {
+          "azimuth_rad": -0.15000000000000002,
+          "elevation_rad": 0.0,
+          "speed_mps": 0.0,
+          "uav_index": 5
+        }
+      ],
+      "missing": false
+    },
+    "route": {
+      "empty": true,
+      "entries": [],
+      "missing": false
+    }
+  },
+  "behavior_policy_overwrite": false,
+  "commands_before_step": {
+    "cpu": {},
+    "mobility": {
+      "UAV_0": {
+        "angle": -0.15000000000000002,
+        "phi": 0.0,
+        "speed": 0.0
+      },
+      "UAV_1": {
+        "angle": -0.15000000000000002,
+        "phi": 0.0,
+        "speed": 0.0
+      }
+    },
+    "rb": {},
+    "route": "EXPLICIT_NOOP_ONLY"
+  },
+  "consumed_wireless_profiles": [],
+  "dispatch": {
+    "action_executed": true,
+    "environment_steps": 0,
+    "reason": "NO_SCOREABLE_H4",
+    "terminate_episode": false
+  },
+  "environment_steps": 1,
+  "execution_config_id": "26d7d93a06933c4e554a987e15fe04b3e95debf6a60cb5e6d4c3290b3758357d",
+  "finish_time_s": 4.6,
+  "fresh_observation_sha256": "6af848e69843fdfde824438f8d60da1f4eb3d87cdceae9088310325b18d4d259",
+  "fresh_observation_time_s": 4.6,
+  "future_target_read": false,
+  "locked_test": false,
+  "normalization_unchanged": true,
+  "observable_outcomes": {
+    "communication_observation": {
+      "total": {
+        "missing_reason": null,
+        "observed_mask": true
+      },
+      "wired": {
+        "missing_reason": null,
+        "observed_mask": true,
+        "source_method": "WiredNetworkManager.step"
+      },
+      "wireless": {
+        "missing_reason": null,
+        "observed_mask": true,
+        "source_method": "AirFogSimEnv._execute_communication"
+      }
+    },
+    "delivered_data_by_task": {},
+    "delivered_data_missing_reason": null,
+    "delivered_data_observed_mask": true,
+    "served_cpu_work_by_task": {},
+    "wired_delivered_data_by_task": {},
+    "wired_delivered_data_observed_mask": true,
+    "wireless_delivered_data_by_task": {},
+    "wireless_delivered_data_observed_mask": true
+  },
+  "performance_claim": false,
+  "route_command_count": 0,
+  "scenario": "simulated_NO_SCOREABLE_H4_canonical_fallback_one_step",
+  "selection_during_step": false,
+  "simulation_paused_during_preparation": true,
+  "slot_transfer_events": [],
+  "start_time_s": 4.5,
+  "verdict": "PASS"
+}

@@ -1,0 +1,23 @@
+{
+  "STEP_6_4F": "PASS",
+  "COMM_ELIGIBILITY_CONSISTENCY": "PASS",
+  "REAL_NONEMPTY_COMM_EXECUTION": "PASS",
+  "FALLBACK_A_REAL_EXECUTION": "PASS",
+  "Future_Target_leakage": "PASS",
+  "FULL_STATIC_AUDIT": "PASS",
+  "FORMAL_SEARCH_EVIDENCE_REUSE": "TARGETED_REQUALIFICATION_REQUIRED",
+  "B512_EVIDENCE_REQUALIFICATION_REQUIRED": true,
+  "PLANNER_V1_CLOSED_LOOP_B_WM": 512,
+  "CLOSED_LOOP_PRE_FORMAL_READINESS": "READY_FOR_FALLBACK_DECISION",
+  "readiness_boundary": "mechanism readiness only; revised-domain scientific evidence still requires separately authorized targeted requalification",
+  "FINAL_FALLBACK_POLICY": "RESEARCHER_DECISION_PENDING",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "Stage_B": "NOT_STARTED / DEFERRED",
+  "GPU": "NOT_USED",
+  "locked_test": false,
+  "focused_CPU_tests": 53,
+  "real_authorized_steps": 2,
+  "smoke_episodes": 2,
+  "search_calls": 0,
+  "WM_forward_count": 0
+}

@@ -101,7 +101,10 @@ class FallbackTests(unittest.TestCase):
         raw=json.loads(gzip.decompress((ROOT/frozen['raw_path']).read_bytes()))
         frame=frozen['anchor']
         prefix={**raw,'decisions':raw['decisions'][:frame+1],'steps':raw['steps'][:frame]}
-        _,domain=current_domain(prefix);_,comm=actions(domain)
+        _,domain=current_domain(prefix)
+        from pi_jwm.step6_0a_candidate_generation_v1 import CandidateActionStep
+        old=frozen['nonempty_comm_action']
+        comm=CandidateActionStep(route=(),comm=tuple(old['comm']['entries']),comp=tuple(old['comp']['entries']),mob=tuple(old['mobility']['entries']))
         rows={t['task_id']:t for t in prefix['decisions'][-1]['tasks']}
         self.assertEqual(rows[comm.comm[0]['task_id']]['lifecycle'],'failed')
         with self.assertRaisesRegex(SmokeFailure,'communication not current eligible'):

@@ -1,0 +1,40 @@
+{
+  "verdict": "PASS",
+  "tracked_scientific_source_changes": [
+    "code/src/pi_jwm/step6_3b_candidate_grammar_v1.py",
+    "code/src/pi_jwm/step6_4b_live_bridge_v1.py"
+  ],
+  "protected_source_SHA256": {
+    "code/src/pi_jwm/step6_3c_candidate_domain_v1.py": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409",
+    "code/src/pi_jwm/step6_3d_fixed_budget_search_v1.py": "9ce5852bd2b289fee734fd360b0d99b2d8176a9e736ead37f103a23914e121d4",
+    "code/src/pi_jwm/step6_3d_structured_proposal_v1.py": "8b18e62de3cdd3746ac5a89dd5bafb8d3ae62ce0729ca9156c593f4d6bada040",
+    "code/src/pi_jwm/step6_3d_method_selection_v1.py": "8606f916e1c8c2590d78c26611be3337ce37274cbb6cbf834dd48b901aef70ba",
+    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": "5898deca57da59163e5d9a8e06c24cbb4489cbfa3b5724bda7e37ebfae460247",
+    "code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py": "25ca59719023ed8d94b4f864041f7edf56b1b495a6fe86d5417cef94742c8a48"
+  },
+  "old_6_4E_all_tracked_bytes_unchanged": {
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/.gitattributes": "c2eacd55c09ddb5fbd173ba867cec5ebc8ff6a4215037c7dd48126e38fa1c390",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/01_fixture_and_execution_freeze.json": "2cf2dfe8e9e41a9d195ae73d9a0023954bf25e7f1ceceaf18770324b2555d880",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/01b_pre_environment_encoding_execution_identity.json": "2dc6cfc137687ab6bdbdd9b275034e21befe1f1c932c73dcac8e96ff968f50e8",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/02_future_target_poison_receipt.json": "3f1126933bc3913f05032204984e2c3c769b4ac69144df11d503b920924790aa",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/03_execution_started.json": "d72f8b77098ab8627abf794dfd04fd3cf1c0d16c580a7a73ddb2f11b30baa8f3",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/03a_pre_environment_import_failure.json": "ea31295cea7610c3ac2181aa1d6371c51f3d68b9ed16332553a0df299c050ee4",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/03b_first_environment_execution_started.json": "750fe8f596ebe5f2a6e502f43ce96f339b4c95a65be9903f643861d21a4729ea",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/04_real_nonempty_comm_one_step_receipt.json": "b62351eae65a2ac8167c638a68bdbcb14b3e56fa7004e2a888f7391582d95065",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/06_current_domain_bridge_conflict.json": "08091e52860cbe519557fd1034d1bffa194afe006b1ca1009c168621d6b96b30",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/07_fallback_negative_path_receipt.json": "c3a6bbd29752ff55ce5fa849fb94cfde02b515aaf9af1dc6079056d8a8d3bb48",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/08_fallback_candidate_audit.json": "3ee96c2514dfb4f6eccf0879c64eeffe4e37ab843ed2dc8919fb9247a5174eb4",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/09_budget_freeze_and_source_gate.json": "430d21b022cc307ca7827219162a31e1e6b217788d9f9b9908103c220ed60f05",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/10_pre_formal_readiness_receipt.json": "b142aadcc9a4fc6ce5425d967d7a30ff1f79f7adfb1cea27277e0c5da64902a2",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/11_closure_checks_receipt.json": "f58bcb2b94ec03d4eef0faa67758fd8b3875e4b74c0dd66dd35b842f0ee89cf1",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/12_SHA_manifest.json": "cb60fdc70889b4d0a059b6dbaf12bbc6e18ed13ba1eb37c0e0156899845ad969",
+    "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/12_SHA_manifest.sha256": "f0f46f8fdc5d4eaa64272bad6281c9ad3017e0000cf1248b7abc0121b5495f83"
+  },
+  "old_640_search_raw_SHA_verified": true,
+  "formal_dataset_and_normalization_changed": false,
+  "checkpoint_loaded": false,
+  "model_forward_count": 0,
+  "search_calls": 0,
+  "GPU": "NOT_USED",
+  "locked_test": false
+}

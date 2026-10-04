@@ -2074,16 +2074,22 @@
       "imported_by": [
         "pi_jwm.step4_4_structured_rssm_world_model_v1",
         "pi_jwm.step6_3b_candidate_grammar_v1",
+        "scripts.assess_step6_4f_search_evidence_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.build_step3_3_model_input_tensor_v1",
         "scripts.build_step4_4_structured_rssm_world_model_v1",
-        "tests.test_step3_3_model_input_tensor_v1"
+        "tests.test_step3_3_model_input_tensor_v1",
+        "tests.test_step6_4f_comm_eligibility_v1",
+        "tests.test_step6_4f_evidence_invariant_v1"
       ],
       "imports": [],
       "lifecycle_status": "support",
       "module": "pi_jwm.step3_3_model_input_tensor_v1",
       "path": "code/src/pi_jwm/step3_3_model_input_tensor_v1.py",
       "test_files": [
-        "code/tests/test_step3_3_model_input_tensor_v1.py"
+        "code/tests/test_step3_3_model_input_tensor_v1.py",
+        "code/tests/test_step6_4f_comm_eligibility_v1.py",
+        "code/tests/test_step6_4f_evidence_invariant_v1.py"
       ]
     },
     {
@@ -2187,6 +2193,7 @@
         "pi_jwm.step6_2b_planner_objective_scorer_v1",
         "scripts.audit_step6_2a_route_recovery_v1",
         "scripts.audit_step6_4b_closure_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.build_step4_2c_c_flow_sample_tensor_v1",
         "scripts.build_step4_3a_typed_dual_graph_builder_v1",
         "scripts.build_step4_3b_dual_graph_encoder_v1",
@@ -2233,6 +2240,7 @@
         "pi_jwm.step4_4_structured_rssm_world_model_v1",
         "pi_jwm.step5_2_training_loop_v1",
         "pi_jwm.step5_5_full_sharded_loader_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.build_step4_3a_typed_dual_graph_builder_v1",
         "scripts.build_step4_3b_dual_graph_encoder_v1",
         "scripts.build_step4_4_structured_rssm_world_model_v1",
@@ -2303,6 +2311,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "pi_jwm.step5_2_training_loop_v1",
+        "scripts.assess_step6_4f_search_evidence_v1",
         "scripts.build_step4_4_structured_rssm_world_model_v1",
         "scripts.build_step5_1b_posterior_loss_metric_receipt_v1",
         "scripts.build_step5_1d_unified_model_chain_v1",
@@ -2314,7 +2323,8 @@
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
         "tests.test_step4_4_structured_rssm_world_model_v1",
         "tests.test_step6_2a_patch_side_state_v1",
-        "tests.test_step6_2a_route_recovery_v1"
+        "tests.test_step6_2a_route_recovery_v1",
+        "tests.test_step6_4f_evidence_invariant_v1"
       ],
       "imports": [
         "pi_jwm.step3_3_model_input_tensor_v1",
@@ -2327,7 +2337,8 @@
       "test_files": [
         "code/tests/test_step4_4_structured_rssm_world_model_v1.py",
         "code/tests/test_step6_2a_patch_side_state_v1.py",
-        "code/tests/test_step6_2a_route_recovery_v1.py"
+        "code/tests/test_step6_2a_route_recovery_v1.py",
+        "code/tests/test_step6_4f_evidence_invariant_v1.py"
       ]
     },
     {
@@ -2504,6 +2515,7 @@
         "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.audit_step6_3d_selected_side_state_v1",
         "scripts.audit_step6_4b_closure_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.build_step6_3d_objective_eligible_anchors_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step5_6a_gpu_smoke_v1",
@@ -2616,6 +2628,7 @@
         "pi_jwm.step6_3c_search_protocol_v1",
         "pi_jwm.step6_3d_fixed_budget_search_v1",
         "scripts.audit_step6_4b_closure_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.build_step6_2b_patch_route_noop_receipts_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
@@ -2636,7 +2649,8 @@
         "tests.test_step6_2b_planner_objective_scorer_v1",
         "tests.test_step6_3b_candidate_grammar_v1",
         "tests.test_step6_3c_candidate_domain_v1",
-        "tests.test_step6_4b_live_bridge_v1"
+        "tests.test_step6_4b_live_bridge_v1",
+        "tests.test_step6_4e_fallback_v1"
       ],
       "imports": [
         "pi_jwm.step6_0c_planner_action_domain_v1",
@@ -2652,7 +2666,8 @@
         "code/tests/test_step6_2b_planner_objective_scorer_v1.py",
         "code/tests/test_step6_3b_candidate_grammar_v1.py",
         "code/tests/test_step6_3c_candidate_domain_v1.py",
-        "code/tests/test_step6_4b_live_bridge_v1.py"
+        "code/tests/test_step6_4b_live_bridge_v1.py",
+        "code/tests/test_step6_4e_fallback_v1.py"
       ]
     },
     {
@@ -2664,6 +2679,7 @@
         "pi_jwm.step6_3b_candidate_grammar_v1",
         "pi_jwm.step6_3c_candidate_domain_v1",
         "scripts.audit_step6_4b_closure_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.build_step6_2b_objective_receipts_v1",
         "scripts.build_step6_2b_patch_route_noop_receipts_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
@@ -2821,6 +2837,7 @@
         "pi_jwm.step6_3d_structured_proposal_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
         "scripts.audit_step6_4a_closed_loop_readiness_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.close_step6_3d_pre_validation_blockers_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_3bc_train_self_replay_v1",
@@ -2828,7 +2845,8 @@
         "scripts.run_step6_4e_comm_fallback_audit_v1",
         "tests.test_step6_3b_candidate_grammar_v1",
         "tests.test_step6_3c_candidate_domain_v1",
-        "tests.test_step6_3c_search_protocol_v1"
+        "tests.test_step6_3c_search_protocol_v1",
+        "tests.test_step6_4f_comm_eligibility_v1"
       ],
       "imports": [
         "pi_jwm.cpu_inner_rule_v1",
@@ -2836,7 +2854,8 @@
         "pi_jwm.step4_2a_graph_input_extension_v1",
         "pi_jwm.step6_0a_candidate_generation_v1",
         "pi_jwm.step6_0c_planner_action_domain_v1",
-        "pi_jwm.step6_3b_candidate_support_v1"
+        "pi_jwm.step6_3b_candidate_support_v1",
+        "pi_jwm.step6_4f_comm_eligibility_v1"
       ],
       "lifecycle_status": "support",
       "module": "pi_jwm.step6_3b_candidate_grammar_v1",
@@ -2844,7 +2863,8 @@
       "test_files": [
         "code/tests/test_step6_3b_candidate_grammar_v1.py",
         "code/tests/test_step6_3c_candidate_domain_v1.py",
-        "code/tests/test_step6_3c_search_protocol_v1.py"
+        "code/tests/test_step6_3c_search_protocol_v1.py",
+        "code/tests/test_step6_4f_comm_eligibility_v1.py"
       ]
     },
     {
@@ -2856,6 +2876,7 @@
         "pi_jwm.step6_3c_search_protocol_v1",
         "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.diagnose_step6_3bc_comp_amount_residual_v1",
         "scripts.run_step6_3bc_train_self_replay_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
@@ -2891,6 +2912,7 @@
         "pi_jwm.step6_3d_structured_proposal_v1",
         "scripts.audit_step6_3d_objective_eligible_anchors_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.run_step6_3c_candidate_domain_audit_v1",
         "scripts.run_step6_3c_recursive_mechanism_smoke_v1",
         "scripts.run_step6_3d_batch_transition_cpu_gate_v1",
@@ -2905,7 +2927,8 @@
         "tests.test_step6_3c_candidate_domain_v1",
         "tests.test_step6_3d_exact_oracle_v1",
         "tests.test_step6_3d_structured_proposal_v1",
-        "tests.test_step6_4e_fallback_v1"
+        "tests.test_step6_4e_fallback_v1",
+        "tests.test_step6_4f_comm_eligibility_v1"
       ],
       "imports": [
         "pi_jwm.step6_0a_candidate_generation_v1",
@@ -2920,7 +2943,8 @@
         "code/tests/test_step6_3c_candidate_domain_v1.py",
         "code/tests/test_step6_3d_exact_oracle_v1.py",
         "code/tests/test_step6_3d_structured_proposal_v1.py",
-        "code/tests/test_step6_4e_fallback_v1.py"
+        "code/tests/test_step6_4e_fallback_v1.py",
+        "code/tests/test_step6_4f_comm_eligibility_v1.py"
       ]
     },
     {
@@ -3062,8 +3086,10 @@
         "scripts.audit_step6_4e_closure_v1",
         "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.run_step6_4e_comm_fallback_audit_v1",
+        "scripts.run_step6_4f_real_comm_smoke_v1",
         "tests.test_step6_4b_live_bridge_v1",
-        "tests.test_step6_4e_fallback_v1"
+        "tests.test_step6_4e_fallback_v1",
+        "tests.test_step6_4f_comm_eligibility_v1"
       ],
       "imports": [],
       "lifecycle_status": "support",
@@ -3071,7 +3097,8 @@
       "path": "code/src/pi_jwm/step6_4b_live_bridge_v1.py",
       "test_files": [
         "code/tests/test_step6_4b_live_bridge_v1.py",
-        "code/tests/test_step6_4e_fallback_v1.py"
+        "code/tests/test_step6_4e_fallback_v1.py",
+        "code/tests/test_step6_4f_comm_eligibility_v1.py"
       ]
     },
     {
@@ -3130,6 +3157,20 @@
       "path": "code/src/pi_jwm/step6_4e_fallback_v1.py",
       "test_files": [
         "code/tests/test_step6_4e_fallback_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "pi_jwm.step6_3b_candidate_grammar_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_4f_comm_eligibility_v1",
+      "path": "code/src/pi_jwm/step6_4f_comm_eligibility_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4f_comm_eligibility_v1.py"
       ]
     },
     {
@@ -3865,6 +3906,24 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [
+        "tests.test_step6_4f_evidence_invariant_v1"
+      ],
+      "imports": [
+        "pi_jwm.step3_3_model_input_tensor_v1",
+        "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.assess_step6_4f_search_evidence_v1",
+      "path": "code/scripts/assess_step6_4f_search_evidence_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4f_evidence_invariant_v1.py"
+      ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [],
       "imports": [
         "pi_jwm.information_edge_contract_v4"
@@ -4102,6 +4161,29 @@
       "lifecycle_status": "support",
       "module": "scripts.audit_step6_4e_closure_v1",
       "path": "code/scripts/audit_step6_4e_closure_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.assess_step6_4f_search_evidence_v1"
+      ],
+      "imports": [
+        "pi_jwm.step3_3_model_input_tensor_v1",
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step4_3a_typed_dual_graph_builder_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_0c_planner_action_domain_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
+        "pi_jwm.step6_3b_candidate_support_v1",
+        "pi_jwm.step6_3c_candidate_domain_v1",
+        "scripts.build_step5_1d_unified_model_chain_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4f_comm_eligibility_v1",
+      "path": "code/scripts/audit_step6_4f_comm_eligibility_v1.py",
       "test_files": []
     },
     {
@@ -4626,6 +4708,7 @@
         "pi_jwm.step6_0a_candidate_generation_v1",
         "pi_jwm.step6_1_trained_candidate_rollout_v1",
         "scripts.audit_step6_4b_closure_v1",
+        "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.build_step6_2a_patch_readiness_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
@@ -5012,6 +5095,16 @@
       "lifecycle_status": "support",
       "module": "scripts.close_step6_4d_context_v1",
       "path": "code/scripts/close_step6_4d_context_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.close_step6_4f_records_v1",
+      "path": "code/scripts/close_step6_4f_records_v1.py",
       "test_files": []
     },
     {
@@ -8234,6 +8327,7 @@
       "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.audit_step6_4e_closure_v1",
+        "scripts.run_step6_4f_real_comm_smoke_v1",
         "tests.test_step6_4e_fallback_v1"
       ],
       "imports": [
@@ -8257,6 +8351,19 @@
       "test_files": [
         "code/tests/test_step6_4e_fallback_v1.py"
       ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4b_live_bridge_v1",
+        "scripts.run_step6_4e_comm_fallback_audit_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_4f_real_comm_smoke_v1",
+      "path": "code/scripts/run_step6_4f_real_comm_smoke_v1.py",
+      "test_files": []
     },
     {
       "category": "runnable_script",
@@ -9584,6 +9691,16 @@
       "lifecycle_status": "support",
       "module": "scripts.verify_step6_3d_3080ti_migration_v1",
       "path": "code/scripts/verify_step6_3d_3080ti_migration_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.verify_step6_4f_closure_v1",
+      "path": "code/scripts/verify_step6_4f_closure_v1.py",
       "test_files": []
     },
     {
@@ -12524,6 +12641,7 @@
       "evidence_role": "test_evidence",
       "imported_by": [],
       "imports": [
+        "pi_jwm.step6_0a_candidate_generation_v1",
         "pi_jwm.step6_3c_candidate_domain_v1",
         "pi_jwm.step6_4b_live_bridge_v1",
         "pi_jwm.step6_4e_fallback_v1",
@@ -12532,6 +12650,35 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4e_fallback_v1",
       "path": "code/tests/test_step6_4e_fallback_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step3_3_model_input_tensor_v1",
+        "pi_jwm.step6_3b_candidate_grammar_v1",
+        "pi_jwm.step6_3c_candidate_domain_v1",
+        "pi_jwm.step6_4b_live_bridge_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4f_comm_eligibility_v1",
+      "path": "code/tests/test_step6_4f_comm_eligibility_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step3_3_model_input_tensor_v1",
+        "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "scripts.assess_step6_4f_search_evidence_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4f_evidence_invariant_v1",
+      "path": "code/tests/test_step6_4f_evidence_invariant_v1.py",
       "test_files": []
     },
     {

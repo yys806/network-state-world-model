@@ -3,6 +3,52 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.4F-COMM-ELIGIBILITY-20261004",
+      "name": "Current Comm eligibility reconciliation and real execution audit",
+      "date": "2026-10-04",
+      "research_question": "Current planner/simulator legality reconciliation and historical search evidence scope",
+      "method": "CPU static full dataset and two independent real one-step mechanisms; no search",
+      "code": "code/scripts/run_step6_4f_real_comm_smoke_v1.py",
+      "code_version": {
+        "identity_type": "per_file_sha256_at_execution",
+        "git_commit": null,
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/01_fixture_and_execution_freeze.json",
+        "note": "New6F identity; old6E source/receipts preserved"
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/01_fixture_and_execution_freeze.json",
+      "parameters": {
+        "working_budget": 512,
+        "search_calls": 0,
+        "WM_forward_count": 0,
+        "authorized_steps_completed": 2,
+        "static_train_windows": 4416,
+        "static_validation_windows": 1104,
+        "device": "cpu"
+      },
+      "protocol": "docs/contracts/PIJWM_STEP_06_4F_COMM_ELIGIBILITY_V1.md",
+      "data": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/01_fixture_and_execution_freeze.json",
+      "split": [
+        "dev_train",
+        "dev_validation"
+      ],
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/09_final_acceptance_receipt.json",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/07_formal_search_evidence_reuse_assessment.json",
+      "status": "passed_mechanism_targeted_evidence_requalification_required",
+      "conclusion": "Eligibility and real mechanisms pass; old scientific search needs targeted requalification.",
+      "summary_zh": "STEP_6_4F=PASS；Comm当前资格修复与真实一步机制通过。共同谓词：Task present、offloading/transmitting、未完成，再与唯一合法活跃无线Flow绑定相交。Flow对象不删除，Flow存在不等于可执行。TRAIN4416/Validation1104完整静态前后审计与输入SHA一致；32/64搜索anchors中28/57的根候选域改变。真实TRAIN anchor0041：Task_24（offloading），UAV_1→vehicle_7，RB0/start0/width1，setter与真实无线传输事件一致，4.5→4.6s一次决策步；候选A独立episode、模拟NO_SCOREABLE_H4、同一bridge、无Comm的canonical合法动作亦4.5→4.6s。Future Target poison不改变当前输入/动作。FORMAL_SEARCH_EVIDENCE_REUSE=TARGETED_REQUALIFICATION_REQUIRED：7个Validation起点有覆盖全部H1–H4分支的规则不变量证明，另外57个旧raw无完整候选/预测轨迹，不足以证明winner/ranking不变。最小建议重新验证57×5×3方法B1024=855及57×5 MH B512=285，共1140cases；仅建议，未授权、未执行。旧TRAIN调参28/32根域受影响，不声称历史调参验证新域；K4/rho0.1按本轮研究者指令保持，不自动retune。B512_EVIDENCE_REQUALIFICATION_REQUIRED=true；PLANNER_V1_CLOSED_LOOP_B_WM=512作为研究者working-budget保留。CLOSED_LOOP_PRE_FORMAL_READINESS=READY_FOR_FALLBACK_DECISION仅表示执行机制就绪，不解除搜索证据重新验证门。FINAL_FALLBACK_POLICY=RESEARCHER_DECISION_PENDING；SEARCH_METHOD=MH-CEM pure-search骨架，非最终hybrid。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；Stage B=NOT_STARTED / DEFERRED；GPU=NOT_USED；locked_test=false。唯一下一动作是研究者审阅旧证据重新验证范围及fallback决定，不自动开跑。",
+      "claim_boundary": "Mechanism only, no revised-domain search/performance acceptance",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "seed": "No planner RNG/search; simulator replay seeds frozen in fixture receipt",
+        "checkpoint": "Not loaded; no neural model forward",
+        "metrics": "No planner performance metrics",
+        "code_version": "per-file execution identity; final Git closure separate"
+      }
+    },
+    {
       "id": "STEP-6.4E-COMM-FALLBACK-AUDIT-20261004",
       "name": "Budget freeze and real Comm/fallback closure audit",
       "date": "2026-10-04",
@@ -96,7 +142,9 @@
         "result": "Independently reconstructed from640original raw; no StageA/6.4C rewrite",
         "metrics": "Complete320per budget; original reference timings retained;20separates272invocation overhead",
         "code_version": "GPU owning protocol commit9b; final analysis tools have separate commit identity"
-      }
+      },
+      "current_definition_reuse": "TARGETED_REQUALIFICATION_REQUIRED",
+      "current_definition_scope_note": "Historical accepted old Comm eligibility only; see Step6.4F assessment. No historical metrics/receipts rewritten."
     },
     {
       "id": "STEP-6.4C-MH-BUDGET-CALIBRATION-20261003",
@@ -147,7 +195,9 @@
         "code_version": "execution owning commit c3c1f34 plus source-byte identity07b; analysis auditor owned by final closure commit",
         "checkpoint": "unchanged frozen checkpoint",
         "claim_boundary": "CALIBRATION SUBSET, no formal non-inferiority or real closed-loop performance"
-      }
+      },
+      "current_definition_reuse": "TARGETED_REQUALIFICATION_REQUIRED",
+      "current_definition_scope_note": "Historical accepted old Comm eligibility only; see Step6.4F assessment. No historical metrics/receipts rewritten."
     },
     {
       "id": "STEP-6.4B-TWO-CYCLE-SMOKE-20261003",
@@ -285,7 +335,9 @@
       "locked_test_accessed": false,
       "field_notes": {
         "code_version": "Frozen scientific source587efdf; closure code and documentation are separate from execution identity."
-      }
+      },
+      "current_definition_reuse": "TARGETED_REQUALIFICATION_REQUIRED",
+      "current_definition_scope_note": "Historical accepted old Comm eligibility only; see Step6.4F assessment. No historical metrics/receipts rewritten."
     },
     {
       "id": "STEP-6.3D-PRE-VALIDATION-BLOCKER-CLOSURE-20261001",

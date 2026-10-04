@@ -13,6 +13,7 @@ from typing import Mapping, Sequence
 import torch
 
 from pi_jwm.cpu_inner_rule_v1 import CpuTaskDemand, allocate_work_conserving_cpu
+from pi_jwm.step6_4f_comm_eligibility_v1 import tensor_comm_task_eligible
 from pi_jwm.step3_3_model_input_tensor_v1 import LIFECYCLE_VOCAB
 from pi_jwm.step4_2a_graph_input_extension_v1 import TASK_AGENT_RELATION_TYPE_VOCAB
 from pi_jwm.step6_0a_candidate_generation_v1 import (
@@ -84,6 +85,10 @@ def _wireless_bindings(state: Mapping[str, torch.Tensor],
             continue
         task_slot = _int(state, "flow_task_index", flow)
         if task_slot not in inverse or not _bool(state, "task_presence", task_slot):
+            continue
+        # Flow may remain in the learned state after Task failure/completion.
+        # Its existence is not current Planner permission to issue Comm.
+        if not tensor_comm_task_eligible(state, task_slot):
             continue
         task_id = inverse[task_slot]
         relation = _int(state, "flow_comm_relation_index", flow)

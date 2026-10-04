@@ -1,0 +1,48 @@
+{
+  "verdict": "PASS",
+  "focused_tests": {
+    "total": 53,
+    "result": "OK",
+    "commands": [
+      "python -m unittest test_step6_4f_comm_eligibility_v1 test_step6_3b_candidate_grammar_v1 test_step6_3c_candidate_domain_v1 test_step6_3c_search_protocol_v1 test_step6_3d_structured_proposal_v1 test_step6_3d_exact_oracle_v1 test_step6_3d_method_selection_v1 test_step6_4b_live_bridge_v1 test_step6_4e_fallback_v1",
+      "python -m unittest test_step6_4f_evidence_invariant_v1"
+    ],
+    "actual_outputs": [
+      "Ran 50 tests in 32.332s; OK",
+      "Ran 3 tests in 0.012s; OK"
+    ]
+  },
+  "negative_paths": "failed/completed/explicit completion/missing lifecycle/invalid Flow or relation/missing live field/illegal bridge/domain empty/setter fail closed covered by focused 6F+6B+6E tests",
+  "compileall": {
+    "command": "python -m compileall -q code/src code/scripts code/tests",
+    "exit_code": 0
+  },
+  "Context_Consistency_Check": {
+    "verdict": "PASS",
+    "current_context_SHA256": {
+      "AI_CONTEXT/00_PROJECT_STATE.md": "ff8a7bb1475e2e1781df252352bdd718f06f964bcc98ddd622bcdcde054477bf",
+      "AI_CONTEXT/01_RESEARCH_CONTEXT.md": "b4de35146e438bebf7e9aec232a9495feddd65045f5133af57004b23631784bd",
+      "AI_CONTEXT/02_ARCHITECTURE.md": "478b53c76c45c5ac7f159fb908bb65e001a756aab28542f4c73c52166e81dadd",
+      "AI_CONTEXT/03_DATA_FLOW.md": "5f41ef66390c8fd367b37c446a7dd77556998ef71203c097b0639ef0b79db550",
+      "AI_CONTEXT/04_MODULE_MAP.md": "1c527cdc9ef5b3054d21169a8fa030c4fff23c47f47a487bf1c03b10db62cbc0",
+      "AI_CONTEXT/05_EXPERIMENTS.md": "43030c1674311dbce4c5f48e722e8affcaba5d9c2bd3c08d2a24ba0d9b84fe89",
+      "AI_CONTEXT/06_DECISIONS.md": "163c0df4db3adf30e0732cfbe7627771de4a0a38bd1f4b4f71b6c7bfddf1bff5",
+      "AI_CONTEXT/07_KNOWN_ISSUES.md": "f9192b3ffa5f170dbd36f85af99d7f35c36e4b31e99e9ae6ba10ee315a39f768",
+      "AI_CONTEXT/08_CHANGELOG.md": "0bf07dff6f3f543fb2192246181caceb8999e61e828ce8237eb1cec868601112"
+    },
+    "boundary": "mechanism PASS, scientific targeted requalification pending, working budget512 separate, no automatic experiments"
+  },
+  "execution_source_SHA_MATCH": "PASS",
+  "archive_roundtrip": "PASS",
+  "git_diff_check": "PASS",
+  "knowledge_index": {
+    "commands": [
+      "python code/scripts/build_project_knowledge_index_v1.py",
+      "python code/scripts/build_project_knowledge_index_v1.py --check"
+    ],
+    "actual_result": "passed=true, mismatches=[], output_count=5",
+    "note": "Repeat write/check after final receipt staging; console output independently verifies current state"
+  },
+  "GPU": "NOT_USED",
+  "locked_test": false
+}
