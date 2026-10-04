@@ -1,0 +1,8 @@
+{
+  "candidate_count_reduction": 0.5323683032383226,
+  "mean_runtime_reduction": 0.5186347237502211,
+  "median_runtime_reduction": 0.5186622581612897,
+  "runtime_scope": "search internal; reused raw original timings retained",
+  "scoreability_delta": 0.0,
+  "transition_reduction": 0.5
+}

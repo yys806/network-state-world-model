@@ -1,0 +1,28 @@
+{
+  "BURDEN_EFFORT_ONLY_DEGRADATION_COUNT": 109,
+  "PRIMARY_OBJECTIVE_DEGRADATION_COUNT": 0,
+  "all_equal": 21,
+  "both_scoreable_count": 160,
+  "components": {
+    "A_DDL": {
+      "B1024_better": 0,
+      "B512_better": 0
+    },
+    "J_Burden": {
+      "B1024_better": 8,
+      "B512_better": 1
+    },
+    "J_Delay": {
+      "B1024_better": 0,
+      "B512_better": 0
+    },
+    "J_Effort": {
+      "B1024_better": 101,
+      "B512_better": 29
+    },
+    "N_DDL": {
+      "B1024_better": 0,
+      "B512_better": 0
+    }
+  }
+}

@@ -1,3 +1,7 @@
+## 2026-10-04 STEP 6.4D 验收边界
+
+6.4D入口prepare_step6_4d_full_cohort_b512_v1.py、run_step6_4d_full_cohort_b512_v1.py；独立auditor为audit_step6_4d_completed_expansion_v1.py，机器验收17/18/19。 CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；Stage B=NOT_STARTED；locked_test=false。 SEARCH_METHOD仍MH-CEM纯搜索骨架，非最终hybrid。
+
 ## 2026-10-03 STEP 6.4C 当前边界
 
 预算校准模块：code/src/pi_jwm/step6_4c_budget_calibration_v1.py；prepare/run/manage_step6_4c scripts；analysis-only audit_step6_4c_completed_budget_calibration_v1.py。独立namespace pi_jwm_step6_4c_mh_budget_calibration_v1_20261003；运行身份07b，07为未执行前置身份（0 GPU cases）并保留；新增auditor不属于GPU执行source closure。 CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，Stage B=NOT_STARTED，locked_test=false。

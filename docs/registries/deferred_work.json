@@ -6,7 +6,7 @@
       "type": "candidate_method_research",
       "status": "deferred",
       "reason": "Only B512 full64x5 expansion separately authorized as STEP6.4D. B256 expansion, original Stage B, closed-loop performance and final budget freeze remain deferred and require separate researcher decision.",
-      "summary_zh": "研究者审阅后决定是否单独预注册与授权64×5 MH-only扩样；不等同原完整Stage B，不自动启动。",
+      "summary_zh": "STEP6.4D仅B512完整64×5扩样已验收。B256扩样/原StageB/正式闭环/最终预算仍未授权；研究者下一步审阅并决定，不自动运行。",
       "authorization_required": true,
       "auto_start": false,
       "locked_test_accessed": false,

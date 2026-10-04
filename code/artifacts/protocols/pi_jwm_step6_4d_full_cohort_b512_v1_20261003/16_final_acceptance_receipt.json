@@ -1,0 +1,16 @@
+{
+  "CLOSED_LOOP_BUDGET": "RESEARCHER_DECISION_PENDING",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "Stage B": "NOT_STARTED",
+  "actual_new_unique_transitions": 139264,
+  "claim_boundary": "budget quality/compute comparison, no equivalence or closed-loop performance claim",
+  "coverage": 320,
+  "execution_config_id": "1c3cd986dbda4559e94fa37013b2d70e96adf85911c44e88cc22cfe3f99fd843",
+  "locked_test": false,
+  "new_cases": 272,
+  "nominal_new_budget": 139264,
+  "parent_cases": 320,
+  "protocol_freeze_commit": "9b7f50e58d410e012d9b27ed04661e8c88191f2a",
+  "reused_cases": 48,
+  "verdict": "STEP_6_4D_FULL_COHORT_B512=PASS"
+}

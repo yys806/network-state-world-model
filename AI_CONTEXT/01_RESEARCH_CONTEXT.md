@@ -1,3 +1,7 @@
+## 2026-10-04 STEP 6.4D 验收边界
+
+完整64×5预算取舍验收通过；前三项一致与后两項损失只是冻结模型内Objective观察，不能外推真实闭环或系统收益。 CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；Stage B=NOT_STARTED；locked_test=false。 SEARCH_METHOD仍MH-CEM纯搜索骨架，非最终hybrid。
+
 ## 2026-10-03 STEP 6.4C 当前边界
 
 本轮只回答MH-CEM的模型内预算/质量/计算代价取舍。16×3 subset观察不能外推为64×5正式总体或非劣性；前三项最佳objective一致，不能把晚序负担/动作开销差异称为真实任务时延/完成率差异。 CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，Stage B=NOT_STARTED，locked_test=false。

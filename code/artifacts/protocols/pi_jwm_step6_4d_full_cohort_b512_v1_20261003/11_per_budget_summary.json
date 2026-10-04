@@ -1,0 +1,54 @@
+{
+  "1024": {
+    "N_admitted_steps": 543789,
+    "N_cache_hits": 200005,
+    "N_dead_end_branches": 32097,
+    "N_proposed_steps": 543789,
+    "N_rejected_steps": 0,
+    "N_unique_transition_evals": 327680,
+    "actual_transitions_per_second": 8.551453374725675,
+    "case_count": 320,
+    "complete_h4": 111943,
+    "distinct_scoreable_h4": 33505,
+    "return_birth_boundary": 55999,
+    "runtime_scope": "in-solve only; matrix/setup overhead recorded separately",
+    "runtime_seconds": {
+      "P90": 204.91585919531062,
+      "P95": 284.152411858179,
+      "max": 421.7007342008874,
+      "mean": 119.74572685229069,
+      "median": 90.5059659969993,
+      "sum_in_solve": 38318.63259273302
+    },
+    "scoreable_cases": 160,
+    "scoreable_rate": 0.5,
+    "scorer_exceptions": 0,
+    "unscoreable_h4": 55999
+  },
+  "512": {
+    "N_admitted_steps": 228391,
+    "N_cache_hits": 50051,
+    "N_dead_end_branches": 15493,
+    "N_proposed_steps": 228391,
+    "N_rejected_steps": 0,
+    "N_unique_transition_evals": 163840,
+    "actual_transitions_per_second": 8.882499212810224,
+    "case_count": 320,
+    "complete_h4": 42647,
+    "distinct_scoreable_h4": 15668,
+    "return_birth_boundary": 23891,
+    "runtime_scope": "in-solve only; matrix/setup overhead recorded separately",
+    "runtime_seconds": {
+      "P90": 92.31587423020977,
+      "P95": 124.39024970720074,
+      "max": 225.38688146602362,
+      "mean": 57.64143488598347,
+      "median": 43.563937295926735,
+      "sum_in_solve": 18445.25916351471
+    },
+    "scoreable_cases": 160,
+    "scoreable_rate": 0.5,
+    "scorer_exceptions": 0,
+    "unscoreable_h4": 23891
+  }
+}

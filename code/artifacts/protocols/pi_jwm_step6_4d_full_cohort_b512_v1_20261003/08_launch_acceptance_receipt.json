@@ -1,0 +1,23 @@
+{
+  "CLOSED_LOOP_BUDGET": "RESEARCHER_DECISION_PENDING",
+  "Context_Consistency_Check": {
+    "errors": [],
+    "validated_file_count": 9
+  },
+  "READY_FOR_GPU_LAUNCH": true,
+  "Stage B": "NOT_STARTED",
+  "backup_storage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4d_full_cohort_b512_v1_20261003",
+  "exact_remote_commit_and_tracked_clean_prelaunch": true,
+  "execution_config_id": "1c3cd986dbda4559e94fa37013b2d70e96adf85911c44e88cc22cfe3f99fd843",
+  "gpu_running": true,
+  "hardware": "NVIDIA GeForce RTX 3080 Ti CUDA FP32 batch16",
+  "initial_new_result_count": 0,
+  "launch_verdict": "PASS",
+  "locked_test": false,
+  "monitor": "code/scripts/watch_step6_4d_readonly_backup_v1.py",
+  "protocol_freeze_commit": "9b7f50e58d410e012d9b27ed04661e8c88191f2a",
+  "server_fetch_fast_forward": "PASS",
+  "source_config_checkpoint_and_parent_reuse_preflight": "PASS",
+  "start_time_utc": "2026-10-03T13:38:52.692909+00:00",
+  "verified_initial_new_raw_count": 3
+}

@@ -1,0 +1,13 @@
+{
+  "status": "SHUT_DOWN_REPORTED_BY_RESEARCHER",
+  "confirmation_source": "Human reply in this chat: 我已经关机了",
+  "ui_shutdown_verified_by_codex": false,
+  "computer_use_status": "Stopped by safety mechanism: current Edge URL could not be reliably identified",
+  "new_raw_local_sha_backup_before_shutdown": "PASS",
+  "independent_acceptance_before_shutdown": "PASS",
+  "archive_before_shutdown": "PASS",
+  "archive_sha256": "14af6e821e6765bd767386cf408fa3d547a5d1f1c50608491f4437a41f4e26a4",
+  "gpu_search_finished": true,
+  "Stage B": "NOT_STARTED",
+  "locked_test": false
+}

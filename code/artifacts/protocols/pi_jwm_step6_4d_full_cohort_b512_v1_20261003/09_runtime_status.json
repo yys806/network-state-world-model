@@ -1,0 +1,15 @@
+{
+  "Stage B": "NOT_STARTED",
+  "cases_per_hour_this_invocation": 39.6560648036551,
+  "coverage_completed": 320,
+  "coverage_target": 320,
+  "elapsed_wall_clock_seconds": 24692.31389569817,
+  "execution_config_id": "1c3cd986dbda4559e94fa37013b2d70e96adf85911c44e88cc22cfe3f99fd843",
+  "locked_test": false,
+  "new_forward_cases_this_invocation": 272,
+  "new_results_completed": 272,
+  "new_target": 272,
+  "protocol_freeze_commit": "9b7f50e58d410e012d9b27ed04661e8c88191f2a",
+  "start_time_utc": "2026-10-03T13:38:52.692909+00:00",
+  "update_time_utc": "2026-10-03T20:30:24.065905+00:00"
+}

@@ -1,0 +1,120 @@
+{
+  "verdict": "PASS",
+  "focused_cpu_tests": [
+    {
+      "command": "python -m unittest discover -s code/tests -p 'test_step6_4d*.py'",
+      "tests": 6,
+      "seconds": 0.382,
+      "result": "OK"
+    },
+    {
+      "command": "python -m unittest discover -s code/tests -p 'test_step6_4c*.py'",
+      "tests": 4,
+      "seconds": 0.002,
+      "result": "OK"
+    },
+    {
+      "command": "python -m unittest discover -s code/tests -p 'test_step6_3d*.py'",
+      "tests": 34,
+      "seconds": 31.19,
+      "result": "OK",
+      "note": "Expected argparse refusal messages exercised by negative tests; suite OK"
+    }
+  ],
+  "compileall": {
+    "command": "python -m compileall -q code/src code/scripts code/tests",
+    "result": "PASS"
+  },
+  "Context_Consistency_Check": {
+    "verdict": "PASS",
+    "files": [
+      {
+        "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+        "sha256": "6e41ac8ea2649d138e8bc376545d17a6861ca3d6faf031a59529ae9194ea2ed5",
+        "review": "PASS",
+        "basis": "17accepted raw evidence; no change to scientific definitions or historical results"
+      },
+      {
+        "path": "AI_CONTEXT/01_RESEARCH_CONTEXT.md",
+        "sha256": "af95b9f8245af9353555cb3c93d737a2c384cc4b7eadf7cb47b93091dc6b010e",
+        "review": "PASS",
+        "basis": "17accepted raw evidence; no change to scientific definitions or historical results"
+      },
+      {
+        "path": "AI_CONTEXT/02_ARCHITECTURE.md",
+        "sha256": "fb543d40e7288bfa9910bac59201764bd416af0e84e7b83555891bb4d18dfcbb",
+        "review": "PASS",
+        "basis": "17accepted raw evidence; no change to scientific definitions or historical results"
+      },
+      {
+        "path": "AI_CONTEXT/03_DATA_FLOW.md",
+        "sha256": "da6c62491cebfd1bc95038e7e4ddfdfdfc4d7f4bd4abda2611fc91f8302a2364",
+        "review": "PASS",
+        "basis": "17accepted raw evidence; no change to scientific definitions or historical results"
+      },
+      {
+        "path": "AI_CONTEXT/04_MODULE_MAP.md",
+        "sha256": "63045c8991ecbf199b09458237fb93bede533ab1e6d5ff0a31ee912598435013",
+        "review": "PASS",
+        "basis": "17accepted raw evidence; no change to scientific definitions or historical results"
+      },
+      {
+        "path": "AI_CONTEXT/05_EXPERIMENTS.md",
+        "sha256": "6340e743f1d178e3a5d26bc7f24344e2786894b56e632e304a72a971e67c2b0a",
+        "review": "PASS",
+        "basis": "17accepted raw evidence; no change to scientific definitions or historical results"
+      },
+      {
+        "path": "AI_CONTEXT/06_DECISIONS.md",
+        "sha256": "7ded7596af534e4ef45ec024ef33c235569a5f2e499e359da092298b0f6a71d9",
+        "review": "PASS",
+        "basis": "17accepted raw evidence; no change to scientific definitions or historical results"
+      },
+      {
+        "path": "AI_CONTEXT/07_KNOWN_ISSUES.md",
+        "sha256": "aff6db6eb8392ff140674aae564d8e6d4bd35fc8c8108c132fa5240fef7887bf",
+        "review": "PASS",
+        "basis": "17accepted raw evidence; no change to scientific definitions or historical results"
+      },
+      {
+        "path": "AI_CONTEXT/08_CHANGELOG.md",
+        "sha256": "85e42392593e98a1605338de9d41507135b32272306444fb2aaf024b4d7d773f",
+        "review": "PASS",
+        "basis": "17accepted raw evidence; no change to scientific definitions or historical results"
+      }
+    ],
+    "current_status": "STEP_6_4D_FULL_COHORT_B512=PASS",
+    "state_from_raw": {
+      "B512_coverage": 320,
+      "parent_coverage": 320,
+      "new_cases": 272,
+      "reused_cases": 48,
+      "primary_degradation": 0
+    },
+    "research_decisions_changed": false
+  },
+  "source_input_checkpoint_sha": "PASS",
+  "all_640_raw_original_sha": "PASS",
+  "archive_sha": "PASS",
+  "git_diff_check": "PASS",
+  "knowledge_index": {
+    "write_command": "python code/scripts/build_project_knowledge_index_v1.py",
+    "check_command": "python code/scripts/build_project_knowledge_index_v1.py --check",
+    "write_result": "PASS",
+    "check_result": "PASS",
+    "mismatches": [],
+    "output_count": 5,
+    "note": "Final generated index repeats after SHA seal to include newly staged receipts; frozen index-builder source unchanged"
+  },
+  "scope": {
+    "Stage B": "NOT_STARTED",
+    "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+    "locked_test": false
+  },
+  "known_limits": [
+    "future Return-birth fixed-support remains",
+    "no final closed-loop budget decision",
+    "shutdown researcher-confirmed, not Codex UI-verified",
+    "search-time comparison includes historical timing provenance; not realtime deadline"
+  ]
+}

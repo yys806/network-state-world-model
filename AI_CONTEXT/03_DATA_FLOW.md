@@ -1,3 +1,7 @@
+## 2026-10-04 STEP 6.4D 验收边界
+
+既有静态64anchor×5seed→48原B512 SHA引用+272新B512→原320 B1024 SHA引用→320严格配对/首差/cluster统计→640raw inventory。无环境动作、无Future Target选样、无locked_test。 CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；Stage B=NOT_STARTED；locked_test=false。 SEARCH_METHOD仍MH-CEM纯搜索骨架，非最终hybrid。
+
 ## 2026-10-03 STEP 6.4C 当前边界
 
 运行前static Validation manifest→按stratum/SHA排序冻结16 anchors→96新B256/B512 GPU raw；配对引用48旧B1024 raw→六类/内部runtime统计→独立验收与D: ZIP。无新环境动作、无Future Target作为选择输入、无新TRAIN或locked_test读取。 CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，Stage B=NOT_STARTED，locked_test=false。

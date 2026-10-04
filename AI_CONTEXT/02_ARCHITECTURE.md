@@ -1,3 +1,7 @@
+## 2026-10-04 STEP 6.4D 验收边界
+
+新增6.4D orchestration、只读SHA备份、标准库独立统计审计；原MH/WM/Domain/Objective算法和checkpoint全部字节身份不变。 CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；Stage B=NOT_STARTED；locked_test=false。 SEARCH_METHOD仍MH-CEM纯搜索骨架，非最终hybrid。
+
 ## 2026-10-03 STEP 6.4C 当前边界
 
 新增独立calibration orchestration、静态cohort selector及raw auditor；复用原run_step6_3d_one_cpu_solve_v1.run CUDA16计算链，不修改WM/CandidateDomain/Grammar/Objective/MH数学。架构仍pure-search backbone，closed-loop机制PASS与正式性能NOT_STARTED分开。 CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，Stage B=NOT_STARTED，locked_test=false。

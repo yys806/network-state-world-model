@@ -4053,6 +4053,16 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4d_completed_expansion_v1",
+      "path": "code/scripts/audit_step6_4d_completed_expansion_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.test_temporal_candidate_protocol"
       ],
@@ -4895,6 +4905,16 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.check_step6_4d_closure_v1",
+      "path": "code/scripts/check_step6_4d_closure_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
       "imports": [
         "pi_jwm.step6_3d_method_selection_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1"
@@ -4937,6 +4957,16 @@
       "test_files": [
         "code/tests/test_step6_3d_stage_a_acceptance_v1.py"
       ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.close_step6_4d_context_v1",
+      "path": "code/scripts/close_step6_4d_context_v1.py",
+      "test_files": []
     },
     {
       "category": "runnable_script",
@@ -6177,7 +6207,9 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "scripts.watch_step6_4d_readonly_backup_v1"
+      ],
       "imports": [],
       "lifecycle_status": "support",
       "module": "scripts.manage_step6_4d_remote_v1",
@@ -8133,6 +8165,7 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "scripts.watch_step6_4d_readonly_backup_v1",
         "tests.test_step6_4d_runner_gates_v1"
       ],
       "imports": [
@@ -9485,6 +9518,19 @@
       "lifecycle_status": "support",
       "module": "scripts.visualize_dataset_v0",
       "path": "code/scripts/visualize_dataset_v0.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "scripts.manage_step6_4d_remote_v1",
+        "scripts.run_step6_4d_full_cohort_b512_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.watch_step6_4d_readonly_backup_v1",
+      "path": "code/scripts/watch_step6_4d_readonly_backup_v1.py",
       "test_files": []
     },
     {

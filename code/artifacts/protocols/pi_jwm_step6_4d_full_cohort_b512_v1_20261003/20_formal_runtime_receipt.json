@@ -1,0 +1,15 @@
+{
+  "start_time_utc": "2026-10-03T13:38:52.692909+00:00",
+  "last_case_finish_time_utc": "2026-10-03T20:30:24.065905+00:00",
+  "actual_elapsed_to_last_case_seconds": 24692.31389569817,
+  "new_cases": 272,
+  "new_cases_per_hour": 39.6560648036551,
+  "new_cases_in_solve_seconds": 15423.435337026138,
+  "matrix_loading_setup_overhead_seconds": 9268.878558672033,
+  "actual_new_transition_throughput_in_solve": 9.029376202957655,
+  "actual_new_transition_throughput_end_to_end": 5.639973660964281,
+  "reused_48_runtime_excluded_from_this_invocation_elapsed": true,
+  "full_320_per_budget_in_solve_runtime_source": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/11_per_budget_summary.json",
+  "scope": "synchronous paused simulation; no realtime-control or closed-loop-performance claim",
+  "locked_test": false
+}

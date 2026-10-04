@@ -1,0 +1,11 @@
+{
+  "archive": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/new_b512_expansion_raw_and_receipts.zip",
+  "archive_file_count": 291,
+  "archive_sha256": "14af6e821e6765bd767386cf408fa3d547a5d1f1c50608491f4437a41f4e26a4",
+  "existing_6_4c_and_stage_a_raw_not_copied_or_modified": true,
+  "inventory_sha256": "38e8f9fa16772a9486412cf679afcdcc56d7bfe4fc54a9efb5e97f280830cbd2",
+  "local_persistent_storage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4d_full_cohort_b512_v1_20261003",
+  "locked_test": false,
+  "referenced_original_raw_sha_and_local_paths": true,
+  "verdict": "PASS"
+}

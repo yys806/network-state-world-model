@@ -119,5 +119,20 @@
       "experiment_id": "LOCKED-TEST",
       "reason": "sealed; no access authorized"
     }
+  ],
+  "budget_calibration_acceptance_sources": [
+    {
+      "id": "RES-STEP-6.4D-FULL-COHORT-MH-B512-20261004",
+      "experiment_id": "STEP-6.4D-FULL-COHORT-MH-B512-20261003",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/17_independent_acceptance_receipt.json",
+      "audit_sha256": "d244d46d54ce337c1cd08ed42e12b2526f487d96cab9ce04decccd5594b37d82",
+      "summary": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/11_per_budget_summary.json",
+      "pairwise": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/12_paired_budget_comparison.json",
+      "objective_components": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/13_objective_first_difference.json",
+      "archive": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/19_archive_acceptance_receipt.json",
+      "numeric_validation": "stdlib-only raw independent auditor; this is a navigation source, not an unsupported numeric registry row",
+      "claim_boundary": "Full-cohort budget comparison only; not equivalence, closed-loop performance or budget freeze",
+      "locked_test_accessed": false
+    }
   ]
 }

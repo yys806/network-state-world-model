@@ -10,14 +10,18 @@
       ],
       "primary_sources": [
         "docs/implementation_records/STEP_06_4D_FULL_COHORT_MH_B512.md",
-        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/07_cpu_preflight_receipt.json"
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/17_independent_acceptance_receipt.json"
       ],
       "verification_sources": [
         "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/01_full_cohort_manifest.json",
         "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/02_expansion_protocol.json",
         "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/03_b1024_parent_receipt.json",
         "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/04_b512_reuse_receipt.json",
-        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/05_execution_config_3080ti.json"
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/05_execution_config_3080ti.json",
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/12_paired_budget_comparison.json",
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/13_objective_first_difference.json",
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/19_archive_acceptance_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/20_formal_runtime_receipt.json"
       ]
     },
     {

@@ -1,0 +1,1910 @@
+{
+  "count": 272,
+  "files": [
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0196df3cbefa04e4_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "seed": 6314,
+      "sha256": "5820519eccded1b567eab76b0f2474c5ddf155631c021b72df341d8ff8ab025c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0196df3cbefa04e4_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "seed": 6315,
+      "sha256": "ddf7a872a786cdb1cdd2ac3172874d10b27dcb8d7479e58b1cf951365ce7d5ba"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/003fdb53cc06c033_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "seed": 6314,
+      "sha256": "494c1febd8356d9646c47d8da0756adc52535ceb7ec275108d5e05f546575beb"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/003fdb53cc06c033_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "seed": 6315,
+      "sha256": "6f4a62336b71c970617be79bbedca161623e1e4d8f2f9cc0b705d23f3b84d329"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/030494ff8bd97aac_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "seed": 6314,
+      "sha256": "6faa81f7de465dc50f7cf7ff9ae651acf2609e7b9b60c50e95b48cad543a8801"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/030494ff8bd97aac_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "seed": 6315,
+      "sha256": "f0bea5bd2b771e551f45aa560b02dca99c70020d5f582b0d8c220beb25591603"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0137068ea655e673_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "seed": 6314,
+      "sha256": "04f2d35d59610ebaa7be4f111f09f6f686433c814c65f83e479d6e6af010da8b"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0137068ea655e673_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "seed": 6315,
+      "sha256": "e3ef751408353ad6675c687a64d03194d97e8cf0d309e390d7f25cc099950335"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0940a80e6ec26ccc_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6311,
+      "sha256": "8b27d95af84fea3078ee4ca09ec4162a6d1fb9a340802bedb1d9e1a44fc1f1eb"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0940a80e6ec26ccc_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6312,
+      "sha256": "f9f001c2527f6252c6609653e67724988005d4e3673f57d81e1c00c912e3e26e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0940a80e6ec26ccc_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6313,
+      "sha256": "b256962b4bf1b411007590f40872f214fd3c857320f2f7500bde30c19eab0ede"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0940a80e6ec26ccc_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6314,
+      "sha256": "2e55a2f15c5024a878cd69fb5db61966fa3d4b267362edde8fe8d73c91e51b9c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0940a80e6ec26ccc_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6315,
+      "sha256": "76252af9c4d5facc9d8b7924856170521759647d0df8df5a8515908a6b7fb08f"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0386545a66fabed2_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "seed": 6314,
+      "sha256": "9f73cd1f0a20d7f80bce48685c4f89ee418c608821e8a5e4e3ab2933bce19962"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0386545a66fabed2_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "seed": 6315,
+      "sha256": "f4bae37f7f689ed27223c0edc38f874ce4919e50922990b12b1221a7de1f7ea6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/001c46751fd0e093_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "seed": 6314,
+      "sha256": "d112c24b4d140c5a4b6e67dbffe4efab924928003342568f4739c72c0b4d5485"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/001c46751fd0e093_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "seed": 6315,
+      "sha256": "af5d60069afc751a63e5c17aced9c03503d2b84288d078384fbdfd6c5288a569"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/15afd26a0f59e89e_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6311,
+      "sha256": "bf1197e372bcef2175d64846a4d6b44cb73b0fc44a73d3d91415c2177700059a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/15afd26a0f59e89e_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6312,
+      "sha256": "eb76db400827de133f98288185158e9e1b7213852dfc529aab97c2132687eff2"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/15afd26a0f59e89e_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6313,
+      "sha256": "78b2a8cc85ba999326468385c4d97099bc07462b1bdbf4874ab6b02da12ee0fe"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/15afd26a0f59e89e_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6314,
+      "sha256": "d1bdf2a2d63a187cfdbb0df13c7067f804c5327fec908a7482989271334a7bbf"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/15afd26a0f59e89e_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6315,
+      "sha256": "7061153dead25bae5f150c8956d2cacb9236910387d387a29ec233e0760549d7"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/00b1296b300a1708_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "seed": 6314,
+      "sha256": "b14561d6f738955f1ed1bb4e823ae93726e6165c945cd678bbb2b4045e4e73ad"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/00b1296b300a1708_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "seed": 6315,
+      "sha256": "f49e554ab87dafc66cd5ad93a3e8b60532808c6bdd1863c2a4f0147b70087d87"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1d022fde9cff0038_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6311,
+      "sha256": "f3e5ed74c9697c3cda9aa5fec16368af0a1b16aa19e2086c74f25e1621b320c8"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1d022fde9cff0038_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6312,
+      "sha256": "086da5a73fa54e4a9ebc87f9c7d954b50bacea8f7240bcff7d0dd221aba84c43"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1d022fde9cff0038_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6313,
+      "sha256": "bfb3832279d441d5f5a1775c3be45c4b136def87bc302fd422260ea3c149b7b1"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1d022fde9cff0038_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6314,
+      "sha256": "b65c3e6038bf4ecea41c0213c53caa3fb75e5313414ba8a8e45b36b1892c6d61"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1d022fde9cff0038_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6315,
+      "sha256": "f96c07a33530c418dbcb880c989227bb58d25e0658f8579393f9f136a637203f"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/014e2e1c85a935ff_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "seed": 6314,
+      "sha256": "e6853eba965e7e7f06c342fdc8a3cd0d9e5edeb6af24476f1a5616d45968d881"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/014e2e1c85a935ff_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "seed": 6315,
+      "sha256": "2da7db0c072405b77c86bf3417b2d1821b0cfeda079445ef02d4c67ade5020db"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0118391882fe0318_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "seed": 6314,
+      "sha256": "7b40c38b065903f97062e7602ce436d08fa6fa9b81871bb85534473e77bc1873"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0118391882fe0318_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "seed": 6315,
+      "sha256": "acbd7d21fddc4dccd12d27978ca16db83b094a54273a369da5172d7f7af99147"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/077407d3db2e7627_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "seed": 6314,
+      "sha256": "58b9cc233eed86de21f9083ac3d659e708a84622f75f71d80fbb07ae79695676"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/077407d3db2e7627_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "seed": 6315,
+      "sha256": "ef9caba425f1f43d4761f38c7e032ed0d88d6acba94a89a2e78b70665fefca1c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ad0828bef621f2_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "seed": 6314,
+      "sha256": "d5497f9fbe064ed6e0815105f939c382fa5deba4d1df9034cf02c17e42201944"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ad0828bef621f2_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "seed": 6315,
+      "sha256": "a64c82a801f863d572a81011555d6be59512ba0a854fee71e8f6b858c0cf5c17"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/04400975c484f2af_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "seed": 6314,
+      "sha256": "00610fcf25257525b2f14513fa8e2b65083ad1488dccadcd79e9d32cbb19161a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/04400975c484f2af_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "seed": 6315,
+      "sha256": "30074e99cda76f0c5a3face0050357a0a459bd0adcb1855583245252f0f63496"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02d935eee3b81de0_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "seed": 6314,
+      "sha256": "17e5b9696dca5728e99a32ec9d9f5bcec3e5774b9e2fe4640b098c862f6047af"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02d935eee3b81de0_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "seed": 6315,
+      "sha256": "80852c385d96cd4ad4d8de782caa9f56b588cdc15645e34384c7a17b6148e393"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0895eb725b03320c_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "seed": 6314,
+      "sha256": "7901201a76ec4673ca13e3c61f39fd6c0bfe3415f99d55db225384086fcd4fa7"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0895eb725b03320c_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "seed": 6315,
+      "sha256": "7819ad2220a41db8c6ba34f36ddae819d191195d1217d92b0a89fb7e3c4939d3"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01dc2bd87909d6ba_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6311,
+      "sha256": "02f06cecfe3ffb92b53a28a193fd9e88a34354b09959c24c69509f5a7f99e2a3"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01dc2bd87909d6ba_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6312,
+      "sha256": "9c1ed06e5f9f89bb9a30726975e972f36a1ddb742acb239e88f9f0b4cdd0381a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01dc2bd87909d6ba_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6313,
+      "sha256": "e757cd7cef8ca8677eb445feb6c77924eaef8f6e85d004e689fe83df7c9e3514"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01dc2bd87909d6ba_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6314,
+      "sha256": "0c9deb10c5bf1935fc3fcbe3c539ceab2242c3d4695a549a843107ca5122819d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01dc2bd87909d6ba_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6315,
+      "sha256": "a3e660ef0ff019499f8d76240ed8780c93deaa44f5a465c545731b4d13acb736"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01a6bef664c3ae7a_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "seed": 6314,
+      "sha256": "e20e39cb7c0e8c2933b648541068b1d107c903b3b527a5fef859e3fffceb1b08"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01a6bef664c3ae7a_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "seed": 6315,
+      "sha256": "5c96df476d29377fa407edeb4c1544ed5b19570f1cbd60ba8965695124f11084"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a60f23f1f6b0790_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6311,
+      "sha256": "d80913cc5c6552a3acd4c4b53f17755d097a008e870782cbeb9142cbf529195d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a60f23f1f6b0790_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6312,
+      "sha256": "7178caa1b6a9e616e2a4b2e219022b29c0683429c7e9ada9367ab419116af53e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a60f23f1f6b0790_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6313,
+      "sha256": "9259059208be74fc1bfb39c6010dacb581d4fc5df70286972b9ce47b81105865"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a60f23f1f6b0790_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6314,
+      "sha256": "355ab01015e67d82c810debcc8cc2c55da3ef1fd7f2a2493592200c19d2dc8f3"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a60f23f1f6b0790_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6315,
+      "sha256": "893248d33a460f0272044510a30023ed67ded81c526cf85211a33354a36d624a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ec3eb4a7f29a75_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6311,
+      "sha256": "a446a4673e66eb7f966b3b0a48e89746ce3fdcd4d8094a05cda34bb912e4e59b"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ec3eb4a7f29a75_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6312,
+      "sha256": "4b405393bd46b9a148a969378c6d6853b0f6e685e584a0fc721904833f6e6d2e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ec3eb4a7f29a75_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6313,
+      "sha256": "4486adbe6e51ecfcadf92004e8c2abdecc5a6cfc079ca9fa2042a6274f2ab542"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ec3eb4a7f29a75_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6314,
+      "sha256": "d68050f3a0ccc8636813ed0c799db19eb3e52adf091e5b98db05c48ef2029d13"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ec3eb4a7f29a75_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6315,
+      "sha256": "57d42fb459ff66a3e2dcbdcdfcfe15492ad4352aa36df94d718b493c19dbf5b9"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/04a165ded80486f7_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "seed": 6314,
+      "sha256": "bdbfe2f362d2f4a259d51b2df8ae39f26cdc26a98884bca4d6a6e8c754397732"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/04a165ded80486f7_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "seed": 6315,
+      "sha256": "7f0abac98be2f08adfe02ded01fade3c8cec8263baea965422bbc416442fbaf4"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02db9b555b04f8a8_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6311,
+      "sha256": "23563b50b54b4e1ff91addc30ffa7eaca451687beea8a3b18bd5ec0d82c3fa45"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02db9b555b04f8a8_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6312,
+      "sha256": "e5d773d1de66e6e5771ec6ab9f6d7e57f608585085c82077b39822b30baeaf7a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02db9b555b04f8a8_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6313,
+      "sha256": "3829ffb4a6e269d92ee169f78738e459859ba815103626d9fe7f3367b6ca6870"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02db9b555b04f8a8_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6314,
+      "sha256": "e6a5c88ea6119f028afc219305c5033d0877ca5be2688bd385710294dd1d66b2"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02db9b555b04f8a8_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6315,
+      "sha256": "825696d4edda39546da649446c6372a7cc30595ba40f98fd81ec59e278c37ddd"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a18625bf3577d50_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6311,
+      "sha256": "c154afb6095ecc2d8f673a0fcba7c5a6d810b0fddc16c9770406e5668f030f5a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a18625bf3577d50_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6312,
+      "sha256": "2ac05de02f6fe6a39cdd511030d5d7fc483f5d0c410ade7c39303dc1aaf0e102"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a18625bf3577d50_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6313,
+      "sha256": "095a9b9c93778b44edaca4f5797e13052aefbf1fdb8d0430c026ba0276b2792c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a18625bf3577d50_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6314,
+      "sha256": "e7c657c49aa5b89c8e39a63dd6ff7024bbefa6b1c92cf98febd6f6e68ada191e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a18625bf3577d50_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6315,
+      "sha256": "3667e23ebff55fc51d229ef1aa2325e106da638b9e2ae5811d8b7e07dea656e6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0324c90b2cd7fb47_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6311,
+      "sha256": "e9d853ea8fabdf9628d8a12268b5bfbb8892c8d09b549908a80344fbca2549e8"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0324c90b2cd7fb47_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6312,
+      "sha256": "4b8ed394077052da49927c6949a3798433fc48f8507d45127707c3037dbaedf6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0324c90b2cd7fb47_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6313,
+      "sha256": "07299a4c085209021101cc12f9fbad37ff6ed2855fcc4d5a319527fbab7a3e6f"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0324c90b2cd7fb47_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6314,
+      "sha256": "8315a2503fa78915e7a50514342084f8df332706d8f3f5e0cb1bf073bfc3d339"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0324c90b2cd7fb47_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6315,
+      "sha256": "1deee8ce321d8d5bb33120a42d076f5f94b43c97f984ebe745349503ef5408ef"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/094fe3f3e3991c79_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6311,
+      "sha256": "c3304041a57c7c2d789f7b02f4d98fe315c5def8269078212958b440ae3d0253"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/094fe3f3e3991c79_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6312,
+      "sha256": "349480490052912412f6fa662ee439dd964265ca4d62558012b6f85158a5dfff"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/094fe3f3e3991c79_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6313,
+      "sha256": "a5f0675a2838a30b95eec9cd6a46e0e4fc5848edd687bf8e1fef6e3539f04838"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/094fe3f3e3991c79_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6314,
+      "sha256": "75940c40fd41f76203d7b446469746d2eb0d7f342aecb478fc5fa339a5f14bbb"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/094fe3f3e3991c79_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6315,
+      "sha256": "bcb5d19b648b337eaf9e4c64d7146bfb66faeb1d7055b36a203faee1d5919cb5"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a8596c7ef0a3038_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6311,
+      "sha256": "878a7089ff24baa0c9cf0ddeb282259ff04148a5d6d9fb3fbdc463840ade5bc0"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a8596c7ef0a3038_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6312,
+      "sha256": "c02d0d5390eaee1c03ac86e0804cd81907f640d2930b0cca136179518ab2a445"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a8596c7ef0a3038_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6313,
+      "sha256": "1e26931307719181f9f7fed5fa82ead4f04c5f69e24ec83226958022800cd9e8"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a8596c7ef0a3038_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6314,
+      "sha256": "2167dc5b0ee289cb1ccf95f280302cc79fcdaebc1c4bb98b250b68d09fda0c05"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0a8596c7ef0a3038_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6315,
+      "sha256": "80d4bf75b23e496468c961d2a89e69962cf1f17784ffdd4761796903d4dc20cd"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ee531e837b3340_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6311,
+      "sha256": "ea8c18b1a9e8686ce20bc8a35294356217d2b97a970a8fd2aaa701e92afaf69b"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ee531e837b3340_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6312,
+      "sha256": "dc8d32498ac32f729ff1eb4dcfdc586185fb18e8a9f592933c21592bb8b88c74"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ee531e837b3340_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6313,
+      "sha256": "caa59d0229625e5cfa5ab4c519697fd629002091e12ea84fce627d1dfc08ef66"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ee531e837b3340_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6314,
+      "sha256": "35f71801a6bb435795ca9e991ffde600bc42bc76514fce5820f7e4dff703ba6e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/01ee531e837b3340_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6315,
+      "sha256": "2cc459c48acdf93f9bef4656a51d7a8701d2e622ac4ec6f24ac188e0a0aa1603"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058dd7e5a8fb9043_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6311,
+      "sha256": "43e648d6a144073ea18b08889ca6155354c52025a34d6ff2d14e59b3f8fc2499"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058dd7e5a8fb9043_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6312,
+      "sha256": "fee29bb14724842c59067a7f843642794a6f9d180bdbc0da51a7cfa00e11b15d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058dd7e5a8fb9043_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6313,
+      "sha256": "090457e36aa1d7506ad489aa8c7c1376c1217ecd001e1b2bc5092d5eec30d247"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058dd7e5a8fb9043_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6314,
+      "sha256": "1a0055fd76f7d54397af6937ac8ef4ab5e0f0bb9889e6e3fdfdf1535027cbcd4"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058dd7e5a8fb9043_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6315,
+      "sha256": "fce3c20d7735e06d18d29f97065d3b9e53028d52736a37ca8df8ff3c86922c70"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03b16a75eb059f1f_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6311,
+      "sha256": "6578ff1080182c73356d7d6b4dca4efd3f688da85b0a14cb42da932281068f08"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03b16a75eb059f1f_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6312,
+      "sha256": "32c0ca52da60a9356421091192039df8d494620deb61a6bda77883d7a5ac745f"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03b16a75eb059f1f_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6313,
+      "sha256": "2b6178e5987f00f5372460b37f2b6b983859075b375718fbe66a6b440bec4b9d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03b16a75eb059f1f_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6314,
+      "sha256": "d57edb53fb12004c258e9176d94e3cbdeca7b0c27a7df3569b711c01fde92efb"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03b16a75eb059f1f_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6315,
+      "sha256": "7df585927d98ddcea6c56e1ec23fc73751c6944a3c1ff6d385d72e562a7b8eb6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0ac0f5a7e27ac94e_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6311,
+      "sha256": "7aa29d261473efa68672eb52dca3cf7032bc893739cca5e6bed55bc2a5f1fca2"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0ac0f5a7e27ac94e_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6312,
+      "sha256": "762c044637037a2dbfb027ee6758ef0a8d2d4088b32f0296acb34c4882235b73"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0ac0f5a7e27ac94e_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6313,
+      "sha256": "f3966b9b9daabb12e34d6aa7b6cb2c3ee3a5201982f9532a00f02fff01842120"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0ac0f5a7e27ac94e_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6314,
+      "sha256": "3a5939c01111f4f35b773b511ca6d0fd516f1319ba7fc19888415cfa996737c1"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0ac0f5a7e27ac94e_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6315,
+      "sha256": "893272ba222041d8ab02d4ac023aada72b49cd755e56e710246a75b8b2079b82"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05da521c6719243f_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6311,
+      "sha256": "11eb2d3dc94f941c4968e9da24589dd91128dc3a8afcf432110ecc53bb7141fc"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05da521c6719243f_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6312,
+      "sha256": "2856cf7f972c825767097321295098198c19bfd1ce23ded762659839880469b6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05da521c6719243f_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6313,
+      "sha256": "a7c8672b97071fc56829e2b8d28128a3e3d42982aa3f96cd81b8126e0302ffe5"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05da521c6719243f_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6314,
+      "sha256": "26f368b9dc2a17b22fa2979cc6e059d0636922fa13fdd3900b862ace7abf525c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05da521c6719243f_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6315,
+      "sha256": "c6a41e9d8ec8eecc28143139edd4d979ec78671197a379a65639e933527c9d1e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/098b7784a8d91e2b_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6311,
+      "sha256": "1a3cb1dc1a50b8f43ef139fba256235d9529ed9afb0b4b597dc131caac3e7a64"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/098b7784a8d91e2b_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6312,
+      "sha256": "cde92b257791fd25a04be946a470fed4162459c205d35c9677c58fe45b66a8c3"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/098b7784a8d91e2b_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6313,
+      "sha256": "2a30d3624b4ea1c97c4656097f0aa497bf14bca586aaf1b596b547c291a82eee"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/098b7784a8d91e2b_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6314,
+      "sha256": "250606afe9a7a9daf4b6d4899e7d5205114f4fd2fb834aceb4e6ee32a45648cc"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/098b7784a8d91e2b_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6315,
+      "sha256": "a10bd1d64627b43acfa49c362ca33473fdd330c35b35d6b1291812085ef68d7d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/130ca1a2601a76c7_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6311,
+      "sha256": "6603590b54e94e8a362735ceb6fe6a5e6e29a0fecc675a1ab5fe1ff0df49c9be"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/130ca1a2601a76c7_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6312,
+      "sha256": "923da66fb7a4d875aae55da5c23a5c89933f0171b1387ed772d0f5fcd1ed822c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/130ca1a2601a76c7_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6313,
+      "sha256": "7b78556558496e68b151700c5efe15dfbe323c1b0d5ba310757ebd3d42a87349"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/130ca1a2601a76c7_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6314,
+      "sha256": "5095d5bad97c9bfd13df72d556ea188ee8a28eb5cc1b530154bd7395a75ab331"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/130ca1a2601a76c7_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6315,
+      "sha256": "0a8263d9b79f9a3322319183830310133a90f0a66bd603f3b9c83777ec9e8266"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/027afb1ef0b8c93e_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6311,
+      "sha256": "8c2ac4e973b405432e9b90994ee877a715baf6c47d1b93824a64dcb35e7975f1"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/027afb1ef0b8c93e_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6312,
+      "sha256": "78c03a13d312ac443c035a06ce9ae285e34abf9db85610e0f2ecfd581d5b9244"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/027afb1ef0b8c93e_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6313,
+      "sha256": "db0bf816d700d0463629361ba6221ab005ab0f6a8f6c689822f6afeb0c978548"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/027afb1ef0b8c93e_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6314,
+      "sha256": "edbff592d8d1d791b0d2e9c09db54e6107cb69188c1fdb2ec5680f4416c03846"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/027afb1ef0b8c93e_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6315,
+      "sha256": "221770aadf07e7c58725e8787544823179d8961ae49f01263b723bd10328781b"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06ad67823f201cbf_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6311,
+      "sha256": "b87a4d734e01b65cc48276b8d85cfe206c250992cf4607cf63701e7288ea502d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06ad67823f201cbf_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6312,
+      "sha256": "69d06602a75ca0f2a460f33b7a093e315a87b3c85dc1d0efed51466baf2f8f5e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06ad67823f201cbf_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6313,
+      "sha256": "564b0e150ec75f731f7d72b589b3810efebbc48dc1a6db8844c83eee3bc0835d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06ad67823f201cbf_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6314,
+      "sha256": "44d7c0494f101c694e72386640eac654ea75dabdba1c9b545f8390eb93897de1"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06ad67823f201cbf_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6315,
+      "sha256": "b0f6b116d8c1cf1bb2dfb8efd6653ba6228b215ac917bd7037993ea5c7651363"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058a956068391af3_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6311,
+      "sha256": "d2a4123d0dfa2529b247cf6093571c0c92241eee0a292fee7bf6fe187b414319"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058a956068391af3_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6312,
+      "sha256": "09ff1356980d474f19937396b1ad1ceadab517f044ecea26d6a7794cd6218d7f"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058a956068391af3_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6313,
+      "sha256": "8932c35b7399ad1df160a8460dcd8ab2bd52acc1b1e6213263251e05e6e2ef82"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058a956068391af3_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6314,
+      "sha256": "e43d8d55b88b213a0c911bdcf2e1b8b31bfbba550f717b0d828e0f128784fab8"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/058a956068391af3_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6315,
+      "sha256": "b23a5c4cd6eba8d71b3b0cbfedb50cfc60ee3e72d3279efc631a4cbb6908a63b"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0af7ec6f70dd866b_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6311,
+      "sha256": "790c8c630cfaf0fd2ae1bb579e2570e3b7deb0a984c3e54bdb340cd0f2ccf1c5"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0af7ec6f70dd866b_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6312,
+      "sha256": "ecca1bcd5a852341ea09eeb8b489c606313a269100368990a329603d56a273c7"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0af7ec6f70dd866b_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6313,
+      "sha256": "83c73f891aa5fc0ace76cf02ad2c7ee314b40c8bcfbd03c27d1894f19ee22858"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0af7ec6f70dd866b_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6314,
+      "sha256": "c9bbab3809431ccfbd83cf0ddbf407cf6409b3078bb75577aef18c5743a49fe6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0af7ec6f70dd866b_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6315,
+      "sha256": "2f31a16b231fcb4438a1264c839440fc50335a38516fc15eee730c9407f2da15"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07ddfaae83cdf112_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6311,
+      "sha256": "a6d37c5599c661e7fb3554c1a26b847971317aa975f77408f5fdbd23e7e0aec7"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07ddfaae83cdf112_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6312,
+      "sha256": "02fb17f19859e57f2bb5138a6dafd8581cdd9481e3fae37e53709161b45bb685"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07ddfaae83cdf112_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6313,
+      "sha256": "203c526103516f13c6fa468f0cfe9c5aa66fb336ef4818f15514b3d0fbc7f8fb"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07ddfaae83cdf112_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6314,
+      "sha256": "42848a4d979ffd7514aa93941277f0738b50316c1764dadc86fc1d2bae409879"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07ddfaae83cdf112_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6315,
+      "sha256": "1958bba4521f2e49664e8b79a1b1c9749a67dc67d641d40c9a7fad8b55a7de08"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05c9bfdc96fd9476_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6311,
+      "sha256": "4a1b69a4a840ef68eca3170e300318cbcbb59da61ed547e2dc6934475b147867"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05c9bfdc96fd9476_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6312,
+      "sha256": "636e753e1c72e336bfa7ad5b7f32761387eadc0d4351b80218312b3babc74f82"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05c9bfdc96fd9476_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6313,
+      "sha256": "a9622472dc18a54800ff7f5538cfef2c39ced6488a32704fa64135caf67a7a5c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05c9bfdc96fd9476_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6314,
+      "sha256": "11657bcffc5fb20b266361dada9cfecb7bb53b0b2daf466e2b4f01eababc6fcc"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05c9bfdc96fd9476_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6315,
+      "sha256": "78f689ebddfb7e0b00bd74e17c22349f428cf5442bd3953778e1ff3a5a82b0b6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/145229006c12bcfa_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6311,
+      "sha256": "e0f595575db8c3a9d5d8b52b1fd4d9d5214e136ffecabdf6a0cae106bf2e6ac2"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/145229006c12bcfa_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6312,
+      "sha256": "635fba43dc0ba40da847de964c7f4d45f59d90522f491f146aef3e799dc2f814"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/145229006c12bcfa_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6313,
+      "sha256": "b11491df1f38172a9237664649cb40a168857a8766d11c51c06f624862585e94"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/145229006c12bcfa_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6314,
+      "sha256": "98e0ea68d58cbd18ba25757a37af91b06d7ae3f037308d4faced6376e28eb171"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/145229006c12bcfa_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6315,
+      "sha256": "cd7372ba223d29f81ff452c1fc3e2330549e36be7dd5753a3facb422be03c2bc"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02f84a7b46536e06_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6311,
+      "sha256": "b4b5291a8cb15ed59adb8ae7850f46b4de78d15d3e850f4638f2fcb32a76c444"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02f84a7b46536e06_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6312,
+      "sha256": "49b82f8a82728c767bfa59f153205571910c9093889e33d26cb4132cafc82d08"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02f84a7b46536e06_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6313,
+      "sha256": "6f891fe47f47a7913600aa7f5c0bd1759fa3a2d53d7f2d2d51214c140fdd2134"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02f84a7b46536e06_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6314,
+      "sha256": "460da1bbf782bb53e65134f0d9348834bc31c55b165c72262d2300af18f4d406"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/02f84a7b46536e06_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6315,
+      "sha256": "b2927f6f50d81fbb4a672ce14230c5bbaec1e880e79fc3e969f79a2242350064"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0da5903051550686_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6311,
+      "sha256": "c778f10a41674e678d0d4a3e77f9b28a44faea1246de6db2d76a65cdaf82e3b4"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0da5903051550686_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6312,
+      "sha256": "f7bd3d89f55d3a4e8e8a723d70cf838095c22d8a478560142f29105135467aec"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0da5903051550686_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6313,
+      "sha256": "b990eba06ef0dc578d1d794d182297ae16957e6adffba137913866401cfd441a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0da5903051550686_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6314,
+      "sha256": "268f100adf38d7a4bf4735b917c8dc4490e9614f148f0301c2ef05cb8fe22fc4"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0da5903051550686_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6315,
+      "sha256": "8473a67d070c298ab790d1cc737ae0cc68651992e980dd3b074d663852b0dc1a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/077cf70d683045af_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6311,
+      "sha256": "bea629861b29428aa040f825bbf7d2916bac7c78518c746426b6b193d2b81713"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/077cf70d683045af_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6312,
+      "sha256": "6472db6625e1744e9a3a49dbafc99e43da8c62d5e7df4e857a41ed7fb036853a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/077cf70d683045af_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6313,
+      "sha256": "baa540c5a93207d334bae1673775e42f08ec3ee00194cc9e8efa52bfc22009c1"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/077cf70d683045af_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6314,
+      "sha256": "5222b6860324da778bd957727826c652c07ea7057dcbe90055d9db4a1348e7b4"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/077cf70d683045af_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6315,
+      "sha256": "472616e857e18488f76c1e6ad881f478ad47665a682b6d267944dbfb358ff15b"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/12a9970aee644e82_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6311,
+      "sha256": "b0c8f9409a91fbe2840ae96c8e1754635be0ceb55836bf6600cbb23951854ba8"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/12a9970aee644e82_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6312,
+      "sha256": "d7c90dceb34d63dbea18547fa3f1debbb9f095ea7019c7fdf92b13af86248a1f"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/12a9970aee644e82_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6313,
+      "sha256": "f22d6aa918f1239e494395274723bfc9516b1697a36e9a807f5ef25dfbbe2887"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/12a9970aee644e82_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6314,
+      "sha256": "7f62891c8ecc9eee1bf5be141bedcec17eef414dc99cef1497ecebf0140874c2"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/12a9970aee644e82_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6315,
+      "sha256": "7086a959d28c451d19f81a0aafd6db9bd1803ab833b36f17ece6937e30359ade"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/080da0970400f32e_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6311,
+      "sha256": "17b4f9b2473a160156b6e4540e7744e10aadbc68abc7149eed4f28f9c69d72ac"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/080da0970400f32e_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6312,
+      "sha256": "4d5152bc542f1f8ee8f0cbfede1ea299e88c2c282e96c7e626396bbaec6e33a7"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/080da0970400f32e_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6313,
+      "sha256": "fa7b00f73b5ebec81ed88579e7ec798750be789f69afab04ad10ec674121b5d5"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/080da0970400f32e_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6314,
+      "sha256": "4875c0298480c2498d3ed1cd78970032cc21f7d6353ee822596795d56511db8b"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/080da0970400f32e_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6315,
+      "sha256": "edf61b7ad7b734af0536c1f5623143085676e444a3bddc8e92ddc009e2de70d6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06db95e7f4156271_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6311,
+      "sha256": "3efd561b91e799e30c2ef25fc5d88ef3a600e9ad2e9f49f675151589dfbaa974"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06db95e7f4156271_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6312,
+      "sha256": "2939f4e730be151fc63f26517aaa0b13737a03b670a734b86146407716cdc560"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06db95e7f4156271_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6313,
+      "sha256": "1a79638fdb4ba6ea645d6dc91364cb70072991bd8420b83e8c6cab5713cbe7a9"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06db95e7f4156271_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6314,
+      "sha256": "524edb1169d74a07ca6a88655e305d1f4a44b06e5f1ecf9e82b3df19acad9558"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/06db95e7f4156271_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6315,
+      "sha256": "beefff7c08b08b78024f0152263cb1d4915a51b43aa8ae118538b19ef2afb50a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1a356e99ba683f17_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6311,
+      "sha256": "4fac4f08834b8dc06c575f19d81677894b6e2d47967490224857ff4551516f30"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1a356e99ba683f17_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6312,
+      "sha256": "c2f19a4d1416a3fea966241f864f4395cdf3e3ca84cbe49d85882b5a8a9ff2ae"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1a356e99ba683f17_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6313,
+      "sha256": "72e250be1fbf3f95a1dcc5a59594294d4a65ab023e60611f4071e1a4d45e4e80"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1a356e99ba683f17_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6314,
+      "sha256": "fb2eb8632da17e8a59030e121d421ff7c04a095a44dea4b86c73ff4b889faab7"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1a356e99ba683f17_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6315,
+      "sha256": "19bb1a886665b9d79a7ed5a2bdf1f9a509b1781c770dc72cfde522495c7b2635"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03570ad4b17b646e_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6311,
+      "sha256": "43f578989548b0ad44fe98dd3a3824a57178c8a829a91e32204b20107a05310c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03570ad4b17b646e_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6312,
+      "sha256": "69fe8dba5d9630ca1bfdc2d4d8b175822dea9efeae00adb0af6db4506c738c5d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03570ad4b17b646e_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6313,
+      "sha256": "838661ebff60cd1b8de52d5c000ddd2760978eb13bc5e16ea51c220ba50872c9"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03570ad4b17b646e_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6314,
+      "sha256": "880c1ccd7414f4ff4e098b23d9bd1d764bd5c7ba97f458263f8ed198bdbc6a31"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03570ad4b17b646e_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6315,
+      "sha256": "8d66287c41ff35ac899bb062eface4258d06829da1495d2364a1f828f34dd461"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0f6d3edb2f889f28_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6311,
+      "sha256": "c3916f25c046375d6cdea1d48b92327c17cdb598037a2b105ba2525b50b27322"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0f6d3edb2f889f28_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6312,
+      "sha256": "821973d26a45d4b4d6ece1eb4c409abcbd480318dde10ae6bc476cec62614d94"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0f6d3edb2f889f28_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6313,
+      "sha256": "30a089cbd3af66232dd5267658d283f028e14c21dc4371d5ed95c32bb14e984b"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0f6d3edb2f889f28_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6314,
+      "sha256": "863e386951560ce0af279ec205215a7a5b301339c25247ff58f45639fe9928c7"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0f6d3edb2f889f28_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6315,
+      "sha256": "97ef13cc52d9633ed6b37c47983eb6fafc56d0fec904d9989a915b38d948d893"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0780b39caac502d5_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6311,
+      "sha256": "56ccfa6d7e3e0e3a089164845ca110627e4163eba727c0f8f268abac9b6b0f1e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0780b39caac502d5_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6312,
+      "sha256": "75c5cbad82e9366f4fb8546576941fb05d6f4bd146556c4b2bcfc4188e867e93"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0780b39caac502d5_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6313,
+      "sha256": "4f7e8c74b936f69014593d6bb45684a18d70ef612f73e46daedfbe18cad121b1"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0780b39caac502d5_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6314,
+      "sha256": "51aa0e5f56cdb1a65aee7785af1154d163fe8fa35d2b4e4325f191ef1a144526"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0780b39caac502d5_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6315,
+      "sha256": "896acccf52a7ad4fed20da28804dd919f8a8bc59a6434f7fe89d1a21b4b8e22c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1bc0d45eafa706d3_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6311,
+      "sha256": "b2bc53be411796a559c318b82f887f6f7874d6acd0b74db3d96df47e7e2a8cc9"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1bc0d45eafa706d3_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6312,
+      "sha256": "3ba5b6880a75250a4b6f8c4d6a61f7d6e25901efc8c376f17a5575a048361008"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1bc0d45eafa706d3_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6313,
+      "sha256": "0f3782a96152d73e84351762299b968eb91c1e8cb8b617eebe2b511c177efd7e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1bc0d45eafa706d3_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6314,
+      "sha256": "75eea7ae634967c8674cf955e862db8d5caf5dfa947bc56e35d044f422ae636d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1bc0d45eafa706d3_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6315,
+      "sha256": "363fdba18e79cf814e2acfe95f46fbdb60e9dab1417ef431398e6fea999a827c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/08f47141384bd6de_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6311,
+      "sha256": "d7da61208525e39325f8f40fa81deff6d52e326a13496e587ff97b7b50e695b5"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/08f47141384bd6de_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6312,
+      "sha256": "2ee2ed50338eed2cca69ca7d564e41b1bc34b84f3fd61a9340e31a8a5f5413e4"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/08f47141384bd6de_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6313,
+      "sha256": "7724dd907a0b89da5db0438b48bc5cb70b5b334531893b270f3cc802a6ef7469"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/08f47141384bd6de_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6314,
+      "sha256": "b75dbc6f79fcf59f1050ae632b056464a9e78e3c15ea7981c83bc3858527d71c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/08f47141384bd6de_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6315,
+      "sha256": "e9d25277cbb8d9d17df1e5b34ff43f7ec39ffb524d4a0c21e382bf0ad710f006"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07e9c4dcdf296f61_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6311,
+      "sha256": "37f53153f806a5ab39e77b25a1130bf8e596a4ea477d3981c96696c24139ae22"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07e9c4dcdf296f61_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6312,
+      "sha256": "145c6dd6bdfe7d3d366f8706155aa7a515f48a04bbd6c785bfae018f3fc31384"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07e9c4dcdf296f61_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6313,
+      "sha256": "62e091427ac993e6714d52a9960833de53d88a318d0ecbb5b30e24409ab36c24"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07e9c4dcdf296f61_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6314,
+      "sha256": "18b89994538b6f8693bb5ad9465896b599fb1753468799aa3cd6055f58420593"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/07e9c4dcdf296f61_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6315,
+      "sha256": "5ebde821dda89eb4d76a989f346977bd9996c72874781e6fddca124a9665a9af"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1e16c27abd9eeba5_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6311,
+      "sha256": "e2fe700a090a6e0a2288a4309908c4231463b3ae9f62ecccdb79a4b74ff94464"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1e16c27abd9eeba5_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6312,
+      "sha256": "3519eef59963a0462e80096460a5bff083849d8cfa401fcb1cd2d8f1d6a7cc8c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1e16c27abd9eeba5_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6313,
+      "sha256": "26b327ee56d0f4c2db1d066d8155b70c66ab7b949edc6d4a93697d74a8c4b96e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1e16c27abd9eeba5_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6314,
+      "sha256": "a6b65d8fc2948c85cb53e051785baf1c451ad5b600af58cefd85e69d9c50b272"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1e16c27abd9eeba5_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6315,
+      "sha256": "bf7bd8e522c07244be4fbe69e45c0e641f175a90ac0b6fd7467680f4a369c52a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03e89ddc750ddb2e_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6311,
+      "sha256": "1735d7b1ad40687b1d3a184d997928dd572b6e43ddd825c3c0d6cc7b2d1d26c1"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03e89ddc750ddb2e_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6312,
+      "sha256": "c890892d2af19fc8a4524e73dffabae186208894125545d63539affee7f24b9a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03e89ddc750ddb2e_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6313,
+      "sha256": "2a075e585d4588deb77c45ff87c0627495c5b4788039f7f29cb0b6965a841ff0"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03e89ddc750ddb2e_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6314,
+      "sha256": "6d02257a9f3fc68bed74482ccd47b504b537382eac132cb1149fe8744732199a"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/03e89ddc750ddb2e_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6315,
+      "sha256": "bd64695715a8e43b7a92362988e0fe031c6a2a87feede8a9bee4b190c79ed855"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0fb21230624df052_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6311,
+      "sha256": "302ab9e8b33d298d7299d3de4ac96a81502f4fe9b29986bfa58ec4dbedcea3da"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0fb21230624df052_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6312,
+      "sha256": "babe427cb89a2d42207f1e42c1e3ebe98a35ef07afac4606445959bf2f5ad192"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0fb21230624df052_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6313,
+      "sha256": "36a1dea81dac5e22de9e6f108eb44a6417a21aba1ab7b1ae737e678b9a6fedc5"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0fb21230624df052_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6314,
+      "sha256": "b5d87733343bf7fd256c362fb56f2d17ff4858db7d0f58be45e9c6164a1c518d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0fb21230624df052_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6315,
+      "sha256": "d87fbaf270eb92b41ae567dc6bcc98f9cc9d807e1f2ce2ae83378d9019a7cfec"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0bfba6cf52469bdf_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6311,
+      "sha256": "52e265ddaed0c2c221f214d63b72c9213a2e528e555fcabfcdffc571b3504ffa"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0bfba6cf52469bdf_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6312,
+      "sha256": "0070cae983f94f7f9d6deb013899f06a632194694de92ac16b45beb0acaa69a2"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0bfba6cf52469bdf_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6313,
+      "sha256": "fe18220189623389adbe1d753910f5d1ba6fd65418b1cac9f0f3813f40134750"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0bfba6cf52469bdf_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6314,
+      "sha256": "6dc37e8d8d6566c3b17b3d6493f9835c3e762a02564a8744c72336fb15cc4571"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/0bfba6cf52469bdf_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6315,
+      "sha256": "10e8e1e58a13b58a8a54937186ee44c6f2163abfccb8b3dec74551a6b1c972fc"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1c46f54995bc9dba_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6311,
+      "sha256": "0063a17a95d23b7f9e90637c41346c1a3c4ef992318b6d3910a06c6e2d7fba0c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1c46f54995bc9dba_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6312,
+      "sha256": "d54f3c6441d5b6aa66950cce07a9272e18c5c6bf4ae3155bfdf2bc2b5d966ddd"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1c46f54995bc9dba_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6313,
+      "sha256": "b7a167f0965bbaa9f67d6d9d4705a9f673ef2ad6f4e08a55e465e8013a700ae0"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1c46f54995bc9dba_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6314,
+      "sha256": "e79a45054430bf4b6f1890e60efee14b4487f26be7e0af7c79461629dcf725f6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/1c46f54995bc9dba_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6315,
+      "sha256": "8bd0004edb2e288c87bc0a01310574ac8914501deb12c648b6e9ab409a6eea7f"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/09597725b969fff4_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6311,
+      "sha256": "a84381c79212e5574817d598a7089fe859f06dd801c89d4c3adf117274227523"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/09597725b969fff4_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6312,
+      "sha256": "ed82eb937ce02fb30798b41d407a04fd495f713fae7cef1135a4a4c34520cb6e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/09597725b969fff4_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6313,
+      "sha256": "d738c431c01161f8319268557b18cedf044439dc2571cbe82cf217cfb71dd8db"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/09597725b969fff4_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6314,
+      "sha256": "36fb177b57c0674f887b1fdbd07b7b00707f1893455154fe2af6c59f9571eec8"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/09597725b969fff4_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6315,
+      "sha256": "fd0312d06a96ed6af5b0badb30e6ea789d159898301e28fea5a182448b1120c6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/083124581e338cea_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6311,
+      "sha256": "04d3dc1ff2e16b14c034fa7df0a972ee3988a9607b4eefc3ff0f600c188af62e"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/083124581e338cea_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6312,
+      "sha256": "e45ee1e00c40ee5784f37133346edb6eb0f5429b88bc698e459d096371e0e34d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/083124581e338cea_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6313,
+      "sha256": "1004592b55ae61eabf84c2744fe2459fe5a8ca6f93434f68156f4e0fcb923071"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/083124581e338cea_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6314,
+      "sha256": "6b239c522b1336b0df261245f6c851dc015af9a2bd1fe02f133f385b58c846f6"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/083124581e338cea_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6315,
+      "sha256": "ae079187d7ee004417d57f5722d0cfc83465a2026429b4183975f81ef6a7f2a7"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/2f5306aacbb7b303_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6311,
+      "sha256": "d21f46d5ea9acd2c2d5fe0ecf2b7db06586c19adfcfb1d50158eb9f890ec5863"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/2f5306aacbb7b303_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6312,
+      "sha256": "37b8d2b5c35069944ba5358e029f7de31dc50e6fe59029de61b2c7028a2501dd"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/2f5306aacbb7b303_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6313,
+      "sha256": "56c91932dd2e277191d39976b5df2bf592f57d635d01a4ca766285c5994d76d1"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/2f5306aacbb7b303_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6314,
+      "sha256": "b1e5099eef6b1b477501500a677c0b4a12c883316e03264b07db19c75e72bf28"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/2f5306aacbb7b303_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6315,
+      "sha256": "03799d65bdba60b8a9b1c5a9990cccf71d7e96f074b678414ac68be8ba45f2be"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05cd9e5283bc94fa_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6311,
+      "sha256": "f73088823626d7e5e25b4913148b774c28a4cf45a6c5575d9bb582f2c41e090f"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05cd9e5283bc94fa_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6312,
+      "sha256": "fcfe6a18fa1f3748375dd12676a82bf6ca243a3bd6e21f90e8ec9a6c738ddef2"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05cd9e5283bc94fa_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6313,
+      "sha256": "72fa43ab5704555cfdd3188dc934c791836b1cbd64f6a59d0f3ab3ce5f71abd4"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05cd9e5283bc94fa_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6314,
+      "sha256": "b400d2781fc6f306d34c8dae2450c7688fe15f1b2ab6449e7bc48b2d5539561c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/05cd9e5283bc94fa_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6315,
+      "sha256": "9149adfe3ebf89794646f4bb16a704fa5a0d9876b2e2c15fb240fc9edbb6e12c"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/116c15c07b08d943_MH-CEM_6311_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6311,
+      "sha256": "4ca1789ff7fc95b48d9803630dde45e0b17b888f0dc172ddce79927083b1ab01"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/116c15c07b08d943_MH-CEM_6312_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6312,
+      "sha256": "2feaf8c87557d6e62f13eb4da8462d24f0288145ce15f44c219a5d9ade1e996d"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/116c15c07b08d943_MH-CEM_6313_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6313,
+      "sha256": "fa7202043ef620dc9516e3946b4e20ee005a28d9c30916d362f244e3c4e88bd9"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/116c15c07b08d943_MH-CEM_6314_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6314,
+      "sha256": "abf625d4587302c87731a34f6514bb5fa66635c547d75c8c96dcd37208a231ca"
+    },
+    {
+      "budget": 512,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/solve_results/expansion/116c15c07b08d943_MH-CEM_6315_b512_k4_rho0p1.json",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6315,
+      "sha256": "a0f3613f6980383c575ee1c9fbed6c2265724abe722873b8361dd1753d469744"
+    }
+  ],
+  "reused_raw": "04_b512_reuse_receipt.json"
+}
