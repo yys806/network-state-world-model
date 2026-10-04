@@ -1,0 +1,8 @@
+{
+  "verdict": "PASS",
+  "change": "monitor process detection only; GPU not launched",
+  "scientific_source_unchanged": true,
+  "protocol_commit": "269fa7789be9522c8b3f43bf646af6866843afb8",
+  "duplicate_detection_positive_negative_oracle": "PASS",
+  "locked_test": false
+}
