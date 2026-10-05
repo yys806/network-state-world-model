@@ -14,3 +14,4 @@
 
 # Preserve executed smoke receipt bytes and their recorded SHA256 on checkout.
 code/artifacts/protocols/pi_jwm_step6_4b_two_cycle_smoke_v1_20261003/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/formal_run.log -text

@@ -1,0 +1,9 @@
+{
+  "archive_roundtrip_verified": true,
+  "inventory_sha256": "8750da72524353b1386d3dfb5dde3413cd40d35b4cde0637333cfe8d60231a4c",
+  "local_persistent_backup_required_before_next_phase": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4g_repaired_search_v1_20261004/T",
+  "path": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/raw_results.zip",
+  "raw_preserved": true,
+  "sha256": "de6ad9f316a10704fcd935cf4843e56c6cb1baabc90176afb97d161c1e52d4be",
+  "verdict": "PASS"
+}

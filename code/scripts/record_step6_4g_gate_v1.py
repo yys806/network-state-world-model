@@ -22,8 +22,8 @@ def main():
       '，目标768；Phase A NOT_STARTED（目标960），Phase B NOT_STARTED（仅新A选MH才320）。旧调参/选法/预算均historical-under-pre-6.4F-domain；不复用任何旧raw，包含先前7不变量anchors也完整重跑。'
       'FINAL_FALLBACK_POLICY=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1，研究者本轮明确冻结：NO_SCOREABLE_H4且当前域/输入完整才一个canonical A，A任何失败及空域/缺观测/slot unsupported/bridge/setter失败均C终止，不级联、不换动作、不重试。'
       'SEARCH_METHOD_REQUALIFIED=PENDING，S/MH新K/rho=PENDING；旧MH/K4rho0.1/B512只为历史/working决定，修复域最终预算待T→A→条件B gate。B512必须scoreability set一致、前三项目标劣化0、scorer0、mean/median耗时更低和严格budget。'
-      'FORMAL_SEARCH_REQUALIFICATION=PENDING；CLOSED_LOOP_PRE_FORMAL_READINESS=PENDING_SEARCH_REQUALIFICATION；READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false。'
-      '3080Ti只读认证核验空闲、11912MiB free、tracked clean，无其他搜索进程；未启动实例，不换4090。'
+      'FORMAL_SEARCH_REQUALIFICATION=PENDING；CLOSED_LOOP_PRE_FORMAL_READINESS=PENDING_SEARCH_REQUALIFICATION；READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false。'+
+      ('GPU PhaseT已在原3080Ti启动，CUDA12.8/PyTorch2.8.0+cu128/FP32/batch16；实际gatecommit6e0f47dfb60591fb57d8cd35ce14e768ba2e38a8；启动前tracked clean、结果0，2026-10-04T05:12:19Z启动；未开机、不换4090。' if running else '启动前3080Ti只读认证核验空闲、11912MiB free、tracked clean，无其他搜索进程；未启动实例，不换4090。')+
       'FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN，Stage B=NOT_STARTED / DEFERRED，locked_test=false。'
       '唯一下一动作：'+('监控PhaseT新结果身份与D:SHA备份，完成后独立验收+Git gate，源码不改。' if running else 'commit/push协议后服务器fast-forward到精确commit，重复preflight后只启动PhaseT。'))
     evidence=f'证据：`{REL}/00_protocol_r2.json`、`01_support_catalog_semantic_audit.json`、`02_frozen_anchor_manifest.json`、`04_CPU_preflight_receipt_r2.json`；实现记录`{REC}`。新目标evidence_class=repaired-domain formal evidence，尚无新正式科研结论。'

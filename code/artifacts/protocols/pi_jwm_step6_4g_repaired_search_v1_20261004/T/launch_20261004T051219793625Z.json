@@ -1,0 +1,13 @@
+{
+  "CUDA": "12.8",
+  "GPU": "NVIDIA GeForce RTX 3080 Ti",
+  "PyTorch": "2.8.0+cu128",
+  "disk_free_bytes": 47127453696,
+  "free_VRAM_bytes": 12219580416,
+  "initial_result_count": 0,
+  "locked_test": false,
+  "phase_gate_commit": "6e0f47dfb60591fb57d8cd35ce14e768ba2e38a8",
+  "resume": false,
+  "start_time_utc": "2026-10-04T05:12:19.793683+00:00",
+  "tracked_clean": true
+}

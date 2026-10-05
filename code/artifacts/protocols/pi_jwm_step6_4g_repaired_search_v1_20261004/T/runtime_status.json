@@ -1,0 +1,13 @@
+{
+  "GPU_diagnostic": "NVIDIA GeForce RTX 3080 Ti, 0 %, 602 MiB",
+  "cases_per_hour_new": 23.56153531864655,
+  "completed": 768,
+  "elapsed_s": 117343.79625982791,
+  "invocation": "20261004T051219793625Z",
+  "locked_test": false,
+  "new_cases_this_invocation": 768,
+  "phase": "T",
+  "start_time_utc": "2026-10-04T05:12:19.793683+00:00",
+  "target": 768,
+  "update_time_utc": "2026-10-05T13:48:00.512135+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "artifact_SHA256": {
+    "archive.json": "120184332f89416acee22f59878b5bf4b65b3f75bab9ba74aed80470714c41b1",
+    "execution_config.json": "9b42ce1cf31829f6d10be91677f2297ec9b872e21c94b37955325a8393efce5c",
+    "inventory.json": "8750da72524353b1386d3dfb5dde3413cd40d35b4cde0637333cfe8d60231a4c",
+    "selected_configs.json": "f46aed2e70d7ab7d53bfb2535e1c2643c3ff8020afbbfa30a5306e62c0b40495",
+    "summary.json": "52cf09fc10090adfa98a85276cbe71a197861748ee589bb1e5239e2d00b9e3bd",
+    "tuning.json": "788ff3fe3e836d7c8aeec671fbe171cc06c7e30ac3dd51fc0914126030984188"
+  },
+  "budget_decision": "RESEARCHER_DECISION_PENDING",
+  "cases": 768,
+  "evidence_class": "repaired-domain formal evidence",
+  "execution_config_id": "6c1d1dfe99633de74f981e0fb97a93771da8f7b17e7f3aa761d874de72afc0bc",
+  "hard_stop": "commit/push and separate explicit next phase gate; no direct fall-through",
+  "independent_math_oracle": "PASS",
+  "locked_test": false,
+  "parameter_digest": "f5dc7f523af1e3137f520187bb2b9e7697e835b4374d45bb025460f58c778123",
+  "phase": "T",
+  "phase_gate_commit": "6e0f47dfb60591fb57d8cd35ce14e768ba2e38a8",
+  "verdict": "PASS"
+}

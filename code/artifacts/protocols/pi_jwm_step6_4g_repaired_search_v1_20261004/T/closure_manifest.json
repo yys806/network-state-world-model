@@ -1,0 +1,79 @@
+{
+  "phase": "T",
+  "local_backup": "PASS",
+  "files": [
+    {
+      "path": "T/acceptance.json",
+      "SHA256": "d8907b8a671d3d336e927ca990a51361f342fffa4a134160d6531de9710a2604",
+      "bytes": 1140
+    },
+    {
+      "path": "T/archive.json",
+      "SHA256": "120184332f89416acee22f59878b5bf4b65b3f75bab9ba74aed80470714c41b1",
+      "bytes": 512
+    },
+    {
+      "path": "T/closure_checks.json",
+      "SHA256": "95008564e361711fdbb9e82410d36f2347768ebe64a44a56ea7a7005aad31d09",
+      "bytes": 595
+    },
+    {
+      "path": "T/execution_config.json",
+      "SHA256": "9b42ce1cf31829f6d10be91677f2297ec9b872e21c94b37955325a8393efce5c",
+      "bytes": 78448
+    },
+    {
+      "path": "T/finish_20261004T051219793625Z.json",
+      "SHA256": "9ef7457515674960001bfedb3c0855b99e5aaa8d606b9a3b0321c7d66e4eb85f",
+      "bytes": 214
+    },
+    {
+      "path": "T/formal_run.log",
+      "SHA256": "2d2007528625d8c580c62b31d968d2912c2ed8e8afde13de6df64a04f21b61fe",
+      "bytes": 60920
+    },
+    {
+      "path": "T/inventory.json",
+      "SHA256": "8750da72524353b1386d3dfb5dde3413cd40d35b4cde0637333cfe8d60231a4c",
+      "bytes": 425196
+    },
+    {
+      "path": "T/launch_20261004T051219793625Z.json",
+      "SHA256": "c4ecf7183c23ea716abd1aa95f4c91e7d0bef3c2c3c3f14e93bb250930924313",
+      "bytes": 376
+    },
+    {
+      "path": "T/local_backup_acceptance.json",
+      "SHA256": "a29469d7a98851dd9d1635b376e6ea5178b0bca8ab4def840b72ac5a760b973d",
+      "bytes": 451
+    },
+    {
+      "path": "T/raw_results.zip",
+      "SHA256": "de6ad9f316a10704fcd935cf4843e56c6cb1baabc90176afb97d161c1e52d4be",
+      "bytes": 8798996
+    },
+    {
+      "path": "T/runtime_status.json",
+      "SHA256": "2f8c0e54f0b69bf7d3294e12d997661353275ee4064ce694eba953ac91b4f242",
+      "bytes": 413
+    },
+    {
+      "path": "T/selected_configs.json",
+      "SHA256": "f46aed2e70d7ab7d53bfb2535e1c2643c3ff8020afbbfa30a5306e62c0b40495",
+      "bytes": 225
+    },
+    {
+      "path": "T/summary.json",
+      "SHA256": "52cf09fc10090adfa98a85276cbe71a197861748ee589bb1e5239e2d00b9e3bd",
+      "bytes": 16257
+    },
+    {
+      "path": "T/tuning.json",
+      "SHA256": "788ff3fe3e836d7c8aeec671fbe171cc06c7e30ac3dd51fc0914126030984188",
+      "bytes": 1884
+    }
+  ],
+  "raw_inventory_SHA256": "8750da72524353b1386d3dfb5dde3413cd40d35b4cde0637333cfe8d60231a4c",
+  "raw_count": 768,
+  "locked_test": false
+}

@@ -1,0 +1,14 @@
+{
+  "configs": {
+    "MH-CEM": {
+      "K": 3,
+      "elite_ratio": 0.1
+    },
+    "S-CEM": {
+      "K": 4,
+      "elite_ratio": 0.2
+    }
+  },
+  "locked_test": false,
+  "selected_from": "repaired-domain Formal TRAIN only"
+}

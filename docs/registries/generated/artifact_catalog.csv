@@ -812,7 +812,7 @@ protocols/pi_jwm_step6_4c_mh_budget_calibration_v1_20261003,protocols,unclassifi
 protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003,protocols,SHUT_DOWN_REPORTED_BY_RESEARCHER,6316,MH-CEM,,299,28651199,1791075233435437700,,,,,
 protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004,protocols,unclassified,,,,16,26798,1791081118426660300,,,,,
 protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004,protocols,unclassified,,,,18,102311200,1791085770745662300,,,,,
-protocols/pi_jwm_step6_4g_repaired_search_v1_20261004,protocols,unclassified,,,,15,447712,1791090157179358100,,,,,
+protocols/pi_jwm_step6_4g_repaired_search_v1_20261004,protocols,RUNNING,,,,806,31698141,1791209854570258100,,,,,
 reports/governance_verification_20260711,reports,unclassified,,,,8,194890,1783786264608671500,,,,,
 reports/pi_jwm_energy_reward_diagnostic_20260713,reports,unclassified,,,,22,471265,1783940743787580000,,,,,
 reports/pi_jwm_energy_reward_horizon_study_20260713,reports,unclassified,,,,54,2203267,1784187683859877300,,,,,

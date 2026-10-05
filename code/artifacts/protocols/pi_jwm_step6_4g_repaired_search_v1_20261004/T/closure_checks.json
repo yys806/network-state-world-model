@@ -1,0 +1,28 @@
+{
+  "focused_CPU_tests": {
+    "tests": 67,
+    "seconds": 43.626,
+    "verdict": "PASS"
+  },
+  "compileall": "PASS",
+  "source_semantics": "UNCHANGED",
+  "T_raw_independent_reconstruction": "PASS",
+  "archive_SHA_local_D": "PASS",
+  "T_cases": 768,
+  "nominal_unique_budget": 393216,
+  "actual_unique_transitions": 393216,
+  "configs": {
+    "MH-CEM": {
+      "K": 3,
+      "elite_ratio": 0.1
+    },
+    "S-CEM": {
+      "K": 4,
+      "elite_ratio": 0.2
+    }
+  },
+  "formal_elapsed_seconds": 117343.84146338189,
+  "stage_A": "NOT_STARTED",
+  "stage_B": "NOT_STARTED",
+  "locked_test": false
+}

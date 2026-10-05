@@ -1,11 +1,19 @@
 <!-- STEP6.4G CURRENT -->
-## 2026-10-04 STEP 6.4G（当前授权 gate）
+## 2026-10-05 STEP 6.4G — Phase T 已验收
 
-STEP_6_4G=IN_PROGRESS；CPU preflight/协议冻结PASS，完整旧TRAIN行为支持catalog复算一致，无需重建；原32/64anchors在修复域均非空，未替换。Phase T NOT_STARTED（须精确Git/device/source gate才开GPU），目标768；Phase A NOT_STARTED（目标960），Phase B NOT_STARTED（仅新A选MH才320）。旧调参/选法/预算均historical-under-pre-6.4F-domain；不复用任何旧raw，包含先前7不变量anchors也完整重跑。FINAL_FALLBACK_POLICY=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1，研究者本轮明确冻结：NO_SCOREABLE_H4且当前域/输入完整才一个canonical A，A任何失败及空域/缺观测/slot unsupported/bridge/setter失败均C终止，不级联、不换动作、不重试。SEARCH_METHOD_REQUALIFIED=PENDING，S/MH新K/rho=PENDING；旧MH/K4rho0.1/B512只为历史/working决定，修复域最终预算待T→A→条件B gate。B512必须scoreability set一致、前三项目标劣化0、scorer0、mean/median耗时更低和严格budget。FORMAL_SEARCH_REQUALIFICATION=PENDING；CLOSED_LOOP_PRE_FORMAL_READINESS=PENDING_SEARCH_REQUALIFICATION；READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false。3080Ti只读认证核验空闲、11912MiB free、tracked clean，无其他搜索进程；未启动实例，不换4090。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN，Stage B=NOT_STARTED / DEFERRED，locked_test=false。唯一下一动作：commit/push协议后服务器fast-forward到精确commit，重复preflight后只启动PhaseT。
+STEP_6_4G=IN_PROGRESS；Phase T=PASS，768/768全部新结果独立验身份/预算/选参与本地D:归档通过；名义/实际unique一步转移393216，正式矩阵32.5955小时。修复域新冻结 S-CEM=(K4,rho0.2)，MH-CEM=(K3,rho0.1)，两方法四配置均48/96 H4可评分；这只属于TRAIN选参观察，不能据此选择搜索方法。scorer exception/inconsistency=0。Phase A=NOT_STARTED（新960 B1024）；Phase B=NOT_STARTED（只有新A选MH才320 B512）。SEARCH_METHOD_REQUALIFIED=PENDING，FORMAL_SEARCH_REQUALIFICATION=PENDING，修复域最终budget待新证据；旧MH/K4rho0.1/B512只在historical-under-pre-6.4F-domain/working决定范围保留，不复用任何旧raw。FINAL_FALLBACK_POLICY=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1；只尝试一次canonical A失败则C，不重试。future Return-birth fixed-support限制保留。CLOSED_LOOP_PRE_FORMAL_READINESS=PENDING_SEARCH_REQUALIFICATION，READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN，旧Stage B=NOT_STARTED / DEFERRED，locked_test=false。唯一下一动作：T阶段Git门完成后，同步服务器至精确新commit并启动PhaseA；科学源码SHA不变。
 
-证据：`code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/00_protocol_r2.json`、`01_support_catalog_semantic_audit.json`、`02_frozen_anchor_manifest.json`、`04_CPU_preflight_receipt_r2.json`；实现记录`docs/implementation_records/STEP_06_4G_REPAIRED_DOMAIN_FORMAL_SEARCH_REQUALIFICATION.md`。新目标evidence_class=repaired-domain formal evidence，尚无新正式科研结论。
+证据：`code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/acceptance.json`、`T/local_backup_acceptance.json`、`T/selected_configs.json`、`T/inventory.json`、`T/archive.json`；新证据=repaired-domain formal evidence。
 
 <!-- END STEP6.4G CURRENT -->
+
+以下是历史记录；旧调参/选法/预算结果只属于historical-under-pre-6.4F-domain。
+
+---
+
+以下是历史记录；旧调参/选法/预算结果只属于historical-under-pre-6.4F-domain。
+
+---
 
 以下是历史记录；旧调参/选法/预算结果只属于historical-under-pre-6.4F-domain。
 
@@ -1888,3 +1896,17 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 旧监控SSH连接失活退出，cell338已结束。重新只读核验远端原runner PID2838仍运行，未重启或修改GPU实验；新watch session49023恢复SHA备份，新189/272、覆盖237/320、本地189。后续heartbeat检查watch session49023（不能再wait cell338），若它失活仅重连只读监控。StageB NOT_STARTED、lockedfalse，下一动作继续监控至完成。
 
 - STEP 6.4G: GPU启动前修正仅监控脚本的进程匹配；阳性/阴性识别通过，冻结科研源码 SHA 完全不变，服务器CPU preflight PASS，尚未启动GPU。下一动作：同步此工程修正提交，再启动Phase T。
+
+- STEP 6.4G heartbeat 20261004T052639Z: Phase T 5/768，原runner持续运行未重启，身份/source/每case B512及D:SHA备份通过；A/B未开始、locked_test=false。下一动作：继续只读监控，完成T后独立验收/Git。
+
+- STEP 6.4G heartbeat 20261004T053621Z: Phase T 8/768，原GPU进程正常，未重启；全量已完成raw身份/预算/source/D:SHA通过，A/B未开始、lockedfalse。下一动作：只读监控至T768后独立验收/Git。
+
+- STEP 6.4G 20261004T054416Z用户进度查询：T 12/768，约24.1cases/h，早期剩余估算31.3h；原runner正常，完成raw身份/源码/预算/D:SHA通过，A/B未开始、lockedfalse。下一动作：继续监控和备份。
+
+- STEP 6.4G 20261004T094701Z用户进度查询：T 109/768，本地验身份/SHA 91；速度23.9cases/h，剩余粗估27.6h，原runner持续运行未重启，A/B未开始、lockedfalse。下一动作：监控与备份至T完成。
+
+- 20261004T094742Z 本轮SFTP已结束，T109份全部完成D:SHA备份及独立身份/预算复核；原GPU进程正常，未启动A/B。
+
+- STEP6.4G 20261004T131015Z 进度查询：T190/768，原runner正常，无STOP，全190 raw source/身份/B512及D:SHA备份通过；速度24.1cases/h，剩余粗估24h，A/B未开始、lockedfalse。下一动作继续只读监控备份至T完整验收。
+
+- 2026-10-05T14:12:05.194440+00:00：T768/768远端独立验收PASS，实际GPU矩阵耗时32.6小时；上次仅SFTP备份连接10054中断，原GPU未重启、已自然完成。现只读补齐会话56512仍运行，本地独立验收/Git未完成，A/B未启动、lockedfalse。下一动作：备份完整后本地重建统计。

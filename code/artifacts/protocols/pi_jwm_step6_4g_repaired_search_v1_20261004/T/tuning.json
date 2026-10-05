@@ -1,0 +1,90 @@
+{
+  "grids": {
+    "MH-CEM": {
+      "paired_case_count": 96,
+      "ranking": [
+        {
+          "config": [
+            3,
+            0.1
+          ],
+          "h4_success_count": 48,
+          "paired_objective_net_outcome": 28
+        },
+        {
+          "config": [
+            4,
+            0.1
+          ],
+          "h4_success_count": 48,
+          "paired_objective_net_outcome": 17
+        },
+        {
+          "config": [
+            4,
+            0.2
+          ],
+          "h4_success_count": 48,
+          "paired_objective_net_outcome": 1
+        },
+        {
+          "config": [
+            3,
+            0.2
+          ],
+          "h4_success_count": 48,
+          "paired_objective_net_outcome": -46
+        }
+      ],
+      "selected_config": [
+        3,
+        0.1
+      ],
+      "selection_order": "H4 success count; paired objective net outcome; smaller K; smaller rho"
+    },
+    "S-CEM": {
+      "paired_case_count": 96,
+      "ranking": [
+        {
+          "config": [
+            4,
+            0.2
+          ],
+          "h4_success_count": 48,
+          "paired_objective_net_outcome": 35
+        },
+        {
+          "config": [
+            4,
+            0.1
+          ],
+          "h4_success_count": 48,
+          "paired_objective_net_outcome": 21
+        },
+        {
+          "config": [
+            3,
+            0.1
+          ],
+          "h4_success_count": 48,
+          "paired_objective_net_outcome": -6
+        },
+        {
+          "config": [
+            3,
+            0.2
+          ],
+          "h4_success_count": 48,
+          "paired_objective_net_outcome": -50
+        }
+      ],
+      "selected_config": [
+        4,
+        0.2
+      ],
+      "selection_order": "H4 success count; paired objective net outcome; smaller K; smaller rho"
+    }
+  },
+  "independent_oracle": "PASS",
+  "validation_used": false
+}

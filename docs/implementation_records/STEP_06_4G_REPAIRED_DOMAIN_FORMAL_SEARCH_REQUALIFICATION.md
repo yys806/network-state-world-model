@@ -22,13 +22,13 @@ HEAD=origin/main=1f2b9fafeeb00251383ae4551a78b1a9ef5bc48a，tracked clean。6.4F
 
 ## Results / Expected vs Actual
 
-STEP_6_4G=IN_PROGRESS；CPU preflight/协议冻结PASS，完整旧TRAIN行为支持catalog复算一致，无需重建；原32/64anchors在修复域均非空，未替换。Phase T NOT_STARTED（须精确Git/device/source gate才开GPU），目标768；Phase A NOT_STARTED（目标960），Phase B NOT_STARTED（仅新A选MH才320）。旧调参/选法/预算均historical-under-pre-6.4F-domain；不复用任何旧raw，包含先前7不变量anchors也完整重跑。FINAL_FALLBACK_POLICY=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1，研究者本轮明确冻结：NO_SCOREABLE_H4且当前域/输入完整才一个canonical A，A任何失败及空域/缺观测/slot unsupported/bridge/setter失败均C终止，不级联、不换动作、不重试。SEARCH_METHOD_REQUALIFIED=PENDING，S/MH新K/rho=PENDING；旧MH/K4rho0.1/B512只为历史/working决定，修复域最终预算待T→A→条件B gate。B512必须scoreability set一致、前三项目标劣化0、scorer0、mean/median耗时更低和严格budget。FORMAL_SEARCH_REQUALIFICATION=PENDING；CLOSED_LOOP_PRE_FORMAL_READINESS=PENDING_SEARCH_REQUALIFICATION；READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false。3080Ti只读认证核验空闲、11912MiB free、tracked clean，无其他搜索进程；未启动实例，不换4090。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN，Stage B=NOT_STARTED / DEFERRED，locked_test=false。唯一下一动作：commit/push协议后服务器fast-forward到精确commit，重复preflight后只启动PhaseT。
+STEP_6_4G=IN_PROGRESS；Phase T=PASS，768/768全部新结果独立验身份/预算/选参与本地D:归档通过；名义/实际unique一步转移393216，正式矩阵32.5955小时。修复域新冻结 S-CEM=(K4,rho0.2)，MH-CEM=(K3,rho0.1)，两方法四配置均48/96 H4可评分；这只属于TRAIN选参观察，不能据此选择搜索方法。scorer exception/inconsistency=0。Phase A=NOT_STARTED（新960 B1024）；Phase B=NOT_STARTED（只有新A选MH才320 B512）。SEARCH_METHOD_REQUALIFIED=PENDING，FORMAL_SEARCH_REQUALIFICATION=PENDING，修复域最终budget待新证据；旧MH/K4rho0.1/B512只在historical-under-pre-6.4F-domain/working决定范围保留，不复用任何旧raw。FINAL_FALLBACK_POLICY=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1；只尝试一次canonical A失败则C，不重试。future Return-birth fixed-support限制保留。CLOSED_LOOP_PRE_FORMAL_READINESS=PENDING_SEARCH_REQUALIFICATION，READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN，旧Stage B=NOT_STARTED / DEFERRED，locked_test=false。唯一下一动作：T阶段Git门完成后，同步服务器至精确新commit并启动PhaseA；科学源码SHA不变。
 
-证据：`code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/00_protocol_r2.json`、`01_support_catalog_semantic_audit.json`、`02_frozen_anchor_manifest.json`、`04_CPU_preflight_receipt_r2.json`；实现记录`docs/implementation_records/STEP_06_4G_REPAIRED_DOMAIN_FORMAL_SEARCH_REQUALIFICATION.md`。新目标evidence_class=repaired-domain formal evidence，尚无新正式科研结论。
+证据：`code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/acceptance.json`、`T/local_backup_acceptance.json`、`T/selected_configs.json`、`T/inventory.json`、`T/archive.json`；新证据=repaired-domain formal evidence。
 
 ## Known Issues / Stop gates
 
-真正新K/rho、选法、预算结论PENDING；不能宣称67测试或source一致即正式requalification PASS。Return-birth fixed-support边界保留，hard anchors不得删除。B512 gate失败待决定，A非MH停B。长GPU期间源码异常、crash/scorer/身份异常停止不修算法不自动重启。
+新K/rho已从修复域完整TRAIN冻结；新选法和预算结论PENDING；不能宣称67测试或source一致即正式requalification PASS。Return-birth fixed-support边界保留，hard anchors不得删除。B512 gate失败待决定，A非MH停B。长GPU期间源码异常、crash/scorer/身份异常停止不修算法不自动重启。
 
 ## Git / Execution identity
 
@@ -36,4 +36,10 @@ protocol commit通过`git log -- docs/implementation_records/STEP_06_4G_REPAIRED
 
 ## Next Step
 
-Protocol commit+push，服务器ff该精确commit并重复preflight，才T；不可达则STOP。
+只读监控T、SHA备份至768；独立验收+Git后才新A，依序执行授权链。
+
+## 2026-10-05 Phase T independent closure
+
+原始768、归档ZIP逐文件SHA、模型parameter digest、current source/input SHA、原tune_cem_config与独立数学oracle一致；原结果不覆盖。正式运行2026-10-04T05:12:19Z至2026-10-05T13:48:00Z，32.5955h。S4/rho.2、MH3/rho.1；八配置各48/96 scoreable，不能推断方法相同。
+
+实际CPU命令：python code/scripts/audit_step6_4g_phase_v1.py --phase T --verify-accepted-local → PASS/raw_count768；原67 focused unittest → 67 tests in43.626s OK；python -m compileall -q code/src code/scripts code/tests → exit0。index write/check、Context与diff在本阶段Git前执行。SFTP 10054仅备份连接恢复事件，原GPU无重启且自然完成；第二次会话56512已正常结束并SHA补齐。下一步新A960，T source保持原冻结；A身份由NEW T四父收据SHA构造，不能沿旧execution config。

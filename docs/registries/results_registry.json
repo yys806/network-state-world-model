@@ -159,5 +159,14 @@
   ],
   "current_definition_search_evidence_assessment": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/07_formal_search_evidence_reuse_assessment.json",
   "current_repaired_domain_protocol": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/00_protocol_r2.json",
-  "old_search_claim_scope": "historical-under-pre-6.4F-domain"
+  "old_search_claim_scope": "historical-under-pre-6.4F-domain",
+  "current_repaired_domain_evidence": {
+    "T_acceptance": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/acceptance.json",
+    "T_local_backup": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/local_backup_acceptance.json",
+    "T_selected_configs": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/selected_configs.json",
+    "T_summary": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/summary.json",
+    "A": "NOT_STARTED",
+    "B": "NOT_STARTED",
+    "note": "Navigation links; numerical truth is accepted raw reconstruction, not historical registry metrics"
+  }
 }
