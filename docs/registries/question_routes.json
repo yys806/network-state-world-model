@@ -2,6 +2,26 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP6.4H-S-CEM-BUDGET",
+      "keywords": [
+        "6.4H",
+        "S-CEM budget",
+        "B512 qualification"
+      ],
+      "title": "Step6.4H S-CEM budget CPU gate",
+      "summary": "Parent320 verified; CPU protocol freeze; wait for researcher GPU launch",
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_4H_S_CEM_BUDGET_QUALIFICATION.md",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/00_protocol.json"
+      ],
+      "verification_sources": [
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/02_parent_refs.json",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/03_execution_config.json",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/04_cpu_preflight.json",
+        "docs/contracts/PIJWM_STEP_06_4H_S_CEM_BUDGET_QUALIFICATION_V1.md"
+      ]
+    },
+    {
       "id": "ROUTE-STEP6.4G-REQUALIFICATION",
       "keywords": [
         "6.4G",

@@ -1,0 +1,26 @@
+{
+  "GPU_used": false,
+  "READY_FOR_GPU_LAUNCH": true,
+  "compileall": "PASS",
+  "context_consistency": "PASS",
+  "context_knowledge_tests": {
+    "count": 14,
+    "passed": true,
+    "seconds": 0.091
+  },
+  "execution_config_id": "5cf6685959ad8847150c1680ba55c399102858611e5c2d955fead8f32f6c46bf",
+  "focused_CPU_tests": {
+    "count": 47,
+    "passed": true,
+    "seconds": 27.325
+  },
+  "historical_6_4G_diff": "UNCHANGED",
+  "knowledge_index_write": "PASS",
+  "locked_test": false,
+  "new_case_count": 0,
+  "parent_raw_count": 320,
+  "qualification": "NOT_RUN",
+  "remote_device_disk_and_runner_checks": "PENDING_USER_GPU",
+  "scientific_source_diff": "UNCHANGED",
+  "verdict": "PASS"
+}

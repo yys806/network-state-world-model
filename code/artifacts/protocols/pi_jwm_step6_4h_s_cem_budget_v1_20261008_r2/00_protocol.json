@@ -1,0 +1,52 @@
+{
+  "GPU_capacity": "Recheck on server at launch; not measured in CPU preparation",
+  "atomic_resume": "full identity before model forward; atomic os.replace",
+  "bootstrap": {
+    "cluster": "anchor",
+    "replications": 10000,
+    "seed": 6316,
+    "seeds_per_cluster": 5
+  },
+  "components": [
+    "N_DDL",
+    "A_DDL",
+    "J_Delay",
+    "J_Burden",
+    "J_Effort"
+  ],
+  "execution_config_SHA256": "f6b8b0fbf5e86ecdf2408080c5aca6e1d6237a06c2ac4056134e487868cbb79d",
+  "final_budget": "RESEARCHER_DECISION_PENDING",
+  "formal_closed_loop": false,
+  "historical_6_4G_B": "NOT_STARTED_BY_CONDITIONAL_STOP; unchanged",
+  "locked_test": false,
+  "minimum_free_bytes": 5368709120,
+  "name": "STEP 6.4H S-CEM BUDGET QUALIFICATION",
+  "new_cases": 320,
+  "nominal_transitions": 163840,
+  "parent_budget": 1024,
+  "parent_cases": 320,
+  "qualification_gates": [
+    "complete paired provenance/budget",
+    "scorer zero",
+    "identical scoreability sets",
+    "zero primary first-difference loss",
+    "lower mean and median in-solve runtime"
+  ],
+  "runtime": "in-solve and case setup and invocation elapsed reported separately",
+  "six_categories": [
+    "only_left_scoreable",
+    "only_right_scoreable",
+    "both_scoreable_left_better",
+    "both_scoreable_right_better",
+    "both_scoreable_tie",
+    "both_unscoreable"
+  ],
+  "stop_on": [
+    "duplicate runner",
+    "identity mismatch",
+    "source/input/checkpoint drift",
+    "NaN/Inf",
+    "scorer error",
+    "budget mismatch"
+  ]
+}

@@ -1,3 +1,13 @@
+<!-- STEP6.4H CPU CURRENT -->
+## 2026-10-08 STEP 6.4H — S-CEM 预算资格：CPU 前置门
+
+当前授权为独立 S-CEM K4/rho0.2 的 B512 vs 已有 B1024；方法不重新选择。B1024 的320份修复域原始结果与ZIP内文件逐份SHA、source/config/checkpoint身份核验PASS。新B512=0/320，名义预算163840；没有启动GPU或搜索。协议、64×5清单、独立身份、原子保存/严格恢复、六类配对、目标首差及资格门已实现；CPU检查通过后 READY_FOR_GPU_LAUNCH=true，等待研究者开启服务器并续跑。
+
+SEARCH_METHOD=S-CEM；S_CEM_B512_QUALIFICATION=NOT_RUN；RECOMMENDED_CLOSED_LOOP_B_WM=PENDING_EVIDENCE；FINAL_CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING。6.4G Phase B=NOT_STARTED_BY_CONDITIONAL_STOP，原Stage B=NOT_STARTED/DEFERRED，历史停止门不变。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；HYBRID_PLANNER=NOT_FROZEN；GPU=NOT_USED；locked_test=false。正式闭环仍等待预算证据与研究者决定。服务器容量、设备和无旧runner检查须在后续启动前实测，当前未探测服务器。
+
+证据：docs/implementation_records/STEP_06_4H_S_CEM_BUDGET_QUALIFICATION.md；code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/。以下6.4G及更早章节保留为此前状态，不是当前执行指令。
+<!-- END STEP6.4H CPU CURRENT -->
+
 <!-- STEP6.4G CURRENT -->
 ## 2026-10-08 STEP 6.4G — 修复域 Phase A 验收与条件硬停止
 

@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "bytes": 1492,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/00_protocol.json",
+      "sha256": "f77910d06b70eabe39a7ec8127dc5d522813cb61437d867b33f85053e45ede71"
+    },
+    {
+      "bytes": 80298,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/01_manifest.json",
+      "sha256": "4d1c7dfb387f5c23d649ac5a7b73f7e64bc5a1c85bac5f59491b437a0fe1b7e1"
+    },
+    {
+      "bytes": 172986,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/02_parent_refs.json",
+      "sha256": "4966f9bf3ec6c3fca59a12ff4f4848aaecef1b77d09ce3e72c2be8d1882207f9"
+    },
+    {
+      "bytes": 79559,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/03_execution_config.json",
+      "sha256": "f6b8b0fbf5e86ecdf2408080c5aca6e1d6237a06c2ac4056134e487868cbb79d"
+    },
+    {
+      "bytes": 218,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/04_cpu_preflight.json",
+      "sha256": "8fd4b82e2ee6c8a811c73db469be214d683f480a691e7e0e30b5f01a0fda5141"
+    },
+    {
+      "bytes": 691,
+      "path": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/05_cpu_validation.json",
+      "sha256": "b887b620e8cdde7d05d1240df53b902682aa640393c499ba19976f92265fb1f1"
+    }
+  ],
+  "locked_test": false,
+  "raw_result_count": 0
+}

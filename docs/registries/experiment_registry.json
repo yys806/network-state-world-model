@@ -3,6 +3,55 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.4H-S-CEM-BUDGET-20261008",
+      "name": "S-CEM repaired-domain online budget qualification",
+      "date": "2026-10-08",
+      "research_question": "Qualify B512 compute/quality trade-off against accepted S-CEM B1024",
+      "method": "S-CEM K4 rho0.2; paired B512/B1024",
+      "code": "code/scripts/step6_4h_s_cem_budget_v1.py",
+      "code_version": {
+        "identity_type": "frozen_Git_LF_source_SHA256",
+        "git_commit": null,
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/03_execution_config.json",
+        "note": "exact freeze commit required at GPU launch"
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/03_execution_config.json",
+      "parameters": {
+        "K": 4,
+        "rho": 0.2,
+        "new_budget": 512,
+        "parent_budget": 1024,
+        "cases": 320,
+        "batch_size": 16,
+        "precision": "FP32"
+      },
+      "protocol": "docs/contracts/PIJWM_STEP_06_4H_S_CEM_BUDGET_QUALIFICATION_V1.md",
+      "data": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/01_manifest.json",
+      "split": [
+        "dev_validation"
+      ],
+      "seed": [
+        6311,
+        6312,
+        6313,
+        6314,
+        6315
+      ],
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/04_cpu_preflight.json",
+      "status": "CPU_PREFLIGHT_PASS_WAITING_USER_GPU",
+      "conclusion": "Parent320 verified; new raw0; final budget pending; no GPU use",
+      "summary_zh": "CPU协议就绪，B1024父证据320/320核验，B512尚未运行，等待研究者开GPU。",
+      "claim_boundary": "Budget qualification only; no equivalence/optimality/closed-loop performance",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "metrics": "null: B512 not run; no formal result",
+        "code_version": "git_commit null: this commit is the freeze gate, checked exactly by runner"
+      }
+    },
+    {
       "id": "STEP-6.4G-REPAIRED-SEARCH-20261004",
       "name": "Repaired-domain full TRAIN/StageA/conditional B512 requalification",
       "date": "2026-10-04",

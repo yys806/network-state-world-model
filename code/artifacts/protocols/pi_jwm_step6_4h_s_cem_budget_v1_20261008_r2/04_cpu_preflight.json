@@ -1,0 +1,10 @@
+{
+  "GPU_used": false,
+  "READY_FOR_GPU_LAUNCH": true,
+  "local_free_bytes": 223791337472,
+  "locked_test": false,
+  "new_result_count": 0,
+  "parent_count": 320,
+  "server_checks_pending": true,
+  "verdict": "PASS"
+}

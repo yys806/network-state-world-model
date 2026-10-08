@@ -1,0 +1,2957 @@
+{
+  "anchors": [
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+    "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+    "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+    "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+    "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+    "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+    "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+    "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+    "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+    "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0023"
+  ],
+  "cases": [
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0030",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0052",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0049",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0046",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0075",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0062",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0014",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0018",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0023",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0031",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0026",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0084",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0076",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0010",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0003",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0042",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0032",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0090",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0071",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0051",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0018",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0045",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0011",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0068",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0015",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0086",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0091",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0003",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092350-policy-2026092450::anchor-0006",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0036",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0082",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092341-policy-2026092441::anchor-0040",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0064",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0082",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0005",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0044",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0021",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092302-policy-2026092402::anchor-0070",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0052",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0078",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0066",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0024",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0045",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0041",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0054",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0035",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0067",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0058",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0010",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092358-policy-2026092458::anchor-0042",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0061",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092315-policy-2026092415::anchor-0066",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0083",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0064",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0016",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092331-policy-2026092431::anchor-0010",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0043",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0050",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092313-policy-2026092413::anchor-0045",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092322-policy-2026092422::anchor-0076",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092301-policy-2026092401::anchor-0083",
+      "seed": 6315,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6311,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6312,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6313,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6314,
+      "split": "dev_validation"
+    },
+    {
+      "budget": 512,
+      "elite_ratio": 0.2,
+      "iterations": 4,
+      "method": "S-CEM",
+      "sample_id": "formal-v1-sim-2026092323-policy-2026092423::anchor-0023",
+      "seed": 6315,
+      "split": "dev_validation"
+    }
+  ],
+  "seeds": [
+    6311,
+    6312,
+    6313,
+    6314,
+    6315
+  ]
+}
