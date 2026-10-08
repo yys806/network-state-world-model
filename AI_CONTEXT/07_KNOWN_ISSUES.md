@@ -1,12 +1,14 @@
-<!-- STEP6.4H CPU CURRENT -->
-## 2026-10-08 STEP 6.4H — S-CEM 预算资格：CPU 前置门
+<!-- STEP6.4H ACCEPTED CURRENT -->
+## 2026-10-09 STEP 6.4H — S-CEM B512 预算资格完成
 
-当前授权为独立 S-CEM K4/rho0.2 的 B512 vs 已有 B1024；方法不重新选择。B1024 的320份修复域原始结果与ZIP内文件逐份SHA、source/config/checkpoint身份核验PASS。新B512=0/320，名义预算163840；没有启动GPU或搜索。协议、64×5清单、独立身份、原子保存/严格恢复、六类配对、目标首差及资格门已实现；CPU检查通过后 READY_FOR_GPU_LAUNCH=true，等待研究者开启服务器并续跑。
+STEP_6_4H=PASS；SEARCH_METHOD=S-CEM（K=4,rho=0.2，仅Planner v1 pure-search骨架）。新B512 320/320与修复域6.4G A的S-CEM B1024父320只读严格配对，本地原始结果独立重算、ZIP/逐文件SHA与持久D:备份PASS。两预算均160/320=50% H4可评分、集合完全相同，32/64困难起点保留；前三项N_DDL/A_DDL/J_Delay首差劣化0。B512对B1024为11胜/233平/76负，六类0/0/11/76/73/160，64-anchor整组抽样95% CI=[-0.290625,-0.11875]。差异仅在J_Effort首差：B512更好11、更差76；J_Burden首差0，双方可评分全等73。资格通过不表示整体目标等价；完整字典序比较显示Effort损失。
 
-SEARCH_METHOD=S-CEM；S_CEM_B512_QUALIFICATION=NOT_RUN；RECOMMENDED_CLOSED_LOOP_B_WM=PENDING_EVIDENCE；FINAL_CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING。6.4G Phase B=NOT_STARTED_BY_CONDITIONAL_STOP，原Stage B=NOT_STARTED/DEFERRED，历史停止门不变。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；HYBRID_PLANNER=NOT_FROZEN；GPU=NOT_USED；locked_test=false。正式闭环仍等待预算证据与研究者决定。服务器容量、设备和无旧runner检查须在后续启动前实测，当前未探测服务器。
+S_CEM_B512_QUALIFICATION=PASS；RECOMMENDED_CLOSED_LOOP_B_WM=512；FINAL_CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING。B512实际转移163840（名义相同）；不同可评分候选30209 vs 72587。单次内部搜索mean/median为74.548/51.416s vs175.249/126.359s，节省57.46%/59.31%。矩阵总墙钟42613.116s（11h50m12s），含内部搜索23855.506s、加载/setup10899.799s及其余核验/持久化开销，不能用总墙钟冒充单次搜索耗时。
 
-证据：docs/implementation_records/STEP_06_4H_S_CEM_BUDGET_QUALIFICATION.md；code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/。以下6.4G及更早章节保留为此前状态，不是当前执行指令。
-<!-- END STEP6.4H CPU CURRENT -->
+future Return-birth fixed-support限制保留：B512/B1024边界49845/162239，grammar dead-end19882/46621，scorer exception/inconsistency均0。CLOSED_LOOP_PRE_FORMAL_READINESS=READY_FOR_RESEARCHER_BUDGET_DECISION；已有闭环机制与fallback不改变，但FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED、HYBRID_PLANNER=NOT_FROZEN。6.4G Phase B=NOT_STARTED_BY_CONDITIONAL_STOP，原三方法Stage B=NOT_STARTED/DEFERRED；locked_test=false。GPU=RUNNER_STOPPED_NO_FURTHER_USE：原3080Ti CUDA FP32 batch16单runner自然结束，全部备份通过后已告知研究者可以关机，实例电源状态未由本任务确认。唯一下一动作：研究者审阅Effort损失与时间节约，决定最终pure-search闭环预算；不自动启动闭环或其他实验。
+
+证据：code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/{acceptance.json,local_backup_acceptance.json,qualification.json,summary.json,paired.json,objective_components.json,runtime_tradeoff.json,matrix_runtime.json,inventory.json,archive.json}；以下6.4G及更早内容为历史状态。
+<!-- END STEP6.4H ACCEPTED CURRENT -->
 
 <!-- STEP6.4G CURRENT -->
 ## 2026-10-08 STEP 6.4G — 修复域 Phase A 验收与条件硬停止

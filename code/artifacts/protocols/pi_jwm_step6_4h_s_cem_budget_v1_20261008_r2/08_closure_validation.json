@@ -1,0 +1,33 @@
+{
+  "verdict": "PASS",
+  "focused_CPU_tests": {
+    "count": 50,
+    "seconds": 14.981,
+    "passed": true
+  },
+  "compileall": "PASS",
+  "context_consistency": {
+    "validated_files": 9,
+    "errors": []
+  },
+  "diff_check": "PASS",
+  "scientific_source_vs_GPU_freeze": "UNCHANGED",
+  "independent_local_raw_archive_statistics": "PASS",
+  "knowledge_index_write": "PASS",
+  "knowledge_index_check": "PASS",
+  "GPU_search_complete": 320,
+  "GPU_runner": "STOPPED_NO_FURTHER_USE",
+  "locked_test": false,
+  "final_budget": "RESEARCHER_DECISION_PENDING",
+  "validation_commands": [
+    "python -m unittest (focused patterns test_step6_4h*, test_step6_4g*, context/index/registry/query)",
+    "python -m compileall -q code/src code/scripts code/tests",
+    "python code/scripts/step6_4h_s_cem_budget_v1.py --verify-local",
+    "python code/scripts/build_project_knowledge_index_v1.py",
+    "python code/scripts/build_project_knowledge_index_v1.py --check",
+    "git diff --check",
+    "validate_ai_context(Path.cwd())"
+  ],
+  "initial_index_test_failure": "Registry added before regenerated index: result count 5 vs 4; regenerated and full focused suite passed; no scientific change.",
+  "monitor_stop": "Automation update reports monitor does not exist; no monitor recreated."
+}

@@ -8,8 +8,8 @@
         "S-CEM budget",
         "B512 qualification"
       ],
-      "title": "Step6.4H S-CEM budget CPU gate",
-      "summary": "Parent320 verified; CPU protocol freeze; wait for researcher GPU launch",
+      "title": "Step6.4H S-CEM budget qualification accepted",
+      "summary": "320 new B512 + 320 parent B1024 independently accepted; qualification PASS; Effort loss reported; final budget researcher pending",
       "primary_sources": [
         "docs/implementation_records/STEP_06_4H_S_CEM_BUDGET_QUALIFICATION.md",
         "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/00_protocol.json"
@@ -18,7 +18,14 @@
         "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/02_parent_refs.json",
         "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/03_execution_config.json",
         "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/04_cpu_preflight.json",
-        "docs/contracts/PIJWM_STEP_06_4H_S_CEM_BUDGET_QUALIFICATION_V1.md"
+        "docs/contracts/PIJWM_STEP_06_4H_S_CEM_BUDGET_QUALIFICATION_V1.md",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/acceptance.json",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/local_backup_acceptance.json",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/summary.json",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/paired.json",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/objective_components.json",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/qualification.json",
+        "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/matrix_runtime.json"
       ]
     },
     {

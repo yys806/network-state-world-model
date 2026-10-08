@@ -673,6 +673,33 @@ def validate_question_routes(repo_root: Path, payload: dict[str, Any]) -> None:
             _assert_existing(repo_root, relative, label=row["id"])
 
 
+def s_cem_budget_registry_metrics(evidence: dict, audit: dict) -> dict:
+    """Flatten only numbers from SHA-bound accepted budget receipts."""
+    metrics = {"case_count": audit.get("count"),
+               "primary_degradation": evidence["components"].get("PRIMARY_OBJECTIVE_DEGRADATION_COUNT"),
+               "burden_effort_degradation": evidence["components"].get("BURDEN_EFFORT_ONLY_DEGRADATION_COUNT"),
+               "elapsed_seconds": evidence["matrix"].get("invocation_elapsed_s_total")}
+    for budget in ("512", "1024"):
+        row = evidence["summary"][budget]
+        for field in ("scoreable_cases", "scoreable_rate", "complete_h4", "distinct_scoreable_h4",
+                      "unscoreable_h4", "return_birth_boundary", "N_dead_end_branches", "scorer_exceptions",
+                      "scorer_inconsistencies", "N_unique_transition_evals", "N_cache_hits",
+                      "N_proposed_steps", "N_admitted_steps", "N_rejected_steps"):
+            metrics[f"B{budget}_{field}"] = row.get(field)
+        for field in ("mean", "median", "P90", "P95", "max"):
+            metrics[f"B{budget}_runtime_{field}"] = row["runtime_seconds"].get(field)
+    pair = evidence["paired"]
+    for field in ("win", "tie", "loss"):
+        metrics[field] = pair.get(field)
+    for field, value in pair.get("six_categories", {}).items():
+        metrics[field] = value
+    for field in ("mean_paired_advantage", "ci95_lower", "ci95_upper"):
+        metrics[field] = pair["cluster_bootstrap"].get(field)
+    for field in ("mean_reduction", "median_reduction"):
+        metrics[field] = evidence["tradeoff"].get(field)
+    return metrics
+
+
 def validate_result_registry_against_evidence(
     repo_root: Path,
     result_payload: dict[str, Any],
@@ -706,6 +733,61 @@ def validate_result_registry_against_evidence(
             continue
         if _sha256(audit_path) != str(result.get("audit_sha256", "")).lower():
             mismatches.append(f"{identifier}: audit SHA-256 mismatch")
+        if result.get("result_type") == "s_cem_budget_qualification":
+            if (audit.get("verdict") != "PASS" or audit.get("count") != 320 or
+                    result.get("status") != "passed_budget_qualification" or
+                    result.get("selected_search_method") != "S-CEM" or
+                    result.get("final_budget") != "RESEARCHER_DECISION_PENDING" or
+                    result.get("seed") != [6311, 6312, 6313, 6314, 6315] or
+                    result.get("seed") != experiment.get("seed") or
+                    result.get("primary_budget") != 512 or result.get("reference_budget") != 1024 or
+                    result.get("locked_test_accessed") is not False or audit.get("locked_test") is not False):
+                mismatches.append(f"{identifier}: budget qualification identity/scope mismatch")
+            evidence = {}
+            for label in ("summary", "paired", "components", "qualification", "tradeoff", "matrix"):
+                relative = result.get(label)
+                if not isinstance(relative, str):
+                    mismatches.append(f"{identifier}: {label} path missing")
+                    continue
+                path = repo_root / relative
+                payload, error = _read_json(path)
+                if error or not isinstance(payload, dict):
+                    mismatches.append(f"{identifier}: cannot read {label}: {error}")
+                    continue
+                digest = _sha256(path)
+                if digest != result.get(f"{label}_sha256") or digest != audit.get("artifact_SHA256", {}).get(path.name):
+                    mismatches.append(f"{identifier}: {label} SHA-256 mismatch")
+                evidence[label] = payload
+            if len(evidence) != 6:
+                continue
+            q = evidence["qualification"]
+            if (q.get("verdict") != audit.get("qualification") or q.get("verdict") != "PASS" or
+                    not all(q.get("checks", {}).values()) or not q.get("checks") or
+                    q.get("final_budget") != result.get("final_budget") or q.get("recommended_budget") != 512):
+                mismatches.append(f"{identifier}: qualification gate mismatch")
+            paired = evidence["paired"]
+            if sum(paired.get("six_categories", {}).values()) != 320:
+                mismatches.append(f"{identifier}: paired six-category accounting mismatch")
+            backup_path = repo_root / str(result.get("local_backup", ""))
+            backup, backup_error = _read_json(backup_path)
+            if (backup_error or not isinstance(backup, dict) or
+                    _sha256(backup_path) != result.get("local_backup_sha256") or
+                    backup.get("verdict") != "PASS" or backup.get("count") != 320 or
+                    backup.get("independent_statistics") != "PASS" or
+                    backup.get("acceptance_SHA256") != result.get("audit_sha256")):
+                mismatches.append(f"{identifier}: local backup acceptance mismatch")
+            expected = s_cem_budget_registry_metrics(evidence, audit)
+            registered = result.get("metrics", {})
+            if set(registered) != set(expected):
+                mismatches.append(f"{identifier}: budget metric keys mismatch")
+            for name, original in expected.items():
+                value = registered.get(name)
+                if (isinstance(value, bool) or isinstance(original, bool) or
+                        not isinstance(value, (int, float)) or not isinstance(original, (int, float)) or
+                        not math.isfinite(float(value)) or not math.isfinite(float(original)) or
+                        abs(float(value) - float(original)) > tolerance):
+                    mismatches.append(f"{identifier}: budget metric mismatch {name}")
+            continue
         if result.get("result_type") == "repaired_planner_search_stage_a":
             if (audit.get("verdict") != "PASS" or audit.get("phase") != "A" or
                     audit.get("cases") != 960 or result.get("status") != "passed_phase_a_conditional_stop"):

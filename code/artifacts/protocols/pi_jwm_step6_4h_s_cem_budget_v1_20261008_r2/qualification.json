@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "budget": true,
+    "mean_lower": true,
+    "median_lower": true,
+    "no_primary_loss": true,
+    "paired_complete": true,
+    "provenance": true,
+    "same_scoreability": true,
+    "scorer_clean": true,
+    "valid_runtime": true
+  },
+  "claim_boundary": "Not equivalence, optimality or real closed-loop performance",
+  "final_budget": "RESEARCHER_DECISION_PENDING",
+  "recommended_budget": 512,
+  "verdict": "PASS"
+}

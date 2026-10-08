@@ -1,0 +1,1435 @@
+{
+  "cluster_bootstrap": {
+    "anchor_cluster_count": 64,
+    "bootstrap_replications": 10000,
+    "bootstrap_seed": 6316,
+    "bootstrap_type": "anchor_cluster_percentile",
+    "ci95_lower": -0.290625,
+    "ci95_upper": -0.11875,
+    "mean_paired_advantage": -0.203125,
+    "seeds_per_anchor": 5
+  },
+  "loss": 76,
+  "per_anchor_seed_outcomes": {
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0030": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0043": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0050": [
+      {
+        "outcome": 1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0054": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0066": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0082": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092301-policy-2026092401::anchor-0083": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0026": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0064": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0070": [
+      {
+        "outcome": 1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0071": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092302-policy-2026092402::anchor-0086": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": 1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": 1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0005": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0018": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0035": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0045": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092313-policy-2026092413::anchor-0049": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0003": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0036": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0042": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0045": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": 1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0052": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0061": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0066": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092315-policy-2026092415::anchor-0068": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0006": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0021": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0023": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0032": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0052": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0062": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0076": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0083": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092318-policy-2026092418::anchor-0084": [
+      {
+        "outcome": 1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": 1,
+        "seed": 6313
+      },
+      {
+        "outcome": 1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0011": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0015": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0031": [
+      {
+        "outcome": 1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0075": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0076": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092322-policy-2026092422::anchor-0078": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0016": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0018": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0023": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0024": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0041": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092323-policy-2026092423::anchor-0090": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092326-policy-2026092426::anchor-0029": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092326-policy-2026092426::anchor-0051": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092326-policy-2026092426::anchor-0058": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092331-policy-2026092431::anchor-0010": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092331-policy-2026092431::anchor-0064": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092331-policy-2026092431::anchor-0067": [
+      {
+        "outcome": 1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0010": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0014": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0040": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0045": [
+      {
+        "outcome": 1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092341-policy-2026092441::anchor-0046": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092350-policy-2026092450::anchor-0003": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092350-policy-2026092450::anchor-0006": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092350-policy-2026092450::anchor-0091": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0010": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0042": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0044": [
+      {
+        "outcome": 0,
+        "seed": 6311
+      },
+      {
+        "outcome": 0,
+        "seed": 6312
+      },
+      {
+        "outcome": 0,
+        "seed": 6313
+      },
+      {
+        "outcome": 0,
+        "seed": 6314
+      },
+      {
+        "outcome": 0,
+        "seed": 6315
+      }
+    ],
+    "formal-v1-sim-2026092358-policy-2026092458::anchor-0082": [
+      {
+        "outcome": -1,
+        "seed": 6311
+      },
+      {
+        "outcome": -1,
+        "seed": 6312
+      },
+      {
+        "outcome": -1,
+        "seed": 6313
+      },
+      {
+        "outcome": -1,
+        "seed": 6314
+      },
+      {
+        "outcome": -1,
+        "seed": 6315
+      }
+    ]
+  },
+  "six_categories": {
+    "both_scoreable_left_better": 11,
+    "both_scoreable_right_better": 76,
+    "both_scoreable_tie": 73,
+    "both_unscoreable": 160,
+    "only_left_scoreable": 0,
+    "only_right_scoreable": 0
+  },
+  "statistical_scope": "Full frozen Validation cohort budget comparison; no equivalence or closed-loop claim",
+  "tie": 233,
+  "total_paired_cases": 320,
+  "win": 11
+}

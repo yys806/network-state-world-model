@@ -1,0 +1,9 @@
+{
+  "acceptance_SHA256": "939ab785b4a96610ed1c270a8e0cd378de657065d9e65bda18a654963bdb3df7",
+  "archive_SHA256": "8133c9707454a4c279be3007fd918937e60dce1d46d49d5e8fa39996fca38a5f",
+  "count": 320,
+  "independent_statistics": "PASS",
+  "local_persistent_storage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2",
+  "locked_test": false,
+  "verdict": "PASS"
+}

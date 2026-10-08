@@ -1,0 +1,21 @@
+{
+  "GPU": "NVIDIA GeForce RTX 3080 Ti",
+  "batch_size": 16,
+  "deployment_bundle_SHA256": "03064e63770a07960bdd793b3423abd67e4b4d4c906b0de70991a2c3858a3818",
+  "deployment_method": "SHA_verified_incremental_Git_bundle_after_network_fetch_timeout",
+  "duplicate_runner": false,
+  "execution_config_id": "5cf6685959ad8847150c1680ba55c399102858611e5c2d955fead8f32f6c46bf",
+  "gate_commit": "dc0e6c94b2353bdaf1c671e52bde2a978a991bf8",
+  "initial_result_count": 0,
+  "local_persistent_backup": true,
+  "locked_test": false,
+  "parent_refs_count": 320,
+  "pid_at_launch": 1615,
+  "precision": "FP32",
+  "qualification": "RUNNING_NOT_DECIDED",
+  "remote_tracked_clean_at_launch": true,
+  "start_time_utc": "2026-10-08T03:50:21.905759+00:00",
+  "unique_transitions_verified": 512,
+  "verdict": "PASS",
+  "verified_local_raw_count": 1
+}

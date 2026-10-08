@@ -1,3 +1,25 @@
+<!-- STEP6.4H ACCEPTED CURRENT -->
+## 2026-10-09 STEP 6.4H — S-CEM B512 预算资格完成
+
+STEP_6_4H=PASS；SEARCH_METHOD=S-CEM（K=4,rho=0.2，仅Planner v1 pure-search骨架）。新B512 320/320与修复域6.4G A的S-CEM B1024父320只读严格配对，本地原始结果独立重算、ZIP/逐文件SHA与持久D:备份PASS。两预算均160/320=50% H4可评分、集合完全相同，32/64困难起点保留；前三项N_DDL/A_DDL/J_Delay首差劣化0。B512对B1024为11胜/233平/76负，六类0/0/11/76/73/160，64-anchor整组抽样95% CI=[-0.290625,-0.11875]。差异仅在J_Effort首差：B512更好11、更差76；J_Burden首差0，双方可评分全等73。资格通过不表示整体目标等价；完整字典序比较显示Effort损失。
+
+S_CEM_B512_QUALIFICATION=PASS；RECOMMENDED_CLOSED_LOOP_B_WM=512；FINAL_CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING。B512实际转移163840（名义相同）；不同可评分候选30209 vs 72587。单次内部搜索mean/median为74.548/51.416s vs175.249/126.359s，节省57.46%/59.31%。矩阵总墙钟42613.116s（11h50m12s），含内部搜索23855.506s、加载/setup10899.799s及其余核验/持久化开销，不能用总墙钟冒充单次搜索耗时。
+
+future Return-birth fixed-support限制保留：B512/B1024边界49845/162239，grammar dead-end19882/46621，scorer exception/inconsistency均0。CLOSED_LOOP_PRE_FORMAL_READINESS=READY_FOR_RESEARCHER_BUDGET_DECISION；已有闭环机制与fallback不改变，但FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED、HYBRID_PLANNER=NOT_FROZEN。6.4G Phase B=NOT_STARTED_BY_CONDITIONAL_STOP，原三方法Stage B=NOT_STARTED/DEFERRED；locked_test=false。GPU=RUNNER_STOPPED_NO_FURTHER_USE：原3080Ti CUDA FP32 batch16单runner自然结束，全部备份通过后已告知研究者可以关机，实例电源状态未由本任务确认。唯一下一动作：研究者审阅Effort损失与时间节约，决定最终pure-search闭环预算；不自动启动闭环或其他实验。
+
+证据：code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/{acceptance.json,local_backup_acceptance.json,qualification.json,summary.json,paired.json,objective_components.json,runtime_tradeoff.json,matrix_runtime.json,inventory.json,archive.json}；以下6.4G及更早内容为历史状态。
+<!-- END STEP6.4H ACCEPTED CURRENT -->
+
+<!-- STEP6.4H GPU RUNNING -->
+## 2026-10-08 STEP 6.4H — S-CEM B512 正式矩阵运行中
+
+研究者已开启RTX3080Ti并授权续跑。远端精确gate dc0e6c94b2353bdaf1c671e52bde2a978a991bf8、config5cf6685959ad8847150c1680ba55c399102858611e5c2d955fead8f32f6c46bf；CUDA FP32 batch16，checkpoint不变。无旧runner、tracked clean、约43.8GiB空闲容量及绑定检查PASS。网络git fetch超时后以逐SHA验证的增量Git包精确fast-forward，不改变源码/协议。唯一runner PID1615于2026-10-08T03:50:21.905759UTC启动，首个case已完成并本地身份/512预算/SHA备份核验通过；最新精确进度以namespace/runtime_status.json为准。
+
+STEP_6_4H=RUNNING；S_CEM_B512_QUALIFICATION=RUNNING_NOT_DECIDED；FINAL_CLOSED_LOOP_BUDGET=RESEARCHER_DECISION_PENDING。仅新S-CEM K4/rho0.2 B512共320，B1024父320只读、不重跑。6.4G Phase B条件停止、Stage B DEFERRED保持。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；HYBRID_PLANNER=NOT_FROZEN；GPU=IN_USE；locked_test=false。监控pi-jwm-6-4h-s-cem每10分钟只读快照/D:SHA备份，异常不重启，不操作云平台开关机。当前唯一下一动作：等待此320矩阵完成，再独立统计/ZIP/SHA、本地验收与Context/Git收口；运行期间不push新source/gate。
+
+以下CPU门与旧阶段记录为此前状态。启动证据：code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/07_gpu_launch_acceptance.json。
+<!-- END STEP6.4H GPU RUNNING -->
+
 <!-- STEP6.4H CPU CURRENT -->
 ## 2026-10-08 STEP 6.4H — S-CEM 预算资格：CPU 前置门
 
@@ -1523,3 +1545,17 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 - STEP6.4G 20261005T151809Z heartbeat：A16/960，原单runner正常无STOP，全raw身份/source/B1024/D:SHA通过；T PASS、B未开始、lockedfalse。下一动作继续只读监控与备份，不从早期case选法、不关机。
 
 - 20261005T152515Z 用户询问耗时及为何960：已解释T768是搜索选参非WM重训，A960为原6.4G授权64×5×3正式选法；A18/960正常、raw身份/预算/D:SHA通过。下一动作继续监控，不改变协议，lockedfalse。
+
+2026-10-08T04:25Z 6.4H只读监控：19/320，原PID1615单runner；本地19 raw身份/预算/参数/SHA与当前source/checkpoint核验PASS，实际9728转移，无STOP；继续等待唯一B512矩阵，不重启、不运行其他实验、locked_test=false。
+
+2026-10-08T04:55Z 6.4H只读监控：31/320，原PID1615单runner；31 raw本地SHA/identity/预算/参数核验PASS，实际15872转移，无STOP。继续等待当前B512，不重启、不扩实验，locked_test=false。
+
+2026-10-08T05:25Z 6.4H只读监控：43/320，原PID1615单runner；43 raw本地SHA/identity/预算/参数核验PASS，实际22016转移，无STOP。继续等待当前B512，不重启、不扩实验，locked_test=false。
+
+2026-10-08T05:28Z 用户进度核验：45/320，原PID1615单runner；45 raw身份/SHA/预算/参数与source/checkpoint PASS，23040实际转移，无STOP；当前平均27.5cases/h，剩余搜索粗估10h（不含最终验收）。继续仅当前矩阵，locked_test=false。
+
+2026-10-08T09:36:18.317121+00:00 用户进度核验：152/320，原PID1615单runner；152 raw身份/SHA/预算/参数与source/checkpoint PASS，77824实际转移，无STOP；当前平均26.6cases/h，剩余搜索粗估6.3h（不含最终验收）。继续仅当前矩阵，locked_test=false。
+
+2026-10-08T11:56:39.719780+00:00 用户进度核验：215/320，原PID1615单runner；215 raw身份/SHA/预算/参数与source/checkpoint PASS，110080实际转移，无STOP；当前平均26.7cases/h，剩余搜索粗估3.9h（不含最终验收）。继续仅当前矩阵，locked_test=false。
+
+2026-10-08T14:44:40.900668+00:00 用户进度核验：293/320，原PID1615单runner；293 raw身份/SHA/预算/参数与source/checkpoint PASS，150016实际转移，无STOP；剩余搜索粗估1h（不含最终验收）。继续仅当前矩阵，locked_test=false。

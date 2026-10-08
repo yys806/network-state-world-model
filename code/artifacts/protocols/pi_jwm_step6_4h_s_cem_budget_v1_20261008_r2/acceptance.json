@@ -1,0 +1,18 @@
+{
+  "artifact_SHA256": {
+    "archive.json": "e85e79a0f3a35f2a6cbc5b0bd2236a79484202a917a1281af91be1b459b586f2",
+    "inventory.json": "047abcc98367c27f838bf9863e96d52563fadc1eb7c20e2070fdbbe2e6a8e75e",
+    "matrix_runtime.json": "3e281774cf100eb192c6edffcba0e94fb39791cc57d39bf9f96f5c31915990e9",
+    "objective_components.json": "82c535c0044aaead4928a06b40108b767c80e9d1aabb85306510d59abb582104",
+    "paired.json": "4f961f542465163463cdd13e898fd1825a85cf050fb0c6d67039ca46ab9b1577",
+    "qualification.json": "94cab797eebe60edc988b6b7acf528513f28f7884fb998da1c5630b3865a4a62",
+    "runtime_tradeoff.json": "5128c71891ad05411ceadc7a0518bc11ac850a05f6b5c56464578d3d2b21e06a",
+    "summary.json": "c8fa458ee739b8eb8d5d26a6c367e47633809af5448717d2a853d8a9f9b34fb5"
+  },
+  "count": 320,
+  "final_budget": "RESEARCHER_DECISION_PENDING",
+  "locked_test": false,
+  "phase_gate_commit": "dc0e6c94b2353bdaf1c671e52bde2a978a991bf8",
+  "qualification": "PASS",
+  "verdict": "PASS"
+}

@@ -6419,6 +6419,16 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.manage_step6_4h_remote_v1",
+      "path": "code/scripts/manage_step6_4h_remote_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "tests.test_v11_crossfit"
       ],
@@ -12864,6 +12874,16 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4h_budget_v1",
       "path": "code/tests/test_step6_4h_budget_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4h_result_registry_v1",
+      "path": "code/tests/test_step6_4h_result_registry_v1.py",
       "test_files": []
     },
     {

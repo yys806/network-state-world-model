@@ -1,0 +1,11 @@
+{
+  "case_setup_seconds": 10899.7986705238,
+  "finish_SHA256": {
+    "finish_20261008T035021905709Z.json": "7813c848b947f4080544dbd39ea7944827da868abc3cb022929121ef44c3a8e8"
+  },
+  "finish_time_utc": "2026-10-08T15:40:34.197641+00:00",
+  "in_solve_seconds": 23855.505580826197,
+  "invocation_elapsed_s_total": 42613.11564884288,
+  "note": "Invocation elapsed includes setup, integrity checks and persistence; paused gaps excluded from elapsed sum. B1024 single-method runtime from original raw; original A matrix spans three methods.",
+  "start_time_utc": "2026-10-08T03:50:21.905759+00:00"
+}
