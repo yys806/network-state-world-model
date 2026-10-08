@@ -1,0 +1,22 @@
+{
+  "artifact_SHA256": {
+    "archive.json": "c80286c9ce8252728dab327075d0b9b94f3b4e61c5ac67e38aae3b1cf578225f",
+    "execution_config.json": "202dcdf0def45d518b958d28a0e5985af60046bf55ca16b61c691a1b6b1affa7",
+    "inventory.json": "5a251cf95720b7288b5ae35bfe3d2430b1c26f4c0359e36538b163403440ded9",
+    "paired.json": "9e546646740b441681419c3565ee0b0b86cf5a1d4370ae6644adab2ed3f50df6",
+    "selected_method.json": "390c4e6a0da9452d7fb97adb4bca9e057f9fed5d0f6e79b3438f31e4dda59d17",
+    "sensitivity.json": "154b27214df920cec9cd6d74221657c3e5fa3612825f2788a4d027b78cc415f6",
+    "summary.json": "e38700709cc983e52184f5093c4167e5d91a6839f8333f0642346810960ad217"
+  },
+  "budget_decision": "RESEARCHER_DECISION_PENDING",
+  "cases": 960,
+  "evidence_class": "repaired-domain formal evidence",
+  "execution_config_id": "a7c793ef7619e107fe7f3a5e3fdf16cffb8ae64af76b35422ee613fb69914db8",
+  "hard_stop": "commit/push and separate explicit next phase gate; no direct fall-through",
+  "independent_math_oracle": "PASS",
+  "locked_test": false,
+  "parameter_digest": "f5dc7f523af1e3137f520187bb2b9e7697e835b4374d45bb025460f58c778123",
+  "phase": "A",
+  "phase_gate_commit": "757de2f5f5b9dbeea6117e5f7fee094d6e78cfec",
+  "verdict": "PASS"
+}

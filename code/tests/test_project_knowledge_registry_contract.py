@@ -106,7 +106,7 @@ class ProjectKnowledgeRegistryContractTests(unittest.TestCase):
             experiment_payload,
         )
 
-        self.assertEqual(2, report["validated_result_count"])
+        self.assertEqual(len(result_payload["results"]), report["validated_result_count"])
         self.assertEqual([], report["mismatches"])
 
     def test_historical_methods_record_why_they_are_not_current(self) -> None:
@@ -178,7 +178,10 @@ class ProjectKnowledgeRegistryContractTests(unittest.TestCase):
         self.assertEqual("sealed", summary["locked_test_boundary"])
         self.assertFalse(summary["formal_performance_claim_ready"])
         self.assertGreater(summary["artifact_record_count"], 0)
-        self.assertEqual(2, summary["verified_result_count"])
+        self.assertEqual(
+            len(_read_json(REGISTRY_ROOT / "results_registry.json")["results"]),
+            summary["verified_result_count"],
+        )
         self.assertEqual(0, summary["result_evidence_mismatch_count"])
         self.assertGreaterEqual(summary["historical_method_count"], 5)
         self.assertGreaterEqual(summary["question_route_count"], 4)

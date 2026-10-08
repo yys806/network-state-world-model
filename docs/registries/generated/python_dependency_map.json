@@ -12803,6 +12803,16 @@
       "category": "test",
       "evidence_role": "test_evidence",
       "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4g_result_registry_v1",
+      "path": "code/tests/test_step6_4g_result_registry_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
       "imports": [
         "pi_jwm.step6_3d_fixed_budget_search_v1",
         "scripts.audit_step6_4g_phase_v1",

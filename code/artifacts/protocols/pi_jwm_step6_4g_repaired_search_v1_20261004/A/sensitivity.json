@@ -1,0 +1,25 @@
+{
+  "bonferroni_percentile_intervals": {
+    "MH-CEM_vs_HRS": {
+      "lower": 0.1875,
+      "percentile_level": 0.9833333333333333,
+      "upper": 0.415625
+    },
+    "MH-CEM_vs_S-CEM": {
+      "lower": -0.08125,
+      "percentile_level": 0.9833333333333333,
+      "upper": 0.040625
+    },
+    "S-CEM_vs_HRS": {
+      "lower": 0.2,
+      "percentile_level": 0.9833333333333333,
+      "upper": 0.41875
+    }
+  },
+  "changes_primary_selection": false,
+  "diagnostic_only": true,
+  "limitation": "Bootstrap sensitivity does not guarantee finite-sample simultaneous coverage; Holm not enabled.",
+  "replications": 10000,
+  "seed": 6316,
+  "shared_anchor_resample_indices": true
+}

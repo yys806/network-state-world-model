@@ -16,8 +16,13 @@
       "verification_sources": [
         "docs/contracts/PIJWM_STEP_06_4G_REPAIRED_SEARCH_REQUALIFICATION_V1.md",
         "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/01_support_catalog_semantic_audit.json",
-        "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/04_CPU_preflight_receipt_r2.json"
-      ]
+        "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/04_CPU_preflight_receipt_r2.json",
+        "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/A/acceptance.json",
+        "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/A/local_backup_acceptance.json",
+        "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/A/selected_method.json"
+      ],
+      "title": "Step 6.4G repaired-domain search requalification",
+      "summary": "Fresh TRAIN and Stage A accepted; S-CEM selected; MH-only B512 stopped; new S-CEM budget requires researcher decision."
     },
     {
       "id": "ROUTE-STEP6.4F-COMM-ELIGIBILITY",
@@ -37,7 +42,9 @@
         "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/06_full_static_audit_summary.json",
         "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/04_real_nonempty_comm_one_step_receipt.json",
         "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/05_simulated_NO_SCOREABLE_H4_canonical_fallback_one_step_receipt.json"
-      ]
+      ],
+      "title": "Step 6.4F current communication eligibility",
+      "summary": "Current Task lifecycle and active wireless Flow binding must both permit Comm; old search evidence needed requalification."
     },
     {
       "id": "ROUTE-STEP6.4E-COMM-FALLBACK-BUDGET",
@@ -59,7 +66,9 @@
         "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/07_fallback_negative_path_receipt.json",
         "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/08_fallback_candidate_audit.json",
         "code/artifacts/protocols/pi_jwm_step6_4e_comm_fallback_v1_20261004/09_budget_freeze_and_source_gate.json"
-      ]
+      ],
+      "title": "Step 6.4E fallback and real Comm audit",
+      "summary": "Historical pre-repair MH budget and failed real Comm bridge audit; see 6.4F and 6.4G for current scope."
     },
     {
       "id": "ROUTE-STEP6.4D-B512-EXPANSION",
@@ -82,7 +91,9 @@
         "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/13_objective_first_difference.json",
         "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/19_archive_acceptance_receipt.json",
         "code/artifacts/protocols/pi_jwm_step6_4d_full_cohort_b512_v1_20261003/20_formal_runtime_receipt.json"
-      ]
+      ],
+      "title": "Step 6.4D historical MH-CEM B512 expansion",
+      "summary": "Full-cohort MH-CEM budget comparison under the pre-6.4F domain; not transferable to repaired-domain S-CEM."
     },
     {
       "id": "ROUTE-STEP-6.4C-BUDGET-CALIBRATION",

@@ -1,0 +1,10 @@
+{
+  "acceptance_SHA256": "6471a238ba1fe9e305fddf96da8aa1100a44a8d4c2f4022397493e642f509550",
+  "archive_SHA256": "19ac2fd5ed6fca0af443915c84928c49b93a898419c827ddd96cd58c6ed51742",
+  "local_independent_statistical_reconstruction": "PASS",
+  "local_persistent_storage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4g_repaired_search_v1_20261004\\A",
+  "locked_test": false,
+  "phase": "A",
+  "raw_count": 960,
+  "verdict": "PASS"
+}

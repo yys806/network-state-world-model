@@ -1,0 +1,8 @@
+{
+  "independent_oracle": "PASS",
+  "locked_test": false,
+  "primary_budget": 1024,
+  "scope": "Planner v1 pure-search backbone, not final hybrid",
+  "selected_method": "S-CEM",
+  "verdict": "PASS"
+}

@@ -1,10 +1,11 @@
 <!-- STEP6.4G CURRENT -->
-## 2026-10-05 STEP 6.4G — Phase T 已验收
+## 2026-10-08 STEP 6.4G — 修复域 Phase A 验收与条件硬停止
 
-STEP_6_4G=IN_PROGRESS；Phase T=PASS，768/768全部新结果独立验身份/预算/选参与本地D:归档通过；名义/实际unique一步转移393216，正式矩阵32.5955小时。修复域新冻结 S-CEM=(K4,rho0.2)，MH-CEM=(K3,rho0.1)，两方法四配置均48/96 H4可评分；这只属于TRAIN选参观察，不能据此选择搜索方法。scorer exception/inconsistency=0。Phase A=NOT_STARTED（新960 B1024）；Phase B=NOT_STARTED（只有新A选MH才320 B512）。SEARCH_METHOD_REQUALIFIED=PENDING，FORMAL_SEARCH_REQUALIFICATION=PENDING，修复域最终budget待新证据；旧MH/K4rho0.1/B512只在historical-under-pre-6.4F-domain/working决定范围保留，不复用任何旧raw。FINAL_FALLBACK_POLICY=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1；只尝试一次canonical A失败则C，不重试。future Return-birth fixed-support限制保留。CLOSED_LOOP_PRE_FORMAL_READINESS=PENDING_SEARCH_REQUALIFICATION，READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false；FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN，旧Stage B=NOT_STARTED / DEFERRED，locked_test=false。唯一下一动作：T阶段Git门完成后，同步服务器至精确新commit并启动PhaseA；科学源码SHA不变。
+STEP_6_4G=CONDITIONAL_STOP_AFTER_PHASE_A；Phase T=PASS：新 TRAIN 768/768，S-CEM=(K4,rho0.2)，MH-CEM=(K3,rho0.1)。Phase A=PASS：修复域新 Validation 960/960，三方法各160/320 H4可评分；名义与实际一步转移均983040，scorer exception/inconsistency=0，独立统计、原始结果、ZIP与本地D:SHA验收PASS。冻结选法规则得 SEARCH_METHOD_REQUALIFIED=S-CEM，仅为 Planner v1 pure-search backbone，不是最终 hybrid planner。S-CEM对HRS 110胜/198平/12负，anchor-cluster 95% CI=[0.215625,0.403125]；MH-CEM对HRS 108/199/13，CI=[0.203125,0.39375]；MH-CEM对S-CEM 33/249/38，CI=[-0.065625,0.03125]。因此两个CEM都通过对HRS优势门，MH未通过对S优势门，按原规则选择S；不能据此声称S已被证明显著优于MH。
 
-证据：`code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/acceptance.json`、`T/local_backup_acceptance.json`、`T/selected_configs.json`、`T/inventory.json`、`T/archive.json`；新证据=repaired-domain formal evidence。
+研究者预注册条件明确要求：新A若未选MH，STOP且不得运行Phase B。故 Phase B=NOT_STARTED_BY_CONDITIONAL_STOP，旧完整Stage B=NOT_STARTED/DEFERRED；新S-CEM闭环预算=RESEARCHER_DECISION_PENDING。旧MH-CEM B512只属historical-under-pre-6.4F-domain的working决定，不移植给新S。FORMAL_SEARCH_REQUALIFICATION=PENDING_RESEARCHER_BUDGET_DECISION；CLOSED_LOOP_PRE_FORMAL_READINESS=BLOCKED_BY_BUDGET_REQUALIFICATION；READY_FOR_FORMAL_CLOSED_LOOP_PROTOCOL=false。FINAL_FALLBACK_POLICY=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1（一次canonical A失败即C，无重试）。32/64 anchors在三方法五seed均不可评分；future Return-birth fixed-support限制保留。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED，HYBRID_PLANNER=NOT_FROZEN，locked_test=false。唯一下一动作：研究者审阅新S-CEM选法结果并决定其闭环预算验证方案；本Step停止，不启动B或其他实验。
 
+权威证据：code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/A/{acceptance.json,local_backup_acceptance.json,selected_method.json,paired.json,summary.json,inventory.json,archive.json}；新结果标签=repaired-domain formal evidence。
 <!-- END STEP6.4G CURRENT -->
 
 以下是历史记录；旧调参/选法/预算结果只属于historical-under-pre-6.4F-domain。
@@ -1476,3 +1477,21 @@ GPU扩样仍运行。新增100/272，总覆盖148/320；已创建本聊天heartb
 - STEP6.4G 20261004T131015Z 进度查询：T190/768，原runner正常，无STOP，全190 raw source/身份/B512及D:SHA备份通过；速度24.1cases/h，剩余粗估24h，A/B未开始、lockedfalse。下一动作继续只读监控备份至T完整验收。
 
 - 2026-10-05T14:12:05.197609+00:00：T768/768远端独立验收PASS，实际GPU矩阵耗时32.6小时；上次仅SFTP备份连接10054中断，原GPU未重启、已自然完成。现只读补齐会话56512仍运行，本地独立验收/Git未完成，A/B未启动、lockedfalse。下一动作：备份完整后本地重建统计。
+
+- 20261005T142333Z：PhaseT768/768本地独立重建、ZIP SHA、67 CPUtests、compile/index/Context/diff通过；T阶段已commit+push757de2f5f5b9dbeea6117e5f7fee094d6e78cfec。新S4/rho.2、MH3/rho.1；A960 config a7c793ef7619e107fe7f3a5e3fdf16cffb8ae64af76b35422ee613fb69914db8。服务器deploy在git fetch25s超时，未执行remote ff/preflight、未launch A，T原GPU已经自然停止。此为工程网络门，下一动作只读确认远端Git状态、同步exact gate后再一次启动A，严禁重启T。
+
+- 20261005T143328Z：Git超时已恢复，新A开始14:31:35UTC(北京时间22:31)，exact gate757de2f、config a7c793ef...，HRS/S4rho.2/MH3rho.1，RTX3080Ti FP32 batch16，trackedclean/results0；单runner，不重跑T，不启动B，lockedfalse。下一动作只读监控与D:SHA备份。
+
+- 20261005T143530Z PhaseA实际启动与单进程已核，当前首case处理中；SFTP配置/启动资源SHA备份通过。自动监控pi-jwm-6-4g已update成功ACTIVE，新prompt明确T已PASS、A gate757/configa7c、新S4rho.2/MH3rho.1，避免重启T/A。下一动作只读监控A960。
+
+- STEP6.4G 20261005T143753Z heartbeat：新A首case已完成，1/960，本地raw/source/identity/B1024/D:SHA通过，单runner正常、无STOP；T已PASS、B未开始、lockedfalse。仅早期diagnostic不作选法判断，下一动作继续只读监控备份。
+
+- STEP6.4G 20261005T144754Z heartbeat：A5/960，单runner正常无STOP、全完成raw身份/source/B1024/D:SHA通过；T PASS、B未开始、lockedfalse。下一动作继续只读监控和备份，不根据早期结果选法。
+
+- STEP6.4G 20261005T145755Z heartbeat：A9/960，原单runner正常无STOP，全raw身份/source/B1024/D:SHA通过；T PASS、B未开始、lockedfalse。下一动作继续只读监控与备份，不从早期case选法。
+
+- STEP6.4G 20261005T150802Z heartbeat：A13/960，原单runner正常无STOP，全raw身份/source/B1024/D:SHA通过；T PASS、B未开始、lockedfalse。下一动作继续只读监控和备份，不根据早期结果选法，不关机。
+
+- STEP6.4G 20261005T151809Z heartbeat：A16/960，原单runner正常无STOP，全raw身份/source/B1024/D:SHA通过；T PASS、B未开始、lockedfalse。下一动作继续只读监控与备份，不从早期case选法、不关机。
+
+- 20261005T152515Z 用户询问耗时及为何960：已解释T768是搜索选参非WM重训，A960为原6.4G授权64×5×3正式选法；A18/960正常、raw身份/预算/D:SHA通过。下一动作继续监控，不改变协议，lockedfalse。

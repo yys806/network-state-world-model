@@ -706,6 +706,89 @@ def validate_result_registry_against_evidence(
             continue
         if _sha256(audit_path) != str(result.get("audit_sha256", "")).lower():
             mismatches.append(f"{identifier}: audit SHA-256 mismatch")
+        if result.get("result_type") == "repaired_planner_search_stage_a":
+            if (audit.get("verdict") != "PASS" or audit.get("phase") != "A" or
+                    audit.get("cases") != 960 or result.get("status") != "passed_phase_a_conditional_stop"):
+                mismatches.append(f"{identifier}: repaired Stage A acceptance status mismatch")
+            phase_b_raw = audit_path.parent.parent / "B" / "solve_results"
+            if phase_b_raw.exists() and any(phase_b_raw.rglob("*.json")):
+                mismatches.append(f"{identifier}: conditional-stop Phase B results exist")
+            if (result.get("seed") != experiment.get("seed", {}).get("A_B") or
+                    result.get("seed") != [6311, 6312, 6313, 6314, 6315] or
+                    result.get("primary_budget") != 1024 or audit.get("locked_test") is not False or
+                    result.get("locked_test_accessed") is not False):
+                mismatches.append(f"{identifier}: repaired Stage A identity/scope mismatch")
+            evidence = {}
+            for label in ("summary", "paired", "selection"):
+                relative = result.get(label)
+                if not isinstance(relative, str):
+                    mismatches.append(f"{identifier}: {label} path missing")
+                    continue
+                evidence_path = repo_root / relative
+                payload, read_error = _read_json(evidence_path)
+                if read_error or not isinstance(payload, dict):
+                    mismatches.append(f"{identifier}: cannot read {label}: {read_error}")
+                    continue
+                if (_sha256(evidence_path) != result.get(f"{label}_sha256") or
+                        _sha256(evidence_path) != audit.get("artifact_SHA256", {}).get(evidence_path.name)):
+                    mismatches.append(f"{identifier}: {label} SHA-256 mismatch")
+                evidence[label] = payload
+            if set(evidence) != {"summary", "paired", "selection"}:
+                continue
+            finish_relative = result.get("finish")
+            if not isinstance(finish_relative, str):
+                mismatches.append(f"{identifier}: finish path missing")
+                continue
+            finish_path = repo_root / finish_relative
+            finish, finish_error = _read_json(finish_path)
+            if finish_error or not isinstance(finish, dict):
+                mismatches.append(f"{identifier}: cannot read finish: {finish_error}")
+                continue
+            if (_sha256(finish_path) != result.get("finish_sha256") or
+                    finish.get("complete") != 960 or finish.get("locked_test") is not False):
+                mismatches.append(f"{identifier}: finish identity/SHA mismatch")
+            summary = evidence["summary"]
+            paired = evidence["paired"]
+            selected = evidence["selection"]
+            if (selected.get("verdict") != "PASS" or selected.get("independent_oracle") != "PASS" or
+                    selected.get("selected_method") != result.get("selected_search_method") or
+                    selected.get("selected_method") != "S-CEM"):
+                mismatches.append(f"{identifier}: repaired Stage A selected method mismatch")
+            expected_metrics = {
+                "case_count": audit.get("cases"),
+                "nominal_B_WM_total": 983040,
+                "actual_unique_transitions": sum(
+                    summary.get(method, {}).get("N_unique_transition_evals", 0)
+                    for method in ("HRS", "S-CEM", "MH-CEM")
+                ),
+                "elapsed_seconds": finish.get("elapsed_s"),
+            }
+            for method in ("HRS", "S-CEM", "MH-CEM"):
+                row = summary.get(method, {})
+                expected_metrics[f"{method}_scoreable_count"] = row.get("scoreable_cases")
+                expected_metrics[f"{method}_scoreable_rate"] = row.get("scoreable_rate")
+            for pair in ("S-CEM_vs_HRS", "MH-CEM_vs_HRS", "MH-CEM_vs_S-CEM"):
+                row = paired.get(pair, {})
+                for field in ("win", "tie", "loss"):
+                    expected_metrics[f"{pair}_{field}"] = row.get(field)
+                bootstrap = row.get("cluster_bootstrap", {})
+                for suffix, source in (("mean", "mean_paired_advantage"),
+                                       ("ci95_lower", "ci95_lower"), ("ci95_upper", "ci95_upper")):
+                    expected_metrics[f"{pair}_{suffix}"] = bootstrap.get(source)
+                if row.get("total_paired_cases") != 320 or sum(
+                        row.get("six_category_counts", {}).values()) != 320:
+                    mismatches.append(f"{identifier}: {pair} six-category accounting mismatch")
+            registered_metrics = result.get("metrics", {})
+            if set(registered_metrics) != set(expected_metrics):
+                mismatches.append(f"{identifier}: repaired Stage A metric keys mismatch")
+            for name, original in expected_metrics.items():
+                registered = registered_metrics.get(name)
+                if (isinstance(registered, bool) or isinstance(original, bool) or
+                        not isinstance(registered, (int, float)) or not isinstance(original, (int, float)) or
+                        not math.isfinite(float(registered)) or not math.isfinite(float(original)) or
+                        abs(float(registered) - float(original)) > tolerance):
+                    mismatches.append(f"{identifier}: repaired Stage A metric mismatch {name}")
+            continue
         if result.get("result_type") == "planner_search_stage_a":
             if (audit.get("verdict") != "STEP_6_3D_VALIDATION_STAGE_A=PASS" or
                     result.get("status") != "passed_stage_a"):
