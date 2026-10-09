@@ -2407,6 +2407,7 @@
         "scripts.run_step6_3d_one_cpu_solve_v1",
         "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.run_step6_4i_cpu_smoke_v1",
+        "scripts.run_step6_4j_pilot_v1",
         "scripts.step5_3_cpu_training_preflight_v1",
         "scripts.step5_3d_csi_scale_optimization_diagnosis_v1",
         "scripts.step5_3e_csi_train_mean_bias_formalization_v1",
@@ -2470,6 +2471,7 @@
         "scripts.run_step6_3d_one_cpu_solve_v1",
         "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.run_step6_4i_cpu_smoke_v1",
+        "scripts.run_step6_4j_pilot_v1",
         "scripts.smoke_step6_2a_patched_checkpoint_cpu_v1",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
@@ -2537,6 +2539,7 @@
         "scripts.run_step6_4b_two_cycle_smoke_v1",
         "scripts.run_step6_4e_comm_fallback_audit_v1",
         "scripts.run_step6_4i_cpu_smoke_v1",
+        "scripts.run_step6_4j_pilot_v1",
         "scripts.smoke_step6_2a_patched_checkpoint_cpu_v1",
         "scripts.step6_4i_live_planner_v1",
         "scripts.verify_step5_5_patch_full_shards_v1",
@@ -3121,6 +3124,7 @@
         "scripts.run_step6_4f_real_comm_smoke_v1",
         "scripts.run_step6_4i_cpu_smoke_v1",
         "scripts.run_step6_4i_fallback_smoke_v1",
+        "scripts.run_step6_4j_pilot_v1",
         "scripts.step6_4i_live_planner_v1",
         "tests.test_step6_4b_live_bridge_v1",
         "tests.test_step6_4e_fallback_v1",
@@ -3252,6 +3256,7 @@
       "imported_by": [
         "scripts.run_step6_4i_cpu_smoke_v1",
         "scripts.run_step6_4i_fallback_smoke_v1",
+        "scripts.run_step6_4j_pilot_v1",
         "scripts.step6_4i_live_planner_v1",
         "tests.test_step6_4i_episode_v1"
       ],
@@ -3268,6 +3273,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.run_step6_4i_fallback_smoke_v1",
+        "scripts.run_step6_4j_pilot_v1",
         "tests.test_step6_4i_real_metrics_v1"
       ],
       "imports": [],
@@ -3282,6 +3288,7 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.run_step6_4j_pilot_v1",
         "tests.test_step6_4j_pilot_v1"
       ],
       "imports": [],
@@ -5284,6 +5291,7 @@
         "scripts.run_step6_4e_comm_fallback_audit_v1",
         "scripts.run_step6_4i_cpu_smoke_v1",
         "scripts.run_step6_4i_fallback_smoke_v1",
+        "scripts.run_step6_4j_pilot_v1",
         "scripts.verify_step5_5_behavior_policy_determinism_v1"
       ],
       "imports": [
@@ -8437,6 +8445,7 @@
         "scripts.run_step6_4d_full_cohort_b512_v1",
         "scripts.run_step6_4g_requalification_v1",
         "scripts.run_step6_4i_cpu_smoke_v1",
+        "scripts.run_step6_4j_pilot_v1",
         "scripts.step6_4h_s_cem_budget_v1",
         "scripts.step6_4i_live_planner_v1",
         "scripts.verify_step6_3d_3080ti_migration_v1",
@@ -8625,7 +8634,9 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "scripts.run_step6_4j_pilot_v1"
+      ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
         "pi_jwm.step4_3a_typed_dual_graph_builder_v1",
@@ -8665,6 +8676,28 @@
       "lifecycle_status": "support",
       "module": "scripts.run_step6_4i_fallback_smoke_v1",
       "path": "code/scripts/run_step6_4i_fallback_smoke_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step5_2_training_loop_v1",
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_4b_live_bridge_v1",
+        "pi_jwm.step6_4i_episode_v1",
+        "pi_jwm.step6_4i_real_metrics_v1",
+        "pi_jwm.step6_4j_pilot_v1",
+        "scripts.collect_step5_5_formal_raw_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4i_cpu_smoke_v1",
+        "scripts.step6_4i_live_planner_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_4j_pilot_v1",
+      "path": "code/scripts/run_step6_4j_pilot_v1.py",
       "test_files": []
     },
     {
@@ -9698,6 +9731,7 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "scripts.run_step6_4j_pilot_v1",
         "tests.test_step6_4i_live_provider_v1"
       ],
       "imports": [
@@ -13155,6 +13189,16 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4j_pilot_v1",
       "path": "code/tests/test_step6_4j_pilot_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4j_runner_v1",
+      "path": "code/tests/test_step6_4j_runner_v1.py",
       "test_files": []
     },
     {

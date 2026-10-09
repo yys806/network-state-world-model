@@ -1,4 +1,10 @@
 <!-- STEP6.4J CURRENT -->
+## 2026-10-09 STEP 6.4J — CPU真实集成阻塞修复与工程验收
+
+r8/r9 及 r17/r18 原始失败证据保留。完整 traceback 定位：`environment.wired_edges=None` 在 `_wired_pairs` 被迭代；随后发现索引动作回写 History 缺 `uav_id`，fresh task 缺 `required_returned_size`。修复均使用真实来源并严格拒绝缺字段，不填默认值。
+
+r19 同一生产核心路径 CPU engineering smoke PASS：AirFogSim 两条冻结 episode 各完成2次连续真实 `env.step`，合计4次；每条有2个不同 fresh root，动作与历史对齐，0个 FAIL_CLOSED_C。77 focused tests、compileall、diff check PASS。运行证据保留在 r19；最终协议 r20 audit PASS，execution_config_id=`84e77de6be95b29cfec76691d7027e12cf311f423c0f57e6e40094a2bc04de5f`。GPU、正式 Pilot、baseline、Hybrid、locked_test 未运行，`READY_FOR_GPU_LAUNCH=false`，等待研究者开启 GPU。
+
 ## 2026-10-09 STEP 6.4J — S-CEM B512 最小真实 GPU Pilot 协议冻结
 
 研究者已授权2条dev_validation源轨迹、每条最多8个决策、search seed6311，最多16次B512；前2轨迹按trajectory_id UTF8 SHA256排序，初始frame取该轨迹静态manifest最早frame，不依据搜索结果。CPU协议与manifest已冻结，Pilot执行身份见 `code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009/00_protocol.json`，execution_config_id=`31667b891be356017220e205e19a33b1e3aeaf7df8fcc8f11af147061303ddf8`。

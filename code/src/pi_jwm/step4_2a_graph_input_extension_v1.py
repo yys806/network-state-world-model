@@ -161,7 +161,12 @@ def _vector_wrapped(value: Any, present: bool, *, unit: str, width: int) -> dict
 
 def _wired_pairs(environment: Mapping[str, Any]) -> list[tuple[str, str, int]]:
     pairs: set[tuple[str, str, int]] = set()
-    for edge_index, edge in enumerate(environment.get("wired_edges", [])):
+    edges = environment.get("wired_edges")
+    if edges is None:
+        raise ValueError("REQUIRED_LIVE_OBSERVATION_MISSING: environment.wired_edges")
+    if not isinstance(edges, (list, tuple)):
+        raise TypeError("REQUIRED_LIVE_OBSERVATION_INVALID: environment.wired_edges must be a sequence")
+    for edge_index, edge in enumerate(edges):
         source = str(edge["u"])
         target = str(edge["v"])
         pairs.add((source, target, edge_index))

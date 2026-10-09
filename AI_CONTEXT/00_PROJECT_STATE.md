@@ -1,4 +1,5 @@
 <!-- STEP6.4J CURRENT -->
+2026-10-09 CPU integration gate: r19 real AirFogSim engineering evidence PASS (4 env.step, 2 episodes x 2 steps, distinct fresh roots, no FAIL_CLOSED_C). Final protocol identity is r20 with execution_config_id `84e77de6be95b29cfec76691d7027e12cf311f423c0f57e6e40094a2bc04de5f`. GPU has not run; READY_FOR_GPU_LAUNCH remains false pending researcher start.
 ## 2026-10-09 STEP 6.4J — GPU Pilot executor revision
 
 The CPU-only executor revision is being completed from the frozen protocol. It

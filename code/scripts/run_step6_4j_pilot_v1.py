@@ -5,14 +5,19 @@ The execute mode performs strict preflight and is deliberately explicit: it
 cannot resume a partial episode or silently retry a real action.
 """
 from __future__ import annotations
-import argparse, json, os, subprocess, sys, time
+import argparse, json, os, subprocess, sys, time, traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r4"
+OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r20"
 sys.path[:0] = [str(ROOT / "code/src"), str(ROOT / "code/scripts")]
+os.environ.setdefault("PYTHONIOENCODING", "utf-8")
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-from pi_jwm.step6_4j_pilot_v1 import PilotClock, validate_resume, validate_spent
+from pi_jwm.step6_4j_pilot_v1 import PilotClock, engineering_acceptance, validate_resume, validate_spent
 
 class EpisodeStopped(BaseException):
     pass
@@ -45,26 +50,22 @@ def engineering_smoke() -> int:
     evidence = json.loads(accepted.read_text(encoding="utf-8"))
     if evidence.get("verdict") != "PASS" or evidence.get("GPU") not in ("NOT_USED", "CPU_ONLY"):
         raise RuntimeError("CPU_ENGINEERING_EVIDENCE_NOT_ACCEPTED")
-    # The 6.4I receipt is the accepted real AirFogSim two-cycle execution
-    # evidence. This entry point adds only the Pilot scope and identity gates.
-    print(json.dumps({"verdict": "PASS", "reused_real_airfogsim_smoke": True,
-                      "pilot_entrypoint": "validated", "GPU": "NOT_STARTED",
-                      "locked_test": False}, ensure_ascii=False))
-    return 0
+    cfg = json.loads((OUT / "00_protocol.json").read_text(encoding="utf-8"))
+    return execute(cfg, device="cpu", engineering=True)
 
 
-def execute(cfg: dict) -> int:
-    if not __import__("torch").cuda.is_available():
+def execute(cfg: dict, *, device="cuda", engineering=False) -> int:
+    if device == "cuda" and not __import__("torch").cuda.is_available():
         raise RuntimeError("CUDA_UNAVAILABLE")
     torch = __import__("torch")
-    if torch.cuda.get_device_name(0) != cfg["gpu_model"]:
+    if device == "cuda" and torch.cuda.get_device_name(0) != cfg["gpu_model"]:
         raise RuntimeError("GPU_IDENTITY_MISMATCH")
     if cfg["precision"] != "FP32":
         raise RuntimeError("PRECISION_IDENTITY_MISMATCH")
-    result_dir = OUT / "pilot_results"
+    result_dir = OUT / ("engineering_results" if engineering else "pilot_results")
     if result_dir.exists() and any(result_dir.iterdir()):
         raise RuntimeError("RESULT_NAMESPACE_NOT_EMPTY_OR_RESUME_FORBIDDEN")
-    result_dir.mkdir()
+    result_dir.mkdir(parents=True)
     def atomic_json(path: Path, value: object) -> None:
         tmp = path.with_suffix(path.suffix + ".tmp")
         tmp.write_text(json.dumps(value, ensure_ascii=False, sort_keys=True,
@@ -72,7 +73,7 @@ def execute(cfg: dict) -> int:
         tmp.replace(path)
     clock = PilotClock()
     receipt = {"status": "RUNNING", "execution_config_id": cfg["execution_config_id"],
-               "GPU": torch.cuda.get_device_name(0), "locked_test": False,
+               "GPU": torch.cuda.get_device_name(0) if device == "cuda" else "NOT_USED", "locked_test": False,
                "episodes": [], "max_searches": 16, "searches": 0}
     atomic_json(result_dir / "pilot_attempt.json", receipt)
     # Importing the real provider here keeps CPU imports harmless and makes the
@@ -85,7 +86,7 @@ def execute(cfg: dict) -> int:
     from pi_jwm.step6_4b_live_bridge_v1 import apply_commands, live_deadline_sidecar
     from airfogsim.scheduler.computation_sched import ComputationScheduler
     from pi_jwm.step5_4_formal_training_readiness_v1 import FormalTrainingInterface
-    from pi_jwm.step5_5_full_sharded_loader_v1 import FullFormalShardDataset
+    from pi_jwm.step5_5_full_sharded_loader_v1 import FullFormalShardDataset, FORMAL_V1_WIRED_EDGES
     from run_step6_4i_cpu_smoke_v1 import history_tensor
     from pi_jwm.step5_2_training_loop_v1 import _torch_tree
     import numpy as np
@@ -96,35 +97,51 @@ def execute(cfg: dict) -> int:
             break
         clock.check_total()
         sample_id = episode["sample_id"]
-        model, encoder, _, _, catalog, protocol, meta, _ = load_frozen_runtime(sample_id, device="cuda")
+        model, encoder, _, _, catalog, protocol, meta, _ = load_frozen_runtime(sample_id, device=device)
         _, frozen, *_ = load_selected(sample_id, interface, FullFormalShardDataset(interface))
         planner = LiveSCEMPlanner(model=model, encoder=encoder, stats=stats,
                                   slot_template=frozen, catalog=catalog,
-                                  protocol=protocol, device="cuda", engineering_only=False,
+                                  protocol=protocol, device=device, engineering_only=engineering,
                                   approved_execution={"status": "APPROVED_BY_RESEARCHER", "method": "S-CEM",
-                                                       "K": 4, "rho": 0.2, "B_WM": 512,
-                                                       "batch_size": 16, "precision": "FP32",
+                                                       "K": 4, "rho": 0.2, "B_WM": 64 if engineering else 512,
+                                                       "batch_size": 1 if engineering else 16, "precision": "FP32",
                                                        "gpu_model": cfg["gpu_model"],
                                                        "checkpoint_sha256": cfg["checkpoint_sha256"]})
         rows = []
         episode_dir = result_dir / episode["trajectory_id"]
         episode_dir.mkdir()
         episode_started = time.perf_counter()
-        controller = EpisodeController(lambda row: rows.append(dict(row)))
+        final_env = None
+        final_observation = None
+        journal = []
+        controller = EpisodeController(lambda row: journal.append(dict(row)))
         ledger = RealTaskLedger()
         def callback(env, decisions, steps, env_config, communication):
+            nonlocal final_env, final_observation
+            final_env = env
+            final_observation = decisions[-1]
+            # The production collector attaches this required causal field
+            # immediately after capture.  The live runner must preserve the
+            # same contract for both the frozen prefix and every fresh root.
+            for task_row in decisions[-1].get("tasks", []):
+                task_object = collector.step23._all_runtime_tasks(env).get(str(task_row["task_id"]))
+                if task_object is not None and hasattr(task_object, "getReturnedSize"):
+                    task_row["required_returned_size"] = float(task_object.getReturnedSize())
             if decisions[-1]["frame_index"] != episode["initial_frame"] or rows:
                 return
-            for _ in range(8):
+            for _ in range(2 if engineering else 8):
                 clock.before_plan(); clock.check_total()
                 current = decisions[-1]
                 runtime_tasks = collector.step23._all_runtime_tasks(env)
                 ledger.observe(current["tasks"], runtime_tasks, float(current["simulation_time_s"]))
-                raw = {"environment": {"seed": episode["simulator_seed"], "policy_seed": episode["policy_seed"]},
+                raw = {"environment": {"seed": episode["simulator_seed"], "policy_seed": episode["policy_seed"],
+                                       "wired_edges": [dict(edge) for edge in FORMAL_V1_WIRED_EDGES]},
                        "decisions": decisions, "steps": steps}
                 def plan():
                     packet = planner.plan(raw, env, runtime_tasks, seed=6311)
-                    validate_spent(packet.outcome.budget_receipt)
+                    validate_spent(packet.outcome.budget_receipt, 64 if engineering else 512)
+                    if packet.planning_seconds > 600:
+                        raise RuntimeError("PILOT_SINGLE_PLAN_TIMEOUT")
                     return packet
                 previous_speeds = {r["entity_id"]: float(r["speed_mps"]) for r in current["entities"]}
                 before = {k: float(v.getComputedSize()) for k, v in runtime_tasks.items()}
@@ -136,17 +153,31 @@ def execute(cfg: dict) -> int:
                     fresh = collector.step23._capture(env, frame=current["frame_index"] + 1,
                         phase="loop_start_decision", event_index=2 * (current["frame_index"] + 1),
                         previous_speed_by_entity=previous_speeds, delta_t_s=end-start)
+                    for task_row in fresh.get("tasks", []):
+                        task_object = collector.step23._all_runtime_tasks(env).get(str(task_row["task_id"]))
+                        if task_object is not None and hasattr(task_object, "getReturnedSize"):
+                            task_row["required_returned_size"] = float(task_object.getReturnedSize())
                     return fresh
                 row = controller.cycle(env, current, runtime_tasks, plan,
                     lambda e, commands: apply_commands(e, commands, communication, ComputationScheduler, collector.step23.TrafficScheduler),
                     env.step, capture)
+                rows.append(dict(row))
                 receipt["searches"] += 1
                 atomic_json(episode_dir / f"decision_{receipt['searches']:02d}.json", row)
                 if row["status"] != "EXECUTED":
                     break
                 decisions.append(row["fresh_observation"])
-                steps.append({"frame_index": current["frame_index"], "action": row.get("action"),
-                              "outcome": row["fresh_observation"]})
+                final_observation = decisions[-1]
+                indexed_action = row.get("action") or {}
+                node_ids = sorted(str(v["entity_id"]) for v in current["entities"])
+                mobility_entries = []
+                for entry in indexed_action.get("mobility", {}).get("entries", []):
+                    idx = int(entry["uav_index"])
+                    if idx < 0 or idx >= len(node_ids):
+                        raise RuntimeError("ACTION_HISTORY_ID_RESOLUTION_FAILED:uav_index")
+                    mobility_entries.append({"uav_id": node_ids[idx], "azimuth_rad": float(entry["azimuth_rad"]), "elevation_rad": float(entry["elevation_rad"]), "speed_mps": float(entry["speed_mps"])})
+                history_action = {"route": {"field_present": True, "empty": True, "entries": [], "missing": False}, "comm": {"field_present": True, "empty": True, "entries": [], "missing": False}, "comp": {"field_present": True, "empty": True, "entries": [], "missing": False}, "mobility": {"field_present": True, "empty": not bool(mobility_entries), "entries": mobility_entries, "missing": False}, "vehicle_motion": "SUMO external"}
+                steps.append({"frame_index": current["frame_index"], "action": history_action, "outcome": row["fresh_observation"]})
             raise EpisodeStopped()
         try:
             collector.collect_trajectory(episode["simulator_seed"], episode["policy_seed"], episode["trajectory_id"], on_decision=callback)
@@ -155,22 +186,44 @@ def execute(cfg: dict) -> int:
         except Exception as exc:
             receipt["status"] = "STOPPED"
             receipt["reason"] = type(exc).__name__
-            atomic_json(episode_dir / "episode_failure.json", {"reason": type(exc).__name__, "detail": str(exc)})
+            atomic_json(episode_dir / "episode_failure.json", {"reason": type(exc).__name__, "detail": str(exc), "traceback": traceback.format_exc()})
             raise
-        if rows:
-            ledger.observe(decisions[-1]["tasks"], collector.step23._all_runtime_tasks(env),
-                           float(decisions[-1]["simulation_time_s"]))
+        if rows and final_env is not None and final_observation is not None:
+            ledger.observe(final_observation["tasks"], collector.step23._all_runtime_tasks(final_env),
+                           float(final_observation["simulation_time_s"]))
         atomic_json(episode_dir / "episode_receipt.json", {
             "sample_id": sample_id, "decision_count": len(rows),
             "elapsed_seconds": time.perf_counter() - episode_started,
             "metric_draft": ledger.report(planned_duration_s=max(0.1, len(rows) * 0.1),
                                            actual_duration_s=max(0.0, len(rows) * 0.1)),
             "no_retry": True, "no_mid_episode_resume": True})
-        receipt["episodes"].append({"sample_id": sample_id, "status": "COMPLETED_OR_STOPPED",
-                                     "decisions": len(rows), "device": "cuda"})
-    receipt["status"] = "RUNTIME_PREFLIGHT_PASS"
+        successful_rows = [r for r in rows if r.get("status") == "EXECUTED" and r.get("environment_step_attempted") is True]
+        failed_rows = [r for r in rows if r.get("status") != "EXECUTED"]
+        successful_steps = len(successful_rows)
+        root_ids = [str(r.get("root", {}).get("state")) for r in successful_rows]
+        receipt["episodes"].append({"sample_id": sample_id,
+                                     "status": "COMPLETED" if not failed_rows and successful_steps >= (2 if engineering else 1) else "FAILED",
+                                     "decisions": successful_steps, "device": device,
+                                     "failures": [{"reason": r.get("reason"), "detail": r.get("detail", "")} for r in failed_rows],
+                                     "root_ids": root_ids, "distinct_root_ids": len(set(root_ids)),
+                                     "actual_action_history_aligned": all(r.get("action") is not None and r.get("fresh_observation", {}).get("capture_event_id") for r in successful_rows)})
+    if engineering:
+        completed = len(receipt["episodes"]) == 2 and all(e.get("status") == "COMPLETED" for e in receipt["episodes"])
+        total_steps = sum(int(e.get("decisions", 0)) for e in receipt["episodes"])
+        two_consecutive_per_episode = all(e.get("decisions", 0) >= 2 for e in receipt["episodes"])
+        distinct_fresh_roots = all(e.get("distinct_root_ids", 0) >= 2 for e in receipt["episodes"])
+        aligned = all(e.get("actual_action_history_aligned") is True for e in receipt["episodes"])
+        no_fail_closed = all(not e.get("failures") for e in receipt["episodes"])
+        receipt["engineering_checks"] = {"two_episodes": completed, "env_step_count": total_steps,
+                                         "at_least_two_consecutive_env_steps_per_episode": two_consecutive_per_episode,
+                                         "two_different_real_fresh_roots_per_episode": distinct_fresh_roots,
+                                         "actual_action_history_aligned": aligned, "no_fail_closed": no_fail_closed}
+        receipt["status"] = "ENGINEERING_PASS" if (completed and total_steps >= 4 and two_consecutive_per_episode
+            and distinct_fresh_roots and aligned and no_fail_closed and engineering_acceptance(receipt["episodes"])) else "ENGINEERING_FAIL"
+    else:
+        receipt["status"] = "RUNTIME_PREFLIGHT_PASS"
     atomic_json(result_dir / "pilot_attempt.json", receipt)
-    return 0
+    return 0 if receipt["status"] in {"ENGINEERING_PASS", "RUNTIME_PREFLIGHT_PASS"} else 1
 
 
 def main() -> int:

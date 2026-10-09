@@ -19,7 +19,8 @@ class RealTaskLedger:
   for row in task_rows:
    tid=str(row['task_id']);task=runtime_tasks[tid]
    arrival=float(task.getTaskArrivalTime());ddl=float(task.getTaskDeadline())
-   if not all(math.isfinite(x) for x in (arrival,ddl)) or ddl<0 or arrival>simulation_time:raise ValueError('invalid real task clock')
+   if not all(math.isfinite(x) for x in (arrival,ddl)) or ddl<0 or arrival>simulation_time+1e-8:
+    raise ValueError(f'invalid real task clock task={tid} arrival={arrival} deadline={ddl} simulation_time={simulation_time} lifecycle={row.get("lifecycle")}')
    old=self.records.setdefault(tid,{'arrival':arrival,'deadline':ddl,'completed':False,'failed':False,'completion_time':None,'result_size':0.})
    if old['arrival']!=arrival or old['deadline']!=ddl:raise ValueError('task identity/deadline drift')
    if row['lifecycle']=='completed':

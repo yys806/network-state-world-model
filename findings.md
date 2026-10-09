@@ -1,4 +1,10 @@
 <!-- STEP6.4J CURRENT -->
+## 2026-10-09 STEP 6.4J — None 根因与 r19 证据
+
+- 调用链：`EpisodeController.cycle → LiveSCEMPlanner.plan → history_tensor → build_live_sample → amend_raw_graph_inputs → _wired_pairs → enumerate(None)`。
+- 另外两个真实阻塞：History 动作必须从 `uav_index` 还原 `uav_id`；fresh capture 必须读取 task object 的 `getReturnedSize()` 生成 `required_returned_size`。
+- r19：4 次真实 env.step；两 episode 各2步；fresh roots 为 `69bd…764 → b200…61`、`5873…2a → d52b…420`；`ENGINEERING_PASS`。最终 r20 protocol source SHA/execution_config_id 已重冻并独立 audit PASS。
+
 ## 2026-10-09 STEP 6.4J — S-CEM B512 最小真实 GPU Pilot 协议冻结
 
 研究者已授权2条dev_validation源轨迹、每条最多8个决策、search seed6311，最多16次B512；前2轨迹按trajectory_id UTF8 SHA256排序，初始frame取该轨迹静态manifest最早frame，不依据搜索结果。CPU协议与manifest已冻结，Pilot执行身份见 `code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009/00_protocol.json`，execution_config_id=`31667b891be356017220e205e19a33b1e3aeaf7df8fcc8f11af147061303ddf8`。

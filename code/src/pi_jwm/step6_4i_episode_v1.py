@@ -1,6 +1,6 @@
 """One-shot closed-loop orchestration. No model, search or simulator rule changes."""
 from dataclasses import dataclass
-import math,time
+import math,time,traceback
 from .step6_4b_live_bridge_v1 import SmokeFailure,validate_command
 from .step6_4e_fallback_v1 import prepare_fallback,FallbackReason,FallbackCandidate
 from .step6_3b_candidate_grammar_v1 import admit_structured_candidate
@@ -85,4 +85,5 @@ class EpisodeController:
        end_to_end_decision_seconds=time.perf_counter()-start)
    self.journal(dict(row));return row
   except Exception as exc:
-   return stop(getattr(exc,'reason',type(exc).__name__),str(exc))
+   return stop(getattr(exc,'reason',type(exc).__name__),
+               str(exc) + "\n" + traceback.format_exc())
