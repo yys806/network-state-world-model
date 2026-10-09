@@ -1590,3 +1590,4 @@ GPU扩样仍运行。新增100/272，总覆盖148/320；已创建本聊天heartb
 2026-10-08T11:56:39.719780+00:00 用户进度核验：215/320，原PID1615单runner；215 raw身份/SHA/预算/参数与source/checkpoint PASS，110080实际转移，无STOP；当前平均26.7cases/h，剩余搜索粗估3.9h（不含最终验收）。继续仅当前矩阵，locked_test=false。
 
 2026-10-08T14:44:40.900668+00:00 用户进度核验：293/320，原PID1615单runner；293 raw身份/SHA/预算/参数与source/checkpoint PASS，150016实际转移，无STOP；剩余搜索粗估1h（不含最终验收）。继续仅当前矩阵，locked_test=false。
+2026-10-09 STEP6.4J: Added explicit multi-episode S-CEM B512 Pilot runner, r3 protocol identity, atomic receipts and strict CUDA gates. CPU validation PASS; GPU not started.

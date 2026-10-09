@@ -1608,3 +1608,4 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 2026-10-08T11:56:39.719780+00:00 用户进度核验：215/320，原PID1615单runner；215 raw身份/SHA/预算/参数与source/checkpoint PASS，110080实际转移，无STOP；当前平均26.7cases/h，剩余搜索粗估3.9h（不含最终验收）。继续仅当前矩阵，locked_test=false。
 
 2026-10-08T14:44:40.900668+00:00 用户进度核验：293/320，原PID1615单runner；293 raw身份/SHA/预算/参数与source/checkpoint PASS，150016实际转移，无STOP；剩余搜索粗估1h（不含最终验收）。继续仅当前矩阵，locked_test=false。
+2026-10-09 STEP6.4J: The previous freeze lacked a runnable Pilot entry point. The new runner wires LiveSCEMPlanner, EpisodeController, AirFogSim collection and real metric ledger; local CPU gates pass. Remote CUDA execution remains pending exact commit deployment.

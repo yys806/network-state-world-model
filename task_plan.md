@@ -1,4 +1,7 @@
 <!-- STEP6.4J CURRENT -->
+## 2026-10-09 — 6.4J executor readiness
+
+The r3 executor and protocol revision passed CPU SHA audit, six focused tests, real AirFogSim engineering smoke reuse, compileall and diff check. New execution identity is `9c9ba01cc95469a08b37158e78b1abff009bf47a5d850c26a9d789642f911115`. `READY_FOR_GPU_LAUNCH=true` after commit synchronization; GPU Pilot remains `NOT_STARTED`.
 ## 2026-10-09 STEP 6.4J — S-CEM B512 最小真实 GPU Pilot 协议冻结
 
 研究者已授权2条dev_validation源轨迹、每条最多8个决策、search seed6311，最多16次B512；前2轨迹按trajectory_id UTF8 SHA256排序，初始frame取该轨迹静态manifest最早frame，不依据搜索结果。CPU协议与manifest已冻结，Pilot执行身份见 `code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009/00_protocol.json`，execution_config_id=`31667b891be356017220e205e19a33b1e3aeaf7df8fcc8f11af147061303ddf8`。
