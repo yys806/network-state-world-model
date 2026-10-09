@@ -2,6 +2,7 @@ import sys,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2];sys.path[:0]=[str(ROOT/'code/src'),str(ROOT/'code/scripts')]
 from pi_jwm.step6_4j_pilot_v1 import select_episodes,PilotClock,engineering_acceptance,validate_spent,validate_resume
+from run_step6_4j_pilot_v1 import reconstruct_history_action
 class PilotTests(unittest.TestCase):
  def test_static_selection_ignores_outcomes_and_keeps_earliest(self):
   rows=[{'sample_id':f'{t}::anchor-{f:04d}','objective':object()} for t in ('a','b','c') for f in (8,3)]
@@ -27,4 +28,10 @@ class PilotTests(unittest.TestCase):
    lambda x:x.update(actual_action_history_aligned=False),
   ):
    bad=[dict(row) for row in good];mutate(bad[0]);self.assertFalse(engineering_acceptance(bad))
+ def test_history_reconstructs_nonempty_comm_comp_and_mobility_ids(self):
+  current={'entities':[{'entity_id':'UAV_0'},{'entity_id':'RSU_0'}], 'tasks':[{'task_id':'Task_7'}]}
+  action={'comm':{'entries':[{'task_index':0,'relation_index':2,'rb_indices':[1,3]}]},'comp':{'entries':[{'task_index':0,'node_index':1,'allocated_cpu_per_s':1.5}]},'mobility':{'entries':[{'uav_index':1,'azimuth_rad':.1,'elevation_rad':.2,'speed_mps':3.}]},'route':{'entries':[]}}
+  row=reconstruct_history_action(action,current)
+  self.assertEqual(row['comm']['entries'][0]['task_id'],'Task_7');self.assertEqual(row['comp']['entries'][0]['node_id'],'UAV_0');self.assertEqual(row['mobility']['entries'][0]['uav_id'],'UAV_0')
+  self.assertEqual(row['comm']['entries'][0]['rb_indices'],[1,3]);self.assertEqual(row['comp']['entries'][0]['allocated_cpu_per_s'],1.5)
 if __name__=='__main__':unittest.main()

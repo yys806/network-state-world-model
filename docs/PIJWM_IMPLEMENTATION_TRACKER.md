@@ -1,3 +1,7 @@
+## 2026-10-10 STEP 6.4J 收口
+
+当前 r23 protocol/manifest 已冻结并纳入 Git 跟踪，execution_config_id=103bca16ef006869fe4da1af5f3402481c5a549ca6166bcd5e15ba9d6906fbfc。部署 verifier 对 raw/checkpoint/normalization/source SHA PASS；真实 CPU 两 episode 共 4 次 env.step，fresh-root、History 动作和真实 post-step outcome 独立审计 PASS。GPU、正式 Pilot、baseline、Hybrid、locked_test 均未运行；Git 同步后 READY_FOR_GPU_LAUNCH=true。
+
 <!-- STEP6.4I CURRENT -->
 ## 2026-10-09 STEP 6.4I — Pure-search正式闭环CPU准备
 

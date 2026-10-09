@@ -4352,6 +4352,16 @@
       "imported_by": [],
       "imports": [],
       "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4j_engineering_v1",
+      "path": "code/scripts/audit_step6_4j_engineering_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
       "module": "scripts.audit_step6_4j_pilot_v1",
       "path": "code/scripts/audit_step6_4j_pilot_v1.py",
       "test_files": []
@@ -8681,7 +8691,9 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "tests.test_step6_4j_pilot_v1"
+      ],
       "imports": [
         "pi_jwm.step5_2_training_loop_v1",
         "pi_jwm.step5_4_formal_training_readiness_v1",
@@ -8698,7 +8710,9 @@
       "lifecycle_status": "support",
       "module": "scripts.run_step6_4j_pilot_v1",
       "path": "code/scripts/run_step6_4j_pilot_v1.py",
-      "test_files": []
+      "test_files": [
+        "code/tests/test_step6_4j_pilot_v1.py"
+      ]
     },
     {
       "category": "runnable_script",
@@ -10087,6 +10101,16 @@
       "lifecycle_status": "support",
       "module": "scripts.verify_step6_4f_closure_v1",
       "path": "code/scripts/verify_step6_4f_closure_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.verify_step6_4j_deployment_v1",
+      "path": "code/scripts/verify_step6_4j_deployment_v1.py",
       "test_files": []
     },
     {
@@ -13184,7 +13208,8 @@
       "evidence_role": "test_evidence",
       "imported_by": [],
       "imports": [
-        "pi_jwm.step6_4j_pilot_v1"
+        "pi_jwm.step6_4j_pilot_v1",
+        "scripts.run_step6_4j_pilot_v1"
       ],
       "lifecycle_status": "support",
       "module": "tests.test_step6_4j_pilot_v1",

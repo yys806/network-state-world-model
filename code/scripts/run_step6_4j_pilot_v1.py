@@ -9,7 +9,7 @@ import argparse, json, os, subprocess, sys, time, traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r20"
+OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r23"
 sys.path[:0] = [str(ROOT / "code/src"), str(ROOT / "code/scripts")]
 os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 if hasattr(sys.stdout, "reconfigure"):
@@ -21,6 +21,46 @@ from pi_jwm.step6_4j_pilot_v1 import PilotClock, engineering_acceptance, validat
 
 class EpisodeStopped(BaseException):
     pass
+
+def reconstruct_history_action(indexed_action: dict, current: dict) -> dict:
+    """Convert executed indexed action rows back to raw History IDs/units."""
+    indexed_action = indexed_action or {}
+    node_ids = sorted(str(v["entity_id"]) for v in current["entities"])
+    task_ids = sorted(str(v["task_id"]) for v in current["tasks"])
+    def task_id(entry):
+        value = entry.get("task_id")
+        if value is not None: return str(value)
+        index = entry.get("task_index")
+        if index is None or not 0 <= int(index) < len(task_ids): raise RuntimeError("ACTION_HISTORY_ID_RESOLUTION_FAILED:task_index")
+        return task_ids[int(index)]
+    def node_id(entry, key="node_id", index_key="node_index"):
+        value = entry.get(key)
+        if value is not None: return str(value)
+        index = entry.get(index_key)
+        if index is None or not 0 <= int(index) < len(node_ids): raise RuntimeError("ACTION_HISTORY_ID_RESOLUTION_FAILED:node_index")
+        return node_ids[int(index)]
+    def entries(name): return indexed_action.get(name, {}).get("entries", [])
+    route_entries=[]
+    for entry in entries("route"):
+        item=dict(entry);item["task_id"]=task_id(item)
+        if "target_node_id" in item or "target_node_index" in item:item["target_node_id"]=node_id(item,"target_node_id","target_node_index")
+        if item.get("task_node_id") is not None or item.get("task_node_index") is not None:item["task_node_id"]=node_id(item,"task_node_id","task_node_index")
+        item["route_node_ids"]=[node_ids[int(i)] for i in item.get("route_node_indices", [])] if "route_node_indices" in item else list(item.get("route_node_ids", []))
+        route_entries.append(item)
+    comm_entries=[]
+    for entry in entries("comm"):
+        item=dict(entry);item["task_id"]=task_id(item);comm_entries.append(item)
+    comp_entries=[]
+    for entry in entries("comp"):
+        item=dict(entry);item["task_id"]=task_id(item)
+        if item.get("node_id") is not None or item.get("node_index") is not None:item["node_id"]=node_id(item)
+        comp_entries.append(item)
+    mobility_entries=[]
+    for entry in entries("mobility"):
+        item=dict(entry);idx=int(item["uav_index"])
+        if idx < 0 or idx >= len(node_ids):raise RuntimeError("ACTION_HISTORY_ID_RESOLUTION_FAILED:uav_index")
+        item["uav_id"]=node_ids[idx];item.pop("uav_index",None);mobility_entries.append(item)
+    return {"route":{"field_present":True,"empty":not bool(route_entries),"entries":route_entries,"missing":False},"comm":{"field_present":True,"empty":not bool(comm_entries),"entries":comm_entries,"missing":False},"comp":{"field_present":True,"empty":not bool(comp_entries),"entries":comp_entries,"missing":False},"mobility":{"field_present":True,"empty":not bool(mobility_entries),"entries":mobility_entries,"missing":False},"vehicle_motion":"SUMO external"}
 
 
 def load_protocol(path: Path) -> dict:
@@ -150,9 +190,16 @@ def execute(cfg: dict, *, device="cuda", engineering=False) -> int:
                 def capture():
                     end = float(env.simulation_time)
                     events = [dict(v) for v in env.pi_jwm_transfer_events[event_start:]]
+                    computed_after = {k: float(v.getComputedSize()) for k, v in collector.step23._all_runtime_tasks(env).items()}
                     fresh = collector.step23._capture(env, frame=current["frame_index"] + 1,
                         phase="loop_start_decision", event_index=2 * (current["frame_index"] + 1),
                         previous_speed_by_entity=previous_speeds, delta_t_s=end-start)
+                    slot_outcome = collector.aggregate_slot_outcomes(
+                        transfer_events=events, computed_before=before, computed_after=computed_after,
+                        transport_observation=getattr(env, "pi_jwm_transfer_observation", None))
+                    fresh.update(slot_outcome)
+                    fresh["slot_transfer_events"] = events
+                    fresh["communication_observation"] = slot_outcome["communication_observation"]
                     for task_row in fresh.get("tasks", []):
                         task_object = collector.step23._all_runtime_tasks(env).get(str(task_row["task_id"]))
                         if task_object is not None and hasattr(task_object, "getReturnedSize"):
@@ -163,20 +210,16 @@ def execute(cfg: dict, *, device="cuda", engineering=False) -> int:
                     env.step, capture)
                 rows.append(dict(row))
                 receipt["searches"] += 1
-                atomic_json(episode_dir / f"decision_{receipt['searches']:02d}.json", row)
+                decision_path = episode_dir / f"decision_{receipt['searches']:02d}.json"
+                atomic_json(decision_path, row)
                 if row["status"] != "EXECUTED":
                     break
                 decisions.append(row["fresh_observation"])
                 final_observation = decisions[-1]
-                indexed_action = row.get("action") or {}
-                node_ids = sorted(str(v["entity_id"]) for v in current["entities"])
-                mobility_entries = []
-                for entry in indexed_action.get("mobility", {}).get("entries", []):
-                    idx = int(entry["uav_index"])
-                    if idx < 0 or idx >= len(node_ids):
-                        raise RuntimeError("ACTION_HISTORY_ID_RESOLUTION_FAILED:uav_index")
-                    mobility_entries.append({"uav_id": node_ids[idx], "azimuth_rad": float(entry["azimuth_rad"]), "elevation_rad": float(entry["elevation_rad"]), "speed_mps": float(entry["speed_mps"])})
-                history_action = {"route": {"field_present": True, "empty": True, "entries": [], "missing": False}, "comm": {"field_present": True, "empty": True, "entries": [], "missing": False}, "comp": {"field_present": True, "empty": True, "entries": [], "missing": False}, "mobility": {"field_present": True, "empty": not bool(mobility_entries), "entries": mobility_entries, "missing": False}, "vehicle_motion": "SUMO external"}
+                history_action = reconstruct_history_action(row.get("action") or {}, current)
+                row["history_action"] = history_action
+                row["history_outcome"] = row["fresh_observation"]
+                atomic_json(decision_path, row)
                 steps.append({"frame_index": current["frame_index"], "action": history_action, "outcome": row["fresh_observation"]})
             raise EpisodeStopped()
         try:

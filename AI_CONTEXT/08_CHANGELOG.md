@@ -1,4 +1,9 @@
 <!-- STEP6.4J CURRENT -->
+## 2026-10-10 STEP 6.4J — r23 最终 CPU 一致性与部署验收
+
+r23 已重新冻结源码与协议：`execution_config_id=103bca16ef006869fe4da1af5f3402481c5a549ca6166bcd5e15ba9d6906fbfc`。真实 AirFogSim engineering run 两条冻结 episode 各连续 2 次 `env.step`，合计 4 次；每条 2 个不同 fresh root；4 份 decision receipt 均 EXECUTED，History 动作逐字段与实际 indexed action 对齐，真实 post-step outcome 与 capture 对齐，独立审计 PASS。生产轨迹实际有 2 次合法 Comp 写回；Comm 在该冻结样本中为空，非空 Comm+Comp 的实体/任务/RB/CPU 映射由同一生产 helper 的 focused contract test 单独 PASS，未伪造运行数据。r23 protocol/manifest 已准备强制纳入 Git，部署 verifier 对协议、原始输入、checkpoint、normalization 和源码 SHA 全部 PASS。GPU、正式 Pilot、baseline、Hybrid、locked_test 未运行；完成提交同步后 `READY_FOR_GPU_LAUNCH=true`。
+
+<!-- STEP6.4J CURRENT -->
 ## 2026-10-09 STEP 6.4J — CPU integration closure
 
 Fixed live runner blockers: explicit `wired_edges` validation, real `uav_id` History reconstruction, and real `required_returned_size` capture. r19 CPU evidence passed with 4 real `env.step` calls; r20 protocol identity was frozen afterward. READY_FOR_GPU_LAUNCH=true; GPU and `locked_test` remain unused.

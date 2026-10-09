@@ -1,3 +1,8 @@
+<!-- STEP6.4J CURRENT -->
+## 2026-10-10 STEP 6.4J 当前状态
+
+当前最终冻结为 r23，execution_config_id=103bca16ef006869fe4da1af5f3402481c5a549ca6166bcd5e15ba9d6906fbfc。4 次真实 env.step、2 条 episode、每条 2 个 fresh root，History/真实 post-step outcome 独立审计 PASS；GPU、正式 Pilot、baseline、Hybrid、locked_test 未运行。协议部署 SHA verifier PASS，Git 同步后 READY_FOR_GPU_LAUNCH=true。
+
 <!-- STEP6.4I CURRENT -->
 ## 2026-10-09 STEP 6.4I — Pure-search正式闭环CPU准备
 

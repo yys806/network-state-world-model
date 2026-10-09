@@ -1,4 +1,9 @@
 <!-- STEP6.4J CURRENT -->
+## 2026-10-10 STEP 6.4J 当前状态
+
+当前最终冻结为 r23，execution_config_id=103bca16ef006869fe4da1af5f3402481c5a549ca6166bcd5e15ba9d6906fbfc。4 次真实 env.step、2 条 episode、每条 2 个 fresh root，History/真实 post-step outcome 独立审计 PASS；GPU、正式 Pilot、baseline、Hybrid、locked_test 未运行。协议部署 SHA verifier PASS，Git 同步后 READY_FOR_GPU_LAUNCH=true。
+
+<!-- STEP6.4J CURRENT -->
 ## 2026-10-09 STEP 6.4J — S-CEM B512 最小真实 GPU Pilot 协议冻结
 
 研究者已授权2条dev_validation源轨迹、每条最多8个决策、search seed6311，最多16次B512；前2轨迹按trajectory_id UTF8 SHA256排序，初始frame取该轨迹静态manifest最早frame，不依据搜索结果。CPU协议与manifest已冻结，Pilot执行身份见 `code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009/00_protocol.json`，execution_config_id=`31667b891be356017220e205e19a33b1e3aeaf7df8fcc8f11af147061303ddf8`。
