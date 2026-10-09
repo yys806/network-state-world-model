@@ -1,3 +1,11 @@
+<!-- STEP6.4J CURRENT -->
+## 2026-10-09 STEP 6.4J — S-CEM B512 最小真实 GPU Pilot 协议冻结
+
+研究者已授权2条dev_validation源轨迹、每条最多8个决策、search seed6311，最多16次B512；前2轨迹按trajectory_id UTF8 SHA256排序，初始frame取该轨迹静态manifest最早frame，不依据搜索结果。CPU协议与manifest已冻结，Pilot执行身份见 `code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009/00_protocol.json`，execution_config_id=`31667b891be356017220e205e19a33b1e3aeaf7df8fcc8f11af147061303ddf8`。
+
+配置：S-CEM K4/rho0.2、B512、H4、batch16、RTX3080Ti CUDA FP32、Route NOOP、fallback A一次失败即C、同步暂停仿真。CPU manifest/SHA/测试通过；GPU尚未启动。首个真实CUDA决策是资格门并计入16次，不额外搜索；单次>600秒或实例累计达到10200秒停止新规划，身份/源码/checkpoint/预算/scorer/NaN/重复任务异常立即停Pilot。locked_test=false，正式闭环性能仍NOT_STARTED。下一步是远端精确提交、硬件与依赖只读检查，通过后启动首个批准episode。
+<!-- END STEP6.4J CURRENT -->
+
 <!-- STEP6.4I CURRENT -->
 ## 2026-10-09 STEP 6.4I — Pure-search正式闭环CPU准备
 

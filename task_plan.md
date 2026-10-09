@@ -1,3 +1,24 @@
+<!-- STEP6.4J CURRENT -->
+## 2026-10-09 STEP 6.4J — S-CEM B512 最小真实 GPU Pilot 协议冻结
+
+研究者已授权2条dev_validation源轨迹、每条最多8个决策、search seed6311，最多16次B512；前2轨迹按trajectory_id UTF8 SHA256排序，初始frame取该轨迹静态manifest最早frame，不依据搜索结果。CPU协议与manifest已冻结，Pilot执行身份见 `code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009/00_protocol.json`，execution_config_id=`31667b891be356017220e205e19a33b1e3aeaf7df8fcc8f11af147061303ddf8`。
+
+配置：S-CEM K4/rho0.2、B512、H4、batch16、RTX3080Ti CUDA FP32、Route NOOP、fallback A一次失败即C、同步暂停仿真。CPU manifest/SHA/测试通过；GPU尚未启动。首个真实CUDA决策是资格门并计入16次，不额外搜索；单次>600秒或实例累计达到10200秒停止新规划，身份/源码/checkpoint/预算/scorer/NaN/重复任务异常立即停Pilot。locked_test=false，正式闭环性能仍NOT_STARTED。下一步是远端精确提交、硬件与依赖只读检查，通过后启动首个批准episode。
+<!-- END STEP6.4J CURRENT -->
+
+# STEP 6.4J — 当前授权计划
+
+当前门：CPU协议冻结。研究者已批准2条dev_validation轨迹，SHA256(trajectory_id UTF8)排序前2；每轨迹静态manifest最早frame，seed6311，最多8步/16次S-CEM K4rho.2 B512H4。首个真实CUDA决策计入Pilot资格门，不额外搜索。
+
+1. 核验静态manifest及causal prefix/初始Task cohort SHA；CPU只重放至初始观测，不执行任何新搜索或Planner动作。
+2. 测试先行补最小真实环境组合、单次规划600s与安全边界累计实例上限10800s（10200s不再发起新规划）、独立source/input/config身份、逐决策原子日志/指标和whole-pilot失败停止。
+3. CPU tests/compileall/index/Context/diff PASS后protocol-freeze commit+push。
+4. 只读探测已授权RTX3080Ti；不可达则READY_FOR_GPU_LAUNCH=true后STOP。研究者负责云开关。可达则remote exactcommit/clean、CUDA FP32batch16、显存与磁盘20GiB/依赖/无旧runner/备份门PASS后单runner启动。
+5. 首步资格PASS继续最多剩余15搜索；异常立即停，合法C保留分组，无episode内resume/动作重试。完成原始结果独立核验ZIP/SHA/D:备份、Context/Git收口后停止。
+
+禁止24×64正式实验、StageB/baseline/ablation/hybrid/locked_test、科学源码修改。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；locked_test=false。下一交付：可启动的冻结Pilot协议与CPU preflight evidence。
+
+---
 ## STEP 6.4I CPU准备完成（2026-10-09）
 
 STEP_6_4I=PASS（仅CPU正式闭环准备）；SEARCH_METHOD=S-CEM，K=4/rho=0.2；FINAL_CLOSED_LOOP_BUDGET=512，PLANNER_V1_CLOSED_LOOP_B_WM=512，H=4。研究者本轮明确接受6.4H所见Effort质量损失换取计算节约；B1024保留参考，不声称等价/最优，不冻结hybrid预算。Route=EXPLICIT_NOOP_ONLY；fallback=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1（一次A失败即C，无重试）；同步暂停仿真、非实时。
