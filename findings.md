@@ -3,7 +3,7 @@
 
 - 调用链：`EpisodeController.cycle → LiveSCEMPlanner.plan → history_tensor → build_live_sample → amend_raw_graph_inputs → _wired_pairs → enumerate(None)`。
 - 另外两个真实阻塞：History 动作必须从 `uav_index` 还原 `uav_id`；fresh capture 必须读取 task object 的 `getReturnedSize()` 生成 `required_returned_size`。
-- r19：4 次真实 env.step；两 episode 各2步；fresh roots 为 `69bd…764 → b200…61`、`5873…2a → d52b…420`；`ENGINEERING_PASS`。最终 r20 protocol source SHA/execution_config_id 已重冻并独立 audit PASS。
+- r19：4 次真实 env.step；两 episode 各2步；fresh roots 为 `69bd…764 → b200…61`、`5873…2a → d52b…420`；`ENGINEERING_PASS`。最终 r20 protocol source SHA/execution_config_id 已重冻并独立 audit PASS，READY_FOR_GPU_LAUNCH=true；GPU仍未启动。
 
 ## 2026-10-09 STEP 6.4J — S-CEM B512 最小真实 GPU Pilot 协议冻结
 

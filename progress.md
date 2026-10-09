@@ -3,7 +3,7 @@
 
 r8/r9 及 r17/r18 原始失败证据保留。完整 traceback 定位：`environment.wired_edges=None` 在 `_wired_pairs` 被迭代；随后发现索引动作回写 History 缺 `uav_id`，fresh task 缺 `required_returned_size`。修复均使用真实来源并严格拒绝缺字段，不填默认值。
 
-r19 同一生产核心路径 CPU engineering smoke PASS：AirFogSim 两条冻结 episode 各完成2次连续真实 `env.step`，合计4次；每条有2个不同 fresh root，动作与历史对齐，0个 FAIL_CLOSED_C。77 focused tests、compileall、diff check PASS。运行证据保留在 r19；最终协议 r20 audit PASS，execution_config_id=`84e77de6be95b29cfec76691d7027e12cf311f423c0f57e6e40094a2bc04de5f`。GPU、正式 Pilot、baseline、Hybrid、locked_test 未运行，`READY_FOR_GPU_LAUNCH=false`，等待研究者开启 GPU。
+r19 同一生产核心路径 CPU engineering smoke PASS：AirFogSim 两条冻结 episode 各完成2次连续真实 `env.step`，合计4次；每条有2个不同 fresh root，动作与历史对齐，0个 FAIL_CLOSED_C。77 focused tests、compileall、diff check PASS。运行证据保留在 r19；最终协议 r20 audit PASS，execution_config_id=`84e77de6be95b29cfec76691d7027e12cf311f423c0f57e6e40094a2bc04de5f`。GPU、正式 Pilot、baseline、Hybrid、locked_test 未运行，`READY_FOR_GPU_LAUNCH=true`；下一步是研究者开启 GPU 后执行精确入口。
 
 ## 2026-10-09 STEP 6.4J — S-CEM B512 最小真实 GPU Pilot 协议冻结
 

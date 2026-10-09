@@ -1,7 +1,7 @@
 <!-- STEP6.4J CURRENT -->
 ## 2026-10-09 STEP 6.4J — CPU integration closure
 
-Fixed live runner blockers: explicit `wired_edges` validation, real `uav_id` History reconstruction, and real `required_returned_size` capture. r19 CPU evidence passed with 4 real `env.step` calls; r20 protocol identity was frozen afterward. GPU and `locked_test` remain unused.
+Fixed live runner blockers: explicit `wired_edges` validation, real `uav_id` History reconstruction, and real `required_returned_size` capture. r19 CPU evidence passed with 4 real `env.step` calls; r20 protocol identity was frozen afterward. READY_FOR_GPU_LAUNCH=true; GPU and `locked_test` remain unused.
 
 ## 2026-10-09 STEP 6.4J — S-CEM B512 最小真实 GPU Pilot 协议冻结
 

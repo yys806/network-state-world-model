@@ -2033,4 +2033,5 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 - [x] 修复 wired topology、History action ID、required_returned_size 与严格 ENGINEERING_PASS 门。
 - [x] r19 AirFogSim CPU 双 episode：4 env.step、4 fresh root、0 FAIL_CLOSED_C。
 - [x] 77 focused tests、compileall、diff check；未运行 GPU/Pilot/baseline/Hybrid/locked_test。
+- [x] CPU门、protocol audit、commit/push 已完成；READY_FOR_GPU_LAUNCH=true。
 - [ ] 研究者开启 GPU 后执行 `--execute --protocol ...r20/00_protocol.json`。
