@@ -2,6 +2,29 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
+      "id": "STEP-6.4I-GPU-PILOT-PROTOCOL-REVIEW",
+      "type": "researcher_decision_required",
+      "status": "deferred",
+      "reason": "Budget accepted; episode IDs/seeds/length, metrics, baseline and timeout not approved; live CUDA qualification pending",
+      "summary_zh": "仅CPU准备通过；正式pilot先审协议，再独立授权GPU。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": "docs/contracts/PIJWM_STEP_06_4I_FORMAL_CLOSED_LOOP_PROTOCOL_DRAFT_V1.md",
+      "required_predecessors": [
+        "researcher approved pilot protocol",
+        "freeze manifest/source/execution and commitpush",
+        "live CUDA first-decision qualification"
+      ],
+      "forbidden_until_authorized": [
+        "GPU",
+        "formal closed-loop performance",
+        "baseline",
+        "locked_test"
+      ],
+      "scientific_gate_status": "PENDING_RESEARCHER_PROTOCOL_APPROVAL"
+    },
+    {
       "id": "STEP-6.4F-TARGETED-SEARCH-REQUALIFICATION",
       "type": "researcher_decision_required",
       "status": "deferred",

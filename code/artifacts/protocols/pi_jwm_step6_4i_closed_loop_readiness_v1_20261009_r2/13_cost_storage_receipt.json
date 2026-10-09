@@ -1,0 +1,54 @@
+{
+  "reference_path": "code/artifacts/protocols/pi_jwm_step6_4h_s_cem_budget_v1_20261008_r2/summary.json",
+  "reference_SHA256": "c8fa458ee739b8eb8d5d26a6c367e47633809af5448717d2a853d8a9f9b34fb5",
+  "source_case_count": 320,
+  "runtime": {
+    "P90": 140.6933998604305,
+    "P95": 194.6629116444619,
+    "max": 376.9981795568019,
+    "mean": 74.54845494008187,
+    "median": 51.41551076970063,
+    "sum_in_solve": 23855.505580826197
+  },
+  "proposal_only": true,
+  "scenarios": [
+    {
+      "proposal": "pilot",
+      "approved": false,
+      "episodes": 2,
+      "steps": 8,
+      "planning_calls_max": 16,
+      "mean_search_hours": 0.33132646640036384,
+      "p95_each_step_scenario_hours": 0.8651684961976085,
+      "observed_max_each_step_scenario_hours": 1.6755474646968973,
+      "mean_plus_25percent_and_setup_hours": 0.6641580830004548,
+      "p95_plus_allowance_hours": 1.3314606202470105,
+      "observed_max_plus_allowance_hours": 2.3444343308711217,
+      "storage_estimate_GiB_two_copies_ZIP_allowance": 0.04173986613750458,
+      "price_yuan_per_hour": null,
+      "price_note": "researcher/cloud actual price needed; cost=P*instance elapsed; no cloud access in this Step"
+    },
+    {
+      "proposal": "formal",
+      "approved": false,
+      "episodes": 24,
+      "steps": 64,
+      "planning_calls_max": 1536,
+      "mean_search_hours": 31.807340774434934,
+      "p95_each_step_scenario_hours": 83.0561756349704,
+      "observed_max_each_step_scenario_hours": 160.85255661090216,
+      "mean_plus_25percent_and_setup_hours": 42.15917596804366,
+      "p95_plus_allowance_hours": 106.220219543713,
+      "observed_max_plus_allowance_hours": 203.4656957636277,
+      "storage_estimate_GiB_two_copies_ZIP_allowance": 4.0070271492004395,
+      "price_yuan_per_hour": null,
+      "price_note": "researcher/cloud actual price needed; cost=P*instance elapsed; no cloud access in this Step"
+    }
+  ],
+  "decision_record_size_sample_bytes": 933705,
+  "storage_scope": "two observations/history command journals; no per-candidate H4 latent dumps; use conservative larger actual fallback journal size, 2copies+ZIP factor3",
+  "disk_available_local_bytes": 218547806208,
+  "minimum_future_remote_free_GiB_proposal": 20,
+  "risk": "static-case timing does not bound future live domains; actual worst-case unknown; pilot required",
+  "locked_test": false
+}

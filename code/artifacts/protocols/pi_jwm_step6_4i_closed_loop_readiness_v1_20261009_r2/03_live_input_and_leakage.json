@@ -1,0 +1,7 @@
+{
+  "future_poison_invariant": true,
+  "future_targets_built": false,
+  "live_builder_reused": "6.4B exact history_tensor body",
+  "normalization_refit": false,
+  "verdict": "PASS"
+}

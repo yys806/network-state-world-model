@@ -2,6 +2,29 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP6.4I-CLOSED-LOOP-PREPARATION",
+      "keywords": [
+        "6.4I",
+        "pure-search closed loop",
+        "accepted B512",
+        "real feedback",
+        "episode protocol"
+      ],
+      "title": "Step6.4I accepted pure-search configuration and CPU readiness",
+      "summary": "Researcher accepts S-CEM K4rho0.2 B512; CPU real mechanism passed; episode protocol and live CUDA qualification pending",
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_4I_PURE_SEARCH_CLOSED_LOOP_PREPARATION.md",
+        "docs/contracts/PIJWM_STEP_06_4I_FORMAL_CLOSED_LOOP_PROTOCOL_DRAFT_V1.md"
+      ],
+      "verification_sources": [
+        "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/11_accepted_working_config.json",
+        "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/12_interface_audit.json",
+        "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/14_validation_receipt.json",
+        "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/15_acceptance.json",
+        "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/17_compact_smoke_summary.json"
+      ]
+    },
+    {
       "id": "ROUTE-STEP6.4H-S-CEM-BUDGET",
       "keywords": [
         "6.4H",

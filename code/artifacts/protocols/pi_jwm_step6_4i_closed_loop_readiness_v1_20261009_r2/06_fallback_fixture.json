@@ -1,0 +1,21 @@
+{
+  "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0041",
+  "raw_path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092300-policy-2026092400.json.gz",
+  "raw_sha256": "11a8aba61d817b28eefdf7b7608a7282b16ce878815cf7eeccf4e2ccba5c929f",
+  "simulator_seed": 2026092300,
+  "policy_seed": 2026092400,
+  "anchor": 41,
+  "parent_sha256": "8ac87e4dfc3909536e8f234e10c798c32ac688362c00772ec9724ea8a41c0558",
+  "source_sha256": {
+    "code/scripts/run_step6_4i_fallback_smoke_v1.py": "495172798b5d4852060bdba711d6739e4d7b6981d6877ddbb8172249e2e5a05b",
+    "code/src/pi_jwm/step6_4i_episode_v1.py": "78eb574f420260c6b514e32b04a3fe413812933d7d1916158097b46d57263a84",
+    "code/src/pi_jwm/step6_4i_real_metrics_v1.py": "b8d05cb49fd45a1fe0f9a0a9b5525451a62a9fc37aed977b147a184e0e5ded38"
+  },
+  "method": "FROZEN_FALLBACK_A_NO_SEARCH",
+  "reason_injection": "NO_SCOREABLE_H4; not observed S-CEM search failure",
+  "selection": "Reuse previously frozen6.4F causal TRAIN anchor0041; no new outcome selection",
+  "WM_forwards": 0,
+  "GPU": "NOT_USED",
+  "locked_test": false,
+  "execution_config_id": "156007be38340299ce650aedd6726f52966fac309969a3ce693b88c56be2c768"
+}

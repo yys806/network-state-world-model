@@ -299,6 +299,16 @@
   ],
   "mechanism_readiness_acceptance_sources": [
     {
+      "id": "RES-STEP-6.4I-CPU-PREPARATION-20261009",
+      "experiment_id": "STEP-6.4I-PURE-SEARCH-PREPARATION-20261009",
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/15_acceptance.json",
+      "audit_sha256": "76c612e3e857c5791587cafec508124b818678983b78f5e42f5ebe3734781ae9",
+      "status": "PASS",
+      "claim_boundary": "CPU mechanism only, not formalB512 performance; GPU provider not qualified",
+      "locked_test_accessed": false,
+      "numeric_validation": "CPU mechanism receipt, no formal-performance metrics; raw identities/source SHA and real steps independently checked by audit_step6_4i_cpu_preparation_v1.py"
+    },
+    {
       "id": "RES-STEP6.4F-COMM-ELIGIBILITY",
       "experiment_id": "STEP-6.4F-COMM-ELIGIBILITY-20261004",
       "audit": "code/artifacts/protocols/pi_jwm_step6_4f_comm_eligibility_v1_20261004/09_final_acceptance_receipt.json",
@@ -327,8 +337,16 @@
     "T_local_backup": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/local_backup_acceptance.json",
     "T_selected_configs": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/selected_configs.json",
     "T_summary": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/summary.json",
-    "A": "NOT_STARTED",
-    "B": "NOT_STARTED",
-    "note": "Navigation links; numerical truth is accepted raw reconstruction, not historical registry metrics"
+    "A": "code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/A/acceptance.json",
+    "B": "NOT_STARTED_BY_CONDITIONAL_STOP",
+    "note": "Current navigation repaired-domain A accepted; original PhaseB conditional stop preserved; 6.4I pure-search budget acceptance is a later explicit researcher decision"
+  },
+  "current_pure_search_closed_loop_preparation": {
+    "experiment_id": "STEP-6.4I-PURE-SEARCH-PREPARATION-20261009",
+    "final_budget": 512,
+    "readiness": "READY_FOR_PROTOCOL_REVIEW",
+    "formal_performance": "NOT_STARTED",
+    "GPU_launch_authorized": false,
+    "historical_budget_receipts": "Retain original researcher_pending snapshots without editing."
   }
 }

@@ -1,0 +1,374 @@
+{
+  "GPU": "NOT_USED",
+  "K": 4,
+  "budget_per_cycle": 64,
+  "engineering_only": true,
+  "environment_steps": 2,
+  "execution_config_id": "073ff6e657145ae2d5e4769dff941d4eb495275aef2bb0eb1b3ed873d8e0d15b",
+  "fresh_root_not_predicted": true,
+  "locked_test": false,
+  "method": "S-CEM",
+  "no_behavior_overwrite": true,
+  "normal_winner_path": true,
+  "normalization_unchanged": true,
+  "parameters_unchanged": true,
+  "rho": 0.2,
+  "verdict": "PASS",
+  "cycles": [
+    {
+      "best_fingerprint": "900b38f3c7cc9eec266443a325a24654497484d6a52525c0eeeadd4230ffdbea",
+      "best_objective": [
+        0,
+        0.0,
+        1.0,
+        0.5415038990707585,
+        0.0890539053439473
+      ],
+      "budget": {
+        "B_WM": 64,
+        "N_admitted_steps": 95,
+        "N_cache_hits": 29,
+        "N_complete_sequences": 18,
+        "N_dead_end_branches": 10,
+        "N_proposed_steps": 95,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 64,
+        "budget_unit": "candidate_one_step_transition",
+        "wall_clock_seconds_diagnostic_only": 51.04305900001782
+      },
+      "complete_h4": 18,
+      "distinct_scoreable_h4": 13,
+      "fresh_candidate_domain": true,
+      "root": {
+        "anchor": "f3060d0c06ac974f6b92f455440db7d0688cb7ec18b6008acc91b264382b2dfb",
+        "graph": "97e734f54102e1c67f59574995e6b73695eccd1a9e2c584866079f10e833b5e0",
+        "latent": "42329d2ffe003710cfcf1ce899cd3df717e26a05fde41f46a941c223a98d3512",
+        "state": "b0e35b42fd11bbbfd0b913b922f74bb47458d98fa2783bbd7c34ff8c1da4fadb",
+        "z_pi": "128df0eaf567de3d60a9f67412e0e638f608f349ec26ce5c2e91424cf2ae7aa0"
+      },
+      "score_statuses": {
+        "SCOREABLE": 16
+      },
+      "sidecar": {
+        "alignment_passed": true,
+        "capture_event_id": "capture-006",
+        "frame_index": 3,
+        "simulation_time_s": 0.6,
+        "source": "live Task getters before action; no future replay",
+        "source_time_s": 0.6,
+        "tasks": [
+          {
+            "arrival_time_s": 0.4,
+            "deadline_s": 11.566170925551548,
+            "task_id": "Task_1"
+          },
+          {
+            "arrival_time_s": 0.1,
+            "deadline_s": 8.090069234649263,
+            "task_id": "Task_8"
+          }
+        ],
+        "trajectory_id": "formal-v1-sim-2026092325-policy-2026092425"
+      },
+      "winner_sequence": {
+        "candidate_id": "900b38f3c7cc9eec266443a325a24654497484d6a52525c0eeeadd4230ffdbea",
+        "constraints": [],
+        "generation_metadata": {
+          "planner_action_domain": "V1"
+        },
+        "generator_backend": "SEARCH",
+        "provenance": "real:formal-v1-sim-2026092325-policy-2026092425:3:capture-006",
+        "seed": 6301,
+        "source_tags": [],
+        "steps": [
+          {
+            "comm": [],
+            "comp": [
+              {
+                "allocated_cpu_per_s": 2.5843526422977448,
+                "node_id": "RSU_0",
+                "task_id": "Task_8"
+              }
+            ],
+            "mob": [
+              {
+                "azimuth_rad": -0.15000000000000002,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.15000000000000002,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "route": []
+          },
+          {
+            "comm": [],
+            "comp": [
+              {
+                "allocated_cpu_per_s": 0.6460880488157272,
+                "node_id": "RSU_0",
+                "task_id": "Task_8"
+              }
+            ],
+            "mob": [
+              {
+                "azimuth_rad": -0.35000000000000003,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.35000000000000003,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "route": []
+          },
+          {
+            "comm": [],
+            "comp": [
+              {
+                "allocated_cpu_per_s": 0.1615220122039318,
+                "node_id": "RSU_0",
+                "task_id": "Task_8"
+              }
+            ],
+            "mob": [
+              {
+                "azimuth_rad": -0.55,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.55,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "route": []
+          },
+          {
+            "comm": [],
+            "comp": [
+              {
+                "allocated_cpu_per_s": 0.04038050305098295,
+                "node_id": "RSU_0",
+                "task_id": "Task_8"
+              }
+            ],
+            "mob": [
+              {
+                "azimuth_rad": -0.55,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.55,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "route": []
+          }
+        ]
+      }
+    },
+    {
+      "best_fingerprint": "922d8a2c8a6c4c9379e1d9bd353d5d729972956f77a18b7e326fe4593e20da93",
+      "best_objective": [
+        0,
+        0.0,
+        1.0,
+        0.54150390625,
+        0.08476347664448743
+      ],
+      "budget": {
+        "B_WM": 64,
+        "N_admitted_steps": 95,
+        "N_cache_hits": 29,
+        "N_complete_sequences": 18,
+        "N_dead_end_branches": 10,
+        "N_proposed_steps": 95,
+        "N_rejected_steps": 0,
+        "N_unique_transition_evals": 64,
+        "budget_unit": "candidate_one_step_transition",
+        "wall_clock_seconds_diagnostic_only": 53.484064099990064
+      },
+      "complete_h4": 18,
+      "distinct_scoreable_h4": 13,
+      "fresh_candidate_domain": true,
+      "root": {
+        "anchor": "266d160d94cfe56913f988deaa241cfdda227d5c9e939af093913e189e8a3498",
+        "graph": "a3586d48fcf78fe41ccd655eb8e2f1b4048d77a47e3183bf612b2a9179a3a6f1",
+        "latent": "1941702e0cc0c59e3d1493cba8ef426fbae84cf48b57e58331a20c6746aa2000",
+        "state": "6ee3d30ba1687a94da6d7bee7ec311ea493cb8f0fab7008ac593aae9c7fcb6d0",
+        "z_pi": "ea09fd4814e783abbfb2b911eea15ca403bed7f694fd72dc48c5ec0e56d3492c"
+      },
+      "score_statuses": {
+        "SCOREABLE": 16
+      },
+      "sidecar": {
+        "alignment_passed": true,
+        "capture_event_id": "capture-008",
+        "frame_index": 4,
+        "simulation_time_s": 0.7,
+        "source": "live Task getters before action; no future replay",
+        "source_time_s": 0.7,
+        "tasks": [
+          {
+            "arrival_time_s": 0.4,
+            "deadline_s": 11.566170925551548,
+            "task_id": "Task_1"
+          },
+          {
+            "arrival_time_s": 0.1,
+            "deadline_s": 8.090069234649263,
+            "task_id": "Task_8"
+          }
+        ],
+        "trajectory_id": "formal-v1-sim-2026092325-policy-2026092425"
+      },
+      "winner_sequence": {
+        "candidate_id": "922d8a2c8a6c4c9379e1d9bd353d5d729972956f77a18b7e326fe4593e20da93",
+        "constraints": [],
+        "generation_metadata": {
+          "planner_action_domain": "V1"
+        },
+        "generator_backend": "SEARCH",
+        "provenance": "real:formal-v1-sim-2026092325-policy-2026092425:4:capture-008",
+        "seed": 6301,
+        "source_tags": [],
+        "steps": [
+          {
+            "comm": [],
+            "comp": [
+              {
+                "allocated_cpu_per_s": 0.6460882723331451,
+                "node_id": "RSU_0",
+                "task_id": "Task_8"
+              }
+            ],
+            "mob": [
+              {
+                "azimuth_rad": -0.35000000000000003,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.35000000000000003,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "route": []
+          },
+          {
+            "comm": [],
+            "comp": [
+              {
+                "allocated_cpu_per_s": 0.16152206808328629,
+                "node_id": "RSU_0",
+                "task_id": "Task_8"
+              }
+            ],
+            "mob": [
+              {
+                "azimuth_rad": -0.55,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.55,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "route": []
+          },
+          {
+            "comm": [],
+            "comp": [
+              {
+                "allocated_cpu_per_s": 0.04038051702082157,
+                "node_id": "RSU_0",
+                "task_id": "Task_8"
+              }
+            ],
+            "mob": [
+              {
+                "azimuth_rad": -0.75,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.75,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "route": []
+          },
+          {
+            "comm": [],
+            "comp": [
+              {
+                "allocated_cpu_per_s": 0.010095129255205393,
+                "node_id": "RSU_0",
+                "task_id": "Task_8"
+              }
+            ],
+            "mob": [
+              {
+                "azimuth_rad": -0.75,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.75,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "route": []
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "verdict": "PASS",
+    "environment_steps": 1,
+    "reason_injection": "NO_SCOREABLE_H4",
+    "WM_forward_count": 0,
+    "time_before": 4.5,
+    "time_after": 4.6,
+    "corrected_observed_new_task_count": 2
+  },
+  "raw_evidence": {
+    "04_episode_journal.json": "728a54499864a01461a302052ea13f6f0c57bf9aca862c0bd718b38d24c293b2",
+    "05_two_cycle_real_feedback.json": "0bd7cdd750121d96c44e9969a29ad6a56ae41b0b6da3324688a0c77079773aef",
+    "08_fallback_journal.json": "4cc06f31ce15fbeb5f3fd8b7f5e4fd90a43a7b9e0f7cd566155bba43c83a75f9",
+    "09_real_fallback_and_metrics.json": "3c0630d6cad1753efb59a682f951af5edc37124b62c32ea0acced43bb6c3c466"
+  },
+  "persistent_storage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2",
+  "raw_in_Git": false
+}

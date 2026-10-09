@@ -1,0 +1,48 @@
+"""Real-observation task ledger for a DRAFT initial-cohort metric contract.
+
+ It is an evaluator, never a planner input. Only getters for task IDs already
+ captured in the real observer are read. Predicted Objective/hop byte totals
+ cannot enter completion, delay or useful-result credit. Units are native
+ simulator data units, not bytes without an approved physical conversion.
+ """
+import math
+
+class RealTaskLedger:
+ def __init__(self):
+  self.initial=None;self.records={};self.time=None
+ def observe(self,task_rows,runtime_tasks,simulation_time):
+  if self.time is not None and simulation_time<self.time:raise ValueError('real observation time reversed')
+  self.time=simulation_time
+  if self.initial is None:self.initial={str(t['task_id']) for t in task_rows if t['lifecycle'] not in ('completed','failed')}
+  for row in task_rows:
+   tid=str(row['task_id']);task=runtime_tasks[tid]
+   arrival=float(task.getTaskArrivalTime());ddl=float(task.getTaskDeadline())
+   if not all(math.isfinite(x) for x in (arrival,ddl)) or ddl<0 or arrival>simulation_time:raise ValueError('invalid real task clock')
+   old=self.records.setdefault(tid,{'arrival':arrival,'deadline':ddl,'completed':False,'failed':False,'completion_time':None,'result_size':0.})
+   if old['arrival']!=arrival or old['deadline']!=ddl:raise ValueError('task identity/deadline drift')
+   if row['lifecycle']=='completed':
+    finish=float(task.getLastOperationTime());size=float(task.getReturnedSize())
+    if not task.isFinished() or not all(math.isfinite(x) for x in (finish,size)) or not arrival<=finish<=simulation_time+1e-8 or size<0:raise ValueError('real completion inconsistency')
+    if old['completed'] and old['completion_time']!=finish:raise ValueError('completion time drift')
+    if old['failed']:raise ValueError('failed task became completed')
+    old.update(completed=True,completion_time=finish,result_size=size)
+   elif row['lifecycle']=='failed':
+    if old['completed']:raise ValueError('completed task became failed')
+    old['failed']=True
+ def report(self,*,planned_duration_s,actual_duration_s):
+  if planned_duration_s<=0 or not 0<=actual_duration_s<=planned_duration_s+1e-8:raise ValueError('invalid evaluation duration')
+  cohort=[self.records[k] for k in sorted(self.initial or ())]
+  completed=[r for r in cohort if r['completed']]
+  ontime=[r for r in completed if r['completion_time']-r['arrival']<=r['deadline']+1e-8]
+  failed=sum(r['failed'] for r in cohort);den=len(cohort)
+  useful=sum(r['result_size'] for r in ontime)
+  return {'metric_contract':'DRAFT_INITIAL_CAUSAL_COHORT_V1','initial_cohort_ids':sorted(self.initial or ()),
+   'initial_cohort_count':den,'completed_count':len(completed),'on_time_count':len(ontime),
+   'failed_count':failed,'pending_count':den-len(completed)-failed,
+   'completion_rate':None if den==0 else len(completed)/den,
+   'on_time_completion_rate':None if den==0 else len(ontime)/den,
+   'completion_delays_s':[r['completion_time']-r['arrival'] for r in completed],
+   'observed_new_task_count':len(set(self.records)-(self.initial or set())),
+   'useful_result_data_units':useful,'useful_result_units_per_planned_second':useful/planned_duration_s,
+   'planned_duration_s':planned_duration_s,'actual_duration_s':actual_duration_s,
+   'claim_boundary':'Real trajectory only; draft metric, no performance acceptance, no physical byte conversion'}

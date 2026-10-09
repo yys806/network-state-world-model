@@ -1,3 +1,31 @@
+## STEP 6.4I CPU准备完成（2026-10-09）
+
+STEP_6_4I=PASS（仅CPU正式闭环准备）；SEARCH_METHOD=S-CEM，K=4/rho=0.2；FINAL_CLOSED_LOOP_BUDGET=512，PLANNER_V1_CLOSED_LOOP_B_WM=512，H=4。研究者本轮明确接受6.4H所见Effort质量损失换取计算节约；B1024保留参考，不声称等价/最优，不冻结hybrid预算。Route=EXPLICIT_NOOP_ONLY；fallback=CURRENT_DOMAIN_A_ELSE_FAIL_CLOSED_C_V1（一次A失败即C，无重试）；同步暂停仿真、非实时。
+
+独立CPU真实S-CEM机制：固定TRAIN anchor0003，engineering-only B64/batch1，两次winner第一步真实执行0.6→0.7→0.8s；每次实际64 unique transitions、13个不同可评分H4。第二root由新真实观测/History/后验重新构建，未复用预测root，模型与TRAIN normalization不变。固定TRAIN anchor0041注入NO_SCOREABLE_H4，canonical fallback A经同桥真实执行4.5→4.6s一次；不是搜索性能结论。74项focused CPU tests通过，覆盖空域、缺字段、bridge/setter/step异常、部分写入、重复决策保护、Return支持与Future Target poison。
+
+CLOSED_LOOP_PRE_FORMAL_READINESS=READY_FOR_PROTOCOL_REVIEW；真实CPU链READY，通用episode组件已测试，live CUDA provider=IMPLEMENTED_NOT_GPU_VERIFIED。正式episode来源/数量/seed/长度、指标分母、timeout及baseline仍待研究者批准；GPU_LAUNCH_AUTHORIZED=false，READY_FOR_GPU_LAUNCH=false。FORMAL_CLOSED_LOOP_PERFORMANCE=NOT_STARTED；HYBRID_PLANNER=NOT_FROZEN；Stage B=NOT_STARTED/DEFERRED；GPU=NOT_USED；locked_test=false。
+
+证据：docs/implementation_records/STEP_06_4I_PURE_SEARCH_CLOSED_LOOP_PREPARATION.md；docs/contracts/PIJWM_STEP_06_4I_FORMAL_CLOSED_LOOP_PROTOCOL_DRAFT_V1.md；code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/15_acceptance.json。唯一下一动作：研究者审阅Protocol Draft，批准最小GPU pilot与首个live CUDA资格检查。本轮停止。以下较早内容均为历史时点，旧pending不覆盖本轮明确接受预算决定。
+
+验证：74 focused tests/22.416s；独立CPU证据核验PASS。预算已明确接受，正式protocol待审阅；无GPU启动。
+
+以下为过程历史：
+
+# STEP 6.4I 当前执行计划（CPU-only）
+
+当前门：pure-search正式闭环CPU准备。研究者已接受S-CEM K4/rho.2 B512 H4与冻结fallback、暂停仿真。GPU/正式多episode/baseline/locked test禁止。
+
+1. 审计既有6.4B/6.4F源码与6.4H接受证据，固定TRAIN anchor0003、seed6301、CPU B64/batch1工程smoke及新身份；不按运行结果换fixture。
+2. 增加必要episode事务接口：fresh live root、S-CEM调用、唯一first-action执行、冻结A/C dispatch、env.step后真实重采集、异常保留/禁止重复与重试。测试先定义失败路径，保持科学核心文件不变。
+3. 有界真实AirFogSim两轮机制smoke + domain empty/missing/bridge/setter/env.step异常测试；只用当前因果历史，normalization/checkpoint hash不变。
+4. 形成真实任务指标记录接口与Protocol Draft；数量/seed/长度/baseline为建议，成本依据6.4H320raw，价格未确认不编造费用。
+5. CPU检查/Context/registry/index/收口commit+push，然后停止等待研究者审阅和独立GPU授权。
+
+已知缺口：旧脚本硬编码MH且缺episode管理；Route仅NOOP限制新任务路由；slot容量超限须fail closed；指标分母/研究规模尚未批准。
+
+---
+
 <!-- STEP6.4H ACCEPTED CURRENT -->
 ## 2026-10-09 STEP 6.4H — S-CEM B512 预算资格完成
 

@@ -1,0 +1,29 @@
+{
+  "schema": "STEP6.4I-CPU-preparation-v1",
+  "verdict": "PASS",
+  "STEP_6_4I": "PASS",
+  "scope": "CPU mechanism preparation and protocol draft only",
+  "FINAL_CLOSED_LOOP_BUDGET": 512,
+  "method": "S-CEM",
+  "K": 4,
+  "rho": 0.2,
+  "H": 4,
+  "normal_real_steps": 2,
+  "fallback_real_steps": 1,
+  "CLOSED_LOOP_PRE_FORMAL_READINESS": "READY_FOR_PROTOCOL_REVIEW",
+  "GPU_live_provider": "IMPLEMENTED_NOT_GPU_VERIFIED",
+  "READY_FOR_GPU_LAUNCH": false,
+  "GPU_LAUNCH_AUTHORIZED": false,
+  "formal_episode_protocol": "DRAFT_NOT_APPROVED",
+  "FORMAL_CLOSED_LOOP_PERFORMANCE": "NOT_STARTED",
+  "HYBRID_PLANNER": "NOT_FROZEN",
+  "Stage_B": "NOT_STARTED/DEFERRED",
+  "GPU": "NOT_USED",
+  "locked_test": false,
+  "metrics": null,
+  "field_notes": {
+    "metrics": "No formal closed-loop performance measured; bounded causal Task getters only."
+  },
+  "tests": 74,
+  "metric_correction": "original09 preserved; corrected14to2 in10; no repeated action/search"
+}

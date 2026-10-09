@@ -1,0 +1,89 @@
+{
+  "verdict": "CPU_CHAIN_PASS",
+  "chain": [
+    {
+      "stage": "real observation/history",
+      "status": "READY",
+      "path": "code/scripts/run_step2_3_real_airfogsim_raw_contract_finalization_v1.py",
+      "symbol": "_capture",
+      "line": 182,
+      "sha256": "de1125b4355255e40ff7fd9013d0fc041210b40c29f12f4596861bccba5d96de"
+    },
+    {
+      "stage": "history-only tensor/frozen normalization",
+      "status": "READY",
+      "path": "code/scripts/step6_4i_live_planner_v1.py",
+      "symbol": "history_tensor",
+      "line": 28,
+      "sha256": "ab809b2fd17c39284b35a14c668824ae93fdde4374b0c930647e110e569d7a07"
+    },
+    {
+      "stage": "real state/graph/posterior/fresh domain/S-CEM H4",
+      "status": "READY_CPU",
+      "path": "code/scripts/run_step6_4i_cpu_smoke_v1.py",
+      "symbol": "planner",
+      "line": 119,
+      "sha256": "4e4f42934794088bb58123d5c2e4fea5353b0c846face0a2b07ed4e80c363588"
+    },
+    {
+      "stage": "winner-first or one canonical A then C",
+      "status": "READY",
+      "path": "code/src/pi_jwm/step6_4i_episode_v1.py",
+      "symbol": "cycle",
+      "line": 34,
+      "sha256": "78eb574f420260c6b514e32b04a3fe413812933d7d1916158097b46d57263a84"
+    },
+    {
+      "stage": "AirFogSim command validation/setters",
+      "status": "READY",
+      "path": "code/src/pi_jwm/step6_4b_live_bridge_v1.py",
+      "symbol": "apply_commands",
+      "line": 149,
+      "sha256": "120762fbb5082c53c088e551a12d54e2304797f5eacf62fe7a68d11e886630ab"
+    },
+    {
+      "stage": "actual env.step/new observation/belief refresh",
+      "status": "READY_CPU",
+      "path": "code/scripts/run_step6_4i_cpu_smoke_v1.py",
+      "symbol": "smoke",
+      "line": 85,
+      "sha256": "4e4f42934794088bb58123d5c2e4fea5353b0c846face0a2b07ed4e80c363588"
+    },
+    {
+      "stage": "bounded episode management/duplicate/error journals",
+      "status": "READY_COMPONENT_TESTED",
+      "path": "code/src/pi_jwm/step6_4i_episode_runner_v1.py",
+      "symbol": "run_episode",
+      "line": 12,
+      "sha256": "921b28c9cf576d08bf0690da36326302bd50f4f20af3ce2bc25441576facc8d7"
+    },
+    {
+      "stage": "actual Task metric getters/draft ledger",
+      "status": "READY_DRAFT",
+      "path": "code/src/pi_jwm/step6_4i_real_metrics_v1.py",
+      "symbol": "RealTaskLedger",
+      "line": 10,
+      "sha256": "4e50ed139bd8518910ea636feb9d5e85f6f113a341d3df4c2b65866b9a104cd4"
+    },
+    {
+      "stage": "live CUDA/batch16 episode composition",
+      "status": "IMPLEMENTED_NOT_GPU_VERIFIED",
+      "path": "code/scripts/step6_4i_live_planner_v1.py",
+      "symbol": "LiveSCEMPlanner",
+      "line": 50,
+      "sha256": "ab809b2fd17c39284b35a14c668824ae93fdde4374b0c930647e110e569d7a07"
+    }
+  ],
+  "two_real_steps": 2,
+  "two_fresh_roots": true,
+  "frozen_parameters_unchanged": true,
+  "normalization_unchanged": true,
+  "fallback_real_step": 1,
+  "formal_GPU_entry": "Reusable LiveSCEMPlanner and generic episode runner prepared and component tested; their full real environment composition has not been executed. Actual real CPU smoke executed nested planner with EpisodeController; CUDA qualification and approved manifest pending.",
+  "timing_scope": "PlanPacket.planning_seconds includes posterior+search; budget_receipt wall_clock_seconds_diagnostic_only is search only; controller E2E starts after current observation available and includes live rebuild through fresh next capture/journal",
+  "legacy_MH_smoke": "historical only; new independent S-CEM real smoke required and passed",
+  "legacy_fallback_module_pending_constant": "historical candidate-audit constant, not runtime policy; current dispatch controlled by step6_4i_episode_v1",
+  "metric_correction": "original09 preserved; corrected new-birth count2 in10 from immutable initial/fresh causal observations; corrected metric source regression passed",
+  "GPU": "NOT_USED",
+  "locked_test": false
+}

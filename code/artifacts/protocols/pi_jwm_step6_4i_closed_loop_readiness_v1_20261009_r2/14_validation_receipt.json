@@ -1,0 +1,44 @@
+{
+  "verdict": "PASS",
+  "tests": 74,
+  "seconds": 22.416,
+  "provider_tests": 2,
+  "provider_seconds": 3.224,
+  "negative_paths": {
+    "DOMAIN_EMPTY": "no setter/step; C",
+    "REQUIRED_LIVE_OBSERVATION_MISSING": "C before setter",
+    "ACTION_BRIDGE_REJECTED": "C no alternate",
+    "SETTER_FAILURE": "partial mutation risk; C no step/retry",
+    "ENV_STEP_FAILURE": "stop even if time mutated; no retry",
+    "NO_SCOREABLE_H4": "single A then C on failure",
+    "Return_birth": "existing6.2B shared support oracle excludes unsupported states; provider requires H_eff=H_sup=4",
+    "Future_Target_poison": "live history tensor independent",
+    "duplicate_execution": "same token/episode directory refused"
+  },
+  "scope": "bounded unit/real smoke, not performance",
+  "GPU": "NOT_USED",
+  "locked_test": false,
+  "compileall": "PASS",
+  "diff_check": "PASS",
+  "Context_Consistency_Check": {
+    "verdict": "PASS",
+    "files": {
+      "AI_CONTEXT\\00_PROJECT_STATE.md": true,
+      "AI_CONTEXT\\01_RESEARCH_CONTEXT.md": true,
+      "AI_CONTEXT\\02_ARCHITECTURE.md": true,
+      "AI_CONTEXT\\03_DATA_FLOW.md": true,
+      "AI_CONTEXT\\04_MODULE_MAP.md": true,
+      "AI_CONTEXT\\05_EXPERIMENTS.md": true,
+      "AI_CONTEXT\\06_DECISIONS.md": true,
+      "AI_CONTEXT\\07_KNOWN_ISSUES.md": true,
+      "AI_CONTEXT\\08_CHANGELOG.md": true
+    }
+  },
+  "protected_science_diff": "UNCHANGED",
+  "final_metadata_tests": 22,
+  "final_metadata_seconds": 1.995,
+  "knowledge_index_write": "PASS",
+  "knowledge_index_check": "PASS",
+  "metadata_gate_corrections": "deferred schema enum and mechanism result classification corrected; no scientific rules altered",
+  "metric_report_termination_test": "RED then PASS; report error counts C and preserves already executed step"
+}

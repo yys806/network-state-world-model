@@ -1,0 +1,156 @@
+{
+  "verdict": "PASS",
+  "files": [
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/01_fixture_and_execution_identity.json",
+      "bytes": 3129,
+      "sha256": "891df2d1441a3a762c860348315e446587573107b635482985cc75229b0fbc63"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/02_attempt.json",
+      "bytes": 162,
+      "sha256": "c763a82d8325b6ad03d80489b70177adfa78248546ce6a1ad95416b3db1e88fb"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/03_live_input_and_leakage.json",
+      "bytes": 190,
+      "sha256": "94cf32b1d566631ea04caa54eee285fe9477d12db72615d4dfabe788ff57d660"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/04_episode_journal.json",
+      "bytes": 391930,
+      "sha256": "728a54499864a01461a302052ea13f6f0c57bf9aca862c0bd718b38d24c293b2"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/05_two_cycle_real_feedback.json",
+      "bytes": 448013,
+      "sha256": "0bd7cdd750121d96c44e9969a29ad6a56ae41b0b6da3324688a0c77079773aef"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/06_fallback_fixture.json",
+      "bytes": 1252,
+      "sha256": "bbcafe16804b094badc0737ef31ba89c7b776724f3c2ded9379320e5a865829a"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/07_fallback_attempt.json",
+      "bytes": 141,
+      "sha256": "7a330b0dfeb1bf59705a1b64794692a52cb9e40e3ec0eb771c638bb9b9758ba7"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/08_fallback_journal.json",
+      "bytes": 933705,
+      "sha256": "4cc06f31ce15fbeb5f3fd8b7f5e4fd90a43a7b9e0f7cd566155bba43c83a75f9"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/09_real_fallback_and_metrics.json",
+      "bytes": 930781,
+      "sha256": "3c0630d6cad1753efb59a682f951af5edc37124b62c32ea0acced43bb6c3c466"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/10_metric_correction_receipt.json",
+      "bytes": 1610,
+      "sha256": "87d4ad5dfcf6a71b4ed16d5f475dff563899440202755625ee690d753d937c19"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/11_accepted_working_config.json",
+      "bytes": 1950,
+      "sha256": "e29410be3559c9a8519e21395d98299f2f862dd317c2e7dd74e11b81f3a666b3"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/12_interface_audit.json",
+      "bytes": 3984,
+      "sha256": "e0692c9c42ce4fca64312fc8b7ef5961b87d8f8f6be1a53d659869e9928ea158"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/13_cost_storage_receipt.json",
+      "bytes": 2417,
+      "sha256": "6cfafea927889bc8afa6201eca61702cab1ed0a285386c25277f09a222df1b88"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/14_validation_receipt.json",
+      "bytes": 1814,
+      "sha256": "d2c1580354083ac5c1e4e0f4b7885e682fcbc3da488fef9e07817419c3638807"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/15_acceptance.json",
+      "bytes": 982,
+      "sha256": "76c612e3e857c5791587cafec508124b818678983b78f5e42f5ebe3734781ae9"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/17_compact_smoke_summary.json",
+      "bytes": 11657,
+      "sha256": "dc521499a5518e101b8f9b50685e55f427fc84c12ac2afe34b696d5925d02dcf"
+    },
+    {
+      "path": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/executed_metric_source.py.txt",
+      "bytes": 3424,
+      "sha256": "b8d05cb49fd45a1fe0f9a0a9b5525451a62a9fc37aed977b147a184e0e5ded38"
+    },
+    {
+      "path": "code/scripts/audit_step6_4i_cpu_preparation_v1.py",
+      "bytes": 3110,
+      "sha256": "89c9179bbc076d11d99a916e8463694bf723f0cd197746a2b8eb1868a3b317d1"
+    },
+    {
+      "path": "code/scripts/run_step6_4i_cpu_smoke_v1.py",
+      "bytes": 15400,
+      "sha256": "4e4f42934794088bb58123d5c2e4fea5353b0c846face0a2b07ed4e80c363588"
+    },
+    {
+      "path": "code/scripts/run_step6_4i_fallback_smoke_v1.py",
+      "bytes": 5406,
+      "sha256": "495172798b5d4852060bdba711d6739e4d7b6981d6877ddbb8172249e2e5a05b"
+    },
+    {
+      "path": "code/scripts/step6_4i_live_planner_v1.py",
+      "bytes": 6465,
+      "sha256": "ab809b2fd17c39284b35a14c668824ae93fdde4374b0c930647e110e569d7a07"
+    },
+    {
+      "path": "code/src/pi_jwm/step6_4i_episode_runner_v1.py",
+      "bytes": 3776,
+      "sha256": "921b28c9cf576d08bf0690da36326302bd50f4f20af3ce2bc25441576facc8d7"
+    },
+    {
+      "path": "code/src/pi_jwm/step6_4i_episode_v1.py",
+      "bytes": 5108,
+      "sha256": "78eb574f420260c6b514e32b04a3fe413812933d7d1916158097b46d57263a84"
+    },
+    {
+      "path": "code/src/pi_jwm/step6_4i_real_metrics_v1.py",
+      "bytes": 3530,
+      "sha256": "4e50ed139bd8518910ea636feb9d5e85f6f113a341d3df4c2b65866b9a104cd4"
+    },
+    {
+      "path": "code/tests/test_step6_4i_episode_runner_v1.py",
+      "bytes": 3693,
+      "sha256": "c4a39c0a5d73e7ea848b334200ab9906be20b280aa6af5cb9efe85a28774e4cd"
+    },
+    {
+      "path": "code/tests/test_step6_4i_episode_v1.py",
+      "bytes": 4223,
+      "sha256": "0979b6c54b79727a20b2bb4049db2e615e46ffa81e10c3b8dcd53431d72d3255"
+    },
+    {
+      "path": "code/tests/test_step6_4i_live_provider_v1.py",
+      "bytes": 1781,
+      "sha256": "8c8d262bbfa76cd97f76cedbf919bab15ae82722496da04fb7b3b929d8cc2ca0"
+    },
+    {
+      "path": "code/tests/test_step6_4i_real_metrics_v1.py",
+      "bytes": 2127,
+      "sha256": "e26478ea171eeadde700f989374523a61cbdd1548e2195ffc0a506df64a3bcf6"
+    },
+    {
+      "path": "docs/contracts/PIJWM_STEP_06_4I_FORMAL_CLOSED_LOOP_PROTOCOL_DRAFT_V1.md",
+      "bytes": 10707,
+      "sha256": "887c52cd50f7d4f4ba1d81b59f78681867effe83478b3a05c3f048464ec06af3"
+    }
+  ],
+  "inventory_content_sha256": "10ef20f4413361d42cef18d3aae1d6b96509af8ce4c348da68cfb9646b61c851",
+  "raw_retained": true,
+  "persistent_storage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\protocols\\pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2",
+  "large_raw_committed": false,
+  "GPU": "NOT_USED",
+  "locked_test": false
+}

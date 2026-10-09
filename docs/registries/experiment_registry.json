@@ -3,6 +3,49 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "STEP-6.4I-PURE-SEARCH-PREPARATION-20261009",
+      "name": "Pure-search closed-loop CPU readiness",
+      "date": "2026-10-09",
+      "research_question": "Prepare real feedback S-CEM closed-loop interfaces without formal performance experiment",
+      "method": "S-CEM K4 rho0.2; accepted formalB512/H4; engineering smoke B64",
+      "code": "code/scripts/run_step6_4i_cpu_smoke_v1.py",
+      "code_version": {
+        "identity_type": "executed_filesystem_SHA256",
+        "git_commit": "10c70763c1aaf44b6be8ffa8b1051f11dd30dadc",
+        "manifest": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/01_fixture_and_execution_identity.json",
+        "note": "baseline commit; additive new interfaces identified by execution source hashes, not yet a formal GPU gate"
+      },
+      "configuration": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/11_accepted_working_config.json",
+      "parameters": {
+        "K": 4,
+        "rho": 0.2,
+        "accepted_budget": 512,
+        "engineering_budget": 64,
+        "engineering_batch": 1
+      },
+      "protocol": "docs/contracts/PIJWM_STEP_06_4I_FORMAL_CLOSED_LOOP_PROTOCOL_DRAFT_V1.md",
+      "data": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/01_fixture_and_execution_identity.json",
+      "split": [
+        "dev_train"
+      ],
+      "seed": [
+        6301
+      ],
+      "checkpoint": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "result": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/15_acceptance.json",
+      "metrics": null,
+      "audit": "code/artifacts/protocols/pi_jwm_step6_4i_closed_loop_readiness_v1_20261009_r2/15_acceptance.json",
+      "status": "passed_CPU_preparation_pending_protocol_review",
+      "conclusion": "CPU真实反馈与失败路径通过；正式CUDA资格和episode方案未批准",
+      "summary_zh": "CPU真实反馈与失败路径通过；正式CUDA资格和episode方案未批准",
+      "claim_boundary": "CPU mechanism only, not formalB512 performance; GPU provider not qualified",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "metrics": "No formal closed-loop performance; engine-only real2 winner steps and1 injected fallback step recorded in acceptance.",
+        "field_notes": "Not applicable for CPU preparation; no formal performance or remote GPU run."
+      }
+    },
+    {
       "id": "STEP-6.4H-S-CEM-BUDGET-20261008",
       "name": "S-CEM repaired-domain online budget qualification",
       "date": "2026-10-08",
