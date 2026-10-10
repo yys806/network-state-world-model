@@ -436,3 +436,6 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 ## 2026-09-30 STEP 6.3D-3080TI-MIGRATION-QUALIFICATION 当前状态
 
 `STEP_6_3D_3080TI_MIGRATION_QUALIFICATION=PASS`：正式 Dataset、60 条 Raw 和冻结 checkpoint 在 RTX 3080 Ti 上完成逐项身份验收；32 TRAIN / 64 Validation 锚点可加载。CPU/GPU 离散等价、CUDA formal runner 与 resume/config 身份、小规模 TRAIN HRS/S-CEM smoke 均通过。正式 FP32 batch16，短稳态中位 10.9154 unique transitions/s。正式 TRAIN tuning、Validation 比较、`locked_test` 未运行；4090 源未停机。future Return birth 固定支持限制仍在，`H4_SEARCH_COMPARISON_READINESS=SUPPORTED_WITH_MODEL_OBJECTIVE_SUPPORT_LIMITATION`。证据见 `docs/implementation_records/STEP_06_3D_3080TI_MIGRATION_QUALIFICATION.md` 和对应 `code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/`。下一步需研究者审阅。
+## 2026-10-10 STEP 6.4J — r29 GPU Pilot 预检 BLOCKED
+
+远端已精确 checkout 冻结 commit `93b3e806ee119545dd487fa6c7a8aa12a86c8390`，GPU/磁盘/无旧 runner 通过；但 deployment verifier 因 `step6_4i_episode_v1.py` source SHA 不一致而 FAIL（协议 `e3cc96...`，commit blob `8b1859...`）。远端还存在未跟踪 `step6_4j.bundle`，且运行时缺 `osmnx`、`traci`。未启动 GPU Pilot、未产生结果、locked_test=false。需研究者决定重新冻结一致身份和依赖处理，Codex 不绕过门禁。

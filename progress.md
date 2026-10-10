@@ -1612,3 +1612,6 @@ GPU扩样仍运行。新增100/272，总覆盖148/320；已创建本聊天heartb
 
 2026-10-08T14:44:40.900668+00:00 用户进度核验：293/320，原PID1615单runner；293 raw身份/SHA/预算/参数与source/checkpoint PASS，150016实际转移，无STOP；剩余搜索粗估1h（不含最终验收）。继续仅当前矩阵，locked_test=false。
 2026-10-09 STEP6.4J: Added explicit multi-episode S-CEM B512 Pilot runner, r3 protocol identity, atomic receipts and strict CUDA gates. CPU validation PASS; GPU not started.
+## 2026-10-10 STEP 6.4J — r29 GPU Pilot 预检 BLOCKED
+
+远端认证、端口、GPU（NVIDIA GeForce RTX 3080 Ti，CUDA 可用，显存约11.9GiB空闲）、磁盘约44GiB和无旧runner检查通过；精确 checkout 已到 `93b3e806ee119545dd487fa6c7a8aa12a86c8390`。部署 verifier FAIL：`SOURCE_SHA_MISMATCH`，协议期望 `step6_4i_episode_v1.py=e3cc96...`，提交 Git blob 为 `8b1859...`。远端还存在既有未跟踪 `step6_4j.bundle`，Python 3.12缺 `osmnx`/`traci`。未启动正式 Pilot，locked_test=false保持。当前阻塞是冻结协议、提交源码和远端运行依赖不一致；禁止继续搜索或绕过验证。

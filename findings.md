@@ -1630,3 +1630,11 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 
 2026-10-08T14:44:40.900668+00:00 用户进度核验：293/320，原PID1615单runner；293 raw身份/SHA/预算/参数与source/checkpoint PASS，150016实际转移，无STOP；剩余搜索粗估1h（不含最终验收）。继续仅当前矩阵，locked_test=false。
 2026-10-09 STEP6.4J: The previous freeze lacked a runnable Pilot entry point. The new runner wires LiveSCEMPlanner, EpisodeController, AirFogSim collection and real metric ledger; local CPU gates pass. Remote CUDA execution remains pending exact commit deployment.
+## 2026-10-10 STEP 6.4J — r29 GPU Pilot 预检证据
+
+- 远端 `connect.nmb2.seetacloud.com:35569` 认证和 TCP 握手成功。
+- HEAD 已精确检出 `93b3e806ee119545dd487fa6c7a8aa12a86c8390`；tracked 文件无 diff，但存在未跟踪 `step6_4j.bundle`。
+- GPU/资源：RTX 3080 Ti，CUDA 可用，约11.9GiB显存空闲，约44GiB可用磁盘，无旧 Pilot 进程。
+- `python code/scripts/verify_step6_4j_deployment_v1.py`：FAIL `SOURCE_SHA_MISMATCH:code/src/pi_jwm/step6_4i_episode_v1.py`。协议记录 `e3cc96d7...`，远端 checkout 文件 SHA256/Git blob对应 `8b185979...`。
+- 运行时 `/root/miniconda3/bin/python3.12` 的 Torch 2.8.0+cu128/CUDA可用，但 `osmnx` 和 `traci` 缺失。
+- 结论：BLOCKED/未执行；无 attempt、journal、decision 或备份结果。

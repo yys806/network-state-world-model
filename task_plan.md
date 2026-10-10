@@ -2050,3 +2050,6 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 - [x] 77 focused tests、compileall、diff check；未运行 GPU/Pilot/baseline/Hybrid/locked_test。
 - [x] CPU门、protocol audit、commit/push 已完成；READY_FOR_GPU_LAUNCH=true。
 - [ ] 研究者开启 GPU 后执行 `--execute --protocol ...r20/00_protocol.json`。
+## 2026-10-10 STEP 6.4J — r29 GPU Pilot 预检 BLOCKED
+
+研究者已授权执行冻结 r29 Pilot，但远端只读预检未通过，未启动 runner。远端已 fetch 并检出 `93b3e806ee119545dd487fa6c7a8aa12a86c8390`；3080 Ti/CUDA 可见、约44GiB磁盘、无旧 Pilot 进程。`verify_step6_4j_deployment_v1.py` 在远端失败：`SOURCE_SHA_MISMATCH:code/src/pi_jwm/step6_4i_episode_v1.py`，r29 记录 `e3cc96...`，冻结提交 Git blob 为 `8b1859...`。另有未跟踪 `/root/autodl-tmp/pi-jwm-step6-3d/step6_4j.bundle`，且 `/root/miniconda3/bin/python3.12` 缺 `osmnx`、`traci`。未执行搜索、未产生 Pilot 结果；不得绕过 verifier 或自动修复。下一步需研究者决定如何重新建立一致的冻结部署身份并补齐依赖。
