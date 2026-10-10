@@ -1,0 +1,62 @@
+{
+  "episodes": [
+    {
+      "trajectory_id": "formal-v1-sim-2026092326-policy-2026092426",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "simulator_seed": 2026092326,
+      "policy_seed": 2026092426,
+      "initial_frame": 29,
+      "initial_capture_event_id": "capture-058",
+      "initial_simulation_time_s": 5.2,
+      "raw_path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092326-policy-2026092426.json.gz",
+      "raw_sha256": "25db48bf1a2a889c98d213e8b5835f27373958389d56e6623127515ba18c1d9a",
+      "initial_task_ids": [
+        "Task_1",
+        "Task_10",
+        "Task_11",
+        "Task_12",
+        "Task_13",
+        "Task_14",
+        "Task_15",
+        "Task_16",
+        "Task_17",
+        "Task_18",
+        "Task_2",
+        "Task_25",
+        "Task_3",
+        "Task_33",
+        "Task_34",
+        "Task_35",
+        "Task_4",
+        "Task_42",
+        "Task_5",
+        "Task_6",
+        "Task_7",
+        "Task_8",
+        "Task_9"
+      ],
+      "initial_task_cohort_sha256": "6de77d262a1c9b9afae4e7542067196508172a5b4bf08d83294d47c62e6b9b9d",
+      "source_manifest_sha256": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e"
+    },
+    {
+      "trajectory_id": "formal-v1-sim-2026092318-policy-2026092418",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "simulator_seed": 2026092318,
+      "policy_seed": 2026092418,
+      "initial_frame": 6,
+      "initial_capture_event_id": "capture-012",
+      "initial_simulation_time_s": 1.8,
+      "raw_path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw/formal-v1-sim-2026092318-policy-2026092418.json.gz",
+      "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+      "initial_task_ids": [
+        "Task_5",
+        "Task_6",
+        "Task_7"
+      ],
+      "initial_task_cohort_sha256": "48edd2cff5c84777f53d9dac4cee865506f3fd6ecb9e76f289fa79935ff2fc4e",
+      "source_manifest_sha256": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e"
+    }
+  ],
+  "manifest_sha256": "aa7c1a0e065b2a73321e1b1478ed1968a671b732745abd37040d1cb5c094ba3e",
+  "selection_rule": "trajectory_id SHA256 UTF8 ascending; first static anchor frame per trajectory; no outcome use"
+}
