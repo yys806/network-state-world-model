@@ -525,3 +525,5 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 - STEP 6.4J r39 收口：新增 `docs/analysis/STEP_06_4J_H4_SCOREABILITY_ROOT_CAUSE_AUDIT_20261010.md` 与实施记录。记录真实 GPU 闭环 `COMPLETED`，并明确 16/16 搜索无 scoreable H4、全部 `FALLBACK_A`，搜索优化有效性 `NOT_ESTABLISHED`。
 - 只读审计确认 fixed-support future Return-birth 为源码硬边界；保留逐候选 rejection ledger 证据缺口。未启动新实验或修改科学算法。
 
+
+- 2026-10-10 STEP 6.4J 精确诊断：独立统计纠正为 3744 个完整 H4 完成事件（非去重 candidate），3064 dead-end、0 scoreable；两个代表 root CPU rejection-ledger 异常耗时无产出，未将条件诊断冒充 r39 逐候选复核。

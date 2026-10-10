@@ -437,5 +437,4 @@ CPU-only 单条 Formal Validation deterministic replay 与当前 4.4 规则负�
 2026-09-30：`STEP_6_3D_3080TI_MIGRATION_QUALIFICATION=PASS`，仅为迁移、FP32 GPU 等价、batch 探针和 bounded TRAIN smoke。batch 8/16/32/64 中位分别 10.3593/10.9154/12.4562/12.6699 unique transitions/s；正式选 batch16，因为 CEM K4/B256 在 32/64 没有完整 H4。完整矩阵与 Validation 方法比较未运行，未选搜索方法、未访问 `locked_test`。
 ## 2026-10-10 STEP 6.4J r39 结果
 
-原始结果位于 `code/artifacts/backups/step6_4j_r39/pilot_results/`，execution config 为 `74535bbe2bd07260c840666dd2fd0b68190e4800dba7159a83d485d9a2632cfc`。两 episode 各 8 决策；每次 B512/512 unique transitions；第一条每步 344 complete、0 dead-end，第二条每步 124 complete、383 dead-end；合计 468 complete、3064 dead-end、0 scoreable。工程 `COMPLETED`，搜索优化 `NOT_ESTABLISHED`。
-
+原始结果位于 `code/artifacts/backups/step6_4j_r39/pilot_results/`，execution config 为 `74535bbe2bd07260c840666dd2fd0b68190e4800dba7159a83d485d9a2632cfc`。两 episode 各 8 决策；每次 B512/512 unique transitions；第一条每步 344 complete、0 dead-end，第二条每步 124 complete、383 dead-end；合计 3744 complete、3064 dead-end、0 scoreable。工程 `COMPLETED`，搜索优化 `NOT_ESTABLISHED`。

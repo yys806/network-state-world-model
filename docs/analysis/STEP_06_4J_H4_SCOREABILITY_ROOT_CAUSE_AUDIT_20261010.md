@@ -4,7 +4,7 @@
 
 r39 的工程闭环已经完成：两条 live episode 各执行 8 次决策，共 16/16 次 B512 搜索、16 次真实 `env.step`，原始结果、独立审计、27/27 文件 SHA、ZIP 与本地 D: 备份一致，`independent_acceptance.json` 为 `COMPLETED/0`。这只证明真实 GPU 闭环机制和证据链可运行，不是优化性能 PASS。
 
-16/16 次搜索均为 `FALLBACK_A`，原因均记录为 `NO_SCOREABLE_H4`；468 个完整 H4（344×8 + 124×8）全部未进入可评分集合。第一条 episode 每步没有 dead-end，第二条每步有 383 个 dead-end；两条都完成了 H4 候选，因此“候选域为空”不能解释全部结果。当前最有证据的解释是固定支持边界，尤其源码中的 `UNSUPPORTED_FUTURE_RETURN_BIRTH`；但 r39 没有保存逐候选拒绝原因，不能断言 468 个 H4 全部由这一条拒绝。
+16/16 次搜索均为 `FALLBACK_A`，原因均记录为 `NO_SCOREABLE_H4`；**3744 个完整 H4 完成事件**（344×8 + 124×8）全部未进入可评分集合。3744 是完成事件次数，不是去重后的 candidate 数。第一条 episode 每步没有 dead-end，第二条每步有 383 个 dead-end；两条都完成了 H4 候选，因此“候选域为空”不能解释全部结果。当前最有证据的解释是固定支持边界，尤其源码中的 `UNSUPPORTED_FUTURE_RETURN_BIRTH`；但 r39 没有保存逐候选拒绝原因，不能断言 3744 个 H4 全部由这一条拒绝。
 
 ## Observation：原始结果说明了什么
 
@@ -14,7 +14,7 @@ r39 的工程闭环已经完成：两条 live episode 各执行 8 次决策，�
 |---|---:|---:|---:|---:|---:|---|
 | `...2318...2418` | 8 | 512 | 344 | 0 | 0 | `FALLBACK_A / NO_SCOREABLE_H4` |
 | `...2326...2426` | 8 | 512 | 124 | 383 | 0 | `FALLBACK_A / NO_SCOREABLE_H4` |
-| 合计 | 16 | 8192 | 468 | 3064 | 0 | 16/16 `FALLBACK_A` |
+| 合计 | 16 | 8192 | 3744 | 3064 | 0 | 16/16 `FALLBACK_A` |
 
 这些数字可在各 episode 的 `decision_*.json` 的 `budget_receipt`、`h4_scoreable_count`、`best_fingerprint` 和 `fallback_reason` 字段复核；`pilot_attempt.json` 还记录 16 次、每次 512 次 unique transition、16 次真实环境步进，`actual_action_history_aligned=true`，每条 episode 有 8 个 distinct root。
 
@@ -47,7 +47,7 @@ r39 的工程闭环已经完成：两条 live episode 各执行 8 次决策，�
 
 ## 证据缺口与最小验证方案（Proposal）
 
-最小验证不是扩大正式实验，而是在本地 CPU 对已有 r39 的 468 个完整 H4 做只读重放，逐候选输出：`candidate_fingerprint`、首个不支持 horizon、具体 reason、cohort size、Route mapping 检查、finite/field 检查及 H_eff。它可以区分：
+最小验证不是扩大正式实验，而是在本地 CPU 对两个代表性 root 做条件相近的只读重放，逐候选输出：`candidate_fingerprint`、首个不支持 horizon、具体 reason、cohort size、Route mapping 检查、finite/field 检查及 H_eff。本轮两次 CPU 尝试均异常耗时且无输出，不能用新 reason 频率代表原 r39。未来若诊断可运行，它可以区分：
 
 - 若几乎全部为 `UNSUPPORTED_FUTURE_RETURN_BIRTH`：固定支持边界是主因；
 - 若主要为 pending-flow/Route mapping：live action-to-trace 支持不一致是主因；

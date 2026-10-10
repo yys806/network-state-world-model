@@ -2965,4 +2965,3 @@ Formal Dataset v1 已按研究者冻结协议构建并通过机器验收：H=2�
 ## 2026-10-10 STEP 6.4J 结果边界
 
 本轮必须区分两条结论：真实 GPU 闭环工程机制 `COMPLETED`；16/16 B512 搜索无 scoreable H4、全部 `FALLBACK_A`，搜索优化有效性 `NOT_ESTABLISHED`。源码确认 fixed-support future Return-birth 可使 `H_eff<4`，但 r39 没有 candidate-level rejection reason，不能把该边界写成 468 个候选的逐条证明。该差异不构成已确认实现错误，也不支持直接扩大正式实验。
-

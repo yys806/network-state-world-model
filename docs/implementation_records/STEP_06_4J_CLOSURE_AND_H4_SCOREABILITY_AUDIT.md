@@ -18,7 +18,7 @@ r39 原始备份位于 `code/artifacts/backups/step6_4j_r39/`，execution config
 
 ## Changes
 
-只新增审计报告和项目记录，明确区分工程 `COMPLETED` 与搜索优化 `NOT_ESTABLISHED`；记录 16/16 `FALLBACK_A`、468 个完整 H4、3064 个 dead-end、0 个 scoreable H4，以及 fixed-support future Return-birth 的已知边界和逐候选证据缺口。未改科学源码、配置、原始结果或备份。
+只新增审计报告和项目记录，明确区分工程 `COMPLETED` 与搜索优化 `NOT_ESTABLISHED`；记录 16/16 `FALLBACK_A`、3744 个完整 H4 完成事件、3064 个 dead-end、0 个 scoreable H4，以及 fixed-support future Return-birth 的已知边界和逐候选证据缺口。未改科学源码、配置、原始结果或备份。
 
 ## Reuse
 
@@ -33,7 +33,7 @@ r39 原始备份位于 `code/artifacts/backups/step6_4j_r39/`，execution config
 
 ## Results
 
-工程机制：`COMPLETED`。科研搜索：16/16 无 scoreable H4，全部 `FALLBACK_A`，搜索优化有效性 `NOT_ESTABLISHED`。fixed-support 是高可信候选根因，但不是对 468 个候选的逐条证明；当前没有实现错误的证据。
+工程机制：`COMPLETED`。科研搜索：16/16 无 scoreable H4，全部 `FALLBACK_A`，搜索优化有效性 `NOT_ESTABLISHED`。fixed-support 是高可信候选根因，但不是对 3744 个完成事件的逐条证明；当前没有实现错误的证据。
 
 ## Expected vs Actual
 

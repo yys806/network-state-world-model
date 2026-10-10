@@ -447,5 +447,4 @@ r35 跨平台部署修复和远端预检通过，正式 runner 唯一启动一�
 远端已安装 SUMO 1.12.0，真实 AirFogSim/TraCI 环境预检通过（正式地图/config，仿真时间0.0→0.1s，清理无孤儿进程）。r36 正式 runner 唯一启动后，在首条轨迹初始化期间持续出现 `Retrieval of a route requires five parameter`，无B512搜索、无env.step；已停止 runner。独立审计为 `BLOCKED/1`，0/16搜索，资格FAIL。完整日志和失败证据已备份到 D:，locked_test=false。后续需研究者决定是否研究 SUMO版本与路由调用兼容性后另行冻结。
 ## 2026-10-10 STEP 6.4J r39 收口
 
-r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 闭环工程验收：16/16 B512 搜索、16 次真实 `env.step`、独立审计 `COMPLETED/0`。科研结论单独记录为：468 个完整 H4 中 0 个 scoreable，16/16 `FALLBACK_A / NO_SCOREABLE_H4`，搜索优化有效性 `NOT_ESTABLISHED`。fixed-support future Return-birth 是源码确认的候选主因，但逐候选 rejection ledger 缺失。GPU 不再保持运行，远端电源/计费待研究者手动核对；`locked_test=false`。详情见 `docs/analysis/STEP_06_4J_H4_SCOREABILITY_ROOT_CAUSE_AUDIT_20261010.md`。
-
+r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 闭环工程验收：16/16 B512 搜索、16 次真实 `env.step`、独立审计 `COMPLETED/0`。科研结论单独记录为：3744 个完整 H4 完成事件 中 0 个 scoreable，16/16 `FALLBACK_A / NO_SCOREABLE_H4`，搜索优化有效性 `NOT_ESTABLISHED`。fixed-support future Return-birth 是源码确认的候选主因，但逐候选 rejection ledger 缺失。GPU 不再保持运行，远端电源/计费待研究者手动核对；`locked_test=false`。详情见 `docs/analysis/STEP_06_4J_H4_SCOREABILITY_ROOT_CAUSE_AUDIT_20261010.md`。
