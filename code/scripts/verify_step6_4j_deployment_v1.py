@@ -32,7 +32,7 @@ def verify_bundle(bundle_root, proto):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--bundle-root',type=Path,default=ROOT);ap.add_argument('--protocol',type=Path);a=ap.parse_args()
-    proto=Path(args.protocol) if args.protocol else next(a.bundle_root.glob('code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_*_r30/00_protocol.json'),None)
+    proto=Path(a.protocol) if a.protocol else next(a.bundle_root.glob('code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_*_r30/00_protocol.json'),None)
     if proto is None: raise SystemExit('FROZEN_R30_PROTOCOL_MISSING')
     print(json.dumps(verify_bundle(a.bundle_root,proto),ensure_ascii=False))
 if __name__=='__main__': main()
