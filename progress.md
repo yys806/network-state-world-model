@@ -1615,3 +1615,6 @@ GPU扩样仍运行。新增100/272，总覆盖148/320；已创建本聊天heartb
 ## 2026-10-10 STEP 6.4J — r29 GPU Pilot 预检 BLOCKED
 
 远端认证、端口、GPU（NVIDIA GeForce RTX 3080 Ti，CUDA 可用，显存约11.9GiB空闲）、磁盘约44GiB和无旧runner检查通过；精确 checkout 已到 `93b3e806ee119545dd487fa6c7a8aa12a86c8390`。部署 verifier FAIL：`SOURCE_SHA_MISMATCH`，协议期望 `step6_4i_episode_v1.py=e3cc96...`，提交 Git blob 为 `8b1859...`。远端还存在既有未跟踪 `step6_4j.bundle`，Python 3.12缺 `osmnx`/`traci`。未启动正式 Pilot，locked_test=false保持。当前阻塞是冻结协议、提交源码和远端运行依赖不一致；禁止继续搜索或绕过验证。
+## 2026-10-10 STEP 6.4J — r35 GPU Pilot BLOCKED
+
+最终工程修复提交链：`8f54555`、`ea09374`、`5c216f9`、`c5e4928`、`4fb3c2f`、`2d280b1`、`af95a01`、`356043a`、`70ed7ce`。r35 protocol execution_config_id=`7817c372031c51db31c412d1d8580653d25fcb82218540a39b114992ff5e1d16`，source_git_commit=`356043ad...`。远端预检全 PASS，正式 runner 唯一一次启动；首条真实环境创建因 `FileNotFoundError: sumo` 失败，状态 `BLOCKED/1`。独立审计：planned=16，attempted_searches=0，step_attempt_count=0，env_step_count=0，qualification=FAIL。未进入第二 episode、未重试、未修改算法。远端与本地 D: 备份均已保存，locked_test=false。

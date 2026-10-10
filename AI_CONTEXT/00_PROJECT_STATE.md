@@ -439,3 +439,6 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 ## 2026-10-10 STEP 6.4J — r29 GPU Pilot 预检 BLOCKED
 
 远端已精确 checkout 冻结 commit `93b3e806ee119545dd487fa6c7a8aa12a86c8390`，GPU/磁盘/无旧 runner 通过；但 deployment verifier 因 `step6_4i_episode_v1.py` source SHA 不一致而 FAIL（协议 `e3cc96...`，commit blob `8b1859...`）。远端还存在未跟踪 `step6_4j.bundle`，且运行时缺 `osmnx`、`traci`。未启动 GPU Pilot、未产生结果、locked_test=false。需研究者决定重新冻结一致身份和依赖处理，Codex 不绕过门禁。
+## 2026-10-10 STEP 6.4J — r35 GPU Pilot BLOCKED
+
+r35 跨平台部署修复和远端预检通过，正式 runner 唯一启动一次；首条真实 AirFogSim 环境构造因缺少 `sumo` 可执行文件立即停止。独立审计为 `BLOCKED/1`：0/16 搜索、0 次 CUDA 资格决策、0 次 env.step；未重试、未启动第二 episode。原始失败证据和 ZIP 已备份到 D:，locked_test=false。当前不能声称 Pilot 机制或性能通过；后续是否补齐 SUMO并重新冻结需研究者决定。

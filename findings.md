@@ -1638,3 +1638,11 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 - `python code/scripts/verify_step6_4j_deployment_v1.py`：FAIL `SOURCE_SHA_MISMATCH:code/src/pi_jwm/step6_4i_episode_v1.py`。协议记录 `e3cc96d7...`，远端 checkout 文件 SHA256/Git blob对应 `8b185979...`。
 - 运行时 `/root/miniconda3/bin/python3.12` 的 Torch 2.8.0+cu128/CUDA可用，但 `osmnx` 和 `traci` 缺失。
 - 结论：BLOCKED/未执行；无 attempt、journal、decision 或备份结果。
+## 2026-10-10 STEP 6.4J — r35 GPU Pilot 独立结果
+
+- 跨平台修复：协议源码 SHA 绑定最终 Git blob 字节；r35 远端 verifier PASS，GPU/依赖/真实 AirFogSim scheduler 导入 PASS。
+- 正式 runner 仅启动一次。首 episode 环境构造调用 SUMO 时失败：`FileNotFoundError: [Errno 2] No such file or directory: 'sumo'`。
+- 原始结果：`BLOCKED`，exit code 1；搜索 0/16，真实 env.step 0，首轮 CUDA qualification 未通过，第二 episode 未启动。
+- 独立磁盘审计：`BLOCKED/1`，`attempted_searches=0`，`step_attempt_count=0`，`env_step_count=0`。
+- 本地备份：`code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r35/pilot_results_remote_backup/`；原始 attempt、episode failure、audit、ZIP 已保存。逐文件 SHA 除 manifest 自引用项外一致；manifest 自身不作为可自证 SHA。
+- 科研边界：无 B512 结果、无 scoreability、无 winner/fallback、无 Deadline/Delay/Throughput 诊断，不能推出性能结论。

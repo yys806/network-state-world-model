@@ -2053,3 +2053,6 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 ## 2026-10-10 STEP 6.4J — r29 GPU Pilot 预检 BLOCKED
 
 研究者已授权执行冻结 r29 Pilot，但远端只读预检未通过，未启动 runner。远端已 fetch 并检出 `93b3e806ee119545dd487fa6c7a8aa12a86c8390`；3080 Ti/CUDA 可见、约44GiB磁盘、无旧 Pilot 进程。`verify_step6_4j_deployment_v1.py` 在远端失败：`SOURCE_SHA_MISMATCH:code/src/pi_jwm/step6_4i_episode_v1.py`，r29 记录 `e3cc96...`，冻结提交 Git blob 为 `8b1859...`。另有未跟踪 `/root/autodl-tmp/pi-jwm-step6-3d/step6_4j.bundle`，且 `/root/miniconda3/bin/python3.12` 缺 `osmnx`、`traci`。未执行搜索、未产生 Pilot 结果；不得绕过 verifier 或自动修复。下一步需研究者决定如何重新建立一致的冻结部署身份并补齐依赖。
+## 2026-10-10 STEP 6.4J — r35 GPU Pilot BLOCKED
+
+已修复跨平台 Git blob SHA 绑定并冻结 r35，远端重新 checkout、部署 verifier、CUDA/FP32/batch16、Torch、osmnx、traci、AirFogSim scheduler、磁盘和空 namespace 全部 PASS。正式 runner 启动后在首条冻结轨迹创建真实 AirFogSim 环境时因远端缺少 `sumo` 可执行文件立即 BLOCKED；0 次 B512 搜索、0 次 CUDA 资格决策、0 次真实 env.step。未补装 SUMO重跑，未resume，未启动第二 runner。独立审计为 BLOCKED/1，原始 attempt、episode_failure、audit、ZIP、per-file SHA 已远端和本地备份。下一步需研究者决定是否另行授权补齐 SUMO 后重新冻结/重跑；本轮停止。
