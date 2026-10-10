@@ -852,6 +852,7 @@ protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r32,protocols,CPU_PROTOCOL
 protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r33,protocols,CPU_PROTOCOL_FROZEN_GPU_NOT_STARTED,,S-CEM,,2,8529,1791630022523941700,,,,,
 protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r34,protocols,CPU_PROTOCOL_FROZEN_GPU_NOT_STARTED,,S-CEM,,2,8529,1791630470815773900,,,,,
 protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r35,protocols,CPU_PROTOCOL_FROZEN_GPU_NOT_STARTED,,S-CEM,,7,18501,1791631621201328900,,,,,
+protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r36,protocols,CPU_PROTOCOL_FROZEN_GPU_NOT_STARTED,,S-CEM,,10,337828514,1791634260843412300,,,,,
 reports/governance_verification_20260711,reports,unclassified,,,,8,194890,1783786264608671500,,,,,
 reports/pi_jwm_energy_reward_diagnostic_20260713,reports,unclassified,,,,22,471265,1783940743787580000,,,,,
 reports/pi_jwm_energy_reward_horizon_study_20260713,reports,unclassified,,,,54,2203267,1784187683859877300,,,,,

@@ -1646,3 +1646,11 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 - 独立磁盘审计：`BLOCKED/1`，`attempted_searches=0`，`step_attempt_count=0`，`env_step_count=0`。
 - 本地备份：`code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r35/pilot_results_remote_backup/`；原始 attempt、episode failure、audit、ZIP 已保存。逐文件 SHA 除 manifest 自引用项外一致；manifest 自身不作为可自证 SHA。
 - 科研边界：无 B512 结果、无 scoreability、无 winner/fallback、无 Deadline/Delay/Throughput 诊断，不能推出性能结论。
+## 2026-10-10 STEP 6.4J — r36 SUMO 环境与 Pilot 证据
+
+- SUMO：Ubuntu 22.04 官方 apt `sumo`/`sumo-tools` 1.12.0；`/usr/bin/sumo`；`SUMO_HOME=/usr/share/sumo`。
+- 真实环境门：使用正式 `sumo_wujiaochang/osm.sumocfg` 和 AirFogSim `_build_environment`，TraCI连接 PASS，仿真时间 `0.0 -> 0.1s`，关闭后无孤儿进程。
+- 正式 runner：唯一启动；首个 episode 初始化期间 SUMO 持续报 `Retrieval of a route requires five parameter`，约4.5分钟无进展，未进入 Planner。
+- 独立结果：`BLOCKED/1`，qualification FAIL，`attempted_searches=0`，`env_step_count=0`，`step_attempt_count=0`，两 episode决策数均0。
+- 原始证据和本地备份：r36 `pilot_attempt.json`、`pilot_stdout.log`（约336MB）、`stop_receipt.json`、`environment_preflight_receipt.json`、`environment_install_receipt.txt`、`independent_audit.json`、ZIP。ZIP远端/本地 SHA=`6a0ae775cbec8d6bcec8e637cdae3b96fd6d69b6c08d74c8bb9c4fe39133177d`。
+- SHA限制：per-file清单自身自引用，且日志位于包根而清单按结果子目录记录，故清单中两项不能直接作为逐文件自证；核心 audit/attempt/stop receipt与ZIP哈希一致。

@@ -1618,3 +1618,6 @@ GPU扩样仍运行。新增100/272，总覆盖148/320；已创建本聊天heartb
 ## 2026-10-10 STEP 6.4J — r35 GPU Pilot BLOCKED
 
 最终工程修复提交链：`8f54555`、`ea09374`、`5c216f9`、`c5e4928`、`4fb3c2f`、`2d280b1`、`af95a01`、`356043a`、`70ed7ce`。r35 protocol execution_config_id=`7817c372031c51db31c412d1d8580653d25fcb82218540a39b114992ff5e1d16`，source_git_commit=`356043ad...`。远端预检全 PASS，正式 runner 唯一一次启动；首条真实环境创建因 `FileNotFoundError: sumo` 失败，状态 `BLOCKED/1`。独立审计：planned=16，attempted_searches=0，step_attempt_count=0，env_step_count=0，qualification=FAIL。未进入第二 episode、未重试、未修改算法。远端与本地 D: 备份均已保存，locked_test=false。
+## 2026-10-10 STEP 6.4J — r36 SUMO 预检 PASS / 正式 Pilot BLOCKED
+
+SUMO缺失已修复：远端 Ubuntu 22.04 apt 安装 `sumo`/`sumo-tools` 1.12.0，`SUMO_HOME=/usr/share/sumo`，traci/sumolib/osmnx兼容导入通过。新增真实环境预检：正式 `sumo_wujiaochang/osm.sumocfg`、AirFogSimEnv、TraCI、仿真时间0.0→0.1s和清理均PASS。r36 execution_config_id=`64df24790c06c96dc07937131c40d9fd97bc71b49b39469a20d9325e4a9eafb1`。正式唯一runner进入真实环境后持续出现 SUMO `Retrieval of a route requires five parameter`，无搜索/无env.step，已SIGTERM停止。独立审计 BLOCKED/1；完整日志、环境receipt、版本、stop receipt、ZIP及SHA已远端与本地D:备份。不得继续重跑。

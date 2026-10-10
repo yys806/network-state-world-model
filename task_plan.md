@@ -2056,3 +2056,6 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 ## 2026-10-10 STEP 6.4J — r35 GPU Pilot BLOCKED
 
 已修复跨平台 Git blob SHA 绑定并冻结 r35，远端重新 checkout、部署 verifier、CUDA/FP32/batch16、Torch、osmnx、traci、AirFogSim scheduler、磁盘和空 namespace 全部 PASS。正式 runner 启动后在首条冻结轨迹创建真实 AirFogSim 环境时因远端缺少 `sumo` 可执行文件立即 BLOCKED；0 次 B512 搜索、0 次 CUDA 资格决策、0 次真实 env.step。未补装 SUMO重跑，未resume，未启动第二 runner。独立审计为 BLOCKED/1，原始 attempt、episode_failure、audit、ZIP、per-file SHA 已远端和本地备份。下一步需研究者决定是否另行授权补齐 SUMO 后重新冻结/重跑；本轮停止。
+## 2026-10-10 STEP 6.4J — r36 SUMO 环境门与 GPU Pilot BLOCKED
+
+已在远端安装 Ubuntu 22.04 官方 SUMO 1.12.0，并将真实 AirFogSim/SUMO 创建、TraCI 连接、0.1s推进和清理固化为 `preflight_step6_4j_sumo_v1.py`。r36 协议/源码部署验收和真实环境预检均 PASS。正式 runner 唯一启动后，SUMO 持续报 `Retrieval of a route requires five parameter`，约4.5分钟无任何搜索或env.step进展；按异常停止规则终止唯一 runner。独立审计 BLOCKED/1，0/16搜索、0次env.step、资格FAIL。r35/r36均保留原始证据，未resume、未重试、未修改科学语义。本轮停止，后续需研究者决定是否授权调查SUMO 1.12与项目路由调用兼容性并重新冻结。

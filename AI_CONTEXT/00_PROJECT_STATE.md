@@ -442,3 +442,6 @@ Unverified：当前没有“最终 PI-JWM 方法已冻结”或“正式性能�
 ## 2026-10-10 STEP 6.4J — r35 GPU Pilot BLOCKED
 
 r35 跨平台部署修复和远端预检通过，正式 runner 唯一启动一次；首条真实 AirFogSim 环境构造因缺少 `sumo` 可执行文件立即停止。独立审计为 `BLOCKED/1`：0/16 搜索、0 次 CUDA 资格决策、0 次 env.step；未重试、未启动第二 episode。原始失败证据和 ZIP 已备份到 D:，locked_test=false。当前不能声称 Pilot 机制或性能通过；后续是否补齐 SUMO并重新冻结需研究者决定。
+## 2026-10-10 STEP 6.4J — r36 SUMO 预检 PASS / GPU Pilot BLOCKED
+
+远端已安装 SUMO 1.12.0，真实 AirFogSim/TraCI 环境预检通过（正式地图/config，仿真时间0.0→0.1s，清理无孤儿进程）。r36 正式 runner 唯一启动后，在首条轨迹初始化期间持续出现 `Retrieval of a route requires five parameter`，无B512搜索、无env.step；已停止 runner。独立审计为 `BLOCKED/1`，0/16搜索，资格FAIL。完整日志和失败证据已备份到 D:，locked_test=false。后续需研究者决定是否研究 SUMO版本与路由调用兼容性后另行冻结。
