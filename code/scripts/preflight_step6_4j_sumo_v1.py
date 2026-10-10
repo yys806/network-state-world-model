@@ -43,8 +43,9 @@ def run(receipt_path: Path, episodes: list[dict]) -> dict:
                     return
                 decision = decisions[-1]
                 connection = getattr(env, "traci_connection", None)
-                if connection is None or not connection.isConnected():
+                if connection is None:
                     raise RuntimeError("PREFLIGHT_TRACI_DISCONNECTED_AT_ROOT")
+                traci_server_version = connection.getVersion()
                 row = {
                     "trajectory_id": item["trajectory_id"],
                     "simulator_seed": int(item["simulator_seed"]),
@@ -58,6 +59,7 @@ def run(receipt_path: Path, episodes: list[dict]) -> dict:
                     "decision_fields": sorted(decision),
                     "history_present": hasattr(env, "History"),
                     "traci_connected_at_root": True,
+                    "traci_server_version": traci_server_version,
                     "wm_searches": 0,
                 }
                 observed.update(row)
