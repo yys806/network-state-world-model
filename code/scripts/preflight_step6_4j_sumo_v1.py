@@ -13,6 +13,12 @@ def run(receipt_path: Path, seed: int = 2026092326) -> dict:
                "cwd": str(Path.cwd()), "config": "sumo_wujiaochang/osm.sumocfg"}
     env = None
     try:
+        import traci, sumolib
+        receipt.update(traci_version=getattr(traci, "__version__", None),
+                       traci_path=str(getattr(traci, "__file__", "")),
+                       sumolib_path=str(getattr(sumolib, "__file__", "")))
+        if receipt["traci_version"] not in (None, "1.12.0"):
+            raise RuntimeError(f"SUMO_TRACI_VERSION_MISMATCH: expected=1.12.0 actual={receipt['traci_version']}")
         from run_p2_single_step_collector_preflight_v1 import _build_environment
         env, *_ = _build_environment(seed, 5.0)
         receipt.update(status="CREATED", simulation_time_s=float(env.simulation_time),
