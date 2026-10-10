@@ -10,7 +10,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r35"
+OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r36"
 sys.path[:0] = [str(ROOT / "code/src"), str(ROOT / "code/scripts")]
 os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 if hasattr(sys.stdout, "reconfigure"):
@@ -95,6 +95,11 @@ def load_protocol(path: Path) -> dict:
         raise RuntimeError("PILOT_SCOPE_MISMATCH")
     from verify_step6_4j_deployment_v1 import verify_bundle
     verify_bundle(ROOT, path)
+    os.environ.setdefault("SUMO_HOME", "/usr/share/sumo")
+    from preflight_step6_4j_sumo_v1 import run as sumo_preflight
+    preflight = sumo_preflight(OUT / "environment_preflight_receipt.json")
+    if preflight.get("status") != "STEPPED" or not preflight.get("traci_connected"):
+        raise RuntimeError("SUMO_AIRFOGSIM_PREFLIGHT_FAILED")
     return cfg
 
 
