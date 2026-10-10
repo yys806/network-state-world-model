@@ -8705,7 +8705,8 @@
         "scripts.collect_step5_5_formal_raw_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
         "scripts.run_step6_4i_cpu_smoke_v1",
-        "scripts.step6_4i_live_planner_v1"
+        "scripts.step6_4i_live_planner_v1",
+        "scripts.verify_step6_4j_deployment_v1"
       ],
       "lifecycle_status": "support",
       "module": "scripts.run_step6_4j_pilot_v1",
@@ -10106,7 +10107,9 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "scripts.run_step6_4j_pilot_v1"
+      ],
       "imports": [],
       "lifecycle_status": "support",
       "module": "scripts.verify_step6_4j_deployment_v1",

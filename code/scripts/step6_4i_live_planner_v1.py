@@ -57,7 +57,7 @@ class LiveSCEMPlanner:
    if device!='cuda' or not approved_execution or any(approved_execution.get(k)!=v for k,v in expected.items()):raise PermissionError('formal GPU execution identity/authorization pending')
    self.budget=512;self.batch=16
   self.model=model;self.encoder=encoder;self.stats=stats;self.template=slot_template;self.catalog=catalog;self.protocol=protocol;self.device=device
- def plan(self,raw,env,runtime_tasks,*,seed):
+ def plan(self,raw,env,runtime_tasks,*,seed,budget_progress=None):
   before=float(env.simulation_time);current=raw['decisions'][-1]
   sample,tensor,ginput=history_tensor(raw,self.stats,self.template)
   state,gstate=build_state(tensor,ginput,0,wired_edges=FORMAL_V1_WIRED_EDGES)
@@ -77,11 +77,19 @@ class LiveSCEMPlanner:
    prepared=prepare_anchor(self.model,self.encoder,_to_device(_torch_tree(tensor),device),_to_device(_torch_tree(ginput),device),_to_device(state,device),_to_device(gstate,device),context,operational,provenance)
    if self.device=='cuda':
     prepared=offload_prepared_anchor(prepared)
-    one=lambda n,b:gpu_transition_one_with_cpu_storage(self.model,context,operational,n,b)
-    batch=lambda requests:gpu_transition_batch_with_cpu_storage(self.model,context,operational,requests)
+    def one(n,b):
+     if budget_progress:budget_progress(1)
+     return gpu_transition_one_with_cpu_storage(self.model,context,operational,n,b)
+    def batch(requests):
+     if budget_progress:budget_progress(len(requests))
+     return gpu_transition_batch_with_cpu_storage(self.model,context,operational,requests)
    else:
-    one=lambda n,b:rollout_one_step(self.model,context,operational,n.latent,n.state,n.graph,n.mobility_control,b)
-    batch=lambda requests:rollout_one_step_batch(self.model,context,operational,requests)
+    def one(n,b):
+     if budget_progress:budget_progress(1)
+     return rollout_one_step(self.model,context,operational,n.latent,n.state,n.graph,n.mobility_control,b)
+    def batch(requests):
+     if budget_progress:budget_progress(len(requests))
+     return rollout_one_step_batch(self.model,context,operational,requests)
    result=solve_fixed_budget(method='S-CEM',seed=seed,b_wm=self.budget,iterations=4,elite_ratio=.2,batch_size=self.batch,anchor=prepared,catalog=self.catalog,transition=one,transition_batch=batch,score_h4=score)
   if float(env.simulation_time)!=before:raise SmokeFailure('SIMULATION_ADVANCED_DURING_PLANNING')
   predicted=None if result.best_fingerprint not in traces else fingerprint(traces[result.best_fingerprint].states[0])

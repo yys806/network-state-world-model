@@ -7,6 +7,7 @@ def main():
     assert rec['status']=='ENGINEERING_PASS' and rec['engineering_checks']['env_step_count']==4
     files=sorted(a.root.rglob('decision_*.json'))
     assert len(files)==4
+    assert rec['searches']==4 and len(rec['search_attempts'])==4
     comm_nonempty=comp_nonempty=outcome_ok=history_ok=0
     for p in files:
         row=json.loads(p.read_text(encoding='utf-8'));assert row['status']=='EXECUTED' and row['environment_step_attempted']
@@ -19,6 +20,11 @@ def main():
         for e in hist['comp']['entries']: assert isinstance(e['task_id'],str) and isinstance(e['node_id'],str) and float(e['allocated_cpu_per_s'])>=0
         for e in hist['mobility']['entries']: assert isinstance(e['uav_id'],str) and all(isinstance(float(e[k]),float) for k in ('azimuth_rad','elevation_rad','speed_mps'))
         comm_nonempty += int(bool(hist['comm']['entries']));comp_nonempty += int(bool(hist['comp']['entries']));history_ok += 1;outcome_ok += 1
+    for episode_dir in sorted(p.parent for p in files):
+        journal=episode_dir/'journal.jsonl'; assert journal.exists()
+        events=[json.loads(line) for line in journal.read_text(encoding='utf-8').splitlines() if line.strip()]
+        assert any(e.get('event')=='FINAL_DECISION' for e in events)
+        assert sum(e.get('event')=='FINAL_DECISION' for e in events)==len(list(episode_dir.glob('decision_*.json')))
     assert history_ok==4 and outcome_ok==4
     print(json.dumps({'verdict':'PASS','decision_receipts':4,'env_steps':4,'comm_nonempty_steps':comm_nonempty,'comp_nonempty_steps':comp_nonempty,'history_field_alignment':'PASS','real_outcome_alignment':'PASS'},ensure_ascii=False))
 if __name__=='__main__': main()

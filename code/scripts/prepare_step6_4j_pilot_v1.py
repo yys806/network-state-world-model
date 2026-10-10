@@ -3,7 +3,7 @@ import argparse,hashlib,json,gzip
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 MAN=ROOT/'code/artifacts/protocols/pi_jwm_step6_3d_fixed_budget_search_v1_20260929/16_validation_anchor_manifest_objective_eligible.json'
-OUT=ROOT/'code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r23'
+OUT=ROOT/'code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r27'
 RAW=ROOT/'code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/raw'
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
