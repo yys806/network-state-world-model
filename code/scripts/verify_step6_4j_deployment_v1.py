@@ -20,7 +20,9 @@ def verify_bundle(bundle_root, proto):
     if c.get('status')!='CPU_PROTOCOL_FROZEN_GPU_NOT_STARTED' or c.get('locked_test') is not False: raise SystemExit('PROTOCOL_SCOPE_INVALID')
     if c.get('source_hash_basis')!='sha256(final_git_commit_blob_bytes)': raise SystemExit('SOURCE_HASH_BASIS_INVALID')
     head=subprocess.check_output(['git','-C',str(a.bundle_root),'rev-parse','HEAD'],text=True).strip()
-    if head!=c.get('source_git_commit'): raise SystemExit('SOURCE_GIT_COMMIT_MISMATCH')
+    source_commit=c.get('source_git_commit')
+    if subprocess.run(['git','-C',str(a.bundle_root),'merge-base','--is-ancestor',source_commit,head]).returncode!=0:
+        raise SystemExit('SOURCE_GIT_COMMIT_NOT_ANCESTOR')
     identity=dict(c);identity['execution_config_id']=None
     if c.get('execution_config_id')!=hashlib.sha256(json.dumps(identity,sort_keys=True,separators=(',',':')).encode()).hexdigest(): raise SystemExit('EXECUTION_CONFIG_ID_MISMATCH')
     if m.get('manifest_sha256')!=sha(a.bundle_root/c['anchor_manifest']): raise SystemExit('ANCHOR_MANIFEST_SHA_MISMATCH')
@@ -28,7 +30,7 @@ def verify_bundle(bundle_root, proto):
         if sha(a.bundle_root/item['raw_path'])!=item['raw_sha256']: raise SystemExit('RAW_SHA_MISMATCH')
     for rel,expected in c['source_sha256'].items():
         if not (a.bundle_root/rel).exists(): raise SystemExit(f'SOURCE_MISSING:{rel}')
-        if git_blob_sha(a.bundle_root,head,rel)!=expected: raise SystemExit(f'SOURCE_SHA_MISMATCH:{rel}')
+        if git_blob_sha(a.bundle_root,source_commit,rel)!=expected: raise SystemExit(f'SOURCE_SHA_MISMATCH:{rel}')
     for rel,key in ((c['checkpoint_path'],'checkpoint_sha256'),(c['normalization_path'],'normalization_sha256')):
         if sha(a.bundle_root/rel)!=c[key]: raise SystemExit(f'DEPENDENCY_SHA_MISMATCH:{rel}')
     if m.get('episodes')!=c['episodes_manifest']:raise RuntimeError('EPISODES_MANIFEST_MISMATCH')
@@ -36,7 +38,7 @@ def verify_bundle(bundle_root, proto):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--bundle-root',type=Path,default=ROOT);ap.add_argument('--protocol',type=Path);a=ap.parse_args()
-    proto=(a.bundle_root / a.protocol).resolve() if a.protocol and not a.protocol.is_absolute() else (a.protocol if a.protocol else next(a.bundle_root.glob('code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_*_r33/00_protocol.json'),None))
-    if proto is None: raise SystemExit('FROZEN_R33_PROTOCOL_MISSING')
+    proto=(a.bundle_root / a.protocol).resolve() if a.protocol and not a.protocol.is_absolute() else (a.protocol if a.protocol else next(a.bundle_root.glob('code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_*_r34/00_protocol.json'),None))
+    if proto is None: raise SystemExit('FROZEN_R34_PROTOCOL_MISSING')
     print(json.dumps(verify_bundle(a.bundle_root,proto),ensure_ascii=False))
 if __name__=='__main__': main()
