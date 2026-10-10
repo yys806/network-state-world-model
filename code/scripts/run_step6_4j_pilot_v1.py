@@ -10,7 +10,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r37"
+OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261010_r38"
 sys.path[:0] = [str(ROOT / "code/src"), str(ROOT / "code/scripts")]
 os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 if hasattr(sys.stdout, "reconfigure"):
@@ -97,8 +97,8 @@ def load_protocol(path: Path) -> dict:
     verify_bundle(ROOT, path)
     os.environ.setdefault("SUMO_HOME", "/usr/share/sumo")
     from preflight_step6_4j_sumo_v1 import run as sumo_preflight
-    preflight = sumo_preflight(OUT / "environment_preflight_receipt.json")
-    if preflight.get("status") != "STEPPED" or not preflight.get("traci_connected"):
+    preflight = sumo_preflight(OUT / "environment_preflight_receipt.json", cfg["episodes_manifest"])
+    if preflight.get("status") != "PASS" or len(preflight.get("episodes", [])) != 2 or any(row.get("status") != "PASS" or not row.get("closed") for row in preflight["episodes"]):
         raise RuntimeError("SUMO_AIRFOGSIM_PREFLIGHT_FAILED")
     return cfg
 
