@@ -1,7 +1,7 @@
 """Independent CPU protocol audit; no GPU/cloud actions."""
 import json,hashlib
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r27'
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r29'
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
  c=json.loads((OUT/'00_protocol.json').read_text(encoding='utf-8'));m=json.loads((OUT/'01_manifest.json').read_text(encoding='utf-8'))

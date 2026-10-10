@@ -3288,7 +3288,9 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.audit_step6_4j_formal_v1",
         "scripts.run_step6_4j_pilot_v1",
+        "tests.test_step6_4j_formal_stop_v1",
         "tests.test_step6_4j_pilot_v1"
       ],
       "imports": [],
@@ -3296,6 +3298,7 @@
       "module": "pi_jwm.step6_4j_pilot_v1",
       "path": "code/src/pi_jwm/step6_4j_pilot_v1.py",
       "test_files": [
+        "code/tests/test_step6_4j_formal_stop_v1.py",
         "code/tests/test_step6_4j_pilot_v1.py"
       ]
     },
@@ -4354,6 +4357,18 @@
       "lifecycle_status": "support",
       "module": "scripts.audit_step6_4j_engineering_v1",
       "path": "code/scripts/audit_step6_4j_engineering_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4j_pilot_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4j_formal_v1",
+      "path": "code/scripts/audit_step6_4j_formal_v1.py",
       "test_files": []
     },
     {
@@ -13204,6 +13219,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4i_real_metrics_v1",
       "path": "code/tests/test_step6_4i_real_metrics_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4j_pilot_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4j_formal_stop_v1",
+      "path": "code/tests/test_step6_4j_formal_stop_v1.py",
       "test_files": []
     },
     {

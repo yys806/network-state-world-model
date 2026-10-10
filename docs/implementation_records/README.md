@@ -1,3 +1,9 @@
+## 2026-10-10 STEP 6.4J — r29 日志 schema 与独立落盘验收闭环
+
+已统一正式日志字段为 `search_attempt`，修复 SEARCH_INTENT 与全局 attempts 的字段错配。独立验收器从实际落盘 `pilot_attempt.json`、已启动 episode 的 `journal.jsonl`、`episode_receipt.json` 和 `decision_*.json` 重建结果；未启动 episode允许没有日志，已启动 episode缺失/损坏/重复/预算/WM transition计数不一致则 BLOCKED。新增独立 CLI `code/scripts/audit_step6_4j_formal_v1.py`，22项专项测试全部通过，覆盖两 episode 16 步 COMPLETED/0、首轮失败 BLOCKED/1、资格后资源停止 PARTIAL/2、fallback C PARTIAL/2、缺失/重复/损坏日志、预算不匹配和不完整无合法原因。r25真实 CPU AirFogSim证据保留并通过：2 episode、4 次真实 env.step。r29 execution_config_id=`f2b71e6b06b372a21c891a432680663259ef2f5108b0704eff844433b39f9bdc`。
+## 2026-10-10 STEP 6.4J — 最终日志与独立验收闭环修复
+
+r28 统一正式日志 schema：所有 SEARCH_INTENT、WM_TRANSITION_ATTEMPT、FINAL_DECISION、decision receipt 和全局 search_attempts 使用 `search_attempt`。`audit_formal_result()` 现在只从落盘的 `pilot_attempt.json`、已启动 episode 的 `journal.jsonl`、`episode_receipt.json` 和 `decision_*.json` 重建结果；未启动 episode可没有日志，已启动 episode缺日志/损坏/重复/预算或序列不一致则 BLOCKED。新增 CLI 独立审计 `code/scripts/audit_step6_4j_formal_v1.py`，13项落盘/退出码测试覆盖 COMPLETED、首轮资格失败、合法 PARTIAL、fallback C、缺失/重复/损坏日志、预算不匹配和未完成无停止原因。r25真实 AirFogSim CPU证据保留：2 episode、4次真实 env.step、独立工程审计 PASS。GPU、正式 Pilot、baseline、Hybrid、locked_test 未运行。
 ## 2026-10-10 STEP 6.4J — GPU Pilot 停止门修复与 r27 冻结
 
 正式 GPU 分支采用全局一次性停止状态机，首个 B512 决策须完成 CUDA/FP32/batch16/执行身份、512 次独立 WM 转移、scorer 有限性、winner 或冻结 fallback A、真实 env.step 与 fresh observation 验收；失败立即 BLOCKED 且不启动第二 episode。每次真实 transition 调用前先同步 journal 与 attempted-search 记录，失败尝试计入 16 次总预算。600 秒单次规划使用硬中断，不返回 early-best；10200 秒资源门、预算溢出、重复动作/root、NaN/Inf 和异常均受停止门约束。最终结果从两条 episode 的决策 receipt、journal 与尝试记录独立重建：两条各 8 步为 COMPLETED/0；首个资格 PASS 后合法资源终止或协议允许的 fallback C 为 PARTIAL/2；资格/身份/预算/执行异常为 BLOCKED/1。r27 execution_config_id=`c019c075e35f10560f2a059ac8abf94809c8ef5d18b2f2be82585dec76ba3cf2`。r25 同核心真实 CPU 回归为 4 次 env.step、双 episode/fresh roots PASS；GPU、正式 Pilot、baseline、Hybrid、locked_test 未运行。

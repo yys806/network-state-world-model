@@ -29,6 +29,6 @@ def verify_bundle(bundle_root, proto):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--bundle-root',type=Path,default=ROOT);a=ap.parse_args()
-    proto=a.bundle_root/'code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r27/00_protocol.json'
+    proto=a.bundle_root/'code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r29/00_protocol.json'
     print(json.dumps(verify_bundle(a.bundle_root,proto),ensure_ascii=False))
 if __name__=='__main__': main()

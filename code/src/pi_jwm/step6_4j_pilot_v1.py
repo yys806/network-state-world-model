@@ -60,7 +60,7 @@ class FormalPilotGate:
   if episode not in self.episodes:raise RuntimeError('EPISODE_IDENTITY_MISMATCH')
   if len(self.attempts)>=16 or sum(a['episode']==episode for a in self.attempts)>=8:raise RuntimeError('PILOT_SEARCH_BUDGET_EXHAUSTED')
   if episode==self.episodes[1] and not self.qualified:raise RuntimeError('FIRST_CUDA_QUALIFICATION_PENDING')
-  n=len(self.attempts)+1;self.attempts.append({'episode':episode,'number':n});return n
+  n=len(self.attempts)+1;self.attempts.append({'episode':episode,'search_attempt':n});return n
  def resource_stop(self,reason):
   self.stop={'status':'PARTIAL' if self.qualified and reason in RESOURCE_STOPS else 'BLOCKED','reason':reason}
  def accept(self,episode,row):
@@ -89,7 +89,7 @@ def formal_result(episodes,rows_by_episode,attempts,stop,identity):
   if len(by_number)!=len(attempts):raise RuntimeError('ATTEMPT_RECEIPT_COUNT_MISMATCH')
   for a in attempts:
    n=gate.begin_search(a['episode'])
-   if n!=a['number'] or n not in by_number:raise RuntimeError('ATTEMPT_SEQUENCE_MISMATCH')
+   if n!=a['search_attempt'] or n not in by_number:raise RuntimeError('ATTEMPT_SEQUENCE_MISMATCH')
    ep,row=by_number[n]
    if ep!=a['episode']:raise RuntimeError('EPISODE_RECEIPT_MISMATCH')
    gate.accept(ep,row)
@@ -104,21 +104,42 @@ def formal_result(episodes,rows_by_episode,attempts,stop,identity):
  else:status='BLOCKED';reason='UNEXPLAINED_INCOMPLETE_PILOT'
  return {'status':status,'exit_code':{'COMPLETED':0,'PARTIAL':2,'BLOCKED':1}[status],'reason':reason,'qualification':'PASS' if gate.qualified else 'FAIL','attempted_searches':len(attempts),'env_step_count':sum(counts.values()),'step_attempt_count':sum(r.get('environment_step_attempted') is True for rs in rows_by_episode.values() for r in rs),'planned_decisions':16,'episode_decisions':counts,'pilot_pass':status=='COMPLETED'}
 
-def audit_formal_result(result_dir,episodes,attempts,stop,identity):
+def audit_formal_result(result_dir,episodes,identity):
  import json
  from pathlib import Path
- rows={ep:[] for ep in episodes}; journal_attempts=[]; journal_decisions=[]; error=None
+ rows={ep:[] for ep in episodes}; journal_attempts=[]; journal_decisions=[]; wm_counts={}; error=None
  try:
+  global_receipt=json.loads((Path(result_dir)/'pilot_attempt.json').read_text(encoding='utf-8'))
+  attempts=global_receipt.get('search_attempts')
+  if not isinstance(attempts,list):raise RuntimeError('GLOBAL_ATTEMPTS_MISSING')
+  stop=global_receipt.get('stop')
+  seen_episodes={str(x.get('episode')) for x in attempts}
+  if not seen_episodes.issubset(set(episodes)):raise RuntimeError('ATTEMPT_EPISODE_MISMATCH')
   for ep in episodes:
    folder=Path(result_dir)/ep
+   if ep not in seen_episodes:
+    if folder.exists() and any(folder.iterdir()):raise RuntimeError('UNSTARTED_EPISODE_HAS_EVIDENCE')
+    continue
+   if not folder.is_dir():raise RuntimeError('STARTED_EPISODE_MISSING')
+   journal_path=folder/'journal.jsonl';receipt_path=folder/'episode_receipt.json'
+   if not journal_path.exists() or not receipt_path.exists():raise RuntimeError('STARTED_EPISODE_LOG_MISSING')
+   json.loads(receipt_path.read_text(encoding='utf-8'))
    rows[ep]=[json.loads(p.read_text(encoding='utf-8')) for p in sorted(folder.glob('decision_*.json'))]
-   events=[json.loads(line) for line in (folder/'journal.jsonl').read_text(encoding='utf-8').splitlines() if line.strip()]
-   journal_attempts.extend({'episode':ep,'number':x['number']} for x in events if x.get('event')=='SEARCH_INTENT')
+   events=[json.loads(line) for line in journal_path.read_text(encoding='utf-8').splitlines() if line.strip()]
+   journal_attempts.extend({'episode':ep,'search_attempt':x['search_attempt']} for x in events if x.get('event')=='SEARCH_INTENT')
    journal_decisions.extend((ep,x['row'].get('search_attempt')) for x in events if x.get('event')=='FINAL_DECISION')
-  if journal_attempts!=[{'episode':x['episode'],'number':x['number']} for x in attempts]:raise RuntimeError('JOURNAL_ATTEMPT_MISMATCH')
+   for event in events:
+    if event.get('event')=='WM_TRANSITION_ATTEMPT':
+     key=(ep,event.get('search_attempt'))
+     wm_counts[key]=wm_counts.get(key,0)+int(event.get('count',0))
+  if journal_attempts!=[{'episode':x['episode'],'search_attempt':x['search_attempt']} for x in attempts]:raise RuntimeError('JOURNAL_ATTEMPT_MISMATCH')
   expected=[(ep,r.get('search_attempt')) for ep,rs in rows.items() for r in rs]
   if sorted(expected)!=sorted(journal_decisions):raise RuntimeError('JOURNAL_DECISION_MISMATCH')
+  for ep,ep_rows in rows.items():
+   for row in ep_rows:
+    attempt=row.get('search_attempt'); expected_budget=row.get('budget_receipt',{}).get('N_unique_transition_evals')
+    if expected_budget is not None and wm_counts.get((ep,attempt),0)!=int(expected_budget):raise RuntimeError('WM_ATTEMPT_MISMATCH')
  except Exception as exc:error=str(exc)
- result=formal_result(episodes,rows,attempts,stop,identity)
+ result=formal_result(episodes,rows,attempts,stop,identity) if error is None else {'status':'BLOCKED','exit_code':1,'reason':error,'qualification':'FAIL','attempted_searches':len(attempts) if isinstance(attempts,list) else 0,'env_step_count':0,'step_attempt_count':0,'planned_decisions':16,'episode_decisions':{ep:len(rows[ep]) for ep in episodes},'pilot_pass':False}
  if error:result.update(status='BLOCKED',exit_code=1,reason=error,pilot_pass=False)
  return result

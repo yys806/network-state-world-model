@@ -10,7 +10,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r27"
+OUT = ROOT / "code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r29"
 sys.path[:0] = [str(ROOT / "code/src"), str(ROOT / "code/scripts")]
 os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 if hasattr(sys.stdout, "reconfigure"):
@@ -240,7 +240,7 @@ def _execute(cfg: dict, *, device="cuda", engineering=False) -> int:
                     nonlocal attempt_number
                     attempt_number=gate.begin_search(episode['trajectory_id']) if gate else receipt['searches']+1
                     receipt['searches']+=1
-                    receipt['search_attempts'].append({'episode':episode['trajectory_id'],'number':attempt_number})
+                    receipt['search_attempts'].append({'episode':episode['trajectory_id'],'search_attempt':attempt_number})
                     write_journal({'event':'SEARCH_INTENT','search_attempt':attempt_number,'execution_config_id':cfg['execution_config_id']})
                     atomic_json(result_dir/'pilot_attempt.json',receipt)
                     started=time.perf_counter()
@@ -357,7 +357,9 @@ def _execute(cfg: dict, *, device="cuda", engineering=False) -> int:
         receipt["status"] = "ENGINEERING_PASS" if (completed and total_steps >= 4 and two_consecutive_per_episode
             and distinct_fresh_roots and aligned and no_fail_closed and engineering_acceptance(receipt["episodes"])) else "ENGINEERING_FAIL"
     else:
-        receipt['acceptance']=audit_formal_result(result_dir,episode_ids,receipt['search_attempts'],gate.stop,cfg['execution_config_id'])
+        receipt['stop']=gate.stop
+        atomic_json(result_dir/'pilot_attempt.json',receipt)
+        receipt['acceptance']=audit_formal_result(result_dir,episode_ids,cfg['execution_config_id'])
         receipt['status']=receipt['acceptance']['status']
         receipt['exit_code']=receipt['acceptance']['exit_code']
         receipt['qualification']={'status':receipt['acceptance']['qualification'],'search_attempt':1}
