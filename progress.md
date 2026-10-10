@@ -1621,3 +1621,7 @@ GPU扩样仍运行。新增100/272，总覆盖148/320；已创建本聊天heartb
 ## 2026-10-10 STEP 6.4J — r36 SUMO 预检 PASS / 正式 Pilot BLOCKED
 
 SUMO缺失已修复：远端 Ubuntu 22.04 apt 安装 `sumo`/`sumo-tools` 1.12.0，`SUMO_HOME=/usr/share/sumo`，traci/sumolib/osmnx兼容导入通过。新增真实环境预检：正式 `sumo_wujiaochang/osm.sumocfg`、AirFogSimEnv、TraCI、仿真时间0.0→0.1s和清理均PASS。r36 execution_config_id=`64df24790c06c96dc07937131c40d9fd97bc71b49b39469a20d9325e4a9eafb1`。正式唯一runner进入真实环境后持续出现 SUMO `Retrieval of a route requires five parameter`，无搜索/无env.step，已SIGTERM停止。独立审计 BLOCKED/1；完整日志、环境receipt、版本、stop receipt、ZIP及SHA已远端与本地D:备份。不得继续重跑。
+## 2026-10-10 STEP 6.4J 收口
+
+r39 已完成独立审计：两条 live episode 各 8 次决策，16/16 B512、16 次真实环境步进，`COMPLETED/0`。每次 512 unique WM transitions；合计 468 个完整 H4、3064 个 dead-end、0 个 scoreable H4，全部 `FALLBACK_A / NO_SCOREABLE_H4`。源码审计确认 fixed-support future Return-birth 是硬边界，但现有落盘没有逐候选 reason，因此不能声称所有候选均由该路径拒绝。GPU 本机 runner/SUMO 已退出，远端电源/计费无法核验；`locked_test=false`。等待研究者决定是否授权 CPU 只读 ledger 重放。
+

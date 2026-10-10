@@ -332,3 +332,7 @@ CPU-only source/provenance audit and protocol foundation completed with verdict 
 
 `STEP_6_2B_READINESS=BLOCKED` after current-source recalculation. 4.2C-B/C supplies conserved E2E Flow state; exact-aligned non-locked validation replay supplies Planner-only deadline, while accepted Formal Raw supplies Return size/destination. Effort and throughput decisions are synchronized. The current 4.2C-C destination-only route array conflicts with 4.4 cross-hop indexing, and Route action leaves the array stale. See `docs/implementation_records/STEP_06_2A_PATCH_PLANNER_OBJECTIVE_READINESS_RECONCILIATION.md` and the 01–12 receipt bundle. Scorer, ranking, baseline, closed loop, GPU and locked_test remain unopened; next action requires researcher decision on route semantics.
 **2026-09-30 STEP 6.3D-3080TI-MIGRATION-QUALIFICATION（PASS）：** RTX 3080 Ti 上正式 Dataset/Raw/checkpoint、CPU/GPU 离散等价、正式 CUDA runner/resume 与 bounded TRAIN smoke 通过；FP32 batch16 冻结。正式 TRAIN tuning、Validation 比较、`locked_test` 未运行；future Return birth 限制不变。详见对应 Step 实施记录和机器收据。
+## 2026-10-10 STEP 6.4J 收口状态
+
+`STEP_6_4J_ENGINEERING_CLOSED_LOOP=COMPLETED`：r39 冻结提交完成 16/16 B512、16 次真实 `env.step`，独立审计 `COMPLETED/0`。`H4_SCOREABILITY=0/468`，16/16 `FALLBACK_A / NO_SCOREABLE_H4`；`SEARCH_OPTIMIZATION_EFFECTIVENESS=NOT_ESTABLISHED`。fixed-support future Return-birth 是实现中确认的边界，但逐候选 reason 未落盘。当前停止，不启动 24×64、baseline、ablation、Hybrid、GPU 或 `locked_test`。
+

@@ -468,3 +468,7 @@ Added a source-semantics audit runner, focused test, Planner objective target co
 
 重新裁决当前 Flow/E2E 事实，新增 Planner-only Task/Route side-state 与单 validation anchor deadline 因果重放，冻结 Useful/Network Service 双吞吐及 Comm/Comp/Mob effort，移除 Route/Priority blocker。机器发现 4.2C-C/4.4 路线语义冲突，保持 6.2B BLOCKED；无模型、Dataset、checkpoint、GPU、locked_test 改动。
 2026-09-30：完成 3080 Ti Formal 数据迁移与身份验收、GPU FP32 等价、batch16 配置、正式 CUDA runner/resume 闭合及 bounded TRAIN smoke；正式调参/Validation 比较/locked_test 未运行。详见 Step 实施记录和机器收据。
+## 2026-10-10 STEP 6.4J 收口与根因审计
+
+新增 r39 H4 可评分性审计报告和实施记录；同步记录工程 `COMPLETED` 与搜索 `NOT_ESTABLISHED` 两条结论，补充 fixed-support 边界、证据缺口、GPU关闭限制和最小 CPU ledger proposal。未修改科学算法、冻结结果或实验配置。
+

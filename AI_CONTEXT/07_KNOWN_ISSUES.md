@@ -479,3 +479,7 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 ## 2026-10-02 09:09 Stage A 只读备份连接恢复
 
 01:00 UTC心跳中SFTP连接重置（10054），发生在只读source核对；重新连接确认原runner PID1663持续正常运行，未重启搜索。重试后305份完成结果已逐文件SHA备份并独立验身份，无duplicate、source drift、NaN/Inf或scorer exception。此事件属于已恢复的备份连接中断，不是正式搜索崩溃或科研阻塞。Stage A继续RUNNING；唯一下一动作继续监控/备份，Stage B=NOT_STARTED、SEARCH_METHOD=NOT_SELECTED、locked_test=false。机器记录：`code/artifacts/protocols/pi_jwm_step6_3d_validation_stage_a_v1_20261001/snapshots/20261002T010938Z_backup_connection_recovery_receipt.json`。
+## 2026-10-10 STEP 6.4J H4 scoreability
+
+r39 的 receipt 只保存集合级统计，没有保存每个 candidate 的 fixed-support rejection reason。已确认源码存在 `UNSUPPORTED_FUTURE_RETURN_BIRTH` 边界，但不能把 468 个 complete H4 全部归因于此。需要研究者决定是否授权已有结果的 CPU 只读 ledger 重放；在此之前不扩大 24×64，不改 scorer/World Model，不启动 GPU 或 `locked_test`。
+

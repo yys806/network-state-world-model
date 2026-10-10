@@ -520,3 +520,8 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 ## 2026-09-30：STEP 6.3D-3080TI-MIGRATION-QUALIFICATION
 
 完整迁移并核对 Formal 数据/冻结 checkpoint；新增 CUDA FP32 正式矩阵执行、主机搜索状态存储和严格 resume/config 身份，冻结 batch16；CPU path 与搜索语义保持。bounded TRAIN smoke PASS；正式调参/Validation 比较/locked_test 未运行。
+## 2026-10-10
+
+- STEP 6.4J r39 收口：新增 `docs/analysis/STEP_06_4J_H4_SCOREABILITY_ROOT_CAUSE_AUDIT_20261010.md` 与实施记录。记录真实 GPU 闭环 `COMPLETED`，并明确 16/16 搜索无 scoreable H4、全部 `FALLBACK_A`，搜索优化有效性 `NOT_ESTABLISHED`。
+- 只读审计确认 fixed-support future Return-birth 为源码硬边界；保留逐候选 rejection ledger 证据缺口。未启动新实验或修改科学算法。
+

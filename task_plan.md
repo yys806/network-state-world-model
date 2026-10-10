@@ -2059,3 +2059,11 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 ## 2026-10-10 STEP 6.4J — r36 SUMO 环境门与 GPU Pilot BLOCKED
 
 已在远端安装 Ubuntu 22.04 官方 SUMO 1.12.0，并将真实 AirFogSim/SUMO 创建、TraCI 连接、0.1s推进和清理固化为 `preflight_step6_4j_sumo_v1.py`。r36 协议/源码部署验收和真实环境预检均 PASS。正式 runner 唯一启动后，SUMO 持续报 `Retrieval of a route requires five parameter`，约4.5分钟无任何搜索或env.step进展；按异常停止规则终止唯一 runner。独立审计 BLOCKED/1，0/16搜索、0次env.step、资格FAIL。r35/r36均保留原始证据，未resume、未重试、未修改科学语义。本轮停止，后续需研究者决定是否授权调查SUMO 1.12与项目路由调用兼容性并重新冻结。
+## 2026-10-10 STEP 6.4J 收口与 H4 根因审计
+
+- 状态：已完成只读审计与文档收口，等待研究者决策。
+- 证据：r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a`；16/16 B512、16 次真实 `env.step`、独立审计 `COMPLETED/0`。
+- 结论：工程机制 `COMPLETED`；16/16 无 scoreable H4、全部 `FALLBACK_A`，搜索优化有效性 `NOT_ESTABLISHED`。
+- 阻塞：现有 receipt 没有逐候选 rejection ledger，不能精确归因 468 个完整 H4。
+- 唯一下一动作：研究者决定是否授权本地 CPU 只读 rejection-ledger 重放；不启动 24×64/GPU/locked_test。
+

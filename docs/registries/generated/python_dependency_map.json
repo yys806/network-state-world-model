@@ -5310,6 +5310,7 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "scripts.preflight_step6_4j_sumo_v1",
         "scripts.replay_step6_2a_patch_deadline_sidecar_v1",
         "scripts.replay_step6_3d_selected_deadline_sidecars_v1",
         "scripts.run_step6_4b_two_cycle_smoke_v1",
@@ -6613,6 +6614,20 @@
       "lifecycle_status": "support",
       "module": "scripts.plot_step5_6b_training_progress_v1",
       "path": "code/scripts/plot_step5_6b_training_progress_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.run_step6_4j_pilot_v1"
+      ],
+      "imports": [
+        "scripts.collect_step5_5_formal_raw_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.preflight_step6_4j_sumo_v1",
+      "path": "code/scripts/preflight_step6_4j_sumo_v1.py",
       "test_files": []
     },
     {
@@ -8718,6 +8733,7 @@
         "pi_jwm.step6_4i_real_metrics_v1",
         "pi_jwm.step6_4j_pilot_v1",
         "scripts.collect_step5_5_formal_raw_v1",
+        "scripts.preflight_step6_4j_sumo_v1",
         "scripts.run_step6_3d_one_cpu_solve_v1",
         "scripts.run_step6_4i_cpu_smoke_v1",
         "scripts.step6_4i_live_planner_v1",

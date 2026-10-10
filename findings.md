@@ -1654,3 +1654,11 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 - 独立结果：`BLOCKED/1`，qualification FAIL，`attempted_searches=0`，`env_step_count=0`，`step_attempt_count=0`，两 episode决策数均0。
 - 原始证据和本地备份：r36 `pilot_attempt.json`、`pilot_stdout.log`（约336MB）、`stop_receipt.json`、`environment_preflight_receipt.json`、`environment_install_receipt.txt`、`independent_audit.json`、ZIP。ZIP远端/本地 SHA=`6a0ae775cbec8d6bcec8e637cdae3b96fd6d69b6c08d74c8bb9c4fe39133177d`。
 - SHA限制：per-file清单自身自引用，且日志位于包根而清单按结果子目录记录，故清单中两项不能直接作为逐文件自证；核心 audit/attempt/stop receipt与ZIP哈希一致。
+## 2026-10-10 STEP 6.4J H4 可评分性审计
+
+- Observation：`...2318...` 为 8×344 complete H4、0 dead-end；`...2326...` 为 8×124 complete H4、8×383 dead-end；两者均 0 scoreable。
+- Implementation Fact：`score_candidate_set()` 对 fixed-support 返回 `OBJECTIVE_UNSCOREABLE`；`solve_fixed_budget()` 将 `None` 计为 unscoreable；live planner 只接受 H_eff=4 的 score。
+- Hypothesis：future Return-birth fixed-support 是高可信主因；动态 domain/dead-end 是第二条轨迹的额外因素。逐候选比例未证实。
+- Evidence gap：r39 没保存 candidate-level `support_boundary_reasons`，不能计算 `UNSUPPORTED_FUTURE_RETURN_BIRTH` 的精确分母。
+- Proposal：先做已有 H4 的 CPU 只读 rejection-ledger 重放，再由研究者决定是否改变支持边界或扩大实验。
+

@@ -2962,3 +2962,7 @@ Formal Dataset v1 已按研究者冻结协议构建并通过机器验收：H=2�
 ## 2026-09-28 STEP 6.2B 工程观察与验收边界
 
 冻结五项目标和严格字典序已经接入已有候选 rollout，单个 non-locked Formal Validation anchor 的 CPU checkpoint 机制通过；这不是候选性能结论。Comm effort 的旧分母把 242 条通信关系行当成 RB support，本 Step 按 AirFogSim 全局 RB 编号和当前有效无线关系改为 50 个 RB ID，并单独保存纠正 receipt。有效动作审计发现 pending/no-current-Flow Route 被现有 gate 接受但正式 adapter 映射 `flow_index=-1`、确定性规则不创建 Flow；同路径 existing-Flow Route 在 holder 未移动前修改 Task-Agent Host。上述冲突尚无研究者裁决，故 `STEP_6_2B=BLOCKED_ON_OBJECTIVE_SEMANTICS`，不宣称完整 Objective 验收。当前研究者冻结的 Objective、single-hop Route 研究边界、no-retrain checkpoint 决定均未改。证据见 STEP 6.2B 实施记录与机器 receipts；唯一下一动作是研究者决定 pending Route 支持处理和 same-path Host 语义。
+## 2026-10-10 STEP 6.4J 结果边界
+
+本轮必须区分两条结论：真实 GPU 闭环工程机制 `COMPLETED`；16/16 B512 搜索无 scoreable H4、全部 `FALLBACK_A`，搜索优化有效性 `NOT_ESTABLISHED`。源码确认 fixed-support future Return-birth 可使 `H_eff<4`，但 r39 没有 candidate-level rejection reason，不能把该边界写成 468 个候选的逐条证明。该差异不构成已确认实现错误，也不支持直接扩大正式实验。
+
