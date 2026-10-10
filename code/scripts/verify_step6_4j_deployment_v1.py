@@ -1,5 +1,5 @@
 """Verify a transferred 6.4J protocol bundle without regenerating identity."""
-import argparse, hashlib, json
+import argparse, hashlib, json, subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -15,6 +15,9 @@ def verify_bundle(bundle_root, proto):
     a=Args();a.bundle_root=bundle_root
     c=json.loads(proto.read_text(encoding='utf-8'));m=json.loads(manifest.read_text(encoding='utf-8'))
     if c.get('status')!='CPU_PROTOCOL_FROZEN_GPU_NOT_STARTED' or c.get('locked_test') is not False: raise SystemExit('PROTOCOL_SCOPE_INVALID')
+    if c.get('source_hash_basis')!='sha256(final_git_commit_blob_bytes)': raise SystemExit('SOURCE_HASH_BASIS_INVALID')
+    head=subprocess.check_output(['git','-C',str(a.bundle_root),'rev-parse','HEAD'],text=True).strip()
+    if head!=c.get('source_git_commit'): raise SystemExit('SOURCE_GIT_COMMIT_MISMATCH')
     identity=dict(c);identity['execution_config_id']=None
     if c.get('execution_config_id')!=hashlib.sha256(json.dumps(identity,sort_keys=True,separators=(',',':')).encode()).hexdigest(): raise SystemExit('EXECUTION_CONFIG_ID_MISMATCH')
     if m.get('manifest_sha256')!=sha(a.bundle_root/c['anchor_manifest']): raise SystemExit('ANCHOR_MANIFEST_SHA_MISMATCH')
@@ -28,7 +31,8 @@ def verify_bundle(bundle_root, proto):
     return {'verdict':'PASS','execution_config_id':c['execution_config_id'],'protocol':str(proto.relative_to(a.bundle_root)).replace('\\','/'),'gpu':'NOT_STARTED','locked_test':False}
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--bundle-root',type=Path,default=ROOT);a=ap.parse_args()
-    proto=a.bundle_root/'code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_20261009_r29/00_protocol.json'
+    ap=argparse.ArgumentParser();ap.add_argument('--bundle-root',type=Path,default=ROOT);ap.add_argument('--protocol',type=Path);a=ap.parse_args()
+    proto=Path(args.protocol) if args.protocol else next(a.bundle_root.glob('code/artifacts/protocols/pi_jwm_step6_4j_s_cem_gpu_pilot_v1_*_r30/00_protocol.json'),None)
+    if proto is None: raise SystemExit('FROZEN_R30_PROTOCOL_MISSING')
     print(json.dumps(verify_bundle(a.bundle_root,proto),ensure_ascii=False))
 if __name__=='__main__': main()
