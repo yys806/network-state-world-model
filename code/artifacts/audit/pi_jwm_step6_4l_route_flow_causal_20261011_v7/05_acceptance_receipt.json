@@ -1,0 +1,17 @@
+{
+  "GPU": false,
+  "locked_test": false,
+  "real_simulator_alignment": {
+    "A": "OBSERVED_ONE_REAL_STEP",
+    "B": "OBSERVED_ONE_REAL_STEP"
+  },
+  "root_identity": {
+    "A": "LIVE_ROOT_CAPTURE_VALID",
+    "B": "LIVE_ROOT_CAPTURE_VALID"
+  },
+  "route_setter": {
+    "A": "PASS_NOOP_CONTROL",
+    "B": "PASS_REAL_SETTER"
+  },
+  "status": "COMPLETED"
+}

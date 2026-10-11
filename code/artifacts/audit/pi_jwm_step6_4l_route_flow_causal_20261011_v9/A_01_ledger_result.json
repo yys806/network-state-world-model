@@ -1,0 +1,73 @@
+{
+  "augmented_raw_sha256": "e26ba6a7f9b3eb480eb57b0f7fed01d99e205dd7e715598018721daec328afe8",
+  "frame6_route_entries": [],
+  "ledger_validation": {
+    "passed": true,
+    "required_checks": true,
+    "scope": true
+  },
+  "normalized_prefix_sha256": "2fd2600d668ae5c170bb28c2788a3879d23f265195727341e6a81a3a350b13dc",
+  "prefix_sha256": "e26ba6a7f9b3eb480eb57b0f7fed01d99e205dd7e715598018721daec328afe8",
+  "route_flow_created": false,
+  "task5_flow_history": [
+    {
+      "e2e_delivered": 0.556973122843206,
+      "e2e_remaining": 0.0,
+      "epoch": 0,
+      "feature_mask": {
+        "e2e_delivered": true,
+        "e2e_remaining": true,
+        "logical_destination": true,
+        "logical_source": true,
+        "total_data": true
+      },
+      "flow_id": "flow::Task_5::Input::0",
+      "flow_index": 0,
+      "flow_type": "Input",
+      "logical_destination": "UAV_0",
+      "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+      "logical_destination_source": "established_offload_route_terminal",
+      "logical_source": "UAV_1",
+      "missing_reason": null,
+      "presence": false,
+      "previous_flow_id": null,
+      "source_provenance": "causal_task_state_and_established_route",
+      "status": "COMPLETED",
+      "supersede_reason": null,
+      "superseded_by_flow_id": null,
+      "task_id": "Task_5",
+      "total_data": 0.556973122843206
+    }
+  ],
+  "task5_flow_rows_at_frame6": [
+    {
+      "e2e_delivered": 0.556973122843206,
+      "e2e_remaining": 0.0,
+      "epoch": 0,
+      "feature_mask": {
+        "e2e_delivered": true,
+        "e2e_remaining": true,
+        "logical_destination": true,
+        "logical_source": true,
+        "total_data": true
+      },
+      "flow_id": "flow::Task_5::Input::0",
+      "flow_index": 0,
+      "flow_type": "Input",
+      "logical_destination": "UAV_0",
+      "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+      "logical_destination_source": "established_offload_route_terminal",
+      "logical_source": "UAV_1",
+      "missing_reason": null,
+      "presence": false,
+      "previous_flow_id": null,
+      "source_provenance": "causal_task_state_and_established_route",
+      "status": "COMPLETED",
+      "supersede_reason": null,
+      "superseded_by_flow_id": null,
+      "task_id": "Task_5",
+      "total_data": 0.556973122843206
+    }
+  ],
+  "transition_errors": []
+}

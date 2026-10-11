@@ -1,0 +1,64 @@
+{
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "frozen_wm": {
+    "GPU": false,
+    "elapsed_seconds": 84.25705919996835,
+    "formal_scores_promoted": false,
+    "frozen_wm_h4_compatibility": {
+      "A": "WM_OR_SCORER_EXCEPTION",
+      "B": "WM_PREPARATION_EXCEPTION"
+    },
+    "locked_test": false,
+    "retrain_required": "UNDETERMINED",
+    "root_identity": "LIVE_ROOT_CAPTURE_VALID",
+    "scorer_scoreability": {
+      "A": "EXCEPTION",
+      "B": "EXCEPTION"
+    },
+    "status": "COMPLETED"
+  },
+  "frozen_wm_h4_compatibility": "NOT_ESTABLISHED_FOR_TASK5",
+  "identity": {
+    "checkpoint_path": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+    "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+    "git_before_commit": "2d0edf2b5055312e7cdcd3e3f6c9680476fb7384",
+    "normalization_path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/normalization/stats.json",
+    "normalization_sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5"
+  },
+  "independent_audit": "PASS",
+  "input_route_support_boundary": "SOURCE_AUDIT_ONLY",
+  "real_simulator_alignment": "PASS_ONE_STEP_CAUSAL_OBSERVATION",
+  "retrain_required": "UNDETERMINED",
+  "root_identity": {
+    "A": "LIVE_ROOT_CAPTURE_VALID",
+    "B": "LIVE_ROOT_CAPTURE_VALID",
+    "r39_exact_equivalence": "UNPROVEN",
+    "same_normalized_prefix": true
+  },
+  "route_experiment": {
+    "A": "NOOP",
+    "B": "REAL_SETTER_SUCCESS",
+    "B_flow_id": "flow::Task_5::Return::0",
+    "B_post_lifecycle": "failed",
+    "B_transfer_events": 0,
+    "frame": 6,
+    "root": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+    "task": "Task_5"
+  },
+  "route_flow_causality": "PASS_REAL_SETTER_AND_OFFICIAL_LEDGER",
+  "schema": "PI-JWM-STEP-6.4L-ACCEPTANCE-v1",
+  "scope": {
+    "B512": false,
+    "GPU": false,
+    "formal_cem": false,
+    "formal_semantics_modified": false,
+    "locked_test": false,
+    "training": false
+  },
+  "scorer_blockers": {
+    "A": "Planner v1 domain admission required",
+    "B": "SHADOW_ROUTE_COMM_SUPPORT_MISSING"
+  },
+  "scorer_scoreability": "BLOCKED_BEFORE_FORMAL_SCORE",
+  "status": "COMPLETED"
+}

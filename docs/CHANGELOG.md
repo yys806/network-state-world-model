@@ -533,3 +533,4 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 ## 2026-10-11：STEP 6.4K Deterministic Return Flow Shadow
 
 新增完整 Raw → Causal Ledger replay、确定性 Return Flow Shadow 原型、冻结 World Model H1–H4 兼容性回执和独立审计。全部结果保持隔离，不修改正式模型/Planner/Scorer 语义。
+2026-10-11：STEP 6.4L 完成真实 Task_5 Route setter 与 Return Flow birth 验证；真实 transfer 未发生，冻结模型新 Flow 支持和正式 Scorer 仍未通过资格门禁。

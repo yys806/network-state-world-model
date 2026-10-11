@@ -145,7 +145,14 @@ def collect_trajectory(simulator_seed: int, policy_seed: int, trajectory_id: str
             ready = [task for task in step23._ready_tasks(env) if str(task.getTaskId()) in causal_task_ids and str(task.getTaskNodeId()) in causal_entity_ids]
             route_eligible = bool(waiting_return or ready)
             route_intervention = route_eligible and not global_noop and rng.random() < 0.5
-            route_entries: list[dict[str, Any]] = []
+            # Additive diagnostic gate.  The formal collector leaves this unset;
+            # STEP 6.4L uses it only to prevent a hidden policy route from
+            # contaminating the explicit A/B setter comparison.
+            if bool(getattr(env, "_pi_jwm_diagnostic_disable_route_policy", False)):
+                route_intervention = False
+            route_entries: list[dict[str, Any]] = [dict(row) for row in getattr(env, "_pi_jwm_diagnostic_route_entries", [])]
+            if route_entries:
+                env._pi_jwm_diagnostic_route_entries = []
             if route_intervention and waiting_return:
                 task = waiting_return[0]
                 task_id = str(task.getTaskId())

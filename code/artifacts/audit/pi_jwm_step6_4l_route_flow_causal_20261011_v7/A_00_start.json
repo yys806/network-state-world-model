@@ -1,0 +1,11 @@
+{
+  "GPU": false,
+  "formal_semantics_modified": false,
+  "locked_test": false,
+  "mode": "A",
+  "policy_seed": 2026092418,
+  "schema": "PI-JWM-STEP-6.4L-AIRFOGSIM-ROUTE-v1",
+  "simulator_seed": 2026092318,
+  "stages": {},
+  "target_frame": 6
+}

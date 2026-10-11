@@ -1,0 +1,25 @@
+{
+  "capture_event_id": "capture-014",
+  "causal_prefix_sha256_after_step": "07e254d3e6d64e9b78dccba237532b397aa4d64f4a2318c6bd1e4643f2c94d43",
+  "frame": 7,
+  "route_table_after": {},
+  "simulation_time_s": 1.9,
+  "step_count": 7,
+  "task_5_after": {
+    "arrival_time_s": 0.6,
+    "computed_cpu_work": 0.4836374411490477,
+    "current_node_id": "UAV_0",
+    "lifecycle": "failed",
+    "required_returned_size": 0.07610754782944204,
+    "return_destination_id": "UAV_1",
+    "route_node_ids": [
+      "UAV_1"
+    ],
+    "task_cpu_work": 0.4836374411490477,
+    "task_id": "Task_5",
+    "task_node_id": "UAV_1",
+    "task_size": 0.556973122843206,
+    "transmitted_size": 0.0,
+    "visibility": "decision_observable"
+  }
+}

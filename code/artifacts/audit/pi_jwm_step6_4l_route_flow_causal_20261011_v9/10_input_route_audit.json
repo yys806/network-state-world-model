@@ -1,0 +1,33 @@
+{
+  "status": "SOURCE_AUDIT_ONLY",
+  "scope": "Input Offload Route dynamic-flow boundary; no implementation",
+  "sources": [
+    {
+      "path": "code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py",
+      "symbols": ["CausalFlowLedger.create_input_flow", "amend_raw_with_causal_flow_ledger"],
+      "lines": [206, 469],
+      "fact": "An explicit route_kind=offload action can create an Input logical flow in the official Ledger."
+    },
+    {
+      "path": "code/scripts/collect_step5_5_formal_raw_v1.py",
+      "symbols": ["TaskScheduler.setTaskOffloading", "route_entries"],
+      "lines": [179, 182],
+      "fact": "The real collector calls the AirFogSim offloading setter and records the route action before env.step."
+    },
+    {
+      "path": "code/src/pi_jwm/step6_4b_live_bridge_v1.py",
+      "symbols": ["validate_command"],
+      "lines": [117],
+      "fact": "Formal Live Planner bridge rejects non-empty Route and requires explicit NOOP."
+    },
+    {
+      "path": "code/src/pi_jwm/step6_0a_candidate_generation_v1.py",
+      "symbols": ["validate_route"],
+      "lines": [136, 144],
+      "fact": "Candidate grammar represents offload and return route kinds, but the current live bridge does not admit them."
+    }
+  ],
+  "conclusion": "Input Offload has an official Ledger birth path and real setter path in the data collector, but formal Planner/Live bridge support remains outside this step. Dynamic Input Flow state update, model slot support and Scorer qualification are unverified.",
+  "gpu": false,
+  "locked_test": false
+}

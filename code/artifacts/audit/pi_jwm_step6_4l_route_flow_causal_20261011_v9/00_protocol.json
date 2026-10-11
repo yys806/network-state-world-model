@@ -1,0 +1,7 @@
+{
+  "GPU": false,
+  "locked_test": false,
+  "official_ledger_unchanged": true,
+  "schema": "PI-JWM-STEP-6.4L-LEDGER-AUDIT-v1",
+  "source_namespace": "code/artifacts/audit/pi_jwm_step6_4l_route_flow_causal_20261011_v7"
+}

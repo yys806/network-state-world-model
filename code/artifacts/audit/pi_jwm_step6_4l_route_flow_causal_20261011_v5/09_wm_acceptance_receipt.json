@@ -1,0 +1,17 @@
+{
+  "GPU": false,
+  "elapsed_seconds": 92.97504960000515,
+  "formal_scores_promoted": false,
+  "frozen_wm_h4_compatibility": {
+    "A": "WM_OR_SCORER_EXCEPTION",
+    "B": "WM_PREPARATION_EXCEPTION"
+  },
+  "locked_test": false,
+  "retrain_required": "UNDETERMINED",
+  "root_identity": "LIVE_ROOT_CAPTURE_VALID",
+  "scorer_scoreability": {
+    "A": "EXCEPTION",
+    "B": "EXCEPTION"
+  },
+  "status": "COMPLETED"
+}

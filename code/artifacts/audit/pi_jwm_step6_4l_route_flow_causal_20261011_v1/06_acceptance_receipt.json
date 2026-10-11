@@ -1,0 +1,20 @@
+{
+  "GPU": false,
+  "elapsed_seconds": 254.255795999954,
+  "frozen_wm_h4_compatibility": "CONDITIONAL_DIAGNOSTIC",
+  "input_route_support_boundary": "SOURCE_AUDIT_ONLY",
+  "locked_test": false,
+  "r39_exact_equivalence": "UNPROVEN",
+  "real_simulator_alignment": {
+    "A": "OBSERVED_ONE_REAL_STEP",
+    "B": "UNAVAILABLE"
+  },
+  "retrain_required": "UNDETERMINED",
+  "root_identity": "LIVE_ROOT_CAPTURE_VALID",
+  "route_flow_causality": "PASS_SHADOW_ONLY",
+  "scorer_scoreability": {
+    "A": "UNAVAILABLE",
+    "B": "UNAVAILABLE"
+  },
+  "status": "COMPLETED"
+}

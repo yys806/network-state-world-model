@@ -2082,3 +2082,4 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 ## 2026-10-11 STEP 6.4K — Deterministic Return Flow Shadow
 
 完成全量 12 条 dev_validation 的官方 Causal Flow Ledger 重放和逐 decision/task 压缩 ledger；旧 721/724 近似统计纠正为 710 waiting-to-return 无 Return Flow、713 FP32 潜在 fixed-support、710 FP64 潜在 fixed-support。新增 Shadow Return Flow 状态机、负例/守恒/多跳测试和独立审计。冻结模型已有 Return Flow anchor 的 H1–H4 递归通过；追加 Shadow Flow 也完成 4 步 finite 递归，参数未改变。状态为 RULE_ONLY_PASS、FROZEN_WM_RECURSION_PASS、FORMAL_PLANNER_SCOREABILITY_NOT_TESTED、RETRAIN_UNDETERMINED。下一动作：研究者决定是否正式定义 Return Route/动态 Flow 合同；不自动合并科学语义。
+2026-10-11 STEP 6.4L：完成 anchor-0006/Task_5 的真实 AirFogSim A/B Route 诊断。A 保持 Route NOOP；B 的真实 `TaskScheduler.setTaskReturnRoute` 成功，官方 Ledger 建立 `flow::Task_5::Return::0`，但一步真实观测无 transfer、Task_5 进入 failed。冻结 WM/Scorer 旁路未取得正式分数：A 在 Planner domain admission 异常，B 因 `UAV_0→UAV_1` communication support 缺失 fail-closed。Input Route 仅完成源码审计。状态等待研究者决定 Route/Comm/Flow 合同，不自动进入 STEP 6.4M。

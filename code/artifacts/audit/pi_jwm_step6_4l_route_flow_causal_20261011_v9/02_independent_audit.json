@@ -1,0 +1,66 @@
+{
+  "A_no_route_birth": true,
+  "B_flow_identity": [
+    {
+      "e2e_delivered": 0.556973122843206,
+      "e2e_remaining": 0.0,
+      "epoch": 0,
+      "feature_mask": {
+        "e2e_delivered": true,
+        "e2e_remaining": true,
+        "logical_destination": true,
+        "logical_source": true,
+        "total_data": true
+      },
+      "flow_id": "flow::Task_5::Input::0",
+      "flow_index": 0,
+      "flow_type": "Input",
+      "logical_destination": "UAV_0",
+      "logical_destination_capture_phase": "after_route_action_established_before_outcome",
+      "logical_destination_source": "established_offload_route_terminal",
+      "logical_source": "UAV_1",
+      "missing_reason": null,
+      "presence": false,
+      "previous_flow_id": null,
+      "source_provenance": "causal_task_state_and_established_route",
+      "status": "COMPLETED",
+      "supersede_reason": null,
+      "superseded_by_flow_id": null,
+      "task_id": "Task_5",
+      "total_data": 0.556973122843206
+    },
+    {
+      "e2e_delivered": 0.0,
+      "e2e_remaining": 0.07610754782944204,
+      "epoch": 0,
+      "feature_mask": {
+        "e2e_delivered": true,
+        "e2e_remaining": true,
+        "logical_destination": true,
+        "logical_source": true,
+        "total_data": true
+      },
+      "flow_id": "flow::Task_5::Return::0",
+      "flow_index": 1,
+      "flow_type": "Return",
+      "logical_destination": "UAV_1",
+      "logical_destination_capture_phase": "after_return_route_established_before_outcome",
+      "logical_destination_source": "decision.tasks[].return_destination_id",
+      "logical_source": "UAV_0",
+      "missing_reason": null,
+      "presence": true,
+      "previous_flow_id": null,
+      "source_provenance": "causal_task_state_and_established_route",
+      "status": "ACTIVE",
+      "supersede_reason": null,
+      "superseded_by_flow_id": null,
+      "task_id": "Task_5",
+      "total_data": 0.07610754782944204
+    }
+  ],
+  "B_return_birth": true,
+  "gpu_locked_false": true,
+  "raw_prefix_identity_note": "literal hashes differ only because diagnostic trajectory_id is A/B-specific; normalized causal content hash is the comparison",
+  "same_pre_route_prefix": true,
+  "status": "PASS"
+}

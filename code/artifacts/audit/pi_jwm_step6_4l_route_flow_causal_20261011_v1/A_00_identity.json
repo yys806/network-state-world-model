@@ -1,0 +1,16 @@
+{
+  "GPU": false,
+  "checkpoint_frozen": true,
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "formal_planner_modified": false,
+  "locked_test": false,
+  "mode": "A",
+  "normalization_frozen": true,
+  "policy_seed": 2026092418,
+  "route_action": "NONE",
+  "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+  "schema": "PI-JWM-STEP-6.4L-ROUTE-FLOW-CAUSAL-v1",
+  "simulator_seed": 2026092318,
+  "stages": {},
+  "target_frame": 6
+}

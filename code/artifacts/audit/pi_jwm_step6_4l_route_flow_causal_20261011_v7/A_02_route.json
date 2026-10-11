@@ -1,0 +1,16 @@
+{
+  "computed_cpu_work": 0.4836374411490477,
+  "destination": "UAV_1",
+  "lifecycle": "waiting_to_return",
+  "required_returned_size": 0.07610754782944204,
+  "route": [
+    "UAV_1"
+  ],
+  "route_table_after_setter": {},
+  "route_table_before": {},
+  "setter_called": null,
+  "setter_verified": false,
+  "source": "UAV_0",
+  "task_cpu_work": 0.4836374411490477,
+  "task_id": "Task_5"
+}

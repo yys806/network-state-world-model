@@ -1,0 +1,74 @@
+{
+  "capture_event_id": "capture-012",
+  "causal_prefix_sha256": "e26ba6a7f9b3eb480eb57b0f7fed01d99e205dd7e715598018721daec328afe8",
+  "deadline_sidecar_tasks": {
+    "Task_1": {
+      "arrival_time_s": 1.9000000000000006,
+      "deadline_s": 9.83963051400374
+    },
+    "Task_10": {
+      "arrival_time_s": 2.800000000000001,
+      "deadline_s": 8.693935072930326
+    },
+    "Task_11": {
+      "arrival_time_s": 3.2000000000000015,
+      "deadline_s": 10.17246634314144
+    },
+    "Task_12": {
+      "arrival_time_s": 3.5000000000000018,
+      "deadline_s": 11.029519587107895
+    },
+    "Task_2": {
+      "arrival_time_s": 2.600000000000001,
+      "deadline_s": 8.22325862361633
+    },
+    "Task_3": {
+      "arrival_time_s": 2.700000000000001,
+      "deadline_s": 9.785137361383532
+    },
+    "Task_4": {
+      "arrival_time_s": 3.800000000000002,
+      "deadline_s": 9.211892332481503
+    },
+    "Task_5": {
+      "arrival_time_s": 0.6,
+      "deadline_s": 8.59828601164002
+    },
+    "Task_6": {
+      "arrival_time_s": 1.2,
+      "deadline_s": 8.846242755522551
+    },
+    "Task_7": {
+      "arrival_time_s": 1.8000000000000005,
+      "deadline_s": 9.640591933139122
+    },
+    "Task_8": {
+      "arrival_time_s": 1.9000000000000006,
+      "deadline_s": 9.159762060051934
+    },
+    "Task_9": {
+      "arrival_time_s": 2.500000000000001,
+      "deadline_s": 10.83369954231198
+    }
+  },
+  "decision_count": 7,
+  "frame": 6,
+  "route_table_before": {},
+  "simulation_time_s": 1.8,
+  "step_count": 6,
+  "task_5": {
+    "arrival_time_s": 0.6,
+    "computed_cpu_work": 0.4836374411490477,
+    "current_node_id": "UAV_0",
+    "lifecycle": "waiting_to_return",
+    "required_returned_size": 0.07610754782944204,
+    "return_destination_id": "UAV_1",
+    "route_node_ids": [],
+    "task_cpu_work": 0.4836374411490477,
+    "task_id": "Task_5",
+    "task_node_id": "UAV_1",
+    "task_size": 0.556973122843206,
+    "transmitted_size": 0.0,
+    "visibility": "decision_observable"
+  }
+}

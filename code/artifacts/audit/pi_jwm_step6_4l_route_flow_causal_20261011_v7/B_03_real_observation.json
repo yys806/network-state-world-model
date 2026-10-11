@@ -1,0 +1,82 @@
+{
+  "capture_event_id": "capture-014",
+  "causal_prefix_after_step_sha256": "defc2ffe6ea87fb4b452632b82432586f5838caad5bfa9df00f761706d3f2e0a",
+  "frame": 7,
+  "route_table_after": {},
+  "selected_step6": {
+    "action_route": {
+      "empty": false,
+      "entries": [
+        {
+          "route_kind": "return",
+          "route_node_ids": [
+            "UAV_1"
+          ],
+          "target_node_id": "UAV_1",
+          "task_id": "Task_5",
+          "task_node_id": "UAV_1"
+        }
+      ],
+      "field_present": true,
+      "no_op_reason": null
+    },
+    "execution": {
+      "comp_missing_capacity_nodes": [],
+      "end_time_s": 1.9,
+      "env_step_completed": true,
+      "setter_calls": [
+        {
+          "setter_kind": "cpu_callback",
+          "succeeded": true
+        },
+        {
+          "setter_kind": "uav_mobility",
+          "succeeded": true,
+          "uav_id": "UAV_0"
+        },
+        {
+          "setter_kind": "uav_mobility",
+          "succeeded": true,
+          "uav_id": "UAV_1"
+        }
+      ],
+      "start_time_s": 1.8
+    },
+    "outcome_task_5": {
+      "arrival_time_s": 0.6,
+      "computed_cpu_work": 0.4836374411490477,
+      "current_node_id": "UAV_0",
+      "lifecycle": "failed",
+      "return_destination_id": "UAV_1",
+      "route_node_ids": [
+        "UAV_1"
+      ],
+      "task_cpu_work": 0.4836374411490477,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "task_size": 0.556973122843206,
+      "transmitted_size": 0.0,
+      "visibility": "decision_observable"
+    },
+    "slot_transfer_events": []
+  },
+  "simulation_time_s": 1.9,
+  "step_count": 7,
+  "task_5_after": {
+    "arrival_time_s": 0.6,
+    "computed_cpu_work": 0.4836374411490477,
+    "current_node_id": "UAV_0",
+    "lifecycle": "failed",
+    "required_returned_size": 0.07610754782944204,
+    "return_destination_id": "UAV_1",
+    "route_node_ids": [
+      "UAV_1"
+    ],
+    "task_cpu_work": 0.4836374411490477,
+    "task_id": "Task_5",
+    "task_node_id": "UAV_1",
+    "task_size": 0.556973122843206,
+    "transmitted_size": 0.0,
+    "visibility": "decision_observable"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "GPU": false,
+  "locked_test": false,
+  "max_real_steps_per_mode": 1,
+  "modes": [
+    "A",
+    "B"
+  ],
+  "same_seed_prefix": true,
+  "schema": "PI-JWM-STEP-6.4L-AIRFOGSIM-ROUTE-v1",
+  "target_frame": 6
+}
