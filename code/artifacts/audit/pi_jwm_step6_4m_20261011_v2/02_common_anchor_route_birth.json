@@ -1,0 +1,19 @@
+{
+  "compatibility_failure": [
+    {
+      "event": "TASK_FAIL_OUT_OF_TTI",
+      "service_skipped": true,
+      "task_id": "Task_5",
+      "time_s": 1.8
+    }
+  ],
+  "flow_id": "flow::Task_5::Return::0",
+  "flow_slot": 0,
+  "no_service_event": true,
+  "noop_anchor": "af02de89bd7bbcba4666a545e15b8ea3e507354e331e483f7c32a11ada8803f4",
+  "post_failure_lifecycle": "failed",
+  "pre_route_anchor": "af02de89bd7bbcba4666a545e15b8ea3e507354e331e483f7c32a11ada8803f4",
+  "route_anchor": "af02de89bd7bbcba4666a545e15b8ea3e507354e331e483f7c32a11ada8803f4",
+  "route_task_lifecycle_after_birth": "returning",
+  "same_pre_route_anchor": true
+}

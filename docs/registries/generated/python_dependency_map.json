@@ -3382,6 +3382,8 @@
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4m_contract_cpu_v1",
+        "scripts.run_step6_4m_contract_cpu_v2",
         "tests.test_step6_4k_return_shadow_v1"
       ],
       "imports": [],
@@ -3390,6 +3392,23 @@
       "path": "code/src/pi_jwm/step6_4k_return_shadow_v1.py",
       "test_files": [
         "code/tests/test_step6_4k_return_shadow_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.audit_step6_4m_contract_acceptance_v1",
+        "scripts.run_step6_4m_contract_cpu_v1",
+        "scripts.run_step6_4m_contract_cpu_v2",
+        "tests.test_step6_4m_route_comm_flow_contract_v1"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_4m_route_comm_flow_contract_v1",
+      "path": "code/src/pi_jwm/step6_4m_route_comm_flow_contract_v1.py",
+      "test_files": [
+        "code/tests/test_step6_4m_route_comm_flow_contract_v1.py"
       ]
     },
     {
@@ -4542,6 +4561,18 @@
       "lifecycle_status": "support",
       "module": "scripts.audit_step6_4l_route_flow_ledger_v1",
       "path": "code/scripts/audit_step6_4l_route_flow_ledger_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4m_route_comm_flow_contract_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4m_contract_acceptance_v1",
+      "path": "code/scripts/audit_step6_4m_contract_acceptance_v1.py",
       "test_files": []
     },
     {
@@ -9172,6 +9203,32 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4k_return_shadow_v1",
+        "pi_jwm.step6_4m_route_comm_flow_contract_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_4m_contract_cpu_v1",
+      "path": "code/scripts/run_step6_4m_contract_cpu_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4k_return_shadow_v1",
+        "pi_jwm.step6_4m_route_comm_flow_contract_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_4m_contract_cpu_v2",
+      "path": "code/scripts/run_step6_4m_contract_cpu_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.run_structured_robustness_v0",
         "scripts.run_structured_timing_v0",
@@ -13749,6 +13806,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4l_r1_route_flow_boundary",
       "path": "code/tests/test_step6_4l_r1_route_flow_boundary.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4m_route_comm_flow_contract_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4m_route_comm_flow_contract_v1",
+      "path": "code/tests/test_step6_4m_route_comm_flow_contract_v1.py",
       "test_files": []
     },
     {

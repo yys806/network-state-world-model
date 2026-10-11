@@ -231,3 +231,9 @@ STEP 6.3D-3080TI-MIGRATION-QUALIFICATION：正式数据迁移、真实 TRAIN CPU
 ## 2026-10-11 STEP 6.4L-R1
 
 真实 Route/Flow 补充诊断：`anchor-0006 / Task_5` 的 Route B 在 AirFogSim 以 `TASK_FAIL_OUT_OF_TTI` 失败；Raw 与 Model 的 UAV0→UAV1 U2U relation 存在，但当前 step 没有 RB service。A 资格修正后 H4 rollout 完成但 H1 fixed-support 拒绝；B Shadow Flow 完成 frozen WM H1–H4 并由原 Scorer 返回 SCOREABLE，正式分数未提升、A/B 不可比。证据：`code/artifacts/audit/pi_jwm_step6_4l_r1_20261011_v1/`、`..._v2/`。
+## STEP 6.4M — Route–Comm–Flow contract CPU audit (2026-10-11)
+
+- Canonical artifact: `code/artifacts/audit/pi_jwm_step6_4m_20261011_v2/`
+- Scope: R1 Task_5 trace reuse; zero new AirFogSim steps and zero new WM transitions.
+- Acceptance: independent 16/16 checks, `PASS_WITH_DECISION_GATES`.
+- Boundary: isolated single-hop reference only; formal Route integration, dynamic future Return birth, formal H4 compatibility and Scorer comparability remain blocked or require researcher decisions.

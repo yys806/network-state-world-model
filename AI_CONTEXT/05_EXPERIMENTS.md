@@ -442,3 +442,6 @@ CPU-only 单条 Formal Validation deterministic replay 与当前 4.4 规则负�
 ## 2026-10-11 STEP 6.4L-R1
 
 R1 是 CPU-only 的真实 Route/Flow 因果补充诊断。`anchor-0006 / Task_5` 的真实 Route B setter 后在 `_updateTask().checkTasks()` 以 `TASK_FAIL_OUT_OF_TTI` 失败，未进入新的 RB service；Raw channel 与 model relation 38 均支持 UAV0→UAV1。A 补齐官方 domain annotation 后 H4 rollout 完成但 H1 fixed-support 拒绝；B 修正字符串/整数模型索引后 Shadow Flow H4 与原 Scorer `SCOREABLE/H_eff=4`，未晋升正式分数，A/B objective comparability 未建立。R39 精确等价仍未证明；无 GPU、训练、B512、locked_test 或正式 Planner 改动。
+## 2026-10-11 STEP 6.4M
+
+6.4M CPU contract namespace：`code/artifacts/audit/pi_jwm_step6_4m_20261011_v2/`。v2 独立验收 16/16 checks，状态 `PASS_WITH_DECISION_GATES`；v1 收据 allowlist 缺陷保留在 `_v1` namespace。无新增 AirFogSim step、无新增 WM transition、GPU=false、locked_test=false。R1 的旧 Shadow H4/Scorer 结果仍不能提升为正式 Route 候选结果；本轮只证明事件顺序、同根参考状态机、官方 Ledger identity 和模型字段 binding。

@@ -1,0 +1,17 @@
+{
+  "binding": {
+    "append_required": true,
+    "destination_index": 5,
+    "flow_slot": 32,
+    "relation_index": 38,
+    "route": [
+      5
+    ],
+    "source_index": 4,
+    "task_index": 0
+  },
+  "formal_model_mutated": false,
+  "relation_index_expected": 38,
+  "relation_index_observed": 38,
+  "zero_cold_start_not_performed": true
+}

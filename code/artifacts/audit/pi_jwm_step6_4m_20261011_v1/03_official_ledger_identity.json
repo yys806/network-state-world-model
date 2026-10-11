@@ -1,0 +1,76 @@
+{
+  "birth_log": [
+    {
+      "flow_id": "flow::Task_5::Return::0",
+      "label": "SHADOW_ROUTE_EXPERIMENT",
+      "now": 1.8,
+      "route": [
+        "UAV_1"
+      ],
+      "source_time": 1.8,
+      "task_id": "Task_5"
+    }
+  ],
+  "contract_flow_id": "flow::Task_5::Return::0",
+  "ledger_flow_id": "flow::Task_5::Return::0",
+  "ledger_snapshot": {
+    "carrying_rows": [
+      {
+        "active": true,
+        "current_holder": "UAV_0",
+        "current_hop_index": 0,
+        "feature_mask": {
+          "hop_destination": true,
+          "hop_progress": true,
+          "hop_remaining": true,
+          "hop_source": true
+        },
+        "flow_id": "flow::Task_5::Return::0",
+        "hop_destination": "UAV_1",
+        "hop_progress": 0.0,
+        "hop_remaining": 0.07610754782944204,
+        "hop_source": "UAV_0",
+        "missing_reason": null,
+        "route": [
+          "UAV_1"
+        ],
+        "route_revision": 0
+      }
+    ],
+    "flow_index": {
+      "flow::Task_5::Return::0": 0
+    },
+    "logical_flow_rows": [
+      {
+        "e2e_delivered": 0.0,
+        "e2e_remaining": 0.07610754782944204,
+        "epoch": 0,
+        "feature_mask": {
+          "e2e_delivered": true,
+          "e2e_remaining": true,
+          "logical_destination": true,
+          "logical_source": true,
+          "total_data": true
+        },
+        "flow_id": "flow::Task_5::Return::0",
+        "flow_index": 0,
+        "flow_type": "Return",
+        "logical_destination": "UAV_1",
+        "logical_destination_capture_phase": "SHADOW_ROUTE_EXPERIMENT_after_validated_route_before_service",
+        "logical_destination_source": "shadow_current_task_return_destination",
+        "logical_source": "UAV_0",
+        "missing_reason": null,
+        "presence": true,
+        "previous_flow_id": null,
+        "source_provenance": "causal_task_state_and_established_route",
+        "status": "ACTIVE",
+        "supersede_reason": null,
+        "superseded_by_flow_id": null,
+        "task_id": "Task_5",
+        "total_data": 0.07610754782944204
+      }
+    ],
+    "schema_version": "PI-JWM-Causal-Flow-Ledger-v1-step4.2C-B"
+  },
+  "same_identity": true
+}

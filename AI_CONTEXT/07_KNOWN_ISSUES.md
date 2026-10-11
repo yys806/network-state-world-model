@@ -490,3 +490,8 @@ r39 的 receipt 只保存集合级统计，没有保存每个 candidate 的 fixe
 - UAV0→UAV1 在当前 Raw/Model 中有 U2U relation；本轮分类 `TEMPORARILY_NO_SERVICE`，不支持“物理不可达”或“图缺边”结论。
 - Frozen WM 的 Shadow 新 Flow 可以递归 H1–H4，但该 slot 使用 zero cold start，且不构成正式 Route candidate；正式 A/B Objective 可比性仍未建立。
 - 进入 6.4M 前需研究者决定 Route、RB assignment、Flow birth 与 TTI/lifecycle 的顺序合同；不自动改 Scorer、Planner 或模型。
+## 2026-10-11 — Route–Comm–Flow 合同阻塞
+
+- AirFogSim compatibility path 在 Route birth 后仍使用旧 `last_transmission_time`，Task_5 可在 wireless allocation 前 `TASK_FAIL_OUT_OF_TTI`；是否采用新 Return clock 是研究者决定项。
+- 正式 Planner 的 Route 是 explicit NOOP，冻结 World Model/Scorer 不支持 future Return birth；新 Flow 的 slot/graph/hidden/cold-start 和 objective burden/cohort 不能由隔离 binding 代替。
+- 6.4M 同根 A/B 只在参考状态机成立；正式 H4 compatibility 与 Scorer comparability 仍 `NOT_ESTABLISHED/BLOCKED`。

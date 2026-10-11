@@ -471,3 +471,8 @@ r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 
 ## 2026-10-11 STEP 6.4L-R1 当前事实
 
 真实 `anchor-0006 / Task_5 / frame6` 的 Route B setter 成功，但 AirFogSim 在 `_updateTask().checkTasks()` 先以旧 `last_transmission_time` 触发 `TASK_FAIL_OUT_OF_TTI`，没有新的 RB request；deadline 未到期。`UAV_0→UAV_1` 在 Raw channel 与 model relation 38 中存在，当前分类为 `TEMPORARILY_NO_SERVICE`。A 通过正式 `annotate_domain()` 后 H4 rollout 完成，原 Scorer 在 H1 因 `UNSUPPORTED_FUTURE_RETURN_BIRTH` 拒绝；B 修正整数模型索引后 Shadow Flow 完成 frozen WM H1–H4、原 Scorer `SCOREABLE/H_eff=4`，但 Shadow 分数未晋升，A/B Objective 可比性 `NOT_ESTABLISHED`。R1 证据：`code/artifacts/audit/pi_jwm_step6_4l_r1_20261011_v1/`、`..._v2/`；r39 精确等价仍 `UNPROVEN`，GPU、训练、B512、locked_test 和 STEP 6.4M 未执行。下一动作由研究者决定 Route→RB→Flow birth→TTI 的正式状态合同。
+## 2026-10-11 STEP 6.4M — Route–Comm–Flow 合同状态
+
+6.4M 已完成隔离合同和 CPU 机制验证。真实 R1 Task_5 顺序是：Route setter/Route 消费 → `waiting_to_return` 转 `returning` → 旧 `last_transmission_time` 的 TTI 检查 → `TASK_FAIL_OUT_OF_TTI` → 未进入 wireless RB service。隔离 A/B 从相同 pre-Route anchor 派生，B 的 `flow::Task_5::Return::0` 与官方 Ledger identity 一致；没有新增 AirFogSim step 或 WM transition。
+
+当前状态：`SOURCE_EVENT_ORDER_VERIFIED=PASS`、`ROUTE_COMM_TTI_CONTRACT=RESEARCH_DECISION_REQUIRED`、`INPUT_RETURN_FLOW_STATE_CONTRACT=PASS`（单跳参考）、`DYNAMIC_STATE_INTERFACE_READINESS=PASS`（隔离 binding）、`COMMON_ANCHOR_CAUSALITY=PASS`（隔离 A/B）、`FROZEN_WM_H4_COMPATIBILITY=NOT_ESTABLISHED_FORMAL_ROUTE_SHADOW_ONLY`、`SCORER_COMPARABILITY_READINESS=BLOCKED`、`FORMAL_INTEGRATION_READINESS=RESEARCH_DECISION_REQUIRED`、`RETRAIN_REQUIRED=UNDETERMINED`。下一步只等待研究者冻结 Route→Comm→Flow→TTI 合同；GPU 和 locked_test 关闭。

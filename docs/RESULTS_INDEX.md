@@ -245,3 +245,6 @@ No new performance result. The only accepted result is a readiness diagnostic: d
 ## 2026-10-11 STEP 6.4L-R1
 
 新增结果：真实 Task_5 failure code、UAV0→UAV1 support matrix、A/B frozen-WM 旁路结果和独立验收。A 首拒绝 `UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1`；B Shadow `SCOREABLE/H_eff=4`，不代表正式 Route candidate。详情见 R1 artifact namespace 与 `docs/implementation_records/STEP_06_4L_R1_ROUTE_FLOW_CAUSAL.md`。
+## 2026-10-11 STEP 6.4M
+
+`code/artifacts/audit/pi_jwm_step6_4m_20261011_v2/07_independent_acceptance.json` is the canonical acceptance pointer: 16/16 checks pass. The result supports source event order, same pre-Route anchor in the isolated reference, official Flow identity, and compatibility TTI failure. It does not provide a formal Route candidate score, a formal dynamic Return Flow H4 result, a performance claim, or evidence that retraining is required.

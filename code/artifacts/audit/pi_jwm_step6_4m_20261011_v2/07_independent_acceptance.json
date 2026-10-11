@@ -1,0 +1,40 @@
+{
+  "GPU": false,
+  "check_count": 16,
+  "checks": {
+    "common_anchor_recomputed": true,
+    "deadline_not_expired": true,
+    "identity_recomputed": true,
+    "ledger_identity_recomputed": true,
+    "model_binding_recomputed": true,
+    "no_task5_transfer_after_route": true,
+    "post_failure_recomputed": true,
+    "prior_v1_defect_preserved": true,
+    "route_birth_is_action_effect": true,
+    "runtime_failure_is_tti": true,
+    "scope_boundary_recomputed": true,
+    "source_order_recomputed": true,
+    "status_fields_preserved": true,
+    "tti_precedes_service_recomputed": true,
+    "v2_event_receipt_agrees": true,
+    "v2_schema_fix_present": true
+  },
+  "locked_test": false,
+  "passed_count": 16,
+  "prior_v1": {
+    "interpretation": "preserved as a receipt schema allowlist defect; v2 corrected it",
+    "status": "BLOCKED"
+  },
+  "recomputed_from": [
+    "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\03_runtime_events.json",
+    "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\02_post_step.json",
+    "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\00_scope.json",
+    "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\01_source_event_order.json",
+    "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\02_common_anchor_route_birth.json",
+    "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\03_official_ledger_identity.json",
+    "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\04_model_dynamic_binding.json",
+    "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\05_acceptance_receipt.json"
+  ],
+  "schema": "PI-JWM-STEP-6.4M-INDEPENDENT-ACCEPTANCE-v1",
+  "status": "PASS_WITH_DECISION_GATES"
+}

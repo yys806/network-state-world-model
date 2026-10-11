@@ -1,0 +1,39 @@
+{
+  "files": [
+    {
+      "bytes": 544,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\00_scope.json",
+      "sha256": "7846b62bdf4ef5b3f2586f543b2f85a8f851d59e49a22203a7c7b4d64de80af1"
+    },
+    {
+      "bytes": 1050,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\01_source_event_order.json",
+      "sha256": "fde495d72e948d9401d58d16528be8811577333965936905417eb1d19fb3c2b4"
+    },
+    {
+      "bytes": 654,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\02_common_anchor_route_birth.json",
+      "sha256": "068b288595a9b45eccec941e4d75f5ed9d6aba84d2c3c3c3a807a645e0d87ca9"
+    },
+    {
+      "bytes": 2238,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\03_official_ledger_identity.json",
+      "sha256": "2af2e11af851b12ed38df33c64a46fbab23c098cfc165efc8b799d9d3fbb7868"
+    },
+    {
+      "bytes": 357,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\04_model_dynamic_binding.json",
+      "sha256": "ed34ba6ef03e0bb56006d06b51c95edf0176ea0cbcde4bf5a10b5dc40b69681a"
+    },
+    {
+      "bytes": 987,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4m_20261011_v2\\05_acceptance_receipt.json",
+      "sha256": "b30f7fcdafaa99d46b5d883002640ec260af7040cba4603e49ea9bb656e79516"
+    }
+  ],
+  "source_artifacts": [
+    "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1",
+    "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v2",
+    "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4"
+  ]
+}

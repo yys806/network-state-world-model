@@ -487,3 +487,6 @@ r39原始统计归属已复核：anchor-0006为8×(344 complete,0 dead-end)，an
 2026-10-11：新增 STEP 6.4L 真实 Route–Flow A/B 诊断、官方 Ledger 独立审计、冻结 WM/Scorer fail-closed 证据和 Input Route 源码边界报告；未改变正式 Planner/Scorer/model 语义。
 
 2026-10-11 STEP 6.4L-R1：补充证据纠正两项诊断接线问题并锁定 Task_5 failure code。AirFogSim `TASK_FAIL_OUT_OF_TTI` 发生在 wireless 前；Raw/Model U2U relation 存在，分类 `TEMPORARILY_NO_SERVICE`。A 正式 domain annotation 后暴露 H1 fixed-support rejection；B integer entity-index 修正后 Shadow Flow frozen WM H1–H4 与原 Scorer `SCOREABLE/H_eff=4`，不晋升正式分数，A/B 不可比。证据 namespace `code/artifacts/audit/pi_jwm_step6_4l_r1_20261011_v1/`、`..._v2/`，独立验收 PASS。未改正式算法，未运行 GPU/训练/B512/locked_test/6.4M。
+## 2026-10-11 STEP 6.4M
+
+新增 Route–Comm–Flow Dynamic State Contract、隔离 CPU reference state machine、v2 contract receipt 和独立 16 项验收。源码和 R1 trace 锁定 Route→TTI→wireless 的真实顺序；同根 A/B 与官方 Ledger Flow identity 通过。未修改正式 World Model、Planner、Scorer、Objective、CandidateDomain、AirFogSim、checkpoint 或 normalization；GPU/训练/正式搜索/locked_test 未运行。

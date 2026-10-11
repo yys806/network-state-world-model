@@ -2085,3 +2085,11 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 2026-10-11 STEP 6.4L：完成 anchor-0006/Task_5 的真实 AirFogSim A/B Route 诊断。A 保持 Route NOOP；B 的真实 `TaskScheduler.setTaskReturnRoute` 成功，官方 Ledger 建立 `flow::Task_5::Return::0`，但一步真实观测无 transfer、Task_5 进入 failed。冻结 WM/Scorer 旁路未取得正式分数：A 在 Planner domain admission 异常，B 因 `UAV_0→UAV_1` communication support 缺失 fail-closed。Input Route 仅完成源码审计。状态等待研究者决定 Route/Comm/Flow 合同，不自动进入 STEP 6.4M。
 
 2026-10-11 STEP 6.4L-R1：完成 Task_5 真实 failure-code 与 Route/Comm/Flow 补充验证。AirFogSim 在 `_updateTask().checkTasks()` 中以旧 `last_transmission_time=1.2`、`tti_threshold=0.5` 于 1.8s 触发 `TASK_FAIL_OUT_OF_TTI`，早于 wireless RB allocation；deadline 未到期。Raw channel 与 model relation 38 均支持 UAV_0→UAV_1，分类为 `TEMPORARILY_NO_SERVICE`。A 通过官方 `annotate_domain()` 后 H1–H4 递归完成，Scorer 首拒绝为 `UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1`；B 修正字符串/整数索引接线后 Shadow Flow H1–H4 与 Scorer `SCOREABLE/H_eff=4`，但不晋升正式分数，A/B Objective 可比性未建立。证据：`code/artifacts/audit/pi_jwm_step6_4l_r1_20261011_v1/`、`..._v2/`；GPU、训练、B512、locked_test、STEP 6.4M 均未执行。下一动作仅为研究者决定 Route→Comm→Flow→TTI 合同。
+# 2026-10-11 STEP 6.4M — Route–Comm–Flow 统一状态合同与 CPU 机制验证
+
+当前 gate：6.4M 合同与隔离 CPU 验证已完成，正式 Route 联合规划仍关闭。
+
+- 已完成：真实 AirFogSim/R1 事件顺序核对；v1 单跳 Route–Comm–Flow–Task 合同；同一 pre-Route anchor 的 A/B 隔离参考；官方 Ledger Flow identity 对齐；模型 ID/index/slot 只读 binding；负例和独立验收器。
+- 当前 blocker：正式 World Model 尚不支持 future Return birth；原 Scorer 的 fixed support、cohort 和 burden mask 不能公平比较新生 Flow；Route→Comm 同隙时序与 Return TTI 起点需要研究者冻结。
+- 本轮边界：无新增 AirFogSim step、无新增 WM transition、GPU=false、locked_test=false；不修改正式科学语义。
+- 唯一下一动作：研究者决定 Route→Comm→Flow→TTI 合同，再决定是否授权正式接口设计；本轮停止，不自动进入 6.4M 后续集成。

@@ -1674,3 +1674,10 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 2026-10-11 STEP 6.4L：Observation：Task_5 frame6 为 waiting_to_return/精确完成，A 无 Route，B 真实 setter 成功。Implementation Fact：官方 Ledger 在 B action 后建立 Return::0；AirFogSim 一步无 transfer，Task_5 failed。Inference：Route birth、Comm 调度和模型 Flow slot 是独立门槛。Hypothesis：当前阻塞是 Route/Comm/Flow 合同缺口与 Planner Route NOOP 的组合。Research Proposal：研究者先决定正式 Route/Comm/Flow 状态合同；不自动修改科学语义。
 
 2026-10-11 STEP 6.4L-R1：Implementation Fact：`TaskScheduler.setTaskReturnRoute` 只写 Route buffer；`_updateTask` 消费后调用 `setTaskReturnRouteAndStartReturn`，随后 `checkTasks` 使用旧 `last_transmission_time` 检查 TTI，Task_5 在 1.8s 以 failure code 1 失败，wireless 前没有 RB request。Observation：Raw U2U channel 与 model relation 38（presence/validity/wireless mask 全 true）均存在；因此不是 `PHYSICALLY_UNSUPPORTED_HOP` 或 `RAW_OR_GRAPH_SUPPORT_MISSING`。A qualification 修正消除了诊断异常并暴露固定支持 H1 拒绝；B integer-index 修正后 Shadow H4/Scorer PASS。Inference：剩余问题是 Route→Comm assignment→Flow birth→TTI 顺序和正式候选资格合同；Shadow 结构可递归不等于预测可靠或正式 Objective 可比。Research Proposal：STEP 6.4M 前先由研究者冻结上述状态合同，不自动集成。
+# 2026-10-11 STEP 6.4M 新发现
+
+1. **Implementation Fact**：AirFogSim 的 callback Route setter、`_updateTask()` 的 Route 消费、`checkTasks()` 的旧 transmission TTI 检查和 wireless RB allocation 存在明确先后顺序；Task_5 在 1.8s 的真实 failure 是 `TASK_FAIL_OUT_OF_TTI`，不是 deadline 到期，也不是物理链路不存在。
+2. **Observation**：隔离参考状态机能从同一个 pre-Route anchor 派生 Route-NOOP 与显式 Return Route；只有 B 创建 `flow::Task_5::Return::0`，并在兼容时序中复现“TTI 失败、服务跳过、无 transfer”。官方 Ledger 与合同 Flow ID 对齐。
+3. **Inference**：Route birth、通信服务、TTI 时钟和 World Model dynamic slot 是独立门槛；同根 birth 可执行不等于正式冻结模型 H4 或 Scorer 已具备资格。
+4. **Research Decision Required**：是否允许同一时隙 pending Route 获得 Comm/RB、Return TTI 是否使用新 clock、动态 Flow 由 Planner adapter 还是模型结构承担、Scorer burden/cohort 是否扩展。
+5. **Preserved defect**：6.4M v1 外层 receipt 因状态 allowlist 错误显示 BLOCKED；v2 修正收据状态并保留 v1 原始文件，独立审计确认两者没有科学结果差异。

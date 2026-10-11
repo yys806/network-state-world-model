@@ -1,0 +1,17 @@
+{
+  "GPU": false,
+  "contract": {
+    "formal_planner_integration": false,
+    "formal_semantics_modified": false,
+    "future_truth_used": false,
+    "schema": "PI-JWM-STEP-6.4M-ROUTE-COMM-FLOW-CONTRACT-v1",
+    "single_hop_only": true,
+    "tti_mode": "AIRFOGSIM_COMPAT_LAST_TRANSMISSION_TIME"
+  },
+  "formal_semantics_modified": false,
+  "locked_test": false,
+  "new_airfogsim_steps": 0,
+  "new_wm_transitions": 0,
+  "schema": "PI-JWM-STEP-6.4M-CONTRACT-CPU-v1",
+  "source_root": "STEP_6.4L-R1 anchor-0006 Task_5 frame 6"
+}

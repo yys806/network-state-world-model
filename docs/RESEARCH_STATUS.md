@@ -283,3 +283,6 @@ Objective source reconciliation and a single non-locked Formal Validation deadli
 ## 2026-10-11 STEP 6.4L-R1
 
 `TASK5_FAILURE_ROOT_CAUSE=PASS`（TTI failure before wireless）、`ROUTE_COMM_SUPPORT_CLASSIFICATION=TEMPORARILY_NO_SERVICE`、`REAL_RETURN_FLOW_H4_COMPATIBILITY=PASS_SHADOW_ONLY`、`SCORER_SCOREABILITY=BLOCKED_FOR_FORMAL_A_B_COMPARISON`、`CANDIDATE_OBJECTIVE_COMPARABILITY=NOT_ESTABLISHED`、`RETRAIN_REQUIRED=UNDETERMINED`。本轮未改正式科学语义。
+## 2026-10-11 STEP 6.4M
+
+6.4M completed the source event-order audit and an isolated versioned Route–Comm–Flow–Task contract. The real Task_5 trace reproduces `TASK_FAIL_OUT_OF_TTI` before wireless service; the contract Flow ID matches the official Ledger and same-anchor A/B causality passes in the reference harness. This is mechanism evidence only: formal World Model dynamic birth and formal Scorer comparability are not established. Researcher decision is required for Return TTI origin, same-slot Route→Comm service, dynamic slot/cold-start, and Objective mask semantics. `RETRAIN_REQUIRED=UNDETERMINED`; GPU and locked_test remain closed.

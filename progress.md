@@ -1637,3 +1637,8 @@ r39 已完成独立审计：两条 live episode 各 8 次决策，16/16 B512、1
 2026-10-11 STEP 6.4L：同一 live root 的 A/B 真实 Route 对照和官方 Ledger 独立审计完成；B 的 Return Flow birth 已证实，真实传输未发生。冻结模型 A/B 均未进入正式 Scorer 评分，未伪造 score。GPU、训练、B512、locked_test 未运行。
 
 2026-10-11 STEP 6.4L-R1：R1 运行时回执锁定 Task_5 为 `TASK_FAIL_OUT_OF_TTI`，失败发生在 `_updateTask().checkTasks()`、没有新的 RB request，deadline 未到期；UAV_0→UAV_1 Raw/Model U2U relation 存在，当前分类 `TEMPORARILY_NO_SERVICE`。A 官方 domain qualification 修正后 H4 rollout PASS 但固定支持在 H1 拒绝；B 修正整数模型索引后 Shadow Flow H4 与原 Scorer `SCOREABLE/H_eff=4`，未提升正式分数，Objective comparability 仍 `NOT_ESTABLISHED`。独立验收 PASS；无 GPU/训练/B512/locked_test/正式 Route Planner 改动。唯一下一动作等待研究者冻结 Route、RB、Flow birth 和 TTI 顺序合同。
+# 2026-10-11 STEP 6.4M — 完成合同与隔离 CPU 收口
+
+完成了 `PIJWM_STEP_06_4M_ROUTE_COMM_FLOW_DYNAMIC_STATE_CONTRACT_V1.md`、标准库隔离参考状态机、v2 CPU 证据和独立验收器。复用 R1 Task_5 真实 trace 后，独立复算 16/16 检查通过：Route setter/Flow birth 发生在 TTI 检查前，但旧 `last_transmission_time` 使任务在无线 RB 分配前以 `TASK_FAIL_OUT_OF_TTI` 失败；没有新增 transfer；A/B 的 pre-Route fingerprint 相同；合同 Flow ID 与官方 Ledger 相同；新增模型 Flow 只验证到 relation 38/slot append binding，不修改正式模型。
+
+focused contract tests 14/14 通过。`FROZEN_WM_H4_COMPATIBILITY=NOT_ESTABLISHED_FORMAL_ROUTE_SHADOW_ONLY`、`SCORER_COMPARABILITY_READINESS=BLOCKED`、`FORMAL_INTEGRATION_READINESS=RESEARCH_DECISION_REQUIRED`、`RETRAIN_REQUIRED=UNDETERMINED`。未启动 GPU、训练、正式搜索或 locked_test。

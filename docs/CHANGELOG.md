@@ -536,3 +536,6 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 2026-10-11：STEP 6.4L 完成真实 Task_5 Route setter 与 Return Flow birth 验证；真实 transfer 未发生，冻结模型新 Flow 支持和正式 Scorer 仍未通过资格门禁。
 
 2026-10-11 STEP 6.4L-R1：新增真实 Task_5 runtime trace、Route/Comm support matrix、A/B frozen-WM v1/v2 诊断、独立 acceptance 和 focused regression。锁定 `TASK_FAIL_OUT_OF_TTI`、`TEMPORARILY_NO_SERVICE`、A fixed-support H1 rejection 与 B Shadow H4/Scorer pass；正式 Objective comparability 未建立，未改变科学语义。
+## 2026-10-11 STEP 6.4M
+
+新增 `PIJWM_STEP_06_4M_ROUTE_COMM_FLOW_DYNAMIC_STATE_CONTRACT_V1.md`、隔离参考状态机、CPU 机制 receipt 和独立验收器。真实 Task_5 的 Route/TTI/wireless 事件顺序与同根 A/B Flow birth 通过；正式动态 Flow H4 与 Scorer 可比性保持未建立/阻塞。无 GPU、训练、正式搜索或 locked_test。

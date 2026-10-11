@@ -1,0 +1,21 @@
+{
+  "GPU": false,
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "failure_cause": "TASK_FAIL_OUT_OF_TTI before wireless allocation; old last_transmission_time retained",
+  "formal_score_promoted": false,
+  "locked_test": false,
+  "normalization_sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+  "schema": "PI-JWM-STEP-6.4M-CONTRACT-CPU-ACCEPTANCE-v1",
+  "status": "BLOCKED",
+  "statuses": {
+    "COMMON_ANCHOR_CAUSALITY": "PASS",
+    "DYNAMIC_STATE_INTERFACE_READINESS": "PASS",
+    "FORMAL_INTEGRATION_READINESS": "RESEARCH_DECISION_REQUIRED",
+    "FROZEN_WM_H4_COMPATIBILITY": "NOT_ESTABLISHED_FORMAL_ROUTE_SHADOW_ONLY",
+    "INPUT_RETURN_FLOW_STATE_CONTRACT": "PASS",
+    "RETRAIN_REQUIRED": "UNDETERMINED",
+    "ROUTE_COMM_TTI_CONTRACT": "RESEARCH_DECISION_REQUIRED",
+    "SCORER_COMPARABILITY_READINESS": "BLOCKED",
+    "SOURCE_EVENT_ORDER_VERIFIED": "PASS"
+  }
+}

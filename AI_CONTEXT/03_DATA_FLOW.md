@@ -285,3 +285,8 @@ Formal Raw 原样保留；当前 Raw 已含 `arrival_time_s`、`required_returne
 ## 2026-10-11 R1 Route→Flow runtime boundary
 
 真实执行顺序已由 AirFogSim runtime trace 记录：Route setter 写入 buffer → `_updateTask` 消费并转为 returning → `checkTasks` TTI 检查 → `_updateWirelessCommunication` 分配/执行 RB。Task_5 在第三步即失败，故当前 root 没有新的 Return transfer。模型侧同一 root 的 U2U relation 38 存在；Shadow Flow birth 只在隔离诊断中提前加入 state，不能视为正式动作执行后的真实配对。
+## 2026-10-11 — 6.4M 动态状态合同补充
+
+当前可复核的事件顺序和数据边界见 `docs/contracts/PIJWM_STEP_06_4M_ROUTE_COMM_FLOW_DYNAMIC_STATE_CONTRACT_V1.md`。R1 真实 trace 证明“通信关系存在”“Flow 已 birth”“当前 tick 获得服务”不能合并：Task_5 的 Route 被消费并进入 returning 后，旧 transmission TTI 先失败，未进行 RB/service。隔离参考 `code/src/pi_jwm/step6_4m_route_comm_flow_contract_v1.py` 只验证 ID→slot/index、single-hop Route、Comm qualification、TTI-before-service 和 E2E conservation，不修改 Tensor/Graph/latent。
+
+新增 Flow 对现有模型 anchor 需要 append slot 32，使用 relation 38（UAV_0→UAV_1）；这只是只读 binding 观察，不能作为正式 World Model dynamic birth 已实现的证据。Future Return birth、cold-start hidden、anchor-frozen burden mask 和正式 Scorer comparability 仍是未解决边界。

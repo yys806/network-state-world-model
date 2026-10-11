@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "deadline_not_expired": true,
+    "no_new_rb_request": true,
+    "no_task5_transfer_after_route": true,
+    "route_consumed_before_tti_failure": true,
+    "tti_failure_before_wireless": true
+  },
+  "runtime_failure_code": 1,
+  "runtime_failure_reason": "Task fails due to transmission timeout.",
+  "runtime_source_sha": {
+    "code\\reference\\AirFogSim\\airfogsim\\airfogsim_env.py": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+    "code\\reference\\AirFogSim\\airfogsim\\entities\\task.py": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0",
+    "code\\reference\\AirFogSim\\airfogsim\\manager\\task_manager.py": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+    "code\\reference\\AirFogSim\\airfogsim\\scheduler\\task_sched.py": "05fd0290c0f01a9cb7a92c561a6151ab86c4209faafa2fa8101e93f57b42f572",
+    "code\\scripts\\collect_step5_5_formal_raw_v1.py": "9d513cc114954fffb555f54e5f0aeea4b9edbf92292f5f5348066deb2b191f5e"
+  },
+  "status": "PASS"
+}
