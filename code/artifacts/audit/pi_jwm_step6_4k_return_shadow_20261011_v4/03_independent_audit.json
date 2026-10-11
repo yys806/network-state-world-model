@@ -1,0 +1,42 @@
+{
+  "checks": {
+    "decision_roots": true,
+    "formal_scoreability_not_claimed": true,
+    "fp64_fp32_conflicts": true,
+    "frozen_existing_h4_pass": true,
+    "frozen_shadow_h4_pass": true,
+    "gpu_locked_false": true,
+    "known_return_records": true,
+    "mapping_errors_reproduced": true,
+    "potential_blocks_fp32": true,
+    "task_records": true,
+    "trajectory_ledger_files": true,
+    "waiting_without_return": true
+  },
+  "git": "bde348d26dc21e4e235f42c972f79da3ad12425d",
+  "ledger_sha256": {
+    "formal-v1-sim-2026092301-policy-2026092401_ledger.jsonl.gz": "3671259b56395dff83088130253df32ea1848fbc4897b3225b3af05c641727d1",
+    "formal-v1-sim-2026092302-policy-2026092402_ledger.jsonl.gz": "d26fdbe56492758c277a364509f4fd1ba56e490a8ab30c0167179a85a16eb4eb",
+    "formal-v1-sim-2026092313-policy-2026092413_ledger.jsonl.gz": "d92a0379b6e3bda8d28a1dee9d0de72d2dd02ec041d8249815797255a05d517d",
+    "formal-v1-sim-2026092315-policy-2026092415_ledger.jsonl.gz": "68990f9e550d483c0dcc237015c80360098bdc0b24b06abca755fb892390eaf7",
+    "formal-v1-sim-2026092318-policy-2026092418_ledger.jsonl.gz": "41c3f739ebac3f69073898ae1de86066444c1267f679a959c7dad77fbeb4d614",
+    "formal-v1-sim-2026092322-policy-2026092422_ledger.jsonl.gz": "b2dfd6d85f799f5b3bb55a2c72714054a3e856576ecc239ad948280d26435415",
+    "formal-v1-sim-2026092323-policy-2026092423_ledger.jsonl.gz": "3b788464f726486e4295900338ff174402f36344f5ab67a4e15a2ee874679b97",
+    "formal-v1-sim-2026092326-policy-2026092426_ledger.jsonl.gz": "7b520b4ca32f581341f6dcdaa434723b04e5cb71e2c01a50181b87692e1e41d5",
+    "formal-v1-sim-2026092331-policy-2026092431_ledger.jsonl.gz": "868e81a9a05b96d05d9eb89709010e1cab94c80fe8ac77acca8900329557643f",
+    "formal-v1-sim-2026092341-policy-2026092441_ledger.jsonl.gz": "33246aed29e92ec6d76f3b880aeaa4dea5b39461bec1ff58dad217881b1e9481",
+    "formal-v1-sim-2026092350-policy-2026092450_ledger.jsonl.gz": "0a1ea4e76d97db61cc71db6e6f352facd53e7e1f3cd2367b5b539243d79639d2",
+    "formal-v1-sim-2026092358-policy-2026092458_ledger.jsonl.gz": "c074a80690e521c0687d402b516c487d6259ddf4c51f08aad60babf370fddae8"
+  },
+  "recomputed": {
+    "decision_roots": 1164,
+    "fp64_fp32_conflicts": 3,
+    "known_return_records": 8460,
+    "mapping_errors": 1237,
+    "potential_blocks_fp32": 713,
+    "task_records": 48078,
+    "unique_flow_ids": 157,
+    "waiting_without_return": 710
+  },
+  "status": "PASS"
+}

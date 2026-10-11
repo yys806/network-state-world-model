@@ -1,0 +1,12 @@
+{
+  "GPU": false,
+  "checkpoint_frozen": true,
+  "formal_search": false,
+  "git": "bde348d26dc21e4e235f42c972f79da3ad12425d",
+  "label": "NEW_CPU_DIAGNOSTIC",
+  "locked_test": false,
+  "new_wm_transition_budget": 4,
+  "normalization_frozen": true,
+  "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0083",
+  "shadow_route_label": "SHADOW_ROUTE_EXPERIMENT"
+}

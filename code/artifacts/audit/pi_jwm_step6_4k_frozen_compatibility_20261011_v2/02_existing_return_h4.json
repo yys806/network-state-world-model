@@ -1,0 +1,40 @@
+{
+  "flow_presence": [
+    8,
+    8,
+    8,
+    8
+  ],
+  "formal_scorer_not_promoted": true,
+  "horizons": 4,
+  "output_fingerprints": [
+    {
+      "graph": "f37c84fddd77d67e864ac336cfa2e9aef9b7a87eb0cb42ce8bfa6b0277f79b71",
+      "latent": "e078db38f5e72168f646345a7a742de1d9ec4fdb035682da47b312e176d3de18",
+      "state": "9e29a5baf71a89794f6c8615ce40eddf51f7c4bc3d86ddf56a2fed4e9346b6f7"
+    },
+    {
+      "graph": "7557fef438567fda50a14b9f06ca708ed94f497054aaaef7bd828ff272175516",
+      "latent": "73f5166338a30f60f41d8e6658aed520832fa0565f89a3f0b029905b6da07b01",
+      "state": "e46d69e1b424cc9b9a3faf485c15b4968a64e8b814394fe88b0f6d3734f18ddb"
+    },
+    {
+      "graph": "88423d7ead48e3e4e4db9e4dfcf652b58297d781b59e1446277b27403f9b5e53",
+      "latent": "8f8d204dc9f38281cd47f2797dd9e7a3d57f8b816b419508a80c58d6b7459f39",
+      "state": "d9d27020a4bea9727573bfc82c37719b0c6a59bd397c6480d6938a6078353ef5"
+    },
+    {
+      "graph": "a68d722049e2f2ae86aa026346cc9a8d8390b239693f19eea925b61d269cbbc6",
+      "latent": "aac3e9473313a3fd2bf45c2c61b7dc241b50e27c9d40d69e89a55299d1371c8a",
+      "state": "89904d45b714bf931ca764a67890e66b545f59dc0177fcf82931ed184e05ff57"
+    }
+  ],
+  "recursive_links": "PASS",
+  "status": "FROZEN_WM_RECURSION_PASS",
+  "task_completed": [
+    3,
+    3,
+    3,
+    3
+  ]
+}

@@ -1,0 +1,650 @@
+{
+  "counts": {
+    "computing_unfinished": 36,
+    "decision_roots": 97,
+    "established_untransmitted": 464,
+    "fp64_fp32_conflict": 1,
+    "independent_tasks": 137,
+    "mapping_errors": 137,
+    "nonterminal_task_records": 2658,
+    "old_previous_frame_potential_724": 61,
+    "old_previous_frame_waiting_721": 59,
+    "potential_fixed_support_block_fp32": 60,
+    "potential_fixed_support_block_fp64": 59,
+    "raw_lifecycle_computing": 36,
+    "raw_lifecycle_done": 231,
+    "raw_lifecycle_failed": 2095,
+    "raw_lifecycle_offloading": 3,
+    "raw_lifecycle_returning": 8,
+    "raw_lifecycle_to_generate": 115,
+    "raw_lifecycle_waiting_to_offload": 2437,
+    "raw_lifecycle_waiting_to_return": 59,
+    "return_completed": 231,
+    "return_known": 695,
+    "return_presence": 464,
+    "roots_multiple_blocks": 8,
+    "roots_with_block": 52,
+    "task_records": 5121,
+    "waiting_route_absent": 59
+  },
+  "created": {
+    "flow::Task_102::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 83,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "vehicle_9"
+            ],
+            "target_node_id": "vehicle_9",
+            "task_id": "Task_102",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 84
+    },
+    "flow::Task_102::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 88,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "vehicle_0"
+            ],
+            "target_node_id": "vehicle_0",
+            "task_id": "Task_102",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 89
+    },
+    "flow::Task_13::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 43,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "RSU_1"
+            ],
+            "target_node_id": "RSU_1",
+            "task_id": "Task_13",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 44
+    },
+    "flow::Task_13::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 45,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_0"
+            ],
+            "target_node_id": "UAV_0",
+            "task_id": "Task_13",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 46
+    },
+    "flow::Task_14::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 48,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "RSU_1"
+            ],
+            "target_node_id": "RSU_1",
+            "task_id": "Task_14",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 49
+    },
+    "flow::Task_14::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 53,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_0"
+            ],
+            "target_node_id": "UAV_0",
+            "task_id": "Task_14",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 54
+    },
+    "flow::Task_1::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 10,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "RSU_1"
+            ],
+            "target_node_id": "RSU_1",
+            "task_id": "Task_1",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 11
+    },
+    "flow::Task_1::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 15,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_0"
+            ],
+            "target_node_id": "UAV_0",
+            "task_id": "Task_1",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 16
+    },
+    "flow::Task_23::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 33,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "vehicle_4"
+            ],
+            "target_node_id": "vehicle_4",
+            "task_id": "Task_23",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 34
+    },
+    "flow::Task_23::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 38,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_1"
+            ],
+            "target_node_id": "UAV_1",
+            "task_id": "Task_23",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 39
+    },
+    "flow::Task_34::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 54,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "RSU_0"
+            ],
+            "target_node_id": "RSU_0",
+            "task_id": "Task_34",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 55
+    },
+    "flow::Task_34::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 59,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "vehicle_0"
+            ],
+            "target_node_id": "vehicle_0",
+            "task_id": "Task_34",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 60
+    },
+    "flow::Task_35::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 56,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "RSU_0"
+            ],
+            "target_node_id": "RSU_0",
+            "task_id": "Task_35",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 57
+    },
+    "flow::Task_35::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 61,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "vehicle_0"
+            ],
+            "target_node_id": "vehicle_0",
+            "task_id": "Task_35",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 62
+    },
+    "flow::Task_36::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 62,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "RSU_2"
+            ],
+            "target_node_id": "RSU_2",
+            "task_id": "Task_36",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 63
+    },
+    "flow::Task_36::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 66,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "vehicle_0"
+            ],
+            "target_node_id": "vehicle_0",
+            "task_id": "Task_36",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 67
+    },
+    "flow::Task_37::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 72,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "RSU_2"
+            ],
+            "target_node_id": "RSU_2",
+            "task_id": "Task_37",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 73
+    },
+    "flow::Task_37::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 75,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "vehicle_0"
+            ],
+            "target_node_id": "vehicle_0",
+            "task_id": "Task_37",
+            "task_node_id": "vehicle_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 76
+    },
+    "flow::Task_3::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 30,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "UAV_1"
+            ],
+            "target_node_id": "UAV_1",
+            "task_id": "Task_3",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 31
+    },
+    "flow::Task_3::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 36,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_0"
+            ],
+            "target_node_id": "UAV_0",
+            "task_id": "Task_3",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 37
+    },
+    "flow::Task_45::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 63,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "vehicle_3"
+            ],
+            "target_node_id": "vehicle_3",
+            "task_id": "Task_45",
+            "task_node_id": "vehicle_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 64
+    },
+    "flow::Task_45::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 71,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "vehicle_1"
+            ],
+            "target_node_id": "vehicle_1",
+            "task_id": "Task_45",
+            "task_node_id": "vehicle_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 72
+    },
+    "flow::Task_5::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 0,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "UAV_0"
+            ],
+            "target_node_id": "UAV_0",
+            "task_id": "Task_5",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 1
+    },
+    "flow::Task_5::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 6,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_1"
+            ],
+            "target_node_id": "UAV_1",
+            "task_id": "Task_5",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 7
+    },
+    "flow::Task_6::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 7,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "RSU_1"
+            ],
+            "target_node_id": "RSU_1",
+            "task_id": "Task_6",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 8
+    },
+    "flow::Task_6::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 9,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_1"
+            ],
+            "target_node_id": "UAV_1",
+            "task_id": "Task_6",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 10
+    },
+    "flow::Task_7::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 16,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "RSU_1"
+            ],
+            "target_node_id": "RSU_1",
+            "task_id": "Task_7",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 17
+    },
+    "flow::Task_7::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 29,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_1"
+            ],
+            "target_node_id": "UAV_1",
+            "task_id": "Task_7",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 30
+    },
+    "flow::Task_84::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 79,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "vehicle_7"
+            ],
+            "target_node_id": "vehicle_7",
+            "task_id": "Task_84",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 80
+    },
+    "flow::Task_84::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 82,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_0"
+            ],
+            "target_node_id": "UAV_0",
+            "task_id": "Task_84",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 83
+    },
+    "flow::Task_85::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 85,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "vehicle_7"
+            ],
+            "target_node_id": "vehicle_7",
+            "task_id": "Task_85",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 86
+    },
+    "flow::Task_85::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 93,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_0"
+            ],
+            "target_node_id": "UAV_0",
+            "task_id": "Task_85",
+            "task_node_id": "UAV_0"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 94
+    },
+    "flow::Task_91::Input::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 81,
+          "route": {
+            "route_kind": "offload",
+            "route_node_ids": [
+              "vehicle_6"
+            ],
+            "target_node_id": "vehicle_6",
+            "task_id": "Task_91",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 82
+    },
+    "flow::Task_91::Return::0": {
+      "creation_action_evidence": [
+        {
+          "frame": 94,
+          "route": {
+            "route_kind": "return",
+            "route_node_ids": [
+              "UAV_1"
+            ],
+            "target_node_id": "UAV_1",
+            "task_id": "Task_91",
+            "task_node_id": "UAV_1"
+          }
+        }
+      ],
+      "first_visible_decision_frame": 95
+    }
+  },
+  "ledger_path": "formal-v1-sim-2026092318-policy-2026092418_ledger.jsonl.gz",
+  "ledger_sha256": "41c3f739ebac3f69073898ae1de86066444c1267f679a959c7dad77fbeb4d614",
+  "mode": "OFFICIAL_LEDGER_REPLAY",
+  "official_ledger_receipt": {
+    "checks": {
+      "all_real_transitions_applied_or_explicit": true,
+      "completion_controls_presence": true,
+      "depdata_zero_instances": true,
+      "flow_conservation": true,
+      "flow_hop_separation": true,
+      "flow_identity_reversible": true,
+      "flow_index_unique": true,
+      "legacy_flow_completed_forbidden": true,
+      "lineage_fields_present": true,
+      "logical_destination_constant_within_epoch": true,
+      "logical_destination_provenance_present": true,
+      "logical_destination_provenance_proven": true,
+      "no_future_action_source": true,
+      "no_local_self_input_flow": true,
+      "raw_decision_causality": true,
+      "scope_raw_only": true
+    },
+    "formal_dataset": false,
+    "gpu": false,
+    "graph_builder_started": false,
+    "locked_test": false,
+    "passed": true,
+    "runtime_depdata_instances": 0,
+    "sample_tensor_extended": false,
+    "schema_version": "PI-JWM-Step4.2C-B-Acceptance-v1",
+    "training": false,
+    "transition_errors": [],
+    "validation": {
+      "passed": true,
+      "required_checks": true,
+      "scope": true
+    }
+  },
+  "raw_sha256": "b3da0deaee3395f475acfffff0154ddb9b9ba716073ad6524692e45914edd626",
+  "source_path": "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092318-policy-2026092418.json.gz"
+}

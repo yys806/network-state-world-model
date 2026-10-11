@@ -2078,3 +2078,7 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 ## 2026-10-11 STEP 6.4J Raw–Model–Scorer 生命周期审计
 
 已完成源码级只读审计、AirFogSim 实际导入身份核对、两个 Live Root 逐任务 ledger、全部 12 条 dev_validation Raw 快照统计、FP64/FP32 阴影边界测试和 scorer Return-birth 单测。Task_5 与 Task_15 分别归因为等待回传但尚无显式 Return Flow、以及约 1.11e-16 的 Raw 精确剩余与模型零剩余边界差异；两者都不能直接外推为 r39 的 3744 候选原因分布。未运行新增 WM rollout、GPU、正式搜索或 locked_test。下一步只需研究者决定是否进入状态合同/动态 Return Flow 方案评估。
+
+## 2026-10-11 STEP 6.4K — Deterministic Return Flow Shadow
+
+完成全量 12 条 dev_validation 的官方 Causal Flow Ledger 重放和逐 decision/task 压缩 ledger；旧 721/724 近似统计纠正为 710 waiting-to-return 无 Return Flow、713 FP32 潜在 fixed-support、710 FP64 潜在 fixed-support。新增 Shadow Return Flow 状态机、负例/守恒/多跳测试和独立审计。冻结模型已有 Return Flow anchor 的 H1–H4 递归通过；追加 Shadow Flow 也完成 4 步 finite 递归，参数未改变。状态为 RULE_ONLY_PASS、FROZEN_WM_RECURSION_PASS、FORMAL_PLANNER_SCOREABILITY_NOT_TESTED、RETRAIN_UNDETERMINED。下一动作：研究者决定是否正式定义 Return Route/动态 Flow 合同；不自动合并科学语义。

@@ -1,0 +1,9 @@
+{
+  "exception": "can only concatenate list (not \"tuple\") to list",
+  "exception_type": "TypeError",
+  "flow_id": "flow::Task_112::Return::0",
+  "formal_scorer_not_promoted": true,
+  "status": "FROZEN_WM_SHADOW_ONE_STEP_FAIL",
+  "task_id": "Task_112",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\run_step6_4k_frozen_compatibility_v1.py\", line 60, in main\n    ss,sg,sl,meta_shadow=inject_return_slot(model,prepared.state,prepared.graph,prepared.latent,task_index=ti,source=src,destination=dst,route=(dst,),size=task.required_returned_size,flow_id=fid)\n                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\shen\\PKU\\PIJWM\\code\\src\\pi_jwm\\step6_4k_return_shadow_v1.py\", line 102, in inject_return_slot\n    for i,(src,dst) in enumerate(zip([source]+route[:-1],route)):\n                                     ~~~~~~~~^~~~~~~~~~~\nTypeError: can only concatenate list (not \"tuple\") to list\n"
+}

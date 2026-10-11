@@ -2804,7 +2804,8 @@
         "scripts.run_step6_4j_h1_return_action_sensitivity_v1",
         "scripts.run_step6_4j_h1_return_action_sensitivity_v2",
         "tests.test_step6_2a_patch_side_state_v1",
-        "tests.test_step6_2b_planner_objective_scorer_v1"
+        "tests.test_step6_2b_planner_objective_scorer_v1",
+        "tests.test_step6_4j_raw_model_scorer_lifecycle"
       ],
       "imports": [],
       "lifecycle_status": "support",
@@ -2812,7 +2813,8 @@
       "path": "code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py",
       "test_files": [
         "code/tests/test_step6_2a_patch_side_state_v1.py",
-        "code/tests/test_step6_2b_planner_objective_scorer_v1.py"
+        "code/tests/test_step6_2b_planner_objective_scorer_v1.py",
+        "code/tests/test_step6_4j_raw_model_scorer_lifecycle.py"
       ]
     },
     {
@@ -4421,6 +4423,16 @@
       "lifecycle_status": "support",
       "module": "scripts.audit_step6_4j_pilot_v1",
       "path": "code/scripts/audit_step6_4j_pilot_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4j_raw_model_scorer_lifecycle_v1",
+      "path": "code/scripts/audit_step6_4j_raw_model_scorer_lifecycle_v1.py",
       "test_files": []
     },
     {
@@ -13424,6 +13436,18 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4j_pilot_v1",
       "path": "code/tests/test_step6_4j_pilot_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_2a_planner_objective_side_state_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4j_raw_model_scorer_lifecycle",
+      "path": "code/tests/test_step6_4j_raw_model_scorer_lifecycle.py",
       "test_files": []
     },
     {

@@ -1,0 +1,3304 @@
+{
+  "case_catalog": [
+    {
+      "frame": 7,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 8,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 9,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 10,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 20,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_14",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_14",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 26,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_15",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_15",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 34,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_16",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_16",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 46,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_17",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_17",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 52,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_21",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_21",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 55,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_36",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_36",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 56,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_37",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_37",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 64,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_42",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_42",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 70,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_54",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_54",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 73,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_22",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_22",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 74,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_53",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_53",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 82,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_55",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_55",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 84,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_56",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_56",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 91,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_68",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_68",
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401"
+    },
+    {
+      "frame": 7,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 8,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 8,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_2",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_2",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 9,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 9,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_3",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 15,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_8",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_8",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 23,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_10",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_10",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 27,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_11",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_11",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 28,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_9",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_9",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 34,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_21",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_21",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 36,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_30",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_30",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 40,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_13",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_13",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 44,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_45",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_45",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 55,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_14",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_14",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 65,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_15",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_15",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 74,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_16",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_16",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 75,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_48",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_48",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 78,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_71",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_71",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 83,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_72",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_72",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 88,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_54",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_54",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 92,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_55",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_55",
+      "trajectory": "formal-v1-sim-2026092302-policy-2026092402"
+    },
+    {
+      "frame": 4,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 5,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 6,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 7,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 10,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_2",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_2",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 20,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_10",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_10",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 23,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_11",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_11",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 24,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_3",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 28,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_4",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_4",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 44,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_14",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_14",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 47,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_37",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_37",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 55,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_15",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_15",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 60,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_38",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_38",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 65,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_30",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_30",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 73,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_39",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_39",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 75,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_40",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_40",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 84,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_66",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_66",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 86,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_67",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_67",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 87,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_78",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_78",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 92,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_41",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_41",
+      "trajectory": "formal-v1-sim-2026092313-policy-2026092413"
+    },
+    {
+      "frame": 10,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 11,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 12,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 13,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 16,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_10",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_10",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 27,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_11",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_11",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 43,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_33",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_33",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 48,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_23",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_23",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 52,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_40",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_40",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 61,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_24",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_24",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 63,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_41",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_41",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 64,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_42",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_42",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 71,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_25",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_25",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 72,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_34",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_34",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 81,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_35",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_35",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 84,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_36",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_36",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 94,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_51",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_51",
+      "trajectory": "formal-v1-sim-2026092315-policy-2026092415"
+    },
+    {
+      "frame": 6,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_5",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_5",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 7,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_5",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 8,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_5",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 9,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_5",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 9,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_6",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_6",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 15,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 29,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_7",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_7",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 36,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_3",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 38,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_23",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_23",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 45,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_13",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_13",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 53,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_14",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_14",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 59,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_34",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_34",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 61,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_35",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_35",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 66,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_36",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_36",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 71,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_45",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_45",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 75,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_37",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_37",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 82,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_84",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_84",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 88,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_102",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_102",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 93,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_85",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_85",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 94,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_91",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_91",
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418"
+    },
+    {
+      "frame": 6,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_5",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_5",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 7,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_5",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 8,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_5",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 9,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_5",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 9,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 27,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_6",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_6",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 40,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_15",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_15",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 42,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_21",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_21",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 43,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_7",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_7",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 46,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_8",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_8",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 59,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_17",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_17",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 61,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_25",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_25",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 66,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_32",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_32",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 71,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_23",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_23",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 79,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_24",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_24",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 84,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_39",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_39",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 85,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_54",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_54",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 91,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_67",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_67",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 94,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_58",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_58",
+      "trajectory": "formal-v1-sim-2026092322-policy-2026092422"
+    },
+    {
+      "frame": 4,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_6",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_6",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 5,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_6",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 6,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_6",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 7,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_6",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 10,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_7",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_7",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 16,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_8",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_8",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 33,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 42,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_26",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_26",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 46,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_16",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_16",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 49,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_27",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_27",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 57,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_17",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_17",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 58,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_18",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_18",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 66,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_38",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_38",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 67,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_50",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_50",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 75,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_51",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_51",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 77,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_52",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_52",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 87,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_86",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_86",
+      "trajectory": "formal-v1-sim-2026092323-policy-2026092423"
+    },
+    {
+      "frame": 8,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 9,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 9,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_7",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_7",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 10,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 15,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_3",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 23,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_4",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_4",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 24,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_8",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_8",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 31,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_15",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_15",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 34,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_25",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_25",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 36,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_33",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_33",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 47,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_17",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_17",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 53,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_20",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_20",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 60,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_34",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_34",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 73,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_50",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_50",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 76,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_42",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_42",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 79,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_43",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_43",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 84,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_60",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_60",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 86,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_65",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_65",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 87,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_77",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_77",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 88,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_2"
+        ],
+        "target_node_id": "vehicle_2",
+        "task_id": "Task_84",
+        "task_node_id": "vehicle_2"
+      },
+      "task_id": "Task_84",
+      "trajectory": "formal-v1-sim-2026092326-policy-2026092426"
+    },
+    {
+      "frame": 11,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 12,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 13,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 13,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_10",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_10",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 14,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_9",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_9",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 32,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_18",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_18",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 40,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_24",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_24",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 47,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_19",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_19",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 49,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_25",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_25",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 50,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_26",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_26",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 58,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_31",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_31",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 61,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_37",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_37",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 64,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_2"
+        ],
+        "target_node_id": "vehicle_2",
+        "task_id": "Task_54",
+        "task_node_id": "vehicle_2"
+      },
+      "task_id": "Task_54",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 69,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_22",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_22",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 71,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_71",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_71",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 77,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_78",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_78",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 81,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_23",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_23",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 84,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_72",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_72",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 93,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_74",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_74",
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431"
+    },
+    {
+      "frame": 4,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 5,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 6,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 6,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_8",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_8",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 8,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_9",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_9",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 16,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_2",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_2",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 22,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_3",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 38,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_26",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_26",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 43,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_27",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_27",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 48,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_17",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_17",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 49,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_28",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_28",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 51,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_38",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_38",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 57,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_47",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_47",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 59,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_29",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_29",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 62,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_48",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_48",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 67,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_49",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_49",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 79,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_50",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_50",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 83,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_56",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_56",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 94,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_57",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_57",
+      "trajectory": "formal-v1-sim-2026092341-policy-2026092441"
+    },
+    {
+      "frame": 5,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 6,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 7,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 8,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 8,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_3",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 15,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_10",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_10",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 16,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_2",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_2",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 21,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_11",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_11",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 22,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_12",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_12",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 40,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_50",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_50",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 42,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_27",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_27",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 47,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_41",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_41",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 57,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_18",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_18",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 58,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_42",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_42",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 61,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_51",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_51",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 65,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_52",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_52",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 73,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_53",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_53",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 74,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_2"
+        ],
+        "target_node_id": "vehicle_2",
+        "task_id": "Task_67",
+        "task_node_id": "vehicle_2"
+      },
+      "task_id": "Task_67",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 84,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_107",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_107",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 86,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_2"
+        ],
+        "target_node_id": "vehicle_2",
+        "task_id": "Task_115",
+        "task_node_id": "vehicle_2"
+      },
+      "task_id": "Task_115",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 88,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_88",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_88",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 93,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_79",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_79",
+      "trajectory": "formal-v1-sim-2026092350-policy-2026092450"
+    },
+    {
+      "frame": 10,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_3",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 11,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 12,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 13,
+      "kind": "EXISTING_RETURN",
+      "task_id": "Task_3",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 16,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_1",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_1",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 41,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_8",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_8",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 42,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_2",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_2",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 45,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_16",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_16",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 51,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_10",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_10",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 53,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_17",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_17",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 55,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_9",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_9",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 65,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_0"
+        ],
+        "target_node_id": "vehicle_0",
+        "task_id": "Task_20",
+        "task_node_id": "vehicle_0"
+      },
+      "task_id": "Task_20",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 70,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_24",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_24",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 80,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "vehicle_1"
+        ],
+        "target_node_id": "vehicle_1",
+        "task_id": "Task_25",
+        "task_node_id": "vehicle_1"
+      },
+      "task_id": "Task_25",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 85,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_1"
+        ],
+        "target_node_id": "UAV_1",
+        "task_id": "Task_53",
+        "task_node_id": "UAV_1"
+      },
+      "task_id": "Task_53",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    },
+    {
+      "frame": 91,
+      "kind": "RETURN_ROUTE_ACTION",
+      "route": {
+        "route_kind": "return",
+        "route_node_ids": [
+          "UAV_0"
+        ],
+        "target_node_id": "UAV_0",
+        "task_id": "Task_44",
+        "task_node_id": "UAV_0"
+      },
+      "task_id": "Task_44",
+      "trajectory": "formal-v1-sim-2026092358-policy-2026092458"
+    }
+  ],
+  "classification": "offline causal snapshots, potential support boundaries, NOT executed scorer rejections",
+  "counts": {
+    "computing_unfinished": 548,
+    "decision_roots": 1164,
+    "established_untransmitted": 5675,
+    "fp64_fp32_conflict": 3,
+    "independent_tasks": 1237,
+    "mapping_errors": 1237,
+    "nonterminal_task_records": 17029,
+    "old_previous_frame_potential_724": 724,
+    "old_previous_frame_waiting_721": 710,
+    "potential_fixed_support_block_fp32": 713,
+    "potential_fixed_support_block_fp64": 710,
+    "raw_lifecycle_computing": 548,
+    "raw_lifecycle_done": 2776,
+    "raw_lifecycle_failed": 27036,
+    "raw_lifecycle_offloading": 72,
+    "raw_lifecycle_returning": 85,
+    "raw_lifecycle_to_generate": 982,
+    "raw_lifecycle_waiting_to_offload": 14632,
+    "raw_lifecycle_waiting_to_return": 710,
+    "return_completed": 2785,
+    "return_known": 8460,
+    "return_presence": 5675,
+    "roots_multiple_blocks": 160,
+    "roots_with_block": 496,
+    "task_records": 48078,
+    "waiting_route_absent": 710
+  },
+  "elapsed_seconds": 52.86308530002134,
+  "ledger_files": [
+    "formal-v1-sim-2026092301-policy-2026092401_ledger.jsonl.gz",
+    "formal-v1-sim-2026092302-policy-2026092402_ledger.jsonl.gz",
+    "formal-v1-sim-2026092313-policy-2026092413_ledger.jsonl.gz",
+    "formal-v1-sim-2026092315-policy-2026092415_ledger.jsonl.gz",
+    "formal-v1-sim-2026092318-policy-2026092418_ledger.jsonl.gz",
+    "formal-v1-sim-2026092322-policy-2026092422_ledger.jsonl.gz",
+    "formal-v1-sim-2026092323-policy-2026092423_ledger.jsonl.gz",
+    "formal-v1-sim-2026092326-policy-2026092426_ledger.jsonl.gz",
+    "formal-v1-sim-2026092331-policy-2026092431_ledger.jsonl.gz",
+    "formal-v1-sim-2026092341-policy-2026092441_ledger.jsonl.gz",
+    "formal-v1-sim-2026092350-policy-2026092450_ledger.jsonl.gz",
+    "formal-v1-sim-2026092358-policy-2026092458_ledger.jsonl.gz"
+  ],
+  "numeric_conflicts": [
+    {
+      "computing_unfinished": true,
+      "cpu_computed_fp64": 0.24764733247690787,
+      "cpu_total_fp64": 0.2476473324769079,
+      "established_untransmitted": false,
+      "exact_computed": false,
+      "fp32_computed": true,
+      "fp64_fp32_conflict": true,
+      "frame": 51,
+      "lifecycle": "computing",
+      "potential_fixed_support_block_fp32": true,
+      "potential_fixed_support_block_fp64": false,
+      "raw": {
+        "arrival_time_s": 4.499999999999998,
+        "computed_cpu_work": 0.24764733247690787,
+        "current_node_id": "RSU_0",
+        "lifecycle": "computing",
+        "required_returned_size": 0.07575776129385325,
+        "return_destination_id": "UAV_0",
+        "route_node_ids": [],
+        "task_cpu_work": 0.2476473324769079,
+        "task_id": "Task_21",
+        "task_node_id": "UAV_0",
+        "task_size": 0.5644810633293899,
+        "transmitted_size": 0.0,
+        "visibility": "decision_observable"
+      },
+      "remaining_fp32": 0.0,
+      "remaining_fp64": 2.7755575615628914e-17,
+      "requires_return_current_host": true,
+      "return_completed": false,
+      "return_ids": [],
+      "return_known": false,
+      "return_presence": false,
+      "return_states": [],
+      "task_id": "Task_21",
+      "terminal": false,
+      "trajectory": "formal-v1-sim-2026092301-policy-2026092401",
+      "waiting_route_absent": false
+    },
+    {
+      "computing_unfinished": true,
+      "cpu_computed_fp64": 0.4750711212747434,
+      "cpu_total_fp64": 0.47507112127474344,
+      "established_untransmitted": false,
+      "exact_computed": false,
+      "fp32_computed": true,
+      "fp64_fp32_conflict": true,
+      "frame": 56,
+      "lifecycle": "computing",
+      "potential_fixed_support_block_fp32": true,
+      "potential_fixed_support_block_fp64": false,
+      "raw": {
+        "arrival_time_s": 4.799999999999997,
+        "computed_cpu_work": 0.4750711212747434,
+        "current_node_id": "RSU_0",
+        "lifecycle": "computing",
+        "required_returned_size": 0.08640267972596202,
+        "return_destination_id": "vehicle_0",
+        "route_node_ids": [],
+        "task_cpu_work": 0.47507112127474344,
+        "task_id": "Task_34",
+        "task_node_id": "vehicle_0",
+        "task_size": 0.5663136827049335,
+        "transmitted_size": 0.0,
+        "visibility": "decision_observable"
+      },
+      "remaining_fp32": 0.0,
+      "remaining_fp64": 5.551115123125783e-17,
+      "requires_return_current_host": true,
+      "return_completed": false,
+      "return_ids": [],
+      "return_known": false,
+      "return_presence": false,
+      "return_states": [],
+      "task_id": "Task_34",
+      "terminal": false,
+      "trajectory": "formal-v1-sim-2026092318-policy-2026092418",
+      "waiting_route_absent": false
+    },
+    {
+      "computing_unfinished": true,
+      "cpu_computed_fp64": 0.43303078635287334,
+      "cpu_total_fp64": 0.4330307863528734,
+      "established_untransmitted": false,
+      "exact_computed": false,
+      "fp32_computed": true,
+      "fp64_fp32_conflict": true,
+      "frame": 70,
+      "lifecycle": "computing",
+      "potential_fixed_support_block_fp32": true,
+      "potential_fixed_support_block_fp64": false,
+      "raw": {
+        "arrival_time_s": 8.299999999999999,
+        "computed_cpu_work": 0.43303078635287334,
+        "current_node_id": "RSU_1",
+        "lifecycle": "computing",
+        "required_returned_size": 0.0649711084805194,
+        "return_destination_id": "UAV_0",
+        "route_node_ids": [],
+        "task_cpu_work": 0.4330307863528734,
+        "task_id": "Task_71",
+        "task_node_id": "UAV_0",
+        "task_size": 0.49049636806686214,
+        "transmitted_size": 0.0,
+        "visibility": "decision_observable"
+      },
+      "remaining_fp32": 0.0,
+      "remaining_fp64": 5.551115123125783e-17,
+      "requires_return_current_host": true,
+      "return_completed": false,
+      "return_ids": [],
+      "return_known": false,
+      "return_presence": false,
+      "return_states": [],
+      "task_id": "Task_71",
+      "terminal": false,
+      "trajectory": "formal-v1-sim-2026092331-policy-2026092431",
+      "waiting_route_absent": false
+    }
+  ],
+  "trajectories": 12,
+  "unit": "task records repeat the same task across decisions; independent_tasks is trajectory+task"
+}

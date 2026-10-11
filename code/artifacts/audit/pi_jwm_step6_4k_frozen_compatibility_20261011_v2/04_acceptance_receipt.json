@@ -1,0 +1,10 @@
+{
+  "elapsed_seconds": 73.17172270000447,
+  "formal_planner_scoreability": "NOT_TESTED",
+  "frozen_wm_existing_return_h4": "PASS",
+  "frozen_wm_shadow_return": "FROZEN_WM_SHADOW_ONE_STEP_FAIL",
+  "parameter_identity_unchanged": true,
+  "retrain": "UNDETERMINED",
+  "rule_only": "PASS",
+  "status": "COMPLETED"
+}

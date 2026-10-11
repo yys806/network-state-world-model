@@ -482,3 +482,5 @@ r39原始统计归属已复核：anchor-0006为8×(344 complete,0 dead-end)，an
 - 2026-10-11 H1动作敏感性诊断：两个真实root共18个合法动作全部在H1触发Return-birth，触发任务均为模型anchor已完成且缺Return Flow（类别B）；Task_15存在Raw computing与模型work_remaining=0的边界差异。仅建议先做状态一致性审计。
 
 2026-10-11 Raw–Model–Scorer lifecycle audit: added read-only source/runtime identity audit, two-live-root task ledger, all frozen dev_validation Raw-only statistics, FP64/FP32 shadow boundary checks, and scorer Return-birth boundary tests. No scientific semantics changed; no GPU/training/formal search/locked_test.
+
+2026-10-11 STEP 6.4K: corrected all dev_validation Return Flow statistics via official causal Ledger replay; added isolated deterministic Return Shadow module, fail-closed tests, independent audit, and frozen-model H1–H4 compatibility probe. RULE_ONLY_PASS and FROZEN_WM_RECURSION_PASS within verified scope; FORMAL_PLANNER_SCOREABILITY not tested; retraining undetermined. No formal scientific semantics changed.

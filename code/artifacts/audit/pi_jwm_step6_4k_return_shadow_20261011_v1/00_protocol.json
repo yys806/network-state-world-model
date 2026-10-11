@@ -1,0 +1,25 @@
+{
+  "GPU": false,
+  "audit_timeout_seconds": 600,
+  "git": "bde348d26dc21e4e235f42c972f79da3ad12425d",
+  "locked_test": false,
+  "manifest_sha256": "443bf9517e07013c8711483a69d6af5fbc532e4a6827d7c5f3879c107d4861dd",
+  "max_wm_unique_transitions": 64,
+  "old_statistics": "721/724 are previous-frame proxies, not missing-Flow facts",
+  "scope": "SHADOW_ONLY",
+  "selection": [
+    "formal-v1-sim-2026092301-policy-2026092401",
+    "formal-v1-sim-2026092302-policy-2026092402",
+    "formal-v1-sim-2026092313-policy-2026092413",
+    "formal-v1-sim-2026092315-policy-2026092415",
+    "formal-v1-sim-2026092318-policy-2026092418",
+    "formal-v1-sim-2026092322-policy-2026092422",
+    "formal-v1-sim-2026092323-policy-2026092423",
+    "formal-v1-sim-2026092326-policy-2026092426",
+    "formal-v1-sim-2026092331-policy-2026092431",
+    "formal-v1-sim-2026092341-policy-2026092441",
+    "formal-v1-sim-2026092350-policy-2026092450",
+    "formal-v1-sim-2026092358-policy-2026092458"
+  ],
+  "wm_timeout_seconds": 1800
+}

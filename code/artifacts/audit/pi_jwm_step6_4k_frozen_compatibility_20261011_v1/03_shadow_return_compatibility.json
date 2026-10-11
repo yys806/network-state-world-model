@@ -1,0 +1,8 @@
+{
+  "exception": "can only concatenate list (not \"tuple\") to list",
+  "exception_type": "TypeError",
+  "flow_id": "flow::Task_112::Return::0",
+  "formal_scorer_not_promoted": true,
+  "status": "FROZEN_WM_SHADOW_ONE_STEP_FAIL",
+  "task_id": "Task_112"
+}

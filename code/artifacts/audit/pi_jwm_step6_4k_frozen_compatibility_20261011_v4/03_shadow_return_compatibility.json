@@ -1,0 +1,11 @@
+{
+  "finite": true,
+  "flow_id": "flow::Task_112::Return::0",
+  "formal_scorer_not_promoted": true,
+  "horizons": 4,
+  "recursive_links": true,
+  "slot": 26,
+  "state_flow_slots": 27,
+  "status": "FROZEN_WM_SHADOW_H4_PASS",
+  "task_id": "Task_112"
+}

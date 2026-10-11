@@ -462,3 +462,7 @@ r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 
 ## 2026-10-11 Raw–Model–Scorer 生命周期审计
 
 源码审计确认 AirFogSim 用 `computed_size >= task_cpu`，完成后先进入 `waiting_to_return`；Return route setter 与 Ledger 的 `create_return_flow()` 是后续显式 return action 入口。World Model route 规则不创建新的 logical Flow。两个 Live Root 的 Task_5/Task_15 以及全部 12 条 `dev_validation` Raw trajectory 已只读复核；证据目录为 `code/artifacts/audit/pi_jwm_step6_4j_raw_model_scorer_lifecycle_20261011_v1/`。Task_5 属于等待回传/固定支持边界；Task_15 是约 `1.1102230246251565e-16` 的 Raw FP64 剩余与模型零剩余边界差异。Validation 统计不是 r39 候选拒绝比例；GPU、训练、正式搜索和 locked_test 关闭。
+
+## 2026-10-11 STEP 6.4K Deterministic Return Shadow
+
+新增隔离 Shadow Return Flow 原型和完整 Validation Ledger replay。12 条 dev_validation 的官方 Ledger 统计为 710 waiting-to-return 无 Return Flow、713 FP32/710 FP64 potential fixed-support block、8460 known Return、5675 active、2785 completed、3 FP64/FP32 conflicts；旧 721/724 是上一帧 Route action 代理计数。规则状态机测试 8/8 PASS。冻结模型已有 Return Flow anchor 和追加一个 Shadow Flow 均完成 H1–H4 finite recursive pass，但正式 Planner/Scorer scoreability 未测试，不能宣称无需重训。证据目录：`code/artifacts/audit/pi_jwm_step6_4k_return_shadow_20261011_v4/` 与 `code/artifacts/audit/pi_jwm_step6_4k_frozen_compatibility_20261011_v4/`。GPU、训练、B512、locked_test 关闭。

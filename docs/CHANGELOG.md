@@ -530,3 +530,6 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 ## 2026-10-11
 
 - STEP 6.4J Raw–Model–Scorer 生命周期审计：新增只读源码/运行时身份、两个 Live Root 逐任务 ledger、全部 12 条 dev_validation Raw-only 统计、FP64/FP32 边界测试和 Return-birth 单测。确认 AirFogSim 完成后先进入 waiting_to_return，Ledger 只从显式 return route 创建 Flow，World Model route 不生新 logical Flow。未修改科学语义，未运行 GPU、训练、正式搜索或 locked_test。
+## 2026-10-11：STEP 6.4K Deterministic Return Flow Shadow
+
+新增完整 Raw → Causal Ledger replay、确定性 Return Flow Shadow 原型、冻结 World Model H1–H4 兼容性回执和独立审计。全部结果保持隔离，不修改正式模型/Planner/Scorer 语义。

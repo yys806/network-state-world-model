@@ -1,0 +1,17 @@
+{
+  "GPU": false,
+  "checkpoint_expected_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "checkpoint_frozen": true,
+  "checkpoint_path": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\formal_training\\pi_jwm_formal_train_v1_seed5601_20260924T112424Z\\checkpoints\\best.pt",
+  "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "formal_search": false,
+  "git": "bde348d26dc21e4e235f42c972f79da3ad12425d",
+  "label": "NEW_CPU_DIAGNOSTIC",
+  "locked_test": false,
+  "new_wm_transition_budget": 4,
+  "normalization_frozen": true,
+  "normalization_path": "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1\\packages\\normalization\\stats.json",
+  "normalization_sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+  "sample_id": "formal-v1-sim-2026092300-policy-2026092400::anchor-0083",
+  "shadow_route_label": "SHADOW_ROUTE_EXPERIMENT"
+}

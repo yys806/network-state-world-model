@@ -1,0 +1,32 @@
+{
+  "completed_trajectories": 12,
+  "counts": {
+    "computing_unfinished": 548,
+    "decision_roots": 1164,
+    "established_untransmitted": 5675,
+    "fp64_fp32_conflict": 3,
+    "independent_tasks": 1237,
+    "mapping_errors": 1237,
+    "nonterminal_task_records": 17029,
+    "old_previous_frame_potential_724": 724,
+    "old_previous_frame_waiting_721": 710,
+    "potential_fixed_support_block_fp32": 713,
+    "potential_fixed_support_block_fp64": 710,
+    "raw_lifecycle_computing": 548,
+    "raw_lifecycle_done": 2776,
+    "raw_lifecycle_failed": 27036,
+    "raw_lifecycle_offloading": 72,
+    "raw_lifecycle_returning": 85,
+    "raw_lifecycle_to_generate": 982,
+    "raw_lifecycle_waiting_to_offload": 14632,
+    "raw_lifecycle_waiting_to_return": 710,
+    "return_completed": 2785,
+    "return_known": 8460,
+    "return_presence": 5675,
+    "roots_multiple_blocks": 160,
+    "roots_with_block": 496,
+    "task_records": 48078,
+    "waiting_route_absent": 710
+  },
+  "elapsed_seconds": 52.85721850005211
+}
