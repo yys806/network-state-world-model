@@ -1,0 +1,403 @@
+{
+  "GPU": "NOT_USED",
+  "R39_EXACT_EQUIVALENCE": "UNPROVEN",
+  "candidates": [
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action_prefix": [
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": 0.0,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": 0.0,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": 0.0,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": 0.0,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": 0.0,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": 0.0,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": 0.0,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": 0.0,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        }
+      ],
+      "candidate_fingerprint": "e135dc039226367ca811ad21cfb2f6b2627f1d5625bb707dc658b76458093c89",
+      "candidate_index": 1,
+      "completed_horizons": 4,
+      "diagnostics": {
+        "support_boundary_reasons": {
+          "live_diag_1": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1"
+        }
+      },
+      "horizon": 4,
+      "rollout_seconds": 8.053071399976034,
+      "root_fingerprint": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+        "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+      },
+      "scoreable_h4": false,
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "live_diag_1": 0
+      },
+      "trace_initial": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a"
+      },
+      "trace_outputs": [
+        {
+          "graph": "f7f91277a5f2a529697d462049d6755c53f484fe213189113f1ca03e35b9fdb6",
+          "latent": "0ff2815554eba0c4d40b3b1e5b08e5ceb1088280640fdb0117b820288616ad5c",
+          "state": "3e1d7dfadd0218799374fb44c77a1b257530698a8b1040e03f859dbe0e7336d9"
+        },
+        {
+          "graph": "f0d7c59f7a2448f2c1d32cd5514c024825c4dd4c48da4b2c4d7e3bd2369d3d17",
+          "latent": "4f35ce1fceacbc5ae67bfda8e7b5e96474f35c2bc86b6713dd07fb15b89a3d50",
+          "state": "6cb1c6dca02bdf717c261f3317ca36dabb9af98bd6edffa6d60a547c318bbe3d"
+        },
+        {
+          "graph": "925ce4c765613f5c45f3aebe83cc730e1b98d30a8ae74eb9779c67f1d8851cff",
+          "latent": "e1009d30b4b4b152ae229ece9a310df00e74a741644b16ccc655d5d1d88b944d",
+          "state": "7a5c6481785e879e9961d5d7d58492628a7ec4fde7db921646c3d84659124252"
+        },
+        {
+          "graph": "c9c69d2f2591643cf49723d4c20b5cfccdd30ed0eabe2058428abf4b33f53463",
+          "latent": "401960b5c3b892fdb6f242086a22a5b50dff046a498cf0e3263bb3781a3affd2",
+          "state": "85e0fc51f17c256cdb2cb9f00bc3e261a2437de71a4a56986cf4b051f1ea784b"
+        }
+      ],
+      "wm_unique_transition_budget": 4
+    },
+    {
+      "action_prefix": [
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.2,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.2,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.2,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.2,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.2,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.2,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.2,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.2,
+                "elevation_rad": 0.0,
+                "speed_mps": 5.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        }
+      ],
+      "candidate_fingerprint": "893cdf54b86f8f8d4451515573f3adf9c2d439a6424e1d7dbdd22d14545d76f5",
+      "candidate_index": 2,
+      "horizon": 4,
+      "rollout_error": "Planner v1 domain VIOLATED: OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1",
+      "rollout_exception": "ValueError",
+      "rollout_seconds": 0.004529999976512045,
+      "root_fingerprint": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+        "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+      },
+      "wm_unique_transition_budget": 4
+    }
+  ],
+  "capture": {
+    "capture_event_id": "capture-012",
+    "causal_prefix_sha256": "ee5f22dfbd853aed6afe948bb0536ec9a0e772b881ccd719f76a0bd0506d44af",
+    "decision_count": 7,
+    "frame": 6,
+    "policy_seed": 2026092418,
+    "simulation_time_s": 1.8,
+    "simulator_seed": 2026092318,
+    "step_count": 6
+  },
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "locked_test": false,
+  "root": {
+    "cohort_size": 0,
+    "domain_count": 6,
+    "domain_empty": false,
+    "empty_reason": null,
+    "fingerprints": {
+      "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+      "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+      "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+      "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+      "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+    },
+    "objective_side_keys": [
+      "anchor_time_s",
+      "current_time_s",
+      "effort_component_mask",
+      "effort_denominators",
+      "routes",
+      "source",
+      "tasks"
+    ]
+  },
+  "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+  "schema": "PI-JWM-STEP-6.4J-LIVE-ROOT-CAPTURE-v1",
+  "stages": {
+    "root_capture": "PASS",
+    "root_identity": "LIVE_ROOT_CAPTURE_VALID"
+  },
+  "target_frame": 6,
+  "trajectory_id": "formal-v1-sim-2026092318-policy-2026092418"
+}

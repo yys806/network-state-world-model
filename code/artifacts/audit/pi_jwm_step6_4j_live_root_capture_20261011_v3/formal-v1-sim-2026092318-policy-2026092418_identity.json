@@ -1,0 +1,7 @@
+{
+  "checkpoint_sha256": null,
+  "normalization_sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+  "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+  "source_commit": "0b408e692e095bf78ad85023bd32bee5f9688565",
+  "status": "RUNNING"
+}

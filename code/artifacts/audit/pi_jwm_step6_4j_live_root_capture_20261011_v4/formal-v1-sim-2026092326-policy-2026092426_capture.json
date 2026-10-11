@@ -1,0 +1,10 @@
+{
+  "capture_event_id": "capture-058",
+  "causal_prefix_sha256": "c93d1fdad9ececed779fa47b47fdf2361f236ef53e6b5ec7a3e38e8456f97c60",
+  "decision_count": 30,
+  "frame": 29,
+  "policy_seed": 2026092426,
+  "simulation_time_s": 5.2,
+  "simulator_seed": 2026092326,
+  "step_count": 29
+}

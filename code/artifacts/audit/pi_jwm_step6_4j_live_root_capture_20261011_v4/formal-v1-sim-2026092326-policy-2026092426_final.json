@@ -1,0 +1,493 @@
+{
+  "GPU": "NOT_USED",
+  "R39_EXACT_EQUIVALENCE": "UNPROVEN",
+  "candidates": [
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action_prefix": [
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": false,
+            "entries": [
+              {
+                "allocated_cpu_per_s": 0.0,
+                "node_id": "RSU_0",
+                "task_id": "Task_15"
+              },
+              {
+                "allocated_cpu_per_s": 3.2173115015029907,
+                "node_id": "RSU_2",
+                "task_id": "Task_25"
+              }
+            ],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.35,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.35,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": false,
+            "entries": [
+              {
+                "allocated_cpu_per_s": 0.0,
+                "node_id": "RSU_0",
+                "task_id": "Task_15"
+              },
+              {
+                "allocated_cpu_per_s": 3.2173115015029907,
+                "node_id": "RSU_2",
+                "task_id": "Task_25"
+              }
+            ],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.35,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.35,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": false,
+            "entries": [
+              {
+                "allocated_cpu_per_s": 0.0,
+                "node_id": "RSU_0",
+                "task_id": "Task_15"
+              },
+              {
+                "allocated_cpu_per_s": 3.2173115015029907,
+                "node_id": "RSU_2",
+                "task_id": "Task_25"
+              }
+            ],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.35,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.35,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": false,
+            "entries": [
+              {
+                "allocated_cpu_per_s": 0.0,
+                "node_id": "RSU_0",
+                "task_id": "Task_15"
+              },
+              {
+                "allocated_cpu_per_s": 3.2173115015029907,
+                "node_id": "RSU_2",
+                "task_id": "Task_25"
+              }
+            ],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.35,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.35,
+                "elevation_rad": 0.0,
+                "speed_mps": 0.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        }
+      ],
+      "candidate_fingerprint": "dec2e36fcbab938148290ba2a42599a44d238f937e3210cd3b71daace039c0a0",
+      "candidate_index": 1,
+      "completed_horizons": 4,
+      "diagnostics": {
+        "support_boundary_reasons": {
+          "live_diag_1": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "horizon": 4,
+      "rollout_seconds": 1.603275500005111,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "scoreable_h4": false,
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "live_diag_1": 0
+      },
+      "trace_initial": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764"
+      },
+      "trace_outputs": [
+        {
+          "graph": "2c1122685988564d918831451fd3c36ba2dade3603cc4bf7b790b0fd2cffdd71",
+          "latent": "7e7b077e62e47a49e10ee65ecda812fa3be98418019f15dd024464733e21ec87",
+          "state": "a1f4af40fed4f35689de793f2b5ec431975263a8531b679ae85fc3db07ffc371"
+        },
+        {
+          "graph": "614ad4ae12b5a4c37ea6a9aaf407fa91f55378baec794c53b10a77841bae8e5a",
+          "latent": "35bd84010240a6deb99ebd37405f3380272b2f55cf4032c4f5c28ca6475f9eab",
+          "state": "c72b659bb9e7d52445a04e521e9136d2203f8cbd5b54e225f8bdd386c514b660"
+        },
+        {
+          "graph": "cb08d6b026f6218ee658f82773fb3d53b3ab21f504332506b612e93e8192a941",
+          "latent": "6581ef37931e0efed674ec5e6ced7e3f6a331476c0841f0251f05a57cb210b0d",
+          "state": "a642828121c3cfcbcb0ab46061881903bb876d63d21cebd76389686465eb5911"
+        },
+        {
+          "graph": "a2eda0710818be8384cfed42e30d2e569503219e0bd6099c6e2ab84fad445ba6",
+          "latent": "22ac1397bb12ff23e0dc74024d4b233a1ae362db95dac39be18cd304b6edd086",
+          "state": "0a340987cc7ffce55cdcc4aef563c452bbbe5a45ed7103459e1d2e7f1a5e45aa"
+        }
+      ],
+      "wm_unique_transition_budget": 4
+    },
+    {
+      "action_prefix": [
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": false,
+            "entries": [
+              {
+                "allocated_cpu_per_s": 0.0,
+                "node_id": "RSU_0",
+                "task_id": "Task_15"
+              },
+              {
+                "allocated_cpu_per_s": 3.2173115015029907,
+                "node_id": "RSU_2",
+                "task_id": "Task_25"
+              }
+            ],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.44999999999999996,
+                "elevation_rad": 0.0,
+                "speed_mps": 8.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.44999999999999996,
+                "elevation_rad": 0.0,
+                "speed_mps": 8.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": false,
+            "entries": [
+              {
+                "allocated_cpu_per_s": 0.0,
+                "node_id": "RSU_0",
+                "task_id": "Task_15"
+              },
+              {
+                "allocated_cpu_per_s": 3.2173115015029907,
+                "node_id": "RSU_2",
+                "task_id": "Task_25"
+              }
+            ],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.44999999999999996,
+                "elevation_rad": 0.0,
+                "speed_mps": 8.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.44999999999999996,
+                "elevation_rad": 0.0,
+                "speed_mps": 8.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": false,
+            "entries": [
+              {
+                "allocated_cpu_per_s": 0.0,
+                "node_id": "RSU_0",
+                "task_id": "Task_15"
+              },
+              {
+                "allocated_cpu_per_s": 3.2173115015029907,
+                "node_id": "RSU_2",
+                "task_id": "Task_25"
+              }
+            ],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.44999999999999996,
+                "elevation_rad": 0.0,
+                "speed_mps": 8.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.44999999999999996,
+                "elevation_rad": 0.0,
+                "speed_mps": 8.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        },
+        {
+          "comm": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          },
+          "comp": {
+            "empty": false,
+            "entries": [
+              {
+                "allocated_cpu_per_s": 0.0,
+                "node_id": "RSU_0",
+                "task_id": "Task_15"
+              },
+              {
+                "allocated_cpu_per_s": 3.2173115015029907,
+                "node_id": "RSU_2",
+                "task_id": "Task_25"
+              }
+            ],
+            "missing": false
+          },
+          "mobility": {
+            "empty": false,
+            "entries": [
+              {
+                "azimuth_rad": -0.44999999999999996,
+                "elevation_rad": 0.0,
+                "speed_mps": 8.0,
+                "uav_index": 4
+              },
+              {
+                "azimuth_rad": -0.44999999999999996,
+                "elevation_rad": 0.0,
+                "speed_mps": 8.0,
+                "uav_index": 5
+              }
+            ],
+            "missing": false
+          },
+          "route": {
+            "empty": true,
+            "entries": [],
+            "missing": false
+          }
+        }
+      ],
+      "candidate_fingerprint": "565195601d6f9d04f0584799595774f9b345b8a52016fa4e10315eec079217cd",
+      "candidate_index": 2,
+      "horizon": 4,
+      "rollout_error": "Planner v1 domain VIOLATED: OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1,OUTSIDE_PLANNER_MOBILITY_CORE_DOMAIN_V1",
+      "rollout_exception": "ValueError",
+      "rollout_seconds": 0.005764600005932152,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "wm_unique_transition_budget": 4
+    }
+  ],
+  "capture": {
+    "capture_event_id": "capture-058",
+    "causal_prefix_sha256": "c93d1fdad9ececed779fa47b47fdf2361f236ef53e6b5ec7a3e38e8456f97c60",
+    "decision_count": 30,
+    "frame": 29,
+    "policy_seed": 2026092426,
+    "simulation_time_s": 5.2,
+    "simulator_seed": 2026092326,
+    "step_count": 29
+  },
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "locked_test": false,
+  "parameter_unchanged": true,
+  "root": {
+    "cohort_size": 0,
+    "domain_count": 17,
+    "domain_empty": false,
+    "empty_reason": null,
+    "fingerprints": {
+      "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+      "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+      "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+      "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+      "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+    },
+    "objective_side_keys": [
+      "anchor_time_s",
+      "current_time_s",
+      "effort_component_mask",
+      "effort_denominators",
+      "routes",
+      "source",
+      "tasks"
+    ]
+  },
+  "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+  "schema": "PI-JWM-STEP-6.4J-LIVE-ROOT-CAPTURE-v1",
+  "stages": {
+    "diagnostic": "PASS",
+    "root_capture": "PASS",
+    "root_identity": "LIVE_ROOT_CAPTURE_VALID"
+  },
+  "target_frame": 29,
+  "trajectory_id": "formal-v1-sim-2026092326-policy-2026092426"
+}

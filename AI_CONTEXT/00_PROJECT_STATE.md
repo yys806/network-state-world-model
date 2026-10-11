@@ -450,3 +450,7 @@ r35 跨平台部署修复和远端预检通过，正式 runner 唯一启动一�
 r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 闭环工程验收：16/16 B512 搜索、16 次真实 `env.step`、独立审计 `COMPLETED/0`。科研结论单独记录为：3744 个完整 H4 完成事件 中 0 个 scoreable，16/16 `FALLBACK_A / NO_SCOREABLE_H4`，搜索优化有效性 `NOT_ESTABLISHED`。fixed-support future Return-birth 是源码确认的候选主因，但逐候选 rejection ledger 缺失。GPU 不再保持运行，远端电源/计费待研究者手动核对；`locked_test=false`。详情见 `docs/analysis/STEP_06_4J_H4_SCOREABILITY_ROOT_CAUSE_AUDIT_20261010.md`。
 
 - 当前r39 H4诊断（2026-10-11）：原始receipt统计已纠正归属并独立复核为3744 complete/3064 dead-end/0 scoreable H4。Live Root缺少初始因果前缀、History、candidate/RNG，且未形成root fingerprint equality receipt，故`ROOT_IDENTITY_UNVERIFIED`；没有新的reason频率或H_eff证据。GPU与locked_test仍关闭。
+
+## 2026-10-11 Live H4原位诊断
+
+两个真实AirFogSim live root已在目标decision callback捕获并通过内部身份验收。原Scorer旁路记录显示两个H4候选均在H1因future Return-birth fixed-support拒绝：anchor-0006为Task_5，anchor-0029为Task_15；H_eff=0，0/2 scoreable，0 scorer exception。该证据不等价r39精确重放，不外推3744事件；GPU/locked_test关闭。

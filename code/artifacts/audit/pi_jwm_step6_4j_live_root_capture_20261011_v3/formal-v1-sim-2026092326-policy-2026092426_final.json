@@ -1,0 +1,25 @@
+{
+  "GPU": "NOT_USED",
+  "R39_EXACT_EQUIVALENCE": "UNPROVEN",
+  "candidates": [],
+  "capture": {
+    "capture_event_id": "capture-058",
+    "causal_prefix_sha256": "c93d1fdad9ececed779fa47b47fdf2361f236ef53e6b5ec7a3e38e8456f97c60",
+    "decision_count": 30,
+    "frame": 29,
+    "policy_seed": 2026092426,
+    "simulation_time_s": 5.2,
+    "simulator_seed": 2026092326,
+    "step_count": 29
+  },
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "locked_test": false,
+  "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+  "schema": "PI-JWM-STEP-6.4J-LIVE-ROOT-CAPTURE-v1",
+  "stages": {
+    "error": "RuntimeError:frozen rollout requires torch.no_grad(); duplicate_task_memberships={}",
+    "root_capture": "PASS"
+  },
+  "target_frame": 29,
+  "trajectory_id": "formal-v1-sim-2026092326-policy-2026092426"
+}

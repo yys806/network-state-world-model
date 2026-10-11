@@ -1,0 +1,42 @@
+{
+  "GPU": "NOT_USED",
+  "errors": [],
+  "locked_test": false,
+  "passed": true,
+  "r39_exact_equivalence": "UNPROVEN",
+  "rows": [
+    {
+      "candidates": 2,
+      "completed_h4": 1,
+      "domain_count": 6,
+      "future_return_birth": 1,
+      "rollout_exceptions": 1,
+      "root_status": "LIVE_ROOT_CAPTURE_VALID",
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "scoreable_h4": 0,
+      "scorer_exceptions": 0,
+      "wm_transitions": 4
+    },
+    {
+      "candidates": 2,
+      "completed_h4": 1,
+      "domain_count": 17,
+      "future_return_birth": 1,
+      "rollout_exceptions": 1,
+      "root_status": "LIVE_ROOT_CAPTURE_VALID",
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "scoreable_h4": 0,
+      "scorer_exceptions": 0,
+      "wm_transitions": 4
+    }
+  ],
+  "schema": "PI-JWM-STEP-6.4J-LIVE-ROOT-AUDIT-v1",
+  "totals": {
+    "completed_h4": 2,
+    "rollout_exceptions": 2,
+    "roots": 2,
+    "scoreable_h4": 0,
+    "scorer_exceptions": 0,
+    "wm_transitions": 8
+  }
+}

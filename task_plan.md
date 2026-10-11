@@ -2070,3 +2070,5 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 ## 2026-10-11 STEP 6.4J Live Root diagnostic
 
 本轮只读复核r39原始统计并尝试按正式Live Planner路径重建两个root。统计归属已纠正且总计3744 complete/3064 dead-end/0 scoreable H4保持一致；因缺失初始live因果前缀、History、candidate/RNG及root equality receipt，门禁为ROOT_IDENTITY_UNVERIFIED，未运行评分探针。证据：`code/artifacts/audit/pi_jwm_step6_4j_live_root_h4_diagnostic_20261011/`。GPU、locked_test和科学算法修改均未发生。下一动作待研究者决定。
+
+2026-10-11 STEP 6.4J 原位Live诊断：真实AirFogSim callback在两个目标decision frame捕获causal prefix并完成root验收。两个完整H4候选均由固定support在H1因future Return-birth拒绝，分别涉及Task_5和Task_15；新诊断0/2 scoreable、0 scorer exception、8 WM transitions。该结果仅是条件性新CPU证据，R39_EXACT_EQUIVALENCE=UNPROVEN。

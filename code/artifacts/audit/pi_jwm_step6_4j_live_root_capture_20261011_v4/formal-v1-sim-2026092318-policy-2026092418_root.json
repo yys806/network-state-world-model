@@ -1,0 +1,22 @@
+{
+  "cohort_size": 0,
+  "domain_count": 6,
+  "domain_empty": false,
+  "empty_reason": null,
+  "fingerprints": {
+    "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+    "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+    "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+    "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+    "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+  },
+  "objective_side_keys": [
+    "anchor_time_s",
+    "current_time_s",
+    "effort_component_mask",
+    "effort_denominators",
+    "routes",
+    "source",
+    "tasks"
+  ]
+}
