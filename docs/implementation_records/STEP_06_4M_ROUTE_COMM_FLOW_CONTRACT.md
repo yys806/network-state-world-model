@@ -54,7 +54,7 @@ STEP 6.4L-R1 已确认 Task_5 的 Return setter 成功，但 1.8s 在 wireless a
 
 ## Git
 
-本记录随 6.4M 代码、测试、合同文档、审计回执和上下文索引一起提交；提交哈希和 push 状态在最终收口后填写。
+本记录随 6.4M 代码、测试、合同文档、审计回执和上下文索引提交。第一版收口提交为 `8b2047e`（`contract: verify route comm flow state boundary`），已 push 到 `origin/main`；本次记录字段补丁随后单独提交并 push。
 
 ## Next Step
 
