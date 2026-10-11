@@ -2074,3 +2074,7 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 2026-10-11 STEP 6.4J 原位Live诊断：真实AirFogSim callback在两个目标decision frame捕获causal prefix并完成root验收。两个完整H4候选均由固定support在H1因future Return-birth拒绝，分别涉及Task_5和Task_15；新诊断0/2 scoreable、0 scorer exception、8 WM transitions。该结果仅是条件性新CPU证据，R39_EXACT_EQUIVALENCE=UNPROVEN。
 
 2026-10-11 STEP 6.4J H1 Return-birth动作敏感性：在两个新真实live root上，18个合法不同动作均未改变触发任务的完成/宿主条件；Task_5、Task_15均属于模型anchor已完成且缺Return Flow的类别B。Task_15存在Raw computing与模型完成状态边界差异。该证据仅支持条件性状态机制判断，不外推r39。
+
+## 2026-10-11 STEP 6.4J Raw–Model–Scorer 生命周期审计
+
+已完成源码级只读审计、AirFogSim 实际导入身份核对、两个 Live Root 逐任务 ledger、全部 12 条 dev_validation Raw 快照统计、FP64/FP32 阴影边界测试和 scorer Return-birth 单测。Task_5 与 Task_15 分别归因为等待回传但尚无显式 Return Flow、以及约 1.11e-16 的 Raw 精确剩余与模型零剩余边界差异；两者都不能直接外推为 r39 的 3744 候选原因分布。未运行新增 WM rollout、GPU、正式搜索或 locked_test。下一步只需研究者决定是否进入状态合同/动态 Return Flow 方案评估。

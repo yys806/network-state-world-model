@@ -1,0 +1,52 @@
+{
+  "airfogsim": {
+    "environment": "airfogsim",
+    "import_check": "conda run -n airfogsim python with code/reference/AirFogSim prepended to sys.path",
+    "installed_distribution": null,
+    "installed_distribution_reason": "conda run -n airfogsim importlib.metadata found no AirFogSim distribution; runtime imports project reference path",
+    "package_path": "D:\\shen\\PKU\\PIJWM\\code\\reference\\AirFogSim\\airfogsim\\__init__.py",
+    "package_sha256": "dbef5e55c244c3a7ccf70a13fae0cb9d2f075557c6ad971ac1918d7b87660b5b"
+  },
+  "identity": {
+    "created_utc": "2026-10-11T06:13:07Z",
+    "formal_search": false,
+    "git_head": "7ba949146108eafc8cc426a37a12bf8784f7e13e",
+    "gpu": false,
+    "locked_test": false,
+    "script": "code\\scripts\\audit_step6_4j_raw_model_scorer_lifecycle_v1.py"
+  },
+  "sources": {
+    "code/reference/AirFogSim/airfogsim/entities/task.py": {
+      "bytes": 20219,
+      "sha256": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0"
+    },
+    "code/reference/AirFogSim/airfogsim/manager/task_manager.py": {
+      "bytes": 53386,
+      "sha256": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104"
+    },
+    "code/scripts/step6_4i_live_planner_v1.py": {
+      "bytes": 6734,
+      "sha256": "fead81b60f4801c801a5174c2d2dcde243657d4d59aad21bfb387f53123798d5"
+    },
+    "code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py": {
+      "bytes": 33076,
+      "sha256": "4949933a06100f7db70ceb594893794b8509433b7b1f19f9e0f43b3100b8827d"
+    },
+    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": {
+      "bytes": 66001,
+      "sha256": "5898deca57da59163e5d9a8e06c24cbb4489cbfa3b5724bda7e37ebfae460247"
+    },
+    "code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py": {
+      "bytes": 12126,
+      "sha256": "30fa7f5f0cbc47a9edaad16d7ff9026cbf488bca080b9dcc95df14580ea4cd78"
+    },
+    "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py": {
+      "bytes": 17221,
+      "sha256": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad"
+    },
+    "code/src/pi_jwm/step6_3c_candidate_domain_v1.py": {
+      "bytes": 10876,
+      "sha256": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "full_unittest_failure_scope": [
+    "AirFogSim conda-only traci unavailable under base Python",
+    "historical missing artifacts/protocol fixtures",
+    "pre-existing source-audit receipt mismatch"
+  ],
+  "identity": {
+    "created_utc": "2026-10-11T06:13:07Z",
+    "formal_search": false,
+    "git_head": "7ba949146108eafc8cc426a37a12bf8784f7e13e",
+    "gpu": false,
+    "locked_test": false,
+    "script": "code\\scripts\\audit_step6_4j_raw_model_scorer_lifecycle_v1.py"
+  },
+  "live_task_count": 3,
+  "report": {
+    "elapsed_seconds": 15.567739400023129,
+    "findings": {
+      "airfogsim_compute": "Task.compute adds allocated_cpu * simulation_interval and clamps to task_cpu when >=; isComputed uses exact >=.",
+      "airfogsim_waiting_return": "TaskManager.computeTasks removes computed tasks from _computing_tasks and appends them to _waiting_to_return_tasks; route/startReturn is separate.",
+      "ledger_return_birth": "amend_raw_with_causal_flow_ledger creates a Return flow only while processing a decision-before-action route entry with route_kind=return.",
+      "structural_boundary": "Fixed support can reject a predicted completion requiring a Return Flow that is absent at anchor; Route/World Model path does not birth a new logical Flow.",
+      "task15": "Live Root shows Raw computing while FP64 task_cpu-computed_cpu_work is about 1.1e-16 and model work_remaining is 0; exact simulator completion rule and model threshold are semantically different at this boundary. This audit does not label it solely an FP32 bug.",
+      "task5": "Live Root shows waiting_to_return, exact CPU complete, no Return Flow; this is compatible with simulator waiting state and fixed-support absence, pending any separate mapping defect evidence.",
+      "world_model_route_semantics": "World Model route rule updates carrying/host state and explicitly does not create a new logical Flow identity."
+    },
+    "live_root_capture_valid": true,
+    "new_cpu_rollouts": 0,
+    "r39_exact_equivalence": "UNPROVEN",
+    "status": "COMPLETED_READ_ONLY_AUDIT"
+  },
+  "source_sha256": {
+    "code/reference/AirFogSim/airfogsim/entities/task.py": {
+      "bytes": 20219,
+      "sha256": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0"
+    },
+    "code/reference/AirFogSim/airfogsim/manager/task_manager.py": {
+      "bytes": 53386,
+      "sha256": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104"
+    },
+    "code/scripts/step6_4i_live_planner_v1.py": {
+      "bytes": 6734,
+      "sha256": "fead81b60f4801c801a5174c2d2dcde243657d4d59aad21bfb387f53123798d5"
+    },
+    "code/src/pi_jwm/step4_2c_b_causal_flow_ledger_raw_v1.py": {
+      "bytes": 33076,
+      "sha256": "4949933a06100f7db70ceb594893794b8509433b7b1f19f9e0f43b3100b8827d"
+    },
+    "code/src/pi_jwm/step4_4_structured_rssm_world_model_v1.py": {
+      "bytes": 66001,
+      "sha256": "5898deca57da59163e5d9a8e06c24cbb4489cbfa3b5724bda7e37ebfae460247"
+    },
+    "code/src/pi_jwm/step6_2a_planner_objective_side_state_v1.py": {
+      "bytes": 12126,
+      "sha256": "30fa7f5f0cbc47a9edaad16d7ff9026cbf488bca080b9dcc95df14580ea4cd78"
+    },
+    "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py": {
+      "bytes": 17221,
+      "sha256": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad"
+    },
+    "code/src/pi_jwm/step6_3c_candidate_domain_v1.py": {
+      "bytes": 10876,
+      "sha256": "da5c0cfb0f28ff35bc8afe609f263766fcbb280d34cef057ed22c9d2f4ff4409"
+    }
+  },
+  "validation": {
+    "anchor_potential_return_birth_block": 724,
+    "decision_roots": 1164,
+    "explicit_return_route_visible": 196,
+    "fp32_rounds_to_zero": 9380,
+    "nonterminal_tasks": 17540,
+    "present_tasks": 48078,
+    "raw_fp32_completion_conflicts": 3,
+    "selected_files": [
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092301-policy-2026092401.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092302-policy-2026092402.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092313-policy-2026092413.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092315-policy-2026092415.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092318-policy-2026092418.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092322-policy-2026092422.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092323-policy-2026092423.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092326-policy-2026092426.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092331-policy-2026092431.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092341-policy-2026092441.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092350-policy-2026092450.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092358-policy-2026092458.json.gz"
+    ],
+    "selection": "all 12 frozen dev_validation trajectories from split_manifest; Raw-only, no WM/scorer execution",
+    "trajectories": 12,
+    "waiting_return_without_explicit_return_route": 721
+  },
+  "validation_commands": {
+    "compileall": "PASS",
+    "formal_search": false,
+    "full_unittest": "FAIL_EXISTING_ENVIRONMENT_AND_HISTORICAL_FIXTURES: 2159 run, 1 failure, 39 errors; no failure in new test",
+    "gpu": false,
+    "knowledge_index": "PASS: build and --check",
+    "locked_test": false,
+    "new_unit_test": "PASS: 4 tests"
+  }
+}

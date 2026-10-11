@@ -527,3 +527,6 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 
 
 - 2026-10-10 STEP 6.4J 精确诊断：独立统计纠正为 3744 个完整 H4 完成事件（非去重 candidate），3064 dead-end、0 scoreable；两个代表 root CPU rejection-ledger 异常耗时无产出，未将条件诊断冒充 r39 逐候选复核。
+## 2026-10-11
+
+- STEP 6.4J Raw–Model–Scorer 生命周期审计：新增只读源码/运行时身份、两个 Live Root 逐任务 ledger、全部 12 条 dev_validation Raw-only 统计、FP64/FP32 边界测试和 Return-birth 单测。确认 AirFogSim 完成后先进入 waiting_to_return，Ledger 只从显式 return route 创建 Flow，World Model route 不生新 logical Flow。未修改科学语义，未运行 GPU、训练、正式搜索或 locked_test。

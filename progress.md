@@ -1630,3 +1630,5 @@ r39 已完成独立审计：两条 live episode 各 8 次决策，16/16 B512、1
 2026-10-11 原位Live H4诊断完成：两个真实root捕获及独立审计PASS；新增4 candidate ledger、2条完整H4评分结果、8次WM transition。主机制观察为H1 future Return-birth fixed-support拒绝；R39精确等价仍UNPROVEN，不外推原3744事件。新增脚本/测试/报告待提交。
 
 2026-10-11 STEP 6.4J H1动作敏感性：v1真实live root动作对照完成，独立审计PASS；18/18动作H1触发Return-birth，0 H1支持/可评分，0异常。新增分析报告；v2完整prefix root证据因日志字段错误提前停止，保留失败记录。本轮不再增加预测，等待状态一致性科研判断。
+
+2026-10-11 STEP 6.4J Raw–Model–Scorer 全链路审计：确认 AirFogSim `Task.compute()` 使用精确 `>=` 并先进入 `_waiting_to_return_tasks`，Return route/setter 是后续独立步骤；Ledger 仅在 decision-before-action 的 `route_kind=return` 入口创建 Return Flow；World Model route 规则不创建新 logical Flow。全部 12 条 dev_validation trajectory（1164 roots、48078 task rows）只读统计完成：9380 个 FP32 shadow zero、3 个 Raw/FP32 completion conflict、721 个 waiting_to_return 且无显式 return action 的快照、724 个潜在固定支持阻塞条件。证据目录 `code/artifacts/audit/pi_jwm_step6_4j_raw_model_scorer_lifecycle_20261011_v1/`。GPU、训练、正式搜索、locked_test 未运行。

@@ -1,0 +1,30 @@
+{
+  "counts": {
+    "anchor_potential_return_birth_block": 724,
+    "decision_roots": 1164,
+    "explicit_return_route_visible": 196,
+    "fp32_rounds_to_zero": 9380,
+    "nonterminal_tasks": 17540,
+    "present_tasks": 48078,
+    "raw_fp32_completion_conflicts": 3,
+    "selected_files": [
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092301-policy-2026092401.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092302-policy-2026092402.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092313-policy-2026092413.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092315-policy-2026092415.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092318-policy-2026092418.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092322-policy-2026092422.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092323-policy-2026092423.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092326-policy-2026092426.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092331-policy-2026092431.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092341-policy-2026092441.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092350-policy-2026092450.json.gz",
+      "code\\artifacts\\formal_dataset\\pi_jwm_formal_dataset_v1_h2_l4_20260923\\raw\\formal-v1-sim-2026092358-policy-2026092458.json.gz"
+    ],
+    "selection": "all 12 frozen dev_validation trajectories from split_manifest; Raw-only, no WM/scorer execution",
+    "trajectories": 12,
+    "waiting_return_without_explicit_return_route": 721
+  },
+  "task_rows_count": 48078,
+  "task_rows_sha256": "4a9ecf4cc98a1e9a9df1bb9114336d9378ad9475383eb7874c09e71b9de932d9"
+}

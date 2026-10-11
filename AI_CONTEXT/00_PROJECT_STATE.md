@@ -458,3 +458,7 @@ r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 
 ## 2026-10-11 H1 Return-birth action sensitivity
 
 18个真实live-root合法H1动作全部触发`UNSUPPORTED_FUTURE_RETURN_BIRTH`，0个H1 support pass/可评分，0个异常。Task_5与Task_15均在模型anchor已完成且缺Return Flow；Task_15 Raw lifecycle仍为computing而模型完成，约1.1e-16差异。该证据不外推r39，下一步优先状态一致性审计。
+
+## 2026-10-11 Raw–Model–Scorer 生命周期审计
+
+源码审计确认 AirFogSim 用 `computed_size >= task_cpu`，完成后先进入 `waiting_to_return`；Return route setter 与 Ledger 的 `create_return_flow()` 是后续显式 return action 入口。World Model route 规则不创建新的 logical Flow。两个 Live Root 的 Task_5/Task_15 以及全部 12 条 `dev_validation` Raw trajectory 已只读复核；证据目录为 `code/artifacts/audit/pi_jwm_step6_4j_raw_model_scorer_lifecycle_20261011_v1/`。Task_5 属于等待回传/固定支持边界；Task_15 是约 `1.1102230246251565e-16` 的 Raw FP64 剩余与模型零剩余边界差异。Validation 统计不是 r39 候选拒绝比例；GPU、训练、正式搜索和 locked_test 关闭。

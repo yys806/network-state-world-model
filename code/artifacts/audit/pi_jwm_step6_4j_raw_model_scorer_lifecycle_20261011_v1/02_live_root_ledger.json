@@ -1,0 +1,94 @@
+{
+  "lifecycle_counts": {
+    "computing": 1,
+    "failed": 1,
+    "waiting_to_return": 1
+  },
+  "raw_model_completion_conflicts": [
+    {
+      "compute_host_index": 0,
+      "computed_cpu_work": 0.6532350234152131,
+      "fp32_computed": true,
+      "model_computed": true,
+      "model_work_remaining": 0.0,
+      "raw_computed_exact": false,
+      "raw_lifecycle": "computing",
+      "raw_model_completion_conflict": true,
+      "remaining_fp32_shadow": 0.0,
+      "remaining_fp64_raw": 1.1102230246251565e-16,
+      "required_returned_size": 0.0815777792407337,
+      "return_destination_id": "UAV_0",
+      "return_exists": false,
+      "root_file": "code\\artifacts\\audit\\pi_jwm_step6_4j_h1_return_action_sensitivity_20261011_v1\\formal-v1-sim-2026092326-policy-2026092426_root.json",
+      "task_cpu_work": 0.6532350234152132,
+      "task_id": "Task_15"
+    }
+  ],
+  "roots": [
+    {
+      "file": "code\\artifacts\\audit\\pi_jwm_step6_4j_h1_return_action_sensitivity_20261011_v1\\formal-v1-sim-2026092318-policy-2026092418_root.json",
+      "sha256": "056e21b408be9e58b977957c7df5539371687d77f0da353cc5a64a2b5d886fc1"
+    },
+    {
+      "file": "code\\artifacts\\audit\\pi_jwm_step6_4j_h1_return_action_sensitivity_20261011_v1\\formal-v1-sim-2026092326-policy-2026092426_root.json",
+      "sha256": "e33b08ef808032c96ef38f6de30d2487795e3b1343855621e0e54387c77c572c"
+    }
+  ],
+  "task_count": 3,
+  "task_ledger": [
+    {
+      "compute_host_index": 4,
+      "computed_cpu_work": 0.4836374411490477,
+      "fp32_computed": true,
+      "model_computed": true,
+      "model_work_remaining": 0.0,
+      "raw_computed_exact": true,
+      "raw_lifecycle": "waiting_to_return",
+      "raw_model_completion_conflict": false,
+      "remaining_fp32_shadow": 0.0,
+      "remaining_fp64_raw": 0.0,
+      "required_returned_size": 0.07610754782944204,
+      "return_destination_id": "UAV_1",
+      "return_exists": false,
+      "root_file": "code\\artifacts\\audit\\pi_jwm_step6_4j_h1_return_action_sensitivity_20261011_v1\\formal-v1-sim-2026092318-policy-2026092418_root.json",
+      "task_cpu_work": 0.4836374411490477,
+      "task_id": "Task_5"
+    },
+    {
+      "compute_host_index": 0,
+      "computed_cpu_work": 0.6532350234152131,
+      "fp32_computed": true,
+      "model_computed": true,
+      "model_work_remaining": 0.0,
+      "raw_computed_exact": false,
+      "raw_lifecycle": "computing",
+      "raw_model_completion_conflict": true,
+      "remaining_fp32_shadow": 0.0,
+      "remaining_fp64_raw": 1.1102230246251565e-16,
+      "required_returned_size": 0.0815777792407337,
+      "return_destination_id": "UAV_0",
+      "return_exists": false,
+      "root_file": "code\\artifacts\\audit\\pi_jwm_step6_4j_h1_return_action_sensitivity_20261011_v1\\formal-v1-sim-2026092326-policy-2026092426_root.json",
+      "task_cpu_work": 0.6532350234152132,
+      "task_id": "Task_15"
+    },
+    {
+      "compute_host_index": null,
+      "computed_cpu_work": 0.0,
+      "fp32_computed": false,
+      "model_computed": false,
+      "model_work_remaining": 0.20827479660511017,
+      "raw_computed_exact": false,
+      "raw_lifecycle": "failed",
+      "raw_model_completion_conflict": false,
+      "remaining_fp32_shadow": 0.20827479660511017,
+      "remaining_fp64_raw": 0.2082747960795336,
+      "required_returned_size": 0.08004643903984553,
+      "return_destination_id": "UAV_0",
+      "return_exists": false,
+      "root_file": "code\\artifacts\\audit\\pi_jwm_step6_4j_h1_return_action_sensitivity_20261011_v1\\formal-v1-sim-2026092326-policy-2026092426_root.json",
+      "task_cpu_work": 0.2082747960795336,
+      "task_id": "Task_5"
+    }
+  ]
+}
