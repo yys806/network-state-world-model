@@ -1,0 +1,510 @@
+{
+  "admission_result": {
+    "constraints": [
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[0,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[0,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[1,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[1,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[2,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[2,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[3,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[3,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      }
+    ],
+    "final_mobility_states": {
+      "4": {
+        "elevation_observed": true,
+        "elevation_rad": 0.0,
+        "entity_id": "UAV_0",
+        "heading_observed": true,
+        "heading_rad": 0.0,
+        "heading_unit": "rad",
+        "observation_provenance": "step6_4l_B:capture-012:6:1.8",
+        "source": "previous Planner mobility command; control side-state only",
+        "uav_index": 4
+      },
+      "5": {
+        "elevation_observed": true,
+        "elevation_rad": 0.0,
+        "entity_id": "UAV_1",
+        "heading_observed": true,
+        "heading_rad": 0.0,
+        "heading_unit": "rad",
+        "observation_provenance": "step6_4l_B:capture-012:6:1.8",
+        "source": "previous Planner mobility command; control side-state only",
+        "uav_index": 5
+      }
+    },
+    "joint_behavior_support_class": [
+      "EXACT_COLLECTION_SHARED_PROFILE",
+      "EXACT_COLLECTION_SHARED_PROFILE",
+      "EXACT_COLLECTION_SHARED_PROFILE",
+      "EXACT_COLLECTION_SHARED_PROFILE"
+    ]
+  },
+  "candidate": {
+    "candidate_id": "step6_4l_r1_B",
+    "constraints": [
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[0,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[0,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[1,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[1,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[2,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[2,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[3,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[3,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_B:capture-012:6:1.8",
+        "status": "SATISFIED"
+      }
+    ],
+    "generation_metadata": {
+      "compute_feasibility_policy": "STATIC_PER_SLOT_BUDGET_V1",
+      "diagnostic": "NEW_CPU_DIAGNOSTIC",
+      "domain_observation_provenance": "step6_4l_B:capture-012:6:1.8",
+      "dynamic_available_cpu_available": false,
+      "joint_behavior_support_class": [
+        "EXACT_COLLECTION_SHARED_PROFILE",
+        "EXACT_COLLECTION_SHARED_PROFILE",
+        "EXACT_COLLECTION_SHARED_PROFILE",
+        "EXACT_COLLECTION_SHARED_PROFILE"
+      ],
+      "planner_action_domain": "V1",
+      "planner_requires_dynamic_available_cpu": false,
+      "route_experiment": "B"
+    },
+    "generator_backend": "RULE_FALLBACK",
+    "provenance": "real:step6_4l_B:6:capture-012",
+    "seed": 0,
+    "source_tags": "frozenset()",
+    "steps": [
+      {
+        "comm": [],
+        "comp": [],
+        "mob": [
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [],
+        "mob": [
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [],
+        "mob": [
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [],
+        "mob": [
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      }
+    ]
+  },
+  "finite": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "formal_route_action": false,
+  "initial": {
+    "graph": "f439bddc1a6b420285a369dacfa58a08507df093eb4ad9e71da5ec60ea9b6639",
+    "latent": "50192d0c1690d7ab4dfcf27e5f3944c1acafa1e3f524d78707adb293e271b8de",
+    "state": "104dddffd64f3b63acf8f059ee7f6f1dcc6a83ab53c400b5c148cbc8886589ff"
+  },
+  "inputs": [
+    {
+      "graph": "f439bddc1a6b420285a369dacfa58a08507df093eb4ad9e71da5ec60ea9b6639",
+      "latent": "50192d0c1690d7ab4dfcf27e5f3944c1acafa1e3f524d78707adb293e271b8de",
+      "state": "104dddffd64f3b63acf8f059ee7f6f1dcc6a83ab53c400b5c148cbc8886589ff"
+    },
+    {
+      "graph": "99aadd1d19af11bd5b53f0a48cce3d8020227cdec2c143d47d30f406f1ed42b0",
+      "latent": "40f8aec52d3f086c93686c2cd794c5893265f6da2feb7f29ed7c33620b0545a1",
+      "state": "296408741a9670ae35d9fbe6db66bd3c556e82770ed708746124d4dd3871c087"
+    },
+    {
+      "graph": "5e52d8f854cad1b74528fac1678fdc688ad9e8127c3448d6b66293d8c578fd7f",
+      "latent": "6eedb2131e9ef35f50f79bab6417d553b94ba37927b76cfccb9216b99ada6554",
+      "state": "4fc4d2acd8326a0ec318f6650e157f1054b2c16a8e8eb2a2ddc8b834855fe4ec"
+    },
+    {
+      "graph": "0ff31e7ce98dc71fc3a71d7d3c62a56c796683f2a90333edfd5dcb196794c3d6",
+      "latent": "ed60fd00f7a91365270dcd933cc2998a5226c2efb08601d8e282619fbdac5425",
+      "state": "a27f6b2422eb20ecabf2fa303c0ebb8655a43b8714c99c4f3bdb975335604c2a"
+    }
+  ],
+  "ledger": [
+    {
+      "flow": {
+        "carrying_active": true,
+        "carrying_hop_destination_index": 5,
+        "carrying_hop_source_index": 4,
+        "current_holder_index": 4,
+        "current_hop_index": 0,
+        "flow_comm_relation_index": 38,
+        "flow_destination_index": 5,
+        "flow_identity_index": 32,
+        "flow_known": true,
+        "flow_presence": true,
+        "flow_remaining": 0.07610754668712616,
+        "flow_route_revision": 0,
+        "flow_source_index": 4,
+        "flow_status_index": 2,
+        "flow_task_index": 0,
+        "flow_total": 0.07610754668712616,
+        "flow_type_index": 3,
+        "hop_progress": 0.0,
+        "hop_remaining": 0.07610754668712616,
+        "route_node_indices": [
+          5
+        ],
+        "route_node_mask": [
+          true
+        ]
+      },
+      "horizon": 1,
+      "one_step_seconds": 1.8254203999531455,
+      "return_slot": 32,
+      "task": {
+        "task_completed": false,
+        "task_lifecycle_index": 1,
+        "task_presence": true,
+        "task_progress": 1.0,
+        "task_released": true,
+        "task_requires_return": true,
+        "task_return_requirement_known": true,
+        "task_work_remaining": 0.0,
+        "task_work_total": 0.4836374521255493
+      },
+      "task_id": "Task_5",
+      "task_index": 0
+    },
+    {
+      "flow": {
+        "carrying_active": true,
+        "carrying_hop_destination_index": 5,
+        "carrying_hop_source_index": 4,
+        "current_holder_index": 4,
+        "current_hop_index": 0,
+        "flow_comm_relation_index": 38,
+        "flow_destination_index": 5,
+        "flow_identity_index": 32,
+        "flow_known": true,
+        "flow_presence": true,
+        "flow_remaining": 0.07610754668712616,
+        "flow_route_revision": 0,
+        "flow_source_index": 4,
+        "flow_status_index": 2,
+        "flow_task_index": 0,
+        "flow_total": 0.07610754668712616,
+        "flow_type_index": 3,
+        "hop_progress": 0.0,
+        "hop_remaining": 0.07610754668712616,
+        "route_node_indices": [
+          5
+        ],
+        "route_node_mask": [
+          true
+        ]
+      },
+      "horizon": 2,
+      "one_step_seconds": 1.7190441999700852,
+      "return_slot": 32,
+      "task": {
+        "task_completed": false,
+        "task_lifecycle_index": 1,
+        "task_presence": true,
+        "task_progress": 1.0,
+        "task_released": true,
+        "task_requires_return": true,
+        "task_return_requirement_known": true,
+        "task_work_remaining": 0.0,
+        "task_work_total": 0.4836374521255493
+      },
+      "task_id": "Task_5",
+      "task_index": 0
+    },
+    {
+      "flow": {
+        "carrying_active": true,
+        "carrying_hop_destination_index": 5,
+        "carrying_hop_source_index": 4,
+        "current_holder_index": 4,
+        "current_hop_index": 0,
+        "flow_comm_relation_index": 38,
+        "flow_destination_index": 5,
+        "flow_identity_index": 32,
+        "flow_known": true,
+        "flow_presence": true,
+        "flow_remaining": 0.07610754668712616,
+        "flow_route_revision": 0,
+        "flow_source_index": 4,
+        "flow_status_index": 2,
+        "flow_task_index": 0,
+        "flow_total": 0.07610754668712616,
+        "flow_type_index": 3,
+        "hop_progress": 0.0,
+        "hop_remaining": 0.07610754668712616,
+        "route_node_indices": [
+          5
+        ],
+        "route_node_mask": [
+          true
+        ]
+      },
+      "horizon": 3,
+      "one_step_seconds": 1.673452599963639,
+      "return_slot": 32,
+      "task": {
+        "task_completed": false,
+        "task_lifecycle_index": 1,
+        "task_presence": true,
+        "task_progress": 1.0,
+        "task_released": true,
+        "task_requires_return": true,
+        "task_return_requirement_known": true,
+        "task_work_remaining": 0.0,
+        "task_work_total": 0.4836374521255493
+      },
+      "task_id": "Task_5",
+      "task_index": 0
+    },
+    {
+      "flow": {
+        "carrying_active": true,
+        "carrying_hop_destination_index": 5,
+        "carrying_hop_source_index": 4,
+        "current_holder_index": 4,
+        "current_hop_index": 0,
+        "flow_comm_relation_index": 38,
+        "flow_destination_index": 5,
+        "flow_identity_index": 32,
+        "flow_known": true,
+        "flow_presence": true,
+        "flow_remaining": 0.07610754668712616,
+        "flow_route_revision": 0,
+        "flow_source_index": 4,
+        "flow_status_index": 2,
+        "flow_task_index": 0,
+        "flow_total": 0.07610754668712616,
+        "flow_type_index": 3,
+        "hop_progress": 0.0,
+        "hop_remaining": 0.07610754668712616,
+        "route_node_indices": [
+          5
+        ],
+        "route_node_mask": [
+          true
+        ]
+      },
+      "horizon": 4,
+      "one_step_seconds": 1.7650220000068657,
+      "return_slot": 32,
+      "task": {
+        "task_completed": false,
+        "task_lifecycle_index": 1,
+        "task_presence": true,
+        "task_progress": 1.0,
+        "task_released": true,
+        "task_requires_return": true,
+        "task_return_requirement_known": true,
+        "task_work_remaining": 0.0,
+        "task_work_total": 0.4836374521255493
+      },
+      "task_id": "Task_5",
+      "task_index": 0
+    }
+  ],
+  "mappings": [
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    }
+  ],
+  "official_admission_passed": true,
+  "outputs": [
+    {
+      "graph": "99aadd1d19af11bd5b53f0a48cce3d8020227cdec2c143d47d30f406f1ed42b0",
+      "latent": "40f8aec52d3f086c93686c2cd794c5893265f6da2feb7f29ed7c33620b0545a1",
+      "state": "296408741a9670ae35d9fbe6db66bd3c556e82770ed708746124d4dd3871c087"
+    },
+    {
+      "graph": "5e52d8f854cad1b74528fac1678fdc688ad9e8127c3448d6b66293d8c578fd7f",
+      "latent": "6eedb2131e9ef35f50f79bab6417d553b94ba37927b76cfccb9216b99ada6554",
+      "state": "4fc4d2acd8326a0ec318f6650e157f1054b2c16a8e8eb2a2ddc8b834855fe4ec"
+    },
+    {
+      "graph": "0ff31e7ce98dc71fc3a71d7d3c62a56c796683f2a90333edfd5dcb196794c3d6",
+      "latent": "ed60fd00f7a91365270dcd933cc2998a5226c2efb08601d8e282619fbdac5425",
+      "state": "a27f6b2422eb20ecabf2fa303c0ebb8655a43b8714c99c4f3bdb975335604c2a"
+    },
+    {
+      "graph": "778a9445d942d8a861220e45f45a2238e962bbd733cfc180cb47758043e1cf51",
+      "latent": "c86bba12cc24503b89491618fb2651bd752c8db6f88e26b69658ac4523c4674d",
+      "state": "f05873689a715aee4a532183bccf314c91986584d6f249376a4a00b697c95788"
+    }
+  ],
+  "parameter_after": "ce76385958659b9c5e9a43806e9e20f4a892a497a9beb94092e1ed872a88ef69",
+  "parameter_before": "ce76385958659b9c5e9a43806e9e20f4a892a497a9beb94092e1ed872a88ef69",
+  "shadow_anchor_modified": true
+}

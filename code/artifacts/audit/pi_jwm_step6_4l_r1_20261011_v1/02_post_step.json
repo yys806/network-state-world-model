@@ -1,0 +1,105 @@
+{
+  "buckets": {
+    "_computing_tasks": [],
+    "_done_tasks": [],
+    "_offloading_tasks": [],
+    "_out_of_ddl_tasks": [
+      {
+        "node_id": "UAV_1",
+        "task_id": "Task_10"
+      },
+      {
+        "node_id": "UAV_1",
+        "task_id": "Task_11"
+      },
+      {
+        "node_id": "UAV_1",
+        "task_id": "Task_12"
+      },
+      {
+        "node_id": "UAV_1",
+        "task_id": "Task_5"
+      },
+      {
+        "node_id": "UAV_1",
+        "task_id": "Task_8"
+      },
+      {
+        "node_id": "UAV_1",
+        "task_id": "Task_9"
+      }
+    ],
+    "_returning_tasks": [],
+    "_waiting_to_return_tasks": []
+  },
+  "capture_event_id": "capture-014",
+  "frame": 7,
+  "route_table": {},
+  "simulation_time_s": 1.9,
+  "task": {
+    "arrival_time": 0.6,
+    "assigned_to": "UAV_0",
+    "current_node_id": "UAV_0",
+    "failure_reason": "Task fails due to transmission timeout.",
+    "failure_reason_code": 1,
+    "last_return_time": 1.8,
+    "last_transmission_time": 1.2,
+    "lifecycle_flags": {
+      "computed": true,
+      "finished": false,
+      "returning": true,
+      "transmitting": true
+    },
+    "required_returned_size": 0.07610754782944204,
+    "return_destination": "UAV_1",
+    "route_remaining": [
+      "UAV_1"
+    ],
+    "task_deadline": 8.59828601164002,
+    "task_id": "Task_5",
+    "task_node_id": "UAV_1",
+    "transmitted_size": 0
+  },
+  "task_manager_source": null,
+  "transfer_events": [
+    {
+      "capture_phase": "after_fast_fading_before_transfer",
+      "channel_type": "U2U",
+      "delivered_data": 0.556973122843206,
+      "event_id": "event::Task_5::1.200000",
+      "evidence": "direct_runtime_channel_event",
+      "interference_plus_noise_mw": [
+        3.9810717055349695e-12
+      ],
+      "noise_power_dbm": -114.0,
+      "noise_power_mw": 3.9810717055349695e-12,
+      "outage": [
+        false
+      ],
+      "outcome_channel_attenuation_db": [
+        95.54414988052798
+      ],
+      "planned_capacity": 2.2117598494470414,
+      "rate_per_s": [
+        22.117598494470414
+      ],
+      "rb_bandwidth_mhz": 2.0,
+      "rb_indices": [
+        0
+      ],
+      "remaining_before": 0.556973122843206,
+      "rx_idx": 0,
+      "sinr_db": [
+        33.28826652844564
+      ],
+      "slot_seconds": 0.1,
+      "source": "UAV_1",
+      "target": "UAV_0",
+      "task_id": "Task_5",
+      "temporal_role": "outcome_only_not_same_frame_decision_input",
+      "time": 1.2,
+      "transport": "wireless",
+      "tx_idx": 1
+    }
+  ]
+}

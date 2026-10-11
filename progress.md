@@ -1635,3 +1635,5 @@ r39 已完成独立审计：两条 live episode 各 8 次决策，16/16 B512、1
 
 2026-10-11 STEP 6.4K：完成官方 Ledger replay、Shadow Return Flow 原型和冻结模型兼容性。修正统计为 710 waiting-to-return 无 Return Flow、713 FP32/710 FP64 潜在 fixed-support 阻塞、8460 known Return、5675 active、2785 completed、3 FP64/FP32 conflicts、1237 fail-closed mapping errors。规则测试 8/8 PASS；真实已有 Return Flow anchor H1–H4 PASS；Shadow 新 Flow 追加 slot 后冻结模型 H1–H4 PASS，finite、recursive links PASS、参数保持不变。正式 Planner scoreability 未测试，Shadow 分数未晋升，GPU/训练/B512/locked_test 未运行。
 2026-10-11 STEP 6.4L：同一 live root 的 A/B 真实 Route 对照和官方 Ledger 独立审计完成；B 的 Return Flow birth 已证实，真实传输未发生。冻结模型 A/B 均未进入正式 Scorer 评分，未伪造 score。GPU、训练、B512、locked_test 未运行。
+
+2026-10-11 STEP 6.4L-R1：R1 运行时回执锁定 Task_5 为 `TASK_FAIL_OUT_OF_TTI`，失败发生在 `_updateTask().checkTasks()`、没有新的 RB request，deadline 未到期；UAV_0→UAV_1 Raw/Model U2U relation 存在，当前分类 `TEMPORARILY_NO_SERVICE`。A 官方 domain qualification 修正后 H4 rollout PASS 但固定支持在 H1 拒绝；B 修正整数模型索引后 Shadow Flow H4 与原 Scorer `SCOREABLE/H_eff=4`，未提升正式分数，Objective comparability 仍 `NOT_ESTABLISHED`。独立验收 PASS；无 GPU/训练/B512/locked_test/正式 Route Planner 改动。唯一下一动作等待研究者冻结 Route、RB、Flow birth 和 TTI 顺序合同。

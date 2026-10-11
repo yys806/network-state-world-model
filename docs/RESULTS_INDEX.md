@@ -241,3 +241,7 @@ STEP 5.5 只有 Dataset/CPU interface 验收结果，没有预测性能结果：
 
 No new performance result. The only accepted result is a readiness diagnostic: deadline sidecar alignment passes for one non-locked validation anchor, and 6.2B remains blocked by a reproduced route transition mismatch. Primary future throughput is E2E useful delivery; network service throughput is diagnostic. See the PATCH machine readiness receipt and implementation record.
 2026-09-30 3080 Ti 迁移/执行资格：正式 Dataset 与冻结 checkpoint SHA 一致，CPU/GPU 离散等价 PASS；batch 8/16/32/64 短稳态中位 10.3593/10.9154/12.4562/12.6699 tps，基于最小预算 CEM 完整 H4 约束冻结 batch16。bounded TRAIN smoke PASS；不是正式搜索方法比较或科学性能结论。
+
+## 2026-10-11 STEP 6.4L-R1
+
+新增结果：真实 Task_5 failure code、UAV0→UAV1 support matrix、A/B frozen-WM 旁路结果和独立验收。A 首拒绝 `UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1`；B Shadow `SCOREABLE/H_eff=4`，不代表正式 Route candidate。详情见 R1 artifact namespace 与 `docs/implementation_records/STEP_06_4L_R1_ROUTE_FLOW_CAUSAL.md`。

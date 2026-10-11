@@ -1,0 +1,39 @@
+{
+  "GPU": false,
+  "checkpoint_sha256_expected": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "files": {
+    "checkpoint_path": {
+      "exists": true,
+      "path": "code/artifacts/formal_training/pi_jwm_formal_train_v1_seed5601_20260924T112424Z/checkpoints/best.pt",
+      "sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9"
+    },
+    "collector_script": {
+      "exists": true,
+      "path": "code/scripts/collect_step5_5_formal_raw_v1.py",
+      "sha256": "9d513cc114954fffb555f54e5f0aeea4b9edbf92292f5f5348066deb2b191f5e"
+    },
+    "normalization_path": {
+      "exists": true,
+      "path": "code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/normalization/stats.json",
+      "sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5"
+    },
+    "scorer_module": {
+      "exists": true,
+      "path": "code/src/pi_jwm/step6_2b_planner_objective_scorer_v1.py",
+      "sha256": "12e4ea677811882a4e094e539d2be62203cc4669deca0427c74095764cbe69ad"
+    },
+    "shadow_module": {
+      "exists": true,
+      "path": "code/src/pi_jwm/step6_4k_return_shadow_v1.py",
+      "sha256": "225f79c6ff3a8029d4a9aea8c86673d505b41b603b209eca897daf59e6735e08"
+    },
+    "wm_script": {
+      "exists": true,
+      "path": "code/scripts/run_step6_4l_r1_frozen_wm_scorer_v2.py",
+      "sha256": "5882abe78d4616ca1b05f58a033b94de72abc3fa38ed0ae1f8e604e937d08b96"
+    }
+  },
+  "locked_test": false,
+  "normalization_sha256_expected": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+  "schema": "PI-JWM-STEP-6.4L-R1-IDENTITY-v1"
+}

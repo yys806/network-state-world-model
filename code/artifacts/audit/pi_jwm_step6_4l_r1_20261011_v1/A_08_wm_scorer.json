@@ -1,0 +1,74 @@
+{
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "domain_count": 6,
+  "formal_route_action_in_candidate": false,
+  "mode": "A",
+  "root_fingerprint": {
+    "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+    "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+    "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+    "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+    "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+  },
+  "root_identity": "LIVE_ROOT_CAPTURE_VALID",
+  "route": {
+    "computed_cpu_work": 0.4836374411490477,
+    "destination": "UAV_1",
+    "lifecycle": "waiting_to_return",
+    "required_returned_size": 0.07610754782944204,
+    "route": [
+      "UAV_1"
+    ],
+    "route_table_after_setter": {},
+    "route_table_before": {},
+    "setter_called": null,
+    "setter_verified": false,
+    "source": "UAV_0",
+    "task_cpu_work": 0.4836374411490477,
+    "task_id": "Task_5"
+  },
+  "stage": "PASS",
+  "wm_scorer": {
+    "H_eff": 0,
+    "diagnostics": {
+      "support_boundary_reasons": {
+        "step6_4l_r1_A": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1"
+      }
+    },
+    "formal_score_promoted": false,
+    "horizons": 4,
+    "scoreable_h4": false,
+    "scorer_status": "OBJECTIVE_UNSCOREABLE",
+    "support_horizons": {
+      "step6_4l_r1_A": 0
+    },
+    "trace_initial": {
+      "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+      "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+      "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+      "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a"
+    },
+    "trace_outputs": [
+      {
+        "graph": "f7f91277a5f2a529697d462049d6755c53f484fe213189113f1ca03e35b9fdb6",
+        "latent": "0ff2815554eba0c4d40b3b1e5b08e5ceb1088280640fdb0117b820288616ad5c",
+        "state": "3e1d7dfadd0218799374fb44c77a1b257530698a8b1040e03f859dbe0e7336d9"
+      },
+      {
+        "graph": "f0d7c59f7a2448f2c1d32cd5514c024825c4dd4c48da4b2c4d7e3bd2369d3d17",
+        "latent": "4f35ce1fceacbc5ae67bfda8e7b5e96474f35c2bc86b6713dd07fb15b89a3d50",
+        "state": "6cb1c6dca02bdf717c261f3317ca36dabb9af98bd6edffa6d60a547c318bbe3d"
+      },
+      {
+        "graph": "925ce4c765613f5c45f3aebe83cc730e1b98d30a8ae74eb9779c67f1d8851cff",
+        "latent": "e1009d30b4b4b152ae229ece9a310df00e74a741644b16ccc655d5d1d88b944d",
+        "state": "7a5c6481785e879e9961d5d7d58492628a7ec4fde7db921646c3d84659124252"
+      },
+      {
+        "graph": "c9c69d2f2591643cf49723d4c20b5cfccdd30ed0eabe2058428abf4b33f53463",
+        "latent": "401960b5c3b892fdb6f242086a22a5b50dff046a498cf0e3263bb3781a3affd2",
+        "state": "85e0fc51f17c256cdb2cb9f00bc3e261a2437de71a4a56986cf4b051f1ea784b"
+      }
+    ]
+  }
+}

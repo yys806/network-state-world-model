@@ -1,0 +1,10 @@
+{
+  "GPU": false,
+  "events": [],
+  "formal_semantics_modified": false,
+  "locked_test": false,
+  "policy_seed": 2026092418,
+  "schema": "PI-JWM-STEP-6.4L-R1-TASK5-RUNTIME-v1",
+  "simulator_seed": 2026092318,
+  "target_frame": 6
+}

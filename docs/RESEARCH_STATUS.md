@@ -279,3 +279,7 @@ Objective source reconciliation and a single non-locked Formal Validation deadli
 
 研究者接受现有 Formal best checkpoint、不重训；Planner v1 Route 限定为 Formal Dataset single-hop support。当前只达到 `READY_FOR_SINGLE_HOP_SCORER_IMPLEMENTATION`，不代表 Planner、ranking、closed loop、baseline 或 performance ready。Formal multi-hop coverage 为零，multi-hop code 保留作未来扩展/消融。
 2026-09-30：`STEP_6_3D_3080TI_MIGRATION_QUALIFICATION=PASS`，仅表示正式数据迁移、GPU FP32 等价、runner/resume 和 bounded TRAIN smoke 就绪。正式 TRAIN tuning、Validation 方法比较、locked_test 未运行，搜索方法未选；future Return birth 固定支持限制保留。
+
+## 2026-10-11 STEP 6.4L-R1
+
+`TASK5_FAILURE_ROOT_CAUSE=PASS`（TTI failure before wireless）、`ROUTE_COMM_SUPPORT_CLASSIFICATION=TEMPORARILY_NO_SERVICE`、`REAL_RETURN_FLOW_H4_COMPATIBILITY=PASS_SHADOW_ONLY`、`SCORER_SCOREABILITY=BLOCKED_FOR_FORMAL_A_B_COMPARISON`、`CANDIDATE_OBJECTIVE_COMPARABILITY=NOT_ESTABLISHED`、`RETRAIN_REQUIRED=UNDETERMINED`。本轮未改正式科学语义。

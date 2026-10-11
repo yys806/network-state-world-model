@@ -1,0 +1,588 @@
+{
+  "anchor_components": [
+    {
+      "anchor_flows": [
+        32
+      ],
+      "task_completed": false,
+      "task_id": "Task_5",
+      "task_index": 0,
+      "task_presence": true,
+      "terminal_at_anchor": false,
+      "work_remaining": 0.0
+    },
+    {
+      "anchor_flows": [],
+      "task_completed": false,
+      "task_id": "Task_6",
+      "task_index": 1,
+      "task_presence": true,
+      "terminal_at_anchor": false,
+      "work_remaining": 0.6238830089569092
+    },
+    {
+      "anchor_flows": [],
+      "task_completed": false,
+      "task_id": "Task_7",
+      "task_index": 2,
+      "task_presence": true,
+      "terminal_at_anchor": false,
+      "work_remaining": 0.5994871854782104
+    }
+  ],
+  "formal_score_promoted": false,
+  "raw_result": {
+    "H_eff": 4,
+    "diagnostics": {
+      "cohort_size": 3,
+      "support_boundary_reasons": {
+        "step6_4l_r1_B": null
+      }
+    },
+    "scores": [
+      {
+        "A_DDL": 0.0,
+        "H_eff": 4,
+        "H_sup": 4,
+        "J_Burden": 1.0,
+        "J_Delay": 1.0,
+        "J_Effort": 0.0,
+        "N_DDL": 0,
+        "anchor_fingerprint": "104dddffd64f3b63acf8f059ee7f6f1dcc6a83ab53c400b5c148cbc8886589ff",
+        "candidate_fingerprint": "e135dc039226367ca811ad21cfb2f6b2627f1d5625bb707dc658b76458093c89",
+        "candidate_id": "step6_4l_r1_B",
+        "diagnostics": {
+          "cohort_task_ids": [
+            "Task_5",
+            "Task_6",
+            "Task_7"
+          ],
+          "effort_component_mask": [
+            true,
+            true,
+            true
+          ],
+          "effort_denominators": [
+            50.0,
+            52.0,
+            30.0
+          ],
+          "future_truth_used": false,
+          "throughput_diagnostic_only": true
+        },
+        "objective_tuple": [
+          0,
+          0.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "per_horizon_rows": [
+          {
+            "burden": 1.0,
+            "deadline_violation": 0,
+            "effort": 0.0,
+            "effort_components": {
+              "Comm": 0.0,
+              "Comp": 0.0,
+              "Mob": 0.0
+            },
+            "horizon": 1,
+            "tasks": [
+              {
+                "anchor_flow_slots": [
+                  32
+                ],
+                "anchor_tx_burden": 0.07610754668712616,
+                "anchor_work_remaining": 0.0,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": false,
+                "m_Tx": true,
+                "status": "ACTIVE",
+                "task_id": "Task_5",
+                "task_index": 0,
+                "tx_burden": 0.07610754668712616,
+                "unfinished": 1,
+                "work_remaining": 0.0
+              },
+              {
+                "anchor_flow_slots": [],
+                "anchor_tx_burden": 0,
+                "anchor_work_remaining": 0.6238830089569092,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": true,
+                "m_Tx": false,
+                "status": "ACTIVE",
+                "task_id": "Task_6",
+                "task_index": 1,
+                "tx_burden": 0,
+                "unfinished": 1,
+                "work_remaining": 0.6238830089569092
+              },
+              {
+                "anchor_flow_slots": [],
+                "anchor_tx_burden": 0,
+                "anchor_work_remaining": 0.5994871854782104,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": true,
+                "m_Tx": false,
+                "status": "ACTIVE",
+                "task_id": "Task_7",
+                "task_index": 2,
+                "tx_burden": 0,
+                "unfinished": 1,
+                "work_remaining": 0.5994871854782104
+              }
+            ],
+            "unfinished": 3
+          },
+          {
+            "burden": 1.0,
+            "deadline_violation": 0,
+            "effort": 0.0,
+            "effort_components": {
+              "Comm": 0.0,
+              "Comp": 0.0,
+              "Mob": 0.0
+            },
+            "horizon": 2,
+            "tasks": [
+              {
+                "anchor_flow_slots": [
+                  32
+                ],
+                "anchor_tx_burden": 0.07610754668712616,
+                "anchor_work_remaining": 0.0,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": false,
+                "m_Tx": true,
+                "status": "ACTIVE",
+                "task_id": "Task_5",
+                "task_index": 0,
+                "tx_burden": 0.07610754668712616,
+                "unfinished": 1,
+                "work_remaining": 0.0
+              },
+              {
+                "anchor_flow_slots": [],
+                "anchor_tx_burden": 0,
+                "anchor_work_remaining": 0.6238830089569092,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": true,
+                "m_Tx": false,
+                "status": "ACTIVE",
+                "task_id": "Task_6",
+                "task_index": 1,
+                "tx_burden": 0,
+                "unfinished": 1,
+                "work_remaining": 0.6238830089569092
+              },
+              {
+                "anchor_flow_slots": [],
+                "anchor_tx_burden": 0,
+                "anchor_work_remaining": 0.5994871854782104,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": true,
+                "m_Tx": false,
+                "status": "ACTIVE",
+                "task_id": "Task_7",
+                "task_index": 2,
+                "tx_burden": 0,
+                "unfinished": 1,
+                "work_remaining": 0.5994871854782104
+              }
+            ],
+            "unfinished": 3
+          },
+          {
+            "burden": 1.0,
+            "deadline_violation": 0,
+            "effort": 0.0,
+            "effort_components": {
+              "Comm": 0.0,
+              "Comp": 0.0,
+              "Mob": 0.0
+            },
+            "horizon": 3,
+            "tasks": [
+              {
+                "anchor_flow_slots": [
+                  32
+                ],
+                "anchor_tx_burden": 0.07610754668712616,
+                "anchor_work_remaining": 0.0,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": false,
+                "m_Tx": true,
+                "status": "ACTIVE",
+                "task_id": "Task_5",
+                "task_index": 0,
+                "tx_burden": 0.07610754668712616,
+                "unfinished": 1,
+                "work_remaining": 0.0
+              },
+              {
+                "anchor_flow_slots": [],
+                "anchor_tx_burden": 0,
+                "anchor_work_remaining": 0.6238830089569092,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": true,
+                "m_Tx": false,
+                "status": "ACTIVE",
+                "task_id": "Task_6",
+                "task_index": 1,
+                "tx_burden": 0,
+                "unfinished": 1,
+                "work_remaining": 0.6238830089569092
+              },
+              {
+                "anchor_flow_slots": [],
+                "anchor_tx_burden": 0,
+                "anchor_work_remaining": 0.5994871854782104,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": true,
+                "m_Tx": false,
+                "status": "ACTIVE",
+                "task_id": "Task_7",
+                "task_index": 2,
+                "tx_burden": 0,
+                "unfinished": 1,
+                "work_remaining": 0.5994871854782104
+              }
+            ],
+            "unfinished": 3
+          },
+          {
+            "burden": 1.0,
+            "deadline_violation": 0,
+            "effort": 0.0,
+            "effort_components": {
+              "Comm": 0.0,
+              "Comp": 0.0,
+              "Mob": 0.0
+            },
+            "horizon": 4,
+            "tasks": [
+              {
+                "anchor_flow_slots": [
+                  32
+                ],
+                "anchor_tx_burden": 0.07610754668712616,
+                "anchor_work_remaining": 0.0,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": false,
+                "m_Tx": true,
+                "status": "ACTIVE",
+                "task_id": "Task_5",
+                "task_index": 0,
+                "tx_burden": 0.07610754668712616,
+                "unfinished": 1,
+                "work_remaining": 0.0
+              },
+              {
+                "anchor_flow_slots": [],
+                "anchor_tx_burden": 0,
+                "anchor_work_remaining": 0.6238830089569092,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": true,
+                "m_Tx": false,
+                "status": "ACTIVE",
+                "task_id": "Task_6",
+                "task_index": 1,
+                "tx_burden": 0,
+                "unfinished": 1,
+                "work_remaining": 0.6238830089569092
+              },
+              {
+                "anchor_flow_slots": [],
+                "anchor_tx_burden": 0,
+                "anchor_work_remaining": 0.5994871854782104,
+                "burden": 1.0,
+                "deadline_violation": 0,
+                "m_Comp": true,
+                "m_Tx": false,
+                "status": "ACTIVE",
+                "task_id": "Task_7",
+                "task_index": 2,
+                "tx_burden": 0,
+                "unfinished": 1,
+                "work_remaining": 0.5994871854782104
+              }
+            ],
+            "unfinished": 3
+          }
+        ],
+        "per_task_rows": {
+          "Task_5": [
+            {
+              "anchor_flow_slots": [
+                32
+              ],
+              "anchor_tx_burden": 0.07610754668712616,
+              "anchor_work_remaining": 0.0,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": false,
+              "m_Tx": true,
+              "status": "ACTIVE",
+              "task_id": "Task_5",
+              "task_index": 0,
+              "tx_burden": 0.07610754668712616,
+              "unfinished": 1,
+              "work_remaining": 0.0
+            },
+            {
+              "anchor_flow_slots": [
+                32
+              ],
+              "anchor_tx_burden": 0.07610754668712616,
+              "anchor_work_remaining": 0.0,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": false,
+              "m_Tx": true,
+              "status": "ACTIVE",
+              "task_id": "Task_5",
+              "task_index": 0,
+              "tx_burden": 0.07610754668712616,
+              "unfinished": 1,
+              "work_remaining": 0.0
+            },
+            {
+              "anchor_flow_slots": [
+                32
+              ],
+              "anchor_tx_burden": 0.07610754668712616,
+              "anchor_work_remaining": 0.0,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": false,
+              "m_Tx": true,
+              "status": "ACTIVE",
+              "task_id": "Task_5",
+              "task_index": 0,
+              "tx_burden": 0.07610754668712616,
+              "unfinished": 1,
+              "work_remaining": 0.0
+            },
+            {
+              "anchor_flow_slots": [
+                32
+              ],
+              "anchor_tx_burden": 0.07610754668712616,
+              "anchor_work_remaining": 0.0,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": false,
+              "m_Tx": true,
+              "status": "ACTIVE",
+              "task_id": "Task_5",
+              "task_index": 0,
+              "tx_burden": 0.07610754668712616,
+              "unfinished": 1,
+              "work_remaining": 0.0
+            }
+          ],
+          "Task_6": [
+            {
+              "anchor_flow_slots": [],
+              "anchor_tx_burden": 0,
+              "anchor_work_remaining": 0.6238830089569092,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": true,
+              "m_Tx": false,
+              "status": "ACTIVE",
+              "task_id": "Task_6",
+              "task_index": 1,
+              "tx_burden": 0,
+              "unfinished": 1,
+              "work_remaining": 0.6238830089569092
+            },
+            {
+              "anchor_flow_slots": [],
+              "anchor_tx_burden": 0,
+              "anchor_work_remaining": 0.6238830089569092,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": true,
+              "m_Tx": false,
+              "status": "ACTIVE",
+              "task_id": "Task_6",
+              "task_index": 1,
+              "tx_burden": 0,
+              "unfinished": 1,
+              "work_remaining": 0.6238830089569092
+            },
+            {
+              "anchor_flow_slots": [],
+              "anchor_tx_burden": 0,
+              "anchor_work_remaining": 0.6238830089569092,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": true,
+              "m_Tx": false,
+              "status": "ACTIVE",
+              "task_id": "Task_6",
+              "task_index": 1,
+              "tx_burden": 0,
+              "unfinished": 1,
+              "work_remaining": 0.6238830089569092
+            },
+            {
+              "anchor_flow_slots": [],
+              "anchor_tx_burden": 0,
+              "anchor_work_remaining": 0.6238830089569092,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": true,
+              "m_Tx": false,
+              "status": "ACTIVE",
+              "task_id": "Task_6",
+              "task_index": 1,
+              "tx_burden": 0,
+              "unfinished": 1,
+              "work_remaining": 0.6238830089569092
+            }
+          ],
+          "Task_7": [
+            {
+              "anchor_flow_slots": [],
+              "anchor_tx_burden": 0,
+              "anchor_work_remaining": 0.5994871854782104,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": true,
+              "m_Tx": false,
+              "status": "ACTIVE",
+              "task_id": "Task_7",
+              "task_index": 2,
+              "tx_burden": 0,
+              "unfinished": 1,
+              "work_remaining": 0.5994871854782104
+            },
+            {
+              "anchor_flow_slots": [],
+              "anchor_tx_burden": 0,
+              "anchor_work_remaining": 0.5994871854782104,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": true,
+              "m_Tx": false,
+              "status": "ACTIVE",
+              "task_id": "Task_7",
+              "task_index": 2,
+              "tx_burden": 0,
+              "unfinished": 1,
+              "work_remaining": 0.5994871854782104
+            },
+            {
+              "anchor_flow_slots": [],
+              "anchor_tx_burden": 0,
+              "anchor_work_remaining": 0.5994871854782104,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": true,
+              "m_Tx": false,
+              "status": "ACTIVE",
+              "task_id": "Task_7",
+              "task_index": 2,
+              "tx_burden": 0,
+              "unfinished": 1,
+              "work_remaining": 0.5994871854782104
+            },
+            {
+              "anchor_flow_slots": [],
+              "anchor_tx_burden": 0,
+              "anchor_work_remaining": 0.5994871854782104,
+              "burden": 1.0,
+              "deadline_violation": 0,
+              "m_Comp": true,
+              "m_Tx": false,
+              "status": "ACTIVE",
+              "task_id": "Task_7",
+              "task_index": 2,
+              "tx_burden": 0,
+              "unfinished": 1,
+              "work_remaining": 0.5994871854782104
+            }
+          ]
+        },
+        "support_boundary_reason": null
+      }
+    ],
+    "status": "SCOREABLE",
+    "support_horizons": {
+      "step6_4l_r1_B": 4
+    }
+  },
+  "scorer_seconds": 0.0338752000243403,
+  "side": {
+    "anchor_time_s": 1.8,
+    "current_time_s": 1.8,
+    "effort_component_mask": [
+      true,
+      true,
+      true
+    ],
+    "effort_denominators": [
+      50.0,
+      52.0,
+      30.0
+    ],
+    "routes": [],
+    "source": "current Formal Raw + aligned decision-before-action replay",
+    "tasks": [
+      {
+        "absolute_deadline_s": 9.19828601164002,
+        "arrival_time_s": 0.6,
+        "deadline_s": 8.59828601164002,
+        "elapsed_time_s": 1.2000000000000002,
+        "required_returned_size": 0.07610754782944204,
+        "requires_return": true,
+        "return_destination_index": 5,
+        "source_time_s": 1.8,
+        "task_id": "Task_5",
+        "task_index": 0,
+        "terminal_at_anchor": false
+      },
+      {
+        "absolute_deadline_s": 10.04624275552255,
+        "arrival_time_s": 1.2,
+        "deadline_s": 8.846242755522551,
+        "elapsed_time_s": 0.6000000000000001,
+        "required_returned_size": 0.06801609958314783,
+        "requires_return": null,
+        "return_destination_index": 5,
+        "source_time_s": 1.8,
+        "task_id": "Task_6",
+        "task_index": 1,
+        "terminal_at_anchor": false
+      },
+      {
+        "absolute_deadline_s": 11.440591933139123,
+        "arrival_time_s": 1.8000000000000005,
+        "deadline_s": 9.640591933139122,
+        "elapsed_time_s": -4.440892098500626e-16,
+        "required_returned_size": 0.09446867733798395,
+        "requires_return": null,
+        "return_destination_index": 5,
+        "source_time_s": 1.8,
+        "task_id": "Task_7",
+        "task_index": 2,
+        "terminal_at_anchor": false
+      }
+    ]
+  }
+}

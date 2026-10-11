@@ -1,0 +1,218 @@
+{
+  "GPU": false,
+  "checks": {
+    "a_official_domain_qualification": true,
+    "a_return_birth_boundary": true,
+    "b_formal_not_promoted": true,
+    "b_shadow_h4": true,
+    "b_shadow_scoreable": true,
+    "classification_temporary_no_service": true,
+    "deadline_not_expired": true,
+    "failure_before_wireless": true,
+    "model_uav_hop_supported": true,
+    "no_gpu_locked_test": true,
+    "no_new_rb_request": true,
+    "no_new_task5_transfer": true,
+    "route_consumed_before_failure": true,
+    "runtime_completed": true,
+    "same_formal_candidate_anchor_not_proven": true,
+    "task5_tti_failure": true,
+    "v4_a_admission_and_recursive_identity": true,
+    "v4_b_admission_and_recursive_identity": true,
+    "v4_completed_within_scope": true,
+    "v4_formal_scores_not_promoted": true,
+    "v4_raw_scorer_preserved": true
+  },
+  "interpretation": {
+    "frozen_wm_h4": "B shadow recursion PASS after integer index fix; this is not formal Route planner evidence",
+    "retrain_required": "UNDETERMINED",
+    "route_comm_support": "TEMPORARILY_NO_SERVICE; current raw/model U2U relation exists",
+    "scorer": "A exact fixed-support rejection; B shadow SCOREABLE; A/B objective comparison not established",
+    "task5_failure_root_cause": "TASK_FAIL_OUT_OF_TTI before wireless RB allocation"
+  },
+  "inventory": [
+    {
+      "bytes": 241,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\00_start.json",
+      "sha256": "0291267501964663ed3f424d068c17b9782c4f3bda1ebc1901af1fb5bef59f03"
+    },
+    {
+      "bytes": 2501,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\01_root_and_setter.json",
+      "sha256": "5601f26a40be5c5c79b88b66b7e84c06bf2fc9423866f10ca5188c53c61384fb"
+    },
+    {
+      "bytes": 2600,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\02_post_step.json",
+      "sha256": "99e9016e5b43858b0fb654ede1f5467b562dc5abbb567f80d73a83701a84a112"
+    },
+    {
+      "bytes": 8943,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\03_runtime_events.json",
+      "sha256": "953325ac407c3430b019e1f0437dbb38f4f17dbe8cae9323d850e2f427bae656"
+    },
+    {
+      "bytes": 15466,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\04_acceptance_receipt.json",
+      "sha256": "cbf34351d0d0d7bc166c60d8bf318ddb381b4c389d8a53ca90655433b13e43c8"
+    },
+    {
+      "bytes": 161,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\07_wm_start.json",
+      "sha256": "4df0fea047a574425b469a62f1fc636f365f206203b53ebb56c3e352e2fe102b"
+    },
+    {
+      "bytes": 526,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\09_wm_acceptance_receipt.json",
+      "sha256": "ec6e94873106e41fc5a4ea293be2a840442d76d071f9934b468346b5ed111295"
+    },
+    {
+      "bytes": 2972,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\A_08_wm_scorer.json",
+      "sha256": "66371477b625b49cb28476bac29143979dbe6a5c592e72d4a91cac3258c73fc1"
+    },
+    {
+      "bytes": 229,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v1\\B_08_wm_scorer.json",
+      "sha256": "7800f49e78d9341c61cc138e20dbe64777702b9ad92f9274ea7d338a8e0fc915"
+    },
+    {
+      "bytes": 2467,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v2\\04_route_comm_support_matrix.json",
+      "sha256": "2b46221f375c7014675f208ef5e04d4b81606ca43ef8458eaafff6d5151f98f8"
+    },
+    {
+      "bytes": 1681,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v2\\06_identity.json",
+      "sha256": "d7498b114b35702620e5dd737e0e07d133978d7e2939b25a25fcf56c8548657d"
+    },
+    {
+      "bytes": 161,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v2\\07_wm_start.json",
+      "sha256": "4df0fea047a574425b469a62f1fc636f365f206203b53ebb56c3e352e2fe102b"
+    },
+    {
+      "bytes": 506,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v2\\09_wm_acceptance_receipt.json",
+      "sha256": "1278e60779dafd2e8f7b5581845d7aa070f30a2f8c4e23b967e8a6bc68b2d8fe"
+    },
+    {
+      "bytes": 2972,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v2\\A_08_wm_scorer.json",
+      "sha256": "66371477b625b49cb28476bac29143979dbe6a5c592e72d4a91cac3258c73fc1"
+    },
+    {
+      "bytes": 3445,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v2\\B_08_wm_scorer.json",
+      "sha256": "937c781aa382744e4b4584ed4d45e73e5dfabd54b868cba59792f6d441e80168"
+    },
+    {
+      "bytes": 242,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\00_scope.json",
+      "sha256": "0b6e5caaf0fbe4a7b41baa3e1ba5aff2b00ccf9899c4420aa215086bc8b20f49"
+    },
+    {
+      "bytes": 161,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\07_wm_start.json",
+      "sha256": "4df0fea047a574425b469a62f1fc636f365f206203b53ebb56c3e352e2fe102b"
+    },
+    {
+      "bytes": 506,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\09_wm_acceptance_receipt.json",
+      "sha256": "5c2e3deebb5dc0eb2c8090f9e7e463b6e7de19b9a8903fe00008eaff984816d8"
+    },
+    {
+      "bytes": 206,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\10_observation_completion.json",
+      "sha256": "d87821aab22388167f5dad516c5c01bbc0e6c28a7f516649dc560fcde73ac251"
+    },
+    {
+      "bytes": 565,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\11_prior_v3_failure.json",
+      "sha256": "f5b56daa52a11a5da50b2859825fd5034455a1d22637861a9d9856e5f025d8d7"
+    },
+    {
+      "bytes": 2972,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\A_08_wm_scorer.json",
+      "sha256": "66371477b625b49cb28476bac29143979dbe6a5c592e72d4a91cac3258c73fc1"
+    },
+    {
+      "bytes": 416788,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\A_anchor.pt",
+      "sha256": "7dd79d50173a3b1da1a88000ef185fc22675026cd2ad5fc96fca048ca3b0c705"
+    },
+    {
+      "bytes": 803910,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\A_H1.pt",
+      "sha256": "0daf777e6d3426ee0ec2094b47b0f117dba2aeadb90d682ef59965d6a8ec6e34"
+    },
+    {
+      "bytes": 803910,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\A_H2.pt",
+      "sha256": "4d751307da2e4593da3ebc618cb775339d2a12a5f8e4bffd7f66ce6cb0b863c8"
+    },
+    {
+      "bytes": 803910,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\A_H3.pt",
+      "sha256": "e3333d6f38cce66153000727ee17e4e6388a50614a76771e8ebe7339a40983b5"
+    },
+    {
+      "bytes": 803910,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\A_H4.pt",
+      "sha256": "8d49bb59492ed0e68a42dfd1be76e19bc746fa3686ab505c0e0b8a0d9b2b9cbd"
+    },
+    {
+      "bytes": 13631,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\A_observed.json",
+      "sha256": "1ce21dec1623c9485082eda40f655de47f2e5d34eb041c66e42e04464506e3f1"
+    },
+    {
+      "bytes": 2813,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\A_raw_scorer.json",
+      "sha256": "de9aeee5b9e55702c74f4a52b7bdad56981163ea5176707f6499c19a3c28c366"
+    },
+    {
+      "bytes": 3445,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\B_08_wm_scorer.json",
+      "sha256": "937c781aa382744e4b4584ed4d45e73e5dfabd54b868cba59792f6d441e80168"
+    },
+    {
+      "bytes": 283914,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\B_anchor.pt",
+      "sha256": "011ea28d068c1a6e8dfdf4bd22f5ae8683ec2207ee4930d5e0871d1e60afc6dc"
+    },
+    {
+      "bytes": 804038,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\B_H1.pt",
+      "sha256": "d4ad2c288b981b8ded7277ed74dd4e9a2cbaf2c95c810df27128d1a0fb0cf645"
+    },
+    {
+      "bytes": 804038,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\B_H2.pt",
+      "sha256": "a0e13bc6b207fa6683a3bf9290a6f2c6f295be141dc56f9a82b558cf20613655"
+    },
+    {
+      "bytes": 804038,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\B_H3.pt",
+      "sha256": "1578215c7569868b545556a53266b83371878f6f6f1feeeebedf18325310be4b"
+    },
+    {
+      "bytes": 804038,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\B_H4.pt",
+      "sha256": "91aae95c970dfb836797c9fbe15998974c7b1aa1f3919129ba5756b91d67952e"
+    },
+    {
+      "bytes": 16906,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\B_observed.json",
+      "sha256": "91c68dea6f353ec622c277fe58eb1ebba5a821688c925541a4d454e4ae61a15e"
+    },
+    {
+      "bytes": 18579,
+      "path": "code\\artifacts\\audit\\pi_jwm_step6_4l_r1_20261011_v4\\B_raw_scorer.json",
+      "sha256": "0ad15a1f8026eeed581fde066ccf6325133830c8dfdda7cf30ef86f651e60879"
+    }
+  ],
+  "locked_test": false,
+  "schema": "PI-JWM-STEP-6.4L-R1-INDEPENDENT-ACCEPTANCE-v1",
+  "status": "PASS"
+}

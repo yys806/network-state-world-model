@@ -483,3 +483,10 @@ Unified chain 已闭合为 untrained CPU development evidence。真实 12-sample
 
 r39 的 receipt 只保存集合级统计，没有保存每个 candidate 的 fixed-support rejection reason。已确认源码存在 `UNSUPPORTED_FUTURE_RETURN_BIRTH` 边界，但不能把 468 个 complete H4 全部归因于此。需要研究者决定是否授权已有结果的 CPU 只读 ledger 重放；在此之前不扩大 24×64，不改 scorer/World Model，不启动 GPU 或 `locked_test`。
 
+
+## 2026-10-11 R1 新增阻塞边界
+
+- Task_5 的真实失败是 `TASK_FAIL_OUT_OF_TTI`：Return route 被 `_updateTask` 消费后，旧 `last_transmission_time` 未同步，且当前决策没有 RB assignment；失败早于 wireless，不是 deadline。
+- UAV0→UAV1 在当前 Raw/Model 中有 U2U relation；本轮分类 `TEMPORARILY_NO_SERVICE`，不支持“物理不可达”或“图缺边”结论。
+- Frozen WM 的 Shadow 新 Flow 可以递归 H1–H4，但该 slot 使用 zero cold start，且不构成正式 Route candidate；正式 A/B Objective 可比性仍未建立。
+- 进入 6.4M 前需研究者决定 Route、RB assignment、Flow birth 与 TTI/lifecycle 的顺序合同；不自动改 Scorer、Planner 或模型。

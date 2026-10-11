@@ -1,0 +1,8 @@
+{
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "exception": "SHADOW_ROUTE_COMM_SUPPORT_MISSING",
+  "exception_type": "ValueError",
+  "formal_score_promoted": false,
+  "mode": "B",
+  "stage": "WM_PREPARATION_EXCEPTION"
+}

@@ -1,0 +1,19 @@
+{
+  "GPU": false,
+  "a_diagnostic_qualification": "PASS_QUALIFIED_OR_EXPLICIT_RESULT",
+  "elapsed_seconds": 104.45794989995193,
+  "formal_scores_promoted": false,
+  "frozen_wm_h4_compatibility": {
+    "A": "PASS",
+    "B": "WM_PREPARATION_EXCEPTION"
+  },
+  "locked_test": false,
+  "namespace": "STEP_6.4L-R1",
+  "retrain_required": "UNDETERMINED",
+  "root_identity": "LIVE_ROOT_CAPTURE_VALID",
+  "scorer_scoreability": {
+    "A": "OBJECTIVE_UNSCOREABLE",
+    "B": "EXCEPTION"
+  },
+  "status": "COMPLETED"
+}

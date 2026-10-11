@@ -281,3 +281,7 @@ The source-to-metric matrix is `code/artifacts/protocols/pi_jwm_step6_2a_planner
 
 Formal Raw 原样保留；当前 Raw 已含 `arrival_time_s`、`required_returned_size`、`return_destination_id`。非锁定 validation anchor 通过同种子/配置/已执行动作前缀重放，决策前新增 deadline sidecar，精确对齐 6 个 Task ID/槽位及当前物理状态。sidecar 不进入 Formal Sample/Tensor、训练 normalization 或 checkpoint。实际 Return requirement 还需预测计算节点与 Return 目的地不同；仅正返回大小不足以确定。
 2026-09-30：3080 Ti 上正式 Dataset 保留原路径；266 个 4090 源文件与 60 条 Raw 逐项 SHA 一致，冻结 best.pt SHA 为 `941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9`。缺少的 58 条 Raw 经研究者批准由本地 SHA 一致副本补齐。推演在 CUDA FP32，搜索缓存/前缀在主机内存；正式调参与 Validation 搜索未启动。
+
+## 2026-10-11 R1 Route→Flow runtime boundary
+
+真实执行顺序已由 AirFogSim runtime trace 记录：Route setter 写入 buffer → `_updateTask` 消费并转为 returning → `checkTasks` TTI 检查 → `_updateWirelessCommunication` 分配/执行 RB。Task_5 在第三步即失败，故当前 root 没有新的 Return transfer。模型侧同一 root 的 U2U relation 38 存在；Shadow Flow birth 只在隔离诊断中提前加入 state，不能视为正式动作执行后的真实配对。

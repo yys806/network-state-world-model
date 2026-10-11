@@ -438,3 +438,7 @@ CPU-only 单条 Formal Validation deterministic replay 与当前 4.4 规则负�
 ## 2026-10-10 STEP 6.4J r39 结果
 
 原始结果位于 `code/artifacts/backups/step6_4j_r39/pilot_results/`，execution config 为 `74535bbe2bd07260c840666dd2fd0b68190e4800dba7159a83d485d9a2632cfc`。两 episode 各 8 决策；每次 B512/512 unique transitions；第一条每步 344 complete、0 dead-end，第二条每步 124 complete、383 dead-end；合计 3744 complete、3064 dead-end、0 scoreable。工程 `COMPLETED`，搜索优化 `NOT_ESTABLISHED`。
+
+## 2026-10-11 STEP 6.4L-R1
+
+R1 是 CPU-only 的真实 Route/Flow 因果补充诊断。`anchor-0006 / Task_5` 的真实 Route B setter 后在 `_updateTask().checkTasks()` 以 `TASK_FAIL_OUT_OF_TTI` 失败，未进入新的 RB service；Raw channel 与 model relation 38 均支持 UAV0→UAV1。A 补齐官方 domain annotation 后 H4 rollout 完成但 H1 fixed-support 拒绝；B 修正字符串/整数模型索引后 Shadow Flow H4 与原 Scorer `SCOREABLE/H_eff=4`，未晋升正式分数，A/B objective comparability 未建立。R39 精确等价仍未证明；无 GPU、训练、B512、locked_test 或正式 Planner 改动。

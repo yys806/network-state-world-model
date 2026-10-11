@@ -1,0 +1,7 @@
+{
+  "schema": "PI-JWM-STEP-6.4L-R1-V3-FAILURE-v1",
+  "status": "RETAINED_AS_ENGINEERING_FAILURE",
+  "namespace": "pi_jwm_step6_4l_r1_20261011_v3",
+  "failure": "The first observation harness finite check included the masked model trace outage_uniform_draw; this diagnostic tensor contains NaN outside support. It failed closed before scoring. No formal code or result was changed. The corrected v4 finite gate checks recursively consumed state/graph/latent and retains the raw model trace separately.",
+  "v4_replacement": "pi_jwm_step6_4l_r1_20261011_v4"
+}

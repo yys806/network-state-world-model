@@ -227,3 +227,7 @@ Step 3.1F 最小样本与 History 修正也不属于训练实验：证据位于 
 
 One exact-aligned non-locked Formal Validation trajectory replay captured current Task deadlines; a deterministic 4.4 transition reproduced the destination-only route-index mismatch. Receipts: `code/artifacts/protocols/pi_jwm_step6_2a_patch_objective_readiness_v1_20260928/`. No performance experiment or baseline was run.
 STEP 6.3D-3080TI-MIGRATION-QUALIFICATION：正式数据迁移、真实 TRAIN CPU/GPU 等价、batch 8/16/32/64 三次稳态吞吐、CUDA formal runner bounded HRS/S-CEM smoke。机器收据见 `code/artifacts/protocols/pi_jwm_step6_3d_3080ti_migration_v1_20260930/`；正式 TRAIN tuning 与 Validation 比较未运行。
+
+## 2026-10-11 STEP 6.4L-R1
+
+真实 Route/Flow 补充诊断：`anchor-0006 / Task_5` 的 Route B 在 AirFogSim 以 `TASK_FAIL_OUT_OF_TTI` 失败；Raw 与 Model 的 UAV0→UAV1 U2U relation 存在，但当前 step 没有 RB service。A 资格修正后 H4 rollout 完成但 H1 fixed-support 拒绝；B Shadow Flow 完成 frozen WM H1–H4 并由原 Scorer 返回 SCOREABLE，正式分数未提升、A/B 不可比。证据：`code/artifacts/audit/pi_jwm_step6_4l_r1_20261011_v1/`、`..._v2/`。

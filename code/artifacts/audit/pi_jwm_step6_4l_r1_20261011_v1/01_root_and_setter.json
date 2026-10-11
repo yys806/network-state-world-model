@@ -1,0 +1,98 @@
+{
+  "after_setter": {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "route": [
+      "UAV_1"
+    ],
+    "route_table": {
+      "Task_5": [
+        "UAV_1"
+      ]
+    },
+    "setter": "TaskScheduler.setTaskReturnRoute",
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    }
+  },
+  "before": {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "nodes": {
+      "destination": "UAV_1",
+      "destination_index": 1,
+      "destination_type": "U",
+      "source": "UAV_0",
+      "source_index": 0,
+      "source_type": "U"
+    },
+    "route_table": {},
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "wireless_hop_before": false
+  },
+  "capture_event_id": "capture-012",
+  "frame": 6,
+  "simulation_time_s": 1.8
+}

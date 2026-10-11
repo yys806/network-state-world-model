@@ -1,0 +1,95 @@
+{
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "domain_count": 6,
+  "formal_route_action_in_candidate": false,
+  "mode": "B",
+  "root_fingerprint": {
+    "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+    "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+    "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+    "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+    "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+  },
+  "root_identity": "LIVE_ROOT_CAPTURE_VALID",
+  "route": {
+    "computed_cpu_work": 0.4836374411490477,
+    "destination": "UAV_1",
+    "lifecycle": "waiting_to_return",
+    "required_returned_size": 0.07610754782944204,
+    "route": [
+      "UAV_1"
+    ],
+    "route_table_after_setter": {
+      "Task_5": [
+        "UAV_1"
+      ]
+    },
+    "route_table_before": {},
+    "setter_called": "TaskScheduler.setTaskReturnRoute",
+    "setter_verified": true,
+    "source": "UAV_0",
+    "task_cpu_work": 0.4836374411490477,
+    "task_id": "Task_5"
+  },
+  "shadow_flow": {
+    "destination_index": 5,
+    "flow_id": "flow::Task_5::Return::0",
+    "formal_score_not_promoted": true,
+    "meta": {
+      "flow_id": "flow::Task_5::Return::0",
+      "latent_initialization": "ZERO_COLD_START_SHADOW_PROPOSAL",
+      "route": [
+        5
+      ],
+      "shape_adaptation": "APPEND_NO_OVERWRITE",
+      "slot": 32
+    },
+    "slot": 32,
+    "source_index": 4
+  },
+  "stage": "PASS",
+  "wm_scorer": {
+    "H_eff": 4,
+    "diagnostics": {
+      "cohort_size": 3,
+      "support_boundary_reasons": {
+        "step6_4l_r1_B": null
+      }
+    },
+    "formal_score_promoted": false,
+    "horizons": 4,
+    "scoreable_h4": true,
+    "scorer_status": "SCOREABLE",
+    "support_horizons": {
+      "step6_4l_r1_B": 4
+    },
+    "trace_initial": {
+      "anchor": "104dddffd64f3b63acf8f059ee7f6f1dcc6a83ab53c400b5c148cbc8886589ff",
+      "graph": "f439bddc1a6b420285a369dacfa58a08507df093eb4ad9e71da5ec60ea9b6639",
+      "latent": "50192d0c1690d7ab4dfcf27e5f3944c1acafa1e3f524d78707adb293e271b8de",
+      "state": "104dddffd64f3b63acf8f059ee7f6f1dcc6a83ab53c400b5c148cbc8886589ff"
+    },
+    "trace_outputs": [
+      {
+        "graph": "99aadd1d19af11bd5b53f0a48cce3d8020227cdec2c143d47d30f406f1ed42b0",
+        "latent": "40f8aec52d3f086c93686c2cd794c5893265f6da2feb7f29ed7c33620b0545a1",
+        "state": "296408741a9670ae35d9fbe6db66bd3c556e82770ed708746124d4dd3871c087"
+      },
+      {
+        "graph": "5e52d8f854cad1b74528fac1678fdc688ad9e8127c3448d6b66293d8c578fd7f",
+        "latent": "6eedb2131e9ef35f50f79bab6417d553b94ba37927b76cfccb9216b99ada6554",
+        "state": "4fc4d2acd8326a0ec318f6650e157f1054b2c16a8e8eb2a2ddc8b834855fe4ec"
+      },
+      {
+        "graph": "0ff31e7ce98dc71fc3a71d7d3c62a56c796683f2a90333edfd5dcb196794c3d6",
+        "latent": "ed60fd00f7a91365270dcd933cc2998a5226c2efb08601d8e282619fbdac5425",
+        "state": "a27f6b2422eb20ecabf2fa303c0ebb8655a43b8714c99c4f3bdb975335604c2a"
+      },
+      {
+        "graph": "778a9445d942d8a861220e45f45a2238e962bbd733cfc180cb47758043e1cf51",
+        "latent": "c86bba12cc24503b89491618fb2651bd752c8db6f88e26b69658ac4523c4674d",
+        "state": "f05873689a715aee4a532183bccf314c91986584d6f249376a4a00b697c95788"
+      }
+    ]
+  }
+}

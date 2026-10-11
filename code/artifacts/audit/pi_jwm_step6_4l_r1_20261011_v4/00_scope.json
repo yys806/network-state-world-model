@@ -1,0 +1,10 @@
+{
+  "GPU": false,
+  "locked_test": false,
+  "new_transition_cap": 8,
+  "pre_route_paired_objective": false,
+  "repeat_of": "R1 v2 A/B, no new action or root",
+  "status": "STARTED",
+  "timeout_seconds": 300,
+  "unique_actions": 2
+}

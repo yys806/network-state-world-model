@@ -1,0 +1,406 @@
+{
+  "admission_result": {
+    "constraints": [
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[0,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[0,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[1,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[1,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[2,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[2,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[3,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[3,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      }
+    ],
+    "final_mobility_states": {
+      "4": {
+        "elevation_observed": true,
+        "elevation_rad": 0.0,
+        "entity_id": "UAV_0",
+        "heading_observed": true,
+        "heading_rad": 0.0,
+        "heading_unit": "rad",
+        "observation_provenance": "step6_4l_A:capture-012:6:1.8",
+        "source": "previous Planner mobility command; control side-state only",
+        "uav_index": 4
+      },
+      "5": {
+        "elevation_observed": true,
+        "elevation_rad": 0.0,
+        "entity_id": "UAV_1",
+        "heading_observed": true,
+        "heading_rad": 0.0,
+        "heading_unit": "rad",
+        "observation_provenance": "step6_4l_A:capture-012:6:1.8",
+        "source": "previous Planner mobility command; control side-state only",
+        "uav_index": 5
+      }
+    },
+    "joint_behavior_support_class": [
+      "EXACT_COLLECTION_SHARED_PROFILE",
+      "EXACT_COLLECTION_SHARED_PROFILE",
+      "EXACT_COLLECTION_SHARED_PROFILE",
+      "EXACT_COLLECTION_SHARED_PROFILE"
+    ]
+  },
+  "candidate": {
+    "candidate_id": "step6_4l_r1_A",
+    "constraints": [
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[0,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[0,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[1,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[1,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[2,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[2,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[3,4]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      },
+      {
+        "constraint_name": "FORMAL_DATASET_MOBILITY_CORE_DOMAIN_V1[3,5]",
+        "reason_code": "PROFILE_HOLD",
+        "source": "STEP_5_5_COLLECTION_POLICY_AND_RESEARCHER_DECISION @ step6_4l_A:capture-012:6:1.8",
+        "status": "SATISFIED"
+      }
+    ],
+    "generation_metadata": {
+      "compute_feasibility_policy": "STATIC_PER_SLOT_BUDGET_V1",
+      "diagnostic": "NEW_CPU_DIAGNOSTIC",
+      "domain_observation_provenance": "step6_4l_A:capture-012:6:1.8",
+      "dynamic_available_cpu_available": false,
+      "joint_behavior_support_class": [
+        "EXACT_COLLECTION_SHARED_PROFILE",
+        "EXACT_COLLECTION_SHARED_PROFILE",
+        "EXACT_COLLECTION_SHARED_PROFILE",
+        "EXACT_COLLECTION_SHARED_PROFILE"
+      ],
+      "planner_action_domain": "V1",
+      "planner_requires_dynamic_available_cpu": false,
+      "route_experiment": "A"
+    },
+    "generator_backend": "RULE_FALLBACK",
+    "provenance": "real:step6_4l_A:6:capture-012",
+    "seed": 0,
+    "source_tags": "frozenset()",
+    "steps": [
+      {
+        "comm": [],
+        "comp": [],
+        "mob": [
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [],
+        "mob": [
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [],
+        "mob": [
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      },
+      {
+        "comm": [],
+        "comp": [],
+        "mob": [
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 4
+          },
+          {
+            "azimuth_rad": 0.0,
+            "elevation_rad": 0.0,
+            "speed_mps": 0.0,
+            "uav_index": 5
+          }
+        ],
+        "route": []
+      }
+    ]
+  },
+  "finite": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "formal_route_action": false,
+  "initial": {
+    "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+    "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+    "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a"
+  },
+  "inputs": [
+    {
+      "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+      "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+      "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a"
+    },
+    {
+      "graph": "f7f91277a5f2a529697d462049d6755c53f484fe213189113f1ca03e35b9fdb6",
+      "latent": "0ff2815554eba0c4d40b3b1e5b08e5ceb1088280640fdb0117b820288616ad5c",
+      "state": "3e1d7dfadd0218799374fb44c77a1b257530698a8b1040e03f859dbe0e7336d9"
+    },
+    {
+      "graph": "f0d7c59f7a2448f2c1d32cd5514c024825c4dd4c48da4b2c4d7e3bd2369d3d17",
+      "latent": "4f35ce1fceacbc5ae67bfda8e7b5e96474f35c2bc86b6713dd07fb15b89a3d50",
+      "state": "6cb1c6dca02bdf717c261f3317ca36dabb9af98bd6edffa6d60a547c318bbe3d"
+    },
+    {
+      "graph": "925ce4c765613f5c45f3aebe83cc730e1b98d30a8ae74eb9779c67f1d8851cff",
+      "latent": "e1009d30b4b4b152ae229ece9a310df00e74a741644b16ccc655d5d1d88b944d",
+      "state": "7a5c6481785e879e9961d5d7d58492628a7ec4fde7db921646c3d84659124252"
+    }
+  ],
+  "ledger": [
+    {
+      "flow": {},
+      "horizon": 1,
+      "one_step_seconds": 1.7600896999938414,
+      "return_slot": -1,
+      "task": {
+        "task_completed": false,
+        "task_lifecycle_index": 1,
+        "task_presence": true,
+        "task_progress": 1.0,
+        "task_released": true,
+        "task_requires_return": false,
+        "task_return_requirement_known": false,
+        "task_work_remaining": 0.0,
+        "task_work_total": 0.4836374521255493
+      },
+      "task_id": "Task_5",
+      "task_index": 0
+    },
+    {
+      "flow": {},
+      "horizon": 2,
+      "one_step_seconds": 1.717016100010369,
+      "return_slot": -1,
+      "task": {
+        "task_completed": false,
+        "task_lifecycle_index": 1,
+        "task_presence": true,
+        "task_progress": 1.0,
+        "task_released": true,
+        "task_requires_return": false,
+        "task_return_requirement_known": false,
+        "task_work_remaining": 0.0,
+        "task_work_total": 0.4836374521255493
+      },
+      "task_id": "Task_5",
+      "task_index": 0
+    },
+    {
+      "flow": {},
+      "horizon": 3,
+      "one_step_seconds": 1.7015346999978647,
+      "return_slot": -1,
+      "task": {
+        "task_completed": false,
+        "task_lifecycle_index": 1,
+        "task_presence": true,
+        "task_progress": 1.0,
+        "task_released": true,
+        "task_requires_return": false,
+        "task_return_requirement_known": false,
+        "task_work_remaining": 0.0,
+        "task_work_total": 0.4836374521255493
+      },
+      "task_id": "Task_5",
+      "task_index": 0
+    },
+    {
+      "flow": {},
+      "horizon": 4,
+      "one_step_seconds": 1.7014242999721318,
+      "return_slot": -1,
+      "task": {
+        "task_completed": false,
+        "task_lifecycle_index": 1,
+        "task_presence": true,
+        "task_progress": 1.0,
+        "task_released": true,
+        "task_requires_return": false,
+        "task_return_requirement_known": false,
+        "task_work_remaining": 0.0,
+        "task_work_total": 0.4836374521255493
+      },
+      "task_id": "Task_5",
+      "task_index": 0
+    }
+  ],
+  "mappings": [
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "mobility": 2,
+      "route": [],
+      "route_explicit_noop": true
+    }
+  ],
+  "official_admission_passed": true,
+  "outputs": [
+    {
+      "graph": "f7f91277a5f2a529697d462049d6755c53f484fe213189113f1ca03e35b9fdb6",
+      "latent": "0ff2815554eba0c4d40b3b1e5b08e5ceb1088280640fdb0117b820288616ad5c",
+      "state": "3e1d7dfadd0218799374fb44c77a1b257530698a8b1040e03f859dbe0e7336d9"
+    },
+    {
+      "graph": "f0d7c59f7a2448f2c1d32cd5514c024825c4dd4c48da4b2c4d7e3bd2369d3d17",
+      "latent": "4f35ce1fceacbc5ae67bfda8e7b5e96474f35c2bc86b6713dd07fb15b89a3d50",
+      "state": "6cb1c6dca02bdf717c261f3317ca36dabb9af98bd6edffa6d60a547c318bbe3d"
+    },
+    {
+      "graph": "925ce4c765613f5c45f3aebe83cc730e1b98d30a8ae74eb9779c67f1d8851cff",
+      "latent": "e1009d30b4b4b152ae229ece9a310df00e74a741644b16ccc655d5d1d88b944d",
+      "state": "7a5c6481785e879e9961d5d7d58492628a7ec4fde7db921646c3d84659124252"
+    },
+    {
+      "graph": "c9c69d2f2591643cf49723d4c20b5cfccdd30ed0eabe2058428abf4b33f53463",
+      "latent": "401960b5c3b892fdb6f242086a22a5b50dff046a498cf0e3263bb3781a3affd2",
+      "state": "85e0fc51f17c256cdb2cb9f00bc3e261a2437de71a4a56986cf4b051f1ea784b"
+    }
+  ],
+  "parameter_after": "ce76385958659b9c5e9a43806e9e20f4a892a497a9beb94092e1ed872a88ef69",
+  "parameter_before": "ce76385958659b9c5e9a43806e9e20f4a892a497a9beb94092e1ed872a88ef69",
+  "shadow_anchor_modified": false
+}

@@ -1,0 +1,67 @@
+{
+  "GPU": false,
+  "airfogsim": {
+    "channel_type": "U2U",
+    "destination": "UAV_1",
+    "failure_reason": "Task fails due to transmission timeout.",
+    "failure_reason_code": 1,
+    "new_rb_request_after_route": {},
+    "new_transfer_event_for_task5": false,
+    "node_types": [
+      "U",
+      "U"
+    ],
+    "post_step_transfer_events": [],
+    "raw_channel_row_observed": true,
+    "raw_observed_mask": true,
+    "raw_physical_edge_id": "physical::UAV_0::UAV_1::U2U",
+    "source": "UAV_0",
+    "wireless_hop_before_route": false
+  },
+  "classification": {
+    "model_representation_mismatch": false,
+    "physically_unsupported_hop": false,
+    "primary": "TEMPORARILY_NO_SERVICE",
+    "raw_or_graph_support_missing": false,
+    "temporary_no_service_evidence": "route setter is consumed in _updateTask; no RB request is present and TTI failure occurs before wireless execution",
+    "undetermined": false
+  },
+  "locked_test": false,
+  "model": {
+    "matching_relation_indices": [
+      38
+    ],
+    "matching_relation_support": [
+      {
+        "presence": true,
+        "relation_index": 38,
+        "source_index": 4,
+        "target_index": 5,
+        "validity": true,
+        "wireless_mask": true
+      }
+    ],
+    "physical_entity_indices": {
+      "UAV_0": 4,
+      "UAV_1": 5
+    },
+    "raw_graph_support_missing": false,
+    "route_shadow_type_fix": "R1 passes integer model indices to inject_return_slot"
+  },
+  "root": {
+    "capture_event_id": "capture-012",
+    "frame": 6,
+    "live_root_capture_valid": true,
+    "r39_exact_equivalence": "UNPROVEN",
+    "simulation_time_s": 1.8,
+    "trajectory_id": "step6_4l_A"
+  },
+  "schema": "PI-JWM-STEP-6.4L-R1-ROUTE-COMM-MATRIX-v1",
+  "source_sha256": {
+    "code\\reference\\AirFogSim\\airfogsim\\airfogsim_env.py": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+    "code\\reference\\AirFogSim\\airfogsim\\entities\\task.py": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0",
+    "code\\reference\\AirFogSim\\airfogsim\\manager\\task_manager.py": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+    "code\\reference\\AirFogSim\\airfogsim\\scheduler\\task_sched.py": "05fd0290c0f01a9cb7a92c561a6151ab86c4209faafa2fa8101e93f57b42f572",
+    "code\\scripts\\collect_step5_5_formal_raw_v1.py": "9d513cc114954fffb555f54e5f0aeea4b9edbf92292f5f5348066deb2b191f5e"
+  }
+}
