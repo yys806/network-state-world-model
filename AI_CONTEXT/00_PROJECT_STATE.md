@@ -454,3 +454,7 @@ r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 
 ## 2026-10-11 Live H4原位诊断
 
 两个真实AirFogSim live root已在目标decision callback捕获并通过内部身份验收。原Scorer旁路记录显示两个H4候选均在H1因future Return-birth fixed-support拒绝：anchor-0006为Task_5，anchor-0029为Task_15；H_eff=0，0/2 scoreable，0 scorer exception。该证据不等价r39精确重放，不外推3744事件；GPU/locked_test关闭。
+
+## 2026-10-11 H1 Return-birth action sensitivity
+
+18个真实live-root合法H1动作全部触发`UNSUPPORTED_FUTURE_RETURN_BIRTH`，0个H1 support pass/可评分，0个异常。Task_5与Task_15均在模型anchor已完成且缺Return Flow；Task_15 Raw lifecycle仍为computing而模型完成，约1.1e-16差异。该证据不外推r39，下一步优先状态一致性审计。

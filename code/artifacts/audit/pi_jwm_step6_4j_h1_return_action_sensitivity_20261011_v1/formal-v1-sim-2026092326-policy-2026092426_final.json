@@ -1,0 +1,1406 @@
+{
+  "GPU": "NOT_USED",
+  "R39_EXACT_EQUIVALENCE": "UNPROVEN",
+  "actions": [
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 3.2173115015029907,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.35,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.35,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 1,
+      "candidate_fingerprint": "0181bef757c3f965dc1e9c00008b500b7d65cc9a12267b0939f1e4baa4486502",
+      "completed_h1": true,
+      "rollout_seconds": 0.542879400018137,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_1": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_1": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "2c1122685988564d918831451fd3c36ba2dade3603cc4bf7b790b0fd2cffdd71",
+          "latent": "7e7b077e62e47a49e10ee65ecda812fa3be98418019f15dd024464733e21ec87",
+          "state": "a1f4af40fed4f35689de793f2b5ec431975263a8531b679ae85fc3db07ffc371"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 3.2173115015029907,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.44999999999999996,
+              "elevation_rad": 0.0,
+              "speed_mps": 8.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.44999999999999996,
+              "elevation_rad": 0.0,
+              "speed_mps": 8.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 2,
+      "candidate_fingerprint": "e818182c5a7c66a1292b064f79dba53e7f2a0b3fe59e725b3ad4d1a31c516488",
+      "completed_h1": true,
+      "rollout_seconds": 0.577215299999807,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_2": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_2": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "60f23dcada01f70b2f3d773d83d253d2136546f9b57642327bebea7f42d6be58",
+          "latent": "9d7cea44521b25414acd3226225172f1bc58bb817921c3f89f25947ce0e7a06b",
+          "state": "7b7801984e4cf30d9b0eb64c691395dff8ec864b60f042c302668da9de48ecc0"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 3.2173115015029907,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.3,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.3,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 3,
+      "candidate_fingerprint": "32325302d1748d7000bbcd516a5165a3399fcb453fb44bcf73dfcdc7c15047f7",
+      "completed_h1": true,
+      "rollout_seconds": 0.5554734000470489,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_3": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_3": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "f361d465725726b1593bd12b4cd19e784b41835761187c68ae57289854a06abd",
+          "latent": "86576df13728b0fb9312cb13b47f1e3c0b855e4092fd6fc21f2dd522690d3c16",
+          "state": "f2890932411d58a67fe68ee091d3487a9fb648cd875617f915ef8b5032c4d705"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 3.2173115015029907,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.24999999999999997,
+              "elevation_rad": 0.0,
+              "speed_mps": 12.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.24999999999999997,
+              "elevation_rad": 0.0,
+              "speed_mps": 12.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 4,
+      "candidate_fingerprint": "888935d7840fd7ef322150642f40db4acdb3536ead3515e6ad1fc2e89ff26335",
+      "completed_h1": true,
+      "rollout_seconds": 0.5015037999837659,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_4": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_4": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "2c3e504a9fa6dac649799546d9c096ff2819010818c97c34670dc1d7cdbac494",
+          "latent": "497c1ef2c6146796e4652fd1b3f407a91977b50430c89c063070c76e1bb496b4",
+          "state": "1132a248927420dc762c2566acd4b7531c578e40ae6e76171c336e211b826e03"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 3.2173115015029907,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.14999999999999997,
+              "elevation_rad": 0.0,
+              "speed_mps": 15.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.14999999999999997,
+              "elevation_rad": 0.0,
+              "speed_mps": 15.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 5,
+      "candidate_fingerprint": "4c7b0503cfdefbae2897f2bdb2c0e4c47b6c1ae5d18cb609cb9dbc83232d888a",
+      "completed_h1": true,
+      "rollout_seconds": 0.4945435000117868,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_5": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_5": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "fa5524a6a8a923146d24cbcfe72e85838f373c116fdc10dd710cc9764a0effc6",
+          "latent": "968ebc7c8a271ca688699483fe1b63650898701158ec55c8a8cc8f8536511731",
+          "state": "fe1673a571bb103b22e2153370610186fb0221dd73594f69894233ff271b0f03"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 4.825967252254486,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.35,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.35,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 6,
+      "candidate_fingerprint": "4685e3719c6d346879e6d07e153b54c1cb47009a4e37cf924ddce45e0d813b7c",
+      "completed_h1": true,
+      "rollout_seconds": 0.5258474999573082,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_6": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_6": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "2c1122685988564d918831451fd3c36ba2dade3603cc4bf7b790b0fd2cffdd71",
+          "latent": "7a46ac49a319e60904b8b546c83ff64eddefc895cfaeace696a843786dca23f7",
+          "state": "5bd56d49cfd6e5b7ce1afa8aa8ff95f342317af491e1c0243a913019a1e2f15a"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 4.825967252254486,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.55,
+              "elevation_rad": 0.0,
+              "speed_mps": 5.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.55,
+              "elevation_rad": 0.0,
+              "speed_mps": 5.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 7,
+      "candidate_fingerprint": "3a14ea8faaf9d2ee3b3a1155ccf80c92aa96da356d0127b40f2859fbe06e8b15",
+      "completed_h1": true,
+      "rollout_seconds": 0.5446605000179261,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_7": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_7": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "8ac9a127335957dc1b203b3a70f0513cf3249bf6c2e4f9157f9ed80ba10c6bf7",
+          "latent": "ba1741cbfcd5a92fa87c01c196b9e7dcfa7e7c8dd543dacf10f6d6f7ab1d5708",
+          "state": "505bd9e80242a5442ddd8b889cbd0eea7d1b66855c4baad3b821dad2761b337e"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 4.825967252254486,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.44999999999999996,
+              "elevation_rad": 0.0,
+              "speed_mps": 8.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.44999999999999996,
+              "elevation_rad": 0.0,
+              "speed_mps": 8.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 8,
+      "candidate_fingerprint": "84fdffc12de149c002fdd8131e81f91f609b82095005695ecef9c1977f30ac14",
+      "completed_h1": true,
+      "rollout_seconds": 0.5020307999802753,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_8": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_8": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "60f23dcada01f70b2f3d773d83d253d2136546f9b57642327bebea7f42d6be58",
+          "latent": "100ecb1c3c92ef7548020d51dcf57d89d4cd6d247b185de5a05db1c69011d3f9",
+          "state": "d00270e425bbf4c3ebb61596680da345bc99ecdcfe07f7712e36e046e69d6c12"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 4.825967252254486,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.3,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.3,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 9,
+      "candidate_fingerprint": "9a8034e9dee9fbd0b94a8246d2389a783b56bb5b75203400dc95df4ebda4accf",
+      "completed_h1": true,
+      "rollout_seconds": 0.6101631000055932,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_9": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_9": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "f361d465725726b1593bd12b4cd19e784b41835761187c68ae57289854a06abd",
+          "latent": "4e255c11aab02a1458059975f5c46f7c4d5e788314d1a2697c7c8117f78766af",
+          "state": "72b8962f120b23ce20c691edcbed54b67cb71ac72521205a341f108358a8deb0"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 4.825967252254486,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.24999999999999997,
+              "elevation_rad": 0.0,
+              "speed_mps": 12.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.24999999999999997,
+              "elevation_rad": 0.0,
+              "speed_mps": 12.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 10,
+      "candidate_fingerprint": "b48a1fcb9d55d7da211fbb36be72a0769abd615d0f8efb1c5dfb68ab02ce74fa",
+      "completed_h1": true,
+      "rollout_seconds": 0.5630926999729127,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_10": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_10": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "2c3e504a9fa6dac649799546d9c096ff2819010818c97c34670dc1d7cdbac494",
+          "latent": "4acc574e8d5068c2d4051267c074be9e19b23134e32bdd20b128440b85a67b35",
+          "state": "c876d0d802531478cc4cd67c38a27a33ad4de10d100746698d9e2600de747098"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 4.825967252254486,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.14999999999999997,
+              "elevation_rad": 0.0,
+              "speed_mps": 15.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.14999999999999997,
+              "elevation_rad": 0.0,
+              "speed_mps": 15.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 11,
+      "candidate_fingerprint": "44ead2bdaa930c40bedbf7876373bf843e1f3538958b508f080c9ae1a5c450dc",
+      "completed_h1": true,
+      "rollout_seconds": 0.5589904999942519,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_11": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_11": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "fa5524a6a8a923146d24cbcfe72e85838f373c116fdc10dd710cc9764a0effc6",
+          "latent": "7ed534b98767732e484d2722954a7c6c0cdc63cc7e8587367979b233f6cfcae1",
+          "state": "af13c77eec4ceec68ca955999f43c09402a4f0e749757a7afffc57612d45a0af"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": false,
+          "entries": [
+            {
+              "allocated_cpu_per_s": 0.0,
+              "node_id": "RSU_0",
+              "task_id": "Task_15"
+            },
+            {
+              "allocated_cpu_per_s": 6.4346230030059814,
+              "node_id": "RSU_2",
+              "task_id": "Task_25"
+            }
+          ],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.35,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.35,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 2,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 12,
+      "candidate_fingerprint": "5e44aff72521d4bbd5b71bec287f2adac6fef77b4d65119a78167876ff3d5a25",
+      "completed_h1": true,
+      "rollout_seconds": 0.532640099991113,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_12": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_15:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_12": 0
+      },
+      "target_classification": {
+        "Task_15": "B",
+        "Task_5": "C"
+      },
+      "target_predicted_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "2c1122685988564d918831451fd3c36ba2dade3603cc4bf7b790b0fd2cffdd71",
+          "latent": "ede62fdbc7f89f22abf80d5c1ecafbf587c88f6edc25333c8012ab0dcd37e387",
+          "state": "a6f529c411dcac3a9f555608383b66a68a40fc4c19b58eb580b3251f0ed3c251"
+        }
+      ]
+    }
+  ],
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "final": {
+    "environment_advanced_during_capture": false,
+    "h1_scoreable": 0,
+    "h1_support_pass": 0,
+    "invalid_actions": 0,
+    "legal_distinct_actions": 12,
+    "parameters_unchanged": true,
+    "return_birth_triggers": 12,
+    "rollout_exceptions": 0,
+    "root_status": "LIVE_ROOT_CAPTURE_VALID",
+    "scorer_exceptions": 0,
+    "successful_h1_predictions": 12,
+    "wm_transitions": 12
+  },
+  "identity": {
+    "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+    "diagnostic_script_sha256": "7f2b30e56fe9294964b6f3fbaba1ad58ec229f20138b5dd43f817ea8545d8783",
+    "model_load_seconds": 77.81027129996801,
+    "normalization_sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+    "source_commit": "3cde78e551915a98290e53e20521183f3aa099c6"
+  },
+  "locked_test": false,
+  "root": {
+    "anchor_task_state": {
+      "Task_15": {
+        "compute_host_index": 0,
+        "required_returned_size": 0.0815777792407337,
+        "return_destination_index": 4,
+        "return_exists": false,
+        "task_id": "Task_15",
+        "task_index": 6,
+        "work_remaining": 0.0
+      },
+      "Task_5": {
+        "compute_host_index": null,
+        "required_returned_size": 0.08004643903984553,
+        "return_destination_index": 4,
+        "return_exists": false,
+        "task_id": "Task_5",
+        "task_index": 18,
+        "work_remaining": 0.20827479660511017
+      }
+    },
+    "capture": {
+      "capture_event_id": "capture-058",
+      "causal_prefix_sha256": "c93d1fdad9ececed779fa47b47fdf2361f236ef53e6b5ec7a3e38e8456f97c60",
+      "decision_count": 30,
+      "frame": 29,
+      "simulation_time_s": 5.2,
+      "step_count": 29
+    },
+    "domain_count": 17,
+    "fingerprints": {
+      "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+      "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+      "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+      "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+      "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+    },
+    "objective_cohort_size": 23,
+    "objective_side_source": "current Formal Raw + aligned decision-before-action replay",
+    "raw_target_lifecycle": {
+      "Task_15": {
+        "computed_cpu_work": 0.6532350234152131,
+        "current_node_id": "RSU_0",
+        "lifecycle": "computing",
+        "required_returned_size": 0.0815777792407337,
+        "return_destination_id": "UAV_0",
+        "task_cpu_work": 0.6532350234152132,
+        "transmitted_size": 0.0
+      },
+      "Task_5": {
+        "computed_cpu_work": 0.0,
+        "current_node_id": "UAV_0",
+        "lifecycle": "failed",
+        "required_returned_size": 0.08004643903984553,
+        "return_destination_id": "UAV_0",
+        "task_cpu_work": 0.2082747960795336,
+        "transmitted_size": 0.0
+      }
+    },
+    "root_prepare_seconds": 1.894007699971553,
+    "target_tasks": [
+      "Task_15",
+      "Task_5"
+    ]
+  },
+  "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+  "schema": "PI-JWM-STEP-6.4J-H1-RETURN-ACTION-SENSITIVITY-v1",
+  "target_frame": 29,
+  "trajectory_id": "formal-v1-sim-2026092326-policy-2026092426"
+}

@@ -1,0 +1,607 @@
+{
+  "GPU": "NOT_USED",
+  "R39_EXACT_EQUIVALENCE": "UNPROVEN",
+  "actions": [
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": 0.0,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": 0.0,
+              "elevation_rad": 0.0,
+              "speed_mps": 0.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 0,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 1,
+      "candidate_fingerprint": "77b6ec1fea8776221426991a412e5aa7278193235078bf11cd54a5001bae2b8b",
+      "completed_h1": true,
+      "rollout_seconds": 2.8767832000157796,
+      "root_fingerprint": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+        "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_1": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_1": 0
+      },
+      "target_classification": {
+        "Task_5": "B"
+      },
+      "target_predicted_state": {
+        "Task_5": {
+          "compute_host_index": 4,
+          "required_returned_size": 0.07610754782944204,
+          "return_destination_index": 5,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 0,
+          "work_remaining": 0.0
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "f7f91277a5f2a529697d462049d6755c53f484fe213189113f1ca03e35b9fdb6",
+          "latent": "0ff2815554eba0c4d40b3b1e5b08e5ceb1088280640fdb0117b820288616ad5c",
+          "state": "3e1d7dfadd0218799374fb44c77a1b257530698a8b1040e03f859dbe0e7336d9"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.2,
+              "elevation_rad": 0.0,
+              "speed_mps": 5.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.2,
+              "elevation_rad": 0.0,
+              "speed_mps": 5.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 0,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 2,
+      "candidate_fingerprint": "bbf06a16dad67e2c2d2510da3f8fa062297296d73e5d8a14287fa7933029f09c",
+      "completed_h1": true,
+      "rollout_seconds": 2.514323399984278,
+      "root_fingerprint": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+        "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_2": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_2": 0
+      },
+      "target_classification": {
+        "Task_5": "B"
+      },
+      "target_predicted_state": {
+        "Task_5": {
+          "compute_host_index": 4,
+          "required_returned_size": 0.07610754782944204,
+          "return_destination_index": 5,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 0,
+          "work_remaining": 0.0
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "260bfee9e0d65272daf1740749d242fc26c7e5503920044ccb91d0b5ba832bab",
+          "latent": "19d7df9b21099f3d2f6ce39a13b4a56a5423e7120fd9c75b9e3c2f234e759663",
+          "state": "b913db95038f9e443ea7a1e0e10a18619306989c7164e685077ec63c896f9314"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": -0.1,
+              "elevation_rad": 0.0,
+              "speed_mps": 8.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": -0.1,
+              "elevation_rad": 0.0,
+              "speed_mps": 8.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 0,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 3,
+      "candidate_fingerprint": "686cb96be086569a35eafc8e5af8e57aed540dae7b5067ccbe195d0aa00b45bb",
+      "completed_h1": true,
+      "rollout_seconds": 3.1173768999869935,
+      "root_fingerprint": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+        "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_3": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_3": 0
+      },
+      "target_classification": {
+        "Task_5": "B"
+      },
+      "target_predicted_state": {
+        "Task_5": {
+          "compute_host_index": 4,
+          "required_returned_size": 0.07610754782944204,
+          "return_destination_index": 5,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 0,
+          "work_remaining": 0.0
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "77b655977224e6ae482dc81173be39809530c6e5a9203ae23861a49f254a512b",
+          "latent": "64dc33d535ab2bf65f9cebf269153f79796320c222a8f74d2f7ca48cf8d115a6",
+          "state": "492ddcdce80406166e7737d49ee73a194f6ab12ca3b72fd45575c7f7d819b122"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": 0.05,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": 0.05,
+              "elevation_rad": 0.0,
+              "speed_mps": 10.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 0,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 4,
+      "candidate_fingerprint": "6f2a85545374b9154821045d53425d036cdb7255eaf14e8efc6cd35a4ad55db2",
+      "completed_h1": true,
+      "rollout_seconds": 3.1359460999956354,
+      "root_fingerprint": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+        "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_4": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_4": 0
+      },
+      "target_classification": {
+        "Task_5": "B"
+      },
+      "target_predicted_state": {
+        "Task_5": {
+          "compute_host_index": 4,
+          "required_returned_size": 0.07610754782944204,
+          "return_destination_index": 5,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 0,
+          "work_remaining": 0.0
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "1101bbdab2f5b67bd144682906483f98799b881da9a6ca8130ed815b482481d2",
+          "latent": "8df9009dcb9f4b4aaeaf9955ec88b4a9f21fd448499854d80c80af39888bfaa0",
+          "state": "90eef7836bc1e34b8482a6b97f8458df7a6165ea161a1c8f2b8e578b079c2c9c"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": 0.1,
+              "elevation_rad": 0.0,
+              "speed_mps": 12.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": 0.1,
+              "elevation_rad": 0.0,
+              "speed_mps": 12.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 0,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 5,
+      "candidate_fingerprint": "cd91dddd9ad150cf90a991502eddf348ba37f9161839166fb205322303da7363",
+      "completed_h1": true,
+      "rollout_seconds": 2.734612100000959,
+      "root_fingerprint": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+        "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_5": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_5": 0
+      },
+      "target_classification": {
+        "Task_5": "B"
+      },
+      "target_predicted_state": {
+        "Task_5": {
+          "compute_host_index": 4,
+          "required_returned_size": 0.07610754782944204,
+          "return_destination_index": 5,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 0,
+          "work_remaining": 0.0
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "5b4638572d1627200fa3686ac23a80a41148ac95b85c43c3a7267c996dc664e1",
+          "latent": "b5ec2a8253658fb8b6117a12bcd5d2bbf8a4f2a8afd616c8305e1bc57ecacb94",
+          "state": "d8483445d6c674a050bb6b80b6c77d541a3a96876177a4b708399d0fb22f2853"
+        }
+      ]
+    },
+    {
+      "H_eff": 0,
+      "H_sup": [],
+      "action": {
+        "comm": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "comp": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        },
+        "mobility": {
+          "empty": false,
+          "entries": [
+            {
+              "azimuth_rad": 0.2,
+              "elevation_rad": 0.0,
+              "speed_mps": 15.0,
+              "uav_index": 4
+            },
+            {
+              "azimuth_rad": 0.2,
+              "elevation_rad": 0.0,
+              "speed_mps": 15.0,
+              "uav_index": 5
+            }
+          ],
+          "missing": false
+        },
+        "route": {
+          "empty": true,
+          "entries": [],
+          "missing": false
+        }
+      },
+      "action_components": {
+        "comm": 0,
+        "comp": 0,
+        "mobility": 2,
+        "route": 0
+      },
+      "action_index": 6,
+      "candidate_fingerprint": "29f7baa518b707a764107fe818b4c97c7220cb952de64647ed404473ec1def74",
+      "completed_h1": true,
+      "rollout_seconds": 2.8151863000239246,
+      "root_fingerprint": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+        "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+      },
+      "same_root": true,
+      "scoreable_h1": false,
+      "scorer_diagnostics": {
+        "support_boundary_reasons": {
+          "h1_candidate_6": "UNSUPPORTED_FUTURE_RETURN_BIRTH:Task_5:H1"
+        }
+      },
+      "scorer_status": "OBJECTIVE_UNSCOREABLE",
+      "support_horizons": {
+        "h1_candidate_6": 0
+      },
+      "target_classification": {
+        "Task_5": "B"
+      },
+      "target_predicted_state": {
+        "Task_5": {
+          "compute_host_index": 4,
+          "required_returned_size": 0.07610754782944204,
+          "return_destination_index": 5,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 0,
+          "work_remaining": 0.0
+        }
+      },
+      "trace_output_fingerprints": [
+        {
+          "graph": "600d96f37f1564f01e9d7504b4ed59bf34df76549c867039e0055b025de5d3ee",
+          "latent": "5c4771328bca5da418b0b2997a2a0fbb25c4d8021acdc297f74e79cb40266bb7",
+          "state": "4dc70cc3e5c2941acc2bea61010af0d1dd708cf0fcdee786280fe0d4911f1fb9"
+        }
+      ]
+    }
+  ],
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "final": {
+    "environment_advanced_during_capture": false,
+    "h1_scoreable": 0,
+    "h1_support_pass": 0,
+    "invalid_actions": 0,
+    "legal_distinct_actions": 6,
+    "parameters_unchanged": true,
+    "return_birth_triggers": 6,
+    "rollout_exceptions": 0,
+    "root_status": "LIVE_ROOT_CAPTURE_VALID",
+    "scorer_exceptions": 0,
+    "successful_h1_predictions": 6,
+    "wm_transitions": 6
+  },
+  "identity": {
+    "checkpoint_sha256": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+    "diagnostic_script_sha256": "7f2b30e56fe9294964b6f3fbaba1ad58ec229f20138b5dd43f817ea8545d8783",
+    "model_load_seconds": 95.71319590002531,
+    "normalization_sha256": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+    "source_commit": "3cde78e551915a98290e53e20521183f3aa099c6"
+  },
+  "locked_test": false,
+  "root": {
+    "anchor_task_state": {
+      "Task_5": {
+        "compute_host_index": 4,
+        "required_returned_size": 0.07610754782944204,
+        "return_destination_index": 5,
+        "return_exists": false,
+        "task_id": "Task_5",
+        "task_index": 0,
+        "work_remaining": 0.0
+      }
+    },
+    "capture": {
+      "capture_event_id": "capture-012",
+      "causal_prefix_sha256": "ee5f22dfbd853aed6afe948bb0536ec9a0e772b881ccd719f76a0bd0506d44af",
+      "decision_count": 7,
+      "frame": 6,
+      "simulation_time_s": 1.8,
+      "step_count": 6
+    },
+    "domain_count": 6,
+    "fingerprints": {
+      "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+      "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+      "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+      "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+      "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+    },
+    "objective_cohort_size": 3,
+    "objective_side_source": "current Formal Raw + aligned decision-before-action replay",
+    "raw_target_lifecycle": {
+      "Task_5": {
+        "computed_cpu_work": 0.4836374411490477,
+        "current_node_id": "UAV_0",
+        "lifecycle": "waiting_to_return",
+        "required_returned_size": 0.07610754782944204,
+        "return_destination_id": "UAV_1",
+        "task_cpu_work": 0.4836374411490477,
+        "transmitted_size": 0.0
+      }
+    },
+    "root_prepare_seconds": 0.6279813000001013,
+    "target_tasks": [
+      "Task_5"
+    ]
+  },
+  "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+  "schema": "PI-JWM-STEP-6.4J-H1-RETURN-ACTION-SENSITIVITY-v1",
+  "target_frame": 6,
+  "trajectory_id": "formal-v1-sim-2026092318-policy-2026092418"
+}

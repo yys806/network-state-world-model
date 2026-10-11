@@ -478,3 +478,5 @@ Added a source-semantics audit runner, focused test, Planner objective target co
 r39原始统计归属已复核：anchor-0006为8×(344 complete,0 dead-end)，anchor-0029为8×(124,383)，总计3744/3064/0。正式Live root身份未能由现有证据核验，状态`ROOT_IDENTITY_UNVERIFIED`；未执行新评分探针、GPU或locked_test。详见`docs/implementation_records/STEP_06_4J_LIVE_ROOT_H4_DIAGNOSTIC.md`与诊断artifact。
 
 - 2026-10-11 原位Live H4诊断：新增真实callback采集与有限CPU scorer旁路。两个root均`LIVE_ROOT_CAPTURE_VALID`，各1个完整H4在H1因`UNSUPPORTED_FUTURE_RETURN_BIRTH`拒绝（Task_5/Task_15），共8个WM transition，0/2 scoreable，0 scorer exception。证据只属于NEW_CPU_DIAGNOSTIC，R39精确等价未证明。
+
+- 2026-10-11 H1动作敏感性诊断：两个真实root共18个合法动作全部在H1触发Return-birth，触发任务均为模型anchor已完成且缺Return Flow（类别B）；Task_15存在Raw computing与模型work_remaining=0的边界差异。仅建议先做状态一致性审计。

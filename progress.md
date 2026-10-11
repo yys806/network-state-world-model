@@ -1628,3 +1628,5 @@ r39 已完成独立审计：两条 live episode 各 8 次决策，16/16 B512、1
 2026-10-11 STEP 6.4J Live Root诊断：新增只读诊断回执与报告，纠正r39 episode统计归属；真实root身份未验证，未执行CPU评分探针、GPU或locked_test。同步项目状态与证据边界。
 
 2026-10-11 原位Live H4诊断完成：两个真实root捕获及独立审计PASS；新增4 candidate ledger、2条完整H4评分结果、8次WM transition。主机制观察为H1 future Return-birth fixed-support拒绝；R39精确等价仍UNPROVEN，不外推原3744事件。新增脚本/测试/报告待提交。
+
+2026-10-11 STEP 6.4J H1动作敏感性：v1真实live root动作对照完成，独立审计PASS；18/18动作H1触发Return-birth，0 H1支持/可评分，0异常。新增分析报告；v2完整prefix root证据因日志字段错误提前停止，保留失败记录。本轮不再增加预测，等待状态一致性科研判断。

@@ -1,0 +1,65 @@
+{
+  "anchor_task_state": {
+    "Task_15": {
+      "compute_host_index": 0,
+      "required_returned_size": 0.0815777792407337,
+      "return_destination_index": 4,
+      "return_exists": false,
+      "task_id": "Task_15",
+      "task_index": 6,
+      "work_remaining": 0.0
+    },
+    "Task_5": {
+      "compute_host_index": null,
+      "required_returned_size": 0.08004643903984553,
+      "return_destination_index": 4,
+      "return_exists": false,
+      "task_id": "Task_5",
+      "task_index": 18,
+      "work_remaining": 0.20827479660511017
+    }
+  },
+  "capture": {
+    "capture_event_id": "capture-058",
+    "causal_prefix_sha256": "c93d1fdad9ececed779fa47b47fdf2361f236ef53e6b5ec7a3e38e8456f97c60",
+    "decision_count": 30,
+    "frame": 29,
+    "simulation_time_s": 5.2,
+    "step_count": 29
+  },
+  "domain_count": 17,
+  "fingerprints": {
+    "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+    "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+    "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+    "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+    "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+  },
+  "objective_cohort_size": 23,
+  "objective_side_source": "current Formal Raw + aligned decision-before-action replay",
+  "raw_target_lifecycle": {
+    "Task_15": {
+      "computed_cpu_work": 0.6532350234152131,
+      "current_node_id": "RSU_0",
+      "lifecycle": "computing",
+      "required_returned_size": 0.0815777792407337,
+      "return_destination_id": "UAV_0",
+      "task_cpu_work": 0.6532350234152132,
+      "transmitted_size": 0.0
+    },
+    "Task_5": {
+      "computed_cpu_work": 0.0,
+      "current_node_id": "UAV_0",
+      "lifecycle": "failed",
+      "required_returned_size": 0.08004643903984553,
+      "return_destination_id": "UAV_0",
+      "task_cpu_work": 0.2082747960795336,
+      "transmitted_size": 0.0
+    }
+  },
+  "root_prepare_seconds": 1.894007699971553,
+  "target_tasks": [
+    "Task_15",
+    "Task_5"
+  ]
+}

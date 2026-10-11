@@ -1,0 +1,153 @@
+{
+  "GPU": "NOT_USED",
+  "R39_EXACT_EQUIVALENCE": "UNPROVEN",
+  "errors": [],
+  "locked_test": false,
+  "namespace": "code\\artifacts\\audit\\pi_jwm_step6_4j_h1_return_action_sensitivity_20261011_v1",
+  "passed": true,
+  "rows": [
+    {
+      "action_component_variants": {
+        "comm": 1,
+        "comp": 1,
+        "mobility": 6,
+        "route": 1
+      },
+      "anchor_task_state": {
+        "Task_5": {
+          "compute_host_index": 4,
+          "required_returned_size": 0.07610754782944204,
+          "return_destination_index": 5,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 0,
+          "work_remaining": 0.0
+        }
+      },
+      "h1_scoreable": 0,
+      "h1_support_pass": 0,
+      "legal_distinct_actions": 6,
+      "raw_target_lifecycle": {
+        "Task_5": {
+          "computed_cpu_work": 0.4836374411490477,
+          "current_node_id": "UAV_0",
+          "lifecycle": "waiting_to_return",
+          "required_returned_size": 0.07610754782944204,
+          "return_destination_id": "UAV_1",
+          "task_cpu_work": 0.4836374411490477,
+          "transmitted_size": 0.0
+        }
+      },
+      "return_birth_triggers": 6,
+      "rollout_exceptions": 0,
+      "root_fingerprint": {
+        "anchor": "8c5bfc087b994687543d02edf0c14a42fe342f84b5374b777b0e8afb8705ad8f",
+        "graph": "f8923b77a18038c2444ac128200e5df583dac428bc4b5f597b1f8c23fe842197",
+        "latent": "417b869ec526d7b05d3ff93ea3c5d509aa5f560b63c15f7c4bbf1aaae03ae1e9",
+        "state": "587363fe78eff9bfefdfba505719f46dfffd7f4610f75325fd19e35a51f2b42a",
+        "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+      },
+      "sample_id": "formal-v1-sim-2026092318-policy-2026092418::anchor-0006",
+      "scorer_exceptions": 0,
+      "successful_h1_predictions": 6,
+      "target_classifications": [
+        [
+          [
+            "Task_5",
+            "B"
+          ]
+        ]
+      ],
+      "wm_transitions": 6
+    },
+    {
+      "action_component_variants": {
+        "comm": 1,
+        "comp": 3,
+        "mobility": 6,
+        "route": 1
+      },
+      "anchor_task_state": {
+        "Task_15": {
+          "compute_host_index": 0,
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_15",
+          "task_index": 6,
+          "work_remaining": 0.0
+        },
+        "Task_5": {
+          "compute_host_index": null,
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_index": 4,
+          "return_exists": false,
+          "task_id": "Task_5",
+          "task_index": 18,
+          "work_remaining": 0.20827479660511017
+        }
+      },
+      "h1_scoreable": 0,
+      "h1_support_pass": 0,
+      "legal_distinct_actions": 12,
+      "raw_target_lifecycle": {
+        "Task_15": {
+          "computed_cpu_work": 0.6532350234152131,
+          "current_node_id": "RSU_0",
+          "lifecycle": "computing",
+          "required_returned_size": 0.0815777792407337,
+          "return_destination_id": "UAV_0",
+          "task_cpu_work": 0.6532350234152132,
+          "transmitted_size": 0.0
+        },
+        "Task_5": {
+          "computed_cpu_work": 0.0,
+          "current_node_id": "UAV_0",
+          "lifecycle": "failed",
+          "required_returned_size": 0.08004643903984553,
+          "return_destination_id": "UAV_0",
+          "task_cpu_work": 0.2082747960795336,
+          "transmitted_size": 0.0
+        }
+      },
+      "return_birth_triggers": 12,
+      "rollout_exceptions": 0,
+      "root_fingerprint": {
+        "anchor": "eee6a5c1a045b361b64983da1c191fd6263729e75ec8984cab0fd38152ca05c5",
+        "graph": "6b1dcb584268d8d79659086eec7e930bd8e6c73cf6ebd5d25d06d48e9fd3a6af",
+        "latent": "d7f29946aa3939f7b79515a21563fff86ba7c0994ea8a4b41276f689071b3ce1",
+        "state": "69bd5ba51279f75a0bfa6ee1b759e5c47918c63994165ffef03c8f2d2586b764",
+        "z_pi": "5384bd38107fce9ecf47427afa9982407ed683d61f51ab0b5f7d99648f66df6b"
+      },
+      "sample_id": "formal-v1-sim-2026092326-policy-2026092426::anchor-0029",
+      "scorer_exceptions": 0,
+      "successful_h1_predictions": 12,
+      "target_classifications": [
+        [
+          [
+            "Task_15",
+            "B"
+          ],
+          [
+            "Task_5",
+            "C"
+          ]
+        ]
+      ],
+      "wm_transitions": 12
+    }
+  ],
+  "schema": "PI-JWM-STEP-6.4J-H1-RETURN-ACTION-AUDIT-v1",
+  "totals": {
+    "h1_scoreable": 0,
+    "h1_support_pass": 0,
+    "legal_distinct_actions": 18,
+    "return_birth_triggers": 18,
+    "rollout_exceptions": 0,
+    "roots": 2,
+    "scorer_exceptions": 0,
+    "successful_h1_predictions": 18,
+    "wm_transitions": 18
+  },
+  "v2_status": "ROOT_AND_PREFIX_SAVED_THEN_LOGGING_FIELD_ERROR_BEFORE_ACTION_LEDGER"
+}
