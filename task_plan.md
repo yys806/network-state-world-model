@@ -2066,3 +2066,7 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 - 结论：工程机制 `COMPLETED`；16/16 无 scoreable H4、全部 `FALLBACK_A`，搜索优化有效性 `NOT_ESTABLISHED`。
 - 阻塞：现有 receipt 没有逐候选 rejection ledger，不能精确归因 3744 个完整 H4 完成事件。
 - 唯一下一动作：研究者决定是否授权本地 CPU 只读 rejection-ledger 重放；不启动 24×64/GPU/locked_test。
+
+## 2026-10-11 STEP 6.4J Live Root diagnostic
+
+本轮只读复核r39原始统计并尝试按正式Live Planner路径重建两个root。统计归属已纠正且总计3744 complete/3064 dead-end/0 scoreable H4保持一致；因缺失初始live因果前缀、History、candidate/RNG及root equality receipt，门禁为ROOT_IDENTITY_UNVERIFIED，未运行评分探针。证据：`code/artifacts/audit/pi_jwm_step6_4j_live_root_h4_diagnostic_20261011/`。GPU、locked_test和科学算法修改均未发生。下一动作待研究者决定。

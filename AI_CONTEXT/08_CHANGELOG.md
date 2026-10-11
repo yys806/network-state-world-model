@@ -472,3 +472,7 @@ Added a source-semantics audit runner, focused test, Planner objective target co
 
 新增 r39 H4 可评分性审计报告和实施记录；同步记录工程 `COMPLETED` 与搜索 `NOT_ESTABLISHED` 两条结论，补充 fixed-support 边界、证据缺口、GPU关闭限制和最小 CPU ledger proposal。未修改科学算法、冻结结果或实验配置。
 
+
+## 2026-10-11 STEP 6.4J Live Root诊断
+
+r39原始统计归属已复核：anchor-0006为8×(344 complete,0 dead-end)，anchor-0029为8×(124,383)，总计3744/3064/0。正式Live root身份未能由现有证据核验，状态`ROOT_IDENTITY_UNVERIFIED`；未执行新评分探针、GPU或locked_test。详见`docs/implementation_records/STEP_06_4J_LIVE_ROOT_H4_DIAGNOSTIC.md`与诊断artifact。

@@ -1,0 +1,31 @@
+{
+  "schema": "PI-JWM-STEP-6.4J-LIVE-ROOT-DIAGNOSTIC-v1",
+  "diagnostic_label": "NEW_CPU_DIAGNOSTIC",
+  "status": "ROOT_IDENTITY_UNVERIFIED",
+  "original_r39_replay": "NOT_EXACTLY_REPLAYABLE",
+  "gpu": false,
+  "locked_test": false,
+  "algorithm_changed": false,
+  "source_commit": "5d35de12fdd32c321bf7bbe4a0de8a822771548b0",
+  "r39_commit": "0586cde90c8cc244e9f5091fd51e7c77217b817a",
+  "episodes": [
+    {"sample_id":"formal-v1-sim-2026092318-policy-2026092418::anchor-0006","decision_files":8,"complete_per_decision":344,"dead_end_per_decision":0,"complete_total":2752,"dead_end_total":0,"scoreable_h4_total":0,"mapping_verified_from_raw_receipts":true},
+    {"sample_id":"formal-v1-sim-2026092326-policy-2026092426::anchor-0029","decision_files":8,"complete_per_decision":124,"dead_end_per_decision":383,"complete_total":992,"dead_end_total":3064,"scoreable_h4_total":0,"mapping_verified_from_raw_receipts":true}
+  ],
+  "totals":{"complete_events":3744,"dead_end_branches":3064,"scoreable_h4_events":0},
+  "root_reconstruction": {
+    "requested_path":["history_tensor(raw,stats,slot_template)","build_state","context_from_current_raw","CandidateDomain.from_state","prepare_anchor"],
+    "attempted_sample_ids":["formal-v1-sim-2026092318-policy-2026092418::anchor-0006","formal-v1-sim-2026092326-policy-2026092426::anchor-0029"],
+    "identity_status":"UNVERIFIED",
+    "blocking_evidence":[
+      "r39 does not persist the initial live causal prefix/History object used by the planner",
+      "r39 does not persist candidate sequences or RNG state",
+      "formal dataset raw prefix is provenance input, not proof that the runtime capture and root fingerprints are identical",
+      "bounded CPU reconstruction did not produce a completed fingerprint equality receipt"
+    ],
+    "static_anchor_substitution_used":false
+  },
+  "probe":{"executed":false,"reason":"ROOT_IDENTITY_UNVERIFIED","wm_transition_new":0,"score_candidate_set_calls":0},
+  "cost":{"reconstruction_wall_clock_budget_s":180,"whole_round_budget_s":600,"probe_budget_per_root_s":180},
+  "next_minimal_validation":"Researcher decision on whether to authorize a new additive live-root capture/replay protocol that persists the causal prefix, History, root fingerprints and bounded candidate ledger during execution."
+}

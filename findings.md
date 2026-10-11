@@ -1661,3 +1661,5 @@ RTX 4090 24GB GPU 鎵归噺鎺ㄦ紨闂ㄦ閫氳繃銆傜湡瀹?TRAIN fixture
 - Hypothesis：future Return-birth fixed-support 是高可信主因；动态 domain/dead-end 是第二条轨迹的额外因素。逐候选比例未证实。
 - Evidence gap：r39 没保存 candidate-level `support_boundary_reasons`，不能计算 `UNSUPPORTED_FUTURE_RETURN_BIRTH` 的精确分母。
 - Proposal：先做已有 H4 的 CPU 只读 rejection-ledger 重放，再由研究者决定是否改变支持边界或扩大实验。
+
+2026-10-11：r39原始receipt独立统计确认anchor-0006=每次344 complete/0 dead-end，anchor-0029=每次124 complete/383 dead-end，总计3744/3064/0。Live Root身份因证据缺失与有界CPU重建未形成fingerprint equality而保持ROOT_IDENTITY_UNVERIFIED；未做新评分探针，不能将future Return-birth或其他reason分布外推到r39。
