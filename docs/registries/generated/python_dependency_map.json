@@ -138,6 +138,7 @@
       "evidence_role": "implementation",
       "imported_by": [
         "scripts.run_p2_full_dual_graph_collector_preflight_v1",
+        "scripts.run_step6_4n_real_cpu_v2",
         "tests.test_airfogsim_full_dual_graph_collector_v1"
       ],
       "imports": [],
@@ -2119,6 +2120,7 @@
         "scripts.build_step5_1c_unified_development_bundle_v1",
         "scripts.build_step5_5_formal_dataset_v1",
         "scripts.build_step6_2b_objective_receipts_v1",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "tests.test_step4_2a_graph_input_extension_v1",
         "tests.test_step4_2c_c_flow_sample_tensor_v1",
         "tests.test_step5_1a_motion_csi_target_contract_v1"
@@ -2173,6 +2175,8 @@
         "scripts.build_step5_1c_unified_development_bundle_v1",
         "scripts.build_step5_5_formal_dataset_v1",
         "scripts.run_step6_4k_validation_flow_audit_v1",
+        "scripts.run_step6_4n_real_cpu_v2",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "tests.test_step4_2c_b_causal_flow_ledger_raw_v1",
         "tests.test_step4_2c_c_flow_sample_tensor_v1"
       ],
@@ -2222,7 +2226,8 @@
         "tests.test_step5_1d_unified_model_chain_v1",
         "tests.test_step6_2a_route_recovery_v1",
         "tests.test_step6_4b_live_bridge_v1",
-        "tests.test_step6_4i_live_provider_v1"
+        "tests.test_step6_4i_live_provider_v1",
+        "tests.test_step6_4n_scorer_v2"
       ],
       "imports": [],
       "lifecycle_status": "support",
@@ -2236,7 +2241,8 @@
         "code/tests/test_step5_1d_unified_model_chain_v1.py",
         "code/tests/test_step6_2a_route_recovery_v1.py",
         "code/tests/test_step6_4b_live_bridge_v1.py",
-        "code/tests/test_step6_4i_live_provider_v1.py"
+        "code/tests/test_step6_4i_live_provider_v1.py",
+        "code/tests/test_step6_4n_scorer_v2.py"
       ]
     },
     {
@@ -2332,7 +2338,8 @@
         "tests.test_step4_4_structured_rssm_world_model_v1",
         "tests.test_step6_2a_patch_side_state_v1",
         "tests.test_step6_2a_route_recovery_v1",
-        "tests.test_step6_4f_evidence_invariant_v1"
+        "tests.test_step6_4f_evidence_invariant_v1",
+        "tests.test_step6_4n_birth_v2"
       ],
       "imports": [
         "pi_jwm.step3_3_model_input_tensor_v1",
@@ -2346,7 +2353,8 @@
         "code/tests/test_step4_4_structured_rssm_world_model_v1.py",
         "code/tests/test_step6_2a_patch_side_state_v1.py",
         "code/tests/test_step6_2a_route_recovery_v1.py",
-        "code/tests/test_step6_4f_evidence_invariant_v1.py"
+        "code/tests/test_step6_4f_evidence_invariant_v1.py",
+        "code/tests/test_step6_4n_birth_v2.py"
       ]
     },
     {
@@ -2416,6 +2424,7 @@
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.step5_3_cpu_training_preflight_v1",
         "scripts.step5_3d_csi_scale_optimization_diagnosis_v1",
         "scripts.step5_3e_csi_train_mean_bias_formalization_v1",
@@ -2487,6 +2496,7 @@
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.smoke_step6_2a_patched_checkpoint_cpu_v1",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
@@ -2562,6 +2572,7 @@
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.smoke_step6_2a_patched_checkpoint_cpu_v1",
         "scripts.step6_4i_live_planner_v1",
         "scripts.verify_step5_5_patch_full_shards_v1",
@@ -2688,6 +2699,7 @@
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.step6_0a_candidate_contract_acceptance_v1",
         "scripts.step6_4i_live_planner_v1",
         "tests.test_step6_0a_candidate_generation_v1",
@@ -2698,7 +2710,9 @@
         "tests.test_step6_3c_candidate_domain_v1",
         "tests.test_step6_4b_live_bridge_v1",
         "tests.test_step6_4e_fallback_v1",
-        "tests.test_step6_4i_episode_v1"
+        "tests.test_step6_4i_episode_v1",
+        "tests.test_step6_4n_birth_v2",
+        "tests.test_step6_4n_scorer_v2"
       ],
       "imports": [
         "pi_jwm.step6_0c_planner_action_domain_v1",
@@ -2716,7 +2730,9 @@
         "code/tests/test_step6_3c_candidate_domain_v1.py",
         "code/tests/test_step6_4b_live_bridge_v1.py",
         "code/tests/test_step6_4e_fallback_v1.py",
-        "code/tests/test_step6_4i_episode_v1.py"
+        "code/tests/test_step6_4i_episode_v1.py",
+        "code/tests/test_step6_4n_birth_v2.py",
+        "code/tests/test_step6_4n_scorer_v2.py"
       ]
     },
     {
@@ -2747,6 +2763,7 @@
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
         "scripts.run_step6_4l_r1_observed_replay_v4",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.step6_4i_live_planner_v1",
         "tests.test_step6_0c_planner_action_domain_v1",
         "tests.test_step6_1_trained_candidate_rollout_v1",
@@ -2773,6 +2790,7 @@
         "pi_jwm.step6_3d_fixed_budget_search_v1",
         "scripts.audit_step6_3d_pre_validation_v1",
         "scripts.audit_step6_4b_closure_v1",
+        "scripts.audit_step6_4n_acceptance_v2",
         "scripts.diagnose_step6_4j_cpu_rejection_ledger_v1",
         "scripts.run_step6_1_trained_candidate_rollout_preflight_v1",
         "scripts.run_step6_2b_objective_scorer_cpu_v1",
@@ -2794,12 +2812,15 @@
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
         "scripts.run_step6_4l_r1_observed_replay_v4",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.step6_4i_live_planner_v1",
         "tests.test_step6_1_trained_candidate_rollout_v1",
         "tests.test_step6_2b_planner_objective_scorer_v1",
         "tests.test_step6_3c_search_protocol_v1",
         "tests.test_step6_3d_exact_oracle_v1",
-        "tests.test_step6_3d_gpu_offload_v1"
+        "tests.test_step6_3d_gpu_offload_v1",
+        "tests.test_step6_4n_birth_v2",
+        "tests.test_step6_4n_scorer_v2"
       ],
       "imports": [
         "pi_jwm.step5_2_training_loop_v1",
@@ -2816,7 +2837,9 @@
         "code/tests/test_step6_2b_planner_objective_scorer_v1.py",
         "code/tests/test_step6_3c_search_protocol_v1.py",
         "code/tests/test_step6_3d_exact_oracle_v1.py",
-        "code/tests/test_step6_3d_gpu_offload_v1.py"
+        "code/tests/test_step6_3d_gpu_offload_v1.py",
+        "code/tests/test_step6_4n_birth_v2.py",
+        "code/tests/test_step6_4n_scorer_v2.py"
       ]
     },
     {
@@ -2831,7 +2854,8 @@
         "scripts.run_step6_4j_h1_return_action_sensitivity_v2",
         "tests.test_step6_2a_patch_side_state_v1",
         "tests.test_step6_2b_planner_objective_scorer_v1",
-        "tests.test_step6_4j_raw_model_scorer_lifecycle"
+        "tests.test_step6_4j_raw_model_scorer_lifecycle",
+        "tests.test_step6_4n_scorer_v2"
       ],
       "imports": [],
       "lifecycle_status": "support",
@@ -2840,7 +2864,8 @@
       "test_files": [
         "code/tests/test_step6_2a_patch_side_state_v1.py",
         "code/tests/test_step6_2b_planner_objective_scorer_v1.py",
-        "code/tests/test_step6_4j_raw_model_scorer_lifecycle.py"
+        "code/tests/test_step6_4j_raw_model_scorer_lifecycle.py",
+        "code/tests/test_step6_4n_scorer_v2.py"
       ]
     },
     {
@@ -3197,6 +3222,7 @@
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.step6_4i_live_planner_v1",
         "tests.test_step6_4b_live_bridge_v1",
         "tests.test_step6_4e_fallback_v1",
@@ -3409,6 +3435,55 @@
       "path": "code/src/pi_jwm/step6_4m_route_comm_flow_contract_v1.py",
       "test_files": [
         "code/tests/test_step6_4m_route_comm_flow_contract_v1.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.run_step6_4n_wm_cpu_v2",
+        "tests.test_step6_4n_birth_v2",
+        "tests.test_step6_4n_scorer_v2"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_4n_dynamic_v2",
+      "path": "code/src/pi_jwm/step6_4n_dynamic_v2.py",
+      "test_files": [
+        "code/tests/test_step6_4n_birth_v2.py",
+        "code/tests/test_step6_4n_scorer_v2.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.run_step6_4n_wm_cpu_v2",
+        "tests.test_step6_4n_birth_v2"
+      ],
+      "imports": [
+        "scripts.build_step5_1d_unified_model_chain_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_4n_rollout_v2",
+      "path": "code/src/pi_jwm/step6_4n_rollout_v2.py",
+      "test_files": [
+        "code/tests/test_step6_4n_birth_v2.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.run_step6_4n_real_cpu_v2",
+        "tests.test_step6_4n_dynamic_return_v2"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_4n_runtime_v2",
+      "path": "code/src/pi_jwm/step6_4n_runtime_v2.py",
+      "test_files": [
+        "code/tests/test_step6_4n_dynamic_return_v2.py"
       ]
     },
     {
@@ -4579,6 +4654,36 @@
       "category": "runnable_script",
       "evidence_role": "execution_entry",
       "imported_by": [
+        "tests.test_step6_4n_acceptance_v2"
+      ],
+      "imports": [
+        "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "scripts.audit_step6_4n_gate1_v2"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4n_acceptance_v2",
+      "path": "code/scripts/audit_step6_4n_acceptance_v2.py",
+      "test_files": [
+        "code/tests/test_step6_4n_acceptance_v2.py"
+      ]
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "scripts.audit_step6_4n_acceptance_v2",
+        "scripts.run_step6_4n_wm_cpu_v2"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.audit_step6_4n_gate1_v2",
+      "path": "code/scripts/audit_step6_4n_gate1_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
         "scripts.test_temporal_candidate_protocol"
       ],
       "imports": [],
@@ -5096,6 +5201,7 @@
         "pi_jwm.step5_5_full_sharded_loader_v1",
         "pi_jwm.step6_0a_candidate_generation_v1",
         "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "pi_jwm.step6_4n_rollout_v2",
         "scripts.audit_step6_4b_closure_v1",
         "scripts.audit_step6_4f_comm_eligibility_v1",
         "scripts.audit_step6_4l_r1_route_comm_matrix_v1",
@@ -5114,6 +5220,7 @@
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.step5_4_gpu_training_readiness_v1",
         "scripts.step5_5_formal_dataset_cpu_acceptance_v1",
         "scripts.step6_4i_live_planner_v1",
@@ -5510,6 +5617,16 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.close_step6_4n_records_v2",
+      "path": "code/scripts/close_step6_4n_records_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "scripts.preflight_step6_4j_sumo_v1",
         "scripts.replay_step6_2a_patch_deadline_sidecar_v1",
@@ -5524,6 +5641,7 @@
         "scripts.run_step6_4j_pilot_v1",
         "scripts.run_step6_4l_airfogsim_route_v1",
         "scripts.run_step6_4l_r1_task5_runtime_trace_v1",
+        "scripts.run_step6_4n_real_cpu_v2",
         "scripts.verify_step5_5_behavior_policy_determinism_v1"
       ],
       "imports": [
@@ -6593,6 +6711,16 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.freeze_step6_4n_delivery_v2",
+      "path": "code/scripts/freeze_step6_4n_delivery_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
       "imported_by": [
         "tests.test_governance_quarantine"
       ],
@@ -7002,6 +7130,16 @@
       "lifecycle_status": "support",
       "module": "scripts.replay_step6_3d_selected_deadline_sidecars_v1",
       "path": "code/scripts/replay_step6_3d_selected_deadline_sidecars_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "scripts.report_step6_4n_prediction_v2",
+      "path": "code/scripts/report_step6_4n_prediction_v2.py",
       "test_files": []
     },
     {
@@ -8716,6 +8854,7 @@
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.step6_4h_s_cem_budget_v1",
         "scripts.step6_4i_live_planner_v1",
         "scripts.verify_step6_3d_3080ti_migration_v1",
@@ -8912,7 +9051,8 @@
         "scripts.run_step6_4j_pilot_v1",
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
-        "scripts.run_step6_4l_r1_frozen_wm_scorer_v2"
+        "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4n_wm_cpu_v2"
       ],
       "imports": [
         "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
@@ -9191,7 +9331,9 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "scripts.run_step6_4n_real_cpu_v2"
+      ],
       "imports": [
         "scripts.collect_step5_5_formal_raw_v1"
       ],
@@ -9224,6 +9366,48 @@
       "lifecycle_status": "support",
       "module": "scripts.run_step6_4m_contract_cpu_v2",
       "path": "code/scripts/run_step6_4m_contract_cpu_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.airfogsim_full_dual_graph_collector_v1",
+        "pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1",
+        "pi_jwm.step6_4n_runtime_v2",
+        "scripts.collect_step5_5_formal_raw_v1",
+        "scripts.run_step6_4l_r1_task5_runtime_trace_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_4n_real_cpu_v2",
+      "path": "code/scripts/run_step6_4n_real_cpu_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2a_graph_input_extension_v1",
+        "pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1",
+        "pi_jwm.step5_2_training_loop_v1",
+        "pi_jwm.step5_4_formal_training_readiness_v1",
+        "pi_jwm.step5_5_full_sharded_loader_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_0c_planner_action_domain_v1",
+        "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "pi_jwm.step6_4b_live_bridge_v1",
+        "pi_jwm.step6_4n_dynamic_v2",
+        "pi_jwm.step6_4n_rollout_v2",
+        "scripts.audit_step6_4n_gate1_v2",
+        "scripts.build_step5_1d_unified_model_chain_v1",
+        "scripts.run_step6_3d_one_cpu_solve_v1",
+        "scripts.run_step6_4i_cpu_smoke_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.run_step6_4n_wm_cpu_v2",
+      "path": "code/scripts/run_step6_4n_wm_cpu_v2.py",
       "test_files": []
     },
     {
@@ -13818,6 +14002,62 @@
       "lifecycle_status": "support",
       "module": "tests.test_step6_4m_route_comm_flow_contract_v1",
       "path": "code/tests/test_step6_4m_route_comm_flow_contract_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "scripts.audit_step6_4n_acceptance_v2"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4n_acceptance_v2",
+      "path": "code/tests/test_step6_4n_acceptance_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_4_structured_rssm_world_model_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "pi_jwm.step6_4n_dynamic_v2",
+        "pi_jwm.step6_4n_rollout_v2"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4n_birth_v2",
+      "path": "code/tests/test_step6_4n_birth_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_4n_runtime_v2"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4n_dynamic_return_v2",
+      "path": "code/tests/test_step6_4n_dynamic_return_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step4_2c_c_flow_sample_tensor_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_1_trained_candidate_rollout_v1",
+        "pi_jwm.step6_2a_planner_objective_side_state_v1",
+        "pi_jwm.step6_4n_dynamic_v2"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4n_scorer_v2",
+      "path": "code/tests/test_step6_4n_scorer_v2.py",
       "test_files": []
     },
     {

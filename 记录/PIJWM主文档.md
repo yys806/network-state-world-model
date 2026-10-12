@@ -1,3 +1,14 @@
+<!-- STEP6.4N V2 CURRENT -->
+## 2026-10-12 STEP 6.4N — 隔离动态 Return CPU 机制
+
+STEP 6.4N 的隔离 opt-in v2 CPU 机制已实现：Return 独立活动时钟、真实同隙 Route+RB、首步动作触发官方 Ledger Flow birth、共同 anchor 动态 slot/Graph/zero hidden、冻结 WM H1–H4 和 DynamicScorerV2。正式 v1 Route=EXPLICIT_NOOP_ONLY、旧 Scorer/Grammar/Domain/bridge、checkpoint 与 normalization 保持不变。Task_5 同根四分支 Gate 1 和双候选 Gate 2/3 通过；只是一条真实 root 的机制证据。预测可靠性 NOT_ESTABLISHED，正式 Route 集成 BLOCKED，是否需要重训 NOT_ESTABLISHED。GPU/训练/B512/正式S-CEM/baseline/locked_test/6.4O 均未启动。
+
+原始证据：`code/artifacts/audit/pi_jwm_step6_4n_20261012_v5/`、`code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v4/`；合同：`docs/contracts/PIJWM_STEP_06_4N_DYNAMIC_RETURN_V2.md`；实施记录：`docs/implementation_records/STEP_06_4N_DYNAMIC_RETURN_V2.md`。唯一建议下一动作：研究者审阅本 Step 的预测误差与正式集成缺口；不自动运行下一阶段。
+
+以下内容为此前记录，不覆盖本轮边界。
+
+---
+
 ## 2026-10-10 STEP 6.4J — r29 日志 schema 与独立落盘验收闭环
 
 已统一正式日志字段为 `search_attempt`，修复 SEARCH_INTENT 与全局 attempts 的字段错配。独立验收器从实际落盘 `pilot_attempt.json`、已启动 episode 的 `journal.jsonl`、`episode_receipt.json` 和 `decision_*.json` 重建结果；未启动 episode允许没有日志，已启动 episode缺失/损坏/重复/预算/WM transition计数不一致则 BLOCKED。新增独立 CLI `code/scripts/audit_step6_4j_formal_v1.py`，22项专项测试全部通过，覆盖两 episode 16 步 COMPLETED/0、首轮失败 BLOCKED/1、资格后资源停止 PARTIAL/2、fallback C PARTIAL/2、缺失/重复/损坏日志、预算不匹配和不完整无合法原因。r25真实 CPU AirFogSim证据保留并通过：2 episode、4 次真实 env.step。r29 execution_config_id=`f2b71e6b06b372a21c891a432680663259ef2f5108b0704eff844433b39f9bdc`。

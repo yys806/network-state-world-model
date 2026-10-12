@@ -2,6 +2,30 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
+      "id": "STEP-6.4N-FORMAL-ROUTE-INTEGRATION",
+      "type": "researcher_decision_required",
+      "status": "deferred",
+      "reason": "prediction reliability not established and full joint domain transaction not accepted",
+      "summary_zh": "CPU机制通过不解禁正式Route；需研究者决定最小可靠性验证",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": "docs/implementation_records/STEP_06_4N_DYNAMIC_RETURN_V2.md",
+      "required_predecessors": [
+        "researcher reviews v2 diagnostic evidence",
+        "joint Domain/bridge validation",
+        "prediction reliability evidence"
+      ],
+      "forbidden_until_authorized": [
+        "formal Route search",
+        "6.4O",
+        "training",
+        "GPU",
+        "locked_test"
+      ],
+      "scientific_gate_status": "BLOCKED"
+    },
+    {
       "id": "STEP-6.4I-GPU-PILOT-PROTOCOL-REVIEW",
       "type": "researcher_decision_required",
       "status": "deferred",

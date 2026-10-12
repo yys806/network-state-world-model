@@ -1,0 +1,198 @@
+{
+  "schema": "PI-JWM-STEP-6.4N-PREDICTION-ERROR-v2",
+  "cases": {
+    "A_NOOP": [
+      {
+        "h": 1,
+        "task_id": "Task_5",
+        "relation": 38,
+        "rb": 0,
+        "predicted_attenuation_db": 97.05272674560547,
+        "real_attenuation_db": 95.59808584511954,
+        "absolute_attenuation_error_db": 1.454640900485927,
+        "rate": {},
+        "task_rule_alignment": {
+          "absolute_remaining_error": 0.0,
+          "h": 1,
+          "predicted_completed": false,
+          "predicted_failure": null,
+          "predicted_remaining": 0.07610754782944204,
+          "real_completed": false,
+          "real_failure_code": -1,
+          "real_remaining": 0.07610754782944204,
+          "task_id": "Task_5"
+        }
+      },
+      {
+        "h": 2,
+        "task_id": "Task_5",
+        "relation": 38,
+        "rb": 0,
+        "predicted_attenuation_db": 96.55516052246094,
+        "real_attenuation_db": 95.35321601151253,
+        "absolute_attenuation_error_db": 1.2019445109484082,
+        "rate": {},
+        "task_rule_alignment": {
+          "absolute_remaining_error": 0.0,
+          "h": 2,
+          "predicted_completed": false,
+          "predicted_failure": null,
+          "predicted_remaining": 0.07610754782944204,
+          "real_completed": false,
+          "real_failure_code": -1,
+          "real_remaining": 0.07610754782944204,
+          "task_id": "Task_5"
+        }
+      },
+      {
+        "h": 3,
+        "task_id": "Task_5",
+        "relation": 38,
+        "rb": 0,
+        "predicted_attenuation_db": 96.30431365966797,
+        "real_attenuation_db": 97.01762186794286,
+        "absolute_attenuation_error_db": 0.7133082082748956,
+        "rate": {},
+        "task_rule_alignment": {
+          "absolute_remaining_error": 0.0,
+          "h": 3,
+          "predicted_completed": false,
+          "predicted_failure": null,
+          "predicted_remaining": 0.07610754782944204,
+          "real_completed": false,
+          "real_failure_code": -1,
+          "real_remaining": 0.07610754782944204,
+          "task_id": "Task_5"
+        }
+      },
+      {
+        "h": 4,
+        "task_id": "Task_5",
+        "relation": 38,
+        "rb": 0,
+        "predicted_attenuation_db": 96.1863784790039,
+        "real_attenuation_db": 98.5889200179904,
+        "absolute_attenuation_error_db": 2.4025415389864975,
+        "rate": {},
+        "task_rule_alignment": {
+          "absolute_remaining_error": 0.0,
+          "h": 4,
+          "predicted_completed": false,
+          "predicted_failure": null,
+          "predicted_remaining": 0.07610754782944204,
+          "real_completed": false,
+          "real_failure_code": -1,
+          "real_remaining": 0.07610754782944204,
+          "task_id": "Task_5"
+        }
+      }
+    ],
+    "B_ROUTE_RB": [
+      {
+        "h": 1,
+        "task_id": "Task_5",
+        "relation": 38,
+        "rb": 0,
+        "predicted_attenuation_db": 97.08108520507812,
+        "real_attenuation_db": 95.59808584511954,
+        "absolute_attenuation_error_db": 1.4829993599585833,
+        "rate": {
+          "predicted_expected_rate": 15.397736549377441,
+          "real_sampled_rate": 22.081797374222074,
+          "absolute_error": 6.684060824844632,
+          "relative_error": 0.3026955057855705,
+          "comparison": "expected service vs one stochastic realization; no reliability threshold approved"
+        },
+        "task_rule_alignment": {
+          "absolute_remaining_error": 0.0,
+          "h": 1,
+          "predicted_completed": true,
+          "predicted_failure": null,
+          "predicted_remaining": 0.0,
+          "real_completed": true,
+          "real_failure_code": -1,
+          "real_remaining": 0.0,
+          "task_id": "Task_5"
+        }
+      },
+      {
+        "h": 2,
+        "task_id": "Task_5",
+        "relation": 38,
+        "rb": 0,
+        "predicted_attenuation_db": 96.8128890991211,
+        "real_attenuation_db": 95.35321601151253,
+        "absolute_attenuation_error_db": 1.4596730876085644,
+        "rate": {},
+        "task_rule_alignment": {
+          "absolute_remaining_error": 0.0,
+          "h": 2,
+          "predicted_completed": true,
+          "predicted_failure": null,
+          "predicted_remaining": 0.0,
+          "real_completed": true,
+          "real_failure_code": -1,
+          "real_remaining": 0.0,
+          "task_id": "Task_5"
+        }
+      },
+      {
+        "h": 3,
+        "task_id": "Task_5",
+        "relation": 38,
+        "rb": 0,
+        "predicted_attenuation_db": 96.62195587158203,
+        "real_attenuation_db": 97.01762186794286,
+        "absolute_attenuation_error_db": 0.3956659963608331,
+        "rate": {},
+        "task_rule_alignment": {
+          "absolute_remaining_error": 0.0,
+          "h": 3,
+          "predicted_completed": true,
+          "predicted_failure": null,
+          "predicted_remaining": 0.0,
+          "real_completed": true,
+          "real_failure_code": -1,
+          "real_remaining": 0.0,
+          "task_id": "Task_5"
+        }
+      },
+      {
+        "h": 4,
+        "task_id": "Task_5",
+        "relation": 38,
+        "rb": 0,
+        "predicted_attenuation_db": 96.52655029296875,
+        "real_attenuation_db": 98.5889200179904,
+        "absolute_attenuation_error_db": 2.0623697250216537,
+        "rate": {},
+        "task_rule_alignment": {
+          "absolute_remaining_error": 0.0,
+          "h": 4,
+          "predicted_completed": true,
+          "predicted_failure": null,
+          "predicted_remaining": 0.0,
+          "real_completed": true,
+          "real_failure_code": -1,
+          "real_remaining": 0.0,
+          "task_id": "Task_5"
+        }
+      }
+    ]
+  },
+  "PREDICTION_ALIGNMENT": "NOT_ESTABLISHED",
+  "RETRAIN_REQUIRED": "NOT_ESTABLISHED",
+  "scope": "one real root; Task_5 finishes in first slot, caps hide rate error; not accepted accuracy evidence",
+  "training_support": {
+    "RB_start_width": [
+      0,
+      1
+    ],
+    "RB_marginal": "TRAIN_OBSERVED",
+    "dynamic_route_comm_joint": "NEW_OPT_IN_SUPPORT_NOT_VALIDATED_TRAIN_DISTRIBUTION",
+    "zero_cold_start_dynamic_hidden": "NO_RETRAIN_STRUCTURE_COMPATIBLE_BUT_PREDICTION_RELIABILITY_UNESTABLISHED"
+  },
+  "rule_alignment": "Task_5 remaining/completion align over all eight candidate-horizons; not learned-rate reliability",
+  "future_truth_consumed_by_prediction": false,
+  "next_minimal_validation": "researcher reviews unsaturated-service prediction audit proposal; no additional root selected by future success"
+}

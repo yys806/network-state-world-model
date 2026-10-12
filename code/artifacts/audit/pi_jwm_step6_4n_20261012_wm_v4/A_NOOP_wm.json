@@ -1,0 +1,236 @@
+{
+  "alignment": [
+    {
+      "absolute_remaining_error": 0.0,
+      "h": 1,
+      "predicted_completed": false,
+      "predicted_failure": null,
+      "predicted_remaining": 0.07610754782944204,
+      "real_completed": false,
+      "real_failure_code": -1,
+      "real_remaining": 0.07610754782944204,
+      "task_id": "Task_5"
+    },
+    {
+      "absolute_remaining_error": 0.0,
+      "h": 2,
+      "predicted_completed": false,
+      "predicted_failure": null,
+      "predicted_remaining": 0.07610754782944204,
+      "real_completed": false,
+      "real_failure_code": -1,
+      "real_remaining": 0.07610754782944204,
+      "task_id": "Task_5"
+    },
+    {
+      "absolute_remaining_error": 0.0,
+      "h": 3,
+      "predicted_completed": false,
+      "predicted_failure": null,
+      "predicted_remaining": 0.07610754782944204,
+      "real_completed": false,
+      "real_failure_code": -1,
+      "real_remaining": 0.07610754782944204,
+      "task_id": "Task_5"
+    },
+    {
+      "absolute_remaining_error": 0.0,
+      "h": 4,
+      "predicted_completed": false,
+      "predicted_failure": null,
+      "predicted_remaining": 0.07610754782944204,
+      "real_completed": false,
+      "real_failure_code": -1,
+      "real_remaining": 0.07610754782944204,
+      "task_id": "Task_5"
+    }
+  ],
+  "conservation": [
+    {
+      "delivered": 0.0,
+      "finite": true,
+      "flow_hidden_fingerprint": "b71599f4f71fc098cee8463dda8e2dc3eef7a6aeed35a80260d1436b49cbf7a3",
+      "flow_id": null,
+      "h": 1,
+      "known": false,
+      "remaining": 0.07610754782944204,
+      "slot": -1,
+      "total": 0.07610754782944204
+    },
+    {
+      "delivered": 0.0,
+      "finite": true,
+      "flow_hidden_fingerprint": "b71599f4f71fc098cee8463dda8e2dc3eef7a6aeed35a80260d1436b49cbf7a3",
+      "flow_id": null,
+      "h": 2,
+      "known": false,
+      "remaining": 0.07610754782944204,
+      "slot": -1,
+      "total": 0.07610754782944204
+    },
+    {
+      "delivered": 0.0,
+      "finite": true,
+      "flow_hidden_fingerprint": "b71599f4f71fc098cee8463dda8e2dc3eef7a6aeed35a80260d1436b49cbf7a3",
+      "flow_id": null,
+      "h": 3,
+      "known": false,
+      "remaining": 0.07610754782944204,
+      "slot": -1,
+      "total": 0.07610754782944204
+    },
+    {
+      "delivered": 0.0,
+      "finite": true,
+      "flow_hidden_fingerprint": "b71599f4f71fc098cee8463dda8e2dc3eef7a6aeed35a80260d1436b49cbf7a3",
+      "flow_id": null,
+      "h": 4,
+      "known": false,
+      "remaining": 0.07610754782944204,
+      "slot": -1,
+      "total": 0.07610754782944204
+    }
+  ],
+  "initial": {
+    "anchor": "c05f52cb3a3881672dfdcd674795385ec0658fa5d61dc15285a510940f15a62b",
+    "graph": "049fbb87e6b1ff66bd7e6ae72bd4c27e0f1a82bae3f1494b0a58b5452efe2a1b",
+    "latent": "600f7a656d7f3167d057a2c5283e43b39ca5409f11fee5062b7086739b5c10ed",
+    "state": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146",
+    "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+  },
+  "inputs": [
+    {
+      "graph": "049fbb87e6b1ff66bd7e6ae72bd4c27e0f1a82bae3f1494b0a58b5452efe2a1b",
+      "latent": "600f7a656d7f3167d057a2c5283e43b39ca5409f11fee5062b7086739b5c10ed",
+      "state": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146"
+    },
+    {
+      "graph": "673922b452cb781415192362b2651a780a68616630f168fcdf0e2510e5e37848",
+      "latent": "a12fbb4d75d1dfcf70ac2d8412dbbae47c07151c10b9ec8750a8aa39c23c1370",
+      "state": "c5e45a6e3bde01b074f3a283e5d0dd2118ca5af92cb9cdea17b3877f05513a0e"
+    },
+    {
+      "graph": "872a6c417a8a4bd8f85e3ef006367d0d9b67d1c7002a025f4fe8284122cd6a10",
+      "latent": "117471a6793a1d197b9adc50b2d7b8fedc3ad0366c811cc9e7f2d839c514be64",
+      "state": "110233cf33dd9c34cf6a6970968996b2b45044b0b19d8d8bbe095523390745e5"
+    },
+    {
+      "graph": "85b8f26f727c44c850a19799d60ac0e2f6a7ce2931452c2dd3978d1108604dc6",
+      "latent": "90cedeff0763a9d39e257470e8f955e1bf51730a1c28ad325b963a6bb7f95871",
+      "state": "118defb3882e2eba61d68a552b0171c4c2e800b0daa58ede286aa3316f78b176"
+    }
+  ],
+  "mappings": [
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "incoming": {
+        "graph": "049fbb87e6b1ff66bd7e6ae72bd4c27e0f1a82bae3f1494b0a58b5452efe2a1b",
+        "latent": "600f7a656d7f3167d057a2c5283e43b39ca5409f11fee5062b7086739b5c10ed",
+        "state": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146"
+      },
+      "learned_input": {
+        "graph": "049fbb87e6b1ff66bd7e6ae72bd4c27e0f1a82bae3f1494b0a58b5452efe2a1b",
+        "latent": "600f7a656d7f3167d057a2c5283e43b39ca5409f11fee5062b7086739b5c10ed",
+        "state": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146"
+      },
+      "mobility": 0,
+      "route": [],
+      "route_effect": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "incoming": {
+        "graph": "673922b452cb781415192362b2651a780a68616630f168fcdf0e2510e5e37848",
+        "latent": "a12fbb4d75d1dfcf70ac2d8412dbbae47c07151c10b9ec8750a8aa39c23c1370",
+        "state": "c5e45a6e3bde01b074f3a283e5d0dd2118ca5af92cb9cdea17b3877f05513a0e"
+      },
+      "learned_input": {
+        "graph": "673922b452cb781415192362b2651a780a68616630f168fcdf0e2510e5e37848",
+        "latent": "a12fbb4d75d1dfcf70ac2d8412dbbae47c07151c10b9ec8750a8aa39c23c1370",
+        "state": "c5e45a6e3bde01b074f3a283e5d0dd2118ca5af92cb9cdea17b3877f05513a0e"
+      },
+      "mobility": 0,
+      "route": [],
+      "route_effect": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "incoming": {
+        "graph": "872a6c417a8a4bd8f85e3ef006367d0d9b67d1c7002a025f4fe8284122cd6a10",
+        "latent": "117471a6793a1d197b9adc50b2d7b8fedc3ad0366c811cc9e7f2d839c514be64",
+        "state": "110233cf33dd9c34cf6a6970968996b2b45044b0b19d8d8bbe095523390745e5"
+      },
+      "learned_input": {
+        "graph": "872a6c417a8a4bd8f85e3ef006367d0d9b67d1c7002a025f4fe8284122cd6a10",
+        "latent": "117471a6793a1d197b9adc50b2d7b8fedc3ad0366c811cc9e7f2d839c514be64",
+        "state": "110233cf33dd9c34cf6a6970968996b2b45044b0b19d8d8bbe095523390745e5"
+      },
+      "mobility": 0,
+      "route": [],
+      "route_effect": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "incoming": {
+        "graph": "85b8f26f727c44c850a19799d60ac0e2f6a7ce2931452c2dd3978d1108604dc6",
+        "latent": "90cedeff0763a9d39e257470e8f955e1bf51730a1c28ad325b963a6bb7f95871",
+        "state": "118defb3882e2eba61d68a552b0171c4c2e800b0daa58ede286aa3316f78b176"
+      },
+      "learned_input": {
+        "graph": "85b8f26f727c44c850a19799d60ac0e2f6a7ce2931452c2dd3978d1108604dc6",
+        "latent": "90cedeff0763a9d39e257470e8f955e1bf51730a1c28ad325b963a6bb7f95871",
+        "state": "118defb3882e2eba61d68a552b0171c4c2e800b0daa58ede286aa3316f78b176"
+      },
+      "mobility": 0,
+      "route": [],
+      "route_effect": [],
+      "route_explicit_noop": true
+    }
+  ],
+  "meta": {
+    "births": [],
+    "events": [],
+    "flow_id_to_slot": {
+      "flow::Task_5::Input::0": 0
+    },
+    "formal_pool_admitted": false,
+    "future_truth_used": false,
+    "initialization": "ZERO_COLD_START",
+    "pre_route_state_fingerprint": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146",
+    "source": "V2_CAUSAL_PREDICTED_TRANSITION",
+    "tti_failure": null
+  },
+  "outputs": [
+    {
+      "graph": "673922b452cb781415192362b2651a780a68616630f168fcdf0e2510e5e37848",
+      "latent": "a12fbb4d75d1dfcf70ac2d8412dbbae47c07151c10b9ec8750a8aa39c23c1370",
+      "state": "c5e45a6e3bde01b074f3a283e5d0dd2118ca5af92cb9cdea17b3877f05513a0e"
+    },
+    {
+      "graph": "872a6c417a8a4bd8f85e3ef006367d0d9b67d1c7002a025f4fe8284122cd6a10",
+      "latent": "117471a6793a1d197b9adc50b2d7b8fedc3ad0366c811cc9e7f2d839c514be64",
+      "state": "110233cf33dd9c34cf6a6970968996b2b45044b0b19d8d8bbe095523390745e5"
+    },
+    {
+      "graph": "85b8f26f727c44c850a19799d60ac0e2f6a7ce2931452c2dd3978d1108604dc6",
+      "latent": "90cedeff0763a9d39e257470e8f955e1bf51730a1c28ad325b963a6bb7f95871",
+      "state": "118defb3882e2eba61d68a552b0171c4c2e800b0daa58ede286aa3316f78b176"
+    },
+    {
+      "graph": "6b98d196a20fd51e58a5fd6db3fa6ed209f7936ac01b90a35737b160e5981325",
+      "latent": "52c0a293d624eed01e2923d089d9a81e995f23c6d6607f7045ebf03d3f6fa630",
+      "state": "974977479d64d8a10886bcf317aee5c7797231d1b9c84b4cc33c624ecc8b31f0"
+    }
+  ]
+}

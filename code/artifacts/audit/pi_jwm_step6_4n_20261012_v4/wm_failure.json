@@ -1,0 +1,5 @@
+{
+  "reason": "REQUIRED_LIVE_OBSERVATION_MISSING: environment.wired_edges",
+  "status": "BLOCKED",
+  "type": "ValueError"
+}

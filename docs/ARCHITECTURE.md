@@ -1,3 +1,11 @@
+<!-- STEP6.4N V2 CURRENT -->
+## 2026-10-12 STEP 6.4N — 隔离动态 Return CPU 证据
+
+隔离 v2：Return独立TTI、同隙Route+RB、动作内Flow birth/Graph/zero hidden、冻结WM H4、共同anchor DynamicScorerV2的有界机制通过。23项新专项测试与61项旧模式回归通过。正式v1 Route NOOP、旧Scorer与checkpoint不变。一个Task_5首隙完成样本不能证明预测可靠；PREDICTION_ALIGNMENT/RETRAIN_REQUIRED=NOT_ESTABLISHED，正式Route集成BLOCKED。GPU/训练/locked_test/6.4O未启动。
+
+导航：`docs/implementation_records/STEP_06_4N_DYNAMIC_RETURN_V2.md`；合同：`docs/contracts/PIJWM_STEP_06_4N_DYNAMIC_RETURN_V2.md`；配置/源码与证据SHA：`code/artifacts/manifests/pi_jwm_step6_4n_v2_20261012/delivery_manifest.json`；原始验收：`code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v4/acceptance_v2.json`。这些索引是导航，不能代替原始证据。
+
+---
 <!-- STEP6.4H CPU CURRENT -->
 ## 2026-10-08 STEP 6.4H — S-CEM 预算资格：CPU 前置门
 

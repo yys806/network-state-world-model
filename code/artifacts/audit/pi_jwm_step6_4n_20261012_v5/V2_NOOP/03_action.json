@@ -1,0 +1,14 @@
+{
+  "flow_id": null,
+  "ledger": {
+    "carrying_rows": [],
+    "flow_index": {},
+    "logical_flow_rows": [],
+    "schema_version": "PI-JWM-Causal-Flow-Ledger-v1-step4.2C-B"
+  },
+  "pre_route_anchor_sha": "9b779c70079baa55dc2f68ae6b3a56cff848ad8dc788b3da1fe034219381e2bf",
+  "setter": {
+    "rb_indices": [],
+    "route": []
+  }
+}

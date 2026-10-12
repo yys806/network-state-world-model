@@ -1,0 +1,81 @@
+{
+  "flow_id": "flow::Task_5::Return::0",
+  "ledger": {
+    "carrying_rows": [
+      {
+        "active": true,
+        "current_holder": "UAV_0",
+        "current_hop_index": 0,
+        "feature_mask": {
+          "hop_destination": true,
+          "hop_progress": true,
+          "hop_remaining": true,
+          "hop_source": true
+        },
+        "flow_id": "flow::Task_5::Return::0",
+        "hop_destination": "UAV_1",
+        "hop_progress": 0.0,
+        "hop_remaining": 0.07610754782944204,
+        "hop_source": "UAV_0",
+        "missing_reason": null,
+        "route": [
+          "UAV_1"
+        ],
+        "route_revision": 0
+      }
+    ],
+    "flow_index": {
+      "flow::Task_5::Return::0": 0
+    },
+    "logical_flow_rows": [
+      {
+        "e2e_delivered": 0.0,
+        "e2e_remaining": 0.07610754782944204,
+        "epoch": 0,
+        "feature_mask": {
+          "e2e_delivered": true,
+          "e2e_remaining": true,
+          "logical_destination": true,
+          "logical_source": true,
+          "total_data": true
+        },
+        "flow_id": "flow::Task_5::Return::0",
+        "flow_index": 0,
+        "flow_type": "Return",
+        "logical_destination": "UAV_1",
+        "logical_destination_capture_phase": "v2_validated_route_action_before_service",
+        "logical_destination_source": "v2_current_task_return_destination",
+        "logical_source": "UAV_0",
+        "missing_reason": null,
+        "presence": true,
+        "previous_flow_id": null,
+        "source_provenance": "causal_task_state_and_established_route",
+        "status": "ACTIVE",
+        "supersede_reason": null,
+        "superseded_by_flow_id": null,
+        "task_id": "Task_5",
+        "total_data": 0.07610754782944204
+      }
+    ],
+    "schema_version": "PI-JWM-Causal-Flow-Ledger-v1-step4.2C-B"
+  },
+  "pre_route_anchor_sha": "9b779c70079baa55dc2f68ae6b3a56cff848ad8dc788b3da1fe034219381e2bf",
+  "setter": {
+    "channel_type": "U2U",
+    "destination": "UAV_1",
+    "future_truth_used": false,
+    "mode": "DYNAMIC_RETURN_V2",
+    "rb_indices": [
+      0
+    ],
+    "rb_setter_committed": true,
+    "required_returned_size": 0.07610754782944204,
+    "rollback_on_failure": false,
+    "route": [
+      "UAV_1"
+    ],
+    "route_setter_committed": true,
+    "source": "UAV_0",
+    "task_id": "Task_5"
+  }
+}

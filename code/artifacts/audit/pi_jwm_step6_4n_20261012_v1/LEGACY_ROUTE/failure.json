@@ -1,0 +1,16 @@
+{
+  "GPU": false,
+  "diagnostic_steps": 0,
+  "elapsed_s": 1.8609108999953605,
+  "events": [],
+  "exception": "RB_PATTERN_OUTSIDE_TRAIN; duplicate_task_memberships={}",
+  "exception_type": "RuntimeError",
+  "locked_test": false,
+  "mode": "LEGACY_ROUTE",
+  "policy_seed": 2026092418,
+  "prefix_replay_steps": 0,
+  "schema": "STEP6.4N-REAL-V2",
+  "simulator_seed": 2026092318,
+  "status": "BLOCKED",
+  "target_frame": 6
+}

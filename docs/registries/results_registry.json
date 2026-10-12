@@ -348,5 +348,21 @@
     "formal_performance": "NOT_STARTED",
     "GPU_launch_authorized": false,
     "historical_budget_receipts": "Retain original researcher_pending snapshots without editing."
+  },
+  "step6_4n_dynamic_return_v2": {
+    "experiment_id": "STEP-6.4N-DYNAMIC-RETURN-V2-20261012",
+    "acceptance": "code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v4/acceptance_v2.json",
+    "states": {
+      "RETURN_TTI_V2_REAL_SIM_PASS": "PASS",
+      "SAME_SLOT_ROUTE_COMM_EXECUTION": "PASS",
+      "DYNAMIC_FLOW_BIRTH_CAUSALITY": "PASS",
+      "FROZEN_WM_H4_COMPATIBILITY": "PASS",
+      "PREDICTION_ALIGNMENT": "NOT_ESTABLISHED",
+      "SCORER_V2_COMPARABILITY": "PASS",
+      "LEGACY_V1_REGRESSION": "PASS",
+      "FORMAL_ROUTE_INTEGRATION_READINESS": "BLOCKED",
+      "RETRAIN_REQUIRED": "NOT_ESTABLISHED"
+    },
+    "summary_zh": "STEP 6.4N 的隔离 opt-in v2 CPU 机制已实现：Return 独立活动时钟、真实同隙 Route+RB、首步动作触发官方 Ledger Flow birth、共同 anchor 动态 slot/Graph/zero hidden、冻结 WM H1–H4 和 DynamicScorerV2。正式 v1 Route=EXPLICIT_NOOP_ONLY、旧 Scorer/Grammar/Domain/bridge、checkpoint 与 normalization 保持不变。Task_5 同根四分支 Gate 1 和双候选 Gate 2/3 通过；只是一条真实 root 的机制证据。预测可靠性 NOT_ESTABLISHED，正式 Route 集成 BLOCKED，是否需要重训 NOT_ESTABLISHED。GPU/训练/B512/正式S-CEM/baseline/locked_test/6.4O 均未启动。"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "GPU": false,
+  "checkpoint": "code\\artifacts\\formal_training\\pi_jwm_formal_train_v1_seed5601_20260924T112424Z\\checkpoints\\best.pt",
+  "checkpoint_sha": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "compact_preserves_owned_state_hidden": true,
+  "encoder_parameters_after": "4305636db9cbf8521815ab904c8933b6eba594ea0d6be778adae8ce1497363f2",
+  "encoder_parameters_before": "4305636db9cbf8521815ab904c8933b6eba594ea0d6be778adae8ce1497363f2",
+  "expected_checkpoint_sha": "941ee94131d406de914a79aeda43e929c92727631263d85221615422146a32c9",
+  "formal_route_search": false,
+  "future_poison_pass": true,
+  "locked_test": false,
+  "model_parameters_after": "ce76385958659b9c5e9a43806e9e20f4a892a497a9beb94092e1ed872a88ef69",
+  "model_parameters_before": "ce76385958659b9c5e9a43806e9e20f4a892a497a9beb94092e1ed872a88ef69",
+  "normalization_sha": "1e86bbac6e6ee2d1f1d24e572c5433ed56b1e00c0423bd468fb5150378e6fed5",
+  "pre_route_anchor": {
+    "anchor": "c05f52cb3a3881672dfdcd674795385ec0658fa5d61dc15285a510940f15a62b",
+    "graph": "049fbb87e6b1ff66bd7e6ae72bd4c27e0f1a82bae3f1494b0a58b5452efe2a1b",
+    "latent": "600f7a656d7f3167d057a2c5283e43b39ca5409f11fee5062b7086739b5c10ed",
+    "state": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146",
+    "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+  },
+  "transitions": 8
+}
