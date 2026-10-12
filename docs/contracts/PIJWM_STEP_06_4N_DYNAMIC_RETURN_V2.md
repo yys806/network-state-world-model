@@ -12,7 +12,7 @@
 |---|---|---|
 | decision 前 | collector 回放旧因果前缀，capture Raw/History | 所有分支 seed/prefix/root/RNG 相同；尚无新 Flow |
 | callback setter | TaskScheduler 写 Return buffer；CommunicationScheduler 可预写 TaskID→RB | 对整份动作先检查 waiting bucket、FP64 exact completion、需求、实体/无线边、单跳、TRAIN RB 模式；通过后先 Route 再 RB；异常禁止 step/retry |
-| env.step task | generate/check → consume Return route → checkTasks | 只将 checkTasks 的 TTI getter 改为阶段活动时钟；Return 首次消费初始化；重复 Route 不重置 |
+| env.step task | generate/check → consume Return route → checkTasks | Return仅将 checkTasks 的 TTI getter 改为阶段活动时钟；Input仅正活动刷新原有Input clock；Return 首次消费初始化；重复 Route 不重置 |
 | env.step wireless | allocation 从 returning/offloading bucket 取任务，读取已写 RB → rate/outage → transfer | 不生成边、不改变 CSI、服务或随机数；只有正传输活动刷新阶段 clock；保留原 deadline/其他业务分支 |
 | next observation | real capture Task、Flow、transfer | Ledger 使用显式 Route/真实 transfer 更新；future outcome 仅作对照，不回灌预测 |
 
@@ -38,7 +38,7 @@
 |---|---|---|
 | AirFogSim | instance-scoped stage-aware TTI adapter；源码唯一getter调用点检查、temporary getter、context restore | 源文件/类方法无改变，退出恢复 |
 | Ledger | 官方 create_return_flow/apply_transfer_event | 不改旧 Ledger |
-| Candidate/bridge | 本轮已验证单Task Route+RB前置验证后提交；多Task四动作族联合批量事务尚未完整验收 | v1 NOOP/eligibility不改；v2 learned tensor以transmitting表示原始returning |
+| Candidate/bridge | DynamicCandidateDomainV2隔离声明域 + 四动作族整体校验/提交；复用Comp节点资源和Mob映射检查，当前returning独立资格检查 | v1 NOOP/eligibility不改；v2 learned tensor以transmitting表示原始returning |
 | state/graph/latent | action-trigger append + ZERO_COLD_START + rebuild | frozen weights/encoder 不改 |
 | scorer | DynamicScorerV2，版本化 Tx burden、TTI hard rejection | 旧 scorer 不改 |
 
@@ -56,10 +56,14 @@ Gate 1：四模式（legacy Route、v2 Route无RB、v2 Route+RB、v2 NOOP），�
 
 共同anchor先移除尾部未占用的Flow填充，不移动任何已知Flow/hidden，随后按官方Ledger连续index追加；旧Shadow的padding末端slot不直接作为正式业务index。所有候选共享这一步处理。birth的新Flow在当前one_step之前可见，新hidden为零；旧posterior与神经参数不变。
 
-当前真实harness只执行单Task Return Route/RB以及Comp NOOP/Mob HOLD。v2模型harness接受typed候选，但不是正式CandidateDomain/S-CEM；完整四族全局资源联合事务、当前已有returning实时bridge、Input无活动计时和长horizon终止封装需后续独立验收，未支持路径不能因此获得正式资格。实验配置manifest用于显式记录选定版本，默认正式v1不读取它。
+当前真实harness只执行单Task Return Route/RB以及Comp NOOP/Mob HOLD。v2模型harness接受typed候选，但不是正式CandidateDomain/S-CEM；四族联合校验、当前已有returning实时bridge、Input无活动计时及TTI终止返回已有CPU负例验收；真实四分支经联合入口执行，非空Comp/Mob联合资源有界测试，不冒充多任务正式搜索性能，未支持路径不能因此获得正式资格。实验配置manifest用于显式记录选定版本，默认正式v1不读取它。
 
 FP64 Raw需求为共同baseline；模型FP32剩余量以 `Raw需求 × (模型剩余/模型总量)` 转换为同单位比例，不让birth的dtype舍入产生奖励。负担降低须有v2 causal useful-progress事件和服务前Comm relation/RB绑定；完成后的relation可能清除，不能冒充之前没有服务。
 
 无线服务参数、有效Return交付、旧collector事件分别保存。旧collector事件在Task_5已证实错误地按Input task_size裁剪；不作为v2真实Return交付量。不改旧数据、模型checkpoint或normalization。
 
 CPU机制通过不建立预测可靠性；Task_5首隙饱和完成不能验证未完成传输。正式Route集成仍BLOCKED，RETRAIN_REQUIRED=NOT_ESTABLISHED。完整目标支持与正式搜索必须重新授权，6.4O和训练均不自动启动。
+
+## 联合入口补验（2026-10-12）
+
+`step6_4n_joint_bridge_v2.py` 中隔离声明域提供NOOP/Route无RB/显式TRAIN RB block三类控制，规则只验证调用者声明，不自动选择动作。全族检查完成后Route→RB→Comp→Mob提交，任一setter失败隔离环境并禁止step/retry；当前已有returning的只读桶检查不用原生有副作用getter。Input保持既有阶段起点，仅正传输刷新活动clock。预测TTI致命状态返回明确reason并停止neural递归，Scorer硬拒绝而非DDL失败，不填充假H4状态。真实联合入口复用先前仅含因果输入的common_anchor，并要求当前Raw全量fingerprint一致；不是通用live root构建或正式搜索绑定。

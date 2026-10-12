@@ -2699,6 +2699,7 @@
         "scripts.run_step6_4l_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v1",
         "scripts.run_step6_4l_r1_frozen_wm_scorer_v2",
+        "scripts.run_step6_4n_real_cpu_v2",
         "scripts.run_step6_4n_wm_cpu_v2",
         "scripts.step6_0a_candidate_contract_acceptance_v1",
         "scripts.step6_4i_live_planner_v1",
@@ -2712,6 +2713,7 @@
         "tests.test_step6_4e_fallback_v1",
         "tests.test_step6_4i_episode_v1",
         "tests.test_step6_4n_birth_v2",
+        "tests.test_step6_4n_joint_bridge_v2",
         "tests.test_step6_4n_scorer_v2"
       ],
       "imports": [
@@ -2732,6 +2734,7 @@
         "code/tests/test_step6_4e_fallback_v1.py",
         "code/tests/test_step6_4i_episode_v1.py",
         "code/tests/test_step6_4n_birth_v2.py",
+        "code/tests/test_step6_4n_joint_bridge_v2.py",
         "code/tests/test_step6_4n_scorer_v2.py"
       ]
     },
@@ -3452,6 +3455,23 @@
       "test_files": [
         "code/tests/test_step6_4n_birth_v2.py",
         "code/tests/test_step6_4n_scorer_v2.py"
+      ]
+    },
+    {
+      "category": "framework_source",
+      "evidence_role": "implementation",
+      "imported_by": [
+        "scripts.run_step6_4n_real_cpu_v2",
+        "tests.test_step6_4n_dynamic_return_v2",
+        "tests.test_step6_4n_joint_bridge_v2"
+      ],
+      "imports": [],
+      "lifecycle_status": "support",
+      "module": "pi_jwm.step6_4n_joint_bridge_v2",
+      "path": "code/src/pi_jwm/step6_4n_joint_bridge_v2.py",
+      "test_files": [
+        "code/tests/test_step6_4n_dynamic_return_v2.py",
+        "code/tests/test_step6_4n_joint_bridge_v2.py"
       ]
     },
     {
@@ -4658,7 +4678,8 @@
       ],
       "imports": [
         "pi_jwm.step6_1_trained_candidate_rollout_v1",
-        "scripts.audit_step6_4n_gate1_v2"
+        "scripts.audit_step6_4n_gate1_v2",
+        "scripts.run_step6_4n_real_cpu_v2"
       ],
       "lifecycle_status": "support",
       "module": "scripts.audit_step6_4n_acceptance_v2",
@@ -9371,10 +9392,14 @@
     {
       "category": "runnable_script",
       "evidence_role": "execution_entry",
-      "imported_by": [],
+      "imported_by": [
+        "scripts.audit_step6_4n_acceptance_v2"
+      ],
       "imports": [
         "pi_jwm.airfogsim_full_dual_graph_collector_v1",
         "pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1",
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_4n_joint_bridge_v2",
         "pi_jwm.step6_4n_runtime_v2",
         "scripts.collect_step5_5_formal_raw_v1",
         "scripts.run_step6_4l_r1_task5_runtime_trace_v1"
@@ -14037,11 +14062,25 @@
       "evidence_role": "test_evidence",
       "imported_by": [],
       "imports": [
+        "pi_jwm.step6_4n_joint_bridge_v2",
         "pi_jwm.step6_4n_runtime_v2"
       ],
       "lifecycle_status": "support",
       "module": "tests.test_step6_4n_dynamic_return_v2",
       "path": "code/tests/test_step6_4n_dynamic_return_v2.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.step6_0a_candidate_generation_v1",
+        "pi_jwm.step6_4n_joint_bridge_v2"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_step6_4n_joint_bridge_v2",
+      "path": "code/tests/test_step6_4n_joint_bridge_v2.py",
       "test_files": []
     },
     {

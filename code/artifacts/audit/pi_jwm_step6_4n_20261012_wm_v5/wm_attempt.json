@@ -1,0 +1,14 @@
+{
+  "CPU": true,
+  "H": 4,
+  "executed_source_sha256": {
+    "code\\scripts\\run_step6_4n_wm_cpu_v2.py": "e856070fc1df7644fc2072938f536bbb1dee2392296cc86c6638902fc0870869",
+    "code\\src\\pi_jwm\\step6_4k_return_shadow_v1.py": "225f79c6ff3a8029d4a9aea8c86673d505b41b603b209eca897daf59e6735e08",
+    "code\\src\\pi_jwm\\step6_4n_dynamic_v2.py": "155dc6027b68ae74a2b0a0956706261772d5dee2e677a8c4f4867cf66d62d5a7",
+    "code\\src\\pi_jwm\\step6_4n_rollout_v2.py": "0e689f71ced5ba9204023e3b6c3161d2ebfd98eae78bc0bb415f6c43301b0937"
+  },
+  "initialization": "ZERO_COLD_START",
+  "locked_test": false,
+  "max_transitions": 8,
+  "root_count": 1
+}

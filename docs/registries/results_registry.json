@@ -351,7 +351,7 @@
   },
   "step6_4n_dynamic_return_v2": {
     "experiment_id": "STEP-6.4N-DYNAMIC-RETURN-V2-20261012",
-    "acceptance": "code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v4/acceptance_v2.json",
+    "acceptance": "code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v5/acceptance_v2.json",
     "states": {
       "RETURN_TTI_V2_REAL_SIM_PASS": "PASS",
       "SAME_SLOT_ROUTE_COMM_EXECUTION": "PASS",

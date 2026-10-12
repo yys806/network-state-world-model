@@ -1,4 +1,4 @@
-<!-- STEP6.4N V2 CURRENT -->
+<!-- STEP6.4N V2 HISTORICAL BEFORE JOINT CLOSURE -->
 ## 2026-10-12 STEP 6.4N — 隔离动态 Return CPU 机制
 
 研究者本轮明确授权阶段独立Return TTI、同隙Route+Comm、冻结模型动态Flow adapter和共同pre-Route Return需求Scorer v2，仅隔离CPU实验。未批准正式v1 Route搜索、重训、GPU或6.4O。

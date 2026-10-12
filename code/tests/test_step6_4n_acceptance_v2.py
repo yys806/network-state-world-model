@@ -9,7 +9,8 @@ class IndependentAcceptanceTests(unittest.TestCase):
         for kind in ('score','recursive'):
             with self.subTest(kind=kind),tempfile.TemporaryDirectory() as directory:
                 target=Path(directory)/'wm';target.mkdir()
-                for p in audit.WM.glob('*.json'):shutil.copy2(p,target/p.name)
+                for p in audit.WM.iterdir():
+                    if p.is_file() and p.suffix in ('.json','.pt'):shutil.copy2(p,target/p.name)
                 path=target/('scorer_result.json' if kind=='score' else 'B_ROUTE_RB_wm.json')
                 j=json.loads(path.read_text(encoding='utf8'))
                 if kind=='score':j['scores'][0]['objective'][3]=99.

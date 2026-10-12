@@ -1,4 +1,10 @@
-<!-- STEP6.4N V2 CURRENT -->
+
+<!-- STEP6.4N JOINT CLOSURE -->
+## 2026-10-12 — STEP 6.4N 联合入口补验完成
+
+补齐隔离 DynamicCandidateDomainV2、Route/Comm/Comp/Mob 整体校验和真实提交、已有 returning 合法资格、Input 零服务活动clock及预测TTI终止返回/硬拒绝。32项v2测试、61项旧v1回归和Gate1–3独立重建PASS。当前最终真实证据为 `code/artifacts/audit/pi_jwm_step6_4n_20261012_v10/`，冻结模型为 `code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v5/`；较早v5/wm_v4保留为历史。单真实Root/H≤4；参数不变。正式v1仍EXPLICIT_NOOP_ONLY；预测可靠性/重训必要性NOT_ESTABLISHED、正式集成BLOCKED。未用GPU/locked_test/训练/正式搜索/6.4O。下一动作仅研究者审阅本Step。
+
+<!-- STEP6.4N V2 HISTORICAL BEFORE JOINT CLOSURE -->
 ## 2026-10-12 STEP 6.4N — 隔离动态 Return CPU 机制
 
 STEP 6.4N 的隔离 opt-in v2 CPU 机制已实现：Return 独立活动时钟、真实同隙 Route+RB、首步动作触发官方 Ledger Flow birth、共同 anchor 动态 slot/Graph/zero hidden、冻结 WM H1–H4 和 DynamicScorerV2。正式 v1 Route=EXPLICIT_NOOP_ONLY、旧 Scorer/Grammar/Domain/bridge、checkpoint 与 normalization 保持不变。Task_5 同根四分支 Gate 1 和双候选 Gate 2/3 通过；只是一条真实 root 的机制证据。预测可靠性 NOT_ESTABLISHED，正式 Route 集成 BLOCKED，是否需要重训 NOT_ESTABLISHED。GPU/训练/B512/正式S-CEM/baseline/locked_test/6.4O 均未启动。

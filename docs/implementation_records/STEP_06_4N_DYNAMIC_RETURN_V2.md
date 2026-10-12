@@ -10,23 +10,23 @@
 
 ## Files Involved / Changes / Reuse
 
-- `code/src/pi_jwm/step6_4n_runtime_v2.py`：instance-scoped Return 时钟、native Task 传输旁路、joint setter 前置检查/写回核验/部分失败隔离。Input、deadline、TTI 阈值与真实 radio 规则不变。
+- `code/src/pi_jwm/step6_4n_runtime_v2.py`：instance-scoped Return 时钟、native Task 传输旁路、joint setter 前置检查/写回核验/部分失败隔离。旧Input兼容行为、deadline、TTI 阈值与真实 radio 规则不变；新opt-in Input活动clock由联合adapter实现。
 - `code/src/pi_jwm/step6_4n_dynamic_v2.py`：共同 anchor 去尾部无主填充、append Flow、DynamicScorerV2。
 - `code/src/pi_jwm/step6_4n_rollout_v2.py`：官方 Ledger snapshot/Route action birth、ID→index、Graph/hidden 同步、当步进入冻结 one_step、递归与阶段 clock。
 - `code/scripts/run_step6_4n_real_cpu_v2.py`、`run_step6_4n_wm_cpu_v2.py`：真实/模型有界实验。
 - `code/scripts/audit_step6_4n_gate1_v2.py`、`audit_step6_4n_acceptance_v2.py`：独立原始落盘重建和评分重算，无模型选择或搜索。
-- `code/tests/test_step6_4n_*.py`：23项机制/负例测试。
+- `code/tests/test_step6_4n_*.py`：32项机制/负例测试。
 - `code/artifacts/manifests/pi_jwm_step6_4n_v2_20261012/config.json`：版本显式 opt-in。
 
 复用官方 CausalFlowLedger、真实 AirFogSim setters/step、冻结 live history builder、Graph rebuild、ZERO_COLD_START append helper、冻结 one_step、v1 effort 公式；未修改上述 v1 文件。
 
 ## Validation (actual commands / outputs)
 
-1. `D:/miniconda/envs/airfogsim/python.exe code/scripts/run_step6_4n_real_cpu_v2.py --mode <mode>`：四模式均 COMPLETED/各4步，最后 source-bound namespace=code/artifacts/audit/pi_jwm_step6_4n_20261012_v5。
-2. `python code/scripts/audit_step6_4n_gate1_v2.py`：9项 PASS；相同 prefix/current/RNG/time。
-3. `python code/scripts/run_step6_4n_wm_cpu_v2.py`：两个候选各 H4，8 transitions；原参数 SHA 不变、Future poison PASS；source-bound namespace=code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v4。
+1. `D:/miniconda/envs/airfogsim/python.exe code/scripts/run_step6_4n_real_cpu_v2.py --mode <mode>`：四模式均 COMPLETED/各4步，最后 source-bound namespace=code/artifacts/audit/pi_jwm_step6_4n_20261012_v10。
+2. `python code/scripts/audit_step6_4n_gate1_v2.py`：10项 PASS；相同 prefix/current/RNG/time。
+3. `python code/scripts/run_step6_4n_wm_cpu_v2.py`：两个候选各 H4，8 transitions；原参数 SHA 不变、Future poison PASS；source-bound namespace=code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v5。
 4. `python code/scripts/audit_step6_4n_acceptance_v2.py`：Gate 1/2/3 独立重建 PASS，原始逐 Task/Horizon 评分独立重算一致。
-5. `python -m unittest discover -s code/tests -p 'test_step6_4n_*.py' -v`：23项通过。真实 TaskManager 测试使用 airfogsim 环境及 PYTHONUTF8=1。
+5. `python -m unittest discover -s code/tests -p 'test_step6_4n_*.py' -v`：32项通过。真实 TaskManager 测试使用 airfogsim 环境及 PYTHONUTF8=1。
 6. v1 focused regression：`test_step6_2b_planner_objective_scorer_v1 test_step6_4f_comm_eligibility_v1 test_step6_3b_candidate_grammar_v1 test_step6_1_trained_candidate_rollout_v1 test_step6_4m_route_comm_flow_contract_v1 test_step6_4k_return_shadow_v1 test_step6_4b_live_bridge_v1`：61项通过。
 7. compileall、知识索引 build/--check、diff 与 Context Consistency Check 在收口时执行；实际结果见最终 verification manifest。
 
@@ -40,7 +40,7 @@ STEP 6.4N 的隔离 opt-in v2 CPU 机制已实现：Return 独立活动时钟、
 
 ## Known Issues / Status
 
-本轮保留修复失败证据，未覆盖namespace：v1执行前RB检查失败；v2/v3真实step后的Shadow/collector schema冲突；WM v2缺wired配置；WM v3完成后relation清除触发Scorer拒绝。最终source-bound v5=16真实诊断步、WM v4=8转移；本轮累计50真实诊断步及24模型转移，始终同一指定Root/H≤4/两个固定模型候选，无搜索扩容或按未来结果选样。两项独立验收负例能拒绝score/fingerprint篡改与receipt缺失。
+本轮保留修复失败证据，未覆盖namespace：v1执行前RB检查失败；v2/v3真实step后的Shadow/collector schema冲突；WM v2缺wired配置；WM v3完成后relation清除触发Scorer拒绝。最终source-bound v10=16真实诊断步、WM v5=8转移；本轮累计118真实诊断步及32模型转移，始终同一指定Root/H≤4/两个固定模型候选，无搜索扩容或按未来结果选样。两项独立验收负例能拒绝score/fingerprint篡改与receipt缺失。
 
 delivery_manifest保存82份实际AirFogSim Python/许可/依赖源文件ZIP与逐SHA、SUMO静态输入SHA。reference目录无独立Git元数据，不虚称上游commit；v2来自版本管理内adapter，未改AirFogSim源文件，完整运行依赖仍需安装。
 
@@ -58,14 +58,24 @@ delivery_manifest保存82份实际AirFogSim Python/许可/依赖源文件ZIP与�
 
 预测剩余量/完成事件在本 Task_5 H1–H4 对齐，不能证明 learned CSI 准确；第一隙小需求已饱和，错误速率也可能给相同完成结果。误差报告单独记录CSI/速率差和任务规则误差。最多2 Root是上限而非必须数量；Task_5已完成合法传输，故未根据结果另挑Root。
 
-当前 v2 harness 候选为Route NOOP与Task_5 Return+RB0，并非可替代完整正式 CandidateDomain 的搜索域。完整 Route+Comm+Comp+Mob 批量联合资源 prevalidation / pre-existing returning实时bridge / 输入阶段零服务活动clock / 长 horizon 终止封装 尚未建立正式验收；部分setter失败会隔离并禁止step/retry。H≤4本root不会触发新Return TTI，但规则测试覆盖阈值前后与服务刷新。正式集成 readiness=BLOCKED，不能给出“不需重训”。Input优化/future birth/多跳/reroute/Epoch变化仍fail closed。
+当前 v2 harness 候选为Route NOOP与Task_5 Return+RB0，并非可替代完整正式 CandidateDomain 的搜索域。隔离 DynamicCandidateDomainV2 / 四族联合 prevalidation / pre-existing returning实时bridge / Input无活动计时 / 预测TTI终止返回已补齐并经CPU负例验收；正式搜索接入仍不在本轮范围；部分setter失败会隔离并禁止step/retry。H≤4本root不会触发新Return TTI，但规则测试覆盖阈值前后与服务刷新。正式集成 readiness=BLOCKED，不能给出“不需重训”。Input优化/future birth/多跳/reroute/Epoch变化仍fail closed。
 
 ## Minimum Formal Integration Changes / Historical Revalidation Scope
 
-1. 把v2动态对象映射、当前returning资格和批量联合资源事务接入版本化 CandidateDomain/Grammar/live bridge；先做CPU零副作用与所有setter失败门。
+1. 经研究者批准后，将已验证隔离 DynamicCandidateDomainV2、联合bridge和动态映射接入正式版本化搜索；重新核验多候选/多任务搜索序列的资源和失败边界。
 2. 预注册最多第二Root/未饱和服务条件，核验冻结模型CSI→速率→有效进展误差，研究者据证据决定是否重训；不可按未来成功结果选Root。
 3. 历史6.4F–J以Route NOOP/fixed-support/v1评分为界保留，不删除；新Domain/Scorer会改变支持和排序，不能沿用6.4G方法选法、6.4H预算资格或6.4J性能身份。若正式集成获授权，至少重新核验支持catalog/候选域、搜索选法/预算、fallback、closed-loop协议、日志验收与指标分母。
 
 ## Context Consistency Check / Git / Next Step
 
 AI_CONTEXT 00/02/03/04/05/06/07/08 增量同步，仅06记录研究者在本轮明确授权的v2研究方案；主文档、计划表、推进、tracker、索引和registry同步。Git commit/push见最终完成报告；未纳入无关未跟踪文件。唯一建议下一动作：研究者审阅预测可靠性未建立与正式集成缺口。完成本Step后停止，不启用正式Route搜索/6.4O/训练。
+
+## 联合入口补验与独立验收补充
+
+新增 `step6_4n_joint_bridge_v2.py`、`test_step6_4n_joint_bridge_v2.py`；真实全部v2分支首动作和后续HOLD经过整体入口，无规则动作选择。当前已有returning桶检查严格只读，避免原生getter的list.extend副作用。非空Comp/Mob与已有Return联合资格、CPU超额、四setter分别部分失败由focused tests通过；真实Task5运行Comp为NOOP、Mob为HOLD，不能扩展成真实多任务执行结论。Input原生TaskManager零活动不刷新及正活动刷新验证通过。TTI terminal返回明确失败reason，停止neural递归并由Scorer硬拒绝，不填充未来状态。
+
+本次续做保留v6=4、v7=16、v8=16、v9=16、v10=16真实诊断步，共68新增真实步；加前序50，共118。新增冻结WM为8转移，加前序24，共32。全部同一预指定Root，没有第二Root、搜索或训练。
+
+独立验收通过：10项Gate1、Gate2/Gate3原始重建；32项v2/61项v1；compileall。Context检查覆盖当前状态、研究上下文、架构、数据流、模块、实验、研究者决定、已知问题、变更；01研究动机和06研究者决定无新增科学变化。正式live fresh-root通用构建与搜索绑定仍需下一阶段独立批准。参数SHA与误差见wm_v5原始证据。
+
+最终真实namespace=v10；WM保持source-bound wm_v5（因果输入来自v9）。独立验收逐步核对v9与v10的before/after/time/transfers/native_transfers/Ledger/Raw/buckets完全相同，并核对保存anchor与最终真实root一致；因此仅桥的资格与写回保护补验无需重复neural计算。checkpoint和normalization文件SHA也由独立验收重读核对。v9已保留，不替换原始source receipt。当前正式接入阻塞来自预测可信度未建立及正式搜索绑定未授权，而非本轮联合入口工程缺失。

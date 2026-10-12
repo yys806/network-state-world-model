@@ -47,6 +47,22 @@ class DynamicBirthTests(unittest.TestCase):
         self.assertEqual(advance_stage_clock(clock=1.,tick_time=1.5,useful_progress=.01,unfinished=True,next_check_time=1.6,threshold=.5),(1.5,None))
         self.assertEqual(advance_stage_clock(clock=1.,tick_time=1.6,useful_progress=.01,unfinished=True,next_check_time=1.7,threshold=.5),(1.,'TASK_FAIL_OUT_OF_TTI'))
 
+    def test_tti_terminal_is_returned_and_hard_rejected_without_future_truth(self):
+        from pi_jwm.step6_4n_dynamic_v2 import DynamicScorerV2
+        c=torch.load(ART/'B_ROUTE_RB_trace.pt',weights_only=False)['candidate']
+        first=replace(c.steps[0],comm=())
+        c=replace(c,steps=(first,)+c.steps[1:],candidate_id='NO_SERVICE_TTI')
+        ctx=PlannerCandidateContext.from_sample(self.a['sample'],self.s,'test')
+        anchor=SimpleNamespace(state=self.s,graph=self.g,latent=self.l,context=ctx,fingerprints=self.a['fingerprints'])
+        with torch.no_grad():
+            tr,meta=rollout_dynamic_v2(self.model,anchor,c,current_raw=self.a['current'],ledger_snapshot=self.a['snapshot'],
+                catalog=SimpleNamespace(comm_start_width_pairs={(0,1)}),tti_threshold=.05)
+        self.assertEqual(len(tr.states),1)
+        self.assertEqual(meta['tti_failure']['reason'],'TASK_FAIL_OUT_OF_TTI')
+        result=DynamicScorerV2(self.s,self.a['side'],self.a['current'],slot_duration_s=.1).score_set([(c,tr,meta)])
+        self.assertEqual(result['status'],'OBJECTIVE_UNSCOREABLE_ALL_REJECTED')
+        self.assertEqual(result['rejections']['NO_SERVICE_TTI']['terminal'],'TTI_FAILED')
+
     def test_unsupported_route_and_poison_stop_before_neural_transition(self):
         c=torch.load(ART/'B_ROUTE_RB_trace.pt',weights_only=False)['candidate']
         ctx=PlannerCandidateContext.from_sample(self.a['sample'],self.s,'test')

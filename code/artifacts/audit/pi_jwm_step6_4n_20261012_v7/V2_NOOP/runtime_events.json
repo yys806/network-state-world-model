@@ -1,0 +1,562 @@
+[
+  {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "event": "_updateTask.before",
+    "route_table": {},
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 1.8
+  },
+  {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "event": "_updateTask.after",
+    "route_table": {},
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 1.8
+  },
+  {
+    "activated_request": {},
+    "event": "_updateWirelessCommunication.before",
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 1.8
+  },
+  {
+    "activated": {},
+    "event": "_allocate_communication_RBs",
+    "requested": {},
+    "time": 1.8
+  },
+  {
+    "event": "_updateWirelessCommunication.after",
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 1.8,
+    "transfer_events": 1
+  },
+  {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "event": "_updateTask.before",
+    "route_table": {},
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 1.9
+  },
+  {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "event": "_updateTask.after",
+    "route_table": {},
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 1.9
+  },
+  {
+    "activated_request": {},
+    "event": "_updateWirelessCommunication.before",
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 1.9
+  },
+  {
+    "activated": {},
+    "event": "_allocate_communication_RBs",
+    "requested": {},
+    "time": 1.9
+  },
+  {
+    "event": "_updateWirelessCommunication.after",
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 1.9,
+    "transfer_events": 1
+  },
+  {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "event": "_updateTask.before",
+    "route_table": {},
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 2.0
+  },
+  {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "event": "_updateTask.after",
+    "route_table": {},
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 2.0
+  },
+  {
+    "activated_request": {},
+    "event": "_updateWirelessCommunication.before",
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 2.0
+  },
+  {
+    "activated": {},
+    "event": "_allocate_communication_RBs",
+    "requested": {},
+    "time": 2.0
+  },
+  {
+    "event": "_updateWirelessCommunication.after",
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 2.0,
+    "transfer_events": 1
+  },
+  {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "event": "_updateTask.before",
+    "route_table": {},
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 2.1
+  },
+  {
+    "buckets": {
+      "_computing_tasks": [],
+      "_done_tasks": [],
+      "_offloading_tasks": [],
+      "_out_of_ddl_tasks": [],
+      "_returning_tasks": [],
+      "_waiting_to_return_tasks": [
+        {
+          "node_id": "UAV_0",
+          "task_id": "Task_5"
+        }
+      ]
+    },
+    "event": "_updateTask.after",
+    "route_table": {},
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 2.1
+  },
+  {
+    "activated_request": {},
+    "event": "_updateWirelessCommunication.before",
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 2.1
+  },
+  {
+    "activated": {},
+    "event": "_allocate_communication_RBs",
+    "requested": {},
+    "time": 2.1
+  },
+  {
+    "event": "_updateWirelessCommunication.after",
+    "task": {
+      "arrival_time": 0.6,
+      "assigned_to": "UAV_0",
+      "current_node_id": "UAV_0",
+      "failure_reason": "Unknown code.",
+      "failure_reason_code": -1,
+      "last_return_time": -1,
+      "last_transmission_time": 1.2,
+      "lifecycle_flags": {
+        "computed": true,
+        "finished": false,
+        "returning": true,
+        "transmitting": true
+      },
+      "required_returned_size": 0.07610754782944204,
+      "return_destination": "UAV_1",
+      "route_remaining": [],
+      "task_deadline": 8.59828601164002,
+      "task_id": "Task_5",
+      "task_node_id": "UAV_1",
+      "transmitted_size": 0
+    },
+    "time": 2.1,
+    "transfer_events": 1
+  }
+]

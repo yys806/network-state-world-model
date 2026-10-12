@@ -8,7 +8,7 @@ sys.path[:0]=[str(ROOT/'code/src'),str(ROOT/'code/scripts'),str(ROOT/'code/refer
 os.environ['CUDA_VISIBLE_DEVICES']=''
 os.environ['PYTHONUTF8']='1'
 if hasattr(sys.stdout,'reconfigure'): sys.stdout.reconfigure(encoding='utf8',errors='replace')
-OUT=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_v5'
+OUT=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_v10'
 MODES=('LEGACY_ROUTE','V2_ROUTE_NO_RB','V2_ROUTE_RB','V2_NOOP')
 
 def atomic(p,v):
@@ -28,6 +28,10 @@ def main(mode):
     import collect_step5_5_formal_raw_v1 as c
     from run_step6_4l_r1_task5_runtime_trace_v1 import task5, task_snapshot, bucket_ids, install_trace_wrappers
     from pi_jwm.step6_4n_runtime_v2 import stage_aware_return_tti, validate_joint_return, commit_joint_return
+    from pi_jwm.step6_4n_joint_bridge_v2 import stage_aware_input_return_tti_v2,validate_joint_commands_v2,apply_joint_commands_v2,DynamicCandidateDomainV2
+    from pi_jwm.step6_0a_candidate_generation_v1 import CandidateActionStep,PlannerCandidateContext
+    from types import SimpleNamespace
+    import torch
     from pi_jwm.airfogsim_full_dual_graph_collector_v1 import _install_lifecycle_alias_guard
     from pi_jwm.step4_2c_b_causal_flow_ledger_raw_v1 import CausalFlowLedger
     case=OUT/mode
@@ -36,7 +40,7 @@ def main(mode):
     start=time.perf_counter(); receipt={'mode':mode,'status':'STARTED','GPU':False,'locked_test':False,
         'simulator_seed':2026092318,'policy_seed':2026092418,'target_frame':6,'diagnostic_steps':0,
         'prefix_replay_steps':0,'schema':'STEP6.4N-REAL-V2','events':[]}
-    receipt['executed_source_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (Path(__file__),ROOT/'code/src/pi_jwm/step6_4n_runtime_v2.py')}
+    receipt['executed_source_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (Path(__file__),ROOT/'code/src/pi_jwm/step6_4n_runtime_v2.py',ROOT/'code/src/pi_jwm/step6_4n_joint_bridge_v2.py')}
     atomic(case/'00_start.json',receipt)
     def hook(env,decisions,steps,config,communication):
         if time.perf_counter()-start>180: raise TimeoutError('ROOT_CPU_TIMEOUT')
@@ -67,12 +71,30 @@ def main(mode):
         receipt['prefix_replay_steps']=len(steps)
         install_trace_wrappers(env,receipt['events'])
         ledger=CausalFlowLedger()
-        with stage_aware_return_tti(env.task_manager) if mode!='LEGACY_ROUTE' else nullcontext({}) as clocks:
-            if mode=='V2_ROUTE_RB':
-                setter=commit_joint_return(env,'Task_5',route,[0],c.step23.TaskScheduler.setTaskReturnRoute,communication.setCommunicationWithRB)
-            elif mode!='V2_NOOP':
+        with stage_aware_input_return_tti_v2(env.task_manager) if mode!='LEGACY_ROUTE' else nullcontext({}) as clocks:
+            if mode!='LEGACY_ROUTE':
+                # Reuse only the independently saved causal common anchor.
+                # Exact current Raw fingerprint is required before any setter.
+                saved=torch.load(ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v4/common_anchor.pt',weights_only=False)
+                if digest(saved['current'])!=digest(current):raise ValueError('JOINT_CAUSAL_ANCHOR_MISMATCH')
+                ctx=PlannerCandidateContext.from_sample(saved['sample'],saved['state'],'Task5-joint-v2')
+                ix=ctx.static['input_entity_index'];ti=ix['task']['Task_5'];dst=ix['physical']['UAV_1']
+                routes=() if mode=='V2_NOOP' else ({'task_id':'Task_5','task_index':ti,'route_kind':'return','route_node_ids':route,'route_node_indices':[dst]},)
+                comm=({'task_id':'Task_5','task_index':ti,'relation_index':38,'rb_indices':[0]},) if mode=='V2_ROUTE_RB' else ()
+                # Mob HOLD is an explicit declared action, not chosen by rules.
+                mob=tuple({'uav_index':ix['physical'][str(uid)],'azimuth_rad':float(info.get('angle',0.)),
+                    'elevation_rad':float(info.get('phi',0.)),'speed_mps':0.}
+                    for uid,info in env.traffic_manager.getUAVTrafficInfos().items())
+                declared=CandidateActionStep(route=routes,comm=comm,mob=mob)
+                domain=DynamicCandidateDomainV2(env,ctx,current,c.step23._all_runtime_tasks(env),
+                    SimpleNamespace(comm_start_width_pairs={(int(x['start']),int(x['width'])) for x in catalog['comm_start_width_pairs']}))
+                commands=domain.validate(declared)
+                from airfogsim.scheduler.computation_sched import ComputationScheduler
+                setter=apply_joint_commands_v2(env,commands,route_scheduler=c.step23.TaskScheduler,
+                    communication=communication,computation=ComputationScheduler,traffic=c.step23.TrafficScheduler)
+                setter.update(commands=commands,declared_action=declared.frame())
+            else:
                 c.step23.TaskScheduler.setTaskReturnRoute(env,'Task_5',route); setter={'route':route,'rb_indices':[]}
-            else:setter={'route':[],'rb_indices':[]}
             if mode!='V2_NOOP':
                 fid=ledger.create_return_flow(raw,logical_destination=route[-1],total_data=float(raw['required_returned_size']),route=route,
                     logical_destination_source='v2_current_task_return_destination',
@@ -83,13 +105,20 @@ def main(mode):
             try:
                 for h in range(1,5):
                     if time.perf_counter()-start>180:raise TimeoutError('ROOT_CPU_TIMEOUT')
-                    if h>1 and mode=='V2_ROUTE_RB' and any(str(x.getTaskId())=='Task_5' for xs in env.task_manager._returning_tasks.values() for x in xs):
-                        communication.setCommunicationWithRB(env,'Task_5',[0])
                     # Identical Comp NOOP/Mob HOLD in all four branches.
-                    c.step23._install_cpu_callback(env,{})
                     patterns={str(uid):{'angle':float(info.get('angle',0.)),'phi':float(info.get('phi',0.)),'speed':0.}
                               for uid,info in env.traffic_manager.getUAVTrafficInfos().items()}
-                    c.step23.TrafficScheduler.setUAVMobilityPatterns(env,patterns)
+                    if mode=='LEGACY_ROUTE':
+                        c.step23._install_cpu_callback(env,{})
+                        c.step23.TrafficScheduler.setUAVMobilityPatterns(env,patterns)
+                    elif h>1:
+                        # Later fixed controls are freshly validated; no stale
+                        # Return/RB command or automatic Route policy is reused.
+                        control=CandidateActionStep(mob=mob)
+                        control_commands=validate_joint_commands_v2(env,control,ctx,obs,c.step23._all_runtime_tasks(env),
+                            SimpleNamespace(comm_start_width_pairs={(0,1)}))
+                        apply_joint_commands_v2(env,control_commands,route_scheduler=c.step23.TaskScheduler,
+                            communication=communication,computation=ComputationScheduler,traffic=c.step23.TrafficScheduler)
                     event_start=len(env.pi_jwm_transfer_events)
                     native_start=len(clocks.get('transmission_events',[]))
                     before=task_snapshot(t); env.step(); receipt['diagnostic_steps']+=1

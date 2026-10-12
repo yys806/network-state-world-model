@@ -117,7 +117,7 @@ class DynamicScorerV2:
         from .step4_2c_c_flow_sample_tensor_v1 import FLOW_TYPE_VOCAB
         if not pairs:return {'status':'OBJECTIVE_UNSCOREABLE_EMPTY_SET','H_eff':0,'scores':[],'rejections':{}}
         horizon=pairs[0][0].horizon
-        if any(c.horizon!=horizon or len(tr.states)!=horizon for c,tr,meta in pairs):raise ValueError('COMMON_HORIZON_REQUIRED')
+        if any(c.horizon!=horizon or (len(tr.states)!=horizon and not meta.get('tti_failure')) for c,tr,meta in pairs):raise ValueError('COMMON_HORIZON_REQUIRED')
         if len({c.fingerprint for c,tr,m in pairs})!=len(pairs):raise ValueError('DUPLICATE_CANDIDATE')
         support={};reject={}
         for c,tr,meta in pairs:

@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'code/artifacts/audit/pi_jwm_step6_4n_20261012_v5'
+OUT = ROOT / 'code/artifacts/audit/pi_jwm_step6_4n_20261012_v10'
 MODES = ('LEGACY_ROUTE', 'V2_ROUTE_NO_RB', 'V2_ROUTE_RB', 'V2_NOOP')
 
 def audit(path=OUT):
@@ -17,6 +17,7 @@ def audit(path=OUT):
     flow = rb['ledger']['logical_flow_rows'][0]
     allocation = [e for e in receipts['V2_ROUTE_RB']['events'] if e['event']=='_allocate_communication_RBs']
     checks = {
+        'whole_decision_validated_before_setters':all(json.loads((path/m/'03_action.json').read_text(encoding='utf8'))['setter']['commands']['joint_validation_before_any_setter'] is True for m in MODES if m!='LEGACY_ROUTE'),
         'paired_pre_route_prefix_state_rng':same,
         'bounded_cpu':all(r['status']=='COMPLETED' and r['diagnostic_steps']==4 and not r['GPU'] and not r['locked_test'] for r in receipts.values()),
         'legacy_tti_failure':rows['LEGACY_ROUTE'][0]['after']['failure_reason_code']==1,

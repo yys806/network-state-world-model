@@ -1,0 +1,18 @@
+{
+  "GPU": false,
+  "diagnostic_steps": 0,
+  "events": [],
+  "executed_source_sha256": {
+    "code\\scripts\\run_step6_4n_real_cpu_v2.py": "a130b5076f5336ffa49d98343f26062ba355ddc7404f9e53e680af75138d166f",
+    "code\\src\\pi_jwm\\step6_4n_joint_bridge_v2.py": "1ec594179fb19f7e7b1b6695c25d1d9a279edb773dc21488e8088092807407ea",
+    "code\\src\\pi_jwm\\step6_4n_runtime_v2.py": "f443aee0ef22ec3512c1b04a5eebe096f3f9ed56adb742a5ec37abb75b5fa874"
+  },
+  "locked_test": false,
+  "mode": "V2_ROUTE_RB",
+  "policy_seed": 2026092418,
+  "prefix_replay_steps": 0,
+  "schema": "STEP6.4N-REAL-V2",
+  "simulator_seed": 2026092318,
+  "status": "STARTED",
+  "target_frame": 6
+}

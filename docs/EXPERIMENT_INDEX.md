@@ -1,3 +1,5 @@
+> 2026-10-12 STEP6.4N 最终入口：隔离联合Domain/bridge、Input/Return活动clock、动态Flow/frozen H4和Scorer v2 CPU验收见 [实施记录](implementation_records/STEP_06_4N_DYNAMIC_RETURN_V2.md)。最终真实v10/模型wm_v5；32项v2/61项v1 PASS。正式Route仍禁用，预测可靠性及重训必要性NOT_ESTABLISHED；未使用GPU/locked_test。
+
 <!-- STEP6.4N V2 CURRENT -->
 ## 2026-10-12 STEP 6.4N — 隔离动态 Return CPU 证据
 

@@ -8,8 +8,8 @@ from pathlib import Path
 from dataclasses import replace,asdict
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/'code/src'),str(ROOT/'code/scripts')]
-IN=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_v5'
-OUT=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v4'
+IN=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_v9'
+OUT=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v5'
 
 def atomic(p,value):
     tmp=p.with_suffix(p.suffix+'.tmp');tmp.write_text(json.dumps(value,ensure_ascii=False,sort_keys=True,indent=2,default=str)+'\n',encoding='utf8');tmp.replace(p)

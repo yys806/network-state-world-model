@@ -1,3 +1,9 @@
+
+<!-- STEP6.4N JOINT CLOSURE -->
+## 2026-10-12 — STEP 6.4N 联合入口补验完成
+
+补齐隔离 DynamicCandidateDomainV2、Route/Comm/Comp/Mob 整体校验和真实提交、已有 returning 合法资格、Input 零服务活动clock及预测TTI终止返回/硬拒绝。32项v2测试、61项旧v1回归和Gate1–3独立重建PASS。当前最终真实证据为 `code/artifacts/audit/pi_jwm_step6_4n_20261012_v10/`，冻结模型为 `code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v5/`；较早v5/wm_v4保留为历史。单真实Root/H≤4；参数不变。正式v1仍EXPLICIT_NOOP_ONLY；预测可靠性/重训必要性NOT_ESTABLISHED、正式集成BLOCKED。未用GPU/locked_test/训练/正式搜索/6.4O。下一动作仅研究者审阅本Step。
+
 <!-- STEP6.4N V2 CURRENT -->
 ## 2026-10-12 STEP 6.4N — 隔离动态 Return CPU 机制
 

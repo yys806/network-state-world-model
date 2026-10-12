@@ -2,6 +2,26 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-STEP6.4N-DYNAMIC-RETURN-V2",
+      "keywords": [
+        "6.4N",
+        "Return TTI",
+        "dynamic Flow",
+        "DynamicScorerV2",
+        "same slot Route Comm"
+      ],
+      "title": "STEP6.4N opt-in CPU mechanism and prediction boundary",
+      "summary": "32 v2 tests/61 legacy tests and Gate1–3 pass; prediction reliability unestablished; formal Route disabled",
+      "primary_sources": [
+        "docs/implementation_records/STEP_06_4N_DYNAMIC_RETURN_V2.md",
+        "docs/contracts/PIJWM_STEP_06_4N_DYNAMIC_RETURN_V2.md"
+      ],
+      "verification_sources": [
+        "code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v5/acceptance_v2.json",
+        "code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v5/prediction_error.json"
+      ]
+    },
+    {
       "id": "ROUTE-STEP6.4I-CLOSED-LOOP-PREPARATION",
       "keywords": [
         "6.4I",

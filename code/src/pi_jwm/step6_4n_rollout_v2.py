@@ -48,7 +48,7 @@ def rollout_dynamic_v2(model,anchor,candidate,*,current_raw,ledger_snapshot,cata
     now=float(current_raw['simulation_time_s'])
     pre=fingerprint(s)
     for h,step in enumerate(candidate.steps):
-        if failure:raise ValueError('TERMINAL_TTI_CANDIDATE_NO_FURTHER_STEP')
+        if failure:break  # explicit terminal rejection, no retry or neural step
         incoming={'state':fingerprint(s),'graph':fingerprint(g),'latent':fingerprint(l)}
         route_effect=[]
         for row in step.route:
@@ -76,7 +76,8 @@ def rollout_dynamic_v2(model,anchor,candidate,*,current_raw,ledger_snapshot,cata
             ti=int(taskmap[tid]);slot=int(s['return_flow_index'][0,ti])
             if bool(s['flow_presence'][0,slot]) and now+h*slot_duration_s-clock>tti_threshold:
                 failure={'task_id':tid,'horizon':h+1,'reason':'TASK_FAIL_OUT_OF_TTI','clock':clock,'check_time':now+h*slot_duration_s}
-                raise ValueError('HARD_REJECT_TTI_BEFORE_SERVICE')
+                break
+        if failure:break
         seen=set()
         for row in step.comm:
             tid=str(row['task_id']);ti=int(row['task_index']);ri=int(row['relation_index'])

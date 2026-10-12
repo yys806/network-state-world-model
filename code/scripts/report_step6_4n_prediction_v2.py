@@ -3,8 +3,8 @@ import json,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/'code/src'),str(ROOT/'code/scripts')]
-REAL=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_v5'
-WM=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v4'
+REAL=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_v10'
+WM=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v5'
 def main():
  import torch
  results={};task_errors=[]

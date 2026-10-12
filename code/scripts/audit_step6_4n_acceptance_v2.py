@@ -1,10 +1,13 @@
 """Independent Gate 1-3 acceptance; reads only saved evidence."""
 import json,hashlib
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[2]; G1=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_v5'; WM=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v4'
+ROOT=Path(__file__).resolve().parents[2]; G1=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_v10'; WM=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_wm_v5'
 def load(p):return json.loads(p.read_text(encoding='utf8'))
 def main():
  g1=load(G1/'gate1_acceptance.json'); comp=load(WM/'wm_completion.json'); score=load(WM/'scorer_result.json')
+ if not (WM/'common_anchor.pt').exists():
+  result={'schema':'PI-JWM-STEP-6.4N-ACCEPTANCE-V2','status':'BLOCKED','reason':'COMMON_ANCHOR_MISSING'}
+  (WM/'acceptance_v2.json').write_text(json.dumps(result)+'\n',encoding='utf8'); return 1
  from audit_step6_4n_gate1_v2 import audit
  rebuilt_gate1=audit(G1)
  if rebuilt_gate1['status']!='PASS' or rebuilt_gate1['checks']!=g1['checks']:raise ValueError('REAL_GATE1_RECONSTRUCTION_FAILED')
@@ -51,6 +54,17 @@ def main():
  # Verify persisted tensor bytes, not merely the JSON producer's booleans.
  import torch
  from pi_jwm.step6_1_trained_candidate_rollout_v1 import fingerprint
+ from audit_step6_4n_gate1_v2 import OUT as real_input
+ saved_anchor=torch.load(WM/'common_anchor.pt',weights_only=False)
+ from run_step6_4n_real_cpu_v2 import digest
+ g2checks['prediction_root_matches_real_execution']=digest(saved_anchor['current'])==load(G1/'V2_NOOP/02_root.json')['current_sha']
+ old_real=ROOT/'code/artifacts/audit/pi_jwm_step6_4n_20261012_v9'
+ def relevant(row):
+  return {k:row[k] for k in ('before','after','time','transfers','native_transfers','ledger','raw','buckets')}
+ g2checks['v9_prediction_truth_matches_final_v10_execution']=all(relevant(load(old_real/m/f'04_h{h}.json'))==relevant(load(G1/m/f'04_h{h}.json')) for m in ('V2_NOOP','V2_ROUTE_RB') for h in range(1,5))
+ checkpoint=ROOT/comp['checkpoint']
+ normalization=ROOT/'code/artifacts/formal_dataset/pi_jwm_formal_dataset_v1_h2_l4_20260923_causalfix1/packages/normalization/stats.json'
+ g2checks['checkpoint_and_normalization_file_SHA']=hashlib.sha256(checkpoint.read_bytes()).hexdigest()==comp['checkpoint_sha']==comp['expected_checkpoint_sha'] and hashlib.sha256(normalization.read_bytes()).hexdigest()==comp['normalization_sha']
  tensor_paths=[WM/f'{name}_trace.pt' for name in traces]
  if all(p.exists() for p in tensor_paths):
   def finite_tree(v):

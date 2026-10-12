@@ -19,3 +19,8 @@ code/artifacts/protocols/pi_jwm_step6_4g_repaired_search_v1_20261004/T/formal_ru
 # Preserve STEP 6.4N executed evidence and per-file SHA across checkout.
 code/artifacts/audit/pi_jwm_step6_4n_20261012*/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 code/artifacts/manifests/pi_jwm_step6_4n_v2_20261012/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# These source bytes are bound in the native execution receipts. Preserve
+# their recorded identity rather than normalizing at commit/checkout.
+code/src/pi_jwm/step6_4n_*.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+code/scripts/*step6_4n*.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+code/tests/test_step6_4n_*.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

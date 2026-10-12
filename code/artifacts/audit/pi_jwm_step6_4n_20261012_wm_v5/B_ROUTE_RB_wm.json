@@ -1,0 +1,382 @@
+{
+  "alignment": [
+    {
+      "absolute_remaining_error": 0.0,
+      "h": 1,
+      "predicted_completed": true,
+      "predicted_failure": null,
+      "predicted_remaining": 0.0,
+      "real_completed": true,
+      "real_failure_code": -1,
+      "real_remaining": 0.0,
+      "task_id": "Task_5"
+    },
+    {
+      "absolute_remaining_error": 0.0,
+      "h": 2,
+      "predicted_completed": true,
+      "predicted_failure": null,
+      "predicted_remaining": 0.0,
+      "real_completed": true,
+      "real_failure_code": -1,
+      "real_remaining": 0.0,
+      "task_id": "Task_5"
+    },
+    {
+      "absolute_remaining_error": 0.0,
+      "h": 3,
+      "predicted_completed": true,
+      "predicted_failure": null,
+      "predicted_remaining": 0.0,
+      "real_completed": true,
+      "real_failure_code": -1,
+      "real_remaining": 0.0,
+      "task_id": "Task_5"
+    },
+    {
+      "absolute_remaining_error": 0.0,
+      "h": 4,
+      "predicted_completed": true,
+      "predicted_failure": null,
+      "predicted_remaining": 0.0,
+      "real_completed": true,
+      "real_failure_code": -1,
+      "real_remaining": 0.0,
+      "task_id": "Task_5"
+    }
+  ],
+  "conservation": [
+    {
+      "delivered": 0.07610754668712616,
+      "finite": true,
+      "flow_hidden_fingerprint": "02139e6d22885bcc29a023f32c9b3d488745a5c489d9ff42fe231f650103572e",
+      "flow_id": "flow::Task_5::Return::0",
+      "h": 1,
+      "known": true,
+      "remaining": 0.0,
+      "slot": 1,
+      "total": 0.07610754668712616
+    },
+    {
+      "delivered": 0.07610754668712616,
+      "finite": true,
+      "flow_hidden_fingerprint": "ef7be3545e4949c39104030448ac7a4e42053fa17fc8e0a532ed669b700a1dc7",
+      "flow_id": "flow::Task_5::Return::0",
+      "h": 2,
+      "known": true,
+      "remaining": 0.0,
+      "slot": 1,
+      "total": 0.07610754668712616
+    },
+    {
+      "delivered": 0.07610754668712616,
+      "finite": true,
+      "flow_hidden_fingerprint": "89f28fe61a6f9b7201037343d15ae2969f06936d7e2993cbd67eec9045f5daf3",
+      "flow_id": "flow::Task_5::Return::0",
+      "h": 3,
+      "known": true,
+      "remaining": 0.0,
+      "slot": 1,
+      "total": 0.07610754668712616
+    },
+    {
+      "delivered": 0.07610754668712616,
+      "finite": true,
+      "flow_hidden_fingerprint": "89f28fe61a6f9b7201037343d15ae2969f06936d7e2993cbd67eec9045f5daf3",
+      "flow_id": "flow::Task_5::Return::0",
+      "h": 4,
+      "known": true,
+      "remaining": 0.0,
+      "slot": 1,
+      "total": 0.07610754668712616
+    }
+  ],
+  "initial": {
+    "anchor": "c05f52cb3a3881672dfdcd674795385ec0658fa5d61dc15285a510940f15a62b",
+    "graph": "049fbb87e6b1ff66bd7e6ae72bd4c27e0f1a82bae3f1494b0a58b5452efe2a1b",
+    "latent": "600f7a656d7f3167d057a2c5283e43b39ca5409f11fee5062b7086739b5c10ed",
+    "state": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146",
+    "z_pi": "65501756f20f6a7869fa025eee63a5a871f56f576cb9a9f4fd7a58935ebea425"
+  },
+  "inputs": [
+    {
+      "graph": "049fbb87e6b1ff66bd7e6ae72bd4c27e0f1a82bae3f1494b0a58b5452efe2a1b",
+      "latent": "600f7a656d7f3167d057a2c5283e43b39ca5409f11fee5062b7086739b5c10ed",
+      "state": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146"
+    },
+    {
+      "graph": "be73ef0f3f8b54b9cdbb7df1a89e44ad7c3090868309695e6a2a2d9cc93b29c9",
+      "latent": "1d4819a971c287b86a43ca6450c3a5beba1ddabd4bc11843c1bcc10292eade7e",
+      "state": "6df34886c184eec8746bc6e85dbe1f5776608e38ca640cbdcae6e4f221d59454"
+    },
+    {
+      "graph": "1a882a8eb22e3b5a3227dfecc4e6d3b7676724d9bbeb2cb45b46c9761229e43a",
+      "latent": "0ebaf390126c3f30be19327ae4c26c26583720e4ae5266527fb6b285b9ea956a",
+      "state": "763f62dd7429f6b9f753039fcb529526c6e74bd9ec8d23cca2cfc04454196a12"
+    },
+    {
+      "graph": "306baee1b755ba719739e38d8e066eec848a46e71fac645b0482603958aec4cd",
+      "latent": "39e9981a131a0e9dfe694f53e758d915619c809011c5285fe1e1d695a862eff7",
+      "state": "98a34cd2d3ffdbe0d8be3c1839179ad2ea97956835f33c7e865614a8ad347106"
+    }
+  ],
+  "mappings": [
+    {
+      "comm": [
+        {
+          "mode": "current_flow",
+          "rb_indices": [
+            0
+          ],
+          "relation_index": 38,
+          "task_index": 0,
+          "transition_applied": true
+        }
+      ],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "incoming": {
+        "graph": "049fbb87e6b1ff66bd7e6ae72bd4c27e0f1a82bae3f1494b0a58b5452efe2a1b",
+        "latent": "600f7a656d7f3167d057a2c5283e43b39ca5409f11fee5062b7086739b5c10ed",
+        "state": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146"
+      },
+      "learned_input": {
+        "graph": "75b775625c9df825e78f9ef7d6779a45de29679087ca1bf1b48713bf86f8fb1d",
+        "latent": "88b130fc295aa689ab8a1241382cbf9d466224b0c397924b9051b4891126bbb4",
+        "state": "e4274f14fd4a4d731fe93d6f1530d79ac6db0e19125675fe4034f8e7c81327f8"
+      },
+      "mobility": 0,
+      "route": [],
+      "route_effect": [
+        {
+          "anchor_fingerprint": "022be0c3185d8ee948118d041e4b6a6259abff4f1f6a01dce2a122c5244461df",
+          "birth_timing": "before_current_step_one_step",
+          "destination_index": 5,
+          "epoch": 0,
+          "flow_id": "flow::Task_5::Return::0",
+          "future_truth_used": false,
+          "latent_initialization": "ZERO_COLD_START_SHADOW_PROPOSAL",
+          "official_ledger": {
+            "e2e_delivered": 0.0,
+            "e2e_remaining": 0.07610754782944204,
+            "epoch": 0,
+            "feature_mask": {
+              "e2e_delivered": true,
+              "e2e_remaining": true,
+              "logical_destination": true,
+              "logical_source": true,
+              "total_data": true
+            },
+            "flow_id": "flow::Task_5::Return::0",
+            "flow_index": 1,
+            "flow_type": "Return",
+            "logical_destination": "UAV_1",
+            "logical_destination_capture_phase": "v2_candidate_route_before_learned_dynamics",
+            "logical_destination_source": "v2_current_task_return_destination",
+            "logical_source": "UAV_0",
+            "missing_reason": null,
+            "presence": true,
+            "previous_flow_id": null,
+            "source_provenance": "causal_task_state_and_established_route",
+            "status": "ACTIVE",
+            "supersede_reason": null,
+            "superseded_by_flow_id": null,
+            "task_id": "Task_5",
+            "total_data": 0.07610754782944204
+          },
+          "relation_index": 38,
+          "route": [
+            5
+          ],
+          "schema": "PI-JWM-STEP-6.4N-DYNAMIC-V2",
+          "shape_adaptation": "APPEND_NO_OVERWRITE",
+          "slot": 1,
+          "source_index": 4,
+          "task_id": "Task_5"
+        }
+      ],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "incoming": {
+        "graph": "be73ef0f3f8b54b9cdbb7df1a89e44ad7c3090868309695e6a2a2d9cc93b29c9",
+        "latent": "1d4819a971c287b86a43ca6450c3a5beba1ddabd4bc11843c1bcc10292eade7e",
+        "state": "6df34886c184eec8746bc6e85dbe1f5776608e38ca640cbdcae6e4f221d59454"
+      },
+      "learned_input": {
+        "graph": "be73ef0f3f8b54b9cdbb7df1a89e44ad7c3090868309695e6a2a2d9cc93b29c9",
+        "latent": "1d4819a971c287b86a43ca6450c3a5beba1ddabd4bc11843c1bcc10292eade7e",
+        "state": "5d7457132ee70e5fb90286e4c52d1cebd0d2b1673d95e41ab4281372cb0e9d9c"
+      },
+      "mobility": 0,
+      "route": [],
+      "route_effect": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "incoming": {
+        "graph": "1a882a8eb22e3b5a3227dfecc4e6d3b7676724d9bbeb2cb45b46c9761229e43a",
+        "latent": "0ebaf390126c3f30be19327ae4c26c26583720e4ae5266527fb6b285b9ea956a",
+        "state": "763f62dd7429f6b9f753039fcb529526c6e74bd9ec8d23cca2cfc04454196a12"
+      },
+      "learned_input": {
+        "graph": "1a882a8eb22e3b5a3227dfecc4e6d3b7676724d9bbeb2cb45b46c9761229e43a",
+        "latent": "0ebaf390126c3f30be19327ae4c26c26583720e4ae5266527fb6b285b9ea956a",
+        "state": "763f62dd7429f6b9f753039fcb529526c6e74bd9ec8d23cca2cfc04454196a12"
+      },
+      "mobility": 0,
+      "route": [],
+      "route_effect": [],
+      "route_explicit_noop": true
+    },
+    {
+      "comm": [],
+      "comp": [],
+      "comp_explicit_noop": true,
+      "incoming": {
+        "graph": "306baee1b755ba719739e38d8e066eec848a46e71fac645b0482603958aec4cd",
+        "latent": "39e9981a131a0e9dfe694f53e758d915619c809011c5285fe1e1d695a862eff7",
+        "state": "98a34cd2d3ffdbe0d8be3c1839179ad2ea97956835f33c7e865614a8ad347106"
+      },
+      "learned_input": {
+        "graph": "306baee1b755ba719739e38d8e066eec848a46e71fac645b0482603958aec4cd",
+        "latent": "39e9981a131a0e9dfe694f53e758d915619c809011c5285fe1e1d695a862eff7",
+        "state": "98a34cd2d3ffdbe0d8be3c1839179ad2ea97956835f33c7e865614a8ad347106"
+      },
+      "mobility": 0,
+      "route": [],
+      "route_effect": [],
+      "route_explicit_noop": true
+    }
+  ],
+  "meta": {
+    "births": [
+      {
+        "anchor_fingerprint": "022be0c3185d8ee948118d041e4b6a6259abff4f1f6a01dce2a122c5244461df",
+        "birth_timing": "before_current_step_one_step",
+        "destination_index": 5,
+        "epoch": 0,
+        "flow_id": "flow::Task_5::Return::0",
+        "future_truth_used": false,
+        "latent_initialization": "ZERO_COLD_START_SHADOW_PROPOSAL",
+        "official_ledger": {
+          "e2e_delivered": 0.0,
+          "e2e_remaining": 0.07610754782944204,
+          "epoch": 0,
+          "feature_mask": {
+            "e2e_delivered": true,
+            "e2e_remaining": true,
+            "logical_destination": true,
+            "logical_source": true,
+            "total_data": true
+          },
+          "flow_id": "flow::Task_5::Return::0",
+          "flow_index": 1,
+          "flow_type": "Return",
+          "logical_destination": "UAV_1",
+          "logical_destination_capture_phase": "v2_candidate_route_before_learned_dynamics",
+          "logical_destination_source": "v2_current_task_return_destination",
+          "logical_source": "UAV_0",
+          "missing_reason": null,
+          "presence": true,
+          "previous_flow_id": null,
+          "source_provenance": "causal_task_state_and_established_route",
+          "status": "ACTIVE",
+          "supersede_reason": null,
+          "superseded_by_flow_id": null,
+          "task_id": "Task_5",
+          "total_data": 0.07610754782944204
+        },
+        "relation_index": 38,
+        "route": [
+          5
+        ],
+        "schema": "PI-JWM-STEP-6.4N-DYNAMIC-V2",
+        "shape_adaptation": "APPEND_NO_OVERWRITE",
+        "slot": 1,
+        "source_index": 4,
+        "task_id": "Task_5"
+      }
+    ],
+    "events": [
+      {
+        "after": 0.0,
+        "before": 0.07610754668712616,
+        "clock": 1.8,
+        "horizon": 1,
+        "relation_index_before_service": 38,
+        "task_id": "Task_5",
+        "terminal": null,
+        "useful_progress": 0.07610754668712616
+      },
+      {
+        "after": 0.0,
+        "before": 0.0,
+        "clock": 1.8,
+        "horizon": 2,
+        "relation_index_before_service": -1,
+        "task_id": "Task_5",
+        "terminal": null,
+        "useful_progress": 0.0
+      },
+      {
+        "after": 0.0,
+        "before": 0.0,
+        "clock": 1.8,
+        "horizon": 3,
+        "relation_index_before_service": -1,
+        "task_id": "Task_5",
+        "terminal": null,
+        "useful_progress": 0.0
+      },
+      {
+        "after": 0.0,
+        "before": 0.0,
+        "clock": 1.8,
+        "horizon": 4,
+        "relation_index_before_service": -1,
+        "task_id": "Task_5",
+        "terminal": null,
+        "useful_progress": 0.0
+      }
+    ],
+    "flow_id_to_slot": {
+      "flow::Task_5::Input::0": 0,
+      "flow::Task_5::Return::0": 1
+    },
+    "formal_pool_admitted": false,
+    "future_truth_used": false,
+    "initialization": "ZERO_COLD_START",
+    "pre_route_state_fingerprint": "02d200a517112aed9e89a5e94a891e416cdaccd728da65257a3831a3ddcfb146",
+    "source": "V2_CAUSAL_PREDICTED_TRANSITION",
+    "tti_failure": null
+  },
+  "outputs": [
+    {
+      "graph": "be73ef0f3f8b54b9cdbb7df1a89e44ad7c3090868309695e6a2a2d9cc93b29c9",
+      "latent": "1d4819a971c287b86a43ca6450c3a5beba1ddabd4bc11843c1bcc10292eade7e",
+      "state": "6df34886c184eec8746bc6e85dbe1f5776608e38ca640cbdcae6e4f221d59454"
+    },
+    {
+      "graph": "1a882a8eb22e3b5a3227dfecc4e6d3b7676724d9bbeb2cb45b46c9761229e43a",
+      "latent": "0ebaf390126c3f30be19327ae4c26c26583720e4ae5266527fb6b285b9ea956a",
+      "state": "763f62dd7429f6b9f753039fcb529526c6e74bd9ec8d23cca2cfc04454196a12"
+    },
+    {
+      "graph": "306baee1b755ba719739e38d8e066eec848a46e71fac645b0482603958aec4cd",
+      "latent": "39e9981a131a0e9dfe694f53e758d915619c809011c5285fe1e1d695a862eff7",
+      "state": "98a34cd2d3ffdbe0d8be3c1839179ad2ea97956835f33c7e865614a8ad347106"
+    },
+    {
+      "graph": "95d3a957b9391d8c300db7f6563fce59e0be3289b45f370366589ce489db2b9b",
+      "latent": "edba2687b4edef9692ac2dfd6d8118db49dfe951b46b66ba6d1c53542f64f720",
+      "state": "f81c57a443daf69e982293233f1a0cafee86a04535617b4ec596219c37ff870c"
+    }
+  ]
+}
