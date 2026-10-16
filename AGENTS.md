@@ -205,6 +205,14 @@ The previous P0–P10/P4/P6 plans and older five-part research workflow are **Hi
    - 产物作为**新附件**挂回原条目（标题固定 `双语对照 PDF（机器翻译）`，标签 `translated:pdf2zh`），原文 PDF 不动；已存在则跳过（幂等，可反复重跑）。
 5. **本地库已退役**：仓库里不再保留论文 PDF 文件夹；`doc/literature-notes/` 只放索引、说明、矩阵一类非论文文件。
 
+### 期刊简称标准化（必做，别手工敲）
+简称要**出版商官方简称**，不要自己拼。做法：
+- 有 DOI 的条目：`python D:\hermes\scripts\standardize_abbrev3.py --project <PROJ> --apply`（按 DOI 从 Crossref 取官方简称与官方全称；顺带修正写错的刊名）
+- 会议/预印本：用学界通用短名（ICLR / NeurIPS / ICML / arXiv / LNCS / IJCAI / GLOBECOM …），脚本已内置
+- 机械缩写兜底：`Transactions on→Trans.`、`Journal of→J.`、`Communications→Commun.` 等
+- ⚠️ **禁用「按题名反查 Crossref」**：实测会把书名/无关条目配成别的刊（曾把 "attention is all you need" 配成别的书）
+- 拿不准就别填：宁可留空，也不要写一个错的简称
+
 ### 维护边界（重要）
 - 本节是文献管理的**唯一操作口径**；后续接手本项目的 agent 按本节执行，不要另建本地文献库、不要把 PDF 塞回仓库。
 - 只改本节，勿改本文件其他章节（除非用户明确要求）。
