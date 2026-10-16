@@ -1,0 +1,499 @@
+                                                       Learning Ad Hoc Network Dynamics via
+                                                           Graph-Structured World Models
+                                                                        Can Karacelebi∗ , Yusuf Talha Sahin∗† , Elif Surer‡ , Ertan Onur∗
+                                                            ∗ Department of Computer Engineering, Middle East Technical University, Ankara, Turkiye
+                                                                                             † Türk Telekom, Ankara, Turkiye
+                                                                ‡ Graduate School of Informatics, Middle East Technical University, Ankara, Turkiye
+                                                      ∗ {can.karacelebi, eronur}@metu.edu.tr         † yusuftalha.sahin@turktelekom.com.tr        ‡ elifs@metu.edu.tr
+
+
+
+                                            Abstract—Ad hoc wireless networks exhibit complex, innate               World models [1] learn environment dynamics in latent
+                                         and coupled dynamics: node mobility, energy depletion and               space (usually obtained with an encoder through observations)
+arXiv:2604.14811v1 [cs.LG] 16 Apr 2026
+
+
+
+
+                                         topology change that are difficult to model analytically. Model-        and train policies through imagined rollouts. These approaches
+                                         free deep reinforcement learning requires sustained online in-
+                                         teraction whereas existing model based approaches use flat              proved to be competitive and achieved state-of-the art per-
+                                         state representations that lose per node structure. Therefore           formance across more than 150 diverse domains [2]. A key
+                                         we propose G-RSSM, a graph structured recurrent state space             benefit is that, once offline trajectories are collected, the policy
+                                         model that maintains per node latent states with cross node multi       trains entirely on imagined rollouts within the world model,
+                                         head attention to learn the dynamics jointly from offline trajec-       no further interaction with the real network is required. There
+                                         tories. We apply the proposed method to the downstream task
+                                         clustering where a cluster head selection policy trains entirely        are recent works which have begun with applications of world
+                                         through imagined rollouts in the learned world model. Across 27         models to wireless networks domain: flat RSSM (Recurrent
+                                         evaluation scenarios spanning MANET, VANET, FANET, WSN                  State Space Model) for V2X scheduling [3], Wireless Dreamer
+                                         and tactical networks with N=30 to 1000 nodes, the learned              for wireless edge intelligence optimization [4] and dual-mind
+                                         policy maintains high connectivity with only trained for N=50.          world models for access scheduling [5]. Meanwhile, graph-
+                                         Herein, we propose the first multi physics graph structured world
+                                         model applied to combinatorial per node decision making in size         structured recurrent models with latent variables have been
+                                         agnostic wireless ad hoc networks.                                      explored for link prediction [6], multi object forecasting and
+                                            Index Terms—world models, wireless networks, ad hoc net-             concurrently for building HVAC control [7]. Nevertheless,
+                                         works, clustering, model based RL.                                      these methods have not been applied to wireless network
+                                                                                                                 dynamics with per-node action conditioning. The following
+                                                                I. I NTRODUCTION                                 open problems remain within the pioneering world model
+                                                                                                                 approaches for ad hoc networks: all existing world mod-
+                                            Since the concept of ad hoc wireless networks are coined,            els use flat Dreamer like RSSM losing per-node structure,
+                                         resources and efficiency have been the main aspects of man-             none addresses combinatorial decentralized per-node decisions
+                                         aging functioning networks. Core dynamics of the Internet               ({0, 1}N ) and the focus on generalization across varying
+                                         had contrasting characteristics when ad hoc networks were               network sizes.
+                                         deployed and decentralized structures were heavily used for                We propose a graph structured Recurrent State Space
+                                         better management in order to supply efficient routing or inter-        Model: G-RSSM that maintains per-node recurrent latent
+                                         ference mitigation. This grounds the core characteristics of ad         states with cross node multi head attention. Unlike the flat
+                                         hoc wireless networks: being governed by coupled, nonlinear             RSSM (Fig. 1) which compresses N nodes into a single
+                                         dynamics within itself. Node mobility affects topology while            vector, G-RSSM preserves individiual node dynamics while
+                                         energy consumption leads node death leading to suspended                modeling inter-node interactions.
+                                         connectivity or decreased communication quality. Ad hoc                    The contributions of this paper are three-fold: (i) Multi
+                                         network optimization has been a spotlight research including            physics graph structured world model for ad hoc networks.
+                                         clustering, routing and scheduling requiring accurate predic-           We introduce a per-node RSSM with cross node attention that
+                                         tions of the given network’s evolution under different control          jointly learns five coupled network processes: node mobility,
+                                         decisions. Analytical and formal methods capture isolated               energy consumption, topology evaluation, clustering reward
+                                         aspects (path loss, mobility) but not the coupled system itself.        and network degradation (a learned continue predictor) in a
+                                         Applications on simulation environments become expensive                unified graph structured latent space, (ii) Imagination-based
+                                         and non-differentiable. This brings the question: Is it possible        combinatorial optimization for wireless networks. We are
+                                         to learn a compact, differentiable model of the entire network          the first to apply world model rollouts to per-node binary
+                                         dynamics?                                                               decision-making on wireless networks. The learned continue
+                                                                                                                 predictor estimates the probability that the network remains
+                                           This work is supported by The Scientific and Technological Research
+                                         Council of Türkiye (TUBITAK) 1515 Frontier R&D Laboratories Support     operational at each imagined step. When the predictor signals
+                                         Program for Türk Telekom 6G R&D Lab under project number 5249902.       impending degradation (e.g. energy depletion causing node
+     (a) Standard RSSM                                    (b) G-RSSM (Ours)                        Posterior: qϕ (zt |ht , ot ) (update with observation),
+                                                                         MHA
+ R256                                    32
+
+            GRU
+                                         R
+                                                          ×N
+                                                                 GRU
+                                                                                      +res              Decode: pϕ (ot , rt |ht , zt ) (Reconstruction)
+ ht−1                    ht        ···        hti−1                       hti
+                                                                                   ···        where ht is the deterministic current state and zt is the
+                                                                                              stochastic latent space. Therefore, in a given time, the full
+ z t−1                   zt         ot            zit−1                   zit       oti       latent representation is st = (ht , zt ) as a surrogate to the state
+R1024                                    R   64
+                                                                                              st . ht is inferred from a recurrent information capable model
+ at−1                    at                       ati−1                   ati                 (RNN, GRU) and zt represents the uncertainty as a stochas-
+                                                                       mean-pool   s ∈ R256   tic estimator. Using a recurrent powered neural network fϕ
+          Det. h              Stoch. z                Observed          Action                computes the deterministic transition for the new hidden
+                                                                                              state (memory) ht using given past memory ht−1 , previous
+Fig. 1. (a) Standard RSSM compresses N nodes into a single state vector.                      stochastic state zt−1 and the previous action at−1 . Given
+(b) G-RSSM maintains per-node states with cross node attention.
+                                                                                              the recurrent memory ht prior pϕ predicts the next latent
+                                                                                              space zt . After experiencing a real observation ot , a better
+death), the rollout truncates, discounting future returns and                                 latent representation is inferred via the posterior qϕ (zt |ht , ot )
+teaching the policy to avoid actions that accelerate network                                  as a belief update. Posterior helps with correct inference of
+collapse. Each node’s previous action decision feeds back into                                the next latent space given the current observation, prior
+its dynamics step enabling the world model to capture how                                     enables to guess before looking at the current observation
+individual clustering decisions propagate through the network,                                making it possible to imagine the future with the dynamics
+and (iii) Size agnostic learned network dynamics. The learned                                 model learned itself. With an accurate prior model, imagined
+dynamics model itself generalizes to unseen network sizes.                                    rollouts will successfully represent the real dynamics enabling
+When trained on smaller sizes, it can model dynamics for                                      planning in latent space in a future horizon. This architecture
+larger networks without retraining. This emerges from shared                                  is widely used as a base to form world model based RL meth-
+weight per node GRU (Gated Recurrent Unit) + attention. The                                   ods. Dreamer [10] proposed an actor-critic trained entirely
+code used in this work1 is publicly available.                                                from RSSM rollouts via analytic gradients. DreamerV3 [2]
+                                                                                              as a sucessor to Dreamer model family proposed categorical
+         II. BACKGROUND AND P ROBLEM F ORMULATION                                             latents, symlog predictions and a continue predictor to master
+   While model-free reinforcement learning (RL) is mostly                                     diverse tasks with a single configuration. RSSM compresses
+employed in the domain of applied artificial intelligence (AI)                                entire environment into single (ht , zt ), for a network of N
+to the network operations, model-based RL evolved to prove                                    nodes, per node information is also compressed preventing
+its competitive performance and unique benefits. Model based                                  the model to distinguish which node is depleting energy or
+RL aims to learn the internal dynamics of the presumed                                        responsible for losing connectivity.
+underlying Markov Decision Process (MDP). Model-based RL
+                                                                                              B. Graph Structured State Space Models
+learns dynamics p̂(st+1 |st , at ) from collected experience and
+aims to train a policy via imagined trajectories directly from                                   Graph structured neural networks and state space models
+the learned dynamics [8]. The key advantage over model-free                                   with latent variables have been used in varying tasks to
+methods is being substantially more sample efficient. Policy                                  preserve the innate graph information. R-SSM [11] proposes
+training is conducted without real interaction to the proposed                                a GNN (Graph Neural Network) + hierarchical SSM with
+environment.                                                                                  normalizing flows for multi object forecasting. VGRNN [12]
+                                                                                              proposed a per-node recurrent model with a per-node latent for
+A. World Models and Recurrent State Space Models                                              dynamic link prediction, used for graph generation not control,
+   The idea of model-based RL is extended to increase the                                     no imagination nor policy training is designed. Concurrently,
+accuracy of the model itself with the emergence of World                                      Graph Dreamer architecture is utilized to build HVAC con-
+models [1]. Original world model idea proposed a VAE                                          trol [7]. We adopt this architectural paradigm for wireless
+(Variational Auto Encoder) with a recurrent dynamics module                                   network dynamics where the key challenges are per node
+and a compact controller in order to train entirely in the                                    action conditioning (individual decision affects its dynamics),
+famously called "dream". PlaNet [9] introduced Recurrent                                      multi-physics joint prediction (mobility, energy, topology and
+State Space Model (RSSM) to capture long-term dependencies                                    degradation) and combinatorial action spaces ({0, 1}N ).
+with a stochastic latent to capture the stochastic behavior of
+the environment. RSSM structure can be decomposed into a                                      C. GNNs for Wireless Networks
+four arm structure for interpretability:                                                         GNNs allow building natural model relational structure
+                                                                                              on ad hoc networks. Network nodes are modeled as graph
+          Dynamics: ht = fϕ (ht−1 , zt−1 , at−1 ) (GRU),                                      nodes and edges as communication links. A recent archi-
+         Prior: pϕ (zt |ht ) (Predict latent from dynamics),                                  tecture facilitating attention is GATv2 [13] which proposes
+                                                                                              dynamic attention, a modification over GAT [14] mitigating
+  1 https://github.com/cankaracelebi/WM-cluster                                               expressivity issues and limitations. GNN based methods are
+widely used as policy networks for power control, scheduling          decentralized planning and individual actions. The overall
+and resource management in different domains. VAST-GCN                architecture is shown in Fig. 2.
+utilized GNNs for a supervised clustering framework for ve-
+hicular ad hoc networks. Although GNNs are used as function           A. Architecture Overview
+approximators, similarly to multi-layer perceptrons (MLPs) in            We extend RSSM from a single global state to N per node
+applied RL methods,they are not fully utilized as dynamic             states with cross node communication. The GATv2 encoder
+models (world models. Within the wireless ad hoc networks             processes the network graph into per node observations. The
+there is no prior combination of GNN message passing with             G-RSSM dynamics maintain per node deterministic states
+RSSM temporal dynamics. Another key advantage of GNN                  (GRU) with cross node attention and per node stochastic
+architectures is that they are size agnostic by design, same          states (categorical). Decoders reconstruct the network state for
+GNN weights work on any N with competitive performance                training but during inference only the encoder and dynamics
+[15].                                                                 are needed.
+D. Network Model                                                      B. GNN Encoder
+   Network model is designed within alignment of general                We form a GNN based GATv2 encoder
+physics and internal dynamics with robust characteristics. We
+define a network with N mobile nodes in [0, L]2 , a node i                         Ht = GATv22−layer (Xt , Et ) ∈ RN ×64           (1)
+at time t has position pti , velocity vit , energy eti and a binary   with a 7 dimensional input per node: position, velocity, energy,
+status (CH status in our experiments) cti ∈ {0, 1}. We model          degree, CH status, alive and a unique cluster number (id). The
+the energy as Etx (d) = Eelec + εamp · d2 (Eelec : base electric      edge features consist of the simple path loss model. We form
+cost to transmit, εamp : amplifier cost) with additional CH           a two-layer GATv2 with four attention heads, 64 hidden di-
+overhead proportional to the cluster size (∝ |Ci |) and an idle       mensions, LayerNorm + ELU and a dropout regularizer (0.1).
+drain Eidle /step [16]. Death of a node due to energy is defined      Intuitively, the output is a per node embedding oti ∈ R6 4. This
+as eti ≤ Edeath in a given t for node i. We model the channel         structure encodes the network snapshot into a representation
+with respect to simple path loss model as Pr,ij = ko Pt ( ddij0 )η    suitable for the RSSM.
+where k0 is the reference path loss factor, η is the path loss
+exponent (η = 3) and d0 is the reference distance. A network          C. Per Node Recurrent Dynamics
+is formally defined as a graph Gt = (V, Et ) where edge                  Canonical RSSM maintains one hidden state for the en-
+(i, j) ∈ Et exist if and only if Pr,ij ≥ γrx . This graph changes     tire environment. For an N-node network, this forces N
+every timestep due to mobility and node energy availability.          nodes observable attributes to be compressed into a single
+E. Clustering as a Proof-of-Concept Application                       k-dimensional vector, an information bottleneck that grows
+                                                                      worse with N. G-RSSM instead maintains N parallel states
+   Clustering is a conceptual method to appoint semi-                 for scalability each tracking one node’s dynamics with cross
+centralized CH nodes to manage routing for the nodes in its           node attention enabling coordination with neighbors. A per
+vicinity in order to decrease the cumulative control overhead.        node GRU update
+Clustering is favored for scenarios to optimize energy con-
+sumption for network lifetime longevity. We define a central-                    h˜ti = GRU(Linear([zit−1 ; at−1
+                                                                                                             i   ])), hi ∈ R32     (2)
+ized method for each node for their roles as combinatorial CH
+selection at ∈ {0, 1}N designed to be solved each timestep.           receives the input of the previous stochastic state zit−1 and
+Reward is formulated as a physics-based multi-objective re-           the previous action at−1
+                                                                                            i   ∈ {0, 1}. The weights are shared
+ward rt = ws Rstability + we Renergy + wc Rconnectivity +             across all N nodes enabling variable N scalability. Cross node
+wh RCH +wτ Rtemp −wp ·1[u > θ] where u is the unclustered             communication
+                                                      √ RCH
+fraction of nodes and θ is a chosen coverage threshold.                        hti = LayerNorm(h˜ti + MHA(H̃t , H̃t , H̃t )i )     (3)
+is a penalty term for too many or few CHs (target ∼ N ) and
+Rtemp is designed as the temporal term penalty for frequent
+CH changes. Overall formulation forms a suitable testbed for                                       TABLE I
+world models because of coupled multi-objective, sequential                       D ECODER HEADS FROM GLOBAL STATE s ∈ R256 .
+decisions with long horizon effects (e.g., energy depletion) and
+the importance of the graph structure. We define the network          Head           Computation                    Loss
+lifetime as the number of timesteps until the connectivity falls      Shared         {ei }N
+                                                                                          i=1 = reshape(MLP(s))     –
+under 50%.                                                                                              2
+                                                                      Position       p̂i = MLP(ei ) ∈ R             ∥p̂ − symlog(p)∥2
+ III. G-RSSM: A G RAPH S TRUCTURED W ORLD M ODEL                      Energy         êi = MLP(ei ) ∈ R             ∥ê − symlog(e)∥2
+                                                                      Adjacency      Âij = (Wei )⊤ (Wej )          BCE(Â, A)
+   We propose G-RSSM as a general architecture for learning
+graph-structured dynamics. We tailored G-RSSM to be in-               Reward         r̂ = MLP(s) ∈ R                ∥r̂ − symlog(r)∥2
+                                                                      Continue       γ̂ = σ(MLP(s)) ∈ [0, 1]        BCE(γ̂, γ)
+tuitively aligned with wireless ad hoc networks empowering
+                                                               G-RSSM (×N )
+
+                                                             N ×64
+                                                                              Per-node GRU(32)
+                                                                                                                               Actor-Critic
+                         Encoder
+                                                                                                             [hi , zi ]
+                                                                               Cross-node MHA                               Node encoder
+
+
+
+
+                                                       t-1
+                                                  i , ai
+                                                                                                             N ×96
+                           Gt                                                                                             [hi , zi , at-1
+                                                                                4-head self-attn + LN                                 i ] → 64
+
+
+
+
+                                                 zt-1
+                         N ×7
+                                                                 Prior p               DKL                  Post. q         Self-attention
+                   GATv2 Encoder                                                                                            4-head MHA + LN
+                                                                               zi ∼ Cat(8×8)
+                      2-layer, 4-head
+                                                                                                                            Per-node MLP
+                                                                                            N ×96
+                      oi ∈ R64                                                                                              64 → 128 → 1         at-1
+                                                                                                                                                  i
+                       ×N nodes                                            Mean-pool → st ∈ R256                          π(ai =1) = σ(ℓi )
+
+
+                                                                              Pos | En | Adj | r̂t | ĉt
+                                                                                                                            at ∈ {0, 1}N
+                                                                                      train only
+                                                                     LWM = Lrecon + β max(DKL , η)
+                                                                                                                            Critic V (st )
+                                                                                                                               MLP → R
+                                                                       imagination: at → dynamics
+
+
+
+                                                                           Fig. 2. Overall Architecture.
+
+
+
+   contains H̃t ∈ RN ×32 which is the all nodes’ GRU                                               reconstructed with MSE in that space for a stable learning
+outputs stacked. A four-head self attention enables capturing                                      across quantities differ by orders of magnitude. KL is com-
+the inter node effects. Each node’s stochastic state zi is a 64-                                   puted per node over the categorical posteriors, summed and
+dimensional categorical latent, factored as eight independent                                      clamped below a threshold η = 0.1 to prevent posterior
+one-hot vectors of dimension eight following the architecture                                      collapse while allowing meaningful stochastic structure. We
+proposed in DreamerV3 [2]. Prior and posterior from the                                            collect 180 offline episodes across six mobility scenarios
+canonical RSSM are now transformed into:                                                           using mixed behavioral policies (random, WCA, LEACH
+                            8
+                            Y                                                                    [16]) and train for 100 epochs with Adam (lr= 3 × 10−4 ,
+            p(zti | hti ) =   Cat π pri
+                                     k  (h t
+                                           i )   and         (4)                                   batch size 32, sequence length 50, gradient clipping at 100).
+                                k=1                                                                Model converges with total loss decreasing by 80.6% and the
+                                   8
+                                   Y                                                               continue predictor achieving 97.4% loss reduction indicating
+          q(zti | hti , oti ) =            Cat π post ([hti ; oti ])                               that the model learns to predict node death timing with high
+                                                                    
+                                                 k                                   (5)
+                                   k=1                                                             fidelity. Importantly, the decoder heads are used only during
+                                                                                                   training to ground the latent space. At inference, only the
+where πk ∈ ∆8 is the softmax probability        simplex for the
+                                      Q                                                            encoder and dynamics core are needed.
+k-th categorical factor. The product      states the 8 factors
+are independent given h or o. A global state is preserved for                                      E. Imagination-Based Policy Training
+reward/continue prediction for the state:
+                                                                                                      Given a trained world model, we now train a policy for
+                1     X
+        st =               ELU(Ws [hti ; zti ]) ∈ R256 .    (6)                                    cluster head selection entirely through imagination. In other
+              Nalive                                                                               words, the RL training only occurs within our world model
+                       i∈alive
+
+D. Training the World Model                                                                        without any further network interaction. Node conditioned
+                                                                                                   actor operates on per node RSSM features directly:
+   The G-RSSM is trained end to end by maximizing a
+                                                                                                            ei = ELU LN(Wenc [hti ; zti ; at−1 ]) ∈ R64 ,
+                                                                                                                                                 
+variational lower bound on the log-likelihood of observed                                                                                  i                 (8)
+network states. Particularly, we collect state transitions (as
+trajectories) directly from the network simulator and train the                                    followed by a multi head self attention layer that enables
+world model. The loss decomposes into reconstruction and                                           inter node coordination Ê = LN E + MHA(E, E, E) and an
+                                                                                                                              (0)
+regularization terms:                                                                              initial per node decision li = MLP(êi ). To enable learned
+                                                                                                   coverage coordination, we introduce R = 3 iterative refine-
+ LWM = Lpos + Lenergy + 0.1Ladj + Lreward + Lcont +Lreg (7)                                        ment rounds with shared weights. At each round k, nodes
+       |                   {z                  }
+                                        Lrecon                                                     observe their neighbors’ current soft CH probabilities  and
+                                                                                                                (k)                       (k)   
+where Lreg = β · max(KL[q∥p], η). Computation and exact                                            adjust via ri = ELU LN(Wr [êi ; σ(ℓi )]) , followed by
+losses are given in Table I. Position, energy and reward targets                                   an attention R̂(k) = LN R(k) + MHA(R(k) , R(k) , R(k) )
+                                                                                                                 (k+1)    (k)         (k)
+are transformed via symlog(x) = sign(x)ln(|x| + 1) and                                             and finally ℓi      = ℓi + MLPr (r̂i ) where the final CH
+        100
+               (a)                           Total
+                                             Position
+                                                                          0.32   (b)                                                    14
+                                                                                                                                                         rotation (LEACH [16]), (iv) distributed iterative (HEED [19]),
+
+
+
+
+                                                        Imagined Reward
+                                                                          0.30
+                                             Energy
+                                                                                                                                        12               (v) mobility adaptive (DMAC [20]), (vi) learning-based (DRL,
+
+
+
+
+                                                                                                                                             Horizon H
+                                                                          0.28
+ Loss
+
+
+
+
+                                                                          0.26
+
+                                                                          0.24
+                                                                                                                                        10               a standard DQN applied to clustering). Unlike all baselines,
+        10−1                                                              0.22
+                                                                                                                                        8
+                                                                                                                                                         WM-Cluster requires no online interaction after the initial
+                                                                          0.20                                                          6
+                                                                                                                                                         data collection phase and operates on arbitrary network sizes
+               0     20   40       60   80        100                            0     50   100   150    200    250   300   350   400
+                               Epoch                                                                    Epoch                                            without retraining. We evaluate four complementary aspects:
+                                                                                                                                                         CH changes, connectivity ratio defined as the fraction of
+Fig. 3. Training convergence. (a) World model reconstruction losses over 100                                                                             alive nodes reachable by a CH, network lifetime defined as
+epochs. (b) Policy imagined reward over 400 epochs with adaptive horizon
+H.                                                                                                                                                       the total timesteps until connectivity drops below 50% and
+                                                                                                                                                         Jain’s fairness index of residual energies. Each configuration
+                                                                                                                                                         is evaluated over 50 episodes with identical seeds across all
+                                                                                            (R)
+probability becomes p(cti = 1) = σ(ℓi ). Each refinement                                                                                                 algorithms, statistical significance is assessed via Wilcoxon
+round is a differentiable message passing step structurally                                                                                              signed-rank tests with 95% confidence intervals.
+compatible with distributed execution via local neighborhood
+exchanges. Imagination rollouts start from real posterior states                                                                                         B. Does the World Model Learn Network Dynamics?
+and then proceed for H steps using prior dynamics alone.
+                                                                                                                                                            We train the world model for 100 epochs on 180 offline
+In this dream state, at each imagined step the actor selects
+                                                                                                                                                         episodes collected from six mobility scenarios using mixed
+actions, reward predictor scores and continue predictor γˆt
+                                                                                                                                                         behavioral policies. Fig. 3 (a) shows the reconstruction loss
+determines whether the rollout should continue or not. This
+                                                                                                                                                         decreasing from 1.72 to 0.33 (80.6% reduction). Position and
+helps explicitly learning the trajectories that cause premature
+                                                                                                                                                         energy heads converge within 20 epochs as smooth continuous
+node death since they are expected to generate truncated future
+                                                                                                                                                         quantities while the adjacency head stabilizes more slowly
+returns. The horizon grows adaptively from H = 5 to H = 15
+                                                                                                                                                         due to the inherent difficulty of discrete structure prediction.
+throughout the training. The actor is optimized with PPO using
+                                                                                                                                                         The continue predictor achieves 97.4% loss reduction (0.54
+clipped surrogate objectives in order to maximize the objective
+                                                                                                                                                         to 0.014), indicating the model accurately predicts node death
+                                                                                                                                                         timing, critical for shaping imagination rollouts.
+                                                
+  Jactor = E min rt (θ)Ât , clip(rt (θ), 1±ϵ)Ât +λH H[π] (9)
+                                                                                                                                                         C. Downstream Task: Clustering Performance
+where rt (θ) − πθ (at |st )/πθold (at |st ), ϵ = 0.2 and entropy
+                                                                                                                                                            1) Default Scenario: Table II summarizes performance on
+coefficient λH is annealed from 0.03 to 0.01. Advantages
+                                                                                                                                                         the default scenario (50 nodes, random waypoint, 501 steps,
+are estimated via λ-returns with DreamerV3 style continue
+                                                                                                                                                         50 episodes). WM-Cluster achieves 128 CH changes, 75%
+discounting:
+                                                                                                                                                         fewer than Lowest-ID (507) and 81% fewer than DRL-Cluster
+                     Gλt = rt + γˆt ((1 − λ)V (st+1 + λGλt+1 ),                                                                         (10)             (669), demonstrating that imagination based training learns
+                                                                                                                                                         temporally stable cluster assignments. Cluster lifetime of 175
+with γ = 0.99, λ = 0.95 where γˆt is the predicted continua-                                                                                             steps is 4.7 times longer than Lowest-ID (37.3) and 25 times
+tion probability from the world model. A temporal consistency                                                                                            longer than DRL-Cluster (7.2) enabling persistent routing
+penalty −0.1||at − at−1 ||1 /N regularizes against unnecessary                                                                                           structures. Energy fairness (Jain’s index 0.847) exceeds all
+CH changes between consecutive steps. The critic V (st ) is a                                                                                            topology-based methods (Lowest-ID, DMAC) indicating the
+two-layer MLP trained on the λ-return targets.                                                                                                           learned policy implicitly rotates the CH burden. The con-
+                          IV. E XPERIMENTAL E VALUATION                                                                                                  nectivity of 0.820 reflects a deliberate trade-off: WM-Cluster
+                                                                                                                                                         avoids over electing CHs in favor of network longevity.
+   We conduct our experiments in a confined robust simulator
+                                                                                                                                                         Topology-based methods achieve near-perfect connectivity
+aligned with the physical properties defined as main axes of a
+                                                                                                                                                         (0.998) but exhaust the network earlier.
+wireless ad hoc network for the clustering problem execution.
+Simulator and corresponding baselines are all implemented in
+Python, parallel to our world model implementation.                                                                                                                                 TABLE II
+                                                                                                                                                             D EFAULT SCENARIO (50 NODES ). B EST IN BOLD , SECOND BEST
+A. Setup                                                                                                                                                                           UNDERLINED .
+
+   We employ a physics-based simulator based on simple path
+loss Pr,ij = k0 Pt (d0 /dij )η , η = 3 with Heinzelman style                                                                                               Algorithm     CH Chg ↓ Conn ↑ Life ↑ CL-Life ↑ Jain’s ↑
+energy model Etx (d) = (Eelec + εamp d2 ).∆t, with an idle                                                                                                 Lowest-ID        507       0.998    473      37.3      0.744
+drain and a proportional CH overhead based on the cluster                                                                                                  WCA              1220      0.998    471      16.7      0.685
+size. We evaluate 27 scenarios spanning MANET, VANET,                                                                                                      DMAC             1041      0.998    453      18.1      0.725
+                                                                                                                                                           HEED             5214      0.998    429       3.5      0.709
+FANET, WSN, tactical and disaster settings, with N = 30
+                                                                                                                                                           LEACH            6502      0.351     17       1.4      0.925
+to 1000 nodes. We compare against six representative algo-                                                                                                 DRL-Cluster       669      0.320    286       7.2      0.759
+rithms spanning five design paradigms: (i) ID-based (Lowest-
+                                                                                                                                                           WM-Cluster       128       0.820    501      175.0     0.847
+ID [17]), (ii) weight based (WCA [18]), (iii) energy aware
+                                                                                                                                                                          WM-Cluster
+                                                                                                                 1200
+                                   1.0
+                                         (a)                                                                            (b)                                               Lowest-ID
+                                                                                                                                                                          DMAC
+                                                                                                                                                                          HEED
+                                   0.9
+                                                                                                                 1000                                                     DRL-Cluster
+
+
+                                   0.8
+
+                                                                                                                  800
+
+
+
+
+                                                                                              Lifetime (steps)
+                    Connectivity
+                                   0.7
+
+
+                                   0.6                                                                            600
+
+
+                                   0.5
+                                                                                                                  400
+
+                                   0.4
+
+                                                                                                                  200
+                                   0.3
+
+
+                                   0.2                                                                              0
+                                               T       ET         T         IoT          al                                     T       ET       ET       IoT          al
+                                            NE        N        NE        N/          ctic                                  NE          N        N       N/         ctic
+                                          MA       VA       FA
+                                                                      WS          Ta                                     MA         VA       FA
+                                                                                                                                                      WS        Ta
+
+
+
+
+Fig. 4. Cross-scenario evaluation averaged by category (26 scenarios, N =30–1000). (a) Connectivity. (b) Network lifetime. WM-Cluster maintains competitive
+connectivity while achieving substantially longer lifetime across all scenario types.
+
+
+
+   2) Cross Scenario Generalization: WM-Cluster is trained                                                        [6] E. Hajiramezanali, A. Hasanzadeh, K. Narayanan, N. Duffield, M. Zhou,
+on a single 50-node default scenario and evaluated zero-                                                              and X. Qian, “Variational graph recurrent neural networks,” in Advances
+                                                                                                                      in Neural Information Processing Systems, H. Wallach, H. Larochelle,
+shot across 26 scenarios spanning five network categories                                                             A. Beygelzimer, F. d'Alché-Buc, E. Fox, and R. Garnett, Eds., vol. 32.
+(Fig. 4). Despite no retraining, the learned policy achieves                                                          Curran Associates, Inc., 2019.
+0.969 average connectivity across all scenarios. It is observed                                                   [7] A. Berkes, D. Vakalis, Y. Bengio, and D. Rolnick, “Graph
+                                                                                                                      dreamer: Temporal graph world models for sample-efficient and
+that the WM-Cluster has a trend of dominance in average                                                               generalisable reinforcement learning,” in Women in Machine Learning
+lifetime mainly facilitated by the reward profile it maintains.                                                       Workshop @ NeurIPS 2025, 2026. [Online]. Available: https:
+                                                                                                                      //openreview.net/forum?id=pHmgNUZixd
+               V. D ISCUSSION AND C ONCLUSION                                                                     [8] T. M. Moerland, J. Broekens, A. Plaat, and C. M. Jonker, “Model-
+                                                                                                                      based reinforcement learning: A survey,” 2022. [Online]. Available:
+   G-RSSM acts as a learned digital twin, the world model                                                             https://arxiv.org/abs/2006.16712
+learns a compact, differentiable representation of the network                                                    [9] D. Hafner, T. Lillicrap, I. Fischer, R. Villegas, D. Ha, H. Lee, and
+                                                                                                                      J. Davidson, “Learning latent dynamics for planning from pixels,”
+that predicts major processes within ad hoc networks being a                                                          2019. [Online]. Available: https://arxiv.org/abs/1811.04551
+lightweight alternative to simulation-based digital twins. After                                                 [10] D. Hafner, T. Lillicrap, J. Ba, and M. Norouzi, “Dream to control:
+collecting a certain number of trajectories from a simulator,                                                         Learning behaviors by latent imagination,” 2020. [Online]. Available:
+                                                                                                                      https://arxiv.org/abs/1912.01603
+the entire training runs without any further network interaction                                                 [11] F. Yang, L. Chen, F. Zhou, Y. Gao, and W. Cao, “Relational state-space
+which may be critical for scenarios where online experimenta-                                                         model for stochastic multi-object systems,” 2020. [Online]. Available:
+tion is infeasible. We present a learned coordination as actor                                                        https://arxiv.org/abs/2001.04050
+                                                                                                                 [12] E. Hajiramezanali, A. Hasanzadeh, N. Duffield, K. R. Narayanan,
+refinement rounds showing that some sense of coordination                                                             M. Zhou, and X. Qian, “Variational graph recurrent neural networks,”
+can be established without heuristic coverage guarantees.                                                             2020. [Online]. Available: https://arxiv.org/abs/1908.09710
+Although we present G-RSSM with clustering, it is merely                                                         [13] S. Brody, U. Alon, and E. Yahav, “How attentive are graph attention
+                                                                                                                      networks?” 2022. [Online]. Available: https://arxiv.org/abs/2105.14491
+a proof of concept downstream application, G-RSSM can                                                            [14] P. Veličković, G. Cucurull, A. Casanova, A. Romero, P. Liò, and
+be extended to different problem formulations. Thanks to                                                              Y. Bengio, “Graph attention networks,” 2018. [Online]. Available:
+the graph based architecture, our method has the variable-N                                                           https://arxiv.org/abs/1710.10903
+                                                                                                                 [15] N. Naderializadeh, M. Eisen, and A. Ribeiro, “Wireless power control
+property as generalization to varying network sizes. Finally,                                                         via counterfactual optimization of graph neural networks,” 2020.
+a fully distributed execution can be achieved by limiting the                                                         [Online]. Available: https://arxiv.org/abs/2002.07631
+attention to k-hop neighbors within refinement rounds, this is                                                   [16] W. Heinzelman, A. Chandrakasan, and H. Balakrishnan, “Energy-
+                                                                                                                      efficient communication protocol for wireless microsensor networks,”
+left as future work.                                                                                                  in Proceedings of the 33rd Annual Hawaii International Conference on
+                                                                                                                      System Sciences, 2000, pp. 10 pp. vol.2–.
+                                           R EFERENCES                                                           [17] C. Lin and M. Gerla, “Adaptive clustering for mobile wireless net-
+ [1] D. Ha and J. Schmidhuber, “World models,” CoRR, vol. abs/1803.10122,                                             works,” IEEE Journal on Selected Areas in Communications, vol. 15,
+     2018. [Online]. Available: http://arxiv.org/abs/1803.10122                                                       no. 7, pp. 1265–1275, 1997.
+ [2] D. Hafner, J. Pasukonis, J. Ba, and T. Lillicrap, “Mastering                                                [18] M. Chatterjee, S. Das, and D. Turgut, “An on-demand weighted
+     diverse domains through world models,” 2024. [Online]. Available:                                                clustering algorithm (wca) for ad hoc networks,” in Globecom ’00 -
+     https://arxiv.org/abs/2301.04104                                                                                 IEEE. Global Telecommunications Conference. Conference Record (Cat.
+ [3] L. Wang, R. Shelim, W. Saad, and N. Ramakrishnan, “World                                                         No.00CH37137), vol. 3, 2000, pp. 1697–1701 vol.3.
+     model-based learning for long-term age of information minimization                                          [19] C.-H. Lin and M.-J. Tsai, “A comment on "heed: A hybrid, energy-
+     in vehicular networks,” 2025. [Online]. Available: https://arxiv.org/abs/                                        efficient, distributed clustering approach for ad hoc sensor networks’,”
+     2505.01712                                                                                                       IEEE Transactions on Mobile Computing, vol. 5, no. 10, pp. 1471–1472,
+ [4] C. Zhao, R. Zhang, J. Wang, G. Zhao, D. Niyato, G. Sun, S. Mao,                                                  2006.
+     and D. I. Kim, “World models for cognitive agents: Transforming                                             [20] S. Basagni, “Distributed clustering for ad hoc networks,” in Proceedings
+     edge intelligence in future networks,” 2025. [Online]. Available:                                                of the 1999 International Symposium on Parallel Architectures, Algo-
+     https://arxiv.org/abs/2506.00417                                                                                 rithms and Networks, ser. ISPAN ’99. USA: IEEE Computer Society,
+ [5] L. Wang, R. Shelim, W. Saad, and N. Ramakrishnan, “Dual-mind                                                     1999, p. 310.
+     world models: A general framework for learning in dynamic wireless
+     networks,” 2025. [Online]. Available: https://arxiv.org/abs/2510.24546
+

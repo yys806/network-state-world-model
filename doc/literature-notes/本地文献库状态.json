@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-08-26T13:43:27.7623075+08:00",
+  "authority": "literature/",
+  "index_records": 85,
+  "available_records": 85,
+  "manual_download_required": 0,
+  "core_records": 23,
+  "core_records_with_local_pdf": 23,
+  "local_supplemental_pdfs": 29,
+  "local_pdf_files": 85,
+  "unique_pdf_sha256": 85,
+  "pdf_bytes": 391023614,
+  "inbox_pdf_files": 0,
+  "manual_user_downloads_added": 13,
+  "manual_user_arxiv_versions_added": 1,
+  "auto_public_arxiv_preprints_added": 7,
+  "categories": [
+    {
+      "Category": "01_系统场景与问题定义",
+      "PDFs": 5,
+      "Bytes": 9394254
+    },
+    {
+      "Category": "02_严格双图与图学习",
+      "PDFs": 20,
+      "Bytes": 60559168
+    },
+    {
+      "Category": "03_世界模型与状态预测",
+      "PDFs": 21,
+      "Bytes": 159137229
+    },
+    {
+      "Category": "04_任务卸载与资源优化",
+      "PDFs": 13,
+      "Bytes": 53619446
+    },
+    {
+      "Category": "05_数据集、测量与仿真",
+      "PDFs": 11,
+      "Bytes": 61429978
+    },
+    {
+      "Category": "06_评价、不确定性与决策诊断",
+      "PDFs": 6,
+      "Bytes": 22481919
+    },
+    {
+      "Category": "99_综述与奠基性文献",
+      "PDFs": 9,
+      "Bytes": 24401620
+    }
+  ],
+  "version_notes": [
+    {
+      "record_id": "P7MPVGUR",
+      "local_version": "arXiv:2107.07511v6",
+      "boundary": "Readable author preprint; not the publisher-formatted PDF for DOI 10.1561/2200000101."
+    },
+    {
+      "record_id": "new-arxiv-2026",
+      "local_version": "arXiv versions shown on each first page",
+      "boundary": "The seven newly added records are public arXiv preprints; they are not described as formal publisher versions."
+    }
+  ],
+  "rrm_project_touched": false
+}

@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "verified_at": "2026-08-26T13:44:49.8331937+08:00",
+  "errors": [],
+  "index_rows": 85,
+  "available_records": 85,
+  "manual_required": 0,
+  "pdf_files": 85,
+  "unique_pdf_sha256": 85,
+  "pdf_bytes": 391023614,
+  "checksum_lines": 85,
+  "indexed_paths_unique": 85,
+  "inbox_pdfs": 0,
+  "max_path_length": 133.0,
+  "legacy_files_remaining": 0,
+  "zotero_named_paths_remaining": 0,
+  "categories": [
+    {
+      "Category": "01_系统场景与问题定义",
+      "PDFs": 5,
+      "Bytes": 9394254
+    },
+    {
+      "Category": "02_严格双图与图学习",
+      "PDFs": 20,
+      "Bytes": 60559168
+    },
+    {
+      "Category": "03_世界模型与状态预测",
+      "PDFs": 21,
+      "Bytes": 159137229
+    },
+    {
+      "Category": "04_任务卸载与资源优化",
+      "PDFs": 13,
+      "Bytes": 53619446
+    },
+    {
+      "Category": "05_数据集、测量与仿真",
+      "PDFs": 11,
+      "Bytes": 61429978
+    },
+    {
+      "Category": "06_评价、不确定性与决策诊断",
+      "PDFs": 6,
+      "Bytes": 22481919
+    },
+    {
+      "Category": "99_综述与奠基性文献",
+      "PDFs": 9,
+      "Bytes": 24401620
+    }
+  ],
+  "version_boundaries": [
+    "P7MPVGUR uses arXiv:2107.07511v6 as the local readable version; it is not represented as the publisher-formatted DOI PDF.",
+    "The seven records added on 2026-08-26 are public arXiv preprints; they are not represented as publisher-formatted PDFs."
+  ],
+  "rrm_project_touched": false
+}
