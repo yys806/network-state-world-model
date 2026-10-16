@@ -102,7 +102,7 @@ P4 三种子通过后，才进入候选动作推演与滚动重规划
 | `code/tests/` | 单元、契约、回归和机制测试 | 仅证明对应断言 |
 | `code/reference/AirFogSim/` | 第三方仿真器 | 只作数据源/参考环境 |
 | `code/artifacts/` | tensor、协议、训练、审计和 manifest | 机器证据核心目录 |
-| `literature/` | 本地权威文献库 | 不证明代码已实现 |
+| Zotero `PKU → PIJWM` | 文献库唯一入口（`literature/` 已于 2026-10-16 退役） | 不证明代码已实现 |
 | `meeting/` | 组会材料 | 不能反向替代实验验收 |
 | `paper/` | 论文材料 | 不得超出已验证证据 |
 

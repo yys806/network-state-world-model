@@ -11,7 +11,7 @@
 - `experiments/`：按运行或研究阶段组织的历史数据、checkpoint、指标和摘要。
 - `reports/`：跨实验汇总、论文/PPT证据索引和研究报告。
 - `protocols/`、`evaluation/`：冻结协议、指标映射和评价产物。
-- `literature/`、`research_notes/`：研究过程中形成的检索过程与阅读材料；正式本地PDF和权威索引统一维护在仓库根级`literature/`。
+- `research_notes/`：研究过程中形成的检索过程与阅读材料；正式文献统一维护在 Zotero 集合 `PKU → PIJWM`（仓库根级 `literature/` 已于 2026-10-16 退役，索引存档于 `doc/literature-notes/`）。
 - `manifests/`：允许入Git的治理、保留、隔离和引用索引。
 - `tmp/`、`.codex_work/`及迁移/传输目录：临时或本机辅助内容，不作为权威证据入口。
 

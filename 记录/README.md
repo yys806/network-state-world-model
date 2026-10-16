@@ -10,4 +10,4 @@
 
 权威/定版记录与过程/历史记录必须分开理解：工作日志、旧设计、smoke、screening 和未通过审计只能记录过程或追溯，不能单独提升为最终方法或正式性能结论。完整边界见 `文件树与证据分层_20260826.md`。
 
-历史材料中的旧路径仅作为 provenance 说明；现行命令和新记录使用根级 `code/`、`paper/`、`literature/`、`meeting/`、`docs/`。
+历史材料中的旧路径仅作为 provenance 说明；现行命令和新记录使用根级 `code/`、`paper/`、`meeting/`、`docs/`，文献统一在 Zotero 集合 `PKU → PIJWM`（`literature/` 已于 2026-10-16 退役）。
