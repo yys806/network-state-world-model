@@ -185,3 +185,27 @@ The previous P0–P10/P4/P6 plans and older five-part research workflow are **Hi
 - Treat `docs/registries/deferred_work.json` as a stop guard, not an execution queue. An item with `authorization_required=true` and `auto_start=false` must never be started by automation or inferred approval.
 - During an active remote run or file synchronization, do not move, rename, delete, overwrite, or bulk-rewrite `code/artifacts/experiments/`, `formal_tensor/`, `formal_data/`, `protocol/`, `protocols/`, live evidence, staging, checkpoints, predictions, runtime files, manifests, or transfer directories. Use read-only inspection and additive documentation only.
 - Archiving is preferred to deletion. Any future move or archive requires a user-approved scope, a per-file mapping with hashes, a rollback path, and validation that no active process or synchronizer is writing the target.
+
+## 文献库与工具链（唯一入口：Zotero）
+
+**唯一真相**：Zotero 集合 `PKU → PIJWM`。本地 `literature/` 已于 2026-10-16 退役，索引/说明类文件存档于 `doc/literature-notes/`。
+**新增文献只在 Zotero 里加**，不要再在仓库里建 PDF 文件夹。当前已入库 **85 篇**（子集合：01 系统场景 / 02 严格双图 / 03 世界模型 / 04 任务卸载 / 05 数据集测量仿真 / 06 评价不确定性 / 99 综述奠基）。
+
+### 新增一篇文献的标准流程
+1. **建条目**：Zotero 里在该集合对应子分类下 → `Add Item by Identifier` 贴 DOI（最准）；只有 PDF 时拖入 PDF → 右键 `Retrieve Metadata for PDF`。
+2. **核对五项元数据**：标题（第一列必须是正式题名，不能是文件名、作者行、页眉）、创建者、日期、期刊/会议名、刊名简称。
+3. **补期刊标签/指标**（任一或都跑，幂等）：
+   - `python D:\hermes\scripts\zotero_pipeline.py ranks --project PIJWM`
+   - `python D:\hermes\scripts\complete_journal_metrics.py --project PIJWM`
+   写入 Extra 的字段（与 Zotero「Green Frog/青蛙」插件同格式）：`影响因子 / 5年影响因子 / JCR分区 / 中科院分区基础版 / 中科院分区升级版 / CCF / EI / SSCI / AJG / JCI / ESI`。
+   数据源＝easyScholar（与用户 Zotero 插件同源）+ CCF 第七版官方目录；**不得臆造**：会议论文与预印本没有期刊指标，就按事实写 `无（会议/预印本无期刊指标）`；不在 CCF 目录写 `无（不在 CCF 目录）`——**字段不留空**。
+4. **双语对照 PDF（左英右中，不外传）**：
+   - 本地 PDF2zh 服务目录 `C:\Users\Lenovo\Zotero\zotero-pdf2zh\server`，端口 `8890`，引擎 `siliconflowfree`，启动命令：`uv run python server.py --port 8890 --env_tool uv --enable_venv true`
+   - 批量/单篇：`set PIPELINE_PROJECT=PIJWM` 后跑 `python D:\hermes\scripts\zotero_translate_all.py`
+   - 产物作为**新附件**挂回原条目（标题固定 `双语对照 PDF（机器翻译）`，标签 `translated:pdf2zh`），原文 PDF 不动；已存在则跳过（幂等，可反复重跑）。
+5. **本地库已退役**：仓库里不再保留论文 PDF 文件夹；`doc/literature-notes/` 只放索引、说明、矩阵一类非论文文件。
+
+### 维护边界（重要）
+- 本节是文献管理的**唯一操作口径**；后续接手本项目的 agent 按本节执行，不要另建本地文献库、不要把 PDF 塞回仓库。
+- 只改本节，勿改本文件其他章节（除非用户明确要求）。
+- Zotero 附件用**导入式附件 + 本地 API 写入**，不烧 zotero.org 云配额；Zotero 写入需 10.x + 本地 key（缓存在 `D:\hermes\cache\zotero-local-key.json`，失效时跑 `python D:\hermes\scripts\zotero_get_key.py` 重新授权）。
