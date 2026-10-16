@@ -51,7 +51,7 @@ PIJWM/
 |   `-- artifacts/        local data, reports, checkpoints, figures, and machine evidence
 |-- 记录/                  authority theory, progress, plans, handoffs, and migration records
 |-- paper/                formal paper manuscripts and submission assets
-|-- literature/           authoritative local literature library and PDF categories
+|-- literature/           retired 2026-10-16; literature lives in the Zotero PKU → PIJWM collection
 |-- meeting/              local meeting materials and historical presentations
 |-- docs/                 templates, project notes, and miscellaneous documentation
 |-- AI_CONTEXT/           concise ChatGPT Web current-state and source-navigation layer

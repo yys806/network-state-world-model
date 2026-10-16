@@ -62,7 +62,7 @@ This is a non-negotiable rule for all PI-JWM work:
 - `code/reference/`: third-party references and simulators.
 - `code/artifacts/`: data, reports, figures, and generated outputs.
 - `记录/`: repository-local authority documents, plans, progress, handoffs, and migration records.
-- `literature/`: authoritative local literature library.
+- `literature/`: retired on 2026-10-16; the PI-JWM literature library now lives in the Zotero `PKU → PIJWM` collection.
 - `paper/`: formal paper materials only.
 - `meeting/`: meeting materials.
 - `docs/`: templates, project notes, and miscellaneous documents.
@@ -91,12 +91,10 @@ For LaTeX progress documents, compile with XeLaTeX.
 
 ## Local Literature Management
 
-- `literature/` is the authoritative PI-JWM literature library. Read `literature/README.md` and `literature/文献索引.csv` before adding or moving papers.
-- Store each PDF in exactly one primary category directory. Preserve cross-category relationships in `文献索引.csv` instead of duplicating files.
-- Deduplicate in this order: DOI, arXiv ID, normalized title plus author/year, then PDF SHA-256. Verify the `%PDF-` file signature before accepting a download.
-- After adding a PDF, update `文献索引.csv`, `PDF_SHA256SUMS.txt`, `文献索引.md`, and `本地文献库状态.json`. Remove the matching entry from `需要手动下载.md` only after the file and metadata have been verified.
-- The former Zotero PIJWM collection was retired on 2026-08-15. Its one-time JSON/BibTeX/attachment/migration exports were removed after the local library passed migration acceptance; do not recreate or write back to that collection unless the user explicitly asks.
-- Historical Zotero keys remain provenance identifiers only. Do not treat a historical Zotero attachment flag as proof that a local PDF exists; use the local path and SHA-256 index.
+- The PI-JWM literature library now lives **only in Zotero** — collection `PKU → PIJWM`, with the seven topic subcollections `01_系统场景与问题定义`, `02_严格双图与图学习`, `03_世界模型与状态预测`, `04_任务卸载与资源优化`, `05_数据集、测量与仿真`, `06_评价、不确定性与决策诊断`, `99_综述与奠基性文献`. Category, role, evidence, and topic tags from the former `文献索引.csv` are preserved as Zotero tags; cross-category relationships live in tags instead of duplicated files.
+- Each paper is one Zotero item with its full-text PDF attached, plus CCF / impact-factor / CAS-partition fields and (when generated) a bilingual reading copy.
+- The local `literature/` directory was retired on 2026-10-16 (its CSV/SHA-256 index and notes are archived under `doc/literature-notes/`). Do not recreate a parallel PDF folder, and do not maintain a second literature source.
+- Adding new literature: import the PDF into the `PIJWM` collection, deduplicate by DOI / arXiv ID / normalized title / SHA-256, run "Retrieve Metadata for PDFs", then refresh the CCF / impact-factor fields. Verify the `%PDF-` file signature before accepting a download.
 - `D:\shen\PKU\RRM` and its Zotero collection remain a separate reference project. Never merge their papers or claims into PI-JWM without explicit provenance and independent PI-JWM evaluation.
 
 ## Active Research and Implementation Workflow (2026-09-18)
