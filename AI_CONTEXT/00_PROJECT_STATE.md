@@ -497,13 +497,14 @@ r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 
 
 ## WSL 环境治理事实（2026-10-24；PIJWM-WSL-CLEANUP-001）
 
-- 本节仅记录运行环境，不改变研究方向、算法或实验结论。完整清单与证据见 `docs/WSL_ENVIRONMENT.md`、`docs/WSL_CLEANUP_20261024.json`。
-- 已验证：仅注册 Ubuntu，WSL 2；Ubuntu 24.04.3 LTS、WSL 2.6.3.0、内核 6.6.87.2-microsoft-standard-WSL2。
-- 研究者随后明确批准永久删除四个精确目录：`/home/shen/shen/datasets`、`/home/shen/shen/mixed_autonomy_lab`、`/home/shen/miniconda3/envs/cityflow310`、`/home/shen/miniconda3/envs/pg-mad`；已完成，未以备份存在为前提，不保证恢复数据/结果。两个环境如再需要必须重新安装。
-- 删除即时前后 ext4 已用从 46074892288 B 降至 3671642112 B，减少 42403250176 B（39.491104 GiB）；四目录去重占用 42403233792 B，共删除 77387 个普通文件、2722 个符号链接和 5926 个目录。Conda 硬链接不能重复累计。
-- 最新容量快照 2026-10-24T08:08:55.696446+00:00：ext4 总容量 1081101176832 B、已用 3686035456 B（3.432888 GiB）、可用 1022422786048 B。Linux 实际用量已满足 20 GiB 预算且低于 15 GiB 常驻目标，预算内尚余 16.567112 GiB；未设置 20 GiB 硬上限。
-- VHDX 位于 `D:\WSL\Ubuntu\ext4.vhdx`，最新文件长度/实际分配 71247593472 B（66.354492 GiB），最大容量 1099511627776 B（1024 GiB）。删除 Linux 文件未回收约 39.49 GiB 的宿主占用；未压实、缩容、迁移或改全局配置。
-- `/home/shen/PIJWM` 仍仅有 README_WSL.md，非 Git 仓库；D 盘仍是工程主项目，不自动镜像代码或大型数据。系统 Python 3.12.3、Git 2.43.0、Conda base Python 3.13.11 / conda 25.11.1 可运行；系统有 pip/yaml，无 NumPy/PyTorch/pytest。仅适合标准库轻量运行，科学计算环境待具体实验批准后准备。
-- 四目录之外 home 保留区共 14833 条元数据，删除前后 SHA-256 相同；SSH、Shell 配置、其他 Git 仓库、Conda base 保留。D 盘既有科研资产元数据指纹与基线一致，用户原有修改不纳入本任务提交。
-- 初始阶段另清理两个可重建 APT 缓存 113250795 B；详见历史快照，不与本次四目录删除混淆。swap 虚拟容量 4 GiB、当次使用 0，历史宿主分配 36 MiB，位于 C 盘系统临时会话目录；未改 .wslconfig。
-- 网络初检 DNS/PyPI HEAD=200、GitHub HEAD 超时；localhost 代理未映射至 NAT WSL 的提示仍存在，未修网络。无训练、GPU、仿真或 locked_test 内容访问。VHDX 物理回收/硬容量限制须另行批准，禁止自动执行。
+- 仅记录工程环境，不改变研究方向、算法或实验结论。完整清理、缩容与保护证据见 `docs/WSL_ENVIRONMENT.md`、`docs/WSL_CLEANUP_20261024.json`。
+- Ubuntu 24.04.3 LTS / WSL 2；WSL 2.6.3.0，内核 6.6.87.2-microsoft-standard-WSL2，只有 Ubuntu 一个注册发行版。
+- 研究者随后明确批准直接缩容；已通过 `wsl --manage Ubuntu --resize 20GB` 将虚拟最大容量从 1099511627776 B（1024 GiB）设为 **21474836480 B（20 GiB，约 21.47 GB）**。原生工具执行文件系统检查和缩容，完成后离线 GetVirtualDiskInformation 与 Linux 块设备读数均确认 20 GiB。
+- 最新 Linux 快照 2026-10-24T08:29:52.305982+00:00：ext4 可计量总容量 20017922048 B（18.643143 GiB），已用 3691507712 B（3.437984 GiB），普通用户可用 15235899392 B（14.189537 GiB）。目前可预留 5 GiB；元数据、日志及预留使可用容量小于裸磁盘容量，未来必须看实际可用值。
+- VHDX：`D:/WSL/Ubuntu/ext4.vhdx`；2026-10-24T08:31:36.246473+00:00 离线文件长度/分配 71180484608 B（66.291992 GiB）。20 GiB 上限已生效，但 Windows 物理占用尚未达到 20 GiB；本次未额外压实、设稀疏或改全局配置，不能声称已收回约 39 GiB 宿主空间。
+- 为缩容临时在 D 盘项目 tmp 内导出 3283066880 B 恢复副本，81112 成员完整读取，SHA-256 前后复核一致；文件与环境验收通过后已清除，未留下长期重复副本。首次因导出辅助虚拟机占用而拒绝，正常关闭唯一 WSL 后重试成功；未注销、重装或导入发行版。
+- 缩容前后 /home/shen 全部 14833 条保留元数据指纹一致，三个保留仓库的 HEAD/用户状态一致，README 内容一致；随后只更新本任务 README。D 盘科研资产 21395 文件、37569160502 B 及原有用户修改均与基线一致。
+- `/home/shen/PIJWM` 仍仅有 README，非 Git 仓库；D 盘是工程主项目，不镜像大型数据。系统 Python 3.12.3、Git 2.43.0、Conda base Python 3.13.11 已验证可用；pip/yaml 可发现，NumPy/PyTorch/pytest 缺失，尚非正式训练环境。验收后正常停止 Ubuntu，下次可以启动。
+- 前阶段按研究者明确授权永久删除 datasets、mixed_autonomy_lab、cityflow310、pg-mad 四个精确目录，即时释放 42403250176 B；无备份恢复保证，旧环境需重新安装。更早 APT 可重建缓存删除 113250795 B 独立记载，不能混计。其余个人文件、SSH、Shell 配置和其他仓库保留。
+- swap 上次核验虚拟 4 GiB、使用 0，宿主历史实测 36 MiB，仍为 C 盘系统临时会话路径；未改 .wslconfig。此前 GitHub HEAD 超时和 localhost 代理提示未修复，不声称网络问题解决。
+- 没有训练、GPU、仿真或 locked_test 内容访问。当前设置仅获本次批准，未来压实、其他容量变更或全局配置仍需具体授权，不得自动继续。

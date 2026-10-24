@@ -570,3 +570,10 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 - 根据研究者“直接删除吧，允许永久删除”，精确删除 datasets、mixed_autonomy_lab、cityflow310、pg-mad；不保证已删数据恢复，未清空 home 或删除其他项目仓库。
 - 四目录去重占用 42403233792 B；ext4 即时已用净减少 42403250176 B。最新已用 3686035456 B（3.432888 GiB），Linux 20 GiB 用量预算已达成。
 - VHDX 仍分配 71247593472 B、最大 1024 GiB；未压实/缩容/改配置。保留区指纹匹配，Conda base、系统 Python/Git 验证通过；更新上述环境入口、机器记录和 WSL README。未运行科研实验。
+
+
+### 经研究者明确批准：Ubuntu 最大容量缩至 20 GiB
+
+- 使用 WSL 2.6.3 原生 `wsl --manage Ubuntu --resize 20GB`，将 ext4 与 VHDX 最大容量从 1024 GiB 缩至 20 GiB；离线 API 和 Linux 块设备均确认 21474836480 B。
+- 验收后 Linux 已用 3691507712 B、普通用户可用 15235899392 B；VHDX 物理仍 71180484608 B，不将上限设置冒称物理回收。
+- 临时完整导出 3283066880 B、81112 成员验证通过，缩容后 home 元数据和仓库状态一致，Python/Git/base 环境可用；已清除本任务恢复副本。保留既有用户工作区，无正式实验或封存测试访问。

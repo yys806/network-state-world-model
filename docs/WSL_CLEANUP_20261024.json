@@ -1,7 +1,7 @@
 {
   "task": "PIJWM-WSL-CLEANUP-001",
   "date": "2026-10-24",
-  "status": "AUTHORIZED_FOUR_DIRECTORY_PERMANENT_DELETION_COMPLETE; LINUX_USED_SPACE_BELOW_20_GiB; VHDX_PHYSICAL_AND_HARD_CAP_TARGET_NOT_MET; NO_FURTHER_CLEANUP",
+  "status": "AUTHORIZED_20_GiB_VHD_MAXIMUM_APPLIED_AND_VERIFIED; FILES_AND_ENVIRONMENT_PRESERVED; VHDX_PHYSICAL_SPACE_STILL_ABOVE_20_GiB; STOPPED",
   "cleanup": {
     "deleted": [
       {
@@ -78,7 +78,7 @@
     }
   },
   "boundaries": {
-    "vhd_or_global_config_modified": false,
+    "vhd_or_global_config_modified": true,
     "other_project_data_deleted": true,
     "environment_deleted": true,
     "exactly_four_paths_explicitly_authorized": true,
@@ -87,7 +87,9 @@
     "experiments_run": false,
     "locked_test_sample_content_read": false,
     "large_d_data_copied": false,
-    "linux_workspace_readme_only": true
+    "linux_workspace_readme_only": true,
+    "vhd_resized_with_explicit_authorization": true,
+    "global_wsl_config_modified": false
   },
   "windows_repository_baseline": {
     "AGENTS.md": {
@@ -115,128 +117,43 @@
     "d_artifacts_logical_bytes": 37569160502
   },
   "environment_validation": {
-    "timestamp_utc": "2026-10-24T08:07:30.322471+00:00",
-    "user": "shen",
+    "timestamp_utc": "2026-10-24T08:29:52.305982+00:00",
     "uid": 1000,
     "cwd": "/home/shen/PIJWM",
-    "deleted_targets_absent": {
-      "/home/shen/shen/datasets": true,
-      "/home/shen/shen/mixed_autonomy_lab": true,
-      "/home/shen/miniconda3/envs/cityflow310": true,
-      "/home/shen/miniconda3/envs/pg-mad": true
-    },
-    "workspace_files": [
-      "README_WSL.md"
-    ],
-    "workspace_git": false,
-    "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
-    "module_availability": {
+    "python": "3.12.3",
+    "workspace_accessible": true,
+    "stdlib_ok": true,
+    "base_python": "Python 3.13.11",
+    "git": "git version 2.43.0",
+    "modules": {
       "pip": true,
       "yaml": true,
       "numpy": false,
       "torch": false,
       "pytest": false
     },
-    "git_version": "git version 2.43.0",
-    "conda_base_exists": true,
-    "conda_base_python": {
-      "exit": 0,
-      "stdout": "Python 3.13.11",
-      "stderr": ""
-    },
-    "conda_base_command": {
-      "exit": 0,
-      "stdout": "conda 25.11.1",
-      "stderr": ""
-    },
-    "preserved_personal_paths": {
-      "/home/shen/.ssh": true,
-      "/home/shen/.bashrc": true,
-      "/home/shen/.profile": true,
-      "/home/shen/shen/paper_repos/ControlTraj": true,
-      "/home/shen/shen/paper_repos/DiffAIL": true,
-      "/home/shen/shen/paper_repos/flow": true
-    },
-    "stdlib_check": {
-      "sha256_ok": true,
-      "workspace_accessible": true
-    },
-    "filesystem": {
-      "total_bytes": 1081101176832,
-      "used_bytes": 3684782080,
-      "available_bytes": 1022424039424
-    },
-    "directory_allocated_bytes": {
-      "/home/shen": {
-        "bytes": 644538368,
-        "exit": 0
-      },
-      "/home/shen/PIJWM": {
-        "bytes": 8192,
-        "exit": 0
-      },
-      "/home/shen/miniconda3": {
-        "bytes": 477065216,
-        "exit": 0
-      },
-      "/home/shen/shen": {
-        "bytes": 159027200,
-        "exit": 0
-      },
-      "/var/log": {
-        "bytes": null,
-        "exit": 1
-      }
-    }
+    "filesystem_used_bytes": 3691507712,
+    "filesystem_available_bytes": 15235899392
   },
   "final_linux": {
-    "timestamp_utc": "2026-10-24T08:08:55.696446+00:00",
-    "filesystem_total_bytes": 1081101176832,
-    "filesystem_used_bytes": 3686035456,
-    "filesystem_available_bytes": 1022422786048,
-    "directory_allocated_bytes": {
-      "/home/shen": {
-        "bytes": 644538368,
-        "exit": 0
-      },
-      "/home/shen/PIJWM": {
-        "bytes": 8192,
-        "exit": 0
-      },
-      "/home/shen/miniconda3": {
-        "bytes": 477065216,
-        "exit": 0
-      },
-      "/home/shen/shen": {
-        "bytes": 159027200,
-        "exit": 0
-      },
-      "/var/log": {
-        "bytes": null,
-        "exit": 1
-      }
-    },
-    "workspace_files": [
-      "README_WSL.md"
-    ]
+    "timestamp_utc": "2026-10-24T08:29:52.305982+00:00",
+    "filesystem_total_bytes": 20017922048,
+    "filesystem_used_bytes": 3691507712,
+    "filesystem_available_bytes": 15235899392,
+    "root_block_device_bytes": 21474836480
   },
   "final_host": {
-    "timestamp_utc": "2026-10-24T08:08:55.696446+00:00",
+    "timestamp_utc": "2026-10-24T08:31:36.246473+00:00",
     "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
-    "file_length_bytes": 71247593472,
-    "allocated_bytes": 71247593472,
-    "open_info_rc": 0,
-    "get_info_rc": 0,
-    "virtual_max_bytes": 1099511627776,
-    "api_physical_size_bytes": 71247593472,
-    "linux_read_exit": 0,
+    "virtual_max_bytes": 21474836480,
+    "file_length_bytes": 71180484608,
+    "allocated_bytes": 71180484608,
     "linux_fs": {
-      "total_bytes": 1081101176832,
-      "used_bytes": 3686035456,
-      "available_bytes": 1022422786048,
-      "swap_proc": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/sdc                                partition\t4194304\t\t0\t\t-2\n"
+      "total_bytes": 20017922048,
+      "used_bytes": 3691507712,
+      "available_bytes": 15235899392
     },
-    "wsl_stderr_text": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\rN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\r\u0000\n\u0000"
+    "d_free_bytes_after_backup_cleanup": 197188960256
   },
   "memory_additions": {
     "AGENTS.md": {
@@ -267,17 +184,23 @@
   "git_delivery_policy": "Commit only task-created records and HEAD+task-only additions to tracked docs. Existing untracked memory map remains untracked. Actual commit/push result is in final report and Git history.",
   "capacity_management": {
     "goal_bytes": 21474836480,
-    "resident_goal_bytes": 16106127360,
-    "linux_used_bytes": 3686035456,
+    "maximum_cap_applied": true,
+    "virtual_max_bytes": 21474836480,
     "linux_actual_use_goal_met": true,
-    "budget_spare_bytes": 17788801024,
-    "vhd_allocated_bytes": 71247593472,
-    "vhd_virtual_max_bytes": 1099511627776,
+    "linux_used_bytes": 3691507712,
+    "linux_reported_filesystem_bytes": 20017922048,
+    "linux_available_bytes": 15235899392,
+    "minimum_experiment_free_bytes": 5368709120,
+    "experiment_reserve_currently_met": true,
+    "resident_budget_note": "Measure ordinary-user available space; 20 minus 15 GiB is not a guarantee because filesystem overhead/reserved space reduces writable capacity",
+    "vhd_allocated_bytes": 71180484608,
     "vhd_physical_under_20_GiB": false,
-    "maximum_cap_applied": false,
-    "vhd_operation_performed": false,
-    "remaining_decision": "VHDX physical-space reclamation and any hard maximum require separate approval; do not perform automatically",
-    "swap_global_config_changed": false
+    "vhd_operation_performed": true,
+    "vhd_operation_scope": "explicitly approved native 20 GiB shrink only",
+    "extra_compaction_performed": false,
+    "sparse_mode_changed": false,
+    "swap_global_config_changed": false,
+    "remaining_decision": "Physical-space reclamation is separate; no automatic further operation"
   },
   "initial_safe_phase_snapshot": {
     "task": "PIJWM-WSL-CLEANUP-001",
@@ -714,22 +637,17 @@
     }
   },
   "current_capacity": {
-    "timestamp_utc": "2026-10-24T08:08:55.696446+00:00",
+    "timestamp_utc": "2026-10-24T08:31:36.246473+00:00",
     "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
-    "file_length_bytes": 71247593472,
-    "allocated_bytes": 71247593472,
-    "open_info_rc": 0,
-    "get_info_rc": 0,
-    "virtual_max_bytes": 1099511627776,
-    "api_physical_size_bytes": 71247593472,
-    "linux_read_exit": 0,
+    "virtual_max_bytes": 21474836480,
+    "file_length_bytes": 71180484608,
+    "allocated_bytes": 71180484608,
     "linux_fs": {
-      "total_bytes": 1081101176832,
-      "used_bytes": 3686035456,
-      "available_bytes": 1022422786048,
-      "swap_proc": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/sdc                                partition\t4194304\t\t0\t\t-2\n"
+      "total_bytes": 20017922048,
+      "used_bytes": 3691507712,
+      "available_bytes": 15235899392
     },
-    "wsl_stderr_text": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\rN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\r\u0000\n\u0000"
+    "d_free_bytes_after_backup_cleanup": 197188960256
   },
   "d_preservation": {
     "d_artifacts_files_excluding_task_temp": 21395,
@@ -783,7 +701,7 @@
       }
     }
   },
-  "current_memory_update": "Replace only prior task-owned sections. Preserve initial safe-phase snapshot, original user changes and untracked memory-map status.",
+  "current_memory_update": "Update only task-owned environment sections; keep older cleanup and pre-resize snapshots as history",
   "task_owned_section_prefix_integrity": [
     {
       "path": "AGENTS.md",
@@ -812,9 +730,8 @@
   ],
   "workspace_readme_after": {
     "path": "/home/shen/PIJWM/README_WSL.md",
-    "bytes": 1582,
-    "sha256": "cb5d3a65162ea38c86a3ba2dd23bfefdf105b161c68404afdb5eed167d304077",
-    "only_workspace_file": true
+    "bytes": 1851,
+    "sha256": "8323218b2acfbee8e81b3195a60f1f64f5596cf038fd192227c918f102d8e380"
   },
   "task_temp_cleanup": {
     "path": "code/artifacts/tmp/system-commandline-sentinel-files/dotnet-suggest-registration-git-credential-manager, Version=2.6.1.0, Culture=neutral, PublicKeyToken=null",
@@ -822,5 +739,298 @@
     "reason": "Task Git credential helper commandline registration sentinel inside controlled project TEMP",
     "removed": true,
     "note": "An authentication helper may recreate this sentinel on push; perform final cleanup and asset fingerprint check after last network Git operation."
-  }
+  },
+  "pre_resize_capacity_snapshot": {
+    "timestamp_utc": "2026-10-24T08:08:55.696446+00:00",
+    "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+    "file_length_bytes": 71247593472,
+    "allocated_bytes": 71247593472,
+    "open_info_rc": 0,
+    "get_info_rc": 0,
+    "virtual_max_bytes": 1099511627776,
+    "api_physical_size_bytes": 71247593472,
+    "linux_read_exit": 0,
+    "linux_fs": {
+      "total_bytes": 1081101176832,
+      "used_bytes": 3686035456,
+      "available_bytes": 1022422786048,
+      "swap_proc": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/sdc                                partition\t4194304\t\t0\t\t-2\n"
+    },
+    "wsl_stderr_text": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\rN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\r\u0000\n\u0000"
+  },
+  "pre_resize_environment_validation": {
+    "timestamp_utc": "2026-10-24T08:07:30.322471+00:00",
+    "user": "shen",
+    "uid": 1000,
+    "cwd": "/home/shen/PIJWM",
+    "deleted_targets_absent": {
+      "/home/shen/shen/datasets": true,
+      "/home/shen/shen/mixed_autonomy_lab": true,
+      "/home/shen/miniconda3/envs/cityflow310": true,
+      "/home/shen/miniconda3/envs/pg-mad": true
+    },
+    "workspace_files": [
+      "README_WSL.md"
+    ],
+    "workspace_git": false,
+    "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "module_availability": {
+      "pip": true,
+      "yaml": true,
+      "numpy": false,
+      "torch": false,
+      "pytest": false
+    },
+    "git_version": "git version 2.43.0",
+    "conda_base_exists": true,
+    "conda_base_python": {
+      "exit": 0,
+      "stdout": "Python 3.13.11",
+      "stderr": ""
+    },
+    "conda_base_command": {
+      "exit": 0,
+      "stdout": "conda 25.11.1",
+      "stderr": ""
+    },
+    "preserved_personal_paths": {
+      "/home/shen/.ssh": true,
+      "/home/shen/.bashrc": true,
+      "/home/shen/.profile": true,
+      "/home/shen/shen/paper_repos/ControlTraj": true,
+      "/home/shen/shen/paper_repos/DiffAIL": true,
+      "/home/shen/shen/paper_repos/flow": true
+    },
+    "stdlib_check": {
+      "sha256_ok": true,
+      "workspace_accessible": true
+    },
+    "filesystem": {
+      "total_bytes": 1081101176832,
+      "used_bytes": 3684782080,
+      "available_bytes": 1022424039424
+    },
+    "directory_allocated_bytes": {
+      "/home/shen": {
+        "bytes": 644538368,
+        "exit": 0
+      },
+      "/home/shen/PIJWM": {
+        "bytes": 8192,
+        "exit": 0
+      },
+      "/home/shen/miniconda3": {
+        "bytes": 477065216,
+        "exit": 0
+      },
+      "/home/shen/shen": {
+        "bytes": 159027200,
+        "exit": 0
+      },
+      "/var/log": {
+        "bytes": null,
+        "exit": 1
+      }
+    }
+  },
+  "capacity_resize_phase": {
+    "authorization": "Researcher: 可以直接缩容，直接就是设置为20GB就行了; original task target 20 GiB retained",
+    "requested_bytes": 21474836480,
+    "official_source": "https://raw.githubusercontent.com/microsoft/WSL/2.6.3/src/windows/service/exe/LxssUserSession.cpp",
+    "official_function": "LxssUserSessionImpl::ResizeDistribution",
+    "backup": {
+      "stage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\tmp\\wsl_resize_20gib_20261024T082223Z",
+      "backup": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\tmp\\wsl_resize_20gib_20261024T082223Z\\Ubuntu_before_resize.tar",
+      "backup_bytes": 3283066880,
+      "backup_sha256": "82ef559dd694b177a78fa8c815690c8fb5ff507a2b1b04eb5f3b71a11e2eb689",
+      "members": 81112,
+      "regular_members": 61769,
+      "regular_payload_bytes": 3672544561,
+      "readme_sha256_matches": true,
+      "archive_structure_readable": true,
+      "temporary_within_project": true,
+      "before": {
+        "timestamp_utc": "2026-10-24T08:21:17.921472+00:00",
+        "total_bytes": 1081101176832,
+        "used_bytes": 3686739968,
+        "available_bytes": 1022422081536,
+        "root_device": "/dev/sdd",
+        "user_processes": {
+          "exit": 1,
+          "stdout": "    PID COMMAND         COMMAND\n"
+        },
+        "workspace_readme_sha256": "cb5d3a65162ea38c86a3ba2dd23bfefdf105b161c68404afdb5eed167d304077",
+        "home_metadata_entries": 14833,
+        "home_metadata_sha256": "d94ec4bd274380cf75a381bfb3ce09acc1550e82834cdfef39618cdf75e01dbd",
+        "retained_repos": {
+          "/home/shen/shen/paper_repos/ControlTraj": {
+            "head": "1f6098c023084872f16493e58c5885f4b4efa03f",
+            "status_sha256": "103a48ec956ef570e602dacc967d06e8965f77bca585d5fedd3cbe4e15c97084",
+            "status_entry_count": 9
+          },
+          "/home/shen/shen/paper_repos/DiffAIL": {
+            "head": "4683afac21f44582719f7ae634c535c95540e461",
+            "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "status_entry_count": 0
+          },
+          "/home/shen/shen/paper_repos/flow": {
+            "head": "a511c41c48e6b928bb2060de8ad1ef3c3e3d9554",
+            "status_sha256": "16470ad3772f5e824637281ba27a792976a9a80a551596ba738ef7d505e6d1e2",
+            "status_entry_count": 314
+          }
+        },
+        "no_locked_test_in_home": true
+      }
+    },
+    "temporary_backup_removed_after_acceptance": true,
+    "cold_acceptance": {
+      "timestamp_utc": "2026-10-24T08:31:36.246473+00:00",
+      "vhd_path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+      "vhd_virtual_max_bytes": 21474836480,
+      "vhd_file_length_bytes": 71180484608,
+      "vhd_allocated_bytes": 71180484608,
+      "d_free_bytes_after_backup_cleanup": 197188960256,
+      "backup_sha256_reverified": true,
+      "temporary_backup_removed": true,
+      "temporary_backup_bytes_removed": 3283066880,
+      "temporary_stage_absent": true,
+      "native_first_attempt": {
+        "command": [
+          "wsl.exe",
+          "--manage",
+          "Ubuntu",
+          "--resize",
+          "20GB"
+        ],
+        "exit": 4294967295,
+        "stdout": "无法完成该操作，因为 vhdx 当前正在使用中。若要强制 WSL 停止使用： wsl.exe --shutdown\r\n错误代码: Wsl/Service/WSL_E_DISTRO_NOT_STOPPED\r\n",
+        "stderr": "",
+        "stdout_base64": "4GXVbIxbEGLli81kXE8M/+BWOk4gAHYAaABkAHgAIABTX01SY2soV39PKHUtTgIw5YKBiTpfNlIgAFcAUwBMACAAXFBia39PKHUa/yAAdwBzAGwALgBlAHgAZQAgAC0ALQBzAGgAdQB0AGQAbwB3AG4ADQAKABmV74vjTgF4OgAgAFcAcwBsAC8AUwBlAHIAdgBpAGMAZQAvAFcAUwBMAF8ARQBfAEQASQBTAFQAUgBPAF8ATgBPAFQAXwBTAFQATwBQAFAARQBEAA0ACgA=",
+        "stderr_base64": "",
+        "timestamp_utc": "2026-10-24T08:24:20.070054+00:00"
+      },
+      "native_success": {
+        "command": [
+          "wsl.exe",
+          "--manage",
+          "Ubuntu",
+          "--resize",
+          "20GB"
+        ],
+        "pre_action": "normal wsl --shutdown; Ubuntu is the only registered distribution",
+        "exit": 0,
+        "stdout": "操作成功完成。 \r\n",
+        "stderr": "e2fsck 1.46.5 (30-Dec-2021)\nPass 1: Checking inodes, blocks, and sizes\nresize2fs 1.46.5 (30-Dec-2021)\n",
+        "stdout_base64": "zWRcTxBin1KMWxBiAjAgAA0ACgA=",
+        "stderr_base64": "ZTJmc2NrIDEuNDYuNSAoMzAtRGVjLTIwMjEpClBhc3MgMTogQ2hlY2tpbmcgaW5vZGVzLCBibG9ja3MsIGFuZCBzaXplcwpyZXNpemUyZnMgMS40Ni41ICgzMC1EZWMtMjAyMSkK",
+        "timestamp_utc": "2026-10-24T08:26:06.275557+00:00"
+      },
+      "distro_final_state": "Stopped after successful startup verification",
+      "no_compaction_or_sparse_mode_change": true
+    },
+    "readback": {
+      "host": {
+        "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+        "file_length_bytes": 71210893312,
+        "allocated_bytes": 71210893312,
+        "d_free_bytes_with_backup": 196524167168
+      },
+      "linux_after": {
+        "timestamp_utc": "2026-10-24T08:28:10.523437+00:00",
+        "total_bytes": 20017922048,
+        "used_bytes": 3682873344,
+        "available_bytes": 15244533760,
+        "root_device": "/dev/sdd",
+        "user_processes": {
+          "exit": 1,
+          "stdout": "    PID COMMAND         COMMAND\n"
+        },
+        "workspace_readme_sha256": "cb5d3a65162ea38c86a3ba2dd23bfefdf105b161c68404afdb5eed167d304077",
+        "home_metadata_entries": 14833,
+        "home_metadata_sha256": "d94ec4bd274380cf75a381bfb3ce09acc1550e82834cdfef39618cdf75e01dbd",
+        "retained_repos": {
+          "/home/shen/shen/paper_repos/ControlTraj": {
+            "head": "1f6098c023084872f16493e58c5885f4b4efa03f",
+            "status_sha256": "103a48ec956ef570e602dacc967d06e8965f77bca585d5fedd3cbe4e15c97084",
+            "status_entry_count": 9
+          },
+          "/home/shen/shen/paper_repos/DiffAIL": {
+            "head": "4683afac21f44582719f7ae634c535c95540e461",
+            "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "status_entry_count": 0
+          },
+          "/home/shen/shen/paper_repos/flow": {
+            "head": "a511c41c48e6b928bb2060de8ad1ef3c3e3d9554",
+            "status_sha256": "16470ad3772f5e824637281ba27a792976a9a80a551596ba738ef7d505e6d1e2",
+            "status_entry_count": 314
+          }
+        },
+        "no_locked_test_in_home": true
+      },
+      "block_device_bytes": 21474836480,
+      "checks": {
+        "home_metadata_matches": true,
+        "home_entry_count_matches": true,
+        "retained_repo_heads_and_states_match": true,
+        "readme_content_matches": true,
+        "block_device_exactly_20_GiB": true,
+        "filesystem_used_below_15_GiB": true
+      }
+    },
+    "environment": {
+      "timestamp_utc": "2026-10-24T08:29:52.305982+00:00",
+      "uid": 1000,
+      "cwd": "/home/shen/PIJWM",
+      "python": "3.12.3",
+      "workspace_accessible": true,
+      "stdlib_ok": true,
+      "base_python": "Python 3.13.11",
+      "git": "git version 2.43.0",
+      "modules": {
+        "pip": true,
+        "yaml": true,
+        "numpy": false,
+        "torch": false,
+        "pytest": false
+      },
+      "filesystem_used_bytes": 3691507712,
+      "filesystem_available_bytes": 15235899392
+    },
+    "workspace_readme_after": {
+      "path": "/home/shen/PIJWM/README_WSL.md",
+      "bytes": 1851,
+      "sha256": "8323218b2acfbee8e81b3195a60f1f64f5596cf038fd192227c918f102d8e380"
+    },
+    "d_preservation": {
+      "asset_files": 21395,
+      "asset_bytes": 37569160502,
+      "asset_metadata_sha256": "d6f06968e79db79ebc0c6e0d513cdcdf47bcd16a5a0569d9ed81c4d89d8620f9",
+      "user_status_sha256": "a58cc8df565474c48bdce6b64520c01159f1fccaba1ab76d69aa4403a4c0f28f",
+      "head_before_memory_update": "f7cf5d1a9f2790d8c7fce9d8e5c0654a04b8a8bb",
+      "temporary_export_removed": true
+    },
+    "note": "No automatic additional compaction, sparse mode, global config, distro import/unregister/reinstall"
+  },
+  "latest_memory_prefix_integrity": [
+    {
+      "path": "AGENTS.md",
+      "original_user_prefix_sha256": "3b4b1e229af38d2203db8fb70f796aae64794081cab9136605fe59c366b8f35e",
+      "bytes": 33414
+    },
+    {
+      "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+      "original_user_prefix_sha256": "a2a623336d9939f72636eadddaebf81a684f73e14679692c32d18500c5ecca2f",
+      "bytes": 84604
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_AND_SOURCES.md",
+      "original_user_prefix_sha256": "7d7d6dbfc9c459b05ac161aaf99612bd76b0b98061757112e22069d82c841ef3",
+      "bytes": 20944
+    },
+    {
+      "path": "docs/CHANGELOG.md",
+      "original_user_prefix_sha256": "a2290abc2ddeaaf765dcde6f8ea454412ed410497503058c5c9e8ba3629c7ea6",
+      "bytes": 73356
+    }
+  ]
 }
