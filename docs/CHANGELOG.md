@@ -577,3 +577,10 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 - 使用 WSL 2.6.3 原生 `wsl --manage Ubuntu --resize 20GB`，将 ext4 与 VHDX 最大容量从 1024 GiB 缩至 20 GiB；离线 API 和 Linux 块设备均确认 21474836480 B。
 - 验收后 Linux 已用 3691507712 B、普通用户可用 15235899392 B；VHDX 物理仍 71180484608 B，不将上限设置冒称物理回收。
 - 临时完整导出 3283066880 B、81112 成员验证通过，缩容后 home 元数据和仓库状态一致，Python/Git/base 环境可用；已清除本任务恢复副本。保留既有用户工作区，无正式实验或封存测试访问。
+
+
+### 经研究者明确批准：Ubuntu VHDX 离线压实
+
+- 根 ext4 fstrim 成功后正常停止唯一 Ubuntu，使用微软 CompactVirtualDisk（flags=0）完成离线压实，20 GiB 上限保持不变。
+- VHDX 冷态实际分配由 71180484608 B 降至 4761583616 B，净减少 66418900992 B；D 盘可用快照 257250721792 B。没有把 Linux 删除和宿主回收重复相加。
+- 完整短期导出 3284480000 B / 81112 成员已验证并在启动验收后清除；home 元数据、保留仓库、Python/Git/base 环境及 D 盘科研资产一致。更新环境事实和 README，保留用户原有工作区，无科研实验。

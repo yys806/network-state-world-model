@@ -1,7 +1,7 @@
 {
   "task": "PIJWM-WSL-CLEANUP-001",
   "date": "2026-10-24",
-  "status": "AUTHORIZED_20_GiB_VHD_MAXIMUM_APPLIED_AND_VERIFIED; FILES_AND_ENVIRONMENT_PRESERVED; VHDX_PHYSICAL_SPACE_STILL_ABOVE_20_GiB; STOPPED",
+  "status": "AUTHORIZED_OFFLINE_COMPACTION_COMPLETE; VHDX_MAXIMUM_20_GiB_AND_PHYSICAL_UNDER_20_GiB; FILES_AND_ENVIRONMENT_PRESERVED; STOPPED",
   "cleanup": {
     "deleted": [
       {
@@ -89,7 +89,8 @@
     "large_d_data_copied": false,
     "linux_workspace_readme_only": true,
     "vhd_resized_with_explicit_authorization": true,
-    "global_wsl_config_modified": false
+    "global_wsl_config_modified": false,
+    "vhd_physical_compaction_with_explicit_authorization": true
   },
   "windows_repository_baseline": {
     "AGENTS.md": {
@@ -117,7 +118,7 @@
     "d_artifacts_logical_bytes": 37569160502
   },
   "environment_validation": {
-    "timestamp_utc": "2026-10-24T08:29:52.305982+00:00",
+    "timestamp_utc": "2026-10-24T08:48:17.291711+00:00",
     "uid": 1000,
     "cwd": "/home/shen/PIJWM",
     "python": "3.12.3",
@@ -132,28 +133,28 @@
       "torch": false,
       "pytest": false
     },
-    "filesystem_used_bytes": 3691507712,
-    "filesystem_available_bytes": 15235899392
+    "filesystem_used_bytes": 3706249216,
+    "filesystem_available_bytes": 15221157888
   },
   "final_linux": {
-    "timestamp_utc": "2026-10-24T08:29:52.305982+00:00",
+    "timestamp_utc": "2026-10-24T08:48:17.291711+00:00",
     "filesystem_total_bytes": 20017922048,
-    "filesystem_used_bytes": 3691507712,
-    "filesystem_available_bytes": 15235899392,
+    "filesystem_used_bytes": 3706249216,
+    "filesystem_available_bytes": 15221157888,
     "root_block_device_bytes": 21474836480
   },
   "final_host": {
-    "timestamp_utc": "2026-10-24T08:31:36.246473+00:00",
+    "timestamp_utc": "2026-10-24T08:50:20.907284+00:00",
     "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
     "virtual_max_bytes": 21474836480,
-    "file_length_bytes": 71180484608,
-    "allocated_bytes": 71180484608,
+    "file_length_bytes": 4761583616,
+    "allocated_bytes": 4761583616,
     "linux_fs": {
       "total_bytes": 20017922048,
-      "used_bytes": 3691507712,
-      "available_bytes": 15235899392
+      "used_bytes": 3706249216,
+      "available_bytes": 15221157888
     },
-    "d_free_bytes_after_backup_cleanup": 197188960256
+    "d_free_bytes_after_backup_cleanup": 257250721792
   },
   "memory_additions": {
     "AGENTS.md": {
@@ -187,20 +188,22 @@
     "maximum_cap_applied": true,
     "virtual_max_bytes": 21474836480,
     "linux_actual_use_goal_met": true,
-    "linux_used_bytes": 3691507712,
+    "linux_used_bytes": 3706249216,
     "linux_reported_filesystem_bytes": 20017922048,
-    "linux_available_bytes": 15235899392,
+    "linux_available_bytes": 15221157888,
     "minimum_experiment_free_bytes": 5368709120,
     "experiment_reserve_currently_met": true,
     "resident_budget_note": "Measure ordinary-user available space; 20 minus 15 GiB is not a guarantee because filesystem overhead/reserved space reduces writable capacity",
-    "vhd_allocated_bytes": 71180484608,
-    "vhd_physical_under_20_GiB": false,
+    "vhd_allocated_bytes": 4761583616,
+    "vhd_physical_under_20_GiB": true,
     "vhd_operation_performed": true,
-    "vhd_operation_scope": "explicitly approved native 20 GiB shrink only",
-    "extra_compaction_performed": false,
+    "vhd_operation_scope": "Previously approved native shrink, then separately approved physical compaction",
+    "extra_compaction_performed": true,
     "sparse_mode_changed": false,
     "swap_global_config_changed": false,
-    "remaining_decision": "Physical-space reclamation is separate; no automatic further operation"
+    "remaining_decision": "No capacity blocker remains; no automatic further maintenance",
+    "compaction_explicitly_authorized": true,
+    "compaction_api": "CompactVirtualDisk"
   },
   "initial_safe_phase_snapshot": {
     "task": "PIJWM-WSL-CLEANUP-001",
@@ -637,17 +640,17 @@
     }
   },
   "current_capacity": {
-    "timestamp_utc": "2026-10-24T08:31:36.246473+00:00",
+    "timestamp_utc": "2026-10-24T08:50:20.907284+00:00",
     "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
     "virtual_max_bytes": 21474836480,
-    "file_length_bytes": 71180484608,
-    "allocated_bytes": 71180484608,
+    "file_length_bytes": 4761583616,
+    "allocated_bytes": 4761583616,
     "linux_fs": {
       "total_bytes": 20017922048,
-      "used_bytes": 3691507712,
-      "available_bytes": 15235899392
+      "used_bytes": 3706249216,
+      "available_bytes": 15221157888
     },
-    "d_free_bytes_after_backup_cleanup": 197188960256
+    "d_free_bytes_after_backup_cleanup": 257250721792
   },
   "d_preservation": {
     "d_artifacts_files_excluding_task_temp": 21395,
@@ -701,7 +704,7 @@
       }
     }
   },
-  "current_memory_update": "Update only task-owned environment sections; keep older cleanup and pre-resize snapshots as history",
+  "current_memory_update": "Only task-owned environment sections changed; older cleanup and capacity snapshots remain historical",
   "task_owned_section_prefix_integrity": [
     {
       "path": "AGENTS.md",
@@ -730,8 +733,8 @@
   ],
   "workspace_readme_after": {
     "path": "/home/shen/PIJWM/README_WSL.md",
-    "bytes": 1851,
-    "sha256": "8323218b2acfbee8e81b3195a60f1f64f5596cf038fd192227c918f102d8e380"
+    "bytes": 1865,
+    "sha256": "34445d1bede1a3d21a241d43a9a6299add1df53692e502e3e235d3ad39385d57"
   },
   "task_temp_cleanup": {
     "path": "code/artifacts/tmp/system-commandline-sentinel-files/dotnet-suggest-registration-git-credential-manager, Version=2.6.1.0, Culture=neutral, PublicKeyToken=null",
@@ -1013,24 +1016,258 @@
   },
   "latest_memory_prefix_integrity": [
     {
-      "path": "AGENTS.md",
-      "original_user_prefix_sha256": "3b4b1e229af38d2203db8fb70f796aae64794081cab9136605fe59c366b8f35e",
-      "bytes": 33414
-    },
-    {
       "path": "AI_CONTEXT/00_PROJECT_STATE.md",
-      "original_user_prefix_sha256": "a2a623336d9939f72636eadddaebf81a684f73e14679692c32d18500c5ecca2f",
-      "bytes": 84604
+      "original_user_prefix_bytes": 84604,
+      "original_user_prefix_sha256": "a2a623336d9939f72636eadddaebf81a684f73e14679692c32d18500c5ecca2f"
     },
     {
       "path": "docs/PROJECT_MEMORY_AND_SOURCES.md",
-      "original_user_prefix_sha256": "7d7d6dbfc9c459b05ac161aaf99612bd76b0b98061757112e22069d82c841ef3",
-      "bytes": 20944
+      "original_user_prefix_bytes": 20944,
+      "original_user_prefix_sha256": "7d7d6dbfc9c459b05ac161aaf99612bd76b0b98061757112e22069d82c841ef3"
     },
     {
       "path": "docs/CHANGELOG.md",
-      "original_user_prefix_sha256": "a2290abc2ddeaaf765dcde6f8ea454412ed410497503058c5c9e8ba3629c7ea6",
-      "bytes": 73356
+      "original_user_prefix_bytes": 73356,
+      "original_user_prefix_sha256": "a2290abc2ddeaaf765dcde6f8ea454412ed410497503058c5c9e8ba3629c7ea6"
     }
-  ]
+  ],
+  "pre_compaction_capacity_snapshot": {
+    "timestamp_utc": "2026-10-24T08:31:36.246473+00:00",
+    "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+    "virtual_max_bytes": 21474836480,
+    "file_length_bytes": 71180484608,
+    "allocated_bytes": 71180484608,
+    "linux_fs": {
+      "total_bytes": 20017922048,
+      "used_bytes": 3691507712,
+      "available_bytes": 15235899392
+    },
+    "d_free_bytes_after_backup_cleanup": 197188960256
+  },
+  "physical_compaction_phase": {
+    "authorization": "Researcher: 可以的，压实一下吧",
+    "preflight": {
+      "timestamp_utc": "2026-10-24T08:42:38.299044+00:00",
+      "vhd_path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+      "vhd_file_bytes": 71180484608,
+      "vhd_allocated_bytes": 71180484608,
+      "vhd_virtual_max_bytes": 21474836480,
+      "direct_compaction_handle_open_code": 0,
+      "d_free_bytes": 194644451328,
+      "windows_admin": false,
+      "distributions": "  NAME      STATE           VERSION\r\n* Ubuntu    Stopped         2\r\n",
+      "head": "0a372a1600034327b2ee51aa37ddbb29914fda63",
+      "user_status_sha256": "a58cc8df565474c48bdce6b64520c01159f1fccaba1ab76d69aa4403a4c0f28f",
+      "cached_paths": "",
+      "documents": {
+        "AGENTS.md": {
+          "bytes": 35209,
+          "sha256": "de7b588fbd10c7562ea0b843f8625cdca157bbd8b6b9efdb479c92e81a864a55"
+        },
+        "AI_CONTEXT/00_PROJECT_STATE.md": {
+          "bytes": 87630,
+          "sha256": "e737caf1e3dbc93373c4ddd2c77f4be29ea909a74c2ebc95b69a406938b22c8a"
+        },
+        "docs/PROJECT_MEMORY_AND_SOURCES.md": {
+          "bytes": 22042,
+          "sha256": "2407891a18ff81358602dffbe8f0d15604ddc2df931fa09ccfa449d86fef5b0f"
+        },
+        "docs/CHANGELOG.md": {
+          "bytes": 75205,
+          "sha256": "a07677abcb3d3ae61a41a50fb5bb8d7b6536e7785ee9ac3de8004daffa2ca86a"
+        },
+        "docs/WSL_ENVIRONMENT.md": {
+          "bytes": 12651,
+          "sha256": "ef28fe7691c99cb94e9b193e103f1ace8f23bac9c186c210f0d2124b0530397a"
+        },
+        "docs/WSL_CLEANUP_20261024.json": {
+          "bytes": 40011,
+          "sha256": "1a5e0011f68bb10e2c99f2afef63024ded9fd21317569b21a130d1240120b814"
+        }
+      },
+      "previous_capacity_management": {
+        "goal_bytes": 21474836480,
+        "maximum_cap_applied": true,
+        "virtual_max_bytes": 21474836480,
+        "linux_actual_use_goal_met": true,
+        "linux_used_bytes": 3691507712,
+        "linux_reported_filesystem_bytes": 20017922048,
+        "linux_available_bytes": 15235899392,
+        "minimum_experiment_free_bytes": 5368709120,
+        "experiment_reserve_currently_met": true,
+        "resident_budget_note": "Measure ordinary-user available space; 20 minus 15 GiB is not a guarantee because filesystem overhead/reserved space reduces writable capacity",
+        "vhd_allocated_bytes": 71180484608,
+        "vhd_physical_under_20_GiB": false,
+        "vhd_operation_performed": true,
+        "vhd_operation_scope": "explicitly approved native 20 GiB shrink only",
+        "extra_compaction_performed": false,
+        "sparse_mode_changed": false,
+        "swap_global_config_changed": false,
+        "remaining_decision": "Physical-space reclamation is separate; no automatic further operation"
+      }
+    },
+    "linux_before": {
+      "timestamp_utc": "2026-10-24T08:43:35.272856+00:00",
+      "filesystem_total_bytes": 20017922048,
+      "filesystem_used_bytes": 3692478464,
+      "filesystem_available_bytes": 15234928640,
+      "root_device": "/dev/sdd",
+      "retained_repos": {
+        "/home/shen/shen/paper_repos/ControlTraj": {
+          "head": "1f6098c023084872f16493e58c5885f4b4efa03f",
+          "status_sha256": "103a48ec956ef570e602dacc967d06e8965f77bca585d5fedd3cbe4e15c97084"
+        },
+        "/home/shen/shen/paper_repos/DiffAIL": {
+          "head": "4683afac21f44582719f7ae634c535c95540e461",
+          "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "/home/shen/shen/paper_repos/flow": {
+          "head": "a511c41c48e6b928bb2060de8ad1ef3c3e3d9554",
+          "status_sha256": "16470ad3772f5e824637281ba27a792976a9a80a551596ba738ef7d505e6d1e2"
+        }
+      },
+      "home_metadata_entries": 14833,
+      "home_metadata_sha256": "cc3117baa73e2ef721e0f0c8ff8dab3d809b8614f805b910779983c7a1f9ae72",
+      "readme_sha256": "8323218b2acfbee8e81b3195a60f1f64f5596cf038fd192227c918f102d8e380",
+      "fstrim": "/usr/sbin/fstrim",
+      "no_shen_user_processes": true,
+      "no_locked_test_in_home": true
+    },
+    "temporary_recovery_export": {
+      "stage": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\tmp\\wsl_compact_20261024T084430Z",
+      "backup": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\tmp\\wsl_compact_20261024T084430Z\\Ubuntu_before_compact.tar",
+      "backup_bytes": 3284480000,
+      "backup_sha256": "17b7b6aaf906ecbadc5e96ac580b575266ada1f4090a1b85e2a6601d336d42d5",
+      "archive_members": 81112,
+      "regular_members": 61769,
+      "payload_bytes": 3673111734,
+      "readme_hash_matches": true,
+      "all_regular_members_read": true,
+      "project_internal_temporary": true
+    },
+    "native": {
+      "timestamp_utc": "2026-10-24T08:47:28.125374+00:00",
+      "operation": "Microsoft CompactVirtualDisk offline filesystem-agnostic compaction",
+      "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+      "api_return_code": 0,
+      "flags": 0,
+      "parameters_version": 1,
+      "duration_seconds": 15.135721399999966,
+      "before": {
+        "file_bytes": 71180484608,
+        "allocated_bytes": 71180484608,
+        "virtual_max_bytes": 21474836480,
+        "d_free_bytes": 190189744128
+      },
+      "after": {
+        "file_bytes": 4728029184,
+        "allocated_bytes": 4728029184,
+        "virtual_max_bytes": 21474836480,
+        "d_free_bytes": 256575090688
+      },
+      "vhd_allocated_reduction_bytes": 66452455424,
+      "d_free_increase_during_compaction_bytes": 66385346560,
+      "fstrim": {
+        "command": [
+          "/usr/sbin/fstrim",
+          "-v",
+          "/"
+        ],
+        "exit": 0,
+        "stdout": "/: 15.2 GiB (16299589632 bytes) trimmed\n",
+        "stderr": "",
+        "root_filesystem": "ext4"
+      },
+      "backup_retained_until_post_boot_acceptance": true,
+      "no_sparse_mode_or_global_configuration_change": true
+    },
+    "post_boot_acceptance": {
+      "timestamp_utc": "2026-10-24T08:48:18.810202+00:00",
+      "checks": {
+        "home_metadata_matches": true,
+        "home_entry_count_matches": true,
+        "retained_repository_heads_and_user_states_match": true,
+        "readme_hash_matches": true,
+        "filesystem_total_unchanged": true
+      },
+      "linux_after": {
+        "timestamp_utc": "2026-10-24T08:48:16.155638+00:00",
+        "filesystem_total_bytes": 20017922048,
+        "filesystem_used_bytes": 3697856512,
+        "filesystem_available_bytes": 15229550592,
+        "root_device": "/dev/sdd",
+        "retained_repos": {
+          "/home/shen/shen/paper_repos/ControlTraj": {
+            "head": "1f6098c023084872f16493e58c5885f4b4efa03f",
+            "status_sha256": "103a48ec956ef570e602dacc967d06e8965f77bca585d5fedd3cbe4e15c97084"
+          },
+          "/home/shen/shen/paper_repos/DiffAIL": {
+            "head": "4683afac21f44582719f7ae634c535c95540e461",
+            "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "/home/shen/shen/paper_repos/flow": {
+            "head": "a511c41c48e6b928bb2060de8ad1ef3c3e3d9554",
+            "status_sha256": "16470ad3772f5e824637281ba27a792976a9a80a551596ba738ef7d505e6d1e2"
+          }
+        },
+        "home_metadata_entries": 14833,
+        "home_metadata_sha256": "cc3117baa73e2ef721e0f0c8ff8dab3d809b8614f805b910779983c7a1f9ae72",
+        "readme_sha256": "8323218b2acfbee8e81b3195a60f1f64f5596cf038fd192227c918f102d8e380",
+        "fstrim": "/usr/sbin/fstrim",
+        "no_shen_user_processes": true,
+        "no_locked_test_in_home": true
+      },
+      "environment": {
+        "timestamp_utc": "2026-10-24T08:48:17.291711+00:00",
+        "uid": 1000,
+        "cwd": "/home/shen/PIJWM",
+        "python": "3.12.3",
+        "workspace_accessible": true,
+        "stdlib_ok": true,
+        "base_python": "Python 3.13.11",
+        "git": "git version 2.43.0",
+        "modules": {
+          "pip": true,
+          "yaml": true,
+          "numpy": false,
+          "torch": false,
+          "pytest": false
+        },
+        "filesystem_used_bytes": 3706249216,
+        "filesystem_available_bytes": 15221157888
+      },
+      "root_block_device_bytes": 21474836480,
+      "ubuntu_boot_and_shen_access_passed": true,
+      "no_training_or_gpu_or_locked_test_access": true
+    },
+    "final_cold_acceptance": {
+      "timestamp_utc": "2026-10-24T08:50:20.907284+00:00",
+      "vhd_path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+      "vhd_virtual_max_bytes": 21474836480,
+      "vhd_file_length_bytes": 4761583616,
+      "vhd_allocated_bytes": 4761583616,
+      "d_total_bytes": 699696939008,
+      "d_free_bytes": 257250721792,
+      "d_free_GiB": 239.58340454101562,
+      "temporary_backup_sha256_reverified": true,
+      "temporary_backup_removed": true,
+      "temporary_backup_bytes_removed": 3284480000,
+      "temporary_stage_absent": true,
+      "readme_after": {
+        "path": "/home/shen/PIJWM/README_WSL.md",
+        "bytes": 1865,
+        "sha256": "34445d1bede1a3d21a241d43a9a6299add1df53692e502e3e235d3ad39385d57"
+      },
+      "d_assets_files": 21395,
+      "d_assets_bytes": 37569160502,
+      "d_assets_metadata_sha256": "d6f06968e79db79ebc0c6e0d513cdcdf47bcd16a5a0569d9ed81c4d89d8620f9",
+      "original_user_status_sha256": "a58cc8df565474c48bdce6b64520c01159f1fccaba1ab76d69aa4403a4c0f28f",
+      "ubuntu_final_state": "Stopped after successful startup and environment verification",
+      "no_new_user_data_deleted": true,
+      "no_global_wsl_configuration_or_sparse_mode_change": true
+    },
+    "net_final_vhd_reduction_bytes": 66418900992,
+    "source": "https://learn.microsoft.com/en-us/windows/win32/api/virtdisk/nf-virtdisk-compactvirtualdisk",
+    "no_unique_user_data_deleted": true
+  }
 }
