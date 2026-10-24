@@ -556,3 +556,10 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 ## 2026-10-11 STEP 6.4M
 
 新增 `PIJWM_STEP_06_4M_ROUTE_COMM_FLOW_DYNAMIC_STATE_CONTRACT_V1.md`、隔离参考状态机、CPU 机制 receipt 和独立验收器。真实 Task_5 的 Route/TTI/wireless 事件顺序与同根 A/B Flow birth 通过；正式动态 Flow H4 与 Scorer 可比性保持未建立/阻塞。无 GPU、训练、正式搜索或 locked_test。
+
+
+## 2026-10-24 — PIJWM-WSL-CLEANUP-001
+
+- 核实 Ubuntu WSL 2、D 盘 VHDX 与运行时 swap，精确清理两个 APT 索引缓存（113,250,795 字节）。保留其他项目、环境、科研资产和用户修改。
+- 新增 docs/WSL_ENVIRONMENT.md、docs/WSL_CLEANUP_20261024.json，追加 AGENTS/AI_CONTEXT 的 WSL 预算与安全规范；/home/shen/PIJWM 仅添加说明和通过轻量标准库自检。
+- 20 GiB 未达标；VHDX 压实/缩容、swap 全局配置与非 PIJWM 大目录处理待批准。未运行正式实验。

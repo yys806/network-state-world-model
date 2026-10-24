@@ -493,3 +493,17 @@ r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 
 6.4M 已完成隔离合同和 CPU 机制验证。真实 R1 Task_5 顺序是：Route setter/Route 消费 → `waiting_to_return` 转 `returning` → 旧 `last_transmission_time` 的 TTI 检查 → `TASK_FAIL_OUT_OF_TTI` → 未进入 wireless RB service。隔离 A/B 从相同 pre-Route anchor 派生，B 的 `flow::Task_5::Return::0` 与官方 Ledger identity 一致；没有新增 AirFogSim step 或 WM transition。
 
 当前状态：`SOURCE_EVENT_ORDER_VERIFIED=PASS`、`ROUTE_COMM_TTI_CONTRACT=RESEARCH_DECISION_REQUIRED`、`INPUT_RETURN_FLOW_STATE_CONTRACT=PASS`（单跳参考）、`DYNAMIC_STATE_INTERFACE_READINESS=PASS`（隔离 binding）、`COMMON_ANCHOR_CAUSALITY=PASS`（隔离 A/B）、`FROZEN_WM_H4_COMPATIBILITY=NOT_ESTABLISHED_FORMAL_ROUTE_SHADOW_ONLY`、`SCORER_COMPARABILITY_READINESS=BLOCKED`、`FORMAL_INTEGRATION_READINESS=RESEARCH_DECISION_REQUIRED`、`RETRAIN_REQUIRED=UNDETERMINED`。下一步只等待研究者冻结 Route→Comm→Flow→TTI 合同；GPU 和 locked_test 关闭。
+
+
+## WSL 环境治理事实（2026-10-24；PIJWM-WSL-CLEANUP-001）
+
+- 本节仅是工程环境事实，不改变当前候选研究方向或任何实验结论。详见 `docs/WSL_ENVIRONMENT.md` 与机器可读记录 `docs/WSL_CLEANUP_20261024.json`。
+- 已验证：仅注册 Ubuntu（WSL 2），Ubuntu 24.04.3 LTS；WSL 2.6.3.0，内核 6.6.87.2-microsoft-standard-WSL2。
+- Ubuntu VHDX 位于 `D:\WSL\Ubuntu\ext4.vhdx`；文件长度及实际分配均为 71,251,787,776 字节（66.358398 GiB），清理前后未缩小；虚拟最大容量 1,099,511,627,776 字节（1024 GiB）。没有修改 VHDX 或 Windows 全局配置。
+- 根文件系统总容量 1081101176832 字节，已用 46064521216 字节（42.900928 GiB），可用 980044300288 字节；快照时间 2026-10-24T07:50:09Z。20 GiB 目标未达成，不能声称已实施容量限制。
+- `/home/shen/PIJWM` 可由 shen 登录访问；本轮只添加 README_WSL.md，未复制 D 盘数据/代码，未建立本地 Git 仓库。D 盘仍是工程主项目。
+- `/usr/bin/python3` 为 3.12.3，标准库读写自检通过；pip、yaml 模块可发现，NumPy/PyTorch/pytest 不可发现。Git 2.43.0 可只读访问 D 盘仓库。未安装/删除软件环境，未来科学计算依赖须按具体实验重新准备。
+- 仅删除两个可重建 APT 二进制索引缓存，共 113,250,795 字节；Conda、Mixed Autonomy Lab、交通数据集和其他项目均保留。未发现其他 PIJWM/AirFog 命名路径，不代表其他目录可删除。
+- swap 虚拟容量 4 GiB、当次使用 0；宿主文件在 `C:\Users\Lenovo\AppData\Local\Temp\<会话GUID>\swap.vhdx`，实测 37,748,736 字节（36 MiB），路径可随 WSL 会话变化。未改 .wslconfig；迁移须另行批准。
+- DNS 与 PyPI HTTPS HEAD（200）通过；GitHub HTTPS HEAD 超时，启动报告 localhost 代理未映射至 NAT 模式 WSL。未修改网络配置，不声称 GitHub 网络已恢复。
+- 容量主要被非 PIJWM 目录及环境占用；其清理、VHDX 压实/缩容和全局 swap 配置均待研究者决策。不自动启动训练、GPU、仿真或 locked_test 评估。

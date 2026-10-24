@@ -217,3 +217,16 @@ The previous P0–P10/P4/P6 plans and older five-part research workflow are **Hi
 - 本节是文献管理的**唯一操作口径**；后续接手本项目的 agent 按本节执行，不要另建本地文献库、不要把 PDF 塞回仓库。
 - 只改本节，勿改本文件其他章节（除非用户明确要求）。
 - Zotero 附件用**导入式附件 + 本地 API 写入**，不烧 zotero.org 云配额；Zotero 写入需 10.x + 本地 key（缓存在 `D:\hermes\cache\zotero-local-key.json`，失效时跑 `python D:\hermes\scripts\zotero_get_key.py` 重新授权）。
+
+
+## WSL 长期使用规范（2026-10-24；PIJWM-WSL-CLEANUP-001）
+
+- Ubuntu WSL 的统一 PI-JWM 工作目录为 `/home/shen/PIJWM`；WSL 主要承担 Linux 专有功能和经批准的临时实验，不是 D 盘主项目的完整镜像。
+- 不自动复制 D 盘大型正式数据集；代码、输入、依赖和输出须按具体批准的实验方案按需准备。不得覆盖 D 盘现有科研资产。
+- WSL 总存储预算目标约 20 GiB，日常常驻目标不超过 15 GiB，约留 5 GiB 临时空间；这是磁盘预算，不是 RAM 配额，也不表示现有 VHDX 已限制为 20 GiB。当前尚未达标。
+- 大文件、缓存、依赖和实验产物必须事先评估空间与恢复成本；大型实验须经研究者批准。
+- 不自动删除唯一科研资产、checkpoint、研究证据、未推送提交、用户修改、未跟踪唯一文件或 locked_test；不得清理非 PIJWM 项目、私人文件、凭据及共享环境。
+- 不擅自修改 Windows 全局 WSL 配置或 VHDX，不自动迁移、缩容、导出导入、重注册、注销或重装发行版。
+- 不主动向 C 盘新增项目数据、备份或大型临时文件。WSL swap 的系统默认临时位置在 C 盘，尚未改动；迁移配置必须另行获得批准。
+- WSL 环境可用性不是新的科研事实，不代表新场景、算法或实验已实现/验收。
+- 使用前先读 `docs/WSL_ENVIRONMENT.md` 与 `docs/WSL_CLEANUP_20261024.json`。当前目录仅有说明、非 Git 仓库；系统 Python 3.12.3 无 NumPy/PyTorch/pytest，不得声称科学计算环境已就绪。

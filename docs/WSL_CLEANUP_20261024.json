@@ -1,0 +1,265 @@
+{
+  "task": "PIJWM-WSL-CLEANUP-001",
+  "date": "2026-10-24",
+  "status": "AUTHORIZED_SCOPE_COMPLETED; 20_GiB_TARGET_NOT_MET; awaiting decisions for protected other projects, VHDX, swap configuration",
+  "cleanup": {
+    "deleted": [
+      {
+        "path": "/var/cache/apt/srcpkgcache.bin",
+        "logical_bytes": 56614966,
+        "allocated_bytes": 56619008,
+        "mtime_ns": 1786172521842057700,
+        "reason": "APT 可从保留的 /var/lib/apt/lists 重建的二进制索引缓存；不是安装包、配置或科研数据",
+        "recovery": "需要时由 APT 自动重建，或经批准运行 apt-cache gencaches"
+      },
+      {
+        "path": "/var/cache/apt/pkgcache.bin",
+        "logical_bytes": 56635829,
+        "allocated_bytes": 56639488,
+        "mtime_ns": 1786172522032724500,
+        "reason": "APT 可从保留的 /var/lib/apt/lists 重建的二进制索引缓存；不是安装包、配置或科研数据",
+        "recovery": "需要时由 APT 自动重建，或经批准运行 apt-cache gencaches"
+      }
+    ],
+    "deleted_files": 2,
+    "logical_bytes_deleted": 113250795,
+    "allocated_bytes_deleted": 113258496,
+    "fs_used_before": 46168866816,
+    "fs_used_after": 46055608320,
+    "apt_lists_preserved": true
+  },
+  "initial": {
+    "distribution": "Ubuntu",
+    "ubuntu": "24.04.3 LTS",
+    "wsl": "2.6.3.0",
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "windows": "10.0.26100.4946",
+    "wsl_mode": 2,
+    "installed_distributions": [
+      "Ubuntu"
+    ],
+    "filesystem_total_bytes": 1081101176832,
+    "filesystem_used_bytes": 46164344832,
+    "filesystem_available_bytes": 979944476672,
+    "vhd_path": "D:WSLUbuntuext4.vhdx",
+    "vhd_file_length_bytes": 71251787776,
+    "vhd_allocated_bytes": 71251787776,
+    "vhd_virtual_max_bytes": 1099511627776,
+    "swap_capacity_bytes": 4294967296,
+    "swap_used_bytes": 0,
+    "swap_host_path": "UNKNOWN; no .wslconfig and not found in checked paths",
+    "host_default_temp": "C:UsersLenovoAppDataLocalTemp",
+    "project_path": "/home/shen/PIJWM",
+    "project_initial_allocated_bytes": 4096,
+    "project_initial_git": false,
+    "home_shen_bytes": 43047768064,
+    "home_subtrees": {
+      "/home/shen/shen": 28110213120,
+      "/home/shen/miniconda3": 14929113088,
+      "/home/shen/.local": 8318976
+    },
+    "protected_other_projects": {
+      "/home/shen/shen/datasets": 14521335808,
+      "/home/shen/shen/mixed_autonomy_lab": 13429850112,
+      "/home/shen/miniconda3/envs/cityflow310": 7405645824,
+      "/home/shen/miniconda3/envs/pg-mad": 7046402048
+    },
+    "system_bytes": {
+      "/usr": 2099576832,
+      "/var": 1012162560,
+      "/var/cache": 132583424,
+      "/var/log": 637071360,
+      "/var/log/journal": 634298368,
+      "/root": 20480,
+      "/opt": 4096,
+      "/usr/local": 102400,
+      "/tmp": 57344
+    }
+  },
+  "boundaries": {
+    "vhd_or_global_config_modified": false,
+    "other_project_data_deleted": false,
+    "environment_deleted": false,
+    "experiments_run": false,
+    "locked_test_sample_content_read": false,
+    "large_d_data_copied": false
+  },
+  "windows_repository_baseline": {
+    "AGENTS.md": {
+      "bytes": 33414,
+      "sha256": "3b4b1e229af38d2203db8fb70f796aae64794081cab9136605fe59c366b8f35e",
+      "crlf": 250,
+      "ends_lf": true
+    },
+    "AI_CONTEXT/00_PROJECT_STATE.md": {
+      "bytes": 84604,
+      "sha256": "a2a623336d9939f72636eadddaebf81a684f73e14679692c32d18500c5ecca2f",
+      "crlf": 502,
+      "ends_lf": true
+    },
+    "docs/PROJECT_MEMORY_AND_SOURCES.md": {
+      "bytes": 20944,
+      "sha256": "7d7d6dbfc9c459b05ac161aaf99612bd76b0b98061757112e22069d82c841ef3",
+      "crlf": 0,
+      "ends_lf": true
+    },
+    "git_status_sha256": "a58cc8df565474c48bdce6b64520c01159f1fccaba1ab76d69aa4403a4c0f28f",
+    "head": "5431f2170614da0225745e751e002629ad9a1cfe",
+    "d_artifacts_metadata_sha256": "d6f06968e79db79ebc0c6e0d513cdcdf47bcd16a5a0569d9ed81c4d89d8620f9",
+    "d_artifacts_files": 21395,
+    "d_artifacts_logical_bytes": 37569160502
+  },
+  "environment_validation": {
+    "uid": 1000,
+    "user": "shen",
+    "cwd": "/home/shen/PIJWM",
+    "workspace": "/home/shen/PIJWM",
+    "workspace_files": [
+      "README_WSL.md"
+    ],
+    "workspace_git": false,
+    "python": "/usr/bin/python3",
+    "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "module_availability": {
+      "numpy": false,
+      "torch": false,
+      "pytest": false,
+      "pip": true,
+      "yaml": true
+    },
+    "stdlib_file_io_check": true,
+    "selftest_temporaries_removed": true,
+    "git_version": "git version 2.43.0",
+    "windows_main_git_read": {
+      "exit": 0,
+      "head": "5431f2170614da0225745e751e002629ad9a1cfe",
+      "stderr": ""
+    },
+    "other_repositories_preserved": [
+      {
+        "path": "/home/shen/shen/paper_repos/ControlTraj",
+        "head": "1f6098c023084872f16493e58c5885f4b4efa03f",
+        "head_exit": 0,
+        "status_exit": 0,
+        "status_entries": 9,
+        "stderr": ""
+      },
+      {
+        "path": "/home/shen/shen/paper_repos/DiffAIL",
+        "head": "4683afac21f44582719f7ae634c535c95540e461",
+        "head_exit": 0,
+        "status_exit": 0,
+        "status_entries": 0,
+        "stderr": ""
+      },
+      {
+        "path": "/home/shen/shen/paper_repos/flow",
+        "head": "a511c41c48e6b928bb2060de8ad1ef3c3e3d9554",
+        "head_exit": 0,
+        "status_exit": 0,
+        "status_entries": 314,
+        "stderr": ""
+      }
+    ],
+    "name_search_candidates_only": [
+      "/home/shen/PIJWM"
+    ],
+    "network": {
+      "github_dns_addresses": [
+        "20.205.243.166"
+      ],
+      "https_error": "<urlopen error timed out>"
+    },
+    "environment_proxy_flags": {
+      "http_proxy": false,
+      "https_proxy": false,
+      "HTTP_PROXY": false,
+      "HTTPS_PROXY": false,
+      "ALL_PROXY": false
+    },
+    "fs_total_bytes": 1081101176832,
+    "fs_used_bytes": 46064123904,
+    "fs_available_bytes": 980044697600,
+    "readme_bytes": 1256,
+    "readme_sha256": "3ae7c74bb98c4bb1868b677a37d4ba539605fa369dcb1bf167d2fbcc465828e1"
+  },
+  "final_linux": {
+    "timestamp_utc": "2026-10-24T07:50:09Z",
+    "filesystem_total_bytes": 1081101176832,
+    "filesystem_used_bytes": 46064521216,
+    "filesystem_available_bytes": 980044300288,
+    "directory_allocated_bytes": {
+      "/home/shen": 43047772160,
+      "/home/shen/PIJWM": 8192,
+      "/home/shen/shen": 28110213120,
+      "/home/shen/miniconda3": 14929113088,
+      "/var/cache/apt": 24576,
+      "/var/log": 650510336
+    },
+    "apt_cache_deleted_paths_absent": {
+      "/var/cache/apt/srcpkgcache.bin": true,
+      "/var/cache/apt/pkgcache.bin": true
+    },
+    "workspace_files": [
+      "README_WSL.md"
+    ],
+    "no_selftest_temp": true,
+    "swap_proc": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/sdc                                partition\t4194304\t\t0\t\t-2\n",
+    "network_extra": {
+      "pypi_https_head_status": 200
+    },
+    "docker_cli": null,
+    "nvcc_cli": null
+  },
+  "final_host": {
+    "vhd": {
+      "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+      "file_length_bytes": 71251787776,
+      "allocated_bytes": 71251787776
+    },
+    "swap_candidates": [
+      {
+        "path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\68BED469-2CB0-4ED7-9BCB-260FD955F0FF\\swap.vhdx",
+        "file_length_bytes": 37748736,
+        "allocated_bytes": 37748736
+      }
+    ],
+    "swap_path_note": "TEMP/session-GUID/swap.vhdx is runtime-managed and may change after a WSL VM restart; no global configuration edited"
+  },
+  "memory_additions": {
+    "AGENTS.md": {
+      "bytes": 33414,
+      "sha256": "3b4b1e229af38d2203db8fb70f796aae64794081cab9136605fe59c366b8f35e",
+      "appended_bytes": 1600,
+      "after_sha256": "55ddd8474d9759a644626f8f6af3296140dda9b451140108724a4d1bfd32e041"
+    },
+    "AI_CONTEXT/00_PROJECT_STATE.md": {
+      "bytes": 84604,
+      "sha256": "a2a623336d9939f72636eadddaebf81a684f73e14679692c32d18500c5ecca2f",
+      "appended_bytes": 2142,
+      "after_sha256": "a0d5606eb198966ba95e3a258bce8d1722a2302f92428626a0c9dbd720ef5c1e"
+    },
+    "docs/PROJECT_MEMORY_AND_SOURCES.md": {
+      "bytes": 20944,
+      "sha256": "7d7d6dbfc9c459b05ac161aaf99612bd76b0b98061757112e22069d82c841ef3",
+      "appended_bytes": 790,
+      "after_sha256": "5a1ab25a32698924962aedebe602650c55d357c16130beea9f5469242c1b978d"
+    },
+    "docs/CHANGELOG.md": {
+      "bytes": 73356,
+      "sha256": "a2290abc2ddeaaf765dcde6f8ea454412ed410497503058c5c9e8ba3629c7ea6",
+      "appended_bytes": 543,
+      "after_sha256": "8cc19b2cde453830fcf3b18f8c0de134bf2efeecaddc3668b2b91263993b635a"
+    }
+  },
+  "git_delivery_policy": "Commit only task-created records and HEAD+task-only additions to tracked docs. Existing untracked memory map remains untracked. Actual commit/push result is in final report and Git history.",
+  "capacity_management": {
+    "goal_bytes": 21474836480,
+    "resident_goal_bytes": 16106127360,
+    "used_over_goal_bytes": 24589684736,
+    "vhd_changed": false,
+    "maximum_cap_applied": false,
+    "blocker": "Protected non-PIJWM projects and environments; no authority to delete them",
+    "swap_global_config_changed": false
+  }
+}
