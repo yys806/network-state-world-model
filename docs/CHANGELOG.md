@@ -563,3 +563,10 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 - 核实 Ubuntu WSL 2、D 盘 VHDX 与运行时 swap，精确清理两个 APT 索引缓存（113,250,795 字节）。保留其他项目、环境、科研资产和用户修改。
 - 新增 docs/WSL_ENVIRONMENT.md、docs/WSL_CLEANUP_20261024.json，追加 AGENTS/AI_CONTEXT 的 WSL 预算与安全规范；/home/shen/PIJWM 仅添加说明和通过轻量标准库自检。
 - 20 GiB 未达标；VHDX 压实/缩容、swap 全局配置与非 PIJWM 大目录处理待批准。未运行正式实验。
+
+
+### 后续明确授权的四目录永久删除
+
+- 根据研究者“直接删除吧，允许永久删除”，精确删除 datasets、mixed_autonomy_lab、cityflow310、pg-mad；不保证已删数据恢复，未清空 home 或删除其他项目仓库。
+- 四目录去重占用 42403233792 B；ext4 即时已用净减少 42403250176 B。最新已用 3686035456 B（3.432888 GiB），Linux 20 GiB 用量预算已达成。
+- VHDX 仍分配 71247593472 B、最大 1024 GiB；未压实/缩容/改配置。保留区指纹匹配，Conda base、系统 Python/Git 验证通过；更新上述环境入口、机器记录和 WSL README。未运行科研实验。

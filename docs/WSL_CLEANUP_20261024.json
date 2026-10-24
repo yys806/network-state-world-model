@@ -1,7 +1,7 @@
 {
   "task": "PIJWM-WSL-CLEANUP-001",
   "date": "2026-10-24",
-  "status": "AUTHORIZED_SCOPE_COMPLETED; 20_GiB_TARGET_NOT_MET; awaiting decisions for protected other projects, VHDX, swap configuration",
+  "status": "AUTHORIZED_FOUR_DIRECTORY_PERMANENT_DELETION_COMPLETE; LINUX_USED_SPACE_BELOW_20_GiB; VHDX_PHYSICAL_AND_HARD_CAP_TARGET_NOT_MET; NO_FURTHER_CLEANUP",
   "cleanup": {
     "deleted": [
       {
@@ -26,7 +26,8 @@
     "allocated_bytes_deleted": 113258496,
     "fs_used_before": 46168866816,
     "fs_used_after": 46055608320,
-    "apt_lists_preserved": true
+    "apt_lists_preserved": true,
+    "scope": "INITIAL_SAFE_CACHE_PHASE_ONLY; four-directory permanent deletion is separately recorded"
   },
   "initial": {
     "distribution": "Ubuntu",
@@ -41,14 +42,14 @@
     "filesystem_total_bytes": 1081101176832,
     "filesystem_used_bytes": 46164344832,
     "filesystem_available_bytes": 979944476672,
-    "vhd_path": "D:WSLUbuntuext4.vhdx",
+    "vhd_path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
     "vhd_file_length_bytes": 71251787776,
     "vhd_allocated_bytes": 71251787776,
     "vhd_virtual_max_bytes": 1099511627776,
     "swap_capacity_bytes": 4294967296,
     "swap_used_bytes": 0,
     "swap_host_path": "UNKNOWN; no .wslconfig and not found in checked paths",
-    "host_default_temp": "C:UsersLenovoAppDataLocalTemp",
+    "host_default_temp": "C:\\Users\\Lenovo\\AppData\\Local\\Temp",
     "project_path": "/home/shen/PIJWM",
     "project_initial_allocated_bytes": 4096,
     "project_initial_git": false,
@@ -78,11 +79,15 @@
   },
   "boundaries": {
     "vhd_or_global_config_modified": false,
-    "other_project_data_deleted": false,
-    "environment_deleted": false,
+    "other_project_data_deleted": true,
+    "environment_deleted": true,
+    "exactly_four_paths_explicitly_authorized": true,
+    "remaining_other_projects_preserved": true,
+    "verified_backup_guarantee": false,
     "experiments_run": false,
     "locked_test_sample_content_read": false,
-    "large_d_data_copied": false
+    "large_d_data_copied": false,
+    "linux_workspace_readme_only": true
   },
   "windows_repository_baseline": {
     "AGENTS.md": {
@@ -110,121 +115,128 @@
     "d_artifacts_logical_bytes": 37569160502
   },
   "environment_validation": {
-    "uid": 1000,
+    "timestamp_utc": "2026-10-24T08:07:30.322471+00:00",
     "user": "shen",
+    "uid": 1000,
     "cwd": "/home/shen/PIJWM",
-    "workspace": "/home/shen/PIJWM",
+    "deleted_targets_absent": {
+      "/home/shen/shen/datasets": true,
+      "/home/shen/shen/mixed_autonomy_lab": true,
+      "/home/shen/miniconda3/envs/cityflow310": true,
+      "/home/shen/miniconda3/envs/pg-mad": true
+    },
     "workspace_files": [
       "README_WSL.md"
     ],
     "workspace_git": false,
-    "python": "/usr/bin/python3",
     "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
     "module_availability": {
+      "pip": true,
+      "yaml": true,
       "numpy": false,
       "torch": false,
-      "pytest": false,
-      "pip": true,
-      "yaml": true
+      "pytest": false
     },
-    "stdlib_file_io_check": true,
-    "selftest_temporaries_removed": true,
     "git_version": "git version 2.43.0",
-    "windows_main_git_read": {
+    "conda_base_exists": true,
+    "conda_base_python": {
       "exit": 0,
-      "head": "5431f2170614da0225745e751e002629ad9a1cfe",
+      "stdout": "Python 3.13.11",
       "stderr": ""
     },
-    "other_repositories_preserved": [
-      {
-        "path": "/home/shen/shen/paper_repos/ControlTraj",
-        "head": "1f6098c023084872f16493e58c5885f4b4efa03f",
-        "head_exit": 0,
-        "status_exit": 0,
-        "status_entries": 9,
-        "stderr": ""
+    "conda_base_command": {
+      "exit": 0,
+      "stdout": "conda 25.11.1",
+      "stderr": ""
+    },
+    "preserved_personal_paths": {
+      "/home/shen/.ssh": true,
+      "/home/shen/.bashrc": true,
+      "/home/shen/.profile": true,
+      "/home/shen/shen/paper_repos/ControlTraj": true,
+      "/home/shen/shen/paper_repos/DiffAIL": true,
+      "/home/shen/shen/paper_repos/flow": true
+    },
+    "stdlib_check": {
+      "sha256_ok": true,
+      "workspace_accessible": true
+    },
+    "filesystem": {
+      "total_bytes": 1081101176832,
+      "used_bytes": 3684782080,
+      "available_bytes": 1022424039424
+    },
+    "directory_allocated_bytes": {
+      "/home/shen": {
+        "bytes": 644538368,
+        "exit": 0
       },
-      {
-        "path": "/home/shen/shen/paper_repos/DiffAIL",
-        "head": "4683afac21f44582719f7ae634c535c95540e461",
-        "head_exit": 0,
-        "status_exit": 0,
-        "status_entries": 0,
-        "stderr": ""
+      "/home/shen/PIJWM": {
+        "bytes": 8192,
+        "exit": 0
       },
-      {
-        "path": "/home/shen/shen/paper_repos/flow",
-        "head": "a511c41c48e6b928bb2060de8ad1ef3c3e3d9554",
-        "head_exit": 0,
-        "status_exit": 0,
-        "status_entries": 314,
-        "stderr": ""
+      "/home/shen/miniconda3": {
+        "bytes": 477065216,
+        "exit": 0
+      },
+      "/home/shen/shen": {
+        "bytes": 159027200,
+        "exit": 0
+      },
+      "/var/log": {
+        "bytes": null,
+        "exit": 1
       }
-    ],
-    "name_search_candidates_only": [
-      "/home/shen/PIJWM"
-    ],
-    "network": {
-      "github_dns_addresses": [
-        "20.205.243.166"
-      ],
-      "https_error": "<urlopen error timed out>"
-    },
-    "environment_proxy_flags": {
-      "http_proxy": false,
-      "https_proxy": false,
-      "HTTP_PROXY": false,
-      "HTTPS_PROXY": false,
-      "ALL_PROXY": false
-    },
-    "fs_total_bytes": 1081101176832,
-    "fs_used_bytes": 46064123904,
-    "fs_available_bytes": 980044697600,
-    "readme_bytes": 1256,
-    "readme_sha256": "3ae7c74bb98c4bb1868b677a37d4ba539605fa369dcb1bf167d2fbcc465828e1"
+    }
   },
   "final_linux": {
-    "timestamp_utc": "2026-10-24T07:50:09Z",
+    "timestamp_utc": "2026-10-24T08:08:55.696446+00:00",
     "filesystem_total_bytes": 1081101176832,
-    "filesystem_used_bytes": 46064521216,
-    "filesystem_available_bytes": 980044300288,
+    "filesystem_used_bytes": 3686035456,
+    "filesystem_available_bytes": 1022422786048,
     "directory_allocated_bytes": {
-      "/home/shen": 43047772160,
-      "/home/shen/PIJWM": 8192,
-      "/home/shen/shen": 28110213120,
-      "/home/shen/miniconda3": 14929113088,
-      "/var/cache/apt": 24576,
-      "/var/log": 650510336
-    },
-    "apt_cache_deleted_paths_absent": {
-      "/var/cache/apt/srcpkgcache.bin": true,
-      "/var/cache/apt/pkgcache.bin": true
+      "/home/shen": {
+        "bytes": 644538368,
+        "exit": 0
+      },
+      "/home/shen/PIJWM": {
+        "bytes": 8192,
+        "exit": 0
+      },
+      "/home/shen/miniconda3": {
+        "bytes": 477065216,
+        "exit": 0
+      },
+      "/home/shen/shen": {
+        "bytes": 159027200,
+        "exit": 0
+      },
+      "/var/log": {
+        "bytes": null,
+        "exit": 1
+      }
     },
     "workspace_files": [
       "README_WSL.md"
-    ],
-    "no_selftest_temp": true,
-    "swap_proc": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/sdc                                partition\t4194304\t\t0\t\t-2\n",
-    "network_extra": {
-      "pypi_https_head_status": 200
-    },
-    "docker_cli": null,
-    "nvcc_cli": null
+    ]
   },
   "final_host": {
-    "vhd": {
-      "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
-      "file_length_bytes": 71251787776,
-      "allocated_bytes": 71251787776
+    "timestamp_utc": "2026-10-24T08:08:55.696446+00:00",
+    "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+    "file_length_bytes": 71247593472,
+    "allocated_bytes": 71247593472,
+    "open_info_rc": 0,
+    "get_info_rc": 0,
+    "virtual_max_bytes": 1099511627776,
+    "api_physical_size_bytes": 71247593472,
+    "linux_read_exit": 0,
+    "linux_fs": {
+      "total_bytes": 1081101176832,
+      "used_bytes": 3686035456,
+      "available_bytes": 1022422786048,
+      "swap_proc": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/sdc                                partition\t4194304\t\t0\t\t-2\n"
     },
-    "swap_candidates": [
-      {
-        "path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\68BED469-2CB0-4ED7-9BCB-260FD955F0FF\\swap.vhdx",
-        "file_length_bytes": 37748736,
-        "allocated_bytes": 37748736
-      }
-    ],
-    "swap_path_note": "TEMP/session-GUID/swap.vhdx is runtime-managed and may change after a WSL VM restart; no global configuration edited"
+    "wsl_stderr_text": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\rN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\r\u0000\n\u0000"
   },
   "memory_additions": {
     "AGENTS.md": {
@@ -256,10 +268,559 @@
   "capacity_management": {
     "goal_bytes": 21474836480,
     "resident_goal_bytes": 16106127360,
-    "used_over_goal_bytes": 24589684736,
-    "vhd_changed": false,
+    "linux_used_bytes": 3686035456,
+    "linux_actual_use_goal_met": true,
+    "budget_spare_bytes": 17788801024,
+    "vhd_allocated_bytes": 71247593472,
+    "vhd_virtual_max_bytes": 1099511627776,
+    "vhd_physical_under_20_GiB": false,
     "maximum_cap_applied": false,
-    "blocker": "Protected non-PIJWM projects and environments; no authority to delete them",
+    "vhd_operation_performed": false,
+    "remaining_decision": "VHDX physical-space reclamation and any hard maximum require separate approval; do not perform automatically",
     "swap_global_config_changed": false
+  },
+  "initial_safe_phase_snapshot": {
+    "task": "PIJWM-WSL-CLEANUP-001",
+    "date": "2026-10-24",
+    "status": "AUTHORIZED_SCOPE_COMPLETED; 20_GiB_TARGET_NOT_MET; awaiting decisions for protected other projects, VHDX, swap configuration",
+    "cleanup": {
+      "deleted": [
+        {
+          "path": "/var/cache/apt/srcpkgcache.bin",
+          "logical_bytes": 56614966,
+          "allocated_bytes": 56619008,
+          "mtime_ns": 1786172521842057700,
+          "reason": "APT 可从保留的 /var/lib/apt/lists 重建的二进制索引缓存；不是安装包、配置或科研数据",
+          "recovery": "需要时由 APT 自动重建，或经批准运行 apt-cache gencaches"
+        },
+        {
+          "path": "/var/cache/apt/pkgcache.bin",
+          "logical_bytes": 56635829,
+          "allocated_bytes": 56639488,
+          "mtime_ns": 1786172522032724500,
+          "reason": "APT 可从保留的 /var/lib/apt/lists 重建的二进制索引缓存；不是安装包、配置或科研数据",
+          "recovery": "需要时由 APT 自动重建，或经批准运行 apt-cache gencaches"
+        }
+      ],
+      "deleted_files": 2,
+      "logical_bytes_deleted": 113250795,
+      "allocated_bytes_deleted": 113258496,
+      "fs_used_before": 46168866816,
+      "fs_used_after": 46055608320,
+      "apt_lists_preserved": true
+    },
+    "initial": {
+      "distribution": "Ubuntu",
+      "ubuntu": "24.04.3 LTS",
+      "wsl": "2.6.3.0",
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "windows": "10.0.26100.4946",
+      "wsl_mode": 2,
+      "installed_distributions": [
+        "Ubuntu"
+      ],
+      "filesystem_total_bytes": 1081101176832,
+      "filesystem_used_bytes": 46164344832,
+      "filesystem_available_bytes": 979944476672,
+      "vhd_path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+      "vhd_file_length_bytes": 71251787776,
+      "vhd_allocated_bytes": 71251787776,
+      "vhd_virtual_max_bytes": 1099511627776,
+      "swap_capacity_bytes": 4294967296,
+      "swap_used_bytes": 0,
+      "swap_host_path": "UNKNOWN; no .wslconfig and not found in checked paths",
+      "host_default_temp": "C:\\Users\\Lenovo\\AppData\\Local\\Temp",
+      "project_path": "/home/shen/PIJWM",
+      "project_initial_allocated_bytes": 4096,
+      "project_initial_git": false,
+      "home_shen_bytes": 43047768064,
+      "home_subtrees": {
+        "/home/shen/shen": 28110213120,
+        "/home/shen/miniconda3": 14929113088,
+        "/home/shen/.local": 8318976
+      },
+      "protected_other_projects": {
+        "/home/shen/shen/datasets": 14521335808,
+        "/home/shen/shen/mixed_autonomy_lab": 13429850112,
+        "/home/shen/miniconda3/envs/cityflow310": 7405645824,
+        "/home/shen/miniconda3/envs/pg-mad": 7046402048
+      },
+      "system_bytes": {
+        "/usr": 2099576832,
+        "/var": 1012162560,
+        "/var/cache": 132583424,
+        "/var/log": 637071360,
+        "/var/log/journal": 634298368,
+        "/root": 20480,
+        "/opt": 4096,
+        "/usr/local": 102400,
+        "/tmp": 57344
+      }
+    },
+    "boundaries": {
+      "vhd_or_global_config_modified": false,
+      "other_project_data_deleted": false,
+      "environment_deleted": false,
+      "experiments_run": false,
+      "locked_test_sample_content_read": false,
+      "large_d_data_copied": false
+    },
+    "windows_repository_baseline": {
+      "AGENTS.md": {
+        "bytes": 33414,
+        "sha256": "3b4b1e229af38d2203db8fb70f796aae64794081cab9136605fe59c366b8f35e",
+        "crlf": 250,
+        "ends_lf": true
+      },
+      "AI_CONTEXT/00_PROJECT_STATE.md": {
+        "bytes": 84604,
+        "sha256": "a2a623336d9939f72636eadddaebf81a684f73e14679692c32d18500c5ecca2f",
+        "crlf": 502,
+        "ends_lf": true
+      },
+      "docs/PROJECT_MEMORY_AND_SOURCES.md": {
+        "bytes": 20944,
+        "sha256": "7d7d6dbfc9c459b05ac161aaf99612bd76b0b98061757112e22069d82c841ef3",
+        "crlf": 0,
+        "ends_lf": true
+      },
+      "git_status_sha256": "a58cc8df565474c48bdce6b64520c01159f1fccaba1ab76d69aa4403a4c0f28f",
+      "head": "5431f2170614da0225745e751e002629ad9a1cfe",
+      "d_artifacts_metadata_sha256": "d6f06968e79db79ebc0c6e0d513cdcdf47bcd16a5a0569d9ed81c4d89d8620f9",
+      "d_artifacts_files": 21395,
+      "d_artifacts_logical_bytes": 37569160502
+    },
+    "environment_validation": {
+      "uid": 1000,
+      "user": "shen",
+      "cwd": "/home/shen/PIJWM",
+      "workspace": "/home/shen/PIJWM",
+      "workspace_files": [
+        "README_WSL.md"
+      ],
+      "workspace_git": false,
+      "python": "/usr/bin/python3",
+      "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+      "module_availability": {
+        "numpy": false,
+        "torch": false,
+        "pytest": false,
+        "pip": true,
+        "yaml": true
+      },
+      "stdlib_file_io_check": true,
+      "selftest_temporaries_removed": true,
+      "git_version": "git version 2.43.0",
+      "windows_main_git_read": {
+        "exit": 0,
+        "head": "5431f2170614da0225745e751e002629ad9a1cfe",
+        "stderr": ""
+      },
+      "other_repositories_preserved": [
+        {
+          "path": "/home/shen/shen/paper_repos/ControlTraj",
+          "head": "1f6098c023084872f16493e58c5885f4b4efa03f",
+          "head_exit": 0,
+          "status_exit": 0,
+          "status_entries": 9,
+          "stderr": ""
+        },
+        {
+          "path": "/home/shen/shen/paper_repos/DiffAIL",
+          "head": "4683afac21f44582719f7ae634c535c95540e461",
+          "head_exit": 0,
+          "status_exit": 0,
+          "status_entries": 0,
+          "stderr": ""
+        },
+        {
+          "path": "/home/shen/shen/paper_repos/flow",
+          "head": "a511c41c48e6b928bb2060de8ad1ef3c3e3d9554",
+          "head_exit": 0,
+          "status_exit": 0,
+          "status_entries": 314,
+          "stderr": ""
+        }
+      ],
+      "name_search_candidates_only": [
+        "/home/shen/PIJWM"
+      ],
+      "network": {
+        "github_dns_addresses": [
+          "20.205.243.166"
+        ],
+        "https_error": "<urlopen error timed out>"
+      },
+      "environment_proxy_flags": {
+        "http_proxy": false,
+        "https_proxy": false,
+        "HTTP_PROXY": false,
+        "HTTPS_PROXY": false,
+        "ALL_PROXY": false
+      },
+      "fs_total_bytes": 1081101176832,
+      "fs_used_bytes": 46064123904,
+      "fs_available_bytes": 980044697600,
+      "readme_bytes": 1256,
+      "readme_sha256": "3ae7c74bb98c4bb1868b677a37d4ba539605fa369dcb1bf167d2fbcc465828e1"
+    },
+    "final_linux": {
+      "timestamp_utc": "2026-10-24T07:50:09Z",
+      "filesystem_total_bytes": 1081101176832,
+      "filesystem_used_bytes": 46064521216,
+      "filesystem_available_bytes": 980044300288,
+      "directory_allocated_bytes": {
+        "/home/shen": 43047772160,
+        "/home/shen/PIJWM": 8192,
+        "/home/shen/shen": 28110213120,
+        "/home/shen/miniconda3": 14929113088,
+        "/var/cache/apt": 24576,
+        "/var/log": 650510336
+      },
+      "apt_cache_deleted_paths_absent": {
+        "/var/cache/apt/srcpkgcache.bin": true,
+        "/var/cache/apt/pkgcache.bin": true
+      },
+      "workspace_files": [
+        "README_WSL.md"
+      ],
+      "no_selftest_temp": true,
+      "swap_proc": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/sdc                                partition\t4194304\t\t0\t\t-2\n",
+      "network_extra": {
+        "pypi_https_head_status": 200
+      },
+      "docker_cli": null,
+      "nvcc_cli": null
+    },
+    "final_host": {
+      "vhd": {
+        "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+        "file_length_bytes": 71251787776,
+        "allocated_bytes": 71251787776
+      },
+      "swap_candidates": [
+        {
+          "path": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\68BED469-2CB0-4ED7-9BCB-260FD955F0FF\\swap.vhdx",
+          "file_length_bytes": 37748736,
+          "allocated_bytes": 37748736
+        }
+      ],
+      "swap_path_note": "TEMP/session-GUID/swap.vhdx is runtime-managed and may change after a WSL VM restart; no global configuration edited"
+    },
+    "memory_additions": {
+      "AGENTS.md": {
+        "bytes": 33414,
+        "sha256": "3b4b1e229af38d2203db8fb70f796aae64794081cab9136605fe59c366b8f35e",
+        "appended_bytes": 1600,
+        "after_sha256": "55ddd8474d9759a644626f8f6af3296140dda9b451140108724a4d1bfd32e041"
+      },
+      "AI_CONTEXT/00_PROJECT_STATE.md": {
+        "bytes": 84604,
+        "sha256": "a2a623336d9939f72636eadddaebf81a684f73e14679692c32d18500c5ecca2f",
+        "appended_bytes": 2142,
+        "after_sha256": "a0d5606eb198966ba95e3a258bce8d1722a2302f92428626a0c9dbd720ef5c1e"
+      },
+      "docs/PROJECT_MEMORY_AND_SOURCES.md": {
+        "bytes": 20944,
+        "sha256": "7d7d6dbfc9c459b05ac161aaf99612bd76b0b98061757112e22069d82c841ef3",
+        "appended_bytes": 790,
+        "after_sha256": "5a1ab25a32698924962aedebe602650c55d357c16130beea9f5469242c1b978d"
+      },
+      "docs/CHANGELOG.md": {
+        "bytes": 73356,
+        "sha256": "a2290abc2ddeaaf765dcde6f8ea454412ed410497503058c5c9e8ba3629c7ea6",
+        "appended_bytes": 543,
+        "after_sha256": "8cc19b2cde453830fcf3b18f8c0de134bf2efeecaddc3668b2b91263993b635a"
+      }
+    },
+    "git_delivery_policy": "Commit only task-created records and HEAD+task-only additions to tracked docs. Existing untracked memory map remains untracked. Actual commit/push result is in final report and Git history.",
+    "capacity_management": {
+      "goal_bytes": 21474836480,
+      "resident_goal_bytes": 16106127360,
+      "used_over_goal_bytes": 24589684736,
+      "vhd_changed": false,
+      "maximum_cap_applied": false,
+      "blocker": "Protected non-PIJWM projects and environments; no authority to delete them",
+      "swap_global_config_changed": false
+    }
+  },
+  "serialization_correction": {
+    "fields": [
+      "initial.vhd_path",
+      "initial.host_default_temp",
+      "final_host paths"
+    ],
+    "reason": "Correct previously stripped or doubled backslashes using independently verified Windows paths; measurements unchanged"
+  },
+  "permanent_deletion_phase": {
+    "task": "PIJWM-WSL-CLEANUP-001",
+    "phase": "Explicitly approved permanent deletion of four directories",
+    "timestamp_utc": "2026-10-24T08:05:31Z",
+    "deleted": [
+      {
+        "path": "/home/shen/shen/datasets",
+        "allocated_bytes_du": 14521335808,
+        "regular_files": 986,
+        "directories": 64,
+        "symlinks": 0,
+        "regular_file_logical_bytes_including_hardlink_names": 14518476035,
+        "unique_regular_file_allocated_bytes": 14520987648,
+        "inventory_metadata_sha256": "f7868f33f0f1be4282917596593046af0776c2c91988977f8fd85a06f4cf0634",
+        "authorization": "Researcher explicitly approved permanent deletion of these four exact directories, including content without a verified backup",
+        "recoverability": "Not guaranteed; datasets/results/source may be permanently lost; environments require fresh installation"
+      },
+      {
+        "path": "/home/shen/shen/mixed_autonomy_lab",
+        "allocated_bytes_du": 13429850112,
+        "regular_files": 31112,
+        "directories": 2594,
+        "symlinks": 4,
+        "regular_file_logical_bytes_including_hardlink_names": 13344643170,
+        "unique_regular_file_allocated_bytes": 13418414080,
+        "inventory_metadata_sha256": "309d9fbcfd7daacf26333fff2c4a3f8df56cb2ea8884f4a503ee94c4ef6ad068",
+        "authorization": "Researcher explicitly approved permanent deletion of these four exact directories, including content without a verified backup",
+        "recoverability": "Not guaranteed; datasets/results/source may be permanently lost; environments require fresh installation"
+      },
+      {
+        "path": "/home/shen/miniconda3/envs/cityflow310",
+        "allocated_bytes_du": 7459119104,
+        "regular_files": 22286,
+        "directories": 1629,
+        "symlinks": 1384,
+        "regular_file_logical_bytes_including_hardlink_names": 7396630077,
+        "unique_regular_file_allocated_bytes": 7451992064,
+        "inventory_metadata_sha256": "d0c8d6b3095cb40db586f8e3f7051f83c035cf4b96b01bfb2759b77ecf2824ea",
+        "authorization": "Researcher explicitly approved permanent deletion of these four exact directories, including content without a verified backup",
+        "recoverability": "Not guaranteed; datasets/results/source may be permanently lost; environments require fresh installation"
+      },
+      {
+        "path": "/home/shen/miniconda3/envs/pg-mad",
+        "allocated_bytes_du": 7046402048,
+        "regular_files": 23003,
+        "directories": 1639,
+        "symlinks": 1334,
+        "regular_file_logical_bytes_including_hardlink_names": 6980375434,
+        "unique_regular_file_allocated_bytes": 7039242240,
+        "inventory_metadata_sha256": "84d6c297b7fea3742cd44149c3e6cfd3d5145cc30e5e48f911572244063f20d5",
+        "authorization": "Researcher explicitly approved permanent deletion of these four exact directories, including content without a verified backup",
+        "recoverability": "Not guaranteed; datasets/results/source may be permanently lost; environments require fresh installation"
+      }
+    ],
+    "filesystem_before": {
+      "total_bytes": 1081101176832,
+      "used_bytes": 46074892288,
+      "available_bytes": 980033929216
+    },
+    "filesystem_after": {
+      "total_bytes": 1081101176832,
+      "used_bytes": 3671642112,
+      "available_bytes": 1022437179392
+    },
+    "filesystem_used_reduction_bytes": 42403250176,
+    "sum_individual_du_bytes_including_cross_target_hardlinks": 42456707072,
+    "grouped_du_unique_bytes": 42403233792,
+    "cross_target_du_duplicate_bytes": 53473280,
+    "size_recheck_explanation": "The 2762 hardlinked inodes shared by the two environments are counted once in grouped du; combined unique size matches the approved scope",
+    "deleted_regular_file_count": 77387,
+    "deleted_directory_count": 5926,
+    "deleted_symlink_count": 2722,
+    "protected_home_metadata_before": {
+      "entries": 14833,
+      "sha256": "15aa325a41146cd49459c2915dacfa01c44a7806b64a04e979e919f732ae1194"
+    },
+    "protected_home_metadata_after": {
+      "entries": 14833,
+      "sha256": "15aa325a41146cd49459c2915dacfa01c44a7806b64a04e979e919f732ae1194"
+    },
+    "conda_base_preserved": true,
+    "ssh_and_shell_configuration_preserved": true,
+    "other_git_repositories_and_personal_files_preserved": true,
+    "vhd_operation_performed": false,
+    "locked_test_sample_content_read": false
+  },
+  "current_environment_validation": {
+    "timestamp_utc": "2026-10-24T08:07:30.322471+00:00",
+    "user": "shen",
+    "uid": 1000,
+    "cwd": "/home/shen/PIJWM",
+    "deleted_targets_absent": {
+      "/home/shen/shen/datasets": true,
+      "/home/shen/shen/mixed_autonomy_lab": true,
+      "/home/shen/miniconda3/envs/cityflow310": true,
+      "/home/shen/miniconda3/envs/pg-mad": true
+    },
+    "workspace_files": [
+      "README_WSL.md"
+    ],
+    "workspace_git": false,
+    "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "module_availability": {
+      "pip": true,
+      "yaml": true,
+      "numpy": false,
+      "torch": false,
+      "pytest": false
+    },
+    "git_version": "git version 2.43.0",
+    "conda_base_exists": true,
+    "conda_base_python": {
+      "exit": 0,
+      "stdout": "Python 3.13.11",
+      "stderr": ""
+    },
+    "conda_base_command": {
+      "exit": 0,
+      "stdout": "conda 25.11.1",
+      "stderr": ""
+    },
+    "preserved_personal_paths": {
+      "/home/shen/.ssh": true,
+      "/home/shen/.bashrc": true,
+      "/home/shen/.profile": true,
+      "/home/shen/shen/paper_repos/ControlTraj": true,
+      "/home/shen/shen/paper_repos/DiffAIL": true,
+      "/home/shen/shen/paper_repos/flow": true
+    },
+    "stdlib_check": {
+      "sha256_ok": true,
+      "workspace_accessible": true
+    },
+    "filesystem": {
+      "total_bytes": 1081101176832,
+      "used_bytes": 3684782080,
+      "available_bytes": 1022424039424
+    },
+    "directory_allocated_bytes": {
+      "/home/shen": {
+        "bytes": 644538368,
+        "exit": 0
+      },
+      "/home/shen/PIJWM": {
+        "bytes": 8192,
+        "exit": 0
+      },
+      "/home/shen/miniconda3": {
+        "bytes": 477065216,
+        "exit": 0
+      },
+      "/home/shen/shen": {
+        "bytes": 159027200,
+        "exit": 0
+      },
+      "/var/log": {
+        "bytes": null,
+        "exit": 1
+      }
+    }
+  },
+  "current_capacity": {
+    "timestamp_utc": "2026-10-24T08:08:55.696446+00:00",
+    "path": "D:\\WSL\\Ubuntu\\ext4.vhdx",
+    "file_length_bytes": 71247593472,
+    "allocated_bytes": 71247593472,
+    "open_info_rc": 0,
+    "get_info_rc": 0,
+    "virtual_max_bytes": 1099511627776,
+    "api_physical_size_bytes": 71247593472,
+    "linux_read_exit": 0,
+    "linux_fs": {
+      "total_bytes": 1081101176832,
+      "used_bytes": 3686035456,
+      "available_bytes": 1022422786048,
+      "swap_proc": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/sdc                                partition\t4194304\t\t0\t\t-2\n"
+    },
+    "wsl_stderr_text": "w\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\rN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\r\u0000\n\u0000"
+  },
+  "d_preservation": {
+    "d_artifacts_files_excluding_task_temp": 21395,
+    "d_artifacts_logical_bytes_excluding_task_temp": 37569160502,
+    "d_artifacts_metadata_sha256": "d6f06968e79db79ebc0c6e0d513cdcdf47bcd16a5a0569d9ed81c4d89d8620f9",
+    "task_temp": {
+      "path": "code/artifacts/tmp/system-commandline-sentinel-files/dotnet-suggest-registration-git-credential-manager, Version=2.6.1.0, Culture=neutral, PublicKeyToken=null",
+      "bytes": 539,
+      "sha256": "c0148bc30e87b9e7893d125447161712edd16e82484d725337339ff46a5c5699",
+      "contains_suggest": true,
+      "contains_credential_manager": false
+    },
+    "worktrees": [
+      {
+        "name": "p2-action-attempt-ledger-v1",
+        "clean": true
+      },
+      {
+        "name": "p2-c-scale-distribution-audit",
+        "clean": true
+      },
+      {
+        "name": "sparse-event-diagnostic-v2",
+        "clean": true
+      }
+    ],
+    "documents": {
+      "AGENTS.md": {
+        "bytes": 35014,
+        "sha256": "55ddd8474d9759a644626f8f6af3296140dda9b451140108724a4d1bfd32e041"
+      },
+      "AI_CONTEXT/00_PROJECT_STATE.md": {
+        "bytes": 86746,
+        "sha256": "a0d5606eb198966ba95e3a258bce8d1722a2302f92428626a0c9dbd720ef5c1e"
+      },
+      "docs/PROJECT_MEMORY_AND_SOURCES.md": {
+        "bytes": 21734,
+        "sha256": "5a1ab25a32698924962aedebe602650c55d357c16130beea9f5469242c1b978d"
+      },
+      "docs/CHANGELOG.md": {
+        "bytes": 73899,
+        "sha256": "8cc19b2cde453830fcf3b18f8c0de134bf2efeecaddc3668b2b91263993b635a"
+      },
+      "docs/WSL_ENVIRONMENT.md": {
+        "bytes": 8826,
+        "sha256": "33fb4608f507366b2b87361c6ca97e1a633428e9dcddb111a9620b5b09ac12fe"
+      },
+      "docs/WSL_CLEANUP_20261024.json": {
+        "bytes": 9205,
+        "sha256": "30fa3431bc48a7954b0ae47139be965b543374dede41f3a563ace45b482adee6"
+      }
+    }
+  },
+  "current_memory_update": "Replace only prior task-owned sections. Preserve initial safe-phase snapshot, original user changes and untracked memory-map status.",
+  "task_owned_section_prefix_integrity": [
+    {
+      "path": "AGENTS.md",
+      "user_prefix_bytes": 33414,
+      "user_prefix_sha256": "3b4b1e229af38d2203db8fb70f796aae64794081cab9136605fe59c366b8f35e",
+      "line_endings": "CRLF"
+    },
+    {
+      "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+      "user_prefix_bytes": 84604,
+      "user_prefix_sha256": "a2a623336d9939f72636eadddaebf81a684f73e14679692c32d18500c5ecca2f",
+      "line_endings": "CRLF"
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_AND_SOURCES.md",
+      "user_prefix_bytes": 20944,
+      "user_prefix_sha256": "7d7d6dbfc9c459b05ac161aaf99612bd76b0b98061757112e22069d82c841ef3",
+      "line_endings": "LF"
+    },
+    {
+      "path": "docs/CHANGELOG.md",
+      "user_prefix_bytes": 73356,
+      "user_prefix_sha256": "a2290abc2ddeaaf765dcde6f8ea454412ed410497503058c5c9e8ba3629c7ea6",
+      "line_endings": "CRLF"
+    }
+  ],
+  "workspace_readme_after": {
+    "path": "/home/shen/PIJWM/README_WSL.md",
+    "bytes": 1582,
+    "sha256": "cb5d3a65162ea38c86a3ba2dd23bfefdf105b161c68404afdb5eed167d304077",
+    "only_workspace_file": true
+  },
+  "task_temp_cleanup": {
+    "path": "code/artifacts/tmp/system-commandline-sentinel-files/dotnet-suggest-registration-git-credential-manager, Version=2.6.1.0, Culture=neutral, PublicKeyToken=null",
+    "bytes": 539,
+    "reason": "Task Git credential helper commandline registration sentinel inside controlled project TEMP",
+    "removed": true,
+    "note": "An authentication helper may recreate this sentinel on push; perform final cleanup and asset fingerprint check after last network Git operation."
   }
 }
