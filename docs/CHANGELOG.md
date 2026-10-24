@@ -584,3 +584,9 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 - 根 ext4 fstrim 成功后正常停止唯一 Ubuntu，使用微软 CompactVirtualDisk（flags=0）完成离线压实，20 GiB 上限保持不变。
 - VHDX 冷态实际分配由 71180484608 B 降至 4761583616 B，净减少 66418900992 B；D 盘可用快照 257250721792 B。没有把 Linux 删除和宿主回收重复相加。
 - 完整短期导出 3284480000 B / 81112 成员已验证并在启动验收后清除；home 元数据、保留仓库、Python/Git/base 环境及 D 盘科研资产一致。更新环境事实和 README，保留用户原有工作区，无科研实验。
+
+
+## 2026-10-24 — WSL 项目使用范围确认
+
+- 研究者确认今后可使用 Ubuntu WSL，但项目工作仅限 `/home/shen/PIJWM`（Windows：`\\wsl.localhost\Ubuntu\home\shen\PIJWM`）及其真实子目录；代码、数据、环境、缓存、临时文件和输出均不越界。
+- 仅更新仓库内 AGENTS、AI_CONTEXT、项目记忆入口和 WSL 说明；不写全局/个人记忆，不启动 WSL、不安装环境、不运行实验、不改磁盘或科研文件。保留 D 盘主项目关系与已有研究授权门。

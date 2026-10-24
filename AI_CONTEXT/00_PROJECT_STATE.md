@@ -497,6 +497,10 @@ r39 冻结提交 `0586cde90c8cc244e9f5091fd51e7c77217b817a` 已完成真实 GPU 
 
 ## WSL 环境治理事实（2026-10-24；PIJWM-WSL-CLEANUP-001）
 
+- 研究者使用授权（2026-10-24）：今后可以按任务需要使用 WSL，但 PI-JWM 项目文件操作只允许 `/home/shen/PIJWM` 及其真实子目录；Windows 入口 `\\wsl.localhost\Ubuntu\home\shen\PIJWM`。
+- 代码、数据、项目环境、缓存、临时文件和产物均须留在该目录；不扫描/整理其他 WSL 项目或个人目录，不经符号链接越界，不直接把 `/mnt/c`、`/mnt/d` 当项目工作区。系统工具/运行库的必要加载不扩展项目文件操作范围。
+- 使用前固定工作目录和进程内缓存/临时路径；目录外文件操作、系统级安装、全局配置和磁盘维护需另行授权。此条只属于本项目记忆，正式训练/GPU/大型实验/locked_test 的原有授权门不变。
+
 - 仅为工程环境记录，不改变研究方向、算法或实验结论。完整阶段证据见 `docs/WSL_ENVIRONMENT.md` 与 `docs/WSL_CLEANUP_20261024.json`。
 - 已验证 Ubuntu 24.04.3 LTS / WSL 2，WSL 2.6.3.0，只有 Ubuntu 一个注册发行版。统一轻量工作目录 `/home/shen/PIJWM` 仍仅有 README，非 Git 仓库；D 盘仍是工程主项目，不自动复制大型数据。
 - 研究者先批准原生缩容，最大容量已从 1024 GiB 设为 21474836480 B（20 GiB）；之后明确批准“可以的，压实一下吧”，已完成根 ext4 fstrim 与 Windows CompactVirtualDisk 原生离线压实，返回码 0。没有注销重装、导入、设稀疏或改全局配置。
