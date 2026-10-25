@@ -1,0 +1,25 @@
+test_full_real_env_replay_and_channels_seeded (test_v2u4real_interface_v1.AirFogSimTests) ... ok
+test_native_newborn_and_velocity_regression (test_v2u4real_interface_v1.AirFogSimTests) ... ok
+test_propagation_counterexample (test_v2u4real_interface_v1.AirFogSimTests) ... ok
+test_replay_contract_refuses_irregular_time_and_outside_bounds (test_v2u4real_interface_v1.AirFogSimTests) ... ok
+test_replay_reset_exhaustion_and_control_rejection (test_v2u4real_interface_v1.AirFogSimTests) ... ok
+test_audit_missing_keys_duplicates_and_no_clock_inference (test_v2u4real_interface_v1.DatasetAuditTests) ... ok
+test_duplicate_yaml_keys_rejected (test_v2u4real_interface_v1.DatasetAuditTests) ... ok
+test_empty_corrupt_compressed_nonfinite_rejected (test_v2u4real_interface_v1.DatasetAuditTests) ... ok
+test_field_types_include_all_objects (test_v2u4real_interface_v1.DatasetAuditTests) ... ok
+test_missing_data_is_blocked (test_v2u4real_interface_v1.DatasetAuditTests) ... ok
+test_reader_ascii_and_binary (test_v2u4real_interface_v1.DatasetAuditTests) ... ok
+test_select_smallest_train_and_cap (test_v2u4real_interface_v1.DatasetAuditTests) ... ok
+test_test_split_not_accepted (test_v2u4real_interface_v1.DatasetAuditTests) ... ok
+test_known_axis_and_inverse (test_v2u4real_interface_v1.GeometryTests) ... ok
+test_nonrigid_and_nonfinite_rejected (test_v2u4real_interface_v1.GeometryTests) ... ok
+test_reflection_rejected (test_v2u4real_interface_v1.GeometryTests) ... ok
+test_rsu_is_explicit_setting (test_v2u4real_interface_v1.GeometryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 4.608s
+
+OK
+🔧 Using NumPy backend
+SimpleAuthManager initialized with 10.0% malicious ratio
+SimpleAuthManager initialized with 10.0% malicious ratio

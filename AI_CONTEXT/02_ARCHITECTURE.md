@@ -1,3 +1,11 @@
+<!-- V2U4REAL R1 2026-10-25 -->
+## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
+
+新增隔离 v2u4real_interface_v1：严格 PCD/YAML 审计、显式刚体变换、TrafficManager 实例子类绝对回放。真实 AirFogSimEnv 接线限定检查 PASS；第三方源码未修改。原生 real 回放/实体时间标签及无线数值语义有阻塞；旧双图/RSSM/Planner/Scorer 和 checkpoint 不变。
+
+详见 [STEP_V2U4REAL_AIRFOGSIM_R1.md](../docs/implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md)。这些条目只作导航，结论以执行证据为准。
+<!-- END V2U4REAL R1 -->
+
 
 <!-- STEP6.4N JOINT CLOSURE -->
 ## 2026-10-12 — STEP 6.4N 联合入口补验完成

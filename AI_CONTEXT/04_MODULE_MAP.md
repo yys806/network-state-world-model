@@ -1,3 +1,11 @@
+<!-- V2U4REAL R1 2026-10-25 -->
+## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
+
+接口工具 code/src/pi_jwm/v2u4real_interface_v1.py；入口 code/scripts/run_v2u4real_airfogsim_interface_v1.py；官方变换检查 probe_v2u4real_official_transform_v1.py；测试 test_v2u4real_interface_v1.py；源码锁定 code/reference/V2U4Real.SOURCE.json。均独立于旧研究模型。
+
+详见 [STEP_V2U4REAL_AIRFOGSIM_R1.md](../docs/implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md)。这些条目只作导航，结论以执行证据为准。
+<!-- END V2U4REAL R1 -->
+
 
 <!-- STEP6.4N JOINT CLOSURE -->
 ## 2026-10-12 — STEP 6.4N 联合入口补验完成

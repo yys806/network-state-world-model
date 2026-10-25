@@ -1,3 +1,11 @@
+<!-- V2U4REAL R1 2026-10-25 -->
+## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
+
+本实验采用车辆/UAV LiDAR 信息源、固定逻辑 RSU 接收并执行检测的候选口径；编码与压缩固定。只验证接口，不冻结方法、模型或任务质量定义。依据研究者 2026-10-25 消息及规范笔记 1028 的讲稿之外正文，路径与 SHA 见实施记录。
+
+详见 [STEP_V2U4REAL_AIRFOGSIM_R1.md](../docs/implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md)。这些条目只作导航，结论以执行证据为准。
+<!-- END V2U4REAL R1 -->
+
 <!-- STEP6.4I CURRENT -->
 ## 2026-10-09 STEP 6.4I — Pure-search正式闭环CPU准备
 

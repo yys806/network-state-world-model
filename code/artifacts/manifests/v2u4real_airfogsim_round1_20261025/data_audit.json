@@ -1,0 +1,14 @@
+{
+  "status": "BLOCKED",
+  "scope": "real_train_data",
+  "root": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\data\\v2u4real_minimal",
+  "clock_unit": null,
+  "actual_interval_s": null,
+  "time_range_s": null,
+  "physical_clock_verified": false,
+  "coordinates_verified": false,
+  "anomalies": [],
+  "observed_fields": {},
+  "frames": [],
+  "reason": "No local V2U4Real subset at configured root; nothing downloaded"
+}

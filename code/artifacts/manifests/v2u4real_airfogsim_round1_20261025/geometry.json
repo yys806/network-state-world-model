@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "scope": "synthetic_geometry_only",
+  "roundtrip_max_error": 0.0,
+  "rsu_roundtrip_max_error": 0.0,
+  "rsu_to_common": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      300.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      300.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      25.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "rsu_provenance": "simulation setting",
+  "dataset_alignment": "BLOCKED",
+  "reason": "Real cloud/annotation frame, calibration and axis directions unavailable"
+}

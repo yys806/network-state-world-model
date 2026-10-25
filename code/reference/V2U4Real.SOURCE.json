@@ -1,0 +1,28 @@
+{
+  "repository": "https://github.com/VjiaLi/V2U4Real",
+  "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "kind": "partial_readonly_audit_snapshot",
+  "files": {
+    "LICENSE": "20bccc4aaccdbdf80960af7ed64ed036ed449b3f57f61e04860a91dcc5010639",
+    "README.md": "480d96479f60a4c922300e2ca31239b356d6c59e48785e2818b05f7b759aa55f",
+    "opencood/hypes_yaml/yaml_utils.py": "5b88ef224db616a7a915041b959b1e907fb36094537f7b877bc09351ff57bb29",
+    "opencood/utils/box_utils.py": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+    "opencood/utils/pcd_utils.py": "3a823f538315531b0feca98ea4351e1225088a5173bd36345c96bd92dea611df",
+    "opencood/utils/transformation_utils.py": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+    "opencood/utils/uav_to_single.py": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+    "opencood/utils/vehicle_to_single.py": "0d5951f26d590c8c8c2e7b67167f085c7eaaa478a713b2777aadf29b5164a90e",
+    "opencood/data_utils/datasets/basedataset.py": "aea708b371977015deb5fbe45ad3ed19a912b34d2cc66cf0482f7feff63f19aa"
+  },
+  "note": "Not a complete install. No dataset or weights downloaded. Fetch exact text files only.",
+  "git_blobs": {
+    "README.md": "7073480dc78ad529068e3eda4fffe08955e88dbe",
+    "LICENSE": "85dcf41ee15c7c2a6f1eb2678aae46b54b6fa6bf",
+    "opencood/data_utils/datasets/basedataset.py": "320e3f31c2f2b402f121e6514b6db65cc148d47c",
+    "opencood/hypes_yaml/yaml_utils.py": "e78dd4607d48f740e1314c2fff8341e024d46a09",
+    "opencood/utils/transformation_utils.py": "8318303679fb8f700bca7bc8ddcabb0b36f5c641",
+    "opencood/utils/pcd_utils.py": "9f27249d6c318cc37ceaf86463d43998808044f9",
+    "opencood/utils/uav_to_single.py": "d0a47873b6631caca6c625e66bf3304b61de1a70",
+    "opencood/utils/vehicle_to_single.py": "8da4ff82d1c60b6a3030c9843087238aa9408618",
+    "opencood/utils/box_utils.py": "a6b336057e94726b02a121c74c0225c5312db127"
+  }
+}

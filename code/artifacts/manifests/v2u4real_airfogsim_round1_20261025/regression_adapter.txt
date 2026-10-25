@@ -1,0 +1,14 @@
+test_declared_concurrency_limit_omits_excess_tasks (test_airfogsim_contract_adapter.CapacitySafeCpuAllocationTests) ... ok
+test_each_node_uses_its_own_capacity (test_airfogsim_contract_adapter.CapacitySafeCpuAllocationTests) ... ok
+test_missing_or_nonpositive_capacity_produces_no_allocation (test_airfogsim_contract_adapter.CapacitySafeCpuAllocationTests) ... ok
+test_observed_zero_is_distinct_from_unmodelled (test_airfogsim_contract_adapter.MissingValueEncodingTests) ... ok
+test_unmodelled_value_cannot_carry_a_numeric_placeholder (test_airfogsim_contract_adapter.MissingValueEncodingTests) ... ok
+test_activated_profiles_become_direct_events_with_timeslot_capacity (test_airfogsim_contract_adapter.TransmissionAccountingTests) ... ok
+test_negative_or_nonfinite_transfer_amount_is_rejected (test_airfogsim_contract_adapter.TransmissionAccountingTests) ... ok
+test_sending_accumulates_by_source_and_receiving_by_target (test_airfogsim_contract_adapter.TransmissionAccountingTests) ... ok
+test_totals_are_applied_to_the_reference_channel_boundary (test_airfogsim_contract_adapter.TransmissionAccountingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.012s
+
+OK

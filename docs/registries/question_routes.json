@@ -2,6 +2,15 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-V2U4REAL-AIRFOGSIM-R1",
+      "keywords": ["V2U4Real", "V2I", "U2I", "绝对轨迹", "特征包接口"],
+      "title": "V2U4Real first interface audit and stop gates",
+      "summary": "CPU 人工接口限定检查通过；A/B/C/D BLOCKED，E NOT_RUN；无真实数据验收或训练。",
+      "primary_sources": ["docs/implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md", "code/src/pi_jwm/v2u4real_interface_v1.py"],
+      "verification_sources": ["code/artifacts/manifests/v2u4real_airfogsim_round1_20261025/acceptance.json"],
+      "claim_boundary": "software probes only; no real dataset, model or service acceptance"
+    },
+    {
       "id": "ROUTE-STEP6.4N-DYNAMIC-RETURN-V2",
       "keywords": [
         "6.4N",

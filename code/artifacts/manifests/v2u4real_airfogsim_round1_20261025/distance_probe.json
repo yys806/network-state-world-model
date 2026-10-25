@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "distances_horizontal_m": [
+    50.0,
+    100.0,
+    200.0,
+    400.0
+  ],
+  "pathloss_db_by_rb": {
+    "V2I": [
+      [
+        74.82497956102546,
+        74.83221478812808
+      ],
+      [
+        80.13590945122868,
+        80.14314467833131
+      ],
+      [
+        86.36545556835367,
+        86.3726907954563
+      ],
+      [
+        93.21772635624004,
+        93.21847415533814
+      ]
+    ],
+    "U2I": [
+      [
+        74.99272505480755,
+        74.99996028191018
+      ],
+      [
+        80.307514225159,
+        80.31474945226162
+      ],
+      [
+        86.13215857776365,
+        86.13939380486624
+      ],
+      [
+        92.1023562446266,
+        92.10959147172923
+      ]
+    ]
+  },
+  "models": {
+    "V2I": "UMa_LOS_tr38901 (current vendor implementation)",
+    "U2I": "free_space"
+  },
+  "uma_geometry": {
+    "status": "BLOCKED",
+    "actual_db_at_100m": 80.13590945122868,
+    "documented_horizontal_formula_db": 79.8610206277911,
+    "difference_db": 0.27488882343757837,
+    "reason": "3D norm used as horizontal distance; default h_BS=25/h_UT=1.5 are not read from node z"
+  },
+  "claim": "Monotonicity/exact U2I arithmetic only; no real radio calibration or CSI measurement"
+}

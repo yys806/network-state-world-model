@@ -1,0 +1,41 @@
+{
+  "scope": "official_function_synthetic_inputs_only",
+  "source_sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+  "pose_order": "x,y,z,roll,yaw,pitch",
+  "degree_default": true,
+  "rotation": "intrinsic ZYX; comment NED, physical dataset axes UNVERIFIED",
+  "known_rotation_matrix": [
+    [
+      2.220446049250313e-16,
+      -1.0,
+      0.0,
+      10.0
+    ],
+    [
+      1.0,
+      2.220446049250313e-16,
+      0.0,
+      20.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      30.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "pose_pose_branch": "PASS",
+  "mixed_list_matrix_branch": {
+    "status": "BLOCKED",
+    "max_error": 12.0,
+    "reason": "multiplies x2 directly where docstring says x2->world; verify call-specific annotation convention"
+  },
+  "dataset_transform_status": "BLOCKED",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]"
+}

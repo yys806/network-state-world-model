@@ -1,0 +1,14 @@
+test_communication_missing_transport_cannot_be_encoded_as_empty_total (test_raw_single_decision_step_contract_v1.ContractValidationTests) ... ok
+test_communication_total_must_equal_wireless_plus_wired (test_raw_single_decision_step_contract_v1.ContractValidationTests) ... ok
+test_comp_allocation_respects_decision_time_capacity (test_raw_single_decision_step_contract_v1.ContractValidationTests) ... ok
+test_future_task_cannot_enter_decision_observation (test_raw_single_decision_step_contract_v1.ContractValidationTests) ... ok
+test_mobility_is_uav_only_and_every_present_uav_has_an_explicit_action (test_raw_single_decision_step_contract_v1.ContractValidationTests) ... ok
+test_outcome_and_next_decision_must_align_in_time_and_identity (test_raw_single_decision_step_contract_v1.ContractValidationTests) ... ok
+test_same_slot_outcome_cannot_be_a_decision_source (test_raw_single_decision_step_contract_v1.ContractValidationTests) ... ok
+test_valid_four_family_step_closes_at_next_decision (test_raw_single_decision_step_contract_v1.ContractValidationTests) ... ok
+test_repository_airfogsim_sources_execute_all_four_action_families (test_raw_single_decision_step_contract_v1.RealSchedulerBoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.318s
+
+OK

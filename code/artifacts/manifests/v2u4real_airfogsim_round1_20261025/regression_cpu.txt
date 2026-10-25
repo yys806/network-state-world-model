@@ -1,0 +1,10 @@
+test_assignment_and_current_node_mismatch_are_rejected (test_airfogsim_cpu_inner_rule_v1.AirFogSimCpuInnerRuleV1Test) ... ok
+test_callback_signature_uses_environment_interval_by_default (test_airfogsim_cpu_inner_rule_v1.AirFogSimCpuInnerRuleV1Test) ... ok
+test_missing_node_and_missing_capacity_are_rejected (test_airfogsim_cpu_inner_rule_v1.AirFogSimCpuInnerRuleV1Test) ... ok
+test_overcomputed_task_is_rejected_instead_of_clamped (test_airfogsim_cpu_inner_rule_v1.AirFogSimCpuInnerRuleV1Test) ... ok
+test_real_task_callback_matches_pure_rule (test_airfogsim_cpu_inner_rule_v1.AirFogSimCpuInnerRuleV1Test) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK

@@ -9,6 +9,10 @@
 *.tex text eol=lf
 .gitignore text eol=lf
 
+# Keep the new interface receipts and tiny map byte-identical after checkout.
+code/artifacts/manifests/v2u4real_airfogsim_round1_20261025/** text eol=lf
+code/scripts/configs/v2u4real_tiny.net.xml text eol=lf
+
 *.ps1 text eol=crlf
 *.bat text eol=crlf
 

@@ -1,3 +1,11 @@
+<!-- V2U4REAL R1 2026-10-25 -->
+## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
+
+本轮授权仅为 R1 接口可行性验证，已完成可执行范围并报告阻塞；不恢复旧 Step 或授权下一实现 Step。本轮仅验证 V2U4Real × AirFogSim 的第一轮 CPU 接口。A/B/C/D 总状态 BLOCKED，E NOT_RUN；真实环境中人工绝对轨迹回放、网格、V2I/U2I 数组和固定种子重复的限定检查 PASS。没有真实数据接入验收、检测服务或新世界模型；未用 GPU/训练/locked_test。
+
+详见 [STEP_V2U4REAL_AIRFOGSIM_R1.md](implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md)。这些条目只作导航，结论以执行证据为准。
+<!-- END V2U4REAL R1 -->
+
 
 <!-- STEP6.4N JOINT CLOSURE -->
 ## 2026-10-12 — STEP 6.4N 联合入口补验完成

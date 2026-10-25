@@ -1,3 +1,11 @@
+<!-- V2U4REAL R1 2026-10-25 -->
+## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
+
+新增 R1 接口审计、CPU 回放/信道探针、官方源码指纹、17 项专项测试和最小配置；真实数据/传播语义 BLOCKED，E NOT_RUN。第三方源码与历史结果未改。
+
+详见 [STEP_V2U4REAL_AIRFOGSIM_R1.md](implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md)。这些条目只作导航，结论以执行证据为准。
+<!-- END V2U4REAL R1 -->
+
 
 <!-- STEP6.4N JOINT CLOSURE -->
 ## 2026-10-12 — STEP 6.4N 联合入口补验完成

@@ -55,6 +55,7 @@ code/artifacts/*
 
 # AirFogSim is an independent third-party checkout.
 code/reference/AirFogSim/
+code/reference/V2U4Real/
 
 # Large local research attachments and generated presentation outputs.
 literature/

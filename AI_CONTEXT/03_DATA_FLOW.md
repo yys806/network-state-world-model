@@ -1,3 +1,11 @@
+<!-- V2U4REAL R1 2026-10-25 -->
+## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
+
+实际链路仅为人工公共坐标位姿 → 独立 TrafficManager 子类 → 真实 env.step → 实体/网格 → 原生信道与指定 RB 速率。V2U4Real 原始帧 → 真实时间/坐标合同仍 BLOCKED；没有特征包服务、检测器或训练轨迹生成。100 ms 仅人工配置，未证实是数据实际周期。
+
+详见 [STEP_V2U4REAL_AIRFOGSIM_R1.md](../docs/implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md)。这些条目只作导航，结论以执行证据为准。
+<!-- END V2U4REAL R1 -->
+
 
 <!-- STEP6.4N JOINT CLOSURE -->
 ## 2026-10-12 — STEP 6.4N 联合入口补验完成

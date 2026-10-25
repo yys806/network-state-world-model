@@ -1,3 +1,11 @@
+<!-- V2U4REAL R1 2026-10-25 -->
+## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
+
+本轮实证阻塞：无真实训练样本/物理时间/坐标标定；原生 real 模式漏新车辆、车辆 z 丢失，UAV setter 为速度积分，实体更新时间落后一帧；V2I 三维距离重复叠高度；中断概率使用 dB（历史已记录）；未分配 RB 伪速率；快衰落跨 RB 广播及 PDF 语义。官方 list+matrix 变换分支与文档约定不一致。详见实施记录；没有擅改模型或旧结果。
+
+详见 [STEP_V2U4REAL_AIRFOGSIM_R1.md](../docs/implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md)。这些条目只作导航，结论以执行证据为准。
+<!-- END V2U4REAL R1 -->
+
 
 <!-- STEP6.4N JOINT CLOSURE -->
 ## 2026-10-12 — STEP 6.4N 联合入口补验完成

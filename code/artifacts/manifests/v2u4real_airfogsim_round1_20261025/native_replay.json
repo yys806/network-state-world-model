@@ -1,0 +1,73 @@
+{
+  "status": "BLOCKED",
+  "scope": "native_real_mode_synthetic_probe",
+  "trace": [
+    {
+      "time": 0.1,
+      "vehicles": {
+        "vehicle_0": {
+          "position": [
+            349,
+            300,
+            0
+          ],
+          "speed": 10,
+          "acceleration": 0,
+          "angle": 0,
+          "routeId": "synthetic",
+          "id": "vehicle_0"
+        }
+      },
+      "uav_position": [
+        254.69302216972602,
+        468.25005959654743,
+        47.937691734318335
+      ]
+    },
+    {
+      "time": 0.2,
+      "vehicles": {
+        "vehicle_0": {
+          "position": [
+            350,
+            300,
+            0
+          ],
+          "speed": 10,
+          "acceleration": 0,
+          "angle": 0,
+          "routeId": "synthetic",
+          "id": "vehicle_0"
+        }
+      }
+    },
+    {
+      "time": 0.30000000000000004,
+      "vehicles": {
+        "vehicle_0": {
+          "position": [
+            351,
+            300,
+            0
+          ],
+          "speed": 10,
+          "acceleration": 0,
+          "angle": 0,
+          "routeId": "synthetic",
+          "id": "vehicle_0"
+        }
+      }
+    }
+  ],
+  "uav_displacement": [
+    0.19999999999998863,
+    0.0,
+    0.0
+  ],
+  "position_key_survived_setter": false,
+  "newborn_at_0_1": {
+    "at_0_1": {},
+    "at_0_2": {}
+  },
+  "reason": "Native real mode drops newborn: IDs selected before clock advance; UAV setter is velocity integration, not absolute replay; vehicle z forced zero"
+}

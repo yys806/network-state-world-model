@@ -1,0 +1,24 @@
+{
+  "files": {
+    "code/src/pi_jwm/v2u4real_interface_v1.py": "17a97a3a96cff587fbc0e63f7bede85db817a214b1765958850c3af3de983c38",
+    "code/scripts/run_v2u4real_airfogsim_interface_v1.py": "688ae0d1161ba867079144a64470e3a246fa872064ac1784d562ce0f03edb34c",
+    "code/scripts/probe_v2u4real_official_transform_v1.py": "2c7729512008d0a8f4796f627d0f6e8a19109335be34bae1e81b0c3148a24dd2",
+    "code/scripts/fetch_v2u4real_audit_sources_v1.py": "7e6b45b268c7626587d003fe3834d4f7ddd9b7a81a67641fce32805a9eca2cce",
+    "code/tests/test_v2u4real_interface_v1.py": "7ef0c6586f2c41e9f9432b2d6e13ef96aa6bebef0d1a32de48073a45436ceae3",
+    "code/scripts/configs/v2u4real_airfogsim_interface_v1.json": "6678841be892baaf1f971f6173c8507525232c8fe01303a0f3f4214252d25d56",
+    "code/scripts/configs/v2u4real_tiny.net.xml": "cc7f080b8982dab9479e66cad6970593fca4ed1219c495cc76fcd65a6a161ca5",
+    "code/reference/V2U4Real.SOURCE.json": "325971861da520c6efdf3f5d08a07bf1d6b7099ab9afa065b030a945d28d4541",
+    "code/reference/AirFogSim/airfogsim/airfogsim_env.py": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+    "code/reference/AirFogSim/airfogsim/manager/traffic_manager.py": "5935f18c4ed4fcfe305462fcc131799bb35222d3955ca98e0334562b9a4ab021",
+    "code/reference/AirFogSim/airfogsim/scheduler/traffic_sched.py": "eec01556d1b2fa9e25861a5d8269f2cb0fe4fdbe10b47566c3c2335f79b818f5",
+    "code/reference/AirFogSim/airfogsim/manager/channel_manager_cp.py": "7566ac1c663f11d59b176614803d4b9ec679a28b6b3da7840a1c9744770f16f7",
+    "code/reference/AirFogSim/airfogsim/all_channels.py": "832e7ba4a92d9d1ea399107ce393bc171505200534998534746c96c700a7366a",
+    "code/reference/AirFogSim/airfogsim/channel_callback/fading_callback.py": "ca220aa139463e8538dbad455d209f0114756525578e8fa7cf2f5170676828f9",
+    "code/reference/AirFogSim/airfogsim/channel_callback/outage_callback.py": "318f32a427ae1e2f3e6fa8b16ab61071fd39a1b235e73e2f6b39e089b3f6be59",
+    "code/reference/AirFogSim/airfogsim/channel_callback/pathloss_callback.py": "0ef681263f24d8dc796e8d87b35077264f650bfb1994084823b5f17fa7b7f560",
+    "code/reference/AirFogSim/airfogsim/channel_callback/shadowing_callback.py": "fa17b21902467db096e2627e2f0918c8ea7b5a5748c86af0c80e1ca2f88cc2ac",
+    "code/reference/AirFogSim/airfogsim/channel_callback/__init__.py": "4d8ccd032a42c9bcb65ad6b26c71b706fc9a44e1244a271708744c27a20e6d08"
+  },
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\miniconda\\envs\\airfogsim\\python.exe"
+}

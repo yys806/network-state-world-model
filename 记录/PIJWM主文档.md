@@ -1,3 +1,11 @@
+<!-- V2U4REAL R1 2026-10-25 -->
+## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
+
+方法边界记录：研究者 2026-10-25 授权独立 V2U4Real × AirFogSim 接口实验，不代表新研究方法实现或冻结。人工 RSU/包大小/CSI 不是真实测量；本轮无特征包服务、感知质量或世界模型结论。旧方法与结果保留。
+
+详见 [STEP_V2U4REAL_AIRFOGSIM_R1.md](../docs/implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md)。这些条目只作导航，结论以执行证据为准。
+<!-- END V2U4REAL R1 -->
+
 
 <!-- STEP6.4N JOINT CLOSURE -->
 ## 2026-10-12 — STEP 6.4N 联合入口补验完成

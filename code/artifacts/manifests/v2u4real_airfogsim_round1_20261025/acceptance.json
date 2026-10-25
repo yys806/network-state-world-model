@@ -1,0 +1,64 @@
+{
+  "schema": "PIJWM-V2U4Real-AirFogSim-interface-round1-v1",
+  "device": "cpu",
+  "gpu_used": false,
+  "locked_test_accessed": false,
+  "training_run": false,
+  "data_downloaded": false,
+  "A": {
+    "status": "BLOCKED",
+    "evidence": "data_audit.json",
+    "reason": "No local V2U4Real subset at configured root; nothing downloaded"
+  },
+  "B": {
+    "status": "BLOCKED",
+    "evidence": "geometry.json",
+    "reason": "Real cloud/annotation frame, calibration and axis directions unavailable"
+  },
+  "C": {
+    "status": "BLOCKED",
+    "reason": "Real dataset pose/time contract unavailable",
+    "native_status": "BLOCKED",
+    "adapted_synthetic_status": "PASS",
+    "evidence": [
+      "native_replay.json",
+      "adapted_environment.json"
+    ],
+    "timestamp_semantics": "BLOCKED: native entity last_updated_time uses previous env time while position and TrafficManager use advanced frame; not rewritten"
+  },
+  "D": {
+    "status": "BLOCKED",
+    "reason": "3D norm used as horizontal distance; default h_BS=25/h_UT=1.5 are not read from node z",
+    "interface_status": "PASS",
+    "evidence": [
+      "adapted_environment.json",
+      "distance_probe.json"
+    ],
+    "simulation_csi_only": true,
+    "additional_semantic_blockers": [
+      "Outage callback consumes dB SINR although its exponential formula expects a linear power ratio (historically documented)",
+      "With outage disabled for diagnosis, inactive RBs have about 2 Mbps through the SINR floor; sum allocated RBs only",
+      "Fast-fading function broadcasts one PDF-derived value across RBs; not independent per-RB Rayleigh power draws"
+    ]
+  },
+  "E": {
+    "status": "NOT_RUN",
+    "reason": "C/D real-data and propagation gates not both PASS; no feature service implemented"
+  },
+  "official_source": {
+    "status": "PASS",
+    "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+    "partial_snapshot": true,
+    "verified_files": {
+      "LICENSE": true,
+      "README.md": true,
+      "opencood/hypes_yaml/yaml_utils.py": true,
+      "opencood/utils/box_utils.py": true,
+      "opencood/utils/pcd_utils.py": true,
+      "opencood/utils/transformation_utils.py": true,
+      "opencood/utils/uav_to_single.py": true,
+      "opencood/utils/vehicle_to_single.py": true,
+      "opencood/data_utils/datasets/basedataset.py": true
+    }
+  }
+}

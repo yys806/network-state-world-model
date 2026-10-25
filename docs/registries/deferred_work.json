@@ -2,6 +2,19 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
+      "id": "V2U4REAL-R2-SAMPLE-AND-RADIO-DECISION",
+      "type": "researcher_decision_required",
+      "status": "deferred",
+      "reason": "No real subset; C/D semantic blockers; E gate not passed",
+      "summary_zh": "先取得最小训练帧及时间/标定，再单独决定无线最小修复；不自动运行 E 或训练。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": "docs/implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md",
+      "required_predecessors": ["researcher reviews R1", "3 paired train frames plus physical clock and calibration basis", "researcher approves radio repair scope before propagation changes"],
+      "forbidden_until_authorized": ["vendor propagation-model changes", "feature service E before C/D pass", "new scenario training", "locked_test"]
+    },
+    {
       "id": "STEP-6.4N-FORMAL-ROUTE-INTEGRATION",
       "type": "researcher_decision_required",
       "status": "deferred",

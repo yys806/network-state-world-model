@@ -1,0 +1,108 @@
+[
+  {
+    "argv": [
+      "D:/miniconda/envs/airfogsim/python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "code/tests",
+      "-p",
+      "test_airfogsim_contract_adapter.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "regression_adapter.txt"
+  },
+  {
+    "argv": [
+      "D:/miniconda/envs/airfogsim/python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "code/tests",
+      "-p",
+      "test_raw_single_decision_step_contract_v1.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "regression_contract.txt"
+  },
+  {
+    "argv": [
+      "D:/miniconda/envs/airfogsim/python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "code/tests",
+      "-p",
+      "test_airfogsim_cpu_inner_rule_v1.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "regression_cpu.txt"
+  },
+  {
+    "argv": [
+      "D:\\miniconda\\python.exe",
+      "-m",
+      "compileall",
+      "-q",
+      "code/src",
+      "code/scripts",
+      "code/tests"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "compileall.txt"
+  },
+  {
+    "argv": [
+      "D:/miniconda/envs/airfogsim/python.exe",
+      "code/scripts/run_v2u4real_airfogsim_interface_v1.py"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "output": "run.txt"
+  },
+  {
+    "argv": [
+      "D:\\miniconda\\python.exe",
+      "code/scripts/probe_v2u4real_official_transform_v1.py"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "official_transform.txt"
+  },
+  {
+    "argv": [
+      "D:\\miniconda\\python.exe",
+      "code/scripts/fetch_v2u4real_audit_sources_v1.py"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "source_verification.txt"
+  },
+  {
+    "argv": [
+      "D:/miniconda/envs/airfogsim/python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "code/tests",
+      "-p",
+      "test_v2u4real_interface_v1.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "tests.txt",
+    "observed_test_count": 17
+  }
+]
