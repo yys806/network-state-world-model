@@ -1,0 +1,206 @@
+{
+  "status": "BLOCKED",
+  "raw_time_fields_by_file": [
+    {
+      "agent": "1",
+      "frame_key": "1752814590.2",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.2",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.3",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.3",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.4",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.4",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.5",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.5",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.6",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.6",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.7",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.7",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.8",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.8",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.9",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.9",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.0",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.0",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.1",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.1",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.2",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.2",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.3",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.3",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.4",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.4",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.5",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.5",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.6",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.6",
+      "fields": {}
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.7",
+      "fields": {}
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.7",
+      "fields": {}
+    }
+  ],
+  "actual_interval_s": null,
+  "actual_time_range_s": null,
+  "timestamp_unit": null,
+  "reference_origin": null,
+  "file_key_difference": {
+    "unit": "identifier_numeric_only",
+    "selected_values": [
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1",
+      "0.1"
+    ],
+    "full_sequences": {
+      "1.pcd": {
+        "0.1": 218
+      },
+      "1.yaml": {
+        "0.1": 218
+      },
+      "2.pcd": {
+        "0.1": 218
+      },
+      "2.yaml": {
+        "0.1": 218
+      }
+    }
+  },
+  "published_key_continuity": true,
+  "physical_missing_or_duplicate_frames": "UNVERIFIED without acquisition clocks",
+  "simulation_time_mapping": "NOT_RUN"
+}

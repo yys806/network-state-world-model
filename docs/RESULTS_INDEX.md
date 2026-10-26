@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-02 2026-10-26 -->
+## 2026-10-26 — V2U4Real 完整真实样本准备（总体 BLOCKED）
+
+R2-02 两个固定官方 train 包大小/SHA 通过，提取 16 个发布序列连续共同 Ouster/YAML key（64 文件），读取/结构 PASS；物理时钟/配对误差与标定方向仍 BLOCKED，合格物理配对 0。车辆 PCD 有两组不同 key 的字节重复，原因待核验。无真实变换/回放/训练，GPU/locked_test 未使用。
+
+详见 [R2-02 实施记录](implementation_records/STEP_R2_02_V2U4REAL_COMPLETE_SAMPLES.md)；结论以实际文件和机器审计为准。
+<!-- END V2U4REAL R2-02 -->
+
 > 2026-10-12 STEP6.4N 最终入口：隔离联合Domain/bridge、Input/Return活动clock、动态Flow/frozen H4和Scorer v2 CPU验收见 [实施记录](implementation_records/STEP_06_4N_DYNAMIC_RETURN_V2.md)。最终真实v10/模型wm_v5；32项v2/61项v1 PASS。正式Route仍禁用，预测可靠性及重训必要性NOT_ESTABLISHED；未使用GPU/locked_test。
 
 <!-- STEP6.4N V2 CURRENT -->

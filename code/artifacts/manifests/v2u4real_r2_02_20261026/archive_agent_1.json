@@ -1,0 +1,530 @@
+{
+  "dataset_revision": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+  "official_url": "https://huggingface.co/datasets/VJiaLi/V2U4Real/resolve/36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a/train/2025-07-18-12-53_2__agent-1.tar.zst",
+  "expected_bytes": 1070684502,
+  "sha256_expected": "34e03eb7a34c896aab55b44f32797a1e66a62386a5a7c4e58074abfb6741fa75",
+  "requests": [
+    {
+      "start": 1048576,
+      "end": 17825791,
+      "status": 206,
+      "content_range": "bytes 1048576-17825791/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:00:18.373434+00:00"
+    },
+    {
+      "start": 17825792,
+      "end": 34603007,
+      "status": 206,
+      "content_range": "bytes 17825792-34603007/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:00:23.818912+00:00"
+    },
+    {
+      "start": 34603008,
+      "end": 51380223,
+      "status": 206,
+      "content_range": "bytes 34603008-51380223/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:00:29.842085+00:00"
+    },
+    {
+      "start": 51380224,
+      "end": 68157439,
+      "status": 206,
+      "content_range": "bytes 51380224-68157439/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:00:35.128682+00:00"
+    },
+    {
+      "start": 68157440,
+      "end": 84934655,
+      "status": 206,
+      "content_range": "bytes 68157440-84934655/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:00:41.461182+00:00"
+    },
+    {
+      "start": 84934656,
+      "end": 101711871,
+      "status": 206,
+      "content_range": "bytes 84934656-101711871/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:00:46.802808+00:00"
+    },
+    {
+      "start": 101711872,
+      "end": 118489087,
+      "status": 206,
+      "content_range": "bytes 101711872-118489087/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:00:52.081630+00:00"
+    },
+    {
+      "start": 118489088,
+      "end": 135266303,
+      "status": 206,
+      "content_range": "bytes 118489088-135266303/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:00:57.531378+00:00"
+    },
+    {
+      "start": 135266304,
+      "end": 152043519,
+      "status": 206,
+      "content_range": "bytes 135266304-152043519/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:02.858563+00:00"
+    },
+    {
+      "start": 152043520,
+      "end": 168820735,
+      "status": 206,
+      "content_range": "bytes 152043520-168820735/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:08.038674+00:00"
+    },
+    {
+      "start": 168820736,
+      "end": 185597951,
+      "status": 206,
+      "content_range": "bytes 168820736-185597951/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:13.614150+00:00"
+    },
+    {
+      "start": 185597952,
+      "end": 202375167,
+      "status": 206,
+      "content_range": "bytes 185597952-202375167/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:18.863712+00:00"
+    },
+    {
+      "start": 202375168,
+      "end": 219152383,
+      "status": 206,
+      "content_range": "bytes 202375168-219152383/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:23.821248+00:00"
+    },
+    {
+      "start": 219152384,
+      "end": 235929599,
+      "status": 206,
+      "content_range": "bytes 219152384-235929599/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:28.957799+00:00"
+    },
+    {
+      "start": 235929600,
+      "end": 252706815,
+      "status": 206,
+      "content_range": "bytes 235929600-252706815/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:34.360550+00:00"
+    },
+    {
+      "start": 252706816,
+      "end": 269484031,
+      "status": 206,
+      "content_range": "bytes 252706816-269484031/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:39.545844+00:00"
+    },
+    {
+      "start": 269484032,
+      "end": 286261247,
+      "status": 206,
+      "content_range": "bytes 269484032-286261247/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:44.570998+00:00"
+    },
+    {
+      "start": 286261248,
+      "end": 303038463,
+      "status": 206,
+      "content_range": "bytes 286261248-303038463/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:49.870637+00:00"
+    },
+    {
+      "start": 303038464,
+      "end": 319815679,
+      "status": 206,
+      "content_range": "bytes 303038464-319815679/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:01:55.002510+00:00"
+    },
+    {
+      "start": 319815680,
+      "end": 336592895,
+      "status": 206,
+      "content_range": "bytes 319815680-336592895/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:00.261994+00:00"
+    },
+    {
+      "start": 336592896,
+      "end": 353370111,
+      "status": 206,
+      "content_range": "bytes 336592896-353370111/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:05.717788+00:00"
+    },
+    {
+      "start": 353370112,
+      "end": 370147327,
+      "status": 206,
+      "content_range": "bytes 353370112-370147327/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:11.051931+00:00"
+    },
+    {
+      "start": 370147328,
+      "end": 386924543,
+      "status": 206,
+      "content_range": "bytes 370147328-386924543/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:16.359923+00:00"
+    },
+    {
+      "start": 386924544,
+      "end": 403701759,
+      "status": 206,
+      "content_range": "bytes 386924544-403701759/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:21.399774+00:00"
+    },
+    {
+      "start": 403701760,
+      "end": 420478975,
+      "status": 206,
+      "content_range": "bytes 403701760-420478975/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:26.466961+00:00"
+    },
+    {
+      "start": 420478976,
+      "end": 437256191,
+      "status": 206,
+      "content_range": "bytes 420478976-437256191/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:31.568661+00:00"
+    },
+    {
+      "start": 437256192,
+      "end": 454033407,
+      "status": 206,
+      "content_range": "bytes 437256192-454033407/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:36.227204+00:00"
+    },
+    {
+      "start": 454033408,
+      "end": 470810623,
+      "status": 206,
+      "content_range": "bytes 454033408-470810623/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:41.295515+00:00"
+    },
+    {
+      "start": 470810624,
+      "end": 487587839,
+      "status": 206,
+      "content_range": "bytes 470810624-487587839/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:46.314862+00:00"
+    },
+    {
+      "start": 487587840,
+      "end": 504365055,
+      "status": 206,
+      "content_range": "bytes 487587840-504365055/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:51.205471+00:00"
+    },
+    {
+      "start": 504365056,
+      "end": 521142271,
+      "status": 206,
+      "content_range": "bytes 504365056-521142271/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:02:56.155001+00:00"
+    },
+    {
+      "start": 521142272,
+      "end": 537919487,
+      "status": 206,
+      "content_range": "bytes 521142272-537919487/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:01.596532+00:00"
+    },
+    {
+      "start": 537919488,
+      "end": 554696703,
+      "status": 206,
+      "content_range": "bytes 537919488-554696703/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:06.513326+00:00"
+    },
+    {
+      "start": 554696704,
+      "end": 571473919,
+      "status": 206,
+      "content_range": "bytes 554696704-571473919/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:11.319484+00:00"
+    },
+    {
+      "start": 571473920,
+      "end": 588251135,
+      "status": 206,
+      "content_range": "bytes 571473920-588251135/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:16.297868+00:00"
+    },
+    {
+      "start": 588251136,
+      "end": 605028351,
+      "status": 206,
+      "content_range": "bytes 588251136-605028351/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:21.513253+00:00"
+    },
+    {
+      "start": 605028352,
+      "end": 621805567,
+      "status": 206,
+      "content_range": "bytes 605028352-621805567/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:26.523980+00:00"
+    },
+    {
+      "start": 621805568,
+      "end": 638582783,
+      "status": 206,
+      "content_range": "bytes 621805568-638582783/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:31.395631+00:00"
+    },
+    {
+      "start": 638582784,
+      "end": 655359999,
+      "status": 206,
+      "content_range": "bytes 638582784-655359999/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:36.578939+00:00"
+    },
+    {
+      "start": 655360000,
+      "end": 672137215,
+      "status": 206,
+      "content_range": "bytes 655360000-672137215/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:41.997745+00:00"
+    },
+    {
+      "start": 672137216,
+      "end": 688914431,
+      "status": 206,
+      "content_range": "bytes 672137216-688914431/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:46.926053+00:00"
+    },
+    {
+      "start": 688914432,
+      "end": 705691647,
+      "status": 206,
+      "content_range": "bytes 688914432-705691647/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:51.715817+00:00"
+    },
+    {
+      "start": 705691648,
+      "end": 722468863,
+      "status": 206,
+      "content_range": "bytes 705691648-722468863/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:03:56.737463+00:00"
+    },
+    {
+      "start": 722468864,
+      "end": 739246079,
+      "status": 206,
+      "content_range": "bytes 722468864-739246079/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:02.239128+00:00"
+    },
+    {
+      "start": 739246080,
+      "end": 756023295,
+      "status": 206,
+      "content_range": "bytes 739246080-756023295/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:07.301048+00:00"
+    },
+    {
+      "start": 756023296,
+      "end": 772800511,
+      "status": 206,
+      "content_range": "bytes 756023296-772800511/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:12.532485+00:00"
+    },
+    {
+      "start": 772800512,
+      "end": 789577727,
+      "status": 206,
+      "content_range": "bytes 772800512-789577727/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:17.771957+00:00"
+    },
+    {
+      "start": 789577728,
+      "end": 806354943,
+      "status": 206,
+      "content_range": "bytes 789577728-806354943/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:23.735824+00:00"
+    },
+    {
+      "start": 806354944,
+      "end": 823132159,
+      "status": 206,
+      "content_range": "bytes 806354944-823132159/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:28.800053+00:00"
+    },
+    {
+      "start": 823132160,
+      "end": 839909375,
+      "status": 206,
+      "content_range": "bytes 823132160-839909375/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:34.008098+00:00"
+    },
+    {
+      "start": 839909376,
+      "end": 856686591,
+      "status": 206,
+      "content_range": "bytes 839909376-856686591/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:39.245400+00:00"
+    },
+    {
+      "start": 856686592,
+      "end": 873463807,
+      "status": 206,
+      "content_range": "bytes 856686592-873463807/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:44.638477+00:00"
+    },
+    {
+      "start": 873463808,
+      "end": 890241023,
+      "status": 206,
+      "content_range": "bytes 873463808-890241023/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:49.963945+00:00"
+    },
+    {
+      "start": 890241024,
+      "end": 907018239,
+      "status": 206,
+      "content_range": "bytes 890241024-907018239/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:04:54.981640+00:00"
+    },
+    {
+      "start": 907018240,
+      "end": 923795455,
+      "status": 206,
+      "content_range": "bytes 907018240-923795455/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:00.140322+00:00"
+    },
+    {
+      "start": 923795456,
+      "end": 940572671,
+      "status": 206,
+      "content_range": "bytes 923795456-940572671/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:05.470298+00:00"
+    },
+    {
+      "start": 940572672,
+      "end": 957349887,
+      "status": 206,
+      "content_range": "bytes 940572672-957349887/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:10.228253+00:00"
+    },
+    {
+      "start": 957349888,
+      "end": 974127103,
+      "status": 206,
+      "content_range": "bytes 957349888-974127103/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:15.287313+00:00"
+    },
+    {
+      "start": 974127104,
+      "end": 990904319,
+      "status": 206,
+      "content_range": "bytes 974127104-990904319/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:20.139097+00:00"
+    },
+    {
+      "start": 990904320,
+      "end": 1007681535,
+      "status": 206,
+      "content_range": "bytes 990904320-1007681535/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:25.298773+00:00"
+    },
+    {
+      "start": 1007681536,
+      "end": 1024458751,
+      "status": 206,
+      "content_range": "bytes 1007681536-1024458751/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:30.412277+00:00"
+    },
+    {
+      "start": 1024458752,
+      "end": 1041235967,
+      "status": 206,
+      "content_range": "bytes 1024458752-1041235967/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:35.609541+00:00"
+    },
+    {
+      "start": 1041235968,
+      "end": 1058013183,
+      "status": 206,
+      "content_range": "bytes 1041235968-1058013183/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:40.728140+00:00"
+    },
+    {
+      "start": 1058013184,
+      "end": 1070684501,
+      "status": 206,
+      "content_range": "bytes 1058013184-1070684501/1070684502",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:44.579963+00:00"
+    }
+  ],
+  "status": "PASS",
+  "reused_prefix_bytes": 1048576,
+  "downloaded_bytes_on_disk": 1070684502,
+  "path": "code/artifacts/data/v2u4real_r2_01/full_archives/2025-07-18-12-53_2__agent-1.tar.zst",
+  "bytes": 1070684502,
+  "sha256": "34e03eb7a34c896aab55b44f32797a1e66a62386a5a7c4e58074abfb6741fa75",
+  "verified_utc": "2026-10-26T06:05:45.921496+00:00",
+  "prior_errors": [
+    "URLError: <urlopen error [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。>"
+  ]
+}

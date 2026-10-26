@@ -1,0 +1,2209 @@
+{
+  "archive": {
+    "status": "PASS",
+    "path": "code/artifacts/data/v2u4real_r2_01/full_archives/2025-07-18-12-53_2__agent-2.tar.zst",
+    "bytes": 172308593,
+    "sha256": "64ae659bca67144c8713d5a689ce310474328a3c4ffd7a6f35948358b72b61f3",
+    "sha256_expected": "64ae659bca67144c8713d5a689ce310474328a3c4ffd7a6f35948358b72b61f3"
+  },
+  "agent": "2",
+  "members": [
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+      "bytes": 1128694,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.3.pcd",
+      "bytes": 1126006,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.4.pcd",
+      "bytes": 1132198,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.5.pcd",
+      "bytes": 1129238,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.6.pcd",
+      "bytes": 1131894,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.7.pcd",
+      "bytes": 1132374,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.8.pcd",
+      "bytes": 1134054,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.9.pcd",
+      "bytes": 1130966,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.0.pcd",
+      "bytes": 1132326,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.1.pcd",
+      "bytes": 1130086,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.2.pcd",
+      "bytes": 1129446,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.3.pcd",
+      "bytes": 1129238,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.4.pcd",
+      "bytes": 1130630,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.5.pcd",
+      "bytes": 1131222,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.6.pcd",
+      "bytes": 1129734,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.7.pcd",
+      "bytes": 1128838,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.8.pcd",
+      "bytes": 1130582,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814591.9.pcd",
+      "bytes": 1132902,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.0.pcd",
+      "bytes": 1133782,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.1.pcd",
+      "bytes": 1127974,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.2.pcd",
+      "bytes": 1130678,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.3.pcd",
+      "bytes": 1129750,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.4.pcd",
+      "bytes": 1130182,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.5.pcd",
+      "bytes": 1127126,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.6.pcd",
+      "bytes": 1130790,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.7.pcd",
+      "bytes": 1129046,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.8.pcd",
+      "bytes": 1128550,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814592.9.pcd",
+      "bytes": 1128550,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.0.pcd",
+      "bytes": 1128118,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.1.pcd",
+      "bytes": 1126214,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.2.pcd",
+      "bytes": 1128342,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.3.pcd",
+      "bytes": 1127462,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.4.pcd",
+      "bytes": 1128854,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.5.pcd",
+      "bytes": 1126966,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.6.pcd",
+      "bytes": 1129974,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.7.pcd",
+      "bytes": 1128294,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.8.pcd",
+      "bytes": 1129030,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814593.9.pcd",
+      "bytes": 1130182,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.0.pcd",
+      "bytes": 1131270,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.1.pcd",
+      "bytes": 1126534,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.2.pcd",
+      "bytes": 1127350,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.3.pcd",
+      "bytes": 1128806,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.4.pcd",
+      "bytes": 1128262,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.5.pcd",
+      "bytes": 1128438,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.6.pcd",
+      "bytes": 1129606,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.7.pcd",
+      "bytes": 1127270,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.8.pcd",
+      "bytes": 1131206,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814594.9.pcd",
+      "bytes": 1141846,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.0.pcd",
+      "bytes": 1134070,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.1.pcd",
+      "bytes": 1121414,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.2.pcd",
+      "bytes": 1117254,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.3.pcd",
+      "bytes": 1107702,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.4.pcd",
+      "bytes": 1102054,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.5.pcd",
+      "bytes": 1111670,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.6.pcd",
+      "bytes": 1118182,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.7.pcd",
+      "bytes": 1119814,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.8.pcd",
+      "bytes": 1116854,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814595.9.pcd",
+      "bytes": 1115062,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.0.pcd",
+      "bytes": 1108822,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.1.pcd",
+      "bytes": 1098086,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.2.pcd",
+      "bytes": 1103558,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.3.pcd",
+      "bytes": 1107158,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.4.pcd",
+      "bytes": 1100326,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.5.pcd",
+      "bytes": 1099094,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.6.pcd",
+      "bytes": 1091718,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.7.pcd",
+      "bytes": 1094486,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.8.pcd",
+      "bytes": 1098710,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814596.9.pcd",
+      "bytes": 1103078,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.0.pcd",
+      "bytes": 1106502,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.1.pcd",
+      "bytes": 1108358,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.2.pcd",
+      "bytes": 1106134,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.3.pcd",
+      "bytes": 1110022,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.4.pcd",
+      "bytes": 1110230,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.5.pcd",
+      "bytes": 1112278,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.6.pcd",
+      "bytes": 1113062,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.7.pcd",
+      "bytes": 1125510,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.8.pcd",
+      "bytes": 1126022,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814597.9.pcd",
+      "bytes": 1126134,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.0.pcd",
+      "bytes": 1123830,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.1.pcd",
+      "bytes": 1124454,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.2.pcd",
+      "bytes": 1121078,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.3.pcd",
+      "bytes": 1124294,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.4.pcd",
+      "bytes": 1126278,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.5.pcd",
+      "bytes": 1123382,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.6.pcd",
+      "bytes": 1121094,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.7.pcd",
+      "bytes": 1123286,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.8.pcd",
+      "bytes": 1122694,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814598.9.pcd",
+      "bytes": 1117894,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.0.pcd",
+      "bytes": 1115414,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.1.pcd",
+      "bytes": 1113830,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.2.pcd",
+      "bytes": 1115558,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.3.pcd",
+      "bytes": 1109798,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.4.pcd",
+      "bytes": 1103734,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.5.pcd",
+      "bytes": 1092598,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.6.pcd",
+      "bytes": 1085414,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.7.pcd",
+      "bytes": 1083926,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.8.pcd",
+      "bytes": 1097974,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814599.9.pcd",
+      "bytes": 1108262,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.0.pcd",
+      "bytes": 1109430,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.1.pcd",
+      "bytes": 1096294,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.2.pcd",
+      "bytes": 1098470,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.3.pcd",
+      "bytes": 1095366,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.4.pcd",
+      "bytes": 1093846,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.5.pcd",
+      "bytes": 1113894,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.6.pcd",
+      "bytes": 1110342,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.7.pcd",
+      "bytes": 1097638,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.8.pcd",
+      "bytes": 1074934,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814600.9.pcd",
+      "bytes": 1064326,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.0.pcd",
+      "bytes": 1078486,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.1.pcd",
+      "bytes": 1094742,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.2.pcd",
+      "bytes": 1094214,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.3.pcd",
+      "bytes": 1100182,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.4.pcd",
+      "bytes": 1102934,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.5.pcd",
+      "bytes": 1099286,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.6.pcd",
+      "bytes": 1097654,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.7.pcd",
+      "bytes": 1097606,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.8.pcd",
+      "bytes": 1098550,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814601.9.pcd",
+      "bytes": 1101542,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.0.pcd",
+      "bytes": 1102486,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.1.pcd",
+      "bytes": 1105350,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.2.pcd",
+      "bytes": 1104902,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.3.pcd",
+      "bytes": 1105430,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.4.pcd",
+      "bytes": 1101702,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.5.pcd",
+      "bytes": 1106710,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.6.pcd",
+      "bytes": 1109990,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.7.pcd",
+      "bytes": 1108822,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.8.pcd",
+      "bytes": 1108790,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814602.9.pcd",
+      "bytes": 1110486,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.0.pcd",
+      "bytes": 1109030,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.1.pcd",
+      "bytes": 1101462,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.2.pcd",
+      "bytes": 1099446,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.3.pcd",
+      "bytes": 1095542,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.4.pcd",
+      "bytes": 1093542,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.5.pcd",
+      "bytes": 1090294,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.6.pcd",
+      "bytes": 1099558,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.7.pcd",
+      "bytes": 1105190,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.8.pcd",
+      "bytes": 1102214,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814603.9.pcd",
+      "bytes": 1102502,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.0.pcd",
+      "bytes": 1095894,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.1.pcd",
+      "bytes": 1094438,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.2.pcd",
+      "bytes": 1094310,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.3.pcd",
+      "bytes": 1092774,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.4.pcd",
+      "bytes": 1092406,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.5.pcd",
+      "bytes": 1094998,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.6.pcd",
+      "bytes": 1096918,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.7.pcd",
+      "bytes": 1097254,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.8.pcd",
+      "bytes": 1099718,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814604.9.pcd",
+      "bytes": 1097398,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.0.pcd",
+      "bytes": 1097638,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.1.pcd",
+      "bytes": 1094166,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.2.pcd",
+      "bytes": 1093158,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.3.pcd",
+      "bytes": 1094070,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.4.pcd",
+      "bytes": 1095574,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.5.pcd",
+      "bytes": 1099910,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.6.pcd",
+      "bytes": 1103382,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.7.pcd",
+      "bytes": 1097926,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.8.pcd",
+      "bytes": 1099894,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814605.9.pcd",
+      "bytes": 1101062,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.0.pcd",
+      "bytes": 1103446,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.1.pcd",
+      "bytes": 1103398,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.2.pcd",
+      "bytes": 1101142,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.3.pcd",
+      "bytes": 1105094,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.4.pcd",
+      "bytes": 1105494,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.5.pcd",
+      "bytes": 1102470,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.6.pcd",
+      "bytes": 1104070,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.7.pcd",
+      "bytes": 1103798,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.8.pcd",
+      "bytes": 1101542,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814606.9.pcd",
+      "bytes": 1097686,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.0.pcd",
+      "bytes": 1098998,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.1.pcd",
+      "bytes": 1098086,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.2.pcd",
+      "bytes": 1100230,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.3.pcd",
+      "bytes": 1100390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.4.pcd",
+      "bytes": 1104230,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.5.pcd",
+      "bytes": 1101254,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.6.pcd",
+      "bytes": 1107142,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.7.pcd",
+      "bytes": 1103366,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.8.pcd",
+      "bytes": 1103830,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814607.9.pcd",
+      "bytes": 1103894,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.0.pcd",
+      "bytes": 1107094,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.1.pcd",
+      "bytes": 1103654,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.2.pcd",
+      "bytes": 1107046,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.3.pcd",
+      "bytes": 1106518,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.4.pcd",
+      "bytes": 1112518,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.5.pcd",
+      "bytes": 1113190,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.6.pcd",
+      "bytes": 1112838,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.7.pcd",
+      "bytes": 1111574,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.8.pcd",
+      "bytes": 1110966,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814608.9.pcd",
+      "bytes": 1101094,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.0.pcd",
+      "bytes": 1091094,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.1.pcd",
+      "bytes": 1089302,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.2.pcd",
+      "bytes": 1085398,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.3.pcd",
+      "bytes": 1091878,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.4.pcd",
+      "bytes": 1097286,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.5.pcd",
+      "bytes": 1097894,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.6.pcd",
+      "bytes": 1094006,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.7.pcd",
+      "bytes": 1094390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.8.pcd",
+      "bytes": 1083670,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814609.9.pcd",
+      "bytes": 1083062,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.0.pcd",
+      "bytes": 1085382,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.1.pcd",
+      "bytes": 1089686,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.2.pcd",
+      "bytes": 1096102,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.3.pcd",
+      "bytes": 1097446,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.4.pcd",
+      "bytes": 1104342,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.5.pcd",
+      "bytes": 1109366,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.6.pcd",
+      "bytes": 1105638,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.7.pcd",
+      "bytes": 1108614,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.8.pcd",
+      "bytes": 1108006,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814610.9.pcd",
+      "bytes": 1103542,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.0.pcd",
+      "bytes": 1106982,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.1.pcd",
+      "bytes": 1109702,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.2.pcd",
+      "bytes": 1116038,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.3.pcd",
+      "bytes": 1121782,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.4.pcd",
+      "bytes": 1119462,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.5.pcd",
+      "bytes": 1119750,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.6.pcd",
+      "bytes": 1118886,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.7.pcd",
+      "bytes": 1122822,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.8.pcd",
+      "bytes": 1118326,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814611.9.pcd",
+      "bytes": 1125030,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814612.0.pcd",
+      "bytes": 1123302,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.3.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.4.yaml",
+      "bytes": 1386,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.5.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.6.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.7.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.8.yaml",
+      "bytes": 1072,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.9.yaml",
+      "bytes": 1074,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.0.yaml",
+      "bytes": 1072,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.1.yaml",
+      "bytes": 1072,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.2.yaml",
+      "bytes": 1070,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.3.yaml",
+      "bytes": 1071,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.4.yaml",
+      "bytes": 1073,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.5.yaml",
+      "bytes": 1073,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.6.yaml",
+      "bytes": 1068,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.7.yaml",
+      "bytes": 1070,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.8.yaml",
+      "bytes": 1071,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.9.yaml",
+      "bytes": 1077,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.0.yaml",
+      "bytes": 1068,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.1.yaml",
+      "bytes": 1070,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.2.yaml",
+      "bytes": 1071,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.3.yaml",
+      "bytes": 1071,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.4.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.5.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.6.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.7.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.8.yaml",
+      "bytes": 1399,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814592.9.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.0.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.1.yaml",
+      "bytes": 1394,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.2.yaml",
+      "bytes": 1698,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.3.yaml",
+      "bytes": 1689,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.4.yaml",
+      "bytes": 1701,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.5.yaml",
+      "bytes": 1698,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.6.yaml",
+      "bytes": 1698,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.7.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.8.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814593.9.yaml",
+      "bytes": 1396,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.0.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.1.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.2.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.3.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.4.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.5.yaml",
+      "bytes": 1071,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.6.yaml",
+      "bytes": 1076,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.7.yaml",
+      "bytes": 1069,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.8.yaml",
+      "bytes": 1074,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814594.9.yaml",
+      "bytes": 1073,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.0.yaml",
+      "bytes": 1070,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.1.yaml",
+      "bytes": 1074,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.2.yaml",
+      "bytes": 1074,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.3.yaml",
+      "bytes": 1070,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.4.yaml",
+      "bytes": 1071,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.5.yaml",
+      "bytes": 1072,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.6.yaml",
+      "bytes": 1375,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.7.yaml",
+      "bytes": 1373,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.8.yaml",
+      "bytes": 1371,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814595.9.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.0.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.1.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.2.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.3.yaml",
+      "bytes": 1399,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.4.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.5.yaml",
+      "bytes": 1394,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.6.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.7.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.8.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814596.9.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.0.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.1.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.2.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.3.yaml",
+      "bytes": 1375,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.4.yaml",
+      "bytes": 1375,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.5.yaml",
+      "bytes": 1378,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.6.yaml",
+      "bytes": 1374,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.7.yaml",
+      "bytes": 1375,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.8.yaml",
+      "bytes": 1356,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814597.9.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.0.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.1.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.2.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.3.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.4.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.5.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.6.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.7.yaml",
+      "bytes": 1396,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.8.yaml",
+      "bytes": 1399,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814598.9.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.0.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.1.yaml",
+      "bytes": 1719,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.2.yaml",
+      "bytes": 1717,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.3.yaml",
+      "bytes": 1711,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.4.yaml",
+      "bytes": 1710,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.5.yaml",
+      "bytes": 1719,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.6.yaml",
+      "bytes": 1714,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.7.yaml",
+      "bytes": 1712,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.8.yaml",
+      "bytes": 1713,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814599.9.yaml",
+      "bytes": 1717,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.0.yaml",
+      "bytes": 1716,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.1.yaml",
+      "bytes": 1718,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.2.yaml",
+      "bytes": 1715,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.3.yaml",
+      "bytes": 1697,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.4.yaml",
+      "bytes": 1712,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.5.yaml",
+      "bytes": 1714,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.6.yaml",
+      "bytes": 1696,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.7.yaml",
+      "bytes": 1678,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.8.yaml",
+      "bytes": 1661,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814600.9.yaml",
+      "bytes": 1659,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.0.yaml",
+      "bytes": 1681,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.1.yaml",
+      "bytes": 1698,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.2.yaml",
+      "bytes": 1396,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.3.yaml",
+      "bytes": 1074,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.4.yaml",
+      "bytes": 1068,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.5.yaml",
+      "bytes": 1378,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.6.yaml",
+      "bytes": 1371,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.7.yaml",
+      "bytes": 1372,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.8.yaml",
+      "bytes": 1372,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814601.9.yaml",
+      "bytes": 1373,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.0.yaml",
+      "bytes": 1375,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.1.yaml",
+      "bytes": 1369,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.2.yaml",
+      "bytes": 1375,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.3.yaml",
+      "bytes": 1373,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.4.yaml",
+      "bytes": 1067,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.5.yaml",
+      "bytes": 1066,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.6.yaml",
+      "bytes": 1066,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.7.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.8.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814602.9.yaml",
+      "bytes": 1394,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.0.yaml",
+      "bytes": 1387,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.1.yaml",
+      "bytes": 1388,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.2.yaml",
+      "bytes": 1068,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.3.yaml",
+      "bytes": 1065,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.4.yaml",
+      "bytes": 1068,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.5.yaml",
+      "bytes": 1066,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.6.yaml",
+      "bytes": 1064,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.7.yaml",
+      "bytes": 1387,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.8.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814603.9.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.0.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.1.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.2.yaml",
+      "bytes": 1062,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.3.yaml",
+      "bytes": 1066,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.4.yaml",
+      "bytes": 1070,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.5.yaml",
+      "bytes": 1368,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.6.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.7.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.8.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814604.9.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.0.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.1.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.2.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.3.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.4.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.5.yaml",
+      "bytes": 1398,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.6.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.7.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.8.yaml",
+      "bytes": 1396,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814605.9.yaml",
+      "bytes": 1377,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.0.yaml",
+      "bytes": 1387,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.1.yaml",
+      "bytes": 1394,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.2.yaml",
+      "bytes": 1378,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.3.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.4.yaml",
+      "bytes": 1397,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.5.yaml",
+      "bytes": 1396,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.6.yaml",
+      "bytes": 1388,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.7.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.8.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814606.9.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.0.yaml",
+      "bytes": 1395,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.1.yaml",
+      "bytes": 1387,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.2.yaml",
+      "bytes": 1398,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.3.yaml",
+      "bytes": 1396,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.4.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.5.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.6.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.7.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.8.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814607.9.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.0.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.1.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.2.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.3.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.4.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.5.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.6.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.7.yaml",
+      "bytes": 1387,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.8.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814608.9.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.0.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.1.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.2.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.3.yaml",
+      "bytes": 1387,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.4.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.5.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.6.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.7.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.8.yaml",
+      "bytes": 1387,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814609.9.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.0.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.1.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.2.yaml",
+      "bytes": 1387,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.3.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.4.yaml",
+      "bytes": 1389,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.5.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.6.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.7.yaml",
+      "bytes": 1391,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.8.yaml",
+      "bytes": 1394,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814610.9.yaml",
+      "bytes": 1394,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.0.yaml",
+      "bytes": 1392,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.1.yaml",
+      "bytes": 1369,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.2.yaml",
+      "bytes": 1373,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.3.yaml",
+      "bytes": 1374,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.4.yaml",
+      "bytes": 1370,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.5.yaml",
+      "bytes": 1370,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.6.yaml",
+      "bytes": 1390,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.7.yaml",
+      "bytes": 1386,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.8.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814611.9.yaml",
+      "bytes": 1393,
+      "type": "file"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814612.0.yaml",
+      "bytes": 1370,
+      "type": "file"
+    }
+  ],
+  "member_count": 438,
+  "file_counts_by_subdirectory": {
+    "ouster": 219,
+    "yaml/ouster": 219
+  },
+  "duplicate_names": [],
+  "stream_inventory": "PASS"
+}

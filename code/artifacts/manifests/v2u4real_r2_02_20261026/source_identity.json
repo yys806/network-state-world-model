@@ -1,0 +1,96 @@
+{
+  "official_source_files": [
+    {
+      "path": "LICENSE",
+      "sha256": "20bccc4aaccdbdf80960af7ed64ed036ed449b3f57f61e04860a91dcc5010639",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "README.md",
+      "sha256": "480d96479f60a4c922300e2ca31239b356d6c59e48785e2818b05f7b759aa55f",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/hypes_yaml/yaml_utils.py",
+      "sha256": "5b88ef224db616a7a915041b959b1e907fb36094537f7b877bc09351ff57bb29",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/utils/box_utils.py",
+      "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/utils/pcd_utils.py",
+      "sha256": "3a823f538315531b0feca98ea4351e1225088a5173bd36345c96bd92dea611df",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/utils/transformation_utils.py",
+      "sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/utils/uav_to_single.py",
+      "sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/utils/vehicle_to_single.py",
+      "sha256": "0d5951f26d590c8c8c2e7b67167f085c7eaaa478a713b2777aadf29b5164a90e",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/data_utils/datasets/basedataset.py",
+      "sha256": "aea708b371977015deb5fbe45ad3ed19a912b34d2cc66cf0482f7feff63f19aa",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/data_utils/post_processor/base_postprocessor.py",
+      "sha256": "f54bbc672477c1570b0cdfb64c39994ada4e1f97aba56a4f00bae731f5926ee7",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "7bc8867adf684b3086035abbe839077a4c54188bbf73120cd4cbeaf2f6016de7",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+      "sha256": "1d55dd31451f214d3aa7c740d05cf7d0c0acb80ec85f0fc30584f471a30592a8",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    },
+    {
+      "path": "opencood/data_utils/datasets/early_fusion_dataset.py",
+      "sha256": "6c7ea882a93f4b3c08d52cbd1008a73a98cbe5dea229f573f849d8e0969fbcb7",
+      "status": "PASS",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8"
+    }
+  ],
+  "executed_sources": {
+    "code/scripts/prepare_v2u4real_r2_02_v1.py": "9b2c87f52b2268301d689897c88306d596b6afc16a9dcaa4e3b17f9ade804b86",
+    "code/scripts/prepare_v2u4real_r2_01_v1.py": "cc060951effb4ae647957d89d471f30e7795acf0cd8dfe38313c373913b089e4",
+    "code/scripts/configs/v2u4real_r2_01.json": "5fa7b589cbfa0d579d0848951efd4fee22d79885abfd71c48e9994f50581013f",
+    "code/tests/test_v2u4real_full_sample_v1.py": "5ec401b3834e336ce03d3ad6dab64f6f5022055717a5109e8d994f95aa5a6831"
+  },
+  "runtime": {
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+    "numpy": "2.3.2",
+    "pyyaml": "6.0.2",
+    "zstandard": "0.23.0"
+  },
+  "pi_jwm_reader_sha256": "17a97a3a96cff587fbc0e63f7bede85db817a214b1765958850c3af3de983c38",
+  "r2_01_manifest_sha256": "02790d6cb7b885019df5ca33e770c2904de5d5e6823077291d3debb8ce98bf03"
+}

@@ -1,0 +1,30 @@
+{
+  "working_tree": [
+    {
+      "check": false,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "check": true,
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "staged_view": [
+    {
+      "check": false,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "check": true,
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "export": "Only staged project files; existing ignored artifact input via read-only-use junction",
+  "initial_unrelated_changes_included": false,
+  "source_of_validation": "Actual index builder write then --check, each exit 0",
+  "raw_assets_staged": false
+}

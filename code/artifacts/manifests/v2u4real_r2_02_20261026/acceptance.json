@@ -1,0 +1,26 @@
+{
+  "step": "R2-02",
+  "overall_status": "BLOCKED",
+  "archive_integrity": "PASS",
+  "published_file_continuity": "PASS",
+  "pcd_yaml_read_and_structure": "PASS",
+  "numeric_pose_and_camera_calibration_acquired": "PASS",
+  "physical_clock_and_pairing": "BLOCKED",
+  "calibration_coordinate_semantics": "BLOCKED",
+  "candidate_file_pairs": 16,
+  "readable_file_pairs": 16,
+  "qualified_complete_pairs": 0,
+  "status": "BLOCKED",
+  "duplicate_payload_group_count": 2,
+  "sample_manifest": "code/artifacts/manifests/v2u4real_r2_02_20261026/sample_manifest.json",
+  "later_experiments": {
+    "clock_mapping": "NOT_RUN",
+    "coordinate_transform": "NOT_RUN",
+    "AirFogSim": "NOT_RUN",
+    "radio": "NOT_RUN",
+    "feature_service": "NOT_RUN",
+    "training": "NOT_RUN"
+  },
+  "gpu_used": false,
+  "locked_test_accessed": false
+}

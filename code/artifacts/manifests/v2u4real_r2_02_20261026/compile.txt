@@ -1,0 +1,3 @@
+COMMAND: D:\miniconda\python.exe -m compileall -q code/scripts/prepare_v2u4real_r2_02_v1.py code/tests/test_v2u4real_full_sample_v1.py
+
+EXIT_CODE: 0

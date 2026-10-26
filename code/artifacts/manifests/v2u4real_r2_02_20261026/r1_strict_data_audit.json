@@ -1,0 +1,2423 @@
+{
+  "status": "BLOCKED",
+  "scope": "real_train_data",
+  "root": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\data\\v2u4real_r2_01\\selected_samples",
+  "clock_unit": null,
+  "actual_interval_s": null,
+  "time_range_s": null,
+  "physical_clock_verified": false,
+  "coordinates_verified": false,
+  "anomalies": [],
+  "observed_fields": {
+    "ego_speed": [
+      {
+        "type": "float",
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "lidar_pose": [
+      {
+        "type": "list",
+        "length": 6,
+        "element_types": [
+          "float"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "camera0.extrinsic": [
+      {
+        "type": "list",
+        "length": 4,
+        "element_types": [
+          "list"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "camera0.intrinsic": [
+      {
+        "type": "list",
+        "length": 3,
+        "element_types": [
+          "list"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "camera1.extrinsic": [
+      {
+        "type": "list",
+        "length": 4,
+        "element_types": [
+          "list"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "camera1.intrinsic": [
+      {
+        "type": "list",
+        "length": 3,
+        "element_types": [
+          "list"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "camera2.extrinsic": [
+      {
+        "type": "list",
+        "length": 4,
+        "element_types": [
+          "list"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "camera2.intrinsic": [
+      {
+        "type": "list",
+        "length": 3,
+        "element_types": [
+          "list"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "vehicles.*.angle": [
+      {
+        "type": "list",
+        "length": 3,
+        "element_types": [
+          "float"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "vehicles.*.center": [
+      {
+        "type": "list",
+        "length": 3,
+        "element_types": [
+          "int"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "vehicles.*.extent": [
+      {
+        "type": "list",
+        "length": 3,
+        "element_types": [
+          "float"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "vehicles.*.location": [
+      {
+        "type": "list",
+        "length": 3,
+        "element_types": [
+          "float"
+        ],
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "vehicles.*.obj_type": [
+      {
+        "type": "str",
+        "unit": "UNVERIFIED"
+      }
+    ],
+    "vehicles.*.speed": [
+      {
+        "type": "float",
+        "unit": "UNVERIFIED"
+      }
+    ]
+  },
+  "frames": [
+    {
+      "agent": "1",
+      "frame_key": "1752814590.2",
+      "yaml_sha256": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+      "pcd_sha256": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+      "point_count": 141177,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "141177"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "141177"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -97.33811950683594,
+        -123.79641723632812,
+        -4.901322841644287
+      ],
+      "xyz_max": [
+        191.69273376464844,
+        177.76437377929688,
+        54.312110900878906
+      ],
+      "annotation_count": 6,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.2",
+      "yaml_sha256": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+      "pcd_sha256": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+      "point_count": 70532,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70532"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70532"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -41.50202941894531,
+        -107.33362579345703,
+        -54.261993408203125
+      ],
+      "xyz_max": [
+        24.031099319458008,
+        98.0708999633789,
+        -40.970787048339844
+      ],
+      "annotation_count": 2,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.3",
+      "yaml_sha256": "97f40e972b3124d5fb6ff76491491438003f5f770e37a863b5c13f535fe4a8fb",
+      "pcd_sha256": "081ce14739da7b850daa4427f72f52aa4b781a5e2ef94fa0d58a11b47534e1da",
+      "point_count": 142525,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "142525"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "142525"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -99.29459381103516,
+        -123.71050262451172,
+        -4.973981857299805
+      ],
+      "xyz_max": [
+        189.73556518554688,
+        137.57199096679688,
+        19.76802635192871
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.3",
+      "yaml_sha256": "6820901eb23a767a7e739a1e3babf714e5020566aab171a5a78033054ba95d10",
+      "pcd_sha256": "22ed61b2360952f8d324bad7006938a0b91505df682e7691eaa10a9057080707",
+      "point_count": 70364,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70364"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70364"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -60.195735931396484,
+        -120.65013122558594,
+        -71.20706176757812
+      ],
+      "xyz_max": [
+        25.070953369140625,
+        137.2479248046875,
+        -40.8189582824707
+      ],
+      "annotation_count": 2,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.4",
+      "yaml_sha256": "38fbd847b2dc7c40d3270e0577656e257e409ef8e3c521ccb5429a17cd5dabef",
+      "pcd_sha256": "9fe8f9626e77daec86f6d16e7e8de7dacafd968ed625e1492fceddd50d1e8f34",
+      "point_count": 142866,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "142866"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "142866"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -99.24189758300781,
+        -124.72909545898438,
+        -4.808048725128174
+      ],
+      "xyz_max": [
+        187.9105224609375,
+        105.33187866210938,
+        19.31608772277832
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.4",
+      "yaml_sha256": "2ac9ebd2adbbed94c9f5d088bce4da206d9267e4da2fadc62fcd30880c5a52f9",
+      "pcd_sha256": "cd7e84c29168bdfc2bd6a1b5e0a26dbb4d209b4ea701fe8083511f6705035304",
+      "point_count": 70751,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70751"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70751"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -55.29655838012695,
+        -97.44100189208984,
+        -80.29972076416016
+      ],
+      "xyz_max": [
+        26.174734115600586,
+        94.91622161865234,
+        -40.86899185180664
+      ],
+      "annotation_count": 2,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.5",
+      "yaml_sha256": "cff81870698ddfe54c68cf9b42ba61f8346a056d4578f303a28903c773b8e276",
+      "pcd_sha256": "18ff97bb5cfdc349ecd99e4d914064fe35a5379efdab18455d78d0714d784244",
+      "point_count": 143419,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "143419"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "143419"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -96.80571746826172,
+        -123.85052490234375,
+        -4.79830265045166
+      ],
+      "xyz_max": [
+        186.1951446533203,
+        101.34786224365234,
+        16.335140228271484
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.5",
+      "yaml_sha256": "3d211ac00cb7801e15da747ac5406c3e2e8219b0d2443a2066220d2a338113b9",
+      "pcd_sha256": "9d8a848dec7692b40778758b962c72a9985ab7e69430c157b544d3f19b95d16a",
+      "point_count": 70566,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70566"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70566"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -40.44185256958008,
+        -114.06242370605469,
+        -54.15982437133789
+      ],
+      "xyz_max": [
+        27.790637969970703,
+        95.20943450927734,
+        -40.92897415161133
+      ],
+      "annotation_count": 2,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.6",
+      "yaml_sha256": "6ba19b60a6d8a824fc041d8dd46e590160b9431dceaf6f509630e3490d5c6c64",
+      "pcd_sha256": "23c6531e928c548303a4dde3c880c1cbff59772bea1e87d6fc979fdf12cd5d94",
+      "point_count": 143252,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "143252"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "143252"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -97.5370864868164,
+        -123.66038513183594,
+        -4.79866361618042
+      ],
+      "xyz_max": [
+        184.49978637695312,
+        177.07986450195312,
+        24.345876693725586
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.6",
+      "yaml_sha256": "10e2691d60e153f07188578bc5039e7106a344ba1064d70c9fc3f54391531fba",
+      "pcd_sha256": "8bfaf83f354ad39919b99ab81cd149a4b32199323ad465479238cd0538ca0a67",
+      "point_count": 70732,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70732"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70732"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -40.7282829284668,
+        -117.23604583740234,
+        -53.85316848754883
+      ],
+      "xyz_max": [
+        27.976016998291016,
+        93.78791809082031,
+        -40.81047821044922
+      ],
+      "annotation_count": 2,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.7",
+      "yaml_sha256": "e1bdafc5e587772b99822077b063dd118cb323c867589456f382712baed0e1be",
+      "pcd_sha256": "054aebfbbd28685a665c2cb3c215293f26baa93b198bffa92aba88f8dd5939df",
+      "point_count": 143520,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "143520"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "143520"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -98.80671691894531,
+        -138.0817108154297,
+        -4.927037239074707
+      ],
+      "xyz_max": [
+        182.72784423828125,
+        100.65506744384766,
+        25.145557403564453
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.7",
+      "yaml_sha256": "38fe32ce534071f35838abcf41410af19ff6d62ca1bb2c6deb3b66e0e7c27c85",
+      "pcd_sha256": "e93e262400921d8568976bf848632a4d3d02d5d19381ecfc3b7b22aecc115b63",
+      "point_count": 70762,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70762"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70762"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -44.8216438293457,
+        -115.29035186767578,
+        -54.09000015258789
+      ],
+      "xyz_max": [
+        27.886798858642578,
+        96.16081237792969,
+        -17.839366912841797
+      ],
+      "annotation_count": 2,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.8",
+      "yaml_sha256": "78ec19b20d6fec5afc676ede7e6fa1d2128ac7a538d281fc7da8abee5da15723",
+      "pcd_sha256": "054aebfbbd28685a665c2cb3c215293f26baa93b198bffa92aba88f8dd5939df",
+      "point_count": 143520,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "143520"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "143520"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -98.80671691894531,
+        -138.0817108154297,
+        -4.927037239074707
+      ],
+      "xyz_max": [
+        182.72784423828125,
+        100.65506744384766,
+        25.145557403564453
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.8",
+      "yaml_sha256": "003f299fb5d44a9bf4322539810cc4bdbc8d779b050cb595b7e9289412205c69",
+      "pcd_sha256": "ce572f46ab96d0028356827b6c60ed14eb8969dfdf9b8c3a8dadf22413a7805e",
+      "point_count": 70867,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70867"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70867"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -39.34536361694336,
+        -118.77865600585938,
+        -54.18757247924805
+      ],
+      "xyz_max": [
+        29.152372360229492,
+        178.43438720703125,
+        -40.96653366088867
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.9",
+      "yaml_sha256": "efd78a59f85370a455788364c62cb285b2413bc240b5f8722736d4081fc18ac4",
+      "pcd_sha256": "1e07de7bbe3494ba7b237e4136617165f4169eac56c423812ad835639e1eaebd",
+      "point_count": 143345,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "143345"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "143345"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -152.88307189941406,
+        -123.69429779052734,
+        -5.069613933563232
+      ],
+      "xyz_max": [
+        179.1347198486328,
+        147.66204833984375,
+        46.479835510253906
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.9",
+      "yaml_sha256": "189ffcc85b6c57f0a3cd4025faa1d7af11a7cc343e2cf75779e01e4c72462957",
+      "pcd_sha256": "2c0277b95eb0b61a63774c6215a1938c605ceec44a4b205ce417a1174fa2310f",
+      "point_count": 70674,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70674"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70674"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -37.1265869140625,
+        -102.6962661743164,
+        -54.46879577636719
+      ],
+      "xyz_max": [
+        29.788774490356445,
+        94.02808380126953,
+        -40.79341506958008
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.0",
+      "yaml_sha256": "a315f9e973acae06d3b8d6036f4c05788741b6bfdcdc9b9d177bd4b7b5127ce4",
+      "pcd_sha256": "1e07de7bbe3494ba7b237e4136617165f4169eac56c423812ad835639e1eaebd",
+      "point_count": 143345,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "143345"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "143345"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -152.88307189941406,
+        -123.69429779052734,
+        -5.069613933563232
+      ],
+      "xyz_max": [
+        179.1347198486328,
+        147.66204833984375,
+        46.479835510253906
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.0",
+      "yaml_sha256": "21ac8904fa9d61653d33a176ca8ce67cb8a395c5070b402b33873a7cf4588b9b",
+      "pcd_sha256": "1a13c782e30bfe39c65562ca3fc6cd5c3938152628d514b83dd40e77de0f8240",
+      "point_count": 70759,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70759"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70759"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -36.703426361083984,
+        -106.33649444580078,
+        -54.39304733276367
+      ],
+      "xyz_max": [
+        31.997026443481445,
+        93.9508056640625,
+        -40.85928726196289
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.1",
+      "yaml_sha256": "b27c4012bd949b08aa416e3eecc8b53fdb6a56fee4ceb75588fc03b6f0451679",
+      "pcd_sha256": "1e33fa70a0b3f78cee8ffa4f79ef22bff2fa3c1910c378a2eaccbd68cc405275",
+      "point_count": 142922,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "142922"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "142922"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -100.15362548828125,
+        -153.92633056640625,
+        -5.001711368560791
+      ],
+      "xyz_max": [
+        177.2489013671875,
+        146.2049102783203,
+        19.350475311279297
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.1",
+      "yaml_sha256": "73d7fbddabfa9a11469943783413eb9a3671898bd03299e73cd53837c4b77e04",
+      "pcd_sha256": "74c3f22e06faa7d577c67ead544502b29d69267f0c3a13f3496b8fa489d73300",
+      "point_count": 70619,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70619"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70619"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -35.290672302246094,
+        -108.57343292236328,
+        -54.385929107666016
+      ],
+      "xyz_max": [
+        31.861072540283203,
+        188.96131896972656,
+        -40.89501953125
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.2",
+      "yaml_sha256": "ba17f43d745697dccce276ddef9e682074a109609fc3381187ccdc1f07ac1e75",
+      "pcd_sha256": "3a2f8e09d19a7d0a102657b08087363cc4c19d867b5417249c2f7b4d9f4e4b4c",
+      "point_count": 144406,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "144406"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "144406"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -103.89759826660156,
+        -124.25630950927734,
+        -4.771590709686279
+      ],
+      "xyz_max": [
+        225.19381713867188,
+        145.9674835205078,
+        49.66582489013672
+      ],
+      "annotation_count": 6,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.2",
+      "yaml_sha256": "e3d0acfdf4e51f836cd609f35913cbd45d3e1d0cec6eefb29c29982661ef4bb7",
+      "pcd_sha256": "57e394097854809d2397843a5db779d96e75fadd76a7c884ee78c840845db674",
+      "point_count": 70579,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70579"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70579"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -37.14242172241211,
+        -101.08598327636719,
+        -54.144596099853516
+      ],
+      "xyz_max": [
+        31.160343170166016,
+        98.2669677734375,
+        -40.808876037597656
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.3",
+      "yaml_sha256": "178e1493e6c44dc00252ecdf712b083e2b03bb78f436f3dccdc4c4fcf1c0bfea",
+      "pcd_sha256": "886fc1494f0d20ed010b553090f3d9a7cfe5659202676fa0279d459c267e59d2",
+      "point_count": 144123,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "144123"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "144123"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -105.37561798095703,
+        -124.28600311279297,
+        -4.93203592300415
+      ],
+      "xyz_max": [
+        172.1389923095703,
+        145.89329528808594,
+        17.127527236938477
+      ],
+      "annotation_count": 6,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.3",
+      "yaml_sha256": "830a36d85486777c5748c3ab864c27c35e9af795d958039efcd1fad7483df5eb",
+      "pcd_sha256": "9490cc1386e3787dafd7c6b5aee44ac86b19ba5040a45ffa58d4cd7174bce534",
+      "point_count": 70566,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70566"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70566"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -40.94717788696289,
+        -107.82271575927734,
+        -54.48649215698242
+      ],
+      "xyz_max": [
+        31.57402229309082,
+        96.66847229003906,
+        -40.75046920776367
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.4",
+      "yaml_sha256": "8bf57be1fa5b484d0f154b74e0151e83153ad909ade62159c3db03c06cb72683",
+      "pcd_sha256": "9d57d191f6f36064f0efc7ed85ecc6f232f74fdce3a4b2a7b0ab6425d6a7293c",
+      "point_count": 143828,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "143828"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "143828"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -104.42838287353516,
+        -146.27362060546875,
+        -4.9912872314453125
+      ],
+      "xyz_max": [
+        170.16551208496094,
+        186.99761962890625,
+        54.532615661621094
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.4",
+      "yaml_sha256": "90bd6fbf253cad1cf0cf0590880ec890170e07ea94618f8272649d95afdb0f7b",
+      "pcd_sha256": "38fc2b04b617ab9dfc3515412979e63c9e516102491c70a4ee6759a3df599a06",
+      "point_count": 70653,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70653"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70653"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -38.05295181274414,
+        -112.59085845947266,
+        -54.471710205078125
+      ],
+      "xyz_max": [
+        31.861759185791016,
+        98.73401641845703,
+        -40.881187438964844
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.5",
+      "yaml_sha256": "f208b48611a13b255eb8be0e0db676186d50154b68ddfd60dc9e9a293e8c1f7e",
+      "pcd_sha256": "438110145931ee979b359a7d4400b81036adc178c61748681f3581dcf7885b52",
+      "point_count": 144201,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "144201"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "144201"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -105.28673553466797,
+        -123.72474670410156,
+        -5.030357360839844
+      ],
+      "xyz_max": [
+        168.5576171875,
+        145.01589965820312,
+        17.33225440979004
+      ],
+      "annotation_count": 6,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.5",
+      "yaml_sha256": "02a6b5a91fec115bd10b89a0092e05c4dc2a96008721d8c74eb76e854627fac8",
+      "pcd_sha256": "0207f5c2b9b702b8b773d20e326d60ff121bdce0e69c21acecef45614398b57f",
+      "point_count": 70690,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70690"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70690"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -39.53692626953125,
+        -117.3385009765625,
+        -54.55931854248047
+      ],
+      "xyz_max": [
+        32.06903839111328,
+        95.24453735351562,
+        -41.006019592285156
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.6",
+      "yaml_sha256": "363276047d1049267dd65928407f8b218a027808793fe0bc1d397f273e7cdd99",
+      "pcd_sha256": "a233549b1c393b827b285b95229c7025d844970baca2209314346118f436f4c8",
+      "point_count": 144002,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "144002"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "144002"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -171.83506774902344,
+        -128.2682647705078,
+        -4.981674671173096
+      ],
+      "xyz_max": [
+        166.7416229248047,
+        147.2363739013672,
+        22.248451232910156
+      ],
+      "annotation_count": 6,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.6",
+      "yaml_sha256": "cdbe06034ced3427cd5a2456a1b01ae58f08cc5efd8814834f639dac3e2b927f",
+      "pcd_sha256": "e60c71ef15ab95f72327d17f9e89cf19055656c6e604b00ab2c9f790430fb766",
+      "point_count": 70597,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70597"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70597"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -38.92632293701172,
+        -111.43765258789062,
+        -54.902042388916016
+      ],
+      "xyz_max": [
+        33.01344680786133,
+        97.42220306396484,
+        -40.95828628540039
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.7",
+      "yaml_sha256": "ea3c925f1c45f1a434172a7d8ad20739893c121ec3b6637bb65ef44dc409be28",
+      "pcd_sha256": "f4373d026141e178b79845343e959db7f031c416f43b0855068d7c793b4b5d73",
+      "point_count": 144165,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "144165"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "144165"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -92.87446594238281,
+        -138.59288024902344,
+        -4.997152328491211
+      ],
+      "xyz_max": [
+        137.7541046142578,
+        136.99838256835938,
+        30.89761734008789
+      ],
+      "annotation_count": 5,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.7",
+      "yaml_sha256": "acedc77ff7123d662e520df872be619030232f524af595b85b991fac72c98768",
+      "pcd_sha256": "2e95aae4d486061eb37ee2a6614164d41fcdb6cb0b13f946e46ccdbad0857b6d",
+      "point_count": 70541,
+      "pcd_header": {
+        "VERSION": [
+          "0.7"
+        ],
+        "FIELDS": [
+          "x",
+          "y",
+          "z",
+          "rgb"
+        ],
+        "SIZE": [
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "TYPE": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "COUNT": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "WIDTH": [
+          "70541"
+        ],
+        "HEIGHT": [
+          "1"
+        ],
+        "VIEWPOINT": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "POINTS": [
+          "70541"
+        ],
+        "DATA": [
+          "binary"
+        ]
+      },
+      "xyz_min": [
+        -36.2850341796875,
+        -112.58021545410156,
+        -54.60459518432617
+      ],
+      "xyz_max": [
+        31.573932647705078,
+        95.8652114868164,
+        -40.98112106323242
+      ],
+      "annotation_count": 1,
+      "label_association": "same YAML frame key; physical-time association UNVERIFIED",
+      "read_status": "PASS"
+    }
+  ],
+  "scene": "2025-07-18-12-53_2",
+  "frame_counts": {
+    "1": 16,
+    "2": 16
+  },
+  "matched_key_count": 16,
+  "missing_keys": {
+    "1": [],
+    "2": []
+  },
+  "frame_key_range": [
+    "1752814590.2",
+    "1752814591.7"
+  ],
+  "frame_key_unit": "identifier_only",
+  "inspected_keys": [
+    "1752814590.2",
+    "1752814590.3",
+    "1752814590.4",
+    "1752814590.5",
+    "1752814590.6",
+    "1752814590.7",
+    "1752814590.8",
+    "1752814590.9",
+    "1752814591.0",
+    "1752814591.1",
+    "1752814591.2",
+    "1752814591.3",
+    "1752814591.4",
+    "1752814591.5",
+    "1752814591.6",
+    "1752814591.7"
+  ],
+  "truncated": false,
+  "frame_number_gaps": {
+    "1": [],
+    "2": []
+  },
+  "duplicate_raw_time_values": {},
+  "reason": "File audit only: measured timestamp units, axes, extrinsics and annotation frame require independent verification"
+}

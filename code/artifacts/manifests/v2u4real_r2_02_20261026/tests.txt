@@ -1,0 +1,35 @@
+COMMAND: D:\miniconda\python.exe -m unittest test_v2u4real_full_sample_v1 test_v2u4real_preparation_v1 test_v2u4real_interface_v1.DatasetAuditTests -v
+test_duplicate_members_and_unsafe_paths_rejected (test_v2u4real_full_sample_v1.FullSampleTests.test_duplicate_members_and_unsafe_paths_rejected) ... ok
+test_extract_only_selected_raw_bytes_and_no_overwrite (test_v2u4real_full_sample_v1.FullSampleTests.test_extract_only_selected_raw_bytes_and_no_overwrite) ... extracted 12 unchanged files for 3 candidate keys
+ok
+test_file_pairing_never_establishes_physical_pairing (test_v2u4real_full_sample_v1.FullSampleTests.test_file_pairing_never_establishes_physical_pairing) ... ok
+test_fixed_scope_and_digest_before_use (test_v2u4real_full_sample_v1.FullSampleTests.test_fixed_scope_and_digest_before_use) ... ok
+test_ignored_range_never_reads_body_or_writes_archive (test_v2u4real_full_sample_v1.FullSampleTests.test_ignored_range_never_reads_body_or_writes_archive) ... ok
+test_missing_frame_not_hidden_by_intersection (test_v2u4real_full_sample_v1.FullSampleTests.test_missing_frame_not_hidden_by_intersection) ... ok
+test_nested_clock_fields_preserve_values_without_inventing_units (test_v2u4real_full_sample_v1.FullSampleTests.test_nested_clock_fields_preserve_values_without_inventing_units) ... ok
+test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings (test_v2u4real_full_sample_v1.FullSampleTests.test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings) ... ok
+test_structural_success_never_qualifies_physical_pair (test_v2u4real_full_sample_v1.FullSampleTests.test_structural_success_never_qualifies_physical_pair) ... ok
+test_complete_member_is_idempotent_and_not_overwritten (test_v2u4real_preparation_v1.PreparationTests.test_complete_member_is_idempotent_and_not_overwritten) ... ok
+test_hard_download_and_output_boundaries (test_v2u4real_preparation_v1.PreparationTests.test_hard_download_and_output_boundaries) ... ok
+test_ignored_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_ignored_range_does_not_read_response_body) ... ok
+test_missing_raw_assets_stay_blocked_without_fake_pass (test_v2u4real_preparation_v1.PreparationTests.test_missing_raw_assets_stay_blocked_without_fake_pass) ... ok
+test_only_train_and_immutable_revision (test_v2u4real_preparation_v1.PreparationTests.test_only_train_and_immutable_revision) ... ok
+test_partial_compressed_member_is_not_a_successful_sample (test_v2u4real_preparation_v1.PreparationTests.test_partial_compressed_member_is_not_a_successful_sample) ... ok
+test_path_traversal_links_and_oversize_are_blocked (test_v2u4real_preparation_v1.PreparationTests.test_path_traversal_links_and_oversize_are_blocked) ... ok
+test_wrong_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_wrong_range_does_not_read_response_body) ... ok
+test_audit_missing_keys_duplicates_and_no_clock_inference (test_v2u4real_interface_v1.DatasetAuditTests.test_audit_missing_keys_duplicates_and_no_clock_inference) ... ok
+test_duplicate_yaml_keys_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_duplicate_yaml_keys_rejected) ... ok
+test_empty_corrupt_compressed_nonfinite_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_empty_corrupt_compressed_nonfinite_rejected) ... ok
+test_field_types_include_all_objects (test_v2u4real_interface_v1.DatasetAuditTests.test_field_types_include_all_objects) ... ok
+test_missing_data_is_blocked (test_v2u4real_interface_v1.DatasetAuditTests.test_missing_data_is_blocked) ... ok
+test_reader_ascii_and_binary (test_v2u4real_interface_v1.DatasetAuditTests.test_reader_ascii_and_binary) ... ok
+test_select_smallest_train_and_cap (test_v2u4real_interface_v1.DatasetAuditTests.test_select_smallest_train_and_cap) ... ok
+test_test_split_not_accepted (test_v2u4real_interface_v1.DatasetAuditTests.test_test_split_not_accepted) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.560s
+
+OK
+{"step": "R2-01", "overall_status": "BLOCKED", "official_train_archive_access": "BLOCKED", "complete_raw_pcd_members_obtained": 0, "pcd_reads": {}, "minimum_complete_training_subset": "BLOCKED", "yaml_availability": "BLOCKED", "yaml_parse_execution": "NOT_RUN", "physical_timestamp_and_calibration_contract": "BLOCKED", "r1_reader_reused": true, "coordinate_transform_acceptance": "NOT_RUN", "AirFogSim_replay": "NOT_RUN", "wireless_changes": "NOT_RUN", "feature_or_compute_service": "NOT_RUN", "training": "NOT_RUN", "gpu_used": false, "locked_test_accessed": false, "downloaded_prefix_bytes": 0, "missing_inputs": ["agent 1: bounded official prefix/retrieval receipt missing; use --fetch", "agent 2: bounded official prefix/retrieval receipt missing; use --fetch"], "whole_archive_downloaded": false, "reason": "No local official prefixes/receipts; use the bounded --fetch option"}
+
+EXIT_CODE: 0

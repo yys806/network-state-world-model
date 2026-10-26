@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-02 2026-10-26 -->
+## 2026-10-26 — V2U4Real 完整真实样本准备（总体 BLOCKED）
+
+新增独立准备入口 `code/scripts/prepare_v2u4real_r2_02_v1.py`（download/inventory/extract/audit）；复用 R2-01 固定配置和 R1 PCD/YAML 读取器，不改模型或仿真器。证据在 `code/artifacts/manifests/v2u4real_r2_02_20261026/`。
+
+详见 [R2-02 实施记录](../docs/implementation_records/STEP_R2_02_V2U4REAL_COMPLETE_SAMPLES.md)；结论以实际文件和机器审计为准。
+<!-- END V2U4REAL R2-02 -->
+
 <!-- V2U4REAL R2-01 2026-10-26 -->
 ## 2026-10-26 — 真实训练数据与官方资料准备
 

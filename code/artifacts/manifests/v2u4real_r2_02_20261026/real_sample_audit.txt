@@ -1,0 +1,4 @@
+COMMAND: D:\miniconda\python.exe code/scripts/prepare_v2u4real_r2_02_v1.py audit
+{"status": "BLOCKED", "candidate_file_pairs": 16, "readable_file_pairs": 16, "qualified_complete_pairs": 0, "extracted_file_count": 64, "extracted_total_bytes": 54876775, "duplicate_payload_groups": [["code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.7.pcd", "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.8.pcd"], ["code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.9.pcd", "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.0.pcd"]]}
+
+EXIT_CODE: 2

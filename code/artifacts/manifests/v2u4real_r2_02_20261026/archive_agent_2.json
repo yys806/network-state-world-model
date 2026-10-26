@@ -1,0 +1,103 @@
+{
+  "dataset_revision": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+  "official_url": "https://huggingface.co/datasets/VJiaLi/V2U4Real/resolve/36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a/train/2025-07-18-12-53_2__agent-2.tar.zst",
+  "expected_bytes": 172308593,
+  "sha256_expected": "64ae659bca67144c8713d5a689ce310474328a3c4ffd7a6f35948358b72b61f3",
+  "requests": [
+    {
+      "start": 1048576,
+      "end": 17825791,
+      "status": 206,
+      "content_range": "bytes 1048576-17825791/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:51.200425+00:00"
+    },
+    {
+      "start": 17825792,
+      "end": 34603007,
+      "status": 206,
+      "content_range": "bytes 17825792-34603007/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:05:56.690159+00:00"
+    },
+    {
+      "start": 34603008,
+      "end": 51380223,
+      "status": 206,
+      "content_range": "bytes 34603008-51380223/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:06:01.784122+00:00"
+    },
+    {
+      "start": 51380224,
+      "end": 68157439,
+      "status": 206,
+      "content_range": "bytes 51380224-68157439/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:06:07.107025+00:00"
+    },
+    {
+      "start": 68157440,
+      "end": 84934655,
+      "status": 206,
+      "content_range": "bytes 68157440-84934655/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:06:13.045913+00:00"
+    },
+    {
+      "start": 84934656,
+      "end": 101711871,
+      "status": 206,
+      "content_range": "bytes 84934656-101711871/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:06:18.091753+00:00"
+    },
+    {
+      "start": 101711872,
+      "end": 118489087,
+      "status": 206,
+      "content_range": "bytes 101711872-118489087/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:06:23.666526+00:00"
+    },
+    {
+      "start": 118489088,
+      "end": 135266303,
+      "status": 206,
+      "content_range": "bytes 118489088-135266303/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:06:28.818889+00:00"
+    },
+    {
+      "start": 135266304,
+      "end": 152043519,
+      "status": 206,
+      "content_range": "bytes 135266304-152043519/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:06:33.556135+00:00"
+    },
+    {
+      "start": 152043520,
+      "end": 168820735,
+      "status": 206,
+      "content_range": "bytes 152043520-168820735/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:06:38.546666+00:00"
+    },
+    {
+      "start": 168820736,
+      "end": 172308592,
+      "status": 206,
+      "content_range": "bytes 168820736-172308592/172308593",
+      "final_host": "us.aws.cdn.hf.co",
+      "completed_utc": "2026-10-26T06:06:40.274439+00:00"
+    }
+  ],
+  "status": "PASS",
+  "reused_prefix_bytes": 1048576,
+  "downloaded_bytes_on_disk": 172308593,
+  "path": "code/artifacts/data/v2u4real_r2_01/full_archives/2025-07-18-12-53_2__agent-2.tar.zst",
+  "bytes": 172308593,
+  "sha256": "64ae659bca67144c8713d5a689ce310474328a3c4ffd7a6f35948358b72b61f3",
+  "verified_utc": "2026-10-26T06:06:40.539711+00:00"
+}

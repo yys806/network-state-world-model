@@ -1,0 +1,32 @@
+{
+  "checked_date": "2026-10-26",
+  "paper": {
+    "url": "https://arxiv.org/html/2603.25275v1",
+    "sections": [
+      "3.1",
+      "3.2",
+      "C.3"
+    ],
+    "supports": "Nominal sampling and synchronization principles; local axes and NED world convention",
+    "does_not_establish": "Sample-specific filename clock unit/origin or calibration matrix direction"
+  },
+  "owner_reply": {
+    "url": "https://github.com/VjiaLi/V2U4Real/issues/1#issuecomment-4294187896",
+    "id": 4294187896,
+    "author": "VjiaLi",
+    "author_association": "OWNER",
+    "created_at": "2026-04-22T06:54:54Z",
+    "retrieval": "GitHub issue_read get_comments",
+    "pose_order": [
+      "x",
+      "y",
+      "z",
+      "roll",
+      "yaw",
+      "pitch"
+    ],
+    "supports": "GPS-based position/orientation, velocity, camera calibration and annotations",
+    "does_not_establish": "This scene origin, clock mapping or matrix direction"
+  },
+  "previous_sources": "code/artifacts/manifests/v2u4real_r2_01_20261026/official_sources_index.json"
+}

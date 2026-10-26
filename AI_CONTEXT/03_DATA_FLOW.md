@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-02 2026-10-26 -->
+## 2026-10-26 — V2U4Real 完整真实样本准备（总体 BLOCKED）
+
+R2-02 实际数据流：固定版本单场景两整包 SHA → 流式目录 → 16 个 key 的两端 Ouster/YAML 原字节 → 原 R1 严格读取器 → 字段/重复/资格分层清单。64 文件可读，物理配对合格 0；时间映射/真实变换 NOT_RUN。
+
+详见 [R2-02 实施记录](../docs/implementation_records/STEP_R2_02_V2U4REAL_COMPLETE_SAMPLES.md)；结论以实际文件和机器审计为准。
+<!-- END V2U4REAL R2-02 -->
+
 <!-- V2U4REAL R2-01 2026-10-26 -->
 ## 2026-10-26 — 真实训练数据与官方资料准备
 

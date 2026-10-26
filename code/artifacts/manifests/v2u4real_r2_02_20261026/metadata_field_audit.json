@@ -1,0 +1,7077 @@
+{
+  "files": [
+    {
+      "agent": "1",
+      "frame_key": "1752814590.2",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          162.4558620813,
+          -195.5474155993,
+          -3.0822680281,
+          -179.1582303045,
+          128.6537437347,
+          0.4917033974
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.11006671957465
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 6,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.4892412826,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.5121675768604206,
+            -0.05321566955961854,
+            -0.9541257180739957
+          ],
+          "obj_type": "Car",
+          "speed": 6.32278729453
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.2",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          146.0642330580825,
+          -178.5034348014285,
+          -51.65063285498502,
+          -179.0519502518403,
+          131.9188901918,
+          0.9285541649206536
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 23.24216333410051
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06803929128909855,
+                -0.9967998831529739,
+                0.041960073726037356,
+                -0.14642701897995605
+              ],
+              [
+                -0.9936364730091629,
+                -0.06391945893130076,
+                0.09274083391818519,
+                0.09978238675122578
+              ],
+              [
+                -0.08976198720387052,
+                -0.04800308027769757,
+                -0.9948057548773356,
+                -0.29219438107444023
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 0.9999999999999998,
+            "orthogonality_max_abs_error": 4.440892098500626e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 2,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            -0.0376997505,
+            4.3242316981,
+            0.498576739
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.983179,
+            2.067932,
+            2.215566
+          ],
+          "location": [
+            -23.917775937430495,
+            -0.2454373288737487,
+            -49.140255242657965
+          ],
+          "obj_type": "Car",
+          "speed": 3.65229107258
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.3",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          162.0550535195,
+          -195.102985512,
+          -3.0670718244,
+          -179.1796473347,
+          128.692166392,
+          0.4359285706
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.372830404615875
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.7096811836,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.4759627457627764,
+            -0.12480688265421835,
+            -1.0621040781783029
+          ],
+          "obj_type": "Car",
+          "speed": 6.05319577359
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.3",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          145.76587894570915,
+          -178.04153479223328,
+          -51.55437884029947,
+          -179.07780269193898,
+          132.063808969,
+          0.8770715215130243
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 23.3159766770616
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06854282313309623,
+                -0.9965324677234078,
+                0.047169080657143536,
+                -0.14642701897994784
+              ],
+              [
+                -0.9934429626741352,
+                -0.06384104786706002,
+                0.09484408532149942,
+                0.09978238675119729
+              ],
+              [
+                -0.09150388685832535,
+                -0.05336067260005981,
+                -0.9943740127886929,
+                -0.2921943810744354
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 0.9999999999999992,
+            "orthogonality_max_abs_error": 6.661338147750939e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 2,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            -0.0379632127,
+            4.3545094121,
+            0.4985567479
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.983179,
+            2.067932,
+            2.215566
+          ],
+          "location": [
+            -23.84811576859437,
+            -0.3231624970221752,
+            -49.189322642919585
+          ],
+          "obj_type": "Car",
+          "speed": 6.17358977844
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.4",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          161.7135177764,
+          -194.6323702281,
+          -3.0839175871,
+          -179.1624479587,
+          128.7246984372,
+          0.4919168124
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.379547378094905
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            -0.4577280768,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.5952077456637634,
+            -0.13428067192877824,
+            -0.9684981003137033
+          ],
+          "obj_type": "Car",
+          "speed": 6.35170969697
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.4",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          145.96302729623716,
+          -178.1595040283652,
+          -51.809464623701004,
+          -178.9375703971481,
+          132.0705654097,
+          1.3905409753208338
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 23.347970582605157
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06886085610350316,
+                -0.9963232165872615,
+                0.05097284165029104,
+                -0.14642701897997504
+              ],
+              [
+                -0.9935749584807183,
+                -0.06389162820813996,
+                0.09341660304759662,
+                0.09978238675125421
+              ],
+              [
+                -0.089816392583604,
+                -0.0570780862864708,
+                -0.9943214307703234,
+                -0.2921943810744528
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000000007,
+            "orthogonality_max_abs_error": 8.881784197001252e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 2,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            -0.0904915531,
+            5.1921485588,
+            0.9958976371
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.983179,
+            2.067932,
+            2.215566
+          ],
+          "location": [
+            -23.932866838525968,
+            -0.38520889312032197,
+            -49.1257461044488
+          ],
+          "obj_type": "Car",
+          "speed": 6.54056831998
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.5",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          161.3687564963,
+          -194.1600412914,
+          -3.1002246407,
+          -179.2194293792,
+          128.7370441458,
+          0.4945793289
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.60194826783196
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            1.4537178556,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.5639844975235186,
+            -0.0034531048191290825,
+            -0.9917479410224305
+          ],
+          "obj_type": "Car",
+          "speed": 6.26112115957
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.5",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          145.34452365660817,
+          -176.72055418243593,
+          -51.71658612761984,
+          -179.12042819435868,
+          131.5347083509,
+          0.9491701785347935
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 23.40789180090522
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06867963912046512,
+                -0.9962586114136843,
+                0.05245842500838582,
+                -0.1464270189799099
+              ],
+              [
+                -0.9943055922629634,
+                -0.06406074759267331,
+                0.085162255797185,
+                0.09978238675125775
+              ],
+              [
+                -0.08148310478178908,
+                -0.05800861834198077,
+                -0.994985177695213,
+                -0.2921943810744419
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0,
+            "orthogonality_max_abs_error": 2.220446049250313e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 2,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            -0.0376782286,
+            4.3217584024,
+            0.4985783659
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.983179,
+            2.067932,
+            2.215566
+          ],
+          "location": [
+            -23.927436020874865,
+            -0.3174963399460717,
+            -49.214469984978514
+          ],
+          "obj_type": "Car",
+          "speed": 5.90196009646
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.6",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          160.9791069502,
+          -193.6872318752,
+          -3.1126862171,
+          -179.1853401389,
+          128.8526032533,
+          0.5070150468
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.124231231712603
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            1.0533210281,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6768935902331977,
+            -0.057555632618109476,
+            -1.0187013023649953
+          ],
+          "obj_type": "Car",
+          "speed": 4.57866633368
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.6",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          144.93265472817367,
+          -176.0013371545871,
+          -51.6777235585273,
+          -179.10394935259538,
+          131.8389082828,
+          0.9683436469525092
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 23.39254096793212
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06823415089153653,
+                -0.9962861370502728,
+                0.05251698557186899,
+                -0.1464270189799464
+              ],
+              [
+                -0.9951256159142111,
+                -0.06420923875580195,
+                0.07484772681760156,
+                0.0997823867512265
+              ],
+              [
+                -0.07119767695278319,
+                -0.057368168698724645,
+                -0.9958111186448373,
+                -0.29219438107443907
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0,
+            "orthogonality_max_abs_error": 4.440892098500626e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 2,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            -0.0303399943,
+            3.4788884087,
+            0.4990786592
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.983179,
+            2.067932,
+            2.215566
+          ],
+          "location": [
+            -24.02483171013071,
+            -0.3946544683882256,
+            -49.17927087930028
+          ],
+          "obj_type": "Car",
+          "speed": 7.36903663487
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.7",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          160.5919839813,
+          -193.2536446767,
+          -3.0852459261,
+          -179.2051347478,
+          128.8557470159,
+          0.4851896984
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.549838846616602
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6529242006,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6150072464624632,
+            -0.00697261797430293,
+            -0.9384036647747387
+          ],
+          "obj_type": "Car",
+          "speed": 6.29724974794
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.7",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          144.3669384003727,
+          -175.75821599573817,
+          -51.733398429852784,
+          -179.09917009892706,
+          131.7362119928,
+          0.9266938081312192
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 23.363646665988824
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06774387578548999,
+                -0.9963789791142231,
+                0.05137798432070488,
+                -0.14642701897996807
+              ],
+              [
+                -0.9958565053689604,
+                -0.06439743680203654,
+                0.06420896236234477,
+                0.09978238675122515
+              ],
+              [
+                -0.06066784987026801,
+                -0.055514863889108354,
+                -0.9966130201234037,
+                -0.29219438107444
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 0.9999999999999996,
+            "orthogonality_max_abs_error": 5.551115123125783e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 2,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            -0.0381397193,
+            4.3747946668,
+            0.4985432765
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.983179,
+            2.067932,
+            2.215566
+          ],
+          "location": [
+            -24.173596389018986,
+            -0.47246311581399075,
+            -49.19544475281169
+          ],
+          "obj_type": "Car",
+          "speed": 5.57264291378
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.8",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          160.5927727392,
+          -193.2529687722,
+          -3.0860624586,
+          -179.205037818,
+          128.8556330759,
+          0.484503339
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.437300957723373
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6540167159,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6472470632100604,
+            -0.028206547875437193,
+            -0.9678821926996993
+          ],
+          "obj_type": "Car",
+          "speed": 4.25954550666
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.8",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          144.03128375730935,
+          -175.60911001724864,
+          -51.7052918857008,
+          -179.06361956576885,
+          131.8104867958,
+          1.4030784877992133
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 23.254662934479757
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06699448497888248,
+                -0.9964479764994865,
+                0.05102126137692654,
+                -0.14642701898000646
+              ],
+              [
+                -0.9967103318087979,
+                -0.06449933273860567,
+                0.049074948210569666,
+                0.0997823867511943
+              ],
+              [
+                -0.045609795526945426,
+                -0.05414116923703235,
+                -0.9974910928653137,
+                -0.29219438107444307
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 0.9999999999999999,
+            "orthogonality_max_abs_error": 6.661338147750939e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.0497610662,
+            2.8524215967,
+            0.9987612763
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -8.12155593047132,
+            -0.9480229200892527,
+            -49.89737247986119
+          ],
+          "obj_type": "Cyclist",
+          "speed": 5.80924636587
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814590.9",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          159.8651244773,
+          -192.3093571412,
+          -3.1068401588,
+          -179.1718073272,
+          129.0206409808,
+          0.4556971522
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.30334379387012
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6551092312,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6986957417126192,
+            -0.017035017369763095,
+            -1.0137404406533024
+          ],
+          "obj_type": "Car",
+          "speed": 4.37038338476
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814590.9",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          143.74388258609983,
+          -174.44223863271785,
+          -51.70525773403395,
+          -178.80561085480446,
+          131.752840277,
+          1.2441828211639239
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 23.055332173223917
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06651009729539069,
+                -0.9964130314679758,
+                0.05232091052873938,
+                -0.14642701897997315
+              ],
+              [
+                -0.9972679323863824,
+                -0.06469497948740789,
+                0.03565432179854378,
+                0.09978238675136732
+              ],
+              [
+                -0.03214153063480241,
+                -0.054549338675391155,
+                -0.9979936330751461,
+                -0.29219438107443435
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000000002,
+            "orthogonality_max_abs_error": 4.440892098500626e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.1486334932,
+            8.5481713635,
+            0.9888934616
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -7.995205770475164,
+            -1.1347929988096608,
+            -49.945061311066056
+          ],
+          "obj_type": "Cyclist",
+          "speed": 5.93440849149
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.0",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          159.8641374815,
+          -192.3085196278,
+          -3.106331482,
+          -179.1712383627,
+          129.0208032218,
+          0.4555915128
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.714098695742862
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6562017465,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6086344587250152,
+            -0.04228458152035197,
+            -0.9888106503652068
+          ],
+          "obj_type": "Car",
+          "speed": 7.40795673791
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.0",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          143.61980242803298,
+          -174.82611790545334,
+          -51.773178942321245,
+          -179.02101555377158,
+          131.7916410772,
+          1.8802767020135254
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 22.87591477341517
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06617364313037102,
+                -0.9966010498123459,
+                0.049065226665988934,
+                -0.1464270189799597
+              ],
+              [
+                -0.9975550078102988,
+                -0.06496931128133535,
+                0.025748688980684383,
+                0.09978238675128287
+              ],
+              [
+                -0.022473436485089687,
+                -0.05064914712568743,
+                -0.9984636240484632,
+                -0.292194381074437
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000000002,
+            "orthogonality_max_abs_error": 4.440892098500626e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.0573456193,
+            2.1912252923,
+            1.4989036761
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -8.22418715581333,
+            -1.1113253667358014,
+            -49.94347550169474
+          ],
+          "obj_type": "Cyclist",
+          "speed": 7.50226899167
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.1",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          159.4700747488,
+          -191.8455139743,
+          -3.1172611134,
+          -179.1583024802,
+          129.0956313251,
+          0.3285700389
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.389062219762454
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6572942618,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.5584570023985853,
+            0.005574253927118855,
+            -1.108969708645261
+          ],
+          "obj_type": "Car",
+          "speed": 6.1167676377
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.1",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          143.46498808624236,
+          -174.02301562791385,
+          -51.708616211173904,
+          -179.1113000030165,
+          131.7641840103,
+          1.3015189443042732
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 22.692611424941063
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06589028250416806,
+                -0.996770762877742,
+                0.04589680755395655,
+                -0.1464270189799673
+              ],
+              [
+                -0.9977069721484783,
+                -0.06509959287031672,
+                0.01851595891210185,
+                0.09978238675131092
+              ],
+              [
+                -0.015468303004418817,
+                -0.04701158665949341,
+                -0.9987745703220127,
+                -0.29219438107443707
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000000002,
+            "orthogonality_max_abs_error": 6.661338147750939e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.0185064829,
+            1.0604577275,
+            0.9998287578
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -7.841084091617517,
+            -1.0956001544352856,
+            -49.93006377858514
+          ],
+          "obj_type": "Cyclist",
+          "speed": 6.44256542688
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.2",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          158.7633565946,
+          -190.9251831375,
+          -3.1298583623,
+          -179.175470516,
+          129.0945124235,
+          0.3570605735
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.252641692218276
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 6,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6583867771,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6518114580402621,
+            -0.03475859485457533,
+            -0.9664413517191717
+          ],
+          "obj_type": "Car",
+          "speed": 7.52140444751
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.2",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          142.54894914761596,
+          -173.08707540808558,
+          -51.756752058873296,
+          -179.0827118815714,
+          131.699137617,
+          1.3008253330689463
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 22.45139615127371
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06560155542027989,
+                -0.9968481419821592,
+                0.04461185664324619,
+                -0.14642701897998195
+              ],
+              [
+                -0.9978062426839572,
+                -0.0651347750145835,
+                0.011839051681768952,
+                0.09978238675122462
+              ],
+              [
+                -0.008895953426361373,
+                -0.04529064926137798,
+                -0.9989342416306091,
+                -0.29219438107444623
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.000000000000001,
+            "orthogonality_max_abs_error": 1.1102230246251565e-15,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.0356999629,
+            2.045995724,
+            0.9993626178
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -7.919012734396684,
+            -1.1834466420403011,
+            -49.9997745837706
+          ],
+          "obj_type": "Cyclist",
+          "speed": 7.62160492648
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.3",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          158.3893202428,
+          -190.4702182867,
+          -3.1343544487,
+          -179.1925075546,
+          129.1949638829,
+          0.4217780588
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.055326651547464
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 6,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6594792924,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.7838450527624361,
+            0.10249225470341183,
+            -0.9865657037849949
+          ],
+          "obj_type": "Car",
+          "speed": 7.42292525041
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.3",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          142.33737638475182,
+          -172.45524997174067,
+          -51.79700267830626,
+          -179.07284879814196,
+          131.7322878319,
+          1.388528070209049
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 22.193053353298843
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06550686523053716,
+                -0.996843164739358,
+                0.04486151491077369,
+                -0.14642701897996319
+              ],
+              [
+                -0.9978362985107443,
+                -0.06518643356689992,
+                0.008570312316600697,
+                0.09978238675128277
+              ],
+              [
+                -0.005618895091043254,
+                -0.0453258622780582,
+                -0.9989564526177835,
+                -0.2921943810744377
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 0.9999999999999993,
+            "orthogonality_max_abs_error": 8.881784197001252e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.0528828774,
+            3.031533352,
+            0.9986008634
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -7.966889718482109,
+            -1.2617293437533443,
+            -50.019471628771235
+          ],
+          "obj_type": "Cyclist",
+          "speed": 7.80056124552
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.4",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          157.9951422459,
+          -190.0418063714,
+          -3.1391307279,
+          -179.141202332,
+          129.2478071687,
+          0.4656177388
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 20.927753026807196
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6605718077,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6789734711803386,
+            -0.005032083092433387,
+            -0.979772019567918
+          ],
+          "obj_type": "Car",
+          "speed": 5.79165823265
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.4",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          141.6316118492458,
+          -172.12469873043358,
+          -51.76403775648181,
+          -178.96582442588172,
+          131.8581293757,
+          1.383521920464669
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.969937548354082
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06549636287300419,
+                -0.9968333359955172,
+                0.04509464157143707,
+                -0.1464270189799653
+              ],
+              [
+                -0.9978464880947797,
+                -0.06526819270295063,
+                0.006515306455251926,
+                0.09978238675128268
+              ],
+              [
+                -0.0035514289128668153,
+                -0.04542425859977334,
+                -0.9989614727722675,
+                -0.29219438107444495
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000000004,
+            "orthogonality_max_abs_error": 6.661338147750939e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.0700501411,
+            4.0170704348,
+            0.9975437201
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -8.082897176316687,
+            -1.3667369849709832,
+            -49.99877294439181
+          ],
+          "obj_type": "Cyclist",
+          "speed": 6.13257889384
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.5",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          157.6416098751,
+          -189.5989470933,
+          -3.1300685735,
+          -179.1019762917,
+          129.2877334522,
+          0.4071519045
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 20.859318692519643
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 6,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.661664323,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6293009141899046,
+            -0.016788107129810048,
+            -1.0817949717769537
+          ],
+          "obj_type": "Car",
+          "speed": 5.62116661554
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.5",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          140.9655531545643,
+          -171.62011288318078,
+          -51.82649745880757,
+          -178.88733642187307,
+          131.9442625174,
+          1.2864599403461585
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.671615336837508
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06550751806583453,
+                -0.9967171835947757,
+                0.04757752624667323,
+                -0.14642701897994534
+              ],
+              [
+                -0.9978466860046358,
+                -0.06527594905468564,
+                0.006406379989976614,
+                0.09978238675119853
+              ],
+              [
+                -0.003279680841221562,
+                -0.047894742946471516,
+                -0.9988470039458851,
+                -0.2921943810744445
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 0.9999999999999999,
+            "orthogonality_max_abs_error": 2.220446049250313e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.0871966733,
+            5.002606796,
+            0.9961915008
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -8.197287810940708,
+            -1.4947712068748757,
+            -50.02424080787531
+          ],
+          "obj_type": "Cyclist",
+          "speed": 6.16468807869
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.6",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          157.2855039004,
+          -189.126458104,
+          -3.1409284677,
+          -179.1010364414,
+          129.3270600085,
+          0.3830723104
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 20.842065554918925
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 6,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6627568384,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6364198850897107,
+            -0.03421549591956896,
+            -1.0931373936308955
+          ],
+          "obj_type": "Car",
+          "speed": 5.55651557856
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.6",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          141.1962607147092,
+          -171.2871759969672,
+          -51.8399220975755,
+          -178.81580423358662,
+          131.8361677021,
+          1.79771531356221
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.449913800437873
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06539994994158162,
+                -0.9966317113580744,
+                0.04947806042191151,
+                -0.14642701897994023
+              ],
+              [
+                -0.9978556235524844,
+                -0.0651877956452435,
+                0.005891166573495347,
+                0.09978238675131283
+              ],
+              [
+                -0.002645957732331528,
+                -0.04975724283347815,
+                -0.9987578363613919,
+                -0.2921943810744578
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 0.9999999999999999,
+            "orthogonality_max_abs_error": 2.365558130203085e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.1308114895,
+            5.0035546339,
+            1.4942865301
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -8.144253034046583,
+            -1.5712298387613757,
+            -49.97807426001239
+          ],
+          "obj_type": "Cyclist",
+          "speed": 6.22230467572
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "1",
+      "frame_key": "1752814591.7",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "camera1",
+        "camera2",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          156.9155326131,
+          -188.6752216741,
+          -3.1460232087,
+          -179.1183875979,
+          129.3819859501,
+          0.347001113
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 20.717087006330427
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.49475253154,
+                -0.86878421527,
+                -0.020830742394,
+                0.22768276344
+              ],
+              [
+                -0.07348954472,
+                -0.017942412622,
+                -0.99713457299,
+                -0.034359102044
+              ],
+              [
+                0.86592102374,
+                0.49486569605,
+                -0.072723610507,
+                -0.34646634224
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2115.666837749488,
+                0.0,
+                983.015989198792
+              ],
+              [
+                0.0,
+                2114.663797368562,
+                612.690736866123
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000045945,
+            "orthogonality_max_abs_error": 5.808464820233894e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera1": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.084450648983,
+                -0.99620505808,
+                0.021061105098,
+                -0.0094457917472
+              ],
+              [
+                -0.067011002442,
+                -0.015410617816,
+                -0.99763321838,
+                -0.09276123925
+              ],
+              [
+                0.99417182289,
+                -0.085662098504,
+                -0.065455262904,
+                -0.11247442542
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2078.542526298773,
+                0.0,
+                959.380236033279
+              ],
+              [
+                0.0,
+                2078.291869330717,
+                605.811312460073
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000005653,
+            "orthogonality_max_abs_error": 9.64295310268426e-12,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        },
+        "camera2": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                -0.44045716181,
+                -0.89722278395,
+                0.031444626865,
+                -0.041682364918
+              ],
+              [
+                -0.07297336636,
+                0.00087030976401,
+                -0.9973335101,
+                -0.047611309325
+              ],
+              [
+                0.8948029819,
+                -0.44157730752,
+                -0.065856701088,
+                -0.29472619056
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2080.784742512194,
+                0.0,
+                927.972211324429
+              ],
+              [
+                0.0,
+                2079.516088086606,
+                620.570790159011
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000023548,
+            "orthogonality_max_abs_error": 1.1641247856259285e-11,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 5,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "1",
+          "angle": [
+            0.0,
+            0.6638493537,
+            0.0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            4.506838,
+            1.578579,
+            2.321422
+          ],
+          "location": [
+            0.6980244466069137,
+            -0.08907799419335338,
+            -1.122615921555856
+          ],
+          "obj_type": "Car",
+          "speed": 5.42728633946
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    },
+    {
+      "agent": "2",
+      "frame_key": "1752814591.7",
+      "status": "PASS",
+      "root_keys": [
+        "ego_speed",
+        "lidar_pose",
+        "camera0",
+        "vehicles"
+      ],
+      "raw_time_fields": {},
+      "lidar_pose": {
+        "shape": [
+          6
+        ],
+        "numpy_dtype": "float64",
+        "python_type": "list",
+        "values": [
+          140.61216299699305,
+          -170.40801500011156,
+          -51.82789986317988,
+          -178.92248385820784,
+          131.7700548101,
+          1.269701159253081
+        ]
+      },
+      "ego_speed": {
+        "shape": [],
+        "numpy_dtype": "float64",
+        "python_type": "float",
+        "values": 21.22762042735674
+      },
+      "cameras": {
+        "camera0": {
+          "extrinsic": {
+            "shape": [
+              4,
+              4
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                0.06544021592167544,
+                -0.9965434822172418,
+                0.05117290484678936,
+                -0.14642701897995267
+              ],
+              [
+                -0.9978532193104784,
+                -0.06522255587290217,
+                0.005913621320346059,
+                0.09978238675131199
+              ],
+              [
+                -0.0025555531375433126,
+                -0.05145003649892002,
+                -0.9986723000526359,
+                -0.2921943810744441
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "intrinsic": {
+            "shape": [
+              3,
+              3
+            ],
+            "numpy_dtype": "float64",
+            "python_type": "list",
+            "values": [
+              [
+                2039.02418542193,
+                0.0,
+                977.851648966012
+              ],
+              [
+                0.0,
+                2040.587112590212,
+                630.821216777396
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "extrinsic_structure_diagnostics": {
+            "bottom_row": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "rotation_determinant": 1.0000000000000007,
+            "orthogonality_max_abs_error": 8.881784197001252e-16,
+            "source_frame": null,
+            "target_frame": null,
+            "direction_verified": false
+          }
+        }
+      },
+      "annotation_count": 1,
+      "annotation_center_values": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "annotation_examples": [
+        {
+          "id": "2",
+          "angle": [
+            -0.0871966733,
+            5.002606796,
+            0.9961915008
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "extent": [
+            1.727786,
+            0.837228,
+            1.500413
+          ],
+          "location": [
+            -8.075755136849372,
+            -1.586089184504036,
+            -50.0288574626616
+          ],
+          "obj_type": "Cyclist",
+          "speed": 6.34408576424
+        }
+      ],
+      "dedicated_body_extrinsic_or_registration_matrix": null,
+      "physical_semantics_status": "BLOCKED"
+    }
+  ],
+  "point_transform_executed": false
+}
