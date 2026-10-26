@@ -101,6 +101,12 @@
       "can_establish_formal_result": false
     },
     {
+      "path": "docs/implementation_records/STEP_R2_03_V2U4REAL_DATA_CONTRACT_AUDIT.md",
+      "role": "V2U4Real data contract and evidence audit",
+      "authority": "verified_process_record",
+      "can_establish_formal_result": false
+    },
+    {
       "path": "docs/implementation_records/STEP_01_AUDIT.md",
       "role": "authorized definition-to-implementation audit record",
       "authority": "verified_process_record",

@@ -1,3 +1,9 @@
+<!-- V2U4REAL R2-03 2026-10-26 -->
+## 2026-10-26 — V2U4Real 数据合同审计（总体 BLOCKED）
+
+R2-03 文件/结构检查为 16/16，读取错误 0；两组车辆 PCD 精确重复，时间戳与跨端物理配对未核验，坐标/标注合同存在未裁决差异。未执行坐标变换、融合、AirFogSim、无线服务或训练；GPU/locked_test 未使用。R2-04 暂不具备真实坐标验收准入条件。证据：[实施记录](../docs/implementation_records/STEP_R2_03_V2U4REAL_DATA_CONTRACT_AUDIT.md) 与 `code/artifacts/manifests/v2u4real_r2_03_20261026/real_data_contract_audit.json`。
+<!-- END V2U4REAL R2-03 -->
+
 <!-- V2U4REAL R2-02 2026-10-26 -->
 ## 2026-10-26 — V2U4Real 完整真实样本准备（总体 BLOCKED）
 

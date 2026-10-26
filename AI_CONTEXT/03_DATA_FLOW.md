@@ -1,3 +1,9 @@
+<!-- V2U4REAL R2-03 2026-10-26 -->
+## 2026-10-26 — V2U4Real 数据合同（总体 BLOCKED）
+
+16 个候选文件键的车辆/UAV Ouster PCD 与 YAML 均能读取；共同 stem 仅是发布文件键，不证明物理同步。32 份 YAML 和 PCD 均未提供可恢复的原始采集时钟。只能建立排序索引；`index × 0.1 s` 若用于接口冒烟，必须标作名义 10 Hz 仿真假设。字段约束、逐键状态与重复 PCD 见 [R2-03 实施记录](../docs/implementation_records/STEP_R2_03_V2U4REAL_DATA_CONTRACT_AUDIT.md)。
+<!-- END V2U4REAL R2-03 -->
+
 <!-- V2U4REAL R2-02 2026-10-26 -->
 ## 2026-10-26 — V2U4Real 完整真实样本准备（总体 BLOCKED）
 

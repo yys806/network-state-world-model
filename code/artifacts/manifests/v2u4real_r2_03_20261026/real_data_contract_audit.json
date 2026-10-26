@@ -1,0 +1,3086 @@
+{
+  "schema_version": "V2U4Real-R2-03-v1",
+  "dataset": "VJiaLi/V2U4Real",
+  "dataset_version": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+  "split": "train",
+  "scene_id": "2025-07-18-12-53_2",
+  "official_code_commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "paper": {
+    "arxiv": "2603.25275v1",
+    "url": "https://arxiv.org/abs/2603.25275"
+  },
+  "scope": {
+    "selected_pair_count": 16,
+    "selected_keys": [
+      "1752814590.2",
+      "1752814590.3",
+      "1752814590.4",
+      "1752814590.5",
+      "1752814590.6",
+      "1752814590.7",
+      "1752814590.8",
+      "1752814590.9",
+      "1752814591.0",
+      "1752814591.1",
+      "1752814591.2",
+      "1752814591.3",
+      "1752814591.4",
+      "1752814591.5",
+      "1752814591.6",
+      "1752814591.7"
+    ],
+    "coordinate_transform_executed": false,
+    "physical_timestamp_recovered": false,
+    "physical_pairing_verified": false
+  },
+  "pairs": [
+    {
+      "frame_key": "1752814590.2",
+      "vehicle_frame_id": "1752814590.2",
+      "uav_frame_id": "1752814590.2",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": null,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.2.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.2.yaml",
+        "pcd": {
+          "sha256": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+          "bytes": 2259016,
+          "point_count": 141177,
+          "shape": [
+            141177,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "a8c05b3d1a8be9707c453bb88a81b2df6511843034017d9ce99816d00dfffa77",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "141177"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "141177"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+          "bytes": 3592,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              162.4558620813,
+              -195.5474155993,
+              -3.0822680281,
+              -179.1582303045,
+              128.6537437347,
+              0.4917033974
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 6,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "semantic_sha256": "f075ca43cfe77c29faa4b775fe9f0cbb68e1fc3635363c0556066668c904bf21"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+        "pcd": {
+          "sha256": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+          "bytes": 1128694,
+          "point_count": 70532,
+          "shape": [
+            70532,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "e342108c222d1ac132151f43c8a9b5962170e2e61ddde4b3acc3a24cfdf483c3",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70532"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70532"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+          "bytes": 1390,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              146.0642330580825,
+              -178.5034348014285,
+              -51.65063285498502,
+              -179.0519502518403,
+              131.9188901918,
+              0.9285541649206536
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 2,
+          "vehicle_ids": [
+            "1",
+            "2"
+          ],
+          "semantic_sha256": "826f4afd0237f7fb77f183646b8532997c1d3d26dfd79f8fff218875e554d0c3"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814590.3",
+      "vehicle_frame_id": "1752814590.3",
+      "uav_frame_id": "1752814590.3",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.0999999046,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.3.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.3.yaml",
+        "pcd": {
+          "sha256": "081ce14739da7b850daa4427f72f52aa4b781a5e2ef94fa0d58a11b47534e1da",
+          "bytes": 2280584,
+          "point_count": 142525,
+          "shape": [
+            142525,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "14f68a157d8db08516aaebfdf705fbe4afc7d6a3cc321efb47896b6f758f0e04",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "142525"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "142525"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "97f40e972b3124d5fb6ff76491491438003f5f770e37a863b5c13f535fe4a8fb",
+          "bytes": 3280,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              162.0550535195,
+              -195.102985512,
+              -3.0670718244,
+              -179.1796473347,
+              128.692166392,
+              0.4359285706
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "431767850e58c92caabff3964090d1962e319a31476686453a517c10a3fb935b"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.3.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.3.yaml",
+        "pcd": {
+          "sha256": "22ed61b2360952f8d324bad7006938a0b91505df682e7691eaa10a9057080707",
+          "bytes": 1126006,
+          "point_count": 70364,
+          "shape": [
+            70364,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "087d9069d8272fe5734cfd00e728a4898e7990d2c1a79d896c54c62d6efda8e9",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70364"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70364"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "6820901eb23a767a7e739a1e3babf714e5020566aab171a5a78033054ba95d10",
+          "bytes": 1392,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              145.76587894570915,
+              -178.04153479223328,
+              -51.55437884029947,
+              -179.07780269193898,
+              132.063808969,
+              0.8770715215130243
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 2,
+          "vehicle_ids": [
+            "1",
+            "2"
+          ],
+          "semantic_sha256": "3e57721a48e912db74f763f99a35b40159ec6929810f8e43a8639009d7bca86b"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814590.4",
+      "vehicle_frame_id": "1752814590.4",
+      "uav_frame_id": "1752814590.4",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.1000001431,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.4.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.4.yaml",
+        "pcd": {
+          "sha256": "9fe8f9626e77daec86f6d16e7e8de7dacafd968ed625e1492fceddd50d1e8f34",
+          "bytes": 2286040,
+          "point_count": 142866,
+          "shape": [
+            142866,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "770cfc7fd3e8134d04f2234f166e9d468f2d7ad86637091abf73a4f261c4ad98",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "142866"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "142866"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "38fbd847b2dc7c40d3270e0577656e257e409ef8e3c521ccb5429a17cd5dabef",
+          "bytes": 3282,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              161.7135177764,
+              -194.6323702281,
+              -3.0839175871,
+              -179.1624479587,
+              128.7246984372,
+              0.4919168124
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "058fac011bc03ef344d0ecdd075cb2f9bb10ed5f567537c29d03cc01dfca04c9"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.4.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.4.yaml",
+        "pcd": {
+          "sha256": "cd7e84c29168bdfc2bd6a1b5e0a26dbb4d209b4ea701fe8083511f6705035304",
+          "bytes": 1132198,
+          "point_count": 70751,
+          "shape": [
+            70751,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "10bdeb7b9858c91952c6080789e3f190535cb1503e79dd59201103d260a904ac",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70751"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70751"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "2ac9ebd2adbbed94c9f5d088bce4da206d9267e4da2fadc62fcd30880c5a52f9",
+          "bytes": 1386,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              145.96302729623716,
+              -178.1595040283652,
+              -51.809464623701004,
+              -178.9375703971481,
+              132.0705654097,
+              1.3905409753208338
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 2,
+          "vehicle_ids": [
+            "1",
+            "2"
+          ],
+          "semantic_sha256": "b1034aba7a1359fe0dc2052a1876726e84ceea12cc800054b91262a78a62df41"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814590.5",
+      "vehicle_frame_id": "1752814590.5",
+      "uav_frame_id": "1752814590.5",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.0999999046,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.5.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.5.yaml",
+        "pcd": {
+          "sha256": "18ff97bb5cfdc349ecd99e4d914064fe35a5379efdab18455d78d0714d784244",
+          "bytes": 2294888,
+          "point_count": 143419,
+          "shape": [
+            143419,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "274ba198db7bea1890dce4f003c609d9860fdcb9ed41be4f1955a2a1a9650916",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "143419"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "143419"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "cff81870698ddfe54c68cf9b42ba61f8346a056d4578f303a28903c773b8e276",
+          "bytes": 3277,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              161.3687564963,
+              -194.1600412914,
+              -3.1002246407,
+              -179.2194293792,
+              128.7370441458,
+              0.4945793289
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "113db9fd19d73805ea512c1176bb1045c9c22fb1cf32933fc8ac30ef70a40cbb"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.5.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.5.yaml",
+        "pcd": {
+          "sha256": "9d8a848dec7692b40778758b962c72a9985ab7e69430c157b544d3f19b95d16a",
+          "bytes": 1129238,
+          "point_count": 70566,
+          "shape": [
+            70566,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "854187c657cceb502fe3c74dfea36ac33ddd558d3ae0f4fa8011f33216e85901",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70566"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70566"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "3d211ac00cb7801e15da747ac5406c3e2e8219b0d2443a2066220d2a338113b9",
+          "bytes": 1389,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              145.34452365660817,
+              -176.72055418243593,
+              -51.71658612761984,
+              -179.12042819435868,
+              131.5347083509,
+              0.9491701785347935
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 2,
+          "vehicle_ids": [
+            "1",
+            "2"
+          ],
+          "semantic_sha256": "8453b9619ba7ac260ae916bd28b1b8b7c2d87395590dd2630547e09db707b657"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814590.6",
+      "vehicle_frame_id": "1752814590.6",
+      "uav_frame_id": "1752814590.6",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.0999999046,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.6.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.6.yaml",
+        "pcd": {
+          "sha256": "23c6531e928c548303a4dde3c880c1cbff59772bea1e87d6fc979fdf12cd5d94",
+          "bytes": 2292216,
+          "point_count": 143252,
+          "shape": [
+            143252,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "2236a20de8450ab2aa005472f0fbab305df662b0f35540d0b788db9af07cfef2",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "143252"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "143252"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "6ba19b60a6d8a824fc041d8dd46e590160b9431dceaf6f509630e3490d5c6c64",
+          "bytes": 3280,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              160.9791069502,
+              -193.6872318752,
+              -3.1126862171,
+              -179.1853401389,
+              128.8526032533,
+              0.5070150468
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "2a0448ff38af5c001a648f4d4cef17431e4f7377a5a1fa3e4c9c3f34c86dc1ea"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.6.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.6.yaml",
+        "pcd": {
+          "sha256": "8bfaf83f354ad39919b99ab81cd149a4b32199323ad465479238cd0538ca0a67",
+          "bytes": 1131894,
+          "point_count": 70732,
+          "shape": [
+            70732,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "f9a89a040bb46e1fe1fc204b76d022c86ff93bd709fbd2748acd072007b68427",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70732"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70732"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "10e2691d60e153f07188578bc5039e7106a344ba1064d70c9fc3f54391531fba",
+          "bytes": 1390,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              144.93265472817367,
+              -176.0013371545871,
+              -51.6777235585273,
+              -179.10394935259538,
+              131.8389082828,
+              0.9683436469525092
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 2,
+          "vehicle_ids": [
+            "1",
+            "2"
+          ],
+          "semantic_sha256": "9edcf0389cba986251c06289cdf2db639adbe457fbf07ca2f08d0bd31ad3aa6a"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814590.7",
+      "vehicle_frame_id": "1752814590.7",
+      "uav_frame_id": "1752814590.7",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.1000001431,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.7.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.7.yaml",
+        "pcd": {
+          "sha256": "054aebfbbd28685a665c2cb3c215293f26baa93b198bffa92aba88f8dd5939df",
+          "bytes": 2296504,
+          "point_count": 143520,
+          "shape": [
+            143520,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "f8e871476132a1ce30df20dc0c103e991c4fe94640fde4c19578b4ce84c09d86",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "143520"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "143520"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "e1bdafc5e587772b99822077b063dd118cb323c867589456f382712baed0e1be",
+          "bytes": 3280,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              160.5919839813,
+              -193.2536446767,
+              -3.0852459261,
+              -179.2051347478,
+              128.8557470159,
+              0.4851896984
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "e78ec29069fda471427165a67b6b903652ad7c9689e7ed56ce4de119a9a0edec"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.7.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.7.yaml",
+        "pcd": {
+          "sha256": "e93e262400921d8568976bf848632a4d3d02d5d19381ecfc3b7b22aecc115b63",
+          "bytes": 1132374,
+          "point_count": 70762,
+          "shape": [
+            70762,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "6419210c5a787441e5ddb3f0137f05fdecf0aa70ac0c3e7c6a59de42a078fa32",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70762"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70762"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "38fe32ce534071f35838abcf41410af19ff6d62ca1bb2c6deb3b66e0e7c27c85",
+          "bytes": 1393,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              144.3669384003727,
+              -175.75821599573817,
+              -51.733398429852784,
+              -179.09917009892706,
+              131.7362119928,
+              0.9266938081312192
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 2,
+          "vehicle_ids": [
+            "1",
+            "2"
+          ],
+          "semantic_sha256": "52f8d0c0e1f0fb4e65c38ee4274f64a953781f3c44c17aa1d67242b0ed2ca99d"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814590.8",
+      "vehicle_frame_id": "1752814590.8",
+      "uav_frame_id": "1752814590.8",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.0999999046,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.8.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.8.yaml",
+        "pcd": {
+          "sha256": "054aebfbbd28685a665c2cb3c215293f26baa93b198bffa92aba88f8dd5939df",
+          "bytes": 2296504,
+          "point_count": 143520,
+          "shape": [
+            143520,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "f8e871476132a1ce30df20dc0c103e991c4fe94640fde4c19578b4ce84c09d86",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "143520"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "143520"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "78ec19b20d6fec5afc676ede7e6fa1d2128ac7a538d281fc7da8abee5da15723",
+          "bytes": 3281,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              160.5927727392,
+              -193.2529687722,
+              -3.0860624586,
+              -179.205037818,
+              128.8556330759,
+              0.484503339
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "26ef16ab3bfee99f9fbe985a09c67f0d90891d7f391143506e4c588fb0115404"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.8.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.8.yaml",
+        "pcd": {
+          "sha256": "ce572f46ab96d0028356827b6c60ed14eb8969dfdf9b8c3a8dadf22413a7805e",
+          "bytes": 1134054,
+          "point_count": 70867,
+          "shape": [
+            70867,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "f5872c82c51bd3e41709b09187af09002669d13dacbbeb51cf86ad2391f8d872",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70867"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70867"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "003f299fb5d44a9bf4322539810cc4bdbc8d779b050cb595b7e9289412205c69",
+          "bytes": 1072,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              144.03128375730935,
+              -175.60911001724864,
+              -51.7052918857008,
+              -179.06361956576885,
+              131.8104867958,
+              1.4030784877992133
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "834399d9239c437ba0d3816894b0552b849d7377944f73015f738058fab9a6df"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814590.9",
+      "vehicle_frame_id": "1752814590.9",
+      "uav_frame_id": "1752814590.9",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.1000001431,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.9.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.9.yaml",
+        "pcd": {
+          "sha256": "1e07de7bbe3494ba7b237e4136617165f4169eac56c423812ad835639e1eaebd",
+          "bytes": 2293704,
+          "point_count": 143345,
+          "shape": [
+            143345,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "1d78643f10b5485845d4beb6d2922eb987df5f91345af4ee3c8e2c1d63a2216a",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "143345"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "143345"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "efd78a59f85370a455788364c62cb285b2413bc240b5f8722736d4081fc18ac4",
+          "bytes": 3277,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              159.8651244773,
+              -192.3093571412,
+              -3.1068401588,
+              -179.1718073272,
+              129.0206409808,
+              0.4556971522
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "ebaecb6283a2fdc7e577e0cfa87926c57e988f592bf29c85d32aa25f8289d040"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.9.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.9.yaml",
+        "pcd": {
+          "sha256": "2c0277b95eb0b61a63774c6215a1938c605ceec44a4b205ce417a1174fa2310f",
+          "bytes": 1130966,
+          "point_count": 70674,
+          "shape": [
+            70674,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "6bb3a6ca8f32a3c282ad8b79afec6a915ec2ee9b1a2fa6264ff49acbc125f6fb",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70674"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70674"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "189ffcc85b6c57f0a3cd4025faa1d7af11a7cc343e2cf75779e01e4c72462957",
+          "bytes": 1074,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              143.74388258609983,
+              -174.44223863271785,
+              -51.70525773403395,
+              -178.80561085480446,
+              131.752840277,
+              1.2441828211639239
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "96328a81b38c14c6969d986d2cb56edebfa60851e306d8884daa31c43a826e26"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814591.0",
+      "vehicle_frame_id": "1752814591.0",
+      "uav_frame_id": "1752814591.0",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.0999999046,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.0.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.0.yaml",
+        "pcd": {
+          "sha256": "1e07de7bbe3494ba7b237e4136617165f4169eac56c423812ad835639e1eaebd",
+          "bytes": 2293704,
+          "point_count": 143345,
+          "shape": [
+            143345,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "1d78643f10b5485845d4beb6d2922eb987df5f91345af4ee3c8e2c1d63a2216a",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "143345"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "143345"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "a315f9e973acae06d3b8d6036f4c05788741b6bfdcdc9b9d177bd4b7b5127ce4",
+          "bytes": 3279,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              159.8641374815,
+              -192.3085196278,
+              -3.106331482,
+              -179.1712383627,
+              129.0208032218,
+              0.4555915128
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "dd580c1035e7d7e2798b38b8d4fbcca7a249e95c4a3448100d9d2dad7e3dccba"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.0.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.0.yaml",
+        "pcd": {
+          "sha256": "1a13c782e30bfe39c65562ca3fc6cd5c3938152628d514b83dd40e77de0f8240",
+          "bytes": 1132326,
+          "point_count": 70759,
+          "shape": [
+            70759,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "aafe0119bf49b1954d5626ca4513c553ed71912b16e2b30b2b55458114ad41dd",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70759"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70759"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "21ac8904fa9d61653d33a176ca8ce67cb8a395c5070b402b33873a7cf4588b9b",
+          "bytes": 1072,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              143.61980242803298,
+              -174.82611790545334,
+              -51.773178942321245,
+              -179.02101555377158,
+              131.7916410772,
+              1.8802767020135254
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "e29e4e46d782fe09a9af9133d1e97b8c02053d12f94df84e9f95ee469506bcba"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814591.1",
+      "vehicle_frame_id": "1752814591.1",
+      "uav_frame_id": "1752814591.1",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.0999999046,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.1.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.1.yaml",
+        "pcd": {
+          "sha256": "1e33fa70a0b3f78cee8ffa4f79ef22bff2fa3c1910c378a2eaccbd68cc405275",
+          "bytes": 2286936,
+          "point_count": 142922,
+          "shape": [
+            142922,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "639deeb7a89ffe9beef1c80f695fb28878d62cd847c3b2c0c3963d5efaf20855",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "142922"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "142922"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "b27c4012bd949b08aa416e3eecc8b53fdb6a56fee4ceb75588fc03b6f0451679",
+          "bytes": 3278,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              159.4700747488,
+              -191.8455139743,
+              -3.1172611134,
+              -179.1583024802,
+              129.0956313251,
+              0.3285700389
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "99ae19d911eff64cc8c88745da47fa8ec8cada2c6195d94095c614ee5de58991"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.1.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.1.yaml",
+        "pcd": {
+          "sha256": "74c3f22e06faa7d577c67ead544502b29d69267f0c3a13f3496b8fa489d73300",
+          "bytes": 1130086,
+          "point_count": 70619,
+          "shape": [
+            70619,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "3102bf1568997071f9c75a654b53b78226f22a5e9954c167cb01d7715aeb4a0e",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70619"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70619"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "73d7fbddabfa9a11469943783413eb9a3671898bd03299e73cd53837c4b77e04",
+          "bytes": 1072,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              143.46498808624236,
+              -174.02301562791385,
+              -51.708616211173904,
+              -179.1113000030165,
+              131.7641840103,
+              1.3015189443042732
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "0df644744e234a0b958b36c88926355f7405b4aecdab64ffc9cad8ec56a087f4"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814591.2",
+      "vehicle_frame_id": "1752814591.2",
+      "uav_frame_id": "1752814591.2",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.1000001431,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.2.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.2.yaml",
+        "pcd": {
+          "sha256": "3a2f8e09d19a7d0a102657b08087363cc4c19d867b5417249c2f7b4d9f4e4b4c",
+          "bytes": 2310680,
+          "point_count": 144406,
+          "shape": [
+            144406,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "c14f7c9f8bd9dc90583a25caba9de884d73f1ba3e277c05436950a32d06fe897",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "144406"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "144406"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "ba17f43d745697dccce276ddef9e682074a109609fc3381187ccdc1f07ac1e75",
+          "bytes": 3579,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              158.7633565946,
+              -190.9251831375,
+              -3.1298583623,
+              -179.175470516,
+              129.0945124235,
+              0.3570605735
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 6,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "semantic_sha256": "98432953446992c00063ab7fa154c38dbdf7a34176e2c037052b6956b11def22"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.2.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.2.yaml",
+        "pcd": {
+          "sha256": "57e394097854809d2397843a5db779d96e75fadd76a7c884ee78c840845db674",
+          "bytes": 1129446,
+          "point_count": 70579,
+          "shape": [
+            70579,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "60ad54f685cc4b0fce72a61cbecb8f305106996dbf27c242e877c013b6039a24",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70579"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70579"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "e3d0acfdf4e51f836cd609f35913cbd45d3e1d0cec6eefb29c29982661ef4bb7",
+          "bytes": 1070,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              142.54894914761596,
+              -173.08707540808558,
+              -51.756752058873296,
+              -179.0827118815714,
+              131.699137617,
+              1.3008253330689463
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "88c028645b82f2aa1bc8560c3108cf9f6866a800632d414b457ea9d98133321b"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814591.3",
+      "vehicle_frame_id": "1752814591.3",
+      "uav_frame_id": "1752814591.3",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.0999999046,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.3.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.3.yaml",
+        "pcd": {
+          "sha256": "886fc1494f0d20ed010b553090f3d9a7cfe5659202676fa0279d459c267e59d2",
+          "bytes": 2306152,
+          "point_count": 144123,
+          "shape": [
+            144123,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "bec675e00c9862761f87078e70db5b626bd0111048d53ed1229c690ee738c6f5",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "144123"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "144123"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "178e1493e6c44dc00252ecdf712b083e2b03bb78f436f3dccdc4c4fcf1c0bfea",
+          "bytes": 3578,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              158.3893202428,
+              -190.4702182867,
+              -3.1343544487,
+              -179.1925075546,
+              129.1949638829,
+              0.4217780588
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 6,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "semantic_sha256": "0328745513f3b29b976cf3834c66d21a317bfa99259ba37c0f3a8fba72f12659"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.3.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.3.yaml",
+        "pcd": {
+          "sha256": "9490cc1386e3787dafd7c6b5aee44ac86b19ba5040a45ffa58d4cd7174bce534",
+          "bytes": 1129238,
+          "point_count": 70566,
+          "shape": [
+            70566,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "2b694802e1935121768a662435511c7d09396b376d5b677543e0cd0914ae22f4",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70566"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70566"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "830a36d85486777c5748c3ab864c27c35e9af795d958039efcd1fad7483df5eb",
+          "bytes": 1071,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              142.33737638475182,
+              -172.45524997174067,
+              -51.79700267830626,
+              -179.07284879814196,
+              131.7322878319,
+              1.388528070209049
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "24063a1d97593d8e2ed7a89acf1436586ef9c7e0bddc7882137b93537c777479"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814591.4",
+      "vehicle_frame_id": "1752814591.4",
+      "uav_frame_id": "1752814591.4",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.1000001431,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.4.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.4.yaml",
+        "pcd": {
+          "sha256": "9d57d191f6f36064f0efc7ed85ecc6f232f74fdce3a4b2a7b0ab6425d6a7293c",
+          "bytes": 2301432,
+          "point_count": 143828,
+          "shape": [
+            143828,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "0bc4e78e1b5219536c1979ac4d756ef628d12bbea0a4146bb7321d1458cb9308",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "143828"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "143828"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "8bf57be1fa5b484d0f154b74e0151e83153ad909ade62159c3db03c06cb72683",
+          "bytes": 3274,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              157.9951422459,
+              -190.0418063714,
+              -3.1391307279,
+              -179.141202332,
+              129.2478071687,
+              0.4656177388
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "dc43e1b7a680ded96005ec7f6f03c2c036ac686c1c386008c0758a540e28c716"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.4.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.4.yaml",
+        "pcd": {
+          "sha256": "38fc2b04b617ab9dfc3515412979e63c9e516102491c70a4ee6759a3df599a06",
+          "bytes": 1130630,
+          "point_count": 70653,
+          "shape": [
+            70653,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "3a5ea87690dc423beb3e524d4317c436aa4ff271c5b02235f96679c6fe40604b",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70653"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70653"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "90bd6fbf253cad1cf0cf0590880ec890170e07ea94618f8272649d95afdb0f7b",
+          "bytes": 1073,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              141.6316118492458,
+              -172.12469873043358,
+              -51.76403775648181,
+              -178.96582442588172,
+              131.8581293757,
+              1.383521920464669
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "07da7f2f7e87734578ccc05f2a419c25f35ae17443c8de7f0d568471f547fe4d"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814591.5",
+      "vehicle_frame_id": "1752814591.5",
+      "uav_frame_id": "1752814591.5",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.0999999046,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.5.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.5.yaml",
+        "pcd": {
+          "sha256": "438110145931ee979b359a7d4400b81036adc178c61748681f3581dcf7885b52",
+          "bytes": 2307400,
+          "point_count": 144201,
+          "shape": [
+            144201,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "6bdcfe364dc034b127751fb144406b6d70ff49745c028acfe21ae4f8f9940801",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "144201"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "144201"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "f208b48611a13b255eb8be0e0db676186d50154b68ddfd60dc9e9a293e8c1f7e",
+          "bytes": 3581,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              157.6416098751,
+              -189.5989470933,
+              -3.1300685735,
+              -179.1019762917,
+              129.2877334522,
+              0.4071519045
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 6,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "semantic_sha256": "dcc5bd503cbd1afe66781624d34bf86192f46fc9254a37b2f9d199bd1930cfb2"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.5.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.5.yaml",
+        "pcd": {
+          "sha256": "0207f5c2b9b702b8b773d20e326d60ff121bdce0e69c21acecef45614398b57f",
+          "bytes": 1131222,
+          "point_count": 70690,
+          "shape": [
+            70690,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "3c55c23873d10c533036a4d82be3a817e999e1c8e4d61b5f3131059428734e05",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70690"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70690"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "02a6b5a91fec115bd10b89a0092e05c4dc2a96008721d8c74eb76e854627fac8",
+          "bytes": 1073,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              140.9655531545643,
+              -171.62011288318078,
+              -51.82649745880757,
+              -178.88733642187307,
+              131.9442625174,
+              1.2864599403461585
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "0068b6852410a5e0042863aaa3c49e03b33b5d73eb87022f41f151ee335772ce"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814591.6",
+      "vehicle_frame_id": "1752814591.6",
+      "uav_frame_id": "1752814591.6",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.0999999046,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.6.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.6.yaml",
+        "pcd": {
+          "sha256": "a233549b1c393b827b285b95229c7025d844970baca2209314346118f436f4c8",
+          "bytes": 2304216,
+          "point_count": 144002,
+          "shape": [
+            144002,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "a1ce6e2b18816dd21adb86fda1f61dfd4c49a9f218259fb7c6883a5fd77a4ebe",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "144002"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "144002"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "363276047d1049267dd65928407f8b218a027808793fe0bc1d397f273e7cdd99",
+          "bytes": 3583,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              157.2855039004,
+              -189.126458104,
+              -3.1409284677,
+              -179.1010364414,
+              129.3270600085,
+              0.3830723104
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 6,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "semantic_sha256": "a588649e24ae5129986ab958f5eb7845f9b232f5019df3f61f10aa429a8df83b"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.6.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.6.yaml",
+        "pcd": {
+          "sha256": "e60c71ef15ab95f72327d17f9e89cf19055656c6e604b00ab2c9f790430fb766",
+          "bytes": 1129734,
+          "point_count": 70597,
+          "shape": [
+            70597,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "550cedae1c38afec8a5892ac88471006ed3f86f39fd0fd28e7fe10d11473318f",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70597"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70597"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "cdbe06034ced3427cd5a2456a1b01ae58f08cc5efd8814834f639dac3e2b927f",
+          "bytes": 1068,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              141.1962607147092,
+              -171.2871759969672,
+              -51.8399220975755,
+              -178.81580423358662,
+              131.8361677021,
+              1.79771531356221
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "b7f763122e4773a0d25414a3170b60e75406fe5e8d346afc7bfe4370d17a1ed5"
+        },
+        "read_status": "PASS"
+      }
+    },
+    {
+      "frame_key": "1752814591.7",
+      "vehicle_frame_id": "1752814591.7",
+      "uav_frame_id": "1752814591.7",
+      "pairing_basis": "same published YAML stem; physical acquisition pairing unverified",
+      "published_key_numeric_delta_to_previous": 0.1000001431,
+      "vehicle": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.7.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.7.yaml",
+        "pcd": {
+          "sha256": "f4373d026141e178b79845343e959db7f031c416f43b0855068d7c793b4b5d73",
+          "bytes": 2306824,
+          "point_count": 144165,
+          "shape": [
+            144165,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "8378fa2defd489027c165cee8f4c2060c5361265e2100fbbc51b0357523ca7bd",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "144165"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "144165"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "ea3c925f1c45f1a434172a7d8ad20739893c121ec3b6637bb65ef44dc409be28",
+          "bytes": 3275,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              156.9155326131,
+              -188.6752216741,
+              -3.1460232087,
+              -179.1183875979,
+              129.3819859501,
+              0.347001113
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 5,
+          "vehicle_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "semantic_sha256": "635200b0e18b4c5ef88323d30c8db598a944b42f893a9f2ceda357bdb877cff4"
+        },
+        "read_status": "PASS"
+      },
+      "uav": {
+        "pcd_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.7.pcd",
+        "yaml_path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.7.yaml",
+        "pcd": {
+          "sha256": "2e95aae4d486061eb37ee2a6614164d41fcdb6cb0b13f946e46ccdbad0857b6d",
+          "bytes": 1128838,
+          "point_count": 70541,
+          "shape": [
+            70541,
+            3
+          ],
+          "xyz_finite": true,
+          "xyz_sha256": "18adef6ed844deacb2ae30c5f4723a1703193bb60fb51ae4bd0278c775a05222",
+          "header": {
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70541"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "POINTS": [
+              "70541"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          }
+        },
+        "yaml": {
+          "sha256": "acedc77ff7123d662e520df872be619030232f524af595b85b991fac72c98768",
+          "bytes": 1070,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "raw_time_fields": {},
+          "lidar_pose": {
+            "type": "list",
+            "length": 6,
+            "finite": true,
+            "values": [
+              140.61216299699305,
+              -170.40801500011156,
+              -51.82789986317988,
+              -178.92248385820784,
+              131.7700548101,
+              1.269701159253081
+            ]
+          },
+          "ego_speed": {
+            "type": "float",
+            "finite": true
+          },
+          "vehicle_count": 1,
+          "vehicle_ids": [
+            "2"
+          ],
+          "semantic_sha256": "3c1a1719f94592d042b1c2e0d4a1e2a3eb728c68b4c7ced2c8d544beebfeef95"
+        },
+        "read_status": "PASS"
+      }
+    }
+  ],
+  "duplicate_pcd_groups": [
+    {
+      "sha256": "054aebfbbd28685a665c2cb3c215293f26baa93b198bffa92aba88f8dd5939df",
+      "paths": [
+        "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.7.pcd",
+        "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.8.pcd"
+      ],
+      "comparison_to_first": [
+        {
+          "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.8.pcd",
+          "byte_identical": true,
+          "decoded_xyz_identical": true,
+          "shape": [
+            143520,
+            3
+          ],
+          "max_abs_xyz_difference": 0.0
+        }
+      ]
+    },
+    {
+      "sha256": "1e07de7bbe3494ba7b237e4136617165f4169eac56c423812ad835639e1eaebd",
+      "paths": [
+        "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.9.pcd",
+        "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.0.pcd"
+      ],
+      "comparison_to_first": [
+        {
+          "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.0.pcd",
+          "byte_identical": true,
+          "decoded_xyz_identical": true,
+          "shape": [
+            143345,
+            3
+          ],
+          "max_abs_xyz_difference": 0.0
+        }
+      ]
+    }
+  ],
+  "repeated_yaml_byte_groups": [],
+  "repeated_yaml_semantic_groups": [],
+  "errors": [],
+  "status": "BLOCKED",
+  "status_reason": "Files and decoded point clouds were audited, but the selected samples have no independently verified physical timestamps or cross-agent pairing; duplicate vehicle payloads also require explanation."
+}

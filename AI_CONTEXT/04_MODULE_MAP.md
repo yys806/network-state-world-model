@@ -1,3 +1,9 @@
+<!-- V2U4REAL R2-03 2026-10-26 -->
+## 2026-10-26 — V2U4Real 只读数据合同审计
+
+新增 `code/scripts/audit_v2u4real_r2_03_v1.py`，复用 `pi_jwm.v2u4real_interface_v1` 的 PCD/YAML 读取器，针对固定 16 键清单生成字段、文件哈希、解码点云哈希与读取状态回执；脚本不做坐标变换。证据与限制见 [R2-03 实施记录](../docs/implementation_records/STEP_R2_03_V2U4REAL_DATA_CONTRACT_AUDIT.md)。
+<!-- END V2U4REAL R2-03 -->
+
 <!-- V2U4REAL R2-02 2026-10-26 -->
 ## 2026-10-26 — V2U4Real 完整真实样本准备（总体 BLOCKED）
 

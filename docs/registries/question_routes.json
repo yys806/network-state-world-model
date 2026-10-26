@@ -2,6 +2,27 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-V2U4REAL-R2-03-DATA-CONTRACT",
+      "keywords": [
+        "R2-03",
+        "V2U4Real 数据合同",
+        "文件键与时间戳",
+        "重复车辆 PCD",
+        "lidar_pose",
+        "R2-04 准入"
+      ],
+      "title": "V2U4Real sample time, pairing, coordinate contract and duplicate PCD evidence",
+      "summary": "16 个候选文件键的车辆/UAV Ouster PCD 与 YAML 读取通过；没有本地物理时钟或逐帧配对证据，两组车辆 PCD 字节及解码 XYZ 重复，坐标/标注合同仍阻塞，R2-04 真实变换不具备准入条件。",
+      "primary_sources": [
+        "docs/implementation_records/STEP_R2_03_V2U4REAL_DATA_CONTRACT_AUDIT.md"
+      ],
+      "verification_sources": [
+        "code/scripts/audit_v2u4real_r2_03_v1.py",
+        "code/artifacts/manifests/v2u4real_r2_03_20261026/real_data_contract_audit.json"
+      ],
+      "claim_boundary": "File/read success only; physical synchronization and coordinate semantics remain blocked; no coordinate transform or simulator integration was run"
+    },
+    {
       "id": "ROUTE-V2U4REAL-R2-02-COMPLETE-SAMPLES",
       "keywords": [
         "R2-02",

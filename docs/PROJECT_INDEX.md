@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-03 2026-10-26 -->
+## 2026-10-26 — V2U4Real 数据合同与证据核验（总体 BLOCKED）
+
+16 个候选文件键的车辆/UAV Ouster PCD 与 YAML 读取检查通过；本地没有物理时间戳，真实跨端同步未核验。两组车辆 PCD 字节与解码点云完全重复；坐标/标注合同仍有关键歧义。R2-04 真实坐标变换准入不满足；没有进行变换、融合、仿真或训练。
+
+详见 [R2-03 实施记录](implementation_records/STEP_R2_03_V2U4REAL_DATA_CONTRACT_AUDIT.md) 与机器回执；本条仅作导航。
+<!-- END V2U4REAL R2-03 -->
+
 <!-- V2U4REAL R2-02 2026-10-26 -->
 ## 2026-10-26 — V2U4Real 完整真实样本准备（总体 BLOCKED）
 

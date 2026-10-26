@@ -1,3 +1,9 @@
+<!-- V2U4REAL R2-03 2026-10-26 -->
+## 2026-10-26 — V2U4Real 时间、坐标与重复观测阻塞
+
+固定 16 键中没有逐帧物理时间，论文的 GPS/PTP/PPS、最近帧和 20 ms 是论文级声明，不是本地配对测量。官方读取器以文件 stem 关联，导出器另有排序后 `zip` 路径。`lidar_pose` 的参考点/单位与轴变换状态、标注角度顺序/`location+center`、跨端配准矩阵方向仍未确定；官方函数的文档和一条矩阵分支实现不一致。两组车辆 PCD 内容完全重复，原因未知。阻塞证据和 R2-04 准入条件见 [R2-03 实施记录](../docs/implementation_records/STEP_R2_03_V2U4REAL_DATA_CONTRACT_AUDIT.md)。
+<!-- END V2U4REAL R2-03 -->
+
 <!-- V2U4REAL R2-02 2026-10-26 -->
 ## 2026-10-26 — V2U4Real 完整真实样本准备（总体 BLOCKED）
 

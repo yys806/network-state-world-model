@@ -1,3 +1,9 @@
+<!-- V2U4REAL R2-03 2026-10-26 -->
+## 2026-10-26 — V2U4Real 数据合同核验（总体 BLOCKED）
+
+R2-03 实际检查固定 train 场景的 16 个共同 Ouster 文件键、32 个 PCD/YAML、官方 v1 论文原文（Zotero 附件）和固定版本源码。文件读取 16/16 PASS；文件键连续不等于真实时间连续，YAML/PCD 无物理时钟字段，严格物理配对仍 0。两组车辆 PCD 字节及解码 XYZ 完全重复；坐标/标注合同仍有冲突。R2-04 真实坐标变换准入不满足。详见 [R2-03 实施记录](../docs/implementation_records/STEP_R2_03_V2U4REAL_DATA_CONTRACT_AUDIT.md) 与机器回执；GPU/locked_test 未使用。
+<!-- END V2U4REAL R2-03 -->
+
 <!-- V2U4REAL R2-02 2026-10-26 -->
 ## 2026-10-26 — V2U4Real 完整真实样本准备（总体 BLOCKED）
 
