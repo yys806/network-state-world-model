@@ -1,0 +1,36 @@
+{
+  "schema": "PIJWM-V2U4Real-real-sample-preparation-v1",
+  "source_scope": "complete members from two bounded prefixes only",
+  "records": [
+    {
+      "dataset_version": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+      "split": "train",
+      "scene_id": "2025-07-18-12-53_2",
+      "frame_id": "1752814590.2",
+      "timestamp_raw": null,
+      "timestamp_unit": null,
+      "vehicle_lidar_path": "code/artifacts/data/v2u4real_r2_01/partial_real/train/2025-07-18-12-53_2/1/m1/1752814590.2.pcd",
+      "vehicle_metadata_path": null,
+      "uav_lidar_path": "code/artifacts/data/v2u4real_r2_01/partial_real/train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+      "uav_metadata_path": null,
+      "vehicle_sensor": "m1",
+      "uav_sensor": "ouster",
+      "pairing_evidence": "Same filename key in official train archives; mixed sensors; not a verified synchronized pair",
+      "calibration_reference": "Paper v1 sections 3.1/3.2 and owner issue #1; numerical sample calibration not obtained",
+      "sample_status": "BLOCKED",
+      "qualified_complete_pair": false,
+      "missing": [
+        "vehicle ouster PCD",
+        "vehicle YAML",
+        "UAV YAML",
+        "verified physical clock and calibration contract"
+      ]
+    }
+  ],
+  "requested_common_lidar": "ouster",
+  "minimum_complete_pairs": 3,
+  "preferred_complete_pairs": 16,
+  "qualified_complete_pairs": 0,
+  "whole_archive_sha256_verification": "NOT_RUN",
+  "raw_samples_committed": false
+}

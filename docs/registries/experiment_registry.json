@@ -3,6 +3,42 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "V2U4REAL-R2-01-DATA-PREPARATION-20261026",
+      "name": "V2U4Real real train data and official evidence preparation",
+      "date": "2026-10-26",
+      "research_question": "Are official real train samples and physical time/calibration contracts ready for later parsing?",
+      "method": "Pinned official-source audit and 1-MiB train-archive prefixes; R1 strict PCD/data readers reused without transforms",
+      "code": "code/scripts/prepare_v2u4real_r2_01_v1.py",
+      "code_version": {
+        "identity_type": "executed_source_SHA256",
+        "git_commit": null,
+        "manifest": "code/artifacts/manifests/v2u4real_r2_01_20261026/source_identity.json",
+        "note": "Baseline 9bffecfa75e57a12bba2632d77af3e58d85490c0; final bounded task commit in Git history"
+      },
+      "configuration": "code/scripts/configs/v2u4real_r2_01.json",
+      "parameters": {"device": "cpu", "prefix_bytes_per_archive": 1048576, "archives": 2, "minimum_complete_pairs": 3, "preferred_complete_pairs": 16},
+      "protocol": "docs/implementation_records/STEP_R2_01_V2U4REAL_DATA_PREPARATION.md",
+      "data": "code/artifacts/manifests/v2u4real_r2_01_20261026/sample_manifest.json",
+      "split": ["train_partial_archive_probe_only"],
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/manifests/v2u4real_r2_01_20261026/acceptance.json",
+      "metrics": null,
+      "audit": "code/artifacts/manifests/v2u4real_r2_01_20261026/acceptance.json",
+      "status": "BLOCKED_MINIMUM_PAIRED_SAMPLES_AND_NUMERICAL_CALIBRATION",
+      "conclusion": "官方训练包和原则资料可访问；两个完整真实 PCD 中 UAV 可读、车辆 M1 含非有限值被拒绝；无 YAML，合格连续配对为 0。",
+      "summary_zh": "R2-01 准备范围完成，总状态 BLOCKED；没有变换、回放、无线、服务或训练结论。",
+      "claim_boundary": "One filename key, mixed sensors, two complete members from bounded prefixes only; full archive SHA unverified; no synchronized-pair or numerical-transform acceptance",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "seed": "No randomized experiment, scheduling or training; source selection is deterministic by published compressed size.",
+        "checkpoint": "No model used, modified or trained.",
+        "metrics": "No scientific performance metrics; file-level preparation observations only.",
+        "data": "Manifest records incomplete train preparation, not an accepted dataset. Raw PCD/prefix/PDF assets are not committed.",
+        "code_version.git_commit": "Final task commit resolved from Git history; exact executed source hashes recorded."
+      }
+    },
+    {
       "id": "V2U4REAL-AIRFOGSIM-R1-20261025",
       "name": "V2U4Real and AirFogSim first CPU interface audit",
       "date": "2026-10-25",

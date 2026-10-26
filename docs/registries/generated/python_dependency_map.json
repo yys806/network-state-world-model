@@ -3796,16 +3796,19 @@
       "category": "framework_source",
       "evidence_role": "implementation",
       "imported_by": [
+        "scripts.prepare_v2u4real_r2_01_v1",
         "scripts.probe_v2u4real_official_transform_v1",
         "scripts.run_v2u4real_airfogsim_interface_v1",
-        "tests.test_v2u4real_interface_v1"
+        "tests.test_v2u4real_interface_v1",
+        "tests.test_v2u4real_preparation_v1"
       ],
       "imports": [],
       "lifecycle_status": "support",
       "module": "pi_jwm.v2u4real_interface_v1",
       "path": "code/src/pi_jwm/v2u4real_interface_v1.py",
       "test_files": [
-        "code/tests/test_v2u4real_interface_v1.py"
+        "code/tests/test_v2u4real_interface_v1.py",
+        "code/tests/test_v2u4real_preparation_v1.py"
       ]
     },
     {
@@ -7098,6 +7101,22 @@
       "module": "scripts.prepare_step6_4j_pilot_v1",
       "path": "code/scripts/prepare_step6_4j_pilot_v1.py",
       "test_files": []
+    },
+    {
+      "category": "runnable_script",
+      "evidence_role": "execution_entry",
+      "imported_by": [
+        "tests.test_v2u4real_preparation_v1"
+      ],
+      "imports": [
+        "pi_jwm.v2u4real_interface_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "scripts.prepare_v2u4real_r2_01_v1",
+      "path": "code/scripts/prepare_v2u4real_r2_01_v1.py",
+      "test_files": [
+        "code/tests/test_v2u4real_preparation_v1.py"
+      ]
     },
     {
       "category": "runnable_script",
@@ -14806,6 +14825,19 @@
       "lifecycle_status": "support",
       "module": "tests.test_v2u4real_interface_v1",
       "path": "code/tests/test_v2u4real_interface_v1.py",
+      "test_files": []
+    },
+    {
+      "category": "test",
+      "evidence_role": "test_evidence",
+      "imported_by": [],
+      "imports": [
+        "pi_jwm.v2u4real_interface_v1",
+        "scripts.prepare_v2u4real_r2_01_v1"
+      ],
+      "lifecycle_status": "support",
+      "module": "tests.test_v2u4real_preparation_v1",
+      "path": "code/tests/test_v2u4real_preparation_v1.py",
       "test_files": []
     },
     {

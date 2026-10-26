@@ -1,0 +1,171 @@
+{
+  "access_date": "2026-10-26",
+  "sources": [
+    {
+      "id": "CODE",
+      "kind": "official_repository_snapshot",
+      "url": "https://github.com/VjiaLi/V2U4Real/tree/e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+      "revision": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+      "local_manifests": [
+        "code/reference/V2U4Real.SOURCE.json",
+        "code/reference/V2U4Real.R2_SOURCES.json"
+      ],
+      "status": "PASS",
+      "supports": [
+        "official data link and directory convention",
+        "reader dependencies and call-site contracts"
+      ],
+      "does_not_establish": [
+        "actual YAML fields or physical clock mapping",
+        "full dataset acceptance"
+      ]
+    },
+    {
+      "id": "HF",
+      "kind": "official_dataset_release",
+      "url": "https://huggingface.co/datasets/VJiaLi/V2U4Real/tree/36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a/train",
+      "revision": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+      "last_modified": "2026-07-21T07:49:12.000Z",
+      "status": "PASS",
+      "license": "cc-by-nc-4.0",
+      "public": true,
+      "gated": false,
+      "train_archives": 50,
+      "train_scene_pairs": 25,
+      "smallest_pair_archive_bytes": 1242993095,
+      "supports": [
+        "public archive access",
+        "separate agent-1 and agent-2 train archives",
+        "published archive sizes and LFS hashes"
+      ],
+      "does_not_establish": [
+        "member-level checksums or timestamp semantics",
+        "small calibrated sample bundle"
+      ]
+    },
+    {
+      "id": "LEGACY_INDEX",
+      "kind": "official_historical_archive_manifest",
+      "url": "https://huggingface.co/datasets/VJiaLi/V2U4Real/tree/8908a33d43ca05ddc82d89c1014d8b0906b67bc8",
+      "revision": "8908a33d43ca05ddc82d89c1014d8b0906b67bc8",
+      "status": "PASS",
+      "supports": [
+        "FILES.tsv archive byte sizes",
+        "SHA256SUMS archive checksums match current LFS identities for selected pair"
+      ],
+      "does_not_establish": [
+        "tar member offsets or per-frame metadata",
+        "full archive checksum verification of the acquired prefixes"
+      ]
+    },
+    {
+      "id": "PAPER_V1",
+      "kind": "author_preprint_with_appendices",
+      "url": "https://arxiv.org/html/2603.25275v1",
+      "revision": "arXiv:2603.25275v1",
+      "date": "2026-03-26",
+      "zotero_item": "4SKU5M6X",
+      "zotero_collection": "SXVPC5G4",
+      "zotero_attachment": "JHB4X5KT",
+      "pdf_sha256": "f3257de22a9e438c3e755237bef901dd0b889b0d58b4a76a1040e3faa8a6350c",
+      "status": "PASS",
+      "sections": {
+        "3.1/3.2": {
+          "pdf_page": 4,
+          "supports": [
+            "nominal 10-Hz collection with unified temporal reference",
+            "LiDAR axes forward/left/up; world NED",
+            "registration process and local annotation definition"
+          ]
+        },
+        "C.3": {
+          "pdf_page": 11,
+          "supports": [
+            "GPS reference, PTP/PPS hardware synchronization",
+            "closest-time pairing and reported inter-agent discrepancy within 20 ms"
+          ]
+        },
+        "D.2": {
+          "supports": [
+            "benchmark asynchronous delay is simulated, distinct from acquisition synchronization"
+          ]
+        }
+      },
+      "does_not_establish": [
+        "each downloaded frame has exactly 100-ms spacing",
+        "raw filename epoch/unit",
+        "numerical extrinsics for selected scene"
+      ]
+    },
+    {
+      "id": "OWNER_1",
+      "kind": "repository_owner_clarification",
+      "url": "https://github.com/VjiaLi/V2U4Real/issues/1#issuecomment-4294187896",
+      "author": "VjiaLi",
+      "status": "PASS",
+      "supports": [
+        "per-timestamp GPS localization and pose field order x,y,z,roll,yaw,pitch",
+        "velocity, camera intrinsics/extrinsics and annotations described"
+      ],
+      "does_not_establish": [
+        "physical time field name/unit or exact matrix direction for current archives"
+      ]
+    },
+    {
+      "id": "OWNER_7",
+      "kind": "repository_owner_release_clarification",
+      "url": "https://github.com/VjiaLi/V2U4Real/issues/7#issuecomment-5031674615",
+      "author": "VjiaLi",
+      "status": "PASS",
+      "supports": [
+        "current release is partial; RGB images unavailable at this stage",
+        "training metadata/calibration/annotations are described as available",
+        "test metadata/annotations withheld"
+      ],
+      "does_not_establish": [
+        "YAML bytes actually obtained in this task"
+      ]
+    },
+    {
+      "id": "CVF",
+      "kind": "formal_publication_main_and_supplement",
+      "urls": [
+        "https://openaccess.thecvf.com/content/CVPR2026/papers/Li_V2U4Real_A_Real-world_Large-scale_Dataset_for_Vehicle-to-UAV_Cooperative_Perception_CVPR_2026_paper.pdf",
+        "https://openaccess.thecvf.com/content/CVPR2026/supplemental/Li_V2U4Real_A_Real-world_CVPR_2026_supplemental.pdf"
+      ],
+      "status": "BLOCKED",
+      "reason": "direct web access returned HTTP 403; do not claim final-publication PDF matches the inspected preprint"
+    },
+    {
+      "id": "CALL_SITES",
+      "kind": "pinned_official_source_call_chain",
+      "status": "PASS",
+      "revision": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+      "local_manifest": "code/reference/V2U4Real.R2_SOURCES.json",
+      "supports": [
+        "real isSim=False fusion callers pass a source-LiDAR-to-ego matrix to generate_object_center",
+        "simulation callers pass ego pose lists",
+        "mixed list+matrix direct composition has a distinct call-site contract from the generic world-pose docstring"
+      ],
+      "does_not_establish": [
+        "numeric raw calibration matrix validity",
+        "real pointcloud/annotation alignment"
+      ]
+    }
+  ],
+  "pdf_visual_review": {
+    "pages": [
+      4,
+      11
+    ],
+    "tool": "pdftoppm and local image inspection",
+    "new_pdf_copy_created": false
+  },
+  "environment": {
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+    "numpy": "2.3.2",
+    "PyYAML": "6.0.2",
+    "zstandard": "0.23.0",
+    "pypdf": "6.0.0"
+  }
+}

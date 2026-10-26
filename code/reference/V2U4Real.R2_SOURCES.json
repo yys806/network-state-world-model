@@ -1,0 +1,24 @@
+{
+  "repository": "https://github.com/VjiaLi/V2U4Real",
+  "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "purpose": "R2-01 additional read-only official-call-site and dependency audit",
+  "base_manifest": "code/reference/V2U4Real.SOURCE.json",
+  "files": {
+    "opencood/data_utils/post_processor/base_postprocessor.py": {
+      "sha256": "f54bbc672477c1570b0cdfb64c39994ada4e1f97aba56a4f00bae731f5926ee7",
+      "git_blob": "73202b9824c38426ad0b4b3b21b5d34afb2a76e7"
+    },
+    "requirements.txt": {
+      "sha256": "7bc8867adf684b3086035abbe839077a4c54188bbf73120cd4cbeaf2f6016de7",
+      "git_blob": "7cbc0ce8a91d9a2ab3c2e0ee6b9586a038ccdeb6"
+    },
+    "opencood/data_utils/datasets/intermediate_fusion_dataset.py": {
+      "sha256": "1d55dd31451f214d3aa7c740d05cf7d0c0acb80ec85f0fc30584f471a30592a8",
+      "git_blob": "6e9b6260dfc5e8d1078d045ccf8d4a30bb1e7a06"
+    },
+    "opencood/data_utils/datasets/early_fusion_dataset.py": {
+      "sha256": "6c7ea882a93f4b3c08d52cbd1008a73a98cbe5dea229f573f849d8e0969fbcb7",
+      "git_blob": "15e2a47cddbd9a12854b0f7102ba0a7a1e8c41a8"
+    }
+  }
+}

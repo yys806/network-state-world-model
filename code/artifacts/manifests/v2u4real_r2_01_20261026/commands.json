@@ -1,0 +1,52 @@
+[
+  {
+    "argv": [
+      "D:\\miniconda\\python.exe",
+      "code/scripts/prepare_v2u4real_r2_01_v1.py"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "output": "run.txt"
+  },
+  {
+    "argv": [
+      "D:\\miniconda\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "code/tests",
+      "-p",
+      "test_v2u4real_preparation_v1.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "tests_preparation.txt"
+  },
+  {
+    "argv": [
+      "D:\\miniconda\\python.exe",
+      "-m",
+      "unittest",
+      "test_v2u4real_interface_v1.DatasetAuditTests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "tests_r1_readers.txt"
+  },
+  {
+    "argv": [
+      "D:\\miniconda\\python.exe",
+      "-m",
+      "compileall",
+      "-q",
+      "code/scripts/prepare_v2u4real_r2_01_v1.py",
+      "code/tests/test_v2u4real_preparation_v1.py"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "output": "compileall.txt"
+  }
+]

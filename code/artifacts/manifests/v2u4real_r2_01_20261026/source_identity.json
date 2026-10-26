@@ -1,0 +1,13 @@
+{
+  "baseline_commit": "9bffecfa75e57a12bba2632d77af3e58d85490c0",
+  "files": {
+    "code/scripts/prepare_v2u4real_r2_01_v1.py": "cc060951effb4ae647957d89d471f30e7795acf0cd8dfe38313c373913b089e4",
+    "code/scripts/configs/v2u4real_r2_01.json": "5fa7b589cbfa0d579d0848951efd4fee22d79885abfd71c48e9994f50581013f",
+    "code/tests/test_v2u4real_preparation_v1.py": "defdfe711da920031326b063e9442fcde85050bd7748f124ee8b445a0a853d35",
+    "code/src/pi_jwm/v2u4real_interface_v1.py": "17a97a3a96cff587fbc0e63f7bede85db817a214b1765958850c3af3de983c38",
+    "code/reference/V2U4Real.SOURCE.json": "325971861da520c6efdf3f5d08a07bf1d6b7099ab9afa065b030a945d28d4541",
+    "code/reference/V2U4Real.R2_SOURCES.json": "135cbf9ad39f6c2838b572858cac142953a6527b0e0227c1d599cd4004324123"
+  },
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+  "executable": "D:\\miniconda\\python.exe"
+}

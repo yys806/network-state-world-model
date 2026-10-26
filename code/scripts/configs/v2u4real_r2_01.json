@@ -1,0 +1,26 @@
+{
+  "dataset": "VJiaLi/V2U4Real",
+  "dataset_revision": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+  "official_code_revision": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "scene_id": "2025-07-18-12-53_2",
+  "split": "train",
+  "requested_common_lidar": "ouster",
+  "minimum_complete_pairs": 3,
+  "preferred_complete_pairs": 16,
+  "prefix_bytes_per_archive": 1048576,
+  "maximum_extracted_member_bytes": 8388608,
+  "data_root": "code/artifacts/data/v2u4real_r2_01",
+  "audit_root": "code/artifacts/audit/v2u4real_r2_01_20261026",
+  "archives": {
+    "1": {
+      "path": "train/2025-07-18-12-53_2__agent-1.tar.zst",
+      "bytes": 1070684502,
+      "sha256_expected": "34e03eb7a34c896aab55b44f32797a1e66a62386a5a7c4e58074abfb6741fa75"
+    },
+    "2": {
+      "path": "train/2025-07-18-12-53_2__agent-2.tar.zst",
+      "bytes": 172308593,
+      "sha256_expected": "64ae659bca67144c8713d5a689ce310474328a3c4ffd7a6f35948358b72b61f3"
+    }
+  }
+}

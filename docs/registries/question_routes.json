@@ -2,6 +2,15 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-V2U4REAL-R2-01-PREPARATION",
+      "keywords": ["R2-01", "V2U4Real真实数据", "时间戳", "标定", "GPS PTP PPS", "1.16 GiB"],
+      "title": "V2U4Real official time/calibration evidence and minimum train-sample blocker",
+      "summary": "官方训练包公开；两份真实 PCD 一通过一非有限；无 YAML、合格配对 0。来源原则已核查，原始时间/数值标定仍缺。",
+      "primary_sources": ["docs/implementation_records/STEP_R2_01_V2U4REAL_DATA_PREPARATION.md", "docs/project-notes/V2U4REAL_TIME_COORDINATES_R2_01.md"],
+      "verification_sources": ["code/artifacts/manifests/v2u4real_r2_01_20261026/acceptance.json", "code/artifacts/manifests/v2u4real_r2_01_20261026/sample_manifest.json", "code/artifacts/manifests/v2u4real_r2_01_20261026/official_sources_index.json"],
+      "claim_boundary": "Real archive/member preparation only; no physical-time mapping, numerical transform or simulator integration accepted"
+    },
+    {
       "id": "ROUTE-V2U4REAL-AIRFOGSIM-R1",
       "keywords": ["V2U4Real", "V2I", "U2I", "绝对轨迹", "特征包接口"],
       "title": "V2U4Real first interface audit and stop gates",

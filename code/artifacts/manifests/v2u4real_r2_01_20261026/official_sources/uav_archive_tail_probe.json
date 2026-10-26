@@ -1,0 +1,7 @@
+{
+  "url": "https://huggingface.co/datasets/VJiaLi/V2U4Real/resolve/36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a/train/2025-07-18-12-53_2__agent-2.tar.zst",
+  "http_status": 206,
+  "content_range": "bytes 172308561-172308592/172308593",
+  "body_hex": "300cc03f76f826ec72b8cf487b3665c603509814292bc0ff5a772101c7a4898d",
+  "has_standard_seekable_footer": false
+}

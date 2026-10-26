@@ -1,0 +1,26 @@
+{
+  "official_url": "https://huggingface.co/datasets/VJiaLi/V2U4Real/resolve/36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a/train/2025-07-18-12-53_2__agent-2.tar.zst",
+  "archive_bytes": 172308593,
+  "archive_sha256_expected": "64ae659bca67144c8713d5a689ce310474328a3c4ffd7a6f35948358b72b61f3",
+  "range_requested": "bytes=0-1048575",
+  "whole_archive_downloaded": false,
+  "whole_archive_sha256_verified": false,
+  "http_status": 206,
+  "content_range": "bytes 0-1048575/172308593",
+  "bytes_read": 1048576,
+  "sha256": "229932ff735cd7e36a352d3982874e3acfb8b77daee4698baa5977db72c9998c",
+  "final_host": "us.aws.cdn.hf.co",
+  "prefix_parse_stop": "ReadError('unexpected end of data')",
+  "first_entries": [
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+      "size": 1128694,
+      "type": "0"
+    },
+    {
+      "name": "train/2025-07-18-12-53_2/2/ouster/1752814590.3.pcd",
+      "size": 1126006,
+      "type": "0"
+    }
+  ]
+}

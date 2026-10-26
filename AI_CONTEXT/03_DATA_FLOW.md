@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-01 2026-10-26 -->
+## 2026-10-26 — 真实训练数据与官方资料准备
+
+R2-01 实际数据流：固定官方 HF 训练包各 1 MiB 前缀 → 两个完整首成员 → 复用 R1 严格 XYZ/目录审计。一个 frame key、车辆 M1 与 UAV Ouster；不是已核验共同 Ouster/YAML 配对。物理时间单位/原点及数值标定仍缺失，未执行时间映射或真实坐标变换。
+
+详见 [R2-01 实施记录](../docs/implementation_records/STEP_R2_01_V2U4REAL_DATA_PREPARATION.md)；本条仅作导航，以原始文件、来源和审计为准。
+<!-- END V2U4REAL R2-01 -->
+
 <!-- V2U4REAL R1 2026-10-25 -->
 ## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
 

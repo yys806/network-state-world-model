@@ -1,0 +1,14 @@
+test_complete_member_is_idempotent_and_not_overwritten (test_v2u4real_preparation_v1.PreparationTests.test_complete_member_is_idempotent_and_not_overwritten) ... ok
+test_hard_download_and_output_boundaries (test_v2u4real_preparation_v1.PreparationTests.test_hard_download_and_output_boundaries) ... ok
+test_ignored_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_ignored_range_does_not_read_response_body) ... ok
+test_missing_raw_assets_stay_blocked_without_fake_pass (test_v2u4real_preparation_v1.PreparationTests.test_missing_raw_assets_stay_blocked_without_fake_pass) ... ok
+test_only_train_and_immutable_revision (test_v2u4real_preparation_v1.PreparationTests.test_only_train_and_immutable_revision) ... ok
+test_partial_compressed_member_is_not_a_successful_sample (test_v2u4real_preparation_v1.PreparationTests.test_partial_compressed_member_is_not_a_successful_sample) ... ok
+test_path_traversal_links_and_oversize_are_blocked (test_v2u4real_preparation_v1.PreparationTests.test_path_traversal_links_and_oversize_are_blocked) ... ok
+test_wrong_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_wrong_range_does_not_read_response_body) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.077s
+
+OK
+{"step": "R2-01", "overall_status": "BLOCKED", "official_train_archive_access": "BLOCKED", "complete_raw_pcd_members_obtained": 0, "pcd_reads": {}, "minimum_complete_training_subset": "BLOCKED", "yaml_availability": "BLOCKED", "yaml_parse_execution": "NOT_RUN", "physical_timestamp_and_calibration_contract": "BLOCKED", "r1_reader_reused": true, "coordinate_transform_acceptance": "NOT_RUN", "AirFogSim_replay": "NOT_RUN", "wireless_changes": "NOT_RUN", "feature_or_compute_service": "NOT_RUN", "training": "NOT_RUN", "gpu_used": false, "locked_test_accessed": false, "downloaded_prefix_bytes": 0, "missing_inputs": ["agent 1: bounded official prefix/retrieval receipt missing; use --fetch", "agent 2: bounded official prefix/retrieval receipt missing; use --fetch"], "whole_archive_downloaded": false, "reason": "No local official prefixes/receipts; use the bounded --fetch option"}

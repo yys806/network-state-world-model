@@ -1,0 +1,139 @@
+[
+  {
+    "agent": "1",
+    "archive_member": "train/2025-07-18-12-53_2/1/m1/1752814590.2.pcd",
+    "local_path": "code/artifacts/data/v2u4real_r2_01/partial_real/train/2025-07-18-12-53_2/1/m1/1752814590.2.pcd",
+    "bytes": 2026711,
+    "sha256": "4699569f1dfa02d76723dc9a19826abb104a93a1bc32bb43675f55fa45bf7d56",
+    "pcd_header": {
+      "VERSION": [
+        "0.7"
+      ],
+      "FIELDS": [
+        "x",
+        "y",
+        "z",
+        "intensity"
+      ],
+      "SIZE": [
+        "4",
+        "4",
+        "4",
+        "4"
+      ],
+      "TYPE": [
+        "F",
+        "F",
+        "F",
+        "F"
+      ],
+      "COUNT": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "WIDTH": [
+        "5"
+      ],
+      "HEIGHT": [
+        "15750"
+      ],
+      "VIEWPOINT": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "POINTS": [
+        "78750"
+      ],
+      "DATA": [
+        "ascii"
+      ]
+    },
+    "metadata_available": false,
+    "sensor": "m1",
+    "frame_id": "1752814590.2",
+    "whole_archive_sha256_verified": false,
+    "status": "BLOCKED",
+    "error": "nonfinite PCD xyz",
+    "nonfinite_ascii_token_count": 98058
+  },
+  {
+    "agent": "2",
+    "archive_member": "train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+    "local_path": "code/artifacts/data/v2u4real_r2_01/partial_real/train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+    "bytes": 1128694,
+    "sha256": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+    "pcd_header": {
+      "VERSION": [
+        "0.7"
+      ],
+      "FIELDS": [
+        "x",
+        "y",
+        "z",
+        "rgb"
+      ],
+      "SIZE": [
+        "4",
+        "4",
+        "4",
+        "4"
+      ],
+      "TYPE": [
+        "F",
+        "F",
+        "F",
+        "F"
+      ],
+      "COUNT": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "WIDTH": [
+        "70532"
+      ],
+      "HEIGHT": [
+        "1"
+      ],
+      "VIEWPOINT": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "POINTS": [
+        "70532"
+      ],
+      "DATA": [
+        "binary"
+      ]
+    },
+    "metadata_available": false,
+    "sensor": "ouster",
+    "frame_id": "1752814590.2",
+    "whole_archive_sha256_verified": false,
+    "status": "PASS",
+    "point_count": 70532,
+    "xyz_min": [
+      -41.50202941894531,
+      -107.33362579345703,
+      -54.261993408203125
+    ],
+    "xyz_max": [
+      24.031099319458008,
+      98.0708999633789,
+      -40.970787048339844
+    ]
+  }
+]

@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-01 2026-10-26 -->
+## 2026-10-26 — 真实训练数据与官方资料准备
+
+R2-01 入口 code/scripts/prepare_v2u4real_r2_01_v1.py，配置 code/scripts/configs/v2u4real_r2_01.json；只复用 v2u4real_interface_v1.read_pcd_xyz/audit_dataset，未改 R1 模块。真实原始文件在被忽略的 code/artifacts/data/v2u4real_r2_01/；资料与交付清单在 code/artifacts/manifests/v2u4real_r2_01_20261026/。
+
+详见 [R2-01 实施记录](../docs/implementation_records/STEP_R2_01_V2U4REAL_DATA_PREPARATION.md)；本条仅作导航，以原始文件、来源和审计为准。
+<!-- END V2U4REAL R2-01 -->
+
 <!-- V2U4REAL R1 2026-10-25 -->
 ## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
 
