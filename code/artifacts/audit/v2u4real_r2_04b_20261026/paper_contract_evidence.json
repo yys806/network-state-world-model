@@ -1,0 +1,67 @@
+{
+  "zotero_collection": "SXVPC5G4",
+  "zotero_item": "4SKU5M6X",
+  "zotero_attachment": "JHB4X5KT",
+  "paper_version": "arXiv:2603.25275v1",
+  "pdf_sha256": "f3257de22a9e438c3e755237bef901dd0b889b0d58b4a76a1040e3faa8a6350c",
+  "pdf_bytes": 26393888,
+  "pdf_path": "C:/Users/Lenovo/Zotero/storage/JHB4X5KT/Li 等 - 2026 - V2U4Real A real-world large-scale dataset for vehicle-to-UAV cooperative perception.pdf",
+  "reviewed_pages": [
+    4,
+    5,
+    6
+  ],
+  "claims": [
+    {
+      "layer": "A_paper_contract",
+      "section": "3.1",
+      "pages": [
+        4
+      ],
+      "statement_zh": "论文描述以GPS/IMU初始化相对位姿，车与UAV注册经RTK初始化、GICP和人工调整；没有在这些页面给出当前场景的修正矩阵。"
+    },
+    {
+      "layer": "A_paper_contract",
+      "section": "3.2",
+      "pages": [
+        4
+      ],
+      "statement_zh": "论文声明各LiDAR的局部坐标经预定义变换统一为前、左、上，世界系遵循NED；未给出预定义轴变换的数值或确切导出阶段。"
+    },
+    {
+      "layer": "A_paper_contract",
+      "section": "3.2",
+      "pages": [
+        4,
+        5
+      ],
+      "statement_zh": "3D框在各LiDAR局部系分别标注，再转到ego系并按类别相关IoU门限统一ID，补标点数大于5的遗漏对象；因此同ID几何比较与标注流程可能相关，不是独立真值。"
+    },
+    {
+      "layer": "A_paper_contract",
+      "section": "3.2",
+      "pages": [
+        4
+      ],
+      "statement_zh": "论文按中心、l/w/h尺寸和roll/pitch/yaw欧拉角描述框；官方pose消费顺序为roll/yaw/pitch，差异保留。"
+    },
+    {
+      "layer": "A_paper_contract",
+      "section": "4.1",
+      "pages": [
+        6
+      ],
+      "statement_zh": "单端检测使用各自数据，但将UAV点云和框转换到ego局部系后训练与评估；这不提供本场景轴向统一的系数或应用回执。"
+    },
+    {
+      "layer": "additional_observation_not_executed",
+      "section": "4.2",
+      "pages": [
+        6
+      ],
+      "statement_zh": "论文协同真值合并在同对象有偏移时保留ego框；uav_to_single.main则UAV同ID优先。这一差异影响后续合并标签基线，本轮不执行合并，需研究者决定。"
+    }
+  ],
+  "stage_ambiguity": "3.2 sensor-local axis standardization and 4.1 UAV-to-ego task-frame conversion are distinct descriptions; do not equate them or infer missing matrix coefficients.",
+  "independent_physical_calibration": "NOT_ESTABLISHED"
+}

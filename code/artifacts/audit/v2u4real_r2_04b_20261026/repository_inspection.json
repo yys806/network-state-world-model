@@ -1,0 +1,269 @@
+{
+  "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "tree_entries": 227,
+  "tree_truncated": false,
+  "source_tree_path": "official_repository_tree.json",
+  "name_search_regex": "calib|registr|axis|preprocess|align|pose|kitti",
+  "path_name_hits": [
+    "opencood/data_utils/pre_processor/base_preprocessor.py",
+    "opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "opencood/hypes_yaml/point_pillar_coalign.yaml",
+    "opencood/models/fuse_modules/coalign_fuse.py",
+    "opencood/models/point_pillar_coalign.py",
+    "opencood/utils/pose_utils.py",
+    "opencood/utils/uav_to_kitti.py",
+    "opencood/utils/vehicle_to_kitti.py"
+  ],
+  "additional_inspected_sources": [
+    {
+      "url": "https://github.com/VjiaLi/V2U4Real/blob/e099a3a746c6092a614e18b74d1f5b2f3c8351e8/opencood/utils/pose_utils.py",
+      "git_blob": "54c7c6f3f91921d09d121c368c563d15b6452fa2",
+      "selected_lines": [
+        {
+          "line": 10,
+          "text": "def add_noise_data_dict(data_dict, noise_setting):"
+        },
+        {
+          "line": 12,
+          "text": "        We retrieve lidar_pose and add_noise to it."
+        },
+        {
+          "line": 17,
+          "text": "            cav_content['params']['lidar_pose_clean'] = cav_content['params']['lidar_pose'] # 6 dof pose"
+        },
+        {
+          "line": 20,
+          "text": "                cav_content['params']['lidar_pose'] = cav_content['params']['lidar_pose'] + \\"
+        },
+        {
+          "line": 28,
+          "text": "                cav_content['params']['lidar_pose'] = cav_content['params']['lidar_pose'] + \\"
+        },
+        {
+          "line": 38,
+          "text": "            cav_content['params']['lidar_pose_clean'] = cav_content['params']['lidar_pose'] # 6 dof pose"
+        },
+        {
+          "line": 43,
+          "text": "def generate_noise(pos_std, rot_std, pos_mean=0, rot_mean=0):"
+        },
+        {
+          "line": 77,
+          "text": "def generate_noise_laplace(pos_b, rot_b, pos_mu=0, rot_mu=0):"
+        },
+        {
+          "line": 108,
+          "text": "def generate_noise_torch(pose, pos_std, rot_std, pos_mean=0, rot_mean=0):"
+        },
+        {
+          "line": 144,
+          "text": "def remove_z_axis(T):"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/VjiaLi/V2U4Real/blob/e099a3a746c6092a614e18b74d1f5b2f3c8351e8/opencood/utils/uav_to_kitti.py",
+      "git_blob": "278bd8ad2a9d550a86c5453b8d8847ea71d63547",
+      "selected_lines": [
+        {
+          "line": 30,
+          "text": "from opencood.utils.transformation_utils import x1_to_x2"
+        },
+        {
+          "line": 44,
+          "text": "def parse_args():"
+        },
+        {
+          "line": 56,
+          "text": "def ensure_dir(path):"
+        },
+        {
+          "line": 60,
+          "text": "def parse_annotation(uav_yaml_file, out_txt, transformation_matrix):"
+        },
+        {
+          "line": 78,
+          "text": "        object2lidar = x1_to_x2(object_pose, transformation_matrix)"
+        },
+        {
+          "line": 95,
+          "text": "def main():"
+        },
+        {
+          "line": 133,
+          "text": "            # 读取 ego 和 UAV 的 lidar_pose"
+        },
+        {
+          "line": 136,
+          "text": "            ego_pose = ego_ann['lidar_pose']"
+        },
+        {
+          "line": 140,
+          "text": "            uav_pose = uav_ann['lidar_pose']"
+        },
+        {
+          "line": 143,
+          "text": "            transformation_matrix = x1_to_x2(uav_pose, ego_pose)"
+        },
+        {
+          "line": 151,
+          "text": "                    uav_points[:, :3] = box_utils.project_points_by_matrix_torch(uav_points[:, :3], transformation_matrix)"
+        },
+        {
+          "line": 159,
+          "text": "                    parse_annotation(uav_y, out_txt, transformation_matrix)"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/VjiaLi/V2U4Real/blob/e099a3a746c6092a614e18b74d1f5b2f3c8351e8/opencood/utils/vehicle_to_kitti.py",
+      "git_blob": "8ea4c1b0c19cca905a05889321138df4149926c2",
+      "selected_lines": [
+        {
+          "line": 44,
+          "text": "def parse_args():"
+        },
+        {
+          "line": 57,
+          "text": "def ensure_dir(path):"
+        },
+        {
+          "line": 61,
+          "text": "def parse_annotation(yaml_file, out_file):"
+        },
+        {
+          "line": 88,
+          "text": "def main():"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/VjiaLi/V2U4Real/blob/e099a3a746c6092a614e18b74d1f5b2f3c8351e8/opencood/models/fuse_modules/coalign_fuse.py",
+      "git_blob": "e028cee016e263f47626ba922f5d0e17be56af9d",
+      "selected_lines": [
+        {
+          "line": 6,
+          "text": "def regroup(x, record_len):"
+        },
+        {
+          "line": 11,
+          "text": "def normalize_pairwise_tfm(pairwise_t_matrix, H, W, discrete_ratio, downsample_rate=1):"
+        },
+        {
+          "line": 13,
+          "text": "    normalize the pairwise transformation matrix to affine matrix need by torch.nn.functional.affine_grid()"
+        },
+        {
+          "line": 17,
+          "text": "        pairwise_t_matrix: torch.tensor"
+        },
+        {
+          "line": 28,
+          "text": "        normalized_affine_matrix: torch.tensor"
+        },
+        {
+          "line": 31,
+          "text": "    pairwise_t_matrix = pairwise_t_matrix[:,:,:,[0, 1],:][:,:,:,:,[0, 1, 3]] # [B, L, L, 2, 3]"
+        },
+        {
+          "line": 32,
+          "text": "    pairwise_t_matrix[...,0,1] = pairwise_t_matrix[...,0,1] * H / W"
+        },
+        {
+          "line": 33,
+          "text": "    pairwise_t_matrix[...,1,0] = pairwise_t_matrix[...,1,0] * W / H"
+        },
+        {
+          "line": 34,
+          "text": "    pairwise_t_matrix[...,0,2] = pairwise_t_matrix[...,0,2] / (downsample_rate * discrete_ratio * W) * 2"
+        },
+        {
+          "line": 35,
+          "text": "    pairwise_t_matrix[...,1,2] = pairwise_t_matrix[...,1,2] / (downsample_rate * discrete_ratio * H) * 2"
+        },
+        {
+          "line": 37,
+          "text": "    normalized_affine_matrix = pairwise_t_matrix"
+        },
+        {
+          "line": 39,
+          "text": "    return normalized_affine_matrix"
+        },
+        {
+          "line": 41,
+          "text": "def warp_affine_simple("
+        },
+        {
+          "line": 45,
+          "text": "        align_corners=False):"
+        },
+        {
+          "line": 51,
+          "text": "                         align_corners=align_corners).to(src)"
+        },
+        {
+          "line": 52,
+          "text": "    return F.grid_sample(src, grid, align_corners=align_corners)"
+        },
+        {
+          "line": 55,
+          "text": "    def __init__(self, feature_dims):"
+        },
+        {
+          "line": 59,
+          "text": "    def forward(self, xx, record_len, normalized_affine_matrix, data_dict=None):"
+        },
+        {
+          "line": 61,
+          "text": "        B, L = normalized_affine_matrix.shape[:2]"
+        },
+        {
+          "line": 68,
+          "text": "            t_matrix = normalized_affine_matrix[b][:N, :N, :, :]"
+        },
+        {
+          "line": 71,
+          "text": "            x = warp_affine_simple(batch_node_features[b], t_matrix[i, :, :, :], (H, W))"
+        },
+        {
+          "line": 81,
+          "text": "    def forward_debug(self, xx, record_len, normalized_affine_matrix, data_dict=None):"
+        },
+        {
+          "line": 87,
+          "text": "        B, L = normalized_affine_matrix.shape[:2]"
+        },
+        {
+          "line": 114,
+          "text": "            t_matrix = normalized_affine_matrix[b][:N, :N, :, :]"
+        },
+        {
+          "line": 117,
+          "text": "            x = warp_affine_simple(batch_node_features[b], t_matrix[i, :, :, :], (H, W))"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/VjiaLi/V2U4Real/blob/e099a3a746c6092a614e18b74d1f5b2f3c8351e8/opencood/data_utils/pre_processor/base_preprocessor.py",
+      "git_blob": "e8f827f1259dba4d4311bfbe902fdfe42ab60968",
+      "selected_lines": [
+        {
+          "line": 24,
+          "text": "    def __init__(self, preprocess_params, train):"
+        },
+        {
+          "line": 28,
+          "text": "    def preprocess(self, pcd_np):"
+        },
+        {
+          "line": 49,
+          "text": "    def project_points_to_bev_map(self, points, ratio=0.1):"
+        }
+      ]
+    }
+  ],
+  "conclusion_zh": "固定官方执行路径无额外固定轴变换；完整路径清单未见明确独立传感器标定/轴矩阵文件。pose_utils含噪声/平面化工具，CoAlign含特征warp，均不等于公开传感器轴标定合同。未逐行审读全仓库，不能声称所有文件内都不存在隐含常数；未查阅采集私有工具。"
+}

@@ -2,6 +2,20 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-V2U4REAL-R2-04B-MULTIFRAME",
+      "keywords": ["R2-04B", "五帧几何一致性", "发布坐标约定", "预定义轴变换", "同ID中心", "标签优先级", "R2-05条件"],
+      "title": "V2U4Real five-frame published coordinate contract and internal geometry evidence",
+      "summary": "官方路径无额外固定轴因子，五帧数学通过；同ID中心/尺寸仅内部证据，物理标定未建立，ego/UAV标签保留规则冲突待裁决。",
+      "primary_sources": ["docs/implementation_records/STEP_R2_04B_V2U4REAL_MULTI_FRAME_COORDINATE_CONSISTENCY.md"],
+      "verification_sources": [
+        "code/scripts/audit_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.py",
+        "code/artifacts/audit/v2u4real_r2_04b_20261026/result.json",
+        "code/artifacts/audit/v2u4real_r2_04b_20261026/paper_contract_evidence.json",
+        "code/artifacts/audit/v2u4real_r2_04b_20261026/official_repository_tree.json"
+      ],
+      "claim_boundary": "Internal audit only; independent physical alignment and R2-05 readiness not established; no subsequent task authorized"
+    },
+    {
       "id": "ROUTE-V2U4REAL-R2-04A-GEOMETRY",
       "keywords": ["R2-04A", "V2U4Real 单帧变换", "官方坐标变换", "几何诊断", "正逆变换", "BEV"],
       "title": "V2U4Real single-frame official matrix and geometry evidence",

@@ -1,0 +1,72 @@
+{
+  "status": "PASS_LIMITED_INTERNAL_AUDIT",
+  "physical_alignment_status": "NOT_ESTABLISHED",
+  "result_sha256": "7a76f8b6ea39117d3d9dbad9efeeda63298afdaf5f8e1bca3dc4a4eb4ecfc06f",
+  "executed_source_sha256": "1678011f6d851f9d7bb7a2fec221c7585daf48de2ddb6b2d84b7c90b0313f94c",
+  "test_count": 61,
+  "test_groups": {
+    "synthetic": 11,
+    "real_five_frames": 4,
+    "regression": 46
+  },
+  "failed": 0,
+  "skipped": 0,
+  "independent_per_frame": [
+    {
+      "frame_key": "1752814590.2",
+      "matrix_solve_max_abs": 3.552713678800501e-14,
+      "all_points_independent_roundtrip_max_abs": 7.283063041541027e-14,
+      "distance_change_max_abs": 5.684341886080802e-14,
+      "common_ids": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "frame_key": "1752814590.4",
+      "matrix_solve_max_abs": 1.7763568394002505e-14,
+      "all_points_independent_roundtrip_max_abs": 6.394884621840902e-14,
+      "distance_change_max_abs": 7.105427357601002e-14,
+      "common_ids": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "frame_key": "1752814590.6",
+      "matrix_solve_max_abs": 1.0658141036401503e-14,
+      "all_points_independent_roundtrip_max_abs": 4.3520742565306136e-14,
+      "distance_change_max_abs": 8.526512829121202e-14,
+      "common_ids": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "frame_key": "1752814591.2",
+      "matrix_solve_max_abs": 1.176836406102666e-14,
+      "all_points_independent_roundtrip_max_abs": 5.684341886080802e-14,
+      "distance_change_max_abs": 5.684341886080802e-14,
+      "common_ids": [
+        "2"
+      ]
+    },
+    {
+      "frame_key": "1752814591.6",
+      "matrix_solve_max_abs": 4.618527782440651e-14,
+      "all_points_independent_roundtrip_max_abs": 8.881784197001252e-14,
+      "distance_change_max_abs": 5.684341886080802e-14,
+      "common_ids": [
+        "2"
+      ]
+    }
+  ],
+  "all_20_input_hashes_rechecked": true,
+  "official_source_reverified": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "r2_04a_reuse_identity": "UNCHANGED",
+  "physical_center_threshold": null,
+  "center_comparisons": 8,
+  "R2_05_status": "NOT_READY_FOR_AUTOMATIC_START; label/evaluation contract and explicit authorization required",
+  "project_index_gate": "BLOCKED",
+  "push_attempted": false
+}

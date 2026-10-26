@@ -1,0 +1,241 @@
+cwd=D:\shen\PKU\PIJWM
+PYTHONPATH=code/src;code/scripts;code/tests
+PYTHONUTF8=1
+CPU-only
+$ python code/scripts/audit_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.py
+{"source_contract_status": "DOCUMENTED_WITH_UNRESOLVED_FIELDS", "input_integrity_status": "PASS", "software_transform_status": "PASS", "multiframe_internal_consistency_status": "INTERNAL_EVIDENCE_RECORDED_WITH_LIMITATIONS", "physical_alignment_status": "NOT_ESTABLISHED", "task_execution_status": "COMPLETED"}
+
+exit_code=0
+
+$ python -m unittest test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests -v
+test_centers_use_location_plus_center_and_correct_direction (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_centers_use_location_plus_center_and_correct_direction) ... ok
+test_distribution_no_comparison_is_explicit (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_distribution_no_comparison_is_explicit) ... ok
+test_duplicate_decoded_cloud_detected_even_with_different_bytes (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_duplicate_decoded_cloud_detected_even_with_different_bytes) ... ok
+test_known_duplicate_payload_detected (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_known_duplicate_payload_detected) ... ok
+test_no_auto_substitution_for_missing_key (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_no_auto_substitution_for_missing_key) ... ok
+test_nonfinite_and_nonpositive_annotation_rejected (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_nonfinite_and_nonpositive_annotation_rejected) ... ok
+test_object_id_types_not_silently_normalized (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_object_id_types_not_silently_normalized) ... ok
+test_output_cannot_write_to_raw_data (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_output_cannot_write_to_raw_data) ... ok
+test_raw_extent_differences_not_hidden_or_reinterpreted (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_raw_extent_differences_not_hidden_or_reinterpreted) ... ok
+test_tolerances_identical_to_r2_04a (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_tolerances_identical_to_r2_04a) ... ok
+test_unshared_ids_are_retained_and_not_matched_by_position (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_unshared_ids_are_retained_and_not_matched_by_position) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.008s
+
+OK
+
+exit_code=0
+
+$ python -m unittest test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests -v
+test_centers_independent_column_vector_calculation (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests.test_centers_independent_column_vector_calculation) ... ok
+test_exact_five_frame_read_and_duplicate_status (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests.test_exact_five_frame_read_and_duplicate_status) ... ok
+test_independent_homogeneous_all_points_five_frames (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests.test_independent_homogeneous_all_points_five_frames) ... ok
+test_source_contract_and_runtime_boundaries (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests.test_source_contract_and_runtime_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.044s
+
+OK
+
+exit_code=0
+
+$ python -m unittest test_v2u4real_r2_04a_single_frame_geometry_v1 test_v2u4real_full_sample_v1 test_v2u4real_preparation_v1 test_v2u4real_interface_v1.DatasetAuditTests test_v2u4real_interface_v1.GeometryTests -v
+test_fixed_real_sample_strict_read (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_fixed_real_sample_strict_read) ... ok
+test_missing_fixed_sample_does_not_select_another (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_missing_fixed_sample_does_not_select_another) ... ok
+test_real_all_points_roundtrip_and_distance (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_all_points_roundtrip_and_distance) ... ok
+test_real_annotation_exact_converter_and_raw_preserved (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_annotation_exact_converter_and_raw_preserved) ... ok
+test_real_independent_homogeneous_application (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_independent_homogeneous_application) ... ok
+test_bad_pose_refused_without_coercing_list (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_bad_pose_refused_without_coercing_list) ... ok
+test_deterministic_subset (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_deterministic_subset) ... ok
+test_duplicate_yaml_key_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_duplicate_yaml_key_refused) ... ok
+test_exact_converter_body_artificial_yaml (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_exact_converter_body_artificial_yaml) ... ok
+test_invalid_matrix_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_invalid_matrix_refused) ... ok
+test_inverse_and_distances_nonplanar_pose (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_inverse_and_distances_nonplanar_pose) ... ok
+test_known_rotation_translation_and_direction (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_known_rotation_translation_and_direction) ... ok
+test_machine_evidence_uses_canonical_lf_for_git_sha (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_machine_evidence_uses_canonical_lf_for_git_sha) ... ok
+test_nonfinite_points_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_nonfinite_points_refused) ... ok
+test_official_box_primitives_known_extent (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_official_box_primitives_known_extent) ... ok
+test_output_cannot_write_into_raw_inputs (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_output_cannot_write_into_raw_inputs) ... ok
+test_source_change_stops_before_execution (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_source_change_stops_before_execution) ... ok
+test_duplicate_members_and_unsafe_paths_rejected (test_v2u4real_full_sample_v1.FullSampleTests.test_duplicate_members_and_unsafe_paths_rejected) ... ok
+test_extract_only_selected_raw_bytes_and_no_overwrite (test_v2u4real_full_sample_v1.FullSampleTests.test_extract_only_selected_raw_bytes_and_no_overwrite) ... extracted 12 unchanged files for 3 candidate keys
+ok
+test_file_pairing_never_establishes_physical_pairing (test_v2u4real_full_sample_v1.FullSampleTests.test_file_pairing_never_establishes_physical_pairing) ... ok
+test_fixed_scope_and_digest_before_use (test_v2u4real_full_sample_v1.FullSampleTests.test_fixed_scope_and_digest_before_use) ... ok
+test_ignored_range_never_reads_body_or_writes_archive (test_v2u4real_full_sample_v1.FullSampleTests.test_ignored_range_never_reads_body_or_writes_archive) ... ok
+test_missing_frame_not_hidden_by_intersection (test_v2u4real_full_sample_v1.FullSampleTests.test_missing_frame_not_hidden_by_intersection) ... ok
+test_nested_clock_fields_preserve_values_without_inventing_units (test_v2u4real_full_sample_v1.FullSampleTests.test_nested_clock_fields_preserve_values_without_inventing_units) ... ok
+test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings (test_v2u4real_full_sample_v1.FullSampleTests.test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings) ... ok
+test_structural_success_never_qualifies_physical_pair (test_v2u4real_full_sample_v1.FullSampleTests.test_structural_success_never_qualifies_physical_pair) ... ok
+test_complete_member_is_idempotent_and_not_overwritten (test_v2u4real_preparation_v1.PreparationTests.test_complete_member_is_idempotent_and_not_overwritten) ... ok
+test_hard_download_and_output_boundaries (test_v2u4real_preparation_v1.PreparationTests.test_hard_download_and_output_boundaries) ... ok
+test_ignored_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_ignored_range_does_not_read_response_body) ... ok
+test_missing_raw_assets_stay_blocked_without_fake_pass (test_v2u4real_preparation_v1.PreparationTests.test_missing_raw_assets_stay_blocked_without_fake_pass) ... ok
+test_only_train_and_immutable_revision (test_v2u4real_preparation_v1.PreparationTests.test_only_train_and_immutable_revision) ... ok
+test_partial_compressed_member_is_not_a_successful_sample (test_v2u4real_preparation_v1.PreparationTests.test_partial_compressed_member_is_not_a_successful_sample) ... ok
+test_path_traversal_links_and_oversize_are_blocked (test_v2u4real_preparation_v1.PreparationTests.test_path_traversal_links_and_oversize_are_blocked) ... ok
+test_wrong_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_wrong_range_does_not_read_response_body) ... ok
+test_audit_missing_keys_duplicates_and_no_clock_inference (test_v2u4real_interface_v1.DatasetAuditTests.test_audit_missing_keys_duplicates_and_no_clock_inference) ... ok
+test_duplicate_yaml_keys_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_duplicate_yaml_keys_rejected) ... ok
+test_empty_corrupt_compressed_nonfinite_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_empty_corrupt_compressed_nonfinite_rejected) ... ok
+test_field_types_include_all_objects (test_v2u4real_interface_v1.DatasetAuditTests.test_field_types_include_all_objects) ... ok
+test_missing_data_is_blocked (test_v2u4real_interface_v1.DatasetAuditTests.test_missing_data_is_blocked) ... ok
+test_reader_ascii_and_binary (test_v2u4real_interface_v1.DatasetAuditTests.test_reader_ascii_and_binary) ... ok
+test_select_smallest_train_and_cap (test_v2u4real_interface_v1.DatasetAuditTests.test_select_smallest_train_and_cap) ... ok
+test_test_split_not_accepted (test_v2u4real_interface_v1.DatasetAuditTests.test_test_split_not_accepted) ... ok
+test_known_axis_and_inverse (test_v2u4real_interface_v1.GeometryTests.test_known_axis_and_inverse) ... ok
+test_nonrigid_and_nonfinite_rejected (test_v2u4real_interface_v1.GeometryTests.test_nonrigid_and_nonfinite_rejected) ... ok
+test_reflection_rejected (test_v2u4real_interface_v1.GeometryTests.test_reflection_rejected) ... ok
+test_rsu_is_explicit_setting (test_v2u4real_interface_v1.GeometryTests.test_rsu_is_explicit_setting) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 0.841s
+
+OK
+{"step": "R2-01", "overall_status": "BLOCKED", "official_train_archive_access": "BLOCKED", "complete_raw_pcd_members_obtained": 0, "pcd_reads": {}, "minimum_complete_training_subset": "BLOCKED", "yaml_availability": "BLOCKED", "yaml_parse_execution": "NOT_RUN", "physical_timestamp_and_calibration_contract": "BLOCKED", "r1_reader_reused": true, "coordinate_transform_acceptance": "NOT_RUN", "AirFogSim_replay": "NOT_RUN", "wireless_changes": "NOT_RUN", "feature_or_compute_service": "NOT_RUN", "training": "NOT_RUN", "gpu_used": false, "locked_test_accessed": false, "downloaded_prefix_bytes": 0, "missing_inputs": ["agent 1: bounded official prefix/retrieval receipt missing; use --fetch", "agent 2: bounded official prefix/retrieval receipt missing; use --fetch"], "whole_archive_downloaded": false, "reason": "No local official prefixes/receipts; use the bounded --fetch option"}
+
+exit_code=0
+
+$ python -m compileall -q code/src code/scripts code/tests
+
+exit_code=0
+
+FINAL SOURCE VALIDATION
+$ python code/scripts/audit_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.py
+{"source_contract_status": "DOCUMENTED_WITH_UNRESOLVED_FIELDS", "input_integrity_status": "PASS", "software_transform_status": "PASS", "multiframe_internal_consistency_status": "INTERNAL_EVIDENCE_RECORDED_WITH_LIMITATIONS", "physical_alignment_status": "NOT_ESTABLISHED", "task_execution_status": "COMPLETED"}
+
+exit_code=0
+
+FINAL SOURCE VALIDATION
+$ python -m unittest test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests -v
+test_centers_use_location_plus_center_and_correct_direction (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_centers_use_location_plus_center_and_correct_direction) ... ok
+test_distribution_no_comparison_is_explicit (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_distribution_no_comparison_is_explicit) ... ok
+test_duplicate_decoded_cloud_detected_even_with_different_bytes (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_duplicate_decoded_cloud_detected_even_with_different_bytes) ... ok
+test_known_duplicate_payload_detected (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_known_duplicate_payload_detected) ... ok
+test_no_auto_substitution_for_missing_key (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_no_auto_substitution_for_missing_key) ... ok
+test_nonfinite_and_nonpositive_annotation_rejected (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_nonfinite_and_nonpositive_annotation_rejected) ... ok
+test_object_id_types_not_silently_normalized (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_object_id_types_not_silently_normalized) ... ok
+test_output_cannot_write_to_raw_data (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_output_cannot_write_to_raw_data) ... ok
+test_raw_extent_differences_not_hidden_or_reinterpreted (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_raw_extent_differences_not_hidden_or_reinterpreted) ... ok
+test_tolerances_identical_to_r2_04a (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_tolerances_identical_to_r2_04a) ... ok
+test_unshared_ids_are_retained_and_not_matched_by_position (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.SyntheticTests.test_unshared_ids_are_retained_and_not_matched_by_position) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.010s
+
+OK
+
+exit_code=0
+
+FINAL SOURCE VALIDATION
+$ python -m unittest test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests -v
+test_centers_independent_column_vector_calculation (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests.test_centers_independent_column_vector_calculation) ... ok
+test_exact_five_frame_read_and_duplicate_status (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests.test_exact_five_frame_read_and_duplicate_status) ... ok
+test_independent_homogeneous_all_points_five_frames (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests.test_independent_homogeneous_all_points_five_frames) ... ok
+test_source_contract_and_runtime_boundaries (test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.RealFiveFrameTests.test_source_contract_and_runtime_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.923s
+
+OK
+
+exit_code=0
+
+FINAL SOURCE VALIDATION
+$ python -m unittest test_v2u4real_r2_04a_single_frame_geometry_v1 test_v2u4real_full_sample_v1 test_v2u4real_preparation_v1 test_v2u4real_interface_v1.DatasetAuditTests test_v2u4real_interface_v1.GeometryTests -v
+test_fixed_real_sample_strict_read (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_fixed_real_sample_strict_read) ... ok
+test_missing_fixed_sample_does_not_select_another (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_missing_fixed_sample_does_not_select_another) ... ok
+test_real_all_points_roundtrip_and_distance (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_all_points_roundtrip_and_distance) ... ok
+test_real_annotation_exact_converter_and_raw_preserved (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_annotation_exact_converter_and_raw_preserved) ... ok
+test_real_independent_homogeneous_application (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_independent_homogeneous_application) ... ok
+test_bad_pose_refused_without_coercing_list (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_bad_pose_refused_without_coercing_list) ... ok
+test_deterministic_subset (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_deterministic_subset) ... ok
+test_duplicate_yaml_key_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_duplicate_yaml_key_refused) ... ok
+test_exact_converter_body_artificial_yaml (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_exact_converter_body_artificial_yaml) ... ok
+test_invalid_matrix_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_invalid_matrix_refused) ... ok
+test_inverse_and_distances_nonplanar_pose (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_inverse_and_distances_nonplanar_pose) ... ok
+test_known_rotation_translation_and_direction (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_known_rotation_translation_and_direction) ... ok
+test_machine_evidence_uses_canonical_lf_for_git_sha (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_machine_evidence_uses_canonical_lf_for_git_sha) ... ok
+test_nonfinite_points_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_nonfinite_points_refused) ... ok
+test_official_box_primitives_known_extent (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_official_box_primitives_known_extent) ... ok
+test_output_cannot_write_into_raw_inputs (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_output_cannot_write_into_raw_inputs) ... ok
+test_source_change_stops_before_execution (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_source_change_stops_before_execution) ... ok
+test_duplicate_members_and_unsafe_paths_rejected (test_v2u4real_full_sample_v1.FullSampleTests.test_duplicate_members_and_unsafe_paths_rejected) ... ok
+test_extract_only_selected_raw_bytes_and_no_overwrite (test_v2u4real_full_sample_v1.FullSampleTests.test_extract_only_selected_raw_bytes_and_no_overwrite) ... extracted 12 unchanged files for 3 candidate keys
+ok
+test_file_pairing_never_establishes_physical_pairing (test_v2u4real_full_sample_v1.FullSampleTests.test_file_pairing_never_establishes_physical_pairing) ... ok
+test_fixed_scope_and_digest_before_use (test_v2u4real_full_sample_v1.FullSampleTests.test_fixed_scope_and_digest_before_use) ... ok
+test_ignored_range_never_reads_body_or_writes_archive (test_v2u4real_full_sample_v1.FullSampleTests.test_ignored_range_never_reads_body_or_writes_archive) ... ok
+test_missing_frame_not_hidden_by_intersection (test_v2u4real_full_sample_v1.FullSampleTests.test_missing_frame_not_hidden_by_intersection) ... ok
+test_nested_clock_fields_preserve_values_without_inventing_units (test_v2u4real_full_sample_v1.FullSampleTests.test_nested_clock_fields_preserve_values_without_inventing_units) ... ok
+test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings (test_v2u4real_full_sample_v1.FullSampleTests.test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings) ... ok
+test_structural_success_never_qualifies_physical_pair (test_v2u4real_full_sample_v1.FullSampleTests.test_structural_success_never_qualifies_physical_pair) ... ok
+test_complete_member_is_idempotent_and_not_overwritten (test_v2u4real_preparation_v1.PreparationTests.test_complete_member_is_idempotent_and_not_overwritten) ... ok
+test_hard_download_and_output_boundaries (test_v2u4real_preparation_v1.PreparationTests.test_hard_download_and_output_boundaries) ... ok
+test_ignored_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_ignored_range_does_not_read_response_body) ... ok
+test_missing_raw_assets_stay_blocked_without_fake_pass (test_v2u4real_preparation_v1.PreparationTests.test_missing_raw_assets_stay_blocked_without_fake_pass) ... ok
+test_only_train_and_immutable_revision (test_v2u4real_preparation_v1.PreparationTests.test_only_train_and_immutable_revision) ... ok
+test_partial_compressed_member_is_not_a_successful_sample (test_v2u4real_preparation_v1.PreparationTests.test_partial_compressed_member_is_not_a_successful_sample) ... ok
+test_path_traversal_links_and_oversize_are_blocked (test_v2u4real_preparation_v1.PreparationTests.test_path_traversal_links_and_oversize_are_blocked) ... ok
+test_wrong_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_wrong_range_does_not_read_response_body) ... ok
+test_audit_missing_keys_duplicates_and_no_clock_inference (test_v2u4real_interface_v1.DatasetAuditTests.test_audit_missing_keys_duplicates_and_no_clock_inference) ... ok
+test_duplicate_yaml_keys_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_duplicate_yaml_keys_rejected) ... ok
+test_empty_corrupt_compressed_nonfinite_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_empty_corrupt_compressed_nonfinite_rejected) ... ok
+test_field_types_include_all_objects (test_v2u4real_interface_v1.DatasetAuditTests.test_field_types_include_all_objects) ... ok
+test_missing_data_is_blocked (test_v2u4real_interface_v1.DatasetAuditTests.test_missing_data_is_blocked) ... ok
+test_reader_ascii_and_binary (test_v2u4real_interface_v1.DatasetAuditTests.test_reader_ascii_and_binary) ... ok
+test_select_smallest_train_and_cap (test_v2u4real_interface_v1.DatasetAuditTests.test_select_smallest_train_and_cap) ... ok
+test_test_split_not_accepted (test_v2u4real_interface_v1.DatasetAuditTests.test_test_split_not_accepted) ... ok
+test_known_axis_and_inverse (test_v2u4real_interface_v1.GeometryTests.test_known_axis_and_inverse) ... ok
+test_nonrigid_and_nonfinite_rejected (test_v2u4real_interface_v1.GeometryTests.test_nonrigid_and_nonfinite_rejected) ... ok
+test_reflection_rejected (test_v2u4real_interface_v1.GeometryTests.test_reflection_rejected) ... ok
+test_rsu_is_explicit_setting (test_v2u4real_interface_v1.GeometryTests.test_rsu_is_explicit_setting) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 0.783s
+
+OK
+{"step": "R2-01", "overall_status": "BLOCKED", "official_train_archive_access": "BLOCKED", "complete_raw_pcd_members_obtained": 0, "pcd_reads": {}, "minimum_complete_training_subset": "BLOCKED", "yaml_availability": "BLOCKED", "yaml_parse_execution": "NOT_RUN", "physical_timestamp_and_calibration_contract": "BLOCKED", "r1_reader_reused": true, "coordinate_transform_acceptance": "NOT_RUN", "AirFogSim_replay": "NOT_RUN", "wireless_changes": "NOT_RUN", "feature_or_compute_service": "NOT_RUN", "training": "NOT_RUN", "gpu_used": false, "locked_test_accessed": false, "downloaded_prefix_bytes": 0, "missing_inputs": ["agent 1: bounded official prefix/retrieval receipt missing; use --fetch", "agent 2: bounded official prefix/retrieval receipt missing; use --fetch"], "whole_archive_downloaded": false, "reason": "No local official prefixes/receipts; use the bounded --fetch option"}
+
+exit_code=0
+
+FINAL SOURCE VALIDATION
+$ python -m compileall -q code/src code/scripts code/tests
+
+exit_code=0
+
+$ inline Python independent all-five homogeneous/solve, distance, centers/extents, 20 input hashes, official SHA, source/context/manual-registry checks
+{"status": "PASS_LIMITED_INTERNAL_AUDIT", "physical_alignment_status": "NOT_ESTABLISHED", "result_sha256": "7a76f8b6ea39117d3d9dbad9efeeda63298afdaf5f8e1bca3dc4a4eb4ecfc06f", "executed_source_sha256": "1678011f6d851f9d7bb7a2fec221c7585daf48de2ddb6b2d84b7c90b0313f94c", "test_count": 61, "test_groups": {"synthetic": 11, "real_five_frames": 4, "regression": 46}, "failed": 0, "skipped": 0, "independent_per_frame": [{"frame_key": "1752814590.2", "matrix_solve_max_abs": 3.552713678800501e-14, "all_points_independent_roundtrip_max_abs": 7.283063041541027e-14, "distance_change_max_abs": 5.684341886080802e-14, "common_ids": ["1", "2"]}, {"frame_key": "1752814590.4", "matrix_solve_max_abs": 1.7763568394002505e-14, "all_points_independent_roundtrip_max_abs": 6.394884621840902e-14, "distance_change_max_abs": 7.105427357601002e-14, "common_ids": ["1", "2"]}, {"frame_key": "1752814590.6", "matrix_solve_max_abs": 1.0658141036401503e-14, "all_points_independent_roundtrip_max_abs": 4.3520742565306136e-14, "distance_change_max_abs": 8.526512829121202e-14, "common_ids": ["1", "2"]}, {"frame_key": "1752814591.2", "matrix_solve_max_abs": 1.176836406102666e-14, "all_points_independent_roundtrip_max_abs": 5.684341886080802e-14, "distance_change_max_abs": 5.684341886080802e-14, "common_ids": ["2"]}, {"frame_key": "1752814591.6", "matrix_solve_max_abs": 4.618527782440651e-14, "all_points_independent_roundtrip_max_abs": 8.881784197001252e-14, "distance_change_max_abs": 5.684341886080802e-14, "common_ids": ["2"]}], "all_20_input_hashes_rechecked": true, "official_source_reverified": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8", "r2_04a_reuse_identity": "UNCHANGED", "physical_center_threshold": null, "center_comparisons": 8, "R2_05_status": "NOT_READY_FOR_AUTOMATIC_START; label/evaluation contract and explicit authorization required", "project_index_gate": "BLOCKED", "push_attempted": false}
+Context/manual registries PASS
+exit_code=0
+
+FINAL POST-STAGING INDEX CHECK
+$ python code/scripts/build_project_knowledge_index_v1.py --check
+{
+  "mismatches": [
+    "docs/registries/generated/tracked_file_inventory.csv",
+    "docs/registries/generated/python_dependency_map.json",
+    "docs/registries/generated/artifact_catalog.csv",
+    "docs/registries/generated/archive_candidate_registry.csv",
+    "docs/registries/generated/registry_summary.json"
+  ],
+  "mode": "check",
+  "output_count": 5,
+  "passed": false,
+  "schema_version": "PI-JWM-project-knowledge-index-v2"
+}
+<unknown>:37: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:44: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:79: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:37: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:44: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:79: SyntaxWarning: invalid escape sequence '\.'
+
+exit_code=1
+
+$ final staged-only review, Context Consistency Check and original evidence preservation checks
+PASS: 36 task paths including final index receipt; four dirty documents staged as task prefixes only; 20 raw file hashes unchanged; R2-04A source/test/results unchanged
+$ git diff --cached --check
+exit_code=0
+Push not attempted because required project index check fails. No next task started.

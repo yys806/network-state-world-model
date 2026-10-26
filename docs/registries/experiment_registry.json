@@ -3,6 +3,49 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "V2U4REAL-R2-04B-MULTIFRAME-COORDINATES-20261026",
+      "name": "V2U4Real five-frame published-coordinate and internal geometry audit",
+      "date": "2026-10-26",
+      "research_question": "What supports direct published XYZ plus official pose transforms across five fixed frames, and what physical/annotation evidence is still missing?",
+      "method": "Pinned paper/code contract audit; unchanged R2-04A readers/functions/tolerances; five-frame full-point rigid checks; same-ID centers/raw extent comparisons; deterministic BEV; no registration",
+      "code": "code/scripts/audit_v2u4real_r2_04b_multiframe_coordinate_consistency_v1.py",
+      "code_version": {
+        "identity_type": "executed_source_SHA256",
+        "git_commit": null,
+        "manifest": "code/artifacts/audit/v2u4real_r2_04b_20261026/source_identity.json",
+        "note": "Baseline fe7d2fe1a65d0ac98f60902059fc1a133144f855; final independent task commit resolved from Git history"
+      },
+      "configuration": "code/artifacts/audit/v2u4real_r2_04b_20261026/config.json",
+      "parameters": {
+        "device": "cpu",
+        "dataset_revision": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+        "official_commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+        "scene": "2025-07-18-12-53_2",
+        "frame_keys": ["1752814590.2", "1752814590.4", "1752814590.6", "1752814591.2", "1752814591.6"],
+        "physical_error_threshold": null
+      },
+      "protocol": "docs/implementation_records/STEP_R2_04B_V2U4REAL_MULTI_FRAME_COORDINATE_CONSISTENCY.md",
+      "data": "code/artifacts/audit/v2u4real_r2_04b_20261026/result.json#frames",
+      "split": ["train"],
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/audit/v2u4real_r2_04b_20261026/result.json",
+      "metrics": null,
+      "audit": "code/artifacts/audit/v2u4real_r2_04b_20261026/acceptance.json",
+      "status": "COMPLETED_INTERNAL_AUDIT_PHYSICAL_ALIGNMENT_NOT_ESTABLISHED",
+      "conclusion": "五帧20文件及官方数学检查通过；8次同ID中心/原尺寸比较提供有限内部证据。物理标定未建立，论文与转换器标签优先级有差异，未进入R2-05。",
+      "summary_zh": "R2-04B有限审计完成：数学5/5、同ID诊断8次，物理对齐NOT_ESTABLISHED；不自动开放固定感知基线。",
+      "claim_boundary": "Five fixed published keys only; same IDs depend on annotation processing; no independent calibration truth, physical threshold, heading/IoU acceptance, actual clock, registration or detector baseline",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "seed": "Deterministic audit; no random scientific experiment.",
+        "checkpoint": "No model loaded or trained.",
+        "metrics": "No scientific performance metrics. Descriptive numerical diagnostics remain in result.json.",
+        "parameters.physical_error_threshold": "No independently supported physical alignment threshold; none introduced.",
+        "code_version.git_commit": "Resolved from final Git history; source_identity.json binds executed sources."
+      }
+    },
+    {
       "id": "V2U4REAL-R2-04A-SINGLE-FRAME-GEOMETRY-20261026",
       "name": "V2U4Real pinned single-frame official transform software diagnostic",
       "date": "2026-10-26",

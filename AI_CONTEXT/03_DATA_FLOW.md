@@ -1,3 +1,13 @@
+<!-- V2U4REAL R2-04B 2026-10-26 -->
+## 2026-10-26 — STEP R2-04B 五帧内部几何审计完成
+
+R2-04B 固定五帧20文件身份/读取及官方变换数学检查5/5通过；8次同ID中心距离0.129–1.113代码单位，尺寸跨端存在稳定差异，仅支持有限内部一致性。真实物理对齐NOT_ESTABLISHED；无GPU/locked_test/回放/训练/ICP。
+
+隔离支路为五帧发布PCD/YAML→官方pose/list矩阵→全点数值检查/同ID中心与原尺寸比较/统一BEV；没有进入感知服务、仿真或训练。各帧为各自车辆局部系，不共用静止世界原点。
+
+详见 [R2-04B 实施记录](../docs/implementation_records/STEP_R2_04B_V2U4REAL_MULTI_FRAME_COORDINATE_CONSISTENCY.md)；实测以 `code/artifacts/audit/v2u4real_r2_04b_20261026/result.json` 为准。坐标合同已分层记录，但轴向/标定/物理时钟未独立核验；不自动开放R2-05。
+<!-- END V2U4REAL R2-04B -->
+
 <!-- V2U4REAL R2-04A 2026-10-26 -->
 ## 2026-10-26 — STEP R2-04A 单帧数学诊断完成，物理对齐未建立
 

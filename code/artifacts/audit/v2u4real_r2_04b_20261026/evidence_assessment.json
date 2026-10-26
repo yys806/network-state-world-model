@@ -1,0 +1,24 @@
+{
+  "factual_observations": {
+    "input_files": 20,
+    "numeric_pass_frames": 5,
+    "common_center_comparisons": 8,
+    "distance_min": 0.12855759133365888,
+    "distance_max": 1.1132380702981666,
+    "distance_mean": 0.47583536781314656,
+    "cross_agent_extent_not_identical": true,
+    "ID1_missing_from_uav_in_keys": [
+      "1752814591.2",
+      "1752814591.6"
+    ]
+  },
+  "conditional_inference_zh": "\u63a5\u53d7\u8bba\u6587\u53d1\u5e03\u8f74\u7ea6\u5b9a\u65f6\uff0cUAV\u539f\u59cb\u8d1fZ\u7ea6-51\u7ecf\u5b98\u65b9\u53d8\u6362\u5230\u8f66\u8f86\u9644\u8fd1\u9ad8\u5ea6\u8303\u56f4\uff0c\u4e14\u4e94\u56fe\u5173\u7cfb\u91cd\u590d\u51fa\u73b0\uff0c\u4e0e\u76f4\u63a5\u5b98\u65b9\u7528\u6cd5\u76f8\u5bb9\uff1b\u4e0d\u8db3\u4ee5\u72ec\u7acb\u786e\u8ba4\u7269\u7406\u65b9\u5411\u6216\u6807\u5b9a\u3002",
+  "unsupported_conclusions": [
+    "physical alignment PASS",
+    "all same IDs independently matched",
+    "all extents equal",
+    "file keys are physical timestamps",
+    "R2-05 may auto-start"
+  ],
+  "researcher_decision_pending": "R2-05 annotation contract: angle/field interpretation and ego-vs-UAV label retention"
+}
