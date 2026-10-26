@@ -1,0 +1,121 @@
+{
+  "schema_version": "V2U4Real-R2-04A-source-v1",
+  "baseline_git_commit": "d842cbacd16c3a9c33bda290b2e9f71d1dae0361",
+  "files": {
+    "code/scripts/audit_v2u4real_r2_04a_single_frame_geometry_v1.py": "b306178c8b29e69306b6d4810845b518ef876fc017f3be3bbee6f4f090b779e9",
+    "code/tests/test_v2u4real_r2_04a_single_frame_geometry_v1.py": "b13b243d4cecf2b25db7a7274824d5f2e5ea0eba97309a07e09032ffc5c4c6e7",
+    "code/src/pi_jwm/v2u4real_interface_v1.py": "17a97a3a96cff587fbc0e63f7bede85db817a214b1765958850c3af3de983c38",
+    "code/reference/V2U4Real.SOURCE.json": "325971861da520c6efdf3f5d08a07bf1d6b7099ab9afa065b030a945d28d4541",
+    "code/artifacts/manifests/v2u4real_r2_03_20261026/real_data_contract_audit.json": "426ace8f34e6dbd4f6fca6420f8850e9843650e36621decf247acd66119c9b7f"
+  },
+  "official_source": {
+    "repository": "https://github.com/VjiaLi/V2U4Real",
+    "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+    "manifest_sha256": "325971861da520c6efdf3f5d08a07bf1d6b7099ab9afa065b030a945d28d4541",
+    "files": [
+      {
+        "path": "code/reference/V2U4Real/LICENSE",
+        "sha256": "20bccc4aaccdbdf80960af7ed64ed036ed449b3f57f61e04860a91dcc5010639",
+        "git_blob": "85dcf41ee15c7c2a6f1eb2678aae46b54b6fa6bf",
+        "bytes": 1063
+      },
+      {
+        "path": "code/reference/V2U4Real/README.md",
+        "sha256": "480d96479f60a4c922300e2ca31239b356d6c59e48785e2818b05f7b759aa55f",
+        "git_blob": "7073480dc78ad529068e3eda4fffe08955e88dbe",
+        "bytes": 12299
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+        "sha256": "5b88ef224db616a7a915041b959b1e907fb36094537f7b877bc09351ff57bb29",
+        "git_blob": "e78dd4607d48f740e1314c2fff8341e024d46a09",
+        "bytes": 7032
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+        "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+        "git_blob": "a6b336057e94726b02a121c74c0225c5312db127",
+        "bytes": 31642
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+        "sha256": "3a823f538315531b0feca98ea4351e1225088a5173bd36345c96bd92dea611df",
+        "git_blob": "9f27249d6c318cc37ceaf86463d43998808044f9",
+        "bytes": 4848
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+        "sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+        "git_blob": "8318303679fb8f700bca7bc8ddcabb0b36f5c641",
+        "bytes": 5502
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+        "sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+        "git_blob": "d0a47873b6631caca6c625e66bf3304b61de1a70",
+        "bytes": 7291
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+        "sha256": "0d5951f26d590c8c8c2e7b67167f085c7eaaa478a713b2777aadf29b5164a90e",
+        "git_blob": "8da4ff82d1c60b6a3030c9843087238aa9408618",
+        "bytes": 5776
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+        "sha256": "aea708b371977015deb5fbe45ad3ed19a912b34d2cc66cf0482f7feff63f19aa",
+        "git_blob": "320e3f31c2f2b402f121e6514b6db65cc148d47c",
+        "bytes": 25339
+      }
+    ],
+    "identity_basis": "pinned local partial snapshot + manifest SHA256/Git blobs; not a fresh remote attestation",
+    "execution": {
+      "mode": "unchanged official function AST bodies with real NumPy/SciPy/PyYAML dependencies",
+      "functions": [
+        {
+          "function": "x_to_world",
+          "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+          "start_line": 13,
+          "end_line": 40,
+          "file_sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+          "ast_body_modified": false
+        },
+        {
+          "function": "x1_to_x2",
+          "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+          "start_line": 43,
+          "end_line": 78,
+          "file_sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+          "ast_body_modified": false
+        },
+        {
+          "function": "corner_to_center",
+          "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+          "start_line": 19,
+          "end_line": 78,
+          "file_sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+          "ast_body_modified": false
+        },
+        {
+          "function": "create_bbx",
+          "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+          "start_line": 392,
+          "end_line": 416,
+          "file_sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+          "ast_body_modified": false
+        },
+        {
+          "function": "load_annotation_objects",
+          "path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+          "start_line": 62,
+          "end_line": 116,
+          "file_sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+          "ast_body_modified": false
+        }
+      ],
+      "converter_main_executed": false,
+      "point_application": "existing float64 transform_points; official converter uses torch projection and float32 NumPy conversion, not executed"
+    }
+  },
+  "scope": "No core method/source/data edits; exact executed script and test hashes, local pinned official source provenance"
+}

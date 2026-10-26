@@ -1,0 +1,2504 @@
+{
+  "schema_version": "V2U4Real-R2-04A-v1",
+  "dataset": "VJiaLi/V2U4Real",
+  "dataset_version": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+  "split": "train",
+  "scene": "2025-07-18-12-53_2",
+  "frame_key": "1752814590.2",
+  "config": {
+    "dtype": "float64",
+    "rigid_atol": 1e-10,
+    "matrix_atol": 1e-12,
+    "inverse_max_abs_atol": 1e-08,
+    "distance_max_abs_atol": 1e-08,
+    "distance_subset_count": 128,
+    "plot_max_points_per_agent": 20000,
+    "subset_rule": "unique linspace(0, N-1, count, dtype=int64)",
+    "quantiles": [
+      0,
+      0.01,
+      0.25,
+      0.5,
+      0.75,
+      0.99,
+      1
+    ],
+    "rtol": 0.0
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.2",
+    "scipy": "1.16.2",
+    "device": "CPU",
+    "gpu_used": false,
+    "locked_test_accessed": false
+  },
+  "executed_script_sha256": "b306178c8b29e69306b6d4810845b518ef876fc017f3be3bbee6f4f090b779e9",
+  "scope": "single real published same-key association; software mathematics only",
+  "limitations": [
+    "Same published key is a file association, not measured physical synchronization.",
+    "Physical length unit, local axes, common origin and applied predefined axes transform are unverified.",
+    "RTK/GICP/manual registration corrections and whether already applied remain unverified.",
+    "Annotation angle order in paper differs from code; location/center semantics remain unresolved.",
+    "list/matrix x1_to_x2 branch uses its matrix directly despite its docstring; only identity is passed there for boxes.",
+    "Boxes are official_code_interpretation_only, not independently verified ground truth.",
+    "No correction, ICP/GICP, physical acceptance, GPU, training, replay or locked_test."
+  ],
+  "errors": [],
+  "input_integrity_status": "PASS",
+  "official_source_status": "PASS",
+  "software_transform_status": "PASS",
+  "annotation_diagnostic_status": "official_code_interpretation_only",
+  "physical_alignment_status": "NOT_ESTABLISHED",
+  "task_execution_status": "COMPLETED",
+  "official_source": {
+    "repository": "https://github.com/VjiaLi/V2U4Real",
+    "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+    "manifest_sha256": "325971861da520c6efdf3f5d08a07bf1d6b7099ab9afa065b030a945d28d4541",
+    "files": [
+      {
+        "path": "code/reference/V2U4Real/LICENSE",
+        "sha256": "20bccc4aaccdbdf80960af7ed64ed036ed449b3f57f61e04860a91dcc5010639",
+        "git_blob": "85dcf41ee15c7c2a6f1eb2678aae46b54b6fa6bf",
+        "bytes": 1063
+      },
+      {
+        "path": "code/reference/V2U4Real/README.md",
+        "sha256": "480d96479f60a4c922300e2ca31239b356d6c59e48785e2818b05f7b759aa55f",
+        "git_blob": "7073480dc78ad529068e3eda4fffe08955e88dbe",
+        "bytes": 12299
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+        "sha256": "5b88ef224db616a7a915041b959b1e907fb36094537f7b877bc09351ff57bb29",
+        "git_blob": "e78dd4607d48f740e1314c2fff8341e024d46a09",
+        "bytes": 7032
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+        "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+        "git_blob": "a6b336057e94726b02a121c74c0225c5312db127",
+        "bytes": 31642
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+        "sha256": "3a823f538315531b0feca98ea4351e1225088a5173bd36345c96bd92dea611df",
+        "git_blob": "9f27249d6c318cc37ceaf86463d43998808044f9",
+        "bytes": 4848
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+        "sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+        "git_blob": "8318303679fb8f700bca7bc8ddcabb0b36f5c641",
+        "bytes": 5502
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+        "sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+        "git_blob": "d0a47873b6631caca6c625e66bf3304b61de1a70",
+        "bytes": 7291
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+        "sha256": "0d5951f26d590c8c8c2e7b67167f085c7eaaa478a713b2777aadf29b5164a90e",
+        "git_blob": "8da4ff82d1c60b6a3030c9843087238aa9408618",
+        "bytes": 5776
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+        "sha256": "aea708b371977015deb5fbe45ad3ed19a912b34d2cc66cf0482f7feff63f19aa",
+        "git_blob": "320e3f31c2f2b402f121e6514b6db65cc148d47c",
+        "bytes": 25339
+      }
+    ],
+    "identity_basis": "pinned local partial snapshot + manifest SHA256/Git blobs; not a fresh remote attestation",
+    "execution": {
+      "mode": "unchanged official function AST bodies with real NumPy/SciPy/PyYAML dependencies",
+      "functions": [
+        {
+          "function": "x_to_world",
+          "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+          "start_line": 13,
+          "end_line": 40,
+          "file_sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+          "ast_body_modified": false
+        },
+        {
+          "function": "x1_to_x2",
+          "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+          "start_line": 43,
+          "end_line": 78,
+          "file_sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+          "ast_body_modified": false
+        },
+        {
+          "function": "corner_to_center",
+          "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+          "start_line": 19,
+          "end_line": 78,
+          "file_sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+          "ast_body_modified": false
+        },
+        {
+          "function": "create_bbx",
+          "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+          "start_line": 392,
+          "end_line": 416,
+          "file_sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+          "ast_body_modified": false
+        },
+        {
+          "function": "load_annotation_objects",
+          "path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+          "start_line": 62,
+          "end_line": 116,
+          "file_sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+          "ast_body_modified": false
+        }
+      ],
+      "converter_main_executed": false,
+      "point_application": "existing float64 transform_points; official converter uses torch projection and float32 NumPy conversion, not executed"
+    }
+  },
+  "inputs": {
+    "vehicle": {
+      "agent": "1",
+      "sensor": "ouster",
+      "frame_key": "1752814590.2",
+      "identity_basis": "fixed path + R2-03 fingerprints; not an embedded physical sensor/time assertion",
+      "pcd": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.2.pcd",
+        "bytes": 2259016,
+        "sha256_before": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+        "header": {
+          "VERSION": [
+            "0.7"
+          ],
+          "FIELDS": [
+            "x",
+            "y",
+            "z",
+            "rgb"
+          ],
+          "SIZE": [
+            "4",
+            "4",
+            "4",
+            "4"
+          ],
+          "TYPE": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "COUNT": [
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "WIDTH": [
+            "141177"
+          ],
+          "HEIGHT": [
+            "1"
+          ],
+          "VIEWPOINT": [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          "POINTS": [
+            "141177"
+          ],
+          "DATA": [
+            "binary"
+          ]
+        },
+        "decoded_xyz_sha256": "a8c05b3d1a8be9707c453bb88a81b2df6511843034017d9ce99816d00dfffa77",
+        "stats": {
+          "count": 141177,
+          "finite": true,
+          "min": [
+            -97.33811950683594,
+            -123.79641723632812,
+            -4.901322841644287
+          ],
+          "max": [
+            191.69273376464844,
+            177.76437377929688,
+            54.312110900878906
+          ],
+          "centroid": [
+            1.4725903851271147,
+            -0.7276622077300435,
+            -1.3978132072072107
+          ],
+          "std": [
+            15.896888118825657,
+            16.500388968582065,
+            1.7635719546822395
+          ],
+          "quantiles_xyz": [
+            [
+              -97.33811950683594,
+              -123.79641723632812,
+              -4.901322841644287
+            ],
+            [
+              -55.94014663696289,
+              -60.247451171875,
+              -2.9537345027923583
+            ],
+            [
+              -5.760807991027832,
+              -6.527987480163574,
+              -2.467694044113159
+            ],
+            [
+              1.9442436695098877,
+              -0.3997097909450531,
+              -2.1400179862976074
+            ],
+            [
+              7.48744010925293,
+              6.194391250610352,
+              -1.259656548500061
+            ],
+            [
+              55.33911071777344,
+              46.49052993774403,
+              3.3781114387512194
+            ],
+            [
+              191.69273376464844,
+              177.76437377929688,
+              54.312110900878906
+            ]
+          ]
+        },
+        "sha256_after": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+        "unchanged": true
+      },
+      "yaml": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.2.yaml",
+        "bytes": 3592,
+        "sha256_before": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+        "raw_text": "ego_speed: 21.11006671957465\nlidar_pose:\n- 162.4558620813\n- -195.5474155993\n- -3.0822680281\n- -179.1582303045\n- 128.6537437347\n- 0.4917033974\n\ncamera0:\n  extrinsic:\n  - - 0.49475253154\n    - -0.86878421527\n    - -0.020830742394\n    - 0.22768276344\n  - - -0.07348954472\n    - -0.017942412622\n    - -0.99713457299\n    - -0.034359102044\n  - - 0.86592102374\n    - 0.49486569605\n    - -0.072723610507\n    - -0.34646634224\n  - - 0\n    - 0\n    - 0\n    - 1\n  intrinsic:\n  - - 2115.666837749488\n    - 0.0\n    - 983.015989198792\n  - - 0.0\n    - 2114.663797368562\n    - 612.690736866123\n  - - 0.0\n    - 0.0\n    - 1.0\n\ncamera1:\n  extrinsic:\n  - - -0.084450648983\n    - -0.99620505808\n    - 0.021061105098\n    - -0.0094457917472\n  - - -0.067011002442\n    - -0.015410617816\n    - -0.99763321838\n    - -0.09276123925\n  - - 0.99417182289\n    - -0.085662098504\n    - -0.065455262904\n    - -0.11247442542\n  - - 0\n    - 0\n    - 0\n    - 1\n  intrinsic:\n  - - 2078.542526298773\n    - 0.000000000000\n    - 959.380236033279\n  - - 0.000000000000\n    - 2078.291869330717\n    - 605.811312460073\n  - - 0.000000000000\n    - 0.000000000000\n    - 1.000000000000\n\ncamera2:\n  extrinsic:\n  - - -0.44045716181\n    - -0.89722278395\n    - 0.031444626865\n    - -0.041682364918\n  - - -0.07297336636\n    - 0.00087030976401\n    - -0.9973335101\n    - -0.047611309325\n  - - 0.8948029819\n    - -0.44157730752\n    - -0.065856701088\n    - -0.29472619056\n  - - 0\n    - 0\n    - 0\n    - 1\n  intrinsic:\n  - - 2080.784742512194\n    - 0.000000000000\n    - 927.972211324429\n  - - 0.000000000000\n    - 2079.516088086606\n    - 620.570790159011\n  - - 0.000000000000\n    - 0.000000000000\n    - 1.000000000000\n\nvehicles:\n  '1':\n    angle:\n    - 0.0\n    - 0.4892412826\n    - 0.0\n    center:\n    - 0\n    - 0\n    - 0\n    extent:\n    - 4.506838\n    - 1.578579\n    - 2.321422\n    location:\n    - 0.5121675768604206\n    - -0.05321566955961854\n    - -0.9541257180739957\n    obj_type: Car\n    speed: 6.32278729453\n  '2':\n    angle:\n    - 0.0\n    - -4.2063249006\n    - 0.0\n    center:\n    - 0\n    - 0\n    - 0\n    extent:\n    - 1.694557\n    - 0.821663\n    - 1.567604\n    location:\n    - 17.155717243487587\n    - -1.4126849880295549\n    - -1.6344544275634691\n    obj_type: Cyclist\n    speed: 6.05783832118\n  '3':\n    angle:\n    - 0.0\n    - -2.0133421833\n    - 0.0\n    center:\n    - 0\n    - 0\n    - 0\n    extent:\n    - 4.923773\n    - 2.42336\n    - 2.091038\n    location:\n    - 71.40329617235176\n    - -0.206376276946106\n    - -1.6841315357101647\n    obj_type: Car\n    speed: 13.6736184128\n  '4':\n    angle:\n    - 0.0\n    - -179.3663505536\n    - 0.0\n    center:\n    - 0\n    - 0\n    - 0\n    extent:\n    - 3.634095\n    - 1.980436\n    - 1.578718\n    location:\n    - 90.68066715628473\n    - 3.778636806957771\n    - -1.9385357211642553\n    obj_type: Car\n    speed: 15.3244904732\n  '5':\n    angle:\n    - 0.0\n    - -178.4852017399\n    - 0.0\n    center:\n    - 0\n    - 0\n    - 0\n    extent:\n    - 7.14467\n    - 2.933505\n    - 2.869124\n    location:\n    - 194.57968698756838\n    - 3.6546051435406763\n    - -2.0395821611841685\n    obj_type: Truck\n    speed: 5.986628549565013\n  '6':\n    angle:\n    - 0.0\n    - -0.7546474142\n    - 0.0\n    center:\n    - 0\n    - 0\n    - 0\n    extent:\n    - 7.14467\n    - 2.933505\n    - 2.869124\n    location:\n    - 104.67661357672453\n    - -0.38567192607720646\n    - -1.6845901827709577\n    obj_type: Truck\n    speed: 11.0998721117\n",
+        "root_fields": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "camera1": "dict",
+          "camera2": "dict",
+          "vehicles": "dict"
+        },
+        "lidar_pose_raw": [
+          162.4558620813,
+          -195.5474155993,
+          -3.0822680281,
+          -179.1582303045,
+          128.6537437347,
+          0.4917033974
+        ],
+        "lidar_pose_validation": {
+          "type": "list",
+          "length": 6,
+          "element_types": [
+            "float",
+            "float",
+            "float",
+            "float",
+            "float",
+            "float"
+          ],
+          "finite": true
+        },
+        "object_count": 6,
+        "vehicles_raw": {
+          "1": {
+            "angle": [
+              0.0,
+              0.4892412826,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.5121675768604206,
+              -0.05321566955961854,
+              -0.9541257180739957
+            ],
+            "obj_type": "Car",
+            "speed": 6.32278729453
+          },
+          "2": {
+            "angle": [
+              0.0,
+              -4.2063249006,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.155717243487587,
+              -1.4126849880295549,
+              -1.6344544275634691
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.05783832118
+          },
+          "3": {
+            "angle": [
+              0.0,
+              -2.0133421833,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.923773,
+              2.42336,
+              2.091038
+            ],
+            "location": [
+              71.40329617235176,
+              -0.206376276946106,
+              -1.6841315357101647
+            ],
+            "obj_type": "Car",
+            "speed": 13.6736184128
+          },
+          "4": {
+            "angle": [
+              0.0,
+              -179.3663505536,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              3.634095,
+              1.980436,
+              1.578718
+            ],
+            "location": [
+              90.68066715628473,
+              3.778636806957771,
+              -1.9385357211642553
+            ],
+            "obj_type": "Car",
+            "speed": 15.3244904732
+          },
+          "5": {
+            "angle": [
+              0.0,
+              -178.4852017399,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              194.57968698756838,
+              3.6546051435406763,
+              -2.0395821611841685
+            ],
+            "obj_type": "Truck",
+            "speed": 5.986628549565013
+          },
+          "6": {
+            "angle": [
+              0.0,
+              -0.7546474142,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              104.67661357672453,
+              -0.38567192607720646,
+              -1.6845901827709577
+            ],
+            "obj_type": "Truck",
+            "speed": 11.0998721117
+          }
+        },
+        "sha256_after": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+        "unchanged": true
+      }
+    },
+    "uav": {
+      "agent": "2",
+      "sensor": "ouster",
+      "frame_key": "1752814590.2",
+      "identity_basis": "fixed path + R2-03 fingerprints; not an embedded physical sensor/time assertion",
+      "pcd": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+        "bytes": 1128694,
+        "sha256_before": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+        "header": {
+          "VERSION": [
+            "0.7"
+          ],
+          "FIELDS": [
+            "x",
+            "y",
+            "z",
+            "rgb"
+          ],
+          "SIZE": [
+            "4",
+            "4",
+            "4",
+            "4"
+          ],
+          "TYPE": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "COUNT": [
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "WIDTH": [
+            "70532"
+          ],
+          "HEIGHT": [
+            "1"
+          ],
+          "VIEWPOINT": [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          "POINTS": [
+            "70532"
+          ],
+          "DATA": [
+            "binary"
+          ]
+        },
+        "decoded_xyz_sha256": "e342108c222d1ac132151f43c8a9b5962170e2e61ddde4b3acc3a24cfdf483c3",
+        "stats": {
+          "count": 70532,
+          "finite": true,
+          "min": [
+            -41.50202941894531,
+            -107.33362579345703,
+            -54.261993408203125
+          ],
+          "max": [
+            24.031099319458008,
+            98.0708999633789,
+            -40.970787048339844
+          ],
+          "centroid": [
+            -4.933746825669037,
+            -0.9064421038496577,
+            -50.940805932326604
+          ],
+          "std": [
+            12.653124897184066,
+            33.664675158654276,
+            1.150283193507288
+          ],
+          "quantiles_xyz": [
+            [
+              -41.50202941894531,
+              -107.33362579345703,
+              -54.261993408203125
+            ],
+            [
+              -29.731598529815674,
+              -71.29898216247558,
+              -53.515166206359865
+            ],
+            [
+              -15.362019062042236,
+              -24.93411684036255,
+              -51.128639221191406
+            ],
+            [
+              -4.72564172744751,
+              -1.1448808312416077,
+              -50.775394439697266
+            ],
+            [
+              5.509963750839233,
+              22.682259559631348,
+              -50.553853034973145
+            ],
+            [
+              18.2039372253418,
+              73.02209739685061,
+              -46.500395393371576
+            ],
+            [
+              24.031099319458008,
+              98.0708999633789,
+              -40.970787048339844
+            ]
+          ]
+        },
+        "sha256_after": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+        "unchanged": true
+      },
+      "yaml": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+        "bytes": 1390,
+        "sha256_before": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+        "raw_text": "ego_speed: 23.24216333410051\nlidar_pose:\n- 146.0642330580825\n- -178.5034348014285\n- -51.65063285498502\n- -179.0519502518403\n- 131.9188901918\n- 0.9285541649206536\ncamera0:\n  extrinsic:\n  - - 0.06803929128909855\n    - -0.9967998831529739\n    - 0.041960073726037356\n    - -0.14642701897995605\n  - - -0.9936364730091629\n    - -0.06391945893130076\n    - 0.09274083391818519\n    - 0.09978238675122578\n  - - -0.08976198720387052\n    - -0.04800308027769757\n    - -0.9948057548773356\n    - -0.29219438107444023\n  - - 0.0\n    - 0.0\n    - 0.0\n    - 1.0\n  intrinsic:\n  - - 2039.02418542193\n    - 0.0\n    - 977.851648966012\n  - - 0.0\n    - 2040.587112590212\n    - 630.821216777396\n  - - 0.0\n    - 0.0\n    - 1.0\nvehicles:\n  '1':\n    angle:\n    - -0.0376997505\n    - 4.3242316981\n    - 0.498576739\n    center:\n    - 0\n    - 0\n    - 0\n    extent:\n    - 4.983179\n    - 2.067932\n    - 2.215566\n    location:\n    - -23.917775937430495\n    - -0.2454373288737487\n    - -49.140255242657965\n    obj_type: Car\n    speed: 3.65229107258\n  '2':\n    angle:\n    - -0.0871966733\n    - 5.002606796\n    - 0.9961915008\n    center:\n    - 0\n    - 0\n    - 0\n    extent:\n    - 1.727786\n    - 0.837228\n    - 1.500413\n    location:\n    - -7.928257563139877\n    - -0.7297369240945472\n    - -49.82803297945791\n    obj_type: Cyclist\n    speed: 4.4077211334\n",
+        "root_fields": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "vehicles": "dict"
+        },
+        "lidar_pose_raw": [
+          146.0642330580825,
+          -178.5034348014285,
+          -51.65063285498502,
+          -179.0519502518403,
+          131.9188901918,
+          0.9285541649206536
+        ],
+        "lidar_pose_validation": {
+          "type": "list",
+          "length": 6,
+          "element_types": [
+            "float",
+            "float",
+            "float",
+            "float",
+            "float",
+            "float"
+          ],
+          "finite": true
+        },
+        "object_count": 2,
+        "vehicles_raw": {
+          "1": {
+            "angle": [
+              -0.0376997505,
+              4.3242316981,
+              0.498576739
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.983179,
+              2.067932,
+              2.215566
+            ],
+            "location": [
+              -23.917775937430495,
+              -0.2454373288737487,
+              -49.140255242657965
+            ],
+            "obj_type": "Car",
+            "speed": 3.65229107258
+          },
+          "2": {
+            "angle": [
+              -0.0871966733,
+              5.002606796,
+              0.9961915008
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.727786,
+              0.837228,
+              1.500413
+            ],
+            "location": [
+              -7.928257563139877,
+              -0.7297369240945472,
+              -49.82803297945791
+            ],
+            "obj_type": "Cyclist",
+            "speed": 4.4077211334
+          }
+        },
+        "sha256_after": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+        "unchanged": true
+      }
+    }
+  },
+  "duplicate_evidence": {
+    "path": "code/artifacts/manifests/v2u4real_r2_03_20261026/real_data_contract_audit.json",
+    "sha256": "426ace8f34e6dbd4f6fca6420f8850e9843650e36621decf247acd66119c9b7f",
+    "known_duplicate_pcd_hashes": [
+      "054aebfbbd28685a665c2cb3c215293f26baa93b198bffa92aba88f8dd5939df",
+      "1e07de7bbe3494ba7b237e4136617165f4169eac56c423812ad835639e1eaebd"
+    ],
+    "fixed_vehicle_in_known_duplicate_groups": false,
+    "scope": "R2-03 known groups only; not a global dataset uniqueness proof"
+  },
+  "transforms": {
+    "T_world_from_vehicle": [
+      [
+        -0.6245893917513397,
+        0.780929395877283,
+        -0.006113130657319102,
+        162.4558620813
+      ],
+      [
+        0.7809061694509124,
+        0.6244465272695465,
+        -0.015877313831587258,
+        -195.5474155993
+      ],
+      [
+        -0.00858173788894755,
+        -0.014690583233676216,
+        -0.9998552597946666,
+        -3.0822680281
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "T_world_from_uav": [
+      [
+        -0.6679901839833097,
+        0.7441685995012776,
+        -0.0014864784732321994,
+        146.0642330580825
+      ],
+      [
+        0.7439936102181978,
+        0.6677869441463214,
+        -0.023110715744226684,
+        -178.5034348014285
+      ],
+      [
+        -0.016205618051674277,
+        -0.016543661747783614,
+        -0.9997318066359288,
+        -51.65063285498502
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "T_vehicle_from_uav": [
+      [
+        0.9983478553278967,
+        0.05682110500852777,
+        -0.008539425495851856,
+        23.96458833512483
+      ],
+      [
+        -0.05683087463771391,
+        0.9983834091073849,
+        -0.0009055976085431832,
+        -1.4441527244532009
+      ],
+      [
+        0.00847416368155659,
+        0.001389404450112016,
+        0.9999631283728273,
+        48.39092656962512
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "matrix_checks": {
+    "T_world_from_vehicle": {
+      "shape": [
+        4,
+        4
+      ],
+      "finite": true,
+      "orthogonality_max_abs": 4.440892098500626e-16,
+      "determinant": 1.0000000000000004,
+      "determinant_abs_error": 4.440892098500626e-16,
+      "status": "PASS"
+    },
+    "T_world_from_uav": {
+      "shape": [
+        4,
+        4
+      ],
+      "finite": true,
+      "orthogonality_max_abs": 2.220446049250313e-16,
+      "determinant": 1.0000000000000002,
+      "determinant_abs_error": 2.220446049250313e-16,
+      "status": "PASS"
+    },
+    "T_vehicle_from_uav": {
+      "shape": [
+        4,
+        4
+      ],
+      "finite": true,
+      "orthogonality_max_abs": 6.661338147750939e-16,
+      "determinant": 0.9999999999999998,
+      "determinant_abs_error": 2.220446049250313e-16,
+      "status": "PASS"
+    }
+  },
+  "relative_matrix_check": {
+    "official_call": "x1_to_x2(uav_pose_list, vehicle_pose_list)",
+    "branch": "list/list",
+    "source": "UAV local code frame",
+    "target": "vehicle local code frame",
+    "order": "inv(T_world_from_vehicle) @ T_world_from_uav",
+    "independent_method": "solve(T_world_from_vehicle, T_world_from_uav)",
+    "max_abs_error": 3.552713678800501e-14,
+    "atol": 1e-12,
+    "status": "PASS"
+  },
+  "point_checks": {
+    "all_points_float64": true,
+    "before": {
+      "count": 70532,
+      "finite": true,
+      "min": [
+        -41.50202941894531,
+        -107.33362579345703,
+        -54.261993408203125
+      ],
+      "max": [
+        24.031099319458008,
+        98.0708999633789,
+        -40.970787048339844
+      ],
+      "centroid": [
+        -4.933746825669037,
+        -0.9064421038496577,
+        -50.940805932326604
+      ],
+      "std": [
+        12.653124897184066,
+        33.664675158654276,
+        1.150283193507288
+      ],
+      "quantiles_xyz": [
+        [
+          -41.50202941894531,
+          -107.33362579345703,
+          -54.261993408203125
+        ],
+        [
+          -29.731598529815674,
+          -71.29898216247558,
+          -53.515166206359865
+        ],
+        [
+          -15.362019062042236,
+          -24.93411684036255,
+          -51.128639221191406
+        ],
+        [
+          -4.72564172744751,
+          -1.1448808312416077,
+          -50.775394439697266
+        ],
+        [
+          5.509963750839233,
+          22.682259559631348,
+          -50.553853034973145
+        ],
+        [
+          18.2039372253418,
+          73.02209739685061,
+          -46.500395393371576
+        ],
+        [
+          24.031099319458008,
+          98.0708999633789,
+          -40.970787048339844
+        ]
+      ]
+    },
+    "after": {
+      "count": 70532,
+      "finite": true,
+      "min": [
+        -21.226352566293606,
+        -109.43824806053419,
+        -5.702597951690123
+      ],
+      "max": [
+        52.59150097911676,
+        97.17032227770098,
+        7.488570970696799
+      ],
+      "centroid": [
+        19.422492947978043,
+        -2.022608462879687,
+        -2.5910698851541754
+      ],
+      "std": [
+        12.782993965084204,
+        33.616766721889135,
+        1.114959677025351
+      ],
+      "quantiles_xyz": [
+        [
+          -21.226352566293606,
+          -109.43824806053419,
+          -5.702597951690123
+        ],
+        [
+          -6.546948303560488,
+          -72.68266804261243,
+          -4.998649060389049
+        ],
+        [
+          9.027567008059256,
+          -26.03105686569491,
+          -2.753428496430212
+        ],
+        [
+          19.716492206396214,
+          -2.301584413184421,
+          -2.4404303336445388
+        ],
+        [
+          29.957509868630975,
+          21.533545389943672,
+          -2.2597778290809476
+        ],
+        [
+          43.287028093113726,
+          71.88586465093462,
+          1.9094995087138378
+        ],
+        [
+          52.59150097911676,
+          97.17032227770098,
+          7.488570970696799
+        ]
+      ]
+    },
+    "recovered": {
+      "count": 70532,
+      "finite": true,
+      "min": [
+        -41.50202941894531,
+        -107.33362579345706,
+        -54.261993408203125
+      ],
+      "max": [
+        24.031099319458015,
+        98.07089996337892,
+        -40.970787048339844
+      ],
+      "centroid": [
+        -4.933746825669037,
+        -0.9064421038496577,
+        -50.940805932326604
+      ],
+      "std": [
+        12.653124897184068,
+        33.664675158654276,
+        1.150283193507288
+      ],
+      "quantiles_xyz": [
+        [
+          -41.50202941894531,
+          -107.33362579345706,
+          -54.261993408203125
+        ],
+        [
+          -29.731598529815678,
+          -71.29898216247561,
+          -53.515166206359865
+        ],
+        [
+          -15.362019062042233,
+          -24.934116840362552,
+          -51.128639221191406
+        ],
+        [
+          -4.725641727447504,
+          -1.144880831241608,
+          -50.775394439697266
+        ],
+        [
+          5.509963750839237,
+          22.682259559631355,
+          -50.553853034973145
+        ],
+        [
+          18.203937225341807,
+          73.02209739685063,
+          -46.500395393371576
+        ],
+        [
+          24.031099319458015,
+          98.07089996337892,
+          -40.970787048339844
+        ]
+      ]
+    },
+    "inverse_matrix": [
+      [
+        0.9983478553278965,
+        -0.05683087463771372,
+        0.008474163681556594,
+        -24.4171404630821
+      ],
+      [
+        0.056821105008527974,
+        0.9983834091073851,
+        0.0013894044501120144,
+        0.012889161314151371
+      ],
+      [
+        -0.008539425495851858,
+        -0.0009055976085431876,
+        0.999963128372828,
+        -48.18580632204922
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "inverse_product_max_abs": 3.552713678800501e-15,
+    "roundtrip_max_abs": 4.263256414560601e-14,
+    "roundtrip_coordinate_rmse": 5.366847372845697e-15,
+    "roundtrip_point_norm_rmse": 9.295652326236296e-15,
+    "centroid_transform_max_abs": 4.618527782440651e-14,
+    "distance_subset_indices": [
+      0,
+      555,
+      1110,
+      1666,
+      2221,
+      2776,
+      3332,
+      3887,
+      4442,
+      4998,
+      5553,
+      6108,
+      6664,
+      7219,
+      7775,
+      8330,
+      8885,
+      9441,
+      9996,
+      10551,
+      11107,
+      11662,
+      12217,
+      12773,
+      13328,
+      13884,
+      14439,
+      14994,
+      15550,
+      16105,
+      16660,
+      17216,
+      17771,
+      18326,
+      18882,
+      19437,
+      19993,
+      20548,
+      21103,
+      21659,
+      22214,
+      22769,
+      23325,
+      23880,
+      24435,
+      24991,
+      25546,
+      26102,
+      26657,
+      27212,
+      27768,
+      28323,
+      28878,
+      29434,
+      29989,
+      30544,
+      31100,
+      31655,
+      32211,
+      32766,
+      33321,
+      33877,
+      34432,
+      34987,
+      35543,
+      36098,
+      36653,
+      37209,
+      37764,
+      38319,
+      38875,
+      39430,
+      39986,
+      40541,
+      41096,
+      41652,
+      42207,
+      42762,
+      43318,
+      43873,
+      44428,
+      44984,
+      45539,
+      46095,
+      46650,
+      47205,
+      47761,
+      48316,
+      48871,
+      49427,
+      49982,
+      50537,
+      51093,
+      51648,
+      52204,
+      52759,
+      53314,
+      53870,
+      54425,
+      54980,
+      55536,
+      56091,
+      56646,
+      57202,
+      57757,
+      58313,
+      58868,
+      59423,
+      59979,
+      60534,
+      61089,
+      61645,
+      62200,
+      62755,
+      63311,
+      63866,
+      64422,
+      64977,
+      65532,
+      66088,
+      66643,
+      67198,
+      67754,
+      68309,
+      68864,
+      69420,
+      69975,
+      70531
+    ],
+    "distance_pair_count": 8128,
+    "distance_max_abs_error": 5.684341886080802e-14,
+    "distance_rmse": 7.216587301861323e-15,
+    "status": "PASS"
+  },
+  "annotation_diagnostic": {
+    "interpretation": "official_code_interpretation_only",
+    "status": "official_code_interpretation_only",
+    "physical_annotation_acceptance": "NOT_ESTABLISHED",
+    "sides": {
+      "vehicle": [
+        {
+          "object_id": "1",
+          "raw": {
+            "angle": [
+              0.0,
+              0.4892412826,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.5121675768604206,
+              -0.05321566955961854,
+              -0.9541257180739957
+            ],
+            "obj_type": "Car",
+            "speed": 6.32278729453
+          },
+          "object_pose_code_order": [
+            0.5121675768604206,
+            -0.05321566955961854,
+            -0.9541257180739957,
+            0.0,
+            0.4892412826,
+            0.0
+          ],
+          "field_validation": {
+            "location": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "center": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "int",
+                "int",
+                "int"
+              ],
+              "finite": true
+            },
+            "extent": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "angle": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            }
+          },
+          "object_to_vehicle_matrix": [
+            [
+              0.9999635440606689,
+              -0.008538767453607493,
+              0.0,
+              0.5121675768604206
+            ],
+            [
+              0.008538767453607493,
+              0.9999635440606689,
+              0.0,
+              -0.05321566955961854
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -0.9541257180739957
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "corners_vehicle_frame": [
+            [
+              2.772243985848143,
+              -0.8232349744529511,
+              -2.1148367180739958
+            ],
+            [
+              2.7587648668599947,
+              0.7552864769667955,
+              -2.1148367180739958
+            ],
+            [
+              -1.747908832127302,
+              0.716803635333714,
+              -2.1148367180739958
+            ],
+            [
+              -1.7344297131391535,
+              -0.8617178160860326,
+              -2.1148367180739958
+            ],
+            [
+              2.772243985848143,
+              -0.8232349744529511,
+              0.20658528192600434
+            ],
+            [
+              2.7587648668599947,
+              0.7552864769667955,
+              0.20658528192600434
+            ],
+            [
+              -1.747908832127302,
+              0.716803635333714,
+              0.20658528192600434
+            ],
+            [
+              -1.7344297131391535,
+              -0.8617178160860326,
+              0.20658528192600434
+            ]
+          ],
+          "official_converter_output": {
+            "loc": [
+              0.5121675768604206,
+              -0.05321566955961851,
+              -0.9541257180739958
+            ],
+            "dims": [
+              4.506838,
+              1.5785790000000002,
+              2.321422
+            ],
+            "heading": 0.00853887121805004,
+            "cls": "Vehicle"
+          },
+          "converter_intermediate_max_abs": 0.0,
+          "note": "converter reduces tilted 8 corners to yaw-only center/dimensions; projection uses full 8 corners"
+        },
+        {
+          "object_id": "2",
+          "raw": {
+            "angle": [
+              0.0,
+              -4.2063249006,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.155717243487587,
+              -1.4126849880295549,
+              -1.6344544275634691
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.05783832118
+          },
+          "object_pose_code_order": [
+            17.155717243487587,
+            -1.4126849880295549,
+            -1.6344544275634691,
+            0.0,
+            -4.2063249006,
+            0.0
+          ],
+          "field_validation": {
+            "location": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "center": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "int",
+                "int",
+                "int"
+              ],
+              "finite": true
+            },
+            "extent": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "angle": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            }
+          },
+          "object_to_vehicle_matrix": [
+            [
+              0.9973063863583176,
+              0.07334829056572496,
+              0.0,
+              17.155717243487587
+            ],
+            [
+              -0.07334829056572496,
+              0.9973063863583176,
+              0.0,
+              -1.4126849880295549
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -1.6344544275634691
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "corners_vehicle_frame": [
+            [
+              17.97057971432613,
+              -1.8845562963048137,
+              -2.418256427563469
+            ],
+            [
+              18.030847290797237,
+              -1.0651065389704792,
+              -2.418256427563469
+            ],
+            [
+              16.340854772649042,
+              -0.9408136797542961,
+              -2.418256427563469
+            ],
+            [
+              16.280587196177937,
+              -1.7602634370886305,
+              -2.418256427563469
+            ],
+            [
+              17.97057971432613,
+              -1.8845562963048137,
+              -0.8506524275634691
+            ],
+            [
+              18.030847290797237,
+              -1.0651065389704792,
+              -0.8506524275634691
+            ],
+            [
+              16.340854772649042,
+              -0.9408136797542961,
+              -0.8506524275634691
+            ],
+            [
+              16.280587196177937,
+              -1.7602634370886305,
+              -0.8506524275634691
+            ]
+          ],
+          "official_converter_output": {
+            "loc": [
+              17.155717243487587,
+              -1.4126849880295549,
+              -1.6344544275634691
+            ],
+            "dims": [
+              1.6945570000000032,
+              0.821663,
+              1.5676039999999998
+            ],
+            "heading": -0.07341421892409306,
+            "cls": "Cyclist"
+          },
+          "converter_intermediate_max_abs": 0.0,
+          "note": "converter reduces tilted 8 corners to yaw-only center/dimensions; projection uses full 8 corners"
+        },
+        {
+          "object_id": "3",
+          "raw": {
+            "angle": [
+              0.0,
+              -2.0133421833,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.923773,
+              2.42336,
+              2.091038
+            ],
+            "location": [
+              71.40329617235176,
+              -0.206376276946106,
+              -1.6841315357101647
+            ],
+            "obj_type": "Car",
+            "speed": 13.6736184128
+          },
+          "object_pose_code_order": [
+            71.40329617235176,
+            -0.206376276946106,
+            -1.6841315357101647,
+            0.0,
+            -2.0133421833,
+            0.0
+          ],
+          "field_validation": {
+            "location": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "center": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "int",
+                "int",
+                "int"
+              ],
+              "finite": true
+            },
+            "extent": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "angle": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            }
+          },
+          "object_to_vehicle_matrix": [
+            [
+              0.9993826730503488,
+              0.03513221892707188,
+              0.0,
+              71.40329617235176
+            ],
+            [
+              -0.03513221892707188,
+              0.9993826730503488,
+              0.0,
+              -0.206376276946106
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -1.6841315357101647
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "corners_vehicle_frame": [
+            [
+              73.82109387643877,
+              -1.5037998097193555,
+              -2.7296505357101646
+            ],
+            [
+              73.90623189049788,
+              0.9180641848439379,
+              -2.7296505357101646
+            ],
+            [
+              68.98549846826475,
+              1.0910472558271436,
+              -2.7296505357101646
+            ],
+            [
+              68.90036045420564,
+              -1.3308167387361498,
+              -2.7296505357101646
+            ],
+            [
+              73.82109387643877,
+              -1.5037998097193555,
+              -0.6386125357101646
+            ],
+            [
+              73.90623189049788,
+              0.9180641848439379,
+              -0.6386125357101646
+            ],
+            [
+              68.98549846826475,
+              1.0910472558271436,
+              -0.6386125357101646
+            ],
+            [
+              68.90036045420564,
+              -1.3308167387361498,
+              -0.6386125357101646
+            ]
+          ],
+          "official_converter_output": {
+            "loc": [
+              71.40329617235176,
+              -0.206376276946106,
+              -1.6841315357101645
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876284,
+            "cls": "Vehicle"
+          },
+          "converter_intermediate_max_abs": 0.0,
+          "note": "converter reduces tilted 8 corners to yaw-only center/dimensions; projection uses full 8 corners"
+        },
+        {
+          "object_id": "4",
+          "raw": {
+            "angle": [
+              0.0,
+              -179.3663505536,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              3.634095,
+              1.980436,
+              1.578718
+            ],
+            "location": [
+              90.68066715628473,
+              3.778636806957771,
+              -1.9385357211642553
+            ],
+            "obj_type": "Car",
+            "speed": 15.3244904732
+          },
+          "object_pose_code_order": [
+            90.68066715628473,
+            3.778636806957771,
+            -1.9385357211642553,
+            0.0,
+            -179.3663505536,
+            0.0
+          ],
+          "field_validation": {
+            "location": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "center": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "int",
+                "int",
+                "int"
+              ],
+              "finite": true
+            },
+            "extent": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "angle": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            }
+          },
+          "object_to_vehicle_matrix": [
+            [
+              -0.9999388469063037,
+              0.01105904370602627,
+              0.0,
+              90.68066715628473
+            ],
+            [
+              -0.01105904370602627,
+              -0.9999388469063037,
+              0.0,
+              3.778636806957771
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -1.9385357211642553
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "corners_vehicle_frame": [
+            [
+              88.85277991022025,
+              4.7486994443452115,
+              -2.7278947211642555
+            ],
+            [
+              88.87468163850124,
+              2.768384554133479,
+              -2.7278947211642555
+            ],
+            [
+              92.5085544023492,
+              2.8085741695703303,
+              -2.7278947211642555
+            ],
+            [
+              92.48665267406821,
+              4.788889059782063,
+              -2.7278947211642555
+            ],
+            [
+              88.85277991022025,
+              4.7486994443452115,
+              -1.1491767211642552
+            ],
+            [
+              88.87468163850124,
+              2.768384554133479,
+              -1.1491767211642552
+            ],
+            [
+              92.5085544023492,
+              2.8085741695703303,
+              -1.1491767211642552
+            ],
+            [
+              92.48665267406821,
+              4.788889059782063,
+              -1.1491767211642552
+            ]
+          ],
+          "official_converter_output": {
+            "loc": [
+              90.68066715628473,
+              3.7786368069577714,
+              -1.9385357211642553
+            ],
+            "dims": [
+              3.6340949999999976,
+              1.9804360000000003,
+              1.5787180000000003
+            ],
+            "heading": -3.130533384446674,
+            "cls": "Vehicle"
+          },
+          "converter_intermediate_max_abs": 0.0,
+          "note": "converter reduces tilted 8 corners to yaw-only center/dimensions; projection uses full 8 corners"
+        },
+        {
+          "object_id": "5",
+          "raw": {
+            "angle": [
+              0.0,
+              -178.4852017399,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              194.57968698756838,
+              3.6546051435406763,
+              -2.0395821611841685
+            ],
+            "obj_type": "Truck",
+            "speed": 5.986628549565013
+          },
+          "object_pose_code_order": [
+            194.57968698756838,
+            3.6546051435406763,
+            -2.0395821611841685,
+            0.0,
+            -178.4852017399,
+            0.0
+          ],
+          "field_validation": {
+            "location": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "center": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "int",
+                "int",
+                "int"
+              ],
+              "finite": true
+            },
+            "extent": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "angle": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            }
+          },
+          "object_to_vehicle_matrix": [
+            [
+              -0.9996505306938668,
+              0.026435137288668115,
+              0.0,
+              194.57968698756838
+            ],
+            [
+              -0.026435137288668115,
+              -0.9996505306938668,
+              0.0,
+              3.6546051435406763
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -2.0395821611841685
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "corners_vehicle_frame": [
+            [
+              190.9698266052961,
+              5.026409892396118,
+              -3.474144161184168
+            ],
+            [
+              191.0473742127081,
+              2.0939300623530066,
+              -3.474144161184168
+            ],
+            [
+              198.18954736984065,
+              2.2828003946852347,
+              -3.474144161184168
+            ],
+            [
+              198.11199976242867,
+              5.215280224728346,
+              -3.474144161184168
+            ],
+            [
+              190.9698266052961,
+              5.026409892396118,
+              -0.6050201611841686
+            ],
+            [
+              191.0473742127081,
+              2.0939300623530066,
+              -0.6050201611841686
+            ],
+            [
+              198.18954736984065,
+              2.2828003946852347,
+              -0.6050201611841686
+            ],
+            [
+              198.11199976242867,
+              5.215280224728346,
+              -0.6050201611841686
+            ]
+          ],
+          "official_converter_output": {
+            "loc": [
+              194.57968698756838,
+              3.6546051435406763,
+              -2.0395821611841685
+            ],
+            "dims": [
+              7.144670000000012,
+              2.933505,
+              2.8691239999999993
+            ],
+            "heading": -3.1151544364475665,
+            "cls": "Vehicle"
+          },
+          "converter_intermediate_max_abs": 0.0,
+          "note": "converter reduces tilted 8 corners to yaw-only center/dimensions; projection uses full 8 corners"
+        },
+        {
+          "object_id": "6",
+          "raw": {
+            "angle": [
+              0.0,
+              -0.7546474142,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              104.67661357672453,
+              -0.38567192607720646,
+              -1.6845901827709577
+            ],
+            "obj_type": "Truck",
+            "speed": 11.0998721117
+          },
+          "object_pose_code_order": [
+            104.67661357672453,
+            -0.38567192607720646,
+            -1.6845901827709577,
+            0.0,
+            -0.7546474142,
+            0.0
+          ],
+          "field_validation": {
+            "location": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "center": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "int",
+                "int",
+                "int"
+              ],
+              "finite": true
+            },
+            "extent": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "angle": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            }
+          },
+          "object_to_vehicle_matrix": [
+            [
+              0.9999132625524864,
+              0.013170701258569442,
+              0.0,
+              104.67661357672453
+            ],
+            [
+              -0.013170701258569442,
+              0.9999132625524864,
+              0.0,
+              -0.38567192607720646
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -1.6845901827709577
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "corners_vehicle_frame": [
+            [
+              108.22932056250721,
+              -1.8993473607897537,
+              -3.1191521827709576
+            ],
+            [
+              108.26795688050274,
+              1.0339031944742776,
+              -3.1191521827709576
+            ],
+            [
+              101.12390659094186,
+              1.128003508635341,
+              -3.1191521827709576
+            ],
+            [
+              101.08527027294633,
+              -1.8052470466286903,
+              -3.1191521827709576
+            ],
+            [
+              108.22932056250721,
+              -1.8993473607897537,
+              -0.25002818277095784
+            ],
+            [
+              108.26795688050274,
+              1.0339031944742776,
+              -0.25002818277095784
+            ],
+            [
+              101.12390659094186,
+              1.128003508635341,
+              -0.25002818277095784
+            ],
+            [
+              101.08527027294633,
+              -1.8052470466286903,
+              -0.25002818277095784
+            ]
+          ],
+          "official_converter_output": {
+            "loc": [
+              104.67661357672452,
+              -0.38567192607720635,
+              -1.6845901827709577
+            ],
+            "dims": [
+              7.144670000000008,
+              2.933505,
+              2.869124
+            ],
+            "heading": -0.013171082069451414,
+            "cls": "Vehicle"
+          },
+          "converter_intermediate_max_abs": 0.0,
+          "note": "converter reduces tilted 8 corners to yaw-only center/dimensions; projection uses full 8 corners"
+        }
+      ],
+      "uav": [
+        {
+          "object_id": "1",
+          "raw": {
+            "angle": [
+              -0.0376997505,
+              4.3242316981,
+              0.498576739
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.983179,
+              2.067932,
+              2.215566
+            ],
+            "location": [
+              -23.917775937430495,
+              -0.2454373288737487,
+              -49.140255242657965
+            ],
+            "obj_type": "Car",
+            "speed": 3.65229107258
+          },
+          "object_pose_code_order": [
+            -23.917775937430495,
+            -0.2454373288737487,
+            -49.140255242657965,
+            -0.0376997505,
+            4.3242316981,
+            0.498576739
+          ],
+          "field_validation": {
+            "location": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "center": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "int",
+                "int",
+                "int"
+              ],
+              "finite": true
+            },
+            "extent": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "angle": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            }
+          },
+          "object_to_vehicle_matrix": [
+            [
+              0.9998266845414429,
+              -0.018616627541225464,
+              0.0001485188790576063,
+              0.49201155203279257
+            ],
+            [
+              0.01861664041267391,
+              0.9998266916546998,
+              -8.57587469475368e-05,
+              -0.2854238580323889
+            ],
+            [
+              -0.00014689660084610368,
+              8.850880619689558e-05,
+              0.9999999852937892,
+              -0.9505409517719059
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "corners_vehicle_frame": [
+            [
+              3.0022536542789555,
+              -1.2727306352363685,
+              -2.0587814566051774
+            ],
+            [
+              2.963755734454374,
+              0.7948429748905184,
+              -2.058598426412561
+            ],
+            [
+              -2.0185596035921685,
+              0.7020729233355302,
+              -2.057866414356053
+            ],
+            [
+              -1.980061683767587,
+              -1.3655006867913564,
+              -2.05804944454867
+            ],
+            [
+              3.0025827076577536,
+              -1.2729206394003079,
+              0.15678451081224165
+            ],
+            [
+              2.964084787833172,
+              0.7946529707265786,
+              0.1569675410048581
+            ],
+            [
+              -2.0182305502133704,
+              0.7018829191715906,
+              0.15769955306136585
+            ],
+            [
+              -1.979732630388789,
+              -1.3656906909552962,
+              0.1575165228687494
+            ]
+          ],
+          "official_converter_output": {
+            "loc": [
+              0.49201155203279257,
+              -0.2854238580323889,
+              -0.9505409517719057
+            ],
+            "dims": [
+              4.9831789462349585,
+              2.067931991900108,
+              2.215565967417419
+            ],
+            "heading": 0.018617716138351958,
+            "cls": "Vehicle"
+          },
+          "converter_intermediate_max_abs": 0.0,
+          "note": "converter reduces tilted 8 corners to yaw-only center/dimensions; projection uses full 8 corners"
+        },
+        {
+          "object_id": "2",
+          "raw": {
+            "angle": [
+              -0.0871966733,
+              5.002606796,
+              0.9961915008
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.727786,
+              0.837228,
+              1.500413
+            ],
+            "location": [
+              -7.928257563139877,
+              -0.7297369240945472,
+              -49.82803297945791
+            ],
+            "obj_type": "Cyclist",
+            "speed": 4.4077211334
+          },
+          "object_pose_code_order": [
+            -7.928257563139877,
+            -0.7297369240945472,
+            -49.82803297945791,
+            -0.0871966733,
+            5.002606796,
+            0.9961915008
+          ],
+          "field_validation": {
+            "location": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "center": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "int",
+                "int",
+                "int"
+              ],
+              "finite": true
+            },
+            "extent": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            },
+            "angle": {
+              "type": "list",
+              "length": 3,
+              "element_types": [
+                "float",
+                "float",
+                "float"
+              ],
+              "finite": true
+            }
+          },
+          "object_to_vehicle_matrix": [
+            [
+              0.9994971361029272,
+              -0.030465756449513205,
+              0.0087927587256139,
+              16.43346771731731
+            ],
+            [
+              0.03045685055432835,
+              0.9995354266667398,
+              0.001145029454020338,
+              -1.6770160033113344
+            ],
+            [
+              -0.008823558032857878,
+              -0.0008766539215805334,
+              0.9999606873780302,
+              -1.5034684212073515
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "corners_vehicle_frame": [
+            [
+              17.303083304138145,
+              -2.0699830749531722,
+              -2.260901059037769
+            ],
+            [
+              17.27757651979743,
+              -1.2331440287558308,
+              -2.261635018247226
+            ],
+            [
+              15.5506593609987,
+              -1.2857669487476917,
+              -2.2463897982078667
+            ],
+            [
+              15.576166145339412,
+              -2.1226059949450327,
+              -2.2456558389984096
+            ],
+            [
+              17.31627607363592,
+              -2.068265057874977,
+              -0.7605470442068364
+            ],
+            [
+              17.290769289295206,
+              -1.2314260116776359,
+              -0.7612810034162935
+            ],
+            [
+              15.563852130496475,
+              -1.2840489316694967,
+              -0.7460357833769341
+            ],
+            [
+              15.589358914837188,
+              -2.120887977866838,
+              -0.745301824167477
+            ]
+          ],
+          "official_converter_output": {
+            "loc": [
+              16.43346771731731,
+              -1.6770160033113342,
+              -1.5034684212073515
+            ],
+            "dims": [
+              1.7277187401489724,
+              0.8372276782858288,
+              1.5003540148309327
+            ],
+            "heading": 0.03046274748160606,
+            "cls": "Cyclist"
+          },
+          "converter_intermediate_max_abs": 0.0,
+          "note": "converter reduces tilted 8 corners to yaw-only center/dimensions; projection uses full 8 corners"
+        }
+      ]
+    },
+    "same_id_center_separations_code_units": {
+      "1": 0.2331088987578514,
+      "2": 0.7801747224527404
+    }
+  },
+  "visualization": {
+    "path": "bev_overlay.png",
+    "sha256": "420c7676c799541ff7f905717a83aae93ffe8bf0aefc8353af638d84dda134d0",
+    "sampled_points": {
+      "vehicle": {
+        "count": 20000,
+        "first_index": 0,
+        "last_index": 141176,
+        "index_sha256": "c942cd4ae7e147f5c93510bcbeef13cafed8bb401c97a6b0df81313545d45466"
+      },
+      "uav": {
+        "count": 20000,
+        "first_index": 0,
+        "last_index": 70531,
+        "index_sha256": "83f75fcb0ef1bfd8af713a80dd22e9018642e8cda7a7e1a4cc0c5c068b1d3b0a"
+      }
+    },
+    "range_basis": "full XYZ XY bounds plus all official corners; shared limits, no clipping",
+    "equal_aspect": true,
+    "xlim": [
+      -106.20394951313624,
+      207.05537737614094
+    ],
+    "ylim": [
+      -132.84324096679688,
+      186.81119750976563
+    ]
+  },
+  "visualization_status": "PASS"
+}

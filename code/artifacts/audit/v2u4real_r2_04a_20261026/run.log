@@ -1,0 +1,315 @@
+cwd=D:\shen\PKU\PIJWM
+PYTHONPATH=code/src;code/scripts;code/tests
+PYTHONUTF8=1
+CPU-only
+$ python code/scripts/audit_v2u4real_r2_04a_single_frame_geometry_v1.py
+{"annotation_diagnostic_status": "official_code_interpretation_only", "input_integrity_status": "PASS", "official_source_status": "PASS", "physical_alignment_status": "NOT_ESTABLISHED", "software_transform_status": "PASS", "task_execution_status": "COMPLETED", "visualization_status": "PASS"}
+
+exit_code=0
+
+$ python -m unittest test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests -v
+test_bad_pose_refused_without_coercing_list (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_bad_pose_refused_without_coercing_list) ... ok
+test_deterministic_subset (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_deterministic_subset) ... ok
+test_duplicate_yaml_key_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_duplicate_yaml_key_refused) ... ok
+test_exact_converter_body_artificial_yaml (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_exact_converter_body_artificial_yaml) ... ok
+test_invalid_matrix_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_invalid_matrix_refused) ... ok
+test_inverse_and_distances_nonplanar_pose (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_inverse_and_distances_nonplanar_pose) ... ok
+test_known_rotation_translation_and_direction (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_known_rotation_translation_and_direction) ... ok
+test_nonfinite_points_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_nonfinite_points_refused) ... ok
+test_official_box_primitives_known_extent (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_official_box_primitives_known_extent) ... ok
+test_source_change_stops_before_execution (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_source_change_stops_before_execution) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.084s
+
+OK
+
+exit_code=0
+
+$ python -m unittest test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests -v
+test_fixed_real_sample_strict_read (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_fixed_real_sample_strict_read) ... ok
+test_missing_fixed_sample_does_not_select_another (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_missing_fixed_sample_does_not_select_another) ... ok
+test_real_all_points_roundtrip_and_distance (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_all_points_roundtrip_and_distance) ... ok
+test_real_annotation_exact_converter_and_raw_preserved (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_annotation_exact_converter_and_raw_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.209s
+
+OK
+
+exit_code=0
+
+$ python -m unittest test_v2u4real_full_sample_v1 test_v2u4real_preparation_v1 test_v2u4real_interface_v1.DatasetAuditTests test_v2u4real_interface_v1.GeometryTests -v
+test_duplicate_members_and_unsafe_paths_rejected (test_v2u4real_full_sample_v1.FullSampleTests.test_duplicate_members_and_unsafe_paths_rejected) ... ok
+test_extract_only_selected_raw_bytes_and_no_overwrite (test_v2u4real_full_sample_v1.FullSampleTests.test_extract_only_selected_raw_bytes_and_no_overwrite) ... extracted 12 unchanged files for 3 candidate keys
+ok
+test_file_pairing_never_establishes_physical_pairing (test_v2u4real_full_sample_v1.FullSampleTests.test_file_pairing_never_establishes_physical_pairing) ... ok
+test_fixed_scope_and_digest_before_use (test_v2u4real_full_sample_v1.FullSampleTests.test_fixed_scope_and_digest_before_use) ... ok
+test_ignored_range_never_reads_body_or_writes_archive (test_v2u4real_full_sample_v1.FullSampleTests.test_ignored_range_never_reads_body_or_writes_archive) ... ok
+test_missing_frame_not_hidden_by_intersection (test_v2u4real_full_sample_v1.FullSampleTests.test_missing_frame_not_hidden_by_intersection) ... ok
+test_nested_clock_fields_preserve_values_without_inventing_units (test_v2u4real_full_sample_v1.FullSampleTests.test_nested_clock_fields_preserve_values_without_inventing_units) ... ok
+test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings (test_v2u4real_full_sample_v1.FullSampleTests.test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings) ... ok
+test_structural_success_never_qualifies_physical_pair (test_v2u4real_full_sample_v1.FullSampleTests.test_structural_success_never_qualifies_physical_pair) ... ok
+test_complete_member_is_idempotent_and_not_overwritten (test_v2u4real_preparation_v1.PreparationTests.test_complete_member_is_idempotent_and_not_overwritten) ... ok
+test_hard_download_and_output_boundaries (test_v2u4real_preparation_v1.PreparationTests.test_hard_download_and_output_boundaries) ... ok
+test_ignored_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_ignored_range_does_not_read_response_body) ... ok
+test_missing_raw_assets_stay_blocked_without_fake_pass (test_v2u4real_preparation_v1.PreparationTests.test_missing_raw_assets_stay_blocked_without_fake_pass) ... ok
+test_only_train_and_immutable_revision (test_v2u4real_preparation_v1.PreparationTests.test_only_train_and_immutable_revision) ... ok
+test_partial_compressed_member_is_not_a_successful_sample (test_v2u4real_preparation_v1.PreparationTests.test_partial_compressed_member_is_not_a_successful_sample) ... ok
+test_path_traversal_links_and_oversize_are_blocked (test_v2u4real_preparation_v1.PreparationTests.test_path_traversal_links_and_oversize_are_blocked) ... ok
+test_wrong_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_wrong_range_does_not_read_response_body) ... ok
+test_audit_missing_keys_duplicates_and_no_clock_inference (test_v2u4real_interface_v1.DatasetAuditTests.test_audit_missing_keys_duplicates_and_no_clock_inference) ... ok
+test_duplicate_yaml_keys_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_duplicate_yaml_keys_rejected) ... ok
+test_empty_corrupt_compressed_nonfinite_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_empty_corrupt_compressed_nonfinite_rejected) ... ok
+test_field_types_include_all_objects (test_v2u4real_interface_v1.DatasetAuditTests.test_field_types_include_all_objects) ... ok
+test_missing_data_is_blocked (test_v2u4real_interface_v1.DatasetAuditTests.test_missing_data_is_blocked) ... ok
+test_reader_ascii_and_binary (test_v2u4real_interface_v1.DatasetAuditTests.test_reader_ascii_and_binary) ... ok
+test_select_smallest_train_and_cap (test_v2u4real_interface_v1.DatasetAuditTests.test_select_smallest_train_and_cap) ... ok
+test_test_split_not_accepted (test_v2u4real_interface_v1.DatasetAuditTests.test_test_split_not_accepted) ... ok
+test_known_axis_and_inverse (test_v2u4real_interface_v1.GeometryTests.test_known_axis_and_inverse) ... ok
+test_nonrigid_and_nonfinite_rejected (test_v2u4real_interface_v1.GeometryTests.test_nonrigid_and_nonfinite_rejected) ... ok
+test_reflection_rejected (test_v2u4real_interface_v1.GeometryTests.test_reflection_rejected) ... ok
+test_rsu_is_explicit_setting (test_v2u4real_interface_v1.GeometryTests.test_rsu_is_explicit_setting) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.534s
+
+OK
+{"step": "R2-01", "overall_status": "BLOCKED", "official_train_archive_access": "BLOCKED", "complete_raw_pcd_members_obtained": 0, "pcd_reads": {}, "minimum_complete_training_subset": "BLOCKED", "yaml_availability": "BLOCKED", "yaml_parse_execution": "NOT_RUN", "physical_timestamp_and_calibration_contract": "BLOCKED", "r1_reader_reused": true, "coordinate_transform_acceptance": "NOT_RUN", "AirFogSim_replay": "NOT_RUN", "wireless_changes": "NOT_RUN", "feature_or_compute_service": "NOT_RUN", "training": "NOT_RUN", "gpu_used": false, "locked_test_accessed": false, "downloaded_prefix_bytes": 0, "missing_inputs": ["agent 1: bounded official prefix/retrieval receipt missing; use --fetch", "agent 2: bounded official prefix/retrieval receipt missing; use --fetch"], "whole_archive_downloaded": false, "reason": "No local official prefixes/receipts; use the bounded --fetch option"}
+
+exit_code=0
+
+$ python -m compileall -q code/src code/scripts code/tests
+
+exit_code=0
+
+$ python code/scripts/build_project_knowledge_index_v1.py --check
+Initial read-only check, started before task source edits, completed while edits were in progress.
+Existing R2-03 record reports three baseline mismatches; current check reports five; the added script may contribute to dependency/inventory differences.
+{"mismatches":["docs/registries/generated/tracked_file_inventory.csv","docs/registries/generated/python_dependency_map.json","docs/registries/generated/artifact_catalog.csv","docs/registries/generated/archive_candidate_registry.csv","docs/registries/generated/registry_summary.json"],"mode":"check","output_count":5,"passed":false,"schema_version":"PI-JWM-project-knowledge-index-v2"}
+exit_code=1
+No write-mode builder executed; no pre-existing generated index overwritten.
+
+FINAL SOURCE VALIDATION
+$ python code/scripts/audit_v2u4real_r2_04a_single_frame_geometry_v1.py
+{"annotation_diagnostic_status": "official_code_interpretation_only", "input_integrity_status": "PASS", "official_source_status": "PASS", "physical_alignment_status": "NOT_ESTABLISHED", "software_transform_status": "PASS", "task_execution_status": "COMPLETED", "visualization_status": "PASS"}
+
+exit_code=0
+
+FINAL SOURCE VALIDATION
+$ python -m unittest test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests -v
+test_bad_pose_refused_without_coercing_list (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_bad_pose_refused_without_coercing_list) ... ok
+test_deterministic_subset (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_deterministic_subset) ... ok
+test_duplicate_yaml_key_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_duplicate_yaml_key_refused) ... ok
+test_exact_converter_body_artificial_yaml (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_exact_converter_body_artificial_yaml) ... ok
+test_invalid_matrix_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_invalid_matrix_refused) ... ok
+test_inverse_and_distances_nonplanar_pose (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_inverse_and_distances_nonplanar_pose) ... ok
+test_known_rotation_translation_and_direction (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_known_rotation_translation_and_direction) ... ok
+test_nonfinite_points_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_nonfinite_points_refused) ... ok
+test_official_box_primitives_known_extent (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_official_box_primitives_known_extent) ... ok
+test_output_cannot_write_into_raw_inputs (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_output_cannot_write_into_raw_inputs) ... ok
+test_source_change_stops_before_execution (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_source_change_stops_before_execution) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.108s
+
+OK
+
+exit_code=0
+
+FINAL SOURCE VALIDATION
+$ python -m unittest test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests -v
+test_fixed_real_sample_strict_read (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_fixed_real_sample_strict_read) ... ok
+test_missing_fixed_sample_does_not_select_another (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_missing_fixed_sample_does_not_select_another) ... ok
+test_real_all_points_roundtrip_and_distance (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_all_points_roundtrip_and_distance) ... ok
+test_real_annotation_exact_converter_and_raw_preserved (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_annotation_exact_converter_and_raw_preserved) ... ok
+test_real_independent_homogeneous_application (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_independent_homogeneous_application) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.240s
+
+OK
+
+exit_code=0
+
+FINAL SOURCE VALIDATION
+$ python -m unittest test_v2u4real_full_sample_v1 test_v2u4real_preparation_v1 test_v2u4real_interface_v1.DatasetAuditTests test_v2u4real_interface_v1.GeometryTests -v
+test_duplicate_members_and_unsafe_paths_rejected (test_v2u4real_full_sample_v1.FullSampleTests.test_duplicate_members_and_unsafe_paths_rejected) ... ok
+test_extract_only_selected_raw_bytes_and_no_overwrite (test_v2u4real_full_sample_v1.FullSampleTests.test_extract_only_selected_raw_bytes_and_no_overwrite) ... extracted 12 unchanged files for 3 candidate keys
+ok
+test_file_pairing_never_establishes_physical_pairing (test_v2u4real_full_sample_v1.FullSampleTests.test_file_pairing_never_establishes_physical_pairing) ... ok
+test_fixed_scope_and_digest_before_use (test_v2u4real_full_sample_v1.FullSampleTests.test_fixed_scope_and_digest_before_use) ... ok
+test_ignored_range_never_reads_body_or_writes_archive (test_v2u4real_full_sample_v1.FullSampleTests.test_ignored_range_never_reads_body_or_writes_archive) ... ok
+test_missing_frame_not_hidden_by_intersection (test_v2u4real_full_sample_v1.FullSampleTests.test_missing_frame_not_hidden_by_intersection) ... ok
+test_nested_clock_fields_preserve_values_without_inventing_units (test_v2u4real_full_sample_v1.FullSampleTests.test_nested_clock_fields_preserve_values_without_inventing_units) ... ok
+test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings (test_v2u4real_full_sample_v1.FullSampleTests.test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings) ... ok
+test_structural_success_never_qualifies_physical_pair (test_v2u4real_full_sample_v1.FullSampleTests.test_structural_success_never_qualifies_physical_pair) ... ok
+test_complete_member_is_idempotent_and_not_overwritten (test_v2u4real_preparation_v1.PreparationTests.test_complete_member_is_idempotent_and_not_overwritten) ... ok
+test_hard_download_and_output_boundaries (test_v2u4real_preparation_v1.PreparationTests.test_hard_download_and_output_boundaries) ... ok
+test_ignored_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_ignored_range_does_not_read_response_body) ... ok
+test_missing_raw_assets_stay_blocked_without_fake_pass (test_v2u4real_preparation_v1.PreparationTests.test_missing_raw_assets_stay_blocked_without_fake_pass) ... ok
+test_only_train_and_immutable_revision (test_v2u4real_preparation_v1.PreparationTests.test_only_train_and_immutable_revision) ... ok
+test_partial_compressed_member_is_not_a_successful_sample (test_v2u4real_preparation_v1.PreparationTests.test_partial_compressed_member_is_not_a_successful_sample) ... ok
+test_path_traversal_links_and_oversize_are_blocked (test_v2u4real_preparation_v1.PreparationTests.test_path_traversal_links_and_oversize_are_blocked) ... ok
+test_wrong_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_wrong_range_does_not_read_response_body) ... ok
+test_audit_missing_keys_duplicates_and_no_clock_inference (test_v2u4real_interface_v1.DatasetAuditTests.test_audit_missing_keys_duplicates_and_no_clock_inference) ... ok
+test_duplicate_yaml_keys_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_duplicate_yaml_keys_rejected) ... ok
+test_empty_corrupt_compressed_nonfinite_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_empty_corrupt_compressed_nonfinite_rejected) ... ok
+test_field_types_include_all_objects (test_v2u4real_interface_v1.DatasetAuditTests.test_field_types_include_all_objects) ... ok
+test_missing_data_is_blocked (test_v2u4real_interface_v1.DatasetAuditTests.test_missing_data_is_blocked) ... ok
+test_reader_ascii_and_binary (test_v2u4real_interface_v1.DatasetAuditTests.test_reader_ascii_and_binary) ... ok
+test_select_smallest_train_and_cap (test_v2u4real_interface_v1.DatasetAuditTests.test_select_smallest_train_and_cap) ... ok
+test_test_split_not_accepted (test_v2u4real_interface_v1.DatasetAuditTests.test_test_split_not_accepted) ... ok
+test_known_axis_and_inverse (test_v2u4real_interface_v1.GeometryTests.test_known_axis_and_inverse) ... ok
+test_nonrigid_and_nonfinite_rejected (test_v2u4real_interface_v1.GeometryTests.test_nonrigid_and_nonfinite_rejected) ... ok
+test_reflection_rejected (test_v2u4real_interface_v1.GeometryTests.test_reflection_rejected) ... ok
+test_rsu_is_explicit_setting (test_v2u4real_interface_v1.GeometryTests.test_rsu_is_explicit_setting) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.412s
+
+OK
+{"step": "R2-01", "overall_status": "BLOCKED", "official_train_archive_access": "BLOCKED", "complete_raw_pcd_members_obtained": 0, "pcd_reads": {}, "minimum_complete_training_subset": "BLOCKED", "yaml_availability": "BLOCKED", "yaml_parse_execution": "NOT_RUN", "physical_timestamp_and_calibration_contract": "BLOCKED", "r1_reader_reused": true, "coordinate_transform_acceptance": "NOT_RUN", "AirFogSim_replay": "NOT_RUN", "wireless_changes": "NOT_RUN", "feature_or_compute_service": "NOT_RUN", "training": "NOT_RUN", "gpu_used": false, "locked_test_accessed": false, "downloaded_prefix_bytes": 0, "missing_inputs": ["agent 1: bounded official prefix/retrieval receipt missing; use --fetch", "agent 2: bounded official prefix/retrieval receipt missing; use --fetch"], "whole_archive_downloaded": false, "reason": "No local official prefixes/receipts; use the bounded --fetch option"}
+
+exit_code=0
+
+FINAL SOURCE VALIDATION
+$ python -m compileall -q code/src code/scripts code/tests
+
+exit_code=0
+
+$ inline Python final independent acceptance: all-point homogeneous multiplication/solve, pairwise distances, input/source hashes, validation groups, context/manual registries
+{"status": "PASS_SOFTWARE_DIAGNOSTIC_ONLY", "physical_alignment_status": "NOT_ESTABLISHED", "result_sha256": "e14d3fefaac3e9647f574247ededac83486544da040a150a982890a8260c2dad", "executed_source_sha256": "aedd52bed17aabf74100dfb528f831ed57d94aeea19341aefaf9dc7c8ff4ac04", "test_count": 45, "test_groups": {"synthetic": 11, "real": 5, "regression": 29}, "failed": 0, "skipped": 0, "independent_homogeneous_roundtrip_max_abs": 4.263256414560601e-14, "independent_distance_max_abs": 5.684341886080802e-14, "input_hashes_rechecked_after_tests": true, "official_source_reverified_after_tests": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8", "context_check": "PASS_FOR_TASK_SCOPE", "project_index_gate": "BLOCKED", "push_authorized_by_verification_gate": false, "device": "CPU", "locked_test_accessed": false}
+exit_code=0
+
+$ python code/scripts/build_project_knowledge_index_v1.py --check
+{"mismatches": ["docs/registries/generated/tracked_file_inventory.csv", "docs/registries/generated/python_dependency_map.json", "docs/registries/generated/artifact_catalog.csv", "docs/registries/generated/archive_candidate_registry.csv", "docs/registries/generated/registry_summary.json"], "mode": "check", "output_count": 5, "passed": false, "schema_version": "PI-JWM-project-knowledge-index-v2", "exit_code": 1, "write_builder_executed": false}
+exit_code=1
+
+$ git diff --check
+exit_code=0; CRLF normalization notices only, no whitespace errors
+
+FINAL CANONICAL-LF SOURCE VALIDATION
+$ python code/scripts/audit_v2u4real_r2_04a_single_frame_geometry_v1.py
+{"annotation_diagnostic_status": "official_code_interpretation_only", "input_integrity_status": "PASS", "official_source_status": "PASS", "physical_alignment_status": "NOT_ESTABLISHED", "software_transform_status": "PASS", "task_execution_status": "COMPLETED", "visualization_status": "PASS"}
+
+exit_code=0
+
+FINAL CANONICAL-LF SOURCE VALIDATION
+$ python -m unittest test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests -v
+test_bad_pose_refused_without_coercing_list (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_bad_pose_refused_without_coercing_list) ... ok
+test_deterministic_subset (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_deterministic_subset) ... ok
+test_duplicate_yaml_key_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_duplicate_yaml_key_refused) ... ok
+test_exact_converter_body_artificial_yaml (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_exact_converter_body_artificial_yaml) ... ok
+test_invalid_matrix_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_invalid_matrix_refused) ... ok
+test_inverse_and_distances_nonplanar_pose (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_inverse_and_distances_nonplanar_pose) ... ok
+test_known_rotation_translation_and_direction (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_known_rotation_translation_and_direction) ... ok
+test_machine_evidence_uses_canonical_lf_for_git_sha (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_machine_evidence_uses_canonical_lf_for_git_sha) ... ok
+test_nonfinite_points_refused (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_nonfinite_points_refused) ... ok
+test_official_box_primitives_known_extent (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_official_box_primitives_known_extent) ... ok
+test_output_cannot_write_into_raw_inputs (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_output_cannot_write_into_raw_inputs) ... ok
+test_source_change_stops_before_execution (test_v2u4real_r2_04a_single_frame_geometry_v1.SyntheticGeometryTests.test_source_change_stops_before_execution) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.084s
+
+OK
+
+exit_code=0
+
+FINAL CANONICAL-LF SOURCE VALIDATION
+$ python -m unittest test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests -v
+test_fixed_real_sample_strict_read (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_fixed_real_sample_strict_read) ... ok
+test_missing_fixed_sample_does_not_select_another (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_missing_fixed_sample_does_not_select_another) ... ok
+test_real_all_points_roundtrip_and_distance (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_all_points_roundtrip_and_distance) ... ok
+test_real_annotation_exact_converter_and_raw_preserved (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_annotation_exact_converter_and_raw_preserved) ... ok
+test_real_independent_homogeneous_application (test_v2u4real_r2_04a_single_frame_geometry_v1.RealSampleTests.test_real_independent_homogeneous_application) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.223s
+
+OK
+
+exit_code=0
+
+FINAL CANONICAL-LF SOURCE VALIDATION
+$ python -m unittest test_v2u4real_full_sample_v1 test_v2u4real_preparation_v1 test_v2u4real_interface_v1.DatasetAuditTests test_v2u4real_interface_v1.GeometryTests -v
+test_duplicate_members_and_unsafe_paths_rejected (test_v2u4real_full_sample_v1.FullSampleTests.test_duplicate_members_and_unsafe_paths_rejected) ... ok
+test_extract_only_selected_raw_bytes_and_no_overwrite (test_v2u4real_full_sample_v1.FullSampleTests.test_extract_only_selected_raw_bytes_and_no_overwrite) ... extracted 12 unchanged files for 3 candidate keys
+ok
+test_file_pairing_never_establishes_physical_pairing (test_v2u4real_full_sample_v1.FullSampleTests.test_file_pairing_never_establishes_physical_pairing) ... ok
+test_fixed_scope_and_digest_before_use (test_v2u4real_full_sample_v1.FullSampleTests.test_fixed_scope_and_digest_before_use) ... ok
+test_ignored_range_never_reads_body_or_writes_archive (test_v2u4real_full_sample_v1.FullSampleTests.test_ignored_range_never_reads_body_or_writes_archive) ... ok
+test_missing_frame_not_hidden_by_intersection (test_v2u4real_full_sample_v1.FullSampleTests.test_missing_frame_not_hidden_by_intersection) ... ok
+test_nested_clock_fields_preserve_values_without_inventing_units (test_v2u4real_full_sample_v1.FullSampleTests.test_nested_clock_fields_preserve_values_without_inventing_units) ... ok
+test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings (test_v2u4real_full_sample_v1.FullSampleTests.test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings) ... ok
+test_structural_success_never_qualifies_physical_pair (test_v2u4real_full_sample_v1.FullSampleTests.test_structural_success_never_qualifies_physical_pair) ... ok
+test_complete_member_is_idempotent_and_not_overwritten (test_v2u4real_preparation_v1.PreparationTests.test_complete_member_is_idempotent_and_not_overwritten) ... ok
+test_hard_download_and_output_boundaries (test_v2u4real_preparation_v1.PreparationTests.test_hard_download_and_output_boundaries) ... ok
+test_ignored_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_ignored_range_does_not_read_response_body) ... ok
+test_missing_raw_assets_stay_blocked_without_fake_pass (test_v2u4real_preparation_v1.PreparationTests.test_missing_raw_assets_stay_blocked_without_fake_pass) ... ok
+test_only_train_and_immutable_revision (test_v2u4real_preparation_v1.PreparationTests.test_only_train_and_immutable_revision) ... ok
+test_partial_compressed_member_is_not_a_successful_sample (test_v2u4real_preparation_v1.PreparationTests.test_partial_compressed_member_is_not_a_successful_sample) ... ok
+test_path_traversal_links_and_oversize_are_blocked (test_v2u4real_preparation_v1.PreparationTests.test_path_traversal_links_and_oversize_are_blocked) ... ok
+test_wrong_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_wrong_range_does_not_read_response_body) ... ok
+test_audit_missing_keys_duplicates_and_no_clock_inference (test_v2u4real_interface_v1.DatasetAuditTests.test_audit_missing_keys_duplicates_and_no_clock_inference) ... ok
+test_duplicate_yaml_keys_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_duplicate_yaml_keys_rejected) ... ok
+test_empty_corrupt_compressed_nonfinite_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_empty_corrupt_compressed_nonfinite_rejected) ... ok
+test_field_types_include_all_objects (test_v2u4real_interface_v1.DatasetAuditTests.test_field_types_include_all_objects) ... ok
+test_missing_data_is_blocked (test_v2u4real_interface_v1.DatasetAuditTests.test_missing_data_is_blocked) ... ok
+test_reader_ascii_and_binary (test_v2u4real_interface_v1.DatasetAuditTests.test_reader_ascii_and_binary) ... ok
+test_select_smallest_train_and_cap (test_v2u4real_interface_v1.DatasetAuditTests.test_select_smallest_train_and_cap) ... ok
+test_test_split_not_accepted (test_v2u4real_interface_v1.DatasetAuditTests.test_test_split_not_accepted) ... ok
+test_known_axis_and_inverse (test_v2u4real_interface_v1.GeometryTests.test_known_axis_and_inverse) ... ok
+test_nonrigid_and_nonfinite_rejected (test_v2u4real_interface_v1.GeometryTests.test_nonrigid_and_nonfinite_rejected) ... ok
+test_reflection_rejected (test_v2u4real_interface_v1.GeometryTests.test_reflection_rejected) ... ok
+test_rsu_is_explicit_setting (test_v2u4real_interface_v1.GeometryTests.test_rsu_is_explicit_setting) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.390s
+
+OK
+{"step": "R2-01", "overall_status": "BLOCKED", "official_train_archive_access": "BLOCKED", "complete_raw_pcd_members_obtained": 0, "pcd_reads": {}, "minimum_complete_training_subset": "BLOCKED", "yaml_availability": "BLOCKED", "yaml_parse_execution": "NOT_RUN", "physical_timestamp_and_calibration_contract": "BLOCKED", "r1_reader_reused": true, "coordinate_transform_acceptance": "NOT_RUN", "AirFogSim_replay": "NOT_RUN", "wireless_changes": "NOT_RUN", "feature_or_compute_service": "NOT_RUN", "training": "NOT_RUN", "gpu_used": false, "locked_test_accessed": false, "downloaded_prefix_bytes": 0, "missing_inputs": ["agent 1: bounded official prefix/retrieval receipt missing; use --fetch", "agent 2: bounded official prefix/retrieval receipt missing; use --fetch"], "whole_archive_downloaded": false, "reason": "No local official prefixes/receipts; use the bounded --fetch option"}
+
+exit_code=0
+
+FINAL CANONICAL-LF SOURCE VALIDATION
+$ python -m compileall -q code/src code/scripts code/tests
+
+exit_code=0
+
+$ inline Python post-LF independent acceptance: all-point homogeneous solve/distances; raw hashes; official source; exact figure SHA; final 46 tests
+{"status": "PASS_SOFTWARE_DIAGNOSTIC_ONLY", "physical_alignment_status": "NOT_ESTABLISHED", "result_sha256": "f8db00401a95dd6600c51ab3765d15113542c941d22661d9132001c3e1c111fc", "executed_source_sha256": "b306178c8b29e69306b6d4810845b518ef876fc017f3be3bbee6f4f090b779e9", "test_count": 46, "test_groups": {"synthetic": 12, "real": 5, "regression": 29}, "failed": 0, "skipped": 0, "independent_homogeneous_roundtrip_max_abs": 4.263256414560601e-14, "independent_distance_max_abs": 5.684341886080802e-14, "input_hashes_rechecked_after_tests": true, "official_source_reverified_after_tests": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8", "context_check": "PASS_FOR_TASK_SCOPE", "project_index_gate": "BLOCKED", "push_authorized_by_verification_gate": false, "device": "CPU", "locked_test_accessed": false, "canonical_artifact_newlines": "LF to preserve Git blob SHA"}
+exit_code=0
+
+POST-STAGING FINAL INDEX CHECK
+$ python code/scripts/build_project_knowledge_index_v1.py --check
+{
+  "mismatches": [
+    "docs/registries/generated/tracked_file_inventory.csv",
+    "docs/registries/generated/python_dependency_map.json",
+    "docs/registries/generated/artifact_catalog.csv",
+    "docs/registries/generated/archive_candidate_registry.csv",
+    "docs/registries/generated/registry_summary.json"
+  ],
+  "mode": "check",
+  "output_count": 5,
+  "passed": false,
+  "schema_version": "PI-JWM-project-knowledge-index-v2"
+}
+<unknown>:37: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:44: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:79: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:37: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:44: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:79: SyntaxWarning: invalid escape sequence '\.'
+
+exit_code=1
+
+$ final context + manual registry validation
+PASS; all 9 context files checked; updated 00/03/04/05/07/08; no scientific decision added
+$ staged whitelist and evidence SHA verification
+PASS; 34 task paths, 4 prefix-only staged dirty documents; original input/source hashes unchanged; original unrelated worktree bytes retained
+$ git diff --cached --check
+exit_code=0
+Push not attempted: required project index check exit_code=1.

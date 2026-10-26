@@ -1,3 +1,13 @@
+<!-- V2U4REAL R2-04A 2026-10-26 -->
+## 2026-10-26 — STEP R2-04A 单帧数学诊断完成，物理对齐未建立
+
+固定 train 单帧 1752814590.2 的官方 list/list 相对变换及全点正逆/距离检查 PASS；标注仅 official_code_interpretation_only，真实物理对齐 NOT_ESTABLISHED。无 GPU、locked_test、回放或训练。
+
+数学可逆不解决时间配对、实际单位/轴向、预定义轴变换及 RTK/GICP/人工修正来源，也不解决 angle/location/center 合同。
+
+详见 [R2-04A 实施记录](../docs/implementation_records/STEP_R2_04A_V2U4REAL_SINGLE_FRAME_GEOMETRY.md)；原始证据 `code/artifacts/audit/v2u4real_r2_04a_20261026/result.json`。先前 R2-03 的“未执行真实变换”仅描述其历史时点；本轮新授权只完成有限诊断，没有解除 R2-04 物理验收阻塞。
+<!-- END V2U4REAL R2-04A -->
+
 <!-- V2U4REAL R2-03 2026-10-26 -->
 ## 2026-10-26 — V2U4Real 时间、坐标与重复观测阻塞
 

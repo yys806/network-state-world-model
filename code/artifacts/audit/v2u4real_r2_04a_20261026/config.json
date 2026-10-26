@@ -1,0 +1,20 @@
+{
+  "dtype": "float64",
+  "rigid_atol": 1e-10,
+  "matrix_atol": 1e-12,
+  "inverse_max_abs_atol": 1e-08,
+  "distance_max_abs_atol": 1e-08,
+  "distance_subset_count": 128,
+  "plot_max_points_per_agent": 20000,
+  "subset_rule": "unique linspace(0, N-1, count, dtype=int64)",
+  "quantiles": [
+    0,
+    0.01,
+    0.25,
+    0.5,
+    0.75,
+    0.99,
+    1
+  ],
+  "rtol": 0.0
+}

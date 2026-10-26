@@ -3,6 +3,49 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "V2U4REAL-R2-04A-SINGLE-FRAME-GEOMETRY-20261026",
+      "name": "V2U4Real pinned single-frame official transform software diagnostic",
+      "date": "2026-10-26",
+      "research_question": "Does the official pose/list transform preserve single-frame numerical rigid geometry without establishing physical alignment?",
+      "method": "Strict existing readers; unchanged SHA-pinned official functions; float64 forward/inverse and distance checks; annotation interpretation only; deterministic BEV",
+      "code": "code/scripts/audit_v2u4real_r2_04a_single_frame_geometry_v1.py",
+      "code_version": {
+        "identity_type": "executed_source_SHA256",
+        "git_commit": null,
+        "manifest": "code/artifacts/audit/v2u4real_r2_04a_20261026/source_identity.json",
+        "note": "Baseline d842cbacd16c3a9c33bda290b2e9f71d1dae0361; final task commit resolved from Git history"
+      },
+      "configuration": "code/artifacts/audit/v2u4real_r2_04a_20261026/config.json",
+      "parameters": {
+        "device": "cpu",
+        "dataset_revision": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+        "official_commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+        "scene": "2025-07-18-12-53_2",
+        "frame_key": "1752814590.2",
+        "roundtrip_max_abs_atol": 1e-8,
+        "distance_max_abs_atol": 1e-8
+      },
+      "protocol": "docs/implementation_records/STEP_R2_04A_V2U4REAL_SINGLE_FRAME_GEOMETRY.md",
+      "data": "code/artifacts/audit/v2u4real_r2_04a_20261026/result.json#inputs",
+      "split": ["train"],
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/audit/v2u4real_r2_04a_20261026/result.json",
+      "metrics": null,
+      "audit": "code/artifacts/audit/v2u4real_r2_04a_20261026/validation.json",
+      "status": "COMPLETED_SOFTWARE_DIAGNOSTIC_PHYSICAL_ALIGNMENT_NOT_ESTABLISHED",
+      "conclusion": "固定真实单帧的官方相对矩阵及全点正逆/距离检查通过；标注仅官方代码解释，真实物理对齐未建立。",
+      "summary_zh": "R2-04A 有限 CPU 诊断完成；软件数学通过，物理同步/轴向/标定及标注合同仍未建立。",
+      "claim_boundary": "Single published same-key association; official matrix and float64 mathematics only; boxes official_code_interpretation_only; converter main and torch projection not executed; no verified physical synchronization or alignment",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "seed": "Deterministic real-data audit; synthetic unit test RNG seed 204 is separate evidence.",
+        "checkpoint": "No model loaded or trained.",
+        "metrics": "No scientific performance metric. Numerical software checks are in result.json.",
+        "code_version.git_commit": "Final task commit resolved from Git history; executed source hashes in source_identity.json."
+      }
+    },
+    {
       "id": "V2U4REAL-R2-02-COMPLETE-SAMPLES-20261026",
       "name": "V2U4Real pinned full train scene and minimum complete candidate samples",
       "date": "2026-10-26",

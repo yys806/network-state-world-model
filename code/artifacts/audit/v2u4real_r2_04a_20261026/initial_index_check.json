@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "exit_code": 1,
+  "mismatches": [
+    "tracked_file_inventory.csv",
+    "python_dependency_map.json",
+    "artifact_catalog.csv",
+    "archive_candidate_registry.csv",
+    "registry_summary.json"
+  ],
+  "timing": "read-only process started before task source edits; completed while edits were in progress",
+  "historical_baseline": "R2-03 documented three mismatches; not all five proven pre-existing",
+  "write_builder_executed": false
+}

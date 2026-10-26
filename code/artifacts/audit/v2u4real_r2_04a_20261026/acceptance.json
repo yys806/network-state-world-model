@@ -1,0 +1,24 @@
+{
+  "status": "PASS_SOFTWARE_DIAGNOSTIC_ONLY",
+  "physical_alignment_status": "NOT_ESTABLISHED",
+  "result_sha256": "f8db00401a95dd6600c51ab3765d15113542c941d22661d9132001c3e1c111fc",
+  "executed_source_sha256": "b306178c8b29e69306b6d4810845b518ef876fc017f3be3bbee6f4f090b779e9",
+  "test_count": 46,
+  "test_groups": {
+    "synthetic": 12,
+    "real": 5,
+    "regression": 29
+  },
+  "failed": 0,
+  "skipped": 0,
+  "independent_homogeneous_roundtrip_max_abs": 4.263256414560601e-14,
+  "independent_distance_max_abs": 5.684341886080802e-14,
+  "input_hashes_rechecked_after_tests": true,
+  "official_source_reverified_after_tests": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "context_check": "PASS_FOR_TASK_SCOPE",
+  "project_index_gate": "BLOCKED",
+  "push_authorized_by_verification_gate": false,
+  "device": "CPU",
+  "locked_test_accessed": false,
+  "canonical_artifact_newlines": "LF to preserve Git blob SHA"
+}

@@ -2,6 +2,19 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-V2U4REAL-R2-04A-GEOMETRY",
+      "keywords": ["R2-04A", "V2U4Real 单帧变换", "官方坐标变换", "几何诊断", "正逆变换", "BEV"],
+      "title": "V2U4Real single-frame official matrix and geometry evidence",
+      "summary": "固定真实单帧官方矩阵与全点数学检查通过；标注仅 official_code_interpretation_only，物理对齐 NOT_ESTABLISHED。",
+      "primary_sources": ["docs/implementation_records/STEP_R2_04A_V2U4REAL_SINGLE_FRAME_GEOMETRY.md"],
+      "verification_sources": [
+        "code/scripts/audit_v2u4real_r2_04a_single_frame_geometry_v1.py",
+        "code/artifacts/audit/v2u4real_r2_04a_20261026/result.json",
+        "code/artifacts/audit/v2u4real_r2_04a_20261026/validation.json"
+      ],
+      "claim_boundary": "Software geometry only; no physical synchronization, coordinate or calibration acceptance; no downstream task authorized"
+    },
+    {
       "id": "ROUTE-V2U4REAL-R2-03-DATA-CONTRACT",
       "keywords": [
         "R2-03",
