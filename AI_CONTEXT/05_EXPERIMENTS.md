@@ -1,3 +1,8 @@
+<!-- PIJWM R2-09A 2026-10-27 -->
+## 2026-10-27 — R2-09A CPU 验收
+
+`python code/scripts/audit_deterministic_cpu_service_r2_09a.py` 运行 15 项专项测试并生成 `result.json`/`execution.log`。PASS 覆盖单/多时隙、fractional byte credit、100 ms 边界保留、不同截止策略、四类时间/交付失败、多个任务/多个包、单位/RB/重复防护和确定性重放；空间块只做接口兼容。真实 AirFogSim、真实检测和正式性能均 `NOT_RUN`。
+<!-- END PIJWM R2-09A -->
 <!-- PIJWM R2-08 2026-10-27 -->
 ## 2026-10-27 — R2-08 仅合成合同验收
 

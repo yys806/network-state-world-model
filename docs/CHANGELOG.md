@@ -1,3 +1,8 @@
+<!-- PIJWM R2-09A 2026-10-28 -->
+## 2026-10-28 — R2-09A 确定性 CPU 服务与任务生命周期
+
+新增版本化工程配置、`deterministic_cpu_service_lifecycle_v1.py`、15 项专项测试、验收脚本和机器回执。服务按显式 RB/速率/时间区间计算并累计 integer delivery，任务请求与每个包独立推进，固定 RSU 处理和 Mock 状态可追溯。没有修改 AirFogSim、世界模型、checkpoint、正式 pending 参数或训练协议。
+<!-- END PIJWM R2-09A -->
 <!-- PIJWM R2-08 2026-10-27 -->
 ## 2026-10-27 — R2-08 场景合同与接口
 

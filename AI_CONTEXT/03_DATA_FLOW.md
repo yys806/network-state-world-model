@@ -1,3 +1,10 @@
+<!-- PIJWM R2-09A 2026-10-27 -->
+## 2026-10-27 — R2-09A 确定性服务数据流
+
+R2-08 的 `PerceptionTask`/`FeaturePacket` 进入自有 CPU 引擎后，任务请求和每个包分别累计。服务区间按有效 RB 速率计算理论 byte 容量；模拟交付是带小数 credit 的整数 byte 回执，二者不合并。请求完成后才允许包服务；包完整后进入固定 RSU 处理，检测只接受受控桩并标成 synthetic。引擎按 `packet_id` 保持状态，`fixed_spatial_block` 只携带块ID/合同，不执行切块、重组或融合。
+
+证据：`code/src/pi_jwm/deterministic_cpu_service_lifecycle_v1.py`、`code/tests/test_deterministic_cpu_service_lifecycle_r2_09a.py`、`code/artifacts/audit/pi_jwm_r2_09a_deterministic_cpu_service_20261027/result.json`。
+<!-- END PIJWM R2-09A -->
 <!-- PIJWM R2-08 2026-10-27 -->
 ## 2026-10-27 — R2-08 时间与来源合同
 

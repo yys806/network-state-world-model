@@ -1,3 +1,10 @@
+## 2026-10-28 — STEP R2-09A
+
+- [x] 读取任务书、1028记录、R2-05B/R2-07/R2-08实施记录并记录起始Git/索引状态。
+- [x] 新增独立确定性CPU多时隙服务和任务生命周期引擎；保留请求/包状态、理论容量、模拟交付和终止原因边界。
+- [x] 新增工程配置、15项专项测试、机器验收回执和实施报告；不改AirFogSim、不用GPU/locked_test、不训练。
+- [ ] 研究者审阅后再决定下一独立Step；不自动进入R2-09B。
+
 # PI-JWM v11 Selector GPU Iteration Plan
 
 ## 2026-08-23 revised deterministic-rule candidate

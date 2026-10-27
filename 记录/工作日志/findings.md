@@ -1,3 +1,11 @@
+## 2026-10-28 — R2-09A 发现
+
+- R2-08 的六类记录校验可直接复用，但不能直接表达“请求服务”这一独立传输对象；本轮新增了版本化 `RequestServiceReceipt`，FeaturePacket 仍使用原 `ServiceResult`。
+- 小数容量必须保留在 transfer credit 中，否则低速率跨时隙会丢失服务；integer `delivered_bytes` 始终不超过包/请求大小。
+- `ServiceResult` 的 `physical_service_status` 固定为 `SYNTHETIC_ONLY`；理论容量不被当作真实交付证据。
+- 截止相等和同刻顺序未冻结为科研规则，只由 `DeterministicLifecyclePolicy` 显式传入并分别测试。
+- 知识索引既有五项不同步仍需独立处理，不能用覆盖式重建或强推绕过。
+
 # PI-JWM v11 Selector Findings
 
 ## 2026-08-23 rule-layer v2 final diagnosis

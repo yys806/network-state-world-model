@@ -1,3 +1,10 @@
+<!-- PIJWM R2-09A 2026-10-27 -->
+## 2026-10-27 — R2-09A 确定性 CPU 通信与生命周期闭环
+
+新增 `code/src/pi_jwm/deterministic_cpu_service_lifecycle_v1.py`：独立于 AirFogSim，按显式 Mbps/bit/s、RB 和服务区间计算理论容量，并用整数模拟交付与小数容量 credit 分开记账。任务请求、每个 `packet_id`、RSU 处理、模拟检测成功/失败/未执行和截止失败均分别留痕；终止原因词表包含 `REQUEST_NOT_DELIVERED`、`FEATURE_PACKET_NOT_DELIVERED`、`RSU_PROCESSING_TIMEOUT`、`DETECTION_FAILED` 和 `DETECTION_NOT_EXECUTED`。本轮 15 项专项测试与机器回执 PASS；服务状态为 `SYNTHETIC_ONLY`，没有真实无线、真实检测、GPU、validation/test/locked_test 或训练。截止相等和同刻顺序只作为显式工程测试策略，正式科研参数仍未冻结。
+
+报告：`docs/implementation_records/STEP_R2_09A_DETERMINISTIC_CPU_SERVICE_LIFECYCLE.md`；验收：`code/artifacts/audit/pi_jwm_r2_09a_deterministic_cpu_service_20261027/result.json`。
+<!-- END PIJWM R2-09A -->
 <!-- PIJWM R2-08 2026-10-27 -->
 ## 2026-10-27 — STEP R2-08 — 合同软件验收通过，参数待审
 

@@ -1,3 +1,10 @@
+<!-- PIJWM R2-09A 2026-10-28 -->
+## 2026-10-28 — R2-09A 工程闭环已通过，物理与正式科研仍关闭
+
+确定性 CPU 服务、任务请求/包累计、截止时间、RSU 处理和模拟检测状态已在 synthetic fixture 上通过 15 项专项测试。四类失败分别记录；服务回执为 `SYNTHETIC_ONLY`。这不是真实无线、真实感知质量或正式参数冻结，R2-09B、AirFogSim 服务接入、GPU/训练均未启动。
+
+报告：`docs/implementation_records/STEP_R2_09A_DETERMINISTIC_CPU_SERVICE_LIFECYCLE.md`；机器回执：`code/artifacts/audit/pi_jwm_r2_09a_deterministic_cpu_service_20261027/result.json`。
+<!-- END PIJWM R2-09A -->
 <!-- PIJWM R2-08 2026-10-27 -->
 ## 2026-10-27 — R2-08 任务3有界交付
 

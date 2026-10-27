@@ -1,3 +1,10 @@
+<!-- PIJWM R2-09A 2026-10-28 -->
+## 2026-10-28 — R2-09A 确定性 CPU 闭环入口
+
+R2-09A 新增独立 CPU 服务/任务生命周期引擎、工程夹具、15 项专项测试和机器验收。它复用 R2-08 记录校验，按 `packet_id` 累计并区分理论容量与 synthetic 交付；真实 AirFogSim 无线与检测仍未运行。
+
+报告：`docs/implementation_records/STEP_R2_09A_DETERMINISTIC_CPU_SERVICE_LIFECYCLE.md`；回执：`code/artifacts/audit/pi_jwm_r2_09a_deterministic_cpu_service_20261027/result.json`。
+<!-- END PIJWM R2-09A -->
 <!-- PIJWM R2-08 2026-10-27 -->
 ## 2026-10-27 — R2-08 新场景合同检索入口
 

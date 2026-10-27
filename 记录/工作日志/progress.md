@@ -1,3 +1,7 @@
+## 2026-10-28 — R2-09A 进度
+
+R2-09A 已完成合成 CPU 工程验证：请求只有送达后才能服务特征；每个 `packet_id` 独立累计，服务容量与 integer delivery 分开；跨观测边界不重置任务；截止相等和同刻事件使用显式工程策略；RSU 超时、请求未送达、包未送达、检测失败/未执行分别可追溯。15/15 专项测试通过，机器回执 PASS。真实无线、真实检测、空间切块重组和正式训练没有运行。
+
 # PI-JWM v11 Selector Progress Log
 
 ## 2026-08-23 rule-layer v2 gate completion

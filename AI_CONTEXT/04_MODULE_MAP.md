@@ -1,3 +1,8 @@
+<!-- PIJWM R2-09A 2026-10-27 -->
+## 2026-10-27 — R2-09A 生命周期模块
+
+新增 `deterministic_cpu_service_lifecycle_v1.py`。它复用 `scenario_contract_v1.record/validate_record/validate_scene_config`，不调用 AirFogSim；`DeterministicLifecyclePolicy` 显式承载速率单位、RB 数量、RSU 处理时长、截止边界和同刻策略，`DeterministicCpuServiceLifecycle` 维护请求/包 transfer、RB 区间、ServiceResult、PerceptionResult 和事件回执。
+<!-- END PIJWM R2-09A -->
 <!-- PIJWM R2-08 2026-10-27 -->
 ## 2026-10-27 — R2-08 可复用接口入口
 

@@ -1,3 +1,8 @@
+<!-- PIJWM R2-09A 2026-10-27 -->
+## 2026-10-27 — R2-09A 边界与未决项
+
+确定性 CPU 引擎的交付回执只表示 synthetic engineering service；不能外推 AirFogSim 真实无线、覆盖、物理同步或检测精度。`deadline_boundary` 与 `same_time_event_order` 已显式可配并分别测试，但未写入 formal pending 决策。R2-07 原生步内时序、SINR/中断、高度/快衰落和原生 Mbit—payload byte 绑定仍阻塞真实无线接入。真实编码时延、真实检测器、空间切块/重组和正式任务参数仍未实现。
+<!-- END PIJWM R2-09A -->
 <!-- PIJWM R2-08 2026-10-27 -->
 ## 2026-10-27 — R2-08 合同完成不解除真实阻塞
 

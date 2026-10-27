@@ -1,0 +1,30 @@
+{
+  "schema_version": "PIJWM-R2-09A-Deterministic-CPU-Lifecycle-v1",
+  "profile_type": "synthetic_contract_test_only",
+  "base_scene_config": "pi_jwm_scenario_v1.synthetic_test.json",
+  "service": {
+    "rate_unit": "Mbps",
+    "rb_count": 50,
+    "processing_duration_s": 0.04,
+    "deadline_boundary": "inclusive",
+    "same_time_event_order": "processing_before_deadline",
+    "rb_sharing_policy": "exclusive_fixture",
+    "physical_service_status": "SYNTHETIC_ONLY"
+  },
+  "request_and_packet_fixture": {
+    "request_byte_count": 100,
+    "packet_sizes_byte": {
+      "packet:source0:0": 1000,
+      "packet:source0:1": 600
+    },
+    "seed": 20261027
+  },
+  "boundaries": {
+    "observation_period_s": 0.1,
+    "deadline_policy_status": "ENGINEERING_TEST_STRATEGY_ONLY",
+    "same_time_event_policy_status": "ENGINEERING_TEST_STRATEGY_ONLY",
+    "formal_parameter_freeze": false,
+    "real_wireless_service": false,
+    "real_detection": false
+  }
+}
