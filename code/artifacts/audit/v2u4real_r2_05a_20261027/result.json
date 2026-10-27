@@ -1,0 +1,150 @@
+{
+  "schema_version": "PIJWM-R2-05A-v1",
+  "official_commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "source_file_count_verified": 75,
+  "executed_official_functions": [
+    {
+      "path": "opencood/utils/common_utils.py",
+      "function": "check_numpy_to_torch",
+      "start_line": 80,
+      "end_line": 83,
+      "sha256": "588fe8e44d42b1ba832eedff09dd60cbbee5215640c3797f810f6d18f3755ae9",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/common_utils.py",
+      "function": "rotate_points_along_z",
+      "start_line": 98,
+      "end_line": 120,
+      "sha256": "588fe8e44d42b1ba832eedff09dd60cbbee5215640c3797f810f6d18f3755ae9",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/common_utils.py",
+      "function": "compute_iou",
+      "start_line": 189,
+      "end_line": 211,
+      "sha256": "588fe8e44d42b1ba832eedff09dd60cbbee5215640c3797f810f6d18f3755ae9",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/common_utils.py",
+      "function": "convert_format",
+      "start_line": 214,
+      "end_line": 229,
+      "sha256": "588fe8e44d42b1ba832eedff09dd60cbbee5215640c3797f810f6d18f3755ae9",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/common_utils.py",
+      "function": "torch_tensor_to_numpy",
+      "start_line": 232,
+      "end_line": 247,
+      "sha256": "588fe8e44d42b1ba832eedff09dd60cbbee5215640c3797f810f6d18f3755ae9",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/eval_utils.py",
+      "function": "voc_ap",
+      "start_line": 16,
+      "end_line": 39,
+      "sha256": "28d09c074d24460f4f61a76cbe2873f3ca0214f0e9809120dd0e315b366a6ef6",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/eval_utils.py",
+      "function": "calculate_tp_fp",
+      "start_line": 42,
+      "end_line": 96,
+      "sha256": "28d09c074d24460f4f61a76cbe2873f3ca0214f0e9809120dd0e315b366a6ef6",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/eval_utils.py",
+      "function": "calculate_ap",
+      "start_line": 103,
+      "end_line": 157,
+      "sha256": "28d09c074d24460f4f61a76cbe2873f3ca0214f0e9809120dd0e315b366a6ef6",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/box_utils.py",
+      "function": "boxes_to_corners_3d",
+      "start_line": 145,
+      "end_line": 191,
+      "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/box_utils.py",
+      "function": "get_mask_for_boxes_within_range_torch",
+      "start_line": 307,
+      "end_line": 349,
+      "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/box_utils.py",
+      "function": "mask_boxes_outside_range_numpy",
+      "start_line": 352,
+      "end_line": 389,
+      "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/box_utils.py",
+      "function": "project_world_objects",
+      "start_line": 419,
+      "end_line": 471,
+      "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/utils/box_utils.py",
+      "function": "nms_rotated",
+      "start_line": 572,
+      "end_line": 617,
+      "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+      "ast_body_modified": false
+    },
+    {
+      "path": "opencood/data_utils/post_processor/base_postprocessor.py",
+      "function": "generate_object_center",
+      "start_line": 157,
+      "end_line": 212,
+      "sha256": "f54bbc672477c1570b0cdfb64c39994ada4e1f97aba56a4f00bae731f5926ee7",
+      "ast_body_modified": false
+    }
+  ],
+  "scenario_alignment_status": "AUDITED_CRITICAL_ADAPTATION_GAPS",
+  "source_audit_status": "PASS_WITH_DOCUMENTED_CONFLICTS",
+  "field_schema_status": "PASS_CODE_CONSUMPTION_ONLY",
+  "label_contract_status": "B_PRESERVED_NATIVE_PATH_CONFLICT",
+  "evaluation_audit_status": "PASS_WITH_DOCUMENTED_CONFLICTS",
+  "baseline_readiness_status": "NEEDS_RESEARCHER_DECISION",
+  "formal_training_admission": "BLOCKED",
+  "physical_alignment_status": "NOT_ESTABLISHED",
+  "task_execution_status": "COMPLETED_AUDIT_ONLY",
+  "raw_input_count": 20,
+  "all_input_hashes_unchanged": true,
+  "real_detector_metrics": "NOT_RUN",
+  "evidence": [
+    "field_schema.json",
+    "evaluator_probes.json",
+    "configuration_inventory.json",
+    "source_locations.json",
+    "baseline_candidates.json",
+    "evaluation_contract.json"
+  ],
+  "runtime": {
+    "device": "cpu",
+    "torch": "2.8.0+cpu",
+    "detector_instantiated": false,
+    "training_started": false,
+    "gpu_used": false,
+    "val_test_samples_read": false,
+    "locked_test_accessed": false,
+    "formal_labels_written": false,
+    "next_step_started": false
+  }
+}

@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-05A 2026-10-27 -->
+## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
+
+新记录：论文3D AP与代码BEV IoU、论文Vehicle/Cyclist与原生Car-only、方案B与原生首次去重均有差异；AP默认非全局排分且原地改统计，零GT有除零缺口。正式训练阻塞；知识索引既存5项不同步未重建。
+
+实施记录：docs/implementation_records/STEP_R2_05A_V2U4REAL_BASELINE_DATA_EVAL_AUDIT.md；草案：docs/contracts/PIJWM_PERCEPTION_BASELINE_DATA_EVAL_CONTRACT_DRAFT_V1.md；机器证据：code/artifacts/audit/v2u4real_r2_05a_20261027/result.json。未用GPU/locked_test/训练/推理服务；无正式标签写回。
+<!-- END V2U4REAL R2-05A -->
+
 <!-- V2U4REAL R2-04C 2026-10-27 -->
 ## 2026-10-27 — STEP R2-04C 官方标签合并规则冻结
 

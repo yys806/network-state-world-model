@@ -3,6 +3,51 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "V2U4REAL-R2-05A-BASELINE-DATA-EVAL-20261027",
+      "name": "V2U4Real baseline suitability, field schema and evaluator audit",
+      "date": "2026-10-27",
+      "research_question": "Which candidate perception capabilities are supported, how does pinned code consume real fields, and which evaluation conventions or adaptations still require researcher decisions?",
+      "method": "Pinned source SHA and Git-blob verification; paper and research-material read-only audit; five fixed train pairs with strict readers; unchanged official function probes; no detector execution",
+      "code": "code/scripts/audit_v2u4real_r2_05a_baseline_data_eval_v1.py",
+      "code_version": {
+        "identity_type": "executed_source_SHA256_and_pinned_official_Git_blobs",
+        "git_commit": null,
+        "manifest": "code/artifacts/audit/v2u4real_r2_05a_20261027/source_identity.json",
+        "manifest_sha256": null,
+        "note": "Baseline d2f3c92c529097725b5f82fe4a4e7605f51065e1; final task commit resolved from Git history; source identity receipt records exact file SHA256."
+      },
+      "configuration": "docs/contracts/PIJWM_PERCEPTION_BASELINE_DATA_EVAL_CONTRACT_DRAFT_V1.md",
+      "parameters": {
+        "device": "cpu",
+        "official_commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+        "dataset_revision": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+        "frame_keys": ["1752814590.2", "1752814590.4", "1752814590.6", "1752814591.2", "1752814591.6"],
+        "policy": "B_preserved_not_integrated_into_native_training",
+        "training_started": false,
+        "detector_instantiated": false
+      },
+      "protocol": "docs/implementation_records/STEP_R2_05A_V2U4REAL_BASELINE_DATA_EVAL_AUDIT.md",
+      "data": "code/artifacts/audit/v2u4real_r2_05a_20261027/field_schema.json",
+      "split": ["train"],
+      "seed": null,
+      "checkpoint": null,
+      "result": "code/artifacts/audit/v2u4real_r2_05a_20261027/result.json",
+      "metrics": null,
+      "audit": "code/artifacts/audit/v2u4real_r2_05a_20261027/acceptance.json",
+      "status": "AUDIT_COMPLETED_BASELINE_NEEDS_RESEARCHER_DECISION",
+      "conclusion": "完整候选系统有关键适配缺口；五帧字段可读，原生Car/首次去重与B不同，官方评价为BEV IoU且排序影响AP。草案待审，正式训练阻塞。",
+      "summary_zh": "R2-05A有限审计完成，无检测性能结果，不开放训练或后续步骤。",
+      "claim_boundary": "Source/field/evaluator audit only; no detector inference, physical calibration, formal baseline performance, task deadlines or candidate-scene freeze",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "seed": "No random detector experiment; only deterministic function probes and field reads.",
+        "checkpoint": "No checkpoint loaded or trained.",
+        "metrics": "Synthetic AP values are function semantics, not dataset detection performance.",
+        "code_version.git_commit": "Resolve final task commit from Git history; no self-referential commit hash.",
+        "code_version.manifest_sha256": "Exact inspected source files are SHA-bound in source_identity.json; receipt itself is versioned in the task commit."
+      }
+    },
+    {
       "id": "V2U4REAL-R2-04C-LABEL-MERGE-20261027",
       "name": "V2U4Real official label merge policy B and five-frame read-only audit",
       "date": "2026-10-27",

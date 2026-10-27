@@ -1,0 +1,1920 @@
+[
+  {
+    "path": "opencood/hypes_yaml/ciassd_early_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/ciassd_early_fusion.yaml",
+    "sha256": "a8a07353ce5a9fbb44775f394888a3f1e43f2c86708350454ce9ab4748728add",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "EarlyFusionDataset",
+      "args": []
+    },
+    "model_core": "ciassd",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.1,
+          0.1,
+          0.1
+        ],
+        "max_points_per_voxel": 5,
+        "max_voxel_train": 36000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -40,
+        -3,
+        140.8,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "CiassdPostprocessor",
+      "predict_iou": true,
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -40,
+          -3,
+          140.8,
+          40,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2,
+        "feature_stride": 8
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.3
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.2
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 6,
+      "epoches": 100,
+      "eval_freq": 2,
+      "save_freq": 2
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/ciassd_intermediate_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/ciassd_intermediate_fusion.yaml",
+    "sha256": "482d9ad04b36a74e8eccc0a37d683cdc66877a061dd5ce14b2e4db824d845a8a",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "voxel_net_intermediate",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 36000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -41.6,
+        -3,
+        140.8,
+        41.6,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -41.6,
+          -3,
+          140.8,
+          41.6,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.25
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 1,
+      "epoches": 30,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/fpvrcnn_intermediate_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/fpvrcnn_intermediate_fusion.yaml",
+    "sha256": "7c16f5a1d9142eaeffeb1a7be044e289b3143be91b9bbdee58a28534f7384165",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDatasetV2",
+      "args": []
+    },
+    "model_core": "fpvrcnn",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.1,
+          0.1,
+          0.1
+        ],
+        "max_points_per_voxel": 5,
+        "max_voxel_train": 36000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -41.6,
+        -3,
+        140.8,
+        41.6,
+        1
+      ],
+      "keep_original_lidar": true
+    },
+    "postprocess": {
+      "core_method": "FpvrcnnPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -41.6,
+          -3,
+          140.8,
+          41.6,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 8,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.5
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 20,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/pixor_early_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/pixor_early_fusion.yaml",
+    "sha256": "15de4441a8ccda98c5fdd08f295c089d912d19e3bd44c681d4e97af293776630",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "EarlyFusionDataset",
+      "args": []
+    },
+    "model_core": "pixor",
+    "preprocess": {
+      "core_method": "BevPreprocessor",
+      "args": {
+        "res": 0.2,
+        "downsample_rate": 4
+      },
+      "cav_lidar_range": [
+        -160,
+        -40,
+        -3,
+        160,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "BevPostprocessor",
+      "nms_thresh": 0.15,
+      "anchor_args": {
+        "cav_lidar_range": [
+          -160,
+          -40,
+          -3,
+          160,
+          40,
+          1
+        ],
+        "res": 0.2,
+        "downsample_rate": 4
+      },
+      "target_args": {
+        "score_threshold": 0.5
+      },
+      "order": "lwh",
+      "max_num": 100
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 15,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/pixor_intermediate_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/pixor_intermediate_fusion.yaml",
+    "sha256": "797c245063f8ae39c4bb961320281b06be0cff75981bf10cb05ac4a878f6ba85",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "pixor_intermediate",
+    "preprocess": {
+      "core_method": "BevPreprocessor",
+      "args": {
+        "res": 0.2,
+        "downsample_rate": 4
+      },
+      "cav_lidar_range": [
+        -160,
+        -40,
+        -3,
+        160,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "BevPostprocessor",
+      "nms_thresh": 0.15,
+      "anchor_args": {
+        "cav_lidar_range": [
+          -160,
+          -40,
+          -3,
+          160,
+          40,
+          1
+        ],
+        "res": 0.2,
+        "downsample_rate": 4
+      },
+      "target_args": {
+        "score_threshold": 0.7
+      },
+      "order": "lwh",
+      "max_num": 100
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 15,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/pixor_late_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/pixor_late_fusion.yaml",
+    "sha256": "6465c9f8de1b501208df6126785652688725575d1b6cde48310f20cfd3b87e35",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "LateFusionDataset",
+      "args": []
+    },
+    "model_core": "pixor",
+    "preprocess": {
+      "core_method": "BevPreprocessor",
+      "args": {
+        "res": 0.2,
+        "downsample_rate": 4
+      },
+      "cav_lidar_range": [
+        -80,
+        -40,
+        -3,
+        80,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "BevPostprocessor",
+      "nms_thresh": 0.15,
+      "anchor_args": {
+        "cav_lidar_range": [
+          -80,
+          -40,
+          -3,
+          80,
+          40,
+          1
+        ],
+        "res": 0.2,
+        "downsample_rate": 4
+      },
+      "target_args": {
+        "score_threshold": 0.3
+      },
+      "order": "lwh",
+      "max_num": 100
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 15,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_base_multi_scale.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_base_multi_scale.yaml",
+    "sha256": "538412a210e8974134f87010cc7718e9fce4b62de3b4ee7331221243df28ec03",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar_base_multi_scale",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          4
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -40,
+        -3,
+        140.8,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "gt_range": [
+        -140.8,
+        -40,
+        -3,
+        140.8,
+        40,
+        1
+      ],
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -40,
+          -3,
+          140.8,
+          40,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2,
+        "feature_stride": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.25
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "seed": 20,
+      "async": false,
+      "async_mode": "sim",
+      "async_overhead": 100,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 40,
+      "eval_freq": 2,
+      "save_freq": 2,
+      "max_cav": 5
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_base_multi_scale_teacher.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_base_multi_scale_teacher.yaml",
+    "sha256": "ee17979c5d1c4ca6c402268a37656f73641fd6542d3926617167d2fb9f05b77e",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset_DSRC",
+      "args": []
+    },
+    "model_core": "point_pillar_base_multi_scale_teacher",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -100.8,
+        -80,
+        -4,
+        100.8,
+        80,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -100.8,
+          -80,
+          -4,
+          100.8,
+          80,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2,
+        "feature_stride": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.25
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "seed": 20,
+      "async": false,
+      "async_mode": "sim",
+      "async_overhead": 100,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1,
+      "max_cav": 5
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_coalign.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_coalign.yaml",
+    "sha256": "76bae451f70d32314a7a4f4b6ae2f9ebd20212197fe8e08ff88de7a79d706ad6",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar_coalign",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -100.8,
+        -80,
+        -4,
+        100.8,
+        80,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -100.8,
+          -80,
+          -4,
+          100.8,
+          80,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 2,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "seed": 20,
+      "async": false,
+      "async_mode": "sim",
+      "async_overhead": 800,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_cobevt.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_cobevt.yaml",
+    "sha256": "ac0e42cc073efef6d6f2cda6d210132782017124c2b028e47f6dc21d1d2829e1",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar_cobevt",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -102.4,
+        -80,
+        -4,
+        102.4,
+        80,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -102.4,
+          -80,
+          -4,
+          102.4,
+          80,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 4,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "async": false,
+      "async_overhead": 100,
+      "seed": 20,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1,
+      "max_cav": 5
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_early_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_early_fusion.yaml",
+    "sha256": "a7ad2dcaed80ce12af1a8a998981f3e2e4233a70748aea98b2b5330e097f798c",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "EarlyFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -100.8,
+        -80,
+        -4,
+        100.8,
+        80,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -100.8,
+          -80,
+          -4,
+          100.8,
+          80,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "seed": 20,
+      "async": false,
+      "async_mode": "real",
+      "async_overhead": 100,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_ermvp.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_ermvp.yaml",
+    "sha256": "f794fdb555439e260ebed0e440b445f171f9d4ba0cf0ba3a9e0d425db42d24e6",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar_ermvp",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -89.6,
+        -76.8,
+        -4,
+        89.6,
+        76.8,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -89.6,
+          -76.8,
+          -4,
+          89.6,
+          76.8,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 4,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15,
+      "gt_range": [
+        -89.6,
+        -76.8,
+        -4,
+        89.6,
+        76.8,
+        4
+      ]
+    },
+    "wild_setting": {
+      "async": false,
+      "async_overhead": 800,
+      "seed": 20,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1,
+      "max_cav": 5
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_fcooper.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_fcooper.yaml",
+    "sha256": "1cf812a37098b72f93e8b644e61f0962bf7df87c53a95e351865268a03830315",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar_fcooper",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 70000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -100.8,
+        -40,
+        -4,
+        100.8,
+        40,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -100.8,
+          -40,
+          -4,
+          100.8,
+          40,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 2,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "seed": 20,
+      "async": false,
+      "async_mode": "real",
+      "async_overhead": 800,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1,
+      "max_cav": 5
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_intermediate_V2VAM.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_intermediate_V2VAM.yaml",
+    "sha256": "176a1f9c5ef87b1c04233e4d01b9a56f30953776b30fd6332dce20267e8632b8",
+    "train_root": "opv2v_data_dumping/train",
+    "validation_root": "opv2v_data_dumping/validate",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar_intermediate_V2VAM",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          4
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -40,
+        -3,
+        140.8,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -40,
+          -3,
+          140.8,
+          40,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 4,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 60,
+      "eval_freq": 1,
+      "save_freq": 1,
+      "max_cav": 5
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_intermediate_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_intermediate_fusion.yaml",
+    "sha256": "44ac21c0cf2e3ed9d01b7b5cf14752a6e5e6e6d7b6978c5404f24132ad152dd0",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar_intermediate",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -100.8,
+        -80,
+        -4,
+        100.8,
+        80,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -100.8,
+          -80,
+          -4,
+          100.8,
+          80,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 2,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "seed": 20,
+      "async": false,
+      "async_mode": "real",
+      "async_overhead": 800,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_late_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_late_fusion.yaml",
+    "sha256": "8dd8edfde0249926cf659c8f5c428a161cc0d611c5070c4765c16eaaacc16066",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "LateFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -100.8,
+        -80,
+        -4,
+        100.8,
+        80,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -100.8,
+          -80,
+          -4,
+          100.8,
+          80,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "async": false,
+      "async_mode": "real",
+      "async_overhead": 100,
+      "backbone_delay": 10,
+      "data_size": 1.06,
+      "loc_err": false,
+      "ryp_std": 0.2,
+      "seed": 20,
+      "transmission_speed": 27,
+      "xyz_std": 0.2
+    },
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_v2vnet.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_v2vnet.yaml",
+    "sha256": "6fa973642300089ebeed6a12957eb3f81c425a5a1780af2b5ec8e6d309cad659",
+    "train_root": "opv2v_data_dumping/train",
+    "validation_root": "opv2v_data_dumping/validate",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": {
+        "proj_first": true
+      }
+    },
+    "model_core": "point_pillar_v2vnet",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          4
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -40,
+        -3,
+        140.8,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -40,
+          -3,
+          140.8,
+          40,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 4,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 60,
+      "eval_freq": 1,
+      "save_freq": 1,
+      "max_cav": 5
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_v2xvit.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_v2xvit.yaml",
+    "sha256": "81c2e1f4c02be4d90a4ae4310bff5c419283d6a8df472ac4b8c4409ca4558be8",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": {
+        "cur_ego_pose_flag": false
+      }
+    },
+    "model_core": "point_pillar_transformer",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -89.6,
+        -76.8,
+        -4,
+        89.6,
+        76.8,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -89.6,
+          -76.8,
+          -4,
+          89.6,
+          76.8,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 4,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.27
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "async": false,
+      "async_mode": "sim",
+      "async_overhead": 100,
+      "seed": 25,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1,
+      "max_cav": 5
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/point_pillar_where2comm.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_where2comm.yaml",
+    "sha256": "9a2d7fda2f5fec2cebee435add21d014f07c6a9ee6e4a0fb124a8c110b97c8e1",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "point_pillar_where2comm",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          8
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -100.8,
+        -80,
+        -4,
+        100.8,
+        80,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -100.8,
+          -80,
+          -4,
+          100.8,
+          80,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2,
+        "feature_stride": 4
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": {
+      "seed": 20,
+      "async": false,
+      "async_mode": "sim",
+      "async_overhead": 800,
+      "loc_err": false,
+      "xyz_std": 0.2,
+      "ryp_std": 0.2,
+      "data_size": 1.06,
+      "transmission_speed": 27,
+      "backbone_delay": 10
+    },
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1,
+      "max_cav": 5
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/second_early_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/second_early_fusion.yaml",
+    "sha256": "6448444efb1a940eef397d12773a0ecdda995fccb42ef131fab6151bd3626a52",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "EarlyFusionDataset",
+      "args": []
+    },
+    "model_core": "second",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.1,
+          0.1,
+          0.2
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 32000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -80,
+        -4,
+        140.8,
+        80,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -80,
+          -4,
+          140.8,
+          80,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 8,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 1,
+      "epoches": 30,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/second_intermediate_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/second_intermediate_fusion.yaml",
+    "sha256": "a8b5449c579dd7c8750ce5e4ed7c7d7e0f6e1d0b00ace3e28547ad9a87f8f3d9",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "second_intermediate",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.1,
+          0.1,
+          0.1
+        ],
+        "max_points_per_voxel": 5,
+        "max_voxel_train": 36000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -40,
+        -3,
+        140.8,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -40,
+          -3,
+          140.8,
+          40,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 8,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 60,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/second_late_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/second_late_fusion.yaml",
+    "sha256": "d97b00dc5940e08b2a72f876ecc83b7bf7789c388c49088853df88d4f7e39c7c",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "LateFusionDataset",
+      "args": []
+    },
+    "model_core": "second",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.1,
+          0.1,
+          0.1
+        ],
+        "max_points_per_voxel": 5,
+        "max_voxel_train": 16000,
+        "max_voxel_test": 40000
+      },
+      "cav_lidar_range": [
+        -70.4,
+        -40,
+        -3,
+        70.4,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -70.4,
+          -40,
+          -3,
+          70.4,
+          40,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "feature_stride": 8,
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.2
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 40,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/visualization.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/visualization.yaml",
+    "sha256": "ff9b2fbe531a600bfc3cbaf79f7b716964dd63f046a24a86ad11622c6e9670bd",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/test",
+    "fusion": {
+      "core_method": "EarlyFusionDataset",
+      "args": []
+    },
+    "model_core": null,
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 36000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -80,
+        -4,
+        140.8,
+        80,
+        4
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -80,
+          -4,
+          140.8,
+          80,
+          4
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.96
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 100,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/voxelnet_early_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/voxelnet_early_fusion.yaml",
+    "sha256": "da4747864bdd82c24ebec8400a54a9afc582b09c9e94fadd3fcefb6acb0a21af",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "EarlyFusionDataset",
+      "args": []
+    },
+    "model_core": "voxel_net",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 36000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -40,
+        -3,
+        140.8,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -40,
+          -3,
+          140.8,
+          40,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.96
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.2
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 100,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/voxelnet_intermediate_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/voxelnet_intermediate_fusion.yaml",
+    "sha256": "2f7b9e64cc833c60b5f29b58f8e778c0abfe1131fc37e6917ea66ce612d009fe",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "IntermediateFusionDataset",
+      "args": []
+    },
+    "model_core": "voxel_net_intermediate",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 36000,
+        "max_voxel_test": 70000
+      },
+      "cav_lidar_range": [
+        -140.8,
+        -41.6,
+        -3,
+        140.8,
+        41.6,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -140.8,
+          -41.6,
+          -3,
+          140.8,
+          41.6,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.25
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.15
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 2,
+      "epoches": 30,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  },
+  {
+    "path": "opencood/hypes_yaml/voxelnet_late_fusion.yaml",
+    "source_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/voxelnet_late_fusion.yaml",
+    "sha256": "bda2f67df711ec2be91c918ed75793cbf7edcb91b9a13c44417e8025e149ebaf",
+    "train_root": "v2u4real/train",
+    "validation_root": "v2u4real/val",
+    "fusion": {
+      "core_method": "LateFusionDataset",
+      "args": []
+    },
+    "model_core": "voxel_net",
+    "preprocess": {
+      "core_method": "SpVoxelPreprocessor",
+      "args": {
+        "voxel_size": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "max_points_per_voxel": 32,
+        "max_voxel_train": 16000,
+        "max_voxel_test": 40000
+      },
+      "cav_lidar_range": [
+        -70.4,
+        -40,
+        -3,
+        70.4,
+        40,
+        1
+      ]
+    },
+    "postprocess": {
+      "core_method": "VoxelPostprocessor",
+      "anchor_args": {
+        "cav_lidar_range": [
+          -70.4,
+          -40,
+          -3,
+          70.4,
+          40,
+          1
+        ],
+        "l": 3.9,
+        "w": 1.6,
+        "h": 1.56,
+        "r": [
+          0,
+          90
+        ],
+        "num": 2
+      },
+      "target_args": {
+        "pos_threshold": 0.6,
+        "neg_threshold": 0.45,
+        "score_threshold": 0.25
+      },
+      "order": "hwl",
+      "max_num": 100,
+      "nms_thresh": 0.05
+    },
+    "wild_setting": null,
+    "train_params": {
+      "batch_size": 4,
+      "epoches": 30,
+      "eval_freq": 1,
+      "save_freq": 1
+    }
+  }
+]

@@ -1,0 +1,89 @@
+{
+  "audit_status": "PASS",
+  "new_tests": 19,
+  "related_regression_tests": 77,
+  "total_tests": 96,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "compileall_exit_code": 0,
+  "context_consistency": {
+    "validated_file_count": 9,
+    "errors": []
+  },
+  "experiment_registry": "PASS",
+  "question_routes": "PASS",
+  "artifact_references": "PASS",
+  "original_inputs": "20/20 unchanged",
+  "old_audit_artifacts_unchanged": 40,
+  "source_identity": "75/75 fixed SHA256 and Git blobs",
+  "commands": [
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "code/scripts/audit_v2u4real_r2_05a_baseline_data_eval_v1.py"
+      ],
+      "exit_code": 0,
+      "stdout_tail": "{\"scenario_alignment_status\": \"AUDITED_CRITICAL_ADAPTATION_GAPS\", \"source_audit_status\": \"PASS_WITH_DOCUMENTED_CONFLICTS\", \"field_schema_status\": \"PASS_CODE_CONSUMPTION_ONLY\", \"label_contract_status\": \"B_PRESERVED_NATIVE_PATH_CONFLICT\", \"evaluation_audit_status\": \"PASS_WITH_DOCUMENTED_CONFLICTS\", \"baseline_readiness_status\": \"NEEDS_RESEARCHER_DECISION\", \"physical_alignment_status\": \"NOT_ESTABLISHED\", \"task_execution_status\": \"COMPLETED_AUDIT_ONLY\"}\n"
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-m",
+        "unittest",
+        "-v",
+        "test_v2u4real_r2_05a_baseline_data_eval_v1",
+        "test_v2u4real_r2_04c_label_merge_policy_v1",
+        "test_v2u4real_r2_04b_multiframe_coordinate_consistency_v1",
+        "test_v2u4real_r2_04a_single_frame_geometry_v1",
+        "test_v2u4real_full_sample_v1",
+        "test_v2u4real_preparation_v1",
+        "test_v2u4real_interface_v1.DatasetAuditTests",
+        "test_v2u4real_interface_v1.GeometryTests"
+      ],
+      "exit_code": 0,
+      "stdout_tail": "r_establishes_physical_pairing) ... ok\ntest_fixed_scope_and_digest_before_use (test_v2u4real_full_sample_v1.FullSampleTests.test_fixed_scope_and_digest_before_use) ... ok\ntest_ignored_range_never_reads_body_or_writes_archive (test_v2u4real_full_sample_v1.FullSampleTests.test_ignored_range_never_reads_body_or_writes_archive) ... ok\ntest_missing_frame_not_hidden_by_intersection (test_v2u4real_full_sample_v1.FullSampleTests.test_missing_frame_not_hidden_by_intersection) ... ok\ntest_nested_clock_fields_preserve_values_without_inventing_units (test_v2u4real_full_sample_v1.FullSampleTests.test_nested_clock_fields_preserve_values_without_inventing_units) ... ok\ntest_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings (test_v2u4real_full_sample_v1.FullSampleTests.test_numeric_metadata_rejects_nonfinite_wrong_shapes_and_strings) ... ok\ntest_structural_success_never_qualifies_physical_pair (test_v2u4real_full_sample_v1.FullSampleTests.test_structural_success_never_qualifies_physical_pair) ... ok\ntest_complete_member_is_idempotent_and_not_overwritten (test_v2u4real_preparation_v1.PreparationTests.test_complete_member_is_idempotent_and_not_overwritten) ... ok\ntest_hard_download_and_output_boundaries (test_v2u4real_preparation_v1.PreparationTests.test_hard_download_and_output_boundaries) ... ok\ntest_ignored_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_ignored_range_does_not_read_response_body) ... ok\ntest_missing_raw_assets_stay_blocked_without_fake_pass (test_v2u4real_preparation_v1.PreparationTests.test_missing_raw_assets_stay_blocked_without_fake_pass) ... ok\ntest_only_train_and_immutable_revision (test_v2u4real_preparation_v1.PreparationTests.test_only_train_and_immutable_revision) ... ok\ntest_partial_compressed_member_is_not_a_successful_sample (test_v2u4real_preparation_v1.PreparationTests.test_partial_compressed_member_is_not_a_successful_sample) ... ok\ntest_path_traversal_links_and_oversize_are_blocked (test_v2u4real_preparation_v1.PreparationTests.test_path_traversal_links_and_oversize_are_blocked) ... ok\ntest_wrong_range_does_not_read_response_body (test_v2u4real_preparation_v1.PreparationTests.test_wrong_range_does_not_read_response_body) ... ok\ntest_audit_missing_keys_duplicates_and_no_clock_inference (test_v2u4real_interface_v1.DatasetAuditTests.test_audit_missing_keys_duplicates_and_no_clock_inference) ... ok\ntest_duplicate_yaml_keys_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_duplicate_yaml_keys_rejected) ... ok\ntest_empty_corrupt_compressed_nonfinite_rejected (test_v2u4real_interface_v1.DatasetAuditTests.test_empty_corrupt_compressed_nonfinite_rejected) ... ok\ntest_field_types_include_all_objects (test_v2u4real_interface_v1.DatasetAuditTests.test_field_types_include_all_objects) ... ok\ntest_missing_data_is_blocked (test_v2u4real_interface_v1.DatasetAuditTests.test_missing_data_is_blocked) ... ok\ntest_reader_ascii_and_binary (test_v2u4real_interface_v1.DatasetAuditTests.test_reader_ascii_and_binary) ... ok\ntest_select_smallest_train_and_cap (test_v2u4real_interface_v1.DatasetAuditTests.test_select_smallest_train_and_cap) ... ok\ntest_test_split_not_accepted (test_v2u4real_interface_v1.DatasetAuditTests.test_test_split_not_accepted) ... ok\ntest_known_axis_and_inverse (test_v2u4real_interface_v1.GeometryTests.test_known_axis_and_inverse) ... ok\ntest_nonrigid_and_nonfinite_rejected (test_v2u4real_interface_v1.GeometryTests.test_nonrigid_and_nonfinite_rejected) ... ok\ntest_reflection_rejected (test_v2u4real_interface_v1.GeometryTests.test_reflection_rejected) ... ok\ntest_rsu_is_explicit_setting (test_v2u4real_interface_v1.GeometryTests.test_rsu_is_explicit_setting) ... ok\n\n----------------------------------------------------------------------\nRan 96 tests in 3.364s\n\nOK\n"
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-m",
+        "compileall",
+        "-q",
+        "code/src",
+        "code/scripts",
+        "code/tests"
+      ],
+      "exit_code": 0,
+      "stdout_tail": ""
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "code/scripts/build_project_knowledge_index_v1.py",
+        "--check"
+      ],
+      "exit_code": 1,
+      "stdout_tail": "{\n  \"mismatches\": [\n    \"docs/registries/generated/tracked_file_inventory.csv\",\n    \"docs/registries/generated/python_dependency_map.json\",\n    \"docs/registries/generated/artifact_catalog.csv\",\n    \"docs/registries/generated/archive_candidate_registry.csv\",\n    \"docs/registries/generated/registry_summary.json\"\n  ],\n  \"mode\": \"check\",\n  \"output_count\": 5,\n  \"passed\": false,\n  \"schema_version\": \"PI-JWM-project-knowledge-index-v2\"\n}\n<unknown>:37: SyntaxWarning: invalid escape sequence '\\.'\n<unknown>:44: SyntaxWarning: invalid escape sequence '\\.'\n<unknown>:79: SyntaxWarning: invalid escape sequence '\\.'\n<unknown>:37: SyntaxWarning: invalid escape sequence '\\.'\n<unknown>:44: SyntaxWarning: invalid escape sequence '\\.'\n<unknown>:79: SyntaxWarning: invalid escape sequence '\\.'\n"
+    }
+  ],
+  "knowledge_index": {
+    "status": "BLOCKED_EXISTING_MISMATCHES",
+    "exit_code": 1,
+    "mismatch_count": 5,
+    "write_mode_rebuild": false
+  },
+  "push_status": "NOT_ATTEMPTED_INDEX_GATE_FAILED",
+  "real_detector_metrics": "NOT_RUN",
+  "evidence_boundary": "software/field audit and synthetic function probes; no detection performance or training admission",
+  "diff_review": {
+    "authored_files_check_exit": 0,
+    "full_diff_check_exit": 2,
+    "upstream_snapshot_whitespace_warnings": 110,
+    "all_warnings_limited_to_verbatim_official_snapshot": true,
+    "source_bytes_changed_to_suppress_warnings": false,
+    "details": "upstream_snapshot_whitespace_review.json",
+    "staged_deletions": 0,
+    "task_prefixes_verified": 18
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "status": "DRAFT_AWAITING_RESEARCHER_REVIEW",
+  "official_commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "selection_frozen": false,
+  "formal_training_admission": "BLOCKED",
+  "recommended_scope": "LiDAR 3D-perception module only if researcher authorizes; not complete visual multi-car/RSU system",
+  "common_fairness": "same GT provenance, class mapping, ROI, evaluator/sort/thresholds and split; only input availability differs",
+  "candidates": [
+    {
+      "id": "vehicle_only_point_pillar",
+      "input": "vehicle Ouster only",
+      "official_model_exists": true,
+      "dedicated_vehicle_only_config_found": false,
+      "official_reproducibility": "COMPONENTS_EXIST_NOT_READY_END_TO_END",
+      "reference_config": "opencood/hypes_yaml/point_pillar_late_fusion.yaml",
+      "caveat": "LateFusionDataset trains on a randomly selected agent and tests multiple agents; not a ready vehicle-only experiment",
+      "new_code_needed": "approved input restriction and common policy-B GT adapter; not implemented",
+      "blockers": [
+        "researcher scope decision",
+        "same final policy-B GT for all methods",
+        "class/ROI/metric convention decision",
+        "field and coordinate limitations accepted explicitly",
+        "future approved adapter and CPU pipeline tests; no training authorization in this task"
+      ]
+    },
+    {
+      "id": "early_fusion_point_pillar",
+      "input": "vehicle plus transformed UAV raw point clouds",
+      "official_model_exists": true,
+      "official_config_exists": true,
+      "official_reproducibility": "OFFICIAL_PIPELINE_PRESENT_NOT_EXECUTED_AND_POLICY_B_INCOMPATIBLE",
+      "reference_config": "opencood/hypes_yaml/point_pillar_early_fusion.yaml",
+      "new_code_needed": "approved policy-B/common-GT adapter and class decisions; not implemented",
+      "blockers": [
+        "researcher scope decision",
+        "same final policy-B GT for all methods",
+        "class/ROI/metric convention decision",
+        "field and coordinate limitations accepted explicitly",
+        "future approved adapter and CPU pipeline tests; no training authorization in this task"
+      ]
+    },
+    {
+      "id": "intermediate_fusion_reference",
+      "input": "LiDAR-derived feature tensors from each agent",
+      "official_config_exists": true,
+      "reference_config": "opencood/hypes_yaml/point_pillar_intermediate_fusion.yaml",
+      "official_reproducibility": "REFERENCE_ONLY_NOT_EXECUTED",
+      "caveat": "Feature fusion existence does not verify visual tokens, real radio delivery or multi-round scheduling",
+      "new_code_needed": "policy-B/common-GT adapter plus future system interface; not implemented",
+      "blockers": [
+        "researcher scope decision",
+        "same final policy-B GT for all methods",
+        "class/ROI/metric convention decision",
+        "field and coordinate limitations accepted explicitly",
+        "future approved adapter and CPU pipeline tests; no training authorization in this task"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "official_path": "opencood/models/point_pillar.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar.py",
+      "sha256": "329907d8c8b43360e3e3b1cabd272244e9ecb1f96f83ec8573c8e860158a78e2",
+      "symbol": "PointPillar",
+      "lines": null
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/late_fusion_dataset.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/late_fusion_dataset.py",
+      "sha256": "08c6f649cc147539849e68229e1b0bcbbd2a6b324b3f6d9878afb448228e99f4",
+      "symbol": "LateFusionDataset",
+      "lines": null
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/early_fusion_dataset.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_dataset.py",
+      "sha256": "6c7ea882a93f4b3c08d52cbd1008a73a98cbe5dea229f573f849d8e0969fbcb7",
+      "symbol": "EarlyFusionDataset",
+      "lines": null
+    },
+    {
+      "official_path": "opencood/tools/inference.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference.py",
+      "sha256": "36037e7e4ec5e3e18472d774a7dcfc7400c14bb2d24a936fb5caf34386b02720",
+      "symbol": "main",
+      "lines": [
+        48,
+        128
+      ]
+    }
+  ]
+}

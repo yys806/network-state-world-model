@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-05A 2026-10-27 -->
+## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
+
+R2-05A不产生检测性能数值：96项软件测试通过，人工XY重合/高度分离探针表明评价为BEV；不能称真实3D AP复现。结果以本轮result/evaluator_probes/validation为准。
+
+实施记录：docs/implementation_records/STEP_R2_05A_V2U4REAL_BASELINE_DATA_EVAL_AUDIT.md；草案：docs/contracts/PIJWM_PERCEPTION_BASELINE_DATA_EVAL_CONTRACT_DRAFT_V1.md；机器证据：code/artifacts/audit/v2u4real_r2_05a_20261027/result.json。未用GPU/locked_test/训练/推理服务；无正式标签写回。
+<!-- END V2U4REAL R2-05A -->
+
 <!-- V2U4REAL R2-04C 2026-10-27 -->
 ## 2026-10-27 — STEP R2-04C 官方标签合并规则冻结
 

@@ -1,0 +1,25 @@
+{
+  "branch": "main",
+  "head": "d2f3c92c529097725b5f82fe4a4e7605f51065e1",
+  "status": " M AGENTS.md\n M AI_CONTEXT/00_PROJECT_STATE.md\n D doc/literature-notes/Feng_2025_ICML_Graph_World_Model.txt\n D doc/literature-notes/Hajiramezanali_2019_Variational_Graph_Recurrent_Neural_Netwo.txt\n D doc/literature-notes/Karacelebi_2026_ArXivOrg_Learning_Ad_Hoc_Network_Dynamics_via_Gra.txt\n D doc/literature-notes/PDF_SHA256SUMS.txt\n D doc/literature-notes/PI-JWM_v8_literature_map.md\n D doc/literature-notes/PIJWM\u6570\u636e\u96c6\u517c\u5bb9\u6027\u77e9\u9635.md\n D doc/literature-notes/PIJWM\u6587\u732e\u7ba1\u7406\u8bf4\u660e.md\n D doc/literature-notes/PIJWM\u65b9\u6cd5\u8bc1\u636e\u77e9\u9635.md\n D doc/literature-notes/README.md\n D doc/literature-notes/\u6587\u732e\u7d22\u5f15.csv\n D doc/literature-notes/\u6587\u732e\u7d22\u5f15.md\n D doc/literature-notes/\u65b0\u589e7\u7bc7\u7cbe\u8bfb\u6c47\u603b_20260826.md\n D doc/literature-notes/\u65b0\u589e7\u7bc7\u7cbe\u8bfb\u7b14\u8bb0_20260826.jsonl\n D doc/literature-notes/\u672c\u5730\u6587\u732e\u5e93\u72b6\u6001.json\n D doc/literature-notes/\u672c\u5730\u6587\u732e\u5e93\u9a8c\u6536.json\n D doc/literature-notes/\u9700\u8981\u624b\u52a8\u4e0b\u8f7d.md\n M docs/CHANGELOG.md\n M docs/PROJECT_INDEX.md\n M docs/registries/generated/registry_summary.json\n M docs/registries/generated/tracked_file_inventory.csv\n D findings.md\n D paper/README.md\n D paper/archive/pi_jwm_ton_draft_zh/IEEEtran.cls\n D paper/archive/pi_jwm_ton_draft_zh/pi_jwm_ton_draft_zh.pdf\n D paper/archive/pi_jwm_ton_draft_zh/pi_jwm_ton_draft_zh.tex\n D progress.md\n D task_plan.md\n M \u8bb0\u5f55/\u672c\u5730\u8ba1\u5212\u8868.md\n?? code/scripts/deploy_step6_4j_bundle_v1.py\n?? code/scripts/deploy_step6_4j_bundle_v1_29454.py\n?? code/scripts/deploy_step6_4j_remote_v1.py\n?? code/scripts/fig4_frozen_checkpoint_readonly_validation_20261014.py\n?? code/scripts/generate_meeting_figures_20261014.py\n?? code/scripts/generate_meeting_figures_20261014_v2.py\n?? code/scripts/plot_meeting_world_model_figures_20261012.py\n?? code/scripts/plot_step5_3e_tiny_overfit.py\n?? code/scripts/probe_step6_4j_remote_v1.py\n?? code/scripts/probe_step6_4j_remote_v1_29454.py\n?? docs/PROJECT_MEMORY_AND_SOURCES.md\n",
+  "existing_files": {
+    "AGENTS.md": "c773278285f129d5869e4147894be398371153a0ef9ac024149a19d2cbf7011a",
+    "AI_CONTEXT/00_PROJECT_STATE.md": "52f4eceb8c67afc5d5d4e6ac452e96345f923ba4d3404f2de505d1bab380f6da",
+    "docs/CHANGELOG.md": "0cc19678750023f7c7ed150daa3678d218ef783b5cca4712e5efcaba9505c51b",
+    "docs/PROJECT_INDEX.md": "1fbab2c9338df078fc2c4d772383b8b6623cf618024bd492176602e571eeb698",
+    "docs/registries/generated/registry_summary.json": "30c04ae68467b6b328e3debb0b9888f823cf3bb13ee2444f5ee2665554e60471",
+    "docs/registries/generated/tracked_file_inventory.csv": "f69c199565361d04feb2448ace2c076d4d9501fcc62becf10bfbeb46ab08172f",
+    "\u8bb0\u5f55/\u672c\u5730\u8ba1\u5212\u8868.md": "7770f40a018073a8c0670fbdaee65ecc7d172461d32db5f2fed7096269b1e502",
+    "code/scripts/deploy_step6_4j_bundle_v1.py": "3b47a83096da096ff3a337f12a8c6671821882427cfa6eaaa10df80d8b1b6736",
+    "code/scripts/deploy_step6_4j_bundle_v1_29454.py": "a17cc37792939a229d2644b893564317506ab4ce9fe7a42b5e29eb4295785557",
+    "code/scripts/deploy_step6_4j_remote_v1.py": "8453cabbdf968d0e4bb6a4ffff1a17b8143cd2b0566d66405d95ff2c599f572b",
+    "code/scripts/fig4_frozen_checkpoint_readonly_validation_20261014.py": "2c5bcb201d39c61b14fbde51589c2896ad2a240537dfaffe8e03620d014f1e88",
+    "code/scripts/generate_meeting_figures_20261014.py": "1583dab8727f3ded1c73267478269a251e9f2cc4ab27649e1d1838dd0f69feb8",
+    "code/scripts/generate_meeting_figures_20261014_v2.py": "fbd0573faa16f71d3fc8a4f8dfccaceb7065f1b73822d64606b5a1669271aa89",
+    "code/scripts/plot_meeting_world_model_figures_20261012.py": "748913bdec4eb945ad5946f49df0d4208ca394122f18ea667f52ba01dad8e0b2",
+    "code/scripts/plot_step5_3e_tiny_overfit.py": "4dc06277f6d3688adee4d7daa31b738bff7248daeb0e0ec7987cc362d7c5a99c",
+    "code/scripts/probe_step6_4j_remote_v1.py": "65ce6afaef573de0a58c226767eab138fe3415028ee6e4e4ec5ef16d9300af55",
+    "code/scripts/probe_step6_4j_remote_v1_29454.py": "0a9c96a107249edef01c9a508df2555f24c05b688ee63c79b3e5813f68b42184",
+    "docs/PROJECT_MEMORY_AND_SOURCES.md": "3657911d2aeddc12f46cc5a94bbbf7e5b9ce6f6dc3dc9a76fa9c22b562a51ea7"
+  }
+}

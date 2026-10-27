@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-05A 2026-10-27 -->
+## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
+
+研究者仅授权R2-05A审计。R2-04C方案B继续冻结；本轮合同为DRAFT — AWAITING RESEARCHER REVIEW。LiDAR用途限定、类别/真值、评价口径、Q_k和模型选择均未获新决策，不把建议写成决定。
+
+实施记录：docs/implementation_records/STEP_R2_05A_V2U4REAL_BASELINE_DATA_EVAL_AUDIT.md；草案：docs/contracts/PIJWM_PERCEPTION_BASELINE_DATA_EVAL_CONTRACT_DRAFT_V1.md；机器证据：code/artifacts/audit/v2u4real_r2_05a_20261027/result.json。未用GPU/locked_test/训练/推理服务；无正式标签写回。
+<!-- END V2U4REAL R2-05A -->
+
 <!-- V2U4REAL R2-04C 2026-10-27 -->
 ## 2026-10-27 — 研究者决策：V2U4Real 标签来源采用方案 B
 

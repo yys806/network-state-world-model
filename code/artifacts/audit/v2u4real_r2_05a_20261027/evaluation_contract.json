@@ -1,0 +1,203 @@
+{
+  "status": "DRAFT_AWAITING_RESEARCHER_REVIEW",
+  "official_commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "evidence_type": "SOURCE_AUDIT_AND_SYNTHETIC_FUNCTION_PROBES_NOT_DETECTOR_PERFORMANCE",
+  "output_boxes": {
+    "model_order": "hwl",
+    "center_format": [
+      "x",
+      "y",
+      "z",
+      "h",
+      "w",
+      "l",
+      "yaw_radians"
+    ],
+    "evaluation_shape": [
+      "N",
+      8,
+      3
+    ],
+    "confidence": "sigmoid anchor objectness; no class argument in evaluator"
+  },
+  "iou": {
+    "dimension": "BEV_XY_POLYGON_AREA",
+    "corners": "first four XY corners",
+    "ignores_height": true,
+    "evaluation_thresholds": [
+      0.25,
+      0.5,
+      0.7
+    ],
+    "tp_comparison": "IoU >= threshold",
+    "paper_conflict": "Paper calls table metrics 3D AP; fixed evaluator computes XY polygon IoU"
+  },
+  "matching": {
+    "scope": "per frame",
+    "order": "descending prediction confidence",
+    "rule": "greedy maximum IoU among remaining GT; matched GT removed",
+    "class_aware": false
+  },
+  "ap": {
+    "method": "VOC2010 precision envelope integrated at all recall changes",
+    "recall": "cumulative TP / total GT",
+    "precision": "cumulative TP / (cumulative TP + cumulative FP)",
+    "global_sort_default": false,
+    "default_order": "frame-local score sort followed by dataset iteration order",
+    "global_sort_option": "--global_sort_detections",
+    "scope": [
+      "all loaded samples",
+      "each scenario"
+    ],
+    "scene_average": false,
+    "category_map": "UNSPECIFIED_NOT_IMPLEMENTED",
+    "equal_score_tie_policy": "UNSPECIFIED",
+    "default_mutates_tp_fp": true,
+    "repeated_evaluation_requires": "fresh statistics or deep copy",
+    "zero_gt_with_predictions": "ZeroDivisionError in fixed code; future empty-set policy requires approval"
+  },
+  "other_metrics": {
+    "precision_recall": "intermediate cumulative arrays, not one frozen operating-point result",
+    "fn": "not directly emitted; GT minus TP is a possible derived quantity",
+    "f1": "UNSPECIFIED_NOT_IMPLEMENTED",
+    "map": "UNSPECIFIED_NOT_IMPLEMENTED"
+  },
+  "point_pillar_postprocess": {
+    "score_threshold": 0.2,
+    "score_comparison": ">",
+    "nms": {
+      "type": "rotated BEV polygon NMS",
+      "threshold": 0.15,
+      "suppress_comparison": ">",
+      "pre_max_size": 1000
+    },
+    "prediction_filters": [
+      "XY standup spans <= 6",
+      "z_min >= -3 and z_max <= 1",
+      "all eight corners inside GT_RANGE after NMS"
+    ],
+    "height_filter_caveat": "remove_large_pred_bbx passes z_len as logical operand, not an explicit height limit",
+    "threshold_scope": "point_pillar early/late/intermediate YAML only; other configs differ"
+  },
+  "train_target_assignment": {
+    "order": "hwl",
+    "iou": "axis-aligned XY standup-box overlaps",
+    "positive_threshold": 0.6,
+    "positive_comparison": ">",
+    "negative_threshold": 0.45,
+    "negative_comparison": "< for every GT",
+    "forced_positive": "per-GT highest-overlap anchor if overlap > 0",
+    "regression": "normalized xyz, log dimension ratios, yaw difference; not evaluation matching"
+  },
+  "ranges": {
+    "train_val_gt": [
+      -100.8,
+      -80,
+      -4,
+      100.8,
+      80,
+      4
+    ],
+    "inference_test_gt": [
+      -15,
+      -80,
+      -4,
+      100,
+      80,
+      4
+    ],
+    "point_pillar_input": [
+      -100.8,
+      -80,
+      -4,
+      100.8,
+      80,
+      4
+    ],
+    "point_boundary": "strict inequalities",
+    "box_boundary": "inclusive, all eight corners"
+  },
+  "splits": {
+    "paper_ratio": "4:1:1 train:val:test",
+    "root_key": "root_dir",
+    "evaluation_root_key": "validate_dir",
+    "sample_read_scope": "five fixed train pairs only",
+    "caveat": "train=False selects validate_dir; mode=test selects GT_RANGE, not a separate test directory"
+  },
+  "label_policy": {
+    "frozen": "B: UAV overwrites shared IDs; retain both unique sides; no ID normalization",
+    "native_conflict": "early/intermediate and GT dedup keep first occurrence (ego first)",
+    "native_class_filter": "exact obj_type == Car",
+    "native_id_output_caveat": "generate_gt_bbx_with_id casts output IDs to int"
+  },
+  "task_quality_interface": {
+    "J_per": "mean of Q_k(D_k); overdue task contributes zero only under candidate definition",
+    "official_direct_support": false,
+    "required_decisions": [
+      "task-to-frame/ROI/class association",
+      "Qk definition and fixed matching/score/IoU thresholds",
+      "deadline and last-valid-result semantics",
+      "empty GT/prediction cases",
+      "measured delivery/completion time or explicitly authorized simulation"
+    ],
+    "timestamp_policy": "file keys are association keys, not independently verified physical timestamps"
+  },
+  "unresolved": [
+    "paper/code angle order and complete field units",
+    "physical alignment NOT_ESTABLISHED",
+    "Car-only vs paper Vehicle/Cyclist classes",
+    "paper ego-priority vs frozen B/native priority",
+    "BEV vs volume-3D metric claim",
+    "AP sorting convention and empty-set behavior"
+  ],
+  "evidence": [
+    {
+      "official_path": "opencood/utils/eval_utils.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/eval_utils.py",
+      "sha256": "28d09c074d24460f4f61a76cbe2873f3ca0214f0e9809120dd0e315b366a6ef6",
+      "symbol": "voc_ap/calculate_tp_fp/calculate_ap",
+      "lines": null
+    },
+    {
+      "official_path": "opencood/utils/common_utils.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+      "sha256": "588fe8e44d42b1ba832eedff09dd60cbbee5215640c3797f810f6d18f3755ae9",
+      "symbol": "compute_iou/convert_format",
+      "lines": [
+        189,
+        229
+      ]
+    },
+    {
+      "official_path": "opencood/tools/inference.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference.py",
+      "sha256": "36037e7e4ec5e3e18472d774a7dcfc7400c14bb2d24a936fb5caf34386b02720",
+      "symbol": "test_parser/main",
+      "lines": null
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/__init__.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/__init__.py",
+      "sha256": "1f00abfc6381492653fe05d7f9903d4468280f9a77163a9434846a5e1d617479",
+      "symbol": "build_dataset",
+      "lines": [
+        19,
+        53
+      ]
+    },
+    {
+      "official_path": "opencood/data_utils/post_processor/voxel_postprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/voxel_postprocessor.py",
+      "sha256": "6307d04b7223fc351242f556e9eb995689f25984eaf200a23499b05fb024fd8c",
+      "symbol": "generate_label/post_process",
+      "lines": null
+    },
+    {
+      "official_path": "opencood/data_utils/post_processor/base_postprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/base_postprocessor.py",
+      "sha256": "f54bbc672477c1570b0cdfb64c39994ada4e1f97aba56a4f00bae731f5926ee7",
+      "symbol": "generate_object_center/generate_gt_bbx_with_id",
+      "lines": null
+    }
+  ]
+}

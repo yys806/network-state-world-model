@@ -1,0 +1,3514 @@
+{
+  "dataset_version": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+  "scene": "2025-07-18-12-53_2",
+  "fixed_keys": [
+    "1752814590.2",
+    "1752814590.4",
+    "1752814590.6",
+    "1752814591.2",
+    "1752814591.6"
+  ],
+  "scope": "five train pairs only; no population statistics inferred",
+  "frames": [
+    {
+      "frame_key": "1752814590.2",
+      "sides": {
+        "vehicle": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.2.yaml",
+              "sha256": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+              "bytes": 3592,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.2.pcd",
+              "sha256": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+              "bytes": 2259016,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "141177"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "141177"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            141177,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            162.4558620813,
+            -195.5474155993,
+            -3.0822680281,
+            -179.1582303045,
+            128.6537437347,
+            0.4917033974
+          ],
+          "raw_objects": {
+            "1": {
+              "angle": [
+                0.0,
+                0.4892412826,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.506838,
+                1.578579,
+                2.321422
+              ],
+              "location": [
+                0.5121675768604206,
+                -0.05321566955961854,
+                -0.9541257180739957
+              ],
+              "obj_type": "Car",
+              "speed": 6.32278729453
+            },
+            "2": {
+              "angle": [
+                0.0,
+                -4.2063249006,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.694557,
+                0.821663,
+                1.567604
+              ],
+              "location": [
+                17.155717243487587,
+                -1.4126849880295549,
+                -1.6344544275634691
+              ],
+              "obj_type": "Cyclist",
+              "speed": 6.05783832118
+            },
+            "3": {
+              "angle": [
+                0.0,
+                -2.0133421833,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.923773,
+                2.42336,
+                2.091038
+              ],
+              "location": [
+                71.40329617235176,
+                -0.206376276946106,
+                -1.6841315357101647
+              ],
+              "obj_type": "Car",
+              "speed": 13.6736184128
+            },
+            "4": {
+              "angle": [
+                0.0,
+                -179.3663505536,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                3.634095,
+                1.980436,
+                1.578718
+              ],
+              "location": [
+                90.68066715628473,
+                3.778636806957771,
+                -1.9385357211642553
+              ],
+              "obj_type": "Car",
+              "speed": 15.3244904732
+            },
+            "5": {
+              "angle": [
+                0.0,
+                -178.4852017399,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                7.14467,
+                2.933505,
+                2.869124
+              ],
+              "location": [
+                194.57968698756838,
+                3.6546051435406763,
+                -2.0395821611841685
+              ],
+              "obj_type": "Truck",
+              "speed": 5.986628549565013
+            },
+            "6": {
+              "angle": [
+                0.0,
+                -0.7546474142,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                7.14467,
+                2.933505,
+                2.869124
+              ],
+              "location": [
+                104.67661357672453,
+                -0.38567192607720646,
+                -1.6845901827709577
+              ],
+              "obj_type": "Truck",
+              "speed": 11.0998721117
+            }
+          },
+          "object_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "obj_type_counts": {
+            "Car": 3,
+            "Cyclist": 1,
+            "Truck": 2
+          }
+        },
+        "uav": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+              "sha256": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+              "bytes": 1390,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+              "sha256": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+              "bytes": 1128694,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70532"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "70532"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            70532,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            146.0642330580825,
+            -178.5034348014285,
+            -51.65063285498502,
+            -179.0519502518403,
+            131.9188901918,
+            0.9285541649206536
+          ],
+          "raw_objects": {
+            "1": {
+              "angle": [
+                -0.0376997505,
+                4.3242316981,
+                0.498576739
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.983179,
+                2.067932,
+                2.215566
+              ],
+              "location": [
+                -23.917775937430495,
+                -0.2454373288737487,
+                -49.140255242657965
+              ],
+              "obj_type": "Car",
+              "speed": 3.65229107258
+            },
+            "2": {
+              "angle": [
+                -0.0871966733,
+                5.002606796,
+                0.9961915008
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.727786,
+                0.837228,
+                1.500413
+              ],
+              "location": [
+                -7.928257563139877,
+                -0.7297369240945472,
+                -49.82803297945791
+              ],
+              "obj_type": "Cyclist",
+              "speed": 4.4077211334
+            }
+          },
+          "object_ids": [
+            "1",
+            "2"
+          ],
+          "obj_type_counts": {
+            "Car": 1,
+            "Cyclist": 1
+          }
+        }
+      },
+      "annotation_path_comparison": {
+        "interpretation": "official_code_interpretation_only",
+        "native_field_path": {
+          "vehicle": {
+            "retained_ids_after_native_Car_filter_and_range": [
+              "1",
+              "3",
+              "4"
+            ],
+            "native_hwl_centers": [
+              [
+                0.5121675768604206,
+                -0.05321566955961851,
+                -0.9541257180739958,
+                2.321422,
+                1.5785790000000002,
+                4.506838,
+                0.00853887121805004
+              ],
+              [
+                71.40329617235176,
+                -0.206376276946106,
+                -1.6841315357101645,
+                2.091038,
+                2.42336,
+                4.923772999999992,
+                -0.035139450067876284
+              ],
+              [
+                90.68066715628473,
+                3.7786368069577714,
+                -1.9385357211642553,
+                1.5787180000000003,
+                1.9804360000000003,
+                3.6340949999999976,
+                -3.130533384446674
+              ]
+            ]
+          },
+          "uav": {
+            "retained_ids_after_native_Car_filter_and_range": [
+              "1"
+            ],
+            "native_hwl_centers": [
+              [
+                0.49201155203279257,
+                -0.2854238580323889,
+                -0.9505409517719057,
+                2.215565967417419,
+                2.067931991900108,
+                4.9831789462349585,
+                0.018617716138351958
+              ]
+            ]
+          }
+        },
+        "policy_B_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "policy_B_sources": {
+          "1": "uav",
+          "2": "uav",
+          "3": "vehicle",
+          "4": "vehicle",
+          "5": "vehicle",
+          "6": "vehicle"
+        },
+        "priority_comparison_scope": "mapping_priority_simulation_before_class_and_range_filters_not_full_dataset_execution",
+        "simulated_native_first_occurrence_sources_before_class_and_range_filters": {
+          "1": "vehicle",
+          "2": "vehicle",
+          "3": "vehicle",
+          "4": "vehicle",
+          "5": "vehicle",
+          "6": "vehicle"
+        },
+        "shared_ids_priority_conflicts": [
+          "1",
+          "2"
+        ],
+        "input_instance_count": 8,
+        "output_object_count": 6
+      }
+    },
+    {
+      "frame_key": "1752814590.4",
+      "sides": {
+        "vehicle": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.4.yaml",
+              "sha256": "38fbd847b2dc7c40d3270e0577656e257e409ef8e3c521ccb5429a17cd5dabef",
+              "bytes": 3282,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.4.pcd",
+              "sha256": "9fe8f9626e77daec86f6d16e7e8de7dacafd968ed625e1492fceddd50d1e8f34",
+              "bytes": 2286040,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "142866"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "142866"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            142866,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            161.7135177764,
+            -194.6323702281,
+            -3.0839175871,
+            -179.1624479587,
+            128.7246984372,
+            0.4919168124
+          ],
+          "raw_objects": {
+            "1": {
+              "angle": [
+                0.0,
+                -0.4577280768,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.506838,
+                1.578579,
+                2.321422
+              ],
+              "location": [
+                0.5952077456637634,
+                -0.13428067192877824,
+                -0.9684981003137033
+              ],
+              "obj_type": "Car",
+              "speed": 6.35170969697
+            },
+            "2": {
+              "angle": [
+                0.0,
+                -1.6041520109,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.694557,
+                0.821663,
+                1.567604
+              ],
+              "location": [
+                17.190154926307617,
+                -1.3923081721216817,
+                -1.6632956314382945
+              ],
+              "obj_type": "Cyclist",
+              "speed": 6.05428653708
+            },
+            "3": {
+              "angle": [
+                0.0,
+                -2.0133421833,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.923773,
+                2.42336,
+                2.091038
+              ],
+              "location": [
+                72.94741778162513,
+                0.06626825543343659,
+                -1.8694022810477822
+              ],
+              "obj_type": "Car",
+              "speed": 13.3223701
+            },
+            "4": {
+              "angle": [
+                0.0,
+                -179.3634325813,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                3.634095,
+                1.980436,
+                1.578718
+              ],
+              "location": [
+                86.45099911986523,
+                3.9922293183746884,
+                -2.252383252735431
+              ],
+              "obj_type": "Car",
+              "speed": 15.4303712618
+            },
+            "6": {
+              "angle": [
+                0.0,
+                -0.7546474142,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                7.14467,
+                2.933505,
+                2.869124
+              ],
+              "location": [
+                105.68496269735414,
+                -0.16654726171918832,
+                -1.3019209460411958
+              ],
+              "obj_type": "Truck",
+              "speed": 11.6774690859
+            }
+          },
+          "object_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "obj_type_counts": {
+            "Car": 3,
+            "Cyclist": 1,
+            "Truck": 1
+          }
+        },
+        "uav": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.4.yaml",
+              "sha256": "2ac9ebd2adbbed94c9f5d088bce4da206d9267e4da2fadc62fcd30880c5a52f9",
+              "bytes": 1386,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.4.pcd",
+              "sha256": "cd7e84c29168bdfc2bd6a1b5e0a26dbb4d209b4ea701fe8083511f6705035304",
+              "bytes": 1132198,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70751"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "70751"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            70751,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            145.96302729623716,
+            -178.1595040283652,
+            -51.809464623701004,
+            -178.9375703971481,
+            132.0705654097,
+            1.3905409753208338
+          ],
+          "raw_objects": {
+            "1": {
+              "angle": [
+                -0.0904915531,
+                5.1921485588,
+                0.9958976371
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.983179,
+                2.067932,
+                2.215566
+              ],
+              "location": [
+                -23.932866838525968,
+                -0.38520889312032197,
+                -49.1257461044488
+              ],
+              "obj_type": "Car",
+              "speed": 6.54056831998
+            },
+            "2": {
+              "angle": [
+                -0.0911144879,
+                5.227989944,
+                0.9958408437
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.727786,
+                0.837228,
+                1.500413
+              ],
+              "location": [
+                -7.8320681196434,
+                -0.6956604763639753,
+                -49.8754649234161
+              ],
+              "obj_type": "Cyclist",
+              "speed": 6.82796582798
+            }
+          },
+          "object_ids": [
+            "1",
+            "2"
+          ],
+          "obj_type_counts": {
+            "Car": 1,
+            "Cyclist": 1
+          }
+        }
+      },
+      "annotation_path_comparison": {
+        "interpretation": "official_code_interpretation_only",
+        "native_field_path": {
+          "vehicle": {
+            "retained_ids_after_native_Car_filter_and_range": [
+              "1",
+              "3",
+              "4"
+            ],
+            "native_hwl_centers": [
+              [
+                0.5952077456637634,
+                -0.13428067192877827,
+                -0.9684981003137032,
+                2.3214219999999997,
+                1.578579,
+                4.506838,
+                -0.007988862018981472
+              ],
+              [
+                72.94741778162513,
+                0.06626825543343667,
+                -1.869402281047782,
+                2.091038,
+                2.42336,
+                4.923772999999992,
+                -0.035139450067876284
+              ],
+              [
+                86.45099911986522,
+                3.9922293183746884,
+                -2.252383252735431,
+                1.5787180000000003,
+                1.9804359999999999,
+                3.634094999999998,
+                -3.130482456222557
+              ]
+            ]
+          },
+          "uav": {
+            "retained_ids_after_native_Car_filter_and_range": [
+              "1"
+            ],
+            "native_hwl_centers": [
+              [
+                0.032098793481875276,
+                -0.14528075953878505,
+                -0.9635020435182469,
+                2.2155654776696716,
+                2.0679318696918343,
+                4.983178139200497,
+                0.03251493769015147
+              ]
+            ]
+          }
+        },
+        "policy_B_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "6"
+        ],
+        "policy_B_sources": {
+          "1": "uav",
+          "2": "uav",
+          "3": "vehicle",
+          "4": "vehicle",
+          "6": "vehicle"
+        },
+        "priority_comparison_scope": "mapping_priority_simulation_before_class_and_range_filters_not_full_dataset_execution",
+        "simulated_native_first_occurrence_sources_before_class_and_range_filters": {
+          "1": "vehicle",
+          "2": "vehicle",
+          "3": "vehicle",
+          "4": "vehicle",
+          "6": "vehicle"
+        },
+        "shared_ids_priority_conflicts": [
+          "1",
+          "2"
+        ],
+        "input_instance_count": 7,
+        "output_object_count": 5
+      }
+    },
+    {
+      "frame_key": "1752814590.6",
+      "sides": {
+        "vehicle": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.6.yaml",
+              "sha256": "6ba19b60a6d8a824fc041d8dd46e590160b9431dceaf6f509630e3490d5c6c64",
+              "bytes": 3280,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.6.pcd",
+              "sha256": "23c6531e928c548303a4dde3c880c1cbff59772bea1e87d6fc979fdf12cd5d94",
+              "bytes": 2292216,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "143252"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "143252"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            143252,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            160.9791069502,
+            -193.6872318752,
+            -3.1126862171,
+            -179.1853401389,
+            128.8526032533,
+            0.5070150468
+          ],
+          "raw_objects": {
+            "1": {
+              "angle": [
+                0.0,
+                1.0533210281,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.506838,
+                1.578579,
+                2.321422
+              ],
+              "location": [
+                0.6768935902331977,
+                -0.057555632618109476,
+                -1.0187013023649953
+              ],
+              "obj_type": "Car",
+              "speed": 4.57866633368
+            },
+            "2": {
+              "angle": [
+                0.0,
+                -1.6769529089,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.694557,
+                0.821663,
+                1.567604
+              ],
+              "location": [
+                17.20617993215574,
+                -1.4017958704193967,
+                -1.671105431412883
+              ],
+              "obj_type": "Cyclist",
+              "speed": 4.55518684272
+            },
+            "3": {
+              "angle": [
+                0.0,
+                -2.0133421833,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.923773,
+                2.42336,
+                2.091038
+              ],
+              "location": [
+                74.34588889495498,
+                0.1451527102786039,
+                -2.0345586074854065
+              ],
+              "obj_type": "Car",
+              "speed": 10.0889135924
+            },
+            "4": {
+              "angle": [
+                0.0,
+                -179.360514609,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                3.634095,
+                1.980436,
+                1.578718
+              ],
+              "location": [
+                82.12112666398207,
+                4.070966468256767,
+                -2.1348405026413415
+              ],
+              "obj_type": "Car",
+              "speed": 11.7711890905
+            },
+            "6": {
+              "angle": [
+                0.0,
+                -0.7546474142,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                7.14467,
+                2.933505,
+                2.869124
+              ],
+              "location": [
+                106.96734091034592,
+                0.14555103726372526,
+                -1.6061625649162128
+              ],
+              "obj_type": "Truck",
+              "speed": 9.52584576205
+            }
+          },
+          "object_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "obj_type_counts": {
+            "Car": 3,
+            "Cyclist": 1,
+            "Truck": 1
+          }
+        },
+        "uav": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.6.yaml",
+              "sha256": "10e2691d60e153f07188578bc5039e7106a344ba1064d70c9fc3f54391531fba",
+              "bytes": 1390,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.6.pcd",
+              "sha256": "8bfaf83f354ad39919b99ab81cd149a4b32199323ad465479238cd0538ca0a67",
+              "bytes": 1131894,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70732"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "70732"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            70732,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            144.93265472817367,
+            -176.0013371545871,
+            -51.6777235585273,
+            -179.10394935259538,
+            131.8389082828,
+            0.9683436469525092
+          ],
+          "raw_objects": {
+            "1": {
+              "angle": [
+                -0.0303399943,
+                3.4788884087,
+                0.4990786592
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.983179,
+                2.067932,
+                2.215566
+              ],
+              "location": [
+                -24.02483171013071,
+                -0.3946544683882256,
+                -49.17927087930028
+              ],
+              "obj_type": "Car",
+              "speed": 7.36903663487
+            },
+            "2": {
+              "angle": [
+                -0.0784401673,
+                4.4991396042,
+                0.9969191347
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.727786,
+                0.837228,
+                1.500413
+              ],
+              "location": [
+                -7.948449802156199,
+                -0.7785524269715389,
+                -49.86112438614287
+              ],
+              "obj_type": "Cyclist",
+              "speed": 7.29037837212
+            }
+          },
+          "object_ids": [
+            "1",
+            "2"
+          ],
+          "obj_type_counts": {
+            "Car": 1,
+            "Cyclist": 1
+          }
+        }
+      },
+      "annotation_path_comparison": {
+        "interpretation": "official_code_interpretation_only",
+        "native_field_path": {
+          "vehicle": {
+            "retained_ids_after_native_Car_filter_and_range": [
+              "1",
+              "3",
+              "4"
+            ],
+            "native_hwl_centers": [
+              [
+                0.6768935902331977,
+                -0.057555632618109476,
+                -1.0187013023649953,
+                2.321422,
+                1.5785789999999997,
+                4.506837999999999,
+                0.0183839200208367
+              ],
+              [
+                74.34588889495498,
+                0.14515271027860394,
+                -2.0345586074854065,
+                2.091038,
+                2.42336,
+                4.923772999999992,
+                -0.035139450067876284
+              ],
+              [
+                82.12112666398207,
+                4.070966468256767,
+                -2.1348405026413415,
+                1.5787180000000003,
+                1.9804359999999999,
+                3.6340950000000034,
+                -3.13043152799844
+              ]
+            ]
+          },
+          "uav": {
+            "retained_ids_after_native_Car_filter_and_range": [
+              "1"
+            ],
+            "native_hwl_centers": [
+              [
+                0.6910915163340228,
+                0.16593150965805198,
+                -1.022004822342403,
+                2.215565971031947,
+                2.0679319921195294,
+                4.983178953835887,
+                0.008728914396718183
+              ]
+            ]
+          }
+        },
+        "policy_B_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "6"
+        ],
+        "policy_B_sources": {
+          "1": "uav",
+          "2": "uav",
+          "3": "vehicle",
+          "4": "vehicle",
+          "6": "vehicle"
+        },
+        "priority_comparison_scope": "mapping_priority_simulation_before_class_and_range_filters_not_full_dataset_execution",
+        "simulated_native_first_occurrence_sources_before_class_and_range_filters": {
+          "1": "vehicle",
+          "2": "vehicle",
+          "3": "vehicle",
+          "4": "vehicle",
+          "6": "vehicle"
+        },
+        "shared_ids_priority_conflicts": [
+          "1",
+          "2"
+        ],
+        "input_instance_count": 7,
+        "output_object_count": 5
+      }
+    },
+    {
+      "frame_key": "1752814591.2",
+      "sides": {
+        "vehicle": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.2.yaml",
+              "sha256": "ba17f43d745697dccce276ddef9e682074a109609fc3381187ccdc1f07ac1e75",
+              "bytes": 3579,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.2.pcd",
+              "sha256": "3a2f8e09d19a7d0a102657b08087363cc4c19d867b5417249c2f7b4d9f4e4b4c",
+              "bytes": 2310680,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "144406"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "144406"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            144406,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            158.7633565946,
+            -190.9251831375,
+            -3.1298583623,
+            -179.175470516,
+            129.0945124235,
+            0.3570605735
+          ],
+          "raw_objects": {
+            "1": {
+              "angle": [
+                0.0,
+                0.6583867771,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.506838,
+                1.578579,
+                2.321422
+              ],
+              "location": [
+                0.6518114580402621,
+                -0.03475859485457533,
+                -0.9664413517191717
+              ],
+              "obj_type": "Car",
+              "speed": 7.52140444751
+            },
+            "2": {
+              "angle": [
+                0.0,
+                -1.6277354626,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.694557,
+                0.821663,
+                1.567604
+              ],
+              "location": [
+                17.266910222409734,
+                -1.304843394836782,
+                -1.6413351934250795
+              ],
+              "obj_type": "Cyclist",
+              "speed": 7.60587625522
+            },
+            "3": {
+              "angle": [
+                0.0,
+                -2.0133421833,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.923773,
+                2.42336,
+                2.091038
+              ],
+              "location": [
+                78.793900801946,
+                0.4985519366003472,
+                -1.7155673898434076
+              ],
+              "obj_type": "Car",
+              "speed": 16.3891957844
+            },
+            "4": {
+              "angle": [
+                0.0,
+                -179.3517606919,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                3.634095,
+                1.980436,
+                1.578718
+              ],
+              "location": [
+                69.40780489108874,
+                4.308137366722208,
+                -2.1749787930747164
+              ],
+              "obj_type": "Car",
+              "speed": 19.1760253485
+            },
+            "5": {
+              "angle": [
+                0.0,
+                -178.6626306729,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                7.14467,
+                2.933505,
+                2.869124
+              ],
+              "location": [
+                176.8503695064828,
+                4.872483696240247,
+                -1.8255849961366633
+              ],
+              "obj_type": "Truck",
+              "speed": 11.0034318918
+            },
+            "6": {
+              "angle": [
+                0.0,
+                -0.6463255565,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                7.14467,
+                2.933505,
+                2.869124
+              ],
+              "location": [
+                109.8114979307636,
+                0.4537737910677088,
+                -1.0616933088322391
+              ],
+              "obj_type": "Truck",
+              "speed": 14.744612218
+            }
+          },
+          "object_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "obj_type_counts": {
+            "Car": 3,
+            "Cyclist": 1,
+            "Truck": 2
+          }
+        },
+        "uav": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.2.yaml",
+              "sha256": "e3d0acfdf4e51f836cd609f35913cbd45d3e1d0cec6eefb29c29982661ef4bb7",
+              "bytes": 1070,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.2.pcd",
+              "sha256": "57e394097854809d2397843a5db779d96e75fadd76a7c884ee78c840845db674",
+              "bytes": 1129446,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70579"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "70579"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            70579,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            142.54894914761596,
+            -173.08707540808558,
+            -51.756752058873296,
+            -179.0827118815714,
+            131.699137617,
+            1.3008253330689463
+          ],
+          "raw_objects": {
+            "2": {
+              "angle": [
+                -0.0356999629,
+                2.045995724,
+                0.9993626178
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.727786,
+                0.837228,
+                1.500413
+              ],
+              "location": [
+                -7.919012734396684,
+                -1.1834466420403011,
+                -49.9997745837706
+              ],
+              "obj_type": "Cyclist",
+              "speed": 7.62160492648
+            }
+          },
+          "object_ids": [
+            "2"
+          ],
+          "obj_type_counts": {
+            "Cyclist": 1
+          }
+        }
+      },
+      "annotation_path_comparison": {
+        "interpretation": "official_code_interpretation_only",
+        "native_field_path": {
+          "vehicle": {
+            "retained_ids_after_native_Car_filter_and_range": [
+              "1",
+              "3",
+              "4"
+            ],
+            "native_hwl_centers": [
+              [
+                0.6518114580402621,
+                -0.03475859485457533,
+                -0.9664413517191717,
+                2.321422,
+                1.578579,
+                4.506838,
+                0.011491017011989001
+              ],
+              [
+                78.793900801946,
+                0.49855193660034725,
+                -1.7155673898434078,
+                2.091038,
+                2.42336,
+                4.923772999999992,
+                -0.035139450067876284
+              ],
+              [
+                69.40780489108874,
+                4.308137366722207,
+                -2.1749787930747164,
+                1.5787180000000003,
+                1.9804360000000003,
+                3.6340950000000096,
+                -3.1302787433225983
+              ]
+            ]
+          },
+          "uav": {
+            "retained_ids_after_native_Car_filter_and_range": [],
+            "native_hwl_centers": []
+          }
+        },
+        "policy_B_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "policy_B_sources": {
+          "1": "vehicle",
+          "2": "uav",
+          "3": "vehicle",
+          "4": "vehicle",
+          "5": "vehicle",
+          "6": "vehicle"
+        },
+        "priority_comparison_scope": "mapping_priority_simulation_before_class_and_range_filters_not_full_dataset_execution",
+        "simulated_native_first_occurrence_sources_before_class_and_range_filters": {
+          "1": "vehicle",
+          "2": "vehicle",
+          "3": "vehicle",
+          "4": "vehicle",
+          "5": "vehicle",
+          "6": "vehicle"
+        },
+        "shared_ids_priority_conflicts": [
+          "2"
+        ],
+        "input_instance_count": 7,
+        "output_object_count": 6
+      }
+    },
+    {
+      "frame_key": "1752814591.6",
+      "sides": {
+        "vehicle": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.6.yaml",
+              "sha256": "363276047d1049267dd65928407f8b218a027808793fe0bc1d397f273e7cdd99",
+              "bytes": 3583,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.6.pcd",
+              "sha256": "a233549b1c393b827b285b95229c7025d844970baca2209314346118f436f4c8",
+              "bytes": 2304216,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "144002"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "144002"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            144002,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "camera1",
+            "camera2",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera1.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera2.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            157.2855039004,
+            -189.126458104,
+            -3.1409284677,
+            -179.1010364414,
+            129.3270600085,
+            0.3830723104
+          ],
+          "raw_objects": {
+            "1": {
+              "angle": [
+                0.0,
+                0.6627568384,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.506838,
+                1.578579,
+                2.321422
+              ],
+              "location": [
+                0.6364198850897107,
+                -0.03421549591956896,
+                -1.0931373936308955
+              ],
+              "obj_type": "Car",
+              "speed": 5.55651557856
+            },
+            "2": {
+              "angle": [
+                0.0,
+                1.0892656232,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.694557,
+                0.821663,
+                1.567604
+              ],
+              "location": [
+                17.39214023728704,
+                -1.2506916326971462,
+                -1.6286573916103062
+              ],
+              "obj_type": "Cyclist",
+              "speed": 6.18007272044
+            },
+            "3": {
+              "angle": [
+                0.0,
+                -2.0133421833,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                4.923773,
+                2.42336,
+                2.091038
+              ],
+              "location": [
+                82.14118323238192,
+                0.7318060357895121,
+                -1.8769714459303115
+              ],
+              "obj_type": "Car",
+              "speed": 13.8346292705
+            },
+            "4": {
+              "angle": [
+                0.0,
+                -179.3459247473,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                3.634095,
+                1.980436,
+                1.578718
+              ],
+              "location": [
+                60.98130933722335,
+                4.622671292103866,
+                -1.9519561629150515
+              ],
+              "obj_type": "Car",
+              "speed": 14.9956853354
+            },
+            "5": {
+              "angle": [
+                0.0,
+                -178.7321001459,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                7.14467,
+                2.933505,
+                2.869124
+              ],
+              "location": [
+                169.77933083790674,
+                5.560831573569027,
+                -1.8238718109115668
+              ],
+              "obj_type": "Truck",
+              "speed": 12.3791513473
+            },
+            "6": {
+              "angle": [
+                0.0,
+                -0.8746791503,
+                0.0
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                7.14467,
+                2.933505,
+                2.869124
+              ],
+              "location": [
+                112.88054970087425,
+                1.1713155843174572,
+                -1.0694311165111074
+              ],
+              "obj_type": "Truck",
+              "speed": 11.9192187581
+            }
+          },
+          "object_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "obj_type_counts": {
+            "Car": 3,
+            "Cyclist": 1,
+            "Truck": 2
+          }
+        },
+        "uav": {
+          "inputs": {
+            "yaml": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.6.yaml",
+              "sha256": "cdbe06034ced3427cd5a2456a1b01ae58f08cc5efd8814834f639dac3e2b927f",
+              "bytes": 1068,
+              "read_status": "PASS"
+            },
+            "pcd": {
+              "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.6.pcd",
+              "sha256": "e60c71ef15ab95f72327d17f9e89cf19055656c6e604b00ab2c9f790430fb766",
+              "bytes": 1129734,
+              "read_status": "PASS"
+            }
+          },
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70597"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "70597"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "xyz_shape": [
+            70597,
+            3
+          ],
+          "xyz_finite": true,
+          "root_keys": [
+            "ego_speed",
+            "lidar_pose",
+            "camera0",
+            "vehicles"
+          ],
+          "field_inventory": {
+            "ego_speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "lidar_pose": [
+              {
+                "type": "list",
+                "length": 6,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.extrinsic": [
+              {
+                "type": "list",
+                "length": 4,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "camera0.intrinsic": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "list"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.angle": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.center": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "int"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.extent": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.location": [
+              {
+                "type": "list",
+                "length": 3,
+                "element_types": [
+                  "float"
+                ],
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.obj_type": [
+              {
+                "type": "str",
+                "unit": "UNVERIFIED"
+              }
+            ],
+            "vehicles.*.speed": [
+              {
+                "type": "float",
+                "unit": "UNVERIFIED"
+              }
+            ]
+          },
+          "lidar_pose_raw": [
+            141.1962607147092,
+            -171.2871759969672,
+            -51.8399220975755,
+            -178.81580423358662,
+            131.8361677021,
+            1.79771531356221
+          ],
+          "raw_objects": {
+            "2": {
+              "angle": [
+                -0.1308114895,
+                5.0035546339,
+                1.4942865301
+              ],
+              "center": [
+                0,
+                0,
+                0
+              ],
+              "extent": [
+                1.727786,
+                0.837228,
+                1.500413
+              ],
+              "location": [
+                -8.144253034046583,
+                -1.5712298387613757,
+                -49.97807426001239
+              ],
+              "obj_type": "Cyclist",
+              "speed": 6.22230467572
+            }
+          },
+          "object_ids": [
+            "2"
+          ],
+          "obj_type_counts": {
+            "Cyclist": 1
+          }
+        }
+      },
+      "annotation_path_comparison": {
+        "interpretation": "official_code_interpretation_only",
+        "native_field_path": {
+          "vehicle": {
+            "retained_ids_after_native_Car_filter_and_range": [
+              "1",
+              "3",
+              "4"
+            ],
+            "native_hwl_centers": [
+              [
+                0.6364198850897109,
+                -0.03421549591956899,
+                -1.0931373936308955,
+                2.321422,
+                1.5785789999999995,
+                4.506838,
+                0.011567288970187982
+              ],
+              [
+                82.14118323238192,
+                0.7318060357895121,
+                -1.8769714459303115,
+                2.091038,
+                2.42336,
+                4.923772999999992,
+                -0.035139450067876304
+              ],
+              [
+                60.98130933722335,
+                4.622671292103866,
+                -1.9519561629150517,
+                1.5787179999999998,
+                1.9804360000000003,
+                3.634094999999999,
+                -3.1301768868743642
+              ]
+            ]
+          },
+          "uav": {
+            "retained_ids_after_native_Car_filter_and_range": [],
+            "native_hwl_centers": []
+          }
+        },
+        "policy_B_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "policy_B_sources": {
+          "1": "vehicle",
+          "2": "uav",
+          "3": "vehicle",
+          "4": "vehicle",
+          "5": "vehicle",
+          "6": "vehicle"
+        },
+        "priority_comparison_scope": "mapping_priority_simulation_before_class_and_range_filters_not_full_dataset_execution",
+        "simulated_native_first_occurrence_sources_before_class_and_range_filters": {
+          "1": "vehicle",
+          "2": "vehicle",
+          "3": "vehicle",
+          "4": "vehicle",
+          "5": "vehicle",
+          "6": "vehicle"
+        },
+        "shared_ids_priority_conflicts": [
+          "2"
+        ],
+        "input_instance_count": 7,
+        "output_object_count": 6
+      }
+    }
+  ],
+  "input_hashes": [
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.2.yaml",
+      "sha256_before": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+      "sha256_after": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.2.pcd",
+      "sha256_before": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+      "sha256_after": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+      "sha256_before": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+      "sha256_after": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+      "sha256_before": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+      "sha256_after": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.4.yaml",
+      "sha256_before": "38fbd847b2dc7c40d3270e0577656e257e409ef8e3c521ccb5429a17cd5dabef",
+      "sha256_after": "38fbd847b2dc7c40d3270e0577656e257e409ef8e3c521ccb5429a17cd5dabef",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.4.pcd",
+      "sha256_before": "9fe8f9626e77daec86f6d16e7e8de7dacafd968ed625e1492fceddd50d1e8f34",
+      "sha256_after": "9fe8f9626e77daec86f6d16e7e8de7dacafd968ed625e1492fceddd50d1e8f34",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.4.yaml",
+      "sha256_before": "2ac9ebd2adbbed94c9f5d088bce4da206d9267e4da2fadc62fcd30880c5a52f9",
+      "sha256_after": "2ac9ebd2adbbed94c9f5d088bce4da206d9267e4da2fadc62fcd30880c5a52f9",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.4.pcd",
+      "sha256_before": "cd7e84c29168bdfc2bd6a1b5e0a26dbb4d209b4ea701fe8083511f6705035304",
+      "sha256_after": "cd7e84c29168bdfc2bd6a1b5e0a26dbb4d209b4ea701fe8083511f6705035304",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.6.yaml",
+      "sha256_before": "6ba19b60a6d8a824fc041d8dd46e590160b9431dceaf6f509630e3490d5c6c64",
+      "sha256_after": "6ba19b60a6d8a824fc041d8dd46e590160b9431dceaf6f509630e3490d5c6c64",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.6.pcd",
+      "sha256_before": "23c6531e928c548303a4dde3c880c1cbff59772bea1e87d6fc979fdf12cd5d94",
+      "sha256_after": "23c6531e928c548303a4dde3c880c1cbff59772bea1e87d6fc979fdf12cd5d94",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.6.yaml",
+      "sha256_before": "10e2691d60e153f07188578bc5039e7106a344ba1064d70c9fc3f54391531fba",
+      "sha256_after": "10e2691d60e153f07188578bc5039e7106a344ba1064d70c9fc3f54391531fba",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.6.pcd",
+      "sha256_before": "8bfaf83f354ad39919b99ab81cd149a4b32199323ad465479238cd0538ca0a67",
+      "sha256_after": "8bfaf83f354ad39919b99ab81cd149a4b32199323ad465479238cd0538ca0a67",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.2.yaml",
+      "sha256_before": "ba17f43d745697dccce276ddef9e682074a109609fc3381187ccdc1f07ac1e75",
+      "sha256_after": "ba17f43d745697dccce276ddef9e682074a109609fc3381187ccdc1f07ac1e75",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.2.pcd",
+      "sha256_before": "3a2f8e09d19a7d0a102657b08087363cc4c19d867b5417249c2f7b4d9f4e4b4c",
+      "sha256_after": "3a2f8e09d19a7d0a102657b08087363cc4c19d867b5417249c2f7b4d9f4e4b4c",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.2.yaml",
+      "sha256_before": "e3d0acfdf4e51f836cd609f35913cbd45d3e1d0cec6eefb29c29982661ef4bb7",
+      "sha256_after": "e3d0acfdf4e51f836cd609f35913cbd45d3e1d0cec6eefb29c29982661ef4bb7",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.2.pcd",
+      "sha256_before": "57e394097854809d2397843a5db779d96e75fadd76a7c884ee78c840845db674",
+      "sha256_after": "57e394097854809d2397843a5db779d96e75fadd76a7c884ee78c840845db674",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.6.yaml",
+      "sha256_before": "363276047d1049267dd65928407f8b218a027808793fe0bc1d397f273e7cdd99",
+      "sha256_after": "363276047d1049267dd65928407f8b218a027808793fe0bc1d397f273e7cdd99",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.6.pcd",
+      "sha256_before": "a233549b1c393b827b285b95229c7025d844970baca2209314346118f436f4c8",
+      "sha256_after": "a233549b1c393b827b285b95229c7025d844970baca2209314346118f436f4c8",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.6.yaml",
+      "sha256_before": "cdbe06034ced3427cd5a2456a1b01ae58f08cc5efd8814834f639dac3e2b927f",
+      "sha256_after": "cdbe06034ced3427cd5a2456a1b01ae58f08cc5efd8814834f639dac3e2b927f",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.6.pcd",
+      "sha256_before": "e60c71ef15ab95f72327d17f9e89cf19055656c6e604b00ab2c9f790430fb766",
+      "sha256_after": "e60c71ef15ab95f72327d17f9e89cf19055656c6e604b00ab2c9f790430fb766",
+      "unchanged": true
+    }
+  ],
+  "input_count": 20,
+  "all_inputs_unchanged": true
+}

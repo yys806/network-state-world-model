@@ -2,6 +2,23 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-V2U4REAL-R2-05A-BASELINE-DATA-EVAL",
+      "keywords": ["R2-05A", "感知准入", "字段合同", "BEV IoU", "AP排序", "Car-only", "基线适配", "Q_k"],
+      "title": "V2U4Real baseline field and evaluation draft with readiness blockers",
+      "summary": "只读审计完成；完整候选系统适配有缺口，来源B保持冻结，原生类别/去重和评价维度差异明确保留，正式训练待决。",
+      "primary_sources": [
+        "docs/contracts/PIJWM_PERCEPTION_BASELINE_DATA_EVAL_CONTRACT_DRAFT_V1.md",
+        "docs/implementation_records/STEP_R2_05A_V2U4REAL_BASELINE_DATA_EVAL_AUDIT.md"
+      ],
+      "verification_sources": [
+        "code/scripts/audit_v2u4real_r2_05a_baseline_data_eval_v1.py",
+        "code/artifacts/audit/v2u4real_r2_05a_20261027/result.json",
+        "code/artifacts/audit/v2u4real_r2_05a_20261027/evaluation_contract.json",
+        "code/artifacts/audit/v2u4real_r2_05a_20261027/acceptance.json"
+      ],
+      "claim_boundary": "Draft audit only; no detector performance or training authorization; physical alignment NOT_ESTABLISHED"
+    },
+    {
       "id": "ROUTE-V2U4REAL-R2-04C-LABEL-MERGE",
       "keywords": ["R2-04C", "方案B", "标签合并", "UAV优先", "同ID覆盖", "标签合同", "R2-05条件"],
       "title": "V2U4Real official label merge policy and five-frame evidence",

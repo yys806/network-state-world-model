@@ -1,0 +1,48 @@
+{
+  "status": "CANDIDATE_NOT_FROZEN",
+  "private_content_copied": false,
+  "evidence": [
+    {
+      "path": "D:/shen/OB/科研/PKU/PIJWM/PPT/10.23.pptx",
+      "sha256": "b24faa313aebdb53f4b62fe8dda282f742afccba6cff9e6720ae620386bab8ce",
+      "location": "slides 7-9",
+      "access": "READ_ONLY"
+    },
+    {
+      "path": "D:/shen/OB/科研/PKU/PIJWM/组会笔记/1021组会.md",
+      "sha256": "8095edcd9a2800ab9b5650cb594d5d859d852d27892b76e8f96e8fe2bf548db5",
+      "location": "lines 708-749 and 762-867",
+      "access": "READ_ONLY"
+    }
+  ],
+  "paper": {
+    "zotero_item": "4SKU5M6X",
+    "attachment": "JHB4X5KT",
+    "version": "arXiv 2603.25275v1",
+    "pages": 15,
+    "sha256": "f3257de22a9e438c3e755237bef901dd0b889b0d58b4a76a1040e3faa8a6350c",
+    "inspected": "sections 3.1,3.2,4.1,4.2,5.1; pages 3-8"
+  },
+  "conclusion": "CRITICAL_ADAPTATION_GAPS; potential LiDAR perception-module use only after researcher scope decision",
+  "conflict": "multi-car visual/RSU candidate vs initial single-view advice remains unresolved",
+  "directly_auditable": [
+    "five fixed train LiDAR/YAML fields",
+    "official software transforms",
+    "official evaluation function semantics"
+  ],
+  "requires_adaptation": [
+    "vehicle-only input restriction",
+    "common policy-B GT and class/ROI convention",
+    "feature communication and task-quality interface"
+  ],
+  "unsupported_by_current_evidence": [
+    "full visual cooperative system",
+    "real radio delivery/deadline performance",
+    "independent physical calibration or actual synchronization"
+  ],
+  "complementary_evidence_needed": [
+    "verified image/visual-task data",
+    "task-to-detection and clock/deadline definitions",
+    "reliable network evidence or explicitly approved simulation"
+  ]
+}

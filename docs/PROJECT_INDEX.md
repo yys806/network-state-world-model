@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-05A 2026-10-27 -->
+## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
+
+R2-05A为当前最新有限审计：有源码/配置/五帧字段证据，不是感知基线运行或训练准入。由下列实施报告和机器回执定位。
+
+实施记录：docs/implementation_records/STEP_R2_05A_V2U4REAL_BASELINE_DATA_EVAL_AUDIT.md；草案：docs/contracts/PIJWM_PERCEPTION_BASELINE_DATA_EVAL_CONTRACT_DRAFT_V1.md；机器证据：code/artifacts/audit/v2u4real_r2_05a_20261027/result.json。未用GPU/locked_test/训练/推理服务；无正式标签写回。
+<!-- END V2U4REAL R2-05A -->
+
 <!-- V2U4REAL R2-04C 2026-10-27 -->
 ## 2026-10-27 — STEP R2-04C 官方标签合并规则冻结
 

@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-05A 2026-10-27 -->
+## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
+
+新增code/scripts/audit_v2u4real_r2_05a_baseline_data_eval_v1.py及专项测试；复用严格读取/来源工具和官方原函数体。只运行字段/评价探针，不连接PI-JWM核心或检测服务。
+
+实施记录：docs/implementation_records/STEP_R2_05A_V2U4REAL_BASELINE_DATA_EVAL_AUDIT.md；草案：docs/contracts/PIJWM_PERCEPTION_BASELINE_DATA_EVAL_CONTRACT_DRAFT_V1.md；机器证据：code/artifacts/audit/v2u4real_r2_05a_20261027/result.json。未用GPU/locked_test/训练/推理服务；无正式标签写回。
+<!-- END V2U4REAL R2-05A -->
+
 <!-- V2U4REAL R2-04C 2026-10-27 -->
 ## 2026-10-27 — STEP R2-04C 官方标签合并规则冻结
 

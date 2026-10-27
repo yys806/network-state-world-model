@@ -1,0 +1,1745 @@
+[
+  {
+    "official_path": "opencood/data_utils/datasets/__init__.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/__init__.py",
+    "symbol": "build_dataset",
+    "start_line": 27,
+    "end_line": 53
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.__init__",
+    "start_line": 61,
+    "end_line": 213
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.__len__",
+    "start_line": 215,
+    "end_line": 216
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.__getitem__",
+    "start_line": 218,
+    "end_line": 222
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.retrieve_base_data",
+    "start_line": 224,
+    "end_line": 288
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.get_scenario_name",
+    "start_line": 291,
+    "end_line": 310
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.extract_timestamps",
+    "start_line": 314,
+    "end_line": 336
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.return_timestamp_key",
+    "start_line": 339,
+    "end_line": 362
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.calc_dist_to_ego",
+    "start_line": 364,
+    "end_line": 391
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.time_delay_calculation",
+    "start_line": 393,
+    "end_line": 424
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.add_loc_noise",
+    "start_line": 426,
+    "end_line": 450
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.reform_param",
+    "start_line": 452,
+    "end_line": 523
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.load_ground_camera_files",
+    "start_line": 526,
+    "end_line": 557
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.load_air_camera_files",
+    "start_line": 560,
+    "end_line": 580
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.project_points_to_bev_map",
+    "start_line": 582,
+    "end_line": 601
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.augment",
+    "start_line": 603,
+    "end_line": 627
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.collate_batch_train",
+    "start_line": 629,
+    "end_line": 682
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/basedataset.py",
+    "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+    "symbol": "BaseDataset.visualize_result",
+    "start_line": 684,
+    "end_line": 696
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/early_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_dataset.py",
+    "symbol": "EarlyFusionDataset.__init__",
+    "start_line": 32,
+    "end_line": 36
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/early_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_dataset.py",
+    "symbol": "EarlyFusionDataset.__getitem__",
+    "start_line": 38,
+    "end_line": 148
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/early_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_dataset.py",
+    "symbol": "EarlyFusionDataset.get_item_single_car",
+    "start_line": 150,
+    "end_line": 193
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/early_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_dataset.py",
+    "symbol": "EarlyFusionDataset.collate_batch_test",
+    "start_line": 195,
+    "end_line": 260
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/early_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_dataset.py",
+    "symbol": "EarlyFusionDataset.post_process",
+    "start_line": 262,
+    "end_line": 285
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+    "symbol": "EarlyFusionVisDataset.__init__",
+    "start_line": 28,
+    "end_line": 32
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+    "symbol": "EarlyFusionVisDataset.__getitem__",
+    "start_line": 34,
+    "end_line": 114
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+    "symbol": "EarlyFusionVisDataset.get_item_single_car",
+    "start_line": 116,
+    "end_line": 159
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+    "symbol": "EarlyFusionVisDataset.collate_batch_train",
+    "start_line": 161,
+    "end_line": 199
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "symbol": "IntermediateFusionDataset.__init__",
+    "start_line": 33,
+    "end_line": 55
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "symbol": "IntermediateFusionDataset.__getitem__",
+    "start_line": 57,
+    "end_line": 207
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "symbol": "IntermediateFusionDataset.get_item_single_car",
+    "start_line": 209,
+    "end_line": 263
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "symbol": "IntermediateFusionDataset.merge_features_to_dict",
+    "start_line": 266,
+    "end_line": 294
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "symbol": "IntermediateFusionDataset.collate_batch_train",
+    "start_line": 296,
+    "end_line": 393
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "symbol": "IntermediateFusionDataset.collate_batch_test",
+    "start_line": 395,
+    "end_line": 412
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "symbol": "IntermediateFusionDataset.post_process",
+    "start_line": 414,
+    "end_line": 437
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+    "symbol": "IntermediateFusionDataset.get_pairwise_transformation",
+    "start_line": 439,
+    "end_line": 481
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.__init__",
+    "start_line": 35,
+    "end_line": 57
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.__getitem__",
+    "start_line": 59,
+    "end_line": 243
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.get_item_single_car",
+    "start_line": 245,
+    "end_line": 307
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.merge_features_to_dict",
+    "start_line": 310,
+    "end_line": 338
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.collate_batch_train",
+    "start_line": 340,
+    "end_line": 452
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.collate_batch_test",
+    "start_line": 454,
+    "end_line": 471
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.post_process",
+    "start_line": 473,
+    "end_line": 496
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.get_pairwise_transformation",
+    "start_line": 498,
+    "end_line": 540
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.object_all_inside_points",
+    "start_line": 544,
+    "end_line": 554
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+    "symbol": "IntermediateFusionDataset_DSRC.object_all_outside_points",
+    "start_line": 558,
+    "end_line": 567
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/late_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/late_fusion_dataset.py",
+    "symbol": "LateFusionDataset.__init__",
+    "start_line": 34,
+    "end_line": 38
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/late_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/late_fusion_dataset.py",
+    "symbol": "LateFusionDataset.__getitem__",
+    "start_line": 40,
+    "end_line": 47
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/late_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/late_fusion_dataset.py",
+    "symbol": "LateFusionDataset.get_item_single_car",
+    "start_line": 49,
+    "end_line": 116
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/late_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/late_fusion_dataset.py",
+    "symbol": "LateFusionDataset.get_item_train",
+    "start_line": 118,
+    "end_line": 139
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/late_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/late_fusion_dataset.py",
+    "symbol": "LateFusionDataset.get_item_test",
+    "start_line": 141,
+    "end_line": 177
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/late_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/late_fusion_dataset.py",
+    "symbol": "LateFusionDataset.collate_batch_test",
+    "start_line": 179,
+    "end_line": 264
+  },
+  {
+    "official_path": "opencood/data_utils/datasets/late_fusion_dataset.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/late_fusion_dataset.py",
+    "symbol": "LateFusionDataset.post_process",
+    "start_line": 266,
+    "end_line": 289
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/__init__.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/__init__.py",
+    "symbol": "build_postprocessor",
+    "start_line": 19,
+    "end_line": 27
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/base_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/base_postprocessor.py",
+    "symbol": "BasePostprocessor.__init__",
+    "start_line": 34,
+    "end_line": 37
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/base_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/base_postprocessor.py",
+    "symbol": "BasePostprocessor.generate_anchor_box",
+    "start_line": 39,
+    "end_line": 41
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/base_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/base_postprocessor.py",
+    "symbol": "BasePostprocessor.generate_label",
+    "start_line": 43,
+    "end_line": 44
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/base_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/base_postprocessor.py",
+    "symbol": "BasePostprocessor.generate_gt_bbx",
+    "start_line": 46,
+    "end_line": 98
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/base_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/base_postprocessor.py",
+    "symbol": "BasePostprocessor.generate_gt_bbx_with_id",
+    "start_line": 100,
+    "end_line": 155
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/base_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/base_postprocessor.py",
+    "symbol": "BasePostprocessor.generate_object_center",
+    "start_line": 157,
+    "end_line": 212
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/base_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/base_postprocessor.py",
+    "symbol": "BasePostprocessor.generate_object_corner",
+    "start_line": 215,
+    "end_line": 261
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.__init__",
+    "start_line": 22,
+    "end_line": 30
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.generate_anchor_box",
+    "start_line": 32,
+    "end_line": 33
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.generate_label",
+    "start_line": 35,
+    "end_line": 81
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.update_label_map",
+    "start_line": 83,
+    "end_line": 143
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.normalize_targets",
+    "start_line": 145,
+    "end_line": 163
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.denormalize_reg_map",
+    "start_line": 165,
+    "end_line": 191
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.collate_batch",
+    "start_line": 194,
+    "end_line": 218
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.post_process",
+    "start_line": 220,
+    "end_line": 297
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.reg_map_to_bbx_corners",
+    "start_line": 299,
+    "end_line": 346
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.post_process_debug",
+    "start_line": 348,
+    "end_line": 417
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+    "symbol": "BevPostprocessor.visualize",
+    "start_line": 420,
+    "end_line": 451
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/ciassd_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/ciassd_postprocessor.py",
+    "symbol": "CiassdPostprocessor.__init__",
+    "start_line": 22,
+    "end_line": 25
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/ciassd_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/ciassd_postprocessor.py",
+    "symbol": "CiassdPostprocessor.post_process",
+    "start_line": 27,
+    "end_line": 173
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+    "symbol": "FpvrcnnPostprocessor.__init__",
+    "start_line": 19,
+    "end_line": 20
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+    "symbol": "FpvrcnnPostprocessor.post_process",
+    "start_line": 22,
+    "end_line": 26
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+    "symbol": "FpvrcnnPostprocessor.post_process_stage1",
+    "start_line": 28,
+    "end_line": 168
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+    "symbol": "FpvrcnnPostprocessor.post_process_stage2",
+    "start_line": 170,
+    "end_line": 208
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "symbol": "VoxelPostprocessor.__init__",
+    "start_line": 25,
+    "end_line": 27
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "symbol": "VoxelPostprocessor.generate_anchor_box",
+    "start_line": 29,
+    "end_line": 77
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "symbol": "VoxelPostprocessor.generate_label",
+    "start_line": 79,
+    "end_line": 199
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "symbol": "VoxelPostprocessor.collate_batch",
+    "start_line": 202,
+    "end_line": 235
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "symbol": "VoxelPostprocessor.post_process",
+    "start_line": 237,
+    "end_line": 349
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "symbol": "VoxelPostprocessor.delta_to_boxes3d",
+    "start_line": 352,
+    "end_line": 403
+  },
+  {
+    "official_path": "opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/voxel_postprocessor.py",
+    "symbol": "VoxelPostprocessor.visualize",
+    "start_line": 406,
+    "end_line": 435
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/__init__.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/__init__.py",
+    "symbol": "build_preprocessor",
+    "start_line": 20,
+    "end_line": 34
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/base_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/base_preprocessor.py",
+    "symbol": "BasePreprocessor.__init__",
+    "start_line": 24,
+    "end_line": 26
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/base_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/base_preprocessor.py",
+    "symbol": "BasePreprocessor.preprocess",
+    "start_line": 28,
+    "end_line": 47
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/base_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/base_preprocessor.py",
+    "symbol": "BasePreprocessor.project_points_to_bev_map",
+    "start_line": 49,
+    "end_line": 80
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "symbol": "BevPreprocessor.__init__",
+    "start_line": 18,
+    "end_line": 21
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "symbol": "BevPreprocessor.preprocess",
+    "start_line": 23,
+    "end_line": 57
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "symbol": "BevPreprocessor.collate_batch_list",
+    "start_line": 60,
+    "end_line": 81
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "symbol": "BevPreprocessor.collate_batch_dict",
+    "start_line": 84,
+    "end_line": 105
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/bev_preprocessor.py",
+    "symbol": "BevPreprocessor.collate_batch",
+    "start_line": 107,
+    "end_line": 125
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "symbol": "SpVoxelPreprocessor.__init__",
+    "start_line": 19,
+    "end_line": 66
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "symbol": "SpVoxelPreprocessor.preprocess",
+    "start_line": 68,
+    "end_line": 91
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "symbol": "SpVoxelPreprocessor.preprocess_paint",
+    "start_line": 94,
+    "end_line": 117
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "symbol": "SpVoxelPreprocessor.collate_batch",
+    "start_line": 119,
+    "end_line": 139
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "symbol": "SpVoxelPreprocessor.collate_batch_list",
+    "start_line": 142,
+    "end_line": 174
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+    "symbol": "SpVoxelPreprocessor.collate_batch_dict",
+    "start_line": 177,
+    "end_line": 206
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "symbol": "SpVoxelPreprocessorV2.__init__",
+    "start_line": 18,
+    "end_line": 57
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "symbol": "SpVoxelPreprocessorV2.preprocess",
+    "start_line": 59,
+    "end_line": 87
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "symbol": "SpVoxelPreprocessorV2.collate_batch",
+    "start_line": 89,
+    "end_line": 109
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "symbol": "SpVoxelPreprocessorV2.collate_batch_list",
+    "start_line": 112,
+    "end_line": 144
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+    "symbol": "SpVoxelPreprocessorV2.collate_batch_dict",
+    "start_line": 147,
+    "end_line": 175
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "symbol": "VoxelPreprocessor.__init__",
+    "start_line": 20,
+    "end_line": 28
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "symbol": "VoxelPreprocessor.preprocess",
+    "start_line": 30,
+    "end_line": 76
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "symbol": "VoxelPreprocessor.collate_batch",
+    "start_line": 78,
+    "end_line": 98
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "symbol": "VoxelPreprocessor.collate_batch_list",
+    "start_line": 101,
+    "end_line": 129
+  },
+  {
+    "official_path": "opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/voxel_preprocessor.py",
+    "symbol": "VoxelPreprocessor.collate_batch_dict",
+    "start_line": 132,
+    "end_line": 158
+  },
+  {
+    "official_path": "opencood/hypes_yaml/yaml_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+    "symbol": "load_yaml",
+    "start_line": 14,
+    "end_line": 49
+  },
+  {
+    "official_path": "opencood/hypes_yaml/yaml_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+    "symbol": "load_voxel_params",
+    "start_line": 52,
+    "end_line": 91
+  },
+  {
+    "official_path": "opencood/hypes_yaml/yaml_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+    "symbol": "load_point_pillar_params",
+    "start_line": 94,
+    "end_line": 134
+  },
+  {
+    "official_path": "opencood/hypes_yaml/yaml_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+    "symbol": "load_second_params",
+    "start_line": 137,
+    "end_line": 177
+  },
+  {
+    "official_path": "opencood/hypes_yaml/yaml_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+    "symbol": "load_bev_params",
+    "start_line": 180,
+    "end_line": 228
+  },
+  {
+    "official_path": "opencood/hypes_yaml/yaml_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+    "symbol": "save_yaml",
+    "start_line": 231,
+    "end_line": 245
+  },
+  {
+    "official_path": "opencood/hypes_yaml/yaml_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+    "symbol": "save_yaml_wo_overwriting",
+    "start_line": 248,
+    "end_line": 264
+  },
+  {
+    "official_path": "opencood/models/point_pillar.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar.py",
+    "symbol": "PointPillar.__init__",
+    "start_line": 16,
+    "end_line": 30
+  },
+  {
+    "official_path": "opencood/models/point_pillar.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar.py",
+    "symbol": "PointPillar.forward",
+    "start_line": 32,
+    "end_line": 54
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_student.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_student.py",
+    "symbol": "show_heatmaps",
+    "start_line": 18,
+    "end_line": 27
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_student.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_student.py",
+    "symbol": "PointPillarBaseMultiScaleStudent.__init__",
+    "start_line": 31,
+    "end_line": 117
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_student.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_student.py",
+    "symbol": "PointPillarBaseMultiScaleStudent.mask_offset_loss",
+    "start_line": 120,
+    "end_line": 133
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_student.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_student.py",
+    "symbol": "PointPillarBaseMultiScaleStudent.backbone_fix_ours",
+    "start_line": 135,
+    "end_line": 155
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_student.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_student.py",
+    "symbol": "PointPillarBaseMultiScaleStudent.backbone_fix",
+    "start_line": 157,
+    "end_line": 181
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_student.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_student.py",
+    "symbol": "PointPillarBaseMultiScaleStudent.regroup",
+    "start_line": 183,
+    "end_line": 186
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_student.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_student.py",
+    "symbol": "PointPillarBaseMultiScaleStudent.forward",
+    "start_line": 188,
+    "end_line": 357
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_teacher.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_teacher.py",
+    "symbol": "PointPillarBaseMultiScaleTeacher.__init__",
+    "start_line": 17,
+    "end_line": 61
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_teacher.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_teacher.py",
+    "symbol": "PointPillarBaseMultiScaleTeacher.backbone_fix",
+    "start_line": 63,
+    "end_line": 87
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_teacher.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_teacher.py",
+    "symbol": "PointPillarBaseMultiScaleTeacher.regroup",
+    "start_line": 89,
+    "end_line": 92
+  },
+  {
+    "official_path": "opencood/models/point_pillar_base_multi_scale_teacher.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_teacher.py",
+    "symbol": "PointPillarBaseMultiScaleTeacher.forward",
+    "start_line": 94,
+    "end_line": 148
+  },
+  {
+    "official_path": "opencood/models/point_pillar_coalign.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_coalign.py",
+    "symbol": "PointPillarCoAlign.__init__",
+    "start_line": 23,
+    "end_line": 58
+  },
+  {
+    "official_path": "opencood/models/point_pillar_coalign.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_coalign.py",
+    "symbol": "PointPillarCoAlign.forward",
+    "start_line": 60,
+    "end_line": 106
+  },
+  {
+    "official_path": "opencood/models/point_pillar_cobevt.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_cobevt.py",
+    "symbol": "PointPillarCoBEVT.__init__",
+    "start_line": 16,
+    "end_line": 46
+  },
+  {
+    "official_path": "opencood/models/point_pillar_cobevt.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_cobevt.py",
+    "symbol": "PointPillarCoBEVT.backbone_fix",
+    "start_line": 48,
+    "end_line": 71
+  },
+  {
+    "official_path": "opencood/models/point_pillar_cobevt.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_cobevt.py",
+    "symbol": "PointPillarCoBEVT.forward",
+    "start_line": 73,
+    "end_line": 116
+  },
+  {
+    "official_path": "opencood/models/point_pillar_ermvp.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_ermvp.py",
+    "symbol": "get_selected_cav_feature",
+    "start_line": 19,
+    "end_line": 28
+  },
+  {
+    "official_path": "opencood/models/point_pillar_ermvp.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_ermvp.py",
+    "symbol": "get_ego_feature",
+    "start_line": 30,
+    "end_line": 37
+  },
+  {
+    "official_path": "opencood/models/point_pillar_ermvp.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_ermvp.py",
+    "symbol": "get_fused_ego_feature",
+    "start_line": 39,
+    "end_line": 45
+  },
+  {
+    "official_path": "opencood/models/point_pillar_ermvp.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_ermvp.py",
+    "symbol": "PointPillarErmvp.__init__",
+    "start_line": 48,
+    "end_line": 83
+  },
+  {
+    "official_path": "opencood/models/point_pillar_ermvp.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_ermvp.py",
+    "symbol": "PointPillarErmvp.backbone_fix",
+    "start_line": 85,
+    "end_line": 108
+  },
+  {
+    "official_path": "opencood/models/point_pillar_ermvp.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_ermvp.py",
+    "symbol": "PointPillarErmvp.forward",
+    "start_line": 110,
+    "end_line": 218
+  },
+  {
+    "official_path": "opencood/models/point_pillar_fcooper.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_fcooper.py",
+    "symbol": "PointPillarFCooper.__init__",
+    "start_line": 20,
+    "end_line": 50
+  },
+  {
+    "official_path": "opencood/models/point_pillar_fcooper.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_fcooper.py",
+    "symbol": "PointPillarFCooper.backbone_fix",
+    "start_line": 52,
+    "end_line": 75
+  },
+  {
+    "official_path": "opencood/models/point_pillar_fcooper.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_fcooper.py",
+    "symbol": "PointPillarFCooper.forward",
+    "start_line": 77,
+    "end_line": 109
+  },
+  {
+    "official_path": "opencood/models/point_pillar_intermediate.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_intermediate.py",
+    "symbol": "PointPillarIntermediate.__init__",
+    "start_line": 16,
+    "end_line": 30
+  },
+  {
+    "official_path": "opencood/models/point_pillar_intermediate.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_intermediate.py",
+    "symbol": "PointPillarIntermediate.forward",
+    "start_line": 32,
+    "end_line": 56
+  },
+  {
+    "official_path": "opencood/models/point_pillar_intermediate_V2VAM.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_intermediate_V2VAM.py",
+    "symbol": "PointPillarintermediateV2VAM.__init__",
+    "start_line": 20,
+    "end_line": 50
+  },
+  {
+    "official_path": "opencood/models/point_pillar_intermediate_V2VAM.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_intermediate_V2VAM.py",
+    "symbol": "PointPillarintermediateV2VAM.backbone_fix",
+    "start_line": 52,
+    "end_line": 75
+  },
+  {
+    "official_path": "opencood/models/point_pillar_intermediate_V2VAM.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_intermediate_V2VAM.py",
+    "symbol": "PointPillarintermediateV2VAM.forward",
+    "start_line": 77,
+    "end_line": 110
+  },
+  {
+    "official_path": "opencood/models/point_pillar_transformer.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_transformer.py",
+    "symbol": "PointPillarTransformer.__init__",
+    "start_line": 14,
+    "end_line": 44
+  },
+  {
+    "official_path": "opencood/models/point_pillar_transformer.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_transformer.py",
+    "symbol": "PointPillarTransformer.backbone_fix",
+    "start_line": 46,
+    "end_line": 69
+  },
+  {
+    "official_path": "opencood/models/point_pillar_transformer.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_transformer.py",
+    "symbol": "PointPillarTransformer.forward",
+    "start_line": 71,
+    "end_line": 122
+  },
+  {
+    "official_path": "opencood/models/point_pillar_v2vnet.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_v2vnet.py",
+    "symbol": "PointPillarV2VNet.__init__",
+    "start_line": 17,
+    "end_line": 47
+  },
+  {
+    "official_path": "opencood/models/point_pillar_v2vnet.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_v2vnet.py",
+    "symbol": "PointPillarV2VNet.backbone_fix",
+    "start_line": 49,
+    "end_line": 72
+  },
+  {
+    "official_path": "opencood/models/point_pillar_v2vnet.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_v2vnet.py",
+    "symbol": "PointPillarV2VNet.forward",
+    "start_line": 74,
+    "end_line": 109
+  },
+  {
+    "official_path": "opencood/models/point_pillar_where2comm.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_where2comm.py",
+    "symbol": "PointPillarWhere2comm.__init__",
+    "start_line": 12,
+    "end_line": 43
+  },
+  {
+    "official_path": "opencood/models/point_pillar_where2comm.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_where2comm.py",
+    "symbol": "PointPillarWhere2comm.backbone_fix",
+    "start_line": 45,
+    "end_line": 69
+  },
+  {
+    "official_path": "opencood/models/point_pillar_where2comm.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_where2comm.py",
+    "symbol": "PointPillarWhere2comm.forward",
+    "start_line": 71,
+    "end_line": 120
+  },
+  {
+    "official_path": "opencood/models/sub_modules/pillar_vfe.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/pillar_vfe.py",
+    "symbol": "PFNLayer.__init__",
+    "start_line": 11,
+    "end_line": 29
+  },
+  {
+    "official_path": "opencood/models/sub_modules/pillar_vfe.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/pillar_vfe.py",
+    "symbol": "PFNLayer.forward",
+    "start_line": 31,
+    "end_line": 53
+  },
+  {
+    "official_path": "opencood/models/sub_modules/pillar_vfe.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/pillar_vfe.py",
+    "symbol": "PillarVFE.__init__",
+    "start_line": 57,
+    "end_line": 89
+  },
+  {
+    "official_path": "opencood/models/sub_modules/pillar_vfe.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/pillar_vfe.py",
+    "symbol": "PillarVFE.get_output_feature_dim",
+    "start_line": 91,
+    "end_line": 92
+  },
+  {
+    "official_path": "opencood/models/sub_modules/pillar_vfe.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/pillar_vfe.py",
+    "symbol": "PillarVFE.get_paddings_indicator",
+    "start_line": 95,
+    "end_line": 103
+  },
+  {
+    "official_path": "opencood/models/sub_modules/pillar_vfe.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/pillar_vfe.py",
+    "symbol": "PillarVFE.forward",
+    "start_line": 105,
+    "end_line": 146
+  },
+  {
+    "official_path": "opencood/models/sub_modules/point_pillar_scatter.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/point_pillar_scatter.py",
+    "symbol": "PointPillarScatter.__init__",
+    "start_line": 6,
+    "end_line": 12
+  },
+  {
+    "official_path": "opencood/models/sub_modules/point_pillar_scatter.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/point_pillar_scatter.py",
+    "symbol": "PointPillarScatter.forward",
+    "start_line": 14,
+    "end_line": 47
+  },
+  {
+    "official_path": "opencood/models/sub_modules/point_pillar_scatter.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/point_pillar_scatter.py",
+    "symbol": "SimplePointPillarScatter.__init__",
+    "start_line": 53,
+    "end_line": 59
+  },
+  {
+    "official_path": "opencood/models/sub_modules/point_pillar_scatter.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/point_pillar_scatter.py",
+    "symbol": "SimplePointPillarScatter.forward",
+    "start_line": 61,
+    "end_line": 115
+  },
+  {
+    "official_path": "opencood/tools/inference.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference.py",
+    "symbol": "test_parser",
+    "start_line": 23,
+    "end_line": 45
+  },
+  {
+    "official_path": "opencood/tools/inference.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference.py",
+    "symbol": "main",
+    "start_line": 48,
+    "end_line": 243
+  },
+  {
+    "official_path": "opencood/tools/inference_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference_utils.py",
+    "symbol": "inference_late_fusion",
+    "start_line": 15,
+    "end_line": 41
+  },
+  {
+    "official_path": "opencood/tools/inference_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference_utils.py",
+    "symbol": "inference_early_fusion",
+    "start_line": 44,
+    "end_line": 70
+  },
+  {
+    "official_path": "opencood/tools/inference_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference_utils.py",
+    "symbol": "inference_intermediate_fusion",
+    "start_line": 73,
+    "end_line": 90
+  },
+  {
+    "official_path": "opencood/tools/inference_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference_utils.py",
+    "symbol": "save_prediction_gt",
+    "start_line": 93,
+    "end_line": 107
+  },
+  {
+    "official_path": "opencood/tools/train.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train.py",
+    "symbol": "train_parser",
+    "start_line": 23,
+    "end_line": 34
+  },
+  {
+    "official_path": "opencood/tools/train.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train.py",
+    "symbol": "main",
+    "start_line": 37,
+    "end_line": 211
+  },
+  {
+    "official_path": "opencood/tools/train_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train_utils.py",
+    "symbol": "backup_script",
+    "start_line": 20,
+    "end_line": 31
+  },
+  {
+    "official_path": "opencood/tools/train_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train_utils.py",
+    "symbol": "load_saved_model",
+    "start_line": 33,
+    "end_line": 82
+  },
+  {
+    "official_path": "opencood/tools/train_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train_utils.py",
+    "symbol": "setup_train",
+    "start_line": 85,
+    "end_line": 117
+  },
+  {
+    "official_path": "opencood/tools/train_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train_utils.py",
+    "symbol": "create_model",
+    "start_line": 121,
+    "end_line": 154
+  },
+  {
+    "official_path": "opencood/tools/train_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train_utils.py",
+    "symbol": "create_loss",
+    "start_line": 157,
+    "end_line": 190
+  },
+  {
+    "official_path": "opencood/tools/train_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train_utils.py",
+    "symbol": "setup_optimizer",
+    "start_line": 193,
+    "end_line": 218
+  },
+  {
+    "official_path": "opencood/tools/train_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train_utils.py",
+    "symbol": "setup_lr_schedular",
+    "start_line": 221,
+    "end_line": 275
+  },
+  {
+    "official_path": "opencood/tools/train_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train_utils.py",
+    "symbol": "to_device",
+    "start_line": 278,
+    "end_line": 287
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "corner_to_center",
+    "start_line": 19,
+    "end_line": 78
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "boxes_to_corners2d",
+    "start_line": 81,
+    "end_line": 103
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "boxes2d_to_corners2d",
+    "start_line": 106,
+    "end_line": 142
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "boxes_to_corners_3d",
+    "start_line": 145,
+    "end_line": 191
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "box3d_to_2d",
+    "start_line": 195,
+    "end_line": 210
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "corner2d_to_standup_box",
+    "start_line": 213,
+    "end_line": 236
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "corner_to_standup_box_torch",
+    "start_line": 239,
+    "end_line": 263
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "project_box3d",
+    "start_line": 266,
+    "end_line": 304
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "get_mask_for_boxes_within_range_torch",
+    "start_line": 307,
+    "end_line": 349
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "mask_boxes_outside_range_numpy",
+    "start_line": 352,
+    "end_line": 389
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "create_bbx",
+    "start_line": 392,
+    "end_line": 416
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "project_world_objects",
+    "start_line": 419,
+    "end_line": 471
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "get_points_in_rotated_box",
+    "start_line": 474,
+    "end_line": 504
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "get_points_in_rotated_box_3d",
+    "start_line": 507,
+    "end_line": 544
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "get_projection_length_for_vector_projection",
+    "start_line": 547,
+    "end_line": 569
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "nms_rotated",
+    "start_line": 572,
+    "end_line": 617
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "nms_pytorch",
+    "start_line": 620,
+    "end_line": 716
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "remove_large_pred_bbx",
+    "start_line": 719,
+    "end_line": 748
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "remove_bbx_abnormal_z",
+    "start_line": 751,
+    "end_line": 769
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "project_points_by_matrix_torch",
+    "start_line": 772,
+    "end_line": 801
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "box_encode",
+    "start_line": 804,
+    "end_line": 867
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "box_decode",
+    "start_line": 870,
+    "end_line": 940
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "project_world_objects_corner",
+    "start_line": 943,
+    "end_line": 995
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "get_points_outside_rotated_box_3d",
+    "start_line": 998,
+    "end_line": 1038
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "get_points_inside_box",
+    "start_line": 1041,
+    "end_line": 1067
+  },
+  {
+    "official_path": "opencood/utils/box_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+    "symbol": "is_point_inside_any_box",
+    "start_line": 1070,
+    "end_line": 1078
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "merge_features_to_dict",
+    "start_line": 18,
+    "end_line": 58
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "read_json",
+    "start_line": 61,
+    "end_line": 65
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "limit_period",
+    "start_line": 68,
+    "end_line": 77
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "check_numpy_to_torch",
+    "start_line": 80,
+    "end_line": 83
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "check_contain_nan",
+    "start_line": 86,
+    "end_line": 95
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "rotate_points_along_z",
+    "start_line": 98,
+    "end_line": 120
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "rotate_points_along_z_2d",
+    "start_line": 123,
+    "end_line": 147
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "remove_ego_from_objects",
+    "start_line": 150,
+    "end_line": 163
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "retrieve_ego_id",
+    "start_line": 166,
+    "end_line": 186
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "compute_iou",
+    "start_line": 189,
+    "end_line": 211
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "convert_format",
+    "start_line": 214,
+    "end_line": 229
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "torch_tensor_to_numpy",
+    "start_line": 232,
+    "end_line": 247
+  },
+  {
+    "official_path": "opencood/utils/common_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+    "symbol": "get_voxel_centers",
+    "start_line": 250,
+    "end_line": 269
+  },
+  {
+    "official_path": "opencood/utils/eval_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/eval_utils.py",
+    "symbol": "voc_ap",
+    "start_line": 16,
+    "end_line": 39
+  },
+  {
+    "official_path": "opencood/utils/eval_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/eval_utils.py",
+    "symbol": "calculate_tp_fp",
+    "start_line": 42,
+    "end_line": 96
+  },
+  {
+    "official_path": "opencood/utils/eval_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/eval_utils.py",
+    "symbol": "calculate_ap",
+    "start_line": 103,
+    "end_line": 157
+  },
+  {
+    "official_path": "opencood/utils/eval_utils.py",
+    "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/eval_utils.py",
+    "symbol": "eval_final_results",
+    "start_line": 160,
+    "end_line": 239
+  },
+  {
+    "official_path": "opencood/utils/pcd_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+    "symbol": "pcd_to_np",
+    "start_line": 14,
+    "end_line": 40
+  },
+  {
+    "official_path": "opencood/utils/pcd_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+    "symbol": "mask_points_by_range",
+    "start_line": 43,
+    "end_line": 69
+  },
+  {
+    "official_path": "opencood/utils/pcd_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+    "symbol": "mask_ego_points",
+    "start_line": 72,
+    "end_line": 90
+  },
+  {
+    "official_path": "opencood/utils/pcd_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+    "symbol": "shuffle_points",
+    "start_line": 93,
+    "end_line": 97
+  },
+  {
+    "official_path": "opencood/utils/pcd_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+    "symbol": "lidar_project",
+    "start_line": 100,
+    "end_line": 131
+  },
+  {
+    "official_path": "opencood/utils/pcd_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+    "symbol": "projected_lidar_stack",
+    "start_line": 134,
+    "end_line": 152
+  },
+  {
+    "official_path": "opencood/utils/pcd_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+    "symbol": "downsample_lidar",
+    "start_line": 155,
+    "end_line": 179
+  },
+  {
+    "official_path": "opencood/utils/pcd_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+    "symbol": "downsample_lidar_minimum",
+    "start_line": 182,
+    "end_line": 205
+  },
+  {
+    "official_path": "opencood/utils/transformation_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+    "symbol": "x_to_world",
+    "start_line": 13,
+    "end_line": 40
+  },
+  {
+    "official_path": "opencood/utils/transformation_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+    "symbol": "x1_to_x2",
+    "start_line": 43,
+    "end_line": 78
+  },
+  {
+    "official_path": "opencood/utils/transformation_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+    "symbol": "dist_to_continuous",
+    "start_line": 81,
+    "end_line": 107
+  },
+  {
+    "official_path": "opencood/utils/transformation_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+    "symbol": "get_pairwise_transformation",
+    "start_line": 110,
+    "end_line": 155
+  },
+  {
+    "official_path": "opencood/utils/transformation_utils.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+    "symbol": "normalize_pairwise_tfm",
+    "start_line": 158,
+    "end_line": 180
+  },
+  {
+    "official_path": "opencood/utils/uav_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+    "symbol": "parse_args",
+    "start_line": 46,
+    "end_line": 55
+  },
+  {
+    "official_path": "opencood/utils/uav_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+    "symbol": "ensure_dir",
+    "start_line": 58,
+    "end_line": 59
+  },
+  {
+    "official_path": "opencood/utils/uav_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+    "symbol": "load_annotation_objects",
+    "start_line": 62,
+    "end_line": 116
+  },
+  {
+    "official_path": "opencood/utils/uav_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+    "symbol": "write_annotation_file",
+    "start_line": 119,
+    "end_line": 128
+  },
+  {
+    "official_path": "opencood/utils/uav_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+    "symbol": "main",
+    "start_line": 131,
+    "end_line": 205
+  },
+  {
+    "official_path": "opencood/utils/vehicle_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+    "symbol": "parse_args",
+    "start_line": 44,
+    "end_line": 54
+  },
+  {
+    "official_path": "opencood/utils/vehicle_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+    "symbol": "ensure_dir",
+    "start_line": 57,
+    "end_line": 58
+  },
+  {
+    "official_path": "opencood/utils/vehicle_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+    "symbol": "load_annotation_objects",
+    "start_line": 61,
+    "end_line": 84
+  },
+  {
+    "official_path": "opencood/utils/vehicle_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+    "symbol": "write_annotation_file",
+    "start_line": 87,
+    "end_line": 96
+  },
+  {
+    "official_path": "opencood/utils/vehicle_to_single.py",
+    "local_path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+    "symbol": "main",
+    "start_line": 99,
+    "end_line": 163
+  }
+]

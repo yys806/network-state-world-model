@@ -1,0 +1,684 @@
+{
+  "repository": "https://github.com/VjiaLi/V2U4Real",
+  "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "git_tree_sha": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "tree_complete": true,
+  "files": [
+    {
+      "official_path": "LICENSE",
+      "local_path": "code/reference/V2U4Real/LICENSE",
+      "git_blob": "85dcf41ee15c7c2a6f1eb2678aae46b54b6fa6bf",
+      "sha256": "20bccc4aaccdbdf80960af7ed64ed036ed449b3f57f61e04860a91dcc5010639",
+      "bytes": 1063,
+      "origin": "existing fixed local file",
+      "original_manifest_member": true
+    },
+    {
+      "official_path": "README.md",
+      "local_path": "code/reference/V2U4Real/README.md",
+      "git_blob": "7073480dc78ad529068e3eda4fffe08955e88dbe",
+      "sha256": "480d96479f60a4c922300e2ca31239b356d6c59e48785e2818b05f7b759aa55f",
+      "bytes": 12299,
+      "origin": "existing fixed local file",
+      "original_manifest_member": true
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/__init__.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/__init__.py",
+      "git_blob": "18865241680e45ef8ac7df7dd5420d1217803880",
+      "sha256": "1f00abfc6381492653fe05d7f9903d4468280f9a77163a9434846a5e1d617479",
+      "bytes": 2081,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/basedataset.py",
+      "local_path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+      "git_blob": "320e3f31c2f2b402f121e6514b6db65cc148d47c",
+      "sha256": "aea708b371977015deb5fbe45ad3ed19a912b34d2cc66cf0482f7feff63f19aa",
+      "bytes": 25339,
+      "origin": "existing fixed local file",
+      "original_manifest_member": true
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/early_fusion_dataset.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_dataset.py",
+      "git_blob": "15e2a47cddbd9a12854b0f7102ba0a7a1e8c41a8",
+      "sha256": "6c7ea882a93f4b3c08d52cbd1008a73a98cbe5dea229f573f849d8e0969fbcb7",
+      "bytes": 11311,
+      "origin": "existing fixed local file",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/early_fusion_vis_dataset.py",
+      "git_blob": "3ccf5a76a2bb4e7afab460bee0d23e7eb9e16aa3",
+      "sha256": "111571bc74d36f402a93bddc3850b282ca02d5cc4ffd49b3b3716af80bc6b6d2",
+      "bytes": 7733,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset.py",
+      "git_blob": "6e9b6260dfc5e8d1078d045ccf8d4a30bb1e7a06",
+      "sha256": "1d55dd31451f214d3aa7c740d05cf7d0c0acb80ec85f0fc30584f471a30592a8",
+      "bytes": 19119,
+      "origin": "existing fixed local file",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/intermediate_fusion_dataset_DSRC.py",
+      "git_blob": "918d404c4d96caaf8ca305ab21f1b63101e0d403",
+      "sha256": "6496faf681e6fff085f1fb2729be717c97790e98e200128ae6b760730d31327b",
+      "bytes": 23064,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/datasets/late_fusion_dataset.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/datasets/late_fusion_dataset.py",
+      "git_blob": "4e3aa6f0e02d164686ef5cfbaaec5f3393096d79",
+      "sha256": "08c6f649cc147539849e68229e1b0bcbbd2a6b324b3f6d9878afb448228e99f4",
+      "bytes": 11214,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/post_processor/__init__.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/__init__.py",
+      "git_blob": "00fe0082758e98a87b926e3a238a4adab4c19616",
+      "sha256": "5f6d386f1565b7b715ed4e4186cc3e03e4916bb3c136aeb3a266e2ac7ac40de3",
+      "bytes": 1041,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/post_processor/base_postprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/base_postprocessor.py",
+      "git_blob": "73202b9824c38426ad0b4b3b21b5d34afb2a76e7",
+      "sha256": "f54bbc672477c1570b0cdfb64c39994ada4e1f97aba56a4f00bae731f5926ee7",
+      "bytes": 8657,
+      "origin": "existing fixed local file",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/post_processor/bev_postprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/bev_postprocessor.py",
+      "git_blob": "0801b0a5577043e9c27bffc0453ecbc0cbec2013",
+      "sha256": "226f952d6ec26a769d935ed347ad8389a5e92b618d9296ccfd5af0898015032c",
+      "bytes": 16463,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/post_processor/ciassd_postprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/ciassd_postprocessor.py",
+      "git_blob": "b8195bc0f06a525b1c1aeac9a6f0294af39dca29",
+      "sha256": "72bc6f13fbc185d4ce6306d791c7216d05f2d9aad7bff91dadd868ac07812902",
+      "bytes": 7098,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/fpvrcnn_postprocessor.py",
+      "git_blob": "bcf041ec4918ea2d0dbd6cfbb7d732314b34cfd2",
+      "sha256": "b5b67f2883a87d870144eaffd375a82aaf217f166c84a9938acd0793f07f2f8f",
+      "bytes": 9014,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/post_processor/voxel_postprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/post_processor/voxel_postprocessor.py",
+      "git_blob": "4b438c905cfd7665a9260ddac30401e5a1157fda",
+      "sha256": "6307d04b7223fc351242f556e9eb995689f25984eaf200a23499b05fb024fd8c",
+      "bytes": 15725,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/pre_processor/__init__.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/__init__.py",
+      "git_blob": "23841a0202a2086bb832d117fcad455c7259ce37",
+      "sha256": "7335502c12b6f013007a042835c631835cc984912329d54d8b73e13302426feb",
+      "bytes": 1382,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/pre_processor/base_preprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/base_preprocessor.py",
+      "git_blob": "e8f827f1259dba4d4311bfbe902fdfe42ab60968",
+      "sha256": "396c168cd0eddd789f9051d45572fd68e9366f38dda875e2ace3f86e97982239",
+      "bytes": 2220,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/pre_processor/bev_preprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/bev_preprocessor.py",
+      "git_blob": "64ef845111a245b7609358d2e3037b8deb1b3178",
+      "sha256": "9432d48f9173da95d2b7780d69c3c794388b5a067fa17a88d1f9be3ddb15a559",
+      "bytes": 3644,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor.py",
+      "git_blob": "1092c25f2befc99d9f580ab4a81a6a69d988b816",
+      "sha256": "dee024b8586f908f13d3588fecab51b7f4b2846697092e48755e1b5ef507d6df",
+      "bytes": 6987,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/sp_voxel_preprocessor_v2.py",
+      "git_blob": "8e57c5333b241dd8b6a7c6091f1bd0824107e7a9",
+      "sha256": "20da8407b4984244eb4f2f64d318c99738fafeaebc14ca7bbb9194b22e0eade0",
+      "bytes": 5870,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/data_utils/pre_processor/voxel_preprocessor.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/data_utils/pre_processor/voxel_preprocessor.py",
+      "git_blob": "25f398c5ca2d29a02fb9522fe8bdbc877ecd0fde",
+      "sha256": "c39639aa066b05db4d9991708439c03299ac2ee4661f5601a1b43e34ee086b1d",
+      "bytes": 4940,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/__init__.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/ciassd_early_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/ciassd_early_fusion.yaml",
+      "git_blob": "331e8e291caa316fba2ca4d4329238ce0d195add",
+      "sha256": "a8a07353ce5a9fbb44775f394888a3f1e43f2c86708350454ce9ab4748728add",
+      "bytes": 2687,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/ciassd_intermediate_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/ciassd_intermediate_fusion.yaml",
+      "git_blob": "7a38f538b27c59d9ae0429e86252028594381473",
+      "sha256": "482d9ad04b36a74e8eccc0a37d683cdc66877a061dd5ce14b2e4db824d845a8a",
+      "bytes": 2112,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/fpvrcnn_intermediate_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/fpvrcnn_intermediate_fusion.yaml",
+      "git_blob": "4bb7f90638dfa77b5ba4695f83500fe6319ccc67",
+      "sha256": "7c16f5a1d9142eaeffeb1a7be044e289b3143be91b9bbdee58a28534f7384165",
+      "bytes": 4483,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/pixor_early_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/pixor_early_fusion.yaml",
+      "git_blob": "8ee8d4978efda41ee6226664070685c3f0c89682",
+      "sha256": "15de4441a8ccda98c5fdd08f295c089d912d19e3bd44c681d4e97af293776630",
+      "bytes": 1601,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/pixor_intermediate_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/pixor_intermediate_fusion.yaml",
+      "git_blob": "e000343b7da0b1a9bcf85688ce760a03b6dc1fe8",
+      "sha256": "797c245063f8ae39c4bb961320281b06be0cff75981bf10cb05ac4a878f6ba85",
+      "bytes": 1600,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/pixor_late_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/pixor_late_fusion.yaml",
+      "git_blob": "9f524f34ffb584ab48307c277010cebfb95edffd",
+      "sha256": "6465c9f8de1b501208df6126785652688725575d1b6cde48310f20cfd3b87e35",
+      "bytes": 1481,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_base_multi_scale.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_base_multi_scale.yaml",
+      "git_blob": "4b627c37a67442d5ba6c8ae666e823c6807b67d8",
+      "sha256": "538412a210e8974134f87010cc7718e9fce4b62de3b4ee7331221243df28ec03",
+      "bytes": 3111,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_base_multi_scale_teacher.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_base_multi_scale_teacher.yaml",
+      "git_blob": "31710e87dd78f6578cae70ec12685151f537a242",
+      "sha256": "ee17979c5d1c4ca6c402268a37656f73641fd6542d3926617167d2fb9f05b77e",
+      "bytes": 3124,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_coalign.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_coalign.yaml",
+      "git_blob": "f50ea5f3820642266214d4e74032857a4355dd39",
+      "sha256": "76bae451f70d32314a7a4f4b6ae2f9ebd20212197fe8e08ff88de7a79d706ad6",
+      "bytes": 2820,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_cobevt.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_cobevt.yaml",
+      "git_blob": "453bf6250512fd5f2a1db900f88af33cb5dbbb2e",
+      "sha256": "ac0e42cc073efef6d6f2cda6d210132782017124c2b028e47f6dc21d1d2829e1",
+      "bytes": 3020,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_early_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_early_fusion.yaml",
+      "git_blob": "5d178d1f15d8b0b525e286205b236151bb3543f5",
+      "sha256": "a7ad2dcaed80ce12af1a8a998981f3e2e4233a70748aea98b2b5330e097f798c",
+      "bytes": 2525,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_ermvp.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_ermvp.yaml",
+      "git_blob": "c3f537d4900ac2372af4f5122a9afb7dbd79904d",
+      "sha256": "f794fdb555439e260ebed0e440b445f171f9d4ba0cf0ba3a9e0d425db42d24e6",
+      "bytes": 3230,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_fcooper.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_fcooper.yaml",
+      "git_blob": "bf67fb6fc3ebdf84912fe2611135f93df2aa62c2",
+      "sha256": "1cf812a37098b72f93e8b644e61f0962bf7df87c53a95e351865268a03830315",
+      "bytes": 2771,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_intermediate_V2VAM.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_intermediate_V2VAM.yaml",
+      "git_blob": "6bc6b679f1e87c45c26238880ad13d38fd7a8307",
+      "sha256": "176a1f9c5ef87b1c04233e4d01b9a56f30953776b30fd6332dce20267e8632b8",
+      "bytes": 2631,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_intermediate_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_intermediate_fusion.yaml",
+      "git_blob": "cb9d65bb229544ee5d9865c7315ea1178b7b13d2",
+      "sha256": "44ac21c0cf2e3ed9d01b7b5cf14752a6e5e6e6d7b6978c5404f24132ad152dd0",
+      "bytes": 2595,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_late_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_late_fusion.yaml",
+      "git_blob": "998ecbfafd9264146662627dc83b86b5d44cfe65",
+      "sha256": "8dd8edfde0249926cf659c8f5c428a161cc0d611c5070c4765c16eaaacc16066",
+      "bytes": 2500,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_v2vnet.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_v2vnet.yaml",
+      "git_blob": "1db237450eea02485a6112ad818fe29648bc86f5",
+      "sha256": "6fa973642300089ebeed6a12957eb3f81c425a5a1780af2b5ec8e6d309cad659",
+      "bytes": 2901,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_v2xvit.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_v2xvit.yaml",
+      "git_blob": "1cb8a8c89b36d4d3dd0fa0bfafc069b3ec1d1292",
+      "sha256": "81c2e1f4c02be4d90a4ae4310bff5c419283d6a8df472ac4b8c4409ca4558be8",
+      "bytes": 4258,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/point_pillar_where2comm.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/point_pillar_where2comm.yaml",
+      "git_blob": "4d95a64d76bed86e770ea5b1fd14a643c7e40c79",
+      "sha256": "9a2d7fda2f5fec2cebee435add21d014f07c6a9ee6e4a0fb124a8c110b97c8e1",
+      "bytes": 3242,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/second_early_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/second_early_fusion.yaml",
+      "git_blob": "cca9e4f0dfda905c332d288db0bf6cd692779642",
+      "sha256": "6448444efb1a940eef397d12773a0ecdda995fccb42ef131fab6151bd3626a52",
+      "bytes": 2266,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/second_intermediate_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/second_intermediate_fusion.yaml",
+      "git_blob": "f641d7b28e7b84b97c0ce836031250168da85e0c",
+      "sha256": "a8b5449c579dd7c8750ce5e4ed7c7d7e0f6e1d0b00ace3e28547ad9a87f8f3d9",
+      "bytes": 2292,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/second_late_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/second_late_fusion.yaml",
+      "git_blob": "7beb9ff830961f66bc77620dc8ee8c70c1a09973",
+      "sha256": "d97b00dc5940e08b2a72f876ecc83b7bf7789c388c49088853df88d4f7e39c7c",
+      "bytes": 2269,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/visualization.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/visualization.yaml",
+      "git_blob": "760ee5dc3c0e5716cbe649343599ee422071207f",
+      "sha256": "ff9b2fbe531a600bfc3cbaf79f7b716964dd63f046a24a86ad11622c6e9670bd",
+      "bytes": 1513,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/voxelnet_early_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/voxelnet_early_fusion.yaml",
+      "git_blob": "443a69cc59124efa59148d8420a776a4b5c55957",
+      "sha256": "da4747864bdd82c24ebec8400a54a9afc582b09c9e94fadd3fcefb6acb0a21af",
+      "bytes": 2085,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/voxelnet_intermediate_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/voxelnet_intermediate_fusion.yaml",
+      "git_blob": "6c23674628bc2c1fa590f246e97ab149b35f36f1",
+      "sha256": "2f7b9e64cc833c60b5f29b58f8e778c0abfe1131fc37e6917ea66ce612d009fe",
+      "bytes": 2134,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/voxelnet_late_fusion.yaml",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/hypes_yaml/voxelnet_late_fusion.yaml",
+      "git_blob": "b346d09046cd4ae709fa2334b976de5e8d6a7925",
+      "sha256": "bda2f67df711ec2be91c918ed75793cbf7edcb91b9a13c44417e8025e149ebaf",
+      "bytes": 2080,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/hypes_yaml/yaml_utils.py",
+      "local_path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+      "git_blob": "e78dd4607d48f740e1314c2fff8341e024d46a09",
+      "sha256": "5b88ef224db616a7a915041b959b1e907fb36094537f7b877bc09351ff57bb29",
+      "bytes": 7032,
+      "origin": "existing fixed local file",
+      "original_manifest_member": true
+    },
+    {
+      "official_path": "opencood/models/point_pillar.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar.py",
+      "git_blob": "e28e14691653253ad09c5b77d620646f932b5635",
+      "sha256": "329907d8c8b43360e3e3b1cabd272244e9ecb1f96f83ec8573c8e860158a78e2",
+      "bytes": 1927,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_base_multi_scale_student.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_student.py",
+      "git_blob": "bba7e002b82f7be307e919f6fb1442ab01ca7181",
+      "sha256": "d8a00dc13c0ea141d8e3f61867c91597f3ba587c6caeac95d515d5033279274c",
+      "bytes": 14997,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_base_multi_scale_teacher.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_base_multi_scale_teacher.py",
+      "git_blob": "b45adab823a2840e90273ceb9da07b63574c0cbf",
+      "sha256": "690a35936da5724e83d9e7859c0add72aa6655b63d84593dce7dc48b415bf3d4",
+      "bytes": 6151,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_coalign.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_coalign.py",
+      "git_blob": "25853fa9b182e556323dba00d7c569245495ace6",
+      "sha256": "c5221ddc3f7b6a16c0ec793129998a047c441c31be17f2299da274d4f69f1f5c",
+      "bytes": 4610,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_cobevt.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_cobevt.py",
+      "git_blob": "74afedab17f6347042ec4484e21c6e4fc7ff2a1e",
+      "sha256": "1c2a7dadaf1f0e994371377c35251d00d9c6659b8bb0b2f8c6fccd80aa92bbed",
+      "bytes": 4591,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_ermvp.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_ermvp.py",
+      "git_blob": "fb7fb16a532dd679c2ca045f06938859f94cc016",
+      "sha256": "88751f0bc5afb9787f65540e4020330814c4bee7516212f43279fc052de5527e",
+      "bytes": 8097,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_fcooper.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_fcooper.py",
+      "git_blob": "6b818c45265448233cfc156ece18f86ff436855d",
+      "sha256": "45c192c3ee45f51a459f5bc408eb049796af11cadbc87245f3fef3204ca03bd5",
+      "bytes": 4040,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_intermediate.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_intermediate.py",
+      "git_blob": "f116accdb5af4795f09ba3583b99568dfe5cb832",
+      "sha256": "a93bbeb30eeeb3bd71e0898a0b040101e8f7842ae525e82a3d1dcb8be4f67592",
+      "bytes": 2030,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_intermediate_V2VAM.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_intermediate_V2VAM.py",
+      "git_blob": "92d10f6ae9752010e68184043c4129c0e1a7c096",
+      "sha256": "36e8de0e5d56a1c9fe7516c85428839ae773ecc2e9c7ac83cef98831f30a9af4",
+      "bytes": 4056,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_transformer.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_transformer.py",
+      "git_blob": "d1bb6846efcadcb88a1829bef78dcd1c72a05357",
+      "sha256": "f7d35d457d90c07b6926212440724811821f79da41f251d944ae460c582d0354",
+      "bytes": 4948,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_v2vnet.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_v2vnet.py",
+      "git_blob": "ea9e945b8c7c88a89b3b6b631906de1afcefba70",
+      "sha256": "b7953a80ff830b3daef5267c7964faef94737b56c7cccb02b88c4ecd0170d87d",
+      "bytes": 4174,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/point_pillar_where2comm.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/point_pillar_where2comm.py",
+      "git_blob": "b86a94e93584b2480f7448c52d45a3da5d755ff1",
+      "sha256": "fa0b0484d01b03dfc174aec59d24bfabe1a3069ac96d269c64c97a72ccbfb49c",
+      "bytes": 5083,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/sub_modules/pillar_vfe.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/pillar_vfe.py",
+      "git_blob": "0a7c6014b5ec4f8bea4de711bfbed43596f1b311",
+      "sha256": "38c94b45f1c7d3e10be4c0d927a5296106667e9908660cb5e202f80f72345fdc",
+      "bytes": 5535,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/models/sub_modules/point_pillar_scatter.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/models/sub_modules/point_pillar_scatter.py",
+      "git_blob": "2a2f8257e5bff9db2f06ec2d56a829223321f25d",
+      "sha256": "b0d5c07adf02c8a682b2b1bf5b49c324d41b3cee5250b86133f96d53d9d233ff",
+      "bytes": 4338,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/tools/inference.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference.py",
+      "git_blob": "37302a76ee02639c12a16d39adf4e2033a298e19",
+      "sha256": "36037e7e4ec5e3e18472d774a7dcfc7400c14bb2d24a936fb5caf34386b02720",
+      "bytes": 11278,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/tools/inference_utils.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/inference_utils.py",
+      "git_blob": "ea8a27ce3caae2e3d41304134b419c26ebd0e95c",
+      "sha256": "77d093a228aaf1bcb23eb34a87f891d19c3609a926053be9758094e96c14f170",
+      "bytes": 3041,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/tools/train.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train.py",
+      "git_blob": "1f8a1b03c8f08d8b7bff0751414b59b7c343bd8c",
+      "sha256": "2a9074f8fba595c63389dc02cefd660b5a6b01dfba6771b46c9d127e1bd55e62",
+      "bytes": 8671,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/tools/train_utils.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/tools/train_utils.py",
+      "git_blob": "f373ddf817f7ef9a5022488014580605327c8d46",
+      "sha256": "d7528fb4ce7fd699208eebc37758505cad961b67dbf3c6c80195c94717648430",
+      "bytes": 8932,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/utils/box_utils.py",
+      "local_path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+      "git_blob": "a6b336057e94726b02a121c74c0225c5312db127",
+      "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+      "bytes": 31642,
+      "origin": "existing fixed local file",
+      "original_manifest_member": true
+    },
+    {
+      "official_path": "opencood/utils/common_utils.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/common_utils.py",
+      "git_blob": "1cae5929b2a58ba04462a17b0d69d83bcf994dba",
+      "sha256": "588fe8e44d42b1ba832eedff09dd60cbbee5215640c3797f810f6d18f3755ae9",
+      "bytes": 7341,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/utils/eval_utils.py",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/opencood/utils/eval_utils.py",
+      "git_blob": "dea781cd413da30909225480d0d0e23b15faeec0",
+      "sha256": "28d09c074d24460f4f61a76cbe2873f3ca0214f0e9809120dd0e315b366a6ef6",
+      "bytes": 7625,
+      "origin": "exact commit raw GitHub text",
+      "original_manifest_member": false
+    },
+    {
+      "official_path": "opencood/utils/pcd_utils.py",
+      "local_path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+      "git_blob": "9f27249d6c318cc37ceaf86463d43998808044f9",
+      "sha256": "3a823f538315531b0feca98ea4351e1225088a5173bd36345c96bd92dea611df",
+      "bytes": 4848,
+      "origin": "existing fixed local file",
+      "original_manifest_member": true
+    },
+    {
+      "official_path": "opencood/utils/transformation_utils.py",
+      "local_path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+      "git_blob": "8318303679fb8f700bca7bc8ddcabb0b36f5c641",
+      "sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+      "bytes": 5502,
+      "origin": "existing fixed local file",
+      "original_manifest_member": true
+    },
+    {
+      "official_path": "opencood/utils/uav_to_single.py",
+      "local_path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+      "git_blob": "d0a47873b6631caca6c625e66bf3304b61de1a70",
+      "sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+      "bytes": 7291,
+      "origin": "existing fixed local file",
+      "original_manifest_member": true
+    },
+    {
+      "official_path": "opencood/utils/vehicle_to_single.py",
+      "local_path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+      "git_blob": "8da4ff82d1c60b6a3030c9843087238aa9408618",
+      "sha256": "0d5951f26d590c8c8c2e7b67167f085c7eaaa478a713b2777aadf29b5164a90e",
+      "bytes": 5776,
+      "origin": "existing fixed local file",
+      "original_manifest_member": true
+    },
+    {
+      "official_path": "requirements.txt",
+      "local_path": "code/artifacts/audit/v2u4real_r2_05a_20261027/official_snapshot/requirements.txt",
+      "git_blob": "7cbc0ce8a91d9a2ab3c2e0ee6b9586a038ccdeb6",
+      "sha256": "7bc8867adf684b3086035abbe839077a4c54188bbf73120cd4cbeaf2f6016de7",
+      "bytes": 336,
+      "origin": "existing fixed local file",
+      "original_manifest_member": false
+    }
+  ],
+  "scope": "Supplemental text-only read-only audit snapshot, no dataset, weights or third-party edits."
+}

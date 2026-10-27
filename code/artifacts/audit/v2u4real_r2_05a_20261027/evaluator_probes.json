@@ -1,0 +1,59 @@
+{
+  "evidence_type": "SYNTHETIC_OFFICIAL_FUNCTION_PROBES_NOT_DETECTOR_RESULTS",
+  "elevated_box": {
+    "z_center_separation": 100,
+    "tp": [
+      1
+    ],
+    "fp": [
+      0
+    ],
+    "official_polygon_iou": 1.0
+  },
+  "duplicate_prediction_one_gt": {
+    "tp": [
+      1,
+      0
+    ],
+    "fp": [
+      0,
+      1
+    ],
+    "gt": 1,
+    "score": [
+      0.8999999761581421,
+      0.800000011920929
+    ]
+  },
+  "ordering_probe": {
+    "frame_concatenation_AP": 0.5,
+    "global_score_sort_AP": 1.0
+  },
+  "mutable_default_AP": {
+    "first_AP": 0.6666666666666666,
+    "second_AP_same_state": 0.75,
+    "state_after_first": {
+      "0.5": {
+        "tp": [
+          0,
+          1,
+          2
+        ],
+        "fp": [
+          1,
+          1,
+          1
+        ],
+        "gt": 2,
+        "score": [
+          0.9,
+          0.8,
+          0.7
+        ]
+      }
+    },
+    "input_stat_mutated": true
+  },
+  "nonempty_prediction_zero_gt": "ZeroDivisionError",
+  "real_detection_metrics": "NOT_RUN"
+}

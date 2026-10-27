@@ -1,0 +1,33 @@
+{
+  "official_commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+  "manifest": "supplemental_source_manifest.json",
+  "official_files_verified": 75,
+  "original_manifest": "code/reference/V2U4Real.SOURCE.json",
+  "original_manifest_sha256": "325971861da520c6efdf3f5d08a07bf1d6b7099ab9afa065b030a945d28d4541",
+  "files": [
+    {
+      "path": "code/scripts/audit_v2u4real_r2_05a_baseline_data_eval_v1.py",
+      "sha256": "5b0c25b145c16aec5b89c412c73955feefc998933637305c8037cf11824608e2"
+    },
+    {
+      "path": "code/tests/test_v2u4real_r2_05a_baseline_data_eval_v1.py",
+      "sha256": "f46f0097e5807ea522f714d320094bdef7a93ac7c8bb6ed51c47d858c43360b8"
+    },
+    {
+      "path": "code/src/pi_jwm/v2u4real_interface_v1.py",
+      "sha256": "17a97a3a96cff587fbc0e63f7bede85db817a214b1765958850c3af3de983c38"
+    },
+    {
+      "path": "code/scripts/audit_v2u4real_r2_04a_single_frame_geometry_v1.py",
+      "sha256": "b306178c8b29e69306b6d4810845b518ef876fc017f3be3bbee6f4f090b779e9"
+    },
+    {
+      "path": "code/scripts/audit_v2u4real_r2_04c_label_merge_policy_v1.py",
+      "sha256": "1fdd3c997b7df9aff5bd828ae2ecf6ab4f2ff7c68303d06cb6cdf079411c7845"
+    },
+    {
+      "path": "docs/contracts/PIJWM_V2U4REAL_LABEL_MERGE_POLICY_V1.md",
+      "sha256": "7df3fda9ef2e21a30987f4529a67ada855798744920aac50d1ab4ebecf258a88"
+    }
+  ]
+}
