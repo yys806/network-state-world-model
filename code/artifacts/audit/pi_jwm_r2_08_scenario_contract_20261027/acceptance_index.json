@@ -1,0 +1,8 @@
+{
+  "canonical_result": "final_acceptance_v2/result.json",
+  "historical_attempts": [
+    "result.json",
+    "final_acceptance/result.json"
+  ],
+  "scope": "R2-08 contract-only; no task4 execution"
+}

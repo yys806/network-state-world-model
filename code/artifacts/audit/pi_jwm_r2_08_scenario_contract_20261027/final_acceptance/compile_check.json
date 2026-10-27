@@ -1,0 +1,17 @@
+{
+  "method": "in-memory compile; no pycache writes",
+  "files": [
+    {
+      "path": "code/src/pi_jwm/scenario_contract_v1.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/tests/test_scenario_contract_v1.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/audit_pi_jwm_scenario_contract_r2_08.py",
+      "status": "PASS"
+    }
+  ]
+}

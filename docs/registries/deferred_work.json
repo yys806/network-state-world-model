@@ -2,6 +2,29 @@
   "schema_version": "PI-JWM-deferred-work-v1",
   "items": [
     {
+      "id": "R2-08-TASK4-LIFECYCLE-AFTER-REVIEW",
+      "type": "researcher_decision_required",
+      "status": "deferred",
+      "reason": "Contract-only acceptance; explicit parameter/packet-granularity review and separate task4 authorization required. Deterministic CPU service design can be separated from physical radio acceptance.",
+      "summary_zh": "接口可复用，生命周期未实现；审阅后另行授权，物理无线另有阻塞。",
+      "authorization_required": true,
+      "auto_start": false,
+      "locked_test_accessed": false,
+      "entrypoint": "docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md",
+      "required_predecessors": [
+        "researcher reviews R2-08 pending table",
+        "explicit task4 scope and synthetic parameters",
+        "physical radio model acceptance before claiming physical service"
+      ],
+      "forbidden_until_authorized": [
+        "multi-slot lifecycle execution",
+        "formal training",
+        "GPU",
+        "locked_test"
+      ],
+      "scientific_gate_status": "CONTRACT_PASS_PARAMETERS_PENDING"
+    },
+    {
       "id": "V2U4REAL-R2-SAMPLE-AND-RADIO-DECISION",
       "type": "researcher_decision_required",
       "status": "deferred",

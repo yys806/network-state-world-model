@@ -1,3 +1,11 @@
+<!-- PIJWM R2-08 2026-10-27 -->
+## 2026-10-27 — R2-08 隔离场景合同层
+
+新增scenario_contract_v1.py及严格JSON Schema，以纯函数校验配置/六类记录/因果关系，复用旧DetectionResult、payload与slot_service；不接管队列、服务累计或任务状态推进，不修改世界模型或vendor。
+
+合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。
+<!-- END PIJWM R2-08 -->
+
 <!-- V2U4REAL R1 2026-10-25 -->
 ## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
 

@@ -1,0 +1,71 @@
+{
+  "step": "R2-08",
+  "contract_version": "PIJWM-Scenario-Contract-v1",
+  "status": "PASS_CONTRACT_ONLY",
+  "checks": {
+    "unit_and_targeted_regression": {
+      "status": "PASS",
+      "tests_run": 33,
+      "failures": 0,
+      "errors": 0,
+      "log": "unit_regression_tests.log"
+    },
+    "configuration_and_record_graph": {
+      "status": "PASS",
+      "records": 6,
+      "lifecycle_executed": false,
+      "physical_sync_verified": false
+    },
+    "pending_formal_configuration": "BLOCKED_AS_REQUIRED",
+    "compile_check": [
+      {
+        "path": "code/src/pi_jwm/scenario_contract_v1.py",
+        "status": "PASS"
+      },
+      {
+        "path": "code/tests/test_scenario_contract_v1.py",
+        "status": "PASS"
+      },
+      {
+        "path": "code/scripts/audit_pi_jwm_scenario_contract_r2_08.py",
+        "status": "PASS"
+      }
+    ],
+    "historical_and_vendor_preservation": "PASS"
+  },
+  "pending_researcher_decisions": [
+    "regions_and_bounds",
+    "real_synthetic_source_mapping",
+    "feature_packet_granularity",
+    "per_region_arrival_probability",
+    "allowed_total_latency",
+    "feature_preparation_delay",
+    "internal_scheduling_interval",
+    "rsu_position_and_physical_coverage",
+    "rb_budget_and_sharing",
+    "same_time_event_order"
+  ],
+  "boundary": {
+    "dataset_accessed": false,
+    "gpu_used": false,
+    "training_started": false,
+    "validation_test_locked_test_accessed": false,
+    "simulator_instantiated": false,
+    "real_physical_synchronization": "BLOCKED_INHERITED_R2_06",
+    "physical_radio_service": "BLOCKED_INHERITED_R2_07",
+    "multi_slot_lifecycle": "NOT_RUN",
+    "actual_delivery": "NOT_RUN",
+    "real_detector": "NOT_RUN",
+    "research_parameter_freeze": "BLOCKED_PENDING_RESEARCHER",
+    "task4_authorized_or_started": false
+  },
+  "source_identity": "source_identity.json",
+  "artifacts": [
+    "synthetic_contract_trace.json",
+    "protection_check.json",
+    "unit_regression_tests.log",
+    "compile_check.json",
+    "runtime_environment.json",
+    "pending_execution_rejection.json"
+  ]
+}

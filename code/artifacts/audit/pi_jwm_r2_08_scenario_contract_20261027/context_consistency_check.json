@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "context_files_checked": 9,
+  "document_prefixes_checked": 20,
+  "baseline_items_preserved": 40,
+  "source_identity": "final_acceptance_v2/source_identity.json",
+  "source_identity_unchanged": true,
+  "read_only_notes_unchanged": true,
+  "experiment_schema": "PASS",
+  "curated_registry_json": "PASS",
+  "new_route_references": "PASS",
+  "new_python_in_memory_compile": "PASS",
+  "knowledge_index_status": "BLOCKED_FIVE_EXISTING_MISMATCHES",
+  "scope": "navigation/schema/bytes consistency only; no physical acceptance"
+}

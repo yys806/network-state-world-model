@@ -29,6 +29,18 @@
   ],
   "documents": [
     {
+      "path": "docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md",
+      "role": "researcher-authorized scenario scope and time rules; parameters pending",
+      "authority": "bounded_contract_with_pending_decisions",
+      "can_establish_formal_result": false
+    },
+    {
+      "path": "docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md",
+      "role": "R2-08 contract-only implementation record",
+      "authority": "verified_process_record",
+      "can_establish_formal_result": false
+    },
+    {
       "path": "AGENTS.md",
       "role": "permanent governance",
       "authority": "highest_constraint",

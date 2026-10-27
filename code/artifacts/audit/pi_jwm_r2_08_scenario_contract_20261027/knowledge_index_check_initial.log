@@ -1,0 +1,19 @@
+<unknown>:37: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:44: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:79: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:37: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:44: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:79: SyntaxWarning: invalid escape sequence '\.'
+{
+  "mismatches": [
+    "docs/registries/generated/tracked_file_inventory.csv",
+    "docs/registries/generated/python_dependency_map.json",
+    "docs/registries/generated/artifact_catalog.csv",
+    "docs/registries/generated/archive_candidate_registry.csv",
+    "docs/registries/generated/registry_summary.json"
+  ],
+  "mode": "check",
+  "output_count": 5,
+  "passed": false,
+  "schema_version": "PI-JWM-project-knowledge-index-v2"
+}

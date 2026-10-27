@@ -1,3 +1,11 @@
+<!-- PIJWM R2-08 2026-10-27 -->
+## 2026-10-27 — R2-08 仅软件合同结果
+
+PASS_CONTRACT_ONLY；真实同步/覆盖/感知效果未通过，多时隙交付NOT_RUN。初次33项和最终35项回执分开保留，不当成训练结果。
+
+合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。
+<!-- END PIJWM R2-08 -->
+
 <!-- V2U4REAL R2-07 2026-10-27 -->
 ## 2026-10-27 — R2-07结果边界
 

@@ -1,0 +1,1083 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pi-jwm:scenario-interfaces:v1",
+  "$defs": {
+    "ObservationRecord": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "PIJWM-Scenario-Interfaces-v1"
+        },
+        "units": {
+          "const": {
+            "time": "s",
+            "size": "byte"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "real_train_sample",
+                "synthetic_fixture",
+                "simulation_generated",
+                "world_model_prediction",
+                "mock_output"
+              ]
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "time_basis": {
+              "enum": [
+                "simulation_seconds",
+                "dataset_identifier_unmapped",
+                "verified_physical_mapping"
+              ]
+            },
+            "physical_sync_status": {
+              "enum": [
+                "NOT_ESTABLISHED",
+                "NOT_APPLICABLE",
+                "VERIFIED"
+              ]
+            },
+            "evidence_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "source_ref",
+            "time_basis",
+            "physical_sync_status",
+            "evidence_ref"
+          ],
+          "additionalProperties": false
+        },
+        "record_type": {
+          "const": "ObservationRecord"
+        },
+        "observation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sensor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_observation_time_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "available_at_s": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "availability": {
+          "enum": [
+            "available",
+            "missing"
+          ]
+        },
+        "position_m": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "trajectory_origin": {
+          "enum": [
+            "preset_synthetic",
+            "dataset_pose_unverified",
+            "verified_replay"
+          ]
+        },
+        "trajectory_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "units",
+        "provenance",
+        "record_type",
+        "observation_id",
+        "source_id",
+        "sensor_id",
+        "frame_key",
+        "target_observation_time_s",
+        "available_at_s",
+        "availability",
+        "position_m",
+        "trajectory_origin",
+        "trajectory_ref"
+      ],
+      "additionalProperties": false
+    },
+    "PerceptionTask": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "PIJWM-Scenario-Interfaces-v1"
+        },
+        "units": {
+          "const": {
+            "time": "s",
+            "size": "byte"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "real_train_sample",
+                "synthetic_fixture",
+                "simulation_generated",
+                "world_model_prediction",
+                "mock_output"
+              ]
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "time_basis": {
+              "enum": [
+                "simulation_seconds",
+                "dataset_identifier_unmapped",
+                "verified_physical_mapping"
+              ]
+            },
+            "physical_sync_status": {
+              "enum": [
+                "NOT_ESTABLISHED",
+                "NOT_APPLICABLE",
+                "VERIFIED"
+              ]
+            },
+            "evidence_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "source_ref",
+            "time_basis",
+            "physical_sync_status",
+            "evidence_ref"
+          ],
+          "additionalProperties": false
+        },
+        "record_type": {
+          "const": "PerceptionTask"
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "region_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generated_at_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "target_observation_time_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "allowed_total_latency_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "absolute_deadline_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "feature_packet_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "status": {
+          "enum": [
+            "waiting_for_features",
+            "ready",
+            "transmitting",
+            "detecting",
+            "completed",
+            "timed_out"
+          ]
+        },
+        "actual_completion_time_s": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "units",
+        "provenance",
+        "record_type",
+        "task_id",
+        "region_id",
+        "generated_at_s",
+        "target_observation_time_s",
+        "allowed_total_latency_s",
+        "absolute_deadline_s",
+        "feature_packet_ids",
+        "status",
+        "actual_completion_time_s"
+      ],
+      "additionalProperties": false
+    },
+    "FeaturePacket": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "PIJWM-Scenario-Interfaces-v1"
+        },
+        "units": {
+          "const": {
+            "time": "s",
+            "size": "byte"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "real_train_sample",
+                "synthetic_fixture",
+                "simulation_generated",
+                "world_model_prediction",
+                "mock_output"
+              ]
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "time_basis": {
+              "enum": [
+                "simulation_seconds",
+                "dataset_identifier_unmapped",
+                "verified_physical_mapping"
+              ]
+            },
+            "physical_sync_status": {
+              "enum": [
+                "NOT_ESTABLISHED",
+                "NOT_APPLICABLE",
+                "VERIFIED"
+              ]
+            },
+            "evidence_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "source_ref",
+            "time_basis",
+            "physical_sync_status",
+            "evidence_ref"
+          ],
+          "additionalProperties": false
+        },
+        "record_type": {
+          "const": "FeaturePacket"
+        },
+        "packet_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "preparation_started_at_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "ready_at_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "preparation_delay_source": {
+          "enum": [
+            "configured_synthetic",
+            "measured_encoder"
+          ]
+        },
+        "preparation_evidence_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "granularity": {
+          "enum": [
+            "source_complete",
+            "fixed_spatial_block"
+          ]
+        },
+        "block_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "spatial_block_contract_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "integrity_requirement": {
+          "const": "complete_packet"
+        },
+        "payload_role": {
+          "enum": [
+            "synthetic_size_only",
+            "legacy_detection_result_json",
+            "encoded_lidar_feature"
+          ]
+        },
+        "payload_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "units",
+        "provenance",
+        "record_type",
+        "packet_id",
+        "task_id",
+        "observation_id",
+        "source_id",
+        "byte_count",
+        "preparation_started_at_s",
+        "ready_at_s",
+        "preparation_delay_source",
+        "preparation_evidence_ref",
+        "granularity",
+        "block_id",
+        "spatial_block_contract_ref",
+        "integrity_requirement",
+        "payload_role",
+        "payload_ref"
+      ],
+      "additionalProperties": false
+    },
+    "SchedulingAction": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "PIJWM-Scenario-Interfaces-v1"
+        },
+        "units": {
+          "const": {
+            "time": "s",
+            "size": "byte"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "real_train_sample",
+                "synthetic_fixture",
+                "simulation_generated",
+                "world_model_prediction",
+                "mock_output"
+              ]
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "time_basis": {
+              "enum": [
+                "simulation_seconds",
+                "dataset_identifier_unmapped",
+                "verified_physical_mapping"
+              ]
+            },
+            "physical_sync_status": {
+              "enum": [
+                "NOT_ESTABLISHED",
+                "NOT_APPLICABLE",
+                "VERIFIED"
+              ]
+            },
+            "evidence_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "source_ref",
+            "time_basis",
+            "physical_sync_status",
+            "evidence_ref"
+          ],
+          "additionalProperties": false
+        },
+        "record_type": {
+          "const": "SchedulingAction"
+        },
+        "action_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision_time_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "effective_time_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "information_cutoff_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "selected_packet_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "allocations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "packet_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "rsu_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "rb_ids": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "packet_id",
+              "source_id",
+              "rsu_id",
+              "rb_ids"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "information_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "prediction_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "prediction_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "issued_at_s": {
+                "type": "number",
+                "minimum": 0
+              },
+              "target_time_s": {
+                "type": "number",
+                "minimum": 0
+              },
+              "model_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "const": "world_model_prediction"
+              }
+            },
+            "required": [
+              "prediction_id",
+              "issued_at_s",
+              "target_time_s",
+              "model_ref",
+              "kind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "trigger_event_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "units",
+        "provenance",
+        "record_type",
+        "action_id",
+        "decision_time_s",
+        "effective_time_s",
+        "information_cutoff_s",
+        "selected_packet_ids",
+        "allocations",
+        "information_refs",
+        "prediction_refs",
+        "trigger_event_id"
+      ],
+      "additionalProperties": false
+    },
+    "ServiceResult": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "PIJWM-Scenario-Interfaces-v1"
+        },
+        "units": {
+          "const": {
+            "time": "s",
+            "size": "byte"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "real_train_sample",
+                "synthetic_fixture",
+                "simulation_generated",
+                "world_model_prediction",
+                "mock_output"
+              ]
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "time_basis": {
+              "enum": [
+                "simulation_seconds",
+                "dataset_identifier_unmapped",
+                "verified_physical_mapping"
+              ]
+            },
+            "physical_sync_status": {
+              "enum": [
+                "NOT_ESTABLISHED",
+                "NOT_APPLICABLE",
+                "VERIFIED"
+              ]
+            },
+            "evidence_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "source_ref",
+            "time_basis",
+            "physical_sync_status",
+            "evidence_ref"
+          ],
+          "additionalProperties": false
+        },
+        "record_type": {
+          "const": "ServiceResult"
+        },
+        "service_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "link_service_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "packet_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rsu_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interval_start_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "interval_end_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "available_at_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "effective_rbs": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "uniqueItems": true
+        },
+        "rate_values": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "rate_unit": {
+          "enum": [
+            "Mbps",
+            "bit/s"
+          ]
+        },
+        "result_kind": {
+          "enum": [
+            "capacity_diagnostic",
+            "delivery_receipt",
+            "predicted_service"
+          ]
+        },
+        "theoretical_capacity_bytes": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "delivered_bytes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "delivery_evidence_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "physical_service_status": {
+          "enum": [
+            "BLOCKED",
+            "SYNTHETIC_ONLY",
+            "VERIFIED"
+          ]
+        },
+        "rate_semantics": {
+          "enum": [
+            "instantaneous_sample_assumed_constant",
+            "measured_interval_average",
+            "fixture_constant"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "units",
+        "provenance",
+        "record_type",
+        "service_id",
+        "link_service_id",
+        "action_id",
+        "packet_id",
+        "source_id",
+        "rsu_id",
+        "interval_start_s",
+        "interval_end_s",
+        "available_at_s",
+        "effective_rbs",
+        "rate_values",
+        "rate_unit",
+        "result_kind",
+        "theoretical_capacity_bytes",
+        "delivered_bytes",
+        "delivery_evidence_ref",
+        "physical_service_status",
+        "rate_semantics"
+      ],
+      "additionalProperties": false
+    },
+    "PerceptionResult": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "PIJWM-Scenario-Interfaces-v1"
+        },
+        "units": {
+          "const": {
+            "time": "s",
+            "size": "byte"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "real_train_sample",
+                "synthetic_fixture",
+                "simulation_generated",
+                "world_model_prediction",
+                "mock_output"
+              ]
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "time_basis": {
+              "enum": [
+                "simulation_seconds",
+                "dataset_identifier_unmapped",
+                "verified_physical_mapping"
+              ]
+            },
+            "physical_sync_status": {
+              "enum": [
+                "NOT_ESTABLISHED",
+                "NOT_APPLICABLE",
+                "VERIFIED"
+              ]
+            },
+            "evidence_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "source_ref",
+            "time_basis",
+            "physical_sync_status",
+            "evidence_ref"
+          ],
+          "additionalProperties": false
+        },
+        "record_type": {
+          "const": "PerceptionResult"
+        },
+        "result_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "used_packet_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "output_at_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "actual_completion_time_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "detection_output": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evaluation_result": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "metric_contract_ref": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "values": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "metric_contract_ref",
+                "values"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "output_role": {
+          "enum": [
+            "synthetic_contract_fixture",
+            "legacy_mock_output",
+            "real_detector_output"
+          ]
+        },
+        "input_receipts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "packet_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "received_byte_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "available_at_s": {
+                "type": "number",
+                "minimum": 0
+              },
+              "integrity_status": {
+                "const": "complete"
+              },
+              "evidence_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_kind": {
+                "enum": [
+                  "synthetic_fixture",
+                  "runtime_receipt"
+                ]
+              }
+            },
+            "required": [
+              "packet_id",
+              "received_byte_count",
+              "available_at_s",
+              "integrity_status",
+              "evidence_ref",
+              "evidence_kind"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "units",
+        "provenance",
+        "record_type",
+        "result_id",
+        "task_id",
+        "used_packet_ids",
+        "output_at_s",
+        "actual_completion_time_s",
+        "detection_output",
+        "evaluation_result",
+        "output_role",
+        "input_receipts"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/ObservationRecord"
+    },
+    {
+      "$ref": "#/$defs/PerceptionTask"
+    },
+    {
+      "$ref": "#/$defs/FeaturePacket"
+    },
+    {
+      "$ref": "#/$defs/SchedulingAction"
+    },
+    {
+      "$ref": "#/$defs/ServiceResult"
+    },
+    {
+      "$ref": "#/$defs/PerceptionResult"
+    }
+  ]
+}

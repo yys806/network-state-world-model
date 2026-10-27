@@ -1,3 +1,11 @@
+<!-- PIJWM R2-08 2026-10-27 -->
+## 2026-10-27 — STEP R2-08 — 合同软件验收通过，参数待审
+
+已按本轮授权落实车/UAV感知源、LiDAR第一阶段、单逻辑RSU、预设轨迹和固定计算/DAG/Route。100 ms是观测/区域独立到达周期，deadline从目标观测时间起算。25专项+10必要回归通过；正式pending参数仍为null。真实时间/物理无线/数据评价阻塞继承，任务4生命周期NOT_RUN。索引五项仍不一致，只保留本地提交。
+
+合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。
+<!-- END PIJWM R2-08 -->
+
 <!-- V2U4REAL R2-07 2026-10-27 -->
 ## 2026-10-27 — R2-07软件接口核验完成，物理无线仍阻塞
 

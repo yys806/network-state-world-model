@@ -3,6 +3,17 @@
   "value_policy": "Formal numeric values must equal gate_recompute.recomputed in the referenced acceptance JSON; presentation documents may round them but cannot replace this registry.",
   "perception_readiness_audit_sources": [
     {
+      "id": "AUDIT-PIJWM-R2-08-20261027",
+      "experiment_id": "PIJWM-R2-08-SCENARIO-CONTRACT-20261027",
+      "result": "code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json",
+      "audit": "code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json",
+      "status": "PASS_CONTRACT_ONLY",
+      "metrics": null,
+      "metrics_note": "25 new plus 10 targeted CPU tests; no formal performance.",
+      "claim_boundary": "synthetic software contracts only; no real synchronization, coverage, delivery, lifecycle or detection performance",
+      "locked_test_accessed": false
+    },
+    {
       "id": "AUDIT-AIRFOGSIM-R2-07-20261027",
       "experiment_id": "AIRFOGSIM-R2-07-TRAJECTORY-CLOCK-RADIO-20261027",
       "result": "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json",

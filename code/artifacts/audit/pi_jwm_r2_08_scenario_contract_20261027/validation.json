@@ -1,0 +1,47 @@
+{
+  "status": "PASS_CONTRACT_ONLY_WITH_BLOCKED_RELEASE_GATE",
+  "canonical_result": "final_acceptance_v2/result.json",
+  "commands": [
+    {
+      "command": "python code/scripts/audit_pi_jwm_scenario_contract_r2_08.py --output code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2",
+      "exit_code": 0,
+      "status": "PASS",
+      "tests": 35
+    },
+    {
+      "command": "in-memory compile for 3 new Python sources (called by acceptance script)",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "context/registry/source/workspace checks recorded in context_consistency_check.json",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python code/scripts/build_project_knowledge_index_v1.py --check",
+      "exit_code": 1,
+      "status": "BLOCKED",
+      "mismatches": [
+        "docs/registries/generated/tracked_file_inventory.csv",
+        "docs/registries/generated/python_dependency_map.json",
+        "docs/registries/generated/artifact_catalog.csv",
+        "docs/registries/generated/archive_candidate_registry.csv",
+        "docs/registries/generated/registry_summary.json"
+      ],
+      "log": "knowledge_index_check_final.log"
+    }
+  ],
+  "baseline_items_preserved": 40,
+  "historical_and_vendor_files_preserved": 86,
+  "research_parameters": "BLOCKED_PENDING_RESEARCHER",
+  "physical_sync_and_radio": "BLOCKED_INHERITED",
+  "task4_lifecycle": "NOT_RUN",
+  "gpu_training_dataset_access": "NOT_RUN",
+  "push": "NOT_ATTEMPTED_BLOCKED_KNOWLEDGE_INDEX"
+}

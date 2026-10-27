@@ -1,0 +1,207 @@
+{
+  "head": "f63ea82f0a04734f03fc441bbd401973aa5db914",
+  "branch": "main",
+  "status": [
+    {
+      "status": " M",
+      "path": "AGENTS.md",
+      "sha256": "c773278285f129d5869e4147894be398371153a0ef9ac024149a19d2cbf7011a"
+    },
+    {
+      "status": " M",
+      "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+      "sha256": "ca2ce803e4eb4990caf3c5274f5edd080cd6116e431460b59afbd257500a9383"
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/Feng_2025_ICML_Graph_World_Model.txt",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/Hajiramezanali_2019_Variational_Graph_Recurrent_Neural_Netwo.txt",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/Karacelebi_2026_ArXivOrg_Learning_Ad_Hoc_Network_Dynamics_via_Gra.txt",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/PDF_SHA256SUMS.txt",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/PI-JWM_v8_literature_map.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/PIJWM数据集兼容性矩阵.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/PIJWM文献管理说明.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/PIJWM方法证据矩阵.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/README.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/文献索引.csv",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/文献索引.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/新增7篇精读汇总_20260826.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/新增7篇精读笔记_20260826.jsonl",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/本地文献库状态.json",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/本地文献库验收.json",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "doc/literature-notes/需要手动下载.md",
+      "sha256": null
+    },
+    {
+      "status": " M",
+      "path": "docs/CHANGELOG.md",
+      "sha256": "23585f72dddf3aa172d855128f1928f9341eab14edcb93e33ef31b312965fb43"
+    },
+    {
+      "status": " M",
+      "path": "docs/PROJECT_INDEX.md",
+      "sha256": "e874cc9ad95fabe9366cd3a0f1fa6101d8c71109e14633deab6a60f524a058b6"
+    },
+    {
+      "status": " M",
+      "path": "docs/registries/generated/registry_summary.json",
+      "sha256": "30c04ae68467b6b328e3debb0b9888f823cf3bb13ee2444f5ee2665554e60471"
+    },
+    {
+      "status": " M",
+      "path": "docs/registries/generated/tracked_file_inventory.csv",
+      "sha256": "f69c199565361d04feb2448ace2c076d4d9501fcc62becf10bfbeb46ab08172f"
+    },
+    {
+      "status": " D",
+      "path": "findings.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "paper/README.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "paper/archive/pi_jwm_ton_draft_zh/IEEEtran.cls",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "paper/archive/pi_jwm_ton_draft_zh/pi_jwm_ton_draft_zh.pdf",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "paper/archive/pi_jwm_ton_draft_zh/pi_jwm_ton_draft_zh.tex",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "progress.md",
+      "sha256": null
+    },
+    {
+      "status": " D",
+      "path": "task_plan.md",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/deploy_step6_4j_bundle_v1.py",
+      "sha256": "3b47a83096da096ff3a337f12a8c6671821882427cfa6eaaa10df80d8b1b6736"
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/deploy_step6_4j_bundle_v1_29454.py",
+      "sha256": "a17cc37792939a229d2644b893564317506ab4ce9fe7a42b5e29eb4295785557"
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/deploy_step6_4j_remote_v1.py",
+      "sha256": "8453cabbdf968d0e4bb6a4ffff1a17b8143cd2b0566d66405d95ff2c599f572b"
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/fig4_frozen_checkpoint_readonly_validation_20261014.py",
+      "sha256": "2c5bcb201d39c61b14fbde51589c2896ad2a240537dfaffe8e03620d014f1e88"
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/generate_meeting_figures_20261014.py",
+      "sha256": "1583dab8727f3ded1c73267478269a251e9f2cc4ab27649e1d1838dd0f69feb8"
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/generate_meeting_figures_20261014_v2.py",
+      "sha256": "fbd0573faa16f71d3fc8a4f8dfccaceb7065f1b73822d64606b5a1669271aa89"
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/plot_meeting_world_model_figures_20261012.py",
+      "sha256": "748913bdec4eb945ad5946f49df0d4208ca394122f18ea667f52ba01dad8e0b2"
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/plot_step5_3e_tiny_overfit.py",
+      "sha256": "4dc06277f6d3688adee4d7daa31b738bff7248daeb0e0ec7987cc362d7c5a99c"
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/probe_step6_4j_remote_v1.py",
+      "sha256": "65ce6afaef573de0a58c226767eab138fe3415028ee6e4e4ec5ef16d9300af55"
+    },
+    {
+      "status": "??",
+      "path": "code/scripts/probe_step6_4j_remote_v1_29454.py",
+      "sha256": "0a9c96a107249edef01c9a508df2555f24c05b688ee63c79b3e5813f68b42184"
+    },
+    {
+      "status": "??",
+      "path": "docs/PROJECT_MEMORY_AND_SOURCES.md",
+      "sha256": "3657911d2aeddc12f46cc5a94bbbf7e5b9ce6f6dc3dc9a76fa9c22b562a51ea7"
+    }
+  ],
+  "unpushed": "f63ea82 feat(audit): verify AirFogSim trajectory clock and radio service interfaces\n66faa8f feat(v2u4real): audit R2-06 RGB LiDAR modality applicability\n90c3690 docs(v2u4real): finalize R2-05B record\n525f3c0 feat(v2u4real): add perception and AirFogSim ingress interface\nbf367ee feat(v2u4real): audit R2-05A baseline data and evaluation\nd2f3c92 feat(v2u4real): freeze R2-04C label merge policy\n3965610 feat(v2u4real): audit R2-04B multi-frame coordinates\nfe7d2fe feat(v2u4real): verify R2-04A single-frame geometry\nd842cba docs(v2u4real): audit R2-03 data contract\n"
+}

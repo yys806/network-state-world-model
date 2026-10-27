@@ -1,3 +1,11 @@
+<!-- PIJWM R2-08 2026-10-27 -->
+## 2026-10-27 — R2-08 可复用接口入口
+
+code/src/pi_jwm/scenario_contract_v1.py提供validate_scene_config/validate_record/validate_record_graph、区域独立抽样、动作推进检查、R2-05B/R2-07转换。配置在code/scripts/configs/pi_jwm_scenario_v1.*及interfaces_v1.schema.json；25项专项测试在test_scenario_contract_v1.py。
+
+合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。
+<!-- END PIJWM R2-08 -->
+
 <!-- V2U4REAL R2-07 2026-10-27 -->
 ## 2026-10-27 — R2-07自有接口入口
 

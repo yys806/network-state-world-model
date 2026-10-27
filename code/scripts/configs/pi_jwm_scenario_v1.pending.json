@@ -1,0 +1,66 @@
+{
+  "contract_version": "PIJWM-Scenario-Contract-v1",
+  "profile_type": "formal_pending",
+  "frozen_scope": {
+    "perception_sources": [
+      "vehicle",
+      "uav"
+    ],
+    "modality": "lidar",
+    "perception_task": "cooperative_3d_detection",
+    "single_target_observation": true,
+    "uav_trajectory": "preset",
+    "logical_rsu_count": 1,
+    "logical_service": "all_regions",
+    "physical_coverage_implied": false,
+    "compute_resources": "fixed",
+    "dag": "fixed",
+    "route": "fixed",
+    "perception_pipeline": "fixed",
+    "optimized_actions": [
+      "packet_selection",
+      "rb_allocation"
+    ],
+    "observation_period_s": 0.1
+  },
+  "units": {
+    "time": "s",
+    "size": "byte"
+  },
+  "extensions": {
+    "rgb": false,
+    "multiple_rsus": false,
+    "dynamic_compute": false,
+    "dag_optimization": false,
+    "route_optimization": false
+  },
+  "parameters": {
+    "vehicle_count": null,
+    "uav_count": null,
+    "regions": null,
+    "sources": null,
+    "rsu_position_m": null,
+    "allowed_total_latency_s": null,
+    "feature_preparation_delay_s": null,
+    "internal_scheduling_interval_s": null,
+    "feature_packet_granularity": null,
+    "spatial_block_contract_ref": null,
+    "rb_count": null,
+    "coverage_status": "BLOCKED_NOT_VERIFIED",
+    "rb_sharing_policy": null,
+    "same_time_event_policy": null
+  },
+  "pending_researcher_decisions": [
+    "regions_and_bounds",
+    "real_synthetic_source_mapping",
+    "feature_packet_granularity",
+    "per_region_arrival_probability",
+    "allowed_total_latency",
+    "feature_preparation_delay",
+    "internal_scheduling_interval",
+    "rsu_position_and_physical_coverage",
+    "rb_budget_and_sharing",
+    "same_time_event_order"
+  ],
+  "engineering_assumptions": []
+}

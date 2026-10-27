@@ -1,3 +1,11 @@
+<!-- PIJWM R2-08 2026-10-27 -->
+## 2026-10-27 — R2-08 研究者已给定的规则
+
+仅记录STEP R2-08明确授权：车/UAV为感知源、LiDAR第一阶段、单逻辑RSU不等于覆盖、预设UAV、固定计算/DAG/Route、100 ms独立区域到达、deadline=target_observation+allowed_latency。概率/预算/准备/间隔/区域/映射/粒度/RB共享和同刻顺序仍待决，工程夹具不是决定。
+
+合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。
+<!-- END PIJWM R2-08 -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

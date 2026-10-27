@@ -1,0 +1,102 @@
+[
+  {
+    "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+    "before_sha256": "ca2ce803e4eb4990caf3c5274f5edd080cd6116e431460b59afbd257500a9383",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — STEP R2-08 — 合同软件验收通过，参数待审\n\n已按本轮授权落实车/UAV感知源、LiDAR第一阶段、单逻辑RSU、预设轨迹和固定计算/DAG/Route。100 ms是观测/区域独立到达周期，deadline从目标观测时间起算。25专项+10必要回归通过；正式pending参数仍为null。真实时间/物理无线/数据评价阻塞继承，任务4生命周期NOT_RUN。索引五项仍不一致，只保留本地提交。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "AI_CONTEXT/01_RESEARCH_CONTEXT.md",
+    "before_sha256": "c3522c9b77ad8a9b3a553c5cbfd1b86b1279a4186c09e8139f22377a28516d5c",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 研究范围与候选细节分开\n\n研究者本轮明确的范围/时间关系已落实，不把1028前半旧讲稿的摄像头/中继描述当当前主线。整源包/固定空间块及三种真实样本到多节点候选只比较未选定；2车1UAV等测试参数不是科研决定。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "AI_CONTEXT/02_ARCHITECTURE.md",
+    "before_sha256": "bf6c04edf9cce8b83c551ca77d42883c7a21bfc4fedb2e1c2abab53bd21d762f",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 隔离场景合同层\n\n新增scenario_contract_v1.py及严格JSON Schema，以纯函数校验配置/六类记录/因果关系，复用旧DetectionResult、payload与slot_service；不接管队列、服务累计或任务状态推进，不修改世界模型或vendor。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "AI_CONTEXT/03_DATA_FLOW.md",
+    "before_sha256": "19ecaacd0c8dac7b4d151e3736f6497d9009ffa25538e531a172d637c7bf4d8f",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 时间与来源合同\n\n观测、任务生成、准备ready、截止、动作与服务区间、输出/完成分别记录。秒/byte统一，Mbps显式换算；容量记录delivered=null。PerceptionResult只接受外部完整输入声明，合成手写回执不是真实交付。未来事实/标签禁止在线引用，预测另记发出时刻。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "AI_CONTEXT/04_MODULE_MAP.md",
+    "before_sha256": "8ecc056b86d468f81a3158da0179ff819e7ef2f4916e34db153e85493142f8ce",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 可复用接口入口\n\ncode/src/pi_jwm/scenario_contract_v1.py提供validate_scene_config/validate_record/validate_record_graph、区域独立抽样、动作推进检查、R2-05B/R2-07转换。配置在code/scripts/configs/pi_jwm_scenario_v1.*及interfaces_v1.schema.json；25项专项测试在test_scenario_contract_v1.py。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "AI_CONTEXT/05_EXPERIMENTS.md",
+    "before_sha256": "8ae65aa8a2c642239a8bd55b368a91f657df7df9b3b09671f446b73222d4b273",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 仅合成合同验收\n\nfinal_acceptance_v2/result.json为最终35项验收：25新测试、R2-07八项、R2-05B两项；3份源码内存compile通过，13vendor+73历史回执SHA不变。初次33项结果保留。无真实数据读取、仿真器实例化、训练、感知/无线性能实验。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "AI_CONTEXT/06_DECISIONS.md",
+    "before_sha256": "db3f075985a893265698f1176fccd56a9f0869f3de3a38c45845cb461b0eef4a",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 研究者已给定的规则\n\n仅记录STEP R2-08明确授权：车/UAV为感知源、LiDAR第一阶段、单逻辑RSU不等于覆盖、预设UAV、固定计算/DAG/Route、100 ms独立区域到达、deadline=target_observation+allowed_latency。概率/预算/准备/间隔/区域/映射/粒度/RB共享和同刻顺序仍待决，工程夹具不是决定。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "AI_CONTEXT/07_KNOWN_ISSUES.md",
+    "before_sha256": "697cc6322faf4070142601d027fd00d4be557911993adf4a6198d84f2a781702",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 合同完成不解除真实阻塞\n\nformal_pending完整性门拒绝运行；真实样本多节点映射/粒度/时延参数未决。R2-06真实时间/配准与R2-05A评价阻塞不变；R2-07原生步内错位、SINR域/中断/V2I高度/快衰落和原生Mbit—payload byte绑定未解决。生命周期NOT_RUN，索引五项失败不push。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "AI_CONTEXT/08_CHANGELOG.md",
+    "before_sha256": "9e13e5e734a6d77d4e005299ced9e06d2e4577df092c35337e67f27135980f7c",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 场景配置与版本化合同\n\n新增四份配置/Schema、隔离校验模块、25项测试、验收脚本、正式合同和报告。35项CPU软件测试通过，真实物理/性能不声称通过。任务4仍单独授权且不自动开始。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "记录/本地计划表.md",
+    "before_sha256": "7c9a1573770fc1bb4c0141d06090926650993e58df5dec2bdbeda6ddc20bc0ba",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — STEP R2-08 — 任务3合同交付，停止待审\n\n计划/进度/发现：继承R2-05B/06/07→落实冻结规则和null待决配置→25+10合成CPU测试/编译→上下文与独立提交。门：合同软件PASS；正式参数、真实时间/传播及索引BLOCKED。task_plan/progress/findings起始删除不恢复，本条代记过程。唯一下一动作：研究者审阅合同待决表。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "记录/PIJWM主文档.md",
+    "before_sha256": "40b24fc4354306943541425249ca8ea82eb2204818d9fac28f2924786ba09873",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 已授权场景与时间边界\n\n把本轮研究者给定范围落实为合同；目标观测/生成/准备/输出/完成分别记录，截止从目标观测计算。100 ms不等于截止或内部调度间隔。测试包粒度/映射/350 ms等不构成科学决策；未改变核心模型、loss、checkpoint。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "记录/8.12之后推进.md",
+    "before_sha256": "6026fa91853b1fda2c41fbefd96361f4cc1f3cd47ca899afe693ba7d02286565",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — STEP R2-08 合同软件验收\n\n25新测试+10必要回归、3源码内存compile通过，未决配置按预期拒绝执行。新增场景/服务/检测输入证据合同，继承真实时间、物理传播、评价与索引阻塞；不实施任务4累计/完成/超时。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "docs/CHANGELOG.md",
+    "before_sha256": "23585f72dddf3aa172d855128f1928f9341eab14edcb93e33ef31b312965fb43",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 场景合同与接口\n\n新增四份配置/Schema、scenario_contract_v1、专项测试/验收脚本和正式合同。35项通过；参数仍待研究者确认，不实现完整生命周期。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "docs/PROJECT_INDEX.md",
+    "before_sha256": "e874cc9ad95fabe9366cd3a0f1fa6101d8c71109e14633deab6a60f524a058b6",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 新场景合同检索入口\n\n本条是增量导航，不声称生成知识索引已更新。场景/时间规则、来源边界、包粒度比较、任务4前置条件见下列合同、报告及最终机器回执。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "docs/ARCHITECTURE.md",
+    "before_sha256": "1e861d3c1908e8f4a46eef949532f67a9bd059edea635b8c8d40a6db03bac0d4",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 外围合同层\n\n隔离JSON记录/校验层只连接现有接口语义，不修改核心世界模型或原生AirFogSim。六类职责及版本策略见正式合同§5；尚无新生命周期执行器。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "docs/RESEARCH_STATUS.md",
+    "before_sha256": "5be0a8fbcf35709c46820591109eb4e025a5309673e0bbafb033f03839704911",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 任务3有界交付\n\n确定规则已配置化，35项合同/回归通过；科研参数和物理无线仍阻塞。逻辑RSU不证明覆盖，工程夹具不证明真实多车数据，任务4/正式训练未开始。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "docs/EXPERIMENT_INDEX.md",
+    "before_sha256": "5bac1ede9a16f581047ec51ea149a019364071a80ab617876565d5ebd7ff36e8",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 合成合同验收入口\n\nPIJWM-R2-08-SCENARIO-CONTRACT-20261027：CPU合成25+8+2测试，非正式性能；配置/源码SHA和复现命令见最终回执。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "docs/RESULTS_INDEX.md",
+    "before_sha256": "2f0aae80034498b07d040f02601bf427dea1fe127056a4cbaadea9a54051c334",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — R2-08 仅软件合同结果\n\nPASS_CONTRACT_ONLY；真实同步/覆盖/感知效果未通过，多时隙交付NOT_RUN。初次33项和最终35项回执分开保留，不当成训练结果。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "docs/PIJWM_IMPLEMENTATION_TRACKER.md",
+    "before_sha256": "36861eb86c38787f88d2c0b2125f88fa2a3c23dbb711f6b522bd8007da94d74d",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — STEP R2-08 — 场景合同与可扩展接口\n\n任务3已交付确定规则、待决入口、六类记录和35项CPU验收。任务4已有接口基础，但累计/包交付/完成/超时未实现，参数和物理服务待审；停止不自动扩展。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  },
+  {
+    "path": "docs/implementation_records/README.md",
+    "before_sha256": "6f78f412e8575670f404806a9c72833ac19913d58f251170d30484ee4fb9e035",
+    "prefix": "<!-- PIJWM R2-08 2026-10-27 -->\n## 2026-10-27 — STEP R2-08 — 场景合同与接口记录\n\n场景冻结内容、工程夹具、待决参数、兼容性、验收和停止条件集中在本轮实施报告；最终机器入口为final_acceptance_v2/result.json。\n\n合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。\n<!-- END PIJWM R2-08 -->\n\n"
+  }
+]

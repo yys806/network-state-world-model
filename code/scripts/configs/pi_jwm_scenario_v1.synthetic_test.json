@@ -1,0 +1,280 @@
+{
+  "contract_version": "PIJWM-Scenario-Contract-v1",
+  "profile_type": "synthetic_contract_test",
+  "frozen_scope": {
+    "perception_sources": [
+      "vehicle",
+      "uav"
+    ],
+    "modality": "lidar",
+    "perception_task": "cooperative_3d_detection",
+    "single_target_observation": true,
+    "uav_trajectory": "preset",
+    "logical_rsu_count": 1,
+    "logical_service": "all_regions",
+    "physical_coverage_implied": false,
+    "compute_resources": "fixed",
+    "dag": "fixed",
+    "route": "fixed",
+    "perception_pipeline": "fixed",
+    "optimized_actions": [
+      "packet_selection",
+      "rb_allocation"
+    ],
+    "observation_period_s": 0.1
+  },
+  "units": {
+    "time": "s",
+    "size": "byte"
+  },
+  "extensions": {
+    "rgb": false,
+    "multiple_rsus": false,
+    "dynamic_compute": false,
+    "dag_optimization": false,
+    "route_optimization": false
+  },
+  "parameters": {
+    "vehicle_count": 2,
+    "uav_count": 1,
+    "regions": [
+      {
+        "region_id": "region_A",
+        "bounds_xy_m": [
+          0,
+          0,
+          300,
+          600
+        ],
+        "arrival_probability": 0.7
+      },
+      {
+        "region_id": "region_B",
+        "bounds_xy_m": [
+          300,
+          0,
+          600,
+          600
+        ],
+        "arrival_probability": 0.4
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "vehicle_0/synthetic_lidar",
+        "node_id": "vehicle_0",
+        "node_type": "vehicle",
+        "sensor_id": "vehicle_0/synthetic_lidar",
+        "modality": "lidar",
+        "data_provenance": {
+          "kind": "synthetic_fixture",
+          "source_ref": "R2-08 synthetic fixture; no real features",
+          "time_basis": "simulation_seconds",
+          "physical_sync_status": "NOT_APPLICABLE",
+          "evidence_ref": null
+        },
+        "trajectory_origin": "preset_synthetic",
+        "trajectory_ref": "R2-08 preset positions; not dataset replay"
+      },
+      {
+        "source_id": "vehicle_1/synthetic_lidar",
+        "node_id": "vehicle_1",
+        "node_type": "vehicle",
+        "sensor_id": "vehicle_1/synthetic_lidar",
+        "modality": "lidar",
+        "data_provenance": {
+          "kind": "synthetic_fixture",
+          "source_ref": "R2-08 synthetic fixture; no real features",
+          "time_basis": "simulation_seconds",
+          "physical_sync_status": "NOT_APPLICABLE",
+          "evidence_ref": null
+        },
+        "trajectory_origin": "preset_synthetic",
+        "trajectory_ref": "R2-08 preset positions; not dataset replay"
+      },
+      {
+        "source_id": "UAV_0/synthetic_lidar",
+        "node_id": "UAV_0",
+        "node_type": "uav",
+        "sensor_id": "UAV_0/synthetic_lidar",
+        "modality": "lidar",
+        "data_provenance": {
+          "kind": "synthetic_fixture",
+          "source_ref": "R2-08 synthetic fixture; no real features",
+          "time_basis": "simulation_seconds",
+          "physical_sync_status": "NOT_APPLICABLE",
+          "evidence_ref": null
+        },
+        "trajectory_origin": "preset_synthetic",
+        "trajectory_ref": "R2-08 preset positions; not dataset replay"
+      }
+    ],
+    "rsu_position_m": [
+      300,
+      300,
+      25
+    ],
+    "allowed_total_latency_s": 0.35,
+    "feature_preparation_delay_s": 0.04,
+    "internal_scheduling_interval_s": 0.03,
+    "feature_packet_granularity": "source_complete",
+    "spatial_block_contract_ref": null,
+    "rb_count": 50,
+    "coverage_status": "SYNTHETIC_NO_PHYSICAL_CLAIM",
+    "rb_sharing_policy": "exclusive_fixture",
+    "same_time_event_policy": "finite_distinct_events_fixture"
+  },
+  "pending_researcher_decisions": [
+    "regions_and_bounds",
+    "real_synthetic_source_mapping",
+    "feature_packet_granularity",
+    "per_region_arrival_probability",
+    "allowed_total_latency",
+    "feature_preparation_delay",
+    "internal_scheduling_interval",
+    "rsu_position_and_physical_coverage",
+    "rb_budget_and_sharing",
+    "same_time_event_order"
+  ],
+  "engineering_assumptions": [
+    {
+      "path": "parameters.vehicle_count",
+      "value": 2,
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.uav_count",
+      "value": 1,
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.regions",
+      "value": [
+        {
+          "region_id": "region_A",
+          "bounds_xy_m": [
+            0,
+            0,
+            300,
+            600
+          ],
+          "arrival_probability": 0.7
+        },
+        {
+          "region_id": "region_B",
+          "bounds_xy_m": [
+            300,
+            0,
+            600,
+            600
+          ],
+          "arrival_probability": 0.4
+        }
+      ],
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.sources",
+      "value": [
+        {
+          "source_id": "vehicle_0/synthetic_lidar",
+          "node_id": "vehicle_0",
+          "node_type": "vehicle",
+          "sensor_id": "vehicle_0/synthetic_lidar",
+          "modality": "lidar",
+          "data_provenance": {
+            "kind": "synthetic_fixture",
+            "source_ref": "R2-08 synthetic fixture; no real features",
+            "time_basis": "simulation_seconds",
+            "physical_sync_status": "NOT_APPLICABLE",
+            "evidence_ref": null
+          },
+          "trajectory_origin": "preset_synthetic",
+          "trajectory_ref": "R2-08 preset positions; not dataset replay"
+        },
+        {
+          "source_id": "vehicle_1/synthetic_lidar",
+          "node_id": "vehicle_1",
+          "node_type": "vehicle",
+          "sensor_id": "vehicle_1/synthetic_lidar",
+          "modality": "lidar",
+          "data_provenance": {
+            "kind": "synthetic_fixture",
+            "source_ref": "R2-08 synthetic fixture; no real features",
+            "time_basis": "simulation_seconds",
+            "physical_sync_status": "NOT_APPLICABLE",
+            "evidence_ref": null
+          },
+          "trajectory_origin": "preset_synthetic",
+          "trajectory_ref": "R2-08 preset positions; not dataset replay"
+        },
+        {
+          "source_id": "UAV_0/synthetic_lidar",
+          "node_id": "UAV_0",
+          "node_type": "uav",
+          "sensor_id": "UAV_0/synthetic_lidar",
+          "modality": "lidar",
+          "data_provenance": {
+            "kind": "synthetic_fixture",
+            "source_ref": "R2-08 synthetic fixture; no real features",
+            "time_basis": "simulation_seconds",
+            "physical_sync_status": "NOT_APPLICABLE",
+            "evidence_ref": null
+          },
+          "trajectory_origin": "preset_synthetic",
+          "trajectory_ref": "R2-08 preset positions; not dataset replay"
+        }
+      ],
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.rsu_position_m",
+      "value": [
+        300,
+        300,
+        25
+      ],
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.allowed_total_latency_s",
+      "value": 0.35,
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.feature_preparation_delay_s",
+      "value": 0.04,
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.internal_scheduling_interval_s",
+      "value": 0.03,
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.feature_packet_granularity",
+      "value": "source_complete",
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.rb_count",
+      "value": 50,
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.coverage_status",
+      "value": "SYNTHETIC_NO_PHYSICAL_CLAIM",
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic test, not an approved research value"
+    },
+    {
+      "path": "parameters.rb_sharing_policy",
+      "value": "exclusive_fixture",
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic policy, not a research decision"
+    },
+    {
+      "path": "parameters.same_time_event_policy",
+      "value": "finite_distinct_events_fixture",
+      "reason": "ENGINEERING_FIXTURE_ONLY: explicit synthetic policy, not a research decision"
+    }
+  ]
+}

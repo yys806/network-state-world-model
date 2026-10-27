@@ -1,0 +1,21 @@
+{
+  "baseline_git_head": "f63ea82f0a04734f03fc441bbd401973aa5db914",
+  "branch": "main",
+  "files": {
+    "code/src/pi_jwm/scenario_contract_v1.py": "e7eeb9d69e81f1273ec03d0ee670cc43b96aa26d76cbc98b65a5e12f439185be",
+    "code/tests/test_scenario_contract_v1.py": "fcfcc1a5d9c8ddcb4e4946ec8665c02cd5c43c77e6aa42526ec88dfbae6e3dd2",
+    "code/scripts/audit_pi_jwm_scenario_contract_r2_08.py": "1beb239d59087a6814014af61e1d8886251dc2ce11d271f0db518913a314396b",
+    "code/scripts/configs/pi_jwm_scenario_v1.schema.json": "180efab97ef615fd5390f3873a5534b3ab910a6e616615d7c452ad554b41d8f0",
+    "code/scripts/configs/pi_jwm_scenario_v1.pending.json": "35846a7a87db458c64854eb7284fb341139636c78d18012c84688e3c48addad6",
+    "code/scripts/configs/pi_jwm_scenario_v1.synthetic_test.json": "6f9d59b224af6c781e8cef3848375c602abb048b63fe00956c2d7dea0218e52c",
+    "code/scripts/configs/pi_jwm_scenario_interfaces_v1.schema.json": "c64277fe2696e9e9a3d0b415dbadd9066f32b6ca995552b41d5819c576e0fd19",
+    "code/src/pi_jwm/v2u4real_airfogsim_adapter_v1.py": "0d7722ac7a6e1febaa0f7052f78cdf92b9cc8ad1edb9ab1978bfeae3d48a68ae",
+    "code/src/pi_jwm/v2u4real_perception_interface_v1.py": "7685af9eb9a07daedacf34a1b2dcd8a3ddb9c8ef1c11bfcb5ee4cec247e60aa2",
+    "code/src/pi_jwm/airfogsim_service_interface_v1.py": "8519d36e123e03373b8c99927639f9165068bee115e85e94da3dd4e359b68f8e",
+    "code/src/pi_jwm/v2u4real_interface_v1.py": "ca7f7d11e596272af1844d669d712fd967ee9a0314cc7bce80fa2ab185cc6975"
+  },
+  "read_only_authority": {
+    "D:\\shen\\OB\\科研\\PKU\\PIJWM\\PIJWM\\新场景下训练前任务书.md": "9df6fe58b9fb563f87bded2744cfe2243f67b7f0c57d0dd1e7a24bdbdefafa40",
+    "D:\\shen\\OB\\科研\\PKU\\PIJWM\\组会笔记\\1028组会.md": "5399a4b4519b7b5b1b6427a057e1837e622208a614fb9ca33c14163906fa3144"
+  }
+}

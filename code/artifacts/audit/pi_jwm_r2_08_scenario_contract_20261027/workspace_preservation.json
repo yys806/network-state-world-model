@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "baseline_items": 40,
+  "method": "strip only manifest prefixes; compare all original SHA/deletions",
+  "deleted_process_files_restored": false
+}

@@ -1,3 +1,11 @@
+<!-- PIJWM R2-08 2026-10-27 -->
+## 2026-10-27 — R2-08 场景合同与接口
+
+新增四份配置/Schema、scenario_contract_v1、专项测试/验收脚本和正式合同。35项通过；参数仍待研究者确认，不实现完整生命周期。
+
+合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。
+<!-- END PIJWM R2-08 -->
+
 <!-- V2U4REAL R2-07 2026-10-27 -->
 ## 2026-10-27 — R2-07 AirFogSim专项接口审计
 

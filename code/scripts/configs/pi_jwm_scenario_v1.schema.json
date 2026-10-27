@@ -1,0 +1,466 @@
+{
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "const": "PIJWM-Scenario-Contract-v1"
+    },
+    "profile_type": {
+      "enum": [
+        "formal_pending",
+        "synthetic_contract_test"
+      ]
+    },
+    "frozen_scope": {
+      "type": "object",
+      "properties": {
+        "perception_sources": {
+          "const": [
+            "vehicle",
+            "uav"
+          ]
+        },
+        "modality": {
+          "const": "lidar"
+        },
+        "perception_task": {
+          "const": "cooperative_3d_detection"
+        },
+        "single_target_observation": {
+          "const": true
+        },
+        "uav_trajectory": {
+          "const": "preset"
+        },
+        "logical_rsu_count": {
+          "const": 1
+        },
+        "logical_service": {
+          "const": "all_regions"
+        },
+        "physical_coverage_implied": {
+          "const": false
+        },
+        "compute_resources": {
+          "const": "fixed"
+        },
+        "dag": {
+          "const": "fixed"
+        },
+        "route": {
+          "const": "fixed"
+        },
+        "perception_pipeline": {
+          "const": "fixed"
+        },
+        "optimized_actions": {
+          "const": [
+            "packet_selection",
+            "rb_allocation"
+          ]
+        },
+        "observation_period_s": {
+          "const": 0.1
+        }
+      },
+      "required": [
+        "perception_sources",
+        "modality",
+        "perception_task",
+        "single_target_observation",
+        "uav_trajectory",
+        "logical_rsu_count",
+        "logical_service",
+        "physical_coverage_implied",
+        "compute_resources",
+        "dag",
+        "route",
+        "perception_pipeline",
+        "optimized_actions",
+        "observation_period_s"
+      ],
+      "additionalProperties": false
+    },
+    "units": {
+      "const": {
+        "time": "s",
+        "size": "byte"
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "properties": {
+        "rgb": {
+          "const": false
+        },
+        "multiple_rsus": {
+          "const": false
+        },
+        "dynamic_compute": {
+          "const": false
+        },
+        "dag_optimization": {
+          "const": false
+        },
+        "route_optimization": {
+          "const": false
+        }
+      },
+      "required": [
+        "rgb",
+        "multiple_rsus",
+        "dynamic_compute",
+        "dag_optimization",
+        "route_optimization"
+      ],
+      "additionalProperties": false
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "vehicle_count": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uav_count": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "regions": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "region_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "bounds_xy_m": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                  },
+                  "arrival_probability": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  }
+                },
+                "required": [
+                  "region_id",
+                  "bounds_xy_m",
+                  "arrival_probability"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sources": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "node_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "node_type": {
+                    "enum": [
+                      "vehicle",
+                      "uav"
+                    ]
+                  },
+                  "sensor_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "modality": {
+                    "const": "lidar"
+                  },
+                  "data_provenance": {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "enum": [
+                          "real_train_sample",
+                          "synthetic_fixture",
+                          "simulation_generated",
+                          "world_model_prediction",
+                          "mock_output"
+                        ]
+                      },
+                      "source_ref": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "time_basis": {
+                        "enum": [
+                          "simulation_seconds",
+                          "dataset_identifier_unmapped",
+                          "verified_physical_mapping"
+                        ]
+                      },
+                      "physical_sync_status": {
+                        "enum": [
+                          "NOT_ESTABLISHED",
+                          "NOT_APPLICABLE",
+                          "VERIFIED"
+                        ]
+                      },
+                      "evidence_ref": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "source_ref",
+                      "time_basis",
+                      "physical_sync_status",
+                      "evidence_ref"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "trajectory_origin": {
+                    "enum": [
+                      "preset_synthetic",
+                      "dataset_pose_unverified",
+                      "verified_replay"
+                    ]
+                  },
+                  "trajectory_ref": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "source_id",
+                  "node_id",
+                  "node_type",
+                  "sensor_id",
+                  "modality",
+                  "data_provenance",
+                  "trajectory_origin",
+                  "trajectory_ref"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rsu_position_m": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "allowed_total_latency_s": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "feature_preparation_delay_s": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "internal_scheduling_interval_s": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "feature_packet_granularity": {
+          "anyOf": [
+            {
+              "enum": [
+                "source_complete",
+                "fixed_spatial_blocks"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "spatial_block_contract_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rb_count": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "coverage_status": {
+          "enum": [
+            "BLOCKED_NOT_VERIFIED",
+            "SYNTHETIC_NO_PHYSICAL_CLAIM"
+          ]
+        },
+        "rb_sharing_policy": {
+          "anyOf": [
+            {
+              "const": "exclusive_fixture"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "same_time_event_policy": {
+          "anyOf": [
+            {
+              "const": "finite_distinct_events_fixture"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "vehicle_count",
+        "uav_count",
+        "regions",
+        "sources",
+        "rsu_position_m",
+        "allowed_total_latency_s",
+        "feature_preparation_delay_s",
+        "internal_scheduling_interval_s",
+        "feature_packet_granularity",
+        "spatial_block_contract_ref",
+        "rb_count",
+        "coverage_status",
+        "rb_sharing_policy",
+        "same_time_event_policy"
+      ],
+      "additionalProperties": false
+    },
+    "pending_researcher_decisions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 9,
+      "uniqueItems": true
+    },
+    "engineering_assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {},
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "value",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "contract_version",
+    "profile_type",
+    "frozen_scope",
+    "units",
+    "extensions",
+    "parameters",
+    "pending_researcher_decisions",
+    "engineering_assumptions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pi-jwm:scenario-config:v1"
+}

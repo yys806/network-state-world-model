@@ -1,3 +1,11 @@
+<!-- PIJWM R2-08 2026-10-27 -->
+## 2026-10-27 — R2-08 时间与来源合同
+
+观测、任务生成、准备ready、截止、动作与服务区间、输出/完成分别记录。秒/byte统一，Mbps显式换算；容量记录delivered=null。PerceptionResult只接受外部完整输入声明，合成手写回执不是真实交付。未来事实/标签禁止在线引用，预测另记发出时刻。
+
+合同：docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md；报告：docs/implementation_records/STEP_R2_08_SCENARIO_CONTRACT_INTERFACES.md；最终验收：code/artifacts/audit/pi_jwm_r2_08_scenario_contract_20261027/final_acceptance_v2/result.json。无数据集访问、GPU、训练或locked_test；只完成任务3合同，不自动开始任务4。
+<!-- END PIJWM R2-08 -->
+
 <!-- V2U4REAL R2-07 2026-10-27 -->
 ## 2026-10-27 — R2-07瞬时服务与交付分开
 
