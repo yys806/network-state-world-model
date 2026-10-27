@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-04C 2026-10-27 -->
+## 2026-10-27 — 研究者决策：V2U4Real 标签来源采用方案 B
+
+研究者在 R2-04C 指令中明确选择以固定官方转换器实际行为为准：同 ID 由 UAV 覆盖车辆，车辆独有和 UAV 独有对象均保留；按原始键语义匹配，不规范化 ID、不平均框、不按几何误差仲裁。该决定只冻结标签来源优先级，是 implementation-faithful policy（实现行为复现策略），不宣称论文文字与代码完全一致，也不证明 UAV 更准确。
+
+正式合同：docs/contracts/PIJWM_V2U4REAL_LABEL_MERGE_POLICY_V1.md；五帧证据：code/artifacts/audit/v2u4real_r2_04c_20261027/result.json。角度/字段完整语义、尺寸差异和物理轴向/标定/同步仍未解决。不得自动进入 R2-05；未用 GPU、训练或 locked_test。任何优先级或匹配规则变更须研究者重新授权。
+<!-- END V2U4REAL R2-04C -->
+
 <!-- V2U4REAL R2-01 2026-10-26 -->
 ## 2026-10-26 — 真实训练数据与官方资料准备
 

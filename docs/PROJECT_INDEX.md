@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-04C 2026-10-27 -->
+## 2026-10-27 — STEP R2-04C 官方标签合并规则冻结
+
+方案B已由研究者明确选择并冻结：同ID冲突时UAV覆盖车辆，车辆独有和UAV独有对象保留。该规则是implementation-faithful policy，不声称与论文所有文字一致。五帧内存模拟通过，原始YAML未写回；不启动R2-05、GPU或locked_test。
+
+详见 [R2-04C实施记录](implementation_records/STEP_R2_04C_V2U4REAL_LABEL_MERGE_POLICY.md) 和正式合同 `docs/contracts/PIJWM_V2U4REAL_LABEL_MERGE_POLICY_V1.md`；机器结果 `code/artifacts/audit/v2u4real_r2_04c_20261027/result.json`。
+<!-- END V2U4REAL R2-04C -->
+
 <!-- V2U4REAL R2-04B 2026-10-26 -->
 ## 2026-10-26 — STEP R2-04B 五帧内部几何审计完成
 

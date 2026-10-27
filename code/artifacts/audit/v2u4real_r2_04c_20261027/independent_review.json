@@ -1,0 +1,213 @@
+{
+  "status": "PASS",
+  "per_object_payload_and_provenance": "PASS",
+  "raw_files_checked": 20,
+  "raw_files": [
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.2.pcd",
+      "sha256": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.2.yaml",
+      "sha256": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+      "sha256": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+      "sha256": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.4.pcd",
+      "sha256": "9fe8f9626e77daec86f6d16e7e8de7dacafd968ed625e1492fceddd50d1e8f34",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.4.yaml",
+      "sha256": "38fbd847b2dc7c40d3270e0577656e257e409ef8e3c521ccb5429a17cd5dabef",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.4.pcd",
+      "sha256": "cd7e84c29168bdfc2bd6a1b5e0a26dbb4d209b4ea701fe8083511f6705035304",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.4.yaml",
+      "sha256": "2ac9ebd2adbbed94c9f5d088bce4da206d9267e4da2fadc62fcd30880c5a52f9",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.6.pcd",
+      "sha256": "23c6531e928c548303a4dde3c880c1cbff59772bea1e87d6fc979fdf12cd5d94",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.6.yaml",
+      "sha256": "6ba19b60a6d8a824fc041d8dd46e590160b9431dceaf6f509630e3490d5c6c64",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.6.pcd",
+      "sha256": "8bfaf83f354ad39919b99ab81cd149a4b32199323ad465479238cd0538ca0a67",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.6.yaml",
+      "sha256": "10e2691d60e153f07188578bc5039e7106a344ba1064d70c9fc3f54391531fba",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.2.pcd",
+      "sha256": "3a2f8e09d19a7d0a102657b08087363cc4c19d867b5417249c2f7b4d9f4e4b4c",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.2.yaml",
+      "sha256": "ba17f43d745697dccce276ddef9e682074a109609fc3381187ccdc1f07ac1e75",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.2.pcd",
+      "sha256": "57e394097854809d2397843a5db779d96e75fadd76a7c884ee78c840845db674",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.2.yaml",
+      "sha256": "e3d0acfdf4e51f836cd609f35913cbd45d3e1d0cec6eefb29c29982661ef4bb7",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814591.6.pcd",
+      "sha256": "a233549b1c393b827b285b95229c7025d844970baca2209314346118f436f4c8",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.6.yaml",
+      "sha256": "363276047d1049267dd65928407f8b218a027808793fe0bc1d397f273e7cdd99",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814591.6.pcd",
+      "sha256": "e60c71ef15ab95f72327d17f9e89cf19055656c6e604b00ab2c9f790430fb766",
+      "unchanged_from_R2_04B": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.6.yaml",
+      "sha256": "cdbe06034ced3427cd5a2456a1b01ae58f08cc5efd8814834f639dac3e2b927f",
+      "unchanged_from_R2_04B": true
+    }
+  ],
+  "prior_R2_04A_B_artifacts_unchanged": [
+    {
+      "path": "code/artifacts/audit/v2u4real_r2_04a_20261026/result.json",
+      "sha256": "f8db00401a95dd6600c51ab3765d15113542c941d22661d9132001c3e1c111fc",
+      "matches_HEAD_canonical_LF": true
+    },
+    {
+      "path": "code/artifacts/audit/v2u4real_r2_04a_20261026/config.json",
+      "sha256": "f24166c9fea85100a2ca74a31fa421e985f3595fb07a573181ee4c6f820e797a",
+      "matches_HEAD_canonical_LF": true
+    },
+    {
+      "path": "code/artifacts/audit/v2u4real_r2_04a_20261026/run.log",
+      "sha256": "b1ba579a96ebd74d3c193632fc1b60258a64f503dea8396cf1efc1870f29edf4",
+      "matches_HEAD_canonical_LF": true
+    },
+    {
+      "path": "code/artifacts/audit/v2u4real_r2_04a_20261026/validation.json",
+      "sha256": "2bb73e0fabd67eae06b884cf59ab71fdd06c3e1d504909e7fed2d90a5eed94c3",
+      "matches_HEAD_canonical_LF": true
+    },
+    {
+      "path": "code/artifacts/audit/v2u4real_r2_04b_20261026/result.json",
+      "sha256": "7a76f8b6ea39117d3d9dbad9efeeda63298afdaf5f8e1bca3dc4a4eb4ecfc06f",
+      "matches_HEAD_canonical_LF": true
+    },
+    {
+      "path": "code/artifacts/audit/v2u4real_r2_04b_20261026/config.json",
+      "sha256": "2ebbe7ad91cd15be19fbec4092b3971301321a8e62c95dac9127393473102983",
+      "matches_HEAD_canonical_LF": true
+    },
+    {
+      "path": "code/artifacts/audit/v2u4real_r2_04b_20261026/run.log",
+      "sha256": "5c5da13c17d211d7821771b519b4b88c25188875316bb0289ca74d8d1a86e7a8",
+      "matches_HEAD_canonical_LF": true
+    },
+    {
+      "path": "code/artifacts/audit/v2u4real_r2_04b_20261026/validation.json",
+      "sha256": "a8770ba7c6ff2c048e517c1a4e77172ce6370bc6e97e64bc149109225c5de854",
+      "matches_HEAD_canonical_LF": true
+    }
+  ],
+  "official_source_unchanged": {
+    "repository": "https://github.com/VjiaLi/V2U4Real",
+    "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+    "manifest_sha256": "325971861da520c6efdf3f5d08a07bf1d6b7099ab9afa065b030a945d28d4541",
+    "files": [
+      {
+        "path": "code/reference/V2U4Real/LICENSE",
+        "sha256": "20bccc4aaccdbdf80960af7ed64ed036ed449b3f57f61e04860a91dcc5010639",
+        "git_blob": "85dcf41ee15c7c2a6f1eb2678aae46b54b6fa6bf",
+        "bytes": 1063
+      },
+      {
+        "path": "code/reference/V2U4Real/README.md",
+        "sha256": "480d96479f60a4c922300e2ca31239b356d6c59e48785e2818b05f7b759aa55f",
+        "git_blob": "7073480dc78ad529068e3eda4fffe08955e88dbe",
+        "bytes": 12299
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+        "sha256": "5b88ef224db616a7a915041b959b1e907fb36094537f7b877bc09351ff57bb29",
+        "git_blob": "e78dd4607d48f740e1314c2fff8341e024d46a09",
+        "bytes": 7032
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+        "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+        "git_blob": "a6b336057e94726b02a121c74c0225c5312db127",
+        "bytes": 31642
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+        "sha256": "3a823f538315531b0feca98ea4351e1225088a5173bd36345c96bd92dea611df",
+        "git_blob": "9f27249d6c318cc37ceaf86463d43998808044f9",
+        "bytes": 4848
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+        "sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+        "git_blob": "8318303679fb8f700bca7bc8ddcabb0b36f5c641",
+        "bytes": 5502
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+        "sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+        "git_blob": "d0a47873b6631caca6c625e66bf3304b61de1a70",
+        "bytes": 7291
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+        "sha256": "0d5951f26d590c8c8c2e7b67167f085c7eaaa478a713b2777aadf29b5164a90e",
+        "git_blob": "8da4ff82d1c60b6a3030c9843087238aa9408618",
+        "bytes": 5776
+      },
+      {
+        "path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+        "sha256": "aea708b371977015deb5fbe45ad3ed19a912b34d2cc66cf0482f7feff63f19aa",
+        "git_blob": "320e3f31c2f2b402f121e6514b6db65cc148d47c",
+        "bytes": 25339
+      }
+    ],
+    "identity_basis": "pinned local partial snapshot + manifest SHA256/Git blobs; not a fresh remote attestation"
+  },
+  "gpu_used": false,
+  "locked_test_accessed": false
+}

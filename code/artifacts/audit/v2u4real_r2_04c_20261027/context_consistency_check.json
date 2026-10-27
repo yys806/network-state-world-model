@@ -1,0 +1,28 @@
+{
+  "status": "PASS_FOR_TASK_SCOPE",
+  "updated": [
+    "00",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08"
+  ],
+  "reviewed_unchanged": [
+    "01",
+    "02"
+  ],
+  "researcher_decision": "\u65b9\u6848B\uff1a\u4ee5\u56fa\u5b9a\u5b98\u65b9\u8f6c\u6362\u5668\u5b9e\u9645\u884c\u4e3a\u4e3a\u51c6\uff0c\u7814\u7a76\u8005\u660e\u786e\u9009\u62e9\u5e76\u5728\u6b63\u5f0f\u5408\u540c\u4e2d\u51bb\u7ed3\u3002",
+  "new_scientific_decision_by_codex": false,
+  "policy_type": "implementation-faithful_policy",
+  "new_boundary": "same-ID UAV overwrites vehicle; single-side objects retained; no field semantic or physical calibration resolution",
+  "generated_index": "BLOCKED; no write-mode rebuild",
+  "root_process_files": "remain absent; task process recorded in authority plan and implementation record",
+  "authority_record_updated": "\u8bb0\u5f55/PIJWM\u4e3b\u6587\u6863.md; explicit researcher policy B, not a Codex scientific decision",
+  "structural_validator": {
+    "validated_file_count": 9,
+    "errors": []
+  },
+  "manual_experiment_and_question_route_validators": "PASS"
+}

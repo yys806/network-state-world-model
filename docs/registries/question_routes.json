@@ -2,6 +2,22 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-V2U4REAL-R2-04C-LABEL-MERGE",
+      "keywords": ["R2-04C", "方案B", "标签合并", "UAV优先", "同ID覆盖", "标签合同", "R2-05条件"],
+      "title": "V2U4Real official label merge policy and five-frame evidence",
+      "summary": "研究者已冻结implementation-faithful方案B：同ID由UAV覆盖车辆，单端对象保留；五帧内存模拟与输入SHA检查通过。",
+      "primary_sources": [
+        "docs/contracts/PIJWM_V2U4REAL_LABEL_MERGE_POLICY_V1.md",
+        "docs/implementation_records/STEP_R2_04C_V2U4REAL_LABEL_MERGE_POLICY.md"
+      ],
+      "verification_sources": [
+        "code/scripts/audit_v2u4real_r2_04c_label_merge_policy_v1.py",
+        "code/artifacts/audit/v2u4real_r2_04c_20261027/result.json",
+        "code/artifacts/audit/v2u4real_r2_04c_20261027/acceptance.json"
+      ],
+      "claim_boundary": "Source-priority policy only; no field semantic or physical alignment acceptance; R2-05 requires separate authorization"
+    },
+    {
       "id": "ROUTE-V2U4REAL-R2-04B-MULTIFRAME",
       "keywords": ["R2-04B", "五帧几何一致性", "发布坐标约定", "预定义轴变换", "同ID中心", "标签优先级", "R2-05条件"],
       "title": "V2U4Real five-frame published coordinate contract and internal geometry evidence",

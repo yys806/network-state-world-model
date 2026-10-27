@@ -1,0 +1,34 @@
+{
+  "status": "PASS_POLICY_AND_REAL_SAMPLE_AUDIT",
+  "policy_status": "FROZEN_BY_RESEARCHER_CHOICE",
+  "source_contract_status": "PASS",
+  "input_integrity_status": "PASS",
+  "label_merge_status": "PASS",
+  "physical_alignment_status": "NOT_ESTABLISHED",
+  "task_execution_status": "COMPLETED",
+  "test_count": 77,
+  "test_groups": {
+    "synthetic": 10,
+    "real_five_frames": 6,
+    "regression": 61
+  },
+  "failed": 0,
+  "skipped": 0,
+  "vehicle_overwritten_total": 8,
+  "merged_output_total": 28,
+  "source_counts": {
+    "vehicle_final": 20,
+    "uav_final": 8
+  },
+  "all_set_checks_pass": true,
+  "all_input_hashes_unchanged": true,
+  "labels_written": false,
+  "r2_05_started": false,
+  "gpu_used": false,
+  "locked_test_accessed": false,
+  "project_index_gate": "BLOCKED",
+  "push_attempted": false,
+  "annotation_conversion": "unchanged official load_annotation_objects; official_code_interpretation_only",
+  "final_payload_and_raw_provenance_review": "PASS",
+  "raw_input_file_count_verified_against_R2_04B": 20
+}

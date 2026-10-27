@@ -1,0 +1,3289 @@
+{
+  "schema_version": "V2U4Real-R2-04C-v1",
+  "policy_decision": "B",
+  "policy_status": "FROZEN_BY_RESEARCHER_CHOICE",
+  "policy_type": "implementation-faithful_policy",
+  "policy_boundary": "Reproduces fixed official converter behavior; does not claim consistency with every paper wording.",
+  "dataset_version": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+  "split": "train",
+  "scene": "2025-07-18-12-53_2",
+  "agent_vehicle": "1",
+  "agent_uav": "2",
+  "sensor": "ouster",
+  "fixed_keys": [
+    "1752814590.2",
+    "1752814590.4",
+    "1752814590.6",
+    "1752814591.2",
+    "1752814591.6"
+  ],
+  "official_source": {
+    "repository": "https://github.com/VjiaLi/V2U4Real",
+    "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+    "path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+    "sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+    "snapshot_identity": {
+      "repository": "https://github.com/VjiaLi/V2U4Real",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+      "manifest_sha256": "325971861da520c6efdf3f5d08a07bf1d6b7099ab9afa065b030a945d28d4541",
+      "files": [
+        {
+          "path": "code/reference/V2U4Real/LICENSE",
+          "sha256": "20bccc4aaccdbdf80960af7ed64ed036ed449b3f57f61e04860a91dcc5010639",
+          "git_blob": "85dcf41ee15c7c2a6f1eb2678aae46b54b6fa6bf",
+          "bytes": 1063
+        },
+        {
+          "path": "code/reference/V2U4Real/README.md",
+          "sha256": "480d96479f60a4c922300e2ca31239b356d6c59e48785e2818b05f7b759aa55f",
+          "git_blob": "7073480dc78ad529068e3eda4fffe08955e88dbe",
+          "bytes": 12299
+        },
+        {
+          "path": "code/reference/V2U4Real/opencood/hypes_yaml/yaml_utils.py",
+          "sha256": "5b88ef224db616a7a915041b959b1e907fb36094537f7b877bc09351ff57bb29",
+          "git_blob": "e78dd4607d48f740e1314c2fff8341e024d46a09",
+          "bytes": 7032
+        },
+        {
+          "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+          "sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+          "git_blob": "a6b336057e94726b02a121c74c0225c5312db127",
+          "bytes": 31642
+        },
+        {
+          "path": "code/reference/V2U4Real/opencood/utils/pcd_utils.py",
+          "sha256": "3a823f538315531b0feca98ea4351e1225088a5173bd36345c96bd92dea611df",
+          "git_blob": "9f27249d6c318cc37ceaf86463d43998808044f9",
+          "bytes": 4848
+        },
+        {
+          "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+          "sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+          "git_blob": "8318303679fb8f700bca7bc8ddcabb0b36f5c641",
+          "bytes": 5502
+        },
+        {
+          "path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+          "sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+          "git_blob": "d0a47873b6631caca6c625e66bf3304b61de1a70",
+          "bytes": 7291
+        },
+        {
+          "path": "code/reference/V2U4Real/opencood/utils/vehicle_to_single.py",
+          "sha256": "0d5951f26d590c8c8c2e7b67167f085c7eaaa478a713b2777aadf29b5164a90e",
+          "git_blob": "8da4ff82d1c60b6a3030c9843087238aa9408618",
+          "bytes": 5776
+        },
+        {
+          "path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+          "sha256": "aea708b371977015deb5fbe45ad3ed19a912b34d2cc66cf0482f7feff63f19aa",
+          "git_blob": "320e3f31c2f2b402f121e6514b6db65cc148d47c",
+          "bytes": 25339
+        }
+      ],
+      "identity_basis": "pinned local partial snapshot + manifest SHA256/Git blobs; not a fresh remote attestation"
+    },
+    "source_lines": {
+      "start": 190,
+      "end": 199,
+      "text": [
+        "                merged_objs = {}",
+        "",
+        "                # ego \u4e0d\u9700\u8981\u53d8\u6362",
+        "                ego_objs = load_annotation_objects(ego_y)",
+        "                merged_objs.update(ego_objs)",
+        "",
+        "                # UAV \u8981\u53d8\u6362\u5230 ego \u5750\u6807",
+        "                uav_objs = load_annotation_objects(uav_y, transform=transform)",
+        "                for oid, obj in uav_objs.items():",
+        "                    merged_objs[oid] = obj  # UAV \u4f18\u5148\u8986\u76d6"
+      ]
+    },
+    "merge_semantics": {
+      "vehicle_first": "merged_objs.update(ego_objs)",
+      "uav_second": "for oid, obj in uav_objs.items(): merged_objs[oid] = obj",
+      "same_id_conflict": "UAV overwrites vehicle",
+      "key_normalization": "none"
+    },
+    "execution": {
+      "mode": "unchanged official function AST bodies with real NumPy/SciPy/PyYAML dependencies",
+      "functions": [
+        {
+          "function": "x_to_world",
+          "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+          "start_line": 13,
+          "end_line": 40,
+          "file_sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+          "ast_body_modified": false
+        },
+        {
+          "function": "x1_to_x2",
+          "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+          "start_line": 43,
+          "end_line": 78,
+          "file_sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+          "ast_body_modified": false
+        },
+        {
+          "function": "corner_to_center",
+          "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+          "start_line": 19,
+          "end_line": 78,
+          "file_sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+          "ast_body_modified": false
+        },
+        {
+          "function": "create_bbx",
+          "path": "code/reference/V2U4Real/opencood/utils/box_utils.py",
+          "start_line": 392,
+          "end_line": 416,
+          "file_sha256": "820ac498be2fa586ab2c797344d55dbd3681b6e3b21536ea00412990a9777657",
+          "ast_body_modified": false
+        },
+        {
+          "function": "load_annotation_objects",
+          "path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+          "start_line": 62,
+          "end_line": 116,
+          "file_sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b",
+          "ast_body_modified": false
+        }
+      ],
+      "converter_main_executed": false,
+      "point_application": "existing float64 transform_points; official converter uses torch projection and float32 NumPy conversion, not executed"
+    }
+  },
+  "runtime": {
+    "device": "CPU",
+    "python": "3.13.5",
+    "gpu_used": false,
+    "locked_test_accessed": false,
+    "r2_05_started": false,
+    "labels_written": false
+  },
+  "source_contract_status": "PASS",
+  "input_integrity_status": "PASS",
+  "label_merge_status": "PASS",
+  "physical_alignment_status": "NOT_ESTABLISHED",
+  "task_execution_status": "COMPLETED",
+  "frames": [
+    {
+      "frame_key": "1752814590.2",
+      "vehicle_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.2.yaml",
+        "bytes": 3592,
+        "sha256": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "camera1": "dict",
+          "camera2": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 6,
+        "object_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "read_status": "PASS"
+      },
+      "uav_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+        "bytes": 1390,
+        "sha256": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 2,
+        "object_ids": [
+          "1",
+          "2"
+        ],
+        "read_status": "PASS"
+      },
+      "raw_lidar_pose": {
+        "vehicle": [
+          162.4558620813,
+          -195.5474155993,
+          -3.0822680281,
+          -179.1582303045,
+          128.6537437347,
+          0.4917033974
+        ],
+        "uav": [
+          146.0642330580825,
+          -178.5034348014285,
+          -51.65063285498502,
+          -179.0519502518403,
+          131.9188901918,
+          0.9285541649206536
+        ]
+      },
+      "T_vehicle_from_uav": [
+        [
+          0.9983478553278967,
+          0.05682110500852777,
+          -0.008539425495851856,
+          23.96458833512483
+        ],
+        [
+          -0.05683087463771391,
+          0.9983834091073849,
+          -0.0009055976085431832,
+          -1.4441527244532009
+        ],
+        [
+          0.00847416368155659,
+          0.001389404450112016,
+          0.9999631283728273,
+          48.39092656962512
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_check": {
+        "shape": [
+          4,
+          4
+        ],
+        "finite": true,
+        "orthogonality_max_abs": 6.661338147750939e-16,
+        "determinant": 0.9999999999999998,
+        "determinant_abs_error": 2.220446049250313e-16,
+        "status": "PASS"
+      },
+      "annotation_conversion": "unchanged official load_annotation_objects; official_code_interpretation_only",
+      "vehicle_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "uav_ids": [
+        "1",
+        "2"
+      ],
+      "vehicle_id_types": [
+        "str",
+        "str",
+        "str",
+        "str",
+        "str",
+        "str"
+      ],
+      "uav_id_types": [
+        "str",
+        "str"
+      ],
+      "shared_ids": [
+        "1",
+        "2"
+      ],
+      "vehicle_only_ids": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "uav_only_ids": [],
+      "merged_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "counts": {
+        "vehicle_input": 6,
+        "uav_input": 2,
+        "shared": 2,
+        "vehicle_only": 4,
+        "uav_only": 0,
+        "merged_output": 6,
+        "vehicle_overwritten_by_uav": 2
+      },
+      "set_checks": {
+        "merged_equals_vehicle_union_uav": true,
+        "shared_ids_final_source_uav": true,
+        "vehicle_only_retained": true,
+        "uav_only_retained": true
+      },
+      "final_objects": {
+        "1": {
+          "final_source": "uav",
+          "object": {
+            "loc": [
+              0.49201155203279257,
+              -0.2854238580323889,
+              -0.9505409517719057
+            ],
+            "dims": [
+              4.9831789462349585,
+              2.067931991900108,
+              2.215565967417419
+            ],
+            "heading": 0.018617716138351958,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              0.4892412826,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.5121675768604206,
+              -0.05321566955961854,
+              -0.9541257180739957
+            ],
+            "obj_type": "Car",
+            "speed": 6.32278729453
+          },
+          "uav_input": {
+            "angle": [
+              -0.0376997505,
+              4.3242316981,
+              0.498576739
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.983179,
+              2.067932,
+              2.215566
+            ],
+            "location": [
+              -23.917775937430495,
+              -0.2454373288737487,
+              -49.140255242657965
+            ],
+            "obj_type": "Car",
+            "speed": 3.65229107258
+          },
+          "overwritten_vehicle": {
+            "angle": [
+              0.0,
+              0.4892412826,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.5121675768604206,
+              -0.05321566955961854,
+              -0.9541257180739957
+            ],
+            "obj_type": "Car",
+            "speed": 6.32278729453
+          },
+          "overwritten_vehicle_official_object": {
+            "loc": [
+              0.5121675768604206,
+              -0.05321566955961851,
+              -0.9541257180739958
+            ],
+            "dims": [
+              4.506838,
+              1.5785790000000002,
+              2.321422
+            ],
+            "heading": 0.00853887121805004,
+            "cls": "Vehicle"
+          },
+          "vehicle_official_object": {
+            "loc": [
+              0.5121675768604206,
+              -0.05321566955961851,
+              -0.9541257180739958
+            ],
+            "dims": [
+              4.506838,
+              1.5785790000000002,
+              2.321422
+            ],
+            "heading": 0.00853887121805004,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": {
+            "loc": [
+              0.49201155203279257,
+              -0.2854238580323889,
+              -0.9505409517719057
+            ],
+            "dims": [
+              4.9831789462349585,
+              2.067931991900108,
+              2.215565967417419
+            ],
+            "heading": 0.018617716138351958,
+            "cls": "Vehicle"
+          },
+          "interpretation": "official_code_interpretation_only"
+        },
+        "2": {
+          "final_source": "uav",
+          "object": {
+            "loc": [
+              16.43346771731731,
+              -1.6770160033113342,
+              -1.5034684212073515
+            ],
+            "dims": [
+              1.7277187401489724,
+              0.8372276782858288,
+              1.5003540148309327
+            ],
+            "heading": 0.03046274748160606,
+            "cls": "Cyclist"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -4.2063249006,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.155717243487587,
+              -1.4126849880295549,
+              -1.6344544275634691
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.05783832118
+          },
+          "uav_input": {
+            "angle": [
+              -0.0871966733,
+              5.002606796,
+              0.9961915008
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.727786,
+              0.837228,
+              1.500413
+            ],
+            "location": [
+              -7.928257563139877,
+              -0.7297369240945472,
+              -49.82803297945791
+            ],
+            "obj_type": "Cyclist",
+            "speed": 4.4077211334
+          },
+          "overwritten_vehicle": {
+            "angle": [
+              0.0,
+              -4.2063249006,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.155717243487587,
+              -1.4126849880295549,
+              -1.6344544275634691
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.05783832118
+          },
+          "overwritten_vehicle_official_object": {
+            "loc": [
+              17.155717243487587,
+              -1.4126849880295549,
+              -1.6344544275634691
+            ],
+            "dims": [
+              1.6945570000000032,
+              0.821663,
+              1.5676039999999998
+            ],
+            "heading": -0.07341421892409306,
+            "cls": "Cyclist"
+          },
+          "vehicle_official_object": {
+            "loc": [
+              17.155717243487587,
+              -1.4126849880295549,
+              -1.6344544275634691
+            ],
+            "dims": [
+              1.6945570000000032,
+              0.821663,
+              1.5676039999999998
+            ],
+            "heading": -0.07341421892409306,
+            "cls": "Cyclist"
+          },
+          "uav_official_object": {
+            "loc": [
+              16.43346771731731,
+              -1.6770160033113342,
+              -1.5034684212073515
+            ],
+            "dims": [
+              1.7277187401489724,
+              0.8372276782858288,
+              1.5003540148309327
+            ],
+            "heading": 0.03046274748160606,
+            "cls": "Cyclist"
+          },
+          "interpretation": "official_code_interpretation_only"
+        },
+        "3": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              71.40329617235176,
+              -0.206376276946106,
+              -1.6841315357101645
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876284,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -2.0133421833,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.923773,
+              2.42336,
+              2.091038
+            ],
+            "location": [
+              71.40329617235176,
+              -0.206376276946106,
+              -1.6841315357101647
+            ],
+            "obj_type": "Car",
+            "speed": 13.6736184128
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              71.40329617235176,
+              -0.206376276946106,
+              -1.6841315357101645
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876284,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "4": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              90.68066715628473,
+              3.7786368069577714,
+              -1.9385357211642553
+            ],
+            "dims": [
+              3.6340949999999976,
+              1.9804360000000003,
+              1.5787180000000003
+            ],
+            "heading": -3.130533384446674,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -179.3663505536,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              3.634095,
+              1.980436,
+              1.578718
+            ],
+            "location": [
+              90.68066715628473,
+              3.778636806957771,
+              -1.9385357211642553
+            ],
+            "obj_type": "Car",
+            "speed": 15.3244904732
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              90.68066715628473,
+              3.7786368069577714,
+              -1.9385357211642553
+            ],
+            "dims": [
+              3.6340949999999976,
+              1.9804360000000003,
+              1.5787180000000003
+            ],
+            "heading": -3.130533384446674,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "5": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              194.57968698756838,
+              3.6546051435406763,
+              -2.0395821611841685
+            ],
+            "dims": [
+              7.144670000000012,
+              2.933505,
+              2.8691239999999993
+            ],
+            "heading": -3.1151544364475665,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -178.4852017399,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              194.57968698756838,
+              3.6546051435406763,
+              -2.0395821611841685
+            ],
+            "obj_type": "Truck",
+            "speed": 5.986628549565013
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              194.57968698756838,
+              3.6546051435406763,
+              -2.0395821611841685
+            ],
+            "dims": [
+              7.144670000000012,
+              2.933505,
+              2.8691239999999993
+            ],
+            "heading": -3.1151544364475665,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "6": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              104.67661357672452,
+              -0.38567192607720635,
+              -1.6845901827709577
+            ],
+            "dims": [
+              7.144670000000008,
+              2.933505,
+              2.869124
+            ],
+            "heading": -0.013171082069451414,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -0.7546474142,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              104.67661357672453,
+              -0.38567192607720646,
+              -1.6845901827709577
+            ],
+            "obj_type": "Truck",
+            "speed": 11.0998721117
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              104.67661357672452,
+              -0.38567192607720635,
+              -1.6845901827709577
+            ],
+            "dims": [
+              7.144670000000008,
+              2.933505,
+              2.869124
+            ],
+            "heading": -0.013171082069451414,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        }
+      },
+      "raw_annotations_preserved_in_audit": true,
+      "official_policy": "implementation-faithful_policy_B"
+    },
+    {
+      "frame_key": "1752814590.4",
+      "vehicle_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.4.yaml",
+        "bytes": 3282,
+        "sha256": "38fbd847b2dc7c40d3270e0577656e257e409ef8e3c521ccb5429a17cd5dabef",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "camera1": "dict",
+          "camera2": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 5,
+        "object_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "6"
+        ],
+        "read_status": "PASS"
+      },
+      "uav_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.4.yaml",
+        "bytes": 1386,
+        "sha256": "2ac9ebd2adbbed94c9f5d088bce4da206d9267e4da2fadc62fcd30880c5a52f9",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 2,
+        "object_ids": [
+          "1",
+          "2"
+        ],
+        "read_status": "PASS"
+      },
+      "raw_lidar_pose": {
+        "vehicle": [
+          161.7135177764,
+          -194.6323702281,
+          -3.0839175871,
+          -179.1624479587,
+          128.7246984372,
+          0.4919168124
+        ],
+        "uav": [
+          145.96302729623716,
+          -178.1595040283652,
+          -51.809464623701004,
+          -178.9375703971481,
+          132.0705654097,
+          1.3905409753208338
+        ]
+      },
+      "T_vehicle_from_uav": [
+        [
+          0.9981729891743096,
+          0.05806099626745823,
+          -0.01672137539956616,
+          23.122155594913437
+        ],
+        [
+          -0.05811032458552994,
+          0.9983070894077012,
+          -0.0024789947333629645,
+          -1.2732531167483385
+        ],
+        [
+          0.0165491347020736,
+          0.003446150135133566,
+          0.9998571148868514,
+          48.55262044793655
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_check": {
+        "shape": [
+          4,
+          4
+        ],
+        "finite": true,
+        "orthogonality_max_abs": 4.440892098500626e-16,
+        "determinant": 0.9999999999999993,
+        "determinant_abs_error": 6.661338147750939e-16,
+        "status": "PASS"
+      },
+      "annotation_conversion": "unchanged official load_annotation_objects; official_code_interpretation_only",
+      "vehicle_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "uav_ids": [
+        "1",
+        "2"
+      ],
+      "vehicle_id_types": [
+        "str",
+        "str",
+        "str",
+        "str",
+        "str"
+      ],
+      "uav_id_types": [
+        "str",
+        "str"
+      ],
+      "shared_ids": [
+        "1",
+        "2"
+      ],
+      "vehicle_only_ids": [
+        "3",
+        "4",
+        "6"
+      ],
+      "uav_only_ids": [],
+      "merged_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "counts": {
+        "vehicle_input": 5,
+        "uav_input": 2,
+        "shared": 2,
+        "vehicle_only": 3,
+        "uav_only": 0,
+        "merged_output": 5,
+        "vehicle_overwritten_by_uav": 2
+      },
+      "set_checks": {
+        "merged_equals_vehicle_union_uav": true,
+        "shared_ids_final_source_uav": true,
+        "vehicle_only_retained": true,
+        "uav_only_retained": true
+      },
+      "final_objects": {
+        "1": {
+          "final_source": "uav",
+          "object": {
+            "loc": [
+              0.032098793481875276,
+              -0.14528075953878505,
+              -0.9635020435182469
+            ],
+            "dims": [
+              4.983178139200497,
+              2.0679318696918343,
+              2.2155654776696716
+            ],
+            "heading": 0.03251493769015147,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -0.4577280768,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.5952077456637634,
+              -0.13428067192877824,
+              -0.9684981003137033
+            ],
+            "obj_type": "Car",
+            "speed": 6.35170969697
+          },
+          "uav_input": {
+            "angle": [
+              -0.0904915531,
+              5.1921485588,
+              0.9958976371
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.983179,
+              2.067932,
+              2.215566
+            ],
+            "location": [
+              -23.932866838525968,
+              -0.38520889312032197,
+              -49.1257461044488
+            ],
+            "obj_type": "Car",
+            "speed": 6.54056831998
+          },
+          "overwritten_vehicle": {
+            "angle": [
+              0.0,
+              -0.4577280768,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.5952077456637634,
+              -0.13428067192877824,
+              -0.9684981003137033
+            ],
+            "obj_type": "Car",
+            "speed": 6.35170969697
+          },
+          "overwritten_vehicle_official_object": {
+            "loc": [
+              0.5952077456637634,
+              -0.13428067192877827,
+              -0.9684981003137032
+            ],
+            "dims": [
+              4.506838,
+              1.578579,
+              2.3214219999999997
+            ],
+            "heading": -0.007988862018981472,
+            "cls": "Vehicle"
+          },
+          "vehicle_official_object": {
+            "loc": [
+              0.5952077456637634,
+              -0.13428067192877827,
+              -0.9684981003137032
+            ],
+            "dims": [
+              4.506838,
+              1.578579,
+              2.3214219999999997
+            ],
+            "heading": -0.007988862018981472,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": {
+            "loc": [
+              0.032098793481875276,
+              -0.14528075953878505,
+              -0.9635020435182469
+            ],
+            "dims": [
+              4.983178139200497,
+              2.0679318696918343,
+              2.2155654776696716
+            ],
+            "heading": 0.03251493769015147,
+            "cls": "Vehicle"
+          },
+          "interpretation": "official_code_interpretation_only"
+        },
+        "2": {
+          "final_source": "uav",
+          "object": {
+            "loc": [
+              16.097992380402918,
+              -1.3889708666455967,
+              -1.4477293147830463
+            ],
+            "dims": [
+              1.7277857037682798,
+              0.8372279534056326,
+              1.5004126592490408
+            ],
+            "heading": 0.033140390413108685,
+            "cls": "Cyclist"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -1.6041520109,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.190154926307617,
+              -1.3923081721216817,
+              -1.6632956314382945
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.05428653708
+          },
+          "uav_input": {
+            "angle": [
+              -0.0911144879,
+              5.227989944,
+              0.9958408437
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.727786,
+              0.837228,
+              1.500413
+            ],
+            "location": [
+              -7.8320681196434,
+              -0.6956604763639753,
+              -49.8754649234161
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.82796582798
+          },
+          "overwritten_vehicle": {
+            "angle": [
+              0.0,
+              -1.6041520109,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.190154926307617,
+              -1.3923081721216817,
+              -1.6632956314382945
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.05428653708
+          },
+          "overwritten_vehicle_official_object": {
+            "loc": [
+              17.190154926307617,
+              -1.3923081721216817,
+              -1.6632956314382945
+            ],
+            "dims": [
+              1.694557000000001,
+              0.821663,
+              1.5676039999999998
+            ],
+            "heading": -0.027997734292692963,
+            "cls": "Cyclist"
+          },
+          "vehicle_official_object": {
+            "loc": [
+              17.190154926307617,
+              -1.3923081721216817,
+              -1.6632956314382945
+            ],
+            "dims": [
+              1.694557000000001,
+              0.821663,
+              1.5676039999999998
+            ],
+            "heading": -0.027997734292692963,
+            "cls": "Cyclist"
+          },
+          "uav_official_object": {
+            "loc": [
+              16.097992380402918,
+              -1.3889708666455967,
+              -1.4477293147830463
+            ],
+            "dims": [
+              1.7277857037682798,
+              0.8372279534056326,
+              1.5004126592490408
+            ],
+            "heading": 0.033140390413108685,
+            "cls": "Cyclist"
+          },
+          "interpretation": "official_code_interpretation_only"
+        },
+        "3": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              72.94741778162513,
+              0.06626825543343667,
+              -1.869402281047782
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876284,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -2.0133421833,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.923773,
+              2.42336,
+              2.091038
+            ],
+            "location": [
+              72.94741778162513,
+              0.06626825543343659,
+              -1.8694022810477822
+            ],
+            "obj_type": "Car",
+            "speed": 13.3223701
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              72.94741778162513,
+              0.06626825543343667,
+              -1.869402281047782
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876284,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "4": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              86.45099911986522,
+              3.9922293183746884,
+              -2.252383252735431
+            ],
+            "dims": [
+              3.634094999999998,
+              1.9804359999999999,
+              1.5787180000000003
+            ],
+            "heading": -3.130482456222557,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -179.3634325813,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              3.634095,
+              1.980436,
+              1.578718
+            ],
+            "location": [
+              86.45099911986523,
+              3.9922293183746884,
+              -2.252383252735431
+            ],
+            "obj_type": "Car",
+            "speed": 15.4303712618
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              86.45099911986522,
+              3.9922293183746884,
+              -2.252383252735431
+            ],
+            "dims": [
+              3.634094999999998,
+              1.9804359999999999,
+              1.5787180000000003
+            ],
+            "heading": -3.130482456222557,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "6": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              105.68496269735414,
+              -0.16654726171918827,
+              -1.3019209460411958
+            ],
+            "dims": [
+              7.144670000000008,
+              2.933505,
+              2.869124
+            ],
+            "heading": -0.013171082069451414,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -0.7546474142,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              105.68496269735414,
+              -0.16654726171918832,
+              -1.3019209460411958
+            ],
+            "obj_type": "Truck",
+            "speed": 11.6774690859
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              105.68496269735414,
+              -0.16654726171918827,
+              -1.3019209460411958
+            ],
+            "dims": [
+              7.144670000000008,
+              2.933505,
+              2.869124
+            ],
+            "heading": -0.013171082069451414,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        }
+      },
+      "raw_annotations_preserved_in_audit": true,
+      "official_policy": "implementation-faithful_policy_B"
+    },
+    {
+      "frame_key": "1752814590.6",
+      "vehicle_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.6.yaml",
+        "bytes": 3280,
+        "sha256": "6ba19b60a6d8a824fc041d8dd46e590160b9431dceaf6f509630e3490d5c6c64",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "camera1": "dict",
+          "camera2": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 5,
+        "object_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "6"
+        ],
+        "read_status": "PASS"
+      },
+      "uav_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.6.yaml",
+        "bytes": 1390,
+        "sha256": "10e2691d60e153f07188578bc5039e7106a344ba1064d70c9fc3f54391531fba",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 2,
+        "object_ids": [
+          "1",
+          "2"
+        ],
+        "read_status": "PASS"
+      },
+      "raw_lidar_pose": {
+        "vehicle": [
+          160.9791069502,
+          -193.6872318752,
+          -3.1126862171,
+          -179.1853401389,
+          128.8526032533,
+          0.5070150468
+        ],
+        "uav": [
+          144.93265472817367,
+          -176.0013371545871,
+          -51.6777235585273,
+          -179.10394935259538,
+          131.8389082828,
+          0.9683436469525092
+        ]
+      },
+      "T_vehicle_from_uav": [
+        [
+          0.99860984800598,
+          0.051963294181431495,
+          -0.008842370908782315,
+          24.268171250859524
+        ],
+        [
+          -0.05196990558542663,
+          0.998648516305438,
+          -0.0005194173560264713,
+          -0.7140601935654276
+        ],
+        [
+          0.008803429951803672,
+          0.0009782324682339981,
+          0.9999607705716872,
+          48.36722376915516
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_check": {
+        "shape": [
+          4,
+          4
+        ],
+        "finite": true,
+        "orthogonality_max_abs": 8.881784197001252e-16,
+        "determinant": 1.000000000000001,
+        "determinant_abs_error": 1.1102230246251565e-15,
+        "status": "PASS"
+      },
+      "annotation_conversion": "unchanged official load_annotation_objects; official_code_interpretation_only",
+      "vehicle_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "uav_ids": [
+        "1",
+        "2"
+      ],
+      "vehicle_id_types": [
+        "str",
+        "str",
+        "str",
+        "str",
+        "str"
+      ],
+      "uav_id_types": [
+        "str",
+        "str"
+      ],
+      "shared_ids": [
+        "1",
+        "2"
+      ],
+      "vehicle_only_ids": [
+        "3",
+        "4",
+        "6"
+      ],
+      "uav_only_ids": [],
+      "merged_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "counts": {
+        "vehicle_input": 5,
+        "uav_input": 2,
+        "shared": 2,
+        "vehicle_only": 3,
+        "uav_only": 0,
+        "merged_output": 5,
+        "vehicle_overwritten_by_uav": 2
+      },
+      "set_checks": {
+        "merged_equals_vehicle_union_uav": true,
+        "shared_ids_final_source_uav": true,
+        "vehicle_only_retained": true,
+        "uav_only_retained": true
+      },
+      "final_objects": {
+        "1": {
+          "final_source": "uav",
+          "object": {
+            "loc": [
+              0.6910915163340228,
+              0.16593150965805198,
+              -1.022004822342403
+            ],
+            "dims": [
+              4.983178953835887,
+              2.0679319921195294,
+              2.215565971031947
+            ],
+            "heading": 0.008728914396718183,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              1.0533210281,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.6768935902331977,
+              -0.057555632618109476,
+              -1.0187013023649953
+            ],
+            "obj_type": "Car",
+            "speed": 4.57866633368
+          },
+          "uav_input": {
+            "angle": [
+              -0.0303399943,
+              3.4788884087,
+              0.4990786592
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.983179,
+              2.067932,
+              2.215566
+            ],
+            "location": [
+              -24.02483171013071,
+              -0.3946544683882256,
+              -49.17927087930028
+            ],
+            "obj_type": "Car",
+            "speed": 7.36903663487
+          },
+          "overwritten_vehicle": {
+            "angle": [
+              0.0,
+              1.0533210281,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.6768935902331977,
+              -0.057555632618109476,
+              -1.0187013023649953
+            ],
+            "obj_type": "Car",
+            "speed": 4.57866633368
+          },
+          "overwritten_vehicle_official_object": {
+            "loc": [
+              0.6768935902331977,
+              -0.057555632618109476,
+              -1.0187013023649953
+            ],
+            "dims": [
+              4.506837999999999,
+              1.5785789999999997,
+              2.321422
+            ],
+            "heading": 0.0183839200208367,
+            "cls": "Vehicle"
+          },
+          "vehicle_official_object": {
+            "loc": [
+              0.6768935902331977,
+              -0.057555632618109476,
+              -1.0187013023649953
+            ],
+            "dims": [
+              4.506837999999999,
+              1.5785789999999997,
+              2.321422
+            ],
+            "heading": 0.0183839200208367,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": {
+            "loc": [
+              0.6910915163340228,
+              0.16593150965805198,
+              -1.022004822342403
+            ],
+            "dims": [
+              4.983178953835887,
+              2.0679319921195294,
+              2.215565971031947
+            ],
+            "heading": 0.008728914396718183,
+            "cls": "Vehicle"
+          },
+          "interpretation": "official_code_interpretation_only"
+        },
+        "2": {
+          "final_source": "uav",
+          "object": {
+            "loc": [
+              16.731205408997976,
+              -1.052581500460835,
+              -1.5626798199040053
+            ],
+            "dims": [
+              1.7277229013174615,
+              0.8372275077888316,
+              1.5003573228375693
+            ],
+            "heading": 0.02653745369445698,
+            "cls": "Cyclist"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -1.6769529089,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.20617993215574,
+              -1.4017958704193967,
+              -1.671105431412883
+            ],
+            "obj_type": "Cyclist",
+            "speed": 4.55518684272
+          },
+          "uav_input": {
+            "angle": [
+              -0.0784401673,
+              4.4991396042,
+              0.9969191347
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.727786,
+              0.837228,
+              1.500413
+            ],
+            "location": [
+              -7.948449802156199,
+              -0.7785524269715389,
+              -49.86112438614287
+            ],
+            "obj_type": "Cyclist",
+            "speed": 7.29037837212
+          },
+          "overwritten_vehicle": {
+            "angle": [
+              0.0,
+              -1.6769529089,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.20617993215574,
+              -1.4017958704193967,
+              -1.671105431412883
+            ],
+            "obj_type": "Cyclist",
+            "speed": 4.55518684272
+          },
+          "overwritten_vehicle_official_object": {
+            "loc": [
+              17.20617993215574,
+              -1.4017958704193967,
+              -1.6711054314128833
+            ],
+            "dims": [
+              1.6945569999999972,
+              0.821663,
+              1.5676040000000002
+            ],
+            "heading": -0.029268349661201558,
+            "cls": "Cyclist"
+          },
+          "vehicle_official_object": {
+            "loc": [
+              17.20617993215574,
+              -1.4017958704193967,
+              -1.6711054314128833
+            ],
+            "dims": [
+              1.6945569999999972,
+              0.821663,
+              1.5676040000000002
+            ],
+            "heading": -0.029268349661201558,
+            "cls": "Cyclist"
+          },
+          "uav_official_object": {
+            "loc": [
+              16.731205408997976,
+              -1.052581500460835,
+              -1.5626798199040053
+            ],
+            "dims": [
+              1.7277229013174615,
+              0.8372275077888316,
+              1.5003573228375693
+            ],
+            "heading": 0.02653745369445698,
+            "cls": "Cyclist"
+          },
+          "interpretation": "official_code_interpretation_only"
+        },
+        "3": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              74.34588889495498,
+              0.14515271027860394,
+              -2.0345586074854065
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876284,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -2.0133421833,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.923773,
+              2.42336,
+              2.091038
+            ],
+            "location": [
+              74.34588889495498,
+              0.1451527102786039,
+              -2.0345586074854065
+            ],
+            "obj_type": "Car",
+            "speed": 10.0889135924
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              74.34588889495498,
+              0.14515271027860394,
+              -2.0345586074854065
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876284,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "4": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              82.12112666398207,
+              4.070966468256767,
+              -2.1348405026413415
+            ],
+            "dims": [
+              3.6340950000000034,
+              1.9804359999999999,
+              1.5787180000000003
+            ],
+            "heading": -3.13043152799844,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -179.360514609,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              3.634095,
+              1.980436,
+              1.578718
+            ],
+            "location": [
+              82.12112666398207,
+              4.070966468256767,
+              -2.1348405026413415
+            ],
+            "obj_type": "Car",
+            "speed": 11.7711890905
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              82.12112666398207,
+              4.070966468256767,
+              -2.1348405026413415
+            ],
+            "dims": [
+              3.6340950000000034,
+              1.9804359999999999,
+              1.5787180000000003
+            ],
+            "heading": -3.13043152799844,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "6": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              106.96734091034592,
+              0.1455510372637252,
+              -1.6061625649162128
+            ],
+            "dims": [
+              7.144670000000008,
+              2.933505,
+              2.8691239999999993
+            ],
+            "heading": -0.013171082069451414,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -0.7546474142,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              106.96734091034592,
+              0.14555103726372526,
+              -1.6061625649162128
+            ],
+            "obj_type": "Truck",
+            "speed": 9.52584576205
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              106.96734091034592,
+              0.1455510372637252,
+              -1.6061625649162128
+            ],
+            "dims": [
+              7.144670000000008,
+              2.933505,
+              2.8691239999999993
+            ],
+            "heading": -0.013171082069451414,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        }
+      },
+      "raw_annotations_preserved_in_audit": true,
+      "official_policy": "implementation-faithful_policy_B"
+    },
+    {
+      "frame_key": "1752814591.2",
+      "vehicle_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.2.yaml",
+        "bytes": 3579,
+        "sha256": "ba17f43d745697dccce276ddef9e682074a109609fc3381187ccdc1f07ac1e75",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "camera1": "dict",
+          "camera2": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 6,
+        "object_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "read_status": "PASS"
+      },
+      "uav_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.2.yaml",
+        "bytes": 1070,
+        "sha256": "e3d0acfdf4e51f836cd609f35913cbd45d3e1d0cec6eefb29c29982661ef4bb7",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 1,
+        "object_ids": [
+          "2"
+        ],
+        "read_status": "PASS"
+      },
+      "raw_lidar_pose": {
+        "vehicle": [
+          158.7633565946,
+          -190.9251831375,
+          -3.1298583623,
+          -179.175470516,
+          129.0945124235,
+          0.3570605735
+        ],
+        "uav": [
+          142.54894914761596,
+          -173.08707540808558,
+          -51.756752058873296,
+          -179.0827118815714,
+          131.699137617,
+          1.3008253330689463
+        ]
+      },
+      "T_vehicle_from_uav": [
+        [
+          0.9988315338474145,
+          0.045173613768032965,
+          -0.017172990745874528,
+          24.37167389037262
+        ],
+        [
+          -0.04519009847711267,
+          0.9989782414062965,
+          -0.0005728842924778317,
+          -0.6376551580310803
+        ],
+        [
+          0.017129564841238166,
+          0.0013482640395253306,
+          0.999852369198788,
+          48.49015152050581
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_check": {
+        "shape": [
+          4,
+          4
+        ],
+        "finite": true,
+        "orthogonality_max_abs": 6.661338147750939e-16,
+        "determinant": 1.0000000000000002,
+        "determinant_abs_error": 2.220446049250313e-16,
+        "status": "PASS"
+      },
+      "annotation_conversion": "unchanged official load_annotation_objects; official_code_interpretation_only",
+      "vehicle_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "uav_ids": [
+        "2"
+      ],
+      "vehicle_id_types": [
+        "str",
+        "str",
+        "str",
+        "str",
+        "str",
+        "str"
+      ],
+      "uav_id_types": [
+        "str"
+      ],
+      "shared_ids": [
+        "2"
+      ],
+      "vehicle_only_ids": [
+        "1",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "uav_only_ids": [],
+      "merged_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "counts": {
+        "vehicle_input": 6,
+        "uav_input": 1,
+        "shared": 1,
+        "vehicle_only": 5,
+        "uav_only": 0,
+        "merged_output": 6,
+        "vehicle_overwritten_by_uav": 1
+      },
+      "set_checks": {
+        "merged_equals_vehicle_union_uav": true,
+        "shared_ids_final_source_uav": true,
+        "vehicle_only_retained": true,
+        "uav_only_retained": true
+      },
+      "final_objects": {
+        "1": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              0.6518114580402621,
+              -0.03475859485457533,
+              -0.9664413517191717
+            ],
+            "dims": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "heading": 0.011491017011989001,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              0.6583867771,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.6518114580402621,
+              -0.03475859485457533,
+              -0.9664413517191717
+            ],
+            "obj_type": "Car",
+            "speed": 7.52140444751
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              0.6518114580402621,
+              -0.03475859485457533,
+              -0.9664413517191717
+            ],
+            "dims": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "heading": 0.011491017011989001,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "2": {
+          "final_source": "uav",
+          "object": {
+            "loc": [
+              17.267099359018275,
+              -1.4333875524993174,
+              -1.6394863971451625
+            ],
+            "dims": [
+              1.7277859348864102,
+              0.8372279946767516,
+              1.5004129339153214
+            ],
+            "heading": -0.009484700978985829,
+            "cls": "Cyclist"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -1.6277354626,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.266910222409734,
+              -1.304843394836782,
+              -1.6413351934250795
+            ],
+            "obj_type": "Cyclist",
+            "speed": 7.60587625522
+          },
+          "uav_input": {
+            "angle": [
+              -0.0356999629,
+              2.045995724,
+              0.9993626178
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.727786,
+              0.837228,
+              1.500413
+            ],
+            "location": [
+              -7.919012734396684,
+              -1.1834466420403011,
+              -49.9997745837706
+            ],
+            "obj_type": "Cyclist",
+            "speed": 7.62160492648
+          },
+          "overwritten_vehicle": {
+            "angle": [
+              0.0,
+              -1.6277354626,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.266910222409734,
+              -1.304843394836782,
+              -1.6413351934250795
+            ],
+            "obj_type": "Cyclist",
+            "speed": 7.60587625522
+          },
+          "overwritten_vehicle_official_object": {
+            "loc": [
+              17.266910222409734,
+              -1.304843394836782,
+              -1.6413351934250795
+            ],
+            "dims": [
+              1.6945569999999988,
+              0.821663,
+              1.5676039999999998
+            ],
+            "heading": -0.028409343173843048,
+            "cls": "Cyclist"
+          },
+          "vehicle_official_object": {
+            "loc": [
+              17.266910222409734,
+              -1.304843394836782,
+              -1.6413351934250795
+            ],
+            "dims": [
+              1.6945569999999988,
+              0.821663,
+              1.5676039999999998
+            ],
+            "heading": -0.028409343173843048,
+            "cls": "Cyclist"
+          },
+          "uav_official_object": {
+            "loc": [
+              17.267099359018275,
+              -1.4333875524993174,
+              -1.6394863971451625
+            ],
+            "dims": [
+              1.7277859348864102,
+              0.8372279946767516,
+              1.5004129339153214
+            ],
+            "heading": -0.009484700978985829,
+            "cls": "Cyclist"
+          },
+          "interpretation": "official_code_interpretation_only"
+        },
+        "3": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              78.793900801946,
+              0.49855193660034725,
+              -1.7155673898434078
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876284,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -2.0133421833,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.923773,
+              2.42336,
+              2.091038
+            ],
+            "location": [
+              78.793900801946,
+              0.4985519366003472,
+              -1.7155673898434076
+            ],
+            "obj_type": "Car",
+            "speed": 16.3891957844
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              78.793900801946,
+              0.49855193660034725,
+              -1.7155673898434078
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876284,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "4": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              69.40780489108874,
+              4.308137366722207,
+              -2.1749787930747164
+            ],
+            "dims": [
+              3.6340950000000096,
+              1.9804360000000003,
+              1.5787180000000003
+            ],
+            "heading": -3.1302787433225983,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -179.3517606919,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              3.634095,
+              1.980436,
+              1.578718
+            ],
+            "location": [
+              69.40780489108874,
+              4.308137366722208,
+              -2.1749787930747164
+            ],
+            "obj_type": "Car",
+            "speed": 19.1760253485
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              69.40780489108874,
+              4.308137366722207,
+              -2.1749787930747164
+            ],
+            "dims": [
+              3.6340950000000096,
+              1.9804360000000003,
+              1.5787180000000003
+            ],
+            "heading": -3.1302787433225983,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "5": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              176.85036950648276,
+              4.872483696240247,
+              -1.8255849961366633
+            ],
+            "dims": [
+              7.1446700000000005,
+              2.9335050000000003,
+              2.869124
+            ],
+            "heading": -3.118251155516717,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -178.6626306729,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              176.8503695064828,
+              4.872483696240247,
+              -1.8255849961366633
+            ],
+            "obj_type": "Truck",
+            "speed": 11.0034318918
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              176.85036950648276,
+              4.872483696240247,
+              -1.8255849961366633
+            ],
+            "dims": [
+              7.1446700000000005,
+              2.9335050000000003,
+              2.869124
+            ],
+            "heading": -3.118251155516717,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "6": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              109.8114979307636,
+              0.45377379106770893,
+              -1.061693308832239
+            ],
+            "dims": [
+              7.144669999999997,
+              2.933505,
+              2.8691239999999993
+            ],
+            "heading": -0.011280509000709623,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -0.6463255565,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              109.8114979307636,
+              0.4537737910677088,
+              -1.0616933088322391
+            ],
+            "obj_type": "Truck",
+            "speed": 14.744612218
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              109.8114979307636,
+              0.45377379106770893,
+              -1.061693308832239
+            ],
+            "dims": [
+              7.144669999999997,
+              2.933505,
+              2.8691239999999993
+            ],
+            "heading": -0.011280509000709623,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        }
+      },
+      "raw_annotations_preserved_in_audit": true,
+      "official_policy": "implementation-faithful_policy_B"
+    },
+    {
+      "frame_key": "1752814591.6",
+      "vehicle_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.6.yaml",
+        "bytes": 3583,
+        "sha256": "363276047d1049267dd65928407f8b218a027808793fe0bc1d397f273e7cdd99",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "camera1": "dict",
+          "camera2": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 6,
+        "object_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "read_status": "PASS"
+      },
+      "uav_input": {
+        "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.6.yaml",
+        "bytes": 1068,
+        "sha256": "cdbe06034ced3427cd5a2456a1b01ae58f08cc5efd8814834f639dac3e2b927f",
+        "root_field_types": {
+          "ego_speed": "float",
+          "lidar_pose": "list",
+          "camera0": "dict",
+          "vehicles": "dict"
+        },
+        "object_count": 1,
+        "object_ids": [
+          "2"
+        ],
+        "read_status": "PASS"
+      },
+      "raw_lidar_pose": {
+        "vehicle": [
+          157.2855039004,
+          -189.126458104,
+          -3.1409284677,
+          -179.1010364414,
+          129.3270600085,
+          0.3830723104
+        ],
+        "uav": [
+          141.1962607147092,
+          -171.2871759969672,
+          -51.8399220975755,
+          -178.81580423358662,
+          131.8361677021,
+          1.79771531356221
+        ]
+      },
+      "T_vehicle_from_uav": [
+        [
+          0.9987369815805839,
+          0.04325827674104307,
+          -0.025557056103932038,
+          24.320970378414955
+        ],
+        [
+          -0.04336383088866826,
+          0.9990528958165978,
+          -0.003590199316047182,
+          -0.3784545273140034
+        ],
+        [
+          0.02537754507361149,
+          0.004693916687084754,
+          0.9996669182043442,
+          48.549386041105315
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_check": {
+        "shape": [
+          4,
+          4
+        ],
+        "finite": true,
+        "orthogonality_max_abs": 5.551115123125783e-16,
+        "determinant": 0.9999999999999996,
+        "determinant_abs_error": 4.440892098500626e-16,
+        "status": "PASS"
+      },
+      "annotation_conversion": "unchanged official load_annotation_objects; official_code_interpretation_only",
+      "vehicle_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "uav_ids": [
+        "2"
+      ],
+      "vehicle_id_types": [
+        "str",
+        "str",
+        "str",
+        "str",
+        "str",
+        "str"
+      ],
+      "uav_id_types": [
+        "str"
+      ],
+      "shared_ids": [
+        "2"
+      ],
+      "vehicle_only_ids": [
+        "1",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "uav_only_ids": [],
+      "merged_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "counts": {
+        "vehicle_input": 6,
+        "uav_input": 1,
+        "shared": 1,
+        "vehicle_only": 5,
+        "uav_only": 0,
+        "merged_output": 6,
+        "vehicle_overwritten_by_uav": 1
+      },
+      "set_checks": {
+        "merged_equals_vehicle_union_uav": true,
+        "shared_ids_final_source_uav": true,
+        "vehicle_only_retained": true,
+        "uav_only_retained": true
+      },
+      "final_objects": {
+        "1": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              0.6364198850897109,
+              -0.03421549591956899,
+              -1.0931373936308955
+            ],
+            "dims": [
+              4.506838,
+              1.5785789999999995,
+              2.321422
+            ],
+            "heading": 0.011567288970187982,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              0.6627568384,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.506838,
+              1.578579,
+              2.321422
+            ],
+            "location": [
+              0.6364198850897107,
+              -0.03421549591956896,
+              -1.0931373936308955
+            ],
+            "obj_type": "Car",
+            "speed": 5.55651557856
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              0.6364198850897109,
+              -0.03421549591956899,
+              -1.0931373936308955
+            ],
+            "dims": [
+              4.506838,
+              1.5785789999999995,
+              2.321422
+            ],
+            "heading": 0.011567288970187982,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "2": {
+          "final_source": "uav",
+          "object": {
+            "loc": [
+              17.396327438603453,
+              -1.4155989884134308,
+              -1.6260978026109498
+            ],
+            "dims": [
+              1.7277858705596905,
+              0.8372279865010626,
+              1.5004128634020455
+            ],
+            "heading": 0.044029267350973185,
+            "cls": "Cyclist"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              1.0892656232,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.39214023728704,
+              -1.2506916326971462,
+              -1.6286573916103062
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.18007272044
+          },
+          "uav_input": {
+            "angle": [
+              -0.1308114895,
+              5.0035546339,
+              1.4942865301
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.727786,
+              0.837228,
+              1.500413
+            ],
+            "location": [
+              -8.144253034046583,
+              -1.5712298387613757,
+              -49.97807426001239
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.22230467572
+          },
+          "overwritten_vehicle": {
+            "angle": [
+              0.0,
+              1.0892656232,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              1.694557,
+              0.821663,
+              1.567604
+            ],
+            "location": [
+              17.39214023728704,
+              -1.2506916326971462,
+              -1.6286573916103062
+            ],
+            "obj_type": "Cyclist",
+            "speed": 6.18007272044
+          },
+          "overwritten_vehicle_official_object": {
+            "loc": [
+              17.39214023728704,
+              -1.2506916326971462,
+              -1.628657391610306
+            ],
+            "dims": [
+              1.6945570000000008,
+              0.821663,
+              1.5676039999999998
+            ],
+            "heading": 0.019011271553627872,
+            "cls": "Cyclist"
+          },
+          "vehicle_official_object": {
+            "loc": [
+              17.39214023728704,
+              -1.2506916326971462,
+              -1.628657391610306
+            ],
+            "dims": [
+              1.6945570000000008,
+              0.821663,
+              1.5676039999999998
+            ],
+            "heading": 0.019011271553627872,
+            "cls": "Cyclist"
+          },
+          "uav_official_object": {
+            "loc": [
+              17.396327438603453,
+              -1.4155989884134308,
+              -1.6260978026109498
+            ],
+            "dims": [
+              1.7277858705596905,
+              0.8372279865010626,
+              1.5004128634020455
+            ],
+            "heading": 0.044029267350973185,
+            "cls": "Cyclist"
+          },
+          "interpretation": "official_code_interpretation_only"
+        },
+        "3": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              82.14118323238192,
+              0.7318060357895121,
+              -1.8769714459303115
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876304,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -2.0133421833,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              4.923773,
+              2.42336,
+              2.091038
+            ],
+            "location": [
+              82.14118323238192,
+              0.7318060357895121,
+              -1.8769714459303115
+            ],
+            "obj_type": "Car",
+            "speed": 13.8346292705
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              82.14118323238192,
+              0.7318060357895121,
+              -1.8769714459303115
+            ],
+            "dims": [
+              4.923772999999992,
+              2.42336,
+              2.091038
+            ],
+            "heading": -0.035139450067876304,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "4": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              60.98130933722335,
+              4.622671292103866,
+              -1.9519561629150517
+            ],
+            "dims": [
+              3.634094999999999,
+              1.9804360000000003,
+              1.5787179999999998
+            ],
+            "heading": -3.1301768868743642,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -179.3459247473,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              3.634095,
+              1.980436,
+              1.578718
+            ],
+            "location": [
+              60.98130933722335,
+              4.622671292103866,
+              -1.9519561629150515
+            ],
+            "obj_type": "Car",
+            "speed": 14.9956853354
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              60.98130933722335,
+              4.622671292103866,
+              -1.9519561629150517
+            ],
+            "dims": [
+              3.634094999999999,
+              1.9804360000000003,
+              1.5787179999999998
+            ],
+            "heading": -3.1301768868743642,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "5": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              169.77933083790674,
+              5.560831573569027,
+              -1.8238718109115668
+            ],
+            "dims": [
+              7.144670000000015,
+              2.9335050000000007,
+              2.8691239999999993
+            ],
+            "heading": -3.1194636265501927,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -178.7321001459,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              169.77933083790674,
+              5.560831573569027,
+              -1.8238718109115668
+            ],
+            "obj_type": "Truck",
+            "speed": 12.3791513473
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              169.77933083790674,
+              5.560831573569027,
+              -1.8238718109115668
+            ],
+            "dims": [
+              7.144670000000015,
+              2.9335050000000007,
+              2.8691239999999993
+            ],
+            "heading": -3.1194636265501927,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        },
+        "6": {
+          "final_source": "vehicle",
+          "object": {
+            "loc": [
+              112.88054970087425,
+              1.1713155843174572,
+              -1.0694311165111074
+            ],
+            "dims": [
+              7.14467,
+              2.9335049999999994,
+              2.869124
+            ],
+            "heading": -0.015266031071281341,
+            "cls": "Vehicle"
+          },
+          "vehicle_input": {
+            "angle": [
+              0.0,
+              -0.8746791503,
+              0.0
+            ],
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "extent": [
+              7.14467,
+              2.933505,
+              2.869124
+            ],
+            "location": [
+              112.88054970087425,
+              1.1713155843174572,
+              -1.0694311165111074
+            ],
+            "obj_type": "Truck",
+            "speed": 11.9192187581
+          },
+          "uav_input": null,
+          "overwritten_vehicle": null,
+          "overwritten_vehicle_official_object": null,
+          "vehicle_official_object": {
+            "loc": [
+              112.88054970087425,
+              1.1713155843174572,
+              -1.0694311165111074
+            ],
+            "dims": [
+              7.14467,
+              2.9335049999999994,
+              2.869124
+            ],
+            "heading": -0.015266031071281341,
+            "cls": "Vehicle"
+          },
+          "uav_official_object": null,
+          "interpretation": "official_code_interpretation_only"
+        }
+      },
+      "raw_annotations_preserved_in_audit": true,
+      "official_policy": "implementation-faithful_policy_B"
+    }
+  ],
+  "errors": [],
+  "aggregate": {
+    "vehicle_overwritten_total": 8,
+    "merged_output_total": 28,
+    "source_counts": {
+      "vehicle_final": 20,
+      "uav_final": 8
+    },
+    "all_set_checks_pass": true
+  },
+  "input_hashes_before_after": [
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.2.yaml",
+      "sha256_before": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+      "sha256_after": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+      "sha256_before": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+      "sha256_after": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.4.yaml",
+      "sha256_before": "38fbd847b2dc7c40d3270e0577656e257e409ef8e3c521ccb5429a17cd5dabef",
+      "sha256_after": "38fbd847b2dc7c40d3270e0577656e257e409ef8e3c521ccb5429a17cd5dabef",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.4.yaml",
+      "sha256_before": "2ac9ebd2adbbed94c9f5d088bce4da206d9267e4da2fadc62fcd30880c5a52f9",
+      "sha256_after": "2ac9ebd2adbbed94c9f5d088bce4da206d9267e4da2fadc62fcd30880c5a52f9",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.6.yaml",
+      "sha256_before": "6ba19b60a6d8a824fc041d8dd46e590160b9431dceaf6f509630e3490d5c6c64",
+      "sha256_after": "6ba19b60a6d8a824fc041d8dd46e590160b9431dceaf6f509630e3490d5c6c64",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.6.yaml",
+      "sha256_before": "10e2691d60e153f07188578bc5039e7106a344ba1064d70c9fc3f54391531fba",
+      "sha256_after": "10e2691d60e153f07188578bc5039e7106a344ba1064d70c9fc3f54391531fba",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.2.yaml",
+      "sha256_before": "ba17f43d745697dccce276ddef9e682074a109609fc3381187ccdc1f07ac1e75",
+      "sha256_after": "ba17f43d745697dccce276ddef9e682074a109609fc3381187ccdc1f07ac1e75",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.2.yaml",
+      "sha256_before": "e3d0acfdf4e51f836cd609f35913cbd45d3e1d0cec6eefb29c29982661ef4bb7",
+      "sha256_after": "e3d0acfdf4e51f836cd609f35913cbd45d3e1d0cec6eefb29c29982661ef4bb7",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814591.6.yaml",
+      "sha256_before": "363276047d1049267dd65928407f8b218a027808793fe0bc1d397f273e7cdd99",
+      "sha256_after": "363276047d1049267dd65928407f8b218a027808793fe0bc1d397f273e7cdd99",
+      "unchanged": true
+    },
+    {
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814591.6.yaml",
+      "sha256_before": "cdbe06034ced3427cd5a2456a1b01ae58f08cc5efd8814834f639dac3e2b927f",
+      "sha256_after": "cdbe06034ced3427cd5a2456a1b01ae58f08cc5efd8814834f639dac3e2b927f",
+      "unchanged": true
+    }
+  ]
+}
