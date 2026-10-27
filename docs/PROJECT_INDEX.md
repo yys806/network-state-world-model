@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-05B 2026-10-27 -->
+## 2026-10-27 — STEP R2-05B 感知接口与 AirFogSim 软件接入
+
+当前最新工程入口：固定真实 LiDAR 帧→严格读取→Mock 感知合同→AirFogSim TaskManager 应用任务记录。`airfogsim` conda CPU smoke PASS；通信 `data_size=0`，无线仍阻塞；不代表新 PI-JWM 场景或真实检测性能。
+
+实施记录：`implementation_records/STEP_R2_05B_V2U4REAL_PERCEPTION_AIRFOGSIM_INTERFACE.md`；合同草案：`contracts/PIJWM_V2U4REAL_PERCEPTION_INTERFACE_CONTRACT_DRAFT_V1.md`；机器证据：`code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/acceptance.json`。
+<!-- END V2U4REAL R2-05B -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

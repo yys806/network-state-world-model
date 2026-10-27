@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-05B 2026-10-27 -->
+## 2026-10-27 — 感知接口与 AirFogSim 应用适配层
+
+`code/src/pi_jwm/v2u4real_perception_interface_v1.py` 提供严格 `PerceptionFrame`/`DetectionResult` 合同、固定真实帧读取和只用 XYZ 的 `MockPerception`；`code/src/pi_jwm/v2u4real_airfogsim_adapter_v1.py` 将 canonical payload 注册为 AirFogSim `TaskManager` waiting-to-offload 记录。入口 `code/scripts/run_v2u4real_r2_05b_interface_v1.py` 复用 R1 回放辅助和 R2-04C 只读标签回执，落盘数据/标签/感知/应用/无线分层状态。该模块不改变世界模型、规划器、第三方 AirFogSim 源码或通信协议。
+
+实际 conda CPU 证据：`code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/acceptance.json`；基础环境缺 `traci` 的阻塞证据在父目录 `acceptance.json`。
+<!-- END V2U4REAL R2-05B -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

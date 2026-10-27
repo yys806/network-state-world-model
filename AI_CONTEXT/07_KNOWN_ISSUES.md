@@ -1,3 +1,12 @@
+<!-- V2U4REAL R2-05B 2026-10-27 -->
+## 2026-10-27 — R2-05B 边界与阻塞
+
+- 真实 PCD/YAML、字段/有限性/SHA 和方案 B 来源追溯通过；坐标单位/轴向/物理对齐仍 `NOT_ESTABLISHED`。
+- `MockPerception` 只为接口冒烟，不能当真实检测器或精度证据；未访问 GPU/`locked_test`。
+- `airfogsim` conda 环境实际 CPU smoke PASS（应用任务队列和 `env.step`），但四类通信 `data_size` 保持0，真实无线交付仍 `BLOCKED_NOT_ATTEMPTED`。
+- 基础环境缺 `traci`，`airfogsim` 环境缺 `scipy`；标签回执通过跨环境只读复用，未修改环境依赖。AirFogSim 原生 `task_lifecycle_state=finished` 与队列语义冲突，已用自有 waiting 状态隔离。
+<!-- END V2U4REAL R2-05B -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

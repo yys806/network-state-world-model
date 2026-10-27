@@ -1,3 +1,9 @@
+<!-- V2U4REAL R2-05B 2026-10-27 -->
+## 2026-10-27 — STEP R2-05B 软件链结果
+
+数据接入、方案 B 来源追溯、感知接口、AirFogSim 软件接入和仿真任务记录分别为 PASS；真实无线交付为 `BLOCKED_NOT_ATTEMPTED`。没有检测精度或正式指标。最终回执：`code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/acceptance.json`。
+<!-- END V2U4REAL R2-05B -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

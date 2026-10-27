@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-05B 2026-10-27 -->
+## 2026-10-27 — STEP R2-05B 感知接口与 AirFogSim 软件接入
+
+固定 train 单帧 `1752814590.2` 的车辆/UAV Ouster PCD/YAML 实际读取、字段/有限性/SHA 检查和方案 B 内存来源追溯通过；没有写回原始标签。新增 `PerceptionFrame`/`DetectionResult` 严格合同和确定性 `MockPerception`，7项专项测试通过，Mock不读取标签、不报告精度。`airfogsim` 环境实际运行两次 `AirFogSimEnv` CPU smoke：两个 payload 任务进入 waiting-to-offload 队列，仿真各一步，通信 `data_size` 保持0，软件接入和仿真任务记录 PASS；无线交付为 `BLOCKED_NOT_ATTEMPTED`。基础环境缺 `traci`，因此保留独立阻塞证据；R2-04C 标签回执以只读方式复用。物理对齐仍 `NOT_ESTABLISHED`，不代表新 PI-JWM 场景或真实感知模型已实现。
+
+实施记录：`docs/implementation_records/STEP_R2_05B_V2U4REAL_PERCEPTION_AIRFOGSIM_INTERFACE.md`；合同草案：`docs/contracts/PIJWM_V2U4REAL_PERCEPTION_INTERFACE_CONTRACT_DRAFT_V1.md`；最终软件链证据：`code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/acceptance.json`；基础环境阻塞证据：同目录 `acceptance.json`。GPU/训练/`locked_test`/正式检测评价未使用。
+<!-- END V2U4REAL R2-05B -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-05B 2026-10-27 -->
+## 2026-10-27 — STEP R2-05B 感知接口与 AirFogSim 软件接入
+
+新增严格感知输入/输出合同、确定性 MockPerception、payload/TaskManager 适配器和 CPU 入口。固定真实帧读取、方案 B 只读追溯、7项专项测试和 `airfogsim` conda 环境两次 CPU smoke 通过；真实无线交付为 `BLOCKED_NOT_ATTEMPTED`，基础环境缺 `traci` 的阻塞也已保留。
+
+实施记录：`docs/implementation_records/STEP_R2_05B_V2U4REAL_PERCEPTION_AIRFOGSIM_INTERFACE.md`；合同：`docs/contracts/PIJWM_V2U4REAL_PERCEPTION_INTERFACE_CONTRACT_DRAFT_V1.md`；证据：`code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/acceptance.json`。
+<!-- END V2U4REAL R2-05B -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

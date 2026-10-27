@@ -1,3 +1,9 @@
+<!-- V2U4REAL R2-05B 2026-10-27 -->
+## 2026-10-27 — STEP R2-05B CPU 接口冒烟
+
+固定真实帧两端 PCD/YAML 读取、Mock 感知格式/非法输入拒绝、payload 重复一致性和 AirFogSim `TaskManager` 应用层入队已验证。AirFogSim 真实 `env.step` 只推进仿真时钟，通信字节为0；无线交付未执行。证据：`code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/acceptance.json`。
+<!-- END V2U4REAL R2-05B -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

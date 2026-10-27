@@ -1,3 +1,9 @@
+<!-- V2U4REAL R2-05B 2026-10-27 -->
+## 2026-10-27 — R2-05B 感知/应用边界
+
+新增感知合同和独立 AirFogSim 应用适配层位于 `code/src/pi_jwm/`；适配器只进入 TaskManager waiting-to-offload 队列，不调用无线 offload/RB/rate 路径。第三方 AirFogSim 源码未修改，世界模型/规划器/损失未改变。证据以 R2-05B 记录和机器回执为准。
+<!-- END V2U4REAL R2-05B -->
+
 <!-- V2U4REAL R1 2026-10-25 -->
 ## 2026-10-25 — 车—UAV 数据/仿真接口第一轮审计
 

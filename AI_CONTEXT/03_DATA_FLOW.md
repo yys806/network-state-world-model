@@ -1,3 +1,13 @@
+<!-- V2U4REAL R2-05B 2026-10-27 -->
+## 2026-10-27 — R2-05B 实际数据→感知→应用层数据流
+
+数据流为：固定 `train/2025-07-18-12-53_2/1752814590.2` 两端 PCD/YAML → 复用严格读取器 → `PerceptionFrame`（原始帧键、传感器、有限 XYZ、`dataset_native_unverified`）→ `MockPerception.geometry_envelope_v1` → 严格 `DetectionResult`（`center_xyz_length_width_height_yaw`）→ canonical JSON payload → AirFogSim `TaskManager` waiting-to-offload 队列。方案 B 标签只作为独立来源追溯，不进入预测。
+
+`airfogsim` conda CPU smoke 两次重复通过：每次两个任务在队列中、一步 `AirFogSimEnv.step` 后队列仍为1，四类通信 `data_size` 均为0；因此软件接入/任务记录 PASS，真实无线交付 `BLOCKED_NOT_ATTEMPTED`。AirFogSim 原生 `task_lifecycle_state` 可能显示 `finished`，以自有 `application_task_state=waiting_to_offload` 和队列回执为准，不把它当作交付证据。物理坐标和真实时钟不在此流中推断。
+
+证据：`code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/`；接口模块：`code/src/pi_jwm/v2u4real_perception_interface_v1.py`、`v2u4real_airfogsim_adapter_v1.py`。
+<!-- END V2U4REAL R2-05B -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 
