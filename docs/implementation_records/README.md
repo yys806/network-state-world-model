@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — STEP R2-06 数据与模态适用性
+
+本轮固定train无真实RGB；RGB和融合BLOCKED，LiDAR有限验证PARTIAL。新增审计与七用途判断，不开放正式训练或自动下一任务。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

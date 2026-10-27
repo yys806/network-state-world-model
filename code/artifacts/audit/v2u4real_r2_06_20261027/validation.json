@@ -1,0 +1,44 @@
+{
+  "commands": [
+    {
+      "name": "focused_tests",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "test_v2u4real_r2_06_modality_v1"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 1.1078929000068456,
+      "log": "code\\artifacts\\audit\\v2u4real_r2_06_20261027\\focused_tests.log"
+    },
+    {
+      "name": "compileall",
+      "command": [
+        "python",
+        "-m",
+        "compileall",
+        "-q",
+        "code/src",
+        "code/scripts",
+        "code/tests"
+      ],
+      "exit_code": 1,
+      "elapsed_s": 3.2152929000440054,
+      "log": "code\\artifacts\\audit\\v2u4real_r2_06_20261027\\compileall.log"
+    },
+    {
+      "name": "knowledge_index_initial_check",
+      "command": [
+        "python",
+        "code/scripts/build_project_knowledge_index_v1.py",
+        "--check"
+      ],
+      "exit_code": 1,
+      "elapsed_s": 121.82796520000556,
+      "log": "code\\artifacts\\audit\\v2u4real_r2_06_20261027\\knowledge_index_initial_check.log"
+    }
+  ],
+  "old_tests_rerun": false
+}

@@ -1,0 +1,82 @@
+{
+  "AI_CONTEXT/00_PROJECT_STATE.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 数据模态审计完成，正式基线仍有前置门\n\n本地固定训练场景两个完整包无RGB；图像解码/投影BLOCKED。64组相机K/E只是数值元数据，UAV外参16键逐帧不同，方向和物理时间关联未建立。LiDAR可用于有限输入/接口验证；正式真实感知基线尚需数据/标签/评价合同。第一阶段仍以LiDAR为主，RGB只保留未来扩展。既有索引五项不同步，推送继续阻塞。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "add12a43a88f9725aba8dab1eb1683d940ce7cd8f8b5ad17b9aa14a55148896e",
+    "after_sha256": "71f61a3b97f747e4aa3fd07c64e2d78e8f9936eef0339595cd2b744776afcad1"
+  },
+  "AI_CONTEXT/01_RESEARCH_CONTEXT.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 真实数据适用范围\n\n依据最新版训练前任务书任务1和当前用户授权，车辆/UAV均为感知信息源，UAV预设轨迹，RSU侧协同3D感知；本轮仅核验数据，不冻结新科学细节。V2U4Real原生1车+1UAV不能充当多车辆/RSU/无线任务完整实测场景。已下载固定train发布无RGB，不改变第一阶段LiDAR范围。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "8851576c0198b7659845d6ad73c8680ba39ff38ae42c76e80c7da1e9a240c72f",
+    "after_sha256": "c3522c9b77ad8a9b3a553c5cbfd1b86b1279a4186c09e8139f22377a28516d5c"
+  },
+  "AI_CONTEXT/03_DATA_FLOW.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 相机元数据与图像分开\n\nR2-02完整包目录经本轮包SHA重核继承：RGB=0；16键的32份Ouster YAML中共64组相机K/E，2份真实YAML锚点匹配。元数据/相同文件key不等于图像、曝光同步或投影通过；PCD的rgb字段不是图像文件。原64文件不变，无标签/坐标/时间写回。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "c117f48019ba13b02329cc2b1d7e0519f602c79b2adba40759aa3598697672ec",
+    "after_sha256": "8473a1ac325a606e456fc794789045c981bc842a28206a4f636f9339566080fe"
+  },
+  "AI_CONTEXT/04_MODULE_MAP.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 离线增量审计入口\n\ncode/scripts/audit_v2u4real_r2_06_modality_v1.py重核训练包/原始文件SHA，复用完整包目录、旧相机/几何/标签/软件链证据；不解码PCD、不运行检测器。code/tests/test_v2u4real_r2_06_modality_v1.py包含17项专项合同测试。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "aaf348793285dfa1c2ba788b6a249fcf3c83a6577d84e607be3b119976d7fd53",
+    "after_sha256": "781db08968a5a3d183cc5c35a53b52c89cd133e8e7ac55d19b58ddcef39e4cb8"
+  },
+  "AI_CONTEXT/05_EXPERIMENTS.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 模态审计，无检测性能\n\n两完整训练包/64原始文件SHA核验通过；实际RGB=0，几何投影BLOCKED。新增17/17专项测试通过，964份源码无落盘编译通过；原compileall因缓存目录权限exit1，知识索引--check既有五项不同步。没有重新执行五帧/B合并/Mock测试。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "4b53c0783d60b42c64d57fddd1a91f7659669dd44cea93ee139b1ebff27ebc75",
+    "after_sha256": "9548cc85a3d80711f406cf127b995a959178a554777181d266c00d97b0b2aaa6"
+  },
+  "AI_CONTEXT/07_KNOWN_ISSUES.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 RGB与正式数据阻塞\n\n实际RGB缺失，格式/分辨率/解码/重复/曝光不可实测；相机外参方向、物理时钟和传感器绑定缺证据。UAV外参每个已选key不同，不能拿首帧作为全局标定。继承2组车辆重复PCD、NOT_ESTABLISHED物理对齐及R2-05A类别/BEV评价/B路径冲突；不修改数据或门限。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "9788b5dce1c2692a1af0a9ff61ab9a9ff2374e5d2d23930019681d68b8a39ec1",
+    "after_sha256": "620ceabdbcefd1d549981fdbc76f08a16f09ad730acaa585208ca3d68479ae70"
+  },
+  "AI_CONTEXT/08_CHANGELOG.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 数据模态适用性审计\n\n新增离线审计、17项测试、实施记录和机器回执；七用途结论为PARTIAL/PARTIAL/PARTIAL/BLOCKED/BLOCKED/PARTIAL/NOT_APPLICABLE（最后一项指原生完整网络场景）。没有新科学决策，下一步只建议研究者冻结最小LiDAR基线数据与评价合同。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "1ce72f13b15eae03cd04dc86a363aa6d915948c776c3c8cb6224d1bd161412fa",
+    "after_sha256": "ffb81c105f26959fc2c61193f616187ce20fd6a4d85ab032fb193e668abee6e7"
+  },
+  "记录/本地计划表.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — STEP R2-06 — 已完成有限审计，停止等待审阅\n\n当前门：训练前任务书任务1数据审计完成。得到：已下载官方train无RGB、64相机矩阵仅数值可读，七类用途和数据边界已交付。剩余：物理时间/标定、标签/评价合同与索引五项差异。唯一建议下一动作：研究者冻结最小LiDAR基线数据与评价合同；不自动启动任务2～8。task_plan/progress/findings起始已删除，不重建，过程统一记于此和实施记录。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "bdfa201bc795c56e6e86f046c4d4aea8359a4ba528477983a47843dd66559de3",
+    "after_sha256": "4cf0cb51a268c79c77e6da56340bdafa4cc76a55d1d93972ebaaedca6445e57a"
+  },
+  "记录/PIJWM主文档.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 数据证据边界（非方法变更）\n\n固定train场景发布内容无RGB；相机矩阵存在不代表RGB融合可用。双端LiDAR软件变换通过但真实同步/物理配准未建立。多车辆传感来源、RSU、区域任务、通信服务须明确仿真补充；第一阶段LiDAR、RGB未来扩展，不变更核心模型/假设/指标。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "2f8a6962beaf4db2e339ff52ece946a508695e4a5894a46aac592d614d8cf06c",
+    "after_sha256": "40b24fc4354306943541425249ca8ea82eb2204818d9fac28f2924786ba09873"
+  },
+  "记录/8.12之后推进.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — STEP R2-06 — RGB/LiDAR审计\n\n完成两训练包目录身份、64原始文件保全、64相机矩阵与2原始YAML锚点核验；无RGB，真实投影BLOCKED。17专项测试通过，原compileall缓存ACL阻塞但964源码无落盘编译通过；索引五项既存差异阻塞推送。不重跑旧测试、不访问非train、不用GPU。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "103434f07c5f9424a66ccb8f22cf28144aacc35586e629546adad68ba97c946e",
+    "after_sha256": "b405a11e2f56e858459a5617bd2f94d65ae4801ab91b506cb1d5a70c32f1834e"
+  },
+  "docs/implementation_records/README.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — STEP R2-06 数据与模态适用性\n\n本轮固定train无真实RGB；RGB和融合BLOCKED，LiDAR有限验证PARTIAL。新增审计与七用途判断，不开放正式训练或自动下一任务。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "9914406b81b0d0e0a7ba3200f95b303c3a6645ad80d70705d00ba2ac74f9d4cd",
+    "after_sha256": "0d18ca98b1246e12edd05de10a9c8ee7df8d4ebda91c059ba3494bcb6cf7e378"
+  },
+  "docs/CHANGELOG.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 RGB/LiDAR数据审计\n\n新增只读train模态审计、17项测试、相机逐键范围与七用途数据边界；继承旧结果、不重跑旧链。正式基线准入和知识索引推送门仍有阻塞。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "52b07d3ff71aa9dfe1284297a0fcd492ac77c1029c0b041b55e5354523306878",
+    "after_sha256": "34a270064eee2ca576bf53f10c27371a22d93de421c84e49807761752465b651"
+  },
+  "docs/PROJECT_INDEX.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 数据审计入口\n\n最新数据审计见实施记录和result.json：实际RGB=0；相机元数据64组；真实同步/标定和正式基线仍有阻塞。原生数据不能覆盖完整多车/区域任务/通信调度系统。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "11923897d4b509ec9ca108aabee0e45af2e837908f13d8400a44d09073a71106",
+    "after_sha256": "2d88999762518eae237a4c40af0b1aae4926dd3213cb2ece2f796b0ff089c2c8"
+  },
+  "docs/RESEARCH_STATUS.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 数据适用性状态\n\nCOMPLETED_AUDIT_ONLY；RGB与融合BLOCKED，LiDAR模块输入验证PARTIAL；不代表正式感知基线/训练准入。第一阶段仍LiDAR，完整物理时间和标定证据未建立。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "cd5aa13aa66a0906d6c61d6d7fc019e1c5021da0eef20a0c903d7bf29eea17a0",
+    "after_sha256": "cd2574a2c69701d625c25685d99fee45004e79b76d16d7ef37f45d295713d88b"
+  },
+  "docs/EXPERIMENT_INDEX.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 train模态审计\n\n离线数据审计，不是检测性能实验；17专项测试通过；继承旧几何/B/软件接入证据，无PCD解码或模型运行。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "dcad073e33e72e26c776ef5f3804a0d123493416c0ba3bc8c43f357d77d22534",
+    "after_sha256": "650ed9c17e2638e9a3fde3fade985168f7a05e50e9e0c4c39b630c47c1225463"
+  },
+  "docs/RESULTS_INDEX.md": {
+    "prefix": "<!-- V2U4REAL R2-06 2026-10-27 -->\n## 2026-10-27 — R2-06 审计结论，无性能数字\n\n固定训练场景两个完整包RGB=0；相机数值64组；真实投影BLOCKED；物理对齐NOT_ESTABLISHED。七用途判断和正式数据边界见机器回执，不把计数当检测效果。\n\n实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。\n<!-- END V2U4REAL R2-06 -->\n\n",
+    "before_sha256": "ea19e98e87f5d9fbebaae299ebec9d6bb255c82f9bcee5d9919237881d238c48",
+    "after_sha256": "25b749627ba26f1200d3015710d54c06f94381098d5de0bac37ce46fabe1f83b"
+  }
+}

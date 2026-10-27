@@ -1,0 +1,57 @@
+{
+  "records": [
+    {
+      "sensor_slot": "1/camera0",
+      "instances": 16,
+      "unique_intrinsic_count": 1,
+      "unique_extrinsic_count": 1,
+      "max_rotation_orthogonality_error": 5.808464820233894e-12,
+      "rotation_determinant_range": [
+        1.0000000000045945,
+        1.0000000000045945
+      ],
+      "direction_verified": false,
+      "consequence": "constant only within these 16 Ouster metadata keys; not global proof"
+    },
+    {
+      "sensor_slot": "1/camera1",
+      "instances": 16,
+      "unique_intrinsic_count": 1,
+      "unique_extrinsic_count": 1,
+      "max_rotation_orthogonality_error": 9.64295310268426e-12,
+      "rotation_determinant_range": [
+        1.0000000000005653,
+        1.0000000000005653
+      ],
+      "direction_verified": false,
+      "consequence": "constant only within these 16 Ouster metadata keys; not global proof"
+    },
+    {
+      "sensor_slot": "1/camera2",
+      "instances": 16,
+      "unique_intrinsic_count": 1,
+      "unique_extrinsic_count": 1,
+      "max_rotation_orthogonality_error": 1.1641247856259285e-11,
+      "rotation_determinant_range": [
+        1.0000000000023548,
+        1.0000000000023548
+      ],
+      "direction_verified": false,
+      "consequence": "constant only within these 16 Ouster metadata keys; not global proof"
+    },
+    {
+      "sensor_slot": "2/camera0",
+      "instances": 16,
+      "unique_intrinsic_count": 1,
+      "unique_extrinsic_count": 16,
+      "max_rotation_orthogonality_error": 1.1102230246251565e-15,
+      "rotation_determinant_range": [
+        0.9999999999999992,
+        1.000000000000001
+      ],
+      "direction_verified": false,
+      "consequence": "UAV per-key extrinsics must not be replaced by first-key/global matrix; physical meaning unverified"
+    }
+  ],
+  "physical_acceptance_threshold_added": false
+}

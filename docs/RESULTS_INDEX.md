@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 审计结论，无性能数字
+
+固定训练场景两个完整包RGB=0；相机数值64组；真实投影BLOCKED；物理对齐NOT_ESTABLISHED。七用途判断和正式数据边界见机器回执，不把计数当检测效果。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05B 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05B 软件链结果
 

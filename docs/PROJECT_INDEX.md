@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 数据审计入口
+
+最新数据审计见实施记录和result.json：实际RGB=0；相机元数据64组；真实同步/标定和正式基线仍有阻塞。原生数据不能覆盖完整多车/区域任务/通信调度系统。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05B 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05B 感知接口与 AirFogSim 软件接入
 

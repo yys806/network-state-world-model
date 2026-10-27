@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 train模态审计
+
+离线数据审计，不是检测性能实验；17专项测试通过；继承旧几何/B/软件接入证据，无PCD解码或模型运行。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05B 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05B CPU 接口冒烟
 

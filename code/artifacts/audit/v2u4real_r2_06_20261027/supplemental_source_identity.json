@@ -1,0 +1,72 @@
+{
+  "files": [
+    {
+      "path": "code/scripts/audit_v2u4real_r2_06_modality_v1.py",
+      "bytes": 22649,
+      "sha256": "c447663d4043923decdbc852757596998c15446644819b8267bb1a89800f74db",
+      "access": "source_or_local_evidence"
+    },
+    {
+      "path": "code/tests/test_v2u4real_r2_06_modality_v1.py",
+      "bytes": 5604,
+      "sha256": "471def687bb7d0830c900e3e19219d303b17f57fd2d5da66cc777d6a594091f3",
+      "access": "source_or_local_evidence"
+    },
+    {
+      "path": "code/reference/V2U4Real.SOURCE.json",
+      "bytes": 1948,
+      "sha256": "325971861da520c6efdf3f5d08a07bf1d6b7099ab9afa065b030a945d28d4541",
+      "access": "source_or_local_evidence"
+    },
+    {
+      "path": "code/reference/V2U4Real.R2_SOURCES.json",
+      "bytes": 1102,
+      "sha256": "135cbf9ad39f6c2838b572858cac142953a6527b0e0227c1d599cd4004324123",
+      "access": "source_or_local_evidence"
+    },
+    {
+      "path": "code/reference/V2U4Real/README.md",
+      "bytes": 12299,
+      "sha256": "480d96479f60a4c922300e2ca31239b356d6c59e48785e2818b05f7b759aa55f",
+      "access": "source_or_local_evidence"
+    },
+    {
+      "path": "code/reference/V2U4Real/opencood/data_utils/datasets/basedataset.py",
+      "bytes": 25339,
+      "sha256": "aea708b371977015deb5fbe45ad3ed19a912b34d2cc66cf0482f7feff63f19aa",
+      "access": "source_or_local_evidence"
+    },
+    {
+      "path": "code/reference/V2U4Real/opencood/utils/transformation_utils.py",
+      "bytes": 5502,
+      "sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+      "access": "source_or_local_evidence"
+    },
+    {
+      "path": "code/scripts/configs/v2u4real_r2_01.json",
+      "bytes": 944,
+      "sha256": "5fa7b589cbfa0d579d0848951efd4fee22d79885abfd71c48e9994f50581013f",
+      "access": "source_or_local_evidence"
+    },
+    {
+      "path": "code\\artifacts\\audit\\v2u4real_r2_06_20261027\\official_owner_reply.json",
+      "bytes": 1462,
+      "sha256": "cdac8f8a756707346d5c99fc6ca30f7e6d5fe4399bf69b32feeb356b99c9b55c",
+      "access": "source_or_local_evidence"
+    },
+    {
+      "path": "D:/shen/OB/科研/PKU/PIJWM/PIJWM/新场景下训练前任务书.md",
+      "bytes": 8297,
+      "sha256": "9df6fe58b9fb563f87bded2744cfe2243f67b7f0c57d0dd1e7a24bdbdefafa40",
+      "access": "read_only"
+    },
+    {
+      "path": "D:/shen/OB/科研/PKU/PIJWM/组会笔记/1028组会.md",
+      "bytes": 64523,
+      "sha256": "5399a4b4519b7b5b1b6427a057e1837e622208a614fb9ca33c14163906fa3144",
+      "access": "read_only"
+    }
+  ],
+  "research_notes_copied": false,
+  "read_date": "2026-10-27"
+}

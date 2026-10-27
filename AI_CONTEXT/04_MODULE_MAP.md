@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 离线增量审计入口
+
+code/scripts/audit_v2u4real_r2_06_modality_v1.py重核训练包/原始文件SHA，复用完整包目录、旧相机/几何/标签/软件链证据；不解码PCD、不运行检测器。code/tests/test_v2u4real_r2_06_modality_v1.py包含17项专项合同测试。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05B 2026-10-27 -->
 ## 2026-10-27 — 感知接口与 AirFogSim 应用适配层
 

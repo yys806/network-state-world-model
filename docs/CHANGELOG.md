@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 RGB/LiDAR数据审计
+
+新增只读train模态审计、17项测试、相机逐键范围与七用途数据边界；继承旧结果、不重跑旧链。正式基线准入和知识索引推送门仍有阻塞。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05B 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05B 感知接口与 AirFogSim 软件接入
 

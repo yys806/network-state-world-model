@@ -2,6 +2,28 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-V2U4REAL-R2-06-MODALITY",
+      "title": "V2U4Real RGB/LiDAR数据与模态适用性",
+      "keywords": [
+        "R2-06",
+        "RGB",
+        "相机",
+        "多模态",
+        "标定",
+        "V2U4Real"
+      ],
+      "summary": "先核对固定train无RGB、相机矩阵与物理时间/方向阻塞，继承旧LiDAR结果，不自动训练。",
+      "primary_sources": [
+        "docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md",
+        "code/artifacts/audit/v2u4real_r2_06_20261027/result.json"
+      ],
+      "verification_sources": [
+        "code/scripts/audit_v2u4real_r2_06_modality_v1.py",
+        "code/artifacts/audit/v2u4real_r2_06_20261027/calibration_summary.json",
+        "code/artifacts/audit/v2u4real_r2_06_20261027/source_identity.json"
+      ]
+    },
+    {
       "id": "ROUTE-V2U4REAL-R2-05A-BASELINE-DATA-EVAL",
       "keywords": ["R2-05A", "感知准入", "字段合同", "BEV IoU", "AP排序", "Car-only", "基线适配", "Q_k"],
       "title": "V2U4Real baseline field and evaluation draft with readiness blockers",

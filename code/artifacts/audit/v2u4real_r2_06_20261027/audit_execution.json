@@ -1,0 +1,19 @@
+{
+  "command": "python code/scripts/audit_v2u4real_r2_06_modality_v1.py",
+  "final_result": {
+    "chunk_id": "b8cbfb",
+    "wall_time_seconds": 5.7793349,
+    "exit_code": 0,
+    "original_token_count": 44,
+    "output": "{\"task\": \"COMPLETED_AUDIT_ONLY\", \"rgb_count\": 0, \"camera_matrix_instances\": 64, \"geometry\": \"BLOCKED\", \"formal_baseline\": \"BLOCKED_PENDING_DATA_LABEL_EVALUATION_CONTRACT\"}\r\n"
+  },
+  "first_stopped_attempt": {
+    "chunk_id": "7ead42",
+    "wall_time_seconds": 1.6603884,
+    "exit_code": 1,
+    "original_token_count": 159,
+    "output": "Traceback (most recent call last):\r\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\audit_v2u4real_r2_06_modality_v1.py\", line 325, in <module>\r\n    raise SystemExit(main())\r\n                     ~~~~^^\r\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\audit_v2u4real_r2_06_modality_v1.py\", line 320, in main\r\n    run(args.output)\r\n    ~~~^^^^^^^^^^^^^\r\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\audit_v2u4real_r2_06_modality_v1.py\", line 177, in run\r\n    raise ValueError(f\"inherited evidence differs from HEAD: {relative}\")\r\nValueError: inherited evidence differs from HEAD: code/artifacts/manifests/v2u4real_r2_03_20261026/real_data_contract_audit.json\r\n"
+  },
+  "intermediate_stopped_attempt": "Local R2-05B final receipt exists on disk but is not in HEAD; subsequently preserved and explicitly labeled LOCAL_EVIDENCE_NOT_IN_GIT.",
+  "source_data_or_old_evidence_modified": false
+}

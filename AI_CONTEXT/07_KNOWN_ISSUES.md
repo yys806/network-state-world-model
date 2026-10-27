@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 RGB与正式数据阻塞
+
+实际RGB缺失，格式/分辨率/解码/重复/曝光不可实测；相机外参方向、物理时钟和传感器绑定缺证据。UAV外参每个已选key不同，不能拿首帧作为全局标定。继承2组车辆重复PCD、NOT_ESTABLISHED物理对齐及R2-05A类别/BEV评价/B路径冲突；不修改数据或门限。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05B 2026-10-27 -->
 ## 2026-10-27 — R2-05B 边界与阻塞
 

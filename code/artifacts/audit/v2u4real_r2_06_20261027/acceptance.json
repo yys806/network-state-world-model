@@ -1,0 +1,194 @@
+{
+  "status": "PASS_AUDIT_EVIDENCE_PRESERVATION",
+  "preexisting_workspace_checks": [
+    {
+      "path": "AGENTS.md",
+      "status": "PASS"
+    },
+    {
+      "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/Feng_2025_ICML_Graph_World_Model.txt",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/Hajiramezanali_2019_Variational_Graph_Recurrent_Neural_Netwo.txt",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/Karacelebi_2026_ArXivOrg_Learning_Ad_Hoc_Network_Dynamics_via_Gra.txt",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/PDF_SHA256SUMS.txt",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/PI-JWM_v8_literature_map.md",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/PIJWM数据集兼容性矩阵.md",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/PIJWM文献管理说明.md",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/PIJWM方法证据矩阵.md",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/README.md",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/文献索引.csv",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/文献索引.md",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/新增7篇精读汇总_20260826.md",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/新增7篇精读笔记_20260826.jsonl",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/本地文献库状态.json",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/本地文献库验收.json",
+      "status": "PASS"
+    },
+    {
+      "path": "doc/literature-notes/需要手动下载.md",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/CHANGELOG.md",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/PROJECT_INDEX.md",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/registries/generated/registry_summary.json",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/registries/generated/tracked_file_inventory.csv",
+      "status": "PASS"
+    },
+    {
+      "path": "findings.md",
+      "status": "PASS"
+    },
+    {
+      "path": "paper/README.md",
+      "status": "PASS"
+    },
+    {
+      "path": "paper/archive/pi_jwm_ton_draft_zh/IEEEtran.cls",
+      "status": "PASS"
+    },
+    {
+      "path": "paper/archive/pi_jwm_ton_draft_zh/pi_jwm_ton_draft_zh.pdf",
+      "status": "PASS"
+    },
+    {
+      "path": "paper/archive/pi_jwm_ton_draft_zh/pi_jwm_ton_draft_zh.tex",
+      "status": "PASS"
+    },
+    {
+      "path": "progress.md",
+      "status": "PASS"
+    },
+    {
+      "path": "task_plan.md",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/deploy_step6_4j_bundle_v1.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/deploy_step6_4j_bundle_v1_29454.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/deploy_step6_4j_remote_v1.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/fig4_frozen_checkpoint_readonly_validation_20261014.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/generate_meeting_figures_20261014.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/generate_meeting_figures_20261014_v2.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/plot_meeting_world_model_figures_20261012.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/plot_step5_3e_tiny_overfit.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/probe_step6_4j_remote_v1.py",
+      "status": "PASS"
+    },
+    {
+      "path": "code/scripts/probe_step6_4j_remote_v1_29454.py",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_AND_SOURCES.md",
+      "status": "PASS"
+    }
+  ],
+  "raw_files_unchanged": 64,
+  "full_archives_unchanged": 2,
+  "inherited_receipts_unchanged": 11,
+  "official_source_checks": [
+    {
+      "path": "README.md",
+      "sha256": "480d96479f60a4c922300e2ca31239b356d6c59e48785e2818b05f7b759aa55f",
+      "matches_pinned_manifest": true
+    },
+    {
+      "path": "opencood/data_utils/datasets/basedataset.py",
+      "sha256": "aea708b371977015deb5fbe45ad3ed19a912b34d2cc66cf0482f7feff63f19aa",
+      "matches_pinned_manifest": true
+    },
+    {
+      "path": "opencood/utils/transformation_utils.py",
+      "sha256": "2c198a94ffaf9ac3087396ee364b866a817fb2a075ac7c37c618cb03091ebd80",
+      "matches_pinned_manifest": true
+    }
+  ],
+  "notes_and_executed_sources_unchanged": true,
+  "experiment_registry": "PASS",
+  "question_routes": "PASS",
+  "ai_context": "PASS",
+  "data_readiness": "PARTIAL_LIDAR_BLOCKED_RGB_AND_FORMAL_BASELINE",
+  "geometry_status": "BLOCKED",
+  "formal_training_admission": "BLOCKED",
+  "knowledge_index": "BLOCKED_FIVE_EXISTING_GENERATED_MISMATCHES",
+  "push": "NOT_ATTEMPTED_GATE_BLOCKED"
+}

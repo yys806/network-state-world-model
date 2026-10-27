@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 数据模态适用性审计
+
+新增离线审计、17项测试、实施记录和机器回执；七用途结论为PARTIAL/PARTIAL/PARTIAL/BLOCKED/BLOCKED/PARTIAL/NOT_APPLICABLE（最后一项指原生完整网络场景）。没有新科学决策，下一步只建议研究者冻结最小LiDAR基线数据与评价合同。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05B 2026-10-27 -->
 ## 2026-10-27 — R2-05B 感知接口与 AirFogSim 软件接入
 

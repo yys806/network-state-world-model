@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 数据模态审计完成，正式基线仍有前置门
+
+本地固定训练场景两个完整包无RGB；图像解码/投影BLOCKED。64组相机K/E只是数值元数据，UAV外参16键逐帧不同，方向和物理时间关联未建立。LiDAR可用于有限输入/接口验证；正式真实感知基线尚需数据/标签/评价合同。第一阶段仍以LiDAR为主，RGB只保留未来扩展。既有索引五项不同步，推送继续阻塞。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05B 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05B 感知接口与 AirFogSim 软件接入
 

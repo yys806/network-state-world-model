@@ -1,0 +1,22 @@
+test_camera_paths_and_unsupported_agent (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_camera_paths_and_unsupported_agent) ... ok
+test_gate_is_not_projection_execution (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_gate_is_not_projection_execution) ... ok
+test_head_identity_records_line_endings (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_head_identity_records_line_endings) ... ok
+test_inventory_rejects_duplicate_names (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_inventory_rejects_duplicate_names) ... ok
+test_matrix_shape_and_finiteness (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_matrix_shape_and_finiteness) ... ok
+test_no_rgb_never_decode_pass (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_no_rgb_never_decode_pass) ... ok
+test_reject_other_split (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_reject_other_split) ... ok
+test_reject_traversal_and_other_scene_agent (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_reject_traversal_and_other_scene_agent) ... ok
+test_rgb_presence_does_not_establish_direction (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_rgb_presence_does_not_establish_direction) ... ok
+test_rgb_presence_does_not_establish_sync (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_rgb_presence_does_not_establish_sync) ... ok
+test_seven_uses_and_no_full_system_claim (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_seven_uses_and_no_full_system_claim) ... ok
+test_valid_train_member (test_v2u4real_r2_06_modality_v1.AuditContractTests.test_valid_train_member) ... ok
+test_boundaries_and_raw_identity (test_v2u4real_r2_06_modality_v1.RealReceiptTests.test_boundaries_and_raw_identity) ... ok
+test_full_archive_and_local_no_rgb (test_v2u4real_r2_06_modality_v1.RealReceiptTests.test_full_archive_and_local_no_rgb) ... ok
+test_metadata_counts_not_physical_pass (test_v2u4real_r2_06_modality_v1.RealReceiptTests.test_metadata_counts_not_physical_pass) ... ok
+test_old_findings_reused_not_cleared (test_v2u4real_r2_06_modality_v1.RealReceiptTests.test_old_findings_reused_not_cleared) ... ok
+test_refuse_overwriting_receipt (test_v2u4real_r2_06_modality_v1.RealReceiptTests.test_refuse_overwriting_receipt) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.279s
+
+OK

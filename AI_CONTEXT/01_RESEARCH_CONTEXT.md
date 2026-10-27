@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 真实数据适用范围
+
+依据最新版训练前任务书任务1和当前用户授权，车辆/UAV均为感知信息源，UAV预设轨迹，RSU侧协同3D感知；本轮仅核验数据，不冻结新科学细节。V2U4Real原生1车+1UAV不能充当多车辆/RSU/无线任务完整实测场景。已下载固定train发布无RGB，不改变第一阶段LiDAR范围。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

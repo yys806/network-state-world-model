@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-06 2026-10-27 -->
+## 2026-10-27 — R2-06 数据证据边界（非方法变更）
+
+固定train场景发布内容无RGB；相机矩阵存在不代表RGB融合可用。双端LiDAR软件变换通过但真实同步/物理配准未建立。多车辆传感来源、RSU、区域任务、通信服务须明确仿真补充；第一阶段LiDAR、RGB未来扩展，不变更核心模型/假设/指标。
+
+实施记录：docs/implementation_records/STEP_R2_06_V2U4REAL_RGB_LIDAR_MODALITY_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_r2_06_20261027/result.json。仅train/CPU审计；GPU、训练、模型推理、validation/test/locked_test和新下载均未执行。
+<!-- END V2U4REAL R2-06 -->
+
 <!-- V2U4REAL R2-05A 2026-10-27 -->
 ## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）
 

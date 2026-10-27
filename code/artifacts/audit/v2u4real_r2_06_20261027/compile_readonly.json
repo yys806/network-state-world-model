@@ -1,0 +1,8 @@
+{
+  "command": "compile(source_bytes, filename, exec) for all *.py under code/src, code/scripts, code/tests",
+  "compiled_file_count": 964,
+  "errors": [],
+  "status": "PASS",
+  "bytecode_written": false,
+  "reason": "original compileall encountered existing __pycache__ ACL; no permissions or source changed"
+}

@@ -1,0 +1,32 @@
+{
+  "retrieved_date": "2026-10-27",
+  "tool": "GitHub issue_read get_comments",
+  "issue": "VjiaLi/V2U4Real#7",
+  "comments": [
+    {
+      "id": 5031674615,
+      "body": "Hi,\n\nThe dataset has now been released, and the download links are available in our GitHub repository. The current release includes part of the complete dataset. Please note that the image data are not publicly available at this stage.\n\nFor the released splits, the corresponding metadata, calibration files, and annotation files will also be made publicly available. However, the metadata and annotations for the test set will not be released.\n\nPlease refer to the repository README for the download links and the latest release information.\n\nThank you again for your interest, and we hope V2U4Real will be useful for your research.",
+      "html_url": "https://github.com/VjiaLi/V2U4Real/issues/7#issuecomment-5031674615",
+      "user": {
+        "login": "VjiaLi",
+        "id": 109774977,
+        "profile_url": "https://github.com/VjiaLi",
+        "avatar_url": "https://avatars.githubusercontent.com/u/109774977?v=4"
+      },
+      "author_association": "OWNER",
+      "reactions": {
+        "total_count": 0,
+        "+1": 0,
+        "-1": 0,
+        "laugh": 0,
+        "confused": 0,
+        "heart": 0,
+        "hooray": 0,
+        "rocket": 0,
+        "eyes": 0
+      },
+      "created_at": "2026-07-21T08:15:57Z",
+      "updated_at": "2026-07-21T08:15:57Z"
+    }
+  ]
+}

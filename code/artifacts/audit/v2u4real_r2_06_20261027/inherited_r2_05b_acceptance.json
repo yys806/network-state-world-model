@@ -1,0 +1,527 @@
+{
+  "schema_version": "PIJWM-V2U4Real-R2-05B-interface-v1",
+  "step": "R2-05B",
+  "device": "CPU",
+  "gpu_used": false,
+  "locked_test_accessed": false,
+  "training_run": false,
+  "formal_detection_evaluation": false,
+  "wireless_delivery_claim": false,
+  "scene": "2025-07-18-12-53_2",
+  "frame_key": "1752814590.2",
+  "data_ingestion": {
+    "status": "PASS",
+    "dataset": "VJiaLi/V2U4Real",
+    "dataset_version": "36f64423a639db7c5bbc8ac8575b1ee74d7b8e9a",
+    "split": "train",
+    "scene": "2025-07-18-12-53_2",
+    "frame_key": "1752814590.2",
+    "frame_key_semantics": "identifier_only_not_physical_timestamp",
+    "sensor_agents": {
+      "1": "agent-1/ouster",
+      "2": "agent-2/ouster"
+    },
+    "frames": {
+      "1": {
+        "schema_version": "PIJWM-V2U4Real-Perception-Interface-v1",
+        "frame_key": "1752814590.2",
+        "frame_key_semantics": "identifier_only_not_physical_timestamp",
+        "sensor_id": "agent-1/ouster",
+        "point_shape": [
+          141177,
+          3
+        ],
+        "point_dtype": "float64",
+        "point_count": 141177,
+        "point_sha256": "97c98e8740d514bd6c1713104016ca60b887c4b7da4789242d92ecdac381729f",
+        "coordinate_frame": "v2u4real::agent-1::ouster::native",
+        "coordinate_status": "dataset_native_unverified",
+        "source_metadata": {
+          "dataset": "VJiaLi/V2U4Real",
+          "split": "train",
+          "scene": "2025-07-18-12-53_2",
+          "agent": "1",
+          "sensor": "ouster",
+          "frame_key": "1752814590.2",
+          "frame_key_semantics": "identifier_only_not_physical_timestamp",
+          "pcd_path": "train/2025-07-18-12-53_2/1/ouster/1752814590.2.pcd",
+          "yaml_path": "train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.2.yaml",
+          "pcd_bytes": 2259016,
+          "yaml_bytes": 3592,
+          "pcd_sha256": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+          "yaml_sha256": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "141177"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "141177"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "point_count": 141177,
+          "xyz_finite": true,
+          "annotation_count": 6,
+          "annotation_object_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "coordinate_status": "dataset_native_unverified"
+        },
+        "annotation_metadata": {
+          "raw_yaml_sha256": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+          "labels_available": true,
+          "labels_used_by_mock_perception": false
+        }
+      },
+      "2": {
+        "schema_version": "PIJWM-V2U4Real-Perception-Interface-v1",
+        "frame_key": "1752814590.2",
+        "frame_key_semantics": "identifier_only_not_physical_timestamp",
+        "sensor_id": "agent-2/ouster",
+        "point_shape": [
+          70532,
+          3
+        ],
+        "point_dtype": "float64",
+        "point_count": 70532,
+        "point_sha256": "1e886a707104812c1b29d66aa31d2c05fa42d171a1da2e2a6a7ea4a8e553269f",
+        "coordinate_frame": "v2u4real::agent-2::ouster::native",
+        "coordinate_status": "dataset_native_unverified",
+        "source_metadata": {
+          "dataset": "VJiaLi/V2U4Real",
+          "split": "train",
+          "scene": "2025-07-18-12-53_2",
+          "agent": "2",
+          "sensor": "ouster",
+          "frame_key": "1752814590.2",
+          "frame_key_semantics": "identifier_only_not_physical_timestamp",
+          "pcd_path": "train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+          "yaml_path": "train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+          "pcd_bytes": 1128694,
+          "yaml_bytes": 1390,
+          "pcd_sha256": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+          "yaml_sha256": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+          "pcd_header": {
+            "VERSION": [
+              "0.7"
+            ],
+            "FIELDS": [
+              "x",
+              "y",
+              "z",
+              "rgb"
+            ],
+            "SIZE": [
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            "TYPE": [
+              "F",
+              "F",
+              "F",
+              "F"
+            ],
+            "COUNT": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "WIDTH": [
+              "70532"
+            ],
+            "HEIGHT": [
+              "1"
+            ],
+            "VIEWPOINT": [
+              "0",
+              "0",
+              "0",
+              "1",
+              "0",
+              "0",
+              "0"
+            ],
+            "POINTS": [
+              "70532"
+            ],
+            "DATA": [
+              "binary"
+            ]
+          },
+          "point_count": 70532,
+          "xyz_finite": true,
+          "annotation_count": 2,
+          "annotation_object_ids": [
+            "1",
+            "2"
+          ],
+          "coordinate_status": "dataset_native_unverified"
+        },
+        "annotation_metadata": {
+          "raw_yaml_sha256": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+          "labels_available": true,
+          "labels_used_by_mock_perception": false
+        }
+      }
+    },
+    "raw_annotation_ids": {
+      "1": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "2": [
+        "1",
+        "2"
+      ]
+    },
+    "physical_alignment_status": "NOT_ESTABLISHED",
+    "labels_written": false,
+    "input_integrity_status": "PASS"
+  },
+  "label_merge": {
+    "status": "PASS",
+    "policy": "implementation_faithful_policy_B",
+    "policy_boundary": "in-memory annotation audit only; never a prediction and never written as labels",
+    "frame_key": "1752814590.2",
+    "vehicle_ids": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "uav_ids": [
+      "1",
+      "2"
+    ],
+    "shared_ids": [
+      "1",
+      "2"
+    ],
+    "merged_ids": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "counts": {
+      "vehicle_input": 6,
+      "uav_input": 2,
+      "shared": 2,
+      "vehicle_only": 4,
+      "uav_only": 0,
+      "merged_output": 6,
+      "vehicle_overwritten_by_uav": 2
+    },
+    "set_checks": {
+      "merged_equals_vehicle_union_uav": true,
+      "shared_ids_final_source_uav": true,
+      "vehicle_only_retained": true,
+      "uav_only_retained": true
+    },
+    "object_provenance": {
+      "1": {
+        "final_source": "uav",
+        "vehicle_input_present": true,
+        "uav_input_present": true,
+        "overwritten_vehicle": true,
+        "interpretation": "official_code_interpretation_only"
+      },
+      "2": {
+        "final_source": "uav",
+        "vehicle_input_present": true,
+        "uav_input_present": true,
+        "overwritten_vehicle": true,
+        "interpretation": "official_code_interpretation_only"
+      },
+      "3": {
+        "final_source": "vehicle",
+        "vehicle_input_present": true,
+        "uav_input_present": false,
+        "overwritten_vehicle": false,
+        "interpretation": "official_code_interpretation_only"
+      },
+      "4": {
+        "final_source": "vehicle",
+        "vehicle_input_present": true,
+        "uav_input_present": false,
+        "overwritten_vehicle": false,
+        "interpretation": "official_code_interpretation_only"
+      },
+      "5": {
+        "final_source": "vehicle",
+        "vehicle_input_present": true,
+        "uav_input_present": false,
+        "overwritten_vehicle": false,
+        "interpretation": "official_code_interpretation_only"
+      },
+      "6": {
+        "final_source": "vehicle",
+        "vehicle_input_present": true,
+        "uav_input_present": false,
+        "overwritten_vehicle": false,
+        "interpretation": "official_code_interpretation_only"
+      }
+    },
+    "raw_annotations_preserved_in_audit": true,
+    "labels_used_by_mock_perception": false,
+    "source_evidence": {
+      "repository": "https://github.com/VjiaLi/V2U4Real",
+      "commit": "e099a3a746c6092a614e18b74d1f5b2f3c8351e8",
+      "path": "code/reference/V2U4Real/opencood/utils/uav_to_single.py",
+      "sha256": "cab7b48fe7c343cbb356db131cd1b87f64249f9cfcb7b4073fdeac18ed51ec4b"
+    },
+    "reused_receipt": "D:\\shen\\PKU\\PIJWM\\code\\artifacts\\audit\\v2u4real_r2_05b_20261027\\label_merge.json",
+    "reuse_semantics": "read-only R2-04C evidence reuse; no new label merge decision"
+  },
+  "perception_interface": {
+    "status": "PASS",
+    "interface_version": "PIJWM-V2U4Real-Perception-Interface-v1",
+    "mock_source": "MockPerception.geometry_envelope_v1",
+    "prediction_semantics": "deterministic point-cloud envelope fixture; not ground truth; no accuracy reported",
+    "results": {
+      "1": {
+        "schema_version": "PIJWM-V2U4Real-DetectionResult-v1",
+        "frame_key": "1752814590.2",
+        "frame_key_semantics": "identifier_only_not_physical_timestamp",
+        "sensor_id": "agent-1/ouster",
+        "coordinate_frame": "v2u4real::agent-1::ouster::native",
+        "coordinate_status": "dataset_native_unverified",
+        "result_source": "MockPerception.geometry_envelope_v1",
+        "prediction_semantics": "predictions_are_not_ground_truth",
+        "box_format": "center_xyz_length_width_height_yaw",
+        "box_dimension_order": [
+          "x",
+          "y",
+          "z",
+          "length",
+          "width",
+          "height",
+          "yaw"
+        ],
+        "objects": [
+          {
+            "category": "mock_vehicle",
+            "box_format": "center_xyz_length_width_height_yaw",
+            "box_dimension_order": [
+              "x",
+              "y",
+              "z",
+              "length",
+              "width",
+              "height",
+              "yaw"
+            ],
+            "box3d": [
+              47.17730712890625,
+              26.983978271484375,
+              24.70539402961731,
+              289.0308532714844,
+              301.560791015625,
+              59.21343374252319,
+              0.0
+            ],
+            "confidence": 0.5,
+            "frame_key": "1752814590.2",
+            "sensor_id": "agent-1/ouster",
+            "coordinate_frame": "v2u4real::agent-1::ouster::native",
+            "coordinate_status": "dataset_native_unverified",
+            "result_source": "MockPerception.geometry_envelope_v1",
+            "prediction_semantics": "deterministic_point_cloud_envelope_fixture_not_ground_truth"
+          }
+        ]
+      },
+      "2": {
+        "schema_version": "PIJWM-V2U4Real-DetectionResult-v1",
+        "frame_key": "1752814590.2",
+        "frame_key_semantics": "identifier_only_not_physical_timestamp",
+        "sensor_id": "agent-2/ouster",
+        "coordinate_frame": "v2u4real::agent-2::ouster::native",
+        "coordinate_status": "dataset_native_unverified",
+        "result_source": "MockPerception.geometry_envelope_v1",
+        "prediction_semantics": "predictions_are_not_ground_truth",
+        "box_format": "center_xyz_length_width_height_yaw",
+        "box_dimension_order": [
+          "x",
+          "y",
+          "z",
+          "length",
+          "width",
+          "height",
+          "yaw"
+        ],
+        "objects": [
+          {
+            "category": "mock_vehicle",
+            "box_format": "center_xyz_length_width_height_yaw",
+            "box_dimension_order": [
+              "x",
+              "y",
+              "z",
+              "length",
+              "width",
+              "height",
+              "yaw"
+            ],
+            "box3d": [
+              -8.735465049743652,
+              -4.6313629150390625,
+              -47.616390228271484,
+              65.53312873840332,
+              205.40452575683594,
+              13.291206359863281,
+              0.0
+            ],
+            "confidence": 0.5,
+            "frame_key": "1752814590.2",
+            "sensor_id": "agent-2/ouster",
+            "coordinate_frame": "v2u4real::agent-2::ouster::native",
+            "coordinate_status": "dataset_native_unverified",
+            "result_source": "MockPerception.geometry_envelope_v1",
+            "prediction_semantics": "deterministic_point_cloud_envelope_fixture_not_ground_truth"
+          }
+        ]
+      }
+    },
+    "payloads": {
+      "1": {
+        "adapter_version": "PIJWM-V2U4Real-AirFogSim-Perception-Adapter-v1",
+        "payload_id": "59cbf802cb67d173d124396143f510b5a90f1c5482b85cb350a9cd5bcce46e72",
+        "frame_key": "1752814590.2",
+        "frame_key_semantics": "identifier_only_not_physical_timestamp",
+        "sensor_id": "agent-1/ouster",
+        "byte_count": 1101,
+        "detection_count": 1,
+        "coordinate_frame": "v2u4real::agent-1::ouster::native",
+        "coordinate_status": "dataset_native_unverified",
+        "result_source": "MockPerception.geometry_envelope_v1",
+        "serialization": "canonical_detection_result_json_utf8",
+        "wireless_delivery_status": "NOT_ATTEMPTED_BLOCKED"
+      },
+      "2": {
+        "adapter_version": "PIJWM-V2U4Real-AirFogSim-Perception-Adapter-v1",
+        "payload_id": "ddef7865887e7621bdd3744d14d58e71bb189f96e2f255b12dae2b49ffe8e869",
+        "frame_key": "1752814590.2",
+        "frame_key_semantics": "identifier_only_not_physical_timestamp",
+        "sensor_id": "agent-2/ouster",
+        "byte_count": 1108,
+        "detection_count": 1,
+        "coordinate_frame": "v2u4real::agent-2::ouster::native",
+        "coordinate_status": "dataset_native_unverified",
+        "result_source": "MockPerception.geometry_envelope_v1",
+        "serialization": "canonical_detection_result_json_utf8",
+        "wireless_delivery_status": "NOT_ATTEMPTED_BLOCKED"
+      }
+    },
+    "repeat_equal": true
+  },
+  "airfogsim_software_ingress": {
+    "status": "PASS",
+    "repeat_equal": true,
+    "evidence": [
+      "airfogsim_run_1",
+      "airfogsim_run_2"
+    ]
+  },
+  "simulation_task_record": {
+    "status": "PASS",
+    "application_layer": "AirFogSim TaskManager waiting-to-offload queue",
+    "env_step_count": 1,
+    "wireless_delivery_status": "BLOCKED_NOT_ATTEMPTED"
+  },
+  "wireless_delivery": {
+    "status": "BLOCKED_NOT_ATTEMPTED",
+    "reason": "R1 communication semantic contract remains blocked"
+  },
+  "input_hashes_before_after": [
+    {
+      "agent": "1",
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/ouster/1752814590.2.pcd",
+      "sha256_before": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+      "bytes_before": 2259016,
+      "sha256_after": "ed22da92e681b36d2cbaadcde02d1e47d04a96bb9b999df80a583af5d8891ae6",
+      "unchanged": true
+    },
+    {
+      "agent": "1",
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/1/yaml/ouster/1752814590.2.yaml",
+      "sha256_before": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+      "bytes_before": 3592,
+      "sha256_after": "b31f030d4cf28284e9b53105a7210fc56578639416fff6db5d1ea3bc629c7449",
+      "unchanged": true
+    },
+    {
+      "agent": "2",
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/ouster/1752814590.2.pcd",
+      "sha256_before": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+      "bytes_before": 1128694,
+      "sha256_after": "3113cbedaf517d72d51d2019871e77671f38b1413ef96253dc8067ecf74874d5",
+      "unchanged": true
+    },
+    {
+      "agent": "2",
+      "path": "code/artifacts/data/v2u4real_r2_01/selected_samples/train/2025-07-18-12-53_2/2/yaml/ouster/1752814590.2.yaml",
+      "sha256_before": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+      "bytes_before": 1390,
+      "sha256_after": "9f0142f2ae4c153578f8ccf7c07ad29f3d395bf79bd01ddf5d8a91e56689a7db",
+      "unchanged": true
+    }
+  ],
+  "overall_status": "PASS_SOFTWARE_CHAIN_WITH_WIRELESS_BLOCK"
+}
