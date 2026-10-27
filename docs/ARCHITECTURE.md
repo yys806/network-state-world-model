@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-07 2026-10-27 -->
+## 2026-10-27 — R2-07隔离适配层增量
+
+新增参考仿真工具外围的观测/服务诊断接口，无PI-JWM核心模型、loss、checkpoint或训练协议变更。原生内部时序与传播合同保留阻塞。
+
+记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。仅合成CPU，无数据集读取、GPU、训练、下载、非train访问或vendor修改；不自动启动任务3/4。
+<!-- END V2U4REAL R2-07 -->
+
 <!-- V2U4REAL R2-05B 2026-10-27 -->
 ## 2026-10-27 — R2-05B 感知/应用边界
 

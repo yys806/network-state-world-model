@@ -1,0 +1,2 @@
+# Preserve this audit's raw evidence bytes and SHA-256 receipts.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

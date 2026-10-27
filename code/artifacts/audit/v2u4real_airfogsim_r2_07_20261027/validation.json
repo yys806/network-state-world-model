@@ -1,0 +1,112 @@
+{
+  "step": "R2-07",
+  "status": "COMPLETED_WITH_BLOCKERS",
+  "checks": {
+    "new_tests": {
+      "status": "PASS",
+      "exit_code": 0,
+      "count": 8,
+      "log": "unit_tests.log"
+    },
+    "actual_cpu_probe": {
+      "status": "PASS",
+      "exit_code": 0,
+      "runs": 2,
+      "steps_each": 8,
+      "log": "native_probe.log"
+    },
+    "r1_targeted_regression": {
+      "status": "PASS",
+      "exit_code": 0,
+      "count": 2,
+      "log": "r1_regression.log"
+    },
+    "r2_05b_targeted_regression": {
+      "status": "PASS",
+      "exit_code": 0,
+      "count": 2,
+      "log": "r2_05b_regression.log"
+    },
+    "compile_context_registry": {
+      "status": "PASS",
+      "exit_code": 0,
+      "compiled_sources": 4,
+      "ai_context_files": 9,
+      "receipt": "context_compile_check.json"
+    },
+    "knowledge_index": {
+      "status": "BLOCKED",
+      "exit_code": 1,
+      "log": "knowledge_index_check.log",
+      "mismatches": [
+        "tracked_file_inventory.csv",
+        "python_dependency_map.json",
+        "artifact_catalog.csv",
+        "archive_candidate_registry.csv",
+        "registry_summary.json"
+      ],
+      "rebuild_attempted": false,
+      "final_log": "knowledge_index_check_final.log",
+      "final_exit_code": 1,
+      "final_mismatches_unchanged": true
+    },
+    "packet_lifecycle": {
+      "status": "NOT_RUN",
+      "reason": "belongs to task 4"
+    },
+    "real_replay": {
+      "status": "BLOCKED",
+      "reason": "real physical time and mapping not established; dataset not accessed"
+    },
+    "physical_radio": {
+      "status": "BLOCKED",
+      "reason": "source-confirmed SINR/outage/height/fading and internal time issues await researcher"
+    },
+    "native_task_unit_mapping": {
+      "status": "BLOCKED",
+      "receipt": "native_task_unit_boundary.json",
+      "reason": "native rate*seconds is Mbit; native task size unit and payload-byte binding not closed"
+    }
+  },
+  "commands": {
+    "unit_tests": "python -B -m unittest discover -s code/tests -p test_airfogsim_service_interface_r2_07.py -v",
+    "native_probe": "D:/miniconda/envs/airfogsim/python.exe -B code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py",
+    "r1_regression": "AirFogSimTests.test_replay_contract_refuses_irregular_time_and_outside_bounds + AirFogSimTests.test_replay_reset_exhaustion_and_control_rejection; actual temp root overridden to this audit/regression_work only",
+    "r2_05b_regression": "test_v2u4real_r2_05b_interface_v1.AirFogSimIngressTests (2 tests only)",
+    "compile": "compile(Path(path).read_bytes(), path, 'exec') for four source_files in result.json; no pycache",
+    "context": "build_project_knowledge_index_v1.validate_ai_context; validate_experiment_registry; validate_question_routes",
+    "knowledge_index": "python -B code/scripts/build_project_knowledge_index_v1.py --check"
+  },
+  "prior_failures": [
+    {
+      "attempt": "first unit invocation",
+      "exit_code": 1,
+      "reason": "test module path not found",
+      "log": "attempt1_unit_tests.log"
+    },
+    {
+      "attempt": "native attempt1",
+      "exit_code": 1,
+      "reason": "self-authored probe omitted the second UMa branch at 400m; corrected probe only",
+      "receipt": "attempt1_result.json"
+    },
+    {
+      "attempt": "native attempt2",
+      "exit_code": 1,
+      "reason": "Windows GBK cannot encode vendor wrench output; corrected own UTF-8 streams",
+      "receipt": "attempt2_result.json"
+    }
+  ],
+  "git_policy": {
+    "commit": "independent local commit required",
+    "push": "BLOCKED_KNOWLEDGE_INDEX",
+    "generated_index_rebuilt": false
+  },
+  "restrictions": {
+    "gpu": false,
+    "training": false,
+    "dataset_content_read": false,
+    "non_train_split_access": false,
+    "vendor_source_modified": false
+  }
+}

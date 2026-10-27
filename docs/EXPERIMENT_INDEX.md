@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-07 2026-10-27 -->
+## 2026-10-27 — R2-07合成接口检查
+
+两次各8步实际AirFogSim CPU环境；8新测试、R1两项、R2-05B两项通过。没有性能实验、真实轨迹回放或数据包交付。
+
+记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。仅合成CPU，无数据集读取、GPU、训练、下载、非train访问或vendor修改；不自动启动任务3/4。
+<!-- END V2U4REAL R2-07 -->
+
 <!-- V2U4REAL R2-06 2026-10-27 -->
 ## 2026-10-27 — R2-06 train模态审计
 

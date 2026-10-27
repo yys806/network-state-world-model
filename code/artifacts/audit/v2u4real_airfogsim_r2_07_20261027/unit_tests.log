@@ -1,0 +1,13 @@
+test_default_still_refuses_dynamic_ids (test_airfogsim_service_interface_r2_07.ReplayTests.test_default_still_refuses_dynamic_ids) ... ok
+test_dynamic_copy_absolute_reset_exhaustion_control (test_airfogsim_service_interface_r2_07.ReplayTests.test_dynamic_copy_absolute_reset_exhaustion_control) ... ok
+test_dynamic_invalid_time_position_identity (test_airfogsim_service_interface_r2_07.ReplayTests.test_dynamic_invalid_time_position_identity) ... ok
+test_invalid_rate_mask_duration_and_overflow (test_airfogsim_service_interface_r2_07.ServiceTests.test_invalid_rate_mask_duration_and_overflow) ... ok
+test_link_index_mask_and_shape_guards (test_airfogsim_service_interface_r2_07.ServiceTests.test_link_index_mask_and_shape_guards) ... ok
+test_mask_and_decimal_units (test_airfogsim_service_interface_r2_07.ServiceTests.test_mask_and_decimal_units) ... ok
+test_observation_preserves_native_lag (test_airfogsim_service_interface_r2_07.ServiceTests.test_observation_preserves_native_lag) ... ok
+test_observation_rejects_different_contract (test_airfogsim_service_interface_r2_07.ServiceTests.test_observation_rejects_different_contract) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK

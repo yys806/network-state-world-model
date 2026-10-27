@@ -2,6 +2,30 @@
   "schema_version": "PI-JWM-question-routes-v1",
   "routes": [
     {
+      "id": "ROUTE-AIRFOGSIM-R2-07-TRAJECTORY-CLOCK-RADIO",
+      "title": "AirFogSim轨迹时钟与无线服务接口",
+      "keywords": [
+        "R2-07",
+        "AirFogSim",
+        "轨迹",
+        "时钟",
+        "无线服务",
+        "RB",
+        "SINR"
+      ],
+      "summary": "软件接口通过；原生步内时刻和传播假设仍阻塞，不把瞬时容量当交付。",
+      "primary_sources": [
+        "docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md",
+        "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json"
+      ],
+      "verification_sources": [
+        "code/src/pi_jwm/airfogsim_service_interface_v1.py",
+        "code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py",
+        "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/trajectory_radio_trace.json",
+        "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/source_identity.json"
+      ]
+    },
+    {
       "id": "ROUTE-V2U4REAL-R2-06-MODALITY",
       "title": "V2U4Real RGB/LiDAR数据与模态适用性",
       "keywords": [

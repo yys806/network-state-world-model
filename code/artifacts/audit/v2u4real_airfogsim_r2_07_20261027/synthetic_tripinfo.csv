@@ -1,0 +1,5 @@
+vehicle_id;data_timestep;vehicle_x;vehicle_y;vehicle_speed;vehicle_angle;vehicle_route
+vehicle_0;0.0;348;300;10;0;synthetic
+vehicle_0;0.1;349;300;10;0;synthetic
+vehicle_0;0.2;350;300;10;0;synthetic
+vehicle_0;0.3;351;300;10;0;synthetic

@@ -3,6 +3,54 @@
   "field_policy": "Every important experiment uses the same keys. Unknown or not-applicable values are null and require an explanation in field_notes.",
   "experiments": [
     {
+      "id": "AIRFOGSIM-R2-07-TRAJECTORY-CLOCK-RADIO-20261027",
+      "name": "AirFogSim synthetic trajectory clock and radio service interface audit",
+      "date": "2026-10-27",
+      "research_question": "动态实体、绝对轨迹、时刻和有效RB服务的软件合同是否可复现，传播假设有哪些阻塞？",
+      "method": "CPU synthetic interface probes and source/formula audit; no propagation repair",
+      "code": "code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py",
+      "code_version": {
+        "identity_type": "source_sha256_and_baseline_git",
+        "manifest": "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/source_identity.json",
+        "manifest_sha256": "cf08fb0ab2af4d1ab3d72d12da5774a3c73a80e8ab29915ca8f5519757e18d20",
+        "git_commit": "66faa8fdfab517adf8b1a68bc14543027205fb41",
+        "note": "Execution baseline; changed sources identified by SHA-256."
+      },
+      "configuration": "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/runtime_config.json",
+      "parameters": {
+        "device": "cpu",
+        "training_started": false,
+        "steps_per_run": 8,
+        "repeated_runs": 2,
+        "traffic_interval_s": 0.1,
+        "simulation_interval_s": 0.1,
+        "propagation_modified": false
+      },
+      "protocol": null,
+      "data": {
+        "kind": "synthetic_snapshots",
+        "manifest": "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/synthetic_snapshots.json",
+        "real_dataset_used": false
+      },
+      "split": null,
+      "seed": 20261027,
+      "checkpoint": null,
+      "result": "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027",
+      "metrics": null,
+      "audit": "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json",
+      "status": "completed_software_audit_with_physical_blockers",
+      "conclusion": "Synthetic post-step trajectory/index/mask/units pass; internal time mismatch and physical radio assumptions blocked; delivery not run.",
+      "summary_zh": "软件接口通过，原生内部时间和物理无线仍阻塞；不是传输成功。",
+      "claim_boundary": "synthetic CPU diagnostics only; no real replay, validated coverage/rate, packets, detector or formal performance",
+      "locked_test_accessed": false,
+      "field_notes": {
+        "protocol": "No formal transport/training protocol frozen.",
+        "split": "Synthetic only; no dataset split accessed.",
+        "checkpoint": "No model or checkpoint used.",
+        "metrics": "Source/formula and interface diagnostics only; no formal performance metrics."
+      }
+    },
+    {
       "id": "V2U4REAL-R2-06-MODALITY-AUDIT-20261027",
       "name": "V2U4Real RGB LiDAR modality applicability audit",
       "date": "2026-10-27",

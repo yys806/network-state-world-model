@@ -1,0 +1,117 @@
+{
+  "scope": "all audit files except this self manifest and commit_scope; local -text preserves raw bytes",
+  "files": {
+    ".gitattributes": {
+      "bytes": 137,
+      "sha256": "b061ddd338338f18483092c488ba60fc154b70947a94189f93e4dbd19b07e3cb"
+    },
+    "attempt1_native_probe.log": {
+      "bytes": 1613,
+      "sha256": "c45f6f95f9f0f86a79018ebd065682cd4b78110c2493c7f69c167293d9db8d59"
+    },
+    "attempt1_result.json": {
+      "bytes": 23168,
+      "sha256": "7dcf3a2adaeb91acae1b5d09d73ef551bd2dee16bc7d80c82d4afb0f0e2d79d7"
+    },
+    "attempt1_unit_tests.log": {
+      "bytes": 814,
+      "sha256": "3414b20b45ad901599636da5caa0091d94d57018a64cd6b44019a817e24c2f15"
+    },
+    "attempt2_native_probe.log": {
+      "bytes": 556,
+      "sha256": "7e4736a953ed89e58c382315bd7f98a6c80ab0c6954712e3a6edb9f88ab5256f"
+    },
+    "attempt2_result.json": {
+      "bytes": 23902,
+      "sha256": "91cd4b9b1bf49d0a8999f7045306af780ca95712da7d7948fe0bd24e909a85f5"
+    },
+    "baseline.json": {
+      "bytes": 6601,
+      "sha256": "07ef295073a7079e2713d8b01a56cb0feaa45a508ad46a5dad7d328c3c5c5244"
+    },
+    "context_compile_check.json": {
+      "bytes": 889,
+      "sha256": "6816e82b31b686de8cf008652f9552332b28cf6f37299bd08606e2b420a3433c"
+    },
+    "context_compile_check.log": {
+      "bytes": 1892,
+      "sha256": "2fe9e810c07c3ae59794c37e49593a6b3d064458a1398f3cb18f80985e713a22"
+    },
+    "documentation_patch_manifest.json": {
+      "bytes": 16418,
+      "sha256": "b27e03d19f41c9899f05bc05d7830a4e705572c076d6a6e337ac0a1c1d29939a"
+    },
+    "final_protection_check.json": {
+      "bytes": 371,
+      "sha256": "fd6cf1e99a9595ffaeaa6b95d991ec9da275d4eb90407127dbce6549e89b0eb5"
+    },
+    "knowledge_index_check.log": {
+      "bytes": 801,
+      "sha256": "5f7ac4d37e4c2dc6e37eaf7612456e0c04c0af131285fcb5498e55b6f5e5585e"
+    },
+    "knowledge_index_check_final.log": {
+      "bytes": 801,
+      "sha256": "5f7ac4d37e4c2dc6e37eaf7612456e0c04c0af131285fcb5498e55b6f5e5585e"
+    },
+    "native_probe.log": {
+      "bytes": 1772,
+      "sha256": "5a2facfad901ed5e87d55f84b471a37504b3d8b5c534175cd24897e7f9e8d67a"
+    },
+    "native_task_unit_boundary.json": {
+      "bytes": 1271,
+      "sha256": "1e2abf80772d92ad4c12f1a294802a9eda75396441408998a408bf764e093c57"
+    },
+    "r1_regression.log": {
+      "bytes": 347,
+      "sha256": "17e1543622ed3f5ec947c65401996c333eb228713b91956749db7f54e4c9983d"
+    },
+    "r2_05b_regression.log": {
+      "bytes": 415,
+      "sha256": "99db8f18c9b7d1dc916c1f72bc431756472ef34ed26b8abfbef5bfd9997a9cb4"
+    },
+    "reproduce_commands.md": {
+      "bytes": 3814,
+      "sha256": "9c7f27ef9b63b524a02e9af8b3ae314c8d4f0dab12d49802a1d8aeaf8e94c651"
+    },
+    "result.json": {
+      "bytes": 27400,
+      "sha256": "eb8d850ec31ef55dd0ea18badd266f038a943ff812de3eb11882f807b2313cd2"
+    },
+    "runtime_config.json": {
+      "bytes": 6053,
+      "sha256": "36f2527c134499cb6af710a308750e89e2a6264b7a41cabab39c69c488514a2e"
+    },
+    "runtime_environment.json": {
+      "bytes": 464,
+      "sha256": "3ae9f925f23392e3cab36362d7bf414c9a856998b18b72fcaf317b3449852709"
+    },
+    "source_identity.json": {
+      "bytes": 2677,
+      "sha256": "cf08fb0ab2af4d1ab3d72d12da5774a3c73a80e8ab29915ca8f5519757e18d20"
+    },
+    "synthetic_snapshots.json": {
+      "bytes": 6027,
+      "sha256": "1171b98a63ad3dfa0aeac5cb7675fe5bc3e685c3696c7e96889b71da8279fdff"
+    },
+    "synthetic_tripinfo.csv": {
+      "bytes": 240,
+      "sha256": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b"
+    },
+    "trajectory_radio_trace.json": {
+      "bytes": 168265,
+      "sha256": "861ae10fb653411c7dcae09408554db71fe02156752418289731a3ed29c4e6bb"
+    },
+    "unit_tests.log": {
+      "bytes": 1252,
+      "sha256": "eebfb9b9b3bf6cfe72f3c6228716a7f8138e200128e8e47cf2c7e8b581fcccfc"
+    },
+    "validation.json": {
+      "bytes": 3904,
+      "sha256": "d22c1b1c918ddc5606cbda6cfe10413c70d0771f84021524018bc798c8ae3bac"
+    },
+    "workspace_preservation.json": {
+      "bytes": 8937,
+      "sha256": "c1a58461c1e73b58d86c9fea43464ca6f3c4533e5c900ad056aefc31176d0c2a"
+    }
+  }
+}

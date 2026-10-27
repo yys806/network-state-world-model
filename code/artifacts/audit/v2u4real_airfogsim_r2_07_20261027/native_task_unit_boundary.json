@@ -1,0 +1,22 @@
+{
+  "source_behavior": "PASS",
+  "native_task_payload_unit_contract": "BLOCKED",
+  "packet_lifecycle": "NOT_RUN",
+  "native_trans_data": "sum(native_rate_Mbps)*simulation_interval_s; numerical Mbit",
+  "native_task_size_documentation": "size only; unit not declared in Task constructor",
+  "payload_byte_field": "perception_payload_bytes; separate application metadata; native mission task_size remains zero in inherited ingress",
+  "example": {
+    "rate_mbps": 8.0,
+    "slot_s": 0.1,
+    "native_trans_data_mbit": 0.8,
+    "theoretical_bits": 800000.0,
+    "theoretical_bytes": 100000.0
+  },
+  "claim_boundary": "No fixed factor-8 bug asserted without a native task size unit contract; no transmission attempted",
+  "sources": {
+    "code/reference/AirFogSim/airfogsim/airfogsim_env.py": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+    "code/reference/AirFogSim/airfogsim/entities/task.py": "8ce85878ab26d890931a14e4cfe606dc2cf365a679064686aff73658a48872a0",
+    "code/reference/AirFogSim/airfogsim/manager/task_manager.py": "ebeda78c5dd859dce3d24f83645b7282f5252325db22e3344b9a3f90879cd104",
+    "code/src/pi_jwm/v2u4real_airfogsim_adapter_v1.py": "0d7722ac7a6e1febaa0f7052f78cdf92b9cc8ad1edb9ab1978bfeae3d48a68ae"
+  }
+}

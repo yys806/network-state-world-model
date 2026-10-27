@@ -1,0 +1,29 @@
+01_RESEARCH_CONTEXT.md [(1, '<!-- V2U4REAL R2-06 2026-10-27 -->'), (2, '## 2026-10-27 — R2-06 真实数据适用范围'), (7, '<!-- END V2U4REAL R2-06 -->'), (9, '<!-- V2U4REAL R2-05A 2026-10-27 -->'), (10, '## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）')]
+02_ARCHITECTURE.md [(1, '<!-- V2U4REAL R1 2026-10-25 -->'), (6, '详见 [STEP_V2U4REAL_AIRFOGSIM_R1.md](../docs/implementation_records/STEP_V2U4REAL_AIRFOGSIM_R1.md)。这些条目只作导航，结论以执行证据为准。'), (7, '<!-- END V2U4REAL R1 -->')]
+06_DECISIONS.md [(1, '<!-- V2U4REAL R2-05A 2026-10-27 -->'), (2, '## 2026-10-27 — STEP R2-05A 感知基线审计（草案待审）'), (4, '研究者仅授权R2-05A审计。R2-04C方案B继续冻结；本轮合同为DRAFT — AWAITING RESEARCHER REVIEW。LiDAR用途限定、类别/真值、评价口径、Q_k和模型选择均未获新决策，不把建议写成决定。'), (7, '<!-- END V2U4REAL R2-05A -->'), (9, '<!-- V2U4REAL R2-04C 2026-10-27 -->')]
+{
+  "status": "PASS",
+  "in_memory_compile": {
+    "code/src/pi_jwm/v2u4real_interface_v1.py": "PASS",
+    "code/src/pi_jwm/airfogsim_service_interface_v1.py": "PASS",
+    "code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py": "PASS",
+    "code/tests/test_airfogsim_service_interface_r2_07.py": "PASS"
+  },
+  "ai_context_validation": {
+    "validated_file_count": 9,
+    "errors": []
+  },
+  "experiment_registry_schema": "PASS",
+  "question_routes": "PASS",
+  "context_consistency": {
+    "00": "updated software/physical boundary",
+    "01": "research direction unchanged",
+    "02": "core architecture unchanged",
+    "03": "updated diagnostic flow",
+    "04": "updated module map",
+    "05": "updated audit execution",
+    "06": "no researcher decision invented",
+    "07": "updated unresolved time/radio issues",
+    "08": "updated change log"
+  }
+}

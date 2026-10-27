@@ -219,11 +219,13 @@ def audit_dataset(root, max_frames=16):
     return result
 
 
-def make_absolute_replay_manager(base_class):
+def make_absolute_replay_manager(base_class, *, dynamic_vehicle_ids=False):
     """An opt-in subclass; no vendored source or global monkeypatch changes.
 
     Input is a synthetic/verified common-frame contract, NOT raw dataset YAML.
     Strict, uniform snapshots are required; no interpolation or frame holding.
+    R2-07 opt-in dynamic_vehicle_ids admits synthetic vehicle entry/exit only;
+    the original one-vehicle/one-UAV default contract is unchanged.
     """
     class AbsoluteReplayManager(base_class):
         def bind_snapshots(self, snapshots):
@@ -234,8 +236,11 @@ def make_absolute_replay_manager(base_class):
             for i, row in enumerate(rows):
                 if not math.isclose(row['time_s'], i * self._traffic_interval, abs_tol=1e-10, rel_tol=0):
                     raise InterfaceBlocked('replay requires zero origin and uniform explicit seconds')
-                if set(row['vehicles']) != {'vehicle_0'} or set(row['uavs']) != {'UAV_0'}:
+                if set(row['uavs']) != {'UAV_0'} or (not dynamic_vehicle_ids and set(row['vehicles']) != {'vehicle_0'}):
                     raise InterfaceBlocked('round-one contract requires one stable vehicle and UAV')
+                if any(not isinstance(k, str) or not k or v.get('id', k) != k
+                       for k, v in row['vehicles'].items()):
+                    raise InterfaceBlocked('vehicle identity must match snapshot key')
                 for nodes in (row['vehicles'], row['uavs']):
                     for v in nodes.values():
                         p = np.asarray(v['position'], dtype=float)

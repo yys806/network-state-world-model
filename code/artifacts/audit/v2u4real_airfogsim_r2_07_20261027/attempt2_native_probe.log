@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "D:\shen\PKU\PIJWM\code\scripts\audit_airfogsim_trajectory_clock_radio_r2_07.py", line 254, in <module>
+    raise SystemExit(main())
+  File "D:\shen\PKU\PIJWM\code\scripts\audit_airfogsim_trajectory_clock_radio_r2_07.py", line 249, in main
+    print(json.dumps({k:v for k,v in result.items() if k not in ('protected_inputs','source_files','formula_diagnostics')}, ensure_ascii=False, indent=2))
+UnicodeEncodeError: 'gbk' codec can't encode character '\U0001f527' in position 2026: illegal multibyte sequence

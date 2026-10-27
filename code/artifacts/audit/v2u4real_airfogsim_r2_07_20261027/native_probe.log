@@ -1,0 +1,40 @@
+🔧 Using NumPy backend
+SimpleAuthManager initialized with 10.0% malicious ratio
+SimpleAuthManager initialized with 10.0% malicious ratio
+{
+  "schema_version": 1,
+  "step": "R2-07",
+  "status": "COMPLETED_WITH_BLOCKERS",
+  "claim_boundary": "synthetic software interfaces only; no real physical replay, validated radio model or wireless delivery",
+  "seed": 20261027,
+  "source_head": "66faa8fdfab517adf8b1a68bc14543027205fb41",
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\miniconda\\envs\\airfogsim\\python.exe",
+  "command": [
+    "code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py"
+  ],
+  "config_path": "code/scripts/configs/v2u4real_airfogsim_interface_v1.json",
+  "config_sha256": "6678841be892baaf1f971f6173c8507525232c8fe01303a0f3f4214252d25d56",
+  "restrictions": {
+    "gpu_used": false,
+    "training_started": false,
+    "dataset_read": false,
+    "validation_test_locked_test_accessed": false,
+    "downloaded": false,
+    "propagation_model_modified": false,
+    "packet_lifecycle_implemented": false
+  },
+  "software_status": "PASS",
+  "repeated_runs_equal": true,
+  "steps_per_run": 8,
+  "trajectory_clock": "PASS",
+  "rb_index_mask_units_service": "PASS",
+  "native_timestamp": "BLOCKED",
+  "native_internal_clock_position_alignment": "BLOCKED",
+  "physical_radio": "BLOCKED",
+  "real_dataset_time_replay": "BLOCKED",
+  "packet_delivery": "NOT_RUN",
+  "task3_prerequisites": "synthetic entity/time/grid interface PASS; task semantics and real time mapping pending",
+  "task4_prerequisites": "masked snapshot rate and unit conversion PASS; physical model and packet lifecycle pending",
+  "protection_status": "PASS"
+}

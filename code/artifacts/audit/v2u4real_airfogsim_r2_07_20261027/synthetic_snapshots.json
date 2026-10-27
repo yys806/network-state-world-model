@@ -1,0 +1,307 @@
+[
+  {
+    "time_s": 0.0,
+    "vehicles": {
+      "vehicle_0": {
+        "id": "vehicle_0",
+        "position": [
+          348.0,
+          300.0,
+          0.0
+        ],
+        "speed": 0.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "routeId": "synthetic"
+      }
+    },
+    "uavs": {
+      "UAV_0": {
+        "position": [
+          348.0,
+          300.0,
+          50.0
+        ],
+        "speed": 0.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "phi": 0.0
+      }
+    }
+  },
+  {
+    "time_s": 0.1,
+    "vehicles": {
+      "vehicle_0": {
+        "id": "vehicle_0",
+        "position": [
+          349.0,
+          300.0,
+          0.0
+        ],
+        "speed": 10.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "routeId": "synthetic"
+      }
+    },
+    "uavs": {
+      "UAV_0": {
+        "position": [
+          349.0,
+          300.0,
+          50.5
+        ],
+        "speed": 11.180339887498949,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "phi": 0.4636476090008061
+      }
+    }
+  },
+  {
+    "time_s": 0.2,
+    "vehicles": {
+      "vehicle_0": {
+        "id": "vehicle_0",
+        "position": [
+          350.0,
+          300.0,
+          0.0
+        ],
+        "speed": 10.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "routeId": "synthetic"
+      },
+      "vehicle_1": {
+        "id": "vehicle_1",
+        "position": [
+          351.0,
+          301.0,
+          0.0
+        ],
+        "speed": 0.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "routeId": "synthetic"
+      },
+      "vehicle_2": {
+        "id": "vehicle_2",
+        "position": [
+          352.0,
+          302.0,
+          0.0
+        ],
+        "speed": 0.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "routeId": "synthetic"
+      }
+    },
+    "uavs": {
+      "UAV_0": {
+        "position": [
+          350.0,
+          300.0,
+          51.0
+        ],
+        "speed": 11.180339887498949,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "phi": 0.4636476090008061
+      }
+    }
+  },
+  {
+    "time_s": 0.30000000000000004,
+    "vehicles": {
+      "vehicle_1": {
+        "id": "vehicle_1",
+        "position": [
+          350.0,
+          301.0,
+          0.0
+        ],
+        "speed": 10.0,
+        "acceleration": 0.0,
+        "angle": 3.141592653589793,
+        "routeId": "synthetic"
+      },
+      "vehicle_2": {
+        "id": "vehicle_2",
+        "position": [
+          351.0,
+          302.0,
+          0.0
+        ],
+        "speed": 10.0,
+        "acceleration": 0.0,
+        "angle": 3.141592653589793,
+        "routeId": "synthetic"
+      }
+    },
+    "uavs": {
+      "UAV_0": {
+        "position": [
+          349.0,
+          300.0,
+          50.0
+        ],
+        "speed": 14.142135623730951,
+        "acceleration": 0.0,
+        "angle": 3.141592653589793,
+        "phi": -0.7853981633974483
+      }
+    }
+  },
+  {
+    "time_s": 0.4,
+    "vehicles": {
+      "vehicle_2": {
+        "id": "vehicle_2",
+        "position": [
+          353.0,
+          302.0,
+          0.0
+        ],
+        "speed": 20.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "routeId": "synthetic"
+      }
+    },
+    "uavs": {
+      "UAV_0": {
+        "position": [
+          351.0,
+          300.0,
+          50.5
+        ],
+        "speed": 20.6155281280883,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "phi": 0.24497866312686414
+      }
+    }
+  },
+  {
+    "time_s": 0.5,
+    "vehicles": {
+      "vehicle_2": {
+        "id": "vehicle_2",
+        "position": [
+          352.0,
+          302.0,
+          0.0
+        ],
+        "speed": 10.0,
+        "acceleration": 0.0,
+        "angle": 3.141592653589793,
+        "routeId": "synthetic"
+      },
+      "vehicle_3": {
+        "id": "vehicle_3",
+        "position": [
+          353.0,
+          303.0,
+          0.0
+        ],
+        "speed": 0.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "routeId": "synthetic"
+      }
+    },
+    "uavs": {
+      "UAV_0": {
+        "position": [
+          350.0,
+          300.0,
+          51.0
+        ],
+        "speed": 11.180339887498949,
+        "acceleration": 0.0,
+        "angle": 3.141592653589793,
+        "phi": 0.4636476090008061
+      }
+    }
+  },
+  {
+    "time_s": 0.6000000000000001,
+    "vehicles": {},
+    "uavs": {
+      "UAV_0": {
+        "position": [
+          349.0,
+          300.0,
+          50.0
+        ],
+        "speed": 14.142135623730951,
+        "acceleration": 0.0,
+        "angle": 3.141592653589793,
+        "phi": -0.7853981633974483
+      }
+    }
+  },
+  {
+    "time_s": 0.7000000000000001,
+    "vehicles": {
+      "vehicle_4": {
+        "id": "vehicle_4",
+        "position": [
+          354.0,
+          304.0,
+          0.0
+        ],
+        "speed": 0.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "routeId": "synthetic"
+      }
+    },
+    "uavs": {
+      "UAV_0": {
+        "position": [
+          350.0,
+          300.0,
+          50.5
+        ],
+        "speed": 11.180339887498949,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "phi": 0.4636476090008061
+      }
+    }
+  },
+  {
+    "time_s": 0.8,
+    "vehicles": {
+      "vehicle_4": {
+        "id": "vehicle_4",
+        "position": [
+          355.0,
+          304.0,
+          0.0
+        ],
+        "speed": 10.0,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "routeId": "synthetic"
+      }
+    },
+    "uavs": {
+      "UAV_0": {
+        "position": [
+          351.0,
+          300.0,
+          51.0
+        ],
+        "speed": 11.180339887498949,
+        "acceleration": 0.0,
+        "angle": 0.0,
+        "phi": 0.4636476090008061
+      }
+    }
+  }
+]

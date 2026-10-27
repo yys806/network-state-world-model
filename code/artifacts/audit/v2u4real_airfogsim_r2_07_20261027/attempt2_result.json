@@ -1,0 +1,404 @@
+{
+  "schema_version": 1,
+  "step": "R2-07",
+  "status": "BLOCKED",
+  "claim_boundary": "synthetic software interfaces only; no real physical replay, validated radio model or wireless delivery",
+  "seed": 20261027,
+  "source_head": "66faa8fdfab517adf8b1a68bc14543027205fb41",
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\miniconda\\envs\\airfogsim\\python.exe",
+  "command": [
+    "code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py"
+  ],
+  "config_path": "code/scripts/configs/v2u4real_airfogsim_interface_v1.json",
+  "config_sha256": "6678841be892baaf1f971f6173c8507525232c8fe01303a0f3f4214252d25d56",
+  "restrictions": {
+    "gpu_used": false,
+    "training_started": false,
+    "dataset_read": false,
+    "validation_test_locked_test_accessed": false,
+    "downloaded": false,
+    "propagation_model_modified": false,
+    "packet_lifecycle_implemented": false
+  },
+  "software_status": "BLOCKED",
+  "unexpected_failure": "Traceback (most recent call last):\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\audit_airfogsim_trajectory_clock_radio_r2_07.py\", line 229, in main\n    a = environment_probe(c, rows)\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\audit_airfogsim_trajectory_clock_radio_r2_07.py\", line 70, in environment_probe\n    from airfogsim import AirFogSimEnv\n  File \"D:\\shen\\PKU\\PIJWM\\code\\reference\\AirFogSim\\airfogsim\\__init__.py\", line 1, in <module>\n    from .airfogsim_env import AirFogSimEnv\n  File \"D:\\shen\\PKU\\PIJWM\\code\\reference\\AirFogSim\\airfogsim\\airfogsim_env.py\", line 1, in <module>\n    from .manager.traffic_manager import TrafficManager\n  File \"D:\\shen\\PKU\\PIJWM\\code\\reference\\AirFogSim\\airfogsim\\manager\\__init__.py\", line 2, in <module>\n    from .channel_manager_cp import ChannelManagerCP\n  File \"D:\\shen\\PKU\\PIJWM\\code\\reference\\AirFogSim\\airfogsim\\manager\\channel_manager_cp.py\", line 18, in <module>\n    print(\"🔧 Using NumPy backend\")\nUnicodeEncodeError: 'gbk' codec can't encode character '\\U0001f527' in position 0: illegal multibyte sequence\n",
+  "protected_inputs": {
+    "code/reference/AirFogSim/airfogsim/airfogsim_env.py": {
+      "before": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+      "after": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+      "unchanged": true
+    },
+    "code/reference/AirFogSim/airfogsim/manager/traffic_manager.py": {
+      "before": "5935f18c4ed4fcfe305462fcc131799bb35222d3955ca98e0334562b9a4ab021",
+      "after": "5935f18c4ed4fcfe305462fcc131799bb35222d3955ca98e0334562b9a4ab021",
+      "unchanged": true
+    },
+    "code/reference/AirFogSim/airfogsim/scheduler/traffic_sched.py": {
+      "before": "eec01556d1b2fa9e25861a5d8269f2cb0fe4fdbe10b47566c3c2335f79b818f5",
+      "after": "eec01556d1b2fa9e25861a5d8269f2cb0fe4fdbe10b47566c3c2335f79b818f5",
+      "unchanged": true
+    },
+    "code/reference/AirFogSim/airfogsim/manager/channel_manager_cp.py": {
+      "before": "7566ac1c663f11d59b176614803d4b9ec679a28b6b3da7840a1c9744770f16f7",
+      "after": "7566ac1c663f11d59b176614803d4b9ec679a28b6b3da7840a1c9744770f16f7",
+      "unchanged": true
+    },
+    "code/reference/AirFogSim/airfogsim/all_channels.py": {
+      "before": "832e7ba4a92d9d1ea399107ce393bc171505200534998534746c96c700a7366a",
+      "after": "832e7ba4a92d9d1ea399107ce393bc171505200534998534746c96c700a7366a",
+      "unchanged": true
+    },
+    "code/reference/AirFogSim/airfogsim/channel_callback/fading_callback.py": {
+      "before": "ca220aa139463e8538dbad455d209f0114756525578e8fa7cf2f5170676828f9",
+      "after": "ca220aa139463e8538dbad455d209f0114756525578e8fa7cf2f5170676828f9",
+      "unchanged": true
+    },
+    "code/reference/AirFogSim/airfogsim/channel_callback/outage_callback.py": {
+      "before": "318f32a427ae1e2f3e6fa8b16ab61071fd39a1b235e73e2f6b39e089b3f6be59",
+      "after": "318f32a427ae1e2f3e6fa8b16ab61071fd39a1b235e73e2f6b39e089b3f6be59",
+      "unchanged": true
+    },
+    "code/reference/AirFogSim/airfogsim/channel_callback/pathloss_callback.py": {
+      "before": "0ef681263f24d8dc796e8d87b35077264f650bfb1994084823b5f17fa7b7f560",
+      "after": "0ef681263f24d8dc796e8d87b35077264f650bfb1994084823b5f17fa7b7f560",
+      "unchanged": true
+    },
+    "code/reference/AirFogSim/airfogsim/channel_callback/shadowing_callback.py": {
+      "before": "fa17b21902467db096e2627e2f0918c8ea7b5a5748c86af0c80e1ca2f88cc2ac",
+      "after": "fa17b21902467db096e2627e2f0918c8ea7b5a5748c86af0c80e1ca2f88cc2ac",
+      "unchanged": true
+    },
+    "code/reference/AirFogSim/airfogsim/channel_callback/__init__.py": {
+      "before": "4d8ccd032a42c9bcb65ad6b26c71b706fc9a44e1244a271708744c27a20e6d08",
+      "after": "4d8ccd032a42c9bcb65ad6b26c71b706fc9a44e1244a271708744c27a20e6d08",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/acceptance.json": {
+      "before": "6bbbc0f4bb36fafe844a1f9016a5831a08d6835b6e363e5bf4a0d639af2c1873",
+      "after": "6bbbc0f4bb36fafe844a1f9016a5831a08d6835b6e363e5bf4a0d639af2c1873",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/adapted_environment.json": {
+      "before": "8009b54d9200020e01e0649366ab38b596a1f7f4f3dec4a6f994267703d5b7b9",
+      "after": "8009b54d9200020e01e0649366ab38b596a1f7f4f3dec4a6f994267703d5b7b9",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/commands.json": {
+      "before": "16f74ccedc70493255744955e1a0875850b52f77328bdcf401e6d5f80a1c305f",
+      "after": "16f74ccedc70493255744955e1a0875850b52f77328bdcf401e6d5f80a1c305f",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/compileall.txt": {
+      "before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/data_audit.json": {
+      "before": "a1162b536d37c05af4cca782b72bdf25de2dc2c07ff35113f2dd98c077ad97bc",
+      "after": "a1162b536d37c05af4cca782b72bdf25de2dc2c07ff35113f2dd98c077ad97bc",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/distance_probe.json": {
+      "before": "46c29934fd929dacb9e5b954c7ac20c56e39d2dcb4729e8decb98728a9e456b7",
+      "after": "46c29934fd929dacb9e5b954c7ac20c56e39d2dcb4729e8decb98728a9e456b7",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/geometry.json": {
+      "before": "cbc772ce0a2a0b7b4817847db6d5f0ca926efa078dcd68132ad688e9b4a2a597",
+      "after": "cbc772ce0a2a0b7b4817847db6d5f0ca926efa078dcd68132ad688e9b4a2a597",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/native_replay.json": {
+      "before": "b4526505059847faeade385abd34dfe868540da3c253e7339bfe7b0fe301ae5d",
+      "after": "b4526505059847faeade385abd34dfe868540da3c253e7339bfe7b0fe301ae5d",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/official_transform.txt": {
+      "before": "6a92870d7bc364d73ec6f8dc06b957a4822e01fc07c9756855d5d640837a1114",
+      "after": "6a92870d7bc364d73ec6f8dc06b957a4822e01fc07c9756855d5d640837a1114",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/official_transform_probe.json": {
+      "before": "b8181c7ebd4b19eb85fd794a026666f4db9b7e0de563869f30d1bb5aa2bdb746",
+      "after": "b8181c7ebd4b19eb85fd794a026666f4db9b7e0de563869f30d1bb5aa2bdb746",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/regression_adapter.txt": {
+      "before": "9ca7182f929b8e665e7c2e2d8d62617948c8cd783f50afb4cff8f928b0df3ec2",
+      "after": "9ca7182f929b8e665e7c2e2d8d62617948c8cd783f50afb4cff8f928b0df3ec2",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/regression_contract.txt": {
+      "before": "a3539b92408830d9aedbba368185e75981b71425c36508a308f4abe4a136c380",
+      "after": "a3539b92408830d9aedbba368185e75981b71425c36508a308f4abe4a136c380",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/regression_cpu.txt": {
+      "before": "ef47f370d4dcb8e19ee7fadcc2d8a8274ce597b94b6535261ee646342fc776a7",
+      "after": "ef47f370d4dcb8e19ee7fadcc2d8a8274ce597b94b6535261ee646342fc776a7",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/run.log": {
+      "before": "66ba90e7e90101d274a7b9c27bf9042d6353b10c3ba7294941aefd4a176c62c6",
+      "after": "66ba90e7e90101d274a7b9c27bf9042d6353b10c3ba7294941aefd4a176c62c6",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/run.txt": {
+      "before": "66ba90e7e90101d274a7b9c27bf9042d6353b10c3ba7294941aefd4a176c62c6",
+      "after": "66ba90e7e90101d274a7b9c27bf9042d6353b10c3ba7294941aefd4a176c62c6",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/runtime_config.json": {
+      "before": "3ee4f4123d734cc6c5eeebeab06e2b8bfa8ab708eed5e0806bcfb212ab635d3d",
+      "after": "3ee4f4123d734cc6c5eeebeab06e2b8bfa8ab708eed5e0806bcfb212ab635d3d",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/source_identity.json": {
+      "before": "a6e3af8fc8387b789d93d3f24709c0731b7ff458fcd72fadc655dbfc5a1fa2a1",
+      "after": "a6e3af8fc8387b789d93d3f24709c0731b7ff458fcd72fadc655dbfc5a1fa2a1",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/source_verification.txt": {
+      "before": "47e0d423983807d9b3f7c841966b4eb6e2067c100c58bb51553781ec4a30d282",
+      "after": "47e0d423983807d9b3f7c841966b4eb6e2067c100c58bb51553781ec4a30d282",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/synthetic_newborn.csv": {
+      "before": "86231d3593f1f482f00442a9a6750508a5171d8b411f5abe15032c1cbb6ba504",
+      "after": "86231d3593f1f482f00442a9a6750508a5171d8b411f5abe15032c1cbb6ba504",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/synthetic_tripinfo.csv": {
+      "before": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "after": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_airfogsim_round1_20261025/tests.txt": {
+      "before": "420caeb2294fb29795cad114d22480759b484450204ee8e3fae37001a037b2bd",
+      "after": "420caeb2294fb29795cad114d22480759b484450204ee8e3fae37001a037b2bd",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/acceptance.json": {
+      "before": "e938be1eeb7a0c18261c0491945095c8ec6204a7286de2450a789d9b4ff1d625",
+      "after": "e938be1eeb7a0c18261c0491945095c8ec6204a7286de2450a789d9b4ff1d625",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/data_ingestion.json": {
+      "before": "8654b0183ab699c09d38014366a4031460c8e0b4411f6ec3bb41b215eec1ecca",
+      "after": "8654b0183ab699c09d38014366a4031460c8e0b4411f6ec3bb41b215eec1ecca",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/label_merge.json": {
+      "before": "ab10f7288dda97285c63577b7f6cedae11007b5b91d9056a1e46f570fb21e768",
+      "after": "ab10f7288dda97285c63577b7f6cedae11007b5b91d9056a1e46f570fb21e768",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/perception_results.json": {
+      "before": "0733a16c824ab72eda3f09331cdde64f5f0a8f62935924f9e6d3e91727e79d3c",
+      "after": "0733a16c824ab72eda3f09331cdde64f5f0a8f62935924f9e6d3e91727e79d3c",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/run.log": {
+      "before": "36539d09fa96ffccf844ec3735049de6c19c2a36f12e642bb17fdb34c0d810db",
+      "after": "36539d09fa96ffccf844ec3735049de6c19c2a36f12e642bb17fdb34c0d810db",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/run_airfogsim_env.log": {
+      "before": "eb61b45461e44623a8bb8e6d3d78cb22c329f079c4b4be010147f2521309745c",
+      "after": "eb61b45461e44623a8bb8e6d3d78cb22c329f079c4b4be010147f2521309745c",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/acceptance.json": {
+      "before": "f5da5bbb28c5a387b6c622c155842da710c58994bdba3aff8cb838c1d55c8b79",
+      "after": "f5da5bbb28c5a387b6c622c155842da710c58994bdba3aff8cb838c1d55c8b79",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/airfogsim_run_1.json": {
+      "before": "569393e43980b1daf24abcd121955da5201af4b7210037af1a9ec261cd0abaff",
+      "after": "569393e43980b1daf24abcd121955da5201af4b7210037af1a9ec261cd0abaff",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/airfogsim_run_2.json": {
+      "before": "569393e43980b1daf24abcd121955da5201af4b7210037af1a9ec261cd0abaff",
+      "after": "569393e43980b1daf24abcd121955da5201af4b7210037af1a9ec261cd0abaff",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/data_ingestion.json": {
+      "before": "8654b0183ab699c09d38014366a4031460c8e0b4411f6ec3bb41b215eec1ecca",
+      "after": "8654b0183ab699c09d38014366a4031460c8e0b4411f6ec3bb41b215eec1ecca",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/label_merge.json": {
+      "before": "4efbb715bf582c398cf2feb6b4a3de5c56c27daaeed718c76c74fea7c8e4aac8",
+      "after": "4efbb715bf582c398cf2feb6b4a3de5c56c27daaeed718c76c74fea7c8e4aac8",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/perception_results.json": {
+      "before": "0733a16c824ab72eda3f09331cdde64f5f0a8f62935924f9e6d3e91727e79d3c",
+      "after": "0733a16c824ab72eda3f09331cdde64f5f0a8f62935924f9e6d3e91727e79d3c",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/run.log": {
+      "before": "20d667e4e01c406d14fb592a68c2477a9fd6a78e1086bc212d5f89224ea2fcad",
+      "after": "20d667e4e01c406d14fb592a68c2477a9fd6a78e1086bc212d5f89224ea2fcad",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/airfogsim_run_1/synthetic_tripinfo.csv": {
+      "before": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "after": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_cpu_smoke_20261027/airfogsim_run_2/synthetic_tripinfo.csv": {
+      "before": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "after": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_env_probe/acceptance.json": {
+      "before": "fa79c085cc469a7060c7e73901a13ac64104ca8a696d0e3435053d02ebbf47d8",
+      "after": "fa79c085cc469a7060c7e73901a13ac64104ca8a696d0e3435053d02ebbf47d8",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_env_probe/airfogsim_run_1.json": {
+      "before": "6be2042a6912f4f489953989b287b3717757e94d612d000620e85c84b10ef05d",
+      "after": "6be2042a6912f4f489953989b287b3717757e94d612d000620e85c84b10ef05d",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_env_probe/airfogsim_run_2.json": {
+      "before": "6be2042a6912f4f489953989b287b3717757e94d612d000620e85c84b10ef05d",
+      "after": "6be2042a6912f4f489953989b287b3717757e94d612d000620e85c84b10ef05d",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_env_probe/data_ingestion.json": {
+      "before": "8654b0183ab699c09d38014366a4031460c8e0b4411f6ec3bb41b215eec1ecca",
+      "after": "8654b0183ab699c09d38014366a4031460c8e0b4411f6ec3bb41b215eec1ecca",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_env_probe/label_merge.json": {
+      "before": "3683e39a56919c83c70dfed865a29bca15c2f450e3033b7a6f186800f18bed4e",
+      "after": "3683e39a56919c83c70dfed865a29bca15c2f450e3033b7a6f186800f18bed4e",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_env_probe/perception_results.json": {
+      "before": "0733a16c824ab72eda3f09331cdde64f5f0a8f62935924f9e6d3e91727e79d3c",
+      "after": "0733a16c824ab72eda3f09331cdde64f5f0a8f62935924f9e6d3e91727e79d3c",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_env_probe/run.log": {
+      "before": "eccf5148559da2bd0f96c52b422e717a2babc579ab724cbb067ddf18270812ad",
+      "after": "eccf5148559da2bd0f96c52b422e717a2babc579ab724cbb067ddf18270812ad",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_env_probe/airfogsim_run_1/synthetic_tripinfo.csv": {
+      "before": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "after": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_05b_20261027/airfogsim_env_probe/airfogsim_run_2/synthetic_tripinfo.csv": {
+      "before": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "after": "9027a11af3f7005547cfa0b631bd61efe61094c8c5a11776bc04cc1296abb98b",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/acceptance.json": {
+      "before": "03c2d844070456dce45eda52ed9bcd3d49fd961531b131a2a7943e6f7cf2cbdf",
+      "after": "03c2d844070456dce45eda52ed9bcd3d49fd961531b131a2a7943e6f7cf2cbdf",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/audit_execution.json": {
+      "before": "d12dab7edba2fb7d2cf2eeac7deabe7b8901ca6d2260891d994193f974a27c33",
+      "after": "d12dab7edba2fb7d2cf2eeac7deabe7b8901ca6d2260891d994193f974a27c33",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/baseline.json": {
+      "before": "65a7b97edf1ad4f2250a3ebe0fd18f853f6ae8f1689d8b7bd789496b8f1c560c",
+      "after": "65a7b97edf1ad4f2250a3ebe0fd18f853f6ae8f1689d8b7bd789496b8f1c560c",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/calibration_summary.json": {
+      "before": "2e9f6465a1ce81a8ad13d4a3b94548b58334abb979e985771c207a186f838e6d",
+      "after": "2e9f6465a1ce81a8ad13d4a3b94548b58334abb979e985771c207a186f838e6d",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/compileall.log": {
+      "before": "c82884367b0942d7c1f3298ee1dfb99cad261ca88c84150e945f9f08987b572a",
+      "after": "c82884367b0942d7c1f3298ee1dfb99cad261ca88c84150e945f9f08987b572a",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/compile_readonly.json": {
+      "before": "b7dc52299ae6a53761ec51834e804269b2d07528ba19f48374af376bc6b7b056",
+      "after": "b7dc52299ae6a53761ec51834e804269b2d07528ba19f48374af376bc6b7b056",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/context_consistency_check.json": {
+      "before": "4fd9e53c9d37978d7a64832f0e1225557b57524d73a32175a49b093694d1ce59",
+      "after": "4fd9e53c9d37978d7a64832f0e1225557b57524d73a32175a49b093694d1ce59",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/focused_tests.log": {
+      "before": "eb702d7b7f5b09c474b6b06e44f6c06111a2e32b6d778e6107004d047d2fb062",
+      "after": "eb702d7b7f5b09c474b6b06e44f6c06111a2e32b6d778e6107004d047d2fb062",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/inherited_r2_05b_acceptance.json": {
+      "before": "f5da5bbb28c5a387b6c622c155842da710c58994bdba3aff8cb838c1d55c8b79",
+      "after": "f5da5bbb28c5a387b6c622c155842da710c58994bdba3aff8cb838c1d55c8b79",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/knowledge_index_final_check.json": {
+      "before": "1849c18799928f57b2c25eceaab8207015912eb01d2cc86df975f60298f61272",
+      "after": "1849c18799928f57b2c25eceaab8207015912eb01d2cc86df975f60298f61272",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/knowledge_index_final_check.log": {
+      "before": "5d60c67063e79c09f746240b16c07af6a787dc96f580f3f2242d71531dbfb83f",
+      "after": "5d60c67063e79c09f746240b16c07af6a787dc96f580f3f2242d71531dbfb83f",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/knowledge_index_initial_check.log": {
+      "before": "5d60c67063e79c09f746240b16c07af6a787dc96f580f3f2242d71531dbfb83f",
+      "after": "5d60c67063e79c09f746240b16c07af6a787dc96f580f3f2242d71531dbfb83f",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/official_owner_reply.json": {
+      "before": "cdac8f8a756707346d5c99fc6ca30f7e6d5fe4399bf69b32feeb356b99c9b55c",
+      "after": "cdac8f8a756707346d5c99fc6ca30f7e6d5fe4399bf69b32feeb356b99c9b55c",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/result.json": {
+      "before": "12e06bf61c63386b213b6cd96d3eaace3589aaca4d5775f7efbe864e4de097af",
+      "after": "12e06bf61c63386b213b6cd96d3eaace3589aaca4d5775f7efbe864e4de097af",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/source_identity.json": {
+      "before": "c46427d9db364fb1eb05a09189ebdea64945572c5f077b862cafe6f47352595d",
+      "after": "c46427d9db364fb1eb05a09189ebdea64945572c5f077b862cafe6f47352595d",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/staged_review.json": {
+      "before": "e98d246bce52297eb4af2d48d69d4c0b762f499062a39d77b1c02aab8867bd11",
+      "after": "e98d246bce52297eb4af2d48d69d4c0b762f499062a39d77b1c02aab8867bd11",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/supplemental_source_identity.json": {
+      "before": "fb6c2579ca807d7cb7e6c6e0b3a48f6856d1ca4d76bd3113279c2f88a5895531",
+      "after": "fb6c2579ca807d7cb7e6c6e0b3a48f6856d1ca4d76bd3113279c2f88a5895531",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/task_prefixes.json": {
+      "before": "10d7b20db386e1545f7240ef1dffe4c627b0787e6cf1feb80e887e39bf3aea33",
+      "after": "10d7b20db386e1545f7240ef1dffe4c627b0787e6cf1feb80e887e39bf3aea33",
+      "unchanged": true
+    },
+    "code/artifacts/audit/v2u4real_r2_06_20261027/validation.json": {
+      "before": "ba393a6d9f1ed41424dcfce1d3ecedd5e200fe6f3f2292af46989fa12cfd0df8",
+      "after": "ba393a6d9f1ed41424dcfce1d3ecedd5e200fe6f3f2292af46989fa12cfd0df8",
+      "unchanged": true
+    }
+  },
+  "protection_status": "PASS",
+  "source_files": {
+    "code/src/pi_jwm/v2u4real_interface_v1.py": "ca7f7d11e596272af1844d669d712fd967ee9a0314cc7bce80fa2ab185cc6975",
+    "code/src/pi_jwm/airfogsim_service_interface_v1.py": "8519d36e123e03373b8c99927639f9165068bee115e85e94da3dd4e359b68f8e",
+    "code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py": "6d57ad27633071b19ec1d617af869a709b0f25c7e0c2e71cc58ff54f83cebce7"
+  }
+}

@@ -1,0 +1,8 @@
+test_replay_contract_refuses_irregular_time_and_outside_bounds (test_v2u4real_interface_v1.AirFogSimTests) ... ok
+test_replay_reset_exhaustion_and_control_rejection (test_v2u4real_interface_v1.AirFogSimTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 5.948s
+
+OK
+🔧 Using NumPy backend

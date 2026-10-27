@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-07 2026-10-27 -->
+## 2026-10-27 — R2-07合成CPU诊断，无传输性能结论
+
+8项新测试、R1两项和R2-05B两项针对性回归通过；实际AirFogSim两次各8步相同。车辆数1/3/2/1/2/0/1/1，50RB×2MHz，掩码后Mbps按1e6/8换字节。日志保留导入路径、400米分段预期和GBK失败及修正；公式/物理仍BLOCKED，完整传输NOT_RUN。
+
+记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。
+<!-- END V2U4REAL R2-07 -->
+
 <!-- V2U4REAL R2-06 2026-10-27 -->
 ## 2026-10-27 — R2-06 模态审计，无检测性能
 

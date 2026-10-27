@@ -1,0 +1,246 @@
+{
+  "status": "PASS",
+  "baseline_paths": 40,
+  "paths": [
+    {
+      "path": "AGENTS.md",
+      "expected": "c773278285f129d5869e4147894be398371153a0ef9ac024149a19d2cbf7011a",
+      "actual_without_own_prefix": "c773278285f129d5869e4147894be398371153a0ef9ac024149a19d2cbf7011a",
+      "unchanged": true
+    },
+    {
+      "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+      "expected": "71f61a3b97f747e4aa3fd07c64e2d78e8f9936eef0339595cd2b744776afcad1",
+      "actual_without_own_prefix": "71f61a3b97f747e4aa3fd07c64e2d78e8f9936eef0339595cd2b744776afcad1",
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/Feng_2025_ICML_Graph_World_Model.txt",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/Hajiramezanali_2019_Variational_Graph_Recurrent_Neural_Netwo.txt",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/Karacelebi_2026_ArXivOrg_Learning_Ad_Hoc_Network_Dynamics_via_Gra.txt",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/PDF_SHA256SUMS.txt",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/PI-JWM_v8_literature_map.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/PIJWM数据集兼容性矩阵.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/PIJWM文献管理说明.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/PIJWM方法证据矩阵.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/README.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/文献索引.csv",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/文献索引.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/新增7篇精读汇总_20260826.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/新增7篇精读笔记_20260826.jsonl",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/本地文献库状态.json",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/本地文献库验收.json",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "doc/literature-notes/需要手动下载.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "docs/CHANGELOG.md",
+      "expected": "34a270064eee2ca576bf53f10c27371a22d93de421c84e49807761752465b651",
+      "actual_without_own_prefix": "34a270064eee2ca576bf53f10c27371a22d93de421c84e49807761752465b651",
+      "unchanged": true
+    },
+    {
+      "path": "docs/PROJECT_INDEX.md",
+      "expected": "2d88999762518eae237a4c40af0b1aae4926dd3213cb2ece2f796b0ff089c2c8",
+      "actual_without_own_prefix": "2d88999762518eae237a4c40af0b1aae4926dd3213cb2ece2f796b0ff089c2c8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/registries/generated/registry_summary.json",
+      "expected": "30c04ae68467b6b328e3debb0b9888f823cf3bb13ee2444f5ee2665554e60471",
+      "actual_without_own_prefix": "30c04ae68467b6b328e3debb0b9888f823cf3bb13ee2444f5ee2665554e60471",
+      "unchanged": true
+    },
+    {
+      "path": "docs/registries/generated/tracked_file_inventory.csv",
+      "expected": "f69c199565361d04feb2448ace2c076d4d9501fcc62becf10bfbeb46ab08172f",
+      "actual_without_own_prefix": "f69c199565361d04feb2448ace2c076d4d9501fcc62becf10bfbeb46ab08172f",
+      "unchanged": true
+    },
+    {
+      "path": "findings.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "paper/README.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "paper/archive/pi_jwm_ton_draft_zh/IEEEtran.cls",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "paper/archive/pi_jwm_ton_draft_zh/pi_jwm_ton_draft_zh.pdf",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "paper/archive/pi_jwm_ton_draft_zh/pi_jwm_ton_draft_zh.tex",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "progress.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "task_plan.md",
+      "expected": null,
+      "actual_without_own_prefix": null,
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/deploy_step6_4j_bundle_v1.py",
+      "expected": "3b47a83096da096ff3a337f12a8c6671821882427cfa6eaaa10df80d8b1b6736",
+      "actual_without_own_prefix": "3b47a83096da096ff3a337f12a8c6671821882427cfa6eaaa10df80d8b1b6736",
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/deploy_step6_4j_bundle_v1_29454.py",
+      "expected": "a17cc37792939a229d2644b893564317506ab4ce9fe7a42b5e29eb4295785557",
+      "actual_without_own_prefix": "a17cc37792939a229d2644b893564317506ab4ce9fe7a42b5e29eb4295785557",
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/deploy_step6_4j_remote_v1.py",
+      "expected": "8453cabbdf968d0e4bb6a4ffff1a17b8143cd2b0566d66405d95ff2c599f572b",
+      "actual_without_own_prefix": "8453cabbdf968d0e4bb6a4ffff1a17b8143cd2b0566d66405d95ff2c599f572b",
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/fig4_frozen_checkpoint_readonly_validation_20261014.py",
+      "expected": "2c5bcb201d39c61b14fbde51589c2896ad2a240537dfaffe8e03620d014f1e88",
+      "actual_without_own_prefix": "2c5bcb201d39c61b14fbde51589c2896ad2a240537dfaffe8e03620d014f1e88",
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/generate_meeting_figures_20261014.py",
+      "expected": "1583dab8727f3ded1c73267478269a251e9f2cc4ab27649e1d1838dd0f69feb8",
+      "actual_without_own_prefix": "1583dab8727f3ded1c73267478269a251e9f2cc4ab27649e1d1838dd0f69feb8",
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/generate_meeting_figures_20261014_v2.py",
+      "expected": "fbd0573faa16f71d3fc8a4f8dfccaceb7065f1b73822d64606b5a1669271aa89",
+      "actual_without_own_prefix": "fbd0573faa16f71d3fc8a4f8dfccaceb7065f1b73822d64606b5a1669271aa89",
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/plot_meeting_world_model_figures_20261012.py",
+      "expected": "748913bdec4eb945ad5946f49df0d4208ca394122f18ea667f52ba01dad8e0b2",
+      "actual_without_own_prefix": "748913bdec4eb945ad5946f49df0d4208ca394122f18ea667f52ba01dad8e0b2",
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/plot_step5_3e_tiny_overfit.py",
+      "expected": "4dc06277f6d3688adee4d7daa31b738bff7248daeb0e0ec7987cc362d7c5a99c",
+      "actual_without_own_prefix": "4dc06277f6d3688adee4d7daa31b738bff7248daeb0e0ec7987cc362d7c5a99c",
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/probe_step6_4j_remote_v1.py",
+      "expected": "65ce6afaef573de0a58c226767eab138fe3415028ee6e4e4ec5ef16d9300af55",
+      "actual_without_own_prefix": "65ce6afaef573de0a58c226767eab138fe3415028ee6e4e4ec5ef16d9300af55",
+      "unchanged": true
+    },
+    {
+      "path": "code/scripts/probe_step6_4j_remote_v1_29454.py",
+      "expected": "0a9c96a107249edef01c9a508df2555f24c05b688ee63c79b3e5813f68b42184",
+      "actual_without_own_prefix": "0a9c96a107249edef01c9a508df2555f24c05b688ee63c79b3e5813f68b42184",
+      "unchanged": true
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_AND_SOURCES.md",
+      "expected": "3657911d2aeddc12f46cc5a94bbbf7e5b9ce6f6dc3dc9a76fa9c22b562a51ea7",
+      "actual_without_own_prefix": "3657911d2aeddc12f46cc5a94bbbf7e5b9ce6f6dc3dc9a76fa9c22b562a51ea7",
+      "unchanged": true
+    }
+  ]
+}

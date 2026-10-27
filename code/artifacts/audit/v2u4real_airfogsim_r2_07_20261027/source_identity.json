@@ -1,0 +1,27 @@
+{
+  "baseline_git": "66faa8fdfab517adf8b1a68bc14543027205fb41",
+  "files": {
+    "code/src/pi_jwm/v2u4real_interface_v1.py": "ca7f7d11e596272af1844d669d712fd967ee9a0314cc7bce80fa2ab185cc6975",
+    "code/src/pi_jwm/airfogsim_service_interface_v1.py": "8519d36e123e03373b8c99927639f9165068bee115e85e94da3dd4e359b68f8e",
+    "code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py": "adbf26ff794c518bae026fa3f7291d7c433e78a53e4e9b1530353e4c3c99687f",
+    "code/tests/test_airfogsim_service_interface_r2_07.py": "a7759eb5a47da0f3075235c8597b85787ea0209c3a4b9ebb067d3a3d08a8d844"
+  },
+  "config_sha256": "6678841be892baaf1f971f6173c8507525232c8fe01303a0f3f4214252d25d56",
+  "runtime_config_sha256": "36f2527c134499cb6af710a308750e89e2a6264b7a41cabab39c69c488514a2e",
+  "vendor_files": {
+    "code/reference/AirFogSim/airfogsim/airfogsim_env.py": "798bce191b7a0b2147e008aa652c8433d72e19bbeae92a4bca5948b73a7bb8ce",
+    "code/reference/AirFogSim/airfogsim/manager/traffic_manager.py": "5935f18c4ed4fcfe305462fcc131799bb35222d3955ca98e0334562b9a4ab021",
+    "code/reference/AirFogSim/airfogsim/scheduler/traffic_sched.py": "eec01556d1b2fa9e25861a5d8269f2cb0fe4fdbe10b47566c3c2335f79b818f5",
+    "code/reference/AirFogSim/airfogsim/manager/channel_manager_cp.py": "7566ac1c663f11d59b176614803d4b9ec679a28b6b3da7840a1c9744770f16f7",
+    "code/reference/AirFogSim/airfogsim/all_channels.py": "832e7ba4a92d9d1ea399107ce393bc171505200534998534746c96c700a7366a",
+    "code/reference/AirFogSim/airfogsim/channel_callback/fading_callback.py": "ca220aa139463e8538dbad455d209f0114756525578e8fa7cf2f5170676828f9",
+    "code/reference/AirFogSim/airfogsim/channel_callback/outage_callback.py": "318f32a427ae1e2f3e6fa8b16ab61071fd39a1b235e73e2f6b39e089b3f6be59",
+    "code/reference/AirFogSim/airfogsim/channel_callback/pathloss_callback.py": "0ef681263f24d8dc796e8d87b35077264f650bfb1994084823b5f17fa7b7f560",
+    "code/reference/AirFogSim/airfogsim/channel_callback/shadowing_callback.py": "fa17b21902467db096e2627e2f0918c8ea7b5a5748c86af0c80e1ca2f88cc2ac",
+    "code/reference/AirFogSim/airfogsim/channel_callback/__init__.py": "4d8ccd032a42c9bcb65ad6b26c71b706fc9a44e1244a271708744c27a20e6d08",
+    "code/reference/AirFogSim/airfogsim/entities/vehicle.py": "42fa7b9e3bccc7ade4854e088cfcbc0d93be1ab8b2d217ffc0ac4677e9a7b134",
+    "code/reference/AirFogSim/airfogsim/entities/uav.py": "17bbcfded4ad95bba90333ac719e3954542f1aaa1d66f73ce8e91f7f16cdc4b4",
+    "code/reference/AirFogSim/airfogsim/entities/abstract/simple_node.py": "adbcd81e1281f7bf7156f4f5260884a0476a119f7b7453fdbf0d0608392d3fe5"
+  },
+  "scope": "synthetic software audit; no physical acceptance"
+}

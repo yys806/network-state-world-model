@@ -1,0 +1,104 @@
+[
+  {
+    "path": "AI_CONTEXT/00_PROJECT_STATE.md",
+    "before_sha256": "71f61a3b97f747e4aa3fd07c64e2d78e8f9936eef0339595cd2b744776afcad1",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07软件接口核验完成，物理无线仍阻塞\n\n合成车辆动态增删（含零车辆）、UAV逐帧绝对位置、步后时钟/格号与有效RB服务读取通过；两次各8步一致。自有观测保留原生时间标签落后0.1秒，未修复原生步内新位置配旧时钟。SINR/中断、高度、快衰落仍待研究者裁决；不是无线交付PASS，知识索引门未通过不得推送。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "a5a25701fd65b7cdfb9287dce8c1dd12063a663d12c99126cf1912e45902986d"
+  },
+  {
+    "path": "AI_CONTEXT/03_DATA_FLOW.md",
+    "before_sha256": "8473a1ac325a606e456fc794789045c981bc842a28206a4f636f9339566080fe",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07瞬时服务与交付分开\n\n显式合成秒→绝对TrafficManager快照→env.step→核对步后实体/格号/观测时间→按当前ID解析V2I/U2I速率与激活掩码→条件性单时隙bit/byte容量。容量不是已交付字节；没有跨时隙累计、包完成或截止时间逻辑。原生步内时刻仍错位，真实数据时间仍未建立。 原生trans_data数值为Mbit，payload字节长度尚未映射到原生task_size；该任务4单位合同仍BLOCKED。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "5631441a1148ec44a87dfd6529bcead39df911a136c79a62ab7f1a258b24d71a"
+  },
+  {
+    "path": "AI_CONTEXT/04_MODULE_MAP.md",
+    "before_sha256": "781db08968a5a3d183cc5c35a53b52c89cd133e8e7ac55d19b58ddcef39e4cb8",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07自有接口入口\n\nv2u4real_interface_v1.make_absolute_replay_manager新增显式dynamic_vehicle_ids选项，默认合同不变；airfogsim_service_interface_v1新增observe_post_step、slot_service、read_post_step_link_service。专项入口code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py和code/tests/test_airfogsim_service_interface_r2_07.py；不改第三方传播实现。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "46348cecfe2329465d50e48f816f00775bf38300bb0c1206e2eda3537a2b4d99"
+  },
+  {
+    "path": "AI_CONTEXT/05_EXPERIMENTS.md",
+    "before_sha256": "9548cc85a3d80711f406cf127b995a959178a554777181d266c00d97b0b2aaa6",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07合成CPU诊断，无传输性能结论\n\n8项新测试、R1两项和R2-05B两项针对性回归通过；实际AirFogSim两次各8步相同。车辆数1/3/2/1/2/0/1/1，50RB×2MHz，掩码后Mbps按1e6/8换字节。日志保留导入路径、400米分段预期和GBK失败及修正；公式/物理仍BLOCKED，完整传输NOT_RUN。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "281c7d4bcb1fbafee6b47e04e2b0327ebdeb4f9393f0efef6d444b2ee44f1c9c"
+  },
+  {
+    "path": "AI_CONTEXT/07_KNOWN_ISSUES.md",
+    "before_sha256": "620ceabdbcefd1d549981fdbc76f08a16f09ad730acaa585208ca3d68479ae70",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07时刻与无线待决\n\n原生实体标签滞后一帧；步内无线入口env=t但traffic/位置=t+0.1，外部步后观测只隔离误读。V2I三维范数再加默认高度，dB SINR进入比值中断公式且截负dB，快衰落取样本处PDF再log并跨RB广播；源码行为已核实，物理可信度未通过，未改vendor。自有RB掩码避免未激活正数计服务，但不修复上述传播问题。 原生trans_data数值为Mbit，payload字节长度尚未映射到原生task_size；该任务4单位合同仍BLOCKED。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "d9d9736133abcbb4d5bbb1c15cf062f27bbd4e7ba600a9cb1bd8f797a4996800"
+  },
+  {
+    "path": "AI_CONTEXT/08_CHANGELOG.md",
+    "before_sha256": "ffb81c105f26959fc2c61193f616187ce20fd6a4d85ab032fb193e668abee6e7",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07轨迹时钟无线审计\n\n新增动态合成轨迹开关、自有步后观测与有效RB单时隙容量读取、专项探针/8项测试和回执。记录明确软件问题与待研究者裁决的传播/时间合同；没有新科学决策或训练准入。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "8664679e3d5c3bf1f3eba2bb338133600ae9d32c7e7d38aa446501087e60cb01"
+  },
+  {
+    "path": "docs/PIJWM_IMPLEMENTATION_TRACKER.md",
+    "before_sha256": "cf2f9e2e65a232fce28b01df31dc125360575265db3cfa200116d479dd1da565",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — STEP R2-07任务2有限核验完成\n\nR2-05B应用入队和R2-06数据边界继承；本轮轨迹/步后观测/RB/单位软件PASS，原生内部时刻和物理无线BLOCKED。停止等待研究者审阅，不把任务3/4当执行队列。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "c53ebb1d081f6fff2e43feeaa1b934e49ee0b72a6e033a062e7a8533af6c418b"
+  },
+  {
+    "path": "docs/implementation_records/README.md",
+    "before_sha256": "0d18ca98b1246e12edd05de10a9c8ee7df8d4ebda91c059ba3494bcb6cf7e378",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — STEP R2-07轨迹、时钟与无线服务接口\n\n新增独立实施报告与机器回执：软件接口通过，原生时刻错位/传播模型阻塞；未实现完整数据包生命周期。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "182a25b4a25fcc6db507465330feb654169a4e92c4adaf305bf42c87331c256f"
+  },
+  {
+    "path": "记录/本地计划表.md",
+    "before_sha256": "4cf0cb51a268c79c77e6da56340bdafa4cc76a55d1d93972ebaaedca6445e57a",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — STEP R2-07 — 有限接口审计完成，停止待审\n\n计划/进度/发现：恢复最新任务/基线→最小动态轨迹与时钟/RB探针→8+2+2测试→报告和一致性收尾。软件PASS，真实物理时间、原生步内时序与无线模型BLOCKED；索引门失败保留本地提交不推送。task_plan/progress/findings起始删除保持不变，本条代记过程。唯一建议下一动作：研究者审阅并裁决无线与时钟合同。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "92a7a36597dfa573b37ff6b1967d09ab776d7f77fb4b292aaf49ee6685339ce8"
+  },
+  {
+    "path": "记录/8.12之后推进.md",
+    "before_sha256": "b405a11e2f56e858459a5617bd2f94d65ae4801ab91b506cb1d5a70c32f1834e",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — STEP R2-07接口核验\n\n动态车辆和UAV绝对轨迹、双时钟步后观测、有效RB与Mbps/字节换算通过；保留一帧标签与步内错位，列出V2I高度/SINR中断/快衰落待决方案。原始数据未读写，vendor和历史回执哈希不变，不宣称真实无线交付。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "bb20f107db0ecf795beeb57b1159ae87e1ae9aac20838d98c4bcca9b5e90d53d"
+  },
+  {
+    "path": "docs/CHANGELOG.md",
+    "before_sha256": "34a270064eee2ca576bf53f10c27371a22d93de421c84e49807761752465b651",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07 AirFogSim专项接口审计\n\n新增动态轨迹选项、步后观测及有效RB单时隙容量适配层和8项测试，4项旧接口回归通过；两次真实AirFogSim CPU合成运行一致。原生时间/传播待决，索引失败不推送。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "99c3c1ef7dea877ca1b4c1d4523de9cda5c87109ede616b059bb5814d900135e"
+  },
+  {
+    "path": "docs/PROJECT_INDEX.md",
+    "before_sha256": "2d88999762518eae237a4c40af0b1aae4926dd3213cb2ece2f796b0ff089c2c8",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07轨迹时钟与无线服务证据入口\n\n本轮报告与机器回执分别记录软件PASS和物理BLOCKED；当前源版本以本地HEAD和SHA为准，远端缺少未推送提交不代表成果不存在。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "5d698bfc3c6de8da5b4855ac05531ef48f13f694d2fe8cf1a7db1cb14cacc073"
+  },
+  {
+    "path": "docs/CODE_INDEX.md",
+    "before_sha256": "cf3757987cd705681e0b4e10dfb0431020a2b537f50e109dcd113e79f3bd7095",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07自有无线服务诊断接口\n\ncode/src/pi_jwm/airfogsim_service_interface_v1.py提供步后观测、端点/RB掩码和单时隙容量读取；code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py提供合成CPU探针；code/tests/test_airfogsim_service_interface_r2_07.py提供8项边界测试。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。仅合成CPU，无数据集读取、GPU、训练、下载、非train访问或vendor修改；不自动启动任务3/4。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "08f44202d00f8bf21f00989bd84111741153a00f61292bc1f74d49451687e4e1"
+  },
+  {
+    "path": "docs/EXPERIMENT_INDEX.md",
+    "before_sha256": "650ed9c17e2638e9a3fde3fade985168f7a05e50e9e0c4c39b630c47c1225463",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07合成接口检查\n\n两次各8步实际AirFogSim CPU环境；8新测试、R1两项、R2-05B两项通过。没有性能实验、真实轨迹回放或数据包交付。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。仅合成CPU，无数据集读取、GPU、训练、下载、非train访问或vendor修改；不自动启动任务3/4。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "a11fb63f9f6075465c3b8c77564ed8b947eacfed5714fc59c3de9d0b07de1b4e"
+  },
+  {
+    "path": "docs/RESULTS_INDEX.md",
+    "before_sha256": "25b749627ba26f1200d3015710d54c06f94381098d5de0bac37ce46fabe1f83b",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07结果边界\n\n轨迹/步后时钟/RB掩码/单位软件PASS；原生内部时序、V2I高度、SINR/中断和快衰落物理合同BLOCKED；包生命周期和交付NOT_RUN。无正式无线或检测性能。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。仅合成CPU，无数据集读取、GPU、训练、下载、非train访问或vendor修改；不自动启动任务3/4。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "6b1d8f9f0b724544f6f5274ff9e08c49bdfea021c66ab936421efe5aaf72c42d"
+  },
+  {
+    "path": "docs/RESEARCH_STATUS.md",
+    "before_sha256": "cd2574a2c69701d625c25685d99fee45004e79b76d16d7ef37f45d295713d88b",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07完成审计，研究合同仍待审\n\n任务2软件证据补齐；任务3具备合成节点/时刻/格号依据，真实/合成、任务/包和内部时间合同仍需冻结；任务4具备掩码容量算术依据，确定性闭环及可信AirFogSim服务仍缺。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。仅合成CPU，无数据集读取、GPU、训练、下载、非train访问或vendor修改；不自动启动任务3/4。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "d1765d21e5268213a866c7fa8e0d83fe870ada593b8b5d91b35e3405d4db70d1"
+  },
+  {
+    "path": "docs/ARCHITECTURE.md",
+    "before_sha256": "243a807581d54f93d816c48642eef4a04b62c55a9a39a2de8453ddbbcd657d1e",
+    "prefix": "<!-- V2U4REAL R2-07 2026-10-27 -->\n## 2026-10-27 — R2-07隔离适配层增量\n\n新增参考仿真工具外围的观测/服务诊断接口，无PI-JWM核心模型、loss、checkpoint或训练协议变更。原生内部时序与传播合同保留阻塞。\n\n记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。仅合成CPU，无数据集读取、GPU、训练、下载、非train访问或vendor修改；不自动启动任务3/4。\n<!-- END V2U4REAL R2-07 -->\n\n",
+    "prefix_sha256": "4577961b9a740db2a3d8ed3e4b2226e0a7ce5120a043808497ba823115de2617"
+  }
+]

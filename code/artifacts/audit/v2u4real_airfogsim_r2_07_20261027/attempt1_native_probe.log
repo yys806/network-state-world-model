@@ -1,0 +1,30 @@
+🔧 Using NumPy backend
+SimpleAuthManager initialized with 10.0% malicious ratio
+SimpleAuthManager initialized with 10.0% malicious ratio
+{
+  "schema_version": 1,
+  "step": "R2-07",
+  "status": "BLOCKED",
+  "claim_boundary": "synthetic software interfaces only; no real physical replay, validated radio model or wireless delivery",
+  "seed": 20261027,
+  "source_head": "66faa8fdfab517adf8b1a68bc14543027205fb41",
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\miniconda\\envs\\airfogsim\\python.exe",
+  "command": [
+    "code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py"
+  ],
+  "config_path": "code/scripts/configs/v2u4real_airfogsim_interface_v1.json",
+  "config_sha256": "6678841be892baaf1f971f6173c8507525232c8fe01303a0f3f4214252d25d56",
+  "restrictions": {
+    "gpu_used": false,
+    "training_started": false,
+    "dataset_read": false,
+    "validation_test_locked_test_accessed": false,
+    "downloaded": false,
+    "propagation_model_modified": false,
+    "packet_lifecycle_implemented": false
+  },
+  "software_status": "BLOCKED",
+  "unexpected_failure": "Traceback (most recent call last):\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\audit_airfogsim_trajectory_clock_radio_r2_07.py\", line 236, in main\n    formula_diagnostics=formula_probe())\n  File \"D:\\shen\\PKU\\PIJWM\\code\\scripts\\audit_airfogsim_trajectory_clock_radio_r2_07.py\", line 161, in formula_probe\n    assert math.isclose(pl, expected, abs_tol=1e-10)\nAssertionError\n",
+  "protection_status": "PASS"
+}

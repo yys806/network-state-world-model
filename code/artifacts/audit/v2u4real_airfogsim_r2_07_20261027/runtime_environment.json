@@ -1,0 +1,14 @@
+{
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\miniconda\\envs\\airfogsim\\python.exe",
+  "platform": "Windows-10-10.0.26100-SP0",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "traci": "1.27.1",
+    "sumolib": "1.27.1",
+    "scipy": null
+  },
+  "probe_backend": "useCUPY=False forced by probe source; NumPy CPU",
+  "dependency_changes": false
+}

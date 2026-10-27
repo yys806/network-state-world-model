@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-07 2026-10-27 -->
+## 2026-10-27 — R2-07软件接口核验完成，物理无线仍阻塞
+
+合成车辆动态增删（含零车辆）、UAV逐帧绝对位置、步后时钟/格号与有效RB服务读取通过；两次各8步一致。自有观测保留原生时间标签落后0.1秒，未修复原生步内新位置配旧时钟。SINR/中断、高度、快衰落仍待研究者裁决；不是无线交付PASS，知识索引门未通过不得推送。
+
+记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。
+<!-- END V2U4REAL R2-07 -->
+
 <!-- V2U4REAL R2-06 2026-10-27 -->
 ## 2026-10-27 — R2-06 数据模态审计完成，正式基线仍有前置门
 

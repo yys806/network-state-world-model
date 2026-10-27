@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-07 2026-10-27 -->
+## 2026-10-27 — R2-07时刻与无线待决
+
+原生实体标签滞后一帧；步内无线入口env=t但traffic/位置=t+0.1，外部步后观测只隔离误读。V2I三维范数再加默认高度，dB SINR进入比值中断公式且截负dB，快衰落取样本处PDF再log并跨RB广播；源码行为已核实，物理可信度未通过，未改vendor。自有RB掩码避免未激活正数计服务，但不修复上述传播问题。 原生trans_data数值为Mbit，payload字节长度尚未映射到原生task_size；该任务4单位合同仍BLOCKED。
+
+记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。
+<!-- END V2U4REAL R2-07 -->
+
 <!-- V2U4REAL R2-06 2026-10-27 -->
 ## 2026-10-27 — R2-06 RGB与正式数据阻塞
 

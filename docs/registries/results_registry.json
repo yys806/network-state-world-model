@@ -3,6 +3,17 @@
   "value_policy": "Formal numeric values must equal gate_recompute.recomputed in the referenced acceptance JSON; presentation documents may round them but cannot replace this registry.",
   "perception_readiness_audit_sources": [
     {
+      "id": "AUDIT-AIRFOGSIM-R2-07-20261027",
+      "experiment_id": "AIRFOGSIM-R2-07-TRAJECTORY-CLOCK-RADIO-20261027",
+      "result": "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json",
+      "audit": "code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json",
+      "status": "SOFTWARE_PASS_PHYSICAL_BLOCKED",
+      "metrics": null,
+      "metrics_note": "No wireless-delivery or detection performance; conditional single-slot capacity diagnostics only.",
+      "claim_boundary": "synthetic CPU diagnostics only; no real replay, validated coverage/rate, packets, detector or formal performance",
+      "locked_test_accessed": false
+    },
+    {
       "id": "AUDIT-V2U4REAL-R2-05A-20261027",
       "experiment_id": "V2U4REAL-R2-05A-BASELINE-DATA-EVAL-20261027",
       "result": "code/artifacts/audit/v2u4real_r2_05a_20261027/result.json",

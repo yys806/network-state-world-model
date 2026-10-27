@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-07 2026-10-27 -->
+## 2026-10-27 — R2-07自有接口入口
+
+v2u4real_interface_v1.make_absolute_replay_manager新增显式dynamic_vehicle_ids选项，默认合同不变；airfogsim_service_interface_v1新增observe_post_step、slot_service、read_post_step_link_service。专项入口code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py和code/tests/test_airfogsim_service_interface_r2_07.py；不改第三方传播实现。
+
+记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。
+<!-- END V2U4REAL R2-07 -->
+
 <!-- V2U4REAL R2-06 2026-10-27 -->
 ## 2026-10-27 — R2-06 离线增量审计入口
 

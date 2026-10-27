@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-07 2026-10-27 -->
+## 2026-10-27 — R2-07自有无线服务诊断接口
+
+code/src/pi_jwm/airfogsim_service_interface_v1.py提供步后观测、端点/RB掩码和单时隙容量读取；code/scripts/audit_airfogsim_trajectory_clock_radio_r2_07.py提供合成CPU探针；code/tests/test_airfogsim_service_interface_r2_07.py提供8项边界测试。
+
+记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。仅合成CPU，无数据集读取、GPU、训练、下载、非train访问或vendor修改；不自动启动任务3/4。
+<!-- END V2U4REAL R2-07 -->
+
 # PI-JWM 代码状态索引
 
 > STEP 6.1 当前正式候选推演机制入口：`code/src/pi_jwm/step6_1_trained_candidate_rollout_v1.py`，运行器 `code/scripts/run_step6_1_trained_candidate_rollout_preflight_v1.py`，与 6.0A/C 候选/动作域和冻结 5.6C Encoder/RSSM 相连；历史 `formal_candidate_rollout_planner_v1.py` 不在该链上。仅预检，尚无目标函数或候选选择。

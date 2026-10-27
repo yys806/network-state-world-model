@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-07 2026-10-27 -->
+## 2026-10-27 — R2-07瞬时服务与交付分开
+
+显式合成秒→绝对TrafficManager快照→env.step→核对步后实体/格号/观测时间→按当前ID解析V2I/U2I速率与激活掩码→条件性单时隙bit/byte容量。容量不是已交付字节；没有跨时隙累计、包完成或截止时间逻辑。原生步内时刻仍错位，真实数据时间仍未建立。 原生trans_data数值为Mbit，payload字节长度尚未映射到原生task_size；该任务4单位合同仍BLOCKED。
+
+记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。只用合成CPU输入，无数据集读取、GPU、训练、非train访问、下载或vendor修改；任务3/4本轮NOT_RUN，不自动启动。
+<!-- END V2U4REAL R2-07 -->
+
 <!-- V2U4REAL R2-06 2026-10-27 -->
 ## 2026-10-27 — R2-06 相机元数据与图像分开
 

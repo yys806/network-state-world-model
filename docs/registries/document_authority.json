@@ -195,6 +195,12 @@
       "role": "machine-readable experiment evidence",
       "authority": "evidence_by_manifest_and_audit",
       "can_establish_formal_result": true
+    },
+    {
+      "path": "docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md",
+      "role": "R2-07 synthetic interface audit and unresolved radio-model evidence",
+      "authority": "implementation_record",
+      "can_establish_formal_result": false
     }
   ]
 }

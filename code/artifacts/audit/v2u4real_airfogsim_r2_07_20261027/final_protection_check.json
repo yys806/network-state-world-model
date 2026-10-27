@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "initial_worktree_paths_preserved": 40,
+  "vendor_and_old_receipts_preserved": 77,
+  "source_sha_verified": true,
+  "private_notes_hashes_unchanged": true,
+  "vendor_diff_empty": true,
+  "push_status": "BLOCKED_KNOWLEDGE_INDEX",
+  "staging_policy": "exact files; document prefixes combined with baseline HEAD bytes; never git add all"
+}

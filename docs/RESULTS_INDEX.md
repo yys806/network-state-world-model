@@ -1,3 +1,11 @@
+<!-- V2U4REAL R2-07 2026-10-27 -->
+## 2026-10-27 — R2-07结果边界
+
+轨迹/步后时钟/RB掩码/单位软件PASS；原生内部时序、V2I高度、SINR/中断和快衰落物理合同BLOCKED；包生命周期和交付NOT_RUN。无正式无线或检测性能。
+
+记录：docs/implementation_records/STEP_R2_07_AIRFOGSIM_TRAJECTORY_CLOCK_RADIO_AUDIT.md；机器证据：code/artifacts/audit/v2u4real_airfogsim_r2_07_20261027/result.json。仅合成CPU，无数据集读取、GPU、训练、下载、非train访问或vendor修改；不自动启动任务3/4。
+<!-- END V2U4REAL R2-07 -->
+
 <!-- V2U4REAL R2-06 2026-10-27 -->
 ## 2026-10-27 — R2-06 审计结论，无性能数字
 
