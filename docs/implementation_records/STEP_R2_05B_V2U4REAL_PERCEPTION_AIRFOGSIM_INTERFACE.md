@@ -135,6 +135,6 @@ conda run --no-capture-output -n airfogsim python code/scripts/run_v2u4real_r2_0
 
 本记录和代码只包含 R2-05B 相关增量；任务开始前的 `AGENTS.md` 修改、历史资料删除、旧脚本和索引差异未纳入。`python code/scripts/build_project_knowledge_index_v1.py --check` 实际返回 exit 1，既有五项生成索引不同步：`tracked_file_inventory.csv`、`python_dependency_map.json`、`artifact_catalog.csv`、`archive_candidate_registry.csv`、`registry_summary.json`；本轮没有写入式重建，避免覆盖既有工作区状态，因此该验证门仍阻塞推送。
 
-Git：独立提交 `5db6602`（`feat(v2u4real): add perception and AirFogSim ingress interface`）；由于知识索引 `--check` 的既有五项不同步仍未解决，本轮不推送。任务开始前的工作区修改、删除和未跟踪脚本保持原样，未纳入本提交。
+Git：代码与接口独立提交 `525f3c0`（`feat(v2u4real): add perception and AirFogSim ingress interface`）；本次记录修订另作文档提交。由于知识索引 `--check` 的既有五项不同步仍未解决，本轮不推送。任务开始前的工作区修改、删除和未跟踪脚本保持原样，未纳入本提交。
 
 唯一下一步：研究者审阅本 Step 的接口合同、AirFogSim 原生生命周期语义差异和 `BLOCKED_NOT_ATTEMPTED` 无线边界，决定是否另行授权通信语义/特征包服务核验；本轮停止，不自动进入真实感知模型或训练。
