@@ -1,0 +1,46 @@
+{
+  "schema": "pijwm-zotero-clean.acceptance.v1",
+  "timestamp_utc": "2026-11-01T12:57:05.764205+00:00",
+  "unique_parent_count": 121,
+  "pdf_attachment_count": 121,
+  "note_count": 1,
+  "inbox_count": 0,
+  "collection_counts": {
+    "01_系统场景与问题定义": 5,
+    "02_严格双图与图学习": 8,
+    "03_世界模型与状态预测": 25,
+    "04_任务卸载与资源优化": 28,
+    "05_数据集、测量与仿真": 12,
+    "06_评价、不确定性与决策诊断": 6,
+    "07_AI业务场景与任务模型": 2,
+    "08_Token与语义通信": 17,
+    "09_网络QoS与任务质量映射": 4,
+    "99_综述与奠基性文献": 14,
+    "PIJWM": 0,
+    "补充文献-未分类": 0
+  },
+  "exactly_one_primary_category_each": true,
+  "all_item_keys_preserved": true,
+  "all_child_keys_and_parent_relationships_preserved": true,
+  "all_tags_and_unapproved_parent_fields_preserved": true,
+  "foreign_memberships_preserved": true,
+  "approved_corrections": 12,
+  "primary_reclassifications": 8,
+  "metadata_repairs": 4,
+  "inbox_rows_classified": 11,
+  "cross_project_duplicate_pairs_pending": 3,
+  "automatic_child_metadata_changes": [
+    {
+      "item_key": "9AHMZ4KD",
+      "parentItem": "26MWELTC",
+      "field": "filename",
+      "before": "Zhao 等 - 2026 - Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing.pdf",
+      "after": "Zhao 等 - 2025 - Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing.pdf",
+      "reason": "Zotero automatic naming after approved 2026→2025 parent date repair; attachment key and parent unchanged; no direct storage access."
+    }
+  ],
+  "gpu": false,
+  "locked_test": false,
+  "training": false,
+  "pdf_binary_signature_checked": false
+}

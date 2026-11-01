@@ -1,0 +1,274 @@
+{
+  "schema_version": "zotero-clean.plan.v1",
+  "project_name": "PIJWM",
+  "root_collection_key": "PXDR9FBZ",
+  "inbox_collection_key": "GVMEXXZE",
+  "approved_scope": "User 2026-11-01 explicit inbox classification request; no merge/delete/metadata rewrite",
+  "taxonomy_rule_file": "taxonomy_rules_v1.json",
+  "recovery_gate": "recovery_gate.json",
+  "items": [
+    {
+      "item_key": "3ZPHIF3A",
+      "title": "What2Keep: A communication-efficient collaborative perception framework for 3D detection via keeping valuable information",
+      "before_collections": [
+        "GVMEXXZE"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "destination_collection_keys": [
+        "VLA67XIK"
+      ],
+      "expected_version": 3238,
+      "reason": "主要贡献是按协作共识保留有价值的中间特征，并适配通信带宽；不是通用检测模型。",
+      "evidence": "Zotero abstractNote; Crossref exact DOI 10.1016/j.cviu.2025.104572",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "current_perception_reference",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "5DNA58TM",
+      "title": "EdgeCooper: Network-aware cooperative LiDAR perception for enhanced vehicular awareness",
+      "before_collections": [
+        "GVMEXXZE"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "destination_collection_keys": [
+        "CI9HW9D9"
+      ],
+      "expected_version": 3235,
+      "reason": "原文摘要及引言明确联合链路调度、信道、包与中继，转为带冲突最小费用流并设计算法；LiDAR感知是应用。",
+      "evidence": "Zotero attachment GFDDMMFF indexed fulltext: Abstract, I.B, V–VI; DOI 10.1109/JSAC.2023.3322764",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "current_network_perception_reference",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "6QKKAHEZ",
+      "title": "Uncertainty-aware adaptive resource allocation for semantic communication in IoV via causal world models",
+      "before_collections": [
+        "GVMEXXZE",
+        "ZTXR8ZP8"
+      ],
+      "after_collections": [
+        "CI9HW9D9",
+        "ZTXR8ZP8"
+      ],
+      "destination_collection_keys": [
+        "CI9HW9D9"
+      ],
+      "expected_version": 3246,
+      "reason": "主要方法是联合消息调度、语义保真度、带宽、功率和计算资源优化；因果世界模型是预测工具，不能仅因题名有world model归03。",
+      "evidence": "Zotero abstractNote; Crossref exact DOI 10.1016/j.vehcom.2026.101088; issue date December 2026 is future, not an invalidity finding",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "current_optimization_reference",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "CAHRJ3KJ",
+      "title": "On-demand environment perception and resource allocation for task offloading in vehicular networks",
+      "before_collections": [
+        "GVMEXXZE"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "destination_collection_keys": [
+        "CI9HW9D9"
+      ],
+      "expected_version": 3206,
+      "reason": "主要贡献是感知粒度、通信与计算资源的联合卸载优化及两阶段优化辅助DRL。",
+      "evidence": "Zotero abstractNote; DOI 10.1109/TWC.2024.3435871",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "transferable_mechanism_offloading_not_current_action_space",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "DX2FLYDV",
+      "title": "FullPerception: Network-level collaborative perception for eliminating vehicular blind spots",
+      "before_collections": [
+        "GVMEXXZE"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "destination_collection_keys": [
+        "CI9HW9D9"
+      ],
+      "expected_version": 3166,
+      "reason": "原文摘要的主要方法是网络级数据共享与无线资源联合调度，提出PCS算法消除盲区。",
+      "evidence": "Zotero abstractNote; DOI 10.1109/TMC.2025.3600060",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "current_network_perception_reference",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "EXY7ZTUX",
+      "title": "Learning ad hoc network dynamics via graph-structured world models",
+      "before_collections": [
+        "EV5VZHH3",
+        "GVMEXXZE",
+        "ZTXR8ZP8"
+      ],
+      "after_collections": [
+        "EV5VZHH3",
+        "ZTXR8ZP8"
+      ],
+      "destination_collection_keys": [
+        "EV5VZHH3"
+      ],
+      "expected_version": 3246,
+      "reason": "每节点潜在动力学与跨节点注意力学习联合网络演化，并通过模型想象轨迹训练聚类策略；保留已有03，只移除收件箱。",
+      "evidence": "Zotero attachment I4PKNHPB indexed fulltext: Abstract, II–III; arXiv:2604.14811",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "transferable_world_model_mechanism",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "IHTIXK22",
+      "title": "Pragmatic communication in multi-agent collaborative perception",
+      "before_collections": [
+        "GVMEXXZE"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "destination_collection_keys": [
+        "VLA67XIK"
+      ],
+      "expected_version": 3205,
+      "reason": "原文提出任务相关消息选择、字典表示和协作者选择以压缩通信；主贡献是实用语义通信。",
+      "evidence": "Zotero attachment 4P4XC7HV indexed fulltext: Abstract; DOI 10.1109/TPAMI.2026.3680062",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "current_perception_semantic_reference",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "JRZWUIU2",
+      "title": "Task offloading and resource allocation in vehicular cooperative perception with integrated sensing, communication, and computation",
+      "before_collections": [
+        "GVMEXXZE"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "destination_collection_keys": [
+        "CI9HW9D9"
+      ],
+      "expected_version": 3167,
+      "reason": "主要贡献是感知任务分配、卸载与通信计算资源联合优化，信息价值函数服务于优化目标。",
+      "evidence": "Zotero abstractNote; Crossref exact DOI 10.1109/TITS.2025.3542365",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "transferable_mechanism_dynamic_compute_outside_current_v1",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "RPZUL3BR",
+      "title": "Mobile network control with a world model",
+      "before_collections": [
+        "EV5VZHH3",
+        "GVMEXXZE",
+        "ZTXR8ZP8"
+      ],
+      "after_collections": [
+        "EV5VZHH3",
+        "ZTXR8ZP8"
+      ],
+      "destination_collection_keys": [
+        "EV5VZHH3"
+      ],
+      "expected_version": 3246,
+      "reason": "学习动作对未来网络状态的影响，并以不确定性辅助闭环控制；保留已有03，只移除收件箱。",
+      "evidence": "Zotero abstractNote; arXiv:2607.17747",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "transferable_world_model_mechanism",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "WQ9JN878",
+      "title": "Accuracy-aware cooperative sensing and computing for connected autonomous vehicles",
+      "before_collections": [
+        "GVMEXXZE"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "destination_collection_keys": [
+        "CI9HW9D9"
+      ],
+      "expected_version": 3207,
+      "reason": "主要贡献是精度/时延约束下的数据选择、子任务放置和资源成本联合优化；精度数据质量映射是其中工具，不作为09主分类。",
+      "evidence": "Zotero abstractNote; DOI 10.1109/TMC.2023.3343709",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "current_network_perception_reference",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    },
+    {
+      "item_key": "XTVF2P26",
+      "title": "Digital twin meets world model: Proactive control for UAV swarms in low-altitude wireless networks",
+      "before_collections": [
+        "GVMEXXZE",
+        "ZTXR8ZP8"
+      ],
+      "after_collections": [
+        "EV5VZHH3",
+        "ZTXR8ZP8"
+      ],
+      "destination_collection_keys": [
+        "EV5VZHH3"
+      ],
+      "expected_version": 3246,
+      "reason": "核心是DT与学得世界模型的分工和多步预测/约束检查，再接入MPC；可参考预测机制，UAV运动优化不属于当前v1。",
+      "evidence": "Zotero abstractNote; DOI 10.1109/TNSE.2026.3731054",
+      "evidence_status": "ABSTRACT_OR_FULLTEXT_REVIEWED_NOT_RESEARCHER_READ",
+      "project_role": "transferable_world_model_mechanism_uav_motion_outside_current_v1",
+      "duplicate_conflict_links": [],
+      "invalidity_evidence": null,
+      "action": "add_primary_remove_inbox",
+      "operator_level": 1,
+      "timestamp": "2026-11-01T12:43:24.819155+00:00"
+    }
+  ]
+}

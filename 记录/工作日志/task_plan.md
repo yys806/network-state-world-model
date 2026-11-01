@@ -1155,3 +1155,7 @@ Guardrails: no GPU, no locked test, no formal trajectory generation, no dirty-wo
 | 3. 正式方法门 | blocked | 原型状态为 `prototype_only`；合法动作生成器、任务语义 objective、真实执行反馈闭环尚未冻结；原有正式 planner audit 继续为 `blocked` |
 
 边界：本门只证明候选 rollout 机制可审计运行，不证明训练好的 candidate-rollout planner、正式性能或 GPU 解封；未启动 GPU、未训练、未访问/物化 locked-test。
+
+## 2026-11-01 — Zotero整理
+
+已完成：现状恢复→只读审计/API恢复快照→11条分类→两批12条批准修正→121篇索引与验收→skill更新。待审：3对跨项目重复、5条版本和2条贡献归属；不自动执行合并。全仓既有索引门仍失败，停止推送。详见doc/literature-notes/zotero-clean/2026-11-01/CLEANUP_REPORT.md。

@@ -610,3 +610,7 @@ r39原始统计归属已复核：anchor-0006为8×(344 complete,0 dead-end)，an
 ## 2026-10-11 STEP 6.4M
 
 新增 Route–Comm–Flow Dynamic State Contract、隔离 CPU reference state machine、v2 contract receipt 和独立 16 项验收。源码和 R1 trace 锁定 Route→TTI→wireless 的真实顺序；同根 A/B 与官方 Ledger Flow identity 通过。未修改正式 World Model、Planner、Scorer、Objective、CandidateDomain、AirFogSim、checkpoint 或 normalization；GPU/训练/正式搜索/locked_test 未运行。
+
+## 2026-11-01 — Zotero分类与索引
+
+121篇唯一主条目、收件箱清零；完成11条分类与12条批准修正，修复错误DOI对应的预印本身份。保留3对跨项目重复和7项版本/贡献复核；细节见doc/literature-notes/zotero-clean/2026-11-01/CLEANUP_REPORT.md。研究方法、数据/实验与GPU/locked_test边界均未变。

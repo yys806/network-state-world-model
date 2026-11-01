@@ -695,3 +695,7 @@ Repaired destination-list intermediate-hop advancement and same-destination full
 
 - 研究者确认今后可使用 Ubuntu WSL，但项目工作仅限 `/home/shen/PIJWM`（Windows：`\\wsl.localhost\Ubuntu\home\shen\PIJWM`）及其真实子目录；代码、数据、环境、缓存、临时文件和输出均不越界。
 - 仅更新仓库内 AGENTS、AI_CONTEXT、项目记忆入口和 WSL 说明；不写全局/个人记忆，不启动 WSL、不安装环境、不运行实验、不改磁盘或科研文件。保留 D 盘主项目关系与已有研究授权门。
+
+## 2026-11-01 — Zotero文库分类、审计与索引
+
+按当前场景上下文分类11条未分类记录，完成12条逐key批准修正（含1条错配DOI修复）；121篇各一主类、保全附件/笔记与跨项目关系。导出完整索引、3对跨项目重复待审计划、5条版本和2条贡献歧义清单，并改进全局zotero-clean及离线测试。记录：doc/literature-notes/zotero-clean/2026-11-01/CLEANUP_REPORT.md。全仓既有5项知识索引不同步保持待处理，不覆盖重建或推送。

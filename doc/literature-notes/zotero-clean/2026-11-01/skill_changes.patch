@@ -1,0 +1,116 @@
+--- a/SKILL.md
++++ b/SKILL.md
+@@ -18,0 +19 @@
++- Separate a paper's main contribution (its primary category) from its present project role. Later authorized contracts and execution evidence can supersede an older context summary; preserve the dated conflict instead of classifying from the stale summary.
+@@ -42 +43 @@
+-The helper audits exact matches and missing-field/status-keyword candidates across the root and all nested collections, including root-only and inbox-only items. Near matches, publisher metadata, retraction evidence, and orphan attachment/note checks require additional read-only API inspection; do not present the helper output as those checks having passed.
++The helper audits exact matches and missing-field/status-keyword candidates across the root and all nested collections, including root-only and inbox-only items. Venue checks follow item type (journal, proceedings, preprint repository). Near matches, publisher metadata, retraction evidence, cross-project duplicates and orphan attachment/note checks require additional read-only API inspection; do not present the helper output as those checks having passed.
+--- a/references/cleaning-modes.md
++++ b/references/cleaning-modes.md
+@@ -20,0 +21,11 @@
++## Evidence and recovery checks
++
++- Validate a pre-write API export by decoding it again and checking keys, memberships and child-parent links. State its recovery scope: a metadata/membership export can reverse membership-only edits; it is not a backup of attachment binaries and does not authorize destructive merge or deletion.
++- Inspect publicationTitle for journals, proceedingsTitle/conferenceName for conference papers, and repository for preprints. A populated proceedings field is not a missing journal field. DOI disagreement with the attachment's title and authors is a real identity conflict: preserve both versions and put the record on citation hold until resolved. Never search Crossref by an approximate title to guess a replacement DOI.
++- Exact DOI duplicates can exist in another project even when the target project has none. Report project-level and cross-project counts separately; an approved merge plan must retain both projects' memberships, notes and attachments. A shared item key with two memberships is one record, not a duplicate.
++- When an API file route redirects to Zotero storage, do not follow it with filesystem access. Use indexed full text if available and report binary-signature validation as unperformed. Attachment counts do not establish verified PDF bytes.
++- Respect DOI-service rate limits: use bounded concurrency, back off on HTTP 429, and retain unresolved requests as Unverified. A lookup failure is not proof of a wrong DOI. Distinguish future issue dates from online publication and retraction.
++- Include before_collections and expected_version in classification plans; stop and re-audit if they changed. Re-running an already applied plan may be an idempotent no-op.
++- Read-back comparisons should treat tags and collection memberships as unordered records; Zotero may sort them without losing values. Preprints imported through older interfaces can use archive instead of repository. Missing child counts mean unknown, not zero.
++- An approved item-type change may migrate obsolete fields into Extra. Re-read Extra and remove only the known wrong migrated fields covered by the repair plan, preserving their conflict history. Zotero automatic attachment naming can also update a filename after a parent date/title correction; record old/new names and verify the same attachment key and parent instead of silently claiming identical child metadata. Do not change global naming preferences or access storage files to suppress this behavior.
++
+--- a/scripts/zotero_clean.py
++++ b/scripts/zotero_clean.py
+@@ -112,0 +113,5 @@
++        if changed:
++            if "before_collections" in planned and before != sorted(set(planned["before_collections"])):
++                raise RuntimeError(f"stale plan: memberships changed for {item['key']}; audit again")
++            if "expected_version" in planned and item["version"] != planned["expected_version"]:
++                raise RuntimeError(f"stale plan: version changed for {item['key']}; audit again")
+@@ -129,0 +135,4 @@
++                "evidence": planned.get("evidence"),
++                "action": planned.get("action", "add_destinations_remove_inbox"),
++                "operator_level": planned.get("operator_level", 1),
++                "timestamp": datetime.now(timezone.utc).isoformat(),
+@@ -219,2 +228,3 @@
+-    value = (value or "").strip().casefold()
+-    value = re.sub(r"^https?://(dx\.)?doi\.org/", "", value)
++    value = re.sub(r"\s+", "", unicodedata.normalize("NFKC", value or "")).casefold()
++    value = re.sub(r"^doi:", "", value)
++    value = re.sub(r"^https?://(?:(?:dx|www)\.)?doi\.org/", "", value)
+@@ -221,0 +232,16 @@
++
++
++def _venue(item: dict[str, Any]) -> tuple[str, str]:
++    """Use Zotero's item-type schema rather than treating every paper as a journal."""
++    fields = {
++        "conferencePaper": ("proceedingsTitle", "conferenceName"),
++        "preprint": ("repository", "archive"),
++        "report": ("institution", "seriesTitle"),
++        "thesis": ("university",),
++        "book": ("publisher",),
++        "bookSection": ("bookTitle", "publisher"),
++    }.get(item.get("itemType", ""), ("publicationTitle",))
++    for field in fields:
++        if item.get(field):
++            return str(item[field]), field
++    return "", "/".join(fields)
+@@ -248,0 +275 @@
++        venue, venue_field = _venue(item)
+@@ -255 +282,2 @@
+-            "publication_title": item.get("publicationTitle", ""),
++            "publication_title": venue,
++            "venue_source_field": venue_field,
+@@ -260 +288 @@
+-            "num_children": brief[key].get("numChildren", 0),
++            "num_children": brief[key].get("numChildren"),
+@@ -264 +292,2 @@
+-        data["identity_norm"] = "|".join((_norm_text(data["title"]), _norm_text(first.get("lastName", "")), _year(data["date"])))
++        identity = (_norm_text(data["title"]), _norm_text(first.get("lastName", first.get("name", ""))), _year(data["date"]))
++        data["identity_norm"] = "|".join(identity) if all(identity) else ""
+@@ -315,0 +345 @@
++        "child_relationship_audit_status": "NOT_CHECKED_BY_HELPER; unknown child counts are null, not zero",
+--- a/tests/test_zotero_clean.py
++++ b/tests/test_zotero_clean.py
+@@ -56,0 +57,39 @@
++    def test_doi_normalization_handles_urls_case_and_embedded_whitespace(self):
++        self.assertEqual(clean._norm_doi(" DOI: https://DX.doi.org/10.1000/ A B C ; "), "10.1000/abc")
++
++    def test_venue_uses_item_schema_not_empty_journal_field(self):
++        self.assertEqual(clean._venue({"itemType": "conferencePaper", "proceedingsTitle": "CVPR"}), ("CVPR", "proceedingsTitle"))
++        self.assertEqual(clean._venue({"itemType": "preprint", "repository": "arXiv"}), ("arXiv", "repository"))
++        self.assertEqual(clean._venue({"itemType": "preprint", "archive": "arXiv"}), ("arXiv", "archive"))
++        self.assertEqual(clean._venue({"itemType": "journalArticle", "publisher": "Publisher only"})[0], "")
++
++    def test_stale_membership_plan_stops_before_writing(self):
++        client = FakeClient()
++        plan = {"root_collection_key": "ROOT", "inbox_collection_key": "INBOX",
++                "items": [{"item_key": "C", "destination_collection_keys": ["TOPIC"],
++                           "before_collections": ["INBOX"], "expected_version": 1}]}
++        with tempfile.TemporaryDirectory() as temp:
++            with self.assertRaisesRegex(RuntimeError, "stale plan"):
++                clean.apply_plan(client, plan, Path(temp) / "execution.json", dry_run=False)
++        self.assertEqual(client.writes, [])
++
++    def test_stale_version_plan_stops_before_writing(self):
++        client = FakeClient()
++        plan = {"root_collection_key": "ROOT", "inbox_collection_key": "INBOX",
++                "items": [{"item_key": "C", "destination_collection_keys": ["TOPIC"], "expected_version": 0}]}
++        with tempfile.TemporaryDirectory() as temp:
++            with self.assertRaisesRegex(RuntimeError, "version changed"):
++                clean.apply_plan(client, plan, Path(temp) / "execution.json", dry_run=False)
++        self.assertEqual(client.writes, [])
++
++    def test_conference_and_preprint_are_not_false_missing_venue_candidates(self):
++        client = FakeClient()
++        client.items["C"].update(itemType="conferencePaper", proceedingsTitle="CVPR")
++        client.items["C"].pop("publicationTitle")
++        client.items["D"].update(itemType="preprint", repository="arXiv")
++        client.items["D"].pop("publicationTitle")
++        with tempfile.TemporaryDirectory() as temp:
++            _, path = clean.audit_project(client, "ROOT", Path(temp), inbox_key="INBOX")
++            report = json.loads(path.read_text())
++            self.assertEqual(report["invalid_or_metadata_review_candidates"], [])
++
+@@ -100,0 +140 @@
++            self.assertIsNone(report["records"][0]["num_children"])

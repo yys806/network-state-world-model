@@ -1,0 +1,37 @@
+[
+  {
+    "path": "docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md",
+    "sha256": "198922642b1f96e0417e056db0fe79ebe8cb26b6580fe77adb812072c9e91ab9",
+    "usage": "read-only project context; no full private-notebook copy"
+  },
+  {
+    "path": "docs/implementation_records/STEP_R2_09A_DETERMINISTIC_CPU_SERVICE_LIFECYCLE.md",
+    "sha256": "a20a6d330c2dc2061c42404acf6e61ab73bc7b7f7d8a99dafce963875e4877dc",
+    "usage": "read-only project context; no full private-notebook copy"
+  },
+  {
+    "path": "docs/PROJECT_MEMORY_AND_SOURCES.md",
+    "sha256": "3657911d2aeddc12f46cc5a94bbbf7e5b9ce6f6dc3dc9a76fa9c22b562a51ea7",
+    "usage": "read-only project context; no full private-notebook copy"
+  },
+  {
+    "path": "D:/shen/OB/科研/PKU/PIJWM/PIJWM/新场景下训练前任务书.md",
+    "sha256": "9df6fe58b9fb563f87bded2744cfe2243f67b7f0c57d0dd1e7a24bdbdefafa40",
+    "usage": "read-only project context; no full private-notebook copy"
+  },
+  {
+    "path": "D:/shen/OB/科研/PKU/PIJWM/组会笔记/1028组会.md",
+    "sha256": "8fb7fe0d55ca3d6184f0c61851923d9e65522b694f9521442d8a69588e0c7171",
+    "usage": "read-only project context; no full private-notebook copy"
+  },
+  {
+    "path": "D:/shen/OB/科研/PKU/PIJWM/组会笔记/1021组会.md",
+    "sha256": "8095edcd9a2800ab9b5650cb594d5d859d852d27892b76e8f96e8fe2bf548db5",
+    "usage": "read-only project context; no full private-notebook copy"
+  },
+  {
+    "path": "D:/shen/OB/科研/PKU/PIJWM/PPT/10.23.pptx",
+    "sha256": "b24faa313aebdb53f4b62fe8dda282f742afccba6cff9e6720ae620386bab8ce",
+    "usage": "read-only project context; no full private-notebook copy"
+  }
+]

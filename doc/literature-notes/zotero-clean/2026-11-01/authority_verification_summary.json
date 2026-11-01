@@ -1,0 +1,890 @@
+[
+  {
+    "item_key": "YXAACPCZ",
+    "current_doi": "10.1109/TKDE.2023.3333824",
+    "source": "https://api.crossref.org/works/10.1109/tkde.2023.3333824",
+    "authority_title": "Spatio-Temporal Graph Neural Networks for Predictive Learning in Urban Computing: A Survey",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "5D3H8HF2",
+    "current_doi": "10.1109/tpami.2024.3443141",
+    "source": "https://api.crossref.org/works/10.1109%2Ftpami.2024.3443141",
+    "authority_title": "A Survey on Graph Neural Networks for Time Series: Forecasting, Classification, Imputation, and Anomaly Detection",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "3MFDIRK8",
+    "current_doi": "10.1109/twc.2022.3219840",
+    "source": "https://api.crossref.org/works/10.1109%2Ftwc.2022.3219840",
+    "authority_title": "Graph Neural Networks for Wireless Communications: From Theory to Practice",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "2LZI4ZG6",
+    "current_doi": "10.1109/tnet.2023.3269983",
+    "source": "https://api.crossref.org/works/10.1109/tnet.2023.3269983",
+    "authority_title": "RouteNet-Fermi: Network Modeling With Graph Neural Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "CIPDRXWJ",
+    "current_doi": "10.1109/cvpr.2017.11",
+    "source": "https://api.crossref.org/works/10.1109/cvpr.2017.11",
+    "authority_title": "Dynamic Edge-Conditioned Filters in Convolutional Neural Networks on Graphs",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "W9GDDVDG",
+    "current_doi": "10.24963/ijcai.2018/505",
+    "source": "https://api.crossref.org/works/10.24963/ijcai.2018/505",
+    "authority_title": "Spatio-Temporal Graph Convolutional Networks: A Deep Learning Framework for Traffic Forecasting",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "MU9TZL9S",
+    "current_doi": "10.1007/978-3-319-93417-4_38",
+    "source": "https://api.crossref.org/works/10.1007/978-3-319-93417-4_38",
+    "authority_title": "Modeling Relational Data with Graph Convolutional Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "HABM6C9B",
+    "current_doi": "10.48550/arXiv.2105.14491",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2105.14491",
+    "authority_title": "How Attentive are Graph Attention Networks?",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "9YHSQ67Y",
+    "current_doi": "10.1145/3534678.3539093",
+    "source": "https://api.crossref.org/works/10.1145/3534678.3539093",
+    "authority_title": "Uncertainty Quantification of Sparse Travel Demand Prediction with Spatial-Temporal Graph Neural Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "TII59WP4",
+    "current_doi": "10.48550/arXiv.2608.09298",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2608.09298",
+    "authority_title": "WorldSimProbe: Diagnosing Simulator Faithfulness in Action-Conditioned World Models for Embodied Manipulation",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "Z2Q5XYHZ",
+    "current_doi": "10.1214/18-AOS1709",
+    "source": "https://api.crossref.org/works/10.1214%2F18-aos1709",
+    "authority_title": "Generalized random forests",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "EBELJLVX",
+    "current_doi": "10.1561/2200000101",
+    "source": "https://api.crossref.org/works/10.1561%2F2200000101",
+    "authority_title": "Conformal Prediction: A Gentle Introduction",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "4RZJ9WHE",
+    "current_doi": "10.1080/01621459.2017.1319839",
+    "source": "https://api.crossref.org/works/10.1080%2F01621459.2017.1319839",
+    "authority_title": "Estimation and Inference of Heterogeneous Treatment Effects using Random Forests",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "Y63ZQVRG",
+    "current_doi": "10.1109/TMC.2025.3541636",
+    "source": "https://api.crossref.org/works/10.1109%2Ftmc.2025.3541636",
+    "authority_title": "Query-Aware Semantic Encoder-Based Resource Allocation in Task-Oriented Communications",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "VHJSJSQL",
+    "current_doi": "10.1109/TCCN.2023.3346481",
+    "source": "https://api.crossref.org/works/10.1109%2Ftccn.2023.3346481",
+    "authority_title": "Adaptable Semantic Compression and Resource Allocation for Task-Oriented Communications",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "UKT7425K",
+    "current_doi": "10.1109/TON.2026.3670099",
+    "source": "https://api.crossref.org/works/10.1109%2Fton.2026.3670099",
+    "authority_title": "Goal-Oriented Status Updating for Real-Time Remote Inference Over Networks With Two-Way Delay",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "HQYQTU8Y",
+    "current_doi": "10.1186/s13638-026-02637-2",
+    "source": "https://api.crossref.org/works/10.1186/s13638-026-02637-2",
+    "authority_title": "Joint optimization of adaptive semantic compression and resource allocation for semantic-enabled UAV communications",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "26MWELTC",
+    "current_doi": "10.48550/arXiv.2510.20149",
+    "source": "https://api.datacite.org/dois/10.48550/arXiv.2510.20149",
+    "authority_title": "Dependency-Aware Task Offloading in Multi-UAV Assisted Collaborative Mobile Edge Computing",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": true
+  },
+  {
+    "item_key": "FT88WZND",
+    "current_doi": "10.1109/INFOCOM55648.2025.11044625",
+    "source": "https://api.crossref.org/works/10.1109%2Finfocom55648.2025.11044625",
+    "authority_title": "Computation and Communication Co-Scheduling for Timely Multi-Task Inference at the Wireless Edge",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "33BXG9ZQ",
+    "current_doi": "10.3390/s21196499",
+    "source": "https://api.crossref.org/works/10.3390/s21196499",
+    "authority_title": "Deep Reinforcement Learning for Computation Offloading and Resource Allocation in Unmanned-Aerial-Vehicle Assisted Edge Computing",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "5DNA58TM",
+    "current_doi": "10.1109/JSAC.2023.3322764",
+    "source": "https://api.crossref.org/works/10.1109%2Fjsac.2023.3322764",
+    "authority_title": "EdgeCooper: Network-Aware Cooperative LiDAR Perception for Enhanced Vehicular Awareness",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "JRZWUIU2",
+    "current_doi": "10.1109/TITS.2025.3542365",
+    "source": "https://api.crossref.org/works/10.1109%2Ftits.2025.3542365",
+    "authority_title": "Task Offloading and Resource Allocation in Vehicular Cooperative Perception With Integrated Sensing, Communication, and Computation",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "WQ9JN878",
+    "current_doi": "10.1109/TMC.2023.3343709",
+    "source": "https://api.crossref.org/works/10.1109/tmc.2023.3343709",
+    "authority_title": "Accuracy-Aware Cooperative Sensing and Computing for Connected Autonomous Vehicles",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "6QKKAHEZ",
+    "current_doi": "10.1016/j.vehcom.2026.101088",
+    "source": "https://api.crossref.org/works/10.1016%2Fj.vehcom.2026.101088",
+    "authority_title": "Uncertainty-aware adaptive resource allocation for semantic communication in IoV via causal world models",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "DX2FLYDV",
+    "current_doi": "10.1109/TMC.2025.3600060",
+    "source": "https://api.crossref.org/works/10.1109/tmc.2025.3600060",
+    "authority_title": "FullPerception: Network-Level Collaborative Perception for Eliminating Vehicular Blind Spots",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "CAHRJ3KJ",
+    "current_doi": "10.1109/TWC.2024.3435871",
+    "source": "https://api.crossref.org/works/10.1109/twc.2024.3435871",
+    "authority_title": "On-Demand Environment Perception and Resource Allocation for Task Offloading in Vehicular Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "RHNB4JTG",
+    "current_doi": "10.1109/TETCI.2024.3499997",
+    "source": "https://api.crossref.org/works/10.1109/tetci.2024.3499997",
+    "authority_title": "Evolutionary Optimization for Proactive and Dynamic Computing Resource Allocation in Open Radio Access Network",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "27TCDE8K",
+    "current_doi": "10.1109/dsis67228.2025.11390609",
+    "source": "https://api.crossref.org/works/10.1109/dsis67228.2025.11390609",
+    "authority_title": "Global-Local Collaborative Scheduling via Adaptive Multi-Agent Reinforcement Learning in Heterogeneous Computing Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "YBR9HQ93",
+    "current_doi": "10.1109/jsac.2023.3310048",
+    "source": "https://api.crossref.org/works/10.1109/jsac.2023.3310048",
+    "authority_title": "RADiT: Resource Allocation in Digital Twin-Driven UAV-Aided Internet of Vehicle Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "YTZAX59R",
+    "current_doi": "10.1109/jsac.2023.3310063",
+    "source": "https://api.crossref.org/works/10.1109/jsac.2023.3310063",
+    "authority_title": "Digital Twin Driven Service Self-Healing With Graph Neural Networks in 6G Edge Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "GFG5JZCX",
+    "current_doi": "10.1109/tnsm.2023.3250395",
+    "source": "https://api.crossref.org/works/10.1109/tnsm.2023.3250395",
+    "authority_title": "GASTO: A Fast Adaptive Graph Learning Framework for Edge Computing Empowered Task Offloading",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "X7TU42A8",
+    "current_doi": "10.1109/tvt.2025.3585146",
+    "source": "https://api.crossref.org/works/10.1109/tvt.2025.3585146",
+    "authority_title": "Graph Neural Network-Based Continual Learning for Resource Allocation in Dynamic Wireless Environments",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "694YFI69",
+    "current_doi": "10.1109/jsac.2020.3036965",
+    "source": "https://api.crossref.org/works/10.1109/jsac.2020.3036965",
+    "authority_title": "Graph Neural Networks for Scalable Radio Resource Management: Architecture Design and Theoretical Analysis",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "TD9MG9MX",
+    "current_doi": "10.1109/jiot.2024.3368516",
+    "source": "https://api.crossref.org/works/10.1109/jiot.2024.3368516",
+    "authority_title": "Knowledge-Driven Resource Allocation for Wireless Networks: A WMMSE Unrolled Graph Neural Network Approach",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "XY6Q8F8Y",
+    "current_doi": "10.1109/jsac.2022.3233532",
+    "source": "https://api.crossref.org/works/10.1109/jsac.2022.3233532",
+    "authority_title": "Dependent Task Scheduling and Offloading for Minimizing Deadline Violation Ratio in Mobile Edge Computing Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "CWDJVQ7V",
+    "current_doi": "10.1109/jsac.2023.3310066",
+    "source": "https://api.crossref.org/works/10.1109%2Fjsac.2023.3310066",
+    "authority_title": "Digital Twin-Driven Collaborative Scheduling for Heterogeneous Task and Edge-End Resource via Multi-Agent Deep Reinforcement Learning",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "VQW3XI9H",
+    "current_doi": "10.1109/tmc.2023.3346431",
+    "source": "https://api.crossref.org/works/10.1109/tmc.2023.3346431",
+    "authority_title": "Energy Efficient Task Offloading and Resource Allocation in Air-Ground Integrated MEC Systems: A Distributed Online Approach",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "TTFUFEWX",
+    "current_doi": "10.1109/tmc.2024.3350078",
+    "source": "https://api.crossref.org/works/10.1109%2Ftmc.2024.3350078",
+    "authority_title": "Joint Task Offloading, Resource Allocation, and Trajectory Design for Multi-UAV Cooperative Edge Computing With Task Priority",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "3ABUVIBP",
+    "current_doi": "10.1109/jiot.2020.3030926",
+    "source": "https://api.crossref.org/works/10.1109/jiot.2020.3030926",
+    "authority_title": "Multihop Offloading of Multiple DAG Tasks in Collaborative Edge Computing",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "LM3I8YCU",
+    "current_doi": "10.1109/tpds.2023.3349177",
+    "source": "https://api.crossref.org/works/10.1109/tpds.2023.3349177",
+    "authority_title": "Real-Time Offloading for Dependent and Parallel Tasks in Cloud-Edge Environments Using Deep Reinforcement Learning",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "N2PGPVZM",
+    "current_doi": "10.1109/tmc.2025.3531887",
+    "source": "https://api.crossref.org/works/10.1109%2Ftmc.2025.3531887",
+    "authority_title": "Task Offloading in Internet of Vehicles: A DRL-Based Approach With Representation Learning for DAG Scheduling",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "P9DRBFZI",
+    "current_doi": "10.1109/tvt.2026.3666220",
+    "source": "https://api.crossref.org/works/10.1109%2Ftvt.2026.3666220",
+    "authority_title": "Model-Based Decentralized Joint Optimization of Resource Allocation, Phase Shift, and UAV Trajectory for Energy-Efficient RIS Assisted UAV-MEC Systems",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "SB7QAQS5",
+    "current_doi": "10.1109/tvt.2025.3646698",
+    "source": "https://api.crossref.org/works/10.1109%2Ftvt.2025.3646698",
+    "authority_title": "Dynamic GNN for Predictive Resource Allocation to Mobile Users",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "7B8X48TK",
+    "current_doi": "10.1109/twc.2023.3325735",
+    "source": "https://api.crossref.org/works/10.1109/twc.2023.3325735",
+    "authority_title": "ENGNN: A General Edge-Update Empowered GNN Architecture for Radio Resource Management in Wireless Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "XGR7F74A",
+    "current_doi": "10.1109/CVPR52733.2024.01449",
+    "source": "https://api.crossref.org/works/10.1109%2Fcvpr52733.2024.01449",
+    "authority_title": "Multi-Agent Collaborative Perception via Motion-Aware Robust Communication Network",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "7U4BP97F",
+    "current_doi": "10.1109/iccv.2017.324",
+    "source": "https://api.crossref.org/works/10.1109%2Ficcv.2017.324",
+    "authority_title": "Focal Loss for Dense Object Detection",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "EXY7ZTUX",
+    "current_doi": "10.48550/arXiv.2604.14811",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2604.14811",
+    "authority_title": "Learning Ad Hoc Network Dynamics via Graph-Structured World Models",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "RPZUL3BR",
+    "current_doi": "10.48550/arXiv.2607.17747",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2607.17747",
+    "authority_title": "Mobile Network Control with a World Model",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "XTVF2P26",
+    "current_doi": "10.1109/TNSE.2026.3731054",
+    "source": "https://api.crossref.org/works/10.1109/tnse.2026.3731054",
+    "authority_title": "Digital Twin Meets World Model: Proactive Control for UAV Swarms in Low-Altitude Wireless Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "4PFMSEHY",
+    "current_doi": "10.1109/twc.2025.3644600",
+    "source": "https://api.crossref.org/works/10.1109%2Ftwc.2025.3644600",
+    "authority_title": "Learning Latent Multimodal Dynamics for Optimized Resource Planning",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "LPNIJ3D3",
+    "current_doi": "10.48550/arXiv.2608.20126",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2608.20126",
+    "authority_title": "RMWorld: Task-Aware Radio World Models with Value-of-Information Guided Multi-Trial Learning for Multi-UAV Communication Control",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "MG5P4XVY",
+    "current_doi": "10.1109/GLOBECOM59602.2025.11431797",
+    "source": "https://api.crossref.org/works/10.1109%2Fglobecom59602.2025.11431797",
+    "authority_title": "World Model-Based Learning for Long-Term Age of Information Minimization in Vehicular Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "CGZRF45J",
+    "current_doi": "10.52202/085713-2138",
+    "source": "https://api.crossref.org/works/10.52202/085713-2138",
+    "authority_title": "RoboScape: Physics-informed Embodied World Model",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "SL882HI6",
+    "current_doi": "10.1109/cvpr52729.2023.01499",
+    "source": "https://api.crossref.org/works/10.1109/cvpr52729.2023.01499",
+    "authority_title": "Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "S5JI853L",
+    "current_doi": "10.48550/arXiv.2310.16828",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2310.16828",
+    "authority_title": "TD-MPC2: Scalable, Robust World Models for Continuous Control",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "CIUZT3KV",
+    "current_doi": "10.48550/arXiv.2608.17542",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2608.17542",
+    "authority_title": "No Gaussian Required: Contrastive Inverse Dynamics for JEPA World Models",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "3844SJ8R",
+    "current_doi": "10.48550/arXiv.2608.16955",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2608.16955",
+    "authority_title": "WONDER: A Radio World Model-based Negotiation Framework for Multi-Agent UAV Coverage Optimization",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "3ZL9P5KY",
+    "current_doi": "10.48550/arXiv.2608.19709",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2608.19709",
+    "authority_title": "RFWM: Physics-Guided World Model for Dynamic Wireless Radiance Field Generation",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "WAVT2DL9",
+    "current_doi": "10.48550/arXiv.2608.17769",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2608.17769",
+    "authority_title": "Electromagnetic World Model for 6G: A Unified Framework for Joint Environment Reconstruction and Channel Prediction",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "7KS9WVR7",
+    "current_doi": "10.48550/arXiv.2608.08600",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2608.08600",
+    "authority_title": "Population-Scalable Multi-Agent World Modeling",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "8L7P5YNN",
+    "current_doi": "10.1038/s41586-025-08744-2",
+    "source": "https://api.crossref.org/works/10.1038%2Fs41586-025-08744-2",
+    "authority_title": "Mastering diverse control tasks through world models",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "P3QIP9C4",
+    "current_doi": "10.48550/arXiv.1908.09710",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.1908.09710",
+    "authority_title": "Variational Graph Recurrent Neural Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "2BTIMUCB",
+    "current_doi": "10.1109/lwc.2024.3510943",
+    "source": "https://api.crossref.org/works/10.1109/lwc.2024.3510943",
+    "authority_title": "Learning Latent Wireless Dynamics From Channel State Information",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "JFXYBX2N",
+    "current_doi": "10.1109/jiot.2023.3325575",
+    "source": "https://api.crossref.org/works/10.1109/jiot.2023.3325575",
+    "authority_title": "Model-Based Deep Reinforcement Learning Framework for Channel Access in Wireless Networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "WSGWLNVD",
+    "current_doi": "10.48550/arXiv.1912.01603",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.1912.01603",
+    "authority_title": "Dream to Control: Learning Behaviors by Latent Imagination",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "5BSY2P2L",
+    "current_doi": "10.48550/arXiv.1803.10122",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.1803.10122",
+    "authority_title": "World Models",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "4SKU5M6X",
+    "current_doi": "10.48550/arXiv.2603.25275",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2603.25275",
+    "authority_title": "V2U4Real: A Real-world Large-scale Dataset for Vehicle-to-UAV Cooperative Perception",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "KQXI4GWD",
+    "current_doi": "10.1109/tmc.2025.3641373",
+    "source": "https://api.crossref.org/works/10.1109%2Ftmc.2025.3641373",
+    "authority_title": "AirFogSim: A Light-Weight and Modular Simulator for UAV-Integrated Vehicular Fog Computing",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "I5QR6AXA",
+    "current_doi": "10.21105/joss.08267",
+    "source": "https://api.crossref.org/works/10.21105%2Fjoss.08267",
+    "authority_title": "AirFogSim: A Python Package for Benchmarking Collaborative Intelligence in Low-Altitude Vehicular Fog Computing",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "EJCRIIPU",
+    "current_doi": "10.1109/wcnc51071.2022.9771908",
+    "source": "https://api.crossref.org/works/10.1109/wcnc51071.2022.9771908",
+    "authority_title": "OpenRAN Gym: An Open Toolbox for Data Collection and Experimentation with AI in O-RAN",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "UW2UJ3X5",
+    "current_doi": "10.2139/ssrn.4383745",
+    "source": "https://api.crossref.org/works/10.2139/ssrn.4383745",
+    "authority_title": "Deepmimo: A Generic Deep Learning Dataset for Millimeter Wave and Massive Mimo Applications to Vehicular Communications",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "9MPG2AYE",
+    "current_doi": "10.1109/iccworkshops57953.2023.10283735",
+    "source": "https://api.crossref.org/works/10.1109%2Ficcworkshops57953.2023.10283735",
+    "authority_title": "End-to-End Full-Stack Drone Measurements: A Case Study Using AERPAW",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "UXGIG49G",
+    "current_doi": "10.1109/ojcoms.2022.3162591",
+    "source": "https://api.crossref.org/works/10.1109/ojcoms.2022.3162591",
+    "authority_title": "Blockage Prediction Using Wireless Signatures: Deep Learning Enables Real-World Demonstration",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "YRCU5LI4",
+    "current_doi": "10.1109/tmc.2024.3359596",
+    "source": "https://api.crossref.org/works/10.1109%2Ftmc.2024.3359596",
+    "authority_title": "Colosseum as a Digital Twin: Bridging Real-World Experimentation and Wireless Network Emulation",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "P9UCUBZU",
+    "current_doi": "10.1109/ojcoms.2024.3447472",
+    "source": "https://api.crossref.org/works/10.1109%2Fojcoms.2024.3447472",
+    "authority_title": "Colosseum: The Open RAN Digital Twin",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "48Y93ANR",
+    "current_doi": "10.1109/mcom.006.2200730",
+    "source": "https://api.crossref.org/works/10.1109%2Fmcom.006.2200730",
+    "authority_title": "DeepSense 6G: A Large-Scale Real-World Multi-Modal Sensing and Communication Dataset",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "XBRZATNZ",
+    "current_doi": "10.1109/ojcoms.2023.3239434",
+    "source": "https://api.crossref.org/works/10.1109%2Fojcoms.2023.3239434",
+    "authority_title": "Proactively Predicting Dynamic 6G Link Blockages Using LiDAR and In-Band Signatures",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "7JPHRHDF",
+    "current_doi": "10.1145/3610402",
+    "source": "https://api.crossref.org/works/10.1145/3610402",
+    "authority_title": "Where Are the (Cellular) Data?",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "NW7VZSR7",
+    "current_doi": "10.1109/mcom.001.2200830",
+    "source": "https://api.crossref.org/works/10.1109%2Fmcom.001.2200830",
+    "authority_title": "6G Digital Twin Networks: From Theory to Practice",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "DBAUH4P3",
+    "current_doi": "10.1109/comst.2023.3239220",
+    "source": "https://api.crossref.org/works/10.1109/comst.2023.3239220",
+    "authority_title": "Understanding O-RAN: Architecture, Interfaces, Algorithms, Security, and Research Challenges",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "P3A797UX",
+    "current_doi": "10.1109/mwc.2026.3702071",
+    "source": "https://api.crossref.org/works/10.1109/mwc.2026.3702071",
+    "authority_title": "Integrated Sensing, Communication, Computing, and Control Meets UAV Swarms in 6G",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "H4YG9PRA",
+    "current_doi": "10.1109/MWC.002.2300564",
+    "source": "https://api.crossref.org/works/10.1109%2Fmwc.002.2300564",
+    "authority_title": "Wireless Network Digital Twin for 6G: Generative AI as a Key Enabler",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "IX3MJ327",
+    "current_doi": "10.1038/s44459-025-00010-1",
+    "source": "https://api.crossref.org/works/10.1038%2Fs44459-025-00010-1",
+    "authority_title": "Advancing the control of low-altitude wireless networks: architecture, design principles, and future directions",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "JC8WK6WY",
+    "current_doi": "10.1145/3636534.3698244",
+    "source": "https://api.crossref.org/works/10.1145/3636534.3698244",
+    "authority_title": "Low-Latency Task-Oriented Communications with Multi-Round, Multi-Task Deep Learning",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "PQK4SIWD",
+    "current_doi": "10.1109/TCOMM.2025.3545687",
+    "source": "https://api.crossref.org/works/10.1109/tcomm.2025.3545687",
+    "authority_title": "Task-Oriented Semantic Communication for Stereo-Vision 3D Object Detection",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "IHTIXK22",
+    "current_doi": "10.1109/TPAMI.2026.3680062",
+    "source": "https://api.crossref.org/works/10.1109/tpami.2026.3680062",
+    "authority_title": "Pragmatic Communication in Multi-Agent Collaborative Perception",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "3ZPHIF3A",
+    "current_doi": "10.1016/j.cviu.2025.104572",
+    "source": "https://api.crossref.org/works/10.1016%2Fj.cviu.2025.104572",
+    "authority_title": "What2Keep: A communication-efficient collaborative perception framework for 3D detection via keeping valuable information",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "LICHMG8T",
+    "current_doi": "10.1109/TCOMM.2024.3397862",
+    "source": "https://api.crossref.org/works/10.1109%2Ftcomm.2024.3397862",
+    "authority_title": "OFDM-Based Digital Semantic Communication With Importance Awareness",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "J5GYT4N7",
+    "current_doi": "10.1109/TMLCN.2026.3659819",
+    "source": "https://api.crossref.org/works/10.1109%2Ftmlcn.2026.3659819",
+    "authority_title": "Adaptive Semantic Token Communication for Transformer-Based Edge Inference",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "EEIJCJKL",
+    "current_doi": "10.1609/aaai.v40i26.39351",
+    "source": "https://api.crossref.org/works/10.1609/aaai.v40i26.39351",
+    "authority_title": "SemanticNN: Compressive and Error-Resilient Semantic Offloading for Extremely Weak Devices",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "AA2W5LAB",
+    "current_doi": "10.1109/TCCN.2025.3579540",
+    "source": "https://api.crossref.org/works/10.1109/tccn.2025.3579540",
+    "authority_title": "Semantic Communication for Cooperative Perception Using HARQ",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "GZST55JK",
+    "current_doi": "10.1109/LCOMM.2024.3466995",
+    "source": "https://api.crossref.org/works/10.1109/lcomm.2024.3466995",
+    "authority_title": "Improving Channel Resilience for Task-Oriented Semantic Communications: A Unified Information Bottleneck Approach",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "KHH7ARGG",
+    "current_doi": "10.1109/CVPR52733.2024.01466",
+    "source": "https://api.crossref.org/works/10.1109%2Fcvpr52733.2024.01466",
+    "authority_title": "Communication-Efficient Collaborative Perception via Information Filling with Codebook",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "IKDKLFZT",
+    "current_doi": "10.1109/CVPR52734.2025.00641",
+    "source": "https://api.crossref.org/works/10.1109%2Fcvpr52734.2025.00641",
+    "authority_title": "CoSDH: Communication-Efficient Collaborative Perception via Supply-Demand Awareness and Intermediate-Late Hybridization",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "W335LQSP",
+    "current_doi": "10.1109/ICCV51701.2025.02637",
+    "source": "https://api.crossref.org/works/10.1109/iccv51701.2025.02637",
+    "authority_title": "mmCooper: A Multi-Agent Multi-Stage Communication-Efficient and Collaboration-Robust Cooperative Perception Framework",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "UWFHW53I",
+    "current_doi": "10.1109/WACV61041.2025.00599",
+    "source": "https://api.crossref.org/works/10.1109/wacv61041.2025.00599",
+    "authority_title": "Bandwidth-Efficient Communication Modelling for Autonomous Vehicle Collaborative Perception",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "ZKJ46CL9",
+    "current_doi": "10.1109/TVT.2026.3654968",
+    "source": "https://api.crossref.org/works/10.1109%2Ftvt.2026.3654968",
+    "authority_title": "SComCP: Task-Oriented Semantic Communication for Collaborative Perception",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "C2X5UMZT",
+    "current_doi": "10.1109/TWC.2026.3698559",
+    "source": "https://api.crossref.org/works/10.1109/twc.2026.3698559",
+    "authority_title": "CoDS: Collaborative Perception via Digital Semantic Communication",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "LNVZKIEP",
+    "current_doi": "10.1109/tccn.2026.3658762",
+    "source": "https://api.crossref.org/works/10.1109%2Ftccn.2026.3658762",
+    "authority_title": "Edge General Intelligence Through World Models, Large Language Models, and Agentic AI: Fundamentals, Solutions, and Challenges",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "TQSTMNXA",
+    "current_doi": "10.48550/ARXIV.2603.17420",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.2603.17420",
+    "authority_title": "From Digital Twins to World Models:Opportunities, Challenges, and Applications for Mobile Edge General Intelligence",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "BTV6Z566",
+    "current_doi": "10.1145/3746449",
+    "source": "https://api.crossref.org/works/10.1145%2F3746449",
+    "authority_title": "Understanding World or Predicting Future? A Comprehensive Survey of World Models",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "TCQB98AW",
+    "current_doi": "10.1016/j.engappai.2026.116063",
+    "source": "https://api.crossref.org/works/10.1016/j.engappai.2026.116063",
+    "authority_title": "When meaning meets purpose: A survey on semantic and task-oriented communications",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "J6M7CRVM",
+    "current_doi": "10.1109/ACCESS.2024.3381967",
+    "source": "https://api.crossref.org/works/10.1109%2Faccess.2024.3381967",
+    "authority_title": "A Survey on Goal-Oriented Semantic Communication: Techniques, Challenges, and Future Directions",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "4IRCF875",
+    "current_doi": "10.1016/j.comnet.2024.110350",
+    "source": "https://api.crossref.org/works/10.1016%2Fj.comnet.2024.110350",
+    "authority_title": "A comprehensive survey on digital twin for future networks and emerging Internet of Things industry",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "GB7ZJR8Z",
+    "current_doi": "10.48550/arXiv.1806.01261",
+    "source": "https://api.datacite.org/dois/10.48550/arxiv.1806.01261",
+    "authority_title": "Relational inductive biases, deep learning, and graph networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "IXPYA38V",
+    "current_doi": "10.1093/comnet/cnu016",
+    "source": "https://api.crossref.org/works/10.1093/comnet/cnu016",
+    "authority_title": "Multilayer networks",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "657FNQ6E",
+    "current_doi": "10.1109/tpds.2012.62",
+    "source": "https://api.crossref.org/works/10.1109/tpds.2012.62",
+    "authority_title": "Optimal Allocation of Interconnecting Links in Cyber-Physical Systems: Interdependence, Cascading Failures, and Robustness",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "4NTF7PRY",
+    "current_doi": "10.1109/jproc.2025.3526887",
+    "source": "https://api.crossref.org/works/10.1109%2Fjproc.2025.3526887",
+    "authority_title": "Artificial General Intelligence (AGI)-Native Wireless Systems: A Journey Beyond 6G",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "SX4HLKIV",
+    "current_doi": "10.1109/TKDE.2021.3070203",
+    "source": "https://api.crossref.org/works/10.1109/tkde.2021.3070203",
+    "authority_title": "A Survey on Multi-Task Learning",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "GR44R39I",
+    "current_doi": "10.1016/s0004-3702(98)00023-x",
+    "source": "https://api.crossref.org/works/10.1016%2Fs0004-3702%2898%2900023-x",
+    "authority_title": "Planning and acting in partially observable stochastic domains",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  },
+  {
+    "item_key": "3KE8DVPX",
+    "current_doi": "10.1109/comst.2022.3198273",
+    "source": "https://api.crossref.org/works/10.1109%2Fcomst.2022.3198273",
+    "authority_title": "Digital Twin of Wireless Systems: Overview, Taxonomy, Challenges, and Opportunities",
+    "status": "IDENTIFIER_RECORD_FETCHED",
+    "identity_conflict_repaired": false
+  }
+]

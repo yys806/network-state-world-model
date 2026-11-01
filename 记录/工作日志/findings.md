@@ -1497,3 +1497,7 @@ Required wording for a paper: use “to the best of our knowledge, existing work
 - 文献进一步支持当前边界：世界模型可信度要拆成动作实现与环境响应链；候选规划必须逐候选注入动作、预测未来并反馈重规划；不确定性应按任务决策影响和 paired effect 评价。
 - 这些内容是设计/评价启发，不改变 frozen tensor contract、规则层 replay 结果、candidate planner `blocked` 状态或 `formal_performance_claim_ready=false`。
 - 2026-08-26 材料来源纠正：此前一次回答错误读取了独立 RRM 项目的 `D:\shen\PKU\RRM\huawei_世界模型_交流260812.pptx`，并将其误称为 PI-JWM 的上周 PPT。该引用已作废。PI-JWM 的正确汇报材料是 `meeting\PI-JWM_组会汇报.pptx`；其第190--203页明确记录了严格双图、Graph-GRU/Graph-RSSM、Masked Actor-Critic、Clipped PPO及下一步计划。RRM 项目与 PI-JWM 保持独立，不能混用其 PPT 证据。
+
+## 2026-11-01 — Zotero审计发现
+
+26MWELTC的会议DOI确属另一论文，按原稿arXiv:2510.20149v2和DataCite修复。项目内部无精确重复，但跨RRM有3对；不得据此自动删另一项目。会议/预印本不能按publicationTitle缺失误报，旧archive别名也须识别；Zotero会排序标签、迁移类型字段到Extra，并随父日期自动改附件文件名。这些行为与5条版本差异、2条贡献归属待审均已记录。

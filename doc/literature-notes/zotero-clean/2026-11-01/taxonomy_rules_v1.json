@@ -1,0 +1,89 @@
+{
+  "version": "PIJWM-20261101-v1",
+  "decision_status": "Existing ten-category policy retained; inbox classification authorized by user 2026-11-01",
+  "project_context_sources": [
+    {
+      "path": "docs/contracts/PIJWM_SCENARIO_CONTRACT_V1.md",
+      "basis": "2026-10-27授权规则：车与UAV感知源、LiDAR协同3D检测、逻辑RSU、当前只选择包和RB"
+    },
+    {
+      "path": "docs/implementation_records/STEP_R2_09A_DETERMINISTIC_CPU_SERVICE_LIFECYCLE.md",
+      "basis": "2026-10-28仅合成CPU工程验证，真实无线与感知未完成"
+    },
+    {
+      "path": "D:/shen/OB/科研/PKU/PIJWM/PPT/10.23.pptx",
+      "sha256": "b24faa313aebdb53f4b62fe8dda282f742afccba6cff9e6720ae620386bab8ce",
+      "status": "historical direction snapshot, superseded in sensor/modality scope by R2-08"
+    },
+    {
+      "path": "D:/shen/OB/科研/PKU/PIJWM/组会笔记/1021组会.md",
+      "sha256": "8095edcd9a2800ab9b5650cb594d5d859d852d27892b76e8f96e8fe2bf548db5",
+      "status": "historical direction, disagreement retained"
+    }
+  ],
+  "collections": [
+    {
+      "key": "UUK8F8EQ",
+      "name": "01_系统场景与问题定义",
+      "inclusion": "系统场景、系统架构、问题定义",
+      "exclusion": "以具体预测/优化/编码方法为主要贡献"
+    },
+    {
+      "key": "283ARJS5",
+      "name": "02_严格双图与图学习",
+      "inclusion": "双图、异构/动态图和图学习方法",
+      "exclusion": "图仅作为资源优化工具或世界模型组件"
+    },
+    {
+      "key": "EV5VZHH3",
+      "name": "03_世界模型与状态预测",
+      "inclusion": "动作条件世界模型、潜在动力学、状态/信道预测",
+      "exclusion": "只借用预测器、主要贡献是资源优化"
+    },
+    {
+      "key": "CI9HW9D9",
+      "name": "04_任务卸载与资源优化",
+      "inclusion": "卸载、调度、通信/计算资源分配、预测式控制优化",
+      "exclusion": "主要贡献是任务模型或特征编码"
+    },
+    {
+      "key": "SXVPC5G4",
+      "name": "05_数据集、测量与仿真",
+      "inclusion": "数据集、真实测量、模拟器及实验平台",
+      "exclusion": "仅使用现成数据集的方法论文"
+    },
+    {
+      "key": "8VKHS5YK",
+      "name": "06_评价、不确定性与决策诊断",
+      "inclusion": "评价、校准、不确定性及决策诊断方法",
+      "exclusion": "不确定性仅作为另一个优化方法的工具"
+    },
+    {
+      "key": "DQQG4EIB",
+      "name": "07_AI业务场景与任务模型",
+      "inclusion": "感知/检测/跟踪任务和感知融合模型",
+      "exclusion": "主要贡献是特征/Token压缩、通信编码或无线调度"
+    },
+    {
+      "key": "VLA67XIK",
+      "name": "08_Token与语义通信",
+      "inclusion": "任务相关特征/Token选择、压缩、编码和价值感知通信",
+      "exclusion": "主要贡献是带宽/算力调度而非信息表示/选择"
+    },
+    {
+      "key": "9ELTVQWN",
+      "name": "09_网络QoS与任务质量映射",
+      "inclusion": "网络交付、时延、可靠性、信息时效与任务质量的显式映射",
+      "exclusion": "以任务约束为条件的常规资源优化"
+    },
+    {
+      "key": "VXXZ7BJ4",
+      "name": "99_综述与奠基性文献",
+      "inclusion": "跨领域综述与明确奠基文献",
+      "exclusion": "证据不足或无法分类的临时收容"
+    }
+  ],
+  "cross_cutting_policy": "Each paper has one primary PIJWM category. Preserve other project memberships. Cross-category relationships belong in tags; no permanent 11th category. Existing ambiguous primary assignments are reviewed, not removed by Level 1.",
+  "inbox_collection_key": "GVMEXXZE",
+  "current_role_policy": "Current perception/service chain; transferable prediction/optimization mechanisms; historical offloading reference; future RGB/semantic encoder extensions. Role is assessed separately from contribution category; no novelty or implemented-method claim."
+}

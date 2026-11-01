@@ -1,0 +1,24 @@
+[
+  {
+    "item_key": "Y63ZQVRG",
+    "title": "Query-Aware Semantic Encoder-Based Resource Allocation in Task-Oriented Communications",
+    "current_primary": "09_网络QoS与任务质量映射",
+    "possible_primary": [
+      "08_Token与语义通信",
+      "04_任务卸载与资源优化"
+    ],
+    "reason": "摘要同时提出QDC语义编码器和RDSBA优化；09现归属可作任务相关资源桥接，但按严格主贡献口径需选08或04，不能只按题名裁决。",
+    "status": "REVIEW_REQUIRED_MAIN_CONTRIBUTION_NOT_CHANGED"
+  },
+  {
+    "item_key": "VHJSJSQL",
+    "title": "Adaptable semantic compression and resource allocation for task-oriented communications",
+    "current_primary": "09_网络QoS与任务质量映射",
+    "possible_primary": [
+      "08_Token与语义通信",
+      "04_任务卸载与资源优化"
+    ],
+    "reason": "ASC编码与CRRA/CRRAUS联合优化并重，保留09作为既有归属，需全文方法贡献权衡后再批准移动。",
+    "status": "REVIEW_REQUIRED_MAIN_CONTRIBUTION_NOT_CHANGED"
+  }
+]

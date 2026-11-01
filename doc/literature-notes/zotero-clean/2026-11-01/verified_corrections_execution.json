@@ -1,0 +1,164 @@
+{
+  "schema": "zotero-clean.approved-corrections.execution.v1",
+  "approval_reference": "User reply 2026-11-01: 批准执行这6条已核实修正",
+  "status": "VERIFIED_COMPLETE",
+  "items": [
+    {
+      "item_key": "VIWIQGG9",
+      "title": "DivPrune: Diversity-based visual token pruning for large multimodal models",
+      "action": "replace_primary_collection",
+      "before_collections": [
+        "DQQG4EIB"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "before_fields": {
+        "collections": [
+          "DQQG4EIB"
+        ]
+      },
+      "after_fields": {
+        "collections": [
+          "VLA67XIK"
+        ]
+      },
+      "reason": "原文主要贡献是最大最小多样性Token剪枝，不是AI检测任务模型；属于08。",
+      "evidence": "Zotero indexed attachment fulltext: Abstract and Introduction",
+      "operator_level": 3,
+      "timestamp": "2026-11-01T12:50:41.183835+00:00",
+      "verified": true,
+      "already_applied_not_repeated": true,
+      "unrelated_fields_preserved": true
+    },
+    {
+      "item_key": "PINRPGH7",
+      "title": "LLaVA-PruMerge: Adaptive token reduction for efficient large multimodal models",
+      "action": "replace_primary_collection",
+      "before_collections": [
+        "DQQG4EIB"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "before_fields": {
+        "collections": [
+          "DQQG4EIB"
+        ]
+      },
+      "after_fields": {
+        "collections": [
+          "VLA67XIK"
+        ]
+      },
+      "reason": "原文主要贡献是视觉Token自适应裁剪合并，不是AI任务模型；属于08。",
+      "evidence": "Zotero indexed attachment fulltext: Abstract and Introduction",
+      "operator_level": 3,
+      "timestamp": "2026-11-01T12:50:41.291204+00:00",
+      "verified": true,
+      "already_applied_not_repeated": false,
+      "unrelated_fields_preserved": true
+    },
+    {
+      "item_key": "PQK4SIWD",
+      "title": "Task-oriented semantic communication for stereo-vision 3D object detection",
+      "action": "replace_primary_collection",
+      "before_collections": [
+        "DQQG4EIB"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "before_fields": {
+        "collections": [
+          "DQQG4EIB"
+        ]
+      },
+      "after_fields": {
+        "collections": [
+          "VLA67XIK"
+        ]
+      },
+      "reason": "原文主要贡献是光流驱动语义提取/恢复与传输，不是一般立体检测器；属于08。",
+      "evidence": "Zotero indexed attachment fulltext: Abstract and Introduction",
+      "operator_level": 3,
+      "timestamp": "2026-11-01T12:50:41.385007+00:00",
+      "verified": true,
+      "already_applied_not_repeated": false,
+      "unrelated_fields_preserved": true
+    },
+    {
+      "item_key": "33BXG9ZQ",
+      "title": "Deep Reinforcement Learning for Computation Offloading and Resource Allocation in Unmanned-Aerial-Vehicle Assisted Edge Computing",
+      "action": "patch_verified_metadata",
+      "before_collections": [
+        "CI9HW9D9"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "before_fields": {
+        "title": "Li 2021 INCS deep reinforcement learning for computat"
+      },
+      "after_fields": {
+        "title": "Deep Reinforcement Learning for Computation Offloading and Resource Allocation in Unmanned-Aerial-Vehicle Assisted Edge Computing"
+      },
+      "reason": "当前题名是作者年份和截断文件名；按原文首页及原文DOI核实正式题名。",
+      "evidence": "Zotero indexed attachment fulltext first page; exact DOI match on same PDF",
+      "operator_level": 4,
+      "timestamp": "2026-11-01T12:50:41.502747+00:00",
+      "verified": true,
+      "already_applied_not_repeated": false,
+      "unrelated_fields_preserved": true
+    },
+    {
+      "item_key": "9YHSQ67Y",
+      "title": "Uncertainty Quantification of Sparse Travel Demand Prediction with Spatial-Temporal Graph Neural Networks",
+      "action": "patch_verified_metadata",
+      "before_collections": [
+        "8VKHS5YK"
+      ],
+      "after_collections": [
+        "8VKHS5YK"
+      ],
+      "before_fields": {
+        "title": "Zhuang 2022 KDDM uncertainty quantification of sparse tra"
+      },
+      "after_fields": {
+        "title": "Uncertainty Quantification of Sparse Travel Demand Prediction with Spatial-Temporal Graph Neural Networks"
+      },
+      "reason": "当前题名是作者年份和截断文件名；按原文首页及原文DOI核实正式题名。",
+      "evidence": "Zotero indexed attachment fulltext first page; exact DOI match on same PDF",
+      "operator_level": 4,
+      "timestamp": "2026-11-01T12:50:41.584239+00:00",
+      "verified": true,
+      "already_applied_not_repeated": false,
+      "unrelated_fields_preserved": true
+    },
+    {
+      "item_key": "5DNA58TM",
+      "title": "EdgeCooper: Network-aware cooperative LiDAR perception for enhanced vehicular awareness",
+      "action": "patch_verified_metadata",
+      "before_collections": [
+        "CI9HW9D9"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "before_fields": {
+        "abstractNote": "OF NOTATIONS Definition 2: Pillar satisfaction degree. Inspired by the sampling strategy of PointPillars, the satisfaction degree over a pillar o is defined as go = min(Pmax, |Po i |)."
+      },
+      "after_fields": {
+        "abstractNote": "Autonomous driving vehicle (ADV) that is ready to transform our society and economy, is in desperate need of precise positioning over itself as well as surrounding environments. However, it is still a challenging issue for ADV to retrieve real-time positioning knowledge over road participants and dynamic surrounding environments, due to unsatisfied perception accuracy caused by sparse observations and limited perception range. Cooperative perception, which advocates cooperatively disseminating perception data among vehicles, has the potential to overcome the above limitations. To this end, this article proposes a novel edge-assisted multi-vehicle perception system to enhance vehicles’ awareness over surrounding environments, which is termed as EdgeCooper. EdgeCooper first schedules vehicles to share complementarity-enhanced and redundancyminimized raw sensor data with an edge server, using multi-hop cooperative 5G V2X communications. Then, EdgeCooper merges vehicles’ individual views to form a holistic view with a higher resolution, thus enhancing perception robustness and enlarging perception range. We formulate multi-vehicle multi-hop cooperative data sharing as a minimum cost flow problem with conflict, and further prove that there exists no polynomial-time approximation algorithm with a constant performance ratio unless P = NP. Furthermore, a two-dimension graph coloring algorithm with guaranteed performance is proposed to eliminate conflict. We evaluate EdgeCooper by building a comprehensive simulation platform through a joint manipulation of SUMO, CARLA, NS3, and PyTorch. The experiment results show that, compared to a single vehicle’s perception, EdgeCooper performs effective and efficient in enhancing vehicular awareness, e.g., extending up to 3.6 times detection range and improving perception accuracy by 20%."
+      },
+      "reason": "摘要误抓正文NOTATIONS和Definition 2；替换为同一附件正式摘要，不改结果和论文内容。",
+      "evidence": "Zotero attachment GFDDMMFF indexed fulltext: original abstract across first two page text blocks",
+      "operator_level": 4,
+      "timestamp": "2026-11-01T12:50:41.643211+00:00",
+      "verified": true,
+      "already_applied_not_repeated": false,
+      "unrelated_fields_preserved": true
+    }
+  ],
+  "note": "Zotero may reorder tags; preservation compares tag records as an unordered collection."
+}

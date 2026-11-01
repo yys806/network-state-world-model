@@ -1,0 +1,190 @@
+{
+  "schema": "zotero-clean.remaining-corrections.execution.v1",
+  "approval_reference": "User 2026-11-01: 批准执行补充计划这6条修正",
+  "status": "VERIFIED_COMPLETE",
+  "items": [
+    {
+      "item_key": "FT88WZND",
+      "title": "Computation and communication co-scheduling for timely multi-task inference at the wireless edge",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_collections": [
+        "9ELTVQWN"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "before_fields": {
+        "collections": [
+          "9ELTVQWN"
+        ]
+      },
+      "after_fields": {
+        "collections": [
+          "CI9HW9D9"
+        ]
+      },
+      "reason": "主要贡献是生成/传输联合调度、拉格朗日松弛与MGF策略；AoI只是推理误差建模工具，主类04。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_FT88WZND.json",
+      "timestamp": "2026-11-01T12:53:13.183145+00:00",
+      "verified": true,
+      "unrelated_fields_preserved": true,
+      "obsolete_fields_removed": true
+    },
+    {
+      "item_key": "JC8WK6WY",
+      "title": "Low-latency task-oriented communications with multi-round, multi-task deep learning",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_collections": [
+        "9ELTVQWN"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "before_fields": {
+        "collections": [
+          "9ELTVQWN"
+        ]
+      },
+      "after_fields": {
+        "collections": [
+          "VLA67XIK"
+        ]
+      },
+      "reason": "主要贡献是多轮多任务编码学习、按反馈增加信道使用次数，属于语义通信方法08。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_JC8WK6WY.json",
+      "timestamp": "2026-11-01T12:53:13.254986+00:00",
+      "verified": true,
+      "unrelated_fields_preserved": true,
+      "obsolete_fields_removed": true
+    },
+    {
+      "item_key": "BTV6Z566",
+      "title": "Understanding world or predicting future? A comprehensive survey of world models",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_collections": [
+        "EV5VZHH3"
+      ],
+      "after_collections": [
+        "VXXZ7BJ4"
+      ],
+      "before_fields": {
+        "collections": [
+          "EV5VZHH3"
+        ]
+      },
+      "after_fields": {
+        "collections": [
+          "VXXZ7BJ4"
+        ]
+      },
+      "reason": "跨自动驾驶、机器人、虚拟社会等应用的世界模型综合综述，符合99跨领域综述。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_BTV6Z566.json",
+      "timestamp": "2026-11-01T12:53:13.364538+00:00",
+      "verified": true,
+      "unrelated_fields_preserved": true,
+      "obsolete_fields_removed": true
+    },
+    {
+      "item_key": "LNVZKIEP",
+      "title": "Edge general intelligence through world models, large language models, and agentic AI: Fundamentals, solutions, and challenges",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_collections": [
+        "EV5VZHH3"
+      ],
+      "after_collections": [
+        "VXXZ7BJ4"
+      ],
+      "before_fields": {
+        "collections": [
+          "EV5VZHH3"
+        ]
+      },
+      "after_fields": {
+        "collections": [
+          "VXXZ7BJ4"
+        ]
+      },
+      "reason": "综述边缘通用智能中世界模型、大语言模型与智能体AI的架构、解法和挑战，跨领域综述99。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_LNVZKIEP.json",
+      "timestamp": "2026-11-01T12:53:13.426584+00:00",
+      "verified": true,
+      "unrelated_fields_preserved": true,
+      "obsolete_fields_removed": true
+    },
+    {
+      "item_key": "TQSTMNXA",
+      "title": "From digital twins to world models:Opportunities, challenges, and applications for mobile edge general intelligence",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_collections": [
+        "EV5VZHH3"
+      ],
+      "after_collections": [
+        "VXXZ7BJ4"
+      ],
+      "before_fields": {
+        "collections": [
+          "EV5VZHH3"
+        ]
+      },
+      "after_fields": {
+        "collections": [
+          "VXXZ7BJ4"
+        ]
+      },
+      "reason": "系统综述数字孪生到世界模型的演化，并覆盖ISAC、语义通信、空地及低空网络，跨领域综述99。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_TQSTMNXA.json",
+      "timestamp": "2026-11-01T12:53:13.505145+00:00",
+      "verified": true,
+      "unrelated_fields_preserved": true,
+      "obsolete_fields_removed": true
+    },
+    {
+      "item_key": "26MWELTC",
+      "title": "Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing",
+      "action": "repair_verified_paper_identity",
+      "operator_level": 4,
+      "before_collections": [
+        "CI9HW9D9"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "before_fields": {
+        "itemType": "conferencePaper",
+        "DOI": "10.1109/ecnct70535.2026.11661443",
+        "date": "2026",
+        "repository": null,
+        "url": null,
+        "extra": "Journal Abbreviation: 2026 8th Int. Conf. on Electronics and Communication, Network and Computer Technology (ECNCT)\nfile: Zhao 等 - Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing.pdf\n影响因子: 无\nJCR分区: 无\n中科院分区基础版: 无\n中科院分区升级版: 无\nCCF: 无（会议/预印本）",
+        "proceedingsTitle": "2026 8th International Conference on Electronics and Communication, Network and Computer Technology (ECNCT)",
+        "conferenceName": "2026 8th International Conference on Electronics and Communication, Network and Computer Technology (ECNCT)"
+      },
+      "after_fields": {
+        "itemType": "preprint",
+        "DOI": "10.48550/arXiv.2510.20149",
+        "date": "2025",
+        "repository": "arXiv",
+        "url": "https://arxiv.org/abs/2510.20149",
+        "extra": "file: Zhao 等 - Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing.pdf\n影响因子: 无\nJCR分区: 无\n中科院分区基础版: 无\n中科院分区升级版: 无\nCCF: 无（会议/预印本）\n文献身份核验: VERIFIED，原文arXiv:2510.20149v2与DataCite题名及五位作者一致；2026-11-01。\nDOI冲突历史: 原10.1109/ecnct70535.2026.11661443属于Zhu/Wang另一篇论文，原会议/2026年份错配；本条保留为arXiv预印本。",
+        "proceedingsTitle": null,
+        "conferenceName": null
+      },
+      "reason": "原附件的arXiv编号、题名及五位作者与DataCite一致；当前会议DOI指向题名和作者均不同的论文，须整体恢复预印本身份，不能仅换一个DOI。",
+      "evidence": [
+        "fulltext_26MWELTC.json",
+        "doi_authority_records.json",
+        "doi_conflict_correct_identity.json"
+      ],
+      "timestamp": "2026-11-01T12:53:37.163183+00:00",
+      "verified": true,
+      "unrelated_fields_preserved": true,
+      "obsolete_fields_removed": true,
+      "api_normalization_note": "Zotero converted obsolete conference fields into Extra during type change; a second versioned Extra-only PATCH removed those wrong values, preserving the conflict history."
+    }
+  ]
+}

@@ -1,0 +1,456 @@
+{
+  "schema": "zotero-clean.reviewed-corrections.v1",
+  "status": "APPROVED",
+  "timestamp": "2026-11-01T12:45:01.312712+00:00",
+  "root": "PXDR9FBZ",
+  "scope": "3 primary reclassifications and 3 verified metadata repairs; no merge/delete",
+  "items": [
+    {
+      "item_key": "VIWIQGG9",
+      "title": "DivPrune: Diversity-based visual token pruning for large multimodal models",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_collections": [
+        "DQQG4EIB"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "reason": "原文主要贡献是最大最小多样性Token剪枝，不是AI检测任务模型；属于08。",
+      "evidence": "Zotero indexed attachment fulltext: Abstract and Introduction",
+      "expected_version": 2456,
+      "before_item": {
+        "key": "VIWIQGG9",
+        "version": 2456,
+        "itemType": "conferencePaper",
+        "title": "DivPrune: Diversity-based visual token pruning for large multimodal models",
+        "date": "2025-06",
+        "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Alvar_DivPrune_Diversity-based_Visual_Token_Pruning_for_Large_Multimodal_Models_CVPR_2025_paper.html",
+        "extra": "CCF: A\n影响因子: NOT_APPLICABLE（会议论文）\n5年影响因子: NOT_APPLICABLE（会议论文）\nJCR分区: NOT_APPLICABLE（会议论文）\n中科院分区基础版: NOT_APPLICABLE（会议论文）\n中科院分区升级版: NOT_APPLICABLE（会议论文）\nEI: UNVERIFIED\nPDF来源: CVF Open Access\nPDF核验: 通过（PDF签名、页数、标题与作者匹配）\n发表质量: 正式会议（CVPR 2025）\n科研相关性: B\n调研方向: A（视觉 Token 重要性与任务效率）",
+        "pages": "9392-9401",
+        "proceedingsTitle": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+        "conferenceName": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+        "creators": [
+          {
+            "firstName": "Saeed Ranjbar",
+            "lastName": "Alvar",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Gursimran",
+            "lastName": "Singh",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Mohammad",
+            "lastName": "Akbari",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yong",
+            "lastName": "Zhang",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "PIJWM"
+          },
+          {
+            "tag": "PIJWM/全文/已核验PDF"
+          },
+          {
+            "tag": "PIJWM/证据/正式发表"
+          },
+          {
+            "tag": "PIJWM/主题/Token与语义通信"
+          },
+          {
+            "tag": "PIJWM/主题/AI业务"
+          },
+          {
+            "tag": "/done"
+          }
+        ],
+        "collections": [
+          "DQQG4EIB"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T15:37:05Z",
+        "dateModified": "2026-10-18T09:13:49Z"
+      }
+    },
+    {
+      "item_key": "PINRPGH7",
+      "title": "LLaVA-PruMerge: Adaptive token reduction for efficient large multimodal models",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_collections": [
+        "DQQG4EIB"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "reason": "原文主要贡献是视觉Token自适应裁剪合并，不是AI任务模型；属于08。",
+      "evidence": "Zotero indexed attachment fulltext: Abstract and Introduction",
+      "expected_version": 2380,
+      "before_item": {
+        "key": "PINRPGH7",
+        "version": 2380,
+        "itemType": "conferencePaper",
+        "title": "LLaVA-PruMerge: Adaptive token reduction for efficient large multimodal models",
+        "date": "2025-10",
+        "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Shang_LLaVA-PruMerge_Adaptive_Token_Reduction_for_Efficient_Large_Multimodal_Models_ICCV_2025_paper.html",
+        "extra": "CCF: A\n影响因子: NOT_APPLICABLE（会议论文）\n5年影响因子: NOT_APPLICABLE（会议论文）\nJCR分区: NOT_APPLICABLE（会议论文）\n中科院分区基础版: NOT_APPLICABLE（会议论文）\n中科院分区升级版: NOT_APPLICABLE（会议论文）\nEI: UNVERIFIED\nPDF来源: CVF Open Access\nPDF核验: 通过（PDF签名、页数、标题与作者匹配）\n发表质量: 正式会议（ICCV 2025）\n科研相关性: B\n调研方向: A（视觉 Token 压缩与任务质量）",
+        "pages": "22857-22867",
+        "proceedingsTitle": "Proceedings of the IEEE/CVF International Conference on Computer Vision",
+        "conferenceName": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+        "creators": [
+          {
+            "firstName": "Yuzhang",
+            "lastName": "Shang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Mu",
+            "lastName": "Cai",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Bingxin",
+            "lastName": "Xu",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yong Jae",
+            "lastName": "Lee",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yan",
+            "lastName": "Yan",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "PIJWM"
+          },
+          {
+            "tag": "PIJWM/全文/已核验PDF"
+          },
+          {
+            "tag": "PIJWM/证据/正式发表"
+          },
+          {
+            "tag": "PIJWM/主题/Token与语义通信"
+          },
+          {
+            "tag": "PIJWM/主题/AI业务"
+          }
+        ],
+        "collections": [
+          "DQQG4EIB"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T15:37:05Z",
+        "dateModified": "2026-10-16T15:42:25Z"
+      }
+    },
+    {
+      "item_key": "PQK4SIWD",
+      "title": "Task-oriented semantic communication for stereo-vision 3D object detection",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_collections": [
+        "DQQG4EIB"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "reason": "原文主要贡献是光流驱动语义提取/恢复与传输，不是一般立体检测器；属于08。",
+      "evidence": "Zotero indexed attachment fulltext: Abstract and Introduction",
+      "expected_version": 2303,
+      "before_item": {
+        "key": "PQK4SIWD",
+        "version": 2303,
+        "itemType": "journalArticle",
+        "title": "Task-oriented semantic communication for stereo-vision 3D object detection",
+        "date": "2025-09",
+        "archive": "arXiv",
+        "url": "https://doi.org/10.1109/TCOMM.2025.3545687",
+        "extra": "Archive ID: 2502.12735\nPDF来源: arXiv作者公开版本 arXiv:2502.12735\nPDF核验: VERIFIED (%PDF-, 15页, 首页题名/作者匹配)\n正式发表版本: IEEE TCOM 2025\n影响因子: 8.4\n5年影响因子: 8.2\n中科院分区基础版: 工程技术2区\n中科院分区升级版: 计算机科学2区\n中科院升级版Top分区: 计算机科学TOP\n中科院升级版小类分区: 工程：电子与电气2区/电信学2区。\nJCI: 1.74\nESI: 计算机科学\nJCR分区: Q1\nEI: 是\nCCF: B",
+        "volume": "73",
+        "pages": "7552-7567",
+        "publicationTitle": "IEEE Transactions on Communications",
+        "DOI": "10.1109/TCOMM.2025.3545687",
+        "issue": "9",
+        "journalAbbreviation": "IEEE Trans. Commun.",
+        "creators": [
+          {
+            "firstName": "Zijian",
+            "lastName": "Cao",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Hua",
+            "lastName": "Zhang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Le",
+            "lastName": "Liang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Haotian",
+            "lastName": "Wang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Shi",
+            "lastName": "Jin",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Geoffrey Ye",
+            "lastName": "Li",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "PIJWM"
+          },
+          {
+            "tag": "PIJWM/全文/已核验PDF"
+          },
+          {
+            "tag": "PIJWM/证据/正式发表"
+          },
+          {
+            "tag": "PIJWM/主题/协同感知"
+          },
+          {
+            "tag": "PIJWM/主题/Token与语义通信"
+          },
+          {
+            "tag": "PIJWM/主题/任务质量映射"
+          }
+        ],
+        "collections": [
+          "DQQG4EIB"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T14:20:59Z",
+        "dateModified": "2026-10-16T14:21:45Z"
+      }
+    },
+    {
+      "item_key": "33BXG9ZQ",
+      "title": "Li 2021 INCS deep reinforcement learning for computat",
+      "action": "patch_verified_metadata",
+      "operator_level": 4,
+      "fields": {
+        "title": "Deep Reinforcement Learning for Computation Offloading and Resource Allocation in Unmanned-Aerial-Vehicle Assisted Edge Computing"
+      },
+      "before_fields": {
+        "title": "Li 2021 INCS deep reinforcement learning for computat"
+      },
+      "reason": "当前题名是作者年份和截断文件名；按原文首页及原文DOI核实正式题名。",
+      "evidence": "Zotero indexed attachment fulltext first page; exact DOI match on same PDF",
+      "expected_version": 1701,
+      "before_item": {
+        "key": "33BXG9ZQ",
+        "version": 1701,
+        "itemType": "journalArticle",
+        "title": "Li 2021 INCS deep reinforcement learning for computat",
+        "date": "2021",
+        "extra": "file: Li_2021_INCS_Deep_Reinforcement_Learning_for_Computat.pdf\n影响因子: 4.0\n5年影响因子: 4.1\n中科院分区基础版: 工程技术3区\n中科院分区升级版: 综合性期刊3区\n中科院升级版小类分区: 分析化学3区/工程：电子与电气3区/仪器仪表3区。\nJCI: 0.81\nESI: 化学\nJCR分区: Q2\nEI: 是\nCCF: 无（不在 CCF 目录）",
+        "publicationTitle": "Sensors",
+        "DOI": "10.3390/s21196499",
+        "journalAbbreviation": "Sensors",
+        "creators": [
+          {
+            "firstName": "Shuyang",
+            "lastName": "Li",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Xiaohui",
+            "lastName": "Hu",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yongwen",
+            "lastName": "Du",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "imported:2026-10-16"
+          },
+          {
+            "tag": "PIJWM"
+          }
+        ],
+        "collections": [
+          "CI9HW9D9"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T08:26:00Z",
+        "dateModified": "2026-10-16T09:20:55Z"
+      }
+    },
+    {
+      "item_key": "9YHSQ67Y",
+      "title": "Zhuang 2022 KDDM uncertainty quantification of sparse tra",
+      "action": "patch_verified_metadata",
+      "operator_level": 4,
+      "fields": {
+        "title": "Uncertainty Quantification of Sparse Travel Demand Prediction with Spatial-Temporal Graph Neural Networks"
+      },
+      "before_fields": {
+        "title": "Zhuang 2022 KDDM uncertainty quantification of sparse tra"
+      },
+      "reason": "当前题名是作者年份和截断文件名；按原文首页及原文DOI核实正式题名。",
+      "evidence": "Zotero indexed attachment fulltext first page; exact DOI match on same PDF",
+      "expected_version": 1843,
+      "before_item": {
+        "key": "9YHSQ67Y",
+        "version": 1843,
+        "itemType": "journalArticle",
+        "title": "Zhuang 2022 KDDM uncertainty quantification of sparse tra",
+        "date": "2022",
+        "extra": "file: Zhuang_2022_KDDM_Uncertainty_Quantification_of_Sparse_Tra.pdf\n影响因子: 无（会议/预印本无 IF）\nJCR分区: 无\n中科院分区基础版: 无\n中科院分区升级版: 无\nCCF: 无（会议/预印本）",
+        "publicationTitle": "Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+        "DOI": "10.1145/3534678.3539093",
+        "journalAbbreviation": "KDD",
+        "creators": [
+          {
+            "firstName": "Dingyi",
+            "lastName": "Zhuang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Shenhao",
+            "lastName": "Wang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Haris",
+            "lastName": "Koutsopoulos",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Jinhua",
+            "lastName": "Zhao",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "imported:2026-10-16"
+          },
+          {
+            "tag": "PIJWM"
+          }
+        ],
+        "collections": [
+          "8VKHS5YK"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T08:26:34Z",
+        "dateModified": "2026-10-16T10:02:21Z"
+      }
+    },
+    {
+      "item_key": "5DNA58TM",
+      "title": "EdgeCooper: Network-aware cooperative LiDAR perception for enhanced vehicular awareness",
+      "action": "patch_verified_metadata",
+      "operator_level": 4,
+      "fields": {
+        "abstractNote": "Autonomous driving vehicle (ADV) that is ready to transform our society and economy, is in desperate need of precise positioning over itself as well as surrounding environments. However, it is still a challenging issue for ADV to retrieve real-time positioning knowledge over road participants and dynamic surrounding environments, due to unsatisfied perception accuracy caused by sparse observations and limited perception range. Cooperative perception, which advocates cooperatively disseminating perception data among vehicles, has the potential to overcome the above limitations. To this end, this article proposes a novel edge-assisted multi-vehicle perception system to enhance vehicles’ awareness over surrounding environments, which is termed as EdgeCooper. EdgeCooper first schedules vehicles to share complementarity-enhanced and redundancyminimized raw sensor data with an edge server, using multi-hop cooperative 5G V2X communications. Then, EdgeCooper merges vehicles’ individual views to form a holistic view with a higher resolution, thus enhancing perception robustness and enlarging perception range. We formulate multi-vehicle multi-hop cooperative data sharing as a minimum cost flow problem with conflict, and further prove that there exists no polynomial-time approximation algorithm with a constant performance ratio unless P = NP. Furthermore, a two-dimension graph coloring algorithm with guaranteed performance is proposed to eliminate conflict. We evaluate EdgeCooper by building a comprehensive simulation platform through a joint manipulation of SUMO, CARLA, NS3, and PyTorch. The experiment results show that, compared to a single vehicle’s perception, EdgeCooper performs effective and efficient in enhancing vehicular awareness, e.g., extending up to 3.6 times detection range and improving perception accuracy by 20%."
+      },
+      "before_fields": {
+        "abstractNote": "OF NOTATIONS Definition 2: Pillar satisfaction degree. Inspired by the sampling strategy of PointPillars, the satisfaction degree over a pillar o is defined as go = min(Pmax, |Po i |)."
+      },
+      "reason": "摘要误抓正文NOTATIONS和Definition 2；替换为同一附件正式摘要，不改结果和论文内容。",
+      "evidence": "Zotero attachment GFDDMMFF indexed fulltext: original abstract across first two page text blocks",
+      "expected_version": 3259,
+      "before_item": {
+        "key": "5DNA58TM",
+        "version": 3259,
+        "itemType": "journalArticle",
+        "title": "EdgeCooper: Network-aware cooperative LiDAR perception for enhanced vehicular awareness",
+        "abstractNote": "OF NOTATIONS Definition 2: Pillar satisfaction degree. Inspired by the sampling strategy of PointPillars, the satisfaction degree over a pillar o is defined as go = min(Pmax, |Po i |).",
+        "date": "1/2024",
+        "language": "en",
+        "shortTitle": "EdgeCooper",
+        "libraryCatalog": "DOI.org (Crossref)",
+        "url": "https://ieeexplore.ieee.org/document/10274112/",
+        "accessDate": "2026-10-31T13:03:46Z",
+        "rights": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "extra": "中科院分区升级版: 计算机科学1区\n影响因子: 16.8\nCCF: A",
+        "volume": "42",
+        "pages": "207-222",
+        "publicationTitle": "IEEE Journal on Selected Areas in Communications",
+        "DOI": "10.1109/JSAC.2023.3322764",
+        "issue": "1",
+        "journalAbbreviation": "IEEE J. Select. Areas Commun.",
+        "ISSN": "0733-8716, 1558-0008",
+        "creators": [
+          {
+            "firstName": "Guiyang",
+            "lastName": "Luo",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Chongzhang",
+            "lastName": "Shao",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Nan",
+            "lastName": "Cheng",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Haibo",
+            "lastName": "Zhou",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Hui",
+            "lastName": "Zhang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Quan",
+            "lastName": "Yuan",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Jinglin",
+            "lastName": "Li",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "/done"
+          }
+        ],
+        "collections": [
+          "CI9HW9D9"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-31T13:03:46Z",
+        "dateModified": "2026-11-01T12:43:25Z"
+      }
+    }
+  ],
+  "approval_reference": "User reply 2026-11-01: 批准执行这6条已核实修正",
+  "approved_at_utc": "2026-11-01T12:50:06.033943+00:00"
+}

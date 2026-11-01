@@ -1,0 +1,234 @@
+[
+  {
+    "keys": [
+      "Y63ZQVRG",
+      "VHJSJSQL"
+    ],
+    "titles": [
+      "Query-Aware Semantic Encoder-Based Resource Allocation in Task-Oriented Communications",
+      "Adaptable semantic compression and resource allocation for task-oriented communications"
+    ],
+    "similarity": 0.7977,
+    "authors": [
+      [
+        "Cai",
+        "Zhou"
+      ],
+      [
+        "Liu",
+        "Guo"
+      ]
+    ],
+    "years": [
+      "2025",
+      "2024"
+    ],
+    "doi": [
+      "10.1109/TMC.2025.3541636",
+      "10.1109/TCCN.2023.3346481"
+    ]
+  },
+  {
+    "keys": [
+      "VHJSJSQL",
+      "HQYQTU8Y"
+    ],
+    "titles": [
+      "Adaptable semantic compression and resource allocation for task-oriented communications",
+      "Joint optimization of adaptive semantic compression and resource allocation for semantic-enabled UAV communications"
+    ],
+    "similarity": 0.7624,
+    "authors": [
+      [
+        "Liu",
+        "Guo"
+      ],
+      [
+        "Zhou",
+        "Dai"
+      ]
+    ],
+    "years": [
+      "2024",
+      "2026"
+    ],
+    "doi": [
+      "10.1109/TCCN.2023.3346481",
+      "10.1186/s13638-026-02637-2"
+    ]
+  },
+  {
+    "keys": [
+      "26MWELTC",
+      "3ABUVIBP"
+    ],
+    "titles": [
+      "Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing",
+      "Multihop offloading of multiple DAG tasks in collaborative edge computing"
+    ],
+    "similarity": 0.6748,
+    "authors": [
+      [
+        "Zhao",
+        "Xu"
+      ],
+      [
+        "Sahni",
+        "Cao"
+      ]
+    ],
+    "years": [
+      "2026",
+      "2021"
+    ],
+    "doi": [
+      "10.1109/ecnct70535.2026.11661443",
+      "10.1109/jiot.2020.3030926"
+    ]
+  },
+  {
+    "keys": [
+      "PQK4SIWD",
+      "ZKJ46CL9"
+    ],
+    "titles": [
+      "Task-oriented semantic communication for stereo-vision 3D object detection",
+      "SComCP: Task-oriented semantic communication for collaborative perception"
+    ],
+    "similarity": 0.6712,
+    "authors": [
+      [
+        "Cao",
+        "Zhang"
+      ],
+      [
+        "Gan",
+        "Sheng"
+      ]
+    ],
+    "years": [
+      "2025",
+      "2026"
+    ],
+    "doi": [
+      "10.1109/TCOMM.2025.3545687",
+      "10.1109/TVT.2026.3654968"
+    ]
+  },
+  {
+    "keys": [
+      "3JFATHH9",
+      "5BSY2P2L"
+    ],
+    "titles": [
+      "Graph World Model",
+      "World Models"
+    ],
+    "similarity": 0.7586,
+    "authors": [
+      [
+        "Feng",
+        "Wu"
+      ],
+      [
+        "Ha",
+        "Schmidhuber"
+      ]
+    ],
+    "years": [
+      "2025",
+      "2018"
+    ],
+    "doi": [
+      null,
+      "10.48550/arXiv.1803.10122"
+    ]
+  },
+  {
+    "keys": [
+      "IHTIXK22",
+      "AA2W5LAB"
+    ],
+    "titles": [
+      "Pragmatic communication in multi-agent collaborative perception",
+      "Semantic communication for cooperative perception using HARQ"
+    ],
+    "similarity": 0.6667,
+    "authors": [
+      [
+        "Hu",
+        "Pang"
+      ],
+      [
+        "Sheng",
+        "Liang"
+      ]
+    ],
+    "years": [
+      "2026",
+      "2026"
+    ],
+    "doi": [
+      "10.1109/TPAMI.2026.3680062",
+      "10.1109/TCCN.2025.3579540"
+    ]
+  },
+  {
+    "keys": [
+      "IHTIXK22",
+      "ZKJ46CL9"
+    ],
+    "titles": [
+      "Pragmatic communication in multi-agent collaborative perception",
+      "SComCP: Task-oriented semantic communication for collaborative perception"
+    ],
+    "similarity": 0.6963,
+    "authors": [
+      [
+        "Hu",
+        "Pang"
+      ],
+      [
+        "Gan",
+        "Sheng"
+      ]
+    ],
+    "years": [
+      "2026",
+      "2026"
+    ],
+    "doi": [
+      "10.1109/TPAMI.2026.3680062",
+      "10.1109/TVT.2026.3654968"
+    ]
+  },
+  {
+    "keys": [
+      "AA2W5LAB",
+      "ZKJ46CL9"
+    ],
+    "titles": [
+      "Semantic communication for cooperative perception using HARQ",
+      "SComCP: Task-oriented semantic communication for collaborative perception"
+    ],
+    "similarity": 0.7121,
+    "authors": [
+      [
+        "Sheng",
+        "Liang"
+      ],
+      [
+        "Gan",
+        "Sheng"
+      ]
+    ],
+    "years": [
+      "2026",
+      "2026"
+    ],
+    "doi": [
+      "10.1109/TCCN.2025.3579540",
+      "10.1109/TVT.2026.3654968"
+    ]
+  }
+]

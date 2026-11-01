@@ -1,0 +1,109 @@
+{
+  "schema": "zotero-clean.duplicate-review.v1",
+  "status": "AWAITING_KEY_SPECIFIC_MERGE_APPROVAL_AND_SUPPORTED_MERGE_OPERATION",
+  "requested_action": "review; no merge or delete executed",
+  "items": [
+    {
+      "candidate_key": "GAJYIJWW",
+      "canonical_key": "4PFMSEHY",
+      "title": "Learning latent multimodal dynamics for optimized resource planning",
+      "doi": "10.1109/twc.2025.3644600",
+      "action": "proposed_lossless_merge_not_executed",
+      "canonical_reason": "PIJWM stable earlier-created key; both records have one PDF. Preserve both project memberships and every child key.",
+      "before_collections": {
+        "4PFMSEHY": [
+          "EV5VZHH3"
+        ],
+        "GAJYIJWW": [
+          "9PB38NLM"
+        ]
+      },
+      "proposed_after_collections": [
+        "9PB38NLM",
+        "EV5VZHH3"
+      ],
+      "attachment_disposition": {
+        "preserve_all_child_keys": [
+          "RXF8LTU8",
+          "TQDENEAD"
+        ],
+        "binary_identity": "NOT_VERIFIED",
+        "indexed_text_sha256": [
+          "3514fdc1f1d1995739b872c86bd24c1cdb5eef1ef6d6ba7067056a4ad5424542",
+          "38aad451453df86f499bf380867a819ec3457f6751926d1039a991173eb349b5"
+        ],
+        "indexed_text_equal": false
+      },
+      "approval_reference": null,
+      "operation_support": "Current helper has no verified native merge operation. Do not simulate a merge by trashing a record."
+    },
+    {
+      "candidate_key": "H6CMFRKK",
+      "canonical_key": "8L7P5YNN",
+      "title": "Mastering diverse control tasks through world models",
+      "doi": "10.1038/s41586-025-08744-2",
+      "action": "proposed_lossless_merge_not_executed",
+      "canonical_reason": "PIJWM stable earlier-created key; both records have one PDF. Preserve both project memberships and every child key.",
+      "before_collections": {
+        "8L7P5YNN": [
+          "EV5VZHH3"
+        ],
+        "H6CMFRKK": [
+          "8G4M5V4T"
+        ]
+      },
+      "proposed_after_collections": [
+        "8G4M5V4T",
+        "EV5VZHH3"
+      ],
+      "attachment_disposition": {
+        "preserve_all_child_keys": [
+          "C29UHTAQ",
+          "39FLBAW4"
+        ],
+        "binary_identity": "NOT_VERIFIED",
+        "indexed_text_sha256": [
+          "7e82894cadc89bad4dba8105180051fe6f09a7a52d0c7969927a2b3718eaccfa",
+          "1954b09eb1858b9bd6064d1833891bec018f121dce886bdb964d001d1b7e3161"
+        ],
+        "indexed_text_equal": false
+      },
+      "approval_reference": null,
+      "operation_support": "Current helper has no verified native merge operation. Do not simulate a merge by trashing a record."
+    },
+    {
+      "candidate_key": "83AZUBUR",
+      "canonical_key": "2BTIMUCB",
+      "title": "Learning latent wireless dynamics from channel state information",
+      "doi": "10.1109/lwc.2024.3510943",
+      "action": "proposed_lossless_merge_not_executed",
+      "canonical_reason": "PIJWM stable earlier-created key; both records have one PDF. Preserve both project memberships and every child key.",
+      "before_collections": {
+        "2BTIMUCB": [
+          "EV5VZHH3"
+        ],
+        "83AZUBUR": [
+          "9PB38NLM"
+        ]
+      },
+      "proposed_after_collections": [
+        "9PB38NLM",
+        "EV5VZHH3"
+      ],
+      "attachment_disposition": {
+        "preserve_all_child_keys": [
+          "KWFTJTYG",
+          "LPDICHE9"
+        ],
+        "binary_identity": "NOT_VERIFIED",
+        "indexed_text_sha256": [
+          "788487c81cbf855cfa2136b0ed6cf1703615f05ca755759c9313bfb7bc0e89f5",
+          "788487c81cbf855cfa2136b0ed6cf1703615f05ca755759c9313bfb7bc0e89f5"
+        ],
+        "indexed_text_equal": true
+      },
+      "approval_reference": null,
+      "operation_support": "Current helper has no verified native merge operation. Do not simulate a merge by trashing a record."
+    }
+  ]
+}

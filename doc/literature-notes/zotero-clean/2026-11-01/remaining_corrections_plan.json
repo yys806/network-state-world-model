@@ -1,0 +1,607 @@
+{
+  "schema": "zotero-clean.remaining-corrections.v1",
+  "status": "APPROVED",
+  "root": "PXDR9FBZ",
+  "scope": "Five clear primary-category corrections plus one verified identity repair. No duplicate merge/delete.",
+  "items": [
+    {
+      "item_key": "FT88WZND",
+      "title": "Computation and communication co-scheduling for timely multi-task inference at the wireless edge",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_item": {
+        "key": "FT88WZND",
+        "version": 2547,
+        "itemType": "conferencePaper",
+        "title": "Computation and communication co-scheduling for timely multi-task inference at the wireless edge",
+        "date": "2025-05-19",
+        "language": "en-US",
+        "url": "https://doi.org/10.1109/infocom55648.2025.11044625",
+        "extra": "CCF: A\n影响因子: NOT_APPLICABLE（会议论文）\n5年影响因子: NOT_APPLICABLE（会议论文）\nJCR分区: NOT_APPLICABLE（会议论文）\n中科院分区基础版: NOT_APPLICABLE（会议论文）\n中科院分区升级版: NOT_APPLICABLE（会议论文）\nEI: UNVERIFIED\nPDF来源: arXiv作者版本 2501.04231\nPDF核验: 通过（PDF签名、页数、标题与作者匹配）\n发表质量: 正式会议（IEEE INFOCOM 2025）\n科研相关性: A\n调研方向: B（通信计算协同、AoI与推理误差）",
+        "pages": "1-10",
+        "proceedingsTitle": "IEEE INFOCOM 2025 - IEEE Conference on Computer Communications",
+        "conferenceName": "IEEE INFOCOM 2025 - IEEE Conference on Computer Communications",
+        "DOI": "10.1109/INFOCOM55648.2025.11044625",
+        "creators": [
+          {
+            "firstName": "Md Kamran Chowdhury",
+            "lastName": "Shisher",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Adam",
+            "lastName": "Piaseczny",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yin",
+            "lastName": "Sun",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Christopher G.",
+            "lastName": "Brinton",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "PIJWM"
+          },
+          {
+            "tag": "PIJWM/全文/已核验PDF"
+          },
+          {
+            "tag": "PIJWM/证据/正式发表"
+          },
+          {
+            "tag": "PIJWM/主题/资源分配"
+          },
+          {
+            "tag": "PIJWM/主题/信息时效"
+          },
+          {
+            "tag": "PIJWM/主题/任务感知QoS"
+          },
+          {
+            "tag": "PIJWM/主题/AI业务"
+          },
+          {
+            "tag": "/done"
+          }
+        ],
+        "collections": [
+          "9ELTVQWN"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T15:37:01Z",
+        "dateModified": "2026-10-18T14:58:14Z"
+      },
+      "before_collections": [
+        "9ELTVQWN"
+      ],
+      "after_collections": [
+        "CI9HW9D9"
+      ],
+      "expected_version": 2547,
+      "reason": "主要贡献是生成/传输联合调度、拉格朗日松弛与MGF策略；AoI只是推理误差建模工具，主类04。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_FT88WZND.json"
+    },
+    {
+      "item_key": "JC8WK6WY",
+      "title": "Low-latency task-oriented communications with multi-round, multi-task deep learning",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_item": {
+        "key": "JC8WK6WY",
+        "version": 2512,
+        "itemType": "conferencePaper",
+        "title": "Low-latency task-oriented communications with multi-round, multi-task deep learning",
+        "date": "2024-12-04",
+        "url": "https://doi.org/10.1145/3636534.3698244",
+        "extra": "CCF: A\n影响因子: NOT_APPLICABLE（会议论文）\n5年影响因子: NOT_APPLICABLE（会议论文）\nJCR分区: NOT_APPLICABLE（会议论文）\n中科院分区基础版: NOT_APPLICABLE（会议论文）\n中科院分区升级版: NOT_APPLICABLE（会议论文）\nEI: UNVERIFIED\nPDF来源: 作者开放版本（University of Maryland）\nPDF核验: 通过（PDF签名、6页、标题与作者匹配）\n发表质量: 正式会议（ACM MobiCom 2024）\n科研相关性: A\n调研方向: B（网络QoS与AI任务质量映射）",
+        "pages": "2365-2370",
+        "proceedingsTitle": "Proceedings of the 30th Annual International Conference on Mobile Computing and Networking",
+        "conferenceName": "ACM International Conference on Mobile Computing and Networking (MobiCom 2024)",
+        "DOI": "10.1145/3636534.3698244",
+        "creators": [
+          {
+            "firstName": "Yalin E",
+            "lastName": "Sagduyu",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Tugba",
+            "lastName": "Erpek",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Aylin",
+            "lastName": "Yener",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Sennur",
+            "lastName": "Ulukus",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "PIJWM"
+          },
+          {
+            "tag": "PIJWM/全文/已核验PDF"
+          },
+          {
+            "tag": "PIJWM/证据/正式发表"
+          },
+          {
+            "tag": "PIJWM/主题/Token与语义通信"
+          },
+          {
+            "tag": "PIJWM/主题/任务感知QoS"
+          },
+          {
+            "tag": "PIJWM/主题/AI业务"
+          },
+          {
+            "tag": "/done"
+          }
+        ],
+        "collections": [
+          "9ELTVQWN"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T15:38:26Z",
+        "dateModified": "2026-10-18T13:24:30Z"
+      },
+      "before_collections": [
+        "9ELTVQWN"
+      ],
+      "after_collections": [
+        "VLA67XIK"
+      ],
+      "expected_version": 2512,
+      "reason": "主要贡献是多轮多任务编码学习、按反馈增加信道使用次数，属于语义通信方法08。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_JC8WK6WY.json"
+    },
+    {
+      "item_key": "BTV6Z566",
+      "title": "Understanding world or predicting future? A comprehensive survey of world models",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_item": {
+        "key": "BTV6Z566",
+        "version": 1987,
+        "itemType": "journalArticle",
+        "title": "Understanding world or predicting future? A comprehensive survey of world models",
+        "date": "2026",
+        "extra": "file: Ding 等 - 2026 - Understanding world or predicting future A comprehensive survey of world models.pdf\n影响因子: 30.4\n5年影响因子: 31.4\n中科院分区基础版: 工程技术1区\n中科院分区升级版: 计算机科学1区\n中科院升级版Top分区: 计算机科学TOP\n中科院升级版小类分区: 计算机：理论方法1区。\nJCI: 7.02\nESI: 计算机科学\nJCR分区: Q1\nEI: 是\nCCF: 无（不在 CCF 目录）",
+        "volume": "58",
+        "pages": "1-38",
+        "publicationTitle": "ACM Computing Surveys",
+        "DOI": "10.1145/3746449",
+        "issue": "3",
+        "journalAbbreviation": "ACM Comput. Surv.",
+        "ISSN": "0360-0300",
+        "creators": [
+          {
+            "firstName": "Jingtao",
+            "lastName": "Ding",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yunke",
+            "lastName": "Zhang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yu",
+            "lastName": "Shang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yuheng",
+            "lastName": "Zhang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Zefang",
+            "lastName": "Zong",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Jie",
+            "lastName": "Feng",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yuan",
+            "lastName": "Yuan",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Hongyuan",
+            "lastName": "Su",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Nian",
+            "lastName": "Li",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Nicholas",
+            "lastName": "Sukiennik",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Fengli",
+            "lastName": "Xu",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yong",
+            "lastName": "Li",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "imported:2026-10-16"
+          },
+          {
+            "tag": "PIJWM"
+          },
+          {
+            "tag": "PIJWM/全文/已核验PDF"
+          },
+          {
+            "tag": "PIJWM/证据/正式发表"
+          },
+          {
+            "tag": "PIJWM/主题/世界模型"
+          },
+          {
+            "tag": "PIJWM/角色/奠基"
+          }
+        ],
+        "collections": [
+          "EV5VZHH3"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T08:25:49Z",
+        "dateModified": "2026-10-16T11:01:35Z"
+      },
+      "before_collections": [
+        "EV5VZHH3"
+      ],
+      "after_collections": [
+        "VXXZ7BJ4"
+      ],
+      "expected_version": 1987,
+      "reason": "跨自动驾驶、机器人、虚拟社会等应用的世界模型综合综述，符合99跨领域综述。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_BTV6Z566.json"
+    },
+    {
+      "item_key": "LNVZKIEP",
+      "title": "Edge general intelligence through world models, large language models, and agentic AI: Fundamentals, solutions, and challenges",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_item": {
+        "key": "LNVZKIEP",
+        "version": 1984,
+        "itemType": "journalArticle",
+        "title": "Edge general intelligence through world models, large language models, and agentic AI: Fundamentals, solutions, and challenges",
+        "date": "2026",
+        "extra": "file: Zhao_2026_Edge_General_Intelligence_World_Models_LLMs_Agentic_AI.pdf\n影响因子: 8.0\n5年影响因子: 8.4\n中科院分区基础版: 工程技术2区\n中科院分区升级版: 计算机科学1区\n中科院升级版Top分区: 计算机科学TOP\n中科院升级版小类分区: 电信学1区。\nJCI: 1.61\nESI: 计算机科学\nJCR分区: Q1\nEI: 是\nCCF: 无（不在 CCF 目录）",
+        "volume": "12",
+        "pages": "5649-5675",
+        "publicationTitle": "IEEE Transactions on Cognitive Communications and Networking",
+        "DOI": "10.1109/tccn.2026.3658762",
+        "journalAbbreviation": "IEEE Trans. Cogn. Commun. Netw.",
+        "ISSN": "2332-7731",
+        "creators": [
+          {
+            "firstName": "Changyuan",
+            "lastName": "Zhao",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Guangyuan",
+            "lastName": "Liu",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Ruichen",
+            "lastName": "Zhang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yinqiu",
+            "lastName": "Liu",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Jiacheng",
+            "lastName": "Wang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Jiawen",
+            "lastName": "Kang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Dusit",
+            "lastName": "Niyato",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Zan",
+            "lastName": "Li",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Xuemin",
+            "lastName": "Shen",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Zhu",
+            "lastName": "Han",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Sumei",
+            "lastName": "Sun",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Chau",
+            "lastName": "Yuen",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Dong In",
+            "lastName": "Kim",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "imported:2026-10-16"
+          },
+          {
+            "tag": "PIJWM"
+          },
+          {
+            "tag": "PIJWM/角色/核心"
+          },
+          {
+            "tag": "PIJWM/全文/已核验PDF"
+          },
+          {
+            "tag": "PIJWM/证据/正式发表"
+          },
+          {
+            "tag": "PIJWM/主题/世界模型"
+          }
+        ],
+        "collections": [
+          "EV5VZHH3"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T08:25:26Z",
+        "dateModified": "2026-10-16T11:01:35Z"
+      },
+      "before_collections": [
+        "EV5VZHH3"
+      ],
+      "after_collections": [
+        "VXXZ7BJ4"
+      ],
+      "expected_version": 1984,
+      "reason": "综述边缘通用智能中世界模型、大语言模型与智能体AI的架构、解法和挑战，跨领域综述99。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_LNVZKIEP.json"
+    },
+    {
+      "item_key": "TQSTMNXA",
+      "title": "From digital twins to world models:Opportunities, challenges, and applications for mobile edge general intelligence",
+      "action": "replace_primary_collection",
+      "operator_level": 3,
+      "before_item": {
+        "key": "TQSTMNXA",
+        "version": 2038,
+        "itemType": "preprint",
+        "title": "From digital twins to world models:Opportunities, challenges, and applications for mobile edge general intelligence",
+        "date": "2026",
+        "extra": "Journal Abbreviation: arXiv\nPublication Title: arXiv\nfile: Zheng 等 - 2026 - From digital twins to world modelsOpportunities, challenges, and applications for mobile edge gener.pdf\n影响因子: 无（未能确认出处，按预印本处理）\n影响因子: 无（预印本/无期刊指标）\nJCR分区: 无\n中科院分区基础版: 无\n中科院分区升级版: 无\nCCF: 无（会议/预印本）",
+        "DOI": "10.48550/ARXIV.2603.17420",
+        "repository": "arXiv",
+        "archiveID": "2603.17420",
+        "creators": [
+          {
+            "firstName": "Jie",
+            "lastName": "Zheng",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Dusit",
+            "lastName": "Niyato",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Changyuan",
+            "lastName": "Zhao",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Jiawen",
+            "lastName": "Kang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Jiacheng",
+            "lastName": "Wang",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "imported:2026-10-16"
+          },
+          {
+            "tag": "PIJWM"
+          },
+          {
+            "tag": "PIJWM/全文/已核验PDF"
+          },
+          {
+            "tag": "PIJWM/主题/网络数字孪生"
+          },
+          {
+            "tag": "PIJWM/角色/支撑"
+          },
+          {
+            "tag": "PIJWM/证据/破格"
+          },
+          {
+            "tag": "PIJWM/证据/预印本"
+          },
+          {
+            "tag": "PIJWM/主题/世界模型"
+          },
+          {
+            "tag": "Artificial Intelligence (cs.AI)"
+          },
+          {
+            "tag": "FOS: Computer and information sciences"
+          }
+        ],
+        "collections": [
+          "EV5VZHH3"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T08:25:28Z",
+        "dateModified": "2026-10-16T11:09:15Z"
+      },
+      "before_collections": [
+        "EV5VZHH3"
+      ],
+      "after_collections": [
+        "VXXZ7BJ4"
+      ],
+      "expected_version": 2038,
+      "reason": "系统综述数字孪生到世界模型的演化，并覆盖ISAC、语义通信、空地及低空网络，跨领域综述99。",
+      "evidence": "Zotero indexed full text: abstract/introduction; original text retained locally in fulltext_TQSTMNXA.json"
+    },
+    {
+      "item_key": "26MWELTC",
+      "title": "Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing",
+      "action": "repair_verified_paper_identity",
+      "operator_level": 4,
+      "before_item": {
+        "key": "26MWELTC",
+        "version": 2023,
+        "itemType": "conferencePaper",
+        "title": "Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing",
+        "date": "2026",
+        "extra": "Journal Abbreviation: 2026 8th Int. Conf. on Electronics and Communication, Network and Computer Technology (ECNCT)\nfile: Zhao 等 - Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing.pdf\n影响因子: 无\nJCR分区: 无\n中科院分区基础版: 无\n中科院分区升级版: 无\nCCF: 无（会议/预印本）",
+        "proceedingsTitle": "2026 8th International Conference on Electronics and Communication, Network and Computer Technology (ECNCT)",
+        "conferenceName": "2026 8th International Conference on Electronics and Communication, Network and Computer Technology (ECNCT)",
+        "DOI": "10.1109/ecnct70535.2026.11661443",
+        "creators": [
+          {
+            "firstName": "Zhenyu",
+            "lastName": "Zhao",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Xiaoxia",
+            "lastName": "Xu",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Tiankui",
+            "lastName": "Zhang",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Junjie",
+            "lastName": "Li",
+            "creatorType": "author"
+          },
+          {
+            "firstName": "Yuanwei",
+            "lastName": "Liu",
+            "creatorType": "author"
+          }
+        ],
+        "tags": [
+          {
+            "tag": "imported:2026-10-16"
+          },
+          {
+            "tag": "PIJWM"
+          },
+          {
+            "tag": "PIJWM/角色/核心"
+          },
+          {
+            "tag": "PIJWM/全文/已核验PDF"
+          },
+          {
+            "tag": "PIJWM/主题/低空空地网络"
+          },
+          {
+            "tag": "PIJWM/主题/评价指标"
+          },
+          {
+            "tag": "PIJWM/证据/破格"
+          },
+          {
+            "tag": "PIJWM/证据/预印本"
+          },
+          {
+            "tag": "PIJWM/主题/资源分配"
+          },
+          {
+            "tag": "PIJWM/主题/任务卸载"
+          },
+          {
+            "tag": "PIJWM/主题/任务依赖DAG"
+          }
+        ],
+        "collections": [
+          "CI9HW9D9"
+        ],
+        "relations": {},
+        "dateAdded": "2026-10-16T08:25:55Z",
+        "dateModified": "2026-10-16T11:09:15Z"
+      },
+      "expected_version": 2023,
+      "fields": {
+        "itemType": "preprint",
+        "DOI": "10.48550/arXiv.2510.20149",
+        "date": "2025",
+        "repository": "arXiv",
+        "url": "https://arxiv.org/abs/2510.20149",
+        "extra": "file: Zhao 等 - Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing.pdf\n影响因子: 无\nJCR分区: 无\n中科院分区基础版: 无\n中科院分区升级版: 无\nCCF: 无（会议/预印本）\n文献身份核验: VERIFIED，原文arXiv:2510.20149v2与DataCite题名及五位作者一致；2026-11-01。\nDOI冲突历史: 原10.1109/ecnct70535.2026.11661443属于Zhu/Wang另一篇论文，原会议/2026年份错配；本条保留为arXiv预印本。"
+      },
+      "remove_obsolete_type_fields": [
+        "proceedingsTitle",
+        "conferenceName"
+      ],
+      "reason": "原附件的arXiv编号、题名及五位作者与DataCite一致；当前会议DOI指向题名和作者均不同的论文，须整体恢复预印本身份，不能仅换一个DOI。",
+      "evidence": [
+        "fulltext_26MWELTC.json",
+        "doi_authority_records.json",
+        "doi_conflict_correct_identity.json"
+      ]
+    }
+  ],
+  "approval_reference": "User 2026-11-01: 批准执行补充计划这6条修正",
+  "approved_at_utc": "2026-11-01T12:53:12.703258+00:00"
+}

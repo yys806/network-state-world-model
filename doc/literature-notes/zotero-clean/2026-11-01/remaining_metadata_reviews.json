@@ -1,0 +1,80 @@
+[
+  {
+    "item_key": "3MFDIRK8",
+    "title": "Graph Neural Networks for Wireless Communications: From Theory to Practice",
+    "doi": "10.1109/twc.2022.3219840",
+    "authority_source": "https://api.crossref.org/works/10.1109%2Ftwc.2022.3219840",
+    "issues": [
+      {
+        "field": "date_year",
+        "current": "2022",
+        "authority_years": [
+          "2023"
+        ],
+        "note": "online/issue/preprint dates may differ; not automatically an error"
+      }
+    ],
+    "action": "review"
+  },
+  {
+    "item_key": "MU9TZL9S",
+    "title": "Modeling relational data with graph convolutional networks",
+    "doi": "10.1007/978-3-319-93417-4_38",
+    "authority_source": "https://api.crossref.org/works/10.1007/978-3-319-93417-4_38",
+    "issues": [
+      {
+        "field": "venue_or_record_type",
+        "current": "arXiv",
+        "authority": "Lecture Notes in Computer Science The Semantic Web",
+        "note": "conference/preprint/final versions require interpretation"
+      }
+    ],
+    "action": "review"
+  },
+  {
+    "item_key": "7B8X48TK",
+    "title": "ENGNN: A General Edge-Update Empowered GNN Architecture for Radio Resource Management in Wireless Networks",
+    "doi": "10.1109/twc.2023.3325735",
+    "authority_source": "https://api.crossref.org/works/10.1109/twc.2023.3325735",
+    "issues": [
+      {
+        "field": "date_year",
+        "current": "2022",
+        "authority_years": [
+          "2024"
+        ],
+        "note": "online/issue/preprint dates may differ; not automatically an error"
+      }
+    ],
+    "action": "review"
+  },
+  {
+    "item_key": "KQXI4GWD",
+    "title": "AirFogSim: A Light-Weight and Modular Simulator for UAV-Integrated Vehicular Fog Computing",
+    "doi": "10.1109/tmc.2025.3641373",
+    "authority_source": "https://api.crossref.org/works/10.1109%2Ftmc.2025.3641373",
+    "issues": [
+      {
+        "field": "date_year",
+        "current": "2025",
+        "authority_years": [
+          "2026"
+        ],
+        "note": "online/issue/preprint dates may differ; not automatically an error"
+      }
+    ],
+    "action": "review"
+  },
+  {
+    "item_key": "UW2UJ3X5",
+    "title": "Deepmimo: A generic deep learning dataset for millimeter wave and massive mimo applications to vehicular communications",
+    "issues": [
+      {
+        "field": "version_repository",
+        "current": "Zotero repository=arXiv; DOI=SSRN 10.2139/ssrn.4383745",
+        "authority": "DataCite/Crossref DOI title matches; version/repository relationship not independently settled"
+      }
+    ],
+    "action": "review_without_overwrite"
+  }
+]

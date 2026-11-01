@@ -1,0 +1,26 @@
+[
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "C:/Users/Lenovo/.codex/skills/zotero-clean/tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "output": "test_apply_preserves_other_memberships_and_is_idempotent (test_zotero_clean.ZoteroCleanTests.test_apply_preserves_other_memberships_and_is_idempotent) ... ok\ntest_audit_covers_complete_project_and_checks_inbox_name (test_zotero_clean.ZoteroCleanTests.test_audit_covers_complete_project_and_checks_inbox_name) ... ok\ntest_conference_and_preprint_are_not_false_missing_venue_candidates (test_zotero_clean.ZoteroCleanTests.test_conference_and_preprint_are_not_false_missing_venue_candidates) ... ok\ntest_doi_normalization_handles_urls_case_and_embedded_whitespace (test_zotero_clean.ZoteroCleanTests.test_doi_normalization_handles_urls_case_and_embedded_whitespace) ... ok\ntest_export_uses_project_and_stamp_without_omitting_items (test_zotero_clean.ZoteroCleanTests.test_export_uses_project_and_stamp_without_omitting_items) ... ok\ntest_inventory_includes_root_nested_and_inbox_only_items (test_zotero_clean.ZoteroCleanTests.test_inventory_includes_root_nested_and_inbox_only_items) ... ok\ntest_pagination_reads_every_page_with_server_cap (test_zotero_clean.ZoteroCleanTests.test_pagination_reads_every_page_with_server_cap) ... ok\ntest_repeated_pages_fail_instead_of_silent_truncation (test_zotero_clean.ZoteroCleanTests.test_repeated_pages_fail_instead_of_silent_truncation) ... ok\ntest_stale_membership_plan_stops_before_writing (test_zotero_clean.ZoteroCleanTests.test_stale_membership_plan_stops_before_writing) ... ok\ntest_stale_version_plan_stops_before_writing (test_zotero_clean.ZoteroCleanTests.test_stale_version_plan_stops_before_writing) ... ok\ntest_venue_uses_item_schema_not_empty_journal_field (test_zotero_clean.ZoteroCleanTests.test_venue_uses_item_schema_not_empty_journal_field) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.025s\n\nOK\n"
+  },
+  {
+    "command": [
+      "python",
+      "C:/Users/Lenovo/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+      "C:/Users/Lenovo/.codex/skills/zotero-clean"
+    ],
+    "exit_code": 0,
+    "output": "Skill is valid!\n"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "snapshot_sha256": "fd1d31abeddf29f507ee91e8a575358df7f0dd2c614c6010b8d5403dd817f129",
+  "zip_sha256": "231970fab20c1d62721446c33f18eeb399f88ced8b92d3ed85f5d6c265bb6174",
+  "parent_count": 121,
+  "child_count": 122,
+  "parent_relationships_valid": true,
+  "zip_roundtrip_equal": true,
+  "binary_backup": false,
+  "membership_restore_safe": true,
+  "credential_included": false
+}

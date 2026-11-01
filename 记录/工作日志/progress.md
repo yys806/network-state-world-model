@@ -899,3 +899,7 @@ R2-09A 已完成合成 CPU 工程验证：请求只有送达后才能服务特�
 - [x] 新增 `code/tests/test_formal_candidate_rollout_planner_v1.py`；定向测试 5/5 通过，覆盖共同 belief 指纹、候选调用次数、目标选择、首动作和重规划。
 - [ ] 机制原型仍标记 `prototype_only`；不把通用 extractor/objective 当作已冻结 PI-JWM 任务定义，原有正式 planner audit 仍为 `blocked`，`formal_performance_claim_ready=false`。
 - [x] 本轮未启动 GPU、未训练、未访问/物化 locked-test。
+
+## 2026-11-01 — Zotero整理
+
+121篇各有一个固定主类，收件箱11→0；批准修正12条，附件/笔记key和外项目关系保留；索引、执行清单及3对重复计划已导出。11项skill离线测试及文库验收通过；未使用GPU/训练/locked_test，未覆盖既有工作区。

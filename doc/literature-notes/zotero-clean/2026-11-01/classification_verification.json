@@ -1,0 +1,112 @@
+{
+  "schema_version": "zotero-clean.verification.v1",
+  "toolchain": "Zotero local HTTP API; Computer Use disabled",
+  "planned_items": 11,
+  "all_items_present_and_classified": true,
+  "inbox_contains_planned_items": [],
+  "items": [
+    {
+      "item_key": "3ZPHIF3A",
+      "title": "What2Keep: A communication-efficient collaborative perception framework for 3D detection via keeping valuable information",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "VLA67XIK"
+      ]
+    },
+    {
+      "item_key": "5DNA58TM",
+      "title": "EdgeCooper: Network-aware cooperative LiDAR perception for enhanced vehicular awareness",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "CI9HW9D9"
+      ]
+    },
+    {
+      "item_key": "6QKKAHEZ",
+      "title": "Uncertainty-aware adaptive resource allocation for semantic communication in IoV via causal world models",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "CI9HW9D9",
+        "ZTXR8ZP8"
+      ]
+    },
+    {
+      "item_key": "CAHRJ3KJ",
+      "title": "On-demand environment perception and resource allocation for task offloading in vehicular networks",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "CI9HW9D9"
+      ]
+    },
+    {
+      "item_key": "DX2FLYDV",
+      "title": "FullPerception: Network-level collaborative perception for eliminating vehicular blind spots",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "CI9HW9D9"
+      ]
+    },
+    {
+      "item_key": "EXY7ZTUX",
+      "title": "Learning ad hoc network dynamics via graph-structured world models",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "EV5VZHH3",
+        "ZTXR8ZP8"
+      ]
+    },
+    {
+      "item_key": "IHTIXK22",
+      "title": "Pragmatic communication in multi-agent collaborative perception",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "VLA67XIK"
+      ]
+    },
+    {
+      "item_key": "JRZWUIU2",
+      "title": "Task offloading and resource allocation in vehicular cooperative perception with integrated sensing, communication, and computation",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "CI9HW9D9"
+      ]
+    },
+    {
+      "item_key": "RPZUL3BR",
+      "title": "Mobile network control with a world model",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "EV5VZHH3",
+        "ZTXR8ZP8"
+      ]
+    },
+    {
+      "item_key": "WQ9JN878",
+      "title": "Accuracy-aware cooperative sensing and computing for connected autonomous vehicles",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "CI9HW9D9"
+      ]
+    },
+    {
+      "item_key": "XTVF2P26",
+      "title": "Digital twin meets world model: Proactive control for UAV swarms in low-altitude wireless networks",
+      "inbox_absent": true,
+      "destinations_present": true,
+      "collections": [
+        "EV5VZHH3",
+        "ZTXR8ZP8"
+      ]
+    }
+  ]
+}

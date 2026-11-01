@@ -1,0 +1,6655 @@
+{
+  "schema_version": "zotero-clean.audit.v1",
+  "toolchain": "Zotero local HTTP API; Computer Use disabled",
+  "project_name": "PIJWM",
+  "root_collection_key": "PXDR9FBZ",
+  "topic_collection_count": 10,
+  "inventory_scope": "project root and all descendant collections, including inbox-only items",
+  "child_relationship_audit_status": "NOT_CHECKED_BY_HELPER; unknown child counts are null, not zero",
+  "root_only_item_keys": [],
+  "inbox_collection_key": "GVMEXXZE",
+  "inbox_collection_present": true,
+  "top_level_item_count": 121,
+  "inbox_item_keys": [],
+  "exact_doi_duplicate_candidates": [],
+  "exact_title_author_year_candidates": [],
+  "metadata_conflicts": [],
+  "invalid_or_metadata_review_candidates": [],
+  "records": [
+    {
+      "item_key": "26MWELTC",
+      "title": "Dependency-aware task offloading in multi-UAV assisted collaborative mobile edge computing",
+      "doi": "10.48550/arXiv.2510.20149",
+      "creators": [
+        {
+          "firstName": "Zhenyu",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiaoxia",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tiankui",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Junjie",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuanwei",
+          "lastName": "Liu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/破格",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/低空空地网络",
+        "PIJWM/主题/评价指标",
+        "PIJWM/主题/任务卸载",
+        "PIJWM/主题/任务依赖DAG",
+        "PIJWM/主题/资源分配"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2510.20149",
+      "identity_norm": "dependency aware task offloading in multi uav assisted collaborative mobile edge computing|zhao|2025"
+    },
+    {
+      "item_key": "27TCDE8K",
+      "title": "Global-local collaborative scheduling via adaptive multi-agent reinforcement learning in heterogeneous computing networks",
+      "doi": "10.1109/dsis67228.2025.11390609",
+      "creators": [
+        {
+          "firstName": "Zhaoyi",
+          "lastName": "Yang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chuangye",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mingdong",
+          "lastName": "He",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Lei",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hao",
+          "lastName": "Wei",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Bo",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiaobo",
+          "lastName": "Huang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Liquan",
+          "lastName": "Luo",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "2025 International Conference on Data Science and Intelligent Systems (DSIS)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/dsis67228.2025.11390609",
+      "identity_norm": "global local collaborative scheduling via adaptive multi agent reinforcement learning in heterogeneous computing networks|yang|2025"
+    },
+    {
+      "item_key": "2BTIMUCB",
+      "title": "Learning latent wireless dynamics from channel state information",
+      "doi": "10.1109/lwc.2024.3510943",
+      "creators": [
+        {
+          "firstName": "Charbel",
+          "lastName": "Bou Chaaya",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Abanoub M.",
+          "lastName": "Girgis",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mehdi",
+          "lastName": "Bennis",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "IEEE Wireless Communications Letters",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/世界模型",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/lwc.2024.3510943",
+      "identity_norm": "learning latent wireless dynamics from channel state information|bou chaaya|2025"
+    },
+    {
+      "item_key": "2LZI4ZG6",
+      "title": "RouteNet-fermi: Network modeling with graph neural networks",
+      "doi": "10.1109/tnet.2023.3269983",
+      "creators": [
+        {
+          "firstName": "Miquel",
+          "lastName": "Ferriol-Galmés",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jordi",
+          "lastName": "Paillisse",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "José",
+          "lastName": "Suárez-Varela",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Krzysztof",
+          "lastName": "Rusek",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shihan",
+          "lastName": "Xiao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiang",
+          "lastName": "Shi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiangle",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Pere",
+          "lastName": "Barlet-Ros",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Albert",
+          "lastName": "Cabellos-Aparicio",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "IEEE/ACM Transactions on Networking",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "283ARJS5"
+      ],
+      "collection_names": [
+        "02_严格双图与图学习"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/无线GNN",
+        "/unread"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tnet.2023.3269983",
+      "identity_norm": "routenet fermi network modeling with graph neural networks|ferriol galmés|2023"
+    },
+    {
+      "item_key": "33BXG9ZQ",
+      "title": "Deep Reinforcement Learning for Computation Offloading and Resource Allocation in Unmanned-Aerial-Vehicle Assisted Edge Computing",
+      "doi": "10.3390/s21196499",
+      "creators": [
+        {
+          "firstName": "Shuyang",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiaohui",
+          "lastName": "Hu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yongwen",
+          "lastName": "Du",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2021",
+      "publication_title": "Sensors",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.3390/s21196499",
+      "identity_norm": "deep reinforcement learning for computation offloading and resource allocation in unmanned aerial vehicle assisted edge computing|li|2021"
+    },
+    {
+      "item_key": "3844SJ8R",
+      "title": "WONDER: A radio world model-based negotiation framework for multi-agent UAV coverage optimization",
+      "doi": "10.48550/arXiv.2608.16955",
+      "creators": [
+        {
+          "firstName": "Jiahao",
+          "lastName": "Huang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Rongpeng",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhifeng",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Guoru",
+          "lastName": "Ding",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Honggang",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/主题/低空空地网络",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/世界模型",
+        "PIJWM/全文/预印本版本",
+        "PIJWM/主题/多智能体"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2608.16955",
+      "identity_norm": "wonder a radio world model based negotiation framework for multi agent uav coverage optimization|huang|2026"
+    },
+    {
+      "item_key": "3A4B46CL",
+      "title": "Learning latent dynamics for planning from pixels",
+      "doi": "",
+      "creators": [
+        {
+          "firstName": "Danijar",
+          "lastName": "Hafner",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Timothy",
+          "lastName": "Lillicrap",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ian",
+          "lastName": "Fischer",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ruben",
+          "lastName": "Villegas",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "David",
+          "lastName": "Ha",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Honglak",
+          "lastName": "Lee",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "James",
+          "lastName": "Davidson",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2019",
+      "publication_title": "arXiv",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/世界模型",
+        "PIJWM/角色/奠基"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": "learning latent dynamics for planning from pixels|hafner|2019"
+    },
+    {
+      "item_key": "3ABUVIBP",
+      "title": "Multihop offloading of multiple DAG tasks in collaborative edge computing",
+      "doi": "10.1109/jiot.2020.3030926",
+      "creators": [
+        {
+          "firstName": "Yuvraj",
+          "lastName": "Sahni",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiannong",
+          "lastName": "Cao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Lei",
+          "lastName": "Yang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yusheng",
+          "lastName": "Ji",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2021",
+      "publication_title": "IEEE Internet of Things Journal",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/任务卸载",
+        "PIJWM/主题/任务依赖DAG"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jiot.2020.3030926",
+      "identity_norm": "multihop offloading of multiple dag tasks in collaborative edge computing|sahni|2021"
+    },
+    {
+      "item_key": "3JFATHH9",
+      "title": "Graph World Model",
+      "doi": "",
+      "creators": [
+        {
+          "firstName": "Tao",
+          "lastName": "Feng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yexin",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Guanyu",
+          "lastName": "Lin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiaxuan",
+          "lastName": "You",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "Proceedings of the 42nd International Conference on Machine Learning",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/严格双图",
+        "PIJWM/主题/世界模型",
+        "PIJWM/主题/图学习"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": "graph world model|feng|2025"
+    },
+    {
+      "item_key": "3KE8DVPX",
+      "title": "Digital Twin of Wireless Systems: Overview, Taxonomy, Challenges, and Opportunities",
+      "doi": "10.1109/comst.2022.3198273",
+      "creators": [
+        {
+          "firstName": "Latif U.",
+          "lastName": "Khan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhu",
+          "lastName": "Han",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Walid",
+          "lastName": "Saad",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ekram",
+          "lastName": "Hossain",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mohsen",
+          "lastName": "Guizani",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Choong Seon",
+          "lastName": "Hong",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2022",
+      "publication_title": "IEEE Communications Surveys & Tutorials",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/comst.2022.3198273",
+      "identity_norm": "digital twin of wireless systems overview taxonomy challenges and opportunities|khan|2022"
+    },
+    {
+      "item_key": "3MFDIRK8",
+      "title": "Graph Neural Networks for Wireless Communications: From Theory to Practice",
+      "doi": "10.1109/twc.2022.3219840",
+      "creators": [
+        {
+          "firstName": "Yifei",
+          "lastName": "Shen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jun",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "S. H.",
+          "lastName": "Song",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Khaled B.",
+          "lastName": "Letaief",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2022",
+      "publication_title": "IEEE Transactions on Wireless Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "283ARJS5"
+      ],
+      "collection_names": [
+        "02_严格双图与图学习"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/twc.2022.3219840",
+      "identity_norm": "graph neural networks for wireless communications from theory to practice|shen|2022"
+    },
+    {
+      "item_key": "3ZL9P5KY",
+      "title": "RFWM: Physics-guided world model for dynamic wireless radiance field generation",
+      "doi": "10.48550/arXiv.2608.19709",
+      "creators": [
+        {
+          "firstName": "Zijiu",
+          "lastName": "Yang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Qianqian",
+          "lastName": "Yang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/世界模型",
+        "PIJWM/全文/预印本版本",
+        "PIJWM/主题/无线环境建模",
+        "PIJWM/主题/物理先验"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2608.19709",
+      "identity_norm": "rfwm physics guided world model for dynamic wireless radiance field generation|yang|2026"
+    },
+    {
+      "item_key": "3ZPHIF3A",
+      "title": "What2Keep: A communication-efficient collaborative perception framework for 3D detection via keeping valuable information",
+      "doi": "10.1016/j.cviu.2025.104572",
+      "creators": [
+        {
+          "firstName": "Hongkun",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yan",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhengbin",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "01/2026",
+      "publication_title": "Computer Vision and Image Understanding",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [],
+      "num_children": null,
+      "doi_norm": "10.1016/j.cviu.2025.104572",
+      "identity_norm": "what2keep a communication efficient collaborative perception framework for 3d detection via keeping valuable information|zhang|2026"
+    },
+    {
+      "item_key": "48Y93ANR",
+      "title": "DeepSense 6G: A large-scale real-world multi-modal sensing and communication dataset",
+      "doi": "10.1109/mcom.006.2200730",
+      "creators": [
+        {
+          "firstName": "Ahmed",
+          "lastName": "Alkhateeb",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Gouranga",
+          "lastName": "Charan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tawfik",
+          "lastName": "Osman",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Andrew",
+          "lastName": "Hredzak",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Joao",
+          "lastName": "Morais",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Umut",
+          "lastName": "Demirhan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nikhil",
+          "lastName": "Srinivas",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "IEEE Communications Magazine",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/mcom.006.2200730",
+      "identity_norm": "deepsense 6g a large scale real world multi modal sensing and communication dataset|alkhateeb|2023"
+    },
+    {
+      "item_key": "4E7EUJW2",
+      "title": "TransDreamerV3: Implanting Transformer In DreamerV3",
+      "doi": "",
+      "creators": [],
+      "date": "2025",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": ""
+    },
+    {
+      "item_key": "4IRCF875",
+      "title": "A comprehensive survey on digital twin for future networks and emerging internet of things industry",
+      "doi": "10.1016/j.comnet.2024.110350",
+      "creators": [
+        {
+          "firstName": "Akram",
+          "lastName": "Hakiri",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Aniruddha",
+          "lastName": "Gokhale",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sadok Ben",
+          "lastName": "Yahia",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nedra",
+          "lastName": "Mellouli",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "Computer Networks",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/网络数字孪生",
+        "PIJWM/角色/支撑"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1016/j.comnet.2024.110350",
+      "identity_norm": "a comprehensive survey on digital twin for future networks and emerging internet of things industry|hakiri|2024"
+    },
+    {
+      "item_key": "4KYNGK5S",
+      "title": "Learning to simulate complex physics with graph networks",
+      "doi": "",
+      "creators": [
+        {
+          "firstName": "Alvaro",
+          "lastName": "Sanchez-Gonzalez",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jonathan",
+          "lastName": "Godwin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tobias",
+          "lastName": "Pfaff",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Rex",
+          "lastName": "Ying",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jure",
+          "lastName": "Leskovec",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Peter",
+          "lastName": "Battaglia",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2020",
+      "publication_title": "Proceedings of the 37th International Conference on Machine Learning",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/严格双图",
+        "PIJWM/主题/时序动态图",
+        "PIJWM/主题/世界模型"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": "learning to simulate complex physics with graph networks|sanchez gonzalez|2020"
+    },
+    {
+      "item_key": "4NTF7PRY",
+      "title": "Artificial general intelligence (AGI)-native wireless systems: A journey beyond 6G",
+      "doi": "10.1109/jproc.2025.3526887",
+      "creators": [
+        {
+          "firstName": "Walid",
+          "lastName": "Saad",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Omar",
+          "lastName": "Hashash",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Christo Kurisummoottil",
+          "lastName": "Thomas",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Christina",
+          "lastName": "Chaccour",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mérouane",
+          "lastName": "Debbah",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Narayan",
+          "lastName": "Mandayam",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhu",
+          "lastName": "Han",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "Proceedings of the IEEE",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/世界模型"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jproc.2025.3526887",
+      "identity_norm": "artificial general intelligence agi native wireless systems a journey beyond 6g|saad|2025"
+    },
+    {
+      "item_key": "4PFMSEHY",
+      "title": "Learning latent multimodal dynamics for optimized resource planning",
+      "doi": "10.1109/twc.2025.3644600",
+      "creators": [
+        {
+          "firstName": "Charbel",
+          "lastName": "Bou Chaaya",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Abanoub M.",
+          "lastName": "Girgis",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mehdi",
+          "lastName": "Bennis",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Transactions on Wireless Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/世界模型",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/twc.2025.3644600",
+      "identity_norm": "learning latent multimodal dynamics for optimized resource planning|bou chaaya|2026"
+    },
+    {
+      "item_key": "4RZJ9WHE",
+      "title": "Estimation and Inference of Heterogeneous Treatment Effects using Random Forests",
+      "doi": "10.1080/01621459.2017.1319839",
+      "creators": [
+        {
+          "firstName": "Stefan",
+          "lastName": "Wager",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Susan",
+          "lastName": "Athey",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2018",
+      "publication_title": "Journal of the American Statistical Association",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "8VKHS5YK"
+      ],
+      "collection_names": [
+        "06_评价、不确定性与决策诊断"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1080/01621459.2017.1319839",
+      "identity_norm": "estimation and inference of heterogeneous treatment effects using random forests|wager|2018"
+    },
+    {
+      "item_key": "4SKU5M6X",
+      "title": "V2U4Real: A real-world large-scale dataset for vehicle-to-UAV cooperative perception",
+      "doi": "10.48550/arXiv.2603.25275",
+      "creators": [
+        {
+          "firstName": "Weijia",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Haoen",
+          "lastName": "Xiang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tianxu",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shuaibing",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Qiming",
+          "lastName": "Xia",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Cheng",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chenglu",
+          "lastName": "Wen",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026-03-26",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "Computer Science - Computer Vision and Pattern Recognition",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2603.25275",
+      "identity_norm": "v2u4real a real world large scale dataset for vehicle to uav cooperative perception|li|2026"
+    },
+    {
+      "item_key": "5BSY2P2L",
+      "title": "World Models",
+      "doi": "10.48550/arXiv.1803.10122",
+      "creators": [
+        {
+          "firstName": "David",
+          "lastName": "Ha",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jürgen",
+          "lastName": "Schmidhuber",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2018",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/世界模型",
+        "PIJWM/角色/奠基"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.1803.10122",
+      "identity_norm": "world models|ha|2018"
+    },
+    {
+      "item_key": "5D3H8HF2",
+      "title": "A survey on graph neural networks for time series: Forecasting, classification, imputation, and anomaly detection",
+      "doi": "10.1109/tpami.2024.3443141",
+      "creators": [
+        {
+          "firstName": "Ming",
+          "lastName": "Jin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Huan Yee",
+          "lastName": "Koh",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Qingsong",
+          "lastName": "Wen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Daniele",
+          "lastName": "Zambon",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Cesare",
+          "lastName": "Alippi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Geoffrey I.",
+          "lastName": "Webb",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Irwin",
+          "lastName": "King",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shirui",
+          "lastName": "Pan",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "283ARJS5"
+      ],
+      "collection_names": [
+        "02_严格双图与图学习"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/时序动态图"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tpami.2024.3443141",
+      "identity_norm": "a survey on graph neural networks for time series forecasting classification imputation and anomaly detection|jin|2024"
+    },
+    {
+      "item_key": "5DNA58TM",
+      "title": "EdgeCooper: Network-aware cooperative LiDAR perception for enhanced vehicular awareness",
+      "doi": "10.1109/JSAC.2023.3322764",
+      "creators": [
+        {
+          "firstName": "Guiyang",
+          "lastName": "Luo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chongzhang",
+          "lastName": "Shao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nan",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Haibo",
+          "lastName": "Zhou",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hui",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Quan",
+          "lastName": "Yuan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jinglin",
+          "lastName": "Li",
+          "creatorType": "author"
+        }
+      ],
+      "date": "1/2024",
+      "publication_title": "IEEE Journal on Selected Areas in Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jsac.2023.3322764",
+      "identity_norm": "edgecooper network aware cooperative lidar perception for enhanced vehicular awareness|luo|2024"
+    },
+    {
+      "item_key": "657FNQ6E",
+      "title": "Optimal allocation of interconnecting links in cyber-physical systems: Interdependence, cascading failures, and robustness",
+      "doi": "10.1109/tpds.2012.62",
+      "creators": [
+        {
+          "firstName": "Osman",
+          "lastName": "Yagan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Dajun",
+          "lastName": "Qian",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Junshan",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Douglas",
+          "lastName": "Cochran",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2012",
+      "publication_title": "IEEE Transactions on Parallel and Distributed Systems",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/严格双图",
+        "PIJWM/角色/奠基"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tpds.2012.62",
+      "identity_norm": "optimal allocation of interconnecting links in cyber physical systems interdependence cascading failures and robustness|yagan|2012"
+    },
+    {
+      "item_key": "694YFI69",
+      "title": "Graph neural networks for scalable radio resource management: Architecture design and theoretical analysis",
+      "doi": "10.1109/jsac.2020.3036965",
+      "creators": [
+        {
+          "firstName": "Yifei",
+          "lastName": "Shen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuanming",
+          "lastName": "Shi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jun",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Khaled B.",
+          "lastName": "Letaief",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2021",
+      "publication_title": "IEEE Journal on Selected Areas in Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/无线GNN",
+        "PIJWM/主题/严格双图"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jsac.2020.3036965",
+      "identity_norm": "graph neural networks for scalable radio resource management architecture design and theoretical analysis|shen|2021"
+    },
+    {
+      "item_key": "6QKKAHEZ",
+      "title": "Uncertainty-aware adaptive resource allocation for semantic communication in IoV via causal world models",
+      "doi": "10.1016/j.vehcom.2026.101088",
+      "creators": [
+        {
+          "firstName": "Haythem",
+          "lastName": "Hayouni",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sabrine",
+          "lastName": "Zahi",
+          "creatorType": "author"
+        }
+      ],
+      "date": "12/2026",
+      "publication_title": "Vehicular Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "/unread"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1016/j.vehcom.2026.101088",
+      "identity_norm": "uncertainty aware adaptive resource allocation for semantic communication in iov via causal world models|hayouni|2026"
+    },
+    {
+      "item_key": "7B8X48TK",
+      "title": "ENGNN: A General Edge-Update Empowered GNN Architecture for Radio Resource Management in Wireless Networks",
+      "doi": "10.1109/twc.2023.3325735",
+      "creators": [
+        {
+          "firstName": "Yunqi",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yang",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Qingjiang",
+          "lastName": "Shi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yik-Chung",
+          "lastName": "Wu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2022",
+      "publication_title": "IEEE Transactions on Wireless Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/twc.2023.3325735",
+      "identity_norm": "engnn a general edge update empowered gnn architecture for radio resource management in wireless networks|wang|2022"
+    },
+    {
+      "item_key": "7JPHRHDF",
+      "title": "Where are the (cellular) data?",
+      "doi": "10.1145/3610402",
+      "creators": [
+        {
+          "firstName": "Maryam",
+          "lastName": "Amini",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Razvan",
+          "lastName": "Stanica",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Catherine",
+          "lastName": "Rosenberg",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "ACM Computing Surveys",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1145/3610402",
+      "identity_norm": "where are the cellular data|amini|2024"
+    },
+    {
+      "item_key": "7KS9WVR7",
+      "title": "Population-scalable multi-agent world modeling",
+      "doi": "10.48550/arXiv.2608.08600",
+      "creators": [
+        {
+          "firstName": "Renjie",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuxiang",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mingyu",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiaxin",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sisi",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "He",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yimin",
+          "lastName": "Sheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tianxi",
+          "lastName": "Tan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhenkai",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiao",
+          "lastName": "Liang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jianyi",
+          "lastName": "Zhu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yong-Lu",
+          "lastName": "Li",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/世界模型",
+        "PIJWM/全文/预印本版本",
+        "PIJWM/主题/多智能体"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2608.08600",
+      "identity_norm": "population scalable multi agent world modeling|zhao|2026"
+    },
+    {
+      "item_key": "7U4BP97F",
+      "title": "Focal Loss for Dense Object Detection",
+      "doi": "10.1109/iccv.2017.324",
+      "creators": [
+        {
+          "firstName": "Tsung-Yi",
+          "lastName": "Lin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Priya",
+          "lastName": "Goyal",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ross",
+          "lastName": "Girshick",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Kaiming",
+          "lastName": "He",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Piotr",
+          "lastName": "Dollar",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2017",
+      "publication_title": "2017 IEEE International Conference on Computer Vision (ICCV)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "DQQG4EIB"
+      ],
+      "collection_names": [
+        "07_AI业务场景与任务模型"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/iccv.2017.324",
+      "identity_norm": "focal loss for dense object detection|lin|2017"
+    },
+    {
+      "item_key": "8L7P5YNN",
+      "title": "Mastering diverse control tasks through world models",
+      "doi": "10.1038/s41586-025-08744-2",
+      "creators": [
+        {
+          "firstName": "Danijar",
+          "lastName": "Hafner",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jurgis",
+          "lastName": "Pasukonis",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jimmy",
+          "lastName": "Ba",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Timothy",
+          "lastName": "Lillicrap",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "Nature",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/世界模型"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1038/s41586-025-08744-2",
+      "identity_norm": "mastering diverse control tasks through world models|hafner|2025"
+    },
+    {
+      "item_key": "9MPG2AYE",
+      "title": "End-to-end full-stack drone measurements: A case study using AERPAW",
+      "doi": "10.1109/iccworkshops57953.2023.10283735",
+      "creators": [
+        {
+          "firstName": "Matteo",
+          "lastName": "Drago",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Anıl",
+          "lastName": "Gürses",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Robert W.",
+          "lastName": "Heath",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mihail L.",
+          "lastName": "Sichitiu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Michele",
+          "lastName": "Zorzi",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "2023 IEEE International Conference on Communications Workshops (ICC Workshops)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/低空空地网络",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/iccworkshops57953.2023.10283735",
+      "identity_norm": "end to end full stack drone measurements a case study using aerpaw|drago|2023"
+    },
+    {
+      "item_key": "9YHSQ67Y",
+      "title": "Uncertainty Quantification of Sparse Travel Demand Prediction with Spatial-Temporal Graph Neural Networks",
+      "doi": "10.1145/3534678.3539093",
+      "creators": [
+        {
+          "firstName": "Dingyi",
+          "lastName": "Zhuang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shenhao",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Haris",
+          "lastName": "Koutsopoulos",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jinhua",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2022",
+      "publication_title": "Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "8VKHS5YK"
+      ],
+      "collection_names": [
+        "06_评价、不确定性与决策诊断"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1145/3534678.3539093",
+      "identity_norm": "uncertainty quantification of sparse travel demand prediction with spatial temporal graph neural networks|zhuang|2022"
+    },
+    {
+      "item_key": "AA2W5LAB",
+      "title": "Semantic communication for cooperative perception using HARQ",
+      "doi": "10.1109/TCCN.2025.3579540",
+      "creators": [
+        {
+          "firstName": "Yucheng",
+          "lastName": "Sheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Le",
+          "lastName": "Liang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hao",
+          "lastName": "Ye",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shi",
+          "lastName": "Jin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Geoffrey Ye",
+          "lastName": "Li",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Transactions on Cognitive Communications and Networking",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/协同感知",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/网络可靠性"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tccn.2025.3579540",
+      "identity_norm": "semantic communication for cooperative perception using harq|sheng|2026"
+    },
+    {
+      "item_key": "BTV6Z566",
+      "title": "Understanding world or predicting future? A comprehensive survey of world models",
+      "doi": "10.1145/3746449",
+      "creators": [
+        {
+          "firstName": "Jingtao",
+          "lastName": "Ding",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yunke",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yu",
+          "lastName": "Shang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuheng",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zefang",
+          "lastName": "Zong",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jie",
+          "lastName": "Feng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuan",
+          "lastName": "Yuan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hongyuan",
+          "lastName": "Su",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nian",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nicholas",
+          "lastName": "Sukiennik",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Fengli",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yong",
+          "lastName": "Li",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "ACM Computing Surveys",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/奠基",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/世界模型"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1145/3746449",
+      "identity_norm": "understanding world or predicting future a comprehensive survey of world models|ding|2026"
+    },
+    {
+      "item_key": "C2X5UMZT",
+      "title": "CoDS: Collaborative perception via digital semantic communication",
+      "doi": "10.1109/TWC.2026.3698559",
+      "creators": [
+        {
+          "firstName": "Jipeng",
+          "lastName": "Gan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Le",
+          "lastName": "Liang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hua",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chongtao",
+          "lastName": "Guo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shi",
+          "lastName": "Jin",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Transactions on Wireless Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/协同感知",
+        "PIJWM/主题/Token与语义通信"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/twc.2026.3698559",
+      "identity_norm": "cods collaborative perception via digital semantic communication|gan|2026"
+    },
+    {
+      "item_key": "CAHRJ3KJ",
+      "title": "On-demand environment perception and resource allocation for task offloading in vehicular networks",
+      "doi": "10.1109/TWC.2024.3435871",
+      "creators": [
+        {
+          "firstName": "Changle",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mengqiu",
+          "lastName": "Tian",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yilong",
+          "lastName": "Hui",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nan",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ruijin",
+          "lastName": "Sun",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wenwei",
+          "lastName": "Yue",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhu",
+          "lastName": "Han",
+          "creatorType": "author"
+        }
+      ],
+      "date": "11/2024",
+      "publication_title": "IEEE Transactions on Wireless Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/twc.2024.3435871",
+      "identity_norm": "on demand environment perception and resource allocation for task offloading in vehicular networks|li|2024"
+    },
+    {
+      "item_key": "CGZRF45J",
+      "title": "RoboScape: Physics-informed embodied world model",
+      "doi": "10.52202/085713-2138",
+      "creators": [
+        {
+          "firstName": "Yu",
+          "lastName": "Shang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xin",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yinzhou",
+          "lastName": "Tang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Lei",
+          "lastName": "Jin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chen",
+          "lastName": "Gao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wei",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yong",
+          "lastName": "Li",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "Advances in Neural Information Processing Systems 38",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/世界模型",
+        "Computer Science - Computer Vision and Pattern Recognition",
+        "Computer Science - Robotics"
+      ],
+      "num_children": null,
+      "doi_norm": "10.52202/085713-2138",
+      "identity_norm": "roboscape physics informed embodied world model|shang|2025"
+    },
+    {
+      "item_key": "CIPDRXWJ",
+      "title": "Dynamic edge-conditioned filters in convolutional neural networks on graphs",
+      "doi": "10.1109/cvpr.2017.11",
+      "creators": [
+        {
+          "firstName": "Martin",
+          "lastName": "Simonovsky",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nikos",
+          "lastName": "Komodakis",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2017",
+      "publication_title": "2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "283ARJS5"
+      ],
+      "collection_names": [
+        "02_严格双图与图学习"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/无线GNN",
+        "PIJWM/主题/严格双图"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/cvpr.2017.11",
+      "identity_norm": "dynamic edge conditioned filters in convolutional neural networks on graphs|simonovsky|2017"
+    },
+    {
+      "item_key": "CIUZT3KV",
+      "title": "No gaussian required: Contrastive inverse dynamics for JEPA world models",
+      "doi": "10.48550/arXiv.2608.17542",
+      "creators": [
+        {
+          "firstName": "Jack",
+          "lastName": "Boylan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chris",
+          "lastName": "Hokamp",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/世界模型",
+        "PIJWM/全文/预印本版本",
+        "PIJWM/主题/表征学习"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2608.17542",
+      "identity_norm": "no gaussian required contrastive inverse dynamics for jepa world models|boylan|2026"
+    },
+    {
+      "item_key": "CWDJVQ7V",
+      "title": "Digital twin-driven collaborative scheduling for heterogeneous task and edge-end resource via multi-agent deep reinforcement learning",
+      "doi": "10.1109/jsac.2023.3310066",
+      "creators": [
+        {
+          "firstName": "Chi",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zixuan",
+          "lastName": "Tang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Haibin",
+          "lastName": "Yu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Peng",
+          "lastName": "Zeng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Linghe",
+          "lastName": "Kong",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "IEEE Journal on Selected Areas in Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/网络数字孪生",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/任务卸载",
+        "PIJWM/主题/决策诊断"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jsac.2023.3310066",
+      "identity_norm": "digital twin driven collaborative scheduling for heterogeneous task and edge end resource via multi agent deep reinforcement learning|xu|2023"
+    },
+    {
+      "item_key": "DBAUH4P3",
+      "title": "Understanding O-RAN: Architecture, Interfaces, Algorithms, Security, and Research Challenges",
+      "doi": "10.1109/comst.2023.3239220",
+      "creators": [
+        {
+          "firstName": "Michele",
+          "lastName": "Polese",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Leonardo",
+          "lastName": "Bonati",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Salvatore",
+          "lastName": "D’Oro",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Stefano",
+          "lastName": "Basagni",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tommaso",
+          "lastName": "Melodia",
+          "creatorType": "author"
+        }
+      ],
+      "date": "22/2023",
+      "publication_title": "IEEE Communications Surveys & Tutorials",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "UUK8F8EQ"
+      ],
+      "collection_names": [
+        "01_系统场景与问题定义"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/comst.2023.3239220",
+      "identity_norm": "understanding o ran architecture interfaces algorithms security and research challenges|polese|2023"
+    },
+    {
+      "item_key": "DX2FLYDV",
+      "title": "FullPerception: Network-level collaborative perception for eliminating vehicular blind spots",
+      "doi": "10.1109/TMC.2025.3600060",
+      "creators": [
+        {
+          "firstName": "Lin",
+          "lastName": "Liang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Guiyang",
+          "lastName": "Luo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yijing",
+          "lastName": "Lin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Lei",
+          "lastName": "Deng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nan",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Quan",
+          "lastName": "Yuan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jinglin",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Dusit",
+          "lastName": "Niyato",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2/2026",
+      "publication_title": "IEEE Transactions on Mobile Computing",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tmc.2025.3600060",
+      "identity_norm": "fullperception network level collaborative perception for eliminating vehicular blind spots|liang|2026"
+    },
+    {
+      "item_key": "EBELJLVX",
+      "title": "Conformal prediction: A gentle introduction",
+      "doi": "10.1561/2200000101",
+      "creators": [
+        {
+          "firstName": "Anastasios N.",
+          "lastName": "Angelopoulos",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Stephen",
+          "lastName": "Bates",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "Foundations and Trends® in Machine Learning",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "8VKHS5YK"
+      ],
+      "collection_names": [
+        "06_评价、不确定性与决策诊断"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/不确定性",
+        "PIJWM/全文/预印本版本"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1561/2200000101",
+      "identity_norm": "conformal prediction a gentle introduction|angelopoulos|2023"
+    },
+    {
+      "item_key": "EEIJCJKL",
+      "title": "SemanticNN: Compressive and error-resilient semantic offloading for extremely weak devices",
+      "doi": "10.1609/aaai.v40i26.39351",
+      "creators": [
+        {
+          "firstName": "Jiaming",
+          "lastName": "Huang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yi",
+          "lastName": "Gao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Fuchang",
+          "lastName": "Pan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Renjie",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wei",
+          "lastName": "Dong",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026-03-14",
+      "publication_title": "Proceedings of the AAAI Conference on Artificial Intelligence",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务感知QoS",
+        "PIJWM/主题/AI业务"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1609/aaai.v40i26.39351",
+      "identity_norm": "semanticnn compressive and error resilient semantic offloading for extremely weak devices|huang|2026"
+    },
+    {
+      "item_key": "EJCRIIPU",
+      "title": "OpenRAN gym: An open toolbox for data collection and experimentation with AI in O-RAN",
+      "doi": "10.1109/wcnc51071.2022.9771908",
+      "creators": [
+        {
+          "firstName": "Leonardo",
+          "lastName": "Bonati",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Michele",
+          "lastName": "Polese",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Salvatore",
+          "lastName": "D'Oro",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Stefano",
+          "lastName": "Basagni",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tommaso",
+          "lastName": "Melodia",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2022",
+      "publication_title": "2022 IEEE Wireless Communications and Networking Conference (WCNC)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/wcnc51071.2022.9771908",
+      "identity_norm": "openran gym an open toolbox for data collection and experimentation with ai in o ran|bonati|2022"
+    },
+    {
+      "item_key": "EXY7ZTUX",
+      "title": "Learning ad hoc network dynamics via graph-structured world models",
+      "doi": "10.48550/arXiv.2604.14811",
+      "creators": [
+        {
+          "firstName": "Can",
+          "lastName": "Karacelebi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yusuf Talha",
+          "lastName": "Sahin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Elif",
+          "lastName": "Surer",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ertan",
+          "lastName": "Onur",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "/done",
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/破格",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/时序动态图",
+        "PIJWM/主题/世界模型",
+        "PIJWM/主题/无线GNN"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2604.14811",
+      "identity_norm": "learning ad hoc network dynamics via graph structured world models|karacelebi|2026"
+    },
+    {
+      "item_key": "FT88WZND",
+      "title": "Computation and communication co-scheduling for timely multi-task inference at the wireless edge",
+      "doi": "10.1109/INFOCOM55648.2025.11044625",
+      "creators": [
+        {
+          "firstName": "Md Kamran Chowdhury",
+          "lastName": "Shisher",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Adam",
+          "lastName": "Piaseczny",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yin",
+          "lastName": "Sun",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Christopher G.",
+          "lastName": "Brinton",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025-05-19",
+      "publication_title": "IEEE INFOCOM 2025 - IEEE Conference on Computer Communications",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "/done",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/任务感知QoS",
+        "PIJWM/主题/信息时效",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/AI业务"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/infocom55648.2025.11044625",
+      "identity_norm": "computation and communication co scheduling for timely multi task inference at the wireless edge|shisher|2025"
+    },
+    {
+      "item_key": "GB7ZJR8Z",
+      "title": "Relational inductive biases, deep learning, and graph networks",
+      "doi": "10.48550/arXiv.1806.01261",
+      "creators": [
+        {
+          "firstName": "Peter W.",
+          "lastName": "Battaglia",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jessica B.",
+          "lastName": "Hamrick",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Victor",
+          "lastName": "Bapst",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Alvaro",
+          "lastName": "Sanchez-Gonzalez",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Vinicius",
+          "lastName": "Zambaldi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mateusz",
+          "lastName": "Malinowski",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Andrea",
+          "lastName": "Tacchetti",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "David",
+          "lastName": "Raposo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Adam",
+          "lastName": "Santoro",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ryan",
+          "lastName": "Faulkner",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Caglar",
+          "lastName": "Gulcehre",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Francis",
+          "lastName": "Song",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Andrew",
+          "lastName": "Ballard",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Justin",
+          "lastName": "Gilmer",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "George",
+          "lastName": "Dahl",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ashish",
+          "lastName": "Vaswani",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Kelsey",
+          "lastName": "Allen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Charles",
+          "lastName": "Nash",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Victoria",
+          "lastName": "Langston",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chris",
+          "lastName": "Dyer",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nicolas",
+          "lastName": "Heess",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Daan",
+          "lastName": "Wierstra",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Pushmeet",
+          "lastName": "Kohli",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Matt",
+          "lastName": "Botvinick",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Oriol",
+          "lastName": "Vinyals",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yujia",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Razvan",
+          "lastName": "Pascanu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2018",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/破格",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/严格双图",
+        "PIJWM/角色/奠基"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.1806.01261",
+      "identity_norm": "relational inductive biases deep learning and graph networks|battaglia|2018"
+    },
+    {
+      "item_key": "GFG5JZCX",
+      "title": "GASTO: A fast adaptive graph learning framework for edge computing empowered task offloading",
+      "doi": "10.1109/tnsm.2023.3250395",
+      "creators": [
+        {
+          "firstName": "Yinong",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jianbo",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhiqiang",
+          "lastName": "Lv",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Haoran",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yue",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhihao",
+          "lastName": "Xu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "IEEE Transactions on Network and Service Management",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/任务卸载",
+        "PIJWM/主题/无线GNN",
+        "PIJWM/主题/时序动态图"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tnsm.2023.3250395",
+      "identity_norm": "gasto a fast adaptive graph learning framework for edge computing empowered task offloading|li|2023"
+    },
+    {
+      "item_key": "GJDWNI9A",
+      "title": "Attention Is All You Need",
+      "doi": "",
+      "creators": [
+        {
+          "firstName": "Ashish",
+          "lastName": "Vaswani",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Noam",
+          "lastName": "Shazeer",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Niki",
+          "lastName": "Parmar",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jakob",
+          "lastName": "Uszkoreit",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Llion",
+          "lastName": "Jones",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Aidan N.",
+          "lastName": "Gomez",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Łukasz",
+          "lastName": "Kaiser",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Illia",
+          "lastName": "Polosukhin",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2017",
+      "publication_title": "Advances in Neural Information Processing Systems 30",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": "attention is all you need|vaswani|2017"
+    },
+    {
+      "item_key": "GR44R39I",
+      "title": "Planning and Acting in Partially Observable Stochastic Domains",
+      "doi": "10.1016/s0004-3702(98)00023-x",
+      "creators": [
+        {
+          "firstName": "Leslie Pack",
+          "lastName": "Kaelbling",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Michael L.",
+          "lastName": "Littman",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Anthony R.",
+          "lastName": "Cassandra",
+          "creatorType": "author"
+        }
+      ],
+      "date": "1998",
+      "publication_title": "Artificial Intelligence",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1016/s0004-3702(98)00023-x",
+      "identity_norm": "planning and acting in partially observable stochastic domains|kaelbling|1998"
+    },
+    {
+      "item_key": "GZST55JK",
+      "title": "Improving channel resilience for task-oriented semantic communications: A unified information bottleneck approach",
+      "doi": "10.1109/LCOMM.2024.3466995",
+      "creators": [
+        {
+          "firstName": "Shuai",
+          "lastName": "Lyu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yao",
+          "lastName": "Sun",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Linke",
+          "lastName": "Guo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiaoyong",
+          "lastName": "Yuan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Fang",
+          "lastName": "Fang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Lan",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xianbin",
+          "lastName": "Wang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024-11",
+      "publication_title": "IEEE Communications Letters",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务质量映射"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/lcomm.2024.3466995",
+      "identity_norm": "improving channel resilience for task oriented semantic communications a unified information bottleneck approach|lyu|2024"
+    },
+    {
+      "item_key": "H4YG9PRA",
+      "title": "Wireless Network Digital Twin for 6G: Generative AI as a Key Enabler",
+      "doi": "10.1109/MWC.002.2300564",
+      "creators": [
+        {
+          "firstName": "Zhenyu",
+          "lastName": "Tao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wei",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yongming",
+          "lastName": "Huang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiaoyun",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiaohu",
+          "lastName": "You",
+          "creatorType": "author"
+        }
+      ],
+      "date": "8/2024",
+      "publication_title": "IEEE Wireless Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "UUK8F8EQ"
+      ],
+      "collection_names": [
+        "01_系统场景与问题定义"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/mwc.002.2300564",
+      "identity_norm": "wireless network digital twin for 6g generative ai as a key enabler|tao|2024"
+    },
+    {
+      "item_key": "HABM6C9B",
+      "title": "How attentive are graph attention networks?",
+      "doi": "10.48550/arXiv.2105.14491",
+      "creators": [
+        {
+          "firstName": "Shaked",
+          "lastName": "Brody",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Uri",
+          "lastName": "Alon",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Eran",
+          "lastName": "Yahav",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2022",
+      "publication_title": "arXiv",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "283ARJS5"
+      ],
+      "collection_names": [
+        "02_严格双图与图学习"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/无线GNN",
+        "PIJWM/主题/严格双图"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2105.14491",
+      "identity_norm": "how attentive are graph attention networks|brody|2022"
+    },
+    {
+      "item_key": "HQYQTU8Y",
+      "title": "Joint optimization of adaptive semantic compression and resource allocation for semantic-enabled UAV communications",
+      "doi": "10.1186/s13638-026-02637-2",
+      "creators": [
+        {
+          "firstName": "Yuchen",
+          "lastName": "Zhou",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Peng",
+          "lastName": "Dai",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Bingtao",
+          "lastName": "He",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mengmeng",
+          "lastName": "Ren",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mofan",
+          "lastName": "Luo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jian",
+          "lastName": "Chen",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026-05-29",
+      "publication_title": "Journal on Wireless Communications and Networking",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "9ELTVQWN"
+      ],
+      "collection_names": [
+        "09_网络QoS与任务质量映射"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务质量映射",
+        "PIJWM/主题/信息时效"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1186/s13638-026-02637-2",
+      "identity_norm": "joint optimization of adaptive semantic compression and resource allocation for semantic enabled uav communications|zhou|2026"
+    },
+    {
+      "item_key": "I44HAH36",
+      "title": "Predictive Position Control for Movable Antenna Arrays in UAV Communications: A Spatio-Temporal Transformer-LSTM Framework",
+      "doi": "",
+      "creators": [
+        {
+          "firstName": "Kan",
+          "lastName": "Yu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Kaixuan",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiaowu",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Qixun",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhiyong",
+          "lastName": "Feng",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": "predictive position control for movable antenna arrays in uav communications a spatio temporal transformer lstm framework|yu|2025"
+    },
+    {
+      "item_key": "I5QR6AXA",
+      "title": "AirFogSim: A Python Package for Benchmarking Collaborative Intelligence in Low-Altitude Vehicular Fog Computing",
+      "doi": "10.21105/joss.08267",
+      "creators": [
+        {
+          "firstName": "Zhiwei",
+          "lastName": "Wei",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Bing",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Rongqing",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "Journal of Open Source Software",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.21105/joss.08267",
+      "identity_norm": "airfogsim a python package for benchmarking collaborative intelligence in low altitude vehicular fog computing|wei|2025"
+    },
+    {
+      "item_key": "IHTIXK22",
+      "title": "Pragmatic communication in multi-agent collaborative perception",
+      "doi": "10.1109/TPAMI.2026.3680062",
+      "creators": [
+        {
+          "firstName": "Yue",
+          "lastName": "Hu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xianghe",
+          "lastName": "Pang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiaoqi",
+          "lastName": "Qin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yonina C.",
+          "lastName": "Eldar",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Siheng",
+          "lastName": "Chen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ping",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wenjun",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "8/2026",
+      "publication_title": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tpami.2026.3680062",
+      "identity_norm": "pragmatic communication in multi agent collaborative perception|hu|2026"
+    },
+    {
+      "item_key": "IKDKLFZT",
+      "title": "CoSDH: Communication-efficient collaborative perception via supply-demand awareness and intermediate-late hybridization",
+      "doi": "10.1109/CVPR52734.2025.00641",
+      "creators": [
+        {
+          "firstName": "Junhao",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yanan",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhi",
+          "lastName": "Cai",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Di",
+          "lastName": "Huang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025-06-10",
+      "publication_title": "2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/协同感知",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务质量映射"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/cvpr52734.2025.00641",
+      "identity_norm": "cosdh communication efficient collaborative perception via supply demand awareness and intermediate late hybridization|xu|2025"
+    },
+    {
+      "item_key": "IX3MJ327",
+      "title": "Advancing the control of low-altitude wireless networks: architecture, design principles, and future directions",
+      "doi": "10.1038/s44459-025-00010-1",
+      "creators": [
+        {
+          "firstName": "Haijia",
+          "lastName": "Jin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Weijie",
+          "lastName": "Yuan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jun",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiacheng",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Dusit",
+          "lastName": "Niyato",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xianbin",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "George K.",
+          "lastName": "Karagiannidis",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhiyun",
+          "lastName": "Lin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yi",
+          "lastName": "Gong",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Dong In",
+          "lastName": "Kim",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Athina",
+          "lastName": "Petropulu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Maria Sabrina",
+          "lastName": "Greco",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Abbas",
+          "lastName": "Jamalipour",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sumei",
+          "lastName": "Sun",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026-01-07",
+      "publication_title": "npj Wireless Technology",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "UUK8F8EQ"
+      ],
+      "collection_names": [
+        "01_系统场景与问题定义"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/网络数字孪生",
+        "PIJWM/主题/低空空地网络",
+        "PIJWM/主题/评价指标",
+        "/unread"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1038/s44459-025-00010-1",
+      "identity_norm": "advancing the control of low altitude wireless networks architecture design principles and future directions|jin|2026"
+    },
+    {
+      "item_key": "IXPYA38V",
+      "title": "Multilayer networks",
+      "doi": "10.1093/comnet/cnu016",
+      "creators": [
+        {
+          "firstName": "M.",
+          "lastName": "Kivela",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "A.",
+          "lastName": "Arenas",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "M.",
+          "lastName": "Barthelemy",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "J. P.",
+          "lastName": "Gleeson",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Y.",
+          "lastName": "Moreno",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "M. A.",
+          "lastName": "Porter",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2014",
+      "publication_title": "Journal of Complex Networks",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/严格双图",
+        "PIJWM/角色/奠基"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1093/comnet/cnu016",
+      "identity_norm": "multilayer networks|kivela|2014"
+    },
+    {
+      "item_key": "J5GYT4N7",
+      "title": "Adaptive semantic token communication for transformer-based edge inference",
+      "doi": "10.1109/TMLCN.2026.3659819",
+      "creators": [
+        {
+          "firstName": "Alessio",
+          "lastName": "Devoto",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jary",
+          "lastName": "Pomponi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mattia",
+          "lastName": "Merluzzi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Paolo",
+          "lastName": "Di Lorenzo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Simone",
+          "lastName": "Scardapane",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Transactions on Machine Learning in Communications and Networking",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务感知QoS",
+        "PIJWM/主题/AI业务",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tmlcn.2026.3659819",
+      "identity_norm": "adaptive semantic token communication for transformer based edge inference|devoto|2026"
+    },
+    {
+      "item_key": "J6M7CRVM",
+      "title": "A survey on goal-oriented semantic communication: Techniques, challenges, and future directions",
+      "doi": "10.1109/ACCESS.2024.3381967",
+      "creators": [
+        {
+          "firstName": "Tilahun M.",
+          "lastName": "Getu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Georges",
+          "lastName": "Kaddoum",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mehdi",
+          "lastName": "Bennis",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Access",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务质量映射"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/access.2024.3381967",
+      "identity_norm": "a survey on goal oriented semantic communication techniques challenges and future directions|getu|2024"
+    },
+    {
+      "item_key": "JC8WK6WY",
+      "title": "Low-latency task-oriented communications with multi-round, multi-task deep learning",
+      "doi": "10.1145/3636534.3698244",
+      "creators": [
+        {
+          "firstName": "Yalin E",
+          "lastName": "Sagduyu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tugba",
+          "lastName": "Erpek",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Aylin",
+          "lastName": "Yener",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sennur",
+          "lastName": "Ulukus",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024-12-04",
+      "publication_title": "Proceedings of the 30th Annual International Conference on Mobile Computing and Networking",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "/done",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/任务感知QoS",
+        "PIJWM/主题/AI业务",
+        "PIJWM/主题/Token与语义通信"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1145/3636534.3698244",
+      "identity_norm": "low latency task oriented communications with multi round multi task deep learning|sagduyu|2024"
+    },
+    {
+      "item_key": "JFXYBX2N",
+      "title": "Model-based deep reinforcement learning framework for channel access in wireless networks",
+      "doi": "10.1109/jiot.2023.3325575",
+      "creators": [
+        {
+          "firstName": "Jong In",
+          "lastName": "Park",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jun Byung",
+          "lastName": "Chae",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Kae Won",
+          "lastName": "Choi",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Internet of Things Journal",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/世界模型",
+        "PIJWM/主题/决策诊断",
+        "RRM/前序调研",
+        "RRM/主题/MAC-RRM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jiot.2023.3325575",
+      "identity_norm": "model based deep reinforcement learning framework for channel access in wireless networks|park|2024"
+    },
+    {
+      "item_key": "JRZWUIU2",
+      "title": "Task offloading and resource allocation in vehicular cooperative perception with integrated sensing, communication, and computation",
+      "doi": "10.1109/TITS.2025.3542365",
+      "creators": [
+        {
+          "firstName": "Mengyuan",
+          "lastName": "Dong",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuchuan",
+          "lastName": "Fu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Changle",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mengqiu",
+          "lastName": "Tian",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "F.",
+          "lastName": "Richard Yu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nan",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        }
+      ],
+      "date": "6/2025",
+      "publication_title": "IEEE Transactions on Intelligent Transportation Systems",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tits.2025.3542365",
+      "identity_norm": "task offloading and resource allocation in vehicular cooperative perception with integrated sensing communication and computation|dong|2025"
+    },
+    {
+      "item_key": "KHH7ARGG",
+      "title": "Communication-efficient collaborative perception via information filling with codebook",
+      "doi": "10.1109/CVPR52733.2024.01466",
+      "creators": [
+        {
+          "firstName": "Yue",
+          "lastName": "Hu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Juntong",
+          "lastName": "Peng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sifei",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Junhao",
+          "lastName": "Ge",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Si",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Siheng",
+          "lastName": "Chen",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024-06-16",
+      "publication_title": "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/协同感知",
+        "PIJWM/主题/Token与语义通信"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/cvpr52733.2024.01466",
+      "identity_norm": "communication efficient collaborative perception via information filling with codebook|hu|2024"
+    },
+    {
+      "item_key": "KQXI4GWD",
+      "title": "AirFogSim: A Light-Weight and Modular Simulator for UAV-Integrated Vehicular Fog Computing",
+      "doi": "10.1109/tmc.2025.3641373",
+      "creators": [
+        {
+          "firstName": "Zhiwei",
+          "lastName": "Wei",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Bing",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Rongqing",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiang",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Liuqing",
+          "lastName": "Yang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "IEEE Transactions on Mobile Computing",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tmc.2025.3641373",
+      "identity_norm": "airfogsim a light weight and modular simulator for uav integrated vehicular fog computing|wei|2025"
+    },
+    {
+      "item_key": "LICHMG8T",
+      "title": "OFDM-based digital semantic communication with importance awareness",
+      "doi": "10.1109/TCOMM.2024.3397862",
+      "creators": [
+        {
+          "firstName": "Chuanhong",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Caili",
+          "lastName": "Guo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yang",
+          "lastName": "Yang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wanli",
+          "lastName": "Ni",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tony Q. S.",
+          "lastName": "Quek",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024-10",
+      "publication_title": "IEEE Transactions on Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务感知QoS",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tcomm.2024.3397862",
+      "identity_norm": "ofdm based digital semantic communication with importance awareness|liu|2024"
+    },
+    {
+      "item_key": "LM3I8YCU",
+      "title": "Real-time offloading for dependent and parallel tasks in cloud-edge environments using deep reinforcement learning",
+      "doi": "10.1109/tpds.2023.3349177",
+      "creators": [
+        {
+          "firstName": "Xing",
+          "lastName": "Chen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shengxi",
+          "lastName": "Hu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chujia",
+          "lastName": "Yu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zheyi",
+          "lastName": "Chen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Geyong",
+          "lastName": "Min",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Transactions on Parallel and Distributed Systems",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/任务卸载",
+        "PIJWM/主题/任务依赖DAG"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tpds.2023.3349177",
+      "identity_norm": "real time offloading for dependent and parallel tasks in cloud edge environments using deep reinforcement learning|chen|2024"
+    },
+    {
+      "item_key": "LNVZKIEP",
+      "title": "Edge general intelligence through world models, large language models, and agentic AI: Fundamentals, solutions, and challenges",
+      "doi": "10.1109/tccn.2026.3658762",
+      "creators": [
+        {
+          "firstName": "Changyuan",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Guangyuan",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ruichen",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yinqiu",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiacheng",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiawen",
+          "lastName": "Kang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Dusit",
+          "lastName": "Niyato",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zan",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xuemin",
+          "lastName": "Shen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhu",
+          "lastName": "Han",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sumei",
+          "lastName": "Sun",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chau",
+          "lastName": "Yuen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Dong In",
+          "lastName": "Kim",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Transactions on Cognitive Communications and Networking",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/世界模型"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tccn.2026.3658762",
+      "identity_norm": "edge general intelligence through world models large language models and agentic ai fundamentals solutions and challenges|zhao|2026"
+    },
+    {
+      "item_key": "LPNIJ3D3",
+      "title": "RMWorld: Task-aware radio world models with value-of-information guided multi-trial learning for multi-UAV communication control",
+      "doi": "10.48550/arXiv.2608.20126",
+      "creators": [
+        {
+          "firstName": "Xiucheng",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nan",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Junxi",
+          "lastName": "Huang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/主题/低空空地网络",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/世界模型",
+        "PIJWM/主题/不确定性",
+        "PIJWM/全文/预印本版本",
+        "PIJWM/主题/评价诊断",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2608.20126",
+      "identity_norm": "rmworld task aware radio world models with value of information guided multi trial learning for multi uav communication control|wang|2026"
+    },
+    {
+      "item_key": "MG5P4XVY",
+      "title": "World Model-Based Learning for Long-Term Age of Information Minimization in Vehicular Networks",
+      "doi": "10.1109/GLOBECOM59602.2025.11431797",
+      "creators": [
+        {
+          "firstName": "Lingyi",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Rashed",
+          "lastName": "Shelim",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Walid",
+          "lastName": "Saad",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Naren",
+          "lastName": "Ramakrishnan",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025-12-08",
+      "publication_title": "GLOBECOM 2025 - 2025 IEEE Global Communications Conference",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/世界模型",
+        "RRM",
+        "PIJWM/主题/信息时效"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/globecom59602.2025.11431797",
+      "identity_norm": "world model based learning for long term age of information minimization in vehicular networks|wang|2025"
+    },
+    {
+      "item_key": "MU9TZL9S",
+      "title": "Modeling relational data with graph convolutional networks",
+      "doi": "10.1007/978-3-319-93417-4_38",
+      "creators": [
+        {
+          "firstName": "Michael",
+          "lastName": "Schlichtkrull",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Thomas N.",
+          "lastName": "Kipf",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Peter",
+          "lastName": "Bloem",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Rianne",
+          "lastName": "van den Berg",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ivan",
+          "lastName": "Titov",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Max",
+          "lastName": "Welling",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2018",
+      "publication_title": "arXiv",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "283ARJS5"
+      ],
+      "collection_names": [
+        "02_严格双图与图学习"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/严格双图"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1007/978-3-319-93417-4_38",
+      "identity_norm": "modeling relational data with graph convolutional networks|schlichtkrull|2018"
+    },
+    {
+      "item_key": "N2PGPVZM",
+      "title": "Task offloading in internet of vehicles: A DRL-based approach with representation learning for DAG scheduling",
+      "doi": "10.1109/tmc.2025.3531887",
+      "creators": [
+        {
+          "firstName": "Xiaoheng",
+          "lastName": "Deng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Haoyu",
+          "lastName": "Yang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jingjing",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jinsong",
+          "lastName": "Gui",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Siyu",
+          "lastName": "Lin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xin",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Geyong",
+          "lastName": "Min",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "IEEE Transactions on Mobile Computing",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/任务卸载",
+        "PIJWM/主题/任务依赖DAG"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tmc.2025.3531887",
+      "identity_norm": "task offloading in internet of vehicles a drl based approach with representation learning for dag scheduling|deng|2025"
+    },
+    {
+      "item_key": "NW7VZSR7",
+      "title": "6G Digital Twin Networks: From Theory to Practice",
+      "doi": "10.1109/mcom.001.2200830",
+      "creators": [
+        {
+          "firstName": "Xingqin",
+          "lastName": "Lin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Lopamudra",
+          "lastName": "Kundu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chris",
+          "lastName": "Dick",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Emeka",
+          "lastName": "Obiodu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Todd",
+          "lastName": "Mostak",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mike",
+          "lastName": "Flaxman",
+          "creatorType": "author"
+        }
+      ],
+      "date": "11/2023",
+      "publication_title": "IEEE Communications Magazine",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "UUK8F8EQ"
+      ],
+      "collection_names": [
+        "01_系统场景与问题定义"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/网络数字孪生",
+        "/unread"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/mcom.001.2200830",
+      "identity_norm": "6g digital twin networks from theory to practice|lin|2023"
+    },
+    {
+      "item_key": "P3A797UX",
+      "title": "Integrated Sensing, Communication, Computing, and Control Meets UAV Swarms in 6G",
+      "doi": "10.1109/mwc.2026.3702071",
+      "creators": [
+        {
+          "firstName": "Yiyan",
+          "lastName": "Ma",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Bo",
+          "lastName": "Ai",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jingli",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Weijie",
+          "lastName": "Yuan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Boxiang",
+          "lastName": "He",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Weiyang",
+          "lastName": "Feng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhengyu",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Qingqing",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhangdui",
+          "lastName": "Zhong",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Wireless Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "UUK8F8EQ"
+      ],
+      "collection_names": [
+        "01_系统场景与问题定义"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/主题/低空空地网络",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/资源分配"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/mwc.2026.3702071",
+      "identity_norm": "integrated sensing communication computing and control meets uav swarms in 6g|ma|2026"
+    },
+    {
+      "item_key": "P3QIP9C4",
+      "title": "Variational graph recurrent neural networks",
+      "doi": "10.48550/arXiv.1908.09710",
+      "creators": [
+        {
+          "firstName": "Ehsan",
+          "lastName": "Hajiramezanali",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Arman",
+          "lastName": "Hasanzadeh",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nick",
+          "lastName": "Duffield",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Krishna",
+          "lastName": "Narayanan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mingyuan",
+          "lastName": "Zhou",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiaoning",
+          "lastName": "Qian",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2019",
+      "publication_title": "Neural Networks",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/时序动态图",
+        "PIJWM/主题/世界模型",
+        "PIJWM/主题/不确定性"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.1908.09710",
+      "identity_norm": "variational graph recurrent neural networks|hajiramezanali|2019"
+    },
+    {
+      "item_key": "P9DRBFZI",
+      "title": "Model-Based Decentralized Joint Optimization of Resource Allocation, Phase Shift, and UAV Trajectory for Energy-Efficient RIS Assisted UAV-MEC Systems",
+      "doi": "10.1109/tvt.2026.3666220",
+      "creators": [
+        {
+          "firstName": "Liangshun",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tao",
+          "lastName": "Tao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Bin",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jianbo",
+          "lastName": "Du",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Junsuo",
+          "lastName": "Qu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Transactions on Vehicular Technology",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tvt.2026.3666220",
+      "identity_norm": "model based decentralized joint optimization of resource allocation phase shift and uav trajectory for energy efficient ris assisted uav mec systems|wu|2026"
+    },
+    {
+      "item_key": "P9UCUBZU",
+      "title": "Colosseum: The open RAN digital twin",
+      "doi": "10.1109/ojcoms.2024.3447472",
+      "creators": [
+        {
+          "firstName": "Michele",
+          "lastName": "Polese",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Leonardo",
+          "lastName": "Bonati",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Salvatore",
+          "lastName": "D'Oro",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Pedram",
+          "lastName": "Johari",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Davide",
+          "lastName": "Villa",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sakthivel",
+          "lastName": "Velumani",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Rajeev",
+          "lastName": "Gangula",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Maria",
+          "lastName": "Tsampazi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Clifton",
+          "lastName": "Paul Robinson",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Gabriele",
+          "lastName": "Gemmi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Andrea",
+          "lastName": "Lacava",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Stefano",
+          "lastName": "Maxenti",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hai",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tommaso",
+          "lastName": "Melodia",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Open Journal of the Communications Society",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/网络数字孪生",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/ojcoms.2024.3447472",
+      "identity_norm": "colosseum the open ran digital twin|polese|2024"
+    },
+    {
+      "item_key": "PIK82YRA",
+      "title": "GAWM: Global-Aware World Model for Multi-Agent Reinforcement Learning",
+      "doi": "",
+      "creators": [],
+      "date": "2025",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": ""
+    },
+    {
+      "item_key": "PINRPGH7",
+      "title": "LLaVA-PruMerge: Adaptive token reduction for efficient large multimodal models",
+      "doi": "",
+      "creators": [
+        {
+          "firstName": "Yuzhang",
+          "lastName": "Shang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mu",
+          "lastName": "Cai",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Bingxin",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yong Jae",
+          "lastName": "Lee",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yan",
+          "lastName": "Yan",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025-10",
+      "publication_title": "Proceedings of the IEEE/CVF International Conference on Computer Vision",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/AI业务",
+        "PIJWM/主题/Token与语义通信"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": "llava prumerge adaptive token reduction for efficient large multimodal models|shang|2025"
+    },
+    {
+      "item_key": "PQK4SIWD",
+      "title": "Task-oriented semantic communication for stereo-vision 3D object detection",
+      "doi": "10.1109/TCOMM.2025.3545687",
+      "creators": [
+        {
+          "firstName": "Zijian",
+          "lastName": "Cao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hua",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Le",
+          "lastName": "Liang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Haotian",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shi",
+          "lastName": "Jin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Geoffrey Ye",
+          "lastName": "Li",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025-09",
+      "publication_title": "IEEE Transactions on Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/任务质量映射",
+        "PIJWM/主题/协同感知",
+        "PIJWM/主题/Token与语义通信"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tcomm.2025.3545687",
+      "identity_norm": "task oriented semantic communication for stereo vision 3d object detection|cao|2025"
+    },
+    {
+      "item_key": "RHNB4JTG",
+      "title": "Evolutionary optimization for proactive and dynamic computing resource allocation in open radio access network",
+      "doi": "10.1109/TETCI.2024.3499997",
+      "creators": [
+        {
+          "firstName": "Gan",
+          "lastName": "Ruan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Leandro L.",
+          "lastName": "Minku",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhao",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xin",
+          "lastName": "Yao",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025-02",
+      "publication_title": "IEEE Transactions on Emerging Topics in Computational Intelligence",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/世界模型",
+        "PIJWM/主题/网络QoS"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tetci.2024.3499997",
+      "identity_norm": "evolutionary optimization for proactive and dynamic computing resource allocation in open radio access network|ruan|2025"
+    },
+    {
+      "item_key": "RPZUL3BR",
+      "title": "Mobile network control with a world model",
+      "doi": "10.48550/arXiv.2607.17747",
+      "creators": [
+        {
+          "firstName": "Maxime",
+          "lastName": "Bouton",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ioanna",
+          "lastName": "Mitsioni",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Simon",
+          "lastName": "Lindståhl",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jaeseong",
+          "lastName": "Jeong",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026-07-20",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "/unread",
+        "Computer Science - Artificial Intelligence",
+        "Computer Science - Networking and Internet Architecture"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2607.17747",
+      "identity_norm": "mobile network control with a world model|bouton|2026"
+    },
+    {
+      "item_key": "S5JI853L",
+      "title": "TD-MPC2: Scalable, robust world models for continuous control",
+      "doi": "10.48550/arXiv.2310.16828",
+      "creators": [],
+      "date": "2024",
+      "publication_title": "ICLR 2024",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/世界模型"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2310.16828",
+      "identity_norm": ""
+    },
+    {
+      "item_key": "SB7QAQS5",
+      "title": "Dynamic GNN for predictive resource allocation to mobile users",
+      "doi": "10.1109/tvt.2025.3646698",
+      "creators": [
+        {
+          "firstName": "Jianyu",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chenyang",
+          "lastName": "Yang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tingting",
+          "lastName": "Liu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Transactions on Vehicular Technology",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tvt.2025.3646698",
+      "identity_norm": "dynamic gnn for predictive resource allocation to mobile users|zhao|2026"
+    },
+    {
+      "item_key": "SL882HI6",
+      "title": "Self-supervised learning from images with a joint-embedding predictive architecture",
+      "doi": "10.1109/cvpr52729.2023.01499",
+      "creators": [
+        {
+          "firstName": "Mahmoud",
+          "lastName": "Assran",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Quentin",
+          "lastName": "Duval",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ishan",
+          "lastName": "Misra",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Piotr",
+          "lastName": "Bojanowski",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Pascal",
+          "lastName": "Vincent",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Michael",
+          "lastName": "Rabbat",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yann",
+          "lastName": "LeCun",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nicolas",
+          "lastName": "Ballas",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/世界模型"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/cvpr52729.2023.01499",
+      "identity_norm": "self supervised learning from images with a joint embedding predictive architecture|assran|2023"
+    },
+    {
+      "item_key": "SX4HLKIV",
+      "title": "A Survey on Multi-Task Learning",
+      "doi": "10.1109/TKDE.2021.3070203",
+      "creators": [
+        {
+          "firstName": "Yu",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Qiang",
+          "lastName": "Yang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2022",
+      "publication_title": "IEEE Transactions on Knowledge and Data Engineering",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tkde.2021.3070203",
+      "identity_norm": "a survey on multi task learning|zhang|2022"
+    },
+    {
+      "item_key": "TCQB98AW",
+      "title": "When meaning meets purpose: A survey on semantic and task-oriented communications",
+      "doi": "10.1016/j.engappai.2026.116063",
+      "creators": [
+        {
+          "firstName": "Quang Tuan",
+          "lastName": "Do",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tung Son",
+          "lastName": "Do",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Thanh Phung",
+          "lastName": "Truong",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Dongwook",
+          "lastName": "Won",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nhu-Ngoc",
+          "lastName": "Dao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wonjong",
+          "lastName": "Noh",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sungrae",
+          "lastName": "Cho",
+          "creatorType": "author"
+        }
+      ],
+      "date": "10/2026",
+      "publication_title": "Engineering Applications of Artificial Intelligence",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "/maybe"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1016/j.engappai.2026.116063",
+      "identity_norm": "when meaning meets purpose a survey on semantic and task oriented communications|do|2026"
+    },
+    {
+      "item_key": "TD9MG9MX",
+      "title": "Knowledge-driven resource allocation for wireless networks: A WMMSE unrolled graph neural network approach",
+      "doi": "10.1109/jiot.2024.3368516",
+      "creators": [
+        {
+          "firstName": "Hao",
+          "lastName": "Yang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nan",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ruijin",
+          "lastName": "Sun",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wei",
+          "lastName": "Quan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Rong",
+          "lastName": "Chai",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Khalid",
+          "lastName": "Aldubaikhy",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Abdullah",
+          "lastName": "Alqasir",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xuemin",
+          "lastName": "Shen",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Internet of Things Journal",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/无线GNN"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jiot.2024.3368516",
+      "identity_norm": "knowledge driven resource allocation for wireless networks a wmmse unrolled graph neural network approach|yang|2024"
+    },
+    {
+      "item_key": "TII59WP4",
+      "title": "WorldSimProbe: Diagnosing Simulator Faithfulness in Action-Conditioned World Models for Embodied Manipulation",
+      "doi": "10.48550/arXiv.2608.09298",
+      "creators": [
+        {
+          "firstName": "Peterson",
+          "lastName": "Co",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sicheng",
+          "lastName": "Hu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chunxuan",
+          "lastName": "Jiao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hongyang",
+          "lastName": "Cheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yulin",
+          "lastName": "Luo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yijie",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Sixiang",
+          "lastName": "Chen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhongxia",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zihao",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "DaFeng",
+          "lastName": "Chi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Peidong",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "YuTong",
+          "lastName": "Chen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Henghua",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhihao",
+          "lastName": "Yuan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Huizhu",
+          "lastName": "Jia",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuzheng",
+          "lastName": "Zhuang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tianle",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Liang",
+          "lastName": "Lin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Huajie",
+          "lastName": "Tan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shanghang",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026-08-10",
+      "publication_title": "arXiv",
+      "venue_source_field": "archive",
+      "item_type": "preprint",
+      "collections": [
+        "8VKHS5YK"
+      ],
+      "collection_names": [
+        "06_评价、不确定性与决策诊断"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/世界模型",
+        "PIJWM/主题/不确定性",
+        "PIJWM/角色/评价"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2608.09298",
+      "identity_norm": "worldsimprobe diagnosing simulator faithfulness in action conditioned world models for embodied manipulation|co|2026"
+    },
+    {
+      "item_key": "TQSTMNXA",
+      "title": "From digital twins to world models:Opportunities, challenges, and applications for mobile edge general intelligence",
+      "doi": "10.48550/ARXIV.2603.17420",
+      "creators": [
+        {
+          "firstName": "Jie",
+          "lastName": "Zheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Dusit",
+          "lastName": "Niyato",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Changyuan",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiawen",
+          "lastName": "Kang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiacheng",
+          "lastName": "Wang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "VXXZ7BJ4"
+      ],
+      "collection_names": [
+        "99_综述与奠基性文献"
+      ],
+      "tags": [
+        "Artificial Intelligence (cs.AI)",
+        "FOS: Computer and information sciences",
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/支撑",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/破格",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/世界模型",
+        "PIJWM/主题/网络数字孪生"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2603.17420",
+      "identity_norm": "from digital twins to world models opportunities challenges and applications for mobile edge general intelligence|zheng|2026"
+    },
+    {
+      "item_key": "TTFUFEWX",
+      "title": "Joint task offloading, resource allocation, and trajectory design for multi-UAV cooperative edge computing with task priority",
+      "doi": "10.1109/tmc.2024.3350078",
+      "creators": [
+        {
+          "firstName": "Hao",
+          "lastName": "Hao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Changqiao",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wei",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shujie",
+          "lastName": "Yang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Gabriel-Miro",
+          "lastName": "Muntean",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Transactions on Mobile Computing",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/低空空地网络",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/任务卸载"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tmc.2024.3350078",
+      "identity_norm": "joint task offloading resource allocation and trajectory design for multi uav cooperative edge computing with task priority|hao|2024"
+    },
+    {
+      "item_key": "UKT7425K",
+      "title": "Goal-oriented status updating for real-time remote inference over networks with two-way delay",
+      "doi": "10.1109/TON.2026.3670099",
+      "creators": [
+        {
+          "firstName": "Çağrı",
+          "lastName": "Arı",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Md Kamran Chowdhury",
+          "lastName": "Shisher",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yin",
+          "lastName": "Sun",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Elif",
+          "lastName": "Uysal",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Transactions on Networking",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "9ELTVQWN"
+      ],
+      "collection_names": [
+        "09_网络QoS与任务质量映射"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/信息时效",
+        "PIJWM/主题/任务感知QoS",
+        "PIJWM/主题/AI业务",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/ton.2026.3670099",
+      "identity_norm": "goal oriented status updating for real time remote inference over networks with two way delay|arı|2026"
+    },
+    {
+      "item_key": "UW2UJ3X5",
+      "title": "Deepmimo: A generic deep learning dataset for millimeter wave and massive mimo applications to vehicular communications",
+      "doi": "10.2139/ssrn.4383745",
+      "creators": [
+        {
+          "firstName": "Oluwaseun",
+          "lastName": "Falade",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/破格",
+        "PIJWM/证据/预印本",
+        "PIJWM/角色/奠基",
+        "FOS: Computer and information sciences",
+        "PIJWM/主题/数据与测量",
+        "FOS: Electrical engineering, electronic engineering, information engineering",
+        "Information Theory (cs.IT)",
+        "Signal Processing (eess.SP)"
+      ],
+      "num_children": null,
+      "doi_norm": "10.2139/ssrn.4383745",
+      "identity_norm": "deepmimo a generic deep learning dataset for millimeter wave and massive mimo applications to vehicular communications|falade|2023"
+    },
+    {
+      "item_key": "UWFHW53I",
+      "title": "Bandwidth-efficient communication modelling for autonomous vehicle collaborative perception",
+      "doi": "10.1109/WACV61041.2025.00599",
+      "creators": [
+        {
+          "firstName": "Dinghao",
+          "lastName": "Jin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuan",
+          "lastName": "Zeng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yi",
+          "lastName": "Gong",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025-02-26",
+      "publication_title": "2025 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/协同感知",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务质量映射"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/wacv61041.2025.00599",
+      "identity_norm": "bandwidth efficient communication modelling for autonomous vehicle collaborative perception|jin|2025"
+    },
+    {
+      "item_key": "UXGIG49G",
+      "title": "Blockage prediction using wireless signatures: Deep learning enables real-world demonstration",
+      "doi": "10.1109/ojcoms.2022.3162591",
+      "creators": [
+        {
+          "firstName": "Shunyao",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Muhammad",
+          "lastName": "Alrabeiah",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chaitali",
+          "lastName": "Chakrabarti",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ahmed",
+          "lastName": "Alkhateeb",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2022",
+      "publication_title": "IEEE Open Journal of the Communications Society",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/ojcoms.2022.3162591",
+      "identity_norm": "blockage prediction using wireless signatures deep learning enables real world demonstration|wu|2022"
+    },
+    {
+      "item_key": "V6W49H35",
+      "title": "Simple and scalable predictive uncertainty estimation using deep ensembles",
+      "doi": "",
+      "creators": [
+        {
+          "firstName": "Balaji",
+          "lastName": "Lakshminarayanan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Alexander",
+          "lastName": "Pritzel",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Charles",
+          "lastName": "Blundell",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2017",
+      "publication_title": "Advances in Neural Information Processing Systems 30",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "8VKHS5YK"
+      ],
+      "collection_names": [
+        "06_评价、不确定性与决策诊断"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/破格",
+        "PIJWM/主题/不确定性"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": "simple and scalable predictive uncertainty estimation using deep ensembles|lakshminarayanan|2017"
+    },
+    {
+      "item_key": "VHJSJSQL",
+      "title": "Adaptable semantic compression and resource allocation for task-oriented communications",
+      "doi": "10.1109/TCCN.2023.3346481",
+      "creators": [
+        {
+          "firstName": "Chuanhong",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Caili",
+          "lastName": "Guo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yang",
+          "lastName": "Yang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Nan",
+          "lastName": "Jiang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024-06",
+      "publication_title": "IEEE Transactions on Cognitive Communications and Networking",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "9ELTVQWN"
+      ],
+      "collection_names": [
+        "09_网络QoS与任务质量映射"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务感知QoS",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tccn.2023.3346481",
+      "identity_norm": "adaptable semantic compression and resource allocation for task oriented communications|liu|2024"
+    },
+    {
+      "item_key": "VIWIQGG9",
+      "title": "DivPrune: Diversity-based visual token pruning for large multimodal models",
+      "doi": "",
+      "creators": [
+        {
+          "firstName": "Saeed Ranjbar",
+          "lastName": "Alvar",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Gursimran",
+          "lastName": "Singh",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mohammad",
+          "lastName": "Akbari",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yong",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025-06",
+      "publication_title": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "/done",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/AI业务",
+        "PIJWM/主题/Token与语义通信"
+      ],
+      "num_children": null,
+      "doi_norm": "",
+      "identity_norm": "divprune diversity based visual token pruning for large multimodal models|alvar|2025"
+    },
+    {
+      "item_key": "VQW3XI9H",
+      "title": "Energy efficient task offloading and resource allocation in air-ground integrated MEC systems: A distributed online approach",
+      "doi": "10.1109/tmc.2023.3346431",
+      "creators": [
+        {
+          "firstName": "Ying",
+          "lastName": "Chen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Kaixin",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuan",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jiwei",
+          "lastName": "Huang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Lian",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Transactions on Mobile Computing",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/低空空地网络",
+        "PIJWM/主题/评价指标",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/任务卸载"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tmc.2023.3346431",
+      "identity_norm": "energy efficient task offloading and resource allocation in air ground integrated mec systems a distributed online approach|chen|2024"
+    },
+    {
+      "item_key": "W335LQSP",
+      "title": "mmCooper: A multi-agent multi-stage communication-efficient and collaboration-robust cooperative perception framework",
+      "doi": "10.1109/ICCV51701.2025.02637",
+      "creators": [
+        {
+          "firstName": "Bingyi",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jian",
+          "lastName": "Teng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hongfei",
+          "lastName": "Xue",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Enshu",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chuanhui",
+          "lastName": "Zhu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Pu",
+          "lastName": "Wang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Libing",
+          "lastName": "Wu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025-10-19",
+      "publication_title": "2025 IEEE/CVF International Conference on Computer Vision (ICCV)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/协同感知",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/鲁棒性"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/iccv51701.2025.02637",
+      "identity_norm": "mmcooper a multi agent multi stage communication efficient and collaboration robust cooperative perception framework|liu|2025"
+    },
+    {
+      "item_key": "W9GDDVDG",
+      "title": "Spatio-Temporal Graph Convolutional Networks: A Deep Learning Framework for Traffic Forecasting",
+      "doi": "10.24963/ijcai.2018/505",
+      "creators": [
+        {
+          "firstName": "Bing",
+          "lastName": "Yu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Haoteng",
+          "lastName": "Yin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhanxing",
+          "lastName": "Zhu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2018",
+      "publication_title": "Proceedings of the Twenty-Seventh International Joint Conference on Artificial Intelligence",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "283ARJS5"
+      ],
+      "collection_names": [
+        "02_严格双图与图学习"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.24963/ijcai.2018/505",
+      "identity_norm": "spatio temporal graph convolutional networks a deep learning framework for traffic forecasting|yu|2018"
+    },
+    {
+      "item_key": "WAVT2DL9",
+      "title": "Electromagnetic world model for 6G: A unified framework for joint environment reconstruction and channel prediction",
+      "doi": "10.48550/arXiv.2608.17769",
+      "creators": [
+        {
+          "firstName": "Yizhu",
+          "lastName": "Zhao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Li",
+          "lastName": "Yu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jianhua",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuxiang",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhen",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Guangyi",
+          "lastName": "Liu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "arXiv",
+      "venue_source_field": "repository",
+      "item_type": "preprint",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/角色/支撑",
+        "PIJWM/证据/预印本",
+        "PIJWM/主题/世界模型",
+        "PIJWM/全文/预印本版本",
+        "PIJWM/主题/无线环境建模",
+        "PIJWM/主题/信道预测"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.2608.17769",
+      "identity_norm": "electromagnetic world model for 6g a unified framework for joint environment reconstruction and channel prediction|zhao|2026"
+    },
+    {
+      "item_key": "WQ9JN878",
+      "title": "Accuracy-aware cooperative sensing and computing for connected autonomous vehicles",
+      "doi": "10.1109/TMC.2023.3343709",
+      "creators": [
+        {
+          "firstName": "Xuehan",
+          "lastName": "Ye",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Kaige",
+          "lastName": "Qu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Weihua",
+          "lastName": "Zhuang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xuemin",
+          "lastName": "Shen",
+          "creatorType": "author"
+        }
+      ],
+      "date": "8/2024",
+      "publication_title": "IEEE Transactions on Mobile Computing",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tmc.2023.3343709",
+      "identity_norm": "accuracy aware cooperative sensing and computing for connected autonomous vehicles|ye|2024"
+    },
+    {
+      "item_key": "WSGWLNVD",
+      "title": "Dream to control: Learning behaviors by latent imagination",
+      "doi": "10.48550/arXiv.1912.01603",
+      "creators": [
+        {
+          "firstName": "Danijar",
+          "lastName": "Hafner",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Timothy",
+          "lastName": "Lillicrap",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jimmy",
+          "lastName": "Ba",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Mohammad",
+          "lastName": "Norouzi",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2020",
+      "publication_title": "ICLR 2020",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/世界模型",
+        "PIJWM/角色/奠基"
+      ],
+      "num_children": null,
+      "doi_norm": "10.48550/arxiv.1912.01603",
+      "identity_norm": "dream to control learning behaviors by latent imagination|hafner|2020"
+    },
+    {
+      "item_key": "X7TU42A8",
+      "title": "Graph neural network-based continual learning for resource allocation in dynamic wireless environments",
+      "doi": "10.1109/tvt.2025.3585146",
+      "creators": [
+        {
+          "firstName": "Huan",
+          "lastName": "Zhou",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wenchao",
+          "lastName": "Xia",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Gan",
+          "lastName": "Zheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hongbo",
+          "lastName": "Zhu",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2025",
+      "publication_title": "IEEE Transactions on Vehicular Technology",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/无线GNN",
+        "PIJWM/主题/时序动态图"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tvt.2025.3585146",
+      "identity_norm": "graph neural network based continual learning for resource allocation in dynamic wireless environments|zhou|2025"
+    },
+    {
+      "item_key": "XBRZATNZ",
+      "title": "Proactively predicting dynamic 6G link blockages using LiDAR and in-band signatures",
+      "doi": "10.1109/ojcoms.2023.3239434",
+      "creators": [
+        {
+          "firstName": "Shunyao",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chaitali",
+          "lastName": "Chakrabarti",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ahmed",
+          "lastName": "Alkhateeb",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "IEEE Open Journal of the Communications Society",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/ojcoms.2023.3239434",
+      "identity_norm": "proactively predicting dynamic 6g link blockages using lidar and in band signatures|wu|2023"
+    },
+    {
+      "item_key": "XGR7F74A",
+      "title": "Multi-agent collaborative perception via motion-aware robust communication network",
+      "doi": "10.1109/CVPR52733.2024.01449",
+      "creators": [
+        {
+          "firstName": "Shixin",
+          "lastName": "Hong",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yu",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zhi",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shaohui",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "You",
+          "lastName": "He",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024-06-16",
+      "publication_title": "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "venue_source_field": "proceedingsTitle",
+      "item_type": "conferencePaper",
+      "collections": [
+        "DQQG4EIB"
+      ],
+      "collection_names": [
+        "07_AI业务场景与任务模型"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/协同感知",
+        "PIJWM/主题/鲁棒性",
+        "/done"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/cvpr52733.2024.01449",
+      "identity_norm": "multi agent collaborative perception via motion aware robust communication network|hong|2024"
+    },
+    {
+      "item_key": "XTVF2P26",
+      "title": "Digital twin meets world model: Proactive control for UAV swarms in low-altitude wireless networks",
+      "doi": "10.1109/TNSE.2026.3731054",
+      "creators": [
+        {
+          "firstName": "Jinpeng",
+          "lastName": "Xu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xin",
+          "lastName": "Xie",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Qun",
+          "lastName": "Chen",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jinfeng",
+          "lastName": "Mao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wei",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026",
+      "publication_title": "IEEE Transactions on Network Science and Engineering",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "EV5VZHH3"
+      ],
+      "collection_names": [
+        "03_世界模型与状态预测"
+      ],
+      "tags": [
+        "/unread"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tnse.2026.3731054",
+      "identity_norm": "digital twin meets world model proactive control for uav swarms in low altitude wireless networks|xu|2026"
+    },
+    {
+      "item_key": "XY6Q8F8Y",
+      "title": "Dependent task scheduling and offloading for minimizing deadline violation ratio in mobile edge computing networks",
+      "doi": "10.1109/jsac.2022.3233532",
+      "creators": [
+        {
+          "firstName": "Shumei",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yao",
+          "lastName": "Yu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Xiao",
+          "lastName": "Lian",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuze",
+          "lastName": "Feng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Changyang",
+          "lastName": "She",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Phee Lep",
+          "lastName": "Yeoh",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Lei",
+          "lastName": "Guo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Branka",
+          "lastName": "Vucetic",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yonghui",
+          "lastName": "Li",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "IEEE Journal on Selected Areas in Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/评价指标",
+        "PIJWM/主题/任务卸载",
+        "PIJWM/主题/任务依赖DAG"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jsac.2022.3233532",
+      "identity_norm": "dependent task scheduling and offloading for minimizing deadline violation ratio in mobile edge computing networks|liu|2023"
+    },
+    {
+      "item_key": "Y63ZQVRG",
+      "title": "Query-Aware Semantic Encoder-Based Resource Allocation in Task-Oriented Communications",
+      "doi": "10.1109/TMC.2025.3541636",
+      "creators": [
+        {
+          "firstName": "Qing",
+          "lastName": "Cai",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yiqing",
+          "lastName": "Zhou",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ling",
+          "lastName": "Liu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hanxiao",
+          "lastName": "Yu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yihao",
+          "lastName": "Wu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Ningzhe",
+          "lastName": "Shi",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jinglin",
+          "lastName": "Shi",
+          "creatorType": "author"
+        }
+      ],
+      "date": "7/2025",
+      "publication_title": "IEEE Transactions on Mobile Computing",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "9ELTVQWN"
+      ],
+      "collection_names": [
+        "09_网络QoS与任务质量映射"
+      ],
+      "tags": [
+        "/无"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tmc.2025.3541636",
+      "identity_norm": "query aware semantic encoder based resource allocation in task oriented communications|cai|2025"
+    },
+    {
+      "item_key": "YBR9HQ93",
+      "title": "RADiT: Resource allocation in digital twin-driven UAV-aided internet of vehicle networks",
+      "doi": "10.1109/jsac.2023.3310048",
+      "creators": [
+        {
+          "firstName": "Bishmita",
+          "lastName": "Hazarika",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Keshav",
+          "lastName": "Singh",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chih-Peng",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Anke",
+          "lastName": "Schmeink",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Kim Fung",
+          "lastName": "Tsang",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "IEEE Journal on Selected Areas in Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/网络数字孪生",
+        "PIJWM/主题/低空空地网络",
+        "PIJWM/主题/资源分配",
+        "PIJWM/主题/任务卸载"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jsac.2023.3310048",
+      "identity_norm": "radit resource allocation in digital twin driven uav aided internet of vehicle networks|hazarika|2023"
+    },
+    {
+      "item_key": "YRCU5LI4",
+      "title": "Colosseum as a digital twin: Bridging real-world experimentation and wireless network emulation",
+      "doi": "10.1109/tmc.2024.3359596",
+      "creators": [
+        {
+          "firstName": "Davide",
+          "lastName": "Villa",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Miead",
+          "lastName": "Tehrani-Moayyed",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Clifton Paul",
+          "lastName": "Robinson",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Leonardo",
+          "lastName": "Bonati",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Pedram",
+          "lastName": "Johari",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Michele",
+          "lastName": "Polese",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Tommaso",
+          "lastName": "Melodia",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Transactions on Mobile Computing",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "SXVPC5G4"
+      ],
+      "collection_names": [
+        "05_数据集、测量与仿真"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/角色/核心",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/网络数字孪生",
+        "PIJWM/主题/数据与测量"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tmc.2024.3359596",
+      "identity_norm": "colosseum as a digital twin bridging real world experimentation and wireless network emulation|villa|2024"
+    },
+    {
+      "item_key": "YTZAX59R",
+      "title": "Digital twin driven service self-healing with graph neural networks in 6G edge networks",
+      "doi": "10.1109/jsac.2023.3310063",
+      "creators": [
+        {
+          "firstName": "Peng",
+          "lastName": "Yu",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Junye",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Honglin",
+          "lastName": "Fang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Wenjing",
+          "lastName": "Li",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Lei",
+          "lastName": "Feng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Fanqin",
+          "lastName": "Zhou",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Pei",
+          "lastName": "Xiao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Song",
+          "lastName": "Guo",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2023",
+      "publication_title": "IEEE Journal on Selected Areas in Communications",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "CI9HW9D9"
+      ],
+      "collection_names": [
+        "04_任务卸载与资源优化"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/网络数字孪生",
+        "PIJWM/角色/支撑",
+        "PIJWM/主题/无线GNN"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/jsac.2023.3310063",
+      "identity_norm": "digital twin driven service self healing with graph neural networks in 6g edge networks|yu|2023"
+    },
+    {
+      "item_key": "YXAACPCZ",
+      "title": "Spatio-Temporal Graph Neural Networks for Predictive Learning in Urban Computing: A Survey",
+      "doi": "10.1109/TKDE.2023.3333824",
+      "creators": [
+        {
+          "firstName": "Guangyin",
+          "lastName": "Jin",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuxuan",
+          "lastName": "Liang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yuchen",
+          "lastName": "Fang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Zezhi",
+          "lastName": "Shao",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Jincai",
+          "lastName": "Huang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Junbo",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yu",
+          "lastName": "Zheng",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2024",
+      "publication_title": "IEEE Transactions on Knowledge and Data Engineering",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "283ARJS5"
+      ],
+      "collection_names": [
+        "02_严格双图与图学习"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tkde.2023.3333824",
+      "identity_norm": "spatio temporal graph neural networks for predictive learning in urban computing a survey|jin|2024"
+    },
+    {
+      "item_key": "Z2Q5XYHZ",
+      "title": "Generalized Random Forests",
+      "doi": "10.1214/18-AOS1709",
+      "creators": [
+        {
+          "firstName": "Susan",
+          "lastName": "Athey",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Julie",
+          "lastName": "Tibshirani",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Stefan",
+          "lastName": "Wager",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2019",
+      "publication_title": "The Annals of Statistics",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "8VKHS5YK"
+      ],
+      "collection_names": [
+        "06_评价、不确定性与决策诊断"
+      ],
+      "tags": [
+        "imported:2026-10-16",
+        "PIJWM"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1214/18-aos1709",
+      "identity_norm": "generalized random forests|athey|2019"
+    },
+    {
+      "item_key": "ZKJ46CL9",
+      "title": "SComCP: Task-oriented semantic communication for collaborative perception",
+      "doi": "10.1109/TVT.2026.3654968",
+      "creators": [
+        {
+          "firstName": "Jipeng",
+          "lastName": "Gan",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Yucheng",
+          "lastName": "Sheng",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hua",
+          "lastName": "Zhang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Le",
+          "lastName": "Liang",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Hao",
+          "lastName": "Ye",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Chongtao",
+          "lastName": "Guo",
+          "creatorType": "author"
+        },
+        {
+          "firstName": "Shi",
+          "lastName": "Jin",
+          "creatorType": "author"
+        }
+      ],
+      "date": "2026-07",
+      "publication_title": "IEEE Transactions on Vehicular Technology",
+      "venue_source_field": "publicationTitle",
+      "item_type": "journalArticle",
+      "collections": [
+        "VLA67XIK"
+      ],
+      "collection_names": [
+        "08_Token与语义通信"
+      ],
+      "tags": [
+        "PIJWM",
+        "PIJWM/全文/已核验PDF",
+        "PIJWM/证据/正式发表",
+        "PIJWM/主题/协同感知",
+        "PIJWM/主题/Token与语义通信",
+        "PIJWM/主题/任务质量映射"
+      ],
+      "num_children": null,
+      "doi_norm": "10.1109/tvt.2026.3654968",
+      "identity_norm": "scomcp task oriented semantic communication for collaborative perception|gan|2026"
+    }
+  ]
+}
