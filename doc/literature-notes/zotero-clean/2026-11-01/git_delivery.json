@@ -1,0 +1,10 @@
+{
+  "message": "docs(literature): classify and audit PIJWM Zotero library",
+  "branch": "main",
+  "push_status": "NOT_PUSHED",
+  "push_blocker": "Preexisting five project knowledge index mismatches; no rebuilding/overwriting unrelated pending changes",
+  "staged_scope_reviewed": true,
+  "existing_worktree_changes_preserved": true,
+  "content_commit": "cc4311e8d53d220c307b9ad19a439701bcf3c651",
+  "record_note": "This file records the completed content commit; the delivery-record commit is discoverable from Git history."
+}

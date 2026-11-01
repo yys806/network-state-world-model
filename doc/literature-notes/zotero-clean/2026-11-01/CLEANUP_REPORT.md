@@ -101,5 +101,5 @@ Context Consistency Check：当前场景、架构、数据流、模块、实验�
 3. 是否符合预期：部分符合；授权的可执行清理已完成，合并/少数书目及贡献归属需后续审阅。
 4. 当前还存在的问题：跨项目合并工具与逐key批准、5条版本信息、2条贡献归属、全仓既有索引门；二进制PDF未重验。
 5. 记录位置：本报告、详细索引、final_acceptance.json、各计划/执行回执与记录/本地计划表.md。
-6. Git状态：单独提交本任务可审阅材料；不夹带旧改动。当前知识索引5项失败，按仓库规则不推送；提交结果另见git_delivery.json。
+6. Git状态：内容提交cc4311e8d53d220c307b9ad19a439701bcf3c651，message=docs(literature): classify and audit PIJWM Zotero library，分支main；不夹带旧改动。知识索引既有5项失败，NOT_PUSHED；交付记录见git_delivery.json。
 7. 建议下一步：仅审阅duplicate_review_plan.json的3对跨项目重复，决定是否另行批准并建立可验证的无损合并操作；不自动扩展到模型或实验。
