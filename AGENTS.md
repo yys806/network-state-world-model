@@ -6,12 +6,24 @@ This workspace is for **PI-JWM**: Physical-Information Joint World Model.
 
 AirFogSim is only a reference simulator and data-generation tool. Do not describe it as the framework or the research main line.
 
+## Project Memory and Context Recovery (2026-10-23)
+
+- **Canonical research-notes root (read-only):** `D:\shen\OB\科研\PKU\PIJWM`. Obsidian vault root is `D:\shen\OB`; image attachments live in `D:\shen\OB\图片`. The older path `D:\shen\OB\科研\PIJWM` no longer exists. The file map, source priority, reading status and known conflicts are in `docs/PROJECT_MEMORY_AND_SOURCES.md` — read it when a task needs project context.
+- **Current research scheme (highest priority for direction questions):** the 2026-10-23 meeting deck `PPT\10.23.pptx` and the 2026-10-21 meeting record `组会笔记\1021组会.md` (its script copy is `组会笔记\1028组会.md`), all under the canonical root. If the two conflict, record the conflict with evidence; never merge them or silently pick one.
+- **The research scenario has switched.** The old scenario (AirFogSim UAV/vehicle network, task offloading, network-state world model) is **historical**. The current candidate scenario is vehicle–roadside cooperative perception with road-vehicle object detection. The old scenario is not the default object of study, and old modeling mechanisms may be reused only after fresh evaluation.
+- **New-scenario status:** candidate Problem Formulation only. No new definition document, no new-scenario code, no authorized implementation Step. The deck itself calls it a "candidate scenario", and `1028组会.md` still lists open scenario questions. Do not describe it as an implemented or frozen method.
+- **The `00–06` definitions in the notes root describe the OLD scenario** (written 2026-09-15~18). They remain the definition basis of the existing implementation but are not the new scenario's definition, and must not be presented as such.
+- **Old-material boundary:** older meetings/decks, the `00–06` documents, existing code, checkpoints and historical Step records may be used to understand evolution, reuse verified mechanisms, and build comparisons. "Old code already implements X" never authorizes X in the new scenario.
+- **Recovery order for any new PI-JWM conversation:** (1) classify the question; (2) read this file plus `docs/PROJECT_MEMORY_AND_SOURCES.md`; (3) for direction questions read the 10.23 deck and the 10.21 record first; (4) for engineering facts verify current source/config/experiment artifacts — `AI_CONTEXT` is navigation only; (5) for literature use the Zotero `PKU → PIJWM` collection and accessible full text, not paper-note memory; (6) label each claim as current implementation fact / historical design / unverified hypothesis / future proposal; (7) read only what the question needs instead of scanning the whole repository.
+- **Cross-conversation persistence:** pi has no automatic chat memory. Persistence relies only on the agent-dir `AGENTS.md`, this file, and the documents they point to. Sessions under `~/.pi/agent/sessions/` load only on explicit resume. Never claim to remember an earlier conversation.
+- **Source priority:** current source/config/experiment (engineering facts) > latest meeting material (direction and decision context) > `AI_CONTEXT` (navigation) > ordinary docs and paper notes > historical chat or memory. This file and `docs/PROJECT_MEMORY_AND_SOURCES.md` store the map, not the facts themselves.
+
 ## Research Engineer Role and Three-Party Boundary
 
-- Codex is the project **Research Engineer**. It must understand the research context well enough to implement accurately, but it does not own final research decisions.
+- The project **Research Engineer** role is held by the executing agents: **研Dive** (local Hermes research profile, primary executor) and, when called, **Codex** (gpt-6-astra) and **Claude Code** (opus 5.5). **Pi** serves only as an independent third opinion and does not implement. All of them must understand the research context well enough to implement accurately, but none owns final research decisions.
 - The researcher owns the research question, core algorithm, mathematical model, overall architecture, scientific loss design, hypothesis, experiment purpose, ablation variable, innovation claim, and final interpretation.
-- **ChatGPT Web** supports theory discussion, derivation, architecture analysis, experiment-design discussion, and result interpretation. Codex supports implementation, maintenance, experiment execution, tests, code-fact checks, and repository/context synchronization.
-- Codex may proactively identify implementation conflicts, leakage, unfair comparisons, evaluator risks, or unsupported assumptions. It must report facts and evidence, then stop the affected scientific change when a researcher decision is required.
+- 研Dive covers literature, method, experiment design and execution, code, drafting and result recording; Codex and Claude Code cover implementation, bulk refactoring, independent acceptance and review. Theory discussion and result interpretation are joint work between the researcher and the executors — there is no separate web-based agent in the loop.
+- Any executor may proactively identify implementation conflicts, leakage, unfair comparisons, evaluator risks, or unsupported assumptions. It must report facts and evidence, then stop the affected scientific change when a researcher decision is required.
 
 ## User-Facing Communication Standard (Highest Priority)
 
@@ -91,7 +103,7 @@ For LaTeX progress documents, compile with XeLaTeX.
 
 ## Local Literature Management
 
-- The PI-JWM literature library now lives **only in Zotero** — collection `PKU → PIJWM`, with the seven topic subcollections `01_系统场景与问题定义`, `02_严格双图与图学习`, `03_世界模型与状态预测`, `04_任务卸载与资源优化`, `05_数据集、测量与仿真`, `06_评价、不确定性与决策诊断`, `99_综述与奠基性文献`. Category, role, evidence, and topic tags from the former `文献索引.csv` are preserved as Zotero tags; cross-category relationships live in tags instead of duplicated files.
+- The PI-JWM literature library now lives **only in Zotero** — collection `PKU → PIJWM` (key `PXDR9FBZ`). The long-term primary-category system is fixed at ten collections: `01_系统场景与问题定义` (existing key `UUK8F8EQ`), `02_严格双图与图学习` (`283ARJS5`), `03_世界模型与状态预测` (`EV5VZHH3`), `04_任务卸载与资源优化` (`CI9HW9D9`), `05_数据集、测量与仿真` (`SXVPC5G4`), `06_评价、不确定性与决策诊断` (`8VKHS5YK`), `07_AI业务场景与任务模型` (`DQQG4EIB`), `08_Token与语义通信` (`VLA67XIK`), `09_网络QoS与任务质量映射` (`9ELTVQWN`), and `99_综述与奠基性文献` (`VXXZ7BJ4`). Do not rename, delete, or add a permanent eleventh category without researcher approval. Each paper has one primary collection; cross-category relationships live in tags instead of duplicated items. A paper is classified by its main contribution, verified from the paper or authoritative abstract, not by title keywords or by the method used as a tool.
 - Each paper is one Zotero item with its full-text PDF attached, plus CCF / impact-factor / CAS-partition fields and (when generated) a bilingual reading copy.
 - The local `literature/` directory was retired on 2026-10-16 (its CSV/SHA-256 index and notes are archived under `doc/literature-notes/`). Do not recreate a parallel PDF folder, and do not maintain a second literature source.
 - Adding new literature: import the PDF into the `PIJWM` collection, deduplicate by DOI / arXiv ID / normalized title / SHA-256, run "Retrieve Metadata for PDFs", then refresh the CCF / impact-factor fields. Verify the `%PDF-` file signature before accepting a download.
@@ -99,7 +111,7 @@ For LaTeX progress documents, compile with XeLaTeX.
 
 ## Active Research and Implementation Workflow (2026-09-18)
 
-- Researcher-authorized target definitions are the seven `00–06` Markdown documents in `D:\shen\OB\科研\PIJWM`. They define intended behavior; only source/config/test/artifact can establish implementation facts. Do not confuse a target definition with an implemented or accepted method.
+- Researcher-authorized target definitions are the seven `00–06` Markdown documents in `D:\shen\OB\科研\PKU\PIJWM\PIJWM` (moved there on 2026-10-23 from `D:\shen\OB\科研\PIJWM`). They describe the pre-2026-10-23 scenario; see "Project Memory and Context Recovery" above. They define intended behavior; only source/config/test/artifact can establish implementation facts. Do not confuse a target definition with an implemented or accepted method.
 - Active definition order: `00 总体研究链路 → 01 仿真系统与轨迹 → 02 数据集与模型输入 → 03 Physical–Information 双图 → 04 世界模型 → 05 Training / Loss / Evaluation → 06 Planner / Closed Loop`.
 - Engineering workspace: `D:\shen\PKU\PIJWM`. All code, configs, tests, experiments, documentation, trackers, records and Git work must stay here. Repository: `https://github.com/yys806/network-state-world-model`.
 - Current implementation entrypoints: `docs/PIJWM_IMPLEMENTATION_TRACKER.md`, `docs/implementation_records/README.md`, and the authorized Step record. Definition chapter numbers are not automatic authorization to execute implementation Steps.
@@ -130,7 +142,7 @@ The previous P0–P10/P4/P6 plans and older five-part research workflow are **Hi
 ## Mainline Control and Scope Discipline
 
 - PI-JWM follows the active `00–06` definition chain and researcher-authorized implementation Step recorded in `docs/PIJWM_IMPLEMENTATION_TRACKER.md` and `记录/本地计划表.md`. Older P-stage gates are historical, never an automatic execution queue.
-- Before starting each task, read `task_plan.md`, this file, `记录/本地计划表.md`, `记录/PIJWM主文档.md`, `记录/8.12之后推进.md`, and `记录/文件树与证据分层_20260826.md`; then state the current gate, blocker, and single next deliverable. Recheck the plan after each completed gate so execution does not drift.
+- Before starting each task, read `task_plan.md`, this file, `记录/本地计划表.md`, `记录/PIJWM主文档.md`, `记录/8.12之后推进.md`, and `记录/文件树与证据分层_20260826.md`; then state the current gate, blocker, and single next deliverable. (`task_plan.md`, `progress.md` and `findings.md` are currently absent from the working tree — see `docs/PROJECT_MEMORY_AND_SOURCES.md` §6 C7 — so record plan/progress in `记录/本地计划表.md` until the researcher restores or replaces them.) Recheck the plan after each completed gate so execution does not drift.
 - If an unexpected result, theory mismatch, or apparent blocker appears, pause the current gate and first search prior records, machine-readable audits, and relevant local literature. Reuse verified interfaces and findings before designing new code or experiments, and record whether the issue is historical, already resolved, or genuinely new.
 - Internal substeps or historical labels must not replace the canonical roadmap in user-facing progress reports or become a reason to expand scope.
 - Once a route is confirmed, execute it sequentially and keep unrelated methods, planner work, robustness, baselines, or locked-test work out of the active gate. Historical smoke or diagnostic runs remain historical unless the current formal gate independently approves them.
@@ -160,7 +172,7 @@ The previous P0–P10/P4/P6 plans and older five-part research workflow are **Hi
 
 ## Research Notes Read-Only Boundary
 
-- The researcher explicitly authorized read-only access to `D:\shen\OB\科研\PIJWM` on 2026-09-18. Read/analyze the designated `00–06` definitions and cite their file/section/hash as implementation basis. Never modify, create, delete, rename, format or overwrite anything in that directory.
+- The researcher explicitly authorized read-only access to `D:\shen\OB\科研\PIJWM` on 2026-09-18; that directory moved to `D:\shen\OB\科研\PKU\PIJWM` on 2026-10-23 and the read-only boundary follows it. Read/analyze the designated documents (now including the 10.23 deck and the 10.21 meeting record) and cite their file/section/hash as basis. Never modify, create, delete, rename, format or overwrite anything in that directory or in the vault's `图片` folder.
 - Do not scan other private-note directories. Store implementation mappings and source fingerprints in the engineering repository; do not copy the entire private notebook into GitHub.
 - Historical rule: **Private Notes Prohibition** previously prohibited all access. It is superseded only for the explicitly authorized directory and read-only purpose above; access elsewhere remains prohibited.
 
@@ -189,7 +201,26 @@ The previous P0–P10/P4/P6 plans and older five-part research workflow are **Hi
 ## 文献库与工具链（唯一入口：Zotero）
 
 **唯一真相**：Zotero 集合 `PKU → PIJWM`。本地 `literature/` 已于 2026-10-16 退役，索引/说明类文件存档于 `doc/literature-notes/`。
-**新增文献只在 Zotero 里加**，不要再在仓库里建 PDF 文件夹。当前已入库 **85 篇**（子集合：01 系统场景 / 02 严格双图 / 03 世界模型 / 04 任务卸载 / 05 数据集测量仿真 / 06 评价不确定性 / 99 综述奠基）。
+**新增文献只在 Zotero 里加**，不要再在仓库里建 PDF 文件夹。本轮第二次补充前盘点基线为 **97 篇**；本轮新增 10 个 Zotero 条目，并复用 1 个原属于 RRM 的同论文条目加入 PIJWM，回读确认 PIJWM 当前为 **108 篇**（全库主条目为 244 条；附件记录为 243 条）。十个子集合及其 Key 以本节上方清单和 Zotero 回读为准；07–09 是固定入口，创建前必须先检查是否已经存在，创建后必须回读集合和条目数量。跨项目复用必须保留原项目集合关系，不得复制条目。
+
+### 十类长期分类和核验口径
+- `01_系统场景与问题定义`：系统场景、网络架构、系统模型、研究问题、物理—信息系统定义。
+- `02_严格双图与图学习`：图神经网络、异构/动态图、物理—信息双图、消息传递、跨域耦合和图结构表示。
+- `03_世界模型与状态预测`：World Model、RSSM、latent dynamics、动作条件预测和预测式环境建模。
+- `04_任务卸载与资源优化`：任务卸载、通信/计算资源、调度、MPC、RL、CEM、联合优化和规划策略。
+- `05_数据集、测量与仿真`：数据集、无线测量、仿真器、真实测试平台和 benchmark。
+- `06_评价、不确定性与决策诊断`：预测误差、不确定性、校准、可靠性、规划偏差和评价/诊断方法。
+- `07_AI业务场景与任务模型`：视觉检测/识别/跟踪、协同感知、边缘 AI 推理、LLM/多模态业务及具体任务模型。
+- `08_Token与语义通信`：Token、语义特征、Token 重要性、选择/压缩、语义编码、特征传输和价值感知通信。
+- `09_网络QoS与任务质量映射`：吞吐、时延、丢包、QoS、信息时效，以及网络交付与 AI 任务准确率/完成质量/任务效用之间的映射。
+- `99_综述与奠基性文献`：跨领域综述或明显奠基工作；不能作为“暂时无法分类”的收容区。每篇论文只放一个主分类，跨方向用主题标签表达。
+- 新论文流程必须是“确认正式来源 → DOI/arXiv/正式题名/SHA-256 查重 → 阅读摘要、引言、问题定义和主要贡献 → 选择主分类 → 入库 → 回读元数据、附件和集合归属 → 添加规范标签”。不得只按标题关键词分类；分类变化要记录原分类、新分类、主要贡献和核验依据，并将证据不足或主贡献有歧义的条目标为 `REVIEW_REQUIRED`。
+- 批量创建集合、移动条目或修改元数据前，必须先确认可恢复的 Zotero 导出或同步快照，并能回读验证。只有空的/过期的 SQLite `.bak`、未验证的 WebDAV 或被锁定的数据库不构成恢复安全门；安全门未通过时只做只读审计，不做批量写入。
+
+### 规范标签词表
+- 继承历史标签，不批量删除；同一语义只新增一种规范写法。角色使用 `PIJWM/角色/核心`、`PIJWM/角色/支撑`、`PIJWM/角色/奠基`；证据使用 `PIJWM/证据/正式发表`、`PIJWM/证据/预印本`、`PIJWM/证据/破格`；全文状态使用 `PIJWM/全文/已核验PDF`、`PIJWM/全文/仅元数据`、`PIJWM/全文/预印本版本`。
+- 主题标签使用稳定术语：`PIJWM/主题/系统场景`、`严格双图`、`图学习`、`世界模型`、`任务卸载`、`资源分配`、`数据与测量`、`评价诊断`、`AI业务`、`协同感知`、`Token与语义通信`、`任务感知QoS`、`网络QoS`、`网络可靠性`、`鲁棒性`、`信息时效`。主题标签表达跨分类关系，不代替主集合；不得把 Agent 自动读取标成“研究者已精读”。
+- PDF 机器翻译必须作为独立附件保留，原文不能被替代；已有翻译附件则跳过。正式发表、预印本和仅附件记录必须分别按事实标记，不能由附件数量推断全文已核验。
 
 ### 新增一篇文献的标准流程
 1. **建条目**：Zotero 里在该集合对应子分类下 → `Add Item by Identifier` 贴 DOI（最准）；只有 PDF 时拖入 PDF → 右键 `Retrieve Metadata for PDF`。
@@ -198,7 +229,7 @@ The previous P0–P10/P4/P6 plans and older five-part research workflow are **Hi
    - `python D:\hermes\scripts\zotero_pipeline.py ranks --project PIJWM`
    - `python D:\hermes\scripts\complete_journal_metrics.py --project PIJWM`
    写入 Extra 的字段（与 Zotero「Green Frog/青蛙」插件同格式）：`影响因子 / 5年影响因子 / JCR分区 / 中科院分区基础版 / 中科院分区升级版 / CCF / EI / SSCI / AJG / JCI / ESI`。
-   数据源＝easyScholar（与用户 Zotero 插件同源）+ CCF 第七版官方目录；**不得臆造**：会议论文与预印本没有期刊指标，就按事实写 `无（会议/预印本无期刊指标）`；不在 CCF 目录写 `无（不在 CCF 目录）`——**字段不留空**。
+   数据源＝easyScholar（与用户 Zotero 插件同源）+ CCF 第七版官方目录；**不得臆造**：会议论文与预印本没有期刊指标，就按事实写 `无（会议/预印本无期刊指标）`；不在 CCF 目录写 `无（不在 CCF 目录）`——**字段不留空**。指标必须保留来源年度/版本；字段状态只允许据实区分 `VERIFIED`、`NOT_APPLICABLE`、`UNVERIFIED`、`CONFLICT`。
 4. **双语对照 PDF（左英右中，不外传）**：
    - 本地 PDF2zh 服务目录 `C:\Users\Lenovo\Zotero\zotero-pdf2zh\server`，端口 `8890`，引擎 `siliconflowfree`，启动命令：`uv run python server.py --port 8890 --env_tool uv --enable_venv true`
    - 批量/单篇：`set PIPELINE_PROJECT=PIJWM` 后跑 `python D:\hermes\scripts\zotero_translate_all.py`
@@ -236,3 +267,14 @@ The previous P0–P10/P4/P6 plans and older five-part research workflow are **Hi
 - 不主动向 C 盘新增项目数据、备份或大型临时文件。WSL swap 的系统默认临时位置在 C 盘，尚未改动；迁移配置必须另行获得批准。
 - WSL 环境可用性不是新的科研事实，不代表新场景、算法或实验已实现/验收。
 - 使用前先读 `docs/WSL_ENVIRONMENT.md` 与 `docs/WSL_CLEANUP_20261024.json`。当前目录仅有说明、非 Git 仓库；系统 Python 3.12.3 无 NumPy/PyTorch/pytest，不得声称科学计算环境已就绪。
+
+## Executor and Artifact Placement (2026-11-16, researcher-authorized)
+
+This section was added with the researcher's explicit authorization on 2026-11-16. Only the role paragraph above and this section were changed; all other sections stand.
+
+- **Artifacts live in this repository.** Experiment code, configs, generated outputs, checked-in evidence and figures belong under `code/`, `docs/`, `记录/` and `code/artifacts/`. Do not park experiment results in `D:\hermes-yan`; the researcher must be able to see, push and revert them from GitHub.
+- **Records split in two layers.** Reproducible experiment evidence lives here; decision records, project understanding and retrospectives live in `D:\hermes-yan\projects\PIJWM\`.
+- **Research notes stay read-only.** `D:\shen\OB\科研\PKU\PIJWM` remains read-only (see the boundary section above). No exception is granted by this section.
+- **External agents** called for experiment work (Codex / Claude Code / Pi) must use this repository as their working directory. Pure text review may run in a scratch directory, but its output must not be written into this repository.
+- **Git.** Routine commit + push after verification is authorized (see Git Workflow); never push a known-broken state. Before staging, review the full diff for unpublished manuscript text, raw datasets, credentials and machine-specific paths.
+- **Large data boundary unchanged.** Raw datasets, checkpoints, weights, logs and caches stay local and out of Git (`code/artifacts/` holds reports and compact outputs only).
