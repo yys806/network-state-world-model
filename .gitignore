@@ -65,3 +65,4 @@ paper/ton_template_extract/
 记录/研究进展/*.pdf
 记录/研究进展/*.zip
 docs/templates/IEEEtran.cls
+.syslib/
